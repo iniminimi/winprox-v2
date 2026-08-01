@@ -13,9 +13,11 @@ final class RecurrenceSchedule
         $unitValue = $unit instanceof RecurrenceIntervalUnit ? $unit->value : (string) $unit;
 
         return match ($unitValue) {
+            RecurrenceIntervalUnit::Day->value => $dueAt->copy()->addDays($value),
             RecurrenceIntervalUnit::Week->value => $dueAt->copy()->addWeeks($value),
             RecurrenceIntervalUnit::Month->value => $dueAt->copy()->addMonthsNoOverflow($value),
             RecurrenceIntervalUnit::Quarter->value => $dueAt->copy()->addMonthsNoOverflow($value * 3),
+            RecurrenceIntervalUnit::Year->value => $dueAt->copy()->addYearsNoOverflow($value),
             default => $dueAt->copy()->addYearsNoOverflow($value),
         };
     }

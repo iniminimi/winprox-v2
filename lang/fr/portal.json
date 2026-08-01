@@ -262,7 +262,10 @@
             "result_required": "Choisissez OK ou Pas OK.",
             "result_invalid": "Résultat invalide.",
             "checked_at_required": "Horodatage manquant.",
-            "checked_at_invalid": "Horodatage invalide."
-        }
+            "checked_at_invalid": "Horodatage invalide.",
+            "checklist_incomplete": "Cochez tous les points pour OK."
+        },
+        "checklist_title": "Liste de contrôle",
+        "task_complete_note": "Contrôle unit OK."
     }
 }

@@ -63,6 +63,8 @@ class RecordUnitCheckRequest extends FormRequest
             'checkLatitude' => ['nullable', 'numeric', 'between:-90,90', 'required_with:checkLongitude'],
             'checkLongitude' => ['nullable', 'numeric', 'between:-180,180', 'required_with:checkLatitude'],
             'checkCheckedAt' => ['required', 'date'],
+            'checkChecklistItems' => ['nullable', 'array'],
+            'checkChecklistItems.*' => ['string', 'max:200'],
         ];
     }
 

@@ -388,6 +388,19 @@
                 <div class="wp-card wp-card-pad wp-stack">
                     <p class="wp-muted">{{ __('portal.unit_check.lead') }}</p>
 
+                    @if (($unitCheckListItems ?? collect())->isNotEmpty())
+                        <div class="wp-stack-tight">
+                            <p class="wp-section-title">{{ __('portal.unit_check.checklist_title') }}</p>
+                            @foreach ($unitCheckListItems as $item)
+                                <label class="wp-check" wire:key="check-item-{{ $item->id }}">
+                                    <input type="checkbox" value="{{ $item->label }}" wire:model="checkChecklistItems">
+                                    <span>{{ $item->label }}</span>
+                                </label>
+                            @endforeach
+                            @error('checkChecklistItems') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    @endif
+
                     <div class="wp-cluster wp-cluster--wrap">
                         <button
                             type="button"

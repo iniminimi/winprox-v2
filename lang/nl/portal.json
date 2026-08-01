@@ -262,7 +262,10 @@
             "result_required": "Kies OK of Niet OK.",
             "result_invalid": "Ongeldig resultaat.",
             "checked_at_required": "Tijdstip ontbreekt.",
-            "checked_at_invalid": "Ongeldig tijdstip."
-        }
+            "checked_at_invalid": "Ongeldig tijdstip.",
+            "checklist_incomplete": "Vink alle checklistpunten af voor OK."
+        },
+        "checklist_title": "Checklist",
+        "task_complete_note": "Unit check OK."
     }
 }

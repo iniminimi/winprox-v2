@@ -15,6 +15,7 @@ use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitBackgroundPhotoAction;
 use App\Actions\Units\RecordUnitGpsReportAction;
 use App\Actions\Units\RecordUnitCheckAction;
+use App\Actions\Units\ResolveOpenUnitTaskForCheckAction;
 use App\Actions\QrCodes\StoreQrLinkPhotosAction;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\StartTaskAction;
@@ -120,6 +121,8 @@ class UnitPortal extends Component
     public ?float $checkLatitude = null;
     public ?float $checkLongitude = null;
     public ?string $checkCheckedAt = null;
+    /** @var list<string> */
+    public array $checkChecklistItems = [];
 
     public string $reserveFirstName = '';
     public string $reserveLastName = '';
@@ -226,8 +229,8 @@ class UnitPortal extends Component
         }
 
         if ($section === 'unit_check') {
-            $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt');
-            $this->resetErrorBag(['checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt']);
+            $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems');
+            $this->resetErrorBag(['checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems']);
         }
 
         if ($section === 'reserve') {
@@ -235,8 +238,12 @@ class UnitPortal extends Component
         }
     }
 
-    public function submitUnitCheck(RecordUnitCheckAction $recordUnitCheck): void
-    {
+    public function submitUnitCheck(
+        RecordUnitCheckAction $recordUnitCheck,
+        ResolveOpenUnitTaskForCheckAction $resolveOpenTask,
+        StartTaskAction $startTask,
+        CompleteTaskAction $completeTask,
+    ): void {
         if ($this->inactiveReasonKey !== null) {
             return;
         }
@@ -272,22 +279,67 @@ class UnitPortal extends Component
             return;
         }
 
+        $unit = $this->unit()->loadMissing(['unitCheckList.items']);
         $result = UnitCheckResult::from($this->checkResult);
+        $requiredLabels = $unit->unitCheckList?->is_active
+            ? $unit->unitCheckList->items->pluck('label')->all()
+            : [];
+        $selectedLabels = array_values(array_unique(array_filter(
+            array_map(static fn ($item) => is_string($item) ? trim($item) : '', $this->checkChecklistItems),
+            static fn (string $label) => $label !== '',
+        )));
+
+        if ($result === UnitCheckResult::Ok && $requiredLabels !== []) {
+            $missing = array_values(array_diff($requiredLabels, $selectedLabels));
+            if ($missing !== []) {
+                $this->addError('checkChecklistItems', __('portal.unit_check.errors.checklist_incomplete'));
+
+                return;
+            }
+            $selectedLabels = $requiredLabels;
+        } elseif ($requiredLabels !== []) {
+            $selectedLabels = array_values(array_intersect($requiredLabels, $selectedLabels));
+        } else {
+            $selectedLabels = [];
+        }
+
+        $openTask = $resolveOpenTask->handle($unit, $worker);
+        $openTask?->loadMissing('issue');
 
         $recordUnitCheck->handle(
-            unit: $this->unit(),
+            unit: $unit,
             data: new RecordUnitCheckData(
                 result: $result,
                 checkedAt: \Carbon\CarbonImmutable::parse((string) $this->checkCheckedAt),
                 source: UnitCheckSource::Portal,
                 latitude: $this->checkLatitude,
                 longitude: $this->checkLongitude,
+                taskId: $openTask?->id,
+                checklistItems: $selectedLabels === [] ? null : $selectedLabels,
             ),
             tenantId: $this->tenantId,
             worker: $worker,
         );
 
-        $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt');
+        if (
+            $result === UnitCheckResult::Ok
+            && $openTask !== null
+            && $openTask->issue?->esg_indicator_id === null
+        ) {
+            if ($openTask->canStart()) {
+                $startTask->handle($openTask, $worker);
+                $openTask = $openTask->fresh();
+            }
+            if ($openTask?->canComplete()) {
+                $completeTask->handle(
+                    $openTask,
+                    $worker,
+                    __('portal.unit_check.task_complete_note'),
+                );
+            }
+        }
+
+        $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems');
 
         if ($result === UnitCheckResult::NotOk) {
             $this->flashMessage = __('portal.unit_check.recorded_not_ok');
@@ -993,12 +1045,19 @@ class UnitPortal extends Component
         $clockPointPortalUrl = null;
         $isReservable = $unit->isReservable();
         $guestReservations = collect();
+        $unitCheckListItems = collect();
 
         if ($isReservable && in_array($this->portalSection, ['home', 'my_reservations'], true)) {
             $guestReservations = $this->guestReservationsForUnit();
         }
 
         if ($this->inactiveReasonKey === null) {
+            if ($this->portalSection === 'unit_check' && $canAct) {
+                $unit->loadMissing(['unitCheckList.items']);
+                if ($unit->unitCheckList?->is_active) {
+                    $unitCheckListItems = $unit->unitCheckList->items;
+                }
+            }
             if (in_array($this->portalSection, ['home', 'issues', 'issue_detail'], true)) {
                 $issues = UnitPortalData::activeIssuesForUnit($unit);
             }
@@ -1044,6 +1103,7 @@ class UnitPortal extends Component
 
         return view('livewire.public.unit-portal', [
             'canAct' => $canAct,
+            'unitCheckListItems' => $unitCheckListItems,
             'showNewReportSection' => $this->showNewReportSection(),
             'requiresReporterContact' => $canAct ? false : $unit->requiresReporterContact(),
             'worker' => $worker,

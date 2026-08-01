@@ -111,7 +111,8 @@
             "category": "Catégorie",
             "public_reports_enabled": "Les visiteurs peuvent faire un signalement via le portail QR",
             "allow_reservations": "Autoriser les réservations",
-            "require_reporter_contact": "Coordonnées obligatoires"
+            "require_reporter_contact": "Coordonnées obligatoires",
+            "check_list": "Liste de contrôle (contrôle unit)"
         },
         "translation_preview": "Traduction (portail)",
         "translation_edit": {
@@ -148,7 +149,8 @@
             "invalid_category": "Choisissez une catégorie valide de votre tenant.",
             "translation_requires_active": "Les traductions ne sont possibles que pour les unités actives.",
             "translation_import_missing": "Unité introuvable ou inactive.",
-            "translation_import_name_too_long": "Le nom d'unité traduit est trop long."
+            "translation_import_name_too_long": "Le nom d'unité traduit est trop long.",
+            "invalid_check_list": "Liste invalide."
         },
         "flash": {
             "created": "Unité créée.",
@@ -163,7 +165,9 @@
         "delete_blocked_esg_measurements": "Cette unité a des mesures ESG et ne peut pas être supprimée.",
         "delete_blocked": "Cette unité ne peut pas être supprimée.",
         "allow_reservations_hint": "Uniquement si la catégorie est Réservable. Désactivé par défaut ; activez pour autoriser les réservations pour cette unité.",
-        "require_reporter_contact_hint": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalements QR anonymes, pas aux agents de terrain."
+        "require_reporter_contact_hint": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalements QR anonymes, pas aux agents de terrain.",
+        "no_check_list": "Aucune liste",
+        "check_list_hint": "Optionnel. La liste liée apparaît sur le QR unit."
     },
     "bulk": {
         "title": "Ajouter des unités en masse",

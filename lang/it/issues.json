@@ -77,7 +77,7 @@
         "recurring": "Segnalazione ricorrente",
         "recurring_help": "Segnalazione ricorrente",
         "recurring_help_title": "Segnalazione ricorrente — spiegazione",
-        "recurring_help_interval": "Intervallo: con quale frequenza si ripete la segnalazione (es. ogni 2 settimane, ogni mese, ogni trimestre, ogni anno).",
+        "recurring_help_interval": "Intervallo: frequenza di ripetizione (es. ogni giorno, ogni 2 settimane, ogni mese, ogni trimestre, ogni anno).",
         "recurring_help_lead": "Anticipo (giorni): quanti giorni prima della scadenza viene creata l'attività (es. 7 giorni per attività mensili).",
         "interval_value": "Intervallo",
         "interval_unit": "Unità",
@@ -97,7 +97,8 @@
         "next": "Avanti",
         "back": "Indietro",
         "finish": "Crea segnalazione",
-        "success": "Segnalazione e attività sono state create."
+        "success": "Segnalazione e attività sono state create.",
+        "unit_day": "Giorno"
     },
     "errors": {
         "cannot_close_approved": "Una segnalazione approvata non può essere chiusa.",

@@ -262,7 +262,10 @@
             "result_required": "Choose OK or Not OK.",
             "result_invalid": "Invalid result.",
             "checked_at_required": "Timestamp is missing.",
-            "checked_at_invalid": "Invalid timestamp."
-        }
+            "checked_at_invalid": "Invalid timestamp.",
+            "checklist_incomplete": "Tick all checklist items for OK."
+        },
+        "checklist_title": "Checklist",
+        "task_complete_note": "Unit check OK."
     }
 }

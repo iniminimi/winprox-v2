@@ -20,5 +20,27 @@
         "result_invalid": "Ungültiges Ergebnis.",
         "checked_at_required": "Zeitstempel ist erforderlich.",
         "checked_at_invalid": "Ungültiger Zeitstempel."
+    },
+    "lists": {
+        "title": "Checklisten",
+        "lead": "Erstellen Sie Checklisten und verknüpfen Sie sie unter Standorte mit Units. Sie erscheinen beim Unit-Check auf dem QR.",
+        "create": "Checkliste hinzufügen",
+        "create_title": "Checkliste hinzufügen",
+        "edit_title": "Checkliste bearbeiten",
+        "empty": "Noch keine Checklisten.",
+        "inactive": "Inaktiv",
+        "deactivate": "Deaktivieren",
+        "item_count": "0 Punkte|:count Punkt|:count Punkte",
+        "fields": {
+            "name": "Name",
+            "items": "Punkte",
+            "items_ph": "Ein Punkt pro Zeile",
+            "items_hint": "Schreiben Sie jeden Punkt in eine neue Zeile.",
+            "active": "Aktiv"
+        },
+        "errors": {
+            "name_required": "Name ist erforderlich.",
+            "items_required": "Fügen Sie mindestens einen Punkt hinzu."
+        }
     }
 }

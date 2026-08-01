@@ -111,7 +111,8 @@
             "category": "Categoría",
             "public_reports_enabled": "Los visitantes pueden enviar un informe mediante el portal QR",
             "allow_reservations": "Permitir reservas",
-            "require_reporter_contact": "Datos de contacto obligatorios"
+            "require_reporter_contact": "Datos de contacto obligatorios",
+            "check_list": "Lista (chequeo de unit)"
         },
         "translation_preview": "Traducción (portal)",
         "translation_edit": {
@@ -148,7 +149,8 @@
             "invalid_category": "Elija una categoría válida de su inquilino.",
             "translation_requires_active": "Las traducciones solo están disponibles para unidades activas.",
             "translation_import_missing": "Unidad no encontrada o no activa.",
-            "translation_import_name_too_long": "El nombre traducido de la unidad es demasiado largo."
+            "translation_import_name_too_long": "El nombre traducido de la unidad es demasiado largo.",
+            "invalid_check_list": "Lista no válida."
         },
         "flash": {
             "created": "Unidad creada.",
@@ -163,7 +165,9 @@
         "delete_blocked_esg_measurements": "Esta unidad tiene mediciones ESG y no se puede eliminar.",
         "delete_blocked": "Esta unidad no se puede eliminar.",
         "allow_reservations_hint": "Solo si la categoría es Reservable. Desactivado por defecto; actívelo para permitir reservas en esta unidad.",
-        "require_reporter_contact_hint": "Solo relevante si la categoría lo exige. Desactivado por defecto. Solo para informantes anónimos por QR, no para trabajadores de campo."
+        "require_reporter_contact_hint": "Solo relevante si la categoría lo exige. Desactivado por defecto. Solo para informantes anónimos por QR, no para trabajadores de campo.",
+        "no_check_list": "Sin lista",
+        "check_list_hint": "Opcional. La lista vinculada aparece en el chequeo del QR."
     },
     "bulk": {
         "title": "Añadir unidades en bloque",

@@ -46,6 +46,10 @@ class CreateUnitAction
             $payload['category_id'] = $data['category_id'] ?? null;
         }
 
+        if (Schema::hasColumn('units', 'unit_check_list_id')) {
+            $payload['unit_check_list_id'] = $data['unit_check_list_id'] ?? null;
+        }
+
         $unit = Unit::create($payload);
 
         $this->audit->record(

@@ -20,5 +20,27 @@
         "result_invalid": "Résultat invalide.",
         "checked_at_required": "Horodatage requis.",
         "checked_at_invalid": "Horodatage invalide."
+    },
+    "lists": {
+        "title": "Listes de contrôle",
+        "lead": "Créez des listes et liez-les aux units sous Sites. Elles apparaissent sur le QR unit.",
+        "create": "Ajouter une liste",
+        "create_title": "Ajouter une liste",
+        "edit_title": "Modifier la liste",
+        "empty": "Aucune liste pour le moment.",
+        "inactive": "Inactive",
+        "deactivate": "Désactiver",
+        "item_count": "0 points|:count point|:count points",
+        "fields": {
+            "name": "Nom",
+            "items": "Points",
+            "items_ph": "Un point par ligne",
+            "items_hint": "Écrivez chaque point sur une nouvelle ligne.",
+            "active": "Active"
+        },
+        "errors": {
+            "name_required": "Le nom est obligatoire.",
+            "items_required": "Ajoutez au moins un point."
+        }
     }
 }

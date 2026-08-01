@@ -36,10 +36,20 @@ class StoreUnitRequest extends FormRequest
             $categoryRules = ['nullable', 'integer', $categoryExists];
         }
 
+        $checkListRules = ['nullable', 'integer'];
+        if (Schema::hasTable('unit_check_lists')) {
+            $checkListExists = Rule::exists('unit_check_lists', 'id');
+            if ($tenantId !== null) {
+                $checkListExists = $checkListExists->where(fn ($q) => $q->where('tenant_id', $tenantId));
+            }
+            $checkListRules = ['nullable', 'integer', $checkListExists];
+        }
+
         return [
             'name' => ['required', 'string', 'min:1', 'max:255', $unique],
             'description' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
             'category_id' => $categoryRules,
+            'unit_check_list_id' => $checkListRules,
             'public_reports_enabled' => ['boolean'],
             'allow_reservations' => ['boolean'],
             'require_reporter_contact' => ['boolean'],

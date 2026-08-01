@@ -210,7 +210,7 @@ V1 "easy flow" voor facility, ontdaan van contractor/hospitality-stappen:
 Logica in Actions (`CreateIssueAction` + taak-aanmaak), validatie via Form Request. Foto-golden-path.
 
 ### 3.4 Terugkerende meldingen (recurring) — **BESLIST: nu meenemen**
-V1: een melding kan **terugkerend** zijn (interval **waarde** + **eenheid** week/maand/kwartaal/jaar,
+V1: een melding kan **terugkerend** zijn (interval **waarde** + **eenheid** dag/week/maand/kwartaal/jaar,
 **lead days**, **eerste vervaldatum**) en genereert periodiek taakcycli (koppelt aan **Kalender**).
 Samen bouwen met **Meldingen + Kalender** (volgende fase, na het QR-portaal).
 - Schema (nieuwe migratie, greenfield): `issues.is_recurring`, `recurrence_interval_value`,
@@ -360,18 +360,25 @@ de meldingenlijst te vervuilen. Los van ESG.
 - Keuze **OK** of **Niet OK**; optioneel GPS als locatiebewijs.
 - **OK** → rij in `unit_checks`, terug naar home.
 - **Niet OK** → rij in `unit_checks`, daarna bestaande meldflow (`new`) blijft beschikbaar.
-- Geen checklist-UI in fase 1; schema is checklist-ready (`checklist_items`, `task_id` nullable).
+- Optionele **checklist** (indien gekoppeld aan de unit): vinkjes vóór OK.
 
 ### Beheer (`/unit-checks`)
 - Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link.
 - Filters: resultaat, locatie. Admin + medewerker via Policy.
+- **Checklists:** templates met vinkpunten; koppelen aan unit via Locaties → unit bewerken.
+  Op de unit-QR verschijnen de vinkjes; bij **OK** moeten alle punten afgevinkt zijn.
+
+### Dagelijks terugkeren
+- Interval-eenheid **dag** beschikbaar op terugkerende meldingen (naast week/maand/…).
+- Bij Unit check **OK** met open goedgekeurde taak voor het team (zonder ESG-indicator):
+  taak wordt gestart én afgehandeld; `task_id` staat op de check-rij.
 
 ### API & webhooks
 - `POST /api/v1/units/{unit}/checks` — ability `units:update`; zie `docs/api/unit-checks.md`.
 - Webhook `unit.check.recorded` bij elke nieuwe rij.
 
-### Later (niet in fase 1)
-Checklist-templates, dagelijks terugkerende rondetaken, Planon-specifieke mapping.
+### Later
+Planon-specifieke mapping / inbound sync.
 
 ---
 

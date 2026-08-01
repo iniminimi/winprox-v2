@@ -77,7 +77,7 @@
         "recurring": "Signalement récurrent",
         "recurring_help": "Signalement récurrent",
         "recurring_help_title": "Signalement récurrent - explication",
-        "recurring_help_interval": "Intervalle : fréquence de récurrence (ex. toutes les 2 semaines, chaque mois, chaque trimestre, chaque année).",
+        "recurring_help_interval": "Intervalle : fréquence de récurrence (p. ex. chaque jour, toutes les 2 semaines, chaque mois, chaque trimestre, chaque année).",
         "recurring_help_lead": "Anticipation (jours) : nombre de jours avant l'échéance où la tâche est créée (ex. 7 jours pour les tâches mensuelles).",
         "interval_value": "Intervalle",
         "interval_unit": "Unité",
@@ -97,7 +97,8 @@
         "next": "Suivant",
         "back": "Retour",
         "finish": "Créer le signalement",
-        "success": "Le signalement et la tâche ont été créés."
+        "success": "Le signalement et la tâche ont été créés.",
+        "unit_day": "Jour"
     },
     "errors": {
         "cannot_close_approved": "Un signalement approuvé ne peut pas être fermé.",

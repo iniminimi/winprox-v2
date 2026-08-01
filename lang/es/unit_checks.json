@@ -20,5 +20,27 @@
         "result_invalid": "Resultado no válido.",
         "checked_at_required": "La fecha/hora es obligatoria.",
         "checked_at_invalid": "Fecha/hora no válida."
+    },
+    "lists": {
+        "title": "Listas de comprobación",
+        "lead": "Crea listas y asígnalas a units en Ubicaciones. Aparecen en el chequeo del QR.",
+        "create": "Añadir lista",
+        "create_title": "Añadir lista",
+        "edit_title": "Editar lista",
+        "empty": "Aún no hay listas.",
+        "inactive": "Inactiva",
+        "deactivate": "Desactivar",
+        "item_count": "0 puntos|:count punto|:count puntos",
+        "fields": {
+            "name": "Nombre",
+            "items": "Puntos",
+            "items_ph": "Un punto por línea",
+            "items_hint": "Escribe cada punto en una línea nueva.",
+            "active": "Activa"
+        },
+        "errors": {
+            "name_required": "El nombre es obligatorio.",
+            "items_required": "Añade al menos un punto."
+        }
     }
 }

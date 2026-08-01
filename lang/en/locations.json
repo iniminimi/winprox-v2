@@ -111,7 +111,8 @@
             "category": "Category",
             "public_reports_enabled": "Visitors can submit a report via the QR portal",
             "allow_reservations": "Allow reservations",
-            "require_reporter_contact": "Require contact details"
+            "require_reporter_contact": "Require contact details",
+            "check_list": "Checklist (unit check)"
         },
         "translation_preview": "Translation (portal)",
         "translation_edit": {
@@ -148,7 +149,8 @@
             "invalid_category": "Choose a valid category from your tenant.",
             "translation_requires_active": "Translations are only available for active units.",
             "translation_import_missing": "Unit not found or not active.",
-            "translation_import_name_too_long": "The translated unit name is too long."
+            "translation_import_name_too_long": "The translated unit name is too long.",
+            "invalid_check_list": "Invalid checklist."
         },
         "flash": {
             "created": "Unit created.",
@@ -163,7 +165,9 @@
         "delete_blocked_esg_measurements": "This unit has ESG measurements and cannot be deleted.",
         "delete_blocked": "This unit cannot be deleted.",
         "allow_reservations_hint": "Only relevant when the category is Reservable. Off by default; turn on to allow reservations for this unit.",
-        "require_reporter_contact_hint": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not field workers."
+        "require_reporter_contact_hint": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not field workers.",
+        "no_check_list": "No checklist",
+        "check_list_hint": "Optional. The linked checklist appears on the unit QR Unit check."
     },
     "bulk": {
         "title": "Add bulk units",

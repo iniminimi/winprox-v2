@@ -77,7 +77,7 @@
         "recurring": "Terugkerende melding",
         "recurring_help": "Terugkerende melding",
         "recurring_help_title": "Terugkerende melding - uitleg",
-        "recurring_help_interval": "Interval: hoe vaak de melding terugkomt (bijv. elke 2 weken, elke maand, elk kwartaal, elk jaar).",
+        "recurring_help_interval": "Interval: hoe vaak de melding terugkomt (bijv. elke dag, elke 2 weken, elke maand, elk kwartaal, elk jaar).",
         "recurring_help_lead": "Lead (dagen): hoeveel dagen voor de vervaldatum de taak al wordt aangemaakt (bijv. 7 dagen voor maandelijkse taken).",
         "interval_value": "Interval",
         "interval_unit": "Eenheid",
@@ -97,7 +97,8 @@
         "next": "Volgende",
         "back": "Terug",
         "finish": "Melding aanmaken",
-        "success": "Melding en taak zijn aangemaakt."
+        "success": "Melding en taak zijn aangemaakt.",
+        "unit_day": "Dag"
     },
     "errors": {
         "cannot_close_approved": "Een goedgekeurde melding kan niet worden gesloten.",

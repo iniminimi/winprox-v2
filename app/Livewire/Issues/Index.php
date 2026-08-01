@@ -197,6 +197,7 @@ class Index extends Component
     private function suggestRecurringLeadDays(string $intervalUnit): int
     {
         return match ($intervalUnit) {
+            'day' => 1,
             'week' => 2,
             'month' => 7,
             'quarter' => 14,

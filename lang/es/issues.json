@@ -77,7 +77,7 @@
         "recurring": "Incidencia recurrente",
         "recurring_help": "Incidencia recurrente",
         "recurring_help_title": "Incidencia recurrente - explicación",
-        "recurring_help_interval": "Intervalo: con qué frecuencia se repite la incidencia (p. ej. cada 2 semanas, cada mes, cada trimestre, cada año).",
+        "recurring_help_interval": "Intervalo: con qué frecuencia se repite (p. ej. cada día, cada 2 semanas, cada mes, cada trimestre, cada año).",
         "recurring_help_lead": "Antelación (días): cuántos días antes de la fecha de vencimiento se crea la tarea (p. ej. 7 días para tareas mensuales).",
         "interval_value": "Intervalo",
         "interval_unit": "Unidad",
@@ -97,7 +97,8 @@
         "next": "Siguiente",
         "back": "Atrás",
         "finish": "Crear incidencia",
-        "success": "La incidencia y la tarea se han creado."
+        "success": "La incidencia y la tarea se han creado.",
+        "unit_day": "Día"
     },
     "errors": {
         "cannot_close_approved": "Una incidencia aprobada no se puede cerrar.",

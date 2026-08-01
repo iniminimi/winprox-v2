@@ -36,6 +36,7 @@ use App\Support\Translation\LocaleSupport;
 use App\Models\QrLinkPhoto;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
+use App\Models\UnitCheckList;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use App\Support\Units\ImportBatchRegistry;
@@ -111,6 +112,8 @@ class Show extends Component
     public string $unitDescription = '';
 
     public ?int $unitCategoryId = null;
+
+    public ?int $unitCheckListId = null;
 
     public bool $unitPublicReportsEnabled = true;
 
@@ -359,6 +362,7 @@ class Show extends Component
         $this->unitName = '';
         $this->unitDescription = '';
         $this->unitCategoryId = null;
+        $this->unitCheckListId = null;
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = false;
         $this->unitRequireReporterContact = false;
@@ -376,6 +380,7 @@ class Show extends Component
         $this->unitName = $unit->name;
         $this->unitDescription = $unit->description ?? '';
         $this->unitCategoryId = $unit->category_id;
+        $this->unitCheckListId = $unit->unit_check_list_id;
         $this->unitPublicReportsEnabled = (bool) $unit->public_reports_enabled;
         $this->unitAllowReservations = (bool) $unit->allow_reservations;
         $this->unitRequireReporterContact = (bool) $unit->require_reporter_contact;
@@ -395,6 +400,7 @@ class Show extends Component
         $this->unitName = '';
         $this->unitDescription = '';
         $this->unitCategoryId = null;
+        $this->unitCheckListId = null;
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = false;
         $this->unitRequireReporterContact = false;
@@ -478,6 +484,7 @@ class Show extends Component
             'unitName' => $rules['name'],
             'unitDescription' => $rules['description'],
             'unitCategoryId' => $rules['category_id'],
+            'unitCheckListId' => $rules['unit_check_list_id'],
             'unitPublicReportsEnabled' => $rules['public_reports_enabled'],
             'unitAllowReservations' => $rules['allow_reservations'],
             'unitRequireReporterContact' => $rules['require_reporter_contact'],
@@ -487,6 +494,7 @@ class Show extends Component
             'unitName.required' => __('locations.units.errors.name_required'),
             'unitName.unique' => __('locations.units.errors.duplicate_name'),
             'unitCategoryId.exists' => __('locations.units.errors.invalid_category'),
+            'unitCheckListId.exists' => __('locations.units.errors.invalid_check_list'),
             'unitPhotos.max' => __('portal.report.errors.photos_max'),
             'unitPhotos.*.image' => __('portal.report.errors.photos_image'),
             'unitPhotos.*.max' => __('portal.report.errors.photos_size'),
@@ -496,6 +504,7 @@ class Show extends Component
             'name' => $validated['unitName'],
             'description' => $validated['unitDescription'] ?? null,
             'category_id' => $validated['unitCategoryId'] ?? null,
+            'unit_check_list_id' => $validated['unitCheckListId'] ?? null,
             'public_reports_enabled' => (bool) $validated['unitPublicReportsEnabled'],
             'allow_reservations' => (bool) $validated['unitAllowReservations'],
             'require_reporter_contact' => (bool) $validated['unitRequireReporterContact'],
@@ -529,6 +538,7 @@ class Show extends Component
         $this->dispatch('wp-clear-photo-previews');
         $this->showUnitModal = false;
         $this->unitCategoryId = null;
+        $this->unitCheckListId = null;
         $this->location->refresh();
     }
 
@@ -994,6 +1004,19 @@ class Show extends Component
             ? Category::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language'])
             : collect();
 
+        $unitCheckLists = UnitCheckList::query()
+            ->where('is_active', true)
+            ->orderBy('name')
+            ->get(['id', 'name']);
+
+        // Keep currently attached inactive list selectable while editing.
+        if ($this->unitCheckListId !== null && ! $unitCheckLists->contains('id', $this->unitCheckListId)) {
+            $currentList = UnitCheckList::query()->find($this->unitCheckListId);
+            if ($currentList !== null) {
+                $unitCheckLists = $unitCheckLists->prepend($currentList)->unique('id')->values();
+            }
+        }
+
         $previewUnit = null;
         $descriptionLocales = config('locales.labels', []);
 
@@ -1029,6 +1052,7 @@ class Show extends Component
             'unitImportBatches' => $unitImportBatches,
             'teams' => $teams,
             'categories' => $categories,
+            'unitCheckLists' => $unitCheckLists,
             'hasEsgModule' => (bool) Tenant::query()
                 ->whereKey($this->location->tenant_id)
                 ->value('has_esg_module'),

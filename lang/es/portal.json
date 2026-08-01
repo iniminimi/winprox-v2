@@ -262,7 +262,10 @@
             "result_required": "Elige OK o No OK.",
             "result_invalid": "Resultado no válido.",
             "checked_at_required": "Falta la fecha/hora.",
-            "checked_at_invalid": "Fecha/hora no válida."
-        }
+            "checked_at_invalid": "Fecha/hora no válida.",
+            "checklist_incomplete": "Marca todos los puntos para OK."
+        },
+        "checklist_title": "Lista de comprobación",
+        "task_complete_note": "Chequeo de unit OK."
     }
 }

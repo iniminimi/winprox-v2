@@ -111,7 +111,8 @@
             "category": "Kategorie",
             "public_reports_enabled": "Besucher können über das QR-Portal eine Meldung erstellen",
             "allow_reservations": "Reservierungen erlauben",
-            "require_reporter_contact": "Kontaktdaten Pflicht"
+            "require_reporter_contact": "Kontaktdaten Pflicht",
+            "check_list": "Checkliste (Unit-Check)"
         },
         "translation_preview": "Übersetzung (Portal)",
         "translation_edit": {
@@ -148,7 +149,8 @@
             "invalid_category": "Wählen Sie eine gültige Kategorie Ihres Tenants.",
             "translation_requires_active": "Übersetzungen sind nur für aktive Units möglich.",
             "translation_import_missing": "Unit nicht gefunden oder nicht aktiv.",
-            "translation_import_name_too_long": "Der übersetzte Unit-Name ist zu lang."
+            "translation_import_name_too_long": "Der übersetzte Unit-Name ist zu lang.",
+            "invalid_check_list": "Ungültige Checkliste."
         },
         "flash": {
             "created": "Unit angelegt.",
@@ -163,7 +165,9 @@
         "delete_blocked_esg_measurements": "Diese Unit hat ESG-Messungen und kann nicht gelöscht werden.",
         "delete_blocked": "Diese Unit kann nicht gelöscht werden.",
         "allow_reservations_hint": "Nur relevant, wenn die Kategorie Reservierbar ist. Standardmäßig aus; einschalten, um Reservierungen für diese Unit zu erlauben.",
-        "require_reporter_contact_hint": "Nur relevant, wenn die Kategorie dies verlangt. Standardmäßig aus. Gilt nur für anonyme QR-Melder, nicht für Feldmitarbeiter."
+        "require_reporter_contact_hint": "Nur relevant, wenn die Kategorie dies verlangt. Standardmäßig aus. Gilt nur für anonyme QR-Melder, nicht für Feldmitarbeiter.",
+        "no_check_list": "Keine Checkliste",
+        "check_list_hint": "Optional. Die verknüpfte Checkliste erscheint beim Unit-Check auf dem QR."
     },
     "bulk": {
         "title": "Bulk-Units hinzufügen",

@@ -4,6 +4,7 @@ namespace App\Enums;
 
 enum RecurrenceIntervalUnit: string
 {
+    case Day = 'day';
     case Week = 'week';
     case Month = 'month';
     case Quarter = 'quarter';

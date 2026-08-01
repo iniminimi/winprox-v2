@@ -20,5 +20,27 @@
         "result_invalid": "Ongeldig resultaat.",
         "checked_at_required": "Tijdstip is verplicht.",
         "checked_at_invalid": "Ongeldig tijdstip."
+    },
+    "lists": {
+        "title": "Checklists",
+        "lead": "Maak checklists en koppel ze aan units via Locaties. Op de unit-QR verschijnen de vinkjes bij Unit check.",
+        "create": "Checklist toevoegen",
+        "create_title": "Checklist toevoegen",
+        "edit_title": "Checklist bewerken",
+        "empty": "Nog geen checklists.",
+        "inactive": "Inactief",
+        "deactivate": "Deactiveren",
+        "item_count": "0 punten|:count punt|:count punten",
+        "fields": {
+            "name": "Naam",
+            "items": "Punten",
+            "items_ph": "Eén punt per regel",
+            "items_hint": "Schrijf elk checklistpunt op een nieuwe regel.",
+            "active": "Actief"
+        },
+        "errors": {
+            "name_required": "Naam is verplicht.",
+            "items_required": "Voeg minstens één checklistpunt toe."
+        }
     }
 }

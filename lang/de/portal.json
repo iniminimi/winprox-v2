@@ -262,7 +262,10 @@
             "result_required": "Wählen Sie OK oder Nicht OK.",
             "result_invalid": "Ungültiges Ergebnis.",
             "checked_at_required": "Zeitstempel fehlt.",
-            "checked_at_invalid": "Ungültiger Zeitstempel."
-        }
+            "checked_at_invalid": "Ungültiger Zeitstempel.",
+            "checklist_incomplete": "Haken Sie alle Punkte für OK ab."
+        },
+        "checklist_title": "Checkliste",
+        "task_complete_note": "Unit-Check OK."
     }
 }

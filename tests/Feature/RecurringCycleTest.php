@@ -190,6 +190,23 @@ it('calculates next due date correctly for different intervals', function () {
     $issueYear->refresh();
     expect($issueYear->recurrence_next_due_at->toDateString())
         ->toBe($now->copy()->addDays(30)->addYear()->toDateString());
+
+    // Day
+    $issueDay = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'is_recurring' => true,
+        'recurrence_active' => true,
+        'recurrence_interval_value' => 1,
+        'recurrence_interval_unit' => RecurrenceIntervalUnit::Day->value,
+        'recurrence_lead_days' => 1,
+        'recurrence_next_due_at' => $now->copy()->addDay(),
+    ]);
+
+    $action->handle($issueDay, $now->copy()->addDay());
+
+    $issueDay->refresh();
+    expect($issueDay->recurrence_next_due_at->toDateString())
+        ->toBe($now->copy()->addDays(2)->toDateString());
 });
 
 it('does not create cycle when recurrence is paused', function () {

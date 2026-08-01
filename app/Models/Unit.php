@@ -31,6 +31,7 @@ class Unit extends Model
         'allow_reservations',
         'require_reporter_contact',
         'background_photo_path',
+        'unit_check_list_id',
     ];
 
     protected $casts = [
@@ -70,6 +71,11 @@ class Unit extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function unitCheckList(): BelongsTo
+    {
+        return $this->belongsTo(UnitCheckList::class);
     }
 
     public function reservations(): HasMany

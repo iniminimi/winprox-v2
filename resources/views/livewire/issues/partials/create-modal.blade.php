@@ -86,6 +86,7 @@
                         <div class="wp-field">
                             <label class="wp-label" for="create_recurrence_interval_unit">{{ __('issues.create.interval_unit') }}</label>
                             <select id="create_recurrence_interval_unit" class="wp-select" wire:model.live="recurrence_interval_unit">
+                                <option value="day">{{ __('issues.create.unit_day') }}</option>
                                 <option value="week">{{ __('issues.create.unit_week') }}</option>
                                 <option value="month">{{ __('issues.create.unit_month') }}</option>
                                 <option value="quarter">{{ __('issues.create.unit_quarter') }}</option>

@@ -262,7 +262,10 @@
             "result_required": "Scegli OK o Non OK.",
             "result_invalid": "Risultato non valido.",
             "checked_at_required": "Data/ora mancante.",
-            "checked_at_invalid": "Data/ora non valida."
-        }
+            "checked_at_invalid": "Data/ora non valida.",
+            "checklist_incomplete": "Seleziona tutti i punti per OK."
+        },
+        "checklist_title": "Checklist",
+        "task_complete_note": "Controllo unit OK."
     }
 }

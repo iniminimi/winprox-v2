@@ -361,6 +361,18 @@
                     @error('unitCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
+                <label class="wp-field">
+                    <span class="wp-label">{{ __('locations.units.fields.check_list') }}</span>
+                    <select class="wp-input" wire:model="unitCheckListId">
+                        <option value="">{{ __('locations.units.no_check_list') }}</option>
+                        @foreach ($unitCheckLists as $checkList)
+                            <option value="{{ $checkList->id }}">{{ $checkList->name }}</option>
+                        @endforeach
+                    </select>
+                    <span class="wp-muted wp-text-sm">{{ __('locations.units.check_list_hint') }}</span>
+                    @error('unitCheckListId') <span class="wp-error">{{ $message }}</span> @enderror
+                </label>
+
                 <label class="wp-check wp-check--boxed">
                     <input type="checkbox" wire:model="unitPublicReportsEnabled">
                     <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>

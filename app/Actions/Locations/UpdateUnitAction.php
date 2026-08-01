@@ -50,6 +50,10 @@ class UpdateUnitAction
             $payload['category_id'] = $data['category_id'] ?? null;
         }
 
+        if (Schema::hasColumn('units', 'unit_check_list_id')) {
+            $payload['unit_check_list_id'] = $data['unit_check_list_id'] ?? null;
+        }
+
         $unit->update($payload);
 
         $fresh = $unit->fresh();

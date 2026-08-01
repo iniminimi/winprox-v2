@@ -20,5 +20,27 @@
         "result_invalid": "Risultato non valido.",
         "checked_at_required": "Data/ora obbligatoria.",
         "checked_at_invalid": "Data/ora non valida."
+    },
+    "lists": {
+        "title": "Checklist",
+        "lead": "Crea checklist e collegale alle unit in Sedi. Compaino sul controllo QR.",
+        "create": "Aggiungi checklist",
+        "create_title": "Aggiungi checklist",
+        "edit_title": "Modifica checklist",
+        "empty": "Nessuna checklist ancora.",
+        "inactive": "Inattiva",
+        "deactivate": "Disattiva",
+        "item_count": "0 punti|:count punto|:count punti",
+        "fields": {
+            "name": "Nome",
+            "items": "Punti",
+            "items_ph": "Un punto per riga",
+            "items_hint": "Scrivi ogni punto su una nuova riga.",
+            "active": "Attiva"
+        },
+        "errors": {
+            "name_required": "Il nome è obbligatorio.",
+            "items_required": "Aggiungi almeno un punto."
+        }
     }
 }

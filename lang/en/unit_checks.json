@@ -20,5 +20,27 @@
         "result_invalid": "Invalid result.",
         "checked_at_required": "Timestamp is required.",
         "checked_at_invalid": "Invalid timestamp."
+    },
+    "lists": {
+        "title": "Checklists",
+        "lead": "Create checklists and attach them to units under Locations. They appear as ticks on the unit QR Unit check.",
+        "create": "Add checklist",
+        "create_title": "Add checklist",
+        "edit_title": "Edit checklist",
+        "empty": "No checklists yet.",
+        "inactive": "Inactive",
+        "deactivate": "Deactivate",
+        "item_count": "0 items|:count item|:count items",
+        "fields": {
+            "name": "Name",
+            "items": "Items",
+            "items_ph": "One item per line",
+            "items_hint": "Write each checklist item on a new line.",
+            "active": "Active"
+        },
+        "errors": {
+            "name_required": "Name is required.",
+            "items_required": "Add at least one checklist item."
+        }
     }
 }
