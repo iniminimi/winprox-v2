@@ -135,6 +135,66 @@ it('valt terug op de brontaal zolang de vertaling pending is', function () {
         ->and($fresh->localizedName('nl'))->toBe('Schoonmaak');
 });
 
+it('zet mislukte lege checklist-slots terug op pending bij ensure', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $list = unitCheckListWithItems($tenant);
+    app(EnsureUnitCheckListTranslationSlotsAction::class)->handle($list);
+
+    UnitCheckListTranslation::query()
+        ->where('unit_check_list_id', $list->id)
+        ->where('locale', 'en')
+        ->update([
+            'status' => UnitCheckListTranslationStatus::Failed->value,
+            'name' => null,
+            'items' => null,
+        ]);
+
+    app(EnsureUnitCheckListTranslationSlotsAction::class)->handle($list->fresh());
+
+    $row = UnitCheckListTranslation::query()
+        ->where('unit_check_list_id', $list->id)
+        ->where('locale', 'en')
+        ->first();
+
+    expect($row->status)->toBe(UnitCheckListTranslationStatus::Pending);
+
+    $exportItems = app(ExportPendingUnitCheckListTranslationsAction::class)->handle();
+    $locales = collect($exportItems)
+        ->where('unit_check_list_id', $list->id)
+        ->pluck('locale')
+        ->all();
+
+    expect($locales)->toContain('en');
+});
+
+it('accepteert gelijke vertaling als voltooide checklistvertaling', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    app()->instance(TranslationProviderInterface::class, new class implements TranslationProviderInterface
+    {
+        public function translate(string $text, string $targetLanguage): string
+        {
+            return $text;
+        }
+    });
+
+    $list = unitCheckListWithItems($tenant, 'Cleaning');
+    app(EnsureUnitCheckListTranslationSlotsAction::class)->handle($list);
+    app(TranslateUnitCheckListAction::class)->handle($list, 'en');
+
+    $row = UnitCheckListTranslation::query()
+        ->where('unit_check_list_id', $list->id)
+        ->where('locale', 'en')
+        ->first();
+
+    expect($row->status)->toBe(UnitCheckListTranslationStatus::Completed)
+        ->and($row->name)->toBe('Cleaning')
+        ->and($row->items)->toBe(['Vloer', 'WC']);
+});
+
 it('zet vertalingen terug op pending na wijziging van naam of punten', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);

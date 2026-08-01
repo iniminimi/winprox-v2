@@ -45,36 +45,36 @@ class TranslateUnitCheckListAction
             return $row;
         }
 
-        $stored = [];
-        $failed = false;
-
         $sourceName = trim((string) $list->name);
-        if ($sourceName !== '') {
-            $translatedName = trim($this->translator->translate($sourceName, $targetLocale));
-            if ($translatedName === '' || $translatedName === $sourceName || mb_strlen($translatedName) > 255) {
-                $failed = true;
-            } else {
-                $stored['name'] = $translatedName;
-            }
-        }
-
         $sourceItems = $list->sourceItemLabels();
-        if (! $failed && $sourceItems !== []) {
-            $translatedItems = [];
-            foreach ($sourceItems as $label) {
-                $translatedLabel = trim($this->translator->translate($label, $targetLocale));
-                if ($translatedLabel === '' || $translatedLabel === $label || mb_strlen($translatedLabel) > 255) {
-                    $failed = true;
-                    break;
-                }
 
-                $translatedItems[] = $translatedLabel;
-            }
-
-            if (! $failed) {
-                $stored['items'] = $translatedItems;
-            }
+        $translatedName = '';
+        if ($sourceName !== '') {
+            $translatedName = $this->normalizeShortTranslation(
+                trim($this->translator->translate($sourceName, $targetLocale)),
+                $sourceName,
+            );
         }
+
+        $translatedItems = [];
+        $itemsFailed = false;
+        foreach ($sourceItems as $label) {
+            $sourceLabel = (string) $label;
+            $translatedLabel = $this->normalizeShortTranslation(
+                trim($this->translator->translate($sourceLabel, $targetLocale)),
+                $sourceLabel,
+            );
+
+            if (mb_strlen($translatedLabel) > 255) {
+                $itemsFailed = true;
+                break;
+            }
+
+            $translatedItems[] = $translatedLabel;
+        }
+
+        $failed = ($sourceName !== '' && ($translatedName === '' || mb_strlen($translatedName) > 255))
+            || $itemsFailed;
 
         if ($failed) {
             $row->fill([
@@ -89,8 +89,8 @@ class TranslateUnitCheckListAction
         }
 
         $row->fill([
-            'name' => $stored['name'] ?? null,
-            'items' => $stored['items'] ?? null,
+            'name' => $sourceName !== '' ? $translatedName : null,
+            'items' => $sourceItems !== [] ? $translatedItems : null,
             'status' => UnitCheckListTranslationStatus::Completed,
         ])->save();
 
@@ -142,5 +142,24 @@ class TranslateUnitCheckListAction
         }
 
         return true;
+    }
+
+    private function normalizeShortTranslation(string $translated, string $source): string
+    {
+        if ($translated === '') {
+            $translated = $source;
+        }
+
+        $translated = preg_replace('/\s+/u', ' ', $translated) ?? $translated;
+        $translated = trim($translated);
+
+        if (
+            mb_strlen($translated) > 255
+            || mb_strlen($translated) > max(48, mb_strlen($source) * 4)
+        ) {
+            return $source;
+        }
+
+        return $translated;
     }
 }

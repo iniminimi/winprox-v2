@@ -16,7 +16,7 @@ class EnsureUnitCheckListTranslationSlotsAction
         }
 
         foreach (LocaleSupport::targetLocalesForSource($list->original_language) as $locale) {
-            UnitCheckListTranslation::firstOrCreate(
+            $row = UnitCheckListTranslation::firstOrCreate(
                 [
                     'unit_check_list_id' => $list->id,
                     'locale' => $locale,
@@ -25,6 +25,16 @@ class EnsureUnitCheckListTranslationSlotsAction
                     'status' => UnitCheckListTranslationStatus::Pending,
                 ],
             );
+
+            // Self-heal old failed rows (empty value) so export can retry.
+            if (
+                $row->status === UnitCheckListTranslationStatus::Failed
+                && blank($row->name)
+            ) {
+                $row->fill([
+                    'status' => UnitCheckListTranslationStatus::Pending,
+                ])->save();
+            }
         }
     }
 }

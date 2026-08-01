@@ -309,8 +309,12 @@ class TranslateExportItemsAction
         $translatedName = preg_replace('/\s+/u', ' ', $translatedName) ?? $translatedName;
         $translatedName = trim($translatedName);
 
-        if (mb_strlen($translatedName) > self::SHORT_NAME_MAX) {
-            $translatedName = rtrim(mb_substr($translatedName, 0, self::SHORT_NAME_MAX));
+        // Short labels must stay short — reject runaway model output (essays / refusals).
+        if (
+            mb_strlen($translatedName) > self::SHORT_NAME_MAX
+            || mb_strlen($translatedName) > max(48, mb_strlen($sourceName) * 4)
+        ) {
+            return $sourceName;
         }
 
         return $translatedName;
