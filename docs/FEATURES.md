@@ -380,8 +380,10 @@ de meldingenlijst te vervuilen. Los van ESG.
   Op de unit-QR verschijnen de vinkjes; bij **OK** moeten alle punten afgevinkt zijn.
 - Checklistnaam en vinkpunten zijn **tenant-content**: brontaal in `original_language`,
   overige talen automatisch via Ollama (`unit_check_list_translations`, pending →
-  completed/failed) zoals meldingen, locaties en ESG-indicatoren. Het portaal toont de
-  vertaalde labels; opgeslagen check-snapshots gebruiken altijd de **bronlabels**.
+  completed/failed) zoals meldingen, locaties en ESG-indicatoren. Bij bewerken: uitklap
+  **Vertaling** (zoals teams/categorieën) om per taal naam + punten te bekijken of te
+  corrigeren. Het portaal toont de vertaalde labels; opgeslagen check-snapshots gebruiken
+  altijd de **bronlabels**.
 
 ### Dagelijks terugkeren
 - Interval-eenheid **dag** beschikbaar op terugkerende meldingen (naast week/maand/…).
