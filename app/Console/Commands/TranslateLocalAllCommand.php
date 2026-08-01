@@ -107,7 +107,7 @@ class TranslateLocalAllCommand extends Command
 
             $progressBar = null;
             if ($showProgress) {
-                $progressBar = $this->output->createProgressBar(9);
+                $progressBar = $this->output->createProgressBar(10);
                 $progressBar->start();
             }
 
