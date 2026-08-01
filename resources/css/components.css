@@ -1436,7 +1436,7 @@ button.wp-config-overview-kpi--filter.is-active .wp-config-overview-kpi__value {
 }
 
 .wp-tooltip:hover .wp-tooltip__bubble,
-.wp-tooltip:focus-within .wp-tooltip__bubble {
+.wp-tooltip:not(.wp-tooltip--block):focus-within .wp-tooltip__bubble {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
