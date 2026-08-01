@@ -851,9 +851,17 @@
     pointer-events: none;
 }
 
+.wp-auth-logo-link--static {
+    cursor: default;
+}
+
 .wp-auth-content .wp-auth-logo-link {
     text-align: center;
     margin-top: 0;
+}
+
+.wp-auth-content .wp-auth-brand {
+    text-align: center;
 }
 
 .wp-auth-tagline {

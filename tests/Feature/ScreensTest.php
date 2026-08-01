@@ -39,6 +39,7 @@ it('weigert verkeerde inloggegevens', function () {
         ->call('login')
         ->assertHasErrors('email')
         ->assertSee('video/assistant_attention.mp4', false)
+        ->assertSeeHtml('autoplay')
         ->assertSee(__('auth.errors.failed'), false);
 
     expect(auth()->check())->toBeFalse();

@@ -2,30 +2,37 @@
     $hasLoginError = $errors->any() || session()->has('error');
 @endphp
 <div class="wp-auth-login">
-    <a href="{{ route('welcome') }}" class="wp-auth-logo-link" aria-label="{{ __('welcome.back_home') }}">
-        @if ($hasLoginError && file_exists(public_path('video/assistant_attention.mp4')))
-            <video
-                wire:key="login-attention"
-                class="wp-auth-logo-video"
-                src="{{ asset('video/assistant_attention.mp4') }}"
-                width="120"
-                height="120"
-                muted
-                playsinline
-                preload="auto"
-                aria-hidden="true"
-                x-data
-                x-init="$nextTick(() => { $el.currentTime = 0; $el.play().catch(() => {}) })"
-            ></video>
-        @elseif (file_exists(public_path('images/Winprox_logo_200.png')))
-            <img src="{{ asset('images/Winprox_logo_200.png') }}" alt="" class="wp-auth-logo-img" width="180" height="auto" />
-        @elseif (file_exists(public_path('images/Winprox_logo_300.png')))
-            <img src="{{ asset('images/Winprox_logo_300.png') }}" alt="" class="wp-auth-logo-img" width="120" height="120" />
+    <div class="wp-auth-brand" wire:key="login-brand-{{ $hasLoginError ? 'attention' : 'logo' }}">
+        @if ($hasLoginError)
+            <div class="wp-auth-logo-link wp-auth-logo-link--static" role="img" aria-label="{{ __('welcome.back_home') }}">
+                <video
+                    class="wp-auth-logo-video"
+                    width="120"
+                    height="120"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="auto"
+                    aria-hidden="true"
+                >
+                    <source src="{{ asset('video/assistant_attention.mp4') }}" type="video/mp4">
+                </video>
+                <span class="wp-auth-tagline">{{ __('common.brand.tagline') }}</span>
+            </div>
         @else
-            <span class="wp-auth-logo">WinProx</span>
+            <a href="{{ route('welcome') }}" class="wp-auth-logo-link" aria-label="{{ __('welcome.back_home') }}">
+                @if (file_exists(public_path('images/Winprox_logo_200.png')))
+                    <img src="{{ asset('images/Winprox_logo_200.png') }}" alt="" class="wp-auth-logo-img" width="180" height="auto" />
+                @elseif (file_exists(public_path('images/Winprox_logo_300.png')))
+                    <img src="{{ asset('images/Winprox_logo_300.png') }}" alt="" class="wp-auth-logo-img" width="120" height="120" />
+                @else
+                    <span class="wp-auth-logo">WinProx</span>
+                @endif
+                <span class="wp-auth-tagline">{{ __('common.brand.tagline') }}</span>
+            </a>
         @endif
-        <span class="wp-auth-tagline">{{ __('common.brand.tagline') }}</span>
-    </a>
+    </div>
 
     @if (session('status'))
         <div class="wp-auth-notice wp-auth-notice--success" role="status">{{ session('status') }}</div>
