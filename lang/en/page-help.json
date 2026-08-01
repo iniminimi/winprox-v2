@@ -241,7 +241,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Optionally link a checklist to the unit. On Unit check in the portal the worker ticks each item before OK or Not OK is saved."
+                    "text": "Optionally link a checklist to the unit (templates under Locations → Checklists). On Unit check in the portal the worker ticks each item before OK or Not OK is saved."
                 },
                 {
                     "label": "Require contact details",

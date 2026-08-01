@@ -237,7 +237,7 @@
                 },
                 {
                     "label": "Checklist (controllo unità)",
-                    "text": "Collega opzionalmente una checklist all'unità. Nel controllo unità sul portale l'esecutore spunta ogni punto prima di salvare OK o Non OK."
+                    "text": "Collega opzionalmente una checklist all'unità (template in Sedi → Checklist). Nel controllo unità sul portale l'esecutore spunta ogni punto prima di salvare OK o Non OK."
                 },
                 {
                     "label": "Dati di contatto obbligatori",

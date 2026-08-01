@@ -237,7 +237,7 @@
                 },
                 {
                     "label": "Checklist (contrôle d'unité)",
-                    "text": "Liez optionnellement une checklist à l'unité. Lors du contrôle d'unité sur le portail, l'exécutant coche chaque point avant d'enregistrer OK ou Non OK."
+                    "text": "Associez éventuellement une liste à l'unité (modèles sous Sites → Listes de contrôle). Lors du contrôle unit sur le portail, l'exécutant coche chaque point avant d'enregistrer OK ou Pas OK."
                 },
                 {
                     "label": "Coordonnées obligatoires",

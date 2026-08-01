@@ -237,7 +237,7 @@
                 },
                 {
                     "label": "Checkliste (Unit-Check)",
-                    "text": "Optional eine Checkliste an die Unit koppeln. Beim Unit-Check im Portal hakt der Ausführer jeden Punkt ab, bevor OK oder Nicht OK gespeichert wird."
+                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter Standorte → Checklisten). Beim Unit-Check im Portal hakt der Ausführer jeden Punkt ab, bevor OK oder Nicht OK gespeichert wird."
                 },
                 {
                     "label": "Kontaktdaten Pflicht",

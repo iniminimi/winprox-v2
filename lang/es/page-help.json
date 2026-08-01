@@ -237,7 +237,7 @@
                 },
                 {
                     "label": "Checklist (comprobación de unit)",
-                    "text": "Opcionalmente vincule una checklist a la unit. En Comprobación de unit en el portal, el ejecutor marca cada punto antes de guardar OK o No OK."
+                    "text": "Opcionalmente vincule una checklist a la unit (plantillas en Ubicaciones → Listas). En Comprobación de unit en el portal, el ejecutor marca cada punto antes de guardar OK o No OK."
                 },
                 {
                     "label": "Datos de contacto obligatorios",

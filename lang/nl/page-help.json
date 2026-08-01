@@ -241,7 +241,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Koppel optioneel een checklist aan de unit. Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK of Niet OK wordt opgeslagen."
+                    "text": "Koppel optioneel een checklist aan de unit (templates onder Locaties → Checklists). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK of Niet OK wordt opgeslagen."
                 },
                 {
                     "label": "Contactgegevens invullen verplicht",
