@@ -1,7 +1,7 @@
 <div class="wp-stack">
     <div class="wp-faq-wrap">
         <x-wp-page-head-title
-            icon="faq"
+            :assistant-video="asset('video/assistant_question.mp4')"
             :title="__('faq.title')"
             help-page="faq"
             :subtitle="__('faq.subtitle')"
