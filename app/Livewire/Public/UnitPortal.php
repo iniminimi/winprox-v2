@@ -310,7 +310,6 @@ class UnitPortal extends Component
         }
 
         $openTask = $resolveOpenTask->handle($unit, $worker);
-        $openTask?->loadMissing('issue');
 
         $recordUnitCheck->handle(
             unit: $unit,
@@ -327,11 +326,7 @@ class UnitPortal extends Component
             worker: $worker,
         );
 
-        if (
-            $result === UnitCheckResult::Ok
-            && $openTask !== null
-            && $openTask->issue?->esg_indicator_id === null
-        ) {
+        if ($result === UnitCheckResult::Ok && $openTask !== null) {
             if ($openTask->canStart()) {
                 $startTask->handle($openTask, $worker);
                 $openTask = $openTask->fresh();

@@ -23,7 +23,8 @@ class ResolveOpenUnitTaskForCheckAction
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($query) => $query
                 ->where('unit_id', $unit->id)
-                ->whereNotNull('approved_at'))
+                ->whereNotNull('approved_at')
+                ->whereNull('esg_indicator_id'))
             ->orderByRaw('is_recurring_cycle desc')
             ->orderBy('due_at')
             ->orderBy('id')

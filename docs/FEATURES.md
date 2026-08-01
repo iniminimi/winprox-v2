@@ -379,10 +379,18 @@ de meldingenlijst te vervuilen. Los van ESG.
 
 ### API & webhooks
 - `POST /api/v1/units/{unit}/checks` — ability `units:update`; zie `docs/api/unit-checks.md`.
+  Vereist `allow_unit_checks` op categorie én unit.
 - Webhook `unit.check.recorded` bij elke nieuwe rij.
 
+### Fasering (afgerond)
+| Fase | Levert | Status |
+|------|--------|--------|
+| **1** | Portaal OK/Niet OK → `unit_checks` + beheerlijst; Niet OK → meldflow; GPS optioneel | Klaar |
+| **2** | Webhook `unit.check.recorded` + API POST | Klaar (meegeleverd met fase 1) |
+| **3** | Interval **dag** + checklists + taakkoppeling via `task_id` | Klaar |
+
 ### Later
-Planon-specifieke mapping / inbound sync.
+Planon-specifieke mapping / inbound sync (`external_id`, push vanuit Planon) — niet nu.
 
 ---
 
