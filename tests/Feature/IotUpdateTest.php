@@ -12,6 +12,7 @@ use App\Enums\IotRuleOperator;
 use App\Enums\IotSensorType;
 use App\Models\IotGateway;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Support\Tenancy;
 
 afterEach(fn () => Tenancy::forget());
@@ -66,4 +67,20 @@ it('werkt gateway, sensor en regel bij', function () {
         ->and($rule->operator)->toBe(IotRuleOperator::Gt);
 
     expect(IotGateway::query()->count())->toBe(1);
+});
+
+it('toont de assistant_iot-clip in de IoT-paginakop', function () {
+    $tenant = Tenant::factory()->create([
+        'has_iot_module' => true,
+        'billing_plan' => 'facility',
+        'billing_active_until' => now()->addMonth(),
+    ]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $this->actingAs($user)
+        ->get(route('iot.index'))
+        ->assertOk()
+        ->assertSee('video/assistant_iot_80.mp4', false)
+        ->assertSee('wp-page-icon--assistant', false);
 });

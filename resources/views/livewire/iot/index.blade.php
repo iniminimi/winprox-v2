@@ -1,6 +1,7 @@
 <div class="wp-stack" data-manual-capture="iot-connect">
     <x-wp-page-head-title
-        icon="api"
+        :assistant-video="asset('video/assistant_iot_80.mp4')"
+        assistant-video-loop
         :title="__('iot.title')"
         help-page="iot.index"
         :subtitle="__('iot.subtitle')"
