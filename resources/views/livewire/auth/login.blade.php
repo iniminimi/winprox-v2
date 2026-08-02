@@ -5,9 +5,10 @@
     <div class="wp-auth-brand" wire:key="login-brand-{{ $hasLoginError ? 'attention' : 'logo' }}">
         @if ($hasLoginError)
             <div class="wp-auth-logo-link wp-auth-logo-link--static" role="img" aria-label="{{ __('welcome.back_home') }}">
-                <span class="wp-auth-logo-frame">
+                <span class="wp-page-icon wp-page-icon--assistant" aria-hidden="true">
                     <video
-                        class="wp-auth-logo-video"
+                        class="wp-page-icon__video"
+                        src="{{ asset('video/assistant_attention.mp4') }}"
                         width="80"
                         height="80"
                         autoplay
@@ -15,10 +16,7 @@
                         muted
                         playsinline
                         preload="auto"
-                        aria-hidden="true"
-                    >
-                        <source src="{{ asset('video/assistant_attention.mp4') }}" type="video/mp4">
-                    </video>
+                    ></video>
                 </span>
                 <span class="wp-auth-tagline">{{ __('common.brand.tagline') }}</span>
             </div>

@@ -847,28 +847,11 @@
     overflow: hidden;
 }
 
-.wp-auth-logo-frame:has(.wp-auth-logo-video) {
-    width: 5rem;
-    height: 5rem;
-    max-width: none;
-    padding: 0;
-}
-
 .wp-auth-logo-img {
     display: block;
     max-width: 11rem;
     width: 100%;
     height: auto;
-}
-
-.wp-auth-logo-video {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background-color: #ffffff;
-    border-radius: inherit;
-    pointer-events: none;
 }
 
 .wp-auth-logo-link--static {
@@ -878,6 +861,10 @@
 .wp-auth-content .wp-auth-logo-link {
     text-align: center;
     margin-top: 0;
+}
+
+.wp-auth-content .wp-auth-logo-link .wp-page-icon--assistant {
+    margin-inline: auto;
 }
 
 .wp-auth-content .wp-auth-brand {
