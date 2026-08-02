@@ -136,7 +136,7 @@
             "actions": [
                 {
                     "label": "Recurring",
-                    "text": "If the task comes from a recurring issue, you see the Recurring pill and this cycle's planned due date. Each new cycle automatically creates a new task."
+                    "text": "If the task comes from a recurring issue, you see the Recurring pill and this cycle's planned due date. A new cycle task is only created after the previous one is done or closed — so open tasks do not pile up."
                 },
                 {
                     "label": "Assign team",

@@ -136,7 +136,7 @@
             "actions": [
                 {
                     "label": "Terugkerend",
-                    "text": "Komt de taak uit een terugkerende melding, dan zie je de pill «Terugkerend» en de geplande vervaldatum van deze cyclus. Elke nieuwe cyclus maakt automatisch een nieuwe taak aan."
+                    "text": "Komt de taak uit een terugkerende melding, dan zie je de pill «Terugkerend» en de geplande vervaldatum van deze cyclus. Een nieuwe cyclus-taak volgt pas als de vorige is afgehandeld of gesloten — zo stapelen openstaande taken niet op."
                 },
                 {
                     "label": "Team toewijzen",

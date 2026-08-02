@@ -136,7 +136,7 @@
             "actions": [
                 {
                     "label": "Ricorrente",
-                    "text": "Se il task proviene da una segnalazione ricorrente, vedi la pill «Ricorrente» e la scadenza pianificata di questo ciclo. Ogni nuovo ciclo crea automaticamente un nuovo task."
+                    "text": "Se il task proviene da una segnalazione ricorrente, vedi la pill «Ricorrente» e la scadenza pianificata di questo ciclo. Un nuovo task di ciclo viene creato solo dopo che il precedente è completato o chiuso — così i task aperti non si accumulano."
                 },
                 {
                     "label": "Assegna team",

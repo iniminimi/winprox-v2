@@ -136,7 +136,7 @@
             "actions": [
                 {
                     "label": "Récurrent",
-                    "text": "Si la tâche vient d'un signalement récurrent, vous voyez la pastille « Récurrent » et l'échéance planifiée de ce cycle. Chaque nouveau cycle crée automatiquement une nouvelle tâche."
+                    "text": "Si la tâche vient d'un signalement récurrent, vous voyez la pastille « Récurrent » et l'échéance planifiée de ce cycle. Une nouvelle tâche de cycle n’est créée qu’après que la précédente est terminée ou clôturée — les tâches ouvertes ne s’accumulent pas."
                 },
                 {
                     "label": "Assigner une équipe",

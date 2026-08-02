@@ -136,7 +136,7 @@
             "actions": [
                 {
                     "label": "Recurrente",
-                    "text": "Si la tarea proviene de un aviso recurrente, verá la pastilla «Recurrente» y la fecha planificada de este ciclo. Cada nuevo ciclo crea automáticamente una nueva tarea."
+                    "text": "Si la tarea proviene de un aviso recurrente, verá la pastilla «Recurrente» y la fecha planificada de este ciclo. Solo se crea una nueva tarea de ciclo cuando la anterior está hecha o cerrada — así no se acumulan tareas abiertas."
                 },
                 {
                     "label": "Asignar equipo",
