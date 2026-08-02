@@ -277,6 +277,9 @@ Toegestane overgangen tussen de 4 statussen (afgeleid van V1):
 ### 4.4 Terugkerende taakcycli
 Taken die uit een **terugkerende melding** (§3.4) komen zijn `is_recurring_cycle` met `due_at`/
 `scheduled_for`/`cycle_number`; verschijnen in de **Kalender** (§5). Samen bouwen met recurring.
+Een **nieuwe cyclus** wordt alleen geopend als er geen openstaande cyclus-taak meer is
+(`new` / `in_progress`). Onafgehandelde vorige taken worden **niet** automatisch gesloten;
+`recurrence_next_due_at` schuift pas op bij het openen van de nieuwe cyclus.
 
 ### 4.5 NIET overnemen
 Contractors + `TaskInvitation`/quoting/`expired_invitations`-filter, assign/invite-modi, onboarding/

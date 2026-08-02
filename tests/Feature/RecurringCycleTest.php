@@ -95,7 +95,7 @@ it('does not create cycle if already exists for due date', function () {
     expect($task)->toBeNull();
 });
 
-it('closes overdue previous cycle when opening new one', function () {
+it('does not create cycle while a previous cycle is still open', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
@@ -125,12 +125,89 @@ it('closes overdue previous cycle when opening new one', function () {
     $action = app(CreateRecurringTaskCycleAction::class);
     $newTask = $action->handle($issue, now()->addDays(7));
 
-    expect($newTask)->not->toBeNull();
-    expect($newTask->cycle_number)->toBe(2);
-    expect($newTask->internal_team_id)->toBe($team->id);
+    expect($newTask)->toBeNull();
 
     $oldTask->refresh();
-    expect($oldTask->status)->toBe(TaskStatus::Closed);
+    expect($oldTask->status)->toBe(TaskStatus::InProgress);
+
+    $issue->refresh();
+    expect($issue->recurrence_next_due_at->toDateString())->toBe($newDueDate->toDateString());
+});
+
+it('creates next cycle after previous cycle is done', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $oldDueDate = now()->subDays(10);
+    $newDueDate = now()->addDays(7);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'is_recurring' => true,
+        'recurrence_active' => true,
+        'recurrence_interval_value' => 1,
+        'recurrence_interval_unit' => RecurrenceIntervalUnit::Month->value,
+        'recurrence_lead_days' => 7,
+        'recurrence_next_due_at' => $newDueDate,
+    ]);
+
+    $oldTask = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'recurrence_issue_id' => $issue->id,
+        'due_at' => $oldDueDate,
+        'is_recurring_cycle' => true,
+        'cycle_number' => 1,
+        'status' => TaskStatus::Done,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $action = app(CreateRecurringTaskCycleAction::class);
+    $newTask = $action->handle($issue, now()->addDays(7));
+
+    expect($newTask)->not->toBeNull()
+        ->and($newTask->cycle_number)->toBe(2)
+        ->and($newTask->internal_team_id)->toBe($team->id)
+        ->and($newTask->carryover_from_task_id)->toBe($oldTask->id);
+
+    $oldTask->refresh();
+    expect($oldTask->status)->toBe(TaskStatus::Done);
+});
+
+it('creates next cycle after previous cycle is closed', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $newDueDate = now()->addDays(7);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'is_recurring' => true,
+        'recurrence_active' => true,
+        'recurrence_interval_value' => 1,
+        'recurrence_interval_unit' => RecurrenceIntervalUnit::Week->value,
+        'recurrence_lead_days' => 7,
+        'recurrence_next_due_at' => $newDueDate,
+    ]);
+
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'recurrence_issue_id' => $issue->id,
+        'due_at' => now()->subDays(10),
+        'is_recurring_cycle' => true,
+        'cycle_number' => 1,
+        'status' => TaskStatus::Closed,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $action = app(CreateRecurringTaskCycleAction::class);
+    $newTask = $action->handle($issue, now()->addDays(7));
+
+    expect($newTask)->not->toBeNull()
+        ->and($newTask->cycle_number)->toBe(2);
 });
 
 it('calculates next due date correctly for different intervals', function () {
@@ -246,7 +323,7 @@ it('does not create cycle when recurrence is inactive', function () {
     expect($task)->toBeNull();
 });
 
-it('tracks carryover from previous cycle', function () {
+it('tracks carryover from previous completed cycle', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
@@ -269,7 +346,7 @@ it('tracks carryover from previous cycle', function () {
         'due_at' => $oldDueDate,
         'is_recurring_cycle' => true,
         'cycle_number' => 1,
-        'status' => TaskStatus::InProgress,
+        'status' => TaskStatus::Done,
         'internal_team_id' => $team->id,
     ]);
 
@@ -278,40 +355,4 @@ it('tracks carryover from previous cycle', function () {
 
     expect($newTask)->not->toBeNull();
     expect($newTask->carryover_from_task_id)->toBe($oldTask->id);
-});
-
-it('sets not_executed_at and late_by_days for overdue cycles', function () {
-    $tenant = Tenant::factory()->create();
-    Tenancy::actAs($tenant->id);
-
-    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
-    $oldDueDate = now()->subDays(5);
-    $newDueDate = now()->addDays(7);
-
-    $issue = Issue::factory()->create([
-        'tenant_id' => $tenant->id,
-        'is_recurring' => true,
-        'recurrence_active' => true,
-        'recurrence_lead_days' => 7,
-        'recurrence_next_due_at' => $newDueDate,
-    ]);
-
-    $oldTask = Task::factory()->create([
-        'tenant_id' => $tenant->id,
-        'issue_id' => $issue->id,
-        'recurrence_issue_id' => $issue->id,
-        'due_at' => $oldDueDate,
-        'is_recurring_cycle' => true,
-        'cycle_number' => 1,
-        'status' => TaskStatus::InProgress,
-        'internal_team_id' => $team->id,
-    ]);
-
-    $action = app(CreateRecurringTaskCycleAction::class);
-    $action->handle($issue, now());
-
-    $oldTask->refresh();
-    expect($oldTask->not_executed_at)->not->toBeNull();
-    expect($oldTask->late_by_days)->toBe(5);
-    expect($oldTask->status_reason)->toBe('auto_expired_due_new_cycle');
 });

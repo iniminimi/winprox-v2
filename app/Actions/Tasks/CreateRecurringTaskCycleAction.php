@@ -52,23 +52,22 @@ class CreateRecurringTaskCycleAction
             return null;
         }
 
+        // Geen nieuwe cyclus zolang er nog een open taak van deze reeks loopt —
+        // voorkomt stapeling van onafgehandelde recurring-taken.
+        $hasOpenCycle = Task::query()
+            ->where('recurrence_issue_id', $issue->id)
+            ->whereIn('status', TaskStatus::openValues())
+            ->exists();
+
+        if ($hasOpenCycle) {
+            return null;
+        }
+
         $latestCycle = Task::query()
             ->where('recurrence_issue_id', $issue->id)
             ->orderByDesc('cycle_number')
             ->orderByDesc('id')
             ->first();
-
-        if ($latestCycle && $latestCycle->due_at && $latestCycle->due_at->lt($now)) {
-            if (in_array($latestCycle->status, [TaskStatus::New, TaskStatus::InProgress], true)) {
-                $latestCycle->update([
-                    'status' => TaskStatus::Closed,
-                    'completed_at' => $now,
-                    'not_executed_at' => $now,
-                    'late_by_days' => (int) $latestCycle->due_at->diffInDays($now),
-                    'status_reason' => 'auto_expired_due_new_cycle',
-                ]);
-            }
-        }
 
         $teamId = $latestCycle?->internal_team_id
             ?? $issue->tasks()->whereNotNull('internal_team_id')->value('internal_team_id');
