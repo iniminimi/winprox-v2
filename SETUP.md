@@ -169,6 +169,17 @@ Lokaal draaien met localhost-QR wordt standaard geweigerd. Alleen voor tests: `-
 
 E-mail na brieven: zie **`docs/gemeente-promo.md`** (sectie *E-mail naar gemeentebesturen*). Eerst `--audit` en `--dry-run`.
 
+### BIMI (merklogo in de inbox)
+
+DNS + SVG (+ VMC/CMC voor Gmail). Geen Laravel-campagnecode. Volledige checklist: **`docs/email-bimi.md`**.
+
+Live checks (productie-DNS):
+
+- DMARC: `_dmarc.winprox.app` → `p=quarantine`
+- DKIM: `cloud86._domainkey.winprox.app`
+- Logo: `https://winprox.app/brand/bimi/winprox-logo.svg`
+- BIMI TXT: `default._bimi.winprox.app` (handmatig bij Cloud86 zetten na deploy + certificaat)
+
 ## Problemen?
 
 - **Tests falen met “could not find driver (sqlite)”** — PHPUnit gebruikt vaak SQLite in memory; installeer `pdo_sqlite` of pas de test-DB-config aan.
