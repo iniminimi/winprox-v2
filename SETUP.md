@@ -171,14 +171,12 @@ E-mail na brieven: zie **`docs/gemeente-promo.md`** (sectie *E-mail naar gemeent
 
 ### BIMI (merklogo in de inbox)
 
-DNS + SVG (+ VMC/CMC voor Gmail). Geen Laravel-campagnecode. Volledige checklist: **`docs/email-bimi.md`**.
+**Geparkeerd:** geen VMC/CMC (te duur); Gmail toont dan geen logo. SVG + checklist blijven in **`docs/email-bimi.md`** voor later. Geen `default._bimi`-DNS zetten.
 
-Live checks (productie-DNS):
+DMARC/DKIM blijven relevant voor deliverability (los van BIMI):
 
 - DMARC: `_dmarc.winprox.app` → `p=quarantine`
 - DKIM: `cloud86._domainkey.winprox.app`
-- Logo: `https://winprox.app/brand/bimi/winprox-logo.svg`
-- BIMI TXT: `default._bimi.winprox.app` (handmatig bij Cloud86 zetten na deploy + certificaat)
 
 ## Problemen?
 

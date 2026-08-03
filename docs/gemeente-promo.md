@@ -112,7 +112,7 @@ Na het genereren van de DOCX-brieven kun je per gemeente een e-mail versturen me
 
 Gemeente-mails gebruiken een **eigen SMTP-mailer** (`municipal_promo`): inlog als Dominique, zelfde `MAIL_PASSWORD` als `info@`. Alle andere app-mails blijven via `MAIL_USERNAME=info@winprox.app`.
 
-**BIMI (logo in de inbox):** geen aparte campagne-setting. Zodra DNS + SVG (+ VMC) voor `winprox.app` klaar zijn, geldt het automatisch voor promo- én supportmails. Zie **`docs/email-bimi.md`**.
+**BIMI (logo in de inbox):** geparkeerd — geen VMC/CMC (~€1250/jaar), dus geen nut voor Gmail. Details: **`docs/email-bimi.md`**.
 
 ### Werkwijze (veilig)
 
