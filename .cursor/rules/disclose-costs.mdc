@@ -1,0 +1,22 @@
+---
+description: Altijd vooraf melden als een aanpak geld, abonnement of betaald certificaat kost — vóór coderen of plannen uitvoeren.
+alwaysApply: true
+---
+
+# Kosten vooraf melden (verplicht)
+
+Als een oplossing, feature of setup **geld kost** (of waarschijnlijk kost) — certificaten, SaaS, API-credits, domeinen, hosting-upgrades, betaalde tools, merkenrecht, enz. — moet de agent dat **expliciet vermelden vóór** er gecodeerd, gepland of uitgevoerd wordt.
+
+## Hard
+
+1. **Eerst zeggen, dan pas bouwen** — noem de kostensoort, orde van grootte als bekend (of “betaald / onbekend bedrag”), en dat het een externe aankoop is.
+2. **Stoppen voor akkoord** — niet implementeren, DNS zetten, of assets klaarzetten alsof de betaalde stap “later wel” komt, tenzij de gebruiker na die melding expliciet doorgaat.
+3. **Geen verrassing achteraf** — “dit werkt alleen met een betaald certificaat van ~€X” hoort in het eerste antwoord of plan, niet na de commit.
+
+## Voorbeelden
+
+- BIMI → VMC/CMC (~€500–1500/jaar) **vóór** SVG/DNS-werk
+- Betaalde e-mail/SMS/maps-API → limieten + pricing **vóór** integratie
+- Trademark / App Store fees → melden **vóór** die route
+
+Gratis of al inbegrepen (bestaande hosting, Cloud86-mail die we al hebben) hoeft niet als “kost” gemeld — wel als er een **extra** factuur of upgrade nodig is.

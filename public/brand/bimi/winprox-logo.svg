@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <title>WinProx</title>
-  <desc>WinProx brand mark for BIMI email display</desc>
-  <rect x="0" y="0" width="512" height="512" fill="#ffffff"/>
-  <circle cx="312" cy="256" r="108" fill="none" stroke="#1e293b" stroke-width="42"/>
-  <circle cx="200" cy="256" r="108" fill="none" stroke="#10b981" stroke-width="42"/>
-  <path fill="none" stroke="#10b981" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" d="M210 258 L248 296 L314 214"/>
-</svg>
