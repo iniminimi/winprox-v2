@@ -169,15 +169,6 @@ Lokaal draaien met localhost-QR wordt standaard geweigerd. Alleen voor tests: `-
 
 E-mail na brieven: zie **`docs/gemeente-promo.md`** (sectie *E-mail naar gemeentebesturen*). Eerst `--audit` en `--dry-run`.
 
-### BIMI (merklogo in de inbox)
-
-**Geparkeerd:** geen VMC/CMC (te duur); Gmail toont dan geen logo. SVG + checklist blijven in **`docs/email-bimi.md`** voor later. Geen `default._bimi`-DNS zetten.
-
-DMARC/DKIM blijven relevant voor deliverability (los van BIMI):
-
-- DMARC: `_dmarc.winprox.app` → `p=quarantine`
-- DKIM: `cloud86._domainkey.winprox.app`
-
 ## Problemen?
 
 - **Tests falen met “could not find driver (sqlite)”** — PHPUnit gebruikt vaak SQLite in memory; installeer `pdo_sqlite` of pas de test-DB-config aan.
