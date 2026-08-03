@@ -37,7 +37,11 @@
             },
             {
                 "title": "QR portals",
-                "body": "QR unità (segnalazione + unit check OK/Non OK opzionale — attiva via categoria e unità, checklist opzionale + attività in loco) · QR Clock Point (accesso + timbratura + attività di team) · QR sede. Stampabile come foglio etichette (Avery) o pagina intera A6/A5/A4. QR dinamici collegabili in seguito a un’unità."
+                "body": "QR unità: segnalare un problema, più un controllo unità opzionale (OK o Non OK in un tocco). QR Clock Point: accesso e timbratura più attività di team. QR sede. Stampabile come foglio etichette (Avery) o pagina A6/A5/A4. QR dinamici collegabili in seguito a un’unità."
+            },
+            {
+                "title": "Controlli unità",
+                "body": "Confermare in fretta che un’unità è a posto — ad es. dopo un giro sicurezza, controllo pulizie o verifica tecnica. Sul QR unità: OK o Non OK; con OK non serve una segnalazione a parte. Checklist opzionale. Non OK resta disponibile insieme al flusso di segnalazione."
             },
             {
                 "title": "Branding & QR",
@@ -74,7 +78,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Sedi, unità, categorie, team ed esecutori (interni o esterni). Import massivo/CSV, dashboard, documenti e avvisi sul portale. Unit check opzionali per categoria e unità (OK/Non OK sul QR unità); checklist in Team (condivise o per team)."
+                "body": "Sedi, unità, categorie, team ed esecutori (interni o esterni). Import massivo/CSV, dashboard, documenti e avvisi sul portale. Attiva i controlli unità per categoria e unità; le checklist si gestiscono in Team — condivise o per team."
             },
             {
                 "title": "Tasks",

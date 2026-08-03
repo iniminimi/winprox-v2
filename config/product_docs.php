@@ -6,7 +6,7 @@
  */
 return [
 
-    'documents_last_updated' => env('PRODUCT_DOCS_LAST_UPDATED', '2026-08-01'),
+    'documents_last_updated' => env('PRODUCT_DOCS_LAST_UPDATED', '2026-08-03'),
 
     'documents' => [
         'features' => [

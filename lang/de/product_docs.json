@@ -37,7 +37,11 @@
             },
             {
                 "title": "QR portals",
-                "body": "Unit-QR (melden + optionaler Unit-Check OK/Nicht OK — aktivieren über Kategorie und Unit, optional mit Checkliste + Aufgaben vor Ort) · Clock-Point-QR (Anmelden + Ein-/Ausstempeln + Teamaufgaben) · Standort-QR. Druckbar als Etikettenbogen (Avery) oder Ganzseite A6/A5/A4. Dynamische QRs, die später einer Unit zugeordnet werden."
+                "body": "Unit-QR: Probleme melden, plus optionaler Unit-Check (schnell OK oder Nicht OK). Clock-Point-QR: Anmelden und Ein-/Ausstempeln plus Teamaufgaben. Standort-QR. Druckbar als Etikettenbogen (Avery) oder Ganzseite A6/A5/A4. Dynamische QR-Codes, die später einer Unit zugeordnet werden."
+            },
+            {
+                "title": "Unit-Checks",
+                "body": "Schnell melden, dass eine Unit in Ordnung ist — z. B. nach einer Security-Runde, Reinigungskontrolle oder technischen Prüfung. Am Unit-QR: OK oder Nicht OK; bei OK keine separate Meldung nötig. Optional zuerst eine Checkliste abhaken. Nicht OK bleibt neben dem normalen Meldefluss verfügbar."
             },
             {
                 "title": "Branding & QR",
@@ -74,7 +78,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Standorte, Units, Kategorien, Teams und Ausführende (intern oder extern). Massen-/CSV-Import, Dashboard, Dokumente und Mitteilungen im Portal. Optionale Unit-Checks pro Kategorie und Unit (OK/Nicht OK auf dem Unit-QR); Checklisten verwalten Sie unter Teams (geteilt oder pro Team)."
+                "body": "Standorte, Units, Kategorien, Teams und Ausführende (intern oder extern). Bulk/CSV-Import, Dashboard, Dokumente und Mitteilungen im Portal. Unit-Checks pro Kategorie und Unit einschalten; Checklisten unter Teams verwalten — geteilt oder pro Team."
             },
             {
                 "title": "Tasks",

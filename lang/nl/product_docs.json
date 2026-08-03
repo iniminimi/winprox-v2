@@ -37,7 +37,11 @@
             },
             {
                 "title": "QR-portals",
-                "body": "Unit-QR (melden + optionele unit check OK/Niet OK — aan via categorie én unit, optioneel met checklist + taken op locatie) · Clock Point-QR (aanmelden + in-/uitklokken + teamtaken) · Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden."
+                "body": "Unit-QR: problemen melden, én optioneel een unit check (snel OK of Niet OK). Clock Point-QR: aanmelden en in-/uitklokken plus teamtaken. Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden."
+            },
+            {
+                "title": "Unit checks",
+                "body": "Snel doorgeven dat een unit in orde is — bijvoorbeeld na een securityronde, schoonmaakcontrole of technische check. Via de unit-QR kies je OK of Niet OK; bij OK hoef je geen aparte melding te maken. Optioneel eerst een checklist afvinken. Niet OK blijft naast de gewone meldflow beschikbaar."
             },
             {
                 "title": "Branding & QR",
@@ -74,7 +78,7 @@
             {
                 "title": "Facility",
                 "badge": "kern",
-                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Optioneel unit checks per categorie én unit (OK/Niet OK op de unit-QR); checklists beheer je onder Teams (gedeeld of per team)."
+                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Unit checks zet je aan per categorie én unit; checklists (vinklijsten) beheer je onder Teams — gedeeld of per team."
             },
             {
                 "title": "Taken",

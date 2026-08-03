@@ -37,7 +37,11 @@
             },
             {
                 "title": "QR portals",
-                "body": "QR unité (signalement + contrôle unit OK/Non OK optionnel — activer via catégorie et unité, checklist optionnelle + tâches sur site) · QR Clock Point (connexion + pointage + tâches d’équipe) · QR site. Imprimable en planche d’étiquettes (Avery) ou page entière A6/A5/A4. QR dynamiques pouvant être liés plus tard à une unité."
+                "body": "QR unité : signaler un problème, plus un contrôle d’unité optionnel (OK ou Pas OK en un geste). QR Clock Point : accès et pointage plus tâches d’équipe. QR site. Imprimable en planche d’étiquettes (Avery) ou page A6/A5/A4. QR dynamiques à lier plus tard à une unité."
+            },
+            {
+                "title": "Contrôles d’unité",
+                "body": "Confirmer rapidement qu’une unité est en ordre — par ex. après une ronde sécurité, un contrôle ménage ou une visite technique. Sur le QR unité : OK ou Pas OK ; OK sans créer un signalement. Check-list optionnelle. Pas OK reste compatible avec le flux de signalement."
             },
             {
                 "title": "Branding & QR",
@@ -74,7 +78,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Sites, unités, catégories, équipes et exécutants (internes ou externes). Import masse/CSV, tableau de bord, documents et annonces sur le portail. Contrôles d’unité optionnels par catégorie et unité (OK/Non OK sur le QR unité) ; listes de contrôle sous Équipes (partagées ou par équipe)."
+                "body": "Sites, unités, catégories, équipes et intervenants (internes ou externes). Import bulk/CSV, tableau de bord, documents et annonces sur le portail. Activez les contrôles d’unité par catégorie et unité ; les check-lists se gèrent sous Équipes — partagées ou par équipe."
             },
             {
                 "title": "Tasks",
