@@ -245,3 +245,14 @@ it('toont contact voor gasten', function () {
         ->assertSee('video/assistant.mp4', false)
         ->assertSee('wp-contact-assistant__video', false);
 });
+
+it('toont de assistant_legal-clip in de juridische-documentenpaginakop', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($user)
+        ->get(route('legal.index'))
+        ->assertOk()
+        ->assertSee('video/assistant_legal_80.mp4', false)
+        ->assertSee('wp-page-icon--assistant', false);
+});

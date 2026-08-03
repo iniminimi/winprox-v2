@@ -1,6 +1,7 @@
 <div class="wp-stack">
     <x-wp-page-head-title
-        icon="legal"
+        :assistant-video="asset('video/assistant_legal_80.mp4')"
+        assistant-video-loop
         :title="__('legal.index_title')"
         help-page="legal"
         :subtitle="__('legal.index_subtitle')"
