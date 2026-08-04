@@ -7,11 +7,11 @@ namespace App\Actions\Units;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\RoundTaskCompletionAction;
 use App\Actions\Tasks\StartTaskAction;
+use App\Data\Units\RecordUnitCheckAndApplyTasksResult;
 use App\Data\Units\RecordUnitCheckData;
 use App\Enums\UnitCheckResult;
 use App\Models\Task;
 use App\Models\Unit;
-use App\Models\UnitCheck;
 use App\Models\Worker;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
@@ -28,6 +28,7 @@ class RecordUnitCheckAndApplyTasksAction
         private RoundTaskCompletionAction $roundCompletion,
         private StartTaskAction $startTask,
         private CompleteTaskAction $completeTask,
+        private SuggestNotOkReportPrefillAction $suggestNotOkReportPrefill,
     ) {}
 
     public function handle(
@@ -35,7 +36,9 @@ class RecordUnitCheckAndApplyTasksAction
         RecordUnitCheckData $data,
         int $tenantId,
         Worker $worker,
-    ): UnitCheck {
+        string $timezone = 'UTC',
+        string $existingReportDescription = '',
+    ): RecordUnitCheckAndApplyTasksResult {
         if ((int) $unit->tenant_id !== $tenantId) {
             throw ValidationException::withMessages([
                 'checkResult' => [__('portal.worker.errors.no_permission')],
@@ -54,7 +57,7 @@ class RecordUnitCheckAndApplyTasksAction
             ]);
         }
 
-        return DB::transaction(function () use ($unit, $data, $tenantId, $worker) {
+        return DB::transaction(function () use ($unit, $data, $tenantId, $worker, $timezone, $existingReportDescription) {
             $single = $this->resolveOpenTask->handle($unit, $worker, prefer: 'single');
             $round = $this->resolveOpenTask->handle($unit, $worker, prefer: 'round');
 
@@ -84,7 +87,9 @@ class RecordUnitCheckAndApplyTasksAction
                 $this->startAndCompleteSingle($single, $worker);
             }
 
-            if ($round !== null) {
+            $appliedToInspectionRound = $round !== null;
+
+            if ($appliedToInspectionRound) {
                 if ($single !== null) {
                     // Zelfde scan telt ook voor de ronde (aparte check-rij, 4b-scoped op round task_id).
                     $this->recordUnitCheck->handle(
@@ -107,7 +112,17 @@ class RecordUnitCheckAndApplyTasksAction
                 $this->progressRound($round, $worker);
             }
 
-            return $check;
+            return new RecordUnitCheckAndApplyTasksResult(
+                check: $check,
+                appliedToInspectionRound: $appliedToInspectionRound,
+                suggestedReportDescription: $this->suggestNotOkReportPrefill->handle(
+                    appliedToInspectionRound: $appliedToInspectionRound,
+                    result: $data->result,
+                    checkedAt: $data->checkedAt,
+                    timezone: $timezone,
+                    existingDescription: $existingReportDescription,
+                ),
+            );
         });
     }
 
