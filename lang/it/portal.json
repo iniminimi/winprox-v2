@@ -279,7 +279,15 @@
         "task_complete_note": "Giro di ispezione completato (tutte le fermate OK o saltate).",
         "errors": {
             "skip_reason_required": "Indica un motivo per saltare questa fermata.",
-            "not_a_stop": "Questa unità non fa parte del giro."
-        }
+            "not_a_stop": "Questa unità non fa parte del giro.",
+            "not_next_stop": "Si può saltare solo la fermata successiva (:name)."
+        },
+        "next_stop": "Prossima: :name",
+        "wait_for_next": "Non ancora. Vai prima a :name.",
+        "out_of_order": "Unit check salvato. Per il giro vai prima a :name.",
+        "stop_ok": "OK",
+        "stop_skipped": "Saltata",
+        "stop_open": "Aperta",
+        "stop_current": "Ora"
     }
 }

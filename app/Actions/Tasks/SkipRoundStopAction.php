@@ -38,6 +38,15 @@ class SkipRoundStopAction
             ]);
         }
 
+        if (! $this->completion->isNextOpenStop($task, $unitId)) {
+            $nextName = $this->completion->progress($task)['next_unit_name'] ?? null;
+            throw ValidationException::withMessages([
+                'skipReason' => [__('portal.round.errors.not_next_stop', [
+                    'name' => $nextName ?? '—',
+                ])],
+            ]);
+        }
+
         if ((int) $worker->internal_team_id !== (int) $task->internal_team_id) {
             throw ValidationException::withMessages([
                 'skipReason' => [__('portal.worker.errors.no_permission')],

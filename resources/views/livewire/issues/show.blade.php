@@ -70,6 +70,16 @@
                     <div class="wp-field">
                         <label class="wp-label" for="show_round_stop_unit_ids">{{ __('issues.show.round_stops') }}</label>
                         <p class="wp-muted wp-text-sm">{{ __('issues.show.round_stops_help') }}</p>
+                        @if ($issue->roundStops->isNotEmpty())
+                            <ol class="wp-round-stops">
+                                @foreach ($issue->roundStops as $index => $stop)
+                                    <li class="wp-round-stops__item">
+                                        <span class="wp-round-stops__index">{{ $index + 1 }}</span>
+                                        <span class="wp-round-stops__name">{{ $stop->unit?->localizedName() ?? ('#'.$stop->unit_id) }}</span>
+                                    </li>
+                                @endforeach
+                            </ol>
+                        @endif
                         <select id="show_round_stop_unit_ids" class="wp-select" wire:model="round_stop_unit_ids" multiple size="6">
                             @foreach ($roundStopUnits as $unit)
                                 <option value="{{ $unit->id }}">{{ $unit->localizedName() }}</option>

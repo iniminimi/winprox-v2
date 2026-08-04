@@ -324,6 +324,7 @@ class UnitPortal extends Component
         );
 
         if ($result === UnitCheckResult::Ok) {
+            $waitingRound = $resolveOpenTask->findRoundWaitingOnEarlierStop($unit, $worker);
             $recordOkAndApply->handle(
                 unit: $unit,
                 data: $checkData,
@@ -331,6 +332,7 @@ class UnitPortal extends Component
                 worker: $worker,
             );
         } else {
+            $waitingRound = null;
             $openTask = $resolveOpenTask->handle($unit, $worker);
             $recordUnitCheck->handle(
                 unit: $unit,
@@ -363,7 +365,14 @@ class UnitPortal extends Component
             return;
         }
 
-        $this->flashMessage = __('portal.unit_check.recorded_ok');
+        if ($waitingRound !== null) {
+            $progress = app(RoundTaskCompletionAction::class)->progress($waitingRound);
+            $this->flashMessage = __('portal.round.out_of_order', [
+                'name' => $progress['next_unit_name'] ?? '—',
+            ]);
+        } else {
+            $this->flashMessage = __('portal.unit_check.recorded_ok');
+        }
         $this->portalSection = 'home';
     }
 

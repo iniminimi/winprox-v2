@@ -279,7 +279,15 @@
         "task_complete_note": "Inspektionsrunde abgeschlossen (alle Stops OK oder übersprungen).",
         "errors": {
             "skip_reason_required": "Geben Sie einen Grund an, um diesen Stop zu überspringen.",
-            "not_a_stop": "Diese Unit gehört nicht zur Runde."
-        }
+            "not_a_stop": "Diese Unit gehört nicht zur Runde.",
+            "not_next_stop": "Nur der nächste Stop kann übersprungen werden (:name)."
+        },
+        "next_stop": "Als Nächstes: :name",
+        "wait_for_next": "Noch nicht dran. Gehen Sie zuerst zu :name.",
+        "out_of_order": "Unit-Check gespeichert. Für die Runde zuerst zu :name.",
+        "stop_ok": "OK",
+        "stop_skipped": "Übersprungen",
+        "stop_open": "Offen",
+        "stop_current": "Jetzt"
     }
 }

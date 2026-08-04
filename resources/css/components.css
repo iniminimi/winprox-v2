@@ -4944,3 +4944,42 @@ a.wp-kpi.wp-kpi--attention {
         justify-content: flex-start;
     }
 }
+
+/* Inspectieronde — stopvoortgang (fase 2) */
+.wp-round-stops {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.wp-round-stops__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: var(--wp-radius, 0.5rem);
+    border: 1px solid transparent;
+}
+
+.wp-round-stops__item--here {
+    border-color: color-mix(in srgb, var(--wp-accent) 35%, var(--wp-border));
+    background-color: color-mix(in srgb, var(--wp-accent) 8%, var(--wp-surface));
+}
+
+.wp-round-stops__index {
+    flex: 0 0 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--wp-muted);
+    text-align: center;
+}
+
+.wp-round-stops__name {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 0.875rem;
+}
+

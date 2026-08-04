@@ -279,7 +279,15 @@
         "task_complete_note": "Tournée d’inspection terminée (tous les arrêts OK ou passés).",
         "errors": {
             "skip_reason_required": "Indiquez une raison pour passer cet arrêt.",
-            "not_a_stop": "Cette unité ne fait pas partie de la tournée."
-        }
+            "not_a_stop": "Cette unité ne fait pas partie de la tournée.",
+            "not_next_stop": "Seul l’arrêt suivant peut être passé (:name)."
+        },
+        "next_stop": "Suivant : :name",
+        "wait_for_next": "Pas encore. Passez d’abord par :name.",
+        "out_of_order": "Contrôle enregistré. Pour la tournée, allez d’abord à :name.",
+        "stop_ok": "OK",
+        "stop_skipped": "Passé",
+        "stop_open": "Ouvert",
+        "stop_current": "Maintenant"
     }
 }

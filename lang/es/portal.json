@@ -279,7 +279,15 @@
         "task_complete_note": "Ronda de inspección completada (todas las paradas OK u omitidas).",
         "errors": {
             "skip_reason_required": "Indique un motivo para omitir esta parada.",
-            "not_a_stop": "Esta unidad no forma parte de la ronda."
-        }
+            "not_a_stop": "Esta unidad no forma parte de la ronda.",
+            "not_next_stop": "Solo se puede omitir la siguiente parada (:name)."
+        },
+        "next_stop": "Siguiente: :name",
+        "wait_for_next": "Aún no. Vaya primero a :name.",
+        "out_of_order": "Unit check guardado. Para la ronda, vaya primero a :name.",
+        "stop_ok": "OK",
+        "stop_skipped": "Omitida",
+        "stop_open": "Abierta",
+        "stop_current": "Ahora"
     }
 }

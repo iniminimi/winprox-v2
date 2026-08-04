@@ -279,7 +279,15 @@
         "task_complete_note": "Inspection round completed (all stops OK or skipped).",
         "errors": {
             "skip_reason_required": "Provide a reason to skip this stop.",
-            "not_a_stop": "This unit is not part of the round."
-        }
+            "not_a_stop": "This unit is not part of the round.",
+            "not_next_stop": "Only the next stop can be skipped (:name)."
+        },
+        "next_stop": "Next: :name",
+        "wait_for_next": "Not yet. Go to :name first.",
+        "out_of_order": "Unit check saved. For the round, go to :name first.",
+        "stop_ok": "OK",
+        "stop_skipped": "Skipped",
+        "stop_open": "Open",
+        "stop_current": "Now"
     }
 }

@@ -5,12 +5,15 @@
 @php($isRound = $issue?->isInspectionRound() ?? false)
 @php($roundProgress = $isRound ? app(\App\Actions\Tasks\RoundTaskCompletionAction::class)->progress($task) : null)
 @php($currentUnitId = isset($unit) ? (int) $unit->id : null)
-@php($stopOpenHere = $isRound && $currentUnitId !== null && app(\App\Actions\Tasks\RoundTaskCompletionAction::class)->openStopUnitIds($task)->contains($currentUnitId))
+@php($isNextStop = $isRound && $currentUnitId !== null && app(\App\Actions\Tasks\RoundTaskCompletionAction::class)->isNextOpenStop($task, $currentUnitId))
 <div class="wp-card wp-card-pad wp-stack" wire:key="portal-task-{{ $task->id }}">
     @include('partials.wp-portal-task-lines', ['task' => $task, 'issue' => $issue])
 
     @if ($isRound && $roundProgress)
-        <p class="wp-muted wp-text-sm">{{ __('portal.round.progress', ['done' => $roundProgress['total'] - $roundProgress['open'], 'total' => $roundProgress['total']]) }}</p>
+        @include('partials.wp-portal-round-progress', [
+            'progress' => $roundProgress,
+            'currentUnitId' => $currentUnitId,
+        ])
     @endif
 
     @include('partials.wp-portal-issue-photos', [
@@ -109,13 +112,15 @@
                     <span wire:loading wire:target="beginCompleteTask({{ $task->id }})">{{ __('portal.worker.syncing') }}...</span>
                 </button>
             @endif
-            @if ($isRound && $stopOpenHere)
+            @if ($isRound && $isNextStop)
                 <button type="button"
                         class="btn btn--ghost btn--block btn--sm"
                         wire:click="openSkipRoundStop({{ $task->id }})"
                         :disabled="isOffline">
                     {{ __('portal.round.skip_stop') }}
                 </button>
+            @elseif ($isRound && $currentUnitId !== null && ($roundProgress['open'] ?? 0) > 0 && ! $isNextStop)
+                <p class="wp-muted wp-text-sm">{{ __('portal.round.wait_for_next', ['name' => $roundProgress['next_unit_name'] ?? '—']) }}</p>
             @endif
         </div>
     @endif

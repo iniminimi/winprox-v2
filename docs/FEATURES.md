@@ -428,13 +428,15 @@ stops meer zijn voor **deze** cyclus-taak.
 - Completion (4/4b): stops − (OK ∪ skipped **voor huidige `task_id`**). Skips in
   `task_round_stop_skips` per task. Indexen `(task_id, unit_id)` op checks én skips.
 - ≥2 stops: Form Request `min:2` bij opslaan.
-- Impliciet meetellen (geen “start ronde”); strikte volgorde + rijke UI → fase 2.
+- Impliciet meetellen (geen “start ronde”).
+- **Fase 2:** strikte stop-volgorde (alleen de eerstvolgende open stop mag OK/skip);
+  rijke progress-UI (balk + genummerde stops met status).
 
 ### Fasering
 | Fase | Levert | Status |
 |------|--------|--------|
 | **1** | Stops CRUD, match, progress, complete, skip, portal 2b | Klaar |
-| **2** | Strikte stop-volgorde + rijkere progress-UI | Later |
+| **2** | Strikte stop-volgorde + rijkere progress-UI | Klaar |
 
 ---
 

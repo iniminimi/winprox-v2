@@ -302,3 +302,32 @@ it('prefers single-unit task over round on the same scan', function () {
         ->and(app(RoundTaskCompletionAction::class)->openStopUnitIds($roundTask->fresh())->all())
         ->not->toContain((int) $unitA->id);
 });
+
+it('does not advance round when scanning out of stop order', function () {
+    ['unitA' => $unitA, 'unitB' => $unitB, 'team' => $team, 'worker' => $worker, 'task' => $task] = inspectionRoundScaffold();
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'round-unit-b'])
+        ->call('openSection', 'unit_check')
+        ->set('checkResult', 'ok')
+        ->set('checkCheckedAt', now()->toIso8601String())
+        ->call('submitUnitCheck')
+        ->assertHasNoErrors()
+        ->assertSet('flashMessage', __('portal.round.out_of_order', ['name' => $unitA->localizedName()]));
+
+    expect($task->fresh()->status)->toBe(TaskStatus::New)
+        ->and(app(RoundTaskCompletionAction::class)->openStopUnitIds($task->fresh())->all())
+        ->toContain((int) $unitA->id)
+        ->toContain((int) $unitB->id)
+        ->and(app(RoundTaskCompletionAction::class)->isNextOpenStop($task->fresh(), (int) $unitA->id))->toBeTrue();
+});
+
+it('refuses skip when the unit is not the next open stop', function () {
+    ['unitB' => $unitB, 'worker' => $worker, 'task' => $task] = inspectionRoundScaffold();
+
+    expect(fn () => app(SkipRoundStopAction::class)->handle($task, (int) $unitB->id, 'Later', $worker))
+        ->toThrow(\Illuminate\Validation\ValidationException::class);
+
+    expect(app(RoundTaskCompletionAction::class)->progress($task->fresh())['stops'][0]['state'])->toBe('current')
+        ->and(app(RoundTaskCompletionAction::class)->progress($task->fresh())['stops'][1]['state'])->toBe('open');
+});
