@@ -288,7 +288,7 @@
         "stop_ok": "OK",
         "stop_skipped": "Saltata",
         "stop_open": "Aperta",
-        "stop_current": "Ora",
+        "stop_current": "Prossima",
         "do_check_here": "Questa fermata è la prossima. Fai qui un Unit check (OK), oppure salta."
     }
 }

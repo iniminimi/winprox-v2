@@ -288,7 +288,7 @@
         "stop_ok": "OK",
         "stop_skipped": "Omitida",
         "stop_open": "Abierta",
-        "stop_current": "Ahora",
+        "stop_current": "Siguiente",
         "do_check_here": "Esta parada es la siguiente. Haz aquí un Unit check (OK), o omítela."
     }
 }

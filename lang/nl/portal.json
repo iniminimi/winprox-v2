@@ -288,7 +288,7 @@
         "stop_ok": "OK",
         "stop_skipped": "Overgeslagen",
         "stop_open": "Open",
-        "stop_current": "Nu",
+        "stop_current": "Volgende",
         "do_check_here": "Deze stop is aan de beurt. Doe hier een Unit check (OK), of sla over."
     }
 }
