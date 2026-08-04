@@ -198,6 +198,27 @@
             <div class="wp-flash">{{ $flashMessage }}</div>
         @endif
 
+        @if ($skipRoundTaskId)
+            <x-wp-modal closeMethod="closeSkipRoundStop" aria-labelledby="skip-round-title">
+                <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                    <div class="wp-modal-head">
+                        <h2 id="skip-round-title" class="wp-section-title">{{ __('portal.round.skip_title') }}</h2>
+                        <x-wp-modal-close wire:click="closeSkipRoundStop" />
+                    </div>
+                    <p class="wp-muted">{{ __('portal.round.skip_help') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="skipReason">{{ __('portal.round.skip_reason') }}</label>
+                        <textarea id="skipReason" class="wp-textarea" rows="3" wire:model="skipReason" maxlength="500"></textarea>
+                        @error('skipReason') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-cluster">
+                        <button type="button" class="btn btn--primary" wire:click="submitSkipRoundStop">{{ __('portal.round.skip_confirm') }}</button>
+                        <button type="button" class="btn btn--ghost" wire:click="closeSkipRoundStop">{{ __('common.button.cancel') }}</button>
+                    </div>
+                </div>
+            </x-wp-modal>
+        @endif
+
         @if (($newTeamTasksCount ?? 0) > 0)
             <div
                 class="wp-card wp-card-pad wp-stack wp-portal-new-team-tasks-banner"
@@ -320,7 +341,7 @@
 
                         <div x-show="open" x-transition wire:key="portal-open-tasks-content">
                             @forelse ($allOpenUnitTasks as $task)
-                                @include('partials.wp-portal-task', ['task' => $task, 'team' => $team, 'worker' => $worker])
+                                @include('partials.wp-portal-task', ['task' => $task, 'team' => $team, 'worker' => $worker, 'unit' => $unit])
                             @empty
                                 <p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p>
                             @endforelse
@@ -588,7 +609,7 @@
 
                     <div x-show="open" x-transition wire:key="issue-open-tasks-content">
                         @forelse ($openTasksForIssue as $task)
-                            @include('partials.wp-portal-task', ['task' => $task, 'team' => $team, 'worker' => $worker])
+                            @include('partials.wp-portal-task', ['task' => $task, 'team' => $team, 'worker' => $worker, 'unit' => $unit])
                         @empty
                             <p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p>
                         @endforelse

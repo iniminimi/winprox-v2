@@ -6,6 +6,9 @@
 @endphp
 
 <p class="wp-text-body">{{ __('portal.worker.task_heading', ['nr' => $task->id]) }}</p>
+@if ($issue?->isInspectionRound())
+    <p class="wp-muted wp-text-sm">{{ __('issues.card.round_stops', ['count' => $issue->roundStopCount()]) }}</p>
+@endif
 @if ($taskDescription !== '')
     <p class="wp-text-body">{{ $taskDescription }}</p>
 @endif

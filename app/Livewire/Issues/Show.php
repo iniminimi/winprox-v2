@@ -7,16 +7,20 @@ use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\CloseIssueAction;
 use App\Actions\Issues\CreateIssueUpdateAction;
 use App\Actions\Issues\ReopenIssueAction;
+use App\Actions\Issues\SyncIssueRoundStopsAction;
 use App\Actions\Issues\ToggleIssueRecurrencePauseAction;
 use App\Actions\Tasks\CreateTaskAction;
 use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Actions\Tasks\UpdateTaskPriorityAction;
 use App\Actions\Tasks\UpdateTaskTeamAction;
 use App\Enums\TaskPriority;
+use App\Http\Requests\Issues\SyncIssueRoundStopsRequest;
 use App\Models\Task;
 use App\Models\InternalTeam;
 use App\Models\Issue;
+use App\Models\Unit;
 use App\Support\EntityDetailNavigation;
+use App\Support\Tenancy;
 use App\Support\Translation\LocaleSupport;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Validation\ValidationException;
@@ -68,11 +72,52 @@ class Show extends Component
 
     public string $taskTranslationDescription = '';
 
+    /** @var list<int|string> */
+    public array $round_stop_unit_ids = [];
+
     public function mount(Issue $issue): void
     {
         $this->authorize('view', $issue);
         $this->issue = $issue;
         $this->descriptionLocale = LocaleSupport::normalize(app()->getLocale());
+        $this->round_stop_unit_ids = $issue->roundStops()
+            ->orderBy('sort_order')
+            ->pluck('unit_id')
+            ->map(fn ($id) => (int) $id)
+            ->all();
+    }
+
+    public function saveRoundStops(SyncIssueRoundStopsAction $syncRoundStops): void
+    {
+        $this->authorize('update', $this->issue);
+
+        if (! $this->issue->is_recurring) {
+            return;
+        }
+
+        $this->round_stop_unit_ids = array_values(array_filter(array_map(
+            static fn ($id) => is_numeric($id) ? (int) $id : null,
+            $this->round_stop_unit_ids,
+        )));
+
+        $validated = $this->validate(
+            SyncIssueRoundStopsRequest::ruleSet((int) Tenancy::id()),
+            SyncIssueRoundStopsRequest::messageSet(),
+        );
+
+        $this->issue = $syncRoundStops->handle(
+            $this->issue,
+            $validated['round_stop_unit_ids'],
+            auth()->user(),
+        );
+        $this->round_stop_unit_ids = $this->issue->roundStops
+            ->sortBy('sort_order')
+            ->pluck('unit_id')
+            ->map(fn ($id) => (int) $id)
+            ->values()
+            ->all();
+
+        session()->flash('success', __('issues.show.round_stops_saved'));
     }
 
     public function approve(ApproveIssueAction $approveIssue): void
@@ -508,11 +553,15 @@ class Show extends Component
             'location',
             'unit.translations',
             'esgIndicator.translations',
+            'roundStops.unit.translations',
             'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),
         ]);
 
         $location = $issue->location;
-        $headline = collect([$location?->localizedName(), $issue->unit?->localizedName()])->filter()->join(' · ');
+        $roundLabel = $issue->isInspectionRound()
+            ? __('issues.card.round_stops', ['count' => $issue->roundStopCount()])
+            : $issue->unit?->localizedName();
+        $headline = collect([$location?->localizedName(), $roundLabel])->filter()->join(' · ');
         $addressLine = $location
             ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
             : '';
@@ -535,8 +584,13 @@ class Show extends Component
             );
         }
 
+        $roundStopUnits = $issue->is_recurring
+            ? Unit::query()->where('is_active', true)->with('translations')->orderBy('name')->get()
+            : collect();
+
         return view('livewire.issues.show', [
             'issue' => $issue,
+            'roundStopUnits' => $roundStopUnits,
             'teams' => InternalTeam::query()->with('translations')->orderBy('name')->get(),
             'priorities' => TaskPriority::cases(),
             'headline' => $headline,

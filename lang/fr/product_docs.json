@@ -44,6 +44,10 @@
                 "body": "Confirmer rapidement qu’une unité est en ordre — par ex. après une ronde sécurité, un contrôle ménage ou une visite technique. Sur le QR unité : OK ou Pas OK ; OK sans créer un signalement. Check-list optionnelle. Pas OK reste compatible avec le flux de signalement."
             },
             {
+                "title": "Tournées d’inspection",
+                "body": "Signalement récurrent avec un parcours fixe d’unités (arrêts). Une tâche par cycle ; contrôle d’unité OK à chaque arrêt (ou passage avec motif). Terminé lorsque tous les arrêts du cycle sont traités."
+            },
+            {
                 "title": "Branding & QR",
                 "body": "Organisation logo and portal background; unit photos and a background photo per unit. Avery or A6/A5/A4 sticker formats under Settings — print-ready."
             },

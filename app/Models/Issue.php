@@ -74,6 +74,11 @@ class Issue extends Model
         return $this->belongsTo(Unit::class);
     }
 
+    public function roundStops(): HasMany
+    {
+        return $this->hasMany(IssueRoundStop::class)->orderBy('sort_order')->orderBy('id');
+    }
+
     public function esgIndicator(): BelongsTo
     {
         return $this->belongsTo(EsgIndicator::class);
@@ -82,6 +87,39 @@ class Issue extends Model
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
+    }
+
+    /** Inspectieronde: geordende stop-lijst van ≥2 units. */
+    public function isInspectionRound(): bool
+    {
+        if ($this->relationLoaded('roundStops')) {
+            return $this->roundStops->count() >= 2;
+        }
+
+        return $this->roundStops()->count() >= 2;
+    }
+
+    public function roundStopCount(): int
+    {
+        if ($this->relationLoaded('roundStops')) {
+            return $this->roundStops->count();
+        }
+
+        return $this->roundStops()->count();
+    }
+
+    /**
+     * Domeinregel 2b (query-vorm): issue hoort bij unit via unit_id of als ronde-stop.
+     *
+     * @param  Builder<Issue>  $query
+     * @return Builder<Issue>
+     */
+    public function scopeBelongsToUnit(Builder $query, Unit $unit): Builder
+    {
+        return $query->where(function (Builder $inner) use ($unit) {
+            $inner->where('unit_id', $unit->id)
+                ->orWhereHas('roundStops', fn (Builder $stops) => $stops->where('unit_id', $unit->id));
+        });
     }
 
     public function updates(): HasMany

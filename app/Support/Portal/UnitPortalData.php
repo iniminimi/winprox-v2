@@ -155,9 +155,9 @@ final class UnitPortalData
         return Task::where('internal_team_id', $teamId)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q
-                ->where('unit_id', $unit->id)
+                ->belongsToUnit($unit)
                 ->whereNotNull('approved_at'))
-            ->with(['issue.photos', 'issue.updates', 'issue.esgIndicator.translations'])
+            ->with(['issue.photos', 'issue.updates', 'issue.esgIndicator.translations', 'issue.roundStops'])
             ->orderBy('id')
             ->get();
     }
@@ -172,7 +172,7 @@ final class UnitPortalData
         return Task::where('internal_team_id', $teamId)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q
-                ->where('unit_id', $unit->id)
+                ->belongsToUnit($unit)
                 ->whereNotNull('approved_at'))
             ->count();
     }

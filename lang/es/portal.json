@@ -267,5 +267,19 @@
         },
         "checklist_title": "Lista de comprobación",
         "task_complete_note": "Chequeo de unit OK."
+    },
+    "round": {
+        "progress": "Progreso de ronda: :done/:total paradas",
+        "skip_stop": "Omitir parada",
+        "skip_title": "Omitir parada",
+        "skip_help": "Indique un motivo. Esta parada cuenta como gestionada (omitida) en este ciclo.",
+        "skip_reason": "Motivo",
+        "skip_confirm": "Omitir",
+        "skip_recorded": "Parada omitida.",
+        "task_complete_note": "Ronda de inspección completada (todas las paradas OK u omitidas).",
+        "errors": {
+            "skip_reason_required": "Indique un motivo para omitir esta parada.",
+            "not_a_stop": "Esta unidad no forma parte de la ronda."
+        }
     }
 }

@@ -44,6 +44,10 @@
                 "body": "Quickly confirm a unit is fine — for example after a security round, cleaning check or technical inspection. On the unit QR you tap OK or Not OK; OK needs no separate issue. Optionally tick a checklist first. Not OK still works alongside the normal report flow."
             },
             {
+                "title": "Inspection rounds",
+                "body": "Recurring issue with a fixed route of units (stops). One task per cycle; Unit check OK at each stop (or skip with a reason). Done when all stops for that cycle are handled."
+            },
+            {
                 "title": "Branding & QR",
                 "body": "Organisation logo and portal background; unit photos and a background photo per unit. Avery or A6/A5/A4 sticker formats under Settings — print-ready."
             },

@@ -108,6 +108,18 @@
                         </div>
                     </div>
 
+                    <div class="wp-field">
+                        <label class="wp-label" for="create_round_stop_unit_ids">{{ __('issues.create.round_stops') }}</label>
+                        <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_help') }}</p>
+                        <select id="create_round_stop_unit_ids" class="wp-select" wire:model="round_stop_unit_ids" multiple size="5" @disabled($createUnits->isEmpty())>
+                            @foreach ($createUnits as $unit)
+                                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('round_stop_unit_ids') <p class="wp-error">{{ $message }}</p> @enderror
+                        @error('round_stop_unit_ids.*') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+
                     @if ($hasEsgModule)
                         <div class="wp-field">
                             <label class="wp-label" for="create_esg_indicator_id">{{ __('issues.create.esg_indicator') }}</label>

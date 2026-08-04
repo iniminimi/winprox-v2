@@ -267,5 +267,19 @@
         },
         "checklist_title": "Checklist",
         "task_complete_note": "Unit check OK."
+    },
+    "round": {
+        "progress": "Voortgang ronde: :done/:total stops",
+        "skip_stop": "Stop overslaan",
+        "skip_title": "Stop overslaan",
+        "skip_help": "Geef een reden. Deze stop telt voor deze cyclus als afgehandeld (overslagen).",
+        "skip_reason": "Reden",
+        "skip_confirm": "Overslaan",
+        "skip_recorded": "Stop overgeslagen.",
+        "task_complete_note": "Inspectieronde voltooid (alle stops OK of overgeslagen).",
+        "errors": {
+            "skip_reason_required": "Geef een reden om deze stop over te slaan.",
+            "not_a_stop": "Deze unit hoort niet bij de ronde."
+        }
     }
 }

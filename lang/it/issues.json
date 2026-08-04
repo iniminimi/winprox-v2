@@ -62,7 +62,8 @@
         "no_team": "Nessun team",
         "reported": "Segnalato da :name · :datetime",
         "unknown_reporter": "Sconosciuto",
-        "source_iot": "Via IoT"
+        "source_iot": "Via IoT",
+        "round_stops": "Giro · :count fermate"
     },
     "create": {
         "title": "Nuova segnalazione",
@@ -98,7 +99,9 @@
         "back": "Indietro",
         "finish": "Crea segnalazione",
         "success": "Segnalazione e attività sono state create.",
-        "unit_day": "Giorno"
+        "unit_day": "Giorno",
+        "round_stops": "Fermate del giro (opzionale)",
+        "round_stops_help": "Scegli almeno 2 unità in ordine. La segnalazione non ha una sola unità; il progresso avviene tramite Unit check per fermata."
     },
     "errors": {
         "cannot_close_approved": "Una segnalazione approvata non può essere chiusa.",
@@ -126,7 +129,9 @@
         "translation_same_as_source": "La lingua di destinazione coincide con la lingua di origine.",
         "translation_import_invalid": "Elemento di importazione non valido.",
         "translation_import_too_long": "La traduzione è troppo lunga (max. 1500 caratteri).",
-        "translation_import_issue_missing": "Segnalazione non trovata o non approvata."
+        "translation_import_issue_missing": "Segnalazione non trovata o non approvata.",
+        "round_stops_min": "Seleziona almeno 2 unità come fermate per un giro di ispezione.",
+        "round_stops_invalid": "Una o più fermate selezionate non sono valide."
     },
     "show": {
         "title": "Segnalazione",
@@ -186,7 +191,11 @@
         "updates_photos": "Foto",
         "photo_enlarge": "Ingrandisci foto",
         "photos_heading": "Foto",
-        "edit_task_recurring_hint": "Questo compito appartiene a una segnalazione ricorrente. Intervallo e serie si gestiscono sulla segnalazione; qui regola solo questa esecuzione (descrizione, data pianificata, priorità, team)."
+        "edit_task_recurring_hint": "Questo compito appartiene a una segnalazione ricorrente. Intervallo e serie si gestiscono sulla segnalazione; qui regola solo questa esecuzione (descrizione, data pianificata, priorità, team).",
+        "round_stops": "Fermate del giro",
+        "round_stops_help": "Almeno 2 unità. L’ordine dell’elenco è l’ordine delle fermate. Niente ESG sui giri.",
+        "round_stops_save": "Salva fermate",
+        "round_stops_saved": "Fermate del giro salvate."
     },
     "updates": {
         "kind": {

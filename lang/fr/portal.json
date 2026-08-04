@@ -267,5 +267,19 @@
         },
         "checklist_title": "Liste de contrôle",
         "task_complete_note": "Contrôle unit OK."
+    },
+    "round": {
+        "progress": "Progression tournée : :done/:total arrêts",
+        "skip_stop": "Passer l’arrêt",
+        "skip_title": "Passer l’arrêt",
+        "skip_help": "Indiquez une raison. Cet arrêt compte comme traité (passé) pour ce cycle.",
+        "skip_reason": "Raison",
+        "skip_confirm": "Passer",
+        "skip_recorded": "Arrêt passé.",
+        "task_complete_note": "Tournée d’inspection terminée (tous les arrêts OK ou passés).",
+        "errors": {
+            "skip_reason_required": "Indiquez une raison pour passer cet arrêt.",
+            "not_a_stop": "Cette unité ne fait pas partie de la tournée."
+        }
     }
 }

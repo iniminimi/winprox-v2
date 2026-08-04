@@ -267,5 +267,19 @@
         },
         "checklist_title": "Checklist",
         "task_complete_note": "Controllo unit OK."
+    },
+    "round": {
+        "progress": "Avanzamento giro: :done/:total fermate",
+        "skip_stop": "Salta fermata",
+        "skip_title": "Salta fermata",
+        "skip_help": "Indica un motivo. Questa fermata conta come gestita (saltata) per questo ciclo.",
+        "skip_reason": "Motivo",
+        "skip_confirm": "Salta",
+        "skip_recorded": "Fermata saltata.",
+        "task_complete_note": "Giro di ispezione completato (tutte le fermate OK o saltate).",
+        "errors": {
+            "skip_reason_required": "Indica un motivo per saltare questa fermata.",
+            "not_a_stop": "Questa unità non fa parte del giro."
+        }
     }
 }

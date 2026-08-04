@@ -267,5 +267,19 @@
         },
         "checklist_title": "Checkliste",
         "task_complete_note": "Unit-Check OK."
+    },
+    "round": {
+        "progress": "Rundenfortschritt: :done/:total Stops",
+        "skip_stop": "Stop überspringen",
+        "skip_title": "Stop überspringen",
+        "skip_help": "Geben Sie einen Grund an. Dieser Stop gilt für diesen Zyklus als erledigt (übersprungen).",
+        "skip_reason": "Grund",
+        "skip_confirm": "Überspringen",
+        "skip_recorded": "Stop übersprungen.",
+        "task_complete_note": "Inspektionsrunde abgeschlossen (alle Stops OK oder übersprungen).",
+        "errors": {
+            "skip_reason_required": "Geben Sie einen Grund an, um diesen Stop zu überspringen.",
+            "not_a_stop": "Diese Unit gehört nicht zur Runde."
+        }
     }
 }

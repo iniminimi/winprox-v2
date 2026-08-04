@@ -11,20 +11,39 @@ use App\Models\Worker;
 
 class ResolveOpenUnitTaskForCheckAction
 {
-    public function handle(Unit $unit, ?Worker $worker = null): ?Task
+    /**
+     * @param  'any'|'single'|'round'  $prefer
+     */
+    public function handle(Unit $unit, ?Worker $worker = null, string $prefer = 'any'): ?Task
     {
         if ($worker === null || $worker->internal_team_id === null) {
             return null;
         }
 
-        return Task::query()
+        $base = Task::query()
             ->where('tenant_id', $unit->tenant_id)
             ->where('internal_team_id', $worker->internal_team_id)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($query) => $query
-                ->where('unit_id', $unit->id)
                 ->whereNotNull('approved_at')
-                ->whereNull('esg_indicator_id'))
+                ->whereNull('esg_indicator_id'));
+
+        if ($prefer === 'single' || $prefer === 'any') {
+            $single = (clone $base)
+                ->whereHas('issue', fn ($query) => $query->where('unit_id', $unit->id))
+                ->orderByRaw('is_recurring_cycle desc')
+                ->orderBy('due_at')
+                ->orderBy('id')
+                ->first();
+
+            if ($single !== null || $prefer === 'single') {
+                return $single;
+            }
+        }
+
+        return (clone $base)
+            ->whereHas('issue', fn ($query) => $query
+                ->whereHas('roundStops', fn ($stops) => $stops->where('unit_id', $unit->id)))
             ->orderByRaw('is_recurring_cycle desc')
             ->orderBy('due_at')
             ->orderBy('id')

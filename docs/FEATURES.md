@@ -412,6 +412,32 @@ de meldingenlijst te vervuilen. Los van ESG.
 
 ---
 
+## 5e. Inspectierondes (Facility)
+
+**Doel:** terugkerende melding met geordende stop-lijst (units). Eén taak per cyclus;
+voortgang via Unit check OK (en optioneel skip) per stop. Compleet als er geen open
+stops meer zijn voor **deze** cyclus-taak.
+
+**BESLIST (fase 1):**
+- Stops op de melding (`issue_round_stops`); ronde-issue heeft `unit_id = null`.
+  `location_id` alleen als alle stops dezelfde locatie delen, anders null.
+- Label: **Ronde · N stops**. Geen ESG op ronde-issues.
+- Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).
+- Taak↔unit (2b): `issue.unit_id = U` **óf** U is stop — via `TaskBelongsToUnitAction`
+  + Eloquent `Issue::belongsToUnit` (open unittaken + banner-exclude).
+- Completion (4/4b): stops − (OK ∪ skipped **voor huidige `task_id`**). Skips in
+  `task_round_stop_skips` per task. Indexen `(task_id, unit_id)` op checks én skips.
+- ≥2 stops: Form Request `min:2` bij opslaan.
+- Impliciet meetellen (geen “start ronde”); strikte volgorde + rijke UI → fase 2.
+
+### Fasering
+| Fase | Levert | Status |
+|------|--------|--------|
+| **1** | Stops CRUD, match, progress, complete, skip, portal 2b | Klaar |
+| **2** | Strikte stop-volgorde + rijkere progress-UI | Later |
+
+---
+
 ## 5b. ESG & Compliance (optionele module)
 
 **Doel:** meetwaarden vastleggen bij terugkerende inspecties (duurzaamheid, compliance, meters).

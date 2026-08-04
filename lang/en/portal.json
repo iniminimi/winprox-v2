@@ -267,5 +267,19 @@
         },
         "checklist_title": "Checklist",
         "task_complete_note": "Unit check OK."
+    },
+    "round": {
+        "progress": "Round progress: :done/:total stops",
+        "skip_stop": "Skip stop",
+        "skip_title": "Skip stop",
+        "skip_help": "Provide a reason. This stop counts as handled (skipped) for this cycle.",
+        "skip_reason": "Reason",
+        "skip_confirm": "Skip",
+        "skip_recorded": "Stop skipped.",
+        "task_complete_note": "Inspection round completed (all stops OK or skipped).",
+        "errors": {
+            "skip_reason_required": "Provide a reason to skip this stop.",
+            "not_a_stop": "This unit is not part of the round."
+        }
     }
 }

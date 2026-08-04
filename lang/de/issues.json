@@ -62,7 +62,8 @@
         "no_team": "Kein Team",
         "reported": "Gemeldet von :name · :datetime",
         "unknown_reporter": "Unbekannt",
-        "source_iot": "Via IoT"
+        "source_iot": "Via IoT",
+        "round_stops": "Runde · :count Stops"
     },
     "create": {
         "title": "Neue Meldung",
@@ -98,7 +99,9 @@
         "back": "Zurück",
         "finish": "Meldung anlegen",
         "success": "Meldung und Aufgabe wurden erstellt.",
-        "unit_day": "Tag"
+        "unit_day": "Tag",
+        "round_stops": "Inspektionsrunden-Stops (optional)",
+        "round_stops_help": "Wählen Sie mindestens 2 Units in Reihenfolge. Die Meldung hat dann keine einzelne Unit; Fortschritt über Unit-Check je Stop."
     },
     "errors": {
         "cannot_close_approved": "Eine freigegebene Meldung kann nicht geschlossen werden.",
@@ -126,7 +129,9 @@
         "translation_same_as_source": "Die Zielsprache entspricht der Ausgangssprache.",
         "translation_import_invalid": "Ungültiger Importeintrag.",
         "translation_import_too_long": "Übersetzung ist zu lang (max. 1500 Zeichen).",
-        "translation_import_issue_missing": "Meldung nicht gefunden oder nicht freigegeben."
+        "translation_import_issue_missing": "Meldung nicht gefunden oder nicht freigegeben.",
+        "round_stops_min": "Wählen Sie mindestens 2 Units als Stops für eine Inspektionsrunde.",
+        "round_stops_invalid": "Ein oder mehrere ausgewählte Stops sind ungültig."
     },
     "show": {
         "title": "Meldung",
@@ -186,7 +191,11 @@
         "updates_photos": "Fotos",
         "photo_enlarge": "Foto vergrößern",
         "photos_heading": "Fotos",
-        "edit_task_recurring_hint": "Diese Aufgabe gehört zu einer wiederkehrenden Meldung. Intervall und Serie steuern Sie an der Meldung; hier passen Sie nur diese Ausführung an (Beschreibung, geplant am, Prio, Team)."
+        "edit_task_recurring_hint": "Diese Aufgabe gehört zu einer wiederkehrenden Meldung. Intervall und Serie steuern Sie an der Meldung; hier passen Sie nur diese Ausführung an (Beschreibung, geplant am, Prio, Team).",
+        "round_stops": "Inspektionsrunden-Stops",
+        "round_stops_help": "Mindestens 2 Units. Listenreihenfolge = Stoppreihenfolge. Kein ESG bei Runden.",
+        "round_stops_save": "Stops speichern",
+        "round_stops_saved": "Runden-Stops gespeichert."
     },
     "updates": {
         "kind": {

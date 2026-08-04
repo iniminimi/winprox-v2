@@ -21,6 +21,7 @@ class CreateManagerIssueAction
     public function __construct(
         private IssuePhotoStorage $storage,
         private EnsureIssueTranslationSlotsAction $ensureTranslationSlots,
+        private SyncIssueRoundStopsAction $syncRoundStops,
     ) {}
 
     /**
@@ -30,11 +31,16 @@ class CreateManagerIssueAction
     public function handle(array $data, User $actor, array $photos = []): Issue
     {
         $recurring = RecurrenceSchedule::issueAttributesFromValidated($data);
+        $roundStopIds = array_values(array_filter(array_map(
+            'intval',
+            $data['round_stop_unit_ids'] ?? [],
+        )));
+        $isRound = count($roundStopIds) >= 2;
 
         $issue = Issue::create([
-            'location_id' => $data['location_id'] ?? null,
-            'unit_id' => $data['unit_id'] ?? null,
-            'esg_indicator_id' => self::resolveEsgIndicatorId($data),
+            'location_id' => $isRound ? null : ($data['location_id'] ?? null),
+            'unit_id' => $isRound ? null : ($data['unit_id'] ?? null),
+            'esg_indicator_id' => $isRound ? null : self::resolveEsgIndicatorId($data),
             'description' => $data['description'],
             'original_language' => LocaleSupport::normalize(
                 $data['original_language'] ?? $actor->locale ?? null,
@@ -57,6 +63,10 @@ class CreateManagerIssueAction
             $issue->photos()->create([
                 'path' => $this->storage->storePrecompressedCopy($photo),
             ]);
+        }
+
+        if ($isRound) {
+            $issue = $this->syncRoundStops->handle($issue, $roundStopIds, $actor);
         }
 
         $issue = $issue->fresh();

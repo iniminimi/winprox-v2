@@ -15,9 +15,12 @@ use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitBackgroundPhotoAction;
 use App\Actions\Units\RecordUnitGpsReportAction;
 use App\Actions\Units\RecordUnitCheckAction;
+use App\Actions\Units\RecordOkUnitCheckAndApplyTasksAction;
 use App\Actions\Units\ResolveOpenUnitTaskForCheckAction;
 use App\Actions\QrCodes\StoreQrLinkPhotosAction;
 use App\Actions\Tasks\CompleteTaskAction;
+use App\Actions\Tasks\RoundTaskCompletionAction;
+use App\Actions\Tasks\SkipRoundStopAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Data\Reservations\ReservationBookingData;
 use App\Data\Units\RecordUnitCheckData;
@@ -123,6 +126,9 @@ class UnitPortal extends Component
     public ?string $checkCheckedAt = null;
     /** @var list<string> */
     public array $checkChecklistItems = [];
+
+    public ?int $skipRoundTaskId = null;
+    public string $skipReason = '';
 
     public string $reserveFirstName = '';
     public string $reserveLastName = '';
@@ -240,9 +246,8 @@ class UnitPortal extends Component
 
     public function submitUnitCheck(
         RecordUnitCheckAction $recordUnitCheck,
+        RecordOkUnitCheckAndApplyTasksAction $recordOkAndApply,
         ResolveOpenUnitTaskForCheckAction $resolveOpenTask,
-        StartTaskAction $startTask,
-        CompleteTaskAction $completeTask,
     ): void {
         if ($this->inactiveReasonKey !== null) {
             return;
@@ -309,35 +314,39 @@ class UnitPortal extends Component
             $selectedLabels = [];
         }
 
-        $openTask = $resolveOpenTask->handle($unit, $worker);
-
-        $recordUnitCheck->handle(
-            unit: $unit,
-            data: new RecordUnitCheckData(
-                result: $result,
-                checkedAt: \Carbon\CarbonImmutable::parse((string) $this->checkCheckedAt),
-                source: UnitCheckSource::Portal,
-                latitude: $this->checkLatitude,
-                longitude: $this->checkLongitude,
-                taskId: $openTask?->id,
-                checklistItems: $selectedLabels === [] ? null : $selectedLabels,
-            ),
-            tenantId: $this->tenantId,
-            worker: $worker,
+        $checkData = new RecordUnitCheckData(
+            result: $result,
+            checkedAt: \Carbon\CarbonImmutable::parse((string) $this->checkCheckedAt),
+            source: UnitCheckSource::Portal,
+            latitude: $this->checkLatitude,
+            longitude: $this->checkLongitude,
+            checklistItems: $selectedLabels === [] ? null : $selectedLabels,
         );
 
-        if ($result === UnitCheckResult::Ok && $openTask !== null) {
-            if ($openTask->canStart()) {
-                $startTask->handle($openTask, $worker);
-                $openTask = $openTask->fresh();
-            }
-            if ($openTask?->canComplete()) {
-                $completeTask->handle(
-                    $openTask,
-                    $worker,
-                    __('portal.unit_check.task_complete_note'),
-                );
-            }
+        if ($result === UnitCheckResult::Ok) {
+            $recordOkAndApply->handle(
+                unit: $unit,
+                data: $checkData,
+                tenantId: $this->tenantId,
+                worker: $worker,
+            );
+        } else {
+            $openTask = $resolveOpenTask->handle($unit, $worker);
+            $recordUnitCheck->handle(
+                unit: $unit,
+                data: new RecordUnitCheckData(
+                    result: $checkData->result,
+                    checkedAt: $checkData->checkedAt,
+                    source: $checkData->source,
+                    latitude: $checkData->latitude,
+                    longitude: $checkData->longitude,
+                    taskId: $openTask?->id,
+                    issueId: $openTask?->issue_id,
+                    checklistItems: $checkData->checklistItems,
+                ),
+                tenantId: $this->tenantId,
+                worker: $worker,
+            );
         }
 
         $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems');
@@ -356,6 +365,49 @@ class UnitPortal extends Component
 
         $this->flashMessage = __('portal.unit_check.recorded_ok');
         $this->portalSection = 'home';
+    }
+
+    public function openSkipRoundStop(int $taskId): void
+    {
+        if ($this->inactiveReasonKey !== null) {
+            return;
+        }
+
+        if ($this->findUnitTask($taskId) === null) {
+            return;
+        }
+
+        $this->skipRoundTaskId = $taskId;
+        $this->skipReason = '';
+        $this->resetErrorBag(['skipReason']);
+    }
+
+    public function closeSkipRoundStop(): void
+    {
+        $this->skipRoundTaskId = null;
+        $this->skipReason = '';
+        $this->resetErrorBag(['skipReason']);
+    }
+
+    public function submitSkipRoundStop(SkipRoundStopAction $skipRoundStop): void
+    {
+        if ($this->inactiveReasonKey !== null) {
+            return;
+        }
+
+        $worker = $this->authorizedWorker();
+        if ($worker === null || $this->skipRoundTaskId === null) {
+            return;
+        }
+
+        $task = $this->findUnitTask($this->skipRoundTaskId);
+        if ($task === null || ! $task->issue?->isInspectionRound()) {
+            return;
+        }
+
+        $skipRoundStop->handle($task, (int) $this->unitId, $this->skipReason, $worker);
+        $this->closeSkipRoundStop();
+        $this->flashMessage = __('portal.round.skip_recorded');
     }
 
     private function prefillReservationGuest(): void
@@ -717,6 +769,11 @@ class UnitPortal extends Component
         $worker = $this->authorizedWorker();
         $task = $worker !== null ? $this->findUnitTask($taskId) : null;
         if ($task === null || ! $task->canComplete()) {
+            return;
+        }
+
+        if ($task->issue?->isInspectionRound()
+            && ! app(RoundTaskCompletionAction::class)->isComplete($task)) {
             return;
         }
 
@@ -1106,6 +1163,7 @@ class UnitPortal extends Component
 
         return view('livewire.public.unit-portal', [
             'canAct' => $canAct,
+            'unit' => $unit,
             'allowsUnitChecks' => $unit->allowsUnitChecks(),
             'unitCheckList' => $unitCheckList,
             'unitCheckListItems' => $unitCheckListItems,
@@ -1239,8 +1297,8 @@ class UnitPortal extends Component
         }
 
         return Task::where('internal_team_id', $team->id)
-            ->whereHas('issue', fn ($q) => $q->where('unit_id', $this->unitId))
-            ->with(['issue.esgIndicator.translations'])
+            ->whereHas('issue', fn ($q) => $q->belongsToUnit($this->unit()))
+            ->with(['issue.esgIndicator.translations', 'issue.roundStops', 'roundStopSkips'])
             ->find($taskId);
     }
 

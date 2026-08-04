@@ -57,11 +57,31 @@
                         @if ($issue->esgIndicator)
                             <p class="wp-muted">{{ __('issues.show.esg_indicator', ['name' => $issue->esgIndicator->localizedName()]) }}</p>
                         @endif
+                        @if ($issue->isInspectionRound())
+                            <span class="wp-pill wp-pill--progress">{{ __('issues.card.round_stops', ['count' => $issue->roundStopCount()]) }}</span>
+                        @endif
                     </div>
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleRecurrencePause">
                         {{ $issue->recurrence_paused_at ? __('issues.show.recurring_resume') : __('issues.show.recurring_pause') }}
                     </button>
                 </div>
+
+                @can('update', $issue)
+                    <div class="wp-field">
+                        <label class="wp-label" for="show_round_stop_unit_ids">{{ __('issues.show.round_stops') }}</label>
+                        <p class="wp-muted wp-text-sm">{{ __('issues.show.round_stops_help') }}</p>
+                        <select id="show_round_stop_unit_ids" class="wp-select" wire:model="round_stop_unit_ids" multiple size="6">
+                            @foreach ($roundStopUnits as $unit)
+                                <option value="{{ $unit->id }}">{{ $unit->localizedName() }}</option>
+                            @endforeach
+                        </select>
+                        @error('round_stop_unit_ids') <p class="wp-error">{{ $message }}</p> @enderror
+                        @error('round_stop_unit_ids.*') <p class="wp-error">{{ $message }}</p> @enderror
+                        <button type="button" class="btn btn--primary btn--sm" wire:click="saveRoundStops">
+                            {{ __('issues.show.round_stops_save') }}
+                        </button>
+                    </div>
+                @endcan
             </div>
         @endif
 

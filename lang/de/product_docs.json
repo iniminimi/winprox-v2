@@ -44,6 +44,10 @@
                 "body": "Schnell melden, dass eine Unit in Ordnung ist — z. B. nach einer Security-Runde, Reinigungskontrolle oder technischen Prüfung. Am Unit-QR: OK oder Nicht OK; bei OK keine separate Meldung nötig. Optional zuerst eine Checkliste abhaken. Nicht OK bleibt neben dem normalen Meldefluss verfügbar."
             },
             {
+                "title": "Inspektionsrunden",
+                "body": "Wiederkehrende Meldung mit fester Unit-Route (Stops). Pro Zyklus eine Aufgabe; Unit-Check OK je Stop (oder überspringen mit Grund). Fertig, wenn alle Stops dieses Zyklus erledigt sind."
+            },
+            {
                 "title": "Branding & QR",
                 "body": "Organisation logo and portal background; unit photos and a background photo per unit. Avery or A6/A5/A4 sticker formats under Settings — print-ready."
             },

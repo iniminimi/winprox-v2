@@ -62,7 +62,8 @@
         "no_team": "No team",
         "reported": "Reported by :name · :datetime",
         "unknown_reporter": "Unknown",
-        "source_iot": "Via IoT"
+        "source_iot": "Via IoT",
+        "round_stops": "Round · :count stops"
     },
     "create": {
         "title": "New issue",
@@ -98,7 +99,9 @@
         "back": "Back",
         "finish": "Create issue",
         "success": "Issue and task have been created.",
-        "unit_day": "Day"
+        "unit_day": "Day",
+        "round_stops": "Inspection round stops (optional)",
+        "round_stops_help": "Pick at least 2 units in order. The issue then has no single unit; progress is via Unit check per stop."
     },
     "errors": {
         "cannot_close_approved": "An approved issue cannot be closed.",
@@ -126,7 +129,9 @@
         "translation_same_as_source": "The target language matches the source language.",
         "translation_import_invalid": "Invalid import item.",
         "translation_import_too_long": "Translation is too long (max. 1500 characters).",
-        "translation_import_issue_missing": "Issue not found or not approved."
+        "translation_import_issue_missing": "Issue not found or not approved.",
+        "round_stops_min": "Select at least 2 units as stops for an inspection round.",
+        "round_stops_invalid": "One or more selected stops are invalid."
     },
     "show": {
         "title": "Issue",
@@ -186,7 +191,11 @@
         "updates_photos": "Photos",
         "photo_enlarge": "Enlarge photo",
         "photos_heading": "Photos",
-        "edit_task_recurring_hint": "This task belongs to a recurring issue. Interval and series are managed on the issue; here you only adjust this occurrence (description, planned date, priority, team)."
+        "edit_task_recurring_hint": "This task belongs to a recurring issue. Interval and series are managed on the issue; here you only adjust this occurrence (description, planned date, priority, team).",
+        "round_stops": "Inspection round stops",
+        "round_stops_help": "At least 2 units. List order is the stop order. No ESG on rounds.",
+        "round_stops_save": "Save stops",
+        "round_stops_saved": "Round stops saved."
     },
     "updates": {
         "kind": {

@@ -62,7 +62,8 @@
         "no_team": "Sin equipo",
         "reported": "Informada por :name · :datetime",
         "unknown_reporter": "Desconocido",
-        "source_iot": "Via IoT"
+        "source_iot": "Via IoT",
+        "round_stops": "Ronda · :count paradas"
     },
     "create": {
         "title": "Nueva incidencia",
@@ -98,7 +99,9 @@
         "back": "Atrás",
         "finish": "Crear incidencia",
         "success": "La incidencia y la tarea se han creado.",
-        "unit_day": "Día"
+        "unit_day": "Día",
+        "round_stops": "Paradas de ronda (opcional)",
+        "round_stops_help": "Elija al menos 2 unidades en orden. El aviso no tendrá una sola unidad; el progreso va por Unit check por parada."
     },
     "errors": {
         "cannot_close_approved": "Una incidencia aprobada no se puede cerrar.",
@@ -126,7 +129,9 @@
         "translation_same_as_source": "El idioma de destino coincide con el idioma de origen.",
         "translation_import_invalid": "Elemento de importación no válido.",
         "translation_import_too_long": "La traducción es demasiado larga (máx. 1500 caracteres).",
-        "translation_import_issue_missing": "Incidencia no encontrada o no aprobada."
+        "translation_import_issue_missing": "Incidencia no encontrada o no aprobada.",
+        "round_stops_min": "Seleccione al menos 2 unidades como paradas de una ronda de inspección.",
+        "round_stops_invalid": "Una o más paradas seleccionadas no son válidas."
     },
     "show": {
         "title": "Incidencia",
@@ -186,7 +191,11 @@
         "updates_photos": "Fotos",
         "photo_enlarge": "Ampliar foto",
         "photos_heading": "Fotos",
-        "edit_task_recurring_hint": "Esta tarea pertenece a un aviso recurrente. El intervalo y la serie se gestionan en el aviso; aquí solo ajusta esta ejecución (descripción, fecha planificada, prioridad, equipo)."
+        "edit_task_recurring_hint": "Esta tarea pertenece a un aviso recurrente. El intervalo y la serie se gestionan en el aviso; aquí solo ajusta esta ejecución (descripción, fecha planificada, prioridad, equipo).",
+        "round_stops": "Paradas de ronda",
+        "round_stops_help": "Al menos 2 unidades. El orden de la lista es el de las paradas. Sin ESG en rondas.",
+        "round_stops_save": "Guardar paradas",
+        "round_stops_saved": "Paradas de ronda guardadas."
     },
     "updates": {
         "kind": {

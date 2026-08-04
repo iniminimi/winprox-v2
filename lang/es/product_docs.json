@@ -44,6 +44,10 @@
                 "body": "Confirmar rápido que una unidad está en orden — p. ej. tras una ronda de seguridad, limpieza o revisión técnica. En el QR de unidad: OK o No OK; con OK no hace falta un aviso aparte. Lista de verificación opcional. No OK sigue disponible junto al flujo de aviso habitual."
             },
             {
+                "title": "Rondas de inspección",
+                "body": "Aviso recurrente con una ruta fija de unidades (paradas). Una tarea por ciclo; Unit check OK en cada parada (u omitir con motivo). Listo cuando todas las paradas de ese ciclo están gestionadas."
+            },
+            {
                 "title": "Branding & QR",
                 "body": "Organisation logo and portal background; unit photos and a background photo per unit. Avery or A6/A5/A4 sticker formats under Settings — print-ready."
             },

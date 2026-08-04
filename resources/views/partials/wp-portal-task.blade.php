@@ -2,8 +2,16 @@
 @php($issue = $task->issue)
 @php($team = $team ?? null)
 @php($worker = $worker ?? null)
+@php($isRound = $issue?->isInspectionRound() ?? false)
+@php($roundProgress = $isRound ? app(\App\Actions\Tasks\RoundTaskCompletionAction::class)->progress($task) : null)
+@php($currentUnitId = isset($unit) ? (int) $unit->id : null)
+@php($stopOpenHere = $isRound && $currentUnitId !== null && app(\App\Actions\Tasks\RoundTaskCompletionAction::class)->openStopUnitIds($task)->contains($currentUnitId))
 <div class="wp-card wp-card-pad wp-stack" wire:key="portal-task-{{ $task->id }}">
     @include('partials.wp-portal-task-lines', ['task' => $task, 'issue' => $issue])
+
+    @if ($isRound && $roundProgress)
+        <p class="wp-muted wp-text-sm">{{ __('portal.round.progress', ['done' => $roundProgress['total'] - $roundProgress['open'], 'total' => $roundProgress['total']]) }}</p>
+    @endif
 
     @include('partials.wp-portal-issue-photos', [
         'issue' => $issue,
@@ -87,7 +95,7 @@
                     <span wire:loading wire:target="startTask({{ $task->id }})">{{ __('portal.worker.syncing') }}...</span>
                 </button>
             @endif
-            @if ($task->canComplete())
+            @if ($task->canComplete() && (! $isRound || ($roundProgress && $roundProgress['open'] === 0)))
                 <button type="button"
                         class="btn btn--primary btn--block"
                         wire:click="beginCompleteTask({{ $task->id }})"
@@ -99,6 +107,14 @@
                     </span>
                     <span wire:loading.remove wire:target="beginCompleteTask({{ $task->id }})">{{ __('portal.worker.complete_task') }}</span>
                     <span wire:loading wire:target="beginCompleteTask({{ $task->id }})">{{ __('portal.worker.syncing') }}...</span>
+                </button>
+            @endif
+            @if ($isRound && $stopOpenHere)
+                <button type="button"
+                        class="btn btn--ghost btn--block btn--sm"
+                        wire:click="openSkipRoundStop({{ $task->id }})"
+                        :disabled="isOffline">
+                    {{ __('portal.round.skip_stop') }}
                 </button>
             @endif
         </div>

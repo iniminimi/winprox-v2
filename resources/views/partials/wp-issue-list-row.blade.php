@@ -8,9 +8,12 @@
     $teamNames = $issue->isApproved()
         ? $openTasks->map(fn ($t) => $t->team?->localizedName())->filter()->unique()->values()
         : collect();
+    $unitOrRoundLabel = $issue->isInspectionRound()
+        ? __('issues.card.round_stops', ['count' => $issue->roundStopCount()])
+        : $issue->unit?->localizedName();
     $cardTitle = collect([
         $issue->location?->localizedName(),
-        $issue->unit?->localizedName(),
+        $unitOrRoundLabel,
         __('issues.card.kind_nr', ['nr' => $issue->id]),
     ])->filter()->join(', ');
     $addressLine = $issue->location
@@ -65,6 +68,9 @@
         @endunless
         @if ($issue->is_recurring)
             <span class="wp-pill wp-pill--done">{{ __('issues.card.recurring') }}</span>
+        @endif
+        @if ($issue->isInspectionRound())
+            <span class="wp-pill wp-pill--progress">{{ __('issues.card.round_stops', ['count' => $issue->roundStopCount()]) }}</span>
         @endif
         @if ($highestPriorityTask && $highestPriorityTask->priority && $issue->isApproved())
             <span class="wp-badge {{ $highestPriorityTask->priority->badgeClass() }}">

@@ -2,6 +2,8 @@
 
 namespace App\Actions\Portal;
 
+use App\Actions\Tasks\TaskBelongsToUnitAction;
+use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Portal\TimePortalData;
 use App\Support\Portal\WorkerTaskBaseline;
@@ -14,6 +16,10 @@ use Illuminate\Support\Collection;
  */
 class FindNewTeamTasksSinceBaselineAction
 {
+    public function __construct(
+        private TaskBelongsToUnitAction $taskBelongsToUnit,
+    ) {}
+
     public function handle(Worker $worker, ?int $excludeUnitId = null): Collection
     {
         $team = $worker->team;
@@ -27,14 +33,18 @@ class FindNewTeamTasksSinceBaselineAction
         }
 
         $knownIds = $payload['task_ids'];
+        $excludeUnit = $excludeUnitId !== null
+            ? Unit::query()->find($excludeUnitId)
+            : null;
 
         return TimePortalData::openTasksForTeam($team)
-            ->filter(function ($task) use ($knownIds, $excludeUnitId) {
+            ->filter(function ($task) use ($knownIds, $excludeUnit) {
                 if (in_array((int) $task->id, $knownIds, true)) {
                     return false;
                 }
 
-                if ($excludeUnitId !== null && (int) ($task->issue?->unit_id) === $excludeUnitId) {
+                if ($excludeUnit !== null && $task->issue !== null
+                    && $this->taskBelongsToUnit->handle($task->issue, $excludeUnit)) {
                     return false;
                 }
 

@@ -58,6 +58,11 @@ class Task extends Model
         return $this->belongsTo(Issue::class);
     }
 
+    public function roundStopSkips(): HasMany
+    {
+        return $this->hasMany(TaskRoundStopSkip::class);
+    }
+
     /** Taak uit een terugkerende cyclus, of gekoppeld aan een terugkerende melding. */
     public function isRecurring(): bool
     {

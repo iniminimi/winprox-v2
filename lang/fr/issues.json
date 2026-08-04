@@ -62,7 +62,8 @@
         "no_team": "Aucune équipe",
         "reported": "Signalé par :name · :datetime",
         "unknown_reporter": "Inconnu",
-        "source_iot": "Via IoT"
+        "source_iot": "Via IoT",
+        "round_stops": "Tournée · :count arrêts"
     },
     "create": {
         "title": "Nouveau signalement",
@@ -98,7 +99,9 @@
         "back": "Retour",
         "finish": "Créer le signalement",
         "success": "Le signalement et la tâche ont été créés.",
-        "unit_day": "Jour"
+        "unit_day": "Jour",
+        "round_stops": "Arrêts de tournée (optionnel)",
+        "round_stops_help": "Choisissez au moins 2 unités dans l’ordre. Le signalement n’a alors pas d’unité unique ; la progression passe par le contrôle d’unité par arrêt."
     },
     "errors": {
         "cannot_close_approved": "Un signalement approuvé ne peut pas être fermé.",
@@ -126,7 +129,9 @@
         "translation_same_as_source": "La langue cible est identique à la langue source.",
         "translation_import_invalid": "Élément d'import invalide.",
         "translation_import_too_long": "Traduction trop longue (max. 1500 caractères).",
-        "translation_import_issue_missing": "Signalement introuvable ou non validé."
+        "translation_import_issue_missing": "Signalement introuvable ou non validé.",
+        "round_stops_min": "Sélectionnez au moins 2 unités comme arrêts pour une tournée d’inspection.",
+        "round_stops_invalid": "Un ou plusieurs arrêts sélectionnés sont invalides."
     },
     "show": {
         "title": "Signalement",
@@ -186,7 +191,11 @@
         "updates_photos": "Photos",
         "photo_enlarge": "Agrandir la photo",
         "photos_heading": "Photos",
-        "edit_task_recurring_hint": "Cette tâche appartient à un signalement récurrent. L’intervalle et la série se règlent sur le signalement ; ici vous n’ajustez que cette exécution (description, date planifiée, priorité, équipe)."
+        "edit_task_recurring_hint": "Cette tâche appartient à un signalement récurrent. L’intervalle et la série se règlent sur le signalement ; ici vous n’ajustez que cette exécution (description, date planifiée, priorité, équipe).",
+        "round_stops": "Arrêts de tournée",
+        "round_stops_help": "Au moins 2 unités. L’ordre de la liste est l’ordre des arrêts. Pas d’ESG sur les tournées.",
+        "round_stops_save": "Enregistrer les arrêts",
+        "round_stops_saved": "Arrêts de tournée enregistrés."
     },
     "updates": {
         "kind": {

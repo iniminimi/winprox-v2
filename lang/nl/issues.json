@@ -62,7 +62,8 @@
         "no_team": "Geen team",
         "reported": "Gemeld door :name · :datetime",
         "unknown_reporter": "Onbekend",
-        "source_iot": "Via IoT"
+        "source_iot": "Via IoT",
+        "round_stops": "Ronde · :count stops"
     },
     "create": {
         "title": "Nieuwe melding",
@@ -98,7 +99,9 @@
         "back": "Terug",
         "finish": "Melding aanmaken",
         "success": "Melding en taak zijn aangemaakt.",
-        "unit_day": "Dag"
+        "unit_day": "Dag",
+        "round_stops": "Inspectieronde-stops (optioneel)",
+        "round_stops_help": "Kies minstens 2 units in volgorde. De melding krijgt dan geen enkele unit; voortgang loopt via Unit check per stop."
     },
     "errors": {
         "cannot_close_approved": "Een goedgekeurde melding kan niet worden gesloten.",
@@ -126,7 +129,9 @@
         "translation_same_as_source": "De doeltaal is gelijk aan de brontaal.",
         "translation_import_invalid": "Ongeldig import-item.",
         "translation_import_too_long": "Vertaling is te lang (max. 1500 tekens).",
-        "translation_import_issue_missing": "Melding niet gevonden of niet goedgekeurd."
+        "translation_import_issue_missing": "Melding niet gevonden of niet goedgekeurd.",
+        "round_stops_min": "Selecteer minstens 2 units als stops voor een inspectieronde.",
+        "round_stops_invalid": "Een of meer geselecteerde stops zijn ongeldig."
     },
     "show": {
         "title": "Melding",
@@ -186,7 +191,11 @@
         "updates_photos": "Foto's",
         "photo_enlarge": "Foto vergroten",
         "photos_heading": "Foto's",
-        "edit_task_recurring_hint": "Deze taak hoort bij een terugkerende melding. Interval en reeksregel je op de melding; hier pas je alleen deze uitvoering aan (omschrijving, gepland op, prio, team)."
+        "edit_task_recurring_hint": "Deze taak hoort bij een terugkerende melding. Interval en reeksregel je op de melding; hier pas je alleen deze uitvoering aan (omschrijving, gepland op, prio, team).",
+        "round_stops": "Inspectieronde-stops",
+        "round_stops_help": "Minstens 2 units. Volgorde = volgorde in de lijst. Geen ESG bij rondes.",
+        "round_stops_save": "Stops opslaan",
+        "round_stops_saved": "Ronde-stops opgeslagen."
     },
     "updates": {
         "kind": {

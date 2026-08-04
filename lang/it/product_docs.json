@@ -44,6 +44,10 @@
                 "body": "Confermare in fretta che un’unità è a posto — ad es. dopo un giro sicurezza, controllo pulizie o verifica tecnica. Sul QR unità: OK o Non OK; con OK non serve una segnalazione a parte. Checklist opzionale. Non OK resta disponibile insieme al flusso di segnalazione."
             },
             {
+                "title": "Giri di ispezione",
+                "body": "Segnalazione ricorrente con un percorso fisso di unità (fermate). Un task per ciclo; Unit check OK a ogni fermata (o salta con motivo). Completo quando tutte le fermate del ciclo sono gestite."
+            },
+            {
                 "title": "Branding & QR",
                 "body": "Organisation logo and portal background; unit photos and a background photo per unit. Avery or A6/A5/A4 sticker formats under Settings — print-ready."
             },

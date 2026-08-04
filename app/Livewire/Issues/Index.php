@@ -79,6 +79,9 @@ class Index extends Component
 
     public ?int $esg_indicator_id = null;
 
+    /** @var list<int|string> */
+    public array $round_stop_unit_ids = [];
+
     public ?int $internal_team_id = null;
 
     public ?string $task_note = null;
@@ -237,11 +240,25 @@ class Index extends Component
             $this->esg_indicator_id = null;
         }
 
+        $this->round_stop_unit_ids = array_values(array_filter(array_map(
+            static fn ($id) => is_numeric($id) ? (int) $id : null,
+            $this->round_stop_unit_ids,
+        )));
+
+        if (count($this->round_stop_unit_ids) >= 2) {
+            $this->unit_id = null;
+            $this->esg_indicator_id = null;
+        }
+
         $tenantId = (int) Tenancy::id();
         $validated = $this->validate(
             StoreManagerIssueStepOneRequest::ruleSet($tenantId, EsgModuleAccess::activeTenantHasModule()),
             StoreManagerIssueStepOneRequest::messageSet(),
         );
+
+        if ($this->round_stop_unit_ids !== []) {
+            $validated['round_stop_unit_ids'] = $this->round_stop_unit_ids;
+        }
 
         $validated['original_language'] = app()->getLocale();
 
@@ -297,6 +314,7 @@ class Index extends Component
         $this->recurrence_lead_days = 7;
         $this->recurrence_first_due_date = null;
         $this->esg_indicator_id = null;
+        $this->round_stop_unit_ids = [];
         $this->internal_team_id = null;
         $this->task_note = null;
         $this->task_priority = 'prio_3';
@@ -310,7 +328,7 @@ class Index extends Component
         $this->authorize('viewAny', Issue::class);
 
         $issues = Issue::query()
-            ->with(['location', 'unit.translations', 'tasks.team.translations', 'translations'])
+            ->with(['location', 'unit.translations', 'tasks.team.translations', 'translations', 'roundStops'])
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
             ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($this->teamFilter, fn ($q) => $q->whereHas('tasks', fn ($t) => $t->where('internal_team_id', $this->teamFilter)))
