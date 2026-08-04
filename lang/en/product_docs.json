@@ -45,7 +45,7 @@
             },
             {
                 "title": "Inspection rounds",
-                "body": "Recurring issue with a fixed route of units (stops). One task per cycle; Unit check OK at each stop (or skip with a reason). Done when all stops for that cycle are handled."
+                "body": "Recurring issue with a fixed route of units (stops). One task per cycle; at each stop Unit check OK, Not OK (with a report), or skip with a reason. Done when all stops of that cycle are handled."
             },
             {
                 "title": "Branding & QR",

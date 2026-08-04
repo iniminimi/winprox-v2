@@ -45,7 +45,7 @@
             },
             {
                 "title": "Inspectierondes",
-                "body": "Terugkerende melding met een vaste route van units (stops). Per cyclus één taak; bij elke stop Unit check OK (of overslaan met reden). Klaar als alle stops van die cyclus afgehandeld zijn."
+                "body": "Terugkerende melding met een vaste route van units (stops). Per cyclus één taak; bij elke stop Unit check OK, Niet OK (met melding), of overslaan met reden. Klaar als alle stops van die cyclus afgehandeld zijn."
             },
             {
                 "title": "Branding & QR",

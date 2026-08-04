@@ -45,7 +45,7 @@
             },
             {
                 "title": "Giri di ispezione",
-                "body": "Segnalazione ricorrente con un percorso fisso di unità (fermate). Un task per ciclo; Unit check OK a ogni fermata (o salta con motivo). Completo quando tutte le fermate del ciclo sono gestite."
+                "body": "Segnalazione ricorrente con percorso fisso di unit (fermate). Un compito per ciclo; a ogni fermata Unit check OK, Non OK (con segnalazione) o salta con motivo. Completo quando tutte le fermate del ciclo sono gestite."
             },
             {
                 "title": "Branding & QR",
