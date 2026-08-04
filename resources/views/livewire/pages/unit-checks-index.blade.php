@@ -13,7 +13,7 @@
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-cluster wp-cluster--between wp-cluster--wrap">
             <p class="wp-section-title">{{ __('unit_checks.list_title') }}</p>
-            <div class="wp-cluster wp-cluster--wrap">
+            <div class="wp-cluster wp-cluster--tight">
                 <select class="wp-select wp-select--compact" wire:model.live="resultFilter" aria-label="{{ __('unit_checks.filters.result') }}">
                     <option value="all">{{ __('unit_checks.filters.all_results') }}</option>
                     <option value="ok">{{ __('unit_checks.result.ok') }}</option>
