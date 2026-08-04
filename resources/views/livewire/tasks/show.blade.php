@@ -51,11 +51,16 @@
     <div class="wp-card wp-card-pad wp-stack-tight">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('tasks.show.task_line', ['team' => $teamName]) }}</h2>
-            @if ($canUpdate)
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTaskModal">
-                    {{ __('issues.show.edit_task_modal_title') }}
-                </button>
-            @endif
+            <div class="wp-chip-row">
+                @if ($issue)
+                    <a href="{{ route('issues.show', $issue) }}" class="btn btn--ghost btn--sm">{{ __('tasks.show.view_issue') }}</a>
+                @endif
+                @if ($canUpdate)
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTaskModal">
+                        {{ __('issues.show.edit_task_modal_title') }}
+                    </button>
+                @endif
+            </div>
         </div>
         @if ($taskDescription !== '')
             <p class="wp-text-body">{{ $taskDescription }}</p>
@@ -64,20 +69,7 @@
             <p class="wp-muted">{{ __('tasks.show.due', ['date' => ($task->scheduled_for ?? $task->due_at)?->format('d/m/Y')]) }}</p>
         @endif
         <p class="wp-text-body">{{ $task->priority->label() }}</p>
-    </div>
-
-    @if ($roundProgress)
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('tasks.show.round_progress') }}</h2>
-            @include('partials.wp-portal-round-progress', [
-                'progress' => $roundProgress,
-            ])
-        </div>
-    @endif
-
-    @if ($task->isRecurring())
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <p class="wp-section-title">{{ __('tasks.show.recurring_title') }}</p>
+        @if ($task->isRecurring())
             @if ($task->is_recurring_cycle)
                 <p class="wp-muted">{{ __('tasks.show.recurring_cycle', ['nr' => $task->cycle_number ?? 1]) }}</p>
             @endif
@@ -90,6 +82,15 @@
             @if ($issue?->recurrence_next_due_at)
                 <p class="wp-muted">{{ __('tasks.show.recurring_next_due', ['date' => $issue->recurrence_next_due_at->format('d-m-Y')]) }}</p>
             @endif
+        @endif
+    </div>
+
+    @if ($roundProgress)
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <h2 class="wp-section-title">{{ __('tasks.show.round_progress') }}</h2>
+            @include('partials.wp-portal-round-progress', [
+                'progress' => $roundProgress,
+            ])
         </div>
     @endif
 
@@ -271,7 +272,6 @@
         <div class="wp-card wp-card-pad wp-stack-tight">
             <div class="wp-row">
                 <h2 class="wp-section-title">{{ $issueHeading }}</h2>
-                <a href="{{ route('issues.show', $issue) }}" class="btn btn--ghost btn--sm">{{ __('tasks.show.view_issue') }}</a>
             </div>
             @if ($issue->reporter_contact)
                 <p class="wp-muted">{{ $issue->reporter_contact }}</p>
@@ -279,11 +279,6 @@
             @if ($issueDescriptionDiffers)
                 <p class="wp-text-body">{{ $issue->localizedDescription() }}</p>
             @endif
-        </div>
-    @elseif ($issue?->isInspectionRound())
-        <div class="wp-row">
-            <span aria-hidden="true"></span>
-            <a href="{{ route('issues.show', $issue) }}" class="btn btn--ghost btn--sm">{{ __('tasks.show.view_issue') }}</a>
         </div>
     @endif
 
