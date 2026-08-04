@@ -28,12 +28,14 @@
                 $state = $stop['state'];
                 $pill = match ($state) {
                     'ok' => 'done',
+                    'not_ok' => 'closed',
                     'skipped' => 'closed',
                     'current' => 'progress',
                     default => 'new',
                 };
                 $label = match ($state) {
                     'ok' => __('portal.round.stop_ok'),
+                    'not_ok' => __('portal.round.stop_not_ok'),
                     'skipped' => __('portal.round.stop_skipped'),
                     'current' => __('portal.round.stop_current'),
                     default => __('portal.round.stop_open'),

@@ -289,6 +289,7 @@
         "stop_skipped": "Skipped",
         "stop_open": "Open",
         "stop_current": "Next",
-        "do_check_here": "This stop is next. Do a Unit check (OK) here, or skip it."
+        "do_check_here": "This stop is next. Do a Unit check (OK) here, or skip it.",
+        "stop_not_ok": "Not OK"
     }
 }

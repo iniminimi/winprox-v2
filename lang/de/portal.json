@@ -289,6 +289,7 @@
         "stop_skipped": "Übersprungen",
         "stop_open": "Offen",
         "stop_current": "Nächste",
-        "do_check_here": "Dieser Stopp ist dran. Machen Sie hier einen Unit-Check (OK), oder überspringen Sie ihn."
+        "do_check_here": "Dieser Stopp ist dran. Machen Sie hier einen Unit-Check (OK), oder überspringen Sie ihn.",
+        "stop_not_ok": "Nicht OK"
     }
 }

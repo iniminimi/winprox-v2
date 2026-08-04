@@ -11,8 +11,8 @@ use App\Models\UnitCheck;
 use Illuminate\Support\Collection;
 
 /**
- * Completion-query (4 / 4b): open = stops(issue) − (OK ∪ skipped voor deze task_id).
- * Fase 2: strikte volgorde — alleen de eerste open stop (sort_order) mag OK/skip.
+ * Completion-query (4 / 4b): open = stops(issue) − (OK ∪ Niet OK ∪ skipped voor deze task_id).
+ * Fase 2: strikte volgorde — alleen de eerste open stop (sort_order) mag OK/Niet OK/skip.
  */
 class RoundTaskCompletionAction
 {
@@ -96,6 +96,14 @@ class RoundTaskCompletionAction
             ->map(fn ($id) => (int) $id)
             ->unique()
             ->all();
+        $notOkIds = UnitCheck::query()
+            ->where('task_id', $task->id)
+            ->where('result', UnitCheckResult::NotOk->value)
+            ->whereIn('unit_id', $stops->pluck('unit_id'))
+            ->pluck('unit_id')
+            ->map(fn ($id) => (int) $id)
+            ->unique()
+            ->all();
 
         $stopRows = [];
         foreach ($stops as $stop) {
@@ -103,6 +111,7 @@ class RoundTaskCompletionAction
             $unitId = (int) $stop->unit_id;
             $state = match (true) {
                 in_array($unitId, $okIds, true) => 'ok',
+                in_array($unitId, $notOkIds, true) => 'not_ok',
                 in_array($unitId, $skippedIds, true) => 'skipped',
                 $nextId !== null && $unitId === $nextId => 'current',
                 default => 'open',
@@ -118,6 +127,7 @@ class RoundTaskCompletionAction
         $open = $openIds->count();
         $skipped = count(array_intersect($skippedIds, $stops->pluck('unit_id')->map(fn ($id) => (int) $id)->all()));
         $ok = count(array_intersect($okIds, $stops->pluck('unit_id')->map(fn ($id) => (int) $id)->all()));
+        $notOk = count(array_intersect($notOkIds, $stops->pluck('unit_id')->map(fn ($id) => (int) $id)->all()));
         $nextName = null;
         if ($nextId !== null) {
             $nextName = collect($stopRows)->firstWhere('unit_id', $nextId)['name'] ?? null;
@@ -126,6 +136,7 @@ class RoundTaskCompletionAction
         return [
             'total' => $total,
             'ok' => $ok,
+            'not_ok' => $notOk,
             'skipped' => $skipped,
             'open' => $open,
             'done' => max(0, $total - $open),
@@ -150,6 +161,15 @@ class RoundTaskCompletionAction
             ->unique()
             ->all();
 
+        $notOkUnitIds = UnitCheck::query()
+            ->where('task_id', $task->id)
+            ->where('result', UnitCheckResult::NotOk->value)
+            ->whereIn('unit_id', $stopUnitIds)
+            ->pluck('unit_id')
+            ->map(fn ($id) => (int) $id)
+            ->unique()
+            ->all();
+
         $skippedUnitIds = $task->roundStopSkips()
             ->whereIn('unit_id', $stopUnitIds)
             ->pluck('unit_id')
@@ -157,6 +177,6 @@ class RoundTaskCompletionAction
             ->unique()
             ->all();
 
-        return array_values(array_unique([...$okUnitIds, ...$skippedUnitIds]));
+        return array_values(array_unique([...$okUnitIds, ...$notOkUnitIds, ...$skippedUnitIds]));
     }
 }

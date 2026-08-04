@@ -289,6 +289,7 @@
         "stop_skipped": "Passé",
         "stop_open": "Ouvert",
         "stop_current": "Suivant",
-        "do_check_here": "Cet arrêt est le suivant. Faites ici un contrôle unité (OK), ou passez-le."
+        "do_check_here": "Cet arrêt est le suivant. Faites ici un contrôle unité (OK), ou passez-le.",
+        "stop_not_ok": "Pas OK"
     }
 }

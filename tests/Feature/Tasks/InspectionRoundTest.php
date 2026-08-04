@@ -416,6 +416,27 @@ it('refuses skip when the unit is not the next open stop', function () {
         ->and(app(RoundTaskCompletionAction::class)->progress($task->fresh())['stops'][1]['state'])->toBe('open');
 });
 
+it('records not_ok on a round stop and advances to the next stop', function () {
+    ['unitA' => $unitA, 'unitB' => $unitB, 'team' => $team, 'worker' => $worker, 'task' => $task] = inspectionRoundScaffold();
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'round-unit-a'])
+        ->call('openSection', 'unit_check')
+        ->set('checkResult', 'not_ok')
+        ->set('checkCheckedAt', now()->toIso8601String())
+        ->call('submitUnitCheck')
+        ->assertHasNoErrors()
+        ->assertSet('portalSection', 'new');
+
+    $progress = app(RoundTaskCompletionAction::class)->progress($task->fresh());
+
+    expect(\App\Models\UnitCheck::query()->where('result', 'not_ok')->where('task_id', $task->id)->count())->toBe(1)
+        ->and($progress['stops'][0]['state'])->toBe('not_ok')
+        ->and($progress['stops'][1]['state'])->toBe('current')
+        ->and($progress['next_unit_id'])->toBe((int) $unitB->id)
+        ->and($task->fresh()->status)->toBe(TaskStatus::InProgress);
+});
+
 it('renders round progress on the task show page', function () {
     ['tenant' => $tenant, 'actor' => $actor, 'task' => $task, 'unitA' => $unitA] = inspectionRoundScaffold();
     seedTenantPastOnboarding($tenant);

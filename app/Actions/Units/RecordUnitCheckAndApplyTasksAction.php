@@ -17,9 +17,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 /**
- * Unit check OK: single-unit taak eerst, daarna ronde-voortgang — in één transactie.
+ * Unit check OK/Niet OK: single-unit taak alleen bij OK afronden;
+ * ronde-stop telt mee bij OK én Niet OK (strikte volgorde).
  */
-class RecordOkUnitCheckAndApplyTasksAction
+class RecordUnitCheckAndApplyTasksAction
 {
     public function __construct(
         private RecordUnitCheckAction $recordUnitCheck,
@@ -47,7 +48,7 @@ class RecordOkUnitCheckAndApplyTasksAction
             ]);
         }
 
-        if ($data->result !== UnitCheckResult::Ok) {
+        if (! in_array($data->result, [UnitCheckResult::Ok, UnitCheckResult::NotOk], true)) {
             throw ValidationException::withMessages([
                 'checkResult' => [__('unit_checks.validation.result_invalid')],
             ]);
@@ -79,7 +80,7 @@ class RecordOkUnitCheckAndApplyTasksAction
                 worker: $worker,
             );
 
-            if ($single !== null) {
+            if ($data->result === UnitCheckResult::Ok && $single !== null) {
                 $this->startAndCompleteSingle($single, $worker);
             }
 

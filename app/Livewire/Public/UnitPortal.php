@@ -14,8 +14,7 @@ use App\Actions\Time\ResolveDefaultClockPointAction;
 use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitBackgroundPhotoAction;
 use App\Actions\Units\RecordUnitGpsReportAction;
-use App\Actions\Units\RecordUnitCheckAction;
-use App\Actions\Units\RecordOkUnitCheckAndApplyTasksAction;
+use App\Actions\Units\RecordUnitCheckAndApplyTasksAction;
 use App\Actions\Units\ResolveOpenUnitTaskForCheckAction;
 use App\Actions\QrCodes\StoreQrLinkPhotosAction;
 use App\Actions\Tasks\CompleteTaskAction;
@@ -245,8 +244,7 @@ class UnitPortal extends Component
     }
 
     public function submitUnitCheck(
-        RecordUnitCheckAction $recordUnitCheck,
-        RecordOkUnitCheckAndApplyTasksAction $recordOkAndApply,
+        RecordUnitCheckAndApplyTasksAction $recordCheckAndApply,
         ResolveOpenUnitTaskForCheckAction $resolveOpenTask,
     ): void {
         if ($this->inactiveReasonKey !== null) {
@@ -323,33 +321,16 @@ class UnitPortal extends Component
             checklistItems: $selectedLabels === [] ? null : $selectedLabels,
         );
 
-        if ($result === UnitCheckResult::Ok) {
-            $waitingRound = $resolveOpenTask->findRoundWaitingOnEarlierStop($unit, $worker);
-            $recordOkAndApply->handle(
-                unit: $unit,
-                data: $checkData,
-                tenantId: $this->tenantId,
-                worker: $worker,
-            );
-        } else {
-            $waitingRound = null;
-            $openTask = $resolveOpenTask->handle($unit, $worker);
-            $recordUnitCheck->handle(
-                unit: $unit,
-                data: new RecordUnitCheckData(
-                    result: $checkData->result,
-                    checkedAt: $checkData->checkedAt,
-                    source: $checkData->source,
-                    latitude: $checkData->latitude,
-                    longitude: $checkData->longitude,
-                    taskId: $openTask?->id,
-                    issueId: $openTask?->issue_id,
-                    checklistItems: $checkData->checklistItems,
-                ),
-                tenantId: $this->tenantId,
-                worker: $worker,
-            );
-        }
+        $waitingRound = $result === UnitCheckResult::Ok
+            ? $resolveOpenTask->findRoundWaitingOnEarlierStop($unit, $worker)
+            : null;
+
+        $recordCheckAndApply->handle(
+            unit: $unit,
+            data: $checkData,
+            tenantId: $this->tenantId,
+            worker: $worker,
+        );
 
         $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems');
 

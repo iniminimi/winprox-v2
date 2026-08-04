@@ -425,8 +425,10 @@ stops meer zijn voor **deze** cyclus-taak.
 - Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).
 - Taak↔unit (2b): `issue.unit_id = U` **óf** U is stop — via `TaskBelongsToUnitAction`
   + Eloquent `Issue::belongsToUnit` (open unittaken + banner-exclude).
-- Completion (4/4b): stops − (OK ∪ skipped **voor huidige `task_id`**). Skips in
+- Completion (4/4b): stops − (OK ∪ Niet OK ∪ skipped **voor huidige `task_id`**). Skips in
   `task_round_stop_skips` per task. Indexen `(task_id, unit_id)` op checks én skips.
+- Unit check **Niet OK**: rij in `unit_checks` + meldformulier; stop telt mee als
+  afgehandeld in de ronde (label **Niet OK**), daarna volgende stop.
 - ≥2 stops: Form Request `min:2` bij opslaan.
 - Impliciet meetellen (geen “start ronde”).
 - Units zonder unit checks (categorie of unit uit): niet selecteerbaar; bestaande
