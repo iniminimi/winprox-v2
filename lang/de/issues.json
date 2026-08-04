@@ -101,7 +101,9 @@
         "success": "Meldung und Aufgabe wurden erstellt.",
         "unit_day": "Tag",
         "round_stops": "Inspektionsrunden-Stops (optional)",
-        "round_stops_help": "Wählen Sie mindestens 2 Units in Reihenfolge. Die Meldung hat dann keine einzelne Unit; Fortschritt über Unit-Check je Stop."
+        "round_stops_help": "Wählen Sie mindestens 2 Units in Reihenfolge. Die Meldung hat dann keine einzelne Unit; Fortschritt über Unit-Check je Stop.",
+        "round_stops_empty": "Wählen Sie zuerst einen Standort mit Units, um Stops zu wählen.",
+        "round_stops_select_help": "Wählen Sie hier die Units, die zur Runde gehören. Die Reihenfolge läuft von oben nach unten in dieser Liste."
     },
     "errors": {
         "cannot_close_approved": "Eine freigegebene Meldung kann nicht geschlossen werden.",

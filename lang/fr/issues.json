@@ -101,7 +101,9 @@
         "success": "Le signalement et la tâche ont été créés.",
         "unit_day": "Jour",
         "round_stops": "Arrêts de tournée (optionnel)",
-        "round_stops_help": "Choisissez au moins 2 unités dans l’ordre. Le signalement n’a alors pas d’unité unique ; la progression passe par le contrôle d’unité par arrêt."
+        "round_stops_help": "Choisissez au moins 2 unités dans l’ordre. Le signalement n’a alors pas d’unité unique ; la progression passe par le contrôle d’unité par arrêt.",
+        "round_stops_empty": "Choisissez d'abord un site avec des unités pour sélectionner les arrêts.",
+        "round_stops_select_help": "Sélectionnez ici les unités qui font partie de la tournée. L'ordre suit la liste de haut en bas."
     },
     "errors": {
         "cannot_close_approved": "Un signalement approuvé ne peut pas être fermé.",

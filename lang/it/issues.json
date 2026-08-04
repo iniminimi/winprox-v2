@@ -101,7 +101,9 @@
         "success": "Segnalazione e attività sono state create.",
         "unit_day": "Giorno",
         "round_stops": "Fermate del giro (opzionale)",
-        "round_stops_help": "Scegli almeno 2 unità in ordine. La segnalazione non ha una sola unità; il progresso avviene tramite Unit check per fermata."
+        "round_stops_help": "Scegli almeno 2 unità in ordine. La segnalazione non ha una sola unità; il progresso avviene tramite Unit check per fermata.",
+        "round_stops_empty": "Prima scelga una sede con unità per selezionare le fermate.",
+        "round_stops_select_help": "Selezioni qui le unità che fanno parte del giro. L'ordine segue l'elenco dall'alto verso il basso."
     },
     "errors": {
         "cannot_close_approved": "Una segnalazione approvata non può essere chiusa.",

@@ -116,6 +116,11 @@
                                 <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                             @endforeach
                         </select>
+                        @if ($createUnits->isEmpty())
+                            <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_empty') }}</p>
+                        @else
+                            <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_select_help') }}</p>
+                        @endif
                         @error('round_stop_unit_ids') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('round_stop_unit_ids.*') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
