@@ -104,6 +104,14 @@
                 {
                     "label": "Lead (dagen)",
                     "text": "Hoeveel dagen voor de vervaldatum de taak al wordt aangemaakt (bijv. 7 dagen voor maandelijkse taken)."
+                },
+                {
+                    "label": "Inspectieronde-stops",
+                    "text": "Kies in de terugkerende melding minstens 2 units als stops. De volgorde in de lijst is de loopvolgorde van de ronde."
+                },
+                {
+                    "label": "Selecteer alle units",
+                    "text": "Gebruik het vinkje boven de lijst om snel alle units te selecteren. Daarna kunt u eventueel individuele units uitvinken."
                 }
             ]
         },

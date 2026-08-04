@@ -104,6 +104,14 @@
                 {
                     "label": "Lead (days)",
                     "text": "How many days before the due date the task is created (e.g. 7 days for monthly tasks)."
+                },
+                {
+                    "label": "Inspection round stops",
+                    "text": "In a recurring issue, choose at least 2 units as stops. The list order is the round route order."
+                },
+                {
+                    "label": "Select all units",
+                    "text": "Use the checkbox above the list to quickly select all units. You can then untick individual units if needed."
                 }
             ]
         },

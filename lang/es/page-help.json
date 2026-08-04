@@ -104,6 +104,14 @@
                 {
                     "label": "Antelación (días)",
                     "text": "Cuántos días antes de la fecha de vencimiento se crea la tarea (p. ej. 7 días para tareas mensuales)."
+                },
+                {
+                    "label": "Paradas de ronda",
+                    "text": "En un aviso recurrente, elija al menos 2 unidades como paradas. El orden de la lista es el orden de la ronda."
+                },
+                {
+                    "label": "Seleccionar todas las unidades",
+                    "text": "Use la casilla encima de la lista para seleccionar rápidamente todas las unidades. Luego puede desmarcar unidades individuales."
                 }
             ]
         },

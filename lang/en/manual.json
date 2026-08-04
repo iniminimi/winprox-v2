@@ -60,7 +60,7 @@
     "step_4_title": "Receive issues & assign tasks",
     "step_4_text": "Issues come in via a QR scan, manual entry or (with IoT Connect) a sensor alarm. For each issue, a task is automatically created and directly linked to the responsible team. It is possible to create multiple tasks for one issue. Set a deadline and track progress via the dashboard, calendar and — for bookings — Reservations.",
     "step_5_title": "Follow up & close",
-    "step_5_text": "Workers carry out tasks on site via the unit QR portal (after signing in via Clock Point QR); when new team tasks arrive, a banner appears. Once all tasks for an issue have been handled, the administrator can definitively close the issue. Optional: ESG measurements, Time presence, IoT Connect and unit reservations — see the related chapters. Delete organisation data via Subscription (after export in Settings).",
+    "step_5_text": "Workers carry out tasks on site via the unit QR portal (after signing in via Clock Point QR); when new team tasks arrive, a banner appears. Once all tasks for an issue have been handled, the administrator can definitively close the issue. Optional: ESG measurements, Time presence, IoT Connect and unit reservations — see the related chapters. Delete organisation data via Subscription (after export in Settings). For inspection rounds: the worker follows stops in a fixed order; on the unit QR they see progress and the next stop.",
     "hub": {
         "title": "Manuals",
         "subtitle": "Choose the manual that fits your role",

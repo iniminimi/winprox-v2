@@ -104,6 +104,14 @@
                 {
                     "label": "Anticipation (jours)",
                     "text": "Nombre de jours avant l'échéance où la tâche est créée (ex. 7 jours pour les tâches mensuelles)."
+                },
+                {
+                    "label": "Arrêts de tournée",
+                    "text": "Dans un signalement récurrent, choisissez au moins 2 unités comme arrêts. L'ordre de la liste est l'ordre de la tournée."
+                },
+                {
+                    "label": "Sélectionner toutes les unités",
+                    "text": "Utilisez la case au-dessus de la liste pour sélectionner rapidement toutes les unités, puis décochez celles à exclure."
                 }
             ]
         },

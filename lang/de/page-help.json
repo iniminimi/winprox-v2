@@ -104,6 +104,14 @@
                 {
                     "label": "Vorlauf (Tage)",
                     "text": "Wie viele Tage vor dem Fälligkeitsdatum die Aufgabe erstellt wird (z.B. 7 Tage für monatliche Aufgaben)."
+                },
+                {
+                    "label": "Inspektionsrunden-Stopps",
+                    "text": "Wählen Sie in der wiederkehrenden Meldung mindestens 2 Units als Stopps. Die Listenreihenfolge ist die Rundenreihenfolge."
+                },
+                {
+                    "label": "Alle Units auswählen",
+                    "text": "Nutzen Sie das Kontrollkästchen über der Liste, um schnell alle Units zu wählen. Danach können Sie einzelne Units wieder abwählen."
                 }
             ]
         },

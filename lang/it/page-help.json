@@ -104,6 +104,14 @@
                 {
                     "label": "Anticipo (giorni)",
                     "text": "Quanti giorni prima della scadenza viene creata l'attività (es. 7 giorni per attività mensili)."
+                },
+                {
+                    "label": "Fermate del giro",
+                    "text": "In una segnalazione ricorrente, scelga almeno 2 unità come fermate. L'ordine dell'elenco è l'ordine del giro."
+                },
+                {
+                    "label": "Seleziona tutte le unità",
+                    "text": "Usi la casella sopra l'elenco per selezionare rapidamente tutte le unità. Poi può deselezionare le singole unità."
                 }
             ]
         },
