@@ -136,7 +136,11 @@
         "translation_import_issue_missing": "Segnalazione non trovata o non approvata.",
         "round_stops_min": "Seleziona almeno 2 unità come fermate per un giro di ispezione.",
         "round_stops_invalid": "Una o più fermate selezionate non sono valide.",
-        "round_stops_unit_checks_required": "I controlli unità devono essere attivi su ogni fermata selezionata (categoria e unità)."
+        "round_stops_unit_checks_required": "I controlli unità devono essere attivi su ogni fermata selezionata (categoria e unità).",
+        "cannot_end_not_recurring": "Solo le segnalazioni ricorrenti possono essere terminate.",
+        "cannot_end_already_ended": "Questa segnalazione ricorrente è già terminata.",
+        "end_recurring_reason_required": "Indichi un motivo per terminare la serie.",
+        "end_recurring_reason_min": "Il motivo deve contenere almeno 2 caratteri."
     },
     "show": {
         "title": "Segnalazione",
@@ -200,7 +204,15 @@
         "round_stops": "Fermate del giro",
         "round_stops_help": "Almeno 2 unità. L’ordine dell’elenco è l’ordine delle fermate. Niente ESG sui giri.",
         "round_stops_save": "Salva fermate",
-        "round_stops_saved": "Fermate del giro salvate."
+        "round_stops_saved": "Fermate del giro salvate.",
+        "recurring_end": "Termina",
+        "recurring_ended_pill": "Terminata",
+        "recurring_ended": "Segnalazione ricorrente terminata.",
+        "recurring_end_modal_title": "Termina segnalazione ricorrente",
+        "recurring_end_modal_subtitle": "Interrompe definitivamente i nuovi cicli e imposta la segnalazione su Chiusa. I compiti aperti verranno chiusi.",
+        "recurring_end_reason_label": "Motivo della fine",
+        "recurring_end_reason_placeholder": "Descriva perché questa serie termina…",
+        "recurring_end_submit": "Termina serie"
     },
     "updates": {
         "kind": {
@@ -210,7 +222,8 @@
             "pause": "Pausa",
             "status_reason": "Cambio di stato",
             "close_reason": "Segnalazione chiusa",
-            "reopen_reason": "Segnalazione riaperta"
+            "reopen_reason": "Segnalazione riaperta",
+            "recurrence_end_reason": "Serie terminata"
         },
         "errors": {
             "description_required": "Inserisca una nota.",

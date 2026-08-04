@@ -14,6 +14,21 @@ class RecalculateIssueStatusAction
      */
     public function handle(Issue $issue): TaskStatus
     {
+        // Beëindigde terugkerende reeks blijft Gesloten ondanks historische Done-cycli.
+        if ($issue->is_recurring && ! $issue->recurrence_active) {
+            $derived = TaskStatus::Closed;
+            if ($issue->status !== $derived) {
+                $before = $issue->status instanceof TaskStatus
+                    ? $issue->status
+                    : (TaskStatus::tryFrom((string) $issue->status) ?? TaskStatus::New);
+                $issue->status = $derived;
+                $issue->save();
+                IssueStatusWebhook::dispatchIfChanged($issue, $before);
+            }
+
+            return $derived;
+        }
+
         $statuses = $issue->tasks()
             ->pluck('status')
             ->map(fn ($status) => $status instanceof TaskStatus ? $status->value : $status);

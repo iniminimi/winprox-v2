@@ -33,7 +33,13 @@ class ReopenIssueAction
         }
 
         // Heropen de issue
-        $issue->update(['status' => TaskStatus::New]);
+        $updates = ['status' => TaskStatus::New];
+        if ($issue->is_recurring) {
+            $updates['recurrence_active'] = true;
+            $updates['recurrence_paused_at'] = null;
+        }
+
+        $issue->update($updates);
 
         // Voeg update toe met reden
         if ($reason !== null && trim($reason) !== '') {

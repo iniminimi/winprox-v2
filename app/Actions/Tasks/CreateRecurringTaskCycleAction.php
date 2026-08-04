@@ -30,6 +30,10 @@ class CreateRecurringTaskCycleAction
             return null;
         }
 
+        if ($issue->status === TaskStatus::Closed) {
+            return null;
+        }
+
         $nextDueAt = $issue->recurrence_next_due_at?->copy();
         if ($nextDueAt === null) {
             return null;

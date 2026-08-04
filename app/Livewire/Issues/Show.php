@@ -6,6 +6,7 @@ use App\Actions\Communication\ImportTaskTranslationsAction;
 use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\CloseIssueAction;
 use App\Actions\Issues\CreateIssueUpdateAction;
+use App\Actions\Issues\EndRecurringIssueAction;
 use App\Actions\Issues\RemoveUnitsFromInspectionRoundsAction;
 use App\Actions\Issues\ReopenIssueAction;
 use App\Actions\Issues\SyncIssueRoundStopsAction;
@@ -15,6 +16,7 @@ use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Actions\Tasks\UpdateTaskPriorityAction;
 use App\Actions\Tasks\UpdateTaskTeamAction;
 use App\Enums\TaskPriority;
+use App\Http\Requests\Issues\EndRecurringIssueRequest;
 use App\Http\Requests\Issues\SyncIssueRoundStopsRequest;
 use App\Models\Task;
 use App\Models\InternalTeam;
@@ -44,6 +46,8 @@ class Show extends Component
 
     public bool $showCloseModal = false;
 
+    public bool $showEndRecurringModal = false;
+
     public bool $showReopenModal = false;
 
     public bool $showUpdateModal = false;
@@ -61,6 +65,8 @@ class Show extends Component
     public string $updateDescription = '';
 
     public string $closeReason = '';
+
+    public string $endReason = '';
 
     public string $reopenReason = '';
 
@@ -199,9 +205,52 @@ class Show extends Component
         $this->refreshIssue();
     }
 
+    public function openEndRecurringModal(): void
+    {
+        $this->authorize('update', $this->issue);
+
+        if (! $this->issue->is_recurring || ! $this->issue->recurrence_active) {
+            return;
+        }
+
+        $this->endReason = '';
+        $this->resetValidation();
+        $this->showEndRecurringModal = true;
+    }
+
+    public function closeEndRecurringModal(): void
+    {
+        $this->showEndRecurringModal = false;
+        $this->endReason = '';
+        $this->resetValidation();
+    }
+
+    public function endRecurringIssue(EndRecurringIssueAction $endRecurring): void
+    {
+        $this->authorize('update', $this->issue);
+
+        $this->endReason = trim($this->endReason);
+
+        $validated = $this->validate(
+            EndRecurringIssueRequest::ruleSet(),
+            EndRecurringIssueRequest::messageSet(),
+        );
+
+        $this->issue = $endRecurring->handle($this->issue, auth()->user(), $validated['endReason']);
+
+        $this->closeEndRecurringModal();
+        $this->refreshIssue();
+        session()->flash('success', __('issues.show.recurring_ended'));
+    }
+
     public function toggleRecurrencePause(ToggleIssueRecurrencePauseAction $toggle): void
     {
         $this->authorize('update', $this->issue);
+
+        if (! $this->issue->recurrence_active) {
+            return;
+        }
+
         $toggle->handle($this->issue, (int) auth()->id());
         $this->refreshIssue();
     }

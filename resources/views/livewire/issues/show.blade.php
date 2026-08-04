@@ -49,7 +49,9 @@
                         @if ($issue->recurrence_next_due_at)
                             <p class="wp-muted">{{ __('issues.show.recurring_next_due', ['date' => $issue->recurrence_next_due_at->format('d-m-Y')]) }}</p>
                         @endif
-                        @if ($issue->recurrence_paused_at)
+                        @if (! $issue->recurrence_active)
+                            <span class="wp-pill wp-pill--closed">{{ __('issues.show.recurring_ended_pill') }}</span>
+                        @elseif ($issue->recurrence_paused_at)
                             <span class="wp-pill wp-pill--closed">{{ __('issues.show.recurring_paused') }}</span>
                         @else
                             <span class="wp-pill wp-pill--progress">{{ __('issues.show.recurring_active') }}</span>
@@ -61,9 +63,18 @@
                             <span class="wp-pill wp-pill--progress">{{ __('issues.card.round_stops', ['count' => $issue->roundStopCount()]) }}</span>
                         @endif
                     </div>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleRecurrencePause">
-                        {{ $issue->recurrence_paused_at ? __('issues.show.recurring_resume') : __('issues.show.recurring_pause') }}
-                    </button>
+                    @can('update', $issue)
+                        @if ($issue->recurrence_active)
+                            <div class="wp-chip-row">
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleRecurrencePause">
+                                    {{ $issue->recurrence_paused_at ? __('issues.show.recurring_resume') : __('issues.show.recurring_pause') }}
+                                </button>
+                                <button type="button" class="btn btn--danger btn--sm" wire:click="openEndRecurringModal">
+                                    {{ __('issues.show.recurring_end') }}
+                                </button>
+                            </div>
+                        @endif
+                    @endcan
                 </div>
 
                 @can('update', $issue)
@@ -432,6 +443,37 @@
                 </div>
             </form>
         </div>
+        @endteleport
+    @endif
+
+    @if ($showEndRecurringModal)
+        @teleport('body')
+        <x-wp-modal closeMethod="closeEndRecurringModal" aria-labelledby="issue-end-recurring-title">
+            <form wire:submit="endRecurringIssue" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="issue-end-recurring-title" class="wp-section-title">{{ __('issues.show.recurring_end_modal_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeEndRecurringModal" />
+                </div>
+                <div class="wp-modal-body wp-stack">
+                    <p class="wp-muted">{{ __('issues.show.recurring_end_modal_subtitle') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="endReason">{{ __('issues.show.recurring_end_reason_label') }}</label>
+                        <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                            <textarea id="endReason" class="wp-textarea" wire:model="endReason" rows="3"
+                                      placeholder="{{ __('issues.show.recurring_end_reason_placeholder') }}"
+                                      maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                      x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                            <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                        </div>
+                        @error('endReason') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeEndRecurringModal">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--danger">{{ __('issues.show.recurring_end_submit') }}</button>
+                </div>
+            </form>
+        </x-wp-modal>
         @endteleport
     @endif
 

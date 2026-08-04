@@ -11,7 +11,7 @@ class ToggleIssueRecurrencePauseAction
 
     public function handle(Issue $issue, ?int $actorUserId = null): Issue
     {
-        if (! $issue->is_recurring) {
+        if (! $issue->is_recurring || ! $issue->recurrence_active) {
             return $issue;
         }
 

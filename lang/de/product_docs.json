@@ -53,7 +53,7 @@
             },
             {
                 "title": "Issues",
-                "body": "Über Unit-QR, manuell in der Verwaltung oder (mit IoT) Sensoralarm. Filter, Freigabe von QR-Meldungen, wiederkehrende Wartung. Optional: Kontaktdaten Pflicht für anonyme QR-Melder (Kategorie und Unit). Auf öffentlichen QR-Seiten erst nach Freigabe sichtbar; die Verwaltung sieht alles sofort."
+                "body": "Über Unit-QR, manuell in der Verwaltung oder (mit IoT) Sensoralarm. Filter, Freigabe von QR-Meldungen, wiederkehrende Wartung (pausieren oder endgültig beenden). Optional: Kontaktdaten Pflicht für anonyme QR-Melder (Kategorie und Unit). Auf öffentlichen QR-Seiten erst nach Freigabe sichtbar; die Verwaltung sieht alles sofort."
             },
             {
                 "title": "Photos",

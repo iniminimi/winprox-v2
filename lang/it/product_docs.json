@@ -53,7 +53,7 @@
             },
             {
                 "title": "Issues",
-                "body": "Via QR unità, manualmente in amministrazione, o (con IoT) allarme sensore. Filtri, approvazione delle segnalazioni QR, manutenzione ricorrente. Opzionale: dati di contatto obbligatori per segnalanti anonimi via QR (categoria e unità). Sulle pagine QR pubbliche visibili solo dopo approvazione; l’amministrazione vede tutto subito."
+                "body": "Via QR unità, manualmente in amministrazione, o (con IoT) allarme sensore. Filtri, approvazione delle segnalazioni QR, manutenzione ricorrente (pausa o fine definitiva). Opzionale: dati di contatto obbligatori per segnalanti anonimi via QR (categoria e unità). Sulle pagine QR pubbliche visibili solo dopo approvazione; l’amministrazione vede tutto subito."
             },
             {
                 "title": "Photos",

@@ -136,7 +136,11 @@
         "translation_import_issue_missing": "Melding niet gevonden of niet goedgekeurd.",
         "round_stops_min": "Selecteer minstens 2 units als stops voor een inspectieronde.",
         "round_stops_invalid": "Een of meer geselecteerde stops zijn ongeldig.",
-        "round_stops_unit_checks_required": "Unit checks moet aanstaan op elke gekozen stop (categorie én unit)."
+        "round_stops_unit_checks_required": "Unit checks moet aanstaan op elke gekozen stop (categorie én unit).",
+        "cannot_end_not_recurring": "Alleen terugkerende meldingen kunnen worden beëindigd.",
+        "cannot_end_already_ended": "Deze terugkerende melding is al beëindigd.",
+        "end_recurring_reason_required": "Geef een reden op om de reeks te beëindigen.",
+        "end_recurring_reason_min": "De reden moet minstens 2 tekens bevatten."
     },
     "show": {
         "title": "Melding",
@@ -200,7 +204,15 @@
         "round_stops": "Inspectieronde-stops",
         "round_stops_help": "Minstens 2 units. Volgorde = volgorde in de lijst. Geen ESG bij rondes.",
         "round_stops_save": "Stops opslaan",
-        "round_stops_saved": "Ronde-stops opgeslagen."
+        "round_stops_saved": "Ronde-stops opgeslagen.",
+        "recurring_end": "Beëindigen",
+        "recurring_ended_pill": "Beëindigd",
+        "recurring_ended": "Terugkerende melding beëindigd.",
+        "recurring_end_modal_title": "Terugkerende melding beëindigen",
+        "recurring_end_modal_subtitle": "Stop nieuwe cycli definitief en zet de melding op Gesloten. Openstaande taken worden gesloten.",
+        "recurring_end_reason_label": "Reden voor beëindigen",
+        "recurring_end_reason_placeholder": "Beschrijf waarom deze reeks stopt…",
+        "recurring_end_submit": "Reeks beëindigen"
     },
     "updates": {
         "kind": {
@@ -210,7 +222,8 @@
             "pause": "Pauze",
             "status_reason": "Statuswijziging",
             "close_reason": "Melding gesloten",
-            "reopen_reason": "Melding heropend"
+            "reopen_reason": "Melding heropend",
+            "recurrence_end_reason": "Reeks beëindigd"
         },
         "errors": {
             "description_required": "Geef een notitie.",

@@ -132,6 +132,9 @@
         "iot_sensor.deactivated": "IoT sensor deactivated",
         "iot_rule.updated": "IoT rule updated",
         "iot_rule.activated": "IoT rule activated",
-        "iot_rule.deactivated": "IoT rule deactivated"
+        "iot_rule.deactivated": "IoT rule deactivated",
+        "issue.recurrence_ended": "Aviso recurrente finalizado",
+        "issue.recurrence_paused": "Aviso recurrente en pausa",
+        "issue.recurrence_resumed": "Aviso recurrente reanudado"
     }
 }

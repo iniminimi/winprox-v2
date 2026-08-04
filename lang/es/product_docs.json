@@ -53,7 +53,7 @@
             },
             {
                 "title": "Issues",
-                "body": "Vía QR de unidad, manualmente en administración, o (con IoT) alarma de sensor. Filtros, aprobación de avisos QR, mantenimiento recurrente. Opcional: datos de contacto obligatorios para informantes anónimos por QR (categoría y unidad). En páginas QR públicas visibles solo tras aprobación; la administración lo ve todo de inmediato."
+                "body": "Vía QR de unidad, manualmente en administración, o (con IoT) alarma de sensor. Filtros, aprobación de avisos QR, mantenimiento recurrente (pausar o finalizar definitivamente). Opcional: datos de contacto obligatorios para informantes anónimos por QR (categoría y unidad). En páginas QR públicas visibles solo tras aprobación; la administración lo ve todo de inmediato."
             },
             {
                 "title": "Photos",

@@ -136,7 +136,11 @@
         "translation_import_issue_missing": "Meldung nicht gefunden oder nicht freigegeben.",
         "round_stops_min": "Wählen Sie mindestens 2 Units als Stops für eine Inspektionsrunde.",
         "round_stops_invalid": "Ein oder mehrere ausgewählte Stops sind ungültig.",
-        "round_stops_unit_checks_required": "Unit-Checks müssen bei jedem gewählten Stopp aktiviert sein (Kategorie und Unit)."
+        "round_stops_unit_checks_required": "Unit-Checks müssen bei jedem gewählten Stopp aktiviert sein (Kategorie und Unit).",
+        "cannot_end_not_recurring": "Nur wiederkehrende Meldungen können beendet werden.",
+        "cannot_end_already_ended": "Diese wiederkehrende Meldung ist bereits beendet.",
+        "end_recurring_reason_required": "Geben Sie einen Grund an, um die Serie zu beenden.",
+        "end_recurring_reason_min": "Der Grund muss mindestens 2 Zeichen haben."
     },
     "show": {
         "title": "Meldung",
@@ -200,7 +204,15 @@
         "round_stops": "Inspektionsrunden-Stops",
         "round_stops_help": "Mindestens 2 Units. Listenreihenfolge = Stoppreihenfolge. Kein ESG bei Runden.",
         "round_stops_save": "Stops speichern",
-        "round_stops_saved": "Runden-Stops gespeichert."
+        "round_stops_saved": "Runden-Stops gespeichert.",
+        "recurring_end": "Beenden",
+        "recurring_ended_pill": "Beendet",
+        "recurring_ended": "Wiederkehrende Meldung beendet.",
+        "recurring_end_modal_title": "Wiederkehrende Meldung beenden",
+        "recurring_end_modal_subtitle": "Neue Zyklen dauerhaft stoppen und die Meldung auf Geschlossen setzen. Offene Aufgaben werden geschlossen.",
+        "recurring_end_reason_label": "Grund für das Beenden",
+        "recurring_end_reason_placeholder": "Beschreiben Sie, warum diese Serie endet…",
+        "recurring_end_submit": "Serie beenden"
     },
     "updates": {
         "kind": {
@@ -210,7 +222,8 @@
             "pause": "Pause",
             "status_reason": "Statusänderung",
             "close_reason": "Meldung geschlossen",
-            "reopen_reason": "Meldung wieder geöffnet"
+            "reopen_reason": "Meldung wieder geöffnet",
+            "recurrence_end_reason": "Serie beendet"
         },
         "errors": {
             "description_required": "Geben Sie eine Notiz ein.",

@@ -136,7 +136,11 @@
         "translation_import_issue_missing": "Incidencia no encontrada o no aprobada.",
         "round_stops_min": "Seleccione al menos 2 unidades como paradas de una ronda de inspección.",
         "round_stops_invalid": "Una o más paradas seleccionadas no son válidas.",
-        "round_stops_unit_checks_required": "Unit checks debe estar habilitado en cada parada seleccionada (categoría y unidad)."
+        "round_stops_unit_checks_required": "Unit checks debe estar habilitado en cada parada seleccionada (categoría y unidad).",
+        "cannot_end_not_recurring": "Solo se pueden finalizar avisos recurrentes.",
+        "cannot_end_already_ended": "Este aviso recurrente ya está finalizado.",
+        "end_recurring_reason_required": "Indique un motivo para finalizar la serie.",
+        "end_recurring_reason_min": "El motivo debe tener al menos 2 caracteres."
     },
     "show": {
         "title": "Incidencia",
@@ -200,7 +204,15 @@
         "round_stops": "Paradas de ronda",
         "round_stops_help": "Al menos 2 unidades. El orden de la lista es el de las paradas. Sin ESG en rondas.",
         "round_stops_save": "Guardar paradas",
-        "round_stops_saved": "Paradas de ronda guardadas."
+        "round_stops_saved": "Paradas de ronda guardadas.",
+        "recurring_end": "Finalizar",
+        "recurring_ended_pill": "Finalizado",
+        "recurring_ended": "Aviso recurrente finalizado.",
+        "recurring_end_modal_title": "Finalizar aviso recurrente",
+        "recurring_end_modal_subtitle": "Detiene definitivamente los nuevos ciclos y pone el aviso en Cerrado. Las tareas abiertas se cerrarán.",
+        "recurring_end_reason_label": "Motivo de finalización",
+        "recurring_end_reason_placeholder": "Describa por qué termina esta serie…",
+        "recurring_end_submit": "Finalizar serie"
     },
     "updates": {
         "kind": {
@@ -210,7 +222,8 @@
             "pause": "Pausa",
             "status_reason": "Cambio de estado",
             "close_reason": "Incidencia cerrada",
-            "reopen_reason": "Incidencia reabierta"
+            "reopen_reason": "Incidencia reabierta",
+            "recurrence_end_reason": "Serie finalizada"
         },
         "errors": {
             "description_required": "Introduzca una nota.",

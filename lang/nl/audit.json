@@ -132,6 +132,9 @@
         "iot_sensor.deactivated": "IoT-sensor gedeactiveerd",
         "iot_rule.updated": "IoT-regel bijgewerkt",
         "iot_rule.activated": "IoT-regel geactiveerd",
-        "iot_rule.deactivated": "IoT-regel gedeactiveerd"
+        "iot_rule.deactivated": "IoT-regel gedeactiveerd",
+        "issue.recurrence_ended": "Terugkerende melding beëindigd",
+        "issue.recurrence_paused": "Terugkerende melding gepauzeerd",
+        "issue.recurrence_resumed": "Terugkerende melding hervat"
     }
 }

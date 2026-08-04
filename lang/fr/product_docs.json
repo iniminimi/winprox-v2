@@ -53,7 +53,7 @@
             },
             {
                 "title": "Issues",
-                "body": "Via QR d’unité, manuellement en admin, ou (avec IoT) alarme capteur. Filtres, approbation des signalements QR, maintenance récurrente. Optionnel : coordonnées obligatoires pour les signalants anonymes via QR (catégorie et unité). Sur les pages QR publiques visibles seulement après approbation ; l’admin voit tout immédiatement."
+                "body": "Via QR d’unité, manuellement en admin, ou (avec IoT) alarme capteur. Filtres, approbation des signalements QR, maintenance récurrente (pause ou fin définitive). Optionnel : coordonnées obligatoires pour les signalants anonymes via QR (catégorie et unité). Sur les pages QR publiques visibles seulement après approbation ; l’admin voit tout immédiatement."
             },
             {
                 "title": "Photos",
