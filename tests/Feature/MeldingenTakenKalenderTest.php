@@ -25,7 +25,7 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
-it('toont de assistant_issue-clip in de meldingenpaginakop', function () {
+it('toont het meldingen-icoon in de meldingenpaginakop', function () {
     $tenant = Tenant::factory()->create();
     seedTenantPastOnboarding($tenant);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
@@ -33,11 +33,12 @@ it('toont de assistant_issue-clip in de meldingenpaginakop', function () {
     $this->actingAs($user)
         ->get(route('issues.index'))
         ->assertOk()
-        ->assertSee('video/assistant_issue.mp4', false)
-        ->assertSee('wp-page-icon--assistant', false);
+        ->assertDontSee('video/assistant_issue.mp4', false)
+        ->assertDontSee('wp-page-icon--assistant', false)
+        ->assertSee('wp-page-icon', false);
 });
 
-it('toont de assistant_task-clip in de takenpaginakop', function () {
+it('toont het taken-icoon in de takenpaginakop', function () {
     $tenant = Tenant::factory()->create();
     seedTenantPastOnboarding($tenant);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
@@ -45,8 +46,9 @@ it('toont de assistant_task-clip in de takenpaginakop', function () {
     $this->actingAs($user)
         ->get(route('tasks.index'))
         ->assertOk()
-        ->assertSee('video/assistant_task.mp4', false)
-        ->assertSee('wp-page-icon--assistant', false);
+        ->assertDontSee('video/assistant_task.mp4', false)
+        ->assertDontSee('wp-page-icon--assistant', false)
+        ->assertSee('wp-page-icon', false);
 });
 
 it('maakt een melding aan via 2-staps flow met taak in uitvoering', function () {

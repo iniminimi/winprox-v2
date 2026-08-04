@@ -9,8 +9,7 @@
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
-                    :assistant-video="asset('video/assistant_issue.mp4')"
-                    assistant-video-loop
+                    icon="issues"
                     :title="__('issues.list.title')"
                     help-page="issues.list"
                     :subtitle="__('issues.list.subtitle')"

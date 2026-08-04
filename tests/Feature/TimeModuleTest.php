@@ -39,14 +39,15 @@ function timeTenantWithAdmin(): array
     return [$tenant, $admin];
 }
 
-it('laat een admin het time-aanwezigheidsscherm openen', function () {
+it('laat een admin het time-aanwezigheidsscherm met icoon openen', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
 
     $this->actingAs($admin)
         ->get(route('time.presence.index'))
         ->assertOk()
-        ->assertSee('video/assistant_time.mp4', false)
-        ->assertSee('wp-page-icon--assistant', false)
+        ->assertDontSee('video/assistant_time.mp4', false)
+        ->assertDontSee('wp-page-icon--assistant', false)
+        ->assertSee('wp-page-icon', false)
         ->assertDontSee('wp-kpi--has-assistant', false);
 });
 
