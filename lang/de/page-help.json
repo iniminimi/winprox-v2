@@ -148,7 +148,7 @@
                 },
                 {
                     "label": "Inspektionsrunde",
-                    "text": "Bei einer Inspektionsrunde sehen Sie hier den Fortschritt je Stopp (OK, übersprungen, offen) für diesen Zyklus. Auf dem Unit-QR-Portal jedes Stopps sieht der Mitarbeiter denselben Fortschritt; die Aufgabe wird automatisch abgeschlossen, wenn alle Stopps erledigt sind. Offene Runden können Sie hier auch manuell abschließen oder schließen (mit Begründung)."
+                    "text": "Bei einer Inspektionsrunde sehen Sie hier den Fortschritt je Stopp (OK, Nicht OK, übersprungen, offen) mit Datum/Uhrzeit und Ausführendem. Auf dem Unit-QR-Portal jedes Stopps sieht der Mitarbeiter denselben Fortschritt; die Aufgabe wird automatisch abgeschlossen, wenn alle Stopps erledigt sind. Offene Runden können Sie hier auch manuell abschließen oder schließen (mit Begründung)."
                 },
                 {
                     "label": "Team zuweisen",

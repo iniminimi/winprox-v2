@@ -276,7 +276,7 @@
         "skip_reason": "Raison",
         "skip_confirm": "Passer",
         "skip_recorded": "Arrêt passé.",
-        "task_complete_note": "Tournée d’inspection terminée (tous les arrêts OK ou passés).",
+        "task_complete_note": "Tournée d’inspection terminée (tous les arrêts OK, Pas OK ou passés).",
         "errors": {
             "skip_reason_required": "Indiquez une raison pour passer cet arrêt.",
             "not_a_stop": "Cette unité ne fait pas partie de la tournée.",

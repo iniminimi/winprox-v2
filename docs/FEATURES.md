@@ -435,8 +435,8 @@ stops meer zijn voor **deze** cyclus-taak.
   stops worden verwijderd bij uitschakelen (en self-heal bij openen melding).
   Ronde met <2 stops over houdt geen stops meer.
 - **Fase 2:** strikte stop-volgorde (alleen de eerstvolgende open stop mag OK/skip);
-  rijke progress-UI (balk + genummerde stops met status) op **unit-QR (elke stop)**
-  én op **taakdetail in beheer**.
+  rijke progress-UI (balk + genummerde stops met status, datum/uur en uitvoerder)
+  op **unit-QR (elke stop)** én op **taakdetail in beheer**.
 
 ### Fasering
 | Fase | Levert | Status |

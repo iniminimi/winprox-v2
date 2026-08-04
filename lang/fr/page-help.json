@@ -148,7 +148,7 @@
                 },
                 {
                     "label": "Ronde d’inspection",
-                    "text": "Pour une ronde d’inspection, vous voyez ici la progression par arrêt (OK, ignoré, ouvert) pour ce cycle. Sur le portail QR de chaque arrêt, le worker voit la même progression ; la tâche se termine automatiquement quand tous les arrêts sont faits. Vous pouvez aussi terminer ou fermer une ronde ouverte ici manuellement (avec motif à la fermeture)."
+                    "text": "Pour une ronde d’inspection, vous voyez ici la progression par arrêt (OK, Pas OK, ignoré, ouvert) avec date/heure et exécutant. Sur le portail QR de chaque arrêt, le worker voit la même progression ; la tâche se termine automatiquement quand tous les arrêts sont faits. Vous pouvez aussi terminer ou fermer une ronde ouverte ici manuellement (avec motif à la fermeture)."
                 },
                 {
                     "label": "Assigner une équipe",

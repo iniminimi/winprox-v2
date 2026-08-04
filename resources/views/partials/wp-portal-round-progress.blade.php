@@ -41,11 +41,22 @@
                     default => __('portal.round.stop_open'),
                 };
                 $isHere = $currentUnitId !== null && (int) $stop['unit_id'] === (int) $currentUnitId;
+                $metaParts = array_values(array_filter([
+                    $stop['at'] ?? null,
+                    $stop['worker_name'] ?? null,
+                ]));
             @endphp
             <li @class(['wp-round-stops__item', 'wp-round-stops__item--here' => $isHere])>
                 <span class="wp-round-stops__index">{{ $index + 1 }}</span>
-                <span class="wp-round-stops__name">{{ $stop['name'] }}</span>
-                <span class="wp-pill wp-pill--xs wp-pill--{{ $pill }}">{{ $label }}</span>
+                <div class="wp-round-stops__body">
+                    <div class="wp-round-stops__line">
+                        <span class="wp-round-stops__name">{{ $stop['name'] }}</span>
+                        <span class="wp-pill wp-pill--xs wp-pill--{{ $pill }}">{{ $label }}</span>
+                    </div>
+                    @if ($metaParts !== [])
+                        <p class="wp-round-stops__meta">{{ implode(' · ', $metaParts) }}</p>
+                    @endif
+                </div>
             </li>
         @endforeach
     </ol>

@@ -148,7 +148,7 @@
                 },
                 {
                     "label": "Inspection round",
-                    "text": "For an inspection round you see progress per stop (OK, skipped, open) for this cycle. On each stop unit QR portal the worker sees the same progress; the task completes automatically when all stops are done. You can also complete or close an open round here manually (with a reason when closing)."
+                    "text": "For an inspection round you see progress per stop (OK, Not OK, skipped, open) with date/time and performer. On each stop unit QR portal the worker sees the same progress; the task completes automatically when all stops are done. You can also complete or close an open round here manually (with a reason when closing)."
                 },
                 {
                     "label": "Assign team",

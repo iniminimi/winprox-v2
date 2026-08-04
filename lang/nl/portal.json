@@ -276,7 +276,7 @@
         "skip_reason": "Reden",
         "skip_confirm": "Overslaan",
         "skip_recorded": "Stop overgeslagen.",
-        "task_complete_note": "Inspectieronde voltooid (alle stops OK of overgeslagen).",
+        "task_complete_note": "Inspectieronde voltooid (alle stops OK, Niet OK of overgeslagen).",
         "errors": {
             "skip_reason_required": "Geef een reden om deze stop over te slaan.",
             "not_a_stop": "Deze unit hoort niet bij de ronde.",

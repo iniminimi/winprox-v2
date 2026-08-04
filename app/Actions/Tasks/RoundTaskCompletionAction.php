@@ -67,43 +67,57 @@ class RoundTaskCompletionAction
      * @return array{
      *     total: int,
      *     ok: int,
+     *     not_ok: int,
      *     skipped: int,
      *     open: int,
      *     done: int,
      *     next_unit_id: int|null,
      *     next_unit_name: string|null,
-     *     stops: list<array{unit_id: int, name: string, state: string, sort_order: int}>
+     *     stops: list<array{
+     *         unit_id: int,
+     *         name: string,
+     *         state: string,
+     *         sort_order: int,
+     *         at: string|null,
+     *         worker_name: string|null
+     *     }>
      * }
      */
     public function progress(Task $task): array
     {
-        $task->loadMissing(['issue.roundStops.unit.translations', 'roundStopSkips']);
+        $task->loadMissing(['issue.roundStops.unit.translations', 'roundStopSkips.worker']);
 
         $stops = ($task->issue?->roundStops ?? collect())->sortBy('sort_order')->values();
+        $stopUnitIds = $stops->pluck('unit_id')->map(fn ($id) => (int) $id)->all();
         $total = $stops->count();
         $openIds = $this->openStopUnitIds($task);
         $nextId = $openIds->isEmpty() ? null : (int) $openIds->first();
-        $skippedIds = $task->roundStopSkips
-            ->pluck('unit_id')
-            ->map(fn ($id) => (int) $id)
-            ->unique()
-            ->all();
-        $okIds = UnitCheck::query()
+
+        $skippedByUnit = $task->roundStopSkips
+            ->keyBy(fn ($skip) => (int) $skip->unit_id);
+
+        $checksByUnit = UnitCheck::query()
             ->where('task_id', $task->id)
-            ->where('result', UnitCheckResult::Ok->value)
-            ->whereIn('unit_id', $stops->pluck('unit_id'))
-            ->pluck('unit_id')
+            ->whereIn('unit_id', $stopUnitIds === [] ? [0] : $stopUnitIds)
+            ->whereIn('result', [UnitCheckResult::Ok->value, UnitCheckResult::NotOk->value])
+            ->with('worker')
+            ->orderByDesc('checked_at')
+            ->orderByDesc('id')
+            ->get()
+            ->unique(fn (UnitCheck $check) => (int) $check->unit_id)
+            ->keyBy(fn (UnitCheck $check) => (int) $check->unit_id);
+
+        $okIds = $checksByUnit
+            ->filter(fn (UnitCheck $check) => $check->result === UnitCheckResult::Ok)
+            ->keys()
             ->map(fn ($id) => (int) $id)
-            ->unique()
             ->all();
-        $notOkIds = UnitCheck::query()
-            ->where('task_id', $task->id)
-            ->where('result', UnitCheckResult::NotOk->value)
-            ->whereIn('unit_id', $stops->pluck('unit_id'))
-            ->pluck('unit_id')
+        $notOkIds = $checksByUnit
+            ->filter(fn (UnitCheck $check) => $check->result === UnitCheckResult::NotOk)
+            ->keys()
             ->map(fn ($id) => (int) $id)
-            ->unique()
             ->all();
+        $skippedIds = $skippedByUnit->keys()->map(fn ($id) => (int) $id)->all();
 
         $stopRows = [];
         foreach ($stops as $stop) {
@@ -116,18 +130,33 @@ class RoundTaskCompletionAction
                 $nextId !== null && $unitId === $nextId => 'current',
                 default => 'open',
             };
+
+            $at = null;
+            $workerName = null;
+            if ($state === 'ok' || $state === 'not_ok') {
+                $check = $checksByUnit->get($unitId);
+                $at = $check?->checked_at?->format('d/m/Y H:i');
+                $workerName = $check?->worker?->displayName();
+            } elseif ($state === 'skipped') {
+                $skip = $skippedByUnit->get($unitId);
+                $at = $skip?->created_at?->format('d/m/Y H:i');
+                $workerName = $skip?->worker?->displayName();
+            }
+
             $stopRows[] = [
                 'unit_id' => $unitId,
                 'name' => $stop->unit?->localizedName() ?? ('#'.$unitId),
                 'state' => $state,
                 'sort_order' => (int) $stop->sort_order,
+                'at' => $at,
+                'worker_name' => $workerName,
             ];
         }
 
         $open = $openIds->count();
-        $skipped = count(array_intersect($skippedIds, $stops->pluck('unit_id')->map(fn ($id) => (int) $id)->all()));
-        $ok = count(array_intersect($okIds, $stops->pluck('unit_id')->map(fn ($id) => (int) $id)->all()));
-        $notOk = count(array_intersect($notOkIds, $stops->pluck('unit_id')->map(fn ($id) => (int) $id)->all()));
+        $skipped = count(array_intersect($skippedIds, $stopUnitIds));
+        $ok = count(array_intersect($okIds, $stopUnitIds));
+        $notOk = count(array_intersect($notOkIds, $stopUnitIds));
         $nextName = null;
         if ($nextId !== null) {
             $nextName = collect($stopRows)->firstWhere('unit_id', $nextId)['name'] ?? null;

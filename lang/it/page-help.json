@@ -148,7 +148,7 @@
                 },
                 {
                     "label": "Giro di ispezione",
-                    "text": "Per un giro di ispezione vedi qui l’avanzamento per fermata (OK, saltata, aperta) di questo ciclo. Sul portale QR di ogni fermata il lavoratore vede lo stesso avanzamento; il compito si completa automaticamente quando tutte le fermate sono fatte. Puoi anche completare o chiudere un giro aperto qui manualmente (con motivo in chiusura)."
+                    "text": "Per un giro di ispezione vedi qui l’avanzamento per fermata (OK, Non OK, saltata, aperta) con data/ora e esecutore. Sul portale QR di ogni fermata il lavoratore vede lo stesso avanzamento; il compito si completa automaticamente quando tutte le fermate sono fatte. Puoi anche completare o chiudere un giro aperto qui manualmente (con motivo in chiusura)."
                 },
                 {
                     "label": "Assegna team",

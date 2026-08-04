@@ -437,6 +437,25 @@ it('records not_ok on a round stop and advances to the next stop', function () {
         ->and($task->fresh()->status)->toBe(TaskStatus::InProgress);
 });
 
+it('includes stop timestamp and worker in round progress', function () {
+    ['unitA' => $unitA, 'team' => $team, 'worker' => $worker, 'task' => $task] = inspectionRoundScaffold();
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'round-unit-a'])
+        ->call('openSection', 'unit_check')
+        ->set('checkResult', 'ok')
+        ->set('checkCheckedAt', now()->toIso8601String())
+        ->call('submitUnitCheck')
+        ->assertHasNoErrors();
+
+    $stop = app(RoundTaskCompletionAction::class)->progress($task->fresh())['stops'][0];
+
+    expect($stop['state'])->toBe('ok')
+        ->and($stop['worker_name'])->toBe($worker->displayName())
+        ->and($stop['at'])->not->toBeNull()
+        ->and($stop['at'])->toContain(now()->format('d/m/Y'));
+});
+
 it('renders round progress on the task show page', function () {
     ['tenant' => $tenant, 'actor' => $actor, 'task' => $task, 'unitA' => $unitA] = inspectionRoundScaffold();
     seedTenantPastOnboarding($tenant);

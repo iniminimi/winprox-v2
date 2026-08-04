@@ -276,7 +276,7 @@
         "skip_reason": "Motivo",
         "skip_confirm": "Salta",
         "skip_recorded": "Fermata saltata.",
-        "task_complete_note": "Giro di ispezione completato (tutte le fermate OK o saltate).",
+        "task_complete_note": "Giro di ispezione completato (tutte le fermate OK, Non OK o saltate).",
         "errors": {
             "skip_reason_required": "Indica un motivo per saltare questa fermata.",
             "not_a_stop": "Questa unità non fa parte del giro.",

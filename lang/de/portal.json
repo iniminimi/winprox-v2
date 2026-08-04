@@ -276,7 +276,7 @@
         "skip_reason": "Grund",
         "skip_confirm": "Überspringen",
         "skip_recorded": "Stop übersprungen.",
-        "task_complete_note": "Inspektionsrunde abgeschlossen (alle Stops OK oder übersprungen).",
+        "task_complete_note": "Inspektionsrunde abgeschlossen (alle Stops OK, Nicht OK oder übersprungen).",
         "errors": {
             "skip_reason_required": "Geben Sie einen Grund an, um diesen Stop zu überspringen.",
             "not_a_stop": "Diese Unit gehört nicht zur Runde.",

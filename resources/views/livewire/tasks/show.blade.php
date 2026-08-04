@@ -48,33 +48,6 @@
         </x-slot>
     </x-wp-entity-detail-head>
 
-    @if ($task->isRecurring())
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <p class="wp-section-title">{{ __('tasks.show.recurring_title') }}</p>
-            @if ($task->is_recurring_cycle)
-                <p class="wp-muted">{{ __('tasks.show.recurring_cycle', ['nr' => $task->cycle_number ?? 1]) }}</p>
-            @endif
-            @if ($issue?->recurrence_interval_value && $issue?->recurrence_interval_unit)
-                <p class="wp-muted">{{ __('tasks.show.recurring_interval', [
-                    'value' => $issue->recurrence_interval_value,
-                    'unit' => __('issues.create.unit_'.$issue->recurrence_interval_unit->value),
-                ]) }}</p>
-            @endif
-            @if ($issue?->recurrence_next_due_at)
-                <p class="wp-muted">{{ __('tasks.show.recurring_next_due', ['date' => $issue->recurrence_next_due_at->format('d-m-Y')]) }}</p>
-            @endif
-        </div>
-    @endif
-
-    @if ($roundProgress)
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('tasks.show.round_progress') }}</h2>
-            @include('partials.wp-portal-round-progress', [
-                'progress' => $roundProgress,
-            ])
-        </div>
-    @endif
-
     <div class="wp-card wp-card-pad wp-stack-tight">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('tasks.show.task_line', ['team' => $teamName]) }}</h2>
@@ -92,6 +65,33 @@
         @endif
         <p class="wp-text-body">{{ $task->priority->label() }}</p>
     </div>
+
+    @if ($roundProgress)
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <h2 class="wp-section-title">{{ __('tasks.show.round_progress') }}</h2>
+            @include('partials.wp-portal-round-progress', [
+                'progress' => $roundProgress,
+            ])
+        </div>
+    @endif
+
+    @if ($task->isRecurring())
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <p class="wp-section-title">{{ __('tasks.show.recurring_title') }}</p>
+            @if ($task->is_recurring_cycle)
+                <p class="wp-muted">{{ __('tasks.show.recurring_cycle', ['nr' => $task->cycle_number ?? 1]) }}</p>
+            @endif
+            @if ($issue?->recurrence_interval_value && $issue?->recurrence_interval_unit)
+                <p class="wp-muted">{{ __('tasks.show.recurring_interval', [
+                    'value' => $issue->recurrence_interval_value,
+                    'unit' => __('issues.create.unit_'.$issue->recurrence_interval_unit->value),
+                ]) }}</p>
+            @endif
+            @if ($issue?->recurrence_next_due_at)
+                <p class="wp-muted">{{ __('tasks.show.recurring_next_due', ['date' => $issue->recurrence_next_due_at->format('d-m-Y')]) }}</p>
+            @endif
+        </div>
+    @endif
 
     @if ($esgChainSteps !== [])
         <div class="wp-card wp-card-pad wp-stack-tight">
@@ -267,7 +267,7 @@
         </div>
     @endif
 
-    @if ($issue)
+    @if ($issue && ! $issue->isInspectionRound())
         <div class="wp-card wp-card-pad wp-stack-tight">
             <div class="wp-row">
                 <h2 class="wp-section-title">{{ $issueHeading }}</h2>
@@ -279,6 +279,11 @@
             @if ($issueDescriptionDiffers)
                 <p class="wp-text-body">{{ $issue->localizedDescription() }}</p>
             @endif
+        </div>
+    @elseif ($issue?->isInspectionRound())
+        <div class="wp-row">
+            <span aria-hidden="true"></span>
+            <a href="{{ route('issues.show', $issue) }}" class="btn btn--ghost btn--sm">{{ __('tasks.show.view_issue') }}</a>
         </div>
     @endif
 

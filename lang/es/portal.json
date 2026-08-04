@@ -276,7 +276,7 @@
         "skip_reason": "Motivo",
         "skip_confirm": "Omitir",
         "skip_recorded": "Parada omitida.",
-        "task_complete_note": "Ronda de inspección completada (todas las paradas OK u omitidas).",
+        "task_complete_note": "Ronda de inspección completada (todas las paradas OK, No OK u omitidas).",
         "errors": {
             "skip_reason_required": "Indique un motivo para omitir esta parada.",
             "not_a_stop": "Esta unidad no forma parte de la ronda.",

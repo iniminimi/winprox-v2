@@ -276,7 +276,7 @@
         "skip_reason": "Reason",
         "skip_confirm": "Skip",
         "skip_recorded": "Stop skipped.",
-        "task_complete_note": "Inspection round completed (all stops OK or skipped).",
+        "task_complete_note": "Inspection round completed (all stops OK, Not OK or skipped).",
         "errors": {
             "skip_reason_required": "Provide a reason to skip this stop.",
             "not_a_stop": "This unit is not part of the round.",
