@@ -3,13 +3,44 @@
     $privacyUrl = route('legal.privacy');
 @endphp
 
-<div class="wp-stack">
-    <div class="wp-stack">
-        <h1 class="wp-section-title">{{ __('auth.register.title') }}</h1>
-        <p class="wp-muted">{{ __('auth.register.subtitle') }}</p>
-    </div>
+<div
+    class="wp-stack"
+    x-data="{
+        playingRegisterVideo: false,
+        redirectTo: null,
+        startRegisterVideo(redirectUrl) {
+            this.redirectTo = redirectUrl;
+            this.playingRegisterVideo = true;
 
-    <form wire:submit="register" class="wp-auth-form wp-stack">
+            this.$nextTick(() => {
+                const video = this.$refs.registerCompleteVideo;
+                if (! video) {
+                    this.finishRegisterVideo();
+                    return;
+                }
+
+                video.currentTime = 0;
+                video.play().catch(() => {});
+            });
+        },
+        finishRegisterVideo() {
+            if (! this.redirectTo) {
+                return;
+            }
+
+            window.location.assign(this.redirectTo);
+        },
+    }"
+    x-on:register-finished.window="startRegisterVideo($event.detail.redirectTo)"
+>
+    <template x-if="! playingRegisterVideo">
+        <div class="wp-stack">
+            <div class="wp-stack">
+                <h1 class="wp-section-title">{{ __('auth.register.title') }}</h1>
+                <p class="wp-muted">{{ __('auth.register.subtitle') }}</p>
+            </div>
+
+            <form wire:submit="register" class="wp-auth-form wp-stack">
         <h2 class="wp-auth-section-title">{{ __('auth.register.section_company') }}</h2>
 
         <input type="text" id="organization" class="wp-input" wire:model="organization"
@@ -70,7 +101,29 @@
         </label>
         @error('accept_terms') <p class="wp-error">{{ $message }}</p> @enderror
 
-        <button type="submit" class="btn btn--primary btn--block">{{ __('auth.register.submit') }}</button>
-        <a href="{{ route('login') }}" class="btn btn--ghost btn--block">{{ __('auth.register.have_account') }}</a>
-    </form>
+                <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled">{{ __('auth.register.submit') }}</button>
+                <a href="{{ route('login') }}" class="btn btn--ghost btn--block">{{ __('auth.register.have_account') }}</a>
+            </form>
+        </div>
+    </template>
+
+    <template x-if="playingRegisterVideo">
+        <div class="wp-register-complete wp-stack">
+            <video
+                x-ref="registerCompleteVideo"
+                class="wp-register-complete__video"
+                src="{{ asset('video/assistant_task_160.mp4') }}"
+                width="160"
+                height="160"
+                autoplay
+                muted
+                playsinline
+                preload="auto"
+                x-on:ended="finishRegisterVideo()"
+                x-on:error="finishRegisterVideo()"
+            ></video>
+            <p class="wp-text-body"><strong>{{ __('dashboard.register_success.title') }}</strong></p>
+            <p class="wp-muted">{{ __('dashboard.register_success.body') }}</p>
+        </div>
+    </template>
 </div>

@@ -53,8 +53,7 @@ class Register extends Component
 
         session()->regenerate();
         session()->flash('register_success', true);
-
-        return $this->redirectRoute('dashboard', navigate: false);
+        $this->dispatch('register-finished', redirectTo: route('dashboard'));
     }
 
     public function render()
