@@ -424,6 +424,8 @@ stops meer zijn voor **deze** cyclus-taak.
 **BESLIST (fase 1):**
 - Stops op de melding (`issue_round_stops`); ronde-issue heeft `unit_id = null`.
   `location_id` alleen als alle stops dezelfde locatie delen, anders null.
+  Create- én show-picker: alle actieve units van de tenant, gegroepeerd per locatie
+  (stops mogen over locaties heen).
 - Label: **Ronde · N stops**. Geen ESG op ronde-issues.
 - Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).
 - Taak↔unit (2b): `issue.unit_id = U` **óf** U is stop — via `TaskBelongsToUnitAction`

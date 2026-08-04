@@ -107,7 +107,7 @@
                 },
                 {
                     "label": "Inspectieronde-stops",
-                    "text": "Kies in de terugkerende melding minstens 2 units als stops. De volgorde in de lijst is de loopvolgorde van de ronde."
+                    "text": "Kies minstens 2 units als stops (alle locaties; gegroepeerd per locatie). De volgorde in de lijst is de loopvolgorde van de ronde."
                 },
                 {
                     "label": "Selecteer alle units",

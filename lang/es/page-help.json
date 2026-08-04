@@ -107,7 +107,7 @@
                 },
                 {
                     "label": "Paradas de ronda",
-                    "text": "En un aviso recurrente, elija al menos 2 unidades como paradas. El orden de la lista es el orden de la ronda."
+                    "text": "Elija al menos 2 unidades como paradas (cualquier ubicación; agrupadas por ubicación). El orden de la lista es el recorrido de la ronda."
                 },
                 {
                     "label": "Seleccionar todas las unidades",

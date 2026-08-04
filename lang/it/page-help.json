@@ -107,7 +107,7 @@
                 },
                 {
                     "label": "Fermate del giro",
-                    "text": "In una segnalazione ricorrente, scelga almeno 2 unità come fermate. L'ordine dell'elenco è l'ordine del giro."
+                    "text": "Scegli almeno 2 unità come fermate (qualsiasi sede; raggruppate per sede). L’ordine dell’elenco è l’ordine del giro."
                 },
                 {
                     "label": "Seleziona tutte le unità",

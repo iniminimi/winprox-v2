@@ -126,34 +126,43 @@
                             class="wp-stack-tight"
                         >
                             <label class="wp-check wp-text-sm">
-                                <input type="checkbox" @change="toggleAll($event)" @disabled($createUnits->isEmpty())>
+                                <input type="checkbox" @change="toggleAll($event)" @disabled($createRoundStopUnitsGrouped->flatten(1)->isEmpty())>
                                 {{ __('issues.create.round_stops_select_all') }}
                             </label>
-                        <div id="create_round_stop_unit_ids" class="wp-round-stop-picker @if($createUnits->isEmpty()) wp-round-stop-picker--disabled @endif">
-                            @foreach ($createUnits as $unit)
+                        <div id="create_round_stop_unit_ids" class="wp-round-stop-picker @if($createRoundStopUnitsGrouped->flatten(1)->isEmpty()) wp-round-stop-picker--disabled @endif">
+                            @foreach ($createRoundStopUnitsGrouped as $locationUnits)
                                 @php
-                                    $canUseRoundStop = $unit->allowsUnitChecks();
+                                    $groupLocation = $locationUnits->first()?->location;
+                                    $groupLabel = $groupLocation?->name ?: ($groupLocation?->address ?? __('issues.create.location_none'));
                                 @endphp
-                                <label class="wp-round-stop-picker__row @if(! $canUseRoundStop) wp-round-stop-picker__row--disabled @endif">
-                                    <input
-                                        type="checkbox"
-                                        value="{{ $unit->id }}"
-                                        wire:model="round_stop_unit_ids"
-                                        data-round-stop
-                                        @disabled(! $canUseRoundStop)
-                                    >
-                                    @if ($canUseRoundStop)
-                                        <span>{{ $unit->name }}</span>
-                                    @else
-                                        <x-wp-tooltip :text="__('issues.create.round_stops_unit_checks_off')" wrap>
-                                            <span>{{ $unit->name }}</span>
-                                        </x-wp-tooltip>
-                                    @endif
-                                </label>
+                                <div class="wp-round-stop-picker__group" role="group" aria-label="{{ $groupLabel }}">
+                                    <p class="wp-round-stop-picker__group-label">{{ $groupLabel }}</p>
+                                    @foreach ($locationUnits as $unit)
+                                        @php
+                                            $canUseRoundStop = $unit->allowsUnitChecks();
+                                        @endphp
+                                        <label class="wp-round-stop-picker__row @if(! $canUseRoundStop) wp-round-stop-picker__row--disabled @endif">
+                                            <input
+                                                type="checkbox"
+                                                value="{{ $unit->id }}"
+                                                wire:model="round_stop_unit_ids"
+                                                data-round-stop
+                                                @disabled(! $canUseRoundStop)
+                                            >
+                                            @if ($canUseRoundStop)
+                                                <span>{{ $unit->localizedName() }}</span>
+                                            @else
+                                                <x-wp-tooltip :text="__('issues.create.round_stops_unit_checks_off')" wrap>
+                                                    <span>{{ $unit->localizedName() }}</span>
+                                                </x-wp-tooltip>
+                                            @endif
+                                        </label>
+                                    @endforeach
+                                </div>
                             @endforeach
                         </div>
                         </div>
-                        @if ($createUnits->isEmpty())
+                        @if ($createRoundStopUnitsGrouped->flatten(1)->isEmpty())
                             <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_empty') }}</p>
                         @else
                             <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_select_help') }}</p>

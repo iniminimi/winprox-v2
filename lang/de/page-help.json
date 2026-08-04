@@ -107,7 +107,7 @@
                 },
                 {
                     "label": "Inspektionsrunden-Stopps",
-                    "text": "Wählen Sie in der wiederkehrenden Meldung mindestens 2 Units als Stopps. Die Listenreihenfolge ist die Rundenreihenfolge."
+                    "text": "Wählen Sie mindestens 2 Units als Stops (alle Standorte; nach Standort gruppiert). Die Listenreihenfolge ist die Routenreihenfolge der Runde."
                 },
                 {
                     "label": "Alle Units auswählen",

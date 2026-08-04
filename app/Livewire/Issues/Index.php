@@ -250,14 +250,20 @@ class Index extends Component
             $this->round_stop_unit_ids = [];
         }
 
-        if (count($this->round_stop_unit_ids) >= 2) {
+        $isInspectionRound = count($this->round_stop_unit_ids) >= 2;
+
+        if ($isInspectionRound) {
             $this->unit_id = null;
             $this->esg_indicator_id = null;
         }
 
         $tenantId = (int) Tenancy::id();
         $validated = $this->validate(
-            StoreManagerIssueStepOneRequest::ruleSet($tenantId, EsgModuleAccess::activeTenantHasModule()),
+            StoreManagerIssueStepOneRequest::ruleSet(
+                $tenantId,
+                EsgModuleAccess::activeTenantHasModule(),
+                $isInspectionRound,
+            ),
             StoreManagerIssueStepOneRequest::messageSet(),
         );
 
@@ -427,6 +433,17 @@ class Index extends Component
                     ->with('category')
                     ->orderBy('name')
                     ->get()
+                : collect(),
+            'createRoundStopUnitsGrouped' => $this->showCreateModal && $this->is_recurring
+                ? Unit::query()
+                    ->where('is_active', true)
+                    ->with(['location', 'category', 'translations'])
+                    ->orderBy('name')
+                    ->get()
+                    ->groupBy(fn (Unit $unit) => (int) $unit->location_id)
+                    ->sortBy(fn ($units) => mb_strtolower((string) ($units->first()?->location?->name
+                        ?: $units->first()?->location?->address
+                        ?: '')))
                 : collect(),
             'createTeams' => $this->showCreateModal
                 ? InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('name')->get()

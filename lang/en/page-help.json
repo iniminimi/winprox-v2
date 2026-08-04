@@ -107,7 +107,7 @@
                 },
                 {
                     "label": "Inspection round stops",
-                    "text": "In a recurring issue, choose at least 2 units as stops. The list order is the round route order."
+                    "text": "Choose at least 2 units as stops (any locations; grouped by location). The list order is the round route order."
                 },
                 {
                     "label": "Select all units",

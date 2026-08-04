@@ -85,13 +85,22 @@ class RoundTaskCompletionAction
      */
     public function progress(Task $task): array
     {
-        $task->loadMissing(['issue.roundStops.unit.translations', 'roundStopSkips.worker']);
+        $task->loadMissing([
+            'issue.roundStops.unit.translations',
+            'issue.roundStops.unit.location',
+            'roundStopSkips.worker',
+        ]);
 
         $stops = ($task->issue?->roundStops ?? collect())->sortBy('sort_order')->values();
         $stopUnitIds = $stops->pluck('unit_id')->map(fn ($id) => (int) $id)->all();
         $total = $stops->count();
         $openIds = $this->openStopUnitIds($task);
         $nextId = $openIds->isEmpty() ? null : (int) $openIds->first();
+        $multiLocation = $stops
+            ->map(fn (IssueRoundStop $stop) => $stop->unit?->location_id)
+            ->filter()
+            ->unique()
+            ->count() > 1;
 
         $skippedByUnit = $task->roundStopSkips
             ->keyBy(fn ($skip) => (int) $skip->unit_id);
@@ -143,9 +152,16 @@ class RoundTaskCompletionAction
                 $workerName = $skip?->worker?->displayName();
             }
 
+            $unitName = $stop->unit?->localizedName() ?? ('#'.$unitId);
+            $locationName = $stop->unit?->location?->name
+                ?: ($stop->unit?->location?->address ?? null);
+            $stopName = $multiLocation && filled($locationName)
+                ? $locationName.' · '.$unitName
+                : $unitName;
+
             $stopRows[] = [
                 'unit_id' => $unitId,
-                'name' => $stop->unit?->localizedName() ?? ('#'.$unitId),
+                'name' => $stopName,
                 'state' => $state,
                 'sort_order' => (int) $stop->sort_order,
                 'at' => $at,

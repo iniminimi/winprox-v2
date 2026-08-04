@@ -107,7 +107,7 @@
                 },
                 {
                     "label": "Arrêts de tournée",
-                    "text": "Dans un signalement récurrent, choisissez au moins 2 unités comme arrêts. L'ordre de la liste est l'ordre de la tournée."
+                    "text": "Choisissez au moins 2 unités comme arrêts (tous les sites ; groupés par site). L’ordre de la liste est l’ordre de la tournée."
                 },
                 {
                     "label": "Sélectionner toutes les unités",

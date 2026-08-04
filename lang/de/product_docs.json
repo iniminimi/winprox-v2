@@ -45,7 +45,7 @@
             },
             {
                 "title": "Inspektionsrunden",
-                "body": "Wiederkehrende Meldung mit fester Route von Units (Stopps). Eine Aufgabe pro Zyklus; an jedem Stopp Unit-Check OK, Nicht OK (mit Meldung; Beschreibung vorausgefüllt) oder Überspringen mit Grund. Fertig, wenn alle Stopps des Zyklus erledigt sind."
+                "body": "Wiederkehrende Meldung mit fester Route von Units (Stopps), auch über mehrere Standorte. Eine Aufgabe pro Zyklus; an jedem Stopp Unit-Check OK, Nicht OK (mit Meldung; Beschreibung vorausgefüllt) oder Überspringen mit Grund. Fertig, wenn alle Stopps des Zyklus erledigt sind."
             },
             {
                 "title": "Branding & QR",

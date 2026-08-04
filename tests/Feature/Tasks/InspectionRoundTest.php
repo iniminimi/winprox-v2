@@ -277,6 +277,95 @@ it('labels a round issue and clears unit_id', function () {
         ->and(app(TaskBelongsToUnitAction::class)->handle($issue, $unitB))->toBeTrue();
 });
 
+it('keeps location_id when all round stops share one location', function () {
+    ['actor' => $actor, 'issue' => $issue, 'location' => $location, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
+
+    $issue = app(SyncIssueRoundStopsAction::class)->handle($issue, [$unitA->id, $unitB->id], $actor);
+
+    expect($issue->location_id)->toBe($location->id)
+        ->and($issue->unit_id)->toBeNull()
+        ->and($issue->roundStopCount())->toBe(2);
+});
+
+it('clears location_id when round stops span multiple locations', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'issue' => $issue, 'team' => $team, 'unitA' => $unitA, 'task' => $task] = inspectionRoundScaffold();
+
+    $locationB = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'is_active' => true,
+        'name' => 'Locatie West',
+    ]);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'allow_unit_checks' => true,
+    ]);
+    $category->teams()->sync([$team->id]);
+    $unitOther = Unit::factory()->withQrToken('round-unit-other-loc')->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationB->id,
+        'category_id' => $category->id,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+        'name' => 'Unit West',
+    ]);
+
+    $issue = app(SyncIssueRoundStopsAction::class)->handle($issue, [$unitA->id, $unitOther->id], $actor);
+
+    expect($issue->location_id)->toBeNull()
+        ->and($issue->unit_id)->toBeNull()
+        ->and($issue->roundStopCount())->toBe(2)
+        ->and($issue->roundStops->pluck('unit_id')->map(fn ($id) => (int) $id)->all())
+        ->toBe([(int) $unitA->id, (int) $unitOther->id]);
+
+    $progress = app(RoundTaskCompletionAction::class)->progress($task->fresh());
+    $names = collect($progress['stops'])->pluck('name')->all();
+
+    expect($names[1])->toContain('Locatie West')
+        ->and($names[1])->toContain('Unit West');
+});
+
+it('creates a multi-location inspection round without requiring location_id', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'team' => $team, 'unitA' => $unitA] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    $locationB = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'allow_unit_checks' => true,
+    ]);
+    $category->teams()->sync([$team->id]);
+    $unitOther = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationB->id,
+        'category_id' => $category->id,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->set('showCreateModal', true)
+        ->set('location_id', null)
+        ->set('description', 'Ronde over twee locaties')
+        ->set('is_recurring', true)
+        ->set('recurrence_interval_value', 1)
+        ->set('recurrence_interval_unit', 'month')
+        ->set('recurrence_lead_days', 7)
+        ->set('recurrence_first_due_date', now()->toDateString())
+        ->set('round_stop_unit_ids', [(string) $unitA->id, (string) $unitOther->id])
+        ->call('saveCreateStepOne')
+        ->assertHasNoErrors()
+        ->assertSet('createStep', 2);
+
+    $issue = Issue::query()->where('description', 'Ronde over twee locaties')->first();
+
+    expect($issue)->not->toBeNull()
+        ->and($issue->isInspectionRound())->toBeTrue()
+        ->and($issue->location_id)->toBeNull()
+        ->and($issue->unit_id)->toBeNull()
+        ->and($issue->roundStopCount())->toBe(2);
+});
+
 it('shows round task on stop A open tasks and excludes from A banner (2b)', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);

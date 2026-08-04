@@ -606,6 +606,7 @@ class Show extends Component
             'unit.translations',
             'esgIndicator.translations',
             'roundStops.unit.translations',
+            'roundStops.unit.location',
             'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),
         ]);
 
@@ -636,17 +637,29 @@ class Show extends Component
             );
         }
 
-        $roundStopUnits = $issue->is_recurring
+        $roundStopUnitsGrouped = $issue->is_recurring
             ? Unit::query()
                 ->where('is_active', true)
-                ->with(['translations', 'category'])
+                ->with(['translations', 'category', 'location'])
                 ->orderBy('name')
                 ->get()
+                ->groupBy(fn (Unit $unit) => (int) $unit->location_id)
+                ->sortBy(fn ($units) => mb_strtolower((string) ($units->first()?->location?->name
+                    ?: $units->first()?->location?->address
+                    ?: '')))
             : collect();
+
+        $roundStopsMultiLocation = $issue->isInspectionRound()
+            && $issue->roundStops
+                ->map(fn ($stop) => $stop->unit?->location_id)
+                ->filter()
+                ->unique()
+                ->count() > 1;
 
         return view('livewire.issues.show', [
             'issue' => $issue,
-            'roundStopUnits' => $roundStopUnits,
+            'roundStopUnitsGrouped' => $roundStopUnitsGrouped,
+            'roundStopsMultiLocation' => $roundStopsMultiLocation,
             'teams' => InternalTeam::query()->with('translations')->orderBy('name')->get(),
             'priorities' => TaskPriority::cases(),
             'headline' => $headline,

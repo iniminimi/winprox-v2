@@ -5029,6 +5029,24 @@ a.wp-kpi.wp-kpi--attention {
     background: var(--wp-surface);
 }
 
+.wp-round-stop-picker__group:not(:last-child) {
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-round-stop-picker__group-label {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin: 0;
+    padding: 0.35rem 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--wp-muted);
+    background: color-mix(in srgb, var(--wp-surface) 88%, var(--wp-border));
+    border-bottom: 1px solid color-mix(in srgb, var(--wp-border) 55%, transparent);
+}
+
 .wp-round-stop-picker__row {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
@@ -5042,7 +5060,7 @@ a.wp-kpi.wp-kpi--attention {
     cursor: pointer;
 }
 
-.wp-round-stop-picker__row:last-child {
+.wp-round-stop-picker__group .wp-round-stop-picker__row:last-child {
     border-bottom: 0;
 }
 

@@ -45,7 +45,7 @@
             },
             {
                 "title": "Rondas de inspección",
-                "body": "Aviso recurrente con una ruta fija de units (paradas). Una tarea por ciclo; en cada parada Unit check OK, No OK (con aviso; descripción precargada) u omitir con motivo. Listo cuando todas las paradas del ciclo están tramitadas."
+                "body": "Aviso recurrente con una ruta fija de units (paradas), también entre ubicaciones. Una tarea por ciclo; en cada parada Unit check OK, No OK (con aviso; descripción precargada) u omitir con motivo. Listo cuando todas las paradas del ciclo están tramitadas."
             },
             {
                 "title": "Branding & QR",

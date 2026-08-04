@@ -20,20 +20,31 @@ class StoreManagerIssueStepOneRequest extends FormRequest
     public function rules(): array
     {
         $tenantId = auth()->user()?->tenant_id;
+        $stopIds = $this->input('round_stop_unit_ids', []);
+        $stopCount = is_array($stopIds)
+            ? count(array_values(array_filter($stopIds, static fn ($id) => is_numeric($id))))
+            : 0;
+        $isInspectionRound = $this->boolean('is_recurring') && $stopCount >= 2;
 
         return self::ruleSet(
             $tenantId ? (int) $tenantId : null,
             $tenantId ? (bool) auth()->user()?->tenant?->hasEsgModule() : false,
+            $isInspectionRound,
         );
     }
 
     /**
      * @return array<string, array<int, mixed>>
      */
-    public static function ruleSet(?int $tenantId = null, bool $esgModuleEnabled = false): array
-    {
+    public static function ruleSet(
+        ?int $tenantId = null,
+        bool $esgModuleEnabled = false,
+        bool $isInspectionRound = false,
+    ): array {
         $rules = [
-            'location_id' => ['required', 'integer', 'exists:locations,id'],
+            'location_id' => $isInspectionRound
+                ? ['nullable', 'integer', 'exists:locations,id']
+                : ['required', 'integer', 'exists:locations,id'],
             'unit_id' => ['nullable', 'integer', 'exists:units,id'],
             'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
             'is_recurring' => ['sometimes', 'boolean'],

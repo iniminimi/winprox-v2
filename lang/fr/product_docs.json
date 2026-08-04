@@ -45,7 +45,7 @@
             },
             {
                 "title": "Tournées d’inspection",
-                "body": "Signalement récurrent avec un parcours fixe d'unités (arrêts). Une tâche par cycle ; à chaque arrêt contrôle OK, Pas OK (avec signalement ; description préremplie), ou passage avec motif. Terminé quand tous les arrêts du cycle sont traités."
+                "body": "Signalement récurrent avec un parcours fixe d'unités (arrêts), y compris entre sites. Une tâche par cycle ; à chaque arrêt contrôle OK, Pas OK (avec signalement ; description préremplie), ou passage avec motif. Terminé quand tous les arrêts du cycle sont traités."
             },
             {
                 "title": "Branding & QR",
