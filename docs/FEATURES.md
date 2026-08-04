@@ -429,6 +429,9 @@ stops meer zijn voor **deze** cyclus-taak.
   `task_round_stop_skips` per task. Indexen `(task_id, unit_id)` op checks én skips.
 - ≥2 stops: Form Request `min:2` bij opslaan.
 - Impliciet meetellen (geen “start ronde”).
+- Units zonder unit checks (categorie of unit uit): niet selecteerbaar; bestaande
+  stops worden verwijderd bij uitschakelen (en self-heal bij openen melding).
+  Ronde met <2 stops over houdt geen stops meer.
 - **Fase 2:** strikte stop-volgorde (alleen de eerstvolgende open stop mag OK/skip);
   rijke progress-UI (balk + genummerde stops met status).
 

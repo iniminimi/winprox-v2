@@ -158,6 +158,53 @@ it('rejects round stops when unit checks are disabled on a stop', function () {
         ->toThrow(\Illuminate\Validation\ValidationException::class);
 });
 
+it('removes stops when unit checks are turned off later', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'issue' => $issue, 'unitA' => $unitA, 'unitB' => $unitB, 'unitC' => $unitC] = inspectionRoundScaffold();
+
+    app(SyncIssueRoundStopsAction::class)->handle($issue, [$unitA->id, $unitB->id, $unitC->id], $actor);
+    $issue = $issue->fresh(['roundStops']);
+    expect($issue->roundStopCount())->toBe(3);
+
+    app(\App\Actions\Locations\UpdateUnitAction::class)->handle($unitC, [
+        'name' => $unitC->name,
+        'allow_unit_checks' => false,
+    ], (int) $actor->id);
+
+    $issue = $issue->fresh(['roundStops']);
+    expect($issue->roundStopCount())->toBe(2)
+        ->and($issue->roundStops->pluck('unit_id')->map(fn ($id) => (int) $id)->all())
+        ->toBe([(int) $unitA->id, (int) $unitB->id]);
+});
+
+it('clears a round when disabling checks leaves fewer than two stops', function () {
+    ['actor' => $actor, 'issue' => $issue, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
+
+    app(\App\Actions\Locations\UpdateUnitAction::class)->handle($unitB, [
+        'name' => $unitB->name,
+        'allow_unit_checks' => false,
+    ], (int) $actor->id);
+
+    $issue = $issue->fresh(['roundStops']);
+    expect($issue->isInspectionRound())->toBeFalse()
+        ->and($issue->roundStopCount())->toBe(0);
+});
+
+it('self-heals stale round stops when opening the issue show page', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'issue' => $issue, 'unitA' => $unitA, 'unitB' => $unitB, 'unitC' => $unitC] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    app(SyncIssueRoundStopsAction::class)->handle($issue, [$unitA->id, $unitB->id, $unitC->id], $actor);
+    $unitC->forceFill(['allow_unit_checks' => false])->save();
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Show::class, ['issue' => $issue->fresh()])
+        ->assertOk()
+        ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id]);
+
+    expect($issue->fresh()->roundStops->pluck('unit_id')->map(fn ($id) => (int) $id)->all())
+        ->toBe([(int) $unitA->id, (int) $unitB->id]);
+});
+
 it('labels a round issue and clears unit_id', function () {
     ['issue' => $issue, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
 

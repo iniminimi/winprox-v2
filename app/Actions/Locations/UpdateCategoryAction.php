@@ -4,7 +4,9 @@ namespace App\Actions\Locations;
 
 use App\Actions\Communication\EnsureCategoryTranslationSlotsAction;
 use App\Actions\Communication\InvalidateCategoryTranslationsOnSourceChangeAction;
+use App\Actions\Issues\RemoveUnitsFromInspectionRoundsAction;
 use App\Models\Category;
+use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 
 class UpdateCategoryAction
@@ -13,6 +15,7 @@ class UpdateCategoryAction
         private AuditRecorder $audit,
         private InvalidateCategoryTranslationsOnSourceChangeAction $invalidateTranslations,
         private EnsureCategoryTranslationSlotsAction $ensureSlots,
+        private RemoveUnitsFromInspectionRoundsAction $removeFromRounds,
     ) {}
 
     /**
@@ -21,6 +24,7 @@ class UpdateCategoryAction
     public function handle(Category $category, array $data, ?int $actorUserId = null): Category
     {
         $previousName = (string) $category->name;
+        $unitChecksWereAllowed = (bool) $category->allow_unit_checks;
 
         $category->update([
             'name' => trim($data['name']),
@@ -31,6 +35,17 @@ class UpdateCategoryAction
         ]);
 
         $fresh = $category->fresh();
+
+        if ($unitChecksWereAllowed && ! (bool) $fresh->allow_unit_checks) {
+            $unitIds = Unit::query()
+                ->where('tenant_id', $fresh->tenant_id)
+                ->where('category_id', $fresh->id)
+                ->pluck('id')
+                ->map(fn ($id) => (int) $id)
+                ->all();
+
+            $this->removeFromRounds->handle($unitIds, (int) $fresh->tenant_id);
+        }
 
         $this->invalidateTranslations->handle($fresh, $previousName, $actorUserId);
         $this->ensureSlots->handle($fresh);

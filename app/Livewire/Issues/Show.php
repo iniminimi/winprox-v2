@@ -6,6 +6,7 @@ use App\Actions\Communication\ImportTaskTranslationsAction;
 use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\CloseIssueAction;
 use App\Actions\Issues\CreateIssueUpdateAction;
+use App\Actions\Issues\RemoveUnitsFromInspectionRoundsAction;
 use App\Actions\Issues\ReopenIssueAction;
 use App\Actions\Issues\SyncIssueRoundStopsAction;
 use App\Actions\Issues\ToggleIssueRecurrencePauseAction;
@@ -75,12 +76,14 @@ class Show extends Component
     /** @var list<int|string> */
     public array $round_stop_unit_ids = [];
 
-    public function mount(Issue $issue): void
+    public function mount(Issue $issue, RemoveUnitsFromInspectionRoundsAction $pruneRoundStops): void
     {
         $this->authorize('view', $issue);
-        $this->issue = $issue;
+        $this->issue = $issue->is_recurring
+            ? $pruneRoundStops->handleForIssue($issue)
+            : $issue;
         $this->descriptionLocale = LocaleSupport::normalize(app()->getLocale());
-        $this->round_stop_unit_ids = $issue->roundStops()
+        $this->round_stop_unit_ids = $this->issue->roundStops()
             ->orderBy('sort_order')
             ->pluck('unit_id')
             ->map(fn ($id) => (int) $id)

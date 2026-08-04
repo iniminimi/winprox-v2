@@ -4,6 +4,7 @@ namespace App\Actions\Locations;
 
 use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
 use App\Actions\Communication\InvalidateUnitTranslationsOnSourceChangeAction;
+use App\Actions\Issues\RemoveUnitsFromInspectionRoundsAction;
 use App\Models\QrLinkPhoto;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
@@ -18,6 +19,7 @@ class UpdateUnitAction
         private IssuePhotoStorage $storage,
         private InvalidateUnitTranslationsOnSourceChangeAction $invalidateTranslations,
         private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
+        private RemoveUnitsFromInspectionRoundsAction $removeFromRounds,
     ) {}
 
     /**
@@ -28,6 +30,7 @@ class UpdateUnitAction
     {
         $previousName = (string) $unit->name;
         $previousDescription = $unit->description;
+        $unitChecksWereAllowed = $unit->allowsUnitChecks();
 
         $payload = [
             'name' => trim((string) $data['name']),
@@ -65,7 +68,11 @@ class UpdateUnitAction
 
         $unit->update($payload);
 
-        $fresh = $unit->fresh();
+        $fresh = $unit->fresh(['category']);
+
+        if ($unitChecksWereAllowed && ! $fresh->allowsUnitChecks()) {
+            $this->removeFromRounds->handle([(int) $fresh->id], (int) $fresh->tenant_id);
+        }
 
         $this->invalidateTranslations->handle($fresh, $previousName, $previousDescription, $actorUserId);
         $this->ensureTranslationSlots->handle($fresh);
