@@ -53,7 +53,7 @@
             },
             {
                 "title": "Meldingen",
-                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud (pauzeren of definitief beëindigen). Optioneel: contactgegevens verplicht voor anonieme QR-melders (categorie én unit). Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen."
+                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud (pauzeren of sluiten). Optioneel: contactgegevens verplicht voor anonieme QR-melders (categorie én unit). Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen."
             },
             {
                 "title": "Foto’s",

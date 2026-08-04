@@ -133,7 +133,7 @@
         "iot_rule.updated": "IoT rule updated",
         "iot_rule.activated": "IoT rule activated",
         "iot_rule.deactivated": "IoT rule deactivated",
-        "issue.recurrence_ended": "Segnalazione ricorrente terminata",
+        "issue.recurrence_ended": "Segnalazione ricorrente chiusa",
         "issue.recurrence_paused": "Segnalazione ricorrente in pausa",
         "issue.recurrence_resumed": "Segnalazione ricorrente ripresa"
     }

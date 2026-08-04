@@ -137,9 +137,9 @@
         "round_stops_min": "Wählen Sie mindestens 2 Units als Stops für eine Inspektionsrunde.",
         "round_stops_invalid": "Ein oder mehrere ausgewählte Stops sind ungültig.",
         "round_stops_unit_checks_required": "Unit-Checks müssen bei jedem gewählten Stopp aktiviert sein (Kategorie und Unit).",
-        "cannot_end_not_recurring": "Nur wiederkehrende Meldungen können beendet werden.",
-        "cannot_end_already_ended": "Diese wiederkehrende Meldung ist bereits beendet.",
-        "end_recurring_reason_required": "Geben Sie einen Grund an, um die Serie zu beenden.",
+        "cannot_end_not_recurring": "Nur wiederkehrende Meldungen können so geschlossen werden.",
+        "cannot_end_already_ended": "Diese wiederkehrende Meldung ist bereits geschlossen.",
+        "end_recurring_reason_required": "Geben Sie einen Grund für das Schließen an.",
         "end_recurring_reason_min": "Der Grund muss mindestens 2 Zeichen haben."
     },
     "show": {
@@ -205,14 +205,14 @@
         "round_stops_help": "Mindestens 2 Units. Listenreihenfolge = Stoppreihenfolge. Kein ESG bei Runden.",
         "round_stops_save": "Stops speichern",
         "round_stops_saved": "Runden-Stops gespeichert.",
-        "recurring_end": "Beenden",
-        "recurring_ended_pill": "Beendet",
-        "recurring_ended": "Wiederkehrende Meldung beendet.",
-        "recurring_end_modal_title": "Wiederkehrende Meldung beenden",
-        "recurring_end_modal_subtitle": "Neue Zyklen dauerhaft stoppen und die Meldung auf Geschlossen setzen. Offene Aufgaben werden geschlossen.",
-        "recurring_end_reason_label": "Grund für das Beenden",
-        "recurring_end_reason_placeholder": "Beschreiben Sie, warum diese Serie endet…",
-        "recurring_end_submit": "Serie beenden"
+        "recurring_end": "Schließen",
+        "recurring_ended_pill": "Geschlossen",
+        "recurring_ended": "Wiederkehrende Meldung geschlossen.",
+        "recurring_end_modal_title": "Meldung schließen",
+        "recurring_end_modal_subtitle": "Schließen Sie diese wiederkehrende Meldung. Neue Zyklen stoppen; offene Aufgaben werden ebenfalls geschlossen.",
+        "recurring_end_reason_label": "Grund für das Schließen",
+        "recurring_end_reason_placeholder": "Beschreiben Sie, warum diese Meldung geschlossen wird…",
+        "recurring_end_submit": "Meldung schließen"
     },
     "updates": {
         "kind": {
@@ -223,7 +223,7 @@
             "status_reason": "Statusänderung",
             "close_reason": "Meldung geschlossen",
             "reopen_reason": "Meldung wieder geöffnet",
-            "recurrence_end_reason": "Serie beendet"
+            "recurrence_end_reason": "Meldung geschlossen"
         },
         "errors": {
             "description_required": "Geben Sie eine Notiz ein.",

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 /**
- * Beëindigt een terugkerende melding definitief: geen nieuwe cycli, status Gesloten.
+ * Sluit een terugkerende melding definitief: geen nieuwe cycli, status Gesloten.
  */
 class EndRecurringIssueAction
 {

@@ -219,7 +219,7 @@ Samen bouwen met **Meldingen + Kalender** (volgende fase, na het QR-portaal).
   `is_recurring_cycle`, `cycle_number`, `recurrence_issue_id`).
 - Filter **"terugkerend"** wordt een echte filter (niet langer no-op); aanmaak-flow krijgt de
   recurring-opties; cycli verschijnen in de Kalender.
-- **Pauzeren** stopt tijdelijk nieuwe cycli (`recurrence_paused_at`); **Beëindigen** zet
+- **Pauzeren** stopt tijdelijk nieuwe cycli (`recurrence_paused_at`); **Sluiten** zet
   `recurrence_active = false`, sluit openstaande taken en de melding op **Gesloten**
   (heropenen reactiveert de reeks).
 

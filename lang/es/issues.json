@@ -137,9 +137,9 @@
         "round_stops_min": "Seleccione al menos 2 unidades como paradas de una ronda de inspección.",
         "round_stops_invalid": "Una o más paradas seleccionadas no son válidas.",
         "round_stops_unit_checks_required": "Unit checks debe estar habilitado en cada parada seleccionada (categoría y unidad).",
-        "cannot_end_not_recurring": "Solo se pueden finalizar avisos recurrentes.",
-        "cannot_end_already_ended": "Este aviso recurrente ya está finalizado.",
-        "end_recurring_reason_required": "Indique un motivo para finalizar la serie.",
+        "cannot_end_not_recurring": "Solo se pueden cerrar así los avisos recurrentes.",
+        "cannot_end_already_ended": "Este aviso recurrente ya está cerrado.",
+        "end_recurring_reason_required": "Indique un motivo para cerrar.",
         "end_recurring_reason_min": "El motivo debe tener al menos 2 caracteres."
     },
     "show": {
@@ -205,14 +205,14 @@
         "round_stops_help": "Al menos 2 unidades. El orden de la lista es el de las paradas. Sin ESG en rondas.",
         "round_stops_save": "Guardar paradas",
         "round_stops_saved": "Paradas de ronda guardadas.",
-        "recurring_end": "Finalizar",
-        "recurring_ended_pill": "Finalizado",
-        "recurring_ended": "Aviso recurrente finalizado.",
-        "recurring_end_modal_title": "Finalizar aviso recurrente",
-        "recurring_end_modal_subtitle": "Detiene definitivamente los nuevos ciclos y pone el aviso en Cerrado. Las tareas abiertas se cerrarán.",
-        "recurring_end_reason_label": "Motivo de finalización",
-        "recurring_end_reason_placeholder": "Describa por qué termina esta serie…",
-        "recurring_end_submit": "Finalizar serie"
+        "recurring_end": "Cerrar",
+        "recurring_ended_pill": "Cerrado",
+        "recurring_ended": "Aviso recurrente cerrado.",
+        "recurring_end_modal_title": "Cerrar aviso",
+        "recurring_end_modal_subtitle": "Cierre este aviso recurrente. Se detienen los nuevos ciclos; las tareas abiertas también se cerrarán.",
+        "recurring_end_reason_label": "Motivo de cierre",
+        "recurring_end_reason_placeholder": "Describa por qué se cierra este aviso…",
+        "recurring_end_submit": "Cerrar aviso"
     },
     "updates": {
         "kind": {
@@ -223,7 +223,7 @@
             "status_reason": "Cambio de estado",
             "close_reason": "Incidencia cerrada",
             "reopen_reason": "Incidencia reabierta",
-            "recurrence_end_reason": "Serie finalizada"
+            "recurrence_end_reason": "Aviso cerrado"
         },
         "errors": {
             "description_required": "Introduzca una nota.",

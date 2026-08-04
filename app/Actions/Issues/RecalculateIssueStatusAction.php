@@ -14,7 +14,7 @@ class RecalculateIssueStatusAction
      */
     public function handle(Issue $issue): TaskStatus
     {
-        // Beëindigde terugkerende reeks blijft Gesloten ondanks historische Done-cycli.
+        // Gesloten terugkerende reeks (!recurrence_active) blijft Gesloten ondanks historische Done-cycli.
         if ($issue->is_recurring && ! $issue->recurrence_active) {
             $derived = TaskStatus::Closed;
             if ($issue->status !== $derived) {
