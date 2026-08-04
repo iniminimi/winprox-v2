@@ -80,13 +80,32 @@
                                 @endforeach
                             </ol>
                         @endif
+                        <div
+                            x-data="{
+                                toggleAll(event) {
+                                    const checked = !!event.target.checked;
+                                    this.$root.querySelectorAll('input[type=checkbox][data-round-stop]').forEach((box) => {
+                                        if (box.checked !== checked) {
+                                            box.checked = checked;
+                                            box.dispatchEvent(new Event('change', { bubbles: true }));
+                                        }
+                                    });
+                                }
+                            }"
+                            class="wp-stack-tight"
+                        >
+                        <label class="wp-check wp-text-sm">
+                            <input type="checkbox" @change="toggleAll($event)">
+                            {{ __('issues.create.round_stops_select_all') }}
+                        </label>
                         <div id="show_round_stop_unit_ids" class="wp-round-stop-picker">
                             @foreach ($roundStopUnits as $unit)
                                 <label class="wp-round-stop-picker__row">
-                                    <input type="checkbox" value="{{ $unit->id }}" wire:model="round_stop_unit_ids">
+                                    <input type="checkbox" value="{{ $unit->id }}" wire:model="round_stop_unit_ids" data-round-stop>
                                     <span>{{ $unit->localizedName() }}</span>
                                 </label>
                             @endforeach
+                        </div>
                         </div>
                         @error('round_stop_unit_ids') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('round_stop_unit_ids.*') <p class="wp-error">{{ $message }}</p> @enderror

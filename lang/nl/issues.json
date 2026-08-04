@@ -103,7 +103,8 @@
         "round_stops": "Inspectieronde-stops (optioneel)",
         "round_stops_help": "Kies minstens 2 units in volgorde. De melding krijgt dan geen enkele unit; voortgang loopt via Unit check per stop.",
         "round_stops_empty": "Kies eerst een locatie met units om stops te selecteren.",
-        "round_stops_select_help": "Selecteer hier de units die onderdeel zijn van de ronde. Volgorde loopt van boven naar beneden in deze lijst."
+        "round_stops_select_help": "Selecteer hier de units die onderdeel zijn van de ronde. Volgorde loopt van boven naar beneden in deze lijst.",
+        "round_stops_select_all": "Selecteer alle units"
     },
     "errors": {
         "cannot_close_approved": "Een goedgekeurde melding kan niet worden gesloten.",

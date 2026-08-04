@@ -111,13 +111,32 @@
                     <div class="wp-field">
                         <label class="wp-label" for="create_round_stop_unit_ids">{{ __('issues.create.round_stops') }}</label>
                         <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_help') }}</p>
+                        <div
+                            x-data="{
+                                toggleAll(event) {
+                                    const checked = !!event.target.checked;
+                                    this.$root.querySelectorAll('input[type=checkbox][data-round-stop]').forEach((box) => {
+                                        if (box.checked !== checked) {
+                                            box.checked = checked;
+                                            box.dispatchEvent(new Event('change', { bubbles: true }));
+                                        }
+                                    });
+                                }
+                            }"
+                            class="wp-stack-tight"
+                        >
+                            <label class="wp-check wp-text-sm">
+                                <input type="checkbox" @change="toggleAll($event)" @disabled($createUnits->isEmpty())>
+                                {{ __('issues.create.round_stops_select_all') }}
+                            </label>
                         <div id="create_round_stop_unit_ids" class="wp-round-stop-picker @if($createUnits->isEmpty()) wp-round-stop-picker--disabled @endif">
                             @foreach ($createUnits as $unit)
                                 <label class="wp-round-stop-picker__row">
-                                    <input type="checkbox" value="{{ $unit->id }}" wire:model="round_stop_unit_ids">
+                                    <input type="checkbox" value="{{ $unit->id }}" wire:model="round_stop_unit_ids" data-round-stop>
                                     <span>{{ $unit->name }}</span>
                                 </label>
                             @endforeach
+                        </div>
                         </div>
                         @if ($createUnits->isEmpty())
                             <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_empty') }}</p>

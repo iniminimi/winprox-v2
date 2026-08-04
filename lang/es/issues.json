@@ -103,7 +103,8 @@
         "round_stops": "Paradas de ronda (opcional)",
         "round_stops_help": "Elija al menos 2 unidades en orden. El aviso no tendrá una sola unidad; el progreso va por Unit check por parada.",
         "round_stops_empty": "Primero elija una ubicación con unidades para seleccionar paradas.",
-        "round_stops_select_help": "Seleccione aquí las unidades que forman parte de la ronda. El orden sigue la lista de arriba hacia abajo."
+        "round_stops_select_help": "Seleccione aquí las unidades que forman parte de la ronda. El orden sigue la lista de arriba hacia abajo.",
+        "round_stops_select_all": "Seleccionar todas las unidades"
     },
     "errors": {
         "cannot_close_approved": "Una incidencia aprobada no se puede cerrar.",
