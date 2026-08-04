@@ -41,7 +41,25 @@ class StoreManagerIssueStepOneRequest extends FormRequest
             'recurrence_interval_unit' => ['nullable', 'required_if:is_recurring,true', Rule::enum(RecurrenceIntervalUnit::class)],
             'recurrence_lead_days' => ['nullable', 'required_if:is_recurring,true', 'integer', 'min:1', 'max:365'],
             'recurrence_first_due_date' => ['nullable', 'required_if:is_recurring,true', 'date', 'after_or_equal:today'],
-            'round_stop_unit_ids' => ['sometimes', 'array', 'min:2'],
+            'round_stop_unit_ids' => [
+                'exclude_unless:is_recurring,true',
+                'array',
+                function (string $attribute, mixed $value, \Closure $fail): void {
+                    if (! is_array($value)) {
+                        return;
+                    }
+
+                    $count = count(array_values(array_filter(
+                        $value,
+                        static fn ($id) => is_numeric($id),
+                    )));
+
+                    // Optioneel op terugkerende melding; 1 stop is ongeldig, ≥2 = inspectieronde.
+                    if ($count === 1) {
+                        $fail(__('issues.errors.round_stops_min'));
+                    }
+                },
+            ],
             'round_stop_unit_ids.*' => [
                 'integer',
                 Rule::exists('units', 'id')->when(
@@ -98,6 +116,7 @@ class StoreManagerIssueStepOneRequest extends FormRequest
             'recurrence_first_due_date.after_or_equal' => __('issues.errors.recurrence_due_future'),
             'round_stop_unit_ids.min' => __('issues.errors.round_stops_min'),
             'round_stop_unit_ids.*.exists' => __('issues.errors.round_stops_invalid'),
+            'round_stop_unit_ids.*.integer' => __('issues.errors.round_stops_invalid'),
             'esg_indicator_id.exists' => __('issues.errors.esg_indicator_invalid'),
             'esg_indicator_id.prohibited_unless' => __('issues.errors.esg_indicator_recurring_only'),
             'photos.max' => __('issues.errors.photos_max'),

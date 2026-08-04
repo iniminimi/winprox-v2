@@ -185,6 +185,7 @@ class Index extends Component
             $this->recurrence_lead_days = $this->suggestRecurringLeadDays($this->recurrence_interval_unit);
         } else {
             $this->esg_indicator_id = null;
+            $this->round_stop_unit_ids = [];
         }
     }
 
@@ -245,6 +246,10 @@ class Index extends Component
             $this->round_stop_unit_ids,
         )));
 
+        if (! $this->is_recurring) {
+            $this->round_stop_unit_ids = [];
+        }
+
         if (count($this->round_stop_unit_ids) >= 2) {
             $this->unit_id = null;
             $this->esg_indicator_id = null;
@@ -256,8 +261,10 @@ class Index extends Component
             StoreManagerIssueStepOneRequest::messageSet(),
         );
 
-        if ($this->round_stop_unit_ids !== []) {
+        if (count($this->round_stop_unit_ids) >= 2) {
             $validated['round_stop_unit_ids'] = $this->round_stop_unit_ids;
+        } else {
+            unset($validated['round_stop_unit_ids']);
         }
 
         $validated['original_language'] = app()->getLocale();

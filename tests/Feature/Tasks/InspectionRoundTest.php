@@ -121,6 +121,66 @@ it('rejects fewer than two round stops', function () {
         ->toThrow(\Illuminate\Validation\ValidationException::class);
 });
 
+it('allows a normal non-recurring issue without round-stop validation', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    seedTenantPastOnboarding($tenant);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::query()->where('tenant_id', $tenant->id)->first()
+        ?? Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::query()->where('tenant_id', $tenant->id)->first()
+        ?? Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
+    // Lege round_stop_unit_ids (default) mag geen inspectieronde-fout geven.
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->set('showCreateModal', true)
+        ->set('location_id', $location->id)
+        ->set('unit_id', $unit->id)
+        ->set('description', 'Het gordijn is stuk')
+        ->set('is_recurring', false)
+        ->call('saveCreateStepOne')
+        ->assertHasNoErrors()
+        ->assertSet('createStep', 2);
+
+    expect(Issue::query()->where('description', 'Het gordijn is stuk')->exists())->toBeTrue()
+        ->and(Issue::query()->where('description', 'Het gordijn is stuk')->first()?->isInspectionRound())->toBeFalse();
+
+    // Losse stop-ids (rest van eerdere ronde) mogen gewone meldingen niet blokkeren.
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->set('showCreateModal', true)
+        ->set('location_id', $location->id)
+        ->set('unit_id', $unit->id)
+        ->set('description', 'Nog een gewone melding')
+        ->set('is_recurring', false)
+        ->set('round_stop_unit_ids', [(string) $unit->id])
+        ->call('saveCreateStepOne')
+        ->assertHasNoErrors()
+        ->assertSet('createStep', 2)
+        ->assertSet('round_stop_unit_ids', []);
+});
+
+it('rejects a single round stop on a recurring issue create', function () {
+    $ctx = inspectionRoundScaffold();
+    seedTenantPastOnboarding($ctx['tenant']);
+
+    Livewire::actingAs($ctx['actor'])
+        ->test(\App\Livewire\Issues\Index::class)
+        ->set('showCreateModal', true)
+        ->set('location_id', $ctx['location']->id)
+        ->set('description', 'Ronde met te weinig stops')
+        ->set('is_recurring', true)
+        ->set('recurrence_interval_value', 1)
+        ->set('recurrence_interval_unit', 'month')
+        ->set('recurrence_lead_days', 7)
+        ->set('recurrence_first_due_date', now()->toDateString())
+        ->set('round_stop_unit_ids', [(string) $ctx['unitA']->id])
+        ->call('saveCreateStepOne')
+        ->assertHasErrors(['round_stop_unit_ids']);
+});
+
 it('rejects round stops when unit checks are disabled on a stop', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
