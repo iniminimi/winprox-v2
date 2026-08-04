@@ -33,7 +33,10 @@ class SyncIssueRoundStopsRequest extends FormRequest
                 'integer',
                 Rule::exists('units', 'id')->when(
                     $tenantId !== null,
-                    fn ($rule) => $rule->where('tenant_id', $tenantId)->where('is_active', true),
+                    fn ($rule) => $rule
+                        ->where('tenant_id', $tenantId)
+                        ->where('is_active', true)
+                        ->where('allow_unit_checks', true),
                 ),
             ],
         ];
