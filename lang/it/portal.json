@@ -282,12 +282,13 @@
             "not_a_stop": "Questa unità non fa parte del giro.",
             "not_next_stop": "Si può saltare solo la fermata successiva (:name)."
         },
-        "next_stop": "Prossima: :name",
-        "wait_for_next": "Non ancora. Vai prima a :name.",
+        "next_stop": "Prossima fermata: :name",
+        "wait_for_next": "Non sei alla fermata successiva. Vai a :name e fai lì un Unit check.",
         "out_of_order": "Unit check salvato. Per il giro vai prima a :name.",
         "stop_ok": "OK",
         "stop_skipped": "Saltata",
         "stop_open": "Aperta",
-        "stop_current": "Ora"
+        "stop_current": "Ora",
+        "do_check_here": "Questa fermata è la prossima. Fai qui un Unit check (OK), oppure salta."
     }
 }

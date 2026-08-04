@@ -282,12 +282,13 @@
             "not_a_stop": "Diese Unit gehört nicht zur Runde.",
             "not_next_stop": "Nur der nächste Stop kann übersprungen werden (:name)."
         },
-        "next_stop": "Als Nächstes: :name",
-        "wait_for_next": "Noch nicht dran. Gehen Sie zuerst zu :name.",
+        "next_stop": "Nächster Stopp: :name",
+        "wait_for_next": "Sie sind nicht am nächsten Stopp. Gehen Sie zu :name und machen Sie dort einen Unit-Check.",
         "out_of_order": "Unit-Check gespeichert. Für die Runde zuerst zu :name.",
         "stop_ok": "OK",
         "stop_skipped": "Übersprungen",
         "stop_open": "Offen",
-        "stop_current": "Jetzt"
+        "stop_current": "Jetzt",
+        "do_check_here": "Dieser Stopp ist dran. Machen Sie hier einen Unit-Check (OK), oder überspringen Sie ihn."
     }
 }

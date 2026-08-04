@@ -282,12 +282,13 @@
             "not_a_stop": "Deze unit hoort niet bij de ronde.",
             "not_next_stop": "Alleen de volgende stop kan worden overgeslagen (:name)."
         },
-        "next_stop": "Volgende: :name",
-        "wait_for_next": "Nog niet aan de beurt. Ga eerst naar :name.",
+        "next_stop": "Volgende stop: :name",
+        "wait_for_next": "Je bent niet op de volgende stop. Ga naar :name en doe daar een Unit check.",
         "out_of_order": "Unit check opgeslagen. Voor de ronde eerst naar :name.",
         "stop_ok": "OK",
         "stop_skipped": "Overgeslagen",
         "stop_open": "Open",
-        "stop_current": "Nu"
+        "stop_current": "Nu",
+        "do_check_here": "Deze stop is aan de beurt. Doe hier een Unit check (OK), of sla over."
     }
 }

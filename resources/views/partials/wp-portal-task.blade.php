@@ -113,6 +113,7 @@
                 </button>
             @endif
             @if ($isRound && $isNextStop)
+                <p class="wp-muted wp-text-sm">{{ __('portal.round.do_check_here') }}</p>
                 <button type="button"
                         class="btn btn--ghost btn--block btn--sm"
                         wire:click="openSkipRoundStop({{ $task->id }})"

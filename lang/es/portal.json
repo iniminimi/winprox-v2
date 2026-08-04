@@ -282,12 +282,13 @@
             "not_a_stop": "Esta unidad no forma parte de la ronda.",
             "not_next_stop": "Solo se puede omitir la siguiente parada (:name)."
         },
-        "next_stop": "Siguiente: :name",
-        "wait_for_next": "Aún no. Vaya primero a :name.",
+        "next_stop": "Siguiente parada: :name",
+        "wait_for_next": "No estás en la siguiente parada. Ve a :name y haz allí un Unit check.",
         "out_of_order": "Unit check guardado. Para la ronda, vaya primero a :name.",
         "stop_ok": "OK",
         "stop_skipped": "Omitida",
         "stop_open": "Abierta",
-        "stop_current": "Ahora"
+        "stop_current": "Ahora",
+        "do_check_here": "Esta parada es la siguiente. Haz aquí un Unit check (OK), o omítela."
     }
 }

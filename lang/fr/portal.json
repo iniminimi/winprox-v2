@@ -282,12 +282,13 @@
             "not_a_stop": "Cette unité ne fait pas partie de la tournée.",
             "not_next_stop": "Seul l’arrêt suivant peut être passé (:name)."
         },
-        "next_stop": "Suivant : :name",
-        "wait_for_next": "Pas encore. Passez d’abord par :name.",
+        "next_stop": "Prochain arrêt : :name",
+        "wait_for_next": "Vous n’êtes pas à l’arrêt suivant. Allez à :name et faites-y un contrôle unité.",
         "out_of_order": "Contrôle enregistré. Pour la tournée, allez d’abord à :name.",
         "stop_ok": "OK",
         "stop_skipped": "Passé",
         "stop_open": "Ouvert",
-        "stop_current": "Maintenant"
+        "stop_current": "Maintenant",
+        "do_check_here": "Cet arrêt est le suivant. Faites ici un contrôle unité (OK), ou passez-le."
     }
 }
