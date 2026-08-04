@@ -79,7 +79,8 @@
         "recurring_title": "Recurring task",
         "recurring_cycle": "Cycle #:nr",
         "recurring_interval": "Interval: every :value :unit",
-        "recurring_next_due": "Next cycle: :date"
+        "recurring_next_due": "Next cycle: :date",
+        "round_progress": "Inspection round progress"
     },
     "errors": {
         "invalid_transition": "This status change is not allowed.",

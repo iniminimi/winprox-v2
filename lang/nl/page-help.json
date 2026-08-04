@@ -147,6 +147,10 @@
                     "text": "Komt de taak uit een terugkerende melding, dan zie je de pill «Terugkerend» en de geplande vervaldatum van deze cyclus. Een nieuwe cyclus-taak volgt pas als de vorige is afgehandeld of gesloten — zo stapelen openstaande taken niet op."
                 },
                 {
+                    "label": "Inspectieronde",
+                    "text": "Bij een inspectieronde zie je hier de voortgang per stop (OK, overgeslagen, open) voor deze cyclus. Op het unit-QR-portaal van elke stop ziet de worker dezelfde voortgang; de taak wordt automatisch afgehandeld als alle stops klaar zijn. Openblijvende ronden kun je hier handmatig afhandelen of sluiten (met reden)."
+                },
+                {
                     "label": "Team toewijzen",
                     "text": "Kies een operationeel team en sla op. Zo wijzig je ook een bestaande toewijzing."
                 },

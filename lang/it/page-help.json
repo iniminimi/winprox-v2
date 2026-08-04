@@ -147,6 +147,10 @@
                     "text": "Se il task proviene da una segnalazione ricorrente, vedi la pill «Ricorrente» e la scadenza pianificata di questo ciclo. Un nuovo task di ciclo viene creato solo dopo che il precedente è completato o chiuso — così i task aperti non si accumulano."
                 },
                 {
+                    "label": "Giro di ispezione",
+                    "text": "Per un giro di ispezione vedi qui l’avanzamento per fermata (OK, saltata, aperta) di questo ciclo. Sul portale QR di ogni fermata il lavoratore vede lo stesso avanzamento; il compito si completa automaticamente quando tutte le fermate sono fatte. Puoi anche completare o chiudere un giro aperto qui manualmente (con motivo in chiusura)."
+                },
+                {
                     "label": "Assegna team",
                     "text": "Scelga un team operativo e salvi. Può anche cambiare un'assegnazione esistente."
                 },

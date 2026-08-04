@@ -79,7 +79,8 @@
         "recurring_title": "Tâche récurrente",
         "recurring_cycle": "Cycle n° :nr",
         "recurring_interval": "Intervalle : toutes les :value :unit",
-        "recurring_next_due": "Prochain cycle : :date"
+        "recurring_next_due": "Prochain cycle : :date",
+        "round_progress": "Progression de la ronde"
     },
     "errors": {
         "invalid_transition": "Ce changement de statut n'est pas autorisé.",

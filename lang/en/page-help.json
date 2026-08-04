@@ -147,6 +147,10 @@
                     "text": "If the task comes from a recurring issue, you see the Recurring pill and this cycle's planned due date. A new cycle task is only created after the previous one is done or closed — so open tasks do not pile up."
                 },
                 {
+                    "label": "Inspection round",
+                    "text": "For an inspection round you see progress per stop (OK, skipped, open) for this cycle. On each stop unit QR portal the worker sees the same progress; the task completes automatically when all stops are done. You can also complete or close an open round here manually (with a reason when closing)."
+                },
+                {
                     "label": "Assign team",
                     "text": "Choose an operational team and save. You can also change an existing assignment."
                 },

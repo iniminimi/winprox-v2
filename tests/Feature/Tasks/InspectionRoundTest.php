@@ -416,6 +416,18 @@ it('refuses skip when the unit is not the next open stop', function () {
         ->and(app(RoundTaskCompletionAction::class)->progress($task->fresh())['stops'][1]['state'])->toBe('open');
 });
 
+it('renders round progress on the task show page', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'task' => $task, 'unitA' => $unitA] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Tasks\Show::class, ['task' => $task->fresh()])
+        ->assertOk()
+        ->assertSee(__('tasks.show.round_progress'))
+        ->assertSee(__('portal.round.progress', ['done' => 0, 'total' => 2]))
+        ->assertSee($unitA->localizedName());
+});
+
 it('renders the issue show page for inspection rounds', function () {
     ['tenant' => $tenant, 'actor' => $actor, 'issue' => $issue] = inspectionRoundScaffold();
     seedTenantPastOnboarding($tenant);

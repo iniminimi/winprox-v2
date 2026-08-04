@@ -4,6 +4,7 @@ namespace App\Livewire\Tasks;
 
 use App\Actions\Communication\ImportTaskTranslationsAction;
 use App\Actions\Tasks\PauseTaskAction;
+use App\Actions\Tasks\RoundTaskCompletionAction;
 use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Actions\Tasks\UpdateTaskPriorityAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
@@ -54,6 +55,7 @@ class Show extends Component
         $this->task = $task->load([
             'issue.location',
             'issue.unit.translations',
+            'issue.roundStops.unit.translations',
             'issue.esgIndicator.translations',
             'issue.translations',
             'updates.user',
@@ -61,6 +63,7 @@ class Show extends Component
             'updates.photos',
             'translations',
             'team.translations',
+            'roundStopSkips',
             'esgThresholdMeasurement.indicator.translations',
             'esgThresholdMeasurement.task',
             'esgThresholdMeasurement.thresholdFollowUpTask',
@@ -260,7 +263,16 @@ class Show extends Component
 
     protected function refreshTask(): void
     {
-        $this->task = $this->task->fresh(['issue.location', 'issue.unit', 'updates.user', 'updates.worker', 'updates.photos', 'team.translations']);
+        $this->task = $this->task->fresh([
+            'issue.location',
+            'issue.unit',
+            'issue.roundStops.unit.translations',
+            'updates.user',
+            'updates.worker',
+            'updates.photos',
+            'team.translations',
+            'roundStopSkips',
+        ]);
         $this->syncFormFromTask();
     }
 
@@ -310,13 +322,25 @@ class Show extends Component
 
         $issue = $this->task->issue;
         $location = $issue?->location;
-        $headline = collect([$location?->localizedName(), $issue?->unit?->localizedName()])->filter()->join(' · ');
+        if ($issue?->isInspectionRound()) {
+            $headline = collect([
+                $location?->localizedName(),
+                __('issues.card.round_stops', ['count' => $issue->roundStopCount()]),
+            ])->filter()->join(' · ');
+        } else {
+            $headline = collect([$location?->localizedName(), $issue?->unit?->localizedName()])->filter()->join(' · ');
+        }
         if ($headline === '' && $issue) {
             $headline = \Illuminate\Support\Str::limit($issue->localizedDescription(), 80);
         }
         $addressLine = $location
             ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
             : '';
+
+        $roundProgress = null;
+        if ($issue?->isInspectionRound()) {
+            $roundProgress = app(RoundTaskCompletionAction::class)->progress($this->task);
+        }
 
         $taskTranslationLocales = config('locales.labels', []);
         if ($this->showEditTaskModal) {
@@ -344,6 +368,7 @@ class Show extends Component
             'nav' => EntityDetailNavigation::forTask($this->task),
             'esgChainSteps' => EsgOperationChainPresenter::stepsForTask($this->task),
             'taskTranslationLocales' => $taskTranslationLocales,
+            'roundProgress' => $roundProgress,
         ]);
     }
 }

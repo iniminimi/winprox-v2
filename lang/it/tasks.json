@@ -79,7 +79,8 @@
         "recurring_title": "Attività ricorrente",
         "recurring_cycle": "Ciclo n. :nr",
         "recurring_interval": "Intervallo: ogni :value :unit",
-        "recurring_next_due": "Prossimo ciclo: :date"
+        "recurring_next_due": "Prossimo ciclo: :date",
+        "round_progress": "Avanzamento del giro di ispezione"
     },
     "errors": {
         "invalid_transition": "Questo cambio di stato non è consentito.",

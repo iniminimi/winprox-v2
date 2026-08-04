@@ -79,7 +79,8 @@
         "recurring_title": "Wiederkehrende Aufgabe",
         "recurring_cycle": "Zyklus #:nr",
         "recurring_interval": "Intervall: alle :value :unit",
-        "recurring_next_due": "Nächster Zyklus: :date"
+        "recurring_next_due": "Nächster Zyklus: :date",
+        "round_progress": "Fortschritt der Inspektionsrunde"
     },
     "errors": {
         "invalid_transition": "Diese Statusänderung ist nicht erlaubt.",

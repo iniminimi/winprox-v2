@@ -147,6 +147,10 @@
                     "text": "Stammt die Aufgabe aus einer wiederkehrenden Meldung, sehen Sie die Pill «Wiederkehrend» und das geplante Fälligkeitsdatum dieses Zyklus. Eine neue Zyklus-Aufgabe entsteht erst, wenn die vorherige erledigt oder geschlossen ist — offene Aufgaben stapeln sich so nicht."
                 },
                 {
+                    "label": "Inspektionsrunde",
+                    "text": "Bei einer Inspektionsrunde sehen Sie hier den Fortschritt je Stopp (OK, übersprungen, offen) für diesen Zyklus. Auf dem Unit-QR-Portal jedes Stopps sieht der Mitarbeiter denselben Fortschritt; die Aufgabe wird automatisch abgeschlossen, wenn alle Stopps erledigt sind. Offene Runden können Sie hier auch manuell abschließen oder schließen (mit Begründung)."
+                },
+                {
                     "label": "Team zuweisen",
                     "text": "Wählen Sie ein Team und speichern. So ändern Sie auch eine bestehende Zuweisung."
                 },

@@ -66,6 +66,15 @@
         </div>
     @endif
 
+    @if ($roundProgress)
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <h2 class="wp-section-title">{{ __('tasks.show.round_progress') }}</h2>
+            @include('partials.wp-portal-round-progress', [
+                'progress' => $roundProgress,
+            ])
+        </div>
+    @endif
+
     <div class="wp-card wp-card-pad wp-stack-tight">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('tasks.show.task_line', ['team' => $teamName]) }}</h2>

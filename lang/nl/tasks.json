@@ -79,7 +79,8 @@
         "recurring_title": "Terugkerende taak",
         "recurring_cycle": "Cyclus #:nr",
         "recurring_interval": "Interval: elke :value :unit",
-        "recurring_next_due": "Volgende cyclus: :date"
+        "recurring_next_due": "Volgende cyclus: :date",
+        "round_progress": "Voortgang inspectieronde"
     },
     "errors": {
         "invalid_transition": "Deze statuswijziging is niet toegestaan.",

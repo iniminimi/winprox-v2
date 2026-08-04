@@ -147,6 +147,10 @@
                     "text": "Si la tarea proviene de un aviso recurrente, verá la pastilla «Recurrente» y la fecha planificada de este ciclo. Solo se crea una nueva tarea de ciclo cuando la anterior está hecha o cerrada — así no se acumulan tareas abiertas."
                 },
                 {
+                    "label": "Ronda de inspección",
+                    "text": "En una ronda de inspección ves aquí el progreso por parada (OK, omitida, abierta) de este ciclo. En el portal QR de cada parada el trabajador ve el mismo progreso; la tarea se completa automáticamente cuando todas las paradas están listas. También puedes completar o cerrar una ronda abierta aquí manualmente (con motivo al cerrar)."
+                },
+                {
                     "label": "Asignar equipo",
                     "text": "Elija un equipo operativo y guarde. También puede cambiar una asignación existente."
                 },
