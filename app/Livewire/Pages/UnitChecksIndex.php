@@ -7,7 +7,9 @@ namespace App\Livewire\Pages;
 use App\Enums\UnitCheckResult;
 use App\Models\Location;
 use App\Models\UnitCheck;
+use Carbon\CarbonImmutable;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -60,9 +62,33 @@ class UnitChecksIndex extends Component
             $query->where('location_id', $this->locationFilter);
         }
 
+        $checks = $query->paginate(25);
+        $groupedChecks = $this->groupChecksByDay($checks->getCollection());
+
         return view('livewire.pages.unit-checks-index', [
-            'checks' => $query->paginate(25),
+            'checks' => $checks,
+            'groupedChecks' => $groupedChecks,
             'locations' => Location::query()->orderBy('name')->get(['id', 'name', 'address']),
         ]);
+    }
+
+    /**
+     * @param  Collection<int, UnitCheck>  $checks
+     * @return Collection<int, array{key: string, label: string, checks: Collection<int, UnitCheck>}>
+     */
+    private function groupChecksByDay(Collection $checks): Collection
+    {
+        return $checks
+            ->groupBy(fn (UnitCheck $check) => (string) $check->checked_at?->toDateString())
+            ->map(function (Collection $group, string $dayKey): array {
+                $date = CarbonImmutable::parse($dayKey);
+
+                return [
+                    'key' => $dayKey,
+                    'label' => $date->translatedFormat('l d-m-Y'),
+                    'checks' => $group->values(),
+                ];
+            })
+            ->values();
     }
 }
