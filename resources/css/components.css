@@ -3791,6 +3791,21 @@ svg.wp-release-worker-row__icon,
     color: var(--wp-accent-text, #047857);
 }
 
+.wp-register-success {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.wp-register-success__video {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: var(--wp-radius-md);
+    object-fit: cover;
+    background: #fff;
+}
+
 .wp-flash--danger {
     padding: 0.75rem 1rem;
     border-radius: var(--wp-radius);

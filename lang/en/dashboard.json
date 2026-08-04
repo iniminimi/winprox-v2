@@ -58,5 +58,9 @@
             "text": "Workers sign in and clock in/out via a Clock Point. Create at least one clock point and print the QR sticker or QR print sheet so your team can get started.",
             "button": "Clock Points"
         }
+    },
+    "register_success": {
+        "title": "Account created",
+        "body": "Your workspace is ready. You can start managing your first tasks now."
     }
 }

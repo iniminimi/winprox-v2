@@ -24,6 +24,7 @@ it('registreert een nieuwe tenant met beheerder en logt in', function () {
         ->set(RegisterFormData::valid())
         ->call('register')
         ->assertHasNoErrors()
+        ->assertSessionHas('register_success', true)
         ->assertRedirect(route('dashboard'));
 
     $tenant = Tenant::where('name', 'Nieuwe Facility')->first();

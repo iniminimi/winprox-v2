@@ -58,5 +58,9 @@
             "text": "Uitvoerders melden zich aan en klokken in via een Clock Point. Maak minstens één clock point aan en print de QR-sticker of het QR-afdrukblad zodat je team kan starten.",
             "button": "Clock Points"
         }
+    },
+    "register_success": {
+        "title": "Account aangemaakt",
+        "body": "Je werkruimte is klaar. Je kan nu meteen je eerste taken beheren."
     }
 }

@@ -849,6 +849,7 @@
 
 .wp-auth-logo-img {
     display: block;
+    margin-inline: auto;
     max-width: 11rem;
     width: 100%;
     height: auto;

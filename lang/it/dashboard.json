@@ -58,5 +58,9 @@
             "text": "I lavoratori accedono e timbrano tramite un Clock Point. Crei almeno un clock point e stampi l'adesivo QR o il foglio di stampa QR così il team può iniziare.",
             "button": "Clock Points"
         }
+    },
+    "register_success": {
+        "title": "Account creato",
+        "body": "Il Suo spazio di lavoro è pronto. Ora può gestire le Sue prime attività."
     }
 }

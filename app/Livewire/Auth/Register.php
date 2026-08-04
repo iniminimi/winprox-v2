@@ -52,6 +52,7 @@ class Register extends Component
         Auth::login($user);
 
         session()->regenerate();
+        session()->flash('register_success', true);
 
         return $this->redirectRoute('dashboard', navigate: false);
     }

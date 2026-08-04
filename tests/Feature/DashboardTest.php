@@ -44,6 +44,27 @@ it('toont het dashboard met tenant-gescopete KPI-tellingen', function () {
         ->assertSee('Recente zichtbare melding');
 });
 
+it('toont na registratie een succesblok met assistant task video op dashboard', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($user)
+        ->withSession(['register_success' => true])
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee('video/assistant_task_160.mp4', false)
+        ->assertSee(__('dashboard.register_success.title'));
+});
+
 it('toont meldingen van een andere tenant niet op het dashboard', function () {
     $tenantA = Tenant::factory()->create();
     $tenantB = Tenant::factory()->create();

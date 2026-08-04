@@ -45,6 +45,25 @@
     @endif
 
     @if (! $onboarding->blocksDashboardMain())
+        @if (session('register_success'))
+            <div class="wp-flash wp-flash--success wp-register-success" role="status">
+                <video
+                    class="wp-register-success__video"
+                    src="{{ asset('video/assistant_task_160.mp4') }}"
+                    width="160"
+                    height="160"
+                    autoplay
+                    muted
+                    playsinline
+                    preload="auto"
+                ></video>
+                <div class="wp-stack-tight">
+                    <p class="wp-text-body"><strong>{{ __('dashboard.register_success.title') }}</strong></p>
+                    <p class="wp-muted">{{ __('dashboard.register_success.body') }}</p>
+                </div>
+            </div>
+        @endif
+
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title

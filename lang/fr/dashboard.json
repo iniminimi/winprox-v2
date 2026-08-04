@@ -58,5 +58,9 @@
             "text": "Les exécutants se connectent et pointent via un Clock Point. Créez au moins un clock point et imprimez l'autocollant QR ou la feuille d'impression QR pour que votre équipe puisse démarrer.",
             "button": "Clock Points"
         }
+    },
+    "register_success": {
+        "title": "Compte créé",
+        "body": "Votre espace de travail est prêt. Vous pouvez maintenant gérer vos premières tâches."
     }
 }
