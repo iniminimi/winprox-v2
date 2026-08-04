@@ -5027,6 +5027,16 @@ a.wp-kpi.wp-kpi--attention {
     margin: 0;
 }
 
+.wp-round-stop-picker__row--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.wp-round-stop-picker__hint {
+    font-size: 0.75rem;
+    color: var(--wp-muted);
+}
+
 .wp-round-stop-picker--disabled {
     opacity: 0.7;
     pointer-events: none;

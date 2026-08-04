@@ -121,6 +121,43 @@ it('rejects fewer than two round stops', function () {
         ->toThrow(\Illuminate\Validation\ValidationException::class);
 });
 
+it('rejects round stops when unit checks are disabled on a stop', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $actor = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'allow_unit_checks' => true,
+    ]);
+
+    $unitA = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $category->id,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $category->id,
+        'is_active' => true,
+        'allow_unit_checks' => false,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'is_recurring' => true,
+        'approved_at' => now(),
+    ]);
+
+    expect(fn () => app(SyncIssueRoundStopsAction::class)->handle($issue, [$unitA->id, $unitB->id], $actor))
+        ->toThrow(\Illuminate\Validation\ValidationException::class);
+});
+
 it('labels a round issue and clears unit_id', function () {
     ['issue' => $issue, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
 

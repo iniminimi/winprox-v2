@@ -414,7 +414,12 @@ class Index extends Component
                 ? Location::query()->orderBy('name')->get()
                 : collect(),
             'createUnits' => $this->showCreateModal && $this->location_id
-                ? Unit::query()->where('location_id', $this->location_id)->orderBy('name')->get()
+                ? Unit::query()
+                    ->where('location_id', $this->location_id)
+                    ->where('is_active', true)
+                    ->with('category')
+                    ->orderBy('name')
+                    ->get()
                 : collect(),
             'createTeams' => $this->showCreateModal
                 ? InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('name')->get()

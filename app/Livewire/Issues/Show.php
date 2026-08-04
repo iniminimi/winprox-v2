@@ -585,7 +585,11 @@ class Show extends Component
         }
 
         $roundStopUnits = $issue->is_recurring
-            ? Unit::query()->where('is_active', true)->with('translations')->orderBy('name')->get()
+            ? Unit::query()
+                ->where('is_active', true)
+                ->with(['translations', 'category'])
+                ->orderBy('name')
+                ->get()
             : collect();
 
         return view('livewire.issues.show', [

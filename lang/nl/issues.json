@@ -104,7 +104,8 @@
         "round_stops_help": "Kies minstens 2 units in volgorde. De melding krijgt dan geen enkele unit; voortgang loopt via Unit check per stop.",
         "round_stops_empty": "Kies eerst een locatie met units om stops te selecteren.",
         "round_stops_select_help": "Selecteer hier de units die onderdeel zijn van de ronde. Volgorde loopt van boven naar beneden in deze lijst.",
-        "round_stops_select_all": "Selecteer alle units"
+        "round_stops_select_all": "Selecteer alle units",
+        "round_stops_unit_checks_off": "Unit checks staat uit op deze unit"
     },
     "errors": {
         "cannot_close_approved": "Een goedgekeurde melding kan niet worden gesloten.",
@@ -134,7 +135,8 @@
         "translation_import_too_long": "Vertaling is te lang (max. 1500 tekens).",
         "translation_import_issue_missing": "Melding niet gevonden of niet goedgekeurd.",
         "round_stops_min": "Selecteer minstens 2 units als stops voor een inspectieronde.",
-        "round_stops_invalid": "Een of meer geselecteerde stops zijn ongeldig."
+        "round_stops_invalid": "Een of meer geselecteerde stops zijn ongeldig.",
+        "round_stops_unit_checks_required": "Unit checks moet aanstaan op elke gekozen stop (categorie én unit)."
     },
     "show": {
         "title": "Melding",

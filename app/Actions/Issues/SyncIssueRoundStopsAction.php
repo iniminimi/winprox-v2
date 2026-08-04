@@ -42,6 +42,15 @@ class SyncIssueRoundStopsAction
             ]);
         }
 
+        $hasDisabledUnitChecks = $units->contains(
+            fn (Unit $unit) => ! $unit->allowsUnitChecks()
+        );
+        if ($hasDisabledUnitChecks) {
+            throw ValidationException::withMessages([
+                'round_stop_unit_ids' => [__('issues.errors.round_stops_unit_checks_required')],
+            ]);
+        }
+
         $locationIds = $units->pluck('location_id')->unique()->values();
 
         return DB::transaction(function () use ($issue, $uniqueIds, $locationIds) {

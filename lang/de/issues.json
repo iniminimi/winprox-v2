@@ -104,7 +104,8 @@
         "round_stops_help": "Wählen Sie mindestens 2 Units in Reihenfolge. Die Meldung hat dann keine einzelne Unit; Fortschritt über Unit-Check je Stop.",
         "round_stops_empty": "Wählen Sie zuerst einen Standort mit Units, um Stops zu wählen.",
         "round_stops_select_help": "Wählen Sie hier die Units, die zur Runde gehören. Die Reihenfolge läuft von oben nach unten in dieser Liste.",
-        "round_stops_select_all": "Alle Units auswählen"
+        "round_stops_select_all": "Alle Units auswählen",
+        "round_stops_unit_checks_off": "Unit-Checks sind für diese Unit deaktiviert"
     },
     "errors": {
         "cannot_close_approved": "Eine freigegebene Meldung kann nicht geschlossen werden.",
@@ -134,7 +135,8 @@
         "translation_import_too_long": "Übersetzung ist zu lang (max. 1500 Zeichen).",
         "translation_import_issue_missing": "Meldung nicht gefunden oder nicht freigegeben.",
         "round_stops_min": "Wählen Sie mindestens 2 Units als Stops für eine Inspektionsrunde.",
-        "round_stops_invalid": "Ein oder mehrere ausgewählte Stops sind ungültig."
+        "round_stops_invalid": "Ein oder mehrere ausgewählte Stops sind ungültig.",
+        "round_stops_unit_checks_required": "Unit-Checks müssen bei jedem gewählten Stopp aktiviert sein (Kategorie und Unit)."
     },
     "show": {
         "title": "Meldung",

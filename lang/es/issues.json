@@ -104,7 +104,8 @@
         "round_stops_help": "Elija al menos 2 unidades en orden. El aviso no tendrá una sola unidad; el progreso va por Unit check por parada.",
         "round_stops_empty": "Primero elija una ubicación con unidades para seleccionar paradas.",
         "round_stops_select_help": "Seleccione aquí las unidades que forman parte de la ronda. El orden sigue la lista de arriba hacia abajo.",
-        "round_stops_select_all": "Seleccionar todas las unidades"
+        "round_stops_select_all": "Seleccionar todas las unidades",
+        "round_stops_unit_checks_off": "Unit checks está desactivado en esta unidad"
     },
     "errors": {
         "cannot_close_approved": "Una incidencia aprobada no se puede cerrar.",
@@ -134,7 +135,8 @@
         "translation_import_too_long": "La traducción es demasiado larga (máx. 1500 caracteres).",
         "translation_import_issue_missing": "Incidencia no encontrada o no aprobada.",
         "round_stops_min": "Seleccione al menos 2 unidades como paradas de una ronda de inspección.",
-        "round_stops_invalid": "Una o más paradas seleccionadas no son válidas."
+        "round_stops_invalid": "Una o más paradas seleccionadas no son válidas.",
+        "round_stops_unit_checks_required": "Unit checks debe estar habilitado en cada parada seleccionada (categoría y unidad)."
     },
     "show": {
         "title": "Incidencia",

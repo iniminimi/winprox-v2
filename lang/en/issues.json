@@ -104,7 +104,8 @@
         "round_stops_help": "Pick at least 2 units in order. The issue then has no single unit; progress is via Unit check per stop.",
         "round_stops_empty": "Choose a location with units first to select stops.",
         "round_stops_select_help": "Select the units that are part of the round here. Order follows top to bottom in this list.",
-        "round_stops_select_all": "Select all units"
+        "round_stops_select_all": "Select all units",
+        "round_stops_unit_checks_off": "Unit checks are disabled on this unit"
     },
     "errors": {
         "cannot_close_approved": "An approved issue cannot be closed.",
@@ -134,7 +135,8 @@
         "translation_import_too_long": "Translation is too long (max. 1500 characters).",
         "translation_import_issue_missing": "Issue not found or not approved.",
         "round_stops_min": "Select at least 2 units as stops for an inspection round.",
-        "round_stops_invalid": "One or more selected stops are invalid."
+        "round_stops_invalid": "One or more selected stops are invalid.",
+        "round_stops_unit_checks_required": "Unit checks must be enabled on every selected stop (category and unit)."
     },
     "show": {
         "title": "Issue",

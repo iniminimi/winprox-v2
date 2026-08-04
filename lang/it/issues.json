@@ -104,7 +104,8 @@
         "round_stops_help": "Scegli almeno 2 unità in ordine. La segnalazione non ha una sola unità; il progresso avviene tramite Unit check per fermata.",
         "round_stops_empty": "Prima scelga una sede con unità per selezionare le fermate.",
         "round_stops_select_help": "Selezioni qui le unità che fanno parte del giro. L'ordine segue l'elenco dall'alto verso il basso.",
-        "round_stops_select_all": "Seleziona tutte le unità"
+        "round_stops_select_all": "Seleziona tutte le unità",
+        "round_stops_unit_checks_off": "I controlli unità sono disattivati su questa unità"
     },
     "errors": {
         "cannot_close_approved": "Una segnalazione approvata non può essere chiusa.",
@@ -134,7 +135,8 @@
         "translation_import_too_long": "La traduzione è troppo lunga (max. 1500 caratteri).",
         "translation_import_issue_missing": "Segnalazione non trovata o non approvata.",
         "round_stops_min": "Seleziona almeno 2 unità come fermate per un giro di ispezione.",
-        "round_stops_invalid": "Una o più fermate selezionate non sono valide."
+        "round_stops_invalid": "Una o più fermate selezionate non sono valide.",
+        "round_stops_unit_checks_required": "I controlli unità devono essere attivi su ogni fermata selezionata (categoria e unità)."
     },
     "show": {
         "title": "Segnalazione",

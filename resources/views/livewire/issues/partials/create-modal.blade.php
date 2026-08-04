@@ -115,7 +115,7 @@
                             x-data="{
                                 toggleAll(event) {
                                     const checked = !!event.target.checked;
-                                    this.$root.querySelectorAll('input[type=checkbox][data-round-stop]').forEach((box) => {
+                                    this.$root.querySelectorAll('input[type=checkbox][data-round-stop]:not(:disabled)').forEach((box) => {
                                         if (box.checked !== checked) {
                                             box.checked = checked;
                                             box.dispatchEvent(new Event('change', { bubbles: true }));
@@ -131,9 +131,19 @@
                             </label>
                         <div id="create_round_stop_unit_ids" class="wp-round-stop-picker @if($createUnits->isEmpty()) wp-round-stop-picker--disabled @endif">
                             @foreach ($createUnits as $unit)
-                                <label class="wp-round-stop-picker__row">
-                                    <input type="checkbox" value="{{ $unit->id }}" wire:model="round_stop_unit_ids" data-round-stop>
+                                @php($canUseRoundStop = $unit->allowsUnitChecks())
+                                <label class="wp-round-stop-picker__row @if(! $canUseRoundStop) wp-round-stop-picker__row--disabled @endif">
+                                    <input
+                                        type="checkbox"
+                                        value="{{ $unit->id }}"
+                                        wire:model="round_stop_unit_ids"
+                                        data-round-stop
+                                        @disabled(! $canUseRoundStop)
+                                    >
                                     <span>{{ $unit->name }}</span>
+                                    @if(! $canUseRoundStop)
+                                        <span class="wp-round-stop-picker__hint">{{ __('issues.create.round_stops_unit_checks_off') }}</span>
+                                    @endif
                                 </label>
                             @endforeach
                         </div>
