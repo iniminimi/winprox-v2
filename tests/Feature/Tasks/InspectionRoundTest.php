@@ -480,13 +480,18 @@ it('records not_ok on a round stop and advances to the next stop', function () {
     ['unitA' => $unitA, 'unitB' => $unitB, 'team' => $team, 'worker' => $worker, 'task' => $task] = inspectionRoundScaffold();
     WorkerVerification::markVerified($team, $worker);
 
+    $checkedAt = now();
+
     Livewire::test(UnitPortal::class, ['token' => 'round-unit-a'])
         ->call('openSection', 'unit_check')
         ->set('checkResult', 'not_ok')
-        ->set('checkCheckedAt', now()->toIso8601String())
+        ->set('checkCheckedAt', $checkedAt->toIso8601String())
         ->call('submitUnitCheck')
         ->assertHasNoErrors()
-        ->assertSet('portalSection', 'new');
+        ->assertSet('portalSection', 'new')
+        ->assertSet('description', __('portal.unit_check.report_prefill_not_ok_round', [
+            'datetime' => $checkedAt->timezone(config('app.timezone'))->format('d-m-Y H:i'),
+        ]));
 
     $progress = app(RoundTaskCompletionAction::class)->progress($task->fresh());
 
@@ -495,6 +500,21 @@ it('records not_ok on a round stop and advances to the next stop', function () {
         ->and($progress['stops'][1]['state'])->toBe('current')
         ->and($progress['next_unit_id'])->toBe((int) $unitB->id)
         ->and($task->fresh()->status)->toBe(TaskStatus::InProgress);
+});
+
+it('does not overwrite an existing report description after round not_ok', function () {
+    ['team' => $team, 'worker' => $worker] = inspectionRoundScaffold();
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'round-unit-a'])
+        ->set('description', 'Deur ging niet open')
+        ->call('openSection', 'unit_check')
+        ->set('checkResult', 'not_ok')
+        ->set('checkCheckedAt', now()->toIso8601String())
+        ->call('submitUnitCheck')
+        ->assertHasNoErrors()
+        ->assertSet('portalSection', 'new')
+        ->assertSet('description', 'Deur ging niet open');
 });
 
 it('includes stop timestamp and worker in round progress', function () {

@@ -321,6 +321,7 @@ class UnitPortal extends Component
             checklistItems: $selectedLabels === [] ? null : $selectedLabels,
         );
 
+        $openRound = $resolveOpenTask->handle($unit, $worker, prefer: 'round');
         $waitingRound = $result === UnitCheckResult::Ok
             ? $resolveOpenTask->findRoundWaitingOnEarlierStop($unit, $worker)
             : null;
@@ -337,6 +338,13 @@ class UnitPortal extends Component
         if ($result === UnitCheckResult::NotOk) {
             $this->flashMessage = __('portal.unit_check.recorded_not_ok');
             if ($this->showNewReportSection()) {
+                if ($openRound !== null && trim($this->description) === '') {
+                    $this->description = __('portal.unit_check.report_prefill_not_ok_round', [
+                        'datetime' => $checkData->checkedAt
+                            ->timezone(config('app.timezone'))
+                            ->format('d-m-Y H:i'),
+                    ]);
+                }
                 $this->portalSection = 'new';
                 $this->dispatch('wp-prepare-photo-inputs');
             } else {

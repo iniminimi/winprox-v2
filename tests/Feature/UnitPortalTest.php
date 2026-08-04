@@ -1013,6 +1013,7 @@ it('opens the report form after a not_ok unit check', function () {
         ->call('submitUnitCheck')
         ->assertHasNoErrors()
         ->assertSet('portalSection', 'new')
+        ->assertSet('description', '')
         ->assertSee(__('portal.unit_check.recorded_not_ok'));
 
     expect(\App\Models\UnitCheck::query()->where('result', 'not_ok')->count())->toBe(1)

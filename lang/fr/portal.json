@@ -266,7 +266,8 @@
             "checklist_incomplete": "Cochez tous les points pour OK."
         },
         "checklist_title": "Liste de contrôle",
-        "task_complete_note": "Contrôle unit OK."
+        "task_complete_note": "Contrôle unit OK.",
+        "report_prefill_not_ok_round": "Cette unité n'était pas OK pendant la ronde d'inspection (:datetime). Raison : "
     },
     "round": {
         "progress": "Progression tournée : :done/:total arrêts",

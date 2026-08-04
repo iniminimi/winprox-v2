@@ -428,7 +428,9 @@ stops meer zijn voor **deze** cyclus-taak.
 - Completion (4/4b): stops − (OK ∪ Niet OK ∪ skipped **voor huidige `task_id`**). Skips in
   `task_round_stop_skips` per task. Indexen `(task_id, unit_id)` op checks én skips.
 - Unit check **Niet OK**: rij in `unit_checks` + meldformulier; stop telt mee als
-  afgehandeld in de ronde (label **Niet OK**), daarna volgende stop.
+  afgehandeld in de ronde (label **Niet OK**), daarna volgende stop. Bij openen van
+  het meldformulier na Niet OK op een rondestop wordt de omschrijving vooringevuld
+  (datum/tijd + “Reden: ”) zodat de herkomst zichtbaar blijft op de melding.
 - ≥2 stops: Form Request `min:2` bij opslaan.
 - Impliciet meetellen (geen “start ronde”).
 - Units zonder unit checks (categorie of unit uit): niet selecteerbaar; bestaande

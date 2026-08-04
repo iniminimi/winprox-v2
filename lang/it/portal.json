@@ -266,7 +266,8 @@
             "checklist_incomplete": "Seleziona tutti i punti per OK."
         },
         "checklist_title": "Checklist",
-        "task_complete_note": "Controllo unit OK."
+        "task_complete_note": "Controllo unit OK.",
+        "report_prefill_not_ok_round": "Questa unità non era OK durante il giro di ispezione (:datetime). Motivo: "
     },
     "round": {
         "progress": "Avanzamento giro: :done/:total fermate",

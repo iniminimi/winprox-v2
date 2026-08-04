@@ -266,7 +266,8 @@
             "checklist_incomplete": "Tick all checklist items for OK."
         },
         "checklist_title": "Checklist",
-        "task_complete_note": "Unit check OK."
+        "task_complete_note": "Unit check OK.",
+        "report_prefill_not_ok_round": "This unit was not OK during the inspection round (:datetime). Reason: "
     },
     "round": {
         "progress": "Round progress: :done/:total stops",
