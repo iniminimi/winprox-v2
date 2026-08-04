@@ -218,6 +218,83 @@ it('rejects round stops when unit checks are disabled on a stop', function () {
         ->toThrow(\Illuminate\Validation\ValidationException::class);
 });
 
+it('allows round stops on units without a category when unit checks are on', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $actor = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+
+    $unitA = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => null,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => null,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+
+    expect($unitA->allowsUnitChecks())->toBeTrue()
+        ->and($unitB->allowsUnitChecks())->toBeTrue();
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'is_recurring' => true,
+        'approved_at' => now(),
+    ]);
+
+    $issue = app(SyncIssueRoundStopsAction::class)->handle($issue, [$unitA->id, $unitB->id], $actor);
+
+    expect($issue->isInspectionRound())->toBeTrue()
+        ->and($issue->roundStopCount())->toBe(2);
+});
+
+it('rejects round stops when the category has unit checks off', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $actor = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'allow_unit_checks' => false,
+    ]);
+
+    $unitA = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $category->id,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $category->id,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+
+    expect($unitA->allowsUnitChecks())->toBeFalse();
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'is_recurring' => true,
+        'approved_at' => now(),
+    ]);
+
+    expect(fn () => app(SyncIssueRoundStopsAction::class)->handle($issue, [$unitA->id, $unitB->id], $actor))
+        ->toThrow(\Illuminate\Validation\ValidationException::class);
+});
+
 it('removes stops when unit checks are turned off later', function () {
     ['tenant' => $tenant, 'actor' => $actor, 'issue' => $issue, 'unitA' => $unitA, 'unitB' => $unitB, 'unitC' => $unitC] = inspectionRoundScaffold();
 

@@ -95,9 +95,18 @@ class Unit extends Model
 
     public function allowsUnitChecks(): bool
     {
+        if (! (bool) $this->allow_unit_checks) {
+            return false;
+        }
+
+        // Geen categorie: alleen de unit-vlag telt.
+        if ($this->category_id === null) {
+            return true;
+        }
+
         $this->loadMissing('category');
 
-        return (bool) $this->category?->allow_unit_checks && $this->allow_unit_checks;
+        return (bool) $this->category?->allow_unit_checks;
     }
 
     public function requiresReporterContact(): bool

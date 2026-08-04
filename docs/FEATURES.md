@@ -439,9 +439,10 @@ stops meer zijn voor **deze** cyclus-taak.
   `RecordUnitCheckAndApplyTasksAction`), zodat de herkomst zichtbaar blijft op de melding.
 - ≥2 stops: Form Request `min:2` bij opslaan.
 - Impliciet meetellen (geen “start ronde”).
-- Units zonder unit checks (categorie of unit uit): niet selecteerbaar; bestaande
-  stops worden verwijderd bij uitschakelen (en self-heal bij openen melding).
-  Ronde met <2 stops over houdt geen stops meer.
+- Units zonder unit checks (unit uit, of categorie uit wanneer de unit een
+  categorie heeft): niet selecteerbaar; unit zonder categorie volgt alleen de
+  unit-vlag. Bestaande stops worden verwijderd bij uitschakelen (en self-heal
+  bij openen melding). Ronde met <2 stops over houdt geen stops meer.
 - **Fase 2:** strikte stop-volgorde (alleen de eerstvolgende open stop mag OK/skip);
   rijke progress-UI (balk + genummerde stops met status, datum/uur en uitvoerder)
   op **unit-QR (elke stop)** én op **taakdetail in beheer**.
