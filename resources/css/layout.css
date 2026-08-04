@@ -878,6 +878,8 @@
 }
 
 .wp-register-complete__video {
+    display: block;
+    margin-inline: auto;
     width: 160px;
     height: 160px;
     border-radius: var(--wp-radius-lg);
