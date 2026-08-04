@@ -5019,8 +5019,7 @@ a.wp-kpi.wp-kpi--attention {
     cursor: pointer;
 }
 
-.wp-round-stop-picker > :last-child.wp-round-stop-picker__row,
-.wp-round-stop-picker > :last-child .wp-round-stop-picker__row {
+.wp-round-stop-picker__row:last-child {
     border-bottom: 0;
 }
 
@@ -5033,14 +5032,9 @@ a.wp-kpi.wp-kpi--attention {
     cursor: not-allowed;
 }
 
-.wp-round-stop-picker > .wp-tooltip {
-    display: flex;
-    width: 100%;
-}
-
-.wp-round-stop-picker > .wp-tooltip > .wp-round-stop-picker__row {
-    flex: 1 1 auto;
-    min-width: 0;
+.wp-round-stop-picker__row .wp-tooltip {
+    justify-self: start;
+    max-width: 100%;
 }
 
 .wp-round-stop-picker--disabled {

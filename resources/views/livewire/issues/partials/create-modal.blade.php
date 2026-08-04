@@ -134,24 +134,22 @@
                                 @php
                                     $canUseRoundStop = $unit->allowsUnitChecks();
                                 @endphp
-                                @if ($canUseRoundStop)
-                                    <label class="wp-round-stop-picker__row">
-                                        <input
-                                            type="checkbox"
-                                            value="{{ $unit->id }}"
-                                            wire:model="round_stop_unit_ids"
-                                            data-round-stop
-                                        >
+                                <label class="wp-round-stop-picker__row @if(! $canUseRoundStop) wp-round-stop-picker__row--disabled @endif">
+                                    <input
+                                        type="checkbox"
+                                        value="{{ $unit->id }}"
+                                        wire:model="round_stop_unit_ids"
+                                        data-round-stop
+                                        @disabled(! $canUseRoundStop)
+                                    >
+                                    @if ($canUseRoundStop)
                                         <span>{{ $unit->name }}</span>
-                                    </label>
-                                @else
-                                    <x-wp-tooltip :text="__('issues.create.round_stops_unit_checks_off')" wrap class="wp-tooltip--block">
-                                        <label class="wp-round-stop-picker__row wp-round-stop-picker__row--disabled">
-                                            <input type="checkbox" value="{{ $unit->id }}" disabled>
+                                    @else
+                                        <x-wp-tooltip :text="__('issues.create.round_stops_unit_checks_off')" wrap>
                                             <span>{{ $unit->name }}</span>
-                                        </label>
-                                    </x-wp-tooltip>
-                                @endif
+                                        </x-wp-tooltip>
+                                    @endif
+                                </label>
                             @endforeach
                         </div>
                         </div>
