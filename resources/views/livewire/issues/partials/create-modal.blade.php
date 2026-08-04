@@ -131,20 +131,27 @@
                             </label>
                         <div id="create_round_stop_unit_ids" class="wp-round-stop-picker @if($createUnits->isEmpty()) wp-round-stop-picker--disabled @endif">
                             @foreach ($createUnits as $unit)
-                                @php($canUseRoundStop = $unit->allowsUnitChecks())
-                                <label class="wp-round-stop-picker__row @if(! $canUseRoundStop) wp-round-stop-picker__row--disabled @endif">
-                                    <input
-                                        type="checkbox"
-                                        value="{{ $unit->id }}"
-                                        wire:model="round_stop_unit_ids"
-                                        data-round-stop
-                                        @disabled(! $canUseRoundStop)
-                                    >
-                                    <span>{{ $unit->name }}</span>
-                                    @if(! $canUseRoundStop)
-                                        <span class="wp-round-stop-picker__hint">{{ __('issues.create.round_stops_unit_checks_off') }}</span>
-                                    @endif
-                                </label>
+                                @php
+                                    $canUseRoundStop = $unit->allowsUnitChecks();
+                                @endphp
+                                @if ($canUseRoundStop)
+                                    <label class="wp-round-stop-picker__row">
+                                        <input
+                                            type="checkbox"
+                                            value="{{ $unit->id }}"
+                                            wire:model="round_stop_unit_ids"
+                                            data-round-stop
+                                        >
+                                        <span>{{ $unit->name }}</span>
+                                    </label>
+                                @else
+                                    <x-wp-tooltip :text="__('issues.create.round_stops_unit_checks_off')" wrap class="wp-tooltip--block">
+                                        <label class="wp-round-stop-picker__row wp-round-stop-picker__row--disabled">
+                                            <input type="checkbox" value="{{ $unit->id }}" disabled>
+                                            <span>{{ $unit->name }}</span>
+                                        </label>
+                                    </x-wp-tooltip>
+                                @endif
                             @endforeach
                         </div>
                         </div>

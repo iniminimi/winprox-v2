@@ -103,19 +103,24 @@
                                 @php
                                     $canUseRoundStop = $unit->allowsUnitChecks();
                                 @endphp
-                                <label class="wp-round-stop-picker__row @if(! $canUseRoundStop) wp-round-stop-picker__row--disabled @endif">
-                                    <input
-                                        type="checkbox"
-                                        value="{{ $unit->id }}"
-                                        wire:model="round_stop_unit_ids"
-                                        data-round-stop
-                                        @disabled(! $canUseRoundStop)
-                                    >
-                                    <span>{{ $unit->localizedName() }}</span>
-                                    @if(! $canUseRoundStop)
-                                        <span class="wp-round-stop-picker__hint">{{ __('issues.create.round_stops_unit_checks_off') }}</span>
-                                    @endif
-                                </label>
+                                @if ($canUseRoundStop)
+                                    <label class="wp-round-stop-picker__row">
+                                        <input
+                                            type="checkbox"
+                                            value="{{ $unit->id }}"
+                                            wire:model="round_stop_unit_ids"
+                                            data-round-stop
+                                        >
+                                        <span>{{ $unit->localizedName() }}</span>
+                                    </label>
+                                @else
+                                    <x-wp-tooltip :text="__('issues.create.round_stops_unit_checks_off')" wrap class="wp-tooltip--block">
+                                        <label class="wp-round-stop-picker__row wp-round-stop-picker__row--disabled">
+                                            <input type="checkbox" value="{{ $unit->id }}" disabled>
+                                            <span>{{ $unit->localizedName() }}</span>
+                                        </label>
+                                    </x-wp-tooltip>
+                                @endif
                             @endforeach
                         </div>
                         </div>
