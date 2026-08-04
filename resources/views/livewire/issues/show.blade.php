@@ -80,11 +80,14 @@
                                 @endforeach
                             </ol>
                         @endif
-                        <select id="show_round_stop_unit_ids" class="wp-select" wire:model="round_stop_unit_ids" multiple size="6">
+                        <div id="show_round_stop_unit_ids" class="wp-round-stop-picker">
                             @foreach ($roundStopUnits as $unit)
-                                <option value="{{ $unit->id }}">{{ $unit->localizedName() }}</option>
+                                <label class="wp-round-stop-picker__row">
+                                    <input type="checkbox" value="{{ $unit->id }}" wire:model="round_stop_unit_ids">
+                                    <span>{{ $unit->localizedName() }}</span>
+                                </label>
                             @endforeach
-                        </select>
+                        </div>
                         @error('round_stop_unit_ids') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('round_stop_unit_ids.*') <p class="wp-error">{{ $message }}</p> @enderror
                         <button type="button" class="btn btn--primary btn--sm" wire:click="saveRoundStops">

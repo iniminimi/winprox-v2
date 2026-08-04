@@ -111,11 +111,14 @@
                     <div class="wp-field">
                         <label class="wp-label" for="create_round_stop_unit_ids">{{ __('issues.create.round_stops') }}</label>
                         <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_help') }}</p>
-                        <select id="create_round_stop_unit_ids" class="wp-select" wire:model="round_stop_unit_ids" multiple size="5" @disabled($createUnits->isEmpty())>
+                        <div id="create_round_stop_unit_ids" class="wp-round-stop-picker @if($createUnits->isEmpty()) wp-round-stop-picker--disabled @endif">
                             @foreach ($createUnits as $unit)
-                                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                <label class="wp-round-stop-picker__row">
+                                    <input type="checkbox" value="{{ $unit->id }}" wire:model="round_stop_unit_ids">
+                                    <span>{{ $unit->name }}</span>
+                                </label>
                             @endforeach
-                        </select>
+                        </div>
                         @if ($createUnits->isEmpty())
                             <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_empty') }}</p>
                         @else
