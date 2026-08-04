@@ -205,14 +205,8 @@
         "round_stops_help": "Al menos 2 unidades. El orden de la lista es el de las paradas. Sin ESG en rondas.",
         "round_stops_save": "Guardar paradas",
         "round_stops_saved": "Paradas de ronda guardadas.",
-        "recurring_end": "Cerrar",
-        "recurring_ended_pill": "Cerrado",
         "recurring_ended": "Aviso recurrente cerrado.",
-        "recurring_end_modal_title": "Cerrar aviso",
-        "recurring_end_modal_subtitle": "Cierre este aviso recurrente. Se detienen los nuevos ciclos; las tareas abiertas también se cerrarán.",
-        "recurring_end_reason_label": "Motivo de cierre",
-        "recurring_end_reason_placeholder": "Describa por qué se cierra este aviso…",
-        "recurring_end_submit": "Cerrar aviso"
+        "recurring_end_modal_subtitle": "Cierre este aviso recurrente. Se detienen los nuevos ciclos; las tareas abiertas también se cerrarán."
     },
     "updates": {
         "kind": {
@@ -222,8 +216,7 @@
             "pause": "Pausa",
             "status_reason": "Cambio de estado",
             "close_reason": "Incidencia cerrada",
-            "reopen_reason": "Incidencia reabierta",
-            "recurrence_end_reason": "Aviso cerrado"
+            "reopen_reason": "Incidencia reabierta"
         },
         "errors": {
             "description_required": "Introduzca una nota.",

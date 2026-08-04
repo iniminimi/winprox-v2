@@ -205,14 +205,8 @@
         "round_stops_help": "Mindestens 2 Units. Listenreihenfolge = Stoppreihenfolge. Kein ESG bei Runden.",
         "round_stops_save": "Stops speichern",
         "round_stops_saved": "Runden-Stops gespeichert.",
-        "recurring_end": "Schließen",
-        "recurring_ended_pill": "Geschlossen",
         "recurring_ended": "Wiederkehrende Meldung geschlossen.",
-        "recurring_end_modal_title": "Meldung schließen",
-        "recurring_end_modal_subtitle": "Schließen Sie diese wiederkehrende Meldung. Neue Zyklen stoppen; offene Aufgaben werden ebenfalls geschlossen.",
-        "recurring_end_reason_label": "Grund für das Schließen",
-        "recurring_end_reason_placeholder": "Beschreiben Sie, warum diese Meldung geschlossen wird…",
-        "recurring_end_submit": "Meldung schließen"
+        "recurring_end_modal_subtitle": "Schließen Sie diese wiederkehrende Meldung. Neue Zyklen stoppen; offene Aufgaben werden ebenfalls geschlossen."
     },
     "updates": {
         "kind": {
@@ -222,8 +216,7 @@
             "pause": "Pause",
             "status_reason": "Statusänderung",
             "close_reason": "Meldung geschlossen",
-            "reopen_reason": "Meldung wieder geöffnet",
-            "recurrence_end_reason": "Meldung geschlossen"
+            "reopen_reason": "Meldung wieder geöffnet"
         },
         "errors": {
             "description_required": "Geben Sie eine Notiz ein.",

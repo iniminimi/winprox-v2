@@ -205,14 +205,8 @@
         "round_stops_help": "Au moins 2 unités. L’ordre de la liste est l’ordre des arrêts. Pas d’ESG sur les tournées.",
         "round_stops_save": "Enregistrer les arrêts",
         "round_stops_saved": "Arrêts de tournée enregistrés.",
-        "recurring_end": "Clôturer",
-        "recurring_ended_pill": "Clôturé",
         "recurring_ended": "Signalement récurrent clôturé.",
-        "recurring_end_modal_title": "Clôturer le signalement",
-        "recurring_end_modal_subtitle": "Clôturez ce signalement récurrent. Les nouveaux cycles s’arrêtent ; les tâches ouvertes seront aussi clôturées.",
-        "recurring_end_reason_label": "Motif de clôture",
-        "recurring_end_reason_placeholder": "Décrivez pourquoi ce signalement est clôturé…",
-        "recurring_end_submit": "Clôturer le signalement"
+        "recurring_end_modal_subtitle": "Clôturez ce signalement récurrent. Les nouveaux cycles s’arrêtent ; les tâches ouvertes seront aussi clôturées."
     },
     "updates": {
         "kind": {
@@ -222,8 +216,7 @@
             "pause": "Pause",
             "status_reason": "Changement de statut",
             "close_reason": "Signalement clôturé",
-            "reopen_reason": "Signalement rouvert",
-            "recurrence_end_reason": "Signalement clôturé"
+            "reopen_reason": "Signalement rouvert"
         },
         "errors": {
             "description_required": "Saisissez une note.",

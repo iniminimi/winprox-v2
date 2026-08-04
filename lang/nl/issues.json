@@ -205,14 +205,8 @@
         "round_stops_help": "Minstens 2 units. Volgorde = volgorde in de lijst. Geen ESG bij rondes.",
         "round_stops_save": "Stops opslaan",
         "round_stops_saved": "Ronde-stops opgeslagen.",
-        "recurring_end": "Sluiten",
-        "recurring_ended_pill": "Gesloten",
         "recurring_ended": "Terugkerende melding gesloten.",
-        "recurring_end_modal_title": "Melding sluiten",
-        "recurring_end_modal_subtitle": "Sluit deze terugkerende melding. Nieuwe cycli stoppen; openstaande taken worden ook gesloten.",
-        "recurring_end_reason_label": "Reden voor sluiten",
-        "recurring_end_reason_placeholder": "Beschrijf waarom deze melding wordt gesloten…",
-        "recurring_end_submit": "Melding sluiten"
+        "recurring_end_modal_subtitle": "Sluit deze terugkerende melding. Nieuwe cycli stoppen; openstaande taken worden ook gesloten."
     },
     "updates": {
         "kind": {
@@ -222,8 +216,7 @@
             "pause": "Pauze",
             "status_reason": "Statuswijziging",
             "close_reason": "Melding gesloten",
-            "reopen_reason": "Melding heropend",
-            "recurrence_end_reason": "Melding gesloten"
+            "reopen_reason": "Melding heropend"
         },
         "errors": {
             "description_required": "Geef een notitie.",

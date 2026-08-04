@@ -51,7 +51,7 @@ class EndRecurringIssueAction
                 issue: $issue,
                 description: $reason,
                 userId: $actor->id,
-                kind: 'recurrence_end_reason',
+                kind: 'close_reason',
             );
 
             $openTasks = $issue->tasks()

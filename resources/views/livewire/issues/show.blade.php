@@ -50,7 +50,7 @@
                             <p class="wp-muted">{{ __('issues.show.recurring_next_due', ['date' => $issue->recurrence_next_due_at->format('d-m-Y')]) }}</p>
                         @endif
                         @if (! $issue->recurrence_active)
-                            <span class="wp-pill wp-pill--closed">{{ __('issues.show.recurring_ended_pill') }}</span>
+                            <span class="wp-pill wp-pill--closed">{{ __(\App\Enums\TaskStatus::Closed->labelKey()) }}</span>
                         @elseif ($issue->recurrence_paused_at)
                             <span class="wp-pill wp-pill--closed">{{ __('issues.show.recurring_paused') }}</span>
                         @else
@@ -70,7 +70,7 @@
                                     {{ $issue->recurrence_paused_at ? __('issues.show.recurring_resume') : __('issues.show.recurring_pause') }}
                                 </button>
                                 <button type="button" class="btn btn--danger btn--sm" wire:click="openEndRecurringModal">
-                                    {{ __('issues.show.recurring_end') }}
+                                    {{ __(\App\Enums\TaskStatus::Closed->labelKey()) }}
                                 </button>
                             </div>
                         @endif
@@ -451,16 +451,16 @@
         <x-wp-modal closeMethod="closeEndRecurringModal" aria-labelledby="issue-end-recurring-title">
             <form wire:submit="endRecurringIssue" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
-                    <h2 id="issue-end-recurring-title" class="wp-section-title">{{ __('issues.show.recurring_end_modal_title') }}</h2>
+                    <h2 id="issue-end-recurring-title" class="wp-section-title">{{ __('issues.close_modal_title') }}</h2>
                     <x-wp-modal-close wire:click="closeEndRecurringModal" />
                 </div>
                 <div class="wp-modal-body wp-stack">
                     <p class="wp-muted">{{ __('issues.show.recurring_end_modal_subtitle') }}</p>
                     <div class="wp-field">
-                        <label class="wp-label" for="endReason">{{ __('issues.show.recurring_end_reason_label') }}</label>
+                        <label class="wp-label" for="endReason">{{ __('issues.close_reason_label') }}</label>
                         <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
                             <textarea id="endReason" class="wp-textarea" wire:model="endReason" rows="3"
-                                      placeholder="{{ __('issues.show.recurring_end_reason_placeholder') }}"
+                                      placeholder="{{ __('issues.close_reason_placeholder') }}"
                                       maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
                                       x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
                             <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
@@ -470,7 +470,7 @@
                 </div>
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeEndRecurringModal">{{ __('common.button.cancel') }}</button>
-                    <button type="submit" class="btn btn--danger">{{ __('issues.show.recurring_end_submit') }}</button>
+                    <button type="submit" class="btn btn--danger">{{ __(\App\Enums\TaskStatus::Closed->labelKey()) }}</button>
                 </div>
             </form>
         </x-wp-modal>

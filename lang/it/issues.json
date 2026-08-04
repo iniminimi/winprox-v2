@@ -205,14 +205,8 @@
         "round_stops_help": "Almeno 2 unità. L’ordine dell’elenco è l’ordine delle fermate. Niente ESG sui giri.",
         "round_stops_save": "Salva fermate",
         "round_stops_saved": "Fermate del giro salvate.",
-        "recurring_end": "Chiudi",
-        "recurring_ended_pill": "Chiusa",
         "recurring_ended": "Segnalazione ricorrente chiusa.",
-        "recurring_end_modal_title": "Chiudi segnalazione",
-        "recurring_end_modal_subtitle": "Chiuda questa segnalazione ricorrente. I nuovi cicli si interrompono; anche i compiti aperti verranno chiusi.",
-        "recurring_end_reason_label": "Motivo della chiusura",
-        "recurring_end_reason_placeholder": "Descriva perché questa segnalazione viene chiusa…",
-        "recurring_end_submit": "Chiudi segnalazione"
+        "recurring_end_modal_subtitle": "Chiuda questa segnalazione ricorrente. I nuovi cicli si interrompono; anche i compiti aperti verranno chiusi."
     },
     "updates": {
         "kind": {
@@ -222,8 +216,7 @@
             "pause": "Pausa",
             "status_reason": "Cambio di stato",
             "close_reason": "Segnalazione chiusa",
-            "reopen_reason": "Segnalazione riaperta",
-            "recurrence_end_reason": "Segnalazione chiusa"
+            "reopen_reason": "Segnalazione riaperta"
         },
         "errors": {
             "description_required": "Inserisca una nota.",

@@ -205,14 +205,8 @@
         "round_stops_help": "At least 2 units. List order is the stop order. No ESG on rounds.",
         "round_stops_save": "Save stops",
         "round_stops_saved": "Round stops saved.",
-        "recurring_end": "Close",
-        "recurring_ended_pill": "Closed",
         "recurring_ended": "Recurring issue closed.",
-        "recurring_end_modal_title": "Close issue",
-        "recurring_end_modal_subtitle": "Close this recurring issue. New cycles stop; open tasks will also be closed.",
-        "recurring_end_reason_label": "Reason for closing",
-        "recurring_end_reason_placeholder": "Describe why this issue is being closed…",
-        "recurring_end_submit": "Close issue"
+        "recurring_end_modal_subtitle": "Close this recurring issue. New cycles stop; open tasks will also be closed."
     },
     "updates": {
         "kind": {
@@ -222,8 +216,7 @@
             "pause": "Pause",
             "status_reason": "Status change",
             "close_reason": "Issue closed",
-            "reopen_reason": "Issue reopened",
-            "recurrence_end_reason": "Issue closed"
+            "reopen_reason": "Issue reopened"
         },
         "errors": {
             "description_required": "Enter a note.",
