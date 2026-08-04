@@ -100,7 +100,9 @@
                         </label>
                         <div id="show_round_stop_unit_ids" class="wp-round-stop-picker">
                             @foreach ($roundStopUnits as $unit)
-                                @php($canUseRoundStop = $unit->allowsUnitChecks())
+                                @php
+                                    $canUseRoundStop = $unit->allowsUnitChecks();
+                                @endphp
                                 <label class="wp-round-stop-picker__row @if(! $canUseRoundStop) wp-round-stop-picker__row--disabled @endif">
                                     <input
                                         type="checkbox"

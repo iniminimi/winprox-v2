@@ -368,3 +368,13 @@ it('refuses skip when the unit is not the next open stop', function () {
     expect(app(RoundTaskCompletionAction::class)->progress($task->fresh())['stops'][0]['state'])->toBe('current')
         ->and(app(RoundTaskCompletionAction::class)->progress($task->fresh())['stops'][1]['state'])->toBe('open');
 });
+
+it('renders the issue show page for inspection rounds', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'issue' => $issue] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    $this->actingAs($actor)
+        ->get(route('issues.show', $issue))
+        ->assertOk()
+        ->assertSee('show_round_stop_unit_ids', false);
+});
