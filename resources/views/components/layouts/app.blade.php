@@ -201,7 +201,23 @@
 
                         <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
 
-                        <div class="wp-sidebar-accordion">
+                        <div
+                            class="wp-sidebar-accordion"
+                            x-data="{
+                                exclusive(event) {
+                                    const opened = event.target;
+                                    if (! (opened instanceof HTMLDetailsElement) || ! opened.open) {
+                                        return;
+                                    }
+                                    this.$el.querySelectorAll('details.wp-sidebar-accordion__group').forEach((el) => {
+                                        if (el !== opened) {
+                                            el.open = false;
+                                        }
+                                    });
+                                },
+                            }"
+                            @toggle.capture="exclusive($event)"
+                        >
                             <details class="wp-sidebar-accordion__group" @if($workGroupActive) open @endif>
                                 <summary class="wp-nav-link {{ $workGroupActive ? 'is-active' : '' }}">
                                     <x-wp-icon name="issues" class="wp-nav-icon" />
@@ -209,33 +225,28 @@
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
                                     <a href="{{ route('issues.index') }}"
-                                       class="wp-nav-link {{ $meldingenActive ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ $meldingenActive ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="issues" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.issues') }}</span>
                                     </a>
                                     <a href="{{ route('issues.index', ['recurring' => 1, 'inspection_round' => 1]) }}"
-                                       class="wp-nav-link {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="tasks" class="wp-nav-icon" />
                                         <span>{{ __('issues.list.inspection_rounds') }}</span>
                                     </a>
                                     <a href="{{ route('tasks.index') }}"
-                                       class="wp-nav-link {{ request()->routeIs('tasks.*') ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('tasks.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="tasks" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.tasks') }}</span>
                                     </a>
                                     <a href="{{ route('calendar.index') }}"
-                                       class="wp-nav-link {{ request()->routeIs('calendar.*') ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('calendar.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="calendar" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.calendar') }}</span>
                                     </a>
                                     <a href="{{ route('reservations.index') }}"
-                                       class="wp-nav-link {{ request()->routeIs('reservations.*') ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('reservations.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="calendar" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.reservations') }}</span>
                                     </a>
                                 </div>
@@ -248,21 +259,18 @@
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
                                     <a href="{{ route('locations.index', ['section' => 'categories']) }}"
-                                       class="wp-nav-link {{ $categoriesActive ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ $categoriesActive ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="locations" class="wp-nav-icon" />
                                         <span>{{ __('locations.categories.title') }}</span>
                                     </a>
                                     <a href="{{ route('locations.index') }}"
-                                       class="wp-nav-link {{ $locationsActive ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ $locationsActive ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="locations" class="wp-nav-icon" />
                                         <span>{{ __('locations.title') }}</span>
                                     </a>
                                     <a href="{{ route('units.index') }}"
-                                       class="wp-nav-link {{ $unitsActive ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ $unitsActive ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="locations" class="wp-nav-icon" />
                                         <span>{{ __('units.title') }}</span>
                                     </a>
                                 </div>
@@ -275,15 +283,13 @@
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
                                     <a href="{{ route('team.index', ['section' => 'backoffice']) }}"
-                                       class="wp-nav-link {{ $backofficeNavActive ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ $backofficeNavActive ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="team" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.backoffice') }}</span>
                                     </a>
                                     <a href="{{ route('team.index', ['section' => 'teams']) }}"
-                                       class="wp-nav-link {{ $teamsNavActive ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ $teamsNavActive ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="team" class="wp-nav-icon" />
                                         <span>{{ __('team.nav.teams') }}</span>
                                     </a>
                                 </div>
@@ -297,15 +303,13 @@
                                     </summary>
                                     <div class="wp-sidebar-accordion__panel">
                                         <a href="{{ route('time.clock-points.index') }}"
-                                           class="wp-nav-link {{ request()->routeIs('time.clock-points.index') ? 'is-active' : '' }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('time.clock-points.index') ? 'is-active' : '' }}"
                                            @click="nav = false">
-                                            <x-wp-icon name="clock" class="wp-nav-icon" />
                                             <span>{{ __('time.nav.clock_points') }}</span>
                                         </a>
                                         <a href="{{ route('time.presence.index') }}"
-                                           class="wp-nav-link {{ request()->routeIs('time.presence.index') ? 'is-active' : '' }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('time.presence.index') ? 'is-active' : '' }}"
                                            @click="nav = false">
-                                            <x-wp-icon name="clock" class="wp-nav-icon" />
                                             <span>{{ __('time.nav.presence') }}</span>
                                         </a>
                                     </div>
@@ -321,17 +325,15 @@
                                     <div class="wp-sidebar-accordion__panel">
                                         @if ($showIotNav)
                                             <a href="{{ route('iot.index') }}"
-                                               class="wp-nav-link {{ request()->routeIs('iot.*') ? 'is-active' : '' }}"
+                                               class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('iot.*') ? 'is-active' : '' }}"
                                                @click="nav = false">
-                                                <x-wp-icon name="api" class="wp-nav-icon" />
                                                 <span>{{ __('common.nav.iot') }}</span>
                                             </a>
                                         @endif
                                         @if ($showEsgNav)
                                             <a href="{{ route('esg.dashboard') }}"
-                                               class="wp-nav-link {{ request()->routeIs('esg.*') ? 'is-active' : '' }}"
+                                               class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('esg.*') ? 'is-active' : '' }}"
                                                @click="nav = false">
-                                                <x-wp-icon name="sliders" class="wp-nav-icon" />
                                                 <span>{{ __('common.nav.esg') }}</span>
                                             </a>
                                         @endif
@@ -348,25 +350,22 @@
                                     <div class="wp-sidebar-accordion__panel">
                                         @if ($showSettingsNav)
                                             <a href="{{ route('settings.index') }}"
-                                               class="wp-nav-link {{ request()->routeIs('settings.index') ? 'is-active' : '' }}"
+                                               class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('settings.index') ? 'is-active' : '' }}"
                                                @click="nav = false">
-                                                <x-wp-icon name="settings" class="wp-nav-icon" />
                                                 <span>{{ __('common.nav.settings') }}</span>
                                             </a>
                                         @endif
                                         @if ($showTenantAdminNav && ($activeTenant?->hasApiAccess() ?? false))
                                             <a href="{{ route('settings.api') }}"
-                                               class="wp-nav-link {{ request()->routeIs('settings.api') ? 'is-active' : '' }}"
+                                               class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('settings.api') ? 'is-active' : '' }}"
                                                @click="nav = false">
-                                                <x-wp-icon name="api" class="wp-nav-icon" />
                                                 <span>{{ __('settings.api.nav') }}</span>
                                             </a>
                                         @endif
                                         @if ($showTenantAdminNav)
                                             <a href="{{ route('subscription.index') }}"
-                                               class="wp-nav-link {{ request()->routeIs('subscription.*') ? 'is-active' : '' }}"
+                                               class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('subscription.*') ? 'is-active' : '' }}"
                                                @click="nav = false">
-                                                <x-wp-icon name="subscription" class="wp-nav-icon" />
                                                 <span>{{ __('common.nav.subscription') }}</span>
                                             </a>
                                         @endif
@@ -381,28 +380,24 @@
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
                                     <a href="{{ route('faq.index') }}"
-                                       class="wp-nav-link {{ request()->routeIs('faq.*') ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('faq.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="faq" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.faq') }}</span>
                                     </a>
                                     <a href="{{ route('manual.hub') }}"
-                                       class="wp-nav-link {{ request()->routeIs('manual.*') ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('manual.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="document" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.manual') }}</span>
                                     </a>
                                     <a href="{{ route('legal.index') }}"
-                                       class="wp-nav-link {{ request()->routeIs('legal.index') ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('legal.index') ? 'is-active' : '' }}"
                                        target="_blank" rel="noopener noreferrer"
                                        @click="nav = false">
-                                        <x-wp-icon name="legal" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.legal') }}</span>
                                     </a>
                                     <a href="{{ route('contact.index') }}"
-                                       class="wp-nav-link {{ request()->routeIs('contact.*') ? 'is-active' : '' }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('contact.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
-                                        <x-wp-icon name="contact" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.contact') }}</span>
                                     </a>
                                 </div>

@@ -152,6 +152,32 @@
     display: flex;
 }
 
+/* Subitems: bullet i.p.v. herhaalde groep-iconen — hiërarchie zonder extra icoon-varianten. */
+.wp-nav-link--sub {
+    font-weight: 500;
+    gap: 0.625rem;
+}
+
+.wp-nav-link--sub::before {
+    content: '';
+    width: 0.375rem;
+    height: 0.375rem;
+    flex: none;
+    border-radius: 999px;
+    background-color: var(--wp-text-muted);
+    opacity: 0.75;
+}
+
+.wp-nav-link--sub:hover::before {
+    background-color: var(--wp-text-body);
+    opacity: 1;
+}
+
+.wp-nav-link--sub.is-active::before {
+    background-color: var(--wp-accent);
+    opacity: 1;
+}
+
 .wp-nav-divider {
     margin: 0.75rem 0.75rem;
     border: 0;

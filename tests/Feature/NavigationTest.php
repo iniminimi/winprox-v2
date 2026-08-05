@@ -67,9 +67,19 @@ it('opent team-pagina via Mensen → Backoffice en Teams section-links', functio
         ->assertOk()
         ->assertSee('id="backoffice"', false)
         ->assertSee('id="teams"', false);
+});
 
-    $this->actingAs($admin)
-        ->get(route('team.index', ['section' => 'teams']))
+it('toont submenu-items als bullets zonder herhaalde groep-iconen', function () {
+    $tenant = Tenant::factory()->create(['name' => 'Demo Facility']);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $html = $this->actingAs($admin)
+        ->get(route('dashboard'))
         ->assertOk()
-        ->assertSee('id="teams"', false);
+        ->getContent();
+
+    expect($html)->toContain('wp-nav-link--sub')
+        ->and($html)->toContain('wp-sidebar-accordion')
+        ->and($html)->toContain('@toggle.capture="exclusive($event)"');
 });
