@@ -4,12 +4,14 @@ namespace App\Livewire\Issues;
 
 use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\AssignIssueTeamTaskAction;
+use App\Actions\Issues\CreateInspectionRoundAction;
 use App\Actions\Issues\CreateManagerIssueAction;
 use App\Enums\IssueTranslationStatus;
 use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Enums\UnitTranslationStatus;
 use App\Http\Requests\Issues\AssignIssueTeamTaskRequest;
+use App\Http\Requests\Issues\CreateInspectionRoundRequest;
 use App\Http\Requests\Issues\StoreManagerIssueStepOneRequest;
 use App\Models\EsgIndicator;
 use App\Models\InternalTeam;
@@ -56,6 +58,8 @@ class Index extends Component
     public int $perStatusLimit = PerStatusListLimit::DEFAULT;
 
     public bool $showCreateModal = false;
+
+    public bool $showRoundCreateModal = false;
 
     public int $createStep = 1;
 
@@ -151,6 +155,19 @@ class Index extends Component
         $this->resetCreateForm();
     }
 
+    public function openRoundCreateModal(): void
+    {
+        $this->authorize('create', Issue::class);
+        $this->resetRoundCreateForm();
+        $this->showRoundCreateModal = true;
+    }
+
+    public function closeRoundCreateModal(): void
+    {
+        $this->showRoundCreateModal = false;
+        $this->resetRoundCreateForm();
+    }
+
     public function removePhoto(int $index): void
     {
         if (isset($this->photos[$index])) {
@@ -191,7 +208,7 @@ class Index extends Component
 
     public function updatedRecurrenceIntervalUnit(string $value): void
     {
-        if (! $this->is_recurring) {
+        if (! $this->is_recurring && ! $this->showRoundCreateModal) {
             return;
         }
 
@@ -309,6 +326,35 @@ class Index extends Component
         return $this->redirectRoute('issues.index', ['highlight' => $issue->id], navigate: true);
     }
 
+    public function saveRoundCreate(CreateInspectionRoundAction $createRound): mixed
+    {
+        $this->authorize('create', Issue::class);
+
+        $this->description = trim($this->description);
+
+        $this->round_stop_unit_ids = array_values(array_filter(array_map(
+            static fn ($id) => is_numeric($id) ? (int) $id : null,
+            $this->round_stop_unit_ids,
+        )));
+
+        $tenantId = (int) Tenancy::id();
+        $validated = $this->validate(
+            CreateInspectionRoundRequest::ruleSet($tenantId),
+            CreateInspectionRoundRequest::messageSet(),
+        );
+
+        $validated['original_language'] = app()->getLocale();
+
+        $issue = $createRound->handle($validated, auth()->user());
+
+        $this->showRoundCreateModal = false;
+        $this->resetRoundCreateForm();
+
+        session()->flash('success', __('issues.round_create.success'));
+
+        return $this->redirectRoute('issues.index', ['highlight' => $issue->id], navigate: true);
+    }
+
     public function backCreateToStepOne(): void
     {
         $this->createStep = 1;
@@ -334,6 +380,21 @@ class Index extends Component
         $this->photos = [];
         $this->resetErrorBag();
         $this->dispatch('wp-clear-photo-previews');
+    }
+
+    private function resetRoundCreateForm(): void
+    {
+        $this->description = '';
+        $this->is_recurring = true;
+        $this->recurrence_interval_value = 1;
+        $this->recurrence_interval_unit = 'month';
+        $this->recurrence_lead_days = 7;
+        $this->recurrence_first_due_date = null;
+        $this->round_stop_unit_ids = [];
+        $this->internal_team_id = null;
+        $this->task_note = null;
+        $this->task_priority = 'prio_3';
+        $this->resetErrorBag();
     }
 
     public function render()
@@ -434,7 +495,7 @@ class Index extends Component
                     ->orderBy('name')
                     ->get()
                 : collect(),
-            'createRoundStopUnitsGrouped' => $this->showCreateModal && $this->is_recurring
+            'createRoundStopUnitsGrouped' => ($this->showCreateModal && $this->is_recurring) || $this->showRoundCreateModal
                 ? Unit::query()
                     ->where('is_active', true)
                     ->with(['location', 'category', 'translations'])
@@ -445,7 +506,7 @@ class Index extends Component
                         ?: $units->first()?->location?->address
                         ?: '')))
                 : collect(),
-            'createTeams' => $this->showCreateModal
+            'createTeams' => $this->showCreateModal || $this->showRoundCreateModal
                 ? InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('name')->get()
                 : collect(),
             'hasEsgModule' => EsgModuleAccess::activeTenantHasModule(),

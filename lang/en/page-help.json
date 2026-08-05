@@ -42,6 +42,10 @@
                     "text": "Create an issue via the popup in the desktop version of Winprox or after scanning a QR code at a unit via the QR portal. A task is always automatically created which you can refine later on the Tasks page."
                 },
                 {
+                    "label": "Plan inspection round",
+                    "text": "Separate flow next to Add issue: pick at least 2 stops (units), interval and team in one form. Creates a recurring issue with round stops and starts the first task immediately."
+                },
+                {
                     "label": "Print briefing",
                     "text": "Print an overview of open tasks per team."
                 },

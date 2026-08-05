@@ -45,7 +45,7 @@
             },
             {
                 "title": "Giri di ispezione",
-                "body": "Segnalazione ricorrente con percorso fisso di unit (fermate), anche tra più sedi. Un compito per ciclo; a ogni fermata Unit check OK, Non OK (con segnalazione; descrizione precompilata) o salta con motivo. Completo quando tutte le fermate del ciclo sono gestite."
+                "body": "Segnalazione ricorrente con percorso fisso di unit (fermate), anche tra più sedi. Pianifica da Segnalazioni → Pianifica giro di ispezione (fermate, intervallo e team in un passaggio) o opzionalmente tramite la procedura guidata segnalazione. Un compito per ciclo; a ogni fermata Unit check OK, Non OK (con segnalazione; descrizione precompilata) o salta con motivo. Completo quando tutte le fermate del ciclo sono gestite."
             },
             {
                 "title": "Branding & QR",

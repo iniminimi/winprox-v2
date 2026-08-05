@@ -42,6 +42,10 @@
                     "text": "Erstellen Sie eine Meldung über das Popup in der Desktop-Version von Winprox oder nach dem Scannen eines QR-Codes an einer Unit über das QR-Portal. Es wird immer automatisch auch eine Aufgabe erstellt, die Sie später auf der Seite Aufgaben verfeinern können."
                 },
                 {
+                    "label": "Inspektionsrunde planen",
+                    "text": "Eigener Flow neben Meldung hinzufügen: mindestens 2 Stops (Units), Intervall und Team in einem Formular. Erstellt eine wiederkehrende Meldung mit Runden-Stops und startet sofort die erste Aufgabe."
+                },
+                {
                     "label": "Briefing drucken",
                     "text": "Drucken Sie eine Übersicht offener Aufgaben pro Team."
                 },

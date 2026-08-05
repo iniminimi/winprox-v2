@@ -19,6 +19,9 @@
                 <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openCreateModal">
                     {{ __('issues.list.add') }}
                 </button>
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="openRoundCreateModal">
+                    {{ __('issues.list.plan_round') }}
+                </button>
                 <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</a>
             </div>
         </div>
@@ -114,5 +117,9 @@
 
     @if ($showCreateModal)
         @include('livewire.issues.partials.create-modal')
+    @endif
+
+    @if ($showRoundCreateModal)
+        @include('livewire.issues.partials.create-round-modal')
     @endif
 </div>

@@ -42,6 +42,10 @@
                     "text": "Cree una incidencia mediante la ventana emergente en la versión de escritorio de Winprox o tras escanear un código QR en una unidad mediante el portal QR. Siempre se crea automáticamente una tarea que puede refinar más tarde en la página Tareas."
                 },
                 {
+                    "label": "Planificar ronda de inspección",
+                    "text": "Flujo aparte junto a Añadir incidencia: al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea un aviso recurrente con paradas de ronda e inicia de inmediato la primera tarea."
+                },
+                {
                     "label": "Imprimir briefing",
                     "text": "Imprima un resumen de tareas abiertas por equipo."
                 },

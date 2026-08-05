@@ -42,6 +42,10 @@
                     "text": "Créez un signalement via la popup dans la version desktop de Winprox ou après avoir scanné un code QR à une unité via le portail QR. Une tâche est toujours automatiquement créée que vous pouvez affiner plus tard sur la page Tâches."
                 },
                 {
+                    "label": "Planifier une tournée d’inspection",
+                    "text": "Flux séparé à côté de Ajouter un signalement : au moins 2 arrêts (unités), intervalle et équipe en un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre immédiatement la première tâche."
+                },
+                {
                     "label": "Imprimer le briefing",
                     "text": "Imprimez un aperçu des tâches ouvertes par équipe."
                 },

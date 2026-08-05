@@ -45,7 +45,7 @@
             },
             {
                 "title": "Inspectierondes",
-                "body": "Terugkerende melding met een vaste route van units (stops), ook over meerdere locaties. Per cyclus één taak; bij elke stop Unit check OK, Niet OK (met melding; omschrijving vooringevuld), of overslaan met reden. Klaar als alle stops van die cyclus afgehandeld zijn."
+                "body": "Terugkerende melding met een vaste route van units (stops), ook over meerdere locaties. Plan via Meldingen → Inspectieronde plannen (stops, interval en team in één stap) of optioneel via de melding-wizard. Per cyclus één taak; bij elke stop Unit check OK, Niet OK (met melding; omschrijving vooringevuld), of overslaan met reden. Klaar als alle stops van die cyclus afgehandeld zijn."
             },
             {
                 "title": "Branding & QR",

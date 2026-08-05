@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Actions\Issues\CreateInspectionRoundAction;
 use App\Actions\Issues\SyncIssueRoundStopsAction;
 use App\Actions\Portal\FindNewTeamTasksSinceBaselineAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
@@ -722,4 +723,93 @@ it('renders the issue show page for inspection rounds', function () {
         ->get(route('issues.show', $issue))
         ->assertOk()
         ->assertSee('show_round_stop_unit_ids', false);
+});
+
+it('creates an inspection round via CreateInspectionRoundAction', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'team' => $team, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
+
+    $issue = app(CreateInspectionRoundAction::class)->handle([
+        'description' => 'Maandelijkse veiligheidsronde',
+        'round_stop_unit_ids' => [$unitA->id, $unitB->id],
+        'recurrence_interval_value' => 1,
+        'recurrence_interval_unit' => 'month',
+        'recurrence_lead_days' => 7,
+        'recurrence_first_due_date' => now()->toDateString(),
+        'internal_team_id' => $team->id,
+        'task_priority' => 'prio_2',
+        'task_note' => 'Volg de route',
+        'original_language' => 'nl',
+    ], $actor);
+
+    expect($issue->isInspectionRound())->toBeTrue()
+        ->and($issue->is_recurring)->toBeTrue()
+        ->and($issue->recurrence_active)->toBeTrue()
+        ->and($issue->roundStopCount())->toBe(2)
+        ->and($issue->tasks)->toHaveCount(1)
+        ->and($issue->tasks->first()->internal_team_id)->toBe($team->id)
+        ->and($issue->tasks->first()->description)->toBe('Volg de route')
+        ->and($issue->tasks->first()->status)->toBe(TaskStatus::InProgress);
+});
+
+it('rejects fewer than two stops via CreateInspectionRoundRequest validation', function () {
+    ['tenant' => $tenant, 'team' => $team, 'unitA' => $unitA] = inspectionRoundScaffold();
+
+    $validator = \Illuminate\Support\Facades\Validator::make([
+        'description' => 'Te weinig stops',
+        'round_stop_unit_ids' => [$unitA->id],
+        'recurrence_interval_value' => 1,
+        'recurrence_interval_unit' => 'month',
+        'recurrence_lead_days' => 7,
+        'recurrence_first_due_date' => now()->toDateString(),
+        'internal_team_id' => $team->id,
+        'task_priority' => 'prio_3',
+    ], \App\Http\Requests\Issues\CreateInspectionRoundRequest::ruleSet((int) $tenant->id), \App\Http\Requests\Issues\CreateInspectionRoundRequest::messageSet());
+
+    expect($validator->fails())->toBeTrue()
+        ->and($validator->errors()->has('round_stop_unit_ids'))->toBeTrue();
+});
+
+it('plans an inspection round via the issues index modal', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'team' => $team, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->call('openRoundCreateModal')
+        ->assertSet('showRoundCreateModal', true)
+        ->set('description', 'Wekelijkse controle')
+        ->set('recurrence_interval_value', 1)
+        ->set('recurrence_interval_unit', 'week')
+        ->set('recurrence_lead_days', 2)
+        ->set('recurrence_first_due_date', now()->toDateString())
+        ->set('round_stop_unit_ids', [(string) $unitA->id, (string) $unitB->id])
+        ->set('internal_team_id', $team->id)
+        ->set('task_note', 'Start bij unit A')
+        ->call('saveRoundCreate')
+        ->assertHasNoErrors()
+        ->assertRedirect(route('issues.index', ['highlight' => Issue::query()->where('description', 'Wekelijkse controle')->value('id')]));
+
+    $issue = Issue::query()->where('description', 'Wekelijkse controle')->first();
+    expect($issue)->not->toBeNull()
+        ->and($issue->isInspectionRound())->toBeTrue()
+        ->and($issue->recurrence_active)->toBeTrue()
+        ->and($issue->tasks)->toHaveCount(1);
+});
+
+it('rejects a single stop on the inspection round create modal', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'team' => $team, 'unitA' => $unitA] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->call('openRoundCreateModal')
+        ->set('description', 'Te weinig stops')
+        ->set('recurrence_interval_value', 1)
+        ->set('recurrence_interval_unit', 'month')
+        ->set('recurrence_lead_days', 7)
+        ->set('recurrence_first_due_date', now()->toDateString())
+        ->set('round_stop_unit_ids', [(string) $unitA->id])
+        ->set('internal_team_id', $team->id)
+        ->call('saveRoundCreate')
+        ->assertHasErrors(['round_stop_unit_ids']);
 });

@@ -42,6 +42,10 @@
                     "text": "Maak een melding via de popup in de desktop versie van Winprox of na het scannen van een qr-code bij een unit via het qr-portaal. Er wordt altijd automatisch ook een taak aangemaakt die je daarna kan verfijnen op de pagina Taken."
                 },
                 {
+                    "label": "Inspectieronde plannen",
+                    "text": "Aparte flow naast Nieuwe melding: kies minstens 2 stops (units), interval en team in één formulier. Maakt een terugkerende melding met ronde-stops en start meteen de eerste taak."
+                },
+                {
                     "label": "Briefing afdrukken",
                     "text": "Print een overzicht van open taken per team."
                 },

@@ -426,6 +426,9 @@ stops meer zijn voor **deze** cyclus-taak.
   `location_id` alleen als alle stops dezelfde locatie delen, anders null.
   Create- én show-picker: alle actieve units van de tenant, gegroepeerd per locatie
   (stops mogen over locaties heen).
+- **Beheer — intentie-flow:** knop *Inspectieronde plannen* op Meldingen (naast Nieuwe
+  melding): stops + interval + team in één modal; onder water terugkerende melding +
+  eerste taak. Bestaande melding-wizard blijft; rondestops daar optioneel.
 - Label: **Ronde · N stops**. Geen ESG op ronde-issues.
 - Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).
 - Taak↔unit (2b): `issue.unit_id = U` **óf** U is stop — via `TaskBelongsToUnitAction`

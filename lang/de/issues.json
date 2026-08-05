@@ -20,6 +20,7 @@
         "title": "Meldungen",
         "subtitle": "Alle von Meldern gemeldeten Probleme",
         "add": "+ Meldung hinzufügen",
+        "plan_round": "Inspektionsrunde planen",
         "group_count": ":count Meldungen",
         "empty": "Noch keine Meldungen. Erstellen Sie eine mit dem \"+ Meldung hinzufügen\"-Button.",
         "empty_filtered": "Keine Meldungen für diese Filter."
@@ -106,6 +107,15 @@
         "round_stops_select_help": "Units sind nach Standort gruppiert. Die Reihenfolge läuft von oben nach unten in dieser Liste (auch über Standorte hinweg).",
         "round_stops_select_all": "Alle Units auswählen",
         "round_stops_unit_checks_off": "Unit-Checks sind für diese Unit deaktiviert"
+    },
+    "round_create": {
+        "title": "Inspektionsrunde planen",
+        "subtitle": "Stops, Intervall und Team in einem Schritt — wiederkehrende Meldung mit Runden-Stops.",
+        "description": "Titel / Beschreibung",
+        "stops": "Stops",
+        "stops_help": "Wählen Sie mindestens 2 Units in Reihenfolge (alle Standorte). Listenreihenfolge = Stoppreihenfolge.",
+        "submit": "Inspektionsrunde planen",
+        "success": "Inspektionsrunde und Aufgabe wurden erstellt."
     },
     "errors": {
         "cannot_close_approved": "Eine freigegebene Meldung kann nicht geschlossen werden.",

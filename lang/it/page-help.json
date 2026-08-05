@@ -42,6 +42,10 @@
                     "text": "Crei una segnalazione tramite il popup nella versione desktop di Winprox o dopo la scansione di un codice QR su un'unità tramite il portale QR. Viene sempre creata automaticamente un'attività che può perfezionare in seguito nella pagina Attività."
                 },
                 {
+                    "label": "Pianifica giro di ispezione",
+                    "text": "Flusso separato accanto ad Aggiungi segnalazione: almeno 2 fermate (unità), intervallo e team in un modulo. Crea una segnalazione ricorrente con fermate del giro e avvia subito la prima attività."
+                },
+                {
                     "label": "Stampa briefing",
                     "text": "Stampi una panoramica delle attività aperte per team."
                 },

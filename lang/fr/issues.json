@@ -20,6 +20,7 @@
         "title": "Signalements",
         "subtitle": "Tous les problèmes signalés par les rapporteurs",
         "add": "+ Ajouter un signalement",
+        "plan_round": "Planifier une tournée d’inspection",
         "group_count": ":count signalements",
         "empty": "Aucun signalement pour l'instant. Créez-en un avec le bouton \"+ Ajouter un signalement\".",
         "empty_filtered": "Aucun signalement ne correspond à ces filtres."
@@ -106,6 +107,15 @@
         "round_stops_select_help": "Les unités sont groupées par site. L’ordre suit la liste de haut en bas (y compris entre sites).",
         "round_stops_select_all": "Sélectionner toutes les unités",
         "round_stops_unit_checks_off": "Le contrôle d'unité est désactivé sur cette unité"
+    },
+    "round_create": {
+        "title": "Planifier une tournée d’inspection",
+        "subtitle": "Arrêts, intervalle et équipe en une étape — signalement récurrent avec arrêts de tournée.",
+        "description": "Titre / description",
+        "stops": "Arrêts",
+        "stops_help": "Choisissez au moins 2 unités dans l’ordre (tous les sites). L’ordre de la liste est l’ordre des arrêts.",
+        "submit": "Planifier la tournée",
+        "success": "Tournée d’inspection et tâche créées."
     },
     "errors": {
         "cannot_close_approved": "Un signalement approuvé ne peut pas être fermé.",

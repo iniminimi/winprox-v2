@@ -20,6 +20,7 @@
         "title": "Segnalazioni",
         "subtitle": "Tutti i problemi segnalati dai reporter",
         "add": "+ Aggiungi segnalazione",
+        "plan_round": "Pianifica giro di ispezione",
         "group_count": ":count segnalazioni",
         "empty": "Nessuna segnalazione ancora. Ne crei una con il pulsante «+ Aggiungi segnalazione».",
         "empty_filtered": "Nessuna segnalazione corrisponde a questi filtri."
@@ -106,6 +107,15 @@
         "round_stops_select_help": "Le unità sono raggruppate per sede. L’ordine segue l’elenco dall’alto verso il basso (anche tra sedi).",
         "round_stops_select_all": "Seleziona tutte le unità",
         "round_stops_unit_checks_off": "I controlli unità sono disattivati su questa unità"
+    },
+    "round_create": {
+        "title": "Pianifica giro di ispezione",
+        "subtitle": "Fermate, intervallo e team in un passaggio — segnalazione ricorrente con fermate del giro.",
+        "description": "Titolo / descrizione",
+        "stops": "Fermate",
+        "stops_help": "Scegli almeno 2 unità in ordine (qualsiasi sede). L’ordine dell’elenco è l’ordine delle fermate.",
+        "submit": "Pianifica giro",
+        "success": "Giro di ispezione e attività creati."
     },
     "errors": {
         "cannot_close_approved": "Una segnalazione approvata non può essere chiusa.",

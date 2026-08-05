@@ -20,6 +20,7 @@
         "title": "Meldingen",
         "subtitle": "Alle door melders gemelde problemen",
         "add": "+ Melding toevoegen",
+        "plan_round": "Inspectieronde plannen",
         "group_count": ":count meldingen",
         "empty": "Er zijn nog geen meldingen. Maak er aan via de knop \"+ Melding toevoegen\".",
         "empty_filtered": "Geen meldingen gevonden voor deze filters."
@@ -106,6 +107,15 @@
         "round_stops_select_help": "Units staan gegroepeerd per locatie. Volgorde loopt van boven naar beneden in deze lijst (ook over locaties heen).",
         "round_stops_select_all": "Selecteer alle units",
         "round_stops_unit_checks_off": "Unit checks staat uit op deze unit"
+    },
+    "round_create": {
+        "title": "Inspectieronde plannen",
+        "subtitle": "Stops, interval en team in één stap — terugkerende melding met ronde-stops.",
+        "description": "Titel / omschrijving",
+        "stops": "Stops",
+        "stops_help": "Kies minstens 2 units in volgorde (alle locaties). Volgorde = volgorde in de lijst.",
+        "submit": "Inspectieronde plannen",
+        "success": "Inspectieronde en taak zijn aangemaakt."
     },
     "errors": {
         "cannot_close_approved": "Een goedgekeurde melding kan niet worden gesloten.",

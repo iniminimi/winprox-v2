@@ -20,6 +20,7 @@
         "title": "Incidencias",
         "subtitle": "Todos los problemas informados por los reportadores",
         "add": "+ Añadir incidencia",
+        "plan_round": "Planificar ronda de inspección",
         "group_count": ":count incidencias",
         "empty": "Aún no hay incidencias. Cree una con el botón «+ Añadir incidencia».",
         "empty_filtered": "Ninguna incidencia coincide con estos filtros."
@@ -106,6 +107,15 @@
         "round_stops_select_help": "Las unidades están agrupadas por ubicación. El orden sigue la lista de arriba hacia abajo (también entre ubicaciones).",
         "round_stops_select_all": "Seleccionar todas las unidades",
         "round_stops_unit_checks_off": "Unit checks está desactivado en esta unidad"
+    },
+    "round_create": {
+        "title": "Planificar ronda de inspección",
+        "subtitle": "Paradas, intervalo y equipo en un paso — aviso recurrente con paradas de ronda.",
+        "description": "Título / descripción",
+        "stops": "Paradas",
+        "stops_help": "Elija al menos 2 unidades en orden (cualquier ubicación). El orden de la lista es el de las paradas.",
+        "submit": "Planificar ronda",
+        "success": "Ronda de inspección y tarea creadas."
     },
     "errors": {
         "cannot_close_approved": "Una incidencia aprobada no se puede cerrar.",
