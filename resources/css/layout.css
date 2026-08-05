@@ -124,6 +124,28 @@
     gap: 0.25rem;
 }
 
+.wp-sidebar-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.wp-sidebar-accordion__group > summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.wp-sidebar-accordion__group > summary::-webkit-details-marker {
+    display: none;
+}
+
+.wp-sidebar-accordion__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem 0.5rem 2rem;
+}
+
 .wp-nav-divider {
     margin: 0.75rem 0.75rem;
     border: 0;

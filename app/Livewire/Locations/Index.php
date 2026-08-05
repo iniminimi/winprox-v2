@@ -63,6 +63,9 @@ class Index extends Component
 
     public bool $showCategoriesSection = false;
 
+    #[Url(as: 'section')]
+    public ?string $section = null;
+
     public ?int $editingCategoryId = null;
 
     public string $categoryName = '';
@@ -90,6 +93,10 @@ class Index extends Component
         if ($categoryId > 0) {
             $this->showCategoriesSection = true;
             $this->openEditCategory($categoryId);
+        }
+
+        if ($categoryId === 0 && $this->section === 'categories') {
+            $this->showCategoriesSection = true;
         }
     }
 

@@ -21,6 +21,7 @@
         "subtitle": "Alle door melders gemelde problemen",
         "add": "+ Melding toevoegen",
         "plan_round": "Inspectieronde plannen",
+        "inspection_rounds": "Inspectierondes",
         "group_count": ":count meldingen",
         "empty": "Er zijn nog geen meldingen. Maak er aan via de knop \"+ Melding toevoegen\".",
         "empty_filtered": "Geen meldingen gevonden voor deze filters."

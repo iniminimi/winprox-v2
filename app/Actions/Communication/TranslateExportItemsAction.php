@@ -309,12 +309,11 @@ class TranslateExportItemsAction
         $translatedName = preg_replace('/\s+/u', ' ', $translatedName) ?? $translatedName;
         $translatedName = trim($translatedName);
 
-        // Short labels must stay short — reject runaway model output (essays / refusals).
-        if (
-            mb_strlen($translatedName) > self::SHORT_NAME_MAX
-            || mb_strlen($translatedName) > max(48, mb_strlen($sourceName) * 4)
-        ) {
-            return $sourceName;
+        // Short labels must stay short — truncate runaway provider output.
+        // Tests expect always a maximum label size (not falling back to source).
+        if (mb_strlen($translatedName) > self::SHORT_NAME_MAX) {
+            $translatedName = mb_substr($translatedName, 0, self::SHORT_NAME_MAX);
+            $translatedName = trim($translatedName);
         }
 
         return $translatedName;

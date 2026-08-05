@@ -642,10 +642,6 @@
                     "text": "Tippen Sie auf „Meldung erstellen“, beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Vorname, Name und E-Mail sind optional — außer die Verwaltung hat Kontaktdaten zur Pflicht gemacht; füllen Sie sie dann aus. Anschließend wird eine Aufgabe für das Team erstellt. Die Meldung muss erst freigegeben werden, bevor sie im Portal sichtbar ist. Gegen Spam gelten Limits: höchstens eine Meldung alle 3 Minuten und fünf alle 30 Minuten für diese Unit (pro Gerät)."
                 },
                 {
-                    "label": "Unit-Check",
-                    "text": "Nur für Ausführer nach Clock-Point-Anmeldung und nur wenn Kategorie und Unit Unit-Checks erlauben. OK oder Nicht OK erfassen, optional mit Checkliste. OK erstellt keine Meldung; nach Nicht OK kann eine Meldung folgen."
-                },
-                {
                     "label": "Reservieren",
                     "text": "Wenn diese Unit reservierbar ist, sehen Sie die Kachel Reservieren. Wählen Sie ein Zeitfenster, geben Sie Name und E-Mail ein und bestätigen Sie innerhalb von 30 Minuten per E-Mail. Über Meine Reservierungen oder den Mail-Link können Sie ändern oder stornieren."
                 },

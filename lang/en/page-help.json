@@ -642,10 +642,6 @@
                     "text": "Tap \"Create report\", describe the problem and optionally add up to four photos. First name, last name and email are optional — unless the administrator made contact details required; then fill them in. A task is then created for the team. The report must be approved before it appears on the portal. Anti-spam limits apply: at most one report per 3 minutes and five reports per 30 minutes for this unit (per device)."
                 },
                 {
-                    "label": "Unit check",
-                    "text": "Workers only, after Clock Point sign-in, and only when category and unit both allow unit checks. Record OK or Not OK, optionally with a checklist. OK does not create an issue; after Not OK the worker can create a report."
-                },
-                {
                     "label": "Reserve",
                     "text": "If this unit is reservable, you see the Reserve tile. Pick a time slot, enter name and email, and confirm within 30 minutes via email. Use My reservations or the mail link to change or cancel."
                 },

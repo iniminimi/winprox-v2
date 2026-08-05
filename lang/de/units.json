@@ -1,0 +1,22 @@
+{
+    "title": "Units",
+    "subtitle": "Übersicht pro Mandant mit Unit-Check-Status",
+    "list_title": "Units",
+    "filters": {
+        "location": "Nach Standort filtern",
+        "all_locations": "Alle Standorte"
+    },
+    "list": {
+        "empty": "Keine Units gefunden."
+    },
+    "category_none": "Keine Kategorie",
+    "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+    },
+    "unit_checks": {
+        "allowed": "Unit-Checks erlaubt",
+        "disabled": "Unit-Checks deaktiviert"
+    }
+}
+

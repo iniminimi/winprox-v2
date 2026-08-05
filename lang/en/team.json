@@ -1,6 +1,9 @@
 {
     "title": "Users",
     "subtitle": "Manage colleague users, operational teams, workers and unit-check checklists.",
+    "nav": {
+        "teams": "Teams"
+    },
     "briefing": "Print briefing",
     "colleagues": {
         "title": "Colleague users",

@@ -85,6 +85,7 @@ use App\Livewire\Public\UnassignedQrPortal;
 use App\Livewire\Public\UnitPortal;
 use App\Livewire\Pages\ReservationsIndex;
 use App\Livewire\Pages\UnitChecksIndex;
+use App\Livewire\Pages\UnitsIndex;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -303,6 +304,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/locations', LocationIndex::class)->name('locations.index');
         Route::get('/locations/{location}', LocationShow::class)->name('locations.show');
         Route::get('/locations/{location}/qr-pack', LocationQrPackDownloadController::class)->name('locations.qr-pack');
+        Route::get('/units', UnitsIndex::class)->name('units.index');
         Route::get('/units/{unit}/qr', UnitQrController::class)->name('units.qr');
         Route::get('/units/{unit}/qr-pack', UnitQrPackDownloadController::class)->name('units.qr-pack');
         Route::get('/briefing/print', BriefingPrintController::class)->name('briefing.print');

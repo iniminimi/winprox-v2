@@ -1,0 +1,22 @@
+{
+    "title": "Unités",
+    "subtitle": "Aperçu global avec l’état des contrôles d’unité",
+    "list_title": "Unités",
+    "filters": {
+        "location": "Filtrer par site",
+        "all_locations": "Tous les sites"
+    },
+    "list": {
+        "empty": "Aucune unité trouvée."
+    },
+    "category_none": "Aucune catégorie",
+    "status": {
+        "active": "Actif",
+        "inactive": "Inactif"
+    },
+    "unit_checks": {
+        "allowed": "Contrôles d’unité autorisés",
+        "disabled": "Contrôles d’unité désactivés"
+    }
+}
+

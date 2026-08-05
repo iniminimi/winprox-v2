@@ -1,0 +1,22 @@
+{
+    "title": "Unità",
+    "subtitle": "Panoramica tenant con stato dei controlli unità",
+    "list_title": "Unità",
+    "filters": {
+        "location": "Filtra per sede",
+        "all_locations": "Tutte le sedi"
+    },
+    "list": {
+        "empty": "Nessuna unità trovata."
+    },
+    "category_none": "Nessuna categoria",
+    "status": {
+        "active": "Attiva",
+        "inactive": "Inattiva"
+    },
+    "unit_checks": {
+        "allowed": "Controlli unità consentiti",
+        "disabled": "Controlli unità disabilitati"
+    }
+}
+

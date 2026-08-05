@@ -642,10 +642,6 @@
                     "text": "Appuyez sur « Créer un signalement », décrivez le problème et ajoutez éventuellement jusqu’à quatre photos. Prénom, nom et e-mail sont facultatifs — sauf si l’administrateur a rendu les coordonnées obligatoires ; remplissez-les alors. Une tâche est créée pour l’équipe. Le signalement doit d’abord être approuvé avant d’apparaître sur le portail. Limites anti-spam : au plus un signalement toutes les 3 minutes et cinq toutes les 30 minutes pour cette unité (par appareil)."
                 },
                 {
-                    "label": "Contrôle d'unité",
-                    "text": "Réservé aux exécutants connectés via Clock Point, et seulement si catégorie et unité autorisent les contrôles. Enregistrez OK ou Non OK, éventuellement avec checklist. OK ne crée pas de signalement ; après Non OK, un signalement peut suivre."
-                },
-                {
                     "label": "Réserver",
                     "text": "Si cette unité est réservable, vous voyez la tuile Réserver. Choisissez un créneau, saisissez nom et e-mail, et confirmez sous 30 minutes par e-mail. Mes réservations ou le lien mail permettent de modifier ou d’annuler."
                 },

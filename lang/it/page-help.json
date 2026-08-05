@@ -642,10 +642,6 @@
                     "text": "Tocchi «Crea segnalazione», descriva il problema e aggiunga facoltativamente fino a quattro foto. Nome, cognome e e-mail sono facoltativi — salvo che l’amministratore abbia reso obbligatori i dati di contatto; li compili allora. Viene creato un compito per il team. La segnalazione deve essere approvata prima di apparire sul portale. Limiti anti-spam: al massimo una segnalazione ogni 3 minuti e cinque ogni 30 minuti per questa unità (per dispositivo)."
                 },
                 {
-                    "label": "Controllo unità",
-                    "text": "Solo esecutori dopo accesso Clock Point, e solo se categoria e unit consentono i controlli. Registra OK o Non OK, eventualmente con checklist. OK non crea segnalazione; dopo Non OK può seguire una segnalazione."
-                },
-                {
                     "label": "Prenota",
                     "text": "Se questa unità è prenotabile, vedi il riquadro Prenota. Scegli una fascia, inserisci nome ed e-mail e conferma entro 30 minuti via e-mail. Le mie prenotazioni o il link e-mail consentono di modificare o annullare."
                 },

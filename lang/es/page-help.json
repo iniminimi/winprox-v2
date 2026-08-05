@@ -642,10 +642,6 @@
                     "text": "Pulse «Crear aviso», describa el problema y añada opcionalmente hasta cuatro fotos. Nombre, apellidos y correo son opcionales — salvo que el administrador haya hecho obligatorios los datos de contacto; rellénelos entonces. Se crea una tarea para el equipo. El aviso debe aprobarse antes de verse en el portal. Límites anti-spam: como máximo un aviso cada 3 minutos y cinco cada 30 minutos para esta unidad (por dispositivo)."
                 },
                 {
-                    "label": "Comprobación de unit",
-                    "text": "Solo ejecutores tras iniciar sesión en Clock Point, y solo si categoría y unit permiten comprobaciones. Registre OK o No OK, opcionalmente con checklist. OK no crea aviso; tras No OK puede seguir un aviso."
-                },
-                {
                     "label": "Reservar",
                     "text": "Si esta unidad es reservable, verá la baldosa Reservar. Elija un horario, introduzca nombre y correo y confirme en 30 minutos por correo. Mis reservas o el enlace del correo permiten cambiar o cancelar."
                 },

@@ -256,7 +256,7 @@
             </div>
 
             <div class="wp-tiles">
-                @if ($canAct && ($allowsUnitChecks ?? false))
+                @if ($canAct && ($unitFieldTrustActive ?? false) && ($allowsUnitChecks ?? false))
                     <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('unit_check')">
                         <span class="wp-tile-title">{{ __('portal.tiles.unit_check') }}</span>
                         <span class="wp-tile-sub">{{ __('portal.tiles.unit_check_sub') }}</span>

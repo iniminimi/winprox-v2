@@ -45,6 +45,9 @@ class Index extends Component
     #[Url(as: 'recurring')]
     public bool $recurring = false;
 
+    #[Url(as: 'inspection_round')]
+    public bool $inspectionRoundOnly = false;
+
     #[Url(as: 'highlight')]
     public ?int $highlightIssue = null;
 
@@ -129,6 +132,7 @@ class Index extends Component
             'team' => $this->teamFilter ?: null,
             'q' => trim($this->search) !== '' ? trim($this->search) : null,
             'recurring' => $this->recurring ? '1' : null,
+            'inspection_round' => $this->inspectionRoundOnly ? '1' : null,
             'highlight' => $this->highlightIssue ?: null,
             'limit' => $this->perStatusLimit !== PerStatusListLimit::DEFAULT ? $this->perStatusLimit : null,
         ])), navigate: true);
@@ -407,6 +411,16 @@ class Index extends Component
             ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($this->teamFilter, fn ($q) => $q->whereHas('tasks', fn ($t) => $t->where('internal_team_id', $this->teamFilter)))
             ->when($this->recurring, fn ($q) => $q->where('is_recurring', true))
+            ->when($this->inspectionRoundOnly, function ($q) {
+                // sqlite can't HAVING() on a "withCount" subselect alias.
+                // Filter via a subquery that returns issue IDs with at least 2 round stops.
+                $q->whereIn('id', function ($sub) {
+                    $sub->select('issue_id')
+                        ->from('issue_round_stops')
+                        ->groupBy('issue_id')
+                        ->havingRaw('COUNT(*) >= 2');
+                });
+            })
             ->when($this->unitFilter, fn ($q) => $q->where('unit_id', $this->unitFilter))
             ->when(trim($this->search) !== '', function ($q) {
                 $term = '%'.trim($this->search).'%';

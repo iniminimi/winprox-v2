@@ -21,8 +21,9 @@
         ])>{{ $workersImportNotice }}</div>
     @endif
 
-    @if ($canManageUsers)
-        <div class="wp-card wp-card-pad wp-stack-tight">
+    <div id="backoffice">
+        @if ($canManageUsers)
+            <div class="wp-card wp-card-pad wp-stack-tight">
             <div class="wp-row">
                 <h2 class="wp-section-title">{{ __('team.colleagues.title') }}</h2>
                 <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateColleague">
@@ -63,7 +64,7 @@
                 @endforelse
             </div>
         </div>
-    @endif
+        @endif
 
     <x-wp-disclosure-card
         :title="__('unit_checks.lists.title')"
@@ -148,10 +149,11 @@
         @else
             <p class="wp-muted">{{ __('unit_checks.lists.empty') }}</p>
         @endif
-    </x-wp-disclosure-card>
+        </x-wp-disclosure-card>
+    </div>
 
     {{-- Teams ---------------------------------------------------------------}}
-    <div class="wp-card wp-card-pad wp-stack-tight">
+    <div id="teams" class="wp-card wp-card-pad wp-stack-tight">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('team.teams.title') }}</h2>
             @if ($canManageTeams)

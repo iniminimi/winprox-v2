@@ -1100,6 +1100,11 @@ class UnitPortal extends Component
         $guestReservations = collect();
         $unitCheckListItems = collect();
         $unitCheckList = null;
+        $unitFieldTrustPayload = $team !== null
+            ? session(WorkerVerification::unitFieldTrustSessionKey((int) $team->id))
+            : null;
+        $unitFieldTrustActive = is_array($unitFieldTrustPayload)
+            && ! empty($unitFieldTrustPayload['trusted_at']);
 
         if ($isReservable && in_array($this->portalSection, ['home', 'my_reservations'], true)) {
             $guestReservations = $this->guestReservationsForUnit();
@@ -1160,6 +1165,7 @@ class UnitPortal extends Component
             'canAct' => $canAct,
             'unit' => $unit,
             'allowsUnitChecks' => $unit->allowsUnitChecks(),
+            'unitFieldTrustActive' => $unitFieldTrustActive,
             'unitCheckList' => $unitCheckList,
             'unitCheckListItems' => $unitCheckListItems,
             'showNewReportSection' => $this->showNewReportSection(),

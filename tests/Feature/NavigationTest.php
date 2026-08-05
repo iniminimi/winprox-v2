@@ -46,7 +46,8 @@ it('toont instellingen maar geen abonnement in de sidebar voor medewerkers', fun
         ->assertOk()
         ->assertDontSee('href="'.route('subscription.index').'"', false)
         ->assertSee(__('common.nav.settings'), false)
-        ->assertSee(__('common.nav.users'), false);
+        ->assertSee(__('common.nav.backoffice'), false)
+        ->assertSee(__('team.nav.teams'), false);
 
     $this->actingAs($employee)
         ->get(route('settings.index'))

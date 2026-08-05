@@ -21,6 +21,7 @@
         "subtitle": "Tutti i problemi segnalati dai reporter",
         "add": "+ Aggiungi segnalazione",
         "plan_round": "Pianifica giro di ispezione",
+        "inspection_rounds": "Giri di ispezione",
         "group_count": ":count segnalazioni",
         "empty": "Nessuna segnalazione ancora. Ne crei una con il pulsante «+ Aggiungi segnalazione».",
         "empty_filtered": "Nessuna segnalazione corrisponde a questi filtri."

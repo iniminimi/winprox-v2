@@ -642,10 +642,6 @@
                     "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Voornaam, naam en e-mail zijn optioneel — tenzij de beheerder contactgegevens verplicht heeft gemaakt; vul ze dan in. Er wordt vervolgens een taak aangemaakt voor het team. De melding moet eerst worden goedgekeurd voordat deze zichtbaar wordt op het portaal. Tegen spam gelden limieten: maximaal één melding per 3 minuten en maximaal vijf meldingen per 30 minuten voor deze unit (per apparaat)."
                 },
                 {
-                    "label": "Unit check",
-                    "text": "Alleen voor uitvoerders die via Clock Point zijn aangemeld, en alleen als categorie én unit Unit checks toestaan. Registreer OK of Niet OK, eventueel met checklist. Geen melding bij OK; bij Niet OK kan daarna Melding maken."
-                },
-                {
                     "label": "Reserveren",
                     "text": "Als deze unit reserveerbaar is, zie je de tegel Reserveren. Kies een tijdslot, vul naam en e-mail in en bevestig binnen 30 minuten via de e-mail. Via Mijn reserveringen of de link in de mail kun je wijzigen of annuleren."
                 },

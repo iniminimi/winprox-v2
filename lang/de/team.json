@@ -1,6 +1,9 @@
 {
     "title": "Benutzer",
     "subtitle": "Verwalten Sie Kollegen-Benutzer, operative Teams, Ausführende und Checklisten für Unit-Checks.",
+    "nav": {
+        "teams": "Teams"
+    },
     "briefing": "Briefing drucken",
     "colleagues": {
         "title": "Kollegenkonten",

@@ -769,6 +769,31 @@ it('rejects fewer than two stops via CreateInspectionRoundRequest validation', f
         ->and($validator->errors()->has('round_stop_unit_ids'))->toBeTrue();
 });
 
+it('filters inspection rounds in issues index (inspection_round param)', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'issue' => $roundIssue, 'location' => $location] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    // Another recurring issue that is NOT an inspection round (no round stops).
+    $otherIssue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => null,
+        'is_recurring' => true,
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+    ]);
+
+    expect($roundIssue->isInspectionRound())->toBeTrue();
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->set('recurring', true)
+        ->set('inspectionRoundOnly', true)
+        ->assertSee(__('issues.card.round_stops', ['count' => $roundIssue->roundStopCount()]))
+        ->assertSee(__('issues.card.kind_nr', ['nr' => $roundIssue->id]))
+        ->assertDontSee(__('issues.card.kind_nr', ['nr' => $otherIssue->id]));
+});
+
 it('plans an inspection round via the issues index modal', function () {
     ['tenant' => $tenant, 'actor' => $actor, 'team' => $team, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
     seedTenantPastOnboarding($tenant);

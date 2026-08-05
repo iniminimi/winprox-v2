@@ -1,6 +1,9 @@
 {
     "title": "Utilisateurs",
     "subtitle": "Gérez les utilisateurs collègues, les équipes opérationnelles, les exécutants et les listes de contrôle unit check.",
+    "nav": {
+        "teams": "Teams"
+    },
     "briefing": "Imprimer le briefing",
     "colleagues": {
         "title": "Utilisateurs collègues",

@@ -58,11 +58,17 @@ class SubmitReportAction
         $reporterName = $data['reporter_name'] ?? null;
         $reporterContact = $data['reporter_contact'] ?? null;
 
-        if ($fieldWorker !== null) {
+        // Reporter fields represent the "citizen" identity (anonymous QR / public reports).
+        // When public reports are disabled for visitors, the signed-in worker becomes the
+        // only actor and we attribute reporter_name to the worker (citizen fields are
+        // otherwise kept null).
+        if ($fieldWorker !== null && ! $unit->public_reports_enabled) {
             $workerName = trim($fieldWorker->displayName());
             if ($workerName !== '') {
                 $reporterName = $workerName;
             }
+            // For public-reports-disabled mode, unit portal does not require reporter_email.
+            // Keep reporter_contact only when the worker has an email configured.
             $workerEmail = trim((string) ($fieldWorker->email ?? ''));
             if ($workerEmail !== '') {
                 $reporterContact = $workerEmail;

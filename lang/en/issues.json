@@ -21,6 +21,7 @@
         "subtitle": "All problems reported by reporters",
         "add": "+ Add issue",
         "plan_round": "Plan inspection round",
+        "inspection_rounds": "Inspection rounds",
         "group_count": ":count issues",
         "empty": "No issues yet. Create one using the \"+ Add issue\" button.",
         "empty_filtered": "No issues match these filters."

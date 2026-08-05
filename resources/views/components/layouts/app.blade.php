@@ -41,21 +41,7 @@
                 ['route' => 'platform.translations', 'active' => 'platform.translations', 'icon' => 'issues', 'label' => 'platform.translation_sync.nav'],
             ] : [
                 ['route' => 'dashboard', 'active' => 'dashboard', 'icon' => 'dashboard', 'label' => 'common.nav.dashboard'],
-                ['route' => 'locations.index', 'active' => 'locations.*', 'icon' => 'locations', 'label' => 'common.nav.locations'],
-                ['route' => 'issues.index', 'active' => 'issues.*', 'icon' => 'issues', 'label' => 'common.nav.issues'],
-                ['route' => 'tasks.index', 'active' => 'tasks.*', 'icon' => 'tasks', 'label' => 'common.nav.tasks'],
-                ['route' => 'calendar.index', 'active' => 'calendar.*', 'icon' => 'calendar', 'label' => 'common.nav.calendar'],
-                ['route' => 'reservations.index', 'active' => 'reservations.*', 'icon' => 'calendar', 'label' => 'common.nav.reservations'],
-                ['route' => 'unit-checks.index', 'active' => 'unit-checks.*', 'icon' => 'tasks', 'label' => 'common.nav.unit_checks'],
-                ...($showTimeNav ? [
-                    ['route' => 'time.presence.index', 'active' => 'time.*', 'icon' => 'clock', 'label' => 'common.nav.time'],
-                ] : []),
-                ...($showEsgNav ? [
-                    ['route' => 'esg.dashboard', 'active' => 'esg.*', 'icon' => 'sliders', 'label' => 'common.nav.esg'],
-                ] : []),
-                ...($showIotNav ? [
-                    ['route' => 'iot.index', 'active' => 'iot.*', 'icon' => 'api', 'label' => 'common.nav.iot'],
-                ] : []),
+                // Overige navigatie wordt in accordion-groepen gerenderd.
             ]),
         ];
 
@@ -175,17 +161,254 @@
                         </a>
                     @endforeach
 
-                    <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
+                    @if ($isPlatformOnlySuperuser)
+                        <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
 
-                    @foreach ($secondaryNav as $item)
-                        <a href="{{ route($item['route']) }}"
-                           class="wp-nav-link {{ request()->routeIs($item['active']) ? 'is-active' : '' }}"
-                           @if (! empty($item['target'])) target="{{ $item['target'] }}" rel="noopener noreferrer" @endif
-                           @click="nav = false">
-                            <x-wp-icon :name="$item['icon']" class="wp-nav-icon" />
-                            <span>{{ __($item['label']) }}</span>
-                        </a>
-                    @endforeach
+                        @foreach ($secondaryNav as $item)
+                            <a href="{{ route($item['route']) }}"
+                               class="wp-nav-link {{ request()->routeIs($item['active']) ? 'is-active' : '' }}"
+                               @if (! empty($item['target'])) target="{{ $item['target'] }}" rel="noopener noreferrer" @endif
+                               @click="nav = false">
+                                <x-wp-icon :name="$item['icon']" class="wp-nav-icon" />
+                                <span>{{ __($item['label']) }}</span>
+                            </a>
+                        @endforeach
+                    @else
+                        @php
+                            $inspectionRoundOnlyActive = request()->routeIs('issues.index') && (int) request()->query('inspection_round', 0) === 1;
+                            $meldingenActive = request()->routeIs('issues.*') && ! $inspectionRoundOnlyActive;
+
+                            $workGroupActive = request()->routeIs('issues.*')
+                                || request()->routeIs('tasks.*')
+                                || request()->routeIs('calendar.*')
+                                || request()->routeIs('reservations.*');
+
+                            $categoriesActive = request()->routeIs('locations.index') && request()->query('section') === 'categories';
+                            $locationsActive = request()->routeIs('locations.index') && ! $categoriesActive;
+                            $unitsActive = request()->routeIs('units.index');
+                            $placesGroupActive = request()->routeIs('locations.*') || $unitsActive;
+
+                            $peopleGroupActive = request()->routeIs('team.index');
+
+                            $timeGroupActive = request()->routeIs('time.*');
+                            $automationGroupActive = request()->routeIs('iot.*') || request()->routeIs('esg.*');
+                            $organizationGroupActive = request()->routeIs('settings.*') || request()->routeIs('subscription.*');
+                            $helpGroupActive = request()->routeIs('faq.*')
+                                || request()->routeIs('manual.*')
+                                || request()->routeIs('legal.index')
+                                || request()->routeIs('contact.*');
+                        @endphp
+
+                        <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
+
+                        <div class="wp-sidebar-accordion">
+                            <details class="wp-sidebar-accordion__group" @if($workGroupActive) open @endif>
+                                <summary class="wp-nav-link {{ $workGroupActive ? 'is-active' : '' }}">
+                                    <x-wp-icon name="issues" class="wp-nav-icon" />
+                                    <span>{{ __('common.nav.work') }}</span>
+                                </summary>
+                                <div class="wp-sidebar-accordion__panel">
+                                    <a href="{{ route('issues.index') }}"
+                                       class="wp-nav-link {{ $meldingenActive ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="issues" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.issues') }}</span>
+                                    </a>
+                                    <a href="{{ route('issues.index', ['recurring' => 1, 'inspection_round' => 1]) }}"
+                                       class="wp-nav-link {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="tasks" class="wp-nav-icon" />
+                                        <span>{{ __('issues.list.inspection_rounds') }}</span>
+                                    </a>
+                                    <a href="{{ route('tasks.index') }}"
+                                       class="wp-nav-link {{ request()->routeIs('tasks.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="tasks" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.tasks') }}</span>
+                                    </a>
+                                    <a href="{{ route('calendar.index') }}"
+                                       class="wp-nav-link {{ request()->routeIs('calendar.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="calendar" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.calendar') }}</span>
+                                    </a>
+                                    <a href="{{ route('reservations.index') }}"
+                                       class="wp-nav-link {{ request()->routeIs('reservations.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="calendar" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.reservations') }}</span>
+                                    </a>
+                                </div>
+                            </details>
+
+                            <details class="wp-sidebar-accordion__group" @if($placesGroupActive) open @endif>
+                                <summary class="wp-nav-link {{ $placesGroupActive ? 'is-active' : '' }}">
+                                    <x-wp-icon name="locations" class="wp-nav-icon" />
+                                    <span>{{ __('common.nav.places') }}</span>
+                                </summary>
+                                <div class="wp-sidebar-accordion__panel">
+                                    <a href="{{ route('locations.index', ['section' => 'categories']) }}"
+                                       class="wp-nav-link {{ $categoriesActive ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="locations" class="wp-nav-icon" />
+                                        <span>{{ __('locations.categories.title') }}</span>
+                                    </a>
+                                    <a href="{{ route('locations.index') }}"
+                                       class="wp-nav-link {{ $locationsActive ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="locations" class="wp-nav-icon" />
+                                        <span>{{ __('locations.title') }}</span>
+                                    </a>
+                                    <a href="{{ route('units.index') }}"
+                                       class="wp-nav-link {{ $unitsActive ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="locations" class="wp-nav-icon" />
+                                        <span>{{ __('units.title') }}</span>
+                                    </a>
+                                </div>
+                            </details>
+
+                            <details class="wp-sidebar-accordion__group" @if($peopleGroupActive) open @endif>
+                                <summary class="wp-nav-link {{ $peopleGroupActive ? 'is-active' : '' }}">
+                                    <x-wp-icon name="team" class="wp-nav-icon" />
+                                    <span>{{ __('common.nav.people') }}</span>
+                                </summary>
+                                <div class="wp-sidebar-accordion__panel">
+                                    <a href="{{ route('team.index') }}#backoffice"
+                                       class="wp-nav-link {{ $peopleGroupActive ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="team" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.backoffice') }}</span>
+                                    </a>
+                                    <a href="{{ route('team.index') }}#teams"
+                                       class="wp-nav-link {{ $peopleGroupActive ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="team" class="wp-nav-icon" />
+                                        <span>{{ __('team.nav.teams') }}</span>
+                                    </a>
+                                </div>
+                            </details>
+
+                            @if ($showTimeNav)
+                                <details class="wp-sidebar-accordion__group" @if($timeGroupActive) open @endif>
+                                    <summary class="wp-nav-link {{ $timeGroupActive ? 'is-active' : '' }}">
+                                        <x-wp-icon name="clock" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.time') }}</span>
+                                    </summary>
+                                    <div class="wp-sidebar-accordion__panel">
+                                        <a href="{{ route('time.clock-points.index') }}"
+                                           class="wp-nav-link {{ request()->routeIs('time.clock-points.index') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <x-wp-icon name="clock" class="wp-nav-icon" />
+                                            <span>{{ __('time.nav.clock_points') }}</span>
+                                        </a>
+                                        <a href="{{ route('time.presence.index') }}"
+                                           class="wp-nav-link {{ request()->routeIs('time.presence.index') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <x-wp-icon name="clock" class="wp-nav-icon" />
+                                            <span>{{ __('time.nav.presence') }}</span>
+                                        </a>
+                                    </div>
+                                </details>
+                            @endif
+
+                            @if ($showEsgNav || $showIotNav)
+                                <details class="wp-sidebar-accordion__group" @if($automationGroupActive) open @endif>
+                                    <summary class="wp-nav-link {{ $automationGroupActive ? 'is-active' : '' }}">
+                                        <x-wp-icon name="sliders" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.automation') }}</span>
+                                    </summary>
+                                    <div class="wp-sidebar-accordion__panel">
+                                        @if ($showIotNav)
+                                            <a href="{{ route('iot.index') }}"
+                                               class="wp-nav-link {{ request()->routeIs('iot.*') ? 'is-active' : '' }}"
+                                               @click="nav = false">
+                                                <x-wp-icon name="api" class="wp-nav-icon" />
+                                                <span>{{ __('common.nav.iot') }}</span>
+                                            </a>
+                                        @endif
+                                        @if ($showEsgNav)
+                                            <a href="{{ route('esg.dashboard') }}"
+                                               class="wp-nav-link {{ request()->routeIs('esg.*') ? 'is-active' : '' }}"
+                                               @click="nav = false">
+                                                <x-wp-icon name="sliders" class="wp-nav-icon" />
+                                                <span>{{ __('common.nav.esg') }}</span>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </details>
+                            @endif
+
+                            @if ($showSettingsNav || ($showTenantAdminNav && ($activeTenant?->hasApiAccess() ?? false)) || $showTenantAdminNav)
+                                <details class="wp-sidebar-accordion__group" @if($organizationGroupActive) open @endif>
+                                    <summary class="wp-nav-link {{ $organizationGroupActive ? 'is-active' : '' }}">
+                                        <x-wp-icon name="settings" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.organization') }}</span>
+                                    </summary>
+                                    <div class="wp-sidebar-accordion__panel">
+                                        @if ($showSettingsNav)
+                                            <a href="{{ route('settings.index') }}"
+                                               class="wp-nav-link {{ request()->routeIs('settings.index') ? 'is-active' : '' }}"
+                                               @click="nav = false">
+                                                <x-wp-icon name="settings" class="wp-nav-icon" />
+                                                <span>{{ __('common.nav.settings') }}</span>
+                                            </a>
+                                        @endif
+                                        @if ($showTenantAdminNav && ($activeTenant?->hasApiAccess() ?? false))
+                                            <a href="{{ route('settings.api') }}"
+                                               class="wp-nav-link {{ request()->routeIs('settings.api') ? 'is-active' : '' }}"
+                                               @click="nav = false">
+                                                <x-wp-icon name="api" class="wp-nav-icon" />
+                                                <span>{{ __('settings.api.nav') }}</span>
+                                            </a>
+                                        @endif
+                                        @if ($showTenantAdminNav)
+                                            <a href="{{ route('subscription.index') }}"
+                                               class="wp-nav-link {{ request()->routeIs('subscription.*') ? 'is-active' : '' }}"
+                                               @click="nav = false">
+                                                <x-wp-icon name="subscription" class="wp-nav-icon" />
+                                                <span>{{ __('common.nav.subscription') }}</span>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </details>
+                            @endif
+
+                            <details class="wp-sidebar-accordion__group" @if($helpGroupActive) open @endif>
+                                <summary class="wp-nav-link {{ $helpGroupActive ? 'is-active' : '' }}">
+                                    <x-wp-icon name="faq" class="wp-nav-icon" />
+                                    <span>{{ __('common.nav.help') }}</span>
+                                </summary>
+                                <div class="wp-sidebar-accordion__panel">
+                                    <a href="{{ route('faq.index') }}"
+                                       class="wp-nav-link {{ request()->routeIs('faq.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="faq" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.faq') }}</span>
+                                    </a>
+                                    <a href="{{ route('manual.hub') }}"
+                                       class="wp-nav-link {{ request()->routeIs('manual.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="document" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.manual') }}</span>
+                                    </a>
+                                    <a href="{{ route('legal.index') }}"
+                                       class="wp-nav-link {{ request()->routeIs('legal.index') ? 'is-active' : '' }}"
+                                       target="_blank" rel="noopener noreferrer"
+                                       @click="nav = false">
+                                        <x-wp-icon name="legal" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.legal') }}</span>
+                                    </a>
+                                    <a href="{{ route('contact.index') }}"
+                                       class="wp-nav-link {{ request()->routeIs('contact.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <x-wp-icon name="contact" class="wp-nav-icon" />
+                                        <span>{{ __('common.nav.contact') }}</span>
+                                    </a>
+                                </div>
+                            </details>
+                        </div>
+                    @endif
                 </nav>
 
                 <div class="wp-sidebar-bottom">

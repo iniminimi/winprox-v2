@@ -71,6 +71,7 @@
         <p class="wp-text-body">{{ $task->priority->label() }}</p>
         @if ($task->isRecurring())
             @if ($task->is_recurring_cycle)
+                <p class="wp-label">{{ __('tasks.show.recurring_title') }}</p>
                 <p class="wp-muted">{{ __('tasks.show.recurring_cycle', ['nr' => $task->cycle_number ?? 1]) }}</p>
             @endif
             @if ($issue?->recurrence_interval_value && $issue?->recurrence_interval_unit)

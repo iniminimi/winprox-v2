@@ -21,6 +21,7 @@
         "subtitle": "Todos los problemas informados por los reportadores",
         "add": "+ Añadir incidencia",
         "plan_round": "Planificar ronda de inspección",
+        "inspection_rounds": "Rondas de inspección",
         "group_count": ":count incidencias",
         "empty": "Aún no hay incidencias. Cree una con el botón «+ Añadir incidencia».",
         "empty_filtered": "Ninguna incidencia coincide con estos filtros."

@@ -32,7 +32,7 @@ final class QrPrintablePageWordBuilder
     private const EXPORT_DPI = 200;
 
     /** Safe printer margin on each side (avoids edge clipping). */
-    private const PAGE_MARGIN_MM = 5.0;
+    private const PAGE_MARGIN_MM = 10.0;
 
     /** QR size as fraction of the printable area's shorter side. */
     private const QR_SIZE_RATIO = 0.48;

@@ -1,6 +1,9 @@
 {
     "title": "Gebruikers",
     "subtitle": "Beheer collega-gebruikers, operationele teams, uitvoerders en checklists voor unit checks.",
+    "nav": {
+        "teams": "Teams"
+    },
     "briefing": "Briefing afdrukken",
     "colleagues": {
         "title": "Collega-gebruikers",
