@@ -6,11 +6,11 @@
     use App\Support\Time\TimeModuleAccess;
 
     $href = match ($stage) {
-        'teams' => route('team.index'),
+        'teams' => route('team.index', ['section' => 'teams']),
         'categories' => route('locations.index'),
         'clock_point' => TimeModuleAccess::activeTenantHasModule()
             ? route('time.clock-points.index')
-            : route('team.index'),
+            : route('team.index', ['section' => 'teams']),
         default => route('dashboard'),
     };
 @endphp

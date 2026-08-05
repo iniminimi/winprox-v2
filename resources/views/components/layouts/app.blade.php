@@ -59,9 +59,6 @@
             ...($authUser?->is_superuser && $supportTenant !== null ? [
                 ['route' => 'platform.dashboard', 'active' => 'platform.*', 'icon' => 'subscription', 'label' => 'platform.back_nav'],
             ] : []),
-            ...(! $isPlatformOnlySuperuser ? [
-                ['route' => 'team.index', 'active' => 'team.*', 'icon' => 'team', 'label' => 'common.nav.users'],
-            ] : []),
             ...($showSettingsNav ? [
                 ['route' => 'settings.index', 'active' => 'settings.index', 'icon' => 'settings', 'label' => 'common.nav.settings'],
             ] : []),
@@ -189,6 +186,9 @@
                             $placesGroupActive = request()->routeIs('locations.*') || $unitsActive;
 
                             $peopleGroupActive = request()->routeIs('team.index');
+                            $peopleSection = $peopleGroupActive ? (string) request()->query('section', '') : '';
+                            $backofficeNavActive = $peopleGroupActive && $peopleSection === 'backoffice';
+                            $teamsNavActive = $peopleGroupActive && $peopleSection === 'teams';
 
                             $timeGroupActive = request()->routeIs('time.*');
                             $automationGroupActive = request()->routeIs('iot.*') || request()->routeIs('esg.*');
@@ -274,14 +274,14 @@
                                     <span>{{ __('common.nav.people') }}</span>
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
-                                    <a href="{{ route('team.index') }}#backoffice"
-                                       class="wp-nav-link {{ $peopleGroupActive ? 'is-active' : '' }}"
+                                    <a href="{{ route('team.index', ['section' => 'backoffice']) }}"
+                                       class="wp-nav-link {{ $backofficeNavActive ? 'is-active' : '' }}"
                                        @click="nav = false">
                                         <x-wp-icon name="team" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.backoffice') }}</span>
                                     </a>
-                                    <a href="{{ route('team.index') }}#teams"
-                                       class="wp-nav-link {{ $peopleGroupActive ? 'is-active' : '' }}"
+                                    <a href="{{ route('team.index', ['section' => 'teams']) }}"
+                                       class="wp-nav-link {{ $teamsNavActive ? 'is-active' : '' }}"
                                        @click="nav = false">
                                         <x-wp-icon name="team" class="wp-nav-icon" />
                                         <span>{{ __('team.nav.teams') }}</span>

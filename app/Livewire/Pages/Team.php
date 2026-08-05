@@ -106,6 +106,10 @@ class Team extends Component
     #[Url(as: 'team')]
     public ?int $highlightTeamId = null;
 
+    /** Deep-link from sidebar: backoffice (colleagues + checklists) or teams. */
+    #[Url(as: 'section')]
+    public ?string $section = null;
+
     public string $workerFirstName = '';
     public string $workerLastName = '';
     public string $workerEmail = '';
@@ -148,6 +152,10 @@ class Team extends Component
 
     public function mount(): void
     {
+        if (! in_array($this->section, ['backoffice', 'teams'], true)) {
+            $this->section = null;
+        }
+
         if ($this->highlightWorkerId !== null) {
             $worker = Worker::query()
                 ->where('tenant_id', Tenancy::id())
@@ -155,11 +163,13 @@ class Team extends Component
 
             if ($worker !== null) {
                 $this->expandTeam((int) $worker->internal_team_id);
+                $this->section ??= 'teams';
             }
         }
 
         if ($this->highlightTeamId !== null) {
             $this->expandTeam($this->highlightTeamId);
+            $this->section ??= 'teams';
         }
     }
 

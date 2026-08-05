@@ -47,10 +47,29 @@ it('toont instellingen maar geen abonnement in de sidebar voor medewerkers', fun
         ->assertDontSee('href="'.route('subscription.index').'"', false)
         ->assertSee(__('common.nav.settings'), false)
         ->assertSee(__('common.nav.backoffice'), false)
-        ->assertSee(__('team.nav.teams'), false);
+        ->assertSee(__('team.nav.teams'), false)
+        ->assertSee('href="'.route('team.index', ['section' => 'backoffice']).'"', false)
+        ->assertSee('href="'.route('team.index', ['section' => 'teams']).'"', false);
 
     $this->actingAs($employee)
         ->get(route('settings.index'))
         ->assertOk()
         ->assertSee(__('settings.style.title'), false);
+});
+
+it('opent team-pagina via Mensen → Backoffice en Teams section-links', function () {
+    $tenant = Tenant::factory()->create(['name' => 'Demo Facility']);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $this->actingAs($admin)
+        ->get(route('team.index', ['section' => 'backoffice']))
+        ->assertOk()
+        ->assertSee('id="backoffice"', false)
+        ->assertSee('id="teams"', false);
+
+    $this->actingAs($admin)
+        ->get(route('team.index', ['section' => 'teams']))
+        ->assertOk()
+        ->assertSee('id="teams"', false);
 });

@@ -198,7 +198,7 @@ final class SearchTenantGlobalAction
                 'type' => 'worker',
                 'title' => $worker->displayName(),
                 'subtitle' => (string) ($worker->team?->localizedName() ?? ''),
-                'url' => route('team.index', ['worker' => $worker->id]),
+                'url' => route('team.index', ['section' => 'teams', 'worker' => $worker->id]),
             ]);
     }
 
@@ -226,7 +226,7 @@ final class SearchTenantGlobalAction
                 'type' => 'colleague',
                 'title' => (string) $user->name,
                 'subtitle' => (string) $user->email,
-                'url' => route('team.index', ['q' => $user->name]),
+                'url' => route('team.index', ['section' => 'backoffice', 'q' => $user->name]),
             ]);
     }
 
@@ -255,7 +255,7 @@ final class SearchTenantGlobalAction
                 'type' => 'team',
                 'title' => $team->localizedName(),
                 'subtitle' => '',
-                'url' => route('team.index', ['team' => $team->id]),
+                'url' => route('team.index', ['section' => 'teams', 'team' => $team->id]),
             ]);
     }
 

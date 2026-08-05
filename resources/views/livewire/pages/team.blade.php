@@ -1,4 +1,13 @@
-<div class="wp-stack" data-manual-capture="team">
+<div
+    class="wp-stack"
+    data-manual-capture="team"
+    @if (in_array($section, ['backoffice', 'teams'], true))
+        x-data
+        x-init="$nextTick(() => {
+            document.getElementById(@js($section))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        })"
+    @endif
+>
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
