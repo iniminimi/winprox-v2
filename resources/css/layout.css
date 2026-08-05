@@ -139,11 +139,17 @@
     display: none;
 }
 
+/* Explicit open/closed: author `display:flex` would otherwise keep panels visible
+   even when the parent <details> has no `open` attribute. */
 .wp-sidebar-accordion__panel {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 0.25rem;
     padding: 0.25rem 0.75rem 0.5rem 2rem;
+}
+
+.wp-sidebar-accordion__group[open] > .wp-sidebar-accordion__panel {
+    display: flex;
 }
 
 .wp-nav-divider {
