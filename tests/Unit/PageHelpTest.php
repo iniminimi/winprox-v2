@@ -15,6 +15,16 @@ it('laadt paginahulp voor een bekende pagina', function (): void {
         ->and($help['statuses'])->toHaveCount(4);
 });
 
+it('laadt paginahulp voor units-overzicht', function (): void {
+    app()->setLocale('nl');
+
+    $help = PageHelp::for('units');
+
+    expect($help)->not->toBeNull()
+        ->and($help['title'])->toBe('Hulp — Units')
+        ->and($help['actions'])->not->toBeEmpty();
+});
+
 it('geeft null voor een onbekende paginasleutel', function (): void {
     expect(PageHelp::for('does.not.exist'))->toBeNull();
 });

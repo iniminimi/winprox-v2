@@ -170,7 +170,7 @@
         "allow_reservations_hint": "Only relevant when the category is Reservable. Off by default; turn on to allow reservations for this unit.",
         "require_reporter_contact_hint": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not field workers.",
         "no_check_list": "No checklist",
-        "check_list_hint": "Optional. Create checklists under the Users → Teams page (shared or per team). Only shared checklists or checklists of teams linked to this unit's category.",
+        "check_list_hint": "Optional. Create checklists under the People → Teams page (shared or per team). Only shared checklists or checklists of teams linked to this unit's category.",
         "allow_unit_checks_hint": "Only relevant when the category allows unit checks. Off by default; turn on to show the Unit check tile on the unit QR.",
         "external_id_hint": "Optional. ID of this unit in your external facility software (IWMS, CMMS, ERP, …). Only with API access (Corporate). Required for inbound unit checks via the API."
     },

@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Filters",
-                    "text": "Combine status, team, search term and recurring to refine the list. The search term looks in the description (source text and completed translations), location, address, postcode, city, unit and reporter. Press GO! to apply."
+                    "text": "Combine status, team, search term, recurring and inspection rounds to refine the list. The search term looks in the description (source text and completed translations), location, address, postcode, city, unit and reporter. Press GO! to apply. Use the Inspection rounds filter (or sidebar Work → Inspection rounds) for recurring issues with at least two round stops."
                 },
                 {
                     "label": "Approve",
@@ -229,7 +229,7 @@
             "actions": [
                 {
                     "label": "Add unit",
-                    "text": "Add an object/machine/asset/space with QR token and default team. A unit can be very diverse: a hotel room, a drill machine, an aerial work platform, a fitness device, etc. It depends on which sector the company operates in. Set per unit whether visitors may submit reports."
+                    "text": "Add an object/machine/asset/space with QR token and default team. A unit can be diverse: a machine, room, vehicle, aerial work platform, fitness device, etc. Set per unit whether visitors may submit reports."
                 },
                 {
                     "label": "Location translations",
@@ -253,7 +253,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Optionally link a checklist to the unit (templates under the Users → Teams page, shared or from the category’s teams). On Unit check in the portal the worker ticks each item before OK is saved."
+                    "text": "Optionally link a checklist to the unit (templates under the People → Teams page, shared or from the category’s teams). On Unit check in the portal the worker ticks each item before OK is saved."
                 },
                 {
                     "label": "Require contact details",
@@ -392,7 +392,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Create checklists under the Users → Teams page (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
+                    "text": "Create checklists under the People → Teams page (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
                 },
                 {
                     "label": "Team translations",
@@ -717,6 +717,10 @@
                 {
                     "label": "Complete",
                     "text": "After you have started the task, complete it by clicking on \"Complete task\". Here you can add a short note and optionally attach photos. Sometimes the portal asks for a measurement value (e.g. a meter reading) — enter it before you confirm. The task then gets status \"Completed\"."
+                },
+                {
+                    "label": "Unit check",
+                    "text": "When category and unit both allow unit checks, signed-in workers see the Unit check tile. Record OK or Not OK, optionally with a checklist. OK does not create an issue; after Not OK you can create a report."
                 },
                 {
                     "label": "Capture GPS location",
@@ -1224,11 +1228,11 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Create checklists under the Users → Teams page (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
+                    "text": "Create checklists under the People → Teams page (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
                 },
                 {
                     "label": "Starters",
-                    "text": "Under the Users → Teams → Checklists section you can copy a template (cleaning, technical, security) and then adjust it. Afterwards link the checklist per unit."
+                    "text": "Under the People → Teams → Checklists section you can copy a template (cleaning, technical, security) and then adjust it. Afterwards link the checklist per unit."
                 },
                 {
                     "label": "OK and open tasks",
@@ -1253,6 +1257,23 @@
                 {
                     "label": "Inbound API",
                     "text": "External systems push checks with external_unit_id (the unit's External ID). Optional external_id on the check for idempotent retries. See Unit Checks API docs."
+                }
+            ]
+        },
+        "units": {
+            "title": "Help — Units",
+            "actions": [
+                {
+                    "label": "Overview",
+                    "text": "Tenant-wide list of all units: name, location, category and whether unit checks are allowed. Open a row to jump to the location detail with that unit in focus."
+                },
+                {
+                    "label": "Filter by location",
+                    "text": "Narrow the list to one location. Clear the filter to see all units again."
+                },
+                {
+                    "label": "Unit checks",
+                    "text": "The pills show Active/Inactive and whether unit checks are allowed (category and unit both on). Configure checks under Places → Categories / Locations, and checklists under People → Teams."
                 }
             ]
         }

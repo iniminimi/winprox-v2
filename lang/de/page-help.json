@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Kombinieren Sie Status, Team, Suchbegriff und wiederkehrend, um die Liste zu verfeinern. Der Suchbegriff durchsucht die Beschreibung (Quelltext und abgeschlossene Übersetzungen), Standort, Adresse, Postleitzahl, Ort, Unit und Melder. Drücken Sie GO!, um anzuwenden."
+                    "text": "Kombinieren Sie Status, Team, Suchbegriff, wiederkehrend und Inspektionsrunden. Der Suchbegriff sucht in Beschreibung (Quelltext und fertige Übersetzungen), Standort, Adresse, PLZ, Ort, Unit und Melder. Mit GO! anwenden. Nutzen Sie den Filter Inspektionsrunden (oder Seitenleiste Arbeit → Inspektionsrunden) für wiederkehrende Meldungen mit mindestens zwei Stopps."
                 },
                 {
                     "label": "Freigeben",
@@ -229,7 +229,7 @@
             "actions": [
                 {
                     "label": "Unit hinzufügen",
-                    "text": "Fügen Sie ein Objekt/Maschine/Asset/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann sehr unterschiedlich sein: ein Hotelzimmer, eine Bohrmaschine, eine Arbeitsbühne, ein Fitnessgerät usw. Es hängt davon ab, in welchem Sektor das Unternehmen tätig ist. Legen Sie pro Unit fest, ob Besucher Meldungen erstellen dürfen."
+                    "text": "Fügen Sie ein Objekt/Maschine/Asset/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann vielfältig sein: Maschine, Raum, Fahrzeug, Hubarbeitsbühne, Fitnessgerät usw. Legen Sie pro Unit fest, ob Besucher Meldungen einreichen dürfen."
                 },
                 {
                     "label": "Standort-Übersetzungen",
@@ -249,7 +249,7 @@
                 },
                 {
                     "label": "Checkliste (Unit-Check)",
-                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter der Seite Benutzer → Teams, geteilt oder von Teams der Kategorie). Beim Unit-Check im Portal hakt der Ausführende jeden Punkt ab, bevor OK gespeichert wird."
+                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter der Seite Menschen → Teams, geteilt oder von Teams der Kategorie). Beim Unit-Check im Portal hakt der Ausführende jeden Punkt ab, bevor OK gespeichert wird."
                 },
                 {
                     "label": "Kontaktdaten Pflicht",
@@ -392,7 +392,7 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter der Seite Benutzer → Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
+                    "text": "Erstellen Sie Checklisten unter der Seite Menschen → Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
                 },
                 {
                     "label": "Team-Übersetzungen",
@@ -717,6 +717,10 @@
                 {
                     "label": "Abschließen",
                     "text": "Nachdem Sie die Aufgabe gestartet haben, schließen Sie sie ab, indem Sie auf \"Aufgabe erledigen\" klicken. Hier können Sie eine kurze Notiz hinzufügen und optional Fotos beifügen. Manchmal fragt das Portal nach einem Messwert (z. B. einem Zählerstand) — geben Sie ihn ein, bevor Sie bestätigen. Die Aufgabe erhält anschließend den Status \"Erledigt\"."
+                },
+                {
+                    "label": "Unit-Check",
+                    "text": "Wenn Kategorie und Unit Unit-Checks erlauben, sehen angemeldete Ausführer die Kachel Unit-Check. Erfassen Sie OK oder Nicht OK, optional mit Checkliste. OK erstellt keine Meldung; nach Nicht OK kann eine Meldung folgen."
                 },
                 {
                     "label": "GPS-Standort (neu) erfassen",
@@ -1224,11 +1228,11 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter der Seite Benutzer → Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
+                    "text": "Erstellen Sie Checklisten unter der Seite Menschen → Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
                 },
                 {
                     "label": "Vorlagen",
-                    "text": "Unter der Seite Benutzer → Teams → Checklisten können Sie eine Vorlage kopieren (Reinigung, Technik, Security) und danach anpassen. Anschließend verknüpfen Sie die Checkliste pro Unit."
+                    "text": "Unter der Seite Menschen → Teams → Checklisten können Sie eine Vorlage kopieren (Reinigung, Technik, Security) und danach anpassen. Anschließend verknüpfen Sie die Checkliste pro Unit."
                 },
                 {
                     "label": "OK und offene Aufgaben",
@@ -1253,6 +1257,23 @@
                 {
                     "label": "Inbound-API",
                     "text": "Externe Systeme senden Checks mit external_unit_id (die Externe ID der Unit). Optional external_id am Check für idempotente Retries. Siehe Unit-Checks-API-Doku."
+                }
+            ]
+        },
+        "units": {
+            "title": "Hilfe — Units",
+            "actions": [
+                {
+                    "label": "Übersicht",
+                    "text": "Mandantenweite Liste aller Units: Name, Standort, Kategorie und ob Unit-Checks erlaubt sind. Öffnen Sie eine Zeile, um zur Standortdetailseite mit Fokus auf diese Unit zu springen."
+                },
+                {
+                    "label": "Nach Standort filtern",
+                    "text": "Liste auf einen Standort eingrenzen. Filter leeren, um wieder alle Units zu sehen."
+                },
+                {
+                    "label": "Unit-Checks",
+                    "text": "Die Pills zeigen Aktiv/Inaktiv und ob Unit-Checks erlaubt sind (Kategorie und Unit beide an). Checks unter Orte → Kategorien / Standorte; Checklisten unter Menschen → Teams."
                 }
             ]
         }

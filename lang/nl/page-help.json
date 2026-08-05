@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Filters",
-                    "text": "Combineer status, team, zoekterm en terugkerend om de lijst te verfijnen. De zoekterm doorzoekt de omschrijving (brontekst én voltooide vertalingen), locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen."
+                    "text": "Combineer status, team, zoekterm, terugkerend en inspectierondes om de lijst te verfijnen. De zoekterm zoekt in de omschrijving (brontekst en voltooide vertalingen), locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen. Gebruik het filter Inspectierondes (of zijbalk Werk → Inspectierondes) voor terugkerende meldingen met minstens twee ronde-stops."
                 },
                 {
                     "label": "Goedkeuren",
@@ -229,7 +229,7 @@
             "actions": [
                 {
                     "label": "Unit toevoegen",
-                    "text": "Voeg een voorwerp/machine/asset/ruimte toe met QR-token en standaard team. Een unit kan dus heel uitlopend zijn : een hotelkamer, een boormachine, een hoogtewerker, een fitnesstoestel,.... Het hangt af in welke sector het bedrijf werkt. Geef per unit toestemming om meldingen te maken."
+                    "text": "Voeg een object/machine/asset/ruimte toe met QR-token en standaardteam. Een unit kan divers zijn: een machine, ruimte, voertuig, hoogtewerker, fitnesstoestel, enz. Stel per unit in of bezoekers meldingen mogen indienen."
                 },
                 {
                     "label": "Locatievertalingen",
@@ -253,7 +253,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Koppel optioneel een checklist aan de unit (templates onder pagina Gebruikers → Teams, gedeeld of van teams van de categorie). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK wordt opgeslagen."
+                    "text": "Koppel optioneel een checklist aan de unit (templates onder pagina Mensen → Teams, gedeeld of van teams van de categorie). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK wordt opgeslagen."
                 },
                 {
                     "label": "Contactgegevens invullen verplicht",
@@ -392,7 +392,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder pagina Gebruikers → Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
+                    "text": "Maak checklists onder pagina Mensen → Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
                 },
                 {
                     "label": "Teamvertalingen",
@@ -717,6 +717,10 @@
                 {
                     "label": "Afronden",
                     "text": "Nadat je de taak bent gestart, rond je deze af door op \"Taak afhandelen\" te klikken. Hier kun je een korte notitie toevoegen en eventueel foto's bijvoegen. Soms vraagt het portaal om een meetwaarde (bv. een meterstand) — vul die in voordat je bevestigt. De taak krijgt daarna de status \"Afgehandeld\"."
+                },
+                {
+                    "label": "Unit check",
+                    "text": "Wanneer categorie én unit unit checks toestaan, zien aangemelde uitvoerders de tegel Unit check. Registreer OK of Niet OK, eventueel met checklist. OK maakt geen melding; na Niet OK kun je een melding maken."
                 },
                 {
                     "label": "GPS-locatie (her)vastleggen",
@@ -1224,11 +1228,11 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder pagina Gebruikers → Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
+                    "text": "Maak checklists onder pagina Mensen → Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
                 },
                 {
                     "label": "Starters",
-                    "text": "Onder pagina Gebruikers → Teams → Checklists kun je een sjabloon kopiëren (schoonmaak, techniek, security) en daarna aanpassen. Daarna koppel je de checklist per unit."
+                    "text": "Onder pagina Mensen → Teams → Checklists kun je een sjabloon kopiëren (schoonmaak, techniek, security) en daarna aanpassen. Daarna koppel je de checklist per unit."
                 },
                 {
                     "label": "OK en open taken",
@@ -1253,6 +1257,23 @@
                 {
                     "label": "Inbound API",
                     "text": "Externe systemen pushen checks met external_unit_id (de Externe ID van de unit). Optioneel external_id op de check voor idempotente retries. Zie documentatie Unit Checks API."
+                }
+            ]
+        },
+        "units": {
+            "title": "Hulp — Units",
+            "actions": [
+                {
+                    "label": "Overzicht",
+                    "text": "Tenant-breed overzicht van alle units: naam, locatie, categorie en of unit checks zijn toegestaan. Open een rij om naar de locatie-detail te gaan met die unit in focus."
+                },
+                {
+                    "label": "Filter op locatie",
+                    "text": "Beperk de lijst tot één locatie. Wis het filter om opnieuw alle units te zien."
+                },
+                {
+                    "label": "Unit checks",
+                    "text": "De pills tonen Actief/Inactief en of unit checks zijn toegestaan (categorie én unit aan). Stel checks in onder Plaatsen → Categorieën / Locaties, en checklists onder Mensen → Teams."
                 }
             ]
         }

@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Filtres",
-                    "text": "Combinez statut, équipe, terme de recherche et récurrent pour affiner la liste. Le terme de recherche parcourt la description (texte source et traductions terminées), le site, l'adresse, le code postal, la ville, l'unité et le déclarant. Appuyez sur GO! pour appliquer."
+                    "text": "Combinez statut, équipe, terme de recherche, récurrent et tournées d’inspection. Le terme cherche dans la description (texte source et traductions terminées), lieu, adresse, code postal, ville, unit et déclarant. Appuyez sur GO! pour appliquer. Utilisez le filtre Tournées d’inspection (ou barre latérale Travail → Tournées d’inspection) pour les signalements récurrents avec au moins deux arrêts."
                 },
                 {
                     "label": "Approuver",
@@ -249,7 +249,7 @@
                 },
                 {
                     "label": "Checklist (contrôle d'unité)",
-                    "text": "Associez éventuellement une liste à l’unité (modèles sous la page Utilisateurs → Équipes, partagée ou des équipes de la catégorie). Lors du Unit check sur le portail, l’exécutant coche chaque point avant l’enregistrement de OK."
+                    "text": "Associez éventuellement une liste à l’unité (modèles sous la page Personnes → Équipes, partagée ou des équipes de la catégorie). Lors du Unit check sur le portail, l’exécutant coche chaque point avant l’enregistrement de OK."
                 },
                 {
                     "label": "Coordonnées obligatoires",
@@ -392,7 +392,7 @@
                 },
                 {
                     "label": "Listes de contrôle",
-                    "text": "Créez des listes sous la page Utilisateurs → Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
+                    "text": "Créez des listes sous la page Personnes → Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
                 },
                 {
                     "label": "Traductions d’équipe",
@@ -717,6 +717,10 @@
                 {
                     "label": "Terminer",
                     "text": "Après avoir démarré la tâche, terminez-la en cliquant sur \"Traiter la tâche\". Ici vous pouvez ajouter une courte note et éventuellement joindre des photos. Parfois le portail demande une valeur de mesure (p. ex. un relevé de compteur) — saisissez-la avant de confirmer. La tâche obtient ensuite le statut \"Traité\"."
+                },
+                {
+                    "label": "Contrôle d’unité",
+                    "text": "Lorsque catégorie et unit autorisent les contrôles, les exécutants connectés voient la tuile Contrôle d’unité. Enregistrez OK ou Non OK, éventuellement avec checklist. OK ne crée pas de signalement ; après Non OK, un signalement peut suivre."
                 },
                 {
                     "label": "Enregistrer la position GPS",
@@ -1224,11 +1228,11 @@
                 },
                 {
                     "label": "Listes de contrôle",
-                    "text": "Créez des listes sous la page Utilisateurs → Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
+                    "text": "Créez des listes sous la page Personnes → Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
                 },
                 {
                     "label": "Modèles",
-                    "text": "Sous la page Utilisateurs → Équipes → Listes de contrôle vous pouvez copier un modèle (nettoyage, technique, sécurité) puis l’ajuster. Ensuite associez la liste par unité."
+                    "text": "Sous la page Personnes → Équipes → Listes de contrôle vous pouvez copier un modèle (nettoyage, technique, sécurité) puis l’ajuster. Ensuite associez la liste par unité."
                 },
                 {
                     "label": "OK et tâches ouvertes",
@@ -1253,6 +1257,23 @@
                 {
                     "label": "API entrante",
                     "text": "Les systèmes externes envoient des contrôles avec external_unit_id (l'ID externe de l'unité). external_id optionnel sur le contrôle pour des retries idempotents. Voir la doc API Unit Checks."
+                }
+            ]
+        },
+        "units": {
+            "title": "Aide — Units",
+            "actions": [
+                {
+                    "label": "Aperçu",
+                    "text": "Liste de toutes les units du tenant : nom, lieu, catégorie et si les contrôles d’unité sont autorisés. Ouvrez une ligne pour aller au détail du lieu avec cette unit en focus."
+                },
+                {
+                    "label": "Filtrer par lieu",
+                    "text": "Limiter la liste à un lieu. Effacez le filtre pour revoir toutes les units."
+                },
+                {
+                    "label": "Contrôles d’unité",
+                    "text": "Les pastilles indiquent Actif/Inactif et si les contrôles sont autorisés (catégorie et unit toutes deux actives). Configurez sous Lieux → Catégories / Lieux, et les checklists sous Personnes → Équipes."
                 }
             ]
         }

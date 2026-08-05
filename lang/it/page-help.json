@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Filtri",
-                    "text": "Combini stato, team, termine di ricerca e ricorrente per affinare l'elenco. Il termine di ricerca cerca nella descrizione (testo sorgente e traduzioni completate), sede, indirizzo, CAP, città, unità e segnalatore. Premi VAI! per applicare."
+                    "text": "Combina stato, team, termine di ricerca, ricorrente e giri di ispezione. Il termine cerca nella descrizione (testo sorgente e traduzioni complete), sede, indirizzo, CAP, città, unit e segnalatore. Premi GO! per applicare. Usa il filtro Giri di ispezione (o barra laterale Lavoro → Giri di ispezione) per segnalazioni ricorrenti con almeno due fermate."
                 },
                 {
                     "label": "Approva",
@@ -229,7 +229,7 @@
             "actions": [
                 {
                     "label": "Aggiungi unità",
-                    "text": "Aggiunga un oggetto/macchina/asset/spazio con token QR e team predefinito. Un'unità può essere molto diversa: una camera d'hotel, una trapanatrice, una piattaforma aerea, un dispositivo fitness, ecc. Dipende dal settore in cui opera l'azienda. Imposti per unità se i visitatori possono inviare segnalazioni."
+                    "text": "Aggiungi un oggetto/macchina/asset/spazio con token QR e team predefinito. Una unit può essere diversa: macchina, stanza, veicolo, piattaforma aerea, attrezzo fitness, ecc. Imposta per unit se i visitatori possono inviare segnalazioni."
                 },
                 {
                     "label": "Traduzioni sede",
@@ -249,7 +249,7 @@
                 },
                 {
                     "label": "Checklist (controllo unità)",
-                    "text": "Collega opzionalmente una checklist all’unità (modelli nella pagina Utenti → Team, condivisa o dei team della categoria). Nel Unit check del portale l’esecutore spunta ogni punto prima che OK venga salvato."
+                    "text": "Collega opzionalmente una checklist all’unità (modelli nella pagina Persone → Team, condivisa o dei team della categoria). Nel Unit check del portale l’esecutore spunta ogni punto prima che OK venga salvato."
                 },
                 {
                     "label": "Dati di contatto obbligatori",
@@ -392,7 +392,7 @@
                 },
                 {
                     "label": "Checklist",
-                    "text": "Crea checklist nella pagina Utenti → Team (opzionalmente per team o condivise). Copia eventualmente un modello (pulizia, tecnica, security). Poi collegale per unità in Sedi → modifica unità. Solo checklist di team collegati alla categoria (o condivise) compaiono nel menu. I punti devono essere spuntati prima di OK. Dopo il salvataggio WinProx traduce automaticamente nome e punti nelle altre lingue (Ollama); modificare la lingua di origine rimette le traduzioni in coda."
+                    "text": "Crea checklist nella pagina Persone → Team (opzionalmente per team o condivise). Copia eventualmente un modello (pulizia, tecnica, security). Poi collegale per unità in Sedi → modifica unità. Solo checklist di team collegati alla categoria (o condivise) compaiono nel menu. I punti devono essere spuntati prima di OK. Dopo il salvataggio WinProx traduce automaticamente nome e punti nelle altre lingue (Ollama); modificare la lingua di origine rimette le traduzioni in coda."
                 },
                 {
                     "label": "Traduzioni team",
@@ -717,6 +717,10 @@
                 {
                     "label": "Completa",
                     "text": "Dopo aver avviato l'attività, la completi cliccando su «Completa attività». Qui può aggiungere una breve nota e allegare facoltativamente foto. A volte il portale chiede un valore di misurazione (es. una lettura contatore) — lo inserisca prima di confermare. L'attività ottiene poi lo stato «Completata»."
+                },
+                {
+                    "label": "Controllo unità",
+                    "text": "Se categoria e unit consentono i controlli, gli esecutori connessi vedono il riquadro Controllo unità. Registra OK o Non OK, eventualmente con checklist. OK non crea segnalazione; dopo Non OK può seguire una segnalazione."
                 },
                 {
                     "label": "Registra posizione GPS",
@@ -1224,11 +1228,11 @@
                 },
                 {
                     "label": "Checklist",
-                    "text": "Crea checklist nella pagina Utenti → Team (opzionalmente per team o condivise). Copia eventualmente un modello (pulizia, tecnica, security). Poi collegale per unità in Sedi → modifica unità. Solo checklist di team collegati alla categoria (o condivise) compaiono nel menu. I punti devono essere spuntati prima di OK. Dopo il salvataggio WinProx traduce automaticamente nome e punti nelle altre lingue (Ollama); modificare la lingua di origine rimette le traduzioni in coda."
+                    "text": "Crea checklist nella pagina Persone → Team (opzionalmente per team o condivise). Copia eventualmente un modello (pulizia, tecnica, security). Poi collegale per unità in Sedi → modifica unità. Solo checklist di team collegati alla categoria (o condivise) compaiono nel menu. I punti devono essere spuntati prima di OK. Dopo il salvataggio WinProx traduce automaticamente nome e punti nelle altre lingue (Ollama); modificare la lingua di origine rimette le traduzioni in coda."
                 },
                 {
                     "label": "Modelli",
-                    "text": "Nella pagina Utenti → Team → Checklist puoi copiare un modello (pulizia, tecnica, security) e poi adattarlo. Dopodiché collega la checklist per unità."
+                    "text": "Nella pagina Persone → Team → Checklist puoi copiare un modello (pulizia, tecnica, security) e poi adattarlo. Dopodiché collega la checklist per unità."
                 },
                 {
                     "label": "OK e task aperti",
@@ -1253,6 +1257,23 @@
                 {
                     "label": "API inbound",
                     "text": "I sistemi esterni inviano check con external_unit_id (l'ID esterno della unit). external_id opzionale sul check per retry idempotenti. Vedi la doc API Unit Checks."
+                }
+            ]
+        },
+        "units": {
+            "title": "Aiuto — Units",
+            "actions": [
+                {
+                    "label": "Panoramica",
+                    "text": "Elenco di tutte le unit del tenant: nome, sede, categoria e se i controlli unit sono consentiti. Apri una riga per andare al dettaglio sede con quella unit in evidenza."
+                },
+                {
+                    "label": "Filtra per sede",
+                    "text": "Limita l’elenco a una sede. Cancella il filtro per vedere di nuovo tutte le unit."
+                },
+                {
+                    "label": "Controlli unit",
+                    "text": "Le pill mostrano Attivo/Inattivo e se i controlli sono consentiti (categoria e unit entrambe attive). Configura sotto Luoghi → Categorie / Sedi, e le checklist sotto Persone → Team."
                 }
             ]
         }

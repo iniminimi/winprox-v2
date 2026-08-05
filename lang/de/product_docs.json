@@ -82,7 +82,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Standorte, Units, Kategorien, Teams und Ausführende (intern oder extern). Bulk/CSV-Import, Dashboard, Dokumente und Mitteilungen im Portal. Unit-Checks pro Kategorie und Unit einschalten; Checklisten unter Teams verwalten — geteilt oder pro Team."
+                "body": "Standorte, Units, Kategorien, Teams und Ausführer (intern oder extern). Mandantenweite Units-Übersicht unter Orte; Kategorien und Standorte ebenfalls unter Orte. Bulk/CSV-Import, Dashboard, Dokumente und Mitteilungen im Portal. Unit-Checks pro Kategorie und Unit aktivieren; Checklisten unter Menschen → Teams — geteilt oder pro Team."
             },
             {
                 "title": "Tasks",

@@ -170,7 +170,7 @@
         "allow_reservations_hint": "Alleen relevant als de categorie Reserveerbaar is. Staat standaard uit; zet aan om reserveringen voor deze unit toe te staan.",
         "require_reporter_contact_hint": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders, niet voor veldwerkers.",
         "no_check_list": "Geen checklist",
-        "check_list_hint": "Optioneel. Maak checklists onder pagina Gebruikers → Teams (gedeeld of per team). Alleen gedeelde checklists of checklists van teams gekoppeld aan de categorie van deze unit.",
+        "check_list_hint": "Optioneel. Maak checklists onder pagina Mensen → Teams (gedeeld of per team). Alleen gedeelde checklists of checklists van teams gekoppeld aan de categorie van deze unit.",
         "allow_unit_checks_hint": "Alleen relevant als de categorie Unit checks toestaat. Staat standaard uit; zet aan om de Unit check-tegel op de unit-QR te tonen.",
         "external_id_hint": "Optioneel. ID van deze unit in jullie externe beheersoftware (IWMS, CMMS, ERP, …). Alleen bij API-toegang (Corporate). Nodig voor inbound unit checks via de API."
     },

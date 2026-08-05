@@ -82,7 +82,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Sedi, unità, categorie, team ed esecutori (interni o esterni). Import massivo/CSV, dashboard, documenti e avvisi sul portale. Attiva i controlli unità per categoria e unità; le checklist si gestiscono in Team — condivise o per team."
+                "body": "Sedi, unit, categorie, team ed esecutori (interni o esterni). Panoramica Units a livello tenant sotto Luoghi; categorie e sedi pure sotto Luoghi. Import bulk/CSV, dashboard, documenti e annunci sul portale. Attiva i controlli unit per categoria e unit; gestisci le checklist sotto Persone → Team — condivise o per team."
             },
             {
                 "title": "Tasks",

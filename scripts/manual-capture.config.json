@@ -15,6 +15,13 @@
             "auth": true
         },
         {
+            "id": "units-index",
+            "path": "/units",
+            "selector": "[data-manual-capture=\"units-index\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
             "id": "locations-show",
             "path": "/locations/{location_id}",
             "selector": "[data-manual-capture=\"locations-show\"]",

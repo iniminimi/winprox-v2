@@ -18,9 +18,13 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > medewerkers** en tonen alles **onverkort** — zij moeten de inhoud juist kunnen beoordelen en
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
-Menu-volgorde (sidebar): Dashboard · Locaties/units · Meldingen · Taken · Kalender ·
-Reserveringen · Unit checks · ESG & Compliance (optioneel, module) · IoT Connect
-(Facility+/Corporate) · Team · Abonnement · FAQ & kennisbank · Juridische documenten · Contact.
+Menu-volgorde (sidebar, accordion): Dashboard · **Werk** (Meldingen, Inspectierondes,
+Taken, Kalender, Reserveringen, Unit checks) · **Plaatsen** (Categorieën deep link,
+Locaties, Units tenant-breed) · **Mensen** (Backoffice = Beheerder/Medewerker;
+Teams = Uitvoerder/Teamleader) · **Time** (module) · **Automatisering** (IoT Connect
+Facility+ en/of ESG Corporate — groep alleen als minstens één module aan staat) ·
+**Organisatie** (Instellingen, API, Abonnement) · **Hulp** (FAQ, Handleiding, Juridisch,
+Contact).
 
 ---
 

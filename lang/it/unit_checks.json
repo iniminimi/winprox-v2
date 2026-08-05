@@ -1,6 +1,6 @@
 {
     "title": "Controlli unit",
-    "subtitle": "Cronologia dei controlli OK / Non OK via QR. Gestisci le checklist nella pagina Utenti → Team. Abilita prima i unit check su categoria e unità.",
+    "subtitle": "Cronologia dei controlli OK / Non OK via QR. Gestisci le checklist nella pagina Persone → Team. Abilita prima i unit check su categoria e unità.",
     "list_title": "Controlli recenti",
     "empty": "Nessun controllo unit ancora.",
     "worker_unknown": "Esecutore sconosciuto",

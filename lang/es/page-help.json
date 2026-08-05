@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Filtros",
-                    "text": "Combine estado, equipo, término de búsqueda y recurrente para refinar la lista. El término de búsqueda revisa la descripción (texto fuente y traducciones completadas), ubicación, dirección, código postal, ciudad, unidad y reportador. Pulse ¡IR! para aplicar."
+                    "text": "Combine estado, equipo, término de búsqueda, recurrente y rondas de inspección. El término busca en la descripción (texto fuente y traducciones listas), ubicación, dirección, código postal, ciudad, unit y denunciante. Pulse GO! para aplicar. Use el filtro Rondas de inspección (o barra lateral Trabajo → Rondas de inspección) para avisos recurrentes con al menos dos paradas."
                 },
                 {
                     "label": "Aprobar",
@@ -229,7 +229,7 @@
             "actions": [
                 {
                     "label": "Añadir unidad",
-                    "text": "Añada un objeto/máquina/activo/espacio con token QR y equipo predeterminado. Una unidad puede ser muy diversa: una habitación de hotel, una taladradora, una plataforma elevadora, un aparato de fitness, etc. Depende del sector en el que opera la empresa. Configure por unidad si los visitantes pueden enviar informes."
+                    "text": "Añada un objeto/máquina/activo/espacio con token QR y equipo predeterminado. Una unit puede ser diversa: máquina, sala, vehículo, plataforma elevadora, aparato de fitness, etc. Indique por unit si los visitantes pueden enviar avisos."
                 },
                 {
                     "label": "Traducciones de ubicación",
@@ -249,7 +249,7 @@
                 },
                 {
                     "label": "Checklist (comprobación de unit)",
-                    "text": "Vincule opcionalmente una lista a la unidad (plantillas en la página Usuarios → Equipos, compartida o de los equipos de la categoría). En Unit check del portal el operario marca cada punto antes de guardar OK."
+                    "text": "Vincule opcionalmente una lista a la unidad (plantillas en la página Personas → Equipos, compartida o de los equipos de la categoría). En Unit check del portal el operario marca cada punto antes de guardar OK."
                 },
                 {
                     "label": "Datos de contacto obligatorios",
@@ -392,7 +392,7 @@
                 },
                 {
                     "label": "Listas de comprobación",
-                    "text": "Cree listas en la página Usuarios → Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
+                    "text": "Cree listas en la página Personas → Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
                 },
                 {
                     "label": "Traducciones de equipo",
@@ -717,6 +717,10 @@
                 {
                     "label": "Completar",
                     "text": "Tras haber iniciado la tarea, complétela haciendo clic en «Completar tarea». Aquí puede añadir una nota breve y opcionalmente adjuntar fotos. A veces el portal pide un valor de medición (p. ej. una lectura de contador) — introdúzcalo antes de confirmar. La tarea obtiene entonces el estado «Completada»."
+                },
+                {
+                    "label": "Comprobación de unit",
+                    "text": "Si categoría y unit permiten comprobaciones, los ejecutores conectados ven la baldosa Comprobación de unit. Registre OK o No OK, opcionalmente con checklist. OK no crea aviso; tras No OK puede seguir un aviso."
                 },
                 {
                     "label": "Capturar ubicación GPS",
@@ -1224,11 +1228,11 @@
                 },
                 {
                     "label": "Listas de comprobación",
-                    "text": "Cree listas en la página Usuarios → Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
+                    "text": "Cree listas en la página Personas → Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
                 },
                 {
                     "label": "Plantillas",
-                    "text": "En la página Usuarios → Equipos → Listas de comprobación puede copiar una plantilla (limpieza, técnica, seguridad) y luego ajustarla. Después vincule la lista por unidad."
+                    "text": "En la página Personas → Equipos → Listas de comprobación puede copiar una plantilla (limpieza, técnica, seguridad) y luego ajustarla. Después vincule la lista por unidad."
                 },
                 {
                     "label": "OK y tareas abiertas",
@@ -1253,6 +1257,23 @@
                 {
                     "label": "API entrante",
                     "text": "Los sistemas externos envían comprobaciones con external_unit_id (el ID externo de la unidad). external_id opcional en la comprobación para reintentos idempotentes. Véase la doc API Unit Checks."
+                }
+            ]
+        },
+        "units": {
+            "title": "Ayuda — Units",
+            "actions": [
+                {
+                    "label": "Resumen",
+                    "text": "Lista de todas las units del tenant: nombre, ubicación, categoría y si las comprobaciones de unit están permitidas. Abra una fila para ir al detalle de la ubicación con esa unit enfocada."
+                },
+                {
+                    "label": "Filtrar por ubicación",
+                    "text": "Limite la lista a una ubicación. Borre el filtro para ver de nuevo todas las units."
+                },
+                {
+                    "label": "Comprobaciones de unit",
+                    "text": "Las pastillas muestran Activo/Inactivo y si las comprobaciones están permitidas (categoría y unit ambas activas). Configure bajo Lugares → Categorías / Ubicaciones, y las listas bajo Personas → Equipos."
                 }
             ]
         }

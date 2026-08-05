@@ -82,7 +82,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Ubicaciones, unidades, categorías, equipos y ejecutores (internos o externos). Importación bulk/CSV, panel, documentos y avisos en el portal. Activa los controles de unidad por categoría y unidad; las listas de verificación se gestionan en Equipos — compartidas o por equipo."
+                "body": "Ubicaciones, units, categorías, equipos y ejecutores (internos o externos). Resumen Units de todo el tenant bajo Lugares; categorías y ubicaciones también bajo Lugares. Importación masiva/CSV, panel, documentos y anuncios en el portal. Active comprobaciones de unit por categoría y unit; gestione listas bajo Personas → Equipos — compartidas o por equipo."
             },
             {
                 "title": "Tasks",
