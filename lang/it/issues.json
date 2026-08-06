@@ -24,7 +24,9 @@
         "inspection_rounds": "Giri di ispezione",
         "group_count": ":count segnalazioni",
         "empty": "Nessuna segnalazione ancora. Ne crei una con il pulsante «+ Aggiungi segnalazione».",
-        "empty_filtered": "Nessuna segnalazione corrisponde a questi filtri."
+        "empty_filtered": "Nessuna segnalazione corrisponde a questi filtri.",
+        "subtitle_inspection_rounds": "Giri ricorrenti con almeno due fermate unità",
+        "empty_inspection_rounds": "Nessun giro di ispezione. Pianificane uno con \"Pianifica giro di ispezione\"."
     },
     "filter": {
         "status": "Filtra per stato",
@@ -39,7 +41,8 @@
         "recurring_only": "Solo segnalazioni ricorrenti",
         "apply": "VAI!",
         "reset": "Cancella filtri",
-        "hint": "Clicchi su una segnalazione per visualizzare i dettagli."
+        "hint": "Clicchi su una segnalazione per visualizzare i dettagli.",
+        "inspection_rounds_only": "Solo giri di ispezione"
     },
     "card": {
         "kind": "Segnalazione",

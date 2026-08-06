@@ -45,7 +45,7 @@
             },
             {
                 "title": "Inspektionsrunden",
-                "body": "Wiederkehrende Meldung mit fester Route von Units (Stopps), auch über mehrere Standorte. Planen über Meldungen → Inspektionsrunde planen (Stopps, Intervall und Team in einem Schritt) oder optional über den Meldungs-Assistenten. Eine Aufgabe pro Zyklus; an jedem Stopp Unit-Check OK, Nicht OK (mit Meldung; Beschreibung vorausgefüllt) oder Überspringen mit Grund. Fertig, wenn alle Stopps des Zyklus erledigt sind."
+                "body": "Wiederkehrende Meldung mit fester Unit-Route (Stops), auch über Standorte hinweg. Planen über Meldungen → Inspektionsrunde planen (Stops, Intervall und Team in einem Schritt) oder optional über den Melde-Assistenten. Arbeit → Inspektionsrunden öffnet dieselbe Liste gefiltert auf Runden. Pro Zyklus eine Aufgabe; pro Stop Unit-Check OK, Nicht OK (mit Meldung; Beschreibung vorausgefüllt) oder Überspringen mit Grund. Fertig, wenn alle Stops dieses Zyklus erledigt sind."
             },
             {
                 "title": "Branding & QR",

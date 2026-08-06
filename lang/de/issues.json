@@ -24,7 +24,9 @@
         "inspection_rounds": "Inspektionsrunden",
         "group_count": ":count Meldungen",
         "empty": "Noch keine Meldungen. Erstellen Sie eine mit dem \"+ Meldung hinzufügen\"-Button.",
-        "empty_filtered": "Keine Meldungen für diese Filter."
+        "empty_filtered": "Keine Meldungen für diese Filter.",
+        "subtitle_inspection_rounds": "Wiederkehrende Runden mit mindestens zwei Unit-Stops",
+        "empty_inspection_rounds": "Noch keine Inspektionsrunden. Planen Sie eine über \"Inspektionsrunde planen\"."
     },
     "filter": {
         "status": "Nach Status filtern",
@@ -39,7 +41,8 @@
         "recurring_only": "Nur wiederkehrende Meldungen",
         "apply": "GO!",
         "reset": "Filter zurücksetzen",
-        "hint": "Klicken Sie auf eine Meldung, um Details anzuzeigen."
+        "hint": "Klicken Sie auf eine Meldung, um Details anzuzeigen.",
+        "inspection_rounds_only": "Nur Inspektionsrunden"
     },
     "card": {
         "kind": "Meldung",

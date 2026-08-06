@@ -45,7 +45,7 @@
             },
             {
                 "title": "Rondas de inspección",
-                "body": "Aviso recurrente con una ruta fija de units (paradas), también entre ubicaciones. Planificar vía Incidencias → Planificar ronda de inspección (paradas, intervalo y equipo en un paso) u opcionalmente vía el asistente de avisos. Una tarea por ciclo; en cada parada Unit check OK, No OK (con aviso; descripción precargada) u omitir con motivo. Listo cuando todas las paradas del ciclo están tramitadas."
+                "body": "Incidencia recurrente con una ruta fija de unidades (paradas), también entre ubicaciones. Planifica vía Incidencias → Planificar ronda de inspección (paradas, intervalo y equipo en un paso) o vía el asistente. Trabajo → Rondas de inspección abre la misma lista filtrada a rondas. Una tarea por ciclo; en cada parada Unit check OK, No OK (con incidencia; descripción prediligenciada) o omitir con motivo. Listo cuando todas las paradas del ciclo están gestionadas."
             },
             {
                 "title": "Branding & QR",

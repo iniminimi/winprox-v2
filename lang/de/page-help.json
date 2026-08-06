@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Kombinieren Sie Status, Team, Suchbegriff, wiederkehrend und Inspektionsrunden. Der Suchbegriff sucht in Beschreibung (Quelltext und fertige Übersetzungen), Standort, Adresse, PLZ, Ort, Unit und Melder. Mit GO! anwenden. Nutzen Sie den Filter Inspektionsrunden (oder Seitenleiste Arbeit → Inspektionsrunden) für wiederkehrende Meldungen mit mindestens zwei Stopps."
+                    "text": "Kombinieren Sie Status, Team, Suchbegriff, wiederkehrend und Inspektionsrunden, um die Liste zu verfeinern. Der Suchbegriff durchsucht Beschreibung (Quelltext und fertige Übersetzungen), Standort, Adresse, PLZ, Ort, Unit und Melder. Drücken Sie GO! zum Anwenden. Die Seitenleiste Arbeit → Inspektionsrunden öffnet diese Seite mit Titel Inspektionsrunden und Filter Nur Inspektionsrunden (wiederkehrende Meldungen mit mindestens zwei Runden-Stops)."
                 },
                 {
                     "label": "Freigeben",

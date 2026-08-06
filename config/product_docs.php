@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Publieke productfiches (features, technisch, API & Webhooks).
@@ -6,7 +6,7 @@
  */
 return [
 
-    'documents_last_updated' => env('PRODUCT_DOCS_LAST_UPDATED', '2026-08-05'),
+    'documents_last_updated' => env('PRODUCT_DOCS_LAST_UPDATED', '2026-08-06'),
 
     'documents' => [
         'features' => [

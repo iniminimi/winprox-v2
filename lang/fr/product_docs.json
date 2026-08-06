@@ -45,7 +45,7 @@
             },
             {
                 "title": "Tournées d’inspection",
-                "body": "Signalement récurrent avec un parcours fixe d'unités (arrêts), y compris entre sites. Planifier via Signalements → Planifier une tournée d’inspection (arrêts, intervalle et équipe en une étape) ou optionnellement via l’assistant de signalement. Une tâche par cycle ; à chaque arrêt contrôle OK, Pas OK (avec signalement ; description préremplie), ou passage avec motif. Terminé quand tous les arrêts du cycle sont traités."
+                "body": "Signalement récurrent avec un parcours fixe d’unités (arrêts), y compris sur plusieurs sites. Planifiez via Signalements → Planifier une tournée d’inspection (arrêts, intervalle et équipe en une étape) ou via l’assistant. Travail → Tournées d’inspection ouvre la même liste filtrée sur les tournées. Une tâche par cycle ; à chaque arrêt contrôle d’unité OK, Non OK (avec signalement ; description préremplie) ou passer avec motif. Terminé lorsque tous les arrêts du cycle sont traités."
             },
             {
                 "title": "Branding & QR",

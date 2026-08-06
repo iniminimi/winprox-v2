@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Filtri",
-                    "text": "Combina stato, team, termine di ricerca, ricorrente e giri di ispezione. Il termine cerca nella descrizione (testo sorgente e traduzioni complete), sede, indirizzo, CAP, città, unit e segnalatore. Premi GO! per applicare. Usa il filtro Giri di ispezione (o barra laterale Lavoro → Giri di ispezione) per segnalazioni ricorrenti con almeno due fermate."
+                    "text": "Combina stato, team, ricerca, ricorrente e giri di ispezione per affinare l’elenco. La ricerca guarda nella descrizione (testo sorgente e traduzioni completate), sede, indirizzo, CAP, città, unità e segnalatore. Premi GO! per applicare. La barra laterale Lavoro → Giri di ispezione apre questa pagina intitolata Giri di ispezione con il filtro Solo giri di ispezione (segnalazioni ricorrenti con almeno due fermate del giro)."
                 },
                 {
                     "label": "Approva",

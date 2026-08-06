@@ -24,7 +24,9 @@
         "inspection_rounds": "Rondas de inspección",
         "group_count": ":count incidencias",
         "empty": "Aún no hay incidencias. Cree una con el botón «+ Añadir incidencia».",
-        "empty_filtered": "Ninguna incidencia coincide con estos filtros."
+        "empty_filtered": "Ninguna incidencia coincide con estos filtros.",
+        "subtitle_inspection_rounds": "Rondas recurrentes con al menos dos paradas de unidad",
+        "empty_inspection_rounds": "Aún no hay rondas de inspección. Planifica una con \"Planificar ronda de inspección\"."
     },
     "filter": {
         "status": "Filtrar por estado",
@@ -39,7 +41,8 @@
         "recurring_only": "Solo incidencias recurrentes",
         "apply": "¡IR!",
         "reset": "Borrar filtros",
-        "hint": "Haga clic en una incidencia para ver los detalles."
+        "hint": "Haga clic en una incidencia para ver los detalles.",
+        "inspection_rounds_only": "Solo rondas de inspección"
     },
     "card": {
         "kind": "Incidencia",

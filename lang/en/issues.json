@@ -24,7 +24,9 @@
         "inspection_rounds": "Inspection rounds",
         "group_count": ":count issues",
         "empty": "No issues yet. Create one using the \"+ Add issue\" button.",
-        "empty_filtered": "No issues match these filters."
+        "empty_filtered": "No issues match these filters.",
+        "subtitle_inspection_rounds": "Recurring rounds with at least two unit stops",
+        "empty_inspection_rounds": "No inspection rounds yet. Plan one with \"Plan inspection round\"."
     },
     "filter": {
         "status": "Filter by status",
@@ -39,7 +41,8 @@
         "recurring_only": "Recurring issues only",
         "apply": "GO!",
         "reset": "Clear filters",
-        "hint": "Click an issue to view details."
+        "hint": "Click an issue to view details.",
+        "inspection_rounds_only": "Inspection rounds only"
     },
     "card": {
         "kind": "Issue",

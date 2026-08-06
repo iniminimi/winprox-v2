@@ -57,6 +57,9 @@ class Index extends Component
     #[Url(as: 'create')]
     public bool $openCreate = false;
 
+    #[Url(as: 'round_create')]
+    public bool $openRoundCreate = false;
+
     #[Url(as: 'limit')]
     public int $perStatusLimit = PerStatusListLimit::DEFAULT;
 
@@ -106,9 +109,26 @@ class Index extends Component
             $this->highlightIssue = (int) session()->pull('highlight_issue');
         }
 
+        // Inspectierondes zijn altijd terugkerend; sidebar deep-link zet beide params.
+        if ($this->inspectionRoundOnly) {
+            $this->recurring = true;
+        }
+
         if ($this->openCreate) {
             $this->openCreate = false;
             $this->openCreateModal();
+        }
+
+        if ($this->openRoundCreate) {
+            $this->openRoundCreate = false;
+            $this->openRoundCreateModal();
+        }
+    }
+
+    public function updatedInspectionRoundOnly(bool $value): void
+    {
+        if ($value) {
+            $this->recurring = true;
         }
     }
 
@@ -495,7 +515,12 @@ class Index extends Component
             'perStatusLimits' => PerStatusListLimit::OPTIONS,
             'statuses' => TaskStatus::cases(),
             'teams' => InternalTeam::query()->with('translations')->orderBy('name')->get(),
-            'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring || $this->unitFilter,
+            'hasFilters' => $this->statusFilter !== ''
+                || $this->teamFilter
+                || $this->search !== ''
+                || $this->recurring
+                || $this->inspectionRoundOnly
+                || $this->unitFilter,
             'highlightIssue' => $this->highlightIssue,
             'onboarding' => TenantOnboardingState::current(),
             'createLocations' => $this->showCreateModal

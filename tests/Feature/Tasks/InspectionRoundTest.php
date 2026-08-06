@@ -794,6 +794,30 @@ it('filters inspection rounds in issues index (inspection_round param)', functio
         ->assertDontSee(__('issues.card.kind_nr', ['nr' => $otherIssue->id]));
 });
 
+it('shows inspection-rounds page chrome for the sidebar deep link', function () {
+    ['tenant' => $tenant, 'actor' => $actor] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    $this->actingAs($actor)
+        ->get(route('issues.index', ['recurring' => 1, 'inspection_round' => 1]))
+        ->assertOk()
+        ->assertSee(__('issues.list.inspection_rounds'), false)
+        ->assertSee(__('issues.list.subtitle_inspection_rounds'), false)
+        ->assertSee(__('issues.filter.inspection_rounds_only'), false)
+        ->assertSee(__('issues.filter.reset'), false);
+});
+
+it('opens the plan-round modal via round_create URL param', function () {
+    ['tenant' => $tenant, 'actor' => $actor] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    Livewire::withQueryParams(['round_create' => 1])
+        ->actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->assertSet('showRoundCreateModal', true)
+        ->assertSet('openRoundCreate', false);
+});
+
 it('plans an inspection round via the issues index modal', function () {
     ['tenant' => $tenant, 'actor' => $actor, 'team' => $team, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
     seedTenantPastOnboarding($tenant);

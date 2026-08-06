@@ -21,10 +21,12 @@
         "subtitle": "Tous les problèmes signalés par les rapporteurs",
         "add": "+ Ajouter un signalement",
         "plan_round": "Planifier une tournée d’inspection",
-        "inspection_rounds": "Rondes d’inspection",
+        "inspection_rounds": "Tournées d’inspection",
         "group_count": ":count signalements",
         "empty": "Aucun signalement pour l'instant. Créez-en un avec le bouton \"+ Ajouter un signalement\".",
-        "empty_filtered": "Aucun signalement ne correspond à ces filtres."
+        "empty_filtered": "Aucun signalement ne correspond à ces filtres.",
+        "subtitle_inspection_rounds": "Tournées récurrentes avec au moins deux arrêts d’unités",
+        "empty_inspection_rounds": "Aucune tournée d’inspection pour le moment. Planifiez-en une via « Planifier une tournée d’inspection »."
     },
     "filter": {
         "status": "Filtrer par statut",
@@ -39,7 +41,8 @@
         "recurring_only": "Signalements récurrents uniquement",
         "apply": "GO!",
         "reset": "Effacer les filtres",
-        "hint": "Cliquez sur un signalement pour voir les détails."
+        "hint": "Cliquez sur un signalement pour voir les détails.",
+        "inspection_rounds_only": "Tournées d’inspection uniquement"
     },
     "card": {
         "kind": "Signalement",

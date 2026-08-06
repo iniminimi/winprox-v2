@@ -24,7 +24,9 @@
         "inspection_rounds": "Inspectierondes",
         "group_count": ":count meldingen",
         "empty": "Er zijn nog geen meldingen. Maak er aan via de knop \"+ Melding toevoegen\".",
-        "empty_filtered": "Geen meldingen gevonden voor deze filters."
+        "empty_filtered": "Geen meldingen gevonden voor deze filters.",
+        "subtitle_inspection_rounds": "Terugkerende rondes met minstens twee unit-stops",
+        "empty_inspection_rounds": "Nog geen inspectierondes. Plan er een via \"Inspectieronde plannen\"."
     },
     "filter": {
         "status": "Filter op status",
@@ -39,7 +41,8 @@
         "recurring_only": "Alleen terugkerende meldingen",
         "apply": "GO!",
         "reset": "Filters wissen",
-        "hint": "Klik op de melding om details te bekijken."
+        "hint": "Klik op de melding om details te bekijken.",
+        "inspection_rounds_only": "Alleen inspectierondes"
     },
     "card": {
         "kind": "Melding",

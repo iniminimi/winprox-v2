@@ -1,4 +1,4 @@
-<div class="wp-stack wp-issues-page" data-manual-capture="issues-list">
+<div class="wp-stack wp-issues-page" data-manual-capture="{{ $inspectionRoundOnly ? 'inspection-rounds-list' : 'issues-list' }}">
     @if ($onboarding->showTeamsBanner())
         <x-wp-onboarding-banner stage="teams" />
     @elseif ($onboarding->showCategoriesOrLocationsBanner())
@@ -9,19 +9,28 @@
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
-                    icon="issues"
-                    :title="__('issues.list.title')"
+                    :icon="$inspectionRoundOnly ? 'tasks' : 'issues'"
+                    :title="$inspectionRoundOnly ? __('issues.list.inspection_rounds') : __('issues.list.title')"
                     help-page="issues.list"
-                    :subtitle="__('issues.list.subtitle')"
+                    :subtitle="$inspectionRoundOnly ? __('issues.list.subtitle_inspection_rounds') : __('issues.list.subtitle')"
                 />
             </div>
             <div class="wp-cluster wp-page-actions">
-                <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openCreateModal">
-                    {{ __('issues.list.add') }}
-                </button>
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="openRoundCreateModal">
-                    {{ __('issues.list.plan_round') }}
-                </button>
+                @if ($inspectionRoundOnly)
+                    <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openRoundCreateModal">
+                        {{ __('issues.list.plan_round') }}
+                    </button>
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openCreateModal">
+                        {{ __('issues.list.add') }}
+                    </button>
+                @else
+                    <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openCreateModal">
+                        {{ __('issues.list.add') }}
+                    </button>
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openRoundCreateModal">
+                        {{ __('issues.list.plan_round') }}
+                    </button>
+                @endif
                 <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</a>
             </div>
         </div>
@@ -30,7 +39,7 @@
             <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
         @endif
 
-        @if($total > 0)
+        @if($total > 0 || $hasFilters)
             <div class="wp-card wp-filter-panel">
                 <div class="wp-filter-form">
                     <p class="wp-filter-form__title">{{ __('common.list.filters_title') }}</p>
@@ -75,8 +84,12 @@
                         </div>
                         <div class="wp-filter-cell wp-filter-cell--recurring">
                             <label class="wp-check">
-                                <input type="checkbox" wire:model.defer="recurring">
+                                <input type="checkbox" wire:model.defer="recurring" @disabled($inspectionRoundOnly)>
                                 {{ __('issues.filter.recurring_only') }}
+                            </label>
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model.live="inspectionRoundOnly">
+                                {{ __('issues.filter.inspection_rounds_only') }}
                             </label>
                         </div>
                     </div>
@@ -110,7 +123,15 @@
             </section>
         @empty
             <div class="wp-card wp-card-pad">
-                <p class="wp-muted">{{ $hasFilters ? __('issues.list.empty_filtered') : __('issues.list.empty') }}</p>
+                <p class="wp-muted">
+                    @if ($inspectionRoundOnly)
+                        {{ __('issues.list.empty_inspection_rounds') }}
+                    @elseif ($hasFilters)
+                        {{ __('issues.list.empty_filtered') }}
+                    @else
+                        {{ __('issues.list.empty') }}
+                    @endif
+                </p>
             </div>
         @endforelse
     @endif
