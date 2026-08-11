@@ -311,11 +311,30 @@ it('genereert docx voor campagne-ontvanger', function () {
 
 it('vervangt placeholders', function () {
     $html = PromoCampaignPlaceholderRenderer::render(
-        'Bonjour {{name}} à {{city}}',
-        ['name' => 'Amay', 'city' => 'Amay'],
+        'Bonjour {{name}} à {{city}} — {{welcome_url}}',
+        [
+            'name' => 'Amay',
+            'city' => 'Amay',
+            'welcome_url' => 'https://winprox.app/nl/?ref=prm_abcdef0123456789',
+        ],
     );
 
-    expect($html)->toBe('Bonjour Amay à Amay');
+    expect($html)->toBe('Bonjour Amay à Amay — https://winprox.app/nl/?ref=prm_abcdef0123456789');
+});
+
+it('levert welcome_url in forTarget', function () {
+    $vars = PromoCampaignPlaceholderRenderer::forTarget(
+        name: 'Amay',
+        streetAddress: 'Rue 1',
+        postalCode: '1000',
+        city: 'Amay',
+        email: 'a@example.test',
+        promoUrl: 'https://winprox.app/nl/promo?ref=prm_abcdef0123456789',
+        welcomeUrl: 'https://winprox.app/nl/?ref=prm_abcdef0123456789',
+    );
+
+    expect($vars['welcome_url'])->toBe('https://winprox.app/nl/?ref=prm_abcdef0123456789')
+        ->and($vars['promo_url'])->toContain('/promo?ref=');
 });
 
 it('behandelt lege quill-html als leeg', function () {

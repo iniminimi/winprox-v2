@@ -42,6 +42,7 @@ class GeneratePromoCampaignLetterForTargetAction
 
         $recipient = $this->resolvePromoRecipient($campaign, $target, $actorUserId);
         $promoUrl = PromoLandingUrl::forRecipientTokenOnBaseUrl($recipient->token, $promoBaseUrl, $campaign->locale);
+        $welcomeUrl = PromoLandingUrl::welcomeForRecipientTokenOnBaseUrl($recipient->token, $promoBaseUrl, $campaign->locale);
 
         $placeholders = PromoCampaignPlaceholderRenderer::forTarget(
             name: $target->name,
@@ -50,6 +51,7 @@ class GeneratePromoCampaignLetterForTargetAction
             city: $target->city,
             email: $target->email,
             promoUrl: $promoUrl,
+            welcomeUrl: $welcomeUrl,
         );
 
         $flowPath = $campaign->flow_image_path;

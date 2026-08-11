@@ -84,6 +84,10 @@ class SendPromoCampaignEmailAction
             $recipient->token,
             $campaign->locale,
         );
+        $welcomeUrl = PromoLandingUrl::welcomeForRecipientToken(
+            $recipient->token,
+            $campaign->locale,
+        );
 
         $placeholders = PromoCampaignPlaceholderRenderer::forTarget(
             name: $target->name,
@@ -92,6 +96,7 @@ class SendPromoCampaignEmailAction
             city: $target->city,
             email: $target->email,
             promoUrl: $promoUrl,
+            welcomeUrl: $welcomeUrl,
         );
 
         $emailSubject = PromoCampaignPlaceholderRenderer::render($emailSubject, $placeholders);

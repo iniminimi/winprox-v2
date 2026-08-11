@@ -41,7 +41,10 @@
                             <div class="wp-list-row" wire:key="anon-visit-{{ $visit->id }}">
                                 <div class="wp-grow">
                                     <p class="wp-text-body">{{ $visit->visited_at?->format('d-m-Y H:i') }}</p>
-                                    <p class="wp-muted wp-text-sm">{{ strtoupper($visit->locale) }}</p>
+                                    <p class="wp-muted wp-text-sm">
+                                        {{ strtoupper($visit->locale) }}
+                                        · {{ __($visit->page->labelKey()) }}
+                                    </p>
                                 </div>
                             </div>
                         @endforeach
@@ -239,7 +242,10 @@
                                                 <div class="wp-list-row" wire:key="visit-{{ $visit->id }}">
                                                     <div class="wp-grow">
                                                         <p class="wp-text-body">{{ $visit->visited_at?->format('d-m-Y H:i') }}</p>
-                                                        <p class="wp-muted wp-text-sm">{{ strtoupper($visit->locale) }}</p>
+                                                        <p class="wp-muted wp-text-sm">
+                                                            {{ strtoupper($visit->locale) }}
+                                                            · {{ __($visit->page->labelKey()) }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             @endforeach

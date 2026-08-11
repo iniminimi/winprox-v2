@@ -29,6 +29,7 @@ final class PromoCampaignPlaceholderRenderer
         ?string $city,
         ?string $email,
         string $promoUrl,
+        string $welcomeUrl = '',
     ): array {
         return [
             'name' => $name,
@@ -37,6 +38,7 @@ final class PromoCampaignPlaceholderRenderer
             'city' => trim((string) $city),
             'email' => trim((string) $email),
             'promo_url' => $promoUrl,
+            'welcome_url' => $welcomeUrl,
         ];
     }
 }

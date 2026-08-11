@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Marketing\RecordPromoVisitAction;
+use App\Enums\PromoVisitPage;
 use App\Models\PromoRecipient;
 use App\Support\Marketing\PromoRecipientLocale;
 use App\Support\Marketing\PromoRecipientSession;
@@ -53,6 +54,7 @@ class PromoController extends Controller
                 promoRecipientId: $recipient?->id,
                 locale: $locale,
                 visitedAt: now(),
+                page: PromoVisitPage::Promo,
             );
         }
 

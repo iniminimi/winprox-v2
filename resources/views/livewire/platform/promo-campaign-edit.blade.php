@@ -71,6 +71,11 @@
 
         <div class="wp-card wp-card-pad wp-stack">
             <p class="wp-subhead">{{ __('platform.promo_campaigns.email_title') }}</p>
+            <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.email_placeholders_hint')</p>
+            <div class="wp-flash wp-flash--muted">
+                <p class="wp-text-body">@lang('platform.promo_campaigns.welcome_url_how_to_title')</p>
+                <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.welcome_url_how_to')</p>
+            </div>
             <div>
                 <label class="wp-label" for="email-subject">{{ __('platform.promo_campaigns.email_subject') }}</label>
                 <input id="email-subject" type="text" class="wp-input" wire:model="emailSubject">

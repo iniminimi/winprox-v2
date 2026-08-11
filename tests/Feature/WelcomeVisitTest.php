@@ -79,3 +79,41 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->and(WelcomeVisit::query()->first()?->utm_campaign)->toBe('wave-1')
         ->and(WelcomeVisit::query()->first()?->locale)->toBe('nl');
 });
+
+it('koppelt een welcome-bezoek aan een promo-bestemmeling via ref', function () {
+    $superuser = User::factory()->superuser()->create();
+    $recipient = \App\Models\PromoRecipient::query()->create([
+        'token' => 'prm_fedcba9876543210',
+        'label' => 'Amay',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+
+    $this->get('/nl/?ref='.$recipient->token)
+        ->assertOk();
+
+    expect(\App\Models\PromoVisit::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(1)
+        ->and(\App\Models\PromoVisit::query()->where('promo_recipient_id', $recipient->id)->value('page'))
+        ->toBe(\App\Enums\PromoVisitPage::Welcome->value)
+        ->and(WelcomeVisit::query()->count())->toBe(1);
+});
+
+it('toont welcome_url uitleg op de promo-campagnepagina', function () {
+    $superuser = User::factory()->superuser()->create();
+    $campaign = \App\Models\PromoCampaign::query()->create([
+        'slug' => 'welcome-url-demo',
+        'name' => 'Welcome URL demo',
+        'locale' => 'nl',
+        'letter_body_html' => '<p>Brief</p>',
+        'email_subject' => 'Hallo',
+        'email_body_html' => '<p><a href="{{welcome_url}}">Bekijk WinProx</a></p>',
+        'attach_letter_to_email' => false,
+        'created_by' => $superuser->id,
+    ]);
+
+    Livewire::actingAs($superuser)
+        ->test(\App\Livewire\Platform\PromoCampaignEdit::class, ['promoCampaign' => $campaign])
+        ->assertSee(__('platform.promo_campaigns.welcome_url_how_to_title'))
+        ->assertSee(__('platform.promo_campaigns.welcome_url_how_to'))
+        ->assertSee('{{welcome_url}}', false);
+});
