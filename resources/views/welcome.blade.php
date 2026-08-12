@@ -170,7 +170,7 @@
                 <div class="wp-welcome-product-grid">
                     @foreach ([
                         'facility' => ['route' => 'features.facility', 'logo' => 'facility'],
-                        'time' => ['route' => 'features.time', 'logo' => 'time_module'],
+                        'time' => ['route' => 'features.time', 'logo' => 'time'],
                     ] as $productKey => $productMeta)
                         <article class="wp-welcome-product-card">
                             <figure class="wp-welcome-product-card__logo">
