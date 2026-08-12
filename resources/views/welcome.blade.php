@@ -168,11 +168,14 @@
                 />
                 <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.products.lead') }}</p>
                 <div class="wp-welcome-product-grid">
-                    @foreach (['facility' => 'features.facility'] as $productKey => $featureRoute)
+                    @foreach ([
+                        'facility' => ['route' => 'features.facility', 'logo' => 'facility'],
+                        'time' => ['route' => 'features.time', 'logo' => 'time_module'],
+                    ] as $productKey => $productMeta)
                         <article class="wp-welcome-product-card">
                             <figure class="wp-welcome-product-card__logo">
                                 <img
-                                    src="{{ asset('images/welcome/winprox_'.$productKey.'_logo.jpg') }}"
+                                    src="{{ asset('images/welcome/winprox_'.$productMeta['logo'].'_logo.jpg') }}"
                                     alt="{{ __('welcome.products.'.$productKey.'.logo_alt') }}"
                                     class="wp-welcome-product-card__logo-img"
                                     loading="lazy"
@@ -188,7 +191,7 @@
                                 @endforeach
                             </ul>
                             <p class="wp-welcome-product-card__more">
-                                <a href="{{ route($featureRoute) }}" class="btn btn--ghost btn--sm">{{ __('welcome.products.learn_more') }}</a>
+                                <a href="{{ route($productMeta['route']) }}" class="btn btn--ghost btn--sm">{{ __('welcome.products.learn_more') }}</a>
                             </p>
                         </article>
                     @endforeach

@@ -81,6 +81,18 @@
                 "Unit-Checks optional",
                 "IoT & ESG ab 250 Einheiten"
             ]
+        },
+        "time": {
+            "name": "Modul Time",
+            "tagline": "Teil von WinProx Facility",
+            "body": "Zeiterfassung, Pausen und Schichten per Clock-Point-QR — in jedem Facility-Abo enthalten.",
+            "logo_alt": "Modul Time — Teil von WinProx Facility",
+            "bullets": [
+                "Ein- und Ausstempeln",
+                "Pausen",
+                "Schichten",
+                "Clock Points"
+            ]
         }
     },
     "pillars": {
@@ -100,7 +112,7 @@
                 ]
             },
             {
-                "title": "WinProx Time",
+                "title": "Modul Time",
                 "icon": "clock",
                 "bullets": [
                     "Anwesenheit",

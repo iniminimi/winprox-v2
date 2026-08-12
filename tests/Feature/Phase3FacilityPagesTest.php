@@ -17,6 +17,8 @@ it('toont de welcome-pagina voor gasten', function () {
         ->assertOk()
         ->assertSee(__('welcome.hero.badge'))
         ->assertSee(__('welcome.trust_bar.items.0'))
+        ->assertSee(__('welcome.products.time.name'))
+        ->assertSee(__('welcome.products.time.tagline'))
         ->assertDontSee('id="faq-how_it_works"', false)
         ->assertSee('property="og:description" content="'.__('welcome.social.og_description').'"', false)
         ->assertSee('/images/promo/og_1.jpg', false)

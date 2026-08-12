@@ -83,6 +83,18 @@
                 "Optional unit checks",
                 "IoT & ESG from 250 units"
             ]
+        },
+        "time": {
+            "name": "Module Time",
+            "tagline": "Part of WinProx Facility",
+            "body": "Time tracking, breaks and shifts via the Clock Point QR — included in every Facility subscription.",
+            "logo_alt": "Module Time — part of WinProx Facility",
+            "bullets": [
+                "Clock in and out",
+                "Breaks",
+                "Shifts",
+                "Clock Points"
+            ]
         }
     },
     "pillars": {
@@ -102,7 +114,7 @@
                 ]
             },
             {
-                "title": "WinProx Time",
+                "title": "Module Time",
                 "icon": "clock",
                 "bullets": [
                     "Presence",

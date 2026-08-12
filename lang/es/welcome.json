@@ -83,6 +83,18 @@
                 "Comprobaciones de unidad opcionales",
                 "IoT y ESG desde 250 unidades"
             ]
+        },
+        "time": {
+            "name": "Módulo Time",
+            "tagline": "Parte de WinProx Facility",
+            "body": "Registro de horas, pausas y turnos vía QR Clock Point — incluido en cada suscripción Facility.",
+            "logo_alt": "Módulo Time — parte de WinProx Facility",
+            "bullets": [
+                "Fichaje",
+                "Pausas",
+                "Turnos",
+                "Clock Points"
+            ]
         }
     },
     "pillars": {
@@ -102,7 +114,7 @@
                 ]
             },
             {
-                "title": "WinProx Time",
+                "title": "Módulo Time",
                 "icon": "clock",
                 "bullets": [
                     "Presencia",

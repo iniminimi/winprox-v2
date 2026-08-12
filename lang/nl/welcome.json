@@ -81,6 +81,18 @@
                 "Unit checks optioneel",
                 "IoT & ESG vanaf 250 units"
             ]
+        },
+        "time": {
+            "name": "Module Time",
+            "tagline": "Onderdeel van WinProx Facility",
+            "body": "Urenregistratie, pauzes en shifts via de Clock Point QR — standaard inbegrepen in elk Facility-abonnement.",
+            "logo_alt": "Module Time — onderdeel van WinProx Facility",
+            "bullets": [
+                "In- en uitklokken",
+                "Pauzes",
+                "Shifts",
+                "Clock Points"
+            ]
         }
     },
     "pillars": {
@@ -100,7 +112,7 @@
                 ]
             },
             {
-                "title": "WinProx Time",
+                "title": "Module Time",
                 "icon": "clock",
                 "bullets": [
                     "Aanwezigheid",

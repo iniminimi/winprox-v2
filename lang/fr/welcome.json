@@ -84,6 +84,18 @@
                 "Contrôles unité optionnels",
                 "IoT & ESG à partir de 250 unités"
             ]
+        },
+        "time": {
+            "name": "Module Time",
+            "tagline": "Composant de WinProx Facility",
+            "body": "Suivi du temps, pauses et shifts via le QR Clock Point — inclus dans chaque abonnement Facility.",
+            "logo_alt": "Module Time — composant de WinProx Facility",
+            "bullets": [
+                "Pointage",
+                "Pauses",
+                "Shifts",
+                "Clock Points"
+            ]
         }
     },
     "pillars": {
@@ -103,7 +115,7 @@
                 ]
             },
             {
-                "title": "WinProx Time",
+                "title": "Module Time",
                 "icon": "clock",
                 "bullets": [
                     "Présence",
