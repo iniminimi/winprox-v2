@@ -12,9 +12,26 @@
     </p>
 
     <div class="wp-card wp-card-pad wp-stack-tight">
+        <p class="wp-subhead">{{ __('platform.promo_campaigns.delivery_stats_title') }}</p>
         <p class="wp-muted wp-text-sm">
             {{ __('platform.promo_campaigns.stats', $stats) }}
         </p>
+    </div>
+
+    <div class="wp-card wp-card-pad wp-stack-tight">
+        <p class="wp-subhead">{{ __('platform.promo_campaigns.visit_stats_title') }}</p>
+        <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.visit_stats_lead') }}</p>
+        @if ($visitStats->welcome > 0 || $visitStats->promo > 0)
+            <p class="wp-text-body">
+                {{ __('platform.promo_campaigns.visit_stats_totals', [
+                    'welcome' => $visitStats->welcome,
+                    'promo' => $visitStats->promo,
+                    'with_visits' => $visitStats->targetsWithVisits,
+                ]) }}
+            </p>
+        @else
+            <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.visit_stats_empty') }}</p>
+        @endif
     </div>
 
     <form wire:submit="save" class="wp-stack">
@@ -267,6 +284,19 @@
                                     {{ __('platform.promo_campaigns.email_failed') }}
                                 @else
                                     {{ __('platform.promo_campaigns.email_not_sent') }}
+                                @endif
+                            </p>
+                            @php
+                                $targetVisits = $visitStats->forTarget((int) $target->id);
+                            @endphp
+                            <p class="wp-muted wp-text-sm">
+                                @if ($targetVisits['welcome'] > 0 || $targetVisits['promo'] > 0)
+                                    {{ __('platform.promo_campaigns.target_visits', [
+                                        'welcome' => $targetVisits['welcome'],
+                                        'promo' => $targetVisits['promo'],
+                                    ]) }}
+                                @else
+                                    {{ __('platform.promo_campaigns.target_visits_none') }}
                                 @endif
                             </p>
                         </div>

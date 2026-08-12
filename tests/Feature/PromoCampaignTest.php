@@ -5,10 +5,12 @@ use App\Actions\Marketing\CreatePromoRecipientAction;
 use App\Actions\Marketing\GeneratePromoCampaignLettersAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
+use App\Actions\Marketing\RecordPromoVisitAction;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
 use App\Enums\MunicipalPromoEmailSendStatus;
+use App\Enums\PromoVisitPage;
 use App\Jobs\SendPromoCampaignEmailJob;
 use App\Livewire\Platform\PromoCampaignEdit;
 use App\Livewire\Platform\PromoCampaigns;
@@ -18,6 +20,7 @@ use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignImport;
 use App\Models\PromoCampaignTarget;
+use App\Models\PromoRecipient;
 use App\Models\User;
 use App\Support\Marketing\PromoCampaignHtmlSanitizer;
 use App\Support\Marketing\PromoCampaignLetterDocxBuilder;
@@ -27,6 +30,7 @@ use App\Support\Marketing\PromoCampaignSpreadsheetReader;
 use App\Support\Marketing\PromoLandingUrl;
 use App\Support\Qr\QrCodePngWriter;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use Livewire\Livewire;
@@ -1191,4 +1195,50 @@ it('toont fout wanneer bounce-scan mislukt vanaf promo-campagnes pagina', functi
         ->assertSet('flashMessage', __('platform.promo_campaigns.bounces_failed', [
             'error' => 'Promo IMAP is not configured (imap.promo).',
         ]));
+});
+
+it('toont klikstatistieken op campagnepagina', function () {
+    Carbon::setTestNow(Carbon::parse('2026-08-11 12:00:00', config('app.timezone')));
+
+    $superuser = User::factory()->superuser()->create();
+
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'visit-stats-ui',
+        name: 'Visit stats UI',
+        locale: 'nl',
+        actorUserId: (int) $superuser->id,
+    );
+
+    $target = PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'name' => 'Gemeente Test',
+        'email' => 'test@example.com',
+    ]);
+
+    $recipient = app(CreatePromoRecipientAction::class)->handle(
+        label: 'Gemeente Test',
+        note: null,
+        actorUserId: (int) $superuser->id,
+    );
+
+    $target->update(['promo_recipient_id' => $recipient->id]);
+
+    $record = app(RecordPromoVisitAction::class);
+    $record->handle($recipient->id, 'nl', now(), PromoVisitPage::Welcome);
+    $record->handle($recipient->id, 'nl', now()->addMinutes(5), PromoVisitPage::Promo);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign->fresh()])
+        ->assertSee(__('platform.promo_campaigns.visit_stats_title'))
+        ->assertSee(__('platform.promo_campaigns.visit_stats_totals', [
+            'welcome' => 1,
+            'promo' => 1,
+            'with_visits' => 1,
+        ]))
+        ->assertSee(__('platform.promo_campaigns.target_visits', [
+            'welcome' => 1,
+            'promo' => 1,
+        ]));
+
+    Carbon::setTestNow();
 });

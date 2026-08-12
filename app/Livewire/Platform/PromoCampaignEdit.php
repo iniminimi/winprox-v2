@@ -6,6 +6,7 @@ use App\Actions\Marketing\GeneratePromoCampaignLettersAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
+use App\Actions\Marketing\SummarizePromoCampaignVisitStatsAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
 use App\Http\Requests\Marketing\UpdatePromoCampaignRequest;
@@ -320,10 +321,13 @@ class PromoCampaignEdit extends Component
             'bounced' => $this->campaign->emailSends()->where('status', 'bounced')->count(),
         ];
 
+        $visitStats = app(SummarizePromoCampaignVisitStatsAction::class)->handle($this->campaign);
+
         return view('livewire.platform.promo-campaign-edit', [
             'flowImages' => $flowImages,
             'targets' => $targets,
             'stats' => $stats,
+            'visitStats' => $visitStats,
             'latestImport' => $this->campaign->imports()->latest('id')->first(),
         ]);
     }
