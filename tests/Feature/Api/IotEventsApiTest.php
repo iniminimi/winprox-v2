@@ -37,7 +37,7 @@ function iotAlarmFixture(bool $withEsg = false): array
     $tenant = Tenant::factory()->create([
         'has_iot_module' => true,
         'has_esg_module' => $withEsg,
-        'billing_plan' => $withEsg ? 'corporate' : 'facility',
+        'billing_plan' => $withEsg ? 'corporate' : 'facility_250',
         'billing_active_until' => now()->addMonth(),
         'is_active' => true,
     ]);
@@ -207,3 +207,4 @@ it('respecteert idempotency_key op IoT-events', function () {
     expect(IotEvent::count())->toBe(1)
         ->and(Issue::count())->toBe(1);
 });
+

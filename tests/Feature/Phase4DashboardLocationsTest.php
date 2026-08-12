@@ -661,7 +661,7 @@ it('qr-pack download with dynamic QR codes validates count', function () {
 it('downloads sample CSV with correct headers and UTF-8 BOM', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => null,
-        'billing_plan' => 'facility',
+        'billing_plan' => 'facility_100',
         'billing_active_until' => now()->addMonth(),
         'is_active' => true,
     ]);

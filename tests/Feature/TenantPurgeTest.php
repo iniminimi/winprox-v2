@@ -97,7 +97,7 @@ it('paid purge: plant cool-down, reminder, alleen superuser voert uit', function
     $tenant = Tenant::factory()->create([
         'name' => 'Paid Co',
         'trial_ends_at' => now()->subDay(),
-        'billing_plan' => 'facility',
+        'billing_plan' => 'facility_100',
         'billing_active_until' => now()->addMonth(),
     ]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);

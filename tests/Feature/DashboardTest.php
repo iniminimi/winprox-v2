@@ -171,7 +171,7 @@ it('toont de proefperiode-batterijcapsule op het dashboard', function () {
 it('toont de abonnements-batterijcapsule na planactivatie', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now(),
-        'billing_plan' => 'facility',
+        'billing_plan' => 'facility_100',
         'billing_active_until' => now()->addDays(29),
     ]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
@@ -191,7 +191,7 @@ it('toont de abonnements-batterijcapsule na planactivatie', function () {
         ->assertSee('wp-dashboard-trial-capsule', false);
 });
 
-it('toont conditionele actie-KPI’s alleen bij telling groter dan nul', function () {
+it('toont conditionele actie-KPIâ€™s alleen bij telling groter dan nul', function () {
     $tenant = Tenant::factory()->create([
         'has_time_module' => true,
         'has_iot_module' => true,

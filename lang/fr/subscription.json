@@ -1,11 +1,11 @@
 {
     "title": "Abonnement, limites et facturation",
-    "public_title": "Tarifs",
-    "public_subtitle": "Trois formules claires pour le suivi du temps, la facility et les portefeuilles enterprise. Un mois d'essai gratuit.",
+    "public_title": "Tarifs & formules",
+    "public_subtitle": "Choisissez le nombre d'unités adapté à votre organisation. Time inclus dans chaque abonnement. Un mois d'essai gratuit.",
     "public_register_cta": "Démarrer l'essai gratuit",
     "subtitle": "Après votre mois gratuit, choisissez une formule. Les limites s'appliquent par organisation pour les unités, documents, photos et utilisateurs.",
     "plans_heading": "Formules",
-    "plans_intro": "Choisissez la formule WinProx adaptée à votre organisation. Démarrez avec la saisie des temps numérique ou gérez tout de suite l'ensemble de votre flux opérationnel. Votre organisation grandit ? WinProx grandit avec vous.",
+    "plans_intro": "Commencez petit et grandissez à votre rythme. Chaque abonnement inclut des sites illimités, des utilisateurs illimités, Time et des photos illimitées sur les signalements.",
     "page_limits_locations_body": "Vous utilisez :current sur :max sites. \"Ajouter un site\" reste désactivé jusqu'à la mise à niveau.",
     "choose_plan": "Choisir cette formule",
     "choose_plan_loading": "Choix en cours...",
@@ -57,40 +57,82 @@
     },
     "plans": {
         "trial": {
-            "name": "Essai"
+            "name": "Période d'essai"
         },
-        "time": {
-            "name": "WinProx Time",
-            "price": "149 € / mois",
-            "scale": "Jusqu'à 10 unités/sites/documents/photos pour votre organisation.",
-            "users": "1 administrateur et 1 collaborateur inclus. Intervenants illimités via import CSV/Excel.",
-            "description": "Signalements et tâches QR illimités dans vos sites et unités.",
+        "facility_10": {
+            "name": "10 unités",
+            "price": "€99 / mois",
+            "scale": "Jusqu'à 10 unités et 10 documents.",
             "features": [
-                "Module Time : pointage, pauses, shifts et QR Clock Points.",
-                "Pas d'accès API."
+                "Time inclus.",
+                "Sans IoT, ESG ni API."
             ]
         },
-        "facility": {
-            "name": "WinProx Facility",
-            "price": "399 € / mois",
-            "scale": "Jusqu'à 100 unités/sites/documents/photos pour votre organisation.",
-            "users": "1 administrateur et jusqu'à 4 collaborateurs. Intervenants illimités via import CSV/Excel.",
-            "description": "Workflows facility complets à plus grande échelle. WinProx Time inclus. Import CSV/Excel en masse pour unités et intervenants.",
+        "facility_25": {
+            "name": "25 unités",
+            "price": "€129 / mois",
+            "scale": "Jusqu'à 25 unités et 25 documents.",
             "features": [
-                "Signalements QR et tâches illimités dans vos sites et unités.",
-                "IoT Connect : alarmes capteurs → signalements (ingest gateway).",
-                "Pas d’API REST complète / webhooks."
+                "Time inclus.",
+                "Sans IoT, ESG ni API."
+            ]
+        },
+        "facility_50": {
+            "name": "50 unités",
+            "price": "€179 / mois",
+            "scale": "Jusqu'à 50 unités et 50 documents.",
+            "features": [
+                "Time inclus.",
+                "Sans IoT, ESG ni API."
+            ]
+        },
+        "facility_100": {
+            "name": "100 unités",
+            "price": "€249 / mois",
+            "scale": "Jusqu'à 100 unités et 100 documents.",
+            "features": [
+                "Time inclus.",
+                "Sans IoT, ESG ni API."
+            ]
+        },
+        "facility_250": {
+            "name": "250 unités",
+            "price": "€399 / mois",
+            "scale": "Jusqu'à 250 unités et 250 documents.",
+            "features": [
+                "Time inclus.",
+                "IoT Connect et ESG inclus.",
+                "Sans API ni webhooks."
+            ]
+        },
+        "facility_500": {
+            "name": "500 unités",
+            "price": "€599 / mois",
+            "scale": "Jusqu'à 500 unités et 500 documents.",
+            "features": [
+                "Time inclus.",
+                "IoT Connect et ESG inclus.",
+                "Sans API ni webhooks."
+            ]
+        },
+        "facility_1000": {
+            "name": "1 000 unités",
+            "price": "€999 / mois",
+            "scale": "Jusqu'à 1 000 unités et 1 000 documents.",
+            "features": [
+                "Time inclus.",
+                "IoT Connect et ESG inclus.",
+                "Sans API ni webhooks."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
-            "price": "999 € / mois",
-            "scale": "Données illimitées.",
-            "description": "Pour grands portefeuilles et intégrations.",
+            "price": "Tarif sur mesure",
+            "scale": "Plus de 1 000 unités ou API/webhooks/intégrations requis.",
             "features": [
-                "IoT Connect + mesures ESG via capteurs.",
-                "ESG, API et webhooks inclus.",
-                "Support prioritaire."
+                "Time, IoT Connect, ESG inclus.",
+                "API REST complète et webhooks.",
+                "Intégrations, SLA et support sur mesure."
             ]
         }
     },
@@ -108,8 +150,8 @@
         "plan_invalid": "Cette formule n'est pas disponible.",
         "admin_only": "Seul un administrateur peut choisir un abonnement.",
         "activation_disabled": "Auto-activation désactivée. Contactez WinProx.",
-        "csv_workers_not_allowed": "Import CSV/Excel workers non disponible sur votre formule.",
-        "csv_units_not_allowed": "Import CSV/Excel unités nécessite WinProx Facility ou Corporate."
+        "csv_workers_not_allowed": "L'import CSV/Excel des intervenants n'est pas disponible avec cet abonnement.",
+        "csv_units_not_allowed": "L'import CSV/Excel des unités nécessite un abonnement payant."
     },
     "status_module_iot": "IoT Connect est actif sur votre compte.",
     "purge": {

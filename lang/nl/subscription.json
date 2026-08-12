@@ -1,11 +1,11 @@
 {
     "title": "Abonnement, limieten & facturatie",
     "public_title": "Prijzen & formules",
-    "public_subtitle": "Drie duidelijke formules voor tijdregistratie, facilitybeheer en enterprise-portefeuilles. Eén maand gratis proberen.",
+    "public_subtitle": "Kies het aantal units dat bij uw organisatie past. Time inbegrepen in elk abonnement. Één maand gratis proberen.",
     "public_register_cta": "Start gratis proefperiode",
     "subtitle": "Na je gratis maand kies je een formule. Limieten gelden per organisatie voor units, documenten, foto's en gebruikers.",
     "plans_heading": "Formules",
-    "plans_intro": "Kies het WinProx-pakket dat past bij uw organisatie. Start met digitale tijdregistratie of beheer meteen uw volledige operationele workflow. Groeit uw organisatie? Dan groeit WinProx gewoon mee.",
+    "plans_intro": "Begin klein en groei mee. Elk abonnement bevat onbeperkt locaties, onbeperkt gebruikers, Time en onbeperkt foto's bij meldingen.",
     "choose_plan": "Kies deze formule",
     "choose_plan_loading": "Bezig met kiezen...",
     "activate_plan": "Kies deze formule",
@@ -59,38 +59,80 @@
         "trial": {
             "name": "Proefperiode"
         },
-        "time": {
-            "name": "WinProx Time",
-            "price": "€149 / maand",
-            "scale": "Tot 10 units/locaties/documenten/foto's voor je organisatie.",
-            "users": "Inclusief 1 beheerder en 1 medewerker. Onbeperkt uitvoerders via CSV/Excel-import.",
-            "description": "QR-meldingen en taken onbeperkt binnen je locaties en units.",
+        "facility_10": {
+            "name": "10 units",
+            "price": "€99 / maand",
+            "scale": "Tot 10 units en 10 documenten.",
             "features": [
-                "Time-module: in- en uitklokken, pauzes, shifts en QR Clock Points.",
-                "Geen API-toegang."
+                "Time inbegrepen.",
+                "Geen IoT, ESG of API."
             ]
         },
-        "facility": {
-            "name": "WinProx Facility",
-            "price": "€399 / maand",
-            "scale": "Tot 100 units/locaties/documenten/foto's voor je organisatie.",
-            "users": "Inclusief 1 beheerder en tot 4 medewerkers. Onbeperkt uitvoerders via CSV/Excel-import.",
-            "description": "Volledige facility-workflows op grotere schaal. WinProx Time inbegrepen. CSV/Excel bulk-import voor units en workers.",
+        "facility_25": {
+            "name": "25 units",
+            "price": "€129 / maand",
+            "scale": "Tot 25 units en 25 documenten.",
             "features": [
-                "QR-meldingen en taken onbeperkt binnen je locaties en units.",
-                "IoT Connect: sensor-alarmen → meldingen (gateway-ingest).",
-                "Geen volledige REST API / webhooks."
+                "Time inbegrepen.",
+                "Geen IoT, ESG of API."
+            ]
+        },
+        "facility_50": {
+            "name": "50 units",
+            "price": "€179 / maand",
+            "scale": "Tot 50 units en 50 documenten.",
+            "features": [
+                "Time inbegrepen.",
+                "Geen IoT, ESG of API."
+            ]
+        },
+        "facility_100": {
+            "name": "100 units",
+            "price": "€249 / maand",
+            "scale": "Tot 100 units en 100 documenten.",
+            "features": [
+                "Time inbegrepen.",
+                "Geen IoT, ESG of API."
+            ]
+        },
+        "facility_250": {
+            "name": "250 units",
+            "price": "€399 / maand",
+            "scale": "Tot 250 units en 250 documenten.",
+            "features": [
+                "Time inbegrepen.",
+                "IoT Connect en ESG inbegrepen.",
+                "Geen API of webhooks."
+            ]
+        },
+        "facility_500": {
+            "name": "500 units",
+            "price": "€599 / maand",
+            "scale": "Tot 500 units en 500 documenten.",
+            "features": [
+                "Time inbegrepen.",
+                "IoT Connect en ESG inbegrepen.",
+                "Geen API of webhooks."
+            ]
+        },
+        "facility_1000": {
+            "name": "1.000 units",
+            "price": "€999 / maand",
+            "scale": "Tot 1.000 units en 1.000 documenten.",
+            "features": [
+                "Time inbegrepen.",
+                "IoT Connect en ESG inbegrepen.",
+                "Geen API of webhooks."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
-            "price": "€999 / maand",
-            "scale": "Onbeperkt data.",
-            "description": "Voor grote portefeuilles en integraties.",
+            "price": "Prijs op maat",
+            "scale": "Meer dan 1.000 units of API/webhooks/integraties nodig.",
             "features": [
-                "IoT Connect + ESG-metingen via sensoren.",
-                "ESG, API en webhooks inclusief.",
-                "Prioritaire support."
+                "Time, IoT Connect, ESG inbegrepen.",
+                "Volledige REST API en webhooks.",
+                "Integraties, SLA en ondersteuning op maat."
             ]
         }
     },
@@ -108,8 +150,8 @@
         "plan_invalid": "Deze formule is niet beschikbaar.",
         "admin_only": "Alleen een beheerder kan een abonnement kiezen.",
         "activation_disabled": "Zelf-activeren is uitgeschakeld. Neem contact op met WinProx.",
-        "csv_workers_not_allowed": "CSV/Excel worker-import is niet beschikbaar op je formule.",
-        "csv_units_not_allowed": "CSV/Excel unit-import vereist WinProx Facility of Corporate."
+        "csv_workers_not_allowed": "CSV/Excel worker-import is niet beschikbaar op dit abonnement.",
+        "csv_units_not_allowed": "CSV/Excel unit-import vereist een betaald abonnement."
     },
     "status_module_iot": "IoT Connect actief op je account.",
     "purge": {

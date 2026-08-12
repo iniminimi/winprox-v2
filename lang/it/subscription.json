@@ -1,11 +1,11 @@
 {
     "title": "Abbonamento, limiti e fatturazione",
     "public_title": "Prezzi e piani",
-    "public_subtitle": "Tre piani chiari per timbrature, facility e portafogli enterprise. Un mese di prova gratuito.",
+    "public_subtitle": "Scegli il numero di unità adatto alla tua organizzazione. Time incluso in ogni abbonamento. Un mese di prova gratuito.",
     "public_register_cta": "Inizia prova gratuita",
     "subtitle": "Dopo il mese gratuito, scegli un piano. I limiti si applicano per organizzazione su unità, documenti, foto e utenti.",
     "plans_heading": "Piani",
-    "plans_intro": "Scegli il pacchetto WinProx adatto alla tua organizzazione. Inizia con la rilevazione digitale delle ore o gestisci subito l'intero flusso operativo. La tua organizzazione cresce? WinProx cresce con te.",
+    "plans_intro": "Inizia in piccolo e cresci gradualmente. Ogni abbonamento include sedi illimitate, utenti illimitati, Time e foto illimitate nelle segnalazioni.",
     "page_limits_locations_body": "Stai usando :current di :max sedi. \"Aggiungi sede\" resta disabilitato fino all'upgrade.",
     "choose_plan": "Scegli questo piano",
     "choose_plan_loading": "Scelta in corso...",
@@ -57,40 +57,82 @@
     },
     "plans": {
         "trial": {
-            "name": "Prova"
+            "name": "Periodo di prova"
         },
-        "time": {
-            "name": "WinProx Time",
-            "price": "€149 / mese",
-            "scale": "Fino a 10 unità/sedi/documenti/foto per la tua organizzazione.",
-            "users": "Include 1 amministratore e 1 collaboratore. Lavoratori illimitati via import CSV/Excel.",
-            "description": "Segnalazioni e attività QR illimitate nelle tue sedi e unità.",
+        "facility_10": {
+            "name": "10 unità",
+            "price": "€99 / mese",
+            "scale": "Fino a 10 unità e 10 documenti.",
             "features": [
-                "Modulo Time: timbrature, pause, turni e QR Clock Points.",
-                "Nessun accesso API."
+                "Time incluso.",
+                "Senza IoT, ESG o API."
             ]
         },
-        "facility": {
-            "name": "WinProx Facility",
-            "price": "€399 / mese",
-            "scale": "Fino a 100 unità/sedi/documenti/foto per la tua organizzazione.",
-            "users": "Include 1 amministratore e fino a 4 collaboratori. Lavoratori illimitati via import CSV/Excel.",
-            "description": "Flussi facility completi su scala maggiore. WinProx Time incluso. Import massivo CSV/Excel per unità e lavoratori.",
+        "facility_25": {
+            "name": "25 unità",
+            "price": "€129 / mese",
+            "scale": "Fino a 25 unità e 25 documenti.",
             "features": [
-                "Segnalazioni QR e task illimitati nelle tue sedi e unità.",
-                "IoT Connect: allarmi sensori → segnalazioni (ingest gateway).",
-                "Nessuna API REST completa / webhook."
+                "Time incluso.",
+                "Senza IoT, ESG o API."
+            ]
+        },
+        "facility_50": {
+            "name": "50 unità",
+            "price": "€179 / mese",
+            "scale": "Fino a 50 unità e 50 documenti.",
+            "features": [
+                "Time incluso.",
+                "Senza IoT, ESG o API."
+            ]
+        },
+        "facility_100": {
+            "name": "100 unità",
+            "price": "€249 / mese",
+            "scale": "Fino a 100 unità e 100 documenti.",
+            "features": [
+                "Time incluso.",
+                "Senza IoT, ESG o API."
+            ]
+        },
+        "facility_250": {
+            "name": "250 unità",
+            "price": "€399 / mese",
+            "scale": "Fino a 250 unità e 250 documenti.",
+            "features": [
+                "Time incluso.",
+                "IoT Connect e ESG inclusi.",
+                "Senza API o webhooks."
+            ]
+        },
+        "facility_500": {
+            "name": "500 unità",
+            "price": "€599 / mese",
+            "scale": "Fino a 500 unità e 500 documenti.",
+            "features": [
+                "Time incluso.",
+                "IoT Connect e ESG inclusi.",
+                "Senza API o webhooks."
+            ]
+        },
+        "facility_1000": {
+            "name": "1.000 unità",
+            "price": "€999 / mese",
+            "scale": "Fino a 1.000 unità e 1.000 documenti.",
+            "features": [
+                "Time incluso.",
+                "IoT Connect e ESG inclusi.",
+                "Senza API o webhooks."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
-            "price": "€999 / mese",
-            "scale": "Dati illimitati.",
-            "description": "Per grandi portafogli e integrazioni.",
+            "price": "Prezzo personalizzato",
+            "scale": "Più di 1.000 unità o API/webhooks/integrazioni richiesti.",
             "features": [
-                "IoT Connect + misurazioni ESG via sensori.",
-                "ESG, API e webhook inclusi.",
-                "Supporto prioritario."
+                "Time, IoT Connect, ESG inclusi.",
+                "API REST completa e webhooks.",
+                "Integrazioni, SLA e supporto personalizzati."
             ]
         }
     },
@@ -108,8 +150,8 @@
         "plan_invalid": "Questo piano non è disponibile.",
         "admin_only": "Solo un amministratore può scegliere un abbonamento.",
         "activation_disabled": "Auto-attivazione disabilitata. Contatta WinProx.",
-        "csv_workers_not_allowed": "Import CSV/Excel lavoratori non disponibile sul tuo piano.",
-        "csv_units_not_allowed": "Import CSV/Excel unità richiede WinProx Facility o Corporate."
+        "csv_workers_not_allowed": "L'importazione CSV/Excel degli esecutori non è disponibile in questo abbonamento.",
+        "csv_units_not_allowed": "L'importazione CSV/Excel delle unità richiede un abbonamento a pagamento."
     },
     "status_module_iot": "IoT Connect è attivo sul tuo account.",
     "purge": {

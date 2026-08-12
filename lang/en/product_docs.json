@@ -77,7 +77,7 @@
         "right": [
             {
                 "title": "Multi-tenant",
-                "body": "Each organisation has its own environment with plan limits (Time / Facility / Corporate)."
+                "body": "Each organisation has its own environment with limits per plan (7 Facility tiers + Corporate)."
             },
             {
                 "title": "Facility",
@@ -107,7 +107,7 @@
             },
             {
                 "title": "IoT Connect",
-                "badge": "Facility+",
+                "badge": "250+ units",
                 "body": "Sensor gateways send events; alarms become an approved issue + task. Readings → ESG on Corporate. Gateway token (also without full REST API)."
             },
             {

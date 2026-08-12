@@ -126,7 +126,7 @@ it('stuurt gebruikers zonder toegang door naar abonnement', function () {
         ->assertRedirect(route('subscription.index'));
 });
 
-it('toont drie formules op abonnement', function () {
+it('toont Facility-tiers en Corporate op abonnement', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now()->addDays(5),
         'has_esg_module' => false,
@@ -140,8 +140,8 @@ it('toont drie formules op abonnement', function () {
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->assertSee(__('subscription.plans.time.name'))
-        ->assertSee(__('subscription.plans.facility.name'))
+        ->assertSee(__('subscription.plans.facility_10.name'))
+        ->assertSee(__('subscription.plans.facility_100.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.status_module_time'));
 });
@@ -149,7 +149,7 @@ it('toont drie formules op abonnement', function () {
 it('toont planlabel correct bij billing_plan met hoofdletter', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => null,
-        'billing_plan' => 'Facility',
+        'billing_plan' => 'Facility_100',
         'billing_active_until' => now()->addMonth(),
         'is_active' => true,
     ]);
@@ -160,17 +160,17 @@ it('toont planlabel correct bij billing_plan met hoofdletter', function () {
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->assertSee(__('subscription.plans.facility.name'))
-        ->assertDontSee('subscription.plans.Facility.name');
+        ->assertSee(__('subscription.plans.facility_100.name'))
+        ->assertDontSee('subscription.plans.Facility_100.name');
 
-    expect($tenant->effectivePlanKey())->toBe('facility')
+    expect($tenant->effectivePlanKey())->toBe('facility_100')
         ->and($tenant->hasCsvUnitsImport())->toBeTrue();
 });
 
-it('toont csv-import knop op locatie-detail bij Facility-plan met hoofdletter in DB', function () {
+it('toont csv-import knop op locatie-detail bij facility_100-plan', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => null,
-        'billing_plan' => 'Facility',
+        'billing_plan' => 'facility_100',
         'billing_active_until' => now()->addMonth(),
         'is_active' => true,
     ]);
@@ -199,12 +199,12 @@ it('laat een beheerder een plan activeren', function () {
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->call('activatePlan', 'facility')
+        ->call('activatePlan', 'facility_100')
         ->assertHasNoErrors();
 
     $tenant->refresh();
 
-    expect($tenant->billing_plan)->toBe('facility')
+    expect($tenant->billing_plan)->toBe('facility_100')
         ->and($tenant->billing_active_until)->not->toBeNull()
         ->and($tenant->isPaidSubscriptionActive())->toBeTrue()
         ->and($tenant->isTrialActive())->toBeFalse()

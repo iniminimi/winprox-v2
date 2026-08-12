@@ -77,7 +77,7 @@
         "right": [
             {
                 "title": "Multi-tenant",
-                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (Time / Facility / Corporate)."
+                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (7 Facility-tiers + Corporate)."
             },
             {
                 "title": "Facility",
@@ -107,7 +107,7 @@
             },
             {
                 "title": "IoT Connect",
-                "badge": "Facility+",
+                "badge": "250+ units",
                 "body": "Sensor-gateways sturen events; alarmen worden goedgekeurde melding + taak. Metingen → ESG op Corporate. Gateway-token (ook zonder volledige REST API)."
             },
             {
@@ -172,7 +172,7 @@
                     "**REST API v1** (vaste URL’s + HTTP-methodes) met antwoorden in **JSON** (standaard gegevensformaat). Documentatie in-app + docs.",
                     "O.a. meldingen, taken, locaties, units (incl. externe ID), teams, workers, unit checks (ook inbound via externe unit-ID), ESG, vertalingen.",
                     "Beschikbaar op **Corporate** (proef op verzoek).",
-                    "IoT-ingest apart via gateway-token (Facility + Corporate)."
+                    "IoT-ingest apart via gateway-token (250+ units / Corporate)."
                 ]
             }
         ],

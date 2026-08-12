@@ -20,7 +20,7 @@ afterEach(fn () => Tenancy::forget());
 it('werkt gateway, sensor en regel bij', function () {
     $tenant = Tenant::factory()->create([
         'has_iot_module' => true,
-        'billing_plan' => 'facility',
+        'billing_plan' => 'facility_250',
         'billing_active_until' => now()->addMonth(),
     ]);
     Tenancy::actAs($tenant->id);
@@ -72,7 +72,7 @@ it('werkt gateway, sensor en regel bij', function () {
 it('toont de assistant_iot-clip in de IoT-paginakop', function () {
     $tenant = Tenant::factory()->create([
         'has_iot_module' => true,
-        'billing_plan' => 'facility',
+        'billing_plan' => 'facility_250',
         'billing_active_until' => now()->addMonth(),
     ]);
     $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);

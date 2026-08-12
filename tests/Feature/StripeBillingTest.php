@@ -21,12 +21,12 @@ class StripeBillingTest extends TestCase
         $admin = User::factory()->admin()->for($tenant)->create();
 
         $service = app(StripeCheckoutService::class);
-        $this->assertFalse($service->isConfiguredForPlan('facility'));
+        $this->assertFalse($service->isConfiguredForPlan('facility_100'));
 
-        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'facility', 'manual');
+        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'facility_100', 'manual');
 
         $tenant->refresh();
-        $this->assertSame('facility', $tenant->billing_plan);
+        $this->assertSame('facility_100', $tenant->billing_plan);
         $this->assertTrue($tenant->isPaidSubscriptionActive());
         $this->assertTrue($tenant->billing_active_until->lte(now()->addDays(30)));
         $this->assertTrue($tenant->billing_active_until->gte(now()->addDays(29)));
@@ -36,7 +36,7 @@ class StripeBillingTest extends TestCase
     {
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now(),
-            'billing_plan' => 'facility',
+            'billing_plan' => 'facility_100',
             'billing_active_until' => now()->addDays(364),
         ]);
 

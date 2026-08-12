@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-it('toont publieke prijzenpagina met drie formules voor gasten', function () {
+it('toont publieke prijzenpagina met Facility-tiers en Corporate voor gasten', function () {
     $this->get(route('pricing'))
         ->assertOk()
-        ->assertSee(__('subscription.plans.time.name'))
-        ->assertSee(__('subscription.plans.facility.name'))
+        ->assertSee(__('subscription.plans.facility_10.name'))
+        ->assertSee(__('subscription.plans.facility_100.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.public_register_cta'), false);
 });
@@ -18,7 +18,7 @@ it('toont publieke prijzenpagina voor ingelogde gebruikers', function () {
     $this->actingAs($user)
         ->get(route('pricing'))
         ->assertOk()
-        ->assertSee(__('subscription.plans.facility.name'))
+        ->assertSee(__('subscription.plans.facility_10.name'))
         ->assertSee(__('subscription.public_register_cta'), false);
 });
 
@@ -29,7 +29,7 @@ it('toont plan-knoppen op abonnementenpagina voor beheerder', function () {
     Livewire\Livewire::actingAs($admin)
         ->test(\App\Livewire\Pages\Subscription::class)
         ->assertSee(__('subscription.choose_plan'), false)
-        ->assertSee(__('subscription.plans.time.name'))
-        ->assertSee(__('subscription.plans.facility.name'))
+        ->assertSee(__('subscription.plans.facility_10.name'))
+        ->assertSee(__('subscription.plans.facility_100.name'))
         ->assertSee(__('subscription.plans.corporate.name'));
 });

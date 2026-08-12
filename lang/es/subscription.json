@@ -1,11 +1,11 @@
 {
     "title": "Suscripción, límites y facturación",
     "public_title": "Precios y planes",
-    "public_subtitle": "Tres planes claros para control horario, facility y carteras enterprise. Un mes de prueba gratis.",
+    "public_subtitle": "Elija el número de unidades que se adapte a su organización. Time incluido en cada suscripción. Un mes de prueba gratuito.",
     "public_register_cta": "Iniciar prueba gratuita",
     "subtitle": "Tras el mes gratis, elija un plan. Los límites aplican por organización para unidades, documentos, fotos y usuarios.",
     "plans_heading": "Planes",
-    "plans_intro": "Elija el plan WinProx que se adapte a su organización. Comience con el registro horario digital o gestione de inmediato todo su flujo operativo. ¿Crece su organización? WinProx crece con usted.",
+    "plans_intro": "Empiece pequeño y crezca a su ritmo. Cada suscripción incluye ubicaciones ilimitadas, usuarios ilimitados, Time y fotos ilimitadas en los reportes.",
     "page_limits_locations_body": "Usa :current de :max ubicaciones. \"Añadir ubicación\" permanece desactivado hasta actualizar.",
     "choose_plan": "Elegir este plan",
     "choose_plan_loading": "Eligiendo...",
@@ -57,40 +57,82 @@
     },
     "plans": {
         "trial": {
-            "name": "Prueba"
+            "name": "Período de prueba"
         },
-        "time": {
-            "name": "WinProx Time",
-            "price": "149 € / mes",
-            "scale": "Hasta 10 unidades/ubicaciones/documentos/fotos para su organización.",
-            "users": "Incluye 1 administrador y 1 colaborador. Trabajadores ilimitados vía importación CSV/Excel.",
-            "description": "Incidencias y tareas QR ilimitadas dentro de sus ubicaciones y unidades.",
+        "facility_10": {
+            "name": "10 unidades",
+            "price": "€99 / mes",
+            "scale": "Hasta 10 unidades y 10 documentos.",
             "features": [
-                "Módulo Time: fichaje, pausas, turnos y QR Clock Points.",
-                "Sin acceso API."
+                "Time incluido.",
+                "Sin IoT, ESG ni API."
             ]
         },
-        "facility": {
-            "name": "WinProx Facility",
-            "price": "399 € / mes",
-            "scale": "Hasta 100 unidades/ubicaciones/documentos/fotos para su organización.",
-            "users": "Incluye 1 administrador y hasta 4 colaboradores. Trabajadores ilimitados vía importación CSV/Excel.",
-            "description": "Flujos facility completos a mayor escala. WinProx Time incluido. Importación masiva CSV/Excel para unidades y trabajadores.",
+        "facility_25": {
+            "name": "25 unidades",
+            "price": "€129 / mes",
+            "scale": "Hasta 25 unidades y 25 documentos.",
             "features": [
-                "Incidencias QR y tareas ilimitadas en tus ubicaciones y unidades.",
-                "IoT Connect: alarmas de sensores → incidencias (ingesta gateway).",
-                "Sin API REST completa / webhooks."
+                "Time incluido.",
+                "Sin IoT, ESG ni API."
+            ]
+        },
+        "facility_50": {
+            "name": "50 unidades",
+            "price": "€179 / mes",
+            "scale": "Hasta 50 unidades y 50 documentos.",
+            "features": [
+                "Time incluido.",
+                "Sin IoT, ESG ni API."
+            ]
+        },
+        "facility_100": {
+            "name": "100 unidades",
+            "price": "€249 / mes",
+            "scale": "Hasta 100 unidades y 100 documentos.",
+            "features": [
+                "Time incluido.",
+                "Sin IoT, ESG ni API."
+            ]
+        },
+        "facility_250": {
+            "name": "250 unidades",
+            "price": "€399 / mes",
+            "scale": "Hasta 250 unidades y 250 documentos.",
+            "features": [
+                "Time incluido.",
+                "IoT Connect y ESG incluidos.",
+                "Sin API ni webhooks."
+            ]
+        },
+        "facility_500": {
+            "name": "500 unidades",
+            "price": "€599 / mes",
+            "scale": "Hasta 500 unidades y 500 documentos.",
+            "features": [
+                "Time incluido.",
+                "IoT Connect y ESG incluidos.",
+                "Sin API ni webhooks."
+            ]
+        },
+        "facility_1000": {
+            "name": "1.000 unidades",
+            "price": "€999 / mes",
+            "scale": "Hasta 1.000 unidades y 1.000 documentos.",
+            "features": [
+                "Time incluido.",
+                "IoT Connect y ESG incluidos.",
+                "Sin API ni webhooks."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
-            "price": "999 € / mes",
-            "scale": "Datos ilimitados.",
-            "description": "Para grandes carteras e integraciones.",
+            "price": "Precio personalizado",
+            "scale": "Más de 1.000 unidades o API/webhooks/integraciones requeridos.",
             "features": [
-                "IoT Connect + mediciones ESG vía sensores.",
-                "ESG, API y webhooks incluidos.",
-                "Soporte prioritario."
+                "Time, IoT Connect, ESG incluidos.",
+                "API REST completa y webhooks.",
+                "Integraciones, SLA y soporte personalizados."
             ]
         }
     },
@@ -108,8 +150,8 @@
         "plan_invalid": "Este plan no está disponible.",
         "admin_only": "Solo un administrador puede elegir una suscripción.",
         "activation_disabled": "Autoactivación deshabilitada. Contacte WinProx.",
-        "csv_workers_not_allowed": "Importación CSV/Excel de trabajadores no disponible en su plan.",
-        "csv_units_not_allowed": "Importación CSV/Excel de unidades requiere WinProx Facility o Corporate."
+        "csv_workers_not_allowed": "La importación CSV/Excel de ejecutores no está disponible en esta suscripción.",
+        "csv_units_not_allowed": "La importación CSV/Excel de unidades requiere una suscripción de pago."
     },
     "status_module_iot": "IoT Connect está activo en tu cuenta.",
     "purge": {
