@@ -65,8 +65,8 @@
             },
             {
                 "title": "ESG & Compliance",
-                "badge": "Corporate",
-                "badge_mod": "corp",
+                "badge": "250+ unités",
+                "badge_mod": "facility",
                 "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Optional module: indicators, measurements and follow-up tasks for recurring checks. Record via portal, back office or API."
             },
             {
@@ -316,7 +316,7 @@
                     "**Accès :** jeton d’accès personnel (Bearer). Révoquable. Par jeton, vous choisissez les droits (scopes), p. ex. lire les signalements seulement.",
                     "**Périmètre organisation :** chaque jeton appartient à une organisation ; vous ne voyez jamais les données d’un autre client.",
                     "**Sécurité :** limite de requêtes par minute. Clé d’idempotence optionnelle pour éviter une action en double.",
-                    "**IoT à part :** les capteurs utilisent un jeton de passerelle (Facility+ / Corporate), pas le même jeton API."
+                    "**IoT à part :** les capteurs utilisent un jeton de passerelle (250+ unités / Corporate), pas le même jeton API."
                 ]
             },
             {

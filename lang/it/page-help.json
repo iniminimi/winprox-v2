@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova ha limiti estesi. La dashboard mostra i giorni rimanenti."
+                    "text": "Durante la prova hai fino a 100 unità (e 100 documenti). Time è incluso. La dashboard mostra i giorni rimanenti."
                 },
                 {
                     "label": "Aggiungi segnalazione",
@@ -380,7 +380,7 @@
             "actions": [
                 {
                     "label": "Utenti colleghi",
-                    "text": "Gestisca il personale amministrativo che lavora principalmente su PC. Devono accedere con e-mail e password. Un amministratore è l'utente principale che può aggiornare i dati aziendali. L'amministratore può aggiungere altri amministratori e collaboratori in base all'abbonamento scelto."
+                    "text": "Gestisci collaboratori amministrativi che lavorano principalmente al PC. Devono accedere con e-mail e password. Un amministratore è l'utente principale che può modificare i dati aziendali. Amministratori e collaboratori sono illimitati — le unità determinano l'abbonamento."
                 },
                 {
                     "label": "Stampa briefing",
@@ -587,7 +587,7 @@
             "actions": [
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova ha limiti estesi. La dashboard mostra i giorni rimanenti."
+                    "text": "Durante la prova hai fino a 100 unità (e 100 documenti). Time è incluso; IoT ed ESG no. La dashboard mostra i giorni rimanenti."
                 },
                 {
                     "label": "Scelga piano",
@@ -1190,8 +1190,8 @@
                     "text": "Qui gestisce <strong>gateway</strong>, <strong>sensori</strong>, <strong>regole di allarme</strong> e consulta gli <strong>eventi</strong> recenti. WinProx riceve i dati dei sensori; i sensori fisici e i protocolli restano presso il gateway / fornitore."
                 },
                 {
-                    "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:</strong> gli allarmi diventano segnalazioni approvate con attività. <strong>Corporate:</strong> lo stesso, più le misurazioni dei sensori verso ESG quando il sensore ha un’unità e un indicatore ESG numerico."
+                    "label": "250+ units vs Corporate",
+                    "text": "<strong>Da 250 unità:</strong> gli allarmi diventano segnalazioni approvate con attività; le letture sensore possono alimentare l'ESG. <strong>Corporate:</strong> lo stesso più API, webhook e integrazioni su misura."
                 },
                 {
                     "label": "Modifica",

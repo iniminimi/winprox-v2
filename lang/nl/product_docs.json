@@ -65,8 +65,8 @@
             },
             {
                 "title": "ESG & Compliance",
-                "badge": "Corporate",
-                "badge_mod": "corp",
+                "badge": "250+ units",
+                "badge_mod": "facility",
                 "body": "ESG = Environmental, Social & Governance: meetwaarden voor milieu, veiligheid en compliance (energie, inspecties, …). Optionele module: indicatoren, metingen en opvolgtaken bij terugkerende controles. Registratie via portaal, beheer of API."
             },
             {
@@ -316,7 +316,7 @@
                     "**Toegang:** persoonlijke toegangssleutel (Bearer-token). Intrekbaar. Per sleutel kies je rechten (scopes), bv. alleen meldingen lezen.",
                     "**Organisatie-grens:** elke sleutel hoort bij één organisatie; je ziet nooit data van anderen.",
                     "**Veiligheid:** limiet op verzoeken per minuut. Optionele Idempotency-Key zodat een herhaald verzoek geen dubbele actie veroorzaakt.",
-                    "**IoT apart:** sensoren sturen via een gateway-token (Facility+ / Corporate), niet via dezelfde API-sleutel."
+                    "**IoT apart:** sensoren sturen via een gateway-token (250+ units / Corporate), niet via dezelfde API-sleutel."
                 ]
             },
             {

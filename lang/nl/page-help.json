@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef heb je uitgebreide limieten. Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 100 units (en 100 documenten). Time is inbegrepen. Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Melding toevoegen",
@@ -380,7 +380,7 @@
             "actions": [
                 {
                     "label": "Collega-gebruikers",
-                    "text": "Beheer administratieve medewerkers die voornamelijk op een pc werken. Deze moeten inloggen met e-mail en wachtwoord. Een beheerder is de hoofdgebruiker die de bedrijfsgegevens kan aanpassen. De beheerder kan andere beheerders en medewerkers toevoegen naargelang de keuze van abonnement."
+                    "text": "Beheer administratieve medewerkers die voornamelijk op een pc werken. Deze moeten inloggen met e-mail en wachtwoord. Een beheerder is de hoofdgebruiker die de bedrijfsgegevens kan aanpassen. Beheerders en medewerkers zijn onbeperkt — units bepalen uw abonnement."
                 },
                 {
                     "label": "Briefing afdrukken",
@@ -587,7 +587,7 @@
             "actions": [
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef heb je uitgebreide limieten. Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 100 units (en 100 documenten). Time is inbegrepen; IoT en ESG niet. Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Plan kiezen",
@@ -1190,8 +1190,8 @@
                     "text": "Hier beheert u <strong>gateways</strong>, <strong>sensoren</strong>, <strong>alarmregels</strong> en bekijkt u recente <strong>events</strong>. WinProx ontvangt sensordata; de fysieke sensoren en protocollen blijven bij uw gateway/leverancier."
                 },
                 {
-                    "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:</strong> alarmen worden goedgekeurde meldingen met taken. <strong>Corporate:</strong> hetzelfde, plus sensor-metingen naar ESG wanneer de sensor een unit en numerieke ESG-indicator heeft."
+                    "label": "250+ units vs Corporate",
+                    "text": "<strong>Vanaf 250 units:</strong> alarmen worden goedgekeurde meldingen met taken; sensor-metingen kunnen naar ESG. <strong>Corporate:</strong> hetzelfde plus API, webhooks en integraties op maat."
                 },
                 {
                     "label": "Bewerken",

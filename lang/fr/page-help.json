@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Période d'essai",
-                    "text": "Pendant l'essai, vous disposez de limites étendues. Le tableau de bord affiche les jours restants."
+                    "text": "Pendant l'essai vous avez jusqu'à 100 unités (et 100 documents). Time est inclus. Le tableau de bord affiche les jours restants."
                 },
                 {
                     "label": "Ajouter un signalement",
@@ -380,7 +380,7 @@
             "actions": [
                 {
                     "label": "Utilisateurs collègues",
-                    "text": "Gérez le personnel administratif qui travaille principalement sur PC. Ils doivent se connecter avec e-mail et mot de passe. Un administrateur est l'utilisateur principal qui peut modifier les données de l'entreprise. L'administrateur peut ajouter d'autres administrateurs et collaborateurs selon l'abonnement choisi."
+                    "text": "Gérez les collaborateurs administratifs qui travaillent surtout sur PC. Ils se connectent par e-mail et mot de passe. Un administrateur est l'utilisateur principal qui peut modifier les données de l'entreprise. Administrateurs et collaborateurs sont illimités — les unités déterminent votre abonnement."
                 },
                 {
                     "label": "Imprimer le briefing",
@@ -587,7 +587,7 @@
             "actions": [
                 {
                     "label": "Période d'essai",
-                    "text": "Pendant l'essai, vous disposez de limites étendues. Le tableau de bord affiche les jours restants."
+                    "text": "Pendant l'essai vous avez jusqu'à 100 unités (et 100 documents). Time est inclus ; IoT et ESG non. Le tableau de bord affiche les jours restants."
                 },
                 {
                     "label": "Choisir un plan",
@@ -1190,8 +1190,8 @@
                     "text": "Ici vous gérez les <strong>passerelles</strong>, les <strong>capteurs</strong>, les <strong>règles d’alarme</strong> et consultez les <strong>événements</strong> récents. WinProx reçoit les données des capteurs ; les capteurs physiques et les protocoles restent chez votre passerelle / fournisseur."
                 },
                 {
-                    "label": "Facility vs Corporate",
-                    "text": "<strong>Facility :</strong> les alarmes deviennent des signalements approuvés avec des tâches. <strong>Corporate :</strong> idem, plus les mesures de capteurs vers ESG lorsque le capteur a une unité et un indicateur ESG numérique."
+                    "label": "250+ units vs Corporate",
+                    "text": "<strong>À partir de 250 unités :</strong> les alarmes deviennent des signalements approuvés avec tâches ; les mesures capteur peuvent alimenter l'ESG. <strong>Corporate :</strong> idem plus API, webhooks et intégrations sur mesure."
                 },
                 {
                     "label": "Modifier",

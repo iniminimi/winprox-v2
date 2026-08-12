@@ -48,30 +48,65 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Was kostet WinProx?",
-            "intro": "Sie starten mit einem kostenlosen Probemonat (Facility- und Time-Funktionen). Danach wählen Sie Time, Facility oder Corporate unter Abonnement. Limits gelten für Ihre gesamte Organisation (Units, Standorte, Dokumente, Fotos, Benutzer).",
-            "summary": "Testphase, dann WinProx Time, Facility oder Corporate. Time in allen Formeln; IoT Connect bei Facility und Corporate; ESG, API und Webhooks bei Corporate.",
-            "content_note": "Dokumente und Fotos zählen für die gesamte Organisation. Während der Testphase gelten niedrigere Limits (u.a. max. 10 Dokumente/Fotos). Genaue Limits und Preise stehen unter Abonnement.",
+            "intro": "Starten Sie mit einem kostenlosen Testmonat (bis 100 Einheiten). Wählen Sie dann eine Facility-Stufe unter Abonnement: 10, 25, 50, 100, 250, 500 oder 1.000 Einheiten. Corporate ist individuell (>1.000 Einheiten oder bei Bedarf an API/Webhooks).",
+            "summary": "Test bis 100 Einheiten, dann 7 Facility-Stufen. Time überall inklusive; IoT und ESG ab 250 Einheiten; API und Webhooks bei Corporate.",
+            "content_note": "Dokumente = Einheiten (1 pro Einheit). Standorte, Benutzer und Fotos bei Meldungen/Aufgaben unbegrenzt. Preise unter Abonnement.",
             "plans": {
-                "time": {
-                    "units": "Bis zu 10 Units / Standorte / Dokumente / Fotos",
-                    "users": "1 Administrator + 1 Mitarbeiter · unbegrenzt Ausführende (CSV/Excel)",
-                    "announcements": "149 € / Monat · Time-Modul inklusive",
-                    "documents": "QR-Meldungen und Aufgaben innerhalb Ihrer Limits · keine API",
-                    "description": "Ideal zum Start mit Zeiterfassung und grundlegenden Facility-Workflows."
+                "facility_10": {
+                    "units": "Bis 10 Einheiten · 10 Dokumente",
+                    "announcements": "€99 / Monat",
+                    "documents": "Time inklusive · kein IoT, ESG oder API",
+                    "description": "Ideal für den kleinen Start.",
+                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
                 },
-                "facility": {
-                    "units": "Bis zu 100 Units / Standorte / Dokumente / Fotos",
-                    "users": "1 Administrator + bis zu 4 Mitarbeiter · unbegrenzt Ausführende (CSV/Excel)",
-                    "announcements": "€399 / Monat · Time und IoT Connect inklusive",
-                    "documents": "CSV/Excel-Import für Units und Ausführende · keine API",
-                    "description": "Vollständige Facility-Workflows in größerem Maßstab, inklusive WinProx Time und IoT Connect."
+                "facility_25": {
+                    "units": "Bis 25 Einheiten · 25 Dokumente",
+                    "announcements": "€129 / Monat",
+                    "documents": "Time inklusive · kein IoT, ESG oder API",
+                    "description": "Für wachsende Organisationen.",
+                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
+                },
+                "facility_50": {
+                    "units": "Bis 50 Einheiten · 50 Dokumente",
+                    "announcements": "€179 / Monat",
+                    "documents": "Time inklusive · kein IoT, ESG oder API",
+                    "description": "Mehr Einheiten, gleiche Einfachheit.",
+                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
+                },
+                "facility_100": {
+                    "units": "Bis 100 Einheiten · 100 Dokumente",
+                    "announcements": "€249 / Monat",
+                    "documents": "Time inklusive · kein IoT, ESG oder API",
+                    "description": "Gleiche Grenze wie Test, bezahlt.",
+                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
+                },
+                "facility_250": {
+                    "units": "Bis 250 Einheiten · 250 Dokumente",
+                    "announcements": "€399 / Monat",
+                    "documents": "Time, IoT Connect und ESG inklusive · kein API",
+                    "description": "IoT und ESG ab dieser Stufe.",
+                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
+                },
+                "facility_500": {
+                    "units": "Bis 500 Einheiten · 500 Dokumente",
+                    "announcements": "€599 / Monat",
+                    "documents": "Time, IoT Connect und ESG inklusive · kein API",
+                    "description": "Für größere Portfolios.",
+                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
+                },
+                "facility_1000": {
+                    "units": "Bis 1.000 Einheiten · 1.000 Dokumente",
+                    "announcements": "€999 / Monat",
+                    "documents": "Time, IoT Connect und ESG inklusive · kein API",
+                    "description": "Höchste Standardstufe.",
+                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
                 },
                 "corporate": {
-                    "units": "Unbegrenzte Daten",
-                    "users": "Skalierbar für große Portfolios",
-                    "announcements": "€999 / Monat · ESG, IoT, API und Webhooks",
-                    "documents": "Prioritäts-Support",
-                    "description": "Für Enterprise-Portfolios und Integrationen, inklusive ESG und IoT Connect."
+                    "units": "Vereinbarte Einheiten (= Dokumente)",
+                    "announcements": "Individueller Preis",
+                    "documents": "API, Webhooks, Integrationen und SLA individuell",
+                    "description": "Für >1.000 Einheiten oder bei Bedarf an API/Webhooks/Integrationen.",
+                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
                 }
             }
         },
@@ -140,8 +175,8 @@
             "slug": "esg",
             "type": "text",
             "title": "Was ist ESG & Compliance?",
-            "body": "ESG ist ein optionales Modul (Corporate), um Messwerte bei wiederkehrenden Inspektionen zu erfassen (Energie, Sicherheit, …). Administratoren sehen Indikatoren, Messungen und Folgeaufgaben. Verknüpfen Sie einen Indikator mit einer wiederkehrenden Meldung; Messungen erfolgen über Portal oder API.",
-            "summary": "Optionales ESG-Modul: Indikatoren, Messungen und Nachverfolgung bei wiederkehrenden Inspektionen (Corporate)."
+            "body": "ESG ist ein Modul ab 250 Einheiten (und bei Corporate), um Messwerte bei wiederkehrenden Inspektionen zu erfassen (Energie, Sicherheit, …). Administratoren sehen Indikatoren, Messungen und Folgeaufgaben. Indikator an wiederkehrende Meldung koppeln; Messungen über Portal oder API (Corporate).",
+            "summary": "ESG-Modul ab 250 Einheiten: Indikatoren, Messungen und Nachverfolgung bei wiederkehrenden Inspektionen."
         },
         "for_who": {
             "slug": "for_who",
@@ -258,15 +293,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API und Webhooks?",
-            "body": "Auf Corporate (oder wenn API freigeschaltet) verwalten Sie unter Einstellungen API-Tokens und ausgehende Webhooks (HMAC-signiert). So koppeln Sie WinProx an andere Systeme für Meldungen, Aufgaben, Unit-Checks (unit.check.recorded), ESG-Messungen und mehr. IoT Connect nutzt ein separates Gateway-Token für Sensor-Ingest (auch auf Facility).",
-            "summary": "API-Tokens und Webhooks unter Einstellungen (Corporate); u. a. Meldungen, Aufgaben, Unit-Checks, ESG; HMAC-Zustellung. IoT-Ingest via Gateway-Token auch auf Facility."
+            "body": "Bei Corporate (oder wenn API freigeschaltet) verwalten Sie API-Tokens und ausgehende Webhooks (HMAC) unter Einstellungen. Koppeln Sie WinProx an andere Systeme für Meldungen, Aufgaben, Unit-Checks (unit.check.recorded), ESG-Messungen u. a. IoT Connect nutzt ein separates Gateway-Token für Sensor-Ingest (ab 250 Einheiten).",
+            "summary": "API-Tokens und Webhooks unter Einstellungen (Corporate); Meldungen, Aufgaben, Unit-Checks, ESG; HMAC-Lieferungen. IoT-Ingest via Gateway-Token ab 250 Einheiten."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "Was ist IoT Connect?",
-            "body": "IoT Connect verbindet Sensor-Gateways mit WinProx, ohne dass WinProx Hardware verkauft. Alarme (z. B. Wasserleck, Tür zu lange offen) erzeugen automatisch eine freigegebene Meldung und Aufgabe. Auf Corporate können Sensorwerte auch als ESG-Messungen gespeichert werden. Verwalten Sie Gateways, Sensoren und Regeln unter IoT Connect; das Gateway sendet an POST /api/v1/iot/events mit Gateway-Token (auch auf Facility, ohne vollständige REST-API).",
-            "summary": "IoT Connect: Sensoralarme → Meldungen (Facility und Corporate); Messungen → ESG (Corporate). Gateway-Token-Ingest."
+            "body": "IoT Connect verbindet Sensor-Gateways mit WinProx (ab 250 Einheiten). Alarme (Wasserleck, Tür zu lange offen) erstellen automatisch eine freigegebene Meldung und Aufgabe. Sensor-Messungen können als ESG-Messungen gespeichert werden. Gateways, Sensoren und Regeln unter IoT Connect verwalten; Gateway sendet an POST /api/v1/iot/events mit Gateway-Token.",
+            "summary": "IoT Connect ab 250 Einheiten: Sensor-Alarme → Meldungen; Messungen → ESG. Gateway-Token-Ingest."
         },
         "unit_checks": {
             "slug": "unit_checks",

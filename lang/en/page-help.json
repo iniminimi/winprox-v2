@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have extended limits. The dashboard shows remaining days."
+                    "text": "During the trial you have up to 100 units (and 100 documents). Time is included. The dashboard shows remaining days."
                 },
                 {
                     "label": "Add issue",
@@ -380,7 +380,7 @@
             "actions": [
                 {
                     "label": "Colleague users",
-                    "text": "Manage administrative staff who primarily work on a PC. They must log in with email and password. An administrator is the main user who can update company details. The administrator can add other administrators and staff members depending on the chosen subscription."
+                    "text": "Manage administrative staff who mainly work on a PC. They must log in with email and password. An administrator is the main user who can change company details. Administrators and staff are unlimited — units determine your subscription."
                 },
                 {
                     "label": "Print briefing",
@@ -587,7 +587,7 @@
             "actions": [
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have extended limits. The dashboard shows remaining days."
+                    "text": "During the trial you have up to 100 units (and 100 documents). Time is included; IoT and ESG are not. The dashboard shows remaining days."
                 },
                 {
                     "label": "Choose plan",
@@ -1190,8 +1190,8 @@
                     "text": "Manage <strong>gateways</strong>, <strong>sensors</strong>, <strong>alarm rules</strong> and review recent <strong>events</strong>. WinProx receives sensor events; physical sensors and protocols stay with your gateway/vendor."
                 },
                 {
-                    "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:</strong> alarms become approved issues with tasks. <strong>Corporate:</strong> the same, plus sensor measurements into ESG when the sensor has a unit and numeric ESG indicator."
+                    "label": "250+ units vs Corporate",
+                    "text": "<strong>From 250 units:</strong> alarms become approved issues with tasks; sensor readings can feed ESG. <strong>Corporate:</strong> same plus API, webhooks and custom integrations."
                 },
                 {
                     "label": "Edit",

@@ -168,7 +168,7 @@
                 />
                 <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.products.lead') }}</p>
                 <div class="wp-welcome-product-grid">
-                    @foreach (['facility' => 'features.facility', 'time' => 'features.time'] as $productKey => $featureRoute)
+                    @foreach (['facility' => 'features.facility'] as $productKey => $featureRoute)
                         <article class="wp-welcome-product-card">
                             <figure class="wp-welcome-product-card__logo">
                                 <img

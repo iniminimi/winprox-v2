@@ -2,7 +2,7 @@
     "meta_title": "WinProx — Ogni sede, un portale QR",
     "social": {
         "og_title": "WinProx — Ogni sede, un portale QR",
-        "og_description": "Segnala guasti, gestisci attività e registra presenze tramite portali QR intelligenti. WinProx Facility, Time e modulo ESG opzionale su un'unica piattaforma."
+        "og_description": "Segnala problemi, gestisci attività e registra presenze via portali QR. WinProx Facility con Time incluso — scalabile da 10 a 1.000+ unità."
     },
     "login": "Accedi",
     "register": "Registrati",
@@ -66,34 +66,22 @@
     },
     "products": {
         "eyebrow": "Prodotti",
-        "title": "Una piattaforma, due prodotti chiave.",
-        "lead": "WinProx Facility per segnalazioni e attività. WinProx Time per presenza e turni — incluso in ogni abbonamento. Lo stesso QR Clock Point, estendibile con ESG e IoT.",
-        "iot_note": "IoT Connect è opzionale: i sensori inviano allarmi direttamente a segnalazioni e attività.",
+        "title": "WinProx Facility",
+        "lead": "Un prodotto per la gestione quotidiana di edifici, sedi e impianti. Time (ore e Clock Points) è incluso di default. IoT ed ESG da 250 unità; API e webhook su Corporate.",
+        "iot_note": "IoT Connect è disponibile da 250 unità: i sensori inviano allarmi direttamente a segnalazioni e attività.",
         "iot_cta": "Vedi IoT Connect",
         "learn_more": "Scopri di più",
         "facility": {
             "name": "WinProx Facility",
-            "tagline": "Segnalazione → attività → completamento",
-            "body": "Gestione facility completa con portali QR intelligenti su ogni unità. Time incluso; ESG opzionale.",
+            "tagline": "Segnalazione → attività → chiusura",
+            "body": "Gestione facility completa con portali QR intelligenti su ogni unità. Inizia in piccolo e cresci — da 10 a 1.000 unità.",
             "logo_alt": "WinProx Facility",
             "bullets": [
                 "Segnalazioni e attività",
                 "Sedi e unità",
-                "Controlli unità opzionali",
-                "ESG opzionale",
-                "Time opzionale"
-            ]
-        },
-        "time": {
-            "name": "WinProx Time",
-            "tagline": "Rilevazione presenze compatta in sede",
-            "body": "Pacchetto base per presenze, pause e turni tramite QR Clock Point — ideale quando il time tracking è prioritario.",
-            "logo_alt": "WinProx Time",
-            "bullets": [
-                "Entrata e uscita",
-                "Pause",
-                "Turni",
-                "Clock Points"
+                "Time incluso",
+                "Unit check opzionali",
+                "IoT ed ESG da 250 unità"
             ]
         }
     },
@@ -351,7 +339,7 @@
                 "spalle?"
             ]
         ],
-        "body": "Scegli WinProx Facility per il quadro completo, o WinProx Time quando il time tracking è prioritario.",
+        "body": "Inizia in piccolo con un mese di prova gratuito (fino a 100 unità) e cresci con la tua organizzazione.",
         "cta_start": "Prova gratuita",
         "cta_contact": "Contattaci"
     },

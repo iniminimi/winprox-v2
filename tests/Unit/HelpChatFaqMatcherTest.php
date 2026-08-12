@@ -47,14 +47,14 @@ it('beantwoordt aan-de-slag vanuit handleiding', function (): void {
         ->and($answer)->toContain(__('manual.step_1_title'));
 });
 
-it('beantwoordt pricing met IoT op Facility via FAQ', function (): void {
+it('beantwoordt pricing via FAQ met nieuwe tier-structuur', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 
     $answer = $matcher->match('Wat kost Facility?', 'nl');
 
     expect($answer)->toBe(__('faq.items.pricing.summary'))
-        ->and($answer)->toContain('IoT Connect')
-        ->and($answer)->toContain('Facility');
+        ->and($answer)->toContain('250')
+        ->and($answer)->toContain('Corporate');
 });
 
 it('beantwoordt meldingsvragen vanuit pagina-hulp', function (): void {

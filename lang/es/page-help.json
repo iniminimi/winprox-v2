@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene límites ampliados. El panel de control muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 100 unidades (y 100 documentos). Time está incluido. El panel muestra los días restantes."
                 },
                 {
                     "label": "Añadir incidencia",
@@ -380,7 +380,7 @@
             "actions": [
                 {
                     "label": "Usuarios colegas",
-                    "text": "Gestione el personal administrativo que trabaja principalmente en PC. Deben iniciar sesión con correo y contraseña. Un administrador es el usuario principal que puede actualizar los datos de la empresa. El administrador puede añadir otros administradores y empleados según la suscripción elegida."
+                    "text": "Gestione empleados administrativos que trabajan principalmente en PC. Deben iniciar sesión con correo y contraseña. Un administrador es el usuario principal que puede modificar los datos de la empresa. Administradores y empleados son ilimitados — las unidades determinan su suscripción."
                 },
                 {
                     "label": "Imprimir briefing",
@@ -587,7 +587,7 @@
             "actions": [
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene límites ampliados. El panel de control muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 100 unidades (y 100 documentos). Time está incluido. El panel muestra los días restantes."
                 },
                 {
                     "label": "Elegir plan",
@@ -1190,8 +1190,8 @@
                     "text": "Aquí gestiona <strong>pasarelas</strong>, <strong>sensores</strong>, <strong>reglas de alarma</strong> y consulta los <strong>eventos</strong> recientes. WinProx recibe datos de sensores; los sensores físicos y los protocolos permanecen en su pasarela / proveedor."
                 },
                 {
-                    "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:</strong> las alarmas se convierten en incidencias aprobadas con tareas. <strong>Corporate:</strong> lo mismo, más mediciones de sensores hacia ESG cuando el sensor tiene una unidad y un indicador ESG numérico."
+                    "label": "250+ units vs Corporate",
+                    "text": "<strong>Desde 250 unidades:</strong> las alarmas se convierten en incidencias aprobadas con tareas; las lecturas de sensores pueden alimentar ESG. <strong>Corporate:</strong> lo mismo más API, webhooks e integraciones a medida."
                 },
                 {
                     "label": "Editar",

@@ -65,8 +65,8 @@
             },
             {
                 "title": "ESG & Compliance",
-                "badge": "Corporate",
-                "badge_mod": "corp",
+                "badge": "250+ Einheiten",
+                "badge_mod": "facility",
                 "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Optional module: indicators, measurements and follow-up tasks for recurring checks. Record via portal, back office or API."
             },
             {
@@ -316,7 +316,7 @@
                     "**Zugang:** persönlicher Zugangstoken (Bearer). Widerrufbar. Pro Token wählen Sie Rechte (Scopes), z. B. nur Meldungen lesen.",
                     "**Organisationsgrenze:** jeder Token gehört zu einer Organisation; Sie sehen nie Daten anderer Kunden.",
                     "**Sicherheit:** Limit für Anfragen pro Minute. Optionaler Idempotency-Key, damit eine wiederholte Anfrage keine Doppelaktion erzeugt.",
-                    "**IoT separat:** Sensoren nutzen einen Gateway-Token (Facility+ / Corporate), nicht denselben API-Token."
+                    "**IoT separat:** Sensoren nutzen einen Gateway-Token (250+ Einheiten / Corporate), nicht denselben API-Token."
                 ]
             },
             {

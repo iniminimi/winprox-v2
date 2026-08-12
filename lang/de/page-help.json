@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Testphase",
-                    "text": "Während der Testphase haben Sie erweiterte Limits. Das Dashboard zeigt verbleibende Tage."
+                    "text": "Während der Testphase haben Sie bis zu 100 Einheiten (und 100 Dokumente). Time ist enthalten. Das Dashboard zeigt verbleibende Tage."
                 },
                 {
                     "label": "Meldung hinzufügen",
@@ -380,7 +380,7 @@
             "actions": [
                 {
                     "label": "Kollegenbenutzer",
-                    "text": "Verwalten Sie administrative Mitarbeiter, die hauptsächlich am PC arbeiten. Sie müssen sich mit E-Mail und Passwort anmelden. Ein Administrator ist der Hauptbenutzer, der die Unternehmensdaten anpassen kann. Der Administrator kann je nach gewähltem Abonnement weitere Administratoren und Mitarbeiter hinzufügen."
+                    "text": "Verwalten Sie administrative Mitarbeiter, die hauptsächlich am PC arbeiten. Diese melden sich mit E-Mail und Passwort an. Ein Administrator ist der Hauptbenutzer, der Unternehmensdaten ändern kann. Administratoren und Mitarbeiter sind unbegrenzt — Einheiten bestimmen Ihr Abonnement."
                 },
                 {
                     "label": "Briefing drucken",
@@ -587,7 +587,7 @@
             "actions": [
                 {
                     "label": "Testphase",
-                    "text": "Während der Testphase haben Sie erweiterte Limits. Das Dashboard zeigt verbleibende Tage."
+                    "text": "Während der Testphase haben Sie bis zu 100 Einheiten (und 100 Dokumente). Time ist enthalten; IoT und ESG nicht. Das Dashboard zeigt verbleibende Tage."
                 },
                 {
                     "label": "Plan wählen",
@@ -1190,8 +1190,8 @@
                     "text": "Hier verwalten Sie <strong>Gateways</strong>, <strong>Sensoren</strong>, <strong>Alarmregeln</strong> und sehen aktuelle <strong>Events</strong>. WinProx empfängt Sensordaten; die physischen Sensoren und Protokolle bleiben bei Ihrem Gateway bzw. Anbieter."
                 },
                 {
-                    "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:</strong> Alarme werden freigegebene Meldungen mit Aufgaben. <strong>Corporate:</strong> dasselbe, plus Sensormessungen in ESG, wenn der Sensor eine Unit und einen numerischen ESG-Indikator hat."
+                    "label": "250+ units vs Corporate",
+                    "text": "<strong>Ab 250 Einheiten:</strong> Alarme werden freigegebene Meldungen mit Aufgaben; Sensor-Messungen können ESG speisen. <strong>Corporate:</strong> dasselbe plus API, Webhooks und individuelle Integrationen."
                 },
                 {
                     "label": "Bearbeiten",

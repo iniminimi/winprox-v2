@@ -48,30 +48,65 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "How much does WinProx cost?",
-            "intro": "You start with a free trial month (facility and time features). After that, choose Time, Facility, or Corporate under Subscription. Limits apply to your entire organisation (units, sites, documents, photos, users).",
-            "summary": "Trial period, then WinProx Time, Facility, or Corporate. Time on all plans; IoT Connect on Facility and Corporate; ESG, API, and webhooks on Corporate.",
-            "content_note": "Documents and photos count for the entire organisation. During the trial, lower limits apply (e.g. max. 10 documents/photos). Exact limits and prices are shown under Subscription.",
+            "intro": "Start with a free trial month (up to 100 units). Then choose a Facility tier under Subscription: 10, 25, 50, 100, 250, 500 or 1,000 units. Corporate is custom (>1,000 units or when API/webhooks are required).",
+            "summary": "Trial up to 100 units, then 7 Facility tiers. Time included everywhere; IoT and ESG from 250 units; API and webhooks on Corporate.",
+            "content_note": "Documents = units (1 per unit). Locations, users and photos on issues/tasks are unlimited. Exact prices are on the Subscription page.",
             "plans": {
-                "time": {
-                    "units": "Up to 10 units / sites / documents / photos",
-                    "users": "1 administrator + 1 staff member · unlimited field workers (CSV/Excel)",
-                    "announcements": "€149 / month · Time module included",
-                    "documents": "QR issues and tasks within your limits · no API",
-                    "description": "Ideal to start with time tracking and basic facility workflows."
+                "facility_10": {
+                    "units": "Up to 10 units · 10 documents",
+                    "announcements": "€99 / month",
+                    "documents": "Time included · no IoT, ESG or API",
+                    "description": "Ideal to start small.",
+                    "users": "Unlimited locations, users and photos on reports"
                 },
-                "facility": {
-                    "units": "Up to 100 units / sites / documents / photos",
-                    "users": "1 administrator + up to 4 staff members · unlimited field workers (CSV/Excel)",
-                    "announcements": "€399 / month · Time and IoT Connect included",
-                    "documents": "CSV/Excel import for units and workers · no API",
-                    "description": "Full facility workflows at scale, including WinProx Time and IoT Connect."
+                "facility_25": {
+                    "units": "Up to 25 units · 25 documents",
+                    "announcements": "€129 / month",
+                    "documents": "Time included · no IoT, ESG or API",
+                    "description": "For growing organisations.",
+                    "users": "Unlimited locations, users and photos on reports"
+                },
+                "facility_50": {
+                    "units": "Up to 50 units · 50 documents",
+                    "announcements": "€179 / month",
+                    "documents": "Time included · no IoT, ESG or API",
+                    "description": "More units, same simplicity.",
+                    "users": "Unlimited locations, users and photos on reports"
+                },
+                "facility_100": {
+                    "units": "Up to 100 units · 100 documents",
+                    "announcements": "€249 / month",
+                    "documents": "Time included · no IoT, ESG or API",
+                    "description": "Same limit as trial, paid.",
+                    "users": "Unlimited locations, users and photos on reports"
+                },
+                "facility_250": {
+                    "units": "Up to 250 units · 250 documents",
+                    "announcements": "€399 / month",
+                    "documents": "Time, IoT Connect and ESG included · no API",
+                    "description": "IoT and ESG from this tier.",
+                    "users": "Unlimited locations, users and photos on reports"
+                },
+                "facility_500": {
+                    "units": "Up to 500 units · 500 documents",
+                    "announcements": "€599 / month",
+                    "documents": "Time, IoT Connect and ESG included · no API",
+                    "description": "For larger portfolios.",
+                    "users": "Unlimited locations, users and photos on reports"
+                },
+                "facility_1000": {
+                    "units": "Up to 1,000 units · 1,000 documents",
+                    "announcements": "€999 / month",
+                    "documents": "Time, IoT Connect and ESG included · no API",
+                    "description": "Highest standard tier.",
+                    "users": "Unlimited locations, users and photos on reports"
                 },
                 "corporate": {
-                    "units": "Unlimited data",
-                    "users": "Scalable for large portfolios",
-                    "announcements": "€999 / month · ESG, IoT, API, and webhooks",
-                    "documents": "Priority support",
-                    "description": "For enterprise portfolios and integrations, including ESG and IoT Connect."
+                    "units": "Agreed units (= documents)",
+                    "announcements": "Custom pricing",
+                    "documents": "API, webhooks, integrations and SLA on request",
+                    "description": "For >1,000 units or when API/webhooks/integrations are required.",
+                    "users": "Unlimited locations, users and photos on reports"
                 }
             }
         },
@@ -140,8 +175,8 @@
             "slug": "esg",
             "type": "text",
             "title": "What is ESG & Compliance?",
-            "body": "ESG is an optional module (Corporate) to record measurement values during recurring inspections (energy, safety, …). Administrators see indicators, measurements, and follow-up tasks. Link an indicator to a recurring issue; measurements happen via the portal or API.",
-            "summary": "Optional ESG module: indicators, measurements, and follow-up for recurring inspections (Corporate)."
+            "body": "ESG is a module from 250 units (and on Corporate) to record measurement values during recurring inspections (energy, safety, …). Administrators see indicators, measurements and follow-up tasks. Link an indicator to a recurring issue; measurements via portal or API (Corporate).",
+            "summary": "ESG module from 250 units: indicators, measurements and follow-up for recurring inspections."
         },
         "for_who": {
             "slug": "for_who",
@@ -258,15 +293,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API and webhooks?",
-            "body": "On Corporate (or when API is enabled), manage API tokens and outgoing webhooks (HMAC-signed) under Settings. Connect WinProx to other systems for issues, tasks, unit checks (unit.check.recorded), ESG measurements and more. IoT Connect uses a separate gateway token for sensor ingest (also on Facility).",
-            "summary": "API tokens and webhooks under Settings (Corporate); issues, tasks, unit checks, ESG, etc.; HMAC deliveries. IoT ingest via gateway token also on Facility."
+            "body": "On Corporate (or when API is enabled) manage API tokens and outgoing webhooks (HMAC-signed) under Settings. Connect WinProx to other systems for issues, tasks, unit checks (unit.check.recorded), ESG measurements and more. IoT Connect uses a separate gateway token for sensor ingest (from 250 units).",
+            "summary": "API tokens and webhooks under Settings (Corporate); issues, tasks, unit checks, ESG; HMAC deliveries. IoT ingest via gateway token from 250 units."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "What is IoT Connect?",
-            "body": "IoT Connect links sensor gateways to WinProx without WinProx selling hardware. Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. On Corporate, sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway posts to POST /api/v1/iot/events with a gateway token (also on Facility, without full REST API).",
-            "summary": "IoT Connect: sensor alarms → issues (Facility and Corporate); measurements → ESG (Corporate). Gateway-token ingest."
+            "body": "IoT Connect links sensor gateways to WinProx (from 250 units). Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. Sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway sends events to POST /api/v1/iot/events with a gateway token.",
+            "summary": "IoT Connect from 250 units: sensor alarms → issues; readings → ESG. Gateway token ingest."
         },
         "unit_checks": {
             "slug": "unit_checks",
