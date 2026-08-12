@@ -862,6 +862,10 @@
                 {
                     "label": "Modules",
                     "text": "Enable or disable optional modules (ESG, IoT Connect). Time (hours, presence and Clock Points) is included with every subscription by default."
+                },
+                {
+                    "label": "Corporate units cap",
+                    "text": "For Corporate organisations: set the agreed number of units (documents = units). Activate Corporate or update the cap from the platform list."
                 }
             ]
         },

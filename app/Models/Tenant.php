@@ -31,6 +31,7 @@ class Tenant extends Model
         'trial_ends_at',
         'billing_plan',
         'billing_active_until',
+        'billing_units_cap',
         'is_active',
         'stripe_customer_id',
         'allow_trial_api',
@@ -736,7 +737,17 @@ class Tenant extends Model
         }
 
         $planKey = $this->effectivePlanKey();
-        if ($planKey === null || $planKey === 'corporate') {
+        if ($planKey === null) {
+            return null;
+        }
+
+        if ($planKey === 'corporate') {
+            if (in_array($field, ['units_limit', 'documents_org_limit'], true)) {
+                $cap = $this->billing_units_cap;
+
+                return is_int($cap) ? $cap : (is_numeric($cap) ? (int) $cap : null);
+            }
+
             return null;
         }
 

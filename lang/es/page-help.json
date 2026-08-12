@@ -862,6 +862,10 @@
                 {
                     "label": "Módulos",
                     "text": "Active o desactive módulos opcionales (ESG, IoT Connect). Time (horas, presencia y Clock Points) está incluido por defecto en cada suscripción."
+                },
+                {
+                    "label": "Tope Corporate",
+                    "text": "Para organizaciones Corporate: establezca las unidades acordadas (documentos = unidades). Active Corporate o ajuste el tope."
                 }
             ]
         },

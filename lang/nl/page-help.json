@@ -862,6 +862,10 @@
                 {
                     "label": "Modules",
                     "text": "Schakel optionele modules in of uit (ESG, IoT Connect). Time (uren, aanwezigheid en Clock Points) hoort standaard bij elk abonnement."
+                },
+                {
+                    "label": "Corporate units-cap",
+                    "text": "Voor Corporate-organisaties: stel het afgesproken aantal units in (documenten = units). Activeer Corporate via «Corporate activeren» of pas de cap aan."
                 }
             ]
         },

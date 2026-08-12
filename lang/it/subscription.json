@@ -3,7 +3,7 @@
     "public_title": "Prezzi e piani",
     "public_subtitle": "Scegli il numero di unità adatto alla tua organizzazione. Time incluso in ogni abbonamento. Un mese di prova gratuito.",
     "public_register_cta": "Inizia prova gratuita",
-    "subtitle": "Dopo il mese gratuito, scegli un piano. I limiti si applicano per organizzazione su unità, documenti, foto e utenti.",
+    "subtitle": "Dopo il mese gratuito, scegli un piano. I limiti valgono per unità e documenti (1 per unità); sedi, utenti e foto illimitati.",
     "plans_heading": "Piani",
     "plans_intro": "Inizia in piccolo e cresci gradualmente. Ogni abbonamento include sedi illimitate, utenti illimitati, Time e foto illimitate nelle segnalazioni.",
     "page_limits_locations_body": "Stai usando :current di :max sedi. \"Aggiungi sede\" resta disabilitato fino all'upgrade.",
@@ -151,7 +151,8 @@
         "admin_only": "Solo un amministratore può scegliere un abbonamento.",
         "activation_disabled": "Auto-attivazione disabilitata. Contatta WinProx.",
         "csv_workers_not_allowed": "L'importazione CSV/Excel degli esecutori non è disponibile in questo abbonamento.",
-        "csv_units_not_allowed": "L'importazione CSV/Excel delle unità richiede un abbonamento a pagamento."
+        "csv_units_not_allowed": "L'importazione CSV/Excel delle unità richiede un abbonamento a pagamento.",
+        "corporate_contact": "Corporate si attiva su misura. Contatta WinProx."
     },
     "status_module_iot": "IoT Connect è attivo sul tuo account.",
     "purge": {
@@ -203,5 +204,20 @@
         "status_scheduled_expired_trial": "Senza abbonamento, i dati dell’organizzazione verranno eliminati automaticamente il :date (:timezone).",
         "expired_trial_subscribe_hint": "Attiva un abbonamento per interrompere, oppure esporta prima i dati via Impostazioni.",
         "banner_expired_trial": "Ancora :days giorni alla cancellazione automatica dei dati (prevista :date). Abbonati per conservarli."
-    }
+    },
+    "comparison_heading": "Confronto",
+    "comparison_col_plan": "Piano",
+    "comparison_col_price": "Prezzo",
+    "comparison_col_units": "Unità",
+    "comparison_col_documents": "Documenti",
+    "comparison_col_iot": "IoT + ESG",
+    "comparison_col_api": "API",
+    "comparison_yes": "Sì",
+    "comparison_no": "No",
+    "comparison_custom": "Su misura",
+    "comparison_trial_price": "Gratis",
+    "comparison_note": "Prova: 100 unità, Time incluso. Sedi, utenti e foto sempre illimitati.",
+    "contact_sales_cta": "Contattaci",
+    "public_contact_cta": "Richiedi preventivo",
+    "contact_sales_subject": "WinProx Corporate — preventivo"
 }

@@ -162,6 +162,76 @@
             <p class="wp-muted">{{ __('subscription.plans_intro') }}</p>
         </header>
 
+        @if ($publicMode)
+            <div class="wp-billing-comparison wp-stack-tight">
+                <h3 class="wp-subhead">{{ __('subscription.comparison_heading') }}</h3>
+                <div class="wp-billing-comparison-scroll">
+                    <table class="wp-billing-comparison-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{ __('subscription.comparison_col_plan') }}</th>
+                                <th scope="col">{{ __('subscription.comparison_col_price') }}</th>
+                                <th scope="col">{{ __('subscription.comparison_col_units') }}</th>
+                                <th scope="col">{{ __('subscription.comparison_col_documents') }}</th>
+                                <th scope="col">{{ __('subscription.comparison_col_iot') }}</th>
+                                <th scope="col">{{ __('subscription.comparison_col_api') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">{{ __('subscription.plans.trial.name') }}</th>
+                                <td>{{ __('subscription.comparison_trial_price') }}</td>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>{{ __('subscription.comparison_no') }}</td>
+                                <td>{{ __('subscription.comparison_no') }}</td>
+                            </tr>
+                            @foreach ($planKeys as $planKey)
+                                @php
+                                    $planConfig = config("billing.plans.{$planKey}", []);
+                                    $unitsLimit = $planConfig['units_limit'] ?? null;
+                                    $docsLimit = $planConfig['documents_org_limit'] ?? null;
+                                @endphp
+                                <tr>
+                                    <th scope="row">{{ __("subscription.plans.{$planKey}.name") }}</th>
+                                    <td>{{ __("subscription.plans.{$planKey}.price") }}</td>
+                                    <td>
+                                        @if ($unitsLimit !== null)
+                                            {{ number_format((int) $unitsLimit, 0, ',', '.') }}
+                                        @else
+                                            {{ __('subscription.comparison_custom') }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($docsLimit !== null)
+                                            {{ number_format((int) $docsLimit, 0, ',', '.') }}
+                                        @else
+                                            {{ __('subscription.comparison_custom') }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if (! empty($planConfig['iot_module']))
+                                            {{ __('subscription.comparison_yes') }}
+                                        @else
+                                            {{ __('subscription.comparison_no') }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if (! empty($planConfig['api_access']))
+                                            {{ __('subscription.comparison_yes') }}
+                                        @else
+                                            {{ __('subscription.comparison_no') }}
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <p class="wp-muted wp-text-sm">{{ __('subscription.comparison_note') }}</p>
+            </div>
+        @endif
+
         <div class="wp-billing-plan-list">
             @foreach ($planKeys as $planKey)
                 @php
@@ -198,7 +268,7 @@
                         <div class="wp-billing-plan-card-action">
                             @if ($isCurrentPlan && ($billingStatus ?? null) === 'paid')
                                 <span class="wp-pill wp-pill--done">{{ __('subscription.current_plan') }}</span>
-                            @else
+                            @elseif (config("billing.plans.{$planKey}.self_activate", true))
                                 <button
                                     type="button"
                                     class="btn btn--primary btn--block"
@@ -209,13 +279,29 @@
                                     <span wire:loading.remove>{{ __('subscription.choose_plan') }}</span>
                                     <span wire:loading>{{ __('subscription.choose_plan_loading') }}</span>
                                 </button>
+                            @else
+                                <a
+                                    href="mailto:{{ config('billing.contact_email') }}?subject={{ rawurlencode(__('subscription.contact_sales_subject')) }}"
+                                    class="btn btn--ghost btn--block"
+                                >
+                                    {{ __('subscription.contact_sales_cta') }}
+                                </a>
                             @endif
                         </div>
                     @elseif ($publicMode)
                         <div class="wp-billing-plan-card-action">
-                            <a href="{{ route('register') }}" class="btn btn--primary btn--block">
-                                {{ __('subscription.public_register_cta') }}
-                            </a>
+                            @if ($planKey === 'corporate')
+                                <a
+                                    href="mailto:{{ config('billing.contact_email') }}?subject={{ rawurlencode(__('subscription.contact_sales_subject')) }}"
+                                    class="btn btn--ghost btn--block"
+                                >
+                                    {{ __('subscription.public_contact_cta') }}
+                                </a>
+                            @else
+                                <a href="{{ route('register') }}" class="btn btn--primary btn--block">
+                                    {{ __('subscription.public_register_cta') }}
+                                </a>
+                            @endif
                         </div>
                     @endif
                 </article>

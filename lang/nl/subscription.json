@@ -3,7 +3,7 @@
     "public_title": "Prijzen & formules",
     "public_subtitle": "Kies het aantal units dat bij uw organisatie past. Time inbegrepen in elk abonnement. Één maand gratis proberen.",
     "public_register_cta": "Start gratis proefperiode",
-    "subtitle": "Na je gratis maand kies je een formule. Limieten gelden per organisatie voor units, documenten, foto's en gebruikers.",
+    "subtitle": "Na je gratis maand kies je een formule. Limieten gelden voor units en documenten (1 per unit); locaties, gebruikers en foto's zijn onbeperkt.",
     "plans_heading": "Formules",
     "plans_intro": "Begin klein en groei mee. Elk abonnement bevat onbeperkt locaties, onbeperkt gebruikers, Time en onbeperkt foto's bij meldingen.",
     "choose_plan": "Kies deze formule",
@@ -151,7 +151,8 @@
         "admin_only": "Alleen een beheerder kan een abonnement kiezen.",
         "activation_disabled": "Zelf-activeren is uitgeschakeld. Neem contact op met WinProx.",
         "csv_workers_not_allowed": "CSV/Excel worker-import is niet beschikbaar op dit abonnement.",
-        "csv_units_not_allowed": "CSV/Excel unit-import vereist een betaald abonnement."
+        "csv_units_not_allowed": "CSV/Excel unit-import vereist een betaald abonnement.",
+        "corporate_contact": "Corporate wordt op maat geactiveerd. Neem contact op met WinProx."
     },
     "status_module_iot": "IoT Connect actief op je account.",
     "purge": {
@@ -203,5 +204,20 @@
         "status_scheduled_expired_trial": "Zonder abonnement worden de organisatiegegevens automatisch verwijderd op :date (:timezone).",
         "expired_trial_subscribe_hint": "Activeer een abonnement om dit te stoppen, of exporteer eerst je gegevens via Instellingen.",
         "banner_expired_trial": "Nog :days dagen tot automatische verwijdering van de gegevens (gepland :date). Abonneer om te behouden."
-    }
+    },
+    "comparison_heading": "Vergelijking",
+    "comparison_col_plan": "Formule",
+    "comparison_col_price": "Prijs",
+    "comparison_col_units": "Units",
+    "comparison_col_documents": "Documenten",
+    "comparison_col_iot": "IoT + ESG",
+    "comparison_col_api": "API",
+    "comparison_yes": "Ja",
+    "comparison_no": "Nee",
+    "comparison_custom": "Op maat",
+    "comparison_trial_price": "Gratis",
+    "comparison_note": "Proefperiode: 100 units, Time inbegrepen. Locaties, gebruikers en foto's altijd onbeperkt.",
+    "contact_sales_cta": "Neem contact op",
+    "public_contact_cta": "Vraag offerte aan",
+    "contact_sales_subject": "WinProx Corporate — offerte"
 }

@@ -3,7 +3,7 @@
     "public_title": "Tarifs & formules",
     "public_subtitle": "Choisissez le nombre d'unités adapté à votre organisation. Time inclus dans chaque abonnement. Un mois d'essai gratuit.",
     "public_register_cta": "Démarrer l'essai gratuit",
-    "subtitle": "Après votre mois gratuit, choisissez une formule. Les limites s'appliquent par organisation pour les unités, documents, photos et utilisateurs.",
+    "subtitle": "Après votre mois gratuit, choisissez une formule. Les limites s'appliquent aux unités et documents (1 par unité) ; emplacements, utilisateurs et photos illimités.",
     "plans_heading": "Formules",
     "plans_intro": "Commencez petit et grandissez à votre rythme. Chaque abonnement inclut des sites illimités, des utilisateurs illimités, Time et des photos illimitées sur les signalements.",
     "page_limits_locations_body": "Vous utilisez :current sur :max sites. \"Ajouter un site\" reste désactivé jusqu'à la mise à niveau.",
@@ -151,7 +151,8 @@
         "admin_only": "Seul un administrateur peut choisir un abonnement.",
         "activation_disabled": "Auto-activation désactivée. Contactez WinProx.",
         "csv_workers_not_allowed": "L'import CSV/Excel des intervenants n'est pas disponible avec cet abonnement.",
-        "csv_units_not_allowed": "L'import CSV/Excel des unités nécessite un abonnement payant."
+        "csv_units_not_allowed": "L'import CSV/Excel des unités nécessite un abonnement payant.",
+        "corporate_contact": "Corporate s'active sur mesure. Contactez WinProx."
     },
     "status_module_iot": "IoT Connect est actif sur votre compte.",
     "purge": {
@@ -203,5 +204,20 @@
         "status_scheduled_expired_trial": "Sans abonnement, les données de l’organisation seront automatiquement supprimées le :date (:timezone).",
         "expired_trial_subscribe_hint": "Activez un abonnement pour arrêter cela, ou exportez d’abord vos données via Paramètres.",
         "banner_expired_trial": "Encore :days jours avant la suppression automatique des données (prévue :date). Abonnez-vous pour les conserver."
-    }
+    },
+    "comparison_heading": "Comparaison",
+    "comparison_col_plan": "Formule",
+    "comparison_col_price": "Prix",
+    "comparison_col_units": "Unités",
+    "comparison_col_documents": "Documents",
+    "comparison_col_iot": "IoT + ESG",
+    "comparison_col_api": "API",
+    "comparison_yes": "Oui",
+    "comparison_no": "Non",
+    "comparison_custom": "Sur mesure",
+    "comparison_trial_price": "Gratuit",
+    "comparison_note": "Essai : 100 unités, Time inclus. Emplacements, utilisateurs et photos toujours illimités.",
+    "contact_sales_cta": "Nous contacter",
+    "public_contact_cta": "Demander un devis",
+    "contact_sales_subject": "WinProx Corporate — devis"
 }

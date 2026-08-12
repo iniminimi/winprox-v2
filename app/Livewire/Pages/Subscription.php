@@ -115,6 +115,12 @@ class Subscription extends Component
 
         $planKey = $validated['plan'];
 
+        if (! (bool) config("billing.plans.{$planKey}.self_activate", true)) {
+            $this->addError('plan', __('subscription.errors.corporate_contact'));
+
+            return;
+        }
+
         if (! config('billing.allow_tenant_self_activation', true)) {
             $this->addError('plan', __('subscription.errors.activation_disabled'));
 

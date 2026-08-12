@@ -8,6 +8,8 @@ it('toont publieke prijzenpagina met Facility-tiers en Corporate voor gasten', f
         ->assertSee(__('subscription.plans.facility_10.name'))
         ->assertSee(__('subscription.plans.facility_100.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
+        ->assertSee(__('subscription.comparison_heading'))
+        ->assertSee(__('subscription.public_contact_cta'))
         ->assertSee(__('subscription.public_register_cta'), false);
 });
 

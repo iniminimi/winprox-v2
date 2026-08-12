@@ -862,6 +862,10 @@
                 {
                     "label": "Moduli",
                     "text": "Attivi o disattivi i moduli opzionali (ESG, IoT Connect). Time (ore, presenza e Clock Points) è incluso di default in ogni abbonamento."
+                },
+                {
+                    "label": "Cap Corporate",
+                    "text": "Per organizzazioni Corporate: imposta le unità concordate (documenti = unità). Attiva Corporate o aggiorna il cap."
                 }
             ]
         },

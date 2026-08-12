@@ -2,16 +2,21 @@
 
 namespace App\Livewire\Platform;
 
+use App\Actions\Platform\AssignCorporateSubscriptionAction;
+use App\Actions\Platform\SetBillingUnitsCapAction;
 use App\Actions\Platform\StartSupportViewAction;
 use App\Actions\Platform\StopSupportViewAction;
 use App\Actions\Platform\ToggleEsgModuleAction;
 use App\Actions\Platform\ToggleIotModuleAction;
 use App\Actions\Platform\ToggleTimeModuleAction;
 use App\Actions\Platform\ToggleTrialApiAction;
+use App\Http\Requests\Platform\AssignCorporateSubscriptionRequest;
+use App\Http\Requests\Platform\SetBillingUnitsCapRequest;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Platform\SupportTenantContext;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -23,6 +28,9 @@ class Tenants extends Component
     use AuthorizesRequests;
 
     public string $search = '';
+
+    /** @var array<int, string> */
+    public array $unitsCapInputs = [];
 
     public function mount(): void
     {
@@ -64,6 +72,46 @@ class Tenants extends Component
     {
         $tenant = Tenant::query()->findOrFail($tenantId);
         $toggle->handle($tenant, (int) auth()->id());
+    }
+
+    public function saveUnitsCap(int $tenantId, SetBillingUnitsCapAction $action): void
+    {
+        $this->authorize('accessPlatform', User::class);
+
+        $tenant = Tenant::query()->findOrFail($tenantId);
+        $request = new SetBillingUnitsCapRequest;
+        $validated = validator(
+            ['units_cap' => (int) ($this->unitsCapInputs[$tenantId] ?? 0)],
+            $request->rules(),
+            $request->messages(),
+        )->validate();
+
+        try {
+            $action->handle($tenant, (int) $validated['units_cap'], (int) auth()->id());
+        } catch (\InvalidArgumentException) {
+            throw ValidationException::withMessages([
+                'units_cap' => __('platform.errors.not_corporate'),
+            ]);
+        }
+
+        session()->flash('success', __('platform.corporate_units_cap_saved'));
+    }
+
+    public function assignCorporate(int $tenantId, AssignCorporateSubscriptionAction $action): void
+    {
+        $this->authorize('accessPlatform', User::class);
+
+        $tenant = Tenant::query()->findOrFail($tenantId);
+        $request = new AssignCorporateSubscriptionRequest;
+        $validated = validator(
+            ['units_cap' => (int) ($this->unitsCapInputs[$tenantId] ?? 0)],
+            $request->rules(),
+            $request->messages(),
+        )->validate();
+
+        $action->handle($tenant, (int) $validated['units_cap'], auth()->user());
+
+        session()->flash('success', __('platform.corporate_assigned', ['cap' => $validated['units_cap']]));
     }
 
     public function render()

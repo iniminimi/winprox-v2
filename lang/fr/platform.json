@@ -335,5 +335,17 @@
         "phase_cancelling": "Arrêt…",
         "phase_cancelled": "Arrêtée"
     },
-    "iot_module": "IoT Connect"
+    "iot_module": "IoT Connect",
+    "billing_plan": "Formule : :plan",
+    "corporate_units_cap": "Plafond unités",
+    "corporate_units_cap_value": ":cap unités",
+    "corporate_units_cap_save": "Enregistrer",
+    "corporate_assign": "Activer Corporate",
+    "corporate_units_cap_saved": "Plafond enregistré.",
+    "corporate_assigned": "Corporate activé avec :cap unités.",
+    "errors": {
+        "units_cap_required": "Indiquez un plafond d'unités.",
+        "units_cap_invalid": "Le plafond doit être entre 1 et 1 000 000.",
+        "not_corporate": "Cette organisation n'est pas en Corporate."
+    }
 }

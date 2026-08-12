@@ -335,5 +335,17 @@
         "phase_cancelling": "Stopping…",
         "phase_cancelled": "Stopped"
     },
-    "iot_module": "IoT Connect"
+    "iot_module": "IoT Connect",
+    "billing_plan": "Plan: :plan",
+    "corporate_units_cap": "Units cap",
+    "corporate_units_cap_value": ":cap units",
+    "corporate_units_cap_save": "Save cap",
+    "corporate_assign": "Activate Corporate",
+    "corporate_units_cap_saved": "Units cap saved.",
+    "corporate_assigned": "Corporate activated with :cap units.",
+    "errors": {
+        "units_cap_required": "Enter a units cap.",
+        "units_cap_invalid": "Units cap must be between 1 and 1,000,000.",
+        "not_corporate": "This organisation is not on Corporate."
+    }
 }

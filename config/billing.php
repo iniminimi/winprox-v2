@@ -11,9 +11,8 @@
  *  - API & webhooks: uitsluitend Corporate.
  *  - Time: inbegrepen in alle tiers en trial (geen apart product).
  *  - Trial: max. 100 units (= zelfde als 100-tier, gratis/tijdelijk, geen IoT/ESG/API).
- *  - Corporate: geen vaste unit-cap, geen vaste Stripe-prijs, prijs op maat.
- *    Corporate-plan-key = 'corporate' in DB. billingLimitValue() geeft null voor corporate.
- *    Corporate wordt ook voor <1.000 units gebruikt wanneer API/webhooks/integraties/SLA vereist zijn.
+ *  - Corporate: afgesproken units via `tenants.billing_units_cap` (superuser); geen vaste Stripe-prijs.
+ *    documents_org_limit = billing_units_cap (1:1). Zonder cap: geen unit/doc-limiet afgedwongen.
  */
 return [
     'trial_days' => (int) env('BILLING_TRIAL_DAYS', 30),
@@ -198,9 +197,8 @@ return [
             'self_activate'          => true,
         ],
 
-        // --- Corporate: geen vaste unit-cap, geen vaste Stripe-prijs, prijs op maat ---
-        // Alleen API & webhooks op Corporate.
-        // documents_org_limit = null (= dynamisch op basis van afgesproken units, niet technisch begrensd).
+        // --- Corporate: afgesproken units via tenants.billing_units_cap; geen vaste Stripe-prijs ---
+        // documents_org_limit volgt billing_units_cap (1:1). Alleen API & webhooks op Corporate.
         'corporate' => [
             'label_key'              => 'subscription.plans.corporate.name',
             'units_limit'            => null,

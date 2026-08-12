@@ -3419,6 +3419,39 @@ svg.wp-release-worker-row__icon,
     width: 100%;
 }
 
+.wp-billing-comparison-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.wp-billing-comparison-table {
+    width: 100%;
+    min-width: 40rem;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.wp-billing-comparison-table th,
+.wp-billing-comparison-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--wp-border, #e5e7eb);
+    text-align: left;
+    vertical-align: top;
+}
+
+.wp-billing-comparison-table thead th {
+    font-weight: 600;
+    color: var(--wp-muted-text, #6b7280);
+}
+
+.wp-billing-comparison-table tbody th {
+    font-weight: 500;
+}
+
+.wp-billing-comparison {
+    margin-bottom: 1.25rem;
+}
+
 .wp-billing-page-width {
     max-width: 64rem;
     margin-inline: auto;

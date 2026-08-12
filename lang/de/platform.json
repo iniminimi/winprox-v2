@@ -335,5 +335,17 @@
         "phase_cancelling": "Wird gestoppt…",
         "phase_cancelled": "Gestoppt"
     },
-    "iot_module": "IoT Connect"
+    "iot_module": "IoT Connect",
+    "billing_plan": "Tarif: :plan",
+    "corporate_units_cap": "Einheiten-Cap",
+    "corporate_units_cap_value": ":cap Einheiten",
+    "corporate_units_cap_save": "Cap speichern",
+    "corporate_assign": "Corporate aktivieren",
+    "corporate_units_cap_saved": "Einheiten-Cap gespeichert.",
+    "corporate_assigned": "Corporate mit :cap Einheiten aktiviert.",
+    "errors": {
+        "units_cap_required": "Bitte Einheiten-Cap eingeben.",
+        "units_cap_invalid": "Einheiten-Cap muss zwischen 1 und 1.000.000 liegen.",
+        "not_corporate": "Diese Organisation hat keinen Corporate-Tarif."
+    }
 }

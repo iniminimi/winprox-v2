@@ -3,7 +3,7 @@
     "public_title": "Preise & Pakete",
     "public_subtitle": "Wählen Sie die Anzahl der Einheiten, die zu Ihrer Organisation passt. Time in jedem Abonnement enthalten. Einen Monat kostenlos testen.",
     "public_register_cta": "Kostenlose Testphase starten",
-    "subtitle": "Nach dem kostenlosen Monat wählen Sie einen Tarif. Limits gelten pro Organisation für Units, Dokumente, Fotos und Benutzer.",
+    "subtitle": "Nach dem Gratis-Monat wählen Sie einen Tarif. Limits gelten für Einheiten und Dokumente (1 pro Einheit); Standorte, Benutzer und Fotos sind unbegrenzt.",
     "plans_heading": "Tarife",
     "plans_intro": "Klein anfangen und mitwachsen. Jedes Abonnement enthält unbegrenzte Standorte, unbegrenzte Benutzer, Time und unbegrenzte Fotos bei Meldungen.",
     "page_limits_locations_body": "Sie nutzen :current von :max Standorten. \"Standort hinzufügen\" bleibt deaktiviert bis zum Upgrade.",
@@ -151,7 +151,8 @@
         "admin_only": "Nur ein Administrator kann ein Abonnement wählen.",
         "activation_disabled": "Selbstaktivierung deaktiviert. Kontaktieren Sie WinProx.",
         "csv_workers_not_allowed": "CSV/Excel-Import von Ausführern ist in diesem Abonnement nicht verfügbar.",
-        "csv_units_not_allowed": "CSV/Excel-Import von Einheiten erfordert ein bezahltes Abonnement."
+        "csv_units_not_allowed": "CSV/Excel-Import von Einheiten erfordert ein bezahltes Abonnement.",
+        "corporate_contact": "Corporate wird individuell aktiviert. Bitte WinProx kontaktieren."
     },
     "status_module_iot": "IoT Connect ist auf Ihrem Konto aktiv.",
     "purge": {
@@ -203,5 +204,20 @@
         "status_scheduled_expired_trial": "Ohne Abonnement werden die Organisationsdaten am :date (:timezone) automatisch gelöscht.",
         "expired_trial_subscribe_hint": "Aktivieren Sie ein Abonnement, um dies zu stoppen, oder exportieren Sie zuerst Ihre Daten unter Einstellungen.",
         "banner_expired_trial": "Noch :days Tage bis zur automatischen Datenlöschung (geplant :date). Abonnieren Sie, um die Daten zu behalten."
-    }
+    },
+    "comparison_heading": "Vergleich",
+    "comparison_col_plan": "Tarif",
+    "comparison_col_price": "Preis",
+    "comparison_col_units": "Einheiten",
+    "comparison_col_documents": "Dokumente",
+    "comparison_col_iot": "IoT + ESG",
+    "comparison_col_api": "API",
+    "comparison_yes": "Ja",
+    "comparison_no": "Nein",
+    "comparison_custom": "Individuell",
+    "comparison_trial_price": "Gratis",
+    "comparison_note": "Testphase: 100 Einheiten, Time inklusive. Standorte, Benutzer und Fotos immer unbegrenzt.",
+    "contact_sales_cta": "Kontakt aufnehmen",
+    "public_contact_cta": "Angebot anfragen",
+    "contact_sales_subject": "WinProx Corporate — Angebot"
 }

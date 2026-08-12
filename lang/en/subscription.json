@@ -3,7 +3,7 @@
     "public_title": "Pricing & plans",
     "public_subtitle": "Choose the number of units that fits your organisation. Time included in every plan. One month free trial.",
     "public_register_cta": "Start free trial",
-    "subtitle": "After your free month, choose a plan. Limits apply per organisation for units, documents, photos and users.",
+    "subtitle": "After your free month, choose a plan. Limits apply to units and documents (1 per unit); locations, users and photos are unlimited.",
     "plans_heading": "Plans",
     "plans_intro": "Start small and grow as you go. Every plan includes unlimited locations, unlimited users, Time and unlimited photos on reports.",
     "choose_plan": "Choose this plan",
@@ -151,7 +151,8 @@
         "admin_only": "Only an administrator can choose a subscription.",
         "activation_disabled": "Self-activation is disabled. Contact WinProx.",
         "csv_workers_not_allowed": "CSV/Excel worker import is not available on this plan.",
-        "csv_units_not_allowed": "CSV/Excel unit import requires a paid plan."
+        "csv_units_not_allowed": "CSV/Excel unit import requires a paid plan.",
+        "corporate_contact": "Corporate is activated on a custom basis. Please contact WinProx."
     },
     "status_module_iot": "IoT Connect is active on your account.",
     "purge": {
@@ -203,5 +204,20 @@
         "status_scheduled_expired_trial": "Without a subscription, organisation data will be automatically deleted on :date (:timezone).",
         "expired_trial_subscribe_hint": "Activate a subscription to stop this, or export your data first via Settings.",
         "banner_expired_trial": ":days days left until automatic data deletion (scheduled :date). Subscribe to keep your data."
-    }
+    },
+    "comparison_heading": "Comparison",
+    "comparison_col_plan": "Plan",
+    "comparison_col_price": "Price",
+    "comparison_col_units": "Units",
+    "comparison_col_documents": "Documents",
+    "comparison_col_iot": "IoT + ESG",
+    "comparison_col_api": "API",
+    "comparison_yes": "Yes",
+    "comparison_no": "No",
+    "comparison_custom": "Custom",
+    "comparison_trial_price": "Free",
+    "comparison_note": "Trial: 100 units, Time included. Locations, users and photos are always unlimited.",
+    "contact_sales_cta": "Contact us",
+    "public_contact_cta": "Request a quote",
+    "contact_sales_subject": "WinProx Corporate — quote"
 }

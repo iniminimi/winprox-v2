@@ -19,6 +19,11 @@ class ActivateSubscriptionPlanAction
     public function handle(?User $actor, Tenant $tenant, string $plan, string $source = 'manual'): Tenant
     {
         $plan = Tenant::normalizeBillingPlanKey($plan) ?? $plan;
+
+        if (! (bool) config("billing.plans.{$plan}.self_activate", true)) {
+            throw new \InvalidArgumentException('plan_not_self_activate');
+        }
+
         $periodDays = Tenant::subscriptionPeriodDaysForPlan($plan);
 
         $tenant->forceFill([
@@ -26,6 +31,7 @@ class ActivateSubscriptionPlanAction
             'billing_active_until' => Carbon::now()->addDays($periodDays),
             'trial_ends_at' => now(),
             'is_active' => true,
+            'billing_units_cap' => $plan === 'corporate' ? $tenant->billing_units_cap : null,
         ])->save();
 
         $fresh = $this->applyEntitlements->handle($tenant->fresh(), $plan);

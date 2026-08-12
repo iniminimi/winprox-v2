@@ -335,5 +335,17 @@
         "phase_cancelling": "Deteniendo…",
         "phase_cancelled": "Detenida"
     },
-    "iot_module": "IoT Connect"
+    "iot_module": "IoT Connect",
+    "billing_plan": "Plan: :plan",
+    "corporate_units_cap": "Tope de unidades",
+    "corporate_units_cap_value": ":cap unidades",
+    "corporate_units_cap_save": "Guardar tope",
+    "corporate_assign": "Activar Corporate",
+    "corporate_units_cap_saved": "Tope guardado.",
+    "corporate_assigned": "Corporate activado con :cap unidades.",
+    "errors": {
+        "units_cap_required": "Indique un tope de unidades.",
+        "units_cap_invalid": "El tope debe estar entre 1 y 1.000.000.",
+        "not_corporate": "Esta organización no tiene plan Corporate."
+    }
 }

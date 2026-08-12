@@ -862,6 +862,10 @@
                 {
                     "label": "Module",
                     "text": "Schalten Sie optionale Module ein oder aus (ESG, IoT Connect). Time (Stunden, Anwesenheit und Clock Points) gehört standardmäßig zu jedem Abonnement."
+                },
+                {
+                    "label": "Corporate Einheiten-Cap",
+                    "text": "Für Corporate-Organisationen: vereinbarte Einheitenanzahl setzen (Dokumente = Einheiten). Corporate aktivieren oder Cap anpassen."
                 }
             ]
         },

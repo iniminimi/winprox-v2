@@ -22,7 +22,7 @@ Menu-volgorde (sidebar, accordion): Dashboard · **Werk** (Meldingen, Inspectier
 Taken, Kalender, Reserveringen, Unit checks) · **Plaatsen** (Categorieën deep link,
 Locaties, Units tenant-breed) · **Mensen** (Backoffice = Beheerder/Medewerker;
 Teams = Uitvoerder/Teamleader) · **Time** (module) · **Automatisering** (IoT Connect
-Facility+ en/of ESG Corporate — groep alleen als minstens één module aan staat) ·
+vanaf 250+ units / Corporate — groep alleen als minstens één module aan staat) ·
 **Organisatie** (Instellingen, API, Abonnement) · **Hulp** (FAQ, Handleiding, Juridisch,
 Contact).
 
@@ -629,25 +629,30 @@ sector-suffixes, marketing-query-params. Property→Location.
 ## 7. Abonnement (proefperiode / plan)
 
 **Doel:** abonnementsbeheer (admin): proefperiode/grace-status, planlimieten, plan kiezen, beheren.
-Bron: `Billing.php`, `billing.blade.php`, `Tenant.php`, `config/billing.php`,
-`EnsureActiveSubscriptionOrTrial`. **Eén facility-trialplan; hospitality-plan eruit.**
+Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billing.php`,
+`EnsureActiveSubscriptionOrTrial`. **Eén Facility-lijn: 7 vaste tiers + Corporate op maat.**
 
 ### 7.1 Status & toegang (behouden, generiek)
-- Tenant-velden: `trial_ends_at`, `billing_plan`, `billing_active_until`, `is_active`,
-  `stripe_customer_id` (optioneel).
+- Tenant-velden: `trial_ends_at`, `billing_plan`, `billing_active_until`, `billing_units_cap`
+  (Corporate: afgesproken units = documentlimiet), `is_active`, `stripe_customer_id` (optioneel).
 - `hasFullAppAccess()` = trial **of** betaald **of** grace; middleware blokkeert de app
   (behalve `billing.*`, `faq.*`, logout) wanneer geen toegang.
 - **Proefperiode-capsule** (dashboard §1 + dit scherm): resterende dagen. V1 had battery-PNG's →
   **V2: tekstuele/minimalistische capsule** (geen PNG-animatie).
 
 ### 7.2 Plannen
-- Plankaarten met **limieten** (units/users) per plan; admin activeert (gesimuleerde activatie zet
-  `billing_plan` + `billing_active_until`, beëindigt trial). Enterprise = mailto.
+- **7 vaste tiers** (`facility_10` … `facility_1000`): units + documenten (1:1), onbeperkt
+  locaties/gebruikers/foto's, Time overal, IoT+ESG vanaf 250 units, geen API tot Corporate.
+- **Trial:** 100 units, geen IoT/ESG/API.
+- **Corporate:** geen self-activate; superuser zet `billing_plan=corporate` + `billing_units_cap`
+  via Platform → Organisaties. Prijs op maat (geen Stripe price_id).
+- Plankaarten + vergelijkingstabel op publieke `/pricing`; admin activeert vaste tiers (Stripe of
+  gesimuleerd). Corporate = mailto naar `billing.contact_email`.
 - **Grace-periode** na verloop behouden.
 
-### 7.3 Stripe — **BESLIST: later**
-Nu: **trial + plan-state + limieten + gesimuleerde activatie** (lokaal). Stripe-integratie
-(env price-ids, checkout, customer portal, webhooks) als **aparte latere fase**.
+### 7.3 Stripe
+- Env: `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET`, zeven `STRIPE_PRICE_FACILITY_*` (zie `.env.example`).
+- Checkout voor self-activate tiers; Corporate **niet** in Stripe.
 
 ### 7.4 Gegevens verwijderen (tenant purge)
 Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.

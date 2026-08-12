@@ -862,6 +862,10 @@
                 {
                     "label": "Modules",
                     "text": "Activez ou désactivez les modules optionnels (ESG, IoT Connect). Time (heures, présence et Clock Points) est inclus par défaut dans chaque abonnement."
+                },
+                {
+                    "label": "Plafond Corporate",
+                    "text": "Pour les organisations Corporate : définissez le nombre d'unités convenu (documents = unités). Activez Corporate ou mettez à jour le plafond."
                 }
             ]
         },
