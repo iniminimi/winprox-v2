@@ -12,9 +12,14 @@ it('serveert about en feature-pagina\'s met JSON-LD', function () {
         ->assertSee('"@type":"SoftwareApplication"', false);
 
     foreach (['facility', 'time', 'esg', 'qr'] as $slug) {
-        $this->get(route('features.'.$slug, ['locale' => 'en']))
+        $response = $this->get(route('features.'.$slug, ['locale' => 'en']))
             ->assertOk()
             ->assertSee(__('features.'.$slug.'.title', [], 'en'));
+
+        if ($slug === 'time') {
+            $response->assertSee('images/welcome/winprox_time_module_logo.jpg', false)
+                ->assertSee(__('features.time.logo_alt', [], 'en'));
+        }
     }
 });
 

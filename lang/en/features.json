@@ -49,6 +49,7 @@
             "og_description": "Clock in/out and breaks via Clock Point QR, presence and shifts — linked to facility workflows."
         },
         "eyebrow": "Time",
+        "logo_alt": "Module Time — part of WinProx Facility",
         "title": "Time tracking via Clock Point",
         "lead": "WinProx Time lets workers clock in with the same QR approach as facility: fast on the floor, visible to managers.",
         "problem": {

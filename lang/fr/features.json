@@ -49,6 +49,7 @@
             "og_description": "Pointage entrée/sortie et pauses via Clock Point QR, présence et shifts — liés aux workflows Facility."
         },
         "eyebrow": "Time",
+        "logo_alt": "Module Time — composant de WinProx Facility",
         "title": "Suivi du temps via Clock Point",
         "lead": "WinProx Time permet aux ouvriers de pointer avec la même approche QR que Facility : rapide sur le terrain, visible pour les responsables.",
         "problem": {

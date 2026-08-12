@@ -49,6 +49,7 @@
             "og_description": "Timbratura entrata/uscita e pause via Clock Point QR, presenze e turni — collegati ai workflow Facility."
         },
         "eyebrow": "Time",
+        "logo_alt": "Modulo Time — parte di WinProx Facility",
         "title": "Rilevazione presenze via Clock Point",
         "lead": "WinProx Time consente agli operatori di timbrare con lo stesso approccio QR di Facility: rapido sul campo, visibile ai responsabili.",
         "problem": {

@@ -49,6 +49,7 @@
             "og_description": "Ein-/Ausstempeln und Pausen per Clock Point QR, Anwesenheit und Schichten — verknüpft mit Facility-Workflows."
         },
         "eyebrow": "Time",
+        "logo_alt": "Modul Time — Teil von WinProx Facility",
         "title": "Zeiterfassung per Clock Point",
         "lead": "WinProx Time lässt Mitarbeiter mit dem gleichen QR-Ansatz wie Facility einstempeln: schnell vor Ort, sichtbar für Manager.",
         "problem": {
