@@ -5,11 +5,11 @@
     <div class="wp-welcome-main wp-welcome-section-inner--wide wp-stack">
         <div class="wp-welcome-section--center wp-welcome-section-inner">
             @if ($slug === 'time')
-                <figure class="wp-welcome-product-card__logo">
+                <figure class="wp-welcome-feature-hero-logo">
                     <img
                         src="{{ asset('images/welcome/winprox_time_module_logo.jpg') }}"
                         alt="{{ __('features.time.logo_alt') }}"
-                        class="wp-welcome-product-card__logo-img"
+                        class="wp-welcome-feature-hero-logo-img"
                         loading="eager"
                         decoding="async"
                     >

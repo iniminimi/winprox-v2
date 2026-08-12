@@ -2225,6 +2225,28 @@
     padding-top: 2rem;
 }
 
+[data-theme='standard'] .wp-welcome-feature-hero-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.5rem;
+    height: 7.5rem;
+    margin: 0 auto 1.25rem;
+    padding: 0.75rem;
+    border-radius: var(--wp-radius-lg);
+    border: 1px solid var(--wp-border);
+    background: var(--wp-surface);
+    box-shadow: var(--wp-shadow-sm);
+}
+
+[data-theme='standard'] .wp-welcome-feature-hero-logo-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+}
+
 [data-theme='standard'] .wp-welcome-faq-item {
     margin: 0;
 }
