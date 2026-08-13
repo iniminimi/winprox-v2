@@ -253,9 +253,10 @@
         "delivery_restart_hint": "Apri la campagna e rimetti in coda le email (senza Reinvia). Verrà inviato solo il resto.",
         "delivery_sending_hint": "La coda è ancora attiva. Aggiornamento automatico; attendi.",
         "bounces_title": "Mail non consegnate (bounce)",
-        "bounces_lead": "Scansiona la casella promo per messaggi undelivered/bounce. Gli indirizzi trovati vengono disiscritti e rimossi dalle campagne. Gira anche automaticamente ogni ora.",
+        "bounces_lead": "Scansiona la casella promo per messaggi undelivered/bounce, anche le mail già aperte degli ultimi 30 giorni. Gli indirizzi trovati vengono disiscritti e rimossi dalle campagne. Gira anche automaticamente ogni ora.",
         "bounces_submit": "Elabora bounce ora",
         "bounces_loading": "Scansione casella…",
+        "bounces_none": "Fatto: nessun bounce in :scanned messaggi (ultimi :days giorni, anche già letti).",
         "bounces_processed": "Fatto: :scanned messaggi scansionati, :bounces bounce, :emails indirizzi trovati, :removed rimossi dalle campagne, :blocked disiscritti.",
         "bounces_failed": "Elaborazione bounce non riuscita: :error",
         "bounces_failed_generic": "Elaborazione bounce non riuscita."

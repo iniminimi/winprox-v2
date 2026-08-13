@@ -1216,7 +1216,12 @@ it('laat superuser bounces verwerken vanaf de promo-campagnes pagina', function 
     $this->mock(\App\Actions\Marketing\ProcessPromoMailboxBouncesAction::class, function ($mock) {
         $mock->shouldReceive('handle')
             ->once()
-            ->with(true, null, false)
+            ->with(
+                false,
+                \App\Actions\Marketing\ProcessPromoMailboxBouncesAction::DEFAULT_MANUAL_LIMIT,
+                false,
+                \App\Actions\Marketing\ProcessPromoMailboxBouncesAction::DEFAULT_SINCE_DAYS,
+            )
             ->andReturn([
                 'scanned' => 3,
                 'bounce_messages' => 1,
@@ -1238,6 +1243,39 @@ it('laat superuser bounces verwerken vanaf de promo-campagnes pagina', function 
             'emails' => 1,
             'removed' => 1,
             'blocked' => 1,
+        ]))
+        ->assertSee(__('platform.promo_campaigns.bounces_processed', [
+            'scanned' => 3,
+            'bounces' => 1,
+            'emails' => 1,
+            'removed' => 1,
+            'blocked' => 1,
+        ]));
+});
+
+it('toont melding wanneer bounce-scan geen adressen vindt', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    $this->mock(\App\Actions\Marketing\ProcessPromoMailboxBouncesAction::class, function ($mock) {
+        $mock->shouldReceive('handle')
+            ->once()
+            ->andReturn([
+                'scanned' => 4,
+                'bounce_messages' => 0,
+                'emails_found' => 0,
+                'removed' => 0,
+                'blocked' => 0,
+                'dry_run' => false,
+            ]);
+    });
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->call('processPromoBounces')
+        ->assertSet('flashType', 'success')
+        ->assertSet('flashMessage', __('platform.promo_campaigns.bounces_none', [
+            'scanned' => 4,
+            'days' => \App\Actions\Marketing\ProcessPromoMailboxBouncesAction::DEFAULT_SINCE_DAYS,
         ]));
 });
 

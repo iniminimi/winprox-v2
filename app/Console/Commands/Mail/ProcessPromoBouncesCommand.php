@@ -11,7 +11,8 @@ use Throwable;
 class ProcessPromoBouncesCommand extends Command
 {
     protected $signature = 'marketing:process-promo-bounces
-                            {--all : Also process already-read bounce messages}
+                            {--all : Also process already-read bounce messages (last 30 days unless --since is set)}
+                            {--since= : Only scan messages from the last N days}
                             {--limit= : Max messages to scan}
                             {--dry-run : Parse and report without updating DB or marking Seen}';
 
@@ -21,6 +22,8 @@ class ProcessPromoBouncesCommand extends Command
     {
         $limitOption = $this->option('limit');
         $limit = $limitOption !== null && $limitOption !== '' ? (int) $limitOption : null;
+        $sinceOption = $this->option('since');
+        $sinceDays = $sinceOption !== null && $sinceOption !== '' ? max(1, (int) $sinceOption) : null;
         $unseenOnly = ! (bool) $this->option('all');
         $dryRun = (bool) $this->option('dry-run');
 
@@ -33,6 +36,7 @@ class ProcessPromoBouncesCommand extends Command
                 unseenOnly: $unseenOnly,
                 limit: $limit,
                 dryRun: $dryRun,
+                sinceDays: $sinceDays,
             );
         } catch (Throwable $exception) {
             $this->error($exception->getMessage());

@@ -5,14 +5,6 @@
         :subtitle="__('platform.promo_campaigns.subtitle')"
     />
 
-    @if ($flashMessage)
-        <div @class([
-            'wp-flash',
-            'wp-flash--success' => $flashType !== 'error',
-            'wp-flash--danger' => $flashType === 'error',
-        ])>{{ $flashMessage }}</div>
-    @endif
-
     <div class="wp-card wp-card-pad wp-stack">
         <p class="wp-subhead">{{ __('platform.promo_campaigns.create_title') }}</p>
         <form wire:submit="createCampaign" class="wp-promo-form-grid">
@@ -47,6 +39,13 @@
     <div class="wp-card wp-card-pad wp-stack">
         <p class="wp-subhead">{{ __('platform.promo_campaigns.bounces_title') }}</p>
         <p class="wp-muted">{{ __('platform.promo_campaigns.bounces_lead') }}</p>
+        @if ($flashMessage)
+            <div @class([
+                'wp-flash',
+                'wp-flash--success' => $flashType !== 'error',
+                'wp-flash--danger' => $flashType === 'error',
+            ])>{{ $flashMessage }}</div>
+        @endif
         <div>
             <button
                 type="button"
@@ -65,7 +64,7 @@
         </div>
     </div>
 
-    <div class="wp-card wp-card-pad wp-stack" wire:poll.30s>
+    <div class="wp-card wp-card-pad wp-stack" wire:poll.visible.30s>
         <p class="wp-subhead">{{ __('platform.promo_campaigns.list_title') }}</p>
         @if ($campaigns->isEmpty())
             <p class="wp-muted">{{ __('platform.promo_campaigns.list_empty') }}</p>

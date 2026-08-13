@@ -253,9 +253,10 @@
         "delivery_restart_hint": "Open the campaign and queue emails again (without Resend). Only the remainder will be sent.",
         "delivery_sending_hint": "Queue is still running. Auto-refreshes; leave it alone.",
         "bounces_title": "Undelivered mail (bounces)",
-        "bounces_lead": "Scan the promo mailbox for undelivered/bounce messages. Found addresses are unsubscribed and removed from campaigns. Also runs automatically every hour.",
+        "bounces_lead": "Scan the promo mailbox for undelivered/bounce messages, including already opened mail from the last 30 days. Found addresses are unsubscribed and removed from campaigns. Also runs automatically every hour.",
         "bounces_submit": "Process bounces now",
         "bounces_loading": "Scanning mailbox…",
+        "bounces_none": "Done: no bounces found in :scanned messages (last :days days, including already read).",
         "bounces_processed": "Done: :scanned messages scanned, :bounces bounces, :emails addresses found, :removed removed from campaigns, :blocked unsubscribed.",
         "bounces_failed": "Processing bounces failed: :error",
         "bounces_failed_generic": "Processing bounces failed."

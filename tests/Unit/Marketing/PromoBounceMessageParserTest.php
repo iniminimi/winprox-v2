@@ -10,6 +10,14 @@ it('herkent typische bounce-onderwerpen', function () {
         'MAILER-DAEMON@cloud86.com',
     ))->toBeTrue()
         ->and(PromoBounceMessageParser::looksLikeBounce(
+            'Mail delivery failed: returning message to sender',
+            'MAILER-DAEMON@cloud86.com',
+        ))->toBeTrue()
+        ->and(PromoBounceMessageParser::looksLikeBounce(
+            'Onbestelbaar: uw bericht',
+            'postmaster@example.com',
+        ))->toBeTrue()
+        ->and(PromoBounceMessageParser::looksLikeBounce(
             'Hallo',
             'klant@example.com',
         ))->toBeFalse();
@@ -93,4 +101,34 @@ it('keurt plausibele ontvangers goed en Message-IDs af', function () {
         ->and(PromoBounceMessageParser::isPlausibleRecipientEmail(
             'b126f9f96778abff0fbddf73cb42a975@winprox.app',
         ))->toBeFalse();
+});
+
+it('haalt Final-Recipient uit DSN-onderdeel als de leesbare body het adres mist', function () {
+    $textBody = "I'm afraid I wasn't able to deliver your message.\n";
+    $rawBody = <<<'TXT'
+Content-Type: multipart/report; report-type=delivery-status
+
+--boundary
+Content-Type: text/plain
+
+I'm afraid I wasn't able to deliver your message.
+--boundary
+Content-Type: message/delivery-status
+
+Final-Recipient: rfc822; kapot@bedrijf.be
+Action: failed
+Status: 5.1.1
+--boundary--
+TXT;
+
+    $haystack = PromoBounceMessageParser::haystackFromParts(
+        headers: "X-Failed-Recipients: kapot@bedrijf.be\n",
+        textBody: $textBody,
+        rawBody: $rawBody,
+    );
+
+    expect(PromoBounceMessageParser::extractRecipientEmails(
+        'Undelivered Mail Returned to Sender',
+        $haystack,
+    ))->toBe(['kapot@bedrijf.be']);
 });

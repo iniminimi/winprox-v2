@@ -51,6 +51,22 @@ final class PromoBounceMessageParser
         return array_keys($found);
     }
 
+    /**
+     * Combine bounce headers, bodies and DSN parts so Final-Recipient is not missed.
+     */
+    public static function haystackFromParts(
+        string $headers = '',
+        string $textBody = '',
+        string $htmlBody = '',
+        string $rawBody = '',
+        string $attachmentBodies = '',
+    ): string {
+        return implode("\n", array_values(array_filter(
+            [$headers, $textBody, $htmlBody, $attachmentBodies, $rawBody],
+            fn (string $part): bool => trim($part) !== '',
+        )));
+    }
+
     public static function looksLikeBounce(string $subject, string $from): bool
     {
         $subjectLower = mb_strtolower($subject);
@@ -60,12 +76,18 @@ final class PromoBounceMessageParser
             'undelivered mail returned to sender',
             'delivery status notification',
             'mail delivery failed',
+            'returning message to sender',
             'returned mail',
+            'returned to sender',
             'failure notice',
             'delivery failure',
+            'delivery notification',
             'undeliverable',
+            'onbestelbaar',
             'niet bezorgd',
+            'niet afgeleverd',
             'non remis',
+            'unzustellbar',
         ];
 
         foreach ($subjectHints as $hint) {

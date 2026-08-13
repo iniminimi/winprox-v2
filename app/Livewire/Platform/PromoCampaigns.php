@@ -136,7 +136,12 @@ class PromoCampaigns extends Component
         $this->authorize('managePromoCampaigns', User::class);
 
         try {
-            $result = $process->handle(unseenOnly: true, limit: null, dryRun: false);
+            $result = $process->handle(
+                unseenOnly: false,
+                limit: ProcessPromoMailboxBouncesAction::DEFAULT_MANUAL_LIMIT,
+                dryRun: false,
+                sinceDays: ProcessPromoMailboxBouncesAction::DEFAULT_SINCE_DAYS,
+            );
         } catch (Throwable $e) {
             $this->flashType = 'error';
             $message = trim($e->getMessage());
@@ -148,6 +153,15 @@ class PromoCampaigns extends Component
         }
 
         $this->flashType = 'success';
+        if ($result['bounce_messages'] === 0 && $result['emails_found'] === 0) {
+            $this->flashMessage = __('platform.promo_campaigns.bounces_none', [
+                'scanned' => $result['scanned'],
+                'days' => ProcessPromoMailboxBouncesAction::DEFAULT_SINCE_DAYS,
+            ]);
+
+            return;
+        }
+
         $this->flashMessage = __('platform.promo_campaigns.bounces_processed', [
             'scanned' => $result['scanned'],
             'bounces' => $result['bounce_messages'],
