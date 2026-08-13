@@ -88,6 +88,7 @@
                                             'sent' => $summary->sent,
                                             'remaining' => $summary->remaining,
                                             'failed' => $summary->failed,
+                                            'bounced' => $summary->bounced,
                                             'queued' => $summary->queuedJobs,
                                         ]) }}
                                     </p>

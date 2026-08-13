@@ -641,12 +641,39 @@ it('toont verzendstatus per promo-campagne in de lijst', function () {
 
     expect($summary->status)->toBe('needs_restart')
         ->and($summary->sent)->toBe(1)
+        ->and($summary->remaining)->toBe(1)
+        ->and($summary->bounced)->toBe(0);
+
+    PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_import_id' => $import->id,
+        'name' => 'Bounce',
+        'email' => 'bounce-list@example.com',
+        'street_address' => 'Straat 3',
+        'postal_code' => '3000',
+        'city' => 'Leuven',
+        'docx_filename' => $target->docx_filename,
+        'generated_at' => now(),
+        'undelivered' => true,
+    ]);
+
+    $summary = app(\App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction::class)
+        ->handle(collect([$campaign->fresh()]))[$campaign->id];
+
+    expect($summary->bounced)->toBe(1)
         ->and($summary->remaining)->toBe(1);
 
     Livewire::actingAs($superuser)
         ->test(PromoCampaigns::class)
         ->assertSee(__('platform.promo_campaigns.delivery_status.needs_restart'))
-        ->assertSee(__('platform.promo_campaigns.delivery_restart_hint'));
+        ->assertSee(__('platform.promo_campaigns.delivery_restart_hint'))
+        ->assertSee(__('platform.promo_campaigns.delivery_stats', [
+            'sent' => 1,
+            'remaining' => 1,
+            'failed' => 0,
+            'bounced' => 1,
+            'queued' => 0,
+        ]));
 });
 
 it('telt database-queue jobs per promo-campagne in de verzendstatus', function () {

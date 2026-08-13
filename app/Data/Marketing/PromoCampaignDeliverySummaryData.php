@@ -12,6 +12,7 @@ final readonly class PromoCampaignDeliverySummaryData
         public int $sent,
         public int $failed,
         public int $skipped,
+        public int $bounced,
         public int $remaining,
         public int $queuedJobs,
         public string $status,

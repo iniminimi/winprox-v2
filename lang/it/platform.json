@@ -249,7 +249,7 @@
             "not_started": "Non avviata",
             "no_recipients": "Nessun destinatario"
         },
-        "delivery_stats": ":sent inviate · :remaining da inviare · :failed fallite · :queued in coda",
+        "delivery_stats": ":sent inviate · :remaining da inviare · :failed fallite · :bounced bounced · :queued in coda",
         "delivery_restart_hint": "Apri la campagna e rimetti in coda le email (senza Reinvia). Verrà inviato solo il resto.",
         "delivery_sending_hint": "La coda è ancora attiva. Aggiornamento automatico; attendi.",
         "bounces_title": "Mail non consegnate (bounce)",

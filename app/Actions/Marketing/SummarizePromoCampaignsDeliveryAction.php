@@ -42,6 +42,13 @@ class SummarizePromoCampaignsDeliveryAction
             ->groupBy('promo_campaign_id')
             ->pluck('aggregate', 'promo_campaign_id');
 
+        $bouncedTotals = PromoCampaignTarget::query()
+            ->whereIn('promo_campaign_id', $ids)
+            ->where('undelivered', true)
+            ->selectRaw('promo_campaign_id, COUNT(*) as aggregate')
+            ->groupBy('promo_campaign_id')
+            ->pluck('aggregate', 'promo_campaign_id');
+
         $sendRows = PromoCampaignEmailSend::query()
             ->whereIn('promo_campaign_id', $ids)
             ->selectRaw('promo_campaign_id, status, COUNT(*) as aggregate')
@@ -72,6 +79,7 @@ class SummarizePromoCampaignsDeliveryAction
             $queuedJobs = $queuedJobsByCampaign[$campaignId] ?? 0;
             $targets = (int) ($targetTotals[$campaignId] ?? 0);
             $withEmail = (int) ($withEmailTotals[$campaignId] ?? 0);
+            $bounced = (int) ($bouncedTotals[$campaignId] ?? 0);
 
             $summaries[$campaignId] = new PromoCampaignDeliverySummaryData(
                 targets: $targets,
@@ -79,6 +87,7 @@ class SummarizePromoCampaignsDeliveryAction
                 sent: $sent,
                 failed: $failed,
                 skipped: $skipped,
+                bounced: $bounced,
                 remaining: $remaining,
                 queuedJobs: $queuedJobs,
                 status: $this->resolveStatus(

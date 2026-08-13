@@ -249,7 +249,7 @@
             "not_started": "No iniciada",
             "no_recipients": "Sin destinatarios"
         },
-        "delivery_stats": ":sent enviados · :remaining pendientes · :failed fallidos · :queued en cola",
+        "delivery_stats": ":sent enviados · :remaining pendientes · :failed fallidos · :bounced rebotados · :queued en cola",
         "delivery_restart_hint": "Abre la campaña y vuelve a poner en cola (sin Reenviar). Solo se enviará el resto.",
         "delivery_sending_hint": "La cola sigue activa. Se actualiza sola; espera.",
         "bounces_title": "Correos no entregados (bounces)",

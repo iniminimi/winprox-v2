@@ -249,7 +249,7 @@
             "not_started": "Noch nicht gestartet",
             "no_recipients": "Keine Empfänger"
         },
-        "delivery_stats": ":sent gesendet · :remaining noch zu senden · :failed fehlgeschlagen · :queued in Warteschlange",
+        "delivery_stats": ":sent gesendet · :remaining noch zu senden · :failed fehlgeschlagen · :bounced gebounced · :queued in Warteschlange",
         "delivery_restart_hint": "Kampagne öffnen und Mails erneut einreihen (ohne Erneut senden). Nur der Rest wird gesendet.",
         "delivery_sending_hint": "Warteschlange läuft noch. Aktualisiert automatisch; abwarten.",
         "bounces_title": "Unzustellbare Mails (Bounces)",

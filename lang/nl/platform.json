@@ -249,7 +249,7 @@
             "not_started": "Nog niet gestart",
             "no_recipients": "Geen ontvangers"
         },
-        "delivery_stats": ":sent verstuurd · :remaining nog te sturen · :failed mislukt · :queued in wachtrij",
+        "delivery_stats": ":sent verstuurd · :remaining nog te sturen · :failed mislukt · :bounced gebounced · :queued in wachtrij",
         "delivery_restart_hint": "Open de campagne en zet opnieuw Mails in wachtrij (zonder Opnieuw versturen). Alleen de rest wordt gestuurd.",
         "delivery_sending_hint": "Wachtrij loopt nog. Vernieuwt automatisch; even laten staan.",
         "bounces_title": "Onbezorgde mails (bounces)",
