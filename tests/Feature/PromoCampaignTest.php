@@ -1271,8 +1271,17 @@ it('toont klikstatistieken op campagnepagina', function () {
         actorUserId: (int) $superuser->id,
     );
 
+    $import = PromoCampaignImport::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'original_filename' => 'test.xlsx',
+        'row_count' => 1,
+        'imported_by' => $superuser->id,
+        'imported_at' => now(),
+    ]);
+
     $target = PromoCampaignTarget::query()->create([
         'promo_campaign_id' => $campaign->id,
+        'promo_campaign_import_id' => $import->id,
         'name' => 'Gemeente Test',
         'email' => 'test@example.com',
     ]);
@@ -1296,6 +1305,11 @@ it('toont klikstatistieken op campagnepagina', function () {
             'welcome' => 1,
             'promo' => 1,
             'with_visits' => 1,
+        ]))
+        ->assertSee(__('platform.promo_campaigns.visit_stats_real', [
+            'engaged' => 0,
+            'returning' => 0,
+            'follow' => 0,
         ]))
         ->assertSee(__('platform.promo_campaigns.target_visits', [
             'welcome' => 1,

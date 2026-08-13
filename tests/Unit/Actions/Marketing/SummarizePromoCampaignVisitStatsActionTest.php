@@ -4,6 +4,8 @@ use App\Actions\Marketing\CreatePromoCampaignAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
 use App\Actions\Marketing\RecordPromoVisitAction;
 use App\Actions\Marketing\SummarizePromoCampaignVisitStatsAction;
+use App\Enums\PromoVisitFollowKey;
+use App\Enums\PromoVisitKind;
 use App\Enums\PromoVisitPage;
 use App\Models\PromoCampaignTarget;
 use App\Models\PromoRecipient;
@@ -63,13 +65,44 @@ it('sommeert welcome- en promo-kliks per campagne-ontvanger', function () {
     $record->handle($recipient->id, 'nl', now(), PromoVisitPage::Welcome);
     $record->handle($recipient->id, 'nl', now()->addMinutes(5), PromoVisitPage::Welcome);
     $record->handle($recipient->id, 'nl', now()->addMinutes(5), PromoVisitPage::Promo);
+    $record->handle(
+        $recipient->id,
+        'nl',
+        now()->addMinutes(6),
+        PromoVisitPage::Welcome,
+        PromoVisitKind::Engaged,
+    );
+    $record->handle(
+        $recipient->id,
+        'nl',
+        now()->addMinutes(40),
+        PromoVisitPage::Welcome,
+        PromoVisitKind::Engaged,
+    );
+    $record->handle(
+        $recipient->id,
+        'nl',
+        now()->addMinutes(41),
+        PromoVisitPage::Welcome,
+        PromoVisitKind::Follow,
+        PromoVisitFollowKey::Contact,
+    );
 
     $stats = app(SummarizePromoCampaignVisitStatsAction::class)->handle($campaign->fresh());
 
     expect($stats->welcome)->toBe(2)
         ->and($stats->promo)->toBe(1)
+        ->and($stats->engaged)->toBe(2)
+        ->and($stats->returning)->toBe(1)
+        ->and($stats->follow)->toBe(1)
         ->and($stats->targetsWithVisits)->toBe(1)
-        ->and($stats->forTarget((int) $target->id))->toBe(['welcome' => 2, 'promo' => 1]);
+        ->and($stats->forTarget((int) $target->id))->toBe([
+            'welcome' => 2,
+            'promo' => 1,
+            'engaged' => 2,
+            'follow' => 1,
+            'returning' => true,
+        ]);
 
     Carbon::setTestNow();
 });

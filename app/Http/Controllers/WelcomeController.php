@@ -45,7 +45,9 @@ class WelcomeController extends Controller
             utmCampaign: $this->queryString($request, 'utm_campaign'),
         );
 
-        return view('welcome');
+        return view('welcome', [
+            'promoEngageToken' => PromoRecipientSession::token(),
+        ]);
     }
 
     private function recordAttributedPromoVisit(Request $request, RecordPromoVisitAction $recordPromoVisit): void

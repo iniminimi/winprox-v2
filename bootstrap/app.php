@@ -6,6 +6,7 @@ use App\Http\Middleware\AuthenticateIotGateway;
 use App\Http\Middleware\CheckApiAccess;
 use App\Http\Middleware\EnsureRequestIdempotency;
 use App\Http\Middleware\EnsureSuperuser;
+use App\Http\Middleware\RecordPromoFollowVisit;
 use App\Http\Middleware\EnsureTenantHasAppAccess;
 use App\Http\Middleware\RequireSupportTenantForSuperuser;
 use App\Http\Middleware\SetLocale;
@@ -35,6 +36,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'superuser' => EnsureSuperuser::class,
+            'promo.follow' => RecordPromoFollowVisit::class,
             'support.tenant' => RequireSupportTenantForSuperuser::class,
             'api.access' => CheckApiAccess::class,
             'iot.gateway' => AuthenticateIotGateway::class,

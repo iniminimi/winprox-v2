@@ -94,7 +94,7 @@ it('koppelt een welcome-bezoek aan een promo-bestemmeling via ref', function () 
 
     expect(\App\Models\PromoVisit::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(1)
         ->and(\App\Models\PromoVisit::query()->where('promo_recipient_id', $recipient->id)->value('page'))
-        ->toBe(\App\Enums\PromoVisitPage::Welcome->value)
+        ->toBe(\App\Enums\PromoVisitPage::Welcome)
         ->and(WelcomeVisit::query()->count())->toBe(1);
 });
 
@@ -114,6 +114,6 @@ it('toont welcome_url uitleg op de promo-campagnepagina', function () {
     Livewire::actingAs($superuser)
         ->test(\App\Livewire\Platform\PromoCampaignEdit::class, ['promoCampaign' => $campaign])
         ->assertSee(__('platform.promo_campaigns.welcome_url_how_to_title'))
-        ->assertSee(__('platform.promo_campaigns.welcome_url_how_to'))
+        ->assertSee(__('platform.promo_campaigns.welcome_url_how_to'), false)
         ->assertSee('{{welcome_url}}', false);
 });

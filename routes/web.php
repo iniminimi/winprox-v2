@@ -16,6 +16,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\PromoQrDownloadController;
 use App\Http\Controllers\PromoRecipientQrDownloadController;
+use App\Http\Controllers\PromoEngageTrackController;
 use App\Http\Controllers\PromoVideoTrackController;
 use App\Http\Controllers\QrController;
 use App\Http\Controllers\Locations\LocationQrPackDownloadController;
@@ -194,18 +195,18 @@ Route::prefix('{locale}')
     ->group(function () {
         Route::get('/', WelcomeController::class)->name('welcome');
 
-        Route::get('/contact', Contact::class)->name('contact.index');
-        Route::get('/pricing', Pricing::class)->name('pricing');
-        Route::get('/faq', PublicFaq::class)->name('faq.public');
-        Route::get('/about', About::class)->name('about');
+        Route::get('/contact', Contact::class)->middleware('promo.follow')->name('contact.index');
+        Route::get('/pricing', Pricing::class)->middleware('promo.follow')->name('pricing');
+        Route::get('/faq', PublicFaq::class)->middleware('promo.follow')->name('faq.public');
+        Route::get('/about', About::class)->middleware('promo.follow')->name('about');
         Route::get('/api', function (string $locale) {
             return redirect()->route('product.api_webhooks', ['locale' => $locale], 301);
         });
-        Route::get('/features/facility', FeaturePage::class)->name('features.facility');
-        Route::get('/features/time', FeaturePage::class)->name('features.time');
-        Route::get('/features/esg', FeaturePage::class)->name('features.esg');
-        Route::get('/features/iot', FeaturePage::class)->name('features.iot');
-        Route::get('/features/qr-portals', FeaturePage::class)->name('features.qr');
+        Route::get('/features/facility', FeaturePage::class)->middleware('promo.follow')->name('features.facility');
+        Route::get('/features/time', FeaturePage::class)->middleware('promo.follow')->name('features.time');
+        Route::get('/features/esg', FeaturePage::class)->middleware('promo.follow')->name('features.esg');
+        Route::get('/features/iot', FeaturePage::class)->middleware('promo.follow')->name('features.iot');
+        Route::get('/features/qr-portals', FeaturePage::class)->middleware('promo.follow')->name('features.qr');
         Route::get('/promo', [PromoController::class, 'show'])->name('promo');
 
         foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
@@ -224,10 +225,13 @@ Route::prefix('{locale}')
 Route::post('/promo/track/video', PromoVideoTrackController::class)
     ->middleware('throttle:60,1')
     ->name('promo.track.video');
+Route::post('/promo/track/engage', PromoEngageTrackController::class)
+    ->middleware('throttle:60,1')
+    ->name('promo.track.engage');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->name('login');
-    Route::get('/register', Register::class)->name('register');
+    Route::get('/register', Register::class)->middleware('promo.follow')->name('register');
     Route::get('/forgot-password', ForgotPassword::class)->name('password.request');
     Route::get('/reset-password/{token}', ResetPassword::class)->name('password.reset');
 });

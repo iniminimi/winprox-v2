@@ -29,9 +29,11 @@
         ],
     ])
     @include('partials.favicon')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="wp-shell wp-welcome-shell">
+<body class="wp-shell wp-welcome-shell"
+      @if (! empty($promoEngageToken)) data-promo-engage-url="{{ route('promo.track.engage') }}" @endif>
     <div class="wp-welcome-top">
         @include('partials.wp-welcome-nav')
 

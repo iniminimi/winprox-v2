@@ -69,7 +69,7 @@
     @livewireStyles
 </head>
 <body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}"
-      @if ($promoTrackingToken) data-promo-tracking="1" data-promo-track-url="{{ route('promo.track.video') }}" @endif>
+      @if ($promoTrackingToken) data-promo-tracking="1" data-promo-track-url="{{ route('promo.track.video') }}" data-promo-engage-url="{{ route('promo.track.engage') }}" @endif>
     <main class="wp-portal">
         {{ $slot }}
         
