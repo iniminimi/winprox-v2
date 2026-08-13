@@ -54,7 +54,8 @@
         "cta_start": "Essai gratuit",
         "cta_video": "Voir la vidéo",
         "hero_note": "Sans carte bancaire · démarrage en 2 minutes",
-        "desktop_screenshot_alt": "Tableau de bord WinProx sur ordinateur"
+        "desktop_screenshot_alt": "Tableau de bord WinProx sur ordinateur",
+        "qr_video_title": "Vidéo : portail QR sur un site"
     },
     "trust_bar": {
         "items": [

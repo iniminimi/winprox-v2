@@ -51,7 +51,8 @@
         "cta_start": "Kostenlos testen",
         "cta_video": "Video ansehen",
         "hero_note": "Keine Kreditkarte · Start in 2 Minuten",
-        "desktop_screenshot_alt": "WinProx-Dashboard auf dem Desktop"
+        "desktop_screenshot_alt": "WinProx-Dashboard auf dem Desktop",
+        "qr_video_title": "Video: QR-Portal an einem Standort"
     },
     "trust_bar": {
         "items": [

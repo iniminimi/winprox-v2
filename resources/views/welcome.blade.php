@@ -10,6 +10,16 @@
     $welcomeEsgImageAvailable = is_file(public_path($welcomeEsgImageRel));
     $welcomeIotImageRel = 'images/welcome/IoT.jpg';
     $welcomeIotImageAvailable = is_file(public_path($welcomeIotImageRel));
+    $welcomeQrVideoRel = null;
+    $welcomeQrVideoDir = public_path('video/'.$locale);
+    if (is_dir($welcomeQrVideoDir)) {
+        foreach (scandir($welcomeQrVideoDir) ?: [] as $welcomeQrVideoFile) {
+            if (preg_match('/^hospitality_'.preg_quote($locale, '/').'\.mp4$/i', $welcomeQrVideoFile) === 1) {
+                $welcomeQrVideoRel = 'video/'.$locale.'/'.$welcomeQrVideoFile;
+                break;
+            }
+        }
+    }
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', $locale) }}" translate="no" data-theme="standard">
@@ -47,6 +57,14 @@
                         :lines="__('welcome.hero.title_lines')"
                         :accent="__('welcome.hero.title_accent')"
                     />
+                    @if ($welcomeQrVideoRel)
+                        <div class="wp-welcome-hero-qr-video">
+                            @include('partials.wp-video-player', [
+                                'src' => asset($welcomeQrVideoRel),
+                                'title' => __('welcome.hero.qr_video_title'),
+                            ])
+                        </div>
+                    @endif
                     <p class="wp-welcome-lead wp-welcome-lead--hero">{{ __('welcome.hero.subtitle') }}</p>
                     <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.hero.body') }}</p>
                     <div class="wp-welcome-cta-row">

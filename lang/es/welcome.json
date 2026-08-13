@@ -53,7 +53,8 @@
         "cta_start": "Probar gratis",
         "cta_video": "Ver vídeo",
         "hero_note": "Sin tarjeta de crédito · empiece en 2 minutos",
-        "desktop_screenshot_alt": "Panel de WinProx en escritorio"
+        "desktop_screenshot_alt": "Panel de WinProx en escritorio",
+        "qr_video_title": "Vídeo: portal QR en una ubicación"
     },
     "trust_bar": {
         "items": [

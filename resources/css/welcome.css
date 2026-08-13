@@ -2013,6 +2013,21 @@
     margin-right: 0.22em;
 }
 
+[data-theme='standard'] .wp-welcome-hero-qr-video {
+    width: 100%;
+    max-width: 40rem;
+    margin: 1.75rem auto 2rem;
+}
+
+[data-theme='standard'] .wp-welcome-hero-qr-video .wp-video {
+    width: 100%;
+}
+
+[data-theme='standard'] .wp-welcome-hero-qr-video .wp-video-player {
+    width: 100%;
+    max-height: min(50vh, 28rem);
+}
+
 [data-theme='standard'] .wp-welcome-hero-copy--center .wp-welcome-lead--hero {
     max-width: 38rem;
     margin-inline: auto;

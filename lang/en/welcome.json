@@ -53,7 +53,8 @@
         "cta_start": "Try for free",
         "cta_video": "Watch video",
         "hero_note": "No credit card required · get started in 2 minutes",
-        "desktop_screenshot_alt": "WinProx dashboard on desktop"
+        "desktop_screenshot_alt": "WinProx dashboard on desktop",
+        "qr_video_title": "Video: QR portal at a location"
     },
     "trust_bar": {
         "items": [

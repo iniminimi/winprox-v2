@@ -72,7 +72,8 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->assertSee('id="iot"', false)
         ->assertSee(__('welcome.iot.eyebrow'), false)
         ->assertSee(__('welcome.iot.body'), false)
-        ->assertSee('images/welcome/IoT.jpg', false);
+        ->assertSee('images/welcome/IoT.jpg', false)
+        ->assertSee('video/nl/hospitality_NL.mp4', false);
 
     expect(WelcomeVisit::query()->count())->toBe(1)
         ->and(WelcomeVisit::query()->first()?->utm_source)->toBe('promo')
