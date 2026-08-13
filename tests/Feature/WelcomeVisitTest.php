@@ -63,7 +63,7 @@ it('toont unieke welcome-statistieken op platformdashboard', function () {
 });
 
 it('logt welcome-bezoek via de publieke route', function () {
-    $this->get('/nl/?utm_source=promo&utm_campaign=wave-1')
+    $html = $this->get('/nl/?utm_source=promo&utm_campaign=wave-1')
         ->assertOk()
         ->assertSee('wp-welcome-nav-group', false)
         ->assertSee(__('welcome.nav.group_products'), false)
@@ -73,7 +73,10 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->assertSee(__('welcome.iot.eyebrow'), false)
         ->assertSee(__('welcome.iot.body'), false)
         ->assertSee('images/welcome/IoT.jpg', false)
-        ->assertSee('video/nl/hospitality_NL.mp4', false);
+        ->getContent();
+
+    expect($html)->toContain('video/nl/hospitality_NL.mp4')
+        ->and($html)->toMatch('/wp-welcome-hero-qr-video[\s\S]*?\bautoplay\b[\s\S]*?hospitality_NL\.mp4/');
 
     expect(WelcomeVisit::query()->count())->toBe(1)
         ->and(WelcomeVisit::query()->first()?->utm_source)->toBe('promo')

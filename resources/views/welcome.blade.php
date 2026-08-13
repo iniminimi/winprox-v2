@@ -62,6 +62,7 @@
                             @include('partials.wp-video-player', [
                                 'src' => asset($welcomeQrVideoRel),
                                 'title' => __('welcome.hero.qr_video_title'),
+                                'autoplay' => true,
                             ])
                         </div>
                     @endif

@@ -1,13 +1,20 @@
 @props([
     'src',
     'title' => '',
+    'autoplay' => false,
 ])
 
 <div class="wp-video">
     <video
         class="wp-video-player"
         controls
-        preload="metadata"
+        @if ($autoplay)
+            autoplay
+            muted
+            preload="auto"
+        @else
+            preload="metadata"
+        @endif
         playsinline
         aria-label="{{ $title }}"
     >
