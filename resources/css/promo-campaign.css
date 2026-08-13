@@ -22,6 +22,51 @@
     min-height: 18rem;
 }
 
+.wp-promo-quill .ql-snow .ql-picker.ql-size {
+    width: 5.5rem;
+}
+
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-label::before,
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-item::before {
+    content: '15px';
+}
+
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="12px"]::before,
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="12px"]::before {
+    content: '12px';
+}
+
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="18px"]::before,
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="18px"]::before {
+    content: '18px';
+}
+
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="22px"]::before,
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="22px"]::before {
+    content: '22px';
+}
+
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="28px"]::before,
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="28px"]::before {
+    content: '28px';
+}
+
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="12px"]::before {
+    font-size: 12px;
+}
+
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="18px"]::before {
+    font-size: 18px;
+}
+
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="22px"]::before {
+    font-size: 22px;
+}
+
+.wp-promo-quill .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="28px"]::before {
+    font-size: 28px;
+}
+
 .wp-promo-actions__field {
     flex: 1 1 16rem;
     max-width: 24rem;

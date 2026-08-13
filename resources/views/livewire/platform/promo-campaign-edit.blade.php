@@ -102,6 +102,7 @@
                 wire:ignore
                 class="wp-promo-quill"
                 data-wp-promo-quill
+                data-wp-promo-toolbar="email"
                 data-textarea-id="email-body-html"
             >
                 <div class="wp-promo-quill-editor"></div>

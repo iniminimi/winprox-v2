@@ -214,40 +214,31 @@ final class PromoCampaignQuillHtmlNormalizer
     {
         $html = preg_replace_callback(
             '/<p(\s[^>]*)?>/i',
-            static function (array $matches): string {
-                $attrs = $matches[1] ?? '';
-                if (str_contains($attrs, 'margin')) {
-                    return $matches[0];
-                }
-
-                return '<p style="margin:0 0 16px 0"'.$attrs.'>';
-            },
+            static fn (array $matches): string => self::mailBlockOpenTag(
+                'p',
+                $matches[1] ?? '',
+                'margin:0 0 16px 0',
+            ),
             $html,
         ) ?? $html;
 
         $html = preg_replace_callback(
             '/<ul(\s[^>]*)?>/i',
-            static function (array $matches): string {
-                $attrs = $matches[1] ?? '';
-                if (str_contains($attrs, 'margin')) {
-                    return $matches[0];
-                }
-
-                return '<ul style="margin:0 0 16px 0;padding-left:1.25rem"'.$attrs.'>';
-            },
+            static fn (array $matches): string => self::mailBlockOpenTag(
+                'ul',
+                $matches[1] ?? '',
+                'margin:0 0 16px 0;padding-left:1.25rem',
+            ),
             $html,
         ) ?? $html;
 
         return preg_replace_callback(
             '/<ol(\s[^>]*)?>/i',
-            static function (array $matches): string {
-                $attrs = $matches[1] ?? '';
-                if (str_contains($attrs, 'margin')) {
-                    return $matches[0];
-                }
-
-                return '<ol style="margin:0 0 16px 0;padding-left:1.25rem"'.$attrs.'>';
-            },
+            static fn (array $matches): string => self::mailBlockOpenTag(
+                'ol',
+                $matches[1] ?? '',
+                'margin:0 0 16px 0;padding-left:1.25rem',
+            ),
             $html,
         ) ?? $html;
     }
@@ -310,9 +301,30 @@ final class PromoCampaignQuillHtmlNormalizer
 
     private static function mailParagraphTag(string $margin, string $attrs, string $inner): string
     {
+        $fontSize = PromoCampaignHtmlSanitizer::fontSizeFromAttributes($attrs);
         $attrs = preg_replace('/\s+style="[^"]*"/', '', $attrs) ?? $attrs;
+        $style = 'margin:'.$margin;
+        if ($fontSize !== null) {
+            $style .= ';font-size: '.$fontSize;
+        }
 
-        return '<p style="margin:'.$margin.'"'.$attrs.'>'.$inner.'</p>';
+        return '<p style="'.$style.'"'.$attrs.'>'.$inner.'</p>';
+    }
+
+    private static function mailBlockOpenTag(string $tag, string $attrs, string $spacingStyle): string
+    {
+        if (str_contains($attrs, 'margin')) {
+            return '<'.$tag.$attrs.'>';
+        }
+
+        $fontSize = PromoCampaignHtmlSanitizer::fontSizeFromAttributes($attrs);
+        $attrs = preg_replace('/\s+style="[^"]*"/', '', $attrs) ?? $attrs;
+        $style = $spacingStyle;
+        if ($fontSize !== null) {
+            $style .= ';font-size: '.$fontSize;
+        }
+
+        return '<'.$tag.' style="'.$style.'"'.$attrs.'>';
     }
 
     /**

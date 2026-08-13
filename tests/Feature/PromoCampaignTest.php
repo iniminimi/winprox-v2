@@ -347,6 +347,26 @@ it('behandelt lege quill-html als leeg', function () {
         ->and(PromoCampaignHtmlSanitizer::clean('<p>Hallo</p>'))->toBe('<p>Hallo</p>');
 });
 
+it('behoudt lettergrootte en veilige links in promo html', function () {
+    $html = '<p><span style="font-size: 18px; color: red;">Hallo</span> '
+        .'<a href="https://winprox.app" onclick="alert(1)">site</a></p>'
+        .'<p><span class="ql-size-huge">Kop</span></p>';
+
+    expect(PromoCampaignHtmlSanitizer::clean($html))
+        ->toBe(
+            '<p><span style="font-size: 18px">Hallo</span> '
+            .'<a href="https://winprox.app">site</a></p>'
+            .'<p><span style="font-size: 28px">Kop</span></p>',
+        );
+});
+
+it('zet lettergrootte om naar inline stijl in promo e-mail', function () {
+    $html = '<p><span style="font-size: 22px;">WinProx</span></p>';
+
+    expect(PromoCampaignQuillHtmlNormalizer::forMail($html))
+        ->toBe('<p style="margin:0 0 16px 0"><span style="font-size: 22px">WinProx</span></p>');
+});
+
 it('herstelt dubbel ge-escaped editor html', function () {
     $encoded = '&lt;p&gt;Dit is een test brief&lt;/p&gt;&lt;p&gt;{{name}}&lt;/p&gt;';
 

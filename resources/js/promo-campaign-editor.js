@@ -1,6 +1,12 @@
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 
+const FONT_SIZES = ['12px', '18px', '22px', '28px'];
+const SizeStyle = Quill.import('attributors/style/size');
+SizeStyle.whitelist = FONT_SIZES;
+Quill.register(SizeStyle, true);
+Quill.register({ 'formats/size': SizeStyle }, true);
+
 const editors = new Map();
 
 function loadHtmlIntoQuill(quill, html) {
@@ -23,7 +29,22 @@ function syncQuillToTextarea(quill, textareaId) {
     textarea.dispatchEvent(new Event('input', { bubbles: true }));
 }
 
-function initEditor(container, textareaId, initialHtml) {
+function toolbarItems(includeSize) {
+    const items = [
+        ['bold', 'italic'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['link'],
+        ['clean'],
+    ];
+
+    if (includeSize) {
+        items.unshift([{ size: ['12px', false, '18px', '22px', '28px'] }]);
+    }
+
+    return items;
+}
+
+function initEditor(container, textareaId, initialHtml, includeSize = false) {
     if (editors.has(container)) {
         return editors.get(container);
     }
@@ -31,12 +52,7 @@ function initEditor(container, textareaId, initialHtml) {
     const quill = new Quill(container, {
         theme: 'snow',
         modules: {
-            toolbar: [
-                ['bold', 'italic'],
-                [{ list: 'ordered' }, { list: 'bullet' }],
-                ['link'],
-                ['clean'],
-            ],
+            toolbar: toolbarItems(includeSize),
         },
     });
 
@@ -75,7 +91,8 @@ function mountEditors() {
             return;
         }
 
-        initEditor(editorEl, textareaId, initialHtml);
+        const includeSize = wrapper.getAttribute('data-wp-promo-toolbar') === 'email';
+        initEditor(editorEl, textareaId, initialHtml, includeSize);
     });
 }
 
