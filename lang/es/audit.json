@@ -73,7 +73,6 @@
         "team.created": "Equipo creado",
         "team.deleted": "Equipo eliminado",
         "team.updated": "Equipo actualizado",
-        "team.qr_email_sent": "Correo QR de equipo enviado",
         "team_categories_synced": "Categorías vinculadas al equipo",
         "tenant.esg_module_toggled": "Módulo ESG activado/desactivado",
         "tenant.organisation_updated": "Organización actualizada",

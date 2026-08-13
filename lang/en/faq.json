@@ -33,8 +33,8 @@
                 },
                 {
                     "title": "Field work via QR",
-                    "text": "Field workers sign in via the Clock Point QR (name + icon) and complete tasks via unit QR or team QR — without a WinProx login.",
-                    "highlight": "Clock Point = sign in; unit/team QR = tasks and issues on site."
+                    "text": "Field workers sign in via the Clock Point QR (name + icon) and complete tasks via the unit QR — without a WinProx login.",
+                    "highlight": "Clock Point = sign in and clock in/out; unit QR = tasks and issues on site."
                 },
                 {
                     "title": "Follow up and close",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Internal teams",
-            "box_body": "Organise maintenance teams under Team. Link teams to units and categories. Via Clock Point and unit/team QR, field workers log updates and photos on site."
+            "box_body": "Organise maintenance teams under Team. Link teams to units and categories. Via Clock Point and unit QR, field workers log updates and photos on site."
         },
         "pricing": {
             "slug": "pricing",
@@ -114,8 +114,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Which QR codes are there?",
-            "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Team QR: team task overview on site. Clock Point QR: workers sign in and clock in/out. Location QR: general link to the site. Everything opens in the browser — no app.",
-            "summary": "Unit QR (reports/tasks/unit check), team QR (team tasks), Clock Point QR (sign-in/clock), location QR — all in the browser."
+            "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Clock Point QR: workers sign in, clock in/out and see their team tasks. Location QR: general link to the site. Everything opens in the browser — no app.",
+            "summary": "Unit QR (reports/tasks/unit check), Clock Point QR (sign-in/clock/team tasks), location QR — all in the browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -142,7 +142,7 @@
                 },
                 {
                     "title": "Tasks on site",
-                    "text": "Field workers signed in via Clock Point and belonging to the team start and complete tasks via unit QR — the same flow as via team QR."
+                    "text": "Field workers signed in via Clock Point and belonging to the team start and complete tasks via the unit QR."
                 },
                 {
                     "title": "Unit check (workers)",
@@ -201,7 +201,7 @@
                 },
                 {
                     "title": "Field worker",
-                    "text": "Works without a WinProx login. Signs in via Clock Point QR; starts/completes tasks via unit or team QR, with photos and notes."
+                    "text": "Works without a WinProx login. Signs in via Clock Point QR; starts/completes tasks via the unit QR, with photos and notes."
                 }
             ]
         },
@@ -223,14 +223,14 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "How do I set up internal teams?",
-            "body": "Go to Team: create teams, add workers (manually, CSV or Excel), link teams to units and optionally to categories. Under Teams you also manage unit-check checklists (shared or per team). Print or email the team QR and Clock Point QR for the floor.",
-            "summary": "Teams under Team; unit-check checklists; link to units/categories; Clock Point and team QR for the floor."
+            "body": "Go to Team: create teams, add workers (manually, CSV or Excel), link teams to units and optionally to categories. Under Teams you also manage unit-check checklists (shared or per team). Print or email the Clock Point QR for the floor (Time → Clock Points).",
+            "summary": "Teams under Team; unit-check checklists; link to units/categories; Clock Point QR for the floor."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
             "title": "How do teams follow up on tasks?",
-            "body": "Tasks appear in Tasks, on the calendar, in the briefing and on team/unit QR. Workers start and complete on site. Coordinators follow status in admin. Recurring issues generate cycles with planned due dates; recurring tasks show the Recurring pill.",
+            "body": "Tasks appear in Tasks, on the calendar, in the briefing, on the Clock Point QR and on the unit QR. Workers start and complete on site. Coordinators follow status in admin. Recurring issues generate cycles with planned due dates; recurring tasks show the Recurring pill.",
             "summary": "Follow-up via Tasks, calendar, briefing and QR; recurring cycles with Recurring pill."
         },
         "reservations": {
@@ -258,7 +258,7 @@
             "slug": "mobile",
             "type": "text",
             "title": "Does WinProx work on a smartphone?",
-            "body": "Yes. Admin is desktop-first but usable on tablet. Field and QR portals are mobile-first. Field workers work on their phone via Clock Point and unit/team QR. Dark theme is handy on phone.",
+            "body": "Yes. Admin is desktop-first but usable on tablet. Field and QR portals are mobile-first. Field workers work on their phone via Clock Point and unit QR. Dark theme is handy on phone.",
             "summary": "Browser on phone/tablet/desktop; field via QR is mobile-first."
         },
         "install": {

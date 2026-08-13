@@ -96,7 +96,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // Eén worker zonder bevestigd icoon (claimable): mag op team-QR zijn icoon kiezen.
+        // Eén worker zonder bevestigd icoon (claimable): mag op Clock Point zijn icoon kiezen.
         Worker::create([
             'internal_team_id' => $teamTechniek->id,
             'first_name' => 'Jonas',

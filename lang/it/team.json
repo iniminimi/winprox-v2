@@ -46,7 +46,6 @@
         "active": "Attivo",
         "inactive": "Inattivo",
         "worker_count": ":count lavoratori attivi",
-        "qr": "Team QR",
         "edit": "Modifica",
         "deactivate": "Disattiva",
         "activate": "Attiva",
@@ -148,21 +147,6 @@
         "fully_deleted_with_teams": ":count lavoratore/i e :teams team vuoto eliminato.",
         "partially_deleted_with_teams": ":deleted lavoratore/i eliminato/i. :preserved lavoratore/i con dispositivi sono stati conservati. :teams team vuoto eliminato.",
         "delete_failed": "Si è verificato un errore durante l'eliminazione."
-    },
-    "qr": {
-        "subtitle": "Scansioni questo codice per aprire il portale sul campo del team.",
-        "print": "Stampa",
-        "email": "Invia codice QR via e-mail",
-        "email_modal_title": "Invia codice QR via e-mail",
-        "email_modal_hint": "Invii il team QR via e-mail. Il destinatario vedrà il codice QR e un link per aprire il portale.",
-        "email_recipient_label": "Indirizzo e-mail destinatario",
-        "email_recipient_name_label": "Nome destinatario (facoltativo)",
-        "email_recipient_required": "Inserisca un indirizzo e-mail.",
-        "email_send": "Invia",
-        "email_sent": "Codice QR inviato a :email.",
-        "email_subject": "Team QR: :team",
-        "email_body": "Ecco il team QR per :team. Scansioni il codice per aprire il portale sul campo del team.",
-        "open_link": "Apri questo codice QR"
     },
     "clock_point_qr": {
         "button": "Codice QR Clock Point",

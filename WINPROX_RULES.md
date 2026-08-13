@@ -6,7 +6,7 @@ externe partijen (contractors, eigenaars/owners) bestaan **niet** meer.
 **Doel:** **dezelfde functionaliteit als de oude WinProx Facility**, maar volledig **schoon
 herschreven**. "Simpel" slaat op de **architectuur, de code en de visuele stijl** — niet op het
 weglaten van features. We mikken dus op **Facility-pariteit** (locaties/units met bulk + QR-pack,
-meldingen met filters, taken, kalender, teams + workers + team-QR, abonnement/proefperiode,
+meldingen met filters, taken, kalender, teams + workers + Clock Point-QR, abonnement/proefperiode,
 FAQ & kennisbank, juridische documenten, contact, hulp-chat, briefing), zonder de oude rommel.
 
 > Kern: **Melding → Taken → afhandeling**. Een melding kan **meerdere taken** hebben,
@@ -130,8 +130,8 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
 - **User** — beheerder/staff met login.
 - **Location** — locatie/site (was "Property"; we werken **niet** meer met eigendommen).
 - **Unit** — asset/ruimte/machine binnen een Location, met QR-token.
-- **InternalTeam** — operationeel team (team-QR voor de werkvloer).
-- **Worker** — uitvoerder **zonder** login (meldt zich aan via team-QR).
+- **InternalTeam** — operationeel team (veldwerk via Clock Point-QR).
+- **Worker** — uitvoerder **zonder** login (meldt zich aan via Clock Point-QR).
 - **Issue** — de **melding**.
 - **Task** — een **taak** op een melding, toegewezen aan **één team**. Een melding heeft er ≥1.
 - **IssueUpdate** — tijdlijn/notities op een melding.
@@ -212,7 +212,7 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 
 ### 6.5 Apparaat-targeting (responsive)
 - **Beheersschermen** (dashboard, meldingen, beheer van locaties/units/teams) → **laptop/desktop-first**. Mogen breed/meerkoloms zijn, maar blijven bruikbaar op kleiner scherm.
-- **Veld- en publieke schermen** (publieke QR-meldpagina, team-QR veldportaal, worker-schermen) → **mobiel-first**: één kolom, grote tap-doelen (knoppen min. 2.5rem hoog), belangrijkste actie onderaan binnen duimbereik.
+- **Veld- en publieke schermen** (publieke QR-meldpagina, Clock Point-portaal, worker-schermen) → **mobiel-first**: één kolom, grote tap-doelen (knoppen min. 2.5rem hoog), belangrijkste actie onderaan binnen duimbereik.
 - Zelfde tokens/componenten en **één** CSS-bundel; responsiviteit via eenvoudige breakpoints, geen aparte stylesheet-stack per apparaat.
 
 ### 6.5a UI-filosofie

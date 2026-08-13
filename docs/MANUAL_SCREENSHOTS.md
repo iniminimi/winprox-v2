@@ -49,7 +49,7 @@ MANUAL_CAPTURE_WORKER_ICON=star    # field_icon_slug van die worker
   Eenmalig in tinker (pas team/worker-id aan):
 
   ```php
-  $teamId = 2; // zelfde team als MANUAL_CAPTURE_TEAM_QR_TOKEN
+  $teamId = 2; // zelfde team als MANUAL_CAPTURE_CLOCK_POINT_TOKEN
   $colleague = \App\Models\Worker::factory()->create([
       'tenant_id' => 1,
       'internal_team_id' => $teamId,

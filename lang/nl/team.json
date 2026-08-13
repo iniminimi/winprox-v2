@@ -46,7 +46,6 @@
         "active": "Actief",
         "inactive": "Inactief",
         "worker_count": ":count actieve uitvoerders",
-        "qr": "Team-QR",
         "edit": "Bewerken",
         "deactivate": "Deactiveren",
         "activate": "Activeren",
@@ -148,21 +147,6 @@
         "fully_deleted_with_teams": ":count uitvoerder(s) en :teams leeg team verwijderd.",
         "partially_deleted_with_teams": ":deleted uitvoerder(s) verwijderd. :preserved uitvoerder(s) met toestellen bleven staan. :teams leeg team verwijderd.",
         "delete_failed": "Er is een fout opgetreden bij het verwijderen."
-    },
-    "qr": {
-        "subtitle": "Scan deze code om het team-veldportaal te openen.",
-        "print": "Afdrukken",
-        "email": "QR-code e-mailen",
-        "email_modal_title": "QR-code e-mailen",
-        "email_modal_hint": "Stuur de team-QR per e-mail. De ontvanger ziet de QR-code en een link om het portaal te openen.",
-        "email_recipient_label": "E-mailadres ontvanger",
-        "email_recipient_name_label": "Naam ontvanger (optioneel)",
-        "email_recipient_required": "Geef een e-mailadres op.",
-        "email_send": "Verzenden",
-        "email_sent": "QR-code verzonden naar :email.",
-        "email_subject": "Team-QR: :team",
-        "email_body": "Hierbij de team-QR voor :team. Scan de code om het team-veldportaal te openen.",
-        "open_link": "Deze QR-code openen"
     },
     "clock_point_qr": {
         "button": "Clock Point QR-code",

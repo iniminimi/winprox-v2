@@ -10,7 +10,7 @@ use App\Models\Worker;
 
 /**
  * Per QR-bezoek moet de worker het juiste icoon kiezen vóór taak/melding-acties.
- * Team-QR wist de bezoekverificatie bij elke scan; unit-QR kan recent vertrouwen
+ * Clock Point herstelt verificatie via de device-cookie; unit-QR kan recent vertrouwen
  * herstellen voor hetzelfde toestel (~12u) na een geslaagde on-site icoonbevestiging.
  */
 final class WorkerVerification

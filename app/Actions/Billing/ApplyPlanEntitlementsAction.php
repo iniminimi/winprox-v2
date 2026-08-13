@@ -28,7 +28,7 @@ class ApplyPlanEntitlementsAction
             'has_iot_module' => (bool) ($config['iot_module'] ?? false),
         ])->save();
 
-        // Worker-login loopt via Clock Point QR (Team-QR is weg). Zorg altijd voor ≥1 punt.
+        // Worker-login loopt via Clock Point QR. Zorg altijd voor ≥1 punt.
         if ($wantsTimeModule) {
             $this->ensureDefaultClockPoint->handle(
                 $tenant->fresh(),

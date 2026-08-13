@@ -33,8 +33,8 @@
                 },
                 {
                     "title": "Veldwerk via QR",
-                    "text": "Uitvoerders melden zich aan via de Clock Point-QR (naam + icoon) en handelen taken af via unit-QR of team-QR — zonder WinProx-login.",
-                    "highlight": "Clock Point = aanmelden; unit-/team-QR = taken en meldingen op locatie."
+                    "text": "Uitvoerders melden zich aan via de Clock Point-QR (naam + icoon) en handelen taken af via de unit-QR — zonder WinProx-login.",
+                    "highlight": "Clock Point = aanmelden en inklokken; unit-QR = taken en meldingen op locatie."
                 },
                 {
                     "title": "Opvolgen en afronden",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Interne teams",
-            "box_body": "Organiseer onderhoudsteams onder Team. Koppel teams aan units en categorieën. Via Clock Point en unit-/team-QR registreren uitvoerders updates en foto's op locatie."
+            "box_body": "Organiseer onderhoudsteams onder Team. Koppel teams aan units en categorieën. Via Clock Point en unit-QR registreren uitvoerders updates en foto's op locatie."
         },
         "pricing": {
             "slug": "pricing",
@@ -114,8 +114,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Welke QR-codes zijn er?",
-            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken af en kunnen — als categorie én unit Unit checks toestaan — OK/Niet OK registreren. Team-QR: overzicht van teamtaken op locatie. Clock Point-QR: uitvoerders melden zich aan en klokken in/uit. Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app.",
-            "summary": "Unit-QR (melden/taken/unit check), team-QR (teamtaken), Clock Point-QR (aanmelden/klokken), locatie-QR — allemaal in de browser."
+            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken af en kunnen — als categorie én unit Unit checks toestaan — OK/Niet OK registreren. Clock Point-QR: uitvoerders melden zich aan, klokken in/uit en zien hun teamtaken. Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app.",
+            "summary": "Unit-QR (melden/taken/unit check), Clock Point-QR (aanmelden/klokken/teamtaken), locatie-QR — allemaal in de browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -142,7 +142,7 @@
                 },
                 {
                     "title": "Taken op locatie",
-                    "text": "Uitvoerders die via Clock Point zijn aangemeld en bij het team horen, starten en ronden taken af via unit-QR — dezelfde flow als via team-QR."
+                    "text": "Uitvoerders die via Clock Point zijn aangemeld en bij het team horen, starten en ronden taken af via de unit-QR."
                 },
                 {
                     "title": "Unit check (uitvoerders)",
@@ -201,7 +201,7 @@
                 },
                 {
                     "title": "Uitvoerder",
-                    "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR; taken starten/afronden via unit- of team-QR, met foto's en notities."
+                    "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR; taken starten/afronden via de unit-QR, met foto's en notities."
                 }
             ]
         },
@@ -223,14 +223,14 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Hoe richt ik interne teams in?",
-            "body": "Ga naar Team: maak teams aan, voeg uitvoerders toe (handmatig, CSV of Excel), koppel teams aan units en optioneel aan categorieën. Onder Teams beheer je ook checklists voor unit checks (gedeeld of per team). Print of mail de team-QR en Clock Point-QR voor de werkvloer.",
-            "summary": "Teams onder Team; checklists voor unit checks; koppel aan units/categorieën; Clock Point- en team-QR voor de vloer."
+            "body": "Ga naar Team: maak teams aan, voeg uitvoerders toe (handmatig, CSV of Excel), koppel teams aan units en optioneel aan categorieën. Onder Teams beheer je ook checklists voor unit checks (gedeeld of per team). Print of mail de Clock Point-QR voor de werkvloer (Time → Clock Points).",
+            "summary": "Teams onder Team; checklists voor unit checks; koppel aan units/categorieën; Clock Point-QR voor de vloer."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
             "title": "Hoe volgen teams taken op?",
-            "body": "Taken verschijnen in Taken, op de kalender, in de briefing en op de team-/unit-QR. Uitvoerders starten en ronden af op locatie. Coördinatoren volgen status in het beheer. Terugkerende meldingen genereren cycli met geplande due-data; terugkerende taken tonen de pill «Terugkerend».",
+            "body": "Taken verschijnen in Taken, op de kalender, in de briefing, op de Clock Point-QR en op de unit-QR. Uitvoerders starten en ronden af op locatie. Coördinatoren volgen status in het beheer. Terugkerende meldingen genereren cycli met geplande due-data; terugkerende taken tonen de pill «Terugkerend».",
             "summary": "Opvolging via Taken, kalender, briefing en QR; terugkerende cycli met pill «Terugkerend»."
         },
         "reservations": {
@@ -258,7 +258,7 @@
             "slug": "mobile",
             "type": "text",
             "title": "Werkt WinProx op smartphone?",
-            "body": "Ja. Beheer is desktop-first maar bruikbaar op tablet. Veld- en QR-portalen zijn mobiel-first. Uitvoerders werken op de gsm via Clock Point en unit-/team-QR. Thema Donker is handig op telefoon.",
+            "body": "Ja. Beheer is desktop-first maar bruikbaar op tablet. Veld- en QR-portalen zijn mobiel-first. Uitvoerders werken op de gsm via Clock Point en unit-QR. Thema Donker is handig op telefoon.",
             "summary": "Browser op gsm/tablet/desktop; veld via QR is mobiel-first."
         },
         "install": {

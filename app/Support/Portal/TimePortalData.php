@@ -55,9 +55,15 @@ final class TimePortalData
             ->orderBy('sort_order')
             ->orderBy('name')
             ->get()
-            ->filter(fn (InternalTeam $team) => TeamPortalData::allowsOpenRegistration($team))
+            ->filter(fn (InternalTeam $team) => self::allowsOpenRegistration($team))
             ->values();
 
         return $emptyTeams->count() === 1 ? $emptyTeams->first() : null;
+    }
+
+    /** Open registratie is toegestaan zolang het team geen actieve workers heeft. */
+    public static function allowsOpenRegistration(InternalTeam $team): bool
+    {
+        return $team->workers()->where('workers.is_active', true)->count() === 0;
     }
 }

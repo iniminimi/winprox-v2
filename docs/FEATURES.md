@@ -580,9 +580,10 @@ stuurt events; WinProx zet die om in workflow.
 ## 6. Team
 
 **Doel:** beheer van **collega-gebruikers** (WinProx-accounts: admin) én **operationele teams +
-workers** (+ team-QR). In V1 zit dit op `/users` met een facility-teams-blok; in V2 houden we het
-als één **Team**-hub. Bron: `Users.php`, `FacilityTeams.php`, `facility-teams.blade.php`,
-team-QR route. **Sector/hospitality (`InternalTeams`, `category_slug`) eruit.**
+workers**. In V1 zit dit op `/users` met een facility-teams-blok; in V2 houden we het
+als één **Team**-hub. Bron: `Users.php`, `FacilityTeams.php`, `facility-teams.blade.php`.
+Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een aparte team-QR.
+**Sector/hospitality (`InternalTeams`, `category_slug`) eruit.**
 
 ### 6.0 Rollen (drie actoren — hard)
 - **Beheerder (`admin`)** — login-account; **kan alles**: collega-accounts aanmaken/bewerken/
@@ -607,8 +608,8 @@ team-QR route. **Sector/hospitality (`InternalTeams`, `category_slug`) eruit.**
 - Lijst: teamnaam, aantal actieve workers, actief/inactief.
 - Aanmaken/bewerken (naam, `sort_order`, actief) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
-- **Team-QR**: `field_qr_token` auto-gegenereerd bij aanmaak; printbare QR → publieke
-  `team`-veldportaal-URL (`/team/{token}`).
+- **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` voor aanmelden
+  (naam + icoon), in-/uitklokken en teamtaken-overzicht. Afhandelen van taken blijft via de unit-QR.
 
 ### 6.3 Workers
 - Per team: workers toevoegen (voor-/achternaam), lijst met **icoon-status**; **teamleader-vlag**
@@ -805,13 +806,13 @@ params, `DemoSectorCopy`. Property→Location in copy.
 > Onze huidige nieuwe bouw heeft slechts een **minimale** meld-/portaalversie; dit hoofdstuk
 > beschrijft de **doel**-functionaliteit.
 
-### Twee QR-types / twee persona's
+### QR-types / persona's
 - **Unit-QR** (`/melden/{unit_token}`, oud: `facility.report.show`): **burger** én **on-site worker**
   zien dezelfde URL; de worker-acties verschijnen alleen als het toestel als veldtoestel herkend
   wordt (device-cookie/verified sessie).
-- **Team-QR** (`/team/{field_qr_token}`, oud: `facility.team.field.show`): **worker**-overzicht van
-  open taken. **BESLIST:** via team-QR zijn taakacties **alleen-lezen** — afhandelen moet via de
-  **unit-QR** (oude regel `actions_require_unit_qr`).
+- **Clock Point-QR** (`/time/{token}`): **worker**-aanmelding (naam + icoon), in-/uitklokken en
+  overzicht van open teamtaken. **BESLIST:** via Clock Point zijn taakacties **alleen-lezen** —
+  afhandelen moet via de **unit-QR**. (Vervangt de oude team-QR `/team/{token}`.)
 
 ### Unit-portaal — secties (burger)
 `home · new · issues · issue_detail · documents · announcements`
@@ -850,9 +851,10 @@ Bedoeld voor gedeelde telefoons op de werkvloer:
 4. **Lockout**: na **2** foute icoonpogingen geblokkeerd (sessie + worker-rij
    `field_icon_locked_at`); beheerder kan ontgrendelen/icoon resetten.
 5. **"Aanmelden als andere medewerker"** wist device/sessie/trust.
-6. **Team-QR** wist verificatie bij elke scan (icoon opnieuw bevestigen). **BESLIST: open
-   registratie** via team-QR als het team nog **geen** actieve workers heeft (onboarding: worker +
-   icoon aanmaken). Daarna identificeren bestaande workers zich met naam + icoon.
+6. **Clock Point** herstelt verificatie via de device-cookie (geen wipe bij elke scan).
+   **BESLIST: open registratie** via Clock Point als er precies **één** actief team zonder
+   workers is (onboarding: worker + icoon aanmaken). Daarna identificeren bestaande workers
+   zich met naam + icoon.
 
 ### Worker-taakafhandeling
 - **Start**: taak → `In uitvoering` (`started_at`).
@@ -886,8 +888,8 @@ De oude app heeft **geen** blur/goedkeuring (geen `approved_at`). Dit is **onze 
 - `property_*`-redirect, generieke `ReportIssue`/`TeamFieldPortal`, JSON
   `report.documents`/`report.announcements` (wij doen Livewire), sector/hospitality/contractor/owner-
   takken. Property→Location overal.
-- Unit-portaal `claimable` doodlopend → **BESLIST**: registratie/onboarding loopt via **team-QR**
-  (open registratie bij leeg team); de unit-QR doet enkel identificatie van bestaande workers.
+- Unit-portaal `claimable` doodlopend → **BESLIST**: registratie/onboarding loopt via **Clock Point**
+  (open registratie bij precies één leeg team); de unit-QR doet enkel identificatie van bestaande workers.
 
 ### Bron-bestanden (oud, ter referentie bij herbouw)
 `app/Livewire/FacilityUnitPortal.php`, `app/Livewire/FacilityTeamFieldPortal.php`,

@@ -9,7 +9,7 @@ use App\Support\Portal\WorkerIcon;
 use Illuminate\Validation\Rule;
 
 /**
- * Gedeeld gedrag voor unit- en team-QR: teamleader mag collega-icoon vrijgeven.
+ * Gedeeld gedrag voor unit-QR en Clock Point: teamleader mag collega-icoon vrijgeven.
  *
  * @phpstan-require-extends \Livewire\Component
  */

@@ -121,7 +121,7 @@ return [
             'page' => 'portal.unit',
         ],
         [
-            'patterns' => ['uitvoerders portaal', 'team-qr', 'team qr'],
+            'patterns' => ['uitvoerders portaal', 'uitvoerder portaal'],
             'page' => 'portal.team',
         ],
         [

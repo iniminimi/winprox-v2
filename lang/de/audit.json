@@ -73,7 +73,6 @@
         "team.created": "Team erstellt",
         "team.deleted": "Team gelöscht",
         "team.updated": "Team aktualisiert",
-        "team.qr_email_sent": "Team-QR-Mail gesendet",
         "team_categories_synced": "Kategorien mit Team synchronisiert",
         "tenant.esg_module_toggled": "ESG-Modul umgeschaltet",
         "tenant.organisation_updated": "Organisation aktualisiert",

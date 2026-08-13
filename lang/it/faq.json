@@ -33,8 +33,8 @@
                 },
                 {
                     "title": "Lavoro sul campo via QR",
-                    "text": "Gli esecutori si registrano via QR Clock Point (nome + icona) e completano task via QR unit o QR team — senza login WinProx.",
-                    "highlight": "Clock Point = registrazione; QR unit/team = task e segnalazioni sul posto."
+                    "text": "Gli esecutori si registrano via QR Clock Point (nome + icona) e completano task via QR unit — senza login WinProx.",
+                    "highlight": "Clock Point = accesso e timbratura; QR unit = task e segnalazioni sul posto."
                 },
                 {
                     "title": "Seguire e chiudere",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Team interni",
-            "box_body": "Organizza team di manutenzione sotto Team. Collega team a unit e categorie. Via Clock Point e QR unit/team, gli esecutori registrano aggiornamenti e foto sul posto."
+            "box_body": "Organizza team di manutenzione sotto Team. Collega team a unit e categorie. Via Clock Point e QR unit, gli esecutori registrano aggiornamenti e foto sul posto."
         },
         "pricing": {
             "slug": "pricing",
@@ -114,8 +114,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Quali codici QR ci sono?",
-            "body": "QR unit: i segnalatori creano segnalazioni; gli esecutori (dopo Clock Point) gestiscono task aperti e possono — se categoria e unit consentono controlli — registrare OK/Non OK. QR team: task del team in sito. QR Clock Point: accesso e timbratura. QR sede: link generale. Tutto nel browser — senza app.",
-            "summary": "QR unit (segnalazioni/task/controllo unità), QR team, QR Clock Point, QR sede — tutto nel browser."
+            "body": "QR unit: i segnalatori creano segnalazioni; gli esecutori (dopo Clock Point) gestiscono task aperti e possono — se categoria e unit consentono controlli — registrare OK/Non OK. QR Clock Point: accesso, timbratura e task del team. QR sede: link generale. Tutto nel browser — senza app.",
+            "summary": "QR unit (segnalazioni/task/controllo unità), QR Clock Point (accesso/timbratura/task del team), QR sede — tutto nel browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -142,7 +142,7 @@
                 },
                 {
                     "title": "Task sul posto",
-                    "text": "Gli esecutori registrati via Clock Point e del team avviano e completano task via QR unit — lo stesso flusso del QR team."
+                    "text": "Gli esecutori registrati via Clock Point e del team avviano e completano task via QR unit."
                 },
                 {
                     "title": "Controllo unità (esecutori)",
@@ -201,7 +201,7 @@
                 },
                 {
                     "title": "Esecutore",
-                    "text": "Lavora senza login WinProx. Si registra via QR Clock Point; avvia/completa task via QR unit o team, con foto e note."
+                    "text": "Lavora senza login WinProx. Si registra via QR Clock Point; avvia/completa task via QR unit, con foto e note."
                 }
             ]
         },
@@ -223,14 +223,14 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Come configuro i team interni?",
-            "body": "Vada in Team: crei team, aggiunga esecutori (manuale, CSV o Excel), colleghi i team alle unità e opzionalmente alle categorie. In Team gestisce anche le checklist per i unit check (condivise o per team). Stampi o invii il QR team e il QR Clock Point per il piano.",
-            "summary": "Team in Team; checklist unit check; collegamento a unità/categorie; QR Clock Point e team per il piano."
+            "body": "Vada in Team: crei team, aggiunga esecutori (manuale, CSV o Excel), colleghi i team alle unità e opzionalmente alle categorie. In Team gestisce anche le checklist per i unit check (condivise o per team). Stampi o invii il QR Clock Point per il piano (Time → Clock Points).",
+            "summary": "Team in Team; checklist unit check; collegamento a unità/categorie; QR Clock Point per il piano."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
             "title": "Come seguono i team i task?",
-            "body": "I task compaiono in Task, calendario, briefing e QR team/unit. Gli esecutori avviano e completano in sito. I coordinatori seguono lo stato in amministrazione. Le segnalazioni ricorrenti generano cicli con scadenze pianificate; i task ricorrenti mostrano la pill «Ricorrente».",
+            "body": "I task compaiono in Task, calendario, briefing, QR Clock Point e QR unit. Gli esecutori avviano e completano in sito. I coordinatori seguono lo stato in amministrazione. Le segnalazioni ricorrenti generano cicli con scadenze pianificate; i task ricorrenti mostrano la pill «Ricorrente».",
             "summary": "Follow-up via Task, calendario, briefing e QR; cicli ricorrenti con pill «Ricorrente»."
         },
         "reservations": {
@@ -258,7 +258,7 @@
             "slug": "mobile",
             "type": "text",
             "title": "WinProx funziona su smartphone?",
-            "body": "Sì. La gestione è desktop-first ma usabile su tablet. I portali campo e QR sono mobile-first. Gli esecutori lavorano sul telefono via Clock Point e QR unit/team. Il tema Scuro è comodo sul telefono.",
+            "body": "Sì. La gestione è desktop-first ma usabile su tablet. I portali campo e QR sono mobile-first. Gli esecutori lavorano sul telefono via Clock Point e QR unit. Il tema Scuro è comodo sul telefono.",
             "summary": "Browser su telefono/tablet/desktop; campo via QR è mobile-first."
         },
         "install": {

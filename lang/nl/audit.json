@@ -73,7 +73,6 @@
         "team.created": "Team aangemaakt",
         "team.deleted": "Team verwijderd",
         "team.updated": "Team bijgewerkt",
-        "team.qr_email_sent": "Team-QR-mail verstuurd",
         "team_categories_synced": "Categorieën gekoppeld aan team",
         "tenant.esg_module_toggled": "ESG-module in/uitgeschakeld",
         "tenant.organisation_updated": "Organisatie bijgewerkt",

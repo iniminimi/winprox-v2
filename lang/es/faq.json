@@ -33,8 +33,8 @@
                 },
                 {
                     "title": "Trabajo de campo vía QR",
-                    "text": "Los operarios se registran vía QR Clock Point (nombre + icono) y completan tareas vía QR unit o QR equipo — sin login WinProx.",
-                    "highlight": "Clock Point = registro; QR unit/equipo = tareas e incidencias en sitio."
+                    "text": "Los operarios se registran vía QR Clock Point (nombre + icono) y completan tareas vía el QR de unit — sin login WinProx.",
+                    "highlight": "Clock Point = registro y fichaje; QR de unit = tareas e incidencias en sitio."
                 },
                 {
                     "title": "Seguir y cerrar",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Equipos internos",
-            "box_body": "Organice equipos de mantenimiento en Team. Vincule equipos a units y categorías. Vía Clock Point y QR unit/equipo, los operarios registran actualizaciones y fotos en sitio."
+            "box_body": "Organice equipos de mantenimiento en Team. Vincule equipos a units y categorías. Vía Clock Point y QR de unit, los operarios registran actualizaciones y fotos en sitio."
         },
         "pricing": {
             "slug": "pricing",
@@ -114,8 +114,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "¿Qué códigos QR hay?",
-            "body": "QR de unit: los avisadores crean avisos; los ejecutores (tras Clock Point) gestionan tareas abiertas y pueden — si categoría y unit permiten comprobaciones — registrar OK/No OK. QR de equipo: tareas del equipo en sitio. QR Clock Point: acceso y fichaje. QR de ubicación: enlace general. Todo en el navegador — sin app.",
-            "summary": "QR unit (avisos/tareas/comprobación de unit), QR equipo, QR Clock Point, QR ubicación — todo en el navegador."
+            "body": "QR de unit: los avisadores crean avisos; los ejecutores (tras Clock Point) gestionan tareas abiertas y pueden — si categoría y unit permiten comprobaciones — registrar OK/No OK. QR Clock Point: acceso, fichaje y tareas del equipo. QR de ubicación: enlace general. Todo en el navegador — sin app.",
+            "summary": "QR unit (avisos/tareas/comprobación de unit), QR Clock Point (acceso/fichaje/tareas del equipo), QR ubicación — todo en el navegador."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -142,7 +142,7 @@
                 },
                 {
                     "title": "Tareas en sitio",
-                    "text": "Operarios registrados vía Clock Point y del equipo inician y completan tareas vía QR unit — el mismo flujo que vía QR equipo."
+                    "text": "Operarios registrados vía Clock Point y del equipo inician y completan tareas vía el QR de unit."
                 },
                 {
                     "title": "Comprobación de unit (ejecutores)",
@@ -201,7 +201,7 @@
                 },
                 {
                     "title": "Operario",
-                    "text": "Trabaja sin login WinProx. Se registra vía QR Clock Point; inicia/completa tareas vía QR unit o equipo, con fotos y notas."
+                    "text": "Trabaja sin login WinProx. Se registra vía QR Clock Point; inicia/completa tareas vía el QR de unit, con fotos y notas."
                 }
             ]
         },
@@ -223,14 +223,14 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "¿Cómo configuro equipos internos?",
-            "body": "Vaya a Equipo: cree equipos, añada operarios (manual, CSV o Excel), vincule equipos a unidades y opcionalmente a categorías. En Equipos también gestiona las listas de unit checks (compartidas o por equipo). Imprima o envíe el QR de equipo y el QR Clock Point para el terreno.",
-            "summary": "Equipos en Equipo; listas de unit checks; vínculo a unidades/categorías; QR Clock Point y de equipo para el terreno."
+            "body": "Vaya a Equipo: cree equipos, añada operarios (manual, CSV o Excel), vincule equipos a unidades y opcionalmente a categorías. En Equipos también gestiona las listas de unit checks (compartidas o por equipo). Imprima o envíe el QR Clock Point para el terreno (Time → Clock Points).",
+            "summary": "Equipos en Equipo; listas de unit checks; vínculo a unidades/categorías; QR Clock Point para el terreno."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
             "title": "¿Cómo siguen los equipos las tareas?",
-            "body": "Las tareas aparecen en Tareas, calendario, briefing y QR de equipo/unit. Los ejecutores inician y completan en sitio. Los coordinadores siguen el estado en administración. Los avisos recurrentes generan ciclos con vencimientos planificados; las tareas recurrentes muestran la pastilla «Recurrente».",
+            "body": "Las tareas aparecen en Tareas, calendario, briefing, QR Clock Point y QR de unit. Los ejecutores inician y completan en sitio. Los coordinadores siguen el estado en administración. Los avisos recurrentes generan ciclos con vencimientos planificados; las tareas recurrentes muestran la pastilla «Recurrente».",
             "summary": "Seguimiento vía Tareas, calendario, briefing y QR; ciclos recurrentes con pastilla «Recurrente»."
         },
         "reservations": {
@@ -258,7 +258,7 @@
             "slug": "mobile",
             "type": "text",
             "title": "¿Funciona WinProx en smartphone?",
-            "body": "Sí. La gestión es desktop-first pero usable en tablet. Los portales de campo y QR son mobile-first. Los operarios trabajan en móvil vía Clock Point y QR unit/equipo. El tema Oscuro es útil en móvil.",
+            "body": "Sí. La gestión es desktop-first pero usable en tablet. Los portales de campo y QR son mobile-first. Los operarios trabajan en móvil vía Clock Point y QR de unit. El tema Oscuro es útil en móvil.",
             "summary": "Navegador en móvil/tablet/escritorio; campo vía QR es mobile-first."
         },
         "install": {

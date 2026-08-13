@@ -33,8 +33,8 @@
                 },
                 {
                     "title": "Travail terrain via QR",
-                    "text": "Les exécutants s'enregistrent via le QR Clock Point (nom + icône) et traitent les tâches via QR unit ou QR équipe — sans connexion WinProx.",
-                    "highlight": "Clock Point = enregistrement ; QR unit/équipe = tâches et signalements sur site."
+                    "text": "Les exécutants s'enregistrent via le QR Clock Point (nom + icône) et traitent les tâches via le QR unité — sans connexion WinProx.",
+                    "highlight": "Clock Point = connexion et pointage ; QR unité = tâches et signalements sur site."
                 },
                 {
                     "title": "Suivre et clôturer",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Équipes internes",
-            "box_body": "Organisez les équipes de maintenance sous Team. Liez les équipes aux units et catégories. Via Clock Point et QR unit/équipe, les exécutants enregistrent mises à jour et photos sur site."
+            "box_body": "Organisez les équipes de maintenance sous Team. Liez les équipes aux units et catégories. Via Clock Point et QR unité, les exécutants enregistrent mises à jour et photos sur site."
         },
         "pricing": {
             "slug": "pricing",
@@ -114,8 +114,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Quels codes QR existent ?",
-            "body": "QR unité : les signaleurs créent un signalement ; les exécutants (après Clock Point) traitent les tâches ouvertes et peuvent — si catégorie et unité autorisent les contrôles — enregistrer OK/Non OK. QR équipe : vue des tâches d'équipe sur site. QR Clock Point : connexion et pointage. QR site : lien général. Tout s'ouvre dans le navigateur — sans app.",
-            "summary": "QR unité (signalements/tâches/contrôle d'unité), QR équipe, QR Clock Point, QR site — tout dans le navigateur."
+            "body": "QR unité : les signaleurs créent un signalement ; les exécutants (après Clock Point) traitent les tâches ouvertes et peuvent — si catégorie et unité autorisent les contrôles — enregistrer OK/Non OK. QR Clock Point : connexion, pointage et tâches d'équipe. QR site : lien général. Tout s'ouvre dans le navigateur — sans app.",
+            "summary": "QR unité (signalements/tâches/contrôle d'unité), QR Clock Point (connexion/pointage/tâches d'équipe), QR site — tout dans le navigateur."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -142,7 +142,7 @@
                 },
                 {
                     "title": "Tâches sur site",
-                    "text": "Les exécutants enregistrés via Clock Point et appartenant à l'équipe démarrent et clôturent les tâches via QR unit — le même flux que via QR équipe."
+                    "text": "Les exécutants enregistrés via Clock Point et appartenant à l'équipe démarrent et clôturent les tâches via le QR unité."
                 },
                 {
                     "title": "Contrôle d'unité (exécutants)",
@@ -201,7 +201,7 @@
                 },
                 {
                     "title": "Exécutant",
-                    "text": "Travaille sans connexion WinProx. S'enregistre via QR Clock Point ; démarre/clôture les tâches via QR unit ou équipe, avec photos et notes."
+                    "text": "Travaille sans connexion WinProx. S'enregistre via QR Clock Point ; démarre/clôture les tâches via le QR unité, avec photos et notes."
                 }
             ]
         },
@@ -223,14 +223,14 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Comment configurer les équipes internes ?",
-            "body": "Allez dans Équipe : créez des équipes, ajoutez des exécutants (manuel, CSV ou Excel), liez les équipes aux unités et éventuellement aux catégories. Sous Équipes vous gérez aussi les listes de contrôle unit check (partagées ou par équipe). Imprimez ou envoyez le QR équipe et le QR Clock Point pour le terrain.",
-            "summary": "Équipes sous Équipe ; listes unit check ; liaison unités/catégories ; QR Clock Point et équipe pour le terrain."
+            "body": "Allez dans Équipe : créez des équipes, ajoutez des exécutants (manuel, CSV ou Excel), liez les équipes aux unités et éventuellement aux catégories. Sous Équipes vous gérez aussi les listes de contrôle unit check (partagées ou par équipe). Imprimez ou envoyez le QR Clock Point pour le terrain (Time → Clock Points).",
+            "summary": "Équipes sous Équipe ; listes unit check ; liaison unités/catégories ; QR Clock Point pour le terrain."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
             "title": "Comment les équipes suivent-elles les tâches ?",
-            "body": "Les tâches apparaissent dans Tâches, le calendrier, le briefing et les QR équipe/unité. Les exécutants démarrent et terminent sur site. Les coordinateurs suivent le statut dans l'admin. Les signalements récurrents génèrent des cycles avec échéances ; les tâches récurrentes affichent la pastille « Récurrent ».",
+            "body": "Les tâches apparaissent dans Tâches, le calendrier, le briefing, le QR Clock Point et le QR unité. Les exécutants démarrent et terminent sur site. Les coordinateurs suivent le statut dans l'admin. Les signalements récurrents génèrent des cycles avec échéances ; les tâches récurrentes affichent la pastille « Récurrent ».",
             "summary": "Suivi via Tâches, calendrier, briefing et QR ; cycles récurrents avec pastille « Récurrent »."
         },
         "reservations": {
@@ -258,7 +258,7 @@
             "slug": "mobile",
             "type": "text",
             "title": "WinProx fonctionne-t-il sur smartphone ?",
-            "body": "Oui. La gestion est desktop-first mais utilisable sur tablette. Les portails terrain et QR sont mobile-first. Les exécutants travaillent sur mobile via Clock Point et QR unit/équipe. Le thème Sombre est pratique sur téléphone.",
+            "body": "Oui. La gestion est desktop-first mais utilisable sur tablette. Les portails terrain et QR sont mobile-first. Les exécutants travaillent sur mobile via Clock Point et QR unité. Le thème Sombre est pratique sur téléphone.",
             "summary": "Navigateur sur mobile/tablette/desktop ; terrain via QR mobile-first."
         },
         "install": {

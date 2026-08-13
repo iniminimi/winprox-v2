@@ -9,10 +9,10 @@ use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 
 /**
- * Genereert de team-QR als inline SVG (geen GD/Imagick nodig). Hoge
+ * Genereert een QR-code als inline SVG (geen GD/Imagick nodig). Hoge
  * foutcorrectie (H, ~30%) zodat de code ook bij print/slijtage scanbaar blijft.
  */
-final class TeamQrCode
+final class QrSvg
 {
     public static function svg(string $url, int $size = 320): string
     {

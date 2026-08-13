@@ -33,8 +33,8 @@
                 },
                 {
                     "title": "Außendienst per QR",
-                    "text": "Ausführende melden sich über den Clock-Point-QR an (Name + Icon) und erledigen Aufgaben über Unit-QR oder Team-QR — ohne WinProx-Login.",
-                    "highlight": "Clock Point = Anmeldung; Unit-/Team-QR = Aufgaben und Meldungen vor Ort."
+                    "text": "Ausführende melden sich über den Clock-Point-QR an (Name + Icon) und erledigen Aufgaben über den Unit-QR — ohne WinProx-Login.",
+                    "highlight": "Clock Point = Anmeldung und Ein-/Ausstempeln; Unit-QR = Aufgaben und Meldungen vor Ort."
                 },
                 {
                     "title": "Nachverfolgen und abschließen",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Interne Teams",
-            "box_body": "Organisieren Sie Wartungsteams unter Team. Verknüpfen Sie Teams mit Units und Kategorien. Über Clock Point und Unit-/Team-QR erfassen Ausführende Updates und Fotos vor Ort."
+            "box_body": "Organisieren Sie Wartungsteams unter Team. Verknüpfen Sie Teams mit Units und Kategorien. Über Clock Point und Unit-QR erfassen Ausführende Updates und Fotos vor Ort."
         },
         "pricing": {
             "slug": "pricing",
@@ -114,8 +114,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Welche QR-Codes gibt es?",
-            "body": "Unit-QR: Melder erstellen Meldungen; Ausführer (nach Clock-Point-Anmeldung) bearbeiten offene Aufgaben und können — wenn Kategorie und Unit Unit-Checks erlauben — OK/Nicht OK erfassen. Team-QR: Teamaufgaben-Übersicht vor Ort. Clock-Point-QR: Anmeldung und Ein-/Ausstempeln. Standort-QR: allgemeiner Link zum Standort. Alles im Browser — ohne App.",
-            "summary": "Unit-QR (Meldungen/Aufgaben/Unit-Check), Team-QR, Clock-Point-QR, Standort-QR — alles im Browser."
+            "body": "Unit-QR: Melder erstellen Meldungen; Ausführer (nach Clock-Point-Anmeldung) bearbeiten offene Aufgaben und können — wenn Kategorie und Unit Unit-Checks erlauben — OK/Nicht OK erfassen. Clock-Point-QR: Anmeldung, Ein-/Ausstempeln und Teamaufgaben. Standort-QR: allgemeiner Link zum Standort. Alles im Browser — ohne App.",
+            "summary": "Unit-QR (Meldungen/Aufgaben/Unit-Check), Clock-Point-QR (Anmeldung/Stempeln/Teamaufgaben), Standort-QR — alles im Browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -142,7 +142,7 @@
                 },
                 {
                     "title": "Aufgaben vor Ort",
-                    "text": "Ausführende, die über Clock Point angemeldet sind und zum Team gehören, starten und schließen Aufgaben über Unit-QR ab — derselbe Ablauf wie über Team-QR."
+                    "text": "Ausführende, die über Clock Point angemeldet sind und zum Team gehören, starten und schließen Aufgaben über den Unit-QR ab."
                 },
                 {
                     "title": "Unit-Check (Ausführer)",
@@ -201,7 +201,7 @@
                 },
                 {
                     "title": "Ausführender",
-                    "text": "Arbeitet ohne WinProx-Login. Meldet sich über Clock-Point-QR an; startet/schließt Aufgaben über Unit- oder Team-QR, mit Fotos und Notizen."
+                    "text": "Arbeitet ohne WinProx-Login. Meldet sich über Clock-Point-QR an; startet/schließt Aufgaben über den Unit-QR, mit Fotos und Notizen."
                 }
             ]
         },
@@ -223,14 +223,14 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Wie richte ich interne Teams ein?",
-            "body": "Gehen Sie zu Team: Teams anlegen, Ausführende hinzufügen (manuell, CSV oder Excel), Teams an Units und optional an Kategorien koppeln. Unter Teams verwalten Sie auch Checklisten für Unit-Checks (geteilt oder pro Team). Drucken oder mailen Sie Team-QR und Clock-Point-QR für die Fläche.",
-            "summary": "Teams unter Team; Checklisten für Unit-Checks; Kopplung an Units/Kategorien; Clock-Point- und Team-QR für die Fläche."
+            "body": "Gehen Sie zu Team: Teams anlegen, Ausführende hinzufügen (manuell, CSV oder Excel), Teams an Units und optional an Kategorien koppeln. Unter Teams verwalten Sie auch Checklisten für Unit-Checks (geteilt oder pro Team). Drucken oder mailen Sie den Clock-Point-QR für die Fläche (Time → Clock Points).",
+            "summary": "Teams unter Team; Checklisten für Unit-Checks; Kopplung an Units/Kategorien; Clock-Point-QR für die Fläche."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
             "title": "Wie verfolgen Teams Aufgaben?",
-            "body": "Aufgaben erscheinen in Aufgaben, Kalender, Briefing und Team-/Unit-QR. Ausführer starten und schließen vor Ort ab. Koordinatoren verfolgen den Status in der Verwaltung. Wiederkehrende Meldungen erzeugen Zyklen mit geplantem Fälligkeitsdatum; wiederkehrende Aufgaben zeigen die Pill «Wiederkehrend».",
+            "body": "Aufgaben erscheinen in Aufgaben, Kalender, Briefing, Clock-Point-QR und Unit-QR. Ausführer starten und schließen vor Ort ab. Koordinatoren verfolgen den Status in der Verwaltung. Wiederkehrende Meldungen erzeugen Zyklen mit geplantem Fälligkeitsdatum; wiederkehrende Aufgaben zeigen die Pill «Wiederkehrend».",
             "summary": "Nachverfolgung via Aufgaben, Kalender, Briefing und QR; wiederkehrende Zyklen mit Pill «Wiederkehrend»."
         },
         "reservations": {
@@ -258,7 +258,7 @@
             "slug": "mobile",
             "type": "text",
             "title": "Funktioniert WinProx auf dem Smartphone?",
-            "body": "Ja. Verwaltung ist desktop-first, aber auf Tablet nutzbar. Außendienst- und QR-Portale sind mobile-first. Ausführende arbeiten am Handy über Clock Point und Unit-/Team-QR. Das Dunkel-Thema ist am Handy praktisch.",
+            "body": "Ja. Verwaltung ist desktop-first, aber auf Tablet nutzbar. Außendienst- und QR-Portale sind mobile-first. Ausführende arbeiten am Handy über Clock Point und Unit-QR. Das Dunkel-Thema ist am Handy praktisch.",
             "summary": "Browser auf Handy/Tablet/Desktop; Außendienst per QR ist mobile-first."
         },
         "install": {

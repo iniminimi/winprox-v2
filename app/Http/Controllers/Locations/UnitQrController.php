@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Locations;
 use App\Models\Unit;
 use App\Support\Platform\SuperuserTenantAccess;
 use App\Support\Qr\QrCenterLogo;
-use App\Support\Qr\TeamQrCode;
+use App\Support\Qr\QrSvg;
 use App\Support\Qr\UnitPortalUrl;
 
 final class UnitQrController
@@ -23,7 +23,7 @@ final class UnitQrController
         return view('locations.unit-qr', [
             'unit' => $unit,
             'url' => $url,
-            'qrSvg' => TeamQrCode::svg($url),
+            'qrSvg' => QrSvg::svg($url),
             'centerLogoUrl' => QrCenterLogo::publicUrl($unit->tenant),
         ]);
     }

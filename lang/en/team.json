@@ -46,7 +46,6 @@
         "active": "Active",
         "inactive": "Inactive",
         "worker_count": ":count active workers",
-        "qr": "Team QR",
         "edit": "Edit",
         "deactivate": "Deactivate",
         "activate": "Activate",
@@ -148,21 +147,6 @@
         "fully_deleted_with_teams": ":count worker(s) and :teams empty team deleted.",
         "partially_deleted_with_teams": ":deleted worker(s) deleted. :preserved worker(s) with devices were kept. :teams empty team deleted.",
         "delete_failed": "An error occurred while deleting."
-    },
-    "qr": {
-        "subtitle": "Scan this code to open the team field portal.",
-        "print": "Print",
-        "email": "Email QR code",
-        "email_modal_title": "Email QR code",
-        "email_modal_hint": "Send the team QR by email. The recipient will see the QR code and a link to open the portal.",
-        "email_recipient_label": "Recipient email address",
-        "email_recipient_name_label": "Recipient name (optional)",
-        "email_recipient_required": "Enter an email address.",
-        "email_send": "Send",
-        "email_sent": "QR code sent to :email.",
-        "email_subject": "Team QR: :team",
-        "email_body": "Here is the team QR for :team. Scan the code to open the team field portal.",
-        "open_link": "Open this QR code"
     },
     "clock_point_qr": {
         "button": "Clock Point QR code",

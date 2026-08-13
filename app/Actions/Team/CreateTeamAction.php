@@ -8,7 +8,7 @@ use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
 
 /**
- * Maakt een operationeel team aan (incl. auto-gegenereerde team-QR-token).
+ * Maakt een operationeel team aan.
  *
  * Integration-first (§3.0): tenant wordt expliciet meegegeven, niet via globale
  * state — identiek aanroepbaar door Livewire, API, CLI, job.

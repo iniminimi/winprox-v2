@@ -55,7 +55,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 /**
- * Gebruikers-hub: collega-gebruikers (admin), operationele teams (+ team-QR) en workers.
+ * Gebruikers-hub: collega-gebruikers (admin), operationele teams en workers.
  * Dun: validatie via Form Requests, mutaties via Actions; RBAC via role + policy.
  */
 #[Layout('components.layouts.app')]

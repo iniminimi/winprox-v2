@@ -90,7 +90,7 @@ class ExecuteManualScreenshotCaptureAction
             'MANUAL_CAPTURE_ISSUE_ID' => (string) config('manual_capture.issue_id'),
             'MANUAL_CAPTURE_TASK_ID' => (string) config('manual_capture.task_id'),
             'MANUAL_CAPTURE_UNIT_QR_TOKEN' => (string) config('manual_capture.unit_qr_token'),
-            'MANUAL_CAPTURE_TEAM_QR_TOKEN' => (string) config('manual_capture.team_qr_token'),
+            'MANUAL_CAPTURE_CLOCK_POINT_TOKEN' => (string) config('manual_capture.clock_point_token'),
             'MANUAL_CAPTURE_WORKER_FIRST_NAME' => (string) config('manual_capture.worker_first_name'),
             'MANUAL_CAPTURE_WORKER_LAST_NAME' => (string) config('manual_capture.worker_last_name'),
             'MANUAL_CAPTURE_WORKER_ICON' => (string) config('manual_capture.worker_icon'),

@@ -74,7 +74,7 @@ Middleware: geldige tenant + trial/abonnement (`support.tenant`). Rollen: **admi
 
 ### Team
 - **Collega's** (admin): users met rol admin/employee.
-- **Interne teams** + **workers** (zonder login): icoon, teamleader-vlag, team-QR.
+- **Interne teams** + **workers** (zonder login): icoon, teamleader-vlag, Clock Point-QR.
 - Worker-icoon reset / lockout-beheer.
 
 ### Overige tenant-schermen
@@ -97,7 +97,7 @@ Middleware: geldige tenant + trial/abonnement (`support.tenant`). Rollen: **admi
 | `/comparison` | Vergelijking / positioning |
 | `/login`, `/register`, … | Auth |
 | `/melden/{token}` | **Unit-QR-portaal** (melden, documenten, mededelingen, worker-modus) |
-| `/team/{token}` | **Team-QR-portaal** (worker-overzicht; afhandeling via unit-QR) |
+| `/time/{token}` | **Clock Point-portaal** (aanmelden, inklokken, teamtaken; afhandeling via unit-QR) |
 | `/q/{token}` | QR-scan redirect (koppelen / doorverwijzen) |
 | `/melden/onbekend/{token}` | Niet-toegewezen QR |
 | `/promo` | Promo-landingspagina (ref-tracking gemeente/campagne) |
@@ -172,7 +172,7 @@ Support: tenant **impersoneren** (`support.tenant`) voor hulp zonder tenant-logi
 | Task | **Task** |
 | sector `facility` | geen sector (één app) |
 | `/facility/report/{token}` | `/melden/{token}` |
-| `/facility/team/{token}` | `/team/{token}` |
+| `/facility/team/{token}` | `/time/{token}` (Clock Point) |
 | Standaard team per unit | **Category → team(s)** routing |
 | Geen moderatie | **QR-goedkeuring + blur** publiek |
 | 4 talen | **6 talen** (+ es, it) |
@@ -188,7 +188,7 @@ Broncode oude app: `c:\winprox_old`. Relevante V1-paden:
 |-----------|--------|
 | Teams UI | `app/Livewire/FacilityTeams.php` |
 | Unit QR-portaal | `app/Livewire/FacilityUnitPortal.php` |
-| Team QR-portaal | `app/Livewire/FacilityTeamFieldPortal.php` |
+| Team QR-portaal (V1; V2 = Clock Point) | `app/Livewire/FacilityTeamFieldPortal.php` |
 | QR-pack | `app/Http/Controllers/FacilityQrPackDownloadController.php` |
 | Ochtendbriefing | `app/Support/FacilityMorningBriefing.php` |
 | QR-intake | `app/Support/FacilityQrIntake.php` |
