@@ -351,6 +351,8 @@ it('behoudt promo-url placeholders als link in de editor', function () {
     $html = '<p><a href="{{promo_url}}">Klik hier</a> '
         .'<a href="{{welcome_url}}">Welcome</a> '
         .'<a href="http://{{promo_url}}">Met protocol</a> '
+        .'<a href="http://localhost:8000/x/{{welcome_url}}">Relatief</a> '
+        .'<a href="about:blank">Leeg</a> '
         .'<a href="javascript:alert(1)">Nee</a></p>';
 
     expect(PromoCampaignHtmlSanitizer::clean($html))
@@ -358,12 +360,23 @@ it('behoudt promo-url placeholders als link in de editor', function () {
             '<p><a href="{{promo_url}}">Klik hier</a> '
             .'<a href="{{welcome_url}}">Welcome</a> '
             .'<a href="{{promo_url}}">Met protocol</a> '
+            .'<a href="{{welcome_url}}">Relatief</a> '
+            .'<a>Leeg</a> '
             .'<a>Nee</a></p>',
         );
 
     expect(PromoCampaignHtmlSanitizer::forEditor($html))
         ->toContain('href="{{promo_url}}"')
         ->toContain('href="{{welcome_url}}"');
+});
+
+it('zet inline linkstijl op promo e-mail ankers', function () {
+    $html = '<p><a href="{{welcome_url}}">Bekijk hier hoe een kamer-QR werkt</a></p>';
+
+    expect(PromoCampaignQuillHtmlNormalizer::forMail($html))
+        ->toContain('href="{{welcome_url}}"')
+        ->toContain('text-decoration:underline')
+        ->toContain('Bekijk hier hoe een kamer-QR werkt');
 });
 
 it('behoudt lettergrootte en veilige links in promo html', function () {

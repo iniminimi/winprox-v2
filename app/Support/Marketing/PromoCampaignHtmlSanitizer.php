@@ -117,7 +117,7 @@ final class PromoCampaignHtmlSanitizer
             return null;
         }
 
-        if (preg_match('/^(?:https?:\/\/)?\{\{\s*(promo_url|welcome_url)\s*\}\}$/i', $href, $placeholder) === 1) {
+        if (preg_match('/\{\{\s*(promo_url|welcome_url)\s*\}\}/i', $href, $placeholder) === 1) {
             return '{{'.strtolower($placeholder[1]).'}}';
         }
 

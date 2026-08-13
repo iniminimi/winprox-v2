@@ -49,8 +49,9 @@ final class PromoCampaignQuillHtmlNormalizer
         $html = self::splitSingleParagraphOnBreaks($html);
         $html = self::promoteUniformFontSizeToParagraphs($html);
         $html = self::applyMailBodyParagraphSpacing($html);
+        $html = self::compactMailSignatureSpacing($html);
 
-        return self::compactMailSignatureSpacing($html);
+        return self::applyMailLinkStyles($html);
     }
 
     /**
@@ -262,6 +263,32 @@ final class PromoCampaignQuillHtmlNormalizer
         }
 
         return $px.'px';
+    }
+
+    /**
+     * E-mailclients negeren vaak <style> op <a>; zonder inline underline lijkt de link platte tekst.
+     */
+    private static function applyMailLinkStyles(string $html): string
+    {
+        return preg_replace_callback(
+            '/<a(\s[^>]*)?>/i',
+            static function (array $matches): string {
+                $attrs = $matches[1] ?? '';
+                if (preg_match('/\bhref=/i', $attrs) !== 1) {
+                    return $matches[0];
+                }
+
+                $fontSize = PromoCampaignHtmlSanitizer::fontSizeFromAttributes($attrs);
+                $attrs = preg_replace('/\s+style="[^"]*"/', '', $attrs) ?? $attrs;
+                $style = 'color:#059669;font-weight:600;text-decoration:underline';
+                if ($fontSize !== null) {
+                    $style .= ';font-size: '.$fontSize;
+                }
+
+                return '<a style="'.$style.'"'.$attrs.'>';
+            },
+            $html,
+        ) ?? $html;
     }
 
     private static function applyMailBodyParagraphSpacing(string $html): string

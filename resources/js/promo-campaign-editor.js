@@ -7,6 +7,23 @@ SizeStyle.whitelist = FONT_SIZES;
 Quill.register(SizeStyle, true);
 Quill.register({ 'formats/size': SizeStyle }, true);
 
+const Link = Quill.import('formats/link');
+const PLACEHOLDER_HREF = /^(?:https?:\/\/)?\{\{\s*(promo_url|welcome_url)\s*\}\}$/i;
+
+class PromoLink extends Link {
+    static sanitize(url) {
+        const trimmed = String(url ?? '').trim();
+        const match = trimmed.match(PLACEHOLDER_HREF);
+        if (match) {
+            return `{{${match[1].toLowerCase()}}}`;
+        }
+
+        return super.sanitize(url);
+    }
+}
+
+Quill.register(PromoLink, true);
+
 const editors = new Map();
 
 function loadHtmlIntoQuill(quill, html) {

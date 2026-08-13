@@ -253,7 +253,7 @@ class PromoCampaignEdit extends Component
         ]));
     }
 
-    public function sendTestEmail(SendPromoCampaignEmailAction $send): void
+    public function sendTestEmail(SendPromoCampaignEmailAction $send, UpdatePromoCampaignAction $update): void
     {
         $this->authorize('managePromoCampaigns', User::class);
 
@@ -268,6 +268,8 @@ class PromoCampaignEdit extends Component
         if ($user === null) {
             return;
         }
+
+        $this->persistCampaign($update, (int) $user->id);
 
         $target = $this->campaign->attach_letter_to_email
             ? $this->campaign->targets()->whereNotNull('generated_at')->orderBy('id')->first()
