@@ -76,7 +76,7 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->getContent();
 
     expect($html)->toContain('video/nl/hospitality_NL.mp4')
-        ->and($html)->toMatch('/wp-welcome-hero-qr-video[\s\S]*?\bautoplay\b[\s\S]*?hospitality_NL\.mp4/');
+        ->and($html)->not->toMatch('/wp-welcome-hero-qr-video[\s\S]*?\bautoplay\b[\s\S]*?hospitality_NL\.mp4/');
 
     expect(WelcomeVisit::query()->count())->toBe(1)
         ->and(WelcomeVisit::query()->first()?->utm_source)->toBe('promo')
