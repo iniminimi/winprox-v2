@@ -112,7 +112,16 @@ final class PromoCampaignHtmlSanitizer
         }
 
         $href = trim(html_entity_decode($matches[2], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
-        if ($href === '' || preg_match('/^(https?:|mailto:)/i', $href) !== 1) {
+        $href = urldecode($href);
+        if ($href === '') {
+            return null;
+        }
+
+        if (preg_match('/^(?:https?:\/\/)?\{\{\s*(promo_url|welcome_url)\s*\}\}$/i', $href, $placeholder) === 1) {
+            return '{{'.strtolower($placeholder[1]).'}}';
+        }
+
+        if (preg_match('/^(https?:|mailto:)/i', $href) !== 1) {
             return null;
         }
 

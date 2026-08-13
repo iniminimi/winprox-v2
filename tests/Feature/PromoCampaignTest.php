@@ -347,6 +347,25 @@ it('behandelt lege quill-html als leeg', function () {
         ->and(PromoCampaignHtmlSanitizer::clean('<p>Hallo</p>'))->toBe('<p>Hallo</p>');
 });
 
+it('behoudt promo-url placeholders als link in de editor', function () {
+    $html = '<p><a href="{{promo_url}}">Klik hier</a> '
+        .'<a href="{{welcome_url}}">Welcome</a> '
+        .'<a href="http://{{promo_url}}">Met protocol</a> '
+        .'<a href="javascript:alert(1)">Nee</a></p>';
+
+    expect(PromoCampaignHtmlSanitizer::clean($html))
+        ->toBe(
+            '<p><a href="{{promo_url}}">Klik hier</a> '
+            .'<a href="{{welcome_url}}">Welcome</a> '
+            .'<a href="{{promo_url}}">Met protocol</a> '
+            .'<a>Nee</a></p>',
+        );
+
+    expect(PromoCampaignHtmlSanitizer::forEditor($html))
+        ->toContain('href="{{promo_url}}"')
+        ->toContain('href="{{welcome_url}}"');
+});
+
 it('behoudt lettergrootte en veilige links in promo html', function () {
     $html = '<p><span style="font-size: 18px; color: red;">Hallo</span> '
         .'<a href="https://winprox.app" onclick="alert(1)">site</a></p>'
