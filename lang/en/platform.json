@@ -97,7 +97,7 @@
         "source_voluntary": "Unsubscribed by recipient",
         "source_undeliverable": "Undeliverable (bounce)",
         "source_manual": "Blocked manually",
-        "filter_undeliverable": "Undeliverable (bounce) (:count)",
+        "filter_undeliverable": "Undeliverable only (bounce) (:count)",
         "list_date_prefix": "on"
     },
     "promo_qr": {

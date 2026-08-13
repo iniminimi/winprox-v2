@@ -282,7 +282,7 @@ it('filtert platform-uitschrijvingen op onbezorgbaar', function () {
     Livewire::actingAs($superuser)
         ->test(\App\Livewire\Platform\EmailUnsubscribes::class)
         ->assertSee('zelf@example.com')
-        ->assertDontSee('bounce@example.com')
+        ->assertSee('bounce@example.com')
         ->assertSee(__('platform.email_unsubscribe.filter_undeliverable', ['count' => 1]))
         ->set('undeliverableOnly', true)
         ->assertDontSee('zelf@example.com')

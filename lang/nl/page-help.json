@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Zoeken en filter",
-                    "text": "Zoek op e-mailadres. Standaard (vinkje uit) ziet u geen bounce-adressen. Zet <strong>Onbezorgbaar (bounce)</strong> aan om alleen de automatisch geblokkeerde adressen na een mislukte promo-mail te tonen; het aantal staat tussen haakjes."
+                    "text": "Zoek op e-mailadres. Standaard ziet u alle uitschrijvingen, inclusief bounces. Zet <strong>Alleen onbezorgbaar (bounce)</strong> aan om enkel de automatisch geblokkeerde adressen na een mislukte promo-mail te tonen; het aantal staat tussen haakjes."
                 },
                 {
                     "label": "Bron van de uitschrijving",
