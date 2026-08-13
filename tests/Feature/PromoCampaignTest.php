@@ -364,7 +364,17 @@ it('zet lettergrootte om naar inline stijl in promo e-mail', function () {
     $html = '<p><span style="font-size: 22px;">WinProx</span></p>';
 
     expect(PromoCampaignQuillHtmlNormalizer::forMail($html))
-        ->toBe('<p style="margin:0 0 16px 0"><span style="font-size: 22px">WinProx</span></p>');
+        ->toBe('<p style="margin:0 0 16px 0;font-size: 22px"><span style="font-size: 22px">WinProx</span></p>');
+});
+
+it('behoudt lettergrootte op vetgedrukte promo-regels', function () {
+    $html = '<p><strong style="font-size: 18px;">Geen app. Geen installatie.</strong></p>';
+
+    expect(PromoCampaignHtmlSanitizer::clean($html))
+        ->toBe('<p><strong style="font-size: 18px">Geen app. Geen installatie.</strong></p>');
+
+    expect(PromoCampaignQuillHtmlNormalizer::forMail($html))
+        ->toBe('<p style="margin:0 0 16px 0;font-size: 18px"><strong style="font-size: 18px">Geen app. Geen installatie.</strong></p>');
 });
 
 it('herstelt dubbel ge-escaped editor html', function () {

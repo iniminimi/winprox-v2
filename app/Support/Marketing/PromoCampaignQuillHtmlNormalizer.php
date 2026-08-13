@@ -47,7 +47,7 @@ final class PromoCampaignQuillHtmlNormalizer
         }
 
         $html = self::splitSingleParagraphOnBreaks($html);
-
+        $html = self::promoteUniformFontSizeToParagraphs($html);
         $html = self::applyMailBodyParagraphSpacing($html);
 
         return self::compactMailSignatureSpacing($html);
@@ -208,6 +208,60 @@ final class PromoCampaignQuillHtmlNormalizer
         }
 
         return $paragraphs === [] ? $html : implode('', $paragraphs);
+    }
+
+    /**
+     * Zet een uniforme lettergrootte ook op <p> (Outlook negeert font-size op span/strong).
+     */
+    private static function promoteUniformFontSizeToParagraphs(string $html): string
+    {
+        return preg_replace_callback(
+            '/<p(\s[^>]*)?>(.*?)<\/p>/is',
+            static function (array $matches): string {
+                $attrs = $matches[1] ?? '';
+                $inner = $matches[2];
+                if (PromoCampaignHtmlSanitizer::fontSizeFromAttributes($attrs) !== null) {
+                    return $matches[0];
+                }
+
+                $size = self::uniformInnerFontSize($inner);
+                if ($size === null) {
+                    return $matches[0];
+                }
+
+                return '<p style="font-size: '.$size.'"'.$attrs.'>'.$inner.'</p>';
+            },
+            $html,
+        ) ?? $html;
+    }
+
+    private static function uniformInnerFontSize(string $inner): ?string
+    {
+        if (preg_match_all('/font-size:\s*(\d{1,2})px/i', $inner, $matches) < 1) {
+            return null;
+        }
+
+        $unique = array_values(array_unique($matches[1]));
+        if (count($unique) !== 1) {
+            return null;
+        }
+
+        $withoutSized = preg_replace(
+            '/<(span|strong|b|em|i|a)([^>]*font-size:[^>]*)>.*?<\/\1>/is',
+            '',
+            $inner,
+        ) ?? $inner;
+
+        if (trim(strip_tags($withoutSized)) !== '') {
+            return null;
+        }
+
+        $px = (int) $unique[0];
+        if ($px < 10 || $px > 36) {
+            return null;
+        }
+
+        return $px.'px';
     }
 
     private static function applyMailBodyParagraphSpacing(string $html): string

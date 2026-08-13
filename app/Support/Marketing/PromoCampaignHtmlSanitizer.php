@@ -6,7 +6,7 @@ namespace App\Support\Marketing;
 
 final class PromoCampaignHtmlSanitizer
 {
-    private const ALLOWED_TAGS = 'p|br|strong|em|ul|ol|li|a|span';
+    private const ALLOWED_TAGS = 'p|br|strong|b|em|i|ul|ol|li|a|span';
 
     private const MIN_FONT_PX = 10;
 
@@ -25,7 +25,7 @@ final class PromoCampaignHtmlSanitizer
 
         $html = preg_replace('/<(?!\/?(?:'.self::ALLOWED_TAGS.')\b)[^>]*>/i', '', $html) ?? $html;
         $html = preg_replace_callback(
-            '/<(p|br|strong|em|ul|ol|li|a|span)(\s[^>]*)?\/?>/i',
+            '/<(p|br|strong|b|em|i|ul|ol|li|a|span)(\s[^>]*)?\/?>/i',
             static fn (array $matches): string => self::sanitizeOpeningTag(
                 strtolower($matches[1]),
                 $matches[2] ?? '',
@@ -91,7 +91,7 @@ final class PromoCampaignHtmlSanitizer
             }
         }
 
-        if ($tag === 'span' || $tag === 'p' || $tag === 'li') {
+        if (in_array($tag, ['span', 'p', 'li', 'strong', 'b', 'em', 'i', 'a'], true)) {
             $fontSize = self::fontSizeFromAttributes($rawAttrs);
             if ($fontSize !== null) {
                 $parts[] = 'style="font-size: '.$fontSize.'"';

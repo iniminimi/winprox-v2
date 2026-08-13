@@ -102,7 +102,7 @@
                 <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="WinProx">
             </div>
             <div class="accent-line"></div>
-            <div class="body">
+            <div class="body" style="font-size:15px;line-height:1.7;color:#475569">
                 @if($recipientName)
                     <p>{{ __('mail.outbound.greeting_name', ['name' => $recipientName]) }}</p>
                 @endif
