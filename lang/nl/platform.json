@@ -253,11 +253,11 @@
         "delivery_restart_hint": "Open de campagne en zet opnieuw Mails in wachtrij (zonder Opnieuw versturen). Alleen de rest wordt gestuurd.",
         "delivery_sending_hint": "Wachtrij loopt nog. Vernieuwt automatisch; even laten staan.",
         "bounces_title": "Onbezorgde mails (bounces)",
-        "bounces_lead": "Scan de promo-mailbox op undelivered/bounces, ook als die berichten al geopend zijn (laatste 30 dagen). Gevonden adressen worden uitgeschreven en uit campagnes gehaald. Draait ook elk uur automatisch.",
+        "bounces_lead": "Scan de promo-mailbox op undelivered/bounces, ook als die berichten al geopend zijn (laatste 30 dagen). Gevonden adressen worden uitgeschreven en in de campagne als onbezorgd gemarkeerd. Draait ook elk uur automatisch.",
         "bounces_submit": "Bounces nu verwerken",
         "bounces_loading": "Mailbox wordt gescand…",
         "bounces_none": "Klaar: geen bounces gevonden in :scanned berichten (laatste :days dagen, ook al gelezen).",
-        "bounces_processed": "Klaar: :scanned berichten gescand, :bounces bounces, :emails adressen gevonden, :removed uit campagnes, :blocked uitgeschreven.",
+        "bounces_processed": "Klaar: :scanned berichten gescand, :bounces bounces, :emails adressen gevonden, :removed als onbezorgd gemarkeerd, :blocked uitgeschreven.",
         "bounces_failed": "Bounces verwerken mislukt: :error",
         "bounces_failed_generic": "Bounces verwerken mislukt."
     },

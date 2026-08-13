@@ -320,7 +320,7 @@ class PromoCampaignEdit extends Component
             'targets' => $this->campaign->targets()->count(),
             'generated' => $this->campaign->targets()->whereNotNull('generated_at')->count(),
             'sent' => $this->campaign->emailSends()->where('status', 'sent')->count(),
-            'bounced' => $this->campaign->emailSends()->where('status', 'bounced')->count(),
+            'bounced' => $this->campaign->targets()->where('undelivered', true)->count(),
         ];
 
         $visitStats = app(SummarizePromoCampaignVisitStatsAction::class)->handle($this->campaign);

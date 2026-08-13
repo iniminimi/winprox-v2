@@ -7,6 +7,7 @@ namespace App\Actions\Marketing;
 use App\Actions\Audit\LogAuditAction;
 use App\Actions\Contact\SetEmailSubscriptionAction;
 use App\Enums\EmailUnsubscribeSource;
+use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Models\EmailUnsubscribe;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
@@ -21,7 +22,7 @@ class MarkPromoCampaignEmailBouncedAction
     ) {}
 
     /**
-     * Block the address and remove matching promo campaign targets.
+     * Block the address and mark matching promo campaign targets as undelivered.
      *
      * @return array{removed: int, blocked: bool}
      */
@@ -73,6 +74,17 @@ class MarkPromoCampaignEmailBouncedAction
 
         DB::transaction(function () use ($targets, $normalized, $reason, &$removed): void {
             foreach ($targets as $target) {
+                $alreadyMarked = (bool) $target->undelivered;
+
+                $target->update(['undelivered' => true]);
+
+                PromoCampaignEmailSend::query()
+                    ->where('promo_campaign_target_id', $target->id)
+                    ->update([
+                        'status' => MunicipalPromoEmailSendStatus::Bounced->value,
+                        'error_message' => $reason,
+                    ]);
+
                 $this->logAudit->handle(
                     userId: null,
                     tenantId: null,
@@ -85,13 +97,14 @@ class MarkPromoCampaignEmailBouncedAction
                         'recipient_email' => $normalized,
                         'target_name' => $target->name,
                         'reason' => $reason,
-                        'removed' => true,
+                        'removed' => false,
+                        'undelivered' => true,
                     ],
                 );
 
-                $this->deleteLetterFile($target);
-                $target->delete();
-                $removed++;
+                if (! $alreadyMarked) {
+                    $removed++;
+                }
             }
         });
 
@@ -99,22 +112,5 @@ class MarkPromoCampaignEmailBouncedAction
             'removed' => $removed,
             'blocked' => true,
         ];
-    }
-
-    private function deleteLetterFile(PromoCampaignTarget $target): void
-    {
-        if ($target->docx_filename === null || $target->docx_filename === '') {
-            return;
-        }
-
-        $campaign = $target->campaign;
-        if ($campaign === null) {
-            return;
-        }
-
-        $path = $campaign->lettersDirectory().DIRECTORY_SEPARATOR.$target->docx_filename;
-        if (is_file($path)) {
-            @unlink($path);
-        }
     }
 }

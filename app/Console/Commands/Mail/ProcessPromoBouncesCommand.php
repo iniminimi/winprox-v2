@@ -16,7 +16,7 @@ class ProcessPromoBouncesCommand extends Command
                             {--limit= : Max messages to scan}
                             {--dry-run : Parse and report without updating DB or marking Seen}';
 
-    protected $description = 'Scan Dominique promo IMAP for bounce DSNs, unsubscribe addresses, and remove them from promo campaigns';
+    protected $description = 'Scan Dominique promo IMAP for bounce DSNs, unsubscribe addresses, and mark matching promo campaign targets as undelivered';
 
     public function handle(ProcessPromoMailboxBouncesAction $process): int
     {
@@ -50,7 +50,7 @@ class ProcessPromoBouncesCommand extends Command
                 ['Messages scanned', (string) $result['scanned']],
                 ['Bounce messages', (string) $result['bounce_messages']],
                 ['Emails found', (string) $result['emails_found']],
-                ['Targets removed', (string) $result['removed']],
+                ['Targets marked undelivered', (string) $result['removed']],
                 ['Addresses blocked', (string) $result['blocked']],
                 ['Dry-run', $result['dry_run'] ? 'yes' : 'no'],
             ],

@@ -53,6 +53,10 @@ class SendPromoCampaignEmailAction
         }
 
         $isTestSend = $overrideRecipientEmail !== null;
+        if ($target->undelivered && ! $isTestSend) {
+            throw new RuntimeException('Email previously bounced for this target.');
+        }
+
         $normalizedRecipientEmail = EmailUnsubscribe::normalizeEmail($recipientEmail);
         $isUnsubscribed = EmailUnsubscribe::isUnsubscribed($normalizedRecipientEmail)
             && ! EmailUnsubscribeExemptions::isExempt($normalizedRecipientEmail);

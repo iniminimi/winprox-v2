@@ -106,6 +106,7 @@ class SummarizePromoCampaignsDeliveryAction
 
         $query = PromoCampaignTarget::query()
             ->where('promo_campaign_id', $campaign->id)
+            ->where('undelivered', false)
             ->whereNotNull('email')
             ->where('email', '!=', '');
 

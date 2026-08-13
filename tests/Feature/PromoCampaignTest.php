@@ -1012,7 +1012,7 @@ it('slaat uitgeschreven adressen over bij bulk promo-campagne mails', function (
     Mail::assertNothingSent();
 });
 
-it('zet gebouncete promo-adressen op unsubscribe en verwijdert ze uit de campagne', function () {
+it('zet gebouncete promo-adressen op unsubscribe en markeert ze als onbezorgd in de campagne', function () {
     Queue::fake();
     Mail::fake();
 
@@ -1032,13 +1032,18 @@ it('zet gebouncete promo-adressen op unsubscribe en verwijdert ze uit de campagn
     $result = app(\App\Actions\Marketing\MarkPromoCampaignEmailBouncedAction::class)
         ->handle('bounce@example.com', 'Undelivered Mail Returned to Sender');
 
+    $target = PromoCampaignTarget::query()->find($targetId);
+
     expect($result['removed'])->toBe(1)
         ->and($result['blocked'])->toBeTrue()
         ->and(EmailUnsubscribe::isUnsubscribed('bounce@example.com'))->toBeTrue()
         ->and(EmailUnsubscribe::query()->where('email', 'bounce@example.com')->value('source'))
         ->toBe(\App\Enums\EmailUnsubscribeSource::Undeliverable)
-        ->and(PromoCampaignTarget::query()->find($targetId))->toBeNull()
-        ->and(PromoCampaignEmailSend::query()->where('promo_campaign_id', $campaign->id)->count())->toBe(0);
+        ->and($target)->not->toBeNull()
+        ->and($target->undelivered)->toBeTrue()
+        ->and(PromoCampaignEmailSend::query()->where('promo_campaign_id', $campaign->id)->count())->toBe(1)
+        ->and(PromoCampaignEmailSend::query()->where('promo_campaign_target_id', $targetId)->value('status'))
+        ->toBe(MunicipalPromoEmailSendStatus::Bounced);
 
     $preview = app(QueuePromoCampaignEmailsAction::class)->preview($campaign->fresh(), forceResend: true);
     expect($preview['queued'])->toBe(0);

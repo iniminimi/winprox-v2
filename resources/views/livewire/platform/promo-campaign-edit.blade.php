@@ -270,7 +270,9 @@
                                     {{ __('platform.promo_campaigns.letter_missing') }}
                                 @endif
                                 ·
-                                @if ($target->latestSentEmailSend)
+                                @if ($target->undelivered)
+                                    {{ __('platform.promo_campaigns.email_bounced') }}
+                                @elseif ($target->latestSentEmailSend)
                                     @php
                                         $sentTo = trim((string) ($target->latestSentEmailSend->recipient_email ?? ''));
                                         $excelEmail = trim((string) ($target->email ?? ''));

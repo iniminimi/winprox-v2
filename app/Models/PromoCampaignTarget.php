@@ -20,12 +20,14 @@ class PromoCampaignTarget extends Model
         'notes',
         'docx_filename',
         'generated_at',
+        'undelivered',
     ];
 
     protected function casts(): array
     {
         return [
             'generated_at' => 'datetime',
+            'undelivered' => 'boolean',
         ];
     }
 
