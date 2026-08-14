@@ -61,11 +61,8 @@
     "bulk_add": "Bulk units toevoegen",
     "location_qr": "QR-code locatie (algemeen)",
     "location_qr_subtitle": "Algemene locatie-QR voor meldingen zonder unit.",
-    "unit_qr": "Unit-QR",
     "unit_qr_subtitle": "QR-code voor deze unit — link naar het meldportaal.",
     "unit_qr_pack": {
-        "button": "QR-afdrukblad",
-        "modal_title": "QR-afdrukblad",
         "modal_subtitle": "Kies het papierformaat voor :name.",
         "unavailable": "QR-export is niet beschikbaar op deze server.",
         "generating": "Afdrukblad wordt aangemaakt…",

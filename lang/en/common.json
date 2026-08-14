@@ -69,6 +69,12 @@
     "style": {
         "label": "Style"
     },
+    "qr": {
+        "button": "QR",
+        "modal_title": "QR",
+        "print": "View / print",
+        "print_hint": "Opens the print page in a new tab."
+    },
     "help": {
         "button": "Help",
         "title": "Need help?",

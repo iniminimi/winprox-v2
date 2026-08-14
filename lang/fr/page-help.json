@@ -306,6 +306,10 @@
                     "text": "Après un import, un aperçu des imports récents (30 jours) pour ce lieu apparaît. Par import, vous voyez le nom du fichier, la date et le nombre d'unités. Cliquez sur Annuler l'import pour supprimer les unités sans signalement ni tâche. Les catégories vides créées uniquement par l'import sont nettoyées. Le lieu lui-même est conservé."
                 },
                 {
+                    "label": "QR",
+                    "text": "Via <strong>QR</strong> sur une unité, ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4) pour cette unité."
+                },
+                {
                     "label": "Feuille d’impression QR",
                     "text": "Téléchargez un fichier Word avec des autocollants QR (Avery/HERMA) ou des feuilles pleine page (A6/A5/A4, 1 QR par page) pour toutes les unités de ce site. Vous pouvez également générer des codes QR dynamiques libres qui ne sont pas encore liés à une unité. Ceux-ci peuvent d'abord être fixés à une unité puis assignés à une unité via le même code QR. Les administrateurs/employés peuvent lier toutes les unités à ces codes QR dynamiques. Les travailleurs d'équipe ne peuvent lier que les unités connectées à leur équipe."
                 },
@@ -1174,16 +1178,8 @@
                     "text": "Gérez les points de pointage et les QR imprimables via Time → Clock Points. Un clock point par défaut est créé automatiquement si nécessaire."
                 },
                 {
-                    "label": "Imprimer le QR",
-                    "text": "Via <strong>Code QR</strong>, ouvrez une page d'impression rapide dans le navigateur. Cliquez sur Imprimer et placez le QR à l'entrée, à l'entrepôt ou sur un autre site. Chaque clock point a un code unique."
-                },
-                {
-                    "label": "Feuille d'impression QR",
-                    "text": "Via <strong>Feuille d'impression QR</strong>, téléchargez un fichier Word avec un QR pleine page (A6, A5 ou A4) pour ce clock point. La feuille utilise le même arrière-plan et la même charte que dans Paramètres → Feuille d'impression QR (A6/A5/A4)."
-                },
-                {
-                    "label": "Renouveler le QR",
-                    "text": "Générez un nouveau QR si un autocollant est perdu ou si vous suspectez un abus. L'ancien code fonctionne encore quelques jours (période de grâce), puis est bloqué."
+                    "label": "QR",
+                    "text": "Via <strong>QR</strong>, ouvrez une fenêtre : afficher/imprimer dans le navigateur, télécharger une feuille Word (A6, A5 ou A4) avec la même charte que Paramètres → Feuille d'impression QR, ou renouveler le QR si un autocollant est perdu ou en cas de suspicion d'abus. L'ancien code fonctionne encore quelques jours (période de grâce), puis est bloqué. Chaque clock point a un code unique."
                 },
                 {
                     "label": "Rotation QR",

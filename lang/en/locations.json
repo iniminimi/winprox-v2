@@ -61,11 +61,8 @@
     "bulk_add": "Bulk add units",
     "location_qr": "Location QR (general)",
     "location_qr_subtitle": "General location QR for reports without a unit.",
-    "unit_qr": "Unit QR",
     "unit_qr_subtitle": "QR code for this unit — links to the report portal.",
     "unit_qr_pack": {
-        "button": "QR print sheet",
-        "modal_title": "QR print sheet",
         "modal_subtitle": "Choose the paper size for :name.",
         "unavailable": "QR export is unavailable on this server.",
         "generating": "Creating print sheet…",

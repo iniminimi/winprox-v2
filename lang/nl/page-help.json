@@ -310,6 +310,10 @@
                     "text": "Na een import verschijnt een overzicht van recente imports (30 dagen) voor deze locatie. Per import zie je bestandsnaam, datum en aantal units. Klik op Import terugdraaien om units zonder melding of taak te verwijderen. Lege categorieën die alleen door de import zijn aangemaakt worden opgeruimd. De locatie zelf blijft behouden."
                 },
                 {
+                    "label": "QR",
+                    "text": "Via <strong>QR</strong> op een unit opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4) voor die unit."
+                },
+                {
                     "label": "QR-afdrukblad",
                     "text": "Download een Word-bestand met QR-stickers (Avery/HERMA) of full-page afdrukbladen (A6/A5/A4, 1 QR per blad) voor alle units op deze locatie. Je kunt ook vrije dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit. Deze kunnen eerst bevestigd worden op een unit en dan via dezelfde QR-code toegewezen worden aan een unit. Beheerders/medewerkers kunnen alle units koppelen aan deze dynamische QR-codes. Team werkers kunnen enkel units koppelen die aan hun Team verbonden zijn."
                 },
@@ -1174,16 +1178,8 @@
                     "text": "Beheer inklokpunten en printbare QR-codes via Time → Clock Points. Er wordt automatisch een standaard clock point aangemaakt indien nodig."
                 },
                 {
-                    "label": "QR-code afdrukken",
-                    "text": "Via <strong>QR-code</strong> opent u een snelle printpagina in de browser. Klik op Afdrukken en hang de QR op aan de ingang, magazijn of andere locatie. Elke clock point heeft een unieke code."
-                },
-                {
-                    "label": "QR-afdrukblad",
-                    "text": "Via <strong>QR-afdrukblad</strong> downloadt u een Word-bestand met één full-page QR (A6, A5 of A4) voor dit clock point. Het blad gebruikt dezelfde achtergrond en branding als bij Instellingen → QR-afdrukblad (A6/A5/A4)."
-                },
-                {
-                    "label": "QR-code vernieuwen",
-                    "text": "Genereer een nieuwe QR wanneer een sticker verloren is of u misbruik vermoedt. De oude code werkt nog enkele dagen (grace-periode), daarna wordt die geblokkeerd."
+                    "label": "QR",
+                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad, of de QR-code vernieuwen bij verloren sticker of vermoed misbruik. De oude code werkt nog enkele dagen (grace-periode), daarna wordt die geblokkeerd. Elke clock point heeft een unieke code."
                 },
                 {
                     "label": "QR-rotatie",

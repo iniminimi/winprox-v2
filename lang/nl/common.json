@@ -69,6 +69,12 @@
     "style": {
         "label": "Stijl"
     },
+    "qr": {
+        "button": "QR",
+        "modal_title": "QR",
+        "print": "Bekijken / afdrukken",
+        "print_hint": "Opent de printpagina in een nieuw tabblad."
+    },
     "help": {
         "button": "Hulp",
         "title": "Hulp nodig?",

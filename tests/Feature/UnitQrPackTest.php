@@ -119,7 +119,7 @@ it('keeps unit browser print page without word format buttons', function () {
         ->assertDontSee('qr-pack?template=a6_print', false);
 });
 
-it('opens unit qr pack modal with a6 a5 a4 choices', function () {
+it('opens unit qr cluster modal with print and a6 a5 a4 choices', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
@@ -133,12 +133,16 @@ it('opens unit qr pack modal with a6 a5 a4 choices', function () {
 
     Livewire::actingAs($admin)
         ->test(Show::class, ['location' => $location])
+        ->assertSee(__('common.qr.button'), false)
+        ->assertDontSee(__('common.qr.print'), false)
         ->call('openUnitQrPackModal', $unit->id)
         ->assertSet('showUnitQrPackModal', true)
         ->assertSet('unitQrPackUnitId', $unit->id)
-        ->assertSee(__('locations.unit_qr_pack.modal_title'), false)
+        ->assertSee(__('common.qr.modal_title'), false)
+        ->assertSee(__('common.qr.print'), false)
         ->assertSee(__('locations.qr_pack.formats.a6_print.title'), false)
         ->assertSee(__('locations.qr_pack.formats.a5_print.title'), false)
         ->assertSee(__('locations.qr_pack.formats.a4_print.title'), false)
+        ->assertSee(route('units.qr', $unit), false)
         ->assertSee('qr-pack?template=a6_print', false);
 });

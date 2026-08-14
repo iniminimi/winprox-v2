@@ -306,6 +306,10 @@
                     "text": "Tras una importación, aparece un resumen de importaciones recientes (30 días) de esta ubicación. Por importación ve el nombre del archivo, la fecha y el número de unidades. Pulse Deshacer importación para eliminar unidades sin incidencias ni tareas. Las categorías vacías creadas solo por la importación se limpian. La ubicación en sí se conserva."
                 },
                 {
+                    "label": "QR",
+                    "text": "Con <strong>QR</strong> en una unidad abre una ventana: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4) para esa unidad."
+                },
+                {
                     "label": "Hoja de impresión QR",
                     "text": "Descargue un archivo Word con pegatinas QR (Avery/HERMA) u hojas a página completa (A6/A5/A4, 1 QR por página) para todas las unidades de esta ubicación. También puede generar códigos QR dinámicos libres que aún no están vinculados a una unidad. Estos pueden colocarse primero en una unidad y luego asignarse a una unidad mediante el mismo código QR. Los administradores/empleados pueden vincular todas las unidades a estos códigos QR dinámicos. Los trabajadores de equipo solo pueden vincular unidades conectadas a su equipo."
                 },
@@ -1174,16 +1178,8 @@
                     "text": "Gestione puntos de fichaje y códigos QR imprimibles en Time → Clock Points. Se crea automáticamente un clock point predeterminado si es necesario."
                 },
                 {
-                    "label": "Imprimir QR",
-                    "text": "Con <strong>Código QR</strong> abre una página de impresión rápida en el navegador. Pulse Imprimir y coloque el QR en la entrada, almacén u otro lugar. Cada clock point tiene un código único."
-                },
-                {
-                    "label": "Hoja de impresión QR",
-                    "text": "Con <strong>Hoja de impresión QR</strong> descarga un archivo Word con un QR a página completa (A6, A5 o A4) para este clock point. La hoja usa el mismo fondo y marca que en Ajustes → Hoja de impresión QR (A6/A5/A4)."
-                },
-                {
-                    "label": "Renovar QR",
-                    "text": "Genere un nuevo QR cuando se pierda una pegatina o sospeche abuso. El código antiguo sigue funcionando unos días (periodo de gracia), luego se bloquea."
+                    "label": "QR",
+                    "text": "Con <strong>QR</strong> abre una ventana: ver/imprimir en el navegador, descargar una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR, o renovar el QR si se pierde una pegatina o sospecha abuso. El código antiguo sigue funcionando unos días (periodo de gracia), luego se bloquea. Cada clock point tiene un código único."
                 },
                 {
                     "label": "Rotación QR",

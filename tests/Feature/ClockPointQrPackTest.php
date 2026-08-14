@@ -120,7 +120,7 @@ it('keeps browser print page without word format buttons', function () {
         ->assertDontSee('qr-pack?template=a6_print', false);
 });
 
-it('opens clock-point qr pack modal with a6 a5 a4 choices', function () {
+it('opens clock-point qr cluster modal with print pack and renew choices', function () {
     $tenant = Tenant::factory()->create(['has_time_module' => true]);
     Tenancy::actAs($tenant->id);
     $clockPoint = ClockPoint::factory()->create([
@@ -131,12 +131,18 @@ it('opens clock-point qr pack modal with a6 a5 a4 choices', function () {
 
     Livewire::actingAs($admin)
         ->test(ClockPointsIndex::class)
+        ->assertSee(__('common.qr.button'), false)
+        ->assertDontSee(__('common.qr.print'), false)
+        ->assertDontSee(__('time.clock_points.qr.renew'), false)
         ->call('openQrPackModal', $clockPoint->id)
         ->assertSet('showQrPackModal', true)
         ->assertSet('qrPackClockPointId', $clockPoint->id)
-        ->assertSee(__('time.clock_points.qr.pack.modal_title'), false)
+        ->assertSee(__('common.qr.modal_title'), false)
+        ->assertSee(__('common.qr.print'), false)
+        ->assertSee(__('time.clock_points.qr.renew'), false)
         ->assertSee(__('time.clock_points.qr.pack.formats.a6_print.title'), false)
         ->assertSee(__('time.clock_points.qr.pack.formats.a5_print.title'), false)
         ->assertSee(__('time.clock_points.qr.pack.formats.a4_print.title'), false)
+        ->assertSee(route('time.clock-points.qr', $clockPoint), false)
         ->assertSee('qr-pack?template=a6_print', false);
 });
