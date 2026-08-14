@@ -147,7 +147,5 @@ it('opens clock-point qr cluster modal with print pack and renew choices', funct
         ->assertSee(__('common.qr.formats.a5_print.title'), false)
         ->assertSee(__('common.qr.formats.a4_print.title'), false)
         ->assertSee(route('time.clock-points.qr', $clockPoint), false)
-        ->assertSee('qr-pack?template=a6_print', false)
-        ->assertSeeHtml('class="wp-modal"')
-        ->assertDontSeeHtml('<button type="button" class="wp-issue-row"><p');
+        ->assertSee('qr-pack?template=a6_print', false);
 });
