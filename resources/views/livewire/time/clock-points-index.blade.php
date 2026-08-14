@@ -17,10 +17,10 @@
 
     @can('create', \App\Models\ClockPoint::class)
         <div class="wp-card wp-card-pad wp-time-qr-rotation" x-data="{ open: false }">
-            <form wire:submit="saveQrRotationSettings" class="wp-cluster wp-cluster--wrap">
+            <form wire:submit="saveQrRotationSettings" class="wp-stack-tight">
                 <button
                     type="button"
-                    class="wp-settings-section-toggle wp-time-qr-rotation__toggle"
+                    class="wp-settings-section-toggle"
                     @click="open = !open"
                     :aria-expanded="open"
                     aria-controls="qr-rotation-fields"
