@@ -40,6 +40,38 @@ it('filters tenant units by location in UnitsIndex', function () {
         ->assertDontSee($unitB->name);
 });
 
+it('filters tenant units by category in UnitsIndex', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $categoryA = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Sanitair']);
+    $categoryB = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Generatoren']);
+
+    $unitA = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $categoryA->id,
+        'name' => 'Douchecabine',
+        'is_active' => true,
+    ]);
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $categoryB->id,
+        'name' => 'Stroomgroep',
+        'is_active' => true,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(UnitsIndex::class)
+        ->assertSee(__('units.filters.category'))
+        ->set('categoryFilter', $categoryA->id)
+        ->assertSee($unitA->name)
+        ->assertDontSee($unitB->name);
+});
+
 it('toont locatie en categorie op één metaregel zonder dubbele Units-titel', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);

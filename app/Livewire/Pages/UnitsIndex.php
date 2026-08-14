@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Pages;
 
+use App\Models\Category;
 use App\Models\Location;
 use App\Models\Unit;
 use Illuminate\Contracts\View\View;
@@ -24,6 +25,9 @@ class UnitsIndex extends Component
     #[Url(as: 'location')]
     public ?int $locationFilter = null;
 
+    #[Url(as: 'category')]
+    public ?int $categoryFilter = null;
+
     public function mount(): void
     {
         $this->authorize('viewAny', Unit::class);
@@ -34,11 +38,21 @@ class UnitsIndex extends Component
         $this->resetPage();
     }
 
+    public function updatedCategoryFilter(): void
+    {
+        $this->resetPage();
+    }
+
     public function render(): View
     {
         $locations = Location::query()
             ->orderBy('name')
             ->get(['id', 'name', 'address']);
+
+        $categories = Category::query()
+            ->with('translations')
+            ->orderBy('name')
+            ->get(['id', 'name', 'original_language']);
 
         $query = Unit::query()
             ->with([
@@ -52,6 +66,10 @@ class UnitsIndex extends Component
             $query->where('location_id', $this->locationFilter);
         }
 
+        if ($this->categoryFilter !== null) {
+            $query->where('category_id', $this->categoryFilter);
+        }
+
         $units = $query
             ->orderByDesc('id')
             ->paginate(25);
@@ -59,6 +77,7 @@ class UnitsIndex extends Component
         return view('livewire.pages.units-index', [
             'units' => $units,
             'locations' => $locations,
+            'categories' => $categories,
         ]);
     }
 }

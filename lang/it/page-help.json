@@ -1319,6 +1319,10 @@
                     "text": "Limita l’elenco a una sede. Cancella il filtro per vedere di nuovo tutte le unit."
                 },
                 {
+                    "label": "Filtra per categoria",
+                    "text": "Limita l’elenco a una categoria. Cancella il filtro per vedere di nuovo tutte le unit."
+                },
+                {
                     "label": "Controlli unit",
                     "text": "Quando i controlli unit sono attivati, un lavoratore può eseguire un controllo rapido nel portale QR dell’unità. Lì conferma che l’unità è OK o non OK. Configura i controlli sotto Luoghi → Categorie / Sedi, e le checklist sotto Persone → Team."
                 }

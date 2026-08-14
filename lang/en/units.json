@@ -1,9 +1,11 @@
 {
     "title": "Units",
-    "subtitle": "Machines, rooms or assets. All units in your organisation; filter by location or click to manage.",
+    "subtitle": "Machines, rooms or assets. All units in your organisation; filter by location or category, or click to manage.",
     "filters": {
         "location": "Filter by location",
-        "all_locations": "All locations"
+        "all_locations": "All locations",
+        "category": "Filter by category",
+        "all_categories": "All categories"
     },
     "list": {
         "empty": "No units found."

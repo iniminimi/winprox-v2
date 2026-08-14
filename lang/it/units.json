@@ -1,9 +1,11 @@
 {
     "title": "Unità",
-    "subtitle": "Macchine, stanze o asset. Tutte le unit della Sua organizzazione; filtri per sede o clicchi per gestire.",
+    "subtitle": "Macchine, stanze o asset. Tutte le unit della Sua organizzazione; filtri per sede o categoria, o clicchi per gestire.",
     "filters": {
         "location": "Filtra per sede",
-        "all_locations": "Tutte le sedi"
+        "all_locations": "Tutte le sedi",
+        "category": "Filtra per categoria",
+        "all_categories": "Tutte le categorie"
     },
     "list": {
         "empty": "Nessuna unità trovata."

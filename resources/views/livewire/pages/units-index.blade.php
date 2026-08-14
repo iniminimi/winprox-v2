@@ -11,14 +11,25 @@
     </div>
 
     <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-filter-cell">
-            <label class="wp-filter-inline-label" for="units-location-filter">{{ __('units.filters.location') }}</label>
-            <select id="units-location-filter" class="wp-select wp-select--compact" wire:model.live="locationFilter">
-                <option value="">{{ __('units.filters.all_locations') }}</option>
-                @foreach ($locations as $location)
-                    <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
-                @endforeach
-            </select>
+        <div class="wp-cluster wp-cluster--wrap">
+            <div class="wp-filter-cell">
+                <label class="wp-filter-inline-label" for="units-location-filter">{{ __('units.filters.location') }}</label>
+                <select id="units-location-filter" class="wp-select wp-select--compact" wire:model.live="locationFilter">
+                    <option value="">{{ __('units.filters.all_locations') }}</option>
+                    @foreach ($locations as $location)
+                        <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="wp-filter-cell">
+                <label class="wp-filter-inline-label" for="units-category-filter">{{ __('units.filters.category') }}</label>
+                <select id="units-category-filter" class="wp-select wp-select--compact" wire:model.live="categoryFilter">
+                    <option value="">{{ __('units.filters.all_categories') }}</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         <div class="wp-list wp-list--entity-rows">

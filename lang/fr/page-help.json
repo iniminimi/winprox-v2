@@ -1319,6 +1319,10 @@
                     "text": "Limiter la liste à un lieu. Effacez le filtre pour revoir toutes les units."
                 },
                 {
+                    "label": "Filtrer par catégorie",
+                    "text": "Limiter la liste à une catégorie. Effacez le filtre pour revoir toutes les units."
+                },
+                {
                     "label": "Contrôles d’unité",
                     "text": "Lorsque les contrôles d’unité sont activés, un exécutant peut effectuer un contrôle rapide dans le portail QR unité. Il y confirme que l’unité est OK ou non OK. Configurez les contrôles sous Lieux → Catégories / Lieux, et les checklists sous Personnes → Équipes."
                 }

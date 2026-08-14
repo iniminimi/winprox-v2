@@ -1319,6 +1319,10 @@
                     "text": "Narrow the list to one location. Clear the filter to see all units again."
                 },
                 {
+                    "label": "Filter by category",
+                    "text": "Narrow the list to one category. Clear the filter to see all units again."
+                },
+                {
                     "label": "Unit checks",
                     "text": "When unit checks are enabled, a worker can perform a quick check in the unit QR portal. There the worker confirms that the unit is OK or not OK. Configure checks under Places → Categories / Locations, and checklists under People → Teams."
                 }

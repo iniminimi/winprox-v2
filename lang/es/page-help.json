@@ -1319,6 +1319,10 @@
                     "text": "Limite la lista a una ubicación. Borre el filtro para ver de nuevo todas las units."
                 },
                 {
+                    "label": "Filtrar por categoría",
+                    "text": "Limite la lista a una categoría. Borre el filtro para ver de nuevo todas las units."
+                },
+                {
                     "label": "Comprobaciones de unit",
                     "text": "Cuando las comprobaciones de unit están activadas, un operario puede realizar una comprobación rápida en el portal QR de unidad. Allí confirma que la unit está OK o no OK. Configure las comprobaciones bajo Lugares → Categorías / Ubicaciones, y las listas bajo Personas → Equipos."
                 }
