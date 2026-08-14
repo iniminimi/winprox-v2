@@ -173,7 +173,6 @@
     "clock_points": {
         "title": "Clock Points",
         "subtitle": "Gestione ubicaciones de fichaje e imprima pegatinas QR.",
-        "list_title": "Clock Points",
         "add": "Añadir Clock Point",
         "empty": "Aún no hay clock points. Añada una ubicación de fichaje e imprima la pegatina QR.",
         "create_title": "Nuevo clock point",

@@ -173,7 +173,6 @@
     "clock_points": {
         "title": "Clock Points",
         "subtitle": "Beheer inkloklocaties en print QR-stickers.",
-        "list_title": "Clock Points",
         "add": "Clock Point toevoegen",
         "empty": "Nog geen clock points. Voeg een inkloklocatie toe en print de QR-sticker.",
         "create_title": "Nieuw clock point",

@@ -173,7 +173,6 @@
     "clock_points": {
         "title": "Clock Points",
         "subtitle": "Manage clock-in locations and print QR stickers.",
-        "list_title": "Clock Points",
         "add": "Add Clock Point",
         "empty": "No clock points yet. Add a clock-in location and print the QR sticker.",
         "create_title": "New clock point",

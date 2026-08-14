@@ -173,7 +173,6 @@
     "clock_points": {
         "title": "Clock Points",
         "subtitle": "Gestisci i punti di timbratura e stampa gli adesivi QR.",
-        "list_title": "Clock Points",
         "add": "Aggiungi Clock Point",
         "empty": "Nessun clock point ancora. Aggiungi un punto di timbratura e stampa l'adesivo QR.",
         "create_title": "Nuovo clock point",

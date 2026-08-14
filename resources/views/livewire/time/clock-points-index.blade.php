@@ -1,9 +1,16 @@
 <div class="wp-stack" data-manual-capture="time-clock-points">
-    <x-wp-page-head-title
-        :title="__('time.clock_points.title')"
-        help-page="time.clock_points"
-        :subtitle="__('time.clock_points.subtitle')"
-    />
+    <div class="wp-page-head">
+        <div class="wp-grow wp-stack-tight">
+            <x-wp-page-head-title
+                :title="__('time.clock_points.title')"
+                help-page="time.clock_points"
+                :subtitle="__('time.clock_points.subtitle')"
+            />
+        </div>
+        @can('create', \App\Models\ClockPoint::class)
+            <button type="button" class="btn btn--primary" wire:click="openCreate">{{ __('time.clock_points.add') }}</button>
+        @endcan
+    </div>
 
     @include('partials.wp-time-nav', ['alarmCount' => $alarmCount])
 
@@ -39,55 +46,48 @@
         </div>
     @endcan
 
-    <div class="wp-card wp-card-pad wp-stack-tight">
-        <div class="wp-cluster wp-cluster--between">
-            <p class="wp-section-title">{{ __('time.clock_points.list_title') }}</p>
-            @can('create', \App\Models\ClockPoint::class)
-                <button type="button" class="btn btn--primary btn--sm" wire:click="openCreate">{{ __('time.clock_points.add') }}</button>
-            @endcan
+    <div class="wp-card wp-card-pad wp-stack">
+        <div class="wp-list wp-list--entity-rows">
+            @forelse ($clockPoints as $clockPoint)
+                <div class="wp-issue-row" wire:key="clock-point-{{ $clockPoint->id }}">
+                    <div class="wp-grow wp-stack-tight">
+                        <p class="wp-issue-card-title">{{ $clockPoint->name }}</p>
+                        @if ($clockPoint->location)
+                            <p class="wp-issue-card-meta">{{ $clockPoint->location->localizedName() }}</p>
+                        @endif
+                    </div>
+                    <div class="wp-cluster wp-cluster--wrap">
+                        <span class="wp-pill {{ $clockPoint->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
+                            {{ $clockPoint->is_active ? __('time.clock_points.status.active') : __('time.clock_points.status.inactive') }}
+                        </span>
+                        @if ($clockPoint->isRenewalRecommended())
+                            <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
+                        @endif
+                        <a href="{{ route('time.clock-points.qr', $clockPoint) }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface btn--sm">
+                            {{ __('time.clock_points.qr.button') }}
+                        </a>
+                        @can('view', $clockPoint)
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openQrPackModal({{ $clockPoint->id }})">
+                                {{ __('time.clock_points.qr.pack.button') }}
+                            </button>
+                        @endcan
+                        @can('renewQr', $clockPoint)
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="renewQr({{ $clockPoint->id }})" wire:confirm="{{ __('time.clock_points.qr.renew_confirm') }}">
+                                {{ __('time.clock_points.qr.renew') }}
+                            </button>
+                        @endcan
+                        @can('update', $clockPoint)
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $clockPoint->id }})">{{ __('common.button.edit') }}</button>
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleActive({{ $clockPoint->id }})">
+                                {{ $clockPoint->is_active ? __('time.clock_points.deactivate') : __('time.clock_points.activate') }}
+                            </button>
+                        @endcan
+                    </div>
+                </div>
+            @empty
+                <p class="wp-muted">{{ __('time.clock_points.empty') }}</p>
+            @endforelse
         </div>
-    </div>
-
-    <div class="wp-list">
-        @forelse ($clockPoints as $clockPoint)
-            <div class="wp-card wp-card-pad wp-cluster" wire:key="clock-point-{{ $clockPoint->id }}">
-                <div class="wp-cluster wp-grow">
-                    <strong>{{ $clockPoint->name }}</strong>
-                    @if ($clockPoint->location)
-                        <span class="wp-muted wp-text-sm">{{ $clockPoint->location->localizedName() }}</span>
-                    @endif
-                    <span class="wp-pill {{ $clockPoint->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
-                        {{ $clockPoint->is_active ? __('time.clock_points.status.active') : __('time.clock_points.status.inactive') }}
-                    </span>
-                    @if ($clockPoint->isRenewalRecommended())
-                        <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
-                    @endif
-                </div>
-                <div class="wp-cluster">
-                    <a href="{{ route('time.clock-points.qr', $clockPoint) }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface btn--sm">
-                        {{ __('time.clock_points.qr.button') }}
-                    </a>
-                    @can('view', $clockPoint)
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openQrPackModal({{ $clockPoint->id }})">
-                            {{ __('time.clock_points.qr.pack.button') }}
-                        </button>
-                    @endcan
-                    @can('renewQr', $clockPoint)
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="renewQr({{ $clockPoint->id }})" wire:confirm="{{ __('time.clock_points.qr.renew_confirm') }}">
-                            {{ __('time.clock_points.qr.renew') }}
-                        </button>
-                    @endcan
-                    @can('update', $clockPoint)
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $clockPoint->id }})">{{ __('common.button.edit') }}</button>
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleActive({{ $clockPoint->id }})">
-                            {{ $clockPoint->is_active ? __('time.clock_points.deactivate') : __('time.clock_points.activate') }}
-                        </button>
-                    @endcan
-                </div>
-            </div>
-        @empty
-            <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('time.clock_points.empty') }}</p></div>
-        @endforelse
     </div>
 
     @if ($showModal)
