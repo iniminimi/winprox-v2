@@ -63,7 +63,7 @@
                 {
                     "label": "Fermate",
                     "nested": true,
-                    "text": "Scegli almeno 2 unità in ordine (qualsiasi sede). L’ordine dell’elenco è l’ordine delle fermate."
+                    "text": "Scegli almeno 2 unità in ordine (qualsiasi sede). L’ordine dell’elenco è l’ordine delle fermate. Nell’elenco compaiono solo le unità con controlli unità."
                 },
                 {
                     "label": "Nota attività",
@@ -140,7 +140,7 @@
                 },
                 {
                     "label": "Fermate del giro",
-                    "text": "Scegli almeno 2 unità come fermate (qualsiasi sede; raggruppate per sede). L’ordine dell’elenco è l’ordine del giro."
+                    "text": "Scegli almeno 2 unità come fermate (qualsiasi sede; raggruppate per sede). Nell’elenco compaiono solo le unità con controlli unità. L’ordine dell’elenco è l’ordine del giro."
                 },
                 {
                     "label": "Seleziona tutte le unità",

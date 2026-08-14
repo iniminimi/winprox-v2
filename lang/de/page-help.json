@@ -63,7 +63,7 @@
                 {
                     "label": "Stops",
                     "nested": true,
-                    "text": "Wählen Sie mindestens 2 Units in Reihenfolge (alle Standorte). Listenreihenfolge = Stoppreihenfolge."
+                    "text": "Wählen Sie mindestens 2 Units in Reihenfolge (alle Standorte). Listenreihenfolge = Stoppreihenfolge. Nur Units mit Unit-Checks erscheinen in der Liste."
                 },
                 {
                     "label": "Aufgabennotiz",
@@ -140,7 +140,7 @@
                 },
                 {
                     "label": "Inspektionsrunden-Stopps",
-                    "text": "Wählen Sie mindestens 2 Units als Stops (alle Standorte; nach Standort gruppiert). Die Listenreihenfolge ist die Routenreihenfolge der Runde."
+                    "text": "Wählen Sie mindestens 2 Units als Stops (alle Standorte; nach Standort gruppiert). Nur Units mit Unit-Checks erscheinen in der Liste. Die Listenreihenfolge ist die Routenreihenfolge der Runde."
                 },
                 {
                     "label": "Alle Units auswählen",

@@ -112,7 +112,7 @@
         "round_stops_empty": "Er zijn geen actieve units om als stops te selecteren.",
         "round_stops_select_help": "Units staan gegroepeerd per locatie. Volgorde loopt van boven naar beneden in deze lijst (ook over locaties heen).",
         "round_stops_select_all": "Selecteer alle units",
-        "round_stops_unit_checks_off": "Unit checks staat uit op deze unit"
+        "round_stops_hidden": "{1} :count unit is niet zichtbaar omdat unit checks daar uit staat.|[2,*] :count units zijn niet zichtbaar omdat unit checks daar uit staan."
     },
     "round_create": {
         "title": "Inspectieronde plannen",

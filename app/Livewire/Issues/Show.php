@@ -637,17 +637,11 @@ class Show extends Component
             );
         }
 
-        $roundStopUnitsGrouped = $issue->is_recurring
-            ? Unit::query()
-                ->where('is_active', true)
-                ->with(['translations', 'category', 'location'])
-                ->orderBy('name')
-                ->get()
-                ->groupBy(fn (Unit $unit) => (int) $unit->location_id)
-                ->sortBy(fn ($units) => mb_strtolower((string) ($units->first()?->location?->name
-                    ?: $units->first()?->location?->address
-                    ?: '')))
-            : collect();
+        $roundStopUnitsGrouped = collect();
+        $roundStopUnitsHiddenCount = 0;
+        if ($issue->is_recurring) {
+            [$roundStopUnitsGrouped, $roundStopUnitsHiddenCount] = Unit::groupedInspectionRoundStops();
+        }
 
         $roundStopsMultiLocation = $issue->isInspectionRound()
             && $issue->roundStops
@@ -659,6 +653,7 @@ class Show extends Component
         return view('livewire.issues.show', [
             'issue' => $issue,
             'roundStopUnitsGrouped' => $roundStopUnitsGrouped,
+            'roundStopUnitsHiddenCount' => $roundStopUnitsHiddenCount,
             'roundStopsMultiLocation' => $roundStopsMultiLocation,
             'teams' => InternalTeam::query()->with('translations')->orderBy('name')->get(),
             'priorities' => TaskPriority::cases(),

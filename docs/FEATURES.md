@@ -432,8 +432,8 @@ stops meer zijn voor **deze** cyclus-taak.
 **BESLIST (fase 1):**
 - Stops op de melding (`issue_round_stops`); ronde-issue heeft `unit_id = null`.
   `location_id` alleen als alle stops dezelfde locatie delen, anders null.
-  Create- én show-picker: alle actieve units van de tenant, gegroepeerd per locatie
-  (stops mogen over locaties heen).
+  Create- én show-picker: actieve units met unit checks, gegroepeerd per locatie
+  (stops mogen over locaties heen). Units zonder checks staan niet in de lijst.
 - **Beheer — intentie-flow:** knop *Inspectieronde plannen* op Meldingen (naast Nieuwe
   melding): stops + interval + team in één modal; onder water terugkerende melding +
   eerste taak. Bestaande melding-wizard blijft; rondestops daar optioneel.
@@ -454,9 +454,10 @@ stops meer zijn voor **deze** cyclus-taak.
 - ≥2 stops: Form Request `min:2` bij opslaan.
 - Impliciet meetellen (geen “start ronde”).
 - Units zonder unit checks (unit uit, of categorie uit wanneer de unit een
-  categorie heeft): niet selecteerbaar; unit zonder categorie volgt alleen de
-  unit-vlag. Bestaande stops worden verwijderd bij uitschakelen (en self-heal
-  bij openen melding). Ronde met <2 stops over houdt geen stops meer.
+  categorie heeft): niet in de stop-picker; een regel toont hoeveel units
+  verborgen zijn. Unit zonder categorie volgt alleen de unit-vlag. Bestaande
+  stops worden verwijderd bij uitschakelen (en self-heal bij openen melding).
+  Ronde met <2 stops over houdt geen stops meer.
 - **Fase 2:** strikte stop-volgorde (alleen de eerstvolgende open stop mag OK/skip);
   rijke progress-UI (balk + genummerde stops met status, datum/uur en uitvoerder)
   op **unit-QR (elke stop)** én op **taakdetail in beheer**.

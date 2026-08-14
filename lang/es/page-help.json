@@ -63,7 +63,7 @@
                 {
                     "label": "Paradas",
                     "nested": true,
-                    "text": "Elija al menos 2 unidades en orden (cualquier ubicación). El orden de la lista es el de las paradas."
+                    "text": "Elija al menos 2 unidades en orden (cualquier ubicación). El orden de la lista es el de las paradas. Solo aparecen las unidades con unit checks."
                 },
                 {
                     "label": "Nota de la tarea",
@@ -140,7 +140,7 @@
                 },
                 {
                     "label": "Paradas de ronda",
-                    "text": "Elija al menos 2 unidades como paradas (cualquier ubicación; agrupadas por ubicación). El orden de la lista es el recorrido de la ronda."
+                    "text": "Elija al menos 2 unidades como paradas (cualquier ubicación; agrupadas por ubicación). Solo aparecen las unidades con unit checks. El orden de la lista es el recorrido de la ronda."
                 },
                 {
                     "label": "Seleccionar todas las unidades",

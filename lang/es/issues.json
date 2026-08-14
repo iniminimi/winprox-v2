@@ -112,7 +112,7 @@
         "round_stops_empty": "No hay unidades activas para seleccionar como paradas.",
         "round_stops_select_help": "Las unidades están agrupadas por ubicación. El orden sigue la lista de arriba hacia abajo (también entre ubicaciones).",
         "round_stops_select_all": "Seleccionar todas las unidades",
-        "round_stops_unit_checks_off": "Unit checks está desactivado en esta unidad"
+        "round_stops_hidden": "{1} :count unidad no es visible porque unit checks está desactivado.|[2,*] :count unidades no son visibles porque unit checks está desactivado."
     },
     "round_create": {
         "title": "Planificar ronda de inspección",

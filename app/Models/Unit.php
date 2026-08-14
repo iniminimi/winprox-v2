@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\UnitTranslationStatus;
 use App\Models\Concerns\BelongsToTenant;
 use App\Support\Translation\LocaleSupport;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -107,6 +108,41 @@ class Unit extends Model
         $this->loadMissing('category');
 
         return (bool) $this->category?->allow_unit_checks;
+    }
+
+    public function scopeWhereAllowsUnitChecks(Builder $query): Builder
+    {
+        return $query
+            ->where('units.allow_unit_checks', true)
+            ->where(function (Builder $inner): void {
+                $inner->whereNull('units.category_id')
+                    ->orWhereHas('category', function (Builder $category): void {
+                        $category->where('allow_unit_checks', true);
+                    });
+            });
+    }
+
+    /**
+     * Active units that can be inspection-round stops, grouped by location.
+     *
+     * @return array{0: \Illuminate\Support\Collection, 1: int}
+     */
+    public static function groupedInspectionRoundStops(): array
+    {
+        $activeCount = static::query()->where('is_active', true)->count();
+        $units = static::query()
+            ->where('is_active', true)
+            ->whereAllowsUnitChecks()
+            ->with(['location', 'category', 'translations'])
+            ->orderBy('name')
+            ->get();
+        $grouped = $units
+            ->groupBy(fn (Unit $unit) => (int) $unit->location_id)
+            ->sortBy(fn ($group) => mb_strtolower((string) ($group->first()?->location?->name
+                ?: $group->first()?->location?->address
+                ?: '')));
+
+        return [$grouped, max(0, $activeCount - $units->count())];
     }
 
     public function requiresReporterContact(): bool

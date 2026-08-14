@@ -63,7 +63,7 @@
                 {
                     "label": "Arrêts",
                     "nested": true,
-                    "text": "Choisissez au moins 2 unités dans l’ordre (tous les sites). L’ordre de la liste est l’ordre des arrêts."
+                    "text": "Choisissez au moins 2 unités dans l’ordre (tous les sites). L’ordre de la liste est l’ordre des arrêts. Seules les unités avec contrôle d’unité apparaissent dans la liste."
                 },
                 {
                     "label": "Note de tâche",
@@ -140,7 +140,7 @@
                 },
                 {
                     "label": "Arrêts de tournée",
-                    "text": "Choisissez au moins 2 unités comme arrêts (tous les sites ; groupés par site). L’ordre de la liste est l’ordre de la tournée."
+                    "text": "Choisissez au moins 2 unités comme arrêts (tous les sites ; groupés par site). Seules les unités avec contrôle d’unité apparaissent dans la liste. L’ordre de la liste est l’ordre de la tournée."
                 },
                 {
                     "label": "Sélectionner toutes les unités",

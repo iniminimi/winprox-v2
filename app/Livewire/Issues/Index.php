@@ -509,6 +509,12 @@ class Index extends Component
             }
         }
 
+        $createRoundStopUnitsGrouped = collect();
+        $createRoundStopUnitsHiddenCount = 0;
+        if (($this->showCreateModal && $this->is_recurring) || $this->showRoundCreateModal) {
+            [$createRoundStopUnitsGrouped, $createRoundStopUnitsHiddenCount] = Unit::groupedInspectionRoundStops();
+        }
+
         return view('livewire.issues.index', [
             'groups' => $groups,
             'total' => $issues->count(),
@@ -534,17 +540,8 @@ class Index extends Component
                     ->orderBy('name')
                     ->get()
                 : collect(),
-            'createRoundStopUnitsGrouped' => ($this->showCreateModal && $this->is_recurring) || $this->showRoundCreateModal
-                ? Unit::query()
-                    ->where('is_active', true)
-                    ->with(['location', 'category', 'translations'])
-                    ->orderBy('name')
-                    ->get()
-                    ->groupBy(fn (Unit $unit) => (int) $unit->location_id)
-                    ->sortBy(fn ($units) => mb_strtolower((string) ($units->first()?->location?->name
-                        ?: $units->first()?->location?->address
-                        ?: '')))
-                : collect(),
+            'createRoundStopUnitsGrouped' => $createRoundStopUnitsGrouped,
+            'createRoundStopUnitsHiddenCount' => $createRoundStopUnitsHiddenCount,
             'createTeams' => $this->showCreateModal || $this->showRoundCreateModal
                 ? InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('name')->get()
                 : collect(),

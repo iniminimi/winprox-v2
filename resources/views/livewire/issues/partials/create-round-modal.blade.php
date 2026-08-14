@@ -101,24 +101,14 @@
                             <div class="wp-round-stop-picker__group" role="group" aria-label="{{ $groupLabel }}">
                                 <p class="wp-round-stop-picker__group-label">{{ $groupLabel }}</p>
                                 @foreach ($locationUnits as $unit)
-                                    @php
-                                        $canUseRoundStop = $unit->allowsUnitChecks();
-                                    @endphp
-                                    <label class="wp-round-stop-picker__row @if(! $canUseRoundStop) wp-round-stop-picker__row--disabled @endif">
+                                    <label class="wp-round-stop-picker__row">
                                         <input
                                             type="checkbox"
                                             value="{{ $unit->id }}"
                                             wire:model="round_stop_unit_ids"
                                             data-round-stop
-                                            @disabled(! $canUseRoundStop)
                                         >
-                                        @if ($canUseRoundStop)
-                                            <span>{{ $unit->localizedName() }}</span>
-                                        @else
-                                            <x-wp-tooltip :text="__('issues.create.round_stops_unit_checks_off')" wrap>
-                                                <span>{{ $unit->localizedName() }}</span>
-                                            </x-wp-tooltip>
-                                        @endif
+                                        <span>{{ $unit->localizedName() }}</span>
                                     </label>
                                 @endforeach
                             </div>
@@ -126,9 +116,16 @@
                     </div>
                 </div>
                 @if ($createRoundStopUnitsGrouped->flatten(1)->isEmpty())
-                    <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_empty') }}</p>
+                    @if ($createRoundStopUnitsHiddenCount > 0)
+                        <p class="wp-muted wp-text-sm">{{ trans_choice('issues.create.round_stops_hidden', $createRoundStopUnitsHiddenCount, ['count' => $createRoundStopUnitsHiddenCount]) }}</p>
+                    @else
+                        <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_empty') }}</p>
+                    @endif
                 @else
                     <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_select_help') }}</p>
+                    @if ($createRoundStopUnitsHiddenCount > 0)
+                        <p class="wp-muted wp-text-sm">{{ trans_choice('issues.create.round_stops_hidden', $createRoundStopUnitsHiddenCount, ['count' => $createRoundStopUnitsHiddenCount]) }}</p>
+                    @endif
                 @endif
                 @error('round_stop_unit_ids') <p class="wp-error">{{ $message }}</p> @enderror
                 @error('round_stop_unit_ids.*') <p class="wp-error">{{ $message }}</p> @enderror

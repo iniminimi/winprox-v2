@@ -63,7 +63,7 @@
                 {
                     "label": "Stops",
                     "nested": true,
-                    "text": "Pick at least 2 units in order (any locations). List order is the stop order."
+                    "text": "Pick at least 2 units in order (any locations). List order is the stop order. Only units with unit checks appear in the list."
                 },
                 {
                     "label": "Task note",
@@ -140,7 +140,7 @@
                 },
                 {
                     "label": "Inspection round stops",
-                    "text": "Choose at least 2 units as stops (any locations; grouped by location). The list order is the round route order."
+                    "text": "Choose at least 2 units as stops (any locations; grouped by location). Only units with unit checks appear in the list. The list order is the round route order."
                 },
                 {
                     "label": "Select all units",

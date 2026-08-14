@@ -862,3 +862,51 @@ it('rejects a single stop on the inspection round create modal', function () {
         ->call('saveRoundCreate')
         ->assertHasErrors(['round_stop_unit_ids']);
 });
+
+it('hides units without unit checks from the inspection round stop picker', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'location' => $location, 'unitA' => $unitA] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    $unitA->forceFill(['name' => 'Visible-WithChecks-Unit'])->save();
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $unitA->category_id,
+        'is_active' => true,
+        'allow_unit_checks' => false,
+        'name' => 'Hidden-NoChecks-Unit',
+    ]);
+
+    $hiddenMessage = trans_choice('issues.create.round_stops_hidden', 1, ['count' => 1]);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->call('openRoundCreateModal')
+        ->assertSee('Visible-WithChecks-Unit', false)
+        ->assertDontSee('Hidden-NoChecks-Unit', false)
+        ->assertSee($hiddenMessage, false);
+});
+
+it('hides units without unit checks from the issue show stop picker', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'location' => $location, 'unitA' => $unitA, 'issue' => $issue] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    $unitA->forceFill(['name' => 'Visible-WithChecks-Unit'])->save();
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $unitA->category_id,
+        'is_active' => true,
+        'allow_unit_checks' => false,
+        'name' => 'Hidden-NoChecks-Unit',
+    ]);
+
+    $hiddenMessage = trans_choice('issues.create.round_stops_hidden', 1, ['count' => 1]);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Show::class, ['issue' => $issue->fresh()])
+        ->assertOk()
+        ->assertSee('Visible-WithChecks-Unit', false)
+        ->assertDontSee('Hidden-NoChecks-Unit', false)
+        ->assertSee($hiddenMessage, false);
+});
