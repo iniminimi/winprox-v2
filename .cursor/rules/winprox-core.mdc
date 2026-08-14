@@ -24,6 +24,8 @@ Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bi
   bulkbewerkingen (bv. locale/JSON) wanneer dit aantoonbaar sneller en veiliger
   is dan handmatig patchen. **Tijdelijke scripts altijd opruimen** na gebruik
   (verwijderen uit `scripts/` of elders) — nooit in de repo laten staan.
+- **Geen UTF-8 BOM** in bronbestanden — breekt Livewire/Alpine lokaal
+  (zie `no-utf8-bom.mdc`; `npm run check:architecture` blokkeert).
 - **Geen** extra lagen (repositories, service-duplicatie, static helpers met business logic).
 - **Geen** ongebruikte locale-keys; alle talen altijd in pariteit (`npm run check:locales:parity`).
 - **Geen** nieuwe UI-varianten: hergebruik `.btn`, `.wp-pill`, `.wp-card`, `wp-*` tokens.

@@ -1,0 +1,27 @@
+---
+description: Nooit UTF-8 BOM in bronbestanden — breekt Livewire/Alpine lokaal
+alwaysApply: true
+---
+
+# Geen UTF-8 BOM (hard)
+
+**Incident (2026-08-14):** een UTF-8 BOM (`EF BB BF`) in `config/product_docs.php` werd vóór
+**elke** HTTP-response gezet — inclusief Livewire JS. Gevolg lokaal: Alpine start niet,
+wachtwoord niet geblurd, inloggen dood. Productie leek vaak nog te werken → uren zoekwerk.
+
+## Verboden
+- Bestanden opslaan/schrijven als **UTF-8 with BOM**.
+- Editors/tools die standaard BOM toevoegen (sommige Windows-editors, verkeerde Python `encoding`).
+
+## Verplicht
+- Bronbestanden: **UTF-8 zonder BOM** (`php`, `blade.php`, `js`, `css`, `json`, `md`, `env*`).
+- Bij schrijven met Python: `encoding='utf-8'` (niet `utf-8-sig`).
+- Na verdachte encoding-wijziging: `npm run check:architecture` (bevat BOM-check).
+
+## Symptomen → eerst BOM checken
+- Wachtwoord zichtbaar i.p.v. dots; Livewire-submit doet niets.
+- Browser console: `SyntaxError: Invalid or unexpected token` op `livewire.js`.
+- HTML begint met rare prefix vóór `<!DOCTYPE`.
+
+**Fix:** BOM strippen uit het schuldige bestand (vaak onder `config/`), daarna
+`php artisan optimize:clear`. Niet “Alpine/Livewire refactoren”.

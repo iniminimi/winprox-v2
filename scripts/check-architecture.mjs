@@ -83,6 +83,59 @@ scanPatterns(viewFiles, [
     /\bisAdmin\s*\(/,
 ], 'Blade (beheer): geen isAdmin() — gebruik @can/authorize');
 
+// UTF-8 BOM breekt Livewire JS (vóór elke response) — zie WINPROX_RULES.md §2 / no-utf8-bom.mdc
+const BOM = Buffer.from([0xef, 0xbb, 0xbf]);
+const bomScanRoots = ['app', 'bootstrap', 'config', 'routes', 'resources/views', 'public'];
+const bomExtensions = new Set(['.php', '.blade.php', '.js', '.css', '.json', '.md', '.mjs']);
+const bomHits = [];
+
+function walkTextSources(dir, files = []) {
+    let entries;
+    try {
+        entries = readdirSync(dir, { withFileTypes: true });
+    } catch {
+        return files;
+    }
+    for (const entry of entries) {
+        const path = join(dir, entry.name);
+        if (entry.isDirectory()) {
+            if (entry.name === 'vendor' || entry.name === 'node_modules' || entry.name === 'build') {
+                continue;
+            }
+            walkTextSources(path, files);
+            continue;
+        }
+        if (!entry.isFile()) {
+            continue;
+        }
+        const lower = entry.name.toLowerCase();
+        const ext = lower.endsWith('.blade.php')
+            ? '.blade.php'
+            : lower.includes('.')
+                ? `.${lower.split('.').pop()}`
+                : '';
+        if (bomExtensions.has(ext) || lower === '.env' || lower.startsWith('.env.')) {
+            files.push(path);
+        }
+    }
+    return files;
+}
+
+for (const root of bomScanRoots) {
+    for (const file of walkTextSources(join(ROOT, root))) {
+        const buf = readFileSync(file);
+        if (buf.length >= 3 && buf.subarray(0, 3).equals(BOM)) {
+            bomHits.push(rel(file));
+        }
+    }
+}
+
+if (bomHits.length > 0) {
+    fail(`UTF-8 BOM verboden (${bomHits.length}): ${bomHits.slice(0, 8).join(', ')}${bomHits.length > 8 ? '…' : ''}`);
+} else {
+    pass('Geen UTF-8 BOM in bronbestanden');
+}
+
 if (!failed) {
     pass('check:architecture — alle harde regels OK');
     process.exit(0);

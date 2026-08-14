@@ -48,6 +48,10 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
   vertaalsleutels strikt hoofdlettergevoelig. "Werkt lokaal" is geen bewijs.
 - Hernoem nooit een bestand enkel op casing zonder dubbelcheck (breekt bij git/Linux).
 - Bij Windows↔Linux-afwijking: eerst root cause (case/pad/encoding/cache), dan één minimale fix.
+- **Geen UTF-8 BOM** in bronbestanden (hard). Een BOM in `config/*.php` wordt vóór **elke**
+  response gezet (ook Livewire JS) → Alpine/Livewire kapot lokaal (wachtwoord niet geblurd,
+  inloggen faalt). Schrijf altijd UTF-8 **zonder** BOM; `npm run check:architecture` blokkeert
+  BOM’s. Zie `.cursor/rules/no-utf8-bom.mdc`.
 
 ---
 
