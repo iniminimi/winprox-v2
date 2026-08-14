@@ -1320,7 +1320,7 @@
                 },
                 {
                     "label": "Controlli unit",
-                    "text": "Quando i controlli unit sono attivati, un lavoratore può eseguire un controllo rapido nel portale QR dell’unità. Lì conferma che l’unità è OK o non OK. Configura i controlli sotto Luoghi → Categorie / Sedi, e le checklist sotto Persone → Team."
+                    "text": "Quando i controlli unit sono attivati (sull’unità e sulla categoria a cui l’unità è collegata), un lavoratore può eseguire un controllo rapido nel portale QR dell’unità. Lì conferma che l’unità è OK o non OK. Configura i controlli sotto Luoghi → Categorie / Sedi, e le checklist sotto Persone → Team."
                 }
             ]
         }

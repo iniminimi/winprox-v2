@@ -1320,7 +1320,7 @@
                 },
                 {
                     "label": "Contrôles d’unité",
-                    "text": "Lorsque les contrôles d’unité sont activés, un exécutant peut effectuer un contrôle rapide dans le portail QR unité. Il y confirme que l’unité est OK ou non OK. Configurez les contrôles sous Lieux → Catégories / Lieux, et les checklists sous Personnes → Équipes."
+                    "text": "Lorsque les contrôles d’unité sont activés (sur l’unité et sur la catégorie à laquelle l’unité est liée), un exécutant peut effectuer un contrôle rapide dans le portail QR unité. Il y confirme que l’unité est OK ou non OK. Configurez les contrôles sous Lieux → Catégories / Lieux, et les checklists sous Personnes → Équipes."
                 }
             ]
         }

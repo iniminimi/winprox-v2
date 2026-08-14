@@ -1320,7 +1320,7 @@
                 },
                 {
                     "label": "Unit checks",
-                    "text": "Wanneer unit checks aangevinkt zijn, kan een uitvoerder in het unit-QR-portaal een snelle check uitvoeren. Daar bevestigt de uitvoerder dat de unit OK of niet OK is. Stel checks in onder Plaatsen → Categorieën / Locaties, en checklists onder Mensen → Teams."
+                    "text": "Wanneer unit checks aangevinkt zijn (bij de unit en de categorie waaraan de unit gekoppeld is) kan een uitvoerder in het unit-QR-portaal een snelle check uitvoeren. Daar bevestigt de uitvoerder dat de unit OK of niet OK is. Stel checks in onder Plaatsen → Categorieën / Locaties, en checklists onder Mensen → Teams."
                 }
             ]
         }

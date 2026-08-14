@@ -1320,7 +1320,7 @@
                 },
                 {
                     "label": "Unit checks",
-                    "text": "When unit checks are enabled, a worker can perform a quick check in the unit QR portal. There the worker confirms that the unit is OK or not OK. Configure checks under Places → Categories / Locations, and checklists under People → Teams."
+                    "text": "When unit checks are enabled (on the unit and on the category the unit is linked to), a worker can perform a quick check in the unit QR portal. There the worker confirms that the unit is OK or not OK. Configure checks under Places → Categories / Locations, and checklists under People → Teams."
                 }
             ]
         }
