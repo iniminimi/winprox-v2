@@ -64,6 +64,17 @@ return [
             'page' => 'dashboard',
         ],
         [
+            'patterns' => [
+                'unit check', 'unit-check', 'unit checks', 'unitcheck',
+                'wat is een unit check', 'what is a unit check',
+                'ok/niet ok', 'ok/nicht ok', 'ok/not ok', 'ok/non ok', 'ok/no ok',
+                'controle unit', 'contrôles d’unité', 'controles d unite',
+                'unit-checks', 'comprobaciones de unit', 'controlli unit',
+            ],
+            'page' => 'unit-checks',
+            'prefer' => ['wat is een unit check', 'what is a unit check', 'inschakelen', 'enable'],
+        ],
+        [
             'patterns' => ['categorie', 'category', 'kategorie', 'categoría', 'catégorie'],
             'page' => 'locations.categories',
         ],

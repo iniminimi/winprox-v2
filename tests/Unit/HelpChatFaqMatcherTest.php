@@ -66,6 +66,18 @@ it('beantwoordt meldingsvragen vanuit pagina-hulp', function (): void {
         ->and($answer)->not->toBe(__('faq.items.how_it_works.summary'));
 });
 
+it('beantwoordt wat is een unit check vanuit pagina-hulp unit checks', function (): void {
+    $matcher = app(HelpChatFaqMatcher::class);
+
+    $answer = $matcher->match('wat is een unit check?', 'nl');
+
+    expect($answer)->toContain('Wat is een unit check?')
+        ->and($answer)->toContain('OK of Niet OK')
+        ->and($answer)->toContain('Inschakelen')
+        ->and($answer)->not->toContain('QR-afdrukblad')
+        ->and($answer)->not->toContain('Avery');
+});
+
 it('beantwoordt IoT vanuit pagina-hulp', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 
