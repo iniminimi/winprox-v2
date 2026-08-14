@@ -15,29 +15,7 @@
 ])
 
 <x-wp-modal :closeMethod="$closeMethod" :aria-labelledby="$titleId">
-    <div
-        class="wp-card wp-card-pad wp-stack wp-modal-card"
-        x-data="{
-            downloading: null,
-            error: null,
-            async download(url, key) {
-                if (this.downloading) {
-                    return;
-                }
-
-                this.downloading = key;
-                this.error = null;
-
-                try {
-                    await window.wpDownloadQrPackUrl(url);
-                } catch (exception) {
-                    this.error = exception?.message || @js($downloadFailed);
-                } finally {
-                    this.downloading = null;
-                }
-            },
-        }"
-    >
+    <div class="wp-card wp-card-pad wp-stack wp-modal-card">
         <div class="wp-modal-head">
             <h2 id="{{ $titleId }}" class="wp-section-title">{{ $title }}</h2>
             <x-wp-modal-close wire:click="{{ $closeMethod }}" />
@@ -61,7 +39,29 @@
                 <p class="wp-muted">{{ __('common.qr.pack_hint') }}</p>
             </div>
 
-            <div class="wp-list wp-list--entity-rows">
+            <div
+                class="wp-list wp-list--entity-rows"
+                x-data="{
+                    downloading: null,
+                    error: null,
+                    async download(url, key) {
+                        if (this.downloading) {
+                            return;
+                        }
+
+                        this.downloading = key;
+                        this.error = null;
+
+                        try {
+                            await window.wpDownloadQrPackUrl(url);
+                        } catch (exception) {
+                            this.error = exception?.message || @js($downloadFailed);
+                        } finally {
+                            this.downloading = null;
+                        }
+                    },
+                }"
+            >
                 @foreach ($formats as $format)
                     <button
                         type="button"
@@ -71,18 +71,18 @@
                         :disabled="downloading !== null"
                         :aria-busy="downloading === @js($format['key'])"
                     >
-                        <p class="wp-issue-card-title">{{ $format['title'] }}</p>
-                        <p class="wp-issue-card-meta" x-show="downloading !== @js($format['key'])">{{ $format['size'] }}</p>
-                        <p class="wp-muted wp-cluster" x-show="downloading === @js($format['key'])" x-cloak>
+                        <span class="wp-issue-card-title">{{ $format['title'] }}</span>
+                        <span class="wp-issue-card-meta" x-show="downloading !== @js($format['key'])">{{ $format['size'] }}</span>
+                        <span class="wp-muted wp-cluster" x-show="downloading === @js($format['key'])" x-cloak>
                             <x-wp-spinner size="sm" :visible="true" />
                             <span>{{ $generating }}</span>
-                        </p>
+                        </span>
                     </button>
                 @endforeach
+
+                <p class="wp-error" x-show="error" x-text="error" x-cloak></p>
             </div>
         @endif
-
-        <p class="wp-error" x-show="error" x-text="error" x-cloak></p>
 
         @if ($renewMethod)
             <div class="wp-modal-section">

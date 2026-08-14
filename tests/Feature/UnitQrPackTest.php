@@ -147,5 +147,6 @@ it('opens unit qr cluster modal with print and a6 a5 a4 choices', function () {
         ->assertSee(__('common.qr.formats.a5_print.title'), false)
         ->assertSee(__('common.qr.formats.a4_print.title'), false)
         ->assertSee(route('units.qr', $unit), false)
-        ->assertSee('qr-pack?template=a6_print', false);
+        ->assertSee('qr-pack?template=a6_print', false)
+        ->assertDontSeeHtml('<button type="button" class="wp-issue-row"><p');
 });
