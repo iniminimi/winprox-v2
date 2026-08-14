@@ -1,13 +1,15 @@
 {
     "title": "Units",
     "subtitle": "Tenant-overzicht met unit-check status",
-    "list_title": "Units",
     "filters": {
         "location": "Filter op locatie",
         "all_locations": "Alle locaties"
     },
     "list": {
         "empty": "Geen units gevonden."
+    },
+    "row": {
+        "meta": "Locatie: :location, Categorie: :category"
     },
     "category_none": "Geen categorie",
     "status": {

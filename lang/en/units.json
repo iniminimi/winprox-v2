@@ -1,13 +1,15 @@
 {
     "title": "Units",
     "subtitle": "Tenant-wide overview with unit check status",
-    "list_title": "Units",
     "filters": {
         "location": "Filter by location",
         "all_locations": "All locations"
     },
     "list": {
         "empty": "No units found."
+    },
+    "row": {
+        "meta": "Location: :location, Category: :category"
     },
     "category_none": "No category",
     "status": {

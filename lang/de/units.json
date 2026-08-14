@@ -1,13 +1,15 @@
 {
     "title": "Units",
     "subtitle": "Übersicht pro Mandant mit Unit-Check-Status",
-    "list_title": "Units",
     "filters": {
         "location": "Nach Standort filtern",
         "all_locations": "Alle Standorte"
     },
     "list": {
         "empty": "Keine Units gefunden."
+    },
+    "row": {
+        "meta": "Standort: :location, Kategorie: :category"
     },
     "category_none": "Keine Kategorie",
     "status": {

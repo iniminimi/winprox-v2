@@ -11,19 +11,14 @@
     </div>
 
     <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-cluster wp-cluster--between wp-cluster--wrap">
-            <p class="wp-section-title">{{ __('units.list_title') }}</p>
-            <div class="wp-cluster wp-cluster--tight">
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('units.filters.location') }}</span>
-                    <select class="wp-select wp-select--compact" wire:model.live="locationFilter" aria-label="{{ __('units.filters.location') }}">
-                        <option value="">{{ __('units.filters.all_locations') }}</option>
-                        @foreach ($locations as $location)
-                            <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
-                        @endforeach
-                    </select>
-                </label>
-            </div>
+        <div class="wp-filter-cell">
+            <label class="wp-filter-inline-label" for="units-location-filter">{{ __('units.filters.location') }}</label>
+            <select id="units-location-filter" class="wp-select wp-select--compact" wire:model.live="locationFilter">
+                <option value="">{{ __('units.filters.all_locations') }}</option>
+                @foreach ($locations as $location)
+                    <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="wp-list wp-list--entity-rows">
@@ -35,9 +30,11 @@
                             class="wp-issue-row-link wp-stack-tight"
                         >
                             <p class="wp-issue-card-title">{{ $unit->localizedName() }}</p>
-                            <p class="wp-issue-card-meta">{{ $unit->location?->name ?: $unit->location?->address }}</p>
+                            <p class="wp-issue-card-meta">{{ __('units.row.meta', [
+                                'location' => $unit->location?->name ?: $unit->location?->address ?: '—',
+                                'category' => $unit->category?->localizedName() ?? __('units.category_none'),
+                            ]) }}</p>
                         </a>
-                        <p class="wp-muted wp-text-sm">{{ $unit->category?->localizedName() ?? __('units.category_none') }}</p>
                     </div>
 
                     <div class="wp-cluster wp-cluster--tight">

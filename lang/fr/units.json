@@ -1,13 +1,15 @@
 {
     "title": "Unités",
     "subtitle": "Aperçu global avec l’état des contrôles d’unité",
-    "list_title": "Unités",
     "filters": {
         "location": "Filtrer par site",
         "all_locations": "Tous les sites"
     },
     "list": {
         "empty": "Aucune unité trouvée."
+    },
+    "row": {
+        "meta": "Site : :location, Catégorie : :category"
     },
     "category_none": "Aucune catégorie",
     "status": {

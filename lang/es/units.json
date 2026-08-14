@@ -1,13 +1,15 @@
 {
     "title": "Unidades",
     "subtitle": "Resumen general con estado de las comprobaciones de unidad",
-    "list_title": "Unidades",
     "filters": {
         "location": "Filtrar por ubicación",
         "all_locations": "Todas las ubicaciones"
     },
     "list": {
         "empty": "No se encontraron unidades."
+    },
+    "row": {
+        "meta": "Ubicación: :location, Categoría: :category"
     },
     "category_none": "Sin categoría",
     "status": {

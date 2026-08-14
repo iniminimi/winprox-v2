@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Pages\UnitsIndex;
+use App\Models\Category;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -37,5 +38,37 @@ it('filters tenant units by location in UnitsIndex', function () {
         ->set('locationFilter', $locationA->id)
         ->assertSee($unitA->name)
         ->assertDontSee($unitB->name);
+});
+
+it('toont locatie en categorie op één metaregel zonder dubbele Units-titel', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Industriepark Lille',
+        'is_active' => true,
+    ]);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Sanitair en welfare units',
+    ]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $category->id,
+        'name' => 'Welfare unit Portakabin Shower 2 cabines #1200',
+        'is_active' => true,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(UnitsIndex::class)
+        ->assertSee($unit->name)
+        ->assertSee(__('units.row.meta', [
+            'location' => 'Industriepark Lille',
+            'category' => 'Sanitair en welfare units',
+        ]))
+        ->assertDontSeeHtml('wp-section-title');
 });
 
