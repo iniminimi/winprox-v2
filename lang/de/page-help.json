@@ -46,6 +46,26 @@
                     "text": "Eigener Flow neben Meldung hinzufügen: mindestens 2 Stops (Units), Intervall und Team in einem Formular. Erstellt eine wiederkehrende Meldung mit Runden-Stops und startet sofort die erste Aufgabe."
                 },
                 {
+                    "label": "Intervall",
+                    "nested": true,
+                    "text": "Häufigkeit der Wiederkehr (z.B. alle 2 Wochen, jeden Monat, jedes Quartal, jedes Jahr)."
+                },
+                {
+                    "label": "Vorlauf (Tage)",
+                    "nested": true,
+                    "text": "Wie viele Tage vor dem Fälligkeitsdatum die Aufgabe erstellt wird (z.B. 7 Tage für monatliche Aufgaben)."
+                },
+                {
+                    "label": "Erstes Fälligkeitsdatum",
+                    "nested": true,
+                    "text": "Datum, an dem die erste Runde fällig ist. Die Aufgabe wird entsprechend dem Vorlauf früher erstellt."
+                },
+                {
+                    "label": "Stops",
+                    "nested": true,
+                    "text": "Wählen Sie mindestens 2 Units in Reihenfolge (alle Standorte). Listenreihenfolge = Stoppreihenfolge."
+                },
+                {
                     "label": "Briefing drucken",
                     "text": "Drucken Sie eine Übersicht offener Aufgaben pro Team."
                 },
@@ -108,6 +128,10 @@
                 {
                     "label": "Vorlauf (Tage)",
                     "text": "Wie viele Tage vor dem Fälligkeitsdatum die Aufgabe erstellt wird (z.B. 7 Tage für monatliche Aufgaben)."
+                },
+                {
+                    "label": "Erstes Fälligkeitsdatum",
+                    "text": "Datum, an dem die erste Runde fällig ist. Die Aufgabe wird entsprechend dem Vorlauf früher erstellt."
                 },
                 {
                     "label": "Inspektionsrunden-Stopps",

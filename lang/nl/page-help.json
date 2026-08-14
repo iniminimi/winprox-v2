@@ -46,6 +46,26 @@
                     "text": "Aparte flow naast Nieuwe melding: kies minstens 2 stops (units), interval en team in één formulier. Maakt een terugkerende melding met ronde-stops en start meteen de eerste taak."
                 },
                 {
+                    "label": "Interval",
+                    "nested": true,
+                    "text": "Hoe vaak de melding terugkomt (bijv. elke 2 weken, elke maand, elk kwartaal, elk jaar)."
+                },
+                {
+                    "label": "Lead (dagen)",
+                    "nested": true,
+                    "text": "Hoeveel dagen voor de vervaldatum de taak al wordt aangemaakt (bijv. 7 dagen voor maandelijkse taken)."
+                },
+                {
+                    "label": "Eerste vervaldatum",
+                    "nested": true,
+                    "text": "De datum waarop de eerste ronde vervalt. De taak wordt eerder aangemaakt volgens de lead."
+                },
+                {
+                    "label": "Stops",
+                    "nested": true,
+                    "text": "Kies minstens 2 units in volgorde (alle locaties). Volgorde = volgorde in de lijst."
+                },
+                {
                     "label": "Briefing afdrukken",
                     "text": "Print een overzicht van open taken per team."
                 },
@@ -108,6 +128,10 @@
                 {
                     "label": "Lead (dagen)",
                     "text": "Hoeveel dagen voor de vervaldatum de taak al wordt aangemaakt (bijv. 7 dagen voor maandelijkse taken)."
+                },
+                {
+                    "label": "Eerste vervaldatum",
+                    "text": "De datum waarop de eerste ronde vervalt. De taak wordt eerder aangemaakt volgens de lead."
                 },
                 {
                     "label": "Inspectieronde-stops",

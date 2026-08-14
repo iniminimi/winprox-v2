@@ -46,6 +46,26 @@
                     "text": "Separate flow next to Add issue: pick at least 2 stops (units), interval and team in one form. Creates a recurring issue with round stops and starts the first task immediately."
                 },
                 {
+                    "label": "Interval",
+                    "nested": true,
+                    "text": "How often the issue recurs (e.g. every 2 weeks, every month, every quarter, every year)."
+                },
+                {
+                    "label": "Lead (days)",
+                    "nested": true,
+                    "text": "How many days before the due date the task is created (e.g. 7 days for monthly tasks)."
+                },
+                {
+                    "label": "First due date",
+                    "nested": true,
+                    "text": "The date the first round is due. The task is created earlier according to the lead."
+                },
+                {
+                    "label": "Stops",
+                    "nested": true,
+                    "text": "Pick at least 2 units in order (any locations). List order is the stop order."
+                },
+                {
                     "label": "Print briefing",
                     "text": "Print an overview of open tasks per team."
                 },
@@ -108,6 +128,10 @@
                 {
                     "label": "Lead (days)",
                     "text": "How many days before the due date the task is created (e.g. 7 days for monthly tasks)."
+                },
+                {
+                    "label": "First due date",
+                    "text": "The date the first round is due. The task is created earlier according to the lead."
                 },
                 {
                     "label": "Inspection round stops",

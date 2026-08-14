@@ -46,6 +46,26 @@
                     "text": "Flux séparé à côté de Ajouter un signalement : au moins 2 arrêts (unités), intervalle et équipe en un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre immédiatement la première tâche."
                 },
                 {
+                    "label": "Intervalle",
+                    "nested": true,
+                    "text": "Fréquence de récurrence (ex. toutes les 2 semaines, chaque mois, chaque trimestre, chaque année)."
+                },
+                {
+                    "label": "Anticipation (jours)",
+                    "nested": true,
+                    "text": "Nombre de jours avant l'échéance où la tâche est créée (ex. 7 jours pour les tâches mensuelles)."
+                },
+                {
+                    "label": "Première échéance",
+                    "nested": true,
+                    "text": "Date d’échéance de la première tournée. La tâche est créée plus tôt selon l’anticipation."
+                },
+                {
+                    "label": "Arrêts",
+                    "nested": true,
+                    "text": "Choisissez au moins 2 unités dans l’ordre (tous les sites). L’ordre de la liste est l’ordre des arrêts."
+                },
+                {
                     "label": "Imprimer le briefing",
                     "text": "Imprimez un aperçu des tâches ouvertes par équipe."
                 },
@@ -108,6 +128,10 @@
                 {
                     "label": "Anticipation (jours)",
                     "text": "Nombre de jours avant l'échéance où la tâche est créée (ex. 7 jours pour les tâches mensuelles)."
+                },
+                {
+                    "label": "Première échéance",
+                    "text": "Date d’échéance de la première tournée. La tâche est créée plus tôt selon l’anticipation."
                 },
                 {
                     "label": "Arrêts de tournée",

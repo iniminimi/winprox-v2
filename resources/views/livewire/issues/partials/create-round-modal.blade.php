@@ -2,7 +2,10 @@
     <form wire:submit="saveRoundCreate" class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide">
         <div class="wp-modal-head">
             <div class="wp-stack-tight">
-                <h2 id="issue-round-create-title" class="wp-section-title">{{ __('issues.round_create.title') }}</h2>
+                <div class="wp-cluster">
+                    <h2 id="issue-round-create-title" class="wp-section-title">{{ __('issues.round_create.title') }}</h2>
+                    <x-wp-page-help page="issues.create" />
+                </div>
                 <p class="wp-muted wp-text-sm">{{ __('issues.round_create.subtitle') }}</p>
             </div>
             <x-wp-modal-close wire:click="closeRoundCreateModal" />
@@ -19,7 +22,7 @@
         @endif
 
         <div class="wp-field">
-            <label class="wp-label" for="round_create_description">{{ __('issues.round_create.description') }}</label>
+            <label class="wp-label" for="round_create_description">{{ __('issues.create.description') }}</label>
             <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
                 <textarea id="round_create_description" class="wp-textarea" wire:model="description" rows="3"
                           maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
@@ -32,7 +35,9 @@
         <div class="wp-card wp-card-pad wp-stack-tight wp-surface-muted">
             <div class="wp-filter-bar">
                 <div class="wp-field">
-                    <label class="wp-label" for="round_create_recurrence_interval_value">{{ __('issues.create.interval_value') }}</label>
+                    <x-wp-tooltip :text="__('issues.create.recurring_help_interval')" wrap>
+                        <label class="wp-label" for="round_create_recurrence_interval_value">{{ __('issues.create.interval_value') }}</label>
+                    </x-wp-tooltip>
                     <input type="number" id="round_create_recurrence_interval_value" class="wp-input" wire:model="recurrence_interval_value" min="1" max="24">
                     @error('recurrence_interval_value') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
@@ -50,20 +55,25 @@
             </div>
             <div class="wp-filter-bar">
                 <div class="wp-field">
-                    <label class="wp-label" for="round_create_recurrence_lead_days">{{ __('issues.create.lead_days') }}</label>
+                    <x-wp-tooltip :text="__('issues.create.recurring_help_lead')" wrap>
+                        <label class="wp-label" for="round_create_recurrence_lead_days">{{ __('issues.create.lead_days') }}</label>
+                    </x-wp-tooltip>
                     <input type="number" id="round_create_recurrence_lead_days" class="wp-input" wire:model.live="recurrence_lead_days" min="1" max="365">
                     @error('recurrence_lead_days') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-field">
-                    <label class="wp-label" for="round_create_recurrence_first_due_date">{{ __('issues.create.first_due') }}</label>
+                    <x-wp-tooltip :text="__('issues.create.recurring_help_first_due')" wrap>
+                        <label class="wp-label" for="round_create_recurrence_first_due_date">{{ __('issues.create.first_due') }}</label>
+                    </x-wp-tooltip>
                     <x-wp-date-input id="round_create_recurrence_first_due_date" wire:model="recurrence_first_due_date" />
                     @error('recurrence_first_due_date') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
             </div>
 
             <div class="wp-field">
-                <label class="wp-label" for="round_create_stop_unit_ids">{{ __('issues.round_create.stops') }}</label>
-                <p class="wp-muted wp-text-sm">{{ __('issues.round_create.stops_help') }}</p>
+                <x-wp-tooltip :text="__('issues.round_create.stops_help')" wrap>
+                    <label class="wp-label" for="round_create_stop_unit_ids">{{ __('issues.round_create.stops') }}</label>
+                </x-wp-tooltip>
                 <div
                     x-data="{
                         toggleAll(event) {

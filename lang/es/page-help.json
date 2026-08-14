@@ -46,6 +46,26 @@
                     "text": "Flujo aparte junto a Añadir incidencia: al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea un aviso recurrente con paradas de ronda e inicia de inmediato la primera tarea."
                 },
                 {
+                    "label": "Intervalo",
+                    "nested": true,
+                    "text": "Con qué frecuencia se repite la incidencia (p. ej. cada 2 semanas, cada mes, cada trimestre, cada año)."
+                },
+                {
+                    "label": "Antelación (días)",
+                    "nested": true,
+                    "text": "Cuántos días antes de la fecha de vencimiento se crea la tarea (p. ej. 7 días para tareas mensuales)."
+                },
+                {
+                    "label": "Primera fecha de vencimiento",
+                    "nested": true,
+                    "text": "Fecha de vencimiento de la primera ronda. La tarea se crea antes según la antelación."
+                },
+                {
+                    "label": "Paradas",
+                    "nested": true,
+                    "text": "Elija al menos 2 unidades en orden (cualquier ubicación). El orden de la lista es el de las paradas."
+                },
+                {
                     "label": "Imprimir briefing",
                     "text": "Imprima un resumen de tareas abiertas por equipo."
                 },
@@ -108,6 +128,10 @@
                 {
                     "label": "Antelación (días)",
                     "text": "Cuántos días antes de la fecha de vencimiento se crea la tarea (p. ej. 7 días para tareas mensuales)."
+                },
+                {
+                    "label": "Primera fecha de vencimiento",
+                    "text": "Fecha de vencimiento de la primera ronda. La tarea se crea antes según la antelación."
                 },
                 {
                     "label": "Paradas de ronda",

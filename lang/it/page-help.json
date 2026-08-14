@@ -46,6 +46,26 @@
                     "text": "Flusso separato accanto ad Aggiungi segnalazione: almeno 2 fermate (unità), intervallo e team in un modulo. Crea una segnalazione ricorrente con fermate del giro e avvia subito la prima attività."
                 },
                 {
+                    "label": "Intervallo",
+                    "nested": true,
+                    "text": "Con quale frequenza si ripete la segnalazione (es. ogni 2 settimane, ogni mese, ogni trimestre, ogni anno)."
+                },
+                {
+                    "label": "Anticipo (giorni)",
+                    "nested": true,
+                    "text": "Quanti giorni prima della scadenza viene creata l'attività (es. 7 giorni per attività mensili)."
+                },
+                {
+                    "label": "Prima scadenza",
+                    "nested": true,
+                    "text": "Data di scadenza del primo giro. L’attività viene creata prima in base all’anticipo."
+                },
+                {
+                    "label": "Fermate",
+                    "nested": true,
+                    "text": "Scegli almeno 2 unità in ordine (qualsiasi sede). L’ordine dell’elenco è l’ordine delle fermate."
+                },
+                {
                     "label": "Stampa briefing",
                     "text": "Stampi una panoramica delle attività aperte per team."
                 },
@@ -108,6 +128,10 @@
                 {
                     "label": "Anticipo (giorni)",
                     "text": "Quanti giorni prima della scadenza viene creata l'attività (es. 7 giorni per attività mensili)."
+                },
+                {
+                    "label": "Prima scadenza",
+                    "text": "Data di scadenza del primo giro. L’attività viene creata prima in base all’anticipo."
                 },
                 {
                     "label": "Fermate del giro",
