@@ -67,7 +67,6 @@
 
         <div class="wp-input-group">
             <input
-                type="password"
                 :type="show ? 'text' : 'password'"
                 id="password"
                 class="wp-input"

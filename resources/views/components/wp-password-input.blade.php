@@ -7,7 +7,6 @@
 
 <div class="wp-input-group" x-data="{ show: false }">
     <input
-        type="password"
         :type="show ? 'text' : 'password'"
         @if ($id) id="{{ $id }}" @endif
         class="wp-input"
