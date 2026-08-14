@@ -69,6 +69,27 @@
     "style": {
         "label": "Stil"
     },
+    "qr": {
+        "button": "QR",
+        "modal_title": "QR",
+        "print": "Ansehen / drucken",
+        "pack_heading": "Druckblatt",
+        "pack_hint": "Ein QR pro Blatt, Word-Datei mit Hintergrund.",
+        "formats": {
+            "a6_print": {
+                "title": "A6",
+                "size": "105 × 148 mm"
+            },
+            "a5_print": {
+                "title": "A5",
+                "size": "148 × 210 mm"
+            },
+            "a4_print": {
+                "title": "A4",
+                "size": "210 × 297 mm"
+            }
+        }
+    },
     "help": {
         "button": "Hilfe",
         "title": "Brauchen Sie Hilfe?",

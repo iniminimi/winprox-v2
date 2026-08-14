@@ -1174,16 +1174,8 @@
                     "text": "Beheer inklokpunten en printbare QR-codes via Time → Clock Points. Er wordt automatisch een standaard clock point aangemaakt indien nodig."
                 },
                 {
-                    "label": "QR-code afdrukken",
-                    "text": "Via <strong>QR-code</strong> opent u een snelle printpagina in de browser. Klik op Afdrukken en hang de QR op aan de ingang, magazijn of andere locatie. Elke clock point heeft een unieke code."
-                },
-                {
-                    "label": "QR-afdrukblad",
-                    "text": "Via <strong>QR-afdrukblad</strong> downloadt u een Word-bestand met één full-page QR (A6, A5 of A4) voor dit clock point. Het blad gebruikt dezelfde achtergrond en branding als bij Instellingen → QR-afdrukblad (A6/A5/A4)."
-                },
-                {
-                    "label": "QR-code vernieuwen",
-                    "text": "Genereer een nieuwe QR wanneer een sticker verloren is of u misbruik vermoedt. De oude code werkt nog enkele dagen (grace-periode), daarna wordt die geblokkeerd."
+                    "label": "QR",
+                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad, of de QR-code vernieuwen bij verloren sticker of vermoed misbruik. De oude code werkt nog enkele dagen (grace-periode), daarna wordt die geblokkeerd. Elke clock point heeft een unieke code."
                 },
                 {
                     "label": "QR-rotatie",

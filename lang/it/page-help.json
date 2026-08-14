@@ -1174,16 +1174,8 @@
                     "text": "Gestisca i punti di timbratura e i QR stampabili in Time → Clock Points. Se necessario viene creato automaticamente un clock point predefinito."
                 },
                 {
-                    "label": "Stampa QR",
-                    "text": "Con <strong>Codice QR</strong> apre una pagina di stampa rapida nel browser. Clicchi su Stampa e applichi il QR all'ingresso, magazzino o altro luogo. Ogni clock point ha un codice univoco."
-                },
-                {
-                    "label": "Foglio di stampa QR",
-                    "text": "Con <strong>Foglio di stampa QR</strong> scarica un file Word con un QR a pagina intera (A6, A5 o A4) per questo clock point. Il foglio usa lo stesso sfondo e branding di Impostazioni → Foglio di stampa QR (A6/A5/A4)."
-                },
-                {
-                    "label": "Rinnova QR",
-                    "text": "Generi un nuovo QR se un adesivo è perso o sospetta un abuso. Il vecchio codice funziona ancora per alcuni giorni (periodo di grazia), poi viene bloccato."
+                    "label": "QR",
+                    "text": "Con <strong>QR</strong> apre una finestra: visualizza/stampa nel browser, un foglio Word (A6, A5 o A4) con lo stesso branding di Impostazioni → Foglio di stampa QR, oppure rinnova il codice QR se l'adesivo è perso o sospetta un uso improprio. Il vecchio codice funziona ancora per alcuni giorni (periodo di grazia), poi viene bloccato. Ogni clock point ha un codice unico."
                 },
                 {
                     "label": "Rotazione QR",

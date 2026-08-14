@@ -69,6 +69,27 @@
     "style": {
         "label": "Estilo"
     },
+    "qr": {
+        "button": "QR",
+        "modal_title": "QR",
+        "print": "Ver / imprimir",
+        "pack_heading": "Hoja de impresión",
+        "pack_hint": "Un QR por página, archivo Word con fondo.",
+        "formats": {
+            "a6_print": {
+                "title": "A6",
+                "size": "105 × 148 mm"
+            },
+            "a5_print": {
+                "title": "A5",
+                "size": "148 × 210 mm"
+            },
+            "a4_print": {
+                "title": "A4",
+                "size": "210 × 297 mm"
+            }
+        }
+    },
     "help": {
         "button": "Ayuda",
         "title": "¿Necesita ayuda?",

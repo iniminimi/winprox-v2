@@ -1174,16 +1174,8 @@
                     "text": "Gestione puntos de fichaje y códigos QR imprimibles en Time → Clock Points. Se crea automáticamente un clock point predeterminado si es necesario."
                 },
                 {
-                    "label": "Imprimir QR",
-                    "text": "Con <strong>Código QR</strong> abre una página de impresión rápida en el navegador. Pulse Imprimir y coloque el QR en la entrada, almacén u otro lugar. Cada clock point tiene un código único."
-                },
-                {
-                    "label": "Hoja de impresión QR",
-                    "text": "Con <strong>Hoja de impresión QR</strong> descarga un archivo Word con un QR a página completa (A6, A5 o A4) para este clock point. La hoja usa el mismo fondo y marca que en Ajustes → Hoja de impresión QR (A6/A5/A4)."
-                },
-                {
-                    "label": "Renovar QR",
-                    "text": "Genere un nuevo QR cuando se pierda una pegatina o sospeche abuso. El código antiguo sigue funcionando unos días (periodo de gracia), luego se bloquea."
+                    "label": "QR",
+                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR, o renovar el código QR si se pierde una pegatina o sospecha un uso indebido. El código antiguo sigue funcionando unos días (periodo de gracia) y luego se bloquea. Cada clock point tiene un código único."
                 },
                 {
                     "label": "Rotación QR",

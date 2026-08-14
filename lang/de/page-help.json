@@ -1174,16 +1174,8 @@
                     "text": "Verwalten Sie Einstempelorte und druckbare QR-Codes unter Time → Clock Points. Bei Bedarf wird automatisch ein Standard-Clock-Point erstellt."
                 },
                 {
-                    "label": "QR-Code drucken",
-                    "text": "Über <strong>QR-Code</strong> öffnen Sie eine schnelle Druckseite im Browser. Klicken Sie auf Drucken und bringen Sie den QR am Eingang, im Lager oder an einem anderen Ort an. Jeder Clock Point hat einen eindeutigen Code."
-                },
-                {
-                    "label": "QR-Druckblatt",
-                    "text": "Über <strong>QR-Druckblatt</strong> laden Sie eine Word-Datei mit einem ganzseitigen QR (A6, A5 oder A4) für diesen Clock Point herunter. Das Blatt nutzt denselben Hintergrund und dasselbe Branding wie unter Einstellungen → QR-Druckblatt (A6/A5/A4)."
-                },
-                {
-                    "label": "QR-Code erneuern",
-                    "text": "Generieren Sie einen neuen QR, wenn ein Aufkleber verloren ging oder Sie Missbrauch vermuten. Der alte Code funktioniert noch einige Tage (Karenzzeit), danach wird er gesperrt."
+                    "label": "QR",
+                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Ansehen/Drucken im Browser, ein Word-Druckblatt (A6, A5 oder A4) mit derselben Marke wie unter Einstellungen → QR-Druckblatt, oder den QR-Code erneuern bei verlorenem Aufkleber oder vermutetem Missbrauch. Der alte Code funktioniert noch einige Tage (Grace-Periode), danach wird er gesperrt. Jeder Clock Point hat einen einzigartigen Code."
                 },
                 {
                     "label": "QR-Rotation",
