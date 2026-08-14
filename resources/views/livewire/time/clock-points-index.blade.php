@@ -128,29 +128,27 @@
                 $clockQrRenewMethod = 'renewQr('.$qrPackClockPoint->id.')';
             @endphp
         @endcan
-        <x-wp-modal closeMethod="closeQrPackModal" aria-labelledby="clock-point-qr-cluster-modal-title">
-            <x-wp-qr-cluster-modal
-                closeMethod="closeQrPackModal"
-                title-id="clock-point-qr-cluster-modal-title"
-                :title="__('common.qr.modal_title')"
-                :subtitle="$qrPackClockPoint->name"
-                :print-url="route('time.clock-points.qr', $qrPackClockPoint)"
-                :print-label="__('common.qr.print')"
-                :formats="collect($qrPackTemplates)->map(fn ($template) => [
-                    'key' => $qrPackClockPoint->id.'-'.$template->value,
-                    'title' => __('common.qr.formats.'.$template->value.'.title'),
-                    'size' => __('common.qr.formats.'.$template->value.'.size'),
-                    'url' => route('time.clock-points.qr-pack', [
-                        'clockPoint' => $qrPackClockPoint,
-                        'template' => $template->value,
-                    ]),
-                ])->all()"
-                :generating="__('time.clock_points.qr.pack.generating')"
-                :download-failed="__('time.clock_points.qr.pack.download_failed')"
-                :renew-method="$clockQrRenewMethod"
-                :renew-label="__('time.clock_points.qr.renew')"
-                :renew-confirm="__('time.clock_points.qr.renew_confirm')"
-            />
-        </x-wp-modal>
+        <x-wp-qr-cluster-modal
+            closeMethod="closeQrPackModal"
+            title-id="clock-point-qr-cluster-modal-title"
+            :title="__('common.qr.modal_title')"
+            :subtitle="$qrPackClockPoint->name"
+            :print-url="route('time.clock-points.qr', $qrPackClockPoint)"
+            :print-label="__('common.qr.print')"
+            :formats="collect($qrPackTemplates)->map(fn ($template) => [
+                'key' => $qrPackClockPoint->id.'-'.$template->value,
+                'title' => __('common.qr.formats.'.$template->value.'.title'),
+                'size' => __('common.qr.formats.'.$template->value.'.size'),
+                'url' => route('time.clock-points.qr-pack', [
+                    'clockPoint' => $qrPackClockPoint,
+                    'template' => $template->value,
+                ]),
+            ])->all()"
+            :generating="__('time.clock_points.qr.pack.generating')"
+            :download-failed="__('time.clock_points.qr.pack.download_failed')"
+            :renew-method="$clockQrRenewMethod"
+            :renew-label="__('time.clock_points.qr.renew')"
+            :renew-confirm="__('time.clock_points.qr.renew_confirm')"
+        />
     @endif
 </div>
