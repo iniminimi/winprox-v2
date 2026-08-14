@@ -22,8 +22,8 @@
     },
     "sections": {
         "admin_portal": {
-            "title": "Teams & users through settings",
-            "intro": "Chapters on the signed-in admin portal: teams (including unit-check checklists), locations, issues, tasks, calendar, reservations, dashboard, Time (hours and Clock Points), optional ESG module, IoT Connect, settings and subscription (including data deletion)."
+            "title": "People through settings",
+            "intro": "Chapters on the signed-in admin portal: People (Backoffice for colleague users, Teams for checklists and workers), locations, issues, tasks, calendar, reservations, dashboard, Time (hours and Clock Points), optional ESG module, IoT Connect, settings and subscription (including data deletion)."
         },
         "internet_portal": {
             "title": "QR codes on site",
@@ -51,7 +51,7 @@
         }
     },
     "step_1_title": "Create teams & workers",
-    "step_1_text": "Assemble operational teams, add workers (internal or external with optional company name) and assign a team leader. Link teams to specific categories so tasks always reach the right professionals. Workers sign in easily with their name and a personal icon. You can also add teams and workers in one go via a bulk import (CSV/Excel). Optional: under People → Teams you manage unit-check checklists (shared or per team; starters for cleaning, technical and security).",
+    "step_1_text": "Assemble operational teams, add workers (internal or external with optional company name) and assign a team leader. Link teams to specific categories so tasks always reach the right professionals. Workers sign in easily with their name and a personal icon. You can also add teams and workers in one go via a bulk import (CSV/Excel). Optional: under People → Teams you manage unit-check checklists (shared or per team; starters for cleaning, technical and security). Colleague users with login (administrator and employee) are managed under People → Backoffice.",
     "step_2_title": "Set up locations & units",
     "step_2_text": "Group units into categories (for example: drills, plumbing, fitness equipment, office or electrical). Mark categories as Reservable if units should accept time-slot bookings, and turn on Allow reservations per unit (off by default). Optional: Require contact details (category and unit) for anonymous QR reporters. By linking teams to specific categories, WinProx ensures tasks are always picked up by the right team. Add locations and create units per location — via the form, bulk series or CSV/Excel import. Use Places → Units for a tenant-wide overview (location filter, status and unit-check pills). You can update unit names and descriptions manually per language. Optional: Allow unit checks (category and unit, off by default) for OK/Not OK rounds via the portal — separate from ESG. Link a checklist per unit (templates under People → Teams); the dropdown shows shared checklists and those of teams linked to the category.",
     "step_3_title": "Print & hang QR codes",

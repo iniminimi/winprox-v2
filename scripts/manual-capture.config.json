@@ -1,6 +1,13 @@
 {
     "targets": [
         {
+            "id": "team-backoffice",
+            "path": "/team?section=backoffice",
+            "selector": "[data-manual-capture=\"team-backoffice\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
             "id": "team",
             "path": "/team?section=teams",
             "selector": "[data-manual-capture=\"team\"]",

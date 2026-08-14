@@ -9,9 +9,15 @@ namespace App\Support\Manual;
  */
 final class ManualScreenshotAssets
 {
+    /** Capture filenames that differ from the chapter key (legacy shots). */
+    private const CHAPTER_FILENAME_ALIASES = [
+        'team.teams' => 'team.png',
+    ];
+
     public static function filenameForChapter(string $chapterKey): string
     {
-        return str_replace('.', '-', $chapterKey).'.png';
+        return self::CHAPTER_FILENAME_ALIASES[$chapterKey]
+            ?? str_replace('.', '-', $chapterKey).'.png';
     }
 
     public static function publicUrl(string $chapterKey, string $locale): ?string

@@ -4,7 +4,11 @@ use App\Support\Manual\ManualScreenshotAssets;
 
 it('mapt een hoofdstuksleutel naar een bestandsnaam', function () {
     expect(ManualScreenshotAssets::filenameForChapter('issues.list'))
-        ->toBe('issues-list.png');
+        ->toBe('issues-list.png')
+        ->and(ManualScreenshotAssets::filenameForChapter('team.teams'))
+        ->toBe('team.png')
+        ->and(ManualScreenshotAssets::filenameForChapter('team.backoffice'))
+        ->toBe('team-backoffice.png');
 });
 
 it('geeft een public url wanneer het screenshot-bestand bestaat', function () {

@@ -22,8 +22,8 @@
     },
     "sections": {
         "admin_portal": {
-            "title": "Teams & gebruikers tot instellingen",
-            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams (inclusief checklists voor unit checks), locaties, meldingen, taken, kalender, reserveringen, dashboard, Time (uren en Clock Points), optionele ESG-module, IoT Connect, instellingen en abonnement (inclusief gegevens verwijderen)."
+            "title": "Mensen tot instellingen",
+            "intro": "Hoofdstukken over het ingelogde beheerportaal: Mensen (Backoffice voor collega-gebruikers, Teams voor checklists en uitvoerders), locaties, meldingen, taken, kalender, reserveringen, dashboard, Time (uren en Clock Points), optionele ESG-module, IoT Connect, instellingen en abonnement (inclusief gegevens verwijderen)."
         },
         "internet_portal": {
             "title": "QR-codes op de werkvloer",
@@ -51,7 +51,7 @@
         }
     },
     "step_1_title": "Teams & uitvoerders aanmaken",
-    "step_1_text": "Stel operationele teams samen, voeg uitvoerders toe (intern of extern met optionele bedrijfsnaam) en wijs een teamleider aan. Koppel teams aan specifieke categorieën, zodat taken altijd bij de juiste vakmensen terechtkomen. Uitvoerders melden zich eenvoudig aan met hun naam en een persoonlijk icoon. Je kunt teams en uitvoerders ook in één keer toevoegen via een bulk-import (CSV/Excel). Optioneel: onder Mensen → Teams beheer je checklists voor unit checks (gedeeld of per team; starters voor schoonmaak, techniek en security).",
+    "step_1_text": "Stel operationele teams samen, voeg uitvoerders toe (intern of extern met optionele bedrijfsnaam) en wijs een teamleider aan. Koppel teams aan specifieke categorieën, zodat taken altijd bij de juiste vakmensen terechtkomen. Uitvoerders melden zich eenvoudig aan met hun naam en een persoonlijk icoon. Je kunt teams en uitvoerders ook in één keer toevoegen via een bulk-import (CSV/Excel). Optioneel: onder Mensen → Teams beheer je checklists voor unit checks (gedeeld of per team; starters voor schoonmaak, techniek en security). Collega-gebruikers met inloggen (beheerder en medewerker) beheer je onder Mensen → Backoffice.",
     "step_2_title": "Locaties & units inrichten",
     "step_2_text": "Groepeer units in categorieën (bijvoorbeeld: boormachines, sanitair, fitnesstoestellen, kantoor of elektriciteit). Markeer categorieën als Reserveerbaar als units een tijdslot moeten kunnen boeken, en zet per unit Reserveringen toestaan aan (standaard uit). Optioneel: Contactgegevens invullen verplicht (categorie én unit) voor anonieme QR-melders. Door teams aan specifieke categorieën te koppelen, zorgt WinProx ervoor dat taken altijd door het juiste team worden opgepakt. Voeg locaties toe en maak per locatie je units aan — via het formulier, bulkreeks of CSV/Excel-import. Gebruik Plaatsen → Units voor een tenant-breed overzicht (locatiefilter, status- en unit-check-pills). Unitnamen en -omschrijvingen kun je per taal handmatig bijwerken. Optioneel: Unit checks toestaan (categorie én unit, standaard uit) voor OK/Niet OK-rondes via het portaal — los van ESG. Koppel per unit een checklist (templates onder Mensen → Teams); de dropdown toont gedeelde checklists en die van teams gekoppeld aan de categorie.",
     "step_3_title": "QR-codes afdrukken & ophangen",
