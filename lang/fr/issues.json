@@ -112,7 +112,8 @@
         "round_stops_empty": "Aucune unité active à sélectionner comme arrêts.",
         "round_stops_select_help": "Les unités sont groupées par site. L’ordre suit la liste de haut en bas (y compris entre sites).",
         "round_stops_select_all": "Sélectionner toutes les unités",
-        "round_stops_hidden": "{1} :count unité n’est pas visible car le contrôle d’unité y est désactivé.|[2,*] :count unités ne sont pas visibles car le contrôle d’unité y est désactivé."
+        "round_stops_hidden": "{1} :count unité n’est pas visible car le contrôle d’unité y est désactivé.|[2,*] :count unités ne sont pas visibles car le contrôle d’unité y est désactivé.",
+        "round_stops_unavailable": "{1} Aucune unité disponible comme arrêt. :count unité n’est pas visible car le contrôle d’unité y est désactivé.|[2,*] Aucune unité disponible comme arrêt. :count unités ne sont pas visibles car le contrôle d’unité y est désactivé."
     },
     "round_create": {
         "title": "Planifier une tournée d’inspection",

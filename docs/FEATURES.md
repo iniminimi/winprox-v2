@@ -455,9 +455,10 @@ stops meer zijn voor **deze** cyclus-taak.
 - Impliciet meetellen (geen “start ronde”).
 - Units zonder unit checks (unit uit, of categorie uit wanneer de unit een
   categorie heeft): niet in de stop-picker; een regel toont hoeveel units
-  verborgen zijn. Unit zonder categorie volgt alleen de unit-vlag. Bestaande
-  stops worden verwijderd bij uitschakelen (en self-heal bij openen melding).
-  Ronde met <2 stops over houdt geen stops meer.
+  verborgen zijn. Is er geen enkele unit selecteerbaar, dan vervalt de picker
+  (geen vinkjes, geen opslaan) en blijft een korte uitleg. Unit zonder categorie
+  volgt alleen de unit-vlag. Bestaande stops worden verwijderd bij uitschakelen
+  (en self-heal bij openen melding). Ronde met <2 stops over houdt geen stops meer.
 - **Fase 2:** strikte stop-volgorde (alleen de eerstvolgende open stop mag OK/skip);
   rijke progress-UI (balk + genummerde stops met status, datum/uur en uitvoerder)
   op **unit-QR (elke stop)** én op **taakdetail in beheer**.

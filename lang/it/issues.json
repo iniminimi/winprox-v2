@@ -112,7 +112,8 @@
         "round_stops_empty": "Non ci sono unità attive da selezionare come fermate.",
         "round_stops_select_help": "Le unità sono raggruppate per sede. L’ordine segue l’elenco dall’alto verso il basso (anche tra sedi).",
         "round_stops_select_all": "Seleziona tutte le unità",
-        "round_stops_hidden": "{1} :count unità non è visibile perché i controlli unità sono disattivati.|[2,*] :count unità non sono visibili perché i controlli unità sono disattivati."
+        "round_stops_hidden": "{1} :count unità non è visibile perché i controlli unità sono disattivati.|[2,*] :count unità non sono visibili perché i controlli unità sono disattivati.",
+        "round_stops_unavailable": "{1} Nessuna unità disponibile come fermata. :count unità non è visibile perché i controlli unità sono disattivati.|[2,*] Nessuna unità disponibile come fermata. :count unità non sono visibili perché i controlli unità sono disattivati."
     },
     "round_create": {
         "title": "Pianifica giro di ispezione",

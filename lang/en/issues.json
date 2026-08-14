@@ -112,7 +112,8 @@
         "round_stops_empty": "There are no active units to select as stops.",
         "round_stops_select_help": "Units are grouped by location. Order follows top to bottom in this list (including across locations).",
         "round_stops_select_all": "Select all units",
-        "round_stops_hidden": "{1} :count unit is hidden because unit checks are off there.|[2,*] :count units are hidden because unit checks are off there."
+        "round_stops_hidden": "{1} :count unit is hidden because unit checks are off there.|[2,*] :count units are hidden because unit checks are off there.",
+        "round_stops_unavailable": "{1} No units available as stops. :count unit is hidden because unit checks are off there.|[2,*] No units available as stops. :count units are hidden because unit checks are off there."
     },
     "round_create": {
         "title": "Plan inspection round",

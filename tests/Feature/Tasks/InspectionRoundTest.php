@@ -910,3 +910,28 @@ it('hides units without unit checks from the issue show stop picker', function (
         ->assertDontSee('Hidden-NoChecks-Unit', false)
         ->assertSee($hiddenMessage, false);
 });
+
+it('replaces the empty stop picker with an explanation when no units are available', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'unitA' => $unitA, 'unitB' => $unitB, 'unitC' => $unitC, 'issue' => $issue] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    foreach ([$unitA, $unitB, $unitC] as $unit) {
+        $unit->forceFill(['allow_unit_checks' => false])->save();
+    }
+
+    $unavailable = trans_choice('issues.create.round_stops_unavailable', 3, ['count' => 3]);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Show::class, ['issue' => $issue->fresh()])
+        ->assertOk()
+        ->assertSee($unavailable, false)
+        ->assertDontSee(__('issues.create.round_stops_select_all'), false)
+        ->assertDontSee(__('issues.show.round_stops_save'), false)
+        ->assertDontSee(__('issues.show.round_stops_help'), false);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->call('openRoundCreateModal')
+        ->assertSee($unavailable, false)
+        ->assertDontSee('id="round_create_stop_unit_ids"', false);
+});

@@ -112,7 +112,8 @@
         "round_stops_empty": "Es gibt keine aktiven Units, die als Stops gewählt werden können.",
         "round_stops_select_help": "Units sind nach Standort gruppiert. Die Reihenfolge läuft von oben nach unten in dieser Liste (auch über Standorte hinweg).",
         "round_stops_select_all": "Alle Units auswählen",
-        "round_stops_hidden": "{1} :count Unit ist nicht sichtbar, weil Unit-Checks dort ausgeschaltet sind.|[2,*] :count Units sind nicht sichtbar, weil Unit-Checks dort ausgeschaltet sind."
+        "round_stops_hidden": "{1} :count Unit ist nicht sichtbar, weil Unit-Checks dort ausgeschaltet sind.|[2,*] :count Units sind nicht sichtbar, weil Unit-Checks dort ausgeschaltet sind.",
+        "round_stops_unavailable": "{1} Keine Units als Stops verfügbar. :count Unit ist nicht sichtbar, weil Unit-Checks dort ausgeschaltet sind.|[2,*] Keine Units als Stops verfügbar. :count Units sind nicht sichtbar, weil Unit-Checks dort ausgeschaltet sind."
     },
     "round_create": {
         "title": "Inspektionsrunde planen",

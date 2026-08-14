@@ -72,56 +72,58 @@
 
             <div class="wp-field">
                 <x-wp-tooltip :text="__('issues.round_create.stops_help')" wrap>
-                    <label class="wp-label" for="round_create_stop_unit_ids">{{ __('issues.round_create.stops') }}</label>
+                    <label class="wp-label" @if($createRoundStopUnitsGrouped->flatten(1)->isNotEmpty()) for="round_create_stop_unit_ids" @endif>{{ __('issues.round_create.stops') }}</label>
                 </x-wp-tooltip>
-                <div
-                    x-data="{
-                        toggleAll(event) {
-                            const checked = !!event.target.checked;
-                            this.$root.querySelectorAll('input[type=checkbox][data-round-stop]:not(:disabled)').forEach((box) => {
-                                if (box.checked !== checked) {
-                                    box.checked = checked;
-                                    box.dispatchEvent(new Event('change', { bubbles: true }));
-                                }
-                            });
-                        }
-                    }"
-                    class="wp-stack-tight"
-                >
-                    <label class="wp-check wp-text-sm">
-                        <input type="checkbox" @change="toggleAll($event)" @disabled($createRoundStopUnitsGrouped->flatten(1)->isEmpty())>
-                        {{ __('issues.create.round_stops_select_all') }}
-                    </label>
-                    <div id="round_create_stop_unit_ids" class="wp-round-stop-picker @if($createRoundStopUnitsGrouped->flatten(1)->isEmpty()) wp-round-stop-picker--disabled @endif">
-                        @foreach ($createRoundStopUnitsGrouped as $locationUnits)
-                            @php
-                                $groupLocation = $locationUnits->first()?->location;
-                                $groupLabel = $groupLocation?->name ?: ($groupLocation?->address ?? __('issues.create.location_none'));
-                            @endphp
-                            <div class="wp-round-stop-picker__group" role="group" aria-label="{{ $groupLabel }}">
-                                <p class="wp-round-stop-picker__group-label">{{ $groupLabel }}</p>
-                                @foreach ($locationUnits as $unit)
-                                    <label class="wp-round-stop-picker__row">
-                                        <input
-                                            type="checkbox"
-                                            value="{{ $unit->id }}"
-                                            wire:model="round_stop_unit_ids"
-                                            data-round-stop
-                                        >
-                                        <span>{{ $unit->localizedName() }}</span>
-                                    </label>
-                                @endforeach
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
                 @if ($createRoundStopUnitsGrouped->flatten(1)->isEmpty())
-                    @if ($createRoundStopUnitsHiddenCount > 0)
-                        <p class="wp-muted wp-text-sm">{{ trans_choice('issues.create.round_stops_hidden', $createRoundStopUnitsHiddenCount, ['count' => $createRoundStopUnitsHiddenCount]) }}</p>
-                    @else
-                        <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_empty') }}</p>
-                    @endif
+                    <p class="wp-muted wp-text-sm">
+                        @if ($createRoundStopUnitsHiddenCount > 0)
+                            {{ trans_choice('issues.create.round_stops_unavailable', $createRoundStopUnitsHiddenCount, ['count' => $createRoundStopUnitsHiddenCount]) }}
+                        @else
+                            {{ __('issues.create.round_stops_empty') }}
+                        @endif
+                    </p>
                 @else
+                    <div
+                        x-data="{
+                            toggleAll(event) {
+                                const checked = !!event.target.checked;
+                                this.$root.querySelectorAll('input[type=checkbox][data-round-stop]:not(:disabled)').forEach((box) => {
+                                    if (box.checked !== checked) {
+                                        box.checked = checked;
+                                        box.dispatchEvent(new Event('change', { bubbles: true }));
+                                    }
+                                });
+                            }
+                        }"
+                        class="wp-stack-tight"
+                    >
+                        <label class="wp-check wp-text-sm">
+                            <input type="checkbox" @change="toggleAll($event)">
+                            {{ __('issues.create.round_stops_select_all') }}
+                        </label>
+                        <div id="round_create_stop_unit_ids" class="wp-round-stop-picker">
+                            @foreach ($createRoundStopUnitsGrouped as $locationUnits)
+                                @php
+                                    $groupLocation = $locationUnits->first()?->location;
+                                    $groupLabel = $groupLocation?->name ?: ($groupLocation?->address ?? __('issues.create.location_none'));
+                                @endphp
+                                <div class="wp-round-stop-picker__group" role="group" aria-label="{{ $groupLabel }}">
+                                    <p class="wp-round-stop-picker__group-label">{{ $groupLabel }}</p>
+                                    @foreach ($locationUnits as $unit)
+                                        <label class="wp-round-stop-picker__row">
+                                            <input
+                                                type="checkbox"
+                                                value="{{ $unit->id }}"
+                                                wire:model="round_stop_unit_ids"
+                                                data-round-stop
+                                            >
+                                            <span>{{ $unit->localizedName() }}</span>
+                                        </label>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <p class="wp-muted wp-text-sm">{{ __('issues.create.round_stops_select_help') }}</p>
                     @if ($createRoundStopUnitsHiddenCount > 0)
                         <p class="wp-muted wp-text-sm">{{ trans_choice('issues.create.round_stops_hidden', $createRoundStopUnitsHiddenCount, ['count' => $createRoundStopUnitsHiddenCount]) }}</p>
