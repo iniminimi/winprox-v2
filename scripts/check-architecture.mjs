@@ -83,10 +83,10 @@ scanPatterns(viewFiles, [
     /\bisAdmin\s*\(/,
 ], 'Blade (beheer): geen isAdmin() — gebruik @can/authorize');
 
-// UTF-8 BOM breekt Livewire JS (vóór elke response) — zie WINPROX_RULES.md §2 / no-utf8-bom.mdc
+// UTF-8 BOM breekt Livewire JS / login (vóór elke response) — zie WINPROX_RULES.md §2 / no-utf8-bom.mdc
 const BOM = Buffer.from([0xef, 0xbb, 0xbf]);
-const bomScanRoots = ['app', 'bootstrap', 'config', 'routes', 'resources/views', 'public'];
-const bomExtensions = new Set(['.php', '.blade.php', '.js', '.css', '.json', '.md', '.mjs']);
+const bomScanRoots = ['app', 'bootstrap', 'config', 'routes', 'resources', 'lang', 'public', 'scripts'];
+const bomExtensions = new Set(['.php', '.blade.php', '.js', '.css', '.json', '.md', '.mjs', '.cjs']);
 const bomHits = [];
 
 function walkTextSources(dir, files = []) {
@@ -99,7 +99,7 @@ function walkTextSources(dir, files = []) {
     for (const entry of entries) {
         const path = join(dir, entry.name);
         if (entry.isDirectory()) {
-            if (entry.name === 'vendor' || entry.name === 'node_modules' || entry.name === 'build') {
+            if (entry.name === 'vendor' || entry.name === 'node_modules' || entry.name === 'build' || entry.name === 'capture-pkg') {
                 continue;
             }
             walkTextSources(path, files);
@@ -127,6 +127,19 @@ for (const root of bomScanRoots) {
         if (buf.length >= 3 && buf.subarray(0, 3).equals(BOM)) {
             bomHits.push(rel(file));
         }
+    }
+}
+
+// Root .env / .env.example (niet onder een scan-root) — BOM hier breekt ook login lokaal
+for (const envName of ['.env', '.env.example', '.env.testing']) {
+    const envPath = join(ROOT, envName);
+    try {
+        const buf = readFileSync(envPath);
+        if (buf.length >= 3 && buf.subarray(0, 3).equals(BOM)) {
+            bomHits.push(envName);
+        }
+    } catch {
+        // bestand bestaat niet
     }
 }
 

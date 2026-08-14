@@ -12,11 +12,12 @@ wachtwoord niet geblurd, inloggen dood. Productie leek vaak nog te werken → ur
 ## Verboden
 - Bestanden opslaan/schrijven als **UTF-8 with BOM**.
 - Editors/tools die standaard BOM toevoegen (sommige Windows-editors, verkeerde Python `encoding`).
+- **Ook `.env`** — een BOM daar breekt lokaal login/sessie zonder duidelijke foutmelding.
 
 ## Verplicht
 - Bronbestanden: **UTF-8 zonder BOM** (`php`, `blade.php`, `js`, `css`, `json`, `md`, `env*`).
 - Bij schrijven met Python: `encoding='utf-8'` (niet `utf-8-sig`).
-- Na verdachte encoding-wijziging: `npm run check:architecture` (bevat BOM-check).
+- Na verdachte encoding-wijziging: `npm run check:architecture` (bevat BOM-check, inclusief `.env`).
 
 ## Symptomen → eerst BOM checken
 - Wachtwoord zichtbaar i.p.v. dots; Livewire-submit doet niets.
