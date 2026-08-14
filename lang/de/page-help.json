@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Suche und Filter",
-                    "text": "Suchen Sie nach E-Mail-Adresse. Standardmäßig sehen Sie alle Abmeldungen. Aktivieren Sie <strong>Nur unzustellbar (Bounce)</strong> oder <strong>Nur manuell abgemeldet</strong> zum Filtern; die Anzahl steht in Klammern. Beide Häkchen zusammen zeigen diese zwei Gruppen."
+                    "text": "Suchen Sie nach E-Mail-Adresse. Standardmäßig sehen Sie alle Abmeldungen. Aktivieren Sie <strong>Nur selbst abgemeldet</strong>, <strong>Nur unzustellbar (Bounce)</strong> oder <strong>Nur manuell abgemeldet</strong> zum Filtern; die Anzahl steht in Klammern. Mehrere Häkchen zusammen zeigen diese Gruppen."
                 },
                 {
                     "label": "Quelle der Abmeldung",

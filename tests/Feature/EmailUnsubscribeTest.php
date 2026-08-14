@@ -289,6 +289,7 @@ it('filtert platform-uitschrijvingen op onbezorgbaar', function () {
         ->assertSee('zelf@example.com')
         ->assertSee('bounce@example.com')
         ->assertSee('handmatig@example.com')
+        ->assertSee(__('platform.email_unsubscribe.filter_voluntary', ['count' => 1]))
         ->assertSee(__('platform.email_unsubscribe.filter_undeliverable', ['count' => 1]))
         ->assertSee(__('platform.email_unsubscribe.filter_manual', ['count' => 1]))
         ->set('undeliverableOnly', true)
@@ -300,10 +301,15 @@ it('filtert platform-uitschrijvingen op onbezorgbaar', function () {
         ->assertDontSee('zelf@example.com')
         ->assertDontSee('bounce@example.com')
         ->assertSee('handmatig@example.com')
+        ->set('manualOnly', false)
+        ->set('voluntaryOnly', true)
+        ->assertSee('zelf@example.com')
+        ->assertDontSee('bounce@example.com')
+        ->assertDontSee('handmatig@example.com')
         ->set('undeliverableOnly', true)
-        ->assertDontSee('zelf@example.com')
+        ->assertSee('zelf@example.com')
         ->assertSee('bounce@example.com')
-        ->assertSee('handmatig@example.com');
+        ->assertDontSee('handmatig@example.com');
 });
 
 it('toont uitschrijvingen in superuser-menu in plaats van contactberichten', function () {

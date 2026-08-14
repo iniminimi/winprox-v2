@@ -97,6 +97,7 @@
         "source_voluntary": "Baja voluntaria",
         "source_undeliverable": "No entregable (bounce)",
         "source_manual": "Bloqueado manualmente",
+        "filter_voluntary": "Solo baja voluntaria (:count)",
         "filter_undeliverable": "Solo no entregable (bounce) (:count)",
         "filter_manual": "Solo dados de baja manualmente (:count)",
         "list_date_prefix": "el"

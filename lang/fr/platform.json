@@ -97,6 +97,7 @@
         "source_voluntary": "Désabonnement volontaire",
         "source_undeliverable": "Non remis (bounce)",
         "source_manual": "Bloqué manuellement",
+        "filter_voluntary": "Désabonnement volontaire uniquement (:count)",
         "filter_undeliverable": "Non remis uniquement (bounce) (:count)",
         "filter_manual": "Désinscrits manuellement uniquement (:count)",
         "list_date_prefix": "le"

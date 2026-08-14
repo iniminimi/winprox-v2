@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Zoeken en filter",
-                    "text": "Zoek op e-mailadres. Standaard ziet u alle uitschrijvingen. Zet <strong>Alleen onbezorgbaar (bounce)</strong> of <strong>Alleen manueel uitgeschreven</strong> aan om te filteren; het aantal staat tussen haakjes. Beide vinkjes samen tonen die twee groepen."
+                    "text": "Zoek op e-mailadres. Standaard ziet u alle uitschrijvingen. Zet <strong>Alleen zelf uitgeschreven</strong>, <strong>Alleen onbezorgbaar (bounce)</strong> of <strong>Alleen manueel uitgeschreven</strong> aan om te filteren; het aantal staat tussen haakjes. Meerdere vinkjes samen tonen die groepen."
                 },
                 {
                     "label": "Bron van de uitschrijving",

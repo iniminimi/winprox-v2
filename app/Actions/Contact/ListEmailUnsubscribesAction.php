@@ -16,6 +16,7 @@ class ListEmailUnsubscribesAction
      * @return array{
      *     rows: LengthAwarePaginator,
      *     matchedUsers: Collection<string, User>,
+     *     voluntaryCount: int,
      *     undeliverableCount: int,
      *     manualCount: int
      * }
@@ -24,12 +25,16 @@ class ListEmailUnsubscribesAction
         string $search = '',
         int $page = 1,
         int $perPage = 50,
+        bool $voluntaryOnly = false,
         bool $undeliverableOnly = false,
         bool $manualOnly = false,
     ): array {
         $search = trim($search);
 
         $sourceFilters = [];
+        if ($voluntaryOnly) {
+            $sourceFilters[] = EmailUnsubscribeSource::Voluntary;
+        }
         if ($undeliverableOnly) {
             $sourceFilters[] = EmailUnsubscribeSource::Undeliverable;
         }
@@ -51,6 +56,9 @@ class ListEmailUnsubscribesAction
         return [
             'rows' => $rows,
             'matchedUsers' => $this->matchedUsers($rows->getCollection()),
+            'voluntaryCount' => EmailUnsubscribe::query()
+                ->where('source', EmailUnsubscribeSource::Voluntary)
+                ->count(),
             'undeliverableCount' => EmailUnsubscribe::query()
                 ->where('source', EmailUnsubscribeSource::Undeliverable)
                 ->count(),

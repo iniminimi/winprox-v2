@@ -97,6 +97,7 @@
         "source_voluntary": "Zelf uitgeschreven",
         "source_undeliverable": "Onbezorgbaar (bounce)",
         "source_manual": "Handmatig geblokkeerd",
+        "filter_voluntary": "Alleen zelf uitgeschreven (:count)",
         "filter_undeliverable": "Alleen onbezorgbaar (bounce) (:count)",
         "filter_manual": "Alleen manueel uitgeschreven (:count)",
         "list_date_prefix": "datum"

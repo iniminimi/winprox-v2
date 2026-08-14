@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Recherche et filtre",
-                    "text": "Recherchez par adresse e-mail. Par défaut, vous voyez tous les désabonnements. Cochez <strong>Non remis uniquement (bounce)</strong> ou <strong>Désinscrits manuellement uniquement</strong> pour filtrer ; le total est entre parenthèses. Les deux cases ensemble affichent ces deux groupes."
+                    "text": "Recherchez par adresse e-mail. Par défaut, vous voyez tous les désabonnements. Cochez <strong>Désabonnement volontaire uniquement</strong>, <strong>Non remis uniquement (bounce)</strong> ou <strong>Désinscrits manuellement uniquement</strong> pour filtrer ; le total est entre parenthèses. Plusieurs cases ensemble affichent ces groupes."
                 },
                 {
                     "label": "Source du désabonnement",

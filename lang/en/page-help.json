@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Search and filter",
-                    "text": "Search by email address. By default you see all unsubscribes. Turn on <strong>Undeliverable only (bounce)</strong> or <strong>Manually unsubscribed only</strong> to filter; the count is in parentheses. Both checkboxes together show those two groups."
+                    "text": "Search by email address. By default you see all unsubscribes. Turn on <strong>Unsubscribed by recipient only</strong>, <strong>Undeliverable only (bounce)</strong> or <strong>Manually unsubscribed only</strong> to filter; the count is in parentheses. Multiple checkboxes together show those groups."
                 },
                 {
                     "label": "Unsubscribe source",

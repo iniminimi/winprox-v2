@@ -31,6 +31,14 @@
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row wp-row--wrap">
             <label class="wp-label" for="unsubscribe-search">{{ __('platform.email_unsubscribe.search') }}</label>
+            <label class="wp-check" for="unsubscribe-voluntary-only">
+                <input
+                    id="unsubscribe-voluntary-only"
+                    type="checkbox"
+                    wire:model.live="voluntaryOnly"
+                >
+                <span>{{ __('platform.email_unsubscribe.filter_voluntary', ['count' => $voluntaryCount]) }}</span>
+            </label>
             <label class="wp-check" for="unsubscribe-undeliverable-only">
                 <input
                     id="unsubscribe-undeliverable-only"
