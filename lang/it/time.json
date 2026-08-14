@@ -11,6 +11,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
+        "title": "Presenza",
         "subtitle": "Panoramica live per team — espandi un team per i lavoratori.",
         "present": "Presente",
         "present_subtitle": "Dipendenti attivi",
@@ -170,6 +171,7 @@
         "empty": "Nessun turno in questo periodo."
     },
     "clock_points": {
+        "title": "Clock Points",
         "subtitle": "Gestisci i punti di timbratura e stampa gli adesivi QR.",
         "list_title": "Clock Points",
         "add": "Aggiungi Clock Point",

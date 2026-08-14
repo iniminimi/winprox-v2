@@ -1,6 +1,6 @@
 <div class="wp-stack" data-manual-capture="time-clock-points">
     <x-wp-page-head-title
-        :title="__('time.title')"
+        :title="__('time.clock_points.title')"
         help-page="time.clock_points"
         :subtitle="__('time.clock_points.subtitle')"
     />
@@ -16,9 +16,10 @@
     @endif
 
     @can('create', \App\Models\ClockPoint::class)
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <p class="wp-section-title">{{ __('time.clock_points.qr.rotation_title') }}</p>
-            <p class="wp-muted wp-text-sm">{{ __('time.clock_points.qr.rotation_hint') }}</p>
+        <x-wp-disclosure-card
+            :title="__('time.clock_points.qr.rotation_title')"
+            :subtitle="__('time.clock_points.qr.rotation_hint')"
+        >
             <form wire:submit="saveQrRotationSettings" class="wp-cluster wp-cluster--wrap">
                 <div class="wp-field">
                     <label class="wp-label" for="qr-rotation-months">{{ __('time.clock_points.qr.rotation_months') }}</label>
@@ -27,7 +28,7 @@
                 </div>
                 <button type="submit" class="btn btn--surface btn--sm">{{ __('common.button.save') }}</button>
             </form>
-        </div>
+        </x-wp-disclosure-card>
     @endcan
 
     <div class="wp-card wp-card-pad wp-stack-tight">

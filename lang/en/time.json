@@ -11,6 +11,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
+        "title": "Presence",
         "subtitle": "Live overview by team — expand a team for workers.",
         "present": "Present",
         "present_subtitle": "Active employees",
@@ -170,6 +171,7 @@
         "empty": "No shifts in this period."
     },
     "clock_points": {
+        "title": "Clock Points",
         "subtitle": "Manage clock-in locations and print QR stickers.",
         "list_title": "Clock Points",
         "add": "Add Clock Point",

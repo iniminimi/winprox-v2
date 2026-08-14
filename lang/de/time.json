@@ -11,6 +11,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
+        "title": "Anwesenheit",
         "subtitle": "Live-Übersicht pro Team — Team aufklappen für Mitarbeitende.",
         "present": "Anwesend",
         "present_subtitle": "Aktive Mitarbeitende",
@@ -170,6 +171,7 @@
         "empty": "Keine Schichten in diesem Zeitraum."
     },
     "clock_points": {
+        "title": "Clock Points",
         "subtitle": "Einstempelorte verwalten und QR-Aufkleber drucken.",
         "list_title": "Clock Points",
         "add": "Clock Point hinzufügen",

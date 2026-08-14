@@ -5,7 +5,7 @@
 <div @class(['wp-stack', 'wp-time-presence-page', 'wp-time-presence-page--board' => $presenceView === \App\Enums\TimePresenceViewMode::Board]) wire:poll.visible.30s data-manual-capture="time-presence">
     <x-wp-page-head-title
         icon="clock"
-        :title="__('time.title')"
+        :title="__('time.presence.title')"
         help-page="time.presence"
         :subtitle="__('time.presence.subtitle')"
     />

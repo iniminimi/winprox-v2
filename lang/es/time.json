@@ -11,6 +11,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
+        "title": "Presencia",
         "subtitle": "Vista en vivo por equipo — expanda un equipo para ver trabajadores.",
         "present": "Presente",
         "present_subtitle": "Empleados activos",
@@ -170,6 +171,7 @@
         "empty": "No hay turnos en este período."
     },
     "clock_points": {
+        "title": "Clock Points",
         "subtitle": "Gestione ubicaciones de fichaje e imprima pegatinas QR.",
         "list_title": "Clock Points",
         "add": "Añadir Clock Point",

@@ -11,6 +11,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
+        "title": "Présence",
         "subtitle": "Vue en direct par équipe — développez une équipe pour les collaborateurs.",
         "present": "Présent",
         "present_subtitle": "Collaborateurs actifs",
@@ -170,6 +171,7 @@
         "empty": "Aucun shift sur cette période."
     },
     "clock_points": {
+        "title": "Clock Points",
         "subtitle": "Gérez les lieux de pointage et imprimez les stickers QR.",
         "list_title": "Clock Points",
         "add": "Ajouter un Clock Point",

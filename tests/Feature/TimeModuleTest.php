@@ -107,6 +107,26 @@ it('toont afwezige werknemers in board-weergave', function () {
         ->assertSee('Piet Afwezig', false);
 });
 
+it('toont Aanwezigheid als paginatitel in plaats van Time', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(PresenceIndex::class)
+        ->assertSeeHtml('>'.e(__('time.presence.title')).'</h1>')
+        ->assertDontSeeHtml('>'.e(__('time.title')).'</h1>');
+});
+
+it('toont Clock Points als paginatitel en QR-rotatie standaard ingeklapt', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(ClockPointsIndex::class)
+        ->assertSeeHtml('>'.e(__('time.clock_points.title')).'</h1>')
+        ->assertDontSeeHtml('>'.e(__('time.title')).'</h1>')
+        ->assertSee(__('time.clock_points.qr.rotation_title'))
+        ->assertSeeHtml('x-data="{ open: false }"');
+});
+
 it('toont afwezige werknemers in uitgeklapt team met status alle', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);

@@ -11,6 +11,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
+        "title": "Aanwezigheid",
         "subtitle": "Live overzicht per team — open een team voor medewerkers.",
         "present": "Aanwezig",
         "present_subtitle": "Actieve werknemers",
@@ -170,6 +171,7 @@
         "empty": "Geen shifts in deze periode."
     },
     "clock_points": {
+        "title": "Clock Points",
         "subtitle": "Beheer inkloklocaties en print QR-stickers.",
         "list_title": "Clock Points",
         "add": "Clock Point toevoegen",
