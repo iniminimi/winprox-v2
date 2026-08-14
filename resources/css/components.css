@@ -4338,6 +4338,15 @@ svg.wp-release-worker-row__icon,
     margin-top: 0.125rem;
 }
 
+.wp-time-qr-rotation__toggle {
+    width: auto;
+}
+
+.wp-time-qr-rotation .wp-input {
+    width: 4.5rem;
+    flex: 0 0 auto;
+}
+
 .wp-settings-section .wp-disclosure-panel {
     padding: 0;
     padding-top: var(--wp-space-2);

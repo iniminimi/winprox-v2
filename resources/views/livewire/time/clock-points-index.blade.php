@@ -16,19 +16,27 @@
     @endif
 
     @can('create', \App\Models\ClockPoint::class)
-        <x-wp-disclosure-card
-            :title="__('time.clock_points.qr.rotation_title')"
-            :subtitle="__('time.clock_points.qr.rotation_hint')"
-        >
+        <div class="wp-card wp-card-pad wp-time-qr-rotation" x-data="{ open: false }">
             <form wire:submit="saveQrRotationSettings" class="wp-cluster wp-cluster--wrap">
-                <div class="wp-field">
-                    <label class="wp-label" for="qr-rotation-months">{{ __('time.clock_points.qr.rotation_months') }}</label>
+                <button
+                    type="button"
+                    class="wp-settings-section-toggle wp-time-qr-rotation__toggle"
+                    @click="open = !open"
+                    :aria-expanded="open"
+                    aria-controls="qr-rotation-fields"
+                    title="{{ __('time.clock_points.qr.rotation_hint') }}"
+                >
+                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                    <span class="wp-section-title">{{ __('time.clock_points.qr.rotation_title') }}</span>
+                </button>
+                <div id="qr-rotation-fields" class="wp-filter-cell" x-show="open" x-cloak>
+                    <label class="wp-filter-inline-label" for="qr-rotation-months">{{ __('time.clock_points.qr.rotation_months') }}</label>
                     <input id="qr-rotation-months" type="number" min="0" max="120" class="wp-input" wire:model="qrRotationMonths">
+                    <button type="submit" class="btn btn--surface btn--sm">{{ __('common.button.save') }}</button>
                     @error('qrRotationMonths') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <button type="submit" class="btn btn--surface btn--sm">{{ __('common.button.save') }}</button>
             </form>
-        </x-wp-disclosure-card>
+        </div>
     @endcan
 
     <div class="wp-card wp-card-pad wp-stack-tight">
