@@ -1,4 +1,4 @@
-﻿<h2>1. Parties</h2>
+<h2>1. Parties</h2>
 
 <p>Le présent accord de sous-traitance est conclu entre :</p>
 

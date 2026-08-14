@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * Publieke productfiches (features, technisch, API & Webhooks).

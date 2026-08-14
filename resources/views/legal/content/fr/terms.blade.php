@@ -1,4 +1,4 @@
-﻿<h2>1. Généralités</h2>
+<h2>1. Généralités</h2>
 <p>
     Les présentes conditions d’utilisation régissent l’usage de la plateforme WinProx.
 </p>

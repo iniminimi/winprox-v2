@@ -1,4 +1,4 @@
-﻿<h2>1. Partijen</h2>
+<h2>1. Partijen</h2>
 
 <p>Deze verwerkersovereenkomst wordt gesloten tussen:</p>
 

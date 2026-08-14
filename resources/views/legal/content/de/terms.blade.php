@@ -1,4 +1,4 @@
-﻿<h2>1. Allgemeines</h2>
+<h2>1. Allgemeines</h2>
 <p>
     Diese Nutzungsbedingungen regeln die Nutzung der WinProx-Plattform.
 </p>

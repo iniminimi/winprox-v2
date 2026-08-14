@@ -1,4 +1,4 @@
-﻿<h2>1. Wer wir sind</h2>
+<h2>1. Wer wir sind</h2>
 <p>
     WinProx („Work in Proximity“) ist eine SaaS-Plattform für technisches und operatives Standortmanagement:
     QR-Meldungen, Nachverfolgung von Issues und Aufgaben für interne operative Teams sowie optionale

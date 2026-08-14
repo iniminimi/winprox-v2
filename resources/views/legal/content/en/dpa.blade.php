@@ -1,4 +1,4 @@
-﻿<h2>1. Parties</h2>
+<h2>1. Parties</h2>
 
 <p>This data processing agreement is entered into between:</p>
 

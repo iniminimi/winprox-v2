@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" translate="no" data-theme="{{ $uiTheme ?? 'simple' }}">
 <head>
     <meta charset="utf-8">

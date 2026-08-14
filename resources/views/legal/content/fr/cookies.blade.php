@@ -1,4 +1,4 @@
-﻿<h2>1. Que sont les cookies</h2>
+<h2>1. Que sont les cookies</h2>
 <p>
     Les cookies sont de petits fichiers texte enregistrés sur votre appareil lorsque vous visitez un site web.
 </p>

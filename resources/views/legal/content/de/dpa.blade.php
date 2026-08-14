@@ -1,4 +1,4 @@
-﻿<h2>1. Parteien</h2>
+<h2>1. Parteien</h2>
 
 <p>Diese Auftragsverarbeitungsvereinbarung wird geschlossen zwischen:</p>
 
