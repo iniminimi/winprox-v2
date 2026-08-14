@@ -113,3 +113,19 @@ it('laadt paginahulp voor Backoffice en Teams', function (): void {
         ->and(collect($teams['actions'])->pluck('label')->all())->toContain('Checklists')
         ->and(collect($teams['actions'])->pluck('label')->all())->not->toContain('Collega-gebruikers');
 });
+
+it('laadt paginahulp voor Categorieën en Locaties apart', function (): void {
+    app()->setLocale('nl');
+
+    $categories = PageHelp::for('locations.categories');
+    $locations = PageHelp::for('locations.list');
+
+    expect($categories)->not->toBeNull()
+        ->and($categories['title'])->toBe('Hulp — Categorieën')
+        ->and(collect($categories['actions'])->pluck('label')->all())->toContain('Categorieën')
+        ->and(collect($categories['actions'])->pluck('label')->all())->not->toContain('Locatie toevoegen')
+        ->and($locations)->not->toBeNull()
+        ->and($locations['title'])->toBe('Hulp — Locaties')
+        ->and(collect($locations['actions'])->pluck('label')->all())->toContain('Locatie toevoegen')
+        ->and(collect($locations['actions'])->pluck('label')->all())->not->toContain('Categorieën');
+});

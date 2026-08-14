@@ -162,7 +162,7 @@ it('laat medewerkers de health-pagina openen met fix-links', function () {
         ->assertSee(__('health.title'))
         ->assertSee('Sanitair')
         ->assertSee(__('health.fix'))
-        ->assertSee(route('locations.index', ['edit_category' => $category->id]), false);
+        ->assertSee(route('locations.index', ['section' => 'categories', 'edit_category' => $category->id]));
 });
 
 it('opent de categorie-edit modal via edit_category query parameter', function () {
@@ -174,11 +174,11 @@ it('opent de categorie-edit modal via edit_category query parameter', function (
     $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Elektra']);
 
     $this->actingAs($user)
-        ->get(route('locations.index', ['edit_category' => $category->id]))
+        ->get(route('locations.index', ['section' => 'categories', 'edit_category' => $category->id]))
         ->assertOk();
 
     Livewire::actingAs($user)
-        ->withQueryParams(['edit_category' => $category->id])
+        ->withQueryParams(['section' => 'categories', 'edit_category' => $category->id])
         ->test(LocationIndex::class)
         ->assertSet('showCategoriesModal', true)
         ->assertSet('editingCategoryId', $category->id)

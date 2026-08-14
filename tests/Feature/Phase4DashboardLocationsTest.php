@@ -293,7 +293,7 @@ it('manages categories from locations index', function () {
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
 
     $component = Livewire::actingAs($user)
-        ->test(LocationIndex::class)
+        ->test(LocationIndex::class, ['section' => 'categories'])
         ->call('openCategoriesModal')
         ->set('categoryName', 'Kranen')
         ->set('selectedCategoryTeamIds', [$team->id])

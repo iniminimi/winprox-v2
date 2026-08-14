@@ -1,6 +1,6 @@
 {
     "locations": {
-        "title": "Sites & unités",
+        "title": "Sites",
         "subtitle": "Vos sites et les unités (actifs/espaces) qu'ils contiennent.",
         "empty": "Il n'y a pas encore de sites.",
         "no_units": "Pas encore d'unités sur ce site.",

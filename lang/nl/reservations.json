@@ -77,12 +77,12 @@
         "title": "Reserveringen inschakelen",
         "lead": "Reserveren werkt voor vergaderzalen, voertuigen, sleutels, … via dezelfde unit-QR.",
         "steps": [
-            "Open Locaties/units en bewerk de categorie (bv. Vergaderzalen).",
+            "Open Plaatsen → Categorieën en bewerk de categorie (bv. Vergaderzalen).",
             "Zet Reserveerbaar aan voor die categorie — alle units daaronder worden reserveerbaar.",
             "Zet eventueel Reserveringen toestaan uit op units die je wilt uitsluiten.",
             "Deel of print de unit-QR — gasten zien dan de tegel Reserveren."
         ],
-        "cta_locations": "Naar locaties & units"
+        "cta_locations": "Naar Categorieën"
     },
     "form": {
         "staff_hint": "Reserveringen die je hier aanmaakt zijn meteen bevestigd (geen e-mailhold van 30 minuten)."

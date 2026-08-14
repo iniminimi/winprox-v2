@@ -180,7 +180,8 @@
                                 || request()->routeIs('calendar.*')
                                 || request()->routeIs('reservations.*');
 
-                            $categoriesActive = request()->routeIs('locations.index') && request()->query('section') === 'categories';
+                            $categoriesActive = request()->routeIs('locations.index')
+                                && (request()->query('section') === 'categories' || request()->filled('edit_category'));
                             $locationsActive = request()->routeIs('locations.index') && ! $categoriesActive;
                             $unitsActive = request()->routeIs('units.index');
                             $placesGroupActive = request()->routeIs('locations.*') || $unitsActive;

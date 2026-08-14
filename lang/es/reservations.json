@@ -77,12 +77,12 @@
         "title": "Activar reservas",
         "lead": "Las reservas sirven para salas, vehículos, llaves, … con el mismo QR de unidad.",
         "steps": [
-            "Abra Ubicaciones/unidades y edite la categoría (p. ej. Salas).",
+            "Abra Ubicaciones → Categorías y edite la categoría (p. ej. Salas de reuniones).",
             "Active Reservable en esa categoría — todas las unidades pasan a ser reservables.",
             "Opcionalmente desactive Permitir reservas en unidades a excluir.",
             "Comparta o imprima el QR de unidad — los invitados verán Reservar."
         ],
-        "cta_locations": "Ir a ubicaciones y unidades"
+        "cta_locations": "Ir a Categorías"
     },
     "form": {
         "staff_hint": "Las reservas que cree aquí se confirman de inmediato (sin retención de 30 minutos por correo)."

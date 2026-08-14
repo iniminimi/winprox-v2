@@ -1,6 +1,6 @@
 {
     "locations": {
-        "title": "Ubicaciones y unidades",
+        "title": "Ubicaciones",
         "subtitle": "Sus ubicaciones y las unidades (activos/espacios) que contienen.",
         "empty": "Aún no hay ubicaciones.",
         "no_units": "Aún no hay unidades en esta ubicación.",

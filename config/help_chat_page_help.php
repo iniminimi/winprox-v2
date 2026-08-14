@@ -64,7 +64,11 @@ return [
             'page' => 'dashboard',
         ],
         [
-            'patterns' => ['categorie', 'category', 'unit aanmak', 'bulk', 'csv', 'import unit'],
+            'patterns' => ['categorie', 'category', 'kategorie', 'categoría', 'catégorie'],
+            'page' => 'locations.categories',
+        ],
+        [
+            'patterns' => ['unit aanmak', 'bulk', 'csv', 'import unit'],
             'page' => 'locations.list',
         ],
         [

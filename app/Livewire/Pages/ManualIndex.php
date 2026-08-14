@@ -22,6 +22,7 @@ class ManualIndex extends Component
     private const ADMIN_CHAPTER_KEYS = [
         'team.backoffice',
         'team.teams',
+        'locations.categories',
         'locations.list',
         'locations.show',
         'issues.list',

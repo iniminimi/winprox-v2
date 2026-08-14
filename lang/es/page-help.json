@@ -225,7 +225,12 @@
                 {
                     "label": "Traducciones de ubicación",
                     "text": "En el formulario de edición de ubicación puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
-                },
+                }
+            ]
+        },
+        "locations.categories": {
+            "title": "Ayuda — Categorías",
+            "actions": [
                 {
                     "label": "Categorías",
                     "text": "Gestione categorías para agrupar unidades (p. ej. taladros, fontanería, equipos de fitness, oficina, electricidad). Las categorías ayudan a filtrar y organizar unidades. Al vincular equipos ejecutores a categorías específicas, WinProx garantiza que las tareas las ejecute el equipo correcto. Categoría ubicación GPS: cuando «Permitir ubicación GPS» está marcado, la ubicación GPS de una unidad puede enviarse mediante el portal. Esto permite a usuarios de unidades móviles (p. ej. grúa, máquina grande) comunicar rápidamente su posición a la administración."

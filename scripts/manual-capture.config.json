@@ -15,8 +15,15 @@
             "auth": true
         },
         {
+            "id": "locations-categories",
+            "path": "/locations?section=categories",
+            "selector": "[data-manual-capture=\"locations-categories\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
             "id": "locations-list",
-            "path": "/locations",
+            "path": "/locations?section=locations",
             "selector": "[data-manual-capture=\"locations-list\"]",
             "viewport": { "width": 1280, "height": 800 },
             "auth": true

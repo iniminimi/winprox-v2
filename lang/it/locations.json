@@ -1,6 +1,6 @@
 {
-    "title": "Sedi e unità",
-    "subtitle": "Gestisca le Sue sedi e unità (macchine, installazioni, zone).",
+    "title": "Sedi",
+    "subtitle": "Gestisca le Sue sedi. Clicchi su una sede per gestirne le unità.",
     "show_subtitle": "Panoramica della sede e delle unità.",
     "default_name": "Sede",
     "add": "+ Aggiungi nuova sede",
@@ -49,7 +49,8 @@
     "show_inactive": "Mostra anche sedi inattive",
     "onboarding": {
         "title_categories": "Inizi creando le categorie",
-        "title_locations": "Inizi creando sedi e unità"
+        "title_locations": "Inizi creando sedi e unità",
+        "go_to_categories": "Vai a Categorie"
     },
     "unit_count": ":count unità",
     "units_total": ":count totale",
@@ -223,9 +224,9 @@
     },
     "categories": {
         "title": "Categorie",
+        "subtitle": "Raggruppi le unit (macchine, stanze, zone) e colleghi i team.",
         "edit_title": "Modifica categoria",
         "add_title": "Aggiungi categoria",
-        "click_to_manage": "Clicchi qui per gestire le categorie",
         "add": "Aggiungi categoria",
         "empty": "Nessuna categoria ancora.",
         "confirm_delete": "Eliminare questa categoria? Le unità collegate perderanno la categoria.",

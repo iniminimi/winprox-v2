@@ -1,6 +1,6 @@
 {
     "locations": {
-        "title": "Locations & units",
+        "title": "Locations",
         "subtitle": "Your locations and the units (assets/spaces) within them.",
         "empty": "There are no locations yet.",
         "no_units": "No units at this location yet.",

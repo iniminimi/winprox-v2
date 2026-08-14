@@ -77,12 +77,12 @@
         "title": "Abilita le prenotazioni",
         "lead": "Le prenotazioni servono per sale, veicoli, chiavi, … tramite lo stesso QR unità.",
         "steps": [
-            "Apri Sedi/unità e modifica la categoria (es. Sale riunioni).",
+            "Apri Sedi → Categorie e modifica la categoria (es. Sale riunioni).",
             "Attiva Prenotabile per quella categoria — tutte le unità diventano prenotabili.",
             "Opzionalmente disattiva Consenti prenotazioni sulle unità da escludere.",
             "Condividi o stampa il QR unità — gli ospiti vedranno Prenota."
         ],
-        "cta_locations": "Vai a sedi e unità"
+        "cta_locations": "Vai a Categorie"
     },
     "form": {
         "staff_hint": "Le prenotazioni create qui sono confermate subito (nessun hold e-mail di 30 minuti)."

@@ -385,6 +385,7 @@ final class SearchTenantGlobalAction
         $pages = [
             ['id' => 'dashboard', 'route' => 'dashboard', 'label' => 'common.nav.dashboard'],
             ['id' => 'locations', 'route' => 'locations.index', 'label' => 'common.nav.locations'],
+            ['id' => 'categories', 'route' => 'locations.index', 'params' => ['section' => 'categories'], 'label' => 'locations.categories.title'],
             ['id' => 'issues', 'route' => 'issues.index', 'label' => 'common.nav.issues'],
             ['id' => 'tasks', 'route' => 'tasks.index', 'label' => 'common.nav.tasks'],
             ['id' => 'calendar', 'route' => 'calendar.index', 'label' => 'common.nav.calendar'],

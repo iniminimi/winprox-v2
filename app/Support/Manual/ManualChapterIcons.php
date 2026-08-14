@@ -10,6 +10,7 @@ final class ManualChapterIcons
     private const ICONS = [
         'team.backoffice' => 'team',
         'team.teams' => 'team',
+        'locations.categories' => 'locations',
         'locations.list' => 'locations',
         'locations.show' => 'locations',
         'issues.list' => 'issues',

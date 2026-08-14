@@ -1,6 +1,6 @@
 {
-    "title": "Locations & units",
-    "subtitle": "Manage your locations and units (machines, installations, zones).",
+    "title": "Locations",
+    "subtitle": "Manage your locations. Click a location to manage its units.",
     "show_subtitle": "Overview of location and units.",
     "default_name": "Location",
     "add": "+ Add new location",
@@ -49,7 +49,8 @@
     "show_inactive": "Show inactive locations too",
     "onboarding": {
         "title_categories": "Start by creating categories",
-        "title_locations": "Start by creating locations and units"
+        "title_locations": "Start by creating locations and units",
+        "go_to_categories": "Go to Categories"
     },
     "unit_count": ":count units",
     "units_total": ":count total",
@@ -223,9 +224,9 @@
     },
     "categories": {
         "title": "Categories",
+        "subtitle": "Group units (machines, rooms, zones) and link teams.",
         "edit_title": "Edit category",
         "add_title": "Add category",
-        "click_to_manage": "Click here to manage categories",
         "add": "Add category",
         "empty": "No categories yet.",
         "confirm_delete": "Delete this category? Linked units will lose their category.",

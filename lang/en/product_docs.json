@@ -82,7 +82,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Locations, units, categories, teams and workers (internal or external). Tenant-wide Units overview under Places; categories and locations under Places too. Bulk/CSV import, dashboard, documents and announcements on the portal. Enable unit checks per category and unit; manage checklists under People → Teams — shared or per team."
+                "body": "Locations, units, categories, teams and workers (internal or external). Under Places: Categories, Locations and Units (tenant-wide). Bulk/CSV import, dashboard, documents and announcements on the portal. Enable unit checks per category and unit; manage checklists under People → Teams — shared or per team."
             },
             {
                 "title": "Tasks",

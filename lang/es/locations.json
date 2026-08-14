@@ -1,6 +1,6 @@
 {
-    "title": "Ubicaciones y unidades",
-    "subtitle": "Gestione sus ubicaciones y unidades (máquinas, instalaciones, zonas).",
+    "title": "Ubicaciones",
+    "subtitle": "Gestione sus ubicaciones. Haga clic en una ubicación para gestionar sus unidades.",
     "show_subtitle": "Resumen de la ubicación y sus unidades.",
     "default_name": "Ubicación",
     "add": "+ Añadir nueva ubicación",
@@ -49,7 +49,8 @@
     "show_inactive": "Mostrar también ubicaciones inactivas",
     "onboarding": {
         "title_categories": "Empiece creando categorías",
-        "title_locations": "Empiece creando ubicaciones y unidades"
+        "title_locations": "Empiece creando ubicaciones y unidades",
+        "go_to_categories": "Ir a Categorías"
     },
     "unit_count": ":count unidades",
     "units_total": ":count en total",
@@ -223,9 +224,9 @@
     },
     "categories": {
         "title": "Categorías",
+        "subtitle": "Agrupe units (máquinas, salas, zonas) y vincule equipos.",
         "edit_title": "Editar categoría",
         "add_title": "Añadir categoría",
-        "click_to_manage": "Haga clic aquí para gestionar categorías",
         "add": "Añadir categoría",
         "empty": "Aún no hay categorías.",
         "confirm_delete": "¿Eliminar esta categoría? Las unidades vinculadas perderán su categoría.",

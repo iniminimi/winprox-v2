@@ -225,7 +225,12 @@
                 {
                     "label": "Traductions de lieu",
                     "text": "Dans le formulaire d’édition du lieu, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
-                },
+                }
+            ]
+        },
+        "locations.categories": {
+            "title": "Aide — Catégories",
+            "actions": [
                 {
                     "label": "Catégories",
                     "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. En liant des équipes d'exécutants à des catégories spécifiques, WinProx garantit que les tâches peuvent être effectuées par l'équipe correcte. Catégorie localisation GPS : lorsque « Autoriser la localisation GPS » est coché, la localisation GPS d'une unité peut être transmise via le portail. Cela permet aux utilisateurs d'unités mobiles (ex. grue, grande machine) de communiquer rapidement leur position à l'administration."

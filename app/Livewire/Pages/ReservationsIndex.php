@@ -218,7 +218,7 @@ class ReservationsIndex extends Component
             'reservableUnitCount' => $reservableUnitCount,
             'locations' => Location::query()->orderBy('name')->get(),
             'calendarReservationsUrl' => route('calendar.index', ['type' => 'reservations']),
-            'locationsUrl' => route('locations.index'),
+            'locationsUrl' => route('locations.index', ['section' => 'categories']),
         ]);
     }
 

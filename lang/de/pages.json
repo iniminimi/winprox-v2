@@ -1,6 +1,6 @@
 {
     "locations": {
-        "title": "Standorte & Einheiten",
+        "title": "Standorte",
         "subtitle": "Ihre Standorte und die darin enthaltenen Einheiten (Assets/Räume).",
         "empty": "Es gibt noch keine Standorte.",
         "no_units": "Noch keine Einheiten an diesem Standort.",

@@ -225,7 +225,12 @@
                 {
                     "label": "Location translations",
                     "text": "In the location edit form you can manually update the name per language (NL, EN, FR, DE). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
-                },
+                }
+            ]
+        },
+        "locations.categories": {
+            "title": "Help — Categories",
+            "actions": [
                 {
                     "label": "Categories",
                     "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. By linking executor teams to specific categories, WinProx ensures that tasks can be carried out by the correct team. GPS location category: when \"Allow GPS location\" is checked, the GPS location of a unit can be submitted via the portal. This lets users of mobile units (e.g. crane, large machine) quickly communicate their location to administration."

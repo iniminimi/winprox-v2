@@ -74,7 +74,7 @@ it('toont op locaties de beheerpagina zodra er een team is zodat categorieën aa
     Livewire::actingAs($admin)
         ->test(LocationsIndex::class)
         ->assertSee(__('locations.add'))
-        ->assertSee(__('locations.categories.title'))
+        ->assertDontSee(__('locations.categories.add'))
         ->assertDontSee(__('dashboard.onboarding.categories.button'));
 });
 

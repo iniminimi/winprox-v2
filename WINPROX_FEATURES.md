@@ -46,7 +46,7 @@ Middleware: geldige tenant + trial/abonnement (`support.tenant`). Rollen: **admi
 - Recente meldingen; proefperiode-capsule.
 - Link naar briefing afdrukken; WinProx-assistent (help-chat).
 
-### Locaties & units
+### Plaatsen (Categorieën, Locaties, Units)
 - Locaties CRUD, zoeken, (de)activeren; adresvelden + landcode.
 - **Categorieën** koppelen units aan **teams** (QR-routing).
 - Units per locatie: CRUD, bulk-aanmaak met patroon, batch verwijderen (veiligheidsregels).

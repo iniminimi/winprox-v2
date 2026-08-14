@@ -224,7 +224,7 @@ final class AdminHealthService
                 id: (int) $category->id,
                 title: $category->localizedName(),
                 subtitle: __('health.issue.category_team_hint'),
-                fixUrl: route('locations.index', ['edit_category' => $category->id]),
+                fixUrl: route('locations.index', ['section' => 'categories', 'edit_category' => $category->id]),
             );
         }
 

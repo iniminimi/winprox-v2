@@ -225,7 +225,12 @@
                 {
                     "label": "Standort-Übersetzungen",
                     "text": "Im Standort-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
-                },
+                }
+            ]
+        },
+        "locations.categories": {
+            "title": "Hilfe — Kategorien",
+            "actions": [
                 {
                     "label": "Kategorien",
                     "text": "Verwalten Sie Kategorien, um Units zu gruppieren (z.B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien helfen beim Filtern und Organisieren von Units. Durch die Verknüpfung von Ausführerteams mit bestimmten Kategorien stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden können. GPS-Standort-Kategorie: wenn „GPS-Standort erlauben“ aktiviert ist, kann der GPS-Standort einer Unit über das Portal übermittelt werden. So können Nutzer mobiler Units (z.B. Kran, große Maschine) ihren Standort schnell an die Verwaltung melden."

@@ -82,7 +82,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Lieux, units, catégories, équipes et exécutants (internes ou externes). Aperçu Units à l’échelle du tenant sous Lieux ; catégories et lieux aussi sous Lieux. Import bulk/CSV, tableau de bord, documents et annonces sur le portail. Activez les contrôles d’unité par catégorie et unit ; gérez les checklists sous Personnes → Équipes — partagées ou par équipe."
+                "body": "Sites, unités, catégories, équipes et exécutants (internes ou externes). Sous Emplacements : Catégories, Sites et Unités (à l’échelle du tenant). Import bulk/CSV, tableau de bord, documents et annonces sur le portail. Activer les contrôles d’unité par catégorie et unité ; listes sous Personnes → Équipes — partagées ou par équipe."
             },
             {
                 "title": "Tasks",

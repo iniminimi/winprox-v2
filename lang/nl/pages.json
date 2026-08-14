@@ -1,6 +1,6 @@
 {
     "locations": {
-        "title": "Locaties & units",
+        "title": "Locaties",
         "subtitle": "Je locaties en de units (assets/ruimtes) daarbinnen.",
         "empty": "Er zijn nog geen locaties.",
         "no_units": "Nog geen units op deze locatie.",

@@ -19,8 +19,7 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
 Menu-volgorde (sidebar, accordion): Dashboard · **Werk** (Meldingen, Inspectierondes,
-Taken, Kalender, Reserveringen, Unit checks) · **Plaatsen** (Categorieën deep link,
-Locaties, Units tenant-breed) · **Mensen** (Backoffice = Beheerder/Medewerker;
+Taken, Kalender, Reserveringen, Unit checks) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Mensen** (Backoffice = Beheerder/Medewerker;
 Teams = Uitvoerder/Teamleader) · **Time** (module) · **Automatisering** (IoT Connect
 vanaf 250+ units / Corporate — groep alleen als minstens één module aan staat) ·
 **Organisatie** (Instellingen, API, Abonnement) · **Hulp** (FAQ, Handleiding, Juridisch,
@@ -78,14 +77,19 @@ proefperiode-**battery-png** (capsule wordt platte tekst), `SectorCapabilities`/
 
 ---
 
-## 2. Locaties/units
+## 2. Plaatsen (Categorieën, Locaties, Units)
 
-**Doel:** beheer van **locaties** en de **units** daaronder (machines, installaties, zones).
-Twee niveaus: **locatie-lijst** → klik op een locatie → **locatie-/unit-detailscherm**.
+**Doel:** beheer van **categorieën**, **locaties** en de **units** daaronder (machines, installaties, zones).
+Drie submenu’s onder Plaatsen: **Categorieën** (alleen categorieën) · **Locaties** (alleen locaties) · **Units** (tenant-breed).
+Locatie-lijst → klik op een locatie → **locatie-/unit-detailscherm**.
+
+### 2.0 Categorieën
+- Header: titel "Categorieën" + **"Categorie toevoegen"**.
+- Lijst van categorieën (naam, bewerken, verwijderen). Geen locaties op dit scherm.
+- Modal: naam, teams, GPS, reserveerbaar, unit checks, contactgegevens verplicht.
 
 ### 2.1 Locatie-lijst
-- Header: titel "Locaties/units" + subtitel "Beheer je locaties en units (machines,
-  installaties, zones)".
+- Header: titel "Locaties" + subtitel "Beheer je locaties. Klik op een locatie om units te beheren."
 - Knop **"+ Nieuwe locatie toevoegen"** → modal (§2.2).
 - **Zoek-kaart**: zoekveld "Zoek op locatie, plaats, postcode of straat" (zoekt op naam,
   plaats, postcode én straat). Hint "Klik op een locatie om te beheren". Checkbox
@@ -367,7 +371,7 @@ de meldingenlijst te vervuilen. Los van ESG.
 
 ### Portaal (geverifieerde worker)
 - Alleen zichtbaar als **categorie én unit** Unit checks toestaan (beide standaard uit;
-  Locaties → categorieën / unit bewerken).
+      Plaatsen → Categorieën / unit bewerken).
 - Tegel **Unit check** even breed als **Melding maken** (primaire tegel).
 - Keuze **OK** of **Niet OK**; optioneel GPS als locatiebewijs.
 - **OK** → rij in `unit_checks`, terug naar home.
@@ -378,7 +382,7 @@ de meldingenlijst te vervuilen. Los van ESG.
 ### Beheer (`/unit-checks`)
 - Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link.
 - Filters: resultaat, locatie. Admin + medewerker via Policy.
-- **Aan/uit:** Locaties → Categorieën (`allow_unit_checks`) én unit bewerken (`allow_unit_checks`);
+- **Aan/uit:** Plaatsen → Categorieën (`allow_unit_checks`) én unit bewerken (`allow_unit_checks`);
   beide nodig, beide default uit.
 
 ### Checklists (Teams)

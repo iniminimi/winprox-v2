@@ -82,7 +82,7 @@
             {
                 "title": "Facility",
                 "badge": "kern",
-                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Tenant-breed Units-overzicht onder Plaatsen; categorieën en locaties ook onder Plaatsen. Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Unit checks aanzetten per categorie én unit; checklists beheren onder Mensen → Teams — gedeeld of per team."
+                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Onder Plaatsen: Categorieën, Locaties en Units (tenant-breed). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Unit checks aanzetten per categorie én unit; checklists beheren onder Mensen → Teams — gedeeld of per team."
             },
             {
                 "title": "Taken",

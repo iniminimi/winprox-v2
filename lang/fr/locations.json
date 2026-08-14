@@ -1,6 +1,6 @@
 {
-    "title": "Sites & unités",
-    "subtitle": "Gérez vos sites et unités (machines, installations, zones).",
+    "title": "Sites",
+    "subtitle": "Gérez vos sites. Cliquez sur un site pour gérer ses unités.",
     "show_subtitle": "Aperçu du site et des unités.",
     "default_name": "Site",
     "add": "+ Ajouter un site",
@@ -49,7 +49,8 @@
     "show_inactive": "Afficher aussi les sites inactifs",
     "onboarding": {
         "title_categories": "Commencez par créer des catégories",
-        "title_locations": "Commencez par créer des sites et unités"
+        "title_locations": "Commencez par créer des sites et unités",
+        "go_to_categories": "Vers Catégories"
     },
     "unit_count": ":count unités",
     "units_total": ":count au total",
@@ -223,9 +224,9 @@
     },
     "categories": {
         "title": "Catégories",
+        "subtitle": "Regroupez les unités (machines, salles, zones) et liez les équipes.",
         "edit_title": "Modifier la catégorie",
         "add_title": "Ajouter une catégorie",
-        "click_to_manage": "Cliquez ici pour gérer les catégories",
         "add": "Ajouter une catégorie",
         "empty": "Aucune catégorie pour le moment.",
         "confirm_delete": "Supprimer cette catégorie ? Les unités liées perdront leur catégorie.",

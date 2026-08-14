@@ -1,6 +1,6 @@
 {
-    "title": "Locaties & units",
-    "subtitle": "Beheer je locaties en units (machines, installaties, zones).",
+    "title": "Locaties",
+    "subtitle": "Beheer je locaties. Klik op een locatie om units te beheren.",
     "show_subtitle": "Overzicht van locatie en units.",
     "default_name": "Locatie",
     "add": "+ Nieuwe locatie toevoegen",
@@ -49,7 +49,8 @@
     "show_inactive": "Toon ook inactieve locaties",
     "onboarding": {
         "title_categories": "Begin met het aanmaken van categorieën",
-        "title_locations": "Begin met het aanmaken van locaties en units"
+        "title_locations": "Begin met het aanmaken van locaties en units",
+        "go_to_categories": "Naar Categorieën"
     },
     "unit_count": ":count units",
     "units_total": ":count totaal",
@@ -223,9 +224,9 @@
     },
     "categories": {
         "title": "Categorieën",
+        "subtitle": "Groepeer units (machines, ruimtes, zones) en koppel teams.",
         "edit_title": "Categorie bewerken",
         "add_title": "Categorie toevoegen",
-        "click_to_manage": "Klik hier om categorieën te beheren",
         "add": "Categorie toevoegen",
         "empty": "Nog geen categorieën.",
         "confirm_delete": "Deze categorie verwijderen? Gekoppelde units verliezen hun categorie.",

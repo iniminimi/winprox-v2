@@ -61,8 +61,6 @@ class Index extends Component
 
     public bool $showCategoriesModal = false;
 
-    public bool $showCategoriesSection = false;
-
     #[Url(as: 'section')]
     public ?string $section = null;
 
@@ -91,13 +89,18 @@ class Index extends Component
 
         $categoryId = (int) request()->query('edit_category', 0);
         if ($categoryId > 0) {
-            $this->showCategoriesSection = true;
+            $this->section = 'categories';
             $this->openEditCategory($categoryId);
         }
 
-        if ($categoryId === 0 && $this->section === 'categories') {
-            $this->showCategoriesSection = true;
+        if (! in_array($this->section, ['categories', 'locations'], true)) {
+            $this->section = 'locations';
         }
+    }
+
+    public function isCategoriesSection(): bool
+    {
+        return $this->section === 'categories';
     }
 
     public function updatedSearch(): void
@@ -539,37 +542,46 @@ class Index extends Component
 
     public function render()
     {
+        $isCategories = $this->isCategoriesSection();
         $term = trim($this->search);
 
-        $locations = Location::query()
-            ->withCount('units')
-            ->when(! $this->showInactive, fn ($q) => $q->where('is_active', true))
-            ->when($term !== '', function ($q) use ($term) {
-                $like = '%'.$term.'%';
-                $q->where(function ($query) use ($like) {
-                    $query->where('name', 'like', $like)
-                        ->orWhere('street', 'like', $like)
-                        ->orWhere('house_number', 'like', $like)
-                        ->orWhere('postal_code', 'like', $like)
-                        ->orWhere('city', 'like', $like)
-                        ->orWhere('address', 'like', $like);
-                });
-            })
-            ->orderBy('name')
-            ->get();
+        $locations = $isCategories
+            ? collect()
+            : Location::query()
+                ->withCount('units')
+                ->when(! $this->showInactive, fn ($q) => $q->where('is_active', true))
+                ->when($term !== '', function ($q) use ($term) {
+                    $like = '%'.$term.'%';
+                    $q->where(function ($query) use ($like) {
+                        $query->where('name', 'like', $like)
+                            ->orWhere('street', 'like', $like)
+                            ->orWhere('house_number', 'like', $like)
+                            ->orWhere('postal_code', 'like', $like)
+                            ->orWhere('city', 'like', $like)
+                            ->orWhere('address', 'like', $like);
+                    });
+                })
+                ->orderBy('name')
+                ->get();
 
-        $hasInactiveLocations = Location::query()->where('is_active', false)->exists();
+        $hasInactiveLocations = $isCategories
+            ? false
+            : Location::query()->where('is_active', false)->exists();
 
-        $hasAnyLocation = Location::query()->exists();
+        $hasAnyLocation = $isCategories
+            ? true
+            : Location::query()->exists();
 
         $categoriesEnabled = Schema::hasTable('categories');
 
-        $teams = InternalTeam::query()
-            ->where('is_active', true)
-            ->with('translations')
-            ->orderBy('sort_order')
-            ->orderBy('name')
-            ->get(['id', 'name', 'original_language']);
+        $teams = $isCategories
+            ? InternalTeam::query()
+                ->where('is_active', true)
+                ->with('translations')
+                ->orderBy('sort_order')
+                ->orderBy('name')
+                ->get(['id', 'name', 'original_language'])
+            : collect();
 
         $categories = $categoriesEnabled
             ? Category::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language'])

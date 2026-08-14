@@ -46,7 +46,6 @@ it('toont instellingen maar geen abonnement in de sidebar voor medewerkers', fun
         ->assertOk()
         ->assertSee(__('common.nav.settings'), false)
         ->assertDontSee('href="'.route('subscription.index').'"', false)
-        ->assertDontSee(__('common.nav.backoffice'), false)
         ->assertSee(__('team.nav.teams'), false)
         ->assertDontSee('href="'.route('team.index', ['section' => 'backoffice']).'"', false)
         ->assertSee('href="'.route('team.index', ['section' => 'teams']).'"', false);
@@ -80,6 +79,33 @@ it('opent Backoffice met alleen collega-gebruikers en Teams met checklists plus 
         ->assertSee(\App\Support\PageHelp::for('team.teams')['title'], false)
         ->assertDontSee('id="backoffice"', false)
         ->assertDontSee(__('team.colleagues.title'), false);
+});
+
+it('opent Categorieën zonder locaties en Locaties zonder categorieën', function () {
+    $tenant = Tenant::factory()->create(['name' => 'Demo Facility']);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+    \App\Models\InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    \App\Models\Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Sanitair']);
+    \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Hal A']);
+
+    $this->actingAs($admin)
+        ->get(route('locations.index', ['section' => 'categories']))
+        ->assertOk()
+        ->assertSee(__('locations.categories.title'), false)
+        ->assertSee('Sanitair')
+        ->assertSee(\App\Support\PageHelp::for('locations.categories')['title'], false)
+        ->assertDontSee('Hal A')
+        ->assertDontSee(__('locations.add'), false);
+
+    $this->actingAs($admin)
+        ->get(route('locations.index', ['section' => 'locations']))
+        ->assertOk()
+        ->assertSee(__('locations.title'), false)
+        ->assertSee('Hal A')
+        ->assertSee(\App\Support\PageHelp::for('locations.list')['title'], false)
+        ->assertDontSee('Sanitair')
+        ->assertDontSee(__('locations.categories.add'), false);
 });
 
 it('toont submenu-items als bullets zonder herhaalde groep-iconen', function () {

@@ -1,6 +1,6 @@
 {
-    "title": "Standorte & Units",
-    "subtitle": "Verwalten Sie Standorte und Units (Maschinen, Anlagen, Zonen).",
+    "title": "Standorte",
+    "subtitle": "Verwalten Sie Ihre Standorte. Klicken Sie auf einen Standort, um Units zu verwalten.",
     "show_subtitle": "Übersicht über Standort und Units.",
     "default_name": "Standort",
     "add": "+ Neuen Standort hinzufügen",
@@ -49,7 +49,8 @@
     "show_inactive": "Auch inaktive Standorte anzeigen",
     "onboarding": {
         "title_categories": "Beginnen Sie mit der Erstellung von Kategorien",
-        "title_locations": "Beginnen Sie mit der Erstellung von Standorten und Units"
+        "title_locations": "Beginnen Sie mit der Erstellung von Standorten und Units",
+        "go_to_categories": "Zu Kategorien"
     },
     "unit_count": ":count Units",
     "units_total": ":count gesamt",
@@ -223,9 +224,9 @@
     },
     "categories": {
         "title": "Kategorien",
+        "subtitle": "Gruppieren Sie Units (Maschinen, Räume, Zonen) und verknüpfen Sie Teams.",
         "edit_title": "Kategorie bearbeiten",
         "add_title": "Kategorie hinzufügen",
-        "click_to_manage": "Klicken Sie hier, um Kategorien zu verwalten",
         "add": "Kategorie hinzufügen",
         "empty": "Noch keine Kategorien.",
         "confirm_delete": "Diese Kategorie löschen? Verknüpfte Units verlieren ihre Kategorie.",

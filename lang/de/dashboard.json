@@ -50,8 +50,8 @@
         },
         "categories": {
             "title": "Beginnen Sie mit der Erstellung von Kategorien",
-            "text": "Gehen Sie zu Standorten und Units und fügen Sie Kategorien hinzu, um Units zu gruppieren (z. B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrizität). Kategorien helfen beim Filtern und Organisieren von Units und hängen vom Sektor des Unternehmens ab. Indem Sie Ausführerteams mit bestimmten Kategorien verknüpfen, stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden. Fügen Sie Standorte hinzu (Gelände, Gebäude, Etagen) und erstellen Sie pro Standort Units — das sind die Vermögenswerte, Maschinen oder Räume, in denen Meldungen und Aufgaben registriert werden. Units können Sie pro Standort auch per CSV oder Excel importieren (oder in Masse anlegen).",
-            "button": "Standorte verwalten"
+            "text": "Gehen Sie zu Standorte → Kategorien und fügen Sie Kategorien hinzu, um Units zu gruppieren (z. B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrizität). Kategorien helfen beim Filtern und Organisieren von Units. Indem Sie Ausführerteams mit bestimmten Kategorien verknüpfen, stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden. Fügen Sie danach Standorte unter Standorte → Standorte hinzu und erstellen Sie Units pro Standort — oder über Standorte → Units.",
+            "button": "Kategorien verwalten"
         },
         "clock_point": {
             "title": "Clock Point anlegen",

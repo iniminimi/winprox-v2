@@ -77,12 +77,12 @@
         "title": "Activer les réservations",
         "lead": "Les réservations concernent salles, véhicules, clés, … via le même QR unité.",
         "steps": [
-            "Ouvrez Sites/unités et modifiez la catégorie (ex. Salles).",
+            "Ouvrez Emplacements → Catégories et modifiez la catégorie (p. ex. Salles de réunion).",
             "Activez Réservable pour cette catégorie — toutes les unités deviennent réservables.",
             "Désactivez éventuellement Autoriser les réservations sur les unités à exclure.",
             "Partagez ou imprimez le QR unité — les invités voient la tuile Réserver."
         ],
-        "cta_locations": "Vers sites & unités"
+        "cta_locations": "Vers Catégories"
     },
     "form": {
         "staff_hint": "Les réservations créées ici sont confirmées immédiatement (pas de délai e-mail de 30 minutes)."

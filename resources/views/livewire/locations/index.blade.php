@@ -1,25 +1,32 @@
-<div class="wp-stack" data-manual-capture="locations-list">
+<div class="wp-stack" data-manual-capture="{{ $this->isCategoriesSection() ? 'locations-categories' : 'locations-list' }}">
     @if ($onboarding->showTeamsBanner())
         <x-wp-onboarding-banner stage="teams" />
     @else
     @php
-        $showLocationsOnboarding = ! $hasAnyLocation;
-        $pulseCategoriesCard = $showLocationsOnboarding && $categories->isEmpty() && ! $showCategoriesSection;
+        $isCategories = $this->isCategoriesSection();
+        $showLocationsOnboarding = ! $isCategories && ! $hasAnyLocation;
+        $pulseCategoriesAdd = $isCategories && $categories->isEmpty();
         $pulseAddLocationButton = $showLocationsOnboarding && $categories->isNotEmpty();
     @endphp
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
                 icon="locations"
-                :title="__('locations.title')"
-                help-page="locations.list"
-                :subtitle="__('locations.subtitle')"
+                :title="$isCategories ? __('locations.categories.title') : __('locations.title')"
+                :help-page="$isCategories ? 'locations.categories' : 'locations.list'"
+                :subtitle="$isCategories ? __('locations.categories.subtitle') : __('locations.subtitle')"
             />
         </div>
         <div class="wp-cluster">
-            <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseAddLocationButton]) wire:click="openCreate">
-                {{ __('locations.add') }}
-            </button>
+            @if ($isCategories)
+                <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseCategoriesAdd]) wire:click="openCategoriesModal">
+                    {{ __('locations.categories.add') }}
+                </button>
+            @else
+                <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseAddLocationButton]) wire:click="openCreate">
+                    {{ __('locations.add') }}
+                </button>
+            @endif
         </div>
     </div>
 
@@ -27,97 +34,98 @@
         <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
     @endif
 
-    <x-wp-disclosure-card
-        :title="__('locations.categories.title')"
-        :subtitle="__('locations.categories.click_to_manage')"
-        :count="$categories->count()"
-        entangle="showCategoriesSection"
-        @class(['wp-card--prio-pulse' => $pulseCategoriesCard])
-    >
-        <x-slot:toolbar>
-            <button type="button" class="btn btn--primary btn--sm" wire:click="openCategoriesModal">
-                {{ __('locations.categories.add') }}
-            </button>
-        </x-slot:toolbar>
-
-        @if ($categories->isNotEmpty())
-            <div class="wp-list wp-list--entity-rows">
-                @foreach ($categories as $category)
-                    <div class="wp-issue-row" wire:key="category-{{ $category->id }}">
-                        <div class="wp-grow wp-stack-tight">
-                            <p class="wp-issue-card-title">{{ $category->localizedName() }}</p>
+    @if ($isCategories)
+        <div class="wp-card wp-card-pad wp-stack">
+            @if ($categories->isNotEmpty())
+                <div class="wp-list wp-list--entity-rows">
+                    @foreach ($categories as $category)
+                        <div class="wp-issue-row" wire:key="category-{{ $category->id }}">
+                            <div class="wp-grow wp-stack-tight">
+                                <p class="wp-issue-card-title">{{ $category->localizedName() }}</p>
+                            </div>
+                            <div class="wp-cluster">
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.edit') }}</button>
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteCategory({{ $category->id }})"
+                                        wire:confirm="{{ __('locations.categories.confirm_delete') }}">{{ __('common.button.delete') }}</button>
+                            </div>
                         </div>
-                        <div class="wp-cluster">
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.edit') }}</button>
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteCategory({{ $category->id }})"
-                                    wire:confirm="{{ __('locations.categories.confirm_delete') }}">{{ __('common.button.delete') }}</button>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <p class="wp-muted">{{ __('locations.categories.empty') }}</p>
-        @endif
-    </x-wp-disclosure-card>
-
-    <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-grow">
-            <h2 class="wp-section-title">{{ __('locations.title') }}</h2>
-            <p class="wp-muted">{{ __('locations.search_hint') }}</p>
-        </div>
-        <div class="wp-filter-row">
-            <input type="search" class="wp-input" wire:model.live.debounce.300ms="search"
-                   placeholder="{{ __('locations.search_placeholder') }}" />
-            <label class="wp-check">
-                <input type="checkbox" wire:model.live="showInactive" />
-                <span>{{ __('locations.show_inactive') }}</span>
-            </label>
-        </div>
-
-        <div class="wp-list wp-list--entity-rows">
-            @forelse ($locations as $location)
-                @php
-                    $addressLine = $location->formattedAddress()
-                        ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
-                        : '';
-                @endphp
-                <div class="wp-issue-row" wire:key="loc-{{ $location->id }}-{{ $location->is_active }}">
-                    <a href="{{ route('locations.show', $location) }}" class="wp-issue-row-link wp-stack-tight">
-                        <p class="wp-issue-card-title">{{ $location->localizedName() }}</p>
-                        @if ($addressLine !== '')
-                            <p class="wp-issue-card-meta">{{ $addressLine }}</p>
-                        @endif
-                    </a>
-                    <div class="wp-issue-row-meta">
-                        <span class="wp-pill wp-pill--closed">{{ __('locations.unit_count', ['count' => $location->units_count]) }}</span>
-                        @if (! $location->is_active)
-                            <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
-                        @endif
-                    </div>
-                    @if ($location->is_active)
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivate({{ $location->id }})"
-                                wire:confirm="{{ __('locations.confirm_deactivate') }}">
-                            {{ __('locations.deactivate') }}
-                        </button>
-                    @else
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="activate({{ $location->id }})">
-                            {{ __('locations.activate') }}
-                        </button>
-                    @endif
+                    @endforeach
                 </div>
-            @empty
-                @if ($showLocationsOnboarding)
-                    <div class="wp-card wp-card-pad wp-onboarding-card">
-                        <div class="wp-stack">
-                            <p class="wp-text-body"><strong>{{ $categories->isEmpty() ? __('locations.onboarding.title_categories') : __('locations.onboarding.title_locations') }}</strong></p>
-                        </div>
-                    </div>
-                @else
-                    <p class="wp-muted">{{ ($hasInactiveLocations && ! $showInactive) ? __('locations.empty_inactive') : __('locations.empty') }}</p>
-                @endif
-            @endforelse
+            @else
+                <p class="wp-muted">{{ __('locations.categories.empty') }}</p>
+            @endif
         </div>
-    </div>
+    @else
+        @if ($categories->isEmpty())
+            <div class="wp-card wp-card-pad wp-onboarding-card">
+                <div class="wp-stack">
+                    <p class="wp-text-body"><strong>{{ __('locations.onboarding.title_categories') }}</strong></p>
+                    <a href="{{ route('locations.index', ['section' => 'categories']) }}" class="btn btn--primary btn--sm wp-badge-critical">
+                        {{ __('locations.onboarding.go_to_categories') }}
+                    </a>
+                </div>
+            </div>
+        @endif
+
+        <div class="wp-card wp-card-pad wp-stack">
+            <div class="wp-grow">
+                <h2 class="wp-section-title">{{ __('locations.title') }}</h2>
+                <p class="wp-muted">{{ __('locations.search_hint') }}</p>
+            </div>
+            <div class="wp-filter-row">
+                <input type="search" class="wp-input" wire:model.live.debounce.300ms="search"
+                       placeholder="{{ __('locations.search_placeholder') }}" />
+                <label class="wp-check">
+                    <input type="checkbox" wire:model.live="showInactive" />
+                    <span>{{ __('locations.show_inactive') }}</span>
+                </label>
+            </div>
+
+            <div class="wp-list wp-list--entity-rows">
+                @forelse ($locations as $location)
+                    @php
+                        $addressLine = $location->formattedAddress()
+                            ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
+                            : '';
+                    @endphp
+                    <div class="wp-issue-row" wire:key="loc-{{ $location->id }}-{{ $location->is_active }}">
+                        <a href="{{ route('locations.show', $location) }}" class="wp-issue-row-link wp-stack-tight">
+                            <p class="wp-issue-card-title">{{ $location->localizedName() }}</p>
+                            @if ($addressLine !== '')
+                                <p class="wp-issue-card-meta">{{ $addressLine }}</p>
+                            @endif
+                        </a>
+                        <div class="wp-issue-row-meta">
+                            <span class="wp-pill wp-pill--closed">{{ __('locations.unit_count', ['count' => $location->units_count]) }}</span>
+                            @if (! $location->is_active)
+                                <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
+                            @endif
+                        </div>
+                        @if ($location->is_active)
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivate({{ $location->id }})"
+                                    wire:confirm="{{ __('locations.confirm_deactivate') }}">
+                                {{ __('locations.deactivate') }}
+                            </button>
+                        @else
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="activate({{ $location->id }})">
+                                {{ __('locations.activate') }}
+                            </button>
+                        @endif
+                    </div>
+                @empty
+                    @if ($showLocationsOnboarding && $categories->isNotEmpty())
+                        <div class="wp-card wp-card-pad wp-onboarding-card">
+                            <div class="wp-stack">
+                                <p class="wp-text-body"><strong>{{ __('locations.onboarding.title_locations') }}</strong></p>
+                            </div>
+                        </div>
+                    @elseif (! $showLocationsOnboarding)
+                        <p class="wp-muted">{{ ($hasInactiveLocations && ! $showInactive) ? __('locations.empty_inactive') : __('locations.empty') }}</p>
+                    @endif
+                @endforelse
+            </div>
+        </div>
+    @endif
 
     @if ($showModal)
         <x-wp-modal closeMethod="closeModal" aria-labelledby="location-modal-title">
