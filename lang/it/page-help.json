@@ -1316,7 +1316,7 @@
                 },
                 {
                     "label": "Filtro",
-                    "text": "Limita l’elenco a una sede e/o una categoria. Cancella i filtri per vedere di nuovo tutte le unit."
+                    "text": "Limita l’elenco a una sede e/o una categoria. Il numero a destra dei menu è il totale filtrato. Cancella i filtri per vedere di nuovo tutte le unit."
                 },
                 {
                     "label": "Controlli unit",

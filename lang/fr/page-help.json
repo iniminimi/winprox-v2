@@ -1316,7 +1316,7 @@
                 },
                 {
                     "label": "Filtre",
-                    "text": "Limiter la liste à un lieu et/ou une catégorie. Effacez les filtres pour revoir toutes les units."
+                    "text": "Limiter la liste à un lieu et/ou une catégorie. Le nombre à droite des listes est le total filtré. Effacez les filtres pour revoir toutes les units."
                 },
                 {
                     "label": "Contrôles d’unité",

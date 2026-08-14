@@ -1316,7 +1316,7 @@
                 },
                 {
                     "label": "Filtro",
-                    "text": "Limite la lista a una ubicación y/o una categoría. Borre los filtros para ver de nuevo todas las units."
+                    "text": "Limite la lista a una ubicación y/o una categoría. El número a la derecha de los desplegables es el total filtrado. Borre los filtros para ver de nuevo todas las units."
                 },
                 {
                     "label": "Comprobaciones de unit",

@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sites et units",
-                    "text": "Créez des sites et ajoutez des units (machines, zones ou espaces), une par une ou en masse. Liez une équipe à une unit pour que les tâches arrivent automatiquement."
+                    "text": "Créez des lieux et ajoutez des units (machines, zones ou espaces), une par une ou en masse. Sous Lieux, Catégories, Lieux et Units sont séparés. Liez une équipe à une unit pour que les tâches arrivent automatiquement."
                 },
                 {
                     "title": "Créer un signalement",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Équipes internes",
-            "box_body": "Organisez les équipes de maintenance sous Team. Liez les équipes aux units et catégories. Via Clock Point et QR unité, les exécutants enregistrent mises à jour et photos sur site."
+            "box_body": "Organisez les équipes de maintenance sous Personnes → Équipes. Liez les équipes aux units et catégories. Via Clock Point et QR unité, les exécutants enregistrent mises à jour et photos sur site."
         },
         "pricing": {
             "slug": "pricing",
@@ -223,8 +223,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Comment configurer les équipes internes ?",
-            "body": "Allez dans Équipe : créez des équipes, ajoutez des exécutants (manuel, CSV ou Excel), liez les équipes aux unités et éventuellement aux catégories. Sous Équipes vous gérez aussi les listes de contrôle unit check (partagées ou par équipe). Imprimez ou envoyez le QR Clock Point pour le terrain (Time → Clock Points).",
-            "summary": "Équipes sous Équipe ; listes unit check ; liaison unités/catégories ; QR Clock Point pour le terrain."
+            "body": "Allez dans Personnes → Équipes : créez des équipes, ajoutez des exécutants (manuel, CSV ou Excel), liez les équipes aux unités et éventuellement aux catégories. Sous Équipes vous gérez aussi les listes de contrôle unit check (partagées ou par équipe). Imprimez ou envoyez le QR Clock Point pour le terrain (Time → Clock Points).",
+            "summary": "Équipes sous Personnes → Équipes ; listes unit check ; liaison unités/catégories ; QR Clock Point pour le terrain."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
@@ -244,8 +244,8 @@
             "slug": "multiple_locations",
             "type": "text",
             "title": "Puis-je gérer plusieurs sites ?",
-            "body": "Oui. Gérez plusieurs sites et units en un seul endroit, avec filtres et recherche. Les limites dépendent de votre abonnement.",
-            "summary": "Plusieurs sites et units centralisés ; limites par formule."
+            "body": "Oui. Sous Lieux vous gérez Catégories, Lieux et Units séparément. Plusieurs lieux et units dans une organisation, avec filtres. Les limites dépendent de votre abonnement.",
+            "summary": "Plusieurs lieux et units via Lieux (Catégories, Lieux, Units) ; limites par formule."
         },
         "page_help": {
             "slug": "page_help",

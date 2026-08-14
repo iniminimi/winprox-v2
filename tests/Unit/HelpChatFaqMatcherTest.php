@@ -78,6 +78,26 @@ it('beantwoordt wat is een unit check vanuit pagina-hulp unit checks', function 
         ->and($answer)->not->toContain('Avery');
 });
 
+it('beantwoordt units-vragen vanuit pagina-hulp Units, niet locatie-QR', function (): void {
+    $matcher = app(HelpChatFaqMatcher::class);
+
+    $answer = $matcher->match('Waar vind ik de units?', 'nl');
+
+    expect($answer)->toContain('Overzicht')
+        ->and($answer)->toContain('Filter')
+        ->and($answer)->not->toContain('QR-afdrukblad')
+        ->and($answer)->not->toContain('Avery');
+});
+
+it('beantwoordt locaties-vragen vanuit pagina-hulp Locaties', function (): void {
+    $matcher = app(HelpChatFaqMatcher::class);
+
+    $answer = $matcher->match('Hoe voeg ik locaties toe?', 'nl');
+
+    expect($answer)->toContain('Locatie toevoegen')
+        ->and($answer)->not->toContain('QR-afdrukblad');
+});
+
 it('beantwoordt IoT vanuit pagina-hulp', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 

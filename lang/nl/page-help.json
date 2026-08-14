@@ -1316,7 +1316,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Beperk de lijst tot één locatie en/of één categorie. Wis de filters om opnieuw alle units te zien."
+                    "text": "Beperk de lijst tot één locatie en/of één categorie. Rechts van de dropdowns staat het aantal units. Wis de filters om opnieuw alle units te zien."
                 },
                 {
                     "label": "Unit checks",

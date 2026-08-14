@@ -1316,7 +1316,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Narrow the list to one location and/or one category. Clear the filters to see all units again."
+                    "text": "Narrow the list to one location and/or one category. The count beside the dropdowns is the filtered total. Clear the filters to see all units again."
                 },
                 {
                     "label": "Unit checks",

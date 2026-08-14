@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sites and units",
-                    "text": "Create sites and add units (machines, zones, or areas), one by one or in bulk. Link a team to a unit so tasks land automatically."
+                    "text": "Create locations and add units (machines, zones, or areas), one by one or in bulk. Under Places, Categories, Locations and Units are separate. Link a team to a unit so tasks land automatically."
                 },
                 {
                     "title": "Create an issue",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Internal teams",
-            "box_body": "Organise maintenance teams under Team. Link teams to units and categories. Via Clock Point and unit QR, field workers log updates and photos on site."
+            "box_body": "Organise maintenance teams under People → Teams. Link teams to units and categories. Via Clock Point and unit QR, field workers log updates and photos on site."
         },
         "pricing": {
             "slug": "pricing",
@@ -223,8 +223,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "How do I set up internal teams?",
-            "body": "Go to Team: create teams, add workers (manually, CSV or Excel), link teams to units and optionally to categories. Under Teams you also manage unit-check checklists (shared or per team). Print or email the Clock Point QR for the floor (Time → Clock Points).",
-            "summary": "Teams under Team; unit-check checklists; link to units/categories; Clock Point QR for the floor."
+            "body": "Go to People → Teams: create teams, add workers (manually, CSV or Excel), link teams to units and optionally to categories. Under Teams you also manage unit-check checklists (shared or per team). Print or email the Clock Point QR for the floor (Time → Clock Points).",
+            "summary": "Teams under People → Teams; unit-check checklists; link to units/categories; Clock Point QR for the floor."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
@@ -244,8 +244,8 @@
             "slug": "multiple_locations",
             "type": "text",
             "title": "Can I manage multiple sites?",
-            "body": "Yes. Manage multiple sites and units in one place, with filters and search. Limits depend on your subscription.",
-            "summary": "Multiple sites and units centrally; limits per plan."
+            "body": "Yes. Under Places you manage Categories, Locations and Units separately. Multiple locations and units in one organisation, with filters. Limits depend on your subscription.",
+            "summary": "Multiple locations and units via Places (Categories, Locations, Units); limits per plan."
         },
         "page_help": {
             "slug": "page_help",

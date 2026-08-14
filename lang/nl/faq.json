@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Locaties en units",
-                    "text": "Maak locaties aan en voeg units toe (machines, zones of ruimtes), één voor één of in bulk. Koppel een team aan een unit zodat taken automatisch goed landen."
+                    "text": "Maak locaties aan en voeg units toe (machines, zones of ruimtes), één voor één of in bulk. Onder Plaatsen staan Categorieën, Locaties en Units apart. Koppel een team aan een unit zodat taken automatisch goed landen."
                 },
                 {
                     "title": "Melding maken",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Interne teams",
-            "box_body": "Organiseer onderhoudsteams onder Team. Koppel teams aan units en categorieën. Via Clock Point en unit-QR registreren uitvoerders updates en foto's op locatie."
+            "box_body": "Organiseer onderhoudsteams onder Mensen → Teams. Koppel teams aan units en categorieën. Via Clock Point en unit-QR registreren uitvoerders updates en foto's op locatie."
         },
         "pricing": {
             "slug": "pricing",
@@ -223,8 +223,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Hoe richt ik interne teams in?",
-            "body": "Ga naar Team: maak teams aan, voeg uitvoerders toe (handmatig, CSV of Excel), koppel teams aan units en optioneel aan categorieën. Onder Teams beheer je ook checklists voor unit checks (gedeeld of per team). Print of mail de Clock Point-QR voor de werkvloer (Time → Clock Points).",
-            "summary": "Teams onder Team; checklists voor unit checks; koppel aan units/categorieën; Clock Point-QR voor de vloer."
+            "body": "Ga naar Mensen → Teams: maak teams aan, voeg uitvoerders toe (handmatig, CSV of Excel), koppel teams aan units en optioneel aan categorieën. Onder Teams beheer je ook checklists voor unit checks (gedeeld of per team). Print of mail de Clock Point-QR voor de werkvloer (Time → Clock Points).",
+            "summary": "Teams onder Mensen → Teams; checklists voor unit checks; koppel aan units/categorieën; Clock Point-QR voor de vloer."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
@@ -244,8 +244,8 @@
             "slug": "multiple_locations",
             "type": "text",
             "title": "Kan ik meerdere locaties beheren?",
-            "body": "Ja. Beheer meerdere locaties en units op één plek, met filters en zoeken. Limieten hangen af van uw abonnement.",
-            "summary": "Meerdere locaties en units centraal; limieten per formule."
+            "body": "Ja. Onder Plaatsen beheer je Categorieën, Locaties en Units apart. Meerdere locaties en units op één organisatie, met filters. Limieten hangen af van uw abonnement.",
+            "summary": "Meerdere locaties en units via Plaatsen (Categorieën, Locaties, Units); limieten per formule."
         },
         "page_help": {
             "slug": "page_help",

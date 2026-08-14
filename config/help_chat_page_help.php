@@ -75,12 +75,30 @@ return [
             'prefer' => ['wat is een unit check', 'what is a unit check', 'inschakelen', 'enable'],
         ],
         [
+            'patterns' => [
+                'inspectieronde', 'inspectie ronde', 'inspection round', 'inspection rounds',
+                'tournée d’inspection', 'inspektionsrunde',
+                'ronda de inspección', 'giro di ispezione',
+            ],
+            'page' => 'issues.create',
+            'prefer' => ['stop', 'ronde', 'unit check'],
+        ],
+        [
             'patterns' => ['categorie', 'category', 'kategorie', 'categoría', 'catégorie'],
             'page' => 'locations.categories',
         ],
         [
             'patterns' => ['unit aanmak', 'bulk', 'csv', 'import unit'],
             'page' => 'locations.list',
+        ],
+        [
+            'patterns' => ['locaties', 'locations', 'standorte', 'ubicaciones', 'sedi'],
+            'page' => 'locations.list',
+        ],
+        [
+            'patterns' => ['units', 'unités', 'unidades', 'unità'],
+            'page' => 'units',
+            'prefer' => ['overzicht', 'filter', 'unit checks'],
         ],
         [
             'patterns' => ['locatie', 'location', 'unit', 'standort', 'sticker', 'qr-pack'],

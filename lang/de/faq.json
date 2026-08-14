@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Standorte und Units",
-                    "text": "Erstellen Sie Standorte und fügen Sie Units hinzu (Maschinen, Zonen oder Räume), einzeln oder in Bulk. Verknüpfen Sie ein Team mit einer Unit, damit Aufgaben automatisch richtig landen."
+                    "text": "Erstellen Sie Standorte und fügen Sie Units hinzu (Maschinen, Zonen oder Räume), einzeln oder in Bulk. Unter Orte sind Kategorien, Standorte und Units getrennt. Verknüpfen Sie ein Team mit einer Unit, damit Aufgaben automatisch richtig landen."
                 },
                 {
                     "title": "Meldung erstellen",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Interne Teams",
-            "box_body": "Organisieren Sie Wartungsteams unter Team. Verknüpfen Sie Teams mit Units und Kategorien. Über Clock Point und Unit-QR erfassen Ausführende Updates und Fotos vor Ort."
+            "box_body": "Organisieren Sie Wartungsteams unter Menschen → Teams. Verknüpfen Sie Teams mit Units und Kategorien. Über Clock Point und Unit-QR erfassen Ausführende Updates und Fotos vor Ort."
         },
         "pricing": {
             "slug": "pricing",
@@ -223,8 +223,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Wie richte ich interne Teams ein?",
-            "body": "Gehen Sie zu Team: Teams anlegen, Ausführende hinzufügen (manuell, CSV oder Excel), Teams an Units und optional an Kategorien koppeln. Unter Teams verwalten Sie auch Checklisten für Unit-Checks (geteilt oder pro Team). Drucken oder mailen Sie den Clock-Point-QR für die Fläche (Time → Clock Points).",
-            "summary": "Teams unter Team; Checklisten für Unit-Checks; Kopplung an Units/Kategorien; Clock-Point-QR für die Fläche."
+            "body": "Gehen Sie zu Menschen → Teams: Teams anlegen, Ausführende hinzufügen (manuell, CSV oder Excel), Teams an Units und optional an Kategorien koppeln. Unter Teams verwalten Sie auch Checklisten für Unit-Checks (geteilt oder pro Team). Drucken oder mailen Sie den Clock-Point-QR für die Fläche (Time → Clock Points).",
+            "summary": "Teams unter Menschen → Teams; Checklisten für Unit-Checks; Kopplung an Units/Kategorien; Clock-Point-QR für die Fläche."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
@@ -244,8 +244,8 @@
             "slug": "multiple_locations",
             "type": "text",
             "title": "Kann ich mehrere Standorte verwalten?",
-            "body": "Ja. Verwalten Sie mehrere Standorte und Units an einem Ort, mit Filtern und Suche. Limits hängen von Ihrem Abonnement ab.",
-            "summary": "Mehrere Standorte und Units zentral; Limits pro Formel."
+            "body": "Ja. Unter Orte verwalten Sie Kategorien, Standorte und Units getrennt. Mehrere Standorte und Units in einer Organisation, mit Filtern. Limits hängen von Ihrem Abonnement ab.",
+            "summary": "Mehrere Standorte und Units über Orte (Kategorien, Standorte, Units); Limits pro Formel."
         },
         "page_help": {
             "slug": "page_help",

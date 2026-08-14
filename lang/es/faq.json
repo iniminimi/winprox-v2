@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sitios y units",
-                    "text": "Cree sitios y añada units (máquinas, zonas o espacios), una a una o en bloque. Vincule un equipo a una unit para que las tareas lleguen automáticamente."
+                    "text": "Cree ubicaciones y añada units (máquinas, zonas o espacios), una a una o en bloque. En Lugares, Categorías, Ubicaciones y Units van por separado. Vincule un equipo a una unit para que las tareas lleguen automáticamente."
                 },
                 {
                     "title": "Crear incidencia",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Equipos internos",
-            "box_body": "Organice equipos de mantenimiento en Team. Vincule equipos a units y categorías. Vía Clock Point y QR de unit, los operarios registran actualizaciones y fotos en sitio."
+            "box_body": "Organice equipos de mantenimiento en Personas → Equipos. Vincule equipos a units y categorías. Vía Clock Point y QR de unit, los operarios registran actualizaciones y fotos en sitio."
         },
         "pricing": {
             "slug": "pricing",
@@ -223,8 +223,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "¿Cómo configuro equipos internos?",
-            "body": "Vaya a Equipo: cree equipos, añada operarios (manual, CSV o Excel), vincule equipos a unidades y opcionalmente a categorías. En Equipos también gestiona las listas de unit checks (compartidas o por equipo). Imprima o envíe el QR Clock Point para el terreno (Time → Clock Points).",
-            "summary": "Equipos en Equipo; listas de unit checks; vínculo a unidades/categorías; QR Clock Point para el terreno."
+            "body": "Vaya a Personas → Equipos: cree equipos, añada operarios (manual, CSV o Excel), vincule equipos a unidades y opcionalmente a categorías. En Equipos también gestiona las listas de unit checks (compartidas o por equipo). Imprima o envíe el QR Clock Point para el terreno (Time → Clock Points).",
+            "summary": "Equipos en Personas → Equipos; listas de unit checks; vínculo a unidades/categorías; QR Clock Point para el terreno."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
@@ -244,8 +244,8 @@
             "slug": "multiple_locations",
             "type": "text",
             "title": "¿Puedo gestionar varios sitios?",
-            "body": "Sí. Gestione varios sitios y units en un solo lugar, con filtros y búsqueda. Los límites dependen de su suscripción.",
-            "summary": "Varios sitios y units centralizados; límites por plan."
+            "body": "Sí. En Lugares gestiona Categorías, Ubicaciones y Units por separado. Varias ubicaciones y units en una organización, con filtros. Los límites dependen de su suscripción.",
+            "summary": "Varias ubicaciones y units vía Lugares (Categorías, Ubicaciones, Units); límites por plan."
         },
         "page_help": {
             "slug": "page_help",

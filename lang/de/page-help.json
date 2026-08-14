@@ -1316,7 +1316,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Liste auf einen Standort und/oder eine Kategorie eingrenzen. Filter leeren, um wieder alle Units zu sehen."
+                    "text": "Liste auf einen Standort und/oder eine Kategorie eingrenzen. Die Zahl rechts neben den Dropdowns ist die gefilterte Anzahl. Filter leeren, um wieder alle Units zu sehen."
                 },
                 {
                     "label": "Unit-Checks",
