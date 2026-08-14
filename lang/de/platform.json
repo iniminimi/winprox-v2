@@ -98,6 +98,7 @@
         "source_undeliverable": "Unzustellbar (Bounce)",
         "source_manual": "Manuell blockiert",
         "filter_undeliverable": "Nur unzustellbar (Bounce) (:count)",
+        "filter_manual": "Nur manuell abgemeldet (:count)",
         "list_date_prefix": "am"
     },
     "promo_qr": {

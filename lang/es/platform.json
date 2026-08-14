@@ -98,6 +98,7 @@
         "source_undeliverable": "No entregable (bounce)",
         "source_manual": "Bloqueado manualmente",
         "filter_undeliverable": "Solo no entregable (bounce) (:count)",
+        "filter_manual": "Solo dados de baja manualmente (:count)",
         "list_date_prefix": "el"
     },
     "promo_qr": {

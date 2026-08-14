@@ -98,6 +98,7 @@
         "source_undeliverable": "Undeliverable (bounce)",
         "source_manual": "Blocked manually",
         "filter_undeliverable": "Undeliverable only (bounce) (:count)",
+        "filter_manual": "Manually unsubscribed only (:count)",
         "list_date_prefix": "on"
     },
     "promo_qr": {

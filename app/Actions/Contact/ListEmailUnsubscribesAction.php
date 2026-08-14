@@ -16,7 +16,8 @@ class ListEmailUnsubscribesAction
      * @return array{
      *     rows: LengthAwarePaginator,
      *     matchedUsers: Collection<string, User>,
-     *     undeliverableCount: int
+     *     undeliverableCount: int,
+     *     manualCount: int
      * }
      */
     public function handle(
@@ -24,12 +25,21 @@ class ListEmailUnsubscribesAction
         int $page = 1,
         int $perPage = 50,
         bool $undeliverableOnly = false,
+        bool $manualOnly = false,
     ): array {
         $search = trim($search);
 
+        $sourceFilters = [];
+        if ($undeliverableOnly) {
+            $sourceFilters[] = EmailUnsubscribeSource::Undeliverable;
+        }
+        if ($manualOnly) {
+            $sourceFilters[] = EmailUnsubscribeSource::Manual;
+        }
+
         $rows = EmailUnsubscribe::query()
-            ->when($undeliverableOnly, function ($query): void {
-                $query->where('source', EmailUnsubscribeSource::Undeliverable);
+            ->when($sourceFilters !== [], function ($query) use ($sourceFilters): void {
+                $query->whereIn('source', $sourceFilters);
             })
             ->when($search !== '', function ($query) use ($search): void {
                 $like = '%'.addcslashes($search, '%_\\').'%';
@@ -43,6 +53,9 @@ class ListEmailUnsubscribesAction
             'matchedUsers' => $this->matchedUsers($rows->getCollection()),
             'undeliverableCount' => EmailUnsubscribe::query()
                 ->where('source', EmailUnsubscribeSource::Undeliverable)
+                ->count(),
+            'manualCount' => EmailUnsubscribe::query()
+                ->where('source', EmailUnsubscribeSource::Manual)
                 ->count(),
         ];
     }

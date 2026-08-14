@@ -28,6 +28,9 @@ class EmailUnsubscribes extends Component
     #[Url]
     public bool $undeliverableOnly = false;
 
+    #[Url]
+    public bool $manualOnly = false;
+
     public string $newEmail = '';
 
     public ?string $flashMessage = null;
@@ -45,6 +48,11 @@ class EmailUnsubscribes extends Component
     }
 
     public function updatedUndeliverableOnly(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedManualOnly(): void
     {
         $this->resetPage();
     }
@@ -92,12 +100,14 @@ class EmailUnsubscribes extends Component
             search: $this->search,
             page: $this->getPage(),
             undeliverableOnly: $this->undeliverableOnly,
+            manualOnly: $this->manualOnly,
         );
 
         return view('livewire.platform.email-unsubscribes', [
             'rows' => $result['rows'],
             'matchedUsers' => $result['matchedUsers'],
             'undeliverableCount' => $result['undeliverableCount'],
+            'manualCount' => $result['manualCount'],
         ]);
     }
 }

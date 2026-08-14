@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Recherche et filtre",
-                    "text": "Recherchez par adresse e-mail. Par défaut, vous voyez tous les désabonnements, y compris les bounces. Cochez <strong>Non remis uniquement (bounce)</strong> pour n’afficher que les adresses bloquées automatiquement après un e-mail promo non remis ; le total est entre parenthèses."
+                    "text": "Recherchez par adresse e-mail. Par défaut, vous voyez tous les désabonnements. Cochez <strong>Non remis uniquement (bounce)</strong> ou <strong>Désinscrits manuellement uniquement</strong> pour filtrer ; le total est entre parenthèses. Les deux cases ensemble affichent ces deux groupes."
                 },
                 {
                     "label": "Source du désabonnement",

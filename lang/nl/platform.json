@@ -98,6 +98,7 @@
         "source_undeliverable": "Onbezorgbaar (bounce)",
         "source_manual": "Handmatig geblokkeerd",
         "filter_undeliverable": "Alleen onbezorgbaar (bounce) (:count)",
+        "filter_manual": "Alleen manueel uitgeschreven (:count)",
         "list_date_prefix": "datum"
     },
     "promo_qr": {

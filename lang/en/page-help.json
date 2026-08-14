@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Search and filter",
-                    "text": "Search by email address. By default you see all unsubscribes, including bounces. Turn on <strong>Undeliverable only (bounce)</strong> to show only addresses blocked automatically after a failed promo email; the count is in parentheses."
+                    "text": "Search by email address. By default you see all unsubscribes. Turn on <strong>Undeliverable only (bounce)</strong> or <strong>Manually unsubscribed only</strong> to filter; the count is in parentheses. Both checkboxes together show those two groups."
                 },
                 {
                     "label": "Unsubscribe source",

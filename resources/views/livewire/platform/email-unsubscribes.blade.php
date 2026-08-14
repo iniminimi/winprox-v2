@@ -29,7 +29,7 @@
     </div>
 
     <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-row">
+        <div class="wp-row wp-row--wrap">
             <label class="wp-label" for="unsubscribe-search">{{ __('platform.email_unsubscribe.search') }}</label>
             <label class="wp-check" for="unsubscribe-undeliverable-only">
                 <input
@@ -38,6 +38,14 @@
                     wire:model.live="undeliverableOnly"
                 >
                 <span>{{ __('platform.email_unsubscribe.filter_undeliverable', ['count' => $undeliverableCount]) }}</span>
+            </label>
+            <label class="wp-check" for="unsubscribe-manual-only">
+                <input
+                    id="unsubscribe-manual-only"
+                    type="checkbox"
+                    wire:model.live="manualOnly"
+                >
+                <span>{{ __('platform.email_unsubscribe.filter_manual', ['count' => $manualCount]) }}</span>
             </label>
         </div>
         <input id="unsubscribe-search" type="search" class="wp-input" wire:model.live.debounce.300ms="search"

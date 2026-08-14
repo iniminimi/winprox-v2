@@ -98,6 +98,7 @@
         "source_undeliverable": "Non remis (bounce)",
         "source_manual": "Bloqué manuellement",
         "filter_undeliverable": "Non remis uniquement (bounce) (:count)",
+        "filter_manual": "Désinscrits manuellement uniquement (:count)",
         "list_date_prefix": "le"
     },
     "promo_qr": {

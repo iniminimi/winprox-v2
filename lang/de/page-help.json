@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Suche und Filter",
-                    "text": "Suchen Sie nach E-Mail-Adresse. Standardmäßig sehen Sie alle Abmeldungen, einschließlich Bounces. Aktivieren Sie <strong>Nur unzustellbar (Bounce)</strong>, um nur Adressen zu sehen, die automatisch nach einer fehlgeschlagenen Promo-Mail gesperrt wurden; die Anzahl steht in Klammern."
+                    "text": "Suchen Sie nach E-Mail-Adresse. Standardmäßig sehen Sie alle Abmeldungen. Aktivieren Sie <strong>Nur unzustellbar (Bounce)</strong> oder <strong>Nur manuell abgemeldet</strong> zum Filtern; die Anzahl steht in Klammern. Beide Häkchen zusammen zeigen diese zwei Gruppen."
                 },
                 {
                     "label": "Quelle der Abmeldung",
