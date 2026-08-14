@@ -1,6 +1,6 @@
 {
     "title": "Units",
-    "subtitle": "Tenant-overzicht met unit-check status",
+    "subtitle": "Machines, ruimtes of assets. Alle units van je organisatie; filter op locatie of klik om te beheren.",
     "filters": {
         "location": "Filter op locatie",
         "all_locations": "Alle locaties"

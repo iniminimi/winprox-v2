@@ -1,6 +1,6 @@
 {
     "title": "Unidades",
-    "subtitle": "Resumen general con estado de las comprobaciones de unidad",
+    "subtitle": "Máquinas, salas o activos. Todas las units de su organización; filtre por ubicación o haga clic para gestionar.",
     "filters": {
         "location": "Filtrar por ubicación",
         "all_locations": "Todas las ubicaciones"

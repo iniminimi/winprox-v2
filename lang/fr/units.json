@@ -1,6 +1,6 @@
 {
     "title": "Unités",
-    "subtitle": "Aperçu global avec l’état des contrôles d’unité",
+    "subtitle": "Machines, salles ou équipements. Toutes les unités de votre organisation ; filtrez par site ou cliquez pour gérer.",
     "filters": {
         "location": "Filtrer par site",
         "all_locations": "Tous les sites"

@@ -1,6 +1,6 @@
 {
     "title": "Units",
-    "subtitle": "Übersicht pro Mandant mit Unit-Check-Status",
+    "subtitle": "Maschinen, Räume oder Assets. Alle Units Ihrer Organisation; nach Standort filtern oder zum Verwalten klicken.",
     "filters": {
         "location": "Nach Standort filtern",
         "all_locations": "Alle Standorte"

@@ -1,6 +1,6 @@
 {
     "title": "Unità",
-    "subtitle": "Panoramica tenant con stato dei controlli unità",
+    "subtitle": "Macchine, stanze o asset. Tutte le unit della Sua organizzazione; filtri per sede o clicchi per gestire.",
     "filters": {
         "location": "Filtra per sede",
         "all_locations": "Tutte le sedi"
