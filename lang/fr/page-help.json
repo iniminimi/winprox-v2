@@ -1306,7 +1306,7 @@
                 },
                 {
                     "label": "Contrôles d’unité",
-                    "text": "Les pastilles indiquent Actif/Inactif et si les contrôles sont autorisés (catégorie et unit toutes deux actives). Configurez sous Lieux → Catégories / Lieux, et les checklists sous Personnes → Équipes."
+                    "text": "Lorsque les contrôles d’unité sont activés, un exécutant peut effectuer un contrôle rapide dans le portail QR unité. Il y confirme que l’unité est OK ou non OK. Configurez les contrôles sous Lieux → Catégories / Lieux, et les checklists sous Personnes → Équipes."
                 }
             ]
         }

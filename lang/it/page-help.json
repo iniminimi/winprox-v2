@@ -1306,7 +1306,7 @@
                 },
                 {
                     "label": "Controlli unit",
-                    "text": "Le pill mostrano Attivo/Inattivo e se i controlli sono consentiti (categoria e unit entrambe attive). Configura sotto Luoghi → Categorie / Sedi, e le checklist sotto Persone → Team."
+                    "text": "Quando i controlli unit sono attivati, un lavoratore può eseguire un controllo rapido nel portale QR dell’unità. Lì conferma che l’unità è OK o non OK. Configura i controlli sotto Luoghi → Categorie / Sedi, e le checklist sotto Persone → Team."
                 }
             ]
         }

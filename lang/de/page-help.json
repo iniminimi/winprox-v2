@@ -1306,7 +1306,7 @@
                 },
                 {
                     "label": "Unit-Checks",
-                    "text": "Die Pills zeigen Aktiv/Inaktiv und ob Unit-Checks erlaubt sind (Kategorie und Unit beide an). Checks unter Orte → Kategorien / Standorte; Checklisten unter Menschen → Teams."
+                    "text": "Wenn Unit-Checks aktiviert sind, kann ein Ausführender im Unit-QR-Portal eine schnelle Prüfung durchführen. Dort bestätigt der Ausführende, dass die Unit OK oder nicht OK ist. Checks unter Orte → Kategorien / Standorte; Checklisten unter Menschen → Teams."
                 }
             ]
         }

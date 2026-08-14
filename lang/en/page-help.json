@@ -1306,7 +1306,7 @@
                 },
                 {
                     "label": "Unit checks",
-                    "text": "The pills show Active/Inactive and whether unit checks are allowed (category and unit both on). Configure checks under Places → Categories / Locations, and checklists under People → Teams."
+                    "text": "When unit checks are enabled, a worker can perform a quick check in the unit QR portal. There the worker confirms that the unit is OK or not OK. Configure checks under Places → Categories / Locations, and checklists under People → Teams."
                 }
             ]
         }

@@ -1306,7 +1306,7 @@
                 },
                 {
                     "label": "Comprobaciones de unit",
-                    "text": "Las pastillas muestran Activo/Inactivo y si las comprobaciones están permitidas (categoría y unit ambas activas). Configure bajo Lugares → Categorías / Ubicaciones, y las listas bajo Personas → Equipos."
+                    "text": "Cuando las comprobaciones de unit están activadas, un operario puede realizar una comprobación rápida en el portal QR de unidad. Allí confirma que la unit está OK o no OK. Configure las comprobaciones bajo Lugares → Categorías / Ubicaciones, y las listas bajo Personas → Equipos."
                 }
             ]
         }
