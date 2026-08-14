@@ -20,14 +20,25 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
-it('toont de briefing-afdrukknop op de gebruikerspagina', function () {
+it('toont de briefing-afdrukknop op de teamspagina', function () {
     [, $admin] = tenantWithAdmin();
 
     $this->actingAs($admin)
-        ->get(route('team.index'))
+        ->get(route('team.index', ['section' => 'teams']))
         ->assertOk()
         ->assertSee(__('team.briefing'), false)
-        ->assertSee(route('briefing.print'), false);
+        ->assertSee(route('briefing.print'), false)
+        ->assertDontSee(__('team.colleagues.title'), false);
+});
+
+it('toont geen briefing op backoffice', function () {
+    [, $admin] = tenantWithAdmin();
+
+    $this->actingAs($admin)
+        ->get(route('team.index', ['section' => 'backoffice']))
+        ->assertOk()
+        ->assertSee(__('team.colleagues.title'), false)
+        ->assertDontSee(__('team.briefing'), false);
 });
 
 /**

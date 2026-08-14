@@ -577,11 +577,10 @@ stuurt events; WinProx zet die om in workflow.
 
 ---
 
-## 6. Team
+## 6. Mensen (Backoffice + Teams)
 
-**Doel:** beheer van **collega-gebruikers** (WinProx-accounts: admin) én **operationele teams +
-workers**. In V1 zit dit op `/users` met een facility-teams-blok; in V2 houden we het
-als één **Team**-hub. Bron: `Users.php`, `FacilityTeams.php`, `facility-teams.blade.php`.
+**Doel:** twee pagina’s onder **Mensen**. **Backoffice** = collega-gebruikers (login).
+**Teams** = checklists + operationele teams + workers.
 Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een aparte team-QR.
 **Sector/hospitality (`InternalTeams`, `category_slug`) eruit.**
 
@@ -601,10 +600,11 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 
 ### 6.1 Collega-gebruikers (alleen admin)
 - Lijst + aanmaken/bewerken/deactiveren van gebruikers, met **rol** (admin/medewerker);
-  organisatieblok (bedrijfsnaam, logo optioneel); welkomst-/accountmail (set-password-link via
-  reset-broker). `users.is_active` → inactief = geen login.
+  welkomst-/accountmail (set-password-link via reset-broker). `users.is_active` → inactief = geen login.
+- Sidebar **Mensen → Backoffice** (`/team?section=backoffice`). Alleen admin ziet dit menu-item.
 
 ### 6.2 Teams
+- Sidebar **Mensen → Teams** (`/team?section=teams`): **checklists** (unit checks) + teamlijst.
 - Lijst: teamnaam, aantal actieve workers, actief/inactief.
 - Aanmaken/bewerken (naam, `sort_order`, actief) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.

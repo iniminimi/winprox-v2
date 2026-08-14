@@ -375,13 +375,18 @@
                 "expired": "Hold pendiente caducado sin confirmación."
             }
         },
-        "team": {
-            "title": "Ayuda — Equipos y usuarios",
+        "team.backoffice": {
+            "title": "Ayuda — Backoffice",
             "actions": [
                 {
                     "label": "Usuarios colegas",
                     "text": "Gestione empleados administrativos que trabajan principalmente en PC. Deben iniciar sesión con correo y contraseña. Un administrador es el usuario principal que puede modificar los datos de la empresa. Administradores y empleados son ilimitados — las unidades determinan su suscripción."
-                },
+                }
+            ]
+        },
+        "team.teams": {
+            "title": "Ayuda — Teams",
+            "actions": [
                 {
                     "label": "Imprimir briefing",
                     "text": "Abra un resumen imprimible de tareas abiertas por equipo — útil en el lugar de trabajo. El mismo briefing también está en Panel, Incidencias y Calendario."

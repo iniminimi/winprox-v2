@@ -1,6 +1,12 @@
 {
-    "title": "Benutzer",
-    "subtitle": "Verwalten Sie Kollegen-Benutzer, operative Teams, Ausführende und Checklisten für Unit-Checks.",
+    "backoffice": {
+        "title": "Backoffice",
+        "subtitle": "Verwalten Sie Kollegenkonten mit Anmeldung (Administrator und Mitarbeiter)."
+    },
+    "teams_page": {
+        "title": "Teams",
+        "subtitle": "Verwalten Sie operative Teams, Ausführende und Checklisten für Unit-Checks."
+    },
     "nav": {
         "teams": "Teams"
     },

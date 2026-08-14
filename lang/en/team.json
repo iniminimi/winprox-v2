@@ -1,6 +1,12 @@
 {
-    "title": "Users",
-    "subtitle": "Manage colleague users, operational teams, workers and unit-check checklists.",
+    "backoffice": {
+        "title": "Backoffice",
+        "subtitle": "Manage colleague users with login (administrator and employee)."
+    },
+    "teams_page": {
+        "title": "Teams",
+        "subtitle": "Manage operational teams, workers and unit-check checklists."
+    },
     "nav": {
         "teams": "Teams"
     },

@@ -20,7 +20,8 @@ class ManualIndex extends Component
     use HasManualLocale;
 
     private const ADMIN_CHAPTER_KEYS = [
-        'team',
+        'team.backoffice',
+        'team.teams',
         'locations.list',
         'locations.show',
         'issues.list',

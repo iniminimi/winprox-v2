@@ -120,11 +120,12 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
 
     $expectedAnchors = array_map(
         fn (int $n) => 'Hoofdstuk '.$n,
-        range(1, 32),
+        range(1, 33),
     );
 
     $expectedChapterIds = [
-        'chapter-team',
+        'chapter-team-backoffice',
+        'chapter-team-teams',
         'chapter-locations-list',
         'chapter-locations-show',
         'chapter-issues-list',
@@ -274,7 +275,7 @@ it('toont sectie-introducties in de body in dezelfde stijl als het stappenplan',
 
     $gettingStartedPos = mb_strpos($html, $esc(__('manual.getting_started.title')));
     $adminSectionPos = mb_strpos($html, $esc(__('manual.sections.admin_portal.title')));
-    $teamsChapterPos = mb_strpos($html, 'id="chapter-team"');
+    $teamsChapterPos = mb_strpos($html, 'id="chapter-team-backoffice"');
     $internetSectionPos = mb_strpos($html, $esc(__('manual.sections.internet_portal.title')));
     $qrChapterPos = mb_strpos($html, 'id="chapter-portal-worker-qr"');
 

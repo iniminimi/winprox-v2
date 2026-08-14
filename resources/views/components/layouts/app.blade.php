@@ -188,7 +188,7 @@
                             $peopleGroupActive = request()->routeIs('team.index');
                             $peopleSection = $peopleGroupActive ? (string) request()->query('section', '') : '';
                             $backofficeNavActive = $peopleGroupActive && $peopleSection === 'backoffice';
-                            $teamsNavActive = $peopleGroupActive && $peopleSection === 'teams';
+                            $teamsNavActive = $peopleGroupActive && $peopleSection !== 'backoffice';
 
                             $timeGroupActive = request()->routeIs('time.*');
                             $automationGroupActive = request()->routeIs('iot.*') || request()->routeIs('esg.*');
@@ -282,11 +282,13 @@
                                     <span>{{ __('common.nav.people') }}</span>
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
-                                    <a href="{{ route('team.index', ['section' => 'backoffice']) }}"
-                                       class="wp-nav-link wp-nav-link--sub {{ $backofficeNavActive ? 'is-active' : '' }}"
-                                       @click="nav = false">
-                                        <span>{{ __('common.nav.backoffice') }}</span>
-                                    </a>
+                                    @can('create', App\Models\User::class)
+                                        <a href="{{ route('team.index', ['section' => 'backoffice']) }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ $backofficeNavActive ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.backoffice') }}</span>
+                                        </a>
+                                    @endcan
                                     <a href="{{ route('team.index', ['section' => 'teams']) }}"
                                        class="wp-nav-link wp-nav-link--sub {{ $teamsNavActive ? 'is-active' : '' }}"
                                        @click="nav = false">

@@ -98,3 +98,18 @@ it('laadt paginahulp voor platformaudit', function (): void {
         ->and($help['title'])->toBe('Hulp — Activiteitenlog')
         ->and($help['actions'])->not->toBeEmpty();
 });
+
+it('laadt paginahulp voor Backoffice en Teams', function (): void {
+    app()->setLocale('nl');
+
+    $backoffice = PageHelp::for('team.backoffice');
+    $teams = PageHelp::for('team.teams');
+
+    expect($backoffice)->not->toBeNull()
+        ->and($backoffice['title'])->toBe('Hulp — Backoffice')
+        ->and(collect($backoffice['actions'])->pluck('label')->all())->toContain('Collega-gebruikers')
+        ->and($teams)->not->toBeNull()
+        ->and($teams['title'])->toBe('Hulp — Teams')
+        ->and(collect($teams['actions'])->pluck('label')->all())->toContain('Checklists')
+        ->and(collect($teams['actions'])->pluck('label')->all())->not->toContain('Collega-gebruikers');
+});

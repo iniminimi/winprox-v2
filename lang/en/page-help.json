@@ -375,13 +375,18 @@
                 "expired": "Pending hold expired without confirmation."
             }
         },
-        "team": {
-            "title": "Help — Teams & users",
+        "team.backoffice": {
+            "title": "Help — Backoffice",
             "actions": [
                 {
                     "label": "Colleague users",
                     "text": "Manage administrative staff who mainly work on a PC. They must log in with email and password. An administrator is the main user who can change company details. Administrators and staff are unlimited — units determine your subscription."
-                },
+                }
+            ]
+        },
+        "team.teams": {
+            "title": "Help — Teams",
+            "actions": [
                 {
                     "label": "Print briefing",
                     "text": "Open a printable overview of open tasks per team — useful on the shop floor. The same briefing is also available on Dashboard, Issues and Calendar."

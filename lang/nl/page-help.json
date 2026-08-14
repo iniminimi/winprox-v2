@@ -375,13 +375,18 @@
                 "expired": "Pending hold verlopen zonder bevestiging."
             }
         },
-        "team": {
-            "title": "Hulp — Teams & gebruikers",
+        "team.backoffice": {
+            "title": "Hulp — Backoffice",
             "actions": [
                 {
                     "label": "Collega-gebruikers",
                     "text": "Beheer administratieve medewerkers die voornamelijk op een pc werken. Deze moeten inloggen met e-mail en wachtwoord. Een beheerder is de hoofdgebruiker die de bedrijfsgegevens kan aanpassen. Beheerders en medewerkers zijn onbeperkt — units bepalen uw abonnement."
-                },
+                }
+            ]
+        },
+        "team.teams": {
+            "title": "Hulp — Teams",
+            "actions": [
                 {
                     "label": "Briefing afdrukken",
                     "text": "Open een afdrukbaar overzicht van open taken per team — handig voor de werkvloer. Dezelfde briefing vind je ook op Dashboard, Meldingen en Kalender."

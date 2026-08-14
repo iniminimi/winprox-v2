@@ -1,25 +1,21 @@
 <div
     class="wp-stack"
-    data-manual-capture="team"
-    @if (in_array($section, ['backoffice', 'teams'], true))
-        x-data
-        x-init="$nextTick(() => {
-            document.getElementById(@js($section))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        })"
-    @endif
+    data-manual-capture="{{ $this->isBackofficeSection() ? 'team-backoffice' : 'team' }}"
 >
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
                 icon="team"
-                :title="__('team.title')"
-                help-page="team"
-                :subtitle="__('team.subtitle')"
+                :title="$this->isBackofficeSection() ? __('team.backoffice.title') : __('team.teams_page.title')"
+                :help-page="$this->isBackofficeSection() ? 'team.backoffice' : 'team.teams'"
+                :subtitle="$this->isBackofficeSection() ? __('team.backoffice.subtitle') : __('team.teams_page.subtitle')"
             />
         </div>
-        <div class="wp-cluster">
-            <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('team.briefing') }}</a>
-        </div>
+        @unless ($this->isBackofficeSection())
+            <div class="wp-cluster">
+                <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('team.briefing') }}</a>
+            </div>
+        @endunless
     </div>
 
     @if ($workersImportNotice)
@@ -30,6 +26,7 @@
         ])>{{ $workersImportNotice }}</div>
     @endif
 
+    @if ($this->isBackofficeSection())
     <div id="backoffice">
         @if ($canManageUsers)
             <div class="wp-card wp-card-pad wp-stack-tight">
@@ -74,7 +71,8 @@
             </div>
         </div>
         @endif
-
+    </div>
+    @else
     <x-wp-disclosure-card
         :title="__('unit_checks.lists.title')"
         :subtitle="__('team.checklists.click_to_manage')"
@@ -159,7 +157,6 @@
             <p class="wp-muted">{{ __('unit_checks.lists.empty') }}</p>
         @endif
         </x-wp-disclosure-card>
-    </div>
 
     {{-- Teams ---------------------------------------------------------------}}
     <div id="teams" class="wp-card wp-card-pad wp-stack-tight">
@@ -284,6 +281,7 @@
             @endforelse
         </div>
     </div>
+    @endif
 
     {{-- Modal: collega-gebruiker --------------------------------------------}}
     @if ($canManageUsers && $showColleagueModal)

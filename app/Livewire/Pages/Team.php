@@ -106,7 +106,7 @@ class Team extends Component
     #[Url(as: 'team')]
     public ?int $highlightTeamId = null;
 
-    /** Deep-link from sidebar: backoffice (colleagues + checklists) or teams. */
+    /** Sidebar: backoffice = colleague users; teams = checklists + operational teams. */
     #[Url(as: 'section')]
     public ?string $section = null;
 
@@ -152,10 +152,6 @@ class Team extends Component
 
     public function mount(): void
     {
-        if (! in_array($this->section, ['backoffice', 'teams'], true)) {
-            $this->section = null;
-        }
-
         if ($this->highlightWorkerId !== null) {
             $worker = Worker::query()
                 ->where('tenant_id', Tenancy::id())
@@ -163,14 +159,27 @@ class Team extends Component
 
             if ($worker !== null) {
                 $this->expandTeam((int) $worker->internal_team_id);
-                $this->section ??= 'teams';
+                $this->section = 'teams';
             }
         }
 
         if ($this->highlightTeamId !== null) {
             $this->expandTeam($this->highlightTeamId);
-            $this->section ??= 'teams';
+            $this->section = 'teams';
         }
+
+        if (! in_array($this->section, ['backoffice', 'teams'], true)) {
+            $this->section = 'teams';
+        }
+
+        if ($this->section === 'backoffice' && ! (auth()->user()?->can('create', User::class) ?? false)) {
+            $this->section = 'teams';
+        }
+    }
+
+    public function isBackofficeSection(): bool
+    {
+        return $this->section === 'backoffice';
     }
 
     // --- Collega-gebruikers (alleen admin) --------------------------------
@@ -1275,7 +1284,9 @@ class Team extends Component
         $user = auth()->user();
         $canManageUsers = $user->can('create', User::class);
 
-        $colleagues = $canManageUsers
+        $isBackoffice = $this->isBackofficeSection();
+
+        $colleagues = ($isBackoffice && $canManageUsers)
             ? User::where('tenant_id', Tenancy::id())
                 ->where('is_superuser', false)
                 ->when(trim($this->search) !== '', function ($query) {
@@ -1289,34 +1300,38 @@ class Team extends Component
                 ->get()
             : collect();
 
-        $teams = InternalTeam::with([
-            'translations',
-            'workers' => fn ($q) => $q->orderBy('first_name')->orderBy('last_name'),
-        ])
-            ->when(trim($this->search) !== '', function ($query) {
-                $term = '%'.trim($this->search).'%';
-                $query->where(function ($teamQuery) use ($term) {
-                    $teamQuery->where('name', 'like', $term)
-                        ->orWhereHas('workers', function ($workerQuery) use ($term) {
-                            $workerQuery->where('first_name', 'like', $term)
-                                ->orWhere('last_name', 'like', $term);
-                        });
-                });
-            })
-            ->orderBy('sort_order')
-            ->orderBy('name')
-            ->get();
+        $teams = $isBackoffice
+            ? collect()
+            : InternalTeam::with([
+                'translations',
+                'workers' => fn ($q) => $q->orderBy('first_name')->orderBy('last_name'),
+            ])
+                ->when(trim($this->search) !== '', function ($query) {
+                    $term = '%'.trim($this->search).'%';
+                    $query->where(function ($teamQuery) use ($term) {
+                        $teamQuery->where('name', 'like', $term)
+                            ->orWhereHas('workers', function ($workerQuery) use ($term) {
+                                $workerQuery->where('first_name', 'like', $term)
+                                    ->orWhere('last_name', 'like', $term);
+                            });
+                    });
+                })
+                ->orderBy('sort_order')
+                ->orderBy('name')
+                ->get();
 
-        if (trim($this->search) !== '') {
+        if (! $isBackoffice && trim($this->search) !== '') {
             foreach ($teams as $team) {
                 $this->expandTeam((int) $team->id);
             }
         }
 
-        $categories = \App\Models\Category::where('tenant_id', Tenancy::id())
-            ->with('translations')
-            ->orderBy('name')
-            ->get(['id', 'name', 'original_language']);
+        $categories = $isBackoffice
+            ? collect()
+            : \App\Models\Category::where('tenant_id', Tenancy::id())
+                ->with('translations')
+                ->orderBy('name')
+                ->get(['id', 'name', 'original_language']);
 
         $teamTranslationLocales = config('locales.labels', []);
         if ($this->showTeamModal && $this->editingTeamId !== null) {
@@ -1348,11 +1363,13 @@ class Team extends Component
 
         $tenantId = Tenancy::id();
         $tenant = $tenantId !== null ? Tenant::query()->find($tenantId) : null;
-        $workerImportBatches = WorkerImportBatchRegistry::recentBatchesForTenant($tenantId)
-            ->map(fn (array $batch) => array_merge(
-                $batch,
-                WorkerImportBatchRegistry::summary($tenantId, $batch['batch_id']),
-            ));
+        $workerImportBatches = $isBackoffice
+            ? collect()
+            : WorkerImportBatchRegistry::recentBatchesForTenant($tenantId)
+                ->map(fn (array $batch) => array_merge(
+                    $batch,
+                    WorkerImportBatchRegistry::summary($tenantId, $batch['batch_id']),
+                ));
 
         return view('livewire.pages.team', [
             'colleagues' => $colleagues,
@@ -1364,21 +1381,25 @@ class Team extends Component
             'hasTimeModule' => $tenant?->hasTimeModule() ?? false,
             'canImportWorkers' => $tenant?->hasCsvWorkersImport() ?? false,
             'roles' => User::ROLES,
-            'categories' => $categories,
+            'categories' => $isBackoffice ? collect() : $categories,
             'teamTranslationLocales' => $teamTranslationLocales,
             'checkListTranslationLocales' => $checkListTranslationLocales,
-            'checkLists' => UnitCheckList::query()
-                ->with(['internalTeam.translations', 'translations'])
-                ->withCount(['items', 'units'])
-                ->orderBy('name')
-                ->get(),
-            'checkListTeams' => InternalTeam::query()
-                ->where('is_active', true)
-                ->with('translations')
-                ->orderBy('sort_order')
-                ->orderBy('name')
-                ->get(['id', 'name', 'original_language']),
-            'checkListStarters' => config('unit_check_starters', []),
+            'checkLists' => $isBackoffice
+                ? collect()
+                : UnitCheckList::query()
+                    ->with(['internalTeam.translations', 'translations'])
+                    ->withCount(['items', 'units'])
+                    ->orderBy('name')
+                    ->get(),
+            'checkListTeams' => $isBackoffice
+                ? collect()
+                : InternalTeam::query()
+                    ->where('is_active', true)
+                    ->with('translations')
+                    ->orderBy('sort_order')
+                    ->orderBy('name')
+                    ->get(['id', 'name', 'original_language']),
+            'checkListStarters' => $isBackoffice ? [] : config('unit_check_starters', []),
         ]);
     }
 }

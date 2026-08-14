@@ -73,8 +73,8 @@ Middleware: geldige tenant + trial/abonnement (`support.tenant`). Rollen: **admi
 - Geplande taken (`scheduled_for`) en recurring-cycli.
 
 ### Team
-- **Collega's** (admin): users met rol admin/employee.
-- **Interne teams** + **workers** (zonder login): icoon, teamleader-vlag, Clock Point-QR.
+- **Mensen → Backoffice:** collega’s (admin) — users met rol admin/employee.
+- **Mensen → Teams:** checklists + interne teams + workers (zonder login): icoon, teamleader-vlag, Clock Point-QR.
 - Worker-icoon reset / lockout-beheer.
 
 ### Overige tenant-schermen

@@ -73,12 +73,22 @@ return [
             'prefer' => ['qr', 'sticker', 'unit'],
         ],
         [
-            'patterns' => ['uitvoerder', 'worker', 'teamleider', 'teamleader', 'operationeel team', 'collega'],
-            'page' => 'team',
+            'patterns' => [
+                'collega', 'colleague', 'backoffice', 'gebruiker toe', 'gebruikers beheer',
+                'utilisateur collèg', 'kollegen', 'usuario colega', 'utente colleg',
+            ],
+            'page' => 'team.backoffice',
+        ],
+        [
+            'patterns' => [
+                'uitvoerder', 'worker', 'teamleider', 'teamleader', 'operationeel team',
+                'checklist', 'clock point',
+            ],
+            'page' => 'team.teams',
         ],
         [
             'patterns' => ['team', 'équipes', 'equipe'],
-            'page' => 'team',
+            'page' => 'team.teams',
         ],
         [
             'patterns' => ['clock point', 'klokken', 'inchecken', 'uitchecken', 'aanwezigheid', 'presence'],

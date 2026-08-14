@@ -1,6 +1,12 @@
 {
-    "title": "Usuarios",
-    "subtitle": "Gestione usuarios colegas, equipos operativos, operarios y listas de comprobación de unit checks.",
+    "backoffice": {
+        "title": "Backoffice",
+        "subtitle": "Gestione usuarios colegas con inicio de sesión (administrador y empleado)."
+    },
+    "teams_page": {
+        "title": "Teams",
+        "subtitle": "Gestione equipos operativos, operarios y listas de comprobación de unit checks."
+    },
     "nav": {
         "teams": "Teams"
     },

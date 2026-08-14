@@ -375,13 +375,18 @@
                 "expired": "Hold pending scaduto senza conferma."
             }
         },
-        "team": {
-            "title": "Aiuto — Team e utenti",
+        "team.backoffice": {
+            "title": "Aiuto — Backoffice",
             "actions": [
                 {
                     "label": "Utenti colleghi",
                     "text": "Gestisci collaboratori amministrativi che lavorano principalmente al PC. Devono accedere con e-mail e password. Un amministratore è l'utente principale che può modificare i dati aziendali. Amministratori e collaboratori sono illimitati — le unità determinano l'abbonamento."
-                },
+                }
+            ]
+        },
+        "team.teams": {
+            "title": "Aiuto — Teams",
+            "actions": [
                 {
                     "label": "Stampa briefing",
                     "text": "Apri un riepilogo stampabile delle attività aperte per team — utile sul campo. Lo stesso briefing si trova anche su Dashboard, Segnalazioni e Calendario."

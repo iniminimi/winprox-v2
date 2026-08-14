@@ -1,6 +1,12 @@
 {
-    "title": "Utenti",
-    "subtitle": "Gestisci utenti colleghi, team operativi, esecutori e checklist per i unit check.",
+    "backoffice": {
+        "title": "Backoffice",
+        "subtitle": "Gestisca utenti colleghi con accesso (amministratore e dipendente)."
+    },
+    "teams_page": {
+        "title": "Teams",
+        "subtitle": "Gestisca team operativi, esecutori e checklist per i unit check."
+    },
     "nav": {
         "teams": "Teams"
     },

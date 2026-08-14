@@ -388,7 +388,9 @@ final class SearchTenantGlobalAction
             ['id' => 'issues', 'route' => 'issues.index', 'label' => 'common.nav.issues'],
             ['id' => 'tasks', 'route' => 'tasks.index', 'label' => 'common.nav.tasks'],
             ['id' => 'calendar', 'route' => 'calendar.index', 'label' => 'common.nav.calendar'],
-            ['id' => 'team', 'route' => 'team.index', 'label' => 'common.nav.users'],
+            ['id' => 'backoffice', 'route' => 'team.index', 'params' => ['section' => 'backoffice'], 'label' => 'common.nav.backoffice'],
+            ['id' => 'users', 'route' => 'team.index', 'params' => ['section' => 'backoffice'], 'label' => 'common.nav.users'],
+            ['id' => 'teams', 'route' => 'team.index', 'params' => ['section' => 'teams'], 'label' => 'team.nav.teams'],
             ['id' => 'settings', 'route' => 'settings.index', 'label' => 'common.nav.settings'],
             ['id' => 'subscription', 'route' => 'subscription.index', 'label' => 'common.nav.subscription'],
             ['id' => 'faq', 'route' => 'faq.index', 'label' => 'common.nav.faq'],
@@ -417,7 +419,7 @@ final class SearchTenantGlobalAction
                 'type' => 'page',
                 'title' => (string) __($page['label']),
                 'subtitle' => '',
-                'url' => route($page['route']),
+                'url' => route($page['route'], $page['params'] ?? []),
             ])
             ->values();
     }

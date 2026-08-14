@@ -1,6 +1,12 @@
 {
-    "title": "Gebruikers",
-    "subtitle": "Beheer collega-gebruikers, operationele teams, uitvoerders en checklists voor unit checks.",
+    "backoffice": {
+        "title": "Backoffice",
+        "subtitle": "Beheer collega-gebruikers met inloggen (beheerder en medewerker)."
+    },
+    "teams_page": {
+        "title": "Teams",
+        "subtitle": "Beheer operationele teams, uitvoerders en checklists voor unit checks."
+    },
     "nav": {
         "teams": "Teams"
     },

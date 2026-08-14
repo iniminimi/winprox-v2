@@ -375,13 +375,18 @@
                 "expired": "Hold pending expiré sans confirmation."
             }
         },
-        "team": {
-            "title": "Aide — Équipes & utilisateurs",
+        "team.backoffice": {
+            "title": "Aide — Backoffice",
             "actions": [
                 {
                     "label": "Utilisateurs collègues",
                     "text": "Gérez les collaborateurs administratifs qui travaillent surtout sur PC. Ils se connectent par e-mail et mot de passe. Un administrateur est l'utilisateur principal qui peut modifier les données de l'entreprise. Administrateurs et collaborateurs sont illimités — les unités déterminent votre abonnement."
-                },
+                }
+            ]
+        },
+        "team.teams": {
+            "title": "Aide — Équipes",
+            "actions": [
                 {
                     "label": "Imprimer le briefing",
                     "text": "Ouvrez un aperçu imprimable des tâches ouvertes par équipe — pratique sur le terrain. Le même briefing se trouve aussi sur Tableau de bord, Signalements et Calendrier."

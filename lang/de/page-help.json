@@ -375,13 +375,18 @@
                 "expired": "Pending-Hold ohne Bestätigung abgelaufen."
             }
         },
-        "team": {
-            "title": "Hilfe — Teams & Benutzer",
+        "team.backoffice": {
+            "title": "Hilfe — Backoffice",
             "actions": [
                 {
                     "label": "Kollegenbenutzer",
                     "text": "Verwalten Sie administrative Mitarbeiter, die hauptsächlich am PC arbeiten. Diese melden sich mit E-Mail und Passwort an. Ein Administrator ist der Hauptbenutzer, der Unternehmensdaten ändern kann. Administratoren und Mitarbeiter sind unbegrenzt — Einheiten bestimmen Ihr Abonnement."
-                },
+                }
+            ]
+        },
+        "team.teams": {
+            "title": "Hilfe — Teams",
+            "actions": [
                 {
                     "label": "Briefing drucken",
                     "text": "Öffnen Sie eine druckbare Übersicht offener Aufgaben pro Team — praktisch für die Werkstatt. Dasselbe Briefing finden Sie auch auf Dashboard, Meldungen und Kalender."

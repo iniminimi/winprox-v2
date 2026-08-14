@@ -44,11 +44,11 @@ it('toont instellingen maar geen abonnement in de sidebar voor medewerkers', fun
     $this->actingAs($employee)
         ->get(route('dashboard'))
         ->assertOk()
-        ->assertDontSee('href="'.route('subscription.index').'"', false)
         ->assertSee(__('common.nav.settings'), false)
-        ->assertSee(__('common.nav.backoffice'), false)
+        ->assertDontSee('href="'.route('subscription.index').'"', false)
+        ->assertDontSee(__('common.nav.backoffice'), false)
         ->assertSee(__('team.nav.teams'), false)
-        ->assertSee('href="'.route('team.index', ['section' => 'backoffice']).'"', false)
+        ->assertDontSee('href="'.route('team.index', ['section' => 'backoffice']).'"', false)
         ->assertSee('href="'.route('team.index', ['section' => 'teams']).'"', false);
 
     $this->actingAs($employee)
@@ -57,7 +57,7 @@ it('toont instellingen maar geen abonnement in de sidebar voor medewerkers', fun
         ->assertSee(__('settings.style.title'), false);
 });
 
-it('opent team-pagina via Mensen → Backoffice en Teams section-links', function () {
+it('opent Backoffice met alleen collega-gebruikers en Teams met checklists plus teams', function () {
     $tenant = Tenant::factory()->create(['name' => 'Demo Facility']);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
@@ -66,7 +66,20 @@ it('opent team-pagina via Mensen → Backoffice en Teams section-links', functio
         ->get(route('team.index', ['section' => 'backoffice']))
         ->assertOk()
         ->assertSee('id="backoffice"', false)
-        ->assertSee('id="teams"', false);
+        ->assertSee(__('team.colleagues.title'), false)
+        ->assertSee(\App\Support\PageHelp::for('team.backoffice')['title'], false)
+        ->assertDontSee('id="teams"', false)
+        ->assertDontSee(__('unit_checks.lists.title'), false);
+
+    $this->actingAs($admin)
+        ->get(route('team.index', ['section' => 'teams']))
+        ->assertOk()
+        ->assertSee('id="teams"', false)
+        ->assertSee(__('unit_checks.lists.title'), false)
+        ->assertSee(__('team.teams.title'), false)
+        ->assertSee(\App\Support\PageHelp::for('team.teams')['title'], false)
+        ->assertDontSee('id="backoffice"', false)
+        ->assertDontSee(__('team.colleagues.title'), false);
 });
 
 it('toont submenu-items als bullets zonder herhaalde groep-iconen', function () {

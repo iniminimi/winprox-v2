@@ -1,6 +1,12 @@
 {
-    "title": "Utilisateurs",
-    "subtitle": "Gérez les utilisateurs collègues, les équipes opérationnelles, les exécutants et les listes de contrôle unit check.",
+    "backoffice": {
+        "title": "Backoffice",
+        "subtitle": "Gérez les utilisateurs collègues avec connexion (administrateur et employé)."
+    },
+    "teams_page": {
+        "title": "Équipes",
+        "subtitle": "Gérez les équipes opérationnelles, les exécutants et les listes de contrôle unit check."
+    },
     "nav": {
         "teams": "Teams"
     },

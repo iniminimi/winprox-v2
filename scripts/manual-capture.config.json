@@ -2,7 +2,7 @@
     "targets": [
         {
             "id": "team",
-            "path": "/team",
+            "path": "/team?section=teams",
             "selector": "[data-manual-capture=\"team\"]",
             "viewport": { "width": 1280, "height": 800 },
             "auth": true

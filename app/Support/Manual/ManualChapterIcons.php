@@ -8,7 +8,8 @@ final class ManualChapterIcons
 {
     /** @var array<string, string> */
     private const ICONS = [
-        'team' => 'team',
+        'team.backoffice' => 'team',
+        'team.teams' => 'team',
         'locations.list' => 'locations',
         'locations.show' => 'locations',
         'issues.list' => 'issues',
