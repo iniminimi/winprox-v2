@@ -1329,8 +1329,24 @@ button.wp-config-overview-kpi--filter.is-active .wp-config-overview-kpi__value {
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius);
     background-color: var(--wp-surface);
+    color: inherit;
+    text-align: left;
     text-decoration: none;
     transition: background-color var(--wp-transition), border-color var(--wp-transition);
+}
+
+button.wp-issue-row {
+    width: 100%;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+    appearance: none;
+    align-items: center;
+}
+
+button.wp-issue-row:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
 }
 
 .wp-issue-row:hover {

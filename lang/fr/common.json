@@ -73,7 +73,22 @@
         "button": "QR",
         "modal_title": "QR",
         "print": "Afficher / imprimer",
-        "print_hint": "Ouvre la page d'impression dans un nouvel onglet."
+        "pack_heading": "Feuille d'impression",
+        "pack_hint": "Un QR par page, fichier Word avec arrière-plan.",
+        "formats": {
+            "a6_print": {
+                "title": "A6",
+                "size": "105 × 148 mm"
+            },
+            "a5_print": {
+                "title": "A5",
+                "size": "148 × 210 mm"
+            },
+            "a4_print": {
+                "title": "A4",
+                "size": "210 × 297 mm"
+            }
+        }
     },
     "help": {
         "button": "Aide",

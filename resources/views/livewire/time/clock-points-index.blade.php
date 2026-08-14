@@ -132,14 +132,13 @@
             closeMethod="closeQrPackModal"
             title-id="clock-point-qr-cluster-modal-title"
             :title="__('common.qr.modal_title')"
-            :subtitle="__('time.clock_points.qr.pack.modal_subtitle', ['name' => $qrPackClockPoint->name])"
+            :subtitle="$qrPackClockPoint->name"
             :print-url="route('time.clock-points.qr', $qrPackClockPoint)"
             :print-label="__('common.qr.print')"
-            :print-hint="__('common.qr.print_hint')"
             :formats="collect($qrPackTemplates)->map(fn ($template) => [
                 'key' => $qrPackClockPoint->id.'-'.$template->value,
-                'title' => __('time.clock_points.qr.pack.formats.'.$template->value.'.title'),
-                'description' => __('time.clock_points.qr.pack.formats.'.$template->value.'.description'),
+                'title' => __('common.qr.formats.'.$template->value.'.title'),
+                'size' => __('common.qr.formats.'.$template->value.'.size'),
                 'url' => route('time.clock-points.qr-pack', [
                     'clockPoint' => $qrPackClockPoint,
                     'template' => $template->value,

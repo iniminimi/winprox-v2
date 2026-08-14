@@ -63,7 +63,6 @@
     "location_qr_subtitle": "Algemene locatie-QR voor meldingen zonder unit.",
     "unit_qr_subtitle": "QR-code voor deze unit — link naar het meldportaal.",
     "unit_qr_pack": {
-        "modal_subtitle": "Kies het papierformaat voor :name.",
         "unavailable": "QR-export is niet beschikbaar op deze server.",
         "generating": "Afdrukblad wordt aangemaakt…",
         "download_failed": "QR-afdrukblad kon niet worden aangemaakt."

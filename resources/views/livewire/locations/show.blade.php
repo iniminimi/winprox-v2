@@ -795,14 +795,13 @@
             closeMethod="closeUnitQrPackModal"
             title-id="unit-qr-cluster-modal-title"
             :title="__('common.qr.modal_title')"
-            :subtitle="__('locations.unit_qr_pack.modal_subtitle', ['name' => $unitQrPackUnit->name])"
+            :subtitle="$unitQrPackUnit->name"
             :print-url="route('units.qr', $unitQrPackUnit)"
             :print-label="__('common.qr.print')"
-            :print-hint="__('common.qr.print_hint')"
             :formats="collect($unitQrPackTemplates)->map(fn ($template) => [
                 'key' => $unitQrPackUnit->id.'-'.$template->value,
-                'title' => __('locations.qr_pack.formats.'.$template->value.'.title'),
-                'description' => __('locations.qr_pack.formats.'.$template->value.'.description'),
+                'title' => __('common.qr.formats.'.$template->value.'.title'),
+                'size' => __('common.qr.formats.'.$template->value.'.size'),
                 'url' => route('units.qr-pack', [
                     'unit' => $unitQrPackUnit,
                     'template' => $template->value,

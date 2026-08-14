@@ -203,24 +203,9 @@
             "rotation_saved": "Ajuste de rotación QR guardado.",
             "blocked_attempts": ":count escaneo(s) QR bloqueado(s) en los últimos 7 días.",
             "pack": {
-                "modal_subtitle": "Elija el tamaño de papel para :name.",
                 "unavailable": "La exportación QR no está disponible en este servidor.",
                 "generating": "Creando hoja de impresión…",
-                "download_failed": "No se pudo crear la hoja de impresión QR.",
-                "formats": {
-                    "a6_print": {
-                        "title": "Hoja A6",
-                        "description": "1 código QR por página (105 × 148 mm) — página completa con fondo."
-                    },
-                    "a5_print": {
-                        "title": "Hoja A5",
-                        "description": "1 código QR por página (148 × 210 mm) — página completa con fondo."
-                    },
-                    "a4_print": {
-                        "title": "Hoja A4",
-                        "description": "1 código QR por página (210 × 297 mm) — página completa con fondo."
-                    }
-                }
+                "download_failed": "No se pudo crear la hoja de impresión QR."
             }
         }
     },

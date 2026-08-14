@@ -203,24 +203,9 @@
             "rotation_saved": "QR-Rotations-Einstellung gespeichert.",
             "blocked_attempts": ":count blockierte QR-Scan(s) in den letzten 7 Tagen.",
             "pack": {
-                "modal_subtitle": "Wählen Sie das Papierformat für :name.",
                 "unavailable": "QR-Export ist auf diesem Server nicht verfügbar.",
                 "generating": "Druckblatt wird erstellt…",
-                "download_failed": "QR-Druckblatt konnte nicht erstellt werden.",
-                "formats": {
-                    "a6_print": {
-                        "title": "A6-Druckblatt",
-                        "description": "1 QR-Code pro Blatt (105 × 148 mm) — ganzseitig mit Hintergrund."
-                    },
-                    "a5_print": {
-                        "title": "A5-Druckblatt",
-                        "description": "1 QR-Code pro Blatt (148 × 210 mm) — ganzseitig mit Hintergrund."
-                    },
-                    "a4_print": {
-                        "title": "A4-Druckblatt",
-                        "description": "1 QR-Code pro Blatt (210 × 297 mm) — ganzseitig mit Hintergrund."
-                    }
-                }
+                "download_failed": "QR-Druckblatt konnte nicht erstellt werden."
             }
         }
     },
