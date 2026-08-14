@@ -18,7 +18,7 @@
     "briefing": "Imprimir briefing",
     "list": {
         "title": "Incidencias",
-        "subtitle": "Todos los problemas informados por los reportadores",
+        "subtitle": "Todos los problemas informados",
         "add": "+ Añadir incidencia",
         "plan_round": "Planificar ronda de inspección",
         "inspection_rounds": "Rondas de inspección",

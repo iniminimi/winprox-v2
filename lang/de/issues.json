@@ -18,7 +18,7 @@
     "briefing": "Briefing drucken",
     "list": {
         "title": "Meldungen",
-        "subtitle": "Alle von Meldern gemeldeten Probleme",
+        "subtitle": "Alle gemeldeten Probleme",
         "add": "+ Meldung hinzufügen",
         "plan_round": "Inspektionsrunde planen",
         "inspection_rounds": "Inspektionsrunden",

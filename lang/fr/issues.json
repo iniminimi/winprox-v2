@@ -18,7 +18,7 @@
     "briefing": "Imprimer le briefing",
     "list": {
         "title": "Signalements",
-        "subtitle": "Tous les problèmes signalés par les rapporteurs",
+        "subtitle": "Tous les problèmes signalés",
         "add": "+ Ajouter un signalement",
         "plan_round": "Planifier une tournée d’inspection",
         "inspection_rounds": "Tournées d’inspection",

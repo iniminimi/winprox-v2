@@ -18,7 +18,7 @@
     "briefing": "Print briefing",
     "list": {
         "title": "Issues",
-        "subtitle": "All problems reported by reporters",
+        "subtitle": "All reported problems",
         "add": "+ Add issue",
         "plan_round": "Plan inspection round",
         "inspection_rounds": "Inspection rounds",

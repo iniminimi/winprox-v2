@@ -18,7 +18,7 @@
     "briefing": "Briefing afdrukken",
     "list": {
         "title": "Meldingen",
-        "subtitle": "Alle door melders gemelde problemen",
+        "subtitle": "Alle gemelde problemen",
         "add": "+ Melding toevoegen",
         "plan_round": "Inspectieronde plannen",
         "inspection_rounds": "Inspectierondes",
