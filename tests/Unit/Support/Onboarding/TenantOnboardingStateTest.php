@@ -53,6 +53,8 @@ it('toont locaties-onboarding op functionele paginas wanneer teams bestaan maar 
 
     expect($state->showCategoriesOrLocationsBanner())->toBeTrue()
         ->and($state->showCategoriesBanner())->toBeFalse()
+        ->and($state->showLocationsBanner())->toBeTrue()
+        ->and($state->blocksDashboardMain())->toBeTrue()
         ->and($state->showWelcomeGuide)->toBeTrue();
 });
 

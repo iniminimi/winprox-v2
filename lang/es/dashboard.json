@@ -53,6 +53,11 @@
             "text": "Vaya a Ubicaciones → Categorías y añada categorías para agrupar units (p. ej. taladros, sanitario, equipos de fitness, oficina, electricidad). Las categorías ayudan a filtrar y organizar units. Al vincular equipos de trabajadores a categorías específicas, WinProx garantiza que las tareas las ejecute el equipo correcto. Luego añada ubicaciones en Ubicaciones → Ubicaciones y cree units por ubicación — o vía Ubicaciones → Units.",
             "button": "Gestionar categorías"
         },
+        "locations": {
+            "title": "Empiece creando ubicaciones y units",
+            "text": "Vaya a Ubicaciones → Ubicaciones, añada ubicaciones y cree units por ubicación (máquinas, salas, activos). También puede importar units vía CSV o Excel, o crearlas en bloque.",
+            "button": "Gestionar ubicaciones"
+        },
         "clock_point": {
             "title": "Cree un Clock Point",
             "text": "Los trabajadores inician sesión y fichan mediante un Clock Point. Cree al menos un clock point e imprima la etiqueta QR o la hoja de impresión QR para que su equipo pueda empezar.",

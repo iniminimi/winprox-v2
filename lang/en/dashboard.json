@@ -53,6 +53,11 @@
             "text": "Go to Places → Categories and add categories to group units (e.g. drills, sanitary, fitness equipment, office, electricity). Categories help with filtering and organising units. By linking worker teams to specific categories, WinProx ensures tasks are carried out by the correct team. Then add locations under Places → Locations and create units per location — or via Places → Units.",
             "button": "Manage categories"
         },
+        "locations": {
+            "title": "Start by creating locations and units",
+            "text": "Go to Places → Locations, add locations and create units per location (machines, rooms, assets). You can also import units via CSV or Excel, or create them in bulk.",
+            "button": "Manage locations"
+        },
         "clock_point": {
             "title": "Create a Clock Point",
             "text": "Workers sign in and clock in/out via a Clock Point. Create at least one clock point and print the QR sticker or QR print sheet so your team can get started.",

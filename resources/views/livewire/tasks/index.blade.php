@@ -1,8 +1,10 @@
 <div class="wp-stack wp-tasks-page" data-manual-capture="tasks-list">
     @if ($onboarding->showTeamsBanner())
         <x-wp-onboarding-banner stage="teams" />
-    @elseif ($onboarding->showCategoriesOrLocationsBanner())
+    @elseif ($onboarding->showCategoriesBanner())
         <x-wp-onboarding-banner stage="categories" />
+    @elseif ($onboarding->showLocationsBanner())
+        <x-wp-onboarding-banner stage="locations" />
     @elseif ($onboarding->showClockPointBanner())
         <x-wp-onboarding-banner stage="clock_point" />
     @else

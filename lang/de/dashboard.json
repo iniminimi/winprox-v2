@@ -53,6 +53,11 @@
             "text": "Gehen Sie zu Standorte → Kategorien und fügen Sie Kategorien hinzu, um Units zu gruppieren (z. B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrizität). Kategorien helfen beim Filtern und Organisieren von Units. Indem Sie Ausführerteams mit bestimmten Kategorien verknüpfen, stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden. Fügen Sie danach Standorte unter Standorte → Standorte hinzu und erstellen Sie Units pro Standort — oder über Standorte → Units.",
             "button": "Kategorien verwalten"
         },
+        "locations": {
+            "title": "Beginnen Sie mit Standorten und Units",
+            "text": "Gehen Sie zu Standorte → Standorte, fügen Sie Standorte hinzu und erstellen Sie Units pro Standort (Maschinen, Räume, Assets). Units können Sie auch per CSV oder Excel importieren oder in Masse anlegen.",
+            "button": "Standorte verwalten"
+        },
         "clock_point": {
             "title": "Clock Point anlegen",
             "text": "Ausführende melden sich an und stempeln über einen Clock Point ein und aus. Legen Sie mindestens einen Clock Point an und drucken Sie den QR-Aufkleber oder das QR-Druckblatt, damit Ihr Team starten kann.",

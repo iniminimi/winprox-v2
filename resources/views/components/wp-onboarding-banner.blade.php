@@ -8,6 +8,7 @@
     $href = match ($stage) {
         'teams' => route('team.index', ['section' => 'teams']),
         'categories' => route('locations.index', ['section' => 'categories']),
+        'locations' => route('locations.index', ['section' => 'locations']),
         'clock_point' => TimeModuleAccess::activeTenantHasModule()
             ? route('time.clock-points.index')
             : route('team.index', ['section' => 'teams']),

@@ -53,6 +53,11 @@
             "text": "Ga naar Plaatsen → Categorieën en voeg categorieën toe om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Door teams van uitvoerders te koppelen aan specifieke categorieën zorgt WinProx ervoor dat taken uitgevoerd worden door het correcte team. Voeg daarna locaties toe onder Plaatsen → Locaties en maak per locatie units aan — of via Plaatsen → Units.",
             "button": "Categorieën beheren"
         },
+        "locations": {
+            "title": "Begin met het aanmaken van locaties en units",
+            "text": "Ga naar Plaatsen → Locaties, voeg locaties toe en maak per locatie units aan (machines, ruimtes, assets). Units kun je ook importeren via CSV of Excel, of in bulk aanmaken.",
+            "button": "Locaties beheren"
+        },
         "clock_point": {
             "title": "Maak een Clock Point aan",
             "text": "Uitvoerders melden zich aan en klokken in via een Clock Point. Maak minstens één clock point aan en print de QR-sticker of het QR-afdrukblad zodat je team kan starten.",

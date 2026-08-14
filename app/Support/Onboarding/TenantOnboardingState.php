@@ -54,10 +54,16 @@ final readonly class TenantOnboardingState
         return ! $this->needsTeamsOnboarding && $this->needsCategoriesOnboarding;
     }
 
-    public function showCategoriesOrLocationsBanner(): bool
+    public function showLocationsBanner(): bool
     {
         return ! $this->needsTeamsOnboarding
-            && ($this->needsCategoriesOnboarding || $this->needsLocationsOnboarding);
+            && ! $this->needsCategoriesOnboarding
+            && $this->needsLocationsOnboarding;
+    }
+
+    public function showCategoriesOrLocationsBanner(): bool
+    {
+        return $this->showCategoriesBanner() || $this->showLocationsBanner();
     }
 
     public function showClockPointBanner(): bool
@@ -72,6 +78,7 @@ final readonly class TenantOnboardingState
     {
         return $this->showTeamsBanner()
             || $this->showCategoriesBanner()
+            || $this->showLocationsBanner()
             || $this->showClockPointBanner();
     }
 }

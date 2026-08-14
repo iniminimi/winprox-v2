@@ -78,6 +78,31 @@ it('toont op locaties de beheerpagina zodra er een team is zodat categorieën aa
         ->assertDontSee(__('dashboard.onboarding.categories.button'));
 });
 
+it('toont locaties-onboarding op meldingen zodra er categorieën zijn maar nog geen locaties', function () {
+    [$tenant, $admin] = setupOnboardingAdmin();
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(IssuesIndex::class)
+        ->assertSee(__('dashboard.onboarding.locations.title'))
+        ->assertSee(__('dashboard.onboarding.locations.button'))
+        ->assertDontSee(__('dashboard.onboarding.categories.button'))
+        ->assertDontSee(__('issues.list.title'));
+});
+
+it('toont locaties-onboarding op het dashboard na categorieën zonder locaties', function () {
+    [$tenant, $admin] = setupOnboardingAdmin();
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.onboarding.locations.title'))
+        ->assertSee(__('dashboard.onboarding.locations.button'))
+        ->assertDontSeeHtml('wp-kpi--locations');
+});
+
 it('verbergt de welkomstgids op het dashboard wanneer teams, workers, locaties, units en een clock point bestaan', function () {
     [$tenant, $admin] = setupOnboardingAdmin();
 
