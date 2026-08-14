@@ -66,6 +66,11 @@
                     "text": "Kies minstens 2 units in volgorde (alle locaties). Volgorde = volgorde in de lijst."
                 },
                 {
+                    "label": "Taaknotitie",
+                    "nested": true,
+                    "text": "Optionele instructie voor het team op de taak. Leeg laten mag; dan geldt de omschrijving van de melding."
+                },
+                {
                     "label": "Briefing afdrukken",
                     "text": "Print een overzicht van open taken per team."
                 },
@@ -140,6 +145,10 @@
                 {
                     "label": "Selecteer alle units",
                     "text": "Gebruik het vinkje boven de lijst om snel alle units te selecteren. Daarna kunt u eventueel individuele units uitvinken."
+                },
+                {
+                    "label": "Taaknotitie",
+                    "text": "Optionele instructie voor het team op de taak. Leeg laten mag; dan geldt de omschrijving van de melding."
                 }
             ]
         },

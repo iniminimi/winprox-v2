@@ -100,6 +100,7 @@
         "team": "Team",
         "team_none": "Kies een team",
         "task_note": "Taaknotitie",
+        "task_note_hint": "Optionele instructie voor het team op de taak. Leeg laten mag; dan geldt de omschrijving van de melding.",
         "step_two_hint": "Wijs één team toe. De taak start meteen in uitvoering.",
         "next": "Volgende",
         "back": "Terug",

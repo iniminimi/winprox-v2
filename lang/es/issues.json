@@ -100,6 +100,7 @@
         "team": "Equipo",
         "team_none": "Elija un equipo",
         "task_note": "Nota de la tarea",
+        "task_note_hint": "Instrucción opcional para el equipo en la tarea. Déjelo vacío para usar la descripción de la incidencia.",
         "step_two_hint": "Asigne un equipo. La tarea comienza en curso de inmediato.",
         "next": "Siguiente",
         "back": "Atrás",

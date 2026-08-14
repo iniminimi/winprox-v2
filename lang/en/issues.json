@@ -100,6 +100,7 @@
         "team": "Team",
         "team_none": "Choose a team",
         "task_note": "Task note",
+        "task_note_hint": "Optional instruction for the team on this task. Leave empty to use the issue description.",
         "step_two_hint": "Assign one team. The task starts in progress immediately.",
         "next": "Next",
         "back": "Back",

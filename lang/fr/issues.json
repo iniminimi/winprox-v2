@@ -100,6 +100,7 @@
         "team": "Équipe",
         "team_none": "Choisir une équipe",
         "task_note": "Note de tâche",
+        "task_note_hint": "Instruction facultative pour l’équipe sur la tâche. Laissez vide pour utiliser la description du signalement.",
         "step_two_hint": "Assignez une équipe. La tâche démarre immédiatement en cours.",
         "next": "Suivant",
         "back": "Retour",

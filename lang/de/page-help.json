@@ -66,6 +66,11 @@
                     "text": "Wählen Sie mindestens 2 Units in Reihenfolge (alle Standorte). Listenreihenfolge = Stoppreihenfolge."
                 },
                 {
+                    "label": "Aufgabennotiz",
+                    "nested": true,
+                    "text": "Optionale Anweisung für das Team auf der Aufgabe. Leer lassen, um die Beschreibung der Meldung zu verwenden."
+                },
+                {
                     "label": "Briefing drucken",
                     "text": "Drucken Sie eine Übersicht offener Aufgaben pro Team."
                 },
@@ -140,6 +145,10 @@
                 {
                     "label": "Alle Units auswählen",
                     "text": "Nutzen Sie das Kontrollkästchen über der Liste, um schnell alle Units zu wählen. Danach können Sie einzelne Units wieder abwählen."
+                },
+                {
+                    "label": "Aufgabennotiz",
+                    "text": "Optionale Anweisung für das Team auf der Aufgabe. Leer lassen, um die Beschreibung der Meldung zu verwenden."
                 }
             ]
         },

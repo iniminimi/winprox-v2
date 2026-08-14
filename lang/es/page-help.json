@@ -66,6 +66,11 @@
                     "text": "Elija al menos 2 unidades en orden (cualquier ubicación). El orden de la lista es el de las paradas."
                 },
                 {
+                    "label": "Nota de la tarea",
+                    "nested": true,
+                    "text": "Instrucción opcional para el equipo en la tarea. Déjelo vacío para usar la descripción de la incidencia."
+                },
+                {
                     "label": "Imprimir briefing",
                     "text": "Imprima un resumen de tareas abiertas por equipo."
                 },
@@ -140,6 +145,10 @@
                 {
                     "label": "Seleccionar todas las unidades",
                     "text": "Use la casilla encima de la lista para seleccionar rápidamente todas las unidades. Luego puede desmarcar unidades individuales."
+                },
+                {
+                    "label": "Nota de la tarea",
+                    "text": "Instrucción opcional para el equipo en la tarea. Déjelo vacío para usar la descripción de la incidencia."
                 }
             ]
         },

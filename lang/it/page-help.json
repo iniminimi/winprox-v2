@@ -66,6 +66,11 @@
                     "text": "Scegli almeno 2 unità in ordine (qualsiasi sede). L’ordine dell’elenco è l’ordine delle fermate."
                 },
                 {
+                    "label": "Nota attività",
+                    "nested": true,
+                    "text": "Istruzione facoltativa per il team sull’attività. Lasciare vuoto per usare la descrizione della segnalazione."
+                },
+                {
                     "label": "Stampa briefing",
                     "text": "Stampi una panoramica delle attività aperte per team."
                 },
@@ -140,6 +145,10 @@
                 {
                     "label": "Seleziona tutte le unità",
                     "text": "Usi la casella sopra l'elenco per selezionare rapidamente tutte le unità. Poi può deselezionare le singole unità."
+                },
+                {
+                    "label": "Nota attività",
+                    "text": "Istruzione facoltativa per il team sull’attività. Lasciare vuoto per usare la descrizione della segnalazione."
                 }
             ]
         },

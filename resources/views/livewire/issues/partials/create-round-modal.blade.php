@@ -157,7 +157,9 @@
         </div>
 
         <div class="wp-field">
-            <label class="wp-label" for="round_create_task_note">{{ __('issues.create.task_note') }}</label>
+            <x-wp-tooltip :text="__('issues.create.task_note_hint')" wrap>
+                <label class="wp-label" for="round_create_task_note">{{ __('issues.create.task_note') }}</label>
+            </x-wp-tooltip>
             <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
                 <textarea id="round_create_task_note" class="wp-textarea" wire:model="task_note" rows="3"
                           maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"

@@ -100,6 +100,7 @@
         "team": "Team",
         "team_none": "Team wählen",
         "task_note": "Aufgabennotiz",
+        "task_note_hint": "Optionale Anweisung für das Team auf der Aufgabe. Leer lassen, um die Beschreibung der Meldung zu verwenden.",
         "step_two_hint": "Weisen Sie ein Team zu. Die Aufgabe startet sofort in Bearbeitung.",
         "next": "Weiter",
         "back": "Zurück",

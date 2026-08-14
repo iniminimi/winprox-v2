@@ -66,6 +66,11 @@
                     "text": "Pick at least 2 units in order (any locations). List order is the stop order."
                 },
                 {
+                    "label": "Task note",
+                    "nested": true,
+                    "text": "Optional instruction for the team on this task. Leave empty to use the issue description."
+                },
+                {
                     "label": "Print briefing",
                     "text": "Print an overview of open tasks per team."
                 },
@@ -140,6 +145,10 @@
                 {
                     "label": "Select all units",
                     "text": "Use the checkbox above the list to quickly select all units. You can then untick individual units if needed."
+                },
+                {
+                    "label": "Task note",
+                    "text": "Optional instruction for the team on this task. Leave empty to use the issue description."
                 }
             ]
         },

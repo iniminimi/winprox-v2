@@ -66,6 +66,11 @@
                     "text": "Choisissez au moins 2 unités dans l’ordre (tous les sites). L’ordre de la liste est l’ordre des arrêts."
                 },
                 {
+                    "label": "Note de tâche",
+                    "nested": true,
+                    "text": "Instruction facultative pour l’équipe sur la tâche. Laissez vide pour utiliser la description du signalement."
+                },
+                {
                     "label": "Imprimer le briefing",
                     "text": "Imprimez un aperçu des tâches ouvertes par équipe."
                 },
@@ -140,6 +145,10 @@
                 {
                     "label": "Sélectionner toutes les unités",
                     "text": "Utilisez la case au-dessus de la liste pour sélectionner rapidement toutes les unités, puis décochez celles à exclure."
+                },
+                {
+                    "label": "Note de tâche",
+                    "text": "Instruction facultative pour l’équipe sur la tâche. Laissez vide pour utiliser la description du signalement."
                 }
             ]
         },

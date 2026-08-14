@@ -100,6 +100,7 @@
         "team": "Team",
         "team_none": "Scelga un team",
         "task_note": "Nota attività",
+        "task_note_hint": "Istruzione facoltativa per il team sull’attività. Lasciare vuoto per usare la descrizione della segnalazione.",
         "step_two_hint": "Assegni un team. L'attività parte subito in corso.",
         "next": "Avanti",
         "back": "Indietro",
