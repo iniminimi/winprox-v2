@@ -191,6 +191,7 @@
             "sort_order": "Sort order"
         },
         "qr": {
+            "button": "QR code",
             "subtitle": "Scan to clock in or out",
             "print": "Print",
             "renew": "Renew QR code",
@@ -203,6 +204,8 @@
             "rotation_saved": "QR rotation setting saved.",
             "blocked_attempts": ":count blocked QR scan(s) in the last 7 days.",
             "pack": {
+                "button": "QR print sheet",
+                "modal_title": "QR print sheet",
                 "modal_subtitle": "Choose the paper size for :name.",
                 "unavailable": "QR export is not available on this server.",
                 "generating": "Creating print sheet…",

@@ -310,10 +310,6 @@
                     "text": "After an import, an overview of recent imports (30 days) for this location appears. Per import you see file name, date and unit count. Click Undo import to remove units without issues or tasks. Empty categories created only by the import are cleaned up. The location itself is kept."
                 },
                 {
-                    "label": "QR",
-                    "text": "Use <strong>QR</strong> on a unit to open a window: view/print in the browser, or a Word print sheet (A6, A5 or A4) for that unit."
-                },
-                {
                     "label": "QR print sheet",
                     "text": "Download a Word file with QR stickers (Avery/HERMA) or full-page print sheets (A6/A5/A4, 1 QR per page) for all units at this location. You can also generate free dynamic QR codes that are not yet linked to a unit. These can first be attached to a unit and then assigned to a unit via the same QR code. Administrators/employees can link all units to these dynamic QR codes. Team workers can only link units that are connected to their team."
                 },
@@ -1178,8 +1174,16 @@
                     "text": "Manage clock-in points and printable QR codes under Time → Clock Points. A default clock point is created automatically if needed."
                 },
                 {
-                    "label": "QR",
-                    "text": "Use <strong>QR</strong> to open a window: view/print in the browser, download a Word print sheet (A6, A5 or A4) with the same branding as Settings → QR print sheet, or renew the QR when a sticker is lost or you suspect misuse. The old code still works for a few days (grace period), then it is blocked. Each clock point has a unique code."
+                    "label": "Print QR code",
+                    "text": "Use <strong>QR code</strong> to open a quick browser print page. Click Print and place the QR at the entrance, warehouse, or other location. Each clock point has a unique code."
+                },
+                {
+                    "label": "QR print sheet",
+                    "text": "Use <strong>QR print sheet</strong> to download a Word file with one full-page QR (A6, A5 or A4) for this clock point. The sheet uses the same background and branding as Settings → QR print sheet (A6/A5/A4)."
+                },
+                {
+                    "label": "Renew QR code",
+                    "text": "Generate a new QR when a sticker is lost or you suspect misuse. The old code still works for a few days (grace period), then it is blocked."
                 },
                 {
                     "label": "QR rotation",

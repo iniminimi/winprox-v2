@@ -191,6 +191,7 @@
             "sort_order": "Ordine"
         },
         "qr": {
+            "button": "Codice QR",
             "subtitle": "Scansiona per timbrare entrata o uscita",
             "print": "Stampa",
             "renew": "Rinnova codice QR",
@@ -203,6 +204,8 @@
             "rotation_saved": "Impostazione rotazione QR salvata.",
             "blocked_attempts": ":count scansione/i QR bloccata/e negli ultimi 7 giorni.",
             "pack": {
+                "button": "Foglio di stampa QR",
+                "modal_title": "Foglio di stampa QR",
                 "modal_subtitle": "Scegli il formato carta per :name.",
                 "unavailable": "L'export QR non è disponibile su questo server.",
                 "generating": "Creazione foglio di stampa…",

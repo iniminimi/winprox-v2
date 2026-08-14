@@ -191,6 +191,7 @@
             "sort_order": "Orden"
         },
         "qr": {
+            "button": "Código QR",
             "subtitle": "Escanee para fichar entrada o salida",
             "print": "Imprimir",
             "renew": "Renovar código QR",
@@ -203,6 +204,8 @@
             "rotation_saved": "Ajuste de rotación QR guardado.",
             "blocked_attempts": ":count escaneo(s) QR bloqueado(s) en los últimos 7 días.",
             "pack": {
+                "button": "Hoja de impresión QR",
+                "modal_title": "Hoja de impresión QR",
                 "modal_subtitle": "Elija el tamaño de papel para :name.",
                 "unavailable": "La exportación QR no está disponible en este servidor.",
                 "generating": "Creando hoja de impresión…",

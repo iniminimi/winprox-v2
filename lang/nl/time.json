@@ -191,6 +191,7 @@
             "sort_order": "Sorteervolgorde"
         },
         "qr": {
+            "button": "QR-code",
             "subtitle": "Scan om in of uit te klokken",
             "print": "Afdrukken",
             "renew": "QR-code vernieuwen",
@@ -203,6 +204,8 @@
             "rotation_saved": "QR-rotatie-instelling opgeslagen.",
             "blocked_attempts": ":count geblokkeerde QR-scan(s) in de afgelopen 7 dagen.",
             "pack": {
+                "button": "QR-afdrukblad",
+                "modal_title": "QR-afdrukblad",
                 "modal_subtitle": "Kies het papierformaat voor :name.",
                 "unavailable": "QR-export is niet beschikbaar op deze server.",
                 "generating": "Afdrukblad wordt aangemaakt…",

@@ -69,12 +69,6 @@
     "style": {
         "label": "Stile"
     },
-    "qr": {
-        "button": "QR",
-        "modal_title": "QR",
-        "print": "Visualizza / stampa",
-        "print_hint": "Apre la pagina di stampa in una nuova scheda."
-    },
     "help": {
         "button": "Aiuto",
         "title": "Ha bisogno di aiuto?",
