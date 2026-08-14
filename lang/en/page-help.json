@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Search and filter",
-                    "text": "Search by email address. Below that, choose the source: <strong>Unsubscribed by recipient</strong> (link in an email), <strong>Undeliverable (bounce)</strong> or <strong>Blocked manually</strong> (via Block address). The count is in parentheses. Nothing checked shows all sources; multiple checkboxes together show those groups."
+                    "text": "Search by email address. The checkboxes filter on the same source as in the list. Nothing checked shows everything."
                 },
                 {
                     "label": "Unsubscribe source",

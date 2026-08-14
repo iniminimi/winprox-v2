@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Búsqueda y filtro",
-                    "text": "Busque por dirección de correo. Debajo elija el origen: <strong>Baja voluntaria</strong> (enlace en un correo), <strong>No entregable (bounce)</strong> o <strong>Bloqueado manualmente</strong> (con Bloquear una dirección). El total va entre paréntesis. Nada marcado muestra todos los orígenes; varias casillas juntas muestran esos grupos."
+                    "text": "Busque por dirección de correo. Las casillas filtran por el mismo origen que en la lista. Nada marcado muestra todo."
                 },
                 {
                     "label": "Origen de la baja",

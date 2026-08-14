@@ -97,14 +97,6 @@
         "source_voluntary": "Unsubscribed by recipient",
         "source_undeliverable": "Undeliverable (bounce)",
         "source_manual": "Blocked manually",
-        "filter_source": "Source",
-        "filter_voluntary": "Unsubscribed by recipient (:count)",
-        "filter_voluntary_hint": "They clicked the unsubscribe link in an email.",
-        "filter_undeliverable": "Undeliverable (bounce) (:count)",
-        "filter_undeliverable_hint": "The email did not arrive.",
-        "filter_manual": "Blocked manually (:count)",
-        "filter_manual_hint": "Added here via Block address.",
-        "filter_empty_means_all": "Nothing checked: all sources.",
         "list_date_prefix": "on"
     },
     "promo_qr": {

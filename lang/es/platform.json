@@ -97,14 +97,6 @@
         "source_voluntary": "Baja voluntaria",
         "source_undeliverable": "No entregable (bounce)",
         "source_manual": "Bloqueado manualmente",
-        "filter_source": "Origen",
-        "filter_voluntary": "Baja voluntaria (:count)",
-        "filter_voluntary_hint": "El destinatario pulsó el enlace de baja en un correo.",
-        "filter_undeliverable": "No entregable (bounce) (:count)",
-        "filter_undeliverable_hint": "El correo no llegó.",
-        "filter_manual": "Bloqueado manualmente (:count)",
-        "filter_manual_hint": "Añadido aquí con Bloquear una dirección.",
-        "filter_empty_means_all": "Nada marcado: todos los orígenes.",
         "list_date_prefix": "el"
     },
     "promo_qr": {

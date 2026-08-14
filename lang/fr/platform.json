@@ -97,14 +97,6 @@
         "source_voluntary": "Désabonnement volontaire",
         "source_undeliverable": "Non remis (bounce)",
         "source_manual": "Bloqué manuellement",
-        "filter_source": "Origine",
-        "filter_voluntary": "Désabonnement volontaire (:count)",
-        "filter_voluntary_hint": "Le destinataire a cliqué sur le lien de désabonnement.",
-        "filter_undeliverable": "Non remis (bounce) (:count)",
-        "filter_undeliverable_hint": "L’e-mail n’est pas arrivé.",
-        "filter_manual": "Bloqué manuellement (:count)",
-        "filter_manual_hint": "Ajouté ici via Bloquer une adresse.",
-        "filter_empty_means_all": "Rien de coché : toutes les origines.",
         "list_date_prefix": "le"
     },
     "promo_qr": {

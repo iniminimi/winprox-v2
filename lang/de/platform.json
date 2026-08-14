@@ -97,14 +97,6 @@
         "source_voluntary": "Selbst abgemeldet",
         "source_undeliverable": "Unzustellbar (Bounce)",
         "source_manual": "Manuell blockiert",
-        "filter_source": "Quelle",
-        "filter_voluntary": "Selbst abgemeldet (:count)",
-        "filter_voluntary_hint": "Der Empfänger hat den Abmeldelink in einer Mail geklickt.",
-        "filter_undeliverable": "Unzustellbar (Bounce) (:count)",
-        "filter_undeliverable_hint": "Die E-Mail ist nicht angekommen.",
-        "filter_manual": "Manuell blockiert (:count)",
-        "filter_manual_hint": "Hier über Adresse sperren hinzugefügt.",
-        "filter_empty_means_all": "Nichts angehakt: alle Quellen.",
         "list_date_prefix": "am"
     },
     "promo_qr": {

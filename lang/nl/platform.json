@@ -97,14 +97,6 @@
         "source_voluntary": "Zelf uitgeschreven",
         "source_undeliverable": "Onbezorgbaar (bounce)",
         "source_manual": "Handmatig geblokkeerd",
-        "filter_source": "Bron",
-        "filter_voluntary": "Zelf uitgeschreven (:count)",
-        "filter_voluntary_hint": "De ontvanger klikte de uitschrijflink in een mail.",
-        "filter_undeliverable": "Onbezorgbaar (bounce) (:count)",
-        "filter_undeliverable_hint": "De mail kwam niet aan.",
-        "filter_manual": "Handmatig geblokkeerd (:count)",
-        "filter_manual_hint": "Hier toegevoegd via Adres blokkeren.",
-        "filter_empty_means_all": "Niets aangevinkt: alle bronnen.",
         "list_date_prefix": "datum"
     },
     "promo_qr": {

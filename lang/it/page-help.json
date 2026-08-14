@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Ricerca e filtro",
-                    "text": "Cercate per indirizzo e-mail. Sotto scegliete l’origine: <strong>Disiscrizione volontaria</strong> (link in una mail), <strong>Non recapitabile (bounce)</strong> o <strong>Bloccato manualmente</strong> (con Bloccare un indirizzo). Il totale è tra parentesi. Niente selezionato mostra tutte le origini; più caselle insieme mostrano quei gruppi."
+                    "text": "Cercate per indirizzo e-mail. Le caselle filtrano sulla stessa origine dell’elenco. Niente selezionato mostra tutto."
                 },
                 {
                     "label": "Origine della disiscrizione",

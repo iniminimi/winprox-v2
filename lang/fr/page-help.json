@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Recherche et filtre",
-                    "text": "Recherchez par adresse e-mail. En dessous, choisissez l’origine : <strong>Désabonnement volontaire</strong> (lien dans un e-mail), <strong>Non remis (bounce)</strong> ou <strong>Bloqué manuellement</strong> (via Bloquer une adresse). Le total est entre parenthèses. Rien de coché affiche toutes les origines ; plusieurs cases ensemble affichent ces groupes."
+                    "text": "Recherchez par adresse e-mail. Les cases filtrent sur la même origine que dans la liste. Rien de coché affiche tout."
                 },
                 {
                     "label": "Source du désabonnement",
