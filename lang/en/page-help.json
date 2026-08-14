@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Search and filter",
-                    "text": "Search by email address. By default you see all unsubscribes. Turn on <strong>Unsubscribed by recipient only</strong>, <strong>Undeliverable only (bounce)</strong> or <strong>Manually unsubscribed only</strong> to filter; the count is in parentheses. Multiple checkboxes together show those groups."
+                    "text": "Search by email address. Below that, choose the source: <strong>Unsubscribed by recipient</strong> (link in an email), <strong>Undeliverable (bounce)</strong> or <strong>Blocked manually</strong> (via Block address). The count is in parentheses. Nothing checked shows all sources; multiple checkboxes together show those groups."
                 },
                 {
                     "label": "Unsubscribe source",

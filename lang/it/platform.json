@@ -97,9 +97,14 @@
         "source_voluntary": "Disiscrizione volontaria",
         "source_undeliverable": "Non recapitabile (bounce)",
         "source_manual": "Bloccato manualmente",
-        "filter_voluntary": "Solo disiscrizione volontaria (:count)",
-        "filter_undeliverable": "Solo non recapitabile (bounce) (:count)",
-        "filter_manual": "Solo disiscritti manualmente (:count)",
+        "filter_source": "Origine",
+        "filter_voluntary": "Disiscrizione volontaria (:count)",
+        "filter_voluntary_hint": "Il destinatario ha cliccato il link di disiscrizione.",
+        "filter_undeliverable": "Non recapitabile (bounce) (:count)",
+        "filter_undeliverable_hint": "L’e-mail non è arrivata.",
+        "filter_manual": "Bloccato manualmente (:count)",
+        "filter_manual_hint": "Aggiunto qui con Bloccare un indirizzo.",
+        "filter_empty_means_all": "Niente selezionato: tutte le origini.",
         "list_date_prefix": "il"
     },
     "promo_qr": {

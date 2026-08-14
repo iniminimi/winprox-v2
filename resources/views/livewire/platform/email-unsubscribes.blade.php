@@ -29,35 +29,51 @@
     </div>
 
     <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-row wp-row--wrap">
-            <label class="wp-label" for="unsubscribe-search">{{ __('platform.email_unsubscribe.search') }}</label>
-            <label class="wp-check" for="unsubscribe-voluntary-only">
+        <label class="wp-label" for="unsubscribe-search">{{ __('platform.email_unsubscribe.search') }}</label>
+        <input id="unsubscribe-search" type="search" class="wp-input" wire:model.live.debounce.300ms="search"
+               placeholder="{{ __('platform.email_unsubscribe.search_placeholder') }}" autocomplete="off">
+
+        <p class="wp-label" id="unsubscribe-source-filters-label">{{ __('platform.email_unsubscribe.filter_source') }}</p>
+        <div
+            class="wp-filter-grid wp-filter-grid--3"
+            role="group"
+            aria-labelledby="unsubscribe-source-filters-label"
+        >
+            <label class="wp-check wp-check--boxed" for="unsubscribe-voluntary-only">
                 <input
                     id="unsubscribe-voluntary-only"
                     type="checkbox"
                     wire:model.live="voluntaryOnly"
                 >
-                <span>{{ __('platform.email_unsubscribe.filter_voluntary', ['count' => $voluntaryCount]) }}</span>
+                <span>
+                    {{ __('platform.email_unsubscribe.filter_voluntary', ['count' => $voluntaryCount]) }}
+                    <br><span class="wp-hint">{{ __('platform.email_unsubscribe.filter_voluntary_hint') }}</span>
+                </span>
             </label>
-            <label class="wp-check" for="unsubscribe-undeliverable-only">
+            <label class="wp-check wp-check--boxed" for="unsubscribe-undeliverable-only">
                 <input
                     id="unsubscribe-undeliverable-only"
                     type="checkbox"
                     wire:model.live="undeliverableOnly"
                 >
-                <span>{{ __('platform.email_unsubscribe.filter_undeliverable', ['count' => $undeliverableCount]) }}</span>
+                <span>
+                    {{ __('platform.email_unsubscribe.filter_undeliverable', ['count' => $undeliverableCount]) }}
+                    <br><span class="wp-hint">{{ __('platform.email_unsubscribe.filter_undeliverable_hint') }}</span>
+                </span>
             </label>
-            <label class="wp-check" for="unsubscribe-manual-only">
+            <label class="wp-check wp-check--boxed" for="unsubscribe-manual-only">
                 <input
                     id="unsubscribe-manual-only"
                     type="checkbox"
                     wire:model.live="manualOnly"
                 >
-                <span>{{ __('platform.email_unsubscribe.filter_manual', ['count' => $manualCount]) }}</span>
+                <span>
+                    {{ __('platform.email_unsubscribe.filter_manual', ['count' => $manualCount]) }}
+                    <br><span class="wp-hint">{{ __('platform.email_unsubscribe.filter_manual_hint') }}</span>
+                </span>
             </label>
         </div>
-        <input id="unsubscribe-search" type="search" class="wp-input" wire:model.live.debounce.300ms="search"
-               placeholder="{{ __('platform.email_unsubscribe.search_placeholder') }}" autocomplete="off">
+        <p class="wp-muted wp-text-sm">{{ __('platform.email_unsubscribe.filter_empty_means_all') }}</p>
 
         @if ($rows->isEmpty())
             <p class="wp-muted">{{ __('platform.email_unsubscribe.empty') }}</p>

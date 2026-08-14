@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Ricerca e filtro",
-                    "text": "Cercate per indirizzo e-mail. Di default vedete tutte le disiscrizioni. Attivate <strong>Solo disiscrizione volontaria</strong>, <strong>Solo non recapitabile (bounce)</strong> o <strong>Solo disiscritti manualmente</strong> per filtrare; il totale è tra parentesi. Più caselle insieme mostrano quei gruppi."
+                    "text": "Cercate per indirizzo e-mail. Sotto scegliete l’origine: <strong>Disiscrizione volontaria</strong> (link in una mail), <strong>Non recapitabile (bounce)</strong> o <strong>Bloccato manualmente</strong> (con Bloccare un indirizzo). Il totale è tra parentesi. Niente selezionato mostra tutte le origini; più caselle insieme mostrano quei gruppi."
                 },
                 {
                     "label": "Origine della disiscrizione",

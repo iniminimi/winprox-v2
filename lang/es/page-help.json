@@ -895,7 +895,7 @@
                 },
                 {
                     "label": "Búsqueda y filtro",
-                    "text": "Busque por dirección de correo. Por defecto ve todas las bajas. Active <strong>Solo baja voluntaria</strong>, <strong>Solo no entregable (bounce)</strong> o <strong>Solo dados de baja manualmente</strong> para filtrar; el total va entre paréntesis. Varias casillas juntas muestran esos grupos."
+                    "text": "Busque por dirección de correo. Debajo elija el origen: <strong>Baja voluntaria</strong> (enlace en un correo), <strong>No entregable (bounce)</strong> o <strong>Bloqueado manualmente</strong> (con Bloquear una dirección). El total va entre paréntesis. Nada marcado muestra todos los orígenes; varias casillas juntas muestran esos grupos."
                 },
                 {
                     "label": "Origen de la baja",
