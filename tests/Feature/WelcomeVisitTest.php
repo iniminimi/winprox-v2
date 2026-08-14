@@ -84,6 +84,14 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->and(WelcomeVisit::query()->first()?->locale)->toBe('nl');
 });
 
+it('toont hospitality-video op welcome per locale', function (string $locale) {
+    $file = 'hospitality_'.strtoupper($locale).'.mp4';
+
+    $this->get('/'.$locale.'/')
+        ->assertOk()
+        ->assertSee('video/'.$locale.'/'.$file, false);
+})->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
+
 it('koppelt een welcome-bezoek aan een promo-bestemmeling via ref', function () {
     $superuser = User::factory()->superuser()->create();
     $recipient = \App\Models\PromoRecipient::query()->create([
