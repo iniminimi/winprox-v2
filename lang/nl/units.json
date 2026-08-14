@@ -6,7 +6,8 @@
         "location": "Locatie",
         "all_locations": "Alle locaties",
         "category": "Categorie",
-        "all_categories": "Alle categorieën"
+        "all_categories": "Alle categorieën",
+        "count": ":count units"
     },
     "list": {
         "empty": "Geen units gevonden."

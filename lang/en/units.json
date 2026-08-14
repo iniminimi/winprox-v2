@@ -6,7 +6,8 @@
         "location": "Location",
         "all_locations": "All locations",
         "category": "Category",
-        "all_categories": "All categories"
+        "all_categories": "All categories",
+        "count": ":count units"
     },
     "list": {
         "empty": "No units found."

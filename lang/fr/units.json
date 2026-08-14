@@ -6,7 +6,8 @@
         "location": "Site",
         "all_locations": "Tous les sites",
         "category": "Catégorie",
-        "all_categories": "Toutes les catégories"
+        "all_categories": "Toutes les catégories",
+        "count": ":count unités"
     },
     "list": {
         "empty": "Aucune unité trouvée."

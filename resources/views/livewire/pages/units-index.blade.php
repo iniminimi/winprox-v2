@@ -25,6 +25,7 @@
                     <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
                 @endforeach
             </select>
+            <span class="wp-pill wp-pill--closed">{{ __('units.filters.count', ['count' => $units->total()]) }}</span>
         </div>
 
         <div class="wp-list wp-list--entity-rows">

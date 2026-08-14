@@ -6,7 +6,8 @@
         "location": "Sede",
         "all_locations": "Tutte le sedi",
         "category": "Categoria",
-        "all_categories": "Tutte le categorie"
+        "all_categories": "Tutte le categorie",
+        "count": ":count unità"
     },
     "list": {
         "empty": "Nessuna unità trovata."

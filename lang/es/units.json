@@ -6,7 +6,8 @@
         "location": "Ubicación",
         "all_locations": "Todas las ubicaciones",
         "category": "Categoría",
-        "all_categories": "Todas las categorías"
+        "all_categories": "Todas las categorías",
+        "count": ":count unidades"
     },
     "list": {
         "empty": "No se encontraron unidades."

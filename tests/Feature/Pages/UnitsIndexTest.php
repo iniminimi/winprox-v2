@@ -67,9 +67,11 @@ it('filters tenant units by category in UnitsIndex', function () {
     Livewire::actingAs($user)
         ->test(UnitsIndex::class)
         ->assertSee(__('units.filters.label'))
+        ->assertSee(__('units.filters.count', ['count' => 2]))
         ->set('categoryFilter', $categoryA->id)
         ->assertSee($unitA->name)
-        ->assertDontSee($unitB->name);
+        ->assertDontSee($unitB->name)
+        ->assertSee(__('units.filters.count', ['count' => 1]));
 });
 
 it('toont locatie en categorie op één metaregel zonder dubbele Units-titel', function () {
