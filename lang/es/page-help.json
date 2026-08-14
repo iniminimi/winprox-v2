@@ -1187,7 +1187,7 @@
                 },
                 {
                     "label": "Rotación QR",
-                    "text": "Configure un intervalo (meses). El sistema recomienda en un momento aleatorio dentro de ese intervalo renovar la pegatina. Hasta renovar, el fichaje sigue funcionando con normalidad — es una recomendación, no un bloqueo."
+                    "text": "Configure un intervalo (meses). El sistema recomienda en un momento aleatorio dentro de ese intervalo renovar la pegatina. Puede usarlo para prevenir o rastrear fraude (p. ej. alguien fotografía el código QR y ficha desde casa). Hasta renovar, el fichaje sigue funcionando con normalidad — es una recomendación, no un bloqueo."
                 },
                 {
                     "label": "Escaneos bloqueados",

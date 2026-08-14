@@ -1187,7 +1187,7 @@
                 },
                 {
                     "label": "QR-Rotation",
-                    "text": "Stellen Sie ein Intervall ein (Monate). Das System empfiehlt zu einem zufälligen Zeitpunkt innerhalb dieses Intervalls, den Aufkleber zu erneuern. Bis zur Erneuerung funktioniert das Einstempeln normal — es ist eine Empfehlung, keine Sperre."
+                    "text": "Stellen Sie ein Intervall ein (Monate). Das System empfiehlt zu einem zufälligen Zeitpunkt innerhalb dieses Intervalls, den Aufkleber zu erneuern. Damit können Sie Betrug verhindern oder nachverfolgen (z. B. jemand fotografiert den QR-Code und stempelt zu Hause ein). Bis zur Erneuerung funktioniert das Einstempeln normal — es ist eine Empfehlung, keine Sperre."
                 },
                 {
                     "label": "Gesperrte Scans",

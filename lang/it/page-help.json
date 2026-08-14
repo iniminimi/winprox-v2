@@ -1187,7 +1187,7 @@
                 },
                 {
                     "label": "Rotazione QR",
-                    "text": "Imposti un intervallo (mesi). Il sistema consiglia in un momento casuale in quell'intervallo di rinnovare l'adesivo. Fino al rinnovo, la timbratura continua normalmente — è un consiglio, non un blocco."
+                    "text": "Imposti un intervallo (mesi). Il sistema consiglia in un momento casuale in quell'intervallo di rinnovare l'adesivo. Può usarlo per prevenire o tracciare frodi (es. qualcuno fotografa il QR e timbra da casa). Fino al rinnovo, la timbratura continua normalmente — è un consiglio, non un blocco."
                 },
                 {
                     "label": "Scansioni bloccate",

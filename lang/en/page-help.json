@@ -1187,7 +1187,7 @@
                 },
                 {
                     "label": "QR rotation",
-                    "text": "Set an interval (months). The system recommends renewal at a random moment within that interval. Until you renew, clocking in still works — it is a recommendation, not a block."
+                    "text": "Set an interval (months). The system recommends renewal at a random moment within that interval. You can use this to prevent or trace fraud (e.g. someone photographs the QR code and clocks in from home). Until you renew, clocking in still works — it is a recommendation, not a block."
                 },
                 {
                     "label": "Blocked scans",

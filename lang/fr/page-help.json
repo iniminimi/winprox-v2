@@ -1187,7 +1187,7 @@
                 },
                 {
                     "label": "Rotation QR",
-                    "text": "Définissez un intervalle (mois). Le système recommande à un moment aléatoire dans cet intervalle de renouveler l'autocollant. Jusqu'au renouvellement, le pointage continue normalement — c'est une recommandation, pas un blocage."
+                    "text": "Définissez un intervalle (mois). Le système recommande à un moment aléatoire dans cet intervalle de renouveler l'autocollant. Vous pouvez l’utiliser pour prévenir ou retracer la fraude (p. ex. quelqu’un photographie le QR et pointe depuis chez lui). Jusqu'au renouvellement, le pointage continue normalement — c'est une recommandation, pas un blocage."
                 },
                 {
                     "label": "Scans bloqués",

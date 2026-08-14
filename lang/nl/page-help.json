@@ -1187,7 +1187,7 @@
                 },
                 {
                     "label": "QR-rotatie",
-                    "text": "Stel een interval in (maanden). Het systeem beveelt op een willekeurig moment binnen dat interval aan om de sticker te vernieuwen. Tot u vernieuwt blijft inklokken gewoon werken — het is een aanbeveling, geen blokkade."
+                    "text": "Stel een interval in (maanden). Het systeem beveelt op een willekeurig moment binnen dat interval aan om de sticker te vernieuwen. Je kan dit gebruiken om fraude te voorkomen of te traceren (vb iemand neemt foto van QR-code en klokt thuis in). Tot u vernieuwt blijft inklokken gewoon werken — het is een aanbeveling, geen blokkade."
                 },
                 {
                     "label": "Geblokkeerde scans",
