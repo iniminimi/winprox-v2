@@ -1452,11 +1452,35 @@ button.wp-config-overview-kpi--filter.is-active .wp-config-overview-kpi__value {
 }
 
 .wp-tooltip__bubble--wrap {
+    left: 0;
     width: max-content;
     max-width: min(18rem, 70vw);
     white-space: normal;
     font-weight: 500;
     text-align: left;
+    transform: translateY(0.2rem);
+}
+
+.wp-tooltip__bubble--wrap::before,
+.wp-tooltip__bubble--wrap::after {
+    left: 0.85rem;
+    transform: none;
+}
+
+.wp-tooltip:hover .wp-tooltip__bubble--wrap,
+.wp-tooltip:not(.wp-tooltip--block):focus-within .wp-tooltip__bubble--wrap {
+    transform: translateY(0);
+}
+
+.wp-tooltip--end .wp-tooltip__bubble--wrap {
+    left: auto;
+    right: 0;
+}
+
+.wp-tooltip--end .wp-tooltip__bubble--wrap::before,
+.wp-tooltip--end .wp-tooltip__bubble--wrap::after {
+    left: auto;
+    right: 0.85rem;
 }
 
 .wp-unit-title-row {

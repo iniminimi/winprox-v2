@@ -62,7 +62,7 @@
                     @error('recurrence_lead_days') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-field">
-                    <x-wp-tooltip :text="__('issues.create.recurring_help_first_due')" wrap>
+                    <x-wp-tooltip :text="__('issues.create.recurring_help_first_due')" wrap class="wp-tooltip--end">
                         <label class="wp-label" for="round_create_recurrence_first_due_date">{{ __('issues.create.first_due') }}</label>
                     </x-wp-tooltip>
                     <x-wp-date-input id="round_create_recurrence_first_due_date" wire:model="recurrence_first_due_date" />
