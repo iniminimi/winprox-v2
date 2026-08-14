@@ -149,5 +149,6 @@ it('opens clock-point qr cluster modal with print pack and renew choices', funct
         ->assertSee(route('time.clock-points.qr', $clockPoint), false)
         ->assertSee('qr-pack?template=a6_print', false)
         ->assertSeeHtml('class="wp-modal"')
+        ->assertSeeHtml('window.wpQrPackPicker(')
         ->assertDontSeeHtml('<button type="button" class="wp-issue-row"><p');
 });

@@ -82,3 +82,27 @@ document.addEventListener('livewire:init', () => {
 window.wpDownloadAuthenticatedFile = wpDownloadAuthenticatedFile;
 window.wpDownloadQrPackUrl = wpDownloadQrPackUrl;
 window.wpDownloadPromoQrUrl = wpDownloadPromoQrUrl;
+
+window.wpQrPackPicker = function wpQrPackPicker(downloadFailed) {
+    return {
+        downloading: null,
+        error: null,
+        async download(url, key) {
+            if (this.downloading) {
+                return;
+            }
+
+            this.downloading = key;
+            this.error = null;
+
+            try {
+                await wpDownloadQrPackUrl(url);
+            } catch (exception) {
+                this.error = exception?.message || downloadFailed;
+            } finally {
+                this.downloading = null;
+            }
+        },
+    };
+};
+

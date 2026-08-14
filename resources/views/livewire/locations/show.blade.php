@@ -791,25 +791,27 @@
     @endif
 
     @if ($showUnitQrPackModal && $unitQrPackUnit)
-        <x-wp-qr-cluster-modal
-            closeMethod="closeUnitQrPackModal"
-            title-id="unit-qr-cluster-modal-title"
-            :title="__('common.qr.modal_title')"
-            :subtitle="$unitQrPackUnit->name"
-            :print-url="route('units.qr', $unitQrPackUnit)"
-            :print-label="__('common.qr.print')"
-            :formats="collect($unitQrPackTemplates)->map(fn ($template) => [
-                'key' => $unitQrPackUnit->id.'-'.$template->value,
-                'title' => __('common.qr.formats.'.$template->value.'.title'),
-                'size' => __('common.qr.formats.'.$template->value.'.size'),
-                'url' => route('units.qr-pack', [
-                    'unit' => $unitQrPackUnit,
-                    'template' => $template->value,
-                ]),
-            ])->all()"
-            :generating="__('locations.unit_qr_pack.generating')"
-            :download-failed="__('locations.unit_qr_pack.download_failed')"
-        />
+        <x-wp-modal closeMethod="closeUnitQrPackModal" aria-labelledby="unit-qr-cluster-modal-title">
+            <x-wp-qr-cluster-modal
+                closeMethod="closeUnitQrPackModal"
+                title-id="unit-qr-cluster-modal-title"
+                :title="__('common.qr.modal_title')"
+                :subtitle="$unitQrPackUnit->name"
+                :print-url="route('units.qr', $unitQrPackUnit)"
+                :print-label="__('common.qr.print')"
+                :formats="collect($unitQrPackTemplates)->map(fn ($template) => [
+                    'key' => $unitQrPackUnit->id.'-'.$template->value,
+                    'title' => __('common.qr.formats.'.$template->value.'.title'),
+                    'size' => __('common.qr.formats.'.$template->value.'.size'),
+                    'url' => route('units.qr-pack', [
+                        'unit' => $unitQrPackUnit,
+                        'template' => $template->value,
+                    ]),
+                ])->all()"
+                :generating="__('locations.unit_qr_pack.generating')"
+                :download-failed="__('locations.unit_qr_pack.download_failed')"
+            />
+        </x-wp-modal>
     @endif
 
 </div>

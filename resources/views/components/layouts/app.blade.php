@@ -532,34 +532,33 @@
                 aria-controls="wp-help-chat-panel"
                 :aria-label="help ? @js(__('help.close_fab')) : @js(__('help.open_fab'))"
             >
-                <span class="wp-help-button-avatar" x-show="!help" x-cloak aria-hidden="true">
-                    <template x-if="!helpFabShowQuestion">
-                        <img
-                            class="wp-help-button-avatar__img"
-                            src="{{ asset('images/assistant_small.jpg') }}"
-                            alt=""
-                            width="80"
-                            height="80"
-                            decoding="async"
-                        >
-                    </template>
-                    <template x-if="helpFabShowQuestion">
-                        <video
-                            class="wp-help-button-avatar__video"
-                            src="{{ asset('video/assistant_question.mp4') }}"
-                            width="80"
-                            height="80"
-                            muted
-                            playsinline
-                            preload="auto"
-                            x-init="
-                                setTimeout(() => {
-                                    $el.currentTime = 0;
-                                    $el.play().catch(() => {});
-                                }, 1000);
-                            "
-                        ></video>
-                    </template>
+                <span class="wp-help-button-avatar" x-show="!help" aria-hidden="true">
+                    <img
+                        class="wp-help-button-avatar__img"
+                        src="{{ asset('images/assistant_small.jpg') }}"
+                        alt=""
+                        width="80"
+                        height="80"
+                        decoding="async"
+                        x-show="!helpFabShowQuestion"
+                    >
+                    <video
+                        class="wp-help-button-avatar__video"
+                        src="{{ asset('video/assistant_question.mp4') }}"
+                        width="80"
+                        height="80"
+                        muted
+                        playsinline
+                        preload="auto"
+                        x-show="helpFabShowQuestion"
+                        x-cloak
+                        x-init="
+                            setTimeout(() => {
+                                $el.currentTime = 0;
+                                $el.play().catch(() => {});
+                            }, 1000);
+                        "
+                    ></video>
                 </span>
                 <x-wp-icon name="x-mark" class="wp-icon wp-help-button-icon" x-show="help" x-cloak />
             </button>
