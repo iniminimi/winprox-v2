@@ -72,7 +72,9 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "print_heading": "Ver",
         "print": "Ver / imprimir",
+        "print_hint": "Abra el QR en el navegador para imprimirlo al momento.",
         "pack_heading": "Hoja de impresión",
         "pack_hint": "Un QR por página, archivo Word con fondo.",
         "formats": {
@@ -88,7 +90,9 @@
                 "title": "A4",
                 "size": "210 × 297 mm"
             }
-        }
+        },
+        "renew_heading": "Renovar",
+        "renew_hint": "Código nuevo si se pierde una pegatina o sospecha un uso indebido."
     },
     "help": {
         "button": "Ayuda",

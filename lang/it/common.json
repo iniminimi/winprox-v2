@@ -72,7 +72,9 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "print_heading": "Visualizza",
         "print": "Visualizza / stampa",
+        "print_hint": "Apri il QR nel browser per stamparlo subito.",
         "pack_heading": "Foglio di stampa",
         "pack_hint": "Un QR per pagina, file Word con sfondo.",
         "formats": {
@@ -88,7 +90,9 @@
                 "title": "A4",
                 "size": "210 × 297 mm"
             }
-        }
+        },
+        "renew_heading": "Rinnova",
+        "renew_hint": "Nuovo codice se l'adesivo è perso o sospetti un uso improprio."
     },
     "help": {
         "button": "Aiuto",

@@ -72,7 +72,9 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "print_heading": "View",
         "print": "View / print",
+        "print_hint": "Open the QR in the browser to print it right away.",
         "pack_heading": "Print sheet",
         "pack_hint": "One QR per page, Word file with background.",
         "formats": {
@@ -88,7 +90,9 @@
                 "title": "A4",
                 "size": "210 × 297 mm"
             }
-        }
+        },
+        "renew_heading": "Renew",
+        "renew_hint": "New code if a sticker is lost or you suspect misuse."
     },
     "help": {
         "button": "Help",

@@ -72,7 +72,9 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "print_heading": "Ansehen",
         "print": "Ansehen / drucken",
+        "print_hint": "Öffnen Sie den QR im Browser, um ihn sofort zu drucken.",
         "pack_heading": "Druckblatt",
         "pack_hint": "Ein QR pro Blatt, Word-Datei mit Hintergrund.",
         "formats": {
@@ -88,7 +90,9 @@
                 "title": "A4",
                 "size": "210 × 297 mm"
             }
-        }
+        },
+        "renew_heading": "Erneuern",
+        "renew_hint": "Neuer Code bei verlorenem Aufkleber oder vermutetem Missbrauch."
     },
     "help": {
         "button": "Hilfe",

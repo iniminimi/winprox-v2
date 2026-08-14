@@ -72,7 +72,9 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "print_heading": "Bekijken",
         "print": "Bekijken / afdrukken",
+        "print_hint": "Open de QR in de browser om meteen af te drukken.",
         "pack_heading": "Afdrukblad",
         "pack_hint": "Eén QR per blad, Word-bestand met achtergrond.",
         "formats": {
@@ -88,7 +90,9 @@
                 "title": "A4",
                 "size": "210 × 297 mm"
             }
-        }
+        },
+        "renew_heading": "Vernieuwen",
+        "renew_hint": "Nieuwe code bij verloren sticker of vermoed misbruik."
     },
     "help": {
         "button": "Hulp",

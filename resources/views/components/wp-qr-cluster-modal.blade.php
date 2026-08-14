@@ -26,70 +26,82 @@
         @endif
 
         @if ($printUrl)
-            <div class="wp-cluster">
-                <a href="{{ $printUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface">
-                    {{ $printLabel }}
-                </a>
+            <div class="wp-modal-section">
+                <div class="wp-stack-tight">
+                    <h3 class="wp-label">{{ __('common.qr.print_heading') }}</h3>
+                    <p class="wp-muted">{{ __('common.qr.print_hint') }}</p>
+                </div>
+                <div class="wp-cluster">
+                    <a href="{{ $printUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface">
+                        {{ $printLabel }}
+                    </a>
+                </div>
             </div>
         @endif
 
         @if ($formats !== [])
-            <div class="wp-stack-tight">
-                <h3 class="wp-label">{{ __('common.qr.pack_heading') }}</h3>
-                <p class="wp-muted">{{ __('common.qr.pack_hint') }}</p>
-            </div>
+            <div class="wp-modal-section">
+                <div class="wp-stack-tight">
+                    <h3 class="wp-label">{{ __('common.qr.pack_heading') }}</h3>
+                    <p class="wp-muted">{{ __('common.qr.pack_hint') }}</p>
+                </div>
 
-            <div
-                class="wp-list wp-list--entity-rows"
-                x-data="{
-                    downloading: null,
-                    error: null,
-                    async download(url, key) {
-                        if (this.downloading) {
-                            return;
-                        }
+                <div
+                    class="wp-list wp-list--entity-rows"
+                    x-data="{
+                        downloading: null,
+                        error: null,
+                        async download(url, key) {
+                            if (this.downloading) {
+                                return;
+                            }
 
-                        this.downloading = key;
-                        this.error = null;
+                            this.downloading = key;
+                            this.error = null;
 
-                        try {
-                            await window.wpDownloadQrPackUrl(url);
-                        } catch (exception) {
-                            this.error = exception?.message || @js($downloadFailed);
-                        } finally {
-                            this.downloading = null;
-                        }
-                    },
-                }"
-            >
-                @foreach ($formats as $format)
-                    <button
-                        type="button"
-                        class="wp-issue-row"
-                        wire:key="qr-cluster-format-{{ $format['key'] }}"
-                        @click="download(@js($format['url']), @js($format['key']))"
-                        :disabled="downloading !== null"
-                        :aria-busy="downloading === @js($format['key'])"
-                    >
-                        <span class="wp-issue-card-title">{{ $format['title'] }}</span>
-                        <span class="wp-issue-card-meta" x-show="downloading !== @js($format['key'])">{{ $format['size'] }}</span>
-                        <span class="wp-muted wp-cluster" x-show="downloading === @js($format['key'])" x-cloak>
-                            <x-wp-spinner size="sm" :visible="true" />
-                            <span>{{ $generating }}</span>
-                        </span>
-                    </button>
-                @endforeach
+                            try {
+                                await window.wpDownloadQrPackUrl(url);
+                            } catch (exception) {
+                                this.error = exception?.message || @js($downloadFailed);
+                            } finally {
+                                this.downloading = null;
+                            }
+                        },
+                    }"
+                >
+                    @foreach ($formats as $format)
+                        <button
+                            type="button"
+                            class="wp-issue-row"
+                            wire:key="qr-cluster-format-{{ $format['key'] }}"
+                            @click="download(@js($format['url']), @js($format['key']))"
+                            :disabled="downloading !== null"
+                            :aria-busy="downloading === @js($format['key'])"
+                        >
+                            <span class="wp-issue-card-title">{{ $format['title'] }}</span>
+                            <span class="wp-issue-card-meta" x-show="downloading !== @js($format['key'])">{{ $format['size'] }}</span>
+                            <span class="wp-muted wp-cluster" x-show="downloading === @js($format['key'])" x-cloak>
+                                <x-wp-spinner size="sm" :visible="true" />
+                                <span>{{ $generating }}</span>
+                            </span>
+                        </button>
+                    @endforeach
 
-                <p class="wp-error" x-show="error" x-text="error" x-cloak></p>
+                    <p class="wp-error" x-show="error" x-text="error" x-cloak></p>
+                </div>
             </div>
         @endif
 
         @if ($renewMethod)
             <div class="wp-modal-section">
+                <div class="wp-stack-tight">
+                    <h3 class="wp-label">{{ __('common.qr.renew_heading') }}</h3>
+                    <p class="wp-muted">{{ __('common.qr.renew_hint') }}</p>
+                </div>
                 <div class="wp-cluster">
                     <button
                         type="button"
-                        class="btn btn--ghost"
+                        class="btn btn--surface"
                         wire:click="{{ $renewMethod }}"
                         wire:confirm="{{ $renewConfirm }}"
                     >

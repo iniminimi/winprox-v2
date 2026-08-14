@@ -72,7 +72,9 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "print_heading": "Afficher",
         "print": "Afficher / imprimer",
+        "print_hint": "Ouvrez le QR dans le navigateur pour l'imprimer tout de suite.",
         "pack_heading": "Feuille d'impression",
         "pack_hint": "Un QR par page, fichier Word avec arrière-plan.",
         "formats": {
@@ -88,7 +90,9 @@
                 "title": "A4",
                 "size": "210 × 297 mm"
             }
-        }
+        },
+        "renew_heading": "Renouveler",
+        "renew_hint": "Nouveau code si l'autocollant est perdu ou en cas de suspicion d'abus."
     },
     "help": {
         "button": "Aide",
