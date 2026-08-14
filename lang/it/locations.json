@@ -63,6 +63,7 @@
     "location_qr_subtitle": "QR sede generale per segnalazioni senza unità.",
     "unit_qr_subtitle": "Codice QR per questa unità — collega al portale segnalazioni.",
     "unit_qr_pack": {
+        "modal_subtitle": "Scegli il formato carta per :name.",
         "unavailable": "L’esportazione QR non è disponibile su questo server.",
         "generating": "Creazione del foglio di stampa…",
         "download_failed": "Impossibile creare il foglio di stampa QR."

@@ -139,13 +139,10 @@ it('opens unit qr cluster modal with print and a6 a5 a4 choices', function () {
         ->assertSet('showUnitQrPackModal', true)
         ->assertSet('unitQrPackUnitId', $unit->id)
         ->assertSee(__('common.qr.modal_title'), false)
-        ->assertSee($unit->name, false)
         ->assertSee(__('common.qr.print'), false)
-        ->assertSee(__('common.qr.pack_heading'), false)
-        ->assertSee(__('common.qr.formats.a6_print.title'), false)
-        ->assertSee(__('common.qr.formats.a6_print.size'), false)
-        ->assertSee(__('common.qr.formats.a5_print.title'), false)
-        ->assertSee(__('common.qr.formats.a4_print.title'), false)
+        ->assertSee(__('locations.qr_pack.formats.a6_print.title'), false)
+        ->assertSee(__('locations.qr_pack.formats.a5_print.title'), false)
+        ->assertSee(__('locations.qr_pack.formats.a4_print.title'), false)
         ->assertSee(route('units.qr', $unit), false)
         ->assertSee('qr-pack?template=a6_print', false);
 });

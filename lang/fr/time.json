@@ -203,9 +203,24 @@
             "rotation_saved": "Paramètre de rotation QR enregistré.",
             "blocked_attempts": ":count scan(s) QR bloqué(s) au cours des 7 derniers jours.",
             "pack": {
+                "modal_subtitle": "Choisissez le format papier pour :name.",
                 "unavailable": "L'export QR n'est pas disponible sur ce serveur.",
                 "generating": "Création de la feuille d'impression…",
-                "download_failed": "Impossible de créer la feuille d'impression QR."
+                "download_failed": "Impossible de créer la feuille d'impression QR.",
+                "formats": {
+                    "a6_print": {
+                        "title": "Feuille A6",
+                        "description": "1 code QR par page (105 × 148 mm) — pleine page avec arrière-plan."
+                    },
+                    "a5_print": {
+                        "title": "Feuille A5",
+                        "description": "1 code QR par page (148 × 210 mm) — pleine page avec arrière-plan."
+                    },
+                    "a4_print": {
+                        "title": "Feuille A4",
+                        "description": "1 code QR par page (210 × 297 mm) — pleine page avec arrière-plan."
+                    }
+                }
             }
         }
     },

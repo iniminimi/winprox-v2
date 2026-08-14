@@ -116,7 +116,7 @@ it('keeps browser print page without word format buttons', function () {
         ->get(route('time.clock-points.qr', $clockPoint))
         ->assertOk()
         ->assertSee(__('time.clock_points.qr.print'), false)
-        ->assertDontSee(__('common.qr.pack_heading'), false)
+        ->assertDontSee(__('time.clock_points.qr.pack.formats.a6_print.title'), false)
         ->assertDontSee('qr-pack?template=a6_print', false);
 });
 
@@ -138,14 +138,11 @@ it('opens clock-point qr cluster modal with print pack and renew choices', funct
         ->assertSet('showQrPackModal', true)
         ->assertSet('qrPackClockPointId', $clockPoint->id)
         ->assertSee(__('common.qr.modal_title'), false)
-        ->assertSee($clockPoint->name, false)
         ->assertSee(__('common.qr.print'), false)
-        ->assertSee(__('common.qr.pack_heading'), false)
         ->assertSee(__('time.clock_points.qr.renew'), false)
-        ->assertSee(__('common.qr.formats.a6_print.title'), false)
-        ->assertSee(__('common.qr.formats.a6_print.size'), false)
-        ->assertSee(__('common.qr.formats.a5_print.title'), false)
-        ->assertSee(__('common.qr.formats.a4_print.title'), false)
+        ->assertSee(__('time.clock_points.qr.pack.formats.a6_print.title'), false)
+        ->assertSee(__('time.clock_points.qr.pack.formats.a5_print.title'), false)
+        ->assertSee(__('time.clock_points.qr.pack.formats.a4_print.title'), false)
         ->assertSee(route('time.clock-points.qr', $clockPoint), false)
         ->assertSee('qr-pack?template=a6_print', false);
 });

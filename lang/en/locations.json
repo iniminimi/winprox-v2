@@ -63,6 +63,7 @@
     "location_qr_subtitle": "General location QR for reports without a unit.",
     "unit_qr_subtitle": "QR code for this unit — links to the report portal.",
     "unit_qr_pack": {
+        "modal_subtitle": "Choose the paper size for :name.",
         "unavailable": "QR export is unavailable on this server.",
         "generating": "Creating print sheet…",
         "download_failed": "Could not create the QR print sheet."

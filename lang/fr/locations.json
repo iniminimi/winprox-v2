@@ -63,6 +63,7 @@
     "location_qr_subtitle": "QR général du site pour les signalements sans unité.",
     "unit_qr_subtitle": "Code QR de cette unité — lien vers le portail de signalement.",
     "unit_qr_pack": {
+        "modal_subtitle": "Choisissez le format papier pour :name.",
         "unavailable": "L’export QR n’est pas disponible sur ce serveur.",
         "generating": "Création de la feuille d’impression…",
         "download_failed": "Impossible de créer la feuille d’impression QR."
