@@ -66,7 +66,7 @@ it('filters tenant units by category in UnitsIndex', function () {
 
     Livewire::actingAs($user)
         ->test(UnitsIndex::class)
-        ->assertSee(__('units.filters.category'))
+        ->assertSee(__('units.filters.label'))
         ->set('categoryFilter', $categoryA->id)
         ->assertSee($unitA->name)
         ->assertDontSee($unitB->name);

@@ -2,9 +2,10 @@
     "title": "Unidades",
     "subtitle": "Máquinas, salas o activos. Todas las units de su organización; filtre por ubicación o categoría, o haga clic para gestionar.",
     "filters": {
-        "location": "Filtrar por ubicación",
+        "label": "Filtro:",
+        "location": "Ubicación",
         "all_locations": "Todas las ubicaciones",
-        "category": "Filtrar por categoría",
+        "category": "Categoría",
         "all_categories": "Todas las categorías"
     },
     "list": {

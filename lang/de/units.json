@@ -2,9 +2,10 @@
     "title": "Units",
     "subtitle": "Maschinen, Räume oder Assets. Alle Units Ihrer Organisation; nach Standort oder Kategorie filtern oder zum Verwalten klicken.",
     "filters": {
-        "location": "Nach Standort filtern",
+        "label": "Filter:",
+        "location": "Standort",
         "all_locations": "Alle Standorte",
-        "category": "Nach Kategorie filtern",
+        "category": "Kategorie",
         "all_categories": "Alle Kategorien"
     },
     "list": {

@@ -1315,12 +1315,8 @@
                     "text": "Lista de todas las units del tenant: nombre, ubicación, categoría y si las comprobaciones de unit están permitidas. Abra una fila para ir al detalle de la ubicación con esa unit enfocada."
                 },
                 {
-                    "label": "Filtrar por ubicación",
-                    "text": "Limite la lista a una ubicación. Borre el filtro para ver de nuevo todas las units."
-                },
-                {
-                    "label": "Filtrar por categoría",
-                    "text": "Limite la lista a una categoría. Borre el filtro para ver de nuevo todas las units."
+                    "label": "Filtro",
+                    "text": "Limite la lista a una ubicación y/o una categoría. Borre los filtros para ver de nuevo todas las units."
                 },
                 {
                     "label": "Comprobaciones de unit",

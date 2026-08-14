@@ -1315,12 +1315,8 @@
                     "text": "Liste de toutes les units du tenant : nom, lieu, catégorie et si les contrôles d’unité sont autorisés. Ouvrez une ligne pour aller au détail du lieu avec cette unit en focus."
                 },
                 {
-                    "label": "Filtrer par lieu",
-                    "text": "Limiter la liste à un lieu. Effacez le filtre pour revoir toutes les units."
-                },
-                {
-                    "label": "Filtrer par catégorie",
-                    "text": "Limiter la liste à une catégorie. Effacez le filtre pour revoir toutes les units."
+                    "label": "Filtre",
+                    "text": "Limiter la liste à un lieu et/ou une catégorie. Effacez les filtres pour revoir toutes les units."
                 },
                 {
                     "label": "Contrôles d’unité",

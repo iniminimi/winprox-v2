@@ -2,9 +2,10 @@
     "title": "Unités",
     "subtitle": "Machines, salles ou équipements. Toutes les unités de votre organisation ; filtrez par site ou catégorie, ou cliquez pour gérer.",
     "filters": {
-        "location": "Filtrer par site",
+        "label": "Filtre :",
+        "location": "Site",
         "all_locations": "Tous les sites",
-        "category": "Filtrer par catégorie",
+        "category": "Catégorie",
         "all_categories": "Toutes les catégories"
     },
     "list": {

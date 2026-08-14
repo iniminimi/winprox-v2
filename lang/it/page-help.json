@@ -1315,12 +1315,8 @@
                     "text": "Elenco di tutte le unit del tenant: nome, sede, categoria e se i controlli unit sono consentiti. Apri una riga per andare al dettaglio sede con quella unit in evidenza."
                 },
                 {
-                    "label": "Filtra per sede",
-                    "text": "Limita l’elenco a una sede. Cancella il filtro per vedere di nuovo tutte le unit."
-                },
-                {
-                    "label": "Filtra per categoria",
-                    "text": "Limita l’elenco a una categoria. Cancella il filtro per vedere di nuovo tutte le unit."
+                    "label": "Filtro",
+                    "text": "Limita l’elenco a una sede e/o una categoria. Cancella i filtri per vedere di nuovo tutte le unit."
                 },
                 {
                     "label": "Controlli unit",

@@ -1315,12 +1315,8 @@
                     "text": "Tenant-wide list of all units: name, location, category and whether unit checks are allowed. Open a row to jump to the location detail with that unit in focus."
                 },
                 {
-                    "label": "Filter by location",
-                    "text": "Narrow the list to one location. Clear the filter to see all units again."
-                },
-                {
-                    "label": "Filter by category",
-                    "text": "Narrow the list to one category. Clear the filter to see all units again."
+                    "label": "Filter",
+                    "text": "Narrow the list to one location and/or one category. Clear the filters to see all units again."
                 },
                 {
                     "label": "Unit checks",

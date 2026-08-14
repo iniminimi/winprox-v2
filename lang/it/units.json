@@ -2,9 +2,10 @@
     "title": "Unità",
     "subtitle": "Macchine, stanze o asset. Tutte le unit della Sua organizzazione; filtri per sede o categoria, o clicchi per gestire.",
     "filters": {
-        "location": "Filtra per sede",
+        "label": "Filtro:",
+        "location": "Sede",
         "all_locations": "Tutte le sedi",
-        "category": "Filtra per categoria",
+        "category": "Categoria",
         "all_categories": "Tutte le categorie"
     },
     "list": {

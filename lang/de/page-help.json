@@ -1315,12 +1315,8 @@
                     "text": "Mandantenweite Liste aller Units: Name, Standort, Kategorie und ob Unit-Checks erlaubt sind. Öffnen Sie eine Zeile, um zur Standortdetailseite mit Fokus auf diese Unit zu springen."
                 },
                 {
-                    "label": "Nach Standort filtern",
-                    "text": "Liste auf einen Standort eingrenzen. Filter leeren, um wieder alle Units zu sehen."
-                },
-                {
-                    "label": "Nach Kategorie filtern",
-                    "text": "Liste auf eine Kategorie eingrenzen. Filter leeren, um wieder alle Units zu sehen."
+                    "label": "Filter",
+                    "text": "Liste auf einen Standort und/oder eine Kategorie eingrenzen. Filter leeren, um wieder alle Units zu sehen."
                 },
                 {
                     "label": "Unit-Checks",

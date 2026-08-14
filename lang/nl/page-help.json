@@ -1315,12 +1315,8 @@
                     "text": "Tenant-breed overzicht van alle units: naam, locatie, categorie en of unit checks zijn toegestaan. Open een rij om naar de locatie-detail te gaan met die unit in focus."
                 },
                 {
-                    "label": "Filter op locatie",
-                    "text": "Beperk de lijst tot één locatie. Wis het filter om opnieuw alle units te zien."
-                },
-                {
-                    "label": "Filter op categorie",
-                    "text": "Beperk de lijst tot één categorie. Wis het filter om opnieuw alle units te zien."
+                    "label": "Filter",
+                    "text": "Beperk de lijst tot één locatie en/of één categorie. Wis de filters om opnieuw alle units te zien."
                 },
                 {
                     "label": "Unit checks",

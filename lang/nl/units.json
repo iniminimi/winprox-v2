@@ -2,9 +2,10 @@
     "title": "Units",
     "subtitle": "Machines, ruimtes of assets. Alle units van je organisatie; filter op locatie of categorie, of klik om te beheren.",
     "filters": {
-        "location": "Filter op locatie",
+        "label": "Filter:",
+        "location": "Locatie",
         "all_locations": "Alle locaties",
-        "category": "Filter op categorie",
+        "category": "Categorie",
         "all_categories": "Alle categorieën"
     },
     "list": {
