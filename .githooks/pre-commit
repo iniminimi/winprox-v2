@@ -1,0 +1,3 @@
+#!/bin/sh
+# Blokkeer commits met UTF-8 BOM (breekt lokaal login / Livewire).
+node scripts/check-bom.mjs || exit 1

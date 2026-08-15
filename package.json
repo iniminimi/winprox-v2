@@ -4,9 +4,11 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
+        "prepare": "node scripts/install-git-hooks.mjs",
         "fix:locales": "node scripts/locales.mjs fix",
         "check:locales": "node scripts/locales.mjs check",
         "check:locales:parity": "node scripts/locales.mjs parity",
+        "check:bom": "node scripts/check-bom.mjs",
         "check:architecture": "node scripts/check-architecture.mjs",
         "capture:manual": "npm install --prefix scripts/capture-pkg && node scripts/capture-manual-screenshots.mjs"
     },

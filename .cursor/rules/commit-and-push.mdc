@@ -13,10 +13,11 @@ We ontwikkelen en testen **lokaal** (Windows). Productie draait op de **server**
 
 1. **Lokaal bouwen en testen** — wijziging afmaken tot het lokaal werkt (visueel + functioneel).
 2. **Frontend-build (hard)** — na **elke** wijziging aan `resources/css/**`, `resources/js/**`, `vite.config.*`, of Blade/views die CSS/JS-classes raken: **meteen** `npm run build` draaien. Niet wachten tot commit. Taak is niet klaar zolang `public/build/**` niet geüpdatet is.
-3. **Checks vóór commit:**
-   - `php artisan test` (relevante tests)
+3. **Checks vóór commit (hard):**
+   - `npm run check:bom` (of via `check:architecture`) — **geen UTF-8 BOM**, ook niet in `.env`
    - `npm run check:locales:parity`
    - `npm run check:architecture`
+   - `php artisan test` (relevante tests)
    - Bij CSS/JS/views: **`public/build/**` moet al gecommit klaarstaan** (build stap 2)
 4. **`git status`** — geen test-artefacten (`tests/Avery_*.zip`, `_extract/`, `.env`, logs).
 5. **Commit** met duidelijke boodschap.

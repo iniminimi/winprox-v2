@@ -1,28 +1,26 @@
 ---
-description: Nooit UTF-8 BOM in bronbestanden — breekt Livewire/Alpine lokaal
+description: Nooit UTF-8 BOM in bronbestanden — breekt Livewire/Alpine/login lokaal
 alwaysApply: true
 ---
 
-# Geen UTF-8 BOM (hard)
+# Geen UTF-8 BOM (hard — agents)
 
-**Incident (2026-08-14):** een UTF-8 BOM (`EF BB BF`) in `config/product_docs.php` werd vóór
-**elke** HTTP-response gezet — inclusief Livewire JS. Gevolg lokaal: Alpine start niet,
-wachtwoord niet geblurd, inloggen dood. Productie leek vaak nog te werken → uren zoekwerk.
+**Incidenten:** BOM in `config/*.php` (Livewire JS kapot) en later in **`.env`** (login/sessie
+kapot). Eerste check was te smal → **nooit meer “alleen config”**.
+
+## Agent-plicht (elke taak)
+1. **Nooit** schrijven met BOM / `utf-8-sig`. Python: altijd `encoding="utf-8"`.
+2. **Na** bulk-writes (locales, CSS, `.env`, config): `npm run check:bom` groen.
+3. **Vóór commit:** `npm run check:architecture` (bevat BOM-check + `.env`).
+4. Login-symptomen (wachtwoord zichtbaar, submit dood) → **eerst BOM**, niet Alpine-refactor.
 
 ## Verboden
-- Bestanden opslaan/schrijven als **UTF-8 with BOM**.
-- Editors/tools die standaard BOM toevoegen (sommige Windows-editors, verkeerde Python `encoding`).
-- **Ook `.env`** — een BOM daar breekt lokaal login/sessie zonder duidelijke foutmelding.
+- UTF-8 **with BOM** (`EF BB BF`) in bronbestanden of `.env*`.
+- Editors/tools die BOM toevoegen; Python `encoding="utf-8-sig"`.
 
-## Verplicht
-- Bronbestanden: **UTF-8 zonder BOM** (`php`, `blade.php`, `js`, `css`, `json`, `md`, `env*`).
-- Bij schrijven met Python: `encoding='utf-8'` (niet `utf-8-sig`).
-- Na verdachte encoding-wijziging: `npm run check:architecture` (bevat BOM-check, inclusief `.env`).
+## Scope check
+`npm run check:bom` / pre-commit scannen: `app`, `bootstrap`, `config`, `routes`,
+`resources`, `lang`, `public`, `scripts`, plus root `.env` / `.env.example` / `.env.testing`.
 
-## Symptomen → eerst BOM checken
-- Wachtwoord zichtbaar i.p.v. dots; Livewire-submit doet niets.
-- Browser console: `SyntaxError: Invalid or unexpected token` op `livewire.js`.
-- HTML begint met rare prefix vóór `<!DOCTYPE`.
-
-**Fix:** BOM strippen uit het schuldige bestand (vaak onder `config/`), daarna
-`php artisan optimize:clear`. Niet “Alpine/Livewire refactoren”.
+## Fix
+BOM strippen uit het schuldige bestand → `php artisan optimize:clear`. Klaar.
