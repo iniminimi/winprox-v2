@@ -47,7 +47,7 @@
                 </div>
 
                 <div
-                    class="wp-list wp-list--entity-rows"
+                    class="wp-stack-tight"
                     x-data="{
                         downloading: null,
                         error: null,
@@ -69,23 +69,25 @@
                         },
                     }"
                 >
-                    @foreach ($formats as $format)
-                        <button
-                            type="button"
-                            class="wp-issue-row"
-                            wire:key="qr-cluster-format-{{ $format['key'] }}"
-                            @click="download(@js($format['url']), @js($format['key']))"
-                            :disabled="downloading !== null"
-                            :aria-busy="downloading === @js($format['key'])"
-                        >
-                            <span class="wp-issue-card-title">{{ $format['title'] }}</span>
-                            <span class="wp-issue-card-meta" x-show="downloading !== @js($format['key'])">{{ $format['size'] }}</span>
-                            <span class="wp-muted wp-cluster" x-show="downloading === @js($format['key'])" x-cloak>
-                                <x-wp-spinner size="sm" :visible="true" />
-                                <span>{{ $generating }}</span>
-                            </span>
-                        </button>
-                    @endforeach
+                    <div class="wp-cluster">
+                        @foreach ($formats as $format)
+                            <button
+                                type="button"
+                                class="btn btn--surface"
+                                wire:key="qr-cluster-format-{{ $format['key'] }}"
+                                title="{{ $format['size'] }}"
+                                @click="download(@js($format['url']), @js($format['key']))"
+                                :disabled="downloading !== null"
+                                :aria-busy="downloading === @js($format['key'])"
+                            >
+                                <span x-show="downloading !== @js($format['key'])">{{ $format['title'] }}</span>
+                                <span class="wp-cluster" x-show="downloading === @js($format['key'])" x-cloak>
+                                    <x-wp-spinner size="sm" :visible="true" />
+                                    <span>{{ $generating }}</span>
+                                </span>
+                            </button>
+                        @endforeach
+                    </div>
 
                     <p class="wp-error" x-show="error" x-text="error" x-cloak></p>
                 </div>
