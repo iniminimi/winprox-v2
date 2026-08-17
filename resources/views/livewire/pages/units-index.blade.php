@@ -19,8 +19,10 @@
                 </a>
             </div>
         </div>
-    @elseif ($units->isEmpty())
+    @elseif ($locations->isEmpty())
         <x-wp-onboarding-banner stage="locations" />
+    @elseif ($units->isEmpty())
+        <x-wp-onboarding-banner stage="units" />
     @endif
 
     @if ($units->isNotEmpty())

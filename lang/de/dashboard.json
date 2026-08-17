@@ -58,6 +58,11 @@
             "text": "Gehen Sie zu Standorte → Standorte, fügen Sie Standorte hinzu und erstellen Sie Units pro Standort (Maschinen, Räume, Assets). Units können Sie auch per CSV oder Excel importieren oder in Masse anlegen.",
             "button": "Standorte verwalten"
         },
+        "units": {
+            "title": "Beginnen Sie mit dem Anlegen von Units",
+            "text": "Öffnen Sie Ihren Standort und fügen Sie Units hinzu (Maschinen, Räume, Assets). Units können Sie einzeln, in Masse oder per CSV/Excel anlegen.",
+            "button": "Units hinzufügen"
+        },
         "clock_point": {
             "title": "Clock Point anlegen",
             "text": "Ausführende melden sich an und stempeln über einen Clock Point ein und aus. Legen Sie mindestens einen Clock Point an und drucken Sie den QR-Aufkleber oder das QR-Druckblatt, damit Ihr Team starten kann.",

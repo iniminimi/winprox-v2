@@ -16,6 +16,7 @@ final readonly class TenantOnboardingState
         public bool $needsTeamsOnboarding,
         public bool $needsCategoriesOnboarding,
         public bool $needsLocationsOnboarding,
+        public bool $needsUnitsOnboarding,
         public bool $needsClockPointOnboarding,
         public bool $showWelcomeGuide,
     ) {}
@@ -34,7 +35,8 @@ final readonly class TenantOnboardingState
         return new self(
             needsTeamsOnboarding: $teamCount === 0,
             needsCategoriesOnboarding: $teamCount > 0 && $categoryCount === 0,
-            needsLocationsOnboarding: $teamCount > 0 && ($locationCount === 0 || $unitCount === 0),
+            needsLocationsOnboarding: $teamCount > 0 && $locationCount === 0,
+            needsUnitsOnboarding: $teamCount > 0 && $locationCount > 0 && $unitCount === 0,
             needsClockPointOnboarding: $clockPointCount === 0,
             showWelcomeGuide: $teamCount === 0
                 || $workerCount === 0
@@ -61,6 +63,14 @@ final readonly class TenantOnboardingState
             && $this->needsLocationsOnboarding;
     }
 
+    public function showUnitsBanner(): bool
+    {
+        return ! $this->needsTeamsOnboarding
+            && ! $this->needsCategoriesOnboarding
+            && ! $this->needsLocationsOnboarding
+            && $this->needsUnitsOnboarding;
+    }
+
     public function showCategoriesOrLocationsBanner(): bool
     {
         return $this->showCategoriesBanner() || $this->showLocationsBanner();
@@ -71,6 +81,7 @@ final readonly class TenantOnboardingState
         return ! $this->needsTeamsOnboarding
             && ! $this->needsCategoriesOnboarding
             && ! $this->needsLocationsOnboarding
+            && ! $this->needsUnitsOnboarding
             && $this->needsClockPointOnboarding;
     }
 
@@ -79,6 +90,18 @@ final readonly class TenantOnboardingState
         return $this->showTeamsBanner()
             || $this->showCategoriesBanner()
             || $this->showLocationsBanner()
+            || $this->showUnitsBanner()
             || $this->showClockPointBanner();
+    }
+
+    public static function unitsOnboardingHref(): string
+    {
+        $ids = Location::query()->orderBy('id')->limit(2)->pluck('id');
+
+        if ($ids->count() === 1) {
+            return route('locations.show', $ids->first());
+        }
+
+        return route('locations.index', ['section' => 'locations']);
     }
 }

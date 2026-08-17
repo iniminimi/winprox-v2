@@ -58,6 +58,11 @@
             "text": "Ga naar Plaatsen → Locaties, voeg locaties toe en maak per locatie units aan (machines, ruimtes, assets). Units kun je ook importeren via CSV of Excel, of in bulk aanmaken.",
             "button": "Locaties beheren"
         },
+        "units": {
+            "title": "Begin met het aanmaken van units",
+            "text": "Open je locatie en voeg units toe (machines, ruimtes, assets). Units kun je één voor één, in bulk of via CSV/Excel aanmaken.",
+            "button": "Units toevoegen"
+        },
         "clock_point": {
             "title": "Maak een Clock Point aan",
             "text": "Uitvoerders melden zich aan en klokken in via een Clock Point. Maak minstens één clock point aan en print de QR-sticker of het QR-afdrukblad zodat je team kan starten.",

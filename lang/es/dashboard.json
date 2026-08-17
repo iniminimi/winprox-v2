@@ -58,6 +58,11 @@
             "text": "Vaya a Ubicaciones → Ubicaciones, añada ubicaciones y cree units por ubicación (máquinas, salas, activos). También puede importar units vía CSV o Excel, o crearlas en bloque.",
             "button": "Gestionar ubicaciones"
         },
+        "units": {
+            "title": "Empiece creando units",
+            "text": "Abra su ubicación y añada units (máquinas, salas, activos). Puede crearlas una a una, en bloque o vía CSV/Excel.",
+            "button": "Añadir units"
+        },
         "clock_point": {
             "title": "Cree un Clock Point",
             "text": "Los trabajadores inician sesión y fichan mediante un Clock Point. Cree al menos un clock point e imprima la etiqueta QR o la hoja de impresión QR para que su equipo pueda empezar.",

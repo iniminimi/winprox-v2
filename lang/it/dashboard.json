@@ -58,6 +58,11 @@
             "text": "Vada a Sedi → Sedi, aggiunga sedi e crei unit per sede (macchine, stanze, asset). Può anche importare unit via CSV o Excel, o crearle in blocco.",
             "button": "Gestisci sedi"
         },
+        "units": {
+            "title": "Inizi creando le unit",
+            "text": "Apra la sede e aggiunga unit (macchine, stanze, asset). Può crearle una per una, in blocco o via CSV/Excel.",
+            "button": "Aggiungi unit"
+        },
         "clock_point": {
             "title": "Crei un Clock Point",
             "text": "I lavoratori accedono e timbrano tramite un Clock Point. Crei almeno un clock point e stampi l'adesivo QR o il foglio di stampa QR così il team può iniziare.",

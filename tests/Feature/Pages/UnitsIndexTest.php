@@ -25,7 +25,7 @@ it('verwijst van Units naar Categorieën wanneer er nog geen categorieën zijn',
         ->assertDontSee(__('units.list.empty'), false);
 });
 
-it('verwijst van Units naar Locaties wanneer er categorieën zijn maar nog geen units', function () {
+it('verwijst van Units naar Locaties wanneer er categorieën zijn maar nog geen locaties', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
@@ -35,9 +35,26 @@ it('verwijst van Units naar Locaties wanneer er categorieën zijn maar nog geen 
         ->test(UnitsIndex::class)
         ->assertDontSee(__('locations.onboarding.go_to_categories'), false)
         ->assertSee(__('dashboard.onboarding.locations.title'), false)
-        ->assertSee(__('dashboard.onboarding.locations.text'), false)
         ->assertSee(__('dashboard.onboarding.locations.button'), false)
         ->assertSee(route('locations.index', ['section' => 'locations']), false)
+        ->assertDontSee(__('dashboard.onboarding.units.button'), false)
+        ->assertDontSee(__('units.list.empty'), false);
+});
+
+it('verwijst van Units naar de locatie wanneer er een locatie is maar nog geen units', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+
+    Livewire::actingAs($user)
+        ->test(UnitsIndex::class)
+        ->assertSee(__('dashboard.onboarding.units.title'), false)
+        ->assertSee(__('dashboard.onboarding.units.text'), false)
+        ->assertSee(__('dashboard.onboarding.units.button'), false)
+        ->assertSee(route('locations.show', $location), false)
+        ->assertDontSee(__('dashboard.onboarding.locations.button'), false)
         ->assertDontSee(__('units.list.empty'), false);
 });
 
@@ -56,6 +73,7 @@ it('verbergt de locaties-onboarding op Units wanneer er units zijn', function ()
     Livewire::actingAs($user)
         ->test(UnitsIndex::class)
         ->assertDontSee(__('dashboard.onboarding.locations.button'), false)
+        ->assertDontSee(__('dashboard.onboarding.units.button'), false)
         ->assertDontSee(__('locations.onboarding.go_to_categories'), false);
 });
 

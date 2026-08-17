@@ -42,7 +42,7 @@ it('toont categorieën-onboarding zodra er een team is maar nog geen categorieë
         ->and($state->blocksDashboardMain())->toBeTrue();
 });
 
-it('toont locaties-onboarding op functionele paginas wanneer teams bestaan maar locaties of units ontbreken', function () {
+it('toont locaties-onboarding wanneer teams en categorieën bestaan maar locaties ontbreken', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
@@ -54,6 +54,24 @@ it('toont locaties-onboarding op functionele paginas wanneer teams bestaan maar 
     expect($state->showCategoriesOrLocationsBanner())->toBeTrue()
         ->and($state->showCategoriesBanner())->toBeFalse()
         ->and($state->showLocationsBanner())->toBeTrue()
+        ->and($state->showUnitsBanner())->toBeFalse()
+        ->and($state->blocksDashboardMain())->toBeTrue()
+        ->and($state->showWelcomeGuide)->toBeTrue();
+});
+
+it('toont units-onboarding wanneer een locatie bestaat maar nog geen units', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $state = TenantOnboardingState::current();
+
+    expect($state->showLocationsBanner())->toBeFalse()
+        ->and($state->showUnitsBanner())->toBeTrue()
+        ->and($state->showClockPointBanner())->toBeFalse()
         ->and($state->blocksDashboardMain())->toBeTrue()
         ->and($state->showWelcomeGuide)->toBeTrue();
 });
@@ -73,6 +91,8 @@ it('is klaar voor het dashboard wanneer teams, workers, categorieën, locaties, 
 
     expect($state->showTeamsBanner())->toBeFalse()
         ->and($state->showCategoriesBanner())->toBeFalse()
+        ->and($state->showLocationsBanner())->toBeFalse()
+        ->and($state->showUnitsBanner())->toBeFalse()
         ->and($state->showCategoriesOrLocationsBanner())->toBeFalse()
         ->and($state->showClockPointBanner())->toBeFalse()
         ->and($state->showWelcomeGuide)->toBeFalse()
@@ -92,6 +112,7 @@ it('toont clock point-onboarding wanneer facility-basis klaar is maar nog geen c
     $state = TenantOnboardingState::current();
 
     expect($state->showClockPointBanner())->toBeTrue()
+        ->and($state->showUnitsBanner())->toBeFalse()
         ->and($state->blocksDashboardMain())->toBeTrue()
         ->and($state->showWelcomeGuide)->toBeTrue();
 });

@@ -5,6 +5,8 @@
         <x-wp-onboarding-banner stage="categories" />
     @elseif ($onboarding->showLocationsBanner())
         <x-wp-onboarding-banner stage="locations" />
+    @elseif ($onboarding->showUnitsBanner())
+        <x-wp-onboarding-banner stage="units" />
     @elseif ($onboarding->showClockPointBanner())
         <x-wp-onboarding-banner stage="clock_point" />
     @else

@@ -58,6 +58,11 @@
             "text": "Allez dans Emplacements → Sites, ajoutez des sites et créez des unités par site (machines, salles, équipements). Vous pouvez aussi importer des unités via CSV ou Excel, ou les créer en masse.",
             "button": "Gérer les sites"
         },
+        "units": {
+            "title": "Commencez par créer des unités",
+            "text": "Ouvrez votre site et ajoutez des unités (machines, salles, équipements). Vous pouvez les créer une par une, en masse, ou via CSV/Excel.",
+            "button": "Ajouter des unités"
+        },
         "clock_point": {
             "title": "Créez un Clock Point",
             "text": "Les exécutants se connectent et pointent via un Clock Point. Créez au moins un clock point et imprimez l'autocollant QR ou la feuille d'impression QR pour que votre équipe puisse démarrer.",

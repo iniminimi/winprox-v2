@@ -91,15 +91,32 @@ it('toont locaties-onboarding op meldingen zodra er categorieën zijn maar nog g
         ->assertDontSee(__('issues.list.title'));
 });
 
-it('toont locaties-onboarding op het dashboard na categorieën zonder locaties', function () {
+it('toont units-onboarding op meldingen zodra er een locatie is maar nog geen units', function () {
     [$tenant, $admin] = setupOnboardingAdmin();
     InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(IssuesIndex::class)
+        ->assertSee(__('dashboard.onboarding.units.title'))
+        ->assertSee(__('dashboard.onboarding.units.button'))
+        ->assertSee(route('locations.show', $location), false)
+        ->assertDontSee(__('dashboard.onboarding.locations.button'))
+        ->assertDontSee(__('issues.list.title'));
+});
+
+it('toont units-onboarding op het dashboard na een locatie zonder units', function () {
+    [$tenant, $admin] = setupOnboardingAdmin();
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    Location::factory()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
-        ->assertSee(__('dashboard.onboarding.locations.title'))
-        ->assertSee(__('dashboard.onboarding.locations.button'))
+        ->assertSee(__('dashboard.onboarding.units.title'))
+        ->assertSee(__('dashboard.onboarding.units.button'))
+        ->assertDontSee(__('dashboard.onboarding.locations.button'))
         ->assertDontSeeHtml('wp-kpi--locations');
 });
 

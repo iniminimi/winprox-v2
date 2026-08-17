@@ -58,6 +58,11 @@
             "text": "Go to Places → Locations, add locations and create units per location (machines, rooms, assets). You can also import units via CSV or Excel, or create them in bulk.",
             "button": "Manage locations"
         },
+        "units": {
+            "title": "Start by creating units",
+            "text": "Open your location and add units (machines, rooms, assets). You can add units one by one, in bulk, or via CSV/Excel.",
+            "button": "Add units"
+        },
         "clock_point": {
             "title": "Create a Clock Point",
             "text": "Workers sign in and clock in/out via a Clock Point. Create at least one clock point and print the QR sticker or QR print sheet so your team can get started.",
