@@ -44,13 +44,13 @@
     "welcome": "Welcome to Winprox.app",
     "onboarding": {
         "teams": {
-            "title": "Start by creating teams & workers",
-            "text": "Create operational teams, add workers and assign a team leader. Link teams to categories so tasks always reach the right team. Workers sign in with their name and a chosen icon. Teams and workers can also be uploaded via bulk import (CSV/Excel).",
-            "button": "Add teams"
+            "title": "Start with one team",
+            "text": "In a small organisation one team is enough — for example Hotel, Practice or Facility. Add everyone who carries out tasks to that team (name + icon). A team leader is not required. Add extra teams later only if there are genuinely separate groups. Then link the team to your categories.",
+            "button": "Create team"
         },
         "categories": {
             "title": "Start by creating categories",
-            "text": "Go to Places → Categories and add categories to group units (e.g. drills, sanitary, fitness equipment, office, electricity). Categories help with filtering and organising units. By linking worker teams to specific categories, WinProx ensures tasks are carried out by the correct team. Then add locations under Places → Locations and create units per location — or via Places → Units.",
+            "text": "Go to Places → Categories and add categories to group units (e.g. rooms, sanitary, office). One team may be linked to every category — tasks then reach the same people. With several teams, link each team to the categories it works on. Then add locations under Places → Locations and create units per location — or via Places → Units.",
             "button": "Manage categories"
         },
         "locations": {

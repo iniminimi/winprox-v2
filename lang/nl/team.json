@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Beheer operationele teams, uitvoerders en checklists voor unit checks."
+        "subtitle": "Eén team is genoeg om te starten. Voeg uitvoerders toe; checklists zijn optioneel."
     },
     "nav": {
         "teams": "Teams"
@@ -47,8 +47,8 @@
     "teams": {
         "title": "Teams",
         "add": "+ Team toevoegen",
-        "hint": "Klik op een team om uitvoerders te beheren.",
-        "empty": "Er zijn nog geen teams.",
+        "hint": "Klik op een team om uitvoerders te beheren. Iedereen in hetzelfde team ziet dezelfde taken.",
+        "empty": "Nog geen teams. Maak er één aan — bijvoorbeeld Hotel of Faciliteit.",
         "active": "Actief",
         "inactive": "Inactief",
         "worker_count": ":count actieve uitvoerders",

@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Verwalten Sie operative Teams, Ausführende und Checklisten für Unit-Checks."
+        "subtitle": "Ein Team reicht zum Start. Fügen Sie Ausführende hinzu; Checklisten sind optional."
     },
     "nav": {
         "teams": "Teams"
@@ -47,8 +47,8 @@
     "teams": {
         "title": "Teams",
         "add": "+ Team hinzufügen",
-        "hint": "Klicken Sie auf ein Team, um Mitarbeiter zu verwalten.",
-        "empty": "Es gibt noch keine Teams.",
+        "hint": "Klicken Sie auf ein Team, um Ausführende zu verwalten. Alle im selben Team sehen dieselben Aufgaben.",
+        "empty": "Noch keine Teams. Legen Sie eines an — zum Beispiel Hotel oder Facility.",
         "active": "Aktiv",
         "inactive": "Inaktiv",
         "worker_count": ":count aktive Mitarbeiter",

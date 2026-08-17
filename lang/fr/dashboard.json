@@ -44,13 +44,13 @@
     "welcome": "Bienvenue sur Winprox.app",
     "onboarding": {
         "teams": {
-            "title": "Commencez par créer des équipes et des ouvriers",
-            "text": "Créez des équipes opérationnelles, ajoutez des ouvriers et désignez un chef d'équipe. Liez les équipes aux catégories pour que les tâches arrivent toujours à la bonne équipe. Les ouvriers s'inscrivent avec leur nom et une icône choisie. Les équipes et ouvriers peuvent aussi être importés en masse (fichier CSV).",
-            "button": "Ajouter des équipes"
+            "title": "Commencez par une équipe",
+            "text": "Dans une petite organisation, une équipe suffit — par exemple Hôtel, Cabinet ou Facility. Ajoutez-y toutes les personnes qui exécutent des tâches (nom + icône). Un chef d’équipe n’est pas nécessaire. Créez d’autres équipes plus tard seulement s’il existe vraiment des groupes distincts. Reliez ensuite l’équipe à vos catégories.",
+            "button": "Créer une équipe"
         },
         "categories": {
             "title": "Commencez par créer des catégories",
-            "text": "Allez dans Emplacements → Catégories et ajoutez des catégories pour regrouper les unités (p. ex. perceuses, sanitaires, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. En liant des équipes d'ouvriers à des catégories spécifiques, WinProx garantit que les tâches sont réalisées par l'équipe correcte. Ajoutez ensuite des sites sous Emplacements → Sites et créez des unités par site — ou via Emplacements → Unités.",
+            "text": "Allez dans Emplacements → Catégories et ajoutez des catégories pour regrouper les unités (p. ex. chambres, sanitaires, bureau). Une même équipe peut être liée à toutes les catégories — les tâches arrivent alors aux mêmes personnes. Avec plusieurs équipes, reliez chacune aux catégories concernées. Ajoutez ensuite des sites sous Emplacements → Sites et créez des unités par site — ou via Emplacements → Unités.",
             "button": "Gérer les catégories"
         },
         "locations": {

@@ -298,9 +298,9 @@ it('toont het stappenplan op pagina 2', function () {
     $this->actingAs($admin)
         ->get(route('manual.general'))
         ->assertOk()
-        ->assertSee('In 5 stappen up-and-running')
-        ->assertSee('Teams &amp; uitvoerders aanmaken', false)
-        ->assertSee('QR-codes afdrukken');
+        ->assertSee(__('manual.getting_started.title'))
+        ->assertSee(__('manual.step_1_title'))
+        ->assertSee(__('manual.step_3_title'));
 });
 
 it('toont gps-geschiedenis-screenshot bij locatiedetail in de algemene handleiding', function () {

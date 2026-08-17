@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Interne Teams",
-            "box_body": "Organisieren Sie Wartungsteams unter Menschen → Teams. Verknüpfen Sie Teams mit Units und Kategorien. Über Clock Point und Unit-QR erfassen Ausführende Updates und Fotos vor Ort."
+            "box_body": "Legen Sie unter Menschen → Teams mindestens ein Team an — in einer kleinen Organisation reicht Hotel oder Facility. Verknüpfen Sie das Team mit Kategorien. Über Clock Point und Unit-QR erfassen Ausführende Updates und Fotos vor Ort."
         },
         "pricing": {
             "slug": "pricing",
@@ -195,8 +195,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Wie richte ich interne Teams ein?",
-            "body": "Gehen Sie zu Menschen → Teams: Teams anlegen, Ausführende hinzufügen (manuell, CSV oder Excel), Teams an Units und optional an Kategorien koppeln. Unter Teams verwalten Sie auch Checklisten für Unit-Checks (geteilt oder pro Team). Drucken oder mailen Sie den Clock-Point-QR für die Fläche (Time → Clock Points).",
-            "summary": "Teams unter Menschen → Teams; Checklisten für Unit-Checks; Kopplung an Units/Kategorien; Clock-Point-QR für die Fläche."
+            "body": "Klein starten: ein Team (zum Beispiel Hotel oder Facility) und alle, die Aufgaben ausführen. Gehen Sie zu Menschen → Teams. Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie Teams mit Kategorien. Ausführende manuell oder per CSV/Excel. Unter Teams verwalten Sie auch Checklisten für Unit-Checks. Drucken Sie den Clock-Point-QR für die Fläche (Time → Clock Points).",
+            "summary": "Ein Team reicht zum Start. Menschen → Teams; mit Kategorien verknüpfen; Clock-Point-QR."
         },
         "team_follow_up": {
             "slug": "team_follow_up",

@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Per iniziare",
         "title": "Operativo in 5 passi",
-        "intro": "Segui questo ordine quando configuri WinProx per la prima volta. Time (timbratrice) è opzionale; Clock Point resta il QR di identificazione."
+        "intro": "Segua quest’ordine alla prima configurazione. Un team basta per iniziare. Time (timbratrice) è opzionale; Clock Point resta il QR di identificazione."
     },
     "chapter": "Capitolo",
     "toc": {
@@ -50,8 +50,8 @@
             "closed": "L'attività è stata revisionata dall'amministratore e definitivamente chiusa."
         }
     },
-    "step_1_title": "Crea team e lavoratori",
-    "step_1_text": "Costituisca team operativi, aggiunga lavoratori (interni o esterni con nome azienda opzionale) e assegni un caposquadra. Colleghi i team a categorie specifiche in modo che le attività raggiungano sempre i professionisti giusti. I lavoratori accedono facilmente con il nome e un'icona personale. Può anche aggiungere team e lavoratori in un'unica operazione tramite importazione massiva (CSV/Excel). Opzionale: in Persone → Teams gestisci le checklist per i unit check (condivise o per team; modelli pulizia, tecnica e security). Gli utenti colleghi con accesso (amministratore e dipendente) si gestiscono in Persone → Backoffice.",
+    "step_1_title": "Team e esecutori",
+    "step_1_text": "Inizi in modo semplice: crei un team (ad esempio Hotel o Facility) e aggiunga tutti coloro che eseguono attività. Si identificano con nome e icona. Un caposquadra non è necessario. Colleghi il team alle categorie. Le organizzazioni più grandi aggiungono altri team dopo, o importano via CSV/Excel. Le checklist dei unit check si gestiscono in Persone → Teams. I colleghi con accesso (amministratore e dipendente) in Persone → Backoffice.",
     "step_2_title": "Configura sedi e unità",
     "step_2_text": "Raggruppa le unit in categorie (es. trapani, idraulica, fitness, ufficio o elettricità). Segna le categorie come Prenotabili se le unit accettano fasce orarie, e attiva Consenti prenotazioni per unit (disattivato di default). Opzionale: Dati di contatto obbligatori (categoria e unit) per segnalatori QR anonimi. Collegando i team alle categorie, WinProx indirizza i compiti al team giusto. Aggiungi sedi e crea unit per sede — form, serie bulk o import CSV/Excel. Usa Luoghi → Units per una panoramica a livello tenant (filtri sede e categoria, numero di unit, pill di stato e controllo). Puoi aggiornare nomi e descrizioni manualmente per lingua. Opzionale: Consenti controlli unit (categoria e unit, disattivato di default) per giri OK/Non OK sul portale — separato da ESG. Collega una checklist per unit (modelli sotto Persone → Team); il menu a tendina mostra checklist condivise e quelle dei team della categoria.",
     "step_3_title": "Stampa e appendi codici QR",

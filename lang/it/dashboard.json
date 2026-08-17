@@ -44,13 +44,13 @@
     "welcome": "Benvenuto su Winprox.app",
     "onboarding": {
         "teams": {
-            "title": "Inizi creando team e lavoratori",
-            "text": "Crei team operativi, aggiunga lavoratori e assegni un caposquadra. Colleghi i team alle categorie in modo che le attività raggiungano sempre il team giusto. I lavoratori accedono con il nome e un'icona scelta. Team e lavoratori possono anche essere caricati tramite importazione massiva (CSV/Excel).",
-            "button": "Aggiungi team"
+            "title": "Inizi con un team",
+            "text": "In una piccola organizzazione basta un team — ad esempio Hotel, Studio o Facility. Aggiunga a quel team tutti coloro che eseguono attività (nome + icona). Un caposquadra non è necessario. Altri team solo più tardi, se ci sono gruppi davvero distinti. Poi colleghi il team alle categorie.",
+            "button": "Crea team"
         },
         "categories": {
             "title": "Inizi creando le categorie",
-            "text": "Vada a Sedi → Categorie e aggiunga categorie per raggruppare le unit (es. trapani, sanitari, attrezzature fitness, ufficio, elettricità). Le categorie aiutano a filtrare e organizzare le unit. Collegando i team di lavoratori a categorie specifiche, WinProx garantisce che le attività siano eseguite dal team corretto. Poi aggiunga sedi in Sedi → Sedi e crei unit per sede — o via Sedi → Units.",
+            "text": "Vada a Sedi → Categorie e aggiunga categorie per raggruppare le unit (es. camere, sanitari, ufficio). Un solo team può essere collegato a tutte le categorie — le attività arrivano così alle stesse persone. Con più team, colleghi ciascuno alle categorie di competenza. Poi aggiunga sedi in Sedi → Sedi e crei unit per sede — o via Sedi → Units.",
             "button": "Gestisci categorie"
         },
         "locations": {

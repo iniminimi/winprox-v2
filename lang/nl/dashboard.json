@@ -44,13 +44,13 @@
     "welcome": "Welkom op Winprox.app",
     "onboarding": {
         "teams": {
-            "title": "Begin met het aanmaken Teams & uitvoerders",
-            "text": "Maak operationele teams aan, voeg uitvoerders toe en wijs een teamleider aan. Koppel teams aan categorieën zodat taken altijd bij het juiste team terechtkomen. Uitvoerders melden zich aan met hun naam en een gekozen icoon. Teams en uitvoerders kunnen ook via bulk import (CSV/Excel) geüpload worden.",
-            "button": "Voeg teams toe"
+            "title": "Begin met één team",
+            "text": "In een kleine organisatie is één team genoeg — bijvoorbeeld Hotel, Praktijk of Faciliteit. Voeg iedereen die taken uitvoert toe aan dat team (naam + icoon). Een teamleider is niet nodig. Extra teams maak je later alleen als er écht andere groepen zijn. Koppel het team daarna aan je categorieën.",
+            "button": "Team aanmaken"
         },
         "categories": {
             "title": "Begin met het aanmaken van categorieën",
-            "text": "Ga naar Plaatsen → Categorieën en voeg categorieën toe om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Door teams van uitvoerders te koppelen aan specifieke categorieën zorgt WinProx ervoor dat taken uitgevoerd worden door het correcte team. Voeg daarna locaties toe onder Plaatsen → Locaties en maak per locatie units aan — of via Plaatsen → Units.",
+            "text": "Ga naar Plaatsen → Categorieën en voeg categorieën toe om units te groeperen (bijv. kamers, sanitair, kantoor). Eén team mag aan alle categorieën hangen — taken komen dan bij dezelfde mensen terecht. Bij meerdere teams koppel je elk team aan de categorieën waar het voor werkt. Voeg daarna locaties toe onder Plaatsen → Locaties en maak per locatie units aan — of via Plaatsen → Units.",
             "button": "Categorieën beheren"
         },
         "locations": {

@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Interne teams",
-            "box_body": "Organiseer onderhoudsteams onder Mensen → Teams. Koppel teams aan units en categorieën. Via Clock Point en unit-QR registreren uitvoerders updates en foto's op locatie."
+            "box_body": "Maak onder Mensen → Teams minstens één team aan — in een kleine organisatie volstaat Hotel of Faciliteit. Koppel het team aan categorieën. Via Clock Point en unit-QR registreren uitvoerders updates en foto's op locatie."
         },
         "pricing": {
             "slug": "pricing",
@@ -195,8 +195,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Hoe richt ik interne teams in?",
-            "body": "Ga naar Mensen → Teams: maak teams aan, voeg uitvoerders toe (handmatig, CSV of Excel), koppel teams aan units en optioneel aan categorieën. Onder Teams beheer je ook checklists voor unit checks (gedeeld of per team). Print of mail de Clock Point-QR voor de werkvloer (Time → Clock Points).",
-            "summary": "Teams onder Mensen → Teams; checklists voor unit checks; koppel aan units/categorieën; Clock Point-QR voor de vloer."
+            "body": "Klein beginnen: één team (bijvoorbeeld Hotel of Faciliteit) en iedereen die taken uitvoert daarin. Ga naar Mensen → Teams. Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel teams aan categorieën. Uitvoerders voeg je handmatig toe, of via CSV/Excel. Onder Teams beheer je ook checklists voor unit checks. Print de Clock Point-QR voor de werkvloer (Time → Clock Points).",
+            "summary": "Eén team volstaat om te starten. Mensen → Teams; koppel aan categorieën; Clock Point-QR."
         },
         "team_follow_up": {
             "slug": "team_follow_up",

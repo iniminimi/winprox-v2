@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Erste Schritte",
         "title": "In 5 Schritten einsatzbereit",
-        "intro": "Folgen Sie dieser Reihenfolge bei der ersten Einrichtung von WinProx. Time (Stechuhr) ist optional; Clock Point bleibt der Anmelde-QR."
+        "intro": "Folgen Sie dieser Reihenfolge bei der Ersteinrichtung. Ein Team reicht zum Start. Time (Stechuhr) ist optional; Clock Point bleibt der Anmelde-QR."
     },
     "chapter": "Kapitel",
     "toc": {
@@ -50,8 +50,8 @@
             "closed": "Die Aufgabe wurde vom Administrator geprüft und endgültig geschlossen."
         }
     },
-    "step_1_title": "Teams & Mitarbeiter anlegen",
-    "step_1_text": "Stellen Sie operative Teams zusammen, fügen Sie Ausführende hinzu (intern oder extern mit optionalem Firmennamen) und weisen Sie einen Teamleiter zu. Verknüpfen Sie Teams mit bestimmten Kategorien, damit Aufgaben immer bei den richtigen Fachleuten landen. Ausführende melden sich einfach mit Name und persönlichem Icon an. Teams und Ausführende können Sie auch per Massenimport (CSV/Excel) anlegen. Optional: unter Menschen → Teams verwalten Sie Checklisten für Unit-Checks (geteilt oder pro Team; Vorlagen für Reinigung, Technik und Security). Kollegenkonten mit Anmeldung (Administrator und Mitarbeiter) verwalten Sie unter Menschen → Backoffice.",
+    "step_1_title": "Team & Ausführende",
+    "step_1_text": "Starten Sie einfach: legen Sie ein Team an (zum Beispiel Hotel oder Facility) und fügen Sie alle hinzu, die Aufgaben ausführen. Sie melden sich mit Name und Symbol an. Ein Teamleiter ist nicht nötig. Verknüpfen Sie das Team mit Ihren Kategorien. Größere Organisationen legen später weitere Teams an oder importieren per CSV/Excel. Checklisten für Unit-Checks verwalten Sie unter Menschen → Teams. Kollegen mit Anmeldung (Administrator und Mitarbeiter) unter Menschen → Backoffice.",
     "step_2_title": "Standorte & Einheiten einrichten",
     "step_2_text": "Gruppieren Sie Units in Kategorien (z. B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro oder Elektrik). Markieren Sie Kategorien als Reservierbar, wenn Units Zeitslots buchen sollen, und schalten Sie pro Unit Reservierungen erlauben ein (standardmäßig aus). Optional: Kontaktdaten erforderlich (Kategorie und Unit) für anonyme QR-Melder. Durch Verknüpfung von Teams mit Kategorien stellt WinProx sicher, dass Aufgaben beim richtigen Team landen. Fügen Sie Standorte hinzu und erstellen Sie Units pro Standort — per Formular, Bulk-Serie oder CSV/Excel-Import. Nutzen Sie Orte → Units für eine mandantenweite Übersicht (Standort- und Kategoriefilter, Anzahl Units, Status- und Unit-Check-Pills). Unitnamen und Beschreibungen können Sie pro Sprache manuell pflegen. Optional: Unit-Checks erlauben (Kategorie und Unit, standardmäßig aus) für OK/Nicht-OK-Runden im Portal — getrennt von ESG. Verknüpfen Sie pro Unit eine Checkliste (Vorlagen unter Menschen → Teams); die Dropdown zeigt geteilte Listen und die der Kategorie-Teams.",
     "step_3_title": "QR-Codes drucken & aufhängen",

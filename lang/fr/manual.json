@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Commencer",
         "title": "Opérationnel en 5 étapes",
-        "intro": "Suivez cet ordre lors de la première configuration de WinProx. Time (pointeuse) est optionnel ; Clock Point reste le QR d’identification."
+        "intro": "Suivez cet ordre pour la première configuration. Une équipe suffit pour démarrer. Time (pointeuse) est optionnel ; Clock Point reste le QR d’identification."
     },
     "chapter": "Chapitre",
     "toc": {
@@ -50,8 +50,8 @@
             "closed": "La tâche a été contrôlée par le gestionnaire et définitivement clôturée."
         }
     },
-    "step_1_title": "Créer des équipes & exécutants",
-    "step_1_text": "Constituez des équipes opérationnelles, ajoutez des exécutants (internes ou externes avec nom d’entreprise optionnel) et désignez un chef d’équipe. Reliez les équipes à des catégories spécifiques pour que les tâches aillent toujours aux bons professionnels. Les exécutants se connectent simplement avec leur nom et une icône personnelle. Vous pouvez aussi ajouter équipes et exécutants en une fois via un import en masse (CSV/Excel). Optionnel : sous Personnes → Équipes vous gérez les listes de contrôle unit check (partagées ou par équipe ; modèles nettoyage, technique et sécurité). Les utilisateurs collègues avec connexion (administrateur et employé) se gèrent sous Personnes → Backoffice.",
+    "step_1_title": "Équipe & exécutants",
+    "step_1_text": "Démarrez simplement : créez une équipe (par exemple Hôtel ou Facility) et ajoutez toutes les personnes qui exécutent des tâches. Elles s’identifient avec nom et icône. Un chef d’équipe n’est pas nécessaire. Reliez l’équipe à vos catégories. Les organisations plus grandes ajoutent d’autres équipes plus tard, ou importent via CSV/Excel. Les listes de contrôle unit check se gèrent sous Personnes → Équipes. Les collègues avec connexion (administrateur et employé) sous Personnes → Backoffice.",
     "step_2_title": "Configurer les sites & unités",
     "step_2_text": "Regroupez les units en catégories (ex. : perceuses, sanitaires, fitness, bureau ou électricité). Marquez les catégories comme Réservables si les units acceptent des créneaux, et activez Autoriser les réservations par unit (désactivé par défaut). Optionnel : Coordonnées obligatoires (catégorie et unit) pour les déclarants QR anonymes. En liant des équipes à des catégories, WinProx oriente les tâches vers la bonne équipe. Ajoutez des lieux et créez des units par lieu — formulaire, série bulk ou import CSV/Excel. Utilisez Lieux → Units pour un aperçu à l’échelle du tenant (filtres lieu et catégorie, nombre d’units, pastilles statut et contrôle). Vous pouvez mettre à jour noms et descriptions manuellement par langue. Optionnel : Autoriser les contrôles d’unité (catégorie et unit, désactivé par défaut) pour des rondes OK/Non OK via le portail — distinct de l’ESG. Liez une checklist par unit (modèles sous Personnes → Équipes) ; la liste déroulante montre les checklists partagées et celles des équipes liées à la catégorie.",
     "step_3_title": "Imprimer & accrocher les QR",

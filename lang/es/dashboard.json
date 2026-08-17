@@ -44,13 +44,13 @@
     "welcome": "Bienvenido a Winprox.app",
     "onboarding": {
         "teams": {
-            "title": "Empiece creando equipos y trabajadores",
-            "text": "Cree equipos operativos, añada trabajadores y asigne un jefe de equipo. Vincule equipos a categorías para que las tareas lleguen siempre al equipo correcto. Los trabajadores inician sesión con su nombre y un icono elegido. Los equipos y trabajadores también se pueden cargar mediante importación masiva (CSV/Excel).",
-            "button": "Añadir equipos"
+            "title": "Empiece con un equipo",
+            "text": "En una organización pequeña basta un equipo — por ejemplo Hotel, Consulta o Facility. Añada a ese equipo a todos los que ejecutan tareas (nombre + icono). No hace falta un jefe de equipo. Cree más equipos más adelante solo si hay grupos realmente distintos. Luego vincule el equipo a las categorías.",
+            "button": "Crear equipo"
         },
         "categories": {
             "title": "Empiece creando categorías",
-            "text": "Vaya a Ubicaciones → Categorías y añada categorías para agrupar units (p. ej. taladros, sanitario, equipos de fitness, oficina, electricidad). Las categorías ayudan a filtrar y organizar units. Al vincular equipos de trabajadores a categorías específicas, WinProx garantiza que las tareas las ejecute el equipo correcto. Luego añada ubicaciones en Ubicaciones → Ubicaciones y cree units por ubicación — o vía Ubicaciones → Units.",
+            "text": "Vaya a Ubicaciones → Categorías y añada categorías para agrupar units (p. ej. habitaciones, sanitario, oficina). Un mismo equipo puede vincularse a todas las categorías — las tareas llegan entonces a las mismas personas. Con varios equipos, vincule cada uno a las categorías en las que trabaja. Luego añada ubicaciones en Ubicaciones → Ubicaciones y cree units por ubicación — o vía Ubicaciones → Units.",
             "button": "Gestionar categorías"
         },
         "locations": {

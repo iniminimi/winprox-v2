@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Équipes internes",
-            "box_body": "Organisez les équipes de maintenance sous Personnes → Équipes. Liez les équipes aux units et catégories. Via Clock Point et QR unité, les exécutants enregistrent mises à jour et photos sur site."
+            "box_body": "Sous Personnes → Équipes, créez au moins une équipe — dans une petite organisation, Hôtel ou Facility suffit. Reliez l’équipe aux catégories. Via Clock Point et QR unité, les exécutants enregistrent mises à jour et photos sur place."
         },
         "pricing": {
             "slug": "pricing",
@@ -195,8 +195,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Comment configurer les équipes internes ?",
-            "body": "Allez dans Personnes → Équipes : créez des équipes, ajoutez des exécutants (manuel, CSV ou Excel), liez les équipes aux unités et éventuellement aux catégories. Sous Équipes vous gérez aussi les listes de contrôle unit check (partagées ou par équipe). Imprimez ou envoyez le QR Clock Point pour le terrain (Time → Clock Points).",
-            "summary": "Équipes sous Personnes → Équipes ; listes unit check ; liaison unités/catégories ; QR Clock Point pour le terrain."
+            "body": "Commencez petit : une équipe (par exemple Hôtel ou Facility) et toutes les personnes qui exécutent des tâches. Allez dans Personnes → Équipes. Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez les équipes aux catégories. Ajoutez les exécutants à la main, ou via CSV/Excel. Sous Équipes vous gérez aussi les listes de contrôle unit check. Imprimez le QR Clock Point pour le terrain (Time → Clock Points).",
+            "summary": "Une équipe suffit pour démarrer. Personnes → Équipes ; lier aux catégories ; QR Clock Point."
         },
         "team_follow_up": {
             "slug": "team_follow_up",

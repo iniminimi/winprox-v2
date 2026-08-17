@@ -44,13 +44,13 @@
     "welcome": "Willkommen auf Winprox.app",
     "onboarding": {
         "teams": {
-            "title": "Beginnen Sie mit Teams und Ausführern",
-            "text": "Erstellen Sie operative Teams, fügen Sie Ausführer hinzu und benennen Sie einen Teamleiter. Verknüpfen Sie Teams mit Kategorien, damit Aufgaben immer beim richtigen Team landen. Ausführer melden sich mit ihrem Namen und einem gewählten Icon an. Teams und Ausführer können auch per Massenimport (CSV/Excel) hochgeladen werden.",
-            "button": "Teams hinzufügen"
+            "title": "Beginnen Sie mit einem Team",
+            "text": "In einer kleinen Organisation reicht ein Team — zum Beispiel Hotel, Praxis oder Facility. Fügen Sie alle, die Aufgaben ausführen, diesem Team hinzu (Name + Symbol). Ein Teamleiter ist nicht nötig. Weitere Teams legen Sie später nur an, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie das Team danach mit Ihren Kategorien.",
+            "button": "Team anlegen"
         },
         "categories": {
             "title": "Beginnen Sie mit der Erstellung von Kategorien",
-            "text": "Gehen Sie zu Standorte → Kategorien und fügen Sie Kategorien hinzu, um Units zu gruppieren (z. B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrizität). Kategorien helfen beim Filtern und Organisieren von Units. Indem Sie Ausführerteams mit bestimmten Kategorien verknüpfen, stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden. Fügen Sie danach Standorte unter Standorte → Standorte hinzu und erstellen Sie Units pro Standort — oder über Standorte → Units.",
+            "text": "Gehen Sie zu Standorte → Kategorien und fügen Sie Kategorien hinzu, um Units zu gruppieren (z. B. Zimmer, Sanitär, Büro). Ein Team darf an allen Kategorien hängen — Aufgaben landen dann bei denselben Personen. Bei mehreren Teams verknüpfen Sie jedes Team mit den Kategorien, für die es arbeitet. Fügen Sie danach Standorte unter Standorte → Standorte hinzu und erstellen Sie Units pro Standort — oder über Standorte → Units.",
             "button": "Kategorien verwalten"
         },
         "locations": {

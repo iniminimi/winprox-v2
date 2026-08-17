@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Manage operational teams, workers and unit-check checklists."
+        "subtitle": "One team is enough to get started. Add workers; checklists are optional."
     },
     "nav": {
         "teams": "Teams"
@@ -47,8 +47,8 @@
     "teams": {
         "title": "Teams",
         "add": "+ Add team",
-        "hint": "Click a team to manage workers.",
-        "empty": "There are no teams yet.",
+        "hint": "Click a team to manage workers. Everyone in the same team sees the same tasks.",
+        "empty": "No teams yet. Create one — for example Hotel or Facility.",
         "active": "Active",
         "inactive": "Inactive",
         "worker_count": ":count active workers",

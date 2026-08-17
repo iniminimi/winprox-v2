@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Team interni",
-            "box_body": "Organizza team di manutenzione sotto Persone → Team. Collega team a unit e categorie. Via Clock Point e QR unit, gli esecutori registrano aggiornamenti e foto sul posto."
+            "box_body": "In Persone → Teams crei almeno un team — in una piccola organizzazione basta Hotel o Facility. Colleghi il team alle categorie. Tramite Clock Point e QR unità gli esecutori registrano aggiornamenti e foto sul posto."
         },
         "pricing": {
             "slug": "pricing",
@@ -195,8 +195,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Come configuro i team interni?",
-            "body": "Vada in Persone → Team: crei team, aggiunga esecutori (manuale, CSV o Excel), colleghi i team alle unità e opzionalmente alle categorie. In Team gestisce anche le checklist per i unit check (condivise o per team). Stampi o invii il QR Clock Point per il piano (Time → Clock Points).",
-            "summary": "Team in Persone → Team; checklist unit check; collegamento a unità/categorie; QR Clock Point per il piano."
+            "body": "Inizi in piccolo: un team (ad esempio Hotel o Facility) e tutti coloro che eseguono attività. Vada a Persone → Teams. Un caposquadra non è necessario. Altri team solo se ci sono gruppi davvero distinti. Colleghi i team alle categorie. Aggiunga gli esecutori a mano o via CSV/Excel. In Teams gestisce anche le checklist dei unit check. Stampi il QR Clock Point per il campo (Time → Clock Points).",
+            "summary": "Un team basta per iniziare. Persone → Teams; collega alle categorie; QR Clock Point."
         },
         "team_follow_up": {
             "slug": "team_follow_up",

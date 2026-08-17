@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Gestione equipos operativos, operarios y listas de comprobación de unit checks."
+        "subtitle": "Un equipo basta para empezar. Añada operarios; las listas son opcionales."
     },
     "nav": {
         "teams": "Teams"
@@ -47,8 +47,8 @@
     "teams": {
         "title": "Equipos",
         "add": "+ Añadir equipo",
-        "hint": "Haga clic en un equipo para gestionar trabajadores.",
-        "empty": "Aún no hay equipos.",
+        "hint": "Haga clic en un equipo para gestionar operarios. Todos en el mismo equipo ven las mismas tareas.",
+        "empty": "Aún no hay equipos. Cree uno — por ejemplo Hotel o Facility.",
         "active": "Activo",
         "inactive": "Inactivo",
         "worker_count": ":count trabajadores activos",

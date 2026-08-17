@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Équipes",
-        "subtitle": "Gérez les équipes opérationnelles, les exécutants et les listes de contrôle unit check."
+        "subtitle": "Une équipe suffit pour démarrer. Ajoutez des exécutants ; les listes de contrôle sont optionnelles."
     },
     "nav": {
         "teams": "Teams"
@@ -47,8 +47,8 @@
     "teams": {
         "title": "Équipes",
         "add": "+ Ajouter une équipe",
-        "hint": "Cliquez sur une équipe pour gérer les intervenants.",
-        "empty": "Aucune équipe pour le moment.",
+        "hint": "Cliquez sur une équipe pour gérer les exécutants. Tous les membres voient les mêmes tâches.",
+        "empty": "Pas encore d’équipes. Créez-en une — par exemple Hôtel ou Facility.",
         "active": "Active",
         "inactive": "Inactive",
         "worker_count": ":count intervenants actifs",

@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Gestisca team operativi, esecutori e checklist per i unit check."
+        "subtitle": "Un team basta per iniziare. Aggiunga esecutori; le checklist sono opzionali."
     },
     "nav": {
         "teams": "Teams"
@@ -47,8 +47,8 @@
     "teams": {
         "title": "Team",
         "add": "+ Aggiungi team",
-        "hint": "Clicchi su un team per gestire i lavoratori.",
-        "empty": "Non ci sono ancora team.",
+        "hint": "Clicchi su un team per gestire gli esecutori. Tutti nello stesso team vedono le stesse attività.",
+        "empty": "Nessun team ancora. Ne crei uno — ad esempio Hotel o Facility.",
         "active": "Attivo",
         "inactive": "Inattivo",
         "worker_count": ":count lavoratori attivi",
