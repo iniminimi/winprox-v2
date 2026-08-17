@@ -431,7 +431,7 @@
                 },
                 {
                     "label": "Operative Teams",
-                    "text": "Erstellen Sie Teams und Mitarbeiter, weisen Sie Teamleiter zu. Eine Unit muss mit einem Team verknüpft sein, damit ein Mitarbeiter Aufgaben für diese Unit bearbeiten kann. Solange keine Mitarbeiter im Team sind, können Sie das Team noch löschen."
+                    "text": "Ein Team reicht zum Start (zum Beispiel Hotel oder Facility). Fügen Sie alle hinzu, die Aufgaben ausführen (Name + Symbol). Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie das Team mit Kategorien, damit Aufgaben landen. Solange keine Ausführenden im Team sind, können Sie das Team noch löschen."
                 },
                 {
                     "label": "Checklisten",

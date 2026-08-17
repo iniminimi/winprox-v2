@@ -431,7 +431,7 @@
                 },
                 {
                     "label": "Operationele teams",
-                    "text": "Maak teams en uitvoerders aan, wijs teamleaders toe. Aan een unit moet een team gekoppeld zijn zodat een uitvoerder taken kan afhandelen van deze unit. Zolang er geen uitvoerders in het team zijn, kan je het team nog verwijderen."
+                    "text": "Eén team is genoeg om te starten (bijvoorbeeld Hotel of Faciliteit). Voeg iedereen die taken uitvoert toe (naam + icoon). Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel het team aan categorieën zodat taken landen. Zolang er geen uitvoerders in het team zijn, kun je het team nog verwijderen."
                 },
                 {
                     "label": "Checklists",

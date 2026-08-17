@@ -431,7 +431,7 @@
                 },
                 {
                     "label": "Team operativi",
-                    "text": "Crei team e lavoratori, assegni capisquadra. Un'unità deve avere un team collegato affinché un lavoratore possa gestire attività per quell'unità. Finché non ci sono lavoratori nel team, può ancora eliminare il team."
+                    "text": "Un team basta per iniziare (ad esempio Hotel o Facility). Aggiunga tutti coloro che eseguono attività (nome + icona). Un caposquadra non è necessario. Altri team solo se ci sono gruppi davvero distinti. Colleghi il team alle categorie così le attività arrivano. Finché non ci sono esecutori nel team, può ancora eliminarlo."
                 },
                 {
                     "label": "Checklist",

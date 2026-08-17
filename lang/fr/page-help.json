@@ -431,7 +431,7 @@
                 },
                 {
                     "label": "Équipes opérationnelles",
-                    "text": "Créez des équipes et des exécutants, assignez des chefs d'équipe. Une unité doit avoir une équipe liée pour qu'un exécutant puisse traiter les tâches de cette unité. Tant qu'il n'y a pas d'exécutants dans l'équipe, vous pouvez encore supprimer l'équipe."
+                    "text": "Une équipe suffit pour démarrer (par exemple Hôtel ou Facility). Ajoutez toutes les personnes qui exécutent des tâches (nom + icône). Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez l’équipe aux catégories pour que les tâches aboutissent. Tant qu’il n’y a pas d’exécutants dans l’équipe, vous pouvez encore la supprimer."
                 },
                 {
                     "label": "Listes de contrôle",

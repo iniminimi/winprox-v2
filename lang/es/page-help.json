@@ -431,7 +431,7 @@
                 },
                 {
                     "label": "Equipos operativos",
-                    "text": "Cree equipos y trabajadores, asigne jefes de equipo. Una unidad debe tener un equipo vinculado para que un trabajador pueda gestionar las tareas de esa unidad. Mientras no haya trabajadores en el equipo, aún puede eliminar el equipo."
+                    "text": "Un equipo basta para empezar (por ejemplo Hotel o Facility). Añada a todos los que ejecutan tareas (nombre + icono). No hace falta un jefe de equipo. Más equipos solo si hay grupos realmente distintos. Vincule el equipo a las categorías para que las tareas lleguen. Mientras no haya operarios en el equipo, aún puede eliminarlo."
                 },
                 {
                     "label": "Listas de comprobación",

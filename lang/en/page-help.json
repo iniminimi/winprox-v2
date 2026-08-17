@@ -431,7 +431,7 @@
                 },
                 {
                     "label": "Operational teams",
-                    "text": "Create teams and workers, assign team leaders. A unit must have a team linked so that a worker can handle tasks for this unit. As long as there are no workers in the team, you can still delete the team."
+                    "text": "One team is enough to get started (for example Hotel or Facility). Add everyone who carries out tasks (name + icon). A team leader is not required. Extra teams only if there are genuinely separate groups. Link the team to categories so tasks land correctly. As long as there are no workers in the team, you can still delete the team."
                 },
                 {
                     "label": "Checklists",
