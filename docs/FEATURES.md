@@ -21,7 +21,7 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 Menu-volgorde (sidebar, accordion): Dashboard · **Werk** (Meldingen, Inspectierondes,
 Taken, Kalender, Reserveringen, Unit checks) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Mensen** (Backoffice = Beheerder/Medewerker;
 Teams = Uitvoerder/Teamleader) · **Time** (module) · **Automatisering** (IoT Connect
-vanaf 250+ units / Corporate — groep alleen als minstens één module aan staat) ·
+Corporate — groep alleen als minstens één module aan staat) ·
 **Organisatie** (Instellingen, API, Abonnement) · **Hulp** (FAQ, Handleiding, Juridisch,
 Contact).
 

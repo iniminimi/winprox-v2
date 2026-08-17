@@ -443,7 +443,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Il QR Clock Point è il QR stampabile con cui i lavoratori accedono (nome + icona) e timbrano entrata o uscita. Gestiscilo e stampalo in <strong>Time → Clock Points</strong>."
+                    "text": "Il QR Clock Point è il QR stampabile con cui gli esecutori si identificano (nome + icona). Con Time (timbratrice) timbrano anche entrata o uscita. Gestiscilo e stampalo in <strong>Time → Clock Points</strong> se Time è attivo, altrimenti Persone → Team."
                 },
                 {
                     "label": "Lavoratori",
@@ -669,7 +669,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Si trova all'ingresso, magazzino o officina. Qui i lavoratori accedono (nome + icona) e timbrano entrata e uscita. Poi possono gestire le attività tramite i codici QR unità."
+                    "text": "Si trova all’ingresso, magazzino o officina. Qui gli esecutori si identificano (nome + icona). Timbrare richiede Time (timbratrice). Poi possono gestire le attività tramite i codici QR unità."
                 }
             ]
         },
@@ -904,7 +904,7 @@
                 },
                 {
                     "label": "Moduli",
-                    "text": "Attivi o disattivi i moduli opzionali (ESG, IoT Connect). Time (ore, presenza e Clock Points) è incluso di default in ogni abbonamento."
+                    "text": "Attiva o disattiva i moduli opzionali (Time timbratrice, ESG, IoT Connect). Time non è incluso di default."
                 },
                 {
                     "label": "Cap Corporate",
@@ -1229,7 +1229,7 @@
                     "text": "Qui gestisce <strong>gateway</strong>, <strong>sensori</strong>, <strong>regole di allarme</strong> e consulta gli <strong>eventi</strong> recenti. WinProx riceve i dati dei sensori; i sensori fisici e i protocolli restano presso il gateway / fornitore."
                 },
                 {
-                    "label": "250+ units vs Corporate",
+                    "label": "WinProx Corporate",
                     "text": "<strong>WinProx Corporate:</strong> gli allarmi diventano segnalazioni approvate con compiti; le letture dei sensori possono alimentare ESG. Più API, webhook e integrazioni su misura."
                 },
                 {

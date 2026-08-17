@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Per iniziare",
         "title": "Operativo in 5 passi",
-        "intro": "Segua questo ordine quando configura WinProx Facility per la prima volta, incluso Time (ore e Clock Points)."
+        "intro": "Segui questo ordine quando configuri WinProx per la prima volta. Time (timbratrice) è opzionale; Clock Point resta il QR di identificazione."
     },
     "chapter": "Capitolo",
     "toc": {
@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Persone tramite impostazioni",
-            "intro": "Capitoli sul portale di amministrazione autenticato: Persone (Backoffice per gli utenti colleghi, Teams per checklist ed esecutori), sedi, segnalazioni, attività, calendario, prenotazioni, dashboard, Time (ore e Clock Points), modulo ESG opzionale, IoT Connect, impostazioni e abbonamento (inclusa eliminazione dati)."
+            "intro": "Capitoli sul portale di amministrazione autenticato: Persone (Backoffice per gli utenti colleghi, Teams per checklist ed esecutori), sedi, segnalazioni, attività, calendario, prenotazioni, dashboard, Time (timbratrice) opzionale, modulo ESG opzionale, IoT Connect, impostazioni e abbonamento (inclusa eliminazione dati)."
         },
         "internet_portal": {
             "title": "Codici QR sul campo",
@@ -55,7 +55,7 @@
     "step_2_title": "Configura sedi e unità",
     "step_2_text": "Raggruppa le unit in categorie (es. trapani, idraulica, fitness, ufficio o elettricità). Segna le categorie come Prenotabili se le unit accettano fasce orarie, e attiva Consenti prenotazioni per unit (disattivato di default). Opzionale: Dati di contatto obbligatori (categoria e unit) per segnalatori QR anonimi. Collegando i team alle categorie, WinProx indirizza i compiti al team giusto. Aggiungi sedi e crea unit per sede — form, serie bulk o import CSV/Excel. Usa Luoghi → Units per una panoramica a livello tenant (filtri sede e categoria, numero di unit, pill di stato e controllo). Puoi aggiornare nomi e descrizioni manualmente per lingua. Opzionale: Consenti controlli unit (categoria e unit, disattivato di default) per giri OK/Non OK sul portale — separato da ESG. Collega una checklist per unit (modelli sotto Persone → Team); il menu a tendina mostra checklist condivise e quelle dei team della categoria.",
     "step_3_title": "Stampa e appendi codici QR",
-    "step_3_text": "Crei prima uno o più Clock Points (menu Time → Clock Points), stampi l'adesivo QR o il foglio di stampa QR e lo appenda all'ingresso, al magazzino o all'officina — qui i lavoratori accedono e timbrano. Stampi anche il QR unità dalla pagina di dettaglio della sede o dell'unità e lo fissi a macchine, stanze o asset. Cittadini e visitatori scansionano il QR unità per segnalazioni, documenti e eventualmente prenotazioni. I lavoratori scansionano prima il QR Clock Point (nome + icona), poi il QR unità sul posto per GPS, foto e attività. Sul QR unit gli esecutori possono anche fare controllo unità quando categoria e unit lo consentono.",
+    "step_3_text": "Crea prima uno o più Clock Points (Persone → Team, oppure Time → Clock Points se Time è attivo). Stampa l’adesivo QR o il foglio di stampa QR e appendilo all’ingresso, al magazzino o all’officina — qui gli esecutori si identificano (nome + icona). Timbrare richiede Time (timbratrice). Stampi anche il QR unità dalla pagina di dettaglio della sede o dell'unità e lo fissi a macchine, stanze o asset. Cittadini e visitatori scansionano il QR unità per segnalazioni, documenti e eventualmente prenotazioni. I lavoratori scansionano prima il QR Clock Point (nome + icona), poi il QR unità sul posto per GPS, foto e attività. Sul QR unit gli esecutori possono anche fare controllo unità quando categoria e unit lo consentono.",
     "step_3_text_time": "Crea almeno un Clock Point (Persone → Team, oppure Time → Clock Points se Time è attivo). Stampa l'adesivo QR e appendilo. Gli esecutori scansionano il QR Clock Point per identificarsi (nome + icona); timbrare richiede Time (timbratrice). Stampa anche i QR unit. Poi il QR unit sul posto per GPS, foto e compiti.",
     "step_4_title": "Ricevi segnalazioni e assegna attività",
     "step_4_text": "Le segnalazioni arrivano tramite scansione QR, inserimento manuale o (con IoT Connect) un allarme sensore. Per ogni segnalazione viene creata automaticamente un'attività collegata direttamente al team responsabile. È possibile creare più attività per una segnalazione. Imposti una scadenza e segua l'avanzamento tramite dashboard, calendario e — per le prenotazioni — Prenotazioni.",

@@ -443,7 +443,7 @@
                 },
                 {
                     "label": "Clock Point QR-code",
-                    "text": "De Clock Point QR is de printbare QR waarmee uitvoerders zich aanmelden (naam + icoon) en in- of uitklokken. Beheer en print deze via <strong>Time → Clock Points</strong>."
+                    "text": "De Clock Point QR is de printbare QR waarmee uitvoerders zich aanmelden (naam + icoon). Met Time (prikklok) klokken ze daar ook in of uit. Beheer en print via <strong>Time → Clock Points</strong> als Time aan staat, anders via Mensen → Teams."
                 },
                 {
                     "label": "Uitvoerders",
@@ -669,7 +669,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Hangt bij de ingang, magazijn of werkplaats. Hier melden uitvoerders zich aan (naam + icoon) en klokken ze in en uit. Daarna kunnen ze taken afhandelen via unit-QR-codes."
+                    "text": "Hangt bij de ingang, magazijn of werkplaats. Hier melden uitvoerders zich aan (naam + icoon). In- en uitklokken kan alleen met Time (prikklok). Daarna kunnen ze taken afhandelen via unit-QR-codes."
                 }
             ]
         },
@@ -904,7 +904,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Schakel optionele modules in of uit (ESG, IoT Connect). Time (uren, aanwezigheid en Clock Points) hoort standaard bij elk abonnement."
+                    "text": "Schakel optionele modules in of uit (Time-prikklok, ESG, IoT Connect). Time is niet standaard inbegrepen."
                 },
                 {
                     "label": "Corporate units-cap",
@@ -1229,7 +1229,7 @@
                     "text": "Hier beheert u <strong>gateways</strong>, <strong>sensoren</strong>, <strong>alarmregels</strong> en bekijkt u recente <strong>events</strong>. WinProx ontvangt sensordata; de fysieke sensoren en protocollen blijven bij uw gateway/leverancier."
                 },
                 {
-                    "label": "250+ units vs Corporate",
+                    "label": "WinProx Corporate",
                     "text": "<strong>WinProx Corporate:</strong> alarmen worden goedgekeurde meldingen met taken; sensor-metingen kunnen naar ESG. Plus API, webhooks en integraties op maat."
                 },
                 {

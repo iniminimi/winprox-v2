@@ -443,7 +443,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Le QR Clock Point est le QR imprimable avec lequel les exécutants s’identifient (nom + icône) et pointent l’entrée ou la sortie. Gérez-le et imprimez-le via <strong>Time → Clock Points</strong>."
+                    "text": "Le QR Clock Point est le QR imprimable avec lequel les exécutants s’identifient (nom + icône). Avec Time (pointeuse) ils pointent aussi l’entrée ou la sortie. Gérez-le et imprimez-le via <strong>Time → Clock Points</strong> si Time est actif, sinon Personnes → Équipes."
                 },
                 {
                     "label": "Exécutants",
@@ -669,7 +669,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Placé à l'entrée, à l'entrepôt ou à l'atelier. Les exécutants se connectent ici (nom + icône) et pointent à l'entrée et à la sortie. Ils peuvent ensuite traiter les tâches via les codes QR unité."
+                    "text": "Placé à l’entrée, à l’entrepôt ou à l’atelier. Les exécutants s’identifient ici (nom + icône). Pointer nécessite Time (pointeuse). Ils peuvent ensuite traiter les tâches via les codes QR unité."
                 }
             ]
         },
@@ -904,7 +904,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Activez ou désactivez les modules optionnels (ESG, IoT Connect). Time (heures, présence et Clock Points) est inclus par défaut dans chaque abonnement."
+                    "text": "Activez ou désactivez les modules optionnels (Time pointeuse, ESG, IoT Connect). Time n’est pas inclus par défaut."
                 },
                 {
                     "label": "Plafond Corporate",
@@ -1229,7 +1229,7 @@
                     "text": "Ici vous gérez les <strong>passerelles</strong>, les <strong>capteurs</strong>, les <strong>règles d’alarme</strong> et consultez les <strong>événements</strong> récents. WinProx reçoit les données des capteurs ; les capteurs physiques et les protocoles restent chez votre passerelle / fournisseur."
                 },
                 {
-                    "label": "250+ units vs Corporate",
+                    "label": "WinProx Corporate",
                     "text": "<strong>WinProx Corporate :</strong> les alarmes deviennent des signalements approuvés avec tâches ; les mesures capteur peuvent alimenter l'ESG. Plus API, webhooks et intégrations sur mesure."
                 },
                 {

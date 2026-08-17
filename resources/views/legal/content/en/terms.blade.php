@@ -88,7 +88,7 @@
     WinProx may offer a limited trial period. The duration is communicated at registration or on the platform.
 </p>
 <p>
-    After the trial period, continued use requires an appropriate subscription as described on the platform (including based on the number of units and users).
+    After the trial period, continued use requires an appropriate subscription as described on the platform (including based on the number of units and optional modules).
 </p>
 <p>
     The subscription covers access to and use of the platform for your organisation (tenant). Payment, invoicing and renewal follow the terms shown on the platform or in quotes/invoices.

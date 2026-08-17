@@ -443,7 +443,7 @@
                 },
                 {
                     "label": "Clock Point QR code",
-                    "text": "The Clock Point QR is the printable QR that workers use to sign in (name + icon) and clock in or out. Manage and print it under <strong>Time → Clock Points</strong>."
+                    "text": "The Clock Point QR is the printable QR that workers use to sign in (name + icon). With Time (punch clock) they also clock in or out there. Manage and print it under <strong>Time → Clock Points</strong> if Time is on, otherwise People → Teams."
                 },
                 {
                     "label": "Workers",
@@ -669,7 +669,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Placed at the entrance, warehouse or workshop. Workers sign in here (name + icon) and clock in and out. They can then handle tasks via unit QR codes."
+                    "text": "Placed at the entrance, warehouse or workshop. Workers sign in here (name + icon). Clocking in/out requires Time (punch clock). They can then handle tasks via unit QR codes."
                 }
             ]
         },
@@ -904,7 +904,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Enable or disable optional modules (ESG, IoT Connect). Time (hours, presence and Clock Points) is included with every subscription by default."
+                    "text": "Enable or disable optional modules (Time punch clock, ESG, IoT Connect). Time is not included by default."
                 },
                 {
                     "label": "Corporate units cap",
@@ -1229,7 +1229,7 @@
                     "text": "Manage <strong>gateways</strong>, <strong>sensors</strong>, <strong>alarm rules</strong> and review recent <strong>events</strong>. WinProx receives sensor events; physical sensors and protocols stay with your gateway/vendor."
                 },
                 {
-                    "label": "250+ units vs Corporate",
+                    "label": "WinProx Corporate",
                     "text": "<strong>WinProx Corporate:</strong> alarms become approved issues with tasks; sensor readings can feed ESG. Plus API, webhooks and custom integrations."
                 },
                 {

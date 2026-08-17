@@ -12,8 +12,8 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "¿Cómo funciona WinProx?",
-            "intro": "WinProx sigue un flujo central: incidencia → tareas → cierre. Time (fichaje) está incluido por defecto; ESG (mediciones) es opcional.",
-            "summary": "Sitios y units, incidencia vía QR o gestión, aprobación en el portal público, tareas por equipo, seguimiento vía panel, briefing y calendario. Time incluido; ESG opcional.",
+            "intro": "WinProx sigue un flujo central: incidencia → tareas → cierre. Time (reloj de fichar) es opcional; ESG (mediciones) también.",
+            "summary": "Sitios y units, incidencia vía QR o gestión, aprobación en el portal público, tareas por equipo, seguimiento vía panel, briefing y calendario. Time (reloj de fichar) opcional; ESG opcional.",
             "steps": [
                 {
                     "title": "Sitios y units",
@@ -34,7 +34,7 @@
                 {
                     "title": "Trabajo de campo vía QR",
                     "text": "Los operarios se registran vía QR Clock Point (nombre + icono) y completan tareas vía el QR de unit — sin login WinProx.",
-                    "highlight": "Clock Point = registro y fichaje; QR de unit = tareas e incidencias en sitio."
+                    "highlight": "Clock Point = identificación (nombre + icono); fichar requiere Time (reloj de fichar); QR de unit = tareas e incidencias en sitio."
                 },
                 {
                     "title": "Seguir y cerrar",
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "¿Qué códigos QR hay?",
-            "body": "QR de unit: los avisadores crean avisos; los ejecutores (tras Clock Point) gestionan tareas abiertas y pueden — si categoría y unit permiten comprobaciones — registrar OK/No OK. QR Clock Point: acceso, fichaje y tareas del equipo. QR de ubicación: enlace general. Todo en el navegador — sin app.",
-            "summary": "QR unit (avisos/tareas/comprobación de unit), QR Clock Point (acceso/fichaje/tareas del equipo), QR ubicación — todo en el navegador."
+            "body": "QR de unit: los avisadores crean avisos; los ejecutores (tras Clock Point) gestionan tareas abiertas y pueden — si categoría y unit permiten comprobaciones — registrar OK/No OK. QR Clock Point: identificación (nombre + icono) y tareas del equipo; fichar solo con Time (reloj de fichar). QR de ubicación: enlace general. Todo en el navegador — sin app.",
+            "summary": "QR unit (avisos/tareas/comprobación de unit), QR Clock Point (identificación; fichaje con Time), QR ubicación — todo en el navegador."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -140,22 +140,22 @@
             "slug": "time_clock",
             "type": "text",
             "title": "¿Qué es el módulo Time / Clock Point?",
-            "body": "Con Time, los trabajadores fichan mediante el QR Clock Point (pausas y turnos incluidos). Clock Point también sirve para identificar a los trabajadores antes de las tareas vía QR de unidad. Time está incluido por defecto en cada suscripción.",
-            "summary": "Time: fichaje vía Clock Point. Incluido en cada suscripción."
+            "body": "Time es el reloj de fichar opcional: los operarios fichan mediante el QR Clock Point (pausas y turnos incluidos). Clock Point sigue siendo el QR de identificación (nombre + icono) también sin Time. Time no está incluido en WinProx; lo añade en Suscripción.",
+            "summary": "Time (reloj de fichar): fichaje vía Clock Point. Opcional, no incluido por defecto."
         },
         "esg": {
             "slug": "esg",
             "type": "text",
             "title": "¿Qué es ESG & Compliance?",
-            "body": "ESG es un módulo desde 250 unidades (y en Corporate) para registrar valores de medición en inspecciones recurrentes (energía, seguridad, …). Los administradores ven indicadores, mediciones y tareas de seguimiento. Vincule un indicador a una incidencia recurrente; mediciones vía portal o API (Corporate).",
-            "summary": "Módulo ESG desde 250 unidades: indicadores, mediciones y seguimiento en inspecciones recurrentes."
+            "body": "ESG es un módulo opcional en WinProx Corporate para registrar valores de medición en inspecciones recurrentes (energía, seguridad, …). Los administradores ven indicadores, mediciones y tareas de seguimiento. Vincule un indicador a una incidencia recurrente; mediciones vía portal o API.",
+            "summary": "Módulo ESG en Corporate: indicadores, mediciones y seguimiento en inspecciones recurrentes."
         },
         "for_who": {
             "slug": "for_who",
             "type": "text",
             "title": "¿Para quién es WinProx?",
-            "body": "Para organizaciones facility — fábricas, sanidad, ayuntamientos, campus — que quieren centralizar incidencias, equipos internos, seguimiento de campo, Time (horas) y opcionalmente ESG o IoT Connect. Sin portales hospitality o de contratistas separados: una sola app Facility.",
-            "summary": "Organizaciones facility: incidencias, equipos, trabajo de campo; Time incluido; ESG e IoT Connect opcionales."
+            "body": "Para organizaciones facility — fábricas, sanidad, ayuntamientos, campus — que quieren centralizar incidencias, equipos internos, seguimiento de campo, Time (reloj de fichar) opcional y opcionalmente ESG o IoT Connect. Sin portales hospitality o de contratistas separados: una sola app Facility.",
+            "summary": "Organizaciones facility: incidencias, equipos, trabajo de campo; Time (reloj de fichar) opcional; ESG e IoT en Corporate."
         },
         "user_roles": {
             "slug": "user_roles",
@@ -265,15 +265,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "¿API y webhooks?",
-            "body": "En Corporate (o cuando la API está activada) gestione tokens API y webhooks salientes (HMAC) en Ajustes. Conecte WinProx a otros sistemas para incidencias, tareas, comprobaciones de unidad (unit.check.recorded), mediciones ESG, etc. IoT Connect usa un token gateway separado para ingesta de sensores (desde 250 unidades).",
-            "summary": "Tokens API y webhooks en Ajustes (Corporate); incidencias, tareas, comprobaciones de unidad, ESG; entregas HMAC. Ingesta IoT vía token gateway desde 250 unidades."
+            "body": "En Corporate (o cuando la API está activada) gestione tokens API y webhooks salientes (HMAC) en Ajustes. Conecte WinProx a otros sistemas para incidencias, tareas, comprobaciones de unidad (unit.check.recorded), mediciones ESG, etc. IoT Connect usa un token gateway separado para ingesta de sensores (Corporate).",
+            "summary": "Tokens API y webhooks en Ajustes (Corporate); incidencias, tareas, comprobaciones de unidad, ESG; entregas HMAC. Ingesta IoT vía token gateway (Corporate)."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "¿Qué es IoT Connect?",
-            "body": "IoT Connect vincula gateways de sensores a WinProx (desde 250 unidades). Las alarmas (fuga de agua, puerta abierta demasiado tiempo) crean automáticamente una incidencia aprobada y una tarea. Las lecturas de sensores también pueden guardarse como mediciones ESG. Gestione gateways, sensores y reglas en IoT Connect; el gateway envía a POST /api/v1/iot/events con un token gateway.",
-            "summary": "IoT Connect desde 250 unidades: alarmas de sensores → incidencias; lecturas → ESG. Ingesta vía token gateway."
+            "body": "IoT Connect vincula gateways de sensores a WinProx (Corporate). Las alarmas (fuga de agua, puerta abierta demasiado tiempo) crean automáticamente una incidencia aprobada y una tarea. Las lecturas de sensores también pueden guardarse como mediciones ESG. Gestione gateways, sensores y reglas en IoT Connect; el gateway envía a POST /api/v1/iot/events con un token gateway.",
+            "summary": "IoT Connect en Corporate: alarmas de sensores → incidencias; lecturas → ESG. Ingesta vía token gateway."
         },
         "unit_checks": {
             "slug": "unit_checks",

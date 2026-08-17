@@ -88,7 +88,7 @@
     WinProx peut proposer une période d’essai limitée. Sa durée est communiquée lors de l’inscription ou sur la plateforme.
 </p>
 <p>
-    Après la période d’essai, la poursuite de l’utilisation requiert un abonnement adapté, tel que décrit sur la plateforme (notamment en fonction du nombre d’unités et d’utilisateurs).
+    Après la période d’essai, la poursuite de l’utilisation requiert un abonnement adapté, tel que décrit sur la plateforme (notamment en fonction du nombre d’unités et des modules optionnels).
 </p>
 <p>
     L’abonnement couvre l’accès et l’utilisation de la plateforme pour votre organisation (tenant). Paiement, facturation et renouvellement suivent les modalités indiquées sur la plateforme ou dans les devis/factures.

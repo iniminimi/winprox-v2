@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Primeros pasos",
         "title": "En funcionamiento en 5 pasos",
-        "intro": "Siga este orden al configurar WinProx Facility por primera vez, incluido Time (horas y Clock Points)."
+        "intro": "Siga este orden al configurar WinProx por primera vez. Time (reloj de fichar) es opcional; Clock Point sigue siendo el QR de identificación."
     },
     "chapter": "Capítulo",
     "toc": {
@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Personas a través de la configuración",
-            "intro": "Capítulos del portal de administración con sesión iniciada: Personas (Backoffice para usuarios colegas, Teams para listas de comprobación y operarios), ubicaciones, avisos, tareas, calendario, reservas, panel, Time (horas y Clock Points), módulo ESG opcional, IoT Connect, ajustes y suscripción (incluida la eliminación de datos)."
+            "intro": "Capítulos del portal de administración con sesión iniciada: Personas (Backoffice para usuarios colegas, Teams para listas de comprobación y operarios), ubicaciones, avisos, tareas, calendario, reservas, panel, Time (reloj de fichar) opcional, módulo ESG opcional, IoT Connect, ajustes y suscripción (incluida la eliminación de datos)."
         },
         "internet_portal": {
             "title": "Códigos QR en el lugar",
@@ -55,7 +55,7 @@
     "step_2_title": "Configurar ubicaciones y unidades",
     "step_2_text": "Agrupe units en categorías (p. ej. taladros, fontanería, fitness, oficina o electricidad). Marque categorías como Reservables si las units aceptan franjas, y active Permitir reservas por unit (desactivado por defecto). Opcional: Datos de contacto obligatorios (categoría y unit) para denunciantes QR anónimos. Al vincular equipos a categorías, WinProx asegura que las tareas vayan al equipo correcto. Añada ubicaciones y cree units por ubicación — formulario, serie masiva o importación CSV/Excel. Use Lugares → Units para un resumen de todo el tenant (filtros ubicación y categoría, número de units, pastillas de estado y comprobación). Puede actualizar nombres y descripciones manualmente por idioma. Opcional: Permitir comprobaciones de unit (categoría y unit, desactivado por defecto) para rondas OK/No OK en el portal — aparte de ESG. Vincule una lista por unit (plantillas bajo Personas → Equipos); el desplegable muestra listas compartidas y las de equipos de la categoría.",
     "step_3_title": "Imprimir y colocar códigos QR",
-    "step_3_text": "Cree primero uno o más Clock Points (menú Time → Clock Points), imprima la etiqueta QR o la hoja de impresión QR y colóquela en la entrada, almacén o taller — aquí los trabajadores inician sesión y fichan. Imprima también el QR de la unidad desde la página de detalle de la ubicación o unidad y fíjelo a máquinas, salas o activos. Ciudadanos y visitantes escanean el QR de la unidad para incidencias, documentos y opcionalmente reservas. Los trabajadores escanean primero el QR Clock Point (nombre + icono) y después el QR de la unidad en el lugar para GPS, fotos y tareas. En el QR de la unit, los ejecutores también pueden hacer comprobación de unit cuando categoría y unit lo permiten.",
+    "step_3_text": "Cree primero uno o más Clock Points (Personas → Equipos, o Time → Clock Points si Time está activo). Imprima la etiqueta QR o la hoja de impresión QR y colóquela en la entrada, almacén o taller — aquí los operarios se identifican (nombre + icono). Fichar requiere Time (reloj de fichar). Imprima también el QR de la unidad desde la página de detalle de la ubicación o unidad y fíjelo a máquinas, salas o activos. Ciudadanos y visitantes escanean el QR de la unidad para incidencias, documentos y opcionalmente reservas. Los trabajadores escanean primero el QR Clock Point (nombre + icono) y después el QR de la unidad en el lugar para GPS, fotos y tareas. En el QR de la unit, los ejecutores también pueden hacer comprobación de unit cuando categoría y unit lo permiten.",
     "step_3_text_time": "Cree al menos un Clock Point (Personas → Equipos, o Time → Clock Points si Time está activo). Imprima la pegatina QR y cuélguela. Los operarios escanean el QR Clock Point para identificarse (nombre + icono); fichar requiere Time (reloj de fichar). Imprima también los QR de unidad. Luego el QR de unidad in situ para GPS, fotos y tareas.",
     "step_4_title": "Recibir incidencias y asignar tareas",
     "step_4_text": "Las incidencias llegan mediante un escaneo QR, entrada manual o (con IoT Connect) una alarma de sensor. Para cada incidencia, se crea automáticamente una tarea vinculada directamente al equipo responsable. Es posible crear varias tareas para una incidencia. Establezca una fecha límite y siga el progreso mediante el panel, el calendario y — para las reservas — Reservas.",

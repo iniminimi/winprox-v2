@@ -88,7 +88,7 @@
     WinProx kann eine begrenzte Testphase anbieten. Die Dauer wird bei der Registrierung oder auf der Plattform mitgeteilt.
 </p>
 <p>
-    Nach der Testphase ist für die fortgesetzte Nutzung ein passendes Abonnement erforderlich, wie auf der Plattform beschrieben (u. a. basierend auf der Anzahl der Units und Benutzer).
+    Nach der Testphase ist für die fortgesetzte Nutzung ein passendes Abonnement erforderlich, wie auf der Plattform beschrieben (u. a. basierend auf der Anzahl der Units und optionaler Module).
 </p>
 <p>
     Das Abonnement betrifft den Zugang zu und die Nutzung der Plattform für Ihre Organisation (Tenant). Zahlung, Abrechnung und Verlängerung erfolgen gemäß den auf der Plattform oder in Angeboten/Rechnungen genannten Modalitäten.

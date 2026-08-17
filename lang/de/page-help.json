@@ -443,7 +443,7 @@
                 },
                 {
                     "label": "Clock Point QR-code",
-                    "text": "Der Clock-Point-QR ist der druckbare QR, mit dem Ausführende sich anmelden (Name + Icon) und ein- oder ausstempeln. Verwalten und drucken Sie ihn unter <strong>Time → Clock Points</strong>."
+                    "text": "Der Clock-Point-QR ist der druckbare QR, mit dem Ausführende sich anmelden (Name + Symbol). Mit Time (Stechuhr) stempeln sie dort auch ein oder aus. Verwalten und drucken Sie ihn unter <strong>Time → Clock Points</strong> wenn Time an ist, sonst Menschen → Teams."
                 },
                 {
                     "label": "Ausführende",
@@ -669,7 +669,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "An Eingang, Lager oder Werkstatt angebracht. Hier melden sich Ausführende an (Name + Icon) und stempeln ein und aus. Danach können sie Aufgaben über Unit-QR-Codes bearbeiten."
+                    "text": "An Eingang, Lager oder Werkstatt angebracht. Hier melden sich Ausführende an (Name + Icon). Ein-/Ausstempeln braucht Time (Stechuhr). Danach können sie Aufgaben über Unit-QR-Codes bearbeiten."
                 }
             ]
         },
@@ -904,7 +904,7 @@
                 },
                 {
                     "label": "Module",
-                    "text": "Schalten Sie optionale Module ein oder aus (ESG, IoT Connect). Time (Stunden, Anwesenheit und Clock Points) gehört standardmäßig zu jedem Abonnement."
+                    "text": "Schalten Sie optionale Module ein oder aus (Time-Stechuhr, ESG, IoT Connect). Time ist nicht standardmäßig enthalten."
                 },
                 {
                     "label": "Corporate Einheiten-Cap",
@@ -1229,7 +1229,7 @@
                     "text": "Hier verwalten Sie <strong>Gateways</strong>, <strong>Sensoren</strong>, <strong>Alarmregeln</strong> und sehen aktuelle <strong>Events</strong>. WinProx empfängt Sensordaten; die physischen Sensoren und Protokolle bleiben bei Ihrem Gateway bzw. Anbieter."
                 },
                 {
-                    "label": "250+ units vs Corporate",
+                    "label": "WinProx Corporate",
                     "text": "<strong>WinProx Corporate:</strong> Alarme werden freigegebene Meldungen mit Aufgaben; Sensor-Messungen können ESG speisen. Plus API, Webhooks und individuelle Integrationen."
                 },
                 {

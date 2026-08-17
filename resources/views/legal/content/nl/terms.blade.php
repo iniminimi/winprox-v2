@@ -88,7 +88,7 @@
     WinProx kan een beperkte proefperiode aanbieden. De duur wordt bij registratie of op het platform meegedeeld.
 </p>
 <p>
-    Na de proefperiode is voor voortgezet gebruik een passend abonnement vereist, zoals op het platform beschreven (o.a. op basis van het aantal units en gebruikers).
+    Na de proefperiode is voor voortgezet gebruik een passend abonnement vereist, zoals op het platform beschreven (o.a. op basis van het aantal units en eventuele modules).
 </p>
 <p>
     Het abonnement betreft de toegang tot en het gebruik van het platform voor uw organisatie (tenant). Betaling, facturatie en verlenging verlopen volgens de op het platform of in offertes/facturen vermelde modaliteiten.

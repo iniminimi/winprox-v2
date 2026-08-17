@@ -12,7 +12,7 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "How does WinProx work?",
-            "intro": "WinProx follows one core flow: issue → tasks → completion. Time (clocking) is included by default; ESG (measurements) is optional.",
+            "intro": "WinProx follows one core flow: issue → tasks → completion. Time (punch clock) is optional; ESG (measurements) is also optional.",
             "summary": "Sites and units, issues via QR or admin, approval on the public portal, tasks per team, follow-up via dashboard, briefing, and calendar. Time (punch clock) optional; ESG optional.",
             "steps": [
                 {
@@ -34,7 +34,7 @@
                 {
                     "title": "Field work via QR",
                     "text": "Field workers sign in via the Clock Point QR (name + icon) and complete tasks via the unit QR — without a WinProx login.",
-                    "highlight": "Clock Point = sign in and clock in/out; unit QR = tasks and issues on site."
+                    "highlight": "Clock Point = sign in (name + icon); clocking in requires Time (punch clock); unit QR = tasks and issues on site."
                 },
                 {
                     "title": "Follow up and close",
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Which QR codes are there?",
-            "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Clock Point QR: workers sign in, clock in/out and see their team tasks. Location QR: general link to the site. Everything opens in the browser — no app.",
-            "summary": "Unit QR (reports/tasks/unit check), Clock Point QR (sign-in/clock/team tasks), location QR — all in the browser."
+            "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Clock Point QR: workers sign in (name + icon) and see their team tasks; clock in/out only with Time (punch clock). Location QR: general link to the site. Everything opens in the browser — no app.",
+            "summary": "Unit QR (reports/tasks/unit check), Clock Point QR (sign-in; clocking with Time), location QR — all in the browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -140,22 +140,22 @@
             "slug": "time_clock",
             "type": "text",
             "title": "What is the Time module / Clock Point?",
-            "body": "With Time, field workers clock in and out via the Clock Point QR (breaks and shifts included). Clock Point is also used to identify field workers before tasks via unit QR. Time is included with every subscription by default.",
-            "summary": "Time: clock in/out via Clock Point. Included with every subscription."
+            "body": "Time is the optional punch clock: field workers clock in and out via the Clock Point QR (breaks and shifts included). Clock Point remains the sign-in QR (name + icon) even without Time. Time is not included in WinProx; you add it on Subscription.",
+            "summary": "Time (punch clock): clock in/out via Clock Point. Optional, not included by default."
         },
         "esg": {
             "slug": "esg",
             "type": "text",
             "title": "What is ESG & Compliance?",
-            "body": "ESG is a module from 250 units (and on Corporate) to record measurement values during recurring inspections (energy, safety, …). Administrators see indicators, measurements and follow-up tasks. Link an indicator to a recurring issue; measurements via portal or API (Corporate).",
-            "summary": "ESG module from 250 units: indicators, measurements and follow-up for recurring inspections."
+            "body": "ESG is an optional module on WinProx Corporate to record measurement values during recurring inspections (energy, safety, …). Administrators see indicators, measurements and follow-up tasks. Link an indicator to a recurring issue; measurements via portal or API.",
+            "summary": "ESG module on Corporate: indicators, measurements and follow-up for recurring inspections."
         },
         "for_who": {
             "slug": "for_who",
             "type": "text",
             "title": "Who is WinProx for?",
-            "body": "For facility organisations — factories, care, municipalities, campuses — that want issues, internal teams, field follow-up, Time (hours) and optionally ESG or IoT Connect in one place. No separate hospitality or contractor portals: one Facility app.",
-            "summary": "Facility organisations: issues, teams, field work; Time included; optional ESG and IoT Connect."
+            "body": "For facility organisations — factories, care, municipalities, campuses — that want issues, internal teams, field follow-up, optional Time (punch clock) and optionally ESG or IoT Connect in one place. No separate hospitality or contractor portals: one Facility app.",
+            "summary": "Facility organisations: issues, teams, field work; Time (punch clock) optional; ESG and IoT on Corporate."
         },
         "user_roles": {
             "slug": "user_roles",
@@ -265,15 +265,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API and webhooks?",
-            "body": "On Corporate (or when API is enabled) manage API tokens and outgoing webhooks (HMAC-signed) under Settings. Connect WinProx to other systems for issues, tasks, unit checks (unit.check.recorded), ESG measurements and more. IoT Connect uses a separate gateway token for sensor ingest (from 250 units).",
-            "summary": "API tokens and webhooks under Settings (Corporate); issues, tasks, unit checks, ESG; HMAC deliveries. IoT ingest via gateway token from 250 units."
+            "body": "On Corporate (or when API is enabled) manage API tokens and outgoing webhooks (HMAC-signed) under Settings. Connect WinProx to other systems for issues, tasks, unit checks (unit.check.recorded), ESG measurements and more. IoT Connect uses a separate gateway token for sensor ingest (Corporate).",
+            "summary": "API tokens and webhooks under Settings (Corporate); issues, tasks, unit checks, ESG; HMAC deliveries. IoT ingest via gateway token (Corporate)."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "What is IoT Connect?",
-            "body": "IoT Connect links sensor gateways to WinProx (from 250 units). Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. Sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway sends events to POST /api/v1/iot/events with a gateway token.",
-            "summary": "IoT Connect from 250 units: sensor alarms → issues; readings → ESG. Gateway token ingest."
+            "body": "IoT Connect links sensor gateways to WinProx (Corporate). Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. Sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway sends events to POST /api/v1/iot/events with a gateway token.",
+            "summary": "IoT Connect on Corporate: sensor alarms → issues; readings → ESG. Gateway token ingest."
         },
         "unit_checks": {
             "slug": "unit_checks",

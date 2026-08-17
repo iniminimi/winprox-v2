@@ -12,8 +12,8 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "Wie funktioniert WinProx?",
-            "intro": "WinProx folgt einem Kernfluss: Meldung → Aufgaben → Abschluss. Time (Stempeln) gehört standardmäßig dazu; ESG (Messungen) ist optional.",
-            "summary": "Standorte und Units, Meldung per QR oder Verwaltung, Freigabe im öffentlichen Portal, Aufgaben pro Team, Nachverfolgung über Dashboard, Briefing und Kalender. Time inklusive; ESG optional.",
+            "intro": "WinProx folgt einem Kernfluss: Meldung → Aufgaben → Abschluss. Time (Stechuhr) ist optional; ESG (Messungen) ebenfalls.",
+            "summary": "Standorte und Units, Meldung per QR oder Verwaltung, Freigabe im öffentlichen Portal, Aufgaben pro Team, Nachverfolgung über Dashboard, Briefing und Kalender. Time (Stechuhr) optional; ESG optional.",
             "steps": [
                 {
                     "title": "Standorte und Units",
@@ -34,7 +34,7 @@
                 {
                     "title": "Außendienst per QR",
                     "text": "Ausführende melden sich über den Clock-Point-QR an (Name + Icon) und erledigen Aufgaben über den Unit-QR — ohne WinProx-Login.",
-                    "highlight": "Clock Point = Anmeldung und Ein-/Ausstempeln; Unit-QR = Aufgaben und Meldungen vor Ort."
+                    "highlight": "Clock Point = Anmeldung (Name + Symbol); Einstempeln braucht Time (Stechuhr); Unit-QR = Aufgaben und Meldungen vor Ort."
                 },
                 {
                     "title": "Nachverfolgen und abschließen",
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Welche QR-Codes gibt es?",
-            "body": "Unit-QR: Melder erstellen Meldungen; Ausführer (nach Clock-Point-Anmeldung) bearbeiten offene Aufgaben und können — wenn Kategorie und Unit Unit-Checks erlauben — OK/Nicht OK erfassen. Clock-Point-QR: Anmeldung, Ein-/Ausstempeln und Teamaufgaben. Standort-QR: allgemeiner Link zum Standort. Alles im Browser — ohne App.",
-            "summary": "Unit-QR (Meldungen/Aufgaben/Unit-Check), Clock-Point-QR (Anmeldung/Stempeln/Teamaufgaben), Standort-QR — alles im Browser."
+            "body": "Unit-QR: Melder erstellen Meldungen; Ausführer (nach Clock-Point-Anmeldung) bearbeiten offene Aufgaben und können — wenn Kategorie und Unit Unit-Checks erlauben — OK/Nicht OK erfassen. Clock-Point-QR: Anmeldung (Name + Symbol) und Teamaufgaben; Ein-/Ausstempeln nur mit Time (Stechuhr). Standort-QR: allgemeiner Link zum Standort. Alles im Browser — ohne App.",
+            "summary": "Unit-QR (Meldungen/Aufgaben/Unit-Check), Clock-Point-QR (Anmeldung; Stempeln mit Time), Standort-QR — alles im Browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -140,22 +140,22 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Was ist das Time-Modul / Clock Point?",
-            "body": "Mit Time stempeln Ausführende über den Clock-Point-QR ein und aus (Pausen und Schichten inklusive). Clock Point dient auch dazu, Ausführende vor Aufgaben über Unit-QR zu identifizieren. Time gehört standardmäßig zu jedem Abonnement.",
-            "summary": "Time: Ein-/Ausstempeln über Clock Point. Standardmäßig in jedem Abonnement."
+            "body": "Time ist die optionale Stechuhr: Ausführende stempeln über den Clock-Point-QR ein und aus (Pausen und Schichten inklusive). Clock Point bleibt der Anmelde-QR (Name + Symbol) auch ohne Time. Time ist nicht in WinProx enthalten; Sie wählen es unter Abo.",
+            "summary": "Time (Stechuhr): Ein-/Ausstempeln über Clock Point. Optional, nicht standardmäßig enthalten."
         },
         "esg": {
             "slug": "esg",
             "type": "text",
             "title": "Was ist ESG & Compliance?",
-            "body": "ESG ist ein Modul ab 250 Einheiten (und bei Corporate), um Messwerte bei wiederkehrenden Inspektionen zu erfassen (Energie, Sicherheit, …). Administratoren sehen Indikatoren, Messungen und Folgeaufgaben. Indikator an wiederkehrende Meldung koppeln; Messungen über Portal oder API (Corporate).",
-            "summary": "ESG-Modul ab 250 Einheiten: Indikatoren, Messungen und Nachverfolgung bei wiederkehrenden Inspektionen."
+            "body": "ESG ist ein optionales Modul auf WinProx Corporate, um Messwerte bei wiederkehrenden Inspektionen zu erfassen (Energie, Sicherheit, …). Administratoren sehen Indikatoren, Messungen und Folgeaufgaben. Indikator an wiederkehrende Meldung koppeln; Messungen über Portal oder API.",
+            "summary": "ESG-Modul auf Corporate: Indikatoren, Messungen und Nachverfolgung bei wiederkehrenden Inspektionen."
         },
         "for_who": {
             "slug": "for_who",
             "type": "text",
             "title": "Für wen ist WinProx?",
-            "body": "Für Facility-Organisationen — Fabriken, Pflege, Kommunen, Campusse — die Meldungen, interne Teams, Feldnachverfolgung, Time (Stunden) und optional ESG oder IoT Connect zentral steuern wollen. Keine separaten Hospitality- oder Auftragnehmerportale: eine Facility-App.",
-            "summary": "Facility-Organisationen: Meldungen, Teams, Feldarbeit; Time inklusive; optional ESG und IoT Connect."
+            "body": "Für Facility-Organisationen — Fabriken, Pflege, Kommunen, Campusse — die Meldungen, interne Teams, Feldnachverfolgung, optional Time (Stechuhr) und optional ESG oder IoT Connect zentral steuern wollen. Keine separaten Hospitality- oder Auftragnehmerportale: eine Facility-App.",
+            "summary": "Facility-Organisationen: Meldungen, Teams, Feldarbeit; Time (Stechuhr) optional; ESG und IoT bei Corporate."
         },
         "user_roles": {
             "slug": "user_roles",
@@ -265,15 +265,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API und Webhooks?",
-            "body": "Bei Corporate (oder wenn API freigeschaltet) verwalten Sie API-Tokens und ausgehende Webhooks (HMAC) unter Einstellungen. Koppeln Sie WinProx an andere Systeme für Meldungen, Aufgaben, Unit-Checks (unit.check.recorded), ESG-Messungen u. a. IoT Connect nutzt ein separates Gateway-Token für Sensor-Ingest (ab 250 Einheiten).",
-            "summary": "API-Tokens und Webhooks unter Einstellungen (Corporate); Meldungen, Aufgaben, Unit-Checks, ESG; HMAC-Lieferungen. IoT-Ingest via Gateway-Token ab 250 Einheiten."
+            "body": "Bei Corporate (oder wenn API freigeschaltet) verwalten Sie API-Tokens und ausgehende Webhooks (HMAC) unter Einstellungen. Koppeln Sie WinProx an andere Systeme für Meldungen, Aufgaben, Unit-Checks (unit.check.recorded), ESG-Messungen u. a. IoT Connect nutzt ein separates Gateway-Token für Sensor-Ingest (Corporate).",
+            "summary": "API-Tokens und Webhooks unter Einstellungen (Corporate); Meldungen, Aufgaben, Unit-Checks, ESG; HMAC-Lieferungen. IoT-Ingest via Gateway-Token (Corporate)."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "Was ist IoT Connect?",
-            "body": "IoT Connect verbindet Sensor-Gateways mit WinProx (ab 250 Einheiten). Alarme (Wasserleck, Tür zu lange offen) erstellen automatisch eine freigegebene Meldung und Aufgabe. Sensor-Messungen können als ESG-Messungen gespeichert werden. Gateways, Sensoren und Regeln unter IoT Connect verwalten; Gateway sendet an POST /api/v1/iot/events mit Gateway-Token.",
-            "summary": "IoT Connect ab 250 Einheiten: Sensor-Alarme → Meldungen; Messungen → ESG. Gateway-Token-Ingest."
+            "body": "IoT Connect verbindet Sensor-Gateways mit WinProx (Corporate). Alarme (Wasserleck, Tür zu lange offen) erstellen automatisch eine freigegebene Meldung und Aufgabe. Sensor-Messungen können als ESG-Messungen gespeichert werden. Gateways, Sensoren und Regeln unter IoT Connect verwalten; Gateway sendet an POST /api/v1/iot/events mit Gateway-Token.",
+            "summary": "IoT Connect bei Corporate: Sensor-Alarme → Meldungen; Messungen → ESG. Gateway-Token-Ingest."
         },
         "unit_checks": {
             "slug": "unit_checks",

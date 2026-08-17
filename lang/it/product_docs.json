@@ -19,13 +19,13 @@
     "features": {
         "label": "Panoramica funzionalità",
         "tagline": "Key capabilities · aligned with the current in-app manual",
-        "intro": "WinProx is one Facility web app: issues come in, become tasks, and are handled by teams — plus Time (attendance) by default.",
+        "intro": "WinProx è un'unica app Facility: le segnalazioni arrivano, diventano compiti e i team li chiudono. Time (timbratrice) è opzionale.",
         "flow": [
             "QR scan",
             "Issue",
             "Tasks",
             "Completion",
-            "(+ Time via Clock Point)"
+            "(+ Time timbratrice opzionale)"
         ],
         "source": "Sources: Manual (Getting started + chapters) and FAQ in the app.",
         "footer_left": "WinProx · info@winprox.app · Product overview (manual/FAQ)",
@@ -37,7 +37,7 @@
             },
             {
                 "title": "QR portals",
-                "body": "QR unità: segnalare un problema, più un controllo unità opzionale (OK o Non OK in un tocco). QR Clock Point: accesso e timbratura più attività di team. QR sede. Stampabile come foglio etichette (Avery) o pagina A6/A5/A4. QR dinamici collegabili in seguito a un’unità."
+                "body": "QR unità: segnalare un problema, più un controllo unità opzionale (OK o Non OK in un tocco). QR Clock Point: identificazione (nome + icona) e attività di team; timbrare solo con Time (timbratrice). QR sede. Stampabile come foglio etichette (Avery) o pagina A6/A5/A4. QR dinamici collegabili in seguito a un’unità."
             },
             {
                 "title": "Controlli unità",
@@ -65,9 +65,9 @@
             },
             {
                 "title": "ESG & Compliance",
-                "badge": "250+ unità",
-                "badge_mod": "facility",
-                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Optional module: indicators, measurements and follow-up tasks for recurring checks. Record via portal, back office or API."
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Modulo opzionale su WinProx Corporate: indicatori, misurazioni e attività di follow-up per controlli ricorrenti. Record via portal, back office or API."
             },
             {
                 "title": "AI translation",
@@ -172,7 +172,7 @@
                     "**REST API v1** (fixed URLs + HTTP methods) with **JSON** responses (standard data format). Documentation in-app + docs.",
                     "Tra l’altro segnalazioni, attività, ubicazioni, unità (ID esterno incluso), team, esecutori, controlli unità (anche inbound via ID unità esterno), ESG, traduzioni.",
                     "Available on **Corporate** (trial on request).",
-                    "IoT ingest separately via gateway token (Facility + Corporate)."
+                    "Ingest IoT a parte tramite token gateway (Corporate)."
                 ]
             }
         ],
@@ -316,7 +316,7 @@
                     "**Accesso:** token di accesso personale (Bearer). Revocabile. Per token scegli i diritti (scope), es. solo leggere segnalazioni.",
                     "**Confine organizzazione:** ogni token appartiene a un’organizzazione; non vedi mai i dati di altri clienti.",
                     "**Sicurezza:** limite di richieste al minuto. Idempotency-Key opzionale per evitare un’azione duplicata.",
-                    "**IoT a parte:** i sensori usano un token gateway (250+ unità / Corporate), non lo stesso token API."
+                    "**IoT a parte:** i sensori usano un token gateway (Corporate), non lo stesso token API."
                 ]
             },
             {

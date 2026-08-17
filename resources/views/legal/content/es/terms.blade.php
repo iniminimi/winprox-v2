@@ -88,7 +88,7 @@
     WinProx puede ofrecer un periodo de prueba limitado. La duración se comunica en el registro o en la plataforma.
 </p>
 <p>
-    Tras el periodo de prueba, el uso continuado requiere una suscripción adecuada según se describe en la plataforma (incluido en función del número de unidades y usuarios).
+    Tras el periodo de prueba, el uso continuado requiere una suscripción adecuada según se describe en la plataforma (incluido en función del número de unidades y módulos opcionales).
 </p>
 <p>
     La suscripción cubre el acceso y el uso de la plataforma para su organización (inquilino). El pago, la facturación y la renovación siguen las condiciones mostradas en la plataforma o en presupuestos/facturas.

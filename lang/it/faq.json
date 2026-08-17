@@ -12,8 +12,8 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "Come funziona WinProx?",
-            "intro": "WinProx segue un flusso centrale: segnalazione → attività → chiusura. Time (timbratura) è incluso di default; ESG (misurazioni) è opzionale.",
-            "summary": "Siti e units, segnalazione via QR o gestione, approvazione sul portale pubblico, task per team, follow-up via dashboard, briefing e calendario. Time incluso; ESG opzionale.",
+            "intro": "WinProx segue un flusso centrale: segnalazione → attività → chiusura. Time (timbratrice) è opzionale; ESG (misurazioni) anche.",
+            "summary": "Siti e units, segnalazione via QR o gestione, approvazione sul portale pubblico, task per team, follow-up via dashboard, briefing e calendario. Time (timbratrice) opzionale; ESG opzionale.",
             "steps": [
                 {
                     "title": "Sedi e unit",
@@ -34,7 +34,7 @@
                 {
                     "title": "Lavoro sul campo via QR",
                     "text": "Gli esecutori si registrano via QR Clock Point (nome + icona) e completano task via QR unit — senza login WinProx.",
-                    "highlight": "Clock Point = accesso e timbratura; QR unit = task e segnalazioni sul posto."
+                    "highlight": "Clock Point = identificazione (nome + icona); timbrare richiede Time (timbratrice); QR unit = task e segnalazioni sul posto."
                 },
                 {
                     "title": "Seguire e chiudere",
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Quali codici QR ci sono?",
-            "body": "QR unit: i segnalatori creano segnalazioni; gli esecutori (dopo Clock Point) gestiscono task aperti e possono — se categoria e unit consentono controlli — registrare OK/Non OK. QR Clock Point: accesso, timbratura e task del team. QR sede: link generale. Tutto nel browser — senza app.",
-            "summary": "QR unit (segnalazioni/task/controllo unità), QR Clock Point (accesso/timbratura/task del team), QR sede — tutto nel browser."
+            "body": "QR unit: i segnalatori creano segnalazioni; gli esecutori (dopo Clock Point) gestiscono task aperti e possono — se categoria e unit consentono controlli — registrare OK/Non OK. QR Clock Point: identificazione (nome + icona) e task del team; timbrare solo con Time (timbratrice). QR sede: link generale. Tutto nel browser — senza app.",
+            "summary": "QR unit (segnalazioni/task/controllo unità), QR Clock Point (identificazione; timbratura con Time), QR sede — tutto nel browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -140,22 +140,22 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Cos'è il modulo Time / Clock Point?",
-            "body": "Con Time i lavoratori timbrano tramite il QR Clock Point (pause e turni inclusi). Clock Point serve anche a identificare i lavoratori prima delle attività via QR unità. Time è incluso di default in ogni abbonamento.",
-            "summary": "Time: timbratura via Clock Point. Incluso in ogni abbonamento."
+            "body": "Time è la timbratrice opzionale: gli esecutori timbrano tramite il QR Clock Point (pause e turni inclusi). Clock Point resta il QR di identificazione (nome + icona) anche senza Time. Time non è incluso in WinProx; lo aggiungi in Abbonamento.",
+            "summary": "Time (timbratrice): timbratura via Clock Point. Opzionale, non incluso di default."
         },
         "esg": {
             "slug": "esg",
             "type": "text",
             "title": "Cos'è ESG & Compliance?",
-            "body": "ESG è un modulo da 250 unità (e su Corporate) per registrare valori di misurazione nelle ispezioni ricorrenti (energia, sicurezza, …). Gli amministratori vedono indicatori, misurazioni e attività di follow-up. Collega un indicatore a una segnalazione ricorrente; misurazioni via portale o API (Corporate).",
-            "summary": "Modulo ESG da 250 unità: indicatori, misurazioni e follow-up per ispezioni ricorrenti."
+            "body": "ESG è un modulo opzionale su WinProx Corporate per registrare valori di misurazione nelle ispezioni ricorrenti (energia, sicurezza, …). Gli amministratori vedono indicatori, misurazioni e attività di follow-up. Collega un indicatore a una segnalazione ricorrente; misurazioni via portale o API.",
+            "summary": "Modulo ESG su Corporate: indicatori, misurazioni e follow-up per ispezioni ricorrenti."
         },
         "for_who": {
             "slug": "for_who",
             "type": "text",
             "title": "Per chi è WinProx?",
-            "body": "Per organizzazioni facility — fabbriche, sanità, comuni, campus — che vogliono centralizzare segnalazioni, team interni, follow-up sul campo, Time (ore) e opzionalmente ESG o IoT Connect. Nessun portale hospitality o contractor separato: una sola app Facility.",
-            "summary": "Organizzazioni facility: segnalazioni, team, lavoro sul campo; Time incluso; ESG e IoT Connect opzionali."
+            "body": "Per organizzazioni facility — fabbriche, sanità, comuni, campus — che vogliono centralizzare segnalazioni, team interni, follow-up sul campo, Time (timbratrice) opzionale e opzionalmente ESG o IoT Connect. Nessun portale hospitality o contractor separato: una sola app Facility.",
+            "summary": "Organizzazioni facility: segnalazioni, team, lavoro sul campo; Time (timbratrice) opzionale; ESG e IoT su Corporate."
         },
         "user_roles": {
             "slug": "user_roles",
@@ -265,15 +265,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API e webhook?",
-            "body": "Su Corporate (o quando l'API è attiva) gestisci token API e webhook in uscita (HMAC) in Impostazioni. Collega WinProx ad altri sistemi per segnalazioni, attività, unit check (unit.check.recorded), misurazioni ESG, ecc. IoT Connect usa un token gateway separato per l'ingest sensori (da 250 unità).",
-            "summary": "Token API e webhook in Impostazioni (Corporate); segnalazioni, attività, unit check, ESG; consegne HMAC. Ingest IoT via token gateway da 250 unità."
+            "body": "Su Corporate (o quando l'API è attiva) gestisci token API e webhook in uscita (HMAC) in Impostazioni. Collega WinProx ad altri sistemi per segnalazioni, attività, unit check (unit.check.recorded), misurazioni ESG, ecc. IoT Connect usa un token gateway separato per l’ingest sensori (Corporate).",
+            "summary": "Token API e webhook in Impostazioni (Corporate); segnalazioni, attività, unit check, ESG; consegne HMAC. Ingest IoT via token gateway (Corporate)."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "Cos’è IoT Connect?",
-            "body": "IoT Connect collega gateway sensori a WinProx (da 250 unità). Gli allarmi (perdita d'acqua, porta aperta troppo a lungo) creano automaticamente una segnalazione approvata e un'attività. Le letture possono essere salvate come misurazioni ESG. Gestisci gateway, sensori e regole in IoT Connect; il gateway invia a POST /api/v1/iot/events con un token gateway.",
-            "summary": "IoT Connect da 250 unità: allarmi sensore → segnalazioni; letture → ESG. Ingest via token gateway."
+            "body": "IoT Connect collega gateway sensori a WinProx (Corporate). Gli allarmi (perdita d'acqua, porta aperta troppo a lungo) creano automaticamente una segnalazione approvata e un'attività. Le letture possono essere salvate come misurazioni ESG. Gestisci gateway, sensori e regole in IoT Connect; il gateway invia a POST /api/v1/iot/events con un token gateway.",
+            "summary": "IoT Connect su Corporate: allarmi sensore → segnalazioni; letture → ESG. Ingest via token gateway."
         },
         "unit_checks": {
             "slug": "unit_checks",

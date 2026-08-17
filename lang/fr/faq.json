@@ -12,8 +12,8 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "Comment fonctionne WinProx ?",
-            "intro": "WinProx suit un flux central : signalement → tâches → clôture. Time (pointage) est inclus par défaut ; ESG (mesures) est optionnel.",
-            "summary": "Sites et units, signalement via QR ou gestion, approbation sur le portail public, tâches par équipe, suivi via tableau de bord, briefing et calendrier. Time inclus ; ESG en option.",
+            "intro": "WinProx suit un flux central : signalement → tâches → clôture. Time (pointeuse) est optionnel ; ESG (mesures) l’est aussi.",
+            "summary": "Sites et units, signalement via QR ou gestion, approbation sur le portail public, tâches par équipe, suivi via tableau de bord, briefing et calendrier. Time (pointeuse) optionnel ; ESG optionnel.",
             "steps": [
                 {
                     "title": "Sites et units",
@@ -34,7 +34,7 @@
                 {
                     "title": "Travail terrain via QR",
                     "text": "Les exécutants s'enregistrent via le QR Clock Point (nom + icône) et traitent les tâches via le QR unité — sans connexion WinProx.",
-                    "highlight": "Clock Point = connexion et pointage ; QR unité = tâches et signalements sur site."
+                    "highlight": "Clock Point = identification (nom + icône) ; le pointage nécessite Time (pointeuse) ; QR unité = tâches et signalements sur site."
                 },
                 {
                     "title": "Suivre et clôturer",
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Quels codes QR existent ?",
-            "body": "QR unité : les signaleurs créent un signalement ; les exécutants (après Clock Point) traitent les tâches ouvertes et peuvent — si catégorie et unité autorisent les contrôles — enregistrer OK/Non OK. QR Clock Point : connexion, pointage et tâches d'équipe. QR site : lien général. Tout s'ouvre dans le navigateur — sans app.",
-            "summary": "QR unité (signalements/tâches/contrôle d'unité), QR Clock Point (connexion/pointage/tâches d'équipe), QR site — tout dans le navigateur."
+            "body": "QR unité : les signaleurs créent un signalement ; les exécutants (après Clock Point) traitent les tâches ouvertes et peuvent — si catégorie et unité autorisent les contrôles — enregistrer OK/Non OK. QR Clock Point : identification (nom + icône) et tâches d’équipe ; le pointage nécessite Time (pointeuse). QR site : lien général. Tout s'ouvre dans le navigateur — sans app.",
+            "summary": "QR unité (signalements/tâches/contrôle d'unité), QR Clock Point (identification ; pointage avec Time), QR site — tout dans le navigateur."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -140,22 +140,22 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Qu'est-ce que le module Time / Clock Point ?",
-            "body": "Avec Time, les exécutants pointent via le QR Clock Point (pauses et shifts inclus). Clock Point sert aussi à identifier les exécutants avant les tâches via QR unité. Time est inclus par défaut dans chaque abonnement.",
-            "summary": "Time : pointage via Clock Point. Inclus dans chaque abonnement."
+            "body": "Time est la pointeuse optionnelle : les exécutants pointent via le QR Clock Point (pauses et shifts inclus). Clock Point reste le QR d’identification (nom + icône) même sans Time. Time n’est pas inclus dans WinProx ; vous l’ajoutez sous Abonnement.",
+            "summary": "Time (pointeuse) : pointage via Clock Point. Optionnel, non inclus par défaut."
         },
         "esg": {
             "slug": "esg",
             "type": "text",
             "title": "Qu'est-ce qu'ESG & Compliance ?",
-            "body": "ESG est un module à partir de 250 unités (et sur Corporate) pour enregistrer des valeurs de mesure lors d'inspections récurrentes (énergie, sécurité, …). Les administrateurs voient indicateurs, mesures et tâches de suivi. Liez un indicateur à un signalement récurrent ; mesures via portail ou API (Corporate).",
-            "summary": "Module ESG à partir de 250 unités : indicateurs, mesures et suivi pour inspections récurrentes."
+            "body": "ESG est un module optionnel sur WinProx Corporate pour enregistrer des valeurs de mesure lors d’inspections récurrentes (énergie, sécurité, …). Les administrateurs voient indicateurs, mesures et tâches de suivi. Liez un indicateur à un signalement récurrent ; mesures via portail ou API.",
+            "summary": "Module ESG sur Corporate : indicateurs, mesures et suivi pour inspections récurrentes."
         },
         "for_who": {
             "slug": "for_who",
             "type": "text",
             "title": "Pour qui est WinProx ?",
-            "body": "Pour les organisations facility — usines, soins, communes, campus — qui veulent centraliser signalements, équipes internes, suivi terrain, Time (heures) et éventuellement ESG ou IoT Connect. Pas de portails hospitality ou prestataires séparés : une seule app Facility.",
-            "summary": "Organisations facility : signalements, équipes, travail terrain ; Time inclus ; ESG et IoT Connect en option."
+            "body": "Pour les organisations facility — usines, soins, communes, campus — qui veulent centraliser signalements, équipes internes, suivi terrain, Time (pointeuse) optionnel et éventuellement ESG ou IoT Connect. Pas de portails hospitality ou prestataires séparés : une seule app Facility.",
+            "summary": "Organisations facility : signalements, équipes, travail terrain ; Time (pointeuse) optionnel ; ESG et IoT en Corporate."
         },
         "user_roles": {
             "slug": "user_roles",
@@ -265,15 +265,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API et webhooks ?",
-            "body": "Sur Corporate (ou si l'API est activée), gérez tokens API et webhooks sortants (HMAC) sous Paramètres. Connectez WinProx à d'autres systèmes pour signalements, tâches, contrôles unité (unit.check.recorded), mesures ESG, etc. IoT Connect utilise un token gateway séparé pour l'ingest capteur (à partir de 250 unités).",
-            "summary": "Tokens API et webhooks sous Paramètres (Corporate) ; signalements, tâches, contrôles unité, ESG ; livraisons HMAC. Ingest IoT via token gateway à partir de 250 unités."
+            "body": "Sur Corporate (ou si l'API est activée), gérez tokens API et webhooks sortants (HMAC) sous Paramètres. Connectez WinProx à d'autres systèmes pour signalements, tâches, contrôles unité (unit.check.recorded), mesures ESG, etc. IoT Connect utilise un token gateway séparé pour l’ingest capteur (Corporate).",
+            "summary": "Tokens API et webhooks sous Paramètres (Corporate) ; signalements, tâches, contrôles unité, ESG ; livraisons HMAC. Ingest IoT via token gateway (Corporate)."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "Qu’est-ce que IoT Connect ?",
-            "body": "IoT Connect relie des passerelles capteurs à WinProx (à partir de 250 unités). Les alarmes (fuite d'eau, porte ouverte trop longtemps) créent automatiquement un signalement approuvé et une tâche. Les mesures capteur peuvent aussi être enregistrées en ESG. Gérez passerelles, capteurs et règles sous IoT Connect ; la passerelle envoie vers POST /api/v1/iot/events avec un token gateway.",
-            "summary": "IoT Connect à partir de 250 unités : alarmes capteur → signalements ; mesures → ESG. Ingest via token gateway."
+            "body": "IoT Connect relie des passerelles capteurs à WinProx (Corporate). Les alarmes (fuite d'eau, porte ouverte trop longtemps) créent automatiquement un signalement approuvé et une tâche. Les mesures capteur peuvent aussi être enregistrées en ESG. Gérez passerelles, capteurs et règles sous IoT Connect ; la passerelle envoie vers POST /api/v1/iot/events avec un token gateway.",
+            "summary": "IoT Connect sur Corporate : alarmes capteur → signalements ; mesures → ESG. Ingest via token gateway."
         },
         "unit_checks": {
             "slug": "unit_checks",

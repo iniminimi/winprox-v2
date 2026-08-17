@@ -34,7 +34,7 @@
                 {
                     "title": "Veldwerk via QR",
                     "text": "Uitvoerders melden zich aan via de Clock Point-QR (naam + icoon) en handelen taken af via de unit-QR — zonder WinProx-login.",
-                    "highlight": "Clock Point = aanmelden en inklokken; unit-QR = taken en meldingen op locatie."
+                    "highlight": "Clock Point = aanmelden (naam + icoon); inklokken alleen met Time (prikklok); unit-QR = taken en meldingen op locatie."
                 },
                 {
                     "title": "Opvolgen en afronden",
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Welke QR-codes zijn er?",
-            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken af en kunnen — als categorie én unit Unit checks toestaan — OK/Niet OK registreren. Clock Point-QR: uitvoerders melden zich aan, klokken in/uit en zien hun teamtaken. Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app.",
-            "summary": "Unit-QR (melden/taken/unit check), Clock Point-QR (aanmelden/klokken/teamtaken), locatie-QR — allemaal in de browser."
+            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken af en kunnen — als categorie én unit Unit checks toestaan — OK/Niet OK registreren. Clock Point-QR: uitvoerders melden zich aan (naam + icoon) en zien hun teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app.",
+            "summary": "Unit-QR (melden/taken/unit check), Clock Point-QR (aanmelden; inklokken met Time), locatie-QR — allemaal in de browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -140,22 +140,22 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Wat is de Time-module / Clock Point?",
-            "body": "Met Time klokken uitvoerders in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). Clock Point dient ook om uitvoerders te identificeren vóór taken via unit-QR. Time hoort standaard bij elk abonnement.",
-            "summary": "Time: in-/uitklokken via Clock Point. Standaard bij elk abonnement."
+            "body": "Time is de optionele prikklok: uitvoerders klokken in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). Clock Point blijft de aanmeld-QR (naam + icoon) ook zonder Time. Time zit niet in WinProx; u vinkt het aan bij het abonnement.",
+            "summary": "Time (prikklok): in-/uitklokken via Clock Point. Optioneel, niet standaard inbegrepen."
         },
         "esg": {
             "slug": "esg",
             "type": "text",
             "title": "Wat is ESG & Compliance?",
-            "body": "ESG is een module vanaf 250 units (en op Corporate) om meetwaarden vast te leggen bij terugkerende inspecties (energie, veiligheid, …). Beheerders zien indicatoren, metingen en opvolgtaken. Koppel een indicator aan een terugkerende melding; metingen gebeuren via het portaal of API (Corporate).",
-            "summary": "ESG-module vanaf 250 units: indicatoren, metingen en opvolging bij terugkerende inspecties."
+            "body": "ESG is een optionele module op WinProx Corporate om meetwaarden vast te leggen bij terugkerende inspecties (energie, veiligheid, …). Beheerders zien indicatoren, metingen en opvolgtaken. Koppel een indicator aan een terugkerende melding; metingen gebeuren via het portaal of API.",
+            "summary": "ESG-module op Corporate: indicatoren, metingen en opvolging bij terugkerende inspecties."
         },
         "for_who": {
             "slug": "for_who",
             "type": "text",
             "title": "Voor wie is WinProx?",
-            "body": "Voor facility-organisaties — fabrieken, zorg, gemeenten, campuses — die meldingen, interne teams, veldopvolging, Time (uren) en optioneel ESG of IoT Connect centraal willen sturen. Geen aparte hospitality- of aannemersportalen: één Facility-app.",
-            "summary": "Facility-organisaties: meldingen, teams, veldwerk; Time standaard; optioneel ESG en IoT Connect."
+            "body": "Voor facility-organisaties — fabrieken, zorg, gemeenten, campuses — die meldingen, interne teams, veldopvolging, optioneel Time (prikklok) en optioneel ESG of IoT Connect centraal willen sturen. Geen aparte hospitality- of aannemersportalen: één Facility-app.",
+            "summary": "Facility-organisaties: meldingen, teams, veldwerk; Time (prikklok) optioneel; ESG en IoT op Corporate."
         },
         "user_roles": {
             "slug": "user_roles",
@@ -265,15 +265,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API en webhooks?",
-            "body": "Op Corporate (of wanneer API is vrijgegeven) beheert u onder Instellingen API-tokens en uitgaande webhooks (HMAC-ondertekend). Zo koppelt u WinProx aan andere systemen voor meldingen, taken, unit checks (unit.check.recorded), ESG-metingen en meer. IoT Connect gebruikt een apart gateway-token voor sensor-ingest (vanaf 250 units).",
-            "summary": "API-tokens en webhooks onder Instellingen (Corporate); o.a. meldingen, taken, unit checks, ESG; HMAC-leveringen. IoT-ingest via gateway-token vanaf 250 units."
+            "body": "Op Corporate (of wanneer API is vrijgegeven) beheert u onder Instellingen API-tokens en uitgaande webhooks (HMAC-ondertekend). Zo koppelt u WinProx aan andere systemen voor meldingen, taken, unit checks (unit.check.recorded), ESG-metingen en meer. IoT Connect gebruikt een apart gateway-token voor sensor-ingest (Corporate).",
+            "summary": "API-tokens en webhooks onder Instellingen (Corporate); o.a. meldingen, taken, unit checks, ESG; HMAC-leveringen. IoT-ingest via gateway-token (Corporate)."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "Wat is IoT Connect?",
-            "body": "IoT Connect koppelt sensorgateways aan WinProx (vanaf 250 units). Alarmen (bv. waterlek, deur te lang open) maken automatisch een goedgekeurde melding en taak aan. Sensor-metingen kunnen ook als ESG-metingen worden bewaard. Beheer gateways, sensoren en regels onder IoT Connect; de gateway stuurt events naar POST /api/v1/iot/events met een gateway-token.",
-            "summary": "IoT Connect vanaf 250 units: sensor-alarmen → meldingen; metingen → ESG. Gateway-token ingest."
+            "body": "IoT Connect koppelt sensorgateways aan WinProx (Corporate). Alarmen (bv. waterlek, deur te lang open) maken automatisch een goedgekeurde melding en taak aan. Sensor-metingen kunnen ook als ESG-metingen worden bewaard. Beheer gateways, sensoren en regels onder IoT Connect; de gateway stuurt events naar POST /api/v1/iot/events met een gateway-token.",
+            "summary": "IoT Connect op Corporate: sensor-alarmen → meldingen; metingen → ESG. Gateway-token ingest."
         },
         "unit_checks": {
             "slug": "unit_checks",
