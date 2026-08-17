@@ -908,7 +908,7 @@
                 },
                 {
                     "label": "Corporate units cap",
-                    "text": "For Corporate organisations: set the agreed number of units (documents = units). Activate Corporate or update the cap from the platform list."
+                    "text": "For Corporate organisations: the number is the agreed maximum units (documents: maximum 1 per unit). «Save cap» stores that limit. «Activate Corporate» sets the plan and the cap."
                 }
             ]
         },

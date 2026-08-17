@@ -908,7 +908,7 @@
                 },
                 {
                     "label": "Corporate units-cap",
-                    "text": "Voor Corporate-organisaties: stel het afgesproken aantal units in (documenten = units). Activeer Corporate via «Corporate activeren» of pas de cap aan."
+                    "text": "Voor Corporate-organisaties: het getal is het afgesproken maximum aantal units (documenten: maximaal 1 per unit). «Cap opslaan» bewaart die limiet. «Corporate activeren» zet de formule én de cap."
                 }
             ]
         },

@@ -908,7 +908,7 @@
                 },
                 {
                     "label": "Plafond Corporate",
-                    "text": "Pour les organisations Corporate : définissez le nombre d'unités convenu (documents = unités). Activez Corporate ou mettez à jour le plafond."
+                    "text": "Pour les organisations Corporate : le nombre est le maximum d’unités convenu (documents : 1 par unité). « Enregistrer » enregistre cette limite. « Activer Corporate » applique la formule et le plafond."
                 }
             ]
         },

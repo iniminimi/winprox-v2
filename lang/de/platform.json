@@ -350,6 +350,7 @@
     "corporate_units_cap": "Einheiten-Cap",
     "corporate_units_cap_value": ":cap Einheiten",
     "corporate_units_cap_save": "Cap speichern",
+    "corporate_units_cap_hint": "Vereinbarte Höchstzahl Units für diese Organisation. Dokumente folgen demselben Limit (maximal 1 je Unit). Bei Corporate: «Cap speichern». Sonst: «Corporate aktivieren» setzt Tarif und dieses Limit.",
     "corporate_assign": "Corporate aktivieren",
     "corporate_units_cap_saved": "Einheiten-Cap gespeichert.",
     "corporate_assigned": "Corporate mit :cap Einheiten aktiviert.",

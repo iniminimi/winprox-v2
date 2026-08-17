@@ -908,7 +908,7 @@
                 },
                 {
                     "label": "Cap Corporate",
-                    "text": "Per organizzazioni Corporate: imposta le unità concordate (documenti = unità). Attiva Corporate o aggiorna il cap."
+                    "text": "Per organizzazioni Corporate: il numero è il massimo di unit concordato (documenti: massimo 1 per unit). «Salva cap» salva il limite. «Attiva Corporate» imposta formula e cap."
                 }
             ]
         },

@@ -908,7 +908,7 @@
                 },
                 {
                     "label": "Tope Corporate",
-                    "text": "Para organizaciones Corporate: establezca las unidades acordadas (documentos = unidades). Active Corporate o ajuste el tope."
+                    "text": "Para organizaciones Corporate: el número es el máximo acordado de unidades (documentos: máximo 1 por unidad). «Guardar tope» guarda ese límite. «Activar Corporate» aplica el plan y el tope."
                 }
             ]
         },

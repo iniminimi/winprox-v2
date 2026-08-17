@@ -350,6 +350,7 @@
     "corporate_units_cap": "Units-cap",
     "corporate_units_cap_value": ":cap units",
     "corporate_units_cap_save": "Cap opslaan",
+    "corporate_units_cap_hint": "Afgesproken maximum aantal units voor deze organisatie. Documenten volgen dezelfde limiet (maximaal 1 per unit). Bij Corporate: «Cap opslaan». Anders: «Corporate activeren» zet de formule én deze limiet.",
     "corporate_assign": "Corporate activeren",
     "corporate_units_cap_saved": "Units-cap opgeslagen.",
     "corporate_assigned": "Corporate geactiveerd met :cap units.",

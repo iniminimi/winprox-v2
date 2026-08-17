@@ -47,6 +47,7 @@ it('laat superuser corporate activeren met units-cap', function (): void {
 
     Livewire::actingAs($super)
         ->test(Tenants::class)
+        ->assertSee(__('platform.corporate_units_cap_hint'))
         ->set('unitsCapInputs.'.$tenant->id, '1500')
         ->call('assignCorporate', $tenant->id)
         ->assertHasNoErrors();

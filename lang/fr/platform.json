@@ -350,6 +350,7 @@
     "corporate_units_cap": "Plafond unités",
     "corporate_units_cap_value": ":cap unités",
     "corporate_units_cap_save": "Enregistrer",
+    "corporate_units_cap_hint": "Nombre maximum d’unités convenu pour cette organisation. Les documents suivent la même limite (1 par unité). En Corporate : « Enregistrer ». Sinon : « Activer Corporate » applique la formule et cette limite.",
     "corporate_assign": "Activer Corporate",
     "corporate_units_cap_saved": "Plafond enregistré.",
     "corporate_assigned": "Corporate activé avec :cap unités.",

@@ -350,6 +350,7 @@
     "corporate_units_cap": "Tope de unidades",
     "corporate_units_cap_value": ":cap unidades",
     "corporate_units_cap_save": "Guardar tope",
+    "corporate_units_cap_hint": "Máximo acordado de unidades para esta organización. Los documentos siguen el mismo límite (máximo 1 por unidad). En Corporate: «Guardar tope». Si no: «Activar Corporate» aplica el plan y este límite.",
     "corporate_assign": "Activar Corporate",
     "corporate_units_cap_saved": "Tope guardado.",
     "corporate_assigned": "Corporate activado con :cap unidades.",

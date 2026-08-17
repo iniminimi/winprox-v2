@@ -350,6 +350,7 @@
     "corporate_units_cap": "Units cap",
     "corporate_units_cap_value": ":cap units",
     "corporate_units_cap_save": "Save cap",
+    "corporate_units_cap_hint": "Agreed maximum number of units for this organisation. Documents follow the same limit (maximum 1 per unit). On Corporate: «Save cap». Otherwise: «Activate Corporate» sets the plan and this limit.",
     "corporate_assign": "Activate Corporate",
     "corporate_units_cap_saved": "Units cap saved.",
     "corporate_assigned": "Corporate activated with :cap units.",

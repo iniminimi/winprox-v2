@@ -69,25 +69,27 @@
                                 <input type="checkbox" wire:click="toggleTimeModule({{ $tenant->id }})" {{ $tenant->has_time_module ? 'checked' : '' }}>
                                 <span>{{ __('platform.time_module') }}</span>
                             </label>
-                            <div class="wp-cluster">
-                                <input
-                                    type="number"
-                                    min="1"
-                                    class="wp-input"
-                                    wire:model="unitsCapInputs.{{ $tenant->id }}"
-                                    placeholder="{{ $tenant->billing_units_cap ?? '1500' }}"
-                                    aria-label="{{ __('platform.corporate_units_cap') }}"
-                                >
-                                @if ($isCorporate)
-                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="saveUnitsCap({{ $tenant->id }})">
-                                        {{ __('platform.corporate_units_cap_save') }}
-                                    </button>
-                                @else
-                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="assignCorporate({{ $tenant->id }})">
-                                        {{ __('platform.corporate_assign') }}
-                                    </button>
-                                @endif
-                            </div>
+                            <x-wp-tooltip :text="__('platform.corporate_units_cap_hint')" wrap class="wp-tooltip--end">
+                                <div class="wp-cluster">
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        class="wp-input"
+                                        wire:model="unitsCapInputs.{{ $tenant->id }}"
+                                        placeholder="{{ $tenant->billing_units_cap ?? '1500' }}"
+                                        aria-label="{{ __('platform.corporate_units_cap') }}"
+                                    >
+                                    @if ($isCorporate)
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="saveUnitsCap({{ $tenant->id }})">
+                                            {{ __('platform.corporate_units_cap_save') }}
+                                        </button>
+                                    @else
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="assignCorporate({{ $tenant->id }})">
+                                            {{ __('platform.corporate_assign') }}
+                                        </button>
+                                    @endif
+                                </div>
+                            </x-wp-tooltip>
                             <button type="button" class="btn btn--primary btn--sm"
                                     wire:click="startSupport({{ $tenant->id }})">
                                 {{ __('platform.open_support') }}

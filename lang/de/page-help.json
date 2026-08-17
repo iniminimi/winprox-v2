@@ -908,7 +908,7 @@
                 },
                 {
                     "label": "Corporate Einheiten-Cap",
-                    "text": "Für Corporate-Organisationen: vereinbarte Einheitenanzahl setzen (Dokumente = Einheiten). Corporate aktivieren oder Cap anpassen."
+                    "text": "Für Corporate-Organisationen: die Zahl ist die vereinbarte Höchstzahl Units (Dokumente: maximal 1 je Unit). «Cap speichern» speichert das Limit. «Corporate aktivieren» setzt Tarif und Cap."
                 }
             ]
         },
