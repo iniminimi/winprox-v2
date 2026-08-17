@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Actions\Billing\ActivateSubscriptionPlanAction;
 use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\StartTenantTrialAction;
+use App\Livewire\Dashboard;
 use App\Livewire\Pages\Subscription;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
@@ -15,7 +16,7 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
-it('zet trial op 50 units zonder Time en maakt een Clock Point voor aanmelden', function () {
+it('zet trial op 50 units met Time-prikklok en maakt een Clock Point', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
@@ -24,10 +25,22 @@ it('zet trial op 50 units zonder Time en maakt een Clock Point voor aanmelden', 
     $fresh = $tenant->fresh();
 
     expect($fresh->maxUnitsLimit())->toBe(50)
-        ->and($fresh->hasTimeModule())->toBeFalse()
+        ->and($fresh->hasTimeModule())->toBeTrue()
         ->and($fresh->hasIotModule())->toBeFalse()
         ->and($fresh->hasEsgModule())->toBeFalse()
         ->and(ClockPoint::query()->where('tenant_id', $fresh->id)->count())->toBe(1);
+});
+
+it('zet Time aan voor een bestaande proeftenant bij het dashboard', function () {
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->addDays(10),
+        'has_time_module' => false,
+    ]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)->test(Dashboard::class);
+
+    expect($tenant->fresh()->hasTimeModule())->toBeTrue();
 });
 
 it('activeert WinProx 50 zonder Time', function () {

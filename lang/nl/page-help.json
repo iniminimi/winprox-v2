@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 50 units (en 50 documenten). Time (prikklok) is niet inbegrepen. Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 50 units (en 50 documenten), inclusief Time (prikklok). Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Melding toevoegen",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 50 units (en 50 documenten). Time (prikklok) is niet inbegrepen; IoT en ESG ook niet. Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 50 units (en 50 documenten), inclusief Time (prikklok). IoT, ESG en API zitten niet in de proef. Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Plan kiezen",
@@ -904,7 +904,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Schakel optionele modules in of uit (Time-prikklok, ESG, IoT Connect). Time is niet standaard inbegrepen."
+                    "text": "Schakel optionele modules in of uit (Time-prikklok, ESG, IoT Connect). Time is inbegrepen in de proefperiode; bij WinProx optioneel."
                 },
                 {
                     "label": "Corporate units-cap",

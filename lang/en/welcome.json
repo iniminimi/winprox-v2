@@ -88,7 +88,7 @@
         "time": {
             "name": "Module Time",
             "tagline": "Optional punch clock",
-            "body": "Hours, breaks and shifts via the Clock Point QR — optional punch clock, not included in WinProx.",
+            "body": "Hours, breaks and shifts via the Clock Point QR. Included in the trial; optional afterwards on WinProx.",
             "logo_alt": "Module Time — part of WinProx Facility",
             "bullets": [
                 "Clock in and out",

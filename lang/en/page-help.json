@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 50 units (and 50 documents). Time (punch clock) is not included. The dashboard shows remaining days."
+                    "text": "During the trial you have up to 50 units (and 50 documents), including Time (punch clock). The dashboard shows remaining days."
                 },
                 {
                     "label": "Add issue",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 50 units (and 50 documents). Time (punch clock) is not included; neither are IoT and ESG. The dashboard shows remaining days."
+                    "text": "During the trial you have up to 50 units (and 50 documents), including Time (punch clock). IoT, ESG and API are not in the trial. The dashboard shows remaining days."
                 },
                 {
                     "label": "Choose plan",
@@ -904,7 +904,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Enable or disable optional modules (Time punch clock, ESG, IoT Connect). Time is not included by default."
+                    "text": "Enable or disable optional modules (Time punch clock, ESG, IoT Connect). Time is included in the trial; optional on WinProx."
                 },
                 {
                     "label": "Corporate units cap",

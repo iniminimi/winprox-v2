@@ -48,9 +48,9 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Was kostet WinProx?",
-            "intro": "Sie starten mit einem kostenlosen Testmonat (bis 50 Units). Danach wählen Sie WinProx unter Abo: 10, 50 oder 100 Units pro Jahr. Time (Stechuhr) ist optional. Corporate ist maßgeschneidert (mehr als 100 Units oder API/Webhooks).",
-            "summary": "Test bis 50 Units, danach WinProx 10/50/100 pro Jahr. Time (Stechuhr) optional; IoT, ESG und API bei Corporate.",
-            "content_note": "Unit = Objekt oder Ort mit QR (Zimmer, Drucker, Fahrzeug). Dokument = Datei im QR-Portal (Anleitung, Hausordnung), 1 pro Unit. Fotos bei Meldungen unbegrenzt. Genaue Preise stehen unter Abo.",
+            "intro": "Sie starten mit einem kostenlosen Testmonat (50 Units, inkl. Time-Stechuhr). IoT, ESG und API sind nicht in der Testphase. Danach wählen Sie 10, 50 oder 100 Units pro Jahr. Time (Stechuhr) ist danach optional. Corporate ist maßgeschneidert (mehr als 100 Units oder API/Webhooks).",
+            "summary": "Test bis 50 Units, inkl. Time (Stechuhr). IoT, ESG und API bei Corporate. Danach 10/50/100 pro Jahr.",
+            "content_note": "Unit = Objekt oder Ort mit QR. Dokument = Datei im QR-Portal, maximal 1 pro Unit. Fotos bei Meldungen unbegrenzt. Genaue Preise stehen unter Abo.",
             "plans": {
                 "winprox_10": {
                     "units": "Bis zu 10 Units und 10 Dokumente.",
@@ -140,7 +140,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Was ist das Time-Modul / Clock Point?",
-            "body": "Time ist die optionale Stechuhr: Ausführende stempeln über den Clock-Point-QR ein und aus (Pausen und Schichten inklusive). Clock Point bleibt der Anmelde-QR (Name + Symbol) auch ohne Time. Time ist nicht in WinProx enthalten; Sie wählen es unter Abo.",
+            "body": "Time ist die optionale Stechuhr: Ausführende stempeln über den Clock-Point-QR ein und aus (Pausen und Schichten inklusive). Clock Point bleibt der Anmelde-QR (Name + Symbol) auch ohne Time. In der Testphase ist Time enthalten. Bei einem bezahlten WinProx-Abo ist es optional; Sie wählen es unter Abo.",
             "summary": "Time (Stechuhr): Ein-/Ausstempeln über Clock Point. Optional, nicht standardmäßig enthalten."
         },
         "esg": {

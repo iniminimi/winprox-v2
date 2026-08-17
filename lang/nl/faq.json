@@ -48,9 +48,9 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Hoeveel kost WinProx?",
-            "intro": "U start met een gratis proefmaand (tot 50 units). Daarna kiest u WinProx onder Abonnement: 10, 50 of 100 units per jaar. Time (prikklok) is optioneel. Corporate is op maat (meer dan 100 units of wanneer API/webhooks nodig zijn).",
-            "summary": "Proefperiode tot 50 units, daarna WinProx 10/50/100 per jaar. Time (prikklok) optioneel; IoT, ESG en API op Corporate.",
-            "content_note": "Unit = object of plaats met QR (kamer, printer, voertuig). Document = bestand op het QR-portaal (handleiding, huisreglement), 1 per unit. Foto's bij meldingen zijn onbeperkt. Exacte prijzen staan onder Abonnement.",
+            "intro": "U start met een gratis proefmaand (50 units, inclusief Time-prikklok). IoT, ESG en API zitten niet in de proef. Daarna kiest u 10, 50 of 100 units per jaar. Time (prikklok) is daarna optioneel. Corporate is op maat (meer dan 100 units of wanneer API/webhooks nodig zijn).",
+            "summary": "Proefperiode tot 50 units, inclusief Time (prikklok). IoT, ESG en API op Corporate. Daarna 10/50/100 per jaar.",
+            "content_note": "Unit = object of plaats met QR. Document = bestand op het QR-portaal, maximaal 1 per unit. Foto's bij meldingen zijn onbeperkt. Exacte prijzen staan onder Abonnement.",
             "plans": {
                 "winprox_10": {
                     "units": "Tot 10 units en 10 documenten.",
@@ -140,7 +140,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Wat is de Time-module / Clock Point?",
-            "body": "Time is de optionele prikklok: uitvoerders klokken in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). Clock Point blijft de aanmeld-QR (naam + icoon) ook zonder Time. Time zit niet in WinProx; u vinkt het aan bij het abonnement.",
+            "body": "Time is de optionele prikklok: uitvoerders klokken in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). Clock Point blijft de aanmeld-QR (naam + icoon) ook zonder Time. In de proefperiode is Time inbegrepen. Bij een betaald WinProx-abonnement is het optioneel; u vinkt het aan bij het abonnement.",
             "summary": "Time (prikklok): in-/uitklokken via Clock Point. Optioneel, niet standaard inbegrepen."
         },
         "esg": {

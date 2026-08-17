@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Testphase",
-                    "text": "Im Testzeitraum haben Sie bis zu 50 Units (und 50 Dokumente). Time (Stechuhr) ist nicht enthalten. Das Dashboard zeigt die restlichen Tage."
+                    "text": "Im Testzeitraum haben Sie bis zu 50 Units (und 50 Dokumente), inkl. Time (Stechuhr). Das Dashboard zeigt die restlichen Tage."
                 },
                 {
                     "label": "Meldung hinzufügen",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Testphase",
-                    "text": "Im Testzeitraum haben Sie bis zu 50 Units (und 50 Dokumente). Time (Stechuhr) ist nicht enthalten; IoT und ESG ebenfalls nicht. Das Dashboard zeigt die restlichen Tage."
+                    "text": "Im Testzeitraum haben Sie bis zu 50 Units (und 50 Dokumente), inkl. Time (Stechuhr). IoT, ESG und API sind nicht in der Testphase. Das Dashboard zeigt die restlichen Tage."
                 },
                 {
                     "label": "Plan wählen",
@@ -904,7 +904,7 @@
                 },
                 {
                     "label": "Module",
-                    "text": "Schalten Sie optionale Module ein oder aus (Time-Stechuhr, ESG, IoT Connect). Time ist nicht standardmäßig enthalten."
+                    "text": "Schalten Sie optionale Module ein oder aus (Time-Stechuhr, ESG, IoT Connect). Time ist in der Testphase enthalten; bei WinProx optional."
                 },
                 {
                     "label": "Corporate Einheiten-Cap",

@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova hai fino a 50 unit (e 50 documenti). Time (timbratrice) non è incluso. La dashboard mostra i giorni restanti."
+                    "text": "Durante la prova hai fino a 50 unit (e 50 documenti), Time (timbratrice) inclusa. La dashboard mostra i giorni restanti."
                 },
                 {
                     "label": "Aggiungi segnalazione",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova hai fino a 50 unit (e 50 documenti). Time (timbratrice) non è incluso; nemmeno IoT ed ESG. La dashboard mostra i giorni restanti."
+                    "text": "Durante la prova hai fino a 50 unit (e 50 documenti), Time (timbratrice) inclusa. IoT, ESG e API non sono nella prova. La dashboard mostra i giorni restanti."
                 },
                 {
                     "label": "Scelga piano",
@@ -904,7 +904,7 @@
                 },
                 {
                     "label": "Moduli",
-                    "text": "Attiva o disattiva i moduli opzionali (Time timbratrice, ESG, IoT Connect). Time non è incluso di default."
+                    "text": "Attiva o disattiva i moduli opzionali (Time timbratrice, ESG, IoT Connect). Time è inclusa nella prova; opzionale su WinProx."
                 },
                 {
                     "label": "Cap Corporate",

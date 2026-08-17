@@ -48,9 +48,9 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "¿Cuánto cuesta WinProx?",
-            "intro": "Empieza con un mes de prueba (hasta 50 unidades). Luego elija WinProx en Suscripción: 10, 50 o 100 unidades al año. Time (reloj de fichar) es opcional. Corporate es a medida (más de 100 unidades o API/webhooks).",
-            "summary": "Prueba hasta 50 unidades, luego WinProx 10/50/100 al año. Time (reloj de fichar) opcional; IoT, ESG y API en Corporate.",
-            "content_note": "Unidad = objeto o lugar con QR (habitación, impresora, vehículo). Documento = archivo en el portal QR (manual, reglamento), 1 por unidad. Fotos en avisos ilimitadas. Los precios exactos están en Suscripción.",
+            "intro": "Empieza con un mes de prueba (50 unidades, Time reloj de fichar incluido). IoT, ESG y API no están en la prueba. Luego elija 10, 50 o 100 unidades al año. Time (reloj de fichar) es opcional después. Corporate es a medida (más de 100 unidades o API/webhooks).",
+            "summary": "Prueba hasta 50 unidades, Time (reloj de fichar) incluido. IoT, ESG y API en Corporate. Luego 10/50/100 al año.",
+            "content_note": "Unidad = objeto o lugar con QR. Documento = archivo en el portal QR, máximo 1 por unidad. Fotos en avisos ilimitadas. Los precios exactos están en Suscripción.",
             "plans": {
                 "winprox_10": {
                     "units": "Hasta 10 unidades y 10 documentos.",
@@ -140,7 +140,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "¿Qué es el módulo Time / Clock Point?",
-            "body": "Time es el reloj de fichar opcional: los operarios fichan mediante el QR Clock Point (pausas y turnos incluidos). Clock Point sigue siendo el QR de identificación (nombre + icono) también sin Time. Time no está incluido en WinProx; lo añade en Suscripción.",
+            "body": "Time es el reloj de fichar opcional: los operarios fichan mediante el QR Clock Point (pausas y turnos incluidos). Clock Point sigue siendo el QR de identificación (nombre + icono) también sin Time. Time está incluido en la prueba. En un plan WinProx de pago es opcional; lo añade en Suscripción.",
             "summary": "Time (reloj de fichar): fichaje vía Clock Point. Opcional, no incluido por defecto."
         },
         "esg": {

@@ -88,7 +88,7 @@
         "time": {
             "name": "Módulo Time",
             "tagline": "Reloj de fichar opcional",
-            "body": "Horas, pausas y turnos vía el QR Clock Point — reloj de fichar opcional, no incluido en WinProx.",
+            "body": "Horas, pausas y turnos vía el QR Clock Point. Incluido en la prueba; opcional después en WinProx.",
             "logo_alt": "Módulo Time — parte de WinProx Facility",
             "bullets": [
                 "Fichaje",

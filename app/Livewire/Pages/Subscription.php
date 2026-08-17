@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Actions\Billing\ActivateSubscriptionPlanAction;
+use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\FulfillStripeCheckoutSessionAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\TenantPurge\CancelTenantPurgeRequestAction;
@@ -49,11 +50,14 @@ class Subscription extends Component
     /** @var null|'start'|'execute_trial'|'execute_paid'|'cancel' */
     public ?string $purgeConfirmKind = null;
 
-    public function mount(FulfillStripeCheckoutSessionAction $fulfillStripe, RealignSubscriptionPeriodAction $realign): void
+    public function mount(FulfillStripeCheckoutSessionAction $fulfillStripe, RealignSubscriptionPeriodAction $realign, ApplyPlanEntitlementsAction $applyEntitlements): void
     {
         $tenant = $this->resolveTenant();
         if ($tenant !== null) {
             $realign->handle($tenant);
+            if ($tenant->isTrialActive() && ! $tenant->hasTimeModule()) {
+                $applyEntitlements->handle($tenant);
+            }
         }
 
         $this->selectedPlan = $this->resolveTenant()?->effectivePlanKey();

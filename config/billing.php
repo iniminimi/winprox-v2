@@ -13,9 +13,9 @@
  *  - Units bepalen de schaal; documenten = units (1 per unit).
  *  - Locaties en gebruikers: altijd onbeperkt.
  *  - Foto's: altijd onbeperkt.
- *  - Time: optionele prikklok (niet inbegrepen in WinProx).
+ *  - Time: optionele prikklok (niet inbegrepen in WinProx; wél in de proefperiode).
  *  - IoT + ESG + API: uitsluitend Corporate.
- *  - Trial: tot 50 units, geen Time/IoT/ESG/API.
+ *  - Trial: tot 50 units, Time inbegrepen, geen IoT/ESG/API.
  *  - Corporate: afgesproken units via `tenants.billing_units_cap` (superuser).
  */
 
@@ -111,7 +111,7 @@ return [
         'corporate'        => ['max_attempts' => 10000, 'decay_seconds' => 60],
     ],
 
-    // Trial: tot 50 units (= WinProx 50), geen Time/IoT/ESG/API.
+    // Trial: tot 50 units (= WinProx 50), Time inbegrepen, geen IoT/ESG/API.
     'trial' => [
         'units_limit'            => 50,
         'locations_limit'        => null,
@@ -121,7 +121,7 @@ return [
         'documents_per_unit'     => null,
         'announcements_per_unit' => null,
         'includes_facility'      => true,
-        'time_module'            => false,
+        'time_module'            => true,
         'esg_module'             => false,
         'iot_module'             => false,
         'api_access'             => false,

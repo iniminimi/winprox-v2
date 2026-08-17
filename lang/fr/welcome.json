@@ -89,7 +89,7 @@
         "time": {
             "name": "Module Time",
             "tagline": "Pointeuse optionnelle",
-            "body": "Heures, pauses et shifts via le QR Clock Point — pointeuse optionnelle, non incluse dans WinProx.",
+            "body": "Heures, pauses et shifts via le QR Clock Point. Inclus pendant l’essai ; optionnel ensuite sur WinProx.",
             "logo_alt": "Module Time — composant de WinProx Facility",
             "bullets": [
                 "Pointage",

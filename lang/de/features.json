@@ -51,7 +51,7 @@
         "eyebrow": "Time",
         "logo_alt": "Modul Time — Teil von WinProx Facility",
         "title": "Zeiterfassung per Clock Point",
-        "lead": "Time ist die optionale Stechuhr von WinProx: Ein-/Ausstempeln über denselben Clock-Point-QR wie die Felarbeit.",
+        "lead": "Time ist die Stechuhr von WinProx: in der Testphase enthalten, danach optional. Ein-/Ausstempeln über denselben Clock-Point-QR wie die Felarbeit.",
         "problem": {
             "title": "Welches Problem löst es?",
             "body": "Anwesenheit und Schichten liegen oft in einem separaten Tool, getrennt von Meldungen und Aufgaben — was es schwer macht zu sehen, wer wann vor Ort war."

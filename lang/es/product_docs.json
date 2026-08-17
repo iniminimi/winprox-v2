@@ -99,7 +99,7 @@
             {
                 "title": "Time",
                 "badge": "opcional",
-                "body": "Time es un reloj de fichar opcional: entrada/salida, pausa, presencia y hoja de horas. Clock Point sigue siendo el QR de identificación (nombre + icono, lista de tareas) también sin Time. Time no está incluido en WinProx; recargo mensual en la factura anual."
+                "body": "Time es un reloj de fichar opcional: entrada/salida, pausa, presencia y hoja de horas. Clock Point sigue siendo el QR de identificación (nombre + icono, lista de tareas) también sin Time. Time está incluido en la prueba. En WinProx es opcional: recargo mensual en la factura anual."
             },
             {
                 "title": "Reservations",

@@ -189,7 +189,7 @@
                                 <td>{{ __('subscription.comparison_trial_price') }}</td>
                                 <td>50</td>
                                 <td>50</td>
-                                <td>{{ __('subscription.comparison_no') }}</td>
+                                <td>{{ __('subscription.comparison_included') }}</td>
                                 <td>{{ __('subscription.comparison_no') }}</td>
                             </tr>
                             @foreach ($planKeys as $planKey)
@@ -237,7 +237,11 @@
                         </tbody>
                     </table>
                 </div>
-                <p class="wp-muted wp-text-sm">{{ __('subscription.comparison_note') }}</p>
+                <ul class="wp-billing-status-list">
+                    <li>{{ __('subscription.comparison_notes.trial') }}</li>
+                    <li>{{ __('subscription.comparison_notes.unlimited') }}</li>
+                    <li>{{ __('subscription.comparison_notes.corporate') }}</li>
+                </ul>
             </div>
         @endif
 

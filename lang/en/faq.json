@@ -48,9 +48,9 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "How much does WinProx cost?",
-            "intro": "You start with a free trial month (up to 50 units). Then choose WinProx under Subscription: 10, 50 or 100 units per year. Time (punch clock) is optional. Corporate is custom (more than 100 units or when API/webhooks are required).",
-            "summary": "Trial up to 50 units, then WinProx 10/50/100 per year. Time (punch clock) optional; IoT, ESG and API on Corporate.",
-            "content_note": "Unit = object or place with a QR (room, printer, vehicle). Document = file on the QR portal (manual, house rules), 1 per unit. Photos on issues are unlimited. Exact prices are under Subscription.",
+            "intro": "You start with a free trial month (50 units, including Time punch clock). IoT, ESG and API are not in the trial. Then choose 10, 50 or 100 units per year. Time (punch clock) is optional afterwards. Corporate is custom (more than 100 units or when API/webhooks are required).",
+            "summary": "Trial up to 50 units, including Time (punch clock). IoT, ESG and API on Corporate. Then 10/50/100 per year.",
+            "content_note": "Unit = object or place with a QR. Document = file on the QR portal, maximum 1 per unit. Photos on issues are unlimited. Exact prices are under Subscription.",
             "plans": {
                 "winprox_10": {
                     "units": "Up to 10 units and 10 documents.",
@@ -140,7 +140,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "What is the Time module / Clock Point?",
-            "body": "Time is the optional punch clock: field workers clock in and out via the Clock Point QR (breaks and shifts included). Clock Point remains the sign-in QR (name + icon) even without Time. Time is not included in WinProx; you add it on Subscription.",
+            "body": "Time is the optional punch clock: field workers clock in and out via the Clock Point QR (breaks and shifts included). Clock Point remains the sign-in QR (name + icon) even without Time. Time is included in the trial. On a paid WinProx plan it is optional; you add it on Subscription.",
             "summary": "Time (punch clock): clock in/out via Clock Point. Optional, not included by default."
         },
         "esg": {

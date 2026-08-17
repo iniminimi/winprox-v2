@@ -43,7 +43,7 @@ linkt naar zijn lijst):
 - Units — totaal → unit-lijst
 - Nieuwe meldingen — aantal nieuw/open → meldingen (status=nieuw). **Alert-accent** als > 0.
 - Open taken — "In uitvoering" → taken (open/in uitvoering).
-- Nu aanwezig — open shifts zonder pauze → Time-aanwezigheid (Time-module; standaard aan).
+- Nu aanwezig — open shifts zonder pauze → Time-aanwezigheid (Time-module; inbegrepen in proef, optioneel bij WinProx).
 - **Conditioneel** (alleen tonen als telling **> 0** — geen vaste nullen / geen lege grid-gaten):
   - Te beoordelen — QR-wachtlijst → meldingen
   - Time-aandacht — open shifts met uitzondering → Time-alarmen
@@ -654,7 +654,7 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
 - **Time (prikklok)** — modulenaam Time, inhoud = prikklok: optionele plan-variant
   (`winprox_*_time`), zelfde units, `time_module` aan. Toeslag €29 / €39 / €49 per maand,
   op de **jaarfactuur** (×12). In-/uitklokken, pauze, aanwezigheid, urenstaat.
-- **Trial:** 50 units, geen Time/IoT/ESG/API.
+- **Trial:** 50 units, Time (prikklok) inbegrepen, geen IoT/ESG/API.
 - **Corporate:** geen self-activate; superuser zet `billing_plan=corporate` + `billing_units_cap`
   via Platform → Organisaties. Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
 - **Legacy `facility_*`:** blijven in config voor bestaande abonnees (niet in catalogus, niet

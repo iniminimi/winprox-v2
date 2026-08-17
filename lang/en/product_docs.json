@@ -99,7 +99,7 @@
             {
                 "title": "Time",
                 "badge": "optional",
-                "body": "Time is an optional punch clock: clock in/out, breaks, presence and timesheets. Clock Point remains the sign-in QR (name + icon, task list) even without Time. Time is not included in WinProx; monthly add-on on the yearly invoice."
+                "body": "Time is an optional punch clock: clock in/out, breaks, presence and timesheets. Clock Point remains the sign-in QR (name + icon, task list) even without Time. Time is included in the trial. On WinProx it is optional: monthly add-on on the yearly invoice."
             },
             {
                 "title": "Reservations",

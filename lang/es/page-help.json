@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 50 unidades (y 50 documentos). Time (reloj de fichar) no está incluido. El panel muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 50 unidades (y 50 documentos), Time (reloj de fichar) incluido. El panel muestra los días restantes."
                 },
                 {
                     "label": "Añadir incidencia",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 50 unidades (y 50 documentos). Time (reloj de fichar) no está incluido. El panel muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 50 unidades (y 50 documentos), Time (reloj de fichar) incluido. El panel muestra los días restantes."
                 },
                 {
                     "label": "Elegir plan",
@@ -904,7 +904,7 @@
                 },
                 {
                     "label": "Módulos",
-                    "text": "Active o desactive módulos opcionales (Time reloj de fichar, ESG, IoT Connect). Time no está incluido por defecto."
+                    "text": "Active o desactive módulos opcionales (Time reloj de fichar, ESG, IoT Connect). Time está incluido en la prueba; opcional en WinProx."
                 },
                 {
                     "label": "Tope Corporate",

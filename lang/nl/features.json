@@ -51,7 +51,7 @@
         "eyebrow": "Time",
         "logo_alt": "Module Time — onderdeel van WinProx Facility",
         "title": "Tijdregistratie via Clock Point",
-        "lead": "Time is de optionele prikklok van WinProx: in-/uitklokken via dezelfde Clock Point-QR als het veldwerk.",
+        "lead": "Time is de prikklok van WinProx: inbegrepen in de proefperiode, daarna optioneel. In-/uitklokken via dezelfde Clock Point-QR als het veldwerk.",
         "problem": {
             "title": "Welk probleem lost het op?",
             "body": "Aanwezigheid en shifts zitten vaak in een aparte tool, los van meldingen en taken. Dat bemoeilijkt opvolging wie wanneer op locatie was."

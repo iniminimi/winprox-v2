@@ -51,7 +51,7 @@
         "eyebrow": "Time",
         "logo_alt": "Module Time — part of WinProx Facility",
         "title": "Time tracking via Clock Point",
-        "lead": "Time is WinProx’s optional punch clock: clock in/out via the same Clock Point QR as field work.",
+        "lead": "Time is WinProx’s punch clock: included in the trial, optional afterwards. Clock in/out via the same Clock Point QR as field work.",
         "problem": {
             "title": "What problem does it solve?",
             "body": "Presence and shifts often live in a separate tool, disconnected from issues and tasks — making it hard to see who was on site when."

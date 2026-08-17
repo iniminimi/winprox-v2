@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
@@ -19,6 +20,7 @@ class Dashboard extends Component
 {
     public function render(
         RealignSubscriptionPeriodAction $realign,
+        ApplyPlanEntitlementsAction $applyEntitlements,
         BuildDashboardStatsAction $buildStats,
         ListDashboardRecentIssuesAction $listRecentIssues,
         AdminHealthService $healthService,
@@ -27,6 +29,9 @@ class Dashboard extends Component
         $tenant = auth()->user()?->tenant;
         if ($tenant !== null) {
             $tenant = $realign->handle($tenant);
+            if ($tenant->isTrialActive() && ! $tenant->hasTimeModule()) {
+                $tenant = $applyEntitlements->handle($tenant);
+            }
         }
 
         $tenantId = (int) (Tenancy::id() ?? $tenant?->id ?? 0);

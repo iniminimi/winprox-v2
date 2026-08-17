@@ -99,7 +99,7 @@
             {
                 "title": "Time",
                 "badge": "optional",
-                "body": "Time ist eine optionale Stechuhr: Ein-/Ausstempeln, Pause, Anwesenheit und Stundenliste. Clock Point bleibt der Anmelde-QR (Name + Symbol, Aufgabenliste) auch ohne Time. Time ist nicht in WinProx enthalten; Monatszuschlag auf der Jahresrechnung."
+                "body": "Time ist eine optionale Stechuhr: Ein-/Ausstempeln, Pause, Anwesenheit und Stundenliste. Clock Point bleibt der Anmelde-QR (Name + Symbol, Aufgabenliste) auch ohne Time. In der Testphase ist Time enthalten. Bei WinProx ist es optional: Monatszuschlag auf der Jahresrechnung."
             },
             {
                 "title": "Reservations",

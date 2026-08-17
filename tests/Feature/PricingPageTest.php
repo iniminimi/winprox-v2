@@ -16,6 +16,10 @@ it('toont publieke prijzenpagina met WinProx-jaarformules en Corporate voor gast
         ->assertSee(__('subscription.glossary.unit'))
         ->assertSee(__('subscription.glossary.document'))
         ->assertSee(__('subscription.glossary.photo'))
+        ->assertSee(__('subscription.comparison_col_documents'))
+        ->assertSee(__('subscription.comparison_notes.trial'))
+        ->assertSee(__('subscription.comparison_notes.unlimited'))
+        ->assertSee(__('subscription.comparison_notes.corporate'))
         ->assertDontSee(__('subscription.plans.facility_25.name'));
 });
 
