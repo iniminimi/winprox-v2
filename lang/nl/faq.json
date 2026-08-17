@@ -12,8 +12,8 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "Hoe werkt WinProx?",
-            "intro": "WinProx volgt één kernflow: melding → taken → afhandeling. Time (klokken) hoort er standaard bij; ESG (metingen) is optioneel.",
-            "summary": "Locaties en units, melding via QR of beheer, goedkeuring op het publieke portaal, taken per team, opvolging via dashboard, briefing en kalender. Time standaard; ESG optioneel.",
+            "intro": "WinProx volgt één kernflow: melding → taken → afhandeling. Time (prikklok) is optioneel; ESG (metingen) ook.",
+            "summary": "Locaties en units, melding via QR of beheer, goedkeuring op het publieke portaal, taken per team, opvolging via dashboard, briefing en kalender. Time (prikklok) optioneel; ESG optioneel.",
             "steps": [
                 {
                     "title": "Locaties en units",
@@ -48,63 +48,35 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Hoeveel kost WinProx?",
-            "intro": "U start met een gratis proefmaand (tot 100 units). Daarna kiest u een Facility-tier onder Abonnement: 10, 25, 50, 100, 250, 500 of 1.000 units. Corporate is op maat (>1.000 units of wanneer API/webhooks nodig zijn).",
-            "summary": "Proefperiode tot 100 units, daarna 7 Facility-tiers. Time overal inbegrepen; IoT en ESG vanaf 250 units; API en webhooks op Corporate.",
+            "intro": "U start met een gratis proefmaand (tot 50 units). Daarna kiest u WinProx onder Abonnement: 10, 50 of 100 units per jaar. Time (prikklok) is optioneel. Corporate is op maat (meer dan 100 units of wanneer API/webhooks nodig zijn).",
+            "summary": "Proefperiode tot 50 units, daarna WinProx 10/50/100 per jaar. Time (prikklok) optioneel; IoT, ESG en API op Corporate.",
             "content_note": "Documenten = units (1 per unit). Locaties, gebruikers en foto's bij meldingen/taken zijn onbeperkt. Exacte prijzen staan onder Abonnement.",
             "plans": {
-                "facility_10": {
-                    "units": "Tot 10 units · 10 documenten",
-                    "announcements": "€99 / maand",
-                    "documents": "Time inbegrepen · geen IoT, ESG of API",
-                    "description": "Ideaal om klein te starten.",
+                "winprox_10": {
+                    "units": "Tot 10 units en 10 documenten.",
+                    "announcements": "€149 / jaar",
+                    "documents": "Melden en opvolgen via QR. · Time (prikklok) optioneel. · Geen IoT, ESG of API.",
+                    "description": "Melden en opvolgen via QR.",
                     "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
                 },
-                "facility_25": {
-                    "units": "Tot 25 units · 25 documenten",
-                    "announcements": "€129 / maand",
-                    "documents": "Time inbegrepen · geen IoT, ESG of API",
-                    "description": "Voor groeiende organisaties.",
+                "winprox_50": {
+                    "units": "Tot 50 units en 50 documenten.",
+                    "announcements": "€399 / jaar",
+                    "documents": "Melden en opvolgen via QR. · Time (prikklok) optioneel. · Geen IoT, ESG of API.",
+                    "description": "Melden en opvolgen via QR.",
                     "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
                 },
-                "facility_50": {
-                    "units": "Tot 50 units · 50 documenten",
-                    "announcements": "€179 / maand",
-                    "documents": "Time inbegrepen · geen IoT, ESG of API",
-                    "description": "Meer units, dezelfde eenvoud.",
-                    "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
-                },
-                "facility_100": {
-                    "units": "Tot 100 units · 100 documenten",
-                    "announcements": "€249 / maand",
-                    "documents": "Time inbegrepen · geen IoT, ESG of API",
-                    "description": "Zelfde limiet als proefperiode, betaald.",
-                    "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
-                },
-                "facility_250": {
-                    "units": "Tot 250 units · 250 documenten",
-                    "announcements": "€399 / maand",
-                    "documents": "Time, IoT Connect en ESG inbegrepen · geen API",
-                    "description": "IoT en ESG vanaf deze tier.",
-                    "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
-                },
-                "facility_500": {
-                    "units": "Tot 500 units · 500 documenten",
-                    "announcements": "€599 / maand",
-                    "documents": "Time, IoT Connect en ESG inbegrepen · geen API",
-                    "description": "Voor grotere portefeuilles.",
-                    "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
-                },
-                "facility_1000": {
-                    "units": "Tot 1.000 units · 1.000 documenten",
-                    "announcements": "€999 / maand",
-                    "documents": "Time, IoT Connect en ESG inbegrepen · geen API",
-                    "description": "Hoogste standaardtier.",
+                "winprox_100": {
+                    "units": "Tot 100 units en 100 documenten.",
+                    "announcements": "€699 / jaar",
+                    "documents": "Melden en opvolgen via QR. · Time (prikklok) optioneel. · Geen IoT, ESG of API.",
+                    "description": "Melden en opvolgen via QR.",
                     "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
                 },
                 "corporate": {
-                    "units": "Afgesproken units (= documenten)",
+                    "units": "Meer dan 100 units, of API/webhooks/integraties nodig.",
                     "announcements": "Prijs op maat",
-                    "documents": "API, webhooks, integraties en SLA op maat",
+                    "documents": "Time (prikklok), IoT Connect en ESG inbegrepen.",
                     "description": "Voor >1.000 units of wanneer API/webhooks/integraties nodig zijn.",
                     "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
                 }

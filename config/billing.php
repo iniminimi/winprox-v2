@@ -1,19 +1,90 @@
 <?php
 
 /**
- * Billing-configuratie — WinProx Facility (7 standaard tiers + Corporate)
+ * Billing — WinProx (jaar, units) + optionele Time-prikklok + Corporate.
  *
- * Tier-logica (definitief):
+ * Publieke catalogus: winprox_10 / winprox_50 / winprox_100 + corporate.
+ * Time (prikklok) is een self-activate plan-variant (*_time): dezelfde units,
+ * time_module aan, zelfde jaarperiode. Maandprijs × 12 op dezelfde factuur.
+ *
+ * Legacy facility_* blijft in config voor bestaande abonnees (geen catalogus,
+ * geen self-activate). Limits/entitlements blijven werken.
+ *
  *  - Units bepalen de schaal; documenten = units (1 per unit).
  *  - Locaties en gebruikers: altijd onbeperkt.
- *  - Foto's (bij meldingen/taken): altijd onbeperkt — worden client-side verkleind.
- *  - IoT + ESG: ingeschakeld vanaf 250 units (en hoger).
- *  - API & webhooks: uitsluitend Corporate.
- *  - Time: inbegrepen in alle tiers en trial (geen apart product).
- *  - Trial: max. 100 units (= zelfde als 100-tier, gratis/tijdelijk, geen IoT/ESG/API).
- *  - Corporate: afgesproken units via `tenants.billing_units_cap` (superuser); geen vaste Stripe-prijs.
- *    documents_org_limit = billing_units_cap (1:1). Zonder cap: geen unit/doc-limiet afgedwongen.
+ *  - Foto's: altijd onbeperkt.
+ *  - Time: optionele prikklok (niet inbegrepen in WinProx).
+ *  - IoT + ESG + API: uitsluitend Corporate.
+ *  - Trial: tot 50 units, geen Time/IoT/ESG/API.
+ *  - Corporate: afgesproken units via `tenants.billing_units_cap` (superuser).
  */
+
+$winproxShared = static function (int $units): array {
+    return [
+        'units_limit'            => $units,
+        'locations_limit'        => null,
+        'users_limit'            => null,
+        'documents_org_limit'    => $units,
+        'photos_org_limit'       => null,
+        'documents_per_unit'     => null,
+        'announcements_per_unit' => null,
+        'includes_facility'      => true,
+        'esg_module'             => false,
+        'iot_module'             => false,
+        'api_access'             => false,
+        'csv_workers_import'     => true,
+        'csv_units_import'       => true,
+        'subscription_period_days' => 365,
+        'self_activate'          => true,
+    ];
+};
+
+$winproxPair = static function (int $units, int $timeMonthlyEur) use ($winproxShared): array {
+    $baseKey = 'winprox_'.$units;
+    $timeKey = 'winprox_'.$units.'_time';
+    $shared = $winproxShared($units);
+
+    return [
+        $baseKey => array_merge($shared, [
+            'label_key'         => 'subscription.plans.'.$baseKey.'.name',
+            'time_module'       => false,
+            'public_catalog'    => true,
+            'time_variant'      => $timeKey,
+            'time_monthly_eur'  => $timeMonthlyEur,
+        ]),
+        $timeKey => array_merge($shared, [
+            'label_key'         => 'subscription.plans.'.$timeKey.'.name',
+            'time_module'       => true,
+            'public_catalog'    => false,
+            'time_variant'      => null,
+            'time_monthly_eur'  => $timeMonthlyEur,
+        ]),
+    ];
+};
+
+$legacyFacility = static function (int $units, bool $iotEsg): array {
+    return [
+        'label_key'              => 'subscription.plans.facility_'.$units.'.name',
+        'units_limit'            => $units,
+        'locations_limit'        => null,
+        'users_limit'            => null,
+        'documents_org_limit'    => $units,
+        'photos_org_limit'       => null,
+        'documents_per_unit'     => null,
+        'announcements_per_unit' => null,
+        'includes_facility'      => true,
+        'time_module'            => true,
+        'esg_module'             => $iotEsg,
+        'iot_module'             => $iotEsg,
+        'api_access'             => false,
+        'csv_workers_import'     => true,
+        'csv_units_import'       => true,
+        'subscription_period_days' => 30,
+        'self_activate'          => false,
+        'public_catalog'         => false,
+    ];
+};
+
 return [
     'trial_days' => (int) env('BILLING_TRIAL_DAYS', 30),
     'trial_plan_facility' => 'trial',
@@ -23,28 +94,34 @@ return [
     'contact_email' => env('BILLING_CONTACT_EMAIL', 'info@winprox.app'),
 
     'api_rate_limits' => [
-        'trial'          => ['max_attempts' => 30,    'decay_seconds' => 60],
-        'facility_10'    => ['max_attempts' => 60,    'decay_seconds' => 60],
-        'facility_25'    => ['max_attempts' => 60,    'decay_seconds' => 60],
-        'facility_50'    => ['max_attempts' => 60,    'decay_seconds' => 60],
-        'facility_100'   => ['max_attempts' => 60,    'decay_seconds' => 60],
-        'facility_250'   => ['max_attempts' => 200,   'decay_seconds' => 60],
-        'facility_500'   => ['max_attempts' => 200,   'decay_seconds' => 60],
-        'facility_1000'  => ['max_attempts' => 200,   'decay_seconds' => 60],
-        'corporate'      => ['max_attempts' => 10000, 'decay_seconds' => 60],
+        'trial'            => ['max_attempts' => 30,    'decay_seconds' => 60],
+        'winprox_10'       => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'winprox_10_time'  => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'winprox_50'       => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'winprox_50_time'  => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'winprox_100'      => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'winprox_100_time' => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'facility_10'      => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'facility_25'      => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'facility_50'      => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'facility_100'     => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'facility_250'     => ['max_attempts' => 200,   'decay_seconds' => 60],
+        'facility_500'     => ['max_attempts' => 200,   'decay_seconds' => 60],
+        'facility_1000'    => ['max_attempts' => 200,   'decay_seconds' => 60],
+        'corporate'        => ['max_attempts' => 10000, 'decay_seconds' => 60],
     ],
 
-    // Trial: tot 100 units, geen IoT/ESG/API, Time inbegrepen.
+    // Trial: tot 50 units (= WinProx 50), geen Time/IoT/ESG/API.
     'trial' => [
-        'units_limit'            => 100,
+        'units_limit'            => 50,
         'locations_limit'        => null,
         'users_limit'            => null,
-        'documents_org_limit'    => 100,  // = units_limit
-        'photos_org_limit'       => null, // onbeperkt
+        'documents_org_limit'    => 50,
+        'photos_org_limit'       => null,
         'documents_per_unit'     => null,
         'announcements_per_unit' => null,
         'includes_facility'      => true,
-        'time_module'            => true,
+        'time_module'            => false,
         'esg_module'             => false,
         'iot_module'             => false,
         'api_access'             => false,
@@ -52,171 +129,40 @@ return [
         'csv_units_import'       => true,
     ],
 
-    'plans' => [
+    'plans' => array_merge(
+        $winproxPair(10, 29),
+        $winproxPair(50, 39),
+        $winproxPair(100, 49),
+        [
+            // Legacy maandtiers — grandfather, niet in de catalogus.
+            'facility_10' => $legacyFacility(10, false),
+            'facility_25' => $legacyFacility(25, false),
+            'facility_50' => $legacyFacility(50, false),
+            'facility_100' => $legacyFacility(100, false),
+            'facility_250' => $legacyFacility(250, true),
+            'facility_500' => $legacyFacility(500, true),
+            'facility_1000' => $legacyFacility(1000, true),
 
-        // --- Standaard tiers (vaste Stripe-prijs, self-activate) ---
-
-        'facility_10' => [
-            'label_key'              => 'subscription.plans.facility_10.name',
-            'units_limit'            => 10,
-            'locations_limit'        => null,
-            'users_limit'            => null,
-            'documents_org_limit'    => 10,   // = units_limit
-            'photos_org_limit'       => null, // onbeperkt
-            'documents_per_unit'     => null,
-            'announcements_per_unit' => null,
-            'includes_facility'      => true,
-            'time_module'            => true,
-            'esg_module'             => false,
-            'iot_module'             => false,
-            'api_access'             => false,
-            'csv_workers_import'     => true,
-            'csv_units_import'       => true,
-            'subscription_period_days' => 30,
-            'self_activate'          => true,
+            'corporate' => [
+                'label_key'              => 'subscription.plans.corporate.name',
+                'units_limit'            => null,
+                'locations_limit'        => null,
+                'users_limit'            => null,
+                'documents_org_limit'    => null,
+                'photos_org_limit'       => null,
+                'documents_per_unit'     => null,
+                'announcements_per_unit' => null,
+                'includes_facility'      => true,
+                'time_module'            => true,
+                'esg_module'             => true,
+                'iot_module'             => true,
+                'api_access'             => true,
+                'csv_workers_import'     => true,
+                'csv_units_import'       => true,
+                'subscription_period_days' => 30,
+                'self_activate'          => false,
+                'public_catalog'         => true,
+            ],
         ],
-
-        'facility_25' => [
-            'label_key'              => 'subscription.plans.facility_25.name',
-            'units_limit'            => 25,
-            'locations_limit'        => null,
-            'users_limit'            => null,
-            'documents_org_limit'    => 25,
-            'photos_org_limit'       => null,
-            'documents_per_unit'     => null,
-            'announcements_per_unit' => null,
-            'includes_facility'      => true,
-            'time_module'            => true,
-            'esg_module'             => false,
-            'iot_module'             => false,
-            'api_access'             => false,
-            'csv_workers_import'     => true,
-            'csv_units_import'       => true,
-            'subscription_period_days' => 30,
-            'self_activate'          => true,
-        ],
-
-        'facility_50' => [
-            'label_key'              => 'subscription.plans.facility_50.name',
-            'units_limit'            => 50,
-            'locations_limit'        => null,
-            'users_limit'            => null,
-            'documents_org_limit'    => 50,
-            'photos_org_limit'       => null,
-            'documents_per_unit'     => null,
-            'announcements_per_unit' => null,
-            'includes_facility'      => true,
-            'time_module'            => true,
-            'esg_module'             => false,
-            'iot_module'             => false,
-            'api_access'             => false,
-            'csv_workers_import'     => true,
-            'csv_units_import'       => true,
-            'subscription_period_days' => 30,
-            'self_activate'          => true,
-        ],
-
-        'facility_100' => [
-            'label_key'              => 'subscription.plans.facility_100.name',
-            'units_limit'            => 100,
-            'locations_limit'        => null,
-            'users_limit'            => null,
-            'documents_org_limit'    => 100,
-            'photos_org_limit'       => null,
-            'documents_per_unit'     => null,
-            'announcements_per_unit' => null,
-            'includes_facility'      => true,
-            'time_module'            => true,
-            'esg_module'             => false,
-            'iot_module'             => false,
-            'api_access'             => false,
-            'csv_workers_import'     => true,
-            'csv_units_import'       => true,
-            'subscription_period_days' => 30,
-            'self_activate'          => true,
-        ],
-
-        // IoT + ESG ingeschakeld vanaf 250 units.
-        'facility_250' => [
-            'label_key'              => 'subscription.plans.facility_250.name',
-            'units_limit'            => 250,
-            'locations_limit'        => null,
-            'users_limit'            => null,
-            'documents_org_limit'    => 250,
-            'photos_org_limit'       => null,
-            'documents_per_unit'     => null,
-            'announcements_per_unit' => null,
-            'includes_facility'      => true,
-            'time_module'            => true,
-            'esg_module'             => true,
-            'iot_module'             => true,
-            'api_access'             => false,
-            'csv_workers_import'     => true,
-            'csv_units_import'       => true,
-            'subscription_period_days' => 30,
-            'self_activate'          => true,
-        ],
-
-        'facility_500' => [
-            'label_key'              => 'subscription.plans.facility_500.name',
-            'units_limit'            => 500,
-            'locations_limit'        => null,
-            'users_limit'            => null,
-            'documents_org_limit'    => 500,
-            'photos_org_limit'       => null,
-            'documents_per_unit'     => null,
-            'announcements_per_unit' => null,
-            'includes_facility'      => true,
-            'time_module'            => true,
-            'esg_module'             => true,
-            'iot_module'             => true,
-            'api_access'             => false,
-            'csv_workers_import'     => true,
-            'csv_units_import'       => true,
-            'subscription_period_days' => 30,
-            'self_activate'          => true,
-        ],
-
-        'facility_1000' => [
-            'label_key'              => 'subscription.plans.facility_1000.name',
-            'units_limit'            => 1000,
-            'locations_limit'        => null,
-            'users_limit'            => null,
-            'documents_org_limit'    => 1000,
-            'photos_org_limit'       => null,
-            'documents_per_unit'     => null,
-            'announcements_per_unit' => null,
-            'includes_facility'      => true,
-            'time_module'            => true,
-            'esg_module'             => true,
-            'iot_module'             => true,
-            'api_access'             => false,
-            'csv_workers_import'     => true,
-            'csv_units_import'       => true,
-            'subscription_period_days' => 30,
-            'self_activate'          => true,
-        ],
-
-        // --- Corporate: afgesproken units via tenants.billing_units_cap; geen vaste Stripe-prijs ---
-        // documents_org_limit volgt billing_units_cap (1:1). Alleen API & webhooks op Corporate.
-        'corporate' => [
-            'label_key'              => 'subscription.plans.corporate.name',
-            'units_limit'            => null,
-            'locations_limit'        => null,
-            'users_limit'            => null,
-            'documents_org_limit'    => null,
-            'photos_org_limit'       => null,
-            'documents_per_unit'     => null,
-            'announcements_per_unit' => null,
-            'includes_facility'      => true,
-            'time_module'            => true,
-            'esg_module'             => true,
-            'iot_module'             => true,
-            'api_access'             => true,
-            'csv_workers_import'     => true,
-            'csv_units_import'       => true,
-            'subscription_period_days' => 30,
-            'self_activate'          => false, // corporate = manual/custom pricing
-        ],
-    ],
+    ),
 ];

@@ -2,7 +2,7 @@
     "meta_title": "WinProx — Every location, one QR portal",
     "social": {
         "og_title": "WinProx — Every location, one QR portal",
-        "og_description": "Report issues, manage tasks and track presence via smart QR portals. WinProx Facility with Time included — scalable from 10 to 1,000+ units."
+        "og_description": "Report defects and follow up tasks via smart QR portals. WinProx from €149 per year — Time (punch clock) optional."
     },
     "login": "Log in",
     "register": "Register",
@@ -68,27 +68,27 @@
     "products": {
         "eyebrow": "Products",
         "title": "WinProx Facility",
-        "lead": "One product for day-to-day management of buildings, sites and assets. Time (hours and Clock Points) is included by default. IoT and ESG from 250 units; API and webhooks on Corporate.",
-        "iot_note": "IoT Connect is available from 250 units: sensors send alarms directly to issues and tasks.",
+        "lead": "One product for daily building and asset operations. Time (punch clock) is optional. IoT, ESG and API on Corporate.",
+        "iot_note": "IoT Connect is available on WinProx Corporate: sensors send alarms straight into issues and tasks.",
         "iot_cta": "View IoT Connect",
         "learn_more": "Learn more",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Report → task → completion",
-            "body": "Full facility management with smart QR portals on every unit. Start small and grow — from 10 to 1,000 units.",
+            "body": "Full facility management with smart QR portals on every unit. Start small — 10, 50 or 100 units per year.",
             "logo_alt": "WinProx Facility",
             "bullets": [
                 "Issues & tasks",
                 "Locations & units",
-                "Time included",
+                "Time (punch clock) optional",
                 "Optional unit checks",
-                "IoT & ESG from 250 units"
+                "IoT & ESG on Corporate"
             ]
         },
         "time": {
             "name": "Module Time",
-            "tagline": "Part of WinProx Facility",
-            "body": "Time tracking, breaks and shifts via the Clock Point QR — included in every Facility subscription.",
+            "tagline": "Optional punch clock",
+            "body": "Hours, breaks and shifts via the Clock Point QR — optional punch clock, not included in WinProx.",
             "logo_alt": "Module Time — part of WinProx Facility",
             "bullets": [
                 "Clock in and out",
@@ -351,7 +351,7 @@
                 "behind?"
             ]
         ],
-        "body": "Start small with a free trial month (up to 100 units) and grow as your organisation expands.",
+        "body": "Start small with a free trial month (up to 50 units) and grow when your organisation grows.",
         "cta_start": "Try for free",
         "cta_contact": "Contact us"
     },

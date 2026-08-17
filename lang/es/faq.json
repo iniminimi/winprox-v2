@@ -48,63 +48,35 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "¿Cuánto cuesta WinProx?",
-            "intro": "Empiece con un mes de prueba gratuito (hasta 100 unidades). Luego elija un nivel Facility en Suscripción: 10, 25, 50, 100, 250, 500 o 1.000 unidades. Corporate es a medida (>1.000 unidades o cuando se requieren API/webhooks).",
-            "summary": "Prueba hasta 100 unidades, luego 7 niveles Facility. Time incluido en todos; IoT y ESG desde 250 unidades; API y webhooks en Corporate.",
-            "content_note": "Documentos = unidades (1 por unidad). Ubicaciones, usuarios y fotos en incidencias/tareas ilimitados. Precios exactos en Suscripción.",
+            "intro": "Empieza con un mes de prueba (hasta 50 unidades). Luego elija WinProx en Suscripción: 10, 50 o 100 unidades al año. Time (reloj de fichar) es opcional. Corporate es a medida (más de 100 unidades o API/webhooks).",
+            "summary": "Prueba hasta 50 unidades, luego WinProx 10/50/100 al año. Time (reloj de fichar) opcional; IoT, ESG y API en Corporate.",
+            "content_note": "Documentos = unidades (1 por unidad). Sedes, usuarios y fotos ilimitados. Los precios exactos están en Suscripción.",
             "plans": {
-                "facility_10": {
-                    "units": "Hasta 10 unidades · 10 documentos",
-                    "announcements": "€99 / mes",
-                    "documents": "Time incluido · sin IoT, ESG ni API",
-                    "description": "Ideal para empezar pequeño.",
+                "winprox_10": {
+                    "units": "Hasta 10 unidades y 10 documentos.",
+                    "announcements": "149 € / año",
+                    "documents": "Avisos y seguimiento por QR. · Time (reloj de fichar) opcional. · Sin IoT, ESG ni API.",
+                    "description": "Avisos y seguimiento por QR.",
                     "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
                 },
-                "facility_25": {
-                    "units": "Hasta 25 unidades · 25 documentos",
-                    "announcements": "€129 / mes",
-                    "documents": "Time incluido · sin IoT, ESG ni API",
-                    "description": "Para organizaciones en crecimiento.",
+                "winprox_50": {
+                    "units": "Hasta 50 unidades y 50 documentos.",
+                    "announcements": "399 € / año",
+                    "documents": "Avisos y seguimiento por QR. · Time (reloj de fichar) opcional. · Sin IoT, ESG ni API.",
+                    "description": "Avisos y seguimiento por QR.",
                     "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
                 },
-                "facility_50": {
-                    "units": "Hasta 50 unidades · 50 documentos",
-                    "announcements": "€179 / mes",
-                    "documents": "Time incluido · sin IoT, ESG ni API",
-                    "description": "Más unidades, misma simplicidad.",
-                    "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
-                },
-                "facility_100": {
-                    "units": "Hasta 100 unidades · 100 documentos",
-                    "announcements": "€249 / mes",
-                    "documents": "Time incluido · sin IoT, ESG ni API",
-                    "description": "Mismo límite que la prueba, de pago.",
-                    "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
-                },
-                "facility_250": {
-                    "units": "Hasta 250 unidades · 250 documentos",
-                    "announcements": "€399 / mes",
-                    "documents": "Time, IoT Connect y ESG incluidos · sin API",
-                    "description": "IoT y ESG desde este nivel.",
-                    "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
-                },
-                "facility_500": {
-                    "units": "Hasta 500 unidades · 500 documentos",
-                    "announcements": "€599 / mes",
-                    "documents": "Time, IoT Connect y ESG incluidos · sin API",
-                    "description": "Para carteras más grandes.",
-                    "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
-                },
-                "facility_1000": {
-                    "units": "Hasta 1.000 unidades · 1.000 documentos",
-                    "announcements": "€999 / mes",
-                    "documents": "Time, IoT Connect y ESG incluidos · sin API",
-                    "description": "Nivel estándar más alto.",
+                "winprox_100": {
+                    "units": "Hasta 100 unidades y 100 documentos.",
+                    "announcements": "699 € / año",
+                    "documents": "Avisos y seguimiento por QR. · Time (reloj de fichar) opcional. · Sin IoT, ESG ni API.",
+                    "description": "Avisos y seguimiento por QR.",
                     "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
                 },
                 "corporate": {
-                    "units": "Unidades acordadas (= documentos)",
+                    "units": "Más de 100 unidades, o API/webhooks/integraciones.",
                     "announcements": "Precio personalizado",
-                    "documents": "API, webhooks, integraciones y SLA a medida",
+                    "documents": "Time (reloj de fichar), IoT Connect y ESG incluidos.",
                     "description": "Para >1.000 unidades o cuando se requieren API/webhooks/integraciones.",
                     "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
                 }

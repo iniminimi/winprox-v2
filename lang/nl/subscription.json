@@ -1,11 +1,11 @@
 {
     "title": "Abonnement, limieten & facturatie",
     "public_title": "Prijzen & formules",
-    "public_subtitle": "Kies het aantal units dat bij uw organisatie past. Time inbegrepen in elk abonnement. Één maand gratis proberen.",
+    "public_subtitle": "Kies het aantal units. WinProx is per jaar. Time (prikklok) is optioneel. Één maand gratis proberen.",
     "public_register_cta": "Start gratis proefperiode",
     "subtitle": "Na je gratis maand kies je een formule. Limieten gelden voor units en documenten (1 per unit); locaties, gebruikers en foto's zijn onbeperkt.",
     "plans_heading": "Formules",
-    "plans_intro": "Begin klein en groei mee. Elk abonnement bevat onbeperkt locaties, onbeperkt gebruikers, Time en onbeperkt foto's bij meldingen.",
+    "plans_intro": "Begin klein en groei mee. Elk WinProx-abonnement bevat onbeperkt locaties, gebruikers en foto's. Time (prikklok) is optioneel.",
     "choose_plan": "Kies deze formule",
     "choose_plan_loading": "Bezig met kiezen...",
     "activate_plan": "Kies deze formule",
@@ -19,9 +19,9 @@
     "status_active": "Actief abonnement: :plan, geldig tot :date.",
     "status_grace": "Abonnement :plan beëindigd op :ended. Respijtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng op tijd om onderbreking te vermijden.",
     "status_expired": "Je proefperiode is afgelopen. Kies hieronder een formule om verder te gaan.",
-    "pricing_intro": "WinProx bevat een gratis proefmaand met facility- en time-functies. Daarna kies je de formule die bij je organisatie past.",
+    "pricing_intro": "WinProx bevat een gratis proefmaand (tot 50 units). Daarna kies je 10, 50 of 100 units per jaar. Time (prikklok) kun je erbij nemen.",
     "status_module_esg": "ESG-module actief op je account.",
-    "status_module_time": "Time-module actief op je account.",
+    "status_module_time": "Time (prikklok) actief op je account.",
     "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
     "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" blijft uitgeschakeld tot je upgradet.",
     "page_limits_locations_body": "Je gebruikt :current van :max locaties. \"Locatie toevoegen\" blijft uitgeschakeld tot je upgradet.",
@@ -58,6 +58,66 @@
     "plans": {
         "trial": {
             "name": "Proefperiode"
+        },
+        "winprox_10": {
+            "name": "10 units",
+            "price": "€149 / jaar",
+            "scale": "Tot 10 units en 10 documenten.",
+            "features": [
+                "Melden en opvolgen via QR.",
+                "Time (prikklok) optioneel.",
+                "Geen IoT, ESG of API."
+            ]
+        },
+        "winprox_10_time": {
+            "name": "10 units + Time (prikklok)",
+            "price": "€497 / jaar",
+            "scale": "Tot 10 units en 10 documenten.",
+            "features": [
+                "Melden en opvolgen via QR.",
+                "Time (prikklok) inbegrepen.",
+                "Geen IoT, ESG of API."
+            ]
+        },
+        "winprox_50": {
+            "name": "50 units",
+            "price": "€399 / jaar",
+            "scale": "Tot 50 units en 50 documenten.",
+            "features": [
+                "Melden en opvolgen via QR.",
+                "Time (prikklok) optioneel.",
+                "Geen IoT, ESG of API."
+            ]
+        },
+        "winprox_50_time": {
+            "name": "50 units + Time (prikklok)",
+            "price": "€867 / jaar",
+            "scale": "Tot 50 units en 50 documenten.",
+            "features": [
+                "Melden en opvolgen via QR.",
+                "Time (prikklok) inbegrepen.",
+                "Geen IoT, ESG of API."
+            ]
+        },
+        "winprox_100": {
+            "name": "100 units",
+            "price": "€699 / jaar",
+            "scale": "Tot 100 units en 100 documenten.",
+            "features": [
+                "Melden en opvolgen via QR.",
+                "Time (prikklok) optioneel.",
+                "Geen IoT, ESG of API."
+            ]
+        },
+        "winprox_100_time": {
+            "name": "100 units + Time (prikklok)",
+            "price": "€1.287 / jaar",
+            "scale": "Tot 100 units en 100 documenten.",
+            "features": [
+                "Melden en opvolgen via QR.",
+                "Time (prikklok) inbegrepen.",
+                "Geen IoT, ESG of API."
+            ]
         },
         "facility_10": {
             "name": "10 units",
@@ -128,9 +188,9 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Prijs op maat",
-            "scale": "Meer dan 1.000 units of API/webhooks/integraties nodig.",
+            "scale": "Meer dan 100 units, of API/webhooks/integraties nodig.",
             "features": [
-                "Time, IoT Connect, ESG inbegrepen.",
+                "Time (prikklok), IoT Connect en ESG inbegrepen.",
                 "Volledige REST API en webhooks.",
                 "Integraties, SLA en ondersteuning op maat."
             ]
@@ -216,8 +276,16 @@
     "comparison_no": "Nee",
     "comparison_custom": "Op maat",
     "comparison_trial_price": "Gratis",
-    "comparison_note": "Proefperiode: 100 units, Time inbegrepen. Locaties, gebruikers en foto's altijd onbeperkt.",
+    "comparison_note": "Proefperiode: 50 units, zonder Time. Locaties, gebruikers en foto's altijd onbeperkt. IoT, ESG en API alleen op Corporate.",
     "contact_sales_cta": "Neem contact op",
     "public_contact_cta": "Vraag offerte aan",
-    "contact_sales_subject": "WinProx Corporate — offerte"
+    "contact_sales_subject": "WinProx Corporate — offerte",
+    "comparison_col_time": "Time (prikklok)",
+    "comparison_time_optional": "Optioneel",
+    "time_addon": {
+        "label": "Time (prikklok)",
+        "monthly": ":price / maand",
+        "hint": "In-, uitklokken en pauze. Wordt meegenomen op de jaarfactuur (12 × de maandprijs).",
+        "public_hint": "Time (prikklok) optioneel vanaf :price / maand, op de jaarfactuur."
+    }
 }

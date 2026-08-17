@@ -2,7 +2,7 @@
     "meta_title": "WinProx — Jeder Standort, ein QR-Portal",
     "social": {
         "og_title": "WinProx — Jeder Standort, ein QR-Portal",
-        "og_description": "Meldungen erfassen, Aufgaben verwalten und Anwesenheit per QR-Portale tracken. WinProx Facility mit Time inklusive — skalierbar von 10 bis 1.000+ Einheiten."
+        "og_description": "Melden Sie Defekte und verfolgen Sie Aufgaben über QR-Portale. WinProx ab 149 € pro Jahr — Time (Stechuhr) optional."
     },
     "login": "Anmelden",
     "register": "Registrieren",
@@ -66,27 +66,27 @@
     "products": {
         "eyebrow": "Produkte",
         "title": "WinProx Facility",
-        "lead": "Ein Produkt für das tägliche Management von Gebäuden, Standorten und Anlagen. Time (Stunden und Clock Points) ist standardmäßig enthalten. IoT und ESG ab 250 Einheiten; API und Webhooks bei Corporate.",
-        "iot_note": "IoT Connect ist ab 250 Einheiten verfügbar: Sensoren senden Alarme direkt an Meldungen und Aufgaben.",
+        "lead": "Ein Produkt für den täglichen Betrieb von Gebäuden und Anlagen. Time (Stechuhr) ist optional. IoT, ESG und API bei Corporate.",
+        "iot_note": "IoT Connect ist auf WinProx Corporate verfügbar: Sensoren senden Alarme direkt in Meldungen und Aufgaben.",
         "iot_cta": "IoT Connect ansehen",
         "learn_more": "Mehr erfahren",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Meldung → Aufgabe → Abschluss",
-            "body": "Vollständiges Facility-Management mit intelligenten QR-Portalen pro Einheit. Klein anfangen und mitwachsen — von 10 bis 1.000 Einheiten.",
+            "body": "Vollständiges Facility-Management mit QR-Portalen an jeder Unit. Klein starten — 10, 50 oder 100 Units pro Jahr.",
             "logo_alt": "WinProx Facility",
             "bullets": [
                 "Meldungen & Aufgaben",
                 "Standorte & Einheiten",
-                "Time inklusive",
+                "Time (Stechuhr) optional",
                 "Unit-Checks optional",
-                "IoT & ESG ab 250 Einheiten"
+                "IoT & ESG bei Corporate"
             ]
         },
         "time": {
             "name": "Modul Time",
-            "tagline": "Teil von WinProx Facility",
-            "body": "Zeiterfassung, Pausen und Schichten per Clock-Point-QR — in jedem Facility-Abo enthalten.",
+            "tagline": "Optionale Stechuhr",
+            "body": "Stunden, Pausen und Schichten über die Clock-Point-QR — optionale Stechuhr, nicht in WinProx enthalten.",
             "logo_alt": "Modul Time — Teil von WinProx Facility",
             "bullets": [
                 "Ein- und Ausstempeln",
@@ -350,7 +350,7 @@
                 "lassen?"
             ]
         ],
-        "body": "Starten Sie klein mit einem kostenlosen Testmonat (bis 100 Einheiten) und wachsen Sie mit Ihrer Organisation.",
+        "body": "Klein starten mit einem kostenlosen Testmonat (bis 50 Units) und mitwachsen, wenn Ihre Organisation wächst.",
         "cta_start": "Kostenlos testen",
         "cta_contact": "Kontakt aufnehmen"
     },

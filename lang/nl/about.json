@@ -2,11 +2,11 @@
     "meta_title": "Over WinProx | Facility via QR",
     "social": {
         "og_title": "Over WinProx | Facility via QR",
-        "og_description": "WinProx is een QR-gebaseerd facility platform: meldingen, taken, Time, optionele ESG en IoT Connect — in de browser, zonder app."
+        "og_description": "WinProx is een QR-gebaseerd facility platform: meldingen, taken, optionele Time-prikklok, ESG en IoT Connect — in de browser, zonder app."
     },
     "eyebrow": "Over WinProx",
     "title": "Wat is WinProx?",
-    "lead": "WinProx is een QR-gebaseerd facility-managementplatform voor meldingen, taken, aanwezigheid (Time), optionele ESG-metingen en IoT Connect — bruikbaar in de browser, zonder native app.",
+    "lead": "WinProx is een QR-gebaseerd facility-managementplatform voor meldingen en taken. Time (prikklok), ESG en IoT Connect zijn optioneel — in de browser, zonder native app.",
     "what": {
         "title": "Kernidee",
         "body": "Elke fysieke locatie of unit krijgt een digitaal QR-portaal. Burgers en medewerkers melden defecten via de unit-QR. Uitvoerders melden zich aan via de Clock Point-QR en handelen taken af ter plaatse. Beheerders volgen alles op in één workspace: melding → taken → afhandeling."

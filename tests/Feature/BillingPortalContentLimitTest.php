@@ -21,9 +21,9 @@ class BillingPortalContentLimitTest extends TestCase
 
     public function test_trial_tenant_cannot_exceed_document_org_limit(): void
     {
-        // Trial = 100 units → 100 documenten limiet
+        // Trial = 50 units → 50 documenten limiet
         $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
-        Document::factory()->count(100)->for($tenant)->create();
+        Document::factory()->count(50)->for($tenant)->create();
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('document_org_limit_exceeded');
@@ -49,9 +49,9 @@ class BillingPortalContentLimitTest extends TestCase
 
     public function test_inactive_documents_still_count_toward_org_limit(): void
     {
-        // Trial = 100 documenten limiet; 100 inactieve docs = limiet bereikt
+        // Trial = 50 documenten limiet; 50 inactieve docs = limiet bereikt
         $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
-        Document::factory()->count(100)->for($tenant)->create(['is_active' => false]);
+        Document::factory()->count(50)->for($tenant)->create(['is_active' => false]);
 
         $this->assertTrue($tenant->fresh()->isAtDocumentsOrgLimit());
     }

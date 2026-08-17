@@ -1,11 +1,11 @@
 {
     "title": "Subscription, limits & billing",
     "public_title": "Pricing & plans",
-    "public_subtitle": "Choose the number of units that fits your organisation. Time included in every plan. One month free trial.",
+    "public_subtitle": "Choose your unit count. WinProx is billed yearly. Time (punch clock) is optional. One month free to try.",
     "public_register_cta": "Start free trial",
     "subtitle": "After your free month, choose a plan. Limits apply to units and documents (1 per unit); locations, users and photos are unlimited.",
     "plans_heading": "Plans",
-    "plans_intro": "Start small and grow as you go. Every plan includes unlimited locations, unlimited users, Time and unlimited photos on reports.",
+    "plans_intro": "Start small and grow. Every WinProx plan includes unlimited locations, users and photos. Time (punch clock) is optional.",
     "choose_plan": "Choose this plan",
     "choose_plan_loading": "Choosing...",
     "activate_plan": "Choose this plan",
@@ -19,9 +19,9 @@
     "status_active": "Active subscription: :plan, valid until :date.",
     "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
     "status_expired": "Your trial has ended. Choose a plan below to continue.",
-    "pricing_intro": "WinProx includes a one-month free trial with facility and time features. After that, choose the plan that matches your organisation.",
+    "pricing_intro": "WinProx includes a free trial month (up to 50 units). Then choose 10, 50 or 100 units per year. You can add Time (punch clock).",
     "status_module_esg": "ESG module active on your account.",
-    "status_module_time": "Time module active on your account.",
+    "status_module_time": "Time (punch clock) is active on your account.",
     "page_limits_title": "Why certain actions are unavailable",
     "page_limits_units_body": "You are using :current of :max units. \"Add unit\" stays disabled until you upgrade.",
     "page_limits_locations_body": "You are using :current of :max locations. \"Add location\" stays disabled until you upgrade.",
@@ -58,6 +58,66 @@
     "plans": {
         "trial": {
             "name": "Trial"
+        },
+        "winprox_10": {
+            "name": "10 units",
+            "price": "€149 / year",
+            "scale": "Up to 10 units and 10 documents.",
+            "features": [
+                "Report and follow up via QR.",
+                "Time (punch clock) optional.",
+                "No IoT, ESG or API."
+            ]
+        },
+        "winprox_10_time": {
+            "name": "10 units + Time (punch clock)",
+            "price": "€497 / year",
+            "scale": "Up to 10 units and 10 documents.",
+            "features": [
+                "Report and follow up via QR.",
+                "Time (punch clock) included.",
+                "No IoT, ESG or API."
+            ]
+        },
+        "winprox_50": {
+            "name": "50 units",
+            "price": "€399 / year",
+            "scale": "Up to 50 units and 50 documents.",
+            "features": [
+                "Report and follow up via QR.",
+                "Time (punch clock) optional.",
+                "No IoT, ESG or API."
+            ]
+        },
+        "winprox_50_time": {
+            "name": "50 units + Time (punch clock)",
+            "price": "€867 / year",
+            "scale": "Up to 50 units and 50 documents.",
+            "features": [
+                "Report and follow up via QR.",
+                "Time (punch clock) included.",
+                "No IoT, ESG or API."
+            ]
+        },
+        "winprox_100": {
+            "name": "100 units",
+            "price": "€699 / year",
+            "scale": "Up to 100 units and 100 documents.",
+            "features": [
+                "Report and follow up via QR.",
+                "Time (punch clock) optional.",
+                "No IoT, ESG or API."
+            ]
+        },
+        "winprox_100_time": {
+            "name": "100 units + Time (punch clock)",
+            "price": "€1,287 / year",
+            "scale": "Up to 100 units and 100 documents.",
+            "features": [
+                "Report and follow up via QR.",
+                "Time (punch clock) included.",
+                "No IoT, ESG or API."
+            ]
         },
         "facility_10": {
             "name": "10 units",
@@ -128,11 +188,11 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Custom pricing",
-            "scale": "More than 1,000 units or API/webhooks/integrations required.",
+            "scale": "More than 100 units, or API/webhooks/integrations required.",
             "features": [
-                "Time, IoT Connect, ESG included.",
+                "Time (punch clock), IoT Connect and ESG included.",
                 "Full REST API and webhooks.",
-                "Custom integrations, SLA and support."
+                "Integrations, SLA and tailored support."
             ]
         }
     },
@@ -216,8 +276,16 @@
     "comparison_no": "No",
     "comparison_custom": "Custom",
     "comparison_trial_price": "Free",
-    "comparison_note": "Trial: 100 units, Time included. Locations, users and photos are always unlimited.",
+    "comparison_note": "Trial: 50 units, without Time. Locations, users and photos always unlimited. IoT, ESG and API on Corporate only.",
     "contact_sales_cta": "Contact us",
     "public_contact_cta": "Request a quote",
-    "contact_sales_subject": "WinProx Corporate — quote"
+    "contact_sales_subject": "WinProx Corporate — quote",
+    "comparison_col_time": "Time (punch clock)",
+    "comparison_time_optional": "Optional",
+    "time_addon": {
+        "label": "Time (punch clock)",
+        "monthly": ":price / month",
+        "hint": "Clock in, out and breaks. Added to the yearly invoice (12 × the monthly price).",
+        "public_hint": "Time (punch clock) optional from :price / month, billed yearly."
+    }
 }

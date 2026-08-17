@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova hai fino a 100 unità (e 100 documenti). Time è incluso. La dashboard mostra i giorni rimanenti."
+                    "text": "Durante la prova hai fino a 50 unit (e 50 documenti). Time (timbratrice) non è incluso. La dashboard mostra i giorni restanti."
                 },
                 {
                     "label": "Aggiungi segnalazione",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova hai fino a 100 unità (e 100 documenti). Time è incluso; IoT ed ESG no. La dashboard mostra i giorni rimanenti."
+                    "text": "Durante la prova hai fino a 50 unit (e 50 documenti). Time (timbratrice) non è incluso; nemmeno IoT ed ESG. La dashboard mostra i giorni restanti."
                 },
                 {
                     "label": "Scelga piano",
@@ -1230,7 +1230,7 @@
                 },
                 {
                     "label": "250+ units vs Corporate",
-                    "text": "<strong>Da 250 unità:</strong> gli allarmi diventano segnalazioni approvate con attività; le letture sensore possono alimentare l'ESG. <strong>Corporate:</strong> lo stesso più API, webhook e integrazioni su misura."
+                    "text": "<strong>WinProx Corporate:</strong> gli allarmi diventano segnalazioni approvate con compiti; le letture dei sensori possono alimentare ESG. Più API, webhook e integrazioni su misura."
                 },
                 {
                     "label": "Modifica",

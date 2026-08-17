@@ -128,11 +128,11 @@ it('stuurt gebruikers zonder toegang door naar abonnement', function () {
         ->assertRedirect(route('subscription.index'));
 });
 
-it('toont Facility-tiers en Corporate op abonnement', function () {
+it('toont WinProx-jaarformules en Corporate op abonnement', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now()->addDays(5),
         'has_esg_module' => false,
-        'has_time_module' => true,
+        'has_time_module' => false,
         'is_active' => true,
     ]);
     $admin = User::factory()->create([
@@ -142,10 +142,11 @@ it('toont Facility-tiers en Corporate op abonnement', function () {
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->assertSee(__('subscription.plans.facility_10.name'))
-        ->assertSee(__('subscription.plans.facility_100.name'))
+        ->assertSee(__('subscription.plans.winprox_10.name'))
+        ->assertSee(__('subscription.plans.winprox_100.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
-        ->assertSee(__('subscription.status_module_time'));
+        ->assertSee(__('subscription.time_addon.label'))
+        ->assertDontSee(__('subscription.plans.facility_25.name'));
 });
 
 it('toont planlabel correct bij billing_plan met hoofdletter', function () {
@@ -201,16 +202,16 @@ it('laat een beheerder een plan activeren', function () {
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->call('activatePlan', 'facility_100')
+        ->call('activatePlan', 'winprox_100')
         ->assertHasNoErrors();
 
     $tenant->refresh();
 
-    expect($tenant->billing_plan)->toBe('facility_100')
+    expect($tenant->billing_plan)->toBe('winprox_100')
         ->and($tenant->billing_active_until)->not->toBeNull()
         ->and($tenant->isPaidSubscriptionActive())->toBeTrue()
         ->and($tenant->isTrialActive())->toBeFalse()
-        ->and($tenant->hasTimeModule())->toBeTrue()
+        ->and($tenant->hasTimeModule())->toBeFalse()
         ->and($tenant->hasEsgModule())->toBeFalse();
 });
 

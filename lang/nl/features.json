@@ -51,7 +51,7 @@
         "eyebrow": "Time",
         "logo_alt": "Module Time — onderdeel van WinProx Facility",
         "title": "Tijdregistratie via Clock Point",
-        "lead": "WinProx Time laat uitvoerders inklokken via dezelfde QR-werkwijze als facility: snel op de werkvloer, zichtbaar voor beheer.",
+        "lead": "Time is de optionele prikklok van WinProx: in-/uitklokken via dezelfde Clock Point-QR als het veldwerk.",
         "problem": {
             "title": "Welk probleem lost het op?",
             "body": "Aanwezigheid en shifts zitten vaak in een aparte tool, los van meldingen en taken. Dat bemoeilijkt opvolging wie wanneer op locatie was."

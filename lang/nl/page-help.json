@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 100 units (en 100 documenten). Time is inbegrepen. Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 50 units (en 50 documenten). Time (prikklok) is niet inbegrepen. Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Melding toevoegen",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 100 units (en 100 documenten). Time is inbegrepen; IoT en ESG niet. Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 50 units (en 50 documenten). Time (prikklok) is niet inbegrepen; IoT en ESG ook niet. Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Plan kiezen",
@@ -1230,7 +1230,7 @@
                 },
                 {
                     "label": "250+ units vs Corporate",
-                    "text": "<strong>Vanaf 250 units:</strong> alarmen worden goedgekeurde meldingen met taken; sensor-metingen kunnen naar ESG. <strong>Corporate:</strong> hetzelfde plus API, webhooks en integraties op maat."
+                    "text": "<strong>WinProx Corporate:</strong> alarmen worden goedgekeurde meldingen met taken; sensor-metingen kunnen naar ESG. Plus API, webhooks en integraties op maat."
                 },
                 {
                     "label": "Bewerken",

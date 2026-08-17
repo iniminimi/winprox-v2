@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 100 unidades (y 100 documentos). Time está incluido. El panel muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 50 unidades (y 50 documentos). Time (reloj de fichar) no está incluido. El panel muestra los días restantes."
                 },
                 {
                     "label": "Añadir incidencia",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 100 unidades (y 100 documentos). Time está incluido. El panel muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 50 unidades (y 50 documentos). Time (reloj de fichar) no está incluido. El panel muestra los días restantes."
                 },
                 {
                     "label": "Elegir plan",
@@ -1230,7 +1230,7 @@
                 },
                 {
                     "label": "250+ units vs Corporate",
-                    "text": "<strong>Desde 250 unidades:</strong> las alarmas se convierten en incidencias aprobadas con tareas; las lecturas de sensores pueden alimentar ESG. <strong>Corporate:</strong> lo mismo más API, webhooks e integraciones a medida."
+                    "text": "<strong>WinProx Corporate:</strong> las alarmas se convierten en incidencias aprobadas con tareas; las lecturas de sensores pueden alimentar ESG. Más API, webhooks e integraciones a medida."
                 },
                 {
                     "label": "Editar",

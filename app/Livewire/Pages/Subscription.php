@@ -35,6 +35,9 @@ class Subscription extends Component
 
     public ?string $selectedPlan = null;
 
+    /** @var array<string, bool> */
+    public array $includeTime = [];
+
     public ?string $statusMessage = null;
 
     public string $purgePassword = '';
@@ -54,6 +57,7 @@ class Subscription extends Component
         }
 
         $this->selectedPlan = $this->resolveTenant()?->effectivePlanKey();
+        $this->includeTime = BillingCatalogViewData::defaultTimeToggles($this->selectedPlan);
 
         if (request()->query('stripe') === 'cancel') {
             session()->flash('error', __('subscription.stripe.checkout_cancelled'));
@@ -63,6 +67,7 @@ class Subscription extends Component
         if (request()->query('stripe') === 'success' && is_string($sessionId) && $sessionId !== '') {
             if ($fulfillStripe->handle($sessionId)) {
                 $this->selectedPlan = $this->resolveTenant()?->fresh()?->effectivePlanKey();
+                $this->includeTime = BillingCatalogViewData::defaultTimeToggles($this->selectedPlan);
                 session()->flash('success', __('subscription.stripe.activated'));
             } else {
                 session()->flash('warning', __('subscription.stripe.return_unconfirmed'));
@@ -110,8 +115,13 @@ class Subscription extends Component
             return;
         }
 
+        $planKey = BillingCatalogViewData::activationPlan(
+            $plan,
+            (bool) ($this->includeTime[$plan] ?? false),
+        );
+
         $request = new ActivateSubscriptionPlanRequest;
-        $validated = validator(['plan' => $plan], $request->rules(), $request->messages())->validate();
+        $validated = validator(['plan' => $planKey], $request->rules(), $request->messages())->validate();
 
         $planKey = $validated['plan'];
 
@@ -136,6 +146,7 @@ class Subscription extends Component
         $activate->handle(auth()->user(), $tenant, $planKey, 'manual');
 
         $this->selectedPlan = $planKey;
+        $this->includeTime = BillingCatalogViewData::defaultTimeToggles($planKey);
         session()->flash('success', __('subscription.activated', ['plan' => __("subscription.plans.{$planKey}.name")]));
     }
 

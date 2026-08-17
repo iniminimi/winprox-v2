@@ -51,7 +51,7 @@
         "eyebrow": "Time",
         "logo_alt": "Módulo Time — parte de WinProx Facility",
         "title": "Control horario vía Clock Point",
-        "lead": "WinProx Time permite a los trabajadores fichar con el mismo enfoque QR que Facility: rápido en el terreno, visible para los responsables.",
+        "lead": "Time es el reloj de fichar opcional de WinProx: entrada/salida con el mismo QR Clock Point que el trabajo de campo.",
         "problem": {
             "title": "¿Qué problema resuelve?",
             "body": "La presencia y los turnos suelen vivir en una herramienta separada, desconectada de incidencias y tareas — lo que dificulta ver quién estuvo in situ y cuándo."

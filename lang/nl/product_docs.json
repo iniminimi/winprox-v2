@@ -77,7 +77,7 @@
         "right": [
             {
                 "title": "Multi-tenant",
-                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (7 Facility-tiers + Corporate)."
+                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (WinProx 10/50/100 + Corporate)."
             },
             {
                 "title": "Facility",
@@ -98,8 +98,8 @@
             },
             {
                 "title": "Time",
-                "badge": "standaard",
-                "body": "Clock Points: uitvoerders melden zich aan (naam + icoon) en klokken in/uit (pauzes/shifts). Aanwezigheidsoverzicht (aanwezig / pauze / afwezig), filters op team of locatie, en aandachtspunten bij open shifts. Time hoort bij elk abonnement."
+                "badge": "optioneel",
+                "body": "Time is een optionele prikklok: in-/uitklokken, pauze, aanwezigheid en urenstaat. Clock Point blijft de aanmeld-QR (naam + icoon, takenlijst) ook zonder Time. Time zit niet in WinProx; toeslag per maand, op de jaarfactuur."
             },
             {
                 "title": "Reserveringen",
@@ -107,8 +107,8 @@
             },
             {
                 "title": "IoT Connect",
-                "badge": "250+ units",
-                "body": "Sensor-gateways sturen events; alarmen worden goedgekeurde melding + taak. Metingen → ESG op Corporate. Gateway-token (ook zonder volledige REST API)."
+                "badge": "Corporate",
+                "body": "Sensor-gateways sturen events; alarmen worden goedgekeurde melding + taak. Metingen → ESG. Alleen op WinProx Corporate. Gateway-token (ook zonder volledige REST API)."
             },
             {
                 "title": "API & webhooks",

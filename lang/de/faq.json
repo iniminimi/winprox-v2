@@ -48,63 +48,35 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Was kostet WinProx?",
-            "intro": "Starten Sie mit einem kostenlosen Testmonat (bis 100 Einheiten). Wählen Sie dann eine Facility-Stufe unter Abonnement: 10, 25, 50, 100, 250, 500 oder 1.000 Einheiten. Corporate ist individuell (>1.000 Einheiten oder bei Bedarf an API/Webhooks).",
-            "summary": "Test bis 100 Einheiten, dann 7 Facility-Stufen. Time überall inklusive; IoT und ESG ab 250 Einheiten; API und Webhooks bei Corporate.",
-            "content_note": "Dokumente = Einheiten (1 pro Einheit). Standorte, Benutzer und Fotos bei Meldungen/Aufgaben unbegrenzt. Preise unter Abonnement.",
+            "intro": "Sie starten mit einem kostenlosen Testmonat (bis 50 Units). Danach wählen Sie WinProx unter Abo: 10, 50 oder 100 Units pro Jahr. Time (Stechuhr) ist optional. Corporate ist maßgeschneidert (mehr als 100 Units oder API/Webhooks).",
+            "summary": "Test bis 50 Units, danach WinProx 10/50/100 pro Jahr. Time (Stechuhr) optional; IoT, ESG und API bei Corporate.",
+            "content_note": "Dokumente = Units (1 pro Unit). Standorte, Benutzer und Fotos unbegrenzt. Genaue Preise stehen unter Abo.",
             "plans": {
-                "facility_10": {
-                    "units": "Bis 10 Einheiten · 10 Dokumente",
-                    "announcements": "€99 / Monat",
-                    "documents": "Time inklusive · kein IoT, ESG oder API",
-                    "description": "Ideal für den kleinen Start.",
+                "winprox_10": {
+                    "units": "Bis zu 10 Units und 10 Dokumente.",
+                    "announcements": "149 € / Jahr",
+                    "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
+                    "description": "Melden und nachverfolgen per QR.",
                     "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
                 },
-                "facility_25": {
-                    "units": "Bis 25 Einheiten · 25 Dokumente",
-                    "announcements": "€129 / Monat",
-                    "documents": "Time inklusive · kein IoT, ESG oder API",
-                    "description": "Für wachsende Organisationen.",
+                "winprox_50": {
+                    "units": "Bis zu 50 Units und 50 Dokumente.",
+                    "announcements": "399 € / Jahr",
+                    "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
+                    "description": "Melden und nachverfolgen per QR.",
                     "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
                 },
-                "facility_50": {
-                    "units": "Bis 50 Einheiten · 50 Dokumente",
-                    "announcements": "€179 / Monat",
-                    "documents": "Time inklusive · kein IoT, ESG oder API",
-                    "description": "Mehr Einheiten, gleiche Einfachheit.",
-                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
-                },
-                "facility_100": {
-                    "units": "Bis 100 Einheiten · 100 Dokumente",
-                    "announcements": "€249 / Monat",
-                    "documents": "Time inklusive · kein IoT, ESG oder API",
-                    "description": "Gleiche Grenze wie Test, bezahlt.",
-                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
-                },
-                "facility_250": {
-                    "units": "Bis 250 Einheiten · 250 Dokumente",
-                    "announcements": "€399 / Monat",
-                    "documents": "Time, IoT Connect und ESG inklusive · kein API",
-                    "description": "IoT und ESG ab dieser Stufe.",
-                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
-                },
-                "facility_500": {
-                    "units": "Bis 500 Einheiten · 500 Dokumente",
-                    "announcements": "€599 / Monat",
-                    "documents": "Time, IoT Connect und ESG inklusive · kein API",
-                    "description": "Für größere Portfolios.",
-                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
-                },
-                "facility_1000": {
-                    "units": "Bis 1.000 Einheiten · 1.000 Dokumente",
-                    "announcements": "€999 / Monat",
-                    "documents": "Time, IoT Connect und ESG inklusive · kein API",
-                    "description": "Höchste Standardstufe.",
+                "winprox_100": {
+                    "units": "Bis zu 100 Units und 100 Dokumente.",
+                    "announcements": "699 € / Jahr",
+                    "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
+                    "description": "Melden und nachverfolgen per QR.",
                     "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
                 },
                 "corporate": {
-                    "units": "Vereinbarte Einheiten (= Dokumente)",
+                    "units": "Mehr als 100 Units oder API/Webhooks/Integrationen erforderlich.",
                     "announcements": "Individueller Preis",
-                    "documents": "API, Webhooks, Integrationen und SLA individuell",
+                    "documents": "Time (Stechuhr), IoT Connect und ESG inklusive.",
                     "description": "Für >1.000 Einheiten oder bei Bedarf an API/Webhooks/Integrationen.",
                     "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
                 }

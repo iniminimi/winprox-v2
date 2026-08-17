@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Période d'essai",
-                    "text": "Pendant l'essai vous avez jusqu'à 100 unités (et 100 documents). Time est inclus. Le tableau de bord affiche les jours restants."
+                    "text": "Pendant l'essai, vous avez jusqu'à 50 unités (et 50 documents). Time (pointeuse) n'est pas inclus. Le tableau de bord indique les jours restants."
                 },
                 {
                     "label": "Ajouter un signalement",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Période d'essai",
-                    "text": "Pendant l'essai vous avez jusqu'à 100 unités (et 100 documents). Time est inclus ; IoT et ESG non. Le tableau de bord affiche les jours restants."
+                    "text": "Pendant l'essai, vous avez jusqu'à 50 unités (et 50 documents). Time (pointeuse) n'est pas inclus ; IoT et ESG non plus. Le tableau de bord indique les jours restants."
                 },
                 {
                     "label": "Choisir un plan",
@@ -1230,7 +1230,7 @@
                 },
                 {
                     "label": "250+ units vs Corporate",
-                    "text": "<strong>À partir de 250 unités :</strong> les alarmes deviennent des signalements approuvés avec tâches ; les mesures capteur peuvent alimenter l'ESG. <strong>Corporate :</strong> idem plus API, webhooks et intégrations sur mesure."
+                    "text": "<strong>WinProx Corporate :</strong> les alarmes deviennent des signalements approuvés avec tâches ; les mesures capteur peuvent alimenter l'ESG. Plus API, webhooks et intégrations sur mesure."
                 },
                 {
                     "label": "Modifier",

@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Testphase",
-                    "text": "Während der Testphase haben Sie bis zu 100 Einheiten (und 100 Dokumente). Time ist enthalten. Das Dashboard zeigt verbleibende Tage."
+                    "text": "Im Testzeitraum haben Sie bis zu 50 Units (und 50 Dokumente). Time (Stechuhr) ist nicht enthalten. Das Dashboard zeigt die restlichen Tage."
                 },
                 {
                     "label": "Meldung hinzufügen",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Testphase",
-                    "text": "Während der Testphase haben Sie bis zu 100 Einheiten (und 100 Dokumente). Time ist enthalten; IoT und ESG nicht. Das Dashboard zeigt verbleibende Tage."
+                    "text": "Im Testzeitraum haben Sie bis zu 50 Units (und 50 Dokumente). Time (Stechuhr) ist nicht enthalten; IoT und ESG ebenfalls nicht. Das Dashboard zeigt die restlichen Tage."
                 },
                 {
                     "label": "Plan wählen",
@@ -1230,7 +1230,7 @@
                 },
                 {
                     "label": "250+ units vs Corporate",
-                    "text": "<strong>Ab 250 Einheiten:</strong> Alarme werden freigegebene Meldungen mit Aufgaben; Sensor-Messungen können ESG speisen. <strong>Corporate:</strong> dasselbe plus API, Webhooks und individuelle Integrationen."
+                    "text": "<strong>WinProx Corporate:</strong> Alarme werden freigegebene Meldungen mit Aufgaben; Sensor-Messungen können ESG speisen. Plus API, Webhooks und individuelle Integrationen."
                 },
                 {
                     "label": "Bearbeiten",

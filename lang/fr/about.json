@@ -2,11 +2,11 @@
     "meta_title": "À propos de WinProx | Facility via QR",
     "social": {
         "og_title": "À propos de WinProx | Facility via QR",
-        "og_description": "WinProx est une plateforme facility basée sur QR : signalements, tâches, Time, ESG optionnel et IoT Connect — dans le navigateur, sans application."
+        "og_description": "WinProx est une plateforme facility par QR : signalements, tâches, pointeuse Time optionnelle, ESG et IoT Connect — dans le navigateur, sans appli."
     },
     "eyebrow": "À propos de WinProx",
     "title": "Qu'est-ce que WinProx ?",
-    "lead": "WinProx est une plateforme de facility management basée sur des QR codes pour les signalements, tâches, présence (Time), mesures ESG optionnelles et IoT Connect — dans le navigateur, sans application native.",
+    "lead": "WinProx est une plateforme de facility management par QR pour signalements et tâches. Time (pointeuse), ESG et IoT Connect sont optionnels — dans le navigateur, sans appli native.",
     "what": {
         "title": "Idée centrale",
         "body": "Chaque site ou unité physique dispose d'un portail QR numérique. Citoyens et collaborateurs signalent des défauts via le QR unité. Les exécutants s'identifient via le QR Clock Point et traitent les tâches sur place. Les gestionnaires suivent tout dans un workspace : signalement → tâches → clôture."

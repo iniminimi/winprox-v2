@@ -34,7 +34,7 @@
 
     @case('pricing')
         <div class="wp-stack">
-            @foreach (array_keys(config('billing.plans', [])) as $planKey)
+            @foreach (\App\Support\Billing\BillingCatalogViewData::publicPlanKeys() as $planKey)
                 @php $plan = $item['plans'][$planKey] ?? null; @endphp
                 @if ($plan)
                     <article class="wp-stack-tight">

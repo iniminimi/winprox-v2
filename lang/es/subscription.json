@@ -1,11 +1,11 @@
 {
     "title": "Suscripción, límites y facturación",
     "public_title": "Precios y planes",
-    "public_subtitle": "Elija el número de unidades que se adapte a su organización. Time incluido en cada suscripción. Un mes de prueba gratuito.",
+    "public_subtitle": "Elija el número de unidades. WinProx se factura por año. Time (reloj de fichar) es opcional. Un mes de prueba gratis.",
     "public_register_cta": "Iniciar prueba gratuita",
     "subtitle": "Tras el mes gratis, elija un plan. Los límites aplican a unidades y documentos (1 por unidad); ubicaciones, usuarios y fotos ilimitados.",
     "plans_heading": "Planes",
-    "plans_intro": "Empiece pequeño y crezca a su ritmo. Cada suscripción incluye ubicaciones ilimitadas, usuarios ilimitados, Time y fotos ilimitadas en los reportes.",
+    "plans_intro": "Empiece pequeño y crezca. Cada plan WinProx incluye sedes, usuarios y fotos ilimitados. Time (reloj de fichar) es opcional.",
     "page_limits_locations_body": "Usa :current de :max ubicaciones. \"Añadir ubicación\" permanece desactivado hasta actualizar.",
     "choose_plan": "Elegir este plan",
     "choose_plan_loading": "Eligiendo...",
@@ -20,9 +20,9 @@
     "status_active": "Suscripción activa: :plan, válida hasta :date.",
     "status_grace": "Suscripción :plan finalizó el :ended. Período de gracia hasta :grace_end — :days días de acceso completo restantes.",
     "status_expired": "Su prueba ha terminado. Elija un plan abajo.",
-    "pricing_intro": "WinProx incluye un mes de prueba gratis con facility y time. Después, elija el plan adecuado.",
+    "pricing_intro": "WinProx incluye un mes de prueba (hasta 50 unidades). Después elija 10, 50 o 100 unidades al año. Puede añadir Time (reloj de fichar).",
     "status_module_esg": "Módulo ESG activo en su cuenta.",
-    "status_module_time": "Módulo Time activo en su cuenta.",
+    "status_module_time": "Time (reloj de fichar) está activo en su cuenta.",
     "page_limits_title": "Por qué ciertas acciones no están disponibles",
     "page_limits_units_body": "Usa :current de :max unidades. \"Añadir unidad\" permanece desactivado hasta actualizar.",
     "page_limits_users_body": "Usa :current de :max plazas de equipo. \"Añadir usuario\" permanece desactivado.",
@@ -58,6 +58,66 @@
     "plans": {
         "trial": {
             "name": "Período de prueba"
+        },
+        "winprox_10": {
+            "name": "10 unidades",
+            "price": "149 € / año",
+            "scale": "Hasta 10 unidades y 10 documentos.",
+            "features": [
+                "Avisos y seguimiento por QR.",
+                "Time (reloj de fichar) opcional.",
+                "Sin IoT, ESG ni API."
+            ]
+        },
+        "winprox_10_time": {
+            "name": "10 unidades + Time (reloj de fichar)",
+            "price": "497 € / año",
+            "scale": "Hasta 10 unidades y 10 documentos.",
+            "features": [
+                "Avisos y seguimiento por QR.",
+                "Time (reloj de fichar) incluido.",
+                "Sin IoT, ESG ni API."
+            ]
+        },
+        "winprox_50": {
+            "name": "50 unidades",
+            "price": "399 € / año",
+            "scale": "Hasta 50 unidades y 50 documentos.",
+            "features": [
+                "Avisos y seguimiento por QR.",
+                "Time (reloj de fichar) opcional.",
+                "Sin IoT, ESG ni API."
+            ]
+        },
+        "winprox_50_time": {
+            "name": "50 unidades + Time (reloj de fichar)",
+            "price": "867 € / año",
+            "scale": "Hasta 50 unidades y 50 documentos.",
+            "features": [
+                "Avisos y seguimiento por QR.",
+                "Time (reloj de fichar) incluido.",
+                "Sin IoT, ESG ni API."
+            ]
+        },
+        "winprox_100": {
+            "name": "100 unidades",
+            "price": "699 € / año",
+            "scale": "Hasta 100 unidades y 100 documentos.",
+            "features": [
+                "Avisos y seguimiento por QR.",
+                "Time (reloj de fichar) opcional.",
+                "Sin IoT, ESG ni API."
+            ]
+        },
+        "winprox_100_time": {
+            "name": "100 unidades + Time (reloj de fichar)",
+            "price": "1.287 € / año",
+            "scale": "Hasta 100 unidades y 100 documentos.",
+            "features": [
+                "Avisos y seguimiento por QR.",
+                "Time (reloj de fichar) incluido.",
+                "Sin IoT, ESG ni API."
+            ]
         },
         "facility_10": {
             "name": "10 unidades",
@@ -128,11 +188,11 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Precio personalizado",
-            "scale": "Más de 1.000 unidades o API/webhooks/integraciones requeridos.",
+            "scale": "Más de 100 unidades, o API/webhooks/integraciones.",
             "features": [
-                "Time, IoT Connect, ESG incluidos.",
+                "Time (reloj de fichar), IoT Connect y ESG incluidos.",
                 "API REST completa y webhooks.",
-                "Integraciones, SLA y soporte personalizados."
+                "Integraciones, SLA y soporte a medida."
             ]
         }
     },
@@ -216,8 +276,16 @@
     "comparison_no": "No",
     "comparison_custom": "A medida",
     "comparison_trial_price": "Gratis",
-    "comparison_note": "Prueba: 100 unidades, Time incluido. Ubicaciones, usuarios y fotos siempre ilimitados.",
+    "comparison_note": "Prueba: 50 unidades, sin Time. Sedes, usuarios y fotos siempre ilimitados. IoT, ESG y API solo en Corporate.",
     "contact_sales_cta": "Contactar",
     "public_contact_cta": "Solicitar presupuesto",
-    "contact_sales_subject": "WinProx Corporate — presupuesto"
+    "contact_sales_subject": "WinProx Corporate — presupuesto",
+    "comparison_col_time": "Time (reloj de fichar)",
+    "comparison_time_optional": "Opcional",
+    "time_addon": {
+        "label": "Time (reloj de fichar)",
+        "monthly": ":price / mes",
+        "hint": "Entrada, salida y pausas. Se añade a la factura anual (12 × el precio mensual).",
+        "public_hint": "Time (reloj de fichar) opcional desde :price / mes, en la factura anual."
+    }
 }

@@ -3663,6 +3663,14 @@ svg.wp-release-worker-row__icon,
     line-height: 1.45;
 }
 
+.wp-billing-time-addon {
+    margin: 0.75rem 0 0;
+}
+
+.wp-billing-time-addon + .wp-muted {
+    margin-top: 0.35rem;
+}
+
 .wp-billing-plan-card-desc {
     margin: 0.5rem 0 0;
     font-size: 0.875rem;

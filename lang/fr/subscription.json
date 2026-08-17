@@ -1,11 +1,11 @@
 {
     "title": "Abonnement, limites et facturation",
     "public_title": "Tarifs & formules",
-    "public_subtitle": "Choisissez le nombre d'unités adapté à votre organisation. Time inclus dans chaque abonnement. Un mois d'essai gratuit.",
+    "public_subtitle": "Choisissez le nombre d'unités. WinProx est annuel. Time (pointeuse) est optionnel. Un mois d'essai gratuit.",
     "public_register_cta": "Démarrer l'essai gratuit",
     "subtitle": "Après votre mois gratuit, choisissez une formule. Les limites s'appliquent aux unités et documents (1 par unité) ; emplacements, utilisateurs et photos illimités.",
     "plans_heading": "Formules",
-    "plans_intro": "Commencez petit et grandissez à votre rythme. Chaque abonnement inclut des sites illimités, des utilisateurs illimités, Time et des photos illimitées sur les signalements.",
+    "plans_intro": "Commencez petit et grandissez. Chaque abonnement WinProx inclut des sites, utilisateurs et photos illimités. Time (pointeuse) est optionnel.",
     "page_limits_locations_body": "Vous utilisez :current sur :max sites. \"Ajouter un site\" reste désactivé jusqu'à la mise à niveau.",
     "choose_plan": "Choisir cette formule",
     "choose_plan_loading": "Choix en cours...",
@@ -20,9 +20,9 @@
     "status_active": "Abonnement actif : :plan, valable jusqu'au :date.",
     "status_grace": "Abonnement :plan terminé le :ended. Période de grâce jusqu'au :grace_end — :days jours d'accès complet restants.",
     "status_expired": "Votre essai est terminé. Choisissez une formule ci-dessous.",
-    "pricing_intro": "WinProx inclut un mois d'essai gratuit avec facility et time. Ensuite, choisissez la formule adaptée.",
+    "pricing_intro": "WinProx inclut un mois d'essai gratuit (jusqu'à 50 unités). Ensuite, choisissez 10, 50 ou 100 unités par an. Time (pointeuse) est en option.",
     "status_module_esg": "Module ESG actif sur votre compte.",
-    "status_module_time": "Module Time actif sur votre compte.",
+    "status_module_time": "Time (pointeuse) est actif sur votre compte.",
     "page_limits_title": "Pourquoi certaines actions sont indisponibles",
     "page_limits_units_body": "Vous utilisez :current sur :max unités. \"Ajouter une unité\" reste désactivé jusqu'à la mise à niveau.",
     "page_limits_users_body": "Vous utilisez :current sur :max places d'équipe. \"Ajouter un utilisateur\" reste désactivé.",
@@ -58,6 +58,66 @@
     "plans": {
         "trial": {
             "name": "Période d'essai"
+        },
+        "winprox_10": {
+            "name": "10 unités",
+            "price": "149 € / an",
+            "scale": "Jusqu'à 10 unités et 10 documents.",
+            "features": [
+                "Signaler et suivre via QR.",
+                "Time (pointeuse) en option.",
+                "Pas d'IoT, ESG ni API."
+            ]
+        },
+        "winprox_10_time": {
+            "name": "10 unités + Time (pointeuse)",
+            "price": "497 € / an",
+            "scale": "Jusqu'à 10 unités et 10 documents.",
+            "features": [
+                "Signaler et suivre via QR.",
+                "Time (pointeuse) inclus.",
+                "Pas d'IoT, ESG ni API."
+            ]
+        },
+        "winprox_50": {
+            "name": "50 unités",
+            "price": "399 € / an",
+            "scale": "Jusqu'à 50 unités et 50 documents.",
+            "features": [
+                "Signaler et suivre via QR.",
+                "Time (pointeuse) en option.",
+                "Pas d'IoT, ESG ni API."
+            ]
+        },
+        "winprox_50_time": {
+            "name": "50 unités + Time (pointeuse)",
+            "price": "867 € / an",
+            "scale": "Jusqu'à 50 unités et 50 documents.",
+            "features": [
+                "Signaler et suivre via QR.",
+                "Time (pointeuse) inclus.",
+                "Pas d'IoT, ESG ni API."
+            ]
+        },
+        "winprox_100": {
+            "name": "100 unités",
+            "price": "699 € / an",
+            "scale": "Jusqu'à 100 unités et 100 documents.",
+            "features": [
+                "Signaler et suivre via QR.",
+                "Time (pointeuse) en option.",
+                "Pas d'IoT, ESG ni API."
+            ]
+        },
+        "winprox_100_time": {
+            "name": "100 unités + Time (pointeuse)",
+            "price": "1 287 € / an",
+            "scale": "Jusqu'à 100 unités et 100 documents.",
+            "features": [
+                "Signaler et suivre via QR.",
+                "Time (pointeuse) inclus.",
+                "Pas d'IoT, ESG ni API."
+            ]
         },
         "facility_10": {
             "name": "10 unités",
@@ -128,9 +188,9 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Tarif sur mesure",
-            "scale": "Plus de 1 000 unités ou API/webhooks/intégrations requis.",
+            "scale": "Plus de 100 unités, ou API/webhooks/intégrations nécessaires.",
             "features": [
-                "Time, IoT Connect, ESG inclus.",
+                "Time (pointeuse), IoT Connect et ESG inclus.",
                 "API REST complète et webhooks.",
                 "Intégrations, SLA et support sur mesure."
             ]
@@ -216,8 +276,16 @@
     "comparison_no": "Non",
     "comparison_custom": "Sur mesure",
     "comparison_trial_price": "Gratuit",
-    "comparison_note": "Essai : 100 unités, Time inclus. Emplacements, utilisateurs et photos toujours illimités.",
+    "comparison_note": "Essai : 50 unités, sans Time. Sites, utilisateurs et photos toujours illimités. IoT, ESG et API uniquement en Corporate.",
     "contact_sales_cta": "Nous contacter",
     "public_contact_cta": "Demander un devis",
-    "contact_sales_subject": "WinProx Corporate — devis"
+    "contact_sales_subject": "WinProx Corporate — devis",
+    "comparison_col_time": "Time (pointeuse)",
+    "comparison_time_optional": "Optionnel",
+    "time_addon": {
+        "label": "Time (pointeuse)",
+        "monthly": ":price / mois",
+        "hint": "Entrée, sortie et pauses. Facturé sur la facture annuelle (12 × le prix mensuel).",
+        "public_hint": "Time (pointeuse) en option dès :price / mois, sur la facture annuelle."
+    }
 }

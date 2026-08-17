@@ -2,7 +2,7 @@
     "meta_title": "WinProx — Elke locatie, één QR-portaal",
     "social": {
         "og_title": "WinProx — Elke locatie, één QR-portaal",
-        "og_description": "Meld defecten, beheer taken en registreer aanwezigheid via slimme QR-portalen. WinProx Facility met Time inbegrepen — schaalbaar van 10 tot 1.000+ units."
+        "og_description": "Meld defecten en volg taken op via slimme QR-portalen. WinProx vanaf €149 per jaar — Time (prikklok) optioneel."
     },
     "login": "Inloggen",
     "register": "Registreren",
@@ -66,27 +66,27 @@
     "products": {
         "eyebrow": "Producten",
         "title": "WinProx Facility",
-        "lead": "Eén product voor het dagelijks beheer van gebouwen, locaties en installaties. Time (uren en Clock Points) is standaard inbegrepen. IoT en ESG vanaf 250 units; API en webhooks op Corporate.",
-        "iot_note": "IoT Connect is beschikbaar vanaf 250 units: sensoren sturen alarmen rechtstreeks naar meldingen en taken.",
+        "lead": "Eén product voor het dagelijks beheer van gebouwen, locaties en installaties. Time (prikklok) is optioneel. IoT, ESG en API op Corporate.",
+        "iot_note": "IoT Connect is beschikbaar op WinProx Corporate: sensoren sturen alarmen rechtstreeks naar meldingen en taken.",
         "iot_cta": "IoT Connect bekijken",
         "learn_more": "Meer informatie",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Melding → taak → afhandeling",
-            "body": "Volledig facility management met slimme QR-portalen op elke unit. Begin klein en groei mee — van 10 tot 1.000 units.",
+            "body": "Volledig facility management met slimme QR-portalen op elke unit. Begin klein — 10, 50 of 100 units per jaar.",
             "logo_alt": "WinProx Facility",
             "bullets": [
                 "Meldingen & taken",
                 "Locaties & units",
-                "Time inbegrepen",
+                "Time (prikklok) optioneel",
                 "Unit checks optioneel",
-                "IoT & ESG vanaf 250 units"
+                "IoT & ESG op Corporate"
             ]
         },
         "time": {
             "name": "Module Time",
-            "tagline": "Onderdeel van WinProx Facility",
-            "body": "Urenregistratie, pauzes en shifts via de Clock Point QR — standaard inbegrepen in elk Facility-abonnement.",
+            "tagline": "Optionele prikklok",
+            "body": "Urenregistratie, pauzes en shifts via de Clock Point QR — optionele prikklok, niet inbegrepen in WinProx.",
             "logo_alt": "Module Time — onderdeel van WinProx Facility",
             "bullets": [
                 "In- en uitklokken",
@@ -351,7 +351,7 @@
                 "laten?"
             ]
         ],
-        "body": "Begin klein met een gratis proefmaand (tot 100 units) en groei mee wanneer uw organisatie groeit.",
+        "body": "Begin klein met een gratis proefmaand (tot 50 units) en groei mee wanneer uw organisatie groeit.",
         "cta_start": "Gratis proberen",
         "cta_contact": "Contact opnemen"
     },

@@ -51,7 +51,7 @@
         "eyebrow": "Time",
         "logo_alt": "Module Time — composant de WinProx Facility",
         "title": "Suivi du temps via Clock Point",
-        "lead": "WinProx Time permet aux ouvriers de pointer avec la même approche QR que Facility : rapide sur le terrain, visible pour les responsables.",
+        "lead": "Time est la pointeuse optionnelle de WinProx : pointer via le même QR Clock Point que le travail sur le terrain.",
         "problem": {
             "title": "Quel problème résout-il ?",
             "body": "La présence et les shifts vivent souvent dans un outil séparé, déconnecté des signalements et tâches — ce qui complique de voir qui était sur site et quand."

@@ -1,11 +1,11 @@
 {
     "title": "Abbonamento, limiti e fatturazione",
     "public_title": "Prezzi e piani",
-    "public_subtitle": "Scegli il numero di unità adatto alla tua organizzazione. Time incluso in ogni abbonamento. Un mese di prova gratuito.",
+    "public_subtitle": "Scegli il numero di unit. WinProx è annuale. Time (timbratrice) è opzionale. Un mese di prova gratis.",
     "public_register_cta": "Inizia prova gratuita",
     "subtitle": "Dopo il mese gratuito, scegli un piano. I limiti valgono per unità e documenti (1 per unità); sedi, utenti e foto illimitati.",
     "plans_heading": "Piani",
-    "plans_intro": "Inizia in piccolo e cresci gradualmente. Ogni abbonamento include sedi illimitate, utenti illimitati, Time e foto illimitate nelle segnalazioni.",
+    "plans_intro": "Inizia in piccolo e cresci. Ogni abbonamento WinProx include sedi, utenti e foto illimitati. Time (timbratrice) è opzionale.",
     "page_limits_locations_body": "Stai usando :current di :max sedi. \"Aggiungi sede\" resta disabilitato fino all'upgrade.",
     "choose_plan": "Scegli questo piano",
     "choose_plan_loading": "Scelta in corso...",
@@ -20,9 +20,9 @@
     "status_active": "Abbonamento attivo: :plan, valido fino al :date.",
     "status_grace": "Abbonamento :plan terminato il :ended. Periodo di grazia fino al :grace_end — :days giorni di accesso completo rimasti.",
     "status_expired": "La prova è terminata. Scegli un piano qui sotto.",
-    "pricing_intro": "WinProx include un mese di prova gratuito con facility e time. Poi scegli il piano adatto.",
+    "pricing_intro": "WinProx include un mese di prova (fino a 50 unit). Poi scegli 10, 50 o 100 unit all'anno. Puoi aggiungere Time (timbratrice).",
     "status_module_esg": "Modulo ESG attivo sul tuo account.",
-    "status_module_time": "Modulo Time attivo sul tuo account.",
+    "status_module_time": "Time (timbratrice) è attivo sul tuo account.",
     "page_limits_title": "Perché alcune azioni non sono disponibili",
     "page_limits_units_body": "Stai usando :current di :max unità. \"Aggiungi unità\" resta disabilitato fino all'upgrade.",
     "page_limits_users_body": "Stai usando :current di :max posti team. \"Aggiungi utente\" resta disabilitato.",
@@ -58,6 +58,66 @@
     "plans": {
         "trial": {
             "name": "Periodo di prova"
+        },
+        "winprox_10": {
+            "name": "10 unit",
+            "price": "149 € / anno",
+            "scale": "Fino a 10 unit e 10 documenti.",
+            "features": [
+                "Segnalazioni e follow-up via QR.",
+                "Time (timbratrice) opzionale.",
+                "Niente IoT, ESG o API."
+            ]
+        },
+        "winprox_10_time": {
+            "name": "10 unit + Time (timbratrice)",
+            "price": "497 € / anno",
+            "scale": "Fino a 10 unit e 10 documenti.",
+            "features": [
+                "Segnalazioni e follow-up via QR.",
+                "Time (timbratrice) incluso.",
+                "Niente IoT, ESG o API."
+            ]
+        },
+        "winprox_50": {
+            "name": "50 unit",
+            "price": "399 € / anno",
+            "scale": "Fino a 50 unit e 50 documenti.",
+            "features": [
+                "Segnalazioni e follow-up via QR.",
+                "Time (timbratrice) opzionale.",
+                "Niente IoT, ESG o API."
+            ]
+        },
+        "winprox_50_time": {
+            "name": "50 unit + Time (timbratrice)",
+            "price": "867 € / anno",
+            "scale": "Fino a 50 unit e 50 documenti.",
+            "features": [
+                "Segnalazioni e follow-up via QR.",
+                "Time (timbratrice) incluso.",
+                "Niente IoT, ESG o API."
+            ]
+        },
+        "winprox_100": {
+            "name": "100 unit",
+            "price": "699 € / anno",
+            "scale": "Fino a 100 unit e 100 documenti.",
+            "features": [
+                "Segnalazioni e follow-up via QR.",
+                "Time (timbratrice) opzionale.",
+                "Niente IoT, ESG o API."
+            ]
+        },
+        "winprox_100_time": {
+            "name": "100 unit + Time (timbratrice)",
+            "price": "1.287 € / anno",
+            "scale": "Fino a 100 unit e 100 documenti.",
+            "features": [
+                "Segnalazioni e follow-up via QR.",
+                "Time (timbratrice) incluso.",
+                "Niente IoT, ESG o API."
+            ]
         },
         "facility_10": {
             "name": "10 unità",
@@ -128,11 +188,11 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Prezzo personalizzato",
-            "scale": "Più di 1.000 unità o API/webhooks/integrazioni richiesti.",
+            "scale": "Oltre 100 unit, oppure API/webhook/integrazioni.",
             "features": [
-                "Time, IoT Connect, ESG inclusi.",
-                "API REST completa e webhooks.",
-                "Integrazioni, SLA e supporto personalizzati."
+                "Time (timbratrice), IoT Connect ed ESG inclusi.",
+                "API REST completa e webhook.",
+                "Integrazioni, SLA e supporto su misura."
             ]
         }
     },
@@ -216,8 +276,16 @@
     "comparison_no": "No",
     "comparison_custom": "Su misura",
     "comparison_trial_price": "Gratis",
-    "comparison_note": "Prova: 100 unità, Time incluso. Sedi, utenti e foto sempre illimitati.",
+    "comparison_note": "Prova: 50 unit, senza Time. Sedi, utenti e foto sempre illimitati. IoT, ESG e API solo su Corporate.",
     "contact_sales_cta": "Contattaci",
     "public_contact_cta": "Richiedi preventivo",
-    "contact_sales_subject": "WinProx Corporate — preventivo"
+    "contact_sales_subject": "WinProx Corporate — preventivo",
+    "comparison_col_time": "Time (timbratrice)",
+    "comparison_time_optional": "Opzionale",
+    "time_addon": {
+        "label": "Time (timbratrice)",
+        "monthly": ":price / mese",
+        "hint": "Entrata, uscita e pause. Incluso nella fattura annuale (12 × il prezzo mensile).",
+        "public_hint": "Time (timbratrice) opzionale da :price / mese, sulla fattura annuale."
+    }
 }

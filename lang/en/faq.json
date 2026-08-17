@@ -13,7 +13,7 @@
             "type": "steps",
             "title": "How does WinProx work?",
             "intro": "WinProx follows one core flow: issue → tasks → completion. Time (clocking) is included by default; ESG (measurements) is optional.",
-            "summary": "Sites and units, issues via QR or admin, approval on the public portal, tasks per team, follow-up via dashboard, briefing, and calendar. Time included; ESG optional.",
+            "summary": "Sites and units, issues via QR or admin, approval on the public portal, tasks per team, follow-up via dashboard, briefing, and calendar. Time (punch clock) optional; ESG optional.",
             "steps": [
                 {
                     "title": "Sites and units",
@@ -48,63 +48,35 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "How much does WinProx cost?",
-            "intro": "Start with a free trial month (up to 100 units). Then choose a Facility tier under Subscription: 10, 25, 50, 100, 250, 500 or 1,000 units. Corporate is custom (>1,000 units or when API/webhooks are required).",
-            "summary": "Trial up to 100 units, then 7 Facility tiers. Time included everywhere; IoT and ESG from 250 units; API and webhooks on Corporate.",
-            "content_note": "Documents = units (1 per unit). Locations, users and photos on issues/tasks are unlimited. Exact prices are on the Subscription page.",
+            "intro": "You start with a free trial month (up to 50 units). Then choose WinProx under Subscription: 10, 50 or 100 units per year. Time (punch clock) is optional. Corporate is custom (more than 100 units or when API/webhooks are required).",
+            "summary": "Trial up to 50 units, then WinProx 10/50/100 per year. Time (punch clock) optional; IoT, ESG and API on Corporate.",
+            "content_note": "Documents = units (1 per unit). Locations, users and photos on reports/tasks are unlimited. Exact prices are under Subscription.",
             "plans": {
-                "facility_10": {
-                    "units": "Up to 10 units · 10 documents",
-                    "announcements": "€99 / month",
-                    "documents": "Time included · no IoT, ESG or API",
-                    "description": "Ideal to start small.",
+                "winprox_10": {
+                    "units": "Up to 10 units and 10 documents.",
+                    "announcements": "€149 / year",
+                    "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
+                    "description": "Report and follow up via QR.",
                     "users": "Unlimited locations, users and photos on reports"
                 },
-                "facility_25": {
-                    "units": "Up to 25 units · 25 documents",
-                    "announcements": "€129 / month",
-                    "documents": "Time included · no IoT, ESG or API",
-                    "description": "For growing organisations.",
+                "winprox_50": {
+                    "units": "Up to 50 units and 50 documents.",
+                    "announcements": "€399 / year",
+                    "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
+                    "description": "Report and follow up via QR.",
                     "users": "Unlimited locations, users and photos on reports"
                 },
-                "facility_50": {
-                    "units": "Up to 50 units · 50 documents",
-                    "announcements": "€179 / month",
-                    "documents": "Time included · no IoT, ESG or API",
-                    "description": "More units, same simplicity.",
-                    "users": "Unlimited locations, users and photos on reports"
-                },
-                "facility_100": {
-                    "units": "Up to 100 units · 100 documents",
-                    "announcements": "€249 / month",
-                    "documents": "Time included · no IoT, ESG or API",
-                    "description": "Same limit as trial, paid.",
-                    "users": "Unlimited locations, users and photos on reports"
-                },
-                "facility_250": {
-                    "units": "Up to 250 units · 250 documents",
-                    "announcements": "€399 / month",
-                    "documents": "Time, IoT Connect and ESG included · no API",
-                    "description": "IoT and ESG from this tier.",
-                    "users": "Unlimited locations, users and photos on reports"
-                },
-                "facility_500": {
-                    "units": "Up to 500 units · 500 documents",
-                    "announcements": "€599 / month",
-                    "documents": "Time, IoT Connect and ESG included · no API",
-                    "description": "For larger portfolios.",
-                    "users": "Unlimited locations, users and photos on reports"
-                },
-                "facility_1000": {
-                    "units": "Up to 1,000 units · 1,000 documents",
-                    "announcements": "€999 / month",
-                    "documents": "Time, IoT Connect and ESG included · no API",
-                    "description": "Highest standard tier.",
+                "winprox_100": {
+                    "units": "Up to 100 units and 100 documents.",
+                    "announcements": "€699 / year",
+                    "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
+                    "description": "Report and follow up via QR.",
                     "users": "Unlimited locations, users and photos on reports"
                 },
                 "corporate": {
-                    "units": "Agreed units (= documents)",
+                    "units": "More than 100 units, or API/webhooks/integrations required.",
                     "announcements": "Custom pricing",
-                    "documents": "API, webhooks, integrations and SLA on request",
+                    "documents": "Time (punch clock), IoT Connect and ESG included.",
                     "description": "For >1,000 units or when API/webhooks/integrations are required.",
                     "users": "Unlimited locations, users and photos on reports"
                 }

@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 100 units (and 100 documents). Time is included. The dashboard shows remaining days."
+                    "text": "During the trial you have up to 50 units (and 50 documents). Time (punch clock) is not included. The dashboard shows remaining days."
                 },
                 {
                     "label": "Add issue",
@@ -630,7 +630,7 @@
             "actions": [
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 100 units (and 100 documents). Time is included; IoT and ESG are not. The dashboard shows remaining days."
+                    "text": "During the trial you have up to 50 units (and 50 documents). Time (punch clock) is not included; neither are IoT and ESG. The dashboard shows remaining days."
                 },
                 {
                     "label": "Choose plan",
@@ -1230,7 +1230,7 @@
                 },
                 {
                     "label": "250+ units vs Corporate",
-                    "text": "<strong>From 250 units:</strong> alarms become approved issues with tasks; sensor readings can feed ESG. <strong>Corporate:</strong> same plus API, webhooks and custom integrations."
+                    "text": "<strong>WinProx Corporate:</strong> alarms become approved issues with tasks; sensor readings can feed ESG. Plus API, webhooks and custom integrations."
                 },
                 {
                     "label": "Edit",

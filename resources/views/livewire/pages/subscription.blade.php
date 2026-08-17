@@ -173,7 +173,7 @@
                                 <th scope="col">{{ __('subscription.comparison_col_price') }}</th>
                                 <th scope="col">{{ __('subscription.comparison_col_units') }}</th>
                                 <th scope="col">{{ __('subscription.comparison_col_documents') }}</th>
-                                <th scope="col">{{ __('subscription.comparison_col_iot') }}</th>
+                                <th scope="col">{{ __('subscription.comparison_col_time') }}</th>
                                 <th scope="col">{{ __('subscription.comparison_col_api') }}</th>
                             </tr>
                         </thead>
@@ -181,8 +181,8 @@
                             <tr>
                                 <th scope="row">{{ __('subscription.plans.trial.name') }}</th>
                                 <td>{{ __('subscription.comparison_trial_price') }}</td>
-                                <td>100</td>
-                                <td>100</td>
+                                <td>50</td>
+                                <td>50</td>
                                 <td>{{ __('subscription.comparison_no') }}</td>
                                 <td>{{ __('subscription.comparison_no') }}</td>
                             </tr>
@@ -191,6 +191,7 @@
                                     $planConfig = config("billing.plans.{$planKey}", []);
                                     $unitsLimit = $planConfig['units_limit'] ?? null;
                                     $docsLimit = $planConfig['documents_org_limit'] ?? null;
+                                    $hasTimeVariant = is_string($planConfig['time_variant'] ?? null);
                                 @endphp
                                 <tr>
                                     <th scope="row">{{ __("subscription.plans.{$planKey}.name") }}</th>
@@ -210,8 +211,10 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if (! empty($planConfig['iot_module']))
+                                        @if (! empty($planConfig['time_module']))
                                             {{ __('subscription.comparison_yes') }}
+                                        @elseif ($hasTimeVariant)
+                                            {{ __('subscription.comparison_time_optional') }}
                                         @else
                                             {{ __('subscription.comparison_no') }}
                                         @endif
@@ -235,7 +238,13 @@
         <div class="wp-billing-plan-list">
             @foreach ($planKeys as $planKey)
                 @php
-                    $isCurrentPlan = ! $publicMode && ($selectedPlan ?? null) === $planKey;
+                    $planConfig = config("billing.plans.{$planKey}", []);
+                    $timeVariant = $planConfig['time_variant'] ?? null;
+                    $timeMonthly = $planConfig['time_monthly_eur'] ?? null;
+                    $isCurrentPlan = ! $publicMode && (
+                        ($selectedPlan ?? null) === $planKey
+                        || (is_string($timeVariant) && ($selectedPlan ?? null) === $timeVariant)
+                    );
                 @endphp
                 <article class="wp-billing-plan-card" wire:key="subscription-plan-{{ $planKey }}">
                     <div class="wp-billing-plan-card-body">
@@ -263,6 +272,20 @@
                                 <li>{{ __("subscription.plans.{$planKey}.description") }}</li>
                             @endif
                         </ul>
+                        @if ($showManageActions && is_string($timeVariant) && $timeVariant !== '')
+                            <label class="wp-check wp-billing-time-addon">
+                                <input type="checkbox" wire:model.live="includeTime.{{ $planKey }}">
+                                <span>
+                                    {{ __('subscription.time_addon.label') }}
+                                    @if (is_numeric($timeMonthly))
+                                        — {{ __('subscription.time_addon.monthly', ['price' => '€'.(int) $timeMonthly]) }}
+                                    @endif
+                                </span>
+                            </label>
+                            <p class="wp-muted wp-text-sm">{{ __('subscription.time_addon.hint') }}</p>
+                        @elseif ($publicMode && is_string($timeVariant) && $timeVariant !== '')
+                            <p class="wp-muted wp-text-sm">{{ __('subscription.time_addon.public_hint', ['price' => '€'.(int) $timeMonthly]) }}</p>
+                        @endif
                     </div>
                     @if ($showManageActions)
                         <div class="wp-billing-plan-card-action">

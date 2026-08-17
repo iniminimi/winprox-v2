@@ -2,7 +2,7 @@
     "meta_title": "WinProx — Ogni sede, un portale QR",
     "social": {
         "og_title": "WinProx — Ogni sede, un portale QR",
-        "og_description": "Segnala problemi, gestisci attività e registra presenze via portali QR. WinProx Facility con Time incluso — scalabile da 10 a 1.000+ unità."
+        "og_description": "Segnala i difetti e segui i compiti con portali QR. WinProx da 149 € all'anno — Time (timbratrice) opzionale."
     },
     "login": "Accedi",
     "register": "Registrati",
@@ -68,27 +68,27 @@
     "products": {
         "eyebrow": "Prodotti",
         "title": "WinProx Facility",
-        "lead": "Un prodotto per la gestione quotidiana di edifici, sedi e impianti. Time (ore e Clock Points) è incluso di default. IoT ed ESG da 250 unità; API e webhook su Corporate.",
-        "iot_note": "IoT Connect è disponibile da 250 unità: i sensori inviano allarmi direttamente a segnalazioni e attività.",
+        "lead": "Un prodotto per la gestione quotidiana di edifici e impianti. Time (timbratrice) è opzionale. IoT, ESG e API su Corporate.",
+        "iot_note": "IoT Connect è disponibile su WinProx Corporate: i sensori inviano allarmi a segnalazioni e compiti.",
         "iot_cta": "Vedi IoT Connect",
         "learn_more": "Scopri di più",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Segnalazione → attività → chiusura",
-            "body": "Gestione facility completa con portali QR intelligenti su ogni unità. Inizia in piccolo e cresci — da 10 a 1.000 unità.",
+            "body": "Facility management completo con portali QR su ogni unit. Inizia in piccolo — 10, 50 o 100 unit all'anno.",
             "logo_alt": "WinProx Facility",
             "bullets": [
                 "Segnalazioni e attività",
                 "Sedi e unità",
-                "Time incluso",
+                "Time (timbratrice) opzionale",
                 "Unit check opzionali",
-                "IoT ed ESG da 250 unità"
+                "IoT ed ESG su Corporate"
             ]
         },
         "time": {
             "name": "Modulo Time",
-            "tagline": "Parte di WinProx Facility",
-            "body": "Ore, pause e turni tramite QR Clock Point — incluso in ogni abbonamento Facility.",
+            "tagline": "Timbratrice opzionale",
+            "body": "Ore, pause e turni tramite il QR Clock Point — timbratrice opzionale, non inclusa in WinProx.",
             "logo_alt": "Modulo Time — parte di WinProx Facility",
             "bullets": [
                 "Timbratura",
@@ -352,7 +352,7 @@
                 "spalle?"
             ]
         ],
-        "body": "Inizia in piccolo con un mese di prova gratuito (fino a 100 unità) e cresci con la tua organizzazione.",
+        "body": "Inizia in piccolo con un mese di prova (fino a 50 unit) e cresci con la tua organizzazione.",
         "cta_start": "Prova gratuita",
         "cta_contact": "Contattaci"
     },
