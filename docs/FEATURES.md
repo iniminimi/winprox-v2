@@ -82,7 +82,7 @@ proefperiode-**battery-png** (capsule wordt platte tekst), `SectorCapabilities`/
 **Doel:** beheer van **categorieën**, **locaties** en de **units** daaronder (machines, installaties, zones).
 Drie submenu’s onder Plaatsen: **Categorieën** (alleen categorieën) · **Locaties** (alleen locaties) · **Units** (tenant-breed).
 Locatie-lijst → klik op een locatie → **locatie-/unit-detailscherm**.
-**Units** (tenant-breed): zelfde categorieën-onboarding als Locaties wanneer er nog geen categorieën zijn (**Naar Categorieën**).
+**Units** (tenant-breed): zelfde categorieën-onboarding als Locaties wanneer er nog geen categorieën zijn (**Naar Categorieën**). Met categorieën maar zonder units: zelfde locatie-onboarding als meldingen/taken (**Locaties beheren**).
 
 ### 2.0 Categorieën
 - Header: titel "Categorieën" + **"Categorie toevoegen"**.

@@ -19,9 +19,11 @@
                 </a>
             </div>
         </div>
+    @elseif ($units->isEmpty())
+        <x-wp-onboarding-banner stage="locations" />
     @endif
 
-    @if ($categories->isNotEmpty() || $units->isNotEmpty())
+    @if ($units->isNotEmpty())
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-filter-cell">
             <span class="wp-filter-inline-label">{{ __('units.filters.label') }}</span>

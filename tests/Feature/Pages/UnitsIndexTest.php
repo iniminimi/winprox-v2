@@ -21,10 +21,11 @@ it('verwijst van Units naar Categorieën wanneer er nog geen categorieën zijn',
         ->assertSee(__('locations.onboarding.title_categories'), false)
         ->assertSee(__('locations.onboarding.go_to_categories'), false)
         ->assertSee(route('locations.index', ['section' => 'categories']), false)
+        ->assertDontSee(__('dashboard.onboarding.locations.button'), false)
         ->assertDontSee(__('units.list.empty'), false);
 });
 
-it('verbergt de categorieën-onboarding op Units wanneer er categorieën zijn', function () {
+it('verwijst van Units naar Locaties wanneer er categorieën zijn maar nog geen units', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
@@ -32,9 +33,30 @@ it('verbergt de categorieën-onboarding op Units wanneer er categorieën zijn', 
 
     Livewire::actingAs($user)
         ->test(UnitsIndex::class)
-        ->assertDontSee(__('locations.onboarding.title_categories'), false)
         ->assertDontSee(__('locations.onboarding.go_to_categories'), false)
-        ->assertSee(__('units.list.empty'), false);
+        ->assertSee(__('dashboard.onboarding.locations.title'), false)
+        ->assertSee(__('dashboard.onboarding.locations.text'), false)
+        ->assertSee(__('dashboard.onboarding.locations.button'), false)
+        ->assertSee(route('locations.index', ['section' => 'locations']), false)
+        ->assertDontSee(__('units.list.empty'), false);
+});
+
+it('verbergt de locaties-onboarding op Units wanneer er units zijn', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'is_active' => true,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(UnitsIndex::class)
+        ->assertDontSee(__('dashboard.onboarding.locations.button'), false)
+        ->assertDontSee(__('locations.onboarding.go_to_categories'), false);
 });
 
 it('filters tenant units by location in UnitsIndex', function () {
