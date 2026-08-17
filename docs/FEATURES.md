@@ -96,6 +96,7 @@ Locatie-lijst → klik op een locatie → **locatie-/unit-detailscherm**.
 - **Zoek-kaart**: zoekveld "Zoek op locatie, plaats, postcode of straat" (zoekt op naam,
   plaats, postcode én straat). Hint "Klik op een locatie om te beheren". Checkbox
   **"Toon ook inactieve locaties"** (standaard verbergt inactieve).
+- Locatie zonder units: unit-onboarding (**Units toevoegen**) boven de lijst, knop naar de locatie.
 - **Lijst-rij** per locatie: naam · badge **"{n} units"** · adres (straat nr, postcode plaats).
   Klik op de rij → locatie-detail (§2.3). Rechts knop **"Deactiveren"** (soft-delete/inactief
   zetten, niet hard verwijderen).

@@ -95,15 +95,35 @@ it('toont locaties-onboarding en pulst de locatie-knop wanneer er categorieën z
         ->assertSeeHtml('wp-btn--prio-pulse');
 });
 
-it('verbergt onboarding en pulst niet wanneer er minstens één locatie is', function () {
+it('toont units-onboarding op Locaties wanneer er een locatie is maar nog geen units', function () {
     [$tenant, $admin] = setupTenantAdminForLocations();
     Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Onderhoud']);
-    \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn']);
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Gebouw Kustlaan']);
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->assertSee(__('dashboard.onboarding.units.title'), false)
+        ->assertSee(__('dashboard.onboarding.units.button'), false)
+        ->assertSee(route('locations.show', $location), false)
+        ->assertSee('Gebouw Kustlaan')
+        ->assertDontSee(__('locations.onboarding.title_locations'), false)
+        ->assertDontSeeHtml('wp-btn--prio-pulse');
+});
+
+it('verbergt onboarding en pulst niet wanneer er minstens één locatie met units is', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Onderhoud']);
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn']);
+    \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+    ]);
 
     Livewire::actingAs($admin)
         ->test(Index::class)
         ->assertDontSee(__('locations.onboarding.title_locations'), false)
         ->assertDontSee(__('locations.onboarding.title_categories'), false)
+        ->assertDontSee(__('dashboard.onboarding.units.button'), false)
         ->assertDontSeeHtml('wp-btn--prio-pulse');
 });
 

@@ -5,6 +5,7 @@
     @php
         $isCategories = $this->isCategoriesSection();
         $showLocationsOnboarding = ! $isCategories && ! $hasAnyLocation;
+        $showUnitsOnboarding = ! $isCategories && $onboarding->showUnitsBanner();
         $pulseCategoriesAdd = $isCategories && $categories->isEmpty();
         $pulseAddLocationButton = $showLocationsOnboarding && $categories->isNotEmpty();
     @endphp
@@ -70,6 +71,8 @@
                     </a>
                 </div>
             </div>
+        @elseif ($showUnitsOnboarding)
+            <x-wp-onboarding-banner stage="units" />
         @endif
 
         <div class="wp-card wp-card-pad wp-stack">
