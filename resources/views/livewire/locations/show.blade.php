@@ -100,7 +100,7 @@
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="openCsvImportModal">{{ __('locations.units_csv.button') }}</button>
                 @endif
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openBulkModal">{{ __('locations.bulk_add') }}</button>
-                <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateUnit">{{ __('locations.units_add') }}</button>
+                <button type="button" @class(['btn', 'btn--primary', 'btn--sm', 'wp-btn--prio-pulse' => $units->total() === 0]) wire:click="openCreateUnit">{{ __('locations.units_add') }}</button>
             </div>
         </div>
         <p class="wp-muted">{{ __('locations.units_subtitle') }}</p>

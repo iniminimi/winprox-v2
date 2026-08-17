@@ -120,7 +120,7 @@ Acties: **Annuleren** / **Locatie opslaan**. Validatie via Form Request; logica 
   Knoppen:
   - **"QR-stickerblad downloaden"** → **MS Word (.docx)** met **Avery 55×55 mm, 15 stickers/A4**
     (zie §2.5 — werkt perfect in oude app, **overnemen i.p.v. herbouwen**).
-  - **"+ Unit toevoegen"** → unit per stuk.
+  - **"+ Unit toevoegen"** → unit per stuk (pulst wanneer de locatie nog geen units heeft).
   - **"Bulk units toevoegen"** → modal (§2.4).
 - **"Recente bulk-aanmaak"**: lijst van bulk-batches (datum/tijd · aantal · unitnaam-bereik),
   met per batch **"Bulk verwijderen ({n})"**. Regel: *"Verwijder per bulk alleen units zonder

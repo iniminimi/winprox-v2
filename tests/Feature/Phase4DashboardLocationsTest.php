@@ -102,6 +102,31 @@ it('maakt een locatie aan met alleen straat postcode en plaats', function () {
         ->and($location->country_code)->toBe('BE');
 });
 
+it('pulst unit-toevoegen wanneer de locatie nog geen units heeft', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->assertSee(__('locations.units_add'))
+        ->assertSeeHtml('wp-btn--prio-pulse');
+});
+
+it('pulst unit-toevoegen niet wanneer de locatie units heeft', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->assertDontSeeHtml('wp-btn--prio-pulse');
+});
+
 it('bewaart locatiegegevens via de bewerk-modal op detail', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
