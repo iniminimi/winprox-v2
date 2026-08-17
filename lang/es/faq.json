@@ -50,7 +50,7 @@
             "title": "¿Cuánto cuesta WinProx?",
             "intro": "Empieza con un mes de prueba (hasta 50 unidades). Luego elija WinProx en Suscripción: 10, 50 o 100 unidades al año. Time (reloj de fichar) es opcional. Corporate es a medida (más de 100 unidades o API/webhooks).",
             "summary": "Prueba hasta 50 unidades, luego WinProx 10/50/100 al año. Time (reloj de fichar) opcional; IoT, ESG y API en Corporate.",
-            "content_note": "Documentos = unidades (1 por unidad). Sedes, usuarios y fotos ilimitados. Los precios exactos están en Suscripción.",
+            "content_note": "Unidad = objeto o lugar con QR (habitación, impresora, vehículo). Documento = archivo en el portal QR (manual, reglamento), 1 por unidad. Fotos en avisos ilimitadas. Los precios exactos están en Suscripción.",
             "plans": {
                 "winprox_10": {
                     "units": "Hasta 10 unidades y 10 documentos.",

@@ -6,6 +6,12 @@
     "subtitle": "Après votre mois gratuit, choisissez une formule. Les limites s'appliquent aux unités et documents (1 par unité) ; emplacements, utilisateurs et photos illimités.",
     "plans_heading": "Formules",
     "plans_intro": "Commencez petit et grandissez. Chaque abonnement WinProx inclut des sites, utilisateurs et photos illimités. Time (pointeuse) est optionnel.",
+    "glossary": {
+        "heading": "Unités, documents et photos",
+        "unit": "Une unité est un objet ou un lieu avec un code QR — par exemple une chambre d’hôtel, une chambre d’hôpital, une imprimante ou un véhicule.",
+        "document": "Un document apparaît sur le portail QR, comme un mode d’emploi ou un règlement intérieur. Limite : 1 document par unité.",
+        "photo": "Les photos sur les signalements et les tâches sont illimitées."
+    },
     "page_limits_locations_body": "Vous utilisez :current sur :max sites. \"Ajouter un site\" reste désactivé jusqu'à la mise à niveau.",
     "choose_plan": "Choisir cette formule",
     "choose_plan_loading": "Choix en cours...",

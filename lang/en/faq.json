@@ -50,7 +50,7 @@
             "title": "How much does WinProx cost?",
             "intro": "You start with a free trial month (up to 50 units). Then choose WinProx under Subscription: 10, 50 or 100 units per year. Time (punch clock) is optional. Corporate is custom (more than 100 units or when API/webhooks are required).",
             "summary": "Trial up to 50 units, then WinProx 10/50/100 per year. Time (punch clock) optional; IoT, ESG and API on Corporate.",
-            "content_note": "Documents = units (1 per unit). Locations, users and photos on reports/tasks are unlimited. Exact prices are under Subscription.",
+            "content_note": "Unit = object or place with a QR (room, printer, vehicle). Document = file on the QR portal (manual, house rules), 1 per unit. Photos on issues are unlimited. Exact prices are under Subscription.",
             "plans": {
                 "winprox_10": {
                     "units": "Up to 10 units and 10 documents.",

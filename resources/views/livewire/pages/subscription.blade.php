@@ -160,6 +160,12 @@
         <header class="wp-billing-product__intro wp-stack-tight">
             <h2 class="wp-section-title">{{ __('subscription.plans_heading') }}</h2>
             <p class="wp-muted">{{ __('subscription.plans_intro') }}</p>
+            <h3 class="wp-subhead">{{ __('subscription.glossary.heading') }}</h3>
+            <ul class="wp-billing-status-list">
+                <li>{{ __('subscription.glossary.unit') }}</li>
+                <li>{{ __('subscription.glossary.document') }}</li>
+                <li>{{ __('subscription.glossary.photo') }}</li>
+            </ul>
         </header>
 
         @if ($publicMode)

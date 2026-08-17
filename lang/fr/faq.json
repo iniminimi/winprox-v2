@@ -50,7 +50,7 @@
             "title": "Combien coûte WinProx ?",
             "intro": "Vous commencez par un mois d'essai gratuit (jusqu'à 50 unités). Ensuite, choisissez WinProx sous Abonnement : 10, 50 ou 100 unités par an. Time (pointeuse) est optionnel. Corporate est sur mesure (plus de 100 unités ou API/webhooks).",
             "summary": "Essai jusqu'à 50 unités, puis WinProx 10/50/100 par an. Time (pointeuse) optionnel ; IoT, ESG et API en Corporate.",
-            "content_note": "Documents = unités (1 par unité). Sites, utilisateurs et photos illimités. Les prix exacts sont sous Abonnement.",
+            "content_note": "Unité = objet ou lieu avec QR (chambre, imprimante, véhicule). Document = fichier sur le portail QR (mode d’emploi, règlement), 1 par unité. Photos sur les signalements illimitées. Les prix exacts sont sous Abonnement.",
             "plans": {
                 "winprox_10": {
                     "units": "Jusqu'à 10 unités et 10 documents.",

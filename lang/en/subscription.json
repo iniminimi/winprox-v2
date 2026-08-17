@@ -6,6 +6,12 @@
     "subtitle": "After your free month, choose a plan. Limits apply to units and documents (1 per unit); locations, users and photos are unlimited.",
     "plans_heading": "Plans",
     "plans_intro": "Start small and grow. Every WinProx plan includes unlimited locations, users and photos. Time (punch clock) is optional.",
+    "glossary": {
+        "heading": "Units, documents and photos",
+        "unit": "A unit is an object or place with a QR code — for example a hotel room, hospital room, printer or vehicle.",
+        "document": "A document is shown on the QR portal, such as a manual or house rules. Limit: 1 document per unit.",
+        "photo": "Photos on issues and tasks are unlimited."
+    },
     "choose_plan": "Choose this plan",
     "choose_plan_loading": "Choosing...",
     "activate_plan": "Choose this plan",

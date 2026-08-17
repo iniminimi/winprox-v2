@@ -6,6 +6,12 @@
     "subtitle": "Tras el mes gratis, elija un plan. Los límites aplican a unidades y documentos (1 por unidad); ubicaciones, usuarios y fotos ilimitados.",
     "plans_heading": "Planes",
     "plans_intro": "Empiece pequeño y crezca. Cada plan WinProx incluye sedes, usuarios y fotos ilimitados. Time (reloj de fichar) es opcional.",
+    "glossary": {
+        "heading": "Unidades, documentos y fotos",
+        "unit": "Una unidad es un objeto o lugar con código QR — por ejemplo una habitación de hotel, una habitación de hospital, una impresora o un vehículo.",
+        "document": "Un documento se muestra en el portal QR, como un manual o el reglamento interno. Límite: 1 documento por unidad.",
+        "photo": "Las fotos en avisos y tareas son ilimitadas."
+    },
     "page_limits_locations_body": "Usa :current de :max ubicaciones. \"Añadir ubicación\" permanece desactivado hasta actualizar.",
     "choose_plan": "Elegir este plan",
     "choose_plan_loading": "Eligiendo...",

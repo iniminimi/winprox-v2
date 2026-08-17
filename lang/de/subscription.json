@@ -6,6 +6,12 @@
     "subtitle": "Nach dem Gratis-Monat wählen Sie einen Tarif. Limits gelten für Einheiten und Dokumente (1 pro Einheit); Standorte, Benutzer und Fotos sind unbegrenzt.",
     "plans_heading": "Tarife",
     "plans_intro": "Klein starten und mitwachsen. Jedes WinProx-Abo enthält unbegrenzte Standorte, Benutzer und Fotos. Time (Stechuhr) ist optional.",
+    "glossary": {
+        "heading": "Units, Dokumente und Fotos",
+        "unit": "Eine Unit ist ein Objekt oder Ort mit QR-Code — zum Beispiel Hotelzimmer, Krankenzimmer, Drucker oder Fahrzeug.",
+        "document": "Ein Dokument steht im QR-Portal, etwa eine Anleitung oder Hausordnung. Limit: 1 Dokument pro Unit.",
+        "photo": "Fotos bei Meldungen und Aufgaben sind unbegrenzt."
+    },
     "page_limits_locations_body": "Sie nutzen :current von :max Standorten. \"Standort hinzufügen\" bleibt deaktiviert bis zum Upgrade.",
     "choose_plan": "Diesen Tarif wählen",
     "choose_plan_loading": "Wird gewählt...",

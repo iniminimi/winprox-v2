@@ -6,6 +6,12 @@
     "subtitle": "Na je gratis maand kies je een formule. Limieten gelden voor units en documenten (1 per unit); locaties, gebruikers en foto's zijn onbeperkt.",
     "plans_heading": "Formules",
     "plans_intro": "Begin klein en groei mee. Elk WinProx-abonnement bevat onbeperkt locaties, gebruikers en foto's. Time (prikklok) is optioneel.",
+    "glossary": {
+        "heading": "Units, documenten en foto's",
+        "unit": "Een unit is een object of plaats met een QR-code — bijvoorbeeld een hotelkamer, ziekenhuiskamer, printer of voertuig.",
+        "document": "Een document staat op het QR-portaal, zoals een handleiding of huisreglement. Limiet: 1 document per unit.",
+        "photo": "Foto's bij meldingen en taken zijn onbeperkt."
+    },
     "choose_plan": "Kies deze formule",
     "choose_plan_loading": "Bezig met kiezen...",
     "activate_plan": "Kies deze formule",

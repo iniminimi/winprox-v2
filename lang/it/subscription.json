@@ -6,6 +6,12 @@
     "subtitle": "Dopo il mese gratuito, scegli un piano. I limiti valgono per unità e documenti (1 per unità); sedi, utenti e foto illimitati.",
     "plans_heading": "Piani",
     "plans_intro": "Inizia in piccolo e cresci. Ogni abbonamento WinProx include sedi, utenti e foto illimitati. Time (timbratrice) è opzionale.",
+    "glossary": {
+        "heading": "Unit, documenti e foto",
+        "unit": "Una unit è un oggetto o un luogo con codice QR — ad esempio una camera d’albergo, una stanza d’ospedale, una stampante o un veicolo.",
+        "document": "Un documento compare sul portale QR, come un manuale o il regolamento interno. Limite: 1 documento per unit.",
+        "photo": "Le foto su segnalazioni e compiti sono illimitate."
+    },
     "page_limits_locations_body": "Stai usando :current di :max sedi. \"Aggiungi sede\" resta disabilitato fino all'upgrade.",
     "choose_plan": "Scegli questo piano",
     "choose_plan_loading": "Scelta in corso...",

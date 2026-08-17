@@ -13,6 +13,9 @@ it('toont publieke prijzenpagina met WinProx-jaarformules en Corporate voor gast
         ->assertSee(__('subscription.time_addon.public_hint', ['price' => '€29']), false)
         ->assertSee(__('subscription.public_contact_cta'))
         ->assertSee(__('subscription.public_register_cta'), false)
+        ->assertSee(__('subscription.glossary.unit'))
+        ->assertSee(__('subscription.glossary.document'))
+        ->assertSee(__('subscription.glossary.photo'))
         ->assertDontSee(__('subscription.plans.facility_25.name'));
 });
 

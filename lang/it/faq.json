@@ -50,7 +50,7 @@
             "title": "Quanto costa WinProx?",
             "intro": "Inizi con un mese di prova (fino a 50 unit). Poi scegli WinProx in Abbonamento: 10, 50 o 100 unit all'anno. Time (timbratrice) è opzionale. Corporate è su misura (oltre 100 unit o API/webhook).",
             "summary": "Prova fino a 50 unit, poi WinProx 10/50/100 all'anno. Time (timbratrice) opzionale; IoT, ESG e API su Corporate.",
-            "content_note": "Documenti = unit (1 per unit). Sedi, utenti e foto illimitati. I prezzi esatti sono in Abbonamento.",
+            "content_note": "Unit = oggetto o luogo con QR (stanza, stampante, veicolo). Documento = file sul portale QR (manuale, regolamento), 1 per unit. Foto sulle segnalazioni illimitate. I prezzi esatti sono in Abbonamento.",
             "plans": {
                 "winprox_10": {
                     "units": "Fino a 10 unit e 10 documenti.",
