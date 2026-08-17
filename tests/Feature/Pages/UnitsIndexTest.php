@@ -11,6 +11,32 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
+it('verwijst van Units naar Categorieën wanneer er nog geen categorieën zijn', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(UnitsIndex::class)
+        ->assertSee(__('locations.onboarding.title_categories'), false)
+        ->assertSee(__('locations.onboarding.go_to_categories'), false)
+        ->assertSee(route('locations.index', ['section' => 'categories']), false)
+        ->assertDontSee(__('units.list.empty'), false);
+});
+
+it('verbergt de categorieën-onboarding op Units wanneer er categorieën zijn', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(UnitsIndex::class)
+        ->assertDontSee(__('locations.onboarding.title_categories'), false)
+        ->assertDontSee(__('locations.onboarding.go_to_categories'), false)
+        ->assertSee(__('units.list.empty'), false);
+});
+
 it('filters tenant units by location in UnitsIndex', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);

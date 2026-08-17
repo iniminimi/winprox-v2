@@ -10,6 +10,18 @@
         </div>
     </div>
 
+    @if ($categories->isEmpty())
+        <div class="wp-card wp-card-pad wp-onboarding-card">
+            <div class="wp-stack">
+                <p class="wp-text-body"><strong>{{ __('locations.onboarding.title_categories') }}</strong></p>
+                <a href="{{ route('locations.index', ['section' => 'categories']) }}" class="btn btn--primary btn--sm wp-badge-critical">
+                    {{ __('locations.onboarding.go_to_categories') }}
+                </a>
+            </div>
+        </div>
+    @endif
+
+    @if ($categories->isNotEmpty() || $units->isNotEmpty())
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-filter-cell">
             <span class="wp-filter-inline-label">{{ __('units.filters.label') }}</span>
@@ -64,5 +76,5 @@
             </div>
         @endif
     </div>
+    @endif
 </div>
-
