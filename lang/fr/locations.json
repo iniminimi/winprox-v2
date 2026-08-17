@@ -49,6 +49,7 @@
     "show_inactive": "Afficher aussi les sites inactifs",
     "onboarding": {
         "title_categories": "Commencez par créer des catégories",
+        "text_categories": "Ajoutez des catégories pour regrouper les unités (p. ex. chambres, sanitaires, bureau). Une même équipe peut être liée à toutes les catégories — les tâches arrivent alors aux mêmes personnes. Avec plusieurs équipes, reliez chacune aux catégories concernées. Ajoutez ensuite sites et unités.",
         "title_locations": "Commencez par créer des sites et unités",
         "go_to_categories": "Vers Catégories"
     },
@@ -228,7 +229,6 @@
         "edit_title": "Modifier la catégorie",
         "add_title": "Ajouter une catégorie",
         "add": "Ajouter une catégorie",
-        "empty": "Aucune catégorie pour le moment.",
         "confirm_delete": "Supprimer cette catégorie ? Les unités liées perdront leur catégorie.",
         "fields": {
             "name": "Nom de la catégorie",

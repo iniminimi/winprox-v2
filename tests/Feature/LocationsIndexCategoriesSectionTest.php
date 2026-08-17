@@ -59,7 +59,8 @@ it('pulst de categorie-knop wanneer er nog geen categorieën zijn', function () 
 
     Livewire::actingAs($admin)
         ->test(Index::class, ['section' => 'categories'])
-        ->assertSee(__('locations.categories.empty'), false)
+        ->assertSee(__('locations.onboarding.title_categories'), false)
+        ->assertSee(__('locations.onboarding.text_categories'), false)
         ->assertSeeHtml('wp-btn--prio-pulse');
 });
 

@@ -49,6 +49,7 @@
     "show_inactive": "Mostra anche sedi inattive",
     "onboarding": {
         "title_categories": "Inizi creando le categorie",
+        "text_categories": "Aggiunga categorie per raggruppare le unit (es. camere, sanitari, ufficio). Un solo team può essere collegato a tutte le categorie — le attività arrivano così alle stesse persone. Con più team, colleghi ciascuno alle categorie di competenza. Poi aggiunga sedi e unit.",
         "title_locations": "Inizi creando sedi e unità",
         "go_to_categories": "Vai a Categorie"
     },
@@ -228,7 +229,6 @@
         "edit_title": "Modifica categoria",
         "add_title": "Aggiungi categoria",
         "add": "Aggiungi categoria",
-        "empty": "Nessuna categoria ancora.",
         "confirm_delete": "Eliminare questa categoria? Le unità collegate perderanno la categoria.",
         "fields": {
             "name": "Nome categoria",

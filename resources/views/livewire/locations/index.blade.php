@@ -35,8 +35,8 @@
     @endif
 
     @if ($isCategories)
-        <div class="wp-card wp-card-pad wp-stack">
-            @if ($categories->isNotEmpty())
+        @if ($categories->isNotEmpty())
+            <div class="wp-card wp-card-pad wp-stack">
                 <div class="wp-list wp-list--entity-rows">
                     @foreach ($categories as $category)
                         <div class="wp-issue-row" wire:key="category-{{ $category->id }}">
@@ -51,10 +51,15 @@
                         </div>
                     @endforeach
                 </div>
-            @else
-                <p class="wp-muted">{{ __('locations.categories.empty') }}</p>
-            @endif
-        </div>
+            </div>
+        @else
+            <div class="wp-card wp-card-pad wp-onboarding-card">
+                <div class="wp-stack">
+                    <p class="wp-text-body"><strong>{{ __('locations.onboarding.title_categories') }}</strong></p>
+                    <p class="wp-muted">{{ __('locations.onboarding.text_categories') }}</p>
+                </div>
+            </div>
+        @endif
     @else
         @if ($categories->isEmpty())
             <div class="wp-card wp-card-pad wp-onboarding-card">

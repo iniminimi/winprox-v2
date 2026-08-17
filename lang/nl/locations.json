@@ -49,6 +49,7 @@
     "show_inactive": "Toon ook inactieve locaties",
     "onboarding": {
         "title_categories": "Begin met het aanmaken van categorieën",
+        "text_categories": "Voeg categorieën toe om units te groeperen (bijv. kamers, sanitair, kantoor). Eén team mag aan alle categorieën hangen — taken komen dan bij dezelfde mensen terecht. Bij meerdere teams koppel je elk team aan de categorieën waar het voor werkt. Daarna voeg je locaties en units toe.",
         "title_locations": "Begin met het aanmaken van locaties en units",
         "go_to_categories": "Naar Categorieën"
     },
@@ -228,7 +229,6 @@
         "edit_title": "Categorie bewerken",
         "add_title": "Categorie toevoegen",
         "add": "Categorie toevoegen",
-        "empty": "Nog geen categorieën.",
         "confirm_delete": "Deze categorie verwijderen? Gekoppelde units verliezen hun categorie.",
         "fields": {
             "name": "Categorienaam",

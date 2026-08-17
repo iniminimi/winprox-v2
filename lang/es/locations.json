@@ -49,6 +49,7 @@
     "show_inactive": "Mostrar también ubicaciones inactivas",
     "onboarding": {
         "title_categories": "Empiece creando categorías",
+        "text_categories": "Añada categorías para agrupar units (p. ej. habitaciones, sanitario, oficina). Un mismo equipo puede vincularse a todas las categorías — las tareas llegan entonces a las mismas personas. Con varios equipos, vincule cada uno a las categorías en las que trabaja. Luego añada ubicaciones y units.",
         "title_locations": "Empiece creando ubicaciones y unidades",
         "go_to_categories": "Ir a Categorías"
     },
@@ -228,7 +229,6 @@
         "edit_title": "Editar categoría",
         "add_title": "Añadir categoría",
         "add": "Añadir categoría",
-        "empty": "Aún no hay categorías.",
         "confirm_delete": "¿Eliminar esta categoría? Las unidades vinculadas perderán su categoría.",
         "fields": {
             "name": "Nombre de la categoría",

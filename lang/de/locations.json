@@ -49,6 +49,7 @@
     "show_inactive": "Auch inaktive Standorte anzeigen",
     "onboarding": {
         "title_categories": "Beginnen Sie mit der Erstellung von Kategorien",
+        "text_categories": "Fügen Sie Kategorien hinzu, um Units zu gruppieren (z. B. Zimmer, Sanitär, Büro). Ein Team darf an allen Kategorien hängen — Aufgaben landen dann bei denselben Personen. Bei mehreren Teams verknüpfen Sie jedes Team mit den Kategorien, für die es arbeitet. Danach Standorte und Units anlegen.",
         "title_locations": "Beginnen Sie mit der Erstellung von Standorten und Units",
         "go_to_categories": "Zu Kategorien"
     },
@@ -228,7 +229,6 @@
         "edit_title": "Kategorie bearbeiten",
         "add_title": "Kategorie hinzufügen",
         "add": "Kategorie hinzufügen",
-        "empty": "Noch keine Kategorien.",
         "confirm_delete": "Diese Kategorie löschen? Verknüpfte Units verlieren ihre Kategorie.",
         "fields": {
             "name": "Kategoriename",

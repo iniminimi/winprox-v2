@@ -86,6 +86,7 @@ Locatie-lijst → klik op een locatie → **locatie-/unit-detailscherm**.
 ### 2.0 Categorieën
 - Header: titel "Categorieën" + **"Categorie toevoegen"**.
 - Lijst van categorieën (naam, bewerken, verwijderen). Geen locaties op dit scherm.
+- Lege staat: onboarding-kaart (één team mag aan alle categorieën) + pulserende **Categorie toevoegen**.
 - Modal: naam, teams, GPS, reserveerbaar, unit checks, contactgegevens verplicht.
 
 ### 2.1 Locatie-lijst

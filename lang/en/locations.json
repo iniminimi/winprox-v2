@@ -49,6 +49,7 @@
     "show_inactive": "Show inactive locations too",
     "onboarding": {
         "title_categories": "Start by creating categories",
+        "text_categories": "Add categories to group units (e.g. rooms, sanitary, office). One team may be linked to every category — tasks then reach the same people. With several teams, link each team to the categories it works on. Then add locations and units.",
         "title_locations": "Start by creating locations and units",
         "go_to_categories": "Go to Categories"
     },
@@ -228,7 +229,6 @@
         "edit_title": "Edit category",
         "add_title": "Add category",
         "add": "Add category",
-        "empty": "No categories yet.",
         "confirm_delete": "Delete this category? Linked units will lose their category.",
         "fields": {
             "name": "Category name",
