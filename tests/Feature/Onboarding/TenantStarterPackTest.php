@@ -9,6 +9,7 @@ use App\Enums\InternalTeamTranslationStatus;
 use App\Enums\TenantStarterPackType;
 use App\Enums\UnitTranslationStatus;
 use App\Livewire\Dashboard;
+use App\Mail\TenantStarterPackAppliedMail;
 use App\Models\AuditLog;
 use App\Models\Category;
 use App\Models\InternalTeam;
@@ -20,6 +21,7 @@ use App\Models\User;
 use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Platform\SupportTenantContext;
 use App\Support\Tenancy;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
 
 afterEach(function () {
@@ -29,6 +31,8 @@ afterEach(function () {
 
 function setupStarterPackAdmin(?string $locale = 'nl'): array
 {
+    Mail::fake();
+
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->create([
@@ -80,6 +84,13 @@ it('maakt een hotel-starttemplate met namen in alle talen', function () {
         ->and($state->canApplyStarterPack)->toBeFalse();
 
     expect(AuditLog::query()->where('action', 'starter_pack.applied')->exists())->toBeTrue();
+
+    Mail::assertSent(TenantStarterPackAppliedMail::class, function (TenantStarterPackAppliedMail $mail) use ($tenant, $admin): bool {
+        return $mail->hasTo(config('winprox.new_tenant_notification_email'))
+            && $mail->tenant->is($tenant)
+            && $mail->actor->is($admin)
+            && $mail->type === TenantStarterPackType::Hotel;
+    });
 });
 
 it('weigert een starttemplate wanneer de werkruimte niet leeg is', function () {

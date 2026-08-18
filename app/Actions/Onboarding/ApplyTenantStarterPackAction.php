@@ -16,7 +16,9 @@ use App\Data\Onboarding\ApplyTenantStarterPackData;
 use App\Enums\CategoryTranslationStatus;
 use App\Enums\InternalTeamTranslationStatus;
 use App\Enums\LocationTranslationStatus;
+use App\Enums\TenantStarterPackType;
 use App\Enums\UnitTranslationStatus;
+use App\Mail\TenantStarterPackAppliedMail;
 use App\Models\Category;
 use App\Models\CategoryTranslation;
 use App\Models\InternalTeam;
@@ -31,6 +33,7 @@ use App\Support\Audit\AuditRecorder;
 use App\Support\Onboarding\TenantStarterPackCatalog;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 
@@ -181,7 +184,19 @@ class ApplyTenantStarterPackAction
             payload: $payload,
         );
 
+        $this->notifyOps($tenant->fresh(), $actor, $data->type);
+
         return $payload;
+    }
+
+    private function notifyOps(Tenant $tenant, User $actor, TenantStarterPackType $type): void
+    {
+        $to = config('winprox.new_tenant_notification_email');
+        if (! filled($to)) {
+            return;
+        }
+
+        Mail::to($to)->send(new TenantStarterPackAppliedMail($tenant, $actor, $type));
     }
 
     private function assertEligible(Tenant $tenant, string $locale): void

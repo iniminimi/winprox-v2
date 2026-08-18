@@ -31,6 +31,10 @@
         "subject": "WinProx: neue Organisation registriert — :tenant",
         "body": "Eine neue Organisation wurde registriert.\n\nOrganisation: :tenant\nAdministrator: :admin (:email)\nTelefon: :phone\nAdresse: :address\nLand: :country\nTenant-ID: :tenant_id"
     },
+    "starter_pack": {
+        "subject": "WinProx: Startvorlage geladen — :tenant",
+        "body": "Eine Startvorlage wurde geladen.\n\nOrganisation: :tenant\nBenutzer: :admin (:email)\nVorlage: :pack_type\nTenant-ID: :tenant_id"
+    },
     "new_qr_issue": {
         "subject": ":tenant — neue QR-Meldung",
         "html_title": "Neue Meldung",

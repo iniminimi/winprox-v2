@@ -31,6 +31,10 @@
         "subject": "WinProx: nuova organizzazione registrata — :tenant",
         "body": "È stata registrata una nuova organizzazione.\n\nOrganizzazione: :tenant\nAmministratore: :admin (:email)\nTelefono: :phone\nIndirizzo: :address\nPaese: :country\nID tenant: :tenant_id"
     },
+    "starter_pack": {
+        "subject": "WinProx: modello iniziale caricato — :tenant",
+        "body": "È stato caricato un modello iniziale.\n\nOrganizzazione: :tenant\nUtente: :admin (:email)\nModello: :pack_type\nID tenant: :tenant_id"
+    },
     "new_qr_issue": {
         "subject": ":tenant — nuova segnalazione QR",
         "html_title": "Nuova segnalazione",
