@@ -11,12 +11,14 @@ use App\Actions\Onboarding\RemoveTenantStarterPackAction;
 use App\Data\Onboarding\ApplyTenantStarterPackData;
 use App\Enums\TenantStarterPackType;
 use App\Http\Requests\Onboarding\ApplyTenantStarterPackRequest;
+use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Admin\AdminHealthService;
 use App\Support\Dashboard\TopScannedUnitsService;
 use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Onboarding\TenantStarterPackCatalog;
 use App\Support\Onboarding\TenantStarterPackSummary;
+use App\Support\Platform\SupportTenantContext;
 use App\Support\Tenancy;
 use App\Support\Translation\LocaleSupport;
 use Livewire\Attributes\Layout;
@@ -35,7 +37,7 @@ class Dashboard extends Component
 
     public function openStarterPackModal(): void
     {
-        $this->authorize('applyStarterPack', $this->starterPackActor()->tenant);
+        $this->authorize('applyStarterPack', $this->starterPackTenant());
 
         $this->resetValidation();
         $this->starterPackType = '';
@@ -52,7 +54,8 @@ class Dashboard extends Component
     public function applyStarterPack(ApplyTenantStarterPackAction $apply): void
     {
         $user = $this->starterPackActor();
-        $this->authorize('applyStarterPack', $user->tenant);
+        $tenant = $this->starterPackTenant();
+        $this->authorize('applyStarterPack', $tenant);
 
         $validated = $this->validate(
             ApplyTenantStarterPackRequest::ruleSet(),
@@ -60,7 +63,7 @@ class Dashboard extends Component
         );
 
         $apply->handle(
-            $user->tenant,
+            $tenant,
             ApplyTenantStarterPackData::fromValidated($validated, $user->locale),
             $user,
         );
@@ -71,7 +74,7 @@ class Dashboard extends Component
 
     public function openRemoveStarterPackModal(): void
     {
-        $this->authorize('removeStarterPack', $this->starterPackActor()->tenant);
+        $this->authorize('removeStarterPack', $this->starterPackTenant());
 
         $this->resetValidation();
         $this->showRemoveStarterPackModal = true;
@@ -86,9 +89,10 @@ class Dashboard extends Component
     public function removeStarterPack(RemoveTenantStarterPackAction $remove): void
     {
         $user = $this->starterPackActor();
-        $this->authorize('removeStarterPack', $user->tenant);
+        $tenant = $this->starterPackTenant();
+        $this->authorize('removeStarterPack', $tenant);
 
-        $remove->handle($user->tenant, $user);
+        $remove->handle($tenant, $user);
 
         $user->unsetRelation('tenant');
         $this->closeRemoveStarterPackModal();
@@ -102,7 +106,7 @@ class Dashboard extends Component
         AdminHealthService $healthService,
         TopScannedUnitsService $topScannedUnits,
     ) {
-        $tenant = auth()->user()?->tenant;
+        $tenant = $this->resolveTenant();
         if ($tenant !== null) {
             $tenant = $realign->handle($tenant);
             if ($tenant->isTrialActive() && ! $tenant->hasTimeModule()) {
@@ -154,8 +158,30 @@ class Dashboard extends Component
     private function starterPackActor(): User
     {
         $user = auth()->user();
-        abort_unless($user instanceof User && $user->tenant !== null, 403);
+        abort_unless($user instanceof User, 403);
 
         return $user;
+    }
+
+    private function starterPackTenant(): Tenant
+    {
+        $tenant = $this->resolveTenant();
+        abort_unless($tenant instanceof Tenant, 403);
+
+        return $tenant;
+    }
+
+    private function resolveTenant(): ?Tenant
+    {
+        $user = auth()->user();
+        if (! $user instanceof User) {
+            return null;
+        }
+
+        if ($user->is_superuser && SupportTenantContext::isActive()) {
+            return Tenant::query()->find(SupportTenantContext::activeTenantId());
+        }
+
+        return $user->tenant;
     }
 }

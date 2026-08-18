@@ -18,10 +18,14 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
 use App\Support\Onboarding\TenantOnboardingState;
+use App\Support\Platform\SupportTenantContext;
 use App\Support\Tenancy;
 use Livewire\Livewire;
 
-afterEach(fn () => Tenancy::forget());
+afterEach(function () {
+    SupportTenantContext::stop();
+    Tenancy::forget();
+});
 
 function setupStarterPackAdmin(?string $locale = 'nl'): array
 {
@@ -172,4 +176,21 @@ it('weigert het starttemplate voor een medewerker', function () {
         ->assertDontSee(__('dashboard.starter_pack.help_button'))
         ->call('openStarterPackModal')
         ->assertForbidden();
+});
+
+it('toont de starttemplate-knop voor een superuser in support view', function () {
+    [$tenant] = setupStarterPackAdmin();
+    $super = User::factory()->superuser()->create();
+
+    SupportTenantContext::start((int) $tenant->id);
+    Tenancy::actAs((int) $tenant->id);
+
+    Livewire::actingAs($super)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.starter_pack.help_button'))
+        ->call('openStarterPackModal')
+        ->set('starterPackType', TenantStarterPackType::Hotel->value)
+        ->call('applyStarterPack')
+        ->assertHasNoErrors()
+        ->assertSee(__('dashboard.starter_pack.result_title'));
 });

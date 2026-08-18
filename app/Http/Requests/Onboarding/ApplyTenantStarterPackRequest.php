@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Requests\Onboarding;
 
 use App\Enums\TenantStarterPackType;
+use App\Models\Tenant;
+use App\Support\Platform\SupportTenantContext;
+use App\Support\Tenancy;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -13,7 +16,10 @@ class ApplyTenantStarterPackRequest extends FormRequest
     public function authorize(): bool
     {
         $user = $this->user();
-        $tenant = $user?->tenant;
+        $tenantId = Tenancy::id()
+            ?? SupportTenantContext::activeTenantId()
+            ?? $user?->tenant_id;
+        $tenant = $tenantId ? Tenant::query()->find((int) $tenantId) : null;
 
         return $user !== null
             && $tenant !== null
