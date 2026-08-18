@@ -93,6 +93,27 @@ it('weigert een starttemplate wanneer de werkruimte niet leeg is', function () {
     );
 })->throws(\Illuminate\Validation\ValidationException::class);
 
+it('vervangt een lege restlocatie bij het laden van een starttemplate', function () {
+    [$tenant, $admin] = setupStarterPackAdmin();
+    $leftover = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Oude locatie',
+    ]);
+
+    Tenancy::actAs($tenant->id);
+    expect(TenantOnboardingState::current()->canApplyStarterPack)->toBeTrue();
+
+    app(ApplyTenantStarterPackAction::class)->handle(
+        $tenant,
+        ApplyTenantStarterPackData::fromValidated(['starterPackType' => 'hotel'], 'nl'),
+        $admin,
+    );
+
+    expect(Location::query()->whereKey($leftover->id)->exists())->toBeFalse()
+        ->and(Location::query()->count())->toBe(1)
+        ->and($tenant->fresh()->starter_pack_key)->toBe('hotel');
+});
+
 it('verwijdert het starttemplate wanneer er geen meldingen zijn', function () {
     [$tenant, $admin] = setupStarterPackAdmin();
 

@@ -103,7 +103,7 @@
             "type_required": "Choose an organisation type.",
             "unknown": "This starter template is not available.",
             "already_applied": "A starter template is already loaded.",
-            "not_empty": "You already have teams, categories, locations or units. The starter template is only for an empty workspace.",
+            "not_empty": "You already have teams, categories or units. The starter template is only available when those are empty. A location without units is replaced.",
             "missing": "There is no starter template to remove.",
             "has_issues": "There are already issues or workers. Units can then only be deactivated; the starter template remains. You can always rename."
         }

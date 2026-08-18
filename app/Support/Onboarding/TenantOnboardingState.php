@@ -46,7 +46,6 @@ final readonly class TenantOnboardingState
                 || $clockPointCount === 0,
             canApplyStarterPack: $teamCount === 0
                 && $categoryCount === 0
-                && $locationCount === 0
                 && $unitCount === 0,
         );
     }

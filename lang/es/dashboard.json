@@ -103,7 +103,7 @@
             "type_required": "Elige un tipo de organización.",
             "unknown": "Esta plantilla inicial no está disponible.",
             "already_applied": "Ya hay una plantilla inicial cargada.",
-            "not_empty": "Ya tienes equipos, categorías, ubicaciones o units. La plantilla inicial solo sirve para un espacio vacío.",
+            "not_empty": "Ya tienes equipos, categorías o units. La plantilla inicial solo está disponible si eso está vacío. Una ubicación sin units se sustituye.",
             "missing": "No hay plantilla inicial que eliminar.",
             "has_issues": "Ya hay incidencias o trabajadores. Entonces las units solo se pueden desactivar; la plantilla permanece. Siempre puedes cambiar el nombre."
         }

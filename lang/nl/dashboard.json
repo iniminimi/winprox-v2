@@ -103,7 +103,7 @@
             "type_required": "Kies een type organisatie.",
             "unknown": "Dit starttemplate is niet beschikbaar.",
             "already_applied": "Er is al een starttemplate geladen.",
-            "not_empty": "Je hebt al teams, categorieën, locaties of units. Het starttemplate is alleen voor een lege werkruimte.",
+            "not_empty": "Je hebt al teams, categorieën of units. Het starttemplate is alleen als die nog leeg zijn. Een locatie zonder units wordt vervangen.",
             "missing": "Er is geen starttemplate om te verwijderen.",
             "has_issues": "Er zijn al meldingen of uitvoerders. Units kun je dan alleen nog deactiveren; het starttemplate blijft bestaan. Hernoemen kan altijd."
         }

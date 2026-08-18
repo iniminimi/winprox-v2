@@ -103,7 +103,7 @@
             "type_required": "Scegli un tipo di organizzazione.",
             "unknown": "Questo modello iniziale non è disponibile.",
             "already_applied": "Un modello iniziale è già caricato.",
-            "not_empty": "Hai già team, categorie, sedi o unit. Il modello iniziale è solo per uno spazio vuoto.",
+            "not_empty": "Hai già team, categorie o unit. Il modello iniziale è disponibile solo se quelli sono vuoti. Una sede senza unit viene sostituita.",
             "missing": "Non c’è un modello iniziale da rimuovere.",
             "has_issues": "Ci sono già segnalazioni o operatori. Le unit possono allora solo essere disattivate; il modello resta. Puoi sempre rinominare."
         }

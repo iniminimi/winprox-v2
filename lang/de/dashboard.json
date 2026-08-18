@@ -103,7 +103,7 @@
             "type_required": "Wählen Sie einen Organisationstyp.",
             "unknown": "Diese Startvorlage ist nicht verfügbar.",
             "already_applied": "Es ist bereits eine Startvorlage geladen.",
-            "not_empty": "Sie haben bereits Teams, Kategorien, Standorte oder Units. Die Startvorlage gilt nur für einen leeren Arbeitsbereich.",
+            "not_empty": "Sie haben bereits Teams, Kategorien oder Units. Die Startvorlage gilt nur, wenn diese noch leer sind. Ein Standort ohne Units wird ersetzt.",
             "missing": "Es gibt keine Startvorlage zum Entfernen.",
             "has_issues": "Es gibt bereits Meldungen oder Ausführende. Units können dann nur noch deaktiviert werden; die Startvorlage bleibt. Umbenennen ist immer möglich."
         }

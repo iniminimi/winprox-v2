@@ -103,7 +103,7 @@
             "type_required": "Choisissez un type d’organisation.",
             "unknown": "Ce modèle de départ n’est pas disponible.",
             "already_applied": "Un modèle de départ est déjà chargé.",
-            "not_empty": "Vous avez déjà des équipes, catégories, lieux ou units. Le modèle de départ est réservé à un espace vide.",
+            "not_empty": "Vous avez déjà des équipes, catégories ou units. Le modèle de départ n'est disponible que si ceux-ci sont vides. Un lieu sans units est remplacé.",
             "missing": "Il n’y a pas de modèle de départ à supprimer.",
             "has_issues": "Il y a déjà des signalements ou des exécutants. Les units ne peuvent alors plus qu’être désactivés ; le modèle reste. Vous pouvez toujours renommer."
         }

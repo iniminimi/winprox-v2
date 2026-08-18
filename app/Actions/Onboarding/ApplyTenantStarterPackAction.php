@@ -8,6 +8,7 @@ use App\Actions\Categories\SyncCategoryTeamsAction;
 use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\CreateUnitAction;
+use App\Actions\Locations\DeleteLocationAction;
 use App\Actions\Team\CreateTeamAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Data\Categories\SyncCategoryTeamsData;
@@ -31,6 +32,7 @@ use App\Support\Onboarding\TenantStarterPackCatalog;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use InvalidArgumentException;
 
 class ApplyTenantStarterPackAction
 {
@@ -39,6 +41,7 @@ class ApplyTenantStarterPackAction
         private CreateCategoryAction $createCategory,
         private CreateLocationAction $createLocation,
         private CreateUnitAction $createUnit,
+        private DeleteLocationAction $deleteLocation,
         private SyncCategoryTeamsAction $syncCategoryTeams,
         private EnsureDefaultClockPointAction $ensureDefaultClockPoint,
         private AuditRecorder $audit,
@@ -62,6 +65,8 @@ class ApplyTenantStarterPackAction
         $payload = DB::transaction(function () use ($tenant, $data, $actor, $locale, $definition): array {
             $tenantId = (int) $tenant->id;
             $actorId = (int) $actor->id;
+
+            $this->removeEmptyLeftoverLocations($tenant, $actorId, $locale);
 
             $teamsByKey = [];
             $sort = 0;
@@ -189,13 +194,29 @@ class ApplyTenantStarterPackAction
 
         $hasData = InternalTeam::query()->where('tenant_id', $tenant->id)->exists()
             || Category::query()->where('tenant_id', $tenant->id)->exists()
-            || Location::query()->where('tenant_id', $tenant->id)->exists()
             || Unit::query()->where('tenant_id', $tenant->id)->exists();
 
         if ($hasData) {
             throw ValidationException::withMessages([
                 'starterPackType' => [trans('dashboard.starter_pack.errors.not_empty', [], $locale)],
             ]);
+        }
+    }
+
+    private function removeEmptyLeftoverLocations(Tenant $tenant, int $actorId, string $locale): void
+    {
+        $locations = Location::query()
+            ->where('tenant_id', $tenant->id)
+            ->get();
+
+        foreach ($locations as $location) {
+            try {
+                $this->deleteLocation->handle($location, $actorId);
+            } catch (InvalidArgumentException) {
+                throw ValidationException::withMessages([
+                    'starterPackType' => [trans('dashboard.starter_pack.errors.not_empty', [], $locale)],
+                ]);
+            }
         }
     }
 
