@@ -48,6 +48,8 @@ class Tenants extends Component
     public function stopSupport(StopSupportViewAction $stop): void
     {
         $stop->handle();
+
+        $this->redirect(route('platform.tenants'));
     }
 
     public function toggleTrialApi(int $tenantId, ToggleTrialApiAction $toggle): void

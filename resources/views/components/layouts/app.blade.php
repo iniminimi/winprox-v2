@@ -449,7 +449,10 @@
             @if ($supportTenant)
                 <div class="wp-support-banner-bar" role="status">
                     <span>{{ __('platform.banner', ['name' => $supportTenant->name]) }}</span>
-                    <a href="{{ route('platform.tenants') }}" class="btn btn--ghost btn--sm">{{ __('platform.stop') }}</a>
+                    <form method="POST" action="{{ route('platform.support.stop') }}">
+                        @csrf
+                        <button type="submit" class="btn btn--ghost btn--sm">{{ __('platform.stop') }}</button>
+                    </form>
                 </div>
             @endif
 

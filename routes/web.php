@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductDocumentController;
 use App\Http\Controllers\IndexNowKeyController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\StopSupportViewController;
 use App\Http\Controllers\UiThemeController;
 use App\Http\Controllers\UserDataExportController;
 use App\Http\Controllers\TenantPurgeConfirmController;
@@ -245,6 +246,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/platform/tenants', PlatformTenants::class)
         ->middleware('superuser')
         ->name('platform.tenants');
+    Route::post('/platform/support/stop', StopSupportViewController::class)
+        ->middleware('superuser')
+        ->name('platform.support.stop');
     Route::get('/platform/users', PlatformUsers::class)
         ->middleware('superuser')
         ->name('platform.users');
