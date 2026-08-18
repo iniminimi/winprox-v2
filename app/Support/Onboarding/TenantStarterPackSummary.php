@@ -47,31 +47,40 @@ final readonly class TenantStarterPackSummary
         $unitIds = array_values(array_map('intval', $payload['unit_ids'] ?? []));
         $locationId = (int) ($payload['location_id'] ?? 0);
 
-        $teamNames = InternalTeam::query()
-            ->whereIn('id', $teamIds)
-            ->orderBy('sort_order')
-            ->orderBy('id')
-            ->get()
-            ->map(fn (InternalTeam $team): string => $team->localizedName())
-            ->all();
+        $teamNames = $teamIds === []
+            ? []
+            : InternalTeam::query()
+                ->with('translations')
+                ->whereIn('id', $teamIds)
+                ->orderBy('sort_order')
+                ->orderBy('id')
+                ->get()
+                ->map(fn (InternalTeam $team): string => $team->localizedName())
+                ->all();
 
-        $categoryNames = Category::query()
-            ->whereIn('id', $categoryIds)
-            ->orderBy('id')
-            ->get()
-            ->map(fn (Category $category): string => $category->localizedName())
-            ->all();
+        $categoryNames = $categoryIds === []
+            ? []
+            : Category::query()
+                ->with('translations')
+                ->whereIn('id', $categoryIds)
+                ->orderBy('id')
+                ->get()
+                ->map(fn (Category $category): string => $category->localizedName())
+                ->all();
 
         $location = $locationId > 0
-            ? Location::query()->whereKey($locationId)->first()
+            ? Location::query()->with('translations')->whereKey($locationId)->first()
             : null;
 
-        $unitNames = Unit::query()
-            ->whereIn('id', $unitIds)
-            ->orderBy('id')
-            ->get()
-            ->map(fn (Unit $unit): string => $unit->localizedName())
-            ->all();
+        $unitNames = $unitIds === []
+            ? []
+            : Unit::query()
+                ->with('translations')
+                ->whereIn('id', $unitIds)
+                ->orderBy('id')
+                ->get()
+                ->map(fn (Unit $unit): string => $unit->localizedName())
+                ->all();
 
         return new self(
             type: $type,

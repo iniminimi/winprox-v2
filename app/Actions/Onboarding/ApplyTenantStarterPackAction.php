@@ -55,9 +55,8 @@ class ApplyTenantStarterPackAction
      */
     public function handle(Tenant $tenant, ApplyTenantStarterPackData $data, User $actor): array
     {
-        $this->assertEligible($tenant);
-
         $locale = LocaleSupport::normalize($data->locale);
+        $this->assertEligible($tenant, $locale);
         $definition = TenantStarterPackCatalog::definition($data->type);
 
         $payload = DB::transaction(function () use ($tenant, $data, $actor, $locale, $definition): array {
@@ -118,7 +117,7 @@ class ApplyTenantStarterPackAction
                 'house_number' => $tenant->house_number,
                 'postal_code' => $tenant->postal_code,
                 'city' => $tenant->city,
-                'country_code' => $tenant->country_code ?: 'BE',
+                'country_code' => $tenant->country_code,
             ], $tenantId, $actorId);
             $this->fillLocationTranslations($location, $locale, $locationNames);
 
@@ -140,7 +139,7 @@ class ApplyTenantStarterPackAction
 
             $this->ensureDefaultClockPoint->handle(
                 $tenant,
-                __('team.clock_point_qr.default_name'),
+                trans('team.clock_point_qr.default_name', [], $locale),
                 $actorId,
             );
 
@@ -180,11 +179,11 @@ class ApplyTenantStarterPackAction
         return $payload;
     }
 
-    private function assertEligible(Tenant $tenant): void
+    private function assertEligible(Tenant $tenant, string $locale): void
     {
         if (filled($tenant->starter_pack_key)) {
             throw ValidationException::withMessages([
-                'starterPackType' => [__('dashboard.starter_pack.errors.already_applied')],
+                'starterPackType' => [trans('dashboard.starter_pack.errors.already_applied', [], $locale)],
             ]);
         }
 
@@ -195,7 +194,7 @@ class ApplyTenantStarterPackAction
 
         if ($hasData) {
             throw ValidationException::withMessages([
-                'starterPackType' => [__('dashboard.starter_pack.errors.not_empty')],
+                'starterPackType' => [trans('dashboard.starter_pack.errors.not_empty', [], $locale)],
             ]);
         }
     }

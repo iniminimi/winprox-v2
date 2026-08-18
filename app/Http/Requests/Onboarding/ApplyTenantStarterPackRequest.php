@@ -12,7 +12,12 @@ class ApplyTenantStarterPackRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        $user = $this->user();
+        $tenant = $user?->tenant;
+
+        return $user !== null
+            && $tenant !== null
+            && $user->can('applyStarterPack', $tenant);
     }
 
     /**
@@ -32,6 +37,7 @@ class ApplyTenantStarterPackRequest extends FormRequest
     {
         return [
             'starterPackType.required' => __('dashboard.starter_pack.errors.type_required'),
+            'starterPackType.enum' => __('dashboard.starter_pack.errors.unknown'),
         ];
     }
 

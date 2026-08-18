@@ -11,8 +11,6 @@ use App\Actions\Onboarding\RemoveTenantStarterPackAction;
 use App\Data\Onboarding\ApplyTenantStarterPackData;
 use App\Enums\TenantStarterPackType;
 use App\Http\Requests\Onboarding\ApplyTenantStarterPackRequest;
-use App\Models\Category;
-use App\Models\InternalTeam;
 use App\Models\User;
 use App\Support\Admin\AdminHealthService;
 use App\Support\Dashboard\TopScannedUnitsService;
@@ -37,8 +35,7 @@ class Dashboard extends Component
 
     public function openStarterPackModal(): void
     {
-        $this->authorize('create', InternalTeam::class);
-        $this->authorize('create', Category::class);
+        $this->authorize('applyStarterPack', $this->starterPackActor()->tenant);
 
         $this->resetValidation();
         $this->starterPackType = '';
@@ -54,16 +51,13 @@ class Dashboard extends Component
 
     public function applyStarterPack(ApplyTenantStarterPackAction $apply): void
     {
-        $this->authorize('create', InternalTeam::class);
-        $this->authorize('create', Category::class);
+        $user = $this->starterPackActor();
+        $this->authorize('applyStarterPack', $user->tenant);
 
         $validated = $this->validate(
             ApplyTenantStarterPackRequest::ruleSet(),
             ApplyTenantStarterPackRequest::messageSet(),
         );
-
-        $user = auth()->user();
-        abort_unless($user instanceof User && $user->tenant !== null, 403);
 
         $apply->handle(
             $user->tenant,
@@ -77,8 +71,7 @@ class Dashboard extends Component
 
     public function openRemoveStarterPackModal(): void
     {
-        $this->authorize('create', InternalTeam::class);
-        $this->authorize('create', Category::class);
+        $this->authorize('removeStarterPack', $this->starterPackActor()->tenant);
 
         $this->resetValidation();
         $this->showRemoveStarterPackModal = true;
@@ -92,11 +85,8 @@ class Dashboard extends Component
 
     public function removeStarterPack(RemoveTenantStarterPackAction $remove): void
     {
-        $this->authorize('create', InternalTeam::class);
-        $this->authorize('create', Category::class);
-
-        $user = auth()->user();
-        abort_unless($user instanceof User && $user->tenant !== null, 403);
+        $user = $this->starterPackActor();
+        $this->authorize('removeStarterPack', $user->tenant);
 
         $remove->handle($user->tenant, $user);
 
@@ -124,16 +114,21 @@ class Dashboard extends Component
         $hasTimeModule = $tenant?->hasTimeModule() ?? false;
         $hasIotModule = $tenant?->hasIotModule() ?? false;
         $onboarding = TenantOnboardingState::current();
-        $canApplyStarterPack = $onboarding->canApplyStarterPack()
+        $user = auth()->user();
+        $canManageStarterPack = $user instanceof User
+            && $tenant !== null
+            && $user->can('removeStarterPack', $tenant);
+        $canApplyStarterPack = $onboarding->canApplyStarterPack
             && ! ($tenant?->hasStarterPack() ?? false)
-            && (auth()->user()?->can('create', InternalTeam::class) ?? false)
-            && (auth()->user()?->can('create', Category::class) ?? false);
+            && $user instanceof User
+            && $tenant !== null
+            && $user->can('applyStarterPack', $tenant);
 
         $starterPackType = TenantStarterPackType::tryFrom($this->starterPackType);
         $starterPackPreview = $starterPackType instanceof TenantStarterPackType
             ? TenantStarterPackCatalog::preview(
                 $starterPackType,
-                LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale()),
+                LocaleSupport::normalize($user?->locale ?? app()->getLocale()),
             )
             : null;
 
@@ -149,11 +144,18 @@ class Dashboard extends Component
             'topScannedUnits' => $topScannedUnits->topForCurrentTenant(),
             'hasTimeModule' => $hasTimeModule,
             'canApplyStarterPack' => $canApplyStarterPack,
-            'canManageStarterPack' => (auth()->user()?->can('create', InternalTeam::class) ?? false)
-                && (auth()->user()?->can('create', Category::class) ?? false),
+            'canManageStarterPack' => $canManageStarterPack,
             'starterPackSummary' => $tenant !== null ? TenantStarterPackSummary::for($tenant) : null,
             'starterPackTypes' => TenantStarterPackType::cases(),
             'starterPackPreview' => $starterPackPreview,
         ]);
+    }
+
+    private function starterPackActor(): User
+    {
+        $user = auth()->user();
+        abort_unless($user instanceof User && $user->tenant !== null, 403);
+
+        return $user;
     }
 }

@@ -63,6 +63,8 @@
         "qr_codes.batch_generated": "QR-codes in batch gegenereerd",
         "qr_link_photo.deleted": "QR-fotolink verwijderd",
         "qr_link_photo.stored": "QR-fotolink opgeslagen",
+        "starter_pack.applied": "Starttemplate aangemaakt",
+        "starter_pack.removed": "Starttemplate verwijderd",
         "subscription.plan_activated": "Abonnement geactiveerd",
         "task.completed": "Taak afgehandeld",
         "task.created": "Taak aangemaakt",

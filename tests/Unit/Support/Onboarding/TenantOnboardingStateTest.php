@@ -22,7 +22,7 @@ it('toont teams-onboarding wanneer er nog geen teams zijn', function () {
         ->and($state->showCategoriesBanner())->toBeFalse()
         ->and($state->showWelcomeGuide)->toBeTrue()
         ->and($state->blocksDashboardMain())->toBeTrue()
-        ->and($state->canApplyStarterPack())->toBeTrue();
+        ->and($state->canApplyStarterPack)->toBeTrue();
 });
 
 it('toont categorieën-onboarding zodra er een team is maar nog geen categorieën', function () {
@@ -41,7 +41,7 @@ it('toont categorieën-onboarding zodra er een team is maar nog geen categorieë
         ->and($state->showCategoriesBanner())->toBeTrue()
         ->and($state->showWelcomeGuide)->toBeFalse()
         ->and($state->blocksDashboardMain())->toBeTrue()
-        ->and($state->canApplyStarterPack())->toBeFalse();
+        ->and($state->canApplyStarterPack)->toBeFalse();
 });
 
 it('toont locaties-onboarding wanneer teams en categorieën bestaan maar locaties ontbreken', function () {

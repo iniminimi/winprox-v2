@@ -63,6 +63,8 @@
         "qr_codes.batch_generated": "QR codes batch generated",
         "qr_link_photo.deleted": "QR link photo deleted",
         "qr_link_photo.stored": "QR link photo stored",
+        "starter_pack.applied": "Starter template created",
+        "starter_pack.removed": "Starter template removed",
         "subscription.plan_activated": "Subscription plan activated",
         "task.completed": "Task completed",
         "task.created": "Task created",

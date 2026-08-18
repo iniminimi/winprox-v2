@@ -63,6 +63,8 @@
         "qr_codes.batch_generated": "Codes QR générés en lot",
         "qr_link_photo.deleted": "Photo liée au QR supprimée",
         "qr_link_photo.stored": "Photo liée au QR enregistrée",
+        "starter_pack.applied": "Modèle de démarrage créé",
+        "starter_pack.removed": "Modèle de démarrage supprimé",
         "subscription.plan_activated": "Abonnement activé",
         "task.completed": "Tâche terminée",
         "task.created": "Tâche créée",

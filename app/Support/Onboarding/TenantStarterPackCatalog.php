@@ -7,7 +7,7 @@ namespace App\Support\Onboarding;
 use App\Enums\TenantStarterPackType;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Validation\ValidationException;
+use InvalidArgumentException;
 
 final class TenantStarterPackCatalog
 {
@@ -23,9 +23,7 @@ final class TenantStarterPackCatalog
         $pack = config('tenant_starter_packs.'.$type->value);
 
         if (! is_array($pack) || $pack === []) {
-            throw ValidationException::withMessages([
-                'starterPackType' => [__('dashboard.starter_pack.errors.unknown')],
-            ]);
+            throw new InvalidArgumentException('Unknown tenant starter pack: '.$type->value);
         }
 
         return $pack;
@@ -36,9 +34,7 @@ final class TenantStarterPackCatalog
         $value = Lang::get($key, [], LocaleSupport::normalize($locale));
 
         if (! is_string($value) || $value === '' || $value === $key) {
-            throw ValidationException::withMessages([
-                'starterPackType' => [__('dashboard.starter_pack.errors.unknown')],
-            ]);
+            throw new InvalidArgumentException('Missing starter pack translation: '.$key);
         }
 
         return $value;

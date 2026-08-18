@@ -19,6 +19,7 @@ final readonly class TenantOnboardingState
         public bool $needsUnitsOnboarding,
         public bool $needsClockPointOnboarding,
         public bool $showWelcomeGuide,
+        public bool $canApplyStarterPack,
     ) {}
 
     public static function current(): self
@@ -43,6 +44,10 @@ final readonly class TenantOnboardingState
                 || $locationCount === 0
                 || $unitCount === 0
                 || $clockPointCount === 0,
+            canApplyStarterPack: $teamCount === 0
+                && $categoryCount === 0
+                && $locationCount === 0
+                && $unitCount === 0,
         );
     }
 
@@ -92,14 +97,6 @@ final readonly class TenantOnboardingState
             || $this->showLocationsBanner()
             || $this->showUnitsBanner()
             || $this->showClockPointBanner();
-    }
-
-    public function canApplyStarterPack(): bool
-    {
-        return InternalTeam::query()->doesntExist()
-            && Category::query()->doesntExist()
-            && Location::query()->doesntExist()
-            && Unit::query()->doesntExist();
     }
 
     public static function unitsOnboardingHref(): string

@@ -9,6 +9,7 @@ use App\Enums\InternalTeamTranslationStatus;
 use App\Enums\TenantStarterPackType;
 use App\Enums\UnitTranslationStatus;
 use App\Livewire\Dashboard;
+use App\Models\AuditLog;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Issue;
@@ -72,7 +73,9 @@ it('maakt een hotel-starttemplate met namen in alle talen', function () {
         ->and($state->showCategoriesBanner())->toBeFalse()
         ->and($state->showLocationsBanner())->toBeFalse()
         ->and($state->showUnitsBanner())->toBeFalse()
-        ->and($state->canApplyStarterPack())->toBeFalse();
+        ->and($state->canApplyStarterPack)->toBeFalse();
+
+    expect(AuditLog::query()->where('action', 'starter_pack.applied')->exists())->toBeTrue();
 });
 
 it('weigert een starttemplate wanneer de werkruimte niet leeg is', function () {
@@ -104,6 +107,8 @@ it('verwijdert het starttemplate wanneer er geen meldingen zijn', function () {
         ->and(Category::query()->count())->toBe(0)
         ->and(Location::query()->count())->toBe(0)
         ->and(Unit::query()->count())->toBe(0);
+
+    expect(AuditLog::query()->where('action', 'starter_pack.removed')->exists())->toBeTrue();
 });
 
 it('houdt het starttemplate wanneer er al een melding op een unit staat', function () {
@@ -153,4 +158,18 @@ it('laadt een starttemplate via het dashboard en toont het resultaat', function 
         ->assertSee(__('starter_pack.types.hotel'))
         ->assertSee(__('dashboard.starter_pack.remove'))
         ->assertDontSee(__('dashboard.starter_pack.help_button'));
+});
+
+it('weigert het starttemplate voor een medewerker', function () {
+    [$tenant] = setupStarterPackAdmin();
+    $employee = User::factory()->employee()->create([
+        'tenant_id' => $tenant->id,
+        'locale' => 'nl',
+    ]);
+
+    Livewire::actingAs($employee)
+        ->test(Dashboard::class)
+        ->assertDontSee(__('dashboard.starter_pack.help_button'))
+        ->call('openStarterPackModal')
+        ->assertForbidden();
 });

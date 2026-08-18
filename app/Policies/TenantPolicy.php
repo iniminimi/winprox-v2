@@ -51,6 +51,16 @@ class TenantPolicy
         return $user->is_superuser && SuperuserTenantAccess::canAccessTenant($user, (int) $tenant->id);
     }
 
+    public function applyStarterPack(User $user, Tenant $tenant): bool
+    {
+        return $this->isTenantAdminFor($user, $tenant);
+    }
+
+    public function removeStarterPack(User $user, Tenant $tenant): bool
+    {
+        return $this->isTenantAdminFor($user, $tenant);
+    }
+
     private function isTenantAdminFor(User $user, Tenant $tenant): bool
     {
         return $user->tenant_id !== null
