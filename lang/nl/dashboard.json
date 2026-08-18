@@ -91,6 +91,7 @@
         "result_units": "Units",
         "result_next": "Open een unit, druk de QR af en dien je eerste melding in.",
         "remove": "Verwijder starttemplate",
+        "go_to_units": "Ga naar units via Locaties",
         "remove_title": "Starttemplate verwijderen?",
         "remove_text": "Teams, categorieën, locatie en units van het starttemplate worden verwijderd. Eigen toevoegingen blijven staan.",
         "remove_issues_note": "Als er al meldingen zijn, kunnen units alleen nog gedeactiveerd worden en blijft het template bestaan.",

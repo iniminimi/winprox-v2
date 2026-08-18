@@ -91,6 +91,7 @@
         "result_units": "Unit",
         "result_next": "Apri una unit, stampa il QR e invia la prima segnalazione.",
         "remove": "Rimuovi modello iniziale",
+        "go_to_units": "Vai alle unit tramite Sedi",
         "remove_title": "Rimuovere il modello iniziale?",
         "remove_text": "Team, categorie, sede e unit del modello iniziale verranno eliminati. Ciò che hai aggiunto tu resta.",
         "remove_issues_note": "Se ci sono già segnalazioni, le unit possono solo essere disattivate e il modello resta.",

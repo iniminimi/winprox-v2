@@ -91,6 +91,7 @@
         "result_units": "Units",
         "result_next": "Open a unit, print the QR and submit your first issue.",
         "remove": "Remove starter template",
+        "go_to_units": "Go to units via Locations",
         "remove_title": "Remove starter template?",
         "remove_text": "Teams, categories, location and units from the starter template will be deleted. Anything you added yourself stays.",
         "remove_issues_note": "If issues already exist, units can only be deactivated and the template remains.",

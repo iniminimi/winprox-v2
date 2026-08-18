@@ -91,6 +91,7 @@
         "result_units": "Units",
         "result_next": "Öffnen Sie eine Unit, drucken Sie den QR und senden Sie Ihre erste Meldung.",
         "remove": "Startvorlage entfernen",
+        "go_to_units": "Zu Units über Standorte",
         "remove_title": "Startvorlage entfernen?",
         "remove_text": "Teams, Kategorien, Standort und Units der Startvorlage werden gelöscht. Eigene Ergänzungen bleiben.",
         "remove_issues_note": "Gibt es bereits Meldungen, können Units nur noch deaktiviert werden und die Vorlage bleibt.",

@@ -138,6 +138,7 @@ class Dashboard extends Component
 
         $stats = $buildStats->handle($tenantId, $hasTimeModule, $hasIotModule);
         $recent = $listRecentIssues->handle($tenantId);
+        $starterPackSummary = $tenant !== null ? TenantStarterPackSummary::for($tenant) : null;
 
         return view('livewire.dashboard', [
             'stats' => $stats,
@@ -149,9 +150,12 @@ class Dashboard extends Component
             'hasTimeModule' => $hasTimeModule,
             'canApplyStarterPack' => $canApplyStarterPack,
             'canManageStarterPack' => $canManageStarterPack,
-            'starterPackSummary' => $tenant !== null ? TenantStarterPackSummary::for($tenant) : null,
+            'starterPackSummary' => $starterPackSummary,
             'starterPackTypes' => TenantStarterPackType::cases(),
             'starterPackPreview' => $starterPackPreview,
+            'starterPackUnitsHref' => $starterPackSummary !== null
+                ? TenantOnboardingState::unitsOnboardingHref()
+                : null,
         ]);
     }
 

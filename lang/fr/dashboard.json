@@ -91,6 +91,7 @@
         "result_units": "Units",
         "result_next": "Ouvrez un unit, imprimez le QR et envoyez votre premier signalement.",
         "remove": "Supprimer le modèle de départ",
+        "go_to_units": "Aller aux units via Lieux",
         "remove_title": "Supprimer le modèle de départ ?",
         "remove_text": "Les équipes, catégories, le lieu et les units du modèle de départ seront supprimés. Vos ajouts restent.",
         "remove_issues_note": "S’il existe déjà des signalements, les units ne peuvent plus qu’être désactivés et le modèle reste.",

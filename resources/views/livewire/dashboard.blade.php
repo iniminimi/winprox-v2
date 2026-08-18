@@ -12,16 +12,22 @@
                     @endif
                     <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_units') }}</strong> — {{ implode(', ', $starterPackSummary->unitNames) }}</p>
                 </div>
-                <p class="wp-muted">{{ __('dashboard.starter_pack.result_next') }}</p>
                 <p class="wp-muted">{{ __('dashboard.starter_pack.rename_note') }} {{ __('dashboard.starter_pack.issues_note') }}</p>
+                <p class="wp-text-body wp-error"><strong>{{ __('dashboard.starter_pack.result_next') }}</strong></p>
                 @error('removeStarterPack')
                     <p class="wp-error">{{ $message }}</p>
                 @enderror
-                @if ($canManageStarterPack)
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openRemoveStarterPackModal">
-                        {{ __('dashboard.starter_pack.remove') }}
-                    </button>
-                @endif
+                <div class="wp-cluster wp-cluster--tight">
+                    @if ($canManageStarterPack)
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openRemoveStarterPackModal">
+                            {{ __('dashboard.starter_pack.remove') }}
+                        </button>
+                    @endif
+                    <a href="{{ $starterPackUnitsHref }}"
+                       class="btn btn--primary btn--sm wp-badge-critical">
+                        {{ __('dashboard.starter_pack.go_to_units') }}
+                    </a>
+                </div>
             </div>
         </div>
     @endif

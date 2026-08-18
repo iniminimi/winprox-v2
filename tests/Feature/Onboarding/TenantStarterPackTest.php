@@ -182,6 +182,7 @@ it('laadt een starttemplate via het dashboard en toont het resultaat', function 
         ->assertSee(__('dashboard.starter_pack.result_title'))
         ->assertSee(__('starter_pack.types.hotel'))
         ->assertSee(__('dashboard.starter_pack.remove'))
+        ->assertSee(__('dashboard.starter_pack.go_to_units'))
         ->assertDontSee(__('dashboard.starter_pack.help_button'));
 });
 

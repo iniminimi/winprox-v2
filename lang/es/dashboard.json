@@ -91,6 +91,7 @@
         "result_units": "Units",
         "result_next": "Abre una unit, imprime el QR y envía tu primera incidencia.",
         "remove": "Eliminar plantilla inicial",
+        "go_to_units": "Ir a units vía Ubicaciones",
         "remove_title": "¿Eliminar la plantilla inicial?",
         "remove_text": "Se eliminarán los equipos, categorías, la ubicación y las units de la plantilla. Lo que hayas añadido tú se conserva.",
         "remove_issues_note": "Si ya hay incidencias, las units solo se pueden desactivar y la plantilla permanece.",
