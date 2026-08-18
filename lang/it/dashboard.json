@@ -75,6 +75,7 @@
     },
     "starter_pack": {
         "help_button": "Vuoi un aiuto per iniziare?",
+        "welcome_intro": "Segua quest’ordine alla prima configurazione, oppure clicchi sul pulsante «:button». Un team basta per iniziare. Time (timbratrice) è opzionale; Clock Point resta il QR di identificazione.",
         "modal_title": "Aiuto per iniziare",
         "intro": "Creiamo una piccola configurazione di esempio per provare WinProx subito. Nessuna segnalazione o attività — solo struttura.",
         "will_create": "Questo verrà aggiunto al tuo spazio di lavoro:",

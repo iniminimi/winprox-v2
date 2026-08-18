@@ -75,6 +75,7 @@
     },
     "starter_pack": {
         "help_button": "Voulez-vous un coup de pouce pour démarrer ?",
+        "welcome_intro": "Suivez cet ordre pour la première configuration, ou cliquez sur le bouton « :button ». Une équipe suffit pour démarrer. Time (pointeuse) est optionnel ; Clock Point reste le QR d’identification.",
         "modal_title": "Un coup de pouce pour démarrer",
         "intro": "Nous créons une petite configuration d’exemple pour essayer WinProx tout de suite. Pas de signalements ni de tâches — uniquement la structure.",
         "will_create": "Ceci sera ajouté à votre espace :",

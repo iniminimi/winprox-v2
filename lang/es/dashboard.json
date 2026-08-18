@@ -75,6 +75,7 @@
     },
     "starter_pack": {
         "help_button": "¿Quieres ayuda para empezar?",
+        "welcome_intro": "Siga este orden en la primera configuración, o pulse el botón «:button». Un equipo basta para empezar. Time (reloj de fichar) es opcional; Clock Point sigue siendo el QR de identificación.",
         "modal_title": "Ayuda para empezar",
         "intro": "Crearemos una configuración de ejemplo pequeña para que pruebes WinProx de inmediato. Sin incidencias ni tareas: solo estructura.",
         "will_create": "Esto se añadirá a tu espacio de trabajo:",

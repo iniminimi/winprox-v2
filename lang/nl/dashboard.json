@@ -75,6 +75,7 @@
     },
     "starter_pack": {
         "help_button": "Wil je op weg geholpen worden?",
+        "welcome_intro": "Volg deze volgorde bij de eerste inrichting, of klik op de knop \":button\". Eén team is genoeg om te starten. Time (prikklok) is optioneel; Clock Point blijft de aanmeld-QR.",
         "modal_title": "Op weg geholpen worden",
         "intro": "We maken een kleine voorbeeldinrichting aan zodat je WinProx meteen kunt uitproberen. Geen meldingen of taken — alleen structuur.",
         "will_create": "Dit komt in je werkruimte:",

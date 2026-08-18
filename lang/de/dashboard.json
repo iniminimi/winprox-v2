@@ -75,6 +75,7 @@
     },
     "starter_pack": {
         "help_button": "Möchten Sie Hilfe beim Start?",
+        "welcome_intro": "Folgen Sie dieser Reihenfolge bei der Ersteinrichtung, oder klicken Sie auf die Schaltfläche „:button“. Ein Team reicht zum Start. Time (Stechuhr) ist optional; Clock Point bleibt der Anmelde-QR.",
         "modal_title": "Hilfe beim Start",
         "intro": "Wir legen eine kleine Beispielstruktur an, damit Sie WinProx sofort ausprobieren können. Keine Meldungen oder Aufgaben — nur Struktur.",
         "will_create": "Das kommt in Ihren Arbeitsbereich:",

@@ -75,6 +75,7 @@
     },
     "starter_pack": {
         "help_button": "Would you like a hand getting started?",
+        "welcome_intro": "Follow this order for first-time setup, or click the \":button\" button. One team is enough to get started. Time (punch clock) is optional; Clock Point remains the sign-in QR.",
         "modal_title": "Get a head start",
         "intro": "We will create a small sample setup so you can try WinProx right away. No issues or tasks — structure only.",
         "will_create": "This will be added to your workspace:",

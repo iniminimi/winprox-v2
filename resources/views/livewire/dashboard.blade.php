@@ -61,7 +61,7 @@
             <div class="wp-stack">
                 <h2 class="wp-section-title">{{ __('manual.getting_started.label') }}</h2>
                 <p class="wp-text-body"><strong>{{ __('manual.getting_started.title') }}</strong></p>
-                <p class="wp-muted">{{ __('manual.getting_started.intro') }}</p>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.welcome_intro', ['button' => __('dashboard.starter_pack.help_button')]) }}</p>
 
                 <div class="wp-stack-tight">
                     <div class="wp-stack-tight">
