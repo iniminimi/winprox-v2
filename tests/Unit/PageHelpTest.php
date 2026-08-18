@@ -29,6 +29,19 @@ it('geeft null voor een onbekende paginasleutel', function (): void {
     expect(PageHelp::for('does.not.exist'))->toBeNull();
 });
 
+it('beschrijft het starttemplate in dashboard-paginahulp', function (): void {
+    app()->setLocale('nl');
+
+    $help = PageHelp::for('dashboard');
+
+    expect($help)->not->toBeNull();
+
+    $starter = collect($help['actions'])->first(fn (array $a): bool => $a['label'] === 'Starttemplate');
+
+    expect($starter)->not->toBeNull()
+        ->and($starter['text'])->toContain('Wil je op weg geholpen worden?');
+});
+
 it('ondersteunt geneste acties in paginahulp', function (): void {
     app()->setLocale('nl');
 

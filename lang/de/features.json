@@ -33,7 +33,8 @@
                 "Öffentliche Meldeportale mit Moderation/Unschärfe bis zur Genehmigung",
                 "Mehrere Aufgaben pro Meldung, jeweils einem Team zugewiesen",
                 "Kalender, Briefing und Dashboard-Nachverfolgung",
-                "Teams, Mitarbeiter und Teamleader-Abläufe vor Ort"
+                "Teams, Mitarbeiter und Teamleader-Abläufe vor Ort",
+                "Startvorlage auf dem Dashboard (Hotel, Krankenhaus, Industrie oder Gemeinde)"
             ]
         },
         "audience": {

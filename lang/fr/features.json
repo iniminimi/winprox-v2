@@ -33,7 +33,8 @@
                 "Portails de signalement publics avec modération/flou jusqu'à approbation",
                 "Plusieurs tâches par signalement, chacune assignée à une équipe",
                 "Calendrier, briefing et suivi via tableau de bord",
-                "Équipes, ouvriers et flux teamleader sur le terrain"
+                "Équipes, ouvriers et flux teamleader sur le terrain",
+                "Modèle de départ sur le tableau de bord (hôtel, hôpital, industrie ou commune)"
             ]
         },
         "audience": {

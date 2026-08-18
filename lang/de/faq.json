@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Standorte und Units",
-                    "text": "Erstellen Sie Standorte und fügen Sie Units hinzu (Maschinen, Zonen oder Räume), einzeln oder in Bulk. Unter Orte sind Kategorien, Standorte und Units getrennt. Verknüpfen Sie ein Team mit einer Unit, damit Aufgaben automatisch richtig landen."
+                    "text": "Erstellen Sie Standorte und fügen Sie Units hinzu (Maschinen, Zonen oder Räume), einzeln oder in Bulk — oder laden Sie auf dem Dashboard eine Startvorlage (Hotel, Krankenhaus, Industrie oder Gemeinde). Unter Orte sind Kategorien, Standorte und Units getrennt. Verknüpfen Sie ein Team mit einer Unit, damit Aufgaben automatisch richtig landen."
                 },
                 {
                     "title": "Meldung erstellen",

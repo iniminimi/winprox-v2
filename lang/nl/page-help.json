@@ -14,6 +14,10 @@
                     "text": "Het dashboard toont tellingen van locaties, units, open meldingen en open taken. Klik op een kaart om naar het bijhorende scherm te gaan."
                 },
                 {
+                    "label": "Starttemplate",
+                    "text": "Nieuwe organisaties zien de knop «Wil je op weg geholpen worden?». Kies hotel, ziekenhuis, industrie of gemeentebestuur: WinProx maakt voorbeeldteams, categorieën, één locatie en units — namen in alle talen. Dit is geen sectorsysteem, alleen een start. Hernoemen kan altijd. Verwijderen zolang er geen meldingen zijn; daarna kunnen units alleen nog gedeactiveerd worden."
+                },
+                {
                     "label": "Briefing afdrukken",
                     "text": "Opent een afdrukbaar overzicht van open taken per team — handig voor de werkvloer."
                 },

@@ -14,6 +14,10 @@
                     "text": "Le tableau de bord affiche le nombre de sites, d'unités, de signalements ouverts et de tâches ouvertes. Cliquez sur une carte pour accéder à l'écran correspondant."
                 },
                 {
+                    "label": "Modèle de départ",
+                    "text": "Les nouvelles organisations voient le bouton « Voulez-vous un coup de pouce pour démarrer ? ». Choisissez hôtel, hôpital, industrie ou commune : WinProx crée des équipes, catégories, un lieu et des units d’exemple — noms dans toutes les langues. Ce n’est pas un système de secteurs, seulement un démarrage. Vous pouvez tout renommer. Suppression possible tant qu’il n’y a pas de signalements ; ensuite les units ne peuvent plus qu’être désactivés."
+                },
+                {
                     "label": "Imprimer le briefing",
                     "text": "Ouvre un aperçu imprimable des tâches ouvertes par équipe — pratique sur le terrain."
                 },

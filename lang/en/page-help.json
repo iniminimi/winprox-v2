@@ -14,6 +14,10 @@
                     "text": "The dashboard shows counts of locations, units, open issues and open tasks. Click a card to go to the related screen."
                 },
                 {
+                    "label": "Starter template",
+                    "text": "New organisations see the button «Would you like a hand getting started?». Choose hotel, hospital, industry or municipality: WinProx creates sample teams, categories, one location and units — names in every language. This is not a sector system, only a start. You can rename everything later. Remove it while there are no issues; after that, units can only be deactivated."
+                },
+                {
                     "label": "Print briefing",
                     "text": "Opens a printable overview of open tasks per team — useful on the shop floor."
                 },

@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sites and units",
-                    "text": "Create locations and add units (machines, zones, or areas), one by one or in bulk. Under Places, Categories, Locations and Units are separate. Link a team to a unit so tasks land automatically."
+                    "text": "Create locations and add units (machines, zones, or areas), one by one or in bulk — or load a starter template from the dashboard (hotel, hospital, industry or municipality). Under Places, Categories, Locations and Units are separate. Link a team to a unit so tasks land automatically."
                 },
                 {
                     "title": "Create an issue",

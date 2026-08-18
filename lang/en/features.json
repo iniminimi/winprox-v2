@@ -33,7 +33,8 @@
                 "Public report portals with moderation/blur until approval",
                 "Multiple tasks per issue, each assigned to one team",
                 "Calendar, briefing and dashboard follow-up",
-                "Teams, workers and teamleader flows on the floor"
+                "Teams, workers and teamleader flows on the floor",
+                "Starter template on the dashboard (hotel, hospital, industry or municipality)"
             ]
         },
         "audience": {

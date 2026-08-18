@@ -33,7 +33,8 @@
                 "Portales de reporte públicos con moderación/difuminado hasta aprobación",
                 "Varias tareas por incidencia, cada una asignada a un equipo",
                 "Calendario, briefing y seguimiento en panel",
-                "Equipos, trabajadores y flujos teamleader en el terreno"
+                "Equipos, trabajadores y flujos teamleader en el terreno",
+                "Plantilla inicial en el panel (hotel, hospital, industria o ayuntamiento)"
             ]
         },
         "audience": {

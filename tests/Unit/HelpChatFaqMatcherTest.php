@@ -47,6 +47,13 @@ it('beantwoordt aan-de-slag vanuit handleiding', function (): void {
         ->and($answer)->toContain(__('manual.step_1_title'));
 });
 
+it('beantwoordt starttemplate vanuit dashboard-paginahulp', function (): void {
+    $matcher = app(HelpChatFaqMatcher::class);
+
+    expect($matcher->match('starttemplate', 'nl'))->toContain('Starttemplate')
+        ->and($matcher->match('op weg geholpen', 'nl'))->toContain('Wil je op weg geholpen worden?');
+});
+
 it('beantwoordt pricing via FAQ met nieuwe tier-structuur', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 

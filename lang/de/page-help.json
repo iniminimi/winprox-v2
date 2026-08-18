@@ -14,6 +14,10 @@
                     "text": "Das Dashboard zeigt Anzahlen von Standorten, Units, offenen Meldungen und offenen Aufgaben. Klicken Sie auf eine Karte, um zum zugehörigen Bildschirm zu gelangen."
                 },
                 {
+                    "label": "Startvorlage",
+                    "text": "Neue Organisationen sehen die Schaltfläche «Möchten Sie Hilfe beim Start?». Wählen Sie Hotel, Krankenhaus, Industrie oder Gemeinde: WinProx legt Beispiel-Teams, Kategorien, einen Standort und Units an — Namen in allen Sprachen. Das ist kein Sektorsystem, nur ein Start. Umbenennen geht immer. Löschen, solange es keine Meldungen gibt; danach können Units nur noch deaktiviert werden."
+                },
+                {
                     "label": "Briefing drucken",
                     "text": "Öffnet eine druckbare Übersicht offener Aufgaben pro Team — praktisch auf der Baustelle."
                 },

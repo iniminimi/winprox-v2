@@ -60,6 +60,15 @@ return [
             'page' => 'calendar',
         ],
         [
+            'patterns' => [
+                'starttemplate', 'starter template', 'op weg geholpen',
+                'modèle de départ', 'modele de depart', 'startvorlage',
+                'plantilla inicial', 'modello iniziale', 'starthilfe',
+            ],
+            'page' => 'dashboard',
+            'prefer' => ['starttemplate', 'starter template', 'op weg', 'modèle de départ', 'startvorlage'],
+        ],
+        [
             'patterns' => ['dashboard', 'overzicht dashboard'],
             'page' => 'dashboard',
         ],

@@ -33,7 +33,8 @@
                 "Publieke meldportalen met moderatie/blur tot goedkeuring",
                 "Meerdere taken per melding, elk aan één team",
                 "Kalender, briefing en dashboardopvolging",
-                "Teams, workers en teamleader-flows op de werkvloer"
+                "Teams, workers en teamleader-flows op de werkvloer",
+                "Starttemplate op het dashboard (hotel, ziekenhuis, industrie of gemeente)"
             ]
         },
         "audience": {

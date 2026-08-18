@@ -14,6 +14,10 @@
                     "text": "El panel de control muestra recuentos de ubicaciones, unidades, incidencias abiertas y tareas abiertas. Haga clic en una tarjeta para ir a la pantalla relacionada."
                 },
                 {
+                    "label": "Plantilla inicial",
+                    "text": "Las organizaciones nuevas ven el botón «¿Quieres ayuda para empezar?». Elige hotel, hospital, industria o ayuntamiento: WinProx crea equipos, categorías, una ubicación y units de ejemplo — nombres en todos los idiomas. No es un sistema de sectores, solo un arranque. Puedes cambiar los nombres. Se puede eliminar mientras no haya incidencias; después las units solo se pueden desactivar."
+                },
+                {
                     "label": "Imprimir briefing",
                     "text": "Abre un resumen imprimible de tareas abiertas por equipo — útil en el taller."
                 },
