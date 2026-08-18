@@ -1,6 +1,41 @@
 <div class="wp-stack" data-manual-capture="dashboard">
+    @if ($starterPackSummary)
+        <div class="wp-card wp-card-pad">
+            <div class="wp-stack">
+                <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_title') }}</strong></p>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.result_type', ['type' => __($starterPackSummary->type->labelKey())]) }}</p>
+                <div class="wp-stack-tight">
+                    <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_teams') }}</strong> — {{ implode(', ', $starterPackSummary->teamNames) }}</p>
+                    <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_categories') }}</strong> — {{ implode(', ', $starterPackSummary->categoryNames) }}</p>
+                    @if ($starterPackSummary->locationName !== '')
+                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_location') }}</strong> — {{ $starterPackSummary->locationName }}</p>
+                    @endif
+                    <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_units') }}</strong> — {{ implode(', ', $starterPackSummary->unitNames) }}</p>
+                </div>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.result_next') }}</p>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.rename_note') }} {{ __('dashboard.starter_pack.issues_note') }}</p>
+                @error('removeStarterPack')
+                    <p class="wp-error">{{ $message }}</p>
+                @enderror
+                @if ($canManageStarterPack)
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openRemoveStarterPackModal">
+                        {{ __('dashboard.starter_pack.remove') }}
+                    </button>
+                @endif
+            </div>
+        </div>
+    @endif
+
     @if ($onboarding->showTeamsBanner())
-        <x-wp-onboarding-banner stage="teams" />
+        <x-wp-onboarding-banner stage="teams">
+            @if ($canApplyStarterPack)
+                <button type="button"
+                        class="btn btn--primary btn--sm wp-badge-critical"
+                        wire:click="openStarterPackModal">
+                    {{ __('dashboard.starter_pack.help_button') }}
+                </button>
+            @endif
+        </x-wp-onboarding-banner>
     @elseif ($onboarding->showCategoriesBanner())
         <x-wp-onboarding-banner stage="categories" />
     @elseif ($onboarding->showLocationsBanner())
@@ -241,5 +276,77 @@
                 @endforelse
             </div>
         </div>
+    @endif
+
+    @if ($showStarterPackModal)
+        <x-wp-modal closeMethod="closeStarterPackModal" aria-labelledby="starter-pack-title">
+            <form wire:submit="applyStarterPack" class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="starter-pack-title" class="wp-section-title">{{ __('dashboard.starter_pack.modal_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeStarterPackModal" />
+                </div>
+
+                <p class="wp-muted">{{ __('dashboard.starter_pack.intro') }}</p>
+                <p class="wp-text-body">{{ __('dashboard.starter_pack.will_create') }} {{ __('dashboard.starter_pack.will_create_items') }}</p>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.rename_note') }}</p>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.issues_note') }}</p>
+
+                <fieldset class="wp-stack-tight">
+                    <legend class="wp-label">{{ __('dashboard.starter_pack.choose_type') }}</legend>
+                    @foreach ($starterPackTypes as $type)
+                        <label class="wp-check wp-check--boxed">
+                            <input type="radio"
+                                   name="starterPackType"
+                                   value="{{ $type->value }}"
+                                   wire:model.live="starterPackType">
+                            <span>{{ __($type->labelKey()) }}</span>
+                        </label>
+                    @endforeach
+                    @error('starterPackType') <p class="wp-error">{{ $message }}</p> @enderror
+                </fieldset>
+
+                @if ($starterPackPreview)
+                    <div class="wp-stack-tight">
+                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_teams') }}</strong> — {{ implode(', ', $starterPackPreview['teams']) }}</p>
+                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_categories') }}</strong> — {{ implode(', ', $starterPackPreview['categories']) }}</p>
+                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_location') }}</strong> — {{ $starterPackPreview['location'] }}</p>
+                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_units') }}</strong> — {{ implode(', ', $starterPackPreview['units']) }}</p>
+                    </div>
+                @endif
+
+                <div class="wp-cluster wp-cluster--tight">
+                    <button type="submit" class="btn btn--primary" wire:loading.attr="disabled">
+                        {{ __('dashboard.starter_pack.create') }}
+                    </button>
+                    <button type="button" class="btn btn--ghost" wire:click="closeStarterPackModal">
+                        {{ __('common.button.cancel') }}
+                    </button>
+                </div>
+            </form>
+        </x-wp-modal>
+    @endif
+
+    @if ($showRemoveStarterPackModal)
+        <x-wp-modal closeMethod="closeRemoveStarterPackModal" aria-labelledby="starter-pack-remove-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="starter-pack-remove-title" class="wp-section-title">{{ __('dashboard.starter_pack.remove_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeRemoveStarterPackModal" />
+                </div>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.remove_text') }}</p>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.remove_issues_note') }}</p>
+                @error('removeStarterPack')
+                    <p class="wp-error">{{ $message }}</p>
+                @enderror
+                <div class="wp-cluster wp-cluster--tight">
+                    <button type="button" class="btn btn--danger" wire:click="removeStarterPack" wire:loading.attr="disabled">
+                        {{ __('dashboard.starter_pack.confirm_remove') }}
+                    </button>
+                    <button type="button" class="btn btn--ghost" wire:click="closeRemoveStarterPackModal">
+                        {{ __('common.button.cancel') }}
+                    </button>
+                </div>
+            </div>
+        </x-wp-modal>
     @endif
 </div>

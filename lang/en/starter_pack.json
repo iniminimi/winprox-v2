@@ -1,0 +1,78 @@
+{
+    "types": {
+        "hotel": "Hotel",
+        "hospital": "Hospital",
+        "industry": "Industry",
+        "municipality": "Municipality"
+    },
+    "packs": {
+        "hotel": {
+            "teams": {
+                "cleaning": "Cleaning",
+                "reception": "Reception"
+            },
+            "categories": {
+                "rooms": "Rooms",
+                "sanitary": "Sanitary",
+                "common": "Common areas"
+            },
+            "location": "Main building",
+            "units": {
+                "room_001": "Room 001",
+                "room_002": "Room 002",
+                "room_003": "Room 003"
+            }
+        },
+        "hospital": {
+            "teams": {
+                "cleaning": "Cleaning",
+                "technical": "Technical service"
+            },
+            "categories": {
+                "patient_rooms": "Patient rooms",
+                "treatment": "Treatment rooms",
+                "installations": "Installations"
+            },
+            "location": "Main building",
+            "units": {
+                "room_101": "Room 101",
+                "room_102": "Room 102",
+                "room_103": "Room 103"
+            }
+        },
+        "industry": {
+            "teams": {
+                "technical": "Technical",
+                "cleaning": "Cleaning"
+            },
+            "categories": {
+                "machines": "Machines",
+                "warehouse": "Warehouse",
+                "office": "Office"
+            },
+            "location": "Production hall",
+            "units": {
+                "machine_001": "Machine 001",
+                "machine_002": "Machine 002",
+                "warehouse_a": "Warehouse A"
+            }
+        },
+        "municipality": {
+            "teams": {
+                "facility": "Facility",
+                "green": "Parks & maintenance"
+            },
+            "categories": {
+                "buildings": "Buildings",
+                "public_space": "Public space",
+                "sports": "Sports facilities"
+            },
+            "location": "Town hall",
+            "units": {
+                "hall_001": "Hall 001",
+                "hall_002": "Hall 002",
+                "hall_003": "Hall 003"
+            }
+        }
+    }
+}

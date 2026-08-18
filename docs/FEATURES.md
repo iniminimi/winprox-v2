@@ -31,6 +31,12 @@ Contact).
 
 **Doel:** eerste scherm na login; overzicht van locaties, units, meldingen en taken.
 
+**Starttemplate (optioneel, nieuwe organisaties)**
+- Op het dashboard zolang er nog geen teams/categorieën/locaties/units zijn: knop **"Wil je op weg geholpen worden?"**.
+- Modal: **kies je type organisatie** (hotel, ziekenhuis, industrie, gemeentebestuur) + uitleg wat er in de DB komt. Knoppen **Aanmaken** / **Annuleren**. Dit is **geen sectorsysteem** — alleen een starttemplate.
+- Na aanmaken: kaart **Starttemplate aangemaakt** met het resultaat + knop **Verwijder starttemplate**.
+- Namen van teams/categorieën/locatie/units worden in **alle talen** in de DB gezet. Hernoemen blijft altijd mogelijk. Zodra er meldingen zijn, kunnen units alleen nog **gedeactiveerd** worden; het template blijft dan bestaan.
+
 **Header**
 - Titel "Dashboard" + subtitel "Overzicht van je locaties, units, meldingen en taken".
 - Knop **"Briefing afdrukken"** → printbare briefing met **alle taken die de teams vandaag

@@ -1,0 +1,78 @@
+{
+    "types": {
+        "hotel": "Hotel",
+        "hospital": "Hospital",
+        "industry": "Industria",
+        "municipality": "Ayuntamiento"
+    },
+    "packs": {
+        "hotel": {
+            "teams": {
+                "cleaning": "Limpieza",
+                "reception": "Recepción"
+            },
+            "categories": {
+                "rooms": "Habitaciones",
+                "sanitary": "Sanitarios",
+                "common": "Zonas comunes"
+            },
+            "location": "Edificio principal",
+            "units": {
+                "room_001": "Habitación 001",
+                "room_002": "Habitación 002",
+                "room_003": "Habitación 003"
+            }
+        },
+        "hospital": {
+            "teams": {
+                "cleaning": "Limpieza",
+                "technical": "Servicio técnico"
+            },
+            "categories": {
+                "patient_rooms": "Habitaciones de pacientes",
+                "treatment": "Salas de tratamiento",
+                "installations": "Instalaciones"
+            },
+            "location": "Edificio principal",
+            "units": {
+                "room_101": "Habitación 101",
+                "room_102": "Habitación 102",
+                "room_103": "Habitación 103"
+            }
+        },
+        "industry": {
+            "teams": {
+                "technical": "Técnica",
+                "cleaning": "Limpieza"
+            },
+            "categories": {
+                "machines": "Máquinas",
+                "warehouse": "Almacén",
+                "office": "Oficina"
+            },
+            "location": "Nave de producción",
+            "units": {
+                "machine_001": "Máquina 001",
+                "machine_002": "Máquina 002",
+                "warehouse_a": "Almacén A"
+            }
+        },
+        "municipality": {
+            "teams": {
+                "facility": "Facility",
+                "green": "Zonas verdes"
+            },
+            "categories": {
+                "buildings": "Edificios",
+                "public_space": "Espacio público",
+                "sports": "Instalaciones deportivas"
+            },
+            "location": "Ayuntamiento",
+            "units": {
+                "hall_001": "Sala 001",
+                "hall_002": "Sala 002",
+                "hall_003": "Sala 003"
+            }
+        }
+    }
+}

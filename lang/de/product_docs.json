@@ -82,7 +82,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Standorte, Units, Kategorien, Teams und Ausführer (intern oder extern). Unter Standorte: Kategorien, Standorte und Units (mandantenweit). Bulk/CSV-Import, Dashboard, Dokumente und Mitteilungen im Portal. Unit-Checks pro Kategorie und Unit aktivieren; Checklisten unter Menschen → Teams — geteilt oder pro Team."
+                "body": "Standorte, Units, Kategorien, Teams und Ausführer (intern oder extern). Unter Standorte: Kategorien, Standorte und Units (mandantenweit). Bulk/CSV-Import, Dashboard, Dokumente und Mitteilungen im Portal. Unit-Checks pro Kategorie und Unit aktivieren; Checklisten unter Menschen → Teams — geteilt oder pro Team. Neue Organisationen können auf dem Dashboard eine Startvorlage wählen (Hotel, Krankenhaus, Industrie oder Gemeinde) mit Beispiel-Teams, Kategorien, einem Standort und Units — Namen in allen Sprachen. Alles lässt sich später umbenennen; sobald Meldungen existieren, können Units nur noch deaktiviert werden."
             },
             {
                 "title": "Tasks",

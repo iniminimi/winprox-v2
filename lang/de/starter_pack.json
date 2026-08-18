@@ -1,0 +1,78 @@
+{
+    "types": {
+        "hotel": "Hotel",
+        "hospital": "Krankenhaus",
+        "industry": "Industrie",
+        "municipality": "Gemeindeverwaltung"
+    },
+    "packs": {
+        "hotel": {
+            "teams": {
+                "cleaning": "Reinigung",
+                "reception": "Rezeption"
+            },
+            "categories": {
+                "rooms": "Zimmer",
+                "sanitary": "Sanitär",
+                "common": "Gemeinschaftsbereiche"
+            },
+            "location": "Hauptgebäude",
+            "units": {
+                "room_001": "Zimmer 001",
+                "room_002": "Zimmer 002",
+                "room_003": "Zimmer 003"
+            }
+        },
+        "hospital": {
+            "teams": {
+                "cleaning": "Reinigung",
+                "technical": "Technischer Dienst"
+            },
+            "categories": {
+                "patient_rooms": "Patientenzimmer",
+                "treatment": "Behandlungsräume",
+                "installations": "Anlagen"
+            },
+            "location": "Hauptgebäude",
+            "units": {
+                "room_101": "Zimmer 101",
+                "room_102": "Zimmer 102",
+                "room_103": "Zimmer 103"
+            }
+        },
+        "industry": {
+            "teams": {
+                "technical": "Technik",
+                "cleaning": "Reinigung"
+            },
+            "categories": {
+                "machines": "Maschinen",
+                "warehouse": "Lager",
+                "office": "Büro"
+            },
+            "location": "Produktionshalle",
+            "units": {
+                "machine_001": "Maschine 001",
+                "machine_002": "Maschine 002",
+                "warehouse_a": "Lager A"
+            }
+        },
+        "municipality": {
+            "teams": {
+                "facility": "Facility",
+                "green": "Grünflächen & Unterhalt"
+            },
+            "categories": {
+                "buildings": "Gebäude",
+                "public_space": "Öffentlicher Raum",
+                "sports": "Sportinfrastruktur"
+            },
+            "location": "Rathaus",
+            "units": {
+                "hall_001": "Saal 001",
+                "hall_002": "Saal 002",
+                "hall_003": "Saal 003"
+            }
+        }
+    }
+}

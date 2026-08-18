@@ -39,6 +39,9 @@ class Tenant extends Model
         'has_iot_module',
         'time_qr_rotation_months',
         'has_time_module',
+        'starter_pack_key',
+        'starter_pack_applied_at',
+        'starter_pack_payload',
     ];
 
     protected function casts(): array
@@ -52,7 +55,14 @@ class Tenant extends Model
             'has_esg_module' => 'boolean',
             'has_iot_module' => 'boolean',
             'has_time_module' => 'boolean',
+            'starter_pack_applied_at' => 'datetime',
+            'starter_pack_payload' => 'array',
         ];
+    }
+
+    public function hasStarterPack(): bool
+    {
+        return filled($this->starter_pack_key);
     }
 
     public function users(): HasMany

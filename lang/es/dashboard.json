@@ -72,5 +72,40 @@
     "register_success": {
         "title": "Cuenta creada",
         "body": "Su espacio de trabajo está listo. Ya puede gestionar sus primeras tareas."
+    },
+    "starter_pack": {
+        "help_button": "¿Quieres ayuda para empezar?",
+        "modal_title": "Ayuda para empezar",
+        "intro": "Crearemos una configuración de ejemplo pequeña para que pruebes WinProx de inmediato. Sin incidencias ni tareas: solo estructura.",
+        "will_create": "Esto se añadirá a tu espacio de trabajo:",
+        "will_create_items": "dos equipos, algunas categorías, una ubicación y tres units. Los nombres se guardan en todos los idiomas.",
+        "rename_note": "Siempre puedes cambiar el nombre de equipos, categorías, ubicaciones y units.",
+        "issues_note": "Cuando una unit tiene incidencias, solo se puede desactivar (no eliminar). La plantilla inicial permanece.",
+        "choose_type": "Elige tu tipo de organización",
+        "create": "Crear",
+        "result_title": "Plantilla inicial creada",
+        "result_type": "Tipo: :type",
+        "result_teams": "Equipos",
+        "result_categories": "Categorías",
+        "result_location": "Ubicación",
+        "result_units": "Units",
+        "result_next": "Abre una unit, imprime el QR y envía tu primera incidencia.",
+        "remove": "Eliminar plantilla inicial",
+        "remove_title": "¿Eliminar la plantilla inicial?",
+        "remove_text": "Se eliminarán los equipos, categorías, la ubicación y las units de la plantilla. Lo que hayas añadido tú se conserva.",
+        "remove_issues_note": "Si ya hay incidencias, las units solo se pueden desactivar y la plantilla permanece.",
+        "confirm_remove": "Eliminar",
+        "preview_teams": "Equipos",
+        "preview_categories": "Categorías",
+        "preview_location": "Ubicación",
+        "preview_units": "Units",
+        "errors": {
+            "type_required": "Elige un tipo de organización.",
+            "unknown": "Esta plantilla inicial no está disponible.",
+            "already_applied": "Ya hay una plantilla inicial cargada.",
+            "not_empty": "Ya tienes equipos, categorías, ubicaciones o units. La plantilla inicial solo sirve para un espacio vacío.",
+            "missing": "No hay plantilla inicial que eliminar.",
+            "has_issues": "Ya hay incidencias o trabajadores. Entonces las units solo se pueden desactivar; la plantilla permanece. Siempre puedes cambiar el nombre."
+        }
     }
 }

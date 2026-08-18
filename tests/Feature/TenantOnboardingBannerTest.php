@@ -37,6 +37,7 @@ it('toont teams-onboarding met pulserende knop op het dashboard zonder teams', f
         ->assertSee(__('dashboard.onboarding.teams.button'))
         ->assertSeeHtml('wp-badge-critical')
         ->assertSee(__('dashboard.welcome'))
+        ->assertSee(__('dashboard.starter_pack.help_button'))
         ->assertDontSeeHtml('wp-kpi--locations');
 });
 

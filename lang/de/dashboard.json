@@ -72,5 +72,40 @@
     "register_success": {
         "title": "Konto erstellt",
         "body": "Ihr Arbeitsbereich ist bereit. Sie können jetzt Ihre ersten Aufgaben verwalten."
+    },
+    "starter_pack": {
+        "help_button": "Möchten Sie Hilfe beim Start?",
+        "modal_title": "Hilfe beim Start",
+        "intro": "Wir legen eine kleine Beispielstruktur an, damit Sie WinProx sofort ausprobieren können. Keine Meldungen oder Aufgaben — nur Struktur.",
+        "will_create": "Das kommt in Ihren Arbeitsbereich:",
+        "will_create_items": "zwei Teams, einige Kategorien, ein Standort und drei Units. Die Namen werden in allen Sprachen gespeichert.",
+        "rename_note": "Teams, Kategorien, Standorte und Units können Sie jederzeit umbenennen.",
+        "issues_note": "Sobald eine Unit Meldungen hat, kann sie nur noch deaktiviert (nicht gelöscht) werden. Die Startvorlage bleibt dann bestehen.",
+        "choose_type": "Wählen Sie Ihren Organisationstyp",
+        "create": "Anlegen",
+        "result_title": "Startvorlage angelegt",
+        "result_type": "Typ: :type",
+        "result_teams": "Teams",
+        "result_categories": "Kategorien",
+        "result_location": "Standort",
+        "result_units": "Units",
+        "result_next": "Öffnen Sie eine Unit, drucken Sie den QR und senden Sie Ihre erste Meldung.",
+        "remove": "Startvorlage entfernen",
+        "remove_title": "Startvorlage entfernen?",
+        "remove_text": "Teams, Kategorien, Standort und Units der Startvorlage werden gelöscht. Eigene Ergänzungen bleiben.",
+        "remove_issues_note": "Gibt es bereits Meldungen, können Units nur noch deaktiviert werden und die Vorlage bleibt.",
+        "confirm_remove": "Entfernen",
+        "preview_teams": "Teams",
+        "preview_categories": "Kategorien",
+        "preview_location": "Standort",
+        "preview_units": "Units",
+        "errors": {
+            "type_required": "Wählen Sie einen Organisationstyp.",
+            "unknown": "Diese Startvorlage ist nicht verfügbar.",
+            "already_applied": "Es ist bereits eine Startvorlage geladen.",
+            "not_empty": "Sie haben bereits Teams, Kategorien, Standorte oder Units. Die Startvorlage gilt nur für einen leeren Arbeitsbereich.",
+            "missing": "Es gibt keine Startvorlage zum Entfernen.",
+            "has_issues": "Es gibt bereits Meldungen oder Ausführende. Units können dann nur noch deaktiviert werden; die Startvorlage bleibt. Umbenennen ist immer möglich."
+        }
     }
 }

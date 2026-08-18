@@ -72,5 +72,40 @@
     "register_success": {
         "title": "Account created",
         "body": "Your workspace is ready. You can start managing your first tasks now."
+    },
+    "starter_pack": {
+        "help_button": "Would you like a hand getting started?",
+        "modal_title": "Get a head start",
+        "intro": "We will create a small sample setup so you can try WinProx right away. No issues or tasks — structure only.",
+        "will_create": "This will be added to your workspace:",
+        "will_create_items": "two teams, a few categories, one location and three units. Names are stored in every language.",
+        "rename_note": "You can always rename teams, categories, locations and units.",
+        "issues_note": "Once a unit has issues, it can only be deactivated (not deleted). The starter template then remains.",
+        "choose_type": "Choose your organisation type",
+        "create": "Create",
+        "result_title": "Starter template created",
+        "result_type": "Type: :type",
+        "result_teams": "Teams",
+        "result_categories": "Categories",
+        "result_location": "Location",
+        "result_units": "Units",
+        "result_next": "Open a unit, print the QR and submit your first issue.",
+        "remove": "Remove starter template",
+        "remove_title": "Remove starter template?",
+        "remove_text": "Teams, categories, location and units from the starter template will be deleted. Anything you added yourself stays.",
+        "remove_issues_note": "If issues already exist, units can only be deactivated and the template remains.",
+        "confirm_remove": "Remove",
+        "preview_teams": "Teams",
+        "preview_categories": "Categories",
+        "preview_location": "Location",
+        "preview_units": "Units",
+        "errors": {
+            "type_required": "Choose an organisation type.",
+            "unknown": "This starter template is not available.",
+            "already_applied": "A starter template is already loaded.",
+            "not_empty": "You already have teams, categories, locations or units. The starter template is only for an empty workspace.",
+            "missing": "There is no starter template to remove.",
+            "has_issues": "There are already issues or workers. Units can then only be deactivated; the starter template remains. You can always rename."
+        }
     }
 }

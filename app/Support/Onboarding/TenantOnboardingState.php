@@ -94,6 +94,14 @@ final readonly class TenantOnboardingState
             || $this->showClockPointBanner();
     }
 
+    public function canApplyStarterPack(): bool
+    {
+        return InternalTeam::query()->doesntExist()
+            && Category::query()->doesntExist()
+            && Location::query()->doesntExist()
+            && Unit::query()->doesntExist();
+    }
+
     public static function unitsOnboardingHref(): string
     {
         $ids = Location::query()->orderBy('id')->limit(2)->pluck('id');

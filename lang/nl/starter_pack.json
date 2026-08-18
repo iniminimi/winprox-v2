@@ -1,0 +1,78 @@
+{
+    "types": {
+        "hotel": "Hotel",
+        "hospital": "Ziekenhuis",
+        "industry": "Industrie",
+        "municipality": "Gemeentebestuur"
+    },
+    "packs": {
+        "hotel": {
+            "teams": {
+                "cleaning": "Schoonmaak",
+                "reception": "Receptie"
+            },
+            "categories": {
+                "rooms": "Kamers",
+                "sanitary": "Sanitair",
+                "common": "Gemeenschappelijke ruimtes"
+            },
+            "location": "Hoofdgebouw",
+            "units": {
+                "room_001": "Kamer 001",
+                "room_002": "Kamer 002",
+                "room_003": "Kamer 003"
+            }
+        },
+        "hospital": {
+            "teams": {
+                "cleaning": "Schoonmaak",
+                "technical": "Technische dienst"
+            },
+            "categories": {
+                "patient_rooms": "Patiëntkamers",
+                "treatment": "Behandelkamers",
+                "installations": "Installaties"
+            },
+            "location": "Hoofdgebouw",
+            "units": {
+                "room_101": "Kamer 101",
+                "room_102": "Kamer 102",
+                "room_103": "Kamer 103"
+            }
+        },
+        "industry": {
+            "teams": {
+                "technical": "Techniek",
+                "cleaning": "Schoonmaak"
+            },
+            "categories": {
+                "machines": "Machines",
+                "warehouse": "Magazijn",
+                "office": "Kantoor"
+            },
+            "location": "Productiehal",
+            "units": {
+                "machine_001": "Machine 001",
+                "machine_002": "Machine 002",
+                "warehouse_a": "Magazijn A"
+            }
+        },
+        "municipality": {
+            "teams": {
+                "facility": "Faciliteit",
+                "green": "Groen & onderhoud"
+            },
+            "categories": {
+                "buildings": "Gebouwen",
+                "public_space": "Openbare ruimte",
+                "sports": "Sportinfrastructuur"
+            },
+            "location": "Gemeentehuis",
+            "units": {
+                "hall_001": "Zaal 001",
+                "hall_002": "Zaal 002",
+                "hall_003": "Zaal 003"
+            }
+        }
+    }
+}

@@ -72,5 +72,40 @@
     "register_success": {
         "title": "Compte créé",
         "body": "Votre espace de travail est prêt. Vous pouvez maintenant gérer vos premières tâches."
+    },
+    "starter_pack": {
+        "help_button": "Voulez-vous un coup de pouce pour démarrer ?",
+        "modal_title": "Un coup de pouce pour démarrer",
+        "intro": "Nous créons une petite configuration d’exemple pour essayer WinProx tout de suite. Pas de signalements ni de tâches — uniquement la structure.",
+        "will_create": "Ceci sera ajouté à votre espace :",
+        "will_create_items": "deux équipes, quelques catégories, un lieu et trois units. Les noms sont enregistrés dans toutes les langues.",
+        "rename_note": "Vous pouvez toujours renommer les équipes, catégories, lieux et units.",
+        "issues_note": "Dès qu’un unit a des signalements, il ne peut plus qu’être désactivé (pas supprimé). Le modèle de départ reste alors en place.",
+        "choose_type": "Choisissez votre type d’organisation",
+        "create": "Créer",
+        "result_title": "Modèle de départ créé",
+        "result_type": "Type : :type",
+        "result_teams": "Équipes",
+        "result_categories": "Catégories",
+        "result_location": "Lieu",
+        "result_units": "Units",
+        "result_next": "Ouvrez un unit, imprimez le QR et envoyez votre premier signalement.",
+        "remove": "Supprimer le modèle de départ",
+        "remove_title": "Supprimer le modèle de départ ?",
+        "remove_text": "Les équipes, catégories, le lieu et les units du modèle de départ seront supprimés. Vos ajouts restent.",
+        "remove_issues_note": "S’il existe déjà des signalements, les units ne peuvent plus qu’être désactivés et le modèle reste.",
+        "confirm_remove": "Supprimer",
+        "preview_teams": "Équipes",
+        "preview_categories": "Catégories",
+        "preview_location": "Lieu",
+        "preview_units": "Units",
+        "errors": {
+            "type_required": "Choisissez un type d’organisation.",
+            "unknown": "Ce modèle de départ n’est pas disponible.",
+            "already_applied": "Un modèle de départ est déjà chargé.",
+            "not_empty": "Vous avez déjà des équipes, catégories, lieux ou units. Le modèle de départ est réservé à un espace vide.",
+            "missing": "Il n’y a pas de modèle de départ à supprimer.",
+            "has_issues": "Il y a déjà des signalements ou des exécutants. Les units ne peuvent alors plus qu’être désactivés ; le modèle reste. Vous pouvez toujours renommer."
+        }
     }
 }

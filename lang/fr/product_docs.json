@@ -82,7 +82,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Sites, unités, catégories, équipes et exécutants (internes ou externes). Sous Emplacements : Catégories, Sites et Unités (à l’échelle du tenant). Import bulk/CSV, tableau de bord, documents et annonces sur le portail. Activer les contrôles d’unité par catégorie et unité ; listes sous Personnes → Équipes — partagées ou par équipe."
+                "body": "Sites, unités, catégories, équipes et exécutants (internes ou externes). Sous Emplacements : Catégories, Sites et Unités (à l’échelle du tenant). Import bulk/CSV, tableau de bord, documents et annonces sur le portail. Activer les contrôles d’unité par catégorie et unité ; listes sous Personnes → Équipes — partagées ou par équipe. Les nouvelles organisations peuvent charger un modèle de départ sur le tableau de bord (hôtel, hôpital, industrie ou commune) avec des équipes, catégories, un lieu et des units d’exemple — noms dans toutes les langues. Vous pouvez tout renommer plus tard ; dès qu’il y a des signalements, les units ne peuvent plus qu’être désactivés."
             },
             {
                 "title": "Tasks",

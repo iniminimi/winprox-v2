@@ -1,0 +1,78 @@
+{
+    "types": {
+        "hotel": "Hôtel",
+        "hospital": "Hôpital",
+        "industry": "Industrie",
+        "municipality": "Administration communale"
+    },
+    "packs": {
+        "hotel": {
+            "teams": {
+                "cleaning": "Nettoyage",
+                "reception": "Réception"
+            },
+            "categories": {
+                "rooms": "Chambres",
+                "sanitary": "Sanitaires",
+                "common": "Espaces communs"
+            },
+            "location": "Bâtiment principal",
+            "units": {
+                "room_001": "Chambre 001",
+                "room_002": "Chambre 002",
+                "room_003": "Chambre 003"
+            }
+        },
+        "hospital": {
+            "teams": {
+                "cleaning": "Nettoyage",
+                "technical": "Service technique"
+            },
+            "categories": {
+                "patient_rooms": "Chambres patients",
+                "treatment": "Salles de soins",
+                "installations": "Installations"
+            },
+            "location": "Bâtiment principal",
+            "units": {
+                "room_101": "Chambre 101",
+                "room_102": "Chambre 102",
+                "room_103": "Chambre 103"
+            }
+        },
+        "industry": {
+            "teams": {
+                "technical": "Technique",
+                "cleaning": "Nettoyage"
+            },
+            "categories": {
+                "machines": "Machines",
+                "warehouse": "Entrepôt",
+                "office": "Bureau"
+            },
+            "location": "Hall de production",
+            "units": {
+                "machine_001": "Machine 001",
+                "machine_002": "Machine 002",
+                "warehouse_a": "Entrepôt A"
+            }
+        },
+        "municipality": {
+            "teams": {
+                "facility": "Facility",
+                "green": "Espaces verts"
+            },
+            "categories": {
+                "buildings": "Bâtiments",
+                "public_space": "Espace public",
+                "sports": "Infrastructures sportives"
+            },
+            "location": "Maison communale",
+            "units": {
+                "hall_001": "Salle 001",
+                "hall_002": "Salle 002",
+                "hall_003": "Salle 003"
+            }
+        }
+    }
+}

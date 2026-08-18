@@ -72,5 +72,40 @@
     "register_success": {
         "title": "Account creato",
         "body": "Il Suo spazio di lavoro è pronto. Ora può gestire le Sue prime attività."
+    },
+    "starter_pack": {
+        "help_button": "Vuoi un aiuto per iniziare?",
+        "modal_title": "Aiuto per iniziare",
+        "intro": "Creiamo una piccola configurazione di esempio per provare WinProx subito. Nessuna segnalazione o attività — solo struttura.",
+        "will_create": "Questo verrà aggiunto al tuo spazio di lavoro:",
+        "will_create_items": "due team, alcune categorie, una sede e tre unit. I nomi sono salvati in tutte le lingue.",
+        "rename_note": "Puoi sempre rinominare team, categorie, sedi e unit.",
+        "issues_note": "Quando una unit ha segnalazioni, può essere solo disattivata (non eliminata). Il modello iniziale resta.",
+        "choose_type": "Scegli il tipo di organizzazione",
+        "create": "Crea",
+        "result_title": "Modello iniziale creato",
+        "result_type": "Tipo: :type",
+        "result_teams": "Team",
+        "result_categories": "Categorie",
+        "result_location": "Sede",
+        "result_units": "Unit",
+        "result_next": "Apri una unit, stampa il QR e invia la prima segnalazione.",
+        "remove": "Rimuovi modello iniziale",
+        "remove_title": "Rimuovere il modello iniziale?",
+        "remove_text": "Team, categorie, sede e unit del modello iniziale verranno eliminati. Ciò che hai aggiunto tu resta.",
+        "remove_issues_note": "Se ci sono già segnalazioni, le unit possono solo essere disattivate e il modello resta.",
+        "confirm_remove": "Rimuovi",
+        "preview_teams": "Team",
+        "preview_categories": "Categorie",
+        "preview_location": "Sede",
+        "preview_units": "Unit",
+        "errors": {
+            "type_required": "Scegli un tipo di organizzazione.",
+            "unknown": "Questo modello iniziale non è disponibile.",
+            "already_applied": "Un modello iniziale è già caricato.",
+            "not_empty": "Hai già team, categorie, sedi o unit. Il modello iniziale è solo per uno spazio vuoto.",
+            "missing": "Non c’è un modello iniziale da rimuovere.",
+            "has_issues": "Ci sono già segnalazioni o operatori. Le unit possono allora solo essere disattivate; il modello resta. Puoi sempre rinominare."
+        }
     }
 }

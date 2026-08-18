@@ -72,5 +72,40 @@
     "register_success": {
         "title": "Account aangemaakt",
         "body": "Je werkruimte is klaar. Je kan nu meteen je eerste taken beheren."
+    },
+    "starter_pack": {
+        "help_button": "Wil je op weg geholpen worden?",
+        "modal_title": "Op weg geholpen worden",
+        "intro": "We maken een kleine voorbeeldinrichting aan zodat je WinProx meteen kunt uitproberen. Geen meldingen of taken — alleen structuur.",
+        "will_create": "Dit komt in je werkruimte:",
+        "will_create_items": "twee teams, enkele categorieën, één locatie en drie units. De namen worden in alle talen opgeslagen.",
+        "rename_note": "Teams, categorieën, locaties en units kun je altijd hernoemen.",
+        "issues_note": "Zodra er meldingen op een unit staan, kan die unit alleen nog gedeactiveerd worden (niet verwijderd). Het starttemplate blijft dan bestaan.",
+        "choose_type": "Kies je type organisatie",
+        "create": "Aanmaken",
+        "result_title": "Starttemplate aangemaakt",
+        "result_type": "Type: :type",
+        "result_teams": "Teams",
+        "result_categories": "Categorieën",
+        "result_location": "Locatie",
+        "result_units": "Units",
+        "result_next": "Open een unit, druk de QR af en dien je eerste melding in.",
+        "remove": "Verwijder starttemplate",
+        "remove_title": "Starttemplate verwijderen?",
+        "remove_text": "Teams, categorieën, locatie en units van het starttemplate worden verwijderd. Eigen toevoegingen blijven staan.",
+        "remove_issues_note": "Als er al meldingen zijn, kunnen units alleen nog gedeactiveerd worden en blijft het template bestaan.",
+        "confirm_remove": "Verwijderen",
+        "preview_teams": "Teams",
+        "preview_categories": "Categorieën",
+        "preview_location": "Locatie",
+        "preview_units": "Units",
+        "errors": {
+            "type_required": "Kies een type organisatie.",
+            "unknown": "Dit starttemplate is niet beschikbaar.",
+            "already_applied": "Er is al een starttemplate geladen.",
+            "not_empty": "Je hebt al teams, categorieën, locaties of units. Het starttemplate is alleen voor een lege werkruimte.",
+            "missing": "Er is geen starttemplate om te verwijderen.",
+            "has_issues": "Er zijn al meldingen of uitvoerders. Units kun je dan alleen nog deactiveren; het starttemplate blijft bestaan. Hernoemen kan altijd."
+        }
     }
 }
