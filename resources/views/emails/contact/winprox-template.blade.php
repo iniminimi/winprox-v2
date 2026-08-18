@@ -60,7 +60,15 @@
         .body ul,
         .body ol {
             margin: 0 0 16px 0;
-            padding-left: 1.25rem;
+            padding-left: 24px;
+        }
+        .body ul {
+            list-style-type: disc;
+            list-style-position: outside;
+        }
+        .body ol {
+            list-style-type: decimal;
+            list-style-position: outside;
         }
         .footer {
             background-color: #f1f5f9;

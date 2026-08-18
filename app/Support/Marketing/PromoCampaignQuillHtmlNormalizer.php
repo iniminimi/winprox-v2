@@ -308,7 +308,7 @@ final class PromoCampaignQuillHtmlNormalizer
             static fn (array $matches): string => self::mailBlockOpenTag(
                 'ul',
                 $matches[1] ?? '',
-                'margin:0 0 16px 0;padding-left:1.25rem',
+                'margin:0 0 16px 0;padding-left:24px;list-style-type:disc;list-style-position:outside',
             ),
             $html,
         ) ?? $html;
@@ -318,7 +318,7 @@ final class PromoCampaignQuillHtmlNormalizer
             static fn (array $matches): string => self::mailBlockOpenTag(
                 'ol',
                 $matches[1] ?? '',
-                'margin:0 0 16px 0;padding-left:1.25rem',
+                'margin:0 0 16px 0;padding-left:24px;list-style-type:decimal;list-style-position:outside',
             ),
             $html,
         ) ?? $html;
@@ -330,7 +330,7 @@ final class PromoCampaignQuillHtmlNormalizer
      */
     private static function compactMailSignatureSpacing(string $html): string
     {
-        if (! preg_match_all('/<p(\s[^>]*)?>(.*?)<\/p>/is', $html, $matches, PREG_SET_ORDER)) {
+        if (! preg_match_all('/<p(\s[^>]*)?>(.*?)<\/p>/is', $html, $matches, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
             return $html;
         }
 
@@ -338,7 +338,7 @@ final class PromoCampaignQuillHtmlNormalizer
 
         $signatureStartIndex = null;
         foreach ($matches as $index => $match) {
-            $text = trim(preg_replace('/\s+/u', ' ', strip_tags($match[2])) ?? '');
+            $text = trim(preg_replace('/\s+/u', ' ', strip_tags($match[2][0])) ?? '');
             if ($text !== '' && preg_match($closingPattern, $text)) {
                 $signatureStartIndex = $index;
             }
@@ -348,36 +348,27 @@ final class PromoCampaignQuillHtmlNormalizer
             return $html;
         }
 
-        $result = '';
-        foreach ($matches as $index => $match) {
-            if ($index > $signatureStartIndex) {
-                continue;
-            }
-
-            if ($index === $signatureStartIndex) {
-                $result .= self::mailParagraphTag('0 0 24px 0', $match[1] ?? '', $match[2]);
-
-                continue;
-            }
-
-            $result .= $match[0];
-        }
+        $signatureParagraph = $matches[$signatureStartIndex];
+        $prefix = substr($html, 0, $signatureParagraph[0][1]);
+        $result = $prefix.self::mailParagraphTag(
+            '0 0 24px 0',
+            $signatureParagraph[1][0] ?? '',
+            $signatureParagraph[2][0],
+        );
 
         $signatureLines = [];
         foreach (array_slice($matches, $signatureStartIndex + 1) as $match) {
-            $line = trim($match[2]);
+            $line = trim($match[2][0]);
             if ($line !== '' && ! PromoCampaignHtmlSanitizer::isBlank($line)) {
                 $signatureLines[] = $line;
             }
         }
 
         if ($signatureLines === []) {
-            return $result;
+            return $html;
         }
 
-        $result .= '<p style="margin:0">'.implode('<br>', $signatureLines).'</p>';
-
-        return $result;
+        return $result.'<p style="margin:0">'.implode('<br>', $signatureLines).'</p>';
     }
 
     private static function mailParagraphTag(string $margin, string $attrs, string $inner): string

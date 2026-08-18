@@ -477,6 +477,25 @@ it('compacteert handtekeningregels in promo e-mail', function () {
         ->not->toMatch('/Founder WinProx<\/p>\s*<p style="margin:0 0 16px 0">www\.winprox\.app/');
 });
 
+it('behoudt quill-bullets in promo e-mail naast de handtekening', function () {
+    $html = '<p>Madame, Monsieur,</p>'
+        .'<p>Les avantages :</p>'
+        .'<ol><li data-list="bullet"><span class="ql-ui"></span><strong>Gestion</strong> : Tous les signalements.</li>'
+        .'<li data-list="bullet"><span class="ql-ui"></span>Entretien optimisé.</li></ol>'
+        .'<p>Cordialement,</p>'
+        .'<p>Dominique Schaepdrijver</p>'
+        .'<p>Founder WinProx</p>';
+
+    $prepared = PromoCampaignQuillHtmlNormalizer::forMail($html);
+
+    expect($prepared)
+        ->toContain('<ul style="margin:0 0 16px 0;padding-left:24px;list-style-type:disc;list-style-position:outside">')
+        ->toContain('<li><strong>Gestion</strong> : Tous les signalements.</li>')
+        ->toContain('<li>Entretien optimisé.</li></ul>')
+        ->toContain('<p style="margin:0 0 24px 0">Cordialement,</p>')
+        ->toContain('Dominique Schaepdrijver<br>Founder WinProx');
+});
+
 it('verwijdert alleen vast handtekeningblok uit brief voor docx', function () {
     $html = '<p>Wavre</p><p>place de l\'Hôtel de Ville</p><p>1300 Wavre</p><p><br></p>'
         .'<p>Madame, Monsieur,</p><p><br></p>'
