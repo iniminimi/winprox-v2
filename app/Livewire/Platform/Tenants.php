@@ -125,7 +125,8 @@ class Tenants extends Component
                 $like = '%'.$term.'%';
                 $query->where('name', 'like', $like);
             })
-            ->orderBy('name')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
             ->limit(100)
             ->get();
 

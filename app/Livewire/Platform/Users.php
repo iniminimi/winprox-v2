@@ -37,8 +37,8 @@ class Users extends Component
                         });
                 });
             })
-            ->orderByDesc('is_superuser')
-            ->orderBy('name')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
             ->limit(100)
             ->get();
 
