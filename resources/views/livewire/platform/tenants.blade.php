@@ -127,9 +127,9 @@
                         @if (empty($deleteCounts))
                             <p class="wp-muted wp-text-sm">{{ __('platform.tenants_delete.counts_empty') }}</p>
                         @else
-                            <div class="wp-cluster wp-cluster--tight">
+                            <div class="wp-cluster">
                                 @foreach ($deleteCounts as $countKey => $countValue)
-                                    <span class="wp-pill wp-pill--closed wp-pill--xs">
+                                    <span class="wp-pill wp-pill--closed">
                                         {{ __('mail.tenant_purge.completed.count.'.$countKey, ['count' => $countValue]) }}
                                     </span>
                                 @endforeach
