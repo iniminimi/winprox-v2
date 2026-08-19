@@ -494,6 +494,22 @@ it('toont stop-knop en vraagt annulering aan via livewire', function () {
         ->and(TranslationSyncCancellation::requested())->toBeTrue();
 });
 
+it('meldt bij een gestopte run wat al op de server staat', function () {
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+
+    app(TranslationSyncStatusStore::class)->write(TranslationSyncPhase::Cancelled, (int) $user->id, [
+        'total' => 175,
+        'imported' => 100,
+        'message' => 'cancelled',
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(PlatformTranslationSync::class)
+        ->assertSee(__('platform.translation_sync.completed_summary', ['imported' => 100, 'total' => 175]))
+        ->assertSee(__('platform.translation_sync.partial_saved_note'))
+        ->assertDontSee(__('platform.translation_sync.cancelled_note'));
+});
+
 it('weigert stoppen wanneer er geen actieve run is', function () {
     $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
 

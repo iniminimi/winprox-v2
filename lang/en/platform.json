@@ -360,6 +360,7 @@
         "cancelling_hint": "The worker stops once the current step finishes (SSH may take a while). Taking too long? Clear status and close queue:work in PowerShell with Ctrl+C.",
         "nothing_to_cancel": "No translation run is in progress to stop.",
         "cancelled_note": "The translation run was stopped. Nothing was imported on the server.",
+        "partial_saved_note": "What was already translated is saved on the server. Start again to translate the rest.",
         "phase_cancelling": "Stopping…",
         "phase_cancelled": "Stopped"
     },

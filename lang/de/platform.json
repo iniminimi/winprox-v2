@@ -360,6 +360,7 @@
         "cancelling_hint": "Der Worker stoppt, sobald der aktuelle Schritt fertig ist (SSH kann dauern). Dauert es zu lange? Status löschen und queue:work in PowerShell mit Ctrl+C beenden.",
         "nothing_to_cancel": "Kein Übersetzungslauf läuft, der gestoppt werden könnte.",
         "cancelled_note": "Der Übersetzungslauf wurde gestoppt. Nichts wurde auf dem Server importiert.",
+        "partial_saved_note": "Was bereits übersetzt war, ist auf dem Server gespeichert. Starten Sie erneut, um den Rest zu übersetzen.",
         "phase_cancelling": "Wird gestoppt…",
         "phase_cancelled": "Gestoppt"
     },

@@ -360,6 +360,7 @@
         "cancelling_hint": "De worker stopt zodra de huidige stap klaar is (SSH kan even duren). Duurt het te lang? Wis de status en sluit queue:work in PowerShell met Ctrl+C.",
         "nothing_to_cancel": "Er loopt geen vertaal-run om te stoppen.",
         "cancelled_note": "De vertaal-run is gestopt. Niets is geïmporteerd op de server.",
+        "partial_saved_note": "Wat al vertaald was, staat op de server. Start opnieuw om de rest te vertalen.",
         "phase_cancelling": "Stoppen…",
         "phase_cancelled": "Gestopt"
     },

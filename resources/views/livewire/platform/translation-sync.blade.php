@@ -168,21 +168,22 @@ php artisan queue:work</code></pre>
                     @endif
                 @endif
 
-                @if ($phase === 'cancelled')
-                    <p class="wp-muted">{{ __('platform.translation_sync.cancelled_note') }}</p>
-                @endif
-
                 @if ($phase === 'failed' && ! empty($status['message']))
                     <p class="wp-muted">{{ $status['message'] }}</p>
                 @endif
 
-                @if (in_array($phase, ['failed', 'cancelled'], true) && (int) ($status['imported'] ?? 0) > 0)
-                    <p class="wp-text-body">
-                        {{ __('platform.translation_sync.completed_summary', [
-                            'imported' => (int) $status['imported'],
-                            'total' => (int) ($status['total'] ?? 0),
-                        ]) }}
-                    </p>
+                @if (in_array($phase, ['failed', 'cancelled'], true))
+                    @if ((int) ($status['imported'] ?? 0) > 0)
+                        <p class="wp-text-body">
+                            {{ __('platform.translation_sync.completed_summary', [
+                                'imported' => (int) $status['imported'],
+                                'total' => (int) ($status['total'] ?? 0),
+                            ]) }}
+                        </p>
+                        <p class="wp-muted">{{ __('platform.translation_sync.partial_saved_note') }}</p>
+                    @elseif ($phase === 'cancelled')
+                        <p class="wp-muted">{{ __('platform.translation_sync.cancelled_note') }}</p>
+                    @endif
                 @endif
             </div>
         @endif

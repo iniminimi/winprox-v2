@@ -360,6 +360,7 @@
         "cancelling_hint": "Le worker s'arrête dès que l'étape en cours est terminée (SSH peut prendre du temps). Trop long ? Effacez le statut et fermez queue:work dans PowerShell avec Ctrl+C.",
         "nothing_to_cancel": "Aucune synchronisation en cours à arrêter.",
         "cancelled_note": "La synchronisation a été arrêtée. Rien n'a été importé sur le serveur.",
+        "partial_saved_note": "Ce qui était déjà traduit est enregistré sur le serveur. Relancez pour traduire le reste.",
         "phase_cancelling": "Arrêt…",
         "phase_cancelled": "Arrêtée"
     },

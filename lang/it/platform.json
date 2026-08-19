@@ -360,6 +360,7 @@
         "cancelling_hint": "Il worker si ferma al termine del passaggio corrente (SSH può richiedere tempo). Troppo lungo? Cancelli lo stato e chiuda queue:work in PowerShell con Ctrl+C.",
         "nothing_to_cancel": "Nessuna sincronizzazione in corso da interrompere.",
         "cancelled_note": "La sincronizzazione è stata interrotta. Nulla è stato importato sul server.",
+        "partial_saved_note": "Ciò che era già tradotto è salvato sul server. Riavvii per tradurre il resto.",
         "phase_cancelling": "Interruzione…",
         "phase_cancelled": "Interrotta"
     },

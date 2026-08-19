@@ -360,6 +360,7 @@
         "cancelling_hint": "El worker se detiene al terminar el paso actual (SSH puede tardar). ¿Tarda demasiado? Borre el estado y cierre queue:work en PowerShell con Ctrl+C.",
         "nothing_to_cancel": "No hay ninguna sincronización en curso que detener.",
         "cancelled_note": "La sincronización se detuvo. No se importó nada en el servidor.",
+        "partial_saved_note": "Lo que ya se tradujo está guardado en el servidor. Vuelva a iniciar para traducir el resto.",
         "phase_cancelling": "Deteniendo…",
         "phase_cancelled": "Detenida"
     },
