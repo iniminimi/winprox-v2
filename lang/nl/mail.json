@@ -127,7 +127,7 @@
                 "issue_updates": "Melding-updates: :count",
                 "issue_photos": "Meldingsfoto's: :count",
                 "tasks": "Taken: :count",
-                "workers": "Workers: :count",
+                "workers": "Uitvoerders: :count",
                 "teams": "Teams: :count",
                 "categories": "Categorieën: :count",
                 "documents": "Documenten: :count",

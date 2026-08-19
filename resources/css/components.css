@@ -642,6 +642,25 @@
     font-weight: 600;
 }
 
+/* Organisatierij: beheeracties in één rechterkolom, zodat elke rij identiek uitlijnt. */
+.wp-platform-tenant-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.wp-platform-tenant-actions .wp-input {
+    width: 6.5rem;
+    flex: 0 0 auto;
+}
+
+@media (max-width: 40rem) {
+    .wp-platform-tenant-actions {
+        align-items: flex-start;
+    }
+}
+
 .wp-kpi {
     display: flex;
     flex-direction: column;

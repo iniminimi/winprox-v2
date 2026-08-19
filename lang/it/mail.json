@@ -127,7 +127,7 @@
                 "issue_updates": "Issue updates: :count",
                 "issue_photos": "Issue photos: :count",
                 "tasks": "Tasks: :count",
-                "workers": "Workers: :count",
+                "workers": "Lavoratori: :count",
                 "teams": "Teams: :count",
                 "categories": "Categories: :count",
                 "documents": "Documents: :count",

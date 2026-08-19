@@ -36,9 +36,14 @@
                         $planKey = is_string($planKey) ? strtolower($planKey) : null;
                         $isCorporate = $planKey === 'corporate';
                     @endphp
-                    <li class="wp-list-row">
-                        <div>
-                            <strong>{{ $tenant->name }}</strong>
+                    <li class="wp-list-row" wire:key="platform-tenant-{{ $tenant->id }}">
+                        <div class="wp-grow wp-stack-tight">
+                            <p class="wp-text-body">
+                                <strong>{{ $tenant->name }}</strong>
+                                @if ($tenant->users_count > 0 && $tenant->verified_users_count === 0)
+                                    <span class="wp-pill wp-pill--progress">{{ __('platform.tenants_delete.unverified_badge') }}</span>
+                                @endif
+                            </p>
                             <p class="wp-muted wp-text-sm">
                                 #{{ $tenant->id }}
                                 · {{ $tenant->is_active ? __('platform.status_active') : __('platform.status_inactive') }}
@@ -49,31 +54,30 @@
                                     · {{ __('platform.corporate_units_cap_value', ['cap' => $tenant->billing_units_cap]) }}
                                 @endif
                             </p>
-                            @if ($tenant->users_count > 0 && $tenant->verified_users_count === 0)
-                                <span class="wp-pill wp-pill--progress">{{ __('platform.tenants_delete.unverified_badge') }}</span>
-                            @endif
-                        </div>
-                        <div class="wp-cluster">
-                            @if ($tenant->isTrialActive())
+                            <div class="wp-chip-row">
+                                @if ($tenant->isTrialActive())
+                                    <label class="wp-chip wp-chip--sm">
+                                        <input type="checkbox" wire:click="toggleTrialApi({{ $tenant->id }})" {{ $tenant->allow_trial_api ? 'checked' : '' }}>
+                                        <span>{{ __('platform.trial_api') }}</span>
+                                    </label>
+                                @endif
                                 <label class="wp-chip wp-chip--sm">
-                                    <input type="checkbox" wire:click="toggleTrialApi({{ $tenant->id }})" {{ $tenant->allow_trial_api ? 'checked' : '' }}>
-                                    <span>{{ __('platform.trial_api') }}</span>
+                                    <input type="checkbox" wire:click="toggleEsgModule({{ $tenant->id }})" {{ $tenant->has_esg_module ? 'checked' : '' }}>
+                                    <span>{{ __('platform.esg_module') }}</span>
                                 </label>
-                            @endif
-                            <label class="wp-chip wp-chip--sm">
-                                <input type="checkbox" wire:click="toggleEsgModule({{ $tenant->id }})" {{ $tenant->has_esg_module ? 'checked' : '' }}>
-                                <span>{{ __('platform.esg_module') }}</span>
-                            </label>
-                            <label class="wp-chip wp-chip--sm">
-                                <input type="checkbox" wire:click="toggleIotModule({{ $tenant->id }})" {{ $tenant->has_iot_module ? 'checked' : '' }}>
-                                <span>{{ __('platform.iot_module') }}</span>
-                            </label>
-                            <label class="wp-chip wp-chip--sm">
-                                <input type="checkbox" wire:click="toggleTimeModule({{ $tenant->id }})" {{ $tenant->has_time_module ? 'checked' : '' }}>
-                                <span>{{ __('platform.time_module') }}</span>
-                            </label>
+                                <label class="wp-chip wp-chip--sm">
+                                    <input type="checkbox" wire:click="toggleIotModule({{ $tenant->id }})" {{ $tenant->has_iot_module ? 'checked' : '' }}>
+                                    <span>{{ __('platform.iot_module') }}</span>
+                                </label>
+                                <label class="wp-chip wp-chip--sm">
+                                    <input type="checkbox" wire:click="toggleTimeModule({{ $tenant->id }})" {{ $tenant->has_time_module ? 'checked' : '' }}>
+                                    <span>{{ __('platform.time_module') }}</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="wp-platform-tenant-actions">
                             <x-wp-tooltip :text="__('platform.corporate_units_cap_hint')" wrap class="wp-tooltip--end">
-                                <div class="wp-cluster">
+                                <div class="wp-cluster wp-cluster--tight">
                                     <input
                                         type="number"
                                         min="1"
@@ -93,14 +97,16 @@
                                     @endif
                                 </div>
                             </x-wp-tooltip>
-                            <button type="button" class="btn btn--primary btn--sm"
-                                    wire:click="startSupport({{ $tenant->id }})">
-                                {{ __('platform.open_support') }}
-                            </button>
-                            <button type="button" class="btn btn--danger btn--sm"
-                                    wire:click="openDeleteConfirm({{ $tenant->id }})">
-                                {{ __('platform.tenants_delete.button') }}
-                            </button>
+                            <div class="wp-cluster wp-cluster--tight">
+                                <button type="button" class="btn btn--primary btn--sm"
+                                        wire:click="startSupport({{ $tenant->id }})">
+                                    {{ __('platform.open_support') }}
+                                </button>
+                                <button type="button" class="btn btn--danger btn--sm"
+                                        wire:click="openDeleteConfirm({{ $tenant->id }})">
+                                    {{ __('platform.tenants_delete.button') }}
+                                </button>
+                            </div>
                         </div>
                     </li>
                 @endforeach
