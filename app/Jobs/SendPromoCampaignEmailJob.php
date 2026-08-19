@@ -3,24 +3,36 @@
 namespace App\Jobs;
 
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
+use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Models\PromoCampaign;
+use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
 use App\Support\Marketing\PromoSmtpThrottle;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
-class SendPromoCampaignEmailJob implements ShouldQueue
+class SendPromoCampaignEmailJob implements ShouldBeUnique, ShouldQueue
 {
     use Queueable;
 
     public int $tries = 25;
 
+    public int $timeout = 30;
+
+    public int $uniqueFor = 86400;
+
     /** @return list<int> */
     public function backoff(): array
     {
         return [60, 300, 900];
+    }
+
+    public function uniqueId(): string
+    {
+        return $this->promoCampaignId.'-'.$this->promoCampaignTargetId;
     }
 
     public function __construct(
@@ -40,6 +52,16 @@ class SendPromoCampaignEmailJob implements ShouldQueue
                 'promo_campaign_id' => $this->promoCampaignId,
                 'promo_campaign_target_id' => $this->promoCampaignTargetId,
                 'reason' => 'not_found',
+            ]);
+
+            return;
+        }
+
+        if ($this->alreadyDelivered($campaign, $target)) {
+            Log::info('promo_campaign_email_job_skipped', [
+                'promo_campaign_id' => $this->promoCampaignId,
+                'promo_campaign_target_id' => $this->promoCampaignTargetId,
+                'reason' => 'already_delivered',
             ]);
 
             return;
@@ -97,5 +119,28 @@ class SendPromoCampaignEmailJob implements ShouldQueue
             'promo_campaign_target_id' => $this->promoCampaignTargetId,
             'message' => $exception->getMessage(),
         ]);
+    }
+
+    private function alreadyDelivered(PromoCampaign $campaign, PromoCampaignTarget $target): bool
+    {
+        if ($this->overrideRecipientEmail !== null) {
+            return false;
+        }
+
+        if ($target->undelivered) {
+            return true;
+        }
+
+        $status = PromoCampaignEmailSend::query()
+            ->where('promo_campaign_id', $campaign->id)
+            ->where('promo_campaign_target_id', $target->id)
+            ->value('status');
+
+        $statusValue = $status instanceof \BackedEnum ? $status->value : $status;
+
+        return in_array($statusValue, [
+            MunicipalPromoEmailSendStatus::Sent->value,
+            MunicipalPromoEmailSendStatus::Bounced->value,
+        ], true);
     }
 }

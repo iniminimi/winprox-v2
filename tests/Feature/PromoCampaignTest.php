@@ -1014,6 +1014,61 @@ it('laat promo-smtp throttle slechts één send-slot per interval toe', function
         ->and(\App\Support\Marketing\PromoSmtpThrottle::secondsUntilAvailable())->toBeGreaterThan(0);
 });
 
+it('verbruikt geen smtp-slot voor al verstuurde promo-jobs', function () {
+    Mail::fake();
+    config(['winprox.promo_campaign_email_min_interval_seconds' => 20]);
+    \Illuminate\Support\Facades\RateLimiter::clear(\App\Support\Marketing\PromoSmtpThrottle::cacheKey());
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'already-sent@example.com');
+
+    PromoCampaignEmailSend::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_target_id' => $target->id,
+        'recipient_email' => 'already-sent@example.com',
+        'status' => MunicipalPromoEmailSendStatus::Sent,
+        'sent_at' => now(),
+        'created_by' => $superuser->id,
+    ]);
+
+    $job = new SendPromoCampaignEmailJob(
+        promoCampaignId: (int) $campaign->id,
+        promoCampaignTargetId: (int) $target->id,
+        actorUserId: (int) $superuser->id,
+    );
+    $job->handle(app(\App\Actions\Marketing\SendPromoCampaignEmailAction::class));
+
+    Mail::assertNothingSent();
+    expect(\App\Support\Marketing\PromoSmtpThrottle::tryAcquire())->toBeTrue();
+});
+
+it('voegt geen tweede promo-job toe voor dezelfde ontvanger', function () {
+    config(['queue.default' => 'database']);
+    \Illuminate\Support\Facades\Cache::flush();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'unique-job@example.com');
+
+    SendPromoCampaignEmailJob::dispatch(
+        promoCampaignId: (int) $campaign->id,
+        promoCampaignTargetId: (int) $target->id,
+        actorUserId: (int) $superuser->id,
+    );
+    SendPromoCampaignEmailJob::dispatch(
+        promoCampaignId: (int) $campaign->id,
+        promoCampaignTargetId: (int) $target->id,
+        actorUserId: (int) $superuser->id,
+    );
+
+    $queued = \Illuminate\Support\Facades\DB::table('jobs')
+        ->where('payload', 'like', '%SendPromoCampaignEmailJob%')
+        ->count();
+
+    expect($queued)->toBe(1);
+
+    \Illuminate\Support\Facades\DB::table('jobs')->where('payload', 'like', '%SendPromoCampaignEmailJob%')->delete();
+});
+
 it('slaat uitgeschreven adressen over bij bulk promo-campagne mails', function () {
     Queue::fake();
     Mail::fake();

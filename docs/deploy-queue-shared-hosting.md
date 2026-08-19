@@ -24,12 +24,16 @@ Op gedeelde hosting draait **geen** permanente `queue:work`-daemon.
    ```php
    Schedule::command('queue:work database --max-time=55 --sleep=1 --tries=3')
        ->everyMinute()
-       ->withoutOverlapping();
+       ->withoutOverlapping(3);
    ```
 
    Geen `--stop-when-empty`: anders stopt de worker na de eerste job terwijl de rest nog
    een `delay` heeft, en worden bij de volgende cron-tick meerdere mails in een korte burst
    verstuurd (±3 s tussen jobs i.p.v. de ingestelde vertraging).
+
+   `withoutOverlapping(3)`: mutex vervalt na 3 minuten. Laravel-default is 24 uur — als Plesk
+   de worker killt zonder de lock vrij te geven, blijft de mailwachtrij dan een dag stilstaan.
+   `pull-deploy.sh` draait `schedule:clear-cache` zodat een vastzittende lock bij deploy loslaat.
 
 Na deploy op de server: `./pull-deploy.sh` en `php artisan config:clear` indien nodig.
 

@@ -46,6 +46,7 @@ fi
 
 echo "==> Laravel"
 php artisan migrate --force
+php artisan schedule:clear-cache
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
