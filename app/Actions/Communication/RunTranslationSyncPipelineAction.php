@@ -34,6 +34,9 @@ class RunTranslationSyncPipelineAction
 
         File::ensureDirectoryExists($workDir);
 
+        $total = 0;
+        $importedTotal = 0;
+
         try {
             $this->assertNotCancelled();
 
@@ -78,109 +81,148 @@ class RunTranslationSyncPipelineAction
                 ];
             }
 
-            $this->statusStore->write(TranslationSyncPhase::Translating, $actorUserId, [
-                'total' => $total,
-                'completed' => 0,
-            ]);
+            $this->writeProgress(TranslationSyncPhase::Translating, $actorUserId, $total, 0, 0);
 
-            $translatedItems = $this->translateExportItems->handle(
-                $items,
-                function (int $completed, int $itemTotal, array $current) use ($actorUserId, $total): void {
-                    $this->assertNotCancelled();
+            $exportedAt = is_string($payload['exported_at'] ?? null) && $payload['exported_at'] !== ''
+                ? (string) $payload['exported_at']
+                : now()->toIso8601String();
 
-                    $this->statusStore->write(TranslationSyncPhase::Translating, $actorUserId, [
-                        'total' => $itemTotal,
-                        'completed' => $completed,
-                        'current_issue_id' => $current['issue_id'] ?? null,
-                        'current_announcement_id' => $current['announcement_id'] ?? null,
-                        'current_location_id' => $current['location_id'] ?? null,
-                        'current_unit_id' => $current['unit_id'] ?? null,
-                        'current_task_id' => $current['task_id'] ?? null,
-                        'current_document_id' => $current['document_id'] ?? null,
-                        'current_locale' => $current['locale'] ?? null,
-                    ]);
-                },
-                fn (): bool => TranslationSyncCancellation::requested(),
-            );
+            $batchSize = max(1, (int) config('translation_sync.batch_size', 50));
+            $processed = 0;
+            $translatedTotal = 0;
 
-            $translatedCount = count($translatedItems);
+            // Per reeks vertalen, uploaden en importeren: valt de run halverwege uit, dan blijft
+            // het al geïmporteerde werk op de server staan en pakt een nieuwe run de rest op.
+            foreach (array_chunk($items, $batchSize) as $batch) {
+                $this->assertNotCancelled();
 
-            if ($translatedCount === 0) {
+                $offset = $processed;
+
+                $translatedItems = $this->translateExportItems->handle(
+                    $batch,
+                    function (int $completed, int $batchTotal, array $current) use ($actorUserId, $total, $offset, &$importedTotal): void {
+                        $this->assertNotCancelled();
+
+                        $this->writeProgress(
+                            TranslationSyncPhase::Translating,
+                            $actorUserId,
+                            $total,
+                            $offset + $completed,
+                            $importedTotal,
+                            $current,
+                        );
+                    },
+                    fn (): bool => TranslationSyncCancellation::requested(),
+                );
+
+                $processed += count($batch);
+                $translatedTotal += count($translatedItems);
+
+                // Niets vertaalbaars in deze reeks (bv. lege brontekst): niets om te importeren.
+                if ($translatedItems === []) {
+                    continue;
+                }
+
+                $this->assertNotCancelled();
+
+                File::put($importPath, json_encode([
+                    'exported_at' => $exportedAt,
+                    'items' => $translatedItems,
+                ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+                $this->writeProgress(TranslationSyncPhase::Uploading, $actorUserId, $total, $processed, $importedTotal);
+
+                $this->remote->uploadImport($importPath);
+
+                $this->assertNotCancelled();
+
+                $this->writeProgress(TranslationSyncPhase::ImportingRemote, $actorUserId, $total, $processed, $importedTotal);
+
+                $imported = $this->remote->runImportOnRemote();
+
+                if ($imported === 0) {
+                    throw new RuntimeException(__('platform.translation_sync.error_remote_import_zero'));
+                }
+
+                if ($imported < count($translatedItems)) {
+                    throw new RuntimeException(__('platform.translation_sync.error_remote_import_partial', [
+                        'imported' => $imported,
+                        'total' => count($translatedItems),
+                    ]));
+                }
+
+                $importedTotal += $imported;
+            }
+
+            if ($translatedTotal === 0) {
                 throw new RuntimeException(__('platform.translation_sync.error_nothing_translated'));
-            }
-
-            if ($translatedCount < $total) {
-                throw new RuntimeException(__('platform.translation_sync.error_partial_translated', [
-                    'translated' => $translatedCount,
-                    'total' => $total,
-                ]));
-            }
-
-            $this->assertNotCancelled();
-
-            File::put($importPath, json_encode([
-                'exported_at' => $payload['exported_at'] ?? now()->toIso8601String(),
-                'items' => $translatedItems,
-            ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-
-            $this->statusStore->write(TranslationSyncPhase::Uploading, $actorUserId, [
-                'total' => $total,
-                'completed' => $total,
-            ]);
-
-            $this->remote->uploadImport($importPath);
-
-            $this->assertNotCancelled();
-
-            $this->statusStore->write(TranslationSyncPhase::ImportingRemote, $actorUserId, [
-                'total' => $total,
-                'completed' => $total,
-            ]);
-
-            $imported = $this->remote->runImportOnRemote();
-
-            if ($imported === 0) {
-                throw new RuntimeException(__('platform.translation_sync.error_remote_import_zero'));
-            }
-
-            if ($imported < $translatedCount) {
-                throw new RuntimeException(__('platform.translation_sync.error_remote_import_partial', [
-                    'imported' => $imported,
-                    'total' => $translatedCount,
-                ]));
             }
 
             $this->statusStore->write(TranslationSyncPhase::Completed, $actorUserId, [
                 'finished_at' => now()->toIso8601String(),
                 'total' => $total,
-                'imported' => $imported,
-                'message' => null,
+                'imported' => $importedTotal,
+                'message' => $translatedTotal < $total
+                    ? __('platform.translation_sync.error_partial_translated', [
+                        'translated' => $translatedTotal,
+                        'total' => $total,
+                    ])
+                    : null,
             ]);
 
             return [
                 'total' => $total,
-                'imported' => $imported,
+                'imported' => $importedTotal,
             ];
         } catch (TranslationSyncCancelledException) {
             $this->statusStore->write(TranslationSyncPhase::Cancelled, $actorUserId, [
                 'finished_at' => now()->toIso8601String(),
+                'total' => $total,
+                'imported' => $importedTotal,
                 'message' => 'cancelled',
             ]);
             TranslationSyncCancellation::clear();
 
             return [
-                'total' => 0,
-                'imported' => 0,
+                'total' => $total,
+                'imported' => $importedTotal,
                 'cancelled' => true,
             ];
         } catch (\Throwable $exception) {
             $this->statusStore->write(TranslationSyncPhase::Failed, $actorUserId, [
                 'finished_at' => now()->toIso8601String(),
+                'total' => $total,
+                'imported' => $importedTotal,
                 'message' => $exception->getMessage(),
             ]);
 
             throw $exception;
         }
+    }
+
+    /**
+     * @param  array<string, mixed>  $current
+     */
+    private function writeProgress(
+        TranslationSyncPhase $phase,
+        int $actorUserId,
+        int $total,
+        int $completed,
+        int $imported,
+        array $current = [],
+    ): void {
+        $this->statusStore->write($phase, $actorUserId, [
+            'total' => $total,
+            'completed' => $completed,
+            'imported' => $imported,
+            'current_issue_id' => $current['issue_id'] ?? null,
+            'current_announcement_id' => $current['announcement_id'] ?? null,
+            'current_location_id' => $current['location_id'] ?? null,
+            'current_unit_id' => $current['unit_id'] ?? null,
+            'current_task_id' => $current['task_id'] ?? null,
+            'current_document_id' => $current['document_id'] ?? null,
+            'current_locale' => $current['locale'] ?? null,
+        ]);
     }
 
     private function assertNotCancelled(): void

@@ -19,6 +19,9 @@ return [
 
     'timeout_seconds' => (int) env('TRANSLATION_SYNC_TIMEOUT', 7200),
 
+    /** Vertalen → uploaden → importeren gebeurt per reeks, zodat een crash het al gedane werk niet weggooit. */
+    'batch_size' => (int) env('TRANSLATION_SYNC_BATCH_SIZE', 50),
+
     /** Geen status-update langer dan dit → vastgelopen (SSH/SCP of queue-worker gestopt). */
     'stale_after_seconds' => (int) env('TRANSLATION_SYNC_STALE_AFTER', 1200),
 

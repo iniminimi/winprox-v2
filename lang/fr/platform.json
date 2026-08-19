@@ -308,7 +308,7 @@
         "nav": "Traductions",
         "title": "Traductions",
         "subtitle": "Récupérez les traductions en attente (signalements, annonces, unités, listes de contrôle, tâches et documents) sur le serveur, traduisez localement via Ollama et renvoyez-les.",
-        "intro": "Un clic : export sur le serveur (signalements validés, annonces/unités/documents/listes de contrôle actifs et tâches avec description), téléchargement, traduction Ollama avec progression, envoi et import immédiat. Sur le serveur, une cron retraite les imports chaque heure.",
+        "intro": "Un clic : export sur le serveur (signalements validés, annonces/unités/documents/listes de contrôle actifs et tâches avec description), téléchargement, traduction Ollama avec progression, envoi et import immédiat. La traduction se fait par lots : chaque lot est importé immédiatement sur le serveur, une exécution interrompue ne perd donc pas le travail déjà effectué. Sur le serveur, une cron retraite les imports chaque heure.",
         "setup_hint": "Définissez TRANSLATION_SYNC_ENABLED=true et TRANSLATION_SYNC_SSH_* dans .env (local). Mettez QUEUE_CONNECTION=database et lancez php artisan queue:work dans PowerShell (pas sync via Apache).",
         "sync_queue_warning": "QUEUE_CONNECTION=sync : SSH ne fonctionne pas via Apache. Utilisez database dans .env et lancez php artisan queue:work dans PowerShell.",
         "workflow_title": "Procédure (local)",

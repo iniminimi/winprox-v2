@@ -196,6 +196,90 @@ it('doorloopt de vertaal-sync pipeline met remote fake', function () {
         ->and($status['imported'] ?? null)->toBe(2);
 });
 
+it('importeert de vertaal-sync per reeks', function () {
+    config(['translation_sync.batch_size' => 2]);
+
+    $fake = new FakeTranslationSyncRemoteClient;
+    $fake->exportItems = [
+        ['issue_id' => 1, 'locale' => 'en', 'source_text' => 'One'],
+        ['issue_id' => 2, 'locale' => 'en', 'source_text' => 'Two'],
+        ['issue_id' => 3, 'locale' => 'en', 'source_text' => 'Three'],
+        ['issue_id' => 4, 'locale' => 'en', 'source_text' => 'Four'],
+        ['issue_id' => 5, 'locale' => 'en', 'source_text' => 'Five'],
+    ];
+    app()->instance(TranslationSyncRemoteClient::class, $fake);
+
+    $result = app(RunTranslationSyncPipelineAction::class)->handle(1);
+
+    expect($result)->toBe(['total' => 5, 'imported' => 5])
+        ->and($fake->exportRuns)->toBe(1)
+        ->and($fake->importRuns)->toBe(3);
+
+    $status = app(TranslationSyncStatusStore::class)->read();
+    expect($status['phase'] ?? null)->toBe(TranslationSyncPhase::Completed->value)
+        ->and($status['imported'] ?? null)->toBe(5);
+});
+
+it('behoudt geimporteerde reeksen wanneer het vertalen halverwege crasht', function () {
+    config(['translation_sync.batch_size' => 2]);
+
+    $fake = new FakeTranslationSyncRemoteClient;
+    $fake->exportItems = [
+        ['issue_id' => 1, 'locale' => 'en', 'source_text' => 'One'],
+        ['issue_id' => 2, 'locale' => 'en', 'source_text' => 'Two'],
+        ['issue_id' => 3, 'locale' => 'en', 'source_text' => 'Three'],
+        ['issue_id' => 4, 'locale' => 'en', 'source_text' => 'Four'],
+    ];
+    app()->instance(TranslationSyncRemoteClient::class, $fake);
+    app()->instance(TranslationProviderInterface::class, new class implements TranslationProviderInterface
+    {
+        private int $calls = 0;
+
+        public function translate(string $text, string $targetLanguage): string
+        {
+            $this->calls++;
+
+            if ($this->calls > 2) {
+                throw new RuntimeException('ollama timeout');
+            }
+
+            return '['.$targetLanguage.'] '.$text;
+        }
+    });
+
+    expect(fn () => app(RunTranslationSyncPipelineAction::class)->handle(1))
+        ->toThrow(RuntimeException::class, 'ollama timeout');
+
+    expect($fake->importRuns)->toBe(1);
+
+    $status = app(TranslationSyncStatusStore::class)->read();
+    expect($status['phase'] ?? null)->toBe(TranslationSyncPhase::Failed->value)
+        ->and($status['imported'] ?? null)->toBe(2);
+});
+
+it('slaat onvertaalbare exportregels over zonder de run te laten mislukken', function () {
+    config(['translation_sync.batch_size' => 2]);
+
+    $fake = new FakeTranslationSyncRemoteClient;
+    $fake->exportItems = [
+        ['issue_id' => 1, 'locale' => 'en', 'source_text' => 'One'],
+        ['issue_id' => 2, 'locale' => 'en', 'source_text' => ''],
+        ['issue_id' => 3, 'locale' => 'en', 'source_text' => 'Three'],
+    ];
+    app()->instance(TranslationSyncRemoteClient::class, $fake);
+
+    $result = app(RunTranslationSyncPipelineAction::class)->handle(1);
+
+    expect($result)->toBe(['total' => 3, 'imported' => 2]);
+
+    $status = app(TranslationSyncStatusStore::class)->read();
+    expect($status['phase'] ?? null)->toBe(TranslationSyncPhase::Completed->value)
+        ->and($status['message'] ?? null)->toBe(__('platform.translation_sync.error_partial_translated', [
+            'translated' => 2,
+            'total' => 3,
+        ]));
+});
+
 it('doorloopt de vertaal-sync pipeline met te lange locatienaam van provider', function () {
     $fake = new FakeTranslationSyncRemoteClient;
     $fake->exportItems = [

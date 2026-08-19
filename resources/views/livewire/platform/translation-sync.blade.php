@@ -103,6 +103,14 @@ php artisan queue:work</code></pre>
                                 'percent' => $percent,
                             ]) }}
                         </p>
+                        @if ((int) ($status['imported'] ?? 0) > 0)
+                            <p class="wp-muted">
+                                {{ __('platform.translation_sync.completed_summary', [
+                                    'imported' => (int) $status['imported'],
+                                    'total' => $total,
+                                ]) }}
+                            </p>
+                        @endif
                         @if (! empty($status['current_issue_id']))
                             <p class="wp-muted">
                                 {{ __('platform.translation_sync.current_item_issue', [
@@ -155,6 +163,8 @@ php artisan queue:work</code></pre>
                     </p>
                     @if (($status['message'] ?? '') === 'nothing_pending')
                         <p class="wp-muted">{{ __('platform.translation_sync.nothing_pending') }}</p>
+                    @elseif (! empty($status['message']))
+                        <p class="wp-muted">{{ $status['message'] }}</p>
                     @endif
                 @endif
 
@@ -164,6 +174,15 @@ php artisan queue:work</code></pre>
 
                 @if ($phase === 'failed' && ! empty($status['message']))
                     <p class="wp-muted">{{ $status['message'] }}</p>
+                @endif
+
+                @if (in_array($phase, ['failed', 'cancelled'], true) && (int) ($status['imported'] ?? 0) > 0)
+                    <p class="wp-text-body">
+                        {{ __('platform.translation_sync.completed_summary', [
+                            'imported' => (int) $status['imported'],
+                            'total' => (int) ($status['total'] ?? 0),
+                        ]) }}
+                    </p>
                 @endif
             </div>
         @endif
