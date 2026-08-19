@@ -140,6 +140,7 @@
         "create_submit": "Opslaan en QR downloaden",
         "list_title": "Bestemmelingen",
         "list_count": ":count bestemmelingen",
+        "search_placeholder": "Naam, notitie of token…",
         "list_empty": "Nog geen bestemmelingen.",
         "visit_count": ":count bezoeken",
         "video_count": ":count video's",

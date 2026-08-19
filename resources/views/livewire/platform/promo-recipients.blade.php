@@ -164,10 +164,10 @@
                 <p class="wp-subhead">{{ __('platform.promo_recipients.list_title') }}</p>
                 @unless ($listOpen)
                     <p class="wp-muted">
-                        @if ($recipients->isEmpty())
+                        @if ($recipients->total() === 0)
                             {{ __('platform.promo_recipients.list_empty') }}
                         @else
-                            {{ __('platform.promo_recipients.list_count', ['count' => $recipients->count()]) }}
+                            {{ __('platform.promo_recipients.list_count', ['count' => $recipients->total()]) }}
                         @endif
                     </p>
                 @endunless
@@ -177,6 +177,13 @@
 
         @if ($listOpen)
             <div class="wp-faq-panel wp-card-pad wp-stack">
+                <div>
+                    <label class="wp-label" for="promo-recipient-search">{{ __('platform.search') }}</label>
+                    <input id="promo-recipient-search" type="search" class="wp-input"
+                           wire:model.live.debounce.300ms="search"
+                           placeholder="{{ __('platform.promo_recipients.search_placeholder') }}" autocomplete="off">
+                </div>
+
                 @if ($recipients->isEmpty())
                     <p class="wp-muted">{{ __('platform.promo_recipients.list_empty') }}</p>
                 @else
@@ -254,6 +261,10 @@
                                 @endif
                             </div>
                         @endforeach
+                    </div>
+
+                    <div>
+                        {{ $recipients->links() }}
                     </div>
                 @endif
             </div>

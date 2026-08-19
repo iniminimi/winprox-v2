@@ -245,6 +245,35 @@ it('downloadt promo-bestemmeling QR als PNG', function () {
         ->assertHeader('Content-Disposition', 'attachment; filename="winprox-promo-club-qr.png"');
 });
 
+it('pagineert de bestemmelingenlijst en zoekt op naam', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    PromoRecipient::query()->create([
+        'token' => 'prm_0000000000000000',
+        'label' => 'Oudste Bestemmeling',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+
+    foreach (range(1, 25) as $index) {
+        PromoRecipient::query()->create([
+            'token' => sprintf('prm_%016d', $index),
+            'label' => 'Vulling '.$index,
+            'note' => null,
+            'created_by' => $superuser->id,
+        ]);
+    }
+
+    Livewire::actingAs($superuser)
+        ->test(PromoRecipients::class)
+        ->set('listOpen', true)
+        ->assertSee('Vulling 25')
+        ->assertDontSee('Oudste Bestemmeling')
+        ->set('search', 'Oudste')
+        ->assertSee('Oudste Bestemmeling')
+        ->assertDontSee('Vulling 25');
+});
+
 it('maakt bestemmeling aan via action met audit', function () {
     $superuser = User::factory()->superuser()->create();
 

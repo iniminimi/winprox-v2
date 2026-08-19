@@ -3,6 +3,7 @@
 namespace App\Livewire\Platform;
 
 use App\Actions\Marketing\CreatePromoRecipientAction;
+use App\Actions\Marketing\ListPromoRecipientsAction;
 use App\Http\Requests\Marketing\CreatePromoRecipientRequest;
 use App\Models\PromoRecipient;
 use App\Models\PromoVisit;
@@ -11,13 +12,19 @@ use App\Support\Marketing\PromoLandingUrl;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 #[Layout('components.layouts.app')]
 #[Title('WinProx')]
 class PromoRecipients extends Component
 {
     use AuthorizesRequests;
+    use WithPagination;
+
+    #[Url]
+    public string $search = '';
 
     public string $label = '';
 
@@ -38,6 +45,11 @@ class PromoRecipients extends Component
         $this->authorize('managePromoRecipients', User::class);
     }
 
+    public function updatedSearch(): void
+    {
+        $this->resetPage();
+    }
+
     public function createRecipient(CreatePromoRecipientAction $create): void
     {
         $this->authorize('managePromoRecipients', User::class);
@@ -55,7 +67,8 @@ class PromoRecipients extends Component
             actorUserId: (int) $user->id,
         );
 
-        $this->reset(['label', 'note']);
+        $this->reset(['label', 'note', 'search']);
+        $this->resetPage();
         $this->listOpen = true;
         $this->expandedRecipientId = (int) $recipient->id;
 
@@ -81,13 +94,9 @@ class PromoRecipients extends Component
         };
     }
 
-    public function render()
+    public function render(ListPromoRecipientsAction $list)
     {
-        $recipients = PromoRecipient::query()
-            ->withCount(['visits', 'videoPlays'])
-            ->with(['videoPlays', 'latestSentEmailSend', 'latestEmailSendAttempt'])
-            ->latest('id')
-            ->get();
+        $recipients = $list->handle($this->search, $this->getPage());
 
         $anonymousVisits = PromoVisit::query()
             ->whereNull('promo_recipient_id')

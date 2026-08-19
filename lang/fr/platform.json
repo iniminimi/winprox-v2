@@ -140,6 +140,7 @@
         "create_submit": "Enregistrer et télécharger le QR",
         "list_title": "Destinataires",
         "list_count": ":count destinataires",
+        "search_placeholder": "Nom, note ou jeton…",
         "list_empty": "Aucun destinataire pour l'instant.",
         "visit_count": ":count visites",
         "video_count": ":count vidéos",

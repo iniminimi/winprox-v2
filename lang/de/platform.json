@@ -140,6 +140,7 @@
         "create_submit": "Speichern und QR herunterladen",
         "list_title": "Empfänger",
         "list_count": ":count Empfänger",
+        "search_placeholder": "Name, Notiz oder Token…",
         "list_empty": "Noch keine Empfänger.",
         "visit_count": ":count Besuche",
         "video_count": ":count Videos",
