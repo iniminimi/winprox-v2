@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Mail;
 
 class RegisterTenantAction
 {
-    public function __construct(private StartTenantTrialAction $startTrial) {}
+    public function __construct(
+        private StartTenantTrialAction $startTrial,
+        private SendUserEmailVerificationAction $sendVerification,
+    ) {}
 
     /**
      * Maakt een nieuwe organisatie (Tenant) + de eigenaar-gebruiker (rol admin).
@@ -54,6 +57,8 @@ class RegisterTenantAction
 
             return [$tenant, $user];
         });
+
+        $this->sendVerification->handle($user);
 
         $to = config('winprox.new_tenant_notification_email');
 

@@ -1,0 +1,108 @@
+<?php
+
+use App\Livewire\Auth\Register;
+use App\Livewire\Auth\VerifyEmailNotice;
+use App\Mail\VerifyUserEmailMail;
+use App\Models\AuditLog;
+use App\Models\Tenant;
+use App\Models\User;
+use App\Support\Tenancy;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
+use Livewire\Livewire;
+use Tests\Support\RegisterFormData;
+
+afterEach(fn () => Tenancy::forget());
+
+function unverifiedTenantAdmin(): User
+{
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(20)]);
+
+    return User::factory()->admin()->unverified()->create(['tenant_id' => $tenant->id]);
+}
+
+it('stuurt bij registratie een verificatiemail en laat het account onbevestigd', function () {
+    Mail::fake();
+
+    Livewire::test(Register::class)
+        ->set(RegisterFormData::valid())
+        ->call('register')
+        ->assertHasNoErrors();
+
+    $user = User::query()->where('email', 'nieuw@winprox.test')->firstOrFail();
+
+    expect($user->hasVerifiedEmail())->toBeFalse();
+
+    Mail::assertSent(
+        VerifyUserEmailMail::class,
+        fn (VerifyUserEmailMail $mail) => $mail->hasTo('nieuw@winprox.test'),
+    );
+});
+
+it('houdt beheerschermen dicht tot het e-mailadres bevestigd is', function () {
+    $user = unverifiedTenantAdmin();
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertRedirect(route('verification.notice'));
+
+    $this->actingAs($user)
+        ->get(route('verification.notice'))
+        ->assertOk();
+});
+
+it('laat publieke pagina’s open voor een onbevestigde gebruiker', function () {
+    $user = unverifiedTenantAdmin();
+
+    $this->actingAs($user)
+        ->get(route('pricing', ['locale' => 'nl']))
+        ->assertOk();
+});
+
+it('bevestigt het e-mailadres via de ondertekende link en logt dat', function () {
+    $user = unverifiedTenantAdmin();
+
+    $url = URL::temporarySignedRoute('verification.verify', now()->addHour(), [
+        'id' => $user->id,
+        'hash' => sha1($user->getEmailForVerification()),
+    ]);
+
+    $this->actingAs($user)->get($url)->assertRedirect(route('dashboard'));
+
+    expect($user->refresh()->hasVerifiedEmail())->toBeTrue()
+        ->and(AuditLog::query()
+            ->where('action', 'auth.email_verified')
+            ->where('tenant_id', $user->tenant_id)
+            ->exists())->toBeTrue();
+});
+
+it('weigert een verificatielink met een verkeerde hash', function () {
+    $user = unverifiedTenantAdmin();
+
+    $url = URL::temporarySignedRoute('verification.verify', now()->addHour(), [
+        'id' => $user->id,
+        'hash' => sha1('ander@adres.test'),
+    ]);
+
+    $this->actingAs($user)->get($url)->assertForbidden();
+
+    expect($user->refresh()->hasVerifiedEmail())->toBeFalse();
+});
+
+it('beperkt het opnieuw versturen van de verificatiemail', function () {
+    Mail::fake();
+
+    $user = unverifiedTenantAdmin();
+
+    $component = Livewire::actingAs($user)->test(VerifyEmailNotice::class);
+
+    for ($i = 0; $i < 3; $i++) {
+        $component->call('resend')->assertSet('status', __('auth.verify.resent'));
+    }
+
+    $component->call('resend');
+
+    expect($component->get('status'))->not->toBe(__('auth.verify.resent'));
+
+    Mail::assertSent(VerifyUserEmailMail::class, 3);
+});

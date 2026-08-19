@@ -16,6 +16,21 @@
     "stop": "Terminer la vue support",
     "active": "Vous consultez :name.",
     "banner": "Vue support : :name",
+    "tenants_delete": {
+        "button": "Supprimer",
+        "unverified_badge": "E-mail non confirmé",
+        "title": "Supprimer définitivement l'organisation",
+        "lead": "Vous supprimez :name avec tous ses utilisateurs et données.",
+        "warning": "Destiné aux inscriptions fausses ou jamais utilisées. Cette action est irréversible.",
+        "backup_hint": "Un instantané technique sans médias est créé d'abord ; il est conservé 30 jours.",
+        "confirm_label": "Tapez le nom de l'organisation (:name) pour confirmer",
+        "submit": "Supprimer définitivement",
+        "deleted": ":name a été supprimé.",
+        "errors": {
+            "name_required": "Tapez le nom de l'organisation pour confirmer.",
+            "name_mismatch": "Le nom saisi ne correspond pas au nom de l'organisation."
+        }
+    },
     "dashboard": {
         "nav": "Aperçu",
         "title": "Aperçu plateforme",

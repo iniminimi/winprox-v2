@@ -7,6 +7,7 @@
     "actions": {
         "api_token.created": "API-token aangemaakt",
         "api_token.revoked": "API-token ingetrokken",
+        "auth.email_verified": "E-mailadres bevestigd",
         "category.created": "Categorie aangemaakt",
         "category.deleted": "Categorie verwijderd",
         "category.updated": "Categorie bijgewerkt",
@@ -85,6 +86,7 @@
         "tenant.time_module_toggled": "Time-module in/uitgeschakeld",
         "tenant.time_qr_rotation_updated": "Time-QR-rotatie bijgewerkt",
         "tenant.trial_api_toggled": "Proef-API in/uitgeschakeld",
+        "tenant_purge.unused_deleted": "Ongebruikt account verwijderd",
         "unit.activated": "Unit geactiveerd",
         "unit.background_photo_deleted": "Unit-achtergrondfoto verwijderd",
         "unit.background_photo_updated": "Unit-achtergrondfoto bijgewerkt",

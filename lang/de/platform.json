@@ -16,6 +16,21 @@
     "stop": "Support-Ansicht beenden",
     "active": "Sie sehen :name.",
     "banner": "Support-Ansicht: :name",
+    "tenants_delete": {
+        "button": "Löschen",
+        "unverified_badge": "E-Mail nicht bestätigt",
+        "title": "Organisation endgültig löschen",
+        "lead": "Du löschst :name mit allen Benutzern und Daten.",
+        "warning": "Gedacht für falsche oder nie genutzte Anmeldungen. Diese Aktion ist nicht umkehrbar.",
+        "backup_hint": "Zuerst wird ein technischer Snapshot ohne Medien erstellt; er bleibt 30 Tage erhalten.",
+        "confirm_label": "Tippe den Organisationsnamen (:name) zur Bestätigung",
+        "submit": "Endgültig löschen",
+        "deleted": ":name wurde gelöscht.",
+        "errors": {
+            "name_required": "Tippe den Organisationsnamen zur Bestätigung.",
+            "name_mismatch": "Der eingegebene Name stimmt nicht mit dem Organisationsnamen überein."
+        }
+    },
     "dashboard": {
         "nav": "Übersicht",
         "title": "Plattformübersicht",

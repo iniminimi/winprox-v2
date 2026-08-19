@@ -48,15 +48,19 @@ final class ExecuteTenantPurgeAction
             TenantPurgeTrack::Trial => $this->assertTrialActor($request, $actor, $password),
             TenantPurgeTrack::Paid => $this->assertPaidActor($request, $actor),
             TenantPurgeTrack::ExpiredTrial => $this->assertExpiredTrialReady($request),
+            TenantPurgeTrack::Unused => $this->assertUnusedActor($request, $actor),
         };
 
-        $adminEmails = User::query()
-            ->where('tenant_id', $tenant->id)
-            ->where('role', User::ROLE_ADMIN)
-            ->where('is_active', true)
-            ->where('is_superuser', false)
-            ->orderBy('id')
-            ->get(['id', 'name', 'email', 'locale']);
+        // Nooit-gebruikte accounts: geen afsluitmail naar een (mogelijk valse) inbox.
+        $adminEmails = $request->track === TenantPurgeTrack::Unused
+            ? collect()
+            : User::query()
+                ->where('tenant_id', $tenant->id)
+                ->where('role', User::ROLE_ADMIN)
+                ->where('is_active', true)
+                ->where('is_superuser', false)
+                ->orderBy('id')
+                ->get(['id', 'name', 'email', 'locale']);
 
         $counts = $this->collectCounts->handle($tenant);
         $counts['_executor'] = [
@@ -170,6 +174,22 @@ final class ExecuteTenantPurgeAction
                 'purge' => [__('subscription.purge.errors.cooldown_active', [
                     'date' => $request->scheduled_purge_at?->timezone(config('app.timezone'))->format('d/m/Y H:i') ?? '—',
                 ])],
+            ]);
+        }
+    }
+
+    /** Systeem (niet-geverifieerde registratie) of superuser (spam) mag direct wissen. */
+    private function assertUnusedActor(TenantPurgeRequest $request, ?User $actor): void
+    {
+        if ($actor !== null && ! $actor->is_superuser) {
+            throw ValidationException::withMessages([
+                'purge' => [__('subscription.purge.errors.superuser_only')],
+            ]);
+        }
+
+        if ($request->status !== TenantPurgeStatus::Scheduled) {
+            throw ValidationException::withMessages([
+                'purge' => [__('subscription.purge.errors.not_scheduled')],
             ]);
         }
     }

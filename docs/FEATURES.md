@@ -702,6 +702,17 @@ Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.
 7. Bij elke geplande purge (paid cool-down of expired_trial) ook interne mail naar `info@winprox.app`
    (`tenant_purge.ops_notification_email`).
 
+**Nooit gebruikt account** (`unused` track):
+1. Zelfregistratie zonder **e-mailverificatie** blijft geblokkeerd (`EnsureUserEmailIsVerified`);
+   publieke pagina's en QR-portalen blijven wel open.
+2. **T+7** (`unverified_registration_days`): `winprox:tenant-purge-maintenance` wist de tenant via
+   dezelfde `ExecuteTenantPurgeAction` (snapshot + hard delete), **zonder** mail naar het
+   (mogelijk valse) adres.
+3. Superuser kan zo'n account ook meteen wissen in `/platform/tenants` — organisatienaam typen ter
+   bevestiging; badge “E-mail niet bevestigd” markeert verdachte aanmeldingen.
+4. Audit blijft op platformniveau bewaard (`tenant_purge.unused_deleted`, zonder `tenant_id`).
+5. Collega's die een beheerder zelf aanmaakt gelden meteen als geverifieerd (geen zelfregistratie).
+
 Config: `config/tenant_purge.php`. Actions onder `app/Actions/TenantPurge/`.
 
 ### 7.5 NIET overnemen

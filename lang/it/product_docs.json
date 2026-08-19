@@ -199,6 +199,7 @@
                 "title": "Authentication",
                 "items": [
                     "Back office: email + password (stored hashed), sessions.",
+                    "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. Unverified sign-ups are automatically and completely deleted after 7 days.",
                     "**SSO** (Single Sign-On): may be offered later for admins and employees. Workers stay deliberately simple (QR + icon, no SSO).",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",

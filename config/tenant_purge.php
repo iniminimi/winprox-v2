@@ -7,6 +7,11 @@ return [
     'paid_cooldown_days' => (int) env('TENANT_PURGE_PAID_COOLDOWN_DAYS', 7),
 
     /*
+    | Dagen na zelfregistratie zonder e-mailverificatie: account volledig wissen.
+    */
+    'unverified_registration_days' => (int) env('TENANT_PURGE_UNVERIFIED_REGISTRATION_DAYS', 7),
+
+    /*
     | Dagen na einde proefperiode: waarschuwingsmail + planning auto-purge.
     */
     'expired_trial_warning_days' => (int) env('TENANT_PURGE_EXPIRED_TRIAL_WARNING_DAYS', 7),

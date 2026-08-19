@@ -16,6 +16,21 @@
     "stop": "Support view beëindigen",
     "active": "Je kijkt mee bij :name.",
     "banner": "Support view: :name",
+    "tenants_delete": {
+        "button": "Verwijderen",
+        "unverified_badge": "E-mail niet bevestigd",
+        "title": "Organisatie definitief verwijderen",
+        "lead": "Je verwijdert :name met alle gebruikers en gegevens.",
+        "warning": "Bedoeld voor valse of nooit gebruikte aanmeldingen. Deze actie kan niet ongedaan gemaakt worden.",
+        "backup_hint": "Er wordt eerst een technische snapshot zonder media gemaakt; die blijft 30 dagen bewaard.",
+        "confirm_label": "Typ de organisatienaam (:name) om te bevestigen",
+        "submit": "Definitief verwijderen",
+        "deleted": ":name is verwijderd.",
+        "errors": {
+            "name_required": "Typ de organisatienaam om te bevestigen.",
+            "name_mismatch": "De getypte naam komt niet overeen met de organisatienaam."
+        }
+    },
     "dashboard": {
         "nav": "Overzicht",
         "title": "Platformoverzicht",

@@ -27,6 +27,14 @@
         "settings_hint_html": "También puede gestionar las preferencias de correo en su <a href=\":url\" style=\"color:#059669;font-weight:600;\">Configuración</a>.",
         "settings_hint_text": "También puede gestionar las preferencias de correo en Configuración: :url"
     },
+    "verify_email": {
+        "subject": "WinProx: confirma tu dirección de correo",
+        "intro": "Bienvenido a WinProx. Confirma tu dirección de correo para activar tu cuenta.",
+        "cta": "Confirmar dirección de correo",
+        "link_fallback": "Si el botón no funciona, copia este enlace:",
+        "expiry": "Este enlace es válido durante :minutes minutos.",
+        "footer": "¿No has creado esta cuenta? No hace falta hacer nada: sin confirmación la eliminamos automáticamente."
+    },
     "new_tenant": {
         "subject": "WinProx: nueva organización registrada — :tenant",
         "body": "Se ha registrado una nueva organización.\n\nOrganización: :tenant\nAdministrador: :admin (:email)\nTeléfono: :phone\nDirección: :address\nPaís: :country\nID de tenant: :tenant_id"

@@ -27,6 +27,14 @@
         "settings_hint_html": "Du kannst E-Mail-Einstellungen auch in den <a href=\":url\" style=\"color:#059669;font-weight:600;\">Einstellungen</a> verwalten.",
         "settings_hint_text": "Du kannst E-Mail-Einstellungen auch in Einstellungen verwalten: :url"
     },
+    "verify_email": {
+        "subject": "WinProx: E-Mail-Adresse bestätigen",
+        "intro": "Willkommen bei WinProx. Bestätige deine E-Mail-Adresse, um dein Konto zu aktivieren.",
+        "cta": "E-Mail-Adresse bestätigen",
+        "link_fallback": "Wenn der Button nicht funktioniert, kopiere diesen Link:",
+        "expiry": "Dieser Link ist :minutes Minuten gültig.",
+        "footer": "Du hast dieses Konto nicht erstellt? Dann musst du nichts tun: ohne Bestätigung löschen wir es automatisch."
+    },
     "new_tenant": {
         "subject": "WinProx: neue Organisation registriert — :tenant",
         "body": "Eine neue Organisation wurde registriert.\n\nOrganisation: :tenant\nAdministrator: :admin (:email)\nTelefon: :phone\nAdresse: :address\nLand: :country\nTenant-ID: :tenant_id"

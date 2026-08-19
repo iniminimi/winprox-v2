@@ -7,6 +7,7 @@
     "actions": {
         "api_token.created": "Token API creato",
         "api_token.revoked": "Token API revocato",
+        "auth.email_verified": "Indirizzo e-mail confermato",
         "category.created": "Categoria creata",
         "category.deleted": "Categoria eliminata",
         "category.updated": "Categoria aggiornata",
@@ -85,6 +86,7 @@
         "tenant.time_module_toggled": "Modulo Time attivato/disattivato",
         "tenant.time_qr_rotation_updated": "Rotazione QR Time aggiornata",
         "tenant.trial_api_toggled": "API di prova attivata/disattivata",
+        "tenant_purge.unused_deleted": "Account non utilizzato eliminato",
         "unit.activated": "Unità attivata",
         "unit.background_photo_deleted": "Foto sfondo unità eliminata",
         "unit.background_photo_updated": "Foto sfondo unità aggiornata",

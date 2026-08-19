@@ -10,7 +10,9 @@ use App\Actions\Platform\ToggleEsgModuleAction;
 use App\Actions\Platform\ToggleIotModuleAction;
 use App\Actions\Platform\ToggleTimeModuleAction;
 use App\Actions\Platform\ToggleTrialApiAction;
+use App\Actions\TenantPurge\DeleteUnusedTenantAction;
 use App\Http\Requests\Platform\AssignCorporateSubscriptionRequest;
+use App\Http\Requests\Platform\DeleteUnusedTenantRequest;
 use App\Http\Requests\Platform\SetBillingUnitsCapRequest;
 use App\Models\Tenant;
 use App\Models\User;
@@ -31,6 +33,10 @@ class Tenants extends Component
 
     /** @var array<int, string> */
     public array $unitsCapInputs = [];
+
+    public ?int $deleteTenantId = null;
+
+    public string $deleteConfirmName = '';
 
     public function mount(): void
     {
@@ -116,11 +122,55 @@ class Tenants extends Component
         session()->flash('success', __('platform.corporate_assigned', ['cap' => $validated['units_cap']]));
     }
 
+    public function openDeleteConfirm(int $tenantId): void
+    {
+        $this->authorize('deleteUnusedTenant', Tenant::query()->findOrFail($tenantId));
+
+        $this->deleteTenantId = $tenantId;
+        $this->deleteConfirmName = '';
+        $this->resetValidation();
+    }
+
+    public function closeDeleteConfirm(): void
+    {
+        $this->deleteTenantId = null;
+        $this->deleteConfirmName = '';
+        $this->resetValidation();
+    }
+
+    public function deleteTenant(DeleteUnusedTenantAction $delete): void
+    {
+        $tenant = Tenant::query()->findOrFail((int) $this->deleteTenantId);
+        $this->authorize('deleteUnusedTenant', $tenant);
+
+        $request = new DeleteUnusedTenantRequest;
+        $this->validate($request->rules(), $request->messages());
+
+        $name = $tenant->name;
+
+        $delete->handle(
+            tenant: $tenant,
+            actor: auth()->user(),
+            reason: 'superuser_spam',
+            confirmName: $this->deleteConfirmName,
+        );
+
+        $this->closeDeleteConfirm();
+
+        session()->flash('success', __('platform.tenants_delete.deleted', ['name' => $name]));
+    }
+
     public function render()
     {
         $term = trim($this->search);
 
         $tenants = Tenant::query()
+            ->withCount([
+                'users',
+                'users as verified_users_count' => function ($query): void {
+                    $query->whereNotNull('email_verified_at');
+                },
+            ])
             ->when($term !== '', function ($query) use ($term): void {
                 $like = '%'.$term.'%';
                 $query->where('name', 'like', $like);

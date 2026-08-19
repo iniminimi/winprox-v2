@@ -43,6 +43,10 @@ class CreateColleagueAction
             'is_active' => true,
         ]);
 
+        // Aangemaakt door een beheerder binnen de tenant: geen zelfregistratie, dus geen
+        // e-mailverificatie nodig om te kunnen starten.
+        $user->forceFill(['email_verified_at' => now()])->save();
+
         if (! empty($data['send_account_email'])) {
             $token = Password::broker()->createToken($user);
 

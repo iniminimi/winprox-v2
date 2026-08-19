@@ -50,6 +50,12 @@ class TenantPolicy
         return $user->is_superuser && SuperuserTenantAccess::canAccessTenant($user, (int) $tenant->id);
     }
 
+    /** Nooit-gebruikt of vals account direct wissen (platformbeheer, geen support view nodig). */
+    public function deleteUnusedTenant(User $user, Tenant $tenant): bool
+    {
+        return $user->is_superuser;
+    }
+
     public function applyStarterPack(User $user, Tenant $tenant): bool
     {
         return $this->isTenantAdminFor($user, $tenant)

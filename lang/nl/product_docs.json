@@ -199,6 +199,7 @@
                 "title": "Authenticatie",
                 "items": [
                     "Beheer: e-mail + wachtwoord (gehasht opgeslagen), sessies.",
+                    "Zelfregistratie vereist **e-mailverificatie**: het account werkt pas na het klikken op de link in de bevestigingsmail. Niet-geverifieerde aanmeldingen worden na 7 dagen automatisch en volledig verwijderd.",
                     "**SSO** (Single Sign-On, één bedrijfs-login): later eventueel beschikbaar voor beheerders en medewerkers. Uitvoerders houden we bewust eenvoudig (QR + icoon, geen SSO).",
                     "API: persoonlijke **toegangssleutel** (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.",
                     "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon.",

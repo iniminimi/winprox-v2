@@ -16,6 +16,21 @@
     "stop": "Termina vista supporto",
     "active": "Sta visualizzando :name.",
     "banner": "Vista supporto: :name",
+    "tenants_delete": {
+        "button": "Elimina",
+        "unverified_badge": "E-mail non confermata",
+        "title": "Elimina definitivamente l'organizzazione",
+        "lead": "Stai eliminando :name con tutti i suoi utenti e dati.",
+        "warning": "Pensato per iscrizioni false o mai usate. Questa azione non può essere annullata.",
+        "backup_hint": "Prima viene creata un'istantanea tecnica senza media; resta disponibile 30 giorni.",
+        "confirm_label": "Digita il nome dell'organizzazione (:name) per confermare",
+        "submit": "Elimina definitivamente",
+        "deleted": ":name è stato eliminato.",
+        "errors": {
+            "name_required": "Digita il nome dell'organizzazione per confermare.",
+            "name_mismatch": "Il nome digitato non corrisponde al nome dell'organizzazione."
+        }
+    },
     "dashboard": {
         "nav": "Panoramica",
         "title": "Panoramica piattaforma",

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Actions\TenantPurge\ExecuteDueExpiredTrialPurgesAction;
 use App\Actions\TenantPurge\PruneExpiredTenantPurgeBackupsAction;
+use App\Actions\TenantPurge\PurgeUnverifiedTenantRegistrationsAction;
 use App\Actions\TenantPurge\ScheduleExpiredTrialPurgesAction;
 use App\Actions\TenantPurge\SendTenantPurgeRemindersAction;
 use Illuminate\Console\Command;
@@ -13,14 +14,22 @@ class TenantPurgeMaintenanceCommand extends Command
     protected $signature = 'winprox:tenant-purge-maintenance
                             {--dry-run : Alleen backup-prune tellen, niets wissen}';
 
-    protected $description = 'Plan expired-trial purges, stuur reminders, voer due auto-purges uit, ruim backups op';
+    protected $description = 'Wis niet-geverifieerde registraties, plan expired-trial purges, stuur reminders, voer due auto-purges uit, ruim backups op';
 
     public function handle(
+        PurgeUnverifiedTenantRegistrationsAction $purgeUnverified,
         ScheduleExpiredTrialPurgesAction $scheduleExpired,
         SendTenantPurgeRemindersAction $reminders,
         ExecuteDueExpiredTrialPurgesAction $executeExpired,
         PruneExpiredTenantPurgeBackupsAction $pruneBackups,
     ): int {
+        $unverifiedStats = $purgeUnverified->handle();
+        $this->info(sprintf(
+            'Unverified registrations: scanned=%d deleted=%d',
+            $unverifiedStats['scanned'],
+            $unverifiedStats['deleted'],
+        ));
+
         $scheduleStats = $scheduleExpired->handle();
         $this->info(sprintf(
             'Expired-trial schedule: scanned=%d scheduled=%d',

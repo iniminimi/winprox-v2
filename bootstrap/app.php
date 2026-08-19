@@ -8,6 +8,7 @@ use App\Http\Middleware\EnsureRequestIdempotency;
 use App\Http\Middleware\EnsureSuperuser;
 use App\Http\Middleware\RecordPromoFollowVisit;
 use App\Http\Middleware\EnsureTenantHasAppAccess;
+use App\Http\Middleware\EnsureUserEmailIsVerified;
 use App\Http\Middleware\RequireSupportTenantForSuperuser;
 use App\Http\Middleware\SetLocale;
 use App\Http\Middleware\ShareUiTheme;
@@ -48,6 +49,7 @@ return Application::configure(basePath: dirname(__DIR__))
             SetLocale::class,
             ShareUiTheme::class,
             ApplySupportTenantContext::class,
+            EnsureUserEmailIsVerified::class,
             EnsureTenantHasAppAccess::class,
         ]);
     })

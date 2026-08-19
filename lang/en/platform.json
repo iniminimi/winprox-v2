@@ -16,6 +16,21 @@
     "stop": "End support view",
     "active": "You are viewing :name.",
     "banner": "Support view: :name",
+    "tenants_delete": {
+        "button": "Delete",
+        "unverified_badge": "Email not confirmed",
+        "title": "Permanently delete organisation",
+        "lead": "You are deleting :name with all its users and data.",
+        "warning": "Intended for fake or never used sign-ups. This action cannot be undone.",
+        "backup_hint": "A technical snapshot without media is created first; it is kept for 30 days.",
+        "confirm_label": "Type the organisation name (:name) to confirm",
+        "submit": "Delete permanently",
+        "deleted": ":name has been deleted.",
+        "errors": {
+            "name_required": "Type the organisation name to confirm.",
+            "name_mismatch": "The name you typed does not match the organisation name."
+        }
+    },
     "dashboard": {
         "nav": "Overview",
         "title": "Platform overview",

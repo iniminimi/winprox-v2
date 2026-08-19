@@ -27,6 +27,14 @@
         "settings_hint_html": "Può anche gestire le preferenze e-mail nelle Sue <a href=\":url\" style=\"color:#059669;font-weight:600;\">Impostazioni</a>.",
         "settings_hint_text": "Può anche gestire le preferenze e-mail nelle Impostazioni: :url"
     },
+    "verify_email": {
+        "subject": "WinProx: conferma il tuo indirizzo e-mail",
+        "intro": "Benvenuto in WinProx. Conferma il tuo indirizzo e-mail per attivare l'account.",
+        "cta": "Conferma indirizzo e-mail",
+        "link_fallback": "Se il pulsante non funziona, copia questo link:",
+        "expiry": "Questo link è valido per :minutes minuti.",
+        "footer": "Non hai creato questo account? Non devi fare nulla: senza conferma lo eliminiamo automaticamente."
+    },
     "new_tenant": {
         "subject": "WinProx: nuova organizzazione registrata — :tenant",
         "body": "È stata registrata una nuova organizzazione.\n\nOrganizzazione: :tenant\nAmministratore: :admin (:email)\nTelefono: :phone\nIndirizzo: :address\nPaese: :country\nID tenant: :tenant_id"

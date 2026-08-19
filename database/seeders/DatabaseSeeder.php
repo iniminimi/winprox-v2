@@ -37,6 +37,8 @@ class DatabaseSeeder extends Seeder
             'role' => User::ROLE_ADMIN,
         ]);
 
+        $admin->forceFill(['email_verified_at' => now()])->save();
+
         User::create([
             'tenant_id' => null,
             'name' => 'Platform Superuser',

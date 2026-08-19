@@ -27,10 +27,12 @@ use App\Http\Controllers\Time\ClockPointQrController;
 use App\Http\Controllers\Time\ClockPointQrPackDownloadController;
 use App\Http\Controllers\Time\WorkShiftExportController;
 use App\Http\Controllers\Time\WorkShiftTimesheetPrintController;
+use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
+use App\Livewire\Auth\VerifyEmailNotice;
 use App\Livewire\Dashboard;
 use App\Livewire\Esg\Dashboard as EsgDashboard;
 use App\Livewire\Esg\IndicatorsIndex as EsgIndicatorsIndex;
@@ -239,6 +241,11 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/ui-theme/{theme}', UiThemeController::class)->name('ui-theme.switch');
+
+    Route::get('/email/verify', VerifyEmailNotice::class)->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', VerifyEmailController::class)
+        ->middleware('signed')
+        ->name('verification.verify');
 
     Route::get('/platform', PlatformDashboard::class)
         ->middleware('superuser')
