@@ -231,6 +231,9 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 
 ### 6.6 Na UI-wijziging
 - Altijd `npm run build`; vraag bij visuele controle om harde refresh (`Ctrl+F5`).
+- **Nooit `vite build` los draaien.** Tailwind scant ook `storage/framework/views` (zie
+  `@source` in `resources/css/app.css`), dus een build ná `optimize:clear` mist klassen uit views
+  die nog niet gecompileerd zijn. `npm run build` doet daarom eerst `php artisan view:cache`.
 
 ---
 

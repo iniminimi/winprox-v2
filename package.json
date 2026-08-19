@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
+        "build": "php artisan view:cache && vite build",
         "dev": "vite",
         "prepare": "node scripts/install-git-hooks.mjs",
         "fix:locales": "node scripts/locales.mjs fix",

@@ -84,6 +84,15 @@ scanPatterns(viewFiles, [
     /\bisAdmin\s*\(/,
 ], 'Blade (beheer): geen isAdmin() — gebruik @can/authorize');
 
+// Tailwind scant ook storage/framework/views (@source in resources/css/app.css). Zonder warme
+// viewcache mist de CSS-bundel klassen, dus de build moet view:cache blijven doen (§6.6).
+const buildScript = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).scripts?.build ?? '';
+if (buildScript.includes('view:cache')) {
+    pass('Build warmt de viewcache vóór vite build');
+} else {
+    fail('package.json "build" mist `php artisan view:cache` — CSS-bundel raakt klassen kwijt (§6.6)');
+}
+
 const bomHits = findUtf8BomFiles();
 if (bomHits.length > 0) {
     fail(`UTF-8 BOM verboden (${bomHits.length}): ${bomHits.slice(0, 8).join(', ')}${bomHits.length > 8 ? '…' : ''}`);
