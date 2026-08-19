@@ -83,6 +83,7 @@
         "tenant.qr_sticker_sheet_background_uploaded": "Fondo de pegatina QR subido",
         "tenant.qr_sticker_sheet_settings_cleared": "Ajustes de pegatina QR borrados",
         "tenant.qr_sticker_sheet_settings_updated": "Ajustes de pegatina QR actualizados",
+        "tenant.registered": "Organización registrada",
         "tenant.time_module_toggled": "Módulo Time activado/desactivado",
         "tenant.time_qr_rotation_updated": "Rotación QR Time actualizada",
         "tenant.trial_api_toggled": "API de prueba activada/desactivada",

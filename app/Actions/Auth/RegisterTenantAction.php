@@ -6,6 +6,7 @@ use App\Actions\Billing\StartTenantTrialAction;
 use App\Mail\NewTenantRegisteredMail;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -16,6 +17,7 @@ class RegisterTenantAction
     public function __construct(
         private StartTenantTrialAction $startTrial,
         private SendUserEmailVerificationAction $sendVerification,
+        private AuditRecorder $audit,
     ) {}
 
     /**
@@ -57,6 +59,19 @@ class RegisterTenantAction
 
             return [$tenant, $user];
         });
+
+        $this->audit->record(
+            userId: (int) $user->id,
+            tenantId: (int) $tenant->id,
+            action: 'tenant.registered',
+            modelType: Tenant::class,
+            modelId: (int) $tenant->id,
+            payload: [
+                'tenant_name' => (string) $tenant->name,
+                'admin_email' => (string) $user->email,
+                'locale' => $locale,
+            ],
+        );
 
         $this->sendVerification->handle($user);
 

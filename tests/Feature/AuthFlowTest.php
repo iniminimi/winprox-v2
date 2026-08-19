@@ -4,6 +4,7 @@ use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
 use App\Mail\NewTenantRegisteredMail;
+use App\Models\AuditLog;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Tenancy;
@@ -38,7 +39,11 @@ it('registreert een nieuwe tenant met beheerder en logt in', function () {
         ->and($user->is_superuser)->toBeFalse();
 
     expect(auth()->check())->toBeTrue()
-        ->and(auth()->id())->toBe($user->id);
+        ->and(auth()->id())->toBe($user->id)
+        ->and(AuditLog::query()
+            ->where('action', 'tenant.registered')
+            ->where('tenant_id', $tenant->id)
+            ->exists())->toBeTrue();
 
     Mail::assertSent(NewTenantRegisteredMail::class, function (NewTenantRegisteredMail $mail) use ($tenant, $user) {
         return $mail->hasTo(config('winprox.new_tenant_notification_email'))

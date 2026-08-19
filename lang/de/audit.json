@@ -83,6 +83,7 @@
         "tenant.qr_sticker_sheet_background_uploaded": "QR-Sticker-Hintergrund hochgeladen",
         "tenant.qr_sticker_sheet_settings_cleared": "QR-Sticker-Einstellungen gelöscht",
         "tenant.qr_sticker_sheet_settings_updated": "QR-Sticker-Einstellungen aktualisiert",
+        "tenant.registered": "Organisation registriert",
         "tenant.time_module_toggled": "Time-Modul umgeschaltet",
         "tenant.time_qr_rotation_updated": "Time-QR-Rotation aktualisiert",
         "tenant.trial_api_toggled": "Test-API umgeschaltet",

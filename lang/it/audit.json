@@ -83,6 +83,7 @@
         "tenant.qr_sticker_sheet_background_uploaded": "Sfondo adesivo QR caricato",
         "tenant.qr_sticker_sheet_settings_cleared": "Impostazioni adesivo QR cancellate",
         "tenant.qr_sticker_sheet_settings_updated": "Impostazioni adesivo QR aggiornate",
+        "tenant.registered": "Organizzazione registrata",
         "tenant.time_module_toggled": "Modulo Time attivato/disattivato",
         "tenant.time_qr_rotation_updated": "Rotazione QR Time aggiornata",
         "tenant.trial_api_toggled": "API di prova attivata/disattivata",

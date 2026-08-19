@@ -2,6 +2,7 @@
 
 namespace App\Actions\TenantPurge;
 
+use App\Enums\UnusedTenantDeletionReason;
 use App\Models\Tenant;
 use Illuminate\Support\Carbon;
 
@@ -38,7 +39,7 @@ final class PurgeUnverifiedTenantRegistrationsAction
                 $this->deleteUnused->handle(
                     tenant: $tenant,
                     actor: null,
-                    reason: 'unverified_registration',
+                    reason: UnusedTenantDeletionReason::UnverifiedRegistration,
                 );
 
                 $stats['deleted']++;

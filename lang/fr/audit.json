@@ -83,6 +83,7 @@
         "tenant.qr_sticker_sheet_background_uploaded": "Fond d’autocollant QR téléversé",
         "tenant.qr_sticker_sheet_settings_cleared": "Paramètres d’autocollant QR effacés",
         "tenant.qr_sticker_sheet_settings_updated": "Paramètres d’autocollant QR mis à jour",
+        "tenant.registered": "Organisation enregistrée",
         "tenant.time_module_toggled": "Module Time activé/désactivé",
         "tenant.time_qr_rotation_updated": "Rotation QR Time mise à jour",
         "tenant.trial_api_toggled": "API d’essai activée/désactivée",

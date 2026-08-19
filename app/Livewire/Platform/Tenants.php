@@ -11,6 +11,7 @@ use App\Actions\Platform\ToggleIotModuleAction;
 use App\Actions\Platform\ToggleTimeModuleAction;
 use App\Actions\Platform\ToggleTrialApiAction;
 use App\Actions\TenantPurge\DeleteUnusedTenantAction;
+use App\Enums\UnusedTenantDeletionReason;
 use App\Http\Requests\Platform\AssignCorporateSubscriptionRequest;
 use App\Http\Requests\Platform\DeleteUnusedTenantRequest;
 use App\Http\Requests\Platform\SetBillingUnitsCapRequest;
@@ -151,7 +152,7 @@ class Tenants extends Component
         $delete->handle(
             tenant: $tenant,
             actor: auth()->user(),
-            reason: 'superuser_spam',
+            reason: UnusedTenantDeletionReason::SuperuserSpam,
             confirmName: $this->deleteConfirmName,
         );
 

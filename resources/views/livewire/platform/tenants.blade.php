@@ -50,7 +50,7 @@
                                 @endif
                             </p>
                             @if ($tenant->users_count > 0 && $tenant->verified_users_count === 0)
-                                <span class="wp-pill wp-pill--new">{{ __('platform.tenants_delete.unverified_badge') }}</span>
+                                <span class="wp-pill wp-pill--progress">{{ __('platform.tenants_delete.unverified_badge') }}</span>
                             @endif
                         </div>
                         <div class="wp-cluster">

@@ -5,6 +5,7 @@ namespace App\Actions\TenantPurge;
 use App\Actions\Audit\LogAuditAction;
 use App\Enums\TenantPurgeStatus;
 use App\Enums\TenantPurgeTrack;
+use App\Enums\UnusedTenantDeletionReason;
 use App\Models\Tenant;
 use App\Models\TenantPurgeRequest;
 use App\Models\User;
@@ -25,7 +26,12 @@ final class DeleteUnusedTenantAction
      * @param  User|null  $actor  superuser die wist; null = systeem (onderhoudstaak)
      * @param  string|null  $confirmName  door de superuser getypte organisatienaam
      */
-    public function handle(Tenant $tenant, ?User $actor, string $reason, ?string $confirmName = null): void
+    public function handle(
+        Tenant $tenant,
+        ?User $actor,
+        UnusedTenantDeletionReason $reason,
+        ?string $confirmName = null,
+    ): void
     {
         if ($actor !== null && trim((string) $confirmName) !== trim((string) $tenant->name)) {
             throw ValidationException::withMessages([
@@ -57,7 +63,7 @@ final class DeleteUnusedTenantAction
             payload: [
                 'tenant_id' => $tenantId,
                 'tenant_name' => $tenantName,
-                'reason' => $reason,
+                'reason' => $reason->value,
                 'by_superuser' => $actor !== null,
             ],
         );
