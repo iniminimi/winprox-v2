@@ -1042,6 +1042,30 @@ it('verbruikt geen smtp-slot voor al verstuurde promo-jobs', function () {
     expect(\App\Support\Marketing\PromoSmtpThrottle::tryAcquire())->toBeTrue();
 });
 
+it('geeft promo-jobs een deadline zodat throttle-releases ze niet laten sneuvelen', function () {
+    config(['queue.default' => 'database']);
+    \Illuminate\Support\Facades\Cache::flush();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'retry-until@example.com');
+
+    SendPromoCampaignEmailJob::dispatch(
+        promoCampaignId: (int) $campaign->id,
+        promoCampaignTargetId: (int) $target->id,
+        actorUserId: (int) $superuser->id,
+    );
+
+    $payload = json_decode((string) \Illuminate\Support\Facades\DB::table('jobs')
+        ->where('payload', 'like', '%SendPromoCampaignEmailJob%')
+        ->value('payload'), true);
+
+    expect($payload['maxTries'])->toBeNull()
+        ->and($payload['maxExceptions'])->toBe(3)
+        ->and($payload['retryUntil'])->toBeGreaterThan(now()->addDays(2)->getTimestamp());
+
+    \Illuminate\Support\Facades\DB::table('jobs')->where('payload', 'like', '%SendPromoCampaignEmailJob%')->delete();
+});
+
 it('voegt geen tweede promo-job toe voor dezelfde ontvanger', function () {
     config(['queue.default' => 'database']);
     \Illuminate\Support\Facades\Cache::flush();

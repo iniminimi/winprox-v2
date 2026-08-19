@@ -8,6 +8,7 @@ use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
 use App\Support\Marketing\PromoSmtpThrottle;
+use DateTimeInterface;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -18,7 +19,12 @@ class SendPromoCampaignEmailJob implements ShouldBeUnique, ShouldQueue
 {
     use Queueable;
 
-    public int $tries = 25;
+    /**
+     * The SMTP throttle releases this job once per interval, and every release burns an
+     * attempt. A bulk campaign therefore needs a deadline instead of a try limit, plus a
+     * separate cap on real send errors.
+     */
+    public int $maxExceptions = 3;
 
     public int $timeout = 30;
 
@@ -28,6 +34,11 @@ class SendPromoCampaignEmailJob implements ShouldBeUnique, ShouldQueue
     public function backoff(): array
     {
         return [60, 300, 900];
+    }
+
+    public function retryUntil(): DateTimeInterface
+    {
+        return now()->addDays(3);
     }
 
     public function uniqueId(): string

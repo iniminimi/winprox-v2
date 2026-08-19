@@ -63,6 +63,27 @@ meerdere mails per seconde.
 
 Env (optioneel): `WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS=20`
 
+De throttle laat een job **releasen** tot zijn slot vrij is, en elke release verbruikt een
+poging. Daarom heeft `SendPromoCampaignEmailJob` géén `tries`-limiet maar een `retryUntil`
+(3 dagen) plus `maxExceptions = 3`: uitstel is gratis, echte verzendfouten blijven begrensd.
+Met een `tries`-limiet zou een batch van duizenden mails na ~10 minuten massaal in
+`failed_jobs` belanden zonder ooit verstuurd te zijn.
+
+## Wachtrij staat stil — eerst dit controleren
+
+```bash
+php artisan queue:monitor database:default   # aantal wachtende jobs
+php artisan schedule:list                    # loopt queue:work elke minuut?
+php artisan queue:failed | tail              # of jobs stilletjes sneuvelen
+```
+
+Draaien andere geplande taken wél (bv. de uurlijkse bounce-scan) maar de wachtrij niet, dan
+hangt de **scheduler-mutex** van `queue:work` — niet de cron. Losmaken:
+
+```bash
+php artisan schedule:clear-cache
+```
+
 Op shared hosting kan er tussen twee worker-runs een korte pauze zitten (cron elke minuut).
 Dat is normaler dan het oude patroon: één mail, dan een minuut wachten, dan 3–4 mails in
 een paar seconden.
