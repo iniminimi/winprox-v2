@@ -76,6 +76,18 @@ class MarkPromoCampaignEmailBouncedAction
             foreach ($targets as $target) {
                 $alreadyMarked = (bool) $target->undelivered;
 
+                if ($alreadyMarked) {
+                    PromoCampaignEmailSend::query()
+                        ->where('promo_campaign_target_id', $target->id)
+                        ->where('status', '!=', MunicipalPromoEmailSendStatus::Bounced->value)
+                        ->update([
+                            'status' => MunicipalPromoEmailSendStatus::Bounced->value,
+                            'error_message' => $reason,
+                        ]);
+
+                    continue;
+                }
+
                 $target->update(['undelivered' => true]);
 
                 PromoCampaignEmailSend::query()
@@ -102,9 +114,7 @@ class MarkPromoCampaignEmailBouncedAction
                     ],
                 );
 
-                if (! $alreadyMarked) {
-                    $removed++;
-                }
+                $removed++;
             }
         });
 

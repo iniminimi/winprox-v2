@@ -15,6 +15,7 @@ use App\Jobs\SendPromoCampaignEmailJob;
 use App\Livewire\Platform\PromoCampaignEdit;
 use App\Livewire\Platform\PromoCampaigns;
 use App\Mail\Marketing\PromoCampaignLetterMail;
+use App\Models\AuditLog;
 use App\Models\EmailUnsubscribe;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
@@ -1075,12 +1076,14 @@ it('zet gebouncete promo-adressen op unsubscribe en markeert ze als onbezorgd in
         'created_by' => $superuser->id,
     ]);
 
-    $result = app(\App\Actions\Marketing\MarkPromoCampaignEmailBouncedAction::class)
-        ->handle('bounce@example.com', 'Undelivered Mail Returned to Sender');
+    $action = app(\App\Actions\Marketing\MarkPromoCampaignEmailBouncedAction::class);
+    $result = $action->handle('bounce@example.com', 'Undelivered Mail Returned to Sender');
+    $second = $action->handle('bounce@example.com', 'Undelivered Mail Returned to Sender');
 
     $target = PromoCampaignTarget::query()->find($targetId);
 
     expect($result['removed'])->toBe(1)
+        ->and($second['removed'])->toBe(0)
         ->and($result['blocked'])->toBeTrue()
         ->and(EmailUnsubscribe::isUnsubscribed('bounce@example.com'))->toBeTrue()
         ->and(EmailUnsubscribe::query()->where('email', 'bounce@example.com')->value('source'))
@@ -1089,7 +1092,11 @@ it('zet gebouncete promo-adressen op unsubscribe en markeert ze als onbezorgd in
         ->and($target->undelivered)->toBeTrue()
         ->and(PromoCampaignEmailSend::query()->where('promo_campaign_id', $campaign->id)->count())->toBe(1)
         ->and(PromoCampaignEmailSend::query()->where('promo_campaign_target_id', $targetId)->value('status'))
-        ->toBe(MunicipalPromoEmailSendStatus::Bounced);
+        ->toBe(MunicipalPromoEmailSendStatus::Bounced)
+        ->and(AuditLog::query()
+            ->where('action', 'marketing.promo_campaign_email_bounced')
+            ->where('model_id', $targetId)
+            ->count())->toBe(1);
 
     $preview = app(QueuePromoCampaignEmailsAction::class)->preview($campaign->fresh(), forceResend: true);
     expect($preview['queued'])->toBe(0);
