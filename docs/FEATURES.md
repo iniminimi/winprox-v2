@@ -709,7 +709,8 @@ Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.
    dezelfde `ExecuteTenantPurgeAction` (snapshot + hard delete), **zonder** mail naar het
    (mogelijk valse) adres.
 3. Superuser kan zo'n account ook meteen wissen in `/platform/tenants` — organisatienaam typen ter
-   bevestiging; badge “E-mail niet bevestigd” markeert verdachte aanmeldingen.
+   bevestiging; badge “E-mail niet bevestigd” markeert verdachte aanmeldingen. Het bevestigingsvenster
+   toont eerst de aantallen die verdwijnen (`CollectTenantPurgeCountsAction`, alleen wat > 0 is).
 4. Audit blijft op platformniveau bewaard (`tenant_purge.unused_deleted`, zonder `tenant_id`).
 5. Collega's die een beheerder zelf aanmaakt gelden meteen als geverifieerd (geen zelfregistratie).
 

@@ -22,6 +22,8 @@
         "title": "Organisation endgültig löschen",
         "lead": "Du löschst :name mit allen Benutzern und Daten.",
         "warning": "Gedacht für falsche oder nie genutzte Anmeldungen. Diese Aktion ist nicht umkehrbar.",
+        "counts_title": "Das wird gelöscht",
+        "counts_empty": "Diese Organisation enthält noch keine Daten.",
         "backup_hint": "Zuerst wird ein technischer Snapshot ohne Medien erstellt; er bleibt 30 Tage erhalten.",
         "confirm_label": "Tippe den Organisationsnamen (:name) zur Bestätigung",
         "submit": "Endgültig löschen",

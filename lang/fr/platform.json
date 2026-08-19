@@ -22,6 +22,8 @@
         "title": "Supprimer définitivement l'organisation",
         "lead": "Vous supprimez :name avec tous ses utilisateurs et données.",
         "warning": "Destiné aux inscriptions fausses ou jamais utilisées. Cette action est irréversible.",
+        "counts_title": "Voici ce qui sera supprimé",
+        "counts_empty": "Cette organisation ne contient encore aucune donnée.",
         "backup_hint": "Un instantané technique sans médias est créé d'abord ; il est conservé 30 jours.",
         "confirm_label": "Tapez le nom de l'organisation (:name) pour confirmer",
         "submit": "Supprimer définitivement",

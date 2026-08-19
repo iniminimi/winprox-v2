@@ -22,6 +22,8 @@
         "title": "Permanently delete organisation",
         "lead": "You are deleting :name with all its users and data.",
         "warning": "Intended for fake or never used sign-ups. This action cannot be undone.",
+        "counts_title": "This will be deleted",
+        "counts_empty": "This organisation does not contain any data yet.",
         "backup_hint": "A technical snapshot without media is created first; it is kept for 30 days.",
         "confirm_label": "Type the organisation name (:name) to confirm",
         "submit": "Delete permanently",

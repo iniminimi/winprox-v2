@@ -10,6 +10,7 @@ use App\Actions\Platform\ToggleEsgModuleAction;
 use App\Actions\Platform\ToggleIotModuleAction;
 use App\Actions\Platform\ToggleTimeModuleAction;
 use App\Actions\Platform\ToggleTrialApiAction;
+use App\Actions\TenantPurge\CollectTenantPurgeCountsAction;
 use App\Actions\TenantPurge\DeleteUnusedTenantAction;
 use App\Enums\UnusedTenantDeletionReason;
 use App\Http\Requests\Platform\AssignCorporateSubscriptionRequest;
@@ -38,6 +39,9 @@ class Tenants extends Component
     public ?int $deleteTenantId = null;
 
     public string $deleteConfirmName = '';
+
+    /** @var array<string, int> */
+    public array $deleteCounts = [];
 
     public function mount(): void
     {
@@ -123,12 +127,14 @@ class Tenants extends Component
         session()->flash('success', __('platform.corporate_assigned', ['cap' => $validated['units_cap']]));
     }
 
-    public function openDeleteConfirm(int $tenantId): void
+    public function openDeleteConfirm(int $tenantId, CollectTenantPurgeCountsAction $collectCounts): void
     {
-        $this->authorize('deleteUnusedTenant', Tenant::query()->findOrFail($tenantId));
+        $tenant = Tenant::query()->findOrFail($tenantId);
+        $this->authorize('deleteUnusedTenant', $tenant);
 
         $this->deleteTenantId = $tenantId;
         $this->deleteConfirmName = '';
+        $this->deleteCounts = array_filter($collectCounts->handle($tenant));
         $this->resetValidation();
     }
 
@@ -136,6 +142,7 @@ class Tenants extends Component
     {
         $this->deleteTenantId = null;
         $this->deleteConfirmName = '';
+        $this->deleteCounts = [];
         $this->resetValidation();
     }
 

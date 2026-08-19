@@ -3,6 +3,7 @@
 use App\Actions\TenantPurge\PurgeUnverifiedTenantRegistrationsAction;
 use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Models\AuditLog;
+use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Platform\SupportTenantContext;
@@ -93,6 +94,19 @@ it('laat de superuser een vals account wissen na het typen van de organisatienaa
             ->where('action', 'tenant_purge.unused_deleted')
             ->where('user_id', $superuser->id)
             ->exists())->toBeTrue();
+});
+
+it('toont in het bevestigingsvenster welke gegevens verdwijnen', function () {
+    $tenant = Tenant::factory()->create(['name' => 'Te Wissen BV']);
+    User::factory()->admin()->unverified()->create(['tenant_id' => $tenant->id]);
+    Location::factory()->create(['tenant_id' => $tenant->id]);
+    $superuser = User::factory()->superuser()->create();
+
+    Livewire::actingAs($superuser)->test(PlatformTenants::class)
+        ->call('openDeleteConfirm', $tenant->id)
+        ->assertSee(__('mail.tenant_purge.completed.count.users', ['count' => 1]))
+        ->assertSee(__('mail.tenant_purge.completed.count.locations', ['count' => 1]))
+        ->assertDontSee(__('mail.tenant_purge.completed.count.issues', ['count' => 0]));
 });
 
 it('geeft alleen de superuser recht om een account te wissen', function () {

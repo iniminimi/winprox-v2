@@ -121,6 +121,22 @@
 
                 <div class="wp-modal-body wp-stack">
                     <p class="wp-text-body">{{ __('platform.tenants_delete.warning') }}</p>
+
+                    <div class="wp-stack-tight">
+                        <p class="wp-text-body"><strong>{{ __('platform.tenants_delete.counts_title') }}</strong></p>
+                        @if (empty($deleteCounts))
+                            <p class="wp-muted wp-text-sm">{{ __('platform.tenants_delete.counts_empty') }}</p>
+                        @else
+                            <div class="wp-cluster wp-cluster--tight">
+                                @foreach ($deleteCounts as $countKey => $countValue)
+                                    <span class="wp-pill wp-pill--closed wp-pill--xs">
+                                        {{ __('mail.tenant_purge.completed.count.'.$countKey, ['count' => $countValue]) }}
+                                    </span>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+
                     <p class="wp-muted wp-text-sm">{{ __('platform.tenants_delete.backup_hint') }}</p>
 
                     <div>

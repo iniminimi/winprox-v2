@@ -22,6 +22,8 @@
         "title": "Elimina definitivamente l'organizzazione",
         "lead": "Stai eliminando :name con tutti i suoi utenti e dati.",
         "warning": "Pensato per iscrizioni false o mai usate. Questa azione non può essere annullata.",
+        "counts_title": "Questo verrà eliminato",
+        "counts_empty": "Questa organizzazione non contiene ancora dati.",
         "backup_hint": "Prima viene creata un'istantanea tecnica senza media; resta disponibile 30 giorni.",
         "confirm_label": "Digita il nome dell'organizzazione (:name) per confermare",
         "submit": "Elimina definitivamente",
