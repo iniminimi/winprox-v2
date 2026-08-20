@@ -45,6 +45,8 @@ class PromoCampaignEdit extends Component
 
     public string $flowImagePath = '';
 
+    public string $youtubeUrl = '';
+
     public string $mapName = '';
 
     public string $mapEmail = '';
@@ -345,6 +347,7 @@ class PromoCampaignEdit extends Component
         $this->emailBodyHtml = PromoCampaignHtmlSanitizer::forEditor($this->campaign->email_body_html);
         $this->attachLetterToEmail = (bool) ($this->campaign->attach_letter_to_email ?? true);
         $this->flowImagePath = (string) ($this->campaign->flow_image_path ?? '');
+        $this->youtubeUrl = (string) ($this->campaign->youtube_url ?? '');
         $this->mapName = (string) ($mapping['name'] ?? '');
         $this->mapEmail = (string) ($mapping['email'] ?? '');
         $this->mapStreetAddress = (string) ($mapping['street_address'] ?? '');
@@ -380,6 +383,7 @@ class PromoCampaignEdit extends Component
                 emailBodyHtml: PromoCampaignHtmlSanitizer::forEditor($this->emailBodyHtml) ?: null,
                 attachLetterToEmail: $this->attachLetterToEmail,
                 flowImagePath: $this->flowImagePath !== '' ? $this->flowImagePath : null,
+                youtubeUrl: $this->youtubeUrl !== '' ? $this->youtubeUrl : null,
                 columnMapping: $this->columnMappingArray(),
             ),
             actorUserId: $actorUserId,

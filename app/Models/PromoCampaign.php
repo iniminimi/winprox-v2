@@ -21,6 +21,7 @@ class PromoCampaign extends Model
         'email_body_html',
         'attach_letter_to_email',
         'flow_image_path',
+        'youtube_url',
         'column_mapping',
         'created_by',
     ];

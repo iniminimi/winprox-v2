@@ -15,6 +15,7 @@ use App\Models\PromoRecipient;
 use App\Support\EmailUnsubscribeExemptions;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
 use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
+use App\Support\Marketing\PromoCampaignYoutubeThumbnail;
 use App\Support\Marketing\PromoLandingUrl;
 use Illuminate\Support\Facades\Mail;
 use RuntimeException;
@@ -93,19 +94,27 @@ class SendPromoCampaignEmailAction
             $campaign->locale,
         );
 
-        $placeholders = PromoCampaignPlaceholderRenderer::forTarget(
-            name: $target->name,
-            streetAddress: $target->street_address,
-            postalCode: $target->postal_code,
-            city: $target->city,
-            email: $target->email,
-            promoUrl: $promoUrl,
-            welcomeUrl: $welcomeUrl,
+        $placeholders = array_merge(
+            PromoCampaignPlaceholderRenderer::forTarget(
+                name: $target->name,
+                streetAddress: $target->street_address,
+                postalCode: $target->postal_code,
+                city: $target->city,
+                email: $target->email,
+                promoUrl: $promoUrl,
+                welcomeUrl: $welcomeUrl,
+            ),
+            [
+                'youtube_url' => trim((string) ($campaign->youtube_url ?? '')),
+            ],
         );
 
         $emailSubject = PromoCampaignPlaceholderRenderer::render($emailSubject, $placeholders);
-        $emailBodyHtml = PromoCampaignQuillHtmlNormalizer::forMail(
-            PromoCampaignPlaceholderRenderer::render($emailBodyHtml, $placeholders),
+        $emailBodyHtml = PromoCampaignYoutubeThumbnail::expandInMailHtml(
+            PromoCampaignQuillHtmlNormalizer::forMail(
+                PromoCampaignPlaceholderRenderer::render($emailBodyHtml, $placeholders),
+            ),
+            $campaign->youtube_url,
         );
 
         $send = null;

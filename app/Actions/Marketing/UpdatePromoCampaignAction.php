@@ -8,6 +8,7 @@ use App\Actions\Audit\LogAuditAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
 use App\Models\PromoCampaign;
 use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
+use App\Support\Marketing\PromoCampaignYoutubeThumbnail;
 use RuntimeException;
 
 class UpdatePromoCampaignAction
@@ -35,6 +36,13 @@ class UpdatePromoCampaignAction
 
         $letterBodyHtml = PromoCampaignQuillHtmlNormalizer::normalize($data->letterBodyHtml);
         $emailBodyHtml = PromoCampaignQuillHtmlNormalizer::normalize($data->emailBodyHtml);
+        $youtubeUrl = $data->youtubeUrl !== null ? trim($data->youtubeUrl) : null;
+        if ($youtubeUrl === '') {
+            $youtubeUrl = null;
+        }
+        if ($youtubeUrl !== null && PromoCampaignYoutubeThumbnail::extractVideoId($youtubeUrl) === null) {
+            throw new RuntimeException('Invalid YouTube URL.');
+        }
 
         $campaign->update([
             'name' => $name,
@@ -46,6 +54,7 @@ class UpdatePromoCampaignAction
             'flow_image_path' => $data->flowImagePath !== null && trim($data->flowImagePath) !== ''
                 ? trim($data->flowImagePath)
                 : null,
+            'youtube_url' => $youtubeUrl,
             'column_mapping' => $columnMapping,
         ]);
 

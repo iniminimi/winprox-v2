@@ -70,6 +70,12 @@
                         @endforeach
                     </select>
                 </div>
+                <div>
+                    <label class="wp-label" for="edit-youtube">{{ __('platform.promo_campaigns.youtube_url') }}</label>
+                    <input id="edit-youtube" type="url" class="wp-input" wire:model="youtubeUrl" placeholder="https://www.youtube.com/watch?v=...">
+                    <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.youtube_url_hint') }}</p>
+                    @error('youtubeUrl') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
             </div>
         </div>
 
@@ -96,6 +102,10 @@
         <div class="wp-card wp-card-pad wp-stack">
             <p class="wp-subhead">{{ __('platform.promo_campaigns.email_title') }}</p>
             <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.email_placeholders_hint')</p>
+            <div class="wp-flash wp-flash--muted">
+                <p class="wp-text-body">@lang('platform.promo_campaigns.youtube_thumbnail_how_to_title')</p>
+                <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.youtube_thumbnail_how_to')</p>
+            </div>
             <div class="wp-flash wp-flash--muted">
                 <p class="wp-text-body">@lang('platform.promo_campaigns.welcome_url_how_to_title')</p>
                 <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.welcome_url_how_to')</p>

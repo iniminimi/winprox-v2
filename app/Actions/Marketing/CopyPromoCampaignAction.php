@@ -38,6 +38,7 @@ class CopyPromoCampaignAction
                 'email_body_html' => $source->email_body_html,
                 'attach_letter_to_email' => $source->attach_letter_to_email,
                 'flow_image_path' => $source->flow_image_path,
+                'youtube_url' => $source->youtube_url,
                 'column_mapping' => $source->column_mapping,
                 'created_by' => $actorUserId,
             ]);

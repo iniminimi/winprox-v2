@@ -28,6 +28,7 @@ use App\Support\Marketing\PromoCampaignLetterDocxBuilder;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
 use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
 use App\Support\Marketing\PromoCampaignSpreadsheetReader;
+use App\Support\Marketing\PromoCampaignYoutubeThumbnail;
 use App\Support\Marketing\PromoLandingUrl;
 use App\Support\Qr\QrCodePngWriter;
 use Illuminate\Http\UploadedFile;
@@ -153,6 +154,7 @@ it('genereert docx met paragraaf-spacing in het middenstuk', function () {
             emailBodyHtml: null,
             attachLetterToEmail: true,
             flowImagePath: null,
+            youtubeUrl: null,
             columnMapping: null,
         ),
         actorUserId: (int) $superuser->id,
@@ -269,6 +271,7 @@ it('genereert docx voor campagne-ontvanger', function () {
             emailBodyHtml: '<p>Email {{name}}</p>',
             attachLetterToEmail: true,
             flowImagePath: 'public/images/promo/flow_fr.jpg',
+            youtubeUrl: null,
             columnMapping: null,
         ),
         actorUserId: (int) $superuser->id,
@@ -378,6 +381,57 @@ it('zet inline linkstijl op promo e-mail ankers', function () {
         ->toContain('href="{{welcome_url}}"')
         ->toContain('text-decoration:underline')
         ->toContain('Bekijk hier hoe een kamer-QR werkt');
+});
+
+it('haalt youtube video id uit gangbare urls', function () {
+    expect(PromoCampaignYoutubeThumbnail::extractVideoId('https://www.youtube.com/watch?v=dQw4w9WgXcQ'))
+        ->toBe('dQw4w9WgXcQ')
+        ->and(PromoCampaignYoutubeThumbnail::extractVideoId('https://youtu.be/dQw4w9WgXcQ'))
+        ->toBe('dQw4w9WgXcQ')
+        ->and(PromoCampaignYoutubeThumbnail::extractVideoId('https://www.youtube.com/shorts/dQw4w9WgXcQ'))
+        ->toBe('dQw4w9WgXcQ');
+});
+
+it('zet youtube placeholder om naar klikbare thumbnail in promo e-mail', function () {
+    $html = PromoCampaignQuillHtmlNormalizer::forMail('<p>{{youtube_thumbnail}}</p>');
+    $expanded = PromoCampaignYoutubeThumbnail::expandInMailHtml(
+        $html,
+        'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    );
+
+    expect($expanded)
+        ->toContain('img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg')
+        ->toContain('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+        ->not->toContain('{{youtube_thumbnail}}');
+});
+
+it('zet youtube link in promo e-mail om naar thumbnail', function () {
+    $html = PromoCampaignQuillHtmlNormalizer::forMail(
+        '<p><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Bekijk de video</a></p>',
+    );
+    $expanded = PromoCampaignYoutubeThumbnail::expandInMailHtml($html);
+
+    expect($expanded)
+        ->toContain('img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg')
+        ->not->toContain('Bekijk de video');
+});
+
+it('rendert promo-campagne e-mail met youtube thumbnail', function () {
+    $bodyHtml = PromoCampaignYoutubeThumbnail::expandInMailHtml(
+        PromoCampaignQuillHtmlNormalizer::forMail('<p>{{youtube_thumbnail}}</p>'),
+        'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    );
+
+    $html = (new PromoCampaignLetterMail(
+        emailSubject: 'WinProx video',
+        emailBodyHtml: $bodyHtml,
+        docxPath: __FILE__,
+        mailLocale: 'nl',
+    ))->render();
+
+    expect($html)
+        ->toContain('img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg')
+        ->toContain('email-wrapper');
 });
 
 it('behoudt lettergrootte en veilige links in promo html', function () {
@@ -580,6 +634,7 @@ it('kopieert promo-campagne naar nieuwe campagne', function () {
             emailBodyHtml: '<p>Email {{name}}</p>',
             attachLetterToEmail: false,
             flowImagePath: 'public/images/promo/flow_fr.jpg',
+            youtubeUrl: null,
             columnMapping: [
                 'name' => 'nom',
                 'email' => 'email_general',
@@ -758,6 +813,7 @@ it('bewaart lege regels in e-mailtekst bij opslaan campagne', function () {
             emailBodyHtml: $emailHtml,
             attachLetterToEmail: true,
             flowImagePath: null,
+            youtubeUrl: null,
             columnMapping: null,
         ),
         actorUserId: (int) $superuser->id,
@@ -907,6 +963,7 @@ function promoCampaignReadyForEmail(User $superuser, string $excelEmail = 'gemee
             emailBodyHtml: '<p>Email {{name}}</p>',
             attachLetterToEmail: true,
             flowImagePath: null,
+            youtubeUrl: null,
             columnMapping: null,
         ),
         actorUserId: (int) $superuser->id,
@@ -1269,6 +1326,7 @@ function promoCampaignReadyForEmailOnly(User $superuser, string $excelEmail = 'g
             emailBodyHtml: '<p>Email {{name}} {{promo_url}}</p>',
             attachLetterToEmail: false,
             flowImagePath: null,
+            youtubeUrl: null,
             columnMapping: null,
         ),
         actorUserId: (int) $superuser->id,
