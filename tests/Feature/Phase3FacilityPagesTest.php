@@ -228,7 +228,8 @@ it('laadt de FAQ-pagina met facility-inhoud', function () {
         ->assertSee(__('faq.items.pricing.title'))
         ->assertSee(__('faq.items.moderation.title'))
         ->assertSee(__('faq.items.time_clock.title'))
-        ->assertSee(__('faq.items.internal_teams.title'), false);
+        ->assertSee(__('faq.items.internal_teams.title'), false)
+        ->assertSee(__('faq.items.microsoft_login.title'), false);
 });
 
 it('toont privacy-document publiek', function () {
@@ -237,7 +238,8 @@ it('toont privacy-document publiek', function () {
         ->assertSee(__('legal.documents.privacy', [], 'en'))
         ->assertSee(__('legal.applicable_law_notice', [], 'en'))
         ->assertSee('QR reports', false)
-        ->assertSee('ESG & Compliance', false);
+        ->assertSee('ESG & Compliance', false)
+        ->assertSee('Sign in with Microsoft', false);
 });
 
 it('toont contact voor gasten', function () {

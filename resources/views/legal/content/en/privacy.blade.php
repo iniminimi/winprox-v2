@@ -32,6 +32,20 @@
     <li>language preference where applicable</li>
 </ul>
 
+<p><strong>Sign in with Microsoft (optional)</strong></p>
+<p>
+    Admins and employees can sign in on the desktop login screen via Microsoft
+    (Microsoft Entra ID), in addition to email and password. WinProx does not create new accounts:
+    the Microsoft account email must match an existing, active WinProx user (admin or employee).
+    Workers and guests do not use this sign-in.
+</p>
+<ul>
+    <li>the user is redirected to Microsoft to authenticate;</li>
+    <li>WinProx receives identifying data from Microsoft (typically email and name) to match the existing account;</li>
+    <li>Microsoft account passwords are not stored in WinProx through this flow;</li>
+    <li>the existing WinProx password remains in place (including for recovery and organisation deletion).</li>
+</ul>
+
 <p><strong>Subscription and billing</strong></p>
 <ul>
     <li>selected subscription plan (where applicable)</li>
@@ -126,7 +140,7 @@
 <h2>5. Processing purposes</h2>
 <p>Data is processed for:</p>
 <ul>
-    <li>operating the platform.</li>
+    <li>operating the platform, including sign-in of admins and employees (email + password and optional Microsoft Entra ID).</li>
     <li>registering and following up issues and tasks.</li>
     <li>assigning work to internal teams and workers.</li>
     <li>QR reporting and communication between users within your organisation.</li>
@@ -183,6 +197,7 @@
     <li>on the customer’s instructions.</li>
     <li>for hosting and technical infrastructure.</li>
     <li>for payment processing, if you choose to use it (via a recognised payment partner).</li>
+    <li>for sign-in via Microsoft Entra ID, when the user chooses Sign in with Microsoft.</li>
     <li>where legally required.</li>
 </ul>
 <p>

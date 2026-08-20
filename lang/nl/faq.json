@@ -165,17 +165,24 @@
             "roles": [
                 {
                     "title": "Beheerder",
-                    "text": "Volledige controle: locaties, meldingen, taken, team, abonnement, collega-accounts en (indien van toepassing) API-instellingen."
+                    "text": "Volledige controle: locaties, meldingen, taken, team, abonnement, collega-accounts en (indien van toepassing) API-instellingen. Op desktop kunnen ze inloggen met e-mail + wachtwoord of **Inloggen met Microsoft** (e-mail moet overeenkomen)."
                 },
                 {
                     "title": "Medewerker",
-                    "text": "Dagelijkse opvolging van locaties, meldingen en taken. Geen beheer van abonnement of collega-accounts."
+                    "text": "Dagelijkse opvolging van locaties, meldingen en taken. Geen beheer van abonnement of collega-accounts. Op desktop kunnen ze inloggen met e-mail + wachtwoord of **Inloggen met Microsoft** (e-mail moet overeenkomen)."
                 },
                 {
                     "title": "Uitvoerder",
                     "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR; taken starten/afronden via de unit-QR, met foto's en notities."
                 }
             ]
+        },
+        "microsoft_login": {
+            "slug": "microsoft_login",
+            "type": "text",
+            "title": "Kan ik inloggen met Microsoft?",
+            "body": "Ja, voor beheerders en medewerkers op het desktop-inlogscherm, via **Inloggen met Microsoft**. Het e-mailadres van je Microsoft-werkaccount moet overeenkomen met je bestaande WinProx-account. Er wordt geen nieuw account aangemaakt. E-mail + wachtwoord blijft werken. Uitvoerders melden zich aan via Clock Point-QR (naam + icoon), niet via Microsoft. Koppeling met andere software (Ultimo, IWMS, …) loopt via API-sleutels, niet via deze login.",
+            "summary": "Beheerder/medewerker: Inloggen met Microsoft op desktop; e-mail moet matchen. Uitvoerders: Clock Point-QR. Geen nieuwe accounts."
         },
         "data_export": {
             "slug": "data_export",

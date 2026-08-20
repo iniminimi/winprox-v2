@@ -165,17 +165,24 @@
             "roles": [
                 {
                     "title": "Amministratore",
-                    "text": "Controllo completo: sedi, segnalazioni, task, team, abbonamento, account colleghi e (se applicabile) impostazioni API."
+                    "text": "Controllo completo: sedi, segnalazioni, task, team, abbonamento, account colleghi e (se applicabile) impostazioni API. Sul desktop possono accedere con e-mail + password o **Accedi con Microsoft** (l’e-mail deve corrispondere)."
                 },
                 {
                     "title": "Collaboratore",
-                    "text": "Follow-up quotidiano di sedi, segnalazioni e task. Nessuna gestione di abbonamento o account colleghi."
+                    "text": "Follow-up quotidiano di sedi, segnalazioni e task. Nessuna gestione di abbonamento o account colleghi. Sul desktop possono accedere con e-mail + password o **Accedi con Microsoft** (l’e-mail deve corrispondere)."
                 },
                 {
                     "title": "Esecutore",
                     "text": "Lavora senza login WinProx. Si registra via QR Clock Point; avvia/completa task via QR unit, con foto e note."
                 }
             ]
+        },
+        "microsoft_login": {
+            "slug": "microsoft_login",
+            "type": "text",
+            "title": "Posso accedere con Microsoft?",
+            "body": "Sì, per amministratori e dipendenti nella schermata di accesso desktop, con **Accedi con Microsoft**. L’e-mail del suo account Microsoft di lavoro deve corrispondere all’account WinProx esistente. Non viene creato un account nuovo. E-mail + password resta disponibile. Gli esecutori si identificano con il QR Clock Point (nome + icona), non con Microsoft. Il collegamento ad altro software (Ultimo, IWMS, …) usa token API, non questo accesso.",
+            "summary": "Amministratore/dipendente: Accedi con Microsoft sul desktop; l’e-mail deve corrispondere. Esecutori: QR Clock Point. Nessun account nuovo."
         },
         "data_export": {
             "slug": "data_export",

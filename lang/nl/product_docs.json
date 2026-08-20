@@ -121,6 +121,10 @@
             {
                 "title": "Rollen",
                 "body": "Beheerder — volledige controle + abonnement · Medewerker — dagelijkse opvolging (geen billing/accounts) · Uitvoerder — veldwerk via Clock Point + unit-QR, zonder WinProx-login · Teamleader — icoon vrijgeven en coördineren via Clock Point-portaal."
+            },
+            {
+                "title": "Beheer-login",
+                "body": "Beheerders en medewerkers loggen in met e-mail + wachtwoord, of via **Inloggen met Microsoft** (Microsoft Entra). Alleen bestaande WinProx-accounts; het Microsoft-e-mailadres moet overeenkomen. Uitvoerders blijven Clock Point-QR (naam + icoon), zonder Microsoft-login. Koppeling met andere software loopt via API-sleutels, niet via deze login."
             }
         ]
     },
@@ -184,7 +188,7 @@
                     "Kader: EU-AVG + Belgische wet (30 juli 2018).",
                     "Verwerkersovereenkomst (DPA) en subverwerkerslijst beschikbaar.",
                     "Data-export (account), self-service organisatieverwijdering, bewaartermijnen vastgelegd.",
-                    "Gegevens blijven in de **EU** (hosting/e-mail); Stripe EU/US indien betalend."
+                    "Gegevens blijven in de **EU** (hosting/e-mail). Stripe EU/US indien betalend. Bij **Inloggen met Microsoft** gaat de gebruiker naar Microsoft Entra ID (Microsoft, EU/US); WinProx ontvangt e-mail (en eventueel naam) om het bestaande account te herkennen."
                 ]
             },
             {
@@ -200,7 +204,7 @@
                 "items": [
                     "Beheer: e-mail + wachtwoord (gehasht opgeslagen), sessies.",
                     "Zelfregistratie vereist **e-mailverificatie**: het account werkt pas na het klikken op de link in de bevestigingsmail. Niet-geverifieerde aanmeldingen worden na 7 dagen automatisch en volledig verwijderd.",
-                    "**SSO** (één bedrijfs-login via Microsoft): beschikbaar voor beheerders en medewerkers op desktop (**Inloggen met Microsoft**). Alleen bestaande WinProx-accounts (e-mail gelijk aan het Microsoft-account); e-mail + wachtwoord blijft werken. Uitvoerders blijven Clock Point-QR (naam + icoon), geen SSO. Koppeling met andere software loopt via API-sleutels, niet via SSO.",
+                    "**SSO** (één bedrijfs-login via Microsoft Entra): op desktop voor beheerder en medewerker (**Inloggen met Microsoft**). Alleen bestaande WinProx-accounts (e-mail gelijk aan het Microsoft-account); e-mail + wachtwoord blijft werken. Geen automatische nieuwe accounts. Uitvoerders blijven Clock Point-QR (naam + icoon). Koppeling met andere software (Ultimo, IWMS, …) loopt via API-sleutels, niet via SSO.",
                     "API: persoonlijke **toegangssleutel** (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.",
                     "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon.",
                     "Melders: publiek QR-portaal zonder account."
@@ -252,7 +256,7 @@
         "label": "API & Webhooks",
         "tagline": "Integreer WinProx met je bestaande software via API's en webhooks.",
         "highlight": "WinProx is geen vervanger van bestaande IWMS- of ERP-systemen. Dankzij API's en webhooks werkt WinProx er net mee samen.",
-        "intro": "WinProx is gebouwd zodat andere software dezelfde gegevens, meldingen, taken en unit checks kan gebruiken als WinProx zelf. Beheer en documentatie vind je onder Instellingen → API.",
+        "intro": "WinProx is gebouwd zodat andere software dezelfde gegevens, meldingen, taken en unit checks kan gebruiken als WinProx zelf. Beheer en documentatie vind je onder Instellingen → API. Desktop **Inloggen met Microsoft** is geen API-koppeling: andere software gebruikt tokens, niet SSO.",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "Zie ook: Features-overzicht · Technische fiche",
         "left": [

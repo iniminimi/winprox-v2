@@ -32,6 +32,20 @@
     <li>langue préférée le cas échéant.</li>
 </ul>
 
+<p><strong>Connexion avec Microsoft (facultatif)</strong></p>
+<p>
+    Les administrateurs et collaborateurs peuvent se connecter sur l’écran de connexion ordinateur via Microsoft
+    (Microsoft Entra ID), en plus de l’e-mail et du mot de passe. WinProx ne crée pas de nouveaux comptes :
+    l’adresse e-mail du compte Microsoft doit correspondre à un utilisateur WinProx existant et actif
+    (administrateur ou collaborateur). Les exécutants et les invités n’utilisent pas cette connexion.
+</p>
+<ul>
+    <li>l’utilisateur est redirigé vers Microsoft pour s’identifier ;</li>
+    <li>WinProx reçoit des données d’identification de Microsoft (généralement e-mail et nom) pour associer le compte existant ;</li>
+    <li>les mots de passe des comptes Microsoft ne sont pas stockés dans WinProx via ce flux ;</li>
+    <li>le mot de passe WinProx existant reste en place (notamment pour la récupération et la suppression de l’organisation).</li>
+</ul>
+
 <p><strong>Abonnement et facturation</strong></p>
 <ul>
     <li>formule d’abonnement choisie (le cas échéant).</li>
@@ -126,7 +140,7 @@
 <h2>5. Finalités du traitement</h2>
 <p>Les données sont traitées pour :</p>
 <ul>
-    <li>le fonctionnement de la plateforme.</li>
+    <li>le fonctionnement de la plateforme, y compris la connexion des administrateurs et collaborateurs (e-mail + mot de passe et, le cas échéant, Microsoft Entra ID).</li>
     <li>l’enregistrement et le suivi des issues et tâches.</li>
     <li>l’affectation aux équipes internes et aux exécutants.</li>
     <li>les signalements QR et la communication entre utilisateurs au sein de votre organisation.</li>
@@ -183,6 +197,7 @@
     <li>sur instruction du client.</li>
     <li>pour l’hébergement et l’infrastructure technique.</li>
     <li>pour le traitement des paiements, si vous choisissez cette option (via un partenaire de paiement reconnu).</li>
+    <li>pour la connexion via Microsoft Entra ID, lorsque l’utilisateur choisit Se connecter avec Microsoft.</li>
     <li>si la loi l’exige.</li>
 </ul>
 <p>

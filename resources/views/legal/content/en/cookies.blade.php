@@ -9,7 +9,7 @@
 <ul>
     <li>session management (including the Laravel session cookie).</li>
     <li>security (including CSRF or XSRF token).</li>
-    <li>language preference and login functionality.</li>
+    <li>language preference and login functionality, including the temporary state for Sign in with Microsoft (via the session).</li>
 </ul>
 
 <p>

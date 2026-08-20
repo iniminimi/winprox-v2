@@ -1,5 +1,5 @@
 <p>
-    WinProx nutzt externe Dienstleister für Hosting, E-Mail und (sofern aktiviert) Zahlungsabwicklung.
+    WinProx nutzt externe Dienstleister für Hosting, E-Mail, (sofern aktiviert) Zahlungsabwicklung und (sofern genutzt) Microsoft-Anmeldung.
 </p>
 
 <h2>Übersicht</h2>
@@ -31,6 +31,11 @@
         <tr>
             <td>Stripe</td>
             <td>Zahlungsabwicklung (sofern aktiviert)</td>
+            <td>EU/US</td>
+        </tr>
+        <tr>
+            <td>Microsoft Entra ID</td>
+            <td>Anmeldung über Mit Microsoft anmelden (Administrator/Mitarbeiter)</td>
             <td>EU/US</td>
         </tr>
     </tbody>

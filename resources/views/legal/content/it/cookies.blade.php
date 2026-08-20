@@ -9,7 +9,7 @@
 <ul>
     <li>gestione della sessione (incluso il cookie di sessione Laravel).</li>
     <li>sicurezza (incluso il token CSRF o XSRF).</li>
-    <li>preferenza linguistica e funzionalità di accesso.</li>
+    <li>preferenza linguistica e funzionalità di accesso, compreso lo stato temporaneo per Accedi con Microsoft (tramite la sessione).</li>
 </ul>
 
 <p>

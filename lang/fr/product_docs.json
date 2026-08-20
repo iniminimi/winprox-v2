@@ -121,6 +121,10 @@
             {
                 "title": "Roles",
                 "body": "Admin — full control + subscription · Employee — day-to-day follow-up (no billing/accounts) · Worker — field work via Clock Point + unit QR, without WinProx login · Team leader — release icons and coordinate via the Clock Point portal."
+            },
+            {
+                "title": "Connexion back-office",
+                "body": "Les administrateurs et collaborateurs se connectent avec e-mail + mot de passe, ou via **Se connecter avec Microsoft** (Microsoft Entra). Uniquement des comptes WinProx existants ; l’e-mail Microsoft doit correspondre. Les exécutants restent sur le QR Clock Point (nom + icône), sans connexion Microsoft. Les liaisons avec d’autres logiciels passent par des jetons API, pas par cette connexion."
             }
         ]
     },
@@ -184,7 +188,7 @@
                     "Framework: EU GDPR + Belgian Act of 30 July 2018.",
                     "Data Processing Agreement (DPA) and subprocessor list available.",
                     "Data export (account), self-service organisation deletion, retention periods documented.",
-                    "Data stays in the **EU** (hosting/email); Stripe EU/US when paying."
+                    "Les données restent dans l’**UE** (hébergement/e-mail). Stripe UE/US en cas de paiement. Avec **Se connecter avec Microsoft**, l’utilisateur est envoyé vers Microsoft Entra ID (Microsoft, UE/US) ; WinProx reçoit l’e-mail (et éventuellement le nom) pour reconnaître le compte existant."
                 ]
             },
             {
@@ -200,7 +204,7 @@
                 "items": [
                     "Back office: email + password (stored hashed), sessions.",
                     "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. Unverified sign-ups are automatically and completely deleted after 7 days.",
-                    "**SSO** (one work login via Microsoft): available for admins and employees on desktop (**Sign in with Microsoft**). Only existing WinProx accounts (email must match the Microsoft account); email + password still works. Workers stay on Clock Point QR (name + icon), no SSO. Connecting other software uses API tokens, not SSO.",
+                    "**SSO** (une connexion professionnelle via Microsoft Entra) : pour administrateurs et collaborateurs sur ordinateur (**Se connecter avec Microsoft**). Uniquement des comptes WinProx existants (l’e-mail doit correspondre au compte Microsoft) ; e-mail + mot de passe reste possible. Pas de nouveaux comptes automatiques. Les exécutants restent sur le QR Clock Point (nom + icône). Les liaisons avec d’autres logiciels (Ultimo, IWMS, …) passent par des jetons API, pas par le SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
                     "Reporters: public QR portal without an account."
@@ -252,7 +256,7 @@
         "label": "API & Webhooks",
         "tagline": "Intégrez WinProx à vos logiciels existants via des API et des webhooks.",
         "highlight": "WinProx ne remplace pas les systèmes IWMS ou ERP existants. Grâce aux API et webhooks, WinProx fonctionne avec eux.",
-        "intro": "WinProx est conçu pour que d’autres logiciels utilisent les mêmes données, signalements, tâches et contrôles d’unité que WinProx. Gestion et docs sous Paramètres → API.",
+        "intro": "WinProx est conçu pour que d’autres logiciels utilisent les mêmes données, signalements, tâches et contrôles d’unité que WinProx. Gestion et docs sous Paramètres → API. **Se connecter avec Microsoft** sur ordinateur n’est pas une intégration API : les autres logiciels utilisent des jetons, pas le SSO.",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "Voir aussi : aperçu des fonctionnalités · fiche technique",
         "left": [

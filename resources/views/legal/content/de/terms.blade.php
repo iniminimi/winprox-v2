@@ -66,6 +66,11 @@
 <p>
     WinProx behält sich das Recht vor, Konten bei Missbrauch einzuschränken oder zu sperren.
 </p>
+<p>
+    Administratoren und Mitarbeiter können sich mit E-Mail und Passwort anmelden, oder über Microsoft
+    (Mit Microsoft anmelden). Die Microsoft-Anmeldung ordnet nur ein bestehendes WinProx-Konto zu
+    (E-Mail muss übereinstimmen). Ausführende nutzen keine Microsoft-Anmeldung.
+</p>
 
 <h2>7. Verfügbarkeit des Dienstes</h2>
 <p>

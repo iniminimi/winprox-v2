@@ -1,5 +1,5 @@
 <p>
-    WinProx utiliza proveedores de servicios externos para alojamiento, correo electrónico y (cuando esté activado) procesamiento de pagos.
+    WinProx utiliza proveedores de servicios externos para alojamiento, correo electrónico, (cuando esté activado) procesamiento de pagos y (cuando se use) inicio de sesión con Microsoft.
 </p>
 
 <h2>Resumen</h2>
@@ -31,6 +31,11 @@
         <tr>
             <td>Stripe</td>
             <td>Procesamiento de pagos (cuando esté activado)</td>
+            <td>UE/EE. UU.</td>
+        </tr>
+        <tr>
+            <td>Microsoft Entra ID</td>
+            <td>Inicio de sesión vía Iniciar sesión con Microsoft (administrador/empleado)</td>
             <td>UE/EE. UU.</td>
         </tr>
     </tbody>

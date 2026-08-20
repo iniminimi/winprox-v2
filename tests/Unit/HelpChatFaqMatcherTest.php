@@ -122,6 +122,15 @@ it('koppelt voor-wie vragen aan FAQ', function (): void {
         ->toBe(__('faq.items.for_who.summary'));
 });
 
+it('beantwoordt Microsoft-login vanuit pagina-hulp backoffice', function (): void {
+    $matcher = app(HelpChatFaqMatcher::class);
+
+    $answer = $matcher->match('inloggen met microsoft', 'nl');
+
+    expect($answer)->toContain('Inloggen met Microsoft')
+        ->and($answer)->toContain('Clock Point');
+});
+
 it('koppelt pagina-hulp zonder bare status-woord', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 

@@ -1,5 +1,5 @@
 <p>
-    WinProx uses external service providers for hosting, email and (where enabled) payment processing.
+    WinProx uses external service providers for hosting, email, (where enabled) payment processing and (where used) Microsoft sign-in.
 </p>
 
 <h2>Overview</h2>
@@ -31,6 +31,11 @@
         <tr>
             <td>Stripe</td>
             <td>Payment processing (where enabled)</td>
+            <td>EU/US</td>
+        </tr>
+        <tr>
+            <td>Microsoft Entra ID</td>
+            <td>Sign-in via Sign in with Microsoft (admin/employee)</td>
             <td>EU/US</td>
         </tr>
     </tbody>

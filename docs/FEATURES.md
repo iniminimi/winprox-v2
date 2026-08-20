@@ -782,7 +782,8 @@ battery-PNG-widget (vervangen door tekstcapsule).
 
 ### 8.1 FAQ-pagina
 - Accordeon met FAQ-items per **slug** (geen DB-categoriemodel nodig). Facility-specifieke items
-  (bv. interne teams, opvolging) **herschrijven** (geen contractor-flow).
+  (bv. interne teams, opvolging, **microsoft_login** voor desktop SSO) **herschrijven**
+  (geen contractor-flow).
 - **V2-opslag: `lang/[locale]/faq.json`** (4 talen, pariteit) — **niet** de oude dubbele
   JSON+PHP-opslag. Let op cross-platform regel: vermijd `__('FAQ')` dat botst met een `faq`-groep;
   gebruik unieke per-page keys.

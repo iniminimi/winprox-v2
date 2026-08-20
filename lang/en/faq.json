@@ -165,17 +165,24 @@
             "roles": [
                 {
                     "title": "Administrator",
-                    "text": "Full control: sites, issues, tasks, team, subscription, colleague accounts, and (where applicable) API settings."
+                    "text": "Full control: sites, issues, tasks, team, subscription, colleague accounts, and (where applicable) API settings. On desktop they can sign in with email + password or **Sign in with Microsoft** (email must match)."
                 },
                 {
                     "title": "Staff member",
-                    "text": "Daily follow-up of sites, issues, and tasks. No management of subscription or colleague accounts."
+                    "text": "Daily follow-up of sites, issues, and tasks. No management of subscription or colleague accounts. On desktop they can sign in with email + password or **Sign in with Microsoft** (email must match)."
                 },
                 {
                     "title": "Field worker",
                     "text": "Works without a WinProx login. Signs in via Clock Point QR; starts/completes tasks via the unit QR, with photos and notes."
                 }
             ]
+        },
+        "microsoft_login": {
+            "slug": "microsoft_login",
+            "type": "text",
+            "title": "Can I sign in with Microsoft?",
+            "body": "Yes, for admins and employees on the desktop login screen, via **Sign in with Microsoft**. The email of your Microsoft work account must match your existing WinProx account. No new account is created. Email + password still works. Workers sign in via Clock Point QR (name + icon), not Microsoft. Connecting other software (Ultimo, IWMS, …) uses API tokens, not this login.",
+            "summary": "Admin/employee: Sign in with Microsoft on desktop; email must match. Workers: Clock Point QR. No new accounts."
         },
         "data_export": {
             "slug": "data_export",

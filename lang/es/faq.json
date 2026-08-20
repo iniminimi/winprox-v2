@@ -165,17 +165,24 @@
             "roles": [
                 {
                     "title": "Administrador",
-                    "text": "Control total: sitios, incidencias, tareas, equipo, suscripción, cuentas de colegas y (si aplica) ajustes API."
+                    "text": "Control total: sitios, incidencias, tareas, equipo, suscripción, cuentas de colegas y (si aplica) ajustes API. En escritorio pueden iniciar sesión con correo + contraseña o **Iniciar sesión con Microsoft** (el correo debe coincidir)."
                 },
                 {
                     "title": "Personal",
-                    "text": "Seguimiento diario de sitios, incidencias y tareas. Sin gestión de suscripción ni cuentas de colegas."
+                    "text": "Seguimiento diario de sitios, incidencias y tareas. Sin gestión de suscripción ni cuentas de colegas. En escritorio pueden iniciar sesión con correo + contraseña o **Iniciar sesión con Microsoft** (el correo debe coincidir)."
                 },
                 {
                     "title": "Operario",
                     "text": "Trabaja sin login WinProx. Se registra vía QR Clock Point; inicia/completa tareas vía el QR de unit, con fotos y notas."
                 }
             ]
+        },
+        "microsoft_login": {
+            "slug": "microsoft_login",
+            "type": "text",
+            "title": "¿Puedo iniciar sesión con Microsoft?",
+            "body": "Sí, para administradores y empleados en la pantalla de inicio de sesión de escritorio, con **Iniciar sesión con Microsoft**. El correo de su cuenta Microsoft de trabajo debe coincidir con su cuenta WinProx existente. No se crea una cuenta nueva. Correo + contraseña sigue funcionando. Los ejecutores se identifican con el QR Clock Point (nombre + icono), no con Microsoft. La conexión con otro software (Ultimo, IWMS, …) usa tokens de API, no este inicio de sesión.",
+            "summary": "Administrador/empleado: Iniciar sesión con Microsoft en escritorio; el correo debe coincidir. Ejecutores: QR Clock Point. Sin cuentas nuevas."
         },
         "data_export": {
             "slug": "data_export",

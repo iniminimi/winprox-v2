@@ -9,7 +9,7 @@
 <ul>
     <li>sessiebeheer (o.a. Laravel-sessiecookie).</li>
     <li>beveiliging (o.a. CSRF- of XSRF-token).</li>
-    <li>taalvoorkeur en aanmeldfunctionaliteit.</li>
+    <li>taalvoorkeur en aanmeldfunctionaliteit, inclusief de tijdelijke status voor Inloggen met Microsoft (via de sessie).</li>
 </ul>
 
 <p>

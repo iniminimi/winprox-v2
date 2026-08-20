@@ -93,6 +93,15 @@ return [
             'body_key' => 'faq.items.pricing.summary',
         ],
         [
+            'patterns' => [
+                'inloggen met microsoft', 'sign in with microsoft', 'mit microsoft anmelden',
+                'se connecter avec microsoft', 'iniciar sesión con microsoft', 'accedi con microsoft',
+                'microsoft login', 'microsoft-login', 'microsoft entra', 'entra id', 'sso',
+                'aanmelden met microsoft', 'inloggen microsoft',
+            ],
+            'body_key' => 'faq.items.microsoft_login.summary',
+        ],
+        [
             'patterns' => ['rol', 'role', 'beheerder', 'admin', 'gebruiker', 'medewerker'],
             'body_key' => 'faq.items.user_roles.summary',
         ],

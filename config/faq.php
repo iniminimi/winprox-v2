@@ -16,6 +16,7 @@ return [
         'iot',
         'for_who',
         'user_roles',
+        'microsoft_login',
         'internal_teams',
         'team_follow_up',
         'reservations',

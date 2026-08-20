@@ -79,7 +79,7 @@
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
 
 <p>
-    WinProx kann Dritte für Hosting, Infrastruktur, E-Mail und (sofern genutzt) Zahlungen einsetzen.
+    WinProx kann Dritte für Hosting, Infrastruktur, E-Mail, (sofern genutzt) Zahlungen und (sofern genutzt) Microsoft-Anmeldung einsetzen.
 </p>
 
 <p>

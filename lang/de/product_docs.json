@@ -121,6 +121,10 @@
             {
                 "title": "Roles",
                 "body": "Admin — full control + subscription · Employee — day-to-day follow-up (no billing/accounts) · Worker — field work via Clock Point + unit QR, without WinProx login · Team leader — release icons and coordinate via the Clock Point portal."
+            },
+            {
+                "title": "Backoffice-Anmeldung",
+                "body": "Administratoren und Mitarbeiter melden sich mit E-Mail + Passwort an, oder über **Mit Microsoft anmelden** (Microsoft Entra). Nur bestehende WinProx-Konten; die Microsoft-E-Mail muss übereinstimmen. Ausführende bleiben beim Clock-Point-QR (Name + Symbol), ohne Microsoft-Anmeldung. Anbindung anderer Software über API-Token, nicht über diese Anmeldung."
             }
         ]
     },
@@ -184,7 +188,7 @@
                     "Framework: EU GDPR + Belgian Act of 30 July 2018.",
                     "Data Processing Agreement (DPA) and subprocessor list available.",
                     "Data export (account), self-service organisation deletion, retention periods documented.",
-                    "Data stays in the **EU** (hosting/email); Stripe EU/US when paying."
+                    "Daten bleiben in der **EU** (Hosting/E-Mail). Stripe EU/US bei Zahlung. Bei **Mit Microsoft anmelden** wird der Benutzer zu Microsoft Entra ID (Microsoft, EU/US) weitergeleitet; WinProx erhält E-Mail (und ggf. Name) zur Erkennung des bestehenden Kontos."
                 ]
             },
             {
@@ -200,7 +204,7 @@
                 "items": [
                     "Back office: email + password (stored hashed), sessions.",
                     "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. Unverified sign-ups are automatically and completely deleted after 7 days.",
-                    "**SSO** (one work login via Microsoft): available for admins and employees on desktop (**Sign in with Microsoft**). Only existing WinProx accounts (email must match the Microsoft account); email + password still works. Workers stay on Clock Point QR (name + icon), no SSO. Connecting other software uses API tokens, not SSO.",
+                    "**SSO** (eine Firmenanmeldung über Microsoft Entra): für Administratoren und Mitarbeiter am Desktop (**Mit Microsoft anmelden**). Nur bestehende WinProx-Konten (E-Mail muss mit dem Microsoft-Konto übereinstimmen); E-Mail + Passwort bleibt möglich. Keine automatischen neuen Konten. Ausführende bleiben beim Clock-Point-QR (Name + Symbol). Anbindung anderer Software (Ultimo, IWMS, …) über API-Token, nicht über SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
                     "Reporters: public QR portal without an account."
@@ -252,7 +256,7 @@
         "label": "API & Webhooks",
         "tagline": "Integrieren Sie WinProx über APIs und Webhooks in Ihre bestehende Software.",
         "highlight": "WinProx ersetzt keine bestehenden IWMS- oder ERP-Systeme. Dank APIs und Webhooks arbeitet WinProx mit ihnen zusammen.",
-        "intro": "WinProx ist so gebaut, dass andere Software dieselben Daten, Meldungen, Aufgaben und Unit-Checks nutzen kann wie WinProx selbst. Verwaltung und Docs unter Einstellungen → API.",
+        "intro": "WinProx ist so gebaut, dass andere Software dieselben Daten, Meldungen, Aufgaben und Unit-Checks nutzen kann wie WinProx selbst. Verwaltung und Docs unter Einstellungen → API. Die Desktop-Anmeldung **Mit Microsoft anmelden** ist keine API-Anbindung: andere Software nutzt Token, nicht SSO.",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "Siehe auch: Feature-Übersicht · Technisches Datenblatt",
         "left": [

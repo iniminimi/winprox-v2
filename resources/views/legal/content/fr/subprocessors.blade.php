@@ -1,5 +1,5 @@
 <p>
-    WinProx recourt à des prestataires externes pour l’hébergement, l’e-mail et (le cas échéant) le traitement des paiements.
+    WinProx recourt à des prestataires externes pour l’hébergement, l’e-mail, (le cas échéant) le traitement des paiements et (le cas échéant) la connexion Microsoft.
 </p>
 
 <h2>Aperçu</h2>
@@ -31,6 +31,11 @@
         <tr>
             <td>Stripe</td>
             <td>Traitement des paiements (si activé)</td>
+            <td>UE/US</td>
+        </tr>
+        <tr>
+            <td>Microsoft Entra ID</td>
+            <td>Connexion via Se connecter avec Microsoft (administrateur/collaborateur)</td>
             <td>UE/US</td>
         </tr>
     </tbody>

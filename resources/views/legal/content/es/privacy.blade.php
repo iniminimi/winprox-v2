@@ -32,6 +32,20 @@
     <li>preferencia de idioma, cuando proceda</li>
 </ul>
 
+<p><strong>Inicio de sesión con Microsoft (opcional)</strong></p>
+<p>
+    Administradores y empleados pueden iniciar sesión en la pantalla de escritorio a través de Microsoft
+    (Microsoft Entra ID), además del correo y la contraseña. WinProx no crea cuentas nuevas:
+    el correo de la cuenta Microsoft debe coincidir con un usuario WinProx existente y activo
+    (administrador o empleado). Los ejecutores y los invitados no usan este inicio de sesión.
+</p>
+<ul>
+    <li>el usuario es redirigido a Microsoft para identificarse;</li>
+    <li>WinProx recibe datos identificativos de Microsoft (normalmente correo y nombre) para asociar la cuenta existente;</li>
+    <li>las contraseñas de las cuentas Microsoft no se almacenan en WinProx en este flujo;</li>
+    <li>la contraseña WinProx existente se mantiene (p. ej. para recuperación y eliminación de la organización).</li>
+</ul>
+
 <p><strong>Suscripción y facturación</strong></p>
 <ul>
     <li>plan de suscripción seleccionado (cuando proceda)</li>
@@ -126,7 +140,7 @@
 <h2>5. Finalidades del tratamiento</h2>
 <p>Los datos se tratan para:</p>
 <ul>
-    <li>operar la plataforma.</li>
+    <li>operar la plataforma, incluido el inicio de sesión de administradores y empleados (correo + contraseña y, de forma opcional, Microsoft Entra ID).</li>
     <li>registrar y dar seguimiento a incidencias y tareas.</li>
     <li>asignar trabajo a equipos internos y trabajadores.</li>
     <li>informes QR y comunicación entre usuarios dentro de su organización.</li>
@@ -183,6 +197,7 @@
     <li>siguiendo las instrucciones del cliente.</li>
     <li>para alojamiento e infraestructura técnica.</li>
     <li>para el procesamiento de pagos, si usted decide utilizarlo (a través de un socio de pagos reconocido).</li>
+    <li>para el inicio de sesión vía Microsoft Entra ID, cuando el usuario elige Iniciar sesión con Microsoft.</li>
     <li>cuando la ley lo exija.</li>
 </ul>
 <p>

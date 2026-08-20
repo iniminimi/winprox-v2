@@ -1,5 +1,5 @@
 <p>
-    WinProx utilizza fornitori di servizi esterni per hosting, e-mail e (ove abilitato) elaborazione dei pagamenti.
+    WinProx utilizza fornitori di servizi esterni per hosting, e-mail, (ove abilitato) elaborazione dei pagamenti e (ove utilizzato) accesso Microsoft.
 </p>
 
 <h2>Panoramica</h2>
@@ -31,6 +31,11 @@
         <tr>
             <td>Stripe</td>
             <td>Elaborazione dei pagamenti (ove abilitato)</td>
+            <td>UE/Stati Uniti</td>
+        </tr>
+        <tr>
+            <td>Microsoft Entra ID</td>
+            <td>Accesso tramite Accedi con Microsoft (amministratore/dipendente)</td>
             <td>UE/Stati Uniti</td>
         </tr>
     </tbody>

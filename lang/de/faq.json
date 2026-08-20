@@ -165,17 +165,24 @@
             "roles": [
                 {
                     "title": "Administrator",
-                    "text": "Volle Kontrolle: Standorte, Meldungen, Aufgaben, Team, Abonnement, Kollegenkonten und (falls zutreffend) API-Einstellungen."
+                    "text": "Volle Kontrolle: Standorte, Meldungen, Aufgaben, Team, Abonnement, Kollegenkonten und (falls zutreffend) API-Einstellungen. Am Desktop können sie sich mit E-Mail + Passwort oder **Mit Microsoft anmelden** anmelden (E-Mail muss übereinstimmen)."
                 },
                 {
                     "title": "Mitarbeiter",
-                    "text": "Tägliche Nachverfolgung von Standorten, Meldungen und Aufgaben. Keine Verwaltung von Abonnement oder Kollegenkonten."
+                    "text": "Tägliche Nachverfolgung von Standorten, Meldungen und Aufgaben. Keine Verwaltung von Abonnement oder Kollegenkonten. Am Desktop können sie sich mit E-Mail + Passwort oder **Mit Microsoft anmelden** anmelden (E-Mail muss übereinstimmen)."
                 },
                 {
                     "title": "Ausführender",
                     "text": "Arbeitet ohne WinProx-Login. Meldet sich über Clock-Point-QR an; startet/schließt Aufgaben über den Unit-QR, mit Fotos und Notizen."
                 }
             ]
+        },
+        "microsoft_login": {
+            "slug": "microsoft_login",
+            "type": "text",
+            "title": "Kann ich mich mit Microsoft anmelden?",
+            "body": "Ja, für Administratoren und Mitarbeiter auf dem Desktop-Anmeldebildschirm, über **Mit Microsoft anmelden**. Die E-Mail Ihres Microsoft-Arbeitskontos muss mit Ihrem bestehenden WinProx-Konto übereinstimmen. Es wird kein neues Konto angelegt. E-Mail + Passwort bleibt möglich. Ausführende melden sich über Clock-Point-QR (Name + Symbol) an, nicht über Microsoft. Anbindung anderer Software (Ultimo, IWMS, …) über API-Token, nicht über diese Anmeldung.",
+            "summary": "Administrator/Mitarbeiter: Mit Microsoft anmelden am Desktop; E-Mail muss übereinstimmen. Ausführende: Clock-Point-QR. Keine neuen Konten."
         },
         "data_export": {
             "slug": "data_export",

@@ -79,7 +79,7 @@
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
 
 <p>
-    WinProx può avvalersi di terzi per hosting, infrastruttura, e-mail e (ove utilizzato) pagamenti.
+    WinProx può avvalersi di terzi per hosting, infrastruttura, e-mail, (ove utilizzato) pagamenti e (ove utilizzato) accesso Microsoft.
 </p>
 
 <p>

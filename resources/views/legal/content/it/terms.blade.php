@@ -66,6 +66,11 @@
 <p>
     WinProx si riserva il diritto di limitare o bloccare gli account in caso di abuso.
 </p>
+<p>
+    Amministratori e dipendenti possono accedere con e-mail e password, oppure tramite Microsoft
+    (Accedi con Microsoft). L’accesso Microsoft associa solo un account WinProx esistente
+    (l’e-mail deve corrispondere). Gli esecutori non usano l’accesso Microsoft.
+</p>
 
 <h2>7. Disponibilità del servizio</h2>
 <p>

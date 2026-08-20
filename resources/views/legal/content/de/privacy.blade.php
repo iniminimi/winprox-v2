@@ -32,6 +32,20 @@
     <li>Spracheinstellung, soweit zutreffend.</li>
 </ul>
 
+<p><strong>Anmeldung mit Microsoft (optional)</strong></p>
+<p>
+    Administratoren und Mitarbeiter können sich auf dem Desktop-Anmeldebildschirm über Microsoft
+    (Microsoft Entra ID) anmelden, zusätzlich zu E-Mail und Passwort. WinProx legt dabei keine neuen Konten an:
+    die E-Mail-Adresse des Microsoft-Kontos muss mit einem bestehenden, aktiven WinProx-Benutzer
+    (Administrator oder Mitarbeiter) übereinstimmen. Ausführende und Gäste nutzen diese Anmeldung nicht.
+</p>
+<ul>
+    <li>der Benutzer wird zur Identifizierung an Microsoft weitergeleitet;</li>
+    <li>WinProx erhält Identifikationsdaten von Microsoft (in der Regel E-Mail-Adresse und Name), um das bestehende Konto zuzuordnen;</li>
+    <li>Passwörter von Microsoft-Konten werden über diesen Ablauf nicht in WinProx gespeichert;</li>
+    <li>das bestehende WinProx-Passwort bleibt erhalten (u. a. für Wiederherstellung und Organisationslöschung).</li>
+</ul>
+
 <p><strong>Abonnement und Abrechnung</strong></p>
 <ul>
     <li>gewähltes Abonnement (soweit zutreffend).</li>
@@ -126,7 +140,7 @@
 <h2>5. Zwecke der Verarbeitung</h2>
 <p>Daten werden verarbeitet für:</p>
 <ul>
-    <li>den Betrieb der Plattform.</li>
+    <li>den Betrieb der Plattform, einschließlich der Anmeldung von Administratoren und Mitarbeitern (E-Mail + Passwort und optional Microsoft Entra ID).</li>
     <li>Registrierung und Nachverfolgung von Issues und Aufgaben.</li>
     <li>Zuweisung an interne Teams und Ausführende.</li>
     <li>QR-Meldungen und Kommunikation zwischen Benutzern innerhalb Ihrer Organisation.</li>
@@ -184,6 +198,7 @@
     <li>im Auftrag des Kunden.</li>
     <li>für Hosting und technische Infrastruktur.</li>
     <li>für Zahlungsabwicklung, sofern Sie diese nutzen (über einen anerkannten Zahlungspartner).</li>
+    <li>für die Anmeldung über Microsoft Entra ID, wenn der Benutzer Mit Microsoft anmelden wählt.</li>
     <li>wenn gesetzlich vorgeschrieben.</li>
 </ul>
 <p>

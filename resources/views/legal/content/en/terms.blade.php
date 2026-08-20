@@ -66,6 +66,11 @@
 <p>
     WinProx reserves the right to restrict or block accounts in case of abuse.
 </p>
+<p>
+    Admins and employees can sign in with email and password, or via Microsoft
+    (Sign in with Microsoft). Microsoft sign-in only matches an existing WinProx account
+    (email must match). Workers do not use Microsoft sign-in.
+</p>
 
 <h2>7. Service availability</h2>
 <p>

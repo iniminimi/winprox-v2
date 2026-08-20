@@ -79,7 +79,7 @@
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
 
 <p>
-    WinProx kan gebruik maken van derden voor hosting, infrastructuur, e-mail en (indien gebruikt) betalingen.
+    WinProx kan gebruik maken van derden voor hosting, infrastructuur, e-mail, (indien gebruikt) betalingen en (indien gebruikt) Microsoft-aanmelding.
 </p>
 
 <p>

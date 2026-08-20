@@ -66,6 +66,11 @@
 <p>
     WinProx se reserva el derecho de restringir o bloquear cuentas en caso de abuso.
 </p>
+<p>
+    Administradores y empleados pueden iniciar sesión con correo y contraseña, o a través de Microsoft
+    (Iniciar sesión con Microsoft). El inicio de sesión Microsoft solo asocia una cuenta WinProx existente
+    (el correo debe coincidir). Los ejecutores no usan el inicio de sesión Microsoft.
+</p>
 
 <h2>7. Disponibilidad del servicio</h2>
 <p>

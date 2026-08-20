@@ -32,6 +32,20 @@
     <li>voorkeurstaal, indien van toepassing.</li>
 </ul>
 
+<p><strong>Inloggen met Microsoft (optioneel)</strong></p>
+<p>
+    Beheerders en medewerkers kunnen zich op het desktop-inlogscherm aanmelden via Microsoft
+    (Microsoft Entra ID), naast e-mail en wachtwoord. WinProx maakt daarbij geen nieuwe accounts:
+    het e-mailadres van het Microsoft-account moet overeenkomen met een bestaande, actieve
+    WinProx-gebruiker (beheerder of medewerker). Uitvoerders en gasten gebruiken deze aanmelding niet.
+</p>
+<ul>
+    <li>de gebruiker wordt doorgestuurd naar Microsoft om zich te identificeren;</li>
+    <li>WinProx ontvangt identificerende gegevens van Microsoft (doorgaans e-mailadres en naam) om het bestaande account te koppelen;</li>
+    <li>wachtwoorden van Microsoft-accounts worden niet via deze flow in WinProx opgeslagen;</li>
+    <li>het bestaande WinProx-wachtwoord blijft aanwezig (o.a. voor herstel en organisatieverwijdering).</li>
+</ul>
+
 <p><strong>Abonnement en facturatie</strong></p>
 <ul>
     <li>gekozen abonnementsformule (indien van toepassing).</li>
@@ -126,7 +140,7 @@
 <h2>5. Doeleinden van verwerking</h2>
 <p>Gegevens worden verwerkt voor:</p>
 <ul>
-    <li>het functioneren van het platform.</li>
+    <li>het functioneren van het platform, inclusief aanmelding van beheerders en medewerkers (e-mail + wachtwoord en optioneel Microsoft Entra ID).</li>
     <li>registratie en opvolging van meldingen en taken.</li>
     <li>toewijzing aan interne teams en uitvoerders.</li>
     <li>QR-meldingen en communicatie tussen gebruikers binnen uw organisatie.</li>
@@ -184,6 +198,7 @@
     <li>in opdracht van de klant.</li>
     <li>voor hosting en technische infrastructuur.</li>
     <li>voor betalingsverwerking, indien u daarvoor kiest (via een erkende betalingspartner).</li>
+    <li>voor aanmelding via Microsoft Entra ID, wanneer de gebruiker Inloggen met Microsoft kiest.</li>
     <li>indien wettelijk verplicht.</li>
 </ul>
 <p>

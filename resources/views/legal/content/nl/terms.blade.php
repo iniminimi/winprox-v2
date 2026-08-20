@@ -66,6 +66,11 @@
 <p>
     WinProx behoudt zich het recht voor om accounts te beperken of te blokkeren bij misbruik.
 </p>
+<p>
+    Beheerders en medewerkers kunnen zich aanmelden met e-mail en wachtwoord, of via Microsoft
+    (Inloggen met Microsoft). Aanmelding via Microsoft koppelt alleen een bestaand WinProx-account
+    (e-mailadres moet overeenkomen). Uitvoerders gebruiken geen Microsoft-aanmelding.
+</p>
 
 <h2>7. Beschikbaarheid van de dienst</h2>
 <p>

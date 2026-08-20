@@ -165,17 +165,24 @@
             "roles": [
                 {
                     "title": "Administrateur",
-                    "text": "Contrôle total : sites, signalements, tâches, équipe, abonnement, comptes collègues et (le cas échéant) paramètres API."
+                    "text": "Contrôle total : sites, signalements, tâches, équipe, abonnement, comptes collègues et (le cas échéant) paramètres API. Sur ordinateur ils peuvent se connecter avec e-mail + mot de passe ou **Se connecter avec Microsoft** (l’e-mail doit correspondre)."
                 },
                 {
                     "title": "Collaborateur",
-                    "text": "Suivi quotidien des sites, signalements et tâches. Pas de gestion de l'abonnement ni des comptes collègues."
+                    "text": "Suivi quotidien des sites, signalements et tâches. Pas de gestion de l'abonnement ni des comptes collègues. Sur ordinateur ils peuvent se connecter avec e-mail + mot de passe ou **Se connecter avec Microsoft** (l’e-mail doit correspondre)."
                 },
                 {
                     "title": "Exécutant",
                     "text": "Travaille sans connexion WinProx. S'enregistre via QR Clock Point ; démarre/clôture les tâches via le QR unité, avec photos et notes."
                 }
             ]
+        },
+        "microsoft_login": {
+            "slug": "microsoft_login",
+            "type": "text",
+            "title": "Puis-je me connecter avec Microsoft ?",
+            "body": "Oui, pour les administrateurs et collaborateurs sur l’écran de connexion ordinateur, via **Se connecter avec Microsoft**. L’e-mail de votre compte Microsoft professionnel doit correspondre à votre compte WinProx existant. Aucun nouveau compte n’est créé. E-mail + mot de passe reste possible. Les exécutants s’identifient via le QR Clock Point (nom + icône), pas via Microsoft. Les liaisons avec d’autres logiciels (Ultimo, IWMS, …) passent par des jetons API, pas par cette connexion.",
+            "summary": "Administrateur/collaborateur : Se connecter avec Microsoft sur ordinateur ; l’e-mail doit correspondre. Exécutants : QR Clock Point. Pas de nouveaux comptes."
         },
         "data_export": {
             "slug": "data_export",

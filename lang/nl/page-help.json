@@ -422,7 +422,7 @@
             "actions": [
                 {
                     "label": "Collega-gebruikers",
-                    "text": "Beheer administratieve medewerkers die voornamelijk op een pc werken. Deze moeten inloggen met e-mail en wachtwoord. Een beheerder is de hoofdgebruiker die de bedrijfsgegevens kan aanpassen. Beheerders en medewerkers zijn onbeperkt — units bepalen uw abonnement."
+                    "text": "Beheer administratieve medewerkers die voornamelijk op een pc werken. Zij loggen in met e-mail en wachtwoord, of via **Inloggen met Microsoft** (het Microsoft-e-mailadres moet gelijk zijn aan het bestaande WinProx-account; er wordt geen nieuw account aangemaakt). Een beheerder is de hoofdgebruiker die de bedrijfsgegevens kan aanpassen. Beheerders en medewerkers zijn onbeperkt — units bepalen uw abonnement. Uitvoerders gebruiken geen Microsoft-login (Clock Point-QR)."
                 }
             ]
         },

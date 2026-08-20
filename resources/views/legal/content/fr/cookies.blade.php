@@ -9,7 +9,7 @@
 <ul>
     <li>gestion de session (notamment cookie de session Laravel).</li>
     <li>sécurité (notamment jeton CSRF ou XSRF).</li>
-    <li>préférence de langue et fonctionnalité de connexion.</li>
+    <li>préférence de langue et fonctionnalité de connexion, y compris l’état temporaire pour Se connecter avec Microsoft (via la session).</li>
 </ul>
 
 <p>

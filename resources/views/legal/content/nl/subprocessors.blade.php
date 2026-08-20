@@ -1,5 +1,5 @@
 <p>
-    WinProx maakt gebruik van externe dienstverleners voor hosting, e-mail en (indien geactiveerd) betalingsverwerking.
+    WinProx maakt gebruik van externe dienstverleners voor hosting, e-mail, (indien geactiveerd) betalingsverwerking en (indien gebruikt) Microsoft-aanmelding.
 </p>
 
 <h2>Overzicht</h2>
@@ -31,6 +31,11 @@
         <tr>
             <td>Stripe</td>
             <td>Betalingsverwerking (indien geactiveerd)</td>
+            <td>EU/US</td>
+        </tr>
+        <tr>
+            <td>Microsoft Entra ID</td>
+            <td>Aanmelding via Inloggen met Microsoft (beheerder/medewerker)</td>
             <td>EU/US</td>
         </tr>
     </tbody>

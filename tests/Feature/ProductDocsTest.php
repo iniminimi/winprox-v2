@@ -12,7 +12,8 @@ it('toont de features-overzicht pagina publiek per locale', function () {
 it('toont de technische fiche publiek per locale', function () {
     $this->get(route('product.technical', ['locale' => 'en']))
         ->assertOk()
-        ->assertSee(__('product_docs.documents.technical.label', [], 'en'), false);
+        ->assertSee(__('product_docs.documents.technical.label', [], 'en'), false)
+        ->assertSee('Sign in with Microsoft', false);
 });
 
 it('toont de API & Webhooks fiche publiek per locale', function () {

@@ -66,6 +66,11 @@
 <p>
     WinProx se réserve le droit de restreindre ou de bloquer des comptes en cas d’abus.
 </p>
+<p>
+    Les administrateurs et collaborateurs peuvent se connecter avec e-mail et mot de passe, ou via Microsoft
+    (Se connecter avec Microsoft). La connexion Microsoft associe uniquement un compte WinProx existant
+    (l’e-mail doit correspondre). Les exécutants n’utilisent pas la connexion Microsoft.
+</p>
 
 <h2>7. Disponibilité du service</h2>
 <p>

@@ -32,6 +32,20 @@
     <li>preferenza linguistica, ove applicabile</li>
 </ul>
 
+<p><strong>Accesso con Microsoft (facoltativo)</strong></p>
+<p>
+    Amministratori e dipendenti possono accedere nella schermata desktop tramite Microsoft
+    (Microsoft Entra ID), oltre a e-mail e password. WinProx non crea nuovi account:
+    l’e-mail dell’account Microsoft deve corrispondere a un utente WinProx esistente e attivo
+    (amministratore o dipendente). Gli esecutori e gli ospiti non usano questo accesso.
+</p>
+<ul>
+    <li>l’utente viene reindirizzato a Microsoft per identificarsi;</li>
+    <li>WinProx riceve dati identificativi da Microsoft (in genere e-mail e nome) per associare l’account esistente;</li>
+    <li>le password degli account Microsoft non vengono memorizzate in WinProx in questo flusso;</li>
+    <li>la password WinProx esistente resta disponibile (anche per il ripristino e la cancellazione dell’organizzazione).</li>
+</ul>
+
 <p><strong>Abbonamento e fatturazione</strong></p>
 <ul>
     <li>piano di abbonamento selezionato (ove applicabile)</li>
@@ -126,7 +140,7 @@
 <h2>5. Finalità del trattamento</h2>
 <p>I dati vengono trattati per:</p>
 <ul>
-    <li>il funzionamento della piattaforma.</li>
+    <li>il funzionamento della piattaforma, compreso l’accesso di amministratori e dipendenti (e-mail + password e, in opzione, Microsoft Entra ID).</li>
     <li>la registrazione e il follow-up di problematiche e attività.</li>
     <li>l'assegnazione del lavoro ai team interni e ai lavoratori.</li>
     <li>segnalazioni QR e comunicazione tra gli utenti all'interno della sua organizzazione.</li>
@@ -183,6 +197,7 @@
     <li>seguendo le istruzioni del cliente.</li>
     <li>per hosting e infrastruttura tecnica.</li>
     <li>per l'elaborazione dei pagamenti, se sceglie di utilizzarla (tramite un partner di pagamento riconosciuto).</li>
+    <li>per l’accesso tramite Microsoft Entra ID, quando l’utente sceglie Accedi con Microsoft.</li>
     <li>ove richiesto dalla legge.</li>
 </ul>
 <p>

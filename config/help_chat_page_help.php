@@ -118,6 +118,9 @@ return [
             'patterns' => [
                 'collega', 'colleague', 'backoffice', 'gebruiker toe', 'gebruikers beheer',
                 'utilisateur collèg', 'kollegen', 'usuario colega', 'utente colleg',
+                'inloggen met microsoft', 'sign in with microsoft', 'mit microsoft anmelden',
+                'se connecter avec microsoft', 'iniciar sesión con microsoft', 'accedi con microsoft',
+                'microsoft login', 'microsoft-login', 'microsoft entra',
             ],
             'page' => 'team.backoffice',
         ],
