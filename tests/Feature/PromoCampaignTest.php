@@ -401,6 +401,7 @@ it('zet youtube placeholder om naar klikbare thumbnail in promo e-mail', functio
 
     expect($expanded)
         ->toContain('img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg')
+        ->toContain('width="320"')
         ->toContain('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
         ->not->toContain('{{youtube_thumbnail}}');
 });

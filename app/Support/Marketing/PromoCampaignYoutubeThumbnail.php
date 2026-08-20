@@ -129,7 +129,7 @@ final class PromoCampaignYoutubeThumbnail
 
         return '<p style="margin:0 0 16px 0;text-align:center">'
             .'<a href="'.$watchUrl.'" style="display:inline-block;text-decoration:none">'
-            .'<img src="'.$thumbnailUrl.'" alt="YouTube" width="480" '
+            .'<img src="'.$thumbnailUrl.'" alt="YouTube" width="320" '
             .'style="display:block;max-width:100%;height:auto;border:0;border-radius:8px" />'
             .'</a></p>';
     }
