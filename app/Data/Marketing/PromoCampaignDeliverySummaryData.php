@@ -23,6 +23,7 @@ final readonly class PromoCampaignDeliverySummaryData
         return match ($this->status) {
             'complete' => 'wp-pill wp-pill--done',
             'sending' => 'wp-pill wp-pill--progress',
+            'paused' => 'wp-pill wp-pill--new',
             'needs_restart' => 'wp-pill wp-pill--new',
             'not_started' => 'wp-pill wp-pill--closed',
             default => 'wp-pill wp-pill--closed',

@@ -91,6 +91,7 @@ class SummarizePromoCampaignsDeliveryAction
                 remaining: $remaining,
                 queuedJobs: $queuedJobs,
                 status: $this->resolveStatus(
+                    campaign: $campaign,
                     withEmail: $withEmail,
                     sent: $sent,
                     failed: $failed,
@@ -180,12 +181,17 @@ class SummarizePromoCampaignsDeliveryAction
     }
 
     private function resolveStatus(
+        PromoCampaign $campaign,
         int $withEmail,
         int $sent,
         int $failed,
         int $remaining,
         int $queuedJobs,
     ): string {
+        if ($campaign->isEmailSendingPaused()) {
+            return 'paused';
+        }
+
         if ($withEmail === 0) {
             return 'no_recipients';
         }

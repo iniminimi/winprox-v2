@@ -54,6 +54,8 @@
         "marketing.promo_campaign_email_bounced": "Promo-mail onbezorgbaar",
         "marketing.promo_campaign_email_sent": "Promo-mail verstuurd",
         "marketing.promo_campaign_emails_queued": "Promo-mails in wachtrij gezet",
+        "marketing.promo_campaign_emails_paused": "Promo-mails onderbroken",
+        "marketing.promo_campaign_emails_resumed": "Promo-mails hervat",
         "marketing.promo_campaign_email_skipped_unsubscribed": "Promo-mail overgeslagen (uitgeschreven)",
         "marketing.promo_campaign_imported": "Promo-campagne geïmporteerd",
         "marketing.promo_campaign_test_email_sent": "Promo testmail verstuurd",

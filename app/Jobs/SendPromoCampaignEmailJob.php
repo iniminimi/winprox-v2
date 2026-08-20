@@ -68,6 +68,26 @@ class SendPromoCampaignEmailJob implements ShouldBeUnique, ShouldQueue
             return;
         }
 
+        if (! (bool) config('winprox.promo_campaign_emails_enabled', true)) {
+            Log::info('promo_campaign_email_job_skipped', [
+                'promo_campaign_id' => $this->promoCampaignId,
+                'promo_campaign_target_id' => $this->promoCampaignTargetId,
+                'reason' => 'disabled',
+            ]);
+
+            return;
+        }
+
+        if ($campaign->isEmailSendingPaused()) {
+            Log::info('promo_campaign_email_job_skipped', [
+                'promo_campaign_id' => $this->promoCampaignId,
+                'promo_campaign_target_id' => $this->promoCampaignTargetId,
+                'reason' => 'paused',
+            ]);
+
+            return;
+        }
+
         if ($this->alreadyDelivered($campaign, $target)) {
             Log::info('promo_campaign_email_job_skipped', [
                 'promo_campaign_id' => $this->promoCampaignId,
@@ -114,6 +134,19 @@ class SendPromoCampaignEmailJob implements ShouldBeUnique, ShouldQueue
                     'promo_campaign_id' => $this->promoCampaignId,
                     'promo_campaign_target_id' => $this->promoCampaignTargetId,
                     'reason' => 'bounced',
+                ]);
+
+                return;
+            }
+
+            if (in_array($exception->getMessage(), [
+                'promo_campaign_emails_paused',
+                'promo_campaign_emails_disabled',
+            ], true)) {
+                Log::info('promo_campaign_email_job_skipped', [
+                    'promo_campaign_id' => $this->promoCampaignId,
+                    'promo_campaign_target_id' => $this->promoCampaignTargetId,
+                    'reason' => $exception->getMessage(),
                 ]);
 
                 return;

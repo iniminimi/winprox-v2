@@ -12,9 +12,14 @@ use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
 use App\Support\EmailUnsubscribeExemptions;
+use RuntimeException;
 
 class QueuePromoCampaignEmailsAction
 {
+    public const DISABLED_MESSAGE = 'promo_campaign_emails_disabled';
+
+    public const PAUSED_MESSAGE = 'promo_campaign_emails_paused';
+
     public function __construct(private LogAuditAction $logAudit) {}
 
     /**
@@ -39,6 +44,8 @@ class QueuePromoCampaignEmailsAction
         int $delaySeconds,
         bool $forceResend = false,
     ): array {
+        $this->assertSendingAllowed($campaign);
+
         $delaySeconds = max(0, $delaySeconds);
         if ($delaySeconds > 0) {
             $delaySeconds = max(
@@ -197,5 +204,16 @@ class QueuePromoCampaignEmailsAction
             'created_by' => $actorUserId,
         ]);
         $send->save();
+    }
+
+    private function assertSendingAllowed(PromoCampaign $campaign): void
+    {
+        if (! (bool) config('winprox.promo_campaign_emails_enabled', true)) {
+            throw new RuntimeException(self::DISABLED_MESSAGE);
+        }
+
+        if ($campaign->isEmailSendingPaused()) {
+            throw new RuntimeException(self::PAUSED_MESSAGE);
+        }
     }
 }

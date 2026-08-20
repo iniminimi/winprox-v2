@@ -4,7 +4,9 @@ namespace App\Livewire\Platform;
 
 use App\Actions\Marketing\GeneratePromoCampaignLettersAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
+use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
+use App\Actions\Marketing\ResumePromoCampaignSendingAction;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
 use App\Actions\Marketing\SummarizePromoCampaignVisitStatsAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
@@ -72,6 +74,8 @@ class PromoCampaignEdit extends Component
 
     public bool $showQueueConfirm = false;
 
+    public bool $showPauseConfirm = false;
+
     public int $queueConfirmQueued = 0;
 
     public int $queueConfirmSkipped = 0;
@@ -90,9 +94,55 @@ class PromoCampaignEdit extends Component
         $this->showQueueConfirm = false;
     }
 
+    public function dismissPauseConfirm(): void
+    {
+        $this->showPauseConfirm = false;
+    }
+
+    public function openPauseConfirm(): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+        $this->showPauseConfirm = true;
+    }
+
+    public function confirmPauseSending(PausePromoCampaignSendingAction $pause): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        $user = auth()->user();
+        $result = $pause->handle($this->campaign, $user !== null ? (int) $user->id : null);
+        $this->campaign->refresh();
+        $this->showPauseConfirm = false;
+        $this->showNotice(__('platform.promo_campaigns.paused_notice', [
+            'purged' => $result['purged_jobs'],
+        ]));
+    }
+
+    public function resumeSending(ResumePromoCampaignSendingAction $resume): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        $user = auth()->user();
+        $resume->handle($this->campaign, $user !== null ? (int) $user->id : null);
+        $this->campaign->refresh();
+        $this->showNotice(__('platform.promo_campaigns.resumed_notice'));
+    }
+
     public function openQueueConfirm(QueuePromoCampaignEmailsAction $queue): void
     {
         $this->authorize('managePromoCampaigns', User::class);
+
+        if (! (bool) config('winprox.promo_campaign_emails_enabled', true)) {
+            $this->showNotice(__('platform.promo_campaigns.queue_disabled'), 'error');
+
+            return;
+        }
+
+        if ($this->campaign->isEmailSendingPaused()) {
+            $this->showNotice(__('platform.promo_campaigns.queue_paused'), 'error');
+
+            return;
+        }
 
         $preview = $queue->preview($this->campaign, $this->forceSend);
 
@@ -118,12 +168,28 @@ class PromoCampaignEdit extends Component
 
         $this->showQueueConfirm = false;
 
-        $result = $queue->handle(
-            campaign: $this->campaign,
-            actorUserId: (int) $user->id,
-            delaySeconds: $this->delaySeconds,
-            forceResend: $this->forceSend,
-        );
+        try {
+            $result = $queue->handle(
+                campaign: $this->campaign,
+                actorUserId: (int) $user->id,
+                delaySeconds: $this->delaySeconds,
+                forceResend: $this->forceSend,
+            );
+        } catch (\RuntimeException $exception) {
+            $message = $exception->getMessage();
+            if ($message === QueuePromoCampaignEmailsAction::PAUSED_MESSAGE) {
+                $this->showNotice(__('platform.promo_campaigns.queue_paused'), 'error');
+
+                return;
+            }
+            if ($message === QueuePromoCampaignEmailsAction::DISABLED_MESSAGE) {
+                $this->showNotice(__('platform.promo_campaigns.queue_disabled'), 'error');
+
+                return;
+            }
+
+            throw $exception;
+        }
 
         $this->showNotice(__('platform.promo_campaigns.queued', [
             'queued' => $result['queued'],

@@ -63,6 +63,31 @@ meerdere mails per seconde.
 
 Env (optioneel): `WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS=20`
 
+## Promo-mails onderbreken (spam / Cloud86)
+
+Wachtende jobs blijven anders tot 3 dagen retrien. Stoppen:
+
+1. **Platform → Promo-campagnes → Onderbreek alle verzending** (of per campagne), of
+2. Op de server:
+   ```bash
+   php artisan marketing:pause-promo-emails
+   php artisan config:clear
+   ```
+3. Noodrem in `.env` (na deploy van deze code):
+   ```env
+   WINPROX_PROMO_EMAILS_ENABLED=false
+   ```
+   Daarna `php artisan config:clear`. Jobs slaan over; hervatten: `true` + UI **Hervat verzending** + opnieuw in wachtrij.
+
+Al verstuurde mails blijven verstuurd. Hervatten zet niet automatisch de rest opnieuw klaar.
+
+**Zonder deze code (direct op de server):**
+```sql
+DELETE FROM jobs WHERE payload LIKE '%SendPromoCampaignEmailJob%';
+DELETE FROM jobs WHERE payload LIKE '%SendMunicipalPromoLetterEmailJob%';
+```
+Dat haalt wachtende mails weg, maar voorkomt niet dat iemand opnieuw in de wachtrij zet.
+
 De throttle laat een job **releasen** tot zijn slot vrij is, en elke release verbruikt een
 poging. Daarom heeft `SendPromoCampaignEmailJob` géén `tries`-limiet maar een `retryUntil`
 (3 dagen) plus `maxExceptions = 3`: uitstel is gratis, echte verzendfouten blijven begrensd.

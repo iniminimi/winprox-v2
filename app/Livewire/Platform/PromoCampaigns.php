@@ -4,7 +4,9 @@ namespace App\Livewire\Platform;
 
 use App\Actions\Marketing\CopyPromoCampaignAction;
 use App\Actions\Marketing\CreatePromoCampaignAction;
+use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\ProcessPromoMailboxBouncesAction;
+use App\Actions\Marketing\ResumePromoCampaignSendingAction;
 use App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction;
 use App\Http\Requests\Marketing\CopyPromoCampaignRequest;
 use App\Http\Requests\Marketing\CreatePromoCampaignRequest;
@@ -41,6 +43,8 @@ class PromoCampaigns extends Component
     public string $copyName = '';
 
     public string $copyLocale = 'nl';
+
+    public bool $showPauseConfirm = false;
 
     public function mount(): void
     {
@@ -171,6 +175,42 @@ class PromoCampaigns extends Component
         ]);
     }
 
+    public function openPauseAllConfirm(): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+        $this->showPauseConfirm = true;
+    }
+
+    public function dismissPauseConfirm(): void
+    {
+        $this->showPauseConfirm = false;
+    }
+
+    public function confirmPauseAll(PausePromoCampaignSendingAction $pause): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        $user = auth()->user();
+        $result = $pause->handle(null, $user !== null ? (int) $user->id : null);
+
+        $this->showPauseConfirm = false;
+        $this->flashType = 'success';
+        $this->flashMessage = __('platform.promo_campaigns.paused_notice', [
+            'purged' => $result['purged_jobs'],
+        ]);
+    }
+
+    public function resumeAllSending(ResumePromoCampaignSendingAction $resume): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        $user = auth()->user();
+        $resume->handle(null, $user !== null ? (int) $user->id : null);
+
+        $this->flashType = 'success';
+        $this->flashMessage = __('platform.promo_campaigns.resumed_notice');
+    }
+
     public function render(SummarizePromoCampaignsDeliveryAction $summarize)
     {
         $campaigns = PromoCampaign::query()->latest('id')->get();
@@ -178,6 +218,8 @@ class PromoCampaigns extends Component
         return view('livewire.platform.promo-campaigns', [
             'campaigns' => $campaigns,
             'deliverySummaries' => $summarize->handle($campaigns),
+            'anyPaused' => $campaigns->contains(fn (PromoCampaign $campaign): bool => $campaign->isEmailSendingPaused()),
+            'bulkSendingEnabled' => (bool) config('winprox.promo_campaign_emails_enabled', true),
         ]);
     }
 }

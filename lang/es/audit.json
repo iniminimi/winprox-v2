@@ -54,6 +54,8 @@
         "marketing.promo_campaign_email_bounced": "Correo promo no entregable",
         "marketing.promo_campaign_email_sent": "Correo promo enviado",
         "marketing.promo_campaign_emails_queued": "Correos promo en cola",
+        "marketing.promo_campaign_emails_paused": "Correos promo interrumpidos",
+        "marketing.promo_campaign_emails_resumed": "Correos promo reanudados",
         "marketing.promo_campaign_email_skipped_unsubscribed": "Correo promo omitido (baja)",
         "marketing.promo_campaign_imported": "Campaña promo importada",
         "marketing.promo_campaign_test_email_sent": "Correo de prueba promo enviado",

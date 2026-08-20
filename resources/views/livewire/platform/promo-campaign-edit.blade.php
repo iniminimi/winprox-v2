@@ -244,6 +244,9 @@
 
         <div class="wp-border-top wp-stack-tight">
             <p class="wp-subhead">{{ __('platform.promo_campaigns.queue_section') }}</p>
+            @if ($campaign->isEmailSendingPaused())
+                <div class="wp-flash wp-flash--danger">{{ __('platform.promo_campaigns.paused_banner') }}</div>
+            @endif
             <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.queue_lead') }}</p>
             <div class="wp-row wp-gap-md wp-wrap wp-items-end">
                 <div>
@@ -255,9 +258,18 @@
                     <input type="checkbox" wire:model="forceSend">
                     {{ __('platform.promo_campaigns.force_send') }}
                 </label>
-                <button type="button" class="btn btn--primary btn--sm" wire:click="openQueueConfirm">
-                    {{ __('platform.promo_campaigns.queue_emails') }}
-                </button>
+                @if ($campaign->isEmailSendingPaused())
+                    <button type="button" class="btn btn--primary btn--sm" wire:click="resumeSending">
+                        {{ __('platform.promo_campaigns.resume_submit') }}
+                    </button>
+                @else
+                    <button type="button" class="btn btn--primary btn--sm" wire:click="openQueueConfirm">
+                        {{ __('platform.promo_campaigns.queue_emails') }}
+                    </button>
+                    <button type="button" class="btn btn--danger btn--sm" wire:click="openPauseConfirm">
+                        {{ __('platform.promo_campaigns.pause_submit') }}
+                    </button>
+                @endif
             </div>
             <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.queue_hint') }}</p>
         </div>
@@ -353,6 +365,24 @@
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="dismissQueueConfirm">{{ __('common.button.cancel') }}</button>
                     <button type="button" class="btn btn--primary" wire:click="confirmQueueEmails">{{ __('platform.promo_campaigns.queue_confirm_submit') }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
+
+    @if ($showPauseConfirm)
+        <x-wp-modal closeMethod="dismissPauseConfirm">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card" role="alertdialog" aria-labelledby="promo-campaign-pause-confirm-title">
+                <div class="wp-modal-head">
+                    <h2 id="promo-campaign-pause-confirm-title" class="wp-section-title">{{ __('platform.promo_campaigns.pause_confirm_title') }}</h2>
+                    <x-wp-modal-close wire:click="dismissPauseConfirm" />
+                </div>
+                <div class="wp-modal-body">
+                    <p class="wp-text-body">{{ __('platform.promo_campaigns.pause_confirm_body') }}</p>
+                </div>
+                <div class="wp-modal-foot wp-row wp-row--gap-sm">
+                    <button type="button" class="btn btn--ghost" wire:click="dismissPauseConfirm">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--danger" wire:click="confirmPauseSending">{{ __('platform.promo_campaigns.pause_confirm_submit') }}</button>
                 </div>
             </div>
         </x-wp-modal>

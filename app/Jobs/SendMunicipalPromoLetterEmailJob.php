@@ -58,6 +58,16 @@ class SendMunicipalPromoLetterEmailJob implements ShouldQueue
             return;
         }
 
+        if (! (bool) config('winprox.promo_campaign_emails_enabled', true)) {
+            Log::info('municipal_promo_email_job_skipped', [
+                'municipality' => $this->municipalityName,
+                'campaign' => $this->campaign,
+                'reason' => 'disabled',
+            ]);
+
+            return;
+        }
+
         $waitSeconds = PromoSmtpThrottle::secondsUntilAvailable();
         if ($waitSeconds !== null) {
             $this->release($waitSeconds);

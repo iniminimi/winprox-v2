@@ -54,6 +54,15 @@ class SendPromoCampaignEmailAction
         }
 
         $isTestSend = $overrideRecipientEmail !== null;
+        if (! $isTestSend) {
+            if (! (bool) config('winprox.promo_campaign_emails_enabled', true)) {
+                throw new RuntimeException(QueuePromoCampaignEmailsAction::DISABLED_MESSAGE);
+            }
+            if ($campaign->isEmailSendingPaused()) {
+                throw new RuntimeException(QueuePromoCampaignEmailsAction::PAUSED_MESSAGE);
+            }
+        }
+
         if ($target->undelivered && ! $isTestSend) {
             throw new RuntimeException('Email previously bounced for this target.');
         }

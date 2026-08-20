@@ -9,4 +9,6 @@ return [
     ],
     // Cloud86: max ~250 outgoing mails/hour per hosting plan. 20s ≈ 180/hour (headroom for other mail).
     'promo_campaign_email_min_interval_seconds' => (int) env('WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS', 20),
+    // Emergency kill switch for bulk promo SMTP (campaign UI pause + queued jobs).
+    'promo_campaign_emails_enabled' => filter_var(env('WINPROX_PROMO_EMAILS_ENABLED', true), FILTER_VALIDATE_BOOLEAN),
 ];

@@ -22,6 +22,7 @@ class PromoCampaign extends Model
         'attach_letter_to_email',
         'flow_image_path',
         'youtube_url',
+        'emails_paused_at',
         'column_mapping',
         'created_by',
     ];
@@ -31,7 +32,13 @@ class PromoCampaign extends Model
         return [
             'column_mapping' => 'array',
             'attach_letter_to_email' => 'boolean',
+            'emails_paused_at' => 'datetime',
         ];
+    }
+
+    public function isEmailSendingPaused(): bool
+    {
+        return $this->emails_paused_at !== null;
     }
 
     public function creator(): BelongsTo

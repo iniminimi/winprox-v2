@@ -5,6 +5,33 @@
         :subtitle="__('platform.promo_campaigns.subtitle')"
     />
 
+    @if ($flashMessage)
+        <div @class([
+            'wp-flash',
+            'wp-flash--success' => $flashType !== 'error',
+            'wp-flash--danger' => $flashType === 'error',
+        ])>{{ $flashMessage }}</div>
+    @endif
+
+    @if (! $bulkSendingEnabled)
+        <div class="wp-flash wp-flash--danger">{{ __('platform.promo_campaigns.queue_disabled') }}</div>
+    @endif
+
+    <div class="wp-card wp-card-pad wp-stack">
+        <p class="wp-subhead">{{ __('platform.promo_campaigns.pause_all_title') }}</p>
+        <p class="wp-muted">{{ __('platform.promo_campaigns.pause_all_lead') }}</p>
+        <div class="wp-row wp-row--gap-sm wp-wrap">
+            <button type="button" class="btn btn--danger" wire:click="openPauseAllConfirm">
+                {{ __('platform.promo_campaigns.pause_all_submit') }}
+            </button>
+            @if ($anyPaused)
+                <button type="button" class="btn btn--ghost" wire:click="resumeAllSending">
+                    {{ __('platform.promo_campaigns.resume_all_submit') }}
+                </button>
+            @endif
+        </div>
+    </div>
+
     <div class="wp-card wp-card-pad wp-stack">
         <p class="wp-subhead">{{ __('platform.promo_campaigns.create_title') }}</p>
         <form wire:submit="createCampaign" class="wp-promo-form-grid">
@@ -39,13 +66,6 @@
     <div class="wp-card wp-card-pad wp-stack">
         <p class="wp-subhead">{{ __('platform.promo_campaigns.bounces_title') }}</p>
         <p class="wp-muted">{{ __('platform.promo_campaigns.bounces_lead') }}</p>
-        @if ($flashMessage)
-            <div @class([
-                'wp-flash',
-                'wp-flash--success' => $flashType !== 'error',
-                'wp-flash--danger' => $flashType === 'error',
-            ])>{{ $flashMessage }}</div>
-        @endif
         <div>
             <button
                 type="button"
@@ -96,6 +116,8 @@
                                         <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_restart_hint') }}</p>
                                     @elseif ($summary->status === 'sending')
                                         <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_sending_hint') }}</p>
+                                    @elseif ($summary->status === 'paused')
+                                        <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_paused_hint') }}</p>
                                     @endif
                                 </div>
                             @endif
@@ -155,6 +177,24 @@
                     <button type="submit" class="btn btn--primary">{{ __('platform.promo_campaigns.copy_submit') }}</button>
                 </div>
             </form>
+        </x-wp-modal>
+    @endif
+
+    @if ($showPauseConfirm)
+        <x-wp-modal closeMethod="dismissPauseConfirm">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card" role="alertdialog" aria-labelledby="promo-pause-all-title">
+                <div class="wp-modal-head">
+                    <h2 id="promo-pause-all-title" class="wp-section-title">{{ __('platform.promo_campaigns.pause_all_confirm_title') }}</h2>
+                    <x-wp-modal-close wire:click="dismissPauseConfirm" />
+                </div>
+                <div class="wp-modal-body">
+                    <p class="wp-text-body">{{ __('platform.promo_campaigns.pause_all_confirm_body') }}</p>
+                </div>
+                <div class="wp-modal-foot wp-row wp-row--gap-sm">
+                    <button type="button" class="btn btn--ghost" wire:click="dismissPauseConfirm">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--danger" wire:click="confirmPauseAll">{{ __('platform.promo_campaigns.pause_all_confirm_submit') }}</button>
+                </div>
+            </div>
         </x-wp-modal>
     @endif
 </div>

@@ -54,6 +54,8 @@
         "marketing.promo_campaign_email_bounced": "Email promo non recapitata",
         "marketing.promo_campaign_email_sent": "Email promo inviata",
         "marketing.promo_campaign_emails_queued": "Email promo messe in coda",
+        "marketing.promo_campaign_emails_paused": "Email promo interrotte",
+        "marketing.promo_campaign_emails_resumed": "Email promo riprese",
         "marketing.promo_campaign_email_skipped_unsubscribed": "Email promo saltata (disiscritto)",
         "marketing.promo_campaign_imported": "Campagna promo importata",
         "marketing.promo_campaign_test_email_sent": "Email di test promo inviata",

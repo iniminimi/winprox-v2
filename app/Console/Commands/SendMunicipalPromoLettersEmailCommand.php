@@ -97,6 +97,12 @@ class SendMunicipalPromoLettersEmailCommand extends Command
             return self::FAILURE;
         }
 
+        if (! (bool) config('winprox.promo_campaign_emails_enabled', true)) {
+            $this->error('Promo-mails zijn uitgeschakeld (WINPROX_PROMO_EMAILS_ENABLED=false).');
+
+            return self::FAILURE;
+        }
+
         $ready = array_values(array_filter(
             $candidates,
             static fn (MunicipalPromoEmailCandidateData $candidate): bool => $candidate->isReady(),

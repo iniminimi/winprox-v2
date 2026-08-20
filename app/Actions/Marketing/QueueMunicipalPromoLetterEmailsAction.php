@@ -6,6 +6,7 @@ namespace App\Actions\Marketing;
 
 use App\Data\Marketing\MunicipalPromoEmailCandidateData;
 use App\Jobs\SendMunicipalPromoLetterEmailJob;
+use RuntimeException;
 
 class QueueMunicipalPromoLetterEmailsAction
 {
@@ -24,6 +25,10 @@ class QueueMunicipalPromoLetterEmailsAction
         ?string $overrideRecipientEmail = null,
         bool $forceResend = false,
     ): array {
+        if (! (bool) config('winprox.promo_campaign_emails_enabled', true)) {
+            throw new RuntimeException(QueuePromoCampaignEmailsAction::DISABLED_MESSAGE);
+        }
+
         $delaySeconds = max(0, $delaySeconds);
         if ($delaySeconds > 0) {
             $delaySeconds = max(

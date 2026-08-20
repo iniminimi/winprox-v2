@@ -133,6 +133,8 @@ php artisan marketing:send-municipal-promo-emails storage/app/Vlaanderen_lokale_
 
 Zorg dat **`php artisan queue:work`** draait bij queue-verzending (standaard, zonder `--sync`).
 
+Om te **stoppen** (spam / Cloud86): `php artisan marketing:pause-promo-emails` of Platform → Promo-campagnes → **Onderbreek alle verzending**. Zie `docs/deploy-queue-shared-hosting.md`.
+
 Verzonden mails worden gelogd in `municipal_promo_email_sends` (campagne `wave-1` standaard). Reeds verzonden gemeenten worden overgeslagen tenzij `--force`.
 
 | Optie | Gebruik |

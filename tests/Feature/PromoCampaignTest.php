@@ -4,8 +4,10 @@ use App\Actions\Marketing\CreatePromoCampaignAction;
 use App\Actions\Marketing\CreatePromoRecipientAction;
 use App\Actions\Marketing\GeneratePromoCampaignLettersAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
+use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
 use App\Actions\Marketing\RecordPromoVisitAction;
+use App\Actions\Marketing\ResumePromoCampaignSendingAction;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
@@ -1572,4 +1574,113 @@ it('toont klikstatistieken op campagnepagina', function () {
         ]));
 
     Carbon::setTestNow();
+});
+
+it('onderbreekt promo-verzending en haalt wachtende jobs uit de queue', function () {
+    Mail::fake();
+    config(['queue.default' => 'database']);
+    \Illuminate\Support\Facades\Cache::flush();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'pause@example.com');
+
+    SendPromoCampaignEmailJob::dispatch(
+        promoCampaignId: (int) $campaign->id,
+        promoCampaignTargetId: (int) $target->id,
+        actorUserId: (int) $superuser->id,
+    )->delay(now()->addHour());
+
+    expect(\Illuminate\Support\Facades\DB::table('jobs')
+        ->where('payload', 'like', '%SendPromoCampaignEmailJob%')
+        ->count())->toBe(1);
+
+    $result = app(PausePromoCampaignSendingAction::class)->handle($campaign, (int) $superuser->id);
+
+    expect($result['purged_jobs'])->toBe(1)
+        ->and($campaign->fresh()->isEmailSendingPaused())->toBeTrue()
+        ->and(\Illuminate\Support\Facades\DB::table('jobs')
+            ->where('payload', 'like', '%SendPromoCampaignEmailJob%')
+            ->count())->toBe(0)
+        ->and(AuditLog::query()->where('action', 'marketing.promo_campaign_emails_paused')->count())->toBe(1);
+});
+
+it('verstuurt geen promo-mail zolang de campagne onderbroken is', function () {
+    Mail::fake();
+    config(['winprox.promo_campaign_email_min_interval_seconds' => 20]);
+    \Illuminate\Support\Facades\RateLimiter::clear(\App\Support\Marketing\PromoSmtpThrottle::cacheKey());
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'paused-job@example.com');
+    app(PausePromoCampaignSendingAction::class)->handle($campaign, (int) $superuser->id);
+
+    $job = new SendPromoCampaignEmailJob(
+        promoCampaignId: (int) $campaign->id,
+        promoCampaignTargetId: (int) $target->id,
+        actorUserId: (int) $superuser->id,
+    );
+    $job->handle(app(SendPromoCampaignEmailAction::class));
+
+    Mail::assertNothingSent();
+    expect(\App\Support\Marketing\PromoSmtpThrottle::tryAcquire())->toBeTrue();
+});
+
+it('weigert nieuwe bulk-queue zolang verzending onderbroken of uitgeschakeld is', function () {
+    Queue::fake();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmail($superuser, 'refuse-queue@example.com');
+    app(PausePromoCampaignSendingAction::class)->handle($campaign, (int) $superuser->id);
+
+    expect(fn () => app(QueuePromoCampaignEmailsAction::class)->handle(
+        campaign: $campaign->fresh(),
+        actorUserId: (int) $superuser->id,
+        delaySeconds: 0,
+    ))->toThrow(RuntimeException::class, QueuePromoCampaignEmailsAction::PAUSED_MESSAGE);
+
+    app(ResumePromoCampaignSendingAction::class)->handle($campaign->fresh(), (int) $superuser->id);
+
+    config(['winprox.promo_campaign_emails_enabled' => false]);
+
+    expect(fn () => app(QueuePromoCampaignEmailsAction::class)->handle(
+        campaign: $campaign->fresh(),
+        actorUserId: (int) $superuser->id,
+        delaySeconds: 0,
+    ))->toThrow(RuntimeException::class, QueuePromoCampaignEmailsAction::DISABLED_MESSAGE);
+
+    Queue::assertNothingPushed();
+});
+
+it('onderbreekt alle campagnes via de overzichtspagina', function () {
+    config(['queue.default' => 'database']);
+    \Illuminate\Support\Facades\Cache::flush();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'pause-ui@example.com');
+
+    SendPromoCampaignEmailJob::dispatch(
+        promoCampaignId: (int) $campaign->id,
+        promoCampaignTargetId: (int) $target->id,
+        actorUserId: (int) $superuser->id,
+    )->delay(now()->addHour());
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->assertSee(__('platform.promo_campaigns.pause_all_submit'))
+        ->call('openPauseAllConfirm')
+        ->assertSet('showPauseConfirm', true)
+        ->call('confirmPauseAll')
+        ->assertSet('showPauseConfirm', false)
+        ->assertSee(__('platform.promo_campaigns.paused_notice', ['purged' => 1]));
+
+    expect($campaign->fresh()->isEmailSendingPaused())->toBeTrue()
+        ->and(\Illuminate\Support\Facades\DB::table('jobs')
+            ->where('payload', 'like', '%SendPromoCampaignEmailJob%')
+            ->count())->toBe(0);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->call('resumeAllSending')
+        ->assertSee(__('platform.promo_campaigns.resumed_notice'));
+
+    expect($campaign->fresh()->isEmailSendingPaused())->toBeFalse();
 });

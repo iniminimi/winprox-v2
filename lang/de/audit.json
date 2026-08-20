@@ -54,6 +54,8 @@
         "marketing.promo_campaign_email_bounced": "Promo-Mail unzustellbar",
         "marketing.promo_campaign_email_sent": "Promo-Mail gesendet",
         "marketing.promo_campaign_emails_queued": "Promo-Mails in Warteschlange",
+        "marketing.promo_campaign_emails_paused": "Promo-Mails unterbrochen",
+        "marketing.promo_campaign_emails_resumed": "Promo-Mails fortgesetzt",
         "marketing.promo_campaign_email_skipped_unsubscribed": "Promo-Mail übersprungen (abgemeldet)",
         "marketing.promo_campaign_imported": "Promo-Kampagne importiert",
         "marketing.promo_campaign_test_email_sent": "Promo-Testmail gesendet",
