@@ -1016,6 +1016,9 @@ it('zet bulk-mails in wachtrij naar excel-adressen zonder testadres', function (
     Queue::assertPushed(SendPromoCampaignEmailJob::class, function (SendPromoCampaignEmailJob $job): bool {
         return $job->overrideRecipientEmail === null;
     });
+
+    expect(AuditLog::query()->where('action', 'marketing.promo_campaign_emails_queued')->count())->toBe(1)
+        ->and(AuditLog::query()->where('action', 'marketing.promo_campaign_email_sent')->count())->toBe(0);
 });
 
 it('plant opeenvolgende bulk-mails met minstens het ingestelde delay-interval', function () {
@@ -1232,8 +1235,7 @@ it('zet gebouncete promo-adressen op unsubscribe en markeert ze als onbezorgd in
         ->toBe(MunicipalPromoEmailSendStatus::Bounced)
         ->and(AuditLog::query()
             ->where('action', 'marketing.promo_campaign_email_bounced')
-            ->where('model_id', $targetId)
-            ->count())->toBe(1);
+            ->count())->toBe(0);
 
     $preview = app(QueuePromoCampaignEmailsAction::class)->preview($campaign->fresh(), forceResend: true);
     expect($preview['queued'])->toBe(0);
@@ -1302,7 +1304,9 @@ it('stuurt testmail alleen naar ingevuld testadres', function () {
     expect(PromoCampaignEmailSend::query()->where('promo_campaign_id', $campaign->id)->count())->toBe(0);
 
     $preview = app(QueuePromoCampaignEmailsAction::class)->preview($campaign->fresh());
-    expect($preview['queued'])->toBe(1);
+    expect($preview['queued'])->toBe(1)
+        ->and(AuditLog::query()->where('action', 'marketing.promo_campaign_test_email_sent')->count())->toBe(1)
+        ->and(AuditLog::query()->where('action', 'marketing.promo_campaign_email_sent')->count())->toBe(0);
 });
 
 /**
@@ -1372,6 +1376,23 @@ it('verstuurt promo-mail zonder bijlage wanneer brief niet vereist is', function
             && $mail->docxPath === null
             && $mail->attachments() === [];
     });
+});
+
+it('schrijft geen auditregel per verstuurde promo-mail of auto-bestemmeling', function () {
+    Mail::fake();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmailOnly($superuser);
+
+    app(SendPromoCampaignEmailAction::class)->handle(
+        campaign: $campaign,
+        target: $target,
+        actorUserId: (int) $superuser->id,
+    );
+
+    expect(AuditLog::query()->where('action', 'marketing.promo_campaign_email_sent')->count())->toBe(0)
+        ->and(AuditLog::query()->where('action', 'marketing.promo_campaign_email_skipped_unsubscribed')->count())->toBe(0)
+        ->and(AuditLog::query()->where('action', 'marketing.promo_recipient_created')->count())->toBe(0);
 });
 
 it('zet bulk-mails in wachtrij zonder brief wanneer bijlage uit staat', function () {

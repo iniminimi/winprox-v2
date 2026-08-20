@@ -53,6 +53,7 @@
         "marketing.promo_campaign_created": "Campagne promo créée",
         "marketing.promo_campaign_email_bounced": "E-mail promo non remis",
         "marketing.promo_campaign_email_sent": "E-mail promo envoyé",
+        "marketing.promo_campaign_emails_queued": "E-mails promo mis en file",
         "marketing.promo_campaign_email_skipped_unsubscribed": "E-mail promo ignoré (désabonné)",
         "marketing.promo_campaign_imported": "Campagne promo importée",
         "marketing.promo_campaign_test_email_sent": "E-mail test promo envoyé",

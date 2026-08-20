@@ -186,21 +186,6 @@ class SendPromoCampaignEmailAction
             return null;
         }
 
-        $this->logAudit->handle(
-            userId: $actorUserId,
-            tenantId: null,
-            action: 'marketing.promo_campaign_email_sent',
-            modelType: 'PromoCampaignEmailSend',
-            modelId: $send->id,
-            payload: [
-                'promo_campaign_id' => $campaign->id,
-                'promo_campaign_target_id' => $target->id,
-                'recipient_email' => $recipientEmail,
-                'override_recipient' => false,
-                'attach_letter' => $attachLetter,
-            ],
-        );
-
         return $send->fresh() ?? $send;
     }
 
@@ -231,19 +216,6 @@ class SendPromoCampaignEmailAction
         ]);
         $send->save();
 
-        $this->logAudit->handle(
-            userId: $actorUserId,
-            tenantId: null,
-            action: 'marketing.promo_campaign_email_skipped_unsubscribed',
-            modelType: 'PromoCampaignEmailSend',
-            modelId: $send->id,
-            payload: [
-                'promo_campaign_id' => $campaign->id,
-                'promo_campaign_target_id' => $target->id,
-                'recipient_email' => $normalizedRecipientEmail,
-            ],
-        );
-
         return $send->fresh() ?? $send;
     }
 
@@ -272,6 +244,7 @@ class SendPromoCampaignEmailAction
             label: $target->name,
             note: $campaign->name,
             actorUserId: $actorUserId,
+            recordAudit: false,
         );
 
         $target->update(['promo_recipient_id' => $recipient->id]);

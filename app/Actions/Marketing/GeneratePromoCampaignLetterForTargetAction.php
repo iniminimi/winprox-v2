@@ -98,6 +98,7 @@ class GeneratePromoCampaignLetterForTargetAction
             label: $target->name,
             note: $campaign->name,
             actorUserId: $actorUserId,
+            recordAudit: false,
         );
     }
 }

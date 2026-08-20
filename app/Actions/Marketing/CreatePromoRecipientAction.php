@@ -12,7 +12,7 @@ class CreatePromoRecipientAction
 {
     public function __construct(private LogAuditAction $logAudit) {}
 
-    public function handle(string $label, ?string $note, int $actorUserId): PromoRecipient
+    public function handle(string $label, ?string $note, int $actorUserId, bool $recordAudit = true): PromoRecipient
     {
         $label = trim($label);
         $note = $note !== null ? trim($note) : null;
@@ -38,16 +38,18 @@ class CreatePromoRecipientAction
             throw new RuntimeException('Could not create promo recipient token.');
         });
 
-        $this->logAudit->handle(
-            userId: $actorUserId,
-            tenantId: null,
-            action: 'marketing.promo_recipient_created',
-            payload: [
-                'promo_recipient_id' => $recipient->id,
-                'token' => $recipient->token,
-                'label' => $recipient->label,
-            ],
-        );
+        if ($recordAudit) {
+            $this->logAudit->handle(
+                userId: $actorUserId,
+                tenantId: null,
+                action: 'marketing.promo_recipient_created',
+                payload: [
+                    'promo_recipient_id' => $recipient->id,
+                    'token' => $recipient->token,
+                    'label' => $recipient->label,
+                ],
+            );
+        }
 
         return $recipient;
     }

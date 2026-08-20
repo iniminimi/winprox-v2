@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Actions\Marketing;
 
-use App\Actions\Audit\LogAuditAction;
 use App\Actions\Contact\SetEmailSubscriptionAction;
 use App\Enums\EmailUnsubscribeSource;
 use App\Enums\MunicipalPromoEmailSendStatus;
@@ -18,7 +17,6 @@ class MarkPromoCampaignEmailBouncedAction
 {
     public function __construct(
         private SetEmailSubscriptionAction $setEmailSubscription,
-        private LogAuditAction $logAudit,
     ) {}
 
     /**
@@ -96,23 +94,6 @@ class MarkPromoCampaignEmailBouncedAction
                         'status' => MunicipalPromoEmailSendStatus::Bounced->value,
                         'error_message' => $reason,
                     ]);
-
-                $this->logAudit->handle(
-                    userId: null,
-                    tenantId: null,
-                    action: 'marketing.promo_campaign_email_bounced',
-                    modelType: 'PromoCampaignTarget',
-                    modelId: $target->id,
-                    payload: [
-                        'promo_campaign_id' => $target->promo_campaign_id,
-                        'promo_campaign_target_id' => $target->id,
-                        'recipient_email' => $normalized,
-                        'target_name' => $target->name,
-                        'reason' => $reason,
-                        'removed' => false,
-                        'undelivered' => true,
-                    ],
-                );
 
                 $removed++;
             }

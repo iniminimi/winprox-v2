@@ -53,6 +53,7 @@
         "marketing.promo_campaign_created": "Promo campaign created",
         "marketing.promo_campaign_email_bounced": "Promo email bounced",
         "marketing.promo_campaign_email_sent": "Promo email sent",
+        "marketing.promo_campaign_emails_queued": "Promo emails queued",
         "marketing.promo_campaign_email_skipped_unsubscribed": "Promo email skipped (unsubscribed)",
         "marketing.promo_campaign_imported": "Promo campaign imported",
         "marketing.promo_campaign_test_email_sent": "Promo test email sent",

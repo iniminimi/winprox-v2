@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Marketing;
 
+use App\Actions\Audit\LogAuditAction;
 use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Jobs\SendPromoCampaignEmailJob;
 use App\Models\EmailUnsubscribe;
@@ -14,6 +15,8 @@ use App\Support\EmailUnsubscribeExemptions;
 
 class QueuePromoCampaignEmailsAction
 {
+    public function __construct(private LogAuditAction $logAudit) {}
+
     /**
      * @return array{queued: int, skipped: int}
      */
@@ -60,6 +63,22 @@ class QueuePromoCampaignEmailsAction
 
             $queueIndex++;
         }
+
+        $this->logAudit->handle(
+            userId: $actorUserId,
+            tenantId: null,
+            action: 'marketing.promo_campaign_emails_queued',
+            modelType: 'PromoCampaign',
+            modelId: $campaign->id,
+            payload: [
+                'promo_campaign_id' => $campaign->id,
+                'slug' => $campaign->slug,
+                'queued' => $resolved['queued'],
+                'skipped' => $resolved['skipped'],
+                'force_resend' => $forceResend,
+                'target_count' => $resolved['queued'],
+            ],
+        );
 
         return [
             'queued' => $resolved['queued'],

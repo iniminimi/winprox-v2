@@ -115,6 +115,7 @@ class GenerateMunicipalPromoLettersAction
                 label: $municipality->name,
                 note: $note !== '' ? $note : null,
                 actorUserId: $actorUserId,
+                recordAudit: false,
             ),
             'created' => true,
         ];
