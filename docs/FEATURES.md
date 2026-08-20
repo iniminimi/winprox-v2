@@ -634,7 +634,45 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   - In het **veld-portaal**: door een **teamleader** van het team (follow-up op de portaal-build).
 - Icoon-set = **12** (zie QR-portaal); lockout automatisch na 2 foute pogingen.
 
-### 6.4 NIET overnemen
+### 6.4 Desktop SSO — Microsoft Entra OIDC (v1-contract, nog niet gebouwd)
+
+**Status:** afspraken vastgelegd. Geen login-knop, geen OIDC-callback, geen Socialite.
+**Kosten:** geen extra SaaS. App-registratie in Microsoft Entra is gratis. De login-knop is een
+latere bouwstap (niet deze laag).
+
+**Wie:** alleen beheerder (`admin`) en medewerker (`employee`) op desktop.
+**Niet:** uitvoerders, Clock Point-QR, unit-QR, gasten, superuser.
+
+**Protocol:** Microsoft Entra ID via OpenID Connect (OIDC). Geen SAML, geen SCIM, geen Google,
+geen betaalde SSO-dienst (WorkOS e.d.).
+
+**Gedrag (wanneer de knop er is):**
+- Alleen **bestaande** WinProx-users; e-mail moet gelijk zijn aan het Microsoft-account
+  (`mail` of UPN). Geen match → weigeren, geen nieuw account.
+- Geen automatische accounts (geen JIT): collega’s blijven via `CreateColleagueAction` +
+  gebruikerslimiet.
+- E-mail + wachtwoord blijft; `users.password` blijft verplicht (o.a. tenant-purge).
+- `is_active=false` → weigeren. Superuser nooit via Entra.
+- Zelfregistratie van een nieuwe tenant blijft e-mail + wachtwoord (geen “aanmelden met Microsoft”).
+- API blijft Sanctum-tokens. SSO is geen koppeling met Ultimo/IWMS/CMMS.
+
+**App-registratie** (handmatig in [Entra admin center](https://entra.microsoft.com) — niet via
+deze repo; Azure CLI ontbreekt lokaal):
+
+1. **App registrations** → New registration. Naam: `WinProx`.
+2. Supported account types: **Accounts in any organizational directory (Multitenant)** —
+   geen persoonlijke Microsoft-accounts (Hotmail/Xbox).
+3. Redirect URI, platform **Web**:
+   - Productie: `https://winprox.app/auth/microsoft/callback`
+   - Lokaal: `{APP_URL}/auth/microsoft/callback` (bv. `http://127.0.0.1:8000/auth/microsoft/callback`)
+4. **Certificates & secrets:** client secret aanmaken; waarde alleen in lokale `.env`, nooit in git.
+5. API permissions (delegated, Microsoft Graph): `openid`, `profile`, `email`.
+6. Bewaar Application (client) ID + secret intern. Placeholders: `.env.example` (`ENTRA_*`).
+
+**Niet in v1:** wachtwoordlogin uitzetten, automatische user-provisioning, per-klant SAML,
+SSO voor uitvoerders.
+
+### 6.5 NIET overnemen
 Hospitality `InternalTeams`-component, `category_slug`, triage-categorieën, `SectorUiCopy`/JSON
 sector-suffixes, marketing-query-params. Property→Location.
 

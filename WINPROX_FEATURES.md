@@ -75,6 +75,7 @@ Middleware: geldige tenant + trial/abonnement (`support.tenant`). Rollen: **admi
 ### Team
 - **Mensen → Backoffice:** collega’s (admin) — users met rol admin/employee.
 - **Mensen → Teams:** checklists + interne teams + workers (zonder login): icoon, teamleader-vlag, Clock Point-QR.
+- Desktop-login: e-mail + wachtwoord. Microsoft Entra OIDC (alleen admin/employee) is **contract** (`docs/FEATURES.md` §6.4), nog niet live. Uitvoerders: geen SSO.
 - Worker-icoon reset / lockout-beheer.
 
 ### Overige tenant-schermen
