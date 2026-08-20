@@ -674,7 +674,9 @@ deze repo; Azure CLI ontbreekt lokaal):
    geen persoonlijke Microsoft-accounts (Hotmail/Xbox).
 3. Redirect URI, platform **Web** (allebei, exact zoals de browser de app opent):
    - Productie: `https://winprox.app/auth/microsoft/callback`
-   - Lokaal: `{APP_URL}/auth/microsoft/callback` (bv. `http://127.0.0.1:8000/auth/microsoft/callback`)
+   - Lokaal: `http://localhost/auth/microsoft/callback` — Azure staat **http** alleen toe voor
+     hostnaam `localhost` (niet `127.0.0.1`; die zou **https** eisen). `APP_URL` lokaal dus
+     `http://localhost` (zonder poort in de Azure-URI).
 4. **Certificates & secrets:** client secret aanmaken; waarde alleen in lokale `.env`, nooit in git.
 5. API permissions (delegated, Microsoft Graph): `openid`, `profile`, `email`.
 6. Bewaar Application (client) ID + secret intern. Placeholders: `.env.example` (`ENTRA_*`).
