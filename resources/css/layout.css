@@ -996,6 +996,13 @@
     margin-top: 1rem;
 }
 
+.wp-ms-logo {
+    width: 1rem;
+    height: 1rem;
+    flex: none;
+    display: block;
+}
+
 .wp-auth-notice {
     margin-bottom: 1rem;
     padding: 0.75rem 1rem;

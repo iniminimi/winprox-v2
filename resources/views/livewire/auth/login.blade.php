@@ -103,7 +103,16 @@
 
     @if ($entraEnabled)
         <div class="wp-auth-secondary">
-            <a href="{{ route('auth.microsoft.redirect') }}" class="btn btn--ghost btn--block">{{ __('auth.microsoft.submit') }}</a>
+            <a href="{{ route('auth.microsoft.redirect') }}" class="btn btn--ghost btn--block">
+                {{-- Officieel Microsoft-vierkant; 1rem zodat .btn-hoogte (2.5rem) gelijk blijft. --}}
+                <svg class="wp-ms-logo" viewBox="0 0 21 21" aria-hidden="true" focusable="false">
+                    <rect x="1" y="1" width="9" height="9" fill="#f25022" />
+                    <rect x="11" y="1" width="9" height="9" fill="#7fba00" />
+                    <rect x="1" y="11" width="9" height="9" fill="#00a4ef" />
+                    <rect x="11" y="11" width="9" height="9" fill="#ffb900" />
+                </svg>
+                {{ __('auth.microsoft.submit') }}
+            </a>
         </div>
     @endif
 
