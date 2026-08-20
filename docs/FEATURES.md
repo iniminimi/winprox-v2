@@ -637,8 +637,11 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 ### 6.4 Desktop SSO — Microsoft Entra OIDC (v1-contract, nog niet gebouwd)
 
 **Status:** afspraken vastgelegd. Geen login-knop, geen OIDC-callback, geen Socialite.
-**Kosten:** geen extra SaaS. App-registratie in Microsoft Entra is gratis. De login-knop is een
-latere bouwstap (niet deze laag).
+**Kosten:** geen extra SSO-SaaS (geen WorkOS). App-registratie zelf is **Entra ID Free (€0)**.
+Wel nodig: een **eigen Microsoft-directory** (Azure-account). Aanmelden vraagt meestal
+**creditcard ter verificatie**; Microsoft rekent Entra ID Free niet aan. Geen VM’s of andere
+Azure-diensten aanzetten — anders wordt het pay-as-you-go. **Niet** het M365-ontwikkelaarsprogramma
+(sandbox, vaak Visual Studio-abonnement, niet voor productie). De login-knop is een latere bouwstap.
 
 **Wie:** alleen beheerder (`admin`) en medewerker (`employee`) op desktop.
 **Niet:** uitvoerders, Clock Point-QR, unit-QR, gasten, superuser.
@@ -655,6 +658,12 @@ geen betaalde SSO-dienst (WorkOS e.d.).
 - `is_active=false` → weigeren. Superuser nooit via Entra.
 - Zelfregistratie van een nieuwe tenant blijft e-mail + wachtwoord (geen “aanmelden met Microsoft”).
 - API blijft Sanctum-tokens. SSO is geen koppeling met Ultimo/IWMS/CMMS.
+
+**Voorwaarde — eigen directory.** Een app kan niet “buiten een map” bestaan. Zonder Azure-/Entra-
+tenant toont App-registraties: *toepassingen buiten een map afgeschaft*. Oplossing: **Aanmelden
+voor Azure** ([gratis Azure-account](https://azure.microsoft.com/pricing/purchase-options/azure-account))
+met het WinProx-werkaccount. Daarna opnieuw **App-registraties**. Niet “Lid worden van het
+M365-ontwikkelaarsprogramma”.
 
 **App-registratie** (handmatig in [Entra admin center](https://entra.microsoft.com) — niet via
 deze repo; Azure CLI ontbreekt lokaal):
