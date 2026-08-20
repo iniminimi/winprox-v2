@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Http\Requests\Auth\LoginRequest;
+use App\Support\Auth\EntraSso;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -37,7 +38,8 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.auth.login')
-            ->layoutData(['hideAuthLogo' => true]);
+        return view('livewire.auth.login', [
+            'entraEnabled' => EntraSso::enabled(),
+        ])->layoutData(['hideAuthLogo' => true]);
     }
 }

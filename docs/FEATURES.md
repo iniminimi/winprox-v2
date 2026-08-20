@@ -634,14 +634,15 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   - In het **veld-portaal**: door een **teamleader** van het team (follow-up op de portaal-build).
 - Icoon-set = **12** (zie QR-portaal); lockout automatisch na 2 foute pogingen.
 
-### 6.4 Desktop SSO — Microsoft Entra OIDC (v1-contract, nog niet gebouwd)
+### 6.4 Desktop SSO — Microsoft Entra OIDC (v1)
 
-**Status:** afspraken vastgelegd. Geen login-knop, geen OIDC-callback, geen Socialite.
+**Status:** gebouwd. Knop **Inloggen met Microsoft** op `/login` als `ENTRA_CLIENT_ID` +
+`ENTRA_CLIENT_SECRET` gezet zijn. Callback: `/auth/microsoft/callback`.
 **Kosten:** geen extra SSO-SaaS (geen WorkOS). App-registratie zelf is **Entra ID Free (€0)**.
 Wel nodig: een **eigen Microsoft-directory** (Azure-account). Aanmelden vraagt meestal
 **creditcard ter verificatie**; Microsoft rekent Entra ID Free niet aan. Geen VM’s of andere
 Azure-diensten aanzetten — anders wordt het pay-as-you-go. **Niet** het M365-ontwikkelaarsprogramma
-(sandbox, vaak Visual Studio-abonnement, niet voor productie). De login-knop is een latere bouwstap.
+(sandbox, vaak Visual Studio-abonnement, niet voor productie).
 
 **Wie:** alleen beheerder (`admin`) en medewerker (`employee`) op desktop.
 **Niet:** uitvoerders, Clock Point-QR, unit-QR, gasten, superuser.
@@ -671,7 +672,7 @@ deze repo; Azure CLI ontbreekt lokaal):
 1. **App registrations** → New registration. Naam: `WinProx`.
 2. Supported account types: **Accounts in any organizational directory (Multitenant)** —
    geen persoonlijke Microsoft-accounts (Hotmail/Xbox).
-3. Redirect URI, platform **Web**:
+3. Redirect URI, platform **Web** (allebei, exact zoals de browser de app opent):
    - Productie: `https://winprox.app/auth/microsoft/callback`
    - Lokaal: `{APP_URL}/auth/microsoft/callback` (bv. `http://127.0.0.1:8000/auth/microsoft/callback`)
 4. **Certificates & secrets:** client secret aanmaken; waarde alleen in lokale `.env`, nooit in git.

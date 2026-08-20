@@ -101,6 +101,12 @@
         </button>
     </form>
 
+    @if ($entraEnabled)
+        <div class="wp-auth-secondary">
+            <a href="{{ route('auth.microsoft.redirect') }}" class="btn btn--ghost btn--block">{{ __('auth.microsoft.submit') }}</a>
+        </div>
+    @endif
+
     <div class="wp-auth-secondary">
         <a href="{{ route('register') }}" class="btn btn--ghost btn--block">{{ __('auth.register_cta') }}</a>
     </div>

@@ -17,6 +17,7 @@ use App\Policies\UserPolicy;
 use App\Services\Translation\OllamaProvider;
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\JsonTranslationLoader;
+use App\Support\Translation\TranslationSyncRemoteGateway;
 use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Event;
@@ -24,6 +25,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use SocialiteProviders\Azure\AzureExtendSocialite;
+use SocialiteProviders\Manager\SocialiteWasCalled;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(TranslationProviderInterface::class, OllamaProvider::class);
-        $this->app->singleton(TranslationSyncRemoteClient::class, \App\Support\Translation\TranslationSyncRemoteGateway::class);
+        $this->app->singleton(TranslationSyncRemoteClient::class, TranslationSyncRemoteGateway::class);
     }
 
     /**
@@ -55,6 +58,8 @@ class AppServiceProvider extends ServiceProvider
 
         Event::listen(MessageSending::class, BlockUnsubscribedEmailRecipients::class);
         Event::listen(MessageSending::class, AppendEmailUnsubscribeFooterToMessage::class);
+
+        Event::listen(SocialiteWasCalled::class, [AzureExtendSocialite::class, 'handle']);
 
         View::prependNamespace('livewire', resource_path('views/vendor/livewire'));
 

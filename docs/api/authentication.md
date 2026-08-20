@@ -4,7 +4,7 @@
 
 WinProx API uses Laravel Sanctum for authentication. API tokens are created in the WinProx application under Settings > API.
 
-Desktop Microsoft Entra SSO (planned for admin/employee login) is **not** API authentication. Integrations (Ultimo, IWMS, CMMS) keep using Sanctum tokens. See `docs/FEATURES.md` §6.4.
+Desktop Microsoft Entra SSO (admin/employee login) is **not** API authentication. Integrations (Ultimo, IWMS, CMMS) keep using Sanctum tokens. See `docs/FEATURES.md` §6.4.
 
 ## Creating an API Token
 

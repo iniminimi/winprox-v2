@@ -39,4 +39,15 @@ return [
         'inbound_hook_secret' => env('WINPROX_INBOUND_HOOK_SECRET'),
     ],
 
+    /*
+     | Microsoft Entra OIDC (desktop SSO). Env-namen: ENTRA_* (zie .env.example).
+     | Redirect default = {APP_URL}/auth/microsoft/callback — die URI moet ook in Azure.
+     */
+    'azure' => [
+        'client_id' => env('ENTRA_CLIENT_ID'),
+        'client_secret' => env('ENTRA_CLIENT_SECRET'),
+        'redirect' => env('ENTRA_REDIRECT_URI', rtrim((string) env('APP_URL', 'http://localhost'), '/').'/auth/microsoft/callback'),
+        'tenant' => env('ENTRA_TENANT', 'organizations'),
+    ],
+
 ];
