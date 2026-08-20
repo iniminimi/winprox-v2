@@ -680,6 +680,7 @@ deze repo; Azure CLI ontbreekt lokaal):
 4. **Certificates & secrets:** client secret aanmaken; waarde alleen in lokale `.env`, nooit in git.
 5. API permissions (delegated, Microsoft Graph): `openid`, `profile`, `email`.
 6. Bewaar Application (client) ID + secret intern. Placeholders: `.env.example` (`ENTRA_*`).
+   `ENTRA_TENANT=organizations` (niet `common` — anders *unauthorized_client / not enabled for consumers*).
 
 **Niet in v1:** wachtwoordlogin uitzetten, automatische user-provisioning, per-klant SAML,
 SSO voor uitvoerders.
