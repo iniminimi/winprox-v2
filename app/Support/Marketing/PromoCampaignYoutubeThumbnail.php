@@ -80,7 +80,7 @@ final class PromoCampaignYoutubeThumbnail
 
     public static function thumbnailUrl(string $videoId): string
     {
-        return 'https://img.youtube.com/vi/'.$videoId.'/hqdefault.jpg';
+        return 'https://img.youtube.com/vi/'.$videoId.'/mqdefault.jpg';
     }
 
     private static function replaceThumbnailPlaceholder(string $html, ?string $youtubeUrl): string
@@ -129,7 +129,7 @@ final class PromoCampaignYoutubeThumbnail
 
         return '<p style="margin:0 0 16px 0;text-align:center">'
             .'<a href="'.$watchUrl.'" style="display:inline-block;text-decoration:none">'
-            .'<img src="'.$thumbnailUrl.'" alt="YouTube" width="320" '
+            .'<img src="'.$thumbnailUrl.'" alt="YouTube" width="320" height="180" '
             .'style="display:block;max-width:100%;height:auto;border:0;border-radius:8px" />'
             .'</a></p>';
     }

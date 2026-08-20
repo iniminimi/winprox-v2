@@ -400,7 +400,7 @@ it('zet youtube placeholder om naar klikbare thumbnail in promo e-mail', functio
     );
 
     expect($expanded)
-        ->toContain('img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg')
+        ->toContain('img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg')
         ->toContain('width="320"')
         ->toContain('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
         ->not->toContain('{{youtube_thumbnail}}');
@@ -413,7 +413,7 @@ it('zet youtube link in promo e-mail om naar thumbnail', function () {
     $expanded = PromoCampaignYoutubeThumbnail::expandInMailHtml($html);
 
     expect($expanded)
-        ->toContain('img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg')
+        ->toContain('img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg')
         ->not->toContain('Bekijk de video');
 });
 
@@ -431,7 +431,7 @@ it('rendert promo-campagne e-mail met youtube thumbnail', function () {
     ))->render();
 
     expect($html)
-        ->toContain('img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg')
+        ->toContain('img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg')
         ->toContain('email-wrapper');
 });
 
