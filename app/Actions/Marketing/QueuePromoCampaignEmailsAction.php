@@ -123,16 +123,8 @@ class QueuePromoCampaignEmailsAction
             ->pluck('promo_campaign_target_id')
             ->all();
 
-        $attachLetter = $campaign->attach_letter_to_email;
-
         foreach ($campaign->targets()->orderBy('id')->get() as $target) {
             if ($target->undelivered) {
-                $skipped++;
-
-                continue;
-            }
-
-            if ($attachLetter && ($target->generated_at === null || $target->docx_filename === null)) {
                 $skipped++;
 
                 continue;

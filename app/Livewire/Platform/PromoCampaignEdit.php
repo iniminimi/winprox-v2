@@ -45,8 +45,6 @@ class PromoCampaignEdit extends Component
 
     public string $emailBodyHtml = '';
 
-    public bool $attachLetterToEmail = true;
-
     public string $flowImagePath = '';
 
     public string $youtubeUrl = '';
@@ -403,17 +401,10 @@ class PromoCampaignEdit extends Component
 
         $this->persistCampaign($update, (int) $user->id);
 
-        $target = $this->campaign->attach_letter_to_email
-            ? $this->campaign->targets()->whereNotNull('generated_at')->orderBy('id')->first()
-            : $this->campaign->targets()->orderBy('id')->first();
+        $target = $this->campaign->targets()->orderBy('id')->first();
 
         if ($target === null) {
-            $this->showNotice(
-                $this->campaign->attach_letter_to_email
-                    ? __('platform.promo_campaigns.test_email_no_letter')
-                    : __('platform.promo_campaigns.test_email_no_target'),
-                'error',
-            );
+            $this->showNotice(__('platform.promo_campaigns.test_email_no_target'), 'error');
 
             return;
         }
@@ -499,7 +490,6 @@ class PromoCampaignEdit extends Component
         $this->letterBodyHtml = PromoCampaignHtmlSanitizer::forEditor($this->campaign->letter_body_html);
         $this->emailSubject = (string) ($this->campaign->email_subject ?? '');
         $this->emailBodyHtml = PromoCampaignHtmlSanitizer::forEditor($this->campaign->email_body_html);
-        $this->attachLetterToEmail = (bool) ($this->campaign->attach_letter_to_email ?? true);
         $this->flowImagePath = (string) ($this->campaign->flow_image_path ?? '');
         $this->youtubeUrl = (string) ($this->campaign->youtube_url ?? '');
         $this->mapName = (string) ($mapping['name'] ?? '');
@@ -561,7 +551,6 @@ class PromoCampaignEdit extends Component
                 letterBodyHtml: PromoCampaignHtmlSanitizer::forEditor($this->letterBodyHtml) ?: null,
                 emailSubject: $this->emailSubject !== '' ? $this->emailSubject : null,
                 emailBodyHtml: PromoCampaignHtmlSanitizer::forEditor($this->emailBodyHtml) ?: null,
-                attachLetterToEmail: $this->attachLetterToEmail,
                 flowImagePath: $this->flowImagePath !== '' ? $this->flowImagePath : null,
                 youtubeUrl: $this->youtubeUrl !== '' ? $this->youtubeUrl : null,
                 columnMapping: $this->columnMappingArray(),

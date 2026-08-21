@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class PromoCampaign extends Model
 {
     protected $attributes = [
-        'attach_letter_to_email' => true,
+        'attach_letter_to_email' => false,
     ];
 
     protected $fillable = [

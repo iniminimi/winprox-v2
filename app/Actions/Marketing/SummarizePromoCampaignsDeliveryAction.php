@@ -124,10 +124,6 @@ class SummarizePromoCampaignsDeliveryAction
             $query->whereNotIn('id', $sentOrBouncedIds);
         }
 
-        if ($campaign->attach_letter_to_email) {
-            $query->whereNotNull('generated_at')->whereNotNull('docx_filename');
-        }
-
         $query->whereNotExists(function ($sub): void {
             $sub->selectRaw('1')
                 ->from('email_unsubscribes')

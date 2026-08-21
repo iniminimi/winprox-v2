@@ -117,7 +117,7 @@ Alleen voor platformbeheerders (`is_superuser`), routes onder `/platform`:
 - Help-chat (onbeantwoorde vragen, kennisbank)
 - Contactberichten
 - Vertaling-sync (export/import vertaalslots)
-- **Promo-campagnes** — Excel-import, DOCX-brieven, e-mailqueue, kolommapping, campagne kopiëren
+- **Promo-campagnes** — Excel-import, optionele DOCX-brieven (print), e-mailqueue zonder bijlagen, kolommapping, campagne kopiëren
 - **Promo-ontvangers** — tokens, QR-download, bezoekstatistieken
 - Handleiding-screenshots (platform-tool)
 

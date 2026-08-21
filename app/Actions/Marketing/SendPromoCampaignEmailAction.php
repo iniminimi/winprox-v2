@@ -38,14 +38,6 @@ class SendPromoCampaignEmailAction
             throw new RuntimeException('Target does not belong to campaign.');
         }
 
-        $attachLetter = $campaign->attach_letter_to_email;
-
-        if ($attachLetter) {
-            if ($target->docx_filename === null || $target->generated_at === null) {
-                throw new RuntimeException('Letter has not been generated for this target.');
-            }
-        }
-
         $target->loadMissing('promoRecipient');
 
         $recipientEmail = trim((string) ($overrideRecipientEmail ?? $target->email));
@@ -77,14 +69,6 @@ class SendPromoCampaignEmailAction
 
         if ($isUnsubscribed && ! $isTestSend) {
             return $this->markUnsubscribedSkipped($campaign, $target, $normalizedRecipientEmail, $actorUserId);
-        }
-
-        $docxPath = null;
-        if ($attachLetter) {
-            $docxPath = $campaign->lettersDirectory().DIRECTORY_SEPARATOR.$target->docx_filename;
-            if (! is_file($docxPath)) {
-                throw new RuntimeException('DOCX file not found for target.');
-            }
         }
 
         $emailSubject = trim((string) ($campaign->email_subject ?? ''));
@@ -156,7 +140,6 @@ class SendPromoCampaignEmailAction
             Mail::to($recipientEmail)->send(new PromoCampaignLetterMail(
                 emailSubject: $emailSubject,
                 emailBodyHtml: $emailBodyHtml,
-                docxPath: $docxPath,
                 mailLocale: $campaign->locale,
             ));
 
@@ -188,7 +171,6 @@ class SendPromoCampaignEmailAction
                     'promo_campaign_id' => $campaign->id,
                     'promo_campaign_target_id' => $target->id,
                     'recipient_email' => $recipientEmail,
-                    'attach_letter' => $attachLetter,
                 ],
             );
 

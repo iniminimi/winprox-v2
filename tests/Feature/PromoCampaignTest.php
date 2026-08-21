@@ -339,7 +339,6 @@ it('genereert docx met paragraaf-spacing in het middenstuk', function () {
                 .'<ol><li data-list="bullet">Punt één</li><li data-list="bullet">Punt twee</li></ol>',
             emailSubject: null,
             emailBodyHtml: null,
-            attachLetterToEmail: true,
             flowImagePath: null,
             youtubeUrl: null,
             columnMapping: null,
@@ -456,7 +455,6 @@ it('genereert docx voor campagne-ontvanger', function () {
             letterBodyHtml: '<p>Intro {{name}}</p><p>Les avantages :</p><ol><li data-list="bullet">Punt één</li><li data-list="bullet">Punt twee</li></ol><p>Afsluiting.</p>',
             emailSubject: 'Test {{name}}',
             emailBodyHtml: '<p>Email {{name}}</p>',
-            attachLetterToEmail: true,
             flowImagePath: 'public/images/promo/flow_fr.jpg',
             youtubeUrl: null,
             columnMapping: null,
@@ -613,7 +611,6 @@ it('rendert promo-campagne e-mail met youtube thumbnail', function () {
     $html = (new PromoCampaignLetterMail(
         emailSubject: 'WinProx video',
         emailBodyHtml: $bodyHtml,
-        docxPath: __FILE__,
         mailLocale: 'nl',
     ))->render();
 
@@ -820,7 +817,6 @@ it('kopieert promo-campagne naar nieuwe campagne', function () {
             letterBodyHtml: '<p>Brief {{name}}</p>',
             emailSubject: 'Onderwerp {{name}}',
             emailBodyHtml: '<p>Email {{name}}</p>',
-            attachLetterToEmail: false,
             flowImagePath: 'public/images/promo/flow_fr.jpg',
             youtubeUrl: null,
             columnMapping: [
@@ -866,7 +862,7 @@ it('kopieert promo-campagne naar nieuwe campagne', function () {
         ->letter_body_html->toBe($source->letter_body_html)
         ->email_subject->toBe($source->email_subject)
         ->email_body_html->toBe($source->email_body_html)
-        ->attach_letter_to_email->toBe($source->attach_letter_to_email)
+        ->attach_letter_to_email->toBeFalse()
         ->flow_image_path->toBe($source->flow_image_path)
         ->column_mapping->toMatchArray($source->column_mapping);
 
@@ -999,7 +995,6 @@ it('bewaart lege regels in e-mailtekst bij opslaan campagne', function () {
             letterBodyHtml: null,
             emailSubject: 'Onderwerp',
             emailBodyHtml: $emailHtml,
-            attachLetterToEmail: true,
             flowImagePath: null,
             youtubeUrl: null,
             columnMapping: null,
@@ -1072,7 +1067,6 @@ it('rendert promo-campagne e-mail als html zonder view-fout', function () {
     $html = (new PromoCampaignLetterMail(
         emailSubject: 'WinProx pour Wavre',
         emailBodyHtml: $bodyHtml,
-        docxPath: __FILE__,
         mailLocale: 'fr',
     ))->render();
 
@@ -1149,7 +1143,6 @@ function promoCampaignReadyForEmail(User $superuser, string $excelEmail = 'gemee
             letterBodyHtml: '<p>Brief {{name}}</p>',
             emailSubject: 'Test {{name}}',
             emailBodyHtml: '<p>Email {{name}}</p>',
-            attachLetterToEmail: true,
             flowImagePath: null,
             youtubeUrl: null,
             columnMapping: null,
@@ -1522,7 +1515,6 @@ function promoCampaignReadyForEmailOnly(User $superuser, string $excelEmail = 'g
             letterBodyHtml: null,
             emailSubject: 'Test {{name}}',
             emailBodyHtml: '<p>Email {{name}} {{promo_url}}</p>',
-            attachLetterToEmail: false,
             flowImagePath: null,
             youtubeUrl: null,
             columnMapping: null,
@@ -1566,7 +1558,6 @@ it('verstuurt promo-mail zonder bijlage wanneer brief niet vereist is', function
 
     Mail::assertSent(PromoCampaignLetterMail::class, function (PromoCampaignLetterMail $mail): bool {
         return $mail->hasTo('test@winprox.app')
-            && $mail->docxPath === null
             && $mail->attachments() === [];
     });
 });
@@ -1616,7 +1607,7 @@ it('stuurt testmail zonder brief wanneer bijlage uit staat', function () {
         ->assertSet('noticeType', 'success');
 
     Mail::assertSent(PromoCampaignLetterMail::class, function (PromoCampaignLetterMail $mail): bool {
-        return $mail->hasTo('test@winprox.app') && $mail->docxPath === null;
+        return $mail->hasTo('test@winprox.app') && $mail->attachments() === [];
     });
 });
 
@@ -1885,7 +1876,6 @@ it('stuurt promo-campagnes via de SES-mailer', function () {
     $mail = new PromoCampaignLetterMail(
         emailSubject: 'Test',
         emailBodyHtml: '<p>Hi</p>',
-        docxPath: null,
         mailLocale: 'nl',
     );
 

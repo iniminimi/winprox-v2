@@ -50,7 +50,7 @@ class UpdatePromoCampaignAction
             'letter_body_html' => $letterBodyHtml !== '' ? $letterBodyHtml : null,
             'email_subject' => $data->emailSubject !== null ? trim($data->emailSubject) : null,
             'email_body_html' => $emailBodyHtml !== '' ? $emailBodyHtml : null,
-            'attach_letter_to_email' => $data->attachLetterToEmail,
+            'attach_letter_to_email' => false,
             'flow_image_path' => $data->flowImagePath !== null && trim($data->flowImagePath) !== ''
                 ? trim($data->flowImagePath)
                 : null,
