@@ -77,11 +77,21 @@ def clean_string_for_match(text):
 
 def sanitize_email(email):
     e = str(email).strip()
+    e = urllib.parse.unquote(e)
+    e = urllib.parse.unquote(e)
+    e = e.lower()
+    
+    # 1. Verwijder vervuiling vóór "email:" (bv. "80\r\nemail:info@...")
+    e = re.sub(r'^.*email\s*:\s*', '', e, flags=re.DOTALL)
+    
+    # 2. Verwijder vastgeplakte telefoonnummers (bv. "+33534436340contact@...")
+    e = re.sub(r'^(\+|00)?\d{9,15}', '', e)
+    
+    # 3. Verwijder URL restanten
     e = re.sub(r'^%20', '', e)
     e = re.sub(r'^//', '', e)
-    e = urllib.parse.unquote(e)
-    e = urllib.parse.unquote(e)
-    return e.strip().lower()
+    
+    return e.strip()
 
 def check_row(name, original_email):
     e = sanitize_email(original_email)
