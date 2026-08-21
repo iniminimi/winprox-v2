@@ -1999,7 +1999,7 @@ it('verwijdert een promo-campagne inclusief ontvangers, brieven en wachtende mai
 
     Livewire::actingAs($superuser)
         ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
-        ->assertSee(__('platform.promo_campaigns.delete_submit'))
+        ->assertSee(__('platform.promo_campaigns.delete_title'))
         ->call('openDeleteConfirm')
         ->assertSet('showDeleteConfirm', true)
         ->call('deleteCampaign')
@@ -2013,6 +2013,28 @@ it('verwijdert een promo-campagne inclusief ontvangers, brieven en wachtende mai
         ->and(\Illuminate\Support\Facades\DB::table('jobs')
             ->where('payload', 'like', '%SendPromoCampaignEmailJob%')
             ->count())->toBe(0)
+        ->and(AuditLog::query()->where('action', 'marketing.promo_campaign_deleted')->where('model_id', $campaignId)->exists())->toBeTrue();
+});
+
+it('verwijdert een promo-campagne vanuit het overzicht', function () {
+    $superuser = User::factory()->superuser()->create();
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'delete-from-list-'.uniqid(),
+        name: 'Te verwijderen',
+        locale: 'nl',
+        actorUserId: (int) $superuser->id,
+    );
+    $campaignId = (int) $campaign->id;
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->assertSee(__('platform.promo_campaigns.delete_submit'))
+        ->call('openDeleteConfirm', $campaignId)
+        ->assertSet('showDeleteConfirm', true)
+        ->call('deleteCampaign')
+        ->assertSet('flashMessage', __('platform.promo_campaigns.deleted_notice'));
+
+    expect(PromoCampaign::query()->find($campaignId))->toBeNull()
         ->and(AuditLog::query()->where('action', 'marketing.promo_campaign_deleted')->where('model_id', $campaignId)->exists())->toBeTrue();
 });
 

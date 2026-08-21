@@ -5,11 +5,15 @@
         :subtitle="$campaign->slug"
     />
 
-    <p>
+    <p class="wp-row wp-row--gap-sm wp-wrap">
         <a href="{{ route('platform.promo-campaigns') }}" class="btn btn--ghost btn--sm" wire:navigate>
             {{ __('platform.promo_campaigns.back') }}
         </a>
+        <button type="button" class="btn btn--danger btn--sm" wire:click="openDeleteConfirm">
+            {{ __('platform.promo_campaigns.delete_title') }}
+        </button>
     </p>
+    <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.delete_lead') }}</p>
 
     <div class="wp-card wp-card-pad wp-stack-tight">
         <p class="wp-subhead">{{ __('platform.promo_campaigns.delivery_stats_title') }}</p>
@@ -382,16 +386,6 @@
             @endif
         </div>
     @endif
-
-    <div class="wp-card wp-card-pad wp-stack-tight">
-        <p class="wp-subhead wp-text-danger">{{ __('platform.promo_campaigns.delete_title') }}</p>
-        <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.delete_lead') }}</p>
-        <div>
-            <button type="button" class="btn btn--danger" wire:click="openDeleteConfirm">
-                {{ __('platform.promo_campaigns.delete_submit') }}
-            </button>
-        </div>
-    </div>
 
     @if ($showQueueConfirm)
         <x-wp-modal closeMethod="dismissQueueConfirm">

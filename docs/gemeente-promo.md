@@ -164,7 +164,7 @@ Verzonden mails worden gelogd in `municipal_promo_email_sends` (campagne `wave-1
 
 Superuser: **Platform → Promo-campagnes**
 
-Herbruikbare campagnes met Quill-editor, Excel-import (ontvangers in DB), optionele DOCX-generatie voor print en e-mailqueue **zonder bijlagen**. Op de campagnepagina kun je een campagne **verwijderen** (bevestigingsmodal): ontvangers van díé campagne, verzendlogs, wachtende queue-jobs en gegenereerde brieven gaan mee weg. Gedeelde `promo_recipients` (QR) blijven staan.
+Herbruikbare campagnes met Quill-editor, Excel-import (ontvangers in DB), optionele DOCX-generatie voor print en e-mailqueue **zonder bijlagen**. Op het **overzicht** en bovenaan de campagnepagina kun je een campagne **verwijderen** (bevestigingsmodal): ontvangers van díé campagne, verzendlogs, wachtende queue-jobs en gegenereerde brieven gaan mee weg. Gedeelde `promo_recipients` (QR) blijven staan.
 
 Tabellen: `promo_campaigns`, `promo_campaign_imports`, `promo_campaign_targets`, `promo_campaign_email_sends`.
 

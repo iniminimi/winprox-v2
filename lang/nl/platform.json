@@ -183,6 +183,7 @@
         "delete_submit": "Verwijderen",
         "delete_confirm_title": "Campagne verwijderen?",
         "delete_confirm_body": "Deze promo-campagne en alle bijbehorende data verdwijnen definitief. Weet je het zeker?",
+        "deleted_notice": "Campagne verwijderd.",
         "saved": "Campagne opgeslagen.",
         "settings_title": "Instellingen",
         "flow_image": "Flow-afbeelding in brief",

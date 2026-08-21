@@ -122,13 +122,16 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="wp-row wp-row--gap-sm">
+                        <div class="wp-row wp-row--gap-sm wp-wrap">
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openCopyModal({{ $campaign->id }})">
                                 {{ __('platform.promo_campaigns.copy') }}
                             </button>
                             <a href="{{ route('platform.promo-campaigns.edit', $campaign) }}" class="btn btn--ghost btn--sm" wire:navigate>
                                 {{ __('platform.promo_campaigns.open') }}
                             </a>
+                            <button type="button" class="btn btn--danger btn--sm" wire:click="openDeleteConfirm({{ $campaign->id }})">
+                                {{ __('platform.promo_campaigns.delete_submit') }}
+                            </button>
                         </div>
                     </div>
                 @endforeach
@@ -177,6 +180,24 @@
                     <button type="submit" class="btn btn--primary">{{ __('platform.promo_campaigns.copy_submit') }}</button>
                 </div>
             </form>
+        </x-wp-modal>
+    @endif
+
+    @if ($showDeleteConfirm)
+        <x-wp-modal closeMethod="dismissDeleteConfirm">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card" role="alertdialog" aria-labelledby="promo-campaign-delete-title">
+                <div class="wp-modal-head">
+                    <h2 id="promo-campaign-delete-title" class="wp-section-title">{{ __('platform.promo_campaigns.delete_confirm_title') }}</h2>
+                    <x-wp-modal-close wire:click="dismissDeleteConfirm" />
+                </div>
+                <div class="wp-modal-body">
+                    <p class="wp-text-body">{{ __('platform.promo_campaigns.delete_confirm_body') }}</p>
+                </div>
+                <div class="wp-modal-foot wp-row wp-row--gap-sm">
+                    <button type="button" class="btn btn--ghost" wire:click="dismissDeleteConfirm">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--danger" wire:click="deleteCampaign">{{ __('platform.promo_campaigns.delete_submit') }}</button>
+                </div>
+            </div>
         </x-wp-modal>
     @endif
 

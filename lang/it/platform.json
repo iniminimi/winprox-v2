@@ -183,6 +183,7 @@
         "delete_submit": "Elimina",
         "delete_confirm_title": "Eliminare la campagna?",
         "delete_confirm_body": "Questa campagna promozionale e tutti i dati correlati verranno eliminati in modo permanente. Sei sicuro?",
+        "deleted_notice": "Campagna eliminata.",
         "saved": "Campagna salvata.",
         "settings_title": "Impostazioni",
         "flow_image": "Immagine flow nella lettera",

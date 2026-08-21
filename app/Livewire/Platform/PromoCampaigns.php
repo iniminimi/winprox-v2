@@ -4,6 +4,7 @@ namespace App\Livewire\Platform;
 
 use App\Actions\Marketing\CopyPromoCampaignAction;
 use App\Actions\Marketing\CreatePromoCampaignAction;
+use App\Actions\Marketing\DeletePromoCampaignAction;
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\ProcessPromoMailboxBouncesAction;
 use App\Actions\Marketing\ResumePromoCampaignSendingAction;
@@ -45,6 +46,10 @@ class PromoCampaigns extends Component
     public string $copyLocale = 'nl';
 
     public bool $showPauseConfirm = false;
+
+    public bool $showDeleteConfirm = false;
+
+    public ?int $deleteCampaignId = null;
 
     public function mount(): void
     {
@@ -90,6 +95,8 @@ class PromoCampaigns extends Component
         $this->copySlug = '';
         $this->copyName = __('platform.promo_campaigns.copy_name_default', ['source' => $source->name]);
         $this->copyLocale = $source->locale;
+        $this->showDeleteConfirm = false;
+        $this->deleteCampaignId = null;
         $this->showCopyModal = true;
         $this->resetValidation();
     }
@@ -179,6 +186,40 @@ class PromoCampaigns extends Component
     {
         $this->authorize('managePromoCampaigns', User::class);
         $this->showPauseConfirm = true;
+    }
+
+    public function openDeleteConfirm(int $campaignId): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        PromoCampaign::query()->findOrFail($campaignId);
+
+        $this->showCopyModal = false;
+        $this->deleteCampaignId = $campaignId;
+        $this->showDeleteConfirm = true;
+    }
+
+    public function dismissDeleteConfirm(): void
+    {
+        $this->showDeleteConfirm = false;
+        $this->deleteCampaignId = null;
+    }
+
+    public function deleteCampaign(DeletePromoCampaignAction $delete): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        $user = auth()->user();
+        if ($user === null || $this->deleteCampaignId === null) {
+            return;
+        }
+
+        $campaign = PromoCampaign::query()->findOrFail($this->deleteCampaignId);
+        $delete->handle($campaign, (int) $user->id);
+
+        $this->dismissDeleteConfirm();
+        $this->flashType = 'success';
+        $this->flashMessage = __('platform.promo_campaigns.deleted_notice');
     }
 
     public function dismissPauseConfirm(): void
