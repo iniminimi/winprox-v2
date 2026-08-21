@@ -19,8 +19,13 @@
             <td>EU</td>
         </tr>
         <tr>
-            <td>SMTP provider</td>
-            <td>E-mailverzending</td>
+            <td>Cloud86 SMTP</td>
+            <td>Transactionele app-e-mail</td>
+            <td>EU</td>
+        </tr>
+        <tr>
+            <td>Amazon SES</td>
+            <td>Verzending van promo-campagnes</td>
             <td>EU</td>
         </tr>
         <tr>

@@ -50,7 +50,7 @@ class QueuePromoCampaignEmailsAction
         if ($delaySeconds > 0) {
             $delaySeconds = max(
                 $delaySeconds,
-                (int) config('winprox.promo_campaign_email_min_interval_seconds', 20),
+                (int) config('winprox.promo_campaign_email_min_interval_seconds', 1),
             );
         }
         $resolved = $this->resolveTargets($campaign, $forceResend);

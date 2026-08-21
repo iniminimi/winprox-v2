@@ -1254,7 +1254,10 @@ it('plant opeenvolgende bulk-mails met minstens het ingestelde delay-interval', 
 });
 
 it('laat promo-smtp throttle slechts één send-slot per interval toe', function () {
-    config(['winprox.promo_campaign_email_min_interval_seconds' => 20]);
+    config([
+        'winprox.promo_mailer' => 'municipal_promo',
+        'winprox.promo_campaign_email_min_interval_seconds' => 20,
+    ]);
     \Illuminate\Support\Facades\RateLimiter::clear(\App\Support\Marketing\PromoSmtpThrottle::cacheKey());
 
     expect(\App\Support\Marketing\PromoSmtpThrottle::tryAcquire())->toBeTrue()
@@ -1264,7 +1267,10 @@ it('laat promo-smtp throttle slechts één send-slot per interval toe', function
 
 it('verbruikt geen smtp-slot voor al verstuurde promo-jobs', function () {
     Mail::fake();
-    config(['winprox.promo_campaign_email_min_interval_seconds' => 20]);
+    config([
+        'winprox.promo_mailer' => 'municipal_promo',
+        'winprox.promo_campaign_email_min_interval_seconds' => 20,
+    ]);
     \Illuminate\Support\Facades\RateLimiter::clear(\App\Support\Marketing\PromoSmtpThrottle::cacheKey());
 
     $superuser = User::factory()->superuser()->create();
@@ -1791,7 +1797,10 @@ it('onderbreekt promo-verzending en haalt wachtende jobs uit de queue', function
 
 it('verstuurt geen promo-mail zolang de campagne onderbroken is', function () {
     Mail::fake();
-    config(['winprox.promo_campaign_email_min_interval_seconds' => 20]);
+    config([
+        'winprox.promo_mailer' => 'municipal_promo',
+        'winprox.promo_campaign_email_min_interval_seconds' => 20,
+    ]);
     \Illuminate\Support\Facades\RateLimiter::clear(\App\Support\Marketing\PromoSmtpThrottle::cacheKey());
 
     $superuser = User::factory()->superuser()->create();
@@ -1869,6 +1878,119 @@ it('onderbreekt alle campagnes via de overzichtspagina', function () {
 
     expect($campaign->fresh()->isEmailSendingPaused())->toBeFalse();
 });
+
+it('stuurt promo-campagnes via de SES-mailer', function () {
+    config(['winprox.promo_mailer' => 'ses']);
+
+    $mail = new PromoCampaignLetterMail(
+        emailSubject: 'Test',
+        emailBodyHtml: '<p>Hi</p>',
+        docxPath: null,
+        mailLocale: 'nl',
+    );
+
+    expect($mail->mailer)->toBe('ses');
+});
+
+it('zet de cloud86 smtp-throttle uit bij SES', function () {
+    config(['winprox.promo_mailer' => 'ses']);
+    \Illuminate\Support\Facades\RateLimiter::clear(\App\Support\Marketing\PromoSmtpThrottle::cacheKey());
+
+    expect(\App\Support\Marketing\PromoSmtpThrottle::isEnabled())->toBeFalse()
+        ->and(\App\Support\Marketing\PromoSmtpThrottle::tryAcquire())->toBeTrue()
+        ->and(\App\Support\Marketing\PromoSmtpThrottle::tryAcquire())->toBeTrue()
+        ->and(\App\Support\Marketing\PromoSmtpThrottle::secondsUntilAvailable())->toBeNull();
+});
+
+it('markeert permanente SES-bounces via de sns-hook', function () {
+    config(['winprox.ses_sns_token' => 'ses-test-token']);
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'bounce-ses@example.com');
+
+    PromoCampaignEmailSend::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_target_id' => $target->id,
+        'recipient_email' => 'bounce-ses@example.com',
+        'status' => MunicipalPromoEmailSendStatus::Sent,
+        'sent_at' => now(),
+        'created_by' => $superuser->id,
+    ]);
+
+    $this->postJson('/api/v1/hooks/ses-promo?token=ses-test-token', [
+        'Type' => 'Notification',
+        'Message' => [
+            'notificationType' => 'Bounce',
+            'bounce' => [
+                'bounceType' => 'Permanent',
+                'bouncedRecipients' => [
+                    ['emailAddress' => 'bounce-ses@example.com'],
+                ],
+            ],
+        ],
+    ])->assertOk()
+        ->assertJsonPath('data.type', 'bounce')
+        ->assertJsonPath('data.processed', 1);
+
+    expect($target->fresh()->undelivered)->toBeTrue()
+        ->and(EmailUnsubscribe::isUnsubscribed('bounce-ses@example.com'))->toBeTrue();
+});
+
+it('negeert tijdelijke SES-bounces', function () {
+    config(['winprox.ses_sns_token' => 'ses-test-token']);
+
+    $this->postJson('/api/v1/hooks/ses-promo?token=ses-test-token', [
+        'Type' => 'Notification',
+        'Message' => [
+            'notificationType' => 'Bounce',
+            'bounce' => [
+                'bounceType' => 'Transient',
+                'bouncedRecipients' => [
+                    ['emailAddress' => 'full@example.com'],
+                ],
+            ],
+        ],
+    ])->assertOk()
+        ->assertJsonPath('data.type', 'transient_bounce')
+        ->assertJsonPath('data.processed', 0);
+
+    expect(EmailUnsubscribe::isUnsubscribed('full@example.com'))->toBeFalse();
+});
+
+it('weiger ses-hook zonder geldig token', function () {
+    config(['winprox.ses_sns_token' => 'ses-test-token']);
+
+    $this->postJson('/api/v1/hooks/ses-promo', [
+        'Type' => 'Notification',
+    ])->assertUnauthorized();
+});
+
+it('bevestigt sns-subscription alleen voor amazon-urls', function () {
+    \Illuminate\Support\Facades\Http::fake([
+        'https://sns.eu-west-1.amazonaws.com/*' => \Illuminate\Support\Facades\Http::response('ok', 200),
+        '*' => \Illuminate\Support\Facades\Http::response('nope', 500),
+    ]);
+    config(['winprox.ses_sns_token' => 'ses-test-token']);
+
+    $this->postJson('/api/v1/hooks/ses-promo?token=ses-test-token', [
+        'Type' => 'SubscriptionConfirmation',
+        'SubscribeURL' => 'https://sns.eu-west-1.amazonaws.com/?Action=ConfirmSubscription&Token=abc',
+    ])->assertOk()
+        ->assertJsonPath('data.type', 'subscription_confirmation');
+
+    $this->postJson('/api/v1/hooks/ses-promo?token=ses-test-token', [
+        'Type' => 'SubscriptionConfirmation',
+        'SubscribeURL' => 'https://evil.example/confirm',
+    ])->assertOk();
+
+    \Illuminate\Support\Facades\Http::assertSent(function (\Illuminate\Http\Client\Request $request): bool {
+        return str_contains($request->url(), 'sns.eu-west-1.amazonaws.com');
+    });
+    \Illuminate\Support\Facades\Http::assertNotSent(function (\Illuminate\Http\Client\Request $request): bool {
+        return str_contains($request->url(), 'evil.example');
+    });
+});
+
 
 it('verwijdert een promo-campagne inclusief ontvangers, brieven en wachtende mails', function () {
     config(['queue.default' => 'database']);

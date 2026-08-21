@@ -19,8 +19,13 @@
             <td>UE</td>
         </tr>
         <tr>
-            <td>Proveedor SMTP</td>
-            <td>Entrega de correo electrónico</td>
+            <td>SMTP de Cloud86</td>
+            <td>Correo transaccional de la aplicación</td>
+            <td>UE</td>
+        </tr>
+        <tr>
+            <td>Amazon SES</td>
+            <td>Envío de campañas promocionales</td>
             <td>UE</td>
         </tr>
         <tr>

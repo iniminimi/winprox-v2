@@ -240,7 +240,7 @@
         "test_email_to": "Adresse e-mail test",
         "test_email_to_hint": "Uniquement pour l'e-mail test — pas utilisé pour l'envoi en masse.",
         "delay_seconds": "Délai entre e-mails (sec)",
-        "delay_seconds_hint": "Pause entre e-mails (min. 20 sec ; limite Cloud86 ~250/h).",
+        "delay_seconds_hint": "Pause entre e-mails (SES : 1 sec suffisent). Mettez 20 uniquement avec le SMTP Cloud86.",
         "test_email": "Envoyer e-mail test",
         "force_send": "Renvoyer",
         "queue_section": "Envoi en masse",

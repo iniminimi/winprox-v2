@@ -19,8 +19,13 @@
             <td>EU</td>
         </tr>
         <tr>
-            <td>SMTP provider</td>
-            <td>Email delivery</td>
+            <td>Cloud86 SMTP</td>
+            <td>Transactional application email</td>
+            <td>EU</td>
+        </tr>
+        <tr>
+            <td>Amazon SES</td>
+            <td>Promotional campaign delivery</td>
             <td>EU</td>
         </tr>
         <tr>

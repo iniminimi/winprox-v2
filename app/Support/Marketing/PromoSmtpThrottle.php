@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\RateLimiter;
 
 /**
  * Hard throttle for Cloud86 shared SMTP (~250 outgoing messages / hour / plan).
+ * Disabled when promo mailer is Amazon SES (SES has its own sending limits).
  * Queue delays alone are not enough when workers process available jobs back-to-back.
  */
 final class PromoSmtpThrottle
@@ -18,9 +19,16 @@ final class PromoSmtpThrottle
         return 'winprox-promo-smtp';
     }
 
+    public static function isEnabled(): bool
+    {
+        $mailer = strtolower((string) config('winprox.promo_mailer', 'ses'));
+
+        return in_array($mailer, ['smtp', 'municipal_promo'], true);
+    }
+
     public static function intervalSeconds(): int
     {
-        return max(1, (int) config('winprox.promo_campaign_email_min_interval_seconds', 20));
+        return max(1, (int) config('winprox.promo_campaign_email_min_interval_seconds', 1));
     }
 
     /**
@@ -28,6 +36,10 @@ final class PromoSmtpThrottle
      */
     public static function secondsUntilAvailable(): ?int
     {
+        if (! self::isEnabled()) {
+            return null;
+        }
+
         if (! RateLimiter::tooManyAttempts(self::cacheKey(), 1)) {
             return null;
         }
@@ -40,6 +52,10 @@ final class PromoSmtpThrottle
      */
     public static function tryAcquire(): bool
     {
+        if (! self::isEnabled()) {
+            return true;
+        }
+
         $lock = Cache::lock('winprox-promo-smtp-lock', 10);
 
         if (! $lock->get()) {

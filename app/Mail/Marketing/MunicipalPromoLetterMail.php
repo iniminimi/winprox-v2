@@ -20,7 +20,7 @@ class MunicipalPromoLetterMail extends Mailable
         public string $docxPath,
     ) {
         $this->locale('nl');
-        $this->mailer('municipal_promo');
+        $this->mailer((string) config('winprox.promo_mailer', 'ses'));
     }
 
     public function envelope(): Envelope
