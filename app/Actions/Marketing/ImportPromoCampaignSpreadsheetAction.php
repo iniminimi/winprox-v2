@@ -5,23 +5,29 @@ declare(strict_types=1);
 namespace App\Actions\Marketing;
 
 use App\Actions\Audit\LogAuditAction;
+use App\Data\Marketing\PromoCampaignSkippedEmailData;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignImport;
 use App\Models\PromoCampaignTarget;
-use App\Support\Marketing\PromoCampaignSpreadsheetReader;
 use Illuminate\Support\Facades\DB;
 use RuntimeException;
 
 class ImportPromoCampaignSpreadsheetAction
 {
     public function __construct(
-        private PromoCampaignSpreadsheetReader $reader,
+        private ScreenPromoCampaignSpreadsheetEmailsAction $screenEmails,
         private LogAuditAction $logAudit,
     ) {}
 
     /**
      * @param  array<string, string>  $columnMapping
-     * @return array{import: PromoCampaignImport, target_count: int}
+     * @return array{
+     *     import: PromoCampaignImport,
+     *     target_count: int,
+     *     emails_kept: int,
+     *     emails_skipped: int,
+     *     skipped: list<PromoCampaignSkippedEmailData>
+     * }
      */
     public function handle(
         PromoCampaign $campaign,
@@ -40,9 +46,10 @@ class ImportPromoCampaignSpreadsheetAction
             throw new RuntimeException('Column mapping must include name.');
         }
 
-        $rows = $this->reader->readRows($spreadsheetPath, $columnMapping);
+        $screening = $this->screenEmails->handle($spreadsheetPath, $columnMapping);
+        $rows = $screening->rows;
 
-        $result = DB::transaction(function () use ($campaign, $rows, $originalFilename, $columnMapping, $actorUserId): array {
+        $result = DB::transaction(function () use ($campaign, $rows, $originalFilename, $columnMapping, $actorUserId, $screening): array {
             PromoCampaignTarget::query()
                 ->where('promo_campaign_id', $campaign->id)
                 ->delete();
@@ -74,6 +81,9 @@ class ImportPromoCampaignSpreadsheetAction
             return [
                 'import' => $import,
                 'target_count' => count($rows),
+                'emails_kept' => $screening->emailsKept,
+                'emails_skipped' => $screening->emailsSkipped,
+                'skipped' => $screening->skipped,
             ];
         });
 
@@ -87,6 +97,8 @@ class ImportPromoCampaignSpreadsheetAction
                 'promo_campaign_id' => $campaign->id,
                 'slug' => $campaign->slug,
                 'target_count' => $result['target_count'],
+                'emails_kept' => $result['emails_kept'],
+                'emails_skipped' => $result['emails_skipped'],
                 'original_filename' => $originalFilename,
             ],
         );

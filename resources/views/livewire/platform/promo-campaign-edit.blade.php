@@ -174,6 +174,7 @@
                             <option value="{{ $header }}">{{ $header }}</option>
                         @endforeach
                     </select>
+                    @error('mapEmail') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="wp-label">{{ __('platform.promo_campaigns.map_street') }}</label>
@@ -204,11 +205,49 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="importSpreadsheet,spreadsheet">
-                <x-wp-spinner wire:loading wire:target="importSpreadsheet,spreadsheet" class="wp-mr-2" />
-                <span wire:loading.remove wire:target="importSpreadsheet">{{ __('platform.promo_campaigns.import_submit') }}</span>
-                <span wire:loading wire:target="importSpreadsheet">{{ __('platform.promo_campaigns.import_loading') }}</span>
-            </button>
+            @if ($emailCheckDone)
+                <div class="wp-flash {{ $emailCheckSkippedCount > 0 ? 'wp-flash--muted' : '' }}">
+                    {{ __('platform.promo_campaigns.email_check_summary', [
+                        'kept' => $emailCheckKept,
+                        'skipped' => $emailCheckSkippedCount,
+                    ]) }}
+                </div>
+                @if ($emailCheckSkipped !== [])
+                    <div class="wp-list wp-list--entity-rows">
+                        @foreach (array_slice($emailCheckSkipped, 0, 50) as $skipped)
+                            <div class="wp-list-row" wire:key="email-skip-{{ $loop->index }}">
+                                <div class="wp-grow">
+                                    <p class="wp-text-body">{{ $skipped['email'] }}</p>
+                                    <p class="wp-muted wp-text-sm">
+                                        {{ $skipped['name'] }}
+                                        ·
+                                        {{ __('platform.promo_campaigns.email_skip_reason.'.$skipped['reason']) }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    @if ($emailCheckSkippedCount > 50)
+                        <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.email_check_truncated', [
+                            'shown' => 50,
+                            'total' => $emailCheckSkippedCount,
+                        ]) }}</p>
+                    @endif
+                @endif
+            @endif
+
+            <div class="wp-row wp-gap-sm wp-wrap">
+                <button type="button" class="btn btn--ghost" wire:click="checkEmails" wire:loading.attr="disabled" wire:target="checkEmails,spreadsheet">
+                    <x-wp-spinner wire:loading wire:target="checkEmails" class="wp-mr-2" />
+                    <span wire:loading.remove wire:target="checkEmails">{{ __('platform.promo_campaigns.email_check_submit') }}</span>
+                    <span wire:loading wire:target="checkEmails">{{ __('platform.promo_campaigns.email_check_loading') }}</span>
+                </button>
+                <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="importSpreadsheet,spreadsheet">
+                    <x-wp-spinner wire:loading wire:target="importSpreadsheet,spreadsheet" class="wp-mr-2" />
+                    <span wire:loading.remove wire:target="importSpreadsheet">{{ __('platform.promo_campaigns.import_submit') }}</span>
+                    <span wire:loading wire:target="importSpreadsheet">{{ __('platform.promo_campaigns.import_loading') }}</span>
+                </button>
+            </div>
         </form>
     </div>
 

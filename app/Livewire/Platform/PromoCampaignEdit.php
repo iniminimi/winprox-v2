@@ -7,6 +7,7 @@ use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
 use App\Actions\Marketing\ResumePromoCampaignSendingAction;
+use App\Actions\Marketing\ScreenPromoCampaignSpreadsheetEmailsAction;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
 use App\Actions\Marketing\SummarizePromoCampaignVisitStatsAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
@@ -63,6 +64,15 @@ class PromoCampaignEdit extends Component
 
     /** @var list<string> */
     public array $detectedHeaders = [];
+
+    /** @var list<array{name: string, email: string, reason: string}> */
+    public array $emailCheckSkipped = [];
+
+    public int $emailCheckKept = 0;
+
+    public int $emailCheckSkippedCount = 0;
+
+    public bool $emailCheckDone = false;
 
     public int $delaySeconds = 20;
 
@@ -208,6 +218,7 @@ class PromoCampaignEdit extends Component
     {
         $this->noticeMessage = null;
         $this->detectedHeaders = [];
+        $this->resetEmailCheck();
         if ($this->spreadsheet === null) {
             return;
         }
@@ -236,6 +247,42 @@ class PromoCampaignEdit extends Component
         $this->persistCampaign($update, (int) $user->id);
 
         $this->showNotice(__('platform.promo_campaigns.saved'));
+    }
+
+    public function checkEmails(ScreenPromoCampaignSpreadsheetEmailsAction $screen): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        $this->validate([
+            'spreadsheet' => ['required', 'file', 'mimes:xlsx', 'max:10240'],
+            'mapName' => ['required', 'string', 'max:255'],
+            'mapEmail' => ['required', 'string', 'max:255'],
+        ]);
+
+        if ($this->spreadsheet === null) {
+            return;
+        }
+
+        $path = $this->spreadsheet->getRealPath();
+        if ($path === false) {
+            return;
+        }
+
+        $screening = $screen->handle($path, $this->columnMappingArray());
+        $this->applyEmailScreening($screening->emailsKept, $screening->emailsSkipped, $screening->skipped);
+
+        if ($screening->emailsSkipped === 0) {
+            $this->showNotice(__('platform.promo_campaigns.email_check_ok', [
+                'kept' => $screening->emailsKept,
+            ]));
+
+            return;
+        }
+
+        $this->showNotice(__('platform.promo_campaigns.email_check_skipped', [
+            'kept' => $screening->emailsKept,
+            'skipped' => $screening->emailsSkipped,
+        ]), 'error');
     }
 
     public function importSpreadsheet(ImportPromoCampaignSpreadsheetAction $import): void
@@ -271,6 +318,11 @@ class PromoCampaignEdit extends Component
         );
 
         $targetCount = $result['target_count'];
+        $this->applyEmailScreening(
+            (int) $result['emails_kept'],
+            (int) $result['emails_skipped'],
+            $result['skipped'],
+        );
 
         $this->spreadsheet = null;
         $this->detectedHeaders = [];
@@ -278,10 +330,19 @@ class PromoCampaignEdit extends Component
         $this->fillFromCampaign();
 
         if ($targetCount > 0) {
-            $this->showNotice(__('platform.promo_campaigns.imported_detail', [
-                'count' => $targetCount,
-                'filename' => $originalFilename,
-            ]));
+            if ((int) $result['emails_skipped'] > 0) {
+                $this->showNotice(__('platform.promo_campaigns.imported_detail_skipped', [
+                    'count' => $targetCount,
+                    'filename' => $originalFilename,
+                    'kept' => $result['emails_kept'],
+                    'skipped' => $result['emails_skipped'],
+                ]));
+            } else {
+                $this->showNotice(__('platform.promo_campaigns.imported_detail', [
+                    'count' => $targetCount,
+                    'filename' => $originalFilename,
+                ]));
+            }
         } else {
             $this->showNotice(__('platform.promo_campaigns.imported_empty', [
                 'filename' => $originalFilename,
@@ -433,6 +494,32 @@ class PromoCampaignEdit extends Component
             'postal_code' => $this->mapPostalCode,
             'city' => $this->mapCity,
         ], static fn (string $value): bool => trim($value) !== '');
+    }
+
+    /**
+     * @param  list<\App\Data\Marketing\PromoCampaignSkippedEmailData>  $skipped
+     */
+    private function applyEmailScreening(int $kept, int $skippedCount, array $skipped): void
+    {
+        $this->emailCheckKept = $kept;
+        $this->emailCheckSkippedCount = $skippedCount;
+        $this->emailCheckDone = true;
+        $this->emailCheckSkipped = array_map(
+            static fn ($item): array => [
+                'name' => $item->name,
+                'email' => $item->email,
+                'reason' => $item->reason->value,
+            ],
+            $skipped,
+        );
+    }
+
+    private function resetEmailCheck(): void
+    {
+        $this->emailCheckSkipped = [];
+        $this->emailCheckKept = 0;
+        $this->emailCheckSkippedCount = 0;
+        $this->emailCheckDone = false;
     }
 
     private function persistCampaign(UpdatePromoCampaignAction $update, int $actorUserId): void

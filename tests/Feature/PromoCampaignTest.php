@@ -11,7 +11,9 @@ use App\Actions\Marketing\ResumePromoCampaignSendingAction;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
+use App\Enums\EmailUnsubscribeSource;
 use App\Enums\MunicipalPromoEmailSendStatus;
+use App\Enums\PromoEmailPreflightReason;
 use App\Enums\PromoVisitPage;
 use App\Jobs\SendPromoCampaignEmailJob;
 use App\Livewire\Platform\PromoCampaignEdit;
@@ -55,6 +57,87 @@ function promoCampaignFixtureMapping(): array
         'street_address' => 'adres',
         'postal_code' => 'postcode',
     ];
+}
+
+/**
+ * @param  list<array{name: string, email?: string, street_address?: string, postal_code?: string}>  $rows
+ */
+function writePromoCampaignTestXlsx(array $rows): string
+{
+    $headers = ['naam', 'e-mail', 'adres', 'postcode'];
+    $shared = $headers;
+    foreach ($rows as $row) {
+        $shared[] = (string) ($row['name'] ?? '');
+        $shared[] = (string) ($row['email'] ?? '');
+        $shared[] = (string) ($row['street_address'] ?? '');
+        $shared[] = (string) ($row['postal_code'] ?? '');
+    }
+
+    $escape = static fn (string $value): string => htmlspecialchars($value, ENT_XML1 | ENT_QUOTES, 'UTF-8');
+
+    $sharedXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        .'<sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="'
+        .count($shared).'" uniqueCount="'.count($shared).'">';
+    foreach ($shared as $value) {
+        $sharedXml .= '<si><t>'.$escape($value).'</t></si>';
+    }
+    $sharedXml .= '</sst>';
+
+    $sheetRows = '<row r="1">'
+        .'<c r="A1" t="s"><v>0</v></c>'
+        .'<c r="B1" t="s"><v>1</v></c>'
+        .'<c r="C1" t="s"><v>2</v></c>'
+        .'<c r="D1" t="s"><v>3</v></c>'
+        .'</row>';
+
+    $index = 4;
+    $rowNumber = 2;
+    foreach ($rows as $ignored) {
+        $sheetRows .= '<row r="'.$rowNumber.'">'
+            .'<c r="A'.$rowNumber.'" t="s"><v>'.$index.'</v></c>'
+            .'<c r="B'.$rowNumber.'" t="s"><v>'.($index + 1).'</v></c>'
+            .'<c r="C'.$rowNumber.'" t="s"><v>'.($index + 2).'</v></c>'
+            .'<c r="D'.$rowNumber.'" t="s"><v>'.($index + 3).'</v></c>'
+            .'</row>';
+        $index += 4;
+        $rowNumber++;
+    }
+
+    $sheetXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        .'<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
+        .'<sheetData>'.$sheetRows.'</sheetData></worksheet>';
+
+    $path = sys_get_temp_dir().DIRECTORY_SEPARATOR.'promo-preflight-'.uniqid('', true).'.xlsx';
+    $zip = new ZipArchive();
+    if ($zip->open($path, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== true) {
+        throw new RuntimeException('Unable to create test spreadsheet.');
+    }
+
+    $zip->addFromString('[Content_Types].xml', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        .'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+        .'<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+        .'<Default Extension="xml" ContentType="application/xml"/>'
+        .'<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'
+        .'<Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>'
+        .'<Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/>'
+        .'</Types>');
+    $zip->addFromString('_rels/.rels', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        .'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+        .'<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>'
+        .'</Relationships>');
+    $zip->addFromString('xl/workbook.xml', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        .'<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+        .'<sheets><sheet name="Sheet1" sheetId="1" r:id="rId1"/></sheets></workbook>');
+    $zip->addFromString('xl/_rels/workbook.xml.rels', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        .'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+        .'<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>'
+        .'<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/>'
+        .'</Relationships>');
+    $zip->addFromString('xl/worksheets/sheet1.xml', $sheetXml);
+    $zip->addFromString('xl/sharedStrings.xml', $sharedXml);
+    $zip->close();
+
+    return $path;
 }
 
 it('leest spreadsheet met kolommapping', function () {
@@ -129,6 +212,108 @@ it('toont importbevestiging na excel-upload in livewire', function () {
         ->call('importSpreadsheet')
         ->assertSet('noticeType', 'success')
         ->assertSet('noticeMessage', fn ($message) => str_contains((string) $message, 'sample.xlsx'));
+});
+
+it('importeert rijen maar slaat ongeldige, gebouncete en MX-loze e-mails over', function () {
+    config([
+        'winprox.promo_email_mx_overrides' => [
+            'good.test' => true,
+            'dead.test' => false,
+        ],
+    ]);
+
+    EmailUnsubscribe::query()->create([
+        'email' => 'old@good.test',
+        'source' => EmailUnsubscribeSource::Undeliverable,
+        'unsubscribed_at' => now(),
+    ]);
+
+    $path = writePromoCampaignTestXlsx([
+        ['name' => 'Ok Bedrijf', 'email' => 'ok@good.test', 'street_address' => 'Straat 1', 'postal_code' => '1000'],
+        ['name' => 'Fout Adres', 'email' => 'niet-geldig', 'street_address' => 'Straat 2', 'postal_code' => '2000'],
+        ['name' => 'Dood Domein', 'email' => 'info@dead.test', 'street_address' => 'Straat 3', 'postal_code' => '3000'],
+        ['name' => 'Oude Bounce', 'email' => 'old@good.test', 'street_address' => 'Straat 4', 'postal_code' => '4000'],
+    ]);
+
+    $superuser = User::factory()->superuser()->create();
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'test-preflight-import',
+        name: 'Preflight import',
+        locale: 'nl',
+        actorUserId: (int) $superuser->id,
+    );
+
+    $result = app(ImportPromoCampaignSpreadsheetAction::class)->handle(
+        campaign: $campaign,
+        spreadsheetPath: $path,
+        originalFilename: 'preflight.xlsx',
+        columnMapping: promoCampaignFixtureMapping(),
+        actorUserId: (int) $superuser->id,
+    );
+
+    @unlink($path);
+
+    expect($result['target_count'])->toBe(4)
+        ->and($result['emails_kept'])->toBe(1)
+        ->and($result['emails_skipped'])->toBe(3);
+
+    $byName = PromoCampaignTarget::query()
+        ->where('promo_campaign_id', $campaign->id)
+        ->get()
+        ->keyBy('name');
+
+    expect($byName['Ok Bedrijf']->email)->toBe('ok@good.test')
+        ->and($byName['Fout Adres']->email)->toBeNull()
+        ->and($byName['Dood Domein']->email)->toBeNull()
+        ->and($byName['Oude Bounce']->email)->toBeNull();
+
+    $reasons = collect($result['skipped'])->map(fn ($item) => $item->reason)->all();
+    expect($reasons)->toContain(PromoEmailPreflightReason::InvalidSyntax)
+        ->and($reasons)->toContain(PromoEmailPreflightReason::NoMx)
+        ->and($reasons)->toContain(PromoEmailPreflightReason::PreviouslyBounced);
+});
+
+it('toont e-mailcheck vóór import in livewire', function () {
+    config([
+        'winprox.promo_email_mx_overrides' => [
+            'good.test' => true,
+            'dead.test' => false,
+        ],
+    ]);
+
+    $path = writePromoCampaignTestXlsx([
+        ['name' => 'Ok Bedrijf', 'email' => 'ok@good.test'],
+        ['name' => 'Dood Domein', 'email' => 'info@dead.test'],
+    ]);
+
+    $superuser = User::factory()->superuser()->create();
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'test-preflight-ui',
+        name: 'Preflight UI',
+        locale: 'nl',
+        actorUserId: (int) $superuser->id,
+    );
+
+    $file = UploadedFile::fake()->createWithContent(
+        'preflight.xlsx',
+        (string) file_get_contents($path),
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    );
+    @unlink($path);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
+        ->set('spreadsheet', $file)
+        ->set('mapName', 'naam')
+        ->set('mapEmail', 'e-mail')
+        ->call('checkEmails')
+        ->assertSet('emailCheckDone', true)
+        ->assertSet('emailCheckKept', 1)
+        ->assertSet('emailCheckSkippedCount', 1)
+        ->assertSee(__('platform.promo_campaigns.email_check_submit'))
+        ->assertSee('info@dead.test');
+
+    expect(PromoCampaignTarget::query()->where('promo_campaign_id', $campaign->id)->count())->toBe(0);
 });
 
 it('genereert docx met paragraaf-spacing in het middenstuk', function () {

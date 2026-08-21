@@ -33,5 +33,6 @@
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="ENTRA_CLIENT_ID" value="" force="true"/>
         <env name="ENTRA_CLIENT_SECRET" value="" force="true"/>
+        <env name="WINPROX_PROMO_EMAIL_PREFLIGHT_DNS" value="false"/>
     </php>
 </phpunit>

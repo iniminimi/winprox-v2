@@ -11,4 +11,8 @@ return [
     'promo_campaign_email_min_interval_seconds' => (int) env('WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS', 20),
     // Emergency kill switch for bulk promo SMTP (campaign UI pause + queued jobs).
     'promo_campaign_emails_enabled' => filter_var(env('WINPROX_PROMO_EMAILS_ENABLED', true), FILTER_VALIDATE_BOOLEAN),
+    // DNS MX check before importing promo emails. Tests disable this (no live DNS).
+    'promo_email_preflight_dns' => filter_var(env('WINPROX_PROMO_EMAIL_PREFLIGHT_DNS', true), FILTER_VALIDATE_BOOLEAN),
+    /** @var array<string, bool> domain => accepts mail (tests only) */
+    'promo_email_mx_overrides' => [],
 ];

@@ -158,6 +158,8 @@ Herbruikbare campagnes met Quill-editor, Excel-import (ontvangers in DB), DOCX-g
 
 Tabellen: `promo_campaigns`, `promo_campaign_imports`, `promo_campaign_targets`, `promo_campaign_email_sends`.
 
+**E-mailcheck vóór import:** op de campagnepagina kun je **E-mailadressen controleren** vóór je importeert. WinProx weigert dan (en bij import zelf) adressen met ongeldige syntax, domeinen zonder mailserver (MX), en adressen die eerder gebounced of uitgeschreven zijn. Die e-mails worden **niet** opgeslagen; de rij (naam/adres) blijft wel staan voor brieven. Of een postvak op een bestaand domein bestaat, is zonder versturen niet te zien — daarvoor zou een betaalde validatie-API nodig zijn.
+
 De bestaande artisan-flow voor Vlaanderen blijft beschikbaar.
 
 
