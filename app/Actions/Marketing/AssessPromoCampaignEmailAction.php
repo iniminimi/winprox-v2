@@ -9,6 +9,7 @@ use App\Enums\EmailUnsubscribeSource;
 use App\Enums\PromoEmailPreflightReason;
 use App\Models\EmailUnsubscribe;
 use App\Support\EmailUnsubscribeExemptions;
+use App\Support\Marketing\PromoEmailAddressSanitizer;
 use App\Support\Marketing\PromoEmailListingHost;
 use App\Support\Marketing\PromoEmailMxLookup;
 
@@ -28,7 +29,8 @@ class AssessPromoCampaignEmailAction
             );
         }
 
-        if (filter_var($raw, FILTER_VALIDATE_EMAIL) === false || str_contains($raw, '%')) {
+        $normalized = PromoEmailAddressSanitizer::sanitize($raw);
+        if ($normalized === null) {
             return new PromoEmailAssessmentData(
                 hasEmail: true,
                 accepted: false,
@@ -36,8 +38,6 @@ class AssessPromoCampaignEmailAction
                 reason: PromoEmailPreflightReason::InvalidSyntax,
             );
         }
-
-        $normalized = EmailUnsubscribe::normalizeEmail($raw);
 
         if (
             EmailUnsubscribe::isUnsubscribed($normalized)

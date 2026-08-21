@@ -62,11 +62,29 @@ it('wijst domeinen zonder mailserver af via override', function () {
         ->and($result->reason)->toBe(PromoEmailPreflightReason::NoMx);
 });
 
-it('wijst URL-gecodeerde adressen af', function () {
-    $result = app(AssessPromoCampaignEmailAction::class)->handle('%20infocasaverata@gmail.com');
+it('wijst URL-gecodeerde rommel af die niet tot een adres te herstellen is', function () {
+    $result = app(AssessPromoCampaignEmailAction::class)->handle(
+        '47.55555%25252525252c+-122.55555@shein.shop',
+    );
 
     expect($result->accepted)->toBeFalse()
         ->and($result->reason)->toBe(PromoEmailPreflightReason::InvalidSyntax);
+});
+
+it('maakt %20- en //-prefix schoon tot een geldig adres', function () {
+    config([
+        'winprox.promo_email_mx_overrides' => [
+            'alive.example' => true,
+        ],
+    ]);
+
+    $fromEncoded = app(AssessPromoCampaignEmailAction::class)->handle('%20Info@Alive.example');
+    $fromSlash = app(AssessPromoCampaignEmailAction::class)->handle('//info@alive.example');
+
+    expect($fromEncoded->accepted)->toBeTrue()
+        ->and($fromEncoded->normalizedEmail)->toBe('info@alive.example')
+        ->and($fromSlash->accepted)->toBeTrue()
+        ->and($fromSlash->normalizedEmail)->toBe('info@alive.example');
 });
 
 it('wijst hotelgids-subdomeinen af', function () {
