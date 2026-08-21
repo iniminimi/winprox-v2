@@ -388,6 +388,16 @@
         </div>
     @endif
 
+    <div class="wp-card wp-card-pad wp-stack-tight">
+        <p class="wp-subhead wp-text-danger">{{ __('platform.promo_campaigns.delete_title') }}</p>
+        <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.delete_lead') }}</p>
+        <div>
+            <button type="button" class="btn btn--danger" wire:click="openDeleteConfirm">
+                {{ __('platform.promo_campaigns.delete_submit') }}
+            </button>
+        </div>
+    </div>
+
     @if ($showQueueConfirm)
         <x-wp-modal closeMethod="dismissQueueConfirm">
             <div class="wp-card wp-card-pad wp-stack wp-modal-card" role="alertdialog" aria-labelledby="promo-campaign-queue-confirm-title">
@@ -422,6 +432,24 @@
                 <div class="wp-modal-foot wp-row wp-row--gap-sm">
                     <button type="button" class="btn btn--ghost" wire:click="dismissPauseConfirm">{{ __('common.button.cancel') }}</button>
                     <button type="button" class="btn btn--danger" wire:click="confirmPauseSending">{{ __('platform.promo_campaigns.pause_confirm_submit') }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
+
+    @if ($showDeleteConfirm)
+        <x-wp-modal closeMethod="dismissDeleteConfirm">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card" role="alertdialog" aria-labelledby="promo-campaign-delete-title">
+                <div class="wp-modal-head">
+                    <h2 id="promo-campaign-delete-title" class="wp-section-title">{{ __('platform.promo_campaigns.delete_confirm_title') }}</h2>
+                    <x-wp-modal-close wire:click="dismissDeleteConfirm" />
+                </div>
+                <div class="wp-modal-body">
+                    <p class="wp-text-body">{{ __('platform.promo_campaigns.delete_confirm_body') }}</p>
+                </div>
+                <div class="wp-modal-foot wp-row wp-row--gap-sm">
+                    <button type="button" class="btn btn--ghost" wire:click="dismissDeleteConfirm">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--danger" wire:click="deleteCampaign">{{ __('platform.promo_campaigns.delete_submit') }}</button>
                 </div>
             </div>
         </x-wp-modal>

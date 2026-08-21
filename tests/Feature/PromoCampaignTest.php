@@ -1869,3 +1869,38 @@ it('onderbreekt alle campagnes via de overzichtspagina', function () {
 
     expect($campaign->fresh()->isEmailSendingPaused())->toBeFalse();
 });
+
+it('verwijdert een promo-campagne inclusief ontvangers, brieven en wachtende mails', function () {
+    config(['queue.default' => 'database']);
+    \Illuminate\Support\Facades\Cache::flush();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'delete-me@example.com');
+    $campaignId = (int) $campaign->id;
+    $lettersDir = $campaign->lettersDirectory();
+
+    SendPromoCampaignEmailJob::dispatch(
+        promoCampaignId: $campaignId,
+        promoCampaignTargetId: (int) $target->id,
+        actorUserId: (int) $superuser->id,
+    )->delay(now()->addHour());
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
+        ->assertSee(__('platform.promo_campaigns.delete_submit'))
+        ->call('openDeleteConfirm')
+        ->assertSet('showDeleteConfirm', true)
+        ->call('deleteCampaign')
+        ->assertRedirect(route('platform.promo-campaigns'));
+
+    expect(PromoCampaign::query()->find($campaignId))->toBeNull()
+        ->and(PromoCampaignTarget::query()->where('promo_campaign_id', $campaignId)->exists())->toBeFalse()
+        ->and(PromoCampaignEmailSend::query()->where('promo_campaign_id', $campaignId)->exists())->toBeFalse()
+        ->and(PromoCampaignImport::query()->where('promo_campaign_id', $campaignId)->exists())->toBeFalse()
+        ->and(is_dir($lettersDir))->toBeFalse()
+        ->and(\Illuminate\Support\Facades\DB::table('jobs')
+            ->where('payload', 'like', '%SendPromoCampaignEmailJob%')
+            ->count())->toBe(0)
+        ->and(AuditLog::query()->where('action', 'marketing.promo_campaign_deleted')->where('model_id', $campaignId)->exists())->toBeTrue();
+});
+

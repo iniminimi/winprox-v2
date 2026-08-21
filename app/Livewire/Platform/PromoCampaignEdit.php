@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Platform;
 
+use App\Actions\Marketing\DeletePromoCampaignAction;
 use App\Actions\Marketing\GeneratePromoCampaignLettersAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
@@ -85,6 +86,8 @@ class PromoCampaignEdit extends Component
     public bool $showQueueConfirm = false;
 
     public bool $showPauseConfirm = false;
+
+    public bool $showDeleteConfirm = false;
 
     public int $queueConfirmQueued = 0;
 
@@ -429,6 +432,30 @@ class PromoCampaignEdit extends Component
     {
         $this->noticeMessage = $message;
         $this->noticeType = $type;
+    }
+
+    public function openDeleteConfirm(): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+        $this->showDeleteConfirm = true;
+    }
+
+    public function dismissDeleteConfirm(): void
+    {
+        $this->showDeleteConfirm = false;
+    }
+
+    public function deleteCampaign(DeletePromoCampaignAction $delete): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        $user = auth()->user();
+        if ($user === null) {
+            return;
+        }
+
+        $delete->handle($this->campaign, (int) $user->id);
+        $this->redirect(route('platform.promo-campaigns'), navigate: true);
     }
 
     public function render()
