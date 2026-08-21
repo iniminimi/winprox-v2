@@ -217,6 +217,7 @@
         "email_skip_reason": {
             "invalid_syntax": "ongeldig adres",
             "no_mx": "geen mailserver — zou bouncen",
+            "listing_subdomain": "hotelgids-subdomein — geen eigen maildomein",
             "unsubscribed": "uitgeschreven",
             "previously_bounced": "eerder gebounced"
         },

@@ -217,6 +217,7 @@
         "email_skip_reason": {
             "invalid_syntax": "indirizzo non valido",
             "no_mx": "nessun server di posta — farebbe bounce",
+            "listing_subdomain": "sottodominio di guida — non è una casella hotel",
             "unsubscribed": "disiscritto",
             "previously_bounced": "già bounced"
         },

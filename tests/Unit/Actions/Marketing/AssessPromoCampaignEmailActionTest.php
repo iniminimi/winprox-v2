@@ -62,6 +62,29 @@ it('wijst domeinen zonder mailserver af via override', function () {
         ->and($result->reason)->toBe(PromoEmailPreflightReason::NoMx);
 });
 
+it('wijst URL-gecodeerde adressen af', function () {
+    $result = app(AssessPromoCampaignEmailAction::class)->handle('%20infocasaverata@gmail.com');
+
+    expect($result->accepted)->toBeFalse()
+        ->and($result->reason)->toBe(PromoEmailPreflightReason::InvalidSyntax);
+});
+
+it('wijst hotelgids-subdomeinen af', function () {
+    config([
+        'winprox.promo_email_mx_overrides' => [
+            'granadahotels.org' => true,
+            'occidental-granada.granadahotels.org' => true,
+        ],
+    ]);
+
+    $result = app(AssessPromoCampaignEmailAction::class)->handle(
+        'info@occidental-granada.granadahotels.org',
+    );
+
+    expect($result->accepted)->toBeFalse()
+        ->and($result->reason)->toBe(PromoEmailPreflightReason::ListingSubdomain);
+});
+
 it('accepteert een geldig adres met MX-override', function () {
     config([
         'winprox.promo_email_mx_overrides' => [

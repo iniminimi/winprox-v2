@@ -8,6 +8,7 @@ enum PromoEmailPreflightReason: string
 {
     case InvalidSyntax = 'invalid_syntax';
     case NoMx = 'no_mx';
+    case ListingSubdomain = 'listing_subdomain';
     case Unsubscribed = 'unsubscribed';
     case PreviouslyBounced = 'previously_bounced';
 
