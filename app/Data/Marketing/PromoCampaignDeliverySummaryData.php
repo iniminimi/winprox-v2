@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Data\Marketing;
 
+use Illuminate\Support\Carbon;
+
 final readonly class PromoCampaignDeliverySummaryData
 {
     public function __construct(
@@ -16,6 +18,8 @@ final readonly class PromoCampaignDeliverySummaryData
         public int $remaining,
         public int $queuedJobs,
         public string $status,
+        public ?Carbon $firstSentAt = null,
+        public ?Carbon $lastSentAt = null,
     ) {}
 
     public function pillClass(): string

@@ -97,7 +97,29 @@
                     <div class="wp-list-row" wire:key="campaign-{{ $campaign->id }}">
                         <div class="wp-grow">
                             <p class="wp-text-body"><strong>{{ $campaign->name }}</strong></p>
-                            <p class="wp-muted wp-text-sm">{{ $campaign->slug }} · {{ strtoupper($campaign->locale) }}</p>
+                            @php
+                                $timezone = config('app.timezone');
+                                $createdDate = $campaign->created_at?->timezone($timezone)->format('d-m-Y');
+                                $firstSent = $summary?->firstSentAt?->timezone($timezone);
+                                $lastSent = $summary?->lastSentAt?->timezone($timezone);
+                            @endphp
+                            <p class="wp-muted wp-text-sm">
+                                {{ $campaign->slug }} · {{ strtoupper($campaign->locale) }}
+                                @if ($createdDate)
+                                    · {{ __('platform.promo_campaigns.list_created', ['date' => $createdDate]) }}
+                                @endif
+                                @if ($firstSent && $lastSent)
+                                    ·
+                                    @if ($firstSent->toDateString() === $lastSent->toDateString())
+                                        {{ __('platform.promo_campaigns.list_ran', ['date' => $firstSent->format('d-m-Y')]) }}
+                                    @else
+                                        {{ __('platform.promo_campaigns.list_ran_range', [
+                                            'from' => $firstSent->format('d-m-Y'),
+                                            'to' => $lastSent->format('d-m-Y'),
+                                        ]) }}
+                                    @endif
+                                @endif
+                            </p>
                             @if ($summary)
                                 <div class="wp-stack-tight">
                                     <span class="{{ $summary->pillClass() }}">

@@ -9,6 +9,7 @@ use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -55,6 +56,15 @@ class SummarizePromoCampaignsDeliveryAction
             ->groupBy('promo_campaign_id', 'status')
             ->get();
 
+        $sentAtRows = PromoCampaignEmailSend::query()
+            ->whereIn('promo_campaign_id', $ids)
+            ->where('status', MunicipalPromoEmailSendStatus::Sent)
+            ->whereNotNull('sent_at')
+            ->selectRaw('promo_campaign_id, MIN(sent_at) as first_sent_at, MAX(sent_at) as last_sent_at')
+            ->groupBy('promo_campaign_id')
+            ->get()
+            ->keyBy(fn ($row): int => (int) $row->promo_campaign_id);
+
         /** @var array<int, array<string, int>> $sendsByCampaign */
         $sendsByCampaign = [];
         foreach ($sendRows as $row) {
@@ -81,6 +91,8 @@ class SummarizePromoCampaignsDeliveryAction
             $withEmail = (int) ($withEmailTotals[$campaignId] ?? 0);
             $bounced = (int) ($bouncedTotals[$campaignId] ?? 0);
 
+            $sentAt = $sentAtRows->get($campaignId);
+
             $summaries[$campaignId] = new PromoCampaignDeliverySummaryData(
                 targets: $targets,
                 withEmail: $withEmail,
@@ -98,6 +110,8 @@ class SummarizePromoCampaignsDeliveryAction
                     remaining: $remaining,
                     queuedJobs: $queuedJobs,
                 ),
+                firstSentAt: $this->parseSentAt($sentAt?->first_sent_at ?? null),
+                lastSentAt: $this->parseSentAt($sentAt?->last_sent_at ?? null),
             );
         }
 
@@ -205,5 +219,14 @@ class SummarizePromoCampaignsDeliveryAction
         }
 
         return 'not_started';
+    }
+
+    private function parseSentAt(mixed $value): ?Carbon
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        return Carbon::parse($value);
     }
 }

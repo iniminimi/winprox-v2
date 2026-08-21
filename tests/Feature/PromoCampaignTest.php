@@ -901,7 +901,9 @@ it('toont verzendstatus per promo-campagne in de lijst', function () {
     expect($summary->status)->toBe('needs_restart')
         ->and($summary->sent)->toBe(1)
         ->and($summary->remaining)->toBe(1)
-        ->and($summary->bounced)->toBe(0);
+        ->and($summary->bounced)->toBe(0)
+        ->and($summary->firstSentAt?->toDateString())->toBe(now()->toDateString())
+        ->and($summary->lastSentAt?->toDateString())->toBe(now()->toDateString());
 
     PromoCampaignTarget::query()->create([
         'promo_campaign_id' => $campaign->id,
@@ -932,6 +934,12 @@ it('toont verzendstatus per promo-campagne in de lijst', function () {
             'failed' => 0,
             'bounced' => 1,
             'queued' => 0,
+        ]))
+        ->assertSee(__('platform.promo_campaigns.list_created', [
+            'date' => $campaign->created_at?->timezone(config('app.timezone'))->format('d-m-Y'),
+        ]))
+        ->assertSee(__('platform.promo_campaigns.list_ran', [
+            'date' => now()->timezone(config('app.timezone'))->format('d-m-Y'),
         ]));
 });
 
