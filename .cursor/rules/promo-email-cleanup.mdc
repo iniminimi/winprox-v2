@@ -1,0 +1,32 @@
+---
+description: Instructies voor het opschonen van e-maillijsten vóór import in Promo Campagnes.
+globs: *.csv, *.xlsx
+---
+# Promo Email Cleanup (Verplicht vóór import)
+
+Wanneer de gebruiker vraagt om een Excel- of CSV-bestand met e-mailadressen te importeren voor een **Promo Campagne** (koude acquisitie), moet deze lijst **altijd** eerst extern opgeschoond worden om bounces en spamklachten te voorkomen.
+
+## Waarom?
+Geïmporteerde / gescrapete lijsten bevatten vaak:
+- Gratis webmails (`@gmail.com`, `@orange.fr`, etc.) die ongeschikt zijn voor B2B en spamfilters triggeren.
+- Dode domeinen (geen MX-records).
+- Domein mismatches (bijv. Hotel A dat linkt naar `gehackteblog.com`).
+- Schraapfouten (`%20` prefixes, GPS-coördinaten als e-mail).
+
+## Actie (Agent Plicht)
+Gebruik **altijd** het Python-script `scripts/marketing/clean_promo_emails.py` vóór je een bestand als klaar beschouwt voor de Laravel applicatie.
+
+### Commando:
+```bash
+python scripts/marketing/clean_promo_emails.py "pad/naar/input.xlsx" "pad/naar/output_hq.xlsx" "pad/naar/afgekeurd.csv"
+```
+*(Let op: Gebruik de lokale Python executable indien nodig, bijv. `C:\Users\domin\AppData\Local\Programs\Python\Python313\python.exe` op de Windows werk-pc van de gebruiker).*
+
+### Vereisten in het bronbestand:
+- Het bronbestand moet minimaal de kolommen `Naam` (of `naam`) en `Email` (of `email`) bevatten.
+
+### Workflow:
+1. Controleer of de benodigde packages aanwezig zijn (`pip install pandas openpyxl dnspython`).
+2. Voer het script uit.
+3. Communiceer de resultaten (hoeveel behouden, hoeveel afgekeurd) naar de gebruiker.
+4. Gebruik uitsluitend het resulterende `_hq.xlsx` of `_hq.csv` bestand voor verdere verwerking of import in het WinProx platform.
