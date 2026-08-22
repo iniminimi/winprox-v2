@@ -214,14 +214,7 @@ it('toont importbevestiging na excel-upload in livewire', function () {
         ->assertSet('noticeMessage', fn ($message) => str_contains((string) $message, 'sample.xlsx'));
 });
 
-it('importeert rijen maar slaat ongeldige, gebouncete en MX-loze e-mails over', function () {
-    config([
-        'winprox.promo_email_mx_overrides' => [
-            'good.test' => true,
-            'dead.test' => false,
-        ],
-    ]);
-
+it('importeert rijen maar slaat ongeldige en gebouncete e-mails over', function () {
     EmailUnsubscribe::query()->create([
         'email' => 'old@good.test',
         'source' => EmailUnsubscribeSource::Undeliverable,
@@ -231,7 +224,6 @@ it('importeert rijen maar slaat ongeldige, gebouncete en MX-loze e-mails over', 
     $path = writePromoCampaignTestXlsx([
         ['name' => 'Ok Bedrijf', 'email' => 'ok@good.test', 'street_address' => 'Straat 1', 'postal_code' => '1000'],
         ['name' => 'Fout Adres', 'email' => 'niet-geldig', 'street_address' => 'Straat 2', 'postal_code' => '2000'],
-        ['name' => 'Dood Domein', 'email' => 'info@dead.test', 'street_address' => 'Straat 3', 'postal_code' => '3000'],
         ['name' => 'Oude Bounce', 'email' => 'old@good.test', 'street_address' => 'Straat 4', 'postal_code' => '4000'],
     ]);
 
@@ -253,9 +245,9 @@ it('importeert rijen maar slaat ongeldige, gebouncete en MX-loze e-mails over', 
 
     @unlink($path);
 
-    expect($result['target_count'])->toBe(4)
+    expect($result['target_count'])->toBe(3)
         ->and($result['emails_kept'])->toBe(1)
-        ->and($result['emails_skipped'])->toBe(3);
+        ->and($result['emails_skipped'])->toBe(2);
 
     $byName = PromoCampaignTarget::query()
         ->where('promo_campaign_id', $campaign->id)
@@ -264,56 +256,11 @@ it('importeert rijen maar slaat ongeldige, gebouncete en MX-loze e-mails over', 
 
     expect($byName['Ok Bedrijf']->email)->toBe('ok@good.test')
         ->and($byName['Fout Adres']->email)->toBeNull()
-        ->and($byName['Dood Domein']->email)->toBeNull()
         ->and($byName['Oude Bounce']->email)->toBeNull();
 
     $reasons = collect($result['skipped'])->map(fn ($item) => $item->reason)->all();
     expect($reasons)->toContain(PromoEmailPreflightReason::InvalidSyntax)
-        ->and($reasons)->toContain(PromoEmailPreflightReason::NoMx)
         ->and($reasons)->toContain(PromoEmailPreflightReason::PreviouslyBounced);
-});
-
-it('toont e-mailcheck vóór import in livewire', function () {
-    config([
-        'winprox.promo_email_mx_overrides' => [
-            'good.test' => true,
-            'dead.test' => false,
-        ],
-    ]);
-
-    $path = writePromoCampaignTestXlsx([
-        ['name' => 'Ok Bedrijf', 'email' => 'ok@good.test'],
-        ['name' => 'Dood Domein', 'email' => 'info@dead.test'],
-    ]);
-
-    $superuser = User::factory()->superuser()->create();
-    $campaign = app(CreatePromoCampaignAction::class)->handle(
-        slug: 'test-preflight-ui',
-        name: 'Preflight UI',
-        locale: 'nl',
-        actorUserId: (int) $superuser->id,
-    );
-
-    $file = UploadedFile::fake()->createWithContent(
-        'preflight.xlsx',
-        (string) file_get_contents($path),
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    );
-    @unlink($path);
-
-    Livewire::actingAs($superuser)
-        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
-        ->set('spreadsheet', $file)
-        ->set('mapName', 'naam')
-        ->set('mapEmail', 'e-mail')
-        ->call('checkEmails')
-        ->assertSet('emailCheckDone', true)
-        ->assertSet('emailCheckKept', 1)
-        ->assertSet('emailCheckSkippedCount', 1)
-        ->assertSee(__('platform.promo_campaigns.email_check_submit'))
-        ->assertSee('info@dead.test');
-
-    expect(PromoCampaignTarget::query()->where('promo_campaign_id', $campaign->id)->count())->toBe(0);
 });
 
 it('genereert docx met paragraaf-spacing in het middenstuk', function () {

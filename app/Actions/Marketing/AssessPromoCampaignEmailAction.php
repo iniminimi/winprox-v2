@@ -10,13 +10,9 @@ use App\Enums\PromoEmailPreflightReason;
 use App\Models\EmailUnsubscribe;
 use App\Support\EmailUnsubscribeExemptions;
 use App\Support\Marketing\PromoEmailAddressSanitizer;
-use App\Support\Marketing\PromoEmailListingHost;
-use App\Support\Marketing\PromoEmailMxLookup;
 
 class AssessPromoCampaignEmailAction
 {
-    public function __construct(private PromoEmailMxLookup $mxLookup) {}
-
     public function handle(?string $email): PromoEmailAssessmentData
     {
         $raw = trim((string) $email);
@@ -53,27 +49,6 @@ class AssessPromoCampaignEmailAction
                 accepted: false,
                 normalizedEmail: $normalized,
                 reason: $reason,
-            );
-        }
-
-        $domain = substr(strrchr($normalized, '@') ?: '', 1);
-        if ($domain === '' || PromoEmailListingHost::looksLikeDirectoryListing($domain)) {
-            return new PromoEmailAssessmentData(
-                hasEmail: true,
-                accepted: false,
-                normalizedEmail: $normalized,
-                reason: $domain === ''
-                    ? PromoEmailPreflightReason::InvalidSyntax
-                    : PromoEmailPreflightReason::ListingSubdomain,
-            );
-        }
-
-        if (! $this->mxLookup->domainAcceptsMail($domain)) {
-            return new PromoEmailAssessmentData(
-                hasEmail: true,
-                accepted: false,
-                normalizedEmail: $normalized,
-                reason: PromoEmailPreflightReason::NoMx,
             );
         }
 

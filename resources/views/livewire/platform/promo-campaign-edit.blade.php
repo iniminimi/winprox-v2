@@ -236,11 +236,6 @@
             @endif
 
             <div class="wp-row wp-gap-sm wp-wrap">
-                <button type="button" class="btn btn--ghost" wire:click="checkEmails" wire:loading.attr="disabled" wire:target="checkEmails,spreadsheet">
-                    <x-wp-spinner wire:loading wire:target="checkEmails" class="wp-mr-2" />
-                    <span wire:loading.remove wire:target="checkEmails">{{ __('platform.promo_campaigns.email_check_submit') }}</span>
-                    <span wire:loading wire:target="checkEmails">{{ __('platform.promo_campaigns.email_check_loading') }}</span>
-                </button>
                 <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="importSpreadsheet,spreadsheet">
                     <x-wp-spinner wire:loading wire:target="importSpreadsheet,spreadsheet" class="wp-mr-2" />
                     <span wire:loading.remove wire:target="importSpreadsheet">{{ __('platform.promo_campaigns.import_submit') }}</span>

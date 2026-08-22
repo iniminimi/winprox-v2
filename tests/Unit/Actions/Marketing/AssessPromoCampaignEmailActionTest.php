@@ -49,19 +49,6 @@ it('wijst uitgeschreven adressen af', function () {
         ->and($result->reason)->toBe(PromoEmailPreflightReason::Unsubscribed);
 });
 
-it('wijst domeinen zonder mailserver af via override', function () {
-    config([
-        'winprox.promo_email_mx_overrides' => [
-            'dead.example' => false,
-        ],
-    ]);
-
-    $result = app(AssessPromoCampaignEmailAction::class)->handle('info@dead.example');
-
-    expect($result->accepted)->toBeFalse()
-        ->and($result->reason)->toBe(PromoEmailPreflightReason::NoMx);
-});
-
 it('wijst URL-gecodeerde rommel af die niet tot een adres te herstellen is', function () {
     $result = app(AssessPromoCampaignEmailAction::class)->handle(
         '47.55555%25252525252c+-122.55555@shein.shop',
@@ -72,12 +59,6 @@ it('wijst URL-gecodeerde rommel af die niet tot een adres te herstellen is', fun
 });
 
 it('maakt %20- en //-prefix schoon tot een geldig adres', function () {
-    config([
-        'winprox.promo_email_mx_overrides' => [
-            'alive.example' => true,
-        ],
-    ]);
-
     $fromEncoded = app(AssessPromoCampaignEmailAction::class)->handle('%20Info@Alive.example');
     $fromSlash = app(AssessPromoCampaignEmailAction::class)->handle('//info@alive.example');
 
@@ -87,29 +68,7 @@ it('maakt %20- en //-prefix schoon tot een geldig adres', function () {
         ->and($fromSlash->normalizedEmail)->toBe('info@alive.example');
 });
 
-it('wijst hotelgids-subdomeinen af', function () {
-    config([
-        'winprox.promo_email_mx_overrides' => [
-            'granadahotels.org' => true,
-            'occidental-granada.granadahotels.org' => true,
-        ],
-    ]);
-
-    $result = app(AssessPromoCampaignEmailAction::class)->handle(
-        'info@occidental-granada.granadahotels.org',
-    );
-
-    expect($result->accepted)->toBeFalse()
-        ->and($result->reason)->toBe(PromoEmailPreflightReason::ListingSubdomain);
-});
-
-it('accepteert een geldig adres met MX-override', function () {
-    config([
-        'winprox.promo_email_mx_overrides' => [
-            'alive.example' => true,
-        ],
-    ]);
-
+it('accepteert een syntactisch geldig adres zonder DNS-check', function () {
     $result = app(AssessPromoCampaignEmailAction::class)->handle('Info@Alive.example');
 
     expect($result->accepted)->toBeTrue()

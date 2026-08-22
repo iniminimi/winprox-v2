@@ -8,7 +8,6 @@ use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
 use App\Actions\Marketing\ResumePromoCampaignSendingAction;
-use App\Actions\Marketing\ScreenPromoCampaignSpreadsheetEmailsAction;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
 use App\Actions\Marketing\SummarizePromoCampaignVisitStatsAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
@@ -248,42 +247,6 @@ class PromoCampaignEdit extends Component
         $this->persistCampaign($update, (int) $user->id);
 
         $this->showNotice(__('platform.promo_campaigns.saved'));
-    }
-
-    public function checkEmails(ScreenPromoCampaignSpreadsheetEmailsAction $screen): void
-    {
-        $this->authorize('managePromoCampaigns', User::class);
-
-        $this->validate([
-            'spreadsheet' => ['required', 'file', 'mimes:xlsx', 'max:10240'],
-            'mapName' => ['required', 'string', 'max:255'],
-            'mapEmail' => ['required', 'string', 'max:255'],
-        ]);
-
-        if ($this->spreadsheet === null) {
-            return;
-        }
-
-        $path = $this->spreadsheet->getRealPath();
-        if ($path === false) {
-            return;
-        }
-
-        $screening = $screen->handle($path, $this->columnMappingArray());
-        $this->applyEmailScreening($screening->emailsKept, $screening->emailsSkipped, $screening->skipped);
-
-        if ($screening->emailsSkipped === 0) {
-            $this->showNotice(__('platform.promo_campaigns.email_check_ok', [
-                'kept' => $screening->emailsKept,
-            ]));
-
-            return;
-        }
-
-        $this->showNotice(__('platform.promo_campaigns.email_check_skipped', [
-            'kept' => $screening->emailsKept,
-            'skipped' => $screening->emailsSkipped,
-        ]), 'error');
     }
 
     public function importSpreadsheet(ImportPromoCampaignSpreadsheetAction $import): void

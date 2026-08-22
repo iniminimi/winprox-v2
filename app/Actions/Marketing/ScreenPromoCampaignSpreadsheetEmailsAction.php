@@ -21,8 +21,6 @@ class ScreenPromoCampaignSpreadsheetEmailsAction
      */
     public function handle(string $spreadsheetPath, array $columnMapping): PromoCampaignEmailScreeningData
     {
-        @set_time_limit(120);
-
         $rows = $this->reader->readRows($spreadsheetPath, $columnMapping);
         $emailsKept = 0;
         $emailsSkipped = 0;
