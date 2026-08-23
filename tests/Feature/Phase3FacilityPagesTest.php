@@ -122,6 +122,34 @@ it('toont de uitgebreide hospitality-landing zonder demo of prijs', function () 
         ->assertDontSee('démo', false);
 });
 
+it('toont de uitgebreide healthcare- en government-landing', function () {
+    $this->get(route('healthcare', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('landings.healthcare.title', [], 'nl'))
+        ->assertSee(__('landings.healthcare.flow', [], 'nl'))
+        ->assertSee(__('landings.healthcare.problem.title', [], 'nl'))
+        ->assertSee(__('landings.healthcare.roles.items.3.title', [], 'nl'))
+        ->assertSee(__('landings.healthcare.start.trial', [], 'nl'))
+        ->assertSee('id="landing-video"', false)
+        ->assertSee(__('landings.shared.video_placeholder', [], 'nl'))
+        ->assertDontSee('Bekijk demo', false)
+        ->assertDontSee('langdurig contract', false);
+
+    $this->get(route('government', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('landings.government.title', [], 'nl'))
+        ->assertSee(__('landings.government.flow', [], 'nl'))
+        ->assertSee(__('landings.government.problem.title', [], 'nl'))
+        ->assertSee(__('landings.government.roles.items.0.title', [], 'nl'))
+        ->assertSee('id="landing-video"', false)
+        ->assertDontSee('Bekijk demo', false);
+
+    $this->get(route('healthcare', ['locale' => 'fr']))
+        ->assertOk()
+        ->assertSee(__('landings.healthcare.problem.title', [], 'fr'))
+        ->assertSee('id="landing-video"', false);
+});
+
 it('toont taalkeuze bovenaan een sectorlanding', function () {
     $this->get(route('government'))
         ->assertOk()

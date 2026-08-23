@@ -243,40 +243,220 @@
     },
     "healthcare": {
         "nav_label": "Sanità",
-        "meta_title": "WinProx per la sanità | Facility via QR",
+        "meta_title": "WinProx per la sanità | Segnalazioni tecniche via QR",
         "social": {
-            "og_title": "WinProx per la sanità | Facility via QR",
-            "og_description": "Segnalazioni tecniche via QR: segnalazione, compito, chiusura. Una sola app facility in ospedale o struttura."
+            "og_title": "WinProx per la sanità | Segnalazioni tecniche via QR",
+            "og_description": "Da un guasto nella stanza a un compito per il facility. QR, segnalazione, compito, chiusura. Una sola app facility."
         },
         "eyebrow": "Sanità",
-        "title": "Segnalazioni tecniche senza catena di carta",
-        "lead": "WinProx è una sola app facility: segnala via QR, compiti al team, chiusura. Lo stesso prodotto in struttura — non una variante sanitaria.",
-        "why": {
-            "title": "Perché funziona",
-            "items": [
-                "Infermieri o tecnici scansionano il QR nella stanza e segnalano il problema.",
-                "Il compito va a facility o manutenzione, con foto se serve.",
-                "Lo stato resta visibile fino alla chiusura."
+        "title": "Un guasto nella stanza? Segnalalo subito.",
+        "lead": "Da un problema tecnico in reparto a un compito chiaro per il facility. Un operatore scansiona un QR, segnala il problema e può aggiungere una foto. Il team chiude.",
+        "flow": "QR → segnalazione → compito → chiusura",
+        "video": {
+            "title": "Guarda come funziona WinProx",
+            "lead": "Un operatore segnala, ad esempio, una lampada rotta, una porta che si blocca o un guasto al climatizzatore. La segnalazione diventa un compito per il facility. Niente app, niente catena di telefonate, niente bigliettini."
+        },
+        "problem": {
+            "title": "Un guasto non deve diventare una catena di carta",
+            "lead": "Un operatore nota che il climatizzatore non va, che una lampada è spenta o che una porta si blocca. Una telefonata al facility, un biglietto, qualcuno deve ricordarsene — e il reparto aspetta. Con WinProx è un solo flusso.",
+            "questions": [
+                "Chi deve chiamare l'operatore?",
+                "Qualcuno ha già segnalato il problema?",
+                "Chi ne segue l'esito?",
+                "Il facility ci sta lavorando?",
+                "Alla fine è stato risolto?"
             ]
+        },
+        "steps": {
+            "title": "Un flusso semplice",
+            "items": [
+                {
+                    "title": "Scansiona",
+                    "body": "L'operatore scansiona il QR nella stanza o sul posto."
+                },
+                {
+                    "title": "Segnala",
+                    "body": "Il problema viene segnalato dallo smartphone. Si può aggiungere subito una foto."
+                },
+                {
+                    "title": "Compito",
+                    "body": "La segnalazione diventa un compito per il team facility che colleghi."
+                },
+                {
+                    "title": "Risolvi",
+                    "body": "Il facility esegue il compito e può aggiungere una nota o una foto."
+                },
+                {
+                    "title": "Chiuso",
+                    "body": "Il compito viene chiuso. La direzione vede cosa è aperto e cosa è pronto."
+                }
+            ]
+        },
+        "places": {
+            "title": "Per stanze, facility e pulizie",
+            "lead": "WinProx collega la segnalazione al luogo in cui nasce il problema. Un QR può stare, ad esempio, qui.",
+            "items": [
+                "stanze dei pazienti",
+                "ambulatori",
+                "corridoi e sale d'attesa",
+                "locali tecnici",
+                "cucina",
+                "servizi igienici",
+                "spazi esterni",
+                "magazzini",
+                "altri luoghi"
+            ],
+            "close": "L'operatore non deve cercare chi chiamare. Scansiona il QR e segnala il problema."
+        },
+        "roles": {
+            "title": "Un sistema per tutta la sede",
+            "items": [
+                {
+                    "title": "Per gli operatori",
+                    "body": "Segnalare un problema tecnico senza telefonare. Scansiona il QR, descrivi e aggiungi eventualmente una foto. Niente app e niente account."
+                },
+                {
+                    "title": "Per il facility",
+                    "body": "Compiti chiari con il luogo giusto. Vedi cosa fare, dove si trova e cosa è stato segnalato."
+                },
+                {
+                    "title": "Per le pulizie",
+                    "body": "Anche i piccoli difetti si passano in modo semplice: una lampada rotta o un danno diventa subito un compito."
+                },
+                {
+                    "title": "Per i responsabili",
+                    "body": "Sempre il quadro di ciò che è aperto. Segui segnalazioni e compiti fino alla chiusura."
+                }
+            ]
+        },
+        "why": {
+            "title": "Perché WinProx",
+            "items": [
+                "WinProx è una sola app facility, non una cartella clinica e non una versione sanitaria separata.",
+                "Niente app per chi segnala: bastano smartphone e QR.",
+                "Le segnalazioni diventano un compito per il team che colleghi.",
+                "Meno catena di telefonate e carta tra reparto e facility.",
+                "Una foto nella segnalazione dà subito contesto al facility.",
+                "La direzione segue ogni segnalazione fino alla chiusura, collegata al luogo."
+            ]
+        },
+        "start": {
+            "title": "Parti in piccolo. Allarga quando funziona.",
+            "lead": "Non serve convertire tutta la sede. Parti ad esempio da un reparto, un edificio o un team facility.",
+            "trial": "Un mese di prova gratis, fino a 50 unit. Nessuna installazione."
+        },
+        "close": {
+            "title": "Pronto a provarlo?",
+            "lead": "Trasforma ogni stanza in un punto di segnalazione semplice. Gli amministratori creano un account; gli operatori scansionano e segnalano."
         }
     },
     "government": {
         "nav_label": "Enti pubblici",
-        "meta_title": "WinProx per gli enti pubblici | Facility via QR",
+        "meta_title": "WinProx per gli enti pubblici | Segnalazioni via QR",
         "social": {
-            "og_title": "WinProx per gli enti pubblici | Facility via QR",
-            "og_description": "Segnalazioni dei cittadini e manutenzione interna via QR. Una sola app facility per comune e servizio pubblico."
+            "og_title": "WinProx per gli enti pubblici | Segnalazioni via QR",
+            "og_description": "Da un problema sul posto a un compito per il team giusto. QR, segnalazione, compito, chiusura. Una sola app facility."
         },
         "eyebrow": "Enti pubblici",
-        "title": "Dalla segnalazione del cittadino alla chiusura",
-        "lead": "WinProx è una sola app facility: segnala via QR, compiti al team, chiusura. Lo stesso prodotto per comune, scuola o edificio pubblico.",
-        "why": {
-            "title": "Perché funziona",
-            "items": [
-                "Cittadini o personale scansionano il QR sul posto e aprono una segnalazione.",
-                "Il compito va alla squadra giusta, senza casella condivisa.",
-                "La direzione segue le segnalazioni aperte in un solo riepilogo."
+        "title": "Un problema sul posto? Segnalalo subito.",
+        "lead": "Da un guasto in un edificio pubblico o su un luogo a un compito chiaro per il team giusto. Un cittadino o un dipendente scansiona un QR, segnala il problema e può aggiungere una foto. Il team chiude.",
+        "flow": "QR → segnalazione → compito → chiusura",
+        "video": {
+            "title": "Guarda come funziona WinProx",
+            "lead": "Qualcuno segnala, ad esempio, un'illuminazione rotta, una perdita o una panchina danneggiata. La segnalazione diventa un compito per il team giusto. Niente app, niente catena di telefonate, niente casella condivisa."
+        },
+        "problem": {
+            "title": "Una segnalazione non deve finire in una casella",
+            "lead": "Qualcuno vede un'illuminazione rotta, una perdita o una panchina danneggiata. Una mail al comune, una telefonata, qualcuno deve ricordarsene — e si allunga. Con WinProx è un solo flusso.",
+            "questions": [
+                "Chi deve chiamare il cittadino o il dipendente?",
+                "Qualcuno ha già segnalato il problema?",
+                "Chi ne segue l'esito?",
+                "Il team ci sta lavorando?",
+                "Alla fine è stato risolto?"
             ]
+        },
+        "steps": {
+            "title": "Un flusso semplice",
+            "items": [
+                {
+                    "title": "Scansiona",
+                    "body": "Il cittadino o il dipendente scansiona il QR sul posto."
+                },
+                {
+                    "title": "Segnala",
+                    "body": "Il problema viene segnalato dallo smartphone. Si può aggiungere subito una foto."
+                },
+                {
+                    "title": "Compito",
+                    "body": "La segnalazione diventa un compito per il team che colleghi."
+                },
+                {
+                    "title": "Risolvi",
+                    "body": "Il team esegue il compito e può aggiungere una nota o una foto."
+                },
+                {
+                    "title": "Chiuso",
+                    "body": "Il compito viene chiuso. La direzione vede cosa è aperto e cosa è pronto."
+                }
+            ]
+        },
+        "places": {
+            "title": "Per edifici, spazio pubblico e manutenzione",
+            "lead": "WinProx collega la segnalazione al luogo in cui nasce il problema. Un QR può stare, ad esempio, qui.",
+            "items": [
+                "municipi",
+                "scuole",
+                "palestre",
+                "parchi e piazze",
+                "arredo urbano",
+                "locali tecnici",
+                "biblioteche",
+                "sale d'attesa",
+                "altri luoghi"
+            ],
+            "close": "Nessuno deve cercare l'ufficio giusto. Scansiona il QR e segnala il problema."
+        },
+        "roles": {
+            "title": "Un sistema per il luogo pubblico",
+            "items": [
+                {
+                    "title": "Per i cittadini",
+                    "body": "Segnalare un problema senza telefonare. Scansiona il QR, descrivi e aggiungi eventualmente una foto. Niente app e niente account."
+                },
+                {
+                    "title": "Per i dipendenti",
+                    "body": "Dentro, lo stesso gesto: scansiona sul posto e passa. Niente casella condivisa né catena di bigliettini."
+                },
+                {
+                    "title": "Per la manutenzione",
+                    "body": "Compiti chiari con il luogo giusto. Vedi cosa fare, dove si trova e cosa è stato segnalato."
+                },
+                {
+                    "title": "Per i responsabili",
+                    "body": "Sempre il quadro di ciò che è aperto. Segui segnalazioni e compiti fino alla chiusura."
+                }
+            ]
+        },
+        "why": {
+            "title": "Perché WinProx",
+            "items": [
+                "WinProx è una sola app facility per i luoghi pubblici, non un modulo enti separato.",
+                "Niente app per chi segnala: bastano smartphone e QR.",
+                "Le segnalazioni diventano un compito per il team che colleghi.",
+                "Meno catena di mail e telefonate tra sportello, servizi e manutenzione.",
+                "Una foto nella segnalazione dà subito contesto al team.",
+                "La direzione segue ogni segnalazione fino alla chiusura, collegata al luogo."
+            ]
+        },
+        "start": {
+            "title": "Parti in piccolo. Allarga quando funziona.",
+            "lead": "Non serve convertire tutto il comune. Parti ad esempio da un edificio, una scuola o un team di manutenzione.",
+            "trial": "Un mese di prova gratis, fino a 50 unit. Nessuna installazione."
+        },
+        "close": {
+            "title": "Pronto a provarlo?",
+            "lead": "Trasforma ogni luogo pubblico in un punto di segnalazione semplice. Gli amministratori creano un account; cittadini e dipendenti scansionano e segnalano."
         }
     }
 }

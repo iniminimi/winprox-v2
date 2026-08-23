@@ -243,40 +243,220 @@
     },
     "healthcare": {
         "nav_label": "Zorg",
-        "meta_title": "WinProx voor zorg | Facility via QR",
+        "meta_title": "WinProx voor zorg | Technische meldingen via QR",
         "social": {
-            "og_title": "WinProx voor zorg | Facility via QR",
-            "og_description": "Technische meldingen via QR: melding, taak, afhandeling. Eén facility-app in ziekenhuis of zorgsite."
+            "og_title": "WinProx voor zorg | Technische meldingen via QR",
+            "og_description": "Van een defect in de ruimte naar een taak voor facility. QR, melding, taak, afhandeling. Eén facility-app."
         },
         "eyebrow": "Zorg",
-        "title": "Technische meldingen zonder papierketen",
-        "lead": "WinProx is één facility-app: melding via QR, taken naar het team, afhandeling. Op de zorgsite hetzelfde product, geen zorg-specifieke variant.",
-        "why": {
-            "title": "Waarom dit werkt",
-            "items": [
-                "Verpleging of techniek scant de QR in de ruimte en meldt het probleem.",
-                "De taak gaat naar facility of onderhoud, met foto indien nodig.",
-                "Status blijft zichtbaar tot de melding afgehandeld is."
+        "title": "Defect in de ruimte? Meteen gemeld.",
+        "lead": "Van een technisch probleem op de afdeling naar een duidelijke taak voor facility. Een zorgmedewerker scant een QR-code, meldt het probleem en kan een foto toevoegen. Het team handelt af.",
+        "flow": "QR-code → melding → taak → afhandeling",
+        "video": {
+            "title": "Zie hoe WinProx werkt",
+            "lead": "Een zorgmedewerker meldt bijvoorbeeld een defecte lamp, een happerende deur of een storing aan de airco. De melding wordt een taak voor facility. Geen app, geen telefoonketen, geen briefjes."
+        },
+        "problem": {
+            "title": "Een storing hoeft geen papierketen te worden",
+            "lead": "Een zorgmedewerker merkt dat de airco hapert, een lamp het niet doet of een deur klemt. Een telefoontje naar facility, een briefje, iemand moet het onthouden — en de afdeling wacht. Met WinProx wordt dit één workflow.",
+            "questions": [
+                "Wie moet de zorgmedewerker bellen?",
+                "Heeft iemand het probleem al gemeld?",
+                "Wie volgt het op?",
+                "Is facility ermee bezig?",
+                "Is het uiteindelijk opgelost?"
             ]
+        },
+        "steps": {
+            "title": "Eén eenvoudige workflow",
+            "items": [
+                {
+                    "title": "Scan",
+                    "body": "De zorgmedewerker scant de QR-code in de ruimte of op de locatie."
+                },
+                {
+                    "title": "Meld",
+                    "body": "Het probleem wordt gemeld via de smartphone. Een foto kan direct worden toegevoegd."
+                },
+                {
+                    "title": "Taak",
+                    "body": "De melding wordt een taak voor het facility-team dat je koppelt."
+                },
+                {
+                    "title": "Los op",
+                    "body": "Facility voert de taak uit en kan een toelichting of foto toevoegen."
+                },
+                {
+                    "title": "Afgehandeld",
+                    "body": "De taak wordt afgesloten. Beheer ziet wat openstaat en wat klaar is."
+                }
+            ]
+        },
+        "places": {
+            "title": "Voor ruimtes, facility en schoonmaak",
+            "lead": "WinProx koppelt de melding aan de plaats waar het probleem ontstaat. Een QR-code kan bijvoorbeeld hier.",
+            "items": [
+                "patiëntenkamers",
+                "behandelruimtes",
+                "gangen en wachtzalen",
+                "technische ruimtes",
+                "keuken",
+                "sanitair",
+                "buitenruimte",
+                "magazijnen",
+                "andere locaties"
+            ],
+            "close": "De zorgmedewerker hoeft niet te zoeken wie hij moet bellen. Scan de QR-code en meld het probleem."
+        },
+        "roles": {
+            "title": "Eén systeem voor de hele zorgsite",
+            "items": [
+                {
+                    "title": "Voor zorgmedewerkers",
+                    "body": "Een technisch probleem melden zonder te bellen. Scan de QR-code, beschrijf het en voeg eventueel een foto toe. Geen app en geen account."
+                },
+                {
+                    "title": "Voor facility",
+                    "body": "Duidelijke taken met de juiste locatie. Zie wat er moet gebeuren, waar het zit en wat er gemeld is."
+                },
+                {
+                    "title": "Voor schoonmaak",
+                    "body": "Ook kleine gebreken eenvoudig doorgeven: een defecte lamp of beschadiging wordt meteen een taak."
+                },
+                {
+                    "title": "Voor verantwoordelijken",
+                    "body": "Altijd overzicht van wat openstaat. Volg meldingen en taken tot ze zijn afgehandeld."
+                }
+            ]
+        },
+        "why": {
+            "title": "Waarom WinProx",
+            "items": [
+                "WinProx is één facility-app, geen EPD en geen zorgspecifieke variant.",
+                "Geen app voor wie meldt: smartphone en QR-code volstaan.",
+                "Meldingen worden een taak voor het team dat je koppelt.",
+                "Minder telefoon- en papierketen tussen afdeling en facility.",
+                "Een foto bij de melding geeft facility meteen context.",
+                "Beheer volgt elke melding tot ze is afgehandeld, gekoppeld aan de locatie."
+            ]
+        },
+        "start": {
+            "title": "Begin klein. Breid uit wanneer het werkt.",
+            "lead": "Je hoeft niet meteen de hele zorgsite om te zetten. Start bijvoorbeeld met één afdeling, één gebouw of één facility-team.",
+            "trial": "Een maand gratis testen, tot 50 units. Geen installatie."
+        },
+        "close": {
+            "title": "Klaar om het zelf te proberen?",
+            "lead": "Maak van elke ruimte een eenvoudig meldpunt. Beheerders maken een account; zorgmedewerkers scannen en melden."
         }
     },
     "government": {
         "nav_label": "Overheid",
-        "meta_title": "WinProx voor overheid | Facility via QR",
+        "meta_title": "WinProx voor overheid | Meldingen via QR",
         "social": {
-            "og_title": "WinProx voor overheid | Facility via QR",
-            "og_description": "Burgermeldingen en intern onderhoud via QR. Eén facility-app voor gemeente en publieke dienst."
+            "og_title": "WinProx voor overheid | Meldingen via QR",
+            "og_description": "Van een probleem op locatie naar een taak voor de juiste ploeg. QR, melding, taak, afhandeling. Eén facility-app."
         },
         "eyebrow": "Overheid",
-        "title": "Meldingen van burger tot afhandeling",
-        "lead": "WinProx is één facility-app: melding via QR, taken naar het team, afhandeling. Voor gemeente, school of publiek gebouw hetzelfde product.",
-        "why": {
-            "title": "Waarom dit werkt",
-            "items": [
-                "Burgers of medewerkers scannen de QR op locatie en maken een melding.",
-                "De taak gaat naar de juiste ploeg, zonder losse mailbox.",
-                "Beheer volgt openstaande meldingen in één overzicht."
+        "title": "Probleem op locatie? Meteen gemeld.",
+        "lead": "Van een defect in een publiek gebouw of op een locatie naar een duidelijke taak voor de juiste ploeg. Een burger of medewerker scant een QR-code, meldt het probleem en kan een foto toevoegen. Het team handelt af.",
+        "flow": "QR-code → melding → taak → afhandeling",
+        "video": {
+            "title": "Zie hoe WinProx werkt",
+            "lead": "Iemand meldt bijvoorbeeld defecte verlichting, een lekkage of een kapotte bank. De melding wordt een taak voor de juiste ploeg. Geen app, geen telefoonketen, geen losse mailbox."
+        },
+        "problem": {
+            "title": "Een melding hoeft geen mailbox te worden",
+            "lead": "Iemand ziet defecte verlichting, een lekkage of een kapotte bank. Een mail naar de gemeente, een telefoontje, iemand moet het onthouden — en het duurt. Met WinProx wordt dit één workflow.",
+            "questions": [
+                "Wie moet de burger of medewerker bellen?",
+                "Heeft iemand het probleem al gemeld?",
+                "Wie volgt het op?",
+                "Is de ploeg ermee bezig?",
+                "Is het uiteindelijk opgelost?"
             ]
+        },
+        "steps": {
+            "title": "Eén eenvoudige workflow",
+            "items": [
+                {
+                    "title": "Scan",
+                    "body": "De burger of medewerker scant de QR-code op de locatie."
+                },
+                {
+                    "title": "Meld",
+                    "body": "Het probleem wordt gemeld via de smartphone. Een foto kan direct worden toegevoegd."
+                },
+                {
+                    "title": "Taak",
+                    "body": "De melding wordt een taak voor de ploeg die je koppelt."
+                },
+                {
+                    "title": "Los op",
+                    "body": "De ploeg voert de taak uit en kan een toelichting of foto toevoegen."
+                },
+                {
+                    "title": "Afgehandeld",
+                    "body": "De taak wordt afgesloten. Beheer ziet wat openstaat en wat klaar is."
+                }
+            ]
+        },
+        "places": {
+            "title": "Voor gebouwen, buitenruimte en onderhoud",
+            "lead": "WinProx koppelt de melding aan de plaats waar het probleem ontstaat. Een QR-code kan bijvoorbeeld hier.",
+            "items": [
+                "gemeentehuizen",
+                "scholen",
+                "sportzalen",
+                "parken en pleinen",
+                "straatmeubilair",
+                "technische ruimtes",
+                "bibliotheken",
+                "wachtzalen",
+                "andere locaties"
+            ],
+            "close": "Niemand hoeft te zoeken naar de juiste dienst. Scan de QR-code en meld het probleem."
+        },
+        "roles": {
+            "title": "Eén systeem voor de publieke locatie",
+            "items": [
+                {
+                    "title": "Voor burgers",
+                    "body": "Een probleem melden zonder te bellen. Scan de QR-code, beschrijf het en voeg eventueel een foto toe. Geen app en geen account."
+                },
+                {
+                    "title": "Voor medewerkers",
+                    "body": "Intern hetzelfde: scan op locatie en geef het door. Geen losse mailbox of briefjesketen."
+                },
+                {
+                    "title": "Voor onderhoud",
+                    "body": "Duidelijke taken met de juiste locatie. Zie wat er moet gebeuren, waar het zit en wat er gemeld is."
+                },
+                {
+                    "title": "Voor verantwoordelijken",
+                    "body": "Altijd overzicht van wat openstaat. Volg meldingen en taken tot ze zijn afgehandeld."
+                }
+            ]
+        },
+        "why": {
+            "title": "Waarom WinProx",
+            "items": [
+                "WinProx is één facility-app voor publieke locaties, geen aparte overheidsmodule.",
+                "Geen app voor wie meldt: smartphone en QR-code volstaan.",
+                "Meldingen worden een taak voor de ploeg die je koppelt.",
+                "Minder mailbox- en telefoonketen tussen loket, diensten en onderhoud.",
+                "Een foto bij de melding geeft de ploeg meteen context.",
+                "Beheer volgt elke melding tot ze is afgehandeld, gekoppeld aan de locatie."
+            ]
+        },
+        "start": {
+            "title": "Begin klein. Breid uit wanneer het werkt.",
+            "lead": "Je hoeft niet meteen de hele gemeente om te zetten. Start bijvoorbeeld met één gebouw, één school of één onderhoudsteam.",
+            "trial": "Een maand gratis testen, tot 50 units. Geen installatie."
+        },
+        "close": {
+            "title": "Klaar om het zelf te proberen?",
+            "lead": "Maak van elke publieke locatie een eenvoudig meldpunt. Beheerders maken een account; burgers en medewerkers scannen en melden."
         }
     }
 }

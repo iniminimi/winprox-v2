@@ -243,40 +243,220 @@
     },
     "healthcare": {
         "nav_label": "Santé",
-        "meta_title": "WinProx pour la santé | Facility via QR",
+        "meta_title": "WinProx pour la santé | Incidents techniques via QR",
         "social": {
-            "og_title": "WinProx pour la santé | Facility via QR",
-            "og_description": "Incidents techniques via QR : signalement, tâche, clôture. Une seule app facility à l'hôpital ou sur le site de soins."
+            "og_title": "WinProx pour la santé | Incidents techniques via QR",
+            "og_description": "D'un défaut dans la pièce à une tâche pour le facility. QR, signalement, tâche, clôture. Une seule app facility."
         },
         "eyebrow": "Santé",
-        "title": "Incidents techniques sans chaîne papier",
-        "lead": "WinProx est une seule app facility : signaler via QR, tâches à l'équipe, clôture. Le même produit sur le site de soins — pas une variante santé.",
-        "why": {
-            "title": "Pourquoi ça marche",
-            "items": [
-                "Soignants ou techniciens scannent le QR dans la pièce et signalent le problème.",
-                "La tâche va au facility ou à la maintenance, avec photo si besoin.",
-                "Le statut reste visible jusqu'à la clôture."
+        "title": "Un défaut dans la pièce ? Signalez-le tout de suite.",
+        "lead": "D'un problème technique dans le service à une tâche claire pour le facility. Un soignant scanne un QR, signale le problème et peut ajouter une photo. L'équipe clôture.",
+        "flow": "QR → signalement → tâche → clôture",
+        "video": {
+            "title": "Voir comment WinProx fonctionne",
+            "lead": "Un soignant signale une lampe défectueuse, une porte qui coince ou une panne de climatisation. Cela devient une tâche pour le facility. Pas d'app, pas de chaîne d'appels, pas de bouts de papier."
+        },
+        "problem": {
+            "title": "Une panne n'a pas à devenir une chaîne de papier",
+            "lead": "Un soignant constate que la climatisation ne marche pas, qu'une lampe est HS ou qu'une porte coince. Un appel au facility, un mot, quelqu'un doit s'en souvenir — et le service attend. Avec WinProx, c'est un seul flux.",
+            "questions": [
+                "Qui le soignant doit-il appeler ?",
+                "Quelqu'un a-t-il déjà signalé le problème ?",
+                "Qui assure le suivi ?",
+                "Le facility s'en occupe-t-il ?",
+                "Le problème est-il finalement résolu ?"
             ]
+        },
+        "steps": {
+            "title": "Un flux simple",
+            "items": [
+                {
+                    "title": "Scanner",
+                    "body": "Le soignant scanne le QR dans la pièce ou sur le lieu."
+                },
+                {
+                    "title": "Signaler",
+                    "body": "Le problème est signalé sur le smartphone. Une photo peut être ajoutée tout de suite."
+                },
+                {
+                    "title": "Tâche",
+                    "body": "Le signalement devient une tâche pour l'équipe facility que vous liez."
+                },
+                {
+                    "title": "Résoudre",
+                    "body": "Le facility exécute la tâche et peut ajouter une note ou une photo."
+                },
+                {
+                    "title": "Clôturé",
+                    "body": "La tâche est close. La gestion voit ce qui est ouvert et ce qui est terminé."
+                }
+            ]
+        },
+        "places": {
+            "title": "Pour les pièces, le facility et le ménage",
+            "lead": "WinProx relie le signalement au lieu où le problème naît. Un QR peut par exemple être ici.",
+            "items": [
+                "chambres de patients",
+                "salles de soins",
+                "couloirs et salles d'attente",
+                "locaux techniques",
+                "cuisine",
+                "sanitaires",
+                "espaces extérieurs",
+                "magasins",
+                "autres lieux"
+            ],
+            "close": "Le soignant n'a pas à chercher qui appeler. Il scanne le QR et signale le problème."
+        },
+        "roles": {
+            "title": "Un système pour tout le site de soins",
+            "items": [
+                {
+                    "title": "Pour les soignants",
+                    "body": "Signaler un problème technique sans téléphoner. Scanner le QR, décrire et ajouter éventuellement une photo. Pas d'app ni de compte."
+                },
+                {
+                    "title": "Pour le facility",
+                    "body": "Des tâches claires avec le bon lieu. Voir quoi faire, où c'est et ce qui a été signalé."
+                },
+                {
+                    "title": "Pour le ménage",
+                    "body": "Les petits défauts se transmettent simplement : une lampe HS ou un dégât devient tout de suite une tâche."
+                },
+                {
+                    "title": "Pour les responsables",
+                    "body": "Toujours une vue de ce qui est ouvert. Suivre les signalements jusqu'à clôture."
+                }
+            ]
+        },
+        "why": {
+            "title": "Pourquoi WinProx",
+            "items": [
+                "WinProx est une seule app facility, pas un DPI ni une version santé séparée.",
+                "Pas d'app pour qui signale : un smartphone et un QR suffisent.",
+                "Les signalements deviennent une tâche pour l'équipe que vous liez.",
+                "Moins de chaîne d'appels et de papier entre le service et le facility.",
+                "Une photo avec le signalement donne tout de suite du contexte au facility.",
+                "La gestion suit chaque signalement jusqu'à clôture, lié au lieu."
+            ]
+        },
+        "start": {
+            "title": "Commencer petit. Élargir quand ça marche.",
+            "lead": "Pas besoin de basculer tout le site. Commencez par exemple par un service, un bâtiment ou une équipe facility.",
+            "trial": "Un mois d'essai gratuit, jusqu'à 50 units. Pas d'installation."
+        },
+        "close": {
+            "title": "Prêt à essayer ?",
+            "lead": "Faites de chaque pièce un point de signalement simple. Les gestionnaires créent un compte ; les soignants scannent et signalent."
         }
     },
     "government": {
         "nav_label": "Collectivités",
-        "meta_title": "WinProx pour les collectivités | Facility via QR",
+        "meta_title": "WinProx pour les collectivités | Signalements via QR",
         "social": {
-            "og_title": "WinProx pour les collectivités | Facility via QR",
-            "og_description": "Signalements citoyens et maintenance interne via QR. Une seule app facility pour commune et service public."
+            "og_title": "WinProx pour les collectivités | Signalements via QR",
+            "og_description": "D'un problème sur place à une tâche pour la bonne équipe. QR, signalement, tâche, clôture. Une seule app facility."
         },
         "eyebrow": "Collectivités",
-        "title": "Du signalement citoyen à la clôture",
-        "lead": "WinProx est une seule app facility : signaler via QR, tâches à l'équipe, clôture. Le même produit pour une commune, une école ou un bâtiment public.",
-        "why": {
-            "title": "Pourquoi ça marche",
-            "items": [
-                "Citoyens ou agents scannent le QR sur place et déposent un signalement.",
-                "La tâche va à la bonne équipe, sans boîte mail partagée.",
-                "La direction suit les dossiers ouverts dans un seul aperçu."
+        "title": "Un problème sur place ? Signalez-le tout de suite.",
+        "lead": "D'un défaut dans un bâtiment public ou sur un lieu à une tâche claire pour la bonne équipe. Un citoyen ou un agent scanne un QR, signale le problème et peut ajouter une photo. L'équipe clôture.",
+        "flow": "QR → signalement → tâche → clôture",
+        "video": {
+            "title": "Voir comment WinProx fonctionne",
+            "lead": "Quelqu'un signale un éclairage HS, une fuite ou un banc cassé. Cela devient une tâche pour la bonne équipe. Pas d'app, pas de chaîne d'appels, pas de boîte mail partagée."
+        },
+        "problem": {
+            "title": "Un signalement n'a pas à devenir une boîte mail",
+            "lead": "Quelqu'un voit un éclairage HS, une fuite ou un banc cassé. Un mail à la commune, un appel, quelqu'un doit s'en souvenir — et cela traîne. Avec WinProx, c'est un seul flux.",
+            "questions": [
+                "Qui le citoyen ou l'agent doit-il appeler ?",
+                "Quelqu'un a-t-il déjà signalé le problème ?",
+                "Qui assure le suivi ?",
+                "L'équipe s'en occupe-t-elle ?",
+                "Le problème est-il finalement résolu ?"
             ]
+        },
+        "steps": {
+            "title": "Un flux simple",
+            "items": [
+                {
+                    "title": "Scanner",
+                    "body": "Le citoyen ou l'agent scanne le QR sur le lieu."
+                },
+                {
+                    "title": "Signaler",
+                    "body": "Le problème est signalé sur le smartphone. Une photo peut être ajoutée tout de suite."
+                },
+                {
+                    "title": "Tâche",
+                    "body": "Le signalement devient une tâche pour l'équipe que vous liez."
+                },
+                {
+                    "title": "Résoudre",
+                    "body": "L'équipe exécute la tâche et peut ajouter une note ou une photo."
+                },
+                {
+                    "title": "Clôturé",
+                    "body": "La tâche est close. La gestion voit ce qui est ouvert et ce qui est terminé."
+                }
+            ]
+        },
+        "places": {
+            "title": "Pour les bâtiments, l'espace public et l'entretien",
+            "lead": "WinProx relie le signalement au lieu où le problème naît. Un QR peut par exemple être ici.",
+            "items": [
+                "mairies",
+                "écoles",
+                "salles de sport",
+                "parcs et places",
+                "mobilier urbain",
+                "locaux techniques",
+                "bibliothèques",
+                "salles d'attente",
+                "autres lieux"
+            ],
+            "close": "Personne n'a à chercher le bon service. On scanne le QR et on signale le problème."
+        },
+        "roles": {
+            "title": "Un système pour le lieu public",
+            "items": [
+                {
+                    "title": "Pour les citoyens",
+                    "body": "Signaler un problème sans téléphoner. Scanner le QR, décrire et ajouter éventuellement une photo. Pas d'app ni de compte."
+                },
+                {
+                    "title": "Pour les agents",
+                    "body": "En interne, le même geste : scanner sur place et transmettre. Plus de boîte mail partagée ni de chaîne de papiers."
+                },
+                {
+                    "title": "Pour l'entretien",
+                    "body": "Des tâches claires avec le bon lieu. Voir quoi faire, où c'est et ce qui a été signalé."
+                },
+                {
+                    "title": "Pour les responsables",
+                    "body": "Toujours une vue de ce qui est ouvert. Suivre les signalements jusqu'à clôture."
+                }
+            ]
+        },
+        "why": {
+            "title": "Pourquoi WinProx",
+            "items": [
+                "WinProx est une seule app facility pour les lieux publics, pas un module collectivités séparé.",
+                "Pas d'app pour qui signale : un smartphone et un QR suffisent.",
+                "Les signalements deviennent une tâche pour l'équipe que vous liez.",
+                "Moins de chaîne de mails et d'appels entre guichet, services et entretien.",
+                "Une photo avec le signalement donne tout de suite du contexte à l'équipe.",
+                "La gestion suit chaque signalement jusqu'à clôture, lié au lieu."
+            ]
+        },
+        "start": {
+            "title": "Commencer petit. Élargir quand ça marche.",
+            "lead": "Pas besoin de basculer toute la commune. Commencez par exemple par un bâtiment, une école ou une équipe d'entretien.",
+            "trial": "Un mois d'essai gratuit, jusqu'à 50 units. Pas d'installation."
+        },
+        "close": {
+            "title": "Prêt à essayer ?",
+            "lead": "Faites de chaque lieu public un point de signalement simple. Les gestionnaires créent un compte ; citoyens et agents scannent et signalent."
         }
     }
 }

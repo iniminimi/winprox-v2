@@ -243,40 +243,220 @@
     },
     "healthcare": {
         "nav_label": "Healthcare",
-        "meta_title": "WinProx for healthcare | Facility via QR",
+        "meta_title": "WinProx for healthcare | Technical issues via QR",
         "social": {
-            "og_title": "WinProx for healthcare | Facility via QR",
-            "og_description": "Technical issues via QR: report, task, completion. One facility app on a hospital or care site."
+            "og_title": "WinProx for healthcare | Technical issues via QR",
+            "og_description": "From a fault in the room to a task for facility. QR, issue, task, completion. One facility app."
         },
         "eyebrow": "Healthcare",
-        "title": "Technical issues without a paper trail",
-        "lead": "WinProx is one facility app: report via QR, tasks to the team, completion. The same product on a care site — not a healthcare variant.",
-        "why": {
-            "title": "Why this works",
-            "items": [
-                "Nursing or technical staff scan the QR in the room and report the problem.",
-                "The task goes to facility or maintenance, with a photo if needed.",
-                "Status stays visible until the issue is closed."
+        "title": "Fault in the room? Report it at once.",
+        "lead": "From a technical problem on the ward to a clear task for facility. A care worker scans a QR code, reports the issue and can add a photo. The team completes it.",
+        "flow": "QR code → issue → task → completion",
+        "video": {
+            "title": "See how WinProx works",
+            "lead": "A care worker reports a broken lamp, a sticking door or an air-conditioning fault. It becomes a task for facility. No app, no phone chain, no paper notes."
+        },
+        "problem": {
+            "title": "A fault does not have to become a paper trail",
+            "lead": "A care worker notices the air conditioning is failing, a lamp is out or a door sticks. A call to facility, a note, someone has to remember — and the ward waits. With WinProx this is one workflow.",
+            "questions": [
+                "Who should the care worker call?",
+                "Has someone already reported it?",
+                "Who is following it up?",
+                "Is facility on it?",
+                "Was it actually resolved?"
             ]
+        },
+        "steps": {
+            "title": "One simple workflow",
+            "items": [
+                {
+                    "title": "Scan",
+                    "body": "The care worker scans the QR code in the room or on site."
+                },
+                {
+                    "title": "Report",
+                    "body": "The issue is reported on the smartphone. A photo can be added at once."
+                },
+                {
+                    "title": "Task",
+                    "body": "The issue becomes a task for the facility team you link."
+                },
+                {
+                    "title": "Fix",
+                    "body": "Facility complete the task and can add a note or photo."
+                },
+                {
+                    "title": "Done",
+                    "body": "The task is closed. Management sees what is open and what is finished."
+                }
+            ]
+        },
+        "places": {
+            "title": "For rooms, facility and housekeeping",
+            "lead": "WinProx ties the issue to the place where it starts. A QR code can sit here, for example.",
+            "items": [
+                "patient rooms",
+                "treatment rooms",
+                "corridors and waiting areas",
+                "technical rooms",
+                "kitchen",
+                "sanitary facilities",
+                "outdoor areas",
+                "stores",
+                "other locations"
+            ],
+            "close": "Care staff do not need to look up who to call. Scan the QR code and report the issue."
+        },
+        "roles": {
+            "title": "One system for the whole care site",
+            "items": [
+                {
+                    "title": "For care staff",
+                    "body": "Report a technical problem without calling. Scan the QR code, describe it and optionally add a photo. No app and no account."
+                },
+                {
+                    "title": "For facility",
+                    "body": "Clear tasks with the right location. See what to do, where it is and what was reported."
+                },
+                {
+                    "title": "For housekeeping",
+                    "body": "Small defects are easy to pass on: a broken lamp or damage becomes a task at once."
+                },
+                {
+                    "title": "For managers",
+                    "body": "Always an overview of what is open. Follow issues and tasks until they are closed."
+                }
+            ]
+        },
+        "why": {
+            "title": "Why WinProx",
+            "items": [
+                "WinProx is one facility app, not an EHR and not a healthcare-specific product.",
+                "No app for who reports: a smartphone and QR code are enough.",
+                "Issues become a task for the team you link.",
+                "Less phone and paper chain between the ward and facility.",
+                "A photo with the issue gives facility context at once.",
+                "Management follows every issue until it is closed, tied to the location."
+            ]
+        },
+        "start": {
+            "title": "Start small. Grow when it works.",
+            "lead": "You do not have to convert the whole care site at once. Start with one ward, one building or one facility team, for example.",
+            "trial": "One month free, up to 50 units. No install."
+        },
+        "close": {
+            "title": "Ready to try it?",
+            "lead": "Turn every room into a simple reporting point. Managers create an account; care staff scan and report."
         }
     },
     "government": {
         "nav_label": "Government",
-        "meta_title": "WinProx for government | Facility via QR",
+        "meta_title": "WinProx for government | Reports via QR",
         "social": {
-            "og_title": "WinProx for government | Facility via QR",
-            "og_description": "Citizen reports and internal maintenance via QR. One facility app for municipalities and public services."
+            "og_title": "WinProx for government | Reports via QR",
+            "og_description": "From a problem on site to a task for the right crew. QR, issue, task, completion. One facility app."
         },
         "eyebrow": "Government",
-        "title": "From citizen report to completion",
-        "lead": "WinProx is one facility app: report via QR, tasks to the team, completion. The same product for a municipality, school or public building.",
-        "why": {
-            "title": "Why this works",
-            "items": [
-                "Citizens or staff scan the QR on site and file a report.",
-                "The task goes to the right crew, without a shared mailbox.",
-                "Managers follow open issues in one overview."
+        "title": "Problem on site? Report it at once.",
+        "lead": "From a fault in a public building or on a site to a clear task for the right crew. A citizen or staff member scans a QR code, reports the issue and can add a photo. The team completes it.",
+        "flow": "QR code → issue → task → completion",
+        "video": {
+            "title": "See how WinProx works",
+            "lead": "Someone reports broken lighting, a leak or a damaged bench. It becomes a task for the right crew. No app, no phone chain, no shared mailbox."
+        },
+        "problem": {
+            "title": "A report does not have to become a mailbox",
+            "lead": "Someone sees broken lighting, a leak or a damaged bench. An email to the municipality, a phone call, someone has to remember — and it drags on. With WinProx this is one workflow.",
+            "questions": [
+                "Who should the citizen or staff member call?",
+                "Has someone already reported it?",
+                "Who is following it up?",
+                "Is the crew on it?",
+                "Was it actually resolved?"
             ]
+        },
+        "steps": {
+            "title": "One simple workflow",
+            "items": [
+                {
+                    "title": "Scan",
+                    "body": "The citizen or staff member scans the QR code on site."
+                },
+                {
+                    "title": "Report",
+                    "body": "The issue is reported on the smartphone. A photo can be added at once."
+                },
+                {
+                    "title": "Task",
+                    "body": "The issue becomes a task for the crew you link."
+                },
+                {
+                    "title": "Fix",
+                    "body": "The crew complete the task and can add a note or photo."
+                },
+                {
+                    "title": "Done",
+                    "body": "The task is closed. Management sees what is open and what is finished."
+                }
+            ]
+        },
+        "places": {
+            "title": "For buildings, outdoor space and maintenance",
+            "lead": "WinProx ties the issue to the place where it starts. A QR code can sit here, for example.",
+            "items": [
+                "town halls",
+                "schools",
+                "sports halls",
+                "parks and squares",
+                "street furniture",
+                "technical rooms",
+                "libraries",
+                "waiting areas",
+                "other locations"
+            ],
+            "close": "Nobody needs to look up the right department. Scan the QR code and report the issue."
+        },
+        "roles": {
+            "title": "One system for the public site",
+            "items": [
+                {
+                    "title": "For citizens",
+                    "body": "Report a problem without calling. Scan the QR code, describe it and optionally add a photo. No app and no account."
+                },
+                {
+                    "title": "For staff",
+                    "body": "The same internally: scan on site and pass it on. No shared mailbox or paper-note chain."
+                },
+                {
+                    "title": "For maintenance",
+                    "body": "Clear tasks with the right location. See what to do, where it is and what was reported."
+                },
+                {
+                    "title": "For managers",
+                    "body": "Always an overview of what is open. Follow issues and tasks until they are closed."
+                }
+            ]
+        },
+        "why": {
+            "title": "Why WinProx",
+            "items": [
+                "WinProx is one facility app for public sites, not a separate government module.",
+                "No app for who reports: a smartphone and QR code are enough.",
+                "Issues become a task for the crew you link.",
+                "Less mailbox and phone chain between the desk, services and maintenance.",
+                "A photo with the issue gives the crew context at once.",
+                "Management follows every issue until it is closed, tied to the location."
+            ]
+        },
+        "start": {
+            "title": "Start small. Grow when it works.",
+            "lead": "You do not have to convert the whole municipality at once. Start with one building, one school or one maintenance team, for example.",
+            "trial": "One month free, up to 50 units. No install."
+        },
+        "close": {
+            "title": "Ready to try it?",
+            "lead": "Turn every public site into a simple reporting point. Managers create an account; citizens and staff scan and report."
         }
     }
 }

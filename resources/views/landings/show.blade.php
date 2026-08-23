@@ -9,7 +9,7 @@
 >
     @php
         $key = 'landings.'.$slug;
-        $reserveVideo = in_array($slug, ['industry', 'hospitality'], true) || $videoSrc !== null;
+        $reserveVideo = true;
     @endphp
     <div class="wp-welcome-section wp-welcome-section--alt wp-welcome-faq-page">
         <div class="wp-welcome-main wp-welcome-section-inner--wide wp-stack">
@@ -61,18 +61,7 @@
                 </article>
             @endif
 
-            @if (in_array($slug, ['industry', 'hospitality'], true))
-                @include('landings.partials.industry', ['key' => $key])
-            @else
-                <article class="wp-card wp-card-pad wp-stack">
-                    <h2 class="wp-welcome-h3">{{ __("{$key}.why.title") }}</h2>
-                    <ul class="wp-welcome-checklist">
-                        @foreach (__("{$key}.why.items") as $item)
-                            <li>{{ $item }}</li>
-                        @endforeach
-                    </ul>
-                </article>
-            @endif
+            @include('landings.partials.industry', ['key' => $key])
 
             @include('partials.wp-marketing-related', [
                 'links' => $relatedLinks,

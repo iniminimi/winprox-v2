@@ -243,40 +243,220 @@
     },
     "healthcare": {
         "nav_label": "Sanidad",
-        "meta_title": "WinProx para sanidad | Facility por QR",
+        "meta_title": "WinProx para sanidad | Avisos técnicos por QR",
         "social": {
-            "og_title": "WinProx para sanidad | Facility por QR",
-            "og_description": "Avisos técnicos por QR: aviso, tarea, cierre. Una sola app de facility en hospital o centro de cuidados."
+            "og_title": "WinProx para sanidad | Avisos técnicos por QR",
+            "og_description": "De un fallo en la sala a una tarea para facility. QR, aviso, tarea, cierre. Una sola app de facility."
         },
         "eyebrow": "Sanidad",
-        "title": "Avisos técnicos sin cadena de papel",
-        "lead": "WinProx es una sola app de facility: avisar por QR, tareas al equipo, cierre. El mismo producto en el centro — no una variante sanitaria.",
-        "why": {
-            "title": "Por qué funciona",
-            "items": [
-                "Enfermería o técnica escanea el QR en la sala y avisa del problema.",
-                "La tarea va a facility o mantenimiento, con foto si hace falta.",
-                "El estado sigue visible hasta el cierre."
+        "title": "¿Un fallo en la sala? Avíselo al momento.",
+        "lead": "De un problema técnico en la planta a una tarea clara para facility. Un profesional escanea un código QR, avisa del problema y puede añadir una foto. El equipo lo cierra.",
+        "flow": "Código QR → aviso → tarea → cierre",
+        "video": {
+            "title": "Vea cómo funciona WinProx",
+            "lead": "Un profesional avisa, por ejemplo, de una lámpara rota, una puerta que atasca o un fallo de aire. El aviso se convierte en una tarea para facility. Sin app, sin cadena de llamadas, sin notas en papel."
+        },
+        "problem": {
+            "title": "Una avería no tiene que ser una cadena de papeles",
+            "lead": "Un profesional ve que el aire falla, que una lámpara no enciende o que una puerta atasca. Una llamada a facility, una nota, alguien tiene que acordarse — y la planta espera. Con WinProx es un solo flujo.",
+            "questions": [
+                "¿A quién debe llamar el profesional?",
+                "¿Alguien ya ha avisado del problema?",
+                "¿Quién hace el seguimiento?",
+                "¿Facility ya está en ello?",
+                "¿Se ha resuelto de verdad?"
             ]
+        },
+        "steps": {
+            "title": "Un flujo sencillo",
+            "items": [
+                {
+                    "title": "Escanear",
+                    "body": "El profesional escanea el código QR en la sala o en el lugar."
+                },
+                {
+                    "title": "Avisar",
+                    "body": "El problema se avisa desde el smartphone. Se puede añadir una foto al momento."
+                },
+                {
+                    "title": "Tarea",
+                    "body": "El aviso se convierte en una tarea para el equipo de facility que usted vincula."
+                },
+                {
+                    "title": "Resolver",
+                    "body": "Facility ejecuta la tarea y puede añadir una nota o una foto."
+                },
+                {
+                    "title": "Cerrado",
+                    "body": "La tarea se cierra. La dirección ve qué está abierto y qué está listo."
+                }
+            ]
+        },
+        "places": {
+            "title": "Para salas, facility y limpieza",
+            "lead": "WinProx vincula el aviso al lugar donde nace el problema. Un código QR puede estar, por ejemplo, aquí.",
+            "items": [
+                "habitaciones de pacientes",
+                "salas de tratamiento",
+                "pasillos y salas de espera",
+                "cuartos técnicos",
+                "cocina",
+                "aseos",
+                "zonas exteriores",
+                "almacenes",
+                "otros lugares"
+            ],
+            "close": "El profesional no tiene que buscar a quién llamar. Escanea el código QR y avisa del problema."
+        },
+        "roles": {
+            "title": "Un sistema para todo el centro",
+            "items": [
+                {
+                    "title": "Para el personal asistencial",
+                    "body": "Avisar de un problema técnico sin llamar. Escanear el QR, describirlo y, si quiere, añadir una foto. Sin app y sin cuenta."
+                },
+                {
+                    "title": "Para facility",
+                    "body": "Tareas claras con el lugar correcto. Vea qué hay que hacer, dónde está y qué se ha avisado."
+                },
+                {
+                    "title": "Para limpieza",
+                    "body": "Los defectos pequeños también se pasan fácil: una lámpara rota o un desperfecto se convierte al momento en una tarea."
+                },
+                {
+                    "title": "Para responsables",
+                    "body": "Siempre visión de lo abierto. Siga avisos y tareas hasta el cierre."
+                }
+            ]
+        },
+        "why": {
+            "title": "Por qué WinProx",
+            "items": [
+                "WinProx es una sola app de facility, no una HCE ni una versión sanitaria aparte.",
+                "Sin app para quien avisa: bastan un smartphone y un código QR.",
+                "Los avisos se convierten en una tarea para el equipo que usted vincula.",
+                "Menos cadena de llamadas y papeles entre la planta y facility.",
+                "Una foto en el aviso da contexto a facility al momento.",
+                "La dirección sigue cada aviso hasta el cierre, vinculado al lugar."
+            ]
+        },
+        "start": {
+            "title": "Empiece pequeño. Amplíe cuando funcione.",
+            "lead": "No hace falta cambiar todo el centro. Empiece, por ejemplo, con una planta, un edificio o un equipo de facility.",
+            "trial": "Un mes gratis, hasta 50 units. Sin instalación."
+        },
+        "close": {
+            "title": "¿Listo para probarlo?",
+            "lead": "Convierta cada sala en un punto de aviso sencillo. Los administradores crean una cuenta; el personal escanea y avisa."
         }
     },
     "government": {
         "nav_label": "Administración",
-        "meta_title": "WinProx para la administración | Facility por QR",
+        "meta_title": "WinProx para la administración | Avisos por QR",
         "social": {
-            "og_title": "WinProx para la administración | Facility por QR",
-            "og_description": "Avisos ciudadanos y mantenimiento interno por QR. Una sola app de facility para ayuntamiento y servicio público."
+            "og_title": "WinProx para la administración | Avisos por QR",
+            "og_description": "De un problema en el lugar a una tarea para el equipo correcto. QR, aviso, tarea, cierre. Una sola app de facility."
         },
         "eyebrow": "Administración",
-        "title": "Del aviso ciudadano al cierre",
-        "lead": "WinProx es una sola app de facility: avisar por QR, tareas al equipo, cierre. El mismo producto para ayuntamiento, escuela o edificio público.",
-        "why": {
-            "title": "Por qué funciona",
-            "items": [
-                "Ciudadanos o personal escanean el QR in situ y registran un aviso.",
-                "La tarea llega al equipo correcto, sin buzón compartido.",
-                "La dirección sigue los avisos abiertos en un solo resumen."
+        "title": "¿Un problema en el lugar? Avíselo al momento.",
+        "lead": "De un fallo en un edificio público o en un lugar a una tarea clara para el equipo correcto. Un ciudadano o un empleado escanea un código QR, avisa del problema y puede añadir una foto. El equipo lo cierra.",
+        "flow": "Código QR → aviso → tarea → cierre",
+        "video": {
+            "title": "Vea cómo funciona WinProx",
+            "lead": "Alguien avisa, por ejemplo, de una luz rota, una filtración o un banco dañado. El aviso se convierte en una tarea para el equipo correcto. Sin app, sin cadena de llamadas, sin buzón compartido."
+        },
+        "problem": {
+            "title": "Un aviso no tiene que acabar en un buzón",
+            "lead": "Alguien ve una luz rota, una filtración o un banco dañado. Un correo al ayuntamiento, una llamada, alguien tiene que acordarse — y se alarga. Con WinProx es un solo flujo.",
+            "questions": [
+                "¿A quién debe llamar el ciudadano o el empleado?",
+                "¿Alguien ya ha avisado del problema?",
+                "¿Quién hace el seguimiento?",
+                "¿El equipo ya está en ello?",
+                "¿Se ha resuelto de verdad?"
             ]
+        },
+        "steps": {
+            "title": "Un flujo sencillo",
+            "items": [
+                {
+                    "title": "Escanear",
+                    "body": "El ciudadano o el empleado escanea el código QR en el lugar."
+                },
+                {
+                    "title": "Avisar",
+                    "body": "El problema se avisa desde el smartphone. Se puede añadir una foto al momento."
+                },
+                {
+                    "title": "Tarea",
+                    "body": "El aviso se convierte en una tarea para el equipo que usted vincula."
+                },
+                {
+                    "title": "Resolver",
+                    "body": "El equipo ejecuta la tarea y puede añadir una nota o una foto."
+                },
+                {
+                    "title": "Cerrado",
+                    "body": "La tarea se cierra. La dirección ve qué está abierto y qué está listo."
+                }
+            ]
+        },
+        "places": {
+            "title": "Para edificios, espacio público y mantenimiento",
+            "lead": "WinProx vincula el aviso al lugar donde nace el problema. Un código QR puede estar, por ejemplo, aquí.",
+            "items": [
+                "ayuntamientos",
+                "colegios",
+                "polideportivos",
+                "parques y plazas",
+                "mobiliario urbano",
+                "cuartos técnicos",
+                "bibliotecas",
+                "salas de espera",
+                "otros lugares"
+            ],
+            "close": "Nadie tiene que buscar el servicio correcto. Escanea el código QR y avisa del problema."
+        },
+        "roles": {
+            "title": "Un sistema para el lugar público",
+            "items": [
+                {
+                    "title": "Para ciudadanos",
+                    "body": "Avisar de un problema sin llamar. Escanear el QR, describirlo y, si quiere, añadir una foto. Sin app y sin cuenta."
+                },
+                {
+                    "title": "Para empleados",
+                    "body": "Dentro, el mismo gesto: escanear en el lugar y pasarlo. Sin buzón compartido ni cadena de notas."
+                },
+                {
+                    "title": "Para mantenimiento",
+                    "body": "Tareas claras con el lugar correcto. Vea qué hay que hacer, dónde está y qué se ha avisado."
+                },
+                {
+                    "title": "Para responsables",
+                    "body": "Siempre visión de lo abierto. Siga avisos y tareas hasta el cierre."
+                }
+            ]
+        },
+        "why": {
+            "title": "Por qué WinProx",
+            "items": [
+                "WinProx es una sola app de facility para lugares públicos, no un módulo de administración aparte.",
+                "Sin app para quien avisa: bastan un smartphone y un código QR.",
+                "Los avisos se convierten en una tarea para el equipo que usted vincula.",
+                "Menos cadena de correos y llamadas entre ventanilla, servicios y mantenimiento.",
+                "Una foto en el aviso da contexto al equipo al momento.",
+                "La dirección sigue cada aviso hasta el cierre, vinculado al lugar."
+            ]
+        },
+        "start": {
+            "title": "Empiece pequeño. Amplíe cuando funcione.",
+            "lead": "No hace falta cambiar todo el municipio. Empiece, por ejemplo, con un edificio, un colegio o un equipo de mantenimiento.",
+            "trial": "Un mes gratis, hasta 50 units. Sin instalación."
+        },
+        "close": {
+            "title": "¿Listo para probarlo?",
+            "lead": "Convierta cada lugar público en un punto de aviso sencillo. Los administradores crean una cuenta; ciudadanos y empleados escanean y avisan."
         }
     }
 }
