@@ -458,5 +458,114 @@
             "title": "Bereit zum Ausprobieren?",
             "lead": "Machen Sie aus jedem öffentlichen Ort eine einfache Meltestelle. Admins legen ein Konto an; Bürger und Mitarbeitende scannen und melden."
         }
+    },
+    "realestate": {
+        "nav_label": "Immobilien",
+        "meta_title": "WinProx für Immobilien | Meldungen per QR",
+        "social": {
+            "og_title": "WinProx für Immobilien | Meldungen per QR",
+            "og_description": "Vom Defekt im Gebäude zur Aufgabe für das richtige Team. QR, Meldung, Aufgabe, Abschluss. Eine Facility-App."
+        },
+        "eyebrow": "Immobilien",
+        "title": "Defekt im Gebäude? Sofort gemeldet.",
+        "lead": "Vom Problem in Wohnung oder Büro zu einer klaren Aufgabe für das richtige Team. Mieter oder Mitarbeitende scannen einen QR-Code, melden das Problem und können ein Foto anhängen. Das Team schließt ab.",
+        "flow": "QR-Code → Meldung → Aufgabe → Abschluss",
+        "video": {
+            "title": "So funktioniert WinProx",
+            "lead": "Jemand meldet etwa eine hakende Heizung, ein Leck oder einen stehenden Aufzug. Daraus wird eine Aufgabe für das richtige Team. Keine App, keine Telefonkette, kein Postfach."
+        },
+        "problem": {
+            "title": "Ein Defekt muss kein Anruf beim Verwalter werden",
+            "lead": "Ein Mieter merkt, dass die Heizung hakt, der Aufzug steht oder es undicht ist. Ein Anruf an die Verwaltung, eine Mail an die Technik, jemand muss es behalten — und der Bewohner wartet. Mit WinProx ist das ein Workflow.",
+            "questions": [
+                "Wen soll der Mieter anrufen?",
+                "Hat jemand das Problem schon gemeldet?",
+                "Wer verfolgt es?",
+                "Ist die Technik schon dran?",
+                "Ist es am Ende gelöst?"
+            ]
+        },
+        "steps": {
+            "title": "Ein einfacher Workflow",
+            "items": [
+                {
+                    "title": "Scannen",
+                    "body": "Mieter oder Mitarbeitende scannen den QR-Code in Wohnung, Büro oder vor Ort."
+                },
+                {
+                    "title": "Melden",
+                    "body": "Das Problem wird über das Smartphone gemeldet. Ein Foto kann sofort angehängt werden."
+                },
+                {
+                    "title": "Aufgabe",
+                    "body": "Aus der Meldung wird eine Aufgabe für das Team, das Sie verknüpfen."
+                },
+                {
+                    "title": "Beheben",
+                    "body": "Technik oder Reinigung erledigen die Aufgabe und können eine Notiz oder ein Foto ergänzen."
+                },
+                {
+                    "title": "Erledigt",
+                    "body": "Die Aufgabe wird geschlossen. Die Leitung sieht, was offen und was fertig ist."
+                }
+            ]
+        },
+        "places": {
+            "title": "Für Wohnungen, Büros und Gemeinschaftsflächen",
+            "lead": "WinProx knüpft die Meldung an den Ort, an dem das Problem entsteht. Ein QR-Code kann zum Beispiel hier sitzen.",
+            "items": [
+                "Wohnungen",
+                "Büros",
+                "Gemeinschaftsflächen",
+                "Eingänge und Hallen",
+                "Parkhäuser",
+                "Technikräume",
+                "Aufzüge",
+                "Außenbereiche",
+                "andere Orte"
+            ],
+            "close": "Niemand muss nachschauen, wen er anrufen soll. QR-Code scannen und das Problem melden."
+        },
+        "roles": {
+            "title": "Ein System für das ganze Gebäude",
+            "items": [
+                {
+                    "title": "Für Mieter und Nutzer",
+                    "body": "Ein Problem melden, ohne anzurufen. QR-Code scannen, beschreiben und optional ein Foto anhängen. Keine App und kein Konto."
+                },
+                {
+                    "title": "Für die Immobilienverwaltung",
+                    "body": "Weniger Anrufe und mehr Überblick. Meldungen werden zur Aufgabe für das Team, das Sie verknüpfen."
+                },
+                {
+                    "title": "Für die Technik",
+                    "body": "Klare Aufgaben mit dem richtigen Ort. Sehen, was zu tun ist, wo es ist und was gemeldet wurde."
+                },
+                {
+                    "title": "Für die Reinigung",
+                    "body": "Auch kleine Mängel einfach weitergeben: eine defekte Lampe oder ein Schaden wird sofort zur Aufgabe."
+                }
+            ]
+        },
+        "why": {
+            "title": "Warum WinProx",
+            "items": [
+                "WinProx ist eine Facility-App, kein Immobilien-PMS und keine eigene Real-Estate-Version.",
+                "Keine App für Melder: Smartphone und QR-Code reichen.",
+                "Meldungen werden zur Aufgabe für das Team, das Sie verknüpfen.",
+                "Weniger Telefonkette zwischen Mieter, Verwaltung und Technik.",
+                "Ein Foto zur Meldung gibt dem Team sofort Kontext.",
+                "Die Leitung verfolgt jede Meldung bis zum Abschluss, geknüpft an den Ort."
+            ]
+        },
+        "start": {
+            "title": "Klein starten. Wachsen, wenn es läuft.",
+            "lead": "Sie müssen nicht das ganze Portfolio umstellen. Starten Sie zum Beispiel mit einem Gebäude, einer Etage oder einem Team.",
+            "trial": "Einen Monat kostenlos testen, bis zu 50 Units. Keine Installation."
+        },
+        "close": {
+            "title": "Bereit zum Ausprobieren?",
+            "lead": "Machen Sie aus jeder Wohnung oder jedem Büro eine einfache Meltestelle. Admins legen ein Konto an; Mieter und Mitarbeitende scannen und melden."
+        }
     }
 }

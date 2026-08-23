@@ -14,6 +14,7 @@ return [
         'industry',
         'healthcare',
         'government',
+        'realestate',
     ],
 
     /*

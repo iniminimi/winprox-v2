@@ -458,5 +458,114 @@
             "title": "¿Listo para probarlo?",
             "lead": "Convierta cada lugar público en un punto de aviso sencillo. Los administradores crean una cuenta; ciudadanos y empleados escanean y avisan."
         }
+    },
+    "realestate": {
+        "nav_label": "Inmobiliaria",
+        "meta_title": "WinProx para inmobiliaria | Avisos por QR",
+        "social": {
+            "og_title": "WinProx para inmobiliaria | Avisos por QR",
+            "og_description": "De un fallo en el edificio a una tarea para el equipo correcto. QR, aviso, tarea, cierre. Una sola app de facility."
+        },
+        "eyebrow": "Inmobiliaria",
+        "title": "¿Un fallo en el edificio? Avíselo al momento.",
+        "lead": "De un problema en una vivienda o una oficina a una tarea clara para el equipo correcto. Un inquilino o un empleado escanea un código QR, avisa del problema y puede añadir una foto. El equipo lo cierra.",
+        "flow": "Código QR → aviso → tarea → cierre",
+        "video": {
+            "title": "Vea cómo funciona WinProx",
+            "lead": "Alguien avisa, por ejemplo, de una calefacción que falla, una filtración o un ascensor parado. El aviso se convierte en una tarea para el equipo correcto. Sin app, sin cadena de llamadas, sin buzón."
+        },
+        "problem": {
+            "title": "Un fallo no tiene que ser una llamada al administrador",
+            "lead": "Un inquilino ve que la calefacción falla, que el ascensor está parado o que hay una filtración. Una llamada a la administración, un correo a mantenimiento, alguien tiene que acordarse — y el ocupante espera. Con WinProx es un solo flujo.",
+            "questions": [
+                "¿A quién debe llamar el inquilino?",
+                "¿Alguien ya ha avisado del problema?",
+                "¿Quién hace el seguimiento?",
+                "¿Mantenimiento ya está en ello?",
+                "¿Se ha resuelto de verdad?"
+            ]
+        },
+        "steps": {
+            "title": "Un flujo sencillo",
+            "items": [
+                {
+                    "title": "Escanear",
+                    "body": "El inquilino o el empleado escanea el código QR en la vivienda, la oficina o en el lugar."
+                },
+                {
+                    "title": "Avisar",
+                    "body": "El problema se avisa desde el smartphone. Se puede añadir una foto al momento."
+                },
+                {
+                    "title": "Tarea",
+                    "body": "El aviso se convierte en una tarea para el equipo que usted vincula."
+                },
+                {
+                    "title": "Resolver",
+                    "body": "Mantenimiento o limpieza ejecutan la tarea y pueden añadir una nota o una foto."
+                },
+                {
+                    "title": "Cerrado",
+                    "body": "La tarea se cierra. La dirección ve qué está abierto y qué está listo."
+                }
+            ]
+        },
+        "places": {
+            "title": "Para viviendas, oficinas y zonas comunes",
+            "lead": "WinProx vincula el aviso al lugar donde nace el problema. Un código QR puede estar, por ejemplo, aquí.",
+            "items": [
+                "apartamentos",
+                "oficinas",
+                "zonas comunes",
+                "entradas y vestíbulos",
+                "aparcamientos",
+                "cuartos técnicos",
+                "ascensores",
+                "zonas exteriores",
+                "otros lugares"
+            ],
+            "close": "Nadie tiene que buscar a quién llamar. Escanea el código QR y avisa del problema."
+        },
+        "roles": {
+            "title": "Un sistema para todo el edificio",
+            "items": [
+                {
+                    "title": "Para inquilinos y ocupantes",
+                    "body": "Avisar de un problema sin llamar. Escanear el QR, describirlo y, si quiere, añadir una foto. Sin app y sin cuenta."
+                },
+                {
+                    "title": "Para la administración",
+                    "body": "Menos llamadas y más visión. Los avisos se convierten en una tarea para el equipo que usted vincula."
+                },
+                {
+                    "title": "Para mantenimiento",
+                    "body": "Tareas claras con el lugar correcto. Vea qué hay que hacer, dónde está y qué se ha avisado."
+                },
+                {
+                    "title": "Para limpieza",
+                    "body": "Los defectos pequeños también se pasan fácil: una lámpara rota o un desperfecto se convierte al momento en una tarea."
+                }
+            ]
+        },
+        "why": {
+            "title": "Por qué WinProx",
+            "items": [
+                "WinProx es una sola app de facility, no un PMS inmobiliario ni una versión de real estate aparte.",
+                "Sin app para quien avisa: bastan un smartphone y un código QR.",
+                "Los avisos se convierten en una tarea para el equipo que usted vincula.",
+                "Menos cadena de llamadas entre inquilino, administración y mantenimiento.",
+                "Una foto en el aviso da contexto al equipo al momento.",
+                "La dirección sigue cada aviso hasta el cierre, vinculado al lugar."
+            ]
+        },
+        "start": {
+            "title": "Empiece pequeño. Amplíe cuando funcione.",
+            "lead": "No hace falta cambiar toda la cartera. Empiece, por ejemplo, con un edificio, una planta o un equipo.",
+            "trial": "Un mes gratis, hasta 50 units. Sin instalación."
+        },
+        "close": {
+            "title": "¿Listo para probarlo?",
+            "lead": "Convierta cada vivienda u oficina en un punto de aviso sencillo. Los administradores crean una cuenta; inquilinos y empleados escanean y avisan."
+        }
     }
 }

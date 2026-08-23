@@ -10,6 +10,7 @@ enum PromoVisitPage: string
     case Industry = 'industry';
     case Healthcare = 'healthcare';
     case Government = 'government';
+    case RealEstate = 'realestate';
 
     public function labelKey(): string
     {
@@ -20,6 +21,7 @@ enum PromoVisitPage: string
             self::Industry => 'platform.promo_recipients.page_industry',
             self::Healthcare => 'platform.promo_recipients.page_healthcare',
             self::Government => 'platform.promo_recipients.page_government',
+            self::RealEstate => 'platform.promo_recipients.page_realestate',
         };
     }
 

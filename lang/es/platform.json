@@ -159,7 +159,8 @@
         "page_hospitality": "Landing hostelería",
         "page_industry": "Landing industria",
         "page_healthcare": "Landing sanidad",
-        "page_government": "Landing administración"
+        "page_government": "Landing administración",
+        "page_realestate": "Landing inmobiliaria"
     },
     "promo_campaigns": {
         "nav": "Campañas promo",

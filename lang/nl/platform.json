@@ -159,7 +159,8 @@
         "page_hospitality": "Horeca-landing",
         "page_industry": "Industrie-landing",
         "page_healthcare": "Zorg-landing",
-        "page_government": "Overheid-landing"
+        "page_government": "Overheid-landing",
+        "page_realestate": "Vastgoed-landing"
     },
     "promo_campaigns": {
         "nav": "Promo-campagnes",

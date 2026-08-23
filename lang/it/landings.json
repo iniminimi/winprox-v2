@@ -458,5 +458,114 @@
             "title": "Pronto a provarlo?",
             "lead": "Trasforma ogni luogo pubblico in un punto di segnalazione semplice. Gli amministratori creano un account; cittadini e dipendenti scansionano e segnalano."
         }
+    },
+    "realestate": {
+        "nav_label": "Immobiliare",
+        "meta_title": "WinProx per l'immobiliare | Segnalazioni via QR",
+        "social": {
+            "og_title": "WinProx per l'immobiliare | Segnalazioni via QR",
+            "og_description": "Da un guasto nell'edificio a un compito per il team giusto. QR, segnalazione, compito, chiusura. Una sola app facility."
+        },
+        "eyebrow": "Immobiliare",
+        "title": "Un guasto nell'edificio? Segnalalo subito.",
+        "lead": "Da un problema in un alloggio o in un ufficio a un compito chiaro per il team giusto. Un inquilino o un collaboratore scansiona un QR, segnala il problema e può aggiungere una foto. Il team chiude.",
+        "flow": "QR → segnalazione → compito → chiusura",
+        "video": {
+            "title": "Guarda come funziona WinProx",
+            "lead": "Qualcuno segnala, ad esempio, un riscaldamento che non va, una perdita o un ascensore fermo. La segnalazione diventa un compito per il team giusto. Niente app, niente catena di telefonate, niente casella."
+        },
+        "problem": {
+            "title": "Un guasto non deve diventare una telefonata all'amministratore",
+            "lead": "Un inquilino nota che il riscaldamento non va, che l'ascensore è fermo o che c'è una perdita. Una telefonata all'amministrazione, una mail alla manutenzione, qualcuno deve ricordarsene — e l'occupante aspetta. Con WinProx è un solo flusso.",
+            "questions": [
+                "Chi deve chiamare l'inquilino?",
+                "Qualcuno ha già segnalato il problema?",
+                "Chi ne segue l'esito?",
+                "La manutenzione ci sta lavorando?",
+                "Alla fine è stato risolto?"
+            ]
+        },
+        "steps": {
+            "title": "Un flusso semplice",
+            "items": [
+                {
+                    "title": "Scansiona",
+                    "body": "L'inquilino o il collaboratore scansiona il QR nell'alloggio, in ufficio o sul posto."
+                },
+                {
+                    "title": "Segnala",
+                    "body": "Il problema viene segnalato dallo smartphone. Si può aggiungere subito una foto."
+                },
+                {
+                    "title": "Compito",
+                    "body": "La segnalazione diventa un compito per il team che colleghi."
+                },
+                {
+                    "title": "Risolvi",
+                    "body": "Manutenzione o pulizie eseguono il compito e possono aggiungere una nota o una foto."
+                },
+                {
+                    "title": "Chiuso",
+                    "body": "Il compito viene chiuso. La direzione vede cosa è aperto e cosa è pronto."
+                }
+            ]
+        },
+        "places": {
+            "title": "Per alloggi, uffici e spazi comuni",
+            "lead": "WinProx collega la segnalazione al luogo in cui nasce il problema. Un QR può stare, ad esempio, qui.",
+            "items": [
+                "appartamenti",
+                "uffici",
+                "spazi comuni",
+                "ingressi e hall",
+                "autorimesse",
+                "locali tecnici",
+                "ascensori",
+                "spazi esterni",
+                "altri luoghi"
+            ],
+            "close": "Nessuno deve cercare chi chiamare. Scansiona il QR e segnala il problema."
+        },
+        "roles": {
+            "title": "Un sistema per tutto l'edificio",
+            "items": [
+                {
+                    "title": "Per inquilini e occupanti",
+                    "body": "Segnalare un problema senza telefonare. Scansiona il QR, descrivi e aggiungi eventualmente una foto. Niente app e niente account."
+                },
+                {
+                    "title": "Per la gestione immobiliare",
+                    "body": "Meno telefonate e più quadro. Le segnalazioni diventano un compito per il team che colleghi."
+                },
+                {
+                    "title": "Per la manutenzione",
+                    "body": "Compiti chiari con il luogo giusto. Vedi cosa fare, dove si trova e cosa è stato segnalato."
+                },
+                {
+                    "title": "Per le pulizie",
+                    "body": "Anche i piccoli difetti si passano in modo semplice: una lampada rotta o un danno diventa subito un compito."
+                }
+            ]
+        },
+        "why": {
+            "title": "Perché WinProx",
+            "items": [
+                "WinProx è una sola app facility, non un PMS immobiliare né una versione real estate separata.",
+                "Niente app per chi segnala: bastano smartphone e QR.",
+                "Le segnalazioni diventano un compito per il team che colleghi.",
+                "Meno catena di telefonate tra inquilino, amministrazione e manutenzione.",
+                "Una foto nella segnalazione dà subito contesto al team.",
+                "La direzione segue ogni segnalazione fino alla chiusura, collegata al luogo."
+            ]
+        },
+        "start": {
+            "title": "Parti in piccolo. Allarga quando funziona.",
+            "lead": "Non serve convertire tutto il portafoglio. Parti ad esempio da un edificio, un piano o un team.",
+            "trial": "Un mese di prova gratis, fino a 50 unit. Nessuna installazione."
+        },
+        "close": {
+            "title": "Pronto a provarlo?",
+            "lead": "Trasforma ogni alloggio o ufficio in un punto di segnalazione semplice. Gli amministratori creano un account; inquilini e collaboratori scansionano e segnalano."
+        }
     }
 }

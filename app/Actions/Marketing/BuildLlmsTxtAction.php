@@ -30,11 +30,13 @@ class BuildLlmsTxtAction
             $industry = route('industry', ['locale' => $locale], absolute: true);
             $healthcare = route('healthcare', ['locale' => $locale], absolute: true);
             $government = route('government', ['locale' => $locale], absolute: true);
+            $realestate = route('realestate', ['locale' => $locale], absolute: true);
             $lines[] = "- [Homepage ({$label})]({$home}): Marketing overview of Facility, Time and ESG.";
             $lines[] = "- [Hospitality ({$label})]({$hospitality}): Facility landing for hotels and restaurants.";
             $lines[] = "- [Industry ({$label})]({$industry}): Facility landing for plants and production sites.";
             $lines[] = "- [Healthcare ({$label})]({$healthcare}): Facility landing for hospitals and care sites.";
             $lines[] = "- [Government ({$label})]({$government}): Facility landing for municipalities and public services.";
+            $lines[] = "- [Real estate ({$label})]({$realestate}): Facility landing for buildings, tenants and property teams.";
             $lines[] = "- [About ({$label})]({$about}): What WinProx is, who it is for, modules and compliance.";
             $lines[] = "- [FAQ ({$label})]({$faq}): Full frequently asked questions, always visible in HTML for readers and crawlers.";
         }

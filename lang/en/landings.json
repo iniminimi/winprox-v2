@@ -458,5 +458,114 @@
             "title": "Ready to try it?",
             "lead": "Turn every public site into a simple reporting point. Managers create an account; citizens and staff scan and report."
         }
+    },
+    "realestate": {
+        "nav_label": "Real estate",
+        "meta_title": "WinProx for real estate | Issues via QR",
+        "social": {
+            "og_title": "WinProx for real estate | Issues via QR",
+            "og_description": "From a fault in the building to a task for the right team. QR, issue, task, completion. One facility app."
+        },
+        "eyebrow": "Real estate",
+        "title": "Fault in the building? Report it at once.",
+        "lead": "From a problem in a home or office to a clear task for the right team. A tenant or staff member scans a QR code, reports the issue and can add a photo. The team completes it.",
+        "flow": "QR code → issue → task → completion",
+        "video": {
+            "title": "See how WinProx works",
+            "lead": "Someone reports heating that fails, a leak or a lift that has stopped. It becomes a task for the right team. No app, no phone chain, no mailbox."
+        },
+        "problem": {
+            "title": "A fault does not have to become a call to the manager",
+            "lead": "A tenant notices the heating is failing, the lift has stopped or there is a leak. A call to management, an email to maintenance, someone has to remember — and the occupant waits. With WinProx this is one workflow.",
+            "questions": [
+                "Who should the tenant call?",
+                "Has someone already reported it?",
+                "Who is following it up?",
+                "Is maintenance on it?",
+                "Was it actually resolved?"
+            ]
+        },
+        "steps": {
+            "title": "One simple workflow",
+            "items": [
+                {
+                    "title": "Scan",
+                    "body": "The tenant or staff member scans the QR code in the home, office or on site."
+                },
+                {
+                    "title": "Report",
+                    "body": "The issue is reported on the smartphone. A photo can be added at once."
+                },
+                {
+                    "title": "Task",
+                    "body": "The issue becomes a task for the team you link."
+                },
+                {
+                    "title": "Fix",
+                    "body": "Maintenance or cleaning complete the task and can add a note or photo."
+                },
+                {
+                    "title": "Done",
+                    "body": "The task is closed. Management sees what is open and what is finished."
+                }
+            ]
+        },
+        "places": {
+            "title": "For homes, offices and shared spaces",
+            "lead": "WinProx ties the issue to the place where it starts. A QR code can sit here, for example.",
+            "items": [
+                "apartments",
+                "offices",
+                "shared spaces",
+                "entrances and halls",
+                "car parks",
+                "technical rooms",
+                "lifts",
+                "outdoor areas",
+                "other locations"
+            ],
+            "close": "Nobody needs to look up who to call. Scan the QR code and report the issue."
+        },
+        "roles": {
+            "title": "One system for the whole building",
+            "items": [
+                {
+                    "title": "For tenants and occupants",
+                    "body": "Report a problem without calling. Scan the QR code, describe it and optionally add a photo. No app and no account."
+                },
+                {
+                    "title": "For property managers",
+                    "body": "Fewer phone calls and a clearer picture. Issues become a task for the team you link."
+                },
+                {
+                    "title": "For maintenance",
+                    "body": "Clear tasks with the right location. See what to do, where it is and what was reported."
+                },
+                {
+                    "title": "For cleaning",
+                    "body": "Small defects are easy to pass on: a broken lamp or damage becomes a task at once."
+                }
+            ]
+        },
+        "why": {
+            "title": "Why WinProx",
+            "items": [
+                "WinProx is one facility app, not a property PMS or a separate real-estate product.",
+                "No app for who reports: a smartphone and QR code are enough.",
+                "Issues become a task for the team you link.",
+                "Less phone chain between tenant, management and maintenance.",
+                "A photo with the issue gives the team context at once.",
+                "Management follows every issue until it is closed, tied to the location."
+            ]
+        },
+        "start": {
+            "title": "Start small. Grow when it works.",
+            "lead": "You do not have to convert the whole portfolio at once. Start with one building, one floor or one team, for example.",
+            "trial": "One month free, up to 50 units. No install."
+        },
+        "close": {
+            "title": "Ready to try it?",
+            "lead": "Turn every home or office space into a simple reporting point. Managers create an account; tenants and staff scan and report."
+        }
     }
 }

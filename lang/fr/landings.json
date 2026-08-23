@@ -458,5 +458,114 @@
             "title": "Prêt à essayer ?",
             "lead": "Faites de chaque lieu public un point de signalement simple. Les gestionnaires créent un compte ; citoyens et agents scannent et signalent."
         }
+    },
+    "realestate": {
+        "nav_label": "Immobilier",
+        "meta_title": "WinProx pour l'immobilier | Signalements via QR",
+        "social": {
+            "og_title": "WinProx pour l'immobilier | Signalements via QR",
+            "og_description": "D'un défaut dans le bâtiment à une tâche pour la bonne équipe. QR, signalement, tâche, clôture. Une seule app facility."
+        },
+        "eyebrow": "Immobilier",
+        "title": "Un défaut dans le bâtiment ? Signalez-le tout de suite.",
+        "lead": "D'un problème dans un logement ou un bureau à une tâche claire pour la bonne équipe. Un locataire ou un collaborateur scanne un QR, signale le problème et peut ajouter une photo. L'équipe clôture.",
+        "flow": "QR → signalement → tâche → clôture",
+        "video": {
+            "title": "Voir comment WinProx fonctionne",
+            "lead": "Quelqu'un signale un chauffage en panne, une fuite ou un ascenseur à l'arrêt. Cela devient une tâche pour la bonne équipe. Pas d'app, pas de chaîne d'appels, pas de boîte mail."
+        },
+        "problem": {
+            "title": "Un défaut n'a pas à devenir un appel au gestionnaire",
+            "lead": "Un locataire constate que le chauffage ne marche pas, que l'ascenseur est arrêté ou qu'il y a une fuite. Un appel à la gestion, un mail à la technique, quelqu'un doit s'en souvenir — et l'occupant attend. Avec WinProx, c'est un seul flux.",
+            "questions": [
+                "Qui le locataire doit-il appeler ?",
+                "Quelqu'un a-t-il déjà signalé le problème ?",
+                "Qui assure le suivi ?",
+                "La technique s'en occupe-t-elle ?",
+                "Le problème est-il finalement résolu ?"
+            ]
+        },
+        "steps": {
+            "title": "Un flux simple",
+            "items": [
+                {
+                    "title": "Scanner",
+                    "body": "Le locataire ou le collaborateur scanne le QR dans le logement, le bureau ou sur le lieu."
+                },
+                {
+                    "title": "Signaler",
+                    "body": "Le problème est signalé sur le smartphone. Une photo peut être ajoutée tout de suite."
+                },
+                {
+                    "title": "Tâche",
+                    "body": "Le signalement devient une tâche pour l'équipe que vous liez."
+                },
+                {
+                    "title": "Résoudre",
+                    "body": "La technique ou le ménage exécute la tâche et peut ajouter une note ou une photo."
+                },
+                {
+                    "title": "Clôturé",
+                    "body": "La tâche est close. La gestion voit ce qui est ouvert et ce qui est terminé."
+                }
+            ]
+        },
+        "places": {
+            "title": "Pour logements, bureaux et parties communes",
+            "lead": "WinProx relie le signalement au lieu où le problème naît. Un QR peut par exemple être ici.",
+            "items": [
+                "appartements",
+                "bureaux",
+                "parties communes",
+                "entrées et halls",
+                "parkings",
+                "locaux techniques",
+                "ascenseurs",
+                "espaces extérieurs",
+                "autres lieux"
+            ],
+            "close": "Personne n'a à chercher qui appeler. On scanne le QR et on signale le problème."
+        },
+        "roles": {
+            "title": "Un système pour tout le bâtiment",
+            "items": [
+                {
+                    "title": "Pour les locataires et occupants",
+                    "body": "Signaler un problème sans téléphoner. Scanner le QR, décrire et ajouter éventuellement une photo. Pas d'app ni de compte."
+                },
+                {
+                    "title": "Pour la gestion immobilière",
+                    "body": "Moins d'appels et plus de visibilité. Les signalements deviennent une tâche pour l'équipe que vous liez."
+                },
+                {
+                    "title": "Pour le service technique",
+                    "body": "Des tâches claires avec le bon lieu. Voir quoi faire, où c'est et ce qui a été signalé."
+                },
+                {
+                    "title": "Pour le ménage",
+                    "body": "Les petits défauts se transmettent simplement : une lampe HS ou un dégât devient tout de suite une tâche."
+                }
+            ]
+        },
+        "why": {
+            "title": "Pourquoi WinProx",
+            "items": [
+                "WinProx est une seule app facility, pas un PMS immobilier ni une version real estate séparée.",
+                "Pas d'app pour qui signale : un smartphone et un QR suffisent.",
+                "Les signalements deviennent une tâche pour l'équipe que vous liez.",
+                "Moins de chaîne d'appels entre locataire, gestion et technique.",
+                "Une photo avec le signalement donne tout de suite du contexte à l'équipe.",
+                "La gestion suit chaque signalement jusqu'à clôture, lié au lieu."
+            ]
+        },
+        "start": {
+            "title": "Commencer petit. Élargir quand ça marche.",
+            "lead": "Pas besoin de basculer tout le portefeuille. Commencez par exemple par un immeuble, un étage ou une équipe.",
+            "trial": "Un mois d'essai gratuit, jusqu'à 50 units. Pas d'installation."
+        },
+        "close": {
+            "title": "Prêt à essayer ?",
+            "lead": "Faites de chaque logement ou bureau un point de signalement simple. Les gestionnaires créent un compte ; locataires et collaborateurs scannent et signalent."
+        }
     }
 }

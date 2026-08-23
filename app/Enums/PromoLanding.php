@@ -10,6 +10,7 @@ enum PromoLanding: string
     case Industry = 'industry';
     case Healthcare = 'healthcare';
     case Government = 'government';
+    case RealEstate = 'realestate';
 
     public static function default(): self
     {
@@ -28,6 +29,7 @@ enum PromoLanding: string
             self::Industry => PromoVisitPage::Industry,
             self::Healthcare => PromoVisitPage::Healthcare,
             self::Government => PromoVisitPage::Government,
+            self::RealEstate => PromoVisitPage::RealEstate,
         };
     }
 

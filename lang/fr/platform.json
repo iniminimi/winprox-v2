@@ -159,7 +159,8 @@
         "page_hospitality": "Landing horeca",
         "page_industry": "Landing industrie",
         "page_healthcare": "Landing santé",
-        "page_government": "Landing collectivités"
+        "page_government": "Landing collectivités",
+        "page_realestate": "Landing immobilier"
     },
     "promo_campaigns": {
         "nav": "Campagnes promo",

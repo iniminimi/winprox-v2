@@ -458,5 +458,114 @@
             "title": "Klaar om het zelf te proberen?",
             "lead": "Maak van elke publieke locatie een eenvoudig meldpunt. Beheerders maken een account; burgers en medewerkers scannen en melden."
         }
+    },
+    "realestate": {
+        "nav_label": "Vastgoed",
+        "meta_title": "WinProx voor vastgoed | Meldingen via QR",
+        "social": {
+            "og_title": "WinProx voor vastgoed | Meldingen via QR",
+            "og_description": "Van een defect in het gebouw naar een taak voor het juiste team. QR, melding, taak, afhandeling. Eén facility-app."
+        },
+        "eyebrow": "Vastgoed",
+        "title": "Defect in het gebouw? Meteen gemeld.",
+        "lead": "Van een probleem in een woning of kantoor naar een duidelijke taak voor het juiste team. Een huurder of medewerker scant een QR-code, meldt het probleem en kan een foto toevoegen. Het team handelt af.",
+        "flow": "QR-code → melding → taak → afhandeling",
+        "video": {
+            "title": "Zie hoe WinProx werkt",
+            "lead": "Iemand meldt bijvoorbeeld een happerende verwarming, een lekkage of een lift die stilstaat. De melding wordt een taak voor het juiste team. Geen app, geen telefoonketen, geen mailbox."
+        },
+        "problem": {
+            "title": "Een defect hoeft geen telefoontje naar de beheerder te worden",
+            "lead": "Een huurder merkt dat de verwarming hapert, de lift stilstaat of er lekkage is. Een belletje naar beheer, een mail naar techniek, iemand moet het onthouden — en de bewoner wacht. Met WinProx wordt dit één workflow.",
+            "questions": [
+                "Wie moet de huurder bellen?",
+                "Heeft iemand het probleem al gemeld?",
+                "Wie volgt het op?",
+                "Is technische dienst ermee bezig?",
+                "Is het uiteindelijk opgelost?"
+            ]
+        },
+        "steps": {
+            "title": "Eén eenvoudige workflow",
+            "items": [
+                {
+                    "title": "Scan",
+                    "body": "De huurder of medewerker scant de QR-code in de woning, het kantoor of op de locatie."
+                },
+                {
+                    "title": "Meld",
+                    "body": "Het probleem wordt gemeld via de smartphone. Een foto kan direct worden toegevoegd."
+                },
+                {
+                    "title": "Taak",
+                    "body": "De melding wordt een taak voor het team dat je koppelt."
+                },
+                {
+                    "title": "Los op",
+                    "body": "Techniek of schoonmaak voert de taak uit en kan een toelichting of foto toevoegen."
+                },
+                {
+                    "title": "Afgehandeld",
+                    "body": "De taak wordt afgesloten. Beheer ziet wat openstaat en wat klaar is."
+                }
+            ]
+        },
+        "places": {
+            "title": "Voor woningen, kantoren en gemeenschappelijke ruimtes",
+            "lead": "WinProx koppelt de melding aan de plaats waar het probleem ontstaat. Een QR-code kan bijvoorbeeld hier.",
+            "items": [
+                "appartementen",
+                "kantoren",
+                "gemeenschappelijke ruimtes",
+                "entrees en hallen",
+                "parkeergarages",
+                "technische ruimtes",
+                "liften",
+                "buitenruimte",
+                "andere locaties"
+            ],
+            "close": "Niemand hoeft te zoeken wie hij moet bellen. Scan de QR-code en meld het probleem."
+        },
+        "roles": {
+            "title": "Eén systeem voor het hele gebouw",
+            "items": [
+                {
+                    "title": "Voor huurders en gebruikers",
+                    "body": "Een probleem melden zonder te bellen. Scan de QR-code, beschrijf het en voeg eventueel een foto toe. Geen app en geen account."
+                },
+                {
+                    "title": "Voor vastgoedbeheer",
+                    "body": "Minder telefoontjes en meer overzicht. Meldingen worden een taak voor het team dat je koppelt."
+                },
+                {
+                    "title": "Voor technische dienst",
+                    "body": "Duidelijke taken met de juiste locatie. Zie wat er moet gebeuren, waar het zit en wat er gemeld is."
+                },
+                {
+                    "title": "Voor schoonmaak",
+                    "body": "Ook kleine gebreken eenvoudig doorgeven: een defecte lamp of beschadiging wordt meteen een taak."
+                }
+            ]
+        },
+        "why": {
+            "title": "Waarom WinProx",
+            "items": [
+                "WinProx is één facility-app, geen vastgoed-PMS of aparte real-estate-versie.",
+                "Geen app voor wie meldt: smartphone en QR-code volstaan.",
+                "Meldingen worden een taak voor het team dat je koppelt.",
+                "Minder telefoonketen tussen huurder, beheer en technische dienst.",
+                "Een foto bij de melding geeft het team meteen context.",
+                "Beheer volgt elke melding tot ze is afgehandeld, gekoppeld aan de locatie."
+            ]
+        },
+        "start": {
+            "title": "Begin klein. Breid uit wanneer het werkt.",
+            "lead": "Je hoeft niet meteen de hele portefeuille om te zetten. Start bijvoorbeeld met één gebouw, één verdieping of één team.",
+            "trial": "Een maand gratis testen, tot 50 units. Geen installatie."
+        },
+        "close": {
+            "title": "Klaar om het zelf te proberen?",
+            "lead": "Maak van elke woning of kantoorruimte een eenvoudig meldpunt. Beheerders maken een account; huurders en medewerkers scannen en melden."
+        }
     }
 }

@@ -20,6 +20,7 @@ final class MarketingSeo
             'industry',
             'healthcare',
             'government',
+            'realestate',
             'pricing',
             'contact.index',
             'faq.public',

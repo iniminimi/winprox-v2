@@ -848,7 +848,7 @@ foutieve `card_body_facility` (hotel-tekst in DE).
 **Doel:** publieke marketing-/landingspagina. **Facility-only, voorlopig ZONDER demo.**
 
 **SEO / meertaligheid (hard):** elke marketingpagina heeft een **unieke URL per taal**
-(`/{locale}/`, `/{locale}/hospitality|industry|healthcare|government`, `/{locale}/pricing`,
+(`/{locale}/`, `/{locale}/hospitality|industry|healthcare|government|realestate`, `/{locale}/pricing`,
 `/{locale}/contact`, `/{locale}/legal/…`). `/` en oude paden zonder prefix **redirecten** naar
 de gelokaliseerde URL. Oude `/{locale}/promo` **301** naar de campagne-landing (met `ref`) of
 `/{locale}/government`. In `<head>`: hreflang + canonical. Sitemap: `/sitemap.xml` (vermeld in
@@ -884,8 +884,8 @@ Sector-hub/real-estate/hospitality welcome-varianten + `/`-sector-routing, demo-
 params, `DemoSectorCopy`. Property→Location in copy.
 
 ### 11.5 Campagne-landings (geen productsectoren)
-Vier **campagne-landings** (`/{locale}/hospitality|industry|healthcare|government`): één
-Facility-product, sectorvoorbeelden in de copy. Alle vier mogen langer (e-mailbezoeker).
+Vijf **campagne-landings** (`/{locale}/hospitality|industry|healthcare|government|realestate`): één
+Facility-product, sectorvoorbeelden in de copy. Alle vijf mogen langer (e-mailbezoeker).
 Video: speler als het bestand bestaat (`{slug}_promo_{locale}.mp4` e.d.); elke landing
 reserveert de videoplek (placeholder tot het bestand er is). Government-NL valt tijdelijk
 terug op `video/nl/issue_nl_01.mp4` tot er een eigen government-video is.

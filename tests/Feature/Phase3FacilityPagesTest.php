@@ -153,6 +153,23 @@ it('toont de uitgebreide healthcare- en government-landing', function () {
         ->assertSee('id="landing-video"', false);
 });
 
+it('toont de uitgebreide realestate-landing', function () {
+    $this->get(route('realestate', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('landings.realestate.title', [], 'nl'))
+        ->assertSee(__('landings.realestate.flow', [], 'nl'))
+        ->assertSee(__('landings.realestate.problem.title', [], 'nl'))
+        ->assertSee(__('landings.realestate.roles.items.0.title', [], 'nl'))
+        ->assertSee(__('landings.realestate.start.trial', [], 'nl'))
+        ->assertSee('id="landing-video"', false)
+        ->assertSee(__('landings.shared.video_placeholder', [], 'nl'))
+        ->assertDontSee('Bekijk demo', false)
+        ->assertDontSee('langdurig contract', false);
+
+    $this->get('/realestate')
+        ->assertRedirect(route('realestate', ['locale' => 'nl']));
+});
+
 it('toont taalkeuze bovenaan een sectorlanding', function () {
     $this->get(route('government'))
         ->assertOk()
