@@ -11,21 +11,111 @@
     },
     "hospitality": {
         "nav_label": "Horeca",
-        "meta_title": "WinProx pour l'horeca | Facility via QR",
+        "meta_title": "WinProx pour l'horeca | Incidents en chambre via QR",
         "social": {
-            "og_title": "WinProx pour l'horeca | Facility via QR",
-            "og_description": "Signaler via QR, attribuer une tâche, clôturer. Une seule app facility, aussi à l'hôtel ou au restaurant."
+            "og_title": "WinProx pour l'horeca | Incidents en chambre via QR",
+            "og_description": "D'un problème en chambre à une tâche pour la bonne équipe. QR, signalement, tâche, clôture. Une seule app facility."
         },
         "eyebrow": "Horeca",
-        "title": "Incidents et tâches, aussi en horeca",
-        "lead": "WinProx est une seule app facility : scanner, signaler, attribuer, clôturer. Le même produit à l'hôtel ou au restaurant — pas une app horeca.",
-        "why": {
-            "title": "Pourquoi ça marche",
-            "items": [
-                "Les clients ou le personnel scannent le QR dans la chambre ou la cuisine et signalent un problème.",
-                "La tâche va à la bonne équipe, sans chaîne d'appels ni Excel.",
-                "La clôture reste visible : ouvert, en cours, terminé."
+        "title": "Un problème en chambre ? Signalez-le tout de suite.",
+        "lead": "D'un problème en chambre à une tâche claire pour la bonne équipe. Un client ou un collaborateur scanne un QR, signale le problème et peut ajouter une photo. L'équipe clôture.",
+        "flow": "QR → signalement → tâche → clôture",
+        "video": {
+            "title": "Voir comment WinProx fonctionne",
+            "lead": "Un client signale une lampe défectueuse, un souci de climatisation ou une autre panne. Cela devient une tâche pour la bonne équipe. Pas d'app, pas de chaîne d'appels, pas de bouts de papier."
+        },
+        "problem": {
+            "title": "Un petit problème peut vite devenir un mauvais avis",
+            "lead": "Un client constate que la climatisation ne marche pas, que la télévision est en panne ou que la douche pose problème. Un appel à la réception, un message à la maintenance, quelqu'un doit s'en souvenir — et le client attend. Avec WinProx, c'est un seul flux.",
+            "questions": [
+                "Qui le client doit-il appeler ?",
+                "Quelqu'un a-t-il déjà signalé le problème ?",
+                "Qui assure le suivi ?",
+                "La technique ou le housekeeping s'en occupe-t-il ?",
+                "Le problème est-il finalement résolu ?"
             ]
+        },
+        "steps": {
+            "title": "Un flux simple",
+            "items": [
+                {
+                    "title": "Scanner",
+                    "body": "Le client ou le collaborateur scanne le QR dans la chambre ou sur le lieu."
+                },
+                {
+                    "title": "Signaler",
+                    "body": "Le problème est signalé sur le smartphone. Une photo peut être ajoutée tout de suite."
+                },
+                {
+                    "title": "Tâche",
+                    "body": "Le signalement devient une tâche pour l'équipe que vous liez."
+                },
+                {
+                    "title": "Résoudre",
+                    "body": "Le collaborateur exécute la tâche et peut ajouter une note ou une photo."
+                },
+                {
+                    "title": "Clôturé",
+                    "body": "La tâche est close. La gestion voit ce qui est ouvert et ce qui est terminé."
+                }
+            ]
+        },
+        "places": {
+            "title": "Pour les chambres, la technique et le housekeeping",
+            "lead": "WinProx relie le signalement au lieu où le problème naît. Un QR peut par exemple être ici.",
+            "items": [
+                "chambres d'hôtel",
+                "salles de bain",
+                "locaux techniques",
+                "espaces communs",
+                "cuisine",
+                "restaurant",
+                "salles de réunion",
+                "wellness et fitness",
+                "autres lieux"
+            ],
+            "close": "Le collaborateur n'a pas à chercher qui appeler. Il scanne le QR et signale le problème."
+        },
+        "roles": {
+            "title": "Un système pour tout l'hôtel",
+            "items": [
+                {
+                    "title": "Pour les clients",
+                    "body": "Signaler un problème sans téléphoner. Scanner le QR, décrire le souci et ajouter éventuellement une photo. Pas d'app ni de compte."
+                },
+                {
+                    "title": "Pour la réception",
+                    "body": "Moins d'appels et plus de visibilité. Les signalements deviennent une tâche pour l'équipe que vous liez — plus de chaîne de bouts de papier."
+                },
+                {
+                    "title": "Pour le service technique",
+                    "body": "Des tâches claires avec le bon lieu. Voir quoi faire, où c'est et ce que le client ou le collègue a signalé."
+                },
+                {
+                    "title": "Pour le housekeeping",
+                    "body": "Les petits problèmes se transmettent simplement : une lampe HS ou un dégât devient tout de suite une tâche."
+                }
+            ]
+        },
+        "why": {
+            "title": "Pourquoi WinProx",
+            "items": [
+                "WinProx est une seule app facility, pas un PMS hôtelier ni une version horeca séparée.",
+                "Pas d'app pour les clients ou le personnel : un smartphone et un QR suffisent.",
+                "Les signalements deviennent une tâche pour l'équipe que vous liez.",
+                "Moins de chaîne d'appels entre réception, housekeeping et technique.",
+                "Une photo avec le signalement donne tout de suite du contexte à l'équipe.",
+                "La gestion suit chaque signalement jusqu'à clôture, lié au lieu."
+            ]
+        },
+        "start": {
+            "title": "Commencer petit. Élargir quand ça marche.",
+            "lead": "Pas besoin de basculer tout l'hôtel. Commencez par exemple par 10 chambres, un étage ou une équipe.",
+            "trial": "Un mois d'essai gratuit, jusqu'à 50 units. Pas d'installation."
+        },
+        "close": {
+            "title": "Prêt à essayer ?",
+            "lead": "Faites de chaque chambre ou lieu horeca un point de signalement simple. Les gestionnaires créent un compte ; clients et personnel scannent et signalent."
         }
     },
     "industry": {

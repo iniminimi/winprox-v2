@@ -11,21 +11,111 @@
     },
     "hospitality": {
         "nav_label": "Horeca",
-        "meta_title": "WinProx voor horeca | Facility via QR",
+        "meta_title": "WinProx voor horeca | Kamerproblemen via QR",
         "social": {
-            "og_title": "WinProx voor horeca | Facility via QR",
-            "og_description": "Meldingen via QR, taken naar het team, afhandeling. Eén facility-app, ook in hotels en restaurants."
+            "og_title": "WinProx voor horeca | Kamerproblemen via QR",
+            "og_description": "Van een probleem in de kamer naar een taak voor het juiste team. QR, melding, taak, afhandeling. Eén facility-app."
         },
         "eyebrow": "Horeca",
-        "title": "Meldingen en taken, ook in de horeca",
-        "lead": "WinProx is één facility-app: scan, meld, wijs een taak toe en handel af. In hotels en restaurants net zo — geen aparte horeca-app.",
-        "why": {
-            "title": "Waarom dit werkt",
-            "items": [
-                "Gasten of personeel scannen de QR op de kamer of in de keuken en maken een melding.",
-                "De taak gaat naar het juiste team, zonder telefoonketen of Excel.",
-                "Afhandeling blijft zichtbaar: open, bezig, klaar."
+        "title": "Kamerprobleem? Meteen gemeld.",
+        "lead": "Van een probleem in de kamer naar een duidelijke taak voor het juiste team. Een gast of medewerker scant een QR-code, meldt het probleem en kan een foto toevoegen. Het team handelt af.",
+        "flow": "QR-code → melding → taak → afhandeling",
+        "video": {
+            "title": "Zie hoe WinProx werkt",
+            "lead": "Een gast meldt bijvoorbeeld een defecte lamp, een probleem met de airco of een andere storing. De melding wordt een taak voor het juiste team. Geen app, geen telefoonketen, geen briefjes."
+        },
+        "problem": {
+            "title": "Een klein probleem kan snel een slechte review worden",
+            "lead": "Een gast merkt dat de airco niet werkt, de televisie het niet doet of de douche hapert. Een telefoontje naar de receptie, een bericht naar onderhoud, iemand moet het onthouden — en de gast wacht. Met WinProx wordt dit één workflow.",
+            "questions": [
+                "Wie moet de gast bellen?",
+                "Heeft iemand het probleem al gemeld?",
+                "Wie volgt het op?",
+                "Is technische dienst of housekeeping ermee bezig?",
+                "Is het uiteindelijk opgelost?"
             ]
+        },
+        "steps": {
+            "title": "Eén eenvoudige workflow",
+            "items": [
+                {
+                    "title": "Scan",
+                    "body": "De gast of medewerker scant de QR-code in de kamer of op de locatie."
+                },
+                {
+                    "title": "Meld",
+                    "body": "Het probleem wordt gemeld via de smartphone. Een foto kan direct worden toegevoegd."
+                },
+                {
+                    "title": "Taak",
+                    "body": "De melding wordt een taak voor het team dat je koppelt."
+                },
+                {
+                    "title": "Los op",
+                    "body": "De medewerker voert de taak uit en kan een toelichting of foto toevoegen."
+                },
+                {
+                    "title": "Afgehandeld",
+                    "body": "De taak wordt afgesloten. Beheer ziet wat openstaat en wat klaar is."
+                }
+            ]
+        },
+        "places": {
+            "title": "Voor kamers, technische dienst en housekeeping",
+            "lead": "WinProx koppelt de melding aan de plaats waar het probleem ontstaat. Een QR-code kan bijvoorbeeld hier.",
+            "items": [
+                "hotelkamers",
+                "badkamers",
+                "technische ruimtes",
+                "algemene ruimtes",
+                "keuken",
+                "restaurant",
+                "vergaderruimtes",
+                "wellness en fitness",
+                "andere locaties"
+            ],
+            "close": "De medewerker hoeft niet te zoeken wie hij moet bellen. Scan de QR-code en meld het probleem."
+        },
+        "roles": {
+            "title": "Eén systeem voor het hele hotel",
+            "items": [
+                {
+                    "title": "Voor gasten",
+                    "body": "Een probleem melden zonder te bellen. Scan de QR-code, beschrijf het probleem en voeg eventueel een foto toe. Geen app en geen account."
+                },
+                {
+                    "title": "Voor receptie",
+                    "body": "Minder telefoontjes en meer overzicht. Meldingen worden een taak voor het team dat je koppelt — geen briefjesketen."
+                },
+                {
+                    "title": "Voor technische dienst",
+                    "body": "Duidelijke taken met de juiste locatie. Zie wat er moet gebeuren, waar het zit en wat de gast of medewerker heeft gemeld."
+                },
+                {
+                    "title": "Voor housekeeping",
+                    "body": "Ook kleine problemen eenvoudig doorgeven: een defecte lamp of beschadiging wordt meteen een taak."
+                }
+            ]
+        },
+        "why": {
+            "title": "Waarom WinProx",
+            "items": [
+                "WinProx is één facility-app, geen hotel-PMS of aparte horeca-versie.",
+                "Geen app voor gasten of medewerkers: smartphone en QR-code volstaan.",
+                "Meldingen worden een taak voor het team dat je koppelt.",
+                "Minder telefoonketen tussen receptie, housekeeping en technische dienst.",
+                "Een foto bij de melding geeft het team meteen context.",
+                "Beheer volgt elke melding tot ze is afgehandeld, gekoppeld aan de locatie."
+            ]
+        },
+        "start": {
+            "title": "Begin klein. Breid uit wanneer het werkt.",
+            "lead": "Je hoeft niet meteen het hele hotel om te zetten. Start bijvoorbeeld met 10 kamers, één verdieping of één team.",
+            "trial": "Een maand gratis testen, tot 50 units. Geen installatie."
+        },
+        "close": {
+            "title": "Klaar om het zelf te proberen?",
+            "lead": "Maak van elke hotelkamer of horecalocatie een eenvoudig meldpunt. Beheerders maken een account; gasten en medewerkers scannen en melden."
         }
     },
     "industry": {

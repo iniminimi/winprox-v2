@@ -78,7 +78,7 @@ it('toont hospitality-video wanneer het bestand bestaat', function () {
     $this->get(route('hospitality', ['locale' => 'nl']))
         ->assertOk()
         ->assertSee(__('landings.hospitality.title', [], 'nl'))
-        ->assertSee(__('landings.shared.video_title', [], 'nl'))
+        ->assertSee(__('landings.hospitality.video.title', [], 'nl'))
         ->assertSee(basename($video), false);
 });
 
@@ -100,10 +100,26 @@ it('toont de uitgebreide industry-landing met NL-video of placeholder', function
         ->assertSee('id="landing-video"', false);
 });
 
-it('toont hospitality-landing in het Frans', function () {
+it('toont de uitgebreide hospitality-landing zonder demo of prijs', function () {
+    $this->get(route('hospitality', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('landings.hospitality.title', [], 'nl'))
+        ->assertSee(__('landings.hospitality.flow', [], 'nl'))
+        ->assertSee(__('landings.hospitality.problem.title', [], 'nl'))
+        ->assertSee(__('landings.hospitality.roles.items.3.title', [], 'nl'))
+        ->assertSee(__('landings.hospitality.start.trial', [], 'nl'))
+        ->assertSee('wp-video--sm', false)
+        ->assertSee('id="landing-video"', false)
+        ->assertDontSee('Bekijk demo', false)
+        ->assertDontSee('langdurig contract', false)
+        ->assertDontSee('START GRATIS', false);
+
     $this->get(route('hospitality', ['locale' => 'fr']))
         ->assertOk()
-        ->assertSee(__('landings.hospitality.title', [], 'fr'));
+        ->assertSee(__('landings.hospitality.title', [], 'fr'))
+        ->assertSee(__('landings.hospitality.problem.title', [], 'fr'))
+        ->assertSee('id="landing-video"', false)
+        ->assertDontSee('démo', false);
 });
 
 it('toont taalkeuze bovenaan een sectorlanding', function () {

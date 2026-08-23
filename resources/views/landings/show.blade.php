@@ -9,7 +9,7 @@
 >
     @php
         $key = 'landings.'.$slug;
-        $reserveVideo = $slug === 'industry' || $videoSrc !== null;
+        $reserveVideo = in_array($slug, ['industry', 'hospitality'], true) || $videoSrc !== null;
     @endphp
     <div class="wp-welcome-section wp-welcome-section--alt wp-welcome-faq-page">
         <div class="wp-welcome-main wp-welcome-section-inner--wide wp-stack">
@@ -61,7 +61,7 @@
                 </article>
             @endif
 
-            @if ($slug === 'industry')
+            @if (in_array($slug, ['industry', 'hospitality'], true))
                 @include('landings.partials.industry', ['key' => $key])
             @else
                 <article class="wp-card wp-card-pad wp-stack">

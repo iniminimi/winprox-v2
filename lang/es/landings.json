@@ -11,21 +11,111 @@
     },
     "hospitality": {
         "nav_label": "Hostelería",
-        "meta_title": "WinProx para hostelería | Facility por QR",
+        "meta_title": "WinProx para hostelería | Incidencias en habitación por QR",
         "social": {
-            "og_title": "WinProx para hostelería | Facility por QR",
-            "og_description": "Avisar por QR, asignar una tarea, cerrarla. Una sola app de facility, también en hoteles y restaurantes."
+            "og_title": "WinProx para hostelería | Incidencias en habitación por QR",
+            "og_description": "De un problema en la habitación a una tarea para el equipo correcto. QR, aviso, tarea, cierre. Una sola app de facility."
         },
         "eyebrow": "Hostelería",
-        "title": "Avisos y tareas, también en hostelería",
-        "lead": "WinProx es una sola app de facility: escanear, avisar, asignar, cerrar. El mismo producto en hoteles y restaurantes — no una app de hostelería.",
-        "why": {
-            "title": "Por qué funciona",
-            "items": [
-                "Huéspedes o personal escanean el QR en la habitación o la cocina y avisan de un problema.",
-                "La tarea llega al equipo correcto, sin cadena de llamadas ni Excel.",
-                "El cierre sigue visible: abierto, en curso, listo."
+        "title": "¿Un problema en la habitación? Avíselo al momento.",
+        "lead": "De un problema en la habitación a una tarea clara para el equipo correcto. Un huésped o un empleado escanea un código QR, avisa del problema y puede añadir una foto. El equipo lo cierra.",
+        "flow": "Código QR → aviso → tarea → cierre",
+        "video": {
+            "title": "Vea cómo funciona WinProx",
+            "lead": "Un huésped avisa, por ejemplo, de una lámpara rota, un fallo de aire acondicionado u otra avería. El aviso se convierte en una tarea para el equipo correcto. Sin app, sin cadena de llamadas, sin notas en papel."
+        },
+        "problem": {
+            "title": "Un problema pequeño puede acabar en una mala reseña",
+            "lead": "Un huésped ve que el aire no funciona, que la televisión falla o que la ducha va mal. Una llamada a recepción, un mensaje a mantenimiento, alguien tiene que acordarse — y el huésped espera. Con WinProx es un solo flujo.",
+            "questions": [
+                "¿A quién debe llamar el huésped?",
+                "¿Alguien ya ha avisado del problema?",
+                "¿Quién hace el seguimiento?",
+                "¿Mantenimiento o pisos ya están en ello?",
+                "¿Se ha resuelto de verdad?"
             ]
+        },
+        "steps": {
+            "title": "Un flujo sencillo",
+            "items": [
+                {
+                    "title": "Escanear",
+                    "body": "El huésped o el empleado escanea el código QR en la habitación o en el lugar."
+                },
+                {
+                    "title": "Avisar",
+                    "body": "El problema se avisa desde el smartphone. Se puede añadir una foto al momento."
+                },
+                {
+                    "title": "Tarea",
+                    "body": "El aviso se convierte en una tarea para el equipo que usted vincula."
+                },
+                {
+                    "title": "Resolver",
+                    "body": "El empleado ejecuta la tarea y puede añadir una nota o una foto."
+                },
+                {
+                    "title": "Cerrado",
+                    "body": "La tarea se cierra. La dirección ve qué está abierto y qué está listo."
+                }
+            ]
+        },
+        "places": {
+            "title": "Para habitaciones, mantenimiento y pisos",
+            "lead": "WinProx vincula el aviso al lugar donde nace el problema. Un código QR puede estar, por ejemplo, aquí.",
+            "items": [
+                "habitaciones de hotel",
+                "baños",
+                "cuartos técnicos",
+                "zonas comunes",
+                "cocina",
+                "restaurante",
+                "salas de reuniones",
+                "wellness y fitness",
+                "otros lugares"
+            ],
+            "close": "El empleado no tiene que buscar a quién llamar. Escanea el código QR y avisa del problema."
+        },
+        "roles": {
+            "title": "Un sistema para todo el hotel",
+            "items": [
+                {
+                    "title": "Para huéspedes",
+                    "body": "Avisar de un problema sin llamar. Escanear el QR, describirlo y, si quiere, añadir una foto. Sin app y sin cuenta."
+                },
+                {
+                    "title": "Para recepción",
+                    "body": "Menos llamadas y más visión. Los avisos se convierten en una tarea para el equipo que usted vincula — sin cadena de notas."
+                },
+                {
+                    "title": "Para mantenimiento",
+                    "body": "Tareas claras con el lugar correcto. Vea qué hay que hacer, dónde está y qué ha avisado el huésped o el compañero."
+                },
+                {
+                    "title": "Para pisos",
+                    "body": "Los problemas pequeños también se pasan fácil: una lámpara rota o un desperfecto se convierte al momento en una tarea."
+                }
+            ]
+        },
+        "why": {
+            "title": "Por qué WinProx",
+            "items": [
+                "WinProx es una sola app de facility, no un PMS hotelero ni una versión de hostelería aparte.",
+                "Sin app para huéspedes o personal: bastan un smartphone y un código QR.",
+                "Los avisos se convierten en una tarea para el equipo que usted vincula.",
+                "Menos cadena de llamadas entre recepción, pisos y mantenimiento.",
+                "Una foto en el aviso da contexto al equipo al momento.",
+                "La dirección sigue cada aviso hasta el cierre, vinculado al lugar."
+            ]
+        },
+        "start": {
+            "title": "Empiece pequeño. Amplíe cuando funcione.",
+            "lead": "No hace falta cambiar todo el hotel. Empiece, por ejemplo, con 10 habitaciones, una planta o un equipo.",
+            "trial": "Un mes gratis, hasta 50 units. Sin instalación."
+        },
+        "close": {
+            "title": "¿Listo para probarlo?",
+            "lead": "Convierta cada habitación o local de hostelería en un punto de aviso sencillo. Los administradores crean una cuenta; huéspedes y personal escanean y avisan."
         }
     },
     "industry": {

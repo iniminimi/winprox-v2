@@ -11,21 +11,111 @@
     },
     "hospitality": {
         "nav_label": "Hospitality",
-        "meta_title": "WinProx for hospitality | Facility via QR",
+        "meta_title": "WinProx for hospitality | Room issues via QR",
         "social": {
-            "og_title": "WinProx for hospitality | Facility via QR",
-            "og_description": "Report via QR, assign a task, complete it. One facility app — also in hotels and restaurants."
+            "og_title": "WinProx for hospitality | Room issues via QR",
+            "og_description": "From a problem in the room to a task for the right team. QR, issue, task, completion. One facility app."
         },
         "eyebrow": "Hospitality",
-        "title": "Issues and tasks, including hospitality",
-        "lead": "WinProx is one facility app: scan, report, assign a task, complete it. The same product in hotels and restaurants — not a hospitality app.",
-        "why": {
-            "title": "Why this works",
-            "items": [
-                "Guests or staff scan the QR in the room or kitchen and report an issue.",
-                "The task goes to the right team, without phone chains or spreadsheets.",
-                "Completion stays visible: open, in progress, done."
+        "title": "Room problem? Report it at once.",
+        "lead": "From a problem in the room to a clear task for the right team. A guest or staff member scans a QR code, reports the issue and can add a photo. The team completes it.",
+        "flow": "QR code → issue → task → completion",
+        "video": {
+            "title": "See how WinProx works",
+            "lead": "A guest reports a broken lamp, an air-conditioning fault or another issue. It becomes a task for the right team. No app, no phone chain, no paper notes."
+        },
+        "problem": {
+            "title": "A small problem can quickly become a bad review",
+            "lead": "A guest notices the air conditioning is down, the television will not work or the shower is faulty. A call to reception, a message to maintenance, someone has to remember — and the guest waits. With WinProx this is one workflow.",
+            "questions": [
+                "Who should the guest call?",
+                "Has someone already reported it?",
+                "Who is following it up?",
+                "Are maintenance or housekeeping on it?",
+                "Was it actually resolved?"
             ]
+        },
+        "steps": {
+            "title": "One simple workflow",
+            "items": [
+                {
+                    "title": "Scan",
+                    "body": "The guest or staff member scans the QR code in the room or on site."
+                },
+                {
+                    "title": "Report",
+                    "body": "The issue is reported on the smartphone. A photo can be added at once."
+                },
+                {
+                    "title": "Task",
+                    "body": "The issue becomes a task for the team you link."
+                },
+                {
+                    "title": "Fix",
+                    "body": "Staff complete the task and can add a note or photo."
+                },
+                {
+                    "title": "Done",
+                    "body": "The task is closed. Management sees what is open and what is finished."
+                }
+            ]
+        },
+        "places": {
+            "title": "For rooms, maintenance and housekeeping",
+            "lead": "WinProx ties the issue to the place where it starts. A QR code can sit here, for example.",
+            "items": [
+                "hotel rooms",
+                "bathrooms",
+                "technical rooms",
+                "public areas",
+                "kitchen",
+                "restaurant",
+                "meeting rooms",
+                "wellness and fitness",
+                "other locations"
+            ],
+            "close": "Staff do not need to look up who to call. Scan the QR code and report the issue."
+        },
+        "roles": {
+            "title": "One system for the whole hotel",
+            "items": [
+                {
+                    "title": "For guests",
+                    "body": "Report a problem without calling. Scan the QR code, describe the issue and optionally add a photo. No app and no account."
+                },
+                {
+                    "title": "For reception",
+                    "body": "Fewer phone calls and a clearer picture. Issues become a task for the team you link — no paper-note chain."
+                },
+                {
+                    "title": "For maintenance",
+                    "body": "Clear tasks with the right location. See what to do, where it is and what the guest or colleague reported."
+                },
+                {
+                    "title": "For housekeeping",
+                    "body": "Small problems are easy to pass on: a broken lamp or damage becomes a task at once."
+                }
+            ]
+        },
+        "why": {
+            "title": "Why WinProx",
+            "items": [
+                "WinProx is one facility app, not a hotel PMS or a separate hospitality product.",
+                "No app for guests or staff: a smartphone and QR code are enough.",
+                "Issues become a task for the team you link.",
+                "Less phone chain between reception, housekeeping and maintenance.",
+                "A photo with the issue gives the team context at once.",
+                "Management follows every issue until it is closed, tied to the location."
+            ]
+        },
+        "start": {
+            "title": "Start small. Grow when it works.",
+            "lead": "You do not have to convert the whole hotel at once. Start with 10 rooms, one floor or one team, for example.",
+            "trial": "One month free, up to 50 units. No install."
+        },
+        "close": {
+            "title": "Ready to try it?",
+            "lead": "Turn every hotel room or hospitality site into a simple reporting point. Managers create an account; guests and staff scan and report."
         }
     },
     "industry": {

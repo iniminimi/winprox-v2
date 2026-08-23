@@ -45,16 +45,18 @@
     @endforeach
 </div>
 
-<article class="wp-card wp-card-pad wp-stack">
-    <h2 class="wp-welcome-h3">{{ __("{$key}.sites.title") }}</h2>
-    <p class="wp-text-body">{{ __("{$key}.sites.lead") }}</p>
-    @foreach (__("{$key}.sites.items") as $site)
-        <div class="wp-stack-tight">
-            <p class="wp-subhead">{{ $site['title'] }}</p>
-            <p class="wp-text-body">{{ $site['body'] }}</p>
-        </div>
-    @endforeach
-</article>
+@if (\Illuminate\Support\Facades\Lang::has($key.'.sites.title'))
+    <article class="wp-card wp-card-pad wp-stack">
+        <h2 class="wp-welcome-h3">{{ __("{$key}.sites.title") }}</h2>
+        <p class="wp-text-body">{{ __("{$key}.sites.lead") }}</p>
+        @foreach (__("{$key}.sites.items") as $site)
+            <div class="wp-stack-tight">
+                <p class="wp-subhead">{{ $site['title'] }}</p>
+                <p class="wp-text-body">{{ $site['body'] }}</p>
+            </div>
+        @endforeach
+    </article>
+@endif
 
 <article class="wp-card wp-card-pad wp-stack">
     <h2 class="wp-welcome-h3">{{ __("{$key}.why.title") }}</h2>

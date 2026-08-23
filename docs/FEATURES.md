@@ -885,9 +885,10 @@ params, `DemoSectorCopy`. Property→Location in copy.
 
 ### 11.5 Campagne-landings (geen productsectoren)
 Vier **campagne-landings** (`/{locale}/hospitality|industry|healthcare|government`): één
-Facility-product, sectorvoorbeelden in de copy. Industry mag langer (e-mailbezoeker). Video:
-speler als het bestand bestaat (`{slug}_promo_{locale}.mp4` e.d.); industry reserveert altijd
-de videoplek (placeholder tot het bestand er is).
+Facility-product, sectorvoorbeelden in de copy. Industry en hospitality mogen langer
+(e-mailbezoeker). Video: speler als het bestand bestaat (`{slug}_promo_{locale}.mp4` e.d.);
+industry en hospitality reserveren altijd de videoplek (placeholder tot het bestand er is).
+Geen demo-CTA, geen prijs op de landing, geen “geen langdurig contract”.
 Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `?ref=`. Dit is
 **geen** V1-sectorhub en **geen** productvariant.
 
