@@ -13,8 +13,10 @@ use App\Http\Controllers\Locations\LocationQrPackDownloadController;
 use App\Http\Controllers\Locations\UnitQrController;
 use App\Http\Controllers\Locations\UnitQrPackDownloadController;
 use App\Http\Controllers\ProductDocumentController;
+use App\Enums\PromoLanding;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\PromoEngageTrackController;
+use App\Http\Controllers\SectorLandingController;
 use App\Http\Controllers\PromoQrDownloadController;
 use App\Http\Controllers\PromoRecipientQrDownloadController;
 use App\Http\Controllers\PromoVideoTrackController;
@@ -176,6 +178,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/promo', $redirectToLocalized('promo'));
+foreach (PromoLanding::cases() as $landing) {
+    Route::get('/'.$landing->value, $redirectToLocalized($landing->routeName()));
+}
 Route::get('/pricing', $redirectToLocalized('pricing'));
 Route::get('/contact', $redirectToLocalized('contact.index'));
 Route::get('/about', $redirectToLocalized('about'));
@@ -212,6 +217,9 @@ Route::prefix('{locale}')
         Route::get('/features/iot', FeaturePage::class)->middleware('promo.follow')->name('features.iot');
         Route::get('/features/qr-portals', FeaturePage::class)->middleware('promo.follow')->name('features.qr');
         Route::get('/promo', [PromoController::class, 'show'])->name('promo');
+        foreach (PromoLanding::cases() as $landing) {
+            Route::get('/'.$landing->value, [SectorLandingController::class, 'show'])->name($landing->routeName());
+        }
 
         foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
             Route::get("/legal/{$legalDoc}", function () use ($legalDoc) {

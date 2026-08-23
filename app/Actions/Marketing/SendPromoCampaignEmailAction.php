@@ -81,6 +81,7 @@ class SendPromoCampaignEmailAction
         $promoUrl = PromoLandingUrl::forRecipientToken(
             $recipient->token,
             $campaign->locale,
+            $campaign->landing,
         );
         $welcomeUrl = PromoLandingUrl::welcomeForRecipientToken(
             $recipient->token,

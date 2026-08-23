@@ -848,12 +848,13 @@ foutieve `card_body_facility` (hotel-tekst in DE).
 **Doel:** publieke marketing-/landingspagina. **Facility-only, voorlopig ZONDER demo.**
 
 **SEO / meertaligheid (hard):** elke marketingpagina heeft een **unieke URL per taal**
-(`/{locale}/`, `/{locale}/promo`, `/{locale}/pricing`, `/{locale}/contact`, `/{locale}/legal/…`).
-`/` en oude paden zonder prefix **redirecten** naar de gelokaliseerde URL. In `<head>`:
-hreflang + canonical. Sitemap: `/sitemap.xml` (vermeld in `robots.txt`). **IndexNow** (Bing e.a.):
-key-bestand in site-root + `php artisan marketing:indexnow-submit` na deploy/content-wijziging
-(`config/indexnow.php`). App/QR-portals blijven
-cookie/`?lang=` (geen SEO-prefix).
+(`/{locale}/`, `/{locale}/hospitality|industry|healthcare|government`, `/{locale}/pricing`,
+`/{locale}/contact`, `/{locale}/legal/…`). `/` en oude paden zonder prefix **redirecten** naar
+de gelokaliseerde URL. Oude `/{locale}/promo` **301** naar de campagne-landing (met `ref`) of
+`/{locale}/government`. In `<head>`: hreflang + canonical. Sitemap: `/sitemap.xml` (vermeld in
+`robots.txt`). **IndexNow** (Bing e.a.): key-bestand in site-root +
+`php artisan marketing:indexnow-submit` na deploy/content-wijziging (`config/indexnow.php`).
+App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
 
 ### 11.1 Structuur (behouden, opgeschoond)
 - **Nav:** WinProx-logo, **taal-pillen** (NL/FR/EN/DE), **Inloggen**, **Account aanmaken**.
@@ -881,6 +882,12 @@ cookie/`?lang=` (geen SEO-prefix).
 ### 11.4 NIET overnemen
 Sector-hub/real-estate/hospitality welcome-varianten + `/`-sector-routing, demo-flow, marketing-query-
 params, `DemoSectorCopy`. Property→Location in copy.
+
+### 11.5 Campagne-landings (geen productsectoren)
+Vier korte **campagne-landings** (`/{locale}/hospitality|industry|healthcare|government`): één
+Facility-product, sectorvoorbeelden in de copy, optioneel één video als het bestand bestaat.
+Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `?ref=`. Dit is
+**geen** V1-sectorhub en **geen** productvariant.
 
 ---
 

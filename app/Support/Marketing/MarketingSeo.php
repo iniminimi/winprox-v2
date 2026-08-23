@@ -16,7 +16,10 @@ final class MarketingSeo
     {
         $names = [
             'welcome',
-            'promo',
+            'hospitality',
+            'industry',
+            'healthcare',
+            'government',
             'pricing',
             'contact.index',
             'faq.public',

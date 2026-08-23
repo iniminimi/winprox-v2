@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PromoLanding;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,12 +11,14 @@ class PromoCampaign extends Model
 {
     protected $attributes = [
         'attach_letter_to_email' => false,
+        'landing' => 'government',
     ];
 
     protected $fillable = [
         'slug',
         'name',
         'locale',
+        'landing',
         'letter_body_html',
         'email_subject',
         'email_body_html',
@@ -30,6 +33,7 @@ class PromoCampaign extends Model
     protected function casts(): array
     {
         return [
+            'landing' => PromoLanding::class,
             'column_mapping' => 'array',
             'attach_letter_to_email' => 'boolean',
             'emails_paused_at' => 'datetime',

@@ -1,0 +1,86 @@
+{
+    "shared": {
+        "welcome": "WinProx",
+        "related_title": "More about WinProx",
+        "cta_register": "Create an account",
+        "cta_login": "Log in",
+        "recipient_welcome": "Welcome, visitor from :label.",
+        "video_title": "WinProx in action"
+    },
+    "hospitality": {
+        "nav_label": "Hospitality",
+        "meta_title": "WinProx for hospitality | Facility via QR",
+        "social": {
+            "og_title": "WinProx for hospitality | Facility via QR",
+            "og_description": "Report via QR, assign a task, complete it. One facility app — also in hotels and restaurants."
+        },
+        "eyebrow": "Hospitality",
+        "title": "Issues and tasks, including hospitality",
+        "lead": "WinProx is one facility app: scan, report, assign a task, complete it. The same product in hotels and restaurants — not a hospitality app.",
+        "why": {
+            "title": "Why this works",
+            "items": [
+                "Guests or staff scan the QR in the room or kitchen and report an issue.",
+                "The task goes to the right team, without phone chains or spreadsheets.",
+                "Completion stays visible: open, in progress, done."
+            ]
+        }
+    },
+    "industry": {
+        "nav_label": "Industry",
+        "meta_title": "WinProx for industry | Facility via QR",
+        "social": {
+            "og_title": "WinProx for industry | Facility via QR",
+            "og_description": "Faults and maintenance via QR: issue, task, completion. One facility app on the shop floor."
+        },
+        "eyebrow": "Industry",
+        "title": "Track faults until they are closed",
+        "lead": "WinProx is one facility app: report via QR, tasks to the team, completion. The same product on the plant or in the warehouse.",
+        "why": {
+            "title": "Why this works",
+            "items": [
+                "Operators scan the QR on the asset and report a fault with a photo.",
+                "Maintenance gets one task, not a chain of calls.",
+                "Managers see what is still open without extra software."
+            ]
+        }
+    },
+    "healthcare": {
+        "nav_label": "Healthcare",
+        "meta_title": "WinProx for healthcare | Facility via QR",
+        "social": {
+            "og_title": "WinProx for healthcare | Facility via QR",
+            "og_description": "Technical issues via QR: report, task, completion. One facility app on a hospital or care site."
+        },
+        "eyebrow": "Healthcare",
+        "title": "Technical issues without a paper trail",
+        "lead": "WinProx is one facility app: report via QR, tasks to the team, completion. The same product on a care site — not a healthcare variant.",
+        "why": {
+            "title": "Why this works",
+            "items": [
+                "Nursing or technical staff scan the QR in the room and report the problem.",
+                "The task goes to facility or maintenance, with a photo if needed.",
+                "Status stays visible until the issue is closed."
+            ]
+        }
+    },
+    "government": {
+        "nav_label": "Government",
+        "meta_title": "WinProx for government | Facility via QR",
+        "social": {
+            "og_title": "WinProx for government | Facility via QR",
+            "og_description": "Citizen reports and internal maintenance via QR. One facility app for municipalities and public services."
+        },
+        "eyebrow": "Government",
+        "title": "From citizen report to completion",
+        "lead": "WinProx is one facility app: report via QR, tasks to the team, completion. The same product for a municipality, school or public building.",
+        "why": {
+            "title": "Why this works",
+            "items": [
+                "Citizens or staff scan the QR on site and file a report.",
+                "The task goes to the right crew, without a shared mailbox.",
+                "Managers follow open issues in one overview."
+            ]
+        }
+    }
+}

@@ -101,7 +101,11 @@ Middleware: geldige tenant + trial/abonnement (`support.tenant`). Rollen: **admi
 | `/time/{token}` | **Clock Point-portaal** (aanmelden, inklokken, teamtaken; afhandeling via unit-QR) |
 | `/q/{token}` | QR-scan redirect (koppelen / doorverwijzen) |
 | `/melden/onbekend/{token}` | Niet-toegewezen QR |
-| `/promo` | Promo-landingspagina (ref-tracking gemeente/campagne) |
+| `/promo` | 301 naar campagne-landing of `/{locale}/government` |
+| `/{locale}/hospitality` | Campagne-landing horeca (Facility-copy) |
+| `/{locale}/industry` | Campagne-landing industrie |
+| `/{locale}/healthcare` | Campagne-landing zorg |
+| `/{locale}/government` | Campagne-landing overheid (default `{{promo_url}}`) |
 | `/legal/*`, `/contact` | Juridisch & contact (gast) |
 
 **Unit-portaal:** mobiel-first; tot 4 foto's; auto-taak naar team van unit-categorie; blur tot goedkeuring.

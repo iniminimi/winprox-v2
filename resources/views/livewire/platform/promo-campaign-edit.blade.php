@@ -66,6 +66,16 @@
                     </div>
                 </div>
                 <div>
+                    <label class="wp-label" for="edit-landing">{{ __('platform.promo_campaigns.landing') }}</label>
+                    <select id="edit-landing" class="wp-select" wire:model="landing">
+                        @foreach (\App\Enums\PromoLanding::cases() as $landingOption)
+                            <option value="{{ $landingOption->value }}">{{ __($landingOption->labelKey()) }}</option>
+                        @endforeach
+                    </select>
+                    <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.landing_hint') }}</p>
+                    @error('landing') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <div>
                     <label class="wp-label" for="edit-flow">{{ __('platform.promo_campaigns.flow_image') }}</label>
                     <select id="edit-flow" class="wp-input" wire:model="flowImagePath">
                         <option value="">{{ __('platform.promo_campaigns.flow_none') }}</option>

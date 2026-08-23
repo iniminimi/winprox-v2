@@ -1,0 +1,86 @@
+{
+    "shared": {
+        "welcome": "WinProx",
+        "related_title": "Mehr über WinProx",
+        "cta_register": "Konto erstellen",
+        "cta_login": "Anmelden",
+        "recipient_welcome": "Willkommen, Besucherin oder Besucher von :label.",
+        "video_title": "WinProx in Aktion"
+    },
+    "hospitality": {
+        "nav_label": "Hospitality",
+        "meta_title": "WinProx für Hospitality | Facility per QR",
+        "social": {
+            "og_title": "WinProx für Hospitality | Facility per QR",
+            "og_description": "Melden per QR, Aufgabe zuweisen, abschließen. Eine Facility-App — auch in Hotel und Restaurant."
+        },
+        "eyebrow": "Hospitality",
+        "title": "Meldungen und Aufgaben, auch in der Gastronomie",
+        "lead": "WinProx ist eine Facility-App: scannen, melden, Aufgabe zuweisen, abschließen. Dasselbe Produkt in Hotel und Restaurant — keine Hospitality-App.",
+        "why": {
+            "title": "Warum das funktioniert",
+            "items": [
+                "Gäste oder Personal scannen den QR im Zimmer oder in der Küche und melden ein Problem.",
+                "Die Aufgabe geht an das richtige Team, ohne Telefonkette oder Excel.",
+                "Der Abschluss bleibt sichtbar: offen, in Arbeit, erledigt."
+            ]
+        }
+    },
+    "industry": {
+        "nav_label": "Industrie",
+        "meta_title": "WinProx für die Industrie | Facility per QR",
+        "social": {
+            "og_title": "WinProx für die Industrie | Facility per QR",
+            "og_description": "Störungen und Wartung per QR: Meldung, Aufgabe, Abschluss. Eine Facility-App in der Halle."
+        },
+        "eyebrow": "Industrie",
+        "title": "Störungen verfolgen, bis sie geschlossen sind",
+        "lead": "WinProx ist eine Facility-App: Melden per QR, Aufgaben an das Team, Abschluss. Dasselbe Produkt in Werk oder Lager.",
+        "why": {
+            "title": "Warum das funktioniert",
+            "items": [
+                "Bedienende scannen den QR an der Anlage und melden eine Störung mit Foto.",
+                "Die Wartung erhält eine Aufgabe, keine Anrufkette.",
+                "Die Leitung sieht, was offen ist, ohne Extra-Software."
+            ]
+        }
+    },
+    "healthcare": {
+        "nav_label": "Gesundheit",
+        "meta_title": "WinProx für Gesundheit | Facility per QR",
+        "social": {
+            "og_title": "WinProx für Gesundheit | Facility per QR",
+            "og_description": "Technische Meldungen per QR: Meldung, Aufgabe, Abschluss. Eine Facility-App im Krankenhaus oder auf der Pflegestelle."
+        },
+        "eyebrow": "Gesundheit",
+        "title": "Technische Meldungen ohne Papierkette",
+        "lead": "WinProx ist eine Facility-App: Melden per QR, Aufgaben an das Team, Abschluss. Dasselbe Produkt auf der Pflegestelle — keine Gesundheitsvariante.",
+        "why": {
+            "title": "Warum das funktioniert",
+            "items": [
+                "Pflege oder Technik scannt den QR im Raum und meldet das Problem.",
+                "Die Aufgabe geht an Facility oder Wartung, mit Foto wenn nötig.",
+                "Der Status bleibt sichtbar, bis die Meldung geschlossen ist."
+            ]
+        }
+    },
+    "government": {
+        "nav_label": "Verwaltung",
+        "meta_title": "WinProx für die Verwaltung | Facility per QR",
+        "social": {
+            "og_title": "WinProx für die Verwaltung | Facility per QR",
+            "og_description": "Bürgermeldungen und interne Wartung per QR. Eine Facility-App für Kommune und öffentlichen Dienst."
+        },
+        "eyebrow": "Verwaltung",
+        "title": "Von der Bürgermeldung bis zum Abschluss",
+        "lead": "WinProx ist eine Facility-App: Melden per QR, Aufgaben an das Team, Abschluss. Dasselbe Produkt für Kommune, Schule oder öffentliches Gebäude.",
+        "why": {
+            "title": "Warum das funktioniert",
+            "items": [
+                "Bürger oder Mitarbeitende scannen den QR vor Ort und erstellen eine Meldung.",
+                "Die Aufgabe geht an die richtige Crew, ohne Sammelpostfach.",
+                "Die Leitung folgt offenen Meldungen in einer Übersicht."
+            ]
+        }
+    }
+}

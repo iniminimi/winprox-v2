@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Marketing\GeneratePromoQrCodeAction;
+use App\Actions\Marketing\ResolvePromoRecipientLandingAction;
 use App\Models\PromoRecipient;
 use App\Support\Marketing\PromoLandingUrl;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -13,13 +14,19 @@ class PromoRecipientQrDownloadController extends Controller
 {
     use AuthorizesRequests;
 
-    public function __invoke(Request $request, PromoRecipient $promoRecipient, GeneratePromoQrCodeAction $action): Response
-    {
+    public function __invoke(
+        Request $request,
+        PromoRecipient $promoRecipient,
+        GeneratePromoQrCodeAction $action,
+        ResolvePromoRecipientLandingAction $resolveLanding,
+    ): Response {
         $this->authorize('managePromoRecipients', $request->user());
+
+        $landing = $resolveLanding->handle($promoRecipient);
 
         $pngData = $action->handle(
             size: 3000,
-            targetUrl: PromoLandingUrl::forRecipientToken($promoRecipient->token),
+            targetUrl: PromoLandingUrl::forRecipientToken($promoRecipient->token, landing: $landing),
             actorUserId: (int) $request->user()->id,
         );
 

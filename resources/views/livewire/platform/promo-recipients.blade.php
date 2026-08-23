@@ -31,9 +31,13 @@
                     {{ __('platform.promo_recipients.anonymous_url') }}
                     <code>{{ $anonymousPromoUrl }}</code>
                 </p>
-                <a href="{{ route('platform.promo-qr.download') }}" class="btn btn--ghost btn--sm">
-                    {{ __('platform.promo_qr.download') }}
-                </a>
+                <div class="wp-row wp-gap-sm wp-wrap">
+                    @foreach (\App\Enums\PromoLanding::cases() as $landing)
+                        <a href="{{ route('platform.promo-qr.download', ['landing' => $landing->value]) }}" class="btn btn--ghost btn--sm">
+                            {{ __('platform.promo_qr.download_landing', ['landing' => __($landing->labelKey())]) }}
+                        </a>
+                    @endforeach
+                </div>
 
                 @if ($anonymousVisits->isNotEmpty())
                     <div class="wp-list wp-list--entity-rows wp-mt-4">

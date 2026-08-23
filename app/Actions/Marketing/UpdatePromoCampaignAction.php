@@ -47,6 +47,7 @@ class UpdatePromoCampaignAction
         $campaign->update([
             'name' => $name,
             'locale' => $locale,
+            'landing' => $data->landing,
             'letter_body_html' => $letterBodyHtml !== '' ? $letterBodyHtml : null,
             'email_subject' => $data->emailSubject !== null ? trim($data->emailSubject) : null,
             'email_body_html' => $emailBodyHtml !== '' ? $emailBodyHtml : null,
@@ -66,6 +67,7 @@ class UpdatePromoCampaignAction
             modelId: $campaign->id,
             payload: [
                 'slug' => $campaign->slug,
+                'landing' => $campaign->landing->value,
             ],
         );
 

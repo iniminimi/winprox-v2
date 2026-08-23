@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Marketing;
 
+use App\Enums\PromoLanding;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePromoCampaignRequest extends FormRequest
 {
@@ -29,6 +31,7 @@ class UpdatePromoCampaignRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'locale' => ['required', 'string', 'max:5'],
+            'landing' => ['required', Rule::enum(PromoLanding::class)],
             'letterBodyHtml' => ['nullable', 'string'],
             'emailSubject' => ['nullable', 'string', 'max:255'],
             'emailBodyHtml' => ['nullable', 'string'],

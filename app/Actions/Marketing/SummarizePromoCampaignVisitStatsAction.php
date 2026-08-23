@@ -105,7 +105,7 @@ class SummarizePromoCampaignVisitStatsAction
             if ($page === PromoVisitPage::Welcome) {
                 $countsByRecipientId[$recipientId]['welcome'] += $count;
                 $welcomeTotal += $count;
-            } elseif ($page === PromoVisitPage::Promo) {
+            } elseif ($page instanceof PromoVisitPage && $page->isLandingHit()) {
                 $countsByRecipientId[$recipientId]['promo'] += $count;
                 $promoTotal += $count;
             }

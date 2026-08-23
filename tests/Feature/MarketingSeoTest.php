@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\URL;
 it('gebruikt unieke locale-URL voor marketingpagina\'s', function () {
     expect(route('welcome', ['locale' => 'de'], absolute: false))->toBe('/de');
     expect(route('promo', ['locale' => 'fr'], absolute: false))->toBe('/fr/promo');
+    expect(route('government', ['locale' => 'fr'], absolute: false))->toBe('/fr/government');
+    expect(route('hospitality', ['locale' => 'nl'], absolute: false))->toBe('/nl/hospitality');
     expect(route('pricing', ['locale' => 'en'], absolute: false))->toBe('/en/pricing');
     expect(route('contact.index', ['locale' => 'es'], absolute: false))->toBe('/es/contact');
     expect(route('legal.privacy', ['locale' => 'it'], absolute: false))->toBe('/it/legal/privacy');
@@ -57,7 +59,8 @@ it('levert sitemap met alle taalvarianten', function () {
     $body = $response->getContent();
     expect($body)->toContain('<?xml version="1.0"')
         ->and($body)->toContain(route('welcome', ['locale' => 'nl'], absolute: true))
-        ->and($body)->toContain(route('promo', ['locale' => 'fr'], absolute: true))
+        ->and($body)->toContain(route('government', ['locale' => 'fr'], absolute: true))
+        ->and($body)->toContain(route('hospitality', ['locale' => 'nl'], absolute: true))
         ->and($body)->toContain('hreflang="x-default"');
 
     $localeCount = count(config('locales.supported'));
@@ -67,10 +70,10 @@ it('levert sitemap met alle taalvarianten', function () {
 
 it('promo-landing-url gebruikt locale in het pad', function () {
     expect(PromoLandingUrl::forRecipientTokenOnBaseUrl('prm_4cfe5ddb16702059', 'https://winprox.app', 'fr'))
-        ->toBe('https://winprox.app/fr/promo?ref=prm_4cfe5ddb16702059');
+        ->toBe('https://winprox.app/fr/government?ref=prm_4cfe5ddb16702059');
 
     expect(PromoLandingUrl::anonymous('de'))
-        ->toBe(route('promo', ['locale' => 'de'], absolute: true));
+        ->toBe(route('government', ['locale' => 'de'], absolute: true));
 });
 
 it('taalwissel op marketing gaat naar andere locale-URL', function () {

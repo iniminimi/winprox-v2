@@ -14,10 +14,12 @@
             <h2 class="wp-section-title">{{ __('platform.promo_qr.title') }}</h2>
         </div>
         <p class="wp-muted">{{ __('platform.promo_qr.description') }}</p>
-        <div class="wp-row wp-gap-sm">
-            <a href="{{ route('platform.promo-qr.download') }}" class="btn btn--primary">
-                {{ __('platform.promo_qr.download') }}
-            </a>
+        <div class="wp-row wp-gap-sm wp-wrap">
+            @foreach (\App\Enums\PromoLanding::cases() as $landing)
+                <a href="{{ route('platform.promo-qr.download', ['landing' => $landing->value]) }}" class="btn btn--primary">
+                    {{ __('platform.promo_qr.download_landing', ['landing' => __($landing->labelKey())]) }}
+                </a>
+            @endforeach
             <a href="{{ route('platform.promo-recipients') }}" class="btn btn--ghost">
                 {{ __('platform.promo_recipients.nav') }}
             </a>

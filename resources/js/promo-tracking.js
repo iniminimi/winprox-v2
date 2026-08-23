@@ -28,7 +28,7 @@ function initPromoEngagement() {
             },
             credentials: 'same-origin',
             keepalive: true,
-            body: JSON.stringify({ page: /\/promo(?:\/|$|\?)/.test(window.location.pathname) ? 'promo' : 'welcome' }),
+            body: JSON.stringify({ page: document.body.dataset.promoEngagePage || 'welcome' }),
         }).catch(() => {
             // Promo UX must continue when analytics fails.
         });

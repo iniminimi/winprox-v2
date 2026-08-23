@@ -58,43 +58,42 @@ it('toont de 1995 easter-egg pagina met noindex', function () {
         ->assertSee(route('welcome'), false);
 });
 
-it('zet open graph meta op de promo-pagina', function () {
-    $this->get(route('promo', ['locale' => 'en']))
+it('zet open graph meta op een sectorlanding', function () {
+    $this->get(route('government', ['locale' => 'en']))
         ->assertOk()
-        ->assertSee('property="og:title" content="'.__('promo.social.og_title', [], 'en').'"', false)
-        ->assertSee('property="og:description" content="'.__('promo.social.og_description', [], 'en').'"', false)
+        ->assertSee('property="og:title" content="'.__('landings.government.social.og_title', [], 'en').'"', false)
+        ->assertSee('property="og:description" content="'.__('landings.government.social.og_description', [], 'en').'"', false)
         ->assertSee('/images/promo/og_1.jpg', false);
 });
 
-it('toont beschikbare promo-video per locale', function () {
-    $this->withSession(['locale' => 'nl'])
-        ->get(route('promo'))
+it('toont hospitality-video wanneer het bestand bestaat', function () {
+    $video = \App\Support\Marketing\SectorLandingVideo::relativePath(
+        \App\Enums\PromoLanding::Hospitality,
+        'nl',
+    );
+    if ($video === null) {
+        $this->markTestSkipped('Hospitality-video ontbreekt.');
+    }
+
+    $this->get(route('hospitality', ['locale' => 'nl']))
         ->assertOk()
-        ->assertSee(__('promo.video.title', [], 'nl'))
-        ->assertSee(__('promo.video.beheerportaal.title', [], 'nl'))
-        ->assertSee(__('promo.video.beheerportaal.items.0.description', [], 'nl'))
-        ->assertSee('issue_nl_01.mp4', false)
-        ->assertSee('task_nl_01.mp4', false)
-        ->assertSee('users_edit_qr_nl.mp4', false)
-        ->assertSee('issue_approve_briefing_nl.mp4', false)
-        ->assertSee('unit_categorie_gps_allow_issue_print_qr_nl.mp4', false);
+        ->assertSee(__('landings.hospitality.title', [], 'nl'))
+        ->assertSee(__('landings.shared.video_title', [], 'nl'))
+        ->assertSee(basename($video), false);
 });
 
-it('toont beschikbare promo-video voor franse locale', function () {
-    $this->get(route('promo', ['locale' => 'fr']))
+it('toont hospitality-landing in het Frans', function () {
+    $this->get(route('hospitality', ['locale' => 'fr']))
         ->assertOk()
-        ->assertSee(__('promo.video.qr_portal.title', [], 'fr'))
-        ->assertSee(__('promo.video.qr_portal.items.0.title', [], 'fr'))
-        ->assertSee('issue_fr_01.mp4', false)
-        ->assertSee('task_fr_01.mp4', false);
+        ->assertSee(__('landings.hospitality.title', [], 'fr'));
 });
 
-it('toont taalkeuze bovenaan de promo-pagina', function () {
-    $this->get(route('promo'))
+it('toont taalkeuze bovenaan een sectorlanding', function () {
+    $this->get(route('government'))
         ->assertOk()
         ->assertSee(__('common.language.label'), false)
-        ->assertSee('images/promo/background.jpg', false)
-        ->assertSee('wp-promo-body', false);
+        ->assertSee('wp-welcome-nav', false)
+        ->assertDontSee('wp-promo-body', false);
 });
 
 it('zet een proefperiode bij registratie', function () {

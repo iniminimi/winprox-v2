@@ -4,6 +4,7 @@ namespace App\Livewire\Platform;
 
 use App\Actions\Marketing\CopyPromoCampaignAction;
 use App\Actions\Marketing\CreatePromoCampaignAction;
+use App\Enums\PromoLanding;
 use App\Actions\Marketing\DeletePromoCampaignAction;
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\ProcessPromoMailboxBouncesAction;
@@ -30,6 +31,8 @@ class PromoCampaigns extends Component
     public string $name = '';
 
     public string $locale = 'nl';
+
+    public string $landing = 'government';
 
     public ?string $flashMessage = null;
 
@@ -77,10 +80,12 @@ class PromoCampaigns extends Component
             name: $validated['name'],
             locale: $validated['locale'],
             actorUserId: (int) $user->id,
+            landing: PromoLanding::from($validated['landing']),
         );
 
         $this->reset(['slug', 'name']);
         $this->locale = 'nl';
+        $this->landing = PromoLanding::default()->value;
 
         $this->redirect(route('platform.promo-campaigns.edit', $campaign), navigate: true);
     }

@@ -33,6 +33,7 @@ class CopyPromoCampaignAction
                 'slug' => $slug,
                 'name' => $name,
                 'locale' => $locale,
+                'landing' => $source->landing,
                 'letter_body_html' => $source->letter_body_html,
                 'email_subject' => $source->email_subject,
                 'email_body_html' => $source->email_body_html,
@@ -56,6 +57,7 @@ class CopyPromoCampaignAction
                 'slug' => $campaign->slug,
                 'name' => $campaign->name,
                 'locale' => $campaign->locale,
+                'landing' => $campaign->landing->value,
             ],
         );
 

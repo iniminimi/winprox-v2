@@ -1,0 +1,86 @@
+{
+    "shared": {
+        "welcome": "WinProx",
+        "related_title": "Altro su WinProx",
+        "cta_register": "Crea un account",
+        "cta_login": "Accedi",
+        "recipient_welcome": "Benvenuto, visitatore di :label.",
+        "video_title": "WinProx in azione"
+    },
+    "hospitality": {
+        "nav_label": "Hospitality",
+        "meta_title": "WinProx per l'hospitality | Facility via QR",
+        "social": {
+            "og_title": "WinProx per l'hospitality | Facility via QR",
+            "og_description": "Segnala via QR, assegna un compito, chiudi. Una sola app facility, anche in hotel e ristoranti."
+        },
+        "eyebrow": "Hospitality",
+        "title": "Segnalazioni e compiti, anche in hospitality",
+        "lead": "WinProx è una sola app facility: scansiona, segnala, assegna, chiudi. Lo stesso prodotto in hotel e ristoranti — non un'app hospitality.",
+        "why": {
+            "title": "Perché funziona",
+            "items": [
+                "Ospiti o personale scansionano il QR in camera o in cucina e segnalano un problema.",
+                "Il compito va al team giusto, senza catena di telefonate o Excel.",
+                "La chiusura resta visibile: aperto, in corso, fatto."
+            ]
+        }
+    },
+    "industry": {
+        "nav_label": "Industria",
+        "meta_title": "WinProx per l'industria | Facility via QR",
+        "social": {
+            "og_title": "WinProx per l'industria | Facility via QR",
+            "og_description": "Guasti e manutenzione via QR: segnalazione, compito, chiusura. Una sola app facility in stabilimento."
+        },
+        "eyebrow": "Industria",
+        "title": "Segui i guasti fino alla chiusura",
+        "lead": "WinProx è una sola app facility: segnala via QR, compiti al team, chiusura. Lo stesso prodotto in stabilimento o magazzino.",
+        "why": {
+            "title": "Perché funziona",
+            "items": [
+                "Gli operatori scansionano il QR sull'impianto e segnalano un guasto con foto.",
+                "La manutenzione riceve un compito, non una catena di chiamate.",
+                "La direzione vede cosa è ancora aperto, senza software extra."
+            ]
+        }
+    },
+    "healthcare": {
+        "nav_label": "Sanità",
+        "meta_title": "WinProx per la sanità | Facility via QR",
+        "social": {
+            "og_title": "WinProx per la sanità | Facility via QR",
+            "og_description": "Segnalazioni tecniche via QR: segnalazione, compito, chiusura. Una sola app facility in ospedale o struttura."
+        },
+        "eyebrow": "Sanità",
+        "title": "Segnalazioni tecniche senza catena di carta",
+        "lead": "WinProx è una sola app facility: segnala via QR, compiti al team, chiusura. Lo stesso prodotto in struttura — non una variante sanitaria.",
+        "why": {
+            "title": "Perché funziona",
+            "items": [
+                "Infermieri o tecnici scansionano il QR nella stanza e segnalano il problema.",
+                "Il compito va a facility o manutenzione, con foto se serve.",
+                "Lo stato resta visibile fino alla chiusura."
+            ]
+        }
+    },
+    "government": {
+        "nav_label": "Enti pubblici",
+        "meta_title": "WinProx per gli enti pubblici | Facility via QR",
+        "social": {
+            "og_title": "WinProx per gli enti pubblici | Facility via QR",
+            "og_description": "Segnalazioni dei cittadini e manutenzione interna via QR. Una sola app facility per comune e servizio pubblico."
+        },
+        "eyebrow": "Enti pubblici",
+        "title": "Dalla segnalazione del cittadino alla chiusura",
+        "lead": "WinProx è una sola app facility: segnala via QR, compiti al team, chiusura. Lo stesso prodotto per comune, scuola o edificio pubblico.",
+        "why": {
+            "title": "Perché funziona",
+            "items": [
+                "Cittadini o personale scansionano il QR sul posto e aprono una segnalazione.",
+                "Il compito va alla squadra giusta, senza casella condivisa.",
+                "La direzione segue le segnalazioni aperte in un solo riepilogo."
+            ]
+        }
+    }
+}

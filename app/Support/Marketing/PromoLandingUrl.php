@@ -4,21 +4,30 @@ declare(strict_types=1);
 
 namespace App\Support\Marketing;
 
+use App\Enums\PromoLanding;
+
 final class PromoLandingUrl
 {
-    public static function anonymous(?string $locale = null): string
+    public static function anonymous(?string $locale = null, ?PromoLanding $landing = null): string
     {
-        return route('promo', [
-            'locale' => self::normalizeLocale($locale) ?? config('locales.default', 'nl'),
-        ], absolute: true);
+        return self::forLanding($landing ?? PromoLanding::default(), $locale);
     }
 
-    public static function forRecipientToken(string $token, ?string $locale = null): string
+    public static function forRecipientToken(string $token, ?string $locale = null, ?PromoLanding $landing = null): string
     {
-        return route('promo', [
+        return self::forLanding($landing ?? PromoLanding::default(), $locale, $token);
+    }
+
+    public static function forLanding(PromoLanding $landing, ?string $locale = null, ?string $token = null): string
+    {
+        $parameters = [
             'locale' => self::normalizeLocale($locale) ?? config('locales.default', 'nl'),
-            'ref' => $token,
-        ], absolute: true);
+        ];
+        if ($token !== null && $token !== '') {
+            $parameters['ref'] = $token;
+        }
+
+        return route($landing->routeName(), $parameters, absolute: true);
     }
 
     public static function welcomeForRecipientToken(string $token, ?string $locale = null): string
@@ -29,13 +38,18 @@ final class PromoLandingUrl
         ], absolute: true);
     }
 
-    public static function forRecipientTokenOnBaseUrl(string $token, string $baseUrl, ?string $locale = null): string
-    {
+    public static function forRecipientTokenOnBaseUrl(
+        string $token,
+        string $baseUrl,
+        ?string $locale = null,
+        ?PromoLanding $landing = null,
+    ): string {
+        $landing ??= PromoLanding::default();
         $baseUrl = rtrim($baseUrl, '/');
         $normalizedLocale = self::normalizeLocale($locale) ?? config('locales.default', 'nl');
         $query = 'ref='.rawurlencode($token);
 
-        return $baseUrl.'/'.$normalizedLocale.'/promo?'.$query;
+        return $baseUrl.'/'.$normalizedLocale.'/'.$landing->value.'?'.$query;
     }
 
     public static function welcomeForRecipientTokenOnBaseUrl(string $token, string $baseUrl, ?string $locale = null): string

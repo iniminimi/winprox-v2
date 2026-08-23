@@ -10,11 +10,11 @@ Zie ook `SETUP.md` (sectie *Gemeente-promobrieven*) voor de korte productie-comm
 
 Per gemeente stuur je een **persoonlijke Word-brief** met een **unieke QR-code**. Die QR linkt naar:
 
-`https://winprox.app/promo?ref=prm_…`
+`https://winprox.app/nl/government?ref=prm_…`
 
-WinProx weet zo **welke gemeente** de bezoeker heeft gescand, logt het bezoek, en toont bovenaan de promo-pagina bijvoorbeeld:
+WinProx weet zo **welke gemeente** de bezoeker heeft gescand, logt het bezoek, en toont bovenaan de overheid-landing bijvoorbeeld:
 
-*Welkom bezoeker van Aalter, bekijk hier enkele video's.*
+*Welkom bezoeker van Aalter.*
 
 ---
 
@@ -24,7 +24,7 @@ WinProx weet zo **welke gemeente** de bezoeker heeft gescand, logt het bezoek, e
 Excel (adressen)
     → artisan-commando op productieserver
     → promo_recipients (database) + DOCX per gemeente
-    → QR op brief → scan → /promo → statistieken in beheer
+    → QR op brief → scan → /{locale}/government?ref= → statistieken in beheer
 ```
 
 ---
@@ -57,7 +57,7 @@ php artisan marketing:generate-municipal-letters storage/app/Vlaanderen_lokale_b
 |-------|--------|
 | Leest Excel | Naam, adres, provincie, type, … |
 | Zoekt of maakt `promo_recipient` | `label` = gemeentenaam (bv. *Aalter*) |
-| Bouwt promo-URL | `https://winprox.app/promo?ref=prm_…` |
+| Bouwt promo-URL | `https://winprox.app/{locale}/government?ref=prm_…` |
 | Genereert DOCX | `storage/app/municipal-promo-letters/9880_aalter.docx` |
 | Optioneel ZIP | `storage/app/municipal-promo-letters.zip` |
 
@@ -71,12 +71,12 @@ php artisan marketing:generate-municipal-letters storage/app/Vlaanderen_lokale_b
 
 ### 4. Wat gebeurt bij een scan?
 
-1. QR opent `/promo?ref=prm_…`
+1. QR opent `/{locale}/government?ref=prm_…` (oude `/promo?ref=` 301’t hierheen)
 2. `ref` wordt in de sessie bewaard (ook na taalwissel).
 3. **Eén bezoek** per scan (dedupe binnen 2 minuten tegen dubbele requests).
 4. **Mailscanners** (Safe Links, Proofpoint, …) en bekende HTTP-bots worden **niet** geteld (`PromoVisitScannerDetector`).
 5. **Bevestigd bezoek** (JS na 8s of scroll) en **doorklik** (registreren/contact/productpagina) tellen apart van ruwe link-hits.
-6. Promo-pagina toont welkomst met gemeentenaam + video's.
+6. De landing toont welkomst met gemeentenaam; video alleen als het bestand bestaat.
 7. Afspelen van video's kan apart getrackt worden per bestemmeling.
 
 ### 5. Resultaten bekijken
@@ -97,8 +97,9 @@ Als superuser: **Platform → Promo-bestemmelingen**
 | Brief-layout (tekst, QR, flow.jpg) | `app/Support/Marketing/MunicipalPromoLetterDocxBuilder.php` |
 | Excel inlezen | `app/Support/Marketing/FlemishMunicipalitiesSpreadsheetReader.php` |
 | Adresregels / bestandsnaam | `app/Data/Marketing/MunicipalPromoLetterData.php` |
-| Promo-pagina + welkomstkader | `resources/views/promo.blade.php` |
-| Bezoek-logging | `app/Http/Controllers/PromoController.php` |
+| Overheid-landing + welkomstkader | `resources/views/landings/show.blade.php` |
+| Bezoek-logging | `app/Http/Controllers/SectorLandingController.php` |
+| Oude `/promo` 301 | `app/Http/Controllers/PromoController.php` |
 | Mailscanner-filter | `app/Support/Marketing/PromoVisitScannerDetector.php` |
 | Dedupe bij scan | `app/Actions/Marketing/RecordPromoVisitAction.php` |
 | E-mail verzenden | `app/Console/Commands/SendMunicipalPromoLettersEmailCommand.php` |
@@ -107,7 +108,7 @@ Als superuser: **Platform → Promo-bestemmelingen**
 
 ## E-mail naar gemeentebesturen
 
-Na het genereren van de DOCX-brieven kun je per gemeente een e-mail versturen met **dezelfde brief als bijlage** en een **unieke promo-link** in de mailtekst (`Klik hier` → `/promo?ref=…`).
+Na het genereren van de DOCX-brieven kun je per gemeente een e-mail versturen met **dezelfde brief als bijlage** en een **unieke promo-link** in de mailtekst (`Klik hier` → `/{locale}/government?ref=…`).
 
 **Afzender:** `dominique.schaepdrijver@winprox.app` (configureerbaar via `WINPROX_MUNICIPAL_PROMO_EMAIL_FROM`). Replies komen op dat Cloud86-postvak binnen.
 

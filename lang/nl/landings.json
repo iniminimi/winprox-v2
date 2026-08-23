@@ -1,0 +1,86 @@
+{
+    "shared": {
+        "welcome": "WinProx",
+        "related_title": "Meer over WinProx",
+        "cta_register": "Account aanmaken",
+        "cta_login": "Inloggen",
+        "recipient_welcome": "Welkom bezoeker van :label.",
+        "video_title": "WinProx in actie"
+    },
+    "hospitality": {
+        "nav_label": "Horeca",
+        "meta_title": "WinProx voor horeca | Facility via QR",
+        "social": {
+            "og_title": "WinProx voor horeca | Facility via QR",
+            "og_description": "Meldingen via QR, taken naar het team, afhandeling. Eén facility-app, ook in hotels en restaurants."
+        },
+        "eyebrow": "Horeca",
+        "title": "Meldingen en taken, ook in de horeca",
+        "lead": "WinProx is één facility-app: scan, meld, wijs een taak toe en handel af. In hotels en restaurants net zo — geen aparte horeca-app.",
+        "why": {
+            "title": "Waarom dit werkt",
+            "items": [
+                "Gasten of personeel scannen de QR op de kamer of in de keuken en maken een melding.",
+                "De taak gaat naar het juiste team, zonder telefoonketen of Excel.",
+                "Afhandeling blijft zichtbaar: open, bezig, klaar."
+            ]
+        }
+    },
+    "industry": {
+        "nav_label": "Industrie",
+        "meta_title": "WinProx voor industrie | Facility via QR",
+        "social": {
+            "og_title": "WinProx voor industrie | Facility via QR",
+            "og_description": "Storingen en onderhoud via QR: melding, taak, afhandeling. Eén facility-app op de werkvloer."
+        },
+        "eyebrow": "Industrie",
+        "title": "Storingen volgen tot ze afgehandeld zijn",
+        "lead": "WinProx is één facility-app: melding via QR, taken naar het team, afhandeling. Op de plant of in het magazijn hetzelfde product.",
+        "why": {
+            "title": "Waarom dit werkt",
+            "items": [
+                "Operatoren scannen de QR bij de installatie en melden een storing met foto.",
+                "Onderhoud krijgt één taak, niet een keten van belletjes.",
+                "Beheer ziet wat openstaat zonder extra software."
+            ]
+        }
+    },
+    "healthcare": {
+        "nav_label": "Zorg",
+        "meta_title": "WinProx voor zorg | Facility via QR",
+        "social": {
+            "og_title": "WinProx voor zorg | Facility via QR",
+            "og_description": "Technische meldingen via QR: melding, taak, afhandeling. Eén facility-app in ziekenhuis of zorgsite."
+        },
+        "eyebrow": "Zorg",
+        "title": "Technische meldingen zonder papierketen",
+        "lead": "WinProx is één facility-app: melding via QR, taken naar het team, afhandeling. Op de zorgsite hetzelfde product, geen zorg-specifieke variant.",
+        "why": {
+            "title": "Waarom dit werkt",
+            "items": [
+                "Verpleging of techniek scant de QR in de ruimte en meldt het probleem.",
+                "De taak gaat naar facility of onderhoud, met foto indien nodig.",
+                "Status blijft zichtbaar tot de melding afgehandeld is."
+            ]
+        }
+    },
+    "government": {
+        "nav_label": "Overheid",
+        "meta_title": "WinProx voor overheid | Facility via QR",
+        "social": {
+            "og_title": "WinProx voor overheid | Facility via QR",
+            "og_description": "Burgermeldingen en intern onderhoud via QR. Eén facility-app voor gemeente en publieke dienst."
+        },
+        "eyebrow": "Overheid",
+        "title": "Meldingen van burger tot afhandeling",
+        "lead": "WinProx is één facility-app: melding via QR, taken naar het team, afhandeling. Voor gemeente, school of publiek gebouw hetzelfde product.",
+        "why": {
+            "title": "Waarom dit werkt",
+            "items": [
+                "Burgers of medewerkers scannen de QR op locatie en maken een melding.",
+                "De taak gaat naar de juiste ploeg, zonder losse mailbox.",
+                "Beheer volgt openstaande meldingen in één overzicht."
+            ]
+        }
+    }
+}

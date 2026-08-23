@@ -49,7 +49,7 @@ class GenerateMunicipalPromoLettersCommand extends Command
         $this->info('Gemeente-brieven genereren (productie-flow)…');
         $this->line('Spreadsheet: '.$this->argument('spreadsheet'));
         $this->line('Output: '.$outputDirectory);
-        $this->line('Promo-URL: '.$promoBaseUrl.'/promo?ref=…');
+        $this->line('Promo-URL: '.$promoBaseUrl.'/{locale}/government?ref=…');
         $this->line('Actor: '.$actor->email.' (#'.$actor->id.')');
 
         $result = $generateLetters->handle(

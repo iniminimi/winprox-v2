@@ -12,6 +12,7 @@ use App\Actions\Marketing\SendPromoCampaignEmailAction;
 use App\Actions\Marketing\SummarizePromoCampaignVisitStatsAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
+use App\Enums\PromoLanding;
 use App\Http\Requests\Marketing\UpdatePromoCampaignRequest;
 use App\Models\PromoCampaign;
 use App\Models\User;
@@ -37,6 +38,8 @@ class PromoCampaignEdit extends Component
     public string $name = '';
 
     public string $locale = 'nl';
+
+    public string $landing = 'government';
 
     public string $letterBodyHtml = '';
 
@@ -450,6 +453,7 @@ class PromoCampaignEdit extends Component
 
         $this->name = $this->campaign->name;
         $this->locale = $this->campaign->locale;
+        $this->landing = $this->campaign->landing->value;
         $this->letterBodyHtml = PromoCampaignHtmlSanitizer::forEditor($this->campaign->letter_body_html);
         $this->emailSubject = (string) ($this->campaign->email_subject ?? '');
         $this->emailBodyHtml = PromoCampaignHtmlSanitizer::forEditor($this->campaign->email_body_html);
@@ -511,6 +515,7 @@ class PromoCampaignEdit extends Component
             data: new UpdatePromoCampaignData(
                 name: $this->name,
                 locale: $this->locale,
+                landing: PromoLanding::from($this->landing),
                 letterBodyHtml: PromoCampaignHtmlSanitizer::forEditor($this->letterBodyHtml) ?: null,
                 emailSubject: $this->emailSubject !== '' ? $this->emailSubject : null,
                 emailBodyHtml: PromoCampaignHtmlSanitizer::forEditor($this->emailBodyHtml) ?: null,

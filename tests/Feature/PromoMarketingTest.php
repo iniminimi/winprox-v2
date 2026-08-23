@@ -1,27 +1,70 @@
 <?php
 
-use App\Enums\MunicipalPromoEmailSendStatus;
+use App\Enums\PromoLanding;
+use App\Enums\PromoVisitPage;
 use App\Livewire\Platform\PromoRecipients;
 use App\Models\MunicipalPromoEmailSend;
 use App\Models\PromoRecipient;
 use App\Models\PromoVideoPlay;
 use App\Models\PromoVisit;
 use App\Models\User;
+use App\Enums\MunicipalPromoEmailSendStatus;
 use Livewire\Livewire;
 
-it('logt anonieme promo-bezoeken', function () {
+it('stuurt /promo door naar de overheid-landing', function () {
     $this->get(route('promo'))
+        ->assertRedirect(route('government'));
+});
+
+it('stuurt /promo met ref door naar de campagne-landing', function () {
+    $superuser = User::factory()->superuser()->create();
+    $recipient = PromoRecipient::query()->create([
+        'token' => 'prm_1111111111111111',
+        'label' => 'Hotel Redirect',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+    $campaign = app(\App\Actions\Marketing\CreatePromoCampaignAction::class)->handle(
+        slug: 'hospitality-redirect',
+        name: 'Hospitality redirect',
+        locale: 'nl',
+        actorUserId: (int) $superuser->id,
+        landing: PromoLanding::Hospitality,
+    );
+    $import = \App\Models\PromoCampaignImport::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'original_filename' => 'one.xlsx',
+        'row_count' => 1,
+        'imported_by' => $superuser->id,
+        'imported_at' => now(),
+    ]);
+    \App\Models\PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_import_id' => $import->id,
+        'promo_recipient_id' => $recipient->id,
+        'name' => 'Hotel Redirect',
+        'email' => 'hotel@example.test',
+        'generated_at' => now(),
+    ]);
+
+    $this->get(route('promo', ['ref' => $recipient->token]))
+        ->assertRedirect(route('hospitality', ['ref' => 'prm_1111111111111111']));
+});
+
+it('logt anonieme landing-bezoeken', function () {
+    $this->get(route('government'))
         ->assertOk();
 
     expect(PromoVisit::query()->whereNull('promo_recipient_id')->count())->toBe(1);
+    expect(PromoVisit::query()->where('page', PromoVisitPage::Government->value)->count())->toBe(1);
 
-    $this->get(route('promo'))
+    $this->get(route('government'))
         ->assertOk();
 
     expect(PromoVisit::query()->whereNull('promo_recipient_id')->count())->toBe(1);
 });
 
-it('logt één promo-bezoek per scan-burst voor bestemmeling', function () {
+it('logt één landing-bezoek per scan-burst voor bestemmeling', function () {
     $superuser = User::factory()->superuser()->create();
     $recipient = PromoRecipient::query()->create([
         'token' => 'prm_aaaaaaaaaaaaaaaa',
@@ -30,14 +73,14 @@ it('logt één promo-bezoek per scan-burst voor bestemmeling', function () {
         'created_by' => $superuser->id,
     ]);
 
-    $this->get(route('promo', ['ref' => $recipient->token]))->assertOk();
-    $this->get(route('promo', ['ref' => $recipient->token]))->assertOk();
-    $this->get(route('promo'))->assertOk();
+    $this->get(route('government', ['ref' => $recipient->token]))->assertOk();
+    $this->get(route('government', ['ref' => $recipient->token]))->assertOk();
+    $this->get(route('government'))->assertOk();
 
     expect(PromoVisit::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(1);
 });
 
-it('toont gemeentenaam in welkomstkader bij promo via ref', function () {
+it('toont gemeentenaam in welkomstkader bij landing via ref', function () {
     $superuser = User::factory()->superuser()->create();
     $recipient = PromoRecipient::query()->create([
         'token' => 'prm_bbbbbbbbbbbbbbbb',
@@ -46,12 +89,12 @@ it('toont gemeentenaam in welkomstkader bij promo via ref', function () {
         'created_by' => $superuser->id,
     ]);
 
-    $this->get(route('promo', ['ref' => $recipient->token]))
+    $this->get(route('government', ['ref' => $recipient->token]))
         ->assertOk()
-        ->assertSee(__('promo.recipient_welcome', ['municipality' => 'Aalter']));
+        ->assertSee(__('landings.shared.recipient_welcome', ['label' => 'Aalter']));
 });
 
-it('logt geen promo-bezoek bij bekende mailscanner user-agent', function () {
+it('logt geen landing-bezoek bij bekende mailscanner user-agent', function () {
     $superuser = User::factory()->superuser()->create();
     $recipient = PromoRecipient::query()->create([
         'token' => 'prm_scanner0000001',
@@ -61,13 +104,13 @@ it('logt geen promo-bezoek bij bekende mailscanner user-agent', function () {
     ]);
 
     $this->withHeader('User-Agent', 'Proofpoint URL Defense')
-        ->get(route('promo', ['ref' => $recipient->token]))
+        ->get(route('government', ['ref' => $recipient->token]))
         ->assertOk();
 
     expect(PromoVisit::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(0);
 });
 
-it('logt promo-bezoeken per bestemmeling via ref', function () {
+it('logt landing-bezoeken per bestemmeling via ref', function () {
     $superuser = User::factory()->superuser()->create();
     $recipient = PromoRecipient::query()->create([
         'token' => 'prm_0123456789abcdef',
@@ -76,19 +119,19 @@ it('logt promo-bezoeken per bestemmeling via ref', function () {
         'created_by' => $superuser->id,
     ]);
 
-    $this->get(route('promo', ['ref' => $recipient->token]))
+    $this->get(route('government', ['ref' => $recipient->token]))
         ->assertOk();
 
     $this->travel(3)->minutes();
 
-    $this->get(route('promo'))
+    $this->get(route('government'))
         ->assertOk();
 
     expect(PromoVisit::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(2);
     expect(PromoVisit::query()->whereNull('promo_recipient_id')->count())->toBe(0);
 });
 
-it('onthoudt ref in sessie na taalwissel op promo', function () {
+it('onthoudt ref in sessie na taalwissel op landing', function () {
     $superuser = User::factory()->superuser()->create();
     $recipient = PromoRecipient::query()->create([
         'token' => 'prm_fedcba9876543210',
@@ -97,13 +140,26 @@ it('onthoudt ref in sessie na taalwissel op promo', function () {
         'created_by' => $superuser->id,
     ]);
 
-    $this->get(route('promo', ['ref' => $recipient->token]))->assertOk();
+    $this->get(route('government', ['ref' => $recipient->token]))->assertOk();
 
     $this->travel(3)->minutes();
 
-    $this->get(route('promo'))->assertOk();
+    $this->get(route('government'))->assertOk();
 
     expect(PromoVisit::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(2);
+});
+
+it('logt hospitality-hits apart van welcome', function () {
+    $this->get(route('hospitality'))->assertOk();
+
+    expect(PromoVisit::query()->where('page', PromoVisitPage::Hospitality->value)->count())->toBe(1)
+        ->and(PromoVisit::query()->where('page', PromoVisitPage::Welcome->value)->count())->toBe(0);
+});
+
+it('redirect van kale /hospitality naar locale-prefix', function () {
+    $this->withHeader('Accept-Language', 'xx-XX,xx;q=0.9')
+        ->get('/hospitality')
+        ->assertRedirect(route('hospitality', ['locale' => 'nl']));
 });
 
 it('logt video-play maximaal een keer per bestemmeling', function () {
@@ -116,18 +172,18 @@ it('logt video-play maximaal een keer per bestemmeling', function () {
     ]);
 
     $this->withSession(['promo_recipient_token' => $recipient->token])
-        ->postJson(route('promo.track.video'), ['video_key' => 'issue'])
+        ->postJson(route('promo.track.video'), ['video_key' => 'hospitality'])
         ->assertNoContent();
 
     $this->withSession(['promo_recipient_token' => $recipient->token])
-        ->postJson(route('promo.track.video'), ['video_key' => 'issue'])
+        ->postJson(route('promo.track.video'), ['video_key' => 'hospitality'])
         ->assertNoContent();
 
     expect(PromoVideoPlay::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(1);
 });
 
 it('weigert video-tracking zonder bestemmeling-sessie', function () {
-    $this->postJson(route('promo.track.video'), ['video_key' => 'issue'])
+    $this->postJson(route('promo.track.video'), ['video_key' => 'hospitality'])
         ->assertNotFound();
 });
 

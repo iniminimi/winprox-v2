@@ -1,8 +1,19 @@
+@props([
+    'title' => null,
+    'socialTitle' => null,
+    'socialDescription' => null,
+    'socialUrl' => null,
+    'jsonLdGraphs' => [],
+    'promoEngagePage' => null,
+    'promoTrackingToken' => null,
+    'promoHasVideo' => false,
+])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" translate="no" data-theme="standard">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="wp-date-locale" content="{{ \App\Support\Translation\LocaleSupport::dateInputLang() }}">
     <title>{{ $title ?? __('welcome.meta_title') }}</title>
     @include('partials.social-meta', [
@@ -15,7 +26,17 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="wp-shell wp-welcome-shell">
+<body
+    class="wp-shell wp-welcome-shell"
+    @if (! empty($promoEngagePage) && ! empty($promoTrackingToken))
+        data-promo-engage-url="{{ route('promo.track.engage') }}"
+        data-promo-engage-page="{{ $promoEngagePage }}"
+    @endif
+    @if (! empty($promoTrackingToken) && ! empty($promoHasVideo))
+        data-promo-tracking="1"
+        data-promo-track-url="{{ route('promo.track.video') }}"
+    @endif
+>
     <div class="wp-welcome-top">
         @include('partials.wp-welcome-nav')
     </div>

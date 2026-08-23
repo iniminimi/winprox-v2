@@ -118,15 +118,16 @@
     },
     "promo_qr": {
         "title": "QR promozionale",
-        "description": "Scarichi un codice QR generale alla pagina promozionale. Le visite senza link destinatario sono registrate come visitatori anonimi.",
-        "download": "Scarica QR promozionale"
+        "description": "Scarica un QR generico verso una landing di settore. Le visite senza destinatario sono registrate come anonime.",
+        "download": "Scarica QR promozionale",
+        "download_landing": "QR :landing"
     },
     "promo_recipients": {
         "nav": "Destinatari promo",
         "title": "Destinatari promo",
         "subtitle": "QR manuali, lettere comunali fuori campagna e panoramica globale. I clic di campagna sono nella pagina campagna.",
         "anonymous_title": "Visitatori anonimi",
-        "anonymous_lead": "Chiunque su /promo senza link personale (QR, segnalibro, motore di ricerca, …).",
+        "anonymous_lead": "Chiunque su una landing di settore senza link personale (QR, segnalibro, motore di ricerca, …).",
         "anonymous_count": ":count visite registrate",
         "anonymous_url": "URL promo:",
         "anonymous_empty": "Nessuna visita anonima ancora.",
@@ -154,7 +155,11 @@
         "email_sent": "Email inviata (:campaign) il :date",
         "email_failed": "Email non riuscita (:campaign)",
         "email_pending": "Email in coda (:campaign)",
-        "email_not_sent": "Nessuna email inviata"
+        "email_not_sent": "Nessuna email inviata",
+        "page_hospitality": "Landing hospitality",
+        "page_industry": "Landing industria",
+        "page_healthcare": "Landing sanità",
+        "page_government": "Landing enti pubblici"
     },
     "promo_campaigns": {
         "nav": "Campagne promo",
@@ -200,7 +205,7 @@
         "youtube_thumbnail_how_to_title": "Anteprima YouTube nell'e-mail",
         "youtube_thumbnail_how_to": "Inserisci un link YouTube sopra e posiziona {{youtube_thumbnail}} nel corpo dell'e-mail dove deve apparire l'anteprima. All'invio, la miniatura del video viene mostrata automaticamente (cliccabile verso YouTube). Puoi anche aggiungere un link YouTube come link normale; verrà mostrato come anteprima.",
         "welcome_url_how_to_title": "Tracciare le visite alla pagina welcome",
-        "welcome_url_how_to": "Nel corpo dell'e-mail aggiungi un link con il segnaposto {{welcome_url}} (es. testo pulsante \"Vedi WinProx\" con URL {{welcome_url}}). Ogni destinatario riceve automaticamente un URL univoco alla pagina welcome con token di tracking. I clic compaiono sopra in Statistiche visite e per destinatario sotto. Usa {{promo_url}} solo per la pagina promo con video.",
+        "welcome_url_how_to": "Nell'e-mail usa {{welcome_url}} per la pagina welcome o {{promo_url}} per la landing di settore scelta. Ogni destinatario riceve un URL unico con token. I clic compaiono in Statistiche visite.",
         "email_title": "Email (separata dall'allegato)",
         "email_subject": "Oggetto",
         "import_title": "Import Excel",
@@ -276,10 +281,10 @@
         "delivery_stats_title": "Invio",
         "visit_stats_title": "Statistiche visite",
         "visit_stats_lead": "I hit del link possono essere filtri di posta. Confermato = qualcuno è rimasto sulla pagina; ritorno = tornato dopo; seguito = registrazione, contatto o pagina prodotto.",
-        "visit_stats_totals": ":welcome hit welcome · :promo hit promo · :with_visits destinatari con hit",
+        "visit_stats_totals": ":welcome hit welcome · :promo hit landing · :with_visits destinatari con hit",
         "visit_stats_real": ":engaged confermati · :returning di ritorno · :follow seguiti",
         "visit_stats_empty": "Nessuna visita via link di campagna.",
-        "target_visits": ":welcome welcome · :promo promo",
+        "target_visits": ":welcome welcome · :promo landing",
         "target_visits_real": ":engaged confermato · :follow seguito",
         "target_visits_returning": "di ritorno",
         "target_visits_none": "Nessun clic",
@@ -313,7 +318,9 @@
         "bounces_none": "Fatto: nessun bounce in :scanned messaggi (ultimi :days giorni, anche già letti).",
         "bounces_processed": "Fatto: :scanned messaggi scansionati, :bounces bounce, :emails indirizzi trovati, :removed contrassegnati non recapitati, :blocked disiscritti.",
         "bounces_failed": "Elaborazione bounce non riuscita: :error",
-        "bounces_failed_generic": "Elaborazione bounce non riuscita."
+        "bounces_failed_generic": "Elaborazione bounce non riuscita.",
+        "landing": "Pagina di destinazione",
+        "landing_hint": "{{promo_url}} apre questa landing con il token di tracciamento del destinatario. Scegli la landing della campagna."
     },
     "manual_screenshots": {
         "nav": "Screenshot",

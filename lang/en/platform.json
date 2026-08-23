@@ -118,15 +118,16 @@
     },
     "promo_qr": {
         "title": "Promo QR",
-        "description": "Download a general QR code to the promo page. Visits without a recipient link are logged as anonymous visitors.",
-        "download": "Download promo QR"
+        "description": "Download a general QR to a sector landing. Visits without a recipient link are logged as anonymous visitors.",
+        "download": "Download promo QR",
+        "download_landing": "QR :landing"
     },
     "promo_recipients": {
         "nav": "Promo recipients",
         "title": "Promo recipients",
         "subtitle": "Manual QR codes, municipal letters outside campaigns, and global overview. Campaign click stats are on the campaign page.",
         "anonymous_title": "Anonymous visitors",
-        "anonymous_lead": "Anyone on /promo without a personal link (QR, bookmark, search engine, …).",
+        "anonymous_lead": "Anyone on a sector landing without a personal link (QR, bookmark, search engine, …).",
         "anonymous_count": ":count visits logged",
         "anonymous_url": "Promo URL:",
         "anonymous_empty": "No anonymous visits yet.",
@@ -154,7 +155,11 @@
         "email_sent": "Email sent (:campaign) on :date",
         "email_failed": "Email failed (:campaign)",
         "email_pending": "Email queued (:campaign)",
-        "email_not_sent": "No email sent"
+        "email_not_sent": "No email sent",
+        "page_hospitality": "Hospitality landing",
+        "page_industry": "Industry landing",
+        "page_healthcare": "Healthcare landing",
+        "page_government": "Government landing"
     },
     "promo_campaigns": {
         "nav": "Promo campaigns",
@@ -200,7 +205,7 @@
         "youtube_thumbnail_how_to_title": "YouTube preview in email",
         "youtube_thumbnail_how_to": "Enter a YouTube link above and place {{youtube_thumbnail}} in the email body where the preview should appear. When sent, the video thumbnail is shown automatically (clickable to YouTube). You can also add a YouTube link as a regular link in the email; it will be shown as a preview too.",
         "welcome_url_how_to_title": "Track welcome-page visits",
-        "welcome_url_how_to": "In the email body, add a link that uses the {{welcome_url}} placeholder (e.g. button text \"View WinProx\" with URL {{welcome_url}}). Each recipient automatically gets a unique welcome-page URL with a tracking token. Clicks appear above under Visit statistics and per recipient below. Use {{promo_url}} only for the promo landing page with videos.",
+        "welcome_url_how_to": "In the email body, use {{welcome_url}} for the welcome page or {{promo_url}} for the chosen sector landing. Each recipient automatically gets a unique URL with a tracking token. Clicks appear under Visit statistics.",
         "email_title": "Email (separate from attachment)",
         "email_subject": "Subject",
         "import_title": "Excel import",
@@ -276,10 +281,10 @@
         "delivery_stats_title": "Delivery",
         "visit_stats_title": "Visit statistics",
         "visit_stats_lead": "Link hits may be mail filters. Confirmed = someone stayed on the page; return = came back later; follow-through = register, contact or a product page.",
-        "visit_stats_totals": ":welcome welcome hits · :promo promo hits · :with_visits recipients with a hit",
+        "visit_stats_totals": ":welcome welcome hits · :promo landing hits · :with_visits recipients with a hit",
         "visit_stats_real": ":engaged confirmed · :returning returning · :follow follow-through",
         "visit_stats_empty": "No visits via campaign links yet.",
-        "target_visits": ":welcome welcome · :promo promo",
+        "target_visits": ":welcome welcome · :promo landing",
         "target_visits_real": ":engaged confirmed · :follow follow-through",
         "target_visits_returning": "returning",
         "target_visits_none": "No clicks",
@@ -313,7 +318,9 @@
         "bounces_none": "Done: no bounces found in :scanned messages (last :days days, including already read).",
         "bounces_processed": "Done: :scanned messages scanned, :bounces bounces, :emails addresses found, :removed marked undelivered, :blocked unsubscribed.",
         "bounces_failed": "Processing bounces failed: :error",
-        "bounces_failed_generic": "Processing bounces failed."
+        "bounces_failed_generic": "Processing bounces failed.",
+        "landing": "Landing page",
+        "landing_hint": "{{promo_url}} opens this landing with the recipient tracking token. Choose the landing that matches the campaign."
     },
     "manual_screenshots": {
         "nav": "Screenshots",

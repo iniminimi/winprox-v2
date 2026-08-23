@@ -41,7 +41,12 @@ class GeneratePromoCampaignLetterForTargetAction
         }
 
         $recipient = $this->resolvePromoRecipient($campaign, $target, $actorUserId);
-        $promoUrl = PromoLandingUrl::forRecipientTokenOnBaseUrl($recipient->token, $promoBaseUrl, $campaign->locale);
+        $promoUrl = PromoLandingUrl::forRecipientTokenOnBaseUrl(
+            $recipient->token,
+            $promoBaseUrl,
+            $campaign->locale,
+            $campaign->landing,
+        );
         $welcomeUrl = PromoLandingUrl::welcomeForRecipientTokenOnBaseUrl($recipient->token, $promoBaseUrl, $campaign->locale);
 
         $placeholders = PromoCampaignPlaceholderRenderer::forTarget(

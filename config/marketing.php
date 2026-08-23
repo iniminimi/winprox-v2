@@ -2,7 +2,7 @@
 
 return [
     /*
-    | Promo-video keys (basename in public/video/{locale}/). Must match promo.json items.
+    | Promo-video keys (basename in public/video/{locale}/). Landing slugs + legacy keys.
     */
     'promo_video_keys' => [
         'issue',
@@ -10,6 +10,10 @@ return [
         'users_edit_qr',
         'issue_approve_briefing',
         'unit_categorie_gps_allow_issue_print_qr',
+        'hospitality',
+        'industry',
+        'healthcare',
+        'government',
     ],
 
     /*

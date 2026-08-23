@@ -118,15 +118,16 @@
     },
     "promo_qr": {
         "title": "Promotie-QR",
-        "description": "Download een algemene QR naar de promo-pagina. Bezoeken zonder bestemmeling worden gelogd als anonieme bezoeker.",
-        "download": "Download promotie-QR"
+        "description": "Download een algemene QR naar een sectorlanding. Bezoeken zonder bestemmeling worden gelogd als anonieme bezoeker.",
+        "download": "Download promotie-QR",
+        "download_landing": "QR :landing"
     },
     "promo_recipients": {
         "nav": "Promo-bestemmelingen",
         "title": "Promo-bestemmelingen",
         "subtitle": "Handmatige QR-codes, gemeentelijke brieven buiten campagnes en globaal overzicht. Campagne-kliks staan op de campagnepagina.",
         "anonymous_title": "Anonieme bezoekers",
-        "anonymous_lead": "Iedereen op /promo zonder persoonlijke link (QR, bookmark, zoekmachine, …).",
+        "anonymous_lead": "Iedereen op een sectorlanding zonder persoonlijke link (QR, bookmark, zoekmachine, …).",
         "anonymous_count": ":count bezoeken gelogd",
         "anonymous_url": "Promo-URL:",
         "anonymous_empty": "Nog geen anonieme bezoeken.",
@@ -154,7 +155,11 @@
         "email_sent": "E-mail verstuurd (:campaign) op :date",
         "email_failed": "E-mail mislukt (:campaign)",
         "email_pending": "E-mail in wachtrij (:campaign)",
-        "email_not_sent": "Geen e-mail verstuurd"
+        "email_not_sent": "Geen e-mail verstuurd",
+        "page_hospitality": "Horeca-landing",
+        "page_industry": "Industrie-landing",
+        "page_healthcare": "Zorg-landing",
+        "page_government": "Overheid-landing"
     },
     "promo_campaigns": {
         "nav": "Promo-campagnes",
@@ -200,7 +205,7 @@
         "youtube_thumbnail_how_to_title": "YouTube-preview in e-mail",
         "youtube_thumbnail_how_to": "Vul hierboven een YouTube-link in en zet {{youtube_thumbnail}} in de e-mailtekst waar de preview moet staan. Bij verzenden wordt automatisch de videothumbnail getoond (klikbaar naar YouTube). Je kunt ook een YouTube-link als gewone link in de e-mail zetten; die wordt dan eveneens als preview getoond.",
         "welcome_url_how_to_title": "Welcome-bezoeken bijhouden",
-        "welcome_url_how_to": "Zet in de e-mailtekst een link met de placeholder {{welcome_url}} (bijv. knoptekst \"Bekijk WinProx\" met URL {{welcome_url}}). Elke ontvanger krijgt automatisch een unieke URL naar de welcome-pagina met trackingtoken. Wie wanneer klikt, zie je hierboven bij Bezoekstatistieken en per ontvanger hieronder. Gebruik {{promo_url}} alleen voor de promo-landingspagina met video's.",
+        "welcome_url_how_to": "Zet in de e-mailtekst een link met {{welcome_url}} voor de welcome-pagina, of {{promo_url}} voor de gekozen sectorlanding. Elke ontvanger krijgt automatisch een unieke URL met trackingtoken. Wie wanneer klikt, zie je bij Bezoekstatistieken.",
         "email_title": "E-mail (los van bijlage)",
         "email_subject": "Onderwerp",
         "import_title": "Excel-import",
@@ -276,10 +281,10 @@
         "delivery_stats_title": "Verzending",
         "visit_stats_title": "Bezoekstatistieken",
         "visit_stats_lead": "Link-hits kunnen mailfilters zijn. Bevestigd = iemand bleef op de pagina; terugkeer = later opnieuw; doorklik = registreren, contact of productpagina.",
-        "visit_stats_totals": ":welcome welcome-hits · :promo promo-hits · :with_visits ontvangers met hit",
+        "visit_stats_totals": ":welcome welcome-hits · :promo landing-hits · :with_visits ontvangers met hit",
         "visit_stats_real": ":engaged bevestigd · :returning terugkeerders · :follow doorklik",
         "visit_stats_empty": "Nog geen bezoeken via campagne-links.",
-        "target_visits": ":welcome welcome · :promo promo",
+        "target_visits": ":welcome welcome · :promo landing",
         "target_visits_real": ":engaged bevestigd · :follow doorklik",
         "target_visits_returning": "terugkeerder",
         "target_visits_none": "Geen kliks",
@@ -313,7 +318,9 @@
         "bounces_none": "Klaar: geen bounces gevonden in :scanned berichten (laatste :days dagen, ook al gelezen).",
         "bounces_processed": "Klaar: :scanned berichten gescand, :bounces bounces, :emails adressen gevonden, :removed als onbezorgd gemarkeerd, :blocked uitgeschreven.",
         "bounces_failed": "Bounces verwerken mislukt: :error",
-        "bounces_failed_generic": "Bounces verwerken mislukt."
+        "bounces_failed_generic": "Bounces verwerken mislukt.",
+        "landing": "Landingspagina",
+        "landing_hint": "{{promo_url}} opent deze landing met de trackingtoken van de ontvanger. Kies de landing die bij de campagne past."
     },
     "manual_screenshots": {
         "nav": "Screenshots",

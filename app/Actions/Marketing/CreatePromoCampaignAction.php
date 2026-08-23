@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Actions\Marketing;
 
 use App\Actions\Audit\LogAuditAction;
+use App\Enums\PromoLanding;
 use App\Models\PromoCampaign;
 use Illuminate\Support\Facades\DB;
 use RuntimeException;
@@ -13,8 +14,13 @@ class CreatePromoCampaignAction
 {
     public function __construct(private LogAuditAction $logAudit) {}
 
-    public function handle(string $slug, string $name, string $locale, int $actorUserId): PromoCampaign
-    {
+    public function handle(
+        string $slug,
+        string $name,
+        string $locale,
+        int $actorUserId,
+        PromoLanding $landing = PromoLanding::Government,
+    ): PromoCampaign {
         $slug = strtolower(trim($slug));
         $name = trim($name);
         $locale = strtolower(trim($locale));
@@ -23,11 +29,12 @@ class CreatePromoCampaignAction
             throw new RuntimeException('Slug, name and locale are required.');
         }
 
-        $campaign = DB::transaction(function () use ($slug, $name, $locale, $actorUserId): PromoCampaign {
+        $campaign = DB::transaction(function () use ($slug, $name, $locale, $actorUserId, $landing): PromoCampaign {
             return PromoCampaign::query()->create([
                 'slug' => $slug,
                 'name' => $name,
                 'locale' => $locale,
+                'landing' => $landing,
                 'letter_body_html' => null,
                 'email_subject' => null,
                 'email_body_html' => null,
@@ -47,6 +54,7 @@ class CreatePromoCampaignAction
                 'slug' => $campaign->slug,
                 'name' => $campaign->name,
                 'locale' => $campaign->locale,
+                'landing' => $campaign->landing->value,
             ],
         );
 

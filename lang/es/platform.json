@@ -118,15 +118,16 @@
     },
     "promo_qr": {
         "title": "QR promocional",
-        "description": "Descargue un código QR general a la página promocional. Las visitas sin enlace de destinatario se registran como visitantes anónimos.",
-        "download": "Descargar QR promocional"
+        "description": "Descargue un QR general a una landing sectorial. Las visitas sin destinatario se registran como anónimas.",
+        "download": "Descargar QR promocional",
+        "download_landing": "QR :landing"
     },
     "promo_recipients": {
         "nav": "Destinatarios promocionales",
         "title": "Destinatarios promocionales",
         "subtitle": "Códigos QR manuales, cartas municipales fuera de campañas y vista global. Los clics de campaña están en la página de campaña.",
         "anonymous_title": "Visitantes anónimos",
-        "anonymous_lead": "Cualquiera en /promo sin enlace personal (QR, marcador, motor de búsqueda, …).",
+        "anonymous_lead": "Cualquiera en una landing sectorial sin enlace personal (QR, marcador, buscador, …).",
         "anonymous_count": ":count visitas registradas",
         "anonymous_url": "URL promocional:",
         "anonymous_empty": "Aún no hay visitas anónimas.",
@@ -154,7 +155,11 @@
         "email_sent": "Correo enviado (:campaign) el :date",
         "email_failed": "Correo fallido (:campaign)",
         "email_pending": "Correo en cola (:campaign)",
-        "email_not_sent": "Sin correo enviado"
+        "email_not_sent": "Sin correo enviado",
+        "page_hospitality": "Landing hostelería",
+        "page_industry": "Landing industria",
+        "page_healthcare": "Landing sanidad",
+        "page_government": "Landing administración"
     },
     "promo_campaigns": {
         "nav": "Campañas promo",
@@ -200,7 +205,7 @@
         "youtube_thumbnail_how_to_title": "Vista previa de YouTube en el correo",
         "youtube_thumbnail_how_to": "Introduzca un enlace de YouTube arriba y coloque {{youtube_thumbnail}} en el cuerpo del correo donde debe aparecer la vista previa. Al enviar, se muestra automáticamente la miniatura del vídeo (clicable hacia YouTube). También puede añadir un enlace de YouTube como enlace normal; también se mostrará como vista previa.",
         "welcome_url_how_to_title": "Seguir visitas a la página welcome",
-        "welcome_url_how_to": "En el cuerpo del correo, añada un enlace con el marcador {{welcome_url}} (p. ej. texto del botón \"Ver WinProx\" con URL {{welcome_url}}). Cada destinatario recibe automáticamente una URL única a la página welcome con token de seguimiento. Los clics aparecen arriba en Estadísticas de visitas y por destinatario abajo. Use {{promo_url}} solo para la página promo con vídeos.",
+        "welcome_url_how_to": "En el correo, use {{welcome_url}} para la página welcome o {{promo_url}} para la landing sectorial elegida. Cada destinatario recibe una URL única con token. Los clics aparecen en Estadísticas de visitas.",
         "email_title": "Correo (separado del adjunto)",
         "email_subject": "Asunto",
         "import_title": "Importación Excel",
@@ -276,10 +281,10 @@
         "delivery_stats_title": "Envío",
         "visit_stats_title": "Estadísticas de visitas",
         "visit_stats_lead": "Los hits del enlace pueden ser filtros de correo. Confirmado = alguien permaneció en la página; retorno = volvió más tarde; seguimiento = registro, contacto o página de producto.",
-        "visit_stats_totals": ":welcome hits welcome · :promo hits promo · :with_visits destinatarios con hit",
+        "visit_stats_totals": ":welcome hits welcome · :promo hits landing · :with_visits destinatarios con hit",
         "visit_stats_real": ":engaged confirmados · :returning retornos · :follow seguimientos",
         "visit_stats_empty": "Aún no hay visitas vía enlaces de campaña.",
-        "target_visits": ":welcome welcome · :promo promo",
+        "target_visits": ":welcome welcome · :promo landing",
         "target_visits_real": ":engaged confirmado · :follow seguimiento",
         "target_visits_returning": "retorno",
         "target_visits_none": "Sin clics",
@@ -313,7 +318,9 @@
         "bounces_none": "Listo: no se encontraron bounces en :scanned mensajes (últimos :days días, también los ya leídos).",
         "bounces_processed": "Listo: :scanned mensajes escaneados, :bounces bounces, :emails direcciones encontradas, :removed marcadas no entregadas, :blocked dadas de baja.",
         "bounces_failed": "Error al procesar bounces: :error",
-        "bounces_failed_generic": "Error al procesar bounces."
+        "bounces_failed_generic": "Error al procesar bounces.",
+        "landing": "Página de destino",
+        "landing_hint": "{{promo_url}} abre esta landing con el token de seguimiento del destinatario. Elija la landing que corresponde a la campaña."
     },
     "manual_screenshots": {
         "nav": "Capturas de pantalla",

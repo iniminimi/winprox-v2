@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Data\Marketing;
 
+use App\Enums\PromoLanding;
+
 final class UpdatePromoCampaignData
 {
     /**
@@ -18,5 +20,6 @@ final class UpdatePromoCampaignData
         public readonly ?string $flowImagePath,
         public readonly ?string $youtubeUrl,
         public readonly ?array $columnMapping,
+        public readonly PromoLanding $landing = PromoLanding::Government,
     ) {}
 }

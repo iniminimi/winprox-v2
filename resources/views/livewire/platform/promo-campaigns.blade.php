@@ -47,7 +47,7 @@
                     <input id="campaign-name" type="text" class="wp-input" wire:model="name">
                     @error('name') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <div class="wp-promo-form-grid__locale">
+                    <div class="wp-promo-form-grid__locale">
                     <label class="wp-label" for="campaign-locale">{{ __('platform.promo_campaigns.locale') }}</label>
                     <select id="campaign-locale" class="wp-select" wire:model="locale">
                         @foreach (config('locales.supported', []) as $localeCode)
@@ -56,6 +56,16 @@
                     </select>
                     @error('locale') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+            </div>
+            <div>
+                <label class="wp-label" for="campaign-landing">{{ __('platform.promo_campaigns.landing') }}</label>
+                <select id="campaign-landing" class="wp-select" wire:model="landing">
+                    @foreach (\App\Enums\PromoLanding::cases() as $landingOption)
+                        <option value="{{ $landingOption->value }}">{{ __($landingOption->labelKey()) }}</option>
+                    @endforeach
+                </select>
+                <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.landing_hint') }}</p>
+                @error('landing') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
             <div>
                 <button type="submit" class="btn btn--primary">{{ __('platform.promo_campaigns.create_submit') }}</button>

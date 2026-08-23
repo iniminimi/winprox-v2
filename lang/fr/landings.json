@@ -1,0 +1,86 @@
+{
+    "shared": {
+        "welcome": "WinProx",
+        "related_title": "En savoir plus sur WinProx",
+        "cta_register": "Créer un compte",
+        "cta_login": "Connexion",
+        "recipient_welcome": "Bienvenue, visiteur de :label.",
+        "video_title": "WinProx en action"
+    },
+    "hospitality": {
+        "nav_label": "Horeca",
+        "meta_title": "WinProx pour l'horeca | Facility via QR",
+        "social": {
+            "og_title": "WinProx pour l'horeca | Facility via QR",
+            "og_description": "Signaler via QR, attribuer une tâche, clôturer. Une seule app facility, aussi à l'hôtel ou au restaurant."
+        },
+        "eyebrow": "Horeca",
+        "title": "Incidents et tâches, aussi en horeca",
+        "lead": "WinProx est une seule app facility : scanner, signaler, attribuer, clôturer. Le même produit à l'hôtel ou au restaurant — pas une app horeca.",
+        "why": {
+            "title": "Pourquoi ça marche",
+            "items": [
+                "Les clients ou le personnel scannent le QR dans la chambre ou la cuisine et signalent un problème.",
+                "La tâche va à la bonne équipe, sans chaîne d'appels ni Excel.",
+                "La clôture reste visible : ouvert, en cours, terminé."
+            ]
+        }
+    },
+    "industry": {
+        "nav_label": "Industrie",
+        "meta_title": "WinProx pour l'industrie | Facility via QR",
+        "social": {
+            "og_title": "WinProx pour l'industrie | Facility via QR",
+            "og_description": "Pannes et maintenance via QR : incident, tâche, clôture. Une seule app facility sur le site."
+        },
+        "eyebrow": "Industrie",
+        "title": "Suivre les pannes jusqu'à la clôture",
+        "lead": "WinProx est une seule app facility : signaler via QR, tâches à l'équipe, clôture. Le même produit en usine ou en entrepôt.",
+        "why": {
+            "title": "Pourquoi ça marche",
+            "items": [
+                "Les opérateurs scannent le QR sur l'installation et signalent une panne avec photo.",
+                "La maintenance reçoit une tâche, pas une chaîne d'appels.",
+                "La direction voit ce qui reste ouvert, sans logiciel en plus."
+            ]
+        }
+    },
+    "healthcare": {
+        "nav_label": "Santé",
+        "meta_title": "WinProx pour la santé | Facility via QR",
+        "social": {
+            "og_title": "WinProx pour la santé | Facility via QR",
+            "og_description": "Incidents techniques via QR : signalement, tâche, clôture. Une seule app facility à l'hôpital ou sur le site de soins."
+        },
+        "eyebrow": "Santé",
+        "title": "Incidents techniques sans chaîne papier",
+        "lead": "WinProx est une seule app facility : signaler via QR, tâches à l'équipe, clôture. Le même produit sur le site de soins — pas une variante santé.",
+        "why": {
+            "title": "Pourquoi ça marche",
+            "items": [
+                "Soignants ou techniciens scannent le QR dans la pièce et signalent le problème.",
+                "La tâche va au facility ou à la maintenance, avec photo si besoin.",
+                "Le statut reste visible jusqu'à la clôture."
+            ]
+        }
+    },
+    "government": {
+        "nav_label": "Collectivités",
+        "meta_title": "WinProx pour les collectivités | Facility via QR",
+        "social": {
+            "og_title": "WinProx pour les collectivités | Facility via QR",
+            "og_description": "Signalements citoyens et maintenance interne via QR. Une seule app facility pour commune et service public."
+        },
+        "eyebrow": "Collectivités",
+        "title": "Du signalement citoyen à la clôture",
+        "lead": "WinProx est une seule app facility : signaler via QR, tâches à l'équipe, clôture. Le même produit pour une commune, une école ou un bâtiment public.",
+        "why": {
+            "title": "Pourquoi ça marche",
+            "items": [
+                "Citoyens ou agents scannent le QR sur place et déposent un signalement.",
+                "La tâche va à la bonne équipe, sans boîte mail partagée.",
+                "La direction suit les dossiers ouverts dans un seul aperçu."
+            ]
+        }
+    }
+}

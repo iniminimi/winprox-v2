@@ -469,12 +469,12 @@ it('levert welcome_url in forTarget', function () {
         postalCode: '1000',
         city: 'Amay',
         email: 'a@example.test',
-        promoUrl: 'https://winprox.app/nl/promo?ref=prm_abcdef0123456789',
+        promoUrl: 'https://winprox.app/nl/government?ref=prm_abcdef0123456789',
         welcomeUrl: 'https://winprox.app/nl/?ref=prm_abcdef0123456789',
     );
 
     expect($vars['welcome_url'])->toBe('https://winprox.app/nl/?ref=prm_abcdef0123456789')
-        ->and($vars['promo_url'])->toContain('/promo?ref=');
+        ->and($vars['promo_url'])->toContain('/government?ref=');
 });
 
 it('behandelt lege quill-html als leeg', function () {
@@ -1035,10 +1035,10 @@ it('rendert promo-campagne e-mail als html zonder view-fout', function () {
 
 it('voegt campagne-locale toe aan promo-landing-url', function () {
     expect(PromoLandingUrl::forRecipientTokenOnBaseUrl('prm_4cfe5ddb16702059', 'https://winprox.app', 'fr'))
-        ->toBe('https://winprox.app/fr/promo?ref=prm_4cfe5ddb16702059');
+        ->toBe('https://winprox.app/fr/government?ref=prm_4cfe5ddb16702059');
 });
 
-it('opent promo-pagina in campagne-locale via ref-link', function () {
+it('opent landing in campagne-locale via ref-link', function () {
     $superuser = User::factory()->superuser()->create();
     $recipient = app(CreatePromoRecipientAction::class)->handle('Wavre', null, (int) $superuser->id);
     $campaign = app(CreatePromoCampaignAction::class)->handle(
@@ -1069,12 +1069,12 @@ it('opent promo-pagina in campagne-locale via ref-link', function () {
     ]);
 
     $this->get(route('promo', ['locale' => 'nl', 'ref' => $recipient->token]))
-        ->assertRedirect(route('promo', ['locale' => 'fr', 'ref' => $recipient->token]));
+        ->assertRedirect(route('government', ['locale' => 'fr', 'ref' => $recipient->token]));
 
     $this->followingRedirects()
         ->get(route('promo', ['locale' => 'nl', 'ref' => $recipient->token]))
         ->assertOk()
-        ->assertSee(__('promo.video.qr_portal.title', [], 'fr'), false);
+        ->assertSee(__('landings.government.title', [], 'fr'), false);
 });
 
 /**

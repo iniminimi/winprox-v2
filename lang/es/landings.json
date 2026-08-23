@@ -1,0 +1,86 @@
+{
+    "shared": {
+        "welcome": "WinProx",
+        "related_title": "Más sobre WinProx",
+        "cta_register": "Crear una cuenta",
+        "cta_login": "Iniciar sesión",
+        "recipient_welcome": "Bienvenido, visitante de :label.",
+        "video_title": "WinProx en acción"
+    },
+    "hospitality": {
+        "nav_label": "Hostelería",
+        "meta_title": "WinProx para hostelería | Facility por QR",
+        "social": {
+            "og_title": "WinProx para hostelería | Facility por QR",
+            "og_description": "Avisar por QR, asignar una tarea, cerrarla. Una sola app de facility, también en hoteles y restaurantes."
+        },
+        "eyebrow": "Hostelería",
+        "title": "Avisos y tareas, también en hostelería",
+        "lead": "WinProx es una sola app de facility: escanear, avisar, asignar, cerrar. El mismo producto en hoteles y restaurantes — no una app de hostelería.",
+        "why": {
+            "title": "Por qué funciona",
+            "items": [
+                "Huéspedes o personal escanean el QR en la habitación o la cocina y avisan de un problema.",
+                "La tarea llega al equipo correcto, sin cadena de llamadas ni Excel.",
+                "El cierre sigue visible: abierto, en curso, listo."
+            ]
+        }
+    },
+    "industry": {
+        "nav_label": "Industria",
+        "meta_title": "WinProx para industria | Facility por QR",
+        "social": {
+            "og_title": "WinProx para industria | Facility por QR",
+            "og_description": "Averías y mantenimiento por QR: aviso, tarea, cierre. Una sola app de facility en planta."
+        },
+        "eyebrow": "Industria",
+        "title": "Siga las averías hasta el cierre",
+        "lead": "WinProx es una sola app de facility: avisar por QR, tareas al equipo, cierre. El mismo producto en planta o almacén.",
+        "why": {
+            "title": "Por qué funciona",
+            "items": [
+                "Los operarios escanean el QR del equipo y avisan de una avería con foto.",
+                "Mantenimiento recibe una tarea, no una cadena de llamadas.",
+                "La dirección ve lo que sigue abierto, sin software extra."
+            ]
+        }
+    },
+    "healthcare": {
+        "nav_label": "Sanidad",
+        "meta_title": "WinProx para sanidad | Facility por QR",
+        "social": {
+            "og_title": "WinProx para sanidad | Facility por QR",
+            "og_description": "Avisos técnicos por QR: aviso, tarea, cierre. Una sola app de facility en hospital o centro de cuidados."
+        },
+        "eyebrow": "Sanidad",
+        "title": "Avisos técnicos sin cadena de papel",
+        "lead": "WinProx es una sola app de facility: avisar por QR, tareas al equipo, cierre. El mismo producto en el centro — no una variante sanitaria.",
+        "why": {
+            "title": "Por qué funciona",
+            "items": [
+                "Enfermería o técnica escanea el QR en la sala y avisa del problema.",
+                "La tarea va a facility o mantenimiento, con foto si hace falta.",
+                "El estado sigue visible hasta el cierre."
+            ]
+        }
+    },
+    "government": {
+        "nav_label": "Administración",
+        "meta_title": "WinProx para la administración | Facility por QR",
+        "social": {
+            "og_title": "WinProx para la administración | Facility por QR",
+            "og_description": "Avisos ciudadanos y mantenimiento interno por QR. Una sola app de facility para ayuntamiento y servicio público."
+        },
+        "eyebrow": "Administración",
+        "title": "Del aviso ciudadano al cierre",
+        "lead": "WinProx es una sola app de facility: avisar por QR, tareas al equipo, cierre. El mismo producto para ayuntamiento, escuela o edificio público.",
+        "why": {
+            "title": "Por qué funciona",
+            "items": [
+                "Ciudadanos o personal escanean el QR in situ y registran un aviso.",
+                "La tarea llega al equipo correcto, sin buzón compartido.",
+                "La dirección sigue los avisos abiertos en un solo resumen."
+            ]
+        }
+    }
+}
