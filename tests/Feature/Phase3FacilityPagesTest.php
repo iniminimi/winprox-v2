@@ -142,6 +142,9 @@ it('toont de uitgebreide healthcare- en government-landing', function () {
         ->assertSee(__('landings.government.problem.title', [], 'nl'))
         ->assertSee(__('landings.government.roles.items.0.title', [], 'nl'))
         ->assertSee('id="landing-video"', false)
+        ->assertSee('issue_nl_01.mp4', false)
+        ->assertSee('wp-video--sm', false)
+        ->assertSee(__('landings.shared.cta_video', [], 'nl'))
         ->assertDontSee('Bekijk demo', false);
 
     $this->get(route('healthcare', ['locale' => 'fr']))

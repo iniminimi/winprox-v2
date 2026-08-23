@@ -32,6 +32,13 @@ final class SectorLandingVideo
             }
         }
 
+        if ($landing === PromoLanding::Government && $locale === 'nl') {
+            $fallback = 'video/nl/issue_nl_01.mp4';
+            if (is_file(public_path($fallback))) {
+                return $fallback;
+            }
+        }
+
         return null;
     }
 }

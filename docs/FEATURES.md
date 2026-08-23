@@ -887,7 +887,8 @@ params, `DemoSectorCopy`. Property→Location in copy.
 Vier **campagne-landings** (`/{locale}/hospitality|industry|healthcare|government`): één
 Facility-product, sectorvoorbeelden in de copy. Alle vier mogen langer (e-mailbezoeker).
 Video: speler als het bestand bestaat (`{slug}_promo_{locale}.mp4` e.d.); elke landing
-reserveert de videoplek (placeholder tot het bestand er is).
+reserveert de videoplek (placeholder tot het bestand er is). Government-NL valt tijdelijk
+terug op `video/nl/issue_nl_01.mp4` tot er een eigen government-video is.
 Geen demo-CTA, geen prijs op de landing, geen “geen langdurig contract”. CTA’s alleen in de hero.
 Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `?ref=`. Dit is
 **geen** V1-sectorhub en **geen** productvariant.
