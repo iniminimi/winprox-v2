@@ -4436,6 +4436,16 @@ svg.wp-release-worker-row__icon,
     max-height: min(80vh, 42rem);
 }
 
+.wp-video--sm {
+    width: 480px;
+    max-width: 100%;
+}
+
+.wp-video--sm .wp-video-player {
+    width: 100%;
+    max-height: none;
+}
+
 /* ---------------------------------------------------------------------------
  | Time — aanwezigheid (dashboard)
  * ------------------------------------------------------------------------- */

@@ -1,9 +1,10 @@
 @props([
     'src',
     'title' => '',
+    'modifier' => '',
 ])
 
-<div class="wp-video">
+<div @class(['wp-video', $modifier])>
     <video
         class="wp-video-player"
         controls

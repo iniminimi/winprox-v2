@@ -46,11 +46,12 @@
                             @include('partials.wp-video-player', [
                                 'src' => $videoSrc,
                                 'title' => \Illuminate\Support\Facades\Lang::has($key.'.video.title') ? __("{$key}.video.title") : __('landings.shared.video_title'),
+                                'modifier' => 'wp-video--sm',
                             ])
                         </div>
                     @else
                         <div
-                            class="wp-welcome-media-placeholder wp-welcome-media-placeholder--video"
+                            class="wp-welcome-media-placeholder wp-welcome-media-placeholder--video wp-video--sm"
                             role="img"
                             aria-label="{{ __('landings.shared.video_placeholder') }}"
                         >

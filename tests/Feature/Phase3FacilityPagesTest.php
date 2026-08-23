@@ -90,6 +90,7 @@ it('toont de uitgebreide industry-landing met NL-video of placeholder', function
         ->assertSee(__('landings.industry.problem.title', [], 'nl'))
         ->assertSee(__('landings.industry.start.trial', [], 'nl'))
         ->assertSee('industry_promo_nl.mp4', false)
+        ->assertSee('wp-video--sm', false)
         ->assertDontSee('Bekijk demo', false);
 
     $this->get(route('industry', ['locale' => 'fr']))
