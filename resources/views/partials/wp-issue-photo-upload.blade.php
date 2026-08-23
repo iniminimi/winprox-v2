@@ -5,6 +5,7 @@
     $photoAltKey = $photoAltKey ?? 'portal.report.photos.add';
     $preferCamera = $preferCamera ?? false;
     $hintKey = $hintKey ?? null;
+    $showHint = $showHint ?? true;
     $uploadLocale = app()->getLocale();
 
     $uploadProperty = $model;
@@ -50,5 +51,7 @@
         </div>
     </div>
 
-    <p class="wp-hint">{{ $hintKey ? __($hintKey) : __('portal.report.photos.hint') }}</p>
+    @if ($showHint)
+        <p class="wp-hint">{{ $hintKey ? __($hintKey) : __('portal.report.photos.hint') }}</p>
+    @endif
 </div>

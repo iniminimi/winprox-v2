@@ -128,7 +128,7 @@
         },
         "edit": {
             "photos_label": "Fotos de la vinculación QR",
-            "photos_hint": "Máximo 4 fotos por unidad.",
+            "photos_hint": "Fotos del lugar donde está la pegatina QR en esta unidad. Haga un primer plano de la pegatina y una toma más amplia para encontrarla después. Máximo 4 fotos; se reducen automáticamente antes de enviarlas.",
             "delete_photo_confirm": "¿Eliminar esta foto?"
         },
         "gps_history": {

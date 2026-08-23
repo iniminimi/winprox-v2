@@ -128,7 +128,7 @@
         },
         "edit": {
             "photos_label": "Photos of the QR link",
-            "photos_hint": "Maximum 4 photos per unit.",
+            "photos_hint": "Photos of where the QR sticker is placed on this unit. Take a close-up of the sticker and a wider shot so you can find it later. Maximum 4 photos; they are automatically resized before sending.",
             "delete_photo_confirm": "Delete this photo?"
         },
         "gps_history": {

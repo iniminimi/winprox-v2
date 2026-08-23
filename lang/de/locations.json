@@ -128,7 +128,7 @@
         },
         "edit": {
             "photos_label": "Fotos der QR-Verknüpfung",
-            "photos_hint": "Maximal 4 Fotos pro Einheit.",
+            "photos_hint": "Fotos des Orts, an dem der QR-Aufkleber an dieser Einheit sitzt. Machen Sie eine Nahaufnahme des Aufklebers und eine Übersicht aus etwas Abstand, damit Sie ihn später wiederfinden. Maximal 4 Fotos; sie werden vor dem Senden automatisch verkleinert.",
             "delete_photo_confirm": "Dieses Foto löschen?"
         },
         "gps_history": {

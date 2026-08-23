@@ -128,7 +128,7 @@
         },
         "edit": {
             "photos_label": "Photos de la liaison QR",
-            "photos_hint": "Maximum 4 photos par unité.",
+            "photos_hint": "Photos de l'endroit où l'autocollant QR est posé sur cette unité. Prenez un gros plan de l'autocollant et une vue plus large pour le retrouver plus tard. Maximum 4 photos ; elles sont automatiquement réduites avant l'envoi.",
             "delete_photo_confirm": "Supprimer cette photo ?"
         },
         "gps_history": {

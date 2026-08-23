@@ -128,7 +128,7 @@
         },
         "edit": {
             "photos_label": "Foto's van de QR-koppeling",
-            "photos_hint": "Maximaal 4 foto's per unit.",
+            "photos_hint": "Foto's van de plek waar de QR-sticker op deze unit hangt. Maak een close-up van de sticker en een overzicht van iets verderop, zodat je de sticker later terugvindt. Maximaal 4 foto's; ze worden automatisch verkleind voor verzending.",
             "delete_photo_confirm": "Deze foto verwijderen?"
         },
         "gps_history": {

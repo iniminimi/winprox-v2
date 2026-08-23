@@ -421,7 +421,9 @@
                     @endphp
 
                     <div class="wp-field" wire:key="unit-photos-section-{{ $totalCount }}">
-                        <label class="wp-label">{{ __('locations.units.edit.photos_label') }}</label>
+                        <x-wp-tooltip :text="__('locations.units.edit.photos_hint')" wrap class="wp-tooltip--block">
+                            <span class="wp-label">{{ __('locations.units.edit.photos_label') }}</span>
+                        </x-wp-tooltip>
 
                         @if ($totalCount > 0)
                             <div
@@ -485,12 +487,11 @@
                         @endif
 
                         @if ($canAddMore)
-                            @include('partials.wp-issue-photo-upload', ['model' => 'unitPhotos'])
+                            @include('partials.wp-issue-photo-upload', ['model' => 'unitPhotos', 'showHint' => false])
                         @endif
 
                         @error('unitPhotos') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('unitPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
-                        <p class="wp-hint">{{ __('locations.units.edit.photos_hint') }}</p>
                     </div>
                 @endif
 

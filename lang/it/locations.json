@@ -128,7 +128,7 @@
         },
         "edit": {
             "photos_label": "Foto del collegamento QR",
-            "photos_hint": "Massimo 4 foto per unità.",
+            "photos_hint": "Foto del punto in cui l'adesivo QR è applicato su questa unità. Scatta un primo piano dell'adesivo e una ripresa più ampia per ritrovarlo in seguito. Massimo 4 foto; vengono ridimensionate automaticamente prima dell'invio.",
             "delete_photo_confirm": "Eliminare questa foto?"
         },
         "gps_history": {
