@@ -884,8 +884,10 @@ Sector-hub/real-estate/hospitality welcome-varianten + `/`-sector-routing, demo-
 params, `DemoSectorCopy`. Property→Location in copy.
 
 ### 11.5 Campagne-landings (geen productsectoren)
-Vier korte **campagne-landings** (`/{locale}/hospitality|industry|healthcare|government`): één
-Facility-product, sectorvoorbeelden in de copy, optioneel één video als het bestand bestaat.
+Vier **campagne-landings** (`/{locale}/hospitality|industry|healthcare|government`): één
+Facility-product, sectorvoorbeelden in de copy. Industry mag langer (e-mailbezoeker). Video:
+speler als het bestand bestaat (`{slug}_promo_{locale}.mp4` e.d.); industry reserveert altijd
+de videoplek (placeholder tot het bestand er is).
 Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `?ref=`. Dit is
 **geen** V1-sectorhub en **geen** productvariant.
 

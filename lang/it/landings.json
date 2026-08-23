@@ -5,7 +5,9 @@
         "cta_register": "Crea un account",
         "cta_login": "Accedi",
         "recipient_welcome": "Benvenuto, visitatore di :label.",
-        "video_title": "WinProx in azione"
+        "video_title": "WinProx in azione",
+        "cta_video": "Guarda come funziona",
+        "video_placeholder": "Il video arriverà presto in questa lingua."
     },
     "hospitality": {
         "nav_label": "Hospitality",
@@ -28,21 +30,125 @@
     },
     "industry": {
         "nav_label": "Industria",
-        "meta_title": "WinProx per l'industria | Facility via QR",
+        "meta_title": "WinProx per l'industria | Guasti via QR",
         "social": {
-            "og_title": "WinProx per l'industria | Facility via QR",
-            "og_description": "Guasti e manutenzione via QR: segnalazione, compito, chiusura. Una sola app facility in stabilimento."
+            "og_title": "WinProx per l'industria | Guasti via QR",
+            "og_description": "Dal guasto in reparto a un compito per la squadra giusta. QR, segnalazione, compito, chiusura. Una sola app facility."
         },
         "eyebrow": "Industria",
-        "title": "Segui i guasti fino alla chiusura",
-        "lead": "WinProx è una sola app facility: segnala via QR, compiti al team, chiusura. Lo stesso prodotto in stabilimento o magazzino.",
-        "why": {
-            "title": "Perché funziona",
-            "items": [
-                "Gli operatori scansionano il QR sull'impianto e segnalano un guasto con foto.",
-                "La manutenzione riceve un compito, non una catena di chiamate.",
-                "La direzione vede cosa è ancora aperto, senza software extra."
+        "title": "Segnala. Segui. Chiudi.",
+        "lead": "Dal guasto in reparto a un compito chiaro per la squadra giusta. WinProx è una sola app facility: segnala sul posto, il team chiude.",
+        "flow": "QR → segnalazione → compito → chiusura",
+        "video": {
+            "title": "Come funziona WinProx",
+            "lead": "Un operatore scansiona il QR e segnala un guasto con foto. La manutenzione riceve il compito e lo chiude. Niente app, niente catena di chiamate."
+        },
+        "problem": {
+            "title": "Un guasto non deve diventare una telefonata",
+            "lead": "Qualcuno vede un problema su una macchina, un impianto o un edificio. WinProx ne fa un unico flusso: la direzione segue fino alla chiusura.",
+            "questions": [
+                "Chi chiamare?",
+                "Qualcuno l'ha già segnalato?",
+                "Chi ne fa il seguito?",
+                "La manutenzione ci sta lavorando?",
+                "È davvero risolto?"
             ]
+        },
+        "steps": {
+            "title": "Un solo flusso semplice",
+            "items": [
+                {
+                    "title": "Scansiona",
+                    "body": "L'operatore scansiona il QR su macchina, impianto, stanza o ubicazione."
+                },
+                {
+                    "title": "Segnala",
+                    "body": "Il problema si segnala dallo smartphone. Si può aggiungere subito una foto."
+                },
+                {
+                    "title": "Compito",
+                    "body": "La segnalazione diventa un compito chiaro per la squadra giusta."
+                },
+                {
+                    "title": "Risolvi",
+                    "body": "La manutenzione esegue il compito e può aggiungere una nota."
+                },
+                {
+                    "title": "Chiuso",
+                    "body": "Il compito si chiude. La direzione vede cosa è aperto e cosa è fatto."
+                }
+            ]
+        },
+        "places": {
+            "title": "Dal luogo fisico al flusso digitale",
+            "lead": "WinProx collega la segnalazione al luogo in cui nasce il problema. Un QR può stare, ad esempio, su:",
+            "items": [
+                "macchine",
+                "gru",
+                "nastri",
+                "impianti tecnici",
+                "magazzini",
+                "baie di carico",
+                "locali tecnici",
+                "edifici",
+                "veicoli e altri asset"
+            ],
+            "close": "Nessuno deve cercare l'ufficio giusto. Scansiona il QR e segnala."
+        },
+        "roles": {
+            "title": "Pensato per il reparto",
+            "items": [
+                {
+                    "title": "Per chi lavora in campo",
+                    "body": "Segnalare in pochi secondi. Niente app né account: scansiona il QR, descrivi il problema e aggiungi una foto se serve."
+                },
+                {
+                    "title": "Per la manutenzione",
+                    "body": "Un compito chiaro invece di una catena di chiamate. Si vede cosa fare, dove e cosa è stato segnalato."
+                },
+                {
+                    "title": "Per i responsabili",
+                    "body": "Sempre il quadro di ciò che è aperto. Seguire segnalazioni e compiti fino alla chiusura."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Lo stesso prodotto sul campo",
+            "lead": "WinProx è una sola app facility. In porti, industria e logistica è lo stesso prodotto, non un'edizione per settore.",
+            "items": [
+                {
+                    "title": "Porti e terminal",
+                    "body": "Gru, reach stacker, nastri, impianti di carico, locali tecnici ed edifici."
+                },
+                {
+                    "title": "Industria",
+                    "body": "Macchine di produzione, impianti tecnici, magazzini, HVAC, infrastruttura e altri asset."
+                },
+                {
+                    "title": "Logistica",
+                    "body": "Baie, attrezzature di magazzino, porte, cancelli, mezzi di sollevamento e infrastruttura tecnica."
+                }
+            ]
+        },
+        "why": {
+            "title": "Perché WinProx",
+            "items": [
+                "Niente app per chi segnala: bastano smartphone e QR.",
+                "Crea ubicazioni e team, posiziona i QR, parti.",
+                "Un problema diventa un compito, non un'e-mail persa.",
+                "La direzione segue ogni segnalazione fino alla chiusura, legata all'ubicazione.",
+                "Una foto dà subito contesto alla manutenzione.",
+                "Segnalazioni e compiti in un solo riepilogo."
+            ]
+        },
+        "start": {
+            "title": "Parti in piccolo. Allarga quando funziona.",
+            "lead": "Non serve convertire tutta l'organizzazione. Parti da un terminal, un edificio, un magazzino o un team di manutenzione.",
+            "trial": "Un mese di prova gratis, fino a 50 unit. Nessuna installazione."
+        },
+        "close": {
+            "title": "Pronto a provarlo?",
+            "lead": "Ogni luogo fisico diventa un punto di segnalazione. I responsabili creano un account; chi è in campo scansiona e segnala."
         }
     },
     "healthcare": {

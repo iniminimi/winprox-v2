@@ -5,7 +5,9 @@
         "cta_register": "Konto erstellen",
         "cta_login": "Anmelden",
         "recipient_welcome": "Willkommen, Besucherin oder Besucher von :label.",
-        "video_title": "WinProx in Aktion"
+        "video_title": "WinProx in Aktion",
+        "cta_video": "So funktioniert es",
+        "video_placeholder": "Video folgt in dieser Sprache in Kürze."
     },
     "hospitality": {
         "nav_label": "Hospitality",
@@ -28,21 +30,125 @@
     },
     "industry": {
         "nav_label": "Industrie",
-        "meta_title": "WinProx für die Industrie | Facility per QR",
+        "meta_title": "WinProx für die Industrie | Störungen per QR",
         "social": {
-            "og_title": "WinProx für die Industrie | Facility per QR",
-            "og_description": "Störungen und Wartung per QR: Meldung, Aufgabe, Abschluss. Eine Facility-App in der Halle."
+            "og_title": "WinProx für die Industrie | Störungen per QR",
+            "og_description": "Von der Störung in der Halle zur Aufgabe für die richtige Crew. QR, Meldung, Aufgabe, Abschluss. Eine Facility-App."
         },
         "eyebrow": "Industrie",
-        "title": "Störungen verfolgen, bis sie geschlossen sind",
-        "lead": "WinProx ist eine Facility-App: Melden per QR, Aufgaben an das Team, Abschluss. Dasselbe Produkt in Werk oder Lager.",
-        "why": {
-            "title": "Warum das funktioniert",
-            "items": [
-                "Bedienende scannen den QR an der Anlage und melden eine Störung mit Foto.",
-                "Die Wartung erhält eine Aufgabe, keine Anrufkette.",
-                "Die Leitung sieht, was offen ist, ohne Extra-Software."
+        "title": "Störungen melden. Verfolgen. Abschließen.",
+        "lead": "Von einer Störung in der Halle zu einer klaren Aufgabe für die richtige Crew. WinProx ist eine Facility-App: vor Ort melden, das Team schließt ab.",
+        "flow": "QR-Code → Meldung → Aufgabe → Abschluss",
+        "video": {
+            "title": "So funktioniert WinProx",
+            "lead": "Eine Fachkraft scannt den QR-Code und meldet eine Störung mit Foto. Die Wartung erhält die Aufgabe und schließt sie. Keine App, keine Anrufkette."
+        },
+        "problem": {
+            "title": "Eine Störung muss kein Anruf werden",
+            "lead": "Jemand sieht ein Problem an einer Maschine, Anlage oder einem Gebäude. WinProx macht daraus einen Ablauf — die Leitung folgt bis zum Abschluss.",
+            "questions": [
+                "Wen anrufen?",
+                "Hat es schon jemand gemeldet?",
+                "Wer verfolgt es?",
+                "Arbeitet die Wartung daran?",
+                "Ist es wirklich behoben?"
             ]
+        },
+        "steps": {
+            "title": "Ein einfacher Ablauf",
+            "items": [
+                {
+                    "title": "Scannen",
+                    "body": "Die Fachkraft scannt den QR-Code an Maschine, Anlage, Raum oder Standort."
+                },
+                {
+                    "title": "Melden",
+                    "body": "Das Problem wird am Smartphone gemeldet. Ein Foto kann sofort dazu."
+                },
+                {
+                    "title": "Aufgabe",
+                    "body": "Die Meldung wird eine klare Aufgabe für die richtige Crew."
+                },
+                {
+                    "title": "Beheben",
+                    "body": "Die Wartung führt die Aufgabe aus und kann eine Notiz ergänzen."
+                },
+                {
+                    "title": "Abgeschlossen",
+                    "body": "Die Aufgabe wird geschlossen. Die Leitung sieht, was offen und was erledigt ist."
+                }
+            ]
+        },
+        "places": {
+            "title": "Vom physischen Ort zum digitalen Ablauf",
+            "lead": "WinProx knüpft die Meldung an den Ort, an dem das Problem entsteht. Ein QR-Code kann zum Beispiel hier sitzen:",
+            "items": [
+                "Maschinen",
+                "Krane",
+                "Förderbänder",
+                "technische Anlagen",
+                "Lager",
+                "Laderampen",
+                "Technikräume",
+                "Gebäude",
+                "Fahrzeuge und andere Assets"
+            ],
+            "close": "Niemand muss die richtige Abteilung suchen. QR-Code scannen und das Problem melden."
+        },
+        "roles": {
+            "title": "Für die Halle gebaut",
+            "items": [
+                {
+                    "title": "Für Mitarbeitende",
+                    "body": "In Sekunden melden. Keine App, kein Konto: QR-Code scannen, Problem beschreiben, bei Bedarf ein Foto."
+                },
+                {
+                    "title": "Für die Wartung",
+                    "body": "Eine klare Aufgabe statt einer Anrufkette. Die Wartung sieht, was zu tun ist, wo es ist und was gemeldet wurde."
+                },
+                {
+                    "title": "Für Verantwortliche",
+                    "body": "Immer der Überblick über Offenes. Meldungen und Aufgaben bis zum Abschluss verfolgen."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Dasselbe Produkt vor Ort",
+            "lead": "WinProx ist eine Facility-App. In Häfen, Industrie und Logistik dasselbe Produkt — keine Sektorvariante.",
+            "items": [
+                {
+                    "title": "Häfen und Terminals",
+                    "body": "Krane, Reachstacker, Förderbänder, Ladeanlagen, Technikräume und Gebäude."
+                },
+                {
+                    "title": "Industrie",
+                    "body": "Produktionsmaschinen, technische Anlagen, Lager, HVAC, Infrastruktur und andere Assets."
+                },
+                {
+                    "title": "Logistik",
+                    "body": "Rampen, Lagertechnik, Türen, Tore, Hebemittel und technische Infrastruktur."
+                }
+            ]
+        },
+        "why": {
+            "title": "Warum WinProx",
+            "items": [
+                "Keine App für die meldende Person: Smartphone und QR-Code reichen.",
+                "Standorte und Teams anlegen, QR-Codes platzieren, starten.",
+                "Ein Problem wird eine Aufgabe, keine E-Mail im Posteingang.",
+                "Die Leitung folgt jeder Meldung bis zum Abschluss, am Standort.",
+                "Ein Foto gibt der Wartung sofort Kontext.",
+                "Meldungen und Aufgaben in einer Übersicht."
+            ]
+        },
+        "start": {
+            "title": "Klein starten. Wachsen, wenn es läuft.",
+            "lead": "Sie müssen nicht die ganze Organisation umstellen. Starten Sie mit einem Terminal, einem Gebäude, einem Lager oder einem Wartungsteam.",
+            "trial": "Einen Monat kostenlos testen, bis zu 50 Units. Keine Installation."
+        },
+        "close": {
+            "title": "Bereit zum Ausprobieren?",
+            "lead": "Jeder physische Ort wird ein einfacher Meldepunkt. Verantwortliche legen ein Konto an; Mitarbeitende scannen und melden."
         }
     },
     "healthcare": {

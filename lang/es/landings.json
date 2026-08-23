@@ -5,7 +5,9 @@
         "cta_register": "Crear una cuenta",
         "cta_login": "Iniciar sesión",
         "recipient_welcome": "Bienvenido, visitante de :label.",
-        "video_title": "WinProx en acción"
+        "video_title": "WinProx en acción",
+        "cta_video": "Ver cómo funciona",
+        "video_placeholder": "El vídeo estará pronto en este idioma."
     },
     "hospitality": {
         "nav_label": "Hostelería",
@@ -28,21 +30,125 @@
     },
     "industry": {
         "nav_label": "Industria",
-        "meta_title": "WinProx para industria | Facility por QR",
+        "meta_title": "WinProx para industria | Averías por QR",
         "social": {
-            "og_title": "WinProx para industria | Facility por QR",
-            "og_description": "Averías y mantenimiento por QR: aviso, tarea, cierre. Una sola app de facility en planta."
+            "og_title": "WinProx para industria | Averías por QR",
+            "og_description": "De una avería en planta a una tarea para el equipo correcto. QR, aviso, tarea, cierre. Una sola app de facility."
         },
         "eyebrow": "Industria",
-        "title": "Siga las averías hasta el cierre",
-        "lead": "WinProx es una sola app de facility: avisar por QR, tareas al equipo, cierre. El mismo producto en planta o almacén.",
-        "why": {
-            "title": "Por qué funciona",
-            "items": [
-                "Los operarios escanean el QR del equipo y avisan de una avería con foto.",
-                "Mantenimiento recibe una tarea, no una cadena de llamadas.",
-                "La dirección ve lo que sigue abierto, sin software extra."
+        "title": "Avisar. Seguir. Cerrar.",
+        "lead": "De una avería en planta a una tarea clara para el equipo correcto. WinProx es una sola app de facility: avisar in situ, el equipo cierra.",
+        "flow": "QR → aviso → tarea → cierre",
+        "video": {
+            "title": "Así funciona WinProx",
+            "lead": "Un operario escanea el QR y avisa de una avería con foto. Mantenimiento recibe la tarea y la cierra. Sin app, sin cadena de llamadas."
+        },
+        "problem": {
+            "title": "Una avería no tiene que ser una llamada",
+            "lead": "Alguien ve un problema en una máquina, instalación o edificio. WinProx lo convierte en un flujo: la dirección lo sigue hasta el cierre.",
+            "questions": [
+                "¿A quién llamar?",
+                "¿Ya lo ha avisado alguien?",
+                "¿Quién hace el seguimiento?",
+                "¿Mantenimiento está en ello?",
+                "¿Se ha resuelto de verdad?"
             ]
+        },
+        "steps": {
+            "title": "Un solo flujo sencillo",
+            "items": [
+                {
+                    "title": "Escanear",
+                    "body": "El operario escanea el QR en la máquina, instalación, sala o ubicación."
+                },
+                {
+                    "title": "Avisar",
+                    "body": "El problema se avisa en el smartphone. Se puede añadir una foto al momento."
+                },
+                {
+                    "title": "Tarea",
+                    "body": "El aviso se convierte en una tarea clara para el equipo correcto."
+                },
+                {
+                    "title": "Resolver",
+                    "body": "Mantenimiento ejecuta la tarea y puede añadir una nota."
+                },
+                {
+                    "title": "Cerrado",
+                    "body": "La tarea se cierra. La dirección ve qué sigue abierto y qué está listo."
+                }
+            ]
+        },
+        "places": {
+            "title": "Del lugar físico al flujo digital",
+            "lead": "WinProx vincula el aviso al lugar donde nace el problema. Un QR puede ir, por ejemplo, en:",
+            "items": [
+                "máquinas",
+                "grúas",
+                "cintas transportadoras",
+                "instalaciones técnicas",
+                "almacenes",
+                "muelles de carga",
+                "cuartos técnicos",
+                "edificios",
+                "vehículos y otros activos"
+            ],
+            "close": "Nadie tiene que buscar el departamento correcto. Escanear el QR y avisar."
+        },
+        "roles": {
+            "title": "Hecho para la planta",
+            "items": [
+                {
+                    "title": "Para el personal",
+                    "body": "Avisar en segundos. Sin app ni cuenta: escanear el QR, describir el problema y añadir una foto si hace falta."
+                },
+                {
+                    "title": "Para mantenimiento",
+                    "body": "Una tarea clara en lugar de una cadena de llamadas. Ven qué hacer, dónde está y qué se avisó."
+                },
+                {
+                    "title": "Para responsables",
+                    "body": "Siempre una vista de lo abierto. Seguir avisos y tareas hasta el cierre."
+                }
+            ]
+        },
+        "sites": {
+            "title": "El mismo producto en el terreno",
+            "lead": "WinProx es una sola app de facility. En puertos, industria y logística es el mismo producto, no una edición por sector.",
+            "items": [
+                {
+                    "title": "Puertos y terminales",
+                    "body": "Grúas, reach stackers, cintas, equipos de carga, cuartos técnicos y edificios."
+                },
+                {
+                    "title": "Industria",
+                    "body": "Máquinas de producción, instalaciones técnicas, almacenes, HVAC, infraestructura y otros activos."
+                },
+                {
+                    "title": "Logística",
+                    "body": "Muelles, equipos de almacén, puertas, portones, medios de elevación e infraestructura técnica."
+                }
+            ]
+        },
+        "why": {
+            "title": "Por qué WinProx",
+            "items": [
+                "Sin app para quien avisa: bastan un smartphone y un QR.",
+                "Crear ubicaciones y equipos, colocar QR y empezar.",
+                "Un problema se convierte en tarea, no en un correo perdido.",
+                "La dirección sigue cada aviso hasta el cierre, ligado a la ubicación.",
+                "Una foto da contexto a mantenimiento al instante.",
+                "Avisos y tareas en un solo resumen."
+            ]
+        },
+        "start": {
+            "title": "Empiece pequeño. Amplíe cuando funcione.",
+            "lead": "No hace falta cambiar toda la organización. Empiece por una terminal, un edificio, un almacén o un equipo de mantenimiento.",
+            "trial": "Un mes gratis, hasta 50 units. Sin instalación."
+        },
+        "close": {
+            "title": "¿Listo para probarlo?",
+            "lead": "Cada lugar físico es un punto de aviso. Los responsables crean una cuenta; el personal escanea y avisa."
         }
     },
     "healthcare": {

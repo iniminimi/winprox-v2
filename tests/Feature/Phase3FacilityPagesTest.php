@@ -82,6 +82,23 @@ it('toont hospitality-video wanneer het bestand bestaat', function () {
         ->assertSee(basename($video), false);
 });
 
+it('toont de uitgebreide industry-landing met NL-video of placeholder', function () {
+    $this->get(route('industry', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('landings.industry.title', [], 'nl'))
+        ->assertSee(__('landings.industry.flow', [], 'nl'))
+        ->assertSee(__('landings.industry.problem.title', [], 'nl'))
+        ->assertSee(__('landings.industry.start.trial', [], 'nl'))
+        ->assertSee('industry_promo_nl.mp4', false)
+        ->assertDontSee('Bekijk demo', false);
+
+    $this->get(route('industry', ['locale' => 'fr']))
+        ->assertOk()
+        ->assertSee(__('landings.industry.title', [], 'fr'))
+        ->assertSee(__('landings.shared.video_placeholder', [], 'fr'))
+        ->assertSee('id="landing-video"', false);
+});
+
 it('toont hospitality-landing in het Frans', function () {
     $this->get(route('hospitality', ['locale' => 'fr']))
         ->assertOk()

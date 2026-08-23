@@ -5,7 +5,9 @@
         "cta_register": "Account aanmaken",
         "cta_login": "Inloggen",
         "recipient_welcome": "Welkom bezoeker van :label.",
-        "video_title": "WinProx in actie"
+        "video_title": "WinProx in actie",
+        "cta_video": "Bekijk hoe het werkt",
+        "video_placeholder": "Video volgt binnenkort in deze taal."
     },
     "hospitality": {
         "nav_label": "Horeca",
@@ -28,21 +30,125 @@
     },
     "industry": {
         "nav_label": "Industrie",
-        "meta_title": "WinProx voor industrie | Facility via QR",
+        "meta_title": "WinProx voor industrie | Storingen via QR",
         "social": {
-            "og_title": "WinProx voor industrie | Facility via QR",
-            "og_description": "Storingen en onderhoud via QR: melding, taak, afhandeling. Eén facility-app op de werkvloer."
+            "og_title": "WinProx voor industrie | Storingen via QR",
+            "og_description": "Van storing op de werkvloer naar een taak voor de juiste ploeg. QR, melding, taak, afhandeling. Eén facility-app."
         },
         "eyebrow": "Industrie",
-        "title": "Storingen volgen tot ze afgehandeld zijn",
-        "lead": "WinProx is één facility-app: melding via QR, taken naar het team, afhandeling. Op de plant of in het magazijn hetzelfde product.",
-        "why": {
-            "title": "Waarom dit werkt",
-            "items": [
-                "Operatoren scannen de QR bij de installatie en melden een storing met foto.",
-                "Onderhoud krijgt één taak, niet een keten van belletjes.",
-                "Beheer ziet wat openstaat zonder extra software."
+        "title": "Storingen melden. Opvolgen. Afhandelen.",
+        "lead": "Van een storing op de werkvloer naar een duidelijke taak voor de juiste ploeg. WinProx is één facility-app: technische problemen meld je vanaf de werkplek, het team handelt ze af.",
+        "flow": "QR-code → melding → taak → afhandeling",
+        "video": {
+            "title": "Zie hoe WinProx werkt",
+            "lead": "Een medewerker scant de QR-code, meldt een storing met foto. Onderhoud ontvangt de taak en handelt af. Geen app, geen telefoonketen."
+        },
+        "problem": {
+            "title": "Een storing hoeft geen telefoontje te worden",
+            "lead": "Een medewerker merkt een probleem op aan een machine, installatie of gebouw. Met WinProx wordt dat één workflow — beheer volgt tot afhandeling.",
+            "questions": [
+                "Wie moet hij bellen?",
+                "Heeft iemand het probleem al gemeld?",
+                "Wie volgt het op?",
+                "Is onderhoud ermee bezig?",
+                "Is het uiteindelijk opgelost?"
             ]
+        },
+        "steps": {
+            "title": "Eén eenvoudige workflow",
+            "items": [
+                {
+                    "title": "Scan",
+                    "body": "De medewerker scant de QR-code bij de machine, installatie, ruimte of locatie."
+                },
+                {
+                    "title": "Meld",
+                    "body": "Het probleem wordt gemeld via de smartphone. Een foto kan direct worden toegevoegd."
+                },
+                {
+                    "title": "Taak",
+                    "body": "De melding wordt een duidelijke taak voor de juiste ploeg of verantwoordelijke."
+                },
+                {
+                    "title": "Los op",
+                    "body": "Onderhoud voert de taak uit en kan toelichting toevoegen."
+                },
+                {
+                    "title": "Afgehandeld",
+                    "body": "De taak wordt afgesloten. Beheer ziet wat openstaat en wat klaar is."
+                }
+            ]
+        },
+        "places": {
+            "title": "Van fysieke locatie naar digitale workflow",
+            "lead": "WinProx koppelt de melding aan de plaats waar het probleem ontstaat. Een QR-code kan bijvoorbeeld op deze assets.",
+            "items": [
+                "machines",
+                "kranen",
+                "transportbanden",
+                "technische installaties",
+                "magazijnen",
+                "laadkades",
+                "technische ruimtes",
+                "gebouwen",
+                "voertuigen en andere assets"
+            ],
+            "close": "De medewerker hoeft niet te zoeken naar de juiste afdeling. Scan de QR-code en meld het probleem."
+        },
+        "roles": {
+            "title": "Gebouwd voor de werkvloer",
+            "items": [
+                {
+                    "title": "Voor medewerkers",
+                    "body": "Melden in enkele seconden. Geen app downloaden en geen account nodig: scan de QR-code, beschrijf het probleem en voeg eventueel een foto toe."
+                },
+                {
+                    "title": "Voor onderhoud",
+                    "body": "Eén duidelijke taak in plaats van een keten van telefoontjes. Onderhoud ziet wat er moet gebeuren, waar het zit en wat er gemeld is."
+                },
+                {
+                    "title": "Voor verantwoordelijken",
+                    "body": "Altijd overzicht van wat openstaat. Volg meldingen en taken tot ze zijn afgehandeld."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Hetzelfde product op de werkvloer",
+            "lead": "WinProx is één facility-app. Op havens, in de industrie en in de logistiek hetzelfde product — geen aparte sectorversie.",
+            "items": [
+                {
+                    "title": "Havens en terminals",
+                    "body": "Kranen, reachstackers, transportbanden, laad- en losinstallaties, technische ruimtes en gebouwen."
+                },
+                {
+                    "title": "Industrie",
+                    "body": "Productiemachines, technische installaties, magazijnen, HVAC, infrastructuur en andere assets."
+                },
+                {
+                    "title": "Logistiek",
+                    "body": "Laadkades, magazijninstallaties, deuren, poorten, hefmiddelen en technische infrastructuur."
+                }
+            ]
+        },
+        "why": {
+            "title": "Waarom WinProx",
+            "items": [
+                "Geen app voor wie meldt: smartphone en QR-code volstaan.",
+                "Locaties en teams aanmaken, QR-codes plaatsen, klaar.",
+                "Een probleem wordt een taak, geen e-mail die in een inbox verdwijnt.",
+                "Beheer volgt elke melding tot ze is afgehandeld, gekoppeld aan de locatie.",
+                "Een foto bij de melding geeft onderhoud meteen context.",
+                "Meldingen en taken in één overzicht."
+            ]
+        },
+        "start": {
+            "title": "Begin klein. Breid uit wanneer het werkt.",
+            "lead": "Je hoeft niet meteen de hele organisatie om te zetten. Start met één terminal, één gebouw, één magazijn of één onderhoudsteam.",
+            "trial": "Een maand gratis testen, tot 50 units. Geen installatie."
+        },
+        "close": {
+            "title": "Klaar om het zelf te proberen?",
+            "lead": "Maak van elke fysieke locatie een eenvoudig meldpunt. Beheerders maken een account; medewerkers scannen en melden."
         }
     },
     "healthcare": {

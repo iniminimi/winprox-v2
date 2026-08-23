@@ -5,7 +5,9 @@
         "cta_register": "Create an account",
         "cta_login": "Log in",
         "recipient_welcome": "Welcome, visitor from :label.",
-        "video_title": "WinProx in action"
+        "video_title": "WinProx in action",
+        "cta_video": "See how it works",
+        "video_placeholder": "Video coming soon in this language."
     },
     "hospitality": {
         "nav_label": "Hospitality",
@@ -28,21 +30,125 @@
     },
     "industry": {
         "nav_label": "Industry",
-        "meta_title": "WinProx for industry | Facility via QR",
+        "meta_title": "WinProx for industry | Faults via QR",
         "social": {
-            "og_title": "WinProx for industry | Facility via QR",
-            "og_description": "Faults and maintenance via QR: issue, task, completion. One facility app on the shop floor."
+            "og_title": "WinProx for industry | Faults via QR",
+            "og_description": "From a shop-floor fault to a task for the right crew. QR, report, task, completion. One facility app."
         },
         "eyebrow": "Industry",
-        "title": "Track faults until they are closed",
-        "lead": "WinProx is one facility app: report via QR, tasks to the team, completion. The same product on the plant or in the warehouse.",
-        "why": {
-            "title": "Why this works",
-            "items": [
-                "Operators scan the QR on the asset and report a fault with a photo.",
-                "Maintenance gets one task, not a chain of calls.",
-                "Managers see what is still open without extra software."
+        "title": "Report faults. Follow them. Close them.",
+        "lead": "From a shop-floor fault to a clear task for the right crew. WinProx is one facility app: report technical issues on site, the team completes them.",
+        "flow": "QR code → report → task → completion",
+        "video": {
+            "title": "See how WinProx works",
+            "lead": "A worker scans the QR code and reports a fault with a photo. Maintenance receives the task and closes it. No app, no phone chain."
+        },
+        "problem": {
+            "title": "A fault does not have to become a phone call",
+            "lead": "A worker notices a problem on a machine, installation or building. WinProx turns that into one workflow — managers follow it through to completion.",
+            "questions": [
+                "Who should they call?",
+                "Has someone already reported it?",
+                "Who is following it up?",
+                "Is maintenance working on it?",
+                "Was it actually fixed?"
             ]
+        },
+        "steps": {
+            "title": "One simple workflow",
+            "items": [
+                {
+                    "title": "Scan",
+                    "body": "The worker scans the QR code on the machine, installation, room or location."
+                },
+                {
+                    "title": "Report",
+                    "body": "The issue is reported on a smartphone. A photo can be added immediately."
+                },
+                {
+                    "title": "Task",
+                    "body": "The report becomes a clear task for the right crew."
+                },
+                {
+                    "title": "Fix",
+                    "body": "Maintenance carries out the task and can add notes."
+                },
+                {
+                    "title": "Closed",
+                    "body": "The task is closed. Managers see what is still open and what is done."
+                }
+            ]
+        },
+        "places": {
+            "title": "From a physical place to a digital workflow",
+            "lead": "WinProx ties the report to the place where the problem starts. A QR code can sit on assets such as:",
+            "items": [
+                "machines",
+                "cranes",
+                "conveyors",
+                "technical installations",
+                "warehouses",
+                "loading docks",
+                "plant rooms",
+                "buildings",
+                "vehicles and other assets"
+            ],
+            "close": "The worker does not have to find the right department. Scan the QR code and report the problem."
+        },
+        "roles": {
+            "title": "Built for the shop floor",
+            "items": [
+                {
+                    "title": "For workers",
+                    "body": "Report in seconds. No app to download and no account: scan the QR code, describe the problem and add a photo if needed."
+                },
+                {
+                    "title": "For maintenance",
+                    "body": "One clear task instead of a chain of calls. Maintenance sees what to do, where it is and what was reported."
+                },
+                {
+                    "title": "For managers",
+                    "body": "Always an overview of what is still open. Follow reports and tasks until they are closed."
+                }
+            ]
+        },
+        "sites": {
+            "title": "The same product on site",
+            "lead": "WinProx is one facility app. In ports, industry and logistics it is the same product — not a separate sector edition.",
+            "items": [
+                {
+                    "title": "Ports and terminals",
+                    "body": "Cranes, reach stackers, conveyors, loading gear, plant rooms and buildings."
+                },
+                {
+                    "title": "Industry",
+                    "body": "Production machines, technical installations, warehouses, HVAC, infrastructure and other assets."
+                },
+                {
+                    "title": "Logistics",
+                    "body": "Loading docks, warehouse equipment, doors, gates, lifting gear and technical infrastructure."
+                }
+            ]
+        },
+        "why": {
+            "title": "Why WinProx",
+            "items": [
+                "No app for the person who reports: a smartphone and a QR code are enough.",
+                "Create locations and teams, place QR codes, start.",
+                "A problem becomes a task, not an email lost in an inbox.",
+                "Managers follow every report to completion, tied to the location.",
+                "A photo with the report gives maintenance context at once.",
+                "Reports and tasks in one overview."
+            ]
+        },
+        "start": {
+            "title": "Start small. Grow when it works.",
+            "lead": "You do not have to convert the whole organisation at once. Start with one terminal, one building, one warehouse or one maintenance team.",
+            "trial": "One month free, up to 50 units. No install."
+        },
+        "close": {
+            "title": "Ready to try it?",
+            "lead": "Turn every physical place into a simple reporting point. Managers create an account; workers scan and report."
         }
     },
     "healthcare": {

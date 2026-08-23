@@ -5,7 +5,9 @@
         "cta_register": "Créer un compte",
         "cta_login": "Connexion",
         "recipient_welcome": "Bienvenue, visiteur de :label.",
-        "video_title": "WinProx en action"
+        "video_title": "WinProx en action",
+        "cta_video": "Voir comment ça marche",
+        "video_placeholder": "La vidéo arrive bientôt dans cette langue."
     },
     "hospitality": {
         "nav_label": "Horeca",
@@ -28,21 +30,125 @@
     },
     "industry": {
         "nav_label": "Industrie",
-        "meta_title": "WinProx pour l'industrie | Facility via QR",
+        "meta_title": "WinProx pour l'industrie | Pannes via QR",
         "social": {
-            "og_title": "WinProx pour l'industrie | Facility via QR",
-            "og_description": "Pannes et maintenance via QR : incident, tâche, clôture. Une seule app facility sur le site."
+            "og_title": "WinProx pour l'industrie | Pannes via QR",
+            "og_description": "D'une panne sur le site à une tâche pour la bonne équipe. QR, signalement, tâche, clôture. Une seule app facility."
         },
         "eyebrow": "Industrie",
-        "title": "Suivre les pannes jusqu'à la clôture",
-        "lead": "WinProx est une seule app facility : signaler via QR, tâches à l'équipe, clôture. Le même produit en usine ou en entrepôt.",
-        "why": {
-            "title": "Pourquoi ça marche",
-            "items": [
-                "Les opérateurs scannent le QR sur l'installation et signalent une panne avec photo.",
-                "La maintenance reçoit une tâche, pas une chaîne d'appels.",
-                "La direction voit ce qui reste ouvert, sans logiciel en plus."
+        "title": "Signaler. Suivre. Clôturer.",
+        "lead": "D'une panne sur le site à une tâche claire pour la bonne équipe. WinProx est une seule app facility : signaler sur place, l'équipe clôture.",
+        "flow": "QR → signalement → tâche → clôture",
+        "video": {
+            "title": "Voir comment WinProx fonctionne",
+            "lead": "Un opérateur scanne le QR, signale une panne avec photo. La maintenance reçoit la tâche et clôture. Pas d'app, pas de chaîne d'appels."
+        },
+        "problem": {
+            "title": "Une panne n'a pas besoin d'un appel",
+            "lead": "Un opérateur voit un problème sur une machine, une installation ou un bâtiment. WinProx en fait un seul flux — la direction suit jusqu'à la clôture.",
+            "questions": [
+                "Qui appeler ?",
+                "Quelqu'un l'a-t-il déjà signalé ?",
+                "Qui assure le suivi ?",
+                "La maintenance s'en occupe-t-elle ?",
+                "Est-ce vraiment résolu ?"
             ]
+        },
+        "steps": {
+            "title": "Un seul flux simple",
+            "items": [
+                {
+                    "title": "Scanner",
+                    "body": "L'opérateur scanne le QR sur la machine, l'installation, la pièce ou le lieu."
+                },
+                {
+                    "title": "Signaler",
+                    "body": "Le problème est signalé sur le smartphone. Une photo peut être ajoutée tout de suite."
+                },
+                {
+                    "title": "Tâche",
+                    "body": "Le signalement devient une tâche claire pour la bonne équipe."
+                },
+                {
+                    "title": "Réparer",
+                    "body": "La maintenance exécute la tâche et peut ajouter une note."
+                },
+                {
+                    "title": "Clôturé",
+                    "body": "La tâche est fermée. La direction voit ce qui reste ouvert et ce qui est fait."
+                }
+            ]
+        },
+        "places": {
+            "title": "Du lieu physique au flux numérique",
+            "lead": "WinProx lie le signalement au lieu où le problème apparaît. Un QR peut être placé sur :",
+            "items": [
+                "machines",
+                "grues",
+                "convoyeurs",
+                "installations techniques",
+                "entrepôts",
+                "quais de chargement",
+                "locaux techniques",
+                "bâtiments",
+                "véhicules et autres assets"
+            ],
+            "close": "L'opérateur n'a pas à chercher le bon service. Scanner le QR et signaler."
+        },
+        "roles": {
+            "title": "Conçu pour le terrain",
+            "items": [
+                {
+                    "title": "Pour les opérateurs",
+                    "body": "Signaler en quelques secondes. Pas d'app ni de compte : scanner le QR, décrire le problème, ajouter une photo si besoin."
+                },
+                {
+                    "title": "Pour la maintenance",
+                    "body": "Une tâche claire au lieu d'une chaîne d'appels. La maintenance voit quoi faire, où et ce qui a été signalé."
+                },
+                {
+                    "title": "Pour les responsables",
+                    "body": "Toujours une vue de ce qui reste ouvert. Suivre signalements et tâches jusqu'à la clôture."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Le même produit sur le site",
+            "lead": "WinProx est une seule app facility. Ports, industrie, logistique : le même produit — pas une édition par secteur.",
+            "items": [
+                {
+                    "title": "Ports et terminaux",
+                    "body": "Grues, reachstackers, convoyeurs, installations de chargement, locaux techniques et bâtiments."
+                },
+                {
+                    "title": "Industrie",
+                    "body": "Machines de production, installations techniques, entrepôts, CVC, infrastructure et autres assets."
+                },
+                {
+                    "title": "Logistique",
+                    "body": "Quais, équipements d'entrepôt, portes, portails, engins de levage et infrastructure technique."
+                }
+            ]
+        },
+        "why": {
+            "title": "Pourquoi WinProx",
+            "items": [
+                "Pas d'app pour qui signale : un smartphone et un QR suffisent.",
+                "Créer lieux et équipes, poser les QR, commencer.",
+                "Un problème devient une tâche, pas un e-mail perdu.",
+                "La direction suit chaque signalement jusqu'à la clôture, lié au lieu.",
+                "Une photo donne tout de suite le contexte à la maintenance.",
+                "Signalements et tâches dans un seul aperçu."
+            ]
+        },
+        "start": {
+            "title": "Commencer petit. Élargir quand ça marche.",
+            "lead": "Pas besoin de basculer toute l'organisation. Commencez par un terminal, un bâtiment, un entrepôt ou une équipe de maintenance.",
+            "trial": "Un mois d'essai gratuit, jusqu'à 50 units. Pas d'installation."
+        },
+        "close": {
+            "title": "Prêt à essayer ?",
+            "lead": "Chaque lieu physique devient un point de signalement. Les responsables créent un compte ; les opérateurs scannent et signalent."
         }
     },
     "healthcare": {

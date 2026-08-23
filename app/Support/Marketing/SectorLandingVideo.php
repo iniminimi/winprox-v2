@@ -18,6 +18,8 @@ final class SectorLandingVideo
 
         $upper = strtoupper($locale);
         $candidates = [
+            "video/{$locale}/{$slug}_promo_{$locale}.mp4",
+            "video/{$locale}/{$slug}_promo_{$upper}.mp4",
             "video/{$locale}/{$slug}_long_{$upper}.mp4",
             "video/{$locale}/{$slug}_{$upper}.mp4",
             "video/{$locale}/{$slug}_long_{$locale}.mp4",
