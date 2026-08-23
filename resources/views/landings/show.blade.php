@@ -20,7 +20,7 @@
                 @if (\Illuminate\Support\Facades\Lang::has($key.'.flow'))
                     <p class="wp-text-body">{{ __("{$key}.flow") }}</p>
                 @endif
-                <div class="wp-cluster wp-welcome-section--center">
+                <div class="wp-welcome-cta-row">
                     <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('landings.shared.cta_register') }}</a>
                     <a href="{{ route('login') }}" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_login') }}</a>
                     @if ($videoSrc !== null)

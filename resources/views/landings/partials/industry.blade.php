@@ -71,17 +71,10 @@
     <h2 class="wp-welcome-h3">{{ __("{$key}.start.title") }}</h2>
     <p class="wp-text-body">{{ __("{$key}.start.lead") }}</p>
     <p class="wp-text-body">{{ __("{$key}.start.trial") }}</p>
-    <div>
-        <a href="{{ route('register') }}" class="btn btn--primary">{{ __('landings.shared.cta_register') }}</a>
-    </div>
 </article>
 
 <article class="wp-card wp-card-pad wp-stack wp-welcome-section--center">
     <h2 class="wp-welcome-h3">{{ __("{$key}.close.title") }}</h2>
     <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.close.lead") }}</p>
     <p class="wp-text-body">{{ __("{$key}.flow") }}</p>
-    <div class="wp-cluster wp-welcome-section--center">
-        <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('landings.shared.cta_register') }}</a>
-        <a href="{{ route('login') }}" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_login') }}</a>
-    </div>
 </article>
