@@ -91,7 +91,9 @@ it('toont gemeentenaam in welkomstkader bij landing via ref', function () {
 
     $this->get(route('government', ['ref' => $recipient->token]))
         ->assertOk()
-        ->assertSee(__('landings.shared.recipient_welcome', ['label' => 'Aalter']));
+        ->assertSee(__('landings.shared.recipient_welcome'))
+        ->assertSee('Aalter')
+        ->assertDontSee('bezoeker van');
 });
 
 it('logt geen landing-bezoek bij bekende mailscanner user-agent', function () {

@@ -14,6 +14,12 @@
     <div class="wp-welcome-section wp-welcome-section--alt wp-welcome-faq-page">
         <div class="wp-welcome-main wp-welcome-section-inner--wide wp-stack">
             <div class="wp-welcome-section--center wp-welcome-section-inner">
+                @if (! empty($promoRecipientLabel))
+                    <div class="wp-landing-recipient-welcome" role="status">
+                        <p class="wp-landing-recipient-welcome__greeting">{{ __('landings.shared.recipient_welcome') }}</p>
+                        <p class="wp-landing-recipient-welcome__name">{{ $promoRecipientLabel }}</p>
+                    </div>
+                @endif
                 <span class="wp-welcome-eyebrow">{{ __("{$key}.eyebrow") }}</span>
                 <h1 class="wp-welcome-h2">{{ __("{$key}.title") }}</h1>
                 <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.lead") }}</p>
@@ -28,12 +34,6 @@
                     @endif
                 </div>
             </div>
-
-            @if (! empty($promoRecipientLabel))
-                <div class="wp-flash wp-flash--muted" role="status">
-                    <p class="wp-text-body">{{ __('landings.shared.recipient_welcome', ['label' => $promoRecipientLabel]) }}</p>
-                </div>
-            @endif
 
             @if ($reserveVideo)
                 <article id="landing-video" class="wp-card wp-card-pad wp-stack">

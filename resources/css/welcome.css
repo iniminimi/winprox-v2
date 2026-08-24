@@ -361,6 +361,33 @@
     text-align: center;
 }
 
+[data-theme='standard'] .wp-landing-recipient-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    margin: 0 0 1.75rem;
+    text-align: center;
+}
+
+[data-theme='standard'] .wp-landing-recipient-welcome__greeting {
+    margin: 0;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--wp-text);
+}
+
+[data-theme='standard'] .wp-landing-recipient-welcome__name {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--wp-text);
+}
+
 [data-theme='standard'] .wp-welcome-section-inner {
     max-width: 48rem;
     margin: 0 auto;
