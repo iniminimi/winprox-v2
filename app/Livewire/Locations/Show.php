@@ -490,6 +490,11 @@ class Show extends Component
             ? StoreUnitRequest::ruleSet($this->location->id, null, (int) auth()->user()->tenant_id)
             : UpdateUnitRequest::ruleSetFor($this->location->id, $this->editingUnitId, (int) auth()->user()->tenant_id);
 
+        $photoSlotsLeft = 4;
+        if ($this->editingUnitId !== null) {
+            $photoSlotsLeft = max(0, 4 - (int) QrLinkPhoto::query()->where('unit_id', $this->editingUnitId)->count());
+        }
+
         $validated = $this->validate([
             'unitName' => $rules['name'],
             'unitDescription' => $rules['description'],
@@ -500,7 +505,7 @@ class Show extends Component
             'unitAllowReservations' => $rules['allow_reservations'],
             'unitAllowUnitChecks' => $rules['allow_unit_checks'],
             'unitRequireReporterContact' => $rules['require_reporter_contact'],
-            'unitPhotos' => ['nullable', 'array', 'max:4'],
+            'unitPhotos' => ['nullable', 'array', 'max:'.$photoSlotsLeft],
             'unitPhotos.*' => ['image', 'max:10240'],
         ], [
             'unitName.required' => __('locations.units.errors.name_required'),

@@ -273,7 +273,7 @@
             <form
                 x-data
                 x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
-                @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.saveUnit()"
+                x-on:submit.prevent="(async () => { await window.wpAwaitPhotoUploads?.($el); await $wire.saveUnit(); })()"
                 class="wp-card wp-card-pad wp-stack wp-modal-card"
             >
                 <div class="wp-modal-head">
@@ -415,17 +415,15 @@
                 @if ($editingUnitId && $this->editingUnit)
                     @php
                         $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;
-                        $tempCount = count($unitPhotos);
-                        $totalCount = $storedCount + $tempCount;
-                        $canAddMore = $totalCount < 4;
+                        $photoSlotsLeft = max(0, 4 - $storedCount);
                     @endphp
 
-                    <div class="wp-field" wire:key="unit-photos-section-{{ $totalCount }}">
+                    <div class="wp-field">
                         <x-wp-tooltip :text="__('locations.units.edit.photos_hint')" wrap class="wp-tooltip--block">
                             <span class="wp-label">{{ __('locations.units.edit.photos_label') }}</span>
                         </x-wp-tooltip>
 
-                        @if ($totalCount > 0)
+                        @if ($storedCount > 0)
                             <div
                                 class="wp-photo-gallery"
                                 x-data="{ lightboxSrc: null }"
@@ -452,24 +450,6 @@
                                             </div>
                                         @endif
                                     @endforeach
-
-                                    @foreach ($unitPhotos as $index => $photo)
-                                        <div class="wp-photo-thumb" wire:key="temp-photo-{{ $index }}">
-                                            <button
-                                                type="button"
-                                                style="background:none;border:none;padding:0;width:100%;height:100%;"
-                                                @click="lightboxSrc = @js($photo->temporaryUrl())"
-                                                aria-label="{{ __('issues.show.photo_enlarge') }}"
-                                            >
-                                                <img src="{{ $photo->temporaryUrl() }}" alt="" width="80" height="80" loading="lazy">
-                                            </button>
-                                            <button
-                                                type="button"
-                                                class="wp-photo-remove"
-                                                wire:click="removeUnitTempPhoto({{ $index }})"
-                                            >×</button>
-                                        </div>
-                                    @endforeach
                                 </div>
 
                                 <div
@@ -486,8 +466,13 @@
                             </div>
                         @endif
 
-                        @if ($canAddMore)
-                            @include('partials.wp-issue-photo-upload', ['model' => 'unitPhotos', 'showHint' => false])
+                        @if ($photoSlotsLeft > 0)
+                            @include('partials.wp-issue-photo-upload', [
+                                'model' => 'unitPhotos',
+                                'showHint' => false,
+                                'removeMethod' => 'removeUnitTempPhoto',
+                                'max' => $photoSlotsLeft,
+                            ])
                         @endif
 
                         @error('unitPhotos') <p class="wp-error">{{ $message }}</p> @enderror

@@ -5,10 +5,10 @@ namespace App\Actions\Locations;
 use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
 use App\Actions\Communication\InvalidateUnitTranslationsOnSourceChangeAction;
 use App\Actions\Issues\RemoveUnitsFromInspectionRoundsAction;
-use App\Models\QrLinkPhoto;
+use App\Actions\QrCodes\StoreQrLinkPhotosAction;
+use App\Enums\QrCodeStatus;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
-use App\Support\IssuePhotoStorage;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Schema;
 
@@ -16,7 +16,7 @@ class UpdateUnitAction
 {
     public function __construct(
         private AuditRecorder $audit,
-        private IssuePhotoStorage $storage,
+        private StoreQrLinkPhotosAction $storeQrLinkPhotos,
         private InvalidateUnitTranslationsOnSourceChangeAction $invalidateTranslations,
         private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
         private RemoveUnitsFromInspectionRoundsAction $removeFromRounds,
@@ -79,22 +79,17 @@ class UpdateUnitAction
 
         $storedPhotoCount = 0;
         if (! empty($photos)) {
-            $fresh->loadMissing(['qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)]);
-            $qrCode = $fresh->qrCodes->first();
+            $activeQr = $fresh->qrCodes()
+                ->where('status', QrCodeStatus::Active)
+                ->orderBy('id')
+                ->first();
 
-            if ($qrCode !== null) {
-                foreach ($photos as $photo) {
-                    if ($photo instanceof UploadedFile) {
-                        QrLinkPhoto::create([
-                            'tenant_id' => (int) $fresh->tenant_id,
-                            'qr_code_id' => (int) $qrCode->id,
-                            'unit_id' => (int) $fresh->id,
-                            'path' => $this->storage->storePrecompressedCopy($photo),
-                        ]);
-                        $storedPhotoCount++;
-                    }
-                }
-            }
+            $storedPhotoCount = $this->storeQrLinkPhotos->handle(
+                unit: $fresh,
+                qrCode: $activeQr,
+                photos: $photos,
+                actorUserId: $actorUserId,
+            );
         }
 
         $this->audit->record(
