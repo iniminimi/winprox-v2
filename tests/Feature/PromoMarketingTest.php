@@ -93,6 +93,7 @@ it('toont gemeentenaam in welkomstkader bij landing via ref', function () {
         ->assertOk()
         ->assertSee(__('landings.shared.recipient_welcome'))
         ->assertSee('Aalter')
+        ->assertSee('wp-card wp-card-pad wp-landing-recipient-welcome', false)
         ->assertDontSee('bezoeker van');
 });
 

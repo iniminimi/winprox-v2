@@ -15,7 +15,7 @@
         <div class="wp-welcome-main wp-welcome-section-inner--wide wp-stack">
             <div class="wp-welcome-section--center wp-welcome-section-inner">
                 @if (! empty($promoRecipientLabel))
-                    <div class="wp-landing-recipient-welcome" role="status">
+                    <div class="wp-card wp-card-pad wp-landing-recipient-welcome" role="status">
                         <p class="wp-landing-recipient-welcome__greeting">{{ __('landings.shared.recipient_welcome') }}</p>
                         <p class="wp-landing-recipient-welcome__name">{{ $promoRecipientLabel }}</p>
                     </div>
