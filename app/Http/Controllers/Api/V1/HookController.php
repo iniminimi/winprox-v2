@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Actions\Marketing\ProcessSesPromoNotificationsAction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -29,21 +28,5 @@ class HookController extends Controller
         }
 
         return response()->json(['data' => ['received' => true]]);
-    }
-
-    public function sesPromo(Request $request, ProcessSesPromoNotificationsAction $process): JsonResponse
-    {
-        $expected = (string) config('winprox.ses_sns_token', '');
-        $token = (string) $request->query('token', '');
-        if ($expected === '' || $token === '' || ! hash_equals($expected, $token)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
-
-        $payload = json_decode($request->getContent(), true);
-        if (! is_array($payload)) {
-            return response()->json(['message' => 'Invalid payload'], 400);
-        }
-
-        return $this->success($process->handle($payload));
     }
 }

@@ -75,7 +75,7 @@ class PromoCampaignEdit extends Component
 
     public bool $emailCheckDone = false;
 
-    public int $delaySeconds = 1;
+    public int $delaySeconds = 20;
 
     public string $testEmailTo = '';
 

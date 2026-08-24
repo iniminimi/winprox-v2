@@ -7,12 +7,10 @@ return [
         'address' => env('WINPROX_MUNICIPAL_PROMO_EMAIL_FROM', 'dominique.schaepdrijver@winprox.app'),
         'name' => env('WINPROX_MUNICIPAL_PROMO_EMAIL_FROM_NAME', 'Dominique Schaepdrijver'),
     ],
-    // Promo campaigns send via Amazon SES by default (not Cloud86 SMTP).
-    'promo_mailer' => env('WINPROX_PROMO_MAILER', 'ses'),
-    // Token for SES SNS bounce/complaint webhook (?token=). Empty = webhook disabled.
-    'ses_sns_token' => env('WINPROX_SES_SNS_TOKEN', ''),
-    // SES: 1s is enough. Use 20 only when WINPROX_PROMO_MAILER=municipal_promo (Cloud86 ~250/hour).
-    'promo_campaign_email_min_interval_seconds' => (int) env('WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS', 1),
+    // Promo campaigns use Cloud86 SMTP (mailer municipal_promo). Do not switch to Amazon SES.
+    'promo_mailer' => env('WINPROX_PROMO_MAILER', 'municipal_promo'),
+    // Cloud86 shared SMTP ~250 outgoing / hour → 20s between promo mails.
+    'promo_campaign_email_min_interval_seconds' => (int) env('WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS', 20),
     // Emergency kill switch for bulk promo sending (campaign UI pause + queued jobs).
     'promo_campaign_emails_enabled' => filter_var(env('WINPROX_PROMO_EMAILS_ENABLED', true), FILTER_VALIDATE_BOOLEAN),
 ];

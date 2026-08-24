@@ -52,23 +52,20 @@ php artisan schedule:run -v
 
 ## Promo-mails
 
-Jobs met vertraging (`delay-seconds`, standaard **1** bij Amazon SES) worden verwerkt terwijl de cron-worker
+Jobs met vertraging (`delay-seconds`, standaard **20** voor Cloud86 SMTP) worden verwerkt terwijl de cron-worker
 pollt (max. ~55 s per minuut).
 
-**Promo-campagnes gaan via Amazon SES**, niet via Cloud86 SMTP. Daardoor telt bulk-mail niet mee
-voor de Cloud86-limiet van ~250 mails/uur. Transactionele app-mail blijft SMTP.
+**Promo-campagnes gaan via Cloud86 SMTP** (`WINPROX_PROMO_MAILER=municipal_promo`), dezelfde limiet van
+~250 mails/uur. Amazon SES is niet in gebruik (production access geweigerd, augustus 2026).
 
-- UI/queue: `WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS` (default **1** bij SES).
-- De harde **SMTP-throttle** (`PromoSmtpThrottle`) geldt alleen als `WINPROX_PROMO_MAILER=municipal_promo`.
+- UI/queue: `WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS` (default **20**).
+- De harde **SMTP-throttle** (`PromoSmtpThrottle`) voorkomt dat queue-workers sneller sturen dan Cloud86 toelaat.
 
 Env:
 
 ```env
-WINPROX_PROMO_MAILER=ses
-WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS=1
-AWS_ACCESS_KEY_ID=…
-AWS_SECRET_ACCESS_KEY=…
-AWS_DEFAULT_REGION=eu-west-1
+WINPROX_PROMO_MAILER=municipal_promo
+WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS=20
 ```
 
 ## Promo-mails onderbreken

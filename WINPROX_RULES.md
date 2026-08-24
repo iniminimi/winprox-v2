@@ -39,6 +39,10 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
   Gebruik dit pad expliciet (niet `python` uit PATH — dat kan de Windows Store-stub zijn).
   Geschikt voor bulkbewerkingen (bv. locale/JSON) wanneer dat sneller/veiliger is dan handmatig
   patchen. **Tijdelijke scripts altijd opruimen** na gebruik — nooit in de repo laten staan.
+- **Promo-mail = Cloud86 SMTP** (`municipal_promo`). Amazon SES is in augustus 2026 geprobeerd
+  (domein `winprox.app` geverifieerd in `eu-west-1`); **production access is geweigerd**. Niet
+  opnieuw inbouwen: geen SES-mailer, geen SNS-hook, geen `aws/aws-sdk-php` voor e-mail.
+  Interval **20 seconden** (`PromoSmtpThrottle`, Cloud86 ~250 mails/uur). Bounces via IMAP.
 
 ---
 

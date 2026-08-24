@@ -24,6 +24,8 @@ Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bi
   bulkbewerkingen (bv. locale/JSON) wanneer dit aantoonbaar sneller en veiliger
   is dan handmatig patchen. **Tijdelijke scripts altijd opruimen** na gebruik
   (verwijderen uit `scripts/` of elders) — nooit in de repo laten staan.
+- **Promo-mail = Cloud86 SMTP.** Amazon SES is geprobeerd (augustus 2026); production access
+  geweigerd. Niet opnieuw inbouwen. Interval 20 s; bounces via IMAP. Zie `WINPROX_RULES.md` §1.
 - **Geen UTF-8 BOM** in bronbestanden of `.env` — breekt Livewire/Alpine/login lokaal
   (zie `no-utf8-bom.mdc`; `npm run check:bom` + pre-commit + `check:architecture`).
 - **Geen** extra lagen (repositories, service-duplicatie, static helpers met business logic).

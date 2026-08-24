@@ -19,7 +19,7 @@ class PromoCampaignLetterMail extends Mailable
         public string $mailLocale,
     ) {
         $this->locale($mailLocale);
-        $this->mailer((string) config('winprox.promo_mailer', 'ses'));
+        $this->mailer((string) config('winprox.promo_mailer', 'municipal_promo'));
     }
 
     public function envelope(): Envelope

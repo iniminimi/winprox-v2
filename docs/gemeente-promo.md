@@ -112,17 +112,9 @@ Na het genereren van de DOCX-brieven kun je per gemeente een e-mail versturen me
 
 **Afzender:** `dominique.schaepdrijver@winprox.app` (configureerbaar via `WINPROX_MUNICIPAL_PROMO_EMAIL_FROM`). Replies komen op dat Cloud86-postvak binnen.
 
-Promo-campagnes (en gemeentemails) gaan via **Amazon SES** (`WINPROX_PROMO_MAILER=ses`). Transactionele app-mail (wachtwoordreset, meldingen) blijft Cloud86 SMTP (`MAIL_USERNAME=info@winprox.app`). Fallback naar de oude SMTP-mailer: `WINPROX_PROMO_MAILER=municipal_promo`.
+Promo-campagnes (en gemeentemails) gaan via **Cloud86 SMTP** (`WINPROX_PROMO_MAILER=municipal_promo`). Zelfde limiet als de mailbox: grofweg **250 mails/uur** — vandaar `WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS=20` en `PromoSmtpThrottle`. Transactionele app-mail (wachtwoordreset, meldingen) gebruikt dezelfde SMTP (`MAIL_USERNAME=info@winprox.app`). Bounces via de IMAP-bouncescanner.
 
-### Amazon SES (productie)
-
-1. IAM-user met `ses:SendEmail` / `ses:SendRawEmail` (regio **eu-west-1**).
-2. Domain identity `winprox.app` verifiëren (DNS).
-3. SES sandbox verlaten (productie-access aanvragen).
-4. Configuration set + SNS-topic → HTTPS `https://winprox.app/api/v1/hooks/ses-promo?token=…` (`WINPROX_SES_SNS_TOKEN`).
-5. `.env`: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION=eu-west-1`, `WINPROX_PROMO_MAILER=ses`, `WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS=1`.
-
-Bounces/complaints via SES SNS markeren het adres als onbestelbaar (zelfde actie als de IMAP-bouncescanner). IMAP blijft bruikbaar als extra vangnet.
+Amazon SES is **niet** in gebruik: in augustus 2026 is production access aangevraagd en geweigerd. Niet opnieuw inbouwen.
 
 ### Werkwijze (veilig)
 

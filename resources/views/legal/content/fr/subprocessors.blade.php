@@ -20,12 +20,7 @@
         </tr>
         <tr>
             <td>SMTP Cloud86</td>
-            <td>E-mails transactionnels de l’application</td>
-            <td>UE</td>
-        </tr>
-        <tr>
-            <td>Amazon SES</td>
-            <td>Envoi des campagnes promotionnelles</td>
+            <td>E-mails transactionnels de l’application et campagnes promo</td>
             <td>UE</td>
         </tr>
         <tr>

@@ -1,0 +1,16 @@
+---
+description: Promo-campagnes mailen via Cloud86, niet Amazon SES
+globs: app/Mail/Marketing/**,app/Actions/Marketing/**,config/winprox.php,config/mail.php,routes/api.php
+---
+
+# Promo-mailer (hard)
+
+Promo-campagnes en gemeentemails gaan via **Cloud86 SMTP** (`WINPROX_PROMO_MAILER=municipal_promo`).
+
+Amazon SES is in **augustus 2026** geprobeerd (`eu-west-1`, identity `winprox.app` geverifieerd). AWS
+heeft **geen production access** gegeven. Daarom:
+
+- **Niet** opnieuw SES inbouwen (geen `ses`-mailer voor promo, geen `/api/v1/hooks/ses-promo`,
+  geen `aws/aws-sdk-php` voor verzenden).
+- Interval **20 seconden** + `PromoSmtpThrottle` (Cloud86 ~250 mails/uur).
+- Bounces: bestaande IMAP-scanner, niet SES SNS.

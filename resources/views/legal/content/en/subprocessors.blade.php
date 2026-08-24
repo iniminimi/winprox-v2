@@ -20,12 +20,7 @@
         </tr>
         <tr>
             <td>Cloud86 SMTP</td>
-            <td>Transactional application email</td>
-            <td>EU</td>
-        </tr>
-        <tr>
-            <td>Amazon SES</td>
-            <td>Promotional campaign delivery</td>
+            <td>Transactional application email and promo campaigns</td>
             <td>EU</td>
         </tr>
         <tr>

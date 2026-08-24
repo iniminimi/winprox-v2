@@ -24,10 +24,6 @@ Route::prefix('v1')->group(function () {
         ->middleware('throttle:60,1')
         ->name('api.v1.hooks.inbound');
 
-    Route::post('hooks/ses-promo', [HookController::class, 'sesPromo'])
-        ->middleware('throttle:120,1')
-        ->name('api.v1.hooks.ses-promo');
-
     // IoT Connect ingest: gateway-token, buiten full Sanctum API (Facility + Corporate).
     Route::post('iot/events', [IotEventController::class, 'store'])
         ->middleware(['iot.gateway', 'throttle:120,1', 'idempotency'])
