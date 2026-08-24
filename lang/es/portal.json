@@ -4,6 +4,7 @@
         "og_description": "Escanee el código QR para informar de una incidencia o seguir tareas — sin cuenta."
     },
     "back": "Volver",
+    "powered_by": "Powered by WinProx.app",
     "welcome_title": "Bienvenido al portal de :tenant",
     "offline_message": "Sin conexión a internet. Desplácese a un lugar con cobertura para iniciar o detener tareas.",
     "pending_review": "Pendiente de revisión",

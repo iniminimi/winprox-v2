@@ -4,6 +4,7 @@
         "og_description": "Scan the QR code to report an issue or follow tasks — no account required."
     },
     "back": "Back",
+    "powered_by": "Powered by WinProx.app",
     "welcome_title": "Welcome to the :tenant portal",
     "offline_message": "No internet connection. Move to a place with coverage to start or stop tasks.",
     "pending_review": "Awaiting review",

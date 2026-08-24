@@ -4,6 +4,7 @@
         "og_description": "Scansioni il codice QR per segnalare un problema o seguire le attività — nessun account richiesto."
     },
     "back": "Indietro",
+    "powered_by": "Powered by WinProx.app",
     "welcome_title": "Benvenuto nel portale :tenant",
     "offline_message": "Nessuna connessione internet. Si sposti in un luogo con copertura per avviare o terminare attività.",
     "pending_review": "In attesa di revisione",

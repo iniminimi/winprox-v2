@@ -68,6 +68,16 @@ it('shows tenant welcome title and unit context above home tiles', function () {
         ->assertSee('Printer A', false);
 });
 
+it('renders powered-by as a button to the public site in the portal language', function () {
+    unitPortalScaffold();
+
+    $this->get(route('public.unit-portal', ['token' => 'unit-token', 'lang' => 'fr']))
+        ->assertOk()
+        ->assertSee('href="https://www.winprox.app/fr"', false)
+        ->assertSee('>'.__('portal.powered_by').'</a>', false)
+        ->assertSee('class="btn btn--primary"', false);
+});
+
 it('includes portal open graph meta tags on the unit portal page', function () {
     app()->setLocale('nl');
     unitPortalScaffold();

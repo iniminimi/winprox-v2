@@ -29,6 +29,9 @@
     if ($portalBgUrl === null) {
         $portalBgUrl = $tenant ? $tenant->portalBackgroundPublicUrl() : null;
     }
+
+    $winproxSiteLocale = \App\Support\Translation\LocaleSupport::normalize(app()->getLocale());
+    $winproxSiteUrl = 'https://www.winprox.app/'.$winproxSiteLocale;
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" translate="no"
@@ -74,7 +77,12 @@
         {{ $slot }}
         
         <div class="wp-portal-footer">
-            <span class="wp-chip">Powered by WinProx.app</span>
+            <a
+                href="{{ $winproxSiteUrl }}"
+                class="btn btn--primary"
+                target="_blank"
+                rel="noopener noreferrer"
+            >{{ __('portal.powered_by') }}</a>
         </div>
     </main>
 

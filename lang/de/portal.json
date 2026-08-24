@@ -4,6 +4,7 @@
         "og_description": "QR-Code scannen, Problem melden oder Aufgaben verfolgen — ohne Konto."
     },
     "back": "Zurück",
+    "powered_by": "Powered by WinProx.app",
     "welcome_title": "Willkommen im Portal von :tenant",
     "offline_message": "Keine Internetverbindung. Gehen Sie an einen Ort mit Empfang, um Aufgaben zu starten oder zu beenden.",
     "pending_review": "Wartet auf Prüfung",

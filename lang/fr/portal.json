@@ -4,6 +4,7 @@
         "og_description": "Scannez le QR code pour signaler un problème ou suivre les tâches — sans compte."
     },
     "back": "Retour",
+    "powered_by": "Powered by WinProx.app",
     "welcome_title": "Bienvenue sur le portail de :tenant",
     "offline_message": "Pas de connexion internet. Allez vers un endroit avec couverture pour démarrer ou arrêter les tâches.",
     "pending_review": "En attente de contrôle",
