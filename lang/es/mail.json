@@ -37,10 +37,16 @@
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirma tu informe",
-        "intro": "Confirma tu correo para el informe del portal QR de :tenant. Solo entonces se crea el informe.",
+        "intro": "Hemos recibido un informe a través del portal QR de :tenant. Comprueba que es el tuyo y confirma tu correo. Solo entonces se crea el informe.",
         "field_location": "Ubicación / unidad",
+        "field_reporter": "Informado por",
+        "field_description": "Descripción",
+        "field_photos": "Fotos",
+        "photos_count": ":count foto|:count fotos",
         "cta": "Confirmar informe",
-        "link_fallback": "Si el botón no funciona, copia este enlace:"
+        "link_fallback": "Si el botón no funciona, copia este enlace:",
+        "expiry": "Este enlace es válido :minutes minutos.",
+        "footer": "¿No enviaste este informe? No hace falta hacer nada: sin confirmación no se crea ningún informe."
     },
     "new_tenant": {
         "subject": "WinProx: nueva organización registrada — :tenant",

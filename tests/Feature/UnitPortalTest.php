@@ -267,7 +267,7 @@ it('holds a QR report until the reporter confirms email when both flags are on',
             && str_contains($subject, '—')
             && str_contains($html, '/melden/e/')
             && ! str_contains($html, '/melden/bevestig-email/')
-            && ! str_contains($html, 'Lekkage in de keuken.')
+            && str_contains($html, 'Lekkage in de keuken.')
             && ! str_contains($html, '/storage/');
     });
 

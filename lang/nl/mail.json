@@ -37,10 +37,16 @@
     },
     "verify_qr_report_email": {
         "subject": ":tenant — bevestig je melding",
-        "intro": "Bevestig je e-mailadres voor de melding via het QR-portaal van :tenant. Pas daarna wordt de melding aangemaakt.",
+        "intro": "We ontvingen een melding via het QR-portaal van :tenant. Controleer of dit jouw melding is en bevestig je e-mailadres. Pas daarna wordt de melding aangemaakt.",
         "field_location": "Locatie / unit",
+        "field_reporter": "Gemeld door",
+        "field_description": "Omschrijving",
+        "field_photos": "Foto's",
+        "photos_count": ":count foto|:count foto's",
         "cta": "Melding bevestigen",
-        "link_fallback": "Als de knop niet werkt, kopieer dan deze link:"
+        "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",
+        "expiry": "Deze link is :minutes minuten geldig.",
+        "footer": "Heb je deze melding niet gedaan? Dan hoef je niets te doen: zonder bevestiging wordt er geen melding aangemaakt."
     },
     "new_tenant": {
         "subject": "WinProx: nieuwe organisatie geregistreerd — :tenant",

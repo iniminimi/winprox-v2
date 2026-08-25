@@ -37,10 +37,16 @@
     },
     "verify_qr_report_email": {
         "subject": ":tenant — Meldung bestätigen",
-        "intro": "Bestätigen Sie Ihre E-Mail-Adresse für die Meldung über das QR-Portal von :tenant. Erst danach wird die Meldung erstellt.",
+        "intro": "Wir haben eine Meldung über das QR-Portal von :tenant erhalten. Prüfen Sie, ob dies Ihre Meldung ist, und bestätigen Sie Ihre E-Mail-Adresse. Erst danach wird die Meldung erstellt.",
         "field_location": "Standort / Unit",
+        "field_reporter": "Gemeldet von",
+        "field_description": "Beschreibung",
+        "field_photos": "Fotos",
+        "photos_count": ":count Foto|:count Fotos",
         "cta": "Meldung bestätigen",
-        "link_fallback": "Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link:"
+        "link_fallback": "Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link:",
+        "expiry": "Dieser Link ist :minutes Minuten gültig.",
+        "footer": "Haben Sie diese Meldung nicht gemacht? Dann ist nichts zu tun: ohne Bestätigung wird keine Meldung erstellt."
     },
     "new_tenant": {
         "subject": "WinProx: neue Organisation registriert — :tenant",

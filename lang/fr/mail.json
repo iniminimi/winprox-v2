@@ -37,10 +37,16 @@
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirmez votre signalement",
-        "intro": "Confirmez votre e-mail pour le signalement via le portail QR de :tenant. Le signalement n’est créé qu’après.",
+        "intro": "Nous avons reçu un signalement via le portail QR de :tenant. Vérifiez qu’il s’agit du vôtre et confirmez votre e-mail. Le signalement n’est créé qu’après.",
         "field_location": "Lieu / unité",
+        "field_reporter": "Signalé par",
+        "field_description": "Description",
+        "field_photos": "Photos",
+        "photos_count": ":count photo|:count photos",
         "cta": "Confirmer le signalement",
-        "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :"
+        "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :",
+        "expiry": "Ce lien est valable :minutes minutes.",
+        "footer": "Vous n’avez pas fait ce signalement ? Aucune action n’est requise : sans confirmation, aucun signalement n’est créé."
     },
     "new_tenant": {
         "subject": "WinProx : nouvelle organisation enregistrée — :tenant",

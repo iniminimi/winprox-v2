@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 use Symfony\Component\Mime\Email as SymfonyEmail;
 
 class VerifyQrReportEmailMail extends Mailable
@@ -41,10 +42,16 @@ class VerifyQrReportEmailMail extends Mailable
     public function content(): Content
     {
         $confirmUrl = URL::route('public.qr-report-email-confirm', ['token' => $this->hold->token], true);
+        $expiresInMinutes = max(1, (int) config('portal.qr_report_email_verification.expire_minutes', 60));
         $unit = $this->hold->unit;
         $location = $unit?->location;
         $locationLine = collect([$location?->name, $unit?->name])->filter()->join(' · ');
         $tenantName = (string) ($this->hold->tenant?->name ?? config('app.name'));
+        $description = Str::limit(
+            trim(preg_replace('/\s+/u', ' ', strip_tags((string) ($this->hold->description ?? ''))) ?? ''),
+            500,
+        );
+        $photoCount = count($this->hold->storedPhotoPaths());
 
         return new Content(
             html: 'emails.contact.winprox-template',
@@ -53,8 +60,13 @@ class VerifyQrReportEmailMail extends Mailable
                 'bodyText' => '',
                 'bodyHtml' => view('emails.public.verify-qr-report-email-body', [
                     'confirmUrl' => $confirmUrl,
+                    'expiresInMinutes' => $expiresInMinutes,
                     'tenantName' => $tenantName,
                     'locationLine' => $locationLine,
+                    'address' => $location?->formattedAddress() ?? '',
+                    'reporterName' => (string) ($this->hold->reporter_name ?? ''),
+                    'description' => $description,
+                    'photoCount' => $photoCount,
                 ])->render(),
             ],
         );
