@@ -61,6 +61,7 @@
             "description_required": "Please describe the report.",
             "description_max": "The description is too long (max. 500 characters).",
             "reporter_email_invalid": "Please enter a valid email address.",
+            "reporter_email_undeliverable": "This email address cannot receive messages. Please use another address.",
             "photos_max": "You can add up to 4 photos.",
             "photos_image": "Only images are allowed.",
             "photos_size": "A photo is too large.",

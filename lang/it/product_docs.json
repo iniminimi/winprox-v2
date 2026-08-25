@@ -189,7 +189,7 @@
                     "Data Processing Agreement (DPA) and subprocessor list available.",
                     "Data export (account), self-service organisation deletion, retention periods documented.",
                     "I dati restano nell’**UE** (hosting/e-mail). Stripe UE/US in caso di pagamento. Con **Accedi con Microsoft** l’utente va su Microsoft Entra ID (Microsoft, UE/US); WinProx riceve l’e-mail (e eventualmente il nome) per riconoscere l’account esistente.",
-                    "Conferma e-mail opzionale per segnalazioni QR: archiviazione temporanea della bozza fino al link; le bozze non confermate vengono eliminate automaticamente (in genere 60 minuti, foto comprese). Nessun account utente."
+                    "Conferma e-mail opzionale per segnalazioni QR: archiviazione temporanea della bozza fino al link; le bozze non confermate vengono eliminate automaticamente (in genere 60 minuti, foto comprese). La mail di conferma viene inviata solo a un indirizzo valido non contrassegnato come non recapitabile o disiscritto. Nessun account utente."
                 ]
             },
             {

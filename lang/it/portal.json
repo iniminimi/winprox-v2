@@ -61,6 +61,7 @@
             "description_required": "Descriva la segnalazione.",
             "description_max": "La descrizione è troppo lunga (max. 500 caratteri).",
             "reporter_email_invalid": "Inserisca un indirizzo e-mail valido.",
+            "reporter_email_undeliverable": "Questo indirizzo e-mail non può ricevere messaggi. Usi un altro indirizzo.",
             "photos_max": "Può aggiungere fino a 4 foto.",
             "photos_image": "Sono consentite solo immagini.",
             "photos_size": "Una foto è troppo grande.",

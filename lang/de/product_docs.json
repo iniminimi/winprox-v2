@@ -189,7 +189,7 @@
                     "Data Processing Agreement (DPA) and subprocessor list available.",
                     "Data export (account), self-service organisation deletion, retention periods documented.",
                     "Daten bleiben in der **EU** (Hosting/E-Mail). Stripe EU/US bei Zahlung. Bei **Mit Microsoft anmelden** wird der Benutzer zu Microsoft Entra ID (Microsoft, EU/US) weitergeleitet; WinProx erhält E-Mail (und ggf. Name) zur Erkennung des bestehenden Kontos.",
-                    "Optionale E-Mail-Bestätigung bei QR-Meldungen: vorübergehende Entwurfsspeicherung bis zum Link; unbestätigte Entwürfe werden automatisch gelöscht (in der Regel 60 Minuten, inkl. Fotos). Kein Benutzerkonto."
+                    "Optionale E-Mail-Bestätigung bei QR-Meldungen: vorübergehende Entwurfsspeicherung bis zum Link; unbestätigte Entwürfe werden automatisch gelöscht (in der Regel 60 Minuten, inkl. Fotos). Die Bestätigungsmail geht nur an eine gültige Adresse, die nicht als unzustellbar oder abgemeldet markiert ist. Kein Benutzerkonto."
                 ]
             },
             {

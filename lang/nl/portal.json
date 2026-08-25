@@ -61,6 +61,7 @@
             "description_required": "Geef een omschrijving van de melding.",
             "description_max": "De omschrijving is te lang (max. 500 tekens).",
             "reporter_email_invalid": "Geef een geldig e-mailadres op.",
+            "reporter_email_undeliverable": "Dit e-mailadres kan geen berichten ontvangen. Gebruik een ander adres.",
             "photos_max": "Je kunt maximaal 4 foto's toevoegen.",
             "photos_image": "Alleen afbeeldingen zijn toegestaan.",
             "photos_size": "Een foto is te groot.",

@@ -3,6 +3,7 @@
 use App\Actions\Public\AssertPublicReportRateLimitAction;
 use App\Actions\Public\ExpireQrReportEmailHoldsAction;
 use App\Actions\Public\RecordPublicReportRateLimitAction;
+use App\Enums\EmailUnsubscribeSource;
 use App\Enums\TaskStatus;
 use App\Livewire\Public\ConfirmQrReportEmail;
 use App\Livewire\Public\UnitPortal;
@@ -10,6 +11,7 @@ use App\Mail\VerifyQrReportEmailMail;
 use App\Models\Announcement;
 use App\Models\Category;
 use App\Models\Document;
+use App\Models\EmailUnsubscribe;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -295,6 +297,52 @@ it('holds a QR report until the reporter confirms email when both flags are on',
     $issue->load(['location', 'unit', 'tasks.team']);
     $row = view('partials.wp-issue-list-row', ['issue' => $issue])->render();
     expect($row)->toContain(__('issues.card.reporter_email_verified'));
+});
+
+it('does not send a QR confirmation mail to a previously bounced address', function () {
+    Mail::fake();
+    ['unit' => $unit] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_email_verification' => true]);
+    $unit->update(['require_reporter_email_verification' => true]);
+
+    EmailUnsubscribe::query()->create([
+        'email' => 'bounce@example.com',
+        'source' => EmailUnsubscribeSource::Undeliverable,
+        'unsubscribed_at' => now(),
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Lekkage in de keuken.')
+        ->set('reporter_email', 'bounce@example.com')
+        ->call('submitReport')
+        ->assertHasErrors('reporter_email');
+
+    expect(Issue::count())->toBe(0)
+        ->and(QrReportEmailHold::count())->toBe(0);
+
+    Mail::assertNotSent(VerifyQrReportEmailMail::class);
+});
+
+it('does not send a QR confirmation mail to an unsubscribed address', function () {
+    Mail::fake();
+    ['unit' => $unit] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_email_verification' => true]);
+    $unit->update(['require_reporter_email_verification' => true]);
+
+    EmailUnsubscribe::query()->create([
+        'email' => 'unsub@example.com',
+        'source' => EmailUnsubscribeSource::Voluntary,
+        'unsubscribed_at' => now(),
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Lekkage in de keuken.')
+        ->set('reporter_email', 'unsub@example.com')
+        ->call('submitReport')
+        ->assertHasErrors('reporter_email');
+
+    expect(QrReportEmailHold::count())->toBe(0);
+    Mail::assertNotSent(VerifyQrReportEmailMail::class);
 });
 
 it('requires email when verification flags are on even if contact is optional', function () {

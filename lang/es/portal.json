@@ -61,6 +61,7 @@
             "description_required": "Describa el informe.",
             "description_max": "La descripción es demasiado larga (máx. 500 caracteres).",
             "reporter_email_invalid": "Introduzca un correo electrónico válido.",
+            "reporter_email_undeliverable": "Esta dirección de correo no puede recibir mensajes. Use otra dirección.",
             "photos_max": "Puede añadir hasta 4 fotos.",
             "photos_image": "Solo se permiten imágenes.",
             "photos_size": "Una foto es demasiado grande.",

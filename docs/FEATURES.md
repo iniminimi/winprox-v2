@@ -933,7 +933,8 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   veldwerkers). Optionele **e-mailbevestiging** (`require_reporter_email_verification` op
   categorie **én** unit): de melding wordt vastgehouden tot de melder de link in de mail
   klikt (geen Issue, taak of `IssueCreated` tot dan). Zelfde publieke QR-rate-limits als
-  bij direct indienen. Submit zonder die poort → maakt:
+  bij direct indienen. Zelfde e-mailpreflight als promo-campagnes (geldige syntax; geen
+  verzending naar eerder gebouncete of uitgeschreven adressen). Submit zonder die poort → maakt:
   - `Issue` (`source=qr`, ongekeurd tot moderatie), gescoped op tenant/location/unit.
   - Foto's via `IssuePhotoStorage` (client comprimeert ≤1600px/JPEG ~72%, queue; server geen resize).
   - **Automatisch een taak** voor het **standaardteam van de unit** (oud: `FacilityQrIntake`),

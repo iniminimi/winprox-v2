@@ -20,8 +20,8 @@ class ReportIssueRequest extends FormRequest
             : ['nullable', 'string', 'max:120'];
 
         $emailRules = ($requireReporterContact || $requireEmailVerification)
-            ? ['required', 'email', 'max:255']
-            : ['nullable', 'email', 'max:255'];
+            ? ['required', 'email:filter', 'max:255']
+            : ['nullable', 'email:filter', 'max:255'];
 
         return [
             'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],

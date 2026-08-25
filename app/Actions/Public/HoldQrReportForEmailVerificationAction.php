@@ -2,6 +2,8 @@
 
 namespace App\Actions\Public;
 
+use App\Actions\Marketing\AssessPromoCampaignEmailAction;
+use App\Enums\PromoEmailPreflightReason;
 use App\Mail\VerifyQrReportEmailMail;
 use App\Models\QrReportEmailHold;
 use App\Models\Tenant;
@@ -23,6 +25,7 @@ class HoldQrReportForEmailVerificationAction
     public function __construct(
         private IssuePhotoStorage $storage,
         private AuditRecorder $audit,
+        private AssessPromoCampaignEmailAction $assessEmail,
     ) {}
 
     /**
@@ -31,12 +34,7 @@ class HoldQrReportForEmailVerificationAction
      */
     public function handle(Unit $unit, array $data, array $photos = []): QrReportEmailHold
     {
-        $email = trim((string) ($data['reporter_contact'] ?? ''));
-        if ($email === '') {
-            throw ValidationException::withMessages([
-                'reporter_email' => [__('portal.report.errors.reporter_email_required')],
-            ]);
-        }
+        $email = $this->deliverableReporterEmail((string) ($data['reporter_contact'] ?? ''));
 
         $validPhotos = array_values(array_filter($photos, fn ($photo) => $photo instanceof UploadedFile));
         if ($validPhotos !== []) {
@@ -95,6 +93,31 @@ class HoldQrReportForEmailVerificationAction
         } while (QrReportEmailHold::withoutGlobalScopes()->where('token', $token)->exists());
 
         return $token;
+    }
+
+    private function deliverableReporterEmail(string $raw): string
+    {
+        $assessment = $this->assessEmail->handle($raw);
+        if (! $assessment->hasEmail) {
+            throw ValidationException::withMessages([
+                'reporter_email' => [__('portal.report.errors.reporter_email_required')],
+            ]);
+        }
+
+        if ($assessment->normalizedEmail === null || ! $assessment->accepted) {
+            $undeliverable = in_array($assessment->reason, [
+                PromoEmailPreflightReason::PreviouslyBounced,
+                PromoEmailPreflightReason::Unsubscribed,
+            ], true);
+
+            throw ValidationException::withMessages([
+                'reporter_email' => [$undeliverable
+                    ? __('portal.report.errors.reporter_email_undeliverable')
+                    : __('portal.report.errors.reporter_email_invalid')],
+            ]);
+        }
+
+        return $assessment->normalizedEmail;
     }
 
     /**

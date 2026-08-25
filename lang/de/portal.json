@@ -61,6 +61,7 @@
             "description_required": "Bitte beschreiben Sie die Meldung.",
             "description_max": "Die Beschreibung ist zu lang (max. 500 Zeichen).",
             "reporter_email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse an.",
+            "reporter_email_undeliverable": "Diese E-Mail-Adresse kann keine Nachrichten empfangen. Bitte verwenden Sie eine andere Adresse.",
             "photos_max": "Sie können bis zu 4 Fotos hinzufügen.",
             "photos_image": "Nur Bilder sind erlaubt.",
             "photos_size": "Ein Foto ist zu groß.",
