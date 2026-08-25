@@ -483,6 +483,14 @@
         "close": {
             "title": "Klaar om het zelf te proberen?",
             "lead": "Maak van elke publieke locatie een eenvoudig meldpunt. Beheerders maken een account; burgers en medewerkers scannen en melden."
+        },
+        "visuals": {
+            "hero": "Modern gemeentehuis met plein, vlaggen en voorbijgangers.",
+            "problem": "Onderhoudsmedewerker meldt of controleert straatmeubilair via smartphone.",
+            "steps": "Fietsers bekijken een informatiebord met QR-code in een openbaar park.",
+            "places": "Publiek park met speeltuin, paden en bewoners.",
+            "roles": "Gemeentelijke inspecteur controleert speeltoestellen met meetapparaat en checklist.",
+            "close": "Sporthal met wedstrijd en tribune in een publieke sportfaciliteit."
         }
     },
     "realestate": {

@@ -483,6 +483,14 @@
         "close": {
             "title": "Pronto a provarlo?",
             "lead": "Trasforma ogni luogo pubblico in un punto di segnalazione semplice. Gli amministratori creano un account; cittadini e dipendenti scansionano e segnalano."
+        },
+        "visuals": {
+            "hero": "Municipio moderno con piazza, bandiere e passanti.",
+            "problem": "Addetto alla manutenzione segnala o controlla arredo urbano via smartphone.",
+            "steps": "Ciclisti consultano un pannello informativo con QR code in un parco pubblico.",
+            "places": "Parco pubblico con area giochi, percorsi e residenti.",
+            "roles": "Ispettore comunale controlla le attrezzature ludiche con misuratore e checklist.",
+            "close": "Palazzetto dello sport con partita e tribune in una struttura pubblica."
         }
     },
     "realestate": {

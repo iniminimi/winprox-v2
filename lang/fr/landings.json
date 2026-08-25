@@ -483,6 +483,14 @@
         "close": {
             "title": "Prêt à essayer ?",
             "lead": "Faites de chaque lieu public un point de signalement simple. Les gestionnaires créent un compte ; citoyens et agents scannent et signalent."
+        },
+        "visuals": {
+            "hero": "Maison communale moderne avec place, drapeaux et passants.",
+            "problem": "Agent d’entretien signale ou contrôle du mobilier urbain via smartphone.",
+            "steps": "Cyclistes consultent un panneau d’information avec QR code dans un parc public.",
+            "places": "Parc public avec aire de jeux, chemins et habitants.",
+            "roles": "Inspecteur communal contrôle des équipements de jeu avec appareil et checklist.",
+            "close": "Salle de sport avec match et tribunes dans un équipement public."
         }
     },
     "realestate": {

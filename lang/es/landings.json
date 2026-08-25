@@ -483,6 +483,14 @@
         "close": {
             "title": "¿Listo para probarlo?",
             "lead": "Convierta cada lugar público en un punto de aviso sencillo. Los administradores crean una cuenta; ciudadanos y empleados escanean y avisan."
+        },
+        "visuals": {
+            "hero": "Ayuntamiento moderno con plaza, banderas y peatones.",
+            "problem": "Operario de mantenimiento reporta o revisa mobiliario urbano con el móvil.",
+            "steps": "Ciclistas miran un panel informativo con código QR en un parque público.",
+            "places": "Parque público con zona infantil, caminos y vecinos.",
+            "roles": "Inspector municipal revisa juegos infantiles con medidor y lista de control.",
+            "close": "Pabellón deportivo con partido y gradas en una instalación pública."
         }
     },
     "realestate": {

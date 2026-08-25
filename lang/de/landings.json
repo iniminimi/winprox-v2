@@ -483,6 +483,14 @@
         "close": {
             "title": "Bereit zum Ausprobieren?",
             "lead": "Machen Sie aus jedem öffentlichen Ort eine einfache Meltestelle. Admins legen ein Konto an; Bürger und Mitarbeitende scannen und melden."
+        },
+        "visuals": {
+            "hero": "Modernes Rathaus mit Platz, Flaggen und Passanten.",
+            "problem": "Wartungsmitarbeiter meldet oder prüft Straßenmöbel per Smartphone.",
+            "steps": "Radfahrer betrachten eine Infotafel mit QR-Code in einem öffentlichen Park.",
+            "places": "Öffentlicher Park mit Spielplatz, Wegen und Anwohnern.",
+            "roles": "Städtischer Prüfer kontrolliert Spielgeräte mit Messgerät und Checkliste.",
+            "close": "Sporthalle mit Spiel und Tribüne in einer öffentlichen Sportanlage."
         }
     },
     "realestate": {

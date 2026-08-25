@@ -483,6 +483,14 @@
         "close": {
             "title": "Ready to try it?",
             "lead": "Turn every public site into a simple reporting point. Managers create an account; citizens and staff scan and report."
+        },
+        "visuals": {
+            "hero": "Modern town hall with square, flags and passers-by.",
+            "problem": "Maintenance worker reports or checks street furniture via smartphone.",
+            "steps": "Cyclists view an information board with a QR code in a public park.",
+            "places": "Public park with playground, paths and residents.",
+            "roles": "Municipal inspector checks playground equipment with a meter and checklist.",
+            "close": "Sports hall with a game and stands in a public sports facility."
         }
     },
     "realestate": {

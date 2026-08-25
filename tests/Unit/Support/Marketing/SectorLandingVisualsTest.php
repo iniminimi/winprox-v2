@@ -13,8 +13,18 @@ it('levert vastgoed-foto’s wanneer de bestanden bestaan', function () {
         ->and(is_file(public_path($visuals['close'])))->toBeTrue();
 });
 
-it('levert geen foto’s voor sectoren zonder assets', function () {
-    expect(SectorLandingVisuals::for(PromoLanding::Government))->toBe([]);
+it('levert government-foto’s wanneer de bestanden bestaan', function () {
+    $visuals = SectorLandingVisuals::for(PromoLanding::Government);
+
+    expect($visuals)->toHaveKeys(['hero', 'problem', 'steps', 'places', 'roles', 'close'])
+        ->and($visuals)->not->toHaveKey('why')
+        ->and($visuals['hero'])->toBe('images/landing/gouvernment/image_01.jpg')
+        ->and($visuals['close'])->toBe('images/landing/gouvernment/image_05.jpg')
+        ->and(SectorLandingVisuals::modifiers(PromoLanding::Government))
+        ->toHaveKey('steps')
+        ->and(SectorLandingVisuals::layouts(PromoLanding::Government))
+        ->toHaveKey('places')
+        ->and(SectorLandingVisuals::closeStyle(PromoLanding::Government))->toBe('scrim');
 });
 
 it('levert healthcare-foto’s wanneer de bestanden bestaan', function () {
