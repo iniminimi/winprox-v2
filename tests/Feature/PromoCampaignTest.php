@@ -1424,7 +1424,8 @@ it('telt blacklist-bounces in de verzendstatus van een promo-campagne', function
         ->and($summary->bouncePercent)->toBe(100)
         ->and($summary->bounceBlacklist)->toBe(1)
         ->and($summary->bounceUnknown)->toBe(0)
-        ->and($summary->bounceMailboxFull)->toBe(0);
+        ->and($summary->bounceMailboxFull)->toBe(0)
+        ->and($summary->bounceSpam)->toBe(0);
 
     Livewire::actingAs($superuser)
         ->test(PromoCampaigns::class)
@@ -1432,7 +1433,31 @@ it('telt blacklist-bounces in de verzendstatus van een promo-campagne', function
             'unknown' => 0,
             'blacklist' => 1,
             'mailbox_full' => 0,
+            'spam' => 0,
         ]));
+});
+
+it('telt als-spam-geweigerd ook als de bounce eerder als overig is opgeslagen', function () {
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'info@blocked.example');
+
+    PromoCampaignEmailSend::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_target_id' => $target->id,
+        'recipient_email' => 'info@blocked.example',
+        'status' => MunicipalPromoEmailSendStatus::Bounced,
+        'error_message' => '[other] smtp; 550 5.7.1 Message blocked as is likely unsolicited mail',
+        'sent_at' => now(),
+        'created_by' => $superuser->id,
+    ]);
+    $target->update(['undelivered' => true]);
+
+    $summary = app(\App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction::class)
+        ->handle(collect([$campaign->fresh()]))[$campaign->id];
+
+    expect($summary->bounceSpam)->toBe(1)
+        ->and($summary->bounceUnknown)->toBe(0)
+        ->and($summary->bounceBlacklist)->toBe(0);
 });
 
 it('blokkeert geen Message-ID als bounce-ontvanger', function () {

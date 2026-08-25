@@ -37,6 +37,7 @@
                         'unknown' => $delivery->bounceUnknown,
                         'blacklist' => $delivery->bounceBlacklist,
                         'mailbox_full' => $delivery->bounceMailboxFull,
+                        'spam' => $delivery->bounceSpam,
                     ]) }}
                 </p>
             @endif

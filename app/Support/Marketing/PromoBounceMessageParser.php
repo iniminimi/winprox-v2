@@ -140,6 +140,22 @@ final class PromoBounceMessageParser
         }
 
         if (self::matchesAny($text, [
+            'unsolicited mail',
+            'unsolicited',
+            'likely spam',
+            'looks like spam',
+            'message blocked as',
+            'blocked as spam',
+            'rejected as spam',
+            'spam message',
+            '550 5.7.1',
+            '550-5.7.1',
+            '5.7.1',
+        ])) {
+            return PromoBounceKind::Spam;
+        }
+
+        if (self::matchesAny($text, [
             'user unknown',
             'unknown user',
             'no such user',
@@ -185,14 +201,14 @@ final class PromoBounceMessageParser
 
     private static function diagnosticSnippet(string $haystack): string
     {
-        $slice = self::searchableText($haystack);
+        $unfolded = self::unfoldHeaderLines($haystack);
 
         try {
-            if (preg_match('/^Diagnostic-Code:\s*(.+)$/mi', $slice, $matches) === 1) {
+            if (preg_match('/Diagnostic-Code:\s*([^\n]{1,500})/i', $unfolded, $matches) === 1) {
                 return mb_substr(trim((string) $matches[1]), 0, 400);
             }
 
-            if (preg_match('/550[^\r\n]{0,200}/i', $slice, $matches) === 1) {
+            if (preg_match('/550[^\n]{0,200}/i', $unfolded, $matches) === 1) {
                 return mb_substr(trim((string) $matches[0]), 0, 400);
             }
         } catch (\Throwable) {
@@ -208,20 +224,32 @@ final class PromoBounceMessageParser
      */
     private static function searchableText(string $haystack): string
     {
-        $parts = [substr($haystack, 0, 20_000)];
-        if (strlen($haystack) > 20_000) {
-            $parts[] = substr($haystack, -20_000);
+        $unfolded = self::unfoldHeaderLines($haystack);
+        $parts = [substr($unfolded, 0, 20_000)];
+        if (strlen($unfolded) > 20_000) {
+            $parts[] = substr($unfolded, -20_000);
         }
 
         try {
-            if (preg_match('/Diagnostic-Code:[^\r\n]{0,400}/i', $haystack, $matches) === 1) {
+            if (preg_match('/Diagnostic-Code:[^\n]{0,500}/i', $unfolded, $matches) === 1) {
                 $parts[] = $matches[0];
             }
         } catch (\Throwable) {
             // keep head/tail only
         }
 
-        return strtolower(implode("\n", $parts));
+        return strtolower(preg_replace('/\s+/', ' ', implode(' ', $parts)) ?? implode(' ', $parts));
+    }
+
+    /**
+     * RFC 5322 folded header lines ("Diagnostic-Code: …\\n    not exist")
+     * become one line so classification can see the full SMTP text.
+     */
+    private static function unfoldHeaderLines(string $haystack): string
+    {
+        $text = str_replace(["\r\n", "\r"], "\n", $haystack);
+
+        return preg_replace("/\n[ \t]+/", ' ', $text) ?? $text;
     }
 
     /**

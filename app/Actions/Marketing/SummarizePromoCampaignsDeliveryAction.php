@@ -10,6 +10,7 @@ use App\Enums\PromoBounceKind;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
+use App\Support\Marketing\PromoBounceMessageParser;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -97,6 +98,7 @@ class SummarizePromoCampaignsDeliveryAction
                 PromoBounceKind::Unknown->value => 0,
                 PromoBounceKind::Blacklist->value => 0,
                 PromoBounceKind::MailboxFull->value => 0,
+                PromoBounceKind::Spam->value => 0,
             ];
 
             $sentAt = $sentAtRows->get($campaignId);
@@ -113,6 +115,7 @@ class SummarizePromoCampaignsDeliveryAction
                 bounceUnknown: (int) ($kinds[PromoBounceKind::Unknown->value] ?? 0),
                 bounceBlacklist: (int) ($kinds[PromoBounceKind::Blacklist->value] ?? 0),
                 bounceMailboxFull: (int) ($kinds[PromoBounceKind::MailboxFull->value] ?? 0),
+                bounceSpam: (int) ($kinds[PromoBounceKind::Spam->value] ?? 0),
                 remaining: $remaining,
                 queuedJobs: $queuedJobs,
                 status: $this->resolveStatus(
@@ -170,6 +173,7 @@ class SummarizePromoCampaignsDeliveryAction
             PromoBounceKind::Unknown->value => 0,
             PromoBounceKind::Blacklist->value => 0,
             PromoBounceKind::MailboxFull->value => 0,
+            PromoBounceKind::Spam->value => 0,
         ];
         $counts = [];
         foreach ($campaignIds as $id) {
@@ -183,6 +187,9 @@ class SummarizePromoCampaignsDeliveryAction
 
         foreach ($rows as $row) {
             $kind = PromoBounceKind::fromStoredReason($row->error_message);
+            if ($kind === PromoBounceKind::Other) {
+                $kind = PromoBounceMessageParser::classify((string) $row->error_message);
+            }
             if ($kind === PromoBounceKind::Other) {
                 continue;
             }

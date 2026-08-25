@@ -19,6 +19,7 @@ final readonly class PromoCampaignDeliverySummaryData
         public int $bounceUnknown,
         public int $bounceBlacklist,
         public int $bounceMailboxFull,
+        public int $bounceSpam,
         public int $remaining,
         public int $queuedJobs,
         public string $status,

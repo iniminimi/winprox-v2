@@ -117,6 +117,28 @@ TXT;
         ->and(PromoBounceMessageParser::classify($full))->toBe(\App\Enums\PromoBounceKind::MailboxFull);
 });
 
+it('classificeert afgebroken 5.1.1- en 5.7.1-unsolicited-bounces', function () {
+    $unknownWrapped = <<<'TXT'
+Diagnostic-Code: smtp; 550-5.1.1 The email account that you tried to reach does
+    not exist. Please try 550-5.1.1 double-checking the recipient's email
+TXT;
+
+    $unsolicited = <<<'TXT'
+Diagnostic-Code: smtp; 550 5.7.1 [2026-08-25 10:34:45 CEST] Message blocked as
+    is likely unsolicited mail [DFFpCFLVtDvK]
+TXT;
+
+    $unsolicitedSecond = <<<'TXT'
+Diagnostic-Code: smtp; 550 5.7.1 [2026-08-25 09:25:44 CEST] Message blocked as
+    is likely unsolicited mail [QzMnWjmdfgJz]
+TXT;
+
+    expect(PromoBounceMessageParser::classify($unknownWrapped))->toBe(\App\Enums\PromoBounceKind::Unknown)
+        ->and(PromoBounceMessageParser::classify($unsolicited))->toBe(\App\Enums\PromoBounceKind::Spam)
+        ->and(PromoBounceMessageParser::classify($unsolicitedSecond))->toBe(\App\Enums\PromoBounceKind::Spam)
+        ->and(PromoBounceMessageParser::storageReason($unsolicited))->toStartWith('[spam]');
+});
+
 it('classificeert enorme of ongeldige MIME zonder te crashen', function () {
     $haystack = str_repeat("\x80\xFF", 80_000)."\n550 User unknown for info@hotel.com\n";
 

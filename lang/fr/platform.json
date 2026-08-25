@@ -309,7 +309,7 @@
             "paused": "Interrompu"
         },
         "delivery_stats": ":sent envoyés · :remaining restants · :failed échoués · :bounced bounced (:bounce_percent%) · :queued en file",
-        "delivery_bounce_kinds": ":unknown adresse inconnue · :blacklist blacklist · :mailbox_full boîte pleine",
+        "delivery_bounce_kinds": ":unknown adresse inconnue · :blacklist blacklist · :mailbox_full boîte pleine · :spam refusé comme spam",
         "delivery_restart_hint": "Ouvrez la campagne et remettez les e-mails en file (sans Renvoyer). Seul le reste sera envoyé.",
         "delivery_sending_hint": "La file tourne encore. Actualisation auto ; laissez faire.",
         "delivery_paused_hint": "La file a été vidée. Reprenez et remettez en file pour continuer.",

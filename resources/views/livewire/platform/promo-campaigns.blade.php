@@ -154,6 +154,7 @@
                                                 'unknown' => $summary->bounceUnknown,
                                                 'blacklist' => $summary->bounceBlacklist,
                                                 'mailbox_full' => $summary->bounceMailboxFull,
+                                                'spam' => $summary->bounceSpam,
                                             ]) }}
                                         </p>
                                     @endif

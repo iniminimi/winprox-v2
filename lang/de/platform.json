@@ -309,7 +309,7 @@
             "paused": "Unterbrochen"
         },
         "delivery_stats": ":sent gesendet · :remaining noch zu senden · :failed fehlgeschlagen · :bounced gebounced (:bounce_percent%) · :queued in Warteschlange",
-        "delivery_bounce_kinds": ":unknown unbekannte Adresse · :blacklist Blacklist · :mailbox_full Mailbox voll",
+        "delivery_bounce_kinds": ":unknown unbekannte Adresse · :blacklist Blacklist · :mailbox_full Mailbox voll · :spam als Spam abgelehnt",
         "delivery_restart_hint": "Kampagne öffnen und Mails erneut einreihen (ohne Erneut senden). Nur der Rest wird gesendet.",
         "delivery_sending_hint": "Warteschlange läuft noch. Aktualisiert automatisch; abwarten.",
         "delivery_paused_hint": "Warteschlange wurde geleert. Fortsetzen und erneut einreihen, um weiterzumachen.",
