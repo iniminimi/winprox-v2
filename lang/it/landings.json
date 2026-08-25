@@ -116,6 +116,14 @@
         "close": {
             "title": "Pronto a provarlo?",
             "lead": "Trasforma ogni camera o locale hospitality in un punto di segnalazione semplice. Gli amministratori creano un account; ospiti e personale scansionano e segnalano."
+        },
+        "visuals": {
+            "hero": "Collaboratrice di hotel segnala o segue un compito via smartphone in camera.",
+            "problem": "Housekeeping prepara una camera d'albergo.",
+            "steps": "Servizio tecnico ripara un guasto nel corridoio dell'hotel.",
+            "places": "Hotel moderno in città al crepuscolo.",
+            "roles": "Reception con QR WinProx nella lobby dell'hotel.",
+            "close": "Vista aerea di un hotel con terrazza sul tetto e città la sera."
         }
     },
     "industry": {

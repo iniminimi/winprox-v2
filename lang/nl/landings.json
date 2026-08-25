@@ -116,6 +116,14 @@
         "close": {
             "title": "Klaar om het zelf te proberen?",
             "lead": "Maak van elke hotelkamer of horecalocatie een eenvoudig meldpunt. Beheerders maken een account; gasten en medewerkers scannen en melden."
+        },
+        "visuals": {
+            "hero": "Hotelmedewerker meldt of volgt een taak via smartphone in de kamer.",
+            "problem": "Housekeeping maakt een hotelkamer op.",
+            "steps": "Technische dienst herstelt een storing in de hotelgang.",
+            "places": "Modern hotelgebouw in de stad bij schemering.",
+            "roles": "Receptie met WinProx QR-code in de hotel-lobby.",
+            "close": "Luchtfoto van een hotel met dakterras en stad bij avondlicht."
         }
     },
     "industry": {

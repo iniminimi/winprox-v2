@@ -116,6 +116,14 @@
         "close": {
             "title": "Prêt à essayer ?",
             "lead": "Faites de chaque chambre ou lieu horeca un point de signalement simple. Les gestionnaires créent un compte ; clients et personnel scannent et signalent."
+        },
+        "visuals": {
+            "hero": "Collaboratrice d'hôtel signale ou suit une tâche via smartphone dans la chambre.",
+            "problem": "Le housekeeping prépare une chambre d'hôtel.",
+            "steps": "Le service technique répare une panne dans le couloir de l'hôtel.",
+            "places": "Hôtel moderne en ville au crépuscule.",
+            "roles": "Réception avec un QR WinProx dans le hall de l'hôtel.",
+            "close": "Vue aérienne d'un hôtel avec terrasse sur le toit et ville le soir."
         }
     },
     "industry": {

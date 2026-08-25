@@ -116,6 +116,14 @@
         "close": {
             "title": "Bereit zum Ausprobieren?",
             "lead": "Machen Sie aus jedem Hotelzimmer oder Gastronomieort eine einfache Meltestelle. Admins legen ein Konto an; Gäste und Personal scannen und melden."
+        },
+        "visuals": {
+            "hero": "Hotelmitarbeiterin meldet oder verfolgt eine Aufgabe per Smartphone im Zimmer.",
+            "problem": "Housekeeping richtet ein Hotelzimmer her.",
+            "steps": "Technischer Dienst behebt eine Störung im Hotelflur.",
+            "places": "Modernes Hotelgebäude in der Stadt in der Dämmerung.",
+            "roles": "Rezeption mit WinProx-QR-Code in der Hotellobby.",
+            "close": "Luftaufnahme eines Hotels mit Dachterrasse und Stadt am Abend."
         }
     },
     "industry": {

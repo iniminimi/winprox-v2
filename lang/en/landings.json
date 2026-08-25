@@ -116,6 +116,14 @@
         "close": {
             "title": "Ready to try it?",
             "lead": "Turn every hotel room or hospitality site into a simple reporting point. Managers create an account; guests and staff scan and report."
+        },
+        "visuals": {
+            "hero": "Hotel staff member reports or tracks a task via smartphone in the room.",
+            "problem": "Housekeeping preparing a hotel room.",
+            "steps": "Technical staff fixing an issue in a hotel corridor.",
+            "places": "Modern hotel building in the city at dusk.",
+            "roles": "Reception desk with a WinProx QR code in the hotel lobby.",
+            "close": "Aerial view of a hotel with rooftop terrace and city lights at evening."
         }
     },
     "industry": {

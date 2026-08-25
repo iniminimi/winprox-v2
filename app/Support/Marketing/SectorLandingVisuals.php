@@ -142,6 +142,27 @@ final class SectorLandingVisuals
                     'closeStyle' => 'scrim',
                 ],
             ],
+            PromoLanding::Hospitality => [
+                'hero' => 'images/landing/hospitality/image_03.jpg',
+                'problem' => 'images/landing/hospitality/image_01.jpg',
+                'steps' => [
+                    'src' => 'images/landing/hospitality/image_04.jpg',
+                    'modifier' => 'wp-landing-visual--compact',
+                ],
+                'places' => [
+                    'src' => 'images/landing/hospitality/image_05.jpg',
+                    'layout' => 'wide',
+                    'modifier' => 'wp-landing-visual--wide',
+                ],
+                'roles' => [
+                    'src' => 'images/landing/hospitality/image_07.jpg',
+                    'modifier' => 'wp-landing-visual--roles wp-landing-visual--tall',
+                ],
+                'close' => [
+                    'src' => 'images/landing/hospitality/image_06.jpg',
+                    'closeStyle' => 'scrim',
+                ],
+            ],
             default => [],
         };
     }

@@ -116,6 +116,14 @@
         "close": {
             "title": "¿Listo para probarlo?",
             "lead": "Convierta cada habitación o local de hostelería en un punto de aviso sencillo. Los administradores crean una cuenta; huéspedes y personal escanean y avisan."
+        },
+        "visuals": {
+            "hero": "Empleada de hotel reporta o sigue una tarea con el smartphone en la habitación.",
+            "problem": "Housekeeping prepara una habitación de hotel.",
+            "steps": "Servicio técnico repara una avería en el pasillo del hotel.",
+            "places": "Hotel moderno en la ciudad al anochecer.",
+            "roles": "Recepción con código QR de WinProx en el vestíbulo del hotel.",
+            "close": "Vista aérea de un hotel con terraza en la azotea y la ciudad de noche."
         }
     },
     "industry": {

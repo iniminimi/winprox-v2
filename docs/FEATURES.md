@@ -894,7 +894,8 @@ Foto’s per sector via `SectorLandingVisuals` (`public/images/landing/…`); on
 vallen terug op de tekstlayout. Vastgoed gebruikt `images/landing/general/`; de sluitbanner
 legt witte copy over het donkere vlak van `welcome_07.jpg` (volledig beeld, beide personen zichtbaar).
 Industrie gebruikt `images/landing/industry/` met gemixte beeldgroottes (compact, breed, feature)
-en een sluitbanner met linkse scrim.
+en een sluitbanner met linkse scrim. Horeca gebruikt `images/landing/hospitality/` met selectie
+(compact, breed, tall) en een sluitbanner met scrim.
 Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `?ref=`. Dit is
 **geen** V1-sectorhub en **geen** productvariant.
 
