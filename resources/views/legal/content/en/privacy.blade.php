@@ -83,6 +83,9 @@
     <li>data voluntarily submitted via a public QR portal (such as name, email address or description)</li>
     <li>technical metadata required for security and abuse prevention</li>
 </ul>
+<p>
+    The customer can require email confirmation per category and unit. WinProx then stores the draft report (description, photos, email) until the reporter clicks the link in the mail. Without confirmation the draft is deleted automatically (typically within 60 minutes), including photos. This proves the mailbox exists; it is not a user account.
+</p>
 <p><strong>Unit checks</strong></p>
 <p>
     If the customer enables unit checks on category and unit, workers can record an OK or Not OK result via the unit QR (after Clock Point sign-in), optionally with checklist and GPS. This is not an issue: OK does not create a report. WinProx stores the result, timestamp, unit, optional GPS coordinates and the worker. Retention follows the same policy as for issues and tasks unless your organisation specifies otherwise.
@@ -155,7 +158,8 @@
 <h2>6. QR reporting and team access</h2>
 <p>
     QR codes allow reporters to submit issues without an account. The customer / administrator decides which locations
-    and units are available and which data is requested.
+    and units are available and which data is requested. The customer may require email confirmation: until the reporter
+    clicks the link, there is no issue — only a temporary draft.
 </p>
 <p>
     Logged-in users and internal teams have access according to permissions set by the customer. WinProx processes
@@ -178,6 +182,7 @@
     <li>user accounts: active + 24 months</li>
     <li>issues and tasks: contract period + 36 months</li>
     <li>unit checks: same retention as issues and tasks (contract term + 36 months).</li>
+    <li>unverified QR reports (email hold): until the confirmation link expires (typically 60 minutes), then deletion including photos; confirmed hold rows up to 7 days (the issue itself follows issue retention).</li>
     <li>logs: 6 months</li>
     <li>onboarding events per user (for onboarding statistics): 6 months; aggregated onboarding figures without personal data may be retained longer</li>
     <li>media (photos): 24 months after closing the relevant issue or task</li>

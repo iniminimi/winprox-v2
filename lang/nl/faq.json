@@ -21,7 +21,7 @@
                 },
                 {
                     "title": "Melding maken",
-                    "text": "Beheerders en medewerkers melden in de app (met tot 4 foto's). Melders scannen de unit-QR en doen hetzelfde in de browser — zonder app-installatie."
+                    "text": "Beheerders en medewerkers melden in de app (met tot 4 foto's). Melders scannen de unit-QR en doen hetzelfde in de browser — zonder app-installatie. Optioneel vraagt de beheerder e-mailbevestiging: de melding ontstaat pas na de link in de mail."
                 },
                 {
                     "title": "Goedkeuring (publiek)",
@@ -94,11 +94,11 @@
             "type": "portal",
             "title": "Hoe werkt het meldersportaal?",
             "intro": "Na het scannen van de unit-QR opent een webpagina voor die unit. Melders geven problemen door; goedgekeurde meldingen en gedeelde documenten/mededelingen zijn zichtbaar. Uitvoerders met teamtoegang kunnen open taken afhandelen en — wanneer ingeschakeld — unit checks uitvoeren.",
-            "summary": "Unit-QR-portaal: melding, open meldingen na goedkeuring, documenten, mededelingen, taken en optionele unit check voor uitvoerders.",
+            "summary": "Unit-QR-portaal: melding, open meldingen na goedkeuring, documenten, mededelingen, taken en optionele unit check voor uitvoerders. Optioneel: contactgegevens en/of e-mailbevestiging (categorie én unit); tot de link bestaat er geen melding.",
             "sections": [
                 {
                     "title": "Nieuwe melding",
-                    "text": "Beschrijf het probleem en voeg optioneel tot 4 foto's toe. Foto's worden op het toestel verkleind vóór upload. Voornaam, naam en e-mail zijn optioneel, tenzij de beheerder contactgegevens verplicht heeft gezet (categorie én unit). Uitvoerders die zijn aangemeld hoeven die velden niet in te vullen. Er gelden limieten tegen spam (o.a. max. één melding per paar minuten per apparaat)."
+                    "text": "Beschrijf het probleem en voeg optioneel tot 4 foto's toe. Foto's worden op het toestel verkleind vóór upload. Voornaam, naam en e-mail zijn optioneel, tenzij de beheerder contactgegevens verplicht heeft gezet (categorie én unit). Optioneel kan de beheerder e-mailbevestiging verplichten (categorie én unit): u krijgt een link; de melding, taak en webhook ontstaan pas na die klik. Uitvoerders die zijn aangemeld hoeven die velden niet in te vullen en krijgen geen bevestigingsmail. Er gelden limieten tegen spam (o.a. max. één melding per paar minuten per apparaat)."
                 },
                 {
                     "title": "Wacht op controle",

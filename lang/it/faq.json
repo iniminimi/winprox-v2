@@ -21,7 +21,7 @@
                 },
                 {
                     "title": "Creare segnalazione",
-                    "text": "Amministratori e collaboratori segnalano nell'app (con fino a 4 foto). I segnalatori scansionano il QR unit e fanno lo stesso nel browser — senza installare app."
+                    "text": "Amministratori e collaboratori segnalano nell'app (con fino a 4 foto). I segnalatori scansionano il QR unit e fanno lo stesso nel browser — senza installare app. Facoltativamente l’amministratore richiede la conferma e-mail: la segnalazione nasce solo dopo il link nella mail."
                 },
                 {
                     "title": "Approvazione (pubblico)",
@@ -94,11 +94,11 @@
             "type": "portal",
             "title": "Come funziona il portale segnalatori?",
             "intro": "La scansione del QR unit apre una pagina web per quell'unità. I segnalatori descrivono i problemi; segnalazioni approvate, documenti e avvisi condivisi visibili. Gli esecutori con accesso team completano task aperti e — se attivato — controlli unità.",
-            "summary": "Portale QR unit: segnalazione, segnalazioni approvate, documenti, avvisi, task in sito e controllo unità opzionale per esecutori.",
+            "summary": "Portale QR unit: segnalazione, segnalazioni approvate, documenti, avvisi, task in sito e controllo unità opzionale per esecutori. Opzionale: dati di contatto e/o conferma e-mail (categoria e unità); fino al link non esiste una segnalazione.",
             "sections": [
                 {
                     "title": "Nuova segnalazione",
-                    "text": "Descriva il problema e aggiunga facoltativamente fino a 4 foto. Le foto sono ridimensionate sul dispositivo prima del caricamento. Nome, cognome e e-mail sono facoltativi, salvo che l’amministratore abbia reso obbligatori i dati di contatto (categoria e unità). Gli operatori autenticati non devono compilare quei campi. Si applicano limiti anti-spam (es. al massimo una segnalazione ogni pochi minuti per dispositivo)."
+                    "text": "Descriva il problema e aggiunga facoltativamente fino a 4 foto. Le foto sono ridimensionate sul dispositivo prima del caricamento. Nome, cognome e e-mail sono facoltativi, salvo che l’amministratore abbia reso obbligatori i dati di contatto (categoria e unità). Facoltativamente l’amministratore può richiedere la conferma e-mail (categoria e unità): riceve un link; la segnalazione, il compito e il webhook nascono solo dopo quel clic. Gli operatori autenticati non devono compilare quei campi e non ricevono la mail di conferma. Si applicano limiti anti-spam (es. al massimo una segnalazione ogni pochi minuti per dispositivo)."
                 },
                 {
                     "title": "In attesa di controllo",

@@ -46,7 +46,7 @@
     <li>Standort- und Unit-Daten (Adressen, Standortdetails).</li>
     <li>Issue- und Aufgabendaten (einschließlich Fotos und Beschreibungen).</li>
     <li>Unit-Check-Daten (Ergebnis, Zeitpunkt, Unit, optional GPS, Ausführender).</li>
-    <li>Daten von Ausführenden und QR-Meldern, soweit vom Kunden erhoben.</li>
+    <li>Daten von Ausführenden und QR-Meldern, soweit vom Kunden erhoben (einschließlich vorübergehender Entwurfsmeldungen bis zur E-Mail-Bestätigung).</li>
     <li>Zugangs- und Sitzungsdaten.</li>
     <li>Abonnement- und Zugriffsmetadaten.</li>
     <li>ESG-/Compliance-Daten (Indikatordefinitionen, Messwerte, Verknüpfungen, Schwellennachverfolgung und optionale Zuordnung zu Ausführenden).</li>
@@ -112,6 +112,7 @@
     <li>Benutzerkonten: aktiv + 24 Monate.</li>
     <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate.</li>
     <li>Unit-Checks: gleiche Aufbewahrung wie Issues und Aufgaben.</li>
+    <li>unbestätigte QR-Meldungen (E-Mail-Hold): bis zum Ablauf des Bestätigungslinks (in der Regel 60 Minuten), danach Löschung inklusive Fotos; bestätigte Hold-Zeilen bis 7 Tage.</li>
     <li>Protokolle: 6 Monate.</li>
     <li>Fotos: 24 Monate nach Abschluss.</li>
     <li>ESG-Messungen: gleiche Aufbewahrung wie Issues und Aufgaben.</li>

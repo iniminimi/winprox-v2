@@ -188,7 +188,8 @@
                     "Kader: EU-AVG + Belgische wet (30 juli 2018).",
                     "Verwerkersovereenkomst (DPA) en subverwerkerslijst beschikbaar.",
                     "Data-export (account), self-service organisatieverwijdering, bewaartermijnen vastgelegd.",
-                    "Gegevens blijven in de **EU** (hosting/e-mail). Stripe EU/US indien betalend. Bij **Inloggen met Microsoft** gaat de gebruiker naar Microsoft Entra ID (Microsoft, EU/US); WinProx ontvangt e-mail (en eventueel naam) om het bestaande account te herkennen."
+                    "Gegevens blijven in de **EU** (hosting/e-mail). Stripe EU/US indien betalend. Bij **Inloggen met Microsoft** gaat de gebruiker naar Microsoft Entra ID (Microsoft, EU/US); WinProx ontvangt e-mail (en eventueel naam) om het bestaande account te herkennen.",
+                    "Optionele e-mailbevestiging bij QR-meldingen: tijdelijke conceptopslag tot de link; onbevestigd automatisch verwijderd (standaard 60 minuten, inclusief foto’s). Geen gebruikersaccount."
                 ]
             },
             {
@@ -207,7 +208,7 @@
                     "**SSO** (één bedrijfs-login via Microsoft Entra): op desktop voor beheerder en medewerker (**Inloggen met Microsoft**). Alleen bestaande WinProx-accounts (e-mail gelijk aan het Microsoft-account); e-mail + wachtwoord blijft werken. Geen automatische nieuwe accounts. Uitvoerders blijven Clock Point-QR (naam + icoon). Koppeling met andere software (Ultimo, IWMS, …) loopt via API-sleutels, niet via SSO.",
                     "API: persoonlijke **toegangssleutel** (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.",
                     "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon.",
-                    "Melders: publiek QR-portaal zonder account."
+                    "Melders: publiek QR-portaal zonder account. Optioneel mailboxbewijs (categorie én unit): geen login; de melding ontstaat pas na de link in de mail."
                 ]
             },
             {
@@ -227,7 +228,8 @@
                     "Uitgaande HTTP POST bij events (o.a. issue/task-status, unit check, ESG, GPS).",
                     "Configuratie onder Instellingen → API; secret voor verificatie.",
                     "Automatische retries bij falen (tot enkele pogingen met oplopende pauze).",
-                    "Zelfde planvereiste als API (Corporate)."
+                    "Zelfde planvereiste als API (Corporate).",
+                    "Bij optionele e-mailbevestiging volgt het event **melding aangemaakt** pas na de link, niet bij het indienen op het portaal."
                 ]
             }
         ],
@@ -360,7 +362,7 @@
                     "**Instellen:** Instellingen → API → Webhooks (URL + welke events). Secret één keer tonen — bewaar die veilig.",
                     "**Bewijs van herkomst:** elk bericht heeft een HMAC-handtekening (controleerbaar met jouw secret).",
                     "**Betrouwbaarheid:** mislukt het? WinProx probeert opnieuw (met oplopende pauze). Leveringen zie je in een log.",
-                    "**Andere events o.a.:** melding aangemaakt / goedgekeurd / status gewijzigd · taak aangemaakt / gestart / afgerond · Time · GPS · ESG · reserveringen · testknop · unit check geregistreerd."
+                    "**Andere events o.a.:** melding aangemaakt / goedgekeurd / status gewijzigd · taak aangemaakt / gestart / afgerond · Time · GPS · ESG · reserveringen · testknop · unit check geregistreerd. Bij e-mailbevestiging: **melding aangemaakt** pas na de link."
                 ],
                 "emphasis": "Voorbeeld: een medewerker sluit een taak af. WinProx stuurt automatisch een webhook naar jullie externe systeem (IWMS, CMMS of ERP), zodat daar onmiddellijk een werkorder kan worden bijgewerkt."
             }

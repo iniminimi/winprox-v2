@@ -46,7 +46,7 @@
     <li>location and unit data (addresses, location details).</li>
     <li>issue and task data (including photos and descriptions).</li>
     <li>unit check data (result, timestamp, unit, optional GPS, worker).</li>
-    <li>data of workers and QR reporters, to the extent collected by the customer.</li>
+    <li>data of workers and QR reporters, to the extent collected by the customer (including temporary draft reports pending email confirmation).</li>
     <li>access and session data.</li>
     <li>subscription and access metadata.</li>
     <li>ESG/compliance data (indicator definitions, measurement values, links, threshold follow-up and optional attribution to workers).</li>
@@ -112,6 +112,7 @@
     <li>user accounts: active + 24 months.</li>
     <li>issues and tasks: contract period + 36 months.</li>
     <li>unit checks: same retention as issues and tasks.</li>
+    <li>unverified QR reports (email hold): until the confirmation link expires (typically 60 minutes), then deletion including photos; confirmed hold rows up to 7 days.</li>
     <li>logs: 6 months.</li>
     <li>photos: 24 months after closing.</li>
     <li>ESG measurements: same retention as issues and tasks.</li>

@@ -21,7 +21,7 @@
                 },
                 {
                     "title": "Crear incidencia",
-                    "text": "Administradores y personal reportan en la app (con hasta 4 fotos). Los reportadores escanean el QR de la unit y hacen lo mismo en el navegador — sin instalar app."
+                    "text": "Administradores y personal reportan en la app (con hasta 4 fotos). Los reportadores escanean el QR de la unit y hacen lo mismo en el navegador — sin instalar app. Opcionalmente el administrador exige confirmación por correo: el aviso solo se crea tras el enlace del correo."
                 },
                 {
                     "title": "Aprobación (público)",
@@ -94,11 +94,11 @@
             "type": "portal",
             "title": "¿Cómo funciona el portal de reportadores?",
             "intro": "Al escanear el QR de la unit se abre una página web. Los avisadores describen problemas; avisos aprobados, documentos y anuncios compartidos visibles. Ejecutores con acceso al equipo completan tareas abiertas y — si está activado — comprobaciones de unit.",
-            "summary": "Portal QR unit: aviso, avisos aprobados, documentos, anuncios, tareas en sitio y comprobación de unit opcional para ejecutores.",
+            "summary": "Portal QR unit: aviso, avisos aprobados, documentos, anuncios, tareas en sitio y comprobación de unit opcional para ejecutores. Opcional: datos de contacto y/o confirmación por correo (categoría y unidad); hasta el enlace no hay aviso.",
             "sections": [
                 {
                     "title": "Nueva incidencia",
-                    "text": "Describa el problema y añada opcionalmente hasta 4 fotos. Las fotos se reducen en el dispositivo antes de subir. Nombre, apellidos y correo son opcionales, salvo que el administrador haya hecho obligatorios los datos de contacto (categoría y unidad). Los trabajadores conectados no necesitan esos campos. Hay límites anti-spam (p. ej. como máximo un aviso cada pocos minutos por dispositivo)."
+                    "text": "Describa el problema y añada opcionalmente hasta 4 fotos. Las fotos se reducen en el dispositivo antes de subir. Nombre, apellidos y correo son opcionales, salvo que el administrador haya hecho obligatorios los datos de contacto (categoría y unidad). Opcionalmente el administrador puede exigir confirmación por correo (categoría y unidad): recibe un enlace; el aviso, la tarea y el webhook solo se crean tras ese clic. Los trabajadores conectados no necesitan esos campos y no reciben correo de confirmación. Hay límites anti-spam (p. ej. como máximo un aviso cada pocos minutos por dispositivo)."
                 },
                 {
                     "title": "Esperando revisión",

@@ -188,7 +188,8 @@
                     "Framework: EU GDPR + Belgian Act of 30 July 2018.",
                     "Data Processing Agreement (DPA) and subprocessor list available.",
                     "Data export (account), self-service organisation deletion, retention periods documented.",
-                    "I dati restano nell’**UE** (hosting/e-mail). Stripe UE/US in caso di pagamento. Con **Accedi con Microsoft** l’utente va su Microsoft Entra ID (Microsoft, UE/US); WinProx riceve l’e-mail (e eventualmente il nome) per riconoscere l’account esistente."
+                    "I dati restano nell’**UE** (hosting/e-mail). Stripe UE/US in caso di pagamento. Con **Accedi con Microsoft** l’utente va su Microsoft Entra ID (Microsoft, UE/US); WinProx riceve l’e-mail (e eventualmente il nome) per riconoscere l’account esistente.",
+                    "Conferma e-mail opzionale per segnalazioni QR: archiviazione temporanea della bozza fino al link; le bozze non confermate vengono eliminate automaticamente (in genere 60 minuti, foto comprese). Nessun account utente."
                 ]
             },
             {
@@ -207,7 +208,7 @@
                     "**SSO** (un accesso aziendale via Microsoft Entra): per amministratori e dipendenti sul desktop (**Accedi con Microsoft**). Solo account WinProx esistenti (l’e-mail deve corrispondere all’account Microsoft); e-mail + password resta disponibile. Nessun account nuovo automatico. Gli esecutori restano sul QR Clock Point (nome + icona). Il collegamento ad altro software (Ultimo, IWMS, …) usa token API, non SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
-                    "Reporters: public QR portal without an account."
+                    "Segnalatori: portale QR pubblico senza account. Prova della casella opzionale (categoria e unità): nessun login; la segnalazione nasce solo dopo il link nella mail."
                 ]
             },
             {
@@ -227,7 +228,8 @@
                     "HTTP POST in uscita su eventi (tra l’altro stato issue/attività, controllo unità, ESG, GPS).",
                     "Configured under Settings → API; secret for verification.",
                     "Automatic retries on failure (several attempts with increasing delay).",
-                    "Same plan requirement as API (Corporate)."
+                    "Same plan requirement as API (Corporate).",
+                    "Con la conferma e-mail opzionale, l’evento **segnalazione creata** parte solo dopo il link, non all’invio del modulo sul portale."
                 ]
             }
         ],
@@ -360,7 +362,7 @@
                     "**Configurazione:** Impostazioni → API → Webhook (URL + eventi). Il secret viene mostrato una volta — conservalo in sicurezza.",
                     "**Prova di origine:** ogni messaggio ha una firma HMAC (verificabile con il tuo secret).",
                     "**Affidabilità:** se fallisce, WinProx riprova (con pausa crescente). Le consegne appaiono in un registro.",
-                    "**Altri eventi es.:** segnalazione creata / approvata / stato modificato · compito creato / avviato / completato · Time · GPS · ESG · prenotazioni · pulsante di test · controllo unità registrato."
+                    "**Altri eventi es.:** segnalazione creata / approvata / stato modificato · compito creato / avviato / completato · Time · GPS · ESG · prenotazioni · pulsante di test · controllo unità registrato. Con conferma e-mail: **segnalazione creata** solo dopo il link."
                 ],
                 "emphasis": "Esempio: un operatore chiude un’attività. WinProx invia automaticamente un webhook al vostro sistema esterno (IWMS, CMMS o ERP) così un ordine di lavoro può essere aggiornato subito."
             }

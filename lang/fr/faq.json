@@ -21,7 +21,7 @@
                 },
                 {
                     "title": "Créer un signalement",
-                    "text": "Les administrateurs et collaborateurs signalent dans l'app (jusqu'à 4 photos). Les rapporteurs scannent le QR de l'unit et font de même dans le navigateur — sans installation d'app."
+                    "text": "Les administrateurs et collaborateurs signalent dans l'app (jusqu'à 4 photos). Les rapporteurs scannent le QR de l'unit et font de même dans le navigateur — sans installation d'app. Optionnellement l’administrateur exige une confirmation e-mail : le signalement n’existe qu’après le lien dans le mail."
                 },
                 {
                     "title": "Approbation (public)",
@@ -94,11 +94,11 @@
             "type": "portal",
             "title": "Comment fonctionne le portail rapporteurs ?",
             "intro": "Le scan du QR unité ouvre une page web pour cette unité. Les signaleurs décrivent les problèmes ; signalements approuvés, documents et annonces partagés visibles. Les exécutants avec accès équipe traitent les tâches ouvertes et — si activé — les contrôles d'unité.",
-            "summary": "Portail QR unité : signalement, signalements approuvés, documents, annonces, tâches sur site et contrôle d'unité optionnel pour exécutants.",
+            "summary": "Portail QR unité : signalement, signalements approuvés, documents, annonces, tâches sur site et contrôle d'unité optionnel pour exécutants. Optionnel : coordonnées et/ou confirmation e-mail (catégorie et unité) ; jusqu’au lien il n’y a pas de signalement.",
             "sections": [
                 {
                     "title": "Nouveau signalement",
-                    "text": "Décrivez le problème et ajoutez éventuellement jusqu’à 4 photos. Les photos sont redimensionnées sur l’appareil avant l’envoi. Prénom, nom et e-mail sont facultatifs, sauf si l’administrateur a rendu les coordonnées obligatoires (catégorie et unité). Les agents connectés n’ont pas à remplir ces champs. Des limites anti-spam s’appliquent (p. ex. au plus un signalement toutes les quelques minutes par appareil)."
+                    "text": "Décrivez le problème et ajoutez éventuellement jusqu’à 4 photos. Les photos sont réduites sur l’appareil avant l’envoi. Prénom, nom et e-mail sont optionnels, sauf si l’administrateur a rendu les coordonnées obligatoires (catégorie et unité). Optionnellement, l’administrateur peut exiger une confirmation e-mail (catégorie et unité) : vous recevez un lien ; le signalement, la tâche et le webhook n’existent qu’après ce clic. Les exécutants connectés n’ont pas à remplir ces champs et ne reçoivent pas de mail de confirmation. Des limites anti-spam s’appliquent (p. ex. au plus un signalement toutes les quelques minutes par appareil)."
                 },
                 {
                     "title": "En attente de contrôle",

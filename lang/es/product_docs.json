@@ -188,7 +188,8 @@
                     "Framework: EU GDPR + Belgian Act of 30 July 2018.",
                     "Data Processing Agreement (DPA) and subprocessor list available.",
                     "Data export (account), self-service organisation deletion, retention periods documented.",
-                    "Los datos permanecen en la **UE** (alojamiento/correo). Stripe UE/EE. UU. si hay pago. Con **Iniciar sesión con Microsoft**, el usuario va a Microsoft Entra ID (Microsoft, UE/EE. UU.); WinProx recibe el correo (y posiblemente el nombre) para reconocer la cuenta existente."
+                    "Los datos permanecen en la **UE** (alojamiento/correo). Stripe UE/EE. UU. si hay pago. Con **Iniciar sesión con Microsoft**, el usuario va a Microsoft Entra ID (Microsoft, UE/EE. UU.); WinProx recibe el correo (y posiblemente el nombre) para reconocer la cuenta existente.",
+                    "Confirmación por correo opcional en avisos QR: almacenamiento temporal del borrador hasta el enlace; los borradores no confirmados se eliminan automáticamente (normalmente 60 minutos, fotos incluidas). Sin cuenta de usuario."
                 ]
             },
             {
@@ -207,7 +208,7 @@
                     "**SSO** (un inicio de sesión de empresa vía Microsoft Entra): para administradores y empleados en escritorio (**Iniciar sesión con Microsoft**). Solo cuentas WinProx existentes (el correo debe coincidir con la cuenta Microsoft); correo + contraseña sigue funcionando. No se crean cuentas nuevas automáticamente. Los ejecutores siguen con el QR Clock Point (nombre + icono). La conexión con otro software (Ultimo, IWMS, …) usa tokens de API, no SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
-                    "Reporters: public QR portal without an account."
+                    "Avisadores: portal QR público sin cuenta. Prueba de buzón opcional (categoría y unidad): sin inicio de sesión; el aviso solo se crea tras el enlace del correo."
                 ]
             },
             {
@@ -227,7 +228,8 @@
                     "HTTP POST saliente en eventos (p. ej. estado de aviso/tarea, comprobación de unidad, ESG, GPS).",
                     "Configured under Settings → API; secret for verification.",
                     "Automatic retries on failure (several attempts with increasing delay).",
-                    "Same plan requirement as API (Corporate)."
+                    "Same plan requirement as API (Corporate).",
+                    "Con la confirmación por correo opcional, el evento **aviso creado** se dispara solo tras el enlace, no al enviar el formulario en el portal."
                 ]
             }
         ],
@@ -360,7 +362,7 @@
                     "**Configuración:** Ajustes → API → Webhooks (URL + eventos). El secreto se muestra una vez — guárdelo bien.",
                     "**Prueba de origen:** cada mensaje lleva una firma HMAC (verificable con su secreto).",
                     "**Fiabilidad:** si falla, WinProx reintenta (con pausa creciente). Las entregas aparecen en un registro.",
-                    "**Otros eventos p. ej.:** aviso creado / aprobado / estado cambiado · tarea creada / iniciada / completada · Time · GPS · ESG · reservas · botón de prueba · comprobación de unit registrada."
+                    "**Otros eventos p. ej.:** aviso creado / aprobado / estado cambiado · tarea creada / iniciada / completada · Time · GPS · ESG · reservas · botón de prueba · comprobación de unit registrada. Con confirmación por correo: **aviso creado** solo tras el enlace."
                 ],
                 "emphasis": "Ejemplo: un trabajador cierra una tarea. WinProx envía automáticamente un webhook a su sistema externo (IWMS, GMAO o ERP) para actualizar de inmediato una orden de trabajo."
             }

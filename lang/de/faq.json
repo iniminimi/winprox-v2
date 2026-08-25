@@ -21,7 +21,7 @@
                 },
                 {
                     "title": "Meldung erstellen",
-                    "text": "Administratoren und Mitarbeiter melden in der App (mit bis zu 4 Fotos). Melder scannen den Unit-QR und tun dasselbe im Browser — ohne App-Installation."
+                    "text": "Administratoren und Mitarbeiter melden in der App (mit bis zu 4 Fotos). Melder scannen den Unit-QR und tun dasselbe im Browser — ohne App-Installation. Optional verlangt die Verwaltung eine E-Mail-Bestätigung: die Meldung entsteht erst nach dem Link in der Mail."
                 },
                 {
                     "title": "Freigabe (öffentlich)",
@@ -94,11 +94,11 @@
             "type": "portal",
             "title": "Wie funktioniert das Melderportal?",
             "intro": "Nach dem Scannen des Unit-QR öffnet sich eine Webseite für diese Unit. Melder beschreiben Probleme; freigegebene Meldungen sowie Dokumente/Mitteilungen sind sichtbar. Ausführer mit Teamzugang bearbeiten offene Aufgaben und — wenn aktiviert — Unit-Checks.",
-            "summary": "Unit-QR-Portal: Meldung, freigegebene Meldungen, Dokumente, Mitteilungen, Aufgaben vor Ort und optional Unit-Check für Ausführer.",
+            "summary": "Unit-QR-Portal: Meldung, freigegebene Meldungen, Dokumente, Mitteilungen, Aufgaben vor Ort und optional Unit-Check für Ausführer. Optional: Kontaktdaten und/oder E-Mail-Bestätigung (Kategorie und Unit); bis zum Link gibt es keine Meldung.",
             "sections": [
                 {
                     "title": "Neue Meldung",
-                    "text": "Beschreiben Sie das Problem und fügen Sie optional bis zu 4 Fotos hinzu. Fotos werden auf dem Gerät verkleinert vor dem Upload. Vorname, Name und E-Mail sind optional, es sei denn die Verwaltung hat Kontaktdaten Pflicht gemacht (Kategorie und Unit). Angemeldete Mitarbeiter müssen diese Felder nicht ausfüllen. Gegen Spam gelten Limits (z. B. höchstens eine Meldung alle paar Minuten pro Gerät)."
+                    "text": "Beschreiben Sie das Problem und fügen Sie optional bis zu 4 Fotos hinzu. Fotos werden auf dem Gerät verkleinert vor dem Upload. Vorname, Name und E-Mail sind optional, es sei denn die Verwaltung hat Kontaktdaten Pflicht gemacht (Kategorie und Unit). Optional kann die Verwaltung eine E-Mail-Bestätigung verlangen (Kategorie und Unit): Sie erhalten einen Link; Meldung, Aufgabe und Webhook entstehen erst nach diesem Klick. Angemeldete Mitarbeiter müssen diese Felder nicht ausfüllen und erhalten keine Bestätigungsmail. Gegen Spam gelten Limits (z. B. höchstens eine Meldung alle paar Minuten pro Gerät)."
                 },
                 {
                     "title": "Wartet auf Prüfung",

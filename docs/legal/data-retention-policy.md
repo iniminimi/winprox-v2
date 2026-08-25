@@ -24,7 +24,7 @@ This policy is a draft and requires legal approval.
 | Owner contacts | Name, email, phone | While linked + 24 months | Delete if no legal need remains |
 | Notification logs | Sent/failed recipients, subject | 24 months | Delete or aggregate stats only |
 | Activity logs | Security and audit events | 24 months | Delete or anonymize |
-| Uploaded media | Issue photos and updates | 24 months after related record closes | Delete |
+| QR report email holds | Unverified QR drafts (description, photos, email) pending mailbox link | Unverified: typically 60 minutes then delete (incl. photos). Confirmed hold rows: 7 days. Created issues follow Issues/tasks. | Delete |
 | Operational infrastructure backups | Cloud86 daily backups of files/DB | 7 days | Rotate/overwrite by provider |
 | Tenant-purge SQL snapshot | Technical snapshot after organisation wipe (no media) | Max. 30 days | Destroy |
 

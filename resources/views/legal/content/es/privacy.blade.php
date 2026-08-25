@@ -83,6 +83,9 @@
     <li>datos enviados voluntariamente a través de un portal QR público (como nombre, dirección de correo electrónico o descripción)</li>
     <li>metadatos técnicos necesarios para la seguridad y la prevención de abusos</li>
 </ul>
+<p>
+    El cliente puede exigir confirmación por correo por categoría y unidad. WinProx guarda entonces el borrador (descripción, fotos, correo) hasta que el informante pulse el enlace del correo. Sin confirmación el borrador se elimina automáticamente (normalmente en 60 minutos), fotos incluidas. Esto demuestra que el buzón existe; no es una cuenta de usuario.
+</p>
 <p><strong>Comprobaciones de unit</strong></p>
 <p>
     Si el cliente activa comprobaciones de unit en categoría y unit, los ejecutores pueden registrar OK o No OK vía el QR de la unit (tras Clock Point), opcionalmente con checklist y GPS. No es un aviso: OK no crea issue. WinProx guarda resultado, marca de tiempo, unit, coordenadas GPS opcionales y ejecutor. Retención igual que avisos y tareas, salvo política interna distinta.
@@ -155,7 +158,8 @@
 <h2>6. Informes QR y acceso de equipos</h2>
 <p>
     Los códigos QR permiten a los informantes enviar incidencias sin cuenta. El cliente / administrador decide qué ubicaciones
-    y unidades están disponibles y qué datos se solicitan.
+    y unidades están disponibles y qué datos se solicitan. El cliente puede exigir confirmación por correo: hasta que el
+    informante pulse el enlace, no hay aviso — solo un borrador temporal.
 </p>
 <p>
     Los usuarios con sesión iniciada y los equipos internos tienen acceso según los permisos establecidos por el cliente. WinProx trata
@@ -178,6 +182,7 @@
     <li>cuentas de usuario: activas + 24 meses</li>
     <li>incidencias y tareas: duración del contrato + 36 meses</li>
     <li>comprobaciones de unidad: mismo plazo que avisos y tareas (duración del contrato + 36 meses).</li>
+    <li>avisos QR no confirmados (retención de correo): hasta que caduque el enlace de confirmación (normalmente 60 minutos), luego eliminación incluidas las fotos; filas de retención confirmadas hasta 7 días (el aviso en sí sigue el plazo de los avisos).</li>
     <li>registros: 6 meses</li>
     <li>eventos de incorporación por usuario (para estadísticas de incorporación): 6 meses; las cifras agregadas de incorporación sin datos personales pueden conservarse más tiempo</li>
     <li>medios (fotos): 24 meses tras cerrar la incidencia o tarea correspondiente</li>

@@ -6,6 +6,7 @@
 |----------------------|-------------------------------|-------------------------|---------------------------|---------------------------|
 | Platformaccounts en login | Uitvoering overeenkomst / gerechtvaardigd belang (beveiliging) | Gebruikers, beheerders | Zie `data-retention-policy.md` | Hosting, e‑mail indien van toepassing |
 | Meldingen en taken | Uitvoering overeenkomst (vastgoedbeheer) | Bewonerscontacten, gebruikers, workers | Zie retentiebeleid | Zoals in productflow |
+| QR e-mailbevestiging (optionele klantinstelling) | Uitvoering overeenkomst / beveiliging (mailboxbewijs, geen account) | Anonieme QR-melders | Onbevestigd ~60 min (incl. foto’s); bevestigde hold-rijen 7 dagen; daarna melding volgens retentiebeleid | Transactionele e-mail (Cloud86) |
 | ESG-metingen (optionele module) | Uitvoering overeenkomst (compliance/inspectie) | Beheerders, workers (via taken/portaal) | Zie retentiebeleid (zelfde als meldingen/taken) | API/webhooks van de klant indien gekoppeld |
 | IoT Connect (optionele module) | Uitvoering overeenkomst (sensor → workflow) | Indirect via meldingen/taken/ESG; gateway-tokens | Contractperiode + 36 maanden (events/metadata) | Gateways van de klant pushen naar WinProx; geen externe IoT-cloud van WinProx |
 | Eigenaarscommunicatie | Uitvoering overeenkomst (instructie klant) | Eigenaars, zoals door klant ingevoerd | Zie retentiebeleid | E‑mailprovider |

@@ -83,6 +83,9 @@
     <li>dati inviati volontariamente tramite un portale QR pubblico (come nome, indirizzo e-mail o descrizione)</li>
     <li>metadati tecnici necessari per la sicurezza e la prevenzione degli abusi</li>
 </ul>
+<p>
+    Il cliente può richiedere la conferma e-mail per categoria e unità. WinProx conserva allora la bozza (descrizione, foto, e-mail) finché il segnalatore non clicca il link nella mail. Senza conferma la bozza viene eliminata automaticamente (in genere entro 60 minuti), foto comprese. Ciò prova che la casella esiste; non è un account utente.
+</p>
 <p><strong>Controlli unità</strong></p>
 <p>
     Se il cliente attiva i controlli unità su categoria e unit, gli esecutori possono registrare OK o Non OK via QR unit (dopo Clock Point), eventualmente con checklist e GPS. Non è una segnalazione: OK non crea issue. WinProx conserva risultato, timestamp, unit, coordinate GPS opzionali ed esecutore. Conservazione come per segnalazioni e task, salvo policy interna diversa.
@@ -155,7 +158,8 @@
 <h2>6. Segnalazioni QR e accesso dei team</h2>
 <p>
     I codici QR consentono ai segnalanti di inviare problematiche senza un account. Il cliente / amministratore decide quali sedi
-    e unità sono disponibili e quali dati vengono richiesti.
+    e unità sono disponibili e quali dati vengono richiesti. Il cliente può richiedere la conferma e-mail: fino al clic sul
+    link non c’è una segnalazione — solo una bozza temporanea.
 </p>
 <p>
     Gli utenti con accesso e i team interni hanno accesso in base alle autorizzazioni impostate dal cliente. WinProx tratta
@@ -178,6 +182,7 @@
     <li>account utente: attivi + 24 mesi</li>
     <li>problematiche e attività: durata del contratto + 36 mesi</li>
     <li>controlli unità: stesso periodo di conservazione di segnalazioni e attività (durata del contratto + 36 mesi).</li>
+    <li>segnalazioni QR non confermate (hold e-mail): fino alla scadenza del link di conferma (in genere 60 minuti), poi eliminazione comprese le foto; righe hold confermate fino a 7 giorni (la segnalazione segue la conservazione delle segnalazioni).</li>
     <li>registri: 6 mesi</li>
     <li>eventi di onboarding per utente (per statistiche di onboarding): 6 mesi; i dati aggregati di onboarding senza dati personali possono essere conservati più a lungo</li>
     <li>media (foto): 24 mesi dopo la chiusura della relativa problematica o attività</li>

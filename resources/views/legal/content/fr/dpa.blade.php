@@ -46,7 +46,7 @@
     <li>données de site et d’unité (adresses, détails de localisation).</li>
     <li>données d’issues et de tâches (y compris photos et descriptions).</li>
     <li>données de contrôle d’unité (résultat, horodatage, unité, GPS optionnel, exécutant).</li>
-    <li>données des exécutants et des personnes signalant via QR, dans la mesure collectées par le client.</li>
+    <li>données des exécutants et des personnes signalant via QR, dans la mesure collectées par le client (y compris les brouillons temporaires en attente de confirmation e-mail).</li>
     <li>données d’accès et de session.</li>
     <li>métadonnées d’abonnement et d’accès.</li>
     <li>données ESG/conformité (définitions d’indicateurs, valeurs de mesure, liens, suivi des seuils et attribution optionnelle aux exécutants).</li>
@@ -112,6 +112,7 @@
     <li>comptes utilisateurs : actif + 24 mois.</li>
     <li>issues et tâches : durée du contrat + 36 mois.</li>
     <li>contrôles d’unité : même durée de conservation que les issues et tâches.</li>
+    <li>signalements QR non confirmés (retenue e-mail) : jusqu’à l’expiration du lien de confirmation (en général 60 minutes), puis suppression y compris les photos ; lignes de retenue confirmées jusqu’à 7 jours.</li>
     <li>journaux : 6 mois.</li>
     <li>photos : 24 mois après clôture.</li>
     <li>mesures ESG : même durée de conservation que les issues et tâches.</li>

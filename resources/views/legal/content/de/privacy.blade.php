@@ -83,6 +83,9 @@
     <li>Daten, die eine meldende Person freiwillig über ein öffentliches QR-Portal eingibt (z. B. Name, E-Mail-Adresse oder Beschreibung).</li>
     <li>technische Metadaten, die für Sicherheit und Missbrauchsprävention erforderlich sind.</li>
 </ul>
+<p>
+    Der Kunde kann je Kategorie und Unit eine E-Mail-Bestätigung verlangen. WinProx speichert dann den Meldungsentwurf (Beschreibung, Fotos, E-Mail), bis die meldende Person auf den Link in der Mail klickt. Ohne Bestätigung wird der Entwurf automatisch gelöscht (in der Regel innerhalb von 60 Minuten), einschließlich Fotos. Das belegt das Postfach, es ist kein Benutzerkonto.
+</p>
 <p><strong>Unit-Checks</strong></p>
 <p>
     Aktiviert der Kunde Unit-Checks an Kategorie und Unit, können Ausführer über den Unit-QR (nach Clock-Point-Anmeldung) ein OK- oder Nicht-OK-Ergebnis erfassen, optional mit Checkliste und GPS. Dies ist keine Meldung: OK erstellt kein Issue. WinProx speichert Ergebnis, Zeitstempel, Unit, optional GPS-Koordinaten und den Ausführer. Aufbewahrung wie bei Meldungen und Aufgaben, sofern Ihre Organisation nichts anderes festlegt.
@@ -155,7 +158,8 @@
 <h2>6. QR-Meldungen und Teamzugang</h2>
 <p>
     Über QR-Codes können Meldungen ohne Konto eingereicht werden. Der Kunde / Administrator bestimmt, welche Standorte
-    und Units verfügbar sind und welche Daten abgefragt werden.
+    und Units verfügbar sind und welche Daten abgefragt werden. Der Kunde kann eine E-Mail-Bestätigung verlangen: bis zum
+    Klick auf den Link gibt es keine Meldung — nur einen vorübergehenden Entwurf.
 </p>
 <p>
     Angemeldete Benutzer und interne Teams erhalten Zugang gemäß den vom Kunden gesetzten Berechtigungen. WinProx verarbeitet
@@ -179,6 +183,7 @@
     <li>Benutzerkonten: aktiv + 24 Monate.</li>
     <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate.</li>
     <li>Unit-Checks: gleiche Aufbewahrung wie Meldungen und Aufgaben (Vertragslaufzeit + 36 Monate).</li>
+    <li>unbestätigte QR-Meldungen (E-Mail-Hold): bis zum Ablauf des Bestätigungslinks (in der Regel 60 Minuten), danach Löschung inklusive Fotos; bestätigte Hold-Zeilen bis 7 Tage (die Meldung selbst folgt der Aufbewahrung für Meldungen).</li>
     <li>Protokolle: 6 Monate.</li>
     <li>Onboarding-Ereignisse pro Benutzer (für Onboarding-Statistiken): 6 Monate; aggregierte Onboarding-Kennzahlen ohne Personendaten können länger aufbewahrt werden.</li>
     <li>Medien (Fotos): 24 Monate nach Abschluss der betreffenden Meldung oder Aufgabe.</li>

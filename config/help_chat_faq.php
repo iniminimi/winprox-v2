@@ -8,6 +8,16 @@ return [
     */
     'entries' => [
         [
+            'patterns' => [
+                'e-mailbevestiging', 'emailbevestiging', 'bevestigingsmail', 'bevestigingslink',
+                'email confirmation', 'require email confirmation', 'confirmation e-mail', 'confirmation email',
+                'e-mail-bestätigung', 'email-bestätigung', 'bestätigungsmail',
+                'confirmation par e-mail', 'confirmation par email',
+                'confirmación de correo', 'conferma e-mail', 'conferma email',
+            ],
+            'body_key' => 'faq.items.reporter_portal.summary',
+        ],
+        [
             'patterns' => ['qr', 'scan', 'melden', 'melder', 'code qr', 'clock point'],
             'body_key' => 'faq.items.qr_code.summary',
         ],

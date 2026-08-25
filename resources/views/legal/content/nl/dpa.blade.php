@@ -46,7 +46,7 @@
     <li>locatie- en unitgegevens (adressen, locatiedetails).</li>
     <li>meldingen en taakgegevens (inclusief foto’s en beschrijvingen).</li>
     <li>unit-checkgegevens (resultaat, tijdstip, unit, optioneel GPS, uitvoerder).</li>
-    <li>gegevens van uitvoerders en QR-melders, voor zover door de klant verzameld.</li>
+    <li>gegevens van uitvoerders en QR-melders, voor zover door de klant verzameld (inclusief tijdelijke conceptmeldingen in afwachting van e-mailbevestiging).</li>
     <li>toegangs- en sessiegegevens.</li>
     <li>abonnements- en toegangsmetadata.</li>
     <li>ESG-/compliance-gegevens (indicatordefinities, meetwaarden, koppelingen, drempelopvolging en optionele toeschrijving aan uitvoerders).</li>
@@ -112,6 +112,7 @@
     <li>gebruikersaccounts: actief + 24 maanden.</li>
     <li>meldingen en taken: contractperiode + 36 maanden.</li>
     <li>unit checks: dezelfde bewaartermijn als meldingen en taken.</li>
+    <li>onbevestigde QR-meldingen (e-mailhold): tot het verlopen van de bevestigingslink (standaard 60 minuten), daarna verwijdering inclusief foto’s; bevestigde hold-rijen tot 7 dagen.</li>
     <li>logs: 6 maanden.</li>
     <li>foto’s: 24 maanden na afsluiten.</li>
     <li>ESG-metingen: dezelfde bewaartermijn als meldingen en taken.</li>

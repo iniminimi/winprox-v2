@@ -188,7 +188,8 @@
                     "Framework: EU GDPR + Belgian Act of 30 July 2018.",
                     "Data Processing Agreement (DPA) and subprocessor list available.",
                     "Data export (account), self-service organisation deletion, retention periods documented.",
-                    "Data stays in the **EU** (hosting/email). Stripe EU/US when paying. With **Sign in with Microsoft**, the user is sent to Microsoft Entra ID (Microsoft, EU/US); WinProx receives email (and possibly name) to match the existing account."
+                    "Data stays in the **EU** (hosting/email). Stripe EU/US when paying. With **Sign in with Microsoft**, the user is sent to Microsoft Entra ID (Microsoft, EU/US); WinProx receives email (and possibly name) to match the existing account.",
+                    "Optional email confirmation for QR reports: temporary draft storage until the link; unverified drafts are deleted automatically (typically 60 minutes, including photos). No user account."
                 ]
             },
             {
@@ -207,7 +208,7 @@
                     "**SSO** (one work login via Microsoft Entra): for admins and employees on desktop (**Sign in with Microsoft**). Only existing WinProx accounts (email must match the Microsoft account); email + password still works. No automatic new accounts. Workers stay on Clock Point QR (name + icon). Connecting other software (Ultimo, IWMS, …) uses API tokens, not SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
-                    "Reporters: public QR portal without an account."
+                    "Reporters: public QR portal without an account. Optional mailbox proof (category and unit): no login; the issue is created only after the link in the mail."
                 ]
             },
             {
@@ -227,7 +228,8 @@
                     "Outbound HTTP POST on events (incl. issue/task status, unit check, ESG, GPS).",
                     "Configured under Settings → API; secret for verification.",
                     "Automatic retries on failure (several attempts with increasing delay).",
-                    "Same plan requirement as API (Corporate)."
+                    "Same plan requirement as API (Corporate).",
+                    "With optional email confirmation, the **issue created** event fires only after the link, not when the form is submitted on the portal."
                 ]
             }
         ],
@@ -360,7 +362,7 @@
                     "**Setup:** Settings → API → Webhooks (URL + which events). The secret is shown once — store it safely.",
                     "**Proof of origin:** each message has an HMAC signature (verifiable with your secret).",
                     "**Reliability:** if delivery fails, WinProx retries (with increasing delay). Deliveries appear in a log.",
-                    "**Other events include:** issue created / approved / status changed · task created / started / completed · Time · GPS · ESG · reservations · test button · unit check recorded."
+                    "**Other events include:** issue created / approved / status changed · task created / started / completed · Time · GPS · ESG · reservations · test button · unit check recorded. With email confirmation: **issue created** only after the link."
                 ],
                 "emphasis": "Example: a worker completes a task. WinProx automatically sends a webhook to your external system (IWMS, CMMS or ERP) so a work order can be updated immediately."
             }

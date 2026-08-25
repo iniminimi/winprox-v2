@@ -21,7 +21,7 @@
                 },
                 {
                     "title": "Create an issue",
-                    "text": "Administrators and staff report in the app (with up to 4 photos). Reporters scan the unit QR and do the same in the browser — no app installation required."
+                    "text": "Administrators and staff report in the app (with up to 4 photos). Reporters scan the unit QR and do the same in the browser — no app installation required. Optionally the administrator requires email confirmation: the issue is created only after the link in the mail."
                 },
                 {
                     "title": "Approval (public)",
@@ -94,11 +94,11 @@
             "type": "portal",
             "title": "How does the reporter portal work?",
             "intro": "Scanning the unit QR opens a web page for that unit. Reporters describe problems; approved issues and shared documents/announcements are visible. Workers with team access can complete open tasks and — when enabled — run unit checks.",
-            "summary": "Unit QR portal: report, approved issues, documents, announcements, on-site tasks and optional unit check for workers.",
+            "summary": "Unit QR portal: report, approved issues, documents, announcements, on-site tasks and optional unit check for workers. Optional: contact details and/or email confirmation (category and unit); until the link there is no issue.",
             "sections": [
                 {
                     "title": "New issue",
-                    "text": "Describe the problem and optionally add up to 4 photos. Photos are resized on the device before upload. First name, last name and email are optional unless the administrator required contact details (category and unit). Signed-in workers do not need those fields. Anti-spam limits apply (e.g. at most one report every few minutes per device)."
+                    "text": "Describe the problem and optionally add up to 4 photos. Photos are resized on the device before upload. First name, last name and email are optional unless the administrator required contact details (category and unit). Optionally the administrator can require email confirmation (category and unit): you get a link; the issue, task and webhook are created only after that click. Signed-in workers do not need those fields and do not get a confirmation mail. Anti-spam limits apply (e.g. at most one report every few minutes per device)."
                 },
                 {
                     "title": "Awaiting review",

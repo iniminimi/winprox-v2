@@ -46,7 +46,7 @@
     <li>dati di sede e unità (indirizzi, dettagli di localizzazione).</li>
     <li>dati di problematiche e attività (inclusi foto e descrizioni).</li>
     <li>dati di controllo unità (risultato, orario, unità, GPS opzionale, esecutore).</li>
-    <li>dati di lavoratori e segnalanti QR, nella misura in cui raccolti dal cliente.</li>
+    <li>dati di lavoratori e segnalanti QR, nella misura in cui raccolti dal cliente (incluse bozze temporanee in attesa di conferma e-mail).</li>
     <li>dati di accesso e sessione.</li>
     <li>metadati di abbonamento e accesso.</li>
     <li>dati ESG/conformità (definizioni degli indicatori, valori di misurazione, collegamenti, follow-up soglie e attribuzione opzionale ai lavoratori).</li>
@@ -112,6 +112,7 @@
     <li>account utente: attivi + 24 mesi.</li>
     <li>problematiche e attività: durata del contratto + 36 mesi.</li>
     <li>controlli unità: stesso periodo di conservazione di problematiche e attività.</li>
+    <li>segnalazioni QR non confermate (hold e-mail): fino alla scadenza del link di conferma (in genere 60 minuti), poi eliminazione comprese le foto; righe hold confermate fino a 7 giorni.</li>
     <li>registri: 6 mesi.</li>
     <li>foto: 24 mesi dopo la chiusura.</li>
     <li>misurazioni ESG: stesso periodo di conservazione di problematiche e attività.</li>

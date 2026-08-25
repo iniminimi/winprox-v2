@@ -83,6 +83,9 @@
     <li>gegevens die een melder vrijwillig invult via een publiek QR-portaal (zoals naam, e-mailadres of beschrijving).</li>
     <li>technische metadata die nodig is voor beveiliging en misbruikpreventie.</li>
 </ul>
+<p>
+    De klant kan per categorie én unit e-mailbevestiging verplichten. Dan bewaart WinProx de conceptmelding (omschrijving, foto’s, e-mail) tijdelijk tot de melder op de link in de mail klikt. Zonder bevestiging wordt het concept automatisch verwijderd (standaard binnen 60 minuten), inclusief foto’s. Dit is een bewijs van het mailboxadres, geen gebruikersaccount.
+</p>
 <p><strong>Unit checks</strong></p>
 <p>
     Indien de klant Unit checks inschakelt op categorie én unit, kunnen uitvoerders via de unit-QR (na aanmelding via Clock Point) een OK- of Niet OK-resultaat registreren, eventueel met checklist en GPS. Dit is geen melding: bij OK wordt geen issue aangemaakt. WinProx bewaart resultaat, tijdstip, unit, optioneel GPS-coördinaten en de uitvoerder. Bewaartermijn geldt dezelfde als voor meldingen en taken, tenzij anders bepaald in uw organisatie.
@@ -155,7 +158,8 @@
 <h2>6. QR-meldingen en team-toegang</h2>
 <p>
     Via QR-codes kunnen melders meldingen indienen zonder account. De klant / beheerder bepaalt welke locaties en units
-    beschikbaar zijn en welke gegevens worden gevraagd.
+    beschikbaar zijn en welke gegevens worden gevraagd. De klant kan daarbij e-mailbevestiging verplichten: tot de melder
+    op de link klikt, is er geen melding — alleen een tijdelijk concept.
 </p>
 <p>
     Ingelogde gebruikers en interne teams hebben toegang volgens de rechten die de klant instelt. WinProx verwerkt
@@ -179,6 +183,7 @@
     <li>gebruikersaccounts: actief + 24 maanden.</li>
     <li>meldingen en taken: contractperiode + 36 maanden.</li>
     <li>unit checks: dezelfde bewaartermijn als meldingen en taken (contractperiode + 36 maanden).</li>
+    <li>onbevestigde QR-meldingen (e-mailhold): tot het verlopen van de bevestigingslink (standaard 60 minuten), daarna verwijdering inclusief foto’s; bevestigde hold-rijen tot 7 dagen (de melding zelf volgt de bewaartermijn voor meldingen).</li>
     <li>logs: 6 maanden.</li>
     <li>onboarding-events per gebruiker (voor onboarding-statistieken): 6 maanden; geaggregeerde onboardingcijfers zonder persoonsdata blijven langer bewaard.</li>
     <li>media (foto’s): 24 maanden na afsluiten van de betreffende melding of taak.</li>

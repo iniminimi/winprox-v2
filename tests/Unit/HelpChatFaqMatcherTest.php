@@ -122,6 +122,16 @@ it('koppelt voor-wie vragen aan FAQ', function (): void {
         ->toBe(__('faq.items.for_who.summary'));
 });
 
+it('beantwoordt e-mailbevestiging vanuit pagina-hulp categorieën', function (): void {
+    $matcher = app(HelpChatFaqMatcher::class);
+
+    $answer = $matcher->match('Hoe werkt e-mailbevestiging bij een QR-melding?', 'nl');
+
+    expect($answer)->toContain('E-mailbevestiging verplicht')
+        ->and($answer)->toContain('webhook')
+        ->and($answer)->not->toBe(__('faq.items.reporter_portal.summary'));
+});
+
 it('beantwoordt Microsoft-login vanuit pagina-hulp backoffice', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 

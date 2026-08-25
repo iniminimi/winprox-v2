@@ -12,6 +12,20 @@ return [
     'entries' => [
         [
             'patterns' => [
+                'e-mailbevestiging', 'emailbevestiging', 'bevestigingsmail', 'bevestigingslink',
+                'email confirmation', 'require email confirmation', 'confirmation e-mail', 'confirmation email',
+                'e-mail-bestätigung', 'email-bestätigung', 'bestätigungsmail',
+                'confirmation par e-mail', 'confirmation par email',
+                'confirmación de correo', 'conferma e-mail', 'conferma email',
+            ],
+            'page' => 'locations.categories',
+            'prefer' => [
+                'e-mailbevestiging', 'email confirmation', 'e-mail-bestätigung',
+                'confirmation e-mail', 'confirmación de correo', 'conferma e-mail',
+            ],
+        ],
+        [
+            'patterns' => [
                 'taak toe', 'taken toe', 'team toewijs', 'toewijs', 'toewijzen',
                 'assign team', 'assign task', 'équipe', 'zuweisen', 'asignar', 'assegn',
             ],

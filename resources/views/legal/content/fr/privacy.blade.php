@@ -83,6 +83,9 @@
     <li>données fournies volontairement via un portail QR public (nom, adresse e-mail ou description).</li>
     <li>métadonnées techniques nécessaires à la sécurité et à la prévention des abus.</li>
 </ul>
+<p>
+    Le client peut exiger une confirmation e-mail par catégorie et unité. WinProx conserve alors le brouillon (description, photos, e-mail) jusqu’à ce que le déclarant clique sur le lien dans le mail. Sans confirmation, le brouillon est supprimé automatiquement (en général dans les 60 minutes), photos comprises. Cela prouve l’existence de la boîte mail, ce n’est pas un compte utilisateur.
+</p>
 <p><strong>Contrôles d'unité</strong></p>
 <p>
     Si le client active les contrôles d'unité sur catégorie et unité, les exécutants peuvent enregistrer un résultat OK ou Non OK via le QR unité (après Clock Point), éventuellement avec checklist et GPS. Ce n'est pas un signalement : OK ne crée pas d'issue. WinProx conserve le résultat, l'horodatage, l'unité, les coordonnées GPS optionnelles et l'exécutant. Conservation identique aux signalements et tâches, sauf règle interne différente.
@@ -155,7 +158,8 @@
 <h2>6. Signalements QR et accès des équipes</h2>
 <p>
     Les codes QR permettent de soumettre des signalements sans compte. Le client / administrateur détermine quels sites
-    et unités sont disponibles et quelles données sont demandées.
+    et unités sont disponibles et quelles données sont demandées. Le client peut exiger une confirmation e-mail : jusqu’au
+    clic sur le lien, il n’y a pas de signalement — seulement un brouillon temporaire.
 </p>
 <p>
     Les utilisateurs connectés et les équipes internes y accèdent selon les droits définis par le client. WinProx traite
@@ -178,6 +182,7 @@
     <li>comptes utilisateurs : actif + 24 mois.</li>
     <li>issues et tâches : durée du contrat + 36 mois.</li>
     <li>contrôles d’unité : même durée de conservation que les signalements et tâches (durée du contrat + 36 mois).</li>
+    <li>signalements QR non confirmés (retenue e-mail) : jusqu’à l’expiration du lien de confirmation (en général 60 minutes), puis suppression y compris les photos ; lignes de retenue confirmées jusqu’à 7 jours (le signalement lui-même suit la conservation des signalements).</li>
     <li>journaux : 6 mois.</li>
     <li>événements d’onboarding par utilisateur (statistiques d’onboarding) : 6 mois ; les chiffres agrégés sans données personnelles peuvent être conservés plus longtemps.</li>
     <li>médias (photos) : 24 mois après clôture du signalement ou de la tâche concerné(e).</li>

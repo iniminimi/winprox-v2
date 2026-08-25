@@ -46,7 +46,7 @@
     <li>datos de ubicación y unidades (direcciones, detalles de ubicación).</li>
     <li>datos de incidencias y tareas (incluidas fotos y descripciones).</li>
     <li>datos de comprobación de unidad (resultado, marca de tiempo, unidad, GPS opcional, ejecutor).</li>
-    <li>datos de trabajadores e informantes QR, en la medida en que los recopile el cliente.</li>
+    <li>datos de trabajadores e informantes QR, en la medida en que los recopile el cliente (incluidos borradores temporales a la espera de confirmación por correo).</li>
     <li>datos de acceso y sesión.</li>
     <li>metadatos de suscripción y acceso.</li>
     <li>datos ESG/cumplimiento (definiciones de indicadores, valores de medición, vínculos, seguimiento de umbrales y atribución opcional a trabajadores).</li>
@@ -112,6 +112,7 @@
     <li>cuentas de usuario: activas + 24 meses.</li>
     <li>incidencias y tareas: duración del contrato + 36 meses.</li>
     <li>comprobaciones de unidad: mismo plazo que incidencias y tareas.</li>
+    <li>avisos QR no confirmados (retención de correo): hasta que caduque el enlace de confirmación (normalmente 60 minutos), luego eliminación incluidas las fotos; filas de retención confirmadas hasta 7 días.</li>
     <li>registros: 6 meses.</li>
     <li>fotos: 24 meses tras el cierre.</li>
     <li>mediciones ESG: mismo plazo que incidencias y tareas.</li>

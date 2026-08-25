@@ -188,7 +188,8 @@
                     "Framework: EU GDPR + Belgian Act of 30 July 2018.",
                     "Data Processing Agreement (DPA) and subprocessor list available.",
                     "Data export (account), self-service organisation deletion, retention periods documented.",
-                    "Les données restent dans l’**UE** (hébergement/e-mail). Stripe UE/US en cas de paiement. Avec **Se connecter avec Microsoft**, l’utilisateur est envoyé vers Microsoft Entra ID (Microsoft, UE/US) ; WinProx reçoit l’e-mail (et éventuellement le nom) pour reconnaître le compte existant."
+                    "Les données restent dans l’**UE** (hébergement/e-mail). Stripe UE/US en cas de paiement. Avec **Se connecter avec Microsoft**, l’utilisateur est envoyé vers Microsoft Entra ID (Microsoft, UE/US) ; WinProx reçoit l’e-mail (et éventuellement le nom) pour reconnaître le compte existant.",
+                    "Confirmation e-mail optionnelle pour les signalements QR : stockage temporaire du brouillon jusqu’au lien ; les brouillons non confirmés sont supprimés automatiquement (en général 60 minutes, photos comprises). Pas de compte utilisateur."
                 ]
             },
             {
@@ -207,7 +208,7 @@
                     "**SSO** (une connexion professionnelle via Microsoft Entra) : pour administrateurs et collaborateurs sur ordinateur (**Se connecter avec Microsoft**). Uniquement des comptes WinProx existants (l’e-mail doit correspondre au compte Microsoft) ; e-mail + mot de passe reste possible. Pas de nouveaux comptes automatiques. Les exécutants restent sur le QR Clock Point (nom + icône). Les liaisons avec d’autres logiciels (Ultimo, IWMS, …) passent par des jetons API, pas par le SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
-                    "Reporters: public QR portal without an account."
+                    "Signalants : portail QR public sans compte. Preuve de boîte mail optionnelle (catégorie et unité) : pas de login ; le signalement n’existe qu’après le lien dans le mail."
                 ]
             },
             {
@@ -227,7 +228,8 @@
                     "HTTP POST sortant sur événements (not. statut issue/tâche, contrôle d’unité, ESG, GPS).",
                     "Configured under Settings → API; secret for verification.",
                     "Automatic retries on failure (several attempts with increasing delay).",
-                    "Same plan requirement as API (Corporate)."
+                    "Same plan requirement as API (Corporate).",
+                    "Avec la confirmation e-mail optionnelle, l’événement **signalement créé** part seulement après le lien, pas à l’envoi du formulaire sur le portail."
                 ]
             }
         ],
@@ -360,7 +362,7 @@
                     "**Configuration :** Paramètres → API → Webhooks (URL + événements). Le secret s’affiche une fois — conservez-le en sécurité.",
                     "**Preuve d’origine :** chaque message porte une signature HMAC (vérifiable avec votre secret).",
                     "**Fiabilité :** en cas d’échec, WinProx réessaie (avec pause croissante). Les livraisons apparaissent dans un journal.",
-                    "**Autres événements p. ex. :** signalement créé / approuvé / statut modifié · tâche créée / démarrée / terminée · Time · GPS · ESG · réservations · bouton de test · contrôle d'unité enregistré."
+                    "**Autres événements p. ex. :** signalement créé / approuvé / statut modifié · tâche créée / démarrée / terminée · Time · GPS · ESG · réservations · bouton de test · contrôle d'unité enregistré. Avec confirmation e-mail : **signalement créé** seulement après le lien."
                 ],
                 "emphasis": "Exemple : un collaborateur termine une tâche. WinProx envoie automatiquement un webhook vers votre système externe (GMAO, IWMS ou ERP) pour mettre à jour immédiatement un ordre de travail."
             }
