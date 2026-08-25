@@ -74,7 +74,14 @@
         },
         "reporter_first_name_ph_required": "Nome",
         "reporter_last_name_ph_required": "Cognome",
-        "reporter_email_ph_required": "E-mail"
+        "reporter_email_ph_required": "E-mail",
+        "verify_email_hint": "Riceverai un’e-mail. Clicca sul link per inviare la segnalazione. Senza conferma non viene creata alcuna segnalazione.",
+        "sent_verify_email": "Controlla la posta: abbiamo inviato un link di conferma. La segnalazione nasce solo dopo il clic.",
+        "verify_email_ok": "Il tuo indirizzo e-mail è confermato. La segnalazione è stata inviata e verrà controllata.",
+        "verify_email_expired": "Questo link di conferma è scaduto. Invia di nuovo la segnalazione.",
+        "verify_email_invalid": "Questo link di conferma non è valido o è già stato usato.",
+        "verify_email_title": "Conferma segnalazione",
+        "verify_email_back": "Torna al portale"
     },
     "worker": {
         "title": "Accedi come lavoratore",

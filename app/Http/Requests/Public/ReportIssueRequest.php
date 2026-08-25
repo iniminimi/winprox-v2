@@ -13,13 +13,13 @@ class ReportIssueRequest extends FormRequest
     }
 
     /** @return array<string, mixed> */
-    public static function portalRules(bool $requireReporterContact = false): array
+    public static function portalRules(bool $requireReporterContact = false, bool $requireEmailVerification = false): array
     {
         $nameRules = $requireReporterContact
             ? ['required', 'string', 'max:120']
             : ['nullable', 'string', 'max:120'];
 
-        $emailRules = $requireReporterContact
+        $emailRules = ($requireReporterContact || $requireEmailVerification)
             ? ['required', 'email', 'max:255']
             : ['nullable', 'email', 'max:255'];
 

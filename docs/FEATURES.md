@@ -928,13 +928,15 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
 - **new** (melden): veld **omschrijving** (verplicht, min 3) + **tot 4 foto's** (`image`, max 10 MB).
   Optioneel voornaam/achternaam/e-mail; verplicht wanneer categorie **én** unit
   `require_reporter_contact` aan staan (alleen anonieme QR-melders — niet voor ingelogde
-  veldwerkers). Submit → maakt:
-  - `Issue` (`source=tenant`, `category=unspecified`, `priority=medium`, `status=new`,
-    `report_finalized_at=now`), gescoped op tenant/location/unit.
+  veldwerkers). Optionele **e-mailbevestiging** (`require_reporter_email_verification` op
+  categorie **én** unit): de melding wordt vastgehouden tot de melder de link in de mail
+  klikt (geen Issue, taak of `IssueCreated` tot dan). Zelfde publieke QR-rate-limits als
+  bij direct indienen. Submit zonder die poort → maakt:
+  - `Issue` (`source=qr`, ongekeurd tot moderatie), gescoped op tenant/location/unit.
   - Foto's via `IssuePhotoStorage` (client comprimeert ≤1600px/JPEG ~72%, queue; server geen resize).
   - **Automatisch een taak** voor het **standaardteam van de unit** (oud: `FacilityQrIntake`),
     starttaakstatus = onze `Nieuw`/`assigned`-equivalent; geen team → enkel melding.
-  - Daarna flash "melding verzonden" → sectie `issues`.
+  - Daarna flash "melding verzonden" → sectie `issues`. Met e-mailbevestiging: flash "check inbox".
 - **issues**: lijst open meldingen van deze unit (omschrijving), → **detail**.
 - **issue_detail**: omschrijving + datum; burger ziet evt. statusregel ("gepland"/"in uitvoering");
   worker ziet sign-in + taakacties.
@@ -971,7 +973,9 @@ Bedoeld voor gedeelde telefoons op de werkvloer:
 
 ### Toegang/gating (oud: `ResidentPortalAccess`)
 Portaal **inactief** (alle acties no-op, toon reden) bij o.a.: tenant zonder geldig abonnement,
-tenant inactief, locatie inactief, unit inactief, team inactief. 404 bij onbekend token.
+tenant inactief, locatie inactief, unit inactief, team inactief. Onbekende, beschadigde,
+inactieve of vervallen QR-tokens tonen één publieke foutkaart met knop naar de startpagina
+(niet de generieke 404). Niet-toegewezen stickers blijven het koppelportaal.
 
 ### Locale
 `?lang=nl|fr|en|de|es|it` → sessie + cookie (1 jaar); taal-pillen op het portaal; standaard nl.

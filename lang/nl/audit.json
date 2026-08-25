@@ -67,6 +67,8 @@
         "qr_codes.batch_generated": "QR-codes in batch gegenereerd",
         "qr_link_photo.deleted": "QR-fotolink verwijderd",
         "qr_link_photo.stored": "QR-fotolink opgeslagen",
+        "qr_report_email_hold.created": "QR-melding vastgehouden (e-mailbevestiging)",
+        "qr_report_email_hold.confirmed": "QR-melding bevestigd via e-mail",
         "starter_pack.applied": "Starttemplate aangemaakt",
         "starter_pack.removed": "Starttemplate verwijderd",
         "subscription.plan_activated": "Abonnement geactiveerd",

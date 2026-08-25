@@ -74,7 +74,14 @@
         },
         "reporter_first_name_ph_required": "Voornaam",
         "reporter_last_name_ph_required": "Achternaam",
-        "reporter_email_ph_required": "E-mail"
+        "reporter_email_ph_required": "E-mail",
+        "verify_email_hint": "Je ontvangt een e-mail. Klik op de link om de melding te versturen. Zonder bevestiging wordt er geen melding aangemaakt.",
+        "sent_verify_email": "Check je inbox: we stuurden een bevestigingslink. De melding wordt pas aangemaakt nadat je op die link klikt.",
+        "verify_email_ok": "Je e-mailadres is bevestigd. De melding is verstuurd en wordt gecontroleerd.",
+        "verify_email_expired": "Deze bevestigingslink is verlopen. Dien de melding opnieuw in.",
+        "verify_email_invalid": "Deze bevestigingslink is ongeldig of al gebruikt.",
+        "verify_email_title": "Melding bevestigen",
+        "verify_email_back": "Terug naar het portaal"
     },
     "worker": {
         "title": "Aanmelden als medewerker",

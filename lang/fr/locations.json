@@ -114,6 +114,7 @@
             "public_reports_enabled": "Les visiteurs peuvent faire un signalement via le portail QR",
             "allow_reservations": "Autoriser les réservations",
             "require_reporter_contact": "Coordonnées obligatoires",
+            "require_reporter_email_verification": "Confirmation e-mail obligatoire",
             "check_list": "Liste de contrôle (contrôle unit)",
             "allow_unit_checks": "Autoriser les contrôles d’unité",
             "external_id": "ID externe"
@@ -171,6 +172,7 @@
         "delete_blocked": "Cette unité ne peut pas être supprimée.",
         "allow_reservations_hint": "Uniquement si la catégorie est Réservable. Désactivé par défaut ; activez pour autoriser les réservations pour cette unité.",
         "require_reporter_contact_hint": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalements QR anonymes, pas aux agents de terrain.",
+        "require_reporter_email_verification_hint": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalements QR anonymes, pas aux agents de terrain. Le signalement n’est créé qu’après le clic sur le lien.",
         "no_check_list": "Aucune liste",
         "check_list_hint": "Optionnel. Créez des listes sous la page Personnes → Équipes (partagées ou par équipe). Uniquement les listes partagées ou celles des équipes liées à la catégorie de cette unité.",
         "allow_unit_checks_hint": "Uniquement si la catégorie autorise les contrôles d’unité. Désactivé par défaut ; activez pour afficher la tuile Contrôle d’unité sur le QR de l’unité.",
@@ -236,6 +238,7 @@
             "allow_gps_location": "Autoriser la localisation GPS",
             "is_reservable": "Réservable",
             "require_reporter_contact": "Coordonnées obligatoires",
+            "require_reporter_email_verification": "Confirmation e-mail obligatoire",
             "allow_unit_checks": "Autoriser les contrôles d’unité"
         },
         "allow_gps_location_hint": "Autorise la transmission de la localisation GPS des unités de cette catégorie via le portail.",
@@ -260,6 +263,7 @@
         },
         "is_reservable_hint": "Active les réservations pour toutes les unités de cette catégorie (salle, véhicule, …).",
         "require_reporter_contact_hint": "Exige prénom, nom et e-mail pour les signalements anonymes via le QR de l’unité. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité.",
+        "require_reporter_email_verification_hint": "Exige un e-mail de confirmation pour les signalements anonymes via le QR de l’unité. Le signalement n’est créé qu’après le clic sur le lien. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents de terrain.",
         "allow_unit_checks_hint": "Active les contrôles d’unité pour toutes les unités de cette catégorie (ronde sécurité, contrôle ménage, …). Désactivé par défaut ; doit aussi être activé par unité."
     },
     "errors": {

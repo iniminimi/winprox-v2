@@ -76,6 +76,8 @@ class Index extends Component
 
     public bool $categoryRequireReporterContact = false;
 
+    public bool $categoryRequireReporterEmailVerification = false;
+
     /** @var array<int, int> */
     public array $selectedCategoryTeamIds = [];
 
@@ -350,6 +352,7 @@ class Index extends Component
         $this->categoryIsReservable = (bool) $category->is_reservable;
         $this->categoryAllowUnitChecks = (bool) $category->allow_unit_checks;
         $this->categoryRequireReporterContact = (bool) $category->require_reporter_contact;
+        $this->categoryRequireReporterEmailVerification = (bool) $category->require_reporter_email_verification;
         $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
         $this->categoryPreviewLocale = $this->defaultTranslationLocaleForCategory($category);
         $this->hydrateCategoryTranslationInput($category->fresh('translations'));
@@ -391,6 +394,7 @@ class Index extends Component
             'categoryIsReservable' => $rules['is_reservable'],
             'categoryAllowUnitChecks' => $rules['allow_unit_checks'],
             'categoryRequireReporterContact' => $rules['require_reporter_contact'],
+            'categoryRequireReporterEmailVerification' => $rules['require_reporter_email_verification'],
             'selectedCategoryTeamIds' => 'required|array|min:1',
             'selectedCategoryTeamIds.*' => 'exists:internal_teams,id',
         ], [
@@ -408,6 +412,7 @@ class Index extends Component
                 'is_reservable' => (bool) $validated['categoryIsReservable'],
                 'allow_unit_checks' => (bool) $validated['categoryAllowUnitChecks'],
                 'require_reporter_contact' => (bool) $validated['categoryRequireReporterContact'],
+                'require_reporter_email_verification' => (bool) $validated['categoryRequireReporterEmailVerification'],
                 'original_language' => auth()->user()?->locale,
             ], (int) auth()->id());
         } else {
@@ -419,6 +424,7 @@ class Index extends Component
                 'is_reservable' => (bool) $validated['categoryIsReservable'],
                 'allow_unit_checks' => (bool) $validated['categoryAllowUnitChecks'],
                 'require_reporter_contact' => (bool) $validated['categoryRequireReporterContact'],
+                'require_reporter_email_verification' => (bool) $validated['categoryRequireReporterEmailVerification'],
             ], (int) auth()->id());
         }
 
@@ -503,6 +509,7 @@ class Index extends Component
         $this->categoryIsReservable = false;
         $this->categoryAllowUnitChecks = false;
         $this->categoryRequireReporterContact = false;
+        $this->categoryRequireReporterEmailVerification = false;
         $this->selectedCategoryTeamIds = [];
         $this->categoryPreviewLocale = '';
         $this->categoryTranslationName = '';

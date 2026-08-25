@@ -114,6 +114,7 @@
             "public_reports_enabled": "I visitatori possono inviare una segnalazione tramite il portale QR",
             "allow_reservations": "Consenti prenotazioni",
             "require_reporter_contact": "Dati di contatto obbligatori",
+            "require_reporter_email_verification": "Conferma e-mail obbligatoria",
             "check_list": "Checklist (controllo unit)",
             "allow_unit_checks": "Consenti controlli unità",
             "external_id": "ID esterno"
@@ -171,6 +172,7 @@
         "delete_blocked": "Questa unità non può essere eliminata.",
         "allow_reservations_hint": "Rilevante solo se la categoria è Prenotabile. Disattivo di default; attiva per consentire prenotazioni su questa unità.",
         "require_reporter_contact_hint": "Rilevante solo se la categoria lo richiede. Disattivo di default. Solo per segnalanti anonimi via QR, non per operatori sul campo.",
+        "require_reporter_email_verification_hint": "Rilevante solo se la categoria lo richiede. Disattivo di default. Solo per segnalanti anonimi via QR, non per operatori sul campo. La segnalazione nasce solo dopo il clic sul link.",
         "no_check_list": "Nessuna checklist",
         "check_list_hint": "Opzionale. Crea checklist nella pagina Persone → Team (condivise o per team). Solo checklist condivise o di team collegati alla categoria di questa unità.",
         "allow_unit_checks_hint": "Rilevante solo se la categoria consente i controlli unità. Disattivo di default; attiva per mostrare il riquadro Controllo unità sul QR dell’unità.",
@@ -236,6 +238,7 @@
             "allow_gps_location": "Consenti posizione GPS",
             "is_reservable": "Prenotabile",
             "require_reporter_contact": "Dati di contatto obbligatori",
+            "require_reporter_email_verification": "Conferma e-mail obbligatoria",
             "allow_unit_checks": "Consenti controlli unità"
         },
         "allow_gps_location_hint": "Consenta l'invio della posizione GPS delle unità in questa categoria tramite il portale.",
@@ -260,6 +263,7 @@
         },
         "is_reservable_hint": "Abilita le prenotazioni per tutte le unità di questa categoria (sala, veicolo, …).",
         "require_reporter_contact_hint": "Richiede nome, cognome e e-mail per segnalazioni anonime tramite QR dell’unità. Disattivo di default. Vale solo se attivato anche sull’unità.",
+        "require_reporter_email_verification_hint": "Richiede un’e-mail di conferma per segnalazioni anonime tramite QR dell’unità. La segnalazione viene creata solo dopo il clic sul link. Disattivo di default. Vale solo se attivato anche sull’unità. Non vale per gli operatori sul campo.",
         "allow_unit_checks_hint": "Abilita i controlli unità per tutte le unità di questa categoria (giro sicurezza, controllo pulizie, …). Disattivo di default; deve essere attivato anche per unità."
     },
     "errors": {

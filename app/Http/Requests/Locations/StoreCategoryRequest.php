@@ -31,6 +31,7 @@ class StoreCategoryRequest extends FormRequest
             'is_reservable' => ['sometimes', 'boolean'],
             'allow_unit_checks' => ['sometimes', 'boolean'],
             'require_reporter_contact' => ['sometimes', 'boolean'],
+            'require_reporter_email_verification' => ['sometimes', 'boolean'],
         ];
     }
 

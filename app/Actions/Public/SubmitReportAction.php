@@ -3,6 +3,7 @@
 namespace App\Actions\Public;
 
 use App\Actions\Issues\CreateIssueAction;
+use App\Data\Public\SubmitReportResult;
 use App\Models\Issue;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -15,6 +16,9 @@ use Illuminate\Http\UploadedFile;
  * automatisch een taak voor het standaardteam van de unit (port van FacilityQrIntake)
  * en bewaart de meegestuurde, reeds gecomprimeerde foto's. Geen (actief) team =>
  * geen taak, dus de melding blijft "Nieuw". Altijd ongekeurd (moderatie, §7.1).
+ *
+ * Wanneer categorie én unit e-mailbevestiging eisen, wordt de melding vastgehouden
+ * tot de melder de link in de mail klikt (geen Issue/taak/webhook tot dan).
  */
 class SubmitReportAction
 {
@@ -23,6 +27,7 @@ class SubmitReportAction
         private IssuePhotoStorage $storage,
         private AssertPublicReportRateLimitAction $assertRateLimit,
         private RecordPublicReportRateLimitAction $recordRateLimit,
+        private HoldQrReportForEmailVerificationAction $holdForEmail,
     ) {}
 
     /**
@@ -35,7 +40,7 @@ class SubmitReportAction
         array $photos = [],
         ?Worker $fieldWorker = null,
         ?string $clientIp = null,
-    ): Issue {
+    ): SubmitReportResult {
         if (! $unit->public_reports_enabled && $fieldWorker === null) {
             throw new \InvalidArgumentException('public_reports_disabled');
         }
@@ -44,15 +49,6 @@ class SubmitReportAction
 
         if ($applyRateLimit) {
             $this->assertRateLimit->handle((int) $unit->tenant_id, (int) $unit->id, $clientIp);
-        }
-
-        $unit->loadMissing('category.teams');
-        $teamIds = [];
-        if ($unit->category !== null) {
-            $team = $unit->category->teams()->first();
-            if ($team !== null && $team->is_active) {
-                $teamIds = [$team->id];
-            }
         }
 
         $reporterName = $data['reporter_name'] ?? null;
@@ -75,11 +71,50 @@ class SubmitReportAction
             }
         }
 
+        $payload = array_merge($data, [
+            'reporter_name' => $reporterName,
+            'reporter_contact' => $reporterContact,
+        ]);
+
+        if ($fieldWorker === null && $unit->requiresReporterEmailVerification()) {
+            $this->holdForEmail->handle($unit, $payload, $photos);
+
+            if ($applyRateLimit) {
+                $this->recordRateLimit->handle((int) $unit->tenant_id, (int) $unit->id, $clientIp);
+            }
+
+            return new SubmitReportResult(issue: null, awaitingEmailVerification: true);
+        }
+
+        $issue = $this->createIssueImmediately($unit, $payload, $photos);
+
+        if ($applyRateLimit) {
+            $this->recordRateLimit->handle((int) $unit->tenant_id, (int) $unit->id, $clientIp);
+        }
+
+        return new SubmitReportResult(issue: $issue, awaitingEmailVerification: false);
+    }
+
+    /**
+     * @param  array<string, mixed>  $data
+     * @param  array<int, UploadedFile>  $photos
+     */
+    private function createIssueImmediately(Unit $unit, array $data, array $photos): Issue
+    {
+        $unit->loadMissing('category.teams');
+        $teamIds = [];
+        if ($unit->category !== null) {
+            $team = $unit->category->teams()->first();
+            if ($team !== null && $team->is_active) {
+                $teamIds = [$team->id];
+            }
+        }
+
         $issue = $this->createIssue->handle([
             'location_id' => $unit->location_id,
             'unit_id' => $unit->id,
-            'reporter_name' => $reporterName,
-            'reporter_contact' => $reporterContact,
+            'reporter_name' => $data['reporter_name'] ?? null,
+            'reporter_contact' => $data['reporter_contact'] ?? null,
             'description' => $data['description'],
             'source' => 'qr',
             'original_language' => $data['original_language'] ?? null,
@@ -96,10 +131,6 @@ class SubmitReportAction
                     'path' => $this->storage->storePrecompressedCopy($photo),
                 ]);
             }
-        }
-
-        if ($applyRateLimit) {
-            $this->recordRateLimit->handle((int) $unit->tenant_id, (int) $unit->id, $clientIp);
         }
 
         return $issue;

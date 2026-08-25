@@ -67,6 +67,8 @@
         "qr_codes.batch_generated": "QR-Codes als Stapel erzeugt",
         "qr_link_photo.deleted": "QR-Link-Foto gelöscht",
         "qr_link_photo.stored": "QR-Link-Foto gespeichert",
+        "qr_report_email_hold.created": "QR-Meldung gehalten (E-Mail-Bestätigung)",
+        "qr_report_email_hold.confirmed": "QR-Meldung per E-Mail bestätigt",
         "starter_pack.applied": "Startvorlage erstellt",
         "starter_pack.removed": "Startvorlage entfernt",
         "subscription.plan_activated": "Abo aktiviert",

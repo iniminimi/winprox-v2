@@ -263,6 +263,10 @@
                 {
                     "label": "Coordonnées obligatoires",
                     "text": "Activez si les signalants anonymes via le QR de l’unité doivent indiquer prénom, nom et e-mail. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents de terrain connectés — ils sont déjà identifiés."
+                },
+                {
+                    "label": "Confirmation e-mail obligatoire",
+                    "text": "Activez si les signalants anonymes via le QR de l’unité doivent confirmer leur e-mail. Le signalement, la tâche et le webhook ne sont créés qu’après le clic sur le lien. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents connectés."
                 }
             ]
         },
@@ -296,6 +300,10 @@
                 {
                     "label": "Coordonnées obligatoires",
                     "text": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalants anonymes via QR (prénom, nom et e-mail), pas aux agents connectés via Clock Point."
+                },
+                {
+                    "label": "Confirmation e-mail obligatoire",
+                    "text": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalants anonymes via QR, pas aux agents connectés via Clock Point. Le signalement n’est créé qu’après le clic sur le lien."
                 },
                 {
                     "label": "Unités en masse",
@@ -686,7 +694,7 @@
                 },
                 {
                     "label": "Signaler un problème",
-                    "text": "Appuyez sur « Créer un signalement », décrivez le problème et ajoutez éventuellement jusqu’à quatre photos. Prénom, nom et e-mail sont facultatifs — sauf si l’administrateur a rendu les coordonnées obligatoires ; remplissez-les alors. Une tâche est créée pour l’équipe. Le signalement doit d’abord être approuvé avant d’apparaître sur le portail. Limites anti-spam : au plus un signalement toutes les 3 minutes et cinq toutes les 30 minutes pour cette unité (par appareil)."
+                    "text": "Appuyez sur « Créer un signalement », décrivez le problème et ajoutez éventuellement jusqu’à quatre photos. Prénom, nom et e-mail sont facultatifs — sauf si l’administrateur a rendu les coordonnées obligatoires ; remplissez-les alors. Si la confirmation e-mail est activée, vous recevez un lien : le signalement n’est créé qu’après confirmation. Une tâche est créée pour l’équipe. Le signalement doit d’abord être approuvé avant d’apparaître sur le portail. Limites anti-spam : au plus un signalement toutes les 3 minutes et cinq toutes les 30 minutes pour cette unité (par appareil)."
                 },
                 {
                     "label": "Réserver",

@@ -125,6 +125,8 @@ class Show extends Component
 
     public bool $unitRequireReporterContact = false;
 
+    public bool $unitRequireReporterEmailVerification = false;
+
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $unitPhotos = [];
 
@@ -372,6 +374,7 @@ class Show extends Component
         $this->unitAllowReservations = false;
         $this->unitAllowUnitChecks = false;
         $this->unitRequireReporterContact = false;
+        $this->unitRequireReporterEmailVerification = false;
         $this->resetErrorBag();
         $this->showUnitModal = true;
     }
@@ -392,6 +395,7 @@ class Show extends Component
         $this->unitAllowReservations = (bool) $unit->allow_reservations;
         $this->unitAllowUnitChecks = (bool) $unit->allow_unit_checks;
         $this->unitRequireReporterContact = (bool) $unit->require_reporter_contact;
+        $this->unitRequireReporterEmailVerification = (bool) $unit->require_reporter_email_verification;
         $this->unitPhotos = [];
         $this->previewLocale = $this->defaultTranslationLocaleFor($unit);
         $this->hydrateUnitTranslationInputs($unit->fresh('translations'));
@@ -414,6 +418,7 @@ class Show extends Component
         $this->unitAllowReservations = false;
         $this->unitAllowUnitChecks = false;
         $this->unitRequireReporterContact = false;
+        $this->unitRequireReporterEmailVerification = false;
         $this->unitPhotos = [];
         $this->unitTranslationName = '';
         $this->unitTranslationDescription = '';
@@ -505,6 +510,7 @@ class Show extends Component
             'unitAllowReservations' => $rules['allow_reservations'],
             'unitAllowUnitChecks' => $rules['allow_unit_checks'],
             'unitRequireReporterContact' => $rules['require_reporter_contact'],
+            'unitRequireReporterEmailVerification' => $rules['require_reporter_email_verification'],
             'unitPhotos' => ['nullable', 'array', 'max:'.$photoSlotsLeft],
             'unitPhotos.*' => ['image', 'max:10240'],
         ], [
@@ -528,6 +534,7 @@ class Show extends Component
             'allow_reservations' => (bool) $validated['unitAllowReservations'],
             'allow_unit_checks' => (bool) $validated['unitAllowUnitChecks'],
             'require_reporter_contact' => (bool) $validated['unitRequireReporterContact'],
+            'require_reporter_email_verification' => (bool) $validated['unitRequireReporterEmailVerification'],
             'original_language' => auth()->user()->locale ?? null,
         ];
 

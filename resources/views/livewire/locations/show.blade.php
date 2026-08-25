@@ -412,6 +412,13 @@
                     </label>
                 </x-wp-tooltip>
 
+                <x-wp-tooltip :text="__('locations.units.require_reporter_email_verification_hint')" wrap class="wp-tooltip--block">
+                    <label class="wp-check wp-check--boxed">
+                        <input type="checkbox" wire:model="unitRequireReporterEmailVerification">
+                        <span>{{ __('locations.units.fields.require_reporter_email_verification') }}</span>
+                    </label>
+                </x-wp-tooltip>
+
                 @if ($editingUnitId && $this->editingUnit)
                     @php
                         $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;

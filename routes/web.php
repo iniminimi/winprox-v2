@@ -80,6 +80,7 @@ use App\Livewire\Platform\QrConnect;
 use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Livewire\Platform\TranslationSync as PlatformTranslationSync;
 use App\Livewire\Platform\Users as PlatformUsers;
+use App\Livewire\Public\ConfirmQrReportEmail;
 use App\Livewire\Public\ReservationConfirm;
 use App\Livewire\Public\ReservationManage;
 use App\Livewire\Public\TimePortal;
@@ -119,6 +120,7 @@ Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.web
 
 Route::get('/q/{token}', QrController::class)->name('qr.scan');
 
+Route::get('/melden/bevestig-email/{token}', ConfirmQrReportEmail::class)->name('public.qr-report-email-confirm');
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
 Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
 Route::get('/reservations/confirm/{token}', ReservationConfirm::class)->name('reservations.confirm');

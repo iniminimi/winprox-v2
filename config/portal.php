@@ -25,4 +25,9 @@ return [
             'decay_seconds' => (int) env('PORTAL_REPORT_RATE_LIMIT_PER_TENANT_DECAY', 3600),
         ],
     ],
+
+    'qr_report_email_verification' => [
+        'expire_minutes' => (int) env('PORTAL_QR_REPORT_EMAIL_VERIFY_EXPIRE', 60),
+        'confirmed_retain_days' => (int) env('PORTAL_QR_REPORT_EMAIL_HOLD_RETAIN_DAYS', 7),
+    ],
 ];

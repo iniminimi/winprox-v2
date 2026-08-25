@@ -35,6 +35,14 @@
         "expiry": "Deze link is :minutes minuten geldig.",
         "footer": "Heb je dit account niet aangemaakt? Dan hoef je niets te doen: zonder bevestiging verwijderen we het automatisch."
     },
+    "verify_qr_report_email": {
+        "subject": "WinProx: bevestig je melding",
+        "intro": "We ontvingen een melding voor :unit (:location). Klik op de knop om je e-mailadres te bevestigen. Pas daarna wordt de melding aangemaakt.",
+        "cta": "Melding bevestigen",
+        "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",
+        "expiry": "Deze link is :minutes minuten geldig.",
+        "footer": "Heb je deze melding niet gedaan? Dan hoef je niets te doen: zonder bevestiging wordt er geen melding aangemaakt."
+    },
     "new_tenant": {
         "subject": "WinProx: nieuwe organisatie geregistreerd — :tenant",
         "body": "Er is een nieuwe organisatie geregistreerd.\n\nOrganisatie: :tenant\nBeheerder: :admin (:email)\nTelefoon: :phone\nAdres: :address\nLand: :country\nTenant-ID: :tenant_id"

@@ -37,7 +37,7 @@
             },
             {
                 "title": "QR-portals",
-                "body": "Unit-QR: problemen melden, én optioneel een unit check (snel OK of Niet OK). Clock Point-QR: aanmelden (naam + icoon) en teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden."
+                "body": "Unit-QR: problemen melden, én optioneel een unit check (snel OK of Niet OK). Clock Point-QR: aanmelden (naam + icoon) en teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden. Ongeldige of vervallen QR-codes tonen een korte foutmelding met een knop naar de startpagina."
             },
             {
                 "title": "Unit checks",
@@ -53,7 +53,7 @@
             },
             {
                 "title": "Meldingen",
-                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud (pauzeren of sluiten). Optioneel: contactgegevens verplicht voor anonieme QR-melders (categorie én unit). Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen."
+                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud (pauzeren of sluiten). Optioneel: contactgegevens verplicht en/of e-mailbevestiging voor anonieme QR-melders (categorie én unit; bevestiging houdt de melding vast tot de link in de mail). Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen."
             },
             {
                 "title": "Foto’s",
@@ -238,7 +238,7 @@
                     "**Publieke QR-meldingen** (per apparaat/IP, per unit): max. **1 melding per 3 minuten**; max. **5 meldingen per 30 minuten** op dezelfde unit; max. **20 meldingen per uur** over alle units van dezelfde organisatie. (Aangemelde uitvoerders vallen hierbuiten.)",
                     "**Uitvoerders-aanmelding (icoon)**: na **2 foute icoonkeuzes** wordt de uitvoerder geblokkeerd tot een teamleader of beheerder vrijgeeft.",
                     "**Beheer-login** (e-mail/wachtwoord): wachtwoorden gehasht; geen aparte app-rate-limit op mislukte logins (kan infra/contractueel versterkt worden).",
-                    "Extra: QR-meldingen op het publieke portaal blijven **onzichtbaar tot goedkeuring**; API heeft eigen rate limit (60/min)."
+                    "Extra: QR-meldingen op het publieke portaal blijven **onzichtbaar tot goedkeuring**. Optionele e-mailbevestiging (categorie én unit) houdt de melding vast tot de link in de mail; de bestaande QR-limieten tellen bij het indienen. API heeft eigen rate limit (60/min)."
                 ]
             },
             {

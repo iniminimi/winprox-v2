@@ -37,7 +37,7 @@
             },
             {
                 "title": "QR portals",
-                "body": "Unit-QR: Probleme melden, plus optionaler Unit-Check (schnell OK oder Nicht OK). Clock-Point-QR: Anmeldung (Name + Symbol) und Teamaufgaben; Ein-/Ausstempeln nur mit Time (Stechuhr). Standort-QR. Druckbar als Etikettenbogen (Avery) oder Ganzseite A6/A5/A4. Dynamische QR-Codes, die später einer Unit zugeordnet werden."
+                "body": "Unit-QR: Probleme melden, plus optionaler Unit-Check (schnell OK oder Nicht OK). Clock-Point-QR: Anmeldung (Name + Symbol) und Teamaufgaben; Ein-/Ausstempeln nur mit Time (Stechuhr). Standort-QR. Druckbar als Etikettenbogen (Avery) oder Ganzseite A6/A5/A4. Dynamische QR-Codes, die später einer Unit zugeordnet werden. Ungültige oder abgelaufene QR-Codes zeigen eine kurze Fehlermeldung mit einem Button zur Startseite."
             },
             {
                 "title": "Unit-Checks",
@@ -53,7 +53,7 @@
             },
             {
                 "title": "Issues",
-                "body": "Über Unit-QR, manuell in der Verwaltung oder (mit IoT) Sensoralarm. Filter, Freigabe von QR-Meldungen, wiederkehrende Wartung (pausieren oder schließen). Optional: Kontaktdaten Pflicht für anonyme QR-Melder (Kategorie und Unit). Auf öffentlichen QR-Seiten erst nach Freigabe sichtbar; die Verwaltung sieht alles sofort."
+                "body": "Über Unit-QR, manuell in der Verwaltung oder (mit IoT) Sensoralarm. Filter, Freigabe von QR-Meldungen, wiederkehrende Wartung (pausieren oder schließen). Optional: Kontaktdaten Pflicht und/oder E-Mail-Bestätigung für anonyme QR-Melder (Kategorie und Unit; die Bestätigung hält die Meldung bis zum Link in der Mail). Auf öffentlichen QR-Seiten erst nach Freigabe sichtbar; die Verwaltung sieht alles sofort."
             },
             {
                 "title": "Photos",
@@ -238,7 +238,7 @@
                     "**Public QR issues** (per device/IP, per unit): max. **1 issue per 3 minutes**; max. **5 issues per 30 minutes** on the same unit; max. **20 issues per hour** across all units of the same organisation. (Signed-in workers are exempt.)",
                     "**Worker sign-in (icon)**: after **2 wrong icon choices** the worker is locked until a team leader or admin releases them.",
                     "**Back-office login** (email/password): passwords hashed; no separate app rate limit on failed logins (can be strengthened via infra/contract).",
-                    "Extra: QR issues on the public portal stay **invisible until approval**; API has its own rate limit (60/min)."
+                    "Extra: QR issues on the public portal stay **invisible until approval**. Optional email confirmation (category and unit) holds the report until the email link; existing QR limits count at submit. API has its own rate limit (60/min)."
                 ]
             },
             {

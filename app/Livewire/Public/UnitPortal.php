@@ -466,14 +466,15 @@ class UnitPortal extends Component
 
         $worker = $this->authorizedWorker();
         $requireReporterContact = $worker === null && $this->unit()->requiresReporterContact();
+        $requireEmailVerification = $worker === null && $this->unit()->requiresReporterEmailVerification();
 
         $this->validate(
-            ReportIssueRequest::portalRules($requireReporterContact),
+            ReportIssueRequest::portalRules($requireReporterContact, $requireEmailVerification),
             ReportIssueRequest::validationMessages(),
         );
 
         try {
-            $submitReport->handle(
+            $result = $submitReport->handle(
                 $this->unit(),
                 ReportIssueRequest::issueDataFromInput([
                     'description' => $this->description,
@@ -494,7 +495,9 @@ class UnitPortal extends Component
 
         $this->reset(['description', 'photos', 'reporter_first_name', 'reporter_last_name', 'reporter_email']);
         $this->dispatch('wp-clear-photo-previews');
-        $this->flashMessage = __('portal.report.sent');
+        $this->flashMessage = $result->awaitingEmailVerification
+            ? __('portal.report.sent_verify_email')
+            : __('portal.report.sent');
         $this->portalSection = 'issues';
     }
 
@@ -1173,6 +1176,7 @@ class UnitPortal extends Component
             'unitCheckListItems' => $unitCheckListItems,
             'showNewReportSection' => $this->showNewReportSection(),
             'requiresReporterContact' => $canAct ? false : $unit->requiresReporterContact(),
+            'requiresReporterEmailVerification' => $canAct ? false : $unit->requiresReporterEmailVerification(),
             'worker' => $worker,
             'team' => $team,
             'phase' => $phase,

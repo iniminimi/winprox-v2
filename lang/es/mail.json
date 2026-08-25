@@ -35,6 +35,14 @@
         "expiry": "Este enlace es válido durante :minutes minutos.",
         "footer": "¿No has creado esta cuenta? No hace falta hacer nada: sin confirmación la eliminamos automáticamente."
     },
+    "verify_qr_report_email": {
+        "subject": "WinProx: confirma tu informe",
+        "intro": "Hemos recibido un informe para :unit (:location). Haz clic en el botón para confirmar tu correo. Solo entonces se crea el informe.",
+        "cta": "Confirmar informe",
+        "link_fallback": "Si el botón no funciona, copia este enlace:",
+        "expiry": "Este enlace es válido :minutes minutos.",
+        "footer": "¿No enviaste este informe? No hace falta hacer nada: sin confirmación no se crea ningún informe."
+    },
     "new_tenant": {
         "subject": "WinProx: nueva organización registrada — :tenant",
         "body": "Se ha registrado una nueva organización.\n\nOrganización: :tenant\nAdministrador: :admin (:email)\nTeléfono: :phone\nDirección: :address\nPaís: :country\nID de tenant: :tenant_id"

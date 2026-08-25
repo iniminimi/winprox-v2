@@ -65,6 +65,7 @@ class StoreUnitRequest extends FormRequest
             'allow_reservations' => ['boolean'],
             'allow_unit_checks' => ['boolean'],
             'require_reporter_contact' => ['boolean'],
+            'require_reporter_email_verification' => ['boolean'],
         ];
     }
 

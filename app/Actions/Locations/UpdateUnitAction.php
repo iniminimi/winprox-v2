@@ -53,6 +53,10 @@ class UpdateUnitAction
             $payload['require_reporter_contact'] = (bool) $data['require_reporter_contact'];
         }
 
+        if (array_key_exists('require_reporter_email_verification', $data)) {
+            $payload['require_reporter_email_verification'] = (bool) $data['require_reporter_email_verification'];
+        }
+
         if (Schema::hasColumn('units', 'category_id')) {
             $payload['category_id'] = $data['category_id'] ?? null;
         }

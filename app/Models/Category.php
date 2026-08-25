@@ -23,6 +23,7 @@ class Category extends Model
         'is_reservable',
         'allow_unit_checks',
         'require_reporter_contact',
+        'require_reporter_email_verification',
     ];
 
     protected $casts = [
@@ -30,6 +31,7 @@ class Category extends Model
         'is_reservable' => 'boolean',
         'allow_unit_checks' => 'boolean',
         'require_reporter_contact' => 'boolean',
+        'require_reporter_email_verification' => 'boolean',
     ];
 
     public function tenant(): BelongsTo

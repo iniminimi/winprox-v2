@@ -74,7 +74,14 @@
         },
         "reporter_first_name_ph_required": "Prénom",
         "reporter_last_name_ph_required": "Nom",
-        "reporter_email_ph_required": "E-mail"
+        "reporter_email_ph_required": "E-mail",
+        "verify_email_hint": "Vous recevrez un e-mail. Cliquez sur le lien pour envoyer le signalement. Sans confirmation, aucun signalement n’est créé.",
+        "sent_verify_email": "Vérifiez votre boîte mail : nous avons envoyé un lien de confirmation. Le signalement n’est créé qu’après ce clic.",
+        "verify_email_ok": "Votre adresse e-mail est confirmée. Le signalement a été envoyé et sera contrôlé.",
+        "verify_email_expired": "Ce lien de confirmation a expiré. Veuillez renvoyer le signalement.",
+        "verify_email_invalid": "Ce lien de confirmation est invalide ou déjà utilisé.",
+        "verify_email_title": "Confirmer le signalement",
+        "verify_email_back": "Retour au portail"
     },
     "worker": {
         "title": "Se connecter en tant qu'employé",

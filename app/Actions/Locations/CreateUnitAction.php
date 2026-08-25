@@ -43,6 +43,9 @@ class CreateUnitAction
             'require_reporter_contact' => array_key_exists('require_reporter_contact', $data)
                 ? (bool) $data['require_reporter_contact']
                 : false,
+            'require_reporter_email_verification' => array_key_exists('require_reporter_email_verification', $data)
+                ? (bool) $data['require_reporter_email_verification']
+                : false,
         ];
 
         if (Schema::hasColumn('units', 'category_id')) {

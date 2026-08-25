@@ -35,6 +35,14 @@
         "expiry": "Questo link è valido per :minutes minuti.",
         "footer": "Non hai creato questo account? Non devi fare nulla: senza conferma lo eliminiamo automaticamente."
     },
+    "verify_qr_report_email": {
+        "subject": "WinProx: conferma la segnalazione",
+        "intro": "Abbiamo ricevuto una segnalazione per :unit (:location). Clicca sul pulsante per confermare l’e-mail. Solo allora la segnalazione viene creata.",
+        "cta": "Conferma segnalazione",
+        "link_fallback": "Se il pulsante non funziona, copia questo link:",
+        "expiry": "Questo link è valido :minutes minuti.",
+        "footer": "Non hai inviato questa segnalazione? Non devi fare nulla: senza conferma non viene creata alcuna segnalazione."
+    },
     "new_tenant": {
         "subject": "WinProx: nuova organizzazione registrata — :tenant",
         "body": "È stata registrata una nuova organizzazione.\n\nOrganizzazione: :tenant\nAmministratore: :admin (:email)\nTelefono: :phone\nIndirizzo: :address\nPaese: :country\nID tenant: :tenant_id"

@@ -32,6 +32,7 @@ class Unit extends Model
         'allow_reservations',
         'allow_unit_checks',
         'require_reporter_contact',
+        'require_reporter_email_verification',
         'background_photo_path',
         'unit_check_list_id',
         'external_id',
@@ -43,6 +44,7 @@ class Unit extends Model
         'allow_reservations' => 'boolean',
         'allow_unit_checks' => 'boolean',
         'require_reporter_contact' => 'boolean',
+        'require_reporter_email_verification' => 'boolean',
     ];
 
     protected static function booted(): void
@@ -150,6 +152,14 @@ class Unit extends Model
         $this->loadMissing('category');
 
         return (bool) $this->category?->require_reporter_contact && $this->require_reporter_contact;
+    }
+
+    public function requiresReporterEmailVerification(): bool
+    {
+        $this->loadMissing('category');
+
+        return (bool) $this->category?->require_reporter_email_verification
+            && $this->require_reporter_email_verification;
     }
 
     public function issues(): HasMany

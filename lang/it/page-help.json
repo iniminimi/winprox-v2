@@ -263,6 +263,10 @@
                 {
                     "label": "Dati di contatto obbligatori",
                     "text": "Attivi se i segnalanti anonimi tramite QR dell’unità devono indicare nome, cognome e e-mail. Disattivo di default. Vale solo se attivato anche sull’unità. Non vale per operatori sul campo già autenticati — sono già identificati."
+                },
+                {
+                    "label": "Conferma e-mail obbligatoria",
+                    "text": "Attivi se i segnalanti anonimi tramite QR dell’unità devono confermare l’e-mail. Segnalazione, attività e webhook nascono solo dopo il clic sul link. Disattivo di default. Vale solo se attivato anche sull’unità. Non vale per gli operatori connessi."
                 }
             ]
         },
@@ -296,6 +300,10 @@
                 {
                     "label": "Dati di contatto obbligatori",
                     "text": "Rilevante solo se la categoria lo richiede. Disattivo di default. Solo per segnalanti anonimi via QR (nome, cognome e e-mail), non per operatori autenticati via Clock Point."
+                },
+                {
+                    "label": "Conferma e-mail obbligatoria",
+                    "text": "Rilevante solo se la categoria lo richiede. Disattivo di default. Solo per segnalanti anonimi via QR, non per operatori autenticati via Clock Point. La segnalazione nasce solo dopo il clic sul link."
                 },
                 {
                     "label": "Unità in blocco",
@@ -686,7 +694,7 @@
                 },
                 {
                     "label": "Segnala problema",
-                    "text": "Tocchi «Crea segnalazione», descriva il problema e aggiunga facoltativamente fino a quattro foto. Nome, cognome e e-mail sono facoltativi — salvo che l’amministratore abbia reso obbligatori i dati di contatto; li compili allora. Viene creato un compito per il team. La segnalazione deve essere approvata prima di apparire sul portale. Limiti anti-spam: al massimo una segnalazione ogni 3 minuti e cinque ogni 30 minuti per questa unità (per dispositivo)."
+                    "text": "Tocchi «Crea segnalazione», descriva il problema e aggiunga facoltativamente fino a quattro foto. Nome, cognome e e-mail sono facoltativi — salvo che l’amministratore abbia reso obbligatori i dati di contatto; li compili allora. Se la conferma e-mail è attiva, ricevi un link: la segnalazione nasce solo dopo la conferma. Viene creato un compito per il team. La segnalazione deve essere approvata prima di apparire sul portale. Limiti anti-spam: al massimo una segnalazione ogni 3 minuti e cinque ogni 30 minuti per questa unità (per dispositivo)."
                 },
                 {
                     "label": "Prenota",

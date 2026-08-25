@@ -479,7 +479,10 @@
                   class="wp-stack">
                 <div class="wp-card wp-card-pad wp-stack">
                     @if (! $canAct)
-                        @include('partials.wp-portal-report-reporter-fields', ['requireContact' => $requiresReporterContact])
+                        @include('partials.wp-portal-report-reporter-fields', [
+                            'requireContact' => $requiresReporterContact,
+                            'requireEmailVerification' => $requiresReporterEmailVerification,
+                        ])
                     @endif
                     <div class="wp-field">
                         <label class="wp-label" for="description">{{ __('portal.report.description') }}</label>

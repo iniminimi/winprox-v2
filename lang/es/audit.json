@@ -67,6 +67,8 @@
         "qr_codes.batch_generated": "Códigos QR generados en lote",
         "qr_link_photo.deleted": "Foto de enlace QR eliminada",
         "qr_link_photo.stored": "Foto de enlace QR guardada",
+        "qr_report_email_hold.created": "Informe QR en espera (confirmación de correo)",
+        "qr_report_email_hold.confirmed": "Informe QR confirmado por correo",
         "starter_pack.applied": "Plantilla inicial creada",
         "starter_pack.removed": "Plantilla inicial eliminada",
         "subscription.plan_activated": "Suscripción activada",

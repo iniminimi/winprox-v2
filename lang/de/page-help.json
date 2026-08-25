@@ -263,6 +263,10 @@
                 {
                     "label": "Kontaktdaten Pflicht",
                     "text": "Aktivieren Sie dies, wenn anonyme Melder über den Unit-QR Vorname, Name und E-Mail angeben müssen. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für angemeldete Feldmitarbeiter — sie sind bereits bekannt."
+                },
+                {
+                    "label": "E-Mail-Bestätigung Pflicht",
+                    "text": "Aktivieren Sie dies, wenn anonyme Melder über den Unit-QR ihre E-Mail bestätigen müssen. Meldung, Aufgabe und Webhook entstehen erst nach Klick auf den Link. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für angemeldete Feldmitarbeiter."
                 }
             ]
         },
@@ -296,6 +300,10 @@
                 {
                     "label": "Kontaktdaten Pflicht",
                     "text": "Nur relevant, wenn die Kategorie dies verlangt. Standardmäßig aus. Gilt nur für anonyme QR-Melder (Vorname, Name und E-Mail), nicht für über Clock Point angemeldete Mitarbeiter."
+                },
+                {
+                    "label": "E-Mail-Bestätigung Pflicht",
+                    "text": "Nur relevant, wenn die Kategorie dies verlangt. Standardmäßig aus. Gilt nur für anonyme QR-Melder, nicht für über Clock Point angemeldete Mitarbeiter. Die Meldung entsteht erst nach Klick auf den E-Mail-Link."
                 },
                 {
                     "label": "Bulk-Units",
@@ -686,7 +694,7 @@
                 },
                 {
                     "label": "Meldung erstellen",
-                    "text": "Tippen Sie auf „Meldung erstellen“, beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Vorname, Name und E-Mail sind optional — außer die Verwaltung hat Kontaktdaten zur Pflicht gemacht; füllen Sie sie dann aus. Anschließend wird eine Aufgabe für das Team erstellt. Die Meldung muss erst freigegeben werden, bevor sie im Portal sichtbar ist. Gegen Spam gelten Limits: höchstens eine Meldung alle 3 Minuten und fünf alle 30 Minuten für diese Unit (pro Gerät)."
+                    "text": "Tippen Sie auf „Meldung erstellen“, beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Vorname, Name und E-Mail sind optional — außer die Verwaltung hat Kontaktdaten zur Pflicht gemacht; füllen Sie sie dann aus. Ist E-Mail-Bestätigung aktiv, erhalten Sie einen Link: die Meldung entsteht erst nach der Bestätigung. Anschließend wird eine Aufgabe für das Team erstellt. Die Meldung muss erst freigegeben werden, bevor sie im Portal sichtbar ist. Gegen Spam gelten Limits: höchstens eine Meldung alle 3 Minuten und fünf alle 30 Minuten für diese Unit (pro Gerät)."
                 },
                 {
                     "label": "Reservieren",

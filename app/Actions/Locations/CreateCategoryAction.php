@@ -15,7 +15,7 @@ class CreateCategoryAction
     ) {}
 
     /**
-     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, require_reporter_contact?: bool, original_language?: string|null}  $data
+     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, require_reporter_contact?: bool, require_reporter_email_verification?: bool, original_language?: string|null}  $data
      */
     public function handle(int $tenantId, array $data, ?int $actorUserId = null): Category
     {
@@ -27,6 +27,7 @@ class CreateCategoryAction
             'is_reservable' => (bool) ($data['is_reservable'] ?? false),
             'allow_unit_checks' => (bool) ($data['allow_unit_checks'] ?? false),
             'require_reporter_contact' => (bool) ($data['require_reporter_contact'] ?? false),
+            'require_reporter_email_verification' => (bool) ($data['require_reporter_email_verification'] ?? false),
         ]);
 
         $this->ensureSlots->handle($category);
@@ -44,6 +45,7 @@ class CreateCategoryAction
                 'is_reservable' => $category->is_reservable,
                 'allow_unit_checks' => $category->allow_unit_checks,
                 'require_reporter_contact' => $category->require_reporter_contact,
+                'require_reporter_email_verification' => $category->require_reporter_email_verification,
             ],
         );
 

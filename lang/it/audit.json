@@ -67,6 +67,8 @@
         "qr_codes.batch_generated": "Codici QR generati in batch",
         "qr_link_photo.deleted": "Foto collegamento QR eliminata",
         "qr_link_photo.stored": "Foto collegamento QR salvata",
+        "qr_report_email_hold.created": "Segnalazione QR in attesa (conferma e-mail)",
+        "qr_report_email_hold.confirmed": "Segnalazione QR confermata via e-mail",
         "starter_pack.applied": "Modello iniziale creato",
         "starter_pack.removed": "Modello iniziale rimosso",
         "subscription.plan_activated": "Abbonamento attivato",

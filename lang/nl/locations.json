@@ -114,6 +114,7 @@
             "public_reports_enabled": "Bezoekers kunnen een melding maken via QR-portaal",
             "allow_reservations": "Reserveringen toestaan",
             "require_reporter_contact": "Contactgegevens invullen verplicht",
+            "require_reporter_email_verification": "E-mailbevestiging verplicht",
             "check_list": "Checklist (unit check)",
             "allow_unit_checks": "Unit checks toestaan",
             "external_id": "Externe ID"
@@ -171,6 +172,7 @@
         "delete_blocked": "Deze unit kan niet worden verwijderd.",
         "allow_reservations_hint": "Alleen relevant als de categorie Reserveerbaar is. Staat standaard uit; zet aan om reserveringen voor deze unit toe te staan.",
         "require_reporter_contact_hint": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders, niet voor veldwerkers.",
+        "require_reporter_email_verification_hint": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders, niet voor veldwerkers. De melding ontstaat pas na klikken op de e-maillink.",
         "no_check_list": "Geen checklist",
         "check_list_hint": "Optioneel. Maak checklists onder pagina Mensen → Teams (gedeeld of per team). Alleen gedeelde checklists of checklists van teams gekoppeld aan de categorie van deze unit.",
         "allow_unit_checks_hint": "Alleen relevant als de categorie Unit checks toestaat. Staat standaard uit; zet aan om de Unit check-tegel op de unit-QR te tonen.",
@@ -236,6 +238,7 @@
             "allow_gps_location": "GPS-locatie toestaan",
             "is_reservable": "Reserveerbaar",
             "require_reporter_contact": "Contactgegevens invullen verplicht",
+            "require_reporter_email_verification": "E-mailbevestiging verplicht",
             "allow_unit_checks": "Unit checks toestaan"
         },
         "allow_gps_location_hint": "Sta toe dat de GPS-locatie van units in deze categorie via het portaal wordt doorgegeven.",
@@ -260,6 +263,7 @@
         },
         "is_reservable_hint": "Schakel reserveringen in voor alle units in deze categorie (vergaderzaal, voertuig, …).",
         "require_reporter_contact_hint": "Verplicht voornaam, naam en e-mail bij anonieme meldingen via de unit-QR. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat.",
+        "require_reporter_email_verification_hint": "Verplicht een bevestigingsmail bij anonieme meldingen via de unit-QR. De melding wordt pas aangemaakt nadat de melder op de link klikt. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat. Geldt niet voor veldwerkers.",
         "allow_unit_checks_hint": "Schakel Unit checks in voor alle units in deze categorie (securityronde, schoonmaakcontrole, …). Staat standaard uit; moet ook per unit aanstaan."
     },
     "errors": {

@@ -235,6 +235,196 @@ it('keeps reporter contact optional when only the category flag is on', function
     expect(Issue::count())->toBe(1);
 });
 
+it('holds a QR report until the reporter confirms email when both flags are on', function () {
+    Mail::fake();
+    Storage::fake('public');
+    ['unit' => $unit, 'team' => $team] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_email_verification' => true]);
+    $unit->update(['require_reporter_email_verification' => true]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Lekkage in de keuken.')
+        ->set('reporter_email', 'ada@example.com')
+        ->set('photos', [
+            UploadedFile::fake()->create('foto1.jpg', 120, 'image/jpeg'),
+        ])
+        ->call('submitReport')
+        ->assertHasNoErrors()
+        ->assertSee(__('portal.report.sent_verify_email'));
+
+    expect(Issue::count())->toBe(0)
+        ->and(Task::count())->toBe(0)
+        ->and(QrReportEmailHold::count())->toBe(1);
+
+    Mail::assertSent(VerifyQrReportEmailMail::class, fn (VerifyQrReportEmailMail $mail) => $mail->hasTo('ada@example.com'));
+
+    $hold = QrReportEmailHold::query()->first();
+    expect($hold)->not->toBeNull()
+        ->and($hold->reporter_contact)->toBe('ada@example.com')
+        ->and($hold->storedPhotoPaths())->toHaveCount(1);
+
+    Livewire::test(ConfirmQrReportEmail::class, ['token' => $hold->token])
+        ->assertSet('status', 'ok')
+        ->assertSee(__('portal.report.verify_email_ok'));
+
+    $issue = Issue::query()->first();
+    expect($issue)->not->toBeNull()
+        ->and($issue->description)->toBe('Lekkage in de keuken.')
+        ->and($issue->reporter_contact)->toBe('ada@example.com')
+        ->and($issue->photos()->count())->toBe(1);
+
+    $task = Task::query()->where('issue_id', $issue->id)->first();
+    expect($task)->not->toBeNull()
+        ->and($task->internal_team_id)->toBe($team->id)
+        ->and($task->status)->toBe(TaskStatus::New);
+
+    Livewire::test(ConfirmQrReportEmail::class, ['token' => $hold->token])
+        ->assertSet('status', 'ok');
+
+    expect(Issue::count())->toBe(1);
+});
+
+it('requires email when verification flags are on even if contact is optional', function () {
+    Mail::fake();
+    ['unit' => $unit] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_email_verification' => true]);
+    $unit->update(['require_reporter_email_verification' => true]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Lekkage in de keuken.')
+        ->call('submitReport')
+        ->assertHasErrors('reporter_email');
+
+    expect(Issue::count())->toBe(0)
+        ->and(QrReportEmailHold::count())->toBe(0);
+});
+
+it('does not hold the report when only the category verification flag is on', function () {
+    Mail::fake();
+    ['unit' => $unit] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_email_verification' => true]);
+    $unit->update(['require_reporter_email_verification' => false]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Directe melding zonder hold.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    expect(Issue::count())->toBe(1)
+        ->and(QrReportEmailHold::count())->toBe(0);
+
+    Mail::assertNotSent(VerifyQrReportEmailMail::class);
+});
+
+it('does not require email verification for signed-in workers even when flags are on', function () {
+    Mail::fake();
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_email_verification' => true]);
+    $unit->update(['require_reporter_email_verification' => true]);
+
+    Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Sam',
+        'last_name' => 'Worker',
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('first_name', 'Sam')
+        ->set('last_name', 'Worker')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'star')
+        ->call('signInWithIcon')
+        ->set('description', 'Worker melding zonder e-mailbevestiging.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    expect(Issue::count())->toBe(1)
+        ->and(QrReportEmailHold::count())->toBe(0);
+
+    Mail::assertNotSent(VerifyQrReportEmailMail::class);
+});
+
+it('expires unverified QR report email holds and deletes stored photos', function () {
+    Mail::fake();
+    Storage::fake('public');
+    ['unit' => $unit] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_email_verification' => true]);
+    $unit->update(['require_reporter_email_verification' => true]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Lekkage in de keuken.')
+        ->set('reporter_email', 'ada@example.com')
+        ->set('photos', [
+            UploadedFile::fake()->create('foto1.jpg', 120, 'image/jpeg'),
+        ])
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    $hold = QrReportEmailHold::query()->first();
+    $path = $hold->storedPhotoPaths()[0];
+    Storage::disk('public')->assertExists($path);
+
+    $hold->forceFill(['expires_at' => now()->subMinute()])->save();
+    app(ExpireQrReportEmailHoldsAction::class)->handle();
+
+    expect(QrReportEmailHold::count())->toBe(0)
+        ->and(Issue::count())->toBe(0);
+    Storage::disk('public')->assertMissing($path);
+});
+
+it('rejects an expired confirmation token without creating an issue', function () {
+    Mail::fake();
+    ['unit' => $unit] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_email_verification' => true]);
+    $unit->update(['require_reporter_email_verification' => true]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Lekkage in de keuken.')
+        ->set('reporter_email', 'ada@example.com')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    $hold = QrReportEmailHold::query()->first();
+    $hold->forceFill(['expires_at' => now()->subMinute()])->save();
+
+    Livewire::test(ConfirmQrReportEmail::class, ['token' => $hold->token])
+        ->assertSet('status', 'error')
+        ->assertSee(__('portal.report.verify_email_expired'));
+
+    expect(Issue::count())->toBe(0);
+});
+
+it('applies the existing public report rate limit when creating an email hold', function () {
+    Mail::fake();
+    cache()->flush();
+    config([
+        'portal.public_report_rate_limit.cooldown.decay_seconds' => 180,
+        'portal.public_report_rate_limit.per_unit.max_attempts' => 5,
+        'portal.public_report_rate_limit.per_unit.decay_seconds' => 1800,
+        'portal.public_report_rate_limit.per_tenant.max_attempts' => 50,
+    ]);
+
+    ['unit' => $unit] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_email_verification' => true]);
+    $unit->update(['require_reporter_email_verification' => true]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Eerste hold.')
+        ->set('reporter_email', 'ada@example.com')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Tweede hold binnen de cooldown.')
+        ->set('reporter_email', 'ada@example.com')
+        ->call('submitReport')
+        ->assertHasErrors('description');
+
+    expect(QrReportEmailHold::count())->toBe(1)
+        ->and(Issue::count())->toBe(0);
+});
+
 it('shows the invalid scan card for an unknown unit token', function () {
     $this->get('/melden/bestaat-niet')
         ->assertNotFound()

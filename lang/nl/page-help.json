@@ -263,6 +263,10 @@
                 {
                     "label": "Contactgegevens invullen verplicht",
                     "text": "Zet dit aan als anonieme melders via de unit-QR hun voornaam, naam en e-mail moeten invullen. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat. Voor ingelogde uitvoerders (veldwerkers) geldt dit niet — zij zijn al bekend."
+                },
+                {
+                    "label": "E-mailbevestiging verplicht",
+                    "text": "Zet dit aan als anonieme melders via de unit-QR hun e-mail moeten bevestigen. De melding, taak en webhook ontstaan pas na klikken op de link in de mail. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat. Voor ingelogde uitvoerders geldt dit niet."
                 }
             ]
         },
@@ -300,6 +304,10 @@
                 {
                     "label": "Contactgegevens invullen verplicht",
                     "text": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders (voornaam, naam en e-mail), niet voor uitvoerders die zich via Clock Point hebben aangemeld."
+                },
+                {
+                    "label": "E-mailbevestiging verplicht",
+                    "text": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders, niet voor uitvoerders die zich via Clock Point hebben aangemeld. De melding ontstaat pas na klikken op de e-maillink."
                 },
                 {
                     "label": "Bulk units",
@@ -686,7 +694,7 @@
                 },
                 {
                     "label": "Melding doen",
-                    "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Voornaam, naam en e-mail zijn optioneel — tenzij de beheerder contactgegevens verplicht heeft gemaakt; vul ze dan in. Er wordt vervolgens een taak aangemaakt voor het team. De melding moet eerst worden goedgekeurd voordat deze zichtbaar wordt op het portaal. Tegen spam gelden limieten: maximaal één melding per 3 minuten en maximaal vijf meldingen per 30 minuten voor deze unit (per apparaat)."
+                    "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Voornaam, naam en e-mail zijn optioneel — tenzij de beheerder contactgegevens verplicht heeft gemaakt; vul ze dan in. Als e-mailbevestiging aanstaat, ontvang je een link: de melding wordt pas aangemaakt nadat je die bevestigt. Er wordt vervolgens een taak aangemaakt voor het team. De melding moet eerst worden goedgekeurd voordat deze zichtbaar wordt op het portaal. Tegen spam gelden limieten: maximaal één melding per 3 minuten en maximaal vijf meldingen per 30 minuten voor deze unit (per apparaat)."
                 },
                 {
                     "label": "Reserveren",

@@ -74,7 +74,14 @@
         },
         "reporter_first_name_ph_required": "First name",
         "reporter_last_name_ph_required": "Last name",
-        "reporter_email_ph_required": "Email"
+        "reporter_email_ph_required": "Email",
+        "verify_email_hint": "You will receive an email. Click the link to submit the report. Without confirmation no report is created.",
+        "sent_verify_email": "Check your inbox: we sent a confirmation link. The report is only created after you click that link.",
+        "verify_email_ok": "Your email address is confirmed. The report has been submitted and will be reviewed.",
+        "verify_email_expired": "This confirmation link has expired. Please submit the report again.",
+        "verify_email_invalid": "This confirmation link is invalid or already used.",
+        "verify_email_title": "Confirm report",
+        "verify_email_back": "Back to the portal"
     },
     "worker": {
         "title": "Sign in as worker",

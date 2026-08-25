@@ -19,7 +19,7 @@ class UpdateCategoryAction
     ) {}
 
     /**
-     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, require_reporter_contact?: bool}  $data
+     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, require_reporter_contact?: bool, require_reporter_email_verification?: bool}  $data
      */
     public function handle(Category $category, array $data, ?int $actorUserId = null): Category
     {
@@ -32,6 +32,7 @@ class UpdateCategoryAction
             'is_reservable' => (bool) ($data['is_reservable'] ?? false),
             'allow_unit_checks' => (bool) ($data['allow_unit_checks'] ?? false),
             'require_reporter_contact' => (bool) ($data['require_reporter_contact'] ?? false),
+            'require_reporter_email_verification' => (bool) ($data['require_reporter_email_verification'] ?? false),
         ]);
 
         $fresh = $category->fresh();
@@ -63,6 +64,7 @@ class UpdateCategoryAction
                 'is_reservable' => $fresh->is_reservable,
                 'allow_unit_checks' => $fresh->allow_unit_checks,
                 'require_reporter_contact' => $fresh->require_reporter_contact,
+                'require_reporter_email_verification' => $fresh->require_reporter_email_verification,
             ],
         );
 

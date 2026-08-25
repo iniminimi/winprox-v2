@@ -74,7 +74,14 @@
         },
         "reporter_first_name_ph_required": "Vorname",
         "reporter_last_name_ph_required": "Nachname",
-        "reporter_email_ph_required": "E-Mail"
+        "reporter_email_ph_required": "E-Mail",
+        "verify_email_hint": "Sie erhalten eine E-Mail. Klicken Sie auf den Link, um die Meldung zu senden. Ohne Bestätigung wird keine Meldung erstellt.",
+        "sent_verify_email": "Prüfen Sie Ihren Posteingang: wir haben einen Bestätigungslink gesendet. Die Meldung entsteht erst nach dem Klick.",
+        "verify_email_ok": "Ihre E-Mail-Adresse ist bestätigt. Die Meldung wurde gesendet und wird geprüft.",
+        "verify_email_expired": "Dieser Bestätigungslink ist abgelaufen. Bitte die Meldung erneut einreichen.",
+        "verify_email_invalid": "Dieser Bestätigungslink ist ungültig oder bereits verwendet.",
+        "verify_email_title": "Meldung bestätigen",
+        "verify_email_back": "Zurück zum Portal"
     },
     "worker": {
         "title": "Als Mitarbeiter anmelden",

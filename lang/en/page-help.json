@@ -263,6 +263,10 @@
                 {
                     "label": "Require contact details",
                     "text": "Turn this on if anonymous reporters via the unit QR must enter first name, last name and email. Off by default. Only takes effect when also enabled on the unit. Does not apply to signed-in field workers — they are already identified."
+                },
+                {
+                    "label": "Require email confirmation",
+                    "text": "Turn this on if anonymous reporters via the unit QR must confirm their email. The report, task and webhook are created only after they click the link in the email. Off by default. Only takes effect when also enabled on the unit. Does not apply to signed-in field workers."
                 }
             ]
         },
@@ -300,6 +304,10 @@
                 {
                     "label": "Require contact details",
                     "text": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters (first name, last name and email), not to workers signed in via Clock Point."
+                },
+                {
+                    "label": "Require email confirmation",
+                    "text": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not to workers signed in via Clock Point. The report is created only after they click the email link."
                 },
                 {
                     "label": "Bulk units",
@@ -686,7 +694,7 @@
                 },
                 {
                     "label": "Report issue",
-                    "text": "Tap \"Create report\", describe the problem and optionally add up to four photos. First name, last name and email are optional — unless the administrator made contact details required; then fill them in. A task is then created for the team. The report must be approved before it appears on the portal. Anti-spam limits apply: at most one report per 3 minutes and five reports per 30 minutes for this unit (per device)."
+                    "text": "Tap \"Create report\", describe the problem and optionally add up to four photos. First name, last name and email are optional — unless the administrator made contact details required; then fill them in. If email confirmation is on, you receive a link: the report is only created after you confirm it. A task is then created for the team. The report must be approved before it appears on the portal. Anti-spam limits apply: at most one report per 3 minutes and five reports per 30 minutes for this unit (per device)."
                 },
                 {
                     "label": "Reserve",

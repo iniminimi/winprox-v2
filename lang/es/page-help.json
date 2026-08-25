@@ -263,6 +263,10 @@
                 {
                     "label": "Datos de contacto obligatorios",
                     "text": "Actívelo si los informantes anónimos vía QR de la unidad deben indicar nombre, apellidos y correo. Desactivado por defecto. Solo aplica si también está activado en la unidad. No aplica a trabajadores de campo conectados — ya están identificados."
+                },
+                {
+                    "label": "Confirmación de correo obligatoria",
+                    "text": "Actívelo si los informantes anónimos vía QR de la unidad deben confirmar su correo. El informe, la tarea y el webhook solo se crean tras hacer clic en el enlace. Desactivado por defecto. Solo aplica si también está activado en la unidad. No aplica a trabajadores conectados."
                 }
             ]
         },
@@ -296,6 +300,10 @@
                 {
                     "label": "Datos de contacto obligatorios",
                     "text": "Solo relevante si la categoría lo exige. Desactivado por defecto. Solo para informantes anónimos por QR (nombre, apellidos y correo), no para trabajadores conectados vía Clock Point."
+                },
+                {
+                    "label": "Confirmación de correo obligatoria",
+                    "text": "Solo relevante si la categoría lo exige. Desactivado por defecto. Solo para informantes anónimos por QR, no para trabajadores conectados vía Clock Point. El informe se crea solo tras hacer clic en el enlace."
                 },
                 {
                     "label": "Unidades en bloque",
@@ -686,7 +694,7 @@
                 },
                 {
                     "label": "Informar incidencia",
-                    "text": "Pulse «Crear aviso», describa el problema y añada opcionalmente hasta cuatro fotos. Nombre, apellidos y correo son opcionales — salvo que el administrador haya hecho obligatorios los datos de contacto; rellénelos entonces. Se crea una tarea para el equipo. El aviso debe aprobarse antes de verse en el portal. Límites anti-spam: como máximo un aviso cada 3 minutos y cinco cada 30 minutos para esta unidad (por dispositivo)."
+                    "text": "Pulse «Crear aviso», describa el problema y añada opcionalmente hasta cuatro fotos. Nombre, apellidos y correo son opcionales — salvo que el administrador haya hecho obligatorios los datos de contacto; rellénelos entonces. Si la confirmación de correo está activa, recibes un enlace: el informe solo se crea tras confirmarlo. Se crea una tarea para el equipo. El aviso debe aprobarse antes de verse en el portal. Límites anti-spam: como máximo un aviso cada 3 minutos y cinco cada 30 minutos para esta unidad (por dispositivo)."
                 },
                 {
                     "label": "Reservar",
