@@ -83,9 +83,12 @@
                 wire:click="processPromoBounces"
                 wire:loading.attr="disabled"
                 wire:target="processPromoBounces"
+                @disabled($bounceScanQueued)
             >
                 <span wire:loading.remove wire:target="processPromoBounces">
-                    {{ __('platform.promo_campaigns.bounces_submit') }}
+                    {{ $bounceScanQueued
+                        ? __('platform.promo_campaigns.bounces_loading')
+                        : __('platform.promo_campaigns.bounces_submit') }}
                 </span>
                 <span wire:loading wire:target="processPromoBounces">
                     {{ __('platform.promo_campaigns.bounces_loading') }}
@@ -94,7 +97,7 @@
         </div>
     </div>
 
-    <div class="wp-card wp-card-pad wp-stack" wire:poll.visible.30s>
+    <div class="wp-card wp-card-pad wp-stack" @if ($bounceScanQueued) wire:poll.visible.5s @else wire:poll.visible.30s @endif>
         <p class="wp-subhead">{{ __('platform.promo_campaigns.list_title') }}</p>
         @if ($campaigns->isEmpty())
             <p class="wp-muted">{{ __('platform.promo_campaigns.list_empty') }}</p>

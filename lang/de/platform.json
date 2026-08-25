@@ -317,6 +317,7 @@
         "bounces_lead": "Promo-Postfach auf Unzustellbarkeits-/Bounce-Nachrichten prüfen, auch bereits geöffnete Mails der letzten 30 Tage. Gefundene Adressen werden abgemeldet und in der Kampagne als unzustellbar markiert. Läuft auch stündlich automatisch.",
         "bounces_submit": "Bounces jetzt verarbeiten",
         "bounces_loading": "Postfach wird gescannt…",
+        "bounces_queued": "Bounce-Scan ist in der Warteschlange. Die Liste aktualisiert sich automatisch (meist innerhalb einer Minute).",
         "bounces_none": "Fertig: keine Bounces in :scanned Nachrichten gefunden (letzte :days Tage, auch bereits gelesen).",
         "bounces_processed": "Fertig: :scanned Nachrichten gescannt, :bounces Bounces, :emails Adressen gefunden, :removed als unzustellbar markiert, :blocked abgemeldet.",
         "bounces_failed": "Bounce-Verarbeitung fehlgeschlagen: :error",

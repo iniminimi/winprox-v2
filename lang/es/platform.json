@@ -317,6 +317,7 @@
         "bounces_lead": "Escanear el buzón promo en busca de undelivered/bounces, también correos ya abiertos de los últimos 30 días. Las direcciones encontradas se dan de baja y se marcan como no entregadas en la campaña. También se ejecuta automáticamente cada hora.",
         "bounces_submit": "Procesar bounces ahora",
         "bounces_loading": "Escaneando buzón…",
+        "bounces_queued": "Análisis de rebotes en cola. La lista se actualiza sola (normalmente en menos de un minuto).",
         "bounces_none": "Listo: no se encontraron bounces en :scanned mensajes (últimos :days días, también los ya leídos).",
         "bounces_processed": "Listo: :scanned mensajes escaneados, :bounces bounces, :emails direcciones encontradas, :removed marcadas no entregadas, :blocked dadas de baja.",
         "bounces_failed": "Error al procesar bounces: :error",

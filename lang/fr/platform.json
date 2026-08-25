@@ -317,6 +317,7 @@
         "bounces_lead": "Parcourir la boîte promo pour les messages undelivered/bounces, y compris les mails déjà ouverts des 30 derniers jours. Les adresses trouvées sont désinscrites et marquées non remises dans la campagne. Tourne aussi automatiquement chaque heure.",
         "bounces_submit": "Traiter les bounces maintenant",
         "bounces_loading": "Analyse de la boîte…",
+        "bounces_queued": "Analyse des bounces mise en file. La liste se rafraîchit automatiquement (généralement en moins d'une minute).",
         "bounces_none": "Terminé : aucun bounce dans :scanned messages (derniers :days jours, y compris déjà lus).",
         "bounces_processed": "Terminé : :scanned messages analysés, :bounces bounces, :emails adresses trouvées, :removed marquées non remises, :blocked désinscrites.",
         "bounces_failed": "Échec du traitement des bounces : :error",

@@ -108,7 +108,7 @@ final class PromoBounceMessageParser
 
     public static function classify(string $haystack): PromoBounceKind
     {
-        $text = mb_strtolower($haystack);
+        $text = self::searchableText($haystack);
 
         if (self::matchesAny($text, [
             'mailbox full',
@@ -185,15 +185,43 @@ final class PromoBounceMessageParser
 
     private static function diagnosticSnippet(string $haystack): string
     {
-        if (preg_match('/^Diagnostic-Code:\s*(.+)$/mi', $haystack, $matches) === 1) {
-            return mb_substr(trim((string) $matches[1]), 0, 400);
-        }
+        $slice = self::searchableText($haystack);
 
-        if (preg_match('/550[^\r\n]{0,200}/i', $haystack, $matches) === 1) {
-            return mb_substr(trim((string) $matches[0]), 0, 400);
+        try {
+            if (preg_match('/^Diagnostic-Code:\s*(.+)$/mi', $slice, $matches) === 1) {
+                return mb_substr(trim((string) $matches[1]), 0, 400);
+            }
+
+            if (preg_match('/550[^\r\n]{0,200}/i', $slice, $matches) === 1) {
+                return mb_substr(trim((string) $matches[0]), 0, 400);
+            }
+        } catch (\Throwable) {
+            return '';
         }
 
         return '';
+    }
+
+    /**
+     * ASCII-safe snippet so bounce MIME (invalid UTF-8 / huge nested rfc822) cannot
+     * blow up mb_strtolower or PCRE during IMAP processing.
+     */
+    private static function searchableText(string $haystack): string
+    {
+        $parts = [substr($haystack, 0, 20_000)];
+        if (strlen($haystack) > 20_000) {
+            $parts[] = substr($haystack, -20_000);
+        }
+
+        try {
+            if (preg_match('/Diagnostic-Code:[^\r\n]{0,400}/i', $haystack, $matches) === 1) {
+                $parts[] = $matches[0];
+            }
+        } catch (\Throwable) {
+            // keep head/tail only
+        }
+
+        return strtolower(implode("\n", $parts));
     }
 
     /**

@@ -117,6 +117,13 @@ TXT;
         ->and(PromoBounceMessageParser::classify($full))->toBe(\App\Enums\PromoBounceKind::MailboxFull);
 });
 
+it('classificeert enorme of ongeldige MIME zonder te crashen', function () {
+    $haystack = str_repeat("\x80\xFF", 80_000)."\n550 User unknown for info@hotel.com\n";
+
+    expect(fn () => PromoBounceMessageParser::storageReason($haystack))->not->toThrow(\Throwable::class)
+        ->and(PromoBounceMessageParser::classify($haystack))->toBe(\App\Enums\PromoBounceKind::Unknown);
+});
+
 it('keurt plausibele ontvangers goed en Message-IDs af', function () {
     expect(PromoBounceMessageParser::isPlausibleRecipientEmail('lammering@trefoil.nl'))->toBeTrue()
         ->and(PromoBounceMessageParser::isPlausibleRecipientEmail(

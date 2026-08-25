@@ -317,6 +317,7 @@
         "bounces_lead": "Scansiona la casella promo per messaggi undelivered/bounce, anche le mail già aperte degli ultimi 30 giorni. Gli indirizzi trovati vengono disiscritti e contrassegnati come non recapitati nella campagna. Gira anche automaticamente ogni ora.",
         "bounces_submit": "Elabora bounce ora",
         "bounces_loading": "Scansione casella…",
+        "bounces_queued": "Scansione bounce in coda. L'elenco si aggiorna da solo (di solito entro un minuto).",
         "bounces_none": "Fatto: nessun bounce in :scanned messaggi (ultimi :days giorni, anche già letti).",
         "bounces_processed": "Fatto: :scanned messaggi scansionati, :bounces bounce, :emails indirizzi trovati, :removed contrassegnati non recapitati, :blocked disiscritti.",
         "bounces_failed": "Elaborazione bounce non riuscita: :error",

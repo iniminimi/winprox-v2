@@ -317,6 +317,7 @@
         "bounces_lead": "Scan de promo-mailbox op undelivered/bounces, ook als die berichten al geopend zijn (laatste 30 dagen). Gevonden adressen worden uitgeschreven en in de campagne als onbezorgd gemarkeerd. Draait ook elk uur automatisch.",
         "bounces_submit": "Bounces nu verwerken",
         "bounces_loading": "Mailbox wordt gescand…",
+        "bounces_queued": "Bounce-scan staat in de wachtrij. Het overzicht vernieuwt automatisch (meestal binnen een minuut).",
         "bounces_none": "Klaar: geen bounces gevonden in :scanned berichten (laatste :days dagen, ook al gelezen).",
         "bounces_processed": "Klaar: :scanned berichten gescand, :bounces bounces, :emails adressen gevonden, :removed als onbezorgd gemarkeerd, :blocked uitgeschreven.",
         "bounces_failed": "Bounces verwerken mislukt: :error",

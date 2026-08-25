@@ -60,7 +60,7 @@ class ProcessPromoMailboxBouncesAction
             'port' => (int) ($config['port'] ?? 993),
             'encryption' => $config['encryption'] ?? 'ssl',
             'validate_cert' => true,
-            'timeout' => 20,
+            'timeout' => 10,
             'username' => $username,
             'password' => $password,
             'protocol' => $config['protocol'] ?? 'imap',
@@ -84,7 +84,13 @@ class ProcessPromoMailboxBouncesAction
 
             foreach ($messages as $message) {
                 $scanned++;
-                $result = $this->processMessage($message, $dryRun);
+                try {
+                    $result = $this->processMessage($message, $dryRun);
+                } catch (Throwable $exception) {
+                    report($exception);
+
+                    continue;
+                }
                 if (! $result['is_bounce']) {
                     continue;
                 }
@@ -148,6 +154,9 @@ class ProcessPromoMailboxBouncesAction
             foreach ($this->bounceSearchConfigurators($since) as $configure) {
                 foreach ($this->searchUidList($folder, $configure) as $uid) {
                     $bounceUids[$uid] = $uid;
+                }
+                if ($limit !== null && $limit > 0 && count($bounceUids) >= $limit) {
+                    break;
                 }
             }
         }
@@ -280,13 +289,23 @@ class ProcessPromoMailboxBouncesAction
             headers: (string) ($message->getHeader()?->raw ?? ''),
             textBody: (string) $message->getTextBody(),
             htmlBody: (string) $message->getHTMLBody(),
-            rawBody: $this->rawBody($message),
-            attachmentBodies: $this->attachmentBodies($message),
         );
         $emails = PromoBounceMessageParser::extractRecipientEmails($subject, $body);
 
+        if ($emails === []) {
+            $body = PromoBounceMessageParser::haystackFromParts(
+                headers: (string) ($message->getHeader()?->raw ?? ''),
+                textBody: (string) $message->getTextBody(),
+                htmlBody: (string) $message->getHTMLBody(),
+                rawBody: $this->rawBody($message),
+                attachmentBodies: $this->attachmentBodies($message),
+            );
+            $emails = PromoBounceMessageParser::extractRecipientEmails($subject, $body);
+        }
+
         $removed = 0;
         $blocked = 0;
+        $reason = PromoBounceMessageParser::storageReason($body);
 
         foreach ($emails as $email) {
             if ($dryRun) {
@@ -295,7 +314,7 @@ class ProcessPromoMailboxBouncesAction
                 continue;
             }
 
-            $result = $this->markBounced->handle($email, PromoBounceMessageParser::storageReason($body));
+            $result = $this->markBounced->handle($email, $reason);
             $removed += $result['removed'];
             if ($result['blocked']) {
                 $blocked++;

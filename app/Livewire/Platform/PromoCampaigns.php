@@ -12,6 +12,7 @@ use App\Actions\Marketing\ResumePromoCampaignSendingAction;
 use App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction;
 use App\Http\Requests\Marketing\CopyPromoCampaignRequest;
 use App\Http\Requests\Marketing\CreatePromoCampaignRequest;
+use App\Jobs\ProcessPromoMailboxBouncesJob;
 use App\Models\PromoCampaign;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -53,6 +54,8 @@ class PromoCampaigns extends Component
     public bool $showDeleteConfirm = false;
 
     public ?int $deleteCampaignId = null;
+
+    public bool $bounceScanQueued = false;
 
     public function mount(): void
     {
@@ -151,6 +154,24 @@ class PromoCampaigns extends Component
     {
         $this->authorize('managePromoCampaigns', User::class);
 
+        if (config('queue.default') !== 'sync') {
+            ProcessPromoMailboxBouncesJob::remember([
+                'status' => 'queued',
+                'at' => now()->toIso8601String(),
+            ]);
+            ProcessPromoMailboxBouncesJob::dispatch();
+            $this->bounceScanQueued = true;
+            $this->flashType = 'success';
+            $this->flashMessage = __('platform.promo_campaigns.bounces_queued');
+
+            return;
+        }
+
+        $this->applyBounceScanResult($process);
+    }
+
+    private function applyBounceScanResult(ProcessPromoMailboxBouncesAction $process): void
+    {
         try {
             $result = $process->handle(
                 unseenOnly: false,
@@ -168,10 +189,18 @@ class PromoCampaigns extends Component
             return;
         }
 
+        $this->flashFromBounceResult($result);
+    }
+
+    /**
+     * @param  array{scanned: int, bounce_messages: int, emails_found: int, removed: int, blocked: int, dry_run?: bool}  $result
+     */
+    private function flashFromBounceResult(array $result): void
+    {
         $this->flashType = 'success';
-        if ($result['bounce_messages'] === 0 && $result['emails_found'] === 0) {
+        if (($result['bounce_messages'] ?? 0) === 0 && ($result['emails_found'] ?? 0) === 0) {
             $this->flashMessage = __('platform.promo_campaigns.bounces_none', [
-                'scanned' => $result['scanned'],
+                'scanned' => $result['scanned'] ?? 0,
                 'days' => ProcessPromoMailboxBouncesAction::DEFAULT_SINCE_DAYS,
             ]);
 
@@ -179,12 +208,45 @@ class PromoCampaigns extends Component
         }
 
         $this->flashMessage = __('platform.promo_campaigns.bounces_processed', [
-            'scanned' => $result['scanned'],
-            'bounces' => $result['bounce_messages'],
-            'emails' => $result['emails_found'],
-            'removed' => $result['removed'],
-            'blocked' => $result['blocked'],
+            'scanned' => $result['scanned'] ?? 0,
+            'bounces' => $result['bounce_messages'] ?? 0,
+            'emails' => $result['emails_found'] ?? 0,
+            'removed' => $result['removed'] ?? 0,
+            'blocked' => $result['blocked'] ?? 0,
         ]);
+    }
+
+    private function consumeBounceScanCache(): void
+    {
+        $scan = ProcessPromoMailboxBouncesJob::status();
+        if ($scan === null) {
+            return;
+        }
+
+        $status = (string) ($scan['status'] ?? '');
+        if (in_array($status, ['queued', 'running'], true)) {
+            $this->bounceScanQueued = true;
+
+            return;
+        }
+
+        if ($status === 'done' && isset($scan['result']) && is_array($scan['result'])) {
+            $this->flashFromBounceResult($scan['result']);
+            $this->bounceScanQueued = false;
+            ProcessPromoMailboxBouncesJob::forgetStatus();
+
+            return;
+        }
+
+        if ($status === 'failed') {
+            $this->flashType = 'error';
+            $message = trim((string) ($scan['error'] ?? ''));
+            $this->flashMessage = $message !== ''
+                ? __('platform.promo_campaigns.bounces_failed', ['error' => $message])
+                : __('platform.promo_campaigns.bounces_failed_generic');
+            $this->bounceScanQueued = false;
+            ProcessPromoMailboxBouncesJob::forgetStatus();
+        }
     }
 
     public function openPauseAllConfirm(): void
@@ -259,6 +321,8 @@ class PromoCampaigns extends Component
 
     public function render(SummarizePromoCampaignsDeliveryAction $summarize)
     {
+        $this->consumeBounceScanCache();
+
         $campaigns = PromoCampaign::query()->latest('id')->get();
 
         return view('livewire.platform.promo-campaigns', [

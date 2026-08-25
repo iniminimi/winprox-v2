@@ -15,6 +15,7 @@ use App\Enums\EmailUnsubscribeSource;
 use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Enums\PromoEmailPreflightReason;
 use App\Enums\PromoVisitPage;
+use App\Jobs\ProcessPromoMailboxBouncesJob;
 use App\Jobs\SendPromoCampaignEmailJob;
 use App\Livewire\Platform\PromoCampaignEdit;
 use App\Livewire\Platform\PromoCampaigns;
@@ -1701,6 +1702,22 @@ it('toont fout wanneer bounce-scan mislukt vanaf promo-campagnes pagina', functi
         ->assertSet('flashMessage', __('platform.promo_campaigns.bounces_failed', [
             'error' => 'Promo IMAP is not configured (imap.promo).',
         ]));
+});
+
+it('zet bounce-scan in de wachtrij wanneer de queue niet sync is', function () {
+    config(['queue.default' => 'database']);
+    Queue::fake();
+
+    $superuser = User::factory()->superuser()->create();
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->call('processPromoBounces')
+        ->assertSet('bounceScanQueued', true)
+        ->assertSet('flashType', 'success')
+        ->assertSet('flashMessage', __('platform.promo_campaigns.bounces_queued'));
+
+    Queue::assertPushed(ProcessPromoMailboxBouncesJob::class);
 });
 
 it('toont klikstatistieken op campagnepagina', function () {
