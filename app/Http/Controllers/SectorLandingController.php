@@ -8,37 +8,24 @@ use App\Actions\Marketing\RecordPromoVisitAction;
 use App\Enums\PromoLanding;
 use App\Support\Marketing\JsonLd;
 use App\Support\Marketing\PromoLandingRequest;
-use App\Support\Marketing\PromoRecipientToken;
 use App\Support\Marketing\SectorLandingVideo;
 use App\Support\Marketing\SectorLandingVisuals;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class SectorLandingController extends Controller
 {
-    public function show(Request $request, RecordPromoVisitAction $recordVisit): View|RedirectResponse
+    /**
+     * Sector-landings volgen het locale-prefix. Campagnetaal via ?ref= hoort
+     * bij /promo (anders kan de taalwisselaar niet weg van de mail-taal).
+     */
+    public function show(Request $request, RecordPromoVisitAction $recordVisit): View
     {
         $landing = PromoLanding::tryFrom((string) $request->route()?->getName());
         abort_unless($landing instanceof PromoLanding, 404);
 
-        $refFromQuery = PromoRecipientToken::normalize((string) $request->query('ref', ''));
         $recipient = PromoLandingRequest::recipient($request);
-
-        $desiredLocale = PromoLandingRequest::desiredLocale($request, $recipient, $refFromQuery !== '');
-        $routeLocale = (string) $request->route('locale');
-
-        if ($desiredLocale !== null && $desiredLocale !== $routeLocale) {
-            $query = $request->query();
-            unset($query['lang']);
-
-            return redirect()->route($landing->routeName(), array_merge($query, ['locale' => $desiredLocale]));
-        }
-
-        if ($desiredLocale !== null) {
-            PromoLandingRequest::persistLocale($request, $desiredLocale);
-        }
 
         if (PromoLandingRequest::shouldLogVisit($request)) {
             $recordVisit->handle(

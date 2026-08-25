@@ -26,6 +26,10 @@ final class PromoLandingRequest
         return $recipient;
     }
 
+    /**
+     * Campagnetaal voor de /promo-ingang. Sector-landings volgen het locale-prefix
+     * in het pad, anders kan een taalwissel met ?ref= niet.
+     */
     public static function desiredLocale(Request $request, ?PromoRecipient $recipient, bool $fromRefQuery): ?string
     {
         $supported = config('locales.supported', []);

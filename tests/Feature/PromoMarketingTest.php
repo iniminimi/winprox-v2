@@ -134,6 +134,48 @@ it('logt landing-bezoeken per bestemmeling via ref', function () {
     expect(PromoVisit::query()->whereNull('promo_recipient_id')->count())->toBe(0);
 });
 
+it('laat taalwissel toe op hospitality-landing met ref', function () {
+    $superuser = User::factory()->superuser()->create();
+    $recipient = PromoRecipient::query()->create([
+        'token' => 'prm_44922b8f757364bb',
+        'label' => 'Hotel Locale',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+    $campaign = app(\App\Actions\Marketing\CreatePromoCampaignAction::class)->handle(
+        slug: 'hospitality-es-locale',
+        name: 'Hospitality ES',
+        locale: 'es',
+        actorUserId: (int) $superuser->id,
+        landing: PromoLanding::Hospitality,
+    );
+    $import = \App\Models\PromoCampaignImport::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'original_filename' => 'one.xlsx',
+        'row_count' => 1,
+        'imported_by' => $superuser->id,
+        'imported_at' => now(),
+    ]);
+    \App\Models\PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_import_id' => $import->id,
+        'promo_recipient_id' => $recipient->id,
+        'name' => 'Hotel Locale',
+        'email' => 'hotel-locale@example.test',
+        'generated_at' => now(),
+    ]);
+
+    $this->get(route('hospitality', ['locale' => 'es', 'ref' => $recipient->token]))
+        ->assertOk()
+        ->assertSee(__('landings.hospitality.title', [], 'es'), false)
+        ->assertSee('href="'.route('hospitality', ['locale' => 'nl', 'ref' => $recipient->token]).'"', false);
+
+    $this->get(route('hospitality', ['locale' => 'nl', 'ref' => $recipient->token]))
+        ->assertOk()
+        ->assertSee(__('landings.hospitality.title', [], 'nl'), false)
+        ->assertDontSee(__('landings.hospitality.title', [], 'es'), false);
+});
+
 it('onthoudt ref in sessie na taalwissel op landing', function () {
     $superuser = User::factory()->superuser()->create();
     $recipient = PromoRecipient::query()->create([
