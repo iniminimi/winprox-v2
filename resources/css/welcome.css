@@ -648,16 +648,22 @@
     padding-bottom: 2.5rem;
 }
 
+[data-theme='standard'] .wp-welcome-hero--split .wp-welcome-badge--hero-top {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 1.75rem;
+}
+
 [data-theme='standard'] .wp-welcome-hero-split {
     display: grid;
     gap: 2rem;
-    align-items: start;
+    align-items: center;
 }
 
 @media (min-width: 64rem) {
     [data-theme='standard'] .wp-welcome-hero-split {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 3rem;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 2.75rem;
     }
 }
 
@@ -669,11 +675,6 @@
     width: 100%;
     min-width: 0;
     text-align: left;
-}
-
-[data-theme='standard'] .wp-welcome-hero--split .wp-welcome-badge {
-    align-self: flex-start;
-    margin: 0;
 }
 
 [data-theme='standard'] .wp-welcome-hero--split .wp-welcome-h1,
@@ -703,18 +704,46 @@
     color: var(--wp-text);
 }
 
-[data-theme='standard'] .wp-welcome-hero--split .wp-welcome-hero-note {
-    margin: 0;
-    text-align: left;
-}
-
-[data-theme='standard'] .wp-welcome-hero--split .wp-landing-visual {
+[data-theme='standard'] .wp-welcome-hero-photo {
     margin: 0;
     width: 100%;
+    max-width: 28rem;
+    justify-self: center;
+}
+
+@media (min-width: 64rem) {
+    [data-theme='standard'] .wp-welcome-hero-photo {
+        max-width: 32rem;
+        justify-self: end;
+    }
+}
+
+[data-theme='standard'] .wp-welcome-hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+[data-theme='standard'] .wp-welcome-hero--split .wp-welcome-hero-actions .wp-welcome-cta-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    margin: 0;
+}
+
+[data-theme='standard'] .wp-welcome-hero--split .wp-welcome-hero-actions .wp-welcome-hero-note {
+    margin: 0;
+    text-align: center;
 }
 
 [data-theme='standard'] .wp-welcome-hero-qr-video--below-split {
-    margin-top: 2rem;
+    margin: 2rem auto 0;
     max-width: 28rem;
 }
 
@@ -877,24 +906,6 @@
     }
 }
 
-[data-theme='standard'] .wp-welcome-hero--split .wp-welcome-cta-row,
-[data-theme='standard'] .wp-welcome-hero--split .wp-welcome-cta-row--start {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.75rem 1rem;
-    margin: 0.35rem 0 0;
-}
-
-@media (min-width: 40rem) {
-    [data-theme='standard'] .wp-welcome-hero--split .wp-welcome-cta-row,
-    [data-theme='standard'] .wp-welcome-hero--split .wp-welcome-cta-row--start {
-        justify-content: flex-start;
-    }
-}
-
 /* Split hero: win over later centered hero-copy defaults */
 [data-theme='standard'] .wp-welcome-hero--split .wp-welcome-h1,
 [data-theme='standard'] .wp-welcome-hero--split .wp-welcome-h1--hero {
@@ -909,6 +920,17 @@
     margin: 0;
     max-width: none;
     text-align: left;
+}
+
+[data-theme='standard'] .wp-welcome-hero--split .wp-welcome-hero-actions .wp-welcome-cta-row {
+    justify-content: center;
+    margin: 0;
+}
+
+@media (min-width: 40rem) {
+    [data-theme='standard'] .wp-welcome-hero--split .wp-welcome-hero-actions .wp-welcome-cta-row {
+        justify-content: center;
+    }
 }
 
 [data-theme='standard'] .wp-welcome-flow-grid {

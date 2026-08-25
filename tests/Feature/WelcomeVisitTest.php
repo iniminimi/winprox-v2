@@ -82,6 +82,8 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->assertSee(route('realestate', absolute: false), false)
         ->assertSee('images/landing/general/welcome_01.jpg', false)
         ->assertSee('wp-welcome-hero--split', false)
+        ->assertSee('wp-welcome-badge--hero-top', false)
+        ->assertSee('wp-welcome-hero-actions', false)
         ->assertSee(__('welcome.hero.photo_alt'), false)
         ->assertSee(__('welcome.hero.subtitle'), false)
         ->assertSee('id="iot"', false)

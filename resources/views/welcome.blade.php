@@ -54,81 +54,96 @@
             'wp-welcome-hero--split' => $welcomeHeroPhotoAvailable,
             'wp-welcome-hero--center' => ! $welcomeHeroPhotoAvailable,
         ])>
-            <div @class([
-                'wp-welcome-main',
-                'wp-welcome-hero-split' => $welcomeHeroPhotoAvailable,
-                'wp-welcome-hero-stack' => ! $welcomeHeroPhotoAvailable,
-            ])>
-                <div @class([
-                    'wp-welcome-hero-copy',
-                    'wp-welcome-hero-copy--center' => ! $welcomeHeroPhotoAvailable,
-                ])>
-                    <span class="wp-welcome-badge">{{ __('welcome.hero.badge') }}</span>
-                    <x-wp-text-reveal
-                        as="h1"
-                        class="wp-welcome-h1 wp-welcome-h1--hero"
-                        :lines="__('welcome.hero.title_lines')"
-                        :accent="__('welcome.hero.title_accent')"
-                    />
-                    <p class="wp-welcome-lead wp-welcome-lead--hero">{{ __('welcome.hero.subtitle') }}</p>
-                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.hero.body') }}</p>
-                    <div @class([
-                        'wp-welcome-cta-row',
-                        'wp-welcome-cta-row--start' => $welcomeHeroPhotoAvailable,
-                    ])>
-                        <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
-                        <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_video') }}</a>
+            <div class="wp-welcome-main">
+                @if ($welcomeHeroPhotoAvailable)
+                    <span class="wp-welcome-badge wp-welcome-badge--hero-top">{{ __('welcome.hero.badge') }}</span>
+
+                    <div class="wp-welcome-hero-split">
+                        <div class="wp-welcome-hero-copy">
+                            <x-wp-text-reveal
+                                as="h1"
+                                class="wp-welcome-h1 wp-welcome-h1--hero"
+                                :lines="__('welcome.hero.title_lines')"
+                                :accent="__('welcome.hero.title_accent')"
+                            />
+                            <p class="wp-welcome-lead wp-welcome-lead--hero">{{ __('welcome.hero.subtitle') }}</p>
+                            <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.hero.body') }}</p>
+                        </div>
+                        <figure class="wp-welcome-screenshot wp-welcome-screenshot--desktop wp-landing-visual wp-welcome-hero-photo">
+                            <img
+                                src="{{ asset($welcomeHeroPhotoRel) }}"
+                                alt="{{ __('welcome.hero.photo_alt') }}"
+                                class="wp-welcome-screenshot__img"
+                                fetchpriority="high"
+                                decoding="async"
+                            >
+                        </figure>
                     </div>
-                    <p class="wp-welcome-hero-note">{{ __('welcome.hero.hero_note') }}</p>
-                    @if ($welcomeQrVideoRel && ! $welcomeHeroPhotoAvailable)
-                        <div class="wp-welcome-hero-qr-video">
+
+                    <div class="wp-welcome-hero-actions">
+                        <div class="wp-welcome-cta-row">
+                            <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
+                            <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_video') }}</a>
+                        </div>
+                        <p class="wp-welcome-hero-note">{{ __('welcome.hero.hero_note') }}</p>
+                    </div>
+
+                    @if ($welcomeQrVideoRel)
+                        <div class="wp-welcome-hero-qr-video wp-welcome-hero-qr-video--below-split">
                             @include('partials.wp-video-player', [
                                 'src' => asset($welcomeQrVideoRel),
                                 'title' => __('welcome.hero.qr_video_title'),
                             ])
                         </div>
                     @endif
-                </div>
-                @if ($welcomeHeroPhotoAvailable)
-                    <figure class="wp-welcome-screenshot wp-welcome-screenshot--desktop wp-landing-visual">
-                        <img
-                            src="{{ asset($welcomeHeroPhotoRel) }}"
-                            alt="{{ __('welcome.hero.photo_alt') }}"
-                            class="wp-welcome-screenshot__img"
-                            fetchpriority="high"
-                            decoding="async"
-                        >
-                    </figure>
                 @else
-                    <div class="wp-welcome-hero-visual wp-welcome-hero-visual--below">
-                        @if ($welcomeDesktopScreenshotAvailable)
-                            <figure class="wp-welcome-screenshot wp-welcome-screenshot--hero wp-welcome-screenshot--desktop">
-                                <img
-                                    src="{{ asset($welcomeDesktopScreenshotRel) }}"
-                                    alt="{{ __('welcome.hero.desktop_screenshot_alt') }}"
-                                    class="wp-welcome-screenshot__img"
-                                    width="1180"
-                                    height="925"
-                                    loading="eager"
-                                    decoding="async"
-                                >
-                            </figure>
-                        @else
-                            <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--desktop" role="img" aria-label="{{ __('welcome.hero.desktop_screenshot_alt') }}">
-                                <p>{{ __('welcome.hero.desktop_screenshot_alt') }}</p>
+                    <div class="wp-welcome-hero-stack">
+                        <div class="wp-welcome-hero-copy wp-welcome-hero-copy--center">
+                            <span class="wp-welcome-badge">{{ __('welcome.hero.badge') }}</span>
+                            <x-wp-text-reveal
+                                as="h1"
+                                class="wp-welcome-h1 wp-welcome-h1--hero"
+                                :lines="__('welcome.hero.title_lines')"
+                                :accent="__('welcome.hero.title_accent')"
+                            />
+                            <p class="wp-welcome-lead wp-welcome-lead--hero">{{ __('welcome.hero.subtitle') }}</p>
+                            <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.hero.body') }}</p>
+                            <div class="wp-welcome-cta-row">
+                                <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
+                                <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_video') }}</a>
                             </div>
-                        @endif
+                            <p class="wp-welcome-hero-note">{{ __('welcome.hero.hero_note') }}</p>
+                            @if ($welcomeQrVideoRel)
+                                <div class="wp-welcome-hero-qr-video">
+                                    @include('partials.wp-video-player', [
+                                        'src' => asset($welcomeQrVideoRel),
+                                        'title' => __('welcome.hero.qr_video_title'),
+                                    ])
+                                </div>
+                            @endif
+                        </div>
+                        <div class="wp-welcome-hero-visual wp-welcome-hero-visual--below">
+                            @if ($welcomeDesktopScreenshotAvailable)
+                                <figure class="wp-welcome-screenshot wp-welcome-screenshot--hero wp-welcome-screenshot--desktop">
+                                    <img
+                                        src="{{ asset($welcomeDesktopScreenshotRel) }}"
+                                        alt="{{ __('welcome.hero.desktop_screenshot_alt') }}"
+                                        class="wp-welcome-screenshot__img"
+                                        width="1180"
+                                        height="925"
+                                        loading="eager"
+                                        decoding="async"
+                                    >
+                                </figure>
+                            @else
+                                <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--desktop" role="img" aria-label="{{ __('welcome.hero.desktop_screenshot_alt') }}">
+                                    <p>{{ __('welcome.hero.desktop_screenshot_alt') }}</p>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 @endif
             </div>
-            @if ($welcomeQrVideoRel && $welcomeHeroPhotoAvailable)
-                <div class="wp-welcome-main wp-welcome-hero-qr-video wp-welcome-hero-qr-video--below-split">
-                    @include('partials.wp-video-player', [
-                        'src' => asset($welcomeQrVideoRel),
-                        'title' => __('welcome.hero.qr_video_title'),
-                    ])
-                </div>
-            @endif
         </header>
     </div>
 
