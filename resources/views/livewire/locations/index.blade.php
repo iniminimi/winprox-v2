@@ -40,11 +40,11 @@
             <div class="wp-card wp-card-pad wp-stack">
                 <div class="wp-list wp-list--entity-rows">
                     @foreach ($categories as $category)
-                        <div class="wp-issue-row" wire:key="category-{{ $category->id }}">
-                            <div class="wp-grow wp-stack-tight">
-                                <p class="wp-issue-card-title">{{ $category->localizedName() }}</p>
+                        <div class="wp-data-row" wire:key="category-{{ $category->id }}">
+                            <div class="wp-data-row-main">
+                                <span class="wp-data-row-title">{{ $category->localizedName() }}</span>
                             </div>
-                            <div class="wp-cluster">
+                            <div class="wp-cluster wp-cluster--tight">
                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.edit') }}</button>
                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteCategory({{ $category->id }})"
                                         wire:confirm="{{ __('locations.categories.confirm_delete') }}">{{ __('common.button.delete') }}</button>
