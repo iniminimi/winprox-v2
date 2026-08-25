@@ -80,7 +80,7 @@
                         <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_video') }}</a>
                     </div>
                     <p class="wp-welcome-hero-note">{{ __('welcome.hero.hero_note') }}</p>
-                    @if ($welcomeQrVideoRel)
+                    @if ($welcomeQrVideoRel && ! $welcomeHeroPhotoAvailable)
                         <div class="wp-welcome-hero-qr-video">
                             @include('partials.wp-video-player', [
                                 'src' => asset($welcomeQrVideoRel),
@@ -121,6 +121,14 @@
                     </div>
                 @endif
             </div>
+            @if ($welcomeQrVideoRel && $welcomeHeroPhotoAvailable)
+                <div class="wp-welcome-main wp-welcome-hero-qr-video wp-welcome-hero-qr-video--below-split">
+                    @include('partials.wp-video-player', [
+                        'src' => asset($welcomeQrVideoRel),
+                        'title' => __('welcome.hero.qr_video_title'),
+                    ])
+                </div>
+            @endif
         </header>
     </div>
 
