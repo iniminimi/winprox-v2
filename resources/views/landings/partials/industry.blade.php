@@ -108,17 +108,25 @@
     <p class="wp-text-body">{{ __("{$key}.start.trial") }}</p>
 </article>
 
-<div @class(['wp-welcome-split wp-landing-split--flip' => filled($visuals['close'] ?? null)])>
-    <article @class([
-        'wp-card wp-card-pad wp-stack',
-        'wp-welcome-section--center' => empty($visuals['close'] ?? null),
-    ])>
+@if (filled($visuals['close'] ?? null))
+    <section class="wp-landing-close wp-landing-close--overlay">
+        <img
+            src="{{ asset($visuals['close']) }}"
+            alt="{{ __("{$key}.visuals.close") }}"
+            class="wp-landing-close__photo"
+            loading="lazy"
+            decoding="async"
+        >
+        <div class="wp-landing-close__copy">
+            <h2 class="wp-welcome-h3">{{ __("{$key}.close.title") }}</h2>
+            <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.close.lead") }}</p>
+            <p class="wp-text-body">{{ __("{$key}.flow") }}</p>
+        </div>
+    </section>
+@else
+    <article class="wp-card wp-card-pad wp-stack wp-welcome-section--center">
         <h2 class="wp-welcome-h3">{{ __("{$key}.close.title") }}</h2>
         <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.close.lead") }}</p>
         <p class="wp-text-body">{{ __("{$key}.flow") }}</p>
     </article>
-    @include('landings.partials.visual', [
-        'src' => $visuals['close'] ?? null,
-        'alt' => filled($visuals['close'] ?? null) ? __("{$key}.visuals.close") : '',
-    ])
-</div>
+@endif

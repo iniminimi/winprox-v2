@@ -16,24 +16,12 @@
     <div class="wp-welcome-section wp-welcome-section--alt wp-welcome-faq-page">
         <div class="wp-welcome-main wp-welcome-section-inner--wide wp-stack">
             <div @class([
-                'wp-landing-hero wp-landing-hero--overlay' => filled($heroVisual),
+                'wp-landing-hero' => filled($heroVisual),
                 'wp-welcome-section--center wp-welcome-section-inner' => ! filled($heroVisual),
             ])>
-                @if (filled($heroVisual))
-                    <img
-                        src="{{ asset($heroVisual) }}"
-                        alt="{{ __("{$key}.visuals.hero") }}"
-                        class="wp-landing-hero__photo"
-                        fetchpriority="high"
-                        decoding="async"
-                    >
-                @endif
                 <div @class(['wp-landing-hero__copy' => filled($heroVisual)])>
                     @if (! empty($promoRecipientLabel))
-                        <div @class([
-                            'wp-landing-recipient-welcome',
-                            'wp-card wp-card-pad' => ! filled($heroVisual),
-                        ]) role="status">
+                        <div class="wp-card wp-card-pad wp-landing-recipient-welcome" role="status">
                             <p class="wp-landing-recipient-welcome__greeting">{{ __('landings.shared.recipient_welcome') }}</p>
                             <p class="wp-landing-recipient-welcome__name">{{ $promoRecipientLabel }}</p>
                         </div>
@@ -46,12 +34,17 @@
                     @endif
                     <div class="wp-welcome-cta-row">
                         <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('landings.shared.cta_register') }}</a>
-                        <a href="{{ route('login') }}" class="btn btn--ghost btn--lg @if (filled($heroVisual)) wp-welcome-closing-panel__ghost @endif">{{ __('landings.shared.cta_login') }}</a>
+                        <a href="{{ route('login') }}" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_login') }}</a>
                         @if ($videoSrc !== null)
-                            <a href="#landing-video" class="btn btn--ghost btn--lg @if (filled($heroVisual)) wp-welcome-closing-panel__ghost @endif">{{ __('landings.shared.cta_video') }}</a>
+                            <a href="#landing-video" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_video') }}</a>
                         @endif
                     </div>
                 </div>
+                @include('landings.partials.visual', [
+                    'src' => $heroVisual,
+                    'alt' => filled($heroVisual) ? __("{$key}.visuals.hero") : '',
+                    'eager' => true,
+                ])
             </div>
 
             @if ($reserveVideo)

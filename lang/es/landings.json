@@ -568,13 +568,13 @@
             "lead": "Convierta cada vivienda u oficina en un punto de aviso sencillo. Los administradores crean una cuenta; inquilinos y empleados escanean y avisan."
         },
         "visuals": {
-            "hero": "Dos colegas consultan WinProx juntos en una tableta.",
+            "hero": "Empleada con una tableta en una oficina, con vistas a un complejo residencial.",
             "problem": "Gestores revisan una tableta junto a alguien que escanea un código QR in situ.",
             "steps": "Dos personas en una mesa con una tarjeta QR en primer plano.",
             "places": "Complejo de apartamentos moderno al anochecer.",
             "roles": "Gestor revisando avisos en una pantalla.",
             "why": "Portátil con el resumen de solicitudes de WinProx.",
-            "close": "Empleada con una tableta en una oficina, con vistas a un complejo residencial."
+            "close": "Dos colegas consultan WinProx juntos en una tableta."
         }
     }
 }

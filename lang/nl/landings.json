@@ -568,13 +568,13 @@
             "lead": "Maak van elke woning of kantoorruimte een eenvoudig meldpunt. Beheerders maken een account; huurders en medewerkers scannen en melden."
         },
         "visuals": {
-            "hero": "Twee collega's bekijken WinProx samen op een tablet.",
+            "hero": "Medewerker met tablet in een kantoor, met uitzicht op een wooncomplex.",
             "problem": "Beheerders bekijken een tablet naast iemand die een QR-code scant op locatie.",
             "steps": "Twee mensen aan een tafel met een QR-codekaart op de voorgrond.",
             "places": "Modern appartementencomplex bij schemering.",
             "roles": "Beheerder bekijkt meldingen op een computerscherm.",
             "why": "Laptop met het WinProx-overzicht van aanvragen.",
-            "close": "Medewerker met tablet in een kantoor, met uitzicht op een wooncomplex."
+            "close": "Twee collega's bekijken WinProx samen op een tablet."
         }
     }
 }
