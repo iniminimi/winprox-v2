@@ -308,7 +308,8 @@
             "no_recipients": "Sin destinatarios",
             "paused": "Interrumpido"
         },
-        "delivery_stats": ":sent enviados · :remaining pendientes · :failed fallidos · :bounced rebotados · :queued en cola",
+        "delivery_stats": ":sent enviados · :remaining pendientes · :failed fallidos · :bounced rebotados (:bounce_percent%) · :queued en cola",
+        "delivery_bounce_kinds": ":unknown dirección desconocida · :blacklist blacklist · :mailbox_full buzón lleno",
         "delivery_restart_hint": "Abre la campaña y vuelve a poner en cola (sin Reenviar). Solo se enviará el resto.",
         "delivery_sending_hint": "La cola sigue activa. Se actualiza sola; espera.",
         "delivery_paused_hint": "La cola se vació. Reanuda y vuelve a poner en cola para continuar.",

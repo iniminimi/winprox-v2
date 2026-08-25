@@ -28,6 +28,7 @@ use App\Models\PromoCampaignTarget;
 use App\Models\PromoRecipient;
 use App\Models\User;
 use App\Support\Marketing\PromoCampaignHtmlSanitizer;
+use App\Support\Marketing\PromoBounceMessageParser;
 use App\Support\Marketing\PromoCampaignLetterDocxBuilder;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
 use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
@@ -869,7 +870,9 @@ it('toont verzendstatus per promo-campagne in de lijst', function () {
         ->handle(collect([$campaign->fresh()]))[$campaign->id];
 
     expect($summary->bounced)->toBe(1)
-        ->and($summary->remaining)->toBe(1);
+        ->and($summary->remaining)->toBe(1)
+        ->and($summary->bouncePercent)->toBe(50)
+        ->and($summary->bounceBlacklist)->toBe(0);
 
     Livewire::actingAs($superuser)
         ->test(PromoCampaigns::class)
@@ -880,6 +883,7 @@ it('toont verzendstatus per promo-campagne in de lijst', function () {
             'remaining' => 1,
             'failed' => 0,
             'bounced' => 1,
+            'bounce_percent' => 50,
             'queued' => 0,
         ]))
         ->assertSee(__('platform.promo_campaigns.list_created', [
@@ -1382,6 +1386,52 @@ it('zet gebouncete promo-adressen op unsubscribe en markeert ze als onbezorgd in
     expect($preview['queued'])->toBe(0);
 
     Queue::assertNothingPushed();
+});
+
+it('telt blacklist-bounces in de verzendstatus van een promo-campagne', function () {
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'info@loscincoenebros.com');
+
+    PromoCampaignEmailSend::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_target_id' => $target->id,
+        'recipient_email' => 'info@loscincoenebros.com',
+        'status' => MunicipalPromoEmailSendStatus::Sent,
+        'sent_at' => now(),
+        'created_by' => $superuser->id,
+    ]);
+
+    $markBounced = app(\App\Actions\Marketing\MarkPromoCampaignEmailBouncedAction::class);
+    $markBounced->handle('info@loscincoenebros.com', 'Undelivered Mail Returned to Sender');
+
+    $summary = app(\App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction::class)
+        ->handle(collect([$campaign->fresh()]))[$campaign->id];
+
+    expect($summary->bounced)->toBe(1)
+        ->and($summary->bouncePercent)->toBe(100)
+        ->and($summary->bounceBlacklist)->toBe(0);
+
+    $reason = PromoBounceMessageParser::storageReason(
+        "550 Your host in blacklist on this server.\nDiagnostic-Code: smtp; 550 Your host in blacklist on this server.",
+    );
+    $markBounced->handle('info@loscincoenebros.com', $reason);
+
+    $summary = app(\App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction::class)
+        ->handle(collect([$campaign->fresh()]))[$campaign->id];
+
+    expect($summary->bounced)->toBe(1)
+        ->and($summary->bouncePercent)->toBe(100)
+        ->and($summary->bounceBlacklist)->toBe(1)
+        ->and($summary->bounceUnknown)->toBe(0)
+        ->and($summary->bounceMailboxFull)->toBe(0);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->assertSee(__('platform.promo_campaigns.delivery_bounce_kinds', [
+            'unknown' => 0,
+            'blacklist' => 1,
+            'mailbox_full' => 0,
+        ]));
 });
 
 it('blokkeert geen Message-ID als bounce-ontvanger', function () {

@@ -20,6 +20,27 @@
         <p class="wp-muted wp-text-sm">
             {{ __('platform.promo_campaigns.stats', $stats) }}
         </p>
+        @if ($delivery)
+            <p class="wp-muted wp-text-sm">
+                {{ __('platform.promo_campaigns.delivery_stats', [
+                    'sent' => $delivery->sent,
+                    'remaining' => $delivery->remaining,
+                    'failed' => $delivery->failed,
+                    'bounced' => $delivery->bounced,
+                    'bounce_percent' => $delivery->bouncePercent,
+                    'queued' => $delivery->queuedJobs,
+                ]) }}
+            </p>
+            @if ($delivery->bounced > 0)
+                <p class="wp-muted wp-text-sm">
+                    {{ __('platform.promo_campaigns.delivery_bounce_kinds', [
+                        'unknown' => $delivery->bounceUnknown,
+                        'blacklist' => $delivery->bounceBlacklist,
+                        'mailbox_full' => $delivery->bounceMailboxFull,
+                    ]) }}
+                </p>
+            @endif
+        @endif
     </div>
 
     <div class="wp-card wp-card-pad wp-stack-tight">

@@ -6,6 +6,7 @@ namespace App\Actions\Marketing;
 
 use App\Data\Marketing\PromoCampaignDeliverySummaryData;
 use App\Enums\MunicipalPromoEmailSendStatus;
+use App\Enums\PromoBounceKind;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
@@ -50,6 +51,8 @@ class SummarizePromoCampaignsDeliveryAction
             ->groupBy('promo_campaign_id')
             ->pluck('aggregate', 'promo_campaign_id');
 
+        $bounceKindTotals = $this->countBounceKindsByCampaign($ids);
+
         $sendRows = PromoCampaignEmailSend::query()
             ->whereIn('promo_campaign_id', $ids)
             ->selectRaw('promo_campaign_id, status, COUNT(*) as aggregate')
@@ -90,8 +93,14 @@ class SummarizePromoCampaignsDeliveryAction
             $targets = (int) ($targetTotals[$campaignId] ?? 0);
             $withEmail = (int) ($withEmailTotals[$campaignId] ?? 0);
             $bounced = (int) ($bouncedTotals[$campaignId] ?? 0);
+            $kinds = $bounceKindTotals[$campaignId] ?? [
+                PromoBounceKind::Unknown->value => 0,
+                PromoBounceKind::Blacklist->value => 0,
+                PromoBounceKind::MailboxFull->value => 0,
+            ];
 
             $sentAt = $sentAtRows->get($campaignId);
+            $attempted = $sent + $bounced;
 
             $summaries[$campaignId] = new PromoCampaignDeliverySummaryData(
                 targets: $targets,
@@ -100,6 +109,10 @@ class SummarizePromoCampaignsDeliveryAction
                 failed: $failed,
                 skipped: $skipped,
                 bounced: $bounced,
+                bouncePercent: $attempted > 0 ? (int) round(100 * $bounced / $attempted) : 0,
+                bounceUnknown: (int) ($kinds[PromoBounceKind::Unknown->value] ?? 0),
+                bounceBlacklist: (int) ($kinds[PromoBounceKind::Blacklist->value] ?? 0),
+                bounceMailboxFull: (int) ($kinds[PromoBounceKind::MailboxFull->value] ?? 0),
                 remaining: $remaining,
                 queuedJobs: $queuedJobs,
                 status: $this->resolveStatus(
@@ -145,6 +158,44 @@ class SummarizePromoCampaignsDeliveryAction
         });
 
         return $query->count();
+    }
+
+    /**
+     * @param  list<int>  $campaignIds
+     * @return array<int, array<string, int>>
+     */
+    private function countBounceKindsByCampaign(array $campaignIds): array
+    {
+        $empty = [
+            PromoBounceKind::Unknown->value => 0,
+            PromoBounceKind::Blacklist->value => 0,
+            PromoBounceKind::MailboxFull->value => 0,
+        ];
+        $counts = [];
+        foreach ($campaignIds as $id) {
+            $counts[$id] = $empty;
+        }
+
+        $rows = PromoCampaignEmailSend::query()
+            ->whereIn('promo_campaign_id', $campaignIds)
+            ->where('status', MunicipalPromoEmailSendStatus::Bounced)
+            ->get(['promo_campaign_id', 'error_message']);
+
+        foreach ($rows as $row) {
+            $kind = PromoBounceKind::fromStoredReason($row->error_message);
+            if ($kind === PromoBounceKind::Other) {
+                continue;
+            }
+
+            $campaignId = (int) $row->promo_campaign_id;
+            if (! isset($counts[$campaignId])) {
+                $counts[$campaignId] = $empty;
+            }
+
+            $counts[$campaignId][$kind->value]++;
+        }
+
+        return $counts;
     }
 
     /**

@@ -9,6 +9,7 @@ use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
 use App\Actions\Marketing\ResumePromoCampaignSendingAction;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
+use App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction;
 use App\Actions\Marketing\SummarizePromoCampaignVisitStatsAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
@@ -436,12 +437,16 @@ class PromoCampaignEdit extends Component
             'bounced' => $this->campaign->targets()->where('undelivered', true)->count(),
         ];
 
+        $delivery = app(SummarizePromoCampaignsDeliveryAction::class)
+            ->handle(collect([$this->campaign]))[$this->campaign->id] ?? null;
+
         $visitStats = app(SummarizePromoCampaignVisitStatsAction::class)->handle($this->campaign);
 
         return view('livewire.platform.promo-campaign-edit', [
             'flowImages' => $flowImages,
             'targets' => $targets,
             'stats' => $stats,
+            'delivery' => $delivery,
             'visitStats' => $visitStats,
             'latestImport' => $this->campaign->imports()->latest('id')->first(),
         ]);

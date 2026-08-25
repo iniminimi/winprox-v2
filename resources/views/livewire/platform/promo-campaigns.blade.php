@@ -141,9 +141,19 @@
                                             'remaining' => $summary->remaining,
                                             'failed' => $summary->failed,
                                             'bounced' => $summary->bounced,
+                                            'bounce_percent' => $summary->bouncePercent,
                                             'queued' => $summary->queuedJobs,
                                         ]) }}
                                     </p>
+                                    @if ($summary->bounced > 0)
+                                        <p class="wp-muted wp-text-sm">
+                                            {{ __('platform.promo_campaigns.delivery_bounce_kinds', [
+                                                'unknown' => $summary->bounceUnknown,
+                                                'blacklist' => $summary->bounceBlacklist,
+                                                'mailbox_full' => $summary->bounceMailboxFull,
+                                            ]) }}
+                                        </p>
+                                    @endif
                                     @if ($summary->status === 'needs_restart')
                                         <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_restart_hint') }}</p>
                                     @elseif ($summary->status === 'sending')

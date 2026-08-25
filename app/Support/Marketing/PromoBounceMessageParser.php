@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support\Marketing;
 
+use App\Enums\PromoBounceKind;
 use App\Models\EmailUnsubscribe;
 
 /**
@@ -103,6 +104,96 @@ final class PromoBounceMessageParser
         }
 
         return false;
+    }
+
+    public static function classify(string $haystack): PromoBounceKind
+    {
+        $text = mb_strtolower($haystack);
+
+        if (self::matchesAny($text, [
+            'mailbox full',
+            'mailbox is full',
+            'over quota',
+            'quota exceeded',
+            'user is overquota',
+            'user is over quota',
+            'insufficient system storage',
+            'status: 5.2.2',
+            '5.2.2',
+        ])) {
+            return PromoBounceKind::MailboxFull;
+        }
+
+        if (self::matchesAny($text, [
+            'host in blacklist',
+            'listed in blacklist',
+            'blacklisted',
+            'blocked using',
+            'spamhaus',
+            'barracuda',
+            'dnsbl',
+            ' listed by ',
+            'blocked by',
+            'client host rejected',
+        ]) || (str_contains($text, 'blacklist') && str_contains($text, 'host'))) {
+            return PromoBounceKind::Blacklist;
+        }
+
+        if (self::matchesAny($text, [
+            'user unknown',
+            'unknown user',
+            'no such user',
+            'user not found',
+            'mailbox not found',
+            'unknown mailbox',
+            'no mailbox',
+            'does not exist',
+            'invalid recipient',
+            'recipient rejected',
+            'recipient address rejected',
+            'status: 5.1.1',
+            '5.1.1',
+            '550 5.1.1',
+        ])) {
+            return PromoBounceKind::Unknown;
+        }
+
+        return PromoBounceKind::Other;
+    }
+
+    public static function storageReason(string $haystack): string
+    {
+        $kind = self::classify($haystack);
+        $snippet = self::diagnosticSnippet($haystack);
+
+        return trim($kind->storagePrefix().' '.($snippet !== '' ? $snippet : $kind->value));
+    }
+
+    /**
+     * @param  list<string>  $needles
+     */
+    private static function matchesAny(string $haystack, array $needles): bool
+    {
+        foreach ($needles as $needle) {
+            if (str_contains($haystack, $needle)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static function diagnosticSnippet(string $haystack): string
+    {
+        if (preg_match('/^Diagnostic-Code:\s*(.+)$/mi', $haystack, $matches) === 1) {
+            return mb_substr(trim((string) $matches[1]), 0, 400);
+        }
+
+        if (preg_match('/550[^\r\n]{0,200}/i', $haystack, $matches) === 1) {
+            return mb_substr(trim((string) $matches[0]), 0, 400);
+        }
+
+        return '';
     }
 
     /**

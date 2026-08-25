@@ -295,7 +295,7 @@ class ProcessPromoMailboxBouncesAction
                 continue;
             }
 
-            $result = $this->markBounced->handle($email, 'Undelivered Mail Returned to Sender');
+            $result = $this->markBounced->handle($email, PromoBounceMessageParser::storageReason($body));
             $removed += $result['removed'];
             if ($result['blocked']) {
                 $blocked++;

@@ -93,6 +93,30 @@ TXT;
     ))->toBe(['kapot@klant.nl']);
 });
 
+it('classificeert blacklist-, onbekend-adres- en mailbox-vol-bounces', function () {
+    $blacklist = <<<'TXT'
+<info@hotel.com>: host mail.hotel.com said:
+    550 Your host in blacklist on this server.
+Diagnostic-Code: smtp; 550 Your host in blacklist on this server.
+TXT;
+
+    $unknown = <<<'TXT'
+Final-Recipient: rfc822; weg@bedrijf.be
+Action: failed
+Status: 5.1.1
+Diagnostic-Code: smtp; 550 5.1.1 User unknown
+TXT;
+
+    $full = <<<'TXT'
+Diagnostic-Code: smtp; 552 5.2.2 Mailbox full
+TXT;
+
+    expect(PromoBounceMessageParser::classify($blacklist))->toBe(\App\Enums\PromoBounceKind::Blacklist)
+        ->and(PromoBounceMessageParser::storageReason($blacklist))->toStartWith('[blacklist]')
+        ->and(PromoBounceMessageParser::classify($unknown))->toBe(\App\Enums\PromoBounceKind::Unknown)
+        ->and(PromoBounceMessageParser::classify($full))->toBe(\App\Enums\PromoBounceKind::MailboxFull);
+});
+
 it('keurt plausibele ontvangers goed en Message-IDs af', function () {
     expect(PromoBounceMessageParser::isPlausibleRecipientEmail('lammering@trefoil.nl'))->toBeTrue()
         ->and(PromoBounceMessageParser::isPlausibleRecipientEmail(
