@@ -262,7 +262,8 @@ it('holds a QR report until the reporter confirms email when both flags are on',
 
         return $mail->hasTo('ada@example.com')
             && str_contains($html, 'Lekkage in de keuken.')
-            && str_contains($html, 'ada@example.com');
+            && str_contains($html, 'ada@example.com')
+            && ! str_contains($html, '/storage/');
     });
 
     $hold = QrReportEmailHold::query()->first();

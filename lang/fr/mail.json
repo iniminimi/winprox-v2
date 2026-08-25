@@ -47,7 +47,6 @@
         "field_photos": "Photos",
         "photos_count": ":count photo|:count photos",
         "photos_none": "Aucune photo",
-        "photo_alt": "Photo :n du signalement",
         "cta": "Confirmer le signalement",
         "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :",
         "expiry": "Ce lien est valable :minutes minutes.",

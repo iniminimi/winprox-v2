@@ -47,7 +47,6 @@
         "field_photos": "Foto's",
         "photos_count": ":count foto|:count foto's",
         "photos_none": "Geen foto's",
-        "photo_alt": "Foto :n van de melding",
         "cta": "Melding bevestigen",
         "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",
         "expiry": "Deze link is :minutes minuten geldig.",

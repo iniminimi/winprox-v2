@@ -47,7 +47,6 @@
         "field_photos": "Photos",
         "photos_count": ":count photo|:count photos",
         "photos_none": "No photos",
-        "photo_alt": "Photo :n of the report",
         "cta": "Confirm report",
         "link_fallback": "If the button does not work, copy this link:",
         "expiry": "This link is valid for :minutes minutes.",

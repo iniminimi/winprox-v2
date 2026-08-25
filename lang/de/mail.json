@@ -47,7 +47,6 @@
         "field_photos": "Fotos",
         "photos_count": ":count Foto|:count Fotos",
         "photos_none": "Keine Fotos",
-        "photo_alt": "Foto :n der Meldung",
         "cta": "Meldung bestätigen",
         "link_fallback": "Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link:",
         "expiry": "Dieser Link ist :minutes Minuten gültig.",

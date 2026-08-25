@@ -41,11 +41,7 @@ class VerifyQrReportEmailMail extends Mailable
         $location = $unit?->location;
         $unitName = (string) ($unit?->name ?? '');
         $locationName = (string) ($location?->name ?? '');
-        $photoPaths = $this->hold->storedPhotoPaths();
-        $photoUrls = [];
-        foreach ($photoPaths as $path) {
-            $photoUrls[] = URL::asset('storage/'.$path);
-        }
+        $photoCount = count($this->hold->storedPhotoPaths());
 
         $submittedAt = $this->hold->created_at
             ? $this->hold->created_at->timezone((string) config('app.timezone'))->format('d/m/Y H:i')
@@ -67,8 +63,7 @@ class VerifyQrReportEmailMail extends Mailable
                     'reporterEmail' => (string) ($this->hold->reporter_contact ?? ''),
                     'description' => (string) ($this->hold->description ?? ''),
                     'submittedAt' => $submittedAt,
-                    'photoCount' => count($photoPaths),
-                    'photoUrls' => $photoUrls,
+                    'photoCount' => $photoCount,
                 ])->render(),
             ],
         );

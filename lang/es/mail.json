@@ -47,7 +47,6 @@
         "field_photos": "Fotos",
         "photos_count": ":count foto|:count fotos",
         "photos_none": "Sin fotos",
-        "photo_alt": "Foto :n del informe",
         "cta": "Confirmar informe",
         "link_fallback": "Si el botón no funciona, copia este enlace:",
         "expiry": "Este enlace es válido :minutes minutos.",

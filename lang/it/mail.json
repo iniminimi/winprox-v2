@@ -47,7 +47,6 @@
         "field_photos": "Foto",
         "photos_count": ":count foto|:count foto",
         "photos_none": "Nessuna foto",
-        "photo_alt": "Foto :n della segnalazione",
         "cta": "Conferma segnalazione",
         "link_fallback": "Se il pulsante non funziona, copia questo link:",
         "expiry": "Questo link è valido :minutes minuti.",
