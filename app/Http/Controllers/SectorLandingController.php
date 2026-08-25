@@ -52,12 +52,16 @@ class SectorLandingController extends Controller
         $locale = LocaleSupport::normalize(app()->getLocale());
         $videoRelative = SectorLandingVideo::relativePath($landing, $locale);
         $key = 'landings.'.$landing->value;
+        $visualBundle = SectorLandingVisuals::bundle($landing);
 
         return view('landings.show', [
             'landing' => $landing,
             'slug' => $landing->value,
             'videoSrc' => $videoRelative !== null ? asset($videoRelative) : null,
-            'visuals' => SectorLandingVisuals::for($landing),
+            'visuals' => $visualBundle['paths'],
+            'visualModifiers' => $visualBundle['modifiers'],
+            'visualLayouts' => $visualBundle['layouts'],
+            'closeStyle' => $visualBundle['closeStyle'],
             'relatedLinks' => $this->relatedLinks($landing),
             'promoTrackingToken' => $recipient?->token,
             'promoRecipientLabel' => $recipient?->label,

@@ -73,7 +73,13 @@
                 </article>
             @endif
 
-            @include('landings.partials.industry', ['key' => $key, 'visuals' => $visuals])
+            @include('landings.partials.industry', [
+                'key' => $key,
+                'visuals' => $visuals,
+                'visualModifiers' => $visualModifiers ?? [],
+                'visualLayouts' => $visualLayouts ?? [],
+                'closeStyle' => $closeStyle ?? null,
+            ])
 
             @include('partials.wp-marketing-related', [
                 'links' => $relatedLinks,

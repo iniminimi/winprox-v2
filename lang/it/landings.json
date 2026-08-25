@@ -239,6 +239,15 @@
         "close": {
             "title": "Pronto a provarlo?",
             "lead": "Ogni luogo fisico diventa un punto di segnalazione. I responsabili creano un account; chi è in campo scansiona e segnala."
+        },
+        "visuals": {
+            "hero": "Operatore portuale segnala un guasto via smartphone tra container e un reach stacker.",
+            "problem": "Due operatori portuali consultano un tablet e un disegno sulla banchina.",
+            "steps": "Tecnico segnala un guasto via smartphone su una macchina CNC.",
+            "places": "Vista aerea di un sito industriale con uffici e strutture portuali.",
+            "roles": "Due tecnici controllano insieme una macchina in reparto.",
+            "why": "Collaboratrice segue le segnalazioni su una dashboard con vista sulla fabbrica.",
+            "close": "Tecnico davanti a una linea robotizzata in una fabbrica moderna."
         }
     },
     "healthcare": {

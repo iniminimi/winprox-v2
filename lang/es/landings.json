@@ -239,6 +239,15 @@
         "close": {
             "title": "¿Listo para probarlo?",
             "lead": "Cada lugar físico es un punto de aviso. Los responsables crean una cuenta; el personal escanea y avisa."
+        },
+        "visuals": {
+            "hero": "Trabajador portuario reporta una incidencia con el smartphone entre contenedores y un reach stacker.",
+            "problem": "Dos operarios portuarios consultan una tableta y un plano en el muelle.",
+            "steps": "Técnico reporta una incidencia con el smartphone en una máquina CNC.",
+            "places": "Vista aérea de un recinto industrial con oficinas e instalaciones portuarias.",
+            "roles": "Dos técnicos revisan juntos una máquina en planta.",
+            "why": "Empleada sigue avisos en un panel con vista a la fábrica.",
+            "close": "Técnico frente a una línea robótica en una fábrica moderna."
         }
     },
     "healthcare": {

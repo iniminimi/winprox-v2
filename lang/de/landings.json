@@ -239,6 +239,15 @@
         "close": {
             "title": "Bereit zum Ausprobieren?",
             "lead": "Jeder physische Ort wird ein einfacher Meldepunkt. Verantwortliche legen ein Konto an; Mitarbeitende scannen und melden."
+        },
+        "visuals": {
+            "hero": "Hafenmitarbeiter meldet eine Störung per Smartphone bei Containern und einem Reachstacker.",
+            "problem": "Zwei Hafenarbeiter besprechen ein Tablet und eine Zeichnung am Kai.",
+            "steps": "Techniker meldet eine Störung per Smartphone an einer CNC-Maschine.",
+            "places": "Luftaufnahme eines Industrieareals mit Büro und Hafenanlagen.",
+            "roles": "Zwei Techniker prüfen gemeinsam eine Maschine in der Werkhalle.",
+            "why": "Mitarbeiterin verfolgt Meldungen auf einem Dashboard mit Blick auf die Fabrik.",
+            "close": "Techniker vor einer Roboterlinie in einer modernen Fabrik."
         }
     },
     "healthcare": {

@@ -89,6 +89,10 @@ it('toont de uitgebreide industry-landing met NL-video of placeholder', function
         ->assertSee(__('landings.industry.flow', [], 'nl'))
         ->assertSee(__('landings.industry.problem.title', [], 'nl'))
         ->assertSee(__('landings.industry.start.trial', [], 'nl'))
+        ->assertSee('images/landing/industry/image_01.jpg', false)
+        ->assertSee('images/landing/industry/image_06.jpg', false)
+        ->assertSee('wp-landing-block--wide-photo', false)
+        ->assertSee('wp-landing-close--scrim', false)
         ->assertSee('industry_promo_nl.mp4', false)
         ->assertSee('wp-video--sm', false)
         ->assertDontSee('Bekijk demo', false);

@@ -239,6 +239,15 @@
         "close": {
             "title": "Ready to try it?",
             "lead": "Turn every physical place into a simple reporting point. Managers create an account; workers scan and report."
+        },
+        "visuals": {
+            "hero": "Port worker reports an issue via smartphone among containers and a reach stacker.",
+            "problem": "Two port workers discuss a tablet and drawing on the quay.",
+            "steps": "Technician reports an issue via smartphone at a CNC machine.",
+            "places": "Aerial view of an industrial site with offices and port facilities.",
+            "roles": "Two technicians inspect a machine together on the shop floor.",
+            "why": "Staff member tracks issues on a dashboard overlooking the factory.",
+            "close": "Technician in front of a robotic line in a modern factory."
         }
     },
     "healthcare": {

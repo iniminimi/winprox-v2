@@ -434,6 +434,80 @@
     height: auto;
 }
 
+[data-theme='standard'] .wp-landing-visual--compact {
+    max-width: 18rem;
+    margin-inline: auto;
+}
+
+@media (min-width: 64rem) {
+    [data-theme='standard'] .wp-landing-split--flip .wp-landing-visual--compact {
+        margin-inline: 0 auto;
+    }
+}
+
+[data-theme='standard'] .wp-landing-visual--wide .wp-welcome-screenshot__img {
+    max-height: 16rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (min-width: 48rem) {
+    [data-theme='standard'] .wp-landing-visual--wide .wp-welcome-screenshot__img {
+        max-height: 20rem;
+    }
+}
+
+[data-theme='standard'] .wp-landing-visual--tall .wp-welcome-screenshot__img {
+    min-height: 14rem;
+    object-fit: cover;
+    object-position: center top;
+}
+
+@media (min-width: 64rem) {
+    [data-theme='standard'] .wp-landing-visual--tall .wp-welcome-screenshot__img {
+        min-height: 18rem;
+    }
+}
+
+[data-theme='standard'] .wp-landing-visual--feature .wp-welcome-screenshot__img {
+    box-shadow: var(--wp-shadow-lg);
+}
+
+[data-theme='standard'] .wp-landing-block--wide-photo {
+    display: grid;
+    gap: 1.5rem;
+}
+
+[data-theme='standard'] .wp-welcome-split.wp-landing-split--feature {
+    align-items: start;
+}
+
+@media (min-width: 64rem) {
+    [data-theme='standard'] .wp-welcome-split.wp-landing-split--feature {
+        grid-template-columns: 4fr 8fr;
+    }
+}
+
+[data-theme='standard'] .wp-landing-close--scrim::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--wp-text) 88%, transparent) 0%,
+        color-mix(in srgb, var(--wp-text) 72%, transparent) 34%,
+        transparent 62%
+    );
+}
+
+@media (min-width: 64rem) {
+    [data-theme='standard'] .wp-landing-close--scrim .wp-landing-close__copy {
+        width: 42%;
+    }
+}
+
 [data-theme='standard'] .wp-landing-close--overlay {
     position: relative;
     overflow: hidden;

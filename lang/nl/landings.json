@@ -239,6 +239,15 @@
         "close": {
             "title": "Klaar om het zelf te proberen?",
             "lead": "Maak van elke fysieke locatie een eenvoudig meldpunt. Beheerders maken een account; medewerkers scannen en melden."
+        },
+        "visuals": {
+            "hero": "Havenmedewerker meldt een storing via smartphone bij containers en een reachstacker.",
+            "problem": "Twee havenarbeiders overleggen met tablet en tekening op de kade.",
+            "steps": "Technicus meldt een storing via smartphone aan een CNC-machine.",
+            "places": "Luchtfoto van een industrieel terrein met kantoor en havens.",
+            "roles": "Twee technici bekijken samen een machine op de werkvloer.",
+            "why": "Medewerker volgt meldingen op een dashboard met zicht op de fabriek.",
+            "close": "Technicus voor een robotlijn in een moderne fabriek."
         }
     },
     "healthcare": {

@@ -239,6 +239,15 @@
         "close": {
             "title": "Prêt à essayer ?",
             "lead": "Chaque lieu physique devient un point de signalement. Les responsables créent un compte ; les opérateurs scannent et signalent."
+        },
+        "visuals": {
+            "hero": "Agent portuaire signale une panne via smartphone parmi des conteneurs et un reach stacker.",
+            "problem": "Deux agents portuaires consultent une tablette et un plan sur le quai.",
+            "steps": "Technicien signale une panne via smartphone sur une machine CNC.",
+            "places": "Vue aérienne d'un site industriel avec bureaux et installations portuaires.",
+            "roles": "Deux techniciens inspectent une machine ensemble en atelier.",
+            "why": "Collaboratrice suit les signalements sur un tableau de bord avec vue sur l'usine.",
+            "close": "Technicien devant une ligne robotisée dans une usine moderne."
         }
     },
     "healthcare": {
