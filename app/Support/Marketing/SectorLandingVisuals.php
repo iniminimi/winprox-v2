@@ -207,6 +207,7 @@ final class SectorLandingVisuals
                 'close' => [
                     'src' => 'images/landing/gouvernment/image_05.jpg',
                     'closeStyle' => 'scrim',
+                    'modifier' => 'wp-landing-close__photo--lower',
                 ],
             ],
             default => [],

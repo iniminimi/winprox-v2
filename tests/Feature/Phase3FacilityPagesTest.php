@@ -158,6 +158,7 @@ it('toont de uitgebreide healthcare- en government-landing', function () {
         ->assertSee('images/landing/gouvernment/image_05.jpg', false)
         ->assertSee('wp-landing-block--wide-photo', false)
         ->assertSee('wp-landing-close--scrim', false)
+        ->assertSee('wp-landing-close__photo--lower', false)
         ->assertSee('id="landing-video"', false)
         ->assertSee('issue_nl_01.mp4', false)
         ->assertSee('wp-video--sm', false)

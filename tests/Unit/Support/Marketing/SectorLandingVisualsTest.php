@@ -24,7 +24,9 @@ it('levert government-foto’s wanneer de bestanden bestaan', function () {
         ->toHaveKey('steps')
         ->and(SectorLandingVisuals::layouts(PromoLanding::Government))
         ->toHaveKey('places')
-        ->and(SectorLandingVisuals::closeStyle(PromoLanding::Government))->toBe('scrim');
+        ->and(SectorLandingVisuals::closeStyle(PromoLanding::Government))->toBe('scrim')
+        ->and(SectorLandingVisuals::modifiers(PromoLanding::Government)['close'] ?? null)
+        ->toBe('wp-landing-close__photo--lower');
 });
 
 it('levert healthcare-foto’s wanneer de bestanden bestaan', function () {

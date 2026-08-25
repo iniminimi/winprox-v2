@@ -147,7 +147,10 @@
         <img
             src="{{ asset($visuals['close']) }}"
             alt="{{ __("{$key}.visuals.close") }}"
-            class="wp-landing-close__photo"
+            @class([
+                'wp-landing-close__photo',
+                $visualModifiers['close'] ?? null,
+            ])
             loading="lazy"
             decoding="async"
         >
