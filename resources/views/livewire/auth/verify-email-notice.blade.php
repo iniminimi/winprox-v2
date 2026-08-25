@@ -7,14 +7,18 @@
     @if ($status)
         <div class="wp-pill wp-pill--done">{{ $status }}</div>
     @endif
+    @error('email') <p class="wp-error">{{ $message }}</p> @enderror
 
     <div class="wp-stack">
         <p class="wp-text-body">{{ __('auth.verify.body') }}</p>
         <p class="wp-muted wp-text-sm">{{ __('auth.verify.spam_hint') }}</p>
 
-        <button type="button" class="btn btn--primary btn--block" wire:click="resend" wire:loading.attr="disabled">
-            {{ __('auth.verify.resend') }}
+        <button type="button" class="btn btn--primary btn--block" wire:click="resend" wire:loading.attr="disabled" wire:target="resend">
+            <x-wp-spinner wire:loading wire:target="resend" class="wp-mr-2" />
+            <span wire:loading.remove wire:target="resend">{{ __('auth.verify.resend') }}</span>
+            <span wire:loading wire:target="resend">{{ __('auth.verify.resend_loading') }}</span>
         </button>
+        <p class="wp-muted wp-text-sm" wire:loading.delay.longest wire:target="resend">{{ __('auth.verify.checking_email') }}</p>
 
         <form method="POST" action="{{ route('logout') }}">
             @csrf

@@ -1,9 +1,11 @@
 <?php
 
+use App\Enums\EmailUnsubscribeSource;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\VerifyEmailNotice;
 use App\Mail\VerifyUserEmailMail;
 use App\Models\AuditLog;
+use App\Models\EmailUnsubscribe;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Tenancy;
@@ -37,6 +39,46 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
         VerifyUserEmailMail::class,
         fn (VerifyUserEmailMail $mail) => $mail->hasTo('nieuw@winprox.test'),
     );
+});
+
+it('weigert registratie naar een eerder gebouncet e-mailadres', function () {
+    Mail::fake();
+
+    EmailUnsubscribe::query()->create([
+        'email' => 'bounce@example.com',
+        'source' => EmailUnsubscribeSource::Undeliverable,
+        'unsubscribed_at' => now(),
+    ]);
+
+    Livewire::test(Register::class)
+        ->set(RegisterFormData::valid())
+        ->set('email', 'bounce@example.com')
+        ->call('register')
+        ->assertHasErrors('email');
+
+    expect(User::query()->where('email', 'bounce@example.com')->exists())->toBeFalse()
+        ->and(Tenant::query()->where('email', 'bounce@example.com')->exists())->toBeFalse();
+
+    Mail::assertNotSent(VerifyUserEmailMail::class);
+});
+
+it('weigert een nieuwe verificatiemail naar een uitgeschreven adres', function () {
+    Mail::fake();
+
+    $user = unverifiedTenantAdmin();
+    $user->update(['email' => 'unsub@example.com']);
+
+    EmailUnsubscribe::query()->create([
+        'email' => 'unsub@example.com',
+        'source' => EmailUnsubscribeSource::Voluntary,
+        'unsubscribed_at' => now(),
+    ]);
+
+    Livewire::actingAs($user)->test(VerifyEmailNotice::class)
+        ->call('resend')
+        ->assertHasErrors('email');
+
+    Mail::assertNotSent(VerifyUserEmailMail::class);
 });
 
 it('houdt beheerschermen dicht tot het e-mailadres bevestigd is', function () {

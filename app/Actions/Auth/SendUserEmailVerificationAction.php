@@ -2,11 +2,14 @@
 
 namespace App\Actions\Auth;
 
+use App\Actions\Marketing\AssessPromoCampaignEmailAction;
+use App\Enums\PromoEmailPreflightReason;
 use App\Mail\VerifyUserEmailMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Verstuurt de verificatiemail met een ondertekende, tijdelijke link.
@@ -17,6 +20,35 @@ class SendUserEmailVerificationAction
 
     private const WINDOW_SECONDS = 600;
 
+    public function __construct(
+        private AssessPromoCampaignEmailAction $assessEmail,
+    ) {}
+
+    public function assertRecipientDeliverable(string $email): string
+    {
+        $assessment = $this->assessEmail->handle($email);
+        if (! $assessment->hasEmail) {
+            throw ValidationException::withMessages([
+                'email' => [__('auth.errors.email_required')],
+            ]);
+        }
+
+        if ($assessment->normalizedEmail === null || ! $assessment->accepted) {
+            $undeliverable = in_array($assessment->reason, [
+                PromoEmailPreflightReason::PreviouslyBounced,
+                PromoEmailPreflightReason::Unsubscribed,
+            ], true);
+
+            throw ValidationException::withMessages([
+                'email' => [$undeliverable
+                    ? __('auth.errors.email_undeliverable')
+                    : __('auth.errors.email_invalid')],
+            ]);
+        }
+
+        return $assessment->normalizedEmail;
+    }
+
     /**
      * @return array{sent: bool, retry_after: int}
      */
@@ -25,6 +57,8 @@ class SendUserEmailVerificationAction
         if ($user->hasVerifiedEmail()) {
             return ['sent' => false, 'retry_after' => 0];
         }
+
+        $email = $this->assertRecipientDeliverable((string) $user->email);
 
         $key = 'verify-email:'.$user->id;
 
@@ -46,7 +80,7 @@ class SendUserEmailVerificationAction
             absolute: true,
         );
 
-        Mail::to($user->email)->send(new VerifyUserEmailMail($user, $url, $minutes));
+        Mail::to($email)->send(new VerifyUserEmailMail($user, $url, $minutes));
 
         return ['sent' => true, 'retry_after' => 0];
     }

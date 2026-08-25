@@ -27,6 +27,8 @@ class RegisterTenantAction
      */
     public function handle(array $data): User
     {
+        $data['email'] = $this->sendVerification->assertRecipientDeliverable((string) ($data['email'] ?? ''));
+
         $locale = LocaleSupport::normalize($data['locale'] ?? null);
 
         $countryCode = filled($data['country_code'] ?? null)

@@ -204,7 +204,7 @@
                 "title": "Authentication",
                 "items": [
                     "Back office: email + password (stored hashed), sessions.",
-                    "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. Unverified sign-ups are automatically and completely deleted after 7 days.",
+                    "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable or unsubscribed. Unverified sign-ups are automatically and completely deleted after 7 days.",
                     "**SSO** (un inicio de sesión de empresa vía Microsoft Entra): para administradores y empleados en escritorio (**Iniciar sesión con Microsoft**). Solo cuentas WinProx existentes (el correo debe coincidir con la cuenta Microsoft); correo + contraseña sigue funcionando. No se crean cuentas nuevas automáticamente. Los ejecutores siguen con el QR Clock Point (nombre + icono). La conexión con otro software (Ultimo, IWMS, …) usa tokens de API, no SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",

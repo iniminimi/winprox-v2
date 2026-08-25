@@ -101,7 +101,12 @@
         </label>
         @error('accept_terms') <p class="wp-error">{{ $message }}</p> @enderror
 
-                <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled">{{ __('auth.register.submit') }}</button>
+                <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" wire:target="register">
+                    <x-wp-spinner wire:loading wire:target="register" class="wp-mr-2" />
+                    <span wire:loading.remove wire:target="register">{{ __('auth.register.submit') }}</span>
+                    <span wire:loading wire:target="register">{{ __('auth.register.submit_loading') }}</span>
+                </button>
+                <p class="wp-muted wp-text-sm" wire:loading.delay.longest wire:target="register">{{ __('auth.register.checking_email') }}</p>
                 <a href="{{ route('login') }}" class="btn btn--ghost btn--block">{{ __('auth.register.have_account') }}</a>
             </form>
         </div>

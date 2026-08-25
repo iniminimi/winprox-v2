@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
             'city' => ['nullable', 'string', 'max:255'],
             'country_code' => ['nullable', 'string', 'regex:/^$|^[A-Z]{2}$/', Rule::in(array_merge([''], CountryOptions::codes()))],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'email' => ['required', 'string', 'email:filter', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'confirmed', Password::min(8)],
             'accept_terms' => ['required', 'accepted'],
         ];

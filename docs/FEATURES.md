@@ -757,7 +757,8 @@ Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.
 
 **Nooit gebruikt account** (`unused` track):
 1. Zelfregistratie zonder **e-mailverificatie** blijft geblokkeerd (`EnsureUserEmailIsVerified`);
-   publieke pagina's en QR-portalen blijven wel open.
+   publieke pagina's en QR-portalen blijven wel open. Bevestigingsmail: dezelfde preflight als promo
+   (geldige syntax; geen verzending naar eerder gebouncete of uitgeschreven adressen).
 2. **T+7** (`unverified_registration_days`): `winprox:tenant-purge-maintenance` wist de tenant via
    dezelfde `ExecuteTenantPurgeAction` (snapshot + hard delete), **zonder** mail naar het
    (mogelijk valse) adres.
