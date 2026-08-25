@@ -23,7 +23,7 @@ class VerifyQrReportEmailMail extends Mailable
         }
 
         $this->locale($locale);
-        $this->hold->loadMissing('unit.location');
+        $this->hold->loadMissing(['unit.location', 'tenant']);
         $this->withSymfonyMessage(function (SymfonyEmail $message): void {
             $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
         });
@@ -31,31 +31,30 @@ class VerifyQrReportEmailMail extends Mailable
 
     public function envelope(): Envelope
     {
+        $tenantName = (string) ($this->hold->tenant?->name ?? config('app.name'));
+
         return new Envelope(
-            subject: __('mail.verify_qr_report_email.subject'),
+            subject: __('mail.verify_qr_report_email.subject', ['tenant' => $tenantName]),
         );
     }
 
     public function content(): Content
     {
         $confirmUrl = URL::route('public.qr-report-email-confirm', ['token' => $this->hold->token], true);
-        $expiresInMinutes = max(1, (int) config('portal.qr_report_email_verification.expire_minutes', 60));
         $unit = $this->hold->unit;
         $location = $unit?->location;
-        $unitName = (string) ($unit?->name ?? '');
-        $locationName = (string) ($location?->name ?? '');
+        $locationLine = collect([$location?->name, $unit?->name])->filter()->join(' · ');
+        $tenantName = (string) ($this->hold->tenant?->name ?? config('app.name'));
 
         return new Content(
             html: 'emails.contact.winprox-template',
             with: [
-                'recipientName' => null,
+                'recipientName' => (string) ($this->hold->reporter_name ?? ''),
                 'bodyText' => '',
                 'bodyHtml' => view('emails.public.verify-qr-report-email-body', [
                     'confirmUrl' => $confirmUrl,
-                    'expiresInMinutes' => $expiresInMinutes,
-                    'guestName' => (string) ($this->hold->reporter_name ?? ''),
-                    'unitName' => $unitName,
-                    'locationName' => $locationName,
+                    'tenantName' => $tenantName,
+                    'locationLine' => $locationLine,
                 ])->render(),
             ],
         );

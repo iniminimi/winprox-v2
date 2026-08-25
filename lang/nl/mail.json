@@ -36,10 +36,11 @@
         "footer": "Heb je dit account niet aangemaakt? Dan hoef je niets te doen: zonder bevestiging verwijderen we het automatisch."
     },
     "verify_qr_report_email": {
-        "subject": "Bevestig je WinProx-melding",
-        "greeting": "Hallo :name,",
-        "body": "Je diende een melding in voor :unit (:location). Bevestig binnen :minutes minuten je e-mailadres. Pas daarna wordt de melding aangemaakt.",
-        "cta": "Melding bevestigen"
+        "subject": ":tenant — bevestig je melding",
+        "intro": "Bevestig je e-mailadres voor de melding via het QR-portaal van :tenant. Pas daarna wordt de melding aangemaakt.",
+        "field_location": "Locatie / unit",
+        "cta": "Melding bevestigen",
+        "link_fallback": "Als de knop niet werkt, kopieer dan deze link:"
     },
     "new_tenant": {
         "subject": "WinProx: nieuwe organisatie geregistreerd — :tenant",

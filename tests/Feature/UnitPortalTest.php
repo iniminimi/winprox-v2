@@ -261,9 +261,12 @@ it('holds a QR report until the reporter confirms email when both flags are on',
 
     Mail::assertSent(VerifyQrReportEmailMail::class, function (VerifyQrReportEmailMail $mail) {
         $html = $mail->render();
+        $subject = $mail->envelope()->subject;
 
         return $mail->hasTo('ada@example.com')
-            && $mail->envelope()->subject === __('mail.verify_qr_report_email.subject')
+            && str_contains($subject, '—')
+            && str_contains($html, '/melden/e/')
+            && ! str_contains($html, '/melden/bevestig-email/')
             && ! str_contains($html, 'Lekkage in de keuken.')
             && ! str_contains($html, '/storage/');
     });

@@ -1,7 +1,19 @@
-<div>
-    @if (filled($guestName))
-        <p>{{ __('mail.verify_qr_report_email.greeting', ['name' => $guestName]) }}</p>
-    @endif
-    <p>{{ __('mail.verify_qr_report_email.body', ['unit' => $unitName, 'location' => $locationName, 'minutes' => $expiresInMinutes]) }}</p>
-    <p><a href="{{ $confirmUrl }}">{{ __('mail.verify_qr_report_email.cta') }}</a></p>
-</div>
+<p>{{ __('mail.verify_qr_report_email.intro', ['tenant' => $tenantName]) }}</p>
+
+@if (filled($locationLine))
+    <p>
+        <strong>{{ __('mail.verify_qr_report_email.field_location') }}</strong><br>
+        {{ $locationLine }}
+    </p>
+@endif
+
+<p style="text-align: center; margin-top: 24px;">
+    <a href="{{ $confirmUrl }}" style="display: inline-block; background-color: #059669; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 14px;">
+        {{ __('mail.verify_qr_report_email.cta') }}
+    </a>
+</p>
+
+<p style="font-size: 13px; color: #64748b; text-align: center; margin-top: 16px;">
+    {{ __('mail.verify_qr_report_email.link_fallback') }}<br>
+    <a href="{{ $confirmUrl }}" style="color: #059669; word-break: break-all;">{{ $confirmUrl }}</a>
+</p>

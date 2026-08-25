@@ -36,10 +36,11 @@
         "footer": "Du hast dieses Konto nicht erstellt? Dann musst du nichts tun: ohne Bestätigung löschen wir es automatisch."
     },
     "verify_qr_report_email": {
-        "subject": "Bestätigen Sie Ihre WinProx-Meldung",
-        "greeting": "Hallo :name,",
-        "body": "Sie haben eine Meldung für :unit (:location) eingereicht. Bestätigen Sie Ihre E-Mail-Adresse innerhalb von :minutes Minuten. Erst danach wird die Meldung erstellt.",
-        "cta": "Meldung bestätigen"
+        "subject": ":tenant — Meldung bestätigen",
+        "intro": "Bestätigen Sie Ihre E-Mail-Adresse für die Meldung über das QR-Portal von :tenant. Erst danach wird die Meldung erstellt.",
+        "field_location": "Standort / Unit",
+        "cta": "Meldung bestätigen",
+        "link_fallback": "Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link:"
     },
     "new_tenant": {
         "subject": "WinProx: neue Organisation registriert — :tenant",

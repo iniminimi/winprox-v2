@@ -36,10 +36,11 @@
         "footer": "Did you not create this account? Then no action is needed: without confirmation we delete it automatically."
     },
     "verify_qr_report_email": {
-        "subject": "Confirm your WinProx report",
-        "greeting": "Hello :name,",
-        "body": "You submitted a report for :unit (:location). Confirm your email address within :minutes minutes. Only then is the report created.",
-        "cta": "Confirm report"
+        "subject": ":tenant — confirm your report",
+        "intro": "Confirm your email address for the report via the QR portal of :tenant. Only then is the report created.",
+        "field_location": "Location / unit",
+        "cta": "Confirm report",
+        "link_fallback": "If the button does not work, copy this link:"
     },
     "new_tenant": {
         "subject": "WinProx: new organization registered — :tenant",

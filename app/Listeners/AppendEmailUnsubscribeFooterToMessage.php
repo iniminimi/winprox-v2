@@ -13,10 +13,6 @@ class AppendEmailUnsubscribeFooterToMessage
 {
     public function handle(MessageSending $event): void
     {
-        if ($event->message->getHeaders()->has('X-WinProx-Transactional')) {
-            return;
-        }
-
         $message = $event->message;
         $primary = $this->firstRecipientAddress($message);
 

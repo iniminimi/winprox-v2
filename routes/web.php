@@ -120,7 +120,10 @@ Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.web
 
 Route::get('/q/{token}', QrController::class)->name('qr.scan');
 
-Route::get('/melden/bevestig-email/{token}', ConfirmQrReportEmail::class)->name('public.qr-report-email-confirm');
+Route::get('/melden/e/{token}', ConfirmQrReportEmail::class)
+    ->where('token', '[a-z0-9]{20,64}')
+    ->name('public.qr-report-email-confirm');
+Route::redirect('/melden/bevestig-email/{token}', '/melden/e/{token}', 301);
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
 Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
 Route::get('/reservations/confirm/{token}', ReservationConfirm::class)->name('reservations.confirm');
