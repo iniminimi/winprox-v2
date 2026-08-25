@@ -43,6 +43,8 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
   (domein `winprox.app` geverifieerd in `eu-west-1`); **production access is geweigerd**. Niet
   opnieuw inbouwen: geen SES-mailer, geen SNS-hook, geen `aws/aws-sdk-php` voor e-mail.
   Interval **20 seconden** (`PromoSmtpThrottle`, Cloud86 ~250 mails/uur). Bounces via IMAP.
+  **Uitgaande mail opstellen (deliverability):** §14 — golden path `NewQrIssueMail`, altijd
+  `List-Unsubscribe`, geen user-snippet in subject.
 
 ---
 
@@ -402,3 +404,47 @@ die leveren kleine winst en grote diffs.
 - `Model::create/update/delete/save` of `DB::` in **Livewire**;
 - `DB::` buiten **`app/Actions`**;
 - `isAdmin()` in **Blade** (beheer-views; niet e-mail).
+
+---
+
+## 14. Uitgaande e-mail — opstellen & deliverability (hard)
+
+Incident augustus 2026: Telenet (`552 … considered spam`) weigerde de QR-bevestigingsmail terwijl
+andere WinProx-mails (zelfde Cloud86 SMTP, `info@winprox.app`) binnen de seconde aankwamen.
+**Niet opnieuw uren zoeken naar “SMTP is traag/kapot”.**
+
+### 14.1 Diagnose-volgorde
+1. **Andere mail werkt?** → SMTP/Cloud86 is OK; dit is inhoud/headers van **deze** mailable.
+2. **Bounce/DSN lezen** — `552 considered spam` = content-filter, geen mailbox-full.
+3. **Juiste inbox?** Publieke bevestiging gaat naar het adres op het **formulier**, niet naar
+   het account waarmee je het auditlog bekijkt.
+4. **`email_unsubscribes`:** hard bounce (`source=undeliverable`) blokkeert nog steeds;
+   marketing-uitschrijving mag transactionele bevestiging **niet** blokkeren
+   (`X-WinProx-Transactional` + `BlockUnsubscribedEmailRecipients`).
+5. Content-spam-bounces (Telenet e.d.) **niet** permanent als onbezorgbaar zetten
+   (`MarkPromoCampaignEmailBouncedAction` / `PromoBounceKind::Spam`).
+
+### 14.2 Golden path (kopieer een werkende mail)
+Referentie die bij Telenet aankomt: **`NewQrIssueMail`** + `emails/issues/new-qr-body.blade.php`
+(+ reserveringsbevestiging voor korte CTA-mails).
+
+Verplicht bij nieuwe/gewijzigde uitgaande mail:
+- Template: `emails.contact.winprox-template` (zelfde logo/footer als de rest).
+- **Subject vast** — patroon `:tenant — …` of vaste WinProx-zin. **Geen** gebruikerssnippet
+  (`— Test`, omschrijving) in het onderwerp.
+- Body mag wel: locatie, melder, omschrijving, fototelling, geldigheid — **geen** remote
+  `<img>` van issue-foto’s (alleen telling).
+- CTA = **groene knop** (inline styles zoals `new-qr-body`), plus korte link-fallback.
+- Publieke bevestigings-URL **kort en neutraal** (bv. `/melden/e/{token}`), geen
+  `/…/bevestig-email/…` of andere phishing-achtige padnamen.
+- **`List-Unsubscribe` + uitschrijffooter altijd** via `AppendEmailUnsubscribeFooterToMessage`
+  — nodig voor deliverability. Header `X-WinProx-Transactional` slaat die footer **niet** over;
+  die header dient enkel om marketing-opt-out transactionele bevestiging niet te laten blokkeren.
+- Bevestigingsmails **synchroon** versturen (`Mail::send`), niet via de promo-queue/throttle
+  (promo = 20 s; shared hosting `queue:work` is geen betrouwbare “binnen de seconde”).
+
+### 14.3 Promo vs transactioneel
+- **Promo:** Cloud86 `municipal_promo`, 20 s throttle, IMAP-bounces — zie §1 / `.cursor/rules/promo-mailer.mdc`.
+- **Transactioneel** (QR-bevestiging, account-verify, reservering): zelfde default-mailer als
+  staff/notificaties; markeer met `X-WinProx-Transactional: 1`.
+- Geen Amazon SES opnieuw inbouwen.

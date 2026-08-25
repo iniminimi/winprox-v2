@@ -26,6 +26,9 @@ Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bi
   (verwijderen uit `scripts/` of elders) — nooit in de repo laten staan.
 - **Promo-mail = Cloud86 SMTP.** Amazon SES is geprobeerd (augustus 2026); production access
   geweigerd. Niet opnieuw inbouwen. Interval 20 s; bounces via IMAP. Zie `WINPROX_RULES.md` §1.
+- **Uitgaande e-mail / deliverability:** zie `WINPROX_RULES.md` §14 en
+  `.cursor/rules/outbound-email.mdc` — golden path = `NewQrIssueMail`; altijd List-Unsubscribe;
+  geen user-snippet in subject; geen phishing-URL-paden.
 - **Geen UTF-8 BOM** in bronbestanden of `.env` — breekt Livewire/Alpine/login lokaal
   (zie `no-utf8-bom.mdc`; `npm run check:bom` + pre-commit + `check:architecture`).
 - **Geen** extra lagen (repositories, service-duplicatie, static helpers met business logic).

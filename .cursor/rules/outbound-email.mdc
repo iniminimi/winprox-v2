@@ -1,0 +1,24 @@
+---
+description: Uitgaande e-mail opstellen zodat providers (o.a. Telenet) niet als spam weigeren
+globs: app/Mail/**,resources/views/emails/**,app/Listeners/*Email*,app/Actions/**/*Mail*
+alwaysApply: false
+---
+
+# Uitgaande e-mail (deliverability — hard)
+
+Lees **`WINPROX_RULES.md` §14** volledig vóór je een mailable of e-mailbody wijzigt.
+
+## Niet opnieuw doen
+- Uren zoeken naar “SMTP traag/kapot” terwijl andere WinProx-mails wél aankomen.
+- Subject met gebruikersinhoud (`— Test`, meldingstekst).
+- Lange phishing-paden (`/melden/bevestig-email/…`).
+- `List-Unsubscribe` weglaten “omdat het transactioneel is” (Telenet weigerde dat).
+- Remote issue-foto’s in bevestigingsmail.
+- Content-spam-bounce → adres permanent `undeliverable` zetten.
+
+## Wel doen
+- Kopieer layout van **`NewQrIssueMail`** / `emails/issues/new-qr-body.blade.php`.
+- Vast subject (`:tenant — …`), groene knop, korte neutrale URL, template `winprox-template`.
+- `X-WinProx-Transactional: 1` voor bevestigingen (blokkeer niet bij marketing-opt-out;
+  footer/List-Unsubscribe blijft).
+- Bevestiging synchroon `Mail::send` (geen promo-throttle / queue-wachten).
