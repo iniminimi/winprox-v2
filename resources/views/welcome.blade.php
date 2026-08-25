@@ -4,6 +4,8 @@
     $welcomeDesktopScreenshotAvailable = is_file(public_path($welcomeDesktopScreenshotRel));
     $welcomeMobileScreenshotRel = "images/welcome/screenshot_{$locale}_gsm.jpg";
     $welcomeMobileScreenshotAvailable = is_file(public_path($welcomeMobileScreenshotRel));
+    $welcomeHeroPhotoRel = 'images/landing/general/welcome_01.jpg';
+    $welcomeHeroPhotoAvailable = is_file(public_path($welcomeHeroPhotoRel));
     $welcomeVideoRel = "video/{$locale}/issue_{$locale}_01.mp4";
     $welcomeVideoAvailable = is_file(public_path($welcomeVideoRel));
     $welcomeEsgImageRel = 'images/welcome/ESG.jpg';
@@ -47,9 +49,20 @@
     <div class="wp-welcome-top">
         @include('partials.wp-welcome-nav')
 
-        <header class="wp-welcome-hero wp-welcome-hero--center">
-            <div class="wp-welcome-main wp-welcome-hero-stack">
-                <div class="wp-welcome-hero-copy wp-welcome-hero-copy--center">
+        <header @class([
+            'wp-welcome-hero',
+            'wp-welcome-hero--split' => $welcomeHeroPhotoAvailable,
+            'wp-welcome-hero--center' => ! $welcomeHeroPhotoAvailable,
+        ])>
+            <div @class([
+                'wp-welcome-main',
+                'wp-welcome-hero-split' => $welcomeHeroPhotoAvailable,
+                'wp-welcome-hero-stack' => ! $welcomeHeroPhotoAvailable,
+            ])>
+                <div @class([
+                    'wp-welcome-hero-copy',
+                    'wp-welcome-hero-copy--center' => ! $welcomeHeroPhotoAvailable,
+                ])>
                     <span class="wp-welcome-badge">{{ __('welcome.hero.badge') }}</span>
                     <x-wp-text-reveal
                         as="h1"
@@ -57,6 +70,16 @@
                         :lines="__('welcome.hero.title_lines')"
                         :accent="__('welcome.hero.title_accent')"
                     />
+                    <p class="wp-welcome-lead wp-welcome-lead--hero">{{ __('welcome.hero.subtitle') }}</p>
+                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.hero.body') }}</p>
+                    <div @class([
+                        'wp-welcome-cta-row',
+                        'wp-welcome-cta-row--start' => $welcomeHeroPhotoAvailable,
+                    ])>
+                        <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
+                        <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_video') }}</a>
+                    </div>
+                    <p class="wp-welcome-hero-note">{{ __('welcome.hero.hero_note') }}</p>
                     @if ($welcomeQrVideoRel)
                         <div class="wp-welcome-hero-qr-video">
                             @include('partials.wp-video-player', [
@@ -65,33 +88,38 @@
                             ])
                         </div>
                     @endif
-                    <p class="wp-welcome-lead wp-welcome-lead--hero">{{ __('welcome.hero.subtitle') }}</p>
-                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.hero.body') }}</p>
-                    <div class="wp-welcome-cta-row">
-                        <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
-                        <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_video') }}</a>
+                </div>
+                @if ($welcomeHeroPhotoAvailable)
+                    <figure class="wp-welcome-screenshot wp-welcome-screenshot--desktop wp-landing-visual">
+                        <img
+                            src="{{ asset($welcomeHeroPhotoRel) }}"
+                            alt="{{ __('welcome.hero.photo_alt') }}"
+                            class="wp-welcome-screenshot__img"
+                            fetchpriority="high"
+                            decoding="async"
+                        >
+                    </figure>
+                @else
+                    <div class="wp-welcome-hero-visual wp-welcome-hero-visual--below">
+                        @if ($welcomeDesktopScreenshotAvailable)
+                            <figure class="wp-welcome-screenshot wp-welcome-screenshot--hero wp-welcome-screenshot--desktop">
+                                <img
+                                    src="{{ asset($welcomeDesktopScreenshotRel) }}"
+                                    alt="{{ __('welcome.hero.desktop_screenshot_alt') }}"
+                                    class="wp-welcome-screenshot__img"
+                                    width="1180"
+                                    height="925"
+                                    loading="eager"
+                                    decoding="async"
+                                >
+                            </figure>
+                        @else
+                            <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--desktop" role="img" aria-label="{{ __('welcome.hero.desktop_screenshot_alt') }}">
+                                <p>{{ __('welcome.hero.desktop_screenshot_alt') }}</p>
+                            </div>
+                        @endif
                     </div>
-                    <p class="wp-welcome-hero-note">{{ __('welcome.hero.hero_note') }}</p>
-                </div>
-                <div class="wp-welcome-hero-visual wp-welcome-hero-visual--below">
-                    @if ($welcomeDesktopScreenshotAvailable)
-                        <figure class="wp-welcome-screenshot wp-welcome-screenshot--hero wp-welcome-screenshot--desktop">
-                            <img
-                                src="{{ asset($welcomeDesktopScreenshotRel) }}"
-                                alt="{{ __('welcome.hero.desktop_screenshot_alt') }}"
-                                class="wp-welcome-screenshot__img"
-                                width="1180"
-                                height="925"
-                                loading="eager"
-                                decoding="async"
-                            >
-                        </figure>
-                    @else
-                        <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--desktop" role="img" aria-label="{{ __('welcome.hero.desktop_screenshot_alt') }}">
-                            <p>{{ __('welcome.hero.desktop_screenshot_alt') }}</p>
-                        </div>
-                    @endif
-                </div>
+                @endif
             </div>
         </header>
     </div>

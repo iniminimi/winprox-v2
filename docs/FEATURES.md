@@ -858,7 +858,8 @@ App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
 
 ### 11.1 Structuur (behouden, opgeschoond)
 - **Nav:** WinProx-logo, **taal-pillen** (NL/FR/EN/DE), **Inloggen**, **Account aanmaken**.
-- **Hero:** kicker, titel, subtitel; CTA's **Account aanmaken** (primair) + **Inloggen** (ghost/lijn).
+- **Hero:** kicker, titel, subtitel en CTA's naast `images/landing/general/welcome_01.jpg`
+  (split zoals campagne-landings; algemene welcome-copy, geen sectortekst).
 - **Probleem** (3 kaarten) · **Oplossing** (lead + **QR-leaflet** als illustratie) · **Features**
   (6 kaarten met iconen) · **Hoe werkt het** (stappen) · **CTA-band** · **screenshots** · **footer**
   (juridische links + contact).
