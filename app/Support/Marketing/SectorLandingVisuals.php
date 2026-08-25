@@ -163,6 +163,31 @@ final class SectorLandingVisuals
                     'closeStyle' => 'scrim',
                 ],
             ],
+            PromoLanding::Healthcare => [
+                'hero' => 'images/landing/healthcare/05.jpg',
+                'problem' => 'images/landing/healthcare/image_02.jpg',
+                'steps' => [
+                    'src' => 'images/landing/healthcare/image_06.jpg',
+                    'modifier' => 'wp-landing-visual--compact',
+                ],
+                'places' => [
+                    'src' => 'images/landing/healthcare/image_01.jpg',
+                    'layout' => 'wide',
+                    'modifier' => 'wp-landing-visual--wide',
+                ],
+                'roles' => [
+                    'src' => 'images/landing/healthcare/image_04.jpg',
+                    'modifier' => 'wp-landing-visual--roles wp-landing-visual--tall',
+                ],
+                'why' => [
+                    'src' => 'images/landing/healthcare/image_7.jpg',
+                    'modifier' => 'wp-landing-visual--feature',
+                ],
+                'close' => [
+                    'src' => 'images/landing/healthcare/image_03.jpg',
+                    'closeStyle' => 'scrim',
+                ],
+            ],
             default => [],
         };
     }

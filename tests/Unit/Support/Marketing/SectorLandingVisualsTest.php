@@ -14,7 +14,20 @@ it('levert vastgoed-foto’s wanneer de bestanden bestaan', function () {
 });
 
 it('levert geen foto’s voor sectoren zonder assets', function () {
-    expect(SectorLandingVisuals::for(PromoLanding::Healthcare))->toBe([]);
+    expect(SectorLandingVisuals::for(PromoLanding::Government))->toBe([]);
+});
+
+it('levert healthcare-foto’s wanneer de bestanden bestaan', function () {
+    $visuals = SectorLandingVisuals::for(PromoLanding::Healthcare);
+
+    expect($visuals)->toHaveKeys(['hero', 'problem', 'steps', 'places', 'roles', 'why', 'close'])
+        ->and($visuals['hero'])->toBe('images/landing/healthcare/05.jpg')
+        ->and($visuals['close'])->toBe('images/landing/healthcare/image_03.jpg')
+        ->and(SectorLandingVisuals::modifiers(PromoLanding::Healthcare))
+        ->toHaveKey('steps')
+        ->and(SectorLandingVisuals::layouts(PromoLanding::Healthcare))
+        ->toHaveKey('places')
+        ->and(SectorLandingVisuals::closeStyle(PromoLanding::Healthcare))->toBe('scrim');
 });
 
 it('levert hospitality-foto’s wanneer de bestanden bestaan', function () {

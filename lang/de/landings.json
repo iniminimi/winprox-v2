@@ -365,6 +365,15 @@
         "close": {
             "title": "Bereit zum Ausprobieren?",
             "lead": "Machen Sie aus jedem Raum eine einfache Meltestelle. Admins legen ein Konto an; Pflegekräfte scannen und melden."
+        },
+        "visuals": {
+            "hero": "Pflegekraft im Gang einer Pflegeeinrichtung.",
+            "problem": "Modernes Patientenzimmer mit Bett und medizinischer Ausstattung.",
+            "steps": "Smartphone scannt einen QR-Code für Wartung im Technikraum.",
+            "places": "Luftaufnahme eines Krankenhauskomplexes mit Notaufnahme.",
+            "roles": "Pflegekraft mit Tablet in einem modernen Pflegebereich.",
+            "why": "Facility- und Pflegemanagement in einem Büro mit Blick auf den Campus.",
+            "close": "Pflegecampus mit Bewohnern und Mitarbeitenden vor dem Gebäude."
         }
     },
     "government": {

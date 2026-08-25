@@ -365,6 +365,15 @@
         "close": {
             "title": "Ready to try it?",
             "lead": "Turn every room into a simple reporting point. Managers create an account; care staff scan and report."
+        },
+        "visuals": {
+            "hero": "Care staff member in a healthcare facility corridor.",
+            "problem": "Modern patient room with a bed and medical equipment.",
+            "steps": "Smartphone scanning a QR code for maintenance in a technical room.",
+            "places": "Aerial view of a hospital complex with emergency care.",
+            "roles": "Care staff member with a tablet in a modern care corridor.",
+            "why": "Facility and care management in an office overlooking the campus.",
+            "close": "Care campus with residents and staff outside the building."
         }
     },
     "government": {

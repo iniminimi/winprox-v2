@@ -365,6 +365,15 @@
         "close": {
             "title": "¿Listo para probarlo?",
             "lead": "Convierta cada sala en un punto de aviso sencillo. Los administradores crean una cuenta; el personal escanea y avisa."
+        },
+        "visuals": {
+            "hero": "Profesional sanitario en el pasillo de un centro asistencial.",
+            "problem": "Habitación de paciente moderna con cama y equipo médico.",
+            "steps": "Smartphone escanea un código QR de mantenimiento en una sala técnica.",
+            "places": "Vista aérea de un complejo hospitalario con urgencias.",
+            "roles": "Profesional sanitario con tableta en un pasillo asistencial moderno.",
+            "why": "Gestión de facility y cuidados en una oficina con vistas al campus.",
+            "close": "Campus asistencial con residentes y personal delante del edificio."
         }
     },
     "government": {

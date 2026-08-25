@@ -365,6 +365,15 @@
         "close": {
             "title": "Klaar om het zelf te proberen?",
             "lead": "Maak van elke ruimte een eenvoudig meldpunt. Beheerders maken een account; zorgmedewerkers scannen en melden."
+        },
+        "visuals": {
+            "hero": "Zorgmedewerker in de gang van een zorginstelling.",
+            "problem": "Moderne patiëntenkamer met bed en medische apparatuur.",
+            "steps": "Smartphone scant een QR-code voor onderhoud in een technische ruimte.",
+            "places": "Luchtfoto van een ziekenhuiscomplex met spoedeisende hulp.",
+            "roles": "Zorgmedewerker met tablet in een moderne zorggang.",
+            "why": "Facility- en zorgbeheer in een kantoor met zicht op de campus.",
+            "close": "Zorgcampus met bewoners en medewerkers buiten bij het gebouw."
         }
     },
     "government": {

@@ -365,6 +365,15 @@
         "close": {
             "title": "Prêt à essayer ?",
             "lead": "Faites de chaque pièce un point de signalement simple. Les gestionnaires créent un compte ; les soignants scannent et signalent."
+        },
+        "visuals": {
+            "hero": "Soignant dans le couloir d'un établissement de soins.",
+            "problem": "Chambre de patient moderne avec lit et équipements médicaux.",
+            "steps": "Smartphone scannant un QR pour la maintenance dans un local technique.",
+            "places": "Vue aérienne d'un complexe hospitalier avec urgences.",
+            "roles": "Soignant avec une tablette dans un couloir de soins moderne.",
+            "why": "Gestion facility et soins dans un bureau avec vue sur le campus.",
+            "close": "Campus de soins avec résidents et collaborateurs devant le bâtiment."
         }
     },
     "government": {

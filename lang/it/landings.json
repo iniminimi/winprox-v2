@@ -365,6 +365,15 @@
         "close": {
             "title": "Pronto a provarlo?",
             "lead": "Trasforma ogni stanza in un punto di segnalazione semplice. Gli amministratori creano un account; gli operatori scansionano e segnalano."
+        },
+        "visuals": {
+            "hero": "Operatore sanitario nel corridoio di una struttura di cura.",
+            "problem": "Camera paziente moderna con letto e attrezzature mediche.",
+            "steps": "Smartphone che scansiona un QR per la manutenzione in un locale tecnico.",
+            "places": "Vista aerea di un complesso ospedaliero con pronto soccorso.",
+            "roles": "Operatore sanitario con tablet in un corridoio di cura moderno.",
+            "why": "Gestione facility e cure in un ufficio con vista sul campus.",
+            "close": "Campus di cura con residenti e collaboratori fuori dall'edificio."
         }
     },
     "government": {
