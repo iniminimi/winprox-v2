@@ -10,6 +10,7 @@ use App\Support\Marketing\JsonLd;
 use App\Support\Marketing\PromoLandingRequest;
 use App\Support\Marketing\PromoRecipientToken;
 use App\Support\Marketing\SectorLandingVideo;
+use App\Support\Marketing\SectorLandingVisuals;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -56,6 +57,7 @@ class SectorLandingController extends Controller
             'landing' => $landing,
             'slug' => $landing->value,
             'videoSrc' => $videoRelative !== null ? asset($videoRelative) : null,
+            'visuals' => SectorLandingVisuals::for($landing),
             'relatedLinks' => $this->relatedLinks($landing),
             'promoTrackingToken' => $recipient?->token,
             'promoRecipientLabel' => $recipient?->label,

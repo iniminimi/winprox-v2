@@ -112,7 +112,8 @@ it('toont de uitgebreide hospitality-landing zonder demo of prijs', function () 
         ->assertSee('id="landing-video"', false)
         ->assertDontSee('Bekijk demo', false)
         ->assertDontSee('langdurig contract', false)
-        ->assertDontSee('START GRATIS', false);
+        ->assertDontSee('START GRATIS', false)
+        ->assertDontSee('images/landing/general/welcome_01.jpg', false);
 
     $this->get(route('hospitality', ['locale' => 'fr']))
         ->assertOk()
@@ -163,6 +164,8 @@ it('toont de uitgebreide realestate-landing', function () {
         ->assertSee(__('landings.realestate.start.trial', [], 'nl'))
         ->assertSee('id="landing-video"', false)
         ->assertSee(__('landings.shared.video_placeholder', [], 'nl'))
+        ->assertSee('images/landing/general/welcome_01.jpg', false)
+        ->assertSee(__('landings.realestate.visuals.hero', [], 'nl'), false)
         ->assertDontSee('Bekijk demo', false)
         ->assertDontSee('langdurig contract', false);
 

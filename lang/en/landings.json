@@ -566,6 +566,15 @@
         "close": {
             "title": "Ready to try it?",
             "lead": "Turn every home or office space into a simple reporting point. Managers create an account; tenants and staff scan and report."
+        },
+        "visuals": {
+            "hero": "Staff member with a tablet in an office, overlooking a residential complex.",
+            "problem": "Managers review a tablet next to someone scanning a QR code on site.",
+            "steps": "Two people at a table with a QR code tent card in the foreground.",
+            "places": "Modern apartment complex at dusk.",
+            "roles": "Manager reviewing reports on a computer screen.",
+            "why": "Laptop showing the WinProx request overview.",
+            "close": "Two colleagues reviewing WinProx together on a tablet."
         }
     }
 }

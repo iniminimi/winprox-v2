@@ -890,6 +890,8 @@ Video: speler als het bestand bestaat (`{slug}_promo_{locale}.mp4` e.d.); elke l
 reserveert de videoplek (placeholder tot het bestand er is). Government-NL valt tijdelijk
 terug op `video/nl/issue_nl_01.mp4` tot er een eigen government-video is.
 Geen demo-CTA, geen prijs op de landing, geen “geen langdurig contract”. CTA’s alleen in de hero.
+Foto’s per sector via `SectorLandingVisuals` (`public/images/landing/…`); ontbrekende assets
+vallen terug op de tekstlayout. Vastgoed gebruikt `images/landing/general/`.
 Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `?ref=`. Dit is
 **geen** V1-sectorhub en **geen** productvariant.
 

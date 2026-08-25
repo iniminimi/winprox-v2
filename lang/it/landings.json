@@ -566,6 +566,15 @@
         "close": {
             "title": "Pronto a provarlo?",
             "lead": "Trasforma ogni alloggio o ufficio in un punto di segnalazione semplice. Gli amministratori creano un account; inquilini e collaboratori scansionano e segnalano."
+        },
+        "visuals": {
+            "hero": "Collaboratrice con tablet in ufficio, vista su un complesso residenziale.",
+            "problem": "Gestori esaminano un tablet accanto a chi scansiona un QR in loco.",
+            "steps": "Due persone a un tavolo con una card QR in primo piano.",
+            "places": "Complesso di appartamenti moderno al crepuscolo.",
+            "roles": "Gestore che consulta le segnalazioni su uno schermo.",
+            "why": "Laptop con la panoramica WinProx delle richieste.",
+            "close": "Due colleghi consultano WinProx insieme su un tablet."
         }
     }
 }

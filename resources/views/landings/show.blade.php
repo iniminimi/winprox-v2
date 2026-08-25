@@ -10,29 +10,41 @@
     @php
         $key = 'landings.'.$slug;
         $reserveVideo = true;
+        $visuals = $visuals ?? [];
+        $heroVisual = $visuals['hero'] ?? null;
     @endphp
     <div class="wp-welcome-section wp-welcome-section--alt wp-welcome-faq-page">
         <div class="wp-welcome-main wp-welcome-section-inner--wide wp-stack">
-            <div class="wp-welcome-section--center wp-welcome-section-inner">
-                @if (! empty($promoRecipientLabel))
-                    <div class="wp-card wp-card-pad wp-landing-recipient-welcome" role="status">
-                        <p class="wp-landing-recipient-welcome__greeting">{{ __('landings.shared.recipient_welcome') }}</p>
-                        <p class="wp-landing-recipient-welcome__name">{{ $promoRecipientLabel }}</p>
-                    </div>
-                @endif
-                <span class="wp-welcome-eyebrow">{{ __("{$key}.eyebrow") }}</span>
-                <h1 class="wp-welcome-h2">{{ __("{$key}.title") }}</h1>
-                <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.lead") }}</p>
-                @if (\Illuminate\Support\Facades\Lang::has($key.'.flow'))
-                    <p class="wp-text-body">{{ __("{$key}.flow") }}</p>
-                @endif
-                <div class="wp-welcome-cta-row">
-                    <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('landings.shared.cta_register') }}</a>
-                    <a href="{{ route('login') }}" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_login') }}</a>
-                    @if ($videoSrc !== null)
-                        <a href="#landing-video" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_video') }}</a>
+            <div @class([
+                'wp-landing-hero' => filled($heroVisual),
+                'wp-welcome-section--center wp-welcome-section-inner' => ! filled($heroVisual),
+            ])>
+                <div @class(['wp-landing-hero__copy' => filled($heroVisual)])>
+                    @if (! empty($promoRecipientLabel))
+                        <div class="wp-card wp-card-pad wp-landing-recipient-welcome" role="status">
+                            <p class="wp-landing-recipient-welcome__greeting">{{ __('landings.shared.recipient_welcome') }}</p>
+                            <p class="wp-landing-recipient-welcome__name">{{ $promoRecipientLabel }}</p>
+                        </div>
                     @endif
+                    <span class="wp-welcome-eyebrow">{{ __("{$key}.eyebrow") }}</span>
+                    <h1 class="wp-welcome-h2">{{ __("{$key}.title") }}</h1>
+                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.lead") }}</p>
+                    @if (\Illuminate\Support\Facades\Lang::has($key.'.flow'))
+                        <p class="wp-text-body">{{ __("{$key}.flow") }}</p>
+                    @endif
+                    <div class="wp-welcome-cta-row">
+                        <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('landings.shared.cta_register') }}</a>
+                        <a href="{{ route('login') }}" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_login') }}</a>
+                        @if ($videoSrc !== null)
+                            <a href="#landing-video" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_video') }}</a>
+                        @endif
+                    </div>
                 </div>
+                @include('landings.partials.visual', [
+                    'src' => $heroVisual,
+                    'alt' => filled($heroVisual) ? __("{$key}.visuals.hero") : '',
+                    'eager' => true,
+                ])
             </div>
 
             @if ($reserveVideo)
@@ -61,7 +73,7 @@
                 </article>
             @endif
 
-            @include('landings.partials.industry', ['key' => $key])
+            @include('landings.partials.industry', ['key' => $key, 'visuals' => $visuals])
 
             @include('partials.wp-marketing-related', [
                 'links' => $relatedLinks,
