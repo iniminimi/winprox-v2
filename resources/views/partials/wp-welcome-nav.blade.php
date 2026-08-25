@@ -1,6 +1,7 @@
 @php
     $onWelcome = request()->routeIs('welcome');
     $welcomeSection = static fn (string $id): string => $onWelcome ? "#{$id}" : route('welcome')."#{$id}";
+    $sectorLandings = \App\Enums\PromoLanding::cases();
 @endphp
 
 <nav class="wp-welcome-nav" aria-label="{{ __('welcome.meta_title') }}">
@@ -21,7 +22,12 @@
                     <a href="{{ $welcomeSection('platform') }}">{{ __('welcome.nav.platform') }}</a>
                     <a href="{{ $welcomeSection('esg') }}">{{ __('welcome.nav.esg') }}</a>
                     <a href="{{ $welcomeSection('iot') }}">{{ __('welcome.nav.iot') }}</a>
-                    <a href="{{ $welcomeSection('organisaties') }}">{{ __('welcome.nav.sectors') }}</a>
+                    @foreach ($sectorLandings as $sectorLanding)
+                        <a
+                            href="{{ route($sectorLanding->routeName()) }}"
+                            @if (request()->routeIs($sectorLanding->routeName())) aria-current="page" @endif
+                        >{{ __($sectorLanding->labelKey()) }}</a>
+                    @endforeach
                     <a href="{{ $welcomeSection('video') }}">{{ __('welcome.nav.video') }}</a>
                     <a href="{{ route('faq.public') }}" @if (request()->routeIs('faq.public')) aria-current="page" @endif>{{ __('welcome.nav.faq') }}</a>
                     <a href="{{ route('product.features') }}" @if (request()->routeIs('product.features')) aria-current="page" @endif>{{ __('welcome.nav.features_overview') }}</a>
@@ -51,7 +57,19 @@
                         </div>
                     </details>
 
-                    <a class="wp-welcome-nav-direct" href="{{ $welcomeSection('organisaties') }}">{{ __('welcome.nav.sectors') }}</a>
+                    <details class="wp-welcome-nav-group">
+                        <summary class="wp-welcome-nav-group__toggle">{{ __('welcome.nav.sectors') }}</summary>
+                        <div class="wp-welcome-nav-group__panel" role="list">
+                            @foreach ($sectorLandings as $sectorLanding)
+                                <a
+                                    href="{{ route($sectorLanding->routeName()) }}"
+                                    role="listitem"
+                                    @if (request()->routeIs($sectorLanding->routeName())) aria-current="page" @endif
+                                >{{ __($sectorLanding->labelKey()) }}</a>
+                            @endforeach
+                        </div>
+                    </details>
+
                     <a class="wp-welcome-nav-direct" href="{{ route('pricing') }}" @if (request()->routeIs('pricing')) aria-current="page" @endif>{{ __('welcome.nav.pricing') }}</a>
 
                     <details class="wp-welcome-nav-group">
