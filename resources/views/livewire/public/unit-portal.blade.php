@@ -513,11 +513,14 @@
                     </div>
                 </div>
                 <div class="wp-portal-actions">
-                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="isOffline">
-                        <x-wp-spinner wire:loading class="wp-mr-2" />
-                        <span wire:loading.remove>{{ __('portal.report.submit') }}</span>
-                        <span wire:loading>{{ __('portal.report.submit_loading') }}</span>
+                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" wire:target="submitReport" :disabled="isOffline">
+                        <x-wp-spinner wire:loading wire:target="submitReport" class="wp-mr-2" />
+                        <span wire:loading.remove wire:target="submitReport">{{ __('portal.report.submit') }}</span>
+                        <span wire:loading wire:target="submitReport">{{ __('portal.report.submit_loading') }}</span>
                     </button>
+                    @if ($requiresReporterEmailVerification)
+                        <p class="wp-muted wp-text-sm" wire:loading.delay.longest wire:target="submitReport">{{ __('portal.report.checking_email') }}</p>
+                    @endif
                 </div>
             </form>
             </div>

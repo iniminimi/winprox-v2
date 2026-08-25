@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Symfony\Component\Mime\Email as SymfonyEmail;
 
 class VerifyUserEmailMail extends Mailable
 {
@@ -23,6 +24,9 @@ class VerifyUserEmailMail extends Mailable
             : (string) config('locales.default', 'nl');
 
         $this->locale($locale);
+        $this->withSymfonyMessage(function (SymfonyEmail $message): void {
+            $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
+        });
     }
 
     public function envelope(): Envelope

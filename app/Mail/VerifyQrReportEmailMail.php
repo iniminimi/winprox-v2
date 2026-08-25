@@ -9,6 +9,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use Symfony\Component\Mime\Email as SymfonyEmail;
 
 class VerifyQrReportEmailMail extends Mailable
 {
@@ -24,6 +25,9 @@ class VerifyQrReportEmailMail extends Mailable
 
         $this->locale($locale);
         $this->hold->loadMissing('unit.location');
+        $this->withSymfonyMessage(function (SymfonyEmail $message): void {
+            $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
+        });
     }
 
     public function envelope(): Envelope

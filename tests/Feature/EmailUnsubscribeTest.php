@@ -116,6 +116,19 @@ describe('AppendEmailUnsubscribeFooterToMessage listener', function () {
         expect($headers->has('List-Unsubscribe'))->toBeTrue();
     });
 
+    it('skips unsubscribe footer on transactional confirmation mail', function () {
+        $message = new Email();
+        $message->to('ada@example.com');
+        $message->html('<body><p>Confirm</p></body>');
+        $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
+
+        $listener = new AppendEmailUnsubscribeFooterToMessage();
+        $listener->handle(new MessageSending($message));
+
+        expect($message->getHeaders()->has('List-Unsubscribe'))->toBeFalse()
+            ->and($message->getHtmlBody())->toBe('<body><p>Confirm</p></body>');
+    });
+
     it('adds unsubscribe footer to html emails', function () {
         $message = new Email();
         $message->to('test@example.com');

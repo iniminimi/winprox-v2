@@ -4,6 +4,7 @@ namespace App\Actions\Public;
 
 use App\Actions\Marketing\AssessPromoCampaignEmailAction;
 use App\Enums\PromoEmailPreflightReason;
+use App\Events\OutgoingMailBlockedByUnsubscribe;
 use App\Mail\VerifyQrReportEmailMail;
 use App\Models\QrReportEmailHold;
 use App\Models\Tenant;
@@ -11,6 +12,8 @@ use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 use App\Support\IssuePhotoStorage;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -63,6 +66,11 @@ class HoldQrReportForEmailVerificationAction
             throw $e;
         }
 
+        $blocked = false;
+        Event::listen(OutgoingMailBlockedByUnsubscribe::class, static function () use (&$blocked): void {
+            $blocked = true;
+        });
+
         try {
             Mail::to($email)->send(new VerifyQrReportEmailMail($hold->loadMissing('unit.location')));
         } catch (\Throwable $e) {
@@ -70,6 +78,18 @@ class HoldQrReportForEmailVerificationAction
             $hold->delete();
             throw $e;
         }
+
+        if ($blocked) {
+            $this->deleteStoredPhotos($photoPaths);
+            $hold->delete();
+            throw ValidationException::withMessages([
+                'reporter_email' => [__('portal.report.errors.reporter_email_undeliverable')],
+            ]);
+        }
+
+        Log::info('qr_report_verify_mail_accepted', [
+            'hold_id' => $hold->id,
+        ]);
 
         $this->audit->record(
             userId: null,
