@@ -57,7 +57,8 @@ linkt naar zijn lijst):
 
 **Recente meldingen** (kaart met lijst)
 - "Laatste activiteit door melders of team", met nadruk op **nieuwe** meldingen; laatste **5**.
-- Rij: omschrijving · locatie — unit · adres · datum/tijd + "gemeld door {naam}" · status-pill.
+- Rij: omschrijving · locatie — unit · adres · datum/tijd + "gemeld door {naam}" · status-pill ·
+  **Melder bevestigd** als de QR-melder de e-maillink heeft bevestigd.
 - **Net-aangemaakte melding** krijgt kort een highlight-accent in de lijst.
 - Lege staat: nette "nog geen meldingen"-tekst (géén onboarding-CTA-blok uit V1).
 - Knop **"Meldingen openen"** → meldingenlijst.
@@ -210,7 +211,8 @@ Taken hebben hun eigen status; de **meldingstatus rolt af** uit de taken (bestaa
 - **Groepering per status** met accent-header + telbadge, volgorde
   **Nieuw → In uitvoering → Afgehandeld → Gesloten**, daarbinnen nieuwste eerst.
 - **Meldingskaart**: NR (id), omschrijving (onverkort — beheer), locatie · unit · adres,
-  herkomst (QR/handmatig) + "gemeld door", toegewezen **team(s)**, status-pill. Net aangemaakte
+  herkomst (QR/handmatig) + "gemeld door", toegewezen **team(s)**, status-pill, bij
+  e-mailbevestigde QR-melders de pil **Melder bevestigd**. Net aangemaakte
   melding kort **gehighlight** (query `highlight_issue` / sessie).
 - Klik → detail (`issues.show`).
 

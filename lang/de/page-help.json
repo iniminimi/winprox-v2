@@ -28,6 +28,10 @@
                 {
                     "label": "Meldung hinzufügen",
                     "text": "Erstellen Sie eine Meldung in zwei Schritten: Standort/Unit + Beschreibung, dann eine Aufgabe für das richtige Team."
+                },
+                {
+                    "label": "Aktuelle Meldungen",
+                    "text": "Die neuesten Meldungen stehen unten. Nach bestätigter QR-E-Mail sehen Sie die Pille Melder bestätigt, neben Status und Wartet auf Prüfung."
                 }
             ],
             "status_note": "Der Meldungsstatus im Dashboard folgt dem Status der verknüpften Aufgaben.",
@@ -85,6 +89,10 @@
                 {
                     "label": "Freigeben",
                     "text": "Meldungen, die über das QR-Portal erstellt wurden, warten auf Freigabe. Geben Sie frei, damit Inhalte auf öffentlichen Seiten sichtbar werden."
+                },
+                {
+                    "label": "Melder bestätigt",
+                    "text": "QR-Meldungen, bei denen der Melder den E-Mail-Link bestätigt hat, zeigen die Pille Melder bestätigt in der Liste, im Dashboard und in der Detailansicht."
                 }
             ],
             "status_note": "Der Meldungsstatus wird automatisch aus den Aufgaben dieser Meldung abgeleitet.",
@@ -117,6 +125,10 @@
                 {
                     "label": "Aufgaben-Übersetzungen",
                     "text": "Im Aufgaben-Bearbeitungsformular können Sie die Aufgabenbeschreibung pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Nur verfügbar, wenn die Aufgabe eine eigene Beschreibung hat. Speichern macht die Übersetzung für diese Sprache endgültig."
+                },
+                {
+                    "label": "Melder bestätigt",
+                    "text": "QR-Meldungen, bei denen der Melder den E-Mail-Link bestätigt hat, zeigen die Pille Melder bestätigt in der Liste, im Dashboard und in der Detailansicht."
                 }
             ],
             "status_note": "Ändern Sie den Meldungsstatus, indem Sie die Aufgaben aktualisieren.",

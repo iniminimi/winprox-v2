@@ -78,6 +78,7 @@ class ConfirmQrReportEmailHoldAction
                 'description' => $hold->description,
                 'source' => 'qr',
                 'original_language' => $hold->original_language,
+                'reporter_email_verified' => true,
             ], $teamIds);
 
             foreach ($hold->storedPhotoPaths() as $path) {

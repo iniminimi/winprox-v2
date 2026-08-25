@@ -25,6 +25,7 @@ class Issue extends Model
         'esg_indicator_id',
         'reporter_name',
         'reporter_contact',
+        'reporter_email_verified',
         'description',
         'original_language',
         'source',
@@ -44,6 +45,7 @@ class Issue extends Model
     protected $casts = [
         'status' => TaskStatus::class,
         'source' => IssueSource::class,
+        'reporter_email_verified' => 'boolean',
         'is_recurring' => 'boolean',
         'recurrence_interval_unit' => RecurrenceIntervalUnit::class,
         'recurrence_active' => 'boolean',

@@ -127,6 +127,7 @@ it('creates an unapproved issue + auto task + photos via a valid unit token', fu
         ->and($issue->reporter_name)->toBe('Jan Melder')
         ->and($issue->reporter_contact)->toBe('jan.melder@example.test')
         ->and($issue->isApproved())->toBeFalse()
+        ->and($issue->reporter_email_verified)->toBeFalse()
         ->and($issue->photos()->count())->toBe(2);
 
     $task = Task::where('issue_id', $issue->id)->first();
@@ -277,6 +278,7 @@ it('holds a QR report until the reporter confirms email when both flags are on',
     expect($issue)->not->toBeNull()
         ->and($issue->description)->toBe('Lekkage in de keuken.')
         ->and($issue->reporter_contact)->toBe('ada@example.com')
+        ->and($issue->reporter_email_verified)->toBeTrue()
         ->and($issue->photos()->count())->toBe(1);
 
     $task = Task::query()->where('issue_id', $issue->id)->first();
@@ -288,6 +290,10 @@ it('holds a QR report until the reporter confirms email when both flags are on',
         ->assertSet('status', 'ok');
 
     expect(Issue::count())->toBe(1);
+
+    $issue->load(['location', 'unit', 'tasks.team']);
+    $row = view('partials.wp-issue-list-row', ['issue' => $issue])->render();
+    expect($row)->toContain(__('issues.card.reporter_email_verified'));
 });
 
 it('requires email when verification flags are on even if contact is optional', function () {

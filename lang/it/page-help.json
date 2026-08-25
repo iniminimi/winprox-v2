@@ -28,6 +28,10 @@
                 {
                     "label": "Aggiungi segnalazione",
                     "text": "Crei una segnalazione in due passi: sede/unità + descrizione, poi un'attività per il team giusto."
+                },
+                {
+                    "label": "Segnalazioni recenti",
+                    "text": "Le ultime segnalazioni compaiono in basso. Dopo la conferma e-mail QR vedi la pillola Segnalante confermato, accanto a stato e In attesa di controllo."
                 }
             ],
             "status_note": "Lo stato segnalazione sulla dashboard segue lo stato delle attività collegate.",
@@ -85,6 +89,10 @@
                 {
                     "label": "Approva",
                     "text": "Le segnalazioni create tramite il portale QR attendono l'approvazione. Approvi in modo che il contenuto diventi visibile sulle pagine pubbliche."
+                },
+                {
+                    "label": "Segnalante confermato",
+                    "text": "Le segnalazioni QR in cui il segnalante ha confermato il link e-mail mostrano la pillola Segnalante confermato in elenco, dashboard e dettaglio."
                 }
             ],
             "status_note": "Lo stato segnalazione è derivato automaticamente dalle attività su quella segnalazione.",
@@ -117,6 +125,10 @@
                 {
                     "label": "Traduzioni attività",
                     "text": "Nel modulo di modifica attività può aggiornare manualmente la descrizione dell'attività per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Disponibile solo quando l'attività ha una descrizione propria. Salvare finalizza la traduzione per quella lingua."
+                },
+                {
+                    "label": "Segnalante confermato",
+                    "text": "Le segnalazioni QR in cui il segnalante ha confermato il link e-mail mostrano la pillola Segnalante confermato in elenco, dashboard e dettaglio."
                 }
             ],
             "status_note": "Cambi lo stato segnalazione aggiornando le attività.",

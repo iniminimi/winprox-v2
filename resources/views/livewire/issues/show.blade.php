@@ -29,6 +29,9 @@
             @unless ($issue->isApproved())
                 <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>
             @endunless
+            @if ($issue->reporter_email_verified)
+                <span class="wp-pill wp-pill--done">{{ __('issues.card.reporter_email_verified') }}</span>
+            @endif
         </x-slot>
     </x-wp-entity-detail-head>
 

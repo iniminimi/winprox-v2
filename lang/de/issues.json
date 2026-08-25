@@ -68,7 +68,8 @@
         "reported": "Gemeldet von :name · :datetime",
         "unknown_reporter": "Unbekannt",
         "source_iot": "Via IoT",
-        "round_stops": "Runde · :count Stops"
+        "round_stops": "Runde · :count Stops",
+        "reporter_email_verified": "Melder bestätigt"
     },
     "create": {
         "title": "Neue Meldung",

@@ -68,7 +68,8 @@
         "reported": "Informada por :name · :datetime",
         "unknown_reporter": "Desconocido",
         "source_iot": "Via IoT",
-        "round_stops": "Ronda · :count paradas"
+        "round_stops": "Ronda · :count paradas",
+        "reporter_email_verified": "Informante confirmado"
     },
     "create": {
         "title": "Nueva incidencia",

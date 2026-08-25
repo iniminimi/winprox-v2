@@ -59,7 +59,7 @@ Middleware: geldige tenant + trial/abonnement (`support.tenant`). Rollen: **admi
 - **4 statussen:** Nieuw · In uitvoering · Afgehandeld · Gesloten (afgeleid van taken).
 - Aanmaak-flow (2 stappen): melding + taak/team; foto-upload (client-side compressie).
 - **QR-moderatie:** nieuwe QR-meldingen wachten op goedkeuring (`ApproveIssueAction`).
-- Optioneel: **e-mailbevestiging** (categorie én unit, AND; standaard uit). Tot de mailbox-link: geen Issue, taak of `IssueCreated`. Clock Point-uitvoerders uitgezonderd.
+- Optioneel: **e-mailbevestiging** (categorie én unit, AND; standaard uit). Tot de mailbox-link: geen Issue, taak of `IssueCreated`. Clock Point-uitvoerders uitgezonderd. Beheer: pil **Melder bevestigd**.
 - **Terugkerende meldingen** met kalendercycli.
 - Notities/updates op melding (incl. foto's).
 

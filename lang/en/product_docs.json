@@ -53,7 +53,7 @@
             },
             {
                 "title": "Issues",
-                "body": "Via unit QR, manually in admin, or (with IoT) a sensor alarm. Filters, approval of QR reports, recurring maintenance (pause or close). Optional: required contact details and/or email confirmation for anonymous QR reporters (category and unit; confirmation holds the report until the email link). On public QR pages visible only after approval; admin sees everything immediately."
+                "body": "Via unit QR, manually in admin, or (with IoT) a sensor alarm. Filters, approval of QR reports, recurring maintenance (pause or close). Optional: required contact details and/or email confirmation for anonymous QR reporters (category and unit; confirmation holds the report until the email link). On public QR pages visible only after approval; admin sees everything immediately. In admin a Reporter confirmed pill appears when the QR reporter confirmed the email link."
             },
             {
                 "title": "Photos",

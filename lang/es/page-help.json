@@ -28,6 +28,10 @@
                 {
                     "label": "Añadir incidencia",
                     "text": "Cree una incidencia en dos pasos: ubicación/unidad + descripción, luego una tarea para el equipo correcto."
+                },
+                {
+                    "label": "Avisos recientes",
+                    "text": "Los últimos avisos aparecen abajo. Tras confirmar el correo QR verá la pastilla Informante confirmado, junto al estado y Pendiente de revisión."
                 }
             ],
             "status_note": "El estado de la incidencia en el panel de control sigue el estado de las tareas vinculadas.",
@@ -85,6 +89,10 @@
                 {
                     "label": "Aprobar",
                     "text": "Las incidencias creadas mediante el portal QR esperan aprobación. Apruebe para que el contenido sea visible en las páginas públicas."
+                },
+                {
+                    "label": "Informante confirmado",
+                    "text": "Los avisos QR en los que el informante confirmó el enlace de correo muestran la pastilla Informante confirmado en la lista, el panel y el detalle."
                 }
             ],
             "status_note": "El estado de la incidencia se deriva automáticamente de las tareas de esa incidencia.",
@@ -117,6 +125,10 @@
                 {
                     "label": "Traducciones de tarea",
                     "text": "En el formulario de edición de la tarea puede actualizar manualmente la descripción de la tarea por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Solo disponible cuando la tarea tiene su propia descripción. Guardar finaliza la traducción para ese idioma."
+                },
+                {
+                    "label": "Informante confirmado",
+                    "text": "Los avisos QR en los que el informante confirmó el enlace de correo muestran la pastilla Informante confirmado en la lista, el panel y el detalle."
                 }
             ],
             "status_note": "Cambie el estado de la incidencia actualizando las tareas.",

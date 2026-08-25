@@ -28,6 +28,10 @@
                 {
                     "label": "Ajouter un signalement",
                     "text": "Créez un signalement en deux étapes : site/unité + description, puis une tâche pour la bonne équipe."
+                },
+                {
+                    "label": "Signalements récents",
+                    "text": "Les derniers signalements apparaissent en bas. Après confirmation e-mail QR, la pastille Déclarant confirmé s’affiche, à côté du statut et En attente de contrôle."
                 }
             ],
             "status_note": "Le statut du signalement sur le tableau de bord suit le statut des tâches liées.",
@@ -85,6 +89,10 @@
                 {
                     "label": "Approuver",
                     "text": "Les signalements créés via le portail QR attendent une approbation. Approuvez pour rendre le contenu visible sur les pages publiques."
+                },
+                {
+                    "label": "Déclarant confirmé",
+                    "text": "Les signalements QR dont le déclarant a confirmé le lien e-mail affichent la pastille Déclarant confirmé dans la liste, le tableau de bord et le détail."
                 }
             ],
             "status_note": "Le statut du signalement est dérivé automatiquement des tâches associées.",
@@ -117,6 +125,10 @@
                 {
                     "label": "Traductions de tâche",
                     "text": "Dans le formulaire d’édition de la tâche, vous pouvez mettre à jour manuellement la description de la tâche par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Disponible uniquement lorsque la tâche a une description propre. Enregistrer finalise la traduction pour cette langue."
+                },
+                {
+                    "label": "Déclarant confirmé",
+                    "text": "Les signalements QR dont le déclarant a confirmé le lien e-mail affichent la pastille Déclarant confirmé dans la liste, le tableau de bord et le détail."
                 }
             ],
             "status_note": "Modifiez le statut du signalement en mettant à jour les tâches.",

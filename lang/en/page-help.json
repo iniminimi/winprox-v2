@@ -28,6 +28,10 @@
                 {
                     "label": "Add issue",
                     "text": "Create an issue in two steps: location/unit + description, then a task for the right team."
+                },
+                {
+                    "label": "Recent issues",
+                    "text": "The latest issues appear at the bottom. After a confirmed QR email you see the Reporter confirmed pill, next to status and Awaiting review."
                 }
             ],
             "status_note": "Issue status on the dashboard follows the status of linked tasks.",
@@ -85,6 +89,10 @@
                 {
                     "label": "Approve",
                     "text": "Issues created via the QR portal wait for approval. Approve so content becomes visible on public pages."
+                },
+                {
+                    "label": "Reporter confirmed",
+                    "text": "QR reports where the reporter confirmed the email link show the Reporter confirmed pill on the list, the dashboard and the issue detail."
                 }
             ],
             "status_note": "Issue status is derived automatically from the tasks on that issue.",
@@ -117,6 +125,10 @@
                 {
                     "label": "Task translations",
                     "text": "In the task edit form you can manually update the task description per language (NL, EN, FR, DE). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Only available when the task has its own description. Saving finalises the translation for that language."
+                },
+                {
+                    "label": "Reporter confirmed",
+                    "text": "QR reports where the reporter confirmed the email link show the Reporter confirmed pill on the list, the dashboard and the issue detail."
                 }
             ],
             "status_note": "Change issue status by updating the tasks.",

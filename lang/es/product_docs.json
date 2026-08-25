@@ -53,7 +53,7 @@
             },
             {
                 "title": "Issues",
-                "body": "Vía QR de unidad, manualmente en administración, o (con IoT) alarma de sensor. Filtros, aprobación de avisos QR, mantenimiento recurrente (pausar o cerrar). Opcional: datos de contacto obligatorios y/o confirmación de correo para informantes anónimos por QR (categoría y unidad; la confirmación retiene el informe hasta el enlace del correo). En páginas QR públicas visibles solo tras aprobación; la administración lo ve todo de inmediato."
+                "body": "Vía QR de unidad, manualmente en administración, o (con IoT) alarma de sensor. Filtros, aprobación de avisos QR, mantenimiento recurrente (pausar o cerrar). Opcional: datos de contacto obligatorios y/o confirmación de correo para informantes anónimos por QR (categoría y unidad; la confirmación retiene el informe hasta el enlace del correo). En páginas QR públicas visibles solo tras aprobación; la administración lo ve todo de inmediato. En administración aparece la pastilla Informante confirmado cuando el informante QR confirmó el enlace de correo."
             },
             {
                 "title": "Photos",

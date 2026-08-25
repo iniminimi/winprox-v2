@@ -28,6 +28,10 @@
                 {
                     "label": "Melding toevoegen",
                     "text": "Maak een melding in twee stappen: locatie/unit + omschrijving, daarna een taak voor het juiste team."
+                },
+                {
+                    "label": "Recente meldingen",
+                    "text": "De laatste meldingen staan onderaan. Bij een bevestigde QR-e-mail zie je de pil Melder bevestigd, naast status en Wacht op controle."
                 }
             ],
             "status_note": "Meldingstatus op het dashboard volgt de status van de gekoppelde taken.",
@@ -85,6 +89,10 @@
                 {
                     "label": "Goedkeuren",
                     "text": "Meldingen gemaakt via het QR-portaal wachten op goedkeuring. Keur goed zodat inhoud op publieke pagina's zichtbaar wordt."
+                },
+                {
+                    "label": "Melder bevestigd",
+                    "text": "QR-meldingen waarbij de melder de e-maillink heeft bevestigd, tonen de pil Melder bevestigd op het overzicht, het dashboard en het meldingdetail."
                 }
             ],
             "status_note": "De meldingstatus wordt automatisch afgeleid uit de taken op die melding.",
@@ -117,6 +125,10 @@
                 {
                     "label": "Taakvertalingen",
                     "text": "In het taak-bewerkformulier kun je de taakomschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Alleen beschikbaar wanneer de taak een eigen omschrijving heeft. Opslaan maakt de vertaling definitief voor die taal."
+                },
+                {
+                    "label": "Melder bevestigd",
+                    "text": "QR-meldingen waarbij de melder de e-maillink heeft bevestigd, tonen de pil Melder bevestigd op het overzicht, het dashboard en het meldingdetail."
                 }
             ],
             "status_note": "Wijzig de meldingstatus door de taken bij te werken.",

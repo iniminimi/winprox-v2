@@ -28,6 +28,7 @@ class IssueResource extends JsonResource
             'unit_id' => $this->unit_id,
             'reporter_name' => $this->reporter_name,
             'reporter_contact' => $this->reporter_contact,
+            'reporter_email_verified' => (bool) $this->reporter_email_verified,
             'approved' => $this->isApproved(),
             'approved_at' => optional($this->approved_at)->toIso8601String(),
             'source' => $this->source?->value ?? IssueSource::Manager->value,

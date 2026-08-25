@@ -68,7 +68,8 @@
         "reported": "Gemeld door :name · :datetime",
         "unknown_reporter": "Onbekend",
         "source_iot": "Via IoT",
-        "round_stops": "Ronde · :count stops"
+        "round_stops": "Ronde · :count stops",
+        "reporter_email_verified": "Melder bevestigd"
     },
     "create": {
         "title": "Nieuwe melding",

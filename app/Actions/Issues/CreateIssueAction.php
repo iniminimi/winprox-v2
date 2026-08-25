@@ -35,6 +35,7 @@ class CreateIssueAction
             'esg_indicator_id' => self::resolveEsgIndicatorId($data),
             'reporter_name' => $data['reporter_name'] ?? null,
             'reporter_contact' => $data['reporter_contact'] ?? null,
+            'reporter_email_verified' => (bool) ($data['reporter_email_verified'] ?? false),
             'description' => $data['description'],
             'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'source' => $source,

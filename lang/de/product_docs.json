@@ -53,7 +53,7 @@
             },
             {
                 "title": "Issues",
-                "body": "Über Unit-QR, manuell in der Verwaltung oder (mit IoT) Sensoralarm. Filter, Freigabe von QR-Meldungen, wiederkehrende Wartung (pausieren oder schließen). Optional: Kontaktdaten Pflicht und/oder E-Mail-Bestätigung für anonyme QR-Melder (Kategorie und Unit; die Bestätigung hält die Meldung bis zum Link in der Mail). Auf öffentlichen QR-Seiten erst nach Freigabe sichtbar; die Verwaltung sieht alles sofort."
+                "body": "Über Unit-QR, manuell in der Verwaltung oder (mit IoT) Sensoralarm. Filter, Freigabe von QR-Meldungen, wiederkehrende Wartung (pausieren oder schließen). Optional: Kontaktdaten Pflicht und/oder E-Mail-Bestätigung für anonyme QR-Melder (Kategorie und Unit; die Bestätigung hält die Meldung bis zum Link in der Mail). Auf öffentlichen QR-Seiten erst nach Freigabe sichtbar; die Verwaltung sieht alles sofort. In der Verwaltung erscheint die Pille Melder bestätigt, wenn der QR-Melder den E-Mail-Link bestätigt hat."
             },
             {
                 "title": "Photos",

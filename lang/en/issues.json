@@ -68,7 +68,8 @@
         "reported": "Reported by :name · :datetime",
         "unknown_reporter": "Unknown",
         "source_iot": "Via IoT",
-        "round_stops": "Round · :count stops"
+        "round_stops": "Round · :count stops",
+        "reporter_email_verified": "Reporter confirmed"
     },
     "create": {
         "title": "New issue",
