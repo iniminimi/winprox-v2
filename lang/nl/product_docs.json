@@ -189,7 +189,7 @@
                     "Verwerkersovereenkomst (DPA) en subverwerkerslijst beschikbaar.",
                     "Data-export (account), self-service organisatieverwijdering, bewaartermijnen vastgelegd.",
                     "Gegevens blijven in de **EU** (hosting/e-mail). Stripe EU/US indien betalend. Bij **Inloggen met Microsoft** gaat de gebruiker naar Microsoft Entra ID (Microsoft, EU/US); WinProx ontvangt e-mail (en eventueel naam) om het bestaande account te herkennen.",
-                    "Optionele e-mailbevestiging bij QR-meldingen: tijdelijke conceptopslag tot de link; onbevestigd automatisch verwijderd (standaard 60 minuten, inclusief foto’s). De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar of uitgeschreven is gemarkeerd. Geen gebruikersaccount."
+                    "Optionele e-mailbevestiging bij QR-meldingen: tijdelijke conceptopslag tot de link; onbevestigd automatisch verwijderd (standaard 60 minuten, inclusief foto’s). De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar (bounce) is gemarkeerd. Uitschrijven van marketingmails blokkeert deze bevestiging niet. Geen gebruikersaccount."
                 ]
             },
             {
@@ -204,7 +204,7 @@
                 "title": "Authenticatie",
                 "items": [
                     "Beheer: e-mail + wachtwoord (gehasht opgeslagen), sessies.",
-                    "Zelfregistratie vereist **e-mailverificatie**: het account werkt pas na het klikken op de link in de bevestigingsmail. De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar of uitgeschreven is gemarkeerd. Niet-geverifieerde aanmeldingen worden na 7 dagen automatisch en volledig verwijderd.",
+                    "Zelfregistratie vereist **e-mailverificatie**: het account werkt pas na het klikken op de link in de bevestigingsmail. De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar (bounce) is gemarkeerd. Uitschrijven van marketingmails blokkeert deze bevestiging niet. Niet-geverifieerde aanmeldingen worden na 7 dagen automatisch en volledig verwijderd.",
                     "**SSO** (één bedrijfs-login via Microsoft Entra): op desktop voor beheerder en medewerker (**Inloggen met Microsoft**). Alleen bestaande WinProx-accounts (e-mail gelijk aan het Microsoft-account); e-mail + wachtwoord blijft werken. Geen automatische nieuwe accounts. Uitvoerders blijven Clock Point-QR (naam + icoon). Koppeling met andere software (Ultimo, IWMS, …) loopt via API-sleutels, niet via SSO.",
                     "API: persoonlijke **toegangssleutel** (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.",
                     "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon.",

@@ -45,11 +45,6 @@ class VerifyQrReportEmailMail extends Mailable
         $location = $unit?->location;
         $unitName = (string) ($unit?->name ?? '');
         $locationName = (string) ($location?->name ?? '');
-        $photoCount = count($this->hold->storedPhotoPaths());
-
-        $submittedAt = $this->hold->created_at
-            ? $this->hold->created_at->timezone((string) config('app.timezone'))->format('d/m/Y H:i')
-            : '';
 
         return new Content(
             html: 'emails.contact.winprox-template',
@@ -61,13 +56,7 @@ class VerifyQrReportEmailMail extends Mailable
                     'expiresInMinutes' => $expiresInMinutes,
                     'unitName' => $unitName,
                     'locationName' => $locationName,
-                    'locationLine' => collect([$locationName, $unitName])->filter()->join(' · '),
-                    'address' => $location?->formattedAddress() ?? '',
-                    'reporterName' => (string) ($this->hold->reporter_name ?? ''),
-                    'reporterEmail' => (string) ($this->hold->reporter_contact ?? ''),
                     'description' => (string) ($this->hold->description ?? ''),
-                    'submittedAt' => $submittedAt,
-                    'photoCount' => $photoCount,
                 ])->render(),
             ],
         );

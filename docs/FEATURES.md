@@ -758,7 +758,7 @@ Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.
 **Nooit gebruikt account** (`unused` track):
 1. Zelfregistratie zonder **e-mailverificatie** blijft geblokkeerd (`EnsureUserEmailIsVerified`);
    publieke pagina's en QR-portalen blijven wel open. Bevestigingsmail: dezelfde preflight als promo
-   (geldige syntax; geen verzending naar eerder gebouncete of uitgeschreven adressen).
+   (geldige syntax; geen verzending naar eerder gebouncete adressen). Uitschrijven van marketingmails blokkeert deze bevestigingsmail niet.
 2. **T+7** (`unverified_registration_days`): `winprox:tenant-purge-maintenance` wist de tenant via
    dezelfde `ExecuteTenantPurgeAction` (snapshot + hard delete), **zonder** mail naar het
    (mogelijk valse) adres.
@@ -934,8 +934,9 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   veldwerkers). Optionele **e-mailbevestiging** (`require_reporter_email_verification` op
   categorie **én** unit): de melding wordt vastgehouden tot de melder de link in de mail
   klikt (geen Issue, taak of `IssueCreated` tot dan). Zelfde publieke QR-rate-limits als
-  bij direct indienen. Zelfde e-mailpreflight als promo-campagnes (geldige syntax; geen
-  verzending naar eerder gebouncete of uitgeschreven adressen). Submit zonder die poort → maakt:
+  bij direct indienen. Preflight: geldige syntax; geen verzending naar eerder gebouncete
+  adressen. Uitschrijven van marketingmails blokkeert deze bevestigingsmail niet.
+  Submit zonder die poort → maakt:
   - `Issue` (`source=qr`, ongekeurd tot moderatie), gescoped op tenant/location/unit.
   - Foto's via `IssuePhotoStorage` (client comprimeert ≤1600px/JPEG ~72%, queue; server geen resize).
   - **Automatisch een taak** voor het **standaardteam van de unit** (oud: `FacilityQrIntake`),

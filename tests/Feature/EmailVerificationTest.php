@@ -62,7 +62,7 @@ it('weigert registratie naar een eerder gebouncet e-mailadres', function () {
     Mail::assertNotSent(VerifyUserEmailMail::class);
 });
 
-it('weigert een nieuwe verificatiemail naar een uitgeschreven adres', function () {
+it('stuurt een account-bevestigingsmail ook naar een uitgeschreven adres', function () {
     Mail::fake();
 
     $user = unverifiedTenantAdmin();
@@ -76,9 +76,10 @@ it('weigert een nieuwe verificatiemail naar een uitgeschreven adres', function (
 
     Livewire::actingAs($user)->test(VerifyEmailNotice::class)
         ->call('resend')
-        ->assertHasErrors('email');
+        ->assertHasNoErrors()
+        ->assertSet('status', __('auth.verify.resent'));
 
-    Mail::assertNotSent(VerifyUserEmailMail::class);
+    Mail::assertSent(VerifyUserEmailMail::class);
 });
 
 it('houdt beheerschermen dicht tot het e-mailadres bevestigd is', function () {

@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Enums\EmailUnsubscribeSource;
 use App\Events\OutgoingMailBlockedByUnsubscribe;
 use App\Models\EmailUnsubscribe;
 use App\Support\EmailUnsubscribeExemptions;
@@ -16,12 +17,20 @@ class BlockUnsubscribedEmailRecipients
      */
     public function handle(MessageSending $event): ?bool
     {
+        $transactional = $event->message->getHeaders()->has('X-WinProx-Transactional');
         $blocked = [];
 
         foreach ($this->nonExemptRecipientEmails($event->message) as $email) {
-            if (EmailUnsubscribe::isUnsubscribed($email)) {
-                $blocked[] = $email;
+            $row = EmailUnsubscribe::query()->where('email', $email)->first();
+            if ($row === null) {
+                continue;
             }
+
+            if ($transactional && $row->source !== EmailUnsubscribeSource::Undeliverable) {
+                continue;
+            }
+
+            $blocked[] = $email;
         }
 
         if ($blocked === []) {

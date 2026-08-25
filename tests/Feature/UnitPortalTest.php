@@ -264,7 +264,6 @@ it('holds a QR report until the reporter confirms email when both flags are on',
 
         return $mail->hasTo('ada@example.com')
             && str_contains($html, 'Lekkage in de keuken.')
-            && str_contains($html, 'ada@example.com')
             && ! str_contains($html, '/storage/');
     });
 
@@ -323,7 +322,7 @@ it('does not send a QR confirmation mail to a previously bounced address', funct
     Mail::assertNotSent(VerifyQrReportEmailMail::class);
 });
 
-it('does not send a QR confirmation mail to an unsubscribed address', function () {
+it('sends a QR confirmation mail to a marketing-unsubscribed address', function () {
     Mail::fake();
     ['unit' => $unit] = unitPortalScaffold();
     $unit->category->update(['require_reporter_email_verification' => true]);
@@ -339,10 +338,10 @@ it('does not send a QR confirmation mail to an unsubscribed address', function (
         ->set('description', 'Lekkage in de keuken.')
         ->set('reporter_email', 'unsub@example.com')
         ->call('submitReport')
-        ->assertHasErrors('reporter_email');
+        ->assertHasNoErrors();
 
-    expect(QrReportEmailHold::count())->toBe(0);
-    Mail::assertNotSent(VerifyQrReportEmailMail::class);
+    expect(QrReportEmailHold::count())->toBe(1);
+    Mail::assertSent(VerifyQrReportEmailMail::class);
 });
 
 it('requires email when verification flags are on even if contact is optional', function () {

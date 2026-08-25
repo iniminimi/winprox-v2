@@ -17,6 +17,9 @@ class ReservationManageMail extends Mailable
     {
         $this->locale((string) config('locales.default', 'nl'));
         $this->reservation->loadMissing(['unit.location', 'tenant']);
+        $this->withSymfonyMessage(function (\Symfony\Component\Mime\Email $message): void {
+            $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
+        });
     }
 
     public function envelope(): Envelope

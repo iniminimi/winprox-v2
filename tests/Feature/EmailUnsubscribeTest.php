@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\EmailUnsubscribeSource;
 use App\Events\OutgoingMailBlockedByUnsubscribe;
 use App\Listeners\AppendEmailUnsubscribeFooterToMessage;
 use App\Listeners\BlockUnsubscribedEmailRecipients;
@@ -77,6 +78,42 @@ describe('BlockUnsubscribedEmailRecipients listener', function () {
 
         expect($result)->toBeNull();
         Event::assertNotDispatched(OutgoingMailBlockedByUnsubscribe::class);
+    });
+
+    it('allows transactional confirmation mail to unsubscribed addresses', function () {
+        EmailUnsubscribe::create([
+            'email' => 'unsubscribed@example.com',
+            'source' => EmailUnsubscribeSource::Voluntary,
+            'unsubscribed_at' => now(),
+        ]);
+
+        $message = new Email();
+        $message->to('unsubscribed@example.com');
+        $message->subject('Confirm');
+        $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
+
+        $result = (new BlockUnsubscribedEmailRecipients())->handle(new MessageSending($message));
+
+        expect($result)->toBeNull();
+        Event::assertNotDispatched(OutgoingMailBlockedByUnsubscribe::class);
+    });
+
+    it('still blocks transactional mail to previously bounced addresses', function () {
+        EmailUnsubscribe::create([
+            'email' => 'bounce@example.com',
+            'source' => EmailUnsubscribeSource::Undeliverable,
+            'unsubscribed_at' => now(),
+        ]);
+
+        $message = new Email();
+        $message->to('bounce@example.com');
+        $message->subject('Confirm');
+        $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
+
+        $result = (new BlockUnsubscribedEmailRecipients())->handle(new MessageSending($message));
+
+        expect($result)->toBeFalse();
+        Event::assertDispatched(OutgoingMailBlockedByUnsubscribe::class);
     });
 
     it('allows emails to exempt addresses even if in unsubscribe list', function () {

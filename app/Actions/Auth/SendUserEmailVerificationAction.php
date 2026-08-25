@@ -33,16 +33,15 @@ class SendUserEmailVerificationAction
             ]);
         }
 
-        if ($assessment->normalizedEmail === null || ! $assessment->accepted) {
-            $undeliverable = in_array($assessment->reason, [
-                PromoEmailPreflightReason::PreviouslyBounced,
-                PromoEmailPreflightReason::Unsubscribed,
-            ], true);
-
+        if ($assessment->reason === PromoEmailPreflightReason::PreviouslyBounced) {
             throw ValidationException::withMessages([
-                'email' => [$undeliverable
-                    ? __('auth.errors.email_undeliverable')
-                    : __('auth.errors.email_invalid')],
+                'email' => [__('auth.errors.email_undeliverable')],
+            ]);
+        }
+
+        if ($assessment->normalizedEmail === null) {
+            throw ValidationException::withMessages([
+                'email' => [__('auth.errors.email_invalid')],
             ]);
         }
 

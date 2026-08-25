@@ -124,16 +124,15 @@ class HoldQrReportForEmailVerificationAction
             ]);
         }
 
-        if ($assessment->normalizedEmail === null || ! $assessment->accepted) {
-            $undeliverable = in_array($assessment->reason, [
-                PromoEmailPreflightReason::PreviouslyBounced,
-                PromoEmailPreflightReason::Unsubscribed,
-            ], true);
-
+        if ($assessment->reason === PromoEmailPreflightReason::PreviouslyBounced) {
             throw ValidationException::withMessages([
-                'reporter_email' => [$undeliverable
-                    ? __('portal.report.errors.reporter_email_undeliverable')
-                    : __('portal.report.errors.reporter_email_invalid')],
+                'reporter_email' => [__('portal.report.errors.reporter_email_undeliverable')],
+            ]);
+        }
+
+        if ($assessment->normalizedEmail === null) {
+            throw ValidationException::withMessages([
+                'reporter_email' => [__('portal.report.errors.reporter_email_invalid')],
             ]);
         }
 
