@@ -449,28 +449,38 @@ it('vernieuwt een clock point QR en laat oude token werken tijdens grace', funct
         ->assertSet('inactiveReasonKey', null);
 });
 
-it('blokkeert een verlopen QR-token en logt de poging', function () {
+it('blokkeert een verlopen QR-token, logt de poging en toont de foutkaart', function () {
     [$tenant] = timeTenantWithAdmin();
     $clockPoint = ClockPoint::factory()->create([
         'tenant_id' => $tenant->id,
-        'qr_token' => 'current-token',
+        'qr_token' => 'currenttokenabcdefghijklmnopqrstu',
     ]);
 
     $history = \App\Models\ClockPointQrToken::query()->create([
         'tenant_id' => $tenant->id,
         'clock_point_id' => $clockPoint->id,
-        'qr_token' => 'blocked-token',
+        'qr_token' => 'blockedtokenabcdefghijklmnopqrstu',
         'grace_ends_at' => now()->subDay(),
         'blocked_at' => now(),
     ]);
 
-    Livewire::test(TimePortal::class, ['token' => $history->qr_token])
-        ->assertSet('inactiveReasonKey', 'portal.inactive.clock_point_qr_expired');
+    $this->get('/time/'.$history->qr_token)
+        ->assertNotFound()
+        ->assertSee(__('qr.invalid.title'))
+        ->assertSee(__('qr.invalid.welcome'))
+        ->assertDontSee(__('error.404.title'));
 
     expect(DB::table('audit_logs')
         ->where('action', 'clock_point.qr_blocked')
         ->where('model_id', $clockPoint->id)
         ->exists())->toBeTrue();
+});
+
+it('toont de QR-foutkaart voor een onbekend clock-point-token', function () {
+    $this->get('/time/aaaaaaaaaaaaaaaaaaaaaaaa')
+        ->assertNotFound()
+        ->assertSee(__('qr.invalid.title'))
+        ->assertDontSee(__('error.404.title'));
 });
 
 it('toont renewal-aanbeveling wanneer aanbevolen datum verstreken is', function () {

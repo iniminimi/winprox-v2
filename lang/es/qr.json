@@ -48,25 +48,15 @@
         "sticker": "Número de pegatina",
         "login": "Iniciar sesión"
     },
-    "damaged": {
-        "title": "Código QR dañado",
-        "message": "Este código QR está marcado como dañado. Contacte con su administrador.",
-        "sticker": "Número de pegatina"
-    },
-    "inactive": {
-        "title": "Código QR inactivo",
-        "message": "Este código QR está desactivado y no se puede usar.",
-        "sticker": "Número de pegatina"
-    },
     "unassigned_no_permission": {
         "title": "Sin permiso",
         "message": "No tiene permiso para vincular códigos QR.",
         "sticker": "Número de pegatina",
         "dashboard": "Ir al panel de control"
     },
-    "error": {
-        "title": "Error",
-        "message": "Se ha producido un error al procesar este código QR.",
-        "sticker": "Número de pegatina"
+    "invalid": {
+        "title": "Código QR no válido",
+        "message": "Este código QR ya no es válido.",
+        "welcome": "Ir a la página de inicio"
     }
 }

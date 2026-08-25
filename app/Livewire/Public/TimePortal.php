@@ -23,6 +23,7 @@ use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerIcon;
 use App\Support\Portal\WorkerIconGuard;
 use App\Support\Portal\WorkerVerification;
+use App\Support\Qr\InvalidQrResponse;
 use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
 use App\Support\Time\TimeModuleAccess;
@@ -68,11 +69,13 @@ class TimePortal extends Component
         $resolution = app(ResolveClockPointPortalTokenAction::class)->handle($token);
 
         if ($resolution->status === ClockPointPortalTokenResolution::STATUS_NOT_FOUND) {
-            abort(404);
+            InvalidQrResponse::abort();
         }
 
         $clockPoint = $resolution->clockPoint;
-        abort_unless($clockPoint, 404);
+        if ($clockPoint === null) {
+            InvalidQrResponse::abort();
+        }
 
         if ($resolution->status === ClockPointPortalTokenResolution::STATUS_BLOCKED) {
             Tenancy::actAs($clockPoint->tenant_id);
@@ -81,14 +84,7 @@ class TimePortal extends Component
                 $token,
                 $resolution->historyToken,
             );
-            $this->token = $token;
-            $this->clockPointId = $clockPoint->id;
-            $this->tenantId = $clockPoint->tenant_id;
-            $this->clockPointName = $clockPoint->name;
-            $this->inactiveReasonKey = 'portal.inactive.clock_point_qr_expired';
-            $this->syncLocaleFromRequest();
-
-            return;
+            InvalidQrResponse::abort();
         }
 
         $this->token = $token;

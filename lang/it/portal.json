@@ -15,7 +15,6 @@
         "unit_inactive": "Questo portale non è attualmente disponibile.",
         "team_inactive": "Questo portale team non è attualmente disponibile.",
         "clock_point_inactive": "Questo punto timbratura non è attualmente disponibile.",
-        "clock_point_qr_expired": "Questo codice QR non è più valido — contatta l'amministratore.",
         "tenant_inactive": "Questo portale non è attualmente disponibile per questa organizzazione.",
         "subscription_inactive": "Questo portale è temporaneamente non disponibile. Contatti il Suo amministratore."
     },

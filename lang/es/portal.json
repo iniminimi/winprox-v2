@@ -15,7 +15,6 @@
         "unit_inactive": "Este portal no está disponible actualmente.",
         "team_inactive": "Este portal de equipo no está disponible actualmente.",
         "clock_point_inactive": "Este punto de fichaje no está disponible actualmente.",
-        "clock_point_qr_expired": "Este código QR ya no es válido — contacte con el administrador.",
         "tenant_inactive": "Este portal no está disponible actualmente para esta organización.",
         "subscription_inactive": "Este portal no está disponible temporalmente. Contacte con su administrador."
     },

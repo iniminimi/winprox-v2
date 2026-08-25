@@ -48,25 +48,15 @@
         "sticker": "Numero adesivo",
         "login": "Accedi"
     },
-    "damaged": {
-        "title": "Codice QR danneggiato",
-        "message": "Questo codice QR è contrassegnato come danneggiato. Contatti il Suo amministratore.",
-        "sticker": "Numero adesivo"
-    },
-    "inactive": {
-        "title": "Codice QR inattivo",
-        "message": "Questo codice QR è disattivato e non può essere utilizzato.",
-        "sticker": "Numero adesivo"
-    },
     "unassigned_no_permission": {
         "title": "Nessuna autorizzazione",
         "message": "Non ha l'autorizzazione per collegare codici QR.",
         "sticker": "Numero adesivo",
         "dashboard": "Vai alla dashboard"
     },
-    "error": {
-        "title": "Errore",
-        "message": "Si è verificato un errore durante l'elaborazione di questo codice QR.",
-        "sticker": "Numero adesivo"
+    "invalid": {
+        "title": "Codice QR non valido",
+        "message": "Questo codice QR non è (più) valido.",
+        "welcome": "Vai alla home"
     }
 }

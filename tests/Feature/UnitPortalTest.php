@@ -1,9 +1,12 @@
 <?php
 
 use App\Actions\Public\AssertPublicReportRateLimitAction;
+use App\Actions\Public\ExpireQrReportEmailHoldsAction;
 use App\Actions\Public\RecordPublicReportRateLimitAction;
 use App\Enums\TaskStatus;
+use App\Livewire\Public\ConfirmQrReportEmail;
 use App\Livewire\Public\UnitPortal;
+use App\Mail\VerifyQrReportEmailMail;
 use App\Models\Announcement;
 use App\Models\Category;
 use App\Models\Document;
@@ -13,6 +16,7 @@ use App\Models\Location;
 use App\Models\IssuePhoto;
 use App\Models\IssueUpdate;
 use App\Models\QrLinkPhoto;
+use App\Models\QrReportEmailHold;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -23,6 +27,7 @@ use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerVerification;
 use App\Support\Tenancy;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 
@@ -230,8 +235,12 @@ it('keeps reporter contact optional when only the category flag is on', function
     expect(Issue::count())->toBe(1);
 });
 
-it('returns 404 for an unknown unit token', function () {
-    $this->get('/melden/bestaat-niet')->assertNotFound();
+it('shows the invalid scan card for an unknown unit token', function () {
+    $this->get('/melden/bestaat-niet')
+        ->assertNotFound()
+        ->assertSee(__('qr.invalid.title'))
+        ->assertSee(__('qr.invalid.welcome'))
+        ->assertDontSee(__('error.404.title'));
 });
 
 it('shows public page help before worker sign-in on the unit portal', function () {

@@ -49,6 +49,7 @@ use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerIcon;
 use App\Support\Portal\WorkerIconGuard;
 use App\Support\Portal\WorkerVerification;
+use App\Support\Qr\InvalidQrResponse;
 use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Cookie;
@@ -142,7 +143,9 @@ class UnitPortal extends Component
             ->where('qr_token', $token)
             ->first();
 
-        abort_unless($unit, 404);
+        if (! $unit) {
+            InvalidQrResponse::abort();
+        }
 
         $recordVisit->handle($unit, request()->ip());
 

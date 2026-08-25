@@ -10,6 +10,7 @@ use App\Models\QrCode;
 use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Portal\WorkerDeviceSession;
+use App\Support\Qr\InvalidQrResponse;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
@@ -55,7 +56,11 @@ class UnassignedQrPortal extends Component
     public function mount(string $token): void
     {
         $this->token = $token;
-        $this->qrCode = QrCode::withoutGlobalScopes()->with('unit')->where('token', $token)->firstOrFail();
+        $qrCode = QrCode::withoutGlobalScopes()->with('unit')->where('token', $token)->first();
+        if ($qrCode === null) {
+            InvalidQrResponse::abort();
+        }
+        $this->qrCode = $qrCode;
         $this->tenantId = $this->qrCode->tenant_id;
         $this->stickerNumber = $this->qrCode->display_sticker_number;
 

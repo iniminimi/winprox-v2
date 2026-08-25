@@ -15,7 +15,6 @@
         "unit_inactive": "This portal is currently unavailable.",
         "team_inactive": "This team portal is currently unavailable.",
         "clock_point_inactive": "This clock point is currently unavailable.",
-        "clock_point_qr_expired": "This QR code is no longer valid — contact your administrator.",
         "tenant_inactive": "This portal is currently unavailable for this organisation.",
         "subscription_inactive": "This portal is temporarily unavailable. Please contact your administrator."
     },

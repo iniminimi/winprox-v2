@@ -9,7 +9,8 @@ use App\Models\Unit;
 
 /**
  * Toegang/gating voor de publieke QR-portalen. Bij inactiviteit zijn alle acties
- * no-op en toont het portaal een gelokaliseerde reden. Onbekende tokens → 404.
+ * no-op en toont het portaal een gelokaliseerde reden. Onbekende of onbruikbare
+ * tokens → publieke foutkaart (`InvalidQrResponse`).
  */
 final class PortalAccess
 {

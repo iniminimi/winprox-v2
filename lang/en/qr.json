@@ -48,25 +48,15 @@
         "sticker": "Sticker number",
         "login": "Log in"
     },
-    "damaged": {
-        "title": "QR code damaged",
-        "message": "This QR code is marked as damaged. Please contact your administrator.",
-        "sticker": "Sticker number"
-    },
-    "inactive": {
-        "title": "QR code inactive",
-        "message": "This QR code is deactivated and cannot be used.",
-        "sticker": "Sticker number"
-    },
     "unassigned_no_permission": {
         "title": "No permission",
         "message": "You do not have permission to link QR codes.",
         "sticker": "Sticker number",
         "dashboard": "Go to dashboard"
     },
-    "error": {
-        "title": "Error",
-        "message": "An error occurred while processing this QR code.",
-        "sticker": "Sticker number"
+    "invalid": {
+        "title": "QR code not valid",
+        "message": "This QR code is not valid (anymore).",
+        "welcome": "Go to the homepage"
     }
 }

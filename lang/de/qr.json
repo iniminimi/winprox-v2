@@ -48,25 +48,15 @@
         "sticker": "Aufklebernummer",
         "login": "Anmelden"
     },
-    "damaged": {
-        "title": "QR-Code beschädigt",
-        "message": "Dieser QR-Code ist als beschädigt markiert. Bitte wenden Sie sich an Ihren Administrator.",
-        "sticker": "Aufklebernummer"
-    },
-    "inactive": {
-        "title": "QR-Code inaktiv",
-        "message": "Dieser QR-Code ist deaktiviert und kann nicht verwendet werden.",
-        "sticker": "Aufklebernummer"
-    },
     "unassigned_no_permission": {
         "title": "Keine Berechtigung",
         "message": "Sie haben keine Berechtigung, QR-Codes zu verknüpfen.",
         "sticker": "Aufklebernummer",
         "dashboard": "Zum Dashboard gehen"
     },
-    "error": {
-        "title": "Fehler",
-        "message": "Beim Verarbeiten dieses QR-Codes ist ein Fehler aufgetreten.",
-        "sticker": "Aufklebernummer"
+    "invalid": {
+        "title": "QR-Code ungültig",
+        "message": "Dieser QR-Code ist nicht (mehr) gültig.",
+        "welcome": "Zur Startseite"
     }
 }

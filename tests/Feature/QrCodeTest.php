@@ -169,30 +169,46 @@ it('redirects authenticated user with permission to unassigned portal', function
     $response->assertRedirect(route('public.unassigned-qr-portal', ['token' => $qrCode->token]));
 });
 
-it('shows damaged QR code page', function () {
+it('shows damaged QR code as the invalid scan card', function () {
     ['tenant' => $tenant] = qrCodeScaffold();
 
     $qrCode = QrCode::factory()->damaged()->create(['tenant_id' => $tenant->id]);
 
     $response = $this->get("/q/{$qrCode->token}");
 
-    $response->assertStatus(403)
-        ->assertSee(__('qr.damaged.title'));
+    $response->assertNotFound()
+        ->assertSee(__('qr.invalid.title'))
+        ->assertSee(__('qr.invalid.welcome'))
+        ->assertDontSee(__('error.404.title'));
 });
 
-it('shows inactive QR code page', function () {
+it('shows inactive QR code as the invalid scan card', function () {
     ['tenant' => $tenant] = qrCodeScaffold();
 
     $qrCode = QrCode::factory()->inactive()->create(['tenant_id' => $tenant->id]);
 
     $response = $this->get("/q/{$qrCode->token}");
 
-    $response->assertStatus(403)
-        ->assertSee(__('qr.inactive.title'));
+    $response->assertNotFound()
+        ->assertSee(__('qr.invalid.title'))
+        ->assertSee(route('welcome'), false)
+        ->assertDontSee(__('error.404.title'));
 });
 
-it('returns 404 for non-existent QR token', function () {
-    $this->get('/q/non-existent-token')->assertNotFound();
+it('shows the invalid scan card for a non-existent QR token', function () {
+    $this->get('/q/non-existent-token')
+        ->assertNotFound()
+        ->assertSee(__('qr.invalid.title'))
+        ->assertSee(__('qr.invalid.welcome'))
+        ->assertDontSee(__('error.404.title'))
+        ->assertDontSee(__('error.action.home'));
+});
+
+it('shows the invalid scan card for an unknown unassigned-qr URL', function () {
+    $this->get('/melden/onbekend/bestaat-niet')
+        ->assertNotFound()
+        ->assertSee(__('qr.invalid.title'))
+        ->assertDontSee(__('error.404.title'));
 });
 
 it('logs QR scans', function () {

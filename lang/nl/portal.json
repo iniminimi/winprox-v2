@@ -15,7 +15,6 @@
         "unit_inactive": "Dit portaal is momenteel niet beschikbaar.",
         "team_inactive": "Dit teamportaal is momenteel niet beschikbaar.",
         "clock_point_inactive": "Dit inklokpunt is momenteel niet beschikbaar.",
-        "clock_point_qr_expired": "Deze QR-code is niet langer geldig — neem contact op met de beheerder.",
         "tenant_inactive": "Dit portaal is momenteel niet beschikbaar voor deze organisatie.",
         "subscription_inactive": "Dit portaal is tijdelijk niet beschikbaar. Neem contact op met de beheerder."
     },

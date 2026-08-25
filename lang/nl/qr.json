@@ -48,25 +48,15 @@
         "sticker": "Stickernummer",
         "login": "Inloggen"
     },
-    "damaged": {
-        "title": "QR-code beschadigd",
-        "message": "Deze QR-code is gemarkeerd als beschadigd. Neem contact op met uw beheerder.",
-        "sticker": "Stickernummer"
-    },
-    "inactive": {
-        "title": "QR-code gedeactiveerd",
-        "message": "Deze QR-code is gedeactiveerd en kan niet worden gebruikt.",
-        "sticker": "Stickernummer"
-    },
     "unassigned_no_permission": {
         "title": "Geen toestemming",
         "message": "U heeft geen toestemming om QR-codes te koppelen.",
         "sticker": "Stickernummer",
         "dashboard": "Ga naar dashboard"
     },
-    "error": {
-        "title": "Fout",
-        "message": "Er is een fout opgetreden bij het verwerken van deze QR-code.",
-        "sticker": "Stickernummer"
+    "invalid": {
+        "title": "QR-code niet geldig",
+        "message": "Deze QR-code is niet (meer) geldig.",
+        "welcome": "Naar de startpagina"
     }
 }

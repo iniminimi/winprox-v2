@@ -48,25 +48,15 @@
         "sticker": "Numéro de sticker",
         "login": "Se connecter"
     },
-    "damaged": {
-        "title": "Code QR endommagé",
-        "message": "Ce code QR est marqué comme endommagé. Veuillez contacter votre administrateur.",
-        "sticker": "Numéro de sticker"
-    },
-    "inactive": {
-        "title": "Code QR inactif",
-        "message": "Ce code QR est désactivé et ne peut pas être utilisé.",
-        "sticker": "Numéro de sticker"
-    },
     "unassigned_no_permission": {
         "title": "Aucune permission",
         "message": "Vous n'avez pas la permission de lier des codes QR.",
         "sticker": "Numéro de sticker",
         "dashboard": "Aller au tableau de bord"
     },
-    "error": {
-        "title": "Erreur",
-        "message": "Une erreur s'est produite lors du traitement de ce code QR.",
-        "sticker": "Numéro de sticker"
+    "invalid": {
+        "title": "Code QR non valide",
+        "message": "Ce code QR n'est plus valide.",
+        "welcome": "Aller à l'accueil"
     }
 }
