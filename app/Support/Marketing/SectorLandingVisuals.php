@@ -36,13 +36,13 @@ final class SectorLandingVisuals
     {
         return match ($landing) {
             PromoLanding::RealEstate => [
-                'hero' => 'images/landing/general/welcome_01.jpg',
+                'hero' => 'images/landing/general/welcome_07.jpg',
                 'problem' => 'images/landing/general/welcome_04.jpg',
                 'steps' => 'images/landing/general/welcome_02.jpg',
                 'places' => 'images/landing/general/welcome_03.jpg',
                 'roles' => 'images/landing/general/welcome_05.jpg',
                 'why' => 'images/landing/general/welcome_06.jpg',
-                'close' => 'images/landing/general/welcome_07.jpg',
+                'close' => 'images/landing/general/welcome_01.jpg',
             ],
             default => [],
         };

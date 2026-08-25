@@ -568,13 +568,13 @@
             "lead": "Machen Sie aus jeder Wohnung oder jedem Büro eine einfache Meltestelle. Admins legen ein Konto an; Mieter und Mitarbeitende scannen und melden."
         },
         "visuals": {
-            "hero": "Mitarbeiterin mit Tablet im Büro, Blick auf eine Wohnanlage.",
+            "hero": "Zwei Kollegen schauen gemeinsam WinProx auf einem Tablet an.",
             "problem": "Verwalter prüfen ein Tablet neben jemandem, der vor Ort einen QR-Code scannt.",
             "steps": "Zwei Personen am Tisch mit einer QR-Karte im Vordergrund.",
             "places": "Moderne Wohnanlage in der Dämmerung.",
             "roles": "Verwalter prüft Meldungen am Bildschirm.",
             "why": "Laptop mit der WinProx-Übersicht der Anfragen.",
-            "close": "Zwei Kollegen schauen gemeinsam WinProx auf einem Tablet an."
+            "close": "Mitarbeiterin mit Tablet im Büro, Blick auf eine Wohnanlage."
         }
     }
 }

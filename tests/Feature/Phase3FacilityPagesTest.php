@@ -164,8 +164,8 @@ it('toont de uitgebreide realestate-landing', function () {
         ->assertSee(__('landings.realestate.start.trial', [], 'nl'))
         ->assertSee('id="landing-video"', false)
         ->assertSee(__('landings.shared.video_placeholder', [], 'nl'))
-        ->assertSee('images/landing/general/welcome_01.jpg', false)
-        ->assertSee(__('landings.realestate.visuals.hero', [], 'nl'), false)
+        ->assertSee('images/landing/general/welcome_07.jpg', false)
+        ->assertSee('wp-landing-hero--overlay', false)
         ->assertDontSee('Bekijk demo', false)
         ->assertDontSee('langdurig contract', false);
 

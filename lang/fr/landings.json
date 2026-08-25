@@ -568,13 +568,13 @@
             "lead": "Faites de chaque logement ou bureau un point de signalement simple. Les gestionnaires créent un compte ; locataires et collaborateurs scannent et signalent."
         },
         "visuals": {
-            "hero": "Collaborateur avec une tablette dans un bureau, vue sur un ensemble résidentiel.",
+            "hero": "Deux collègues consultent WinProx ensemble sur une tablette.",
             "problem": "Des gestionnaires consultent une tablette à côté d'une personne qui scanne un QR sur place.",
             "steps": "Deux personnes à une table, avec une carte QR au premier plan.",
             "places": "Immeuble d'appartements moderne au crépuscule.",
             "roles": "Gestionnaire consultant les signalements sur un écran.",
             "why": "Ordinateur portable avec l'aperçu WinProx des demandes.",
-            "close": "Deux collègues consultent WinProx ensemble sur une tablette."
+            "close": "Collaborateur avec une tablette dans un bureau, vue sur un ensemble résidentiel."
         }
     }
 }

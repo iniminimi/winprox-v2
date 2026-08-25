@@ -120,6 +120,5 @@
     @include('landings.partials.visual', [
         'src' => $visuals['close'] ?? null,
         'alt' => filled($visuals['close'] ?? null) ? __("{$key}.visuals.close") : '',
-        'modifier' => 'wp-landing-visual--close',
     ])
 </div>
