@@ -256,7 +256,13 @@ it('holds a QR report until the reporter confirms email when both flags are on',
         ->and(Task::count())->toBe(0)
         ->and(QrReportEmailHold::count())->toBe(1);
 
-    Mail::assertSent(VerifyQrReportEmailMail::class, fn (VerifyQrReportEmailMail $mail) => $mail->hasTo('ada@example.com'));
+    Mail::assertSent(VerifyQrReportEmailMail::class, function (VerifyQrReportEmailMail $mail) {
+        $html = $mail->render();
+
+        return $mail->hasTo('ada@example.com')
+            && str_contains($html, 'Lekkage in de keuken.')
+            && str_contains($html, 'ada@example.com');
+    });
 
     $hold = QrReportEmailHold::query()->first();
     expect($hold)->not->toBeNull()

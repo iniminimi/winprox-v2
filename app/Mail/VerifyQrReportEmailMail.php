@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class VerifyQrReportEmailMail extends Mailable
 {
@@ -28,7 +29,7 @@ class VerifyQrReportEmailMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('mail.verify_qr_report_email.subject'),
+            subject: __('mail.verify_qr_report_email.subject', ['snippet' => $this->subjectSnippet()]),
         );
     }
 
@@ -36,8 +37,19 @@ class VerifyQrReportEmailMail extends Mailable
     {
         $confirmUrl = URL::route('public.qr-report-email-confirm', ['token' => $this->hold->token], true);
         $expiresInMinutes = max(1, (int) config('portal.qr_report_email_verification.expire_minutes', 60));
-        $unitName = (string) ($this->hold->unit?->name ?? '');
-        $locationName = (string) ($this->hold->unit?->location?->name ?? '');
+        $unit = $this->hold->unit;
+        $location = $unit?->location;
+        $unitName = (string) ($unit?->name ?? '');
+        $locationName = (string) ($location?->name ?? '');
+        $photoPaths = $this->hold->storedPhotoPaths();
+        $photoUrls = [];
+        foreach ($photoPaths as $path) {
+            $photoUrls[] = URL::asset('storage/'.$path);
+        }
+
+        $submittedAt = $this->hold->created_at
+            ? $this->hold->created_at->timezone((string) config('app.timezone'))->format('d/m/Y H:i')
+            : '';
 
         return new Content(
             html: 'emails.contact.winprox-template',
@@ -49,8 +61,26 @@ class VerifyQrReportEmailMail extends Mailable
                     'expiresInMinutes' => $expiresInMinutes,
                     'unitName' => $unitName,
                     'locationName' => $locationName,
+                    'locationLine' => collect([$locationName, $unitName])->filter()->join(' · '),
+                    'address' => $location?->formattedAddress() ?? '',
+                    'reporterName' => (string) ($this->hold->reporter_name ?? ''),
+                    'reporterEmail' => (string) ($this->hold->reporter_contact ?? ''),
+                    'description' => (string) ($this->hold->description ?? ''),
+                    'submittedAt' => $submittedAt,
+                    'photoCount' => count($photoPaths),
+                    'photoUrls' => $photoUrls,
                 ])->render(),
             ],
         );
+    }
+
+    private function subjectSnippet(): string
+    {
+        $snippet = trim(preg_replace('/\s+/', ' ', (string) ($this->hold->description ?? '')) ?? '');
+        if ($snippet === '') {
+            $snippet = (string) ($this->hold->unit?->name ?? '');
+        }
+
+        return $snippet === '' ? '…' : Str::limit($snippet, 50);
     }
 }
