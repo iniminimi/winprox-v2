@@ -139,6 +139,16 @@ TXT;
         ->and(PromoBounceMessageParser::storageReason($unsolicited))->toStartWith('[spam]');
 });
 
+it('classificeert Telenet considered-spam als spam, niet als hard bounce', function () {
+    $telenet = <<<'TXT'
+Diagnostic-Code: smtp; 552 5.2.0 wJiU2H0265FXoZp01JiUtK Your message is
+    considered spam
+TXT;
+
+    expect(PromoBounceMessageParser::classify($telenet))->toBe(\App\Enums\PromoBounceKind::Spam)
+        ->and(PromoBounceMessageParser::storageReason($telenet))->toStartWith('[spam]');
+});
+
 it('classificeert enorme of ongeldige MIME zonder te crashen', function () {
     $haystack = str_repeat("\x80\xFF", 80_000)."\n550 User unknown for info@hotel.com\n";
 

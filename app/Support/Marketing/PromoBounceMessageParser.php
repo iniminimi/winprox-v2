@@ -147,6 +147,8 @@ final class PromoBounceMessageParser
             'message blocked as',
             'blocked as spam',
             'rejected as spam',
+            'considered spam',
+            'is considered spam',
             'spam message',
             '550 5.7.1',
             '550-5.7.1',

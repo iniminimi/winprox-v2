@@ -36,12 +36,10 @@
         "footer": "Vous n'avez pas créé ce compte ? Aucune action n'est nécessaire : sans confirmation, nous le supprimons automatiquement."
     },
     "verify_qr_report_email": {
-        "subject": "WinProx : confirmez votre signalement — :snippet",
-        "intro": "Nous avons reçu un signalement pour :unit (:location). Vérifiez ci-dessous qu’il s’agit du vôtre et cliquez sur le bouton pour confirmer votre e-mail. Le signalement n’est créé qu’après.",
-        "cta": "Confirmer le signalement",
-        "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :",
-        "expiry": "Ce lien est valable :minutes minutes.",
-        "footer": "Vous n’avez pas fait ce signalement ? Aucune action n’est requise : sans confirmation, aucun signalement n’est créé."
+        "subject": "Confirmez votre signalement WinProx",
+        "greeting": "Bonjour :name,",
+        "body": "Vous avez soumis un signalement pour :unit (:location). Confirmez votre e-mail dans les :minutes minutes. Le signalement n’est créé qu’après.",
+        "cta": "Confirmer le signalement"
     },
     "new_tenant": {
         "subject": "WinProx : nouvelle organisation enregistrée — :tenant",

@@ -8,7 +8,6 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Str;
 use Symfony\Component\Mime\Email as SymfonyEmail;
 
 class VerifyQrReportEmailMail extends Mailable
@@ -33,7 +32,7 @@ class VerifyQrReportEmailMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('mail.verify_qr_report_email.subject', ['snippet' => $this->subjectSnippet()]),
+            subject: __('mail.verify_qr_report_email.subject'),
         );
     }
 
@@ -49,26 +48,16 @@ class VerifyQrReportEmailMail extends Mailable
         return new Content(
             html: 'emails.contact.winprox-template',
             with: [
-                'recipientName' => $this->hold->reporter_name,
+                'recipientName' => null,
                 'bodyText' => '',
                 'bodyHtml' => view('emails.public.verify-qr-report-email-body', [
                     'confirmUrl' => $confirmUrl,
                     'expiresInMinutes' => $expiresInMinutes,
+                    'guestName' => (string) ($this->hold->reporter_name ?? ''),
                     'unitName' => $unitName,
                     'locationName' => $locationName,
-                    'description' => (string) ($this->hold->description ?? ''),
                 ])->render(),
             ],
         );
-    }
-
-    private function subjectSnippet(): string
-    {
-        $snippet = trim(preg_replace('/\s+/', ' ', (string) ($this->hold->description ?? '')) ?? '');
-        if ($snippet === '') {
-            $snippet = (string) ($this->hold->unit?->name ?? '');
-        }
-
-        return $snippet === '' ? '…' : Str::limit($snippet, 50);
     }
 }

@@ -7,6 +7,7 @@ namespace App\Actions\Marketing;
 use App\Actions\Contact\SetEmailSubscriptionAction;
 use App\Enums\EmailUnsubscribeSource;
 use App\Enums\MunicipalPromoEmailSendStatus;
+use App\Enums\PromoBounceKind;
 use App\Models\EmailUnsubscribe;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
@@ -35,8 +36,16 @@ class MarkPromoCampaignEmailBouncedAction
 
         $reason = mb_substr(trim((string) ($reason ?: 'bounce')), 0, 1000);
 
+        // Content filters (e.g. Telenet "considered spam") reject the message, not the
+        // mailbox. Do not permanently block transactional confirm mail to that address.
+        $kind = PromoBounceKind::fromStoredReason($reason);
+        if ($kind === PromoBounceKind::Other) {
+            $kind = PromoBounceMessageParser::classify($reason);
+        }
+
+        $blockAddress = $kind !== PromoBounceKind::Spam;
         $wasBlocked = EmailUnsubscribe::isUnsubscribed($normalized);
-        if (! $wasBlocked) {
+        if ($blockAddress && ! $wasBlocked) {
             $this->setEmailSubscription->handle(
                 $normalized,
                 true,
@@ -61,7 +70,7 @@ class MarkPromoCampaignEmailBouncedAction
         )));
 
         if ($targetIds === []) {
-            return ['removed' => 0, 'blocked' => true];
+            return ['removed' => 0, 'blocked' => $blockAddress || $wasBlocked];
         }
 
         $targets = PromoCampaignTarget::query()
@@ -90,7 +99,7 @@ class MarkPromoCampaignEmailBouncedAction
 
         return [
             'removed' => $removed,
-            'blocked' => true,
+            'blocked' => $blockAddress || $wasBlocked,
         ];
     }
 }

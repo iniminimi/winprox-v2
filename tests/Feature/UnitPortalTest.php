@@ -263,7 +263,8 @@ it('holds a QR report until the reporter confirms email when both flags are on',
         $html = $mail->render();
 
         return $mail->hasTo('ada@example.com')
-            && str_contains($html, 'Lekkage in de keuken.')
+            && $mail->envelope()->subject === __('mail.verify_qr_report_email.subject')
+            && ! str_contains($html, 'Lekkage in de keuken.')
             && ! str_contains($html, '/storage/');
     });
 

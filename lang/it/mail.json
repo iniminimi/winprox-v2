@@ -36,12 +36,10 @@
         "footer": "Non hai creato questo account? Non devi fare nulla: senza conferma lo eliminiamo automaticamente."
     },
     "verify_qr_report_email": {
-        "subject": "WinProx: conferma la segnalazione — :snippet",
-        "intro": "Abbiamo ricevuto una segnalazione per :unit (:location). Controlla sotto che sia la tua e clicca il pulsante per confermare l’e-mail. Solo allora la segnalazione viene creata.",
-        "cta": "Conferma segnalazione",
-        "link_fallback": "Se il pulsante non funziona, copia questo link:",
-        "expiry": "Questo link è valido :minutes minuti.",
-        "footer": "Non hai inviato questa segnalazione? Non devi fare nulla: senza conferma non viene creata alcuna segnalazione."
+        "subject": "Conferma la segnalazione WinProx",
+        "greeting": "Ciao :name,",
+        "body": "Hai inviato una segnalazione per :unit (:location). Conferma l’e-mail entro :minutes minuti. Solo allora la segnalazione viene creata.",
+        "cta": "Conferma segnalazione"
     },
     "new_tenant": {
         "subject": "WinProx: nuova organizzazione registrata — :tenant",

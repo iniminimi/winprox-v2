@@ -1471,6 +1471,28 @@ it('blokkeert geen Message-ID als bounce-ontvanger', function () {
         ))->toBeFalse();
 });
 
+it('zet content-spam-bounces niet op de onbezorgbaar-lijst', function () {
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'spamfilter@example.com');
+
+    PromoCampaignEmailSend::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_target_id' => $target->id,
+        'recipient_email' => 'spamfilter@example.com',
+        'status' => MunicipalPromoEmailSendStatus::Sent,
+        'sent_at' => now(),
+        'created_by' => $superuser->id,
+    ]);
+
+    $result = app(\App\Actions\Marketing\MarkPromoCampaignEmailBouncedAction::class)
+        ->handle('spamfilter@example.com', '[spam] Your message is considered spam');
+
+    expect($result['removed'])->toBe(1)
+        ->and($result['blocked'])->toBeFalse()
+        ->and(EmailUnsubscribe::isUnsubscribed('spamfilter@example.com'))->toBeFalse()
+        ->and($target->fresh()->undelivered)->toBeTrue();
+});
+
 it('toont bevestigingspopup met aantal mails voor bulk verzenden', function () {
     $superuser = User::factory()->superuser()->create();
     [$campaign] = promoCampaignReadyForEmail($superuser);

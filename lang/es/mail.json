@@ -36,12 +36,10 @@
         "footer": "¿No has creado esta cuenta? No hace falta hacer nada: sin confirmación la eliminamos automáticamente."
     },
     "verify_qr_report_email": {
-        "subject": "WinProx: confirma tu informe — :snippet",
-        "intro": "Hemos recibido un informe para :unit (:location). Comprueba abajo que es el tuyo y pulsa el botón para confirmar tu correo. Solo entonces se crea el informe.",
-        "cta": "Confirmar informe",
-        "link_fallback": "Si el botón no funciona, copia este enlace:",
-        "expiry": "Este enlace es válido :minutes minutos.",
-        "footer": "¿No enviaste este informe? No hace falta hacer nada: sin confirmación no se crea ningún informe."
+        "subject": "Confirma tu informe de WinProx",
+        "greeting": "Hola :name,",
+        "body": "Has enviado un informe para :unit (:location). Confirma tu correo en :minutes minutos. Solo entonces se crea el informe.",
+        "cta": "Confirmar informe"
     },
     "new_tenant": {
         "subject": "WinProx: nueva organización registrada — :tenant",
