@@ -21,7 +21,7 @@ Schedule::command('marketing:process-promo-bounces --limit=80')
 Schedule::command('marketing:process-promo-bounces --all --limit=250')
     ->hourly()
     ->withoutOverlapping(8);
-Schedule::command('marketing:pause-promo-emails')
+Schedule::command('marketing:pause-promo-emails --reason=schedule')
     ->dailyAt('23:00')
     ->timezone('Europe/Brussels');
 Schedule::command('translation:backfill-slots')->dailyAt('01:55');

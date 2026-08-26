@@ -5,6 +5,7 @@ namespace App\Livewire\Platform;
 use App\Actions\Marketing\CopyPromoCampaignAction;
 use App\Actions\Marketing\CreatePromoCampaignAction;
 use App\Enums\PromoLanding;
+use App\Enums\PromoEmailsPauseReason;
 use App\Actions\Marketing\DeletePromoCampaignAction;
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\ProcessPromoMailboxBouncesAction;
@@ -299,7 +300,11 @@ class PromoCampaigns extends Component
         $this->authorize('managePromoCampaigns', User::class);
 
         $user = auth()->user();
-        $result = $pause->handle(null, $user !== null ? (int) $user->id : null);
+        $result = $pause->handle(
+            null,
+            $user !== null ? (int) $user->id : null,
+            PromoEmailsPauseReason::Manual,
+        );
 
         $this->showPauseConfirm = false;
         $this->flashType = 'success';

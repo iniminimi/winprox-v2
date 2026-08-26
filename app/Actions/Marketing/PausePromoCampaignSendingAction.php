@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Actions\Marketing;
 
 use App\Actions\Audit\LogAuditAction;
+use App\Enums\PromoEmailsPauseReason;
 use App\Jobs\SendPromoCampaignEmailJob;
 use App\Models\PromoCampaign;
 use Illuminate\Bus\UniqueLock;
@@ -21,8 +22,20 @@ class PausePromoCampaignSendingAction
      *
      * @return array{paused_campaigns: int, purged_jobs: int}
      */
-    public function handle(?PromoCampaign $campaign, ?int $actorUserId, string $reason = 'manual'): array
-    {
+    public function handle(
+        ?PromoCampaign $campaign,
+        ?int $actorUserId,
+        string|PromoEmailsPauseReason $reason = PromoEmailsPauseReason::Manual,
+        ?string $detail = null,
+    ): array {
+        $reasonEnum = $reason instanceof PromoEmailsPauseReason
+            ? $reason
+            : (PromoEmailsPauseReason::tryFrom($reason) ?? PromoEmailsPauseReason::Manual);
+        $detail = $detail !== null ? mb_substr(trim($detail), 0, 500) : null;
+        if ($detail === '') {
+            $detail = null;
+        }
+
         $query = PromoCampaign::query();
         if ($campaign !== null) {
             $query->whereKey($campaign->id);
@@ -35,6 +48,13 @@ class PausePromoCampaignSendingAction
                 ->whereIn('id', $pausedIds)
                 ->whereNull('emails_paused_at')
                 ->update(['emails_paused_at' => now()]);
+
+            PromoCampaign::query()
+                ->whereIn('id', $pausedIds)
+                ->update([
+                    'emails_paused_reason' => $reasonEnum->value,
+                    'emails_paused_detail' => $detail,
+                ]);
         }
 
         $purgedJobs = $this->purgeQueuedJobs(
@@ -52,7 +72,8 @@ class PausePromoCampaignSendingAction
                 'campaign_ids' => $pausedIds,
                 'purged_jobs' => $purgedJobs,
                 'all' => $campaign === null,
-                'reason' => $reason,
+                'reason' => $reasonEnum->value,
+                'detail' => $detail,
             ],
         );
 

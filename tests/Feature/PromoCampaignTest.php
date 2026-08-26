@@ -1494,7 +1494,9 @@ TXT;
     $halted = app(HaltPromoSendingOnListedDomainAction::class)->handle($haystack, false, (int) $superuser->id);
 
     expect($halted)->toBeTrue()
-        ->and($campaign->fresh()->isEmailSendingPaused())->toBeTrue();
+        ->and($campaign->fresh()->isEmailSendingPaused())->toBeTrue()
+        ->and($campaign->fresh()->emails_paused_reason)->toBe(\App\Enums\PromoEmailsPauseReason::DomainBlock->value)
+        ->and($campaign->fresh()->emails_paused_detail)->toContain('Spamhaus');
 
     $hotel = 'Diagnostic-Code: smtp; 550 Your host in blacklist on this server.';
     expect(app(HaltPromoSendingOnListedDomainAction::class)->handle($hotel, false, (int) $superuser->id))->toBeFalse();

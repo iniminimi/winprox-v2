@@ -311,7 +311,18 @@
         <div class="wp-border-top wp-stack-tight">
             <p class="wp-subhead">{{ __('platform.promo_campaigns.queue_section') }}</p>
             @if ($campaign->isEmailSendingPaused())
-                <div class="wp-flash wp-flash--danger">{{ __('platform.promo_campaigns.paused_banner') }}</div>
+                <div class="wp-flash wp-flash--danger">
+                    <p>{{ __('platform.promo_campaigns.paused_banner') }}</p>
+                    @if ($campaign->emailsPauseReasonLabelKey())
+                        <p class="wp-text-sm wp-mt-1">
+                            <strong>{{ __('platform.promo_campaigns.paused_reason_label') }}</strong>
+                            {{ __($campaign->emailsPauseReasonLabelKey()) }}
+                        </p>
+                    @endif
+                    @if (filled($campaign->emails_paused_detail))
+                        <p class="wp-muted wp-text-sm wp-mt-1">{{ $campaign->emails_paused_detail }}</p>
+                    @endif
+                </div>
             @endif
             <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.queue_lead') }}</p>
             <div class="wp-row wp-gap-md wp-wrap wp-items-end">

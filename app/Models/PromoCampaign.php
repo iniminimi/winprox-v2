@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\PromoLanding;
+use App\Enums\PromoEmailsPauseReason;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -26,6 +27,8 @@ class PromoCampaign extends Model
         'flow_image_path',
         'youtube_url',
         'emails_paused_at',
+        'emails_paused_reason',
+        'emails_paused_detail',
         'column_mapping',
         'created_by',
     ];
@@ -43,6 +46,13 @@ class PromoCampaign extends Model
     public function isEmailSendingPaused(): bool
     {
         return $this->emails_paused_at !== null;
+    }
+
+    public function emailsPauseReasonLabelKey(): ?string
+    {
+        $reason = PromoEmailsPauseReason::tryFromMixed($this->emails_paused_reason);
+
+        return $reason?->labelKey();
     }
 
     public function creator(): BelongsTo

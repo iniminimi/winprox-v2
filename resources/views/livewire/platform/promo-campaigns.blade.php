@@ -165,6 +165,15 @@
                                         <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_sending_hint') }}</p>
                                     @elseif ($summary->status === 'paused')
                                         <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_paused_hint') }}</p>
+                                        @if ($campaign->emailsPauseReasonLabelKey())
+                                            <p class="wp-muted wp-text-sm">
+                                                {{ __('platform.promo_campaigns.paused_reason_label') }}
+                                                {{ __($campaign->emailsPauseReasonLabelKey()) }}
+                                            </p>
+                                        @endif
+                                        @if (filled($campaign->emails_paused_detail))
+                                            <p class="wp-muted wp-text-sm">{{ $campaign->emails_paused_detail }}</p>
+                                        @endif
                                     @endif
                                 </div>
                             @endif

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Actions\Marketing;
 
 use App\Enums\PromoBounceKind;
+use App\Enums\PromoEmailsPauseReason;
 use App\Support\Marketing\PromoBounceMessageParser;
 
 class HaltPromoSendingOnListedDomainAction
@@ -22,7 +23,12 @@ class HaltPromoSendingOnListedDomainAction
             return false;
         }
 
-        $this->pauseSending->handle(null, $actorUserId, 'domain_block');
+        $this->pauseSending->handle(
+            null,
+            $actorUserId,
+            PromoEmailsPauseReason::DomainBlock,
+            PromoBounceMessageParser::storageReason($haystack),
+        );
 
         return true;
     }

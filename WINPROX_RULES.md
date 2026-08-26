@@ -44,7 +44,8 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
   opnieuw inbouwen: geen SES-mailer, geen SNS-hook, geen `aws/aws-sdk-php` voor e-mail.
   Interval **20 seconden** (`PromoSmtpThrottle`, Cloud86 ~250 mails/uur). Bounces via IMAP
   (nieuwe bounces elke 5 minuten). Verzending stopt om **23:00 Europe/Brussels** en meteen bij
-  een **Spamhaus DBL / domeinlisting** in een bounce. Niet automatisch hervatten.
+  een **Spamhaus DBL / domeinlisting** in een bounce. Niet automatisch hervatten. De reden
+  (`emails_paused_reason` + optioneel detail) staat op de campagne en in de UI.
   **Uitgaande mail opstellen (deliverability):** §14 — golden path `NewQrIssueMail`, altijd
   `List-Unsubscribe`, geen user-snippet in subject.
 

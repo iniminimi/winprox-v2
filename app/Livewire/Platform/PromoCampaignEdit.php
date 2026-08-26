@@ -14,6 +14,7 @@ use App\Actions\Marketing\SummarizePromoCampaignVisitStatsAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
 use App\Enums\PromoLanding;
+use App\Enums\PromoEmailsPauseReason;
 use App\Http\Requests\Marketing\UpdatePromoCampaignRequest;
 use App\Models\PromoCampaign;
 use App\Models\User;
@@ -124,7 +125,11 @@ class PromoCampaignEdit extends Component
         $this->authorize('managePromoCampaigns', User::class);
 
         $user = auth()->user();
-        $result = $pause->handle($this->campaign, $user !== null ? (int) $user->id : null);
+        $result = $pause->handle(
+            $this->campaign,
+            $user !== null ? (int) $user->id : null,
+            PromoEmailsPauseReason::Manual,
+        );
         $this->campaign->refresh();
         $this->showPauseConfirm = false;
         $this->showNotice(__('platform.promo_campaigns.paused_notice', [

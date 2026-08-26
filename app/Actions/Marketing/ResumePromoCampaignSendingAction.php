@@ -28,7 +28,11 @@ class ResumePromoCampaignSendingAction
         if ($resumedIds !== []) {
             PromoCampaign::query()
                 ->whereIn('id', $resumedIds)
-                ->update(['emails_paused_at' => null]);
+                ->update([
+                    'emails_paused_at' => null,
+                    'emails_paused_reason' => null,
+                    'emails_paused_detail' => null,
+                ]);
         }
 
         $this->logAudit->handle(

@@ -6,6 +6,7 @@ namespace App\Console\Commands\Mail;
 
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\ResumePromoCampaignSendingAction;
+use App\Enums\PromoEmailsPauseReason;
 use App\Models\PromoCampaign;
 use Illuminate\Console\Command;
 
@@ -13,7 +14,8 @@ class PausePromoEmailsCommand extends Command
 {
     protected $signature = 'marketing:pause-promo-emails
                             {--campaign= : Campagne-id of slug; weglaten = alle campagnes}
-                            {--resume : Hervat verzending (zet niet opnieuw in de wachtrij)}';
+                            {--resume : Hervat verzending (zet niet opnieuw in de wachtrij)}
+                            {--reason=cli : Pause reason: manual|domain_block|schedule|cli}';
 
     protected $description = 'Onderbreek of hervat promo-campagne mails (haalt wachtende jobs uit de queue)';
 
@@ -35,8 +37,11 @@ class PausePromoEmailsCommand extends Command
             return self::SUCCESS;
         }
 
-        $result = $pause->handle($campaign, null);
-        $this->info('Verzending onderbroken voor '.$result['paused_campaigns'].' campagne(s). '.$result['purged_jobs'].' job(s) uit de wachtrij gehaald.');
+        $reason = PromoEmailsPauseReason::tryFrom((string) $this->option('reason'))
+            ?? PromoEmailsPauseReason::Cli;
+
+        $result = $pause->handle($campaign, null, $reason);
+        $this->info('Verzending onderbroken ('.$reason->value.') voor '.$result['paused_campaigns'].' campagne(s). '.$result['purged_jobs'].' job(s) uit de wachtrij gehaald.');
 
         return self::SUCCESS;
     }
