@@ -156,6 +156,26 @@ it('leest spreadsheet met kolommapping', function () {
         ->and($rows[0]['name'])->not->toBe('');
 });
 
+it('negeert ontbrekende optionele spreadsheet-kolommen uit eerdere mapping', function () {
+    $path = writePromoCampaignTestXlsx([
+        ['name' => 'Hotel Test', 'email' => 'info@hotel-test.example', 'street_address' => 'Straat 1', 'postal_code' => '1000'],
+    ]);
+
+    $reader = app(PromoCampaignSpreadsheetReader::class);
+    $rows = $reader->readRows($path, [
+        'name' => 'naam',
+        'email' => 'e-mail',
+        'city' => 'city_name',
+    ]);
+
+    expect($rows)->toHaveCount(1)
+        ->and($rows[0]['name'])->toBe('Hotel Test')
+        ->and($rows[0]['email'])->toBe('info@hotel-test.example')
+        ->and($rows[0])->not->toHaveKey('city');
+
+    @unlink($path);
+});
+
 it('importeert ontvangers in campagne', function () {
     $path = promoCampaignFixturePath();
     if (! is_file($path)) {

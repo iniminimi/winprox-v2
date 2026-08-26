@@ -237,6 +237,38 @@ class PromoCampaignEdit extends Component
         } catch (\Throwable) {
             $this->detectedHeaders = [];
         }
+
+        $this->dropStaleColumnMappings();
+    }
+
+    private function dropStaleColumnMappings(): void
+    {
+        if ($this->detectedHeaders === []) {
+            return;
+        }
+
+        $headers = $this->detectedHeaders;
+        $clearIfMissing = static function (string $value) use ($headers): string {
+            return $value !== '' && ! in_array($value, $headers, true) ? '' : $value;
+        };
+
+        $this->mapName = $clearIfMissing($this->mapName);
+        $this->mapEmail = $clearIfMissing($this->mapEmail);
+        $this->mapStreetAddress = $clearIfMissing($this->mapStreetAddress);
+        $this->mapPostalCode = $clearIfMissing($this->mapPostalCode);
+        $this->mapCity = $clearIfMissing($this->mapCity);
+
+        if ($this->mapName === '' && in_array('name', $headers, true)) {
+            $this->mapName = 'name';
+        } elseif ($this->mapName === '' && in_array('naam', $headers, true)) {
+            $this->mapName = 'naam';
+        }
+
+        if ($this->mapEmail === '' && in_array('email', $headers, true)) {
+            $this->mapEmail = 'email';
+        } elseif ($this->mapEmail === '' && in_array('e-mail', $headers, true)) {
+            $this->mapEmail = 'e-mail';
+        }
     }
 
     public function save(UpdatePromoCampaignAction $update): void

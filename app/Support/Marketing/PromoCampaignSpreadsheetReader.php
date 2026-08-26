@@ -40,7 +40,12 @@ final class PromoCampaignSpreadsheetReader
 
             $column = array_search($headerLabel, $headerMap, true);
             if ($column === false) {
-                throw new RuntimeException("Spreadsheet column not found: {$headerLabel}");
+                // Optional address fields may be mapped from a previous import; skip if absent.
+                if ($internalField === 'name') {
+                    throw new RuntimeException("Spreadsheet column not found: {$headerLabel}");
+                }
+
+                continue;
             }
 
             $columnToHeader[$internalField] = $column;
