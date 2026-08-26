@@ -24,3 +24,11 @@ it('gebruikt de tijdelijke issue-video voor government-nl', function () {
 it('geeft null voor government zonder locale-video', function () {
     expect(SectorLandingVideo::relativePath(PromoLanding::Government, 'fr'))->toBeNull();
 });
+
+it('gebruikt de hospitality-long-video op vastgoed per locale', function (string $locale) {
+    $upper = strtoupper($locale);
+    $path = SectorLandingVideo::relativePath(PromoLanding::RealEstate, $locale);
+
+    expect($path)->toBe("video/{$locale}/hospitality_long_{$upper}.mp4")
+        ->and(is_file(public_path($path)))->toBeTrue();
+})->with(['nl', 'en', 'fr', 'de', 'es', 'it']);

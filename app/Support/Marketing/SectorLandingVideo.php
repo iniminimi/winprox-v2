@@ -32,6 +32,17 @@ final class SectorLandingVideo
             }
         }
 
+        if ($landing === PromoLanding::RealEstate) {
+            foreach ([
+                "video/{$locale}/hospitality_long_{$upper}.mp4",
+                "video/{$locale}/hospitality_long_{$locale}.mp4",
+            ] as $relative) {
+                if (is_file(public_path($relative))) {
+                    return $relative;
+                }
+            }
+        }
+
         if ($landing === PromoLanding::Government && $locale === 'nl') {
             $fallback = 'video/nl/issue_nl_01.mp4';
             if (is_file(public_path($fallback))) {
