@@ -12,6 +12,8 @@
     $welcomeEsgImageAvailable = is_file(public_path($welcomeEsgImageRel));
     $welcomeIotImageRel = 'images/welcome/IoT.jpg';
     $welcomeIotImageAvailable = is_file(public_path($welcomeIotImageRel));
+    $welcomeFlowPhotoRel = 'images/landing/healthcare/05.jpg';
+    $welcomeFlowPhotoAvailable = is_file(public_path($welcomeFlowPhotoRel));
     $welcomeQrVideoRel = null;
     $welcomeQrVideoDir = public_path('video/'.$locale);
     if (is_dir($welcomeQrVideoDir)) {
@@ -158,26 +160,68 @@
     </div>
 
     <main>
-        <section id="flow" class="wp-welcome-section wp-welcome-section--alt wp-welcome-section--center" aria-labelledby="welcome-flow-title">
+        <section
+            id="flow"
+            @class([
+                'wp-welcome-section',
+                'wp-welcome-section--alt',
+                'wp-welcome-section--center' => ! $welcomeFlowPhotoAvailable,
+            ])
+            aria-labelledby="welcome-flow-title"
+        >
             <div class="wp-welcome-section-inner--wide wp-welcome-main">
-                <span class="wp-welcome-eyebrow">{{ __('welcome.flow.eyebrow') }}</span>
-                <x-wp-text-reveal
-                    as="h2"
-                    id="welcome-flow-title"
-                    class="wp-welcome-h2"
-                    :text="__('welcome.flow.title')"
-                />
-                <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.flow.lead') }}</p>
-                <div class="wp-welcome-steps-card">
-                    @foreach (__('welcome.flow.steps') as $index => $step)
-                        <article class="wp-welcome-step-card">
-                            <span class="wp-welcome-step-num" aria-hidden="true">{{ $index + 1 }}</span>
-                            <p class="wp-welcome-flow-step-label">{{ $step['label'] }}</p>
-                            <h3>{{ $step['title'] }}</h3>
-                        </article>
-                    @endforeach
-                </div>
-                <p class="wp-welcome-flow-foot">{{ __('welcome.flow.footer') }}</p>
+                @if ($welcomeFlowPhotoAvailable)
+                    <div class="wp-welcome-split wp-welcome-split--flow">
+                        <div>
+                            <span class="wp-welcome-eyebrow">{{ __('welcome.flow.eyebrow') }}</span>
+                            <x-wp-text-reveal
+                                as="h2"
+                                id="welcome-flow-title"
+                                class="wp-welcome-h2"
+                                :text="__('welcome.flow.title')"
+                            />
+                            <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.flow.lead') }}</p>
+                            <div class="wp-welcome-steps-card">
+                                @foreach (__('welcome.flow.steps') as $index => $step)
+                                    <article class="wp-welcome-step-card">
+                                        <span class="wp-welcome-step-num" aria-hidden="true">{{ $index + 1 }}</span>
+                                        <p class="wp-welcome-flow-step-label">{{ $step['label'] }}</p>
+                                        <h3>{{ $step['title'] }}</h3>
+                                    </article>
+                                @endforeach
+                            </div>
+                            <p class="wp-welcome-flow-foot">{{ __('welcome.flow.footer') }}</p>
+                        </div>
+                        <figure class="wp-welcome-screenshot wp-welcome-screenshot--desktop wp-landing-visual wp-welcome-flow-photo">
+                            <img
+                                src="{{ asset($welcomeFlowPhotoRel) }}"
+                                alt="{{ __('welcome.flow.photo_alt') }}"
+                                class="wp-welcome-screenshot__img"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </figure>
+                    </div>
+                @else
+                    <span class="wp-welcome-eyebrow">{{ __('welcome.flow.eyebrow') }}</span>
+                    <x-wp-text-reveal
+                        as="h2"
+                        id="welcome-flow-title"
+                        class="wp-welcome-h2"
+                        :text="__('welcome.flow.title')"
+                    />
+                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.flow.lead') }}</p>
+                    <div class="wp-welcome-steps-card">
+                        @foreach (__('welcome.flow.steps') as $index => $step)
+                            <article class="wp-welcome-step-card">
+                                <span class="wp-welcome-step-num" aria-hidden="true">{{ $index + 1 }}</span>
+                                <p class="wp-welcome-flow-step-label">{{ $step['label'] }}</p>
+                                <h3>{{ $step['title'] }}</h3>
+                            </article>
+                        @endforeach
+                    </div>
+                    <p class="wp-welcome-flow-foot">{{ __('welcome.flow.footer') }}</p>
+                @endif
             </div>
         </section>
 

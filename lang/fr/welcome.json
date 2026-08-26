@@ -261,7 +261,8 @@
                 "title": "Tâches suivies automatiquement"
             }
         ],
-        "footer": "Du signalement au traitement sur une seule plateforme."
+        "footer": "Du signalement au traitement sur une seule plateforme.",
+        "photo_alt": "Professionnel de santé dans le couloir d’un établissement de soins."
     },
     "sectors": {
         "eyebrow": "Secteurs",

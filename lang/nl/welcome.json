@@ -258,7 +258,8 @@
                 "title": "Taken automatisch opgevolgd"
             }
         ],
-        "footer": "Van melding tot afhandeling op één platform."
+        "footer": "Van melding tot afhandeling op één platform.",
+        "photo_alt": "Zorgmedewerker in de gang van een zorginstelling."
     },
     "sectors": {
         "eyebrow": "Sectoren",

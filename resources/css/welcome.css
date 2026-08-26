@@ -1005,6 +1005,10 @@
         grid-template-columns: 7fr 5fr;
     }
 
+    [data-theme='standard'] .wp-welcome-split--flow {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    }
+
     [data-theme='standard'] .wp-welcome-split--iot {
         grid-template-columns: 5fr 7fr;
     }
@@ -1158,6 +1162,27 @@
 @media (min-width: 40rem) {
     [data-theme='standard'] .wp-welcome-steps-card {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+[data-theme='standard'] .wp-welcome-split--flow .wp-welcome-lead--sm {
+    margin-inline: 0;
+    text-align: left;
+}
+
+[data-theme='standard'] .wp-welcome-split--flow .wp-welcome-flow-foot {
+    margin-inline: 0;
+    text-align: left;
+}
+
+[data-theme='standard'] .wp-welcome-flow-photo {
+    margin: 0;
+    width: 100%;
+}
+
+@media (min-width: 64rem) {
+    [data-theme='standard'] .wp-welcome-split--flow .wp-welcome-steps-card {
+        grid-template-columns: 1fr;
     }
 }
 
