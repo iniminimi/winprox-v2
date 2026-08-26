@@ -38,6 +38,7 @@
                         'blacklist' => $delivery->bounceBlacklist,
                         'mailbox_full' => $delivery->bounceMailboxFull,
                         'spam' => $delivery->bounceSpam,
+                        'domain_block' => $delivery->bounceDomainBlock,
                     ]) }}
                 </p>
             @endif

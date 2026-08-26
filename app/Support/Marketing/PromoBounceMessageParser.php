@@ -125,13 +125,26 @@ final class PromoBounceMessageParser
         }
 
         if (self::matchesAny($text, [
+            'spamhaus',
+            'check.spamhaus',
+            'uribl',
+            'surbl',
+            'spamcop',
+            'url in this email',
+            'an url in this email',
+            'is listed by',
+            'listed by spamhaus',
+            'dnsbl',
+        ])) {
+            return PromoBounceKind::DomainBlock;
+        }
+
+        if (self::matchesAny($text, [
             'host in blacklist',
             'listed in blacklist',
             'blacklisted',
             'blocked using',
-            'spamhaus',
             'barracuda',
-            'dnsbl',
             ' listed by ',
             'blocked by',
             'client host rejected',

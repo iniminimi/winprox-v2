@@ -112,7 +112,7 @@ Na het genereren van de DOCX-brieven kun je per gemeente een e-mail versturen me
 
 **Afzender:** `dominique.schaepdrijver@winprox.app` (configureerbaar via `WINPROX_MUNICIPAL_PROMO_EMAIL_FROM`). Replies komen op dat Cloud86-postvak binnen.
 
-Promo-campagnes (en gemeentemails) gaan via **Cloud86 SMTP** (`WINPROX_PROMO_MAILER=municipal_promo`). Zelfde limiet als de mailbox: grofweg **250 mails/uur** — vandaar `WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS=20` en `PromoSmtpThrottle`. Transactionele app-mail (wachtwoordreset, meldingen) gebruikt dezelfde SMTP (`MAIL_USERNAME=info@winprox.app`). Bounces via de IMAP-bouncescanner.
+Promo-campagnes (en gemeentemails) gaan via **Cloud86 SMTP** (`WINPROX_PROMO_MAILER=municipal_promo`). Zelfde limiet als de mailbox: grofweg **250 mails/uur** — vandaar `WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS=20` en `PromoSmtpThrottle`. Transactionele app-mail (wachtwoordreset, meldingen) gebruikt dezelfde SMTP (`MAIL_USERNAME=info@winprox.app`). Bounces: IMAP-scanner elke **5 minuten** (unseen) plus elk uur `--all`. Verzending stopt om **23:00 Europe/Brussels** (`marketing:pause-promo-emails`) en meteen als een bounce Spamhaus DBL / domeinlisting toont. Hervatten is handmatig (`--resume` of de knop Hervat).
 
 Amazon SES is **niet** in gebruik: in augustus 2026 is production access aangevraagd en geweigerd. Niet opnieuw inbouwen.
 

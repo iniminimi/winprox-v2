@@ -10,6 +10,7 @@ enum PromoBounceKind: string
     case Unknown = 'unknown';
     case MailboxFull = 'mailbox_full';
     case Spam = 'spam';
+    case DomainBlock = 'domain_block';
     case Other = 'other';
 
     public function storagePrefix(): string

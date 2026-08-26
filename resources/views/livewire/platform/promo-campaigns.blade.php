@@ -155,6 +155,7 @@
                                                 'blacklist' => $summary->bounceBlacklist,
                                                 'mailbox_full' => $summary->bounceMailboxFull,
                                                 'spam' => $summary->bounceSpam,
+                                                'domain_block' => $summary->bounceDomainBlock,
                                             ]) }}
                                         </p>
                                     @endif

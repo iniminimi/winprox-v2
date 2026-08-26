@@ -99,6 +99,7 @@ class SummarizePromoCampaignsDeliveryAction
                 PromoBounceKind::Blacklist->value => 0,
                 PromoBounceKind::MailboxFull->value => 0,
                 PromoBounceKind::Spam->value => 0,
+                PromoBounceKind::DomainBlock->value => 0,
             ];
 
             $sentAt = $sentAtRows->get($campaignId);
@@ -116,6 +117,7 @@ class SummarizePromoCampaignsDeliveryAction
                 bounceBlacklist: (int) ($kinds[PromoBounceKind::Blacklist->value] ?? 0),
                 bounceMailboxFull: (int) ($kinds[PromoBounceKind::MailboxFull->value] ?? 0),
                 bounceSpam: (int) ($kinds[PromoBounceKind::Spam->value] ?? 0),
+                bounceDomainBlock: (int) ($kinds[PromoBounceKind::DomainBlock->value] ?? 0),
                 remaining: $remaining,
                 queuedJobs: $queuedJobs,
                 status: $this->resolveStatus(
@@ -174,6 +176,7 @@ class SummarizePromoCampaignsDeliveryAction
             PromoBounceKind::Blacklist->value => 0,
             PromoBounceKind::MailboxFull->value => 0,
             PromoBounceKind::Spam->value => 0,
+            PromoBounceKind::DomainBlock->value => 0,
         ];
         $counts = [];
         foreach ($campaignIds as $id) {
@@ -187,8 +190,11 @@ class SummarizePromoCampaignsDeliveryAction
 
         foreach ($rows as $row) {
             $kind = PromoBounceKind::fromStoredReason($row->error_message);
-            if ($kind === PromoBounceKind::Other) {
-                $kind = PromoBounceMessageParser::classify((string) $row->error_message);
+            if ($kind === PromoBounceKind::Other || $kind === PromoBounceKind::Blacklist) {
+                $classified = PromoBounceMessageParser::classify((string) $row->error_message);
+                if ($classified === PromoBounceKind::DomainBlock || $kind === PromoBounceKind::Other) {
+                    $kind = $classified;
+                }
             }
             if ($kind === PromoBounceKind::Other) {
                 continue;

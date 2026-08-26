@@ -4,6 +4,7 @@ use App\Actions\Marketing\CreatePromoCampaignAction;
 use App\Actions\Marketing\CreatePromoRecipientAction;
 use App\Actions\Marketing\GeneratePromoCampaignLettersAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
+use App\Actions\Marketing\HaltPromoSendingOnListedDomainAction;
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
 use App\Actions\Marketing\RecordPromoVisitAction;
@@ -1434,6 +1435,7 @@ it('telt blacklist-bounces in de verzendstatus van een promo-campagne', function
             'blacklist' => 1,
             'mailbox_full' => 0,
             'spam' => 0,
+            'domain_block' => 0,
         ]));
 });
 
@@ -1458,6 +1460,24 @@ it('telt als-spam-geweigerd ook als de bounce eerder als overig is opgeslagen', 
     expect($summary->bounceSpam)->toBe(1)
         ->and($summary->bounceUnknown)->toBe(0)
         ->and($summary->bounceBlacklist)->toBe(0);
+});
+
+it('onderbreekt alle promo-verzending bij een Spamhaus DBL-bounce', function () {
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmail($superuser, 'email@canblanc.es');
+
+    $haystack = <<<'TXT'
+Diagnostic-Code: smtp; 550 An URL in this email ( winprox . app ) is listed by
+    Spamhaus DBL. See https://check.spamhaus.org/
+TXT;
+
+    $halted = app(HaltPromoSendingOnListedDomainAction::class)->handle($haystack, false, (int) $superuser->id);
+
+    expect($halted)->toBeTrue()
+        ->and($campaign->fresh()->isEmailSendingPaused())->toBeTrue();
+
+    $hotel = 'Diagnostic-Code: smtp; 550 Your host in blacklist on this server.';
+    expect(app(HaltPromoSendingOnListedDomainAction::class)->handle($hotel, false, (int) $superuser->id))->toBeFalse();
 });
 
 it('blokkeert geen Message-ID als bounce-ontvanger', function () {

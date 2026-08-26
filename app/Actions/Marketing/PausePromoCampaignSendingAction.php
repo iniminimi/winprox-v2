@@ -21,7 +21,7 @@ class PausePromoCampaignSendingAction
      *
      * @return array{paused_campaigns: int, purged_jobs: int}
      */
-    public function handle(?PromoCampaign $campaign, ?int $actorUserId): array
+    public function handle(?PromoCampaign $campaign, ?int $actorUserId, string $reason = 'manual'): array
     {
         $query = PromoCampaign::query();
         if ($campaign !== null) {
@@ -52,6 +52,7 @@ class PausePromoCampaignSendingAction
                 'campaign_ids' => $pausedIds,
                 'purged_jobs' => $purgedJobs,
                 'all' => $campaign === null,
+                'reason' => $reason,
             ],
         );
 

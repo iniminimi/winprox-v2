@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Marketing;
 
+use App\Enums\PromoBounceKind;
 use App\Support\Marketing\PromoBounceMessageParser;
 use Illuminate\Support\Collection;
 use RuntimeException;
@@ -21,6 +22,7 @@ class ProcessPromoMailboxBouncesAction
 
     public function __construct(
         private MarkPromoCampaignEmailBouncedAction $markBounced,
+        private HaltPromoSendingOnListedDomainAction $haltSendingOnListedDomain,
     ) {}
 
     /**
@@ -30,7 +32,8 @@ class ProcessPromoMailboxBouncesAction
      *     emails_found: int,
      *     removed: int,
      *     blocked: int,
-     *     dry_run: bool
+     *     dry_run: bool,
+     *     paused_for_listing: bool
      * }
      */
     public function handle(
@@ -72,6 +75,7 @@ class ProcessPromoMailboxBouncesAction
         $emailsFound = 0;
         $removed = 0;
         $blocked = 0;
+        $pausedForListing = false;
 
         try {
             $client->connect();
@@ -99,6 +103,12 @@ class ProcessPromoMailboxBouncesAction
                 $emailsFound += $result['emails_found'];
                 $removed += $result['removed'];
                 $blocked += $result['blocked'];
+                if ($result['domain_block'] && ! $pausedForListing) {
+                    $pausedForListing = $this->haltSendingOnListedDomain->handle(
+                        $result['haystack'],
+                        $dryRun,
+                    );
+                }
 
                 if (! $dryRun) {
                     $message->setFlag('Seen');
@@ -123,6 +133,7 @@ class ProcessPromoMailboxBouncesAction
             'removed' => $removed,
             'blocked' => $blocked,
             'dry_run' => $dryRun,
+            'paused_for_listing' => $pausedForListing,
         ];
     }
 
@@ -274,7 +285,7 @@ class ProcessPromoMailboxBouncesAction
     }
 
     /**
-     * @return array{is_bounce: bool, emails_found: int, removed: int, blocked: int}
+     * @return array{is_bounce: bool, emails_found: int, removed: int, blocked: int, domain_block: bool, haystack: string}
      */
     private function processMessage(Message $message, bool $dryRun): array
     {
@@ -282,7 +293,14 @@ class ProcessPromoMailboxBouncesAction
         $from = $this->messageFrom($message);
 
         if (! PromoBounceMessageParser::looksLikeBounce($subject, $from)) {
-            return ['is_bounce' => false, 'emails_found' => 0, 'removed' => 0, 'blocked' => 0];
+            return [
+                'is_bounce' => false,
+                'emails_found' => 0,
+                'removed' => 0,
+                'blocked' => 0,
+                'domain_block' => false,
+                'haystack' => '',
+            ];
         }
 
         $body = PromoBounceMessageParser::haystackFromParts(
@@ -305,6 +323,7 @@ class ProcessPromoMailboxBouncesAction
 
         $removed = 0;
         $blocked = 0;
+        $kind = PromoBounceMessageParser::classify($body);
         $reason = PromoBounceMessageParser::storageReason($body);
 
         foreach ($emails as $email) {
@@ -326,6 +345,8 @@ class ProcessPromoMailboxBouncesAction
             'emails_found' => count($emails),
             'removed' => $removed,
             'blocked' => $blocked,
+            'domain_block' => $kind === PromoBounceKind::DomainBlock,
+            'haystack' => $body,
         ];
     }
 

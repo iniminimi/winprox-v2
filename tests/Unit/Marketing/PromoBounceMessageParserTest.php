@@ -139,6 +139,24 @@ TXT;
         ->and(PromoBounceMessageParser::storageReason($unsolicited))->toStartWith('[spam]');
 });
 
+it('classificeert Spamhaus DBL als domeinblokkade, niet als ontvanger-blacklist', function () {
+    $dbl = <<<'TXT'
+<email@canblanc.es>: host mx1.spamcluster.com[185.107.213.61] said: 550 An URL
+    in this email ( winprox . app ) is listed by Spamhaus DBL. See
+    https://check.spamhaus.org/ (in reply to end of DATA command)
+Diagnostic-Code: smtp; 550 An URL in this email ( winprox . app ) is listed by
+    Spamhaus DBL. See https://check.spamhaus.org/
+TXT;
+
+    $hotel = <<<'TXT'
+Diagnostic-Code: smtp; 550 Your host in blacklist on this server.
+TXT;
+
+    expect(PromoBounceMessageParser::classify($dbl))->toBe(\App\Enums\PromoBounceKind::DomainBlock)
+        ->and(PromoBounceMessageParser::storageReason($dbl))->toStartWith('[domain_block]')
+        ->and(PromoBounceMessageParser::classify($hotel))->toBe(\App\Enums\PromoBounceKind::Blacklist);
+});
+
 it('classificeert Telenet considered-spam als spam, niet als hard bounce', function () {
     $telenet = <<<'TXT'
 Diagnostic-Code: smtp; 552 5.2.0 wJiU2H0265FXoZp01JiUtK Your message is

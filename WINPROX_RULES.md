@@ -42,7 +42,9 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
 - **Promo-mail = Cloud86 SMTP** (`municipal_promo`). Amazon SES is in augustus 2026 geprobeerd
   (domein `winprox.app` geverifieerd in `eu-west-1`); **production access is geweigerd**. Niet
   opnieuw inbouwen: geen SES-mailer, geen SNS-hook, geen `aws/aws-sdk-php` voor e-mail.
-  Interval **20 seconden** (`PromoSmtpThrottle`, Cloud86 ~250 mails/uur). Bounces via IMAP.
+  Interval **20 seconden** (`PromoSmtpThrottle`, Cloud86 ~250 mails/uur). Bounces via IMAP
+  (nieuwe bounces elke 5 minuten). Verzending stopt om **23:00 Europe/Brussels** en meteen bij
+  een **Spamhaus DBL / domeinlisting** in een bounce. Niet automatisch hervatten.
   **Uitgaande mail opstellen (deliverability):** §14 — golden path `NewQrIssueMail`, altijd
   `List-Unsubscribe`, geen user-snippet in subject.
 
