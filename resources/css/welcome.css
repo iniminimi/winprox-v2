@@ -1180,9 +1180,23 @@
     width: 100%;
 }
 
+[data-theme='standard'] .wp-welcome-split--flow .wp-welcome-steps-card {
+    gap: 1rem;
+    padding: 1.25rem;
+}
+
+[data-theme='standard'] .wp-welcome-split--flow .wp-welcome-step-card {
+    padding: 0.85rem 1rem;
+}
+
 @media (min-width: 64rem) {
     [data-theme='standard'] .wp-welcome-split--flow .wp-welcome-steps-card {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+    }
+
+    [data-theme='standard'] .wp-welcome-split--flow .wp-welcome-step-card:last-child {
+        grid-column: 1 / -1;
     }
 }
 
