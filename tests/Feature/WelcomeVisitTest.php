@@ -86,7 +86,7 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->assertSee('wp-welcome-hero-actions', false)
         ->assertSee(__('welcome.hero.photo_alt'), false)
         ->assertSee(__('welcome.hero.subtitle'), false)
-        ->assertSee('images/landing/healthcare/05.jpg', false)
+        ->assertSee('images/landing/general/welcome_04.jpg', false)
         ->assertSee('wp-welcome-split--flow', false)
         ->assertSee('wp-welcome-steps-card--list', false)
         ->assertSee('id="iot"', false)

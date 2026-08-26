@@ -12,7 +12,7 @@
     $welcomeEsgImageAvailable = is_file(public_path($welcomeEsgImageRel));
     $welcomeIotImageRel = 'images/welcome/IoT.jpg';
     $welcomeIotImageAvailable = is_file(public_path($welcomeIotImageRel));
-    $welcomeFlowPhotoRel = 'images/landing/healthcare/05.jpg';
+    $welcomeFlowPhotoRel = 'images/landing/general/welcome_04.jpg';
     $welcomeFlowPhotoAvailable = is_file(public_path($welcomeFlowPhotoRel));
     $welcomeQrVideoRel = null;
     $welcomeQrVideoDir = public_path('video/'.$locale);
