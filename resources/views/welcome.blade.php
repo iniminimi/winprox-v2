@@ -181,12 +181,14 @@
                                 :text="__('welcome.flow.title')"
                             />
                             <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.flow.lead') }}</p>
-                            <div class="wp-welcome-steps-card">
+                            <div class="wp-welcome-steps-card wp-welcome-steps-card--list">
                                 @foreach (__('welcome.flow.steps') as $index => $step)
                                     <article class="wp-welcome-step-card">
                                         <span class="wp-welcome-step-num" aria-hidden="true">{{ $index + 1 }}</span>
-                                        <p class="wp-welcome-flow-step-label">{{ $step['label'] }}</p>
-                                        <h3>{{ $step['title'] }}</h3>
+                                        <div class="wp-welcome-step-copy">
+                                            <p class="wp-welcome-flow-step-label">{{ $step['label'] }}</p>
+                                            <h3>{{ $step['title'] }}</h3>
+                                        </div>
                                     </article>
                                 @endforeach
                             </div>
