@@ -60,7 +60,7 @@
         "not_editable": "Deze reservering kan niet meer worden gewijzigd.",
         "not_cancellable": "Deze reservering kan niet meer worden geannuleerd."
     },
-    "list_title": "Overzicht",
+    "list_title": "Resultaten",
     "empty_title": "Nog geen reserveringen",
     "empty_body": "Zodra gasten via de unit-QR boeken — of jij hier een reservering aanmaakt — verschijnen ze in deze lijst en op de kalender.",
     "filters": {
@@ -89,5 +89,15 @@
     },
     "flash": {
         "confirm_resent": "Bevestigingsmail opnieuw verzonden."
-    }
+    },
+    "filter": {
+        "status": "Status",
+        "location": "Locatie",
+        "search": "Zoeken",
+        "search_placeholder": "Zoek op gast, e-mail, unit of locatie…",
+        "apply": "GO!",
+        "reset": "Filters wissen",
+        "hint": "Kies status en locatie of zoek op gast/e-mail/unit. Klik GO! om te zoeken."
+    },
+    "results_title": "Resultaten"
 }

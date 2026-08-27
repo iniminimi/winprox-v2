@@ -438,7 +438,11 @@
                 },
                 {
                     "label": "Beheer",
-                    "text": "Hier maak je direct bevestigde reserveringen aan, wijzig je tijdvakken en annuleer je boekingen. Filters: aankomend, pending, bevestigd, afgelopen. Open de kalender voor het tijdblok-overzicht."
+                    "text": "Hier maak je direct bevestigde reserveringen aan, wijzig je tijdvakken en annuleer je boekingen. Open de kalender voor het tijdblok-overzicht."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Filter op status en locatie, of zoek op gast, e-mail, unit of locatie. Druk op GO! om toe te passen. Standaard zie je aankomende reserveringen."
                 },
                 {
                     "label": "Download rapport",

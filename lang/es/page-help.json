@@ -438,7 +438,11 @@
                 },
                 {
                     "label": "Administración",
-                    "text": "Aquí crea reservas confirmadas de inmediato, edita franjas y cancela. Filtros: próximas, pendientes, confirmadas, pasadas. Abra el calendario para la vista de bloques."
+                    "text": "Aquí creas reservas confirmadas de inmediato, cambias franjas horarias y cancelas reservas. Abre el calendario para la vista por bloques."
+                },
+                {
+                    "label": "Filtros",
+                    "text": "Filtra por estado y ubicación, o busca por huésped, correo, unidad o ubicación. Pulsa GO! para aplicar. Por defecto: reservas próximas."
                 },
                 {
                     "label": "Descargar informe",

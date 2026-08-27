@@ -60,7 +60,7 @@
         "not_editable": "Cette réservation ne peut plus être modifiée.",
         "not_cancellable": "Cette réservation ne peut plus être annulée."
     },
-    "list_title": "Aperçu",
+    "list_title": "Résultats",
     "empty_title": "Pas encore de réservations",
     "empty_body": "Dès que des invités réservent via le QR unité — ou que vous en créez une ici — elles apparaissent dans cette liste et sur le calendrier.",
     "filters": {
@@ -89,5 +89,15 @@
     },
     "flash": {
         "confirm_resent": "E-mail de confirmation renvoyé."
-    }
+    },
+    "filter": {
+        "status": "Statut",
+        "location": "Lieu",
+        "search": "Rechercher",
+        "search_placeholder": "Rechercher par invité, e-mail, unité ou lieu…",
+        "apply": "GO!",
+        "reset": "Effacer les filtres",
+        "hint": "Choisissez le statut et le lieu ou cherchez par invité/e-mail/unité. Cliquez sur GO!."
+    },
+    "results_title": "Résultats"
 }

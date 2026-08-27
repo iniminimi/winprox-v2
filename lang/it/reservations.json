@@ -60,7 +60,7 @@
         "not_editable": "Questa prenotazione non può più essere modificata.",
         "not_cancellable": "Questa prenotazione non può più essere annullata."
     },
-    "list_title": "Panoramica",
+    "list_title": "Risultati",
     "empty_title": "Ancora nessuna prenotazione",
     "empty_body": "Quando gli ospiti prenotano tramite il QR unità — o ne crei una qui — compaiono in questo elenco e sul calendario.",
     "filters": {
@@ -89,5 +89,15 @@
     },
     "flash": {
         "confirm_resent": "E-mail di conferma reinviata."
-    }
+    },
+    "filter": {
+        "status": "Stato",
+        "location": "Sede",
+        "search": "Cerca",
+        "search_placeholder": "Cerca per ospite, e-mail, unit o sede…",
+        "apply": "GO!",
+        "reset": "Cancella filtri",
+        "hint": "Scegli stato e sede oppure cerca per ospite/e-mail/unit. Clicca GO!."
+    },
+    "results_title": "Risultati"
 }

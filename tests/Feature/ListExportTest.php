@@ -210,6 +210,54 @@ it('exports filtered reservations as csv for the tenant', function () {
         ->and($response->streamedContent())->not->toContain('Bert Vreemd');
 });
 
+it('filters reservation export by search term', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Zaal Alpha',
+    ]);
+
+    \App\Models\Reservation::query()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'guest_first_name' => 'Zoe',
+        'guest_last_name' => 'Zoekbaar',
+        'guest_email' => 'zoe@example.com',
+        'start_at' => now()->addDay(),
+        'end_at' => now()->addDay()->addHours(2),
+        'confirmed_at' => now(),
+        'confirm_token' => 'confirm-search-'.uniqid(),
+        'manage_token' => 'manage-search-'.uniqid(),
+    ]);
+    \App\Models\Reservation::query()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'guest_first_name' => 'Nina',
+        'guest_last_name' => 'Anders',
+        'guest_email' => 'nina@example.com',
+        'start_at' => now()->addDays(2),
+        'end_at' => now()->addDays(2)->addHours(2),
+        'confirmed_at' => now(),
+        'confirm_token' => 'confirm-other-search-'.uniqid(),
+        'manage_token' => 'manage-other-search-'.uniqid(),
+    ]);
+
+    $response = $this->actingAs($user)->get(route('reservations.export', [
+        'status' => 'all',
+        'q' => 'Zoekbaar',
+    ]));
+
+    $response->assertOk();
+    expect($response->streamedContent())->toContain('Zoe Zoekbaar')
+        ->and($response->streamedContent())->not->toContain('Nina Anders');
+});
+
 it('prints reservations with card layout', function () {
     $tenant = Tenant::factory()->create(['name' => 'Reserve Org']);
     $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);

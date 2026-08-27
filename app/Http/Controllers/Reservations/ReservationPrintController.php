@@ -23,6 +23,7 @@ class ReservationPrintController
         $result = $export->handle((int) $tenant->id, new ExportReservationsFilterData(
             status: (string) ($request->validated('status') ?? 'upcoming'),
             locationId: $request->integer('location') ?: null,
+            search: (string) ($request->validated('q') ?? ''),
         ));
 
         return view('reports.print-reservations', [

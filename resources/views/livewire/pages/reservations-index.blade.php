@@ -37,26 +37,55 @@
         </div>
     @endif
 
-    <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-cluster wp-cluster--between wp-cluster--wrap">
-            <p class="wp-section-title">{{ __('reservations.list_title') }}</p>
-            <div class="wp-cluster wp-cluster--wrap">
-                <select class="wp-select wp-select--compact" wire:model.live="statusFilter" aria-label="{{ __('reservations.filters.status') }}">
-                    <option value="upcoming">{{ __('reservations.filters.upcoming') }}</option>
-                    <option value="pending">{{ __('reservations.filters.pending') }}</option>
-                    <option value="confirmed">{{ __('reservations.filters.confirmed') }}</option>
-                    <option value="past">{{ __('reservations.filters.past') }}</option>
-                    <option value="all">{{ __('reservations.filters.all') }}</option>
-                </select>
-                <select class="wp-select wp-select--compact" wire:model.live="locationFilter" aria-label="{{ __('reservations.filters.location') }}">
-                    <option value="">{{ __('reservations.filters.all_locations') }}</option>
-                    @foreach ($locations as $location)
-                        <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
-                    @endforeach
-                </select>
-                <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
+    @if ($showFilters)
+        <div class="wp-card wp-filter-panel">
+            <div class="wp-filter-form">
+                <p class="wp-filter-form__title">{{ __('common.list.filters_title') }}</p>
+
+                <div class="wp-filter-form__row">
+                    <div class="wp-filter-cell">
+                        <label class="wp-filter-inline-label" for="statusFilter">{{ __('reservations.filter.status') }}</label>
+                        <select id="statusFilter" class="wp-select" wire:model.defer="statusFilter">
+                            <option value="upcoming">{{ __('reservations.filters.upcoming') }}</option>
+                            <option value="pending">{{ __('reservations.filters.pending') }}</option>
+                            <option value="confirmed">{{ __('reservations.filters.confirmed') }}</option>
+                            <option value="past">{{ __('reservations.filters.past') }}</option>
+                            <option value="all">{{ __('reservations.filters.all') }}</option>
+                        </select>
+                    </div>
+                    <div class="wp-filter-cell">
+                        <label class="wp-filter-inline-label" for="locationFilter">{{ __('reservations.filter.location') }}</label>
+                        <select id="locationFilter" class="wp-select" wire:model.defer="locationFilter">
+                            <option value="">{{ __('reservations.filters.all_locations') }}</option>
+                            @foreach ($locations as $location)
+                                <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="wp-filter-form__row wp-filter-form__row--search">
+                    <div class="wp-filter-cell wp-filter-cell--search">
+                        <label class="wp-filter-inline-label" for="search">{{ __('reservations.filter.search') }}</label>
+                        <input type="search" id="search" class="wp-input" wire:model.defer="search"
+                               placeholder="{{ __('reservations.filter.search_placeholder') }}">
+                    </div>
+                </div>
+
+                <div class="wp-filter-form__actions">
+                    <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('reservations.filter.apply') }}</button>
+                    <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
+                    @if ($hasFilters)
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('reservations.filter.reset') }}</button>
+                    @endif
+                </div>
             </div>
+            <p class="wp-hint wp-filter-panel-hint">{{ __('reservations.filter.hint') }}</p>
         </div>
+    @endif
+
+    <div class="wp-card wp-card-pad wp-stack">
+        <p class="wp-section-title">{{ __('reservations.results_title') }}</p>
 
         <div class="wp-list">
             @forelse ($reservations as $reservation)

@@ -60,7 +60,7 @@
         "not_editable": "Diese Reservierung kann nicht mehr geändert werden.",
         "not_cancellable": "Diese Reservierung kann nicht mehr storniert werden."
     },
-    "list_title": "Übersicht",
+    "list_title": "Ergebnisse",
     "empty_title": "Noch keine Reservierungen",
     "empty_body": "Sobald Gäste über den Unit-QR buchen — oder Sie hier eine Reservierung anlegen — erscheinen sie in dieser Liste und im Kalender.",
     "filters": {
@@ -89,5 +89,15 @@
     },
     "flash": {
         "confirm_resent": "Bestätigungsmail erneut gesendet."
-    }
+    },
+    "filter": {
+        "status": "Status",
+        "location": "Standort",
+        "search": "Suchen",
+        "search_placeholder": "Suche nach Gast, E-Mail, Unit oder Standort…",
+        "apply": "GO!",
+        "reset": "Filter löschen",
+        "hint": "Status und Standort wählen oder nach Gast/E-Mail/Unit suchen. GO! klicken."
+    },
+    "results_title": "Ergebnisse"
 }

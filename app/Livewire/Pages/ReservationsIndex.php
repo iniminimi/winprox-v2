@@ -4,14 +4,17 @@ namespace App\Livewire\Pages;
 
 use App\Actions\Reservations\CancelReservationAction;
 use App\Actions\Reservations\CreateReservationAction;
+use App\Actions\Reservations\ExportReservationsAction;
 use App\Actions\Reservations\ResendReservationConfirmMailAction;
 use App\Actions\Reservations\UpdateReservationAction;
+use App\Data\Reservations\ExportReservationsFilterData;
 use App\Data\Reservations\ReservationBookingData;
 use App\Http\Requests\Reservations\StoreReservationRequest;
 use App\Http\Requests\Reservations\UpdateReservationRequest;
 use App\Models\Location;
 use App\Models\Reservation;
 use App\Models\Unit;
+use App\Support\Tenancy;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
@@ -30,7 +33,10 @@ class ReservationsIndex extends Component
     public string $statusFilter = 'upcoming';
 
     #[Url(as: 'location')]
-    public ?int $locationFilter = null;
+    public string $locationFilter = '';
+
+    #[Url(as: 'q')]
+    public string $search = '';
 
     public bool $showForm = false;
 
@@ -57,14 +63,18 @@ class ReservationsIndex extends Component
         }
     }
 
-    public function updatedStatusFilter(): void
+    public function applyFilters(): void
     {
-        $this->resetPage();
+        $this->redirect(route('reservations.index', array_filter([
+            'status' => $this->statusFilter !== 'upcoming' ? $this->statusFilter : null,
+            'location' => $this->locationFilter !== '' ? $this->locationFilter : null,
+            'q' => trim($this->search) !== '' ? trim($this->search) : null,
+        ], fn ($value) => $value !== null && $value !== '')), navigate: true);
     }
 
-    public function updatedLocationFilter(): void
+    public function resetFilters(): void
     {
-        $this->resetPage();
+        $this->redirect(route('reservations.index'), navigate: true);
     }
 
     public function openCreate(): void
@@ -177,45 +187,41 @@ class ReservationsIndex extends Component
         session()->flash('reservations_flash', __('reservations.flash.confirm_resent'));
     }
 
-    public function render()
+    public function render(ExportReservationsAction $export)
     {
-        $unitsQuery = Unit::query()
+        $units = Unit::query()
             ->with(['location', 'category'])
             ->where('is_active', true)
             ->where('allow_reservations', true)
             ->whereHas('category', fn ($q) => $q->where('is_reservable', true))
-            ->orderBy('name');
+            ->orderBy('name')
+            ->get();
 
-        $units = $unitsQuery->get();
         $reservableUnitCount = $units->count();
+        $filters = new ExportReservationsFilterData(
+            status: $this->statusFilter,
+            locationId: $this->locationFilter !== '' ? (int) $this->locationFilter : null,
+            search: trim($this->search),
+        );
+        $hasFilters = $filters->status !== 'upcoming'
+            || $filters->locationId !== null
+            || trim($filters->search) !== '';
 
         $query = Reservation::query()
-            ->with(['unit.location'])
-            ->when($this->locationFilter, fn ($q) => $q->whereHas(
-                'unit',
-                fn ($uq) => $uq->where('location_id', $this->locationFilter)
-            ));
-
-        $now = now();
-        match ($this->statusFilter) {
-            'pending' => $query->whereNull('cancelled_at')->whereNull('confirmed_at')->where('expires_at', '>', $now),
-            'confirmed' => $query->whereNull('cancelled_at')->whereNotNull('confirmed_at')->where('end_at', '>=', $now),
-            'past' => $query->where(function ($q) use ($now) {
-                $q->whereNotNull('cancelled_at')
-                    ->orWhere('end_at', '<', $now);
-            }),
-            'all' => null,
-            default => $query->whereNull('cancelled_at')->where('end_at', '>=', $now->copy()->subDay()),
-        };
+            ->where('tenant_id', (int) Tenancy::id())
+            ->with(['unit.location']);
+        $export->applyToQuery($query, $filters);
 
         $reservations = $query
-            ->orderBy($this->statusFilter === 'past' ? 'end_at' : 'start_at', $this->statusFilter === 'past' ? 'desc' : 'asc')
+            ->orderBy($filters->status === 'past' ? 'end_at' : 'start_at', $filters->status === 'past' ? 'desc' : 'asc')
             ->paginate(25);
 
+        $total = $reservations->total();
         $exportQuery = array_filter([
-            'status' => $this->statusFilter,
-            'location' => $this->locationFilter,
-        ]);
+            'status' => $filters->status !== 'upcoming' ? $filters->status : null,
+            'location' => $filters->locationId,
+            'q' => trim($filters->search) !== '' ? trim($filters->search) : null,
+        ], fn ($value) => $value !== null && $value !== '');
 
         return view('livewire.pages.reservations-index', [
             'reservations' => $reservations,
@@ -224,6 +230,9 @@ class ReservationsIndex extends Component
             'locations' => Location::query()->orderBy('name')->get(),
             'calendarReservationsUrl' => route('calendar.index', ['type' => 'reservations']),
             'locationsUrl' => route('locations.index', ['section' => 'categories']),
+            'hasFilters' => $hasFilters,
+            'total' => $total,
+            'showFilters' => $total > 0 || $hasFilters || $reservableUnitCount > 0,
             'exportUrl' => route('reservations.export', $exportQuery),
             'printUrl' => route('reservations.print', $exportQuery),
         ]);

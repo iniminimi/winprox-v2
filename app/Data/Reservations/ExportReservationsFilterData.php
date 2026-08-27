@@ -9,5 +9,6 @@ final readonly class ExportReservationsFilterData
     public function __construct(
         public string $status = 'upcoming',
         public ?int $locationId = null,
+        public string $search = '',
     ) {}
 }

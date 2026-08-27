@@ -438,7 +438,11 @@
                 },
                 {
                     "label": "Admin",
-                    "text": "Here you create immediately confirmed reservations, edit time slots and cancel bookings. Filters: upcoming, pending, confirmed, past. Open the calendar for the time-block overview."
+                    "text": "Here you create immediately confirmed reservations, change time slots and cancel bookings. Open the calendar for the time-block overview."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Filter by status and location, or search by guest, email, unit or location. Press GO! to apply. Upcoming reservations are shown by default."
                 },
                 {
                     "label": "Download report",

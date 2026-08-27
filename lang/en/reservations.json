@@ -60,7 +60,7 @@
         "not_editable": "This reservation can no longer be edited.",
         "not_cancellable": "This reservation can no longer be cancelled."
     },
-    "list_title": "Overview",
+    "list_title": "Results",
     "empty_title": "No reservations yet",
     "empty_body": "Once guests book via the unit QR — or you create one here — they appear in this list and on the calendar.",
     "filters": {
@@ -89,5 +89,15 @@
     },
     "flash": {
         "confirm_resent": "Confirmation email resent."
-    }
+    },
+    "filter": {
+        "status": "Status",
+        "location": "Location",
+        "search": "Search",
+        "search_placeholder": "Search by guest, email, unit or location…",
+        "apply": "GO!",
+        "reset": "Clear filters",
+        "hint": "Choose status and location or search by guest/email/unit. Click GO! to search."
+    },
+    "results_title": "Results"
 }

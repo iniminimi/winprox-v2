@@ -438,7 +438,11 @@
                 },
                 {
                     "label": "Verwaltung",
-                    "text": "Hier legen Sie sofort bestätigte Reservierungen an, ändern Zeitfenster und stornieren. Filter: bevorstehend, pending, bestätigt, vergangen. Öffnen Sie den Kalender für die Zeitblöcke."
+                    "text": "Hier erstellen Sie direkt bestätigte Reservierungen, ändern Zeitfenster und stornieren Buchungen. Öffnen Sie den Kalender für die Zeitblock-Übersicht."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Filtern Sie nach Status und Standort oder suchen Sie nach Gast, E-Mail, Unit oder Standort. GO! zum Anwenden. Standard: anstehende Reservierungen."
                 },
                 {
                     "label": "Bericht herunterladen",

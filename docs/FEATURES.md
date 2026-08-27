@@ -369,8 +369,8 @@ zonder SSO of verplichte account-login.
   (pending / confirmed / cancelled / expired).
 
 ### Beheer
-- Sidebar **Reserveringen**: lijst, aanmaken (direct bevestigd), wijzigen, annuleren
-  (admin + medewerker via Policy).
+- Sidebar **Reserveringen**: lijst met **zoekscherm** (`wp-filter-panel`: status, locatie,
+  zoekterm + GO!), aanmaken (direct bevestigd), wijzigen, annuleren (admin + medewerker via Policy).
 - **Download rapport** (`x-wp-list-export`): CSV + afdrukken (kaartlayout) van de gefilterde
   set — zie §Rapporten.
 - Kalender: derde type-toggle **Reserveringen** naast taken/meldingen.

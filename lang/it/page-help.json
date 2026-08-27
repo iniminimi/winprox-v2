@@ -438,7 +438,11 @@
                 },
                 {
                     "label": "Amministrazione",
-                    "text": "Qui crei prenotazioni subito confermate, modifichi le fasce e annulli. Filtri: in arrivo, in attesa, confermate, passate. Apri il calendario per la vista a blocchi."
+                    "text": "Qui crei prenotazioni subito confermate, modifichi gli slot e annulli le prenotazioni. Apri il calendario per la vista a blocchi."
+                },
+                {
+                    "label": "Filtri",
+                    "text": "Filtra per stato e sede, oppure cerca per ospite, e-mail, unit o sede. Premi GO! per applicare. Di default: prenotazioni in arrivo."
                 },
                 {
                     "label": "Scarica report",

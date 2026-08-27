@@ -30,6 +30,7 @@ class ExportReservationsRequest extends FormRequest
         return [
             'status' => ['nullable', 'string', Rule::in(['upcoming', 'pending', 'confirmed', 'past', 'all'])],
             'location' => ['nullable', 'integer', 'min:1'],
+            'q' => ['nullable', 'string', 'max:200'],
         ];
     }
 }

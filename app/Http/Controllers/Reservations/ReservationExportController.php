@@ -42,6 +42,7 @@ class ReservationExportController
         return new ExportReservationsFilterData(
             status: (string) ($request->validated('status') ?? 'upcoming'),
             locationId: $request->integer('location') ?: null,
+            search: (string) ($request->validated('q') ?? ''),
         );
     }
 }

@@ -438,7 +438,11 @@
                 },
                 {
                     "label": "Administration",
-                    "text": "Ici vous créez des réservations confirmées immédiatement, modifiez les créneaux et annulez. Filtres: à venir, en attente, confirmées, passées. Ouvrez le calendrier pour la vue blocs."
+                    "text": "Ici vous créez des réservations immédiatement confirmées, modifiez les créneaux et annulez des réservations. Ouvrez le calendrier pour la vue par blocs."
+                },
+                {
+                    "label": "Filtres",
+                    "text": "Filtrez par statut et lieu, ou cherchez par invité, e-mail, unité ou lieu. Appuyez sur GO! pour appliquer. Par défaut : réservations à venir."
                 },
                 {
                     "label": "Télécharger le rapport",

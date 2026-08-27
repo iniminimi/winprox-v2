@@ -60,7 +60,7 @@
         "not_editable": "Esta reserva ya no se puede editar.",
         "not_cancellable": "Esta reserva ya no se puede cancelar."
     },
-    "list_title": "Resumen",
+    "list_title": "Resultados",
     "empty_title": "Aún no hay reservas",
     "empty_body": "Cuando los invitados reserven por el QR de unidad — o cree una aquí — aparecerán en esta lista y en el calendario.",
     "filters": {
@@ -89,5 +89,15 @@
     },
     "flash": {
         "confirm_resent": "Correo de confirmación reenviado."
-    }
+    },
+    "filter": {
+        "status": "Estado",
+        "location": "Ubicación",
+        "search": "Buscar",
+        "search_placeholder": "Buscar por huésped, correo, unidad o ubicación…",
+        "apply": "GO!",
+        "reset": "Borrar filtros",
+        "hint": "Elige estado y ubicación o busca por huésped/correo/unidad. Pulsa GO!."
+    },
+    "results_title": "Resultados"
 }
