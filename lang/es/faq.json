@@ -195,7 +195,7 @@
             "slug": "list_reports",
             "type": "text",
             "title": "¿Qué es Descargar informe en las pantallas de búsqueda?",
-            "body": "En pantallas de búsqueda filtradas (Incidencias, Tareas, Time/horas, Unit checks, Mediciones unit, Mediciones ESG) está Descargar informe. Elija CSV (tabla para Excel) o Imprimir (Ctrl+P a PDF). La impresión sigue cuando procede el diseño de tarjetas de la lista de backoffice; Time muestra una hoja de horas. La exportación usa los mismos filtros que la lista, no solo la página actual (máx. 5000 filas). Solo para quien pueda ver esas listas. No es la exportación de cuenta RGPD — esa sigue en Ajustes → Privacidad y exportación. Más adelante: Organización → Informes con plantillas guardadas.",
+            "body": "En pantallas de búsqueda filtradas (Incidencias, Tareas, Time/horas, Reservas, Unit checks, Mediciones unit, Mediciones ESG) está Descargar informe. Elija CSV (tabla para Excel) o Imprimir (Ctrl+P a PDF). La impresión sigue cuando procede el diseño de tarjetas de la lista de backoffice; Time muestra una hoja de horas. La exportación usa los mismos filtros que la lista, no solo la página actual (máx. 5000 filas). Solo para quien pueda ver esas listas. No es la exportación de cuenta RGPD — esa sigue en Ajustes → Privacidad y exportación. Más adelante: Organización → Informes con plantillas guardadas.",
             "summary": "Descargar informe en pantallas de búsqueda: CSV o impresión filtrada; máx. 5000 filas — distinto de la exportación RGPD."
         },
         "delete_account": {

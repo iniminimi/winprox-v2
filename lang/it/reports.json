@@ -53,7 +53,11 @@
         "indicator": "Indicatore",
         "value": "Valore",
         "task_id": "Attività",
-        "field": "Campo"
+        "field": "Campo",
+        "start_at": "Inizio",
+        "end_at": "Fine",
+        "guest": "Ospite",
+        "email": "E-mail"
     },
     "yes": "Sì",
     "no": "No",
@@ -61,5 +65,10 @@
         "title": "Misurazioni unit — rapporto",
         "document_title": "Misurazioni unit — WinProx",
         "filename": "misurazioni-unit"
+    },
+    "reservations": {
+        "title": "Prenotazioni — report",
+        "document_title": "Prenotazioni — WinProx",
+        "filename": "prenotazioni"
     }
 }

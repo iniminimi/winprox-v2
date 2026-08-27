@@ -53,7 +53,11 @@
         "indicator": "Indicator",
         "value": "Waarde",
         "task_id": "Taak",
-        "field": "Veld"
+        "field": "Veld",
+        "start_at": "Start",
+        "end_at": "Einde",
+        "guest": "Gast",
+        "email": "E-mail"
     },
     "yes": "Ja",
     "no": "Nee",
@@ -61,5 +65,10 @@
         "title": "Unitmetingen — rapport",
         "document_title": "Unitmetingen — WinProx",
         "filename": "unitmetingen"
+    },
+    "reservations": {
+        "title": "Reserveringen — rapport",
+        "document_title": "Reserveringen — WinProx",
+        "filename": "reserveringen"
     }
 }

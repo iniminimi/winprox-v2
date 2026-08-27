@@ -98,7 +98,7 @@
             },
             {
                 "title": "Informes",
-                "body": "En pantallas de búsqueda (incidencias, tareas, Time, unit checks, mediciones unit, ESG): Descargar informe — CSV (tabla para Excel) o imprimir (Ctrl+P a PDF). La impresión sigue cuando procede el diseño de tarjetas de la lista de backoffice; Time muestra una hoja de horas. Los mismos filtros que la lista (máx. 5000 filas). Más adelante: Organización → Informes para plantillas guardadas."
+                "body": "En pantallas de búsqueda (incidencias, tareas, Time, reservas, unit checks, mediciones unit, ESG): Descargar informe — CSV (tabla para Excel) o imprimir (Ctrl+P a PDF). La impresión sigue cuando procede el diseño de tarjetas de la lista de backoffice; Time muestra una hoja de horas. Los mismos filtros que la lista (máx. 5000 filas). Más adelante: Organización → Informes para plantillas guardadas."
             },
             {
                 "title": "Calendar",
@@ -176,7 +176,7 @@
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Informes operativos: CSV o impresión filtrada en incidencias, tareas, Time, unit checks, mediciones unit y ESG — para quien pueda ver esas listas. La impresión sigue cuando procede el diseño de la lista; Time = hoja de horas. Distinto de la exportación de cuenta RGPD (Ajustes → Privacidad y exportación)."
+                    "Informes operativos: CSV o impresión filtrada en incidencias, tareas, Time, reservas, unit checks, mediciones unit y ESG — para quien pueda ver esas listas. La impresión sigue cuando procede el diseño de la lista; Time = hoja de horas. Distinto de la exportación de cuenta RGPD (Ajustes → Privacidad y exportación)."
                 ]
             },
             {

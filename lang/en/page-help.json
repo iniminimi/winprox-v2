@@ -441,6 +441,10 @@
                     "text": "Here you create immediately confirmed reservations, edit time slots and cancel bookings. Filters: upcoming, pending, confirmed, past. Open the calendar for the time-block overview."
                 },
                 {
+                    "label": "Download report",
+                    "text": "Export the filtered reservations as CSV or print (Ctrl+P to PDF) in the same card layout as this list. Same filters as the screen; max. 5000 rows."
+                },
+                {
                     "label": "Overlap",
                     "text": "The system blocks overlapping slots for confirmed and active pending holds. Expired pending holds lapse after 30 minutes."
                 }

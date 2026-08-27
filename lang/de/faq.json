@@ -195,7 +195,7 @@
             "slug": "list_reports",
             "type": "text",
             "title": "Was ist Bericht herunterladen auf Suchbildschirmen?",
-            "body": "Auf gefilterten Suchbildschirmen (Meldungen, Aufgaben, Time/Stunden, Unit-Checks, Unit-Messungen, ESG-Messungen) finden Sie Bericht herunterladen. Wählen Sie CSV (Tabelle für Excel) oder Drucken (Strg+P zu PDF). Der Druck folgt wo sinnvoll dem Kartenlayout der Backoffice-Liste; Time zeigt eine Stundenübersicht. Der Export nutzt dieselben Filter wie die Liste, nicht nur die aktuelle Seite (max. 5000 Zeilen). Nur für Nutzer, die diese Listen sehen dürfen. Das ist nicht der DSGVO-Kontoexport — der bleibt unter Einstellungen → Datenschutz und Export. Später: Organisation → Berichte mit gespeicherten Vorlagen.",
+            "body": "Auf gefilterten Suchbildschirmen (Meldungen, Aufgaben, Time/Stunden, Reservierungen, Unit-Checks, Unit-Messungen, ESG-Messungen) finden Sie Bericht herunterladen. Wählen Sie CSV (Tabelle für Excel) oder Drucken (Strg+P zu PDF). Der Druck folgt wo sinnvoll dem Kartenlayout der Backoffice-Liste; Time zeigt eine Stundenübersicht. Der Export nutzt dieselben Filter wie die Liste, nicht nur die aktuelle Seite (max. 5000 Zeilen). Nur für Nutzer, die diese Listen sehen dürfen. Das ist nicht der DSGVO-Kontoexport — der bleibt unter Einstellungen → Datenschutz und Export. Später: Organisation → Berichte mit gespeicherten Vorlagen.",
             "summary": "Bericht herunterladen auf Suchbildschirmen: gefilterte CSV oder Druck; max. 5000 Zeilen — getrennt vom DSGVO-Export."
         },
         "delete_account": {

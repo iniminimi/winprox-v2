@@ -371,6 +371,8 @@ zonder SSO of verplichte account-login.
 ### Beheer
 - Sidebar **Reserveringen**: lijst, aanmaken (direct bevestigd), wijzigen, annuleren
   (admin + medewerker via Policy).
+- **Download rapport** (`x-wp-list-export`): CSV + afdrukken (kaartlayout) van de gefilterde
+  set — zie §Rapporten.
 - Kalender: derde type-toggle **Reserveringen** naast taken/meldingen.
 
 ### API & webhooks
@@ -734,8 +736,8 @@ sector-suffixes, marketing-query-params. Property→Location.
 - Knop **Download rapport** (`x-wp-list-export`) op filterpanelen: submenu **CSV** + **Afdrukken (PDF via Ctrl+P)**.
 - Zelfde filters als de lijst; export = alle matching rijen tot harde limiet (5000), niet alleen de
   zichtbare pagina/groepslimiet.
-- Datasets: **Meldingen** (incl. inspectierondes-filter), **Taken**, **Time/uren**, **Unit checks**,
-  **Unitmetingen**, **ESG-metingen** (alleen met ESG-module / Policy).
+- Datasets: **Meldingen** (incl. inspectierondes-filter), **Taken**, **Time/uren**, **Reserveringen**,
+  **Unit checks**, **Unitmetingen**, **ESG-metingen** (alleen met ESG-module / Policy).
 - Architectuur: filter-DTO → **Export*Action** (tenant + actor-vrij; geen HTTP in Action) → dunne
   CSV/print-controller + Policy `viewAny`. Print = backoffice-kaartlayout; CSV = data-tabel.
 - **Geen** server-Excel/Word/PDF-libraries in fase 1.

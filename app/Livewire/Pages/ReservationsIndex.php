@@ -212,6 +212,11 @@ class ReservationsIndex extends Component
             ->orderBy($this->statusFilter === 'past' ? 'end_at' : 'start_at', $this->statusFilter === 'past' ? 'desc' : 'asc')
             ->paginate(25);
 
+        $exportQuery = array_filter([
+            'status' => $this->statusFilter,
+            'location' => $this->locationFilter,
+        ]);
+
         return view('livewire.pages.reservations-index', [
             'reservations' => $reservations,
             'units' => $units,
@@ -219,6 +224,8 @@ class ReservationsIndex extends Component
             'locations' => Location::query()->orderBy('name')->get(),
             'calendarReservationsUrl' => route('calendar.index', ['type' => 'reservations']),
             'locationsUrl' => route('locations.index', ['section' => 'categories']),
+            'exportUrl' => route('reservations.export', $exportQuery),
+            'printUrl' => route('reservations.print', $exportQuery),
         ]);
     }
 

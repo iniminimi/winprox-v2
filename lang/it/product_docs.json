@@ -98,7 +98,7 @@
             },
             {
                 "title": "Rapporti",
-                "body": "Nelle schermate di ricerca (segnalazioni, attività, Time, unit check, misurazioni unit, ESG): Scarica rapporto — CSV (tabella per Excel) o stampa (Ctrl+P a PDF). La stampa segue dove possibile il layout a schede dell'elenco backoffice; Time mostra un foglio ore. Stessi filtri dell'elenco (max. 5000 righe). Più avanti: Organizzazione → Rapporti per modelli salvati."
+                "body": "Nelle schermate di ricerca (segnalazioni, attività, Time, prenotazioni, unit check, misurazioni unit, ESG): Scarica rapporto — CSV (tabella per Excel) o stampa (Ctrl+P a PDF). La stampa segue dove possibile il layout a schede dell'elenco backoffice; Time mostra un foglio ore. Stessi filtri dell'elenco (max. 5000 righe). Più avanti: Organizzazione → Rapporti per modelli salvati."
             },
             {
                 "title": "Calendar",
@@ -176,7 +176,7 @@
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Rapporti operativi: CSV o stampa filtrata su segnalazioni, attività, Time, unit check, misurazioni unit e ESG — per chi può vedere tali elenchi. La stampa segue dove possibile il layout dell'elenco; Time = foglio ore. Distinto dall'esportazione account GDPR (Impostazioni → Privacy ed esportazione)."
+                    "Rapporti operativi: CSV o stampa filtrata su segnalazioni, attività, Time, prenotazioni, unit check, misurazioni unit e ESG — per chi può vedere tali elenchi. La stampa segue dove possibile il layout dell'elenco; Time = foglio ore. Distinto dall'esportazione account GDPR (Impostazioni → Privacy ed esportazione)."
                 ]
             },
             {

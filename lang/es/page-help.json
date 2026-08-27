@@ -441,6 +441,10 @@
                     "text": "Aquí crea reservas confirmadas de inmediato, edita franjas y cancela. Filtros: próximas, pendientes, confirmadas, pasadas. Abra el calendario para la vista de bloques."
                 },
                 {
+                    "label": "Descargar informe",
+                    "text": "Exporte las reservas filtradas como CSV o imprima (Ctrl+P a PDF) con el mismo diseño de tarjetas que esta lista. Los mismos filtros que la pantalla; máx. 5000 filas."
+                },
+                {
                     "label": "Solapamiento",
                     "text": "El sistema bloquea franjas solapadas para reservas confirmadas y holds pendientes activos. Los holds caducados expiran a los 30 minutos."
                 }

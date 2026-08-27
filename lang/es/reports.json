@@ -53,7 +53,11 @@
         "indicator": "Indicador",
         "value": "Valor",
         "task_id": "Tarea",
-        "field": "Campo"
+        "field": "Campo",
+        "start_at": "Inicio",
+        "end_at": "Fin",
+        "guest": "Huésped",
+        "email": "Correo"
     },
     "yes": "Sí",
     "no": "No",
@@ -61,5 +65,10 @@
         "title": "Mediciones unit — informe",
         "document_title": "Mediciones unit — WinProx",
         "filename": "mediciones-unit"
+    },
+    "reservations": {
+        "title": "Reservas — informe",
+        "document_title": "Reservas — WinProx",
+        "filename": "reservas"
     }
 }

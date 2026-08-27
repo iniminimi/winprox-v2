@@ -441,6 +441,10 @@
                     "text": "Ici vous créez des réservations confirmées immédiatement, modifiez les créneaux et annulez. Filtres: à venir, en attente, confirmées, passées. Ouvrez le calendrier pour la vue blocs."
                 },
                 {
+                    "label": "Télécharger le rapport",
+                    "text": "Exportez les réservations filtrées en CSV ou imprimez (Ctrl+P vers PDF) dans la même mise en page carte que cette liste. Mêmes filtres que l’écran ; max. 5000 lignes."
+                },
+                {
                     "label": "Chevauchement",
                     "text": "Le système bloque les créneaux qui se chevauchent pour les réservations confirmées et holds pending actifs. Les holds expirés tombent après 30 minutes."
                 }

@@ -441,6 +441,10 @@
                     "text": "Qui crei prenotazioni subito confermate, modifichi le fasce e annulli. Filtri: in arrivo, in attesa, confermate, passate. Apri il calendario per la vista a blocchi."
                 },
                 {
+                    "label": "Scarica report",
+                    "text": "Esporta le prenotazioni filtrate come CSV o stampa (Ctrl+P in PDF) con lo stesso layout a card di questo elenco. Stessi filtri dello schermo; max. 5000 righe."
+                },
+                {
                     "label": "Sovrapposizione",
                     "text": "Il sistema blocca fasce sovrapposte per prenotazioni confermate e hold pending attivi. Gli hold scaduti decadono dopo 30 minuti."
                 }

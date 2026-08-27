@@ -441,6 +441,10 @@
                     "text": "Hier maak je direct bevestigde reserveringen aan, wijzig je tijdvakken en annuleer je boekingen. Filters: aankomend, pending, bevestigd, afgelopen. Open de kalender voor het tijdblok-overzicht."
                 },
                 {
+                    "label": "Download rapport",
+                    "text": "Exporteer de gefilterde reserveringen als CSV of druk af (Ctrl+P naar PDF) in dezelfde kaartlayout als deze lijst. Zelfde filters als het scherm; max. 5000 rijen."
+                },
+                {
                     "label": "Overlap",
                     "text": "Het systeem blokkeert overlappende slots voor bevestigde én actieve pending holds. Verlopen pending holds vervallen na 30 minuten."
                 }

@@ -98,7 +98,7 @@
             },
             {
                 "title": "Reports",
-                "body": "On search screens (issues, tasks, Time, unit checks, unit measurements, ESG): Download report — CSV (table for Excel) or print (Ctrl+P to PDF). Print follows the backoffice list card layout where possible; Time shows a timesheet. Same filters as the list (max. 5000 rows). Later: Organisation → Reports for saved templates."
+                "body": "On search screens (issues, tasks, Time, reservations, unit checks, unit measurements, ESG): Download report — CSV (table for Excel) or print (Ctrl+P to PDF). Print follows the backoffice list card layout where possible; Time shows a timesheet. Same filters as the list (max. 5000 rows). Later: Organisation → Reports for saved templates."
             },
             {
                 "title": "Calendar",
@@ -176,7 +176,7 @@
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Operational reports: filtered CSV or print on issues, tasks, Time, unit checks, unit measurements and ESG — for users who may view those lists. Print follows the list layout where possible; Time = timesheet. Separate from the GDPR account export (Settings → Privacy & data export)."
+                    "Operational reports: filtered CSV or print on issues, tasks, Time, reservations, unit checks, unit measurements and ESG — for users who may view those lists. Print follows the list layout where possible; Time = timesheet. Separate from the GDPR account export (Settings → Privacy & data export)."
                 ]
             },
             {

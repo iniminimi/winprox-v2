@@ -35,6 +35,8 @@ use App\Http\Controllers\Time\WorkShiftTimesheetPrintController;
 use App\Http\Controllers\Tasks\TaskExportController;
 use App\Http\Controllers\Tasks\TaskPrintController;
 use App\Http\Controllers\UiThemeController;
+use App\Http\Controllers\Reservations\ReservationExportController;
+use App\Http\Controllers\Reservations\ReservationPrintController;
 use App\Http\Controllers\UnitChecks\UnitCheckExportController;
 use App\Http\Controllers\UnitChecks\UnitCheckPrintController;
 use App\Http\Controllers\UnitMeasurements\UnitMeasurementExportController;
@@ -358,6 +360,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
         Route::get('/calendar', Calendar::class)->name('calendar.index');
         Route::get('/reservations', ReservationsIndex::class)->name('reservations.index');
+        Route::get('/reservations/export', ReservationExportController::class)->name('reservations.export');
+        Route::get('/reservations/print', ReservationPrintController::class)->name('reservations.print');
         Route::get('/unit-checks', UnitChecksIndex::class)->name('unit-checks.index');
         Route::get('/unit-checks/export', UnitCheckExportController::class)->name('unit-checks.export');
         Route::get('/unit-checks/print', UnitCheckPrintController::class)->name('unit-checks.print');

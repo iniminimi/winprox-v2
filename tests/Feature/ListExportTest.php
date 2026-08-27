@@ -163,3 +163,84 @@ it('prints unit measurements with card layout', function () {
         ->assertSee('Meet Org')
         ->assertDontSee('<table>', false);
 });
+
+it('exports filtered reservations as csv for the tenant', function () {
+    $tenant = Tenant::factory()->create();
+    $other = Tenant::factory()->create();
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+    ]);
+    $otherUnit = \App\Models\Unit::factory()->create(['tenant_id' => $other->id]);
+
+    \App\Models\Reservation::query()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'guest_first_name' => 'Anna',
+        'guest_last_name' => 'Eigen',
+        'guest_email' => 'anna@example.com',
+        'start_at' => now()->addDay(),
+        'end_at' => now()->addDay()->addHours(2),
+        'confirmed_at' => now(),
+        'confirm_token' => 'confirm-own-'.uniqid(),
+        'manage_token' => 'manage-own-'.uniqid(),
+    ]);
+    \App\Models\Reservation::query()->create([
+        'tenant_id' => $other->id,
+        'unit_id' => $otherUnit->id,
+        'guest_first_name' => 'Bert',
+        'guest_last_name' => 'Vreemd',
+        'guest_email' => 'bert@example.com',
+        'start_at' => now()->addDay(),
+        'end_at' => now()->addDay()->addHours(2),
+        'confirmed_at' => now(),
+        'confirm_token' => 'confirm-other-'.uniqid(),
+        'manage_token' => 'manage-other-'.uniqid(),
+    ]);
+
+    $response = $this->actingAs($user)->get(route('reservations.export', ['status' => 'all']));
+
+    $response->assertOk();
+    expect($response->streamedContent())->toContain('Anna Eigen')
+        ->and($response->streamedContent())->not->toContain('Bert Vreemd');
+});
+
+it('prints reservations with card layout', function () {
+    $tenant = Tenant::factory()->create(['name' => 'Reserve Org']);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Vergaderzaal A',
+    ]);
+
+    \App\Models\Reservation::query()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'guest_first_name' => 'Carla',
+        'guest_last_name' => 'Print',
+        'guest_email' => 'carla@example.com',
+        'start_at' => now()->addDay(),
+        'end_at' => now()->addDay()->addHours(2),
+        'confirmed_at' => now(),
+        'confirm_token' => 'confirm-print-'.uniqid(),
+        'manage_token' => 'manage-print-'.uniqid(),
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('reservations.print', ['status' => 'all']))
+        ->assertOk()
+        ->assertSee('Carla Print')
+        ->assertSee('Vergaderzaal A')
+        ->assertSee('Reserve Org')
+        ->assertDontSee('<table>', false);
+});

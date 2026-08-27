@@ -199,7 +199,7 @@
             "slug": "list_reports",
             "type": "text",
             "title": "Wat is Download rapport op de zoekschermen?",
-            "body": "Op gefilterde zoekschermen (Meldingen, Taken, Time/uren, Unit checks, Unitmetingen, ESG-metingen) staat de knop Download rapport. Kies CSV (tabel voor Excel) of Afdrukken (Ctrl+P naar PDF). Afdruk volgt waar mogelijk dezelfde kaartlayout als de backoffice-lijst; Time toont een urenstaat. De export gebruikt dezelfde filters als de lijst, niet alleen de huidige pagina (max. 5000 rijen). Alleen beschikbaar voor wie die lijsten mag zien. Dit is geen AVG-accountexport — die blijft onder Instellingen → Privacy & export. Later komt Organisatie → Rapporten met opgeslagen sjablonen.",
+            "body": "Op gefilterde zoekschermen (Meldingen, Taken, Time/uren, Reserveringen, Unit checks, Unitmetingen, ESG-metingen) staat de knop Download rapport. Kies CSV (tabel voor Excel) of Afdrukken (Ctrl+P naar PDF). Afdruk volgt waar mogelijk dezelfde kaartlayout als de backoffice-lijst; Time toont een urenstaat. De export gebruikt dezelfde filters als de lijst, niet alleen de huidige pagina (max. 5000 rijen). Alleen beschikbaar voor wie die lijsten mag zien. Dit is geen AVG-accountexport — die blijft onder Instellingen → Privacy & export. Later komt Organisatie → Rapporten met opgeslagen sjablonen.",
             "summary": "Download rapport op zoekschermen: gefilterde CSV of afdruk; max. 5000 rijen — los van AVG-export."
         },
         "delete_account": {

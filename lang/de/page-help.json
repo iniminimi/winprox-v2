@@ -441,6 +441,10 @@
                     "text": "Hier legen Sie sofort bestätigte Reservierungen an, ändern Zeitfenster und stornieren. Filter: bevorstehend, pending, bestätigt, vergangen. Öffnen Sie den Kalender für die Zeitblöcke."
                 },
                 {
+                    "label": "Bericht herunterladen",
+                    "text": "Exportieren Sie die gefilterten Reservierungen als CSV oder drucken Sie sie (Strg+P zu PDF) im gleichen Kartenlayout wie diese Liste. Gleiche Filter wie der Bildschirm; max. 5000 Zeilen."
+                },
+                {
                     "label": "Überlappung",
                     "text": "Das System blockiert überlappende Slots für bestätigte und aktive Pending-Holds. Abgelaufene Holds entfallen nach 30 Minuten."
                 }

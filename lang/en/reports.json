@@ -53,7 +53,11 @@
         "indicator": "Indicator",
         "value": "Value",
         "task_id": "Task",
-        "field": "Field"
+        "field": "Field",
+        "start_at": "Start",
+        "end_at": "End",
+        "guest": "Guest",
+        "email": "Email"
     },
     "yes": "Yes",
     "no": "No",
@@ -61,5 +65,10 @@
         "title": "Unit measurements — report",
         "document_title": "Unit measurements — WinProx",
         "filename": "unit-measurements"
+    },
+    "reservations": {
+        "title": "Reservations — report",
+        "document_title": "Reservations — WinProx",
+        "filename": "reservations"
     }
 }

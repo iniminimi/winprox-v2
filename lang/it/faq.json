@@ -195,7 +195,7 @@
             "slug": "list_reports",
             "type": "text",
             "title": "Cos'è Scarica rapporto nelle schermate di ricerca?",
-            "body": "Nelle schermate di ricerca filtrate (Segnalazioni, Attività, Time/ore, Unit check, Misurazioni unit, Misurazioni ESG) trovi Scarica rapporto. Scegli CSV (tabella per Excel) o Stampa (Ctrl+P a PDF). La stampa segue dove possibile il layout a schede dell'elenco backoffice; Time mostra un foglio ore. L'esportazione usa gli stessi filtri dell'elenco, non solo la pagina corrente (max. 5000 righe). Solo per chi può vedere tali elenchi. Non è l'esportazione account GDPR — quella resta in Impostazioni → Privacy ed esportazione. Più avanti: Organizzazione → Rapporti con modelli salvati.",
+            "body": "Nelle schermate di ricerca filtrate (Segnalazioni, Attività, Time/ore, Prenotazioni, Unit check, Misurazioni unit, Misurazioni ESG) trovi Scarica rapporto. Scegli CSV (tabella per Excel) o Stampa (Ctrl+P a PDF). La stampa segue dove possibile il layout a schede dell'elenco backoffice; Time mostra un foglio ore. L'esportazione usa gli stessi filtri dell'elenco, non solo la pagina corrente (max. 5000 righe). Solo per chi può vedere tali elenchi. Non è l'esportazione account GDPR — quella resta in Impostazioni → Privacy ed esportazione. Più avanti: Organizzazione → Rapporti con modelli salvati.",
             "summary": "Scarica rapporto nelle schermate di ricerca: CSV o stampa filtrata; max. 5000 righe — distinto dall'esportazione GDPR."
         },
         "delete_account": {
