@@ -108,15 +108,20 @@ class FieldsIndex extends Component
     public function save(SaveUnitMeasureFieldAction $save): void
     {
         $rules = SaveUnitMeasureFieldRequest::staticRules();
-        $validated = $this->validate([
+        $validateRules = [
             'name' => $rules['name'],
             'type' => $rules['type'],
             'unitOfMeasure' => $rules['unit_of_measure'],
             'minValue' => $rules['min_value'],
             'maxValue' => $rules['max_value'],
-            'choiceOptions' => $rules['options'],
-            'choiceOptions.*' => $rules['options.*'],
-        ]);
+        ];
+
+        if ($this->type === UnitMeasureFieldType::Choice->value) {
+            $validateRules['choiceOptions'] = $rules['options'];
+            $validateRules['choiceOptions.*'] = $rules['options.*'];
+        }
+
+        $validated = $this->validate($validateRules);
 
         $existing = $this->editingFieldId !== null
             ? UnitMeasureField::query()->findOrFail($this->editingFieldId)
@@ -136,7 +141,9 @@ class FieldsIndex extends Component
                     'unit_of_measure' => $validated['unitOfMeasure'] ?? null,
                     'min_value' => $validated['minValue'] ?? null,
                     'max_value' => $validated['maxValue'] ?? null,
-                    'options' => $validated['choiceOptions'] ?? [],
+                    'options' => $this->type === UnitMeasureFieldType::Choice->value
+                        ? ($validated['choiceOptions'] ?? [])
+                        : [],
                     'is_active' => $existing?->is_active ?? true,
                 ],
                 tenantId: (int) Tenancy::id(),
@@ -160,8 +167,8 @@ class FieldsIndex extends Component
             return;
         }
 
-        $this->closeModal();
         session()->flash('success', __('unit_measurements.flash.field_saved'));
+        $this->closeModal();
     }
 
     public function toggleActive(int $fieldId, SetUnitMeasureFieldActiveAction $setActive): void
