@@ -95,6 +95,27 @@ it('rejects measurement when unit measurements are disabled', function () {
     ))->toThrow(ValidationException::class);
 });
 
+it('rejects numeric values above the field maximum', function () {
+    $fixture = unitMeasurementFixture(['max_value' => 999999]);
+
+    try {
+        app(RecordUnitMeasurementAction::class)->handle(
+            unit: $fixture['unit'],
+            data: new RecordUnitMeasurementData(
+                unitMeasureFieldId: (int) $fixture['field']->id,
+                source: UnitMeasurementSource::Portal,
+                recordedAt: CarbonImmutable::now(),
+                valueNumeric: 5000000,
+            ),
+            tenantId: (int) $fixture['tenant']->id,
+        );
+        expect(false)->toBeTrue();
+    } catch (ValidationException $e) {
+        expect($e->errors())->toHaveKey('value_numeric')
+            ->and($e->errors())->toHaveKey('fields.'.$fixture['field']->id);
+    }
+});
+
 it('rejects measurement when field is not linked to the unit', function () {
     $fixture = unitMeasurementFixture();
     $other = UnitMeasureField::factory()->numeric('L')->create([

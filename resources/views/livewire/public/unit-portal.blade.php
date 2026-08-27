@@ -480,6 +480,8 @@
                                 </label>
                                 @if ($field->type->value === 'numeric')
                                     <input id="measure-field-{{ $field->id }}" type="number" step="any" class="wp-input"
+                                           @if ($field->min_value !== null) min="{{ $field->min_value }}" @endif
+                                           @if ($field->max_value !== null) max="{{ $field->max_value }}" @endif
                                            wire:model="measureValues.{{ $field->id }}">
                                 @elseif ($field->type->value === 'boolean')
                                     <select id="measure-field-{{ $field->id }}" class="wp-select" wire:model="measureValues.{{ $field->id }}">

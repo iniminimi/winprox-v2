@@ -292,34 +292,53 @@ class UnitPortal extends Component
             $this->measureRecordedAt = now()->toIso8601String();
         }
 
+        $this->resetErrorBag();
+
         $entries = [];
         foreach ($fields as $field) {
             $raw = $this->measureValues[$field->id] ?? $this->measureValues[(string) $field->id] ?? null;
+            $errorKey = 'measureValues.'.$field->id;
             $entry = ['unit_measure_field_id' => (int) $field->id];
 
             if ($field->type === UnitMeasureFieldType::Numeric) {
                 if ($raw === null || $raw === '') {
-                    $this->addError('measureValues.'.$field->id, __('portal.measure.errors.value_required'));
+                    $this->addError($errorKey, __('portal.measure.errors.value_required'));
 
                     continue;
                 }
-                $entry['value_numeric'] = (float) $raw;
+                if (! is_numeric($raw)) {
+                    $this->addError($errorKey, __('portal.measure.errors.value_required'));
+
+                    continue;
+                }
+                $numeric = (float) $raw;
+                if ($field->min_value !== null && $numeric < (float) $field->min_value) {
+                    $this->addError($errorKey, __('unit_measurements.errors.value_below_min', ['min' => $field->min_value]));
+
+                    continue;
+                }
+                if ($field->max_value !== null && $numeric > (float) $field->max_value) {
+                    $this->addError($errorKey, __('unit_measurements.errors.value_above_max', ['max' => $field->max_value]));
+
+                    continue;
+                }
+                $entry['value_numeric'] = $numeric;
             } elseif ($field->type === UnitMeasureFieldType::Boolean) {
                 if ($raw === null || $raw === '') {
-                    $this->addError('measureValues.'.$field->id, __('portal.measure.errors.value_required'));
+                    $this->addError($errorKey, __('portal.measure.errors.value_required'));
 
                     continue;
                 }
                 $entry['value_boolean'] = filter_var($raw, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
                 if ($entry['value_boolean'] === null) {
-                    $this->addError('measureValues.'.$field->id, __('portal.measure.errors.value_required'));
+                    $this->addError($errorKey, __('portal.measure.errors.value_required'));
 
                     continue;
                 }
             } else {
                 $string = is_string($raw) || is_numeric($raw) ? trim((string) $raw) : '';
                 if ($string === '') {
-                    $this->addError('measureValues.'.$field->id, __('portal.measure.errors.value_required'));
+                    $this->addError($errorKey, __('portal.measure.errors.value_required'));
 
                     continue;
                 }
@@ -346,7 +365,18 @@ class UnitPortal extends Component
         } catch (\Illuminate\Validation\ValidationException $e) {
             foreach ($e->errors() as $key => $messages) {
                 foreach ($messages as $message) {
-                    $this->addError($key, $message);
+                    if (preg_match('/^fields\.(\d+)$/', $key, $matches) === 1) {
+                        $this->addError('measureValues.'.$matches[1], $message);
+
+                        continue;
+                    }
+
+                    $this->addError(
+                        str_starts_with($key, 'measureValues') || $key === 'measurements'
+                            ? $key
+                            : 'measureValues',
+                        $message,
+                    );
                 }
             }
 

@@ -116,30 +116,38 @@ class RecordUnitMeasurementAction
                 return;
             }
             if ($field->min_value !== null && $value < (float) $field->min_value) {
-                throw ValidationException::withMessages([
-                    'value_numeric' => [__('unit_measurements.errors.value_below_min', ['min' => $field->min_value])],
-                ]);
+                $this->failFieldValue(
+                    $field,
+                    'value_numeric',
+                    __('unit_measurements.errors.value_below_min', ['min' => $field->min_value]),
+                );
             }
             if ($field->max_value !== null && $value > (float) $field->max_value) {
-                throw ValidationException::withMessages([
-                    'value_numeric' => [__('unit_measurements.errors.value_above_max', ['max' => $field->max_value])],
-                ]);
+                $this->failFieldValue(
+                    $field,
+                    'value_numeric',
+                    __('unit_measurements.errors.value_above_max', ['max' => $field->max_value]),
+                );
             }
         }
 
         if ($field->type === UnitMeasureFieldType::Choice) {
             $options = $field->normalizedChoiceOptions();
             if ($data->valueString === null || ! in_array($data->valueString, $options, true)) {
-                throw ValidationException::withMessages([
-                    'value_string' => [__('unit_measurements.errors.value_choice_invalid')],
-                ]);
+                $this->failFieldValue($field, 'value_string', __('unit_measurements.errors.value_choice_invalid'));
             }
         }
 
         if ($field->type === UnitMeasureFieldType::String && $data->valueString !== null && mb_strlen($data->valueString) > 500) {
-            throw ValidationException::withMessages([
-                'value_string' => [__('unit_measurements.errors.value_string_too_long')],
-            ]);
+            $this->failFieldValue($field, 'value_string', __('unit_measurements.errors.value_string_too_long'));
         }
+    }
+
+    private function failFieldValue(UnitMeasureField $field, string $valueKey, string $message): never
+    {
+        throw ValidationException::withMessages([
+            $valueKey => [$message],
+            'fields.'.$field->id => [$message],
+        ]);
     }
 }

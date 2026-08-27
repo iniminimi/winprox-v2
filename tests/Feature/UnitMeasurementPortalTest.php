@@ -104,6 +104,35 @@ it('records portal measurements without a worker', function () {
         ->and($measurement->source->value)->toBe('portal');
 });
 
+it('rejects portal numeric values above the field maximum and keeps the form open', function () {
+    ['field' => $field] = unitMeasurementPortalFixture();
+    $field->update(['max_value' => 999999]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('openSection', 'measure')
+        ->set('measureValues.'.$field->id, '5000000')
+        ->call('submitMeasurements')
+        ->assertHasErrors(['measureValues.'.$field->id])
+        ->assertSet('portalSection', 'measure')
+        ->assertSee(__('unit_measurements.errors.value_above_max', ['max' => 999999]));
+
+    expect(UnitMeasurement::query()->count())->toBe(0);
+});
+
+it('rejects portal numeric values below the field minimum', function () {
+    ['field' => $field] = unitMeasurementPortalFixture();
+    $field->update(['min_value' => 10]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('openSection', 'measure')
+        ->set('measureValues.'.$field->id, '5')
+        ->call('submitMeasurements')
+        ->assertHasErrors(['measureValues.'.$field->id])
+        ->assertSet('portalSection', 'measure');
+
+    expect(UnitMeasurement::query()->count())->toBe(0);
+});
+
 it('attaches verified worker when present', function () {
     ['tenant' => $tenant, 'team' => $team, 'field' => $field] = unitMeasurementPortalFixture();
 
