@@ -32,7 +32,7 @@
         "intro": "Welkom bij WinProx. Bevestig je e-mailadres om je account te activeren.",
         "cta": "E-mailadres bevestigen",
         "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",
-        "expiry": "Deze link is :minutes minuten geldig.",
+        "expiry": "Deze link is :hoursu geldig.",
         "footer": "Heb je dit account niet aangemaakt? Dan hoef je niets te doen: zonder bevestiging verwijderen we het automatisch."
     },
     "verify_qr_report_email": {

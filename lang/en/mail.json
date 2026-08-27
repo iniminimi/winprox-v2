@@ -32,7 +32,7 @@
         "intro": "Welcome to WinProx. Please confirm your email address to activate your account.",
         "cta": "Confirm email address",
         "link_fallback": "If the button does not work, copy this link:",
-        "expiry": "This link is valid for :minutes minutes.",
+        "expiry": "This link is valid for :hours hours.",
         "footer": "Did you not create this account? Then no action is needed: without confirmation we delete it automatically."
     },
     "verify_qr_report_email": {

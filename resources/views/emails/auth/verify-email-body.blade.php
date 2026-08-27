@@ -11,5 +11,5 @@
     <a href="{{ $verificationUrl }}" style="color: #059669; word-break: break-all;">{{ $verificationUrl }}</a>
 </p>
 
-<p style="font-size: 13px; color: #64748b;">{{ __('mail.verify_email.expiry', ['minutes' => $expiresInMinutes]) }}</p>
+<p style="font-size: 13px; color: #64748b;">{{ __('mail.verify_email.expiry', ['hours' => max(1, (int) round($expiresInMinutes / 60))]) }}</p>
 <p style="font-size: 13px; color: #64748b;">{{ __('mail.verify_email.footer') }}</p>

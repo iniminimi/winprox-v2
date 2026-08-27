@@ -32,7 +32,7 @@
         "intro": "Bienvenido a WinProx. Confirma tu dirección de correo para activar tu cuenta.",
         "cta": "Confirmar dirección de correo",
         "link_fallback": "Si el botón no funciona, copia este enlace:",
-        "expiry": "Este enlace es válido durante :minutes minutos.",
+        "expiry": "Este enlace es válido durante :hours h.",
         "footer": "¿No has creado esta cuenta? No hace falta hacer nada: sin confirmación la eliminamos automáticamente."
     },
     "verify_qr_report_email": {
