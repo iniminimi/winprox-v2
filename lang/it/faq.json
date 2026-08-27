@@ -188,8 +188,15 @@
             "slug": "data_export",
             "type": "text",
             "title": "Posso esportare i miei dati?",
-            "body": "Sì. Vai su Impostazioni → Privacy ed esportazione dati. Lì l’amministratore può scaricare un’esportazione leggibile da macchina (JSON in uno ZIP) dell’account e dell’attività rilevante. Conserva il file in modo sicuro.",
+            "body": "Sì. Vai su Impostazioni → Privacy ed esportazione dati. Lì l’amministratore può scaricare un’esportazione leggibile da macchina (JSON in uno ZIP) dell’account e dell’attività rilevante. Conserva il file in modo sicuro. Questa è l’export GDPR dell’account — distinta dai rapporti operativi di elenco (Scarica rapporto nelle schermate di ricerca).",
             "summary": "Gli amministratori esportano da Impostazioni → Privacy ed esportazione dati (GDPR)."
+        },
+        "list_reports": {
+            "slug": "list_reports",
+            "type": "text",
+            "title": "Cos’è Scarica rapporto nelle schermate di ricerca?",
+            "body": "Nelle schermate di ricerca filtrate (Segnalazioni, Attività, Time/turni, Unit check, Misurazioni unit, Misurazioni ESG), il pulsante Scarica rapporto esporta CSV (tabella per Excel) o Stampa (stesso layout a schede dell’elenco backoffice; Ctrl+P a PDF). L’export usa gli stessi filtri dell’elenco, non solo la pagina corrente (max. 5000 righe). Disponibile per chi può vedere quelle liste. Non è un’export GDPR dell’account — quella resta in Impostazioni → Privacy ed esportazione dati. Più avanti: Organizzazione → Rapporti con modelli salvati.",
+            "summary": "Scarica rapporto nelle schermate di ricerca: CSV o stampa filtrati (schede); max. 5000 righe — distinto dall’export GDPR."
         },
         "delete_account": {
             "slug": "delete_account",

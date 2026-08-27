@@ -87,6 +87,10 @@
                     "text": "Combina estado, equipo, búsqueda, recurrente y rondas de inspección para refinar la lista. La búsqueda mira en la descripción (texto fuente y traducciones completadas), ubicación, dirección, código postal, ciudad, unidad y denunciante. Pulsa GO! para aplicar. La barra lateral Trabajo → Rondas de inspección abre esta página titulada Rondas de inspección con el filtro Solo rondas de inspección (incidencias recurrentes con al menos dos paradas de ronda)."
                 },
                 {
+                    "label": "Descargar informe",
+                    "text": "Exporte los resultados filtrados (no solo la página actual; máx. 5000 filas): CSV (tabla para Excel) o Imprimir (mismo diseño de tarjetas que la lista del backoffice; Ctrl+P a PDF). Usa los mismos filtros que la lista."
+                },
+                {
                     "label": "Aprobar",
                     "text": "Las incidencias creadas mediante el portal QR esperan aprobación. Apruebe para que el contenido sea visible en las páginas públicas."
                 },
@@ -182,6 +186,10 @@
                 {
                     "label": "Recurrente",
                     "text": "Filtre tareas recurrentes (pastilla «Recurrente»). Provienen de avisos recurrentes con fecha de vencimiento planificada por ciclo."
+                },
+                {
+                    "label": "Descargar informe",
+                    "text": "Exporte los resultados filtrados (no solo la página actual; máx. 5000 filas): CSV (tabla para Excel) o Imprimir (mismo diseño de tarjetas que la lista del backoffice; Ctrl+P a PDF). Usa los mismos filtros que la lista."
                 }
             ],
             "status_note": "Los estados se actualizan a menudo automáticamente mediante el portal QR de unidad. También puede ajustarlos manualmente.",
@@ -1118,6 +1126,10 @@
                     "text": "Filtre por indicador, ubicación, unidad o periodo — útil para revisar todas las lecturas de un edificio en un trimestre, por ejemplo."
                 },
                 {
+                    "label": "Descargar informe",
+                    "text": "Exporte los resultados filtrados (no solo la página actual; máx. 5000 filas): CSV (tabla para Excel) o Imprimir (mismo diseño de tarjetas que la lista del backoffice; Ctrl+P a PDF). Usa los mismos filtros que la lista."
+                },
+                {
                     "label": "Alertas de umbral",
                     "text": "¿Un indicador tiene mínimo o máximo? Las lecturas fuera de esos límites se resaltan para detectar desviaciones rápidamente."
                 },
@@ -1177,12 +1189,8 @@
                     "text": "Elija fechas de inicio y fin y filtre opcionalmente por equipo, trabajador o clock point. Pulse <strong>Aplicar</strong> para actualizar la lista."
                 },
                 {
-                    "label": "Exportar CSV",
-                    "text": "Descargue los turnos filtrados en CSV (compatible con Excel, separado por punto y coma). Ideal para procesamiento posterior en software de nómina o planificación."
-                },
-                {
-                    "label": "Imprimir",
-                    "text": "Abra una hoja de horas imprimible con los mismos filtros. Use <strong>Imprimir</strong> del navegador para guardar o compartir un PDF."
+                    "label": "Descargar informe",
+                    "text": "Submenú CSV + Imprimir: descargue los turnos filtrados como CSV (compatible con Excel) o abra una hoja de horas imprimible con el mismo diseño de tarjetas que la lista (Ctrl+P a PDF). Mismos filtros que el resumen; no solo la página actual (máx. 5000 filas)."
                 },
                 {
                     "label": "Corregir",
@@ -1326,6 +1334,10 @@
                     "text": "Filtra por resultado (OK / No OK) y ubicación. Abre el GPS para ver las coordenadas en el mapa."
                 },
                 {
+                    "label": "Descargar informe",
+                    "text": "Exporte los resultados filtrados (no solo la página actual; máx. 5000 filas): CSV (tabla para Excel) o Imprimir (mismo diseño de tarjetas que la lista del backoffice; Ctrl+P a PDF). Usa los mismos filtros que la lista."
+                },
+                {
                     "label": "Webhooks",
                     "text": "Cada comprobación dispara unit.check.recorded para que los sistemas externos (IWMS, GMAO, ERP, …) puedan actualizar la ronda."
                 },
@@ -1430,6 +1442,10 @@
                 {
                     "label": "Buscar",
                     "text": "Filtre por campo y ubicación o busque por campo, unit, ubicación o valor. Pulse GO!."
+                },
+                {
+                    "label": "Descargar informe",
+                    "text": "Exporte los resultados filtrados (no solo la página actual; máx. 5000 filas): CSV (tabla para Excel) o Imprimir (mismo diseño de tarjetas que la lista del backoffice; Ctrl+P a PDF). Usa los mismos filtros que la lista."
                 },
                 {
                     "label": "Vincular a units",

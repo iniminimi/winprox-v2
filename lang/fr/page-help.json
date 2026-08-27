@@ -87,6 +87,10 @@
                     "text": "Combinez statut, équipe, recherche, récurrent et tournées d’inspection pour affiner la liste. La recherche porte sur la description (texte source et traductions terminées), le site, l’adresse, le code postal, la ville, l’unité et le déclarant. Appuyez sur GO! pour appliquer. La barre latérale Travail → Tournées d’inspection ouvre cette page intitulée Tournées d’inspection avec le filtre Tournées d’inspection uniquement (signalements récurrents avec au moins deux arrêts de tournée)."
                 },
                 {
+                    "label": "Télécharger le rapport",
+                    "text": "Exportez les résultats filtrés (pas seulement la page actuelle ; max. 5000 lignes) : CSV (tableau pour Excel) ou Imprimer (même mise en page en cartes que la liste back-office ; Ctrl+P vers PDF). Utilise les mêmes filtres que la liste."
+                },
+                {
                     "label": "Approuver",
                     "text": "Les signalements créés via le portail QR attendent une approbation. Approuvez pour rendre le contenu visible sur les pages publiques."
                 },
@@ -182,6 +186,10 @@
                 {
                     "label": "Récurrent",
                     "text": "Filtrez les tâches récurrentes (pastille « Récurrent »). Elles proviennent de signalements récurrents avec une échéance planifiée par cycle."
+                },
+                {
+                    "label": "Télécharger le rapport",
+                    "text": "Exportez les résultats filtrés (pas seulement la page actuelle ; max. 5000 lignes) : CSV (tableau pour Excel) ou Imprimer (même mise en page en cartes que la liste back-office ; Ctrl+P vers PDF). Utilise les mêmes filtres que la liste."
                 }
             ],
             "status_note": "Les statuts sont souvent mis à jour automatiquement via le portail QR unité. Vous pouvez aussi les ajuster manuellement.",
@@ -1118,6 +1126,10 @@
                     "text": "Affinez par indicateur, lieu, unité ou période — pratique pour consulter tous les relevés d’un bâtiment sur un trimestre, par exemple."
                 },
                 {
+                    "label": "Télécharger le rapport",
+                    "text": "Exportez les résultats filtrés (pas seulement la page actuelle ; max. 5000 lignes) : CSV (tableau pour Excel) ou Imprimer (même mise en page en cartes que la liste back-office ; Ctrl+P vers PDF). Utilise les mêmes filtres que la liste."
+                },
+                {
                     "label": "Alertes de seuil",
                     "text": "Un indicateur a un minimum ou maximum ? Les mesures hors de ces limites sont mises en évidence pour repérer rapidement les écarts."
                 },
@@ -1177,12 +1189,8 @@
                     "text": "Choisissez une date de début et de fin et filtrez éventuellement par équipe, collaborateur ou clock point. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste."
                 },
                 {
-                    "label": "Exporter CSV",
-                    "text": "Téléchargez les shifts filtrés en CSV (compatible Excel, séparateur point-virgule). Idéal pour un traitement ultérieur dans un logiciel de paie ou de planning."
-                },
-                {
-                    "label": "Imprimer",
-                    "text": "Ouvrez une feuille de temps imprimable pour les mêmes filtres. Utilisez <strong>Imprimer</strong> du navigateur pour enregistrer ou partager un PDF."
+                    "label": "Télécharger le rapport",
+                    "text": "Sous-menu CSV + Imprimer : téléchargez les shifts filtrés en CSV (compatible Excel) ou ouvrez une feuille de temps imprimable dans la même mise en page en cartes que la liste (Ctrl+P vers PDF). Mêmes filtres que l’aperçu ; pas seulement la page actuelle (max. 5000 lignes)."
                 },
                 {
                     "label": "Corriger",
@@ -1326,6 +1334,10 @@
                     "text": "Filtrez par résultat (OK / Pas OK) et site. Ouvrez le GPS pour voir les coordonnées sur la carte."
                 },
                 {
+                    "label": "Télécharger le rapport",
+                    "text": "Exportez les résultats filtrés (pas seulement la page actuelle ; max. 5000 lignes) : CSV (tableau pour Excel) ou Imprimer (même mise en page en cartes que la liste back-office ; Ctrl+P vers PDF). Utilise les mêmes filtres que la liste."
+                },
+                {
                     "label": "Webhooks",
                     "text": "Chaque contrôle déclenche unit.check.recorded afin que les systèmes externes (GMAO, IWMS, ERP, …) puissent mettre à jour la ronde."
                 },
@@ -1430,6 +1442,10 @@
                 {
                     "label": "Recherche",
                     "text": "Filtrez par champ et lieu ou cherchez par champ, unit, lieu ou valeur. Cliquez sur GO!."
+                },
+                {
+                    "label": "Télécharger le rapport",
+                    "text": "Exportez les résultats filtrés (pas seulement la page actuelle ; max. 5000 lignes) : CSV (tableau pour Excel) ou Imprimer (même mise en page en cartes que la liste back-office ; Ctrl+P vers PDF). Utilise les mêmes filtres que la liste."
                 },
                 {
                     "label": "Lier aux units",

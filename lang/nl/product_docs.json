@@ -98,7 +98,7 @@
             },
             {
                 "title": "Rapporten",
-                "body": "Op zoekschermen (meldingen, taken, Time, unit checks, ESG): Download rapport als CSV of afdrukken (Ctrl+P naar PDF), met dezelfde filters als de lijst. Later: Organisatie - Rapporten voor opgeslagen sjablonen."
+                "body": "Op zoekschermen (meldingen, taken, Time, unit checks, unitmetingen, ESG): knop Download rapport — CSV (tabel voor Excel) of afdrukken (zelfde kaartlayout als de backoffice-lijst; Ctrl+P naar PDF), met dezelfde filters als de lijst (max. 5000 rijen). Later: Organisatie → Rapporten voor opgeslagen sjablonen."
             },
             {
                 "title": "Kalender",
@@ -175,7 +175,8 @@
                     "**Beheerder**: alles (users, bedrijf, abonnement, teams).",
                     "**Medewerker**: operationeel (meldingen, taken, locaties) — geen account-/billingbeheer.",
                     "**Uitvoerder / teamleader**: taken via veldportaal; teamleader kan iconen vrijgeven.",
-                    "Elke actie wordt gecontroleerd: je mag alleen wat bij je rol past (**minimale rechten**). API-sleutels krijgen aparte toestemmingen — bijvoorbeeld “meldingen lezen” zonder toegang tot alles."
+                    "Elke actie wordt gecontroleerd: je mag alleen wat bij je rol past (**minimale rechten**). API-sleutels krijgen aparte toestemmingen — bijvoorbeeld “meldingen lezen” zonder toegang tot alles.",
+                    "Operationele rapporten: gefilterde CSV of afdruk (zelfde layout als de lijst) op meldingen, taken, Time, unit checks, unitmetingen en ESG — voor wie die lijsten mag zien. Los van de AVG-account-export (Instellingen → Privacy & export)."
                 ]
             },
             {

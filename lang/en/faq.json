@@ -192,8 +192,15 @@
             "slug": "data_export",
             "type": "text",
             "title": "Can I export my data?",
-            "body": "Yes. Go to Settings → Privacy & data export. There an administrator can download a machine-readable export (JSON in a ZIP) of the account and relevant activity in your environment. Keep the file safe.",
+            "body": "Yes. Go to Settings → Privacy & data export. There an administrator can download a machine-readable export (JSON in a ZIP) of the account and relevant activity in your environment. Keep the file safe. This is the GDPR account export — distinct from operational list reports (Download report on search screens).",
             "summary": "Administrators export via Settings → Privacy & data export (GDPR)."
+        },
+        "list_reports": {
+            "slug": "list_reports",
+            "type": "text",
+            "title": "What is Download report on search screens?",
+            "body": "On filtered search screens (Issues, Tasks, Time/shifts, Unit checks, Unit measurements, ESG measurements) the Download report button exports CSV (table for Excel) or Print (same card layout as the backoffice list; Ctrl+P to PDF). The export uses the same filters as the list, not only the current page (max. 5000 rows). Available to anyone who may view those lists. This is not a GDPR account export — that remains under Settings → Privacy & data export. Later: Organisation → Reports with saved templates.",
+            "summary": "Download report on search screens: filtered CSV or print (card layout); max. 5000 rows — distinct from GDPR export."
         },
         "delete_account": {
             "slug": "delete_account",

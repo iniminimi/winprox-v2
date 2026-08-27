@@ -87,6 +87,10 @@
                     "text": "Combineer status, team, zoekterm, terugkerend en inspectierondes om de lijst te verfijnen. De zoekterm zoekt in de omschrijving (brontekst en voltooide vertalingen), locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen. Zijbalk Werk → Inspectierondes opent deze pagina met titel Inspectierondes en filter Alleen inspectierondes (terugkerende meldingen met minstens twee ronde-stops)."
                 },
                 {
+                    "label": "Download rapport",
+                    "text": "Exporteer de gefilterde resultaten (niet alleen de huidige pagina; max. 5000 rijen): CSV (tabel voor Excel) of Afdrukken (zelfde kaartlayout als de backoffice-lijst; Ctrl+P naar PDF). Gebruikt dezelfde filters als de lijst."
+                },
+                {
                     "label": "Goedkeuren",
                     "text": "Meldingen gemaakt via het QR-portaal wachten op goedkeuring. Keur goed zodat inhoud op publieke pagina's zichtbaar wordt."
                 },
@@ -182,6 +186,10 @@
                 {
                     "label": "Terugkerend",
                     "text": "Filter op terugkerende taken (pill «Terugkerend»). Deze komen uit terugkerende meldingen met een geplande vervaldatum per cyclus."
+                },
+                {
+                    "label": "Download rapport",
+                    "text": "Exporteer de gefilterde resultaten (niet alleen de huidige pagina; max. 5000 rijen): CSV (tabel voor Excel) of Afdrukken (zelfde kaartlayout als de backoffice-lijst; Ctrl+P naar PDF). Gebruikt dezelfde filters als de lijst."
                 }
             ],
             "status_note": "Statussen worden vaak automatisch bijgewerkt via het unit-QR-portaal. Je kan ze ook handmatig aanpassen.",
@@ -1118,6 +1126,10 @@
                     "text": "Verfijn op indicator, locatie, unit of periode. Handig om bijvoorbeeld alle meterstanden van één gebouw in een kwartaal te bekijken."
                 },
                 {
+                    "label": "Download rapport",
+                    "text": "Exporteer de gefilterde resultaten (niet alleen de huidige pagina; max. 5000 rijen): CSV (tabel voor Excel) of Afdrukken (zelfde kaartlayout als de backoffice-lijst; Ctrl+P naar PDF). Gebruikt dezelfde filters als de lijst."
+                },
+                {
                     "label": "Drempelwaarschuwingen",
                     "text": "Staat een indicator ingesteld met minimum of maximum? Metingen buiten die grenzen worden gemarkeerd, zodat u afwijkingen snel opmerkt."
                 },
@@ -1177,12 +1189,8 @@
                     "text": "Kies een van- en tot-datum en filter optioneel op team, medewerker of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
                 },
                 {
-                    "label": "Exporteer CSV",
-                    "text": "Download de gefilterde shifts als CSV (Excel-vriendelijk, puntkomma-gescheiden). Ideaal voor verdere verwerking in loon- of planningssoftware."
-                },
-                {
-                    "label": "Afdrukken",
-                    "text": "Open een afdrukbare urenstaat voor dezelfde filters. Gebruik <strong>Afdrukken</strong> in de browser om een PDF te bewaren of te delen."
+                    "label": "Download rapport",
+                    "text": "Submenu CSV + Afdrukken: download de gefilterde shifts als CSV (Excel-vriendelijk) of open een afdrukbare urenstaat in dezelfde kaartlayout als de lijst (Ctrl+P naar PDF). Zelfde filters als het overzicht; niet alleen de huidige pagina (max. 5000 rijen)."
                 },
                 {
                     "label": "Corrigeren",
@@ -1326,6 +1334,10 @@
                     "text": "Filter op resultaat (OK / Niet OK) en locatie. Klik op GPS om de coördinaten op de kaart te openen."
                 },
                 {
+                    "label": "Download rapport",
+                    "text": "Exporteer de gefilterde resultaten (niet alleen de huidige pagina; max. 5000 rijen): CSV (tabel voor Excel) of Afdrukken (zelfde kaartlayout als de backoffice-lijst; Ctrl+P naar PDF). Gebruikt dezelfde filters als de lijst."
+                },
+                {
                     "label": "Webhooks",
                     "text": "Elke check triggert unit.check.recorded zodat externe systemen (IWMS, CMMS, ERP, …) de ronde kunnen bijwerken."
                 },
@@ -1430,6 +1442,10 @@
                 {
                     "label": "Zoeken",
                     "text": "Filter op meetveld en locatie of zoek op veld, unit, locatie of waarde. Klik GO! om te zoeken."
+                },
+                {
+                    "label": "Download rapport",
+                    "text": "Exporteer de gefilterde resultaten (niet alleen de huidige pagina; max. 5000 rijen): CSV (tabel voor Excel) of Afdrukken (zelfde kaartlayout als de backoffice-lijst; Ctrl+P naar PDF). Gebruikt dezelfde filters als de lijst."
                 },
                 {
                     "label": "Koppelen aan units",

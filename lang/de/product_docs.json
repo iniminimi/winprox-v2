@@ -98,7 +98,7 @@
             },
             {
                 "title": "Berichte",
-                "body": "Auf Suchbildschirmen (Meldungen, Aufgaben, Time, Unit-Checks, ESG): Bericht als CSV herunterladen oder drucken (Strg+P zu PDF), mit denselben Filtern wie die Liste. Spater: Organisation - Berichte fur gespeicherte Vorlagen."
+                "body": "Auf Suchbildschirmen (Meldungen, Aufgaben, Time, Unit-Checks, Unit-Messungen, ESG): Schaltfläche Bericht herunterladen — CSV (Tabelle für Excel) oder drucken (gleiche Kartenlayout wie die Backoffice-Liste; Strg+P zu PDF), mit denselben Filtern wie die Liste (max. 5000 Zeilen). Später: Organisation → Berichte für gespeicherte Vorlagen."
             },
             {
                 "title": "Calendar",
@@ -175,7 +175,8 @@
                     "**Admin**: everything (users, company, subscription, teams).",
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
-                    "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything."
+                    "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
+                    "Operative Berichte: gefilterte CSV oder Druck (gleiche Layout wie die Liste) für Meldungen, Aufgaben, Time, Unit-Checks, Unit-Messungen und ESG — für alle, die diese Listen sehen dürfen. Getrennt vom DSGVO-Kontoexport (Einstellungen → Datenschutz & Datenexport)."
                 ]
             },
             {

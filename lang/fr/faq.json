@@ -188,8 +188,15 @@
             "slug": "data_export",
             "type": "text",
             "title": "Puis-je exporter mes données ?",
-            "body": "Oui. Allez dans Paramètres → Confidentialité & export des données. L’administrateur peut y télécharger un export lisible par machine (JSON dans un ZIP) du compte et de l’activité pertinente. Conservez le fichier en lieu sûr.",
+            "body": "Oui. Allez dans Paramètres → Confidentialité & export des données. L’administrateur peut y télécharger un export lisible par machine (JSON dans un ZIP) du compte et de l’activité pertinente. Conservez le fichier en lieu sûr. C’est l’export RGPD du compte — distinct des rapports de liste opérationnels (Télécharger le rapport sur les écrans de recherche).",
             "summary": "Les administrateurs exportent via Paramètres → Confidentialité & export des données (RGPD)."
+        },
+        "list_reports": {
+            "slug": "list_reports",
+            "type": "text",
+            "title": "Qu’est-ce que Télécharger le rapport sur les écrans de recherche ?",
+            "body": "Sur les écrans de recherche filtrés (Signalements, Tâches, Time/heures, Contrôles unit, Mesures unit, Mesures ESG), le bouton Télécharger le rapport exporte en CSV (tableau pour Excel) ou Imprimer (même mise en page en cartes que la liste back-office ; Ctrl+P vers PDF). L’export utilise les mêmes filtres que la liste, pas seulement la page actuelle (max. 5000 lignes). Disponible pour qui peut voir ces listes. Ce n’est pas un export RGPD du compte — celui-ci reste sous Paramètres → Confidentialité & export. Plus tard : Organisation → Rapports avec modèles enregistrés.",
+            "summary": "Télécharger le rapport sur les écrans de recherche : CSV ou impression filtrés (cartes) ; max. 5000 lignes — distinct de l’export RGPD."
         },
         "delete_account": {
             "slug": "delete_account",

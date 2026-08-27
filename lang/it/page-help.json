@@ -87,6 +87,10 @@
                     "text": "Combina stato, team, ricerca, ricorrente e giri di ispezione per affinare l’elenco. La ricerca guarda nella descrizione (testo sorgente e traduzioni completate), sede, indirizzo, CAP, città, unità e segnalatore. Premi GO! per applicare. La barra laterale Lavoro → Giri di ispezione apre questa pagina intitolata Giri di ispezione con il filtro Solo giri di ispezione (segnalazioni ricorrenti con almeno due fermate del giro)."
                 },
                 {
+                    "label": "Scarica rapporto",
+                    "text": "Esporta i risultati filtrati (non solo la pagina corrente; max. 5000 righe): CSV (tabella per Excel) o Stampa (stesso layout a schede dell’elenco backoffice; Ctrl+P a PDF). Usa gli stessi filtri dell’elenco."
+                },
+                {
                     "label": "Approva",
                     "text": "Le segnalazioni create tramite il portale QR attendono l'approvazione. Approvi in modo che il contenuto diventi visibile sulle pagine pubbliche."
                 },
@@ -182,6 +186,10 @@
                 {
                     "label": "Ricorrente",
                     "text": "Filtra task ricorrenti (pill «Ricorrente»). Provengono da segnalazioni ricorrenti con scadenza pianificata per ciclo."
+                },
+                {
+                    "label": "Scarica rapporto",
+                    "text": "Esporta i risultati filtrati (non solo la pagina corrente; max. 5000 righe): CSV (tabella per Excel) o Stampa (stesso layout a schede dell’elenco backoffice; Ctrl+P a PDF). Usa gli stessi filtri dell’elenco."
                 }
             ],
             "status_note": "Gli stati vengono spesso aggiornati automaticamente tramite il portale QR unità. Può anche modificarli manualmente.",
@@ -1118,6 +1126,10 @@
                     "text": "Affini per indicatore, sede, unità o periodo — utile per rivedere tutte le letture di un edificio in un trimestre, ad esempio."
                 },
                 {
+                    "label": "Scarica rapporto",
+                    "text": "Esporta i risultati filtrati (non solo la pagina corrente; max. 5000 righe): CSV (tabella per Excel) o Stampa (stesso layout a schede dell’elenco backoffice; Ctrl+P a PDF). Usa gli stessi filtri dell’elenco."
+                },
+                {
                     "label": "Avvisi soglia",
                     "text": "Un indicatore ha minimo o massimo? Le letture fuori da questi limiti sono evidenziate per individuare rapidamente le deviazioni."
                 },
@@ -1177,12 +1189,8 @@
                     "text": "Scelga date di inizio e fine e filtri facoltativamente per team, lavoratore o clock point. Clicchi <strong>Applica</strong> per aggiornare l'elenco."
                 },
                 {
-                    "label": "Esporta CSV",
-                    "text": "Scarichi i turni filtrati in CSV (compatibile Excel, separato da punto e virgola). Ideale per elaborazioni successive in software paghe o pianificazione."
-                },
-                {
-                    "label": "Stampa",
-                    "text": "Apri un foglio ore stampabile con gli stessi filtri. Usi <strong>Stampa</strong> del browser per salvare o condividere un PDF."
+                    "label": "Scarica rapporto",
+                    "text": "Sottomenu CSV + Stampa: scarica i turni filtrati come CSV (compatibile Excel) o apri un foglio ore stampabile con lo stesso layout a schede dell’elenco (Ctrl+P a PDF). Stessi filtri della panoramica; non solo la pagina corrente (max. 5000 righe)."
                 },
                 {
                     "label": "Correggi",
@@ -1326,6 +1334,10 @@
                     "text": "Filtra per risultato (OK / Non OK) e sede. Apri il GPS per vedere le coordinate sulla mappa."
                 },
                 {
+                    "label": "Scarica rapporto",
+                    "text": "Esporta i risultati filtrati (non solo la pagina corrente; max. 5000 righe): CSV (tabella per Excel) o Stampa (stesso layout a schede dell’elenco backoffice; Ctrl+P a PDF). Usa gli stessi filtri dell’elenco."
+                },
+                {
                     "label": "Webhook",
                     "text": "Ogni controllo attiva unit.check.recorded così i sistemi esterni (IWMS, CMMS, ERP, …) possono aggiornare il giro."
                 },
@@ -1430,6 +1442,10 @@
                 {
                     "label": "Cerca",
                     "text": "Filtra per campo e posizione o cerca per campo, unit, posizione o valore. Clicca GO!."
+                },
+                {
+                    "label": "Scarica rapporto",
+                    "text": "Esporta i risultati filtrati (non solo la pagina corrente; max. 5000 righe): CSV (tabella per Excel) o Stampa (stesso layout a schede dell’elenco backoffice; Ctrl+P a PDF). Usa gli stessi filtri dell’elenco."
                 },
                 {
                     "label": "Collega alle unit",

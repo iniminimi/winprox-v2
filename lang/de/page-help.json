@@ -87,6 +87,10 @@
                     "text": "Kombinieren Sie Status, Team, Suchbegriff, wiederkehrend und Inspektionsrunden, um die Liste zu verfeinern. Der Suchbegriff durchsucht Beschreibung (Quelltext und fertige Übersetzungen), Standort, Adresse, PLZ, Ort, Unit und Melder. Drücken Sie GO! zum Anwenden. Die Seitenleiste Arbeit → Inspektionsrunden öffnet diese Seite mit Titel Inspektionsrunden und Filter Nur Inspektionsrunden (wiederkehrende Meldungen mit mindestens zwei Runden-Stops)."
                 },
                 {
+                    "label": "Bericht herunterladen",
+                    "text": "Exportieren Sie die gefilterten Ergebnisse (nicht nur die aktuelle Seite; max. 5000 Zeilen): CSV (Tabelle für Excel) oder Drucken (gleiche Kartenlayout wie die Backoffice-Liste; Strg+P zu PDF). Verwendet dieselben Filter wie die Liste."
+                },
+                {
                     "label": "Freigeben",
                     "text": "Meldungen, die über das QR-Portal erstellt wurden, warten auf Freigabe. Geben Sie frei, damit Inhalte auf öffentlichen Seiten sichtbar werden."
                 },
@@ -182,6 +186,10 @@
                 {
                     "label": "Wiederkehrend",
                     "text": "Filtern Sie wiederkehrende Aufgaben (Pill «Wiederkehrend»). Diese stammen aus wiederkehrenden Meldungen mit geplantem Fälligkeitsdatum pro Zyklus."
+                },
+                {
+                    "label": "Bericht herunterladen",
+                    "text": "Exportieren Sie die gefilterten Ergebnisse (nicht nur die aktuelle Seite; max. 5000 Zeilen): CSV (Tabelle für Excel) oder Drucken (gleiche Kartenlayout wie die Backoffice-Liste; Strg+P zu PDF). Verwendet dieselben Filter wie die Liste."
                 }
             ],
             "status_note": "Status werden oft automatisch über das Unit-QR-Portal aktualisiert. Sie können sie auch manuell anpassen.",
@@ -1118,6 +1126,10 @@
                     "text": "Eingrenzen nach Indikator, Standort, Unit oder Zeitraum — z. B. alle Zählerstände eines Gebäudes in einem Quartal."
                 },
                 {
+                    "label": "Bericht herunterladen",
+                    "text": "Exportieren Sie die gefilterten Ergebnisse (nicht nur die aktuelle Seite; max. 5000 Zeilen): CSV (Tabelle für Excel) oder Drucken (gleiche Kartenlayout wie die Backoffice-Liste; Strg+P zu PDF). Verwendet dieselben Filter wie die Liste."
+                },
+                {
                     "label": "Schwellenwert-Warnungen",
                     "text": "Hat ein Indikator Minimum oder Maximum? Messungen außerhalb dieser Grenzen werden markiert, damit Abweichungen schnell auffallen."
                 },
@@ -1177,12 +1189,8 @@
                     "text": "Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Mitarbeiter oder Clock Point. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren."
                 },
                 {
-                    "label": "CSV exportieren",
-                    "text": "Laden Sie die gefilterten Schichten als CSV herunter (Excel-freundlich, semikolongetrennt). Ideal für die Weiterverarbeitung in Lohn- oder Planungssoftware."
-                },
-                {
-                    "label": "Drucken",
-                    "text": "Öffnen Sie eine druckbare Stundenzettel-Ansicht für dieselben Filter. Verwenden Sie <strong>Drucken</strong> im Browser, um ein PDF zu speichern oder zu teilen."
+                    "label": "Bericht herunterladen",
+                    "text": "Untermenü CSV + Drucken: laden Sie gefilterte Schichten als CSV herunter (Excel-freundlich) oder öffnen Sie einen druckbaren Stundenzettel im gleichen Kartenlayout wie die Liste (Strg+P zu PDF). Dieselben Filter wie die Übersicht; nicht nur die aktuelle Seite (max. 5000 Zeilen)."
                 },
                 {
                     "label": "Korrigieren",
@@ -1326,6 +1334,10 @@
                     "text": "Filter nach Ergebnis (OK / Nicht OK) und Standort. GPS öffnet die Koordinaten auf der Karte."
                 },
                 {
+                    "label": "Bericht herunterladen",
+                    "text": "Exportieren Sie die gefilterten Ergebnisse (nicht nur die aktuelle Seite; max. 5000 Zeilen): CSV (Tabelle für Excel) oder Drucken (gleiche Kartenlayout wie die Backoffice-Liste; Strg+P zu PDF). Verwendet dieselben Filter wie die Liste."
+                },
+                {
                     "label": "Webhooks",
                     "text": "Jeder Check löst unit.check.recorded aus, damit externe Systeme (IWMS, CMMS, ERP, …) die Runde aktualisieren können."
                 },
@@ -1430,6 +1442,10 @@
                 {
                     "label": "Suche",
                     "text": "Nach Messfeld und Standort filtern oder nach Feld, Unit, Standort oder Wert suchen. GO! klicken."
+                },
+                {
+                    "label": "Bericht herunterladen",
+                    "text": "Exportieren Sie die gefilterten Ergebnisse (nicht nur die aktuelle Seite; max. 5000 Zeilen): CSV (Tabelle für Excel) oder Drucken (gleiche Kartenlayout wie die Backoffice-Liste; Strg+P zu PDF). Verwendet dieselben Filter wie die Liste."
                 },
                 {
                     "label": "An Units koppeln",

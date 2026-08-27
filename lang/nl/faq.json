@@ -192,8 +192,15 @@
             "slug": "data_export",
             "type": "text",
             "title": "Kan ik mijn gegevens exporteren?",
-            "body": "Ja. Ga naar Instellingen → Privacy & export van gegevens. Daar kan de beheerder een machineleesbare export (JSON in een ZIP) downloaden van het account en relevante activiteit binnen jullie omgeving. Bewaar het bestand veilig.",
+            "body": "Ja. Ga naar Instellingen → Privacy & export van gegevens. Daar kan de beheerder een machineleesbare export (JSON in een ZIP) downloaden van het account en relevante activiteit binnen jullie omgeving. Bewaar het bestand veilig. Dit is de AVG/GDPR-accountexport — los van operationele lijstrapporten (Download rapport op zoekschermen).",
             "summary": "Beheerders exporteren via Instellingen → Privacy & export van gegevens (AVG/GDPR)."
+        },
+        "list_reports": {
+            "slug": "list_reports",
+            "type": "text",
+            "title": "Wat is Download rapport op de zoekschermen?",
+            "body": "Op gefilterde zoekschermen (Meldingen, Taken, Time/uren, Unit checks, Unitmetingen, ESG-metingen) staat de knop Download rapport. Kies CSV (tabel voor Excel) of Afdrukken (zelfde kaartlayout als de backoffice-lijst; Ctrl+P naar PDF). De export gebruikt dezelfde filters als de lijst, niet alleen de huidige pagina (max. 5000 rijen). Alleen beschikbaar voor wie die lijsten mag zien. Dit is geen AVG-accountexport — die blijft onder Instellingen → Privacy & export. Later komt Organisatie → Rapporten met opgeslagen sjablonen.",
+            "summary": "Download rapport op zoekschermen: gefilterde CSV of afdruk (kaartlayout); max. 5000 rijen — los van AVG-export."
         },
         "delete_account": {
             "slug": "delete_account",

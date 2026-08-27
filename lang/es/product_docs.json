@@ -98,7 +98,7 @@
             },
             {
                 "title": "Informes",
-                "body": "En pantallas de busqueda (incidencias, tareas, Time, unit checks, ESG): descargar informe como CSV o imprimir (Ctrl+P a PDF), con los mismos filtros que la lista. Mas adelante: Organizacion - Informes para plantillas guardadas."
+                "body": "En pantallas de búsqueda (incidencias, tareas, Time, unit checks, mediciones de unit, ESG): botón Descargar informe — CSV (tabla para Excel) o imprimir (mismo diseño de tarjetas que la lista del backoffice; Ctrl+P a PDF), con los mismos filtros que la lista (máx. 5000 filas). Más adelante: Organización → Informes para plantillas guardadas."
             },
             {
                 "title": "Calendar",
@@ -175,7 +175,8 @@
                     "**Admin**: everything (users, company, subscription, teams).",
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
-                    "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything."
+                    "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
+                    "Informes operativos: CSV o impresión filtrados (mismo diseño que la lista) para incidencias, tareas, Time, unit checks, mediciones de unit y ESG — para quien pueda ver esas listas. Distinto de la exportación RGPD de la cuenta (Ajustes → Privacidad y exportación)."
                 ]
             },
             {

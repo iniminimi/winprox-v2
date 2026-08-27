@@ -188,8 +188,15 @@
             "slug": "data_export",
             "type": "text",
             "title": "Kann ich meine Daten exportieren?",
-            "body": "Ja. Gehen Sie zu Einstellungen → Datenschutz & Datenexport. Dort kann der Administrator einen maschinenlesbaren Export (JSON in einer ZIP) des Kontos und relevanter Aktivitäten herunterladen. Bewahren Sie die Datei sicher auf.",
+            "body": "Ja. Gehen Sie zu Einstellungen → Datenschutz & Datenexport. Dort kann der Administrator einen maschinenlesbaren Export (JSON in einer ZIP) des Kontos und relevanter Aktivitäten herunterladen. Bewahren Sie die Datei sicher auf. Das ist der DSGVO-Kontoexport — getrennt von operativen Listenberichten (Bericht herunterladen auf Suchbildschirmen).",
             "summary": "Administratoren exportieren unter Einstellungen → Datenschutz & Datenexport (DSGVO)."
+        },
+        "list_reports": {
+            "slug": "list_reports",
+            "type": "text",
+            "title": "Was ist Bericht herunterladen auf Suchbildschirmen?",
+            "body": "Auf gefilterten Suchbildschirmen (Meldungen, Aufgaben, Time/Stunden, Unit-Checks, Unit-Messungen, ESG-Messungen) exportiert die Schaltfläche Bericht herunterladen CSV (Tabelle für Excel) oder Drucken (gleiche Kartenlayout wie die Backoffice-Liste; Strg+P zu PDF). Der Export nutzt dieselben Filter wie die Liste, nicht nur die aktuelle Seite (max. 5000 Zeilen). Verfügbar für alle, die diese Listen sehen dürfen. Das ist kein DSGVO-Kontoexport — der bleibt unter Einstellungen → Datenschutz & Datenexport. Später: Organisation → Berichte mit gespeicherten Vorlagen.",
+            "summary": "Bericht herunterladen auf Suchbildschirmen: gefilterte CSV oder Druck (Kartenlayout); max. 5000 Zeilen — getrennt vom DSGVO-Export."
         },
         "delete_account": {
             "slug": "delete_account",

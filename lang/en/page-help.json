@@ -87,6 +87,10 @@
                     "text": "Combine status, team, search term, recurring and inspection rounds to refine the list. The search term looks in the description (source text and completed translations), location, address, postcode, city, unit and reporter. Press GO! to apply. Sidebar Work → Inspection rounds opens this page titled Inspection rounds with the Inspection rounds only filter (recurring issues with at least two round stops)."
                 },
                 {
+                    "label": "Download report",
+                    "text": "Export the filtered results (not only the current page; max. 5000 rows): CSV (table for Excel) or Print (same card layout as the backoffice list; Ctrl+P to PDF). Uses the same filters as the list."
+                },
+                {
                     "label": "Approve",
                     "text": "Issues created via the QR portal wait for approval. Approve so content becomes visible on public pages."
                 },
@@ -182,6 +186,10 @@
                 {
                     "label": "Recurring",
                     "text": "Filter recurring tasks (Recurring pill). These come from recurring issues with a planned due date per cycle."
+                },
+                {
+                    "label": "Download report",
+                    "text": "Export the filtered results (not only the current page; max. 5000 rows): CSV (table for Excel) or Print (same card layout as the backoffice list; Ctrl+P to PDF). Uses the same filters as the list."
                 }
             ],
             "status_note": "Statuses are often updated automatically via the unit QR portal. You can also adjust them manually.",
@@ -1118,6 +1126,10 @@
                     "text": "Narrow by indicator, location, unit, or period. Useful to review all meter readings for one building in a quarter, for example."
                 },
                 {
+                    "label": "Download report",
+                    "text": "Export the filtered results (not only the current page; max. 5000 rows): CSV (table for Excel) or Print (same card layout as the backoffice list; Ctrl+P to PDF). Uses the same filters as the list."
+                },
+                {
                     "label": "Threshold warnings",
                     "text": "If an indicator has a minimum or maximum set, readings outside those limits are highlighted so you spot deviations quickly."
                 },
@@ -1177,12 +1189,8 @@
                     "text": "Choose from and to dates and optionally filter by team, worker, or clock point. Click <strong>Apply</strong> to refresh the list."
                 },
                 {
-                    "label": "Export CSV",
-                    "text": "Download filtered shifts as CSV (Excel-friendly, semicolon-separated). Ideal for payroll or planning tools."
-                },
-                {
-                    "label": "Print",
-                    "text": "Open a printable timesheet with the same filters. Use browser <strong>Print</strong> to save or share as PDF."
+                    "label": "Download report",
+                    "text": "Submenu CSV + Print: download filtered shifts as CSV (Excel-friendly) or open a printable timesheet in the same card layout as the list (Ctrl+P to PDF). Same filters as the overview; not only the current page (max. 5000 rows)."
                 },
                 {
                     "label": "Correct",
@@ -1326,6 +1334,10 @@
                     "text": "Filter by result (OK / Not OK) and location. Open GPS to view coordinates on a map."
                 },
                 {
+                    "label": "Download report",
+                    "text": "Export the filtered results (not only the current page; max. 5000 rows): CSV (table for Excel) or Print (same card layout as the backoffice list; Ctrl+P to PDF). Uses the same filters as the list."
+                },
+                {
                     "label": "Webhooks",
                     "text": "Each check triggers unit.check.recorded so external systems (IWMS, CMMS, ERP, …) can update the round."
                 },
@@ -1430,6 +1442,10 @@
                 {
                     "label": "Search",
                     "text": "Filter by measure field and location or search by field, unit, location or value. Click GO! to search."
+                },
+                {
+                    "label": "Download report",
+                    "text": "Export the filtered results (not only the current page; max. 5000 rows): CSV (table for Excel) or Print (same card layout as the backoffice list; Ctrl+P to PDF). Uses the same filters as the list."
                 },
                 {
                     "label": "Link to units",
