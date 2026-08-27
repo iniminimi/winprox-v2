@@ -1,11 +1,11 @@
 {
-    "document_title": "Briefing du matin",
+    "document_title": "Briefing",
     "screen_brand": "Briefing",
     "apply_filters": "Appliquer",
     "select_team": "Choisissez une équipe pour ce briefing",
     "team_choose": "Choisissez votre équipe :",
     "select_date": "Date",
-    "title": "Briefing du matin",
+    "title": "Briefing",
     "empty_team": "Aucune tâche ouverte pour aujourd'hui pour cette équipe.",
     "empty_team_open": "Aucune tâche ouverte pour cette équipe.",
     "section_units": "Unités",

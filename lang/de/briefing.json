@@ -1,11 +1,11 @@
 {
-    "document_title": "Morgenbriefing",
+    "document_title": "Briefing",
     "screen_brand": "Briefing",
     "apply_filters": "Anwenden",
     "select_team": "Wählen Sie ein Team für dieses Briefing",
     "team_choose": "Wählen Sie Ihr Team:",
     "select_date": "Datum",
-    "title": "Morgenbriefing",
+    "title": "Briefing",
     "empty_team": "Keine offenen Aufgaben für heute für dieses Team.",
     "empty_team_open": "Keine offenen Aufgaben für dieses Team.",
     "section_units": "Units",

@@ -196,7 +196,7 @@ Broncode oude app: `c:\winprox_old`. Relevante V1-paden:
 | Unit QR-portaal | `app/Livewire/FacilityUnitPortal.php` |
 | Team QR-portaal (V1; V2 = Clock Point) | `app/Livewire/FacilityTeamFieldPortal.php` |
 | QR-pack | `app/Http/Controllers/FacilityQrPackDownloadController.php` |
-| Ochtendbriefing | `app/Support/FacilityMorningBriefing.php` |
+| Briefing | `app/Support/FacilityMorningBriefing.php` |
 | QR-intake | `app/Support/FacilityQrIntake.php` |
 | Worker-sessie | `app/Support/FacilityWorkerSession.php` |
 
