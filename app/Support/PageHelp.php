@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Support;
 
 use App\Enums\TaskStatus;
+use App\Models\Tenant;
 
 /**
  * Per-pagina actie- en statushulp (V1 Actiehulp + Statushulp, unified popup).
@@ -39,10 +40,15 @@ final class PageHelp
         }
 
         $actions = [];
+        $hasApiAccess = self::currentTenantHasApiAccess();
 
         if (isset($pageData['actions']) && is_array($pageData['actions'])) {
             foreach ($pageData['actions'] as $item) {
                 if (! is_array($item) || ! isset($item['label'], $item['text'])) {
+                    continue;
+                }
+
+                if (! empty($item['requires_api']) && ! $hasApiAccess) {
                     continue;
                 }
 
@@ -126,5 +132,17 @@ final class PageHelp
             'statuses' => $statuses,
             'status_note' => $statusNote,
         ];
+    }
+
+    private static function currentTenantHasApiAccess(): bool
+    {
+        $tenantId = Tenancy::id();
+        if ($tenantId === null) {
+            return false;
+        }
+
+        $tenant = Tenant::query()->find($tenantId);
+
+        return $tenant !== null && $tenant->hasApiAccess();
     }
 }

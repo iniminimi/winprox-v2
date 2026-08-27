@@ -1376,8 +1376,13 @@
                     "text": "Attiva Consenti misurazioni su categoria e unit, poi scegli i campi."
                 },
                 {
-                    "label": "Portale e API",
-                    "text": "QR unit: tessera Misura se consentito. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                    "label": "Portale",
+                    "text": "QR unit: tessera Misura se categoria e unit lo consentono e ci sono campi collegati. Nessun Clock Point richiesto."
+                },
+                {
+                    "label": "API e webhook",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Ogni misurazione attiva unit.measurement.recorded. Gestione in Impostazioni → API.",
+                    "requires_api": true
                 }
             ]
         },
@@ -1401,8 +1406,13 @@
                     "text": "Attiva Consenti misurazioni su categoria e unit, poi scegli i campi."
                 },
                 {
-                    "label": "Portale e API",
-                    "text": "QR unit: tessera Misura se consentito. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                    "label": "Portale",
+                    "text": "QR unit: tessera Misura se categoria e unit lo consentono e ci sono campi collegati. Nessun Clock Point richiesto."
+                },
+                {
+                    "label": "API e webhook",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Ogni misurazione attiva unit.measurement.recorded. Gestione in Impostazioni → API.",
+                    "requires_api": true
                 }
             ]
         },
@@ -1426,8 +1436,13 @@
                     "text": "Attiva Consenti misurazioni su categoria e unit, poi scegli i campi."
                 },
                 {
-                    "label": "Portale e API",
-                    "text": "QR unit: tessera Misura se consentito. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                    "label": "Portale",
+                    "text": "QR unit: tessera Misura se categoria e unit lo consentono e ci sono campi collegati. Nessun Clock Point richiesto."
+                },
+                {
+                    "label": "API e webhook",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Ogni misurazione attiva unit.measurement.recorded. Gestione in Impostazioni → API.",
+                    "requires_api": true
                 }
             ]
         }

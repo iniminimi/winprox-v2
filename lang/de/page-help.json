@@ -1376,8 +1376,13 @@
                     "text": "Unit-Messungen erlauben an Kategorie und Unit aktivieren, dann Felder wählen."
                 },
                 {
-                    "label": "Portal & API",
-                    "text": "Unit-QR: Kachel Messung wenn erlaubt. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                    "label": "Portal",
+                    "text": "Unit-QR: Kachel Messung wenn Kategorie und Unit es erlauben und Felder verknüpft sind. Kein Clock Point nötig."
+                },
+                {
+                    "label": "API & Webhooks",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Jede Messung löst unit.measurement.recorded aus. Verwaltung unter Einstellungen → API.",
+                    "requires_api": true
                 }
             ]
         },
@@ -1401,8 +1406,13 @@
                     "text": "Unit-Messungen erlauben an Kategorie und Unit aktivieren, dann Felder wählen."
                 },
                 {
-                    "label": "Portal & API",
-                    "text": "Unit-QR: Kachel Messung wenn erlaubt. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                    "label": "Portal",
+                    "text": "Unit-QR: Kachel Messung wenn Kategorie und Unit es erlauben und Felder verknüpft sind. Kein Clock Point nötig."
+                },
+                {
+                    "label": "API & Webhooks",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Jede Messung löst unit.measurement.recorded aus. Verwaltung unter Einstellungen → API.",
+                    "requires_api": true
                 }
             ]
         },
@@ -1426,8 +1436,13 @@
                     "text": "Unit-Messungen erlauben an Kategorie und Unit aktivieren, dann Felder wählen."
                 },
                 {
-                    "label": "Portal & API",
-                    "text": "Unit-QR: Kachel Messung wenn erlaubt. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                    "label": "Portal",
+                    "text": "Unit-QR: Kachel Messung wenn Kategorie und Unit es erlauben und Felder verknüpft sind. Kein Clock Point nötig."
+                },
+                {
+                    "label": "API & Webhooks",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Jede Messung löst unit.measurement.recorded aus. Verwaltung unter Einstellungen → API.",
+                    "requires_api": true
                 }
             ]
         }

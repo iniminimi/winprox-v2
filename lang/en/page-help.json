@@ -1376,8 +1376,13 @@
                     "text": "Enable Allow unit measurements on the category and the unit. Then select which measure fields belong on that unit."
                 },
                 {
-                    "label": "Portal & API",
-                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. API: POST /api/v1/units/{unit}/measurements (units:update). Webhook: unit.measurement.recorded."
+                    "label": "Portal",
+                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. No Clock Point required."
+                },
+                {
+                    "label": "API & webhooks",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update ability). Each new reading fires webhook unit.measurement.recorded. Manage under Settings → API.",
+                    "requires_api": true
                 }
             ]
         },
@@ -1401,8 +1406,13 @@
                     "text": "Enable Allow unit measurements on the category and the unit. Then select which measure fields belong on that unit."
                 },
                 {
-                    "label": "Portal & API",
-                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. API: POST /api/v1/units/{unit}/measurements (units:update). Webhook: unit.measurement.recorded."
+                    "label": "Portal",
+                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. No Clock Point required."
+                },
+                {
+                    "label": "API & webhooks",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update ability). Each new reading fires webhook unit.measurement.recorded. Manage under Settings → API.",
+                    "requires_api": true
                 }
             ]
         },
@@ -1426,8 +1436,13 @@
                     "text": "Enable Allow unit measurements on the category and the unit. Then select which measure fields belong on that unit."
                 },
                 {
-                    "label": "Portal & API",
-                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. API: POST /api/v1/units/{unit}/measurements (units:update). Webhook: unit.measurement.recorded."
+                    "label": "Portal",
+                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. No Clock Point required."
+                },
+                {
+                    "label": "API & webhooks",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update ability). Each new reading fires webhook unit.measurement.recorded. Manage under Settings → API.",
+                    "requires_api": true
                 }
             ]
         }

@@ -1376,8 +1376,13 @@
                     "text": "Active Permitir mediciones en categoría y unit, luego elija los campos."
                 },
                 {
-                    "label": "Portal y API",
-                    "text": "QR de unit: ficha Medición si está permitido. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                    "label": "Portal",
+                    "text": "QR de unit: ficha Medición si categoría y unit lo permiten y hay campos vinculados. No se requiere Clock Point."
+                },
+                {
+                    "label": "API y webhooks",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Cada medición dispara unit.measurement.recorded. Gestión en Ajustes → API.",
+                    "requires_api": true
                 }
             ]
         },
@@ -1401,8 +1406,13 @@
                     "text": "Active Permitir mediciones en categoría y unit, luego elija los campos."
                 },
                 {
-                    "label": "Portal y API",
-                    "text": "QR de unit: ficha Medición si está permitido. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                    "label": "Portal",
+                    "text": "QR de unit: ficha Medición si categoría y unit lo permiten y hay campos vinculados. No se requiere Clock Point."
+                },
+                {
+                    "label": "API y webhooks",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Cada medición dispara unit.measurement.recorded. Gestión en Ajustes → API.",
+                    "requires_api": true
                 }
             ]
         },
@@ -1426,8 +1436,13 @@
                     "text": "Active Permitir mediciones en categoría y unit, luego elija los campos."
                 },
                 {
-                    "label": "Portal y API",
-                    "text": "QR de unit: ficha Medición si está permitido. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                    "label": "Portal",
+                    "text": "QR de unit: ficha Medición si categoría y unit lo permiten y hay campos vinculados. No se requiere Clock Point."
+                },
+                {
+                    "label": "API y webhooks",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Cada medición dispara unit.measurement.recorded. Gestión en Ajustes → API.",
+                    "requires_api": true
                 }
             ]
         }
