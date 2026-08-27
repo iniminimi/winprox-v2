@@ -6,6 +6,7 @@ use App\Actions\Communication\RunPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
 use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
 use App\Actions\Communication\BackfillUnitCheckListTranslationSlotsAction;
+use App\Actions\Communication\InvalidateUnusableContentTranslationsAction;
 use App\Actions\Communication\RunPendingCategoryTranslationsAction;
 use App\Actions\Communication\RunPendingDocumentTranslationsAction;
 use App\Actions\Communication\RunPendingEsgIndicatorTranslationsAction;
@@ -47,6 +48,7 @@ class TranslateLocalAllCommand extends Command
         BackfillCategoryTranslationSlotsAction $backfillCategories,
         BackfillInternalTeamTranslationSlotsAction $backfillTeams,
         BackfillUnitCheckListTranslationSlotsAction $backfillUnitCheckLists,
+        InvalidateUnusableContentTranslationsAction $invalidateUnusable,
         RunPendingIssueTranslationsAction $runIssues,
         RunPendingTaskTranslationsAction $runTasks,
         RunPendingAnnouncementTranslationsAction $runAnnouncements,
@@ -73,11 +75,15 @@ class TranslateLocalAllCommand extends Command
         $categoryBackfill = $backfillCategories->handle();
         $teamBackfill = $backfillTeams->handle();
         $checkListBackfill = $backfillUnitCheckLists->handle();
+        $junk = $invalidateUnusable->handle();
         $this->line(
             "Backfill done: categories {$categoryBackfill['categories']} (+{$categoryBackfill['slots_created']} slots), "
             ."teams {$teamBackfill['teams']} (+{$teamBackfill['slots_created']} slots), "
             ."check lists {$checkListBackfill['lists']} (+{$checkListBackfill['slots_created']} slots)."
         );
+        if ($junk['invalidated'] > 0) {
+            $this->warn("Re-queued {$junk['invalidated']} unusable completed translation(s) as pending.");
+        }
 
         $totals = [
             'issues' => 0,

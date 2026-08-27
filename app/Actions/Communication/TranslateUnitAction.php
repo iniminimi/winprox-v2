@@ -8,6 +8,7 @@ use App\Models\UnitTranslation;
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Translation\TranslationOutputGuard;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Validation\ValidationException;
 
@@ -59,7 +60,12 @@ class TranslateUnitAction
         $sourceName = trim((string) $unit->name);
         if ($sourceName !== '') {
             $translatedName = trim($this->translator->translate($sourceName, $targetLocale));
-            if ($translatedName === '' || $translatedName === $sourceName || mb_strlen($translatedName) > 255) {
+            if (
+                $translatedName === ''
+                || $translatedName === $sourceName
+                || TranslationOutputGuard::isUnusable($translatedName, $sourceName)
+                || mb_strlen($translatedName) > 255
+            ) {
                 $failed = true;
             } else {
                 $stored['name'] = $translatedName;
@@ -69,7 +75,12 @@ class TranslateUnitAction
         $sourceDescription = trim((string) ($unit->description ?? ''));
         if ($sourceDescription !== '') {
             $translatedDescription = trim($this->translator->translate($sourceDescription, $targetLocale));
-            if ($translatedDescription === '' || $translatedDescription === $sourceDescription || mb_strlen($translatedDescription) > TextDescriptionLimits::TRANSLATION_MAX) {
+            if (
+                $translatedDescription === ''
+                || $translatedDescription === $sourceDescription
+                || TranslationOutputGuard::isUnusable($translatedDescription, $sourceDescription)
+                || mb_strlen($translatedDescription) > TextDescriptionLimits::TRANSLATION_MAX
+            ) {
                 $failed = true;
             } else {
                 $stored['description'] = $translatedDescription;

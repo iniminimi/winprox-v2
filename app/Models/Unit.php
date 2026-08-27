@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\UnitTranslationStatus;
 use App\Models\Concerns\BelongsToTenant;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Translation\TranslationOutputGuard;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -218,7 +219,11 @@ class Unit extends Model
 
         $row = $this->findCompletedTranslation($locale);
 
-        if ($row instanceof UnitTranslation && filled($row->name)) {
+        if (
+            $row instanceof UnitTranslation
+            && filled($row->name)
+            && ! TranslationOutputGuard::isUnusable((string) $row->name, $name)
+        ) {
             return (string) $row->name;
         }
 
@@ -240,7 +245,11 @@ class Unit extends Model
 
         $row = $this->findCompletedTranslation($locale);
 
-        if ($row instanceof UnitTranslation && filled($row->description)) {
+        if (
+            $row instanceof UnitTranslation
+            && filled($row->description)
+            && ! TranslationOutputGuard::isUnusable((string) $row->description, $description)
+        ) {
             return (string) $row->description;
         }
 
@@ -277,7 +286,11 @@ class Unit extends Model
 
         $row = $this->findCompletedTranslation($locale);
 
-        if ($row instanceof UnitTranslation && filled($row->name)) {
+        if (
+            $row instanceof UnitTranslation
+            && filled($row->name)
+            && ! TranslationOutputGuard::isUnusable((string) $row->name, (string) $this->name)
+        ) {
             return (string) $row->name;
         }
 
@@ -299,7 +312,11 @@ class Unit extends Model
 
         $row = $this->findCompletedTranslation($locale);
 
-        if ($row instanceof UnitTranslation && filled($row->description)) {
+        if (
+            $row instanceof UnitTranslation
+            && filled($row->description)
+            && ! TranslationOutputGuard::isUnusable((string) $row->description, $description)
+        ) {
             return (string) $row->description;
         }
 
@@ -316,7 +333,9 @@ class Unit extends Model
 
         $row = $this->findCompletedTranslation($locale);
 
-        return $row instanceof UnitTranslation && filled($row->name);
+        return $row instanceof UnitTranslation
+            && filled($row->name)
+            && ! TranslationOutputGuard::isUnusable((string) $row->name, (string) $this->name);
     }
 
     public function hasCompletedDescriptionFor(string $locale): bool
@@ -333,7 +352,12 @@ class Unit extends Model
 
         $row = $this->findCompletedTranslation($locale);
 
-        return $row instanceof UnitTranslation && filled($row->description);
+        return $row instanceof UnitTranslation
+            && filled($row->description)
+            && ! TranslationOutputGuard::isUnusable(
+                (string) $row->description,
+                (string) $this->description,
+            );
     }
 
     /**
@@ -352,10 +376,19 @@ class Unit extends Model
             }
 
             $entry = [];
-            if (filled($row->name)) {
+            if (
+                filled($row->name)
+                && ! TranslationOutputGuard::isUnusable((string) $row->name, (string) $this->name)
+            ) {
                 $entry['name'] = (string) $row->name;
             }
-            if (filled($row->description)) {
+            if (
+                filled($row->description)
+                && ! TranslationOutputGuard::isUnusable(
+                    (string) $row->description,
+                    (string) ($this->description ?? ''),
+                )
+            ) {
                 $entry['description'] = (string) $row->description;
             }
 

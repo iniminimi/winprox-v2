@@ -3,6 +3,7 @@
 namespace App\Services\Translation;
 
 use App\Support\Translation\LocaleSupport;
+use App\Support\Translation\TranslationOutputGuard;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -24,8 +25,10 @@ class OllamaProvider implements TranslationProviderInterface
             LocaleSupport::normalize($targetLanguage),
         );
 
-        $prompt = 'Translate the following text into '.$targetLabel
-            .'. Provide ONLY the translation, no introduction or quotes: '.$text;
+        $prompt = 'Translate the text between <text> and </text> into '.$targetLabel.".\n"
+            ."Reply with ONLY the translation. No quotes, no explanation, no questions.\n"
+            ."If the text is already in {$targetLabel}, repeat it unchanged.\n"
+            .'<text>'.$text.'</text>';
 
         try {
             $response = Http::timeout((int) config('ollama.timeout', 60))
@@ -45,12 +48,19 @@ class OllamaProvider implements TranslationProviderInterface
             }
 
             $translated = trim((string) $response->json('response', ''));
+            $translated = $this->stripWrappingQuotes($translated);
 
-            if ($translated === '') {
+            if ($translated === '' || TranslationOutputGuard::isUnusable($translated, $text)) {
+                Log::warning('ollama.translation_unusable', [
+                    'target' => $targetLanguage,
+                    'source_len' => mb_strlen($text),
+                    'output_len' => mb_strlen($translated),
+                ]);
+
                 return $text;
             }
 
-            return $this->stripWrappingQuotes($translated);
+            return $translated;
         } catch (\Throwable $exception) {
             Log::warning('ollama.translation_unreachable', [
                 'target' => $targetLanguage,
