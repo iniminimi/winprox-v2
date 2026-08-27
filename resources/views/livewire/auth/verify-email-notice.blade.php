@@ -1,4 +1,21 @@
 <div class="wp-stack">
+    @if ($showWelcome)
+        <div class="wp-register-complete wp-stack" role="status">
+            <video
+                class="wp-register-complete__video"
+                src="{{ asset('video/assistant_task_160.mp4') }}"
+                width="160"
+                height="160"
+                autoplay
+                muted
+                playsinline
+                preload="auto"
+            ></video>
+            <p class="wp-text-body"><strong>{{ __('auth.verify.welcome_title') }}</strong></p>
+            <p class="wp-muted">{{ __('auth.verify.welcome_body') }}</p>
+        </div>
+    @endif
+
     <div class="wp-stack">
         <h1 class="wp-section-title">{{ __('auth.verify.title') }}</h1>
         <p class="wp-muted">{{ __('auth.verify.subtitle', ['email' => $email]) }}</p>

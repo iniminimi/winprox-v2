@@ -29,16 +29,31 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
     Livewire::test(Register::class)
         ->set(RegisterFormData::valid())
         ->call('register')
-        ->assertHasNoErrors();
+        ->assertHasNoErrors()
+        ->assertRedirect(route('verification.notice'));
 
     $user = User::query()->where('email', 'nieuw@winprox.test')->firstOrFail();
 
-    expect($user->hasVerifiedEmail())->toBeFalse();
+    expect($user->hasVerifiedEmail())->toBeFalse()
+        ->and(session('register_success'))->toBeTrue();
 
     Mail::assertSent(
         VerifyUserEmailMail::class,
         fn (VerifyUserEmailMail $mail) => $mail->hasTo('nieuw@winprox.test'),
     );
+});
+
+it('toont welkomstvideo en account-aangemaakt op het bevestigingsscherm na registratie', function () {
+    $user = unverifiedTenantAdmin();
+
+    session(['register_success' => true]);
+
+    Livewire::actingAs($user)
+        ->test(VerifyEmailNotice::class)
+        ->assertSet('showWelcome', true)
+        ->assertSee(__('auth.verify.welcome_title'))
+        ->assertSee(__('auth.verify.title'))
+        ->assertSee('video/assistant_task_160.mp4', false);
 });
 
 it('weigert registratie naar een eerder gebouncet e-mailadres', function () {

@@ -25,7 +25,9 @@ it('registreert een nieuwe tenant met beheerder en logt in', function () {
         ->set(RegisterFormData::valid())
         ->call('register')
         ->assertHasNoErrors()
-        ->assertDispatched('register-finished', redirectTo: route('verification.notice'));
+        ->assertRedirect(route('verification.notice'));
+
+    expect(session('register_success'))->toBeTrue();
 
     $tenant = Tenant::where('name', 'Nieuwe Facility')->first();
     expect($tenant)->not->toBeNull()

@@ -14,8 +14,12 @@ class VerifyEmailNotice extends Component
 {
     public ?string $status = null;
 
+    public bool $showWelcome = false;
+
     public function mount(): void
     {
+        $this->showWelcome = (bool) session('register_success');
+
         $user = auth()->user();
 
         if ($user instanceof User && $user->hasVerifiedEmail()) {
