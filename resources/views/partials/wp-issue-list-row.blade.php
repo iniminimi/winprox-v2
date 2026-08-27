@@ -2,6 +2,8 @@
     use App\Enums\IssueSource;
     use App\Enums\TaskStatus;
 
+    $interactive = $interactive ?? true;
+
     // Exclude closed tasks from display
     $openTasks = $issue->tasks->filter(fn ($t) => $t->status !== TaskStatus::Closed);
 
@@ -46,9 +48,13 @@
     // Get highest priority task for this issue (excluding closed tasks)
     $highestPriorityTask = $openTasks->sortBy(fn ($t) => $t->priority?->sortOrder() ?? 99)->first();
 @endphp
+@if ($interactive)
 <a href="{{ route('issues.show', $issue) }}"
    @class(['wp-issue-row', 'wp-issue-row--highlight' => $highlight ?? false])
    wire:key="issue-{{ $issue->id }}">
+@else
+<div @class(['wp-issue-row', 'wp-issue-row--static', 'wp-issue-row--highlight' => $highlight ?? false])>
+@endif
     <div class="wp-grow wp-stack-tight">
         @if ($cardTitle !== '')
             <p class="wp-issue-card-title">{{ $cardTitle }}</p>
@@ -83,4 +89,8 @@
         @endif
         <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
     </div>
+@if ($interactive)
 </a>
+@else
+</div>
+@endif

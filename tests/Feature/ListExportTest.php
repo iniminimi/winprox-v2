@@ -53,7 +53,9 @@ it('renders issues print view for filtered set', function () {
         ->get(route('issues.print'))
         ->assertOk()
         ->assertSee('Printbare melding')
-        ->assertSee('Test Org');
+        ->assertSee('Test Org')
+        ->assertSee(__('issues.card.kind_nr', ['nr' => Issue::query()->where('tenant_id', $tenant->id)->value('id')]))
+        ->assertDontSee('<table>', false);
 });
 
 it('isolates task export by tenant', function () {

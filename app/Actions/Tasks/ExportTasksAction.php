@@ -23,7 +23,7 @@ class ExportTasksAction
         $query = Task::query()
             ->where('tenant_id', $tenantId)
             ->forApprovedIssue()
-            ->with(['issue.location', 'issue.unit.translations', 'issue.translations', 'translations', 'team.translations'])
+            ->with(['issue.location.translations', 'issue.unit.translations', 'issue.translations', 'translations', 'team.translations'])
             ->when($filters->status !== '', fn ($q) => $q->where('status', $filters->status))
             ->when($filters->status === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($filters->priority !== '', fn ($q) => $q->where('priority', $filters->priority))

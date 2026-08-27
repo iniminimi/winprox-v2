@@ -3447,6 +3447,39 @@ svg.wp-release-worker-row__icon,
     .wp-qr-page {
         margin-top: 0;
     }
+
+    .wp-report-print .wp-issue-row,
+    .wp-report-print .wp-report-print__card,
+    .wp-report-print .wp-list-row {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .wp-report-print .wp-issue-row--static {
+        cursor: default;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .wp-report-print .wp-issue-row--static:hover {
+        transform: none;
+        box-shadow: var(--wp-shadow-sm);
+    }
+
+    .wp-report-print__block {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+.wp-issue-row--static {
+    cursor: default;
+    text-decoration: none;
+    color: inherit;
+}
+
+.wp-issue-row--static:hover {
+    transform: none;
 }
 
 .wp-dl {

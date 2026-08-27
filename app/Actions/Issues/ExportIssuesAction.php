@@ -21,7 +21,7 @@ class ExportIssuesAction
     {
         $query = Issue::query()
             ->where('tenant_id', $tenantId)
-            ->with(['location', 'unit.translations', 'tasks.team.translations', 'translations'])
+            ->with(['location.translations', 'unit.translations', 'tasks.team.translations', 'translations', 'roundStops'])
             ->when($filters->status !== '', fn ($q) => $q->where('status', $filters->status))
             ->when($filters->status === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($filters->teamId, fn ($q) => $q->whereHas(

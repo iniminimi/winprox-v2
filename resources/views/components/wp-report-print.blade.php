@@ -2,11 +2,9 @@
     'title',
     'documentTitle' => null,
     'tenant',
-    'columns',
-    'rows',
     'truncated' => false,
     'limit' => null,
-    'emptyMessage' => null,
+    'rowCount' => null,
 ])
 
 @php
@@ -16,7 +14,7 @@
 @endphp
 
 <x-layouts.print :title="$documentTitle">
-    <div class="wp-container wp-stack">
+    <div class="wp-container wp-stack wp-report-print">
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title :title="$title" />
@@ -47,32 +45,10 @@
             </div>
         </div>
 
-        @if ($rows->isEmpty())
-            <div class="wp-card wp-card-pad">
-                <p class="wp-muted">{{ $emptyMessage ?? __('reports.empty') }}</p>
-            </div>
-        @else
-            <div class="wp-card wp-card-pad">
-                <table>
-                    <thead>
-                        <tr>
-                            @foreach ($columns as $column)
-                                <th>{{ $column }}</th>
-                            @endforeach
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($rows as $row)
-                            <tr>
-                                @foreach ($row as $cell)
-                                    <td>{{ $cell }}</td>
-                                @endforeach
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <p class="wp-muted wp-text-sm">{{ __('reports.row_count', ['count' => $rows->count()]) }}</p>
-            </div>
+        {{ $slot }}
+
+        @if ($rowCount !== null)
+            <p class="wp-muted wp-text-sm">{{ __('reports.row_count', ['count' => $rowCount]) }}</p>
         @endif
     </div>
 </x-layouts.print>

@@ -9,7 +9,6 @@ use App\Data\UnitChecks\ExportUnitChecksFilterData;
 use App\Http\Requests\UnitChecks\ExportUnitChecksRequest;
 use App\Models\Tenant;
 use App\Models\UnitCheck;
-use App\Support\Reports\UnitCheckExportTable;
 use App\Support\Tenancy;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
@@ -26,12 +25,9 @@ class UnitCheckPrintController
             locationId: $request->integer('location') ?: null,
         ));
 
-        return view('reports.print-table', [
-            'title' => __('reports.unit_checks.title'),
-            'documentTitle' => __('reports.unit_checks.document_title'),
+        return view('reports.print-unit-checks', [
             'tenant' => $tenant,
-            'columns' => UnitCheckExportTable::columns(),
-            'rows' => UnitCheckExportTable::rows($result->rows),
+            'checks' => $result->rows,
             'truncated' => $result->truncated,
             'limit' => $result->limit,
         ]);

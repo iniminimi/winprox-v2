@@ -9,7 +9,6 @@ use App\Data\Issues\ExportIssuesFilterData;
 use App\Http\Requests\Issues\ExportIssuesRequest;
 use App\Models\Issue;
 use App\Models\Tenant;
-use App\Support\Reports\IssueExportTable;
 use App\Support\Tenancy;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
@@ -30,12 +29,9 @@ class IssuePrintController
             unitId: $request->integer('unit_id') ?: null,
         ));
 
-        return view('reports.print-table', [
-            'title' => __('reports.issues.title'),
-            'documentTitle' => __('reports.issues.document_title'),
+        return view('reports.print-issues', [
             'tenant' => $tenant,
-            'columns' => IssueExportTable::columns(),
-            'rows' => IssueExportTable::rows($result->rows),
+            'issues' => $result->rows,
             'truncated' => $result->truncated,
             'limit' => $result->limit,
         ]);

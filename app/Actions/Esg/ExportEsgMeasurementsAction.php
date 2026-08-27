@@ -30,6 +30,8 @@ class ExportEsgMeasurementsAction
                 'location.translations',
                 'worker:id,first_name,last_name',
                 'task:id,status',
+                'correctsMeasurement.indicator:id,name,original_language,type,unit_of_measure,thresholds,options',
+                'correctsMeasurement.indicator.translations',
             ])
             ->when($filters->indicatorId !== null, fn ($q) => $q->where('esg_indicator_id', $filters->indicatorId))
             ->when($filters->locationId !== null, fn ($q) => $q->where('location_id', $filters->locationId))

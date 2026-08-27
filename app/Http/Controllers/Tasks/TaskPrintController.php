@@ -9,7 +9,6 @@ use App\Data\Tasks\ExportTasksFilterData;
 use App\Http\Requests\Tasks\ExportTasksRequest;
 use App\Models\Task;
 use App\Models\Tenant;
-use App\Support\Reports\TaskExportTable;
 use App\Support\Tenancy;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
@@ -29,12 +28,9 @@ class TaskPrintController
             recurringOnly: $request->boolean('recurring'),
         ));
 
-        return view('reports.print-table', [
-            'title' => __('reports.tasks.title'),
-            'documentTitle' => __('reports.tasks.document_title'),
+        return view('reports.print-tasks', [
             'tenant' => $tenant,
-            'columns' => TaskExportTable::columns(),
-            'rows' => TaskExportTable::rows($result->rows),
+            'tasks' => $result->rows,
             'truncated' => $result->truncated,
             'limit' => $result->limit,
         ]);

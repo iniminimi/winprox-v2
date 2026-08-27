@@ -9,7 +9,6 @@ use App\Data\Esg\ExportEsgMeasurementsFilterData;
 use App\Http\Requests\Esg\ExportEsgMeasurementsRequest;
 use App\Models\EsgMeasurement;
 use App\Models\Tenant;
-use App\Support\Reports\EsgMeasurementExportTable;
 use App\Support\Tenancy;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
@@ -30,12 +29,9 @@ class EsgMeasurementPrintController
             alarmsOnly: $request->boolean('alarms'),
         ));
 
-        return view('reports.print-table', [
-            'title' => __('reports.esg.title'),
-            'documentTitle' => __('reports.esg.document_title'),
+        return view('reports.print-esg', [
             'tenant' => $tenant,
-            'columns' => EsgMeasurementExportTable::columns(),
-            'rows' => EsgMeasurementExportTable::rows($result->rows),
+            'measurements' => $result->rows,
             'truncated' => $result->truncated,
             'limit' => $result->limit,
         ]);
