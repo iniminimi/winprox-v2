@@ -231,11 +231,6 @@
                                        @click="nav = false">
                                         <span>{{ __('common.nav.issues') }}</span>
                                     </a>
-                                    <a href="{{ route('issues.index', ['recurring' => 1, 'inspection_round' => 1]) }}"
-                                       class="wp-nav-link wp-nav-link--sub {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
-                                       @click="nav = false">
-                                        <span>{{ __('issues.list.inspection_rounds') }}</span>
-                                    </a>
                                     <a href="{{ route('tasks.index') }}"
                                        class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('tasks.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
@@ -250,6 +245,11 @@
                                        class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('reservations.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
                                         <span>{{ __('common.nav.reservations') }}</span>
+                                    </a>
+                                    <a href="{{ route('issues.index', ['recurring' => 1, 'inspection_round' => 1]) }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('issues.list.inspection_rounds') }}</span>
                                     </a>
                                     <a href="{{ route('unit-measurements.index') }}"
                                        class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-measurements.*') ? 'is-active' : '' }}"
