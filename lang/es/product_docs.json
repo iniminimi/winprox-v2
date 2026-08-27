@@ -44,6 +44,10 @@
                 "body": "Confirmar rápido que una unidad está en orden — p. ej. tras una ronda de seguridad, limpieza o revisión técnica. En el QR de unidad: OK o No OK; con OK no hace falta un aviso aparte. Lista de verificación opcional. No OK sigue disponible junto al flujo de aviso habitual."
             },
             {
+                "title": "Mediciones de unit",
+                "body": "Registrar valores en una unit (kilometraje, temperatura, estado, …) vía portal QR o API. Campos en Trabajo → Mediciones de unit; activar por categoría y unit. Historial en admin; webhook unit.measurement.recorded."
+            },
+            {
                 "title": "Rondas de inspección",
                 "body": "Incidencia recurrente con una ruta fija de unidades (paradas), también entre ubicaciones. Planifica vía Incidencias → Planificar ronda de inspección (paradas, intervalo y equipo en un paso) o vía el asistente. Trabajo → Rondas de inspección abre la misma lista filtrada a rondas. Solo aparecen las unidades con unit checks; las demás quedan ocultas. Una tarea por ciclo; en cada parada Unit check OK, No OK (con incidencia; descripción prediligenciada) o omitir con motivo. Listo cuando todas las paradas del ciclo están gestionadas."
             },

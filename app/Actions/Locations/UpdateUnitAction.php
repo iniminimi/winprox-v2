@@ -6,6 +6,7 @@ use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
 use App\Actions\Communication\InvalidateUnitTranslationsOnSourceChangeAction;
 use App\Actions\Issues\RemoveUnitsFromInspectionRoundsAction;
 use App\Actions\QrCodes\StoreQrLinkPhotosAction;
+use App\Actions\UnitMeasurements\SyncUnitMeasureFieldsAction;
 use App\Enums\QrCodeStatus;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
@@ -20,6 +21,7 @@ class UpdateUnitAction
         private InvalidateUnitTranslationsOnSourceChangeAction $invalidateTranslations,
         private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
         private RemoveUnitsFromInspectionRoundsAction $removeFromRounds,
+        private SyncUnitMeasureFieldsAction $syncMeasureFields,
     ) {}
 
     /**
@@ -49,6 +51,10 @@ class UpdateUnitAction
             $payload['allow_unit_checks'] = (bool) $data['allow_unit_checks'];
         }
 
+        if (array_key_exists('allow_unit_measurements', $data)) {
+            $payload['allow_unit_measurements'] = (bool) $data['allow_unit_measurements'];
+        }
+
         if (array_key_exists('require_reporter_contact', $data)) {
             $payload['require_reporter_contact'] = (bool) $data['require_reporter_contact'];
         }
@@ -76,6 +82,14 @@ class UpdateUnitAction
 
         if ($unitChecksWereAllowed && ! $fresh->allowsUnitChecks()) {
             $this->removeFromRounds->handle([(int) $fresh->id], (int) $fresh->tenant_id);
+        }
+
+        if (array_key_exists('measure_field_ids', $data)) {
+            $ids = is_array($data['measure_field_ids'])
+                ? array_map('intval', $data['measure_field_ids'])
+                : [];
+            $this->syncMeasureFields->handle($fresh, $ids, $actorUserId);
+            $fresh = $fresh->fresh(['category']);
         }
 
         $this->invalidateTranslations->handle($fresh, $previousName, $previousDescription, $actorUserId);

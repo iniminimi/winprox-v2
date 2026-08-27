@@ -44,6 +44,10 @@
                 "body": "Confirmer rapidement qu’une unité est en ordre — par ex. après une ronde sécurité, un contrôle ménage ou une visite technique. Sur le QR unité : OK ou Pas OK ; OK sans créer un signalement. Check-list optionnelle. Pas OK reste compatible avec le flux de signalement."
             },
             {
+                "title": "Mesures unit",
+                "body": "Enregistrer des valeurs sur une unit (kilométrage, température, statut, …) via portail QR ou API. Champs sous Travail → Mesures unit; activer par catégorie et unit. Historique en admin; webhook unit.measurement.recorded."
+            },
+            {
                 "title": "Tournées d’inspection",
                 "body": "Signalement récurrent avec un parcours fixe d’unités (arrêts), y compris sur plusieurs sites. Planifiez via Signalements → Planifier une tournée d’inspection (arrêts, intervalle et équipe en une étape) ou via l’assistant. Travail → Tournées d’inspection ouvre la même liste filtrée sur les tournées. Seules les unités avec contrôle d’unité apparaissent dans la liste des arrêts ; les autres sont masquées. Une tâche par cycle ; à chaque arrêt contrôle d’unité OK, Non OK (avec signalement ; description préremplie) ou passer avec motif. Terminé lorsque tous les arrêts du cycle sont traités."
             },

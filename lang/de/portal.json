@@ -37,7 +37,9 @@
         "reserve": "Reservieren",
         "my_reservations": "Meine Reservierungen",
         "unit_check": "Unit-Check",
-        "unit_check_sub": "Bestätigen, dass diese Unit OK ist"
+        "unit_check_sub": "Bestätigen, dass diese Unit OK ist",
+        "measure": "Messung",
+        "measure_sub": "Messwerte für diese Unit erfassen"
     },
     "report": {
         "title": "Eine Meldung erstellen",
@@ -301,5 +303,20 @@
         "stop_current": "Nächste",
         "do_check_here": "Dieser Stopp ist dran. Machen Sie hier einen Unit-Check (OK), oder überspringen Sie ihn.",
         "stop_not_ok": "Nicht OK"
+    },
+    "measure": {
+        "title": "Messung erfassen",
+        "lead": "Messwerte für diese Unit eingeben.",
+        "choose": "Wählen…",
+        "yes": "Ja",
+        "no": "Nein",
+        "submit": "Messung speichern",
+        "submit_loading": "Speichern…",
+        "recorded": "Messung gespeichert.",
+        "errors": {
+            "not_enabled": "Unit-Messungen nicht verfügbar.",
+            "no_fields": "Keine Messfelder verknüpft.",
+            "value_required": "Wert eingeben."
+        }
     }
 }

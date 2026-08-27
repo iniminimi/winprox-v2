@@ -1,0 +1,81 @@
+{
+    "subnav": {
+        "label": "Unit measurements",
+        "fields": "Fields",
+        "history": "History"
+    },
+    "fields": {
+        "title": "Measure fields",
+        "subtitle": "Define what you want to measure on units (km, temperature, status, …).",
+        "add": "Add field",
+        "empty": "No measure fields yet.",
+        "deactivate": "Deactivate",
+        "activate": "Activate",
+        "edit_title": "Edit measure field",
+        "create_title": "Add measure field",
+        "form": {
+            "name": "Name",
+            "type": "Type",
+            "unit_of_measure": "Unit of measure",
+            "min_value": "Minimum",
+            "max_value": "Maximum",
+            "options": "Choice options",
+            "add_option": "Add option"
+        }
+    },
+    "history": {
+        "title": "Measurements",
+        "subtitle": "History of unit measurements.",
+        "list_title": "Recent measurements",
+        "empty": "No measurements yet.",
+        "reporter_unknown": "Unknown",
+        "filters": {
+            "field": "Field",
+            "all_fields": "All fields",
+            "location": "Location",
+            "all_locations": "All locations"
+        }
+    },
+    "types": {
+        "numeric": "Numeric",
+        "boolean": "Yes/No",
+        "string": "Text",
+        "choice": "Choice"
+    },
+    "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+    },
+    "sources": {
+        "portal": "Portal",
+        "api": "API",
+        "admin": "Admin"
+    },
+    "flash": {
+        "field_saved": "Measure field saved."
+    },
+    "errors": {
+        "batch_empty": "No measurements to save.",
+        "unit_invalid": "Unit does not belong to this organisation.",
+        "unit_not_enabled": "Unit measurements are not enabled for this unit.",
+        "field_invalid": "Measure field not found or inactive.",
+        "field_not_linked": "This measure field is not linked to the unit.",
+        "value_required": "Enter a value.",
+        "value_below_min": "Value must not be below :min.",
+        "value_above_max": "Value must not be above :max.",
+        "value_choice_invalid": "Choose a valid option.",
+        "value_string_too_long": "Text is too long.",
+        "worker_invalid": "Worker does not belong to this organisation."
+    },
+    "validation": {
+        "field_required": "Choose a measure field.",
+        "field_invalid": "Invalid measure field.",
+        "recorded_at_required": "Timestamp is missing.",
+        "recorded_at_invalid": "Invalid timestamp.",
+        "recorded_at_future": "Timestamp must not be in the future."
+    },
+    "value": {
+        "yes": "Yes",
+        "no": "No"
+    }
+}

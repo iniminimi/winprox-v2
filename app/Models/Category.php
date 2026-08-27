@@ -22,6 +22,7 @@ class Category extends Model
         'allow_gps_location',
         'is_reservable',
         'allow_unit_checks',
+        'allow_unit_measurements',
         'require_reporter_contact',
         'require_reporter_email_verification',
     ];
@@ -30,6 +31,7 @@ class Category extends Model
         'allow_gps_location' => 'boolean',
         'is_reservable' => 'boolean',
         'allow_unit_checks' => 'boolean',
+        'allow_unit_measurements' => 'boolean',
         'require_reporter_contact' => 'boolean',
         'require_reporter_email_verification' => 'boolean',
     ];

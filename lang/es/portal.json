@@ -37,7 +37,9 @@
         "reserve": "Reservar",
         "my_reservations": "Mis reservas",
         "unit_check": "Chequeo de unit",
-        "unit_check_sub": "Confirmar que esta unit está OK"
+        "unit_check_sub": "Confirmar que esta unit está OK",
+        "measure": "Medición",
+        "measure_sub": "Registrar valores de medición para esta unit"
     },
     "report": {
         "title": "Crear un informe",
@@ -301,5 +303,20 @@
         "stop_current": "Siguiente",
         "do_check_here": "Esta parada es la siguiente. Haz aquí un Unit check (OK), o omítela.",
         "stop_not_ok": "No OK"
+    },
+    "measure": {
+        "title": "Registrar medición",
+        "lead": "Introduce los valores de medición para esta unit.",
+        "choose": "Elegir…",
+        "yes": "Sí",
+        "no": "No",
+        "submit": "Guardar medición",
+        "submit_loading": "Guardando…",
+        "recorded": "Medición guardada.",
+        "errors": {
+            "not_enabled": "Mediciones no disponibles.",
+            "no_fields": "No hay campos vinculados.",
+            "value_required": "Introduce un valor."
+        }
     }
 }

@@ -37,7 +37,9 @@
         "reserve": "Réserver",
         "my_reservations": "Mes réservations",
         "unit_check": "Contrôle unit",
-        "unit_check_sub": "Confirmer que cette unit est OK"
+        "unit_check_sub": "Confirmer que cette unit est OK",
+        "measure": "Mesure",
+        "measure_sub": "Enregistrer des mesures pour cette unit"
     },
     "report": {
         "title": "Créer un signalement",
@@ -301,5 +303,20 @@
         "stop_current": "Suivant",
         "do_check_here": "Cet arrêt est le suivant. Faites ici un contrôle unité (OK), ou passez-le.",
         "stop_not_ok": "Pas OK"
+    },
+    "measure": {
+        "title": "Enregistrer une mesure",
+        "lead": "Saisissez les valeurs de mesure pour cette unit.",
+        "choose": "Choisir…",
+        "yes": "Oui",
+        "no": "Non",
+        "submit": "Enregistrer",
+        "submit_loading": "Enregistrement…",
+        "recorded": "Mesure enregistrée.",
+        "errors": {
+            "not_enabled": "Mesures unit indisponibles.",
+            "no_fields": "Aucun champ lié.",
+            "value_required": "Saisissez une valeur."
+        }
     }
 }

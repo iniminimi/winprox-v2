@@ -44,6 +44,10 @@
                 "body": "Quickly confirm a unit is fine — for example after a security round, cleaning check or technical inspection. On the unit QR you tap OK or Not OK; OK needs no separate issue. Optionally tick a checklist first. Not OK still works alongside the normal report flow."
             },
             {
+                "title": "Unit measurements",
+                "body": "Record values on a unit (odometer, temperature, status, …) via QR portal or API. Manage fields under Work → Unit measurements; enable per category and unit and link fields. History in admin; webhook unit.measurement.recorded."
+            },
+            {
                 "title": "Inspection rounds",
                 "body": "Recurring issue with a fixed route of units (stops), including across locations. Plan via Issues → Plan inspection round (stops, interval and team in one step) or optionally via the issue wizard. Work → Inspection rounds opens the same list filtered to rounds. Only units with unit checks appear in the stop list; other units are hidden. One task per cycle; at each stop Unit check OK, Not OK (with issue; description prefilled), or skip with reason. Done when all stops for that cycle are handled."
             },
@@ -174,7 +178,7 @@
                 "title": "API",
                 "items": [
                     "**REST API v1** (fixed URLs + HTTP methods) with **JSON** responses (standard data format). Documentation in-app + docs.",
-                    "Incl. issues, tasks, locations, units (incl. external ID), teams, workers, unit checks (also inbound via external unit ID), ESG, translations.",
+                    "Incl. issues, tasks, locations, units (incl. external ID), teams, workers, unit check, unit measurements (also inbound via external unit ID), ESG, translations.",
                     "Available on **Corporate** (trial on request).",
                     "IoT ingest separately via gateway token (Corporate)."
                 ]
@@ -225,7 +229,7 @@
             {
                 "title": "Webhooks",
                 "items": [
-                    "Outbound HTTP POST on events (incl. issue/task status, unit check, ESG, GPS).",
+                    "Outbound HTTP POST on events (incl. issue/task status, unit check, unit measurement, ESG, GPS).",
                     "Configured under Settings → API; secret for verification.",
                     "Automatic retries on failure (several attempts with increasing delay).",
                     "Same plan requirement as API (Corporate).",

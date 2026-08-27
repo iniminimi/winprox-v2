@@ -28,7 +28,8 @@
         "contact": "Kontakt",
         "reservations": "Reservierungen",
         "iot": "IoT Connect",
-        "unit_checks": "Unit-Checks"
+        "unit_checks": "Unit-Checks",
+        "unit_measurements": "Unit-Messungen"
     },
     "status": {
         "new": "Neu (Offen)",

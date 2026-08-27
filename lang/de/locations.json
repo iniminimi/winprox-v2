@@ -117,7 +117,9 @@
             "require_reporter_email_verification": "E-Mail-Bestätigung Pflicht",
             "check_list": "Checkliste (Unit-Check)",
             "allow_unit_checks": "Unit-Checks erlauben",
-            "external_id": "Externe ID"
+            "external_id": "Externe ID",
+            "allow_unit_measurements": "Unit-Messungen erlauben",
+            "measure_fields": "Messfelder"
         },
         "translation_preview": "Übersetzung (Portal)",
         "translation_edit": {
@@ -176,7 +178,8 @@
         "no_check_list": "Keine Checkliste",
         "check_list_hint": "Optional. Erstellen Sie Checklisten unter der Seite Menschen → Teams (geteilt oder pro Team). Nur geteilte Checklisten oder Checklisten von Teams, die mit der Kategorie dieser Unit verknüpft sind.",
         "allow_unit_checks_hint": "Nur relevant, wenn die Kategorie Unit-Checks erlaubt. Standardmäßig aus; einschalten, um die Unit-Check-Kachel auf dem Unit-QR zu zeigen.",
-        "external_id_hint": "Optional. ID dieser Unit in Ihrer externen Facility-Software (IWMS, CMMS, ERP, …). Nur mit API-Zugang (Corporate). Erforderlich für eingehende Unit-Checks über die API."
+        "external_id_hint": "Optional. ID dieser Unit in Ihrer externen Facility-Software (IWMS, CMMS, ERP, …). Nur mit API-Zugang (Corporate). Erforderlich für eingehende Unit-Checks über die API.",
+        "allow_unit_measurements_hint": "Nur relevant, wenn die Kategorie Unit-Messungen erlaubt. Standardmäßig aus; aktivieren für QR oder API."
     },
     "bulk": {
         "title": "Bulk-Units hinzufügen",
@@ -239,7 +242,8 @@
             "is_reservable": "Reservierbar",
             "require_reporter_contact": "Kontaktdaten Pflicht",
             "require_reporter_email_verification": "E-Mail-Bestätigung Pflicht",
-            "allow_unit_checks": "Unit-Checks erlauben"
+            "allow_unit_checks": "Unit-Checks erlauben",
+            "allow_unit_measurements": "Unit-Messungen erlauben"
         },
         "allow_gps_location_hint": "Erlaubt, den GPS-Standort von Units in dieser Kategorie über das Portal zu übermitteln.",
         "teams_subtitle": "Wählen Sie die für diese Kategorie verantwortlichen Teams aus.",
@@ -264,7 +268,8 @@
         "is_reservable_hint": "Aktiviert Reservierungen für alle Units dieser Kategorie (Raum, Fahrzeug, …).",
         "require_reporter_contact_hint": "Vorname, Name und E-Mail bei anonymen Meldungen über den Unit-QR verlangen. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert.",
         "require_reporter_email_verification_hint": "Verlangt eine Bestätigungsmail bei anonymen Meldungen über den Unit-QR. Die Meldung entsteht erst nach Klick auf den Link. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für Feldmitarbeiter.",
-        "allow_unit_checks_hint": "Aktiviert Unit-Checks für alle Units dieser Kategorie (Sicherheitsrunde, Reinigungskontrolle, …). Standardmäßig aus; muss auch pro Unit aktiviert werden."
+        "allow_unit_checks_hint": "Aktiviert Unit-Checks für alle Units dieser Kategorie (Sicherheitsrunde, Reinigungskontrolle, …). Standardmäßig aus; muss auch pro Unit aktiviert werden.",
+        "allow_unit_measurements_hint": "Unit-Messungen für alle Units in dieser Kategorie aktivieren. Standardmäßig aus; muss auch pro Unit an sein."
     },
     "errors": {
         "name_or_address_required": "Geben Sie einen Standortnamen an oder füllen Sie Straße, Postleitzahl und Ort vollständig aus.",

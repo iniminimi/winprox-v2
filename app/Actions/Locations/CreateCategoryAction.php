@@ -15,7 +15,7 @@ class CreateCategoryAction
     ) {}
 
     /**
-     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, require_reporter_contact?: bool, require_reporter_email_verification?: bool, original_language?: string|null}  $data
+     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, allow_unit_measurements?: bool, require_reporter_contact?: bool, require_reporter_email_verification?: bool, original_language?: string|null}  $data
      */
     public function handle(int $tenantId, array $data, ?int $actorUserId = null): Category
     {
@@ -26,6 +26,7 @@ class CreateCategoryAction
             'allow_gps_location' => (bool) ($data['allow_gps_location'] ?? false),
             'is_reservable' => (bool) ($data['is_reservable'] ?? false),
             'allow_unit_checks' => (bool) ($data['allow_unit_checks'] ?? false),
+            'allow_unit_measurements' => (bool) ($data['allow_unit_measurements'] ?? false),
             'require_reporter_contact' => (bool) ($data['require_reporter_contact'] ?? false),
             'require_reporter_email_verification' => (bool) ($data['require_reporter_email_verification'] ?? false),
         ]);
@@ -44,6 +45,7 @@ class CreateCategoryAction
                 'allow_gps_location' => $category->allow_gps_location,
                 'is_reservable' => $category->is_reservable,
                 'allow_unit_checks' => $category->allow_unit_checks,
+                'allow_unit_measurements' => $category->allow_unit_measurements,
                 'require_reporter_contact' => $category->require_reporter_contact,
                 'require_reporter_email_verification' => $category->require_reporter_email_verification,
             ],

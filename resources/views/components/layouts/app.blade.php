@@ -178,7 +178,8 @@
                             $workGroupActive = request()->routeIs('issues.*')
                                 || request()->routeIs('tasks.*')
                                 || request()->routeIs('calendar.*')
-                                || request()->routeIs('reservations.*');
+                                || request()->routeIs('reservations.*')
+                                || request()->routeIs('unit-measurements.*');
 
                             $categoriesActive = request()->routeIs('locations.index')
                                 && (request()->query('section') === 'categories' || request()->filled('edit_category'));
@@ -249,6 +250,11 @@
                                        class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('reservations.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
                                         <span>{{ __('common.nav.reservations') }}</span>
+                                    </a>
+                                    <a href="{{ route('unit-measurements.fields.index') }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-measurements.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('common.nav.unit_measurements') }}</span>
                                     </a>
                                 </div>
                             </details>

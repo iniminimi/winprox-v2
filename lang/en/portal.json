@@ -37,7 +37,9 @@
         "reserve": "Reserve",
         "my_reservations": "My reservations",
         "unit_check": "Unit check",
-        "unit_check_sub": "Confirm this unit is OK"
+        "unit_check_sub": "Confirm this unit is OK",
+        "measure": "Measurement",
+        "measure_sub": "Record measurement values for this unit"
     },
     "report": {
         "title": "Create a report",
@@ -301,5 +303,20 @@
         "stop_current": "Next",
         "do_check_here": "This stop is next. Do a Unit check (OK) here, or skip it.",
         "stop_not_ok": "Not OK"
+    },
+    "measure": {
+        "title": "Record measurement",
+        "lead": "Enter the measurement values for this unit.",
+        "choose": "Choose…",
+        "yes": "Yes",
+        "no": "No",
+        "submit": "Save measurement",
+        "submit_loading": "Saving…",
+        "recorded": "Measurement saved.",
+        "errors": {
+            "not_enabled": "Unit measurements are not available.",
+            "no_fields": "No measure fields linked.",
+            "value_required": "Enter a value."
+        }
     }
 }

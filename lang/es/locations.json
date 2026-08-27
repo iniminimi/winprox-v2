@@ -117,7 +117,9 @@
             "require_reporter_email_verification": "Confirmación de correo obligatoria",
             "check_list": "Lista (chequeo de unit)",
             "allow_unit_checks": "Permitir comprobaciones de unidad",
-            "external_id": "ID externo"
+            "external_id": "ID externo",
+            "allow_unit_measurements": "Permitir mediciones de unit",
+            "measure_fields": "Campos de medición"
         },
         "translation_preview": "Traducción (portal)",
         "translation_edit": {
@@ -176,7 +178,8 @@
         "no_check_list": "Sin lista",
         "check_list_hint": "Opcional. Cree listas en la página Personas → Equipos (compartidas o por equipo). Solo listas compartidas o de equipos vinculados a la categoría de esta unidad.",
         "allow_unit_checks_hint": "Solo si la categoría permite comprobaciones de unidad. Desactivado por defecto; actívelo para mostrar la ficha Comprobación de unidad en el QR de la unidad.",
-        "external_id_hint": "Opcional. ID de esta unidad en su software de facility externo (IWMS, GMAO, ERP, …). Solo con acceso API (Corporate). Necesario para comprobaciones unit entrantes vía API."
+        "external_id_hint": "Opcional. ID de esta unidad en su software de facility externo (IWMS, GMAO, ERP, …). Solo con acceso API (Corporate). Necesario para comprobaciones unit entrantes vía API.",
+        "allow_unit_measurements_hint": "Solo relevante si la categoría permite mediciones. Desactivado por defecto; actívalo para QR o API."
     },
     "bulk": {
         "title": "Añadir unidades en bloque",
@@ -239,7 +242,8 @@
             "is_reservable": "Reservable",
             "require_reporter_contact": "Datos de contacto obligatorios",
             "require_reporter_email_verification": "Confirmación de correo obligatoria",
-            "allow_unit_checks": "Permitir comprobaciones de unidad"
+            "allow_unit_checks": "Permitir comprobaciones de unidad",
+            "allow_unit_measurements": "Permitir mediciones de unit"
         },
         "allow_gps_location_hint": "Permitir que la ubicación GPS de las unidades de esta categoría se envíe mediante el portal.",
         "teams_subtitle": "Seleccione los equipos responsables de esta categoría.",
@@ -264,7 +268,8 @@
         "is_reservable_hint": "Activa reservas para todas las unidades de esta categoría (sala, vehículo, …).",
         "require_reporter_contact_hint": "Exige nombre, apellidos y correo en informes anónimos vía el QR de la unidad. Desactivado por defecto. Solo aplica si también está activado en la unidad.",
         "require_reporter_email_verification_hint": "Exige un correo de confirmación en informes anónimos vía el QR de la unidad. El informe solo se crea tras hacer clic en el enlace. Desactivado por defecto. Solo aplica si también está activado en la unidad. No aplica a trabajadores de campo.",
-        "allow_unit_checks_hint": "Activa las comprobaciones de unidad para todas las unidades de esta categoría (ronda de seguridad, control de limpieza, …). Desactivado por defecto; también debe activarse por unidad."
+        "allow_unit_checks_hint": "Activa las comprobaciones de unidad para todas las unidades de esta categoría (ronda de seguridad, control de limpieza, …). Desactivado por defecto; también debe activarse por unidad.",
+        "allow_unit_measurements_hint": "Activa las mediciones de unit para todas las units de esta categoría. Desactivado por defecto; también debe activarse por unit."
     },
     "errors": {
         "name_or_address_required": "Introduzca un nombre de ubicación, o complete calle, código postal y ciudad.",

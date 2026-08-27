@@ -44,6 +44,10 @@
                 "body": "Snel doorgeven dat een unit in orde is — bijvoorbeeld na een securityronde, schoonmaakcontrole of technische check. Via de unit-QR kies je OK of Niet OK; bij OK hoef je geen aparte melding te maken. Optioneel eerst een checklist afvinken. Niet OK blijft naast de gewone meldflow beschikbaar."
             },
             {
+                "title": "Unitmetingen",
+                "body": "Meetwaarden op een unit (kilometerstand, temperatuur, status, …) via QR-portaal of API. Velden beheer je onder Werk → Unitmetingen; per categorie én unit aanzetten en meetvelden koppelen. Historiek in beheer; webhook unit.measurement.recorded."
+            },
+            {
                 "title": "Inspectierondes",
                 "body": "Terugkerende melding met een vaste route van units (stops), ook over meerdere locaties. Plan via Meldingen → Inspectieronde plannen (stops, interval en team in één stap) of optioneel via de melding-wizard. Via Werk → Inspectierondes zie je dezelfde lijst gefilterd op rondes. Alleen units met unit checks staan in de stop-lijst; andere units zijn verborgen. Per cyclus één taak; bij elke stop Unit check OK, Niet OK (met melding; omschrijving vooringevuld), of overslaan met reden. Klaar als alle stops van die cyclus afgehandeld zijn."
             },
@@ -174,7 +178,7 @@
                 "title": "API",
                 "items": [
                     "**REST API v1** (vaste URL’s + HTTP-methodes) met antwoorden in **JSON** (standaard gegevensformaat). Documentatie in-app + docs.",
-                    "O.a. meldingen, taken, locaties, units (incl. externe ID), teams, workers, unit checks (ook inbound via externe unit-ID), ESG, vertalingen.",
+                    "O.a. meldingen, taken, locaties, units (incl. externe ID), teams, workers, unit check, unitmetings (ook inbound via externe unit-ID), ESG, vertalingen.",
                     "Beschikbaar op **Corporate** (proef op verzoek).",
                     "IoT-ingest apart via gateway-token (Corporate)."
                 ]
@@ -225,7 +229,7 @@
             {
                 "title": "Webhooks",
                 "items": [
-                    "Uitgaande HTTP POST bij events (o.a. issue/task-status, unit check, ESG, GPS).",
+                    "Uitgaande HTTP POST bij events (o.a. issue/task-status, unit check, unitmeting, ESG, GPS).",
                     "Configuratie onder Instellingen → API; secret voor verificatie.",
                     "Automatische retries bij falen (tot enkele pogingen met oplopende pauze).",
                     "Zelfde planvereiste als API (Corporate).",

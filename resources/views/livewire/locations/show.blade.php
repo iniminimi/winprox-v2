@@ -405,6 +405,34 @@
                     </x-wp-tooltip>
                 @endif
 
+                <x-wp-tooltip :text="__('locations.units.allow_unit_measurements_hint')" wrap class="wp-tooltip--block">
+                    <label class="wp-check wp-check--boxed">
+                        <input type="checkbox" wire:model.live="unitAllowUnitMeasurements">
+                        <span>{{ __('locations.units.fields.allow_unit_measurements') }}</span>
+                    </label>
+                </x-wp-tooltip>
+
+                @if ($unitAllowUnitMeasurements)
+                    <div class="wp-field">
+                        <span class="wp-label">{{ __('locations.units.fields.measure_fields') }}</span>
+                        <div class="wp-stack-tight">
+                            @forelse ($availableMeasureFields as $measureField)
+                                <label class="wp-check" wire:key="measure-field-opt-{{ $measureField->id }}">
+                                    <input type="checkbox" value="{{ $measureField->id }}" wire:model="unitMeasureFieldIds">
+                                    <span>
+                                        {{ $measureField->name }}
+                                        <span class="wp-muted wp-text-sm">({{ __('unit_measurements.types.'.$measureField->type->value) }})</span>
+                                    </span>
+                                </label>
+                            @empty
+                                <p class="wp-muted wp-text-sm">{{ __('unit_measurements.fields.empty') }}</p>
+                            @endforelse
+                        </div>
+                        @error('unitMeasureFieldIds') <span class="wp-error">{{ $message }}</span> @enderror
+                        @error('unitMeasureFieldIds.*') <span class="wp-error">{{ $message }}</span> @enderror
+                    </div>
+                @endif
+
                 <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
                     <label class="wp-check wp-check--boxed">
                         <input type="checkbox" wire:model="unitRequireReporterContact">

@@ -3,6 +3,7 @@
 namespace App\Actions\Locations;
 
 use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
+use App\Actions\UnitMeasurements\SyncUnitMeasureFieldsAction;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -15,6 +16,7 @@ class CreateUnitAction
     public function __construct(
         private AuditRecorder $audit,
         private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
+        private SyncUnitMeasureFieldsAction $syncMeasureFields,
     ) {}
 
     /**
@@ -39,6 +41,9 @@ class CreateUnitAction
                 : false,
             'allow_unit_checks' => array_key_exists('allow_unit_checks', $data)
                 ? (bool) $data['allow_unit_checks']
+                : false,
+            'allow_unit_measurements' => array_key_exists('allow_unit_measurements', $data)
+                ? (bool) $data['allow_unit_measurements']
                 : false,
             'require_reporter_contact' => array_key_exists('require_reporter_contact', $data)
                 ? (bool) $data['require_reporter_contact']
@@ -74,6 +79,14 @@ class CreateUnitAction
 
         $unit = $unit->fresh();
         $this->ensureTranslationSlots->handle($unit);
+
+        if (array_key_exists('measure_field_ids', $data)) {
+            $ids = is_array($data['measure_field_ids'])
+                ? array_map('intval', $data['measure_field_ids'])
+                : [];
+            $this->syncMeasureFields->handle($unit, $ids, $actorUserId);
+            $unit = $unit->fresh();
+        }
 
         return $unit;
     }

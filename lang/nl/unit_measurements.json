@@ -1,0 +1,81 @@
+{
+    "subnav": {
+        "label": "Unitmetingen",
+        "fields": "Velden",
+        "history": "Historiek"
+    },
+    "fields": {
+        "title": "Meetvelden",
+        "subtitle": "Definieer wat je op units wilt meten (km, temperatuur, status, …).",
+        "add": "Veld toevoegen",
+        "empty": "Nog geen meetvelden.",
+        "deactivate": "Deactiveren",
+        "activate": "Activeren",
+        "edit_title": "Meetveld bewerken",
+        "create_title": "Meetveld toevoegen",
+        "form": {
+            "name": "Naam",
+            "type": "Type",
+            "unit_of_measure": "Eenheid",
+            "min_value": "Minimum",
+            "max_value": "Maximum",
+            "options": "Keuzeopties",
+            "add_option": "Optie toevoegen"
+        }
+    },
+    "history": {
+        "title": "Metingen",
+        "subtitle": "Historiek van unitmetingen.",
+        "list_title": "Recente metingen",
+        "empty": "Nog geen metingen.",
+        "reporter_unknown": "Onbekend",
+        "filters": {
+            "field": "Veld",
+            "all_fields": "Alle velden",
+            "location": "Locatie",
+            "all_locations": "Alle locaties"
+        }
+    },
+    "types": {
+        "numeric": "Numeriek",
+        "boolean": "Ja/Nee",
+        "string": "Tekst",
+        "choice": "Keuze"
+    },
+    "status": {
+        "active": "Actief",
+        "inactive": "Inactief"
+    },
+    "sources": {
+        "portal": "Portaal",
+        "api": "API",
+        "admin": "Beheer"
+    },
+    "flash": {
+        "field_saved": "Meetveld opgeslagen."
+    },
+    "errors": {
+        "batch_empty": "Geen metingen om op te slaan.",
+        "unit_invalid": "Unit hoort niet bij deze organisatie.",
+        "unit_not_enabled": "Unitmetingen zijn niet ingeschakeld voor deze unit.",
+        "field_invalid": "Meetveld niet gevonden of niet actief.",
+        "field_not_linked": "Dit meetveld is niet gekoppeld aan de unit.",
+        "value_required": "Vul een waarde in.",
+        "value_below_min": "Waarde mag niet lager zijn dan :min.",
+        "value_above_max": "Waarde mag niet hoger zijn dan :max.",
+        "value_choice_invalid": "Kies een geldige optie.",
+        "value_string_too_long": "Tekst is te lang.",
+        "worker_invalid": "Medewerker hoort niet bij deze organisatie."
+    },
+    "validation": {
+        "field_required": "Kies een meetveld.",
+        "field_invalid": "Ongeldig meetveld.",
+        "recorded_at_required": "Tijdstip ontbreekt.",
+        "recorded_at_invalid": "Ongeldig tijdstip.",
+        "recorded_at_future": "Tijdstip mag niet in de toekomst liggen."
+    },
+    "value": {
+        "yes": "Ja",
+        "no": "Nee"
+    }
+}

@@ -117,7 +117,9 @@
             "require_reporter_email_verification": "Require email confirmation",
             "check_list": "Checklist (unit check)",
             "allow_unit_checks": "Allow unit checks",
-            "external_id": "External ID"
+            "external_id": "External ID",
+            "allow_unit_measurements": "Allow unit measurements",
+            "measure_fields": "Measure fields"
         },
         "translation_preview": "Translation (portal)",
         "translation_edit": {
@@ -176,7 +178,8 @@
         "no_check_list": "No checklist",
         "check_list_hint": "Optional. Create checklists under the People → Teams page (shared or per team). Only shared checklists or checklists of teams linked to this unit's category.",
         "allow_unit_checks_hint": "Only relevant when the category allows unit checks. Off by default; turn on to show the Unit check tile on the unit QR.",
-        "external_id_hint": "Optional. ID of this unit in your external facility software (IWMS, CMMS, ERP, …). Only with API access (Corporate). Required for inbound unit checks via the API."
+        "external_id_hint": "Optional. ID of this unit in your external facility software (IWMS, CMMS, ERP, …). Only with API access (Corporate). Required for inbound unit checks via the API.",
+        "allow_unit_measurements_hint": "Only relevant if the category allows unit measurements. Off by default; enable to allow measurements via QR or API."
     },
     "bulk": {
         "title": "Add bulk units",
@@ -239,7 +242,8 @@
             "is_reservable": "Reservable",
             "require_reporter_contact": "Require contact details",
             "require_reporter_email_verification": "Require email confirmation",
-            "allow_unit_checks": "Allow unit checks"
+            "allow_unit_checks": "Allow unit checks",
+            "allow_unit_measurements": "Allow unit measurements"
         },
         "allow_gps_location_hint": "Allow the GPS location of units in this category to be submitted via the portal.",
         "teams_subtitle": "Select the teams responsible for this category.",
@@ -264,7 +268,8 @@
         "is_reservable_hint": "Enable reservations for all units in this category (meeting room, vehicle, …).",
         "require_reporter_contact_hint": "Require first name, last name and email for anonymous reports via the unit QR. Off by default. Only takes effect when also enabled on the unit.",
         "require_reporter_email_verification_hint": "Require a confirmation email for anonymous reports via the unit QR. The report is only created after the reporter clicks the link. Off by default. Only takes effect when also enabled on the unit. Does not apply to field workers.",
-        "allow_unit_checks_hint": "Enable unit checks for all units in this category (security round, cleaning check, …). Off by default; must also be enabled per unit."
+        "allow_unit_checks_hint": "Enable unit checks for all units in this category (security round, cleaning check, …). Off by default; must also be enabled per unit.",
+        "allow_unit_measurements_hint": "Enable unit measurements for all units in this category. Off by default; must also be enabled per unit."
     },
     "errors": {
         "name_or_address_required": "Enter a location name, or fill in street, postal code and city.",

@@ -66,6 +66,8 @@ use App\Livewire\Pages\Team;
 use App\Livewire\Pages\TeamleaderManualIndex;
 use App\Livewire\Pages\UnitChecksIndex;
 use App\Livewire\Pages\UnitsIndex;
+use App\Livewire\UnitMeasurements\FieldsIndex as UnitMeasureFieldsIndex;
+use App\Livewire\UnitMeasurements\MeasurementsIndex as UnitMeasurementsIndex;
 use App\Livewire\Pages\WorkerManualIndex;
 use App\Livewire\Platform\Audit as PlatformAudit;
 use App\Livewire\Platform\ContactMessages;
@@ -344,6 +346,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/calendar', Calendar::class)->name('calendar.index');
         Route::get('/reservations', ReservationsIndex::class)->name('reservations.index');
         Route::get('/unit-checks', UnitChecksIndex::class)->name('unit-checks.index');
+        Route::get('/unit-measurements/fields', UnitMeasureFieldsIndex::class)->name('unit-measurements.fields.index');
+        Route::get('/unit-measurements', UnitMeasurementsIndex::class)->name('unit-measurements.history');
         Route::get('/esg', EsgDashboard::class)->name('esg.dashboard');
         Route::get('/esg/indicators', EsgIndicatorsIndex::class)->name('esg.indicators.index');
         Route::get('/esg/measurements', EsgMeasurementsIndex::class)->name('esg.measurements.index');

@@ -1,0 +1,81 @@
+{
+    "subnav": {
+        "label": "Mediciones de unit",
+        "fields": "Campos",
+        "history": "Historial"
+    },
+    "fields": {
+        "title": "Campos de medición",
+        "subtitle": "Define qué quieres medir en las units (km, temperatura, estado, …).",
+        "add": "Añadir campo",
+        "empty": "Aún no hay campos.",
+        "deactivate": "Desactivar",
+        "activate": "Activar",
+        "edit_title": "Editar campo",
+        "create_title": "Añadir campo",
+        "form": {
+            "name": "Nombre",
+            "type": "Tipo",
+            "unit_of_measure": "Unidad",
+            "min_value": "Mínimo",
+            "max_value": "Máximo",
+            "options": "Opciones",
+            "add_option": "Añadir opción"
+        }
+    },
+    "history": {
+        "title": "Mediciones",
+        "subtitle": "Historial de mediciones de unit.",
+        "list_title": "Mediciones recientes",
+        "empty": "Aún no hay mediciones.",
+        "reporter_unknown": "Desconocido",
+        "filters": {
+            "field": "Campo",
+            "all_fields": "Todos los campos",
+            "location": "Ubicación",
+            "all_locations": "Todas las ubicaciones"
+        }
+    },
+    "types": {
+        "numeric": "Numérico",
+        "boolean": "Sí/No",
+        "string": "Texto",
+        "choice": "Opción"
+    },
+    "status": {
+        "active": "Activo",
+        "inactive": "Inactivo"
+    },
+    "sources": {
+        "portal": "Portal",
+        "api": "API",
+        "admin": "Admin"
+    },
+    "flash": {
+        "field_saved": "Campo guardado."
+    },
+    "errors": {
+        "batch_empty": "No hay mediciones que guardar.",
+        "unit_invalid": "La unit no pertenece a esta organización.",
+        "unit_not_enabled": "Las mediciones no están activadas para esta unit.",
+        "field_invalid": "Campo no encontrado o inactivo.",
+        "field_not_linked": "Este campo no está vinculado a la unit.",
+        "value_required": "Introduce un valor.",
+        "value_below_min": "El valor no puede ser inferior a :min.",
+        "value_above_max": "El valor no puede ser superior a :max.",
+        "value_choice_invalid": "Elige una opción válida.",
+        "value_string_too_long": "El texto es demasiado largo.",
+        "worker_invalid": "El trabajador no pertenece a esta organización."
+    },
+    "validation": {
+        "field_required": "Elige un campo.",
+        "field_invalid": "Campo no válido.",
+        "recorded_at_required": "Falta la marca de tiempo.",
+        "recorded_at_invalid": "Marca de tiempo no válida.",
+        "recorded_at_future": "La marca de tiempo no puede ser futura."
+    },
+    "value": {
+        "yes": "Sí",
+        "no": "No"
+    }
+}

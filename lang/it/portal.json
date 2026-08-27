@@ -37,7 +37,9 @@
         "reserve": "Prenota",
         "my_reservations": "Le mie prenotazioni",
         "unit_check": "Controllo unit",
-        "unit_check_sub": "Conferma che questa unit è OK"
+        "unit_check_sub": "Conferma che questa unit è OK",
+        "measure": "Misurazione",
+        "measure_sub": "Registra i valori di misura per questa unit"
     },
     "report": {
         "title": "Crea una segnalazione",
@@ -301,5 +303,20 @@
         "stop_current": "Prossima",
         "do_check_here": "Questa fermata è la prossima. Fai qui un Unit check (OK), oppure salta.",
         "stop_not_ok": "Non OK"
+    },
+    "measure": {
+        "title": "Registra misurazione",
+        "lead": "Inserisci i valori di misura per questa unit.",
+        "choose": "Scegli…",
+        "yes": "Sì",
+        "no": "No",
+        "submit": "Salva misurazione",
+        "submit_loading": "Salvataggio…",
+        "recorded": "Misurazione salvata.",
+        "errors": {
+            "not_enabled": "Misurazioni non disponibili.",
+            "no_fields": "Nessun campo collegato.",
+            "value_required": "Inserisci un valore."
+        }
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Storage;
@@ -32,6 +33,7 @@ class Unit extends Model
         'public_reports_enabled',
         'allow_reservations',
         'allow_unit_checks',
+        'allow_unit_measurements',
         'require_reporter_contact',
         'require_reporter_email_verification',
         'background_photo_path',
@@ -44,6 +46,7 @@ class Unit extends Model
         'public_reports_enabled' => 'boolean',
         'allow_reservations' => 'boolean',
         'allow_unit_checks' => 'boolean',
+        'allow_unit_measurements' => 'boolean',
         'require_reporter_contact' => 'boolean',
         'require_reporter_email_verification' => 'boolean',
     ];
@@ -111,6 +114,32 @@ class Unit extends Model
         $this->loadMissing('category');
 
         return (bool) $this->category?->allow_unit_checks;
+    }
+
+    public function allowsUnitMeasurements(): bool
+    {
+        if (! (bool) $this->allow_unit_measurements) {
+            return false;
+        }
+
+        if ($this->category_id === null) {
+            return true;
+        }
+
+        $this->loadMissing('category');
+
+        return (bool) $this->category?->allow_unit_measurements;
+    }
+
+    public function measureFields(): BelongsToMany
+    {
+        return $this->belongsToMany(UnitMeasureField::class, 'unit_measure_field_unit')
+            ->withTimestamps();
+    }
+
+    public function activeMeasureFields(): BelongsToMany
+    {
+        return $this->measureFields()->where('unit_measure_fields.is_active', true);
     }
 
     public function scopeWhereAllowsUnitChecks(Builder $query): Builder

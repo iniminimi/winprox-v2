@@ -37,7 +37,9 @@
         "reserve": "Reserveren",
         "my_reservations": "Mijn reserveringen",
         "unit_check": "Unit check",
-        "unit_check_sub": "Bevestig dat deze unit OK is"
+        "unit_check_sub": "Bevestig dat deze unit OK is",
+        "measure": "Meting",
+        "measure_sub": "Registreer meetwaarden voor deze unit"
     },
     "report": {
         "title": "Een melding maken",
@@ -301,5 +303,20 @@
         "stop_current": "Volgende",
         "do_check_here": "Deze stop is aan de beurt. Doe hier een Unit check (OK), of sla over.",
         "stop_not_ok": "Niet OK"
+    },
+    "measure": {
+        "title": "Meting registreren",
+        "lead": "Vul de meetwaarden in voor deze unit.",
+        "choose": "Kies…",
+        "yes": "Ja",
+        "no": "Nee",
+        "submit": "Meting opslaan",
+        "submit_loading": "Bezig met opslaan…",
+        "recorded": "Meting opgeslagen.",
+        "errors": {
+            "not_enabled": "Unitmetingen zijn niet beschikbaar.",
+            "no_fields": "Geen meetvelden gekoppeld.",
+            "value_required": "Vul een waarde in."
+        }
     }
 }

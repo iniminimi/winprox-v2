@@ -1,0 +1,81 @@
+{
+    "subnav": {
+        "label": "Unit-Messungen",
+        "fields": "Felder",
+        "history": "Verlauf"
+    },
+    "fields": {
+        "title": "Messfelder",
+        "subtitle": "Definieren Sie, was Sie an Units messen wollen (km, Temperatur, Status, …).",
+        "add": "Feld hinzufügen",
+        "empty": "Noch keine Messfelder.",
+        "deactivate": "Deaktivieren",
+        "activate": "Aktivieren",
+        "edit_title": "Messfeld bearbeiten",
+        "create_title": "Messfeld hinzufügen",
+        "form": {
+            "name": "Name",
+            "type": "Typ",
+            "unit_of_measure": "Einheit",
+            "min_value": "Minimum",
+            "max_value": "Maximum",
+            "options": "Auswahloptionen",
+            "add_option": "Option hinzufügen"
+        }
+    },
+    "history": {
+        "title": "Messungen",
+        "subtitle": "Verlauf der Unit-Messungen.",
+        "list_title": "Aktuelle Messungen",
+        "empty": "Noch keine Messungen.",
+        "reporter_unknown": "Unbekannt",
+        "filters": {
+            "field": "Feld",
+            "all_fields": "Alle Felder",
+            "location": "Standort",
+            "all_locations": "Alle Standorte"
+        }
+    },
+    "types": {
+        "numeric": "Numerisch",
+        "boolean": "Ja/Nein",
+        "string": "Text",
+        "choice": "Auswahl"
+    },
+    "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+    },
+    "sources": {
+        "portal": "Portal",
+        "api": "API",
+        "admin": "Admin"
+    },
+    "flash": {
+        "field_saved": "Messfeld gespeichert."
+    },
+    "errors": {
+        "batch_empty": "Keine Messungen zum Speichern.",
+        "unit_invalid": "Unit gehört nicht zu dieser Organisation.",
+        "unit_not_enabled": "Unit-Messungen sind für diese Unit nicht aktiviert.",
+        "field_invalid": "Messfeld nicht gefunden oder inaktiv.",
+        "field_not_linked": "Dieses Messfeld ist nicht mit der Unit verknüpft.",
+        "value_required": "Wert eingeben.",
+        "value_below_min": "Wert darf nicht unter :min liegen.",
+        "value_above_max": "Wert darf nicht über :max liegen.",
+        "value_choice_invalid": "Gültige Option wählen.",
+        "value_string_too_long": "Text ist zu lang.",
+        "worker_invalid": "Mitarbeiter gehört nicht zu dieser Organisation."
+    },
+    "validation": {
+        "field_required": "Messfeld wählen.",
+        "field_invalid": "Ungültiges Messfeld.",
+        "recorded_at_required": "Zeitstempel fehlt.",
+        "recorded_at_invalid": "Ungültiger Zeitstempel.",
+        "recorded_at_future": "Zeitstempel darf nicht in der Zukunft liegen."
+    },
+    "value": {
+        "yes": "Ja",
+        "no": "Nein"
+    }
+}

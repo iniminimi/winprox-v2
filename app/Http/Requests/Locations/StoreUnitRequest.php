@@ -64,6 +64,9 @@ class StoreUnitRequest extends FormRequest
             'public_reports_enabled' => ['boolean'],
             'allow_reservations' => ['boolean'],
             'allow_unit_checks' => ['boolean'],
+            'allow_unit_measurements' => ['boolean'],
+            'measure_field_ids' => ['nullable', 'array'],
+            'measure_field_ids.*' => ['integer', 'exists:unit_measure_fields,id'],
             'require_reporter_contact' => ['boolean'],
             'require_reporter_email_verification' => ['boolean'],
         ];

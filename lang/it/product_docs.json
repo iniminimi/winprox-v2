@@ -44,6 +44,10 @@
                 "body": "Confermare in fretta che un’unità è a posto — ad es. dopo un giro sicurezza, controllo pulizie o verifica tecnica. Sul QR unità: OK o Non OK; con OK non serve una segnalazione a parte. Checklist opzionale. Non OK resta disponibile insieme al flusso di segnalazione."
             },
             {
+                "title": "Misurazioni unit",
+                "body": "Registra valori su una unit (chilometraggio, temperatura, stato, …) via portale QR o API. Campi in Lavoro → Misurazioni unit; attiva per categoria e unit. Cronologia in admin; webhook unit.measurement.recorded."
+            },
+            {
                 "title": "Giri di ispezione",
                 "body": "Segnalazione ricorrente con percorso fisso di unità (fermate), anche su più sedi. Pianifica da Segnalazioni → Pianifica giro di ispezione (fermate, intervallo e team in un passo) o tramite la procedura guidata. Lavoro → Giri di ispezione apre la stessa lista filtrata sui giri. Nell’elenco delle fermate compaiono solo le unità con controlli unità; le altre sono nascoste. Un task per ciclo; a ogni fermata Unit check OK, Non OK (con segnalazione; descrizione precompilata) o salta con motivo. Completo quando tutte le fermate del ciclo sono gestite."
             },

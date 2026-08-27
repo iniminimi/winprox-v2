@@ -262,6 +262,12 @@
                         <span class="wp-tile-sub">{{ __('portal.tiles.unit_check_sub') }}</span>
                     </button>
                 @endif
+                @if (($allowsUnitMeasurements ?? false) && ($measureFields ?? collect())->isNotEmpty())
+                    <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('measure')">
+                        <span class="wp-tile-title">{{ __('portal.tiles.measure') }}</span>
+                        <span class="wp-tile-sub">{{ __('portal.tiles.measure_sub') }}</span>
+                    </button>
+                @endif
                 @if ($showNewReportSection)
                     <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('new')">
                         <span class="wp-tile-title">{{ __('portal.tiles.new') }}</span>
@@ -453,6 +459,59 @@
                     @error('checkLongitude') <p class="wp-error">{{ $message }}</p> @enderror
                     @error('checkCheckedAt') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+            </div>
+        @endif
+
+        {{-- ============================ MEASURE ============================ --}}
+        @if ($portalSection === 'measure' && ($allowsUnitMeasurements ?? false) && ($measureFields ?? collect())->isNotEmpty())
+            <div data-manual-capture="portal-unit-measure" class="wp-stack">
+                <x-wp-portal-back wire:click="openSection('home')" />
+                <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.measure.title')" />
+                <form class="wp-stack" wire:submit="submitMeasurements">
+                    <div class="wp-card wp-card-pad wp-stack">
+                        <p class="wp-muted">{{ __('portal.measure.lead') }}</p>
+                        @foreach ($measureFields as $field)
+                            <div class="wp-field" wire:key="portal-measure-{{ $field->id }}">
+                                <label class="wp-label" for="measure-field-{{ $field->id }}">
+                                    {{ $field->name }}
+                                    @if ($field->unit_of_measure)
+                                        <span class="wp-muted">({{ $field->unit_of_measure }})</span>
+                                    @endif
+                                </label>
+                                @if ($field->type->value === 'numeric')
+                                    <input id="measure-field-{{ $field->id }}" type="number" step="any" class="wp-input"
+                                           wire:model="measureValues.{{ $field->id }}">
+                                @elseif ($field->type->value === 'boolean')
+                                    <select id="measure-field-{{ $field->id }}" class="wp-select" wire:model="measureValues.{{ $field->id }}">
+                                        <option value="">{{ __('portal.measure.choose') }}</option>
+                                        <option value="1">{{ __('portal.measure.yes') }}</option>
+                                        <option value="0">{{ __('portal.measure.no') }}</option>
+                                    </select>
+                                @elseif ($field->type->value === 'choice')
+                                    <select id="measure-field-{{ $field->id }}" class="wp-select" wire:model="measureValues.{{ $field->id }}">
+                                        <option value="">{{ __('portal.measure.choose') }}</option>
+                                        @foreach ($field->normalizedChoiceOptions() as $option)
+                                            <option value="{{ $option }}">{{ $option }}</option>
+                                        @endforeach
+                                    </select>
+                                @else
+                                    <input id="measure-field-{{ $field->id }}" type="text" class="wp-input" maxlength="500"
+                                           wire:model="measureValues.{{ $field->id }}">
+                                @endif
+                                @error('measureValues.'.$field->id) <p class="wp-error">{{ $message }}</p> @enderror
+                            </div>
+                        @endforeach
+                        @error('measureValues') <p class="wp-error">{{ $message }}</p> @enderror
+                        @error('measurements') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-portal-actions">
+                        <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" wire:target="submitMeasurements">
+                            <x-wp-spinner wire:loading wire:target="submitMeasurements" class="wp-mr-2" />
+                            <span wire:loading.remove wire:target="submitMeasurements">{{ __('portal.measure.submit') }}</span>
+                            <span wire:loading wire:target="submitMeasurements">{{ __('portal.measure.submit_loading') }}</span>
+                        </button>
+                    </div>
+                </form>
             </div>
         @endif
 

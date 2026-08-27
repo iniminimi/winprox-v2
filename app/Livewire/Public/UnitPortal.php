@@ -11,6 +11,7 @@ use App\Actions\Reservations\CancelReservationAction;
 use App\Actions\Reservations\CreateReservationAction;
 use App\Exceptions\Public\PublicReportRateLimitExceededException;
 use App\Actions\Time\ResolveDefaultClockPointAction;
+use App\Actions\UnitMeasurements\RecordUnitMeasurementsBatchAction;
 use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitBackgroundPhotoAction;
 use App\Actions\Units\RecordUnitGpsReportAction;
@@ -23,8 +24,11 @@ use App\Actions\Tasks\SkipRoundStopAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Data\Reservations\ReservationBookingData;
 use App\Data\Units\RecordUnitCheckData;
+use App\Enums\UnitMeasureFieldType;
+use App\Enums\UnitMeasurementSource;
 use App\Enums\UnitCheckResult;
 use App\Enums\UnitCheckSource;
+use Carbon\CarbonImmutable;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Http\Requests\Public\CompletePortalTaskRequest;
@@ -127,6 +131,11 @@ class UnitPortal extends Component
     /** @var list<string> */
     public array $checkChecklistItems = [];
 
+    /** @var array<int|string, mixed> */
+    public array $measureValues = [];
+
+    public string $measureRecordedAt = '';
+
     public ?int $skipRoundTaskId = null;
     public string $skipReason = '';
 
@@ -221,7 +230,14 @@ class UnitPortal extends Component
             return;
         }
 
-        if (! in_array($section, ['home', 'new', 'issues', 'issue_detail', 'documents', 'announcements', 'reserve', 'my_reservations', 'unit_check'], true)) {
+        if ($section === 'measure') {
+            $unit = $this->unit();
+            if (! $unit->allowsUnitMeasurements() || ! $unit->activeMeasureFields()->exists()) {
+                return;
+            }
+        }
+
+        if (! in_array($section, ['home', 'new', 'issues', 'issue_detail', 'documents', 'announcements', 'reserve', 'my_reservations', 'unit_check', 'measure'], true)) {
             return;
         }
 
@@ -241,9 +257,106 @@ class UnitPortal extends Component
             $this->resetErrorBag(['checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems']);
         }
 
+        if ($section === 'measure') {
+            $this->measureValues = [];
+            $this->measureRecordedAt = now()->toIso8601String();
+            $this->resetErrorBag();
+        }
+
         if ($section === 'reserve') {
             $this->prefillReservationGuest();
         }
+    }
+
+    public function submitMeasurements(RecordUnitMeasurementsBatchAction $batch): void
+    {
+        if ($this->inactiveReasonKey !== null) {
+            return;
+        }
+
+        $unit = $this->unit()->loadMissing('category');
+        if (! $unit->allowsUnitMeasurements()) {
+            $this->addError('measureValues', __('portal.measure.errors.not_enabled'));
+
+            return;
+        }
+
+        $fields = $unit->activeMeasureFields()->orderBy('name')->get();
+        if ($fields->isEmpty()) {
+            $this->addError('measureValues', __('portal.measure.errors.no_fields'));
+
+            return;
+        }
+
+        if ($this->measureRecordedAt === '') {
+            $this->measureRecordedAt = now()->toIso8601String();
+        }
+
+        $entries = [];
+        foreach ($fields as $field) {
+            $raw = $this->measureValues[$field->id] ?? $this->measureValues[(string) $field->id] ?? null;
+            $entry = ['unit_measure_field_id' => (int) $field->id];
+
+            if ($field->type === UnitMeasureFieldType::Numeric) {
+                if ($raw === null || $raw === '') {
+                    $this->addError('measureValues.'.$field->id, __('portal.measure.errors.value_required'));
+
+                    continue;
+                }
+                $entry['value_numeric'] = (float) $raw;
+            } elseif ($field->type === UnitMeasureFieldType::Boolean) {
+                if ($raw === null || $raw === '') {
+                    $this->addError('measureValues.'.$field->id, __('portal.measure.errors.value_required'));
+
+                    continue;
+                }
+                $entry['value_boolean'] = filter_var($raw, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+                if ($entry['value_boolean'] === null) {
+                    $this->addError('measureValues.'.$field->id, __('portal.measure.errors.value_required'));
+
+                    continue;
+                }
+            } else {
+                $string = is_string($raw) || is_numeric($raw) ? trim((string) $raw) : '';
+                if ($string === '') {
+                    $this->addError('measureValues.'.$field->id, __('portal.measure.errors.value_required'));
+
+                    continue;
+                }
+                $entry['value_string'] = $string;
+            }
+
+            $entries[] = $entry;
+        }
+
+        if ($this->getErrorBag()->isNotEmpty()) {
+            return;
+        }
+
+        try {
+            $batch->handle(
+                unit: $unit,
+                entries: $entries,
+                tenantId: (int) $unit->tenant_id,
+                source: UnitMeasurementSource::Portal,
+                recordedAt: CarbonImmutable::parse($this->measureRecordedAt),
+                worker: $this->authorizedWorker(),
+                actorUserId: null,
+            );
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            foreach ($e->errors() as $key => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($key, $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->measureValues = [];
+        $this->measureRecordedAt = '';
+        $this->flashMessage = __('portal.measure.recorded');
+        $this->portalSection = 'home';
     }
 
     public function submitUnitCheck(
@@ -1106,6 +1219,7 @@ class UnitPortal extends Component
         $guestReservations = collect();
         $unitCheckListItems = collect();
         $unitCheckList = null;
+        $measureFields = collect();
         $unitFieldTrustPayload = $team !== null
             ? session(WorkerVerification::unitFieldTrustSessionKey((int) $team->id))
             : null;
@@ -1117,6 +1231,9 @@ class UnitPortal extends Component
         }
 
         if ($this->inactiveReasonKey === null) {
+            if (in_array($this->portalSection, ['home', 'measure'], true) && $unit->allowsUnitMeasurements()) {
+                $measureFields = $unit->activeMeasureFields()->orderBy('name')->get();
+            }
             if ($this->portalSection === 'unit_check' && $canAct) {
                 $unit->loadMissing(['unitCheckList.items', 'unitCheckList.translations']);
                 if ($unit->unitCheckList?->is_active) {
@@ -1171,6 +1288,8 @@ class UnitPortal extends Component
             'canAct' => $canAct,
             'unit' => $unit,
             'allowsUnitChecks' => $unit->allowsUnitChecks(),
+            'allowsUnitMeasurements' => $unit->allowsUnitMeasurements(),
+            'measureFields' => $measureFields,
             'unitFieldTrustActive' => $unitFieldTrustActive,
             'unitCheckList' => $unitCheckList,
             'unitCheckListItems' => $unitCheckListItems,

@@ -434,6 +434,30 @@ de meldingenlijst te vervuilen. Los van ESG.
 
 ---
 
+## 5f. Unitmetingen (Facility)
+
+**Doel:** meetwaarden op een unit vastleggen (kilometerstand, temperatuur, status, …)
+zonder ESG. Los van unit checks.
+
+### Portaal (QR)
+- Alleen zichtbaar als **categorie én unit** unitmetingen toestaan (beide standaard uit)
+  én er actieve meetvelden aan de unit gekoppeld zijn.
+- Tegel **Meting**: velden per type (numeriek + eenheid, ja/nee, tekst, keuze).
+- Worker optioneel (als geverifieerd); anders anonieme portaalmeting. `source=portal`.
+
+### Beheer
+- **Velden** (`/unit-measurements/fields`): naam, type, eenheid/min/max/opties; actief/inactief.
+- **Historiek** (`/unit-measurements`): filters locatie/veld.
+- **Aan/uit:** Plaatsen → Categorieën (`allow_unit_measurements`) én unit bewerken
+  (`allow_unit_measurements` + gekoppelde meetvelden).
+
+### API & webhooks
+- `POST /api/v1/units/{unit}/measurements` — ability `units:update`;
+  zie `docs/api/unit-measurements.md`. `source=api`.
+- Webhook `unit.measurement.recorded` bij elke nieuwe meting.
+
+---
+
 ## 5e. Inspectierondes (Facility)
 
 **Doel:** terugkerende melding met geordende stop-lijst (units). Eén taak per cyclus;

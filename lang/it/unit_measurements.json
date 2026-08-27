@@ -1,0 +1,81 @@
+{
+    "subnav": {
+        "label": "Misurazioni unit",
+        "fields": "Campi",
+        "history": "Cronologia"
+    },
+    "fields": {
+        "title": "Campi di misura",
+        "subtitle": "Definisci cosa vuoi misurare sulle unit (km, temperatura, stato, …).",
+        "add": "Aggiungi campo",
+        "empty": "Nessun campo di misura.",
+        "deactivate": "Disattiva",
+        "activate": "Attiva",
+        "edit_title": "Modifica campo",
+        "create_title": "Aggiungi campo",
+        "form": {
+            "name": "Nome",
+            "type": "Tipo",
+            "unit_of_measure": "Unità",
+            "min_value": "Minimo",
+            "max_value": "Massimo",
+            "options": "Opzioni",
+            "add_option": "Aggiungi opzione"
+        }
+    },
+    "history": {
+        "title": "Misurazioni",
+        "subtitle": "Cronologia delle misurazioni unit.",
+        "list_title": "Misurazioni recenti",
+        "empty": "Nessuna misurazione.",
+        "reporter_unknown": "Sconosciuto",
+        "filters": {
+            "field": "Campo",
+            "all_fields": "Tutti i campi",
+            "location": "Sede",
+            "all_locations": "Tutte le sedi"
+        }
+    },
+    "types": {
+        "numeric": "Numerico",
+        "boolean": "Sì/No",
+        "string": "Testo",
+        "choice": "Scelta"
+    },
+    "status": {
+        "active": "Attivo",
+        "inactive": "Inattivo"
+    },
+    "sources": {
+        "portal": "Portale",
+        "api": "API",
+        "admin": "Admin"
+    },
+    "flash": {
+        "field_saved": "Campo salvato."
+    },
+    "errors": {
+        "batch_empty": "Nessuna misurazione da salvare.",
+        "unit_invalid": "Unit non appartenente all’organizzazione.",
+        "unit_not_enabled": "Misurazioni non abilitate per questa unit.",
+        "field_invalid": "Campo non trovato o inattivo.",
+        "field_not_linked": "Campo non collegato alla unit.",
+        "value_required": "Inserisci un valore.",
+        "value_below_min": "Il valore non può essere inferiore a :min.",
+        "value_above_max": "Il valore non può essere superiore a :max.",
+        "value_choice_invalid": "Scegli un’opzione valida.",
+        "value_string_too_long": "Testo troppo lungo.",
+        "worker_invalid": "Lavoratore non appartenente all’organizzazione."
+    },
+    "validation": {
+        "field_required": "Scegli un campo.",
+        "field_invalid": "Campo non valido.",
+        "recorded_at_required": "Timestamp mancante.",
+        "recorded_at_invalid": "Timestamp non valido.",
+        "recorded_at_future": "Il timestamp non può essere nel futuro."
+    },
+    "value": {
+        "yes": "Sì",
+        "no": "No"
+    }
+}

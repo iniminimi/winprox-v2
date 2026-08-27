@@ -74,6 +74,8 @@ class Index extends Component
 
     public bool $categoryAllowUnitChecks = false;
 
+    public bool $categoryAllowUnitMeasurements = false;
+
     public bool $categoryRequireReporterContact = false;
 
     public bool $categoryRequireReporterEmailVerification = false;
@@ -351,6 +353,7 @@ class Index extends Component
         $this->categoryAllowGpsLocation = (bool) $category->allow_gps_location;
         $this->categoryIsReservable = (bool) $category->is_reservable;
         $this->categoryAllowUnitChecks = (bool) $category->allow_unit_checks;
+        $this->categoryAllowUnitMeasurements = (bool) $category->allow_unit_measurements;
         $this->categoryRequireReporterContact = (bool) $category->require_reporter_contact;
         $this->categoryRequireReporterEmailVerification = (bool) $category->require_reporter_email_verification;
         $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
@@ -393,6 +396,7 @@ class Index extends Component
             'categoryAllowGpsLocation' => $rules['allow_gps_location'],
             'categoryIsReservable' => $rules['is_reservable'],
             'categoryAllowUnitChecks' => $rules['allow_unit_checks'],
+            'categoryAllowUnitMeasurements' => $rules['allow_unit_measurements'],
             'categoryRequireReporterContact' => $rules['require_reporter_contact'],
             'categoryRequireReporterEmailVerification' => $rules['require_reporter_email_verification'],
             'selectedCategoryTeamIds' => 'required|array|min:1',
@@ -411,6 +415,7 @@ class Index extends Component
                 'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
                 'is_reservable' => (bool) $validated['categoryIsReservable'],
                 'allow_unit_checks' => (bool) $validated['categoryAllowUnitChecks'],
+                'allow_unit_measurements' => (bool) $validated['categoryAllowUnitMeasurements'],
                 'require_reporter_contact' => (bool) $validated['categoryRequireReporterContact'],
                 'require_reporter_email_verification' => (bool) $validated['categoryRequireReporterEmailVerification'],
                 'original_language' => auth()->user()?->locale,
@@ -423,6 +428,7 @@ class Index extends Component
                 'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
                 'is_reservable' => (bool) $validated['categoryIsReservable'],
                 'allow_unit_checks' => (bool) $validated['categoryAllowUnitChecks'],
+                'allow_unit_measurements' => (bool) $validated['categoryAllowUnitMeasurements'],
                 'require_reporter_contact' => (bool) $validated['categoryRequireReporterContact'],
                 'require_reporter_email_verification' => (bool) $validated['categoryRequireReporterEmailVerification'],
             ], (int) auth()->id());
@@ -508,6 +514,7 @@ class Index extends Component
         $this->categoryAllowGpsLocation = false;
         $this->categoryIsReservable = false;
         $this->categoryAllowUnitChecks = false;
+        $this->categoryAllowUnitMeasurements = false;
         $this->categoryRequireReporterContact = false;
         $this->categoryRequireReporterEmailVerification = false;
         $this->selectedCategoryTeamIds = [];

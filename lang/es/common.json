@@ -28,7 +28,8 @@
         "contact": "Contacto",
         "reservations": "Reservas",
         "iot": "IoT Connect",
-        "unit_checks": "Chequeos de unit"
+        "unit_checks": "Chequeos de unit",
+        "unit_measurements": "Mediciones de unit"
     },
     "status": {
         "new": "Nueva (Abierta)",

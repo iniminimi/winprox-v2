@@ -44,6 +44,10 @@
                 "body": "Schnell melden, dass eine Unit in Ordnung ist — z. B. nach einer Security-Runde, Reinigungskontrolle oder technischen Prüfung. Am Unit-QR: OK oder Nicht OK; bei OK keine separate Meldung nötig. Optional zuerst eine Checkliste abhaken. Nicht OK bleibt neben dem normalen Meldefluss verfügbar."
             },
             {
+                "title": "Unit-Messungen",
+                "body": "Messwerte an einer Unit (Kilometerstand, Temperatur, Status, …) über QR-Portal oder API. Felder unter Arbeit → Unit-Messungen; pro Kategorie und Unit aktivieren. Verlauf im Admin; Webhook unit.measurement.recorded."
+            },
+            {
                 "title": "Inspektionsrunden",
                 "body": "Wiederkehrende Meldung mit fester Unit-Route (Stops), auch über Standorte hinweg. Planen über Meldungen → Inspektionsrunde planen (Stops, Intervall und Team in einem Schritt) oder optional über den Melde-Assistenten. Arbeit → Inspektionsrunden öffnet dieselbe Liste gefiltert auf Runden. Nur Units mit Unit-Checks erscheinen in der Stoppliste; andere Units sind ausgeblendet. Pro Zyklus eine Aufgabe; pro Stop Unit-Check OK, Nicht OK (mit Meldung; Beschreibung vorausgefüllt) oder Überspringen mit Grund. Fertig, wenn alle Stops dieses Zyklus erledigt sind."
             },

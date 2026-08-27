@@ -1,0 +1,81 @@
+{
+    "subnav": {
+        "label": "Mesures unit",
+        "fields": "Champs",
+        "history": "Historique"
+    },
+    "fields": {
+        "title": "Champs de mesure",
+        "subtitle": "Définissez ce que vous voulez mesurer sur les units (km, température, statut, …).",
+        "add": "Ajouter un champ",
+        "empty": "Aucun champ de mesure.",
+        "deactivate": "Désactiver",
+        "activate": "Activer",
+        "edit_title": "Modifier le champ",
+        "create_title": "Ajouter un champ",
+        "form": {
+            "name": "Nom",
+            "type": "Type",
+            "unit_of_measure": "Unité",
+            "min_value": "Minimum",
+            "max_value": "Maximum",
+            "options": "Options",
+            "add_option": "Ajouter une option"
+        }
+    },
+    "history": {
+        "title": "Mesures",
+        "subtitle": "Historique des mesures unit.",
+        "list_title": "Mesures récentes",
+        "empty": "Aucune mesure.",
+        "reporter_unknown": "Inconnu",
+        "filters": {
+            "field": "Champ",
+            "all_fields": "Tous les champs",
+            "location": "Lieu",
+            "all_locations": "Tous les lieux"
+        }
+    },
+    "types": {
+        "numeric": "Numérique",
+        "boolean": "Oui/Non",
+        "string": "Texte",
+        "choice": "Choix"
+    },
+    "status": {
+        "active": "Actif",
+        "inactive": "Inactif"
+    },
+    "sources": {
+        "portal": "Portail",
+        "api": "API",
+        "admin": "Admin"
+    },
+    "flash": {
+        "field_saved": "Champ enregistré."
+    },
+    "errors": {
+        "batch_empty": "Aucune mesure à enregistrer.",
+        "unit_invalid": "Unit hors organisation.",
+        "unit_not_enabled": "Mesures unit non activées.",
+        "field_invalid": "Champ introuvable ou inactif.",
+        "field_not_linked": "Champ non lié à cette unit.",
+        "value_required": "Saisissez une valeur.",
+        "value_below_min": "Valeur inférieure à :min.",
+        "value_above_max": "Valeur supérieure à :max.",
+        "value_choice_invalid": "Choisissez une option valide.",
+        "value_string_too_long": "Texte trop long.",
+        "worker_invalid": "Travailleur hors organisation."
+    },
+    "validation": {
+        "field_required": "Choisissez un champ.",
+        "field_invalid": "Champ invalide.",
+        "recorded_at_required": "Horodatage manquant.",
+        "recorded_at_invalid": "Horodatage invalide.",
+        "recorded_at_future": "Horodatage futur interdit."
+    },
+    "value": {
+        "yes": "Oui",
+        "no": "Non"
+    }
+}

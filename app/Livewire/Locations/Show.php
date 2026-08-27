@@ -37,6 +37,7 @@ use App\Models\QrLinkPhoto;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
 use App\Models\UnitCheckList;
+use App\Models\UnitMeasureField;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use App\Support\Units\ImportBatchRegistry;
@@ -122,6 +123,11 @@ class Show extends Component
     public bool $unitAllowReservations = false;
 
     public bool $unitAllowUnitChecks = false;
+
+    public bool $unitAllowUnitMeasurements = false;
+
+    /** @var array<int, int> */
+    public array $unitMeasureFieldIds = [];
 
     public bool $unitRequireReporterContact = false;
 
@@ -373,6 +379,8 @@ class Show extends Component
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = false;
         $this->unitAllowUnitChecks = false;
+        $this->unitAllowUnitMeasurements = false;
+        $this->unitMeasureFieldIds = [];
         $this->unitRequireReporterContact = false;
         $this->unitRequireReporterEmailVerification = false;
         $this->resetErrorBag();
@@ -394,6 +402,11 @@ class Show extends Component
         $this->unitPublicReportsEnabled = (bool) $unit->public_reports_enabled;
         $this->unitAllowReservations = (bool) $unit->allow_reservations;
         $this->unitAllowUnitChecks = (bool) $unit->allow_unit_checks;
+        $this->unitAllowUnitMeasurements = (bool) $unit->allow_unit_measurements;
+        $this->unitMeasureFieldIds = $unit->measureFields()
+            ->pluck('unit_measure_fields.id')
+            ->map(fn ($id) => (int) $id)
+            ->all();
         $this->unitRequireReporterContact = (bool) $unit->require_reporter_contact;
         $this->unitRequireReporterEmailVerification = (bool) $unit->require_reporter_email_verification;
         $this->unitPhotos = [];
@@ -417,6 +430,8 @@ class Show extends Component
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = false;
         $this->unitAllowUnitChecks = false;
+        $this->unitAllowUnitMeasurements = false;
+        $this->unitMeasureFieldIds = [];
         $this->unitRequireReporterContact = false;
         $this->unitRequireReporterEmailVerification = false;
         $this->unitPhotos = [];
@@ -509,6 +524,9 @@ class Show extends Component
             'unitPublicReportsEnabled' => $rules['public_reports_enabled'],
             'unitAllowReservations' => $rules['allow_reservations'],
             'unitAllowUnitChecks' => $rules['allow_unit_checks'],
+            'unitAllowUnitMeasurements' => $rules['allow_unit_measurements'],
+            'unitMeasureFieldIds' => $rules['measure_field_ids'],
+            'unitMeasureFieldIds.*' => $rules['measure_field_ids.*'],
             'unitRequireReporterContact' => $rules['require_reporter_contact'],
             'unitRequireReporterEmailVerification' => $rules['require_reporter_email_verification'],
             'unitPhotos' => ['nullable', 'array', 'max:'.$photoSlotsLeft],
@@ -533,6 +551,8 @@ class Show extends Component
             'public_reports_enabled' => (bool) $validated['unitPublicReportsEnabled'],
             'allow_reservations' => (bool) $validated['unitAllowReservations'],
             'allow_unit_checks' => (bool) $validated['unitAllowUnitChecks'],
+            'allow_unit_measurements' => (bool) $validated['unitAllowUnitMeasurements'],
+            'measure_field_ids' => array_map('intval', $validated['unitMeasureFieldIds'] ?? []),
             'require_reporter_contact' => (bool) $validated['unitRequireReporterContact'],
             'require_reporter_email_verification' => (bool) $validated['unitRequireReporterEmailVerification'],
             'original_language' => auth()->user()->locale ?? null,
@@ -1112,6 +1132,7 @@ class Show extends Component
             'teams' => $teams,
             'categories' => $categories,
             'unitCheckLists' => $unitCheckLists,
+            'availableMeasureFields' => UnitMeasureField::query()->where('is_active', true)->orderBy('name')->get(),
             'hasApiAccess' => (bool) $tenant?->hasApiAccess(),
             'hasEsgModule' => (bool) ($tenant?->has_esg_module),
             'unitIdsWithEsgMeasurements' => EsgMeasurement::query()

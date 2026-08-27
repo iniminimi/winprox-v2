@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\V1\TranslationController;
 use App\Http\Controllers\Api\V1\UnitController;
 use App\Http\Controllers\Api\V1\UnitGpsReportController;
 use App\Http\Controllers\Api\V1\UnitCheckController;
+use App\Http\Controllers\Api\V1\UnitMeasurementController;
 use App\Http\Controllers\Api\V1\ReservationController;
 use App\Http\Controllers\Api\V1\WorkerController;
 use App\Http\Controllers\Api\V1\WorkShiftController;
@@ -101,6 +102,9 @@ Route::prefix('v1')->group(function () {
             Route::post('units/{unit}/checks', [UnitCheckController::class, 'store'])
                 ->middleware([CheckTokenAbilities::class.':units:update'])
                 ->name('api.v1.units.checks.store');
+            Route::post('units/{unit}/measurements', [UnitMeasurementController::class, 'store'])
+                ->middleware([CheckTokenAbilities::class.':units:update'])
+                ->name('api.v1.units.measurements.store');
             Route::post('esg/measurements', [EsgMeasurementController::class, 'store'])
                 ->middleware([CheckTokenAbilities::class.':esg:create'])
                 ->name('api.v1.esg.measurements.store');
