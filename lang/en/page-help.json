@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Download report",
-                    "text": "Submenu CSV + Print: download filtered shifts as CSV (Excel-friendly) or open a printable timesheet in the same card layout as the list (Ctrl+P to PDF). Same filters as the overview; not only the current page (max. 5000 rows)."
+                    "text": "Submenu CSV + Print: download the filtered shifts as CSV (Excel-friendly) or open a printable timesheet (Ctrl+P to PDF). Same filters as the list; not only the current page (max. 5000 rows)."
                 },
                 {
                     "label": "Correct",

@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Descargar informe",
-                    "text": "Submenú CSV + Imprimir: descargue los turnos filtrados como CSV (compatible con Excel) o abra una hoja de horas imprimible con el mismo diseño de tarjetas que la lista (Ctrl+P a PDF). Mismos filtros que el resumen; no solo la página actual (máx. 5000 filas)."
+                    "text": "Submenú CSV + Imprimir: descargue los turnos filtrados como CSV (compatible con Excel) o abra una hoja de horas imprimible (Ctrl+P a PDF). Los mismos filtros que la lista; no solo la página actual (máx. 5000 filas)."
                 },
                 {
                     "label": "Corregir",

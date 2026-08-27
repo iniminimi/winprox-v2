@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Download rapport",
-                    "text": "Submenu CSV + Afdrukken: download de gefilterde shifts als CSV (Excel-vriendelijk) of open een afdrukbare urenstaat in dezelfde kaartlayout als de lijst (Ctrl+P naar PDF). Zelfde filters als het overzicht; niet alleen de huidige pagina (max. 5000 rijen)."
+                    "text": "Submenu CSV + Afdrukken: download de gefilterde shifts als CSV (Excel-vriendelijk) of open een afdrukbare urenstaat (Ctrl+P naar PDF). Zelfde filters als het overzicht; niet alleen de huidige pagina (max. 5000 rijen)."
                 },
                 {
                     "label": "Corrigeren",

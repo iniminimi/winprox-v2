@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Scarica rapporto",
-                    "text": "Sottomenu CSV + Stampa: scarica i turni filtrati come CSV (compatibile Excel) o apri un foglio ore stampabile con lo stesso layout a schede dell’elenco (Ctrl+P a PDF). Stessi filtri della panoramica; non solo la pagina corrente (max. 5000 righe)."
+                    "text": "Sottomenu CSV + Stampa: scarica i turni filtrati come CSV (compatibile Excel) oppure apri un foglio ore stampabile (Ctrl+P a PDF). Stessi filtri dell'elenco; non solo la pagina corrente (max. 5000 righe)."
                 },
                 {
                     "label": "Correggi",

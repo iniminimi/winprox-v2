@@ -98,7 +98,7 @@
             },
             {
                 "title": "Berichte",
-                "body": "Auf Suchbildschirmen (Meldungen, Aufgaben, Time, Unit-Checks, Unit-Messungen, ESG): Schaltfläche Bericht herunterladen — CSV (Tabelle für Excel) oder drucken (gleiche Kartenlayout wie die Backoffice-Liste; Strg+P zu PDF), mit denselben Filtern wie die Liste (max. 5000 Zeilen). Später: Organisation → Berichte für gespeicherte Vorlagen."
+                "body": "Auf Suchbildschirmen (Meldungen, Aufgaben, Time, Unit-Checks, Unit-Messungen, ESG): Bericht herunterladen — CSV (Tabelle für Excel) oder Drucken (Strg+P zu PDF). Der Druck folgt wo sinnvoll dem Kartenlayout der Backoffice-Liste; Time zeigt eine Stundenübersicht. Dieselben Filter wie die Liste (max. 5000 Zeilen). Später: Organisation → Berichte für gespeicherte Vorlagen."
             },
             {
                 "title": "Calendar",

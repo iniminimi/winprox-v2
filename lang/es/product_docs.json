@@ -98,7 +98,7 @@
             },
             {
                 "title": "Informes",
-                "body": "En pantallas de búsqueda (incidencias, tareas, Time, unit checks, mediciones de unit, ESG): botón Descargar informe — CSV (tabla para Excel) o imprimir (mismo diseño de tarjetas que la lista del backoffice; Ctrl+P a PDF), con los mismos filtros que la lista (máx. 5000 filas). Más adelante: Organización → Informes para plantillas guardadas."
+                "body": "En pantallas de búsqueda (incidencias, tareas, Time, unit checks, mediciones unit, ESG): Descargar informe — CSV (tabla para Excel) o imprimir (Ctrl+P a PDF). La impresión sigue cuando procede el diseño de tarjetas de la lista de backoffice; Time muestra una hoja de horas. Los mismos filtros que la lista (máx. 5000 filas). Más adelante: Organización → Informes para plantillas guardadas."
             },
             {
                 "title": "Calendar",

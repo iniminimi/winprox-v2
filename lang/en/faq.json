@@ -199,8 +199,8 @@
             "slug": "list_reports",
             "type": "text",
             "title": "What is Download report on search screens?",
-            "body": "On filtered search screens (Issues, Tasks, Time/shifts, Unit checks, Unit measurements, ESG measurements) the Download report button exports CSV (table for Excel) or Print (same card layout as the backoffice list; Ctrl+P to PDF). The export uses the same filters as the list, not only the current page (max. 5000 rows). Available to anyone who may view those lists. This is not a GDPR account export — that remains under Settings → Privacy & data export. Later: Organisation → Reports with saved templates.",
-            "summary": "Download report on search screens: filtered CSV or print (card layout); max. 5000 rows — distinct from GDPR export."
+            "body": "On filtered search screens (Issues, Tasks, Time/shifts, Unit checks, Unit measurements, ESG measurements) you find Download report. Choose CSV (table for Excel) or Print (Ctrl+P to PDF). Print follows the backoffice list card layout where possible; Time shows a timesheet. The export uses the same filters as the list, not only the current page (max. 5000 rows). Only for users who may view those lists. This is not the GDPR account export — that remains under Settings → Privacy & data export. Later: Organisation → Reports with saved templates.",
+            "summary": "Download report on search screens: filtered CSV or print; max. 5000 rows — separate from GDPR export."
         },
         "delete_account": {
             "slug": "delete_account",

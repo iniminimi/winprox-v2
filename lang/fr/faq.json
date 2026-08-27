@@ -194,9 +194,9 @@
         "list_reports": {
             "slug": "list_reports",
             "type": "text",
-            "title": "Qu’est-ce que Télécharger le rapport sur les écrans de recherche ?",
-            "body": "Sur les écrans de recherche filtrés (Signalements, Tâches, Time/heures, Contrôles unit, Mesures unit, Mesures ESG), le bouton Télécharger le rapport exporte en CSV (tableau pour Excel) ou Imprimer (même mise en page en cartes que la liste back-office ; Ctrl+P vers PDF). L’export utilise les mêmes filtres que la liste, pas seulement la page actuelle (max. 5000 lignes). Disponible pour qui peut voir ces listes. Ce n’est pas un export RGPD du compte — celui-ci reste sous Paramètres → Confidentialité & export. Plus tard : Organisation → Rapports avec modèles enregistrés.",
-            "summary": "Télécharger le rapport sur les écrans de recherche : CSV ou impression filtrés (cartes) ; max. 5000 lignes — distinct de l’export RGPD."
+            "title": "Qu'est-ce que Télécharger le rapport sur les écrans de recherche ?",
+            "body": "Sur les écrans de recherche filtrés (Signalements, Tâches, Time/heures, Contrôles unit, Mesures unit, Mesures ESG) se trouve Télécharger le rapport. Choisissez CSV (tableau pour Excel) ou Imprimer (Ctrl+P vers PDF). L'impression suit la mise en page cartes de la backoffice quand c'est pertinent ; Time affiche une feuille d'heures. L'export utilise les mêmes filtres que la liste, pas seulement la page actuelle (max. 5000 lignes). Réservé à ceux qui peuvent voir ces listes. Ce n'est pas l'export compte RGPD — celui-ci reste sous Paramètres → Confidentialité et export. Plus tard : Organisation → Rapports avec modèles enregistrés.",
+            "summary": "Télécharger le rapport sur les écrans de recherche : CSV ou impression filtrés ; max. 5000 lignes — distinct de l'export RGPD."
         },
         "delete_account": {
             "slug": "delete_account",

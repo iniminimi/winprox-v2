@@ -98,7 +98,7 @@
             },
             {
                 "title": "Rapporti",
-                "body": "Nelle schermate di ricerca (segnalazioni, attività, Time, unit check, misurazioni unit, ESG): pulsante Scarica rapporto — CSV (tabella per Excel) o stampa (stesso layout a schede dell’elenco backoffice; Ctrl+P a PDF), con gli stessi filtri dell’elenco (max. 5000 righe). Più avanti: Organizzazione → Rapporti per modelli salvati."
+                "body": "Nelle schermate di ricerca (segnalazioni, attività, Time, unit check, misurazioni unit, ESG): Scarica rapporto — CSV (tabella per Excel) o stampa (Ctrl+P a PDF). La stampa segue dove possibile il layout a schede dell'elenco backoffice; Time mostra un foglio ore. Stessi filtri dell'elenco (max. 5000 righe). Più avanti: Organizzazione → Rapporti per modelli salvati."
             },
             {
                 "title": "Calendar",

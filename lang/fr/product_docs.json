@@ -98,7 +98,7 @@
             },
             {
                 "title": "Rapports",
-                "body": "Sur les écrans de recherche (signalements, tâches, Time, contrôles unit, mesures unit, ESG) : bouton Télécharger le rapport — CSV (tableau pour Excel) ou imprimer (même mise en page en cartes que la liste back-office ; Ctrl+P vers PDF), avec les mêmes filtres que la liste (max. 5000 lignes). Plus tard : Organisation → Rapports pour des modèles enregistrés."
+                "body": "Sur les écrans de recherche (signalements, tâches, Time, contrôles unit, mesures unit, ESG) : Télécharger le rapport — CSV (tableau pour Excel) ou impression (Ctrl+P vers PDF). L'impression suit la mise en page cartes de la backoffice quand c'est pertinent ; Time affiche une feuille d'heures. Mêmes filtres que la liste (max. 5000 lignes). Plus tard : Organisation → Rapports pour des modèles enregistrés."
             },
             {
                 "title": "Calendar",
@@ -176,7 +176,7 @@
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Rapports opérationnels : CSV ou impression filtrés (même mise en page que la liste) pour signalements, tâches, Time, contrôles unit, mesures unit et ESG — pour qui peut voir ces listes. Distinct de l’export RGPD du compte (Paramètres → Confidentialité & export)."
+                    "Rapports opérationnels : CSV ou impression filtrés sur signalements, tâches, Time, contrôles unit, mesures unit et ESG — pour qui peut voir ces listes. L'impression suit la mise en page de la liste quand c'est pertinent ; Time = feuille d'heures. Distinct de l'export compte RGPD (Paramètres → Confidentialité et export)."
                 ]
             },
             {

@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Télécharger le rapport",
-                    "text": "Sous-menu CSV + Imprimer : téléchargez les shifts filtrés en CSV (compatible Excel) ou ouvrez une feuille de temps imprimable dans la même mise en page en cartes que la liste (Ctrl+P vers PDF). Mêmes filtres que l’aperçu ; pas seulement la page actuelle (max. 5000 lignes)."
+                    "text": "Sous-menu CSV + Imprimer : téléchargez les shifts filtrés en CSV (compatible Excel) ou ouvrez une feuille d'heures imprimable (Ctrl+P vers PDF). Mêmes filtres que la liste ; pas seulement la page actuelle (max. 5000 lignes)."
                 },
                 {
                     "label": "Corriger",

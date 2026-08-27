@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Bericht herunterladen",
-                    "text": "Untermenü CSV + Drucken: laden Sie gefilterte Schichten als CSV herunter (Excel-freundlich) oder öffnen Sie einen druckbaren Stundenzettel im gleichen Kartenlayout wie die Liste (Strg+P zu PDF). Dieselben Filter wie die Übersicht; nicht nur die aktuelle Seite (max. 5000 Zeilen)."
+                    "text": "Untermenü CSV + Drucken: laden Sie die gefilterten Schichten als CSV herunter (Excel-freundlich) oder öffnen Sie eine druckbare Stundenübersicht (Strg+P zu PDF). Dieselben Filter wie die Liste; nicht nur die aktuelle Seite (max. 5000 Zeilen)."
                 },
                 {
                     "label": "Korrigieren",
