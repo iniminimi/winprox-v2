@@ -251,6 +251,66 @@ it('toont vertaalde omschrijving op meldingdetail bij gekozen taal', function ()
         ->assertDontSee(__('issues.show.description_not_translated', [], 'nl'));
 });
 
+it('accepteert gelijke vertaling als voltooide meldingvertaling', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    app()->instance(TranslationProviderInterface::class, new class implements TranslationProviderInterface
+    {
+        public function translate(string $text, string $targetLanguage): string
+        {
+            return $text;
+        }
+    });
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'description' => 'CO₂ sensor',
+        'original_language' => 'nl',
+        'approved_at' => now(),
+        'approved_by' => $user->id,
+    ]);
+
+    IssueTranslation::query()->create([
+        'issue_id' => $issue->id,
+        'locale' => 'en',
+        'status' => IssueTranslationStatus::Pending,
+        'description' => null,
+    ]);
+
+    $row = app(TranslateIssueAction::class)->handle($issue, 'en', $user->id);
+
+    expect($row->status)->toBe(IssueTranslationStatus::Completed)
+        ->and($row->description)->toBe('CO₂ sensor')
+        ->and($issue->fresh()->descriptionForDisplayLocale('en'))->toBe('CO₂ sensor');
+});
+
+it('zet mislukte meldingvertalingen terug op pending voor een nieuwe run', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'description' => 'Kraan lekt',
+        'original_language' => 'nl',
+        'approved_at' => now(),
+    ]);
+
+    $row = IssueTranslation::query()->create([
+        'issue_id' => $issue->id,
+        'locale' => 'en',
+        'status' => IssueTranslationStatus::Failed,
+        'description' => 'Kraan lekt',
+    ]);
+
+    $result = app(\App\Actions\Communication\RequeueFailedDescriptionTranslationsAction::class)->handle();
+
+    expect($result['issues'])->toBe(1)
+        ->and($row->fresh()->status)->toBe(IssueTranslationStatus::Pending)
+        ->and($row->fresh()->description)->toBeNull();
+});
+
 it('toont geen taalkiezer op ongekeurde meldingdetail', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

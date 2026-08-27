@@ -16,7 +16,7 @@ class EnsureIssueTranslationSlotsAction
         }
 
         foreach (LocaleSupport::targetLocalesFor($issue) as $locale) {
-            IssueTranslation::firstOrCreate(
+            $row = IssueTranslation::firstOrCreate(
                 [
                     'issue_id' => $issue->id,
                     'locale' => $locale,
@@ -25,6 +25,16 @@ class EnsureIssueTranslationSlotsAction
                     'status' => IssueTranslationStatus::Pending,
                 ],
             );
+
+            // Self-heal failed rows so local translate runs can retry.
+            if (
+                $row->status === IssueTranslationStatus::Failed
+                && blank($row->description)
+            ) {
+                $row->fill([
+                    'status' => IssueTranslationStatus::Pending,
+                ])->save();
+            }
         }
     }
 }

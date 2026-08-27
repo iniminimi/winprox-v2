@@ -7,6 +7,7 @@ use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
 use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
 use App\Actions\Communication\BackfillUnitCheckListTranslationSlotsAction;
 use App\Actions\Communication\InvalidateUnusableContentTranslationsAction;
+use App\Actions\Communication\RequeueFailedDescriptionTranslationsAction;
 use App\Actions\Communication\RunPendingCategoryTranslationsAction;
 use App\Actions\Communication\RunPendingDocumentTranslationsAction;
 use App\Actions\Communication\RunPendingEsgIndicatorTranslationsAction;
@@ -49,6 +50,7 @@ class TranslateLocalAllCommand extends Command
         BackfillInternalTeamTranslationSlotsAction $backfillTeams,
         BackfillUnitCheckListTranslationSlotsAction $backfillUnitCheckLists,
         InvalidateUnusableContentTranslationsAction $invalidateUnusable,
+        RequeueFailedDescriptionTranslationsAction $requeueFailed,
         RunPendingIssueTranslationsAction $runIssues,
         RunPendingTaskTranslationsAction $runTasks,
         RunPendingAnnouncementTranslationsAction $runAnnouncements,
@@ -76,6 +78,7 @@ class TranslateLocalAllCommand extends Command
         $teamBackfill = $backfillTeams->handle();
         $checkListBackfill = $backfillUnitCheckLists->handle();
         $junk = $invalidateUnusable->handle();
+        $requeued = $requeueFailed->handle();
         $this->line(
             "Backfill done: categories {$categoryBackfill['categories']} (+{$categoryBackfill['slots_created']} slots), "
             ."teams {$teamBackfill['teams']} (+{$teamBackfill['slots_created']} slots), "
@@ -83,6 +86,13 @@ class TranslateLocalAllCommand extends Command
         );
         if ($junk['invalidated'] > 0) {
             $this->warn("Re-queued {$junk['invalidated']} unusable completed translation(s) as pending.");
+        }
+        if ($requeued['total'] > 0) {
+            $this->warn(
+                "Re-queued {$requeued['total']} failed description translation(s) as pending "
+                ."(issues {$requeued['issues']}, tasks {$requeued['tasks']}, "
+                ."announcements {$requeued['announcements']}, documents {$requeued['documents']})."
+            );
         }
 
         $totals = [

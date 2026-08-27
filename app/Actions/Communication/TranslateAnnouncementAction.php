@@ -8,6 +8,7 @@ use App\Models\AnnouncementTranslation;
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Translation\TranslationOutputGuard;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Validation\ValidationException;
 
@@ -48,38 +49,21 @@ class TranslateAnnouncementAction
 
         $sourceText = trim((string) $announcement->description);
         $translated = trim($this->translator->translate($sourceText, $targetLocale));
-        $stored = $translated !== '' ? $translated : $sourceText;
 
-        if (mb_strlen($stored) > TextDescriptionLimits::TRANSLATION_MAX) {
-            $row->fill([
-                'description' => null,
-                'status' => AnnouncementTranslationStatus::Failed,
-            ])->save();
-
-            $this->audit->record(
-                $actorUserId,
-                (int) $announcement->tenant_id,
-                'announcement.translation_stored',
-                AnnouncementTranslation::class,
-                (int) $row->id,
-                [
-                    'announcement_id' => $announcement->id,
-                    'locale' => $targetLocale,
-                    'status' => AnnouncementTranslationStatus::Failed->value,
-                    'reason' => 'translation_too_long',
-                ],
-            );
-
-            return $row->fresh();
+        if (
+            $translated === ''
+            || TranslationOutputGuard::isUnusable($translated, $sourceText)
+        ) {
+            return $this->storeFailed($row, $announcement, $targetLocale, $actorUserId, 'translation_empty_or_unusable');
         }
 
-        $status = ($translated !== '' && $translated !== $sourceText)
-            ? AnnouncementTranslationStatus::Completed
-            : AnnouncementTranslationStatus::Failed;
+        if (mb_strlen($translated) > TextDescriptionLimits::TRANSLATION_MAX) {
+            return $this->storeFailed($row, $announcement, $targetLocale, $actorUserId, 'translation_too_long');
+        }
 
         $row->fill([
-            'description' => $stored,
-            'status' => $status,
+            'description' => $translated,
+            'status' => AnnouncementTranslationStatus::Completed,
         ])->save();
 
         $this->audit->record(
@@ -91,7 +75,36 @@ class TranslateAnnouncementAction
             [
                 'announcement_id' => $announcement->id,
                 'locale' => $targetLocale,
-                'status' => $status->value,
+                'status' => AnnouncementTranslationStatus::Completed->value,
+            ],
+        );
+
+        return $row->fresh();
+    }
+
+    private function storeFailed(
+        AnnouncementTranslation $row,
+        Announcement $announcement,
+        string $targetLocale,
+        ?int $actorUserId,
+        string $reason,
+    ): AnnouncementTranslation {
+        $row->fill([
+            'description' => null,
+            'status' => AnnouncementTranslationStatus::Failed,
+        ])->save();
+
+        $this->audit->record(
+            $actorUserId,
+            (int) $announcement->tenant_id,
+            'announcement.translation_stored',
+            AnnouncementTranslation::class,
+            (int) $row->id,
+            [
+                'announcement_id' => $announcement->id,
+                'locale' => $targetLocale,
+                'status' => AnnouncementTranslationStatus::Failed->value,
+                'reason' => $reason,
             ],
         );
 

@@ -8,6 +8,7 @@ use App\Models\TaskTranslation;
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Translation\TranslationOutputGuard;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Validation\ValidationException;
 
@@ -49,38 +50,21 @@ class TranslateTaskAction
         }
 
         $translated = trim($this->translator->translate($sourceText, $targetLocale));
-        $stored = $translated !== '' ? $translated : $sourceText;
 
-        if (mb_strlen($stored) > TextDescriptionLimits::TRANSLATION_MAX) {
-            $row->fill([
-                'description' => null,
-                'status' => TaskTranslationStatus::Failed,
-            ])->save();
-
-            $this->audit->record(
-                $actorUserId,
-                (int) $task->tenant_id,
-                'task.translation_stored',
-                TaskTranslation::class,
-                (int) $row->id,
-                [
-                    'task_id' => $task->id,
-                    'locale' => $targetLocale,
-                    'status' => TaskTranslationStatus::Failed->value,
-                    'reason' => 'translation_too_long',
-                ],
-            );
-
-            return $row->fresh();
+        if (
+            $translated === ''
+            || TranslationOutputGuard::isUnusable($translated, $sourceText)
+        ) {
+            return $this->storeFailed($row, $task, $targetLocale, $actorUserId, 'translation_empty_or_unusable');
         }
 
-        $status = ($translated !== '' && $translated !== $sourceText)
-            ? TaskTranslationStatus::Completed
-            : TaskTranslationStatus::Failed;
+        if (mb_strlen($translated) > TextDescriptionLimits::TRANSLATION_MAX) {
+            return $this->storeFailed($row, $task, $targetLocale, $actorUserId, 'translation_too_long');
+        }
 
         $row->fill([
-            'description' => $stored,
-            'status' => $status,
+            'description' => $translated,
+            'status' => TaskTranslationStatus::Completed,
         ])->save();
 
         $this->audit->record(
@@ -92,7 +76,36 @@ class TranslateTaskAction
             [
                 'task_id' => $task->id,
                 'locale' => $targetLocale,
-                'status' => $status->value,
+                'status' => TaskTranslationStatus::Completed->value,
+            ],
+        );
+
+        return $row->fresh();
+    }
+
+    private function storeFailed(
+        TaskTranslation $row,
+        Task $task,
+        string $targetLocale,
+        ?int $actorUserId,
+        string $reason,
+    ): TaskTranslation {
+        $row->fill([
+            'description' => null,
+            'status' => TaskTranslationStatus::Failed,
+        ])->save();
+
+        $this->audit->record(
+            $actorUserId,
+            (int) $task->tenant_id,
+            'task.translation_stored',
+            TaskTranslation::class,
+            (int) $row->id,
+            [
+                'task_id' => $task->id,
+                'locale' => $targetLocale,
+                'status' => TaskTranslationStatus::Failed->value,
+                'reason' => $reason,
             ],
         );
 

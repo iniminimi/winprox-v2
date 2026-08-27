@@ -8,6 +8,7 @@ use App\Models\IssueTranslation;
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Translation\TranslationOutputGuard;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Validation\ValidationException;
 
@@ -48,38 +49,22 @@ class TranslateIssueAction
 
         $sourceText = trim((string) $issue->description);
         $translated = trim($this->translator->translate($sourceText, $targetLocale));
-        $stored = $translated !== '' ? $translated : $sourceText;
 
-        if (mb_strlen($stored) > TextDescriptionLimits::TRANSLATION_MAX) {
-            $row->fill([
-                'description' => null,
-                'status' => IssueTranslationStatus::Failed,
-            ])->save();
-
-            $this->audit->record(
-                $actorUserId,
-                (int) $issue->tenant_id,
-                'issue.translation_stored',
-                IssueTranslation::class,
-                (int) $row->id,
-                [
-                    'issue_id' => $issue->id,
-                    'locale' => $targetLocale,
-                    'status' => IssueTranslationStatus::Failed->value,
-                    'reason' => 'translation_too_long',
-                ],
-            );
-
-            return $row->fresh();
+        if (
+            $translated === ''
+            || TranslationOutputGuard::isUnusable($translated, $sourceText)
+        ) {
+            return $this->storeFailed($row, $issue, $targetLocale, $actorUserId, 'translation_empty_or_unusable');
         }
 
-        $status = ($translated !== '' && $translated !== $sourceText)
-            ? IssueTranslationStatus::Completed
-            : IssueTranslationStatus::Failed;
+        if (mb_strlen($translated) > TextDescriptionLimits::TRANSLATION_MAX) {
+            return $this->storeFailed($row, $issue, $targetLocale, $actorUserId, 'translation_too_long');
+        }
 
+        // Identical to source is allowed (brand names, already-target text, provider echo).
         $row->fill([
-            'description' => $stored,
-            'status' => $status,
+            'description' => $translated,
+            'status' => IssueTranslationStatus::Completed,
         ])->save();
 
         $this->audit->record(
@@ -91,7 +76,36 @@ class TranslateIssueAction
             [
                 'issue_id' => $issue->id,
                 'locale' => $targetLocale,
-                'status' => $status->value,
+                'status' => IssueTranslationStatus::Completed->value,
+            ],
+        );
+
+        return $row->fresh();
+    }
+
+    private function storeFailed(
+        IssueTranslation $row,
+        Issue $issue,
+        string $targetLocale,
+        ?int $actorUserId,
+        string $reason,
+    ): IssueTranslation {
+        $row->fill([
+            'description' => null,
+            'status' => IssueTranslationStatus::Failed,
+        ])->save();
+
+        $this->audit->record(
+            $actorUserId,
+            (int) $issue->tenant_id,
+            'issue.translation_stored',
+            IssueTranslation::class,
+            (int) $row->id,
+            [
+                'issue_id' => $issue->id,
+                'locale' => $targetLocale,
+                'status' => IssueTranslationStatus::Failed->value,
+                'reason' => $reason,
             ],
         );
 
