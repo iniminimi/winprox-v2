@@ -52,8 +52,14 @@
         "recorded_at": "Mesuré le",
         "indicator": "Indicateur",
         "value": "Valeur",
-        "task_id": "Tâche"
+        "task_id": "Tâche",
+        "field": "Champ"
     },
     "yes": "Oui",
-    "no": "Non"
+    "no": "Non",
+    "unit_measurements": {
+        "title": "Mesures unit — rapport",
+        "document_title": "Mesures unit — WinProx",
+        "filename": "mesures-unit"
+    }
 }

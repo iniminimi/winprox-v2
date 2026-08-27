@@ -52,8 +52,14 @@
         "recorded_at": "Medido el",
         "indicator": "Indicador",
         "value": "Valor",
-        "task_id": "Tarea"
+        "task_id": "Tarea",
+        "field": "Campo"
     },
     "yes": "Sí",
-    "no": "No"
+    "no": "No",
+    "unit_measurements": {
+        "title": "Mediciones unit — informe",
+        "document_title": "Mediciones unit — WinProx",
+        "filename": "mediciones-unit"
+    }
 }

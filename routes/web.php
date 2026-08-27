@@ -37,6 +37,8 @@ use App\Http\Controllers\Tasks\TaskPrintController;
 use App\Http\Controllers\UiThemeController;
 use App\Http\Controllers\UnitChecks\UnitCheckExportController;
 use App\Http\Controllers\UnitChecks\UnitCheckPrintController;
+use App\Http\Controllers\UnitMeasurements\UnitMeasurementExportController;
+use App\Http\Controllers\UnitMeasurements\UnitMeasurementPrintController;
 use App\Http\Controllers\UserDataExportController;
 use App\Http\Controllers\WelcomeController;
 use App\Livewire\Auth\ForgotPassword;
@@ -360,6 +362,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/unit-checks/export', UnitCheckExportController::class)->name('unit-checks.export');
         Route::get('/unit-checks/print', UnitCheckPrintController::class)->name('unit-checks.print');
         Route::get('/unit-measurements', UnitMeasurementsIndex::class)->name('unit-measurements.index');
+        Route::get('/unit-measurements/export', UnitMeasurementExportController::class)->name('unit-measurements.export');
+        Route::get('/unit-measurements/print', UnitMeasurementPrintController::class)->name('unit-measurements.print');
         Route::get('/unit-measurements/fields', fn () => redirect()->route('unit-measurements.index'))
             ->name('unit-measurements.fields.index');
         Route::get('/unit-measurements/history', fn () => redirect()->route('unit-measurements.index'))

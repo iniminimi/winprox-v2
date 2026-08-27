@@ -52,8 +52,14 @@
         "recorded_at": "Recorded at",
         "indicator": "Indicator",
         "value": "Value",
-        "task_id": "Task"
+        "task_id": "Task",
+        "field": "Field"
     },
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "unit_measurements": {
+        "title": "Unit measurements — report",
+        "document_title": "Unit measurements — WinProx",
+        "filename": "unit-measurements"
+    }
 }

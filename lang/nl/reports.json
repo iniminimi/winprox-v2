@@ -52,8 +52,14 @@
         "recorded_at": "Gemeten op",
         "indicator": "Indicator",
         "value": "Waarde",
-        "task_id": "Taak"
+        "task_id": "Taak",
+        "field": "Veld"
     },
     "yes": "Ja",
-    "no": "Nee"
+    "no": "Nee",
+    "unit_measurements": {
+        "title": "Unitmetingen — rapport",
+        "document_title": "Unitmetingen — WinProx",
+        "filename": "unitmetingen"
+    }
 }

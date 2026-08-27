@@ -97,6 +97,7 @@
 
                 <div class="wp-filter-form__actions">
                     <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('unit_measurements.filter.apply') }}</button>
+                    <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
                     @if ($hasFilters)
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('unit_measurements.filter.reset') }}</button>
                     @endif

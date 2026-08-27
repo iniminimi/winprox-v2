@@ -452,6 +452,8 @@ zonder ESG. Los van unit checks.
 ### Beheer
 - **Beheer** (`/unit-measurements`): pagina Unitmetingen — uitvouwbare Meetvelden + zoekfilters + resultaten.
   Meetvelden: naam, type, eenheid/min/max/opties; actief/inactief.
+- **Download rapport** (`x-wp-list-export`): CSV + afdrukken (kaartlayout) van de gefilterde
+  historiek — zie §Rapporten.
 - **Aan/uit:** Plaatsen → Categorieën (`allow_unit_measurements`) én unit bewerken
   (`allow_unit_measurements` + gekoppelde meetvelden).
 
@@ -733,9 +735,9 @@ sector-suffixes, marketing-query-params. Property→Location.
 - Zelfde filters als de lijst; export = alle matching rijen tot harde limiet (5000), niet alleen de
   zichtbare pagina/groepslimiet.
 - Datasets: **Meldingen** (incl. inspectierondes-filter), **Taken**, **Time/uren**, **Unit checks**,
-  **ESG-metingen** (alleen met ESG-module / Policy).
+  **Unitmetingen**, **ESG-metingen** (alleen met ESG-module / Policy).
 - Architectuur: filter-DTO → **Export*Action** (tenant + actor-vrij; geen HTTP in Action) → dunne
-  CSV/print-controller + Policy `viewAny`. Gedeelde print-tabelview.
+  CSV/print-controller + Policy `viewAny`. Print = backoffice-kaartlayout; CSV = data-tabel.
 - **Geen** server-Excel/Word/PDF-libraries in fase 1.
 
 ### Fase 2 (later) — Organisatie → Rapporten

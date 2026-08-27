@@ -52,8 +52,14 @@
         "recorded_at": "Rilevato il",
         "indicator": "Indicatore",
         "value": "Valore",
-        "task_id": "Attività"
+        "task_id": "Attività",
+        "field": "Campo"
     },
     "yes": "Sì",
-    "no": "No"
+    "no": "No",
+    "unit_measurements": {
+        "title": "Misurazioni unit — rapporto",
+        "document_title": "Misurazioni unit — WinProx",
+        "filename": "misurazioni-unit"
+    }
 }

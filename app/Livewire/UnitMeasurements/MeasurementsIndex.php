@@ -258,6 +258,16 @@ class MeasurementsIndex extends Component
             'filterFields' => $measureFields,
             'hasFilters' => $hasFilters,
             'total' => $total,
+            'exportUrl' => route('unit-measurements.export', array_filter([
+                'location' => $this->locationFilter !== '' ? $this->locationFilter : null,
+                'field' => $this->fieldFilter !== '' ? $this->fieldFilter : null,
+                'q' => trim($this->search) !== '' ? trim($this->search) : null,
+            ])),
+            'printUrl' => route('unit-measurements.print', array_filter([
+                'location' => $this->locationFilter !== '' ? $this->locationFilter : null,
+                'field' => $this->fieldFilter !== '' ? $this->fieldFilter : null,
+                'q' => trim($this->search) !== '' ? trim($this->search) : null,
+            ])),
         ]);
     }
 
