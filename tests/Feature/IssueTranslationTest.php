@@ -170,6 +170,60 @@ it('toont taalkiezer op meldingdetail met placeholder bij ontbrekende vertaling'
         ->assertSee(__('issues.show.description_not_translated', [], 'nl'));
 });
 
+it('opent meldingdetail in UI-taal alleen als die vertaling klaar is', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en']);
+    Tenancy::actAs($tenant->id);
+    app()->setLocale('en');
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'description' => 'Kraan lekt',
+        'original_language' => 'nl',
+        'approved_at' => now(),
+        'approved_by' => $user->id,
+    ]);
+
+    IssueTranslation::query()->create([
+        'issue_id' => $issue->id,
+        'locale' => 'en',
+        'status' => IssueTranslationStatus::Pending,
+        'description' => null,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(IssueShow::class, ['issue' => $issue])
+        ->assertSet('descriptionLocale', 'nl')
+        ->assertSeeHtml('>Kraan lekt</span>');
+});
+
+it('opent meldingdetail in UI-taal wanneer die vertaling voltooid is', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en']);
+    Tenancy::actAs($tenant->id);
+    app()->setLocale('en');
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'description' => 'Kraan lekt',
+        'original_language' => 'nl',
+        'approved_at' => now(),
+        'approved_by' => $user->id,
+    ]);
+
+    IssueTranslation::query()->create([
+        'issue_id' => $issue->id,
+        'locale' => 'en',
+        'status' => IssueTranslationStatus::Completed,
+        'description' => 'Faucet is leaking',
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(IssueShow::class, ['issue' => $issue])
+        ->assertSet('descriptionLocale', 'en')
+        ->assertSee('Faucet is leaking');
+});
+
 it('toont vertaalde omschrijving op meldingdetail bij gekozen taal', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

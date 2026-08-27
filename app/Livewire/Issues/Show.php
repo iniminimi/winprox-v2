@@ -88,7 +88,8 @@ class Show extends Component
         $this->issue = $issue->is_recurring
             ? $pruneRoundStops->handleForIssue($issue)
             : $issue;
-        $this->descriptionLocale = LocaleSupport::normalize(app()->getLocale());
+        $this->issue->loadMissing('translations');
+        $this->descriptionLocale = $this->defaultDescriptionLocale($this->issue);
         $this->round_stop_unit_ids = $this->issue->roundStops()
             ->orderBy('sort_order')
             ->pluck('unit_id')
@@ -581,6 +582,19 @@ class Show extends Component
             ->first(fn ($row) => $row->locale === $locale);
 
         $this->taskTranslationDescription = (string) ($translation?->description ?? '');
+    }
+
+    private function defaultDescriptionLocale(Issue $issue): string
+    {
+        $preferred = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+
+        // Prefer UI/user language when source or a completed translation exists.
+        // Otherwise keep the source language so the detail never opens on «Not translated yet».
+        if ($issue->hasCompletedTranslationFor($preferred)) {
+            return $preferred;
+        }
+
+        return $issue->normalizedOriginalLanguage();
     }
 
     private function defaultTranslationLocaleForTask(Task $task): string
