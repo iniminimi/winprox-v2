@@ -1357,44 +1357,77 @@
             ]
         },
         "unit-measurements.fields": {
-            "title": "Ayuda — Campos de medición",
+            "title": "Ayuda — Mediciones de unidad",
             "actions": [
                 {
-                    "label": "¿Qué es un campo?",
-                    "text": "Un campo define qué registra en unidades: nombre, tipo (número, sí/no, texto o elección), unidad opcional (km, °C, L…) y mín/máx. Reutilice campos en varias unidades."
+                    "label": "Resumen",
+                    "text": "En Trabajo → Mediciones de unidad gestione campos (desplegable arriba) y busque lecturas con filtros."
                 },
                 {
-                    "label": "Crear",
-                    "text": "Vaya a Trabajo → Mediciones de unidad → Campos. Añada un campo, elija el tipo y, en números, la unidad. Los de elección necesitan opciones."
+                    "label": "Campos de medición",
+                    "text": "Abra Campos de medición para ver o añadir: nombre, tipo, unidad y min/máx opcionales. Solo campos activos se vinculan a units."
                 },
                 {
-                    "label": "Activar",
-                    "text": "Solo los campos activos se pueden vincular y rellenar por portal o API. Desactivar conserva el historial."
+                    "label": "Buscar",
+                    "text": "Filtre por campo y ubicación o busque por campo, unit, ubicación o valor. Pulse GO!."
                 },
                 {
-                    "label": "Vincular a unidades",
-                    "text": "Active Permitir mediciones en categoría y unidad; al editar la unidad, elija los campos."
+                    "label": "Vincular a units",
+                    "text": "Active Permitir mediciones en categoría y unit, luego elija los campos."
+                },
+                {
+                    "label": "Portal y API",
+                    "text": "QR de unit: ficha Medición si está permitido. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
                 }
             ]
         },
         "unit-measurements.history": {
-            "title": "Ayuda — Historial de mediciones",
+            "title": "Ayuda — Mediciones de unidad",
             "actions": [
                 {
                     "label": "Resumen",
-                    "text": "Todas las mediciones: hora, campo, valor, ubicación/unidad, origen (portal, API o admin) y ejecutor opcional."
+                    "text": "En Trabajo → Mediciones de unidad gestione campos (desplegable arriba) y busque lecturas con filtros."
                 },
                 {
-                    "label": "Filtros",
-                    "text": "Filtre por campo y ubicación."
+                    "label": "Campos de medición",
+                    "text": "Abra Campos de medición para ver o añadir: nombre, tipo, unidad y min/máx opcionales. Solo campos activos se vinculan a units."
                 },
                 {
-                    "label": "Portal",
-                    "text": "En el QR de unidad: ficha Medición si categoría y unidad permiten mediciones y hay campos vinculados. No hace falta Clock Point."
+                    "label": "Buscar",
+                    "text": "Filtre por campo y ubicación o busque por campo, unit, ubicación o valor. Pulse GO!."
                 },
                 {
-                    "label": "API y webhooks",
-                    "text": "POST /api/v1/units/{unit}/measurements (units:update). Cada medición dispara unit.measurement.recorded."
+                    "label": "Vincular a units",
+                    "text": "Active Permitir mediciones en categoría y unit, luego elija los campos."
+                },
+                {
+                    "label": "Portal y API",
+                    "text": "QR de unit: ficha Medición si está permitido. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                }
+            ]
+        },
+        "unit-measurements.index": {
+            "title": "Ayuda — Mediciones de unidad",
+            "actions": [
+                {
+                    "label": "Resumen",
+                    "text": "En Trabajo → Mediciones de unidad gestione campos (desplegable arriba) y busque lecturas con filtros."
+                },
+                {
+                    "label": "Campos de medición",
+                    "text": "Abra Campos de medición para ver o añadir: nombre, tipo, unidad y min/máx opcionales. Solo campos activos se vinculan a units."
+                },
+                {
+                    "label": "Buscar",
+                    "text": "Filtre por campo y ubicación o busque por campo, unit, ubicación o valor. Pulse GO!."
+                },
+                {
+                    "label": "Vincular a units",
+                    "text": "Active Permitir mediciones en categoría y unit, luego elija los campos."
+                },
+                {
+                    "label": "Portal y API",
+                    "text": "QR de unit: ficha Medición si está permitido. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
                 }
             ]
         }

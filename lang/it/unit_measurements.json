@@ -1,9 +1,4 @@
 {
-    "subnav": {
-        "label": "Misurazioni unit",
-        "fields": "Campi",
-        "history": "Cronologia"
-    },
     "fields": {
         "title": "Campi di misura",
         "subtitle": "Definisci cosa vuoi misurare sulle unit (km, temperatura, stato, …).",
@@ -21,7 +16,9 @@
             "max_value": "Massimo",
             "options": "Opzioni",
             "add_option": "Aggiungi opzione"
-        }
+        },
+        "section_title": "Campi di misura",
+        "section_subtitle": "Definisci cosa vuoi misurare sulle unit (km, temperatura, stato, …)."
     },
     "history": {
         "title": "Misurazioni",
@@ -32,8 +29,8 @@
         "filters": {
             "field": "Campo",
             "all_fields": "Tutti i campi",
-            "location": "Sede",
-            "all_locations": "Tutte le sedi"
+            "location": "Posizione",
+            "all_locations": "Tutte le posizioni"
         }
     },
     "types": {
@@ -83,5 +80,21 @@
     "value": {
         "yes": "Sì",
         "no": "No"
+    },
+    "list": {
+        "title": "Misurazioni unità",
+        "subtitle": "Letture sulle unit via QR o API.",
+        "results_title": "Risultati"
+    },
+    "filter": {
+        "field": "Campo",
+        "all_fields": "Tutti i campi",
+        "location": "Posizione",
+        "all_locations": "Tutte le posizioni",
+        "search": "Cerca",
+        "search_placeholder": "Cerca per campo, unit, posizione o valore…",
+        "apply": "GO!",
+        "reset": "Cancella filtri",
+        "hint": "Scegli i filtri e clicca GO! per cercare."
     }
 }

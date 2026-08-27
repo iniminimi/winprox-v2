@@ -1,9 +1,4 @@
 {
-    "subnav": {
-        "label": "Unitmetingen",
-        "fields": "Velden",
-        "history": "Historiek"
-    },
     "fields": {
         "title": "Meetvelden",
         "subtitle": "Definieer wat je op units wilt meten (km, temperatuur, status, …).",
@@ -21,7 +16,9 @@
             "max_value": "Maximum",
             "options": "Keuzeopties",
             "add_option": "Optie toevoegen"
-        }
+        },
+        "section_title": "Meetvelden",
+        "section_subtitle": "Definieer wat je op units wilt meten (km, temperatuur, status, …)."
     },
     "history": {
         "title": "Metingen",
@@ -30,8 +27,8 @@
         "empty": "Nog geen metingen.",
         "reporter_unknown": "Onbekend",
         "filters": {
-            "field": "Veld",
-            "all_fields": "Alle velden",
+            "field": "Meetveld",
+            "all_fields": "Alle meetvelden",
             "location": "Locatie",
             "all_locations": "Alle locaties"
         }
@@ -83,5 +80,21 @@
     "value": {
         "yes": "Ja",
         "no": "Nee"
+    },
+    "list": {
+        "title": "Unitmetingen",
+        "subtitle": "Meetwaarden op units via QR of API.",
+        "results_title": "Resultaten"
+    },
+    "filter": {
+        "field": "Meetveld",
+        "all_fields": "Alle meetvelden",
+        "location": "Locatie",
+        "all_locations": "Alle locaties",
+        "search": "Zoeken",
+        "search_placeholder": "Zoek op veld, unit, locatie of waarde…",
+        "apply": "GO!",
+        "reset": "Filters wissen",
+        "hint": "Kies filters en klik GO! om te zoeken."
     }
 }

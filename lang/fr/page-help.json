@@ -1357,44 +1357,77 @@
             ]
         },
         "unit-measurements.fields": {
-            "title": "Aide — Champs de mesure",
+            "title": "Aide — Mesures d’unité",
             "actions": [
                 {
-                    "label": "Qu’est-ce qu’un champ ?",
-                    "text": "Un champ définit ce que vous enregistrez sur les unités : nom, type (nombre, oui/non, texte ou choix), unité optionnelle (km, °C, L…) et min/max. Réutilisez les champs sur plusieurs unités."
+                    "label": "Aperçu",
+                    "text": "Sous Travail → Mesures d’unité, gérez les champs (section déroulante en haut) et recherchez les relevés avec des filtres."
                 },
                 {
-                    "label": "Créer",
-                    "text": "Allez dans Travail → Mesures d’unité → Champs. Ajoutez un champ, choisissez le type et pour les nombres indiquez l’unité. Les choix ont des options."
+                    "label": "Champs de mesure",
+                    "text": "Ouvrez Champs de mesure pour voir ou ajouter des champs : nom, type, unité et min/max optionnels. Seuls les champs actifs se lient aux units."
                 },
                 {
-                    "label": "Activer",
-                    "text": "Seuls les champs actifs peuvent être liés et saisis via le portail ou l’API. La désactivation conserve l’historique."
+                    "label": "Recherche",
+                    "text": "Filtrez par champ et lieu ou cherchez par champ, unit, lieu ou valeur. Cliquez sur GO!."
                 },
                 {
-                    "label": "Lier aux unités",
-                    "text": "Activez Autoriser les mesures sur la catégorie et l’unité, puis sélectionnez les champs lors de l’édition de l’unité."
+                    "label": "Lier aux units",
+                    "text": "Activez Autoriser les mesures sur la catégorie et l’unit, puis choisissez les champs liés."
+                },
+                {
+                    "label": "Portail & API",
+                    "text": "QR unit : tuile Mesure si catégorie et unit l’autorisent. API : POST /api/v1/units/{unit}/measurements. Webhook : unit.measurement.recorded."
                 }
             ]
         },
         "unit-measurements.history": {
-            "title": "Aide — Historique des mesures",
+            "title": "Aide — Mesures d’unité",
             "actions": [
                 {
                     "label": "Aperçu",
-                    "text": "Toutes les mesures d’unité : horaire, champ, valeur, lieu/unité, source (portail, API ou admin) et exécutant optionnel."
+                    "text": "Sous Travail → Mesures d’unité, gérez les champs (section déroulante en haut) et recherchez les relevés avec des filtres."
                 },
                 {
-                    "label": "Filtres",
-                    "text": "Filtrez par champ et lieu pour trouver rapidement les lignes."
+                    "label": "Champs de mesure",
+                    "text": "Ouvrez Champs de mesure pour voir ou ajouter des champs : nom, type, unité et min/max optionnels. Seuls les champs actifs se lient aux units."
                 },
                 {
-                    "label": "Portail",
-                    "text": "Sur le QR d’unité : tuile Mesure si catégorie et unité autorisent les mesures et des champs sont liés. Clock Point non requis."
+                    "label": "Recherche",
+                    "text": "Filtrez par champ et lieu ou cherchez par champ, unit, lieu ou valeur. Cliquez sur GO!."
                 },
                 {
-                    "label": "API & webhooks",
-                    "text": "POST /api/v1/units/{unit}/measurements (units:update). Chaque mesure déclenche unit.measurement.recorded."
+                    "label": "Lier aux units",
+                    "text": "Activez Autoriser les mesures sur la catégorie et l’unit, puis choisissez les champs liés."
+                },
+                {
+                    "label": "Portail & API",
+                    "text": "QR unit : tuile Mesure si catégorie et unit l’autorisent. API : POST /api/v1/units/{unit}/measurements. Webhook : unit.measurement.recorded."
+                }
+            ]
+        },
+        "unit-measurements.index": {
+            "title": "Aide — Mesures d’unité",
+            "actions": [
+                {
+                    "label": "Aperçu",
+                    "text": "Sous Travail → Mesures d’unité, gérez les champs (section déroulante en haut) et recherchez les relevés avec des filtres."
+                },
+                {
+                    "label": "Champs de mesure",
+                    "text": "Ouvrez Champs de mesure pour voir ou ajouter des champs : nom, type, unité et min/max optionnels. Seuls les champs actifs se lient aux units."
+                },
+                {
+                    "label": "Recherche",
+                    "text": "Filtrez par champ et lieu ou cherchez par champ, unit, lieu ou valeur. Cliquez sur GO!."
+                },
+                {
+                    "label": "Lier aux units",
+                    "text": "Activez Autoriser les mesures sur la catégorie et l’unit, puis choisissez les champs liés."
+                },
+                {
+                    "label": "Portail & API",
+                    "text": "QR unit : tuile Mesure si catégorie et unit l’autorisent. API : POST /api/v1/units/{unit}/measurements. Webhook : unit.measurement.recorded."
                 }
             ]
         }

@@ -1357,44 +1357,77 @@
             ]
         },
         "unit-measurements.fields": {
-            "title": "Hilfe — Messfelder",
+            "title": "Hilfe — Unit-Messungen",
             "actions": [
                 {
-                    "label": "Was ist ein Messfeld?",
-                    "text": "Ein Messfeld definiert, was Sie an Units erfassen: Name, Typ (Zahl, Ja/Nein, Text oder Auswahl), optionale Einheit (km, °C, L…) und Min/Max. Felder können an mehreren Units hängen."
+                    "label": "Übersicht",
+                    "text": "Unter Arbeit → Unit-Messungen verwalten Sie Messfelder (aufklappbar oben) und suchen Messungen über Filter."
                 },
                 {
-                    "label": "Anlegen",
-                    "text": "Gehen Sie zu Arbeit → Unit-Messungen → Felder. Feld hinzufügen, Typ wählen und bei Zahlen die Einheit setzen. Auswahlfelder brauchen Optionen."
+                    "label": "Messfelder",
+                    "text": "Messfelder öffnen zum Ansehen oder Hinzufügen: Name, Typ, optional Einheit und Min/Max. Nur aktive Felder an Units koppeln."
                 },
                 {
-                    "label": "Aktivieren",
-                    "text": "Nur aktive Felder können verknüpft und per Portal/API erfasst werden. Deaktivieren behält die Historie."
+                    "label": "Suche",
+                    "text": "Nach Messfeld und Standort filtern oder nach Feld, Unit, Standort oder Wert suchen. GO! klicken."
                 },
                 {
                     "label": "An Units koppeln",
-                    "text": "Unit-Messungen erlauben an Kategorie und Unit aktivieren, dann bei Unit bearbeiten die Felder auswählen."
+                    "text": "Unit-Messungen erlauben an Kategorie und Unit aktivieren, dann Felder wählen."
+                },
+                {
+                    "label": "Portal & API",
+                    "text": "Unit-QR: Kachel Messung wenn erlaubt. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
                 }
             ]
         },
         "unit-measurements.history": {
-            "title": "Hilfe — Messhistorie",
+            "title": "Hilfe — Unit-Messungen",
             "actions": [
                 {
                     "label": "Übersicht",
-                    "text": "Alle Unit-Messungen: Zeitpunkt, Feld, Wert, Standort/Unit, Quelle (Portal, API oder Admin) und optional Ausführender."
+                    "text": "Unter Arbeit → Unit-Messungen verwalten Sie Messfelder (aufklappbar oben) und suchen Messungen über Filter."
                 },
                 {
-                    "label": "Filter",
-                    "text": "Nach Messfeld und Standort filtern."
+                    "label": "Messfelder",
+                    "text": "Messfelder öffnen zum Ansehen oder Hinzufügen: Name, Typ, optional Einheit und Min/Max. Nur aktive Felder an Units koppeln."
                 },
                 {
-                    "label": "Portal",
-                    "text": "Am Unit-QR: Kachel Messung, wenn Kategorie und Unit Unit-Messungen erlauben und Felder verknüpft sind. Kein Clock Point nötig."
+                    "label": "Suche",
+                    "text": "Nach Messfeld und Standort filtern oder nach Feld, Unit, Standort oder Wert suchen. GO! klicken."
                 },
                 {
-                    "label": "API & Webhooks",
-                    "text": "POST /api/v1/units/{unit}/measurements (units:update). Jede Messung löst unit.measurement.recorded aus."
+                    "label": "An Units koppeln",
+                    "text": "Unit-Messungen erlauben an Kategorie und Unit aktivieren, dann Felder wählen."
+                },
+                {
+                    "label": "Portal & API",
+                    "text": "Unit-QR: Kachel Messung wenn erlaubt. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                }
+            ]
+        },
+        "unit-measurements.index": {
+            "title": "Hilfe — Unit-Messungen",
+            "actions": [
+                {
+                    "label": "Übersicht",
+                    "text": "Unter Arbeit → Unit-Messungen verwalten Sie Messfelder (aufklappbar oben) und suchen Messungen über Filter."
+                },
+                {
+                    "label": "Messfelder",
+                    "text": "Messfelder öffnen zum Ansehen oder Hinzufügen: Name, Typ, optional Einheit und Min/Max. Nur aktive Felder an Units koppeln."
+                },
+                {
+                    "label": "Suche",
+                    "text": "Nach Messfeld und Standort filtern oder nach Feld, Unit, Standort oder Wert suchen. GO! klicken."
+                },
+                {
+                    "label": "An Units koppeln",
+                    "text": "Unit-Messungen erlauben an Kategorie und Unit aktivieren, dann Felder wählen."
+                },
+                {
+                    "label": "Portal & API",
+                    "text": "Unit-QR: Kachel Messung wenn erlaubt. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
                 }
             ]
         }

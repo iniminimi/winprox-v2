@@ -1357,44 +1357,77 @@
             ]
         },
         "unit-measurements.fields": {
-            "title": "Hulp — Meetvelden",
+            "title": "Hulp — Unitmetingen",
             "actions": [
                 {
-                    "label": "Wat is een meetveld?",
-                    "text": "Een meetveld definieert wat je op units wilt registreren: naam, type (getal, ja/nee, tekst of keuze), optioneel eenheid (km, °C, L, …) en min/max. Velden hergebruik je op meerdere units."
+                    "label": "Overzicht",
+                    "text": "Onder Werk → Unitmetingen beheer je meetvelden (uitvouwbaar bovenaan) en zoek je metingen via filters. Resultaten tonen tijdstip, veld, waarde, locatie/unit, bron en eventueel de uitvoerder."
                 },
                 {
-                    "label": "Aanmaken",
-                    "text": "Ga naar Werk → Unitmetingen → Velden. Voeg een veld toe, kies het type en vul bij getallen de eenheid in. Keuzevelden hebben opties (bv. Beschikbaar / In gebruik / Defect)."
+                    "label": "Meetvelden",
+                    "text": "Vouw Meetvelden open om velden te bekijken of toe te voegen: naam, type (getal, ja/nee, tekst of keuze), optioneel eenheid en min/max. Alleen actieve velden koppel je aan units."
                 },
                 {
-                    "label": "Activeren",
-                    "text": "Alleen actieve velden kun je aan units koppelen en via het portaal of de API invullen. Deactiveren behoudt de historiek."
+                    "label": "Zoeken",
+                    "text": "Filter op meetveld en locatie of zoek op veld, unit, locatie of waarde. Klik GO! om te zoeken."
                 },
                 {
                     "label": "Koppelen aan units",
                     "text": "Zet Unitmetingen toestaan aan op de categorie én op de unit. Kies daarna bij unit bewerken welke meetvelden op die unit horen."
+                },
+                {
+                    "label": "Portaal & API",
+                    "text": "Op de unit-QR: tegel Meting wanneer categorie én unit Unitmetingen toestaan en er velden gekoppeld zijn. API: POST /api/v1/units/{unit}/measurements (units:update). Webhook: unit.measurement.recorded."
                 }
             ]
         },
         "unit-measurements.history": {
-            "title": "Hulp — Metingenhistoriek",
+            "title": "Hulp — Unitmetingen",
             "actions": [
                 {
                     "label": "Overzicht",
-                    "text": "Alle geregistreerde unitmetingen van je organisatie: tijdstip, veld, waarde, locatie/unit, bron (portaal, API of beheer) en eventueel de uitvoerder."
+                    "text": "Onder Werk → Unitmetingen beheer je meetvelden (uitvouwbaar bovenaan) en zoek je metingen via filters. Resultaten tonen tijdstip, veld, waarde, locatie/unit, bron en eventueel de uitvoerder."
                 },
                 {
-                    "label": "Filters",
-                    "text": "Filter op meetveld en locatie om snel de juiste rijen te vinden."
+                    "label": "Meetvelden",
+                    "text": "Vouw Meetvelden open om velden te bekijken of toe te voegen: naam, type (getal, ja/nee, tekst of keuze), optioneel eenheid en min/max. Alleen actieve velden koppel je aan units."
                 },
                 {
-                    "label": "Portaal",
-                    "text": "Op de unit-QR: tegel Meting wanneer categorie én unit Unitmetingen toestaan en er velden gekoppeld zijn. Geen Clock Point vereist."
+                    "label": "Zoeken",
+                    "text": "Filter op meetveld en locatie of zoek op veld, unit, locatie of waarde. Klik GO! om te zoeken."
                 },
                 {
-                    "label": "API & webhooks",
-                    "text": "POST /api/v1/units/{unit}/measurements met ability units:update. Elke nieuwe meting triggert unit.measurement.recorded."
+                    "label": "Koppelen aan units",
+                    "text": "Zet Unitmetingen toestaan aan op de categorie én op de unit. Kies daarna bij unit bewerken welke meetvelden op die unit horen."
+                },
+                {
+                    "label": "Portaal & API",
+                    "text": "Op de unit-QR: tegel Meting wanneer categorie én unit Unitmetingen toestaan en er velden gekoppeld zijn. API: POST /api/v1/units/{unit}/measurements (units:update). Webhook: unit.measurement.recorded."
+                }
+            ]
+        },
+        "unit-measurements.index": {
+            "title": "Hulp — Unitmetingen",
+            "actions": [
+                {
+                    "label": "Overzicht",
+                    "text": "Onder Werk → Unitmetingen beheer je meetvelden (uitvouwbaar bovenaan) en zoek je metingen via filters. Resultaten tonen tijdstip, veld, waarde, locatie/unit, bron en eventueel de uitvoerder."
+                },
+                {
+                    "label": "Meetvelden",
+                    "text": "Vouw Meetvelden open om velden te bekijken of toe te voegen: naam, type (getal, ja/nee, tekst of keuze), optioneel eenheid en min/max. Alleen actieve velden koppel je aan units."
+                },
+                {
+                    "label": "Zoeken",
+                    "text": "Filter op meetveld en locatie of zoek op veld, unit, locatie of waarde. Klik GO! om te zoeken."
+                },
+                {
+                    "label": "Koppelen aan units",
+                    "text": "Zet Unitmetingen toestaan aan op de categorie én op de unit. Kies daarna bij unit bewerken welke meetvelden op die unit horen."
+                },
+                {
+                    "label": "Portaal & API",
+                    "text": "Op de unit-QR: tegel Meting wanneer categorie én unit Unitmetingen toestaan en er velden gekoppeld zijn. API: POST /api/v1/units/{unit}/measurements (units:update). Webhook: unit.measurement.recorded."
                 }
             ]
         }

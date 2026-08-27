@@ -103,16 +103,11 @@ return [
                 'meetveld', 'meetvelden', 'kilometerstand', 'odometer',
                 'unit-messung', 'messfeld', 'medición de unidad', 'misurazione unità',
                 'mesures d’unité', "mesures d'unité", 'measure field', 'measure fields',
-            ],
-            'page' => 'unit-measurements.fields',
-            'prefer' => ['meetveld', 'unitmeting', 'measure field', 'kilometerstand'],
-        ],
-        [
-            'patterns' => [
                 'metingenhistoriek', 'measurement history', 'historiek metingen',
                 'unit.measurement.recorded',
             ],
-            'page' => 'unit-measurements.history',
+            'page' => 'unit-measurements.index',
+            'prefer' => ['meetveld', 'unitmeting', 'measure field', 'kilometerstand'],
         ],
         [
             'patterns' => [

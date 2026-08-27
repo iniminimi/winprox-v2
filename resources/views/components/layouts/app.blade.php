@@ -251,7 +251,7 @@
                                        @click="nav = false">
                                         <span>{{ __('common.nav.reservations') }}</span>
                                     </a>
-                                    <a href="{{ route('unit-measurements.fields.index') }}"
+                                    <a href="{{ route('unit-measurements.index') }}"
                                        class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-measurements.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
                                         <span>{{ __('common.nav.unit_measurements') }}</span>

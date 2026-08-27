@@ -1357,44 +1357,77 @@
             ]
         },
         "unit-measurements.fields": {
-            "title": "Aiuto — Campi di misura",
+            "title": "Aiuto — Misurazioni unità",
             "actions": [
                 {
-                    "label": "Cos’è un campo?",
-                    "text": "Un campo definisce cosa registri sulle unità: nome, tipo (numero, sì/no, testo o scelta), unità opzionale (km, °C, L…) e min/max. Riutilizza i campi su più unità."
+                    "label": "Panoramica",
+                    "text": "In Lavoro → Misurazioni unità gestisci i campi (sezione espandibile in alto) e cerca le letture con filtri."
                 },
                 {
-                    "label": "Creare",
-                    "text": "Vai in Lavoro → Misurazioni unità → Campi. Aggiungi un campo, scegli il tipo e per i numeri l’unità di misura. I campi scelta hanno opzioni."
+                    "label": "Campi di misura",
+                    "text": "Apri Campi di misura per vedere o aggiungere: nome, tipo, unità e min/max opzionali. Solo i campi attivi si collegano alle unit."
                 },
                 {
-                    "label": "Attivare",
-                    "text": "Solo i campi attivi si collegano e si compilano da portale o API. Disattivare conserva lo storico."
+                    "label": "Cerca",
+                    "text": "Filtra per campo e posizione o cerca per campo, unit, posizione o valore. Clicca GO!."
                 },
                 {
-                    "label": "Collegare alle unità",
-                    "text": "Attiva Consenti misurazioni su categoria e unità; poi in modifica unità seleziona i campi."
+                    "label": "Collega alle unit",
+                    "text": "Attiva Consenti misurazioni su categoria e unit, poi scegli i campi."
+                },
+                {
+                    "label": "Portale e API",
+                    "text": "QR unit: tessera Misura se consentito. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
                 }
             ]
         },
         "unit-measurements.history": {
-            "title": "Aiuto — Storico misurazioni",
+            "title": "Aiuto — Misurazioni unità",
             "actions": [
                 {
                     "label": "Panoramica",
-                    "text": "Tutte le misurazioni: orario, campo, valore, sede/unità, fonte (portale, API o admin) e operatore opzionale."
+                    "text": "In Lavoro → Misurazioni unità gestisci i campi (sezione espandibile in alto) e cerca le letture con filtri."
                 },
                 {
-                    "label": "Filtri",
-                    "text": "Filtra per campo e sede."
+                    "label": "Campi di misura",
+                    "text": "Apri Campi di misura per vedere o aggiungere: nome, tipo, unità e min/max opzionali. Solo i campi attivi si collegano alle unit."
                 },
                 {
-                    "label": "Portale",
-                    "text": "Sul QR unità: tessera Misura se categoria e unità consentono le misurazioni e i campi sono collegati. Clock Point non obbligatorio."
+                    "label": "Cerca",
+                    "text": "Filtra per campo e posizione o cerca per campo, unit, posizione o valore. Clicca GO!."
                 },
                 {
-                    "label": "API e webhook",
-                    "text": "POST /api/v1/units/{unit}/measurements (units:update). Ogni misurazione attiva unit.measurement.recorded."
+                    "label": "Collega alle unit",
+                    "text": "Attiva Consenti misurazioni su categoria e unit, poi scegli i campi."
+                },
+                {
+                    "label": "Portale e API",
+                    "text": "QR unit: tessera Misura se consentito. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
+                }
+            ]
+        },
+        "unit-measurements.index": {
+            "title": "Aiuto — Misurazioni unità",
+            "actions": [
+                {
+                    "label": "Panoramica",
+                    "text": "In Lavoro → Misurazioni unità gestisci i campi (sezione espandibile in alto) e cerca le letture con filtri."
+                },
+                {
+                    "label": "Campi di misura",
+                    "text": "Apri Campi di misura per vedere o aggiungere: nome, tipo, unità e min/max opzionali. Solo i campi attivi si collegano alle unit."
+                },
+                {
+                    "label": "Cerca",
+                    "text": "Filtra per campo e posizione o cerca per campo, unit, posizione o valore. Clicca GO!."
+                },
+                {
+                    "label": "Collega alle unit",
+                    "text": "Attiva Consenti misurazioni su categoria e unit, poi scegli i campi."
+                },
+                {
+                    "label": "Portale e API",
+                    "text": "QR unit: tessera Misura se consentito. API: POST /api/v1/units/{unit}/measurements. Webhook: unit.measurement.recorded."
                 }
             ]
         }

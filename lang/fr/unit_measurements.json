@@ -1,9 +1,4 @@
 {
-    "subnav": {
-        "label": "Mesures unit",
-        "fields": "Champs",
-        "history": "Historique"
-    },
     "fields": {
         "title": "Champs de mesure",
         "subtitle": "Définissez ce que vous voulez mesurer sur les units (km, température, statut, …).",
@@ -21,7 +16,9 @@
             "max_value": "Maximum",
             "options": "Options",
             "add_option": "Ajouter une option"
-        }
+        },
+        "section_title": "Champs de mesure",
+        "section_subtitle": "Définissez ce que vous voulez mesurer sur les units (km, température, statut, …)."
     },
     "history": {
         "title": "Mesures",
@@ -83,5 +80,21 @@
     "value": {
         "yes": "Oui",
         "no": "Non"
+    },
+    "list": {
+        "title": "Mesures d’unité",
+        "subtitle": "Relevés sur les units via QR ou API.",
+        "results_title": "Résultats"
+    },
+    "filter": {
+        "field": "Champ",
+        "all_fields": "Tous les champs",
+        "location": "Lieu",
+        "all_locations": "Tous les lieux",
+        "search": "Rechercher",
+        "search_placeholder": "Rechercher par champ, unit, lieu ou valeur…",
+        "apply": "GO!",
+        "reset": "Effacer les filtres",
+        "hint": "Choisissez des filtres et cliquez sur GO! pour rechercher."
     }
 }

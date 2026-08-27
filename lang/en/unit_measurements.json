@@ -1,9 +1,4 @@
 {
-    "subnav": {
-        "label": "Unit measurements",
-        "fields": "Fields",
-        "history": "History"
-    },
     "fields": {
         "title": "Measure fields",
         "subtitle": "Define what you want to measure on units (km, temperature, status, …).",
@@ -21,7 +16,9 @@
             "max_value": "Maximum",
             "options": "Choice options",
             "add_option": "Add option"
-        }
+        },
+        "section_title": "Measure fields",
+        "section_subtitle": "Define what you want to measure on units (km, temperature, status, …)."
     },
     "history": {
         "title": "Measurements",
@@ -30,8 +27,8 @@
         "empty": "No measurements yet.",
         "reporter_unknown": "Unknown",
         "filters": {
-            "field": "Field",
-            "all_fields": "All fields",
+            "field": "Measure field",
+            "all_fields": "All measure fields",
             "location": "Location",
             "all_locations": "All locations"
         }
@@ -83,5 +80,21 @@
     "value": {
         "yes": "Yes",
         "no": "No"
+    },
+    "list": {
+        "title": "Unit measurements",
+        "subtitle": "Readings on units via QR or API.",
+        "results_title": "Results"
+    },
+    "filter": {
+        "field": "Measure field",
+        "all_fields": "All measure fields",
+        "location": "Location",
+        "all_locations": "All locations",
+        "search": "Search",
+        "search_placeholder": "Search by field, unit, location or value…",
+        "apply": "GO!",
+        "reset": "Clear filters",
+        "hint": "Choose filters and click GO! to search."
     }
 }

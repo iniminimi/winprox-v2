@@ -1357,44 +1357,77 @@
             ]
         },
         "unit-measurements.fields": {
-            "title": "Help — Measure fields",
+            "title": "Help — Unit measurements",
             "actions": [
                 {
-                    "label": "What is a measure field?",
-                    "text": "A measure field defines what you record on units: name, type (number, yes/no, text or choice), optional unit of measure (km, °C, L, …) and min/max. Reuse fields across units."
+                    "label": "Overview",
+                    "text": "Under Work → Unit measurements manage measure fields (expandable at the top) and search readings with filters. Results show time, field, value, location/unit, source and optional worker."
                 },
                 {
-                    "label": "Create",
-                    "text": "Go to Work → Unit measurements → Fields. Add a field, choose the type and for numbers set the unit of measure. Choice fields need options (e.g. Available / In use / Defect)."
+                    "label": "Measure fields",
+                    "text": "Expand Measure fields to view or add fields: name, type (number, yes/no, text or choice), optional unit and min/max. Only active fields can be linked to units."
                 },
                 {
-                    "label": "Activate",
-                    "text": "Only active fields can be linked to units and filled via the portal or API. Deactivating keeps history."
+                    "label": "Search",
+                    "text": "Filter by measure field and location or search by field, unit, location or value. Click GO! to search."
                 },
                 {
                     "label": "Link to units",
-                    "text": "Enable Allow unit measurements on the category and on the unit. Then when editing the unit, select which measure fields belong to that unit."
+                    "text": "Enable Allow unit measurements on the category and the unit. Then select which measure fields belong on that unit."
+                },
+                {
+                    "label": "Portal & API",
+                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. API: POST /api/v1/units/{unit}/measurements (units:update). Webhook: unit.measurement.recorded."
                 }
             ]
         },
         "unit-measurements.history": {
-            "title": "Help — Measurement history",
+            "title": "Help — Unit measurements",
             "actions": [
                 {
                     "label": "Overview",
-                    "text": "All recorded unit measurements for your organisation: time, field, value, location/unit, source (portal, API or admin) and optional worker."
+                    "text": "Under Work → Unit measurements manage measure fields (expandable at the top) and search readings with filters. Results show time, field, value, location/unit, source and optional worker."
                 },
                 {
-                    "label": "Filters",
-                    "text": "Filter by measure field and location to find the right rows quickly."
+                    "label": "Measure fields",
+                    "text": "Expand Measure fields to view or add fields: name, type (number, yes/no, text or choice), optional unit and min/max. Only active fields can be linked to units."
                 },
                 {
-                    "label": "Portal",
-                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. Clock Point not required."
+                    "label": "Search",
+                    "text": "Filter by measure field and location or search by field, unit, location or value. Click GO! to search."
                 },
                 {
-                    "label": "API & webhooks",
-                    "text": "POST /api/v1/units/{unit}/measurements with units:update ability. Each new reading fires unit.measurement.recorded."
+                    "label": "Link to units",
+                    "text": "Enable Allow unit measurements on the category and the unit. Then select which measure fields belong on that unit."
+                },
+                {
+                    "label": "Portal & API",
+                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. API: POST /api/v1/units/{unit}/measurements (units:update). Webhook: unit.measurement.recorded."
+                }
+            ]
+        },
+        "unit-measurements.index": {
+            "title": "Help — Unit measurements",
+            "actions": [
+                {
+                    "label": "Overview",
+                    "text": "Under Work → Unit measurements manage measure fields (expandable at the top) and search readings with filters. Results show time, field, value, location/unit, source and optional worker."
+                },
+                {
+                    "label": "Measure fields",
+                    "text": "Expand Measure fields to view or add fields: name, type (number, yes/no, text or choice), optional unit and min/max. Only active fields can be linked to units."
+                },
+                {
+                    "label": "Search",
+                    "text": "Filter by measure field and location or search by field, unit, location or value. Click GO! to search."
+                },
+                {
+                    "label": "Link to units",
+                    "text": "Enable Allow unit measurements on the category and the unit. Then select which measure fields belong on that unit."
+                },
+                {
+                    "label": "Portal & API",
+                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. API: POST /api/v1/units/{unit}/measurements (units:update). Webhook: unit.measurement.recorded."
                 }
             ]
         }

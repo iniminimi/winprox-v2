@@ -1,12 +1,7 @@
 {
-    "subnav": {
-        "label": "Mediciones de unit",
-        "fields": "Campos",
-        "history": "Historial"
-    },
     "fields": {
         "title": "Campos de medición",
-        "subtitle": "Define qué quieres medir en las units (km, temperatura, estado, …).",
+        "subtitle": "Defina qué quiere medir en las units (km, temperatura, estado, …).",
         "add": "Añadir campo",
         "empty": "Aún no hay campos.",
         "deactivate": "Desactivar",
@@ -21,7 +16,9 @@
             "max_value": "Máximo",
             "options": "Opciones",
             "add_option": "Añadir opción"
-        }
+        },
+        "section_title": "Campos de medición",
+        "section_subtitle": "Defina qué quiere medir en las units (km, temperatura, estado, …)."
     },
     "history": {
         "title": "Mediciones",
@@ -83,5 +80,21 @@
     "value": {
         "yes": "Sí",
         "no": "No"
+    },
+    "list": {
+        "title": "Mediciones de unidad",
+        "subtitle": "Lecturas en units vía QR o API.",
+        "results_title": "Resultados"
+    },
+    "filter": {
+        "field": "Campo",
+        "all_fields": "Todos los campos",
+        "location": "Ubicación",
+        "all_locations": "Todas las ubicaciones",
+        "search": "Buscar",
+        "search_placeholder": "Buscar por campo, unit, ubicación o valor…",
+        "apply": "GO!",
+        "reset": "Borrar filtros",
+        "hint": "Elija filtros y pulse GO! para buscar."
     }
 }

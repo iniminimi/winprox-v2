@@ -446,8 +446,8 @@ zonder ESG. Los van unit checks.
 - Worker optioneel (als geverifieerd); anders anonieme portaalmeting. `source=portal`.
 
 ### Beheer
-- **Velden** (`/unit-measurements/fields`): naam, type, eenheid/min/max/opties; actief/inactief.
-- **Historiek** (`/unit-measurements`): filters locatie/veld.
+- **Beheer** (`/unit-measurements`): pagina Unitmetingen — uitvouwbare Meetvelden + zoekfilters + resultaten.
+  Meetvelden: naam, type, eenheid/min/max/opties; actief/inactief.
 - **Aan/uit:** Plaatsen → Categorieën (`allow_unit_measurements`) én unit bewerken
   (`allow_unit_measurements` + gekoppelde meetvelden).
 

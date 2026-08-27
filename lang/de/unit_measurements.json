@@ -1,9 +1,4 @@
 {
-    "subnav": {
-        "label": "Unit-Messungen",
-        "fields": "Felder",
-        "history": "Verlauf"
-    },
     "fields": {
         "title": "Messfelder",
         "subtitle": "Definieren Sie, was Sie an Units messen wollen (km, Temperatur, Status, …).",
@@ -21,7 +16,9 @@
             "max_value": "Maximum",
             "options": "Auswahloptionen",
             "add_option": "Option hinzufügen"
-        }
+        },
+        "section_title": "Messfelder",
+        "section_subtitle": "Definieren Sie, was Sie an Units messen wollen (km, Temperatur, Status, …)."
     },
     "history": {
         "title": "Messungen",
@@ -30,8 +27,8 @@
         "empty": "Noch keine Messungen.",
         "reporter_unknown": "Unbekannt",
         "filters": {
-            "field": "Feld",
-            "all_fields": "Alle Felder",
+            "field": "Messfeld",
+            "all_fields": "Alle Messfelder",
             "location": "Standort",
             "all_locations": "Alle Standorte"
         }
@@ -83,5 +80,21 @@
     "value": {
         "yes": "Ja",
         "no": "Nein"
+    },
+    "list": {
+        "title": "Unit-Messungen",
+        "subtitle": "Messwerte an Units über QR oder API.",
+        "results_title": "Ergebnisse"
+    },
+    "filter": {
+        "field": "Messfeld",
+        "all_fields": "Alle Messfelder",
+        "location": "Standort",
+        "all_locations": "Alle Standorte",
+        "search": "Suchen",
+        "search_placeholder": "Suche nach Feld, Unit, Standort oder Wert…",
+        "apply": "GO!",
+        "reset": "Filter löschen",
+        "hint": "Filter wählen und GO! klicken."
     }
 }
