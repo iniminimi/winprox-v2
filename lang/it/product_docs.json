@@ -176,7 +176,7 @@
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Rapporti operativi: CSV o stampa filtrati (stesso layout dell’elenco) per segnalazioni, attività, Time, unit check, misurazioni unit ed ESG — per chi può vedere quelle liste. Distinto dall’export GDPR dell’account (Impostazioni → Privacy ed esportazione dati)."
+                    "Rapporti operativi: CSV o stampa filtrata su segnalazioni, attività, Time, unit check, misurazioni unit e ESG — per chi può vedere tali elenchi. La stampa segue dove possibile il layout dell'elenco; Time = foglio ore. Distinto dall'esportazione account GDPR (Impostazioni → Privacy ed esportazione)."
                 ]
             },
             {

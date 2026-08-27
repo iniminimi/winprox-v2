@@ -11,7 +11,7 @@ Publieke weerspiegeling: `resources/views/legal/content/*/privacy.blade.php`, `t
 1. **Tenant-beheerder**: onder **Instellingen → Privacy & export van gegevens** staat een machineleesbare export (JSON in ZIP) van het eigen account en gerelateerde gegevens binnen de tenant. Download wordt gelogd in **Activiteit logs** (`gdpr.data_exported`).
 2. **Support**: bij een gemotiveerde aanvraag kan alleen na identiteitscontrole en tenantbinding worden geholpen (export uit database/back-office volgens intern proces — buiten deze codebase vast te leggen).
 
-- **Operationele lijstrapporten** (niet AVG-SAR): op zoekschermen (meldingen, taken, Time, unit checks, unitmetingen, ESG) kunnen medewerkers met toegang tot die lijsten een gefilterde **CSV** of **afdruk** (zelfde kaartlayout als de backoffice) downloaden via **Download rapport**. Dit is geen kopie van alle persoonsgegevens van een betrokkene — dat blijft de account-export hierboven.
+- **Operationele lijstrapporten** (niet AVG-SAR): op zoekschermen (meldingen, taken, Time, unit checks, unitmetingen, ESG) kunnen medewerkers met toegang tot die lijsten een gefilterde **CSV** of **afdruk** downloaden via **Download rapport** (afdruk volgt waar mogelijk de backoffice-lijstlayout; Time = urenstaat). Dit is geen kopie van alle persoonsgegevens van een betrokkene — dat blijft de account-export hierboven.
 
 ## Rectificatie
 
