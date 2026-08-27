@@ -59,11 +59,17 @@ class TranslateUnitAction
 
         $sourceName = trim((string) $unit->name);
         if ($sourceName !== '') {
-            $translatedName = trim($this->translator->translate($sourceName, $targetLocale));
+            $translatedName = trim($this->translator->translate($sourceName, $targetLocale, $unit->normalizedOriginalLanguage()));
             if (
                 $translatedName === ''
                 || $translatedName === $sourceName
                 || TranslationOutputGuard::isUnusable($translatedName, $sourceName)
+                || TranslationOutputGuard::isUntranslatedEcho(
+                    $translatedName,
+                    $sourceName,
+                    $targetLocale,
+                    $unit->normalizedOriginalLanguage(),
+                )
                 || mb_strlen($translatedName) > 255
             ) {
                 $failed = true;
@@ -74,11 +80,21 @@ class TranslateUnitAction
 
         $sourceDescription = trim((string) ($unit->description ?? ''));
         if ($sourceDescription !== '') {
-            $translatedDescription = trim($this->translator->translate($sourceDescription, $targetLocale));
+            $translatedDescription = trim($this->translator->translate(
+                $sourceDescription,
+                $targetLocale,
+                $unit->normalizedOriginalLanguage(),
+            ));
             if (
                 $translatedDescription === ''
                 || $translatedDescription === $sourceDescription
                 || TranslationOutputGuard::isUnusable($translatedDescription, $sourceDescription)
+                || TranslationOutputGuard::isUntranslatedEcho(
+                    $translatedDescription,
+                    $sourceDescription,
+                    $targetLocale,
+                    $unit->normalizedOriginalLanguage(),
+                )
                 || mb_strlen($translatedDescription) > TextDescriptionLimits::TRANSLATION_MAX
             ) {
                 $failed = true;

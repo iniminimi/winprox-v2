@@ -103,7 +103,7 @@ it('vertaalt locatie export-items via de provider', function () {
 it('kapt te lange korte naam-vertalingen af voor locatie-sync', function () {
     app()->instance(TranslationProviderInterface::class, new class implements TranslationProviderInterface
     {
-        public function translate(string $text, string $targetLanguage): string
+        public function translate(string $text, string $targetLanguage, ?string $sourceLanguage = null): string
         {
             return "  {$targetLanguage}  ".str_repeat('x', 400);
         }
@@ -235,7 +235,7 @@ it('behoudt geimporteerde reeksen wanneer het vertalen halverwege crasht', funct
     {
         private int $calls = 0;
 
-        public function translate(string $text, string $targetLanguage): string
+        public function translate(string $text, string $targetLanguage, ?string $sourceLanguage = null): string
         {
             $this->calls++;
 
@@ -292,7 +292,7 @@ it('doorloopt de vertaal-sync pipeline met te lange locatienaam van provider', f
     app()->instance(TranslationSyncRemoteClient::class, $fake);
     app()->instance(TranslationProviderInterface::class, new class implements TranslationProviderInterface
     {
-        public function translate(string $text, string $targetLanguage): string
+        public function translate(string $text, string $targetLanguage, ?string $sourceLanguage = null): string
         {
             return 'Main depot '.str_repeat('x', 400);
         }

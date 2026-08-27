@@ -29,8 +29,9 @@ class TranslateAnnouncementAction
         }
 
         $targetLocale = LocaleSupport::normalize($targetLocale);
+        $sourceLocale = $announcement->normalizedOriginalLanguage();
 
-        if ($targetLocale === $announcement->normalizedOriginalLanguage()) {
+        if ($targetLocale === $sourceLocale) {
             throw ValidationException::withMessages([
                 'locale' => [__('issues.errors.translation_same_as_source')],
             ]);
@@ -43,16 +44,26 @@ class TranslateAnnouncementAction
             ->where('locale', $targetLocale)
             ->firstOrFail();
 
-        if ($row->status === AnnouncementTranslationStatus::Completed && filled($row->description)) {
+        if (
+            $row->status === AnnouncementTranslationStatus::Completed
+            && filled($row->description)
+            && ! TranslationOutputGuard::isUntranslatedEcho(
+                (string) $row->description,
+                (string) $announcement->description,
+                $targetLocale,
+                $sourceLocale,
+            )
+        ) {
             return $row;
         }
 
         $sourceText = trim((string) $announcement->description);
-        $translated = trim($this->translator->translate($sourceText, $targetLocale));
+        $translated = trim($this->translator->translate($sourceText, $targetLocale, $sourceLocale));
 
         if (
             $translated === ''
             || TranslationOutputGuard::isUnusable($translated, $sourceText)
+            || TranslationOutputGuard::isUntranslatedEcho($translated, $sourceText, $targetLocale, $sourceLocale)
         ) {
             return $this->storeFailed($row, $announcement, $targetLocale, $actorUserId, 'translation_empty_or_unusable');
         }

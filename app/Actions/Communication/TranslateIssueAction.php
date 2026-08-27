@@ -29,8 +29,9 @@ class TranslateIssueAction
         }
 
         $targetLocale = LocaleSupport::normalize($targetLocale);
+        $sourceLocale = $issue->normalizedOriginalLanguage();
 
-        if ($targetLocale === $issue->normalizedOriginalLanguage()) {
+        if ($targetLocale === $sourceLocale) {
             throw ValidationException::withMessages([
                 'locale' => [__('issues.errors.translation_same_as_source')],
             ]);
@@ -43,16 +44,26 @@ class TranslateIssueAction
             ->where('locale', $targetLocale)
             ->firstOrFail();
 
-        if ($row->status === IssueTranslationStatus::Completed && filled($row->description)) {
+        if (
+            $row->status === IssueTranslationStatus::Completed
+            && filled($row->description)
+            && ! TranslationOutputGuard::isUntranslatedEcho(
+                (string) $row->description,
+                (string) $issue->description,
+                $targetLocale,
+                $sourceLocale,
+            )
+        ) {
             return $row;
         }
 
         $sourceText = trim((string) $issue->description);
-        $translated = trim($this->translator->translate($sourceText, $targetLocale));
+        $translated = trim($this->translator->translate($sourceText, $targetLocale, $sourceLocale));
 
         if (
             $translated === ''
             || TranslationOutputGuard::isUnusable($translated, $sourceText)
+            || TranslationOutputGuard::isUntranslatedEcho($translated, $sourceText, $targetLocale, $sourceLocale)
         ) {
             return $this->storeFailed($row, $issue, $targetLocale, $actorUserId, 'translation_empty_or_unusable');
         }
@@ -61,7 +72,6 @@ class TranslateIssueAction
             return $this->storeFailed($row, $issue, $targetLocale, $actorUserId, 'translation_too_long');
         }
 
-        // Identical to source is allowed (brand names, already-target text, provider echo).
         $row->fill([
             'description' => $translated,
             'status' => IssueTranslationStatus::Completed,

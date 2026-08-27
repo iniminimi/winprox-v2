@@ -8,6 +8,7 @@ use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
 use App\Actions\Communication\BackfillUnitCheckListTranslationSlotsAction;
 use App\Actions\Communication\InvalidateUnusableContentTranslationsAction;
 use App\Actions\Communication\RequeueFailedDescriptionTranslationsAction;
+use App\Actions\Communication\RequeueUntranslatedDescriptionEchoesAction;
 use App\Actions\Communication\RunPendingCategoryTranslationsAction;
 use App\Actions\Communication\RunPendingDocumentTranslationsAction;
 use App\Actions\Communication\RunPendingEsgIndicatorTranslationsAction;
@@ -51,6 +52,7 @@ class TranslateLocalAllCommand extends Command
         BackfillUnitCheckListTranslationSlotsAction $backfillUnitCheckLists,
         InvalidateUnusableContentTranslationsAction $invalidateUnusable,
         RequeueFailedDescriptionTranslationsAction $requeueFailed,
+        RequeueUntranslatedDescriptionEchoesAction $requeueEchoes,
         RunPendingIssueTranslationsAction $runIssues,
         RunPendingTaskTranslationsAction $runTasks,
         RunPendingAnnouncementTranslationsAction $runAnnouncements,
@@ -79,6 +81,7 @@ class TranslateLocalAllCommand extends Command
         $checkListBackfill = $backfillUnitCheckLists->handle();
         $junk = $invalidateUnusable->handle();
         $requeued = $requeueFailed->handle();
+        $echoes = $requeueEchoes->handle();
         $this->line(
             "Backfill done: categories {$categoryBackfill['categories']} (+{$categoryBackfill['slots_created']} slots), "
             ."teams {$teamBackfill['teams']} (+{$teamBackfill['slots_created']} slots), "
@@ -92,6 +95,13 @@ class TranslateLocalAllCommand extends Command
                 "Re-queued {$requeued['total']} failed description translation(s) as pending "
                 ."(issues {$requeued['issues']}, tasks {$requeued['tasks']}, "
                 ."announcements {$requeued['announcements']}, documents {$requeued['documents']})."
+            );
+        }
+        if ($echoes['total'] > 0) {
+            $this->warn(
+                "Re-queued {$echoes['total']} untranslated echo(s) as pending "
+                ."(issues {$echoes['issues']}, tasks {$echoes['tasks']}, "
+                ."announcements {$echoes['announcements']}, documents {$echoes['documents']})."
             );
         }
 

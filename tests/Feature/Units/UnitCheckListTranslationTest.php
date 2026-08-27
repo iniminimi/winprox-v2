@@ -175,7 +175,7 @@ it('accepteert gelijke vertaling als voltooide checklistvertaling', function () 
 
     app()->instance(TranslationProviderInterface::class, new class implements TranslationProviderInterface
     {
-        public function translate(string $text, string $targetLanguage): string
+        public function translate(string $text, string $targetLanguage, ?string $sourceLanguage = null): string
         {
             return $text;
         }

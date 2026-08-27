@@ -76,7 +76,7 @@ it('zet onbruikbare completed unitvertalingen terug op pending', function () {
         ->and($row->fresh()->name)->toBeNull();
 });
 
-it('weigert meta-output van OllamaProvider en geeft bron terug', function () {
+it('weigert meta-output van OllamaProvider en geeft lege string terug', function () {
     Http::fake([
         '*/api/generate' => Http::response([
             'response' => "I don't see any text to translate. Please provide the text you'd like me to translate.",
@@ -85,9 +85,9 @@ it('weigert meta-output van OllamaProvider en geeft bron terug', function () {
 
     config(['ollama.enabled' => true, 'ollama.url' => 'http://ollama.test']);
 
-    $out = app(OllamaProvider::class)->translate('Kamer 12', 'en');
+    $out = app(OllamaProvider::class)->translate('Kamer 12', 'en', 'nl');
 
-    expect($out)->toBe('Kamer 12');
+    expect($out)->toBe('');
 });
 
 it('markeert unitvertaling als failed bij meta-output van de provider', function () {
@@ -113,7 +113,7 @@ it('markeert unitvertaling als failed bij meta-output van de provider', function
 
     app()->instance(TranslationProviderInterface::class, new class implements TranslationProviderInterface
     {
-        public function translate(string $text, string $targetLanguage): string
+        public function translate(string $text, string $targetLanguage, ?string $sourceLanguage = null): string
         {
             return "I don't see any text to translate. Please provide the text you'd like me to translate.";
         }
