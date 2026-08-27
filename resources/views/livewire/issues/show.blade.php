@@ -24,6 +24,16 @@
         :next-id="$nav['nextId']"
         :last-id="$nav['lastId']"
     >
+        <x-slot name="headlineActions">
+            @if ($issue->unit && $issue->location)
+                @can('view', $issue->unit)
+                    <a
+                        href="{{ route('locations.show', ['location' => $issue->location, 'unit_id' => $issue->unit->id]) }}"
+                        class="btn btn--ghost btn--sm"
+                    >{{ __('issues.show.open_unit') }}</a>
+                @endcan
+            @endif
+        </x-slot>
         <x-slot name="meta">
             <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
             @unless ($issue->isApproved())

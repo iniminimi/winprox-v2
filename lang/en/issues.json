@@ -223,7 +223,8 @@
         "round_stops_save": "Save stops",
         "round_stops_saved": "Round stops saved.",
         "recurring_ended": "Recurring issue closed.",
-        "recurring_end_modal_subtitle": "Close this recurring issue. New cycles stop; open tasks will also be closed."
+        "recurring_end_modal_subtitle": "Close this recurring issue. New cycles stop; open tasks will also be closed.",
+        "open_unit": "Open unit"
     },
     "updates": {
         "kind": {

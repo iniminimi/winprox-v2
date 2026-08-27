@@ -223,7 +223,8 @@
         "round_stops_save": "Stops opslaan",
         "round_stops_saved": "Ronde-stops opgeslagen.",
         "recurring_ended": "Terugkerende melding gesloten.",
-        "recurring_end_modal_subtitle": "Sluit deze terugkerende melding. Nieuwe cycli stoppen; openstaande taken worden ook gesloten."
+        "recurring_end_modal_subtitle": "Sluit deze terugkerende melding. Nieuwe cycli stoppen; openstaande taken worden ook gesloten.",
+        "open_unit": "Unit openen"
     },
     "updates": {
         "kind": {

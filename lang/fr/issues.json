@@ -223,7 +223,8 @@
         "round_stops_save": "Enregistrer les arrêts",
         "round_stops_saved": "Arrêts de tournée enregistrés.",
         "recurring_ended": "Signalement récurrent clôturé.",
-        "recurring_end_modal_subtitle": "Clôturez ce signalement récurrent. Les nouveaux cycles s’arrêtent ; les tâches ouvertes seront aussi clôturées."
+        "recurring_end_modal_subtitle": "Clôturez ce signalement récurrent. Les nouveaux cycles s’arrêtent ; les tâches ouvertes seront aussi clôturées.",
+        "open_unit": "Ouvrir l’unité"
     },
     "updates": {
         "kind": {

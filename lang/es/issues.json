@@ -223,7 +223,8 @@
         "round_stops_save": "Guardar paradas",
         "round_stops_saved": "Paradas de ronda guardadas.",
         "recurring_ended": "Aviso recurrente cerrado.",
-        "recurring_end_modal_subtitle": "Cierre este aviso recurrente. Se detienen los nuevos ciclos; las tareas abiertas también se cerrarán."
+        "recurring_end_modal_subtitle": "Cierre este aviso recurrente. Se detienen los nuevos ciclos; las tareas abiertas también se cerrarán.",
+        "open_unit": "Abrir unit"
     },
     "updates": {
         "kind": {

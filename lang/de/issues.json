@@ -223,7 +223,8 @@
         "round_stops_save": "Stops speichern",
         "round_stops_saved": "Runden-Stops gespeichert.",
         "recurring_ended": "Wiederkehrende Meldung geschlossen.",
-        "recurring_end_modal_subtitle": "Schließen Sie diese wiederkehrende Meldung. Neue Zyklen stoppen; offene Aufgaben werden ebenfalls geschlossen."
+        "recurring_end_modal_subtitle": "Schließen Sie diese wiederkehrende Meldung. Neue Zyklen stoppen; offene Aufgaben werden ebenfalls geschlossen.",
+        "open_unit": "Unit öffnen"
     },
     "updates": {
         "kind": {

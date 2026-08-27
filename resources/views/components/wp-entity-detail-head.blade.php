@@ -34,7 +34,16 @@
         <x-wp-ref-nr :type="$refType" :id="$refId" />
 
         @if ($headline !== '')
-            <p class="wp-section-title">{{ $headline }}</p>
+            <div class="wp-row">
+                <p class="wp-section-title wp-grow">{{ $headline }}</p>
+                @isset($headlineActions)
+                    <div class="wp-chip-row">{{ $headlineActions }}</div>
+                @endisset
+            </div>
+        @elseif (isset($headlineActions))
+            <div class="wp-row">
+                <div class="wp-chip-row">{{ $headlineActions }}</div>
+            </div>
         @endif
         @if ($address !== '')
             <p class="wp-muted">{{ $address }}</p>

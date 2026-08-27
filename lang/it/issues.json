@@ -223,7 +223,8 @@
         "round_stops_save": "Salva fermate",
         "round_stops_saved": "Fermate del giro salvate.",
         "recurring_ended": "Segnalazione ricorrente chiusa.",
-        "recurring_end_modal_subtitle": "Chiuda questa segnalazione ricorrente. I nuovi cicli si interrompono; anche i compiti aperti verranno chiusi."
+        "recurring_end_modal_subtitle": "Chiuda questa segnalazione ricorrente. I nuovi cicli si interrompono; anche i compiti aperti verranno chiusi.",
+        "open_unit": "Apri unit"
     },
     "updates": {
         "kind": {
