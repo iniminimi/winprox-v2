@@ -65,7 +65,13 @@
         "value_above_max": "Wert darf nicht über :max liegen.",
         "value_choice_invalid": "Gültige Option wählen.",
         "value_string_too_long": "Text ist zu lang.",
-        "worker_invalid": "Mitarbeiter gehört nicht zu dieser Organisation."
+        "worker_invalid": "Mitarbeiter gehört nicht zu dieser Organisation.",
+        "options_required": "Fügen Sie mindestens eine Auswahloption hinzu.",
+        "type_locked": "Typ kann nicht geändert werden, weil bereits Messungen existieren.",
+        "min_max_order": "Maximum muss größer oder gleich dem Minimum sein.",
+        "name_unique": "Ein Messfeld mit diesem Namen existiert bereits.",
+        "option_in_use": "Option „:option“ kann nicht entfernt werden, weil Messungen sie verwenden.",
+        "fields_invalid": "Ein oder mehrere Messfelder sind ungültig oder inaktiv."
     },
     "validation": {
         "field_required": "Messfeld wählen.",

@@ -6,6 +6,7 @@ namespace App\Livewire\UnitMeasurements;
 
 use App\Actions\UnitMeasurements\SaveUnitMeasureFieldAction;
 use App\Actions\UnitMeasurements\SetUnitMeasureFieldActiveAction;
+use App\Data\UnitMeasurements\SaveUnitMeasureFieldData;
 use App\Enums\UnitMeasureFieldType;
 use App\Http\Requests\UnitMeasurements\SaveUnitMeasureFieldRequest;
 use App\Models\UnitMeasureField;
@@ -134,8 +135,8 @@ class FieldsIndex extends Component
         }
 
         try {
-            $save->handle(
-                data: [
+            $dto = SaveUnitMeasureFieldRequest::toData(
+                [
                     'name' => $validated['name'],
                     'type' => $validated['type'],
                     'unit_of_measure' => $validated['unitOfMeasure'] ?? null,
@@ -146,6 +147,12 @@ class FieldsIndex extends Component
                         : [],
                     'is_active' => $existing?->is_active ?? true,
                 ],
+                tenantId: (int) Tenancy::id(),
+                field: $existing,
+            );
+
+            $save->handle(
+                data: $dto,
                 tenantId: (int) Tenancy::id(),
                 field: $existing,
                 actorUserId: auth()->id() ? (int) auth()->id() : null,

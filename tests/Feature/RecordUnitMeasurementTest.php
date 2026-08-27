@@ -12,9 +12,12 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitMeasureField;
 use App\Models\UnitMeasurement;
+use App\Models\WebhookEndpoint;
 use App\Support\Tenancy;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Validation\ValidationException;
 
 afterEach(fn () => Tenancy::forget());
@@ -114,6 +117,35 @@ it('rejects numeric values above the field maximum', function () {
         expect($e->errors())->toHaveKey('value_numeric')
             ->and($e->errors())->toHaveKey('fields.'.$fixture['field']->id);
     }
+});
+
+it('dispatches unit.measurement.recorded webhook', function () {
+    Queue::fake();
+    Http::fake(['*' => Http::response('ok', 200)]);
+
+    $fixture = unitMeasurementFixture();
+
+    WebhookEndpoint::factory()->create([
+        'tenant_id' => $fixture['tenant']->id,
+        'events' => ['unit.measurement.recorded'],
+        'is_active' => true,
+    ]);
+
+    app(RecordUnitMeasurementAction::class)->handle(
+        unit: $fixture['unit'],
+        data: new RecordUnitMeasurementData(
+            unitMeasureFieldId: (int) $fixture['field']->id,
+            source: UnitMeasurementSource::Api,
+            recordedAt: CarbonImmutable::now(),
+            valueNumeric: 42,
+        ),
+        tenantId: (int) $fixture['tenant']->id,
+    );
+
+    $this->assertDatabaseHas('webhook_deliveries', [
+        'tenant_id' => $fixture['tenant']->id,
+        'event' => 'unit.measurement.recorded',
+    ]);
 });
 
 it('rejects measurement when field is not linked to the unit', function () {

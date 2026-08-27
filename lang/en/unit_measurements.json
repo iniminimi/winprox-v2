@@ -65,7 +65,13 @@
         "value_above_max": "Value must not be above :max.",
         "value_choice_invalid": "Choose a valid option.",
         "value_string_too_long": "Text is too long.",
-        "worker_invalid": "Worker does not belong to this organisation."
+        "worker_invalid": "Worker does not belong to this organisation.",
+        "options_required": "Add at least one choice option.",
+        "type_locked": "Type cannot be changed because measurements already exist.",
+        "min_max_order": "Maximum must be greater than or equal to minimum.",
+        "name_unique": "A measure field with this name already exists.",
+        "option_in_use": "Option \":option\" cannot be removed because measurements use it.",
+        "fields_invalid": "One or more measure fields are invalid or inactive."
     },
     "validation": {
         "field_required": "Choose a measure field.",

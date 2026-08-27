@@ -92,3 +92,16 @@ it('rejects API measurement when unit measurements are disabled', function () {
         'value_numeric' => 1,
     ])->assertStatus(422);
 });
+
+it('rejects API measurement above the field maximum', function () {
+    $fixture = unitMeasurementsApiFixture();
+    $fixture['field']->update(['max_value' => 999999]);
+    $token = $fixture['user']->createToken('test', ['units:update'])->plainTextToken;
+
+    $this->withToken($token)->postJson('/api/v1/units/'.$fixture['unit']->id.'/measurements', [
+        'unit_measure_field_id' => $fixture['field']->id,
+        'recorded_at' => now()->toIso8601String(),
+        'value_numeric' => 5000000,
+    ])->assertStatus(422)
+        ->assertJsonValidationErrors(['value_numeric']);
+});

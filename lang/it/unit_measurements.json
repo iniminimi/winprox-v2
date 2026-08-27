@@ -65,7 +65,13 @@
         "value_above_max": "Il valore non può essere superiore a :max.",
         "value_choice_invalid": "Scegli un’opzione valida.",
         "value_string_too_long": "Testo troppo lungo.",
-        "worker_invalid": "Lavoratore non appartenente all’organizzazione."
+        "worker_invalid": "Lavoratore non appartenente all’organizzazione.",
+        "options_required": "Aggiungi almeno un’opzione di scelta.",
+        "type_locked": "Il tipo non può essere modificato perché esistono già misurazioni.",
+        "min_max_order": "Il massimo deve essere maggiore o uguale al minimo.",
+        "name_unique": "Esiste già un campo di misura con questo nome.",
+        "option_in_use": "L’opzione «:option» non può essere rimossa perché ci sono misurazioni che la usano.",
+        "fields_invalid": "Uno o più campi di misura non sono validi o non sono attivi."
     },
     "validation": {
         "field_required": "Scegli un campo.",

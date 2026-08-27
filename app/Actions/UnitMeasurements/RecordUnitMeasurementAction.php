@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Actions\UnitMeasurements;
 
 use App\Data\UnitMeasurements\RecordUnitMeasurementData;
-use App\Enums\UnitMeasureFieldType;
 use App\Events\UnitMeasurements\UnitMeasurementRecorded;
+use App\Http\Requests\UnitMeasurements\RecordUnitMeasurementRequest;
 use App\Models\Unit;
 use App\Models\UnitMeasureField;
 use App\Models\UnitMeasurement;
@@ -58,13 +58,11 @@ class RecordUnitMeasurementAction
             ]);
         }
 
-        if ($data->valueForType($field->type) === null) {
-            throw ValidationException::withMessages([
-                $field->type->valueColumn() => [__('unit_measurements.errors.value_required')],
-            ]);
-        }
-
-        $this->assertValueMatchesField($field, $data);
+        RecordUnitMeasurementRequest::assertValueMatchesField([
+            'value_numeric' => $data->valueNumeric,
+            'value_boolean' => $data->valueBoolean,
+            'value_string' => $data->valueString,
+        ], $field);
 
         if ($worker !== null && (int) $worker->tenant_id !== $tenantId) {
             throw ValidationException::withMessages([
@@ -106,48 +104,5 @@ class RecordUnitMeasurementAction
         event(new UnitMeasurementRecorded($measurement, $actorUserId));
 
         return $measurement;
-    }
-
-    private function assertValueMatchesField(UnitMeasureField $field, RecordUnitMeasurementData $data): void
-    {
-        if ($field->type === UnitMeasureFieldType::Numeric) {
-            $value = $data->valueNumeric;
-            if ($value === null) {
-                return;
-            }
-            if ($field->min_value !== null && $value < (float) $field->min_value) {
-                $this->failFieldValue(
-                    $field,
-                    'value_numeric',
-                    __('unit_measurements.errors.value_below_min', ['min' => $field->min_value]),
-                );
-            }
-            if ($field->max_value !== null && $value > (float) $field->max_value) {
-                $this->failFieldValue(
-                    $field,
-                    'value_numeric',
-                    __('unit_measurements.errors.value_above_max', ['max' => $field->max_value]),
-                );
-            }
-        }
-
-        if ($field->type === UnitMeasureFieldType::Choice) {
-            $options = $field->normalizedChoiceOptions();
-            if ($data->valueString === null || ! in_array($data->valueString, $options, true)) {
-                $this->failFieldValue($field, 'value_string', __('unit_measurements.errors.value_choice_invalid'));
-            }
-        }
-
-        if ($field->type === UnitMeasureFieldType::String && $data->valueString !== null && mb_strlen($data->valueString) > 500) {
-            $this->failFieldValue($field, 'value_string', __('unit_measurements.errors.value_string_too_long'));
-        }
-    }
-
-    private function failFieldValue(UnitMeasureField $field, string $valueKey, string $message): never
-    {
-        throw ValidationException::withMessages([
-            $valueKey => [$message],
-            'fields.'.$field->id => [$message],
-        ]);
     }
 }

@@ -6,7 +6,6 @@ namespace App\Actions\UnitMeasurements;
 
 use App\Models\UnitMeasureField;
 use App\Support\Audit\AuditRecorder;
-use Illuminate\Validation\ValidationException;
 
 class SetUnitMeasureFieldActiveAction
 {

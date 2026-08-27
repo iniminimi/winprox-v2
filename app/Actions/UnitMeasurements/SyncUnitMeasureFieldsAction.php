@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Actions\UnitMeasurements;
 
+use App\Http\Requests\UnitMeasurements\SyncUnitMeasureFieldsRequest;
 use App\Models\Unit;
-use App\Models\UnitMeasureField;
 use App\Support\Audit\AuditRecorder;
-use Illuminate\Validation\ValidationException;
 
 class SyncUnitMeasureFieldsAction
 {
@@ -19,21 +18,7 @@ class SyncUnitMeasureFieldsAction
     public function handle(Unit $unit, array $fieldIds, ?int $actorUserId = null): Unit
     {
         $tenantId = (int) $unit->tenant_id;
-        $uniqueIds = array_values(array_unique(array_map('intval', $fieldIds)));
-
-        if ($uniqueIds !== []) {
-            $count = UnitMeasureField::query()
-                ->where('tenant_id', $tenantId)
-                ->where('is_active', true)
-                ->whereIn('id', $uniqueIds)
-                ->count();
-
-            if ($count !== count($uniqueIds)) {
-                throw ValidationException::withMessages([
-                    'measure_field_ids' => [__('unit_measurements.errors.fields_invalid')],
-                ]);
-            }
-        }
+        $uniqueIds = SyncUnitMeasureFieldsRequest::assertActiveFieldIdsForTenant($tenantId, $fieldIds);
 
         $unit->measureFields()->sync($uniqueIds);
 

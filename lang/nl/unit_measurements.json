@@ -65,7 +65,13 @@
         "value_above_max": "Waarde mag niet hoger zijn dan :max.",
         "value_choice_invalid": "Kies een geldige optie.",
         "value_string_too_long": "Tekst is te lang.",
-        "worker_invalid": "Medewerker hoort niet bij deze organisatie."
+        "worker_invalid": "Medewerker hoort niet bij deze organisatie.",
+        "options_required": "Voeg minstens één keuzeoptie toe.",
+        "type_locked": "Type kan niet meer worden gewijzigd omdat er al metingen zijn.",
+        "min_max_order": "Maximum moet groter dan of gelijk aan minimum zijn.",
+        "name_unique": "Er bestaat al een meetveld met deze naam.",
+        "option_in_use": "Optie \":option\" kan niet worden verwijderd omdat er metingen aan hangen.",
+        "fields_invalid": "Een of meer meetvelden zijn ongeldig of niet actief."
     },
     "validation": {
         "field_required": "Kies een meetveld.",
