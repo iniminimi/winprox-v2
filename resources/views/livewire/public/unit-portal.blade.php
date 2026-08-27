@@ -262,12 +262,6 @@
                         <span class="wp-tile-sub">{{ __('portal.tiles.unit_check_sub') }}</span>
                     </button>
                 @endif
-                @if (($allowsUnitMeasurements ?? false) && ($measureFields ?? collect())->isNotEmpty())
-                    <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('measure')">
-                        <span class="wp-tile-title">{{ __('portal.tiles.measure') }}</span>
-                        <span class="wp-tile-sub">{{ __('portal.tiles.measure_sub') }}</span>
-                    </button>
-                @endif
                 @if ($showNewReportSection)
                     <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('new')">
                         <span class="wp-tile-title">{{ __('portal.tiles.new') }}</span>
@@ -294,6 +288,12 @@
                 <button type="button" class="wp-tile" wire:click="openSection('documents')">
                     <span class="wp-tile-title">{{ __('portal.tiles.documents') }} : {{ $documents->count() }}</span>
                 </button>
+                @if (($allowsUnitMeasurements ?? false) && ($measureFields ?? collect())->isNotEmpty())
+                    <button type="button" class="wp-tile" wire:click="openSection('measure')">
+                        <span class="wp-tile-title">{{ __('portal.tiles.measure') }}</span>
+                        <span class="wp-tile-sub">{{ __('portal.tiles.measure_sub') }}</span>
+                    </button>
+                @endif
                 @if ($isReservable)
                     <button type="button" class="wp-tile" wire:click="openSection('reserve')">
                         <span class="wp-tile-title">{{ __('portal.tiles.reserve') }}</span>
