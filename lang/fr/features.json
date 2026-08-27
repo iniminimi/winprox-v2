@@ -34,7 +34,7 @@
                 "Plusieurs tâches par signalement, chacune assignée à une équipe",
                 "Calendrier, briefing et suivi via tableau de bord",
                 "Équipes, ouvriers et flux teamleader sur le terrain",
-                "Modèle de départ sur le tableau de bord (hôtel, hôpital, industrie ou commune)"
+                "Modèle de départ sur le tableau de bord (hôtel, hôpital, industrie, commune, gestion immobilière ou gestion de flotte)"
             ]
         },
         "audience": {

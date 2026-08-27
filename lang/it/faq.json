@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sedi e unit",
-                    "text": "Crea sedi e aggiungi unit (macchine, zone o spazi), una per una o in blocco — oppure carica dal cruscotto un modello iniziale (hotel, ospedale, industria o comune). In Luoghi, Categorie, Sedi e Units sono voci separate. Collega un team a una unit così i task arrivano automaticamente al team giusto."
+                    "text": "Crea sedi e aggiungi unit (macchine, zone o spazi), una per una o in blocco — oppure carica dal cruscotto un modello iniziale (hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta). In Luoghi, Categorie, Sedi e Units sono voci separate. Collega un team a una unit così i task arrivano automaticamente al team giusto."
                 },
                 {
                     "title": "Creare segnalazione",

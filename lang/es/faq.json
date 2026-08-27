@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sitios y units",
-                    "text": "Cree ubicaciones y añada units (máquinas, zonas o espacios), una a una o en bloque — o cargue en el panel una plantilla inicial (hotel, hospital, industria o ayuntamiento). En Lugares, Categorías, Ubicaciones y Units van por separado. Vincule un equipo a una unit para que las tareas lleguen automáticamente."
+                    "text": "Cree ubicaciones y añada units (máquinas, zonas o espacios), una a una o en bloque — o cargue en el panel una plantilla inicial (hotel, hospital, industria, ayuntamiento, gestión inmobiliaria o gestión de flotas). En Lugares, Categorías, Ubicaciones y Units van por separado. Vincule un equipo a una unit para que las tareas lleguen automáticamente."
                 },
                 {
                     "title": "Crear incidencia",

@@ -53,4 +53,28 @@ return [
             ['key' => 'hall_003', 'category' => 'sports'],
         ],
     ],
+    'realestate' => [
+        'teams' => [
+            'technical' => ['categories' => ['apartments', 'technical']],
+            'cleaning' => ['categories' => ['apartments', 'common']],
+        ],
+        'categories' => ['apartments', 'common', 'technical'],
+        'units' => [
+            ['key' => 'apt_101', 'category' => 'apartments'],
+            ['key' => 'apt_102', 'category' => 'apartments'],
+            ['key' => 'boiler_room', 'category' => 'technical'],
+        ],
+    ],
+    'fleet' => [
+        'teams' => [
+            'workshop' => ['categories' => ['vehicles', 'workshop']],
+            'planning' => ['categories' => ['vehicles', 'depot']],
+        ],
+        'categories' => ['vehicles', 'workshop', 'depot'],
+        'units' => [
+            ['key' => 'vehicle_001', 'category' => 'vehicles'],
+            ['key' => 'vehicle_002', 'category' => 'vehicles'],
+            ['key' => 'bay_01', 'category' => 'workshop'],
+        ],
+    ],
 ];

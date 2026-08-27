@@ -93,6 +93,25 @@ it('maakt een hotel-starttemplate met namen in alle talen', function () {
     });
 });
 
+it('maakt vastgoed- en fleet-starttemplates', function (string $type, string $expectedUnit) {
+    [$tenant, $admin] = setupStarterPackAdmin('nl');
+
+    $payload = app(ApplyTenantStarterPackAction::class)->handle(
+        $tenant,
+        ApplyTenantStarterPackData::fromValidated(['starterPackType' => $type], 'nl'),
+        $admin,
+    );
+
+    $tenant->refresh();
+
+    expect($tenant->starter_pack_key)->toBe($type)
+        ->and($payload['unit_ids'])->toHaveCount(3)
+        ->and(Unit::query()->where('name', $expectedUnit)->exists())->toBeTrue();
+})->with([
+    ['realestate', 'App. 101'],
+    ['fleet', 'Voertuig 001'],
+]);
+
 it('weigert een starttemplate wanneer de werkruimte niet leeg is', function () {
     [$tenant, $admin] = setupStarterPackAdmin();
     InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
@@ -194,7 +213,7 @@ it('laadt een starttemplate via het dashboard en toont het resultaat', function 
         ->assertSee(__('starter_pack.types.hotel'))
         ->assertSee(__('dashboard.starter_pack.remove'))
         ->assertSee(__('dashboard.starter_pack.go_to_units'))
-        ->assertDontSee(__('dashboard.starter_pack.help_button'));
+        ->assertDontSeeHtml('wire:click="openStarterPackModal"');
 });
 
 it('weigert het starttemplate voor een medewerker', function () {
@@ -206,7 +225,7 @@ it('weigert het starttemplate voor een medewerker', function () {
 
     Livewire::actingAs($employee)
         ->test(Dashboard::class)
-        ->assertDontSee(__('dashboard.starter_pack.help_button'))
+        ->assertDontSeeHtml('wire:click="openStarterPackModal"')
         ->call('openStarterPackModal')
         ->assertForbidden();
 });

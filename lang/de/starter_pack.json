@@ -3,7 +3,9 @@
         "hotel": "Hotel",
         "hospital": "Krankenhaus",
         "industry": "Industrie",
-        "municipality": "Gemeindeverwaltung"
+        "municipality": "Gemeindeverwaltung",
+        "realestate": "Immobilienverwaltung",
+        "fleet": "Fuhrparkmanagement"
     },
     "packs": {
         "hotel": {
@@ -72,6 +74,40 @@
                 "hall_001": "Saal 001",
                 "hall_002": "Saal 002",
                 "hall_003": "Saal 003"
+            }
+        },
+        "realestate": {
+            "teams": {
+                "technical": "Technischer Dienst",
+                "cleaning": "Reinigung"
+            },
+            "categories": {
+                "apartments": "Wohnungen",
+                "common": "Gemeinschaftsbereiche",
+                "technical": "Technikräume"
+            },
+            "location": "Wohnanlage",
+            "units": {
+                "apt_101": "Whg. 101",
+                "apt_102": "Whg. 102",
+                "boiler_room": "Heizungsraum"
+            }
+        },
+        "fleet": {
+            "teams": {
+                "workshop": "Werkstatt",
+                "planning": "Disposition"
+            },
+            "categories": {
+                "vehicles": "Fahrzeuge",
+                "workshop": "Werkstatt",
+                "depot": "Depot"
+            },
+            "location": "Depot",
+            "units": {
+                "vehicle_001": "Fahrzeug 001",
+                "vehicle_002": "Fahrzeug 002",
+                "bay_01": "Hebebühne 01"
             }
         }
     }

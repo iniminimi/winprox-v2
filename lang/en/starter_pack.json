@@ -3,7 +3,9 @@
         "hotel": "Hotel",
         "hospital": "Hospital",
         "industry": "Industry",
-        "municipality": "Municipality"
+        "municipality": "Municipality",
+        "realestate": "Property management",
+        "fleet": "Fleet management"
     },
     "packs": {
         "hotel": {
@@ -72,6 +74,40 @@
                 "hall_001": "Hall 001",
                 "hall_002": "Hall 002",
                 "hall_003": "Hall 003"
+            }
+        },
+        "realestate": {
+            "teams": {
+                "technical": "Technical service",
+                "cleaning": "Cleaning"
+            },
+            "categories": {
+                "apartments": "Apartments",
+                "common": "Common areas",
+                "technical": "Technical rooms"
+            },
+            "location": "Residence",
+            "units": {
+                "apt_101": "Apt. 101",
+                "apt_102": "Apt. 102",
+                "boiler_room": "Boiler room"
+            }
+        },
+        "fleet": {
+            "teams": {
+                "workshop": "Workshop",
+                "planning": "Planning"
+            },
+            "categories": {
+                "vehicles": "Vehicles",
+                "workshop": "Workshop",
+                "depot": "Depot"
+            },
+            "location": "Depot",
+            "units": {
+                "vehicle_001": "Vehicle 001",
+                "vehicle_002": "Vehicle 002",
+                "bay_01": "Bay 01"
             }
         }
     }

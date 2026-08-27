@@ -10,6 +10,8 @@ enum TenantStarterPackType: string
     case Hospital = 'hospital';
     case Industry = 'industry';
     case Municipality = 'municipality';
+    case RealEstate = 'realestate';
+    case Fleet = 'fleet';
 
     public function labelKey(): string
     {

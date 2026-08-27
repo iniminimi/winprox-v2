@@ -3,7 +3,9 @@
         "hotel": "Hotel",
         "hospital": "Ziekenhuis",
         "industry": "Industrie",
-        "municipality": "Gemeentebestuur"
+        "municipality": "Gemeentebestuur",
+        "realestate": "Vastgoedbeheer",
+        "fleet": "Fleet management"
     },
     "packs": {
         "hotel": {
@@ -72,6 +74,40 @@
                 "hall_001": "Zaal 001",
                 "hall_002": "Zaal 002",
                 "hall_003": "Zaal 003"
+            }
+        },
+        "realestate": {
+            "teams": {
+                "technical": "Technische dienst",
+                "cleaning": "Schoonmaak"
+            },
+            "categories": {
+                "apartments": "Appartementen",
+                "common": "Gemeenschappelijke ruimtes",
+                "technical": "Technische ruimtes"
+            },
+            "location": "Residentie",
+            "units": {
+                "apt_101": "App. 101",
+                "apt_102": "App. 102",
+                "boiler_room": "Stookplaats"
+            }
+        },
+        "fleet": {
+            "teams": {
+                "workshop": "Werkplaats",
+                "planning": "Planning"
+            },
+            "categories": {
+                "vehicles": "Voertuigen",
+                "workshop": "Werkplaats",
+                "depot": "Depot"
+            },
+            "location": "Depot",
+            "units": {
+                "vehicle_001": "Voertuig 001",
+                "vehicle_002": "Voertuig 002",
+                "bay_01": "Brug 01"
             }
         }
     }

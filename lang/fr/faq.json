@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sites et units",
-                    "text": "Créez des lieux et ajoutez des units (machines, zones ou espaces), une par une ou en masse — ou chargez un modèle de départ depuis le tableau de bord (hôtel, hôpital, industrie ou commune). Sous Lieux, Catégories, Lieux et Units sont séparés. Liez une équipe à une unit pour que les tâches arrivent automatiquement."
+                    "text": "Créez des lieux et ajoutez des units (machines, zones ou espaces), une par une ou en masse — ou chargez un modèle de départ depuis le tableau de bord (hôtel, hôpital, industrie, commune, gestion immobilière ou gestion de flotte). Sous Lieux, Catégories, Lieux et Units sont séparés. Liez une équipe à une unit pour que les tâches arrivent automatiquement."
                 },
                 {
                     "title": "Créer un signalement",

@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Locaties en units",
-                    "text": "Maak locaties aan en voeg units toe (machines, zones of ruimtes), één voor één of in bulk — of laad op het dashboard een starttemplate (hotel, ziekenhuis, industrie of gemeentebestuur). Onder Plaatsen staan Categorieën, Locaties en Units apart. Koppel een team aan een unit zodat taken automatisch goed landen."
+                    "text": "Maak locaties aan en voeg units toe (machines, zones of ruimtes), één voor één of in bulk — of laad op het dashboard een starttemplate (hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer of fleet management). Onder Plaatsen staan Categorieën, Locaties en Units apart. Koppel een team aan een unit zodat taken automatisch goed landen."
                 },
                 {
                     "title": "Melding maken",
