@@ -2,7 +2,7 @@
 <p>
     WinProx (“Work in Proximity”) is een SaaS-platform voor technisch en operationeel locatiebeheer:
     QR-meldingen, opvolging van issues en taken voor interne operationele teams, en optioneel
-    ESG-/compliance-registratie en IoT Connect (sensor-events naar workflow).
+    unitmetingen, optionele ESG-/compliance-registratie en IoT Connect (sensor-events naar workflow).
 </p>
 <p>
     Het platform wordt geëxploiteerd door:
@@ -66,6 +66,7 @@
     <li>communicatie en historiek binnen het platform.</li>
     <li>foto’s en bijlagen die bij meldingen of taken worden toegevoegd.</li>
     <li>unit checks (OK/Niet OK via unit-QR door uitvoerders), indien ingeschakeld op categorie en unit.</li>
+    <li>unitmetingen (meetwaarden via unit-QR, bv. kilometerstand of temperatuur), indien ingeschakeld op categorie en unit.</li>
 </ul>
 
 <p><strong>Uitvoerders (zonder login)</strong></p>
@@ -90,6 +91,15 @@
 <p>
     Indien de klant Unit checks inschakelt op categorie én unit, kunnen uitvoerders via de unit-QR (na aanmelding via Clock Point) een OK- of Niet OK-resultaat registreren, eventueel met checklist en GPS. Dit is geen melding: bij OK wordt geen issue aangemaakt. WinProx bewaart resultaat, tijdstip, unit, optioneel GPS-coördinaten en de uitvoerder. Bewaartermijn geldt dezelfde als voor meldingen en taken, tenzij anders bepaald in uw organisatie.
 </p>
+<p><strong>Unitmetingen</strong></p>
+<p>
+    Indien de klant Unitmetingen inschakelt op categorie én unit en meetvelden koppelt, kunnen meetwaarden
+    (bijvoorbeeld kilometerstand, temperatuur of status) via de unit-QR worden doorgegeven. Clock Point is niet verplicht;
+    indien een uitvoerder is aangemeld, kan die worden gekoppeld aan de meting. WinProx bewaart veld, waarde, tijdstip,
+    unit/locatie, bron (portaal, API of beheer) en optioneel uitvoerder of beheerder. Dit is geen melding en geen ESG-meting.
+    Bewaartermijn geldt dezelfde als voor meldingen en taken, tenzij anders bepaald in uw organisatie.
+</p>
+
 
 
 <p><strong>ESG & Compliance (optionele module)</strong></p>
@@ -151,6 +161,7 @@
     <li>productverbetering via onboarding-statistieken (geaggregeerd waar mogelijk).</li>
     <li>beveiliging en logging.</li>
     <li>meertalige ondersteuning via AI-vertalingen (periodiek door WinProx uitgevoerd, zonder vaste doorlooptijd).</li>
+    <li>registratie van unitmetingen (meetwaarden via unit-QR), indien ingeschakeld op categorie en unit.</li>
     <li>registratie en opvolging van ESG-/compliance-metingen (indien de module is geactiveerd).</li>
     <li>verwerking van IoT-events tot meldingen, taken en/of ESG-metingen (indien IoT Connect is geactiveerd).</li>
 </ul>
@@ -183,6 +194,7 @@
     <li>gebruikersaccounts: actief + 24 maanden.</li>
     <li>meldingen en taken: contractperiode + 36 maanden.</li>
     <li>unit checks: dezelfde bewaartermijn als meldingen en taken (contractperiode + 36 maanden).</li>
+    <li>unitmetingen: dezelfde bewaartermijn als meldingen en taken (contractperiode + 36 maanden).</li>
     <li>onbevestigde QR-meldingen (e-mailhold): tot het verlopen van de bevestigingslink (standaard 60 minuten), daarna verwijdering inclusief foto’s; bevestigde hold-rijen tot 7 dagen (de melding zelf volgt de bewaartermijn voor meldingen).</li>
     <li>logs: 6 maanden.</li>
     <li>onboarding-events per gebruiker (voor onboarding-statistieken): 6 maanden; geaggregeerde onboardingcijfers zonder persoonsdata blijven langer bewaard.</li>

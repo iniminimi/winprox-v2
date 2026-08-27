@@ -12,7 +12,7 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "How does WinProx work?",
-            "intro": "WinProx follows one core flow: issue → tasks → completion. Time (punch clock) is optional; ESG (measurements) is also optional.",
+            "intro": "WinProx follows one core flow: issue → tasks → completion. Time (punch clock) is optional; ESG (measurements) is also optional. Optional unit measurements via the unit QR.",
             "summary": "Sites and units, issues via QR or admin, approval on the public portal, tasks per team, follow-up via dashboard, briefing, and calendar. Time (punch clock) optional; ESG optional.",
             "steps": [
                 {
@@ -86,15 +86,15 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Which QR codes are there?",
-            "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Clock Point QR: workers sign in (name + icon) and see their team tasks; clock in/out only with Time (punch clock). Location QR: general link to the site. Everything opens in the browser — no app.",
-            "summary": "Unit QR (reports/tasks/unit check), Clock Point QR (sign-in; clocking with Time), location QR — all in the browser."
+            "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Clock Point QR: workers sign in (name + icon) and see their team tasks; clock in/out only with Time (punch clock). Location QR: general link to the site. Everything opens in the browser — no app. Optionally also unit measurements (km, temperature, status) when category and unit allow it.",
+            "summary": "Unit QR (reports/tasks/unit check), Clock Point QR (sign-in; clocking with Time), location QR — all in the browser. Optional unit measurements."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "How does the reporter portal work?",
             "intro": "Scanning the unit QR opens a web page for that unit. Reporters describe problems; approved issues and shared documents/announcements are visible. Workers with team access can complete open tasks and — when enabled — run unit checks.",
-            "summary": "Unit QR portal: report, approved issues, documents, announcements, on-site tasks and optional unit check for workers. Optional: contact details and/or email confirmation (category and unit); until the link there is no issue.",
+            "summary": "Unit QR portal: report, approved issues, documents, announcements, on-site tasks and optional unit check for workers. Optional: contact details and/or email confirmation (category and unit); until the link there is no issue. Optional unit measurements via the Measure tile.",
             "sections": [
                 {
                     "title": "New issue",
@@ -119,6 +119,10 @@
                 {
                     "title": "Unit check (workers)",
                     "text": "Workers only, after Clock Point sign-in, and only when the administrator enabled unit checks on category and unit. Record OK or Not OK, optionally with a checklist. OK does not create an issue; after Not OK a normal report can follow."
+                },
+                {
+                    "title": "Unit measurements",
+                    "text": "When unit measurements are enabled on category and unit and fields are linked, visitors or workers can submit values via the Measure tile (Clock Point not required). History under Work → Unit measurements."
                 }
             ]
         },
@@ -147,7 +151,7 @@
             "slug": "esg",
             "type": "text",
             "title": "What is ESG & Compliance?",
-            "body": "ESG is an optional module on WinProx Corporate to record measurement values during recurring inspections (energy, safety, …). Administrators see indicators, measurements and follow-up tasks. Link an indicator to a recurring issue; measurements via portal or API.",
+            "body": "ESG is an optional module on WinProx Corporate to record measurement values during recurring inspections (energy, safety, …). Administrators see indicators, measurements and follow-up tasks. Link an indicator to a recurring issue; measurements via portal or API. For simple meter readings without ESG setup, use unit measurements (Work → Unit measurements).",
             "summary": "ESG module on Corporate: indicators, measurements and follow-up for recurring inspections."
         },
         "for_who": {
@@ -272,8 +276,8 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API and webhooks?",
-            "body": "On Corporate (or when API is enabled) manage API tokens and outgoing webhooks (HMAC-signed) under Settings. Connect WinProx to other systems for issues, tasks, unit checks (unit.check.recorded), ESG measurements and more. IoT Connect uses a separate gateway token for sensor ingest (Corporate).",
-            "summary": "API tokens and webhooks under Settings (Corporate); issues, tasks, unit checks, ESG; HMAC deliveries. IoT ingest via gateway token (Corporate)."
+            "body": "On Corporate (or when API is enabled) manage API tokens and outgoing webhooks (HMAC-signed) under Settings. Connect WinProx to other systems for issues, tasks, unit checks (unit.check.recorded), unit measurements (unit.measurement.recorded), ESG measurements and more. IoT Connect uses a separate gateway token for sensor ingest (Corporate).",
+            "summary": "API tokens and webhooks under Settings (Corporate); issues, tasks, unit checks, unit measurements, ESG; HMAC deliveries. IoT ingest via gateway token (Corporate)."
         },
         "iot": {
             "slug": "iot",
@@ -288,6 +292,13 @@
             "title": "What are unit checks?",
             "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by field workers (after Clock Point). Enable first on category and unit (off by default). Optional checklists are managed under Teams (shared or linked to a team; starters for cleaning, technical and security) and linked per unit. For OK all points must be ticked. History and filters in Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements.",
             "summary": "OK/Not OK via unit QR (enable category + unit); checklists under Teams; OK does not create an issue; webhook unit.check.recorded."
+        },
+        "unit_measurements": {
+            "slug": "unit_measurements",
+            "type": "text",
+            "title": "What are unit measurements?",
+            "body": "Unit measurements are simple readings on a unit via the unit QR — for example odometer, room temperature or vehicle status. No ESG module required. Create measure fields under Work → Unit measurements (name, type, unit of measure), enable Allow unit measurements on category and unit, and link fields to the unit. The QR portal shows a Measure tile; history is in admin. API: POST /api/v1/units/{unit}/measurements (units:update ability). Webhook: unit.measurement.recorded. Separate from unit checks (OK/Not OK) and from ESG (Corporate compliance with recurring tasks).",
+            "summary": "Readings via unit QR (km, °C, status, …): fields under Work → Unit measurements; category + unit on; history; API/webhook. No ESG required."
         }
     }
 }

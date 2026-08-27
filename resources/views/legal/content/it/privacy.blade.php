@@ -2,7 +2,7 @@
 <p>
     WinProx («Work in Proximity») è una piattaforma SaaS per la gestione tecnica e operativa degli impianti:
     segnalazione di problematiche tramite QR e follow-up delle attività per i team operativi interni, e registrazione
-    ESG/conformità opzionale e IoT Connect (eventi sensore nel flusso di lavoro).
+    misurazioni unità, ESG/conformità opzionale e IoT Connect (eventi sensore nel flusso di lavoro).
 </p>
 <p>
     La piattaforma è gestita da:
@@ -66,6 +66,7 @@
     <li>comunicazioni e cronologia all'interno della piattaforma</li>
     <li>foto e allegati aggiunti a problematiche o attività</li>
     <li>controlli unità (OK/Non OK via QR unit da esecutori), se attivati su categoria e unit.</li>
+    <li>misurazioni unità (letture via QR unità, es. chilometraggio o temperatura), se attivate su categoria e unità.</li>
 </ul>
 
 <p><strong>Lavoratori (senza accesso)</strong></p>
@@ -89,6 +90,15 @@
 <p><strong>Controlli unità</strong></p>
 <p>
     Se il cliente attiva i controlli unità su categoria e unit, gli esecutori possono registrare OK o Non OK via QR unit (dopo Clock Point), eventualmente con checklist e GPS. Non è una segnalazione: OK non crea issue. WinProx conserva risultato, timestamp, unit, coordinate GPS opzionali ed esecutore. Conservazione come per segnalazioni e task, salvo policy interna diversa.
+</p>
+
+<p><strong>Misurazioni unità</strong></p>
+<p>
+    Se il cliente attiva le misurazioni unità su categoria e unità e collega i campi, le letture
+    (es. chilometraggio, temperatura o stato) possono essere inviate via QR unità. Clock Point non è obbligatorio;
+    se un operatore è autenticato, può essere collegato alla misurazione. WinProx conserva campo, valore, data/ora,
+    unità/sede, fonte (portale, API o admin) e opzionalmente operatore o utente. Non è una segnalazione né una misurazione ESG.
+    Il periodo di conservazione è lo stesso di segnalazioni e task, salvo diversa decisione della vostra organizzazione.
 </p>
 
 
@@ -119,6 +129,7 @@
 </p>
 <ul>
     <li>configurazione dei gateway e token di autenticazione (memorizzati in modo sicuro; un nuovo token è tipicamente mostrato una sola volta).</li>
+    <li>registrazione di misurazioni unità (letture via QR unità), se attivate su categoria e unità.</li>
     <li>mappature sensore (id esterno → sede/unità, opzionalmente un indicatore ESG).</li>
     <li>regole di allarme (soglie, operatore, team assegnato, priorità, testo).</li>
     <li>record di eventi (elaborato / ignorato / deduplicato / fallito) — nessun archivio continuo di serie temporali.</li>
@@ -182,6 +193,7 @@
     <li>account utente: attivi + 24 mesi</li>
     <li>problematiche e attività: durata del contratto + 36 mesi</li>
     <li>controlli unità: stesso periodo di conservazione di segnalazioni e attività (durata del contratto + 36 mesi).</li>
+    <li>misurazioni unità: stesso periodo di conservazione di segnalazioni e task (periodo contrattuale + 36 mesi).</li>
     <li>segnalazioni QR non confermate (hold e-mail): fino alla scadenza del link di conferma (in genere 60 minuti), poi eliminazione comprese le foto; righe hold confermate fino a 7 giorni (la segnalazione segue la conservazione delle segnalazioni).</li>
     <li>registri: 6 mesi</li>
     <li>eventi di onboarding per utente (per statistiche di onboarding): 6 mesi; i dati aggregati di onboarding senza dati personali possono essere conservati più a lungo</li>

@@ -2,7 +2,7 @@
 <p>
     WinProx (“Work in Proximity”) is a SaaS platform for technical and operational site management:
     QR issue reporting and task follow-up for internal operational teams, and optional
-    ESG/compliance recording and IoT Connect (sensor events into workflow).
+    unit measurements, optional ESG/compliance recording and IoT Connect (sensor events into workflow).
 </p>
 <p>
     The platform is operated by:
@@ -66,6 +66,7 @@
     <li>communication and history within the platform</li>
     <li>photos and attachments added to issues or tasks</li>
     <li>unit checks (OK/Not OK via unit QR by workers), when enabled on category and unit.</li>
+    <li>unit measurements (readings via unit QR, e.g. odometer or temperature), when enabled on category and unit.</li>
 </ul>
 
 <p><strong>Workers (without login)</strong></p>
@@ -90,6 +91,15 @@
 <p>
     If the customer enables unit checks on category and unit, workers can record an OK or Not OK result via the unit QR (after Clock Point sign-in), optionally with checklist and GPS. This is not an issue: OK does not create a report. WinProx stores the result, timestamp, unit, optional GPS coordinates and the worker. Retention follows the same policy as for issues and tasks unless your organisation specifies otherwise.
 </p>
+<p><strong>Unit measurements</strong></p>
+<p>
+    If the customer enables unit measurements on category and unit and links measure fields, readings
+    (for example odometer, temperature or status) can be submitted via the unit QR. Clock Point is not required;
+    if a worker is signed in, they may be linked to the reading. WinProx stores field, value, timestamp,
+    unit/location, source (portal, API or admin) and optionally worker or staff user. This is not an issue and not an ESG measurement.
+    Retention follows the same policy as for issues and tasks unless your organisation specifies otherwise.
+</p>
+
 
 
 <p><strong>ESG & Compliance (optional module)</strong></p>
@@ -151,6 +161,7 @@
     <li>product improvement through superuser onboarding statistics (aggregated where possible).</li>
     <li>security and logging.</li>
     <li>multilingual support via AI translations (run periodically by WinProx, with no guaranteed turnaround).</li>
+    <li>recording unit measurements (readings via unit QR), when enabled on category and unit.</li>
     <li>recording and follow-up of ESG/compliance measurements (if the module is enabled).</li>
     <li>processing IoT events into issues, tasks and/or ESG measurements (if IoT Connect is enabled).</li>
 </ul>
@@ -182,6 +193,7 @@
     <li>user accounts: active + 24 months</li>
     <li>issues and tasks: contract period + 36 months</li>
     <li>unit checks: same retention as issues and tasks (contract term + 36 months).</li>
+    <li>unit measurements: same retention as issues and tasks (contract term + 36 months).</li>
     <li>unverified QR reports (email hold): until the confirmation link expires (typically 60 minutes), then deletion including photos; confirmed hold rows up to 7 days (the issue itself follows issue retention).</li>
     <li>logs: 6 months</li>
     <li>onboarding events per user (for onboarding statistics): 6 months; aggregated onboarding figures without personal data may be retained longer</li>

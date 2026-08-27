@@ -23,11 +23,11 @@
     "sections": {
         "admin_portal": {
             "title": "People through settings",
-            "intro": "Chapters on the signed-in admin portal: People (Backoffice for colleague users, Teams for checklists and workers), locations, issues, tasks, calendar, reservations, dashboard, optional Time punch clock, optional ESG module, IoT Connect, settings and subscription (including data deletion)."
+            "intro": "Chapters on the signed-in admin portal: People (Backoffice for colleague users, Teams for checklists and workers), locations, issues, tasks, calendar, reservations, dashboard, optional Time punch clock, unit measurements, optional ESG module, IoT Connect, settings and subscription (including data deletion)."
         },
         "internet_portal": {
             "title": "QR codes on site",
-            "intro": "Help for unit QR and Clock Point QR on site: sign-in, reports, unit check, reservations, tasks, photos, new-team-tasks banner and team leader features."
+            "intro": "Help for unit QR and Clock Point QR on site: sign-in, reports, unit check, unit measurements, reservations, tasks, photos, new-team-tasks banner and team leader features."
         }
     },
     "statuses": "Statuses",

@@ -144,6 +144,13 @@
         "iot_rule.deactivated": "IoT rule deactivated",
         "issue.recurrence_ended": "Segnalazione ricorrente chiusa",
         "issue.recurrence_paused": "Segnalazione ricorrente in pausa",
-        "issue.recurrence_resumed": "Segnalazione ricorrente ripresa"
+        "issue.recurrence_resumed": "Segnalazione ricorrente ripresa",
+        "unit_measure_field.created": "Campo di misura creato",
+        "unit_measure_field.updated": "Campo di misura aggiornato",
+        "unit_measure_field.activated": "Campo di misura attivato",
+        "unit_measure_field.deactivated": "Campo di misura disattivato",
+        "unit.measure_fields_synced": "Campi di misura unità sincronizzati",
+        "unit_measurement.recorded": "Misurazione unità registrata",
+        "unit.measurement.recorded": "Misurazione unità registrata"
     }
 }

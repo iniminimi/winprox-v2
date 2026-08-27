@@ -2,7 +2,7 @@
 <p>
     WinProx („Work in Proximity“) ist eine SaaS-Plattform für technisches und operatives Standortmanagement:
     QR-Meldungen, Nachverfolgung von Issues und Aufgaben für interne operative Teams sowie optionale
-    ESG-/Compliance-Erfassung und IoT Connect (Sensor-Events in den Workflow).
+    Unit-Messungen, ESG-/Compliance-Erfassung und IoT Connect (Sensor-Events in den Workflow).
 </p>
 <p>
     Die Plattform wird betrieben von:
@@ -66,6 +66,7 @@
     <li>Kommunikation und Verlauf innerhalb der Plattform.</li>
     <li>Fotos und Anhänge zu Meldungen oder Aufgaben.</li>
     <li>Unit-Checks (OK/Nicht OK via Unit-QR durch Ausführer), wenn an Kategorie und Unit aktiviert.</li>
+    <li>Unit-Messungen (Messwerte per Unit-QR, z. B. Kilometerstand oder Temperatur), sofern an Kategorie und Unit aktiviert.</li>
 </ul>
 
 <p><strong>Ausführende (ohne Login)</strong></p>
@@ -89,6 +90,15 @@
 <p><strong>Unit-Checks</strong></p>
 <p>
     Aktiviert der Kunde Unit-Checks an Kategorie und Unit, können Ausführer über den Unit-QR (nach Clock-Point-Anmeldung) ein OK- oder Nicht-OK-Ergebnis erfassen, optional mit Checkliste und GPS. Dies ist keine Meldung: OK erstellt kein Issue. WinProx speichert Ergebnis, Zeitstempel, Unit, optional GPS-Koordinaten und den Ausführer. Aufbewahrung wie bei Meldungen und Aufgaben, sofern Ihre Organisation nichts anderes festlegt.
+</p>
+
+<p><strong>Unit-Messungen</strong></p>
+<p>
+    Wenn der Kunde Unit-Messungen an Kategorie und Unit aktiviert und Messfelder verknüpft, können Messwerte
+    (z. B. Kilometerstand, Temperatur oder Status) über den Unit-QR erfasst werden. Clock Point ist nicht erforderlich;
+    ist ein Ausführender angemeldet, kann er der Messung zugeordnet werden. WinProx speichert Feld, Wert, Zeitpunkt,
+    Unit/Standort, Quelle (Portal, API oder Admin) und optional Ausführenden oder Benutzer. Dies ist keine Meldung und keine ESG-Messung.
+    Die Aufbewahrung entspricht der für Meldungen und Aufgaben, sofern Ihre Organisation nichts anderes festlegt.
 </p>
 
 
@@ -119,6 +129,7 @@
 </p>
 <ul>
     <li>Gateway-Konfiguration und Authentifizierungstoken (sicher gespeichert; ein neues Token wird typischerweise einmalig angezeigt).</li>
+    <li>Erfassung von Unit-Messungen (Messwerte per Unit-QR), sofern an Kategorie und Unit aktiviert.</li>
     <li>Sensormappings (externe ID → Standort/Unit, optional ein ESG-Indikator).</li>
     <li>Alarmregeln (Schwellen, Operator, zugewiesenes Team, Priorität, Text).</li>
     <li>Event-Datensätze (verarbeitet / ignoriert / dedupliziert / fehlgeschlagen) — keine kontinuierliche Zeitreihen-Speicherung.</li>
@@ -183,6 +194,7 @@
     <li>Benutzerkonten: aktiv + 24 Monate.</li>
     <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate.</li>
     <li>Unit-Checks: gleiche Aufbewahrung wie Meldungen und Aufgaben (Vertragslaufzeit + 36 Monate).</li>
+    <li>Unit-Messungen: gleiche Aufbewahrungsfrist wie Meldungen und Aufgaben (Vertragsdauer + 36 Monate).</li>
     <li>unbestätigte QR-Meldungen (E-Mail-Hold): bis zum Ablauf des Bestätigungslinks (in der Regel 60 Minuten), danach Löschung inklusive Fotos; bestätigte Hold-Zeilen bis 7 Tage (die Meldung selbst folgt der Aufbewahrung für Meldungen).</li>
     <li>Protokolle: 6 Monate.</li>
     <li>Onboarding-Ereignisse pro Benutzer (für Onboarding-Statistiken): 6 Monate; aggregierte Onboarding-Kennzahlen ohne Personendaten können länger aufbewahrt werden.</li>

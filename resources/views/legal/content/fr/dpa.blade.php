@@ -20,7 +20,7 @@
 <p>
     WinProx traite des données personnelles sur instruction du client dans le cadre de l’utilisation de la plateforme pour
     la gestion de sites, les signalements QR et le suivi des issues et tâches, et — si activé — des mesures
-    ESG/conformité en option et IoT Connect (événements capteurs vers le workflow).
+    mesures d’unité, ESG/conformité en option et IoT Connect (événements capteurs vers le workflow).
 </p>
 
 <h2>3. Finalité du traitement</h2>
@@ -30,6 +30,8 @@
 <ul>
     <li>gestion des issues et tâches.</li>
     <li>enregistrement des contrôles d’unité (OK/Pas OK via QR d’unité), s’ils sont activés sur catégorie et unité.</li>
+    <li>données de mesures d’unité (champ, valeur, horodatage, unité, source, exécutant ou utilisateur optionnel).</li>
+    <li>enregistrement des mesures d’unité (relevés via QR d’unité), si activées sur catégorie et unité.</li>
     <li>gestion des utilisateurs et équipes internes.</li>
     <li>gestion des exécutants (sans connexion) et affectation aux tâches.</li>
     <li>gestion des sites et unités.</li>

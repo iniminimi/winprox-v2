@@ -12,7 +12,7 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "Hoe werkt WinProx?",
-            "intro": "WinProx volgt één kernflow: melding → taken → afhandeling. Time (prikklok) is optioneel; ESG (metingen) ook.",
+            "intro": "WinProx volgt één kernflow: melding → taken → afhandeling. Time (prikklok) is optioneel; ESG (metingen) ook. Optioneel unitmetingen via de unit-QR.",
             "summary": "Locaties en units, melding via QR of beheer, goedkeuring op het publieke portaal, taken per team, opvolging via dashboard, briefing en kalender. Time (prikklok) optioneel; ESG optioneel.",
             "steps": [
                 {
@@ -86,15 +86,15 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Welke QR-codes zijn er?",
-            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken af en kunnen — als categorie én unit Unit checks toestaan — OK/Niet OK registreren. Clock Point-QR: uitvoerders melden zich aan (naam + icoon) en zien hun teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app.",
-            "summary": "Unit-QR (melden/taken/unit check), Clock Point-QR (aanmelden; inklokken met Time), locatie-QR — allemaal in de browser."
+            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken af en kunnen — als categorie én unit Unit checks toestaan — OK/Niet OK registreren. Clock Point-QR: uitvoerders melden zich aan (naam + icoon) en zien hun teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app. Optioneel ook unitmetingen (km, temperatuur, status) als categorie én unit dat toestaan.",
+            "summary": "Unit-QR (melden/taken/unit check), Clock Point-QR (aanmelden; inklokken met Time), locatie-QR — allemaal in de browser. Optioneel unitmetingen."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "Hoe werkt het meldersportaal?",
             "intro": "Na het scannen van de unit-QR opent een webpagina voor die unit. Melders geven problemen door; goedgekeurde meldingen en gedeelde documenten/mededelingen zijn zichtbaar. Uitvoerders met teamtoegang kunnen open taken afhandelen en — wanneer ingeschakeld — unit checks uitvoeren.",
-            "summary": "Unit-QR-portaal: melding, open meldingen na goedkeuring, documenten, mededelingen, taken en optionele unit check voor uitvoerders. Optioneel: contactgegevens en/of e-mailbevestiging (categorie én unit); tot de link bestaat er geen melding.",
+            "summary": "Unit-QR-portaal: melding, open meldingen na goedkeuring, documenten, mededelingen, taken en optionele unit check voor uitvoerders. Optioneel: contactgegevens en/of e-mailbevestiging (categorie én unit); tot de link bestaat er geen melding. Optioneel unitmetingen via tegel Meting.",
             "sections": [
                 {
                     "title": "Nieuwe melding",
@@ -119,6 +119,10 @@
                 {
                     "title": "Unit check (uitvoerders)",
                     "text": "Alleen voor uitvoerders na Clock Point-aanmelding, en alleen als de beheerder Unit checks toestaat op categorie én unit. Registreer OK of Niet OK, eventueel met checklist. OK maakt geen melding; bij Niet OK kan daarna een gewone melding volgen."
+                },
+                {
+                    "title": "Unitmetingen",
+                    "text": "Wanneer Unitmetingen op categorie én unit aanstaan en er meetvelden gekoppeld zijn, kunnen bezoekers of uitvoerders via de tegel Meting waarden doorgeven (geen Clock Point vereist). Historiek in Werk → Unitmetingen."
                 }
             ]
         },
@@ -147,7 +151,7 @@
             "slug": "esg",
             "type": "text",
             "title": "Wat is ESG & Compliance?",
-            "body": "ESG is een optionele module op WinProx Corporate om meetwaarden vast te leggen bij terugkerende inspecties (energie, veiligheid, …). Beheerders zien indicatoren, metingen en opvolgtaken. Koppel een indicator aan een terugkerende melding; metingen gebeuren via het portaal of API.",
+            "body": "ESG is een optionele module op WinProx Corporate om meetwaarden vast te leggen bij terugkerende inspecties (energie, veiligheid, …). Beheerders zien indicatoren, metingen en opvolgtaken. Koppel een indicator aan een terugkerende melding; metingen gebeuren via het portaal of API. Voor eenvoudige meterstanden zonder ESG-setup gebruikt u unitmetingen (Werk → Unitmetingen).",
             "summary": "ESG-module op Corporate: indicatoren, metingen en opvolging bij terugkerende inspecties."
         },
         "for_who": {
@@ -272,8 +276,8 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API en webhooks?",
-            "body": "Op Corporate (of wanneer API is vrijgegeven) beheert u onder Instellingen API-tokens en uitgaande webhooks (HMAC-ondertekend). Zo koppelt u WinProx aan andere systemen voor meldingen, taken, unit checks (unit.check.recorded), ESG-metingen en meer. IoT Connect gebruikt een apart gateway-token voor sensor-ingest (Corporate).",
-            "summary": "API-tokens en webhooks onder Instellingen (Corporate); o.a. meldingen, taken, unit checks, ESG; HMAC-leveringen. IoT-ingest via gateway-token (Corporate)."
+            "body": "Op Corporate (of wanneer API is vrijgegeven) beheert u onder Instellingen API-tokens en uitgaande webhooks (HMAC-ondertekend). Zo koppelt u WinProx aan andere systemen voor meldingen, taken, unit checks (unit.check.recorded), unitmetingen (unit.measurement.recorded), ESG-metingen en meer. IoT Connect gebruikt een apart gateway-token voor sensor-ingest (Corporate).",
+            "summary": "API-tokens en webhooks onder Instellingen (Corporate); o.a. meldingen, taken, unit checks, unitmetingen, ESG; HMAC-leveringen. IoT-ingest via gateway-token (Corporate)."
         },
         "iot": {
             "slug": "iot",
@@ -288,6 +292,13 @@
             "title": "Wat zijn unit checks?",
             "body": "Unit checks zijn snelle OK/Niet OK-bevestigingen op de unit-QR door uitvoerders (na Clock Point). Schakel eerst in op categorie én unit (standaard uit). Optionele checklists maak je onder Teams (gedeeld of gekoppeld aan een team; starters voor schoonmaak, techniek en security) en koppel je per unit. Bij OK moeten alle punten afgevinkt zijn. Historiek en filters in Unit checks; webhook unit.check.recorded voor integraties. Los van meldingen en ESG-metingen.",
             "summary": "OK/Niet OK via unit-QR (categorie + unit aan); checklists onder Teams; geen melding bij OK; webhook unit.check.recorded."
+        },
+        "unit_measurements": {
+            "slug": "unit_measurements",
+            "type": "text",
+            "title": "Wat zijn unitmetingen?",
+            "body": "Unitmetingen zijn eenvoudige meetwaarden op een unit via de unit-QR — bijvoorbeeld kilometerstand, kamertemperatuur of voertuigstatus. Geen ESG-module nodig. Maak meetvelden onder Werk → Unitmetingen (naam, type, eenheid), zet Unitmetingen toestaan aan op categorie én unit, en koppel de velden aan de unit. Op het QR-portaal verschijnt de tegel Meting; historiek staat in beheer. Via API: POST /api/v1/units/{unit}/measurements (recht units:update). Webhook: unit.measurement.recorded. Los van unit checks (OK/Niet OK) en van ESG (Corporate-compliance met terugkerende taken).",
+            "summary": "Meetwaarden via unit-QR (km, °C, status, …): velden onder Werk → Unitmetingen; categorie + unit aan; historiek; API/webhook. Geen ESG nodig."
         }
     }
 }

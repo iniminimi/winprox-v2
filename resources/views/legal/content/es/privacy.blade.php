@@ -2,7 +2,7 @@
 <p>
     WinProx («Work in Proximity») es una plataforma SaaS para la gestión técnica y operativa de instalaciones:
     informes de incidencias mediante QR y seguimiento de tareas para equipos operativos internos, y registro
-    ESG/cumplimiento opcional e IoT Connect (eventos de sensores al flujo de trabajo).
+    mediciones de unidad, ESG/cumplimiento opcional e IoT Connect (eventos de sensores al flujo de trabajo).
 </p>
 <p>
     La plataforma está operada por:
@@ -66,6 +66,7 @@
     <li>comunicación e historial dentro de la plataforma</li>
     <li>fotos y archivos adjuntos añadidos a incidencias o tareas</li>
     <li>comprobaciones de unit (OK/No OK vía QR de la unit por ejecutores), si están activadas en categoría y unit.</li>
+    <li>mediciones de unidad (lecturas vía QR de unidad, p. ej. kilometraje o temperatura), si están activadas en categoría y unidad.</li>
 </ul>
 
 <p><strong>Trabajadores (sin inicio de sesión)</strong></p>
@@ -89,6 +90,15 @@
 <p><strong>Comprobaciones de unit</strong></p>
 <p>
     Si el cliente activa comprobaciones de unit en categoría y unit, los ejecutores pueden registrar OK o No OK vía el QR de la unit (tras Clock Point), opcionalmente con checklist y GPS. No es un aviso: OK no crea issue. WinProx guarda resultado, marca de tiempo, unit, coordenadas GPS opcionales y ejecutor. Retención igual que avisos y tareas, salvo política interna distinta.
+</p>
+
+<p><strong>Mediciones de unidad</strong></p>
+<p>
+    Si el cliente activa las mediciones de unidad en categoría y unidad y vincula campos, se pueden enviar lecturas
+    (p. ej. kilometraje, temperatura o estado) vía el QR de unidad. Clock Point no es obligatorio;
+    si un ejecutor está identificado, puede asociarse a la medición. WinProx guarda campo, valor, fecha/hora,
+    unidad/ubicación, origen (portal, API o admin) y opcionalmente ejecutor o usuario. No es un aviso ni una medición ESG.
+    El plazo de conservación es el mismo que para avisos y tareas, salvo decisión distinta de su organización.
 </p>
 
 
@@ -119,6 +129,7 @@
 </p>
 <ul>
     <li>configuración de pasarelas y tokens de autenticación (almacenados de forma segura; un token nuevo suele mostrarse una sola vez).</li>
+    <li>registro de mediciones de unidad (lecturas vía QR de unidad), si están activadas en categoría y unidad.</li>
     <li>mapeos de sensores (id externo → ubicación/unidad, opcionalmente un indicador ESG).</li>
     <li>reglas de alarma (umbrales, operador, equipo asignado, prioridad, texto).</li>
     <li>registros de eventos (procesado / ignorado / deduplicado / fallido) — sin almacenamiento continuo de series temporales.</li>
@@ -182,6 +193,7 @@
     <li>cuentas de usuario: activas + 24 meses</li>
     <li>incidencias y tareas: duración del contrato + 36 meses</li>
     <li>comprobaciones de unidad: mismo plazo que avisos y tareas (duración del contrato + 36 meses).</li>
+    <li>mediciones de unidad: mismo plazo de conservación que avisos y tareas (periodo contractual + 36 meses).</li>
     <li>avisos QR no confirmados (retención de correo): hasta que caduque el enlace de confirmación (normalmente 60 minutos), luego eliminación incluidas las fotos; filas de retención confirmadas hasta 7 días (el aviso en sí sigue el plazo de los avisos).</li>
     <li>registros: 6 meses</li>
     <li>eventos de incorporación por usuario (para estadísticas de incorporación): 6 meses; las cifras agregadas de incorporación sin datos personales pueden conservarse más tiempo</li>

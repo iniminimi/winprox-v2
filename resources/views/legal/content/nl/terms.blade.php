@@ -8,7 +8,7 @@
 <p>
     WinProx (“Work in Proximity”) is een SaaS-platform voor technisch en operationeel locatiebeheer:
     QR-meldingen, opvolging van issues en taken voor interne operationele teams, en optioneel
-    ESG-/compliance-registratie en IoT Connect (sensor-events naar workflow).
+    unitmetingen, optionele ESG-/compliance-registratie en IoT Connect (sensor-events naar workflow).
 </p>
 
 <h2>2. Identiteit van de dienstverlener</h2>
@@ -25,6 +25,7 @@
     <li>taken kunnen beheren en opvolgen.</li>
     <li>werk kunnen toewijzen aan interne teams en uitvoerders.</li>
     <li>optioneel ESG-/compliance-metingen kunnen registreren en opvolgen (indien de module is geactiveerd).</li>
+    <li>unitmetingen (meetwaarden via unit-QR) kunnen registreren indien ingeschakeld op categorie en unit.</li>
     <li>optioneel IoT Connect gebruiken: gateways/sensoren koppelen zodat alarms en (waar van toepassing) metingen workflow in WinProx starten.</li>
 </ul>
 <p>

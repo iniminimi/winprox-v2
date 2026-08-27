@@ -279,6 +279,10 @@
                 {
                     "label": "E-mailbevestiging verplicht",
                     "text": "Zet dit aan als anonieme melders via de unit-QR hun e-mail moeten bevestigen. De melding, taak en webhook ontstaan pas na klikken op de link in de mail. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat. Voor ingelogde uitvoerders geldt dit niet."
+                },
+                {
+                    "label": "Unitmetingen toestaan",
+                    "text": "Zet bij een categorie Unitmetingen toestaan aan voor meetwaarden via de unit-QR (km, temperatuur, status, …). Zet daarna per unit Unitmetingen toestaan aan en koppel meetvelden (Werk → Unitmetingen). Beide vlaggen moeten aanstaan. Los van ESG en van unit checks."
                 }
             ]
         },
@@ -346,6 +350,10 @@
                 {
                     "label": "Documenten & mededelingen",
                     "text": "Beheer documenten en mededelingen voor het unit-QR-portaal. Documenten: zet «Actief» aan om het in het portaal te publiceren. Zonder «Alleen voor uitvoerders» kan elke bezoeker het document bekijken en downloaden. Met «Alleen voor uitvoerders» ziet en downloadt alleen een uitvoerder die zich in het portaal heeft aangemeld (naam + icoon) — niet via het beheerscherm met e-mail. Niet-actieve documenten blijven alleen hier zichtbaar. Actieve documenten worden automatisch vertaald door WinProx (periodiek; omschrijving); in het bewerkformulier ziet u een vertaal-preview per taal. De titel blijft in de brontaal."
+                },
+                {
+                    "label": "Unitmetingen toestaan",
+                    "text": "Alleen relevant als de categorie Unitmetingen toestaat. Staat standaard uit. Zet aan en selecteer welke meetvelden op deze unit horen."
                 }
             ]
         },
@@ -731,6 +739,10 @@
                 {
                     "label": "Thema",
                     "text": "Wissel rechtsboven tussen de thema's Standaard en Donker voor een weergave die aansluit bij uw voorkeur. Donker is handig op gsm."
+                },
+                {
+                    "label": "Unitmetingen",
+                    "text": "Wanneer categorie én unit Unitmetingen toestaan en er meetvelden gekoppeld zijn, toont het portaal de tegel Meting. Vul de waarden in en verstuur — geen Clock Point vereist. Historiek in beheer onder Werk → Unitmetingen."
                 }
             ],
             "status_note": "Open taken op deze pagina volgen de onderstaande statussen.",
@@ -1337,6 +1349,52 @@
                 {
                     "label": "Unit checks",
                     "text": "Wanneer unit checks aangevinkt zijn (bij de unit en de categorie waaraan de unit gekoppeld is) kan een uitvoerder in het unit-QR-portaal een snelle check uitvoeren. Daar bevestigt de uitvoerder dat de unit OK of niet OK is. Stel checks in onder Plaatsen → Categorieën / Locaties, en checklists onder Mensen → Teams."
+                },
+                {
+                    "label": "Unitmetingen",
+                    "text": "Wanneer unitmetingen aangevinkt zijn (unit én categorie) en meetvelden gekoppeld, kunnen waarden via de unit-QR worden doorgegeven. Meetvelden beheer je onder Werk → Unitmetingen."
+                }
+            ]
+        },
+        "unit-measurements.fields": {
+            "title": "Hulp — Meetvelden",
+            "actions": [
+                {
+                    "label": "Wat is een meetveld?",
+                    "text": "Een meetveld definieert wat je op units wilt registreren: naam, type (getal, ja/nee, tekst of keuze), optioneel eenheid (km, °C, L, …) en min/max. Velden hergebruik je op meerdere units."
+                },
+                {
+                    "label": "Aanmaken",
+                    "text": "Ga naar Werk → Unitmetingen → Velden. Voeg een veld toe, kies het type en vul bij getallen de eenheid in. Keuzevelden hebben opties (bv. Beschikbaar / In gebruik / Defect)."
+                },
+                {
+                    "label": "Activeren",
+                    "text": "Alleen actieve velden kun je aan units koppelen en via het portaal of de API invullen. Deactiveren behoudt de historiek."
+                },
+                {
+                    "label": "Koppelen aan units",
+                    "text": "Zet Unitmetingen toestaan aan op de categorie én op de unit. Kies daarna bij unit bewerken welke meetvelden op die unit horen."
+                }
+            ]
+        },
+        "unit-measurements.history": {
+            "title": "Hulp — Metingenhistoriek",
+            "actions": [
+                {
+                    "label": "Overzicht",
+                    "text": "Alle geregistreerde unitmetingen van je organisatie: tijdstip, veld, waarde, locatie/unit, bron (portaal, API of beheer) en eventueel de uitvoerder."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Filter op meetveld en locatie om snel de juiste rijen te vinden."
+                },
+                {
+                    "label": "Portaal",
+                    "text": "Op de unit-QR: tegel Meting wanneer categorie én unit Unitmetingen toestaan en er velden gekoppeld zijn. Geen Clock Point vereist."
+                },
+                {
+                    "label": "API & webhooks",
+                    "text": "POST /api/v1/units/{unit}/measurements met ability units:update. Elke nieuwe meting triggert unit.measurement.recorded."
                 }
             ]
         }

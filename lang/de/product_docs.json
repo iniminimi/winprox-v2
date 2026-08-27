@@ -340,7 +340,7 @@
                     "rows": [
                         [
                             "Facility",
-                            "Meldungen, Aufgaben, Standorte, Units, Teams, Ausführende, Unit-Checks"
+                            "Meldungen, Aufgaben, Standorte, Units, Teams, Ausführende, Unit-Checks, Unit-Messungen"
                         ],
                         [
                             "Time",

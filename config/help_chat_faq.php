@@ -41,6 +41,18 @@ return [
             'body_key' => 'faq.items.unit_checks.summary',
         ],
         [
+            'patterns' => [
+                'unitmeting', 'unitmetingen', 'unit measurement', 'unit measurements',
+                'meetveld', 'meetvelden', 'kilometerstand', 'odometer', 'kilométrage', 'kilometrage',
+                'kamertemperatuur', 'room temperature', 'voertuigstatus', 'vehicle status',
+                'unit-messung', 'unit-messungen', 'messfeld',
+                'medición de unidad', 'mediciones de unidad',
+                'misurazione unità', 'misurazioni unità',
+                'mesures d’unité', "mesures d'unité", 'mesure d’unité',
+            ],
+            'body_key' => 'faq.items.unit_measurements.summary',
+        ],
+        [
             'patterns' => ['melding', 'issue', 'report', 'signalement', 'inciden'],
             'body_key' => 'faq.items.how_it_works.summary',
         ],
@@ -57,7 +69,7 @@ return [
             'body_key' => 'faq.items.time_clock.summary',
         ],
         [
-            'patterns' => ['esg', 'compliance', 'meting', 'indicator', 'duurzaam', 'nachhalt'],
+            'patterns' => ['esg', 'compliance', 'indicator', 'duurzaam', 'nachhalt', 'esg-meting', 'esg measurement'],
             'body_key' => 'faq.items.esg.summary',
         ],
         [

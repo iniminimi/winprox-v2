@@ -20,7 +20,7 @@
 <p>
     WinProx processes personal data on the customer’s instructions in connection with use of the platform for
     site management, QR issue reporting and follow-up of issues and tasks, and — if enabled — optional
-    ESG/compliance measurements and IoT Connect (sensor events into workflow).
+    unit measurements, optional ESG/compliance measurements and IoT Connect (sensor events into workflow).
 </p>
 
 <h2>3. Purpose of processing</h2>
@@ -30,6 +30,7 @@
 <ul>
     <li>management of issues and tasks.</li>
     <li>recording of unit checks (OK/Not OK via unit QR), when enabled on category and unit.</li>
+    <li>recording of unit measurements (readings via unit QR), when enabled on category and unit.</li>
     <li>management of users and internal teams.</li>
     <li>management of workers (without login) and assignment to tasks.</li>
     <li>management of locations and units.</li>
@@ -46,6 +47,7 @@
     <li>location and unit data (addresses, location details).</li>
     <li>issue and task data (including photos and descriptions).</li>
     <li>unit check data (result, timestamp, unit, optional GPS, worker).</li>
+    <li>unit measurement data (measure field, value, timestamp, unit, source, optional worker or staff user).</li>
     <li>data of workers and QR reporters, to the extent collected by the customer (including temporary draft reports pending email confirmation).</li>
     <li>access and session data.</li>
     <li>subscription and access metadata.</li>
@@ -112,6 +114,7 @@
     <li>user accounts: active + 24 months.</li>
     <li>issues and tasks: contract period + 36 months.</li>
     <li>unit checks: same retention as issues and tasks.</li>
+    <li>unit measurements: same retention as issues and tasks.</li>
     <li>unverified QR reports (email hold): until the confirmation link expires (typically 60 minutes), then deletion including photos; confirmed hold rows up to 7 days.</li>
     <li>logs: 6 months.</li>
     <li>photos: 24 months after closing.</li>

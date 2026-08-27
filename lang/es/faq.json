@@ -288,6 +288,13 @@
             "title": "¿Qué son las comprobaciones de unit?",
             "body": "Los unit checks son confirmaciones rápidas OK/No OK en el QR de la unidad por operarios (tras Clock Point). Active primero en categoría y unidad (desactivado por defecto). Las listas opcionales se gestionan en Equipos (compartidas o vinculadas a un equipo; plantillas de limpieza, técnica y seguridad) y se vinculan por unidad. Para OK deben marcarse todos los puntos. Historial y filtros en Unit checks; webhook unit.check.recorded para integraciones. Separado de incidencias y mediciones ESG.",
             "summary": "OK/No OK vía QR unit (categoría + unit); listas en Equipos; OK sin aviso; webhook unit.check.recorded."
+        },
+        "unit_measurements": {
+            "slug": "unit_measurements",
+            "type": "text",
+            "title": "¿Qué son las mediciones de unidad?",
+            "body": "Las mediciones de unidad son lecturas sencillas en una unidad vía el QR de unidad — p. ej. kilometraje, temperatura de sala o estado del vehículo. No hace falta el módulo ESG. Cree campos en Trabajo → Mediciones de unidad (nombre, tipo, unidad), active Permitir mediciones en categoría y unidad, y vincule los campos. El portal QR muestra la ficha Medición; el historial está en administración. API: POST /api/v1/units/{unit}/measurements (ability units:update). Webhook: unit.measurement.recorded. Independiente de unit checks (OK/No OK) y de ESG (Corporate).",
+            "summary": "Lecturas vía QR de unidad (km, °C, estado…): campos en Trabajo → Mediciones de unidad; categoría + unidad; historial; API/webhook. Sin ESG."
         }
     }
 }

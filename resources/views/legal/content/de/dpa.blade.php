@@ -20,7 +20,7 @@
 <p>
     WinProx verarbeitet personenbezogene Daten im Auftrag des Kunden im Zusammenhang mit der Nutzung der Plattform für
     Standortmanagement, QR-Meldungen und Nachverfolgung von Issues und Aufgaben sowie — falls aktiviert — optionale
-    ESG-/Compliance-Messungen und IoT Connect (Sensor-Events in den Workflow).
+    Unit-Messungen, ESG-/Compliance-Messungen und IoT Connect (Sensor-Events in den Workflow).
 </p>
 
 <h2>3. Zweck der Verarbeitung</h2>
@@ -30,6 +30,8 @@
 <ul>
     <li>Verwaltung von Issues und Aufgaben.</li>
     <li>Erfassung von Unit-Checks (OK/Nicht OK über Unit-QR), sofern für Kategorie und Unit aktiviert.</li>
+    <li>Unit-Messdaten (Messfeld, Wert, Zeitpunkt, Unit, Quelle, optional Ausführender oder Benutzer).</li>
+    <li>Erfassung von Unit-Messungen (Messwerte per Unit-QR), sofern an Kategorie und Unit aktiviert.</li>
     <li>Verwaltung von Benutzern und internen Teams.</li>
     <li>Verwaltung von Ausführenden (ohne Login) und Zuweisung zu Aufgaben.</li>
     <li>Verwaltung von Standorten und Units.</li>
@@ -112,6 +114,7 @@
     <li>Benutzerkonten: aktiv + 24 Monate.</li>
     <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate.</li>
     <li>Unit-Checks: gleiche Aufbewahrung wie Issues und Aufgaben.</li>
+    <li>Unit-Messungen: gleiche Aufbewahrungsfrist wie Meldungen und Aufgaben.</li>
     <li>unbestätigte QR-Meldungen (E-Mail-Hold): bis zum Ablauf des Bestätigungslinks (in der Regel 60 Minuten), danach Löschung inklusive Fotos; bestätigte Hold-Zeilen bis 7 Tage.</li>
     <li>Protokolle: 6 Monate.</li>
     <li>Fotos: 24 Monate nach Abschluss.</li>

@@ -118,7 +118,7 @@
                 "title": "API & webhooks",
                 "badge": "Corporate",
                 "badge_mod": "corp",
-                "body": "REST API tokens and outbound webhooks (HMAC) under Settings. Connect issues, tasks, unit checks, ESG, … IoT ingest via a separate gateway token. See also the API & Webhooks sheet and the technical fact sheet."
+                "body": "REST API tokens and outbound webhooks (HMAC) under Settings. Connect issues, tasks, unit checks, unit measurements, ESG, … IoT ingest via a separate gateway token. See also the API & Webhooks sheet and the technical fact sheet."
             }
         ],
         "full": [
@@ -178,7 +178,7 @@
                 "title": "API",
                 "items": [
                     "**REST API v1** (fixed URLs + HTTP methods) with **JSON** responses (standard data format). Documentation in-app + docs.",
-                    "Incl. issues, tasks, locations, units (incl. external ID), teams, workers, unit check, unit measurements (also inbound via external unit ID), ESG, translations.",
+                    "Incl. issues, tasks, locations, units (incl. external ID), teams, workers, unit check (also inbound via external unit ID), unit measurements, ESG, translations.",
                     "Available on **Corporate** (trial on request).",
                     "IoT ingest separately via gateway token (Corporate)."
                 ]
@@ -272,6 +272,7 @@
                 "items": [
                     "automatically forward an issue to your IWMS, CMMS or ERP;",
                     "forward a unit check (OK/Not OK) to your external facility software;",
+                    "record a unit measurement (POST /units/{unit}/measurements);",
                     "receive a unit check from your external facility software (via external unit ID);",
                     "synchronise tasks with an ERP system;",
                     "show data in Power BI;",
@@ -340,7 +341,7 @@
                     "rows": [
                         [
                             "Facility",
-                            "Issues, Tasks, Locations, Units, Teams, Workers, Unit checks"
+                            "Issues, Tasks, Locations, Units, Teams, Workers, Unit checks, Unit measurements"
                         ],
                         [
                             "Time",

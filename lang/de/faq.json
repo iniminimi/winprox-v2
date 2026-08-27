@@ -288,6 +288,13 @@
             "title": "Was sind Unit-Checks?",
             "body": "Unit-Checks sind schnelle OK/Nicht-OK-Bestätigungen auf dem Unit-QR durch Ausführende (nach Clock Point). Zuerst an Kategorie und Unit aktivieren (standardmäßig aus). Optionale Checklisten erstellen Sie unter Teams (geteilt oder einem Team zugeordnet; Vorlagen für Reinigung, Technik und Security) und verknüpfen sie pro Unit. Bei OK müssen alle Punkte abgehakt sein. Verlauf und Filter unter Unit-Checks; Webhook unit.check.recorded für Integrationen. Getrennt von Meldungen und ESG-Messungen.",
             "summary": "OK/Nicht OK via Unit-QR (Kategorie + Unit an); Checklisten unter Teams; OK ohne Meldung; Webhook unit.check.recorded."
+        },
+        "unit_measurements": {
+            "slug": "unit_measurements",
+            "type": "text",
+            "title": "Was sind Unit-Messungen?",
+            "body": "Unit-Messungen sind einfache Messwerte an einer Unit über den Unit-QR — z. B. Kilometerstand, Raumtemperatur oder Fahrzeugstatus. Kein ESG-Modul nötig. Messfelder unter Arbeit → Unit-Messungen anlegen (Name, Typ, Einheit), Unit-Messungen erlauben an Kategorie und Unit aktivieren und Felder verknüpfen. Das QR-Portal zeigt die Kachel Messung; Historie im Admin. API: POST /api/v1/units/{unit}/measurements (Ability units:update). Webhook: unit.measurement.recorded. Getrennt von Unit-Checks (OK/Nicht OK) und ESG (Corporate).",
+            "summary": "Messwerte per Unit-QR (km, °C, Status…): Felder unter Arbeit → Unit-Messungen; Kategorie + Unit an; Historie; API/Webhook. Kein ESG nötig."
         }
     }
 }

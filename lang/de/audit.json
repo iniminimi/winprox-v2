@@ -144,6 +144,13 @@
         "iot_rule.deactivated": "IoT rule deactivated",
         "issue.recurrence_ended": "Wiederkehrende Meldung geschlossen",
         "issue.recurrence_paused": "Wiederkehrende Meldung pausiert",
-        "issue.recurrence_resumed": "Wiederkehrende Meldung fortgesetzt"
+        "issue.recurrence_resumed": "Wiederkehrende Meldung fortgesetzt",
+        "unit_measure_field.created": "Messfeld erstellt",
+        "unit_measure_field.updated": "Messfeld aktualisiert",
+        "unit_measure_field.activated": "Messfeld aktiviert",
+        "unit_measure_field.deactivated": "Messfeld deaktiviert",
+        "unit.measure_fields_synced": "Unit-Messfelder synchronisiert",
+        "unit_measurement.recorded": "Unit-Messung erfasst",
+        "unit.measurement.recorded": "Unit-Messung erfasst"
     }
 }

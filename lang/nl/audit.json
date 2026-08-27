@@ -144,6 +144,13 @@
         "iot_rule.deactivated": "IoT-regel gedeactiveerd",
         "issue.recurrence_ended": "Terugkerende melding gesloten",
         "issue.recurrence_paused": "Terugkerende melding gepauzeerd",
-        "issue.recurrence_resumed": "Terugkerende melding hervat"
+        "issue.recurrence_resumed": "Terugkerende melding hervat",
+        "unit_measure_field.created": "Meetveld aangemaakt",
+        "unit_measure_field.updated": "Meetveld bijgewerkt",
+        "unit_measure_field.activated": "Meetveld geactiveerd",
+        "unit_measure_field.deactivated": "Meetveld gedeactiveerd",
+        "unit.measure_fields_synced": "Meetvelden van unit bijgewerkt",
+        "unit_measurement.recorded": "Unitmeting geregistreerd",
+        "unit.measurement.recorded": "Unitmeting geregistreerd"
     }
 }

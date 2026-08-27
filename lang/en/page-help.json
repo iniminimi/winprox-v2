@@ -279,6 +279,10 @@
                 {
                     "label": "Require email confirmation",
                     "text": "Turn this on if anonymous reporters via the unit QR must confirm their email. The report, task and webhook are created only after they click the link in the email. Off by default. Only takes effect when also enabled on the unit. Does not apply to signed-in field workers."
+                },
+                {
+                    "label": "Allow unit measurements",
+                    "text": "Enable Allow unit measurements on a category for readings via the unit QR (km, temperature, status, …). Then enable it per unit and link measure fields (Work → Unit measurements). Both flags must be on. Separate from ESG and unit checks."
                 }
             ]
         },
@@ -346,6 +350,10 @@
                 {
                     "label": "Documents & announcements",
                     "text": "Manage documents and announcements for the unit QR portal. Documents: turn on «Active» to publish in the portal. Without «Field workers only», any visitor can view and download the file. With «Field workers only», only a field worker signed in to the portal (name + icon) can see and download it — not via the admin screen with email login. Inactive documents remain visible only here. Active documents are translated automatically by WinProx (periodically; description); the edit form shows a translation preview per language. The title stays in the source language."
+                },
+                {
+                    "label": "Allow unit measurements",
+                    "text": "Only relevant if the category allows unit measurements. Off by default. Enable and select which measure fields belong to this unit."
                 }
             ]
         },
@@ -731,6 +739,10 @@
                 {
                     "label": "Theme",
                     "text": "Switch between Standard and Dark themes in the top right for a view that matches your preference. Dark is useful on mobile."
+                },
+                {
+                    "label": "Unit measurements",
+                    "text": "When category and unit allow unit measurements and fields are linked, the portal shows the Measure tile. Enter values and submit — Clock Point not required. History under Work → Unit measurements."
                 }
             ],
             "status_note": "Open tasks on this page follow the statuses below.",
@@ -1337,6 +1349,52 @@
                 {
                     "label": "Unit checks",
                     "text": "When unit checks are enabled (on the unit and on the category the unit is linked to), a worker can perform a quick check in the unit QR portal. There the worker confirms that the unit is OK or not OK. Configure checks under Places → Categories / Locations, and checklists under People → Teams."
+                },
+                {
+                    "label": "Unit measurements",
+                    "text": "When unit measurements are enabled (unit and category) and fields are linked, values can be submitted via the unit QR. Manage fields under Work → Unit measurements."
+                }
+            ]
+        },
+        "unit-measurements.fields": {
+            "title": "Help — Measure fields",
+            "actions": [
+                {
+                    "label": "What is a measure field?",
+                    "text": "A measure field defines what you record on units: name, type (number, yes/no, text or choice), optional unit of measure (km, °C, L, …) and min/max. Reuse fields across units."
+                },
+                {
+                    "label": "Create",
+                    "text": "Go to Work → Unit measurements → Fields. Add a field, choose the type and for numbers set the unit of measure. Choice fields need options (e.g. Available / In use / Defect)."
+                },
+                {
+                    "label": "Activate",
+                    "text": "Only active fields can be linked to units and filled via the portal or API. Deactivating keeps history."
+                },
+                {
+                    "label": "Link to units",
+                    "text": "Enable Allow unit measurements on the category and on the unit. Then when editing the unit, select which measure fields belong to that unit."
+                }
+            ]
+        },
+        "unit-measurements.history": {
+            "title": "Help — Measurement history",
+            "actions": [
+                {
+                    "label": "Overview",
+                    "text": "All recorded unit measurements for your organisation: time, field, value, location/unit, source (portal, API or admin) and optional worker."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Filter by measure field and location to find the right rows quickly."
+                },
+                {
+                    "label": "Portal",
+                    "text": "On the unit QR: Measure tile when category and unit allow unit measurements and fields are linked. Clock Point not required."
+                },
+                {
+                    "label": "API & webhooks",
+                    "text": "POST /api/v1/units/{unit}/measurements with units:update ability. Each new reading fires unit.measurement.recorded."
                 }
             ]
         }

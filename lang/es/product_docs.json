@@ -340,7 +340,7 @@
                     "rows": [
                         [
                             "Facility",
-                            "Avisos, Tareas, Ubicaciones, Unidades, Equipos, Ejecutores, Comprobaciones de unidad"
+                            "Avisos, Tareas, Ubicaciones, Unidades, Equipos, Ejecutores, Comprobaciones de unidad, Mediciones de unidad"
                         ],
                         [
                             "Time",

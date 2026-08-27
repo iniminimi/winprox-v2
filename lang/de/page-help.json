@@ -279,6 +279,10 @@
                 {
                     "label": "E-Mail-Bestätigung Pflicht",
                     "text": "Aktivieren Sie dies, wenn anonyme Melder über den Unit-QR ihre E-Mail bestätigen müssen. Meldung, Aufgabe und Webhook entstehen erst nach Klick auf den Link. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für angemeldete Feldmitarbeiter."
+                },
+                {
+                    "label": "Unit-Messungen erlauben",
+                    "text": "Aktivieren Sie Unit-Messungen erlauben an der Kategorie für Messwerte per Unit-QR (km, Temperatur, Status…). Danach pro Unit aktivieren und Messfelder verknüpfen (Arbeit → Unit-Messungen). Beide Flags müssen an sein. Getrennt von ESG und Unit-Checks."
                 }
             ]
         },
@@ -346,6 +350,10 @@
                 {
                     "label": "Externe ID",
                     "text": "Nur sichtbar mit API-Zugang (Corporate oder Testphase mit API). Verknüpfen Sie die Unit mit Ihrer Facility-Software (IWMS, CMMS, ERP, …). Externe Systeme können dann Unit-Checks per POST /api/v1/units/checks senden."
+                },
+                {
+                    "label": "Unit-Messungen erlauben",
+                    "text": "Nur relevant, wenn die Kategorie Unit-Messungen erlaubt. Standard aus. Aktivieren und Messfelder für diese Unit wählen."
                 }
             ]
         },
@@ -731,6 +739,10 @@
                 {
                     "label": "Thema",
                     "text": "Wechseln Sie oben rechts zwischen Standard und Dunkel für eine Ansicht, die Ihren Vorlieben entspricht. Dunkel ist auf dem Smartphone praktisch."
+                },
+                {
+                    "label": "Unit-Messungen",
+                    "text": "Wenn Kategorie und Unit Unit-Messungen erlauben und Felder verknüpft sind, zeigt das Portal die Kachel Messung. Werte eingeben und senden — kein Clock Point nötig. Historie unter Arbeit → Unit-Messungen."
                 }
             ],
             "status_note": "Offene Aufgaben auf dieser Seite folgen den untenstehenden Status.",
@@ -1337,6 +1349,52 @@
                 {
                     "label": "Unit-Checks",
                     "text": "Wenn Unit-Checks aktiviert sind (bei der Unit und bei der Kategorie, der die Unit zugeordnet ist), kann ein Ausführender im Unit-QR-Portal eine schnelle Prüfung durchführen. Dort bestätigt der Ausführende, dass die Unit OK oder nicht OK ist. Checks unter Orte → Kategorien / Standorte; Checklisten unter Menschen → Teams."
+                },
+                {
+                    "label": "Unit-Messungen",
+                    "text": "Wenn Unit-Messungen aktiv (Unit und Kategorie) und Felder verknüpft sind, können Werte per Unit-QR erfasst werden. Felder unter Arbeit → Unit-Messungen."
+                }
+            ]
+        },
+        "unit-measurements.fields": {
+            "title": "Hilfe — Messfelder",
+            "actions": [
+                {
+                    "label": "Was ist ein Messfeld?",
+                    "text": "Ein Messfeld definiert, was Sie an Units erfassen: Name, Typ (Zahl, Ja/Nein, Text oder Auswahl), optionale Einheit (km, °C, L…) und Min/Max. Felder können an mehreren Units hängen."
+                },
+                {
+                    "label": "Anlegen",
+                    "text": "Gehen Sie zu Arbeit → Unit-Messungen → Felder. Feld hinzufügen, Typ wählen und bei Zahlen die Einheit setzen. Auswahlfelder brauchen Optionen."
+                },
+                {
+                    "label": "Aktivieren",
+                    "text": "Nur aktive Felder können verknüpft und per Portal/API erfasst werden. Deaktivieren behält die Historie."
+                },
+                {
+                    "label": "An Units koppeln",
+                    "text": "Unit-Messungen erlauben an Kategorie und Unit aktivieren, dann bei Unit bearbeiten die Felder auswählen."
+                }
+            ]
+        },
+        "unit-measurements.history": {
+            "title": "Hilfe — Messhistorie",
+            "actions": [
+                {
+                    "label": "Übersicht",
+                    "text": "Alle Unit-Messungen: Zeitpunkt, Feld, Wert, Standort/Unit, Quelle (Portal, API oder Admin) und optional Ausführender."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Nach Messfeld und Standort filtern."
+                },
+                {
+                    "label": "Portal",
+                    "text": "Am Unit-QR: Kachel Messung, wenn Kategorie und Unit Unit-Messungen erlauben und Felder verknüpft sind. Kein Clock Point nötig."
+                },
+                {
+                    "label": "API & Webhooks",
+                    "text": "POST /api/v1/units/{unit}/measurements (units:update). Jede Messung löst unit.measurement.recorded aus."
                 }
             ]
         }

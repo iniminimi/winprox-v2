@@ -279,6 +279,10 @@
                 {
                     "label": "Conferma e-mail obbligatoria",
                     "text": "Attivi se i segnalanti anonimi tramite QR dell’unità devono confermare l’e-mail. Segnalazione, attività e webhook nascono solo dopo il clic sul link. Disattivo di default. Vale solo se attivato anche sull’unità. Non vale per gli operatori connessi."
+                },
+                {
+                    "label": "Consenti misurazioni unità",
+                    "text": "Attiva Consenti misurazioni sulla categoria per letture via QR unità (km, temperatura, stato…). Poi per unità e collega i campi (Lavoro → Misurazioni unità). Entrambi i flag devono essere attivi. Distinto da ESG e unit check."
                 }
             ]
         },
@@ -346,6 +350,10 @@
                 {
                     "label": "ID esterno",
                     "text": "Visibile solo con accesso API (Corporate, o prova con API). Collega la unit al vostro software facility (IWMS, CMMS, ERP, …). I sistemi esterni possono inviare unit check via POST /api/v1/units/checks."
+                },
+                {
+                    "label": "Consenti misurazioni unità",
+                    "text": "Solo se la categoria consente le misurazioni. Disattivo di default. Attiva e seleziona i campi per questa unità."
                 }
             ]
         },
@@ -731,6 +739,10 @@
                 {
                     "label": "Tema",
                     "text": "Passi tra i temi Standard e Scuro in alto a destra per una vista adatta alle Sue preferenze. Lo scuro è utile sul telefono."
+                },
+                {
+                    "label": "Misurazioni unità",
+                    "text": "Se categoria e unità consentono le misurazioni e i campi sono collegati, il portale mostra la tessera Misura. Inserisci e invia — Clock Point non obbligatorio. Storico in Lavoro → Misurazioni unità."
                 }
             ],
             "status_note": "Le attività aperte su questa pagina seguono gli stati qui sotto.",
@@ -1337,6 +1349,52 @@
                 {
                     "label": "Controlli unit",
                     "text": "Quando i controlli unit sono attivati (sull’unità e sulla categoria a cui l’unità è collegata), un lavoratore può eseguire un controllo rapido nel portale QR dell’unità. Lì conferma che l’unità è OK o non OK. Configura i controlli sotto Luoghi → Categorie / Sedi, e le checklist sotto Persone → Team."
+                },
+                {
+                    "label": "Misurazioni unità",
+                    "text": "Se le misurazioni sono attive (unità e categoria) e i campi collegati, i valori si inviano via QR. Gestisci i campi in Lavoro → Misurazioni unità."
+                }
+            ]
+        },
+        "unit-measurements.fields": {
+            "title": "Aiuto — Campi di misura",
+            "actions": [
+                {
+                    "label": "Cos’è un campo?",
+                    "text": "Un campo definisce cosa registri sulle unità: nome, tipo (numero, sì/no, testo o scelta), unità opzionale (km, °C, L…) e min/max. Riutilizza i campi su più unità."
+                },
+                {
+                    "label": "Creare",
+                    "text": "Vai in Lavoro → Misurazioni unità → Campi. Aggiungi un campo, scegli il tipo e per i numeri l’unità di misura. I campi scelta hanno opzioni."
+                },
+                {
+                    "label": "Attivare",
+                    "text": "Solo i campi attivi si collegano e si compilano da portale o API. Disattivare conserva lo storico."
+                },
+                {
+                    "label": "Collegare alle unità",
+                    "text": "Attiva Consenti misurazioni su categoria e unità; poi in modifica unità seleziona i campi."
+                }
+            ]
+        },
+        "unit-measurements.history": {
+            "title": "Aiuto — Storico misurazioni",
+            "actions": [
+                {
+                    "label": "Panoramica",
+                    "text": "Tutte le misurazioni: orario, campo, valore, sede/unità, fonte (portale, API o admin) e operatore opzionale."
+                },
+                {
+                    "label": "Filtri",
+                    "text": "Filtra per campo e sede."
+                },
+                {
+                    "label": "Portale",
+                    "text": "Sul QR unità: tessera Misura se categoria e unità consentono le misurazioni e i campi sono collegati. Clock Point non obbligatorio."
+                },
+                {
+                    "label": "API e webhook",
+                    "text": "POST /api/v1/units/{unit}/measurements (units:update). Ogni misurazione attiva unit.measurement.recorded."
                 }
             ]
         }

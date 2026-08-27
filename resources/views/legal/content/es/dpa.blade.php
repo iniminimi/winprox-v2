@@ -20,7 +20,7 @@
 <p>
     WinProx trata datos personales siguiendo las instrucciones del cliente en relación con el uso de la plataforma para
     la gestión de instalaciones, informes de incidencias mediante QR y seguimiento de incidencias y tareas, y — si está
-    activado — mediciones ESG/cumplimiento opcionales e IoT Connect (eventos de sensores al flujo de trabajo).
+    activado — mediciones mediciones de unidad, ESG/cumplimiento opcionales e IoT Connect (eventos de sensores al flujo de trabajo).
 </p>
 
 <h2>3. Finalidad del tratamiento</h2>
@@ -30,6 +30,7 @@
 <ul>
     <li>gestión de incidencias y tareas.</li>
     <li>registro de comprobaciones de unidad (OK/No OK vía QR de unidad), si están activadas en categoría y unidad.</li>
+    <li>registro de mediciones de unidad (lecturas vía QR de unidad), si están activadas en categoría y unidad.</li>
     <li>gestión de usuarios y equipos internos.</li>
     <li>gestión de trabajadores (sin inicio de sesión) y asignación a tareas.</li>
     <li>gestión de ubicaciones y unidades.</li>
@@ -46,6 +47,7 @@
     <li>datos de ubicación y unidades (direcciones, detalles de ubicación).</li>
     <li>datos de incidencias y tareas (incluidas fotos y descripciones).</li>
     <li>datos de comprobación de unidad (resultado, marca de tiempo, unidad, GPS opcional, ejecutor).</li>
+    <li>datos de mediciones de unidad (campo, valor, fecha/hora, unidad, origen, ejecutor o usuario opcional).</li>
     <li>datos de trabajadores e informantes QR, en la medida en que los recopile el cliente (incluidos borradores temporales a la espera de confirmación por correo).</li>
     <li>datos de acceso y sesión.</li>
     <li>metadatos de suscripción y acceso.</li>

@@ -2,7 +2,7 @@
 <p>
     WinProx (« Work in Proximity ») est une plateforme SaaS de gestion technique et opérationnelle de sites :
     signalements par QR, suivi des issues et des tâches pour les équipes opérationnelles internes, et enregistrement
-    ESG/conformité en option ainsi qu’IoT Connect (événements capteurs vers le workflow).
+    mesures d’unité, ESG/conformité en option ainsi qu’IoT Connect (événements capteurs vers le workflow).
 </p>
 <p>
     La plateforme est exploitée par :
@@ -66,6 +66,7 @@
     <li>communication et historique au sein de la plateforme.</li>
     <li>photos et pièces jointes ajoutées aux signalements ou tâches.</li>
     <li>contrôles d'unité (OK/Non OK via QR unité par exécutants), si activés sur catégorie et unité.</li>
+    <li>mesures d’unité (relevés via QR d’unité, p.ex. kilométrage ou température), si activées sur catégorie et unité.</li>
 </ul>
 
 <p><strong>Exécutants (sans connexion)</strong></p>
@@ -89,6 +90,15 @@
 <p><strong>Contrôles d'unité</strong></p>
 <p>
     Si le client active les contrôles d'unité sur catégorie et unité, les exécutants peuvent enregistrer un résultat OK ou Non OK via le QR unité (après Clock Point), éventuellement avec checklist et GPS. Ce n'est pas un signalement : OK ne crée pas d'issue. WinProx conserve le résultat, l'horodatage, l'unité, les coordonnées GPS optionnelles et l'exécutant. Conservation identique aux signalements et tâches, sauf règle interne différente.
+</p>
+
+<p><strong>Mesures d’unité</strong></p>
+<p>
+    Si le client active les mesures d’unité sur la catégorie et l’unité et lie des champs, des relevés
+    (p.ex. kilométrage, température ou statut) peuvent être saisis via le QR d’unité. Clock Point n’est pas obligatoire ;
+    si un exécutant est connecté, il peut être associé à la mesure. WinProx conserve champ, valeur, horodatage,
+    unité/lieu, source (portail, API ou admin) et optionnellement l’exécutant ou l’utilisateur. Ce n’est pas un signalement ni une mesure ESG.
+    La durée de conservation est la même que pour les signalements et tâches, sauf décision contraire de votre organisation.
 </p>
 
 
@@ -119,6 +129,7 @@
 </p>
 <ul>
     <li>configuration des gateways et jetons d’authentification (stockés de façon sécurisée ; un nouveau jeton est généralement affiché une seule fois).</li>
+    <li>enregistrement des mesures d’unité (relevés via QR d’unité), si activées sur catégorie et unité.</li>
     <li>associations de capteurs (id externe → site/unité, éventuellement un indicateur ESG).</li>
     <li>règles d’alarme (seuils, opérateur, équipe assignée, priorité, texte).</li>
     <li>enregistrements d’événements (traité / ignoré / dédupliqué / échoué) — pas de stockage continu en séries temporelles.</li>
@@ -182,6 +193,7 @@
     <li>comptes utilisateurs : actif + 24 mois.</li>
     <li>issues et tâches : durée du contrat + 36 mois.</li>
     <li>contrôles d’unité : même durée de conservation que les signalements et tâches (durée du contrat + 36 mois).</li>
+    <li>mesures d’unité : même durée de conservation que les signalements et tâches (durée du contrat + 36 mois).</li>
     <li>signalements QR non confirmés (retenue e-mail) : jusqu’à l’expiration du lien de confirmation (en général 60 minutes), puis suppression y compris les photos ; lignes de retenue confirmées jusqu’à 7 jours (le signalement lui-même suit la conservation des signalements).</li>
     <li>journaux : 6 mois.</li>
     <li>événements d’onboarding par utilisateur (statistiques d’onboarding) : 6 mois ; les chiffres agrégés sans données personnelles peuvent être conservés plus longtemps.</li>

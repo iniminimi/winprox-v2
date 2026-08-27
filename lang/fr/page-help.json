@@ -279,6 +279,10 @@
                 {
                     "label": "Confirmation e-mail obligatoire",
                     "text": "Activez si les signalants anonymes via le QR de l’unité doivent confirmer leur e-mail. Le signalement, la tâche et le webhook ne sont créés qu’après le clic sur le lien. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents connectés."
+                },
+                {
+                    "label": "Autoriser les mesures d’unité",
+                    "text": "Activez Autoriser les mesures sur la catégorie pour les relevés via le QR d’unité (km, température, statut…). Activez aussi par unité et liez les champs (Travail → Mesures d’unité). Les deux drapeaux doivent être actifs. Distinct de l’ESG et des unit checks."
                 }
             ]
         },
@@ -346,6 +350,10 @@
                 {
                     "label": "ID externe",
                     "text": "Visible uniquement avec accès API (Corporate, ou essai avec API). Associez l’unité à votre logiciel facility (GMAO, IWMS, ERP, …). Les systèmes externes peuvent alors pousser des contrôles via POST /api/v1/units/checks."
+                },
+                {
+                    "label": "Autoriser les mesures d’unité",
+                    "text": "Uniquement si la catégorie autorise les mesures. Désactivé par défaut. Activez et sélectionnez les champs pour cette unité."
                 }
             ]
         },
@@ -731,6 +739,10 @@
                 {
                     "label": "Thème",
                     "text": "Changez entre les thèmes Standard et Sombre en haut à droite pour une vue qui correspond à vos préférences. Le mode sombre est pratique sur mobile."
+                },
+                {
+                    "label": "Mesures d’unité",
+                    "text": "Si catégorie et unité autorisent les mesures et des champs sont liés, le portail affiche la tuile Mesure. Saisissez et envoyez — Clock Point non requis. Historique sous Travail → Mesures d’unité."
                 }
             ],
             "status_note": "Les tâches ouvertes sur cette page suivent les statuts ci-dessous.",
@@ -1337,6 +1349,52 @@
                 {
                     "label": "Contrôles d’unité",
                     "text": "Lorsque les contrôles d’unité sont activés (sur l’unité et sur la catégorie à laquelle l’unité est liée), un exécutant peut effectuer un contrôle rapide dans le portail QR unité. Il y confirme que l’unité est OK ou non OK. Configurez les contrôles sous Lieux → Catégories / Lieux, et les checklists sous Personnes → Équipes."
+                },
+                {
+                    "label": "Mesures d’unité",
+                    "text": "Si les mesures sont activées (unité et catégorie) et des champs liés, les valeurs peuvent être saisies via le QR. Gérez les champs sous Travail → Mesures d’unité."
+                }
+            ]
+        },
+        "unit-measurements.fields": {
+            "title": "Aide — Champs de mesure",
+            "actions": [
+                {
+                    "label": "Qu’est-ce qu’un champ ?",
+                    "text": "Un champ définit ce que vous enregistrez sur les unités : nom, type (nombre, oui/non, texte ou choix), unité optionnelle (km, °C, L…) et min/max. Réutilisez les champs sur plusieurs unités."
+                },
+                {
+                    "label": "Créer",
+                    "text": "Allez dans Travail → Mesures d’unité → Champs. Ajoutez un champ, choisissez le type et pour les nombres indiquez l’unité. Les choix ont des options."
+                },
+                {
+                    "label": "Activer",
+                    "text": "Seuls les champs actifs peuvent être liés et saisis via le portail ou l’API. La désactivation conserve l’historique."
+                },
+                {
+                    "label": "Lier aux unités",
+                    "text": "Activez Autoriser les mesures sur la catégorie et l’unité, puis sélectionnez les champs lors de l’édition de l’unité."
+                }
+            ]
+        },
+        "unit-measurements.history": {
+            "title": "Aide — Historique des mesures",
+            "actions": [
+                {
+                    "label": "Aperçu",
+                    "text": "Toutes les mesures d’unité : horaire, champ, valeur, lieu/unité, source (portail, API ou admin) et exécutant optionnel."
+                },
+                {
+                    "label": "Filtres",
+                    "text": "Filtrez par champ et lieu pour trouver rapidement les lignes."
+                },
+                {
+                    "label": "Portail",
+                    "text": "Sur le QR d’unité : tuile Mesure si catégorie et unité autorisent les mesures et des champs sont liés. Clock Point non requis."
+                },
+                {
+                    "label": "API & webhooks",
+                    "text": "POST /api/v1/units/{unit}/measurements (units:update). Chaque mesure déclenche unit.measurement.recorded."
                 }
             ]
         }

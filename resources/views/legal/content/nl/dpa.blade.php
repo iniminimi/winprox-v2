@@ -20,7 +20,7 @@
 <p>
     WinProx verwerkt persoonsgegevens in opdracht van de klant in het kader van het gebruik van het platform voor
     locatiebeheer, QR-meldingen en opvolging van issues en taken, en — indien geactiveerd — optionele
-    ESG-/compliance-metingen en IoT Connect (sensor-events naar workflow).
+    unitmetingen, optionele ESG-/compliance-metingen en IoT Connect (sensor-events naar workflow).
 </p>
 
 <h2>3. Doel van verwerking</h2>
@@ -30,6 +30,7 @@
 <ul>
     <li>beheer van meldingen (issues) en taken.</li>
     <li>registratie van unit checks (OK/Niet OK via unit-QR), indien ingeschakeld op categorie en unit.</li>
+    <li>registratie van unitmetingen (meetwaarden via unit-QR), indien ingeschakeld op categorie en unit.</li>
     <li>beheer van gebruikers en interne teams.</li>
     <li>beheer van uitvoerders (zonder login) en toewijzing aan taken.</li>
     <li>beheer van locaties en units.</li>
@@ -46,6 +47,7 @@
     <li>locatie- en unitgegevens (adressen, locatiedetails).</li>
     <li>meldingen en taakgegevens (inclusief foto’s en beschrijvingen).</li>
     <li>unit-checkgegevens (resultaat, tijdstip, unit, optioneel GPS, uitvoerder).</li>
+    <li>unitmetinggegevens (meetveld, waarde, tijdstip, unit, bron, optioneel uitvoerder of beheerder).</li>
     <li>gegevens van uitvoerders en QR-melders, voor zover door de klant verzameld (inclusief tijdelijke conceptmeldingen in afwachting van e-mailbevestiging).</li>
     <li>toegangs- en sessiegegevens.</li>
     <li>abonnements- en toegangsmetadata.</li>
@@ -112,6 +114,7 @@
     <li>gebruikersaccounts: actief + 24 maanden.</li>
     <li>meldingen en taken: contractperiode + 36 maanden.</li>
     <li>unit checks: dezelfde bewaartermijn als meldingen en taken.</li>
+    <li>unitmetingen: dezelfde bewaartermijn als meldingen en taken.</li>
     <li>onbevestigde QR-meldingen (e-mailhold): tot het verlopen van de bevestigingslink (standaard 60 minuten), daarna verwijdering inclusief foto’s; bevestigde hold-rijen tot 7 dagen.</li>
     <li>logs: 6 maanden.</li>
     <li>foto’s: 24 maanden na afsluiten.</li>

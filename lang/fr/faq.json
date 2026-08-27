@@ -288,6 +288,13 @@
             "title": "Que sont les contrôles d'unité ?",
             "body": "Les unit checks sont des confirmations rapides OK/Pas OK sur le QR unité par les exécutants (après Clock Point). Activez d’abord sur catégorie et unité (désactivé par défaut). Les listes optionnelles se gèrent sous Équipes (partagées ou liées à une équipe ; modèles nettoyage, technique et sécurité) et se lient par unité. Pour OK tous les points doivent être cochés. Historique et filtres dans Unit checks ; webhook unit.check.recorded pour les intégrations. Séparé des signalements et mesures ESG.",
             "summary": "OK/Non OK via QR unité (catégorie + unité) ; listes sous Équipes ; pas de signalement si OK ; webhook unit.check.recorded."
+        },
+        "unit_measurements": {
+            "slug": "unit_measurements",
+            "type": "text",
+            "title": "Que sont les mesures d’unité ?",
+            "body": "Les mesures d’unité sont des relevés simples sur une unité via le QR d’unité — par ex. kilométrage, température de pièce ou statut du véhicule. Pas besoin du module ESG. Créez des champs sous Travail → Mesures d’unité (nom, type, unité), activez Autoriser les mesures sur la catégorie et l’unité, puis liez les champs. Le portail QR affiche la tuile Mesure ; l’historique est dans l’admin. API : POST /api/v1/units/{unit}/measurements (ability units:update). Webhook : unit.measurement.recorded. Distinct des unit checks (OK/Pas OK) et de l’ESG (Corporate).",
+            "summary": "Relevés via QR d’unité (km, °C, statut…) : champs sous Travail → Mesures d’unité ; catégorie + unité ; historique ; API/webhook. Pas d’ESG requis."
         }
     }
 }

@@ -12,6 +12,8 @@ return [
         'moderation',
         'photos',
         'time_clock',
+        'unit_checks',
+        'unit_measurements',
         'esg',
         'iot',
         'for_who',

@@ -99,6 +99,23 @@ return [
         ],
         [
             'patterns' => [
+                'unitmeting', 'unitmetingen', 'unit measurement', 'unit measurements',
+                'meetveld', 'meetvelden', 'kilometerstand', 'odometer',
+                'unit-messung', 'messfeld', 'medición de unidad', 'misurazione unità',
+                'mesures d’unité', "mesures d'unité", 'measure field', 'measure fields',
+            ],
+            'page' => 'unit-measurements.fields',
+            'prefer' => ['meetveld', 'unitmeting', 'measure field', 'kilometerstand'],
+        ],
+        [
+            'patterns' => [
+                'metingenhistoriek', 'measurement history', 'historiek metingen',
+                'unit.measurement.recorded',
+            ],
+            'page' => 'unit-measurements.history',
+        ],
+        [
+            'patterns' => [
                 'inspectieronde', 'inspectie ronde', 'inspection round', 'inspection rounds',
                 'tournée d’inspection', 'inspektionsrunde',
                 'ronda de inspección', 'giro di ispezione',
@@ -162,7 +179,7 @@ return [
             'page' => 'time.alarms',
         ],
         [
-            'patterns' => ['esg', 'indicator', 'meting', 'compliance', 'duurzaam'],
+            'patterns' => ['esg', 'esg-indicator', 'esg indicator', 'compliance', 'duurzaam', 'esg-meting'],
             'page' => 'esg.indicators',
         ],
         [

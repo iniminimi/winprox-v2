@@ -144,6 +144,13 @@
         "iot_rule.deactivated": "IoT rule deactivated",
         "issue.recurrence_ended": "Signalement récurrent clôturé",
         "issue.recurrence_paused": "Signalement récurrent mis en pause",
-        "issue.recurrence_resumed": "Signalement récurrent repris"
+        "issue.recurrence_resumed": "Signalement récurrent repris",
+        "unit_measure_field.created": "Champ de mesure créé",
+        "unit_measure_field.updated": "Champ de mesure mis à jour",
+        "unit_measure_field.activated": "Champ de mesure activé",
+        "unit_measure_field.deactivated": "Champ de mesure désactivé",
+        "unit.measure_fields_synced": "Champs de mesure de l’unité synchronisés",
+        "unit_measurement.recorded": "Mesure d’unité enregistrée",
+        "unit.measurement.recorded": "Mesure d’unité enregistrée"
     }
 }

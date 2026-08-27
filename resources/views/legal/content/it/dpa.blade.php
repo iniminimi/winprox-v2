@@ -20,7 +20,7 @@
 <p>
     WinProx tratta dati personali seguendo le istruzioni del cliente in relazione all'utilizzo della piattaforma per
     la gestione degli impianti, la segnalazione di problematiche tramite QR e il follow-up di problematiche e attività, e — se
-    attivato — misurazioni ESG/conformità opzionali e IoT Connect (eventi sensore nel flusso di lavoro).
+    attivato — misurazioni misurazioni unità, ESG/conformità opzionali e IoT Connect (eventi sensore nel flusso di lavoro).
 </p>
 
 <h2>3. Finalità del trattamento</h2>

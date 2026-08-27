@@ -37,7 +37,7 @@
             },
             {
                 "title": "QR-portals",
-                "body": "Unit-QR: problemen melden, én optioneel een unit check (snel OK of Niet OK). Clock Point-QR: aanmelden (naam + icoon) en teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden. Ongeldige of vervallen QR-codes tonen een korte foutmelding met een knop naar de startpagina."
+                "body": "Unit-QR: problemen melden, optioneel unit check (OK/Niet OK) en optioneel unitmetingen (km, temperatuur, status). Clock Point-QR: aanmelden (naam + icoon) en teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden. Ongeldige of vervallen QR-codes tonen een korte foutmelding met een knop naar de startpagina."
             },
             {
                 "title": "Unit checks",
@@ -118,7 +118,7 @@
                 "title": "API & webhooks",
                 "badge": "Corporate",
                 "badge_mod": "corp",
-                "body": "REST API-tokens en uitgaande webhooks (HMAC) onder Instellingen. Koppeling voor meldingen, taken, unit checks, ESG, … IoT-ingest apart via gateway-token. Zie ook de fiche API & Webhooks en de technische fiche."
+                "body": "REST API-tokens en uitgaande webhooks (HMAC) onder Instellingen. Koppeling voor meldingen, taken, unit checks, unitmetingen, ESG, … IoT-ingest apart via gateway-token. Zie ook de fiche API & Webhooks en de technische fiche."
             }
         ],
         "full": [
@@ -178,7 +178,7 @@
                 "title": "API",
                 "items": [
                     "**REST API v1** (vaste URL’s + HTTP-methodes) met antwoorden in **JSON** (standaard gegevensformaat). Documentatie in-app + docs.",
-                    "O.a. meldingen, taken, locaties, units (incl. externe ID), teams, workers, unit check, unitmetings (ook inbound via externe unit-ID), ESG, vertalingen.",
+                    "O.a. meldingen, taken, locaties, units (incl. externe ID), teams, workers, unit check (ook inbound via externe unit-ID), unitmetingen, ESG, vertalingen.",
                     "Beschikbaar op **Corporate** (proef op verzoek).",
                     "IoT-ingest apart via gateway-token (Corporate)."
                 ]
@@ -273,6 +273,7 @@
                     "een melding automatisch doorsturen naar jullie IWMS, CMMS of ERP;",
                     "een unit check (OK/Niet OK) doorsturen naar jullie externe beheersoftware;",
                     "een unit check ontvangen vanuit jullie externe beheersoftware (via externe unit-ID);",
+                    "een unitmeting registreren (POST /units/{unit}/measurements);",
                     "taken synchroniseren met een ERP-systeem;",
                     "gegevens tonen in Power BI;",
                     "IoT-sensoren automatisch meldingen laten aanmaken;",
@@ -313,7 +314,8 @@
                     "Niet elke actie is via de API beschikbaar. Sommige onderdelen zijn bewust alleen leesbaar of ondersteunen enkel specifieke acties. Zo blijft de integratie veilig en beheersbaar.",
                     "Webhooks beheer je in de app, niet via de API.",
                     "Een generiek “inkomend webhook-adres” voor willekeurige externe systemen is nog geen productfunctie (IoT en Stripe hebben hun eigen paden).",
-                    "API & uitgaande webhooks: Corporate (proef-API op verzoek)."
+                    "API & uitgaande webhooks: Corporate (proef-API op verzoek).",
+                    "een unitmeting registreren (POST /units/{unit}/measurements);"
                 ]
             }
         ],
@@ -340,7 +342,7 @@
                     "rows": [
                         [
                             "Facility",
-                            "Meldingen, Taken, Locaties, Units, Teams, Uitvoerders, Unit checks"
+                            "Meldingen, Taken, Locaties, Units, Teams, Uitvoerders, Unit checks, Unitmetingen"
                         ],
                         [
                             "Time",

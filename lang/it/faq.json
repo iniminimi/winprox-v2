@@ -288,6 +288,13 @@
             "title": "Cosa sono i controlli unità?",
             "body": "I unit check sono conferme rapide OK/Non OK sul QR unità da parte degli esecutori (dopo Clock Point). Abilita prima su categoria e unità (disattivato di default). Le checklist opzionali si gestiscono in Team (condivise o collegate a un team; modelli pulizia, tecnica e security) e si collegano per unità. Per OK tutti i punti devono essere spuntati. Cronologia e filtri in Unit checks; webhook unit.check.recorded per integrazioni. Separato da segnalazioni e misure ESG.",
             "summary": "OK/Non OK via QR unit (categoria + unit); checklist in Team; OK senza segnalazione; webhook unit.check.recorded."
+        },
+        "unit_measurements": {
+            "slug": "unit_measurements",
+            "type": "text",
+            "title": "Cosa sono le misurazioni unità?",
+            "body": "Le misurazioni unità sono letture semplici su un’unità tramite QR unità — ad es. chilometraggio, temperatura ambiente o stato veicolo. Non serve il modulo ESG. Crea i campi in Lavoro → Misurazioni unità (nome, tipo, unità di misura), attiva Consenti misurazioni su categoria e unità e collega i campi. Il portale QR mostra la tessera Misura; lo storico è in amministrazione. API: POST /api/v1/units/{unit}/measurements (ability units:update). Webhook: unit.measurement.recorded. Distinto dai unit check (OK/Non OK) e dall’ESG (Corporate).",
+            "summary": "Letture via QR unità (km, °C, stato…): campi in Lavoro → Misurazioni unità; categoria + unità; storico; API/webhook. Senza ESG."
         }
     }
 }

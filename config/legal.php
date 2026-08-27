@@ -6,7 +6,7 @@
  */
 return [
 
-    'documents_last_updated' => env('LEGAL_DOCUMENTS_LAST_UPDATED', '2026-08-25'),
+    'documents_last_updated' => env('LEGAL_DOCUMENTS_LAST_UPDATED', '2026-08-27'),
 
     'operator' => [
         'name' => env('LEGAL_OPERATOR_NAME', 'Dominique Schaepdrijver'),
