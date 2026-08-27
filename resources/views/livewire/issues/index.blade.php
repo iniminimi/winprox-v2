@@ -100,6 +100,7 @@
 
                     <div class="wp-filter-form__actions">
                         <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('issues.filter.apply') }}</button>
+                        <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
                         @if ($hasFilters)
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('issues.filter.reset') }}</button>
                         @endif

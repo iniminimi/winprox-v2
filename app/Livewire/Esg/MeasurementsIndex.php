@@ -191,6 +191,22 @@ class MeasurementsIndex extends Component
             'indicators' => EsgIndicator::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language']),
             'locations' => Location::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language']),
             'units' => $this->filterableUnits(),
+            'exportUrl' => route('esg.measurements.export', array_filter([
+                'indicator' => $this->indicatorFilter ?: null,
+                'location' => $this->locationFilter ?: null,
+                'unit' => $this->unitFilter ?: null,
+                'from' => trim($this->recordedFrom) !== '' ? trim($this->recordedFrom) : null,
+                'to' => trim($this->recordedTo) !== '' ? trim($this->recordedTo) : null,
+                'alarms' => $this->alarmsOnly ? 1 : null,
+            ])),
+            'printUrl' => route('esg.measurements.print', array_filter([
+                'indicator' => $this->indicatorFilter ?: null,
+                'location' => $this->locationFilter ?: null,
+                'unit' => $this->unitFilter ?: null,
+                'from' => trim($this->recordedFrom) !== '' ? trim($this->recordedFrom) : null,
+                'to' => trim($this->recordedTo) !== '' ? trim($this->recordedTo) : null,
+                'alarms' => $this->alarmsOnly ? 1 : null,
+            ])),
         ]);
     }
 

@@ -69,6 +69,14 @@ class UnitChecksIndex extends Component
             'checks' => $checks,
             'groupedChecks' => $groupedChecks,
             'locations' => Location::query()->orderBy('name')->get(['id', 'name', 'address']),
+            'exportUrl' => route('unit-checks.export', array_filter([
+                'result' => $this->resultFilter !== 'all' ? $this->resultFilter : null,
+                'location' => $this->locationFilter ?: null,
+            ])),
+            'printUrl' => route('unit-checks.print', array_filter([
+                'result' => $this->resultFilter !== 'all' ? $this->resultFilter : null,
+                'location' => $this->locationFilter ?: null,
+            ])),
         ]);
     }
 

@@ -1,0 +1,59 @@
+{
+    "download": "Download rapport",
+    "format": {
+        "csv": "CSV",
+        "print": "Afdrukken (PDF)"
+    },
+    "print_button": "Afdrukken",
+    "empty": "Geen rijen voor deze filters.",
+    "truncated": "Export beperkt tot :limit rijen. Verfijn de filters voor een kleinere set.",
+    "row_count": ":count rijen",
+    "issues": {
+        "title": "Meldingen — rapport",
+        "document_title": "Meldingen — WinProx",
+        "filename": "meldingen"
+    },
+    "tasks": {
+        "title": "Taken — rapport",
+        "document_title": "Taken — WinProx",
+        "filename": "taken"
+    },
+    "unit_checks": {
+        "title": "Unit checks — rapport",
+        "document_title": "Unit checks — WinProx",
+        "filename": "unit-checks"
+    },
+    "esg": {
+        "title": "ESG-metingen — rapport",
+        "document_title": "ESG-metingen — WinProx",
+        "filename": "esg-metingen"
+    },
+    "columns": {
+        "id": "ID",
+        "status": "Status",
+        "description": "Omschrijving",
+        "location": "Locatie",
+        "unit": "Unit",
+        "reporter": "Melder",
+        "created_at": "Aangemaakt",
+        "approved_at": "Goedgekeurd",
+        "recurring": "Terugkerend",
+        "teams": "Teams",
+        "source": "Bron",
+        "priority": "Prioriteit",
+        "issue_id": "Melding",
+        "team": "Team",
+        "scheduled_for": "Gepland",
+        "due_at": "Deadline",
+        "checked_at": "Gecontroleerd",
+        "result": "Resultaat",
+        "worker": "Uitvoerder",
+        "checklist": "Checklist",
+        "recorded_at": "Gemeten op",
+        "indicator": "Indicator",
+        "value": "Waarde",
+        "task_id": "Taak"
+    },
+    "yes": "Ja",
+    "no": "Nee"
+}

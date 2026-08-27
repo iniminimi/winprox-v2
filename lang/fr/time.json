@@ -147,7 +147,6 @@
         "apply": "Appliquer"
     },
     "export": {
-        "button": "Exporter CSV",
         "columns": {
             "date": "Date",
             "worker": "Collaborateur",

@@ -6,15 +6,18 @@ Fase 1 – Compliance & ESG Lite
 Certificaten en vervaldata
 Inspecties en checklists
 ESG-dashboard met manuele registraties
-Basisrapportering
+Basisrapportering = **list-export** op zoekschermen (CSV + print/PDF via Ctrl+P),
+zelfde filters als de lijst; max. rijen; geen BI-builder. Zie `docs/FEATURES.md` §Rapporten.
 
 ➡️ Snel te ontwikkelen en direct bruikbaar voor audits.
 
-Fase 2 – Energy & Sustainability
+Fase 2 – Energy & Sustainability (+ Rapporten-pagina)
 Energie-, water- en afvalregistratie
 Trends en KPI's
 Doelstellingen per gebouw of site
 Benchmarking tussen locaties
+**Organisatie → Rapporten**: opgeslagen configs / periodes op dezelfde Export-Actions
+(geen tweede querypad).
 
 ➡️ Geeft direct inzicht in duurzaamheidsprestaties.
 

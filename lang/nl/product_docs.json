@@ -97,6 +97,10 @@
                 "body": "Printbaar verslag van de open taken van de gekozen dag, gegroepeerd per team. Beschikbaar vanaf Dashboard, Taken en Kalender — handig voor de shiftstart."
             },
             {
+                "title": "Rapporten",
+                "body": "Op zoekschermen (meldingen, taken, Time, unit checks, ESG): Download rapport als CSV of afdrukken (Ctrl+P naar PDF), met dezelfde filters als de lijst. Later: Organisatie - Rapporten voor opgeslagen sjablonen."
+            },
+            {
                 "title": "Kalender",
                 "body": "Maand-, week- en dagweergave van taken, meldingen en reserveringen. Vanuit de kalender ook briefing afdrukken voor die dag."
             },

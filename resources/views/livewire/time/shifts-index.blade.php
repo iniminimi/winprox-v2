@@ -54,8 +54,7 @@
             </div>
             <div class="wp-filter-form__actions">
                 <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('time.filters.apply') }}</button>
-                <a href="{{ $exportUrl }}" class="btn btn--surface btn--sm">{{ __('time.export.button') }}</a>
-                <a href="{{ $printUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface btn--sm">{{ __('time.print.button') }}</a>
+                <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
             </div>
         </div>
     </div>

@@ -5,7 +5,11 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\EmailUnsubscribeController;
+use App\Http\Controllers\Esg\EsgMeasurementExportController;
+use App\Http\Controllers\Esg\EsgMeasurementPrintController;
 use App\Http\Controllers\IndexNowKeyController;
+use App\Http\Controllers\Issues\IssueExportController;
+use App\Http\Controllers\Issues\IssuePrintController;
 use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\LlmsTxtController;
 use App\Http\Controllers\LocaleController;
@@ -28,7 +32,11 @@ use App\Http\Controllers\Time\ClockPointQrController;
 use App\Http\Controllers\Time\ClockPointQrPackDownloadController;
 use App\Http\Controllers\Time\WorkShiftExportController;
 use App\Http\Controllers\Time\WorkShiftTimesheetPrintController;
+use App\Http\Controllers\Tasks\TaskExportController;
+use App\Http\Controllers\Tasks\TaskPrintController;
 use App\Http\Controllers\UiThemeController;
+use App\Http\Controllers\UnitChecks\UnitCheckExportController;
+use App\Http\Controllers\UnitChecks\UnitCheckPrintController;
 use App\Http\Controllers\UserDataExportController;
 use App\Http\Controllers\WelcomeController;
 use App\Livewire\Auth\ForgotPassword;
@@ -330,6 +338,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/health', Health::class)->name('health.index');
 
         Route::get('/issues', IssueIndex::class)->name('issues.index');
+        Route::get('/issues/export', IssueExportController::class)->name('issues.export');
+        Route::get('/issues/print', IssuePrintController::class)->name('issues.print');
         Route::get('/issues/create', fn () => redirect()->route('issues.index', ['create' => 1]))->name('issues.create');
         Route::get('/issues/{issue}', IssueShow::class)->name('issues.show');
 
@@ -341,10 +351,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/units/{unit}/qr-pack', UnitQrPackDownloadController::class)->name('units.qr-pack');
         Route::get('/briefing/print', BriefingPrintController::class)->name('briefing.print');
         Route::get('/tasks', TaskIndex::class)->name('tasks.index');
+        Route::get('/tasks/export', TaskExportController::class)->name('tasks.export');
+        Route::get('/tasks/print', TaskPrintController::class)->name('tasks.print');
         Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
         Route::get('/calendar', Calendar::class)->name('calendar.index');
         Route::get('/reservations', ReservationsIndex::class)->name('reservations.index');
         Route::get('/unit-checks', UnitChecksIndex::class)->name('unit-checks.index');
+        Route::get('/unit-checks/export', UnitCheckExportController::class)->name('unit-checks.export');
+        Route::get('/unit-checks/print', UnitCheckPrintController::class)->name('unit-checks.print');
         Route::get('/unit-measurements', UnitMeasurementsIndex::class)->name('unit-measurements.index');
         Route::get('/unit-measurements/fields', fn () => redirect()->route('unit-measurements.index'))
             ->name('unit-measurements.fields.index');
@@ -353,6 +367,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/esg', EsgDashboard::class)->name('esg.dashboard');
         Route::get('/esg/indicators', EsgIndicatorsIndex::class)->name('esg.indicators.index');
         Route::get('/esg/measurements', EsgMeasurementsIndex::class)->name('esg.measurements.index');
+        Route::get('/esg/measurements/export', EsgMeasurementExportController::class)->name('esg.measurements.export');
+        Route::get('/esg/measurements/print', EsgMeasurementPrintController::class)->name('esg.measurements.print');
         Route::get('/esg/point', EsgPointHistory::class)->name('esg.point.history');
         Route::get('/iot', IotIndex::class)->name('iot.index');
         Route::get('/time/presence', PresenceIndex::class)->name('time.presence.index');

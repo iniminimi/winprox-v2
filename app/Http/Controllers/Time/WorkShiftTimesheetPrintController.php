@@ -25,7 +25,7 @@ class WorkShiftTimesheetPrintController
             ? Carbon::parse((string) $request->query('to'))->endOfDay()
             : now()->endOfDay();
 
-        $shifts = $export->handle(
+        $result = $export->handle(
             (int) $tenant->id,
             $from,
             $to,
@@ -34,6 +34,7 @@ class WorkShiftTimesheetPrintController
             $request->integer('clock_point') ?: null,
         );
 
+        $shifts = $result->rows;
         $totalNetMinutes = (int) $shifts->sum(fn ($shift) => $shift->netWorkMinutes());
 
         return view('time.print', [
@@ -42,6 +43,8 @@ class WorkShiftTimesheetPrintController
             'from' => $from,
             'to' => $to,
             'totalNetMinutes' => $totalNetMinutes,
+            'truncated' => $result->truncated,
+            'limit' => $result->limit,
         ]);
     }
 }

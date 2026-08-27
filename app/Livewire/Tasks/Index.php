@@ -146,6 +146,20 @@ class Index extends Component
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->priorityFilter !== '' || $this->search !== '' || $this->recurring,
             'onboarding' => TenantOnboardingState::current(),
             'hasNoIssues' => $hasNoIssues,
+            'exportUrl' => route('tasks.export', array_filter([
+                'status' => $this->statusFilter !== '' ? $this->statusFilter : null,
+                'team' => $this->teamFilter ?: null,
+                'priority' => $this->priorityFilter !== '' ? $this->priorityFilter : null,
+                'q' => trim($this->search) !== '' ? trim($this->search) : null,
+                'recurring' => $this->recurring ? '1' : null,
+            ])),
+            'printUrl' => route('tasks.print', array_filter([
+                'status' => $this->statusFilter !== '' ? $this->statusFilter : null,
+                'team' => $this->teamFilter ?: null,
+                'priority' => $this->priorityFilter !== '' ? $this->priorityFilter : null,
+                'q' => trim($this->search) !== '' ? trim($this->search) : null,
+                'recurring' => $this->recurring ? '1' : null,
+            ])),
         ]);
     }
 }

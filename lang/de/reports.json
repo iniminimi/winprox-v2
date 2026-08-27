@@ -1,0 +1,59 @@
+{
+    "download": "Bericht herunterladen",
+    "format": {
+        "csv": "CSV",
+        "print": "Drucken (PDF)"
+    },
+    "print_button": "Drucken",
+    "empty": "Keine Zeilen für diese Filter.",
+    "truncated": "Export auf :limit Zeilen begrenzt. Filter verfeinern.",
+    "row_count": ":count Zeilen",
+    "issues": {
+        "title": "Meldungen — Bericht",
+        "document_title": "Meldungen — WinProx",
+        "filename": "meldungen"
+    },
+    "tasks": {
+        "title": "Aufgaben — Bericht",
+        "document_title": "Aufgaben — WinProx",
+        "filename": "aufgaben"
+    },
+    "unit_checks": {
+        "title": "Unit-Checks — Bericht",
+        "document_title": "Unit-Checks — WinProx",
+        "filename": "unit-checks"
+    },
+    "esg": {
+        "title": "ESG-Messungen — Bericht",
+        "document_title": "ESG-Messungen — WinProx",
+        "filename": "esg-messungen"
+    },
+    "columns": {
+        "id": "ID",
+        "status": "Status",
+        "description": "Beschreibung",
+        "location": "Standort",
+        "unit": "Unit",
+        "reporter": "Melder",
+        "created_at": "Erstellt",
+        "approved_at": "Genehmigt",
+        "recurring": "Wiederkehrend",
+        "teams": "Teams",
+        "source": "Quelle",
+        "priority": "Priorität",
+        "issue_id": "Meldung",
+        "team": "Team",
+        "scheduled_for": "Geplant",
+        "due_at": "Fällig",
+        "checked_at": "Geprüft",
+        "result": "Ergebnis",
+        "worker": "Ausführer",
+        "checklist": "Checkliste",
+        "recorded_at": "Erfasst am",
+        "indicator": "Indikator",
+        "value": "Wert",
+        "task_id": "Aufgabe"
+    },
+    "yes": "Ja",
+    "no": "Nein"
+}

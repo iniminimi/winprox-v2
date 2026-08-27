@@ -208,6 +208,8 @@ Taken hebben hun eigen status; de **meldingstatus rolt af** uit de taken (bestaa
 - **Filterkaart**: status-select (de 4 statussen + "alle") + **GO!**, **team**-select, **zoek**veld,
   checkbox **"terugkerend"** (alleen recurring tonen). Zoeken over: omschrijving, melder, en
   locatie (naam/adres/straat/nr/postcode/plaats) + unitnaam.
+- **Download rapport** (gedeeld `x-wp-list-export`): CSV + afdrukken (print-HTML → Ctrl+P PDF)
+  van de **gefilterde** set (niet alleen de zichtbare pagina; harde rijlimiet). Zie §Rapporten.
 - **Groepering per status** met accent-header + telbadge, volgorde
   **Nieuw → In uitvoering → Afgehandeld → Gesloten**, daarbinnen nieuwste eerst.
 - **Meldingskaart**: NR (id), omschrijving (onverkort — beheer), locatie · unit · adres,
@@ -275,6 +277,7 @@ hospitality, trades/work-types). **Beheerscherm = nooit blur.**
 - **Filterkaart**: status-select (4 statussen + "alle") + GO!, **team**-select, **zoek**veld,
   checkbox **"terugkerend"** (alleen recurring-cycli). Zoeken over: taaknotitie/omschrijving,
   melding-omschrijving + melder, en locatie (naam/adres/postcode/plaats) + unitnaam.
+- **Download rapport** (`x-wp-list-export`): CSV + afdrukken van de gefilterde set — zie §Rapporten.
 - **Groepering per status** met accent-header + telbadge, volgorde
   **Nieuw → In uitvoering → Afgehandeld → Gesloten**, nieuwste eerst.
 - **Taakkaart**: melding-omschrijving (onverkort — beheer), locatie · unit · adres, **team**,
@@ -393,6 +396,7 @@ de meldingenlijst te vervuilen. Los van ESG.
 ### Beheer (`/unit-checks`)
 - Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link.
 - Filters: resultaat, locatie. Admin + medewerker via Policy.
+- **Download rapport** (`x-wp-list-export`): CSV + afdrukken van de gefilterde historiek — zie §Rapporten.
 - **Aan/uit:** Plaatsen → Categorieën (`allow_unit_checks`) én unit bewerken (`allow_unit_checks`);
   beide nodig, beide default uit.
 
@@ -567,7 +571,8 @@ worden in rapportage getoond als `:waarde (niet meer in lijst)`.
 - Webhook `esg.measurement.recorded` bij elke nieuwe rij.
 
 ### 5b.5 Nog niet in scope (fase 2+)
-`GET` metingen, CSV-export, dashboards/KPI's.
+`GET` metingen (API), dashboards/KPI's. **CSV + print** van de gefilterde metingenlijst:
+zie §Rapporten (fase 1 list-export; API-GET blijft later).
 
 ### 5b.6 Openstaande ESG-werkzaamheden (geprioriteerd)
 
@@ -585,8 +590,8 @@ prioriteit.
 `corrects_measurement_id`; de oorspronkelijke meting blijft ongewijzigd. Backoffice: knop
 **Corrigeren** op oorspronkelijke rijen; correctierij toont pill + “Vervangt [waarde]”.
 
-**Niet in deze lijst (breedere fase 2):** `GET /api/v1/esg/measurements`, CSV-export,
-dashboards/KPI's — zie §5b.5.
+**Niet in deze lijst (breedere fase 2):** `GET /api/v1/esg/measurements`, dashboards/KPI's —
+zie §5b.5. List-export CSV/print: §Rapporten.
 
 ---
 
@@ -716,6 +721,27 @@ Hospitality `InternalTeams`-component, `category_slug`, triage-categorieën, `Se
 sector-suffixes, marketing-query-params. Property→Location.
 
 **Device:** desktop-first (beheer). **Bouwvolgorde:** ná de QR-portaal-build (deelt worker/team-model).
+
+---
+
+## 6b. Rapporten (list-export → later builder)
+
+**Doel:** gefilterde zoekresultaten downloaden/afdrukken zonder aparte BI-module.
+
+### Fase 1 (nu) — export op zoekschermen
+- Knop **Download rapport** (`x-wp-list-export`) op filterpanelen: submenu **CSV** + **Afdrukken (PDF via Ctrl+P)**.
+- Zelfde filters als de lijst; export = alle matching rijen tot harde limiet (5000), niet alleen de
+  zichtbare pagina/groepslimiet.
+- Datasets: **Meldingen** (incl. inspectierondes-filter), **Taken**, **Time/uren**, **Unit checks**,
+  **ESG-metingen** (alleen met ESG-module / Policy).
+- Architectuur: filter-DTO → **Export*Action** (tenant + actor-vrij; geen HTTP in Action) → dunne
+  CSV/print-controller + Policy `viewAny`. Gedeelde print-tabelview.
+- **Geen** server-Excel/Word/PDF-libraries in fase 1.
+
+### Fase 2 (later) — Organisatie → Rapporten
+- Sidebar onder Organisatie: **Rapporten** (naast Instellingen / API / Abonnement).
+- Opgeslagen configs (naam, dataset, filters, kolommen, formaat), periodes, evt. geplande mail.
+- **Hergebruik exact dezelfde Export-Actions** — geen tweede querypad.
 
 ---
 

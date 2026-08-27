@@ -1,0 +1,59 @@
+{
+    "download": "Scarica rapporto",
+    "format": {
+        "csv": "CSV",
+        "print": "Stampa (PDF)"
+    },
+    "print_button": "Stampa",
+    "empty": "Nessuna riga per questi filtri.",
+    "truncated": "Esportazione limitata a :limit righe. Affina i filtri.",
+    "row_count": ":count righe",
+    "issues": {
+        "title": "Segnalazioni — rapporto",
+        "document_title": "Segnalazioni — WinProx",
+        "filename": "segnalazioni"
+    },
+    "tasks": {
+        "title": "Attività — rapporto",
+        "document_title": "Attività — WinProx",
+        "filename": "attivita"
+    },
+    "unit_checks": {
+        "title": "Unit check — rapporto",
+        "document_title": "Unit check — WinProx",
+        "filename": "unit-check"
+    },
+    "esg": {
+        "title": "Misurazioni ESG — rapporto",
+        "document_title": "Misurazioni ESG — WinProx",
+        "filename": "misurazioni-esg"
+    },
+    "columns": {
+        "id": "ID",
+        "status": "Stato",
+        "description": "Descrizione",
+        "location": "Sede",
+        "unit": "Unit",
+        "reporter": "Segnalatore",
+        "created_at": "Creato",
+        "approved_at": "Approvato",
+        "recurring": "Ricorrente",
+        "teams": "Team",
+        "source": "Origine",
+        "priority": "Priorità",
+        "issue_id": "Segnalazione",
+        "team": "Team",
+        "scheduled_for": "Pianificato",
+        "due_at": "Scadenza",
+        "checked_at": "Controllato",
+        "result": "Risultato",
+        "worker": "Esecutore",
+        "checklist": "Checklist",
+        "recorded_at": "Rilevato il",
+        "indicator": "Indicatore",
+        "value": "Valore",
+        "task_id": "Attività"
+    },
+    "yes": "Sì",
+    "no": "No"
+}

@@ -529,6 +529,22 @@ class Index extends Component
                 || $this->unitFilter,
             'highlightIssue' => $this->highlightIssue,
             'onboarding' => TenantOnboardingState::current(),
+            'exportUrl' => route('issues.export', array_filter([
+                'status' => $this->statusFilter !== '' ? $this->statusFilter : null,
+                'team' => $this->teamFilter ?: null,
+                'q' => trim($this->search) !== '' ? trim($this->search) : null,
+                'recurring' => $this->recurring ? '1' : null,
+                'inspection_round' => $this->inspectionRoundOnly ? '1' : null,
+                'unit_id' => $this->unitFilter ?: null,
+            ])),
+            'printUrl' => route('issues.print', array_filter([
+                'status' => $this->statusFilter !== '' ? $this->statusFilter : null,
+                'team' => $this->teamFilter ?: null,
+                'q' => trim($this->search) !== '' ? trim($this->search) : null,
+                'recurring' => $this->recurring ? '1' : null,
+                'inspection_round' => $this->inspectionRoundOnly ? '1' : null,
+                'unit_id' => $this->unitFilter ?: null,
+            ])),
             'createLocations' => $this->showCreateModal
                 ? Location::query()->orderBy('name')->get()
                 : collect(),

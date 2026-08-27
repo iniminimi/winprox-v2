@@ -1,0 +1,59 @@
+{
+    "download": "Télécharger le rapport",
+    "format": {
+        "csv": "CSV",
+        "print": "Imprimer (PDF)"
+    },
+    "print_button": "Imprimer",
+    "empty": "Aucune ligne pour ces filtres.",
+    "truncated": "Export limité à :limit lignes. Affinez les filtres.",
+    "row_count": ":count lignes",
+    "issues": {
+        "title": "Signalements — rapport",
+        "document_title": "Signalements — WinProx",
+        "filename": "signalements"
+    },
+    "tasks": {
+        "title": "Tâches — rapport",
+        "document_title": "Tâches — WinProx",
+        "filename": "taches"
+    },
+    "unit_checks": {
+        "title": "Contrôles unit — rapport",
+        "document_title": "Contrôles unit — WinProx",
+        "filename": "controles-unit"
+    },
+    "esg": {
+        "title": "Mesures ESG — rapport",
+        "document_title": "Mesures ESG — WinProx",
+        "filename": "mesures-esg"
+    },
+    "columns": {
+        "id": "ID",
+        "status": "Statut",
+        "description": "Description",
+        "location": "Site",
+        "unit": "Unité",
+        "reporter": "Déclarant",
+        "created_at": "Créé",
+        "approved_at": "Approuvé",
+        "recurring": "Récurrent",
+        "teams": "Équipes",
+        "source": "Source",
+        "priority": "Priorité",
+        "issue_id": "Signalement",
+        "team": "Équipe",
+        "scheduled_for": "Planifié",
+        "due_at": "Échéance",
+        "checked_at": "Contrôlé",
+        "result": "Résultat",
+        "worker": "Exécutant",
+        "checklist": "Checklist",
+        "recorded_at": "Mesuré le",
+        "indicator": "Indicateur",
+        "value": "Valeur",
+        "task_id": "Tâche"
+    },
+    "yes": "Oui",
+    "no": "Non"
+}

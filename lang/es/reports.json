@@ -1,0 +1,59 @@
+{
+    "download": "Descargar informe",
+    "format": {
+        "csv": "CSV",
+        "print": "Imprimir (PDF)"
+    },
+    "print_button": "Imprimir",
+    "empty": "No hay filas para estos filtros.",
+    "truncated": "Exportación limitada a :limit filas. Afine los filtros.",
+    "row_count": ":count filas",
+    "issues": {
+        "title": "Incidencias — informe",
+        "document_title": "Incidencias — WinProx",
+        "filename": "incidencias"
+    },
+    "tasks": {
+        "title": "Tareas — informe",
+        "document_title": "Tareas — WinProx",
+        "filename": "tareas"
+    },
+    "unit_checks": {
+        "title": "Unit checks — informe",
+        "document_title": "Unit checks — WinProx",
+        "filename": "unit-checks"
+    },
+    "esg": {
+        "title": "Mediciones ESG — informe",
+        "document_title": "Mediciones ESG — WinProx",
+        "filename": "mediciones-esg"
+    },
+    "columns": {
+        "id": "ID",
+        "status": "Estado",
+        "description": "Descripción",
+        "location": "Ubicación",
+        "unit": "Unit",
+        "reporter": "Declarante",
+        "created_at": "Creado",
+        "approved_at": "Aprobado",
+        "recurring": "Recurrente",
+        "teams": "Equipos",
+        "source": "Origen",
+        "priority": "Prioridad",
+        "issue_id": "Incidencia",
+        "team": "Equipo",
+        "scheduled_for": "Planificado",
+        "due_at": "Vence",
+        "checked_at": "Comprobado",
+        "result": "Resultado",
+        "worker": "Operario",
+        "checklist": "Checklist",
+        "recorded_at": "Medido el",
+        "indicator": "Indicador",
+        "value": "Valor",
+        "task_id": "Tarea"
+    },
+    "yes": "Sí",
+    "no": "No"
+}

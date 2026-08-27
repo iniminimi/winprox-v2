@@ -25,6 +25,7 @@
                         <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
                     @endforeach
                 </select>
+                <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
             </div>
         </div>
 

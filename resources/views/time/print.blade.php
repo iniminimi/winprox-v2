@@ -15,6 +15,11 @@
                 <div class="wp-cluster wp-no-print">
                     <button type="button" class="btn btn--primary btn--sm" onclick="window.print()">{{ __('time.print.button') }}</button>
                 </div>
+                @if (! empty($truncated))
+                    <p class="wp-flash wp-flash--muted">
+                        {{ __('reports.truncated', ['limit' => $limit ?? \App\Support\Reports\ListExportLimit::MAX]) }}
+                    </p>
+                @endif
             </div>
             <div class="wp-cluster wp-cluster--tight wp-page-actions">
                 <div class="wp-sidebar-header-logo">

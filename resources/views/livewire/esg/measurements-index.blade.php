@@ -66,6 +66,7 @@
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">
                     {{ __('esg.measurements.filters.reset') }}
                 </button>
+                <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
                 <button type="submit" class="btn btn--primary btn--sm">
                     {{ __('esg.measurements.filters.apply') }}
                 </button>

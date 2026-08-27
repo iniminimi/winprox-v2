@@ -1,0 +1,59 @@
+{
+    "download": "Download report",
+    "format": {
+        "csv": "CSV",
+        "print": "Print (PDF)"
+    },
+    "print_button": "Print",
+    "empty": "No rows for these filters.",
+    "truncated": "Export limited to :limit rows. Refine filters for a smaller set.",
+    "row_count": ":count rows",
+    "issues": {
+        "title": "Issues — report",
+        "document_title": "Issues — WinProx",
+        "filename": "issues"
+    },
+    "tasks": {
+        "title": "Tasks — report",
+        "document_title": "Tasks — WinProx",
+        "filename": "tasks"
+    },
+    "unit_checks": {
+        "title": "Unit checks — report",
+        "document_title": "Unit checks — WinProx",
+        "filename": "unit-checks"
+    },
+    "esg": {
+        "title": "ESG measurements — report",
+        "document_title": "ESG measurements — WinProx",
+        "filename": "esg-measurements"
+    },
+    "columns": {
+        "id": "ID",
+        "status": "Status",
+        "description": "Description",
+        "location": "Location",
+        "unit": "Unit",
+        "reporter": "Reporter",
+        "created_at": "Created",
+        "approved_at": "Approved",
+        "recurring": "Recurring",
+        "teams": "Teams",
+        "source": "Source",
+        "priority": "Priority",
+        "issue_id": "Issue",
+        "team": "Team",
+        "scheduled_for": "Scheduled",
+        "due_at": "Due",
+        "checked_at": "Checked",
+        "result": "Result",
+        "worker": "Worker",
+        "checklist": "Checklist",
+        "recorded_at": "Recorded at",
+        "indicator": "Indicator",
+        "value": "Value",
+        "task_id": "Task"
+    },
+    "yes": "Yes",
+    "no": "No"
+}

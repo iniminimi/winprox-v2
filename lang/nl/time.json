@@ -147,7 +147,6 @@
         "apply": "Toepassen"
     },
     "export": {
-        "button": "Exporteer CSV",
         "columns": {
             "date": "Datum",
             "worker": "Medewerker",

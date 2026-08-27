@@ -1685,6 +1685,38 @@ button.wp-issue-row:disabled {
     gap: 0.5rem 0.75rem;
 }
 
+.wp-list-export {
+    position: relative;
+    display: inline-flex;
+}
+
+.wp-list-export__menu {
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    left: 0;
+    z-index: 40;
+    min-width: 11rem;
+    padding: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.wp-list-export__item {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--wp-radius-md);
+    color: var(--wp-text);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.wp-list-export__item:hover {
+    background-color: var(--wp-accent-soft);
+    color: var(--wp-accent-strong, var(--wp-accent));
+}
+
 .wp-filter-grid {
     display: grid;
     grid-template-columns: 1fr;

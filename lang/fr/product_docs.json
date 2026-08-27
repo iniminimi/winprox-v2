@@ -97,6 +97,10 @@
                 "body": "Printable report of open tasks for the selected day, grouped by team. Available from Dashboard, Tasks and Calendar — useful at shift start."
             },
             {
+                "title": "Rapports",
+                "body": "Sur les ecrans de recherche (signalements, taches, Time, controles unit, ESG) : telecharger le rapport en CSV ou imprimer (Ctrl+P vers PDF), avec les memes filtres que la liste. Plus tard : Organisation - Rapports pour des modeles enregistres."
+            },
+            {
                 "title": "Calendar",
                 "body": "Month, week and day views of tasks, issues and reservations. From the calendar you can also print the briefing for that day."
             },
