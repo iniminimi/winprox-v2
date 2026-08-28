@@ -109,20 +109,21 @@
                         @endif
                     @endif
                 </div>
+
+                <div class="wp-settings-subblock">
+                    <h3 class="wp-settings-subblock-title">{{ __('settings.notifications.title') }}</h3>
+                    <p class="wp-muted wp-text-sm">{{ __('settings.notifications.hint') }}</p>
+                    <label class="wp-check wp-check--boxed">
+                        <input type="checkbox" wire:model.live="notifyOnNewIssueEmail" class="wp-checkbox">
+                        <span>
+                            {{ __('settings.notifications.new_qr_issue_label') }}
+                            <br><span class="wp-hint">{{ __('settings.notifications.new_qr_issue_hint') }}</span>
+                        </span>
+                    </label>
+                </div>
             </div>
         </x-wp-settings-section>
     @endif
-
-    <x-wp-settings-section :title="__('settings.notifications.title')">
-        <p class="wp-muted wp-text-sm">{{ __('settings.notifications.hint') }}</p>
-        <label class="wp-check wp-check--boxed">
-            <input type="checkbox" wire:model.live="notifyOnNewIssueEmail" class="wp-checkbox">
-            <span>
-                {{ __('settings.notifications.new_qr_issue_label') }}
-                <br><span class="wp-hint">{{ __('settings.notifications.new_qr_issue_hint') }}</span>
-            </span>
-        </label>
-    </x-wp-settings-section>
 
     @if ($canManageOrganisation)
         <x-wp-settings-section :title="__('settings.work_menu.title')">
@@ -162,25 +163,6 @@
             </form>
         </x-wp-settings-section>
     @endif
-
-    <x-wp-settings-section :title="__('settings.style.title')">
-        <p class="wp-muted">{{ __('settings.style.hint') }}</p>
-        <div class="wp-style-options" role="radiogroup" aria-label="{{ __('settings.style.title') }}">
-            @foreach ($themeChoices as $choice)
-                <label class="wp-style-option {{ $uiTheme === $choice->value ? 'is-selected' : '' }}">
-                    <input
-                        type="radio"
-                        name="uiTheme"
-                        value="{{ $choice->value }}"
-                        wire:model.live="uiTheme"
-                        class="wp-style-option-input"
-                    >
-                    <span class="wp-style-option-label">{{ __('settings.style.options.'.$choice->value.'.label') }}</span>
-                    <span class="wp-style-option-desc">{{ __('settings.style.options.'.$choice->value.'.description') }}</span>
-                </label>
-            @endforeach
-        </div>
-    </x-wp-settings-section>
 
     @if ($canUpdateTenantBranding && $organisationTenant)
         <x-wp-settings-section :title="__('settings.org.custom_theme_title')">
@@ -281,6 +263,25 @@
             @include('livewire.pages.partials.qr-printable-page-editor')
         </x-wp-settings-section>
     @endif
+
+    <x-wp-settings-section :title="__('settings.style.title')">
+        <p class="wp-muted">{{ __('settings.style.hint') }}</p>
+        <div class="wp-style-options" role="radiogroup" aria-label="{{ __('settings.style.title') }}">
+            @foreach ($themeChoices as $choice)
+                <label class="wp-style-option {{ $uiTheme === $choice->value ? 'is-selected' : '' }}">
+                    <input
+                        type="radio"
+                        name="uiTheme"
+                        value="{{ $choice->value }}"
+                        wire:model.live="uiTheme"
+                        class="wp-style-option-input"
+                    >
+                    <span class="wp-style-option-label">{{ __('settings.style.options.'.$choice->value.'.label') }}</span>
+                    <span class="wp-style-option-desc">{{ __('settings.style.options.'.$choice->value.'.description') }}</span>
+                </label>
+            @endforeach
+        </div>
+    </x-wp-settings-section>
 
     @if ($canManageOrganisation)
         <x-wp-settings-section

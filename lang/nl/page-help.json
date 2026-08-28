@@ -542,11 +542,7 @@
                 },
                 {
                     "label": "Organisatiegegevens",
-                    "text": "Onder Je organisatie staan twee delen: Organisatiegegevens (naam, e-mail, telefoon en adres — alleen de beheerder kan bewerken via 'Organisatiegegevens bewerken') en Organisatielogo (upload PNG/JPG, max. 2 MB). Als medewerker zie je het huidige logo alleen ter informatie. Het logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
-                },
-                {
-                    "label": "WinProx-stijl",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Onder Je organisatie staan drie delen: Organisatiegegevens (naam, e-mail, telefoon en adres — alleen de beheerder kan bewerken via 'Organisatiegegevens bewerken'), Organisatielogo (upload PNG/JPG, max. 2 MB) en E-mailmeldingen (persoonlijke voorkeur: e-mail bij elke nieuwe QR-melding). Als medewerker zie je gegevens en logo alleen ter informatie; e-mailmeldingen kun je wel zelf aan- of uitzetten. Het logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
                 },
                 {
                     "label": "Eigen portaal-stijl",
@@ -579,6 +575,10 @@
                 {
                     "label": "Werkmenu instellingen",
                     "text": "Alleen de beheerder kan per organisatie bepalen welke onderdelen onder Werk zichtbaar zijn: Kalender, Reserveringen, Inspectierondes en Unitmetingen. Uitgeschakeld verdwijnt het item uit de sidebar en zijn de backoffice-routes niet bereikbaar. Bestaande reserverings- of meet-instellingen op units en categorieën blijven op het QR-portaal werken; nieuw inschakelen kan niet zolang het werkmenu-item uit staat. Unit checks worden niet beïnvloed door Inspectierondes uit."
+                },
+                {
+                    "label": "WinProx-stijl",
+                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Standaard of Donker. Je keuze geldt op al je ingelogde apparaten. Staat onderaan de pagina, vlak vóór de exportrubriek."
                 },
                 {
                     "label": "Privacy & export van gegevens",

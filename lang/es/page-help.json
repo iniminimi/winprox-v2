@@ -542,11 +542,7 @@
                 },
                 {
                     "label": "Datos de la organización",
-                    "text": "En Su organización hay dos bloques: Datos de la organización (nombre, correo, teléfono y dirección — solo el administrador puede editar mediante «Editar datos de la organización») y Logotipo de la organización (subida PNG/JPG, máx. 2 MB). Como empleado solo ve el logotipo actual como referencia. Aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
-                },
-                {
-                    "label": "Estilo WinProx",
-                    "text": "Elija cómo se ve WinProx para usted en administración: Estándar u Oscuro. Su elección se aplica en todos los dispositivos donde haya iniciado sesión."
+                    "text": "En Su organización hay tres bloques: Datos de la organización (nombre, correo, teléfono y dirección — solo el administrador puede editar mediante «Editar datos de la organización»), Logotipo de la organización (subida PNG/JPG, máx. 2 MB) y Notificaciones por correo (preferencia personal: correo por cada nuevo informe QR). Como empleado solo ve datos y logotipo como referencia; las notificaciones por correo puede activarlas o desactivarlas usted mismo. El logotipo aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
                 },
                 {
                     "label": "Estilo personalizado del portal",
@@ -579,6 +575,10 @@
                 {
                     "label": "Ajustes del menú Trabajo",
                     "text": "Solo el administrador puede elegir por organización qué elementos de Trabajo son visibles: Calendario, Reservas, Rondas de inspección y Mediciones de unidad. Desactivado, el elemento desaparece de la barra lateral y las rutas de backoffice devuelven prohibido. Los ajustes de reserva o medición existentes en unidades y categorías siguen funcionando en el portal QR; no se pueden activar de nuevo mientras el elemento del menú Trabajo esté desactivado. Los unit checks no se ven afectados si Rondas de inspección está desactivado."
+                },
+                {
+                    "label": "Estilo WinProx",
+                    "text": "Elija cómo se ve WinProx para usted en administración: Estándar u Oscuro. Su elección se aplica en todos los dispositivos donde haya iniciado sesión. Al final de la página, justo antes de la sección de exportación."
                 },
                 {
                     "label": "Privacidad y exportación de datos",

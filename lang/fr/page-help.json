@@ -550,11 +550,7 @@
                 },
                 {
                     "label": "Données de l'organisation",
-                    "text": "Sous Votre organisation, deux blocs : Données de l'organisation (nom, e-mail, téléphone et adresse — seul l'administrateur peut modifier via 'Modifier les données de l'organisation') et Logo de l'organisation (téléversement PNG/JPG, max. 2 Mo). En tant qu'employé, vous voyez le logo actuel uniquement à titre informatif. Il apparaît au centre de chaque QR code sur les autocollants et dans le portail de signalement. Pour le placement en coin sur les autocollants, voir la rubrique Logo et adresse sous Feuilles d'autocollants QR."
-                },
-                {
-                    "label": "Style WinProx",
-                    "text": "Choisissez l'apparence de WinProx pour vous en administration : Standard ou Sombre. Votre choix s'applique sur tous les appareils où vous êtes connecté."
+                    "text": "Sous Votre organisation, trois blocs : Données de l'organisation (nom, e-mail, téléphone et adresse — seul l'administrateur peut modifier via 'Modifier les données de l'organisation'), Logo de l'organisation (téléversement PNG/JPG, max. 2 Mo) et Notifications e-mail (préférence personnelle : e-mail à chaque nouveau signalement QR). En tant qu'employé, vous voyez les données et le logo uniquement à titre informatif ; vous pouvez quand même activer ou désactiver les notifications e-mail. Le logo apparaît au centre de chaque QR code sur les autocollants et dans le portail de signalement. Pour le placement en coin sur les autocollants, voir la rubrique Logo et adresse sous Feuilles d'autocollants QR."
                 },
                 {
                     "label": "Style de portail personnalisé",
@@ -587,6 +583,10 @@
                 {
                     "label": "Paramètres du menu Travail",
                     "text": "Seul l'administrateur peut choisir par organisation quels éléments Travail sont visibles : Calendrier, Réservations, Tournées d'inspection et Mesures d'unité. Désactivé, l'élément disparaît de la barre latérale et les routes back-office renvoient interdit. Les réglages de réservation ou de mesure existants sur unités et catégories restent actifs sur le portail QR ; réactivation impossible tant que l'élément du menu Travail est désactivé. Les unit checks ne sont pas affectés si Tournées d'inspection est désactivé."
+                },
+                {
+                    "label": "Style WinProx",
+                    "text": "Choisissez l'apparence de WinProx pour vous en administration : Standard ou Sombre. Votre choix s'applique sur tous les appareils où vous êtes connecté. En bas de page, juste avant la rubrique d'export."
                 },
                 {
                     "label": "Confidentialité & export de données",

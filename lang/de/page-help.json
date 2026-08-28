@@ -542,11 +542,7 @@
                 },
                 {
                     "label": "Organisationsdaten",
-                    "text": "Unter Ihre Organisation finden Sie zwei Bereiche: Organisationsdaten (Name, E-Mail, Telefon und Adresse — nur der Administrator kann über 'Organisationsdaten bearbeiten' ändern) und Organisationslogo (Upload PNG/JPG, max. 2 MB). Als Mitarbeiter sehen Sie das aktuelle Logo nur zur Information. Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
-                },
-                {
-                    "label": "WinProx-Stil",
-                    "text": "Wählen Sie, wie WinProx für Sie in der Verwaltung aussieht: Standard oder Dunkel. Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind."
+                    "text": "Unter Ihre Organisation finden Sie drei Bereiche: Organisationsdaten (Name, E-Mail, Telefon und Adresse — nur der Administrator kann über 'Organisationsdaten bearbeiten' ändern), Organisationslogo (Upload PNG/JPG, max. 2 MB) und E-Mail-Benachrichtigungen (persönliche Einstellung: E-Mail bei jeder neuen QR-Meldung). Als Mitarbeiter sehen Sie Daten und Logo nur zur Information; E-Mail-Benachrichtigungen können Sie selbst ein- oder ausschalten. Das Logo erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
                 },
                 {
                     "label": "Eigenes Portal-Design",
@@ -579,6 +575,10 @@
                 {
                     "label": "Arbeitsmenü-Einstellungen",
                     "text": "Nur der Administrator kann pro Organisation festlegen, welche Arbeitsmenü-Einträge sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag aus der Seitenleiste und Backoffice-Routen sind gesperrt. Bestehende Reservierungs- oder Mess-Einstellungen auf Units und Kategorien funktionieren im QR-Portal weiter; neu aktivieren ist nicht möglich, solange der Menüeintrag aus ist. Unit Checks werden nicht beeinflusst, wenn Inspektionsrunden aus ist."
+                },
+                {
+                    "label": "WinProx-Stil",
+                    "text": "Wählen Sie, wie WinProx für Sie in der Verwaltung aussieht: Standard oder Dunkel. Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind. Steht unten auf der Seite, direkt vor dem Export-Bereich."
                 },
                 {
                     "label": "Datenschutz & Datenexport",

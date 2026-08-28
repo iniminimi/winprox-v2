@@ -542,11 +542,7 @@
                 },
                 {
                     "label": "Organisation details",
-                    "text": "Under Your organisation you will find two blocks: Organisation details (name, email, phone and address — only the administrator can edit via 'Edit organisation details') and Organisation logo (upload PNG/JPG, max. 2 MB). As an employee you only see the current logo for reference. It appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
-                },
-                {
-                    "label": "WinProx style",
-                    "text": "Choose how WinProx looks for you in admin: Standard or Dark. Your choice applies on all devices where you are signed in."
+                    "text": "Under Your organisation you will find three blocks: Organisation details (name, email, phone and address — only the administrator can edit via 'Edit organisation details'), Organisation logo (upload PNG/JPG, max. 2 MB) and Email notifications (personal preference: email for each new QR report). As an employee you only see details and logo for reference; you can still toggle email notifications yourself. The logo appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
                 },
                 {
                     "label": "Custom portal style",
@@ -579,6 +575,10 @@
                 {
                     "label": "Work menu settings",
                     "text": "Only the administrator can choose per organisation which Work items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the sidebar and backoffice routes return forbidden. Existing reservation or measurement settings on units and categories keep working on the QR portal; you cannot newly enable them while the work menu item is off. Unit checks are not affected when Inspection rounds is off."
+                },
+                {
+                    "label": "WinProx style",
+                    "text": "Choose how WinProx looks for you in admin: Standard or Dark. Your choice applies on all devices where you are signed in. At the bottom of the page, just before the export section."
                 },
                 {
                     "label": "Privacy & data export",
