@@ -366,8 +366,8 @@ it('laat een medewerker branding-instellingen zien en aanpassen maar niet privac
 
     Livewire::actingAs($employee)
         ->test(Settings::class)
-        ->set('qrStickerAvery6289HeaderText', 'Scan voor meldingen')
-        ->call('saveQrStickerAvery6289Settings')
+        ->set('qrBrandingHeaderText', 'Scan voor meldingen')
+        ->call('saveQrBrandingSettings')
         ->assertHasNoErrors();
 
     expect($tenant->fresh()->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)?->header_text)

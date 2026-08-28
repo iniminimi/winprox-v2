@@ -79,23 +79,16 @@ class Settings extends Component
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $portalBackground = null;
 
-    public string $qrStickerAvery6289HeaderText = '';
+    public string $qrBrandingHeaderText = '';
 
-    public string $qrStickerAvery6289TenantLogo = 'bottom_right';
+    public string $qrBrandingTenantLogo = 'bottom_right';
 
-    public string $qrStickerAvery6289TenantAddress = 'bottom_left';
+    public string $qrBrandingTenantAddress = 'bottom_left';
 
-    /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
-    public $qrStickerAvery6289Background = null;
-
-    public string $qrPrintableBackgroundPreset = 'blue';
-
-    public string $qrPrintableTenantLogo = 'bottom_right';
-
-    public string $qrPrintableTenantAddress = 'bottom_left';
+    public string $qrBrandingBackgroundPreset = '';
 
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
-    public $qrPrintableBackground = null;
+    public $qrBrandingBackground = null;
 
     public string $uiTheme = '';
 
@@ -313,56 +306,9 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
-    public function saveQrStickerAvery6289Settings(UpdateTenantQrStickerSheetSettingsAction $updateSettings): void
-    {
-        $tenant = $this->resolveTenant();
-        if (! $tenant instanceof Tenant) {
-            return;
-        }
-
-        $this->authorize('updateTenantBranding', $tenant);
-
-        $template = QrStickerSheetTemplate::Avery62x89R;
-
-        Validator::make(
-            [
-                'headerText' => $this->qrStickerAvery6289HeaderText,
-                'tenantLogo' => $this->qrStickerAvery6289TenantLogo,
-                'tenantAddress' => $this->qrStickerAvery6289TenantAddress,
-            ],
-            UpdateTenantQrStickerSheetSettingsRequest::rulesFor($template),
-            UpdateTenantQrStickerSheetSettingsRequest::messagesFor($template),
-        )->validate();
-
-        $updated = $updateSettings->handle(
-            $tenant,
-            UpdateTenantQrStickerSheetSettingsData::fromValidated($template, [
-                'headerText' => $this->qrStickerAvery6289HeaderText,
-                'tenantLogo' => $this->qrStickerAvery6289TenantLogo,
-                'tenantAddress' => $this->qrStickerAvery6289TenantAddress,
-            ]),
-            (int) auth()->id(),
-        );
-
-        $this->fillOrganisationFromTenant($updated);
-
-        $user = auth()->user();
-        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
-            $user->setRelation('tenant', $updated);
-        }
-
-        $this->dispatch('saved');
-    }
-
-    public function updatedQrStickerAvery6289Background(): void
-    {
-        $this->persistQrStickerAvery6289Background(
-            app(UploadTenantQrStickerSheetBackgroundAction::class),
-        );
-    }
-
-    private function persistQrStickerAvery6289Background(
-        UploadTenantQrStickerSheetBackgroundAction $uploadBackground,
+    public function saveQrBrandingSettings(
+        UpdateTenantQrStickerSheetSettingsAction $updateStickerSettings,
+        UpdateTenantQrPrintablePageSettingsAction $updatePrintableSettings,
     ): void {
         $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
@@ -371,80 +317,38 @@ class Settings extends Component
 
         $this->authorize('updateTenantBranding', $tenant);
 
-        if (! $this->qrStickerAvery6289Background instanceof UploadedFile) {
-            return;
-        }
-
-        Validator::make(
-            ['background' => $this->qrStickerAvery6289Background],
-            UploadTenantQrStickerSheetBackgroundRequest::rules(),
-        )->validate();
-
-        $updated = $uploadBackground->handle(
-            $tenant,
-            QrStickerSheetTemplate::Avery62x89R,
-            $this->qrStickerAvery6289Background,
-            (int) auth()->id(),
-        );
-        $this->reset('qrStickerAvery6289Background');
-        $this->fillOrganisationFromTenant($updated);
-
-        $user = auth()->user();
-        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
-            $user->setRelation('tenant', $updated);
-        }
-
-        $this->dispatch('saved');
-    }
-
-    public function removeQrStickerAvery6289Background(RemoveTenantQrStickerSheetBackgroundAction $removeBackground): void
-    {
-        $tenant = $this->resolveTenant();
-        if (! $tenant instanceof Tenant) {
-            return;
-        }
-
-        $this->authorize('updateTenantBranding', $tenant);
-
-        $updated = $removeBackground->handle(
-            $tenant,
-            QrStickerSheetTemplate::Avery62x89R,
-            (int) auth()->id(),
-        );
-        $this->fillOrganisationFromTenant($updated);
-
-        $user = auth()->user();
-        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
-            $user->setRelation('tenant', $updated);
-        }
-
-        $this->dispatch('saved');
-    }
-
-    public function saveQrPrintablePageSettings(UpdateTenantQrPrintablePageSettingsAction $updateSettings): void
-    {
-        $tenant = $this->resolveTenant();
-        if (! $tenant instanceof Tenant) {
-            return;
-        }
-
-        $this->authorize('updateTenantBranding', $tenant);
+        $averyTemplate = QrStickerSheetTemplate::Avery62x89R;
 
         Validator::make(
             [
-                'preset' => $this->qrPrintableBackgroundPreset,
-                'tenantLogo' => $this->qrPrintableTenantLogo,
-                'tenantAddress' => $this->qrPrintableTenantAddress,
+                'headerText' => $this->qrBrandingHeaderText,
+                'tenantLogo' => $this->qrBrandingTenantLogo,
+                'tenantAddress' => $this->qrBrandingTenantAddress,
+                'preset' => $this->qrBrandingBackgroundPreset,
             ],
-            UpdateTenantQrPrintablePageSettingsRequest::rulesFor(),
+            array_merge(
+                UpdateTenantQrStickerSheetSettingsRequest::rulesFor($averyTemplate),
+                UpdateTenantQrPrintablePageSettingsRequest::rulesFor(),
+            ),
+            UpdateTenantQrStickerSheetSettingsRequest::messagesFor($averyTemplate),
         )->validate();
 
-        $updated = $updateSettings->handle(
+        $updated = $updateStickerSettings->handle(
             $tenant,
+            UpdateTenantQrStickerSheetSettingsData::fromValidated($averyTemplate, [
+                'headerText' => $this->qrBrandingHeaderText,
+                'tenantLogo' => $this->qrBrandingTenantLogo,
+                'tenantAddress' => $this->qrBrandingTenantAddress,
+            ]),
+            (int) auth()->id(),
+        );
+
+        $updated = $updatePrintableSettings->handle(
+            $updated,
             UpdateTenantQrPrintablePageSettingsData::fromValidated([
-                'preset' => $this->qrPrintableBackgroundPreset,
-                'tenantLogo' => $this->qrPrintableTenantLogo,
-                'tenantAddress' => $this->qrPrintableTenantAddress,
+                'preset' => $this->qrBrandingBackgroundPreset,
+                'tenantLogo' => $this->qrBrandingTenantLogo,
+                'tenantAddress' => $this->qrBrandingTenantAddress,
             ]),
             (int) auth()->id(),
         );
@@ -459,14 +363,14 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
-    public function updatedQrPrintableBackground(): void
+    public function updatedQrBrandingBackground(): void
     {
-        $this->persistQrPrintableBackground(
+        $this->persistQrBrandingBackground(
             app(UploadTenantQrStickerSheetBackgroundAction::class),
         );
     }
 
-    private function persistQrPrintableBackground(
+    private function persistQrBrandingBackground(
         UploadTenantQrStickerSheetBackgroundAction $uploadBackground,
     ): void {
         $tenant = $this->resolveTenant();
@@ -476,22 +380,30 @@ class Settings extends Component
 
         $this->authorize('updateTenantBranding', $tenant);
 
-        if (! $this->qrPrintableBackground instanceof UploadedFile) {
+        if (! $this->qrBrandingBackground instanceof UploadedFile) {
             return;
         }
 
         Validator::make(
-            ['background' => $this->qrPrintableBackground],
+            ['background' => $this->qrBrandingBackground],
             UploadTenantQrStickerSheetBackgroundRequest::rules(),
         )->validate();
 
         $updated = $uploadBackground->handle(
             $tenant,
-            QrStickerSheetTemplate::printablePageSettings(),
-            $this->qrPrintableBackground,
+            QrStickerSheetTemplate::Avery62x89R,
+            $this->qrBrandingBackground,
             (int) auth()->id(),
         );
-        $this->reset('qrPrintableBackground');
+
+        $updated = $uploadBackground->handle(
+            $updated,
+            QrStickerSheetTemplate::printablePageSettings(),
+            $this->qrBrandingBackground,
+            (int) auth()->id(),
+        );
+
+        $this->reset('qrBrandingBackground');
         $this->fillOrganisationFromTenant($updated);
 
         $user = auth()->user();
@@ -502,7 +414,7 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
-    public function removeQrPrintableBackground(RemoveTenantQrStickerSheetBackgroundAction $removeBackground): void
+    public function removeQrBrandingBackground(RemoveTenantQrStickerSheetBackgroundAction $removeBackground): void
     {
         $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
@@ -513,9 +425,16 @@ class Settings extends Component
 
         $updated = $removeBackground->handle(
             $tenant,
+            QrStickerSheetTemplate::Avery62x89R,
+            (int) auth()->id(),
+        );
+
+        $updated = $removeBackground->handle(
+            $updated,
             QrStickerSheetTemplate::printablePageSettings(),
             (int) auth()->id(),
         );
+
         $this->fillOrganisationFromTenant($updated);
 
         $user = auth()->user();
@@ -689,9 +608,9 @@ class Settings extends Component
         return app(RenderQrPrintablePagePreviewAction::class)->handle(
             $tenant,
             BrandedQrPrintablePagePreviewData::fromLivewireForm(
-                $this->qrPrintableBackgroundPreset,
-                $this->qrPrintableTenantLogo,
-                $this->qrPrintableTenantAddress,
+                $this->qrBrandingBackgroundPreset,
+                $this->qrBrandingTenantLogo,
+                $this->qrBrandingTenantAddress,
             ),
             $sheetSetting,
         );
@@ -715,9 +634,9 @@ class Settings extends Component
         return app(RenderBrandedQrStickerPreviewAction::class)->handle(
             $tenant,
             BrandedQrStickerPreviewData::fromLivewireForm(
-                $this->qrStickerAvery6289HeaderText,
-                $this->qrStickerAvery6289TenantLogo,
-                $this->qrStickerAvery6289TenantAddress,
+                $this->qrBrandingHeaderText,
+                $this->qrBrandingTenantLogo,
+                $this->qrBrandingTenantAddress,
             ),
             $sheetSetting,
         );
@@ -742,15 +661,18 @@ class Settings extends Component
         $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);
         $layout = BrandedQrStickerLayoutConfig::fromSetting($sheetSetting);
 
-        $this->qrStickerAvery6289HeaderText = (string) ($sheetSetting?->header_text ?? '');
-        $this->qrStickerAvery6289TenantLogo = $layout->tenantLogoPlacement()->value;
-        $this->qrStickerAvery6289TenantAddress = $layout->tenantAddressPlacement()->value;
-
         $printableSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
         $printableLayout = BrandedQrStickerLayoutConfig::fromSetting($printableSetting);
-        $this->qrPrintableBackgroundPreset = QrPrintablePageBackgroundPreset::presetKeyFromSetting($printableSetting);
-        $this->qrPrintableTenantLogo = $printableLayout->tenantLogoPlacement()->value;
-        $this->qrPrintableTenantAddress = $printableLayout->tenantAddressPlacement()->value;
+
+        $this->qrBrandingHeaderText = (string) ($sheetSetting?->header_text ?? '');
+        $this->qrBrandingTenantLogo = $printableLayout->tenantLogoPlacement()->value;
+        $this->qrBrandingTenantAddress = $printableLayout->tenantAddressPlacement()->value;
+        $this->qrBrandingBackgroundPreset = QrPrintablePageBackgroundPreset::presetKeyFromSetting($printableSetting);
+
+        if ($printableLayout->usesDefaults() && ! $layout->usesDefaults()) {
+            $this->qrBrandingTenantLogo = $layout->tenantLogoPlacement()->value;
+            $this->qrBrandingTenantAddress = $layout->tenantAddressPlacement()->value;
+        }
     }
 
     private function resolveTenant(): ?Tenant

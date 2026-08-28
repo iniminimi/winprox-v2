@@ -271,8 +271,7 @@
 
         <x-wp-settings-section :title="__('settings.qr_stickers.title')">
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.hint') }}</p>
-            @include('livewire.pages.partials.qr-sticker-avery6289-editor')
-            @include('livewire.pages.partials.qr-printable-page-editor')
+            @include('livewire.pages.partials.qr-branding-editor')
         </x-wp-settings-section>
     @endif
 

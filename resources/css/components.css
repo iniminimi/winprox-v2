@@ -4456,11 +4456,17 @@ svg.wp-release-worker-row__icon,
     margin-top: 0;
 }
 
-/* Ruimte tussen Avery-blok en A6/A5/A4-blok (Opslaan → volgende sectie). */
-.wp-qr-sticker-editor + .wp-qr-sticker-editor {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--wp-border);
+.wp-qr-branding-previews {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.wp-qr-branding-preview-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .wp-qr-sticker-editor-controls {
