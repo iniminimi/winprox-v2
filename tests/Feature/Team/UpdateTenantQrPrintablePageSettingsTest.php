@@ -167,6 +167,24 @@ it('persists the default stock preset when selected in settings', function () {
         ->and($setting->layout_config['background_preset'] ?? null)->toBe($defaultKey);
 });
 
+it('saves shared header text on the printable page settings row', function () {
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+
+    $updated = app(UpdateTenantQrPrintablePageSettingsAction::class)->handle(
+        $tenant,
+        UpdateTenantQrPrintablePageSettingsData::fromValidated([
+            'preset' => QrPrintablePageBackgroundPreset::defaultPresetKey(),
+            'headerText' => 'Scan hier voor meldingen',
+        ]),
+        actorUserId: null,
+    );
+
+    $setting = $updated->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
+    expect($setting?->header_text)->toBe('Scan hier voor meldingen');
+});
+
 it('maps legacy blue green and multi presets to stock backgrounds 07 through 09', function () {
     Storage::fake('public');
 
@@ -203,6 +221,7 @@ it('saves printable page logo and address placements with the shared preset', fu
         $tenant,
         new UpdateTenantQrPrintablePageSettingsData(
             $presetKey,
+            null,
             \App\Enums\QrStickerTenantLogoPlacement::BottomRight,
             \App\Enums\QrStickerTenantLogoPlacement::BottomLeft,
         ),
@@ -219,6 +238,7 @@ it('saves printable page logo and address placements with the shared preset', fu
         $tenant,
         new UpdateTenantQrPrintablePageSettingsData(
             QrPrintablePageBackgroundPreset::defaultPresetKey(),
+            null,
             \App\Enums\QrStickerTenantLogoPlacement::TopLeft,
             \App\Enums\QrStickerTenantLogoPlacement::None,
         ),

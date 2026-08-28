@@ -12,6 +12,7 @@ readonly class UpdateTenantQrPrintablePageSettingsData
 {
     public function __construct(
         public string $presetKey,
+        public ?string $headerText = null,
         public QrStickerTenantLogoPlacement $tenantLogoPlacement = QrStickerTenantLogoPlacement::BottomRight,
         public QrStickerTenantLogoPlacement $tenantAddressPlacement = QrStickerTenantLogoPlacement::BottomLeft,
     ) {}
@@ -32,8 +33,11 @@ readonly class UpdateTenantQrPrintablePageSettingsData
             $presetKey = QrPrintablePageBackgroundPreset::normalizePresetKey($presetKey);
         }
 
+        $headerText = isset($input['headerText']) ? trim((string) $input['headerText']) : null;
+
         return new self(
             presetKey: $presetKey,
+            headerText: $headerText === '' ? null : $headerText,
             tenantLogoPlacement: QrStickerTenantLogoPlacement::tryFromString($input['tenantLogo'] ?? null),
             tenantAddressPlacement: QrStickerTenantLogoPlacement::tryFromStringForAddress($input['tenantAddress'] ?? null),
         );

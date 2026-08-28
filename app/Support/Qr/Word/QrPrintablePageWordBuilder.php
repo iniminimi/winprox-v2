@@ -6,6 +6,7 @@ namespace App\Support\Qr\Word;
 
 use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
+use App\Support\Qr\BrandedQrStickerHeaderText;
 use App\Support\Qr\BrandedQrStickerLayoutConfig;
 use App\Support\Qr\BrandedQrStickerTenantDetails;
 use App\Support\Qr\QrCenterLogo;
@@ -291,7 +292,7 @@ final class QrPrintablePageWordBuilder
         $contentWidthMm = $pageWidthMm - (2 * self::PAGE_MARGIN_MM);
         $contentHeightMm = $pageHeightMm - (2 * self::PAGE_MARGIN_MM);
         $widthPx = self::mmToPixelAtDpi($contentWidthMm);
-        $layout = $this->layoutMetrics($contentWidthMm, $contentHeightMm, $entry);
+        $layout = $this->layoutMetrics($contentWidthMm, $contentHeightMm, $entry, $sheetSettings);
 
         $qrTemp = $this->allocateTempPng($tempFiles);
         QrCodePngWriter::writeFileForStickerSheet(
@@ -365,7 +366,7 @@ final class QrPrintablePageWordBuilder
         $contentWidthMm = $pageWidthMm - (2 * self::PAGE_MARGIN_MM);
         $contentHeightMm = $pageHeightMm - (2 * self::PAGE_MARGIN_MM);
         $widthPx = self::mmToPixelAtDpi($contentWidthMm);
-        $layout = $this->layoutMetrics($contentWidthMm, $contentHeightMm, $entry);
+        $layout = $this->layoutMetrics($contentWidthMm, $contentHeightMm, $entry, $sheetSettings);
 
         $qrTemp = $this->allocateTempPng($tempFiles);
         QrCodePngWriter::writeFileForStickerSheet(
@@ -514,8 +515,12 @@ final class QrPrintablePageWordBuilder
      *     headlineFontPx: float
      * }
      */
-    private function layoutMetrics(float $contentWidthMm, float $contentHeightMm, QrStickerEntry $entry): array
-    {
+    private function layoutMetrics(
+        float $contentWidthMm,
+        float $contentHeightMm,
+        QrStickerEntry $entry,
+        ?TenantQrStickerSheetSetting $sheetSettings,
+    ): array {
         $widthPx = self::mmToPixelAtDpi($contentWidthMm);
         $heightPx = self::mmToPixelAtDpi($contentHeightMm);
         $shortSideMm = min($contentWidthMm, $contentHeightMm);
@@ -524,15 +529,9 @@ final class QrPrintablePageWordBuilder
         $qrX = (int) round(($widthPx - $qrPx) / 2);
 
         $primaryText = trim((string) ($entry->stickerNumber ?? $entry->unitLabel));
-        $secondaryText = trim((string) ($entry->locationUnitLabel ?? ''));
-        $headlineText = trim((string) ($entry->pageHeadline ?? ''));
-        // Avoid duplicate lines when sticker number equals the location/unit caption.
-        if ($secondaryText !== '' && strcasecmp($secondaryText, $primaryText) === 0) {
-            $secondaryText = '';
-        }
-        if ($headlineText !== '' && strcasecmp($headlineText, $secondaryText) === 0) {
-            $headlineText = '';
-        }
+        $labels = BrandedQrStickerHeaderText::printableHeadlineAndCaption($sheetSettings, $entry);
+        $headlineText = $labels['headline'];
+        $secondaryText = $labels['secondary'];
 
         $typeScale = min($contentWidthMm, $contentHeightMm) / self::BASE_CONTENT_SHORT_SIDE_MM;
         $primaryFontPx = self::mmToPixelAtDpi(self::PRIMARY_FONT_MM * $typeScale);

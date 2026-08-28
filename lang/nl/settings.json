@@ -48,12 +48,12 @@
             "preview_portal_fallback": "Demo locatie · Machine 12"
         },
         "branding": {
-            "section_text": "Tekst (stickervel)",
+            "section_text": "Tekst bovenaan",
             "section_background": "Achtergrond",
             "section_logo": "Logo en adres",
-            "header_label": "Tekst bovenaan de sticker",
+            "header_label": "Tekst bovenaan sticker en afdrukblad",
             "header_placeholder": "bv. Scan hier voor meldingen",
-            "header_hint": "Alleen op Avery 62x89-R stickervel. Max. 120 tekens. Leeg = locatie · unit.",
+            "header_hint": "Max. 120 tekens. Leeg = locatie · unit op sticker en afdrukblad.",
             "preset_label": "Standaardachtergrond",
             "preset_hint": "Geldt voor A6, A5 en A4. Keuze wordt meteen opgeslagen; eigen upload overschrijft de preset.",
             "background_hint": "Optioneel: eigen achtergrond voor sticker en afdrukblad (PNG/JPG, max. 4 MB).",

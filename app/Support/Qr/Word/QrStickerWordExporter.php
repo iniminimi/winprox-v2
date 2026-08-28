@@ -6,6 +6,7 @@ namespace App\Support\Qr\Word;
 
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\TenantQrStickerSheetSetting;
 use App\Support\Qr\LocationQrPackStickerEntries;
 use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrCodePngWriter;
@@ -88,7 +89,7 @@ final class QrStickerWordExporter
 
         $tenant?->loadMissing('qrStickerSheetSettings');
         $sheetSettings = $template->isPrintablePage()
-            ? $tenant?->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings())
+            ? $this->printableSheetSettingsForExport($tenant)
             : $tenant?->qrStickerSheetSetting($template);
 
         try {
@@ -109,5 +110,36 @@ final class QrStickerWordExporter
         } finally {
             QrStickerRasterCache::clear();
         }
+    }
+
+    private function printableSheetSettingsForExport(?Tenant $tenant): ?TenantQrStickerSheetSetting
+    {
+        if ($tenant === null) {
+            return null;
+        }
+
+        $printable = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
+        $avery = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);
+        $headerText = $avery?->header_text ?? $printable?->header_text;
+
+        if ($printable === null && $avery === null) {
+            return null;
+        }
+
+        if ($printable !== null) {
+            if ($headerText !== null && $printable->header_text !== $headerText) {
+                return new TenantQrStickerSheetSetting([
+                    'tenant_id' => $printable->tenant_id,
+                    'template' => $printable->template,
+                    'header_text' => $headerText,
+                    'background_path' => $printable->background_path,
+                    'layout_config' => $printable->layout_config,
+                ]);
+            }
+
+            return $printable;
+        }
+
+        return $avery;
     }
 }

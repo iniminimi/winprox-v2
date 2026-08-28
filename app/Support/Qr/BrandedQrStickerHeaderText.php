@@ -39,6 +39,43 @@ final class BrandedQrStickerHeaderText
         return $line;
     }
 
+    /**
+     * Headline + caption above the QR on printable A6/A5/A4 pages (aligned with sticker header rules).
+     *
+     * @return array{headline: string, secondary: string}
+     */
+    public static function printableHeadlineAndCaption(
+        ?TenantQrStickerSheetSetting $sheetSettings,
+        QrStickerEntry $entry,
+    ): array {
+        $headerFallback = $entry->headerFallback ?? $entry->locationUnitLabel;
+        $primaryText = trim((string) ($entry->stickerNumber ?? $entry->unitLabel));
+
+        if (self::tenantHeaderText($sheetSettings) !== '') {
+            $headline = self::resolve($sheetSettings, is_string($headerFallback) ? $headerFallback : null) ?? '';
+            $secondary = self::unitCaption($sheetSettings, is_string($headerFallback) ? $headerFallback : null)
+                ?? trim((string) ($entry->locationUnitLabel ?? ''));
+        } else {
+            $headline = trim((string) ($entry->pageHeadline ?? ''));
+            if ($headline === '') {
+                $headline = self::resolve($sheetSettings, is_string($headerFallback) ? $headerFallback : null) ?? '';
+            }
+            $secondary = trim((string) ($entry->locationUnitLabel ?? ''));
+        }
+
+        if ($secondary !== '' && strcasecmp($secondary, $primaryText) === 0) {
+            $secondary = '';
+        }
+        if ($headline !== '' && strcasecmp($headline, $secondary) === 0) {
+            $headline = '';
+        }
+
+        return [
+            'headline' => $headline,
+            'secondary' => $secondary,
+        ];
+    }
+
     private static function tenantHeaderText(?TenantQrStickerSheetSetting $sheetSettings): string
     {
         return self::normalize((string) ($sheetSettings?->header_text ?? ''));

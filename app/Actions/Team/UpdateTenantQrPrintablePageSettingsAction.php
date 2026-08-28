@@ -10,6 +10,7 @@ use App\Enums\QrPrintablePageBackgroundPreset;
 use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Qr\BrandedQrStickerHeaderText;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\TenantQrStickerBackgroundStorage;
 
@@ -52,8 +53,13 @@ class UpdateTenantQrPrintablePageSettingsAction
             return $tenant->fresh()->load('qrStickerSheetSettings');
         }
 
+        $headerText = $data->headerText === null
+            ? null
+            : BrandedQrStickerHeaderText::fitForSticker($data->headerText);
+        $headerText = $headerText === '' ? null : $headerText;
+
         $attributes = [
-            'header_text' => null,
+            'header_text' => $headerText,
             'layout_config' => $data->layoutConfig(),
         ];
 
@@ -81,6 +87,7 @@ class UpdateTenantQrPrintablePageSettingsAction
                 'template' => $template->value,
                 'background_path' => $setting->background_path,
                 'layout_config' => $setting->layout_config,
+                'header_text' => $setting->header_text,
                 QrPrintablePageBackgroundPreset::LAYOUT_KEY => $data->presetKey,
             ],
         );

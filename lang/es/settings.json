@@ -48,12 +48,12 @@
             "preview_portal_fallback": "Ubicación demo · Máquina 12"
         },
         "branding": {
-            "section_text": "Texto (hoja de etiquetas)",
+            "section_text": "Texto superior",
             "section_background": "Fondo",
             "section_logo": "Logo y dirección",
-            "header_label": "Texto en la parte superior de la etiqueta",
+            "header_label": "Texto en la parte superior de etiqueta y hoja",
             "header_placeholder": "p. ej. Escanee aquí para reportar",
-            "header_hint": "Solo hoja Avery 62x89-R. Máx. 120 caracteres. Vacío = ubicación · unidad.",
+            "header_hint": "Máx. 120 caracteres. Vacío = ubicación · unidad en etiqueta y hoja.",
             "preset_label": "Fondo predeterminado",
             "preset_hint": "Aplica a A6, A5 y A4. La elección se guarda al instante; una carga propia sustituye la preset.",
             "background_hint": "Opcional: fondo propio para etiqueta y hoja (PNG/JPG, máx. 4 MB).",

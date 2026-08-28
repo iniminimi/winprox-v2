@@ -48,12 +48,12 @@
             "preview_portal_fallback": "Demo location · Machine 12"
         },
         "branding": {
-            "section_text": "Text (sticker sheet)",
+            "section_text": "Top text",
             "section_background": "Background",
             "section_logo": "Logo and address",
-            "header_label": "Text at the top of the sticker",
+            "header_label": "Text at top of sticker and print sheet",
             "header_placeholder": "e.g. Scan here to report",
-            "header_hint": "Avery 62x89-R sticker sheet only. Max. 120 characters. Empty = location · unit on the sticker.",
+            "header_hint": "Max. 120 characters. Empty = location · unit on sticker and print sheet.",
             "preset_label": "Default background",
             "preset_hint": "Applies to A6, A5 and A4. Your choice is saved immediately; a custom upload overrides the preset.",
             "background_hint": "Optional: custom background for stickers and print sheets (PNG/JPG, max. 4 MB).",

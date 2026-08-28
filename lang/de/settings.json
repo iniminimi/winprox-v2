@@ -48,12 +48,12 @@
             "preview_portal_fallback": "Demo-Standort · Maschine 12"
         },
         "branding": {
-            "section_text": "Text (Etikettenbogen)",
+            "section_text": "Text oben",
             "section_background": "Hintergrund",
             "section_logo": "Logo und Adresse",
-            "header_label": "Text oben auf dem Etikett",
+            "header_label": "Text oben auf Etikett und Druckblatt",
             "header_placeholder": "z. B. Hier scannen für Meldungen",
-            "header_hint": "Nur für Avery 62x89-R Etikettenbogen. Max. 120 Zeichen. Leer = Standort · Unit.",
+            "header_hint": "Max. 120 Zeichen. Leer = Standort · Unit auf Etikett und Druckblatt.",
             "preset_label": "Standardhintergrund",
             "preset_hint": "Gilt für A6, A5 und A4. Auswahl wird sofort gespeichert; eigenes Upload überschreibt die Preset.",
             "background_hint": "Optional: eigener Hintergrund für Etikett und Druckblatt (PNG/JPG, max. 4 MB).",

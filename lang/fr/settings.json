@@ -48,12 +48,12 @@
             "preview_portal_fallback": "Site démo · Machine 12"
         },
         "branding": {
-            "section_text": "Texte (planche d'étiquettes)",
+            "section_text": "Texte en haut",
             "section_background": "Arrière-plan",
             "section_logo": "Logo et adresse",
-            "header_label": "Texte en haut de l'étiquette",
+            "header_label": "Texte en haut de l'étiquette et de la feuille",
             "header_placeholder": "p. ex. Scannez ici pour signaler",
-            "header_hint": "Planche Avery 62x89-R uniquement. Max. 120 caractères. Vide = lieu · unité.",
+            "header_hint": "Max. 120 caractères. Vide = site · unité sur étiquette et feuille.",
             "preset_label": "Arrière-plan par défaut",
             "preset_hint": "S'applique à A6, A5 et A4. Le choix est enregistré immédiatement ; un upload personnalisé remplace la preset.",
             "background_hint": "Optionnel : arrière-plan personnalisé pour étiquette et feuille (PNG/JPG, max. 4 Mo).",

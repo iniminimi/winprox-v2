@@ -48,12 +48,12 @@
             "preview_portal_fallback": "Sede demo · Macchina 12"
         },
         "branding": {
-            "section_text": "Testo (foglio etichette)",
+            "section_text": "Testo in alto",
             "section_background": "Sfondo",
             "section_logo": "Logo e indirizzo",
-            "header_label": "Testo in alto sull'etichetta",
+            "header_label": "Testo in alto su etichetta e foglio",
             "header_placeholder": "es. Scansiona qui per segnalare",
-            "header_hint": "Solo foglio Avery 62x89-R. Max 120 caratteri. Vuoto = sede · unità.",
+            "header_hint": "Max 120 caratteri. Vuoto = sede · unità su etichetta e foglio.",
             "preset_label": "Sfondo predefinito",
             "preset_hint": "Vale per A6, A5 e A4. La scelta viene salvata subito; un upload personalizzato sostituisce la preset.",
             "background_hint": "Opzionale: sfondo personalizzato per etichetta e foglio (PNG/JPG, max 4 MB).",

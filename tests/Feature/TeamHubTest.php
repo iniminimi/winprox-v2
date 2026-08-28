@@ -373,6 +373,9 @@ it('laat een medewerker branding-instellingen zien en aanpassen maar niet privac
     expect($tenant->fresh()->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)?->header_text)
         ->toBe('Scan voor meldingen');
 
+    expect($tenant->fresh()->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::printablePageSettings())?->header_text)
+        ->toBe('Scan voor meldingen');
+
     $this->actingAs($employee)
         ->get(route('account.data-export'))
         ->assertForbidden();

@@ -346,6 +346,7 @@ class Settings extends Component
             $updated,
             UpdateTenantQrPrintablePageSettingsData::fromValidated([
                 'preset' => $this->qrBrandingBackgroundPreset,
+                'headerText' => $this->qrBrandingHeaderText,
                 'tenantLogo' => $this->qrBrandingTenantLogo,
                 'tenantAddress' => $this->qrBrandingTenantAddress,
             ]),
@@ -375,6 +376,7 @@ class Settings extends Component
         Validator::make(
             [
                 'preset' => $this->qrBrandingBackgroundPreset,
+                'headerText' => $this->qrBrandingHeaderText,
                 'tenantLogo' => $this->qrBrandingTenantLogo,
                 'tenantAddress' => $this->qrBrandingTenantAddress,
             ],
@@ -385,6 +387,7 @@ class Settings extends Component
             $tenant,
             UpdateTenantQrPrintablePageSettingsData::fromValidated([
                 'preset' => $this->qrBrandingBackgroundPreset,
+                'headerText' => $this->qrBrandingHeaderText,
                 'tenantLogo' => $this->qrBrandingTenantLogo,
                 'tenantAddress' => $this->qrBrandingTenantAddress,
             ]),
@@ -681,7 +684,7 @@ class Settings extends Component
         $printableSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
         $printableLayout = BrandedQrStickerLayoutConfig::fromSetting($printableSetting);
 
-        $this->qrBrandingHeaderText = (string) ($sheetSetting?->header_text ?? '');
+        $this->qrBrandingHeaderText = (string) ($sheetSetting?->header_text ?? $printableSetting?->header_text ?? '');
         $this->qrBrandingTenantLogo = $printableLayout->tenantLogoPlacement()->value;
         $this->qrBrandingTenantAddress = $printableLayout->tenantAddressPlacement()->value;
         $this->qrBrandingBackgroundPreset = QrPrintablePageBackgroundPreset::presetKeyFromSetting($printableSetting);
