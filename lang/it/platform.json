@@ -79,9 +79,9 @@
     "help_nav": "Admin aiuto",
     "help": {
         "title": "Amministrazione aiuto",
-        "subtitle": "Domande senza risposta e knowledge base per l'assistente WinProx.",
-        "unanswered_title": "Domande senza risposta",
-        "unanswered_empty": "Nessuna domanda aperta.",
+        "subtitle": "Domande inoltrate e knowledge base per l'assistente WinProx.",
+        "unanswered_title": "Domande inoltrate",
+        "unanswered_empty": "Nessuna domanda inoltrata.",
         "dismiss": "Rimuovi",
         "dismiss_confirm": "Rimuovere questa domanda dall'elenco?",
         "kb_title": "Knowledge base",

@@ -10,7 +10,7 @@
     "escalate": "Transférer au support",
     "escalated": "Votre question a été transférée au support.",
     "empty_message": "Saisissez une question pour commencer.",
-    "no_match": "Aucune réponse trouvée. Votre question est enregistrée ; vous pouvez la transférer au support.",
+    "no_match": "Aucune réponse trouvée. Vous pouvez transférer cette question au support.",
     "rate_limited": "Patientez — réessayez dans une minute.",
     "no_tenant": "Aucune organisation liée à votre compte.",
     "insight": {

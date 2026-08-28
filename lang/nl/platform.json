@@ -79,9 +79,9 @@
     "help_nav": "Help-beheer",
     "help": {
         "title": "Help-beheer",
-        "subtitle": "Onbeantwoorde vragen en kennisbank voor de WinProx-assistent.",
-        "unanswered_title": "Onbeantwoorde vragen",
-        "unanswered_empty": "Geen openstaande vragen.",
+        "subtitle": "Doorgestuurde vragen en kennisbank voor de WinProx-assistent.",
+        "unanswered_title": "Doorgestuurde vragen",
+        "unanswered_empty": "Geen doorgestuurde vragen.",
         "dismiss": "Verwijderen",
         "dismiss_confirm": "Deze vraag verwijderen uit de lijst?",
         "kb_title": "Kennisbank",

@@ -8,8 +8,18 @@ use Illuminate\Support\Facades\Mail;
 
 class EscalateHelpChatAnswerAction
 {
+    public function __construct(
+        private SaveHelpChatUnansweredQuestionAction $saveForwarded,
+    ) {}
+
     public function escalate(User $user, string $question, ?string $assistantReply = null): void
     {
+        $this->saveForwarded->handle(
+            $user,
+            $user->locale ?? app()->getLocale(),
+            $question,
+        );
+
         $to = config('winprox.helpdesk_email');
 
         if (! $to) {

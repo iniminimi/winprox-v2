@@ -10,7 +10,7 @@
     "escalate": "Reenviar al servicio de ayuda",
     "escalated": "Su pregunta se ha reenviado al servicio de ayuda.",
     "empty_message": "Escriba una pregunta para empezar.",
-    "no_match": "No he encontrado una respuesta coincidente. Su pregunta se ha guardado; puede reenviarla al servicio de ayuda.",
+    "no_match": "No he encontrado una respuesta coincidente. Puede reenviar esta pregunta al servicio de ayuda.",
     "rate_limited": "Espere un momento — inténtelo de nuevo en un minuto.",
     "no_tenant": "No hay ninguna organización vinculada a su cuenta.",
     "insight": {

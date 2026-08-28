@@ -79,9 +79,9 @@
     "help_nav": "Gestion aide",
     "help": {
         "title": "Gestion de l'aide",
-        "subtitle": "Questions sans réponse et base de connaissances pour l'assistant WinProx.",
-        "unanswered_title": "Questions sans réponse",
-        "unanswered_empty": "Aucune question en attente.",
+        "subtitle": "Questions transférées et base de connaissances pour l'assistant WinProx.",
+        "unanswered_title": "Questions transférées",
+        "unanswered_empty": "Aucune question transférée.",
         "dismiss": "Supprimer",
         "dismiss_confirm": "Retirer cette question de la liste ?",
         "kb_title": "Base de connaissances",

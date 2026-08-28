@@ -79,9 +79,9 @@
     "help_nav": "Help admin",
     "help": {
         "title": "Help administration",
-        "subtitle": "Unanswered questions and knowledge base for the WinProx assistant.",
-        "unanswered_title": "Unanswered questions",
-        "unanswered_empty": "No open questions.",
+        "subtitle": "Forwarded questions and knowledge base for the WinProx assistant.",
+        "unanswered_title": "Forwarded questions",
+        "unanswered_empty": "No forwarded questions.",
         "dismiss": "Remove",
         "dismiss_confirm": "Remove this question from the list?",
         "kb_title": "Knowledge base",

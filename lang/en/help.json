@@ -10,7 +10,7 @@
     "escalate": "Forward to helpdesk",
     "escalated": "Your question was forwarded to the helpdesk.",
     "empty_message": "Type a question to get started.",
-    "no_match": "I could not find a matching answer. Your question was saved; you can forward it to the helpdesk.",
+    "no_match": "I could not find a matching answer. You can forward this question to the helpdesk.",
     "rate_limited": "Please wait — try again in a minute.",
     "no_tenant": "No organisation linked to your account.",
     "insight": {

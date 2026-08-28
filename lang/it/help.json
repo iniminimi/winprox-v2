@@ -10,7 +10,7 @@
     "escalate": "Inoltra all'helpdesk",
     "escalated": "La Sua domanda è stata inoltrata all'helpdesk.",
     "empty_message": "Digiti una domanda per iniziare.",
-    "no_match": "Non ho trovato una risposta corrispondente. La Sua domanda è stata salvata; può inoltrarla all'helpdesk.",
+    "no_match": "Non ho trovato una risposta corrispondente. Può inoltrare questa domanda all'helpdesk.",
     "rate_limited": "Attenda — riprovi tra un minuto.",
     "no_tenant": "Nessuna organizzazione collegata al Suo account.",
     "insight": {

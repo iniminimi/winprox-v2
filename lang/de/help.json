@@ -10,7 +10,7 @@
     "escalate": "An Helpdesk weiterleiten",
     "escalated": "Ihre Frage wurde an den Helpdesk weitergeleitet.",
     "empty_message": "Geben Sie eine Frage ein, um zu starten.",
-    "no_match": "Keine passende Antwort gefunden. Ihre Frage wurde gespeichert; Sie können sie an den Helpdesk weiterleiten.",
+    "no_match": "Keine passende Antwort gefunden. Sie können diese Frage an den Helpdesk weiterleiten.",
     "rate_limited": "Bitte warten — versuchen Sie es in einer Minute erneut.",
     "no_tenant": "Keine Organisation mit Ihrem Konto verknüpft.",
     "insight": {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Livewire\Components\HelpChat;
 use App\Mail\HelpChatEscalationToHelpdeskMail;
+use App\Models\HelpChatUnansweredQuestion;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
@@ -15,14 +16,16 @@ beforeEach(function (): void {
 
 it('stuurt geen helpdesk-mail bij een onbeantwoorde vraag', function (): void {
     $user = User::factory()->admin()->create();
+    $question = 'qzxwplkmn987654321';
 
     Livewire::actingAs($user)
         ->test(HelpChat::class)
-        ->set('draft', 'qzxwplkmn987654321')
+        ->set('draft', $question)
         ->call('send')
-        ->assertSet('escalationQuestion', 'qzxwplkmn987654321');
+        ->assertSet('escalationQuestion', $question);
 
     Mail::assertNothingSent();
+    expect(HelpChatUnansweredQuestion::query()->count())->toBe(0);
 });
 
 it('stuurt de laatste onbeantwoorde vraag pas door na expliciete escalatie', function (): void {
@@ -50,6 +53,9 @@ it('stuurt de laatste onbeantwoorde vraag pas door na expliciete escalatie', fun
             && $mail->question === $secondUnanswered
             && $mail->assistantReply === __('help.no_match');
     });
+
+    expect(HelpChatUnansweredQuestion::query()->count())->toBe(1);
+    expect(HelpChatUnansweredQuestion::query()->value('question'))->toBe($secondUnanswered);
 });
 
 it('toont de doorstuur-knop alleen na een onbeantwoorde vraag', function (): void {

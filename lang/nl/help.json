@@ -10,7 +10,7 @@
     "escalate": "Doorsturen naar helpdesk",
     "escalated": "We hebben je vraag doorgestuurd naar de helpdesk.",
     "empty_message": "Typ een vraag om te beginnen.",
-    "no_match": "Ik heb geen passend antwoord gevonden. Je vraag is opgeslagen; je kunt deze doorsturen naar de helpdesk.",
+    "no_match": "Ik heb geen passend antwoord gevonden. U kunt deze vraag doorsturen naar de helpdesk.",
     "rate_limited": "Even rustig — probeer het over een minuut opnieuw.",
     "no_tenant": "Geen organisatie gekoppeld aan je account.",
     "insight": {

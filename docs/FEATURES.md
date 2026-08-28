@@ -76,14 +76,14 @@ linkt naar zijn lijst):
 - **WinProx-assistent** zweeft rechtsonder (chat):
   - Gebruiker stelt een vraag.
   - Staat het antwoord in de DB → toon antwoord.
-  - Zo niet → **vraag opslaan** in onbeantwoorde-vragen (superuser); gebruiker kan **zelf**
-    doorsturen naar helpdesk.
+  - Zo niet → gebruiker kan **zelf** doorsturen naar helpdesk; pas dan opslaan in
+    doorgestuurde-vragen (superuser-overzicht).
   - Assistent is **gekoppeld aan de FAQ & kennisbank**.
 
 **Device:** desktop-first (laptop).
 
 **Nieuw t.o.v. huidige bouw (backlog):** Briefing-print (taken van vandaag per team),
-WinProx-assistent (DB-Q&A + onbeantwoorde-vragen-tabel + superuser-mail + FAQ-koppeling),
+WinProx-assistent (DB-Q&A + doorgestuurde-vragen-tabel + FAQ-koppeling),
 klikbare KPI-tegels + alert-state, highlight net-aangemaakte melding, proefperiode-capsule.
 
 **NIET overnemen uit V1-dashboard:** `facility-setup-panel` (onboarding-checklist), contractor-
@@ -863,11 +863,12 @@ battery-PNG-widget (vervangen door tekstcapsule).
 - Volgorde: **tenant-inzicht** (DB-tellingen) → **kennisbank** → **pagina-hulp-patronen**
   (`config/help_chat_page_help.php`, zelfde bron als handleiding) → **FAQ-samenvattingen**
   (`config/help_chat_faq.php`) → **handleiding doorzoeken** (alle `page-help`-hoofdstukken +
-  Aan de slag via `HelpChatPageHelpMatcher::searchManual`) → **geen match** → vraag opslaan in
-  `help_chat_unanswered_questions` (superuser-overzicht). **Geen automatische helpdesk-mail** —
-  alleen via knop **Doorsturen naar helpdesk** (`EscalateHelpChatAnswerAction`).
+  Aan de slag via `HelpChatPageHelpMatcher::searchManual`) → **geen match** (niet opslaan).
+  **Geen automatische helpdesk-mail** — alleen via knop **Doorsturen naar helpdesk**
+  (`EscalateHelpChatAnswerAction`: mail + opslaan in `help_chat_unanswered_questions` voor
+  superuser-overzicht).
 - Rate-limit (bv. 30/min). Gekoppeld aan de FAQ (§dashboard-assistent = dezelfde feature).
-- **Superuser-beheer** (buiten dit menu): onbeantwoorde vragen + Q&A-kennisbank.
+- **Superuser-beheer** (buiten dit menu): doorgestuurde vragen + Q&A-kennisbank.
 
 ### 8.3 NIET overnemen
 Contractor/owner-FAQ-slugs, hospitality-only help-chat-entries, real-estate `how_it_works`-flow,

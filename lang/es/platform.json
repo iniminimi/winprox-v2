@@ -79,9 +79,9 @@
     "help_nav": "Administración de ayuda",
     "help": {
         "title": "Administración de ayuda",
-        "subtitle": "Preguntas sin responder y base de conocimiento para el asistente WinProx.",
-        "unanswered_title": "Preguntas sin responder",
-        "unanswered_empty": "No hay preguntas abiertas.",
+        "subtitle": "Preguntas reenviadas y base de conocimiento para el asistente WinProx.",
+        "unanswered_title": "Preguntas reenviadas",
+        "unanswered_empty": "No hay preguntas reenviadas.",
         "dismiss": "Eliminar",
         "dismiss_confirm": "¿Eliminar esta pregunta de la lista?",
         "kb_title": "Base de conocimiento",

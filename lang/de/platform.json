@@ -79,9 +79,9 @@
     "help_nav": "Hilfe-Verwaltung",
     "help": {
         "title": "Hilfe-Verwaltung",
-        "subtitle": "Unbeantwortete Fragen und Wissensbasis für den WinProx-Assistenten.",
-        "unanswered_title": "Unbeantwortete Fragen",
-        "unanswered_empty": "Keine offenen Fragen.",
+        "subtitle": "Weitergeleitete Fragen und Wissensbasis für den WinProx-Assistenten.",
+        "unanswered_title": "Weitergeleitete Fragen",
+        "unanswered_empty": "Keine weitergeleiteten Fragen.",
         "dismiss": "Entfernen",
         "dismiss_confirm": "Diese Frage aus der Liste entfernen?",
         "kb_title": "Wissensbasis",

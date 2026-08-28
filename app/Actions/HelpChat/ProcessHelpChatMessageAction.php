@@ -11,7 +11,6 @@ class ProcessHelpChatMessageAction
 {
     public function __construct(
         private HelpChatFaqMatcher $matcher,
-        private SaveHelpChatUnansweredQuestionAction $saveUnanswered,
     ) {}
 
     /**
@@ -63,8 +62,6 @@ class ProcessHelpChatMessageAction
                 'content' => $answer,
             ];
         }
-
-        $this->saveUnanswered->handle($user, $locale, $trimmed);
 
         return [
             'role' => 'assistant',
