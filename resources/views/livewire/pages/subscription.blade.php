@@ -5,25 +5,26 @@
 
 <div class="wp-stack" data-manual-capture="subscription">
     <div @class(['wp-page-head', 'wp-billing-page-width' => $publicMode])>
-        @if ($publicMode)
-            <x-wp-page-head-title
-                icon="subscription"
-                :title="__('subscription.public_title')"
-                :subtitle="__('subscription.public_subtitle')"
-            />
-        @else
-            <x-wp-page-head-title
-                icon="subscription"
-                :title="__('subscription.title')"
-                help-page="subscription"
-                :subtitle="$billingStatus === 'paid' ? null : __('subscription.subtitle')"
-            >
-                @if ($portalBatteryState)
-                    <x-slot:toolbar>
-                        <x-wp-trial-battery-capsule :state="$portalBatteryState" />
-                    </x-slot:toolbar>
-                @endif
-            </x-wp-page-head-title>
+        <div class="wp-grow wp-stack-tight">
+            @if ($publicMode)
+                <x-wp-page-head-title
+                    icon="subscription"
+                    :title="__('subscription.public_title')"
+                    :subtitle="__('subscription.public_subtitle')"
+                />
+            @else
+                <x-wp-page-head-title
+                    icon="subscription"
+                    :title="__('subscription.title')"
+                    help-page="subscription"
+                    :subtitle="$billingStatus === 'paid' ? null : __('subscription.subtitle')"
+                />
+            @endif
+        </div>
+        @if (! $publicMode && $portalBatteryState)
+            <div class="wp-page-actions">
+                <x-wp-trial-battery-capsule :state="$portalBatteryState" />
+            </div>
         @endif
     </div>
 
