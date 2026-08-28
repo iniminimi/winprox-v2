@@ -544,15 +544,7 @@
                 },
                 {
                     "label": "Dati organizzazione",
-                    "text": "Solo l'amministratore può modificare nome, e-mail, telefono e indirizzo tramite «Modifica dati organizzazione». Questi dati compaiono su adesivi QR stampati, etichette unità e altro materiale rivolto ai reporter."
-                },
-                {
-                    "label": "Logo organizzazione",
-                    "text": "L'amministratore carica un logo organizzazione (PNG/JPG, max. 2 MB). Come dipendente vede solo il logo attuale come riferimento. Compare al centro di ogni codice QR sugli adesivi e nel portale segnalazioni. Per il posizionamento nell'angolo sugli adesivi, veda la sezione Logo e indirizzo sotto Fogli adesivi QR."
-                },
-                {
-                    "label": "Sfondo portale",
-                    "text": "Immagine di sfondo facoltativa per il portale segnalazioni dopo la scansione di un codice QR (PNG/JPG, max. 4 MB). Non è lo stesso dello sfondo adesivo sotto Fogli adesivi QR."
+                    "text": "Solo l'amministratore può modificare nome, e-mail, telefono e indirizzo tramite «Modifica dati organizzazione». Questi dati compaiono su adesivi QR stampati, etichette unità e altro materiale rivolto ai reporter. Nella stessa sezione l'amministratore carica un logo organizzazione (PNG/JPG, max. 2 MB). Come dipendente vede solo il logo attuale come riferimento. Compare al centro di ogni codice QR sugli adesivi e nel portale segnalazioni. Per il posizionamento nell'angolo sugli adesivi, veda la sezione Logo e indirizzo sotto Fogli adesivi QR."
                 },
                 {
                     "label": "Stile WinProx",
@@ -560,7 +552,7 @@
                 },
                 {
                     "label": "Stile portale personalizzato",
-                    "text": "Attivi «Usa stile portale personalizzato» per scegliere colori di sfondo e pulsanti per il portale segnalazioni. La scheda anteprima mostra come i reporter vedono il portale dopo una scansione. Non influisce sull'interfaccia admin."
+                    "text": "Carichi facoltativamente un'immagine di sfondo per il portale segnalazioni dopo la scansione di un codice QR (PNG/JPG, max. 4 MB). Non è lo stesso dello sfondo adesivo sotto Fogli adesivi QR. Attivi «Usa stile portale personalizzato» per scegliere colori di sfondo e pulsanti per il portale segnalazioni. La scheda anteprima mostra come i reporter vedono il portale dopo una scansione. Non influisce sull'interfaccia admin."
                 },
                 {
                     "label": "Foglio di stampa QR",

@@ -544,15 +544,7 @@
                 },
                 {
                     "label": "Organisationsdaten",
-                    "text": "Nur der Administrator kann Name, E-Mail, Telefon und Adresse über 'Organisationsdaten bearbeiten' ändern. Diese Angaben erscheinen u. a. auf gedruckten QR-Aufklebern und Unit-Etiketten."
-                },
-                {
-                    "label": "Organisationslogo",
-                    "text": "Der Administrator lädt ein Organisationslogo hoch (PNG/JPG, max. 2 MB). Als Mitarbeiter sehen Sie das aktuelle Logo nur zur Information. Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
-                },
-                {
-                    "label": "Portal-Hintergrund",
-                    "text": "Optionales Hintergrundbild für das Meldeportal nach dem Scannen eines QR-Codes (PNG/JPG, max. 4 MB). Das ist nicht derselbe Hintergrund wie der Aufkleber-Hintergrund unter QR-Aufkleberbögen."
+                    "text": "Nur der Administrator kann Name, E-Mail, Telefon und Adresse über 'Organisationsdaten bearbeiten' ändern. Diese Angaben erscheinen u. a. auf gedruckten QR-Aufklebern und Unit-Etiketten. Im selben Bereich lädt der Administrator ein Organisationslogo hoch (PNG/JPG, max. 2 MB). Als Mitarbeiter sehen Sie das aktuelle Logo nur zur Information. Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
                 },
                 {
                     "label": "WinProx-Stil",
@@ -560,7 +552,7 @@
                 },
                 {
                     "label": "Eigenes Portal-Design",
-                    "text": "Aktivieren Sie 'Eigenes Portal-Design verwenden', um Hintergrund- und Buttonfarbe des Meldeportals zu wählen. Die Vorschaukarte zeigt, wie Melder das Portal nach einem Scan sehen. Das gilt nicht für die Verwaltungsoberfläche."
+                    "text": "Laden Sie optional ein Hintergrundbild für das Meldeportal nach dem Scannen eines QR-Codes hoch (PNG/JPG, max. 4 MB). Das ist nicht derselbe Hintergrund wie der Aufkleber-Hintergrund unter QR-Aufkleberbögen. Aktivieren Sie 'Eigenes Portal-Design verwenden', um Hintergrund- und Buttonfarbe des Meldeportals zu wählen. Die Vorschaukarte zeigt, wie Melder das Portal nach einem Scan sehen. Das gilt nicht für die Verwaltungsoberfläche."
                 },
                 {
                     "label": "QR-Druckbogen",

@@ -544,15 +544,7 @@
                 },
                 {
                     "label": "Données de l'organisation",
-                    "text": "Seul l'administrateur peut modifier le nom, l'e-mail, le téléphone et l'adresse via 'Modifier les données de l'organisation'. Ces informations figurent notamment sur les autocollants QR imprimés et les étiquettes d'unités."
-                },
-                {
-                    "label": "Logo de l'organisation",
-                    "text": "L'administrateur téléverse un logo d'organisation (PNG/JPG, max. 2 Mo). En tant qu'employé, vous voyez le logo actuel uniquement à titre informatif. Il apparaît au centre de chaque QR code sur les autocollants et dans le portail de signalement. Pour le placement en coin sur les autocollants, voir la rubrique Logo et adresse sous Feuilles d'autocollants QR."
-                },
-                {
-                    "label": "Arrière-plan du portail",
-                    "text": "Image d'arrière-plan optionnelle pour le portail de signalement après le scan d'un QR code (PNG/JPG, max. 4 Mo). Ce n'est pas l'arrière-plan de l'autocollant sous Feuilles d'autocollants QR."
+                    "text": "Seul l'administrateur peut modifier le nom, l'e-mail, le téléphone et l'adresse via 'Modifier les données de l'organisation'. Ces informations figurent notamment sur les autocollants QR imprimés et les étiquettes d'unités. Dans la même section, l'administrateur téléverse un logo d'organisation (PNG/JPG, max. 2 Mo). En tant qu'employé, vous voyez le logo actuel uniquement à titre informatif. Il apparaît au centre de chaque QR code sur les autocollants et dans le portail de signalement. Pour le placement en coin sur les autocollants, voir la rubrique Logo et adresse sous Feuilles d'autocollants QR."
                 },
                 {
                     "label": "Style WinProx",
@@ -560,7 +552,7 @@
                 },
                 {
                     "label": "Style de portail personnalisé",
-                    "text": "Activez 'Utiliser un style de portail personnalisé' pour choisir les couleurs d'arrière-plan et de bouton du portail de signalement. La carte d'aperçu montre ce que voient les signaleurs après un scan. Cela ne concerne pas l'interface d'administration."
+                    "text": "Téléversez optionnellement une image d'arrière-plan pour le portail de signalement après le scan d'un QR code (PNG/JPG, max. 4 Mo). Ce n'est pas l'arrière-plan de l'autocollant sous Feuilles d'autocollants QR. Activez 'Utiliser un style de portail personnalisé' pour choisir les couleurs d'arrière-plan et de bouton du portail de signalement. La carte d'aperçu montre ce que voient les signaleurs après un scan. Cela ne concerne pas l'interface d'administration."
                 },
                 {
                     "label": "Feuille d’impression QR",

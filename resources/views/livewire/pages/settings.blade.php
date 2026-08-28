@@ -73,11 +73,10 @@
                     @endif
                 </div>
             @endif
-        </x-wp-settings-section>
 
-        <x-wp-settings-section :title="__('settings.org.logo_label')">
-            @if ($canManageOrganisation)
-                <div class="wp-stack-tight">
+            <div class="wp-stack-tight wp-settings-org-logo">
+                <p class="wp-label">{{ __('settings.org.logo_label') }}</p>
+                @if ($canManageOrganisation)
                     <p class="wp-muted wp-text-sm">{{ __('settings.org.logo_hint') }}</p>
                     <div class="wp-field">
                         @if ($organisationLogoUrl)
@@ -93,39 +92,18 @@
                         <x-wp-file-input wireModel="orgLogo" id="orgLogoInline" accept="image/*" />
                         @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
-                </div>
-            @else
-                @if ($organisationLogoUrl)
-                    <img
-                        src="{{ $organisationLogoUrl }}"
-                        alt="{{ __('settings.org.logo_preview_alt') }}"
-                        class="wp-org-logo-preview"
-                        width="120"
-                        height="120"
-                        wire:key="org-logo-readonly-{{ md5($organisationLogoUrl) }}"
-                    >
-                @endif
-            @endif
-        </x-wp-settings-section>
-    @endif
-
-    @if ($canUpdateTenantBranding && $organisationTenant)
-        <x-wp-settings-section :title="__('settings.org.portal_background_label')">
-            <div class="wp-stack-tight">
-                <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_hint') }}</p>
-                <div class="wp-field">
-                    @if ($portalBackgroundUrl)
+                @else
+                    @if ($organisationLogoUrl)
                         <img
-                            src="{{ $portalBackgroundUrl }}"
-                            alt="{{ __('settings.org.portal_background_preview_alt') }}"
-                            class="wp-portal-bg-preview"
-                            style="max-height: 150px; width: auto; margin-bottom: 0.75rem;"
-                            wire:key="portal-bg-inline-{{ md5($portalBackgroundUrl) }}"
+                            src="{{ $organisationLogoUrl }}"
+                            alt="{{ __('settings.org.logo_preview_alt') }}"
+                            class="wp-org-logo-preview"
+                            width="120"
+                            height="120"
+                            wire:key="org-logo-readonly-{{ md5($organisationLogoUrl) }}"
                         >
                     @endif
-                    <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
-                    @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
+                @endif
             </div>
         </x-wp-settings-section>
     @endif
@@ -162,6 +140,24 @@
 
     @if ($canUpdateTenantBranding && $organisationTenant)
         <x-wp-settings-section :title="__('settings.org.custom_theme_title')">
+            <div class="wp-stack-tight wp-settings-portal-background">
+                <p class="wp-label">{{ __('settings.org.portal_background_label') }}</p>
+                <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_hint') }}</p>
+                <div class="wp-field">
+                    @if ($portalBackgroundUrl)
+                        <img
+                            src="{{ $portalBackgroundUrl }}"
+                            alt="{{ __('settings.org.portal_background_preview_alt') }}"
+                            class="wp-portal-bg-preview"
+                            style="max-height: 150px; width: auto; margin-bottom: 0.75rem;"
+                            wire:key="portal-bg-inline-{{ md5($portalBackgroundUrl) }}"
+                        >
+                    @endif
+                    <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
+                    @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+            </div>
+
             <form wire:submit="saveOrganisationInline" class="wp-stack-tight">
                 <div class="wp-settings-split">
                     <div class="wp-stack-tight">
