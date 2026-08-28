@@ -1198,6 +1198,7 @@ class Show extends Component
 
         $unitPortalCategory = null;
         $unitPortalFlagsMatchCategory = true;
+        $unitCategoryPortalTooltip = '';
         if ($this->showUnitModal && $this->unitCategoryId !== null) {
             $unitPortalCategory = Category::query()->find($this->unitCategoryId);
             if ($unitPortalCategory instanceof Category) {
@@ -1209,6 +1210,20 @@ class Show extends Component
                     $this->unitRequireReporterEmailVerification,
                     UnitCategoryPortalInheritance::defaultsFromCategory($unitPortalCategory),
                 );
+            }
+        }
+
+        if ($this->showUnitModal) {
+            if ($unitPortalCategory instanceof Category) {
+                $unitCategoryPortalTooltip = __('locations.units.advanced_portal.inherits_from', [
+                    'category' => $unitPortalCategory->localizedName(),
+                ]);
+
+                if (! $unitPortalFlagsMatchCategory) {
+                    $unitCategoryPortalTooltip .= ' '.__('locations.units.advanced_portal.overrides_active');
+                }
+            } else {
+                $unitCategoryPortalTooltip = __('locations.units.advanced_portal.no_category_hint');
             }
         }
 
@@ -1245,6 +1260,7 @@ class Show extends Component
             'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,
             'unitPortalCategory' => $unitPortalCategory,
             'unitPortalFlagsMatchCategory' => $unitPortalFlagsMatchCategory,
+            'unitCategoryPortalTooltip' => $unitCategoryPortalTooltip,
         ]);
     }
 

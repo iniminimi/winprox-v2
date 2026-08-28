@@ -351,7 +351,9 @@
                 @endif
 
                 <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
+                    <x-wp-tooltip :text="$unitCategoryPortalTooltip" wrap class="wp-tooltip--block">
+                        <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
+                    </x-wp-tooltip>
                     <select class="wp-input" wire:model.live="unitCategoryId">
                         <option value="">{{ __('locations.units.no_category') }}</option>
                         @foreach ($categories as $category)
@@ -373,17 +375,6 @@
 
                 <div class="wp-field" x-data="{ open: {{ $unitPortalFlagsMatchCategory ? 'false' : 'true' }} }">
                     <span class="wp-label">{{ __('locations.units.advanced_portal.label') }}</span>
-                    @if ($unitPortalCategory)
-                        <p class="wp-hint">
-                            {{ __('locations.units.advanced_portal.inherits_from', ['category' => $unitPortalCategory->localizedName()]) }}
-                        </p>
-                        @if (! $unitPortalFlagsMatchCategory)
-                            <p class="wp-hint">{{ __('locations.units.advanced_portal.overrides_active') }}</p>
-                        @endif
-                    @else
-                        <p class="wp-hint">{{ __('locations.units.advanced_portal.no_category_hint') }}</p>
-                    @endif
-
                     <div class="wp-field-panel" :class="{ 'is-open': open }">
                         <button
                             type="button"
@@ -391,13 +382,13 @@
                             @click="open = !open"
                             :aria-expanded="open"
                         >
-                            <span>{{ __('locations.units.advanced_portal.open') }}</span>
+                            <x-wp-tooltip :text="__('locations.units.advanced_portal.warning')" wrap class="wp-tooltip--block">
+                                <span>{{ __('locations.units.advanced_portal.open') }}</span>
+                            </x-wp-tooltip>
                             <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
                         </button>
 
                         <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
-                            <p class="wp-muted wp-text-sm">{{ __('locations.units.advanced_portal.warning') }}</p>
-
                             <label class="wp-check">
                                 <input type="checkbox" wire:model="unitPublicReportsEnabled">
                                 <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
