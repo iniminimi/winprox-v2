@@ -115,6 +115,7 @@
         "inspection_rounds_hint": "Liste und Planung von Inspektionsrunden. Unit Checks bleiben separat verfügbar.",
         "unit_measurements_label": "Unit-Messungen",
         "unit_measurements_hint": "Messfelder und Historie in der Verwaltung. QR-Messungen auf Units, die es bereits hatten, bleiben verfügbar.",
+        "confirm": "Bestätigen",
         "errors": {
             "reservations_disabled": "Reservierungen sind im Arbeitsmenü deaktiviert. Sie können dies nicht neu für Units oder Kategorien aktivieren.",
             "unit_measurements_disabled": "Unit-Messungen sind im Arbeitsmenü deaktiviert. Sie können dies nicht neu für Units oder Kategorien aktivieren."

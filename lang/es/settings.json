@@ -115,6 +115,7 @@
         "inspection_rounds_hint": "Lista y planificación de rondas de inspección. Los unit checks siguen disponibles por separado.",
         "unit_measurements_label": "Mediciones de unidad",
         "unit_measurements_hint": "Campos de medición e historial en backoffice. Las mediciones QR en unidades que ya las tenían siguen disponibles.",
+        "confirm": "Confirmar",
         "errors": {
             "reservations_disabled": "Las reservas están desactivadas en el menú Trabajo. No puedes activarlas de nuevo en unidades o categorías.",
             "unit_measurements_disabled": "Las mediciones de unidad están desactivadas en el menú Trabajo. No puedes activarlas de nuevo en unidades o categorías."

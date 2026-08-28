@@ -115,6 +115,7 @@
         "inspection_rounds_hint": "Elenco e pianificazione dei giri di ispezione. I unit check restano disponibili separatamente.",
         "unit_measurements_label": "Misurazioni unità",
         "unit_measurements_hint": "Campi di misura e storico nel backoffice. Le misurazioni QR sulle unità che già le avevano restano disponibili.",
+        "confirm": "Conferma",
         "errors": {
             "reservations_disabled": "Le prenotazioni sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie.",
             "unit_measurements_disabled": "Le misurazioni unità sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie."

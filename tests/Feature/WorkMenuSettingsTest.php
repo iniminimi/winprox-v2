@@ -24,7 +24,8 @@ it('laat een admin werkmenu-vlaggen opslaan via instellingen', function () {
         ->test(Settings::class)
         ->assertSee(__('settings.work_menu.title'), false)
         ->set('workMenuReservationsEnabled', false)
-        ->assertSet('workMenuReservationsEnabled', false);
+        ->call('saveWorkMenuSettings')
+        ->assertRedirect(route('settings.index'));
 
     expect($tenant->fresh()->workMenuReservationsEnabled())->toBeFalse();
 });
@@ -160,5 +161,5 @@ it('toont werkmenu-instellingen niet aan medewerkers', function () {
 
     Livewire::actingAs($employee)
         ->test(Settings::class)
-        ->assertDontSee('wire:model.live="workMenuCalendarEnabled"', false);
+        ->assertDontSee('wire:submit="saveWorkMenuSettings"', false);
 });

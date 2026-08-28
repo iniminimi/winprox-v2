@@ -115,6 +115,7 @@
         "inspection_rounds_hint": "Liste et planification des tournées d'inspection. Les unit checks restent disponibles séparément.",
         "unit_measurements_label": "Mesures d'unité",
         "unit_measurements_hint": "Champs de mesure et historique dans le back-office. Les mesures QR sur les unités déjà configurées restent disponibles.",
+        "confirm": "Confirmer",
         "errors": {
             "reservations_disabled": "Les réservations sont désactivées dans le menu Travail. Vous ne pouvez pas les activer à nouveau sur des unités ou catégories.",
             "unit_measurements_disabled": "Les mesures d'unité sont désactivées dans le menu Travail. Vous ne pouvez pas les activer à nouveau sur des unités ou catégories."

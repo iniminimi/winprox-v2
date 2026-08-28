@@ -126,45 +126,40 @@
 
     @if ($canManageOrganisation)
         <x-wp-settings-section :title="__('settings.work_menu.title')">
-            <p class="wp-muted wp-text-sm">{{ __('settings.work_menu.hint') }}</p>
-            <div class="wp-stack wp-settings-subblocks">
-                <div class="wp-settings-subblock">
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model.live="workMenuCalendarEnabled" class="wp-checkbox">
+            <form wire:submit="saveWorkMenuSettings" class="wp-stack">
+                <p class="wp-muted wp-text-sm">{{ __('settings.work_menu.hint') }}</p>
+                <div class="wp-stack-tight">
+                    <label class="wp-check">
+                        <input type="checkbox" wire:model="workMenuCalendarEnabled" class="wp-checkbox">
                         <span>
                             {{ __('settings.work_menu.calendar_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.calendar_hint') }}</span>
                         </span>
                     </label>
-                </div>
-                <div class="wp-settings-subblock">
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model.live="workMenuReservationsEnabled" class="wp-checkbox">
+                    <label class="wp-check">
+                        <input type="checkbox" wire:model="workMenuReservationsEnabled" class="wp-checkbox">
                         <span>
                             {{ __('settings.work_menu.reservations_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.reservations_hint') }}</span>
                         </span>
                     </label>
-                </div>
-                <div class="wp-settings-subblock">
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model.live="workMenuInspectionRoundsEnabled" class="wp-checkbox">
+                    <label class="wp-check">
+                        <input type="checkbox" wire:model="workMenuInspectionRoundsEnabled" class="wp-checkbox">
                         <span>
                             {{ __('settings.work_menu.inspection_rounds_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.inspection_rounds_hint') }}</span>
                         </span>
                     </label>
-                </div>
-                <div class="wp-settings-subblock">
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model.live="workMenuUnitMeasurementsEnabled" class="wp-checkbox">
+                    <label class="wp-check">
+                        <input type="checkbox" wire:model="workMenuUnitMeasurementsEnabled" class="wp-checkbox">
                         <span>
                             {{ __('settings.work_menu.unit_measurements_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.unit_measurements_hint') }}</span>
                         </span>
                     </label>
                 </div>
-            </div>
+                <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.work_menu.confirm') }}</button>
+            </form>
         </x-wp-settings-section>
     @endif
 

@@ -115,6 +115,7 @@
         "inspection_rounds_hint": "Lijst en planning van inspectierondes. Unit checks blijven onafhankelijk beschikbaar.",
         "unit_measurements_label": "Unitmetingen",
         "unit_measurements_hint": "Meetvelden en historiek in backoffice. QR-metingen op units die het al hadden blijven beschikbaar.",
+        "confirm": "Bevestigen",
         "errors": {
             "reservations_disabled": "Reserveringen staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën.",
             "unit_measurements_disabled": "Unitmetingen staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën."

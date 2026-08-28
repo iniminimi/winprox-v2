@@ -141,24 +141,10 @@ class Settings extends Component
         }
     }
 
-    public function updatedWorkMenuCalendarEnabled(): void
+    public function saveWorkMenuSettings(): void
     {
         $this->persistWorkMenuSettings();
-    }
-
-    public function updatedWorkMenuReservationsEnabled(): void
-    {
-        $this->persistWorkMenuSettings();
-    }
-
-    public function updatedWorkMenuInspectionRoundsEnabled(): void
-    {
-        $this->persistWorkMenuSettings();
-    }
-
-    public function updatedWorkMenuUnitMeasurementsEnabled(): void
-    {
-        $this->persistWorkMenuSettings();
+        $this->redirect(route('settings.index'), navigate: false);
     }
 
     private function persistWorkMenuSettings(): void
