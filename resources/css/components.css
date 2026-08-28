@@ -288,17 +288,43 @@
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    max-width: 11rem;
 }
 
 .wp-color-input-swatch {
-    width: 3rem;
+    box-sizing: border-box;
+    width: 2.75rem;
+    height: var(--wp-btn-height);
+    min-width: 2.75rem;
     padding: 0.25rem;
-    flex: 0 0 auto;
+    flex: 0 0 2.75rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-surface);
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-.wp-color-input-hex {
-    flex: 1;
-    max-width: 9.375rem;
+.wp-color-input-swatch::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.wp-color-input-swatch::-webkit-color-swatch {
+    border: none;
+    border-radius: calc(var(--wp-radius) - 2px);
+}
+
+.wp-color-input-swatch::-moz-color-swatch {
+    border: none;
+    border-radius: calc(var(--wp-radius) - 2px);
+}
+
+.wp-color-input-row .wp-color-input-hex {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 auto;
+    max-width: 7.5rem;
 }
 
 .wp-org-identity {

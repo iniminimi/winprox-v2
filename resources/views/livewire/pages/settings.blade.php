@@ -171,7 +171,7 @@
                                 <div class="wp-field">
                                     <label class="wp-label" for="customThemeBgInline">{{ __('settings.org.custom_theme_bg_label') }}</label>
                                     <div class="wp-color-input-row">
-                                        <input type="color" id="customThemeBgInline" wire:model.live="customThemeBg" class="wp-input wp-color-input-swatch">
+                                        <input type="color" id="customThemeBgInline" wire:model.live="customThemeBg" class="wp-color-input-swatch">
                                         <input type="text" wire:model.live="customThemeBg" class="wp-input wp-color-input-hex" placeholder="#e7e8ec" pattern="^#[a-fA-F0-9]{6}$">
                                     </div>
                                     @error('customThemeBg') <p class="wp-error">{{ $message }}</p> @enderror
@@ -179,7 +179,7 @@
                                 <div class="wp-field">
                                     <label class="wp-label" for="customThemeBtnInline">{{ __('settings.org.custom_theme_btn_label') }}</label>
                                     <div class="wp-color-input-row">
-                                        <input type="color" id="customThemeBtnInline" wire:model.live="customThemeBtn" class="wp-input wp-color-input-swatch">
+                                        <input type="color" id="customThemeBtnInline" wire:model.live="customThemeBtn" class="wp-color-input-swatch">
                                         <input type="text" wire:model.live="customThemeBtn" class="wp-input wp-color-input-hex" placeholder="#059669" pattern="^#[a-fA-F0-9]{6}$">
                                     </div>
                                     @error('customThemeBtn') <p class="wp-error">{{ $message }}</p> @enderror
