@@ -4456,19 +4456,6 @@ svg.wp-release-worker-row__icon,
     margin-top: 0;
 }
 
-.wp-qr-branding-previews {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    justify-content: center;
-}
-
-.wp-qr-branding-preview-block {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
 .wp-qr-sticker-editor-controls {
     min-width: 0;
 }

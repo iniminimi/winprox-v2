@@ -68,12 +68,10 @@
             "tenant_logo_none": "Non mostrare",
             "tenant_address_label": "Indirizzo",
             "save_hint": "Vale per fogli Avery 62x89-R e fogli A6/A5/A4. Il QR resta centrato.",
-            "preview_sticker_label": "Anteprima etichetta",
-            "preview_printable_label": "Anteprima foglio",
-            "preview_sticker_alt": "Anteprima della tua etichetta Avery 62x89-R",
-            "preview_printable_alt": "Anteprima del foglio QR",
             "preview_loading": "Aggiornamento anteprima…",
-            "preview_unavailable": "Anteprima non disponibile (richiesto GD o Imagick)."
+            "preview_unavailable": "Anteprima non disponibile (richiesto GD o Imagick).",
+            "preview_label": "Anteprima",
+            "preview_alt": "Anteprima del branding QR (etichetta e foglio)"
         }
     },
     "notifications": {

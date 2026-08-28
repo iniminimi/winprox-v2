@@ -128,37 +128,25 @@
         </form>
     </div>
 
-    <aside class="wp-settings-split-preview wp-qr-branding-previews" aria-label="{{ __('settings.qr_stickers.branding.preview_sticker_label') }}">
+    <aside class="wp-settings-split-preview wp-qr-sticker-preview" aria-label="{{ __('settings.qr_stickers.branding.preview_label') }}">
+        <p class="wp-label">{{ __('settings.qr_stickers.branding.preview_label') }}</p>
         <div wire:loading wire:target="{{ $previewTargets }}">
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.branding.preview_loading') }}</p>
         </div>
-
-        <div class="wp-qr-branding-preview-block" wire:loading.remove wire:target="{{ $previewTargets }}">
-            <p class="wp-label">{{ __('settings.qr_stickers.branding.preview_sticker_label') }}</p>
-            @if ($qrStickerPreviewDataUrl)
-                <img
-                    src="{{ $qrStickerPreviewDataUrl }}"
-                    alt="{{ __('settings.qr_stickers.branding.preview_sticker_alt') }}"
-                    class="wp-qr-sticker-preview-img"
-                    width="182"
-                    height="262"
-                >
-            @else
-                <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.branding.preview_unavailable') }}</p>
-            @endif
-        </div>
-
-        <div class="wp-qr-branding-preview-block" wire:loading.remove wire:target="{{ $previewTargets }}">
-            <p class="wp-label">{{ __('settings.qr_stickers.branding.preview_printable_label') }}</p>
-            @if ($qrPrintableBackgroundPreviewUrl)
-                <img
-                    src="{{ $qrPrintableBackgroundPreviewUrl }}"
-                    alt="{{ __('settings.qr_stickers.branding.preview_printable_alt') }}"
-                    class="wp-qr-sticker-preview-img wp-qr-printable-preview-img"
-                >
-            @else
-                <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.branding.preview_unavailable') }}</p>
-            @endif
-        </div>
+        @if ($qrBrandingPreviewDataUrl)
+            <img
+                src="{{ $qrBrandingPreviewDataUrl }}"
+                alt="{{ __('settings.qr_stickers.branding.preview_alt') }}"
+                class="wp-qr-sticker-preview-img"
+                width="182"
+                height="262"
+                wire:loading.remove
+                wire:target="{{ $previewTargets }}"
+            >
+        @else
+            <p class="wp-muted wp-text-sm" wire:loading.remove wire:target="{{ $previewTargets }}">
+                {{ __('settings.qr_stickers.branding.preview_unavailable') }}
+            </p>
+        @endif
     </aside>
 </div>

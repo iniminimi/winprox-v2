@@ -30,6 +30,7 @@ class RenderBrandedQrStickerPreviewAction
         Tenant $tenant,
         BrandedQrStickerPreviewData $data,
         ?TenantQrStickerSheetSetting $sheetSetting = null,
+        ?string $backgroundPathOverride = null,
     ): ?string {
         if (! QrCodePngWriter::canGenerate()) {
             return null;
@@ -38,7 +39,7 @@ class RenderBrandedQrStickerPreviewAction
         $portalFallback = (string) __('settings.qr_stickers.avery_62x89_r.preview_portal_fallback');
         $sheetForHeader = $this->sheetSettingForHeaderPreview($data->headerText);
 
-        $backgroundPath = QrStickerBackground::absolutePathForTemplate(
+        $backgroundPath = $backgroundPathOverride ?? QrStickerBackground::absolutePathForTemplate(
             QrStickerSheetTemplate::Avery62x89R,
             $sheetSetting,
         );

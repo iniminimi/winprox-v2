@@ -68,12 +68,10 @@
             "tenant_logo_none": "No mostrar",
             "tenant_address_label": "Dirección",
             "save_hint": "Aplica a hojas Avery 62x89-R y hojas A6/A5/A4. El QR permanece centrado.",
-            "preview_sticker_label": "Vista previa etiqueta",
-            "preview_printable_label": "Vista previa hoja",
-            "preview_sticker_alt": "Vista previa de su etiqueta Avery 62x89-R",
-            "preview_printable_alt": "Vista previa de la hoja QR",
             "preview_loading": "Actualizando vista previa…",
-            "preview_unavailable": "Vista previa no disponible (se requiere GD o Imagick)."
+            "preview_unavailable": "Vista previa no disponible (se requiere GD o Imagick).",
+            "preview_label": "Vista previa",
+            "preview_alt": "Vista previa de su branding QR (etiqueta y hoja)"
         }
     },
     "notifications": {

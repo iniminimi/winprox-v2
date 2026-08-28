@@ -68,12 +68,10 @@
             "tenant_logo_none": "Do not show",
             "tenant_address_label": "Address",
             "save_hint": "Applies to Avery 62x89-R sticker sheets and A6/A5/A4 print sheets. QR code stays centred.",
-            "preview_sticker_label": "Sticker preview",
-            "preview_printable_label": "Print sheet preview",
-            "preview_sticker_alt": "Preview of your Avery 62x89-R sticker",
-            "preview_printable_alt": "Preview of the QR print sheet",
             "preview_loading": "Updating preview…",
-            "preview_unavailable": "Preview unavailable (GD or Imagick required)."
+            "preview_unavailable": "Preview unavailable (GD or Imagick required).",
+            "preview_label": "Preview",
+            "preview_alt": "Preview of your QR branding (sticker and print sheet)"
         }
     },
     "notifications": {

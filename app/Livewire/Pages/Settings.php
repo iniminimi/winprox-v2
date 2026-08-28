@@ -3,10 +3,8 @@
 namespace App\Livewire\Pages;
 
 use App\Actions\Qr\RenderBrandedQrStickerPreviewAction;
-use App\Actions\Qr\RenderQrPrintablePagePreviewAction;
 use App\Actions\Settings\UpdateUserNotifyOnNewIssueEmailAction;
 use App\Actions\Settings\UpdateUserUiThemeAction;
-use App\Data\Qr\BrandedQrPrintablePagePreviewData;
 use App\Data\Qr\BrandedQrStickerPreviewData;
 use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
@@ -28,6 +26,7 @@ use App\Http\Requests\Team\UploadTenantQrStickerSheetBackgroundRequest;
 use App\Http\Requests\Team\UpdateTenantQrPrintablePageSettingsRequest;
 use App\Http\Requests\Team\UpdateTenantQrStickerSheetSettingsRequest;
 use App\Support\Qr\BrandedQrStickerLayoutConfig;
+use App\Support\Qr\QrPrintablePageBackground;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Http\Requests\Team\UpdateTenantWorkMenuRequest;
@@ -584,14 +583,13 @@ class Settings extends Component
                 ? $tenant->fresh()->load('qrStickerSheetSettings')
                 : null,
             'qrStickerTenantLogoChoices' => QrStickerTenantLogoPlacement::choices(),
-            'qrStickerPreviewDataUrl' => $this->resolveQrStickerPreviewDataUrl(),
+            'qrBrandingPreviewDataUrl' => $this->resolveQrBrandingPreviewDataUrl(),
             'qrPrintableBackgroundPresets' => QrPrintablePageBackgroundPreset::uiChoices(),
-            'qrPrintableBackgroundPreviewUrl' => $this->resolveQrPrintablePreviewDataUrl(),
         ]);
     }
 
     /** Alleen bij render — nooit als public Livewire-state (base64 > 1 MB breekt requests). */
-    private function resolveQrPrintablePreviewDataUrl(): ?string
+    private function resolveQrBrandingPreviewDataUrl(): ?string
     {
         if (! $this->canUpdateTenantBranding) {
             return null;
@@ -603,33 +601,12 @@ class Settings extends Component
         }
 
         $tenant = $tenant->fresh()->load('qrStickerSheetSettings');
-        $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
+        $averySetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);
+        $printableSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
 
-        return app(RenderQrPrintablePagePreviewAction::class)->handle(
-            $tenant,
-            BrandedQrPrintablePagePreviewData::fromLivewireForm(
-                $this->qrBrandingBackgroundPreset,
-                $this->qrBrandingTenantLogo,
-                $this->qrBrandingTenantAddress,
-            ),
-            $sheetSetting,
-        );
-    }
-
-    /** Alleen bij render — nooit als public Livewire-state (base64 > 1 MB breekt requests). */
-    private function resolveQrStickerPreviewDataUrl(): ?string
-    {
-        if (! $this->canUpdateTenantBranding) {
-            return null;
-        }
-
-        $tenant = $this->resolveTenant();
-        if (! $tenant instanceof Tenant) {
-            return null;
-        }
-
-        $tenant = $tenant->fresh()->load('qrStickerSheetSettings');
-        $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);
+        $backgroundPathOverride = $averySetting?->backgroundAbsolutePath()
+            ?? $printableSetting?->backgroundAbsolutePath()
+            ?? QrPrintablePageBackground::absolutePathForPresetKey($this->qrBrandingBackgroundPreset);
 
         return app(RenderBrandedQrStickerPreviewAction::class)->handle(
             $tenant,
@@ -638,7 +615,8 @@ class Settings extends Component
                 $this->qrBrandingTenantLogo,
                 $this->qrBrandingTenantAddress,
             ),
-            $sheetSetting,
+            $averySetting,
+            $backgroundPathOverride,
         );
     }
 

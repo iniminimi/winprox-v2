@@ -68,12 +68,10 @@
             "tenant_logo_none": "Ne pas afficher",
             "tenant_address_label": "Adresse",
             "save_hint": "S'applique aux planches Avery 62x89-R et aux feuilles A6/A5/A4. Le QR reste centré.",
-            "preview_sticker_label": "Aperçu étiquette",
-            "preview_printable_label": "Aperçu feuille",
-            "preview_sticker_alt": "Aperçu de votre étiquette Avery 62x89-R",
-            "preview_printable_alt": "Aperçu de la feuille QR",
             "preview_loading": "Mise à jour de l'aperçu…",
-            "preview_unavailable": "Aperçu indisponible (GD ou Imagick requis)."
+            "preview_unavailable": "Aperçu indisponible (GD ou Imagick requis).",
+            "preview_label": "Aperçu",
+            "preview_alt": "Aperçu de votre branding QR (étiquette et feuille)"
         }
     },
     "notifications": {

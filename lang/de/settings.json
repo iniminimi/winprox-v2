@@ -68,12 +68,10 @@
             "tenant_logo_none": "Nicht anzeigen",
             "tenant_address_label": "Adresse",
             "save_hint": "Gilt für Avery 62x89-R Etikettenbogen und A6/A5/A4-Druckblätter. QR-Code bleibt zentral.",
-            "preview_sticker_label": "Etikett-Vorschau",
-            "preview_printable_label": "Druckblatt-Vorschau",
-            "preview_sticker_alt": "Vorschau Ihres Avery 62x89-R Etiketts",
-            "preview_printable_alt": "Vorschau des QR-Druckblatts",
             "preview_loading": "Vorschau wird aktualisiert…",
-            "preview_unavailable": "Vorschau nicht verfügbar (GD oder Imagick erforderlich)."
+            "preview_unavailable": "Vorschau nicht verfügbar (GD oder Imagick erforderlich).",
+            "preview_label": "Vorschau",
+            "preview_alt": "Vorschau Ihres QR-Brandings (Etikett und Druckblatt)"
         }
     },
     "notifications": {

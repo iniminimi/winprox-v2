@@ -68,12 +68,10 @@
             "tenant_logo_none": "Niet tonen",
             "tenant_address_label": "Adres",
             "save_hint": "Geldt voor Avery 62x89-R stickervel en A6/A5/A4-afdrukbladen. QR-code staat centraal vast.",
-            "preview_sticker_label": "Voorbeeld sticker",
-            "preview_printable_label": "Voorbeeld afdrukblad",
-            "preview_sticker_alt": "Voorbeeld van uw Avery 62x89-R sticker",
-            "preview_printable_alt": "Voorbeeld van het QR-afdrukblad",
             "preview_loading": "Voorbeeld wordt bijgewerkt…",
-            "preview_unavailable": "Voorbeeld niet beschikbaar (GD of Imagick vereist)."
+            "preview_unavailable": "Voorbeeld niet beschikbaar (GD of Imagick vereist).",
+            "preview_label": "Voorbeeld",
+            "preview_alt": "Voorbeeld van uw QR-branding (sticker en afdrukblad)"
         }
     },
     "notifications": {
