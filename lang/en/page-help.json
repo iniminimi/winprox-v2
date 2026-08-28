@@ -544,7 +544,7 @@
                 },
                 {
                     "label": "Organisation details",
-                    "text": "Only the administrator can change name, email, phone and address via 'Edit organisation details'. These details appear on printed QR stickers, unit labels and other reporter-facing material. In the same section the administrator uploads an organisation logo (PNG/JPG, max. 2 MB). As an employee you only see the current logo for reference. It appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
+                    "text": "Under Your organisation you will find two blocks: Organisation details (name, email, phone and address — only the administrator can edit via 'Edit organisation details') and Organisation logo (upload PNG/JPG, max. 2 MB). As an employee you only see the current logo for reference. It appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
                 },
                 {
                     "label": "WinProx style",
@@ -552,7 +552,7 @@
                 },
                 {
                     "label": "Custom portal style",
-                    "text": "Optionally upload a background image for the reporting portal after scanning a QR code (PNG/JPG, max. 4 MB). This is not the same as the sticker background under QR sticker sheets. Turn on 'Use custom portal style' to choose background and button colours for the reporting portal. The preview card shows how reporters see the portal after a scan. This does not affect the admin interface."
+                    "text": "Two blocks: Portal background (optional image for the reporting portal after a QR scan, PNG/JPG, max. 4 MB — not the same as the sticker background) and Portal colours (background and button colour). Click Save to apply colours to the reporting portal. The preview card shows how reporters see the portal after a scan. This does not affect the admin interface."
                 },
                 {
                     "label": "QR print sheet",

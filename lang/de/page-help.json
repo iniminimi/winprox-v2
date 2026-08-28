@@ -544,7 +544,7 @@
                 },
                 {
                     "label": "Organisationsdaten",
-                    "text": "Nur der Administrator kann Name, E-Mail, Telefon und Adresse über 'Organisationsdaten bearbeiten' ändern. Diese Angaben erscheinen u. a. auf gedruckten QR-Aufklebern und Unit-Etiketten. Im selben Bereich lädt der Administrator ein Organisationslogo hoch (PNG/JPG, max. 2 MB). Als Mitarbeiter sehen Sie das aktuelle Logo nur zur Information. Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
+                    "text": "Unter Ihre Organisation finden Sie zwei Bereiche: Organisationsdaten (Name, E-Mail, Telefon und Adresse — nur der Administrator kann über 'Organisationsdaten bearbeiten' ändern) und Organisationslogo (Upload PNG/JPG, max. 2 MB). Als Mitarbeiter sehen Sie das aktuelle Logo nur zur Information. Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
                 },
                 {
                     "label": "WinProx-Stil",
@@ -552,7 +552,7 @@
                 },
                 {
                     "label": "Eigenes Portal-Design",
-                    "text": "Laden Sie optional ein Hintergrundbild für das Meldeportal nach dem Scannen eines QR-Codes hoch (PNG/JPG, max. 4 MB). Das ist nicht derselbe Hintergrund wie der Aufkleber-Hintergrund unter QR-Aufkleberbögen. Aktivieren Sie 'Eigenes Portal-Design verwenden', um Hintergrund- und Buttonfarbe des Meldeportals zu wählen. Die Vorschaukarte zeigt, wie Melder das Portal nach einem Scan sehen. Das gilt nicht für die Verwaltungsoberfläche."
+                    "text": "Zwei Bereiche: Portal-Hintergrund (optionales Bild für das Meldeportal nach einem QR-Scan, PNG/JPG, max. 4 MB — nicht derselbe Hintergrund wie auf Stickern) und Portal-Farben (Hintergrund- und Schaltflächenfarbe). Klicken Sie auf Speichern, um die Farben auf das Meldeportal anzuwenden. Die Vorschaukarte zeigt, wie Melder das Portal nach einem Scan sehen. Das gilt nicht für die Verwaltungsoberfläche."
                 },
                 {
                     "label": "QR-Druckbogen",

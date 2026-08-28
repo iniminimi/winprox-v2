@@ -160,7 +160,7 @@ class Settings extends Component
         $this->authorize('updateTenantBranding', $tenant);
 
         $payload = [
-            'custom_theme_active' => $this->customThemeActive,
+            'custom_theme_active' => true,
             'custom_theme_bg' => $this->customThemeBg,
             'custom_theme_btn' => $this->customThemeBtn,
         ];

@@ -544,7 +544,7 @@
                 },
                 {
                     "label": "Organisatiegegevens",
-                    "text": "Alleen de beheerder kan naam, e-mail, telefoon en adres aanpassen via 'Organisatiegegevens bewerken'. Deze gegevens verschijnen onder meer op afgedrukte QR-stickers en unitlabels. In dezelfde sectie uploadt de beheerder een organisatielogo (PNG/JPG, max. 2 MB). Als medewerker zie je het huidige logo alleen ter informatie. Het logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
+                    "text": "Onder Je organisatie staan twee delen: Organisatiegegevens (naam, e-mail, telefoon en adres — alleen de beheerder kan bewerken via 'Organisatiegegevens bewerken') en Organisatielogo (upload PNG/JPG, max. 2 MB). Als medewerker zie je het huidige logo alleen ter informatie. Het logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
                 },
                 {
                     "label": "WinProx-stijl",
@@ -552,7 +552,7 @@
                 },
                 {
                     "label": "Eigen portaal-stijl",
-                    "text": "Upload optioneel een achtergrondafbeelding voor het meldportaal na het scannen van een QR-code (PNG/JPG, max. 4 MB). Dit is niet hetzelfde als de sticker-achtergrond bij QR-code stickervellen. Schakel 'Eigen portaal-stijl gebruiken' in om achtergrond- en knopkleur van het meldportaal te kiezen. Het voorbeeldkaartje toont hoe melders het portaal zien na een scan. Dit geldt niet voor het beheerscherm."
+                    "text": "Twee delen: Portaal-achtergrond (optionele afbeelding voor het meldportaal na een QR-scan, PNG/JPG, max. 4 MB — niet hetzelfde als de sticker-achtergrond) en Portaal kleuren (achtergrond- en knopkleur). Klik Opslaan om kleuren toe te passen op het meldportaal. Het voorbeeldkaartje toont hoe melders het portaal zien na een scan. Dit geldt niet voor het beheerscherm."
                 },
                 {
                     "label": "QR-afdrukblad",

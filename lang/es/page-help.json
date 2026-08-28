@@ -544,7 +544,7 @@
                 },
                 {
                     "label": "Datos de la organización",
-                    "text": "Solo el administrador puede cambiar nombre, correo, teléfono y dirección mediante «Editar datos de la organización». Estos datos aparecen en pegatinas QR impresas, etiquetas de unidad y otros materiales para reportadores. En la misma sección, el administrador sube un logotipo de la organización (PNG/JPG, máx. 2 MB). Como empleado solo ve el logotipo actual como referencia. Aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
+                    "text": "En Su organización hay dos bloques: Datos de la organización (nombre, correo, teléfono y dirección — solo el administrador puede editar mediante «Editar datos de la organización») y Logotipo de la organización (subida PNG/JPG, máx. 2 MB). Como empleado solo ve el logotipo actual como referencia. Aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
                 },
                 {
                     "label": "Estilo WinProx",
@@ -552,7 +552,7 @@
                 },
                 {
                     "label": "Estilo personalizado del portal",
-                    "text": "Suba opcionalmente una imagen de fondo para el portal de informes tras escanear un código QR (PNG/JPG, máx. 4 MB). No es lo mismo que el fondo de la pegatina bajo Hojas de pegatinas QR. Active «Usar estilo personalizado del portal» para elegir colores de fondo y botones del portal de informes. La tarjeta de vista previa muestra cómo ven el portal los reportadores tras un escaneo. No afecta a la interfaz de administración."
+                    "text": "Dos bloques: Fondo del portal (imagen opcional para el portal de informes tras un escaneo QR, PNG/JPG, máx. 4 MB — no es el fondo de la pegatina) y Colores del portal (color de fondo y de botones). Haga clic en Guardar para aplicar los colores al portal de informes. La tarjeta de vista previa muestra cómo ven el portal los reportadores tras un escaneo. No afecta a la interfaz de administración."
                 },
                 {
                     "label": "Hoja de impresión QR",
