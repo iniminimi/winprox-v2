@@ -18,6 +18,65 @@ beforeEach(function (): void {
     app()->instance(TranslationProviderInterface::class, new FakeTranslationProvider);
 });
 
+it('importeert geen brontaal-echo als kennisbankvertaling', function (): void {
+    $entry = app(SaveHelpChatKbEntryAction::class)->handle(
+        null,
+        'nl',
+        'qzxw_kb_echo_test',
+        ['qzxwplkmn kb echo test'],
+        'Ga naar Taken en klik Download rapport.',
+        true,
+    );
+
+    $imported = app(ImportHelpChatKbEntryTranslationsAction::class)->handle([
+        [
+            'help_chat_kb_entry_id' => $entry->id,
+            'locale' => 'it',
+            'answer' => 'Ga naar Taken en klik Download rapport.',
+            'patterns' => ['qzxwplkmn kb echo test'],
+        ],
+    ]);
+
+    $row = HelpChatKnowledgeBaseEntryTranslation::query()
+        ->where('help_chat_knowledge_base_entry_id', $entry->id)
+        ->where('locale', 'it')
+        ->first();
+
+    expect($imported)->toBe(0)
+        ->and($row?->status)->toBe(HelpChatKnowledgeBaseEntryTranslationStatus::Pending)
+        ->and($row?->answer)->toBeNull();
+});
+
+it('zet foute voltooide kennisbankvertalingen terug op pending bij backfill', function (): void {
+    $entry = app(SaveHelpChatKbEntryAction::class)->handle(
+        null,
+        'nl',
+        'qzxw_kb_backfill_test',
+        ['qzxwplkmn kb backfill'],
+        'Nederlands antwoord.',
+        true,
+    );
+
+    HelpChatKnowledgeBaseEntryTranslation::query()
+        ->where('help_chat_knowledge_base_entry_id', $entry->id)
+        ->where('locale', 'it')
+        ->update([
+            'answer' => 'Nederlands antwoord.',
+            'patterns' => ['qzxwplkmn kb backfill'],
+            'status' => HelpChatKnowledgeBaseEntryTranslationStatus::Completed,
+        ]);
+
+    app(\App\Actions\Communication\BackfillHelpChatKbEntryTranslationSlotsAction::class)->handle();
+
+    $row = HelpChatKnowledgeBaseEntryTranslation::query()
+        ->where('help_chat_knowledge_base_entry_id', $entry->id)
+        ->where('locale', 'it')
+        ->first();
+
+    expect($row?->status)->toBe(HelpChatKnowledgeBaseEntryTranslationStatus::Pending)
+        ->and($row?->answer)->toBeNull();
+});
+
 it('toont vertalingen in de bewerk-modal', function (): void {
     $super = User::factory()->superuser()->create();
 

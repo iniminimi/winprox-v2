@@ -7,6 +7,7 @@ use App\Enums\HelpChatKnowledgeBaseEntryTranslationStatus;
 use App\Models\HelpChatKnowledgeBaseEntry;
 use App\Models\HelpChatKnowledgeBaseEntryTranslation;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Translation\TranslationOutputGuard;
 use Illuminate\Validation\ValidationException;
 
 class ImportHelpChatKbEntryTranslationsAction
@@ -52,6 +53,11 @@ class ImportHelpChatKbEntryTranslationsAction
                 continue;
             }
 
+            $sourceLocale = $entry->normalizedOriginalLanguage();
+            if ($this->isRejectedKbTranslation($answer, (string) $entry->answer, $locale, $sourceLocale)) {
+                continue;
+            }
+
             $sourcePatterns = array_values($entry->patterns ?? []);
             $normalizedPatterns = null;
 
@@ -66,6 +72,13 @@ class ImportHelpChatKbEntryTranslationsAction
                     static fn (mixed $pattern): string => trim((string) $pattern),
                     $patterns,
                 ));
+
+                foreach ($sourcePatterns as $index => $sourcePattern) {
+                    $translatedPattern = $normalizedPatterns[$index] ?? '';
+                    if ($this->isRejectedKbTranslation($translatedPattern, $sourcePattern, $locale, $sourceLocale)) {
+                        continue 2;
+                    }
+                }
             }
 
             $this->ensureSlots->handle($entry);
@@ -93,5 +106,19 @@ class ImportHelpChatKbEntryTranslationsAction
         }
 
         return $imported;
+    }
+
+    private function isRejectedKbTranslation(
+        string $text,
+        string $source,
+        string $targetLocale,
+        string $sourceLocale,
+    ): bool {
+        if ($text === '') {
+            return true;
+        }
+
+        return TranslationOutputGuard::isUnusable($text, $source)
+            || TranslationOutputGuard::isUntranslatedEcho($text, $source, $targetLocale, $sourceLocale);
     }
 }

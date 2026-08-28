@@ -4,6 +4,7 @@ namespace App\Actions\Communication;
 
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Translation\TranslationOutputGuard;
 use App\Support\Translation\TranslationSyncCancelledException;
 
 class TranslateExportItemsAction
@@ -43,14 +44,15 @@ class TranslateExportItemsAction
 
             if ($helpChatKbEntryId > 0) {
                 $sourceAnswer = trim((string) ($item['source_answer'] ?? ''));
+                $sourceLocale = LocaleSupport::normalize((string) ($item['source_locale'] ?? ''));
 
-                if ($locale === '' || $sourceAnswer === '') {
+                if ($locale === '' || $sourceAnswer === '' || $locale === $sourceLocale) {
                     continue;
                 }
 
-                $text = trim($this->translator->translate($sourceAnswer, $locale));
-                if ($text === '') {
-                    $text = $sourceAnswer;
+                $text = trim($this->translator->translate($sourceAnswer, $locale, $sourceLocale));
+                if ($this->isRejectedKbTranslation($text, $sourceAnswer, $locale, $sourceLocale)) {
+                    continue;
                 }
 
                 $row = [
@@ -63,7 +65,12 @@ class TranslateExportItemsAction
                 if (is_array($sourcePatterns) && $sourcePatterns !== []) {
                     $translatedPatterns = [];
                     foreach ($sourcePatterns as $pattern) {
-                        $translatedPatterns[] = $this->translateShortName((string) $pattern, $locale);
+                        $sourcePattern = trim((string) $pattern);
+                        $translatedPattern = trim($this->translator->translate($sourcePattern, $locale, $sourceLocale));
+                        if ($this->isRejectedKbTranslation($translatedPattern, $sourcePattern, $locale, $sourceLocale)) {
+                            continue 2;
+                        }
+                        $translatedPatterns[] = $translatedPattern;
                     }
                     $row['patterns'] = $translatedPatterns;
                 }
@@ -357,5 +364,19 @@ class TranslateExportItemsAction
         }
 
         return $translatedName;
+    }
+
+    private function isRejectedKbTranslation(
+        string $text,
+        string $source,
+        string $targetLocale,
+        string $sourceLocale,
+    ): bool {
+        if ($text === '') {
+            return true;
+        }
+
+        return TranslationOutputGuard::isUnusable($text, $source)
+            || TranslationOutputGuard::isUntranslatedEcho($text, $source, $targetLocale, $sourceLocale);
     }
 }
