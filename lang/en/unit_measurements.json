@@ -18,7 +18,32 @@
             "add_option": "Add option"
         },
         "section_title": "Measure fields",
-        "section_subtitle": "Define what you want to measure on units (km, temperature, status, …)."
+        "section_subtitle": "Define what you want to measure on units (km, temperature, status, …).",
+        "templates": {
+            "label": "Example",
+            "hint": "Pick an example to prefill the form — adjust before saving.",
+            "odometer": {
+                "name": "Odometer"
+            },
+            "temperature": {
+                "name": "Temperature"
+            },
+            "engine_hours": {
+                "name": "Operating hours"
+            },
+            "status": {
+                "name": "Status",
+                "options": {
+                    "ok": "OK",
+                    "defect": "Defect",
+                    "maintenance": "In maintenance",
+                    "out_of_service": "Out of service"
+                }
+            },
+            "fuel_level_pct": {
+                "name": "Fuel level"
+            }
+        }
     },
     "history": {
         "title": "Measurements",

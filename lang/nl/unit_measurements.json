@@ -18,7 +18,32 @@
             "add_option": "Optie toevoegen"
         },
         "section_title": "Meetvelden",
-        "section_subtitle": "Definieer wat je op units wilt meten (km, temperatuur, status, …)."
+        "section_subtitle": "Definieer wat je op units wilt meten (km, temperatuur, status, …).",
+        "templates": {
+            "label": "Voorbeeld",
+            "hint": "Kies een voorbeeld om het formulier in te vullen — pas gerust aan vóór opslaan.",
+            "odometer": {
+                "name": "Kilometerstand"
+            },
+            "temperature": {
+                "name": "Temperatuur"
+            },
+            "engine_hours": {
+                "name": "Urenstand"
+            },
+            "status": {
+                "name": "Status",
+                "options": {
+                    "ok": "OK",
+                    "defect": "Defect",
+                    "maintenance": "In onderhoud",
+                    "out_of_service": "Buiten gebruik"
+                }
+            },
+            "fuel_level_pct": {
+                "name": "Brandstofniveau"
+            }
+        }
     },
     "history": {
         "title": "Metingen",

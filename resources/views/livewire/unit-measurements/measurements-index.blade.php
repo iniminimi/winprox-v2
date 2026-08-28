@@ -152,6 +152,24 @@
                 </div>
 
                 <div class="wp-modal-body wp-stack">
+                    @if (! $editingFieldId)
+                        <div class="wp-stack-tight">
+                            <p class="wp-label">{{ __('unit_measurements.fields.templates.label') }}</p>
+                            <div class="wp-cluster wp-cluster--wrap">
+                                @foreach ($fieldTemplates as $template)
+                                    <button
+                                        type="button"
+                                        class="btn btn--ghost btn--sm"
+                                        wire:click="applyFieldTemplate('{{ $template['key'] }}')"
+                                    >
+                                        {{ $template['label'] }}
+                                    </button>
+                                @endforeach
+                            </div>
+                            <p class="wp-muted wp-text-sm">{{ __('unit_measurements.fields.templates.hint') }}</p>
+                        </div>
+                    @endif
+
                     <div class="wp-field">
                         <label class="wp-label" for="measure-field-name">{{ __('unit_measurements.fields.form.name') }}</label>
                         <input id="measure-field-name" type="text" class="wp-input" wire:model="name" maxlength="120" autocomplete="off">

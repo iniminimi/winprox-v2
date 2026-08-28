@@ -12,6 +12,7 @@ use App\Models\Location;
 use App\Models\UnitMeasureField;
 use App\Models\UnitMeasurement;
 use App\Support\Tenancy;
+use App\Support\UnitMeasurements\UnitMeasureFieldTemplateCatalog;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\ValidationException;
@@ -136,6 +137,26 @@ class MeasurementsIndex extends Component
         if ($this->choiceOptions === []) {
             $this->choiceOptions = ['', ''];
         }
+    }
+
+    public function applyFieldTemplate(string $key): void
+    {
+        $this->authorize('create', UnitMeasureField::class);
+
+        if ($this->editingFieldId !== null || ! $this->showModal) {
+            return;
+        }
+
+        $defaults = UnitMeasureFieldTemplateCatalog::formDefaults($key);
+
+        $this->name = $defaults['name'];
+        $this->type = $defaults['type'];
+        $this->unitOfMeasure = $defaults['unitOfMeasure'];
+        $this->minValue = $defaults['minValue'];
+        $this->maxValue = $defaults['maxValue'];
+        $this->choiceOptions = $defaults['choiceOptions'];
+        $this->lockedChoiceOptions = [];
+        $this->resetErrorBag();
     }
 
     public function save(SaveUnitMeasureFieldAction $save): void
@@ -268,6 +289,7 @@ class MeasurementsIndex extends Component
                 'field' => $this->fieldFilter !== '' ? $this->fieldFilter : null,
                 'q' => trim($this->search) !== '' ? trim($this->search) : null,
             ])),
+            'fieldTemplates' => UnitMeasureFieldTemplateCatalog::menuItems(),
         ]);
     }
 

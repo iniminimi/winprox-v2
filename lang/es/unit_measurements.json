@@ -18,7 +18,32 @@
             "add_option": "Añadir opción"
         },
         "section_title": "Campos de medición",
-        "section_subtitle": "Defina qué quiere medir en las units (km, temperatura, estado, …)."
+        "section_subtitle": "Defina qué quiere medir en las units (km, temperatura, estado, …).",
+        "templates": {
+            "label": "Ejemplo",
+            "hint": "Elija un ejemplo para rellenar el formulario — ajústelo antes de guardar.",
+            "odometer": {
+                "name": "Kilometraje"
+            },
+            "temperature": {
+                "name": "Temperatura"
+            },
+            "engine_hours": {
+                "name": "Horas de funcionamiento"
+            },
+            "status": {
+                "name": "Estado",
+                "options": {
+                    "ok": "OK",
+                    "defect": "Defecto",
+                    "maintenance": "En mantenimiento",
+                    "out_of_service": "Fuera de servicio"
+                }
+            },
+            "fuel_level_pct": {
+                "name": "Nivel de combustible"
+            }
+        }
     },
     "history": {
         "title": "Mediciones",

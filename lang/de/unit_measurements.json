@@ -18,7 +18,32 @@
             "add_option": "Option hinzufügen"
         },
         "section_title": "Messfelder",
-        "section_subtitle": "Definieren Sie, was Sie an Units messen wollen (km, Temperatur, Status, …)."
+        "section_subtitle": "Definieren Sie, was Sie an Units messen wollen (km, Temperatur, Status, …).",
+        "templates": {
+            "label": "Beispiel",
+            "hint": "Wählen Sie ein Beispiel zum Vorausfüllen — vor dem Speichern anpassen.",
+            "odometer": {
+                "name": "Kilometerstand"
+            },
+            "temperature": {
+                "name": "Temperatur"
+            },
+            "engine_hours": {
+                "name": "Betriebsstunden"
+            },
+            "status": {
+                "name": "Status",
+                "options": {
+                    "ok": "OK",
+                    "defect": "Defekt",
+                    "maintenance": "In Wartung",
+                    "out_of_service": "Außer Betrieb"
+                }
+            },
+            "fuel_level_pct": {
+                "name": "Kraftstoffstand"
+            }
+        }
     },
     "history": {
         "title": "Messungen",

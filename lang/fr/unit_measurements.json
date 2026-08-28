@@ -18,7 +18,32 @@
             "add_option": "Ajouter une option"
         },
         "section_title": "Champs de mesure",
-        "section_subtitle": "Définissez ce que vous voulez mesurer sur les units (km, température, statut, …)."
+        "section_subtitle": "Définissez ce que vous voulez mesurer sur les units (km, température, statut, …).",
+        "templates": {
+            "label": "Exemple",
+            "hint": "Choisissez un exemple pour préremplir — ajustez avant d’enregistrer.",
+            "odometer": {
+                "name": "Kilométrage"
+            },
+            "temperature": {
+                "name": "Température"
+            },
+            "engine_hours": {
+                "name": "Heures de fonctionnement"
+            },
+            "status": {
+                "name": "Statut",
+                "options": {
+                    "ok": "OK",
+                    "defect": "Défectueux",
+                    "maintenance": "En maintenance",
+                    "out_of_service": "Hors service"
+                }
+            },
+            "fuel_level_pct": {
+                "name": "Niveau de carburant"
+            }
+        }
     },
     "history": {
         "title": "Mesures",
