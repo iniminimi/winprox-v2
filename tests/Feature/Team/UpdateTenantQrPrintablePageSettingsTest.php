@@ -5,7 +5,9 @@ use App\Actions\Team\UploadTenantQrStickerSheetBackgroundAction;
 use App\Actions\Team\RemoveTenantQrStickerSheetBackgroundAction;
 use App\Data\Team\UpdateTenantQrPrintablePageSettingsData;
 use App\Enums\QrPrintablePageBackgroundPreset;
+use App\Livewire\Pages\Settings;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Support\Qr\QrPrintablePageBackground;
 use App\Support\Qr\QrPrintablePageStockBackgroundCatalog;
 use App\Support\Qr\QrStickerSheetTemplate;
@@ -14,6 +16,7 @@ use App\Support\Qr\QrCodePngWriter;
 use App\Support\Qr\QrStickerEntry;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Livewire;
 
 it('saves a shared printable page background preset for a6 a5 and a4', function () {
     Storage::fake('public');
@@ -129,6 +132,41 @@ it('saves a stock printable page background preset from public/images/qr/backgro
     expect($path)->toEndWith(str_replace('stock:', '', $stockKey));
 });
 
+it('persists a stock preset via saveQrBrandingSettings in settings', function () {
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $presetKey = QrPrintablePageStockBackgroundCatalog::PRESET_PREFIX.'back_06.jpg';
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('qrBrandingBackgroundPreset', $presetKey)
+        ->call('saveQrBrandingSettings')
+        ->assertHasNoErrors();
+
+    $setting = $tenant->fresh()->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
+    expect($setting)->not->toBeNull()
+        ->and($setting->layout_config['background_preset'] ?? null)->toBe($presetKey);
+});
+
+it('persists the default stock preset when selected in settings', function () {
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $defaultKey = QrPrintablePageBackgroundPreset::defaultPresetKey();
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('qrBrandingBackgroundPreset', $defaultKey)
+        ->assertHasNoErrors();
+
+    $setting = $tenant->fresh()->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
+    expect($setting)->not->toBeNull()
+        ->and($setting->layout_config['background_preset'] ?? null)->toBe($defaultKey);
+});
+
 it('maps legacy blue green and multi presets to stock backgrounds 07 through 09', function () {
     Storage::fake('public');
 
@@ -190,5 +228,6 @@ it('saves printable page logo and address placements with the shared preset', fu
     $customSetting = $custom->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
     expect($customSetting->layout_config['tenant_logo'] ?? null)->toBe('top_left')
         ->and($customSetting->layout_config['tenant_address'] ?? null)->toBe('none')
-        ->and($customSetting->layout_config['background_preset'] ?? null)->toBeNull();
+        ->and($customSetting->layout_config['background_preset'] ?? null)
+        ->toBe(QrPrintablePageBackgroundPreset::defaultPresetKey());
 });

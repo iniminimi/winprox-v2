@@ -26,6 +26,15 @@ enum QrStickerTenantLogoPlacement: string
         return self::tryFrom((string) $value) ?? self::default();
     }
 
+    public static function tryFromStringForAddress(?string $value): self
+    {
+        if ($value === null || trim($value) === '') {
+            return self::BottomLeft;
+        }
+
+        return self::tryFrom($value) ?? self::BottomLeft;
+    }
+
     /** @return list<self> */
     public static function choices(): array
     {

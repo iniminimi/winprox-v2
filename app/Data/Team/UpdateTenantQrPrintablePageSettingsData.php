@@ -35,7 +35,7 @@ readonly class UpdateTenantQrPrintablePageSettingsData
         return new self(
             presetKey: $presetKey,
             tenantLogoPlacement: QrStickerTenantLogoPlacement::tryFromString($input['tenantLogo'] ?? null),
-            tenantAddressPlacement: QrStickerTenantLogoPlacement::tryFromString($input['tenantAddress'] ?? null),
+            tenantAddressPlacement: QrStickerTenantLogoPlacement::tryFromStringForAddress($input['tenantAddress'] ?? null),
         );
     }
 
@@ -52,24 +52,20 @@ readonly class UpdateTenantQrPrintablePageSettingsData
      */
     public function layoutConfig(): ?array
     {
-        $config = [];
-
-        if ($this->presetKey !== QrPrintablePageBackgroundPreset::defaultPresetKey()) {
-            $config[QrPrintablePageBackgroundPreset::LAYOUT_KEY] = $this->presetKey;
-        }
+        $config = [
+            QrPrintablePageBackgroundPreset::LAYOUT_KEY => $this->presetKey,
+        ];
 
         $branding = $this->brandingLayout();
         if (! $branding->usesDefaults()) {
             $config = array_merge($config, $branding->toArray());
         }
 
-        return $config === [] ? null : $config;
+        return $config;
     }
 
     public function isEmpty(?string $backgroundPath = null): bool
     {
-        return $this->presetKey === QrPrintablePageBackgroundPreset::defaultPresetKey()
-            && ($backgroundPath === null || $backgroundPath === '')
-            && $this->brandingLayout()->usesDefaults();
+        return false;
     }
 }

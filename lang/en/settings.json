@@ -55,7 +55,7 @@
             "header_placeholder": "e.g. Scan here to report",
             "header_hint": "Avery 62x89-R sticker sheet only. Max. 120 characters. Empty = location · unit on the sticker.",
             "preset_label": "Default background",
-            "preset_hint": "Applies to A6, A5 and A4. A custom upload overrides this choice.",
+            "preset_hint": "Applies to A6, A5 and A4. Your choice is saved immediately; a custom upload overrides the preset.",
             "background_hint": "Optional: custom background for stickers and print sheets (PNG/JPG, max. 4 MB).",
             "background_uploading": "Saving background…",
             "background_remove": "Remove custom background",

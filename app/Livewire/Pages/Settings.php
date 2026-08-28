@@ -362,6 +362,45 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
+    public function updatedQrBrandingBackgroundPreset(
+        UpdateTenantQrPrintablePageSettingsAction $updatePrintableSettings,
+    ): void {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('updateTenantBranding', $tenant);
+
+        Validator::make(
+            [
+                'preset' => $this->qrBrandingBackgroundPreset,
+                'tenantLogo' => $this->qrBrandingTenantLogo,
+                'tenantAddress' => $this->qrBrandingTenantAddress,
+            ],
+            UpdateTenantQrPrintablePageSettingsRequest::rulesFor(),
+        )->validate();
+
+        $updated = $updatePrintableSettings->handle(
+            $tenant,
+            UpdateTenantQrPrintablePageSettingsData::fromValidated([
+                'preset' => $this->qrBrandingBackgroundPreset,
+                'tenantLogo' => $this->qrBrandingTenantLogo,
+                'tenantAddress' => $this->qrBrandingTenantAddress,
+            ]),
+            (int) auth()->id(),
+        );
+
+        $this->fillOrganisationFromTenant($updated);
+
+        $user = auth()->user();
+        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
+            $user->setRelation('tenant', $updated);
+        }
+
+        $this->dispatch('saved');
+    }
+
     public function updatedQrBrandingBackground(): void
     {
         $this->persistQrBrandingBackground(

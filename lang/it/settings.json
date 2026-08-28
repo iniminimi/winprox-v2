@@ -55,7 +55,7 @@
             "header_placeholder": "es. Scansiona qui per segnalare",
             "header_hint": "Solo foglio Avery 62x89-R. Max 120 caratteri. Vuoto = sede · unità.",
             "preset_label": "Sfondo predefinito",
-            "preset_hint": "Vale per A6, A5 e A4. Un upload personalizzato sostituisce questa scelta.",
+            "preset_hint": "Vale per A6, A5 e A4. La scelta viene salvata subito; un upload personalizzato sostituisce la preset.",
             "background_hint": "Opzionale: sfondo personalizzato per etichetta e foglio (PNG/JPG, max 4 MB).",
             "background_uploading": "Salvataggio sfondo…",
             "background_remove": "Rimuovi sfondo personalizzato",

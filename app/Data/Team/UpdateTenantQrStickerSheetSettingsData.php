@@ -30,7 +30,7 @@ readonly class UpdateTenantQrStickerSheetSettingsData
             template: $template,
             headerText: $headerText === '' ? null : $headerText,
             tenantLogoPlacement: QrStickerTenantLogoPlacement::tryFromString($input['tenantLogo'] ?? null),
-            tenantAddressPlacement: QrStickerTenantLogoPlacement::tryFromString($input['tenantAddress'] ?? null),
+            tenantAddressPlacement: QrStickerTenantLogoPlacement::tryFromStringForAddress($input['tenantAddress'] ?? null),
         );
     }
 

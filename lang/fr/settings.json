@@ -55,7 +55,7 @@
             "header_placeholder": "p. ex. Scannez ici pour signaler",
             "header_hint": "Planche Avery 62x89-R uniquement. Max. 120 caractères. Vide = lieu · unité.",
             "preset_label": "Arrière-plan par défaut",
-            "preset_hint": "S'applique à A6, A5 et A4. Un upload personnalisé remplace ce choix.",
+            "preset_hint": "S'applique à A6, A5 et A4. Le choix est enregistré immédiatement ; un upload personnalisé remplace la preset.",
             "background_hint": "Optionnel : arrière-plan personnalisé pour étiquette et feuille (PNG/JPG, max. 4 Mo).",
             "background_uploading": "Enregistrement de l'arrière-plan…",
             "background_remove": "Supprimer l'arrière-plan personnalisé",

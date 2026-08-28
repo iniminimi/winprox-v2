@@ -55,7 +55,7 @@
             "header_placeholder": "bv. Scan hier voor meldingen",
             "header_hint": "Alleen op Avery 62x89-R stickervel. Max. 120 tekens. Leeg = locatie · unit.",
             "preset_label": "Standaardachtergrond",
-            "preset_hint": "Geldt voor A6, A5 en A4. Eigen upload overschrijft deze keuze.",
+            "preset_hint": "Geldt voor A6, A5 en A4. Keuze wordt meteen opgeslagen; eigen upload overschrijft de preset.",
             "background_hint": "Optioneel: eigen achtergrond voor sticker en afdrukblad (PNG/JPG, max. 4 MB).",
             "background_uploading": "Achtergrond wordt opgeslagen…",
             "background_remove": "Eigen achtergrond verwijderen",
