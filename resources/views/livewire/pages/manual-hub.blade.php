@@ -1,7 +1,8 @@
 <div class="wp-stack">
     <div class="wp-faq-wrap wp-stack">
         <x-wp-page-head-title
-            icon="document"
+            :assistant-video="asset('video/assistant_legal_80.mp4')"
+            assistant-video-loop
             :title="__('manual.hub.title')"
             :subtitle="__('manual.hub.subtitle')"
         />

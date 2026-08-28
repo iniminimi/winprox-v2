@@ -14,7 +14,9 @@ it('laat een admin de handleidingen-hub zien (200)', function () {
     $this->actingAs($admin)
         ->get(route('manual.hub'))
         ->assertOk()
-        ->assertSee('Handleidingen');
+        ->assertSee('Handleidingen')
+        ->assertSee('video/assistant_legal_80.mp4', false)
+        ->assertSee('wp-page-icon--assistant', false);
 });
 
 it('laat een medewerker de handleidingen-hub zien (200)', function () {
