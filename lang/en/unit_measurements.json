@@ -42,6 +42,19 @@
             },
             "fuel_level_pct": {
                 "name": "Fuel level"
+            },
+            "stock_count": {
+                "name": "Stock count"
+            },
+            "occupancy": {
+                "name": "Occupancy",
+                "options": {
+                    "empty": "Empty",
+                    "limited": "Limited",
+                    "normal": "Normal",
+                    "full": "Full",
+                    "overcrowded": "Over capacity"
+                }
             }
         }
     },

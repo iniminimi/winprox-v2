@@ -42,6 +42,19 @@
             },
             "fuel_level_pct": {
                 "name": "Brandstofniveau"
+            },
+            "stock_count": {
+                "name": "Voorraad aantal"
+            },
+            "occupancy": {
+                "name": "Bezetting",
+                "options": {
+                    "empty": "Leeg",
+                    "limited": "Beperkt",
+                    "normal": "Normaal",
+                    "full": "Vol",
+                    "overcrowded": "Overbezet"
+                }
             }
         }
     },

@@ -42,6 +42,19 @@
             },
             "fuel_level_pct": {
                 "name": "Kraftstoffstand"
+            },
+            "stock_count": {
+                "name": "Bestand Anzahl"
+            },
+            "occupancy": {
+                "name": "Belegung",
+                "options": {
+                    "empty": "Leer",
+                    "limited": "Begrenzt",
+                    "normal": "Normal",
+                    "full": "Voll",
+                    "overcrowded": "Überbelegt"
+                }
             }
         }
     },

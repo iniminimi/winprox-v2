@@ -42,6 +42,19 @@
             },
             "fuel_level_pct": {
                 "name": "Livello carburante"
+            },
+            "stock_count": {
+                "name": "Quantità a magazzino"
+            },
+            "occupancy": {
+                "name": "Occupazione",
+                "options": {
+                    "empty": "Vuoto",
+                    "limited": "Limitata",
+                    "normal": "Normale",
+                    "full": "Pieno",
+                    "overcrowded": "Sovraffollato"
+                }
             }
         }
     },

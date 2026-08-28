@@ -5,9 +5,9 @@ declare(strict_types=1);
 use App\Enums\UnitMeasureFieldType;
 use App\Support\UnitMeasurements\UnitMeasureFieldTemplateCatalog;
 
-it('lists five measure field templates for the create modal', function () {
-    expect(UnitMeasureFieldTemplateCatalog::KEYS)->toHaveCount(5)
-        ->and(UnitMeasureFieldTemplateCatalog::menuItems())->toHaveCount(5)
+it('lists seven measure field templates for the create modal', function () {
+    expect(UnitMeasureFieldTemplateCatalog::KEYS)->toHaveCount(7)
+        ->and(UnitMeasureFieldTemplateCatalog::menuItems())->toHaveCount(7)
         ->and(collect(UnitMeasureFieldTemplateCatalog::menuItems())->pluck('key')->all())
         ->toBe(UnitMeasureFieldTemplateCatalog::KEYS);
 });
@@ -19,7 +19,13 @@ it('prefills odometer defaults from the template catalog', function () {
         ->and($defaults['type'])->toBe(UnitMeasureFieldType::Numeric->value)
         ->and($defaults['unitOfMeasure'])->toBe('km')
         ->and($defaults['minValue'])->toBe('0')
-        ->and($defaults['maxValue'])->toBeNull();
+        ->and($defaults['maxValue'])->toBe('999999');
+});
+
+it('caps engine hours at nine hundred ninety nine', function () {
+    $defaults = UnitMeasureFieldTemplateCatalog::formDefaults('engine_hours');
+
+    expect($defaults['maxValue'])->toBe('999');
 });
 
 it('prefills status choice options from the template catalog', function () {

@@ -154,7 +154,17 @@
                 <div class="wp-modal-body wp-stack">
                     @if (! $editingFieldId)
                         <div class="wp-stack-tight">
-                            <p class="wp-label">{{ __('unit_measurements.fields.templates.label') }}</p>
+                            <div class="wp-cluster wp-cluster--tight">
+                                <p class="wp-label">{{ __('unit_measurements.fields.templates.label') }}</p>
+                                <x-wp-tooltip :text="__('unit_measurements.fields.templates.hint')" wrap>
+                                    <button
+                                        type="button"
+                                        class="wp-page-help-trigger"
+                                        tabindex="0"
+                                        aria-label="{{ __('unit_measurements.fields.templates.hint') }}"
+                                    >?</button>
+                                </x-wp-tooltip>
+                            </div>
                             <div class="wp-cluster wp-cluster--wrap">
                                 @foreach ($fieldTemplates as $template)
                                     <button
@@ -166,7 +176,6 @@
                                     </button>
                                 @endforeach
                             </div>
-                            <p class="wp-muted wp-text-sm">{{ __('unit_measurements.fields.templates.hint') }}</p>
                         </div>
                     @endif
 

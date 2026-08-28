@@ -42,6 +42,19 @@
             },
             "fuel_level_pct": {
                 "name": "Niveau de carburant"
+            },
+            "stock_count": {
+                "name": "Quantité en stock"
+            },
+            "occupancy": {
+                "name": "Occupation",
+                "options": {
+                    "empty": "Vide",
+                    "limited": "Limitée",
+                    "normal": "Normale",
+                    "full": "Pleine",
+                    "overcrowded": "Surchargée"
+                }
             }
         }
     },

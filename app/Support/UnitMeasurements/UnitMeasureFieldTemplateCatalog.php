@@ -16,6 +16,8 @@ final class UnitMeasureFieldTemplateCatalog
         'engine_hours',
         'status',
         'fuel_level_pct',
+        'stock_count',
+        'occupancy',
     ];
 
     public static function isValidKey(string $key): bool
@@ -62,7 +64,7 @@ final class UnitMeasureFieldTemplateCatalog
                 'type' => UnitMeasureFieldType::Numeric->value,
                 'unitOfMeasure' => 'km',
                 'minValue' => '0',
-                'maxValue' => null,
+                'maxValue' => '999999',
                 'choiceOptions' => ['', ''],
             ],
             'temperature' => [
@@ -78,7 +80,7 @@ final class UnitMeasureFieldTemplateCatalog
                 'type' => UnitMeasureFieldType::Numeric->value,
                 'unitOfMeasure' => 'h',
                 'minValue' => '0',
-                'maxValue' => null,
+                'maxValue' => '999',
                 'choiceOptions' => ['', ''],
             ],
             'status' => [
@@ -96,6 +98,22 @@ final class UnitMeasureFieldTemplateCatalog
                 'minValue' => '0',
                 'maxValue' => '100',
                 'choiceOptions' => ['', ''],
+            ],
+            'stock_count' => [
+                'name' => (string) __('unit_measurements.fields.templates.stock_count.name'),
+                'type' => UnitMeasureFieldType::Numeric->value,
+                'unitOfMeasure' => 'st',
+                'minValue' => '0',
+                'maxValue' => null,
+                'choiceOptions' => ['', ''],
+            ],
+            'occupancy' => [
+                'name' => (string) __('unit_measurements.fields.templates.occupancy.name'),
+                'type' => UnitMeasureFieldType::Choice->value,
+                'unitOfMeasure' => '',
+                'minValue' => null,
+                'maxValue' => null,
+                'choiceOptions' => self::translatedOptions('occupancy', ['empty', 'limited', 'normal', 'full', 'overcrowded']),
             ],
         };
     }
