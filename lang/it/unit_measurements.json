@@ -20,8 +20,7 @@
         "section_title": "Campi di misura",
         "section_subtitle": "Definisci cosa vuoi misurare sulle unit (km, temperatura, stato, …).",
         "templates": {
-            "label": "Esempio",
-            "hint": "Scegli un esempio per precompilare — modifica prima di salvare.",
+            "label": "Esempio :",
             "odometer": {
                 "name": "Chilometraggio"
             },

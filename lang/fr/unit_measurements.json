@@ -20,8 +20,7 @@
         "section_title": "Champs de mesure",
         "section_subtitle": "Définissez ce que vous voulez mesurer sur les units (km, température, statut, …).",
         "templates": {
-            "label": "Exemple",
-            "hint": "Choisissez un exemple pour préremplir — ajustez avant d’enregistrer.",
+            "label": "Exemple :",
             "odometer": {
                 "name": "Kilométrage"
             },

@@ -61,8 +61,6 @@ it('shows example templates in the create modal and prefills odometer', function
         ->assertSee(__('unit_measurements.fields.templates.label'))
         ->assertSee(__('unit_measurements.fields.templates.placeholder'))
         ->assertSee('id="measure-field-template"', false)
-        ->assertSee('wp-tooltip__bubble', false)
-        ->assertSeeHtml('aria-label="'.e(__('unit_measurements.fields.templates.hint')).'"')
         ->set('selectedFieldTemplate', 'odometer')
         ->assertSet('name', __('unit_measurements.fields.templates.odometer.name'))
         ->assertSet('type', 'numeric')

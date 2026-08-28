@@ -20,8 +20,7 @@
         "section_title": "Meetvelden",
         "section_subtitle": "Definieer wat je op units wilt meten (km, temperatuur, status, …).",
         "templates": {
-            "label": "Voorbeeld",
-            "hint": "Kies een voorbeeld om het formulier in te vullen — pas gerust aan vóór opslaan.",
+            "label": "Voorbeeld :",
             "odometer": {
                 "name": "Kilometerstand"
             },

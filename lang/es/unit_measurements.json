@@ -20,8 +20,7 @@
         "section_title": "Campos de medición",
         "section_subtitle": "Defina qué quiere medir en las units (km, temperatura, estado, …).",
         "templates": {
-            "label": "Ejemplo",
-            "hint": "Elija un ejemplo para rellenar el formulario — ajústelo antes de guardar.",
+            "label": "Ejemplo :",
             "odometer": {
                 "name": "Kilometraje"
             },

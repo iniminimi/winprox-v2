@@ -154,17 +154,7 @@
                 <div class="wp-modal-body wp-stack">
                     @if (! $editingFieldId)
                         <div class="wp-field">
-                            <div class="wp-cluster wp-cluster--tight">
-                                <label class="wp-label" for="measure-field-template">{{ __('unit_measurements.fields.templates.label') }}</label>
-                                <x-wp-tooltip :text="__('unit_measurements.fields.templates.hint')" wrap>
-                                    <button
-                                        type="button"
-                                        class="wp-page-help-trigger"
-                                        tabindex="0"
-                                        aria-label="{{ __('unit_measurements.fields.templates.hint') }}"
-                                    >?</button>
-                                </x-wp-tooltip>
-                            </div>
+                            <label class="wp-label" for="measure-field-template">{{ __('unit_measurements.fields.templates.label') }}</label>
                             <select id="measure-field-template" class="wp-select" wire:model.live="selectedFieldTemplate">
                                 <option value="">{{ __('unit_measurements.fields.templates.placeholder') }}</option>
                                 @foreach ($fieldTemplates as $template)
