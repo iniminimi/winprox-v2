@@ -39,13 +39,8 @@ class HelpChat extends Component
             $this->makeMessage($reply['role'], $reply['content']),
         );
 
-        if (($reply['escalated'] ?? false) === true) {
-            $this->escalationQuestion = $text;
-            $this->escalationReply = $reply['content'];
-        } else {
-            $this->escalationQuestion = null;
-            $this->escalationReply = null;
-        }
+        $this->escalationQuestion = $text;
+        $this->escalationReply = $reply['content'];
     }
 
     public function escalateToHelpdesk(EscalateHelpChatAnswerAction $escalate): void

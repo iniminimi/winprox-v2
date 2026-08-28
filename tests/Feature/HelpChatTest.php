@@ -40,7 +40,7 @@ it('stuurt de laatste onbeantwoorde vraag pas door na expliciete escalatie', fun
         ->call('send')
         ->set('draft', $answered)
         ->call('send')
-        ->assertSet('escalationQuestion', null)
+        ->assertSet('escalationQuestion', $answered)
         ->set('draft', $secondUnanswered)
         ->call('send')
         ->assertSet('escalationQuestion', $secondUnanswered)
@@ -58,7 +58,7 @@ it('stuurt de laatste onbeantwoorde vraag pas door na expliciete escalatie', fun
     expect(HelpChatUnansweredQuestion::query()->value('question'))->toBe($secondUnanswered);
 });
 
-it('toont de doorstuur-knop alleen na een onbeantwoorde vraag', function (): void {
+it('toont de doorstuur-knop na elk assistent-antwoord', function (): void {
     $user = User::factory()->admin()->create();
 
     Livewire::actingAs($user)
@@ -69,5 +69,26 @@ it('toont de doorstuur-knop alleen na een onbeantwoorde vraag', function (): voi
         ->assertSee(__('help.escalate'))
         ->set('draft', 'reserveren')
         ->call('send')
-        ->assertDontSee(__('help.escalate'));
+        ->assertSee(__('help.escalate'));
+});
+
+it('stuurt een beantwoorde vraag door met het assistent-antwoord', function (): void {
+    $user = User::factory()->admin()->create();
+    $question = 'reserveren';
+
+    Livewire::actingAs($user)
+        ->test(HelpChat::class)
+        ->set('draft', $question)
+        ->call('send')
+        ->call('escalateToHelpdesk');
+
+    Mail::assertSent(HelpChatEscalationToHelpdeskMail::class, function (HelpChatEscalationToHelpdeskMail $mail) use ($user, $question): bool {
+        return $mail->user->is($user)
+            && $mail->question === $question
+            && is_string($mail->assistantReply)
+            && $mail->assistantReply !== __('help.no_match');
+    });
+
+    expect(HelpChatUnansweredQuestion::query()->count())->toBe(1);
+    expect(HelpChatUnansweredQuestion::query()->value('question'))->toBe($question);
 });
