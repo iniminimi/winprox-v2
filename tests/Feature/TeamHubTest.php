@@ -245,6 +245,49 @@ it('behoudt bedrijfsgegevens bij het opslaan van het organisatielogo', function 
         ->and($fresh->city)->toBe('Brugge');
 });
 
+it('schakelt custom theme in bij het opslaan van portaalkleuren', function () {
+    [$tenant] = tenantWithAdmin();
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $tenant->update([
+        'custom_theme_active' => false,
+        'custom_theme_bg' => '#e7e8ec',
+        'custom_theme_btn' => '#059669',
+    ]);
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('customThemeBg', '#112233')
+        ->set('customThemeBtn', '#445566')
+        ->call('saveOrganisationInline')
+        ->assertHasNoErrors();
+
+    $fresh = $tenant->fresh();
+    expect($fresh->custom_theme_active)->toBeTrue()
+        ->and($fresh->custom_theme_bg)->toBe('#112233')
+        ->and($fresh->custom_theme_btn)->toBe('#445566');
+});
+
+it('behoudt portaalkleuren bij het opslaan van organisatiegegevens via modal', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+    $tenant->update([
+        'custom_theme_active' => true,
+        'custom_theme_bg' => '#aabbcc',
+        'custom_theme_btn' => '#ddeeff',
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->set('orgName', 'Acme Updated')
+        ->call('saveOrganisation')
+        ->assertHasNoErrors();
+
+    $fresh = $tenant->fresh();
+    expect($fresh->name)->toBe('Acme Updated')
+        ->and($fresh->custom_theme_active)->toBeTrue()
+        ->and($fresh->custom_theme_bg)->toBe('#aabbcc')
+        ->and($fresh->custom_theme_btn)->toBe('#ddeeff');
+});
+
 it('laat een medewerker een portaal-achtergrond uploaden', function () {
     Storage::fake('public');
     [$tenant] = tenantWithAdmin();
@@ -299,8 +342,10 @@ it('laat een medewerker branding-instellingen zien en aanpassen maar niet privac
     $this->actingAs($employee)
         ->get(route('settings.index'))
         ->assertOk()
+        ->assertSee(__('settings.org.details_label'), false)
         ->assertSee(__('settings.org.logo_label'), false)
         ->assertSee(__('settings.org.portal_background_label'), false)
+        ->assertSee(__('settings.org.portal_colors_label'), false)
         ->assertSee(__('settings.qr_stickers.title'), false)
         ->assertDontSee(__('settings.privacy.title'), false);
 

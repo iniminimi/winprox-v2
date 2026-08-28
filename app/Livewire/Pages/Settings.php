@@ -194,9 +194,6 @@ class Settings extends Component
                 'postal_code' => $this->orgPostalCode,
                 'city' => $this->orgCity,
                 'country_code' => $this->orgCountryCode,
-                'custom_theme_active' => $this->customThemeActive,
-                'custom_theme_bg' => $this->customThemeBg,
-                'custom_theme_btn' => $this->customThemeBtn,
             ],
             $request->rules(),
             $request->messages(),
@@ -211,9 +208,6 @@ class Settings extends Component
             'postal_code' => $validated['postal_code'] ?? null,
             'city' => $validated['city'] ?? null,
             'country_code' => $validated['country_code'] ?? null,
-            'custom_theme_active' => $validated['custom_theme_active'] ?? false,
-            'custom_theme_bg' => $validated['custom_theme_bg'] ?? null,
-            'custom_theme_btn' => $validated['custom_theme_btn'] ?? null,
         ];
 
         $updated = $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
