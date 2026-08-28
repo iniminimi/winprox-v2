@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Onboarding;
 
+use App\Actions\Team\UpdateTenantWorkMenuAction;
 use App\Actions\Categories\SyncCategoryTeamsAction;
 use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateLocationAction;
@@ -47,6 +48,7 @@ class ApplyTenantStarterPackAction
         private DeleteLocationAction $deleteLocation,
         private SyncCategoryTeamsAction $syncCategoryTeams,
         private EnsureDefaultClockPointAction $ensureDefaultClockPoint,
+        private UpdateTenantWorkMenuAction $updateWorkMenu,
         private AuditRecorder $audit,
     ) {}
 
@@ -148,6 +150,12 @@ class ApplyTenantStarterPackAction
             $this->ensureDefaultClockPoint->handle(
                 $tenant,
                 trans('team.clock_point_qr.default_name', [], $locale),
+                $actorId,
+            );
+
+            $this->updateWorkMenu->handle(
+                $tenant,
+                TenantStarterPackCatalog::workMenuDefaults($data->type),
                 $actorId,
             );
 

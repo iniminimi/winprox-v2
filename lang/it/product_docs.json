@@ -53,7 +53,7 @@
             },
             {
                 "title": "Menu Lavoro",
-                "body": "In Impostazioni (amministratore): attiva/disattiva Calendario, Prenotazioni, Giri di ispezione e Misurazioni unità per organizzazione nella barra laterale. Off = nessun accesso backoffice; il QR sulle unità che già lo avevano resta attivo (grandfather)."
+                "body": "In Impostazioni (amministratore): attiva/disattiva Calendario, Prenotazioni, Giri di ispezione e Misurazioni unità per organizzazione nella barra laterale. Off = nessun accesso backoffice; il QR sulle unità che già lo avevano resta attivo (grandfather). Un modello iniziale nel cruscotto imposta automaticamente le voci del menu Lavoro (es. gestione immobiliare senza prenotazioni e misurazioni unità)."
             },
             {
                 "title": "Branding & QR",
@@ -90,7 +90,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Sedi, unit, categorie, team e lavoratori (interni o esterni). Sotto Sedi: Categorie, Sedi e Units (a livello tenant). Import massivo/CSV, dashboard, documenti e avvisi sul portale. Attivi i controlli unit per categoria e unit; checklist sotto Persone → Teams — condivise o per team. Le nuove organizzazioni possono caricare dal cruscotto un modello iniziale (hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta) con team, categorie, una sede e unit di esempio — nomi in tutte le lingue. Puoi rinominare tutto in seguito; con le segnalazioni le unit possono solo essere disattivate."
+                "body": "Sedi, unit, categorie, team e lavoratori (interni o esterni). Sotto Sedi: Categorie, Sedi e Units (a livello tenant). Import massivo/CSV, dashboard, documenti e avvisi sul portale. Attivi i controlli unit per categoria e unit; checklist sotto Persone → Teams — condivise o per team. Le nuove organizzazioni possono caricare dal cruscotto un modello iniziale (hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta) con team, categorie, una sede, unit di esempio e default del menu Lavoro — nomi in tutte le lingue. Puoi rinominare tutto in seguito; con le segnalazioni le unit possono solo essere disattivate."
             },
             {
                 "title": "Tasks",

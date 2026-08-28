@@ -5,7 +5,14 @@
  * Namen staan in lang/{locale}/starter_pack.json; alle talen gaan mee in de DB.
  */
 return [
+    'all_work_menu_on' => [
+        'calendar' => true,
+        'reservations' => true,
+        'inspection_rounds' => true,
+        'unit_measurements' => true,
+    ],
     'hotel' => [
+        'work_menu' => 'all_work_menu_on',
         'teams' => [
             'cleaning' => ['categories' => ['rooms', 'sanitary', 'common']],
             'reception' => ['categories' => ['rooms']],
@@ -18,6 +25,7 @@ return [
         ],
     ],
     'hospital' => [
+        'work_menu' => 'all_work_menu_on',
         'teams' => [
             'cleaning' => ['categories' => ['patient_rooms', 'treatment', 'installations']],
             'technical' => ['categories' => ['installations', 'treatment']],
@@ -30,6 +38,7 @@ return [
         ],
     ],
     'industry' => [
+        'work_menu' => 'all_work_menu_on',
         'teams' => [
             'technical' => ['categories' => ['machines', 'warehouse']],
             'cleaning' => ['categories' => ['office', 'warehouse']],
@@ -42,6 +51,7 @@ return [
         ],
     ],
     'municipality' => [
+        'work_menu' => 'all_work_menu_on',
         'teams' => [
             'facility' => ['categories' => ['buildings', 'sports']],
             'green' => ['categories' => ['public_space']],
@@ -54,6 +64,12 @@ return [
         ],
     ],
     'realestate' => [
+        'work_menu' => [
+            'calendar' => true,
+            'reservations' => false,
+            'inspection_rounds' => true,
+            'unit_measurements' => false,
+        ],
         'teams' => [
             'technical' => ['categories' => ['apartments', 'technical']],
             'cleaning' => ['categories' => ['apartments', 'common']],
@@ -66,6 +82,7 @@ return [
         ],
     ],
     'fleet' => [
+        'work_menu' => 'all_work_menu_on',
         'teams' => [
             'workshop' => ['categories' => ['vehicles', 'workshop']],
             'planning' => ['categories' => ['vehicles', 'depot']],

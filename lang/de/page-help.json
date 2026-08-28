@@ -15,7 +15,7 @@
                 },
                 {
                     "label": "Startvorlage",
-                    "text": "Neue Organisationen sehen die Schaltfläche «Möchten Sie Hilfe beim Start?». Wählen Sie Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement: WinProx legt Beispiel-Teams, Kategorien, einen Standort und Units an — Namen in allen Sprachen. Das ist kein Sektorsystem, nur ein Start. Umbenennen geht immer. Löschen, solange es keine Meldungen gibt; danach können Units nur noch deaktiviert werden."
+                    "text": "Neue Organisationen sehen die Schaltfläche «Möchten Sie Hilfe beim Start?». Wählen Sie Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement: WinProx legt Beispiel-Teams, Kategorien, einen Standort und Units an — Namen in allen Sprachen — und setzt passende Arbeitsmenü-Einträge in der Seitenleiste (z. B. Immobilienverwaltung ohne Reservierungen und Unit-Messungen). Das ist kein Sektorsystem, nur ein Start. Umbenennen geht immer. Löschen, solange es keine Meldungen gibt; danach können Units nur noch deaktiviert werden."
                 },
                 {
                     "label": "Briefing drucken",

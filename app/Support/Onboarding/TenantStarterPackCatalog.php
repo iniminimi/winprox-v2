@@ -57,6 +57,55 @@ final class TenantStarterPackCatalog
         return $names;
     }
 
+    /**
+     * @return array{
+     *     calendar: bool,
+     *     reservations: bool,
+     *     inspection_rounds: bool,
+     *     unit_measurements: bool,
+     * }
+     */
+    public static function workMenuFlags(TenantStarterPackType $type): array
+    {
+        $pack = self::definition($type);
+        $menu = $pack['work_menu'] ?? 'all_work_menu_on';
+
+        if (is_string($menu)) {
+            $resolved = config('tenant_starter_packs.'.$menu);
+            if (! is_array($resolved)) {
+                throw new InvalidArgumentException('Unknown starter pack work_menu preset: '.$menu);
+            }
+            $menu = $resolved;
+        }
+
+        return [
+            'calendar' => (bool) ($menu['calendar'] ?? true),
+            'reservations' => (bool) ($menu['reservations'] ?? true),
+            'inspection_rounds' => (bool) ($menu['inspection_rounds'] ?? true),
+            'unit_measurements' => (bool) ($menu['unit_measurements'] ?? true),
+        ];
+    }
+
+    /**
+     * @return array{
+     *     work_menu_calendar_enabled: bool,
+     *     work_menu_reservations_enabled: bool,
+     *     work_menu_inspection_rounds_enabled: bool,
+     *     work_menu_unit_measurements_enabled: bool,
+     * }
+     */
+    public static function workMenuDefaults(TenantStarterPackType $type): array
+    {
+        $flags = self::workMenuFlags($type);
+
+        return [
+            'work_menu_calendar_enabled' => $flags['calendar'],
+            'work_menu_reservations_enabled' => $flags['reservations'],
+            'work_menu_inspection_rounds_enabled' => $flags['inspection_rounds'],
+            'work_menu_unit_measurements_enabled' => $flags['unit_measurements'],
+        ];
+    }
+
     public static function teamNameKey(TenantStarterPackType $type, string $teamKey): string
     {
         return 'starter_pack.packs.'.$type->value.'.teams.'.$teamKey;

@@ -53,7 +53,7 @@
             },
             {
                 "title": "Work menu",
-                "body": "Under Settings (administrator): toggle Calendar, Reservations, Inspection rounds and Unit measurements per organisation in the sidebar. Off = no backoffice access; QR on units that already had the feature keeps working (grandfather)."
+                "body": "Under Settings (administrator): toggle Calendar, Reservations, Inspection rounds and Unit measurements per organisation in the sidebar. Off = no backoffice access; QR on units that already had the feature keeps working (grandfather). A starter template on the dashboard sets suitable work menu items automatically (e.g. property management without reservations and unit measurements)."
             },
             {
                 "title": "Branding & QR",
@@ -90,7 +90,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Locations, units, categories, teams and workers (internal or external). Under Places: Categories, Locations and Units (tenant-wide). Bulk/CSV import, dashboard, documents and announcements on the portal. Enable unit checks per category and unit; manage checklists under People → Teams — shared or per team. New organisations can load a starter template on the dashboard (hotel, hospital, industry, municipality, property management or fleet management) with sample teams, categories, a location and units — names in every language. You can rename everything later; once issues exist, units can only be deactivated."
+                "body": "Locations, units, categories, teams and workers (internal or external). Under Places: Categories, Locations and Units (tenant-wide). Bulk/CSV import, dashboard, documents and announcements on the portal. Enable unit checks per category and unit; manage checklists under People → Teams — shared or per team. New organisations can load a starter template on the dashboard (hotel, hospital, industry, municipality, property management or fleet management) with sample teams, categories, a location, units and matching work menu defaults — names in every language. You can rename everything later; once issues exist, units can only be deactivated."
             },
             {
                 "title": "Tasks",

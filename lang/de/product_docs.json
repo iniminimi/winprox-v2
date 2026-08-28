@@ -53,7 +53,7 @@
             },
             {
                 "title": "Arbeitsmenü",
-                "body": "Unter Einstellungen (Administrator): Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen pro Organisation in der Seitenleiste ein/aus. Aus = kein Backoffice-Zugriff; QR auf Units, die es bereits hatten, bleibt aktiv (Grandfather)."
+                "body": "Unter Einstellungen (Administrator): Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen pro Organisation in der Seitenleiste ein/aus. Aus = kein Backoffice-Zugriff; QR auf Units, die es bereits hatten, bleibt aktiv (Grandfather). Eine Startvorlage auf dem Dashboard setzt passende Arbeitsmenü-Einträge automatisch (z. B. Immobilienverwaltung ohne Reservierungen und Unit-Messungen)."
             },
             {
                 "title": "Branding & QR",
@@ -90,7 +90,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Standorte, Units, Kategorien, Teams und Ausführer (intern oder extern). Unter Standorte: Kategorien, Standorte und Units (mandantenweit). Bulk/CSV-Import, Dashboard, Dokumente und Mitteilungen im Portal. Unit-Checks pro Kategorie und Unit aktivieren; Checklisten unter Menschen → Teams — geteilt oder pro Team. Neue Organisationen können auf dem Dashboard eine Startvorlage wählen (Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement) mit Beispiel-Teams, Kategorien, einem Standort und Units — Namen in allen Sprachen. Alles lässt sich später umbenennen; sobald Meldungen existieren, können Units nur noch deaktiviert werden."
+                "body": "Standorte, Units, Kategorien, Teams und Ausführer (intern oder extern). Unter Standorte: Kategorien, Standorte und Units (mandantenweit). Bulk/CSV-Import, Dashboard, Dokumente und Mitteilungen im Portal. Unit-Checks pro Kategorie und Unit aktivieren; Checklisten unter Menschen → Teams — geteilt oder pro Team. Neue Organisationen können auf dem Dashboard eine Startvorlage wählen (Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement) mit Beispiel-Teams, Kategorien, einem Standort, Units und passenden Arbeitsmenü-Defaults — Namen in allen Sprachen. Alles lässt sich später umbenennen; sobald Meldungen existieren, können Units nur noch deaktiviert werden."
             },
             {
                 "title": "Tasks",

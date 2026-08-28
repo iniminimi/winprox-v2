@@ -112,6 +112,36 @@ it('maakt vastgoed- en fleet-starttemplates', function (string $type, string $ex
     ['fleet', 'Voertuig 001'],
 ]);
 
+it('zet werkmenu-defaults volgens het gekozen starttemplate', function (
+    string $type,
+    bool $calendar,
+    bool $reservations,
+    bool $inspectionRounds,
+    bool $unitMeasurements,
+) {
+    [$tenant, $admin] = setupStarterPackAdmin('nl');
+
+    app(ApplyTenantStarterPackAction::class)->handle(
+        $tenant,
+        ApplyTenantStarterPackData::fromValidated(['starterPackType' => $type], 'nl'),
+        $admin,
+    );
+
+    $tenant->refresh();
+
+    expect($tenant->workMenuCalendarEnabled())->toBe($calendar)
+        ->and($tenant->workMenuReservationsEnabled())->toBe($reservations)
+        ->and($tenant->workMenuInspectionRoundsEnabled())->toBe($inspectionRounds)
+        ->and($tenant->workMenuUnitMeasurementsEnabled())->toBe($unitMeasurements);
+
+    expect(AuditLog::query()->where('action', 'tenant.work_menu_updated')->exists())->toBeTrue();
+})->with([
+    'vastgoedbeheer' => ['realestate', true, false, true, false],
+    'industrie alles aan' => ['industry', true, true, true, true],
+    'gemeente alles aan' => ['municipality', true, true, true, true],
+    'hotel alles aan' => ['hotel', true, true, true, true],
+]);
+
 it('weigert een starttemplate wanneer de werkruimte niet leeg is', function () {
     [$tenant, $admin] = setupStarterPackAdmin();
     InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
