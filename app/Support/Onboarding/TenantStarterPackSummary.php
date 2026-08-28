@@ -18,6 +18,7 @@ final readonly class TenantStarterPackSummary
      * @param  list<string>  $teamNames
      * @param  list<string>  $categoryNames
      * @param  list<string>  $unitNames
+     * @param  list<array{label: string, enabled: bool}>  $workMenu
      */
     public function __construct(
         public TenantStarterPackType $type,
@@ -25,6 +26,7 @@ final readonly class TenantStarterPackSummary
         public array $categoryNames,
         public string $locationName,
         public array $unitNames,
+        public array $workMenu,
         public ?Carbon $appliedAt,
     ) {}
 
@@ -88,6 +90,7 @@ final readonly class TenantStarterPackSummary
             categoryNames: $categoryNames,
             locationName: $location?->localizedName() ?? '',
             unitNames: $unitNames,
+            workMenu: TenantStarterPackCatalog::workMenuItemsForTenant($tenant, app()->getLocale()),
             appliedAt: $tenant->starter_pack_applied_at,
         );
     }

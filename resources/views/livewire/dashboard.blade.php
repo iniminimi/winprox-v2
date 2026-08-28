@@ -11,6 +11,14 @@
                         <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_location') }}</strong> — {{ $starterPackSummary->locationName }}</p>
                     @endif
                     <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_units') }}</strong> — {{ implode(', ', $starterPackSummary->unitNames) }}</p>
+                    <p class="wp-text-body">
+                        <strong>{{ __('dashboard.starter_pack.preview_work_menu') }}</strong>
+                        —
+                        @foreach ($starterPackSummary->workMenu as $item)
+                            {{ $item['label'] }}
+                            <span class="wp-muted">({{ $item['enabled'] ? __('dashboard.starter_pack.preview_work_menu_on') : __('dashboard.starter_pack.preview_work_menu_off') }})</span>@if (! $loop->last), @endif
+                        @endforeach
+                    </p>
                 </div>
                 <p class="wp-muted">{{ __('dashboard.starter_pack.rename_note') }} {{ __('dashboard.starter_pack.issues_note') }}</p>
                 <p class="wp-text-body wp-error"><strong>{{ __('dashboard.starter_pack.result_next') }}</strong></p>

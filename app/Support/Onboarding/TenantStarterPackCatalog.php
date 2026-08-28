@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Support\Onboarding;
 
 use App\Enums\TenantStarterPackType;
+use App\Models\Tenant;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\Lang;
 use InvalidArgumentException;
@@ -134,6 +135,40 @@ final class TenantStarterPackCatalog
     }
 
     /**
+     * @param  array{
+     *     calendar: bool,
+     *     reservations: bool,
+     *     inspection_rounds: bool,
+     *     unit_measurements: bool,
+     * }  $flags
+     * @return list<array{label: string, enabled: bool}>
+     */
+    public static function workMenuItems(array $flags, string $locale): array
+    {
+        $locale = LocaleSupport::normalize($locale);
+        $items = [];
+
+        foreach (self::WORK_MENU_LABEL_KEYS as $key => $labelKey) {
+            $items[] = [
+                'label' => Lang::get($labelKey, [], $locale),
+                'enabled' => (bool) ($flags[$key] ?? true),
+            ];
+        }
+
+        return $items;
+    }
+
+    public static function workMenuItemsForTenant(Tenant $tenant, string $locale): array
+    {
+        return self::workMenuItems([
+            'calendar' => $tenant->workMenuCalendarEnabled(),
+            'reservations' => $tenant->workMenuReservationsEnabled(),
+            'inspection_rounds' => $tenant->workMenuInspectionRoundsEnabled(),
+            'unit_measurements' => $tenant->workMenuUnitMeasurementsEnabled(),
+        ], $locale);
+    }
+
+    /**
      * @return array{
      *     teams: list<string>,
      *     categories: list<string>,
@@ -162,21 +197,12 @@ final class TenantStarterPackCatalog
             $units[] = self::name(self::unitNameKey($type, (string) $unit['key']), $locale);
         }
 
-        $flags = self::workMenuFlags($type);
-        $workMenu = [];
-        foreach (self::WORK_MENU_LABEL_KEYS as $key => $labelKey) {
-            $workMenu[] = [
-                'label' => Lang::get($labelKey, [], $locale),
-                'enabled' => $flags[$key],
-            ];
-        }
-
         return [
             'teams' => $teams,
             'categories' => $categories,
             'location' => self::name(self::locationNameKey($type), $locale),
             'units' => $units,
-            'work_menu' => $workMenu,
+            'work_menu' => self::workMenuItems(self::workMenuFlags($type), $locale),
         ];
     }
 }
