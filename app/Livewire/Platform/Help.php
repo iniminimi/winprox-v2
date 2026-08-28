@@ -4,8 +4,10 @@ namespace App\Livewire\Platform;
 
 use App\Actions\HelpChat\DeleteHelpChatKbEntryAction;
 use App\Actions\HelpChat\DismissHelpChatUnansweredQuestionAction;
+use App\Actions\HelpChat\EnsureHelpChatKbEntryTranslationSlotsAction;
 use App\Actions\HelpChat\SaveHelpChatKbEntryAction;
 use App\Models\HelpChatKnowledgeBaseEntry;
+use App\Models\HelpChatKnowledgeBaseEntryTranslation;
 use App\Models\HelpChatUnansweredQuestion;
 use App\Models\Tenant;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -38,6 +40,9 @@ class Help extends Component
 
     public ?string $answeringQuestionText = null;
 
+    /** @var list<HelpChatKnowledgeBaseEntryTranslation> */
+    public array $kbTranslations = [];
+
     public function mount(): void
     {
         $this->authorize('viewAny', HelpChatKnowledgeBaseEntry::class);
@@ -68,15 +73,22 @@ class Help extends Component
         $this->showKbModal = true;
     }
 
-    public function openEditKb(int $id): void
+    public function openEditKb(int $id, EnsureHelpChatKbEntryTranslationSlotsAction $ensureSlots): void
     {
-        $entry = HelpChatKnowledgeBaseEntry::query()->findOrFail($id);
+        $entry = HelpChatKnowledgeBaseEntry::query()->with('translations')->findOrFail($id);
+        $this->authorize('update', $entry);
+        $ensureSlots->handle($entry);
+        $entry->load('translations');
+
         $this->editingKbId = $entry->id;
         $this->kbLocale = $entry->original_language;
         $this->kbMatchKey = $entry->match_key;
         $this->kbPatterns = implode("\n", $entry->patterns ?? []);
         $this->kbAnswer = $entry->answer;
         $this->kbIsActive = $entry->is_active;
+        $this->kbTranslations = $entry->translations->sortBy('locale')->values()->all();
+        $this->answeringQuestionId = null;
+        $this->answeringQuestionText = null;
         $this->resetErrorBag();
         $this->showKbModal = true;
     }
@@ -163,6 +175,7 @@ class Help extends Component
         $this->kbIsActive = true;
         $this->answeringQuestionId = null;
         $this->answeringQuestionText = null;
+        $this->kbTranslations = [];
         $this->resetErrorBag();
     }
 

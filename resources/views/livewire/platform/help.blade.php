@@ -134,6 +134,55 @@
                     {{ __('platform.help.kb_active') }}
                 </label>
 
+                @if ($editingKbId)
+                    <div class="wp-stack-tight">
+                        <h3 class="wp-section-title">{{ __('platform.help.kb_translations_title') }}</h3>
+                        <p class="wp-muted wp-text-sm">{{ __('platform.help.kb_translations_hint') }}</p>
+
+                        @if ($kbTranslations === [])
+                            <p class="wp-muted wp-text-sm">{{ __('platform.help.kb_translations_empty') }}</p>
+                        @else
+                            <ul class="wp-list-plain wp-stack-tight">
+                                @foreach ($kbTranslations as $translation)
+                                    @php
+                                        $statusValue = $translation->status->value;
+                                        $statusLabel = match ($statusValue) {
+                                            'completed' => __('platform.help.kb_translation_status_completed'),
+                                            'failed' => __('platform.help.kb_translation_status_failed'),
+                                            default => __('platform.help.kb_translation_status_pending'),
+                                        };
+                                        $statusPill = match ($statusValue) {
+                                            'completed' => 'wp-pill wp-pill--done',
+                                            'failed' => 'wp-pill wp-pill--closed',
+                                            default => 'wp-pill wp-pill--new',
+                                        };
+                                    @endphp
+                                    <li class="wp-card wp-card-pad wp-stack-tight" wire:key="kb-translation-{{ $translation->id }}">
+                                        <div class="wp-row">
+                                            <strong>{{ strtoupper($translation->locale) }}</strong>
+                                            <span class="{{ $statusPill }}">{{ $statusLabel }}</span>
+                                        </div>
+                                        @if (filled($translation->patterns))
+                                            <div class="wp-field">
+                                                <p class="wp-label">{{ __('platform.help.kb_patterns') }}</p>
+                                                <p class="wp-text-body wp-text-sm">{!! nl2br(e(implode("\n", $translation->patterns ?? []))) !!}</p>
+                                            </div>
+                                        @endif
+                                        @if (filled($translation->answer))
+                                            <div class="wp-field">
+                                                <p class="wp-label">{{ __('platform.help.kb_answer') }}</p>
+                                                <p class="wp-text-body wp-text-sm">{!! nl2br(e($translation->answer)) !!}</p>
+                                            </div>
+                                        @elseif ($statusValue === 'pending')
+                                            <p class="wp-muted wp-text-sm">{{ __('platform.help.kb_translation_pending_body') }}</p>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+                @endif
+
                 <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
             </form>
         </div>

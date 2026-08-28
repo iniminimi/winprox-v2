@@ -100,7 +100,14 @@
         "answer_question": "Responder pregunta",
         "answer_context": "Pregunta reenviada",
         "kb_translation_import_missing": "Elemento de base de conocimiento no encontrado o inactivo.",
-        "kb_translation_import_patterns_mismatch": "El número de patrones no coincide con el idioma de origen."
+        "kb_translation_import_patterns_mismatch": "El número de patrones no coincide con el idioma de origen.",
+        "kb_translations_title": "Traducciones",
+        "kb_translations_hint": "Solo lectura. Edite el origen arriba; traducciones via Plataforma → Traducciones (Ollama).",
+        "kb_translations_empty": "Aún no hay slots de traducción.",
+        "kb_translation_status_pending": "Pendiente",
+        "kb_translation_status_completed": "Traducido",
+        "kb_translation_status_failed": "Fallido",
+        "kb_translation_pending_body": "Esperando traducción Ollama."
     },
     "email_unsubscribe": {
         "title": "Bajas de correo",

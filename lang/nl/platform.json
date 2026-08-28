@@ -100,7 +100,14 @@
         "answer_question": "Vraag beantwoorden",
         "answer_context": "Doorgestuurde vraag",
         "kb_translation_import_missing": "Kennisbank-item niet gevonden of niet actief.",
-        "kb_translation_import_patterns_mismatch": "Aantal patronen komt niet overeen met de brontaal."
+        "kb_translation_import_patterns_mismatch": "Aantal patronen komt niet overeen met de brontaal.",
+        "kb_translations_title": "Vertalingen",
+        "kb_translations_hint": "Alleen-lezen. Wijzig brontekst hierboven; vertalingen via Platform → Vertalingen (Ollama).",
+        "kb_translations_empty": "Nog geen vertaalslots.",
+        "kb_translation_status_pending": "Pending",
+        "kb_translation_status_completed": "Vertaald",
+        "kb_translation_status_failed": "Mislukt",
+        "kb_translation_pending_body": "Wacht op Ollama-vertaling."
     },
     "email_unsubscribe": {
         "title": "E-mail uitschrijvingen",

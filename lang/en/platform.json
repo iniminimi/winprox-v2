@@ -100,7 +100,14 @@
         "answer_question": "Answer question",
         "answer_context": "Forwarded question",
         "kb_translation_import_missing": "Knowledge base item not found or inactive.",
-        "kb_translation_import_patterns_mismatch": "Pattern count does not match the source language."
+        "kb_translation_import_patterns_mismatch": "Pattern count does not match the source language.",
+        "kb_translations_title": "Translations",
+        "kb_translations_hint": "Read-only. Edit the source above; translations via Platform → Translations (Ollama).",
+        "kb_translations_empty": "No translation slots yet.",
+        "kb_translation_status_pending": "Pending",
+        "kb_translation_status_completed": "Translated",
+        "kb_translation_status_failed": "Failed",
+        "kb_translation_pending_body": "Waiting for Ollama translation."
     },
     "email_unsubscribe": {
         "title": "Email unsubscribes",

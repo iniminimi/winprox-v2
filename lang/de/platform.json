@@ -100,7 +100,14 @@
         "answer_question": "Frage beantworten",
         "answer_context": "Weitergeleitete Frage",
         "kb_translation_import_missing": "Wissensbasis-Eintrag nicht gefunden oder inaktiv.",
-        "kb_translation_import_patterns_mismatch": "Anzahl der Muster stimmt nicht mit der Quellsprache überein."
+        "kb_translation_import_patterns_mismatch": "Anzahl der Muster stimmt nicht mit der Quellsprache überein.",
+        "kb_translations_title": "Übersetzungen",
+        "kb_translations_hint": "Nur Lesen. Quelle oben bearbeiten; Übersetzungen über Plattform → Übersetzungen (Ollama).",
+        "kb_translations_empty": "Noch keine Übersetzungsslots.",
+        "kb_translation_status_pending": "Pending",
+        "kb_translation_status_completed": "Übersetzt",
+        "kb_translation_status_failed": "Fehlgeschlagen",
+        "kb_translation_pending_body": "Wartet auf Ollama-Übersetzung."
     },
     "email_unsubscribe": {
         "title": "E-Mail-Abmeldungen",

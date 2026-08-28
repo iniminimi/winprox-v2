@@ -100,7 +100,14 @@
         "answer_question": "Rispondi alla domanda",
         "answer_context": "Domanda inoltrata",
         "kb_translation_import_missing": "Elemento knowledge base non trovato o inattivo.",
-        "kb_translation_import_patterns_mismatch": "Il numero di pattern non corrisponde alla lingua di origine."
+        "kb_translation_import_patterns_mismatch": "Il numero di pattern non corrisponde alla lingua di origine.",
+        "kb_translations_title": "Traduzioni",
+        "kb_translations_hint": "Sola lettura. Modifichi l'origine sopra; traduzioni via Piattaforma → Traduzioni (Ollama).",
+        "kb_translations_empty": "Nessuno slot di traduzione ancora.",
+        "kb_translation_status_pending": "In sospeso",
+        "kb_translation_status_completed": "Tradotto",
+        "kb_translation_status_failed": "Non riuscito",
+        "kb_translation_pending_body": "In attesa della traduzione Ollama."
     },
     "email_unsubscribe": {
         "title": "Disiscrizioni email",

@@ -6,14 +6,45 @@ use App\Actions\Communication\ExportPendingHelpChatKbEntryTranslationsAction;
 use App\Actions\Communication\ImportHelpChatKbEntryTranslationsAction;
 use App\Actions\HelpChat\SaveHelpChatKbEntryAction;
 use App\Enums\HelpChatKnowledgeBaseEntryTranslationStatus;
-use App\Models\HelpChatKnowledgeBaseEntry;
+use App\Livewire\Platform\Help as PlatformHelp;
 use App\Models\HelpChatKnowledgeBaseEntryTranslation;
-use App\Support\HelpChat\HelpChatFaqMatcher;
+use App\Models\User;
 use App\Services\Translation\TranslationProviderInterface;
+use App\Support\HelpChat\HelpChatFaqMatcher;
+use Livewire\Livewire;
 use Tests\Support\FakeTranslationProvider;
 
 beforeEach(function (): void {
     app()->instance(TranslationProviderInterface::class, new FakeTranslationProvider);
+});
+
+it('toont vertalingen in de bewerk-modal', function (): void {
+    $super = User::factory()->superuser()->create();
+
+    $entry = app(SaveHelpChatKbEntryAction::class)->handle(
+        null,
+        'nl',
+        'qzxw_kb_edit_modal',
+        ['qzxwplkmn kb edit modal'],
+        'Nederlands antwoord.',
+        true,
+    );
+
+    app(ImportHelpChatKbEntryTranslationsAction::class)->handle([
+        [
+            'help_chat_kb_entry_id' => $entry->id,
+            'locale' => 'en',
+            'answer' => 'English answer.',
+            'patterns' => ['qzxwplkmn kb edit modal en'],
+        ],
+    ]);
+
+    Livewire::actingAs($super)
+        ->test(PlatformHelp::class)
+        ->call('openEditKb', $entry->id)
+        ->assertSee('EN')
+        ->assertSee('English answer.')
+        ->assertSee(__('platform.help.kb_translation_status_completed'));
 });
 
 it('maakt pending vertaalrijen aan na opslaan kennisbank-item', function (): void {
