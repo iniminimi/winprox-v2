@@ -85,9 +85,6 @@
             "tenant_logo_none": "Not on the print sheet",
             "tenant_address_label": "Address position on the print sheet",
             "preset_label": "Background",
-            "preset_blue": "Blue",
-            "preset_green": "Green",
-            "preset_multi": "Multi-colour",
             "preset_hint": "Applies to A6, A5 and A4. A custom upload overrides the preset.",
             "background_hint": "Optional: custom background (PNG/JPG, max. 4 MB).",
             "background_uploading": "Saving background…",
@@ -97,8 +94,7 @@
             "preview_label": "Background preview",
             "preview_alt": "Preview of the QR print sheet background",
             "preview_loading": "Updating preview…",
-            "preview_unavailable": "Preview unavailable.",
-            "preset_stock": "Background :name"
+            "preview_unavailable": "Preview unavailable."
         }
     },
     "notifications": {

@@ -85,9 +85,6 @@
             "tenant_logo_none": "Pas sur la feuille",
             "tenant_address_label": "Emplacement de l'adresse sur la feuille",
             "preset_label": "Fond",
-            "preset_blue": "Bleu",
-            "preset_green": "Vert",
-            "preset_multi": "Multicolore",
             "preset_hint": "S’applique à A6, A5 et A4. Un téléversement remplace le préréglage.",
             "background_hint": "Optionnel : fond personnalisé (PNG/JPG, max. 4 Mo).",
             "background_uploading": "Enregistrement du fond…",
@@ -97,8 +94,7 @@
             "preview_label": "Aperçu du fond",
             "preview_alt": "Aperçu du fond de feuille QR",
             "preview_loading": "Mise à jour de l’aperçu…",
-            "preview_unavailable": "Aperçu indisponible.",
-            "preset_stock": "Arrière-plan :name"
+            "preview_unavailable": "Aperçu indisponible."
         }
     },
     "notifications": {

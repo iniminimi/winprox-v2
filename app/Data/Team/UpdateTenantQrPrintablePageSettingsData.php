@@ -27,7 +27,9 @@ readonly class UpdateTenantQrPrintablePageSettingsData
     {
         $presetKey = (string) ($input['preset'] ?? '');
         if (! QrPrintablePageBackgroundPreset::isValidPresetKey($presetKey)) {
-            $presetKey = QrPrintablePageBackgroundPreset::default()->value;
+            $presetKey = QrPrintablePageBackgroundPreset::defaultPresetKey();
+        } else {
+            $presetKey = QrPrintablePageBackgroundPreset::normalizePresetKey($presetKey);
         }
 
         return new self(
@@ -52,7 +54,7 @@ readonly class UpdateTenantQrPrintablePageSettingsData
     {
         $config = [];
 
-        if ($this->presetKey !== QrPrintablePageBackgroundPreset::default()->value) {
+        if ($this->presetKey !== QrPrintablePageBackgroundPreset::defaultPresetKey()) {
             $config[QrPrintablePageBackgroundPreset::LAYOUT_KEY] = $this->presetKey;
         }
 
@@ -66,7 +68,7 @@ readonly class UpdateTenantQrPrintablePageSettingsData
 
     public function isEmpty(?string $backgroundPath = null): bool
     {
-        return $this->presetKey === QrPrintablePageBackgroundPreset::default()->value
+        return $this->presetKey === QrPrintablePageBackgroundPreset::defaultPresetKey()
             && ($backgroundPath === null || $backgroundPath === '')
             && $this->brandingLayout()->usesDefaults();
     }

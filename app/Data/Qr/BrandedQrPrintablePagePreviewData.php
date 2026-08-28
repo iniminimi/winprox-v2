@@ -22,8 +22,8 @@ readonly class BrandedQrPrintablePagePreviewData
         string $tenantAddress,
     ): self {
         $presetKey = QrPrintablePageBackgroundPreset::isValidPresetKey($preset)
-            ? $preset
-            : QrPrintablePageBackgroundPreset::default()->value;
+            ? QrPrintablePageBackgroundPreset::normalizePresetKey($preset)
+            : QrPrintablePageBackgroundPreset::defaultPresetKey();
 
         return new self(
             presetKey: $presetKey,

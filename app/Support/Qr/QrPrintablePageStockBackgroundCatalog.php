@@ -16,6 +16,13 @@ final class QrPrintablePageStockBackgroundCatalog
     /** @var list<array{presetKey: string, basename: string, relativePath: string, absolutePath: string, publicUrl: string, labelName: string}>|null */
     private static ?array $entries = null;
 
+    public static function defaultPresetKey(): string
+    {
+        $entries = self::entries();
+
+        return $entries[0]['presetKey'] ?? self::PRESET_PREFIX.'back_01.jpg';
+    }
+
     /**
      * @return list<string>
      */
@@ -70,7 +77,7 @@ final class QrPrintablePageStockBackgroundCatalog
                 'relativePath' => $relativePath,
                 'absolutePath' => $absolutePath,
                 'publicUrl' => asset($relativePath),
-                'labelName' => self::humanizeBasename($filename),
+                'labelName' => self::displayLabel($filename),
             ];
         }
 
@@ -111,10 +118,13 @@ final class QrPrintablePageStockBackgroundCatalog
         self::$entries = null;
     }
 
-    private static function humanizeBasename(string $filename): string
+    private static function displayLabel(string $filename): string
     {
-        $name = pathinfo($filename, PATHINFO_FILENAME);
+        $stem = pathinfo($filename, PATHINFO_FILENAME);
+        if (preg_match('/(\d+)/', $stem, $matches) === 1) {
+            return str_pad($matches[1], 2, '0', STR_PAD_LEFT);
+        }
 
-        return ucwords(str_replace(['_', '-'], ' ', $name));
+        return $stem;
     }
 }

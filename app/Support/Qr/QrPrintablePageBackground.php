@@ -10,7 +10,7 @@ use RuntimeException;
 
 /**
  * Full-page background for A6/A5/A4 printable QR Word exports.
- * Resolve order: tenant upload → preset from shared Settings row → blue default.
+ * Resolve order: tenant upload → preset from shared Settings row → first stock default.
  */
 final class QrPrintablePageBackground
 {
@@ -34,17 +34,19 @@ final class QrPrintablePageBackground
 
     public static function absolutePathForPresetKey(string $presetKey): string
     {
-        $stockPath = QrPrintablePageStockBackgroundCatalog::absolutePathForPresetKey($presetKey);
+        $normalized = QrPrintablePageBackgroundPreset::normalizePresetKey($presetKey);
+        $stockPath = QrPrintablePageStockBackgroundCatalog::absolutePathForPresetKey($normalized);
         if ($stockPath !== null) {
             return $stockPath;
         }
 
-        return QrPrintablePageBackgroundPreset::tryFrom($presetKey)?->absolutePath()
-            ?? QrPrintablePageBackgroundPreset::default()->absolutePath();
+        return QrPrintablePageStockBackgroundCatalog::absolutePathForPresetKey(
+            QrPrintablePageBackgroundPreset::defaultPresetKey(),
+        ) ?? throw new RuntimeException('Printable QR page stock background catalog is empty.');
     }
 
     public static function defaultAbsolutePath(): string
     {
-        return QrPrintablePageBackgroundPreset::default()->absolutePath();
+        return self::absolutePathForPresetKey(QrPrintablePageBackgroundPreset::defaultPresetKey());
     }
 }

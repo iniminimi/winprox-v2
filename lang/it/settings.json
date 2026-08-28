@@ -85,9 +85,6 @@
             "tenant_logo_none": "Non sul foglio",
             "tenant_address_label": "Posizione dell'indirizzo sul foglio",
             "preset_label": "Sfondo",
-            "preset_blue": "Blu",
-            "preset_green": "Verde",
-            "preset_multi": "Multicolore",
             "preset_hint": "Vale per A6, A5 e A4. Un caricamento personalizzato sostituisce il preset.",
             "background_hint": "Opzionale: sfondo personalizzato (PNG/JPG, max. 4 MB).",
             "background_uploading": "Salvataggio sfondo…",
@@ -97,8 +94,7 @@
             "preview_label": "Anteprima sfondo",
             "preview_alt": "Anteprima dello sfondo del foglio QR",
             "preview_loading": "Aggiornamento anteprima…",
-            "preview_unavailable": "Anteprima non disponibile.",
-            "preset_stock": "Sfondo :name"
+            "preview_unavailable": "Anteprima non disponibile."
         }
     },
     "notifications": {

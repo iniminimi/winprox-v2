@@ -85,9 +85,6 @@
             "tenant_logo_none": "Nicht auf dem Druckblatt",
             "tenant_address_label": "Adressposition auf dem Druckblatt",
             "preset_label": "Hintergrund",
-            "preset_blue": "Blau",
-            "preset_green": "Grün",
-            "preset_multi": "Mehrfarbig",
             "preset_hint": "Gilt für A6, A5 und A4. Ein eigener Upload überschreibt die Vorgabe.",
             "background_hint": "Optional: eigener Hintergrund (PNG/JPG, max. 4 MB).",
             "background_uploading": "Hintergrund wird gespeichert…",
@@ -97,8 +94,7 @@
             "preview_label": "Hintergrundvorschau",
             "preview_alt": "Vorschau des QR-Druckbogen-Hintergrunds",
             "preview_loading": "Vorschau wird aktualisiert…",
-            "preview_unavailable": "Vorschau nicht verfügbar.",
-            "preset_stock": "Hintergrund :name"
+            "preview_unavailable": "Vorschau nicht verfügbar."
         }
     },
     "notifications": {

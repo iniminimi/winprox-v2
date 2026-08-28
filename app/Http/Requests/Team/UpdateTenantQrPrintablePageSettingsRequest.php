@@ -43,10 +43,6 @@ class UpdateTenantQrPrintablePageSettingsRequest extends FormRequest
     public static function allowedPresetKeys(): array
     {
         return array_merge(
-            array_map(
-                static fn (QrPrintablePageBackgroundPreset $preset): string => $preset->value,
-                QrPrintablePageBackgroundPreset::cases(),
-            ),
             QrPrintablePageStockBackgroundCatalog::presetKeys(),
         );
     }

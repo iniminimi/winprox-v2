@@ -85,9 +85,6 @@
             "tenant_logo_none": "Niet op het afdrukblad",
             "tenant_address_label": "Adres locatie op het afdrukblad",
             "preset_label": "Achtergrond",
-            "preset_blue": "Blauw",
-            "preset_green": "Groen",
-            "preset_multi": "Multi-kleur",
             "preset_hint": "Geldt voor A6, A5 en A4. Een eigen upload overschrijft de preset.",
             "background_hint": "Optioneel: eigen achtergrond (PNG/JPG, max. 4 MB).",
             "background_uploading": "Achtergrond wordt opgeslagen…",
@@ -97,8 +94,7 @@
             "preview_label": "Voorbeeld achtergrond",
             "preview_alt": "Voorbeeld van het QR-afdrukblad",
             "preview_loading": "Voorbeeld wordt bijgewerkt…",
-            "preview_unavailable": "Voorbeeld niet beschikbaar.",
-            "preset_stock": "Achtergrond :name"
+            "preview_unavailable": "Voorbeeld niet beschikbaar."
         }
     },
     "notifications": {

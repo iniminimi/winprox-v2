@@ -6,6 +6,7 @@ use App\Actions\Qr\RenderQrPrintablePagePreviewAction;
 use App\Data\Qr\BrandedQrPrintablePagePreviewData;
 use App\Enums\QrPrintablePageBackgroundPreset;
 use App\Enums\QrStickerTenantLogoPlacement;
+use App\Support\Qr\QrPrintablePageStockBackgroundCatalog;
 use App\Models\Tenant;
 use App\Support\Qr\QrCodePngWriter;
 
@@ -25,7 +26,7 @@ it('renders a printable page preview with logo and address overlays as a data ur
     $dataUrl = app(RenderQrPrintablePagePreviewAction::class)->handle(
         $tenant,
         new BrandedQrPrintablePagePreviewData(
-            presetKey: QrPrintablePageBackgroundPreset::Multi->value,
+            presetKey: QrPrintablePageStockBackgroundCatalog::PRESET_PREFIX.'back_09.jpg',
             tenantLogoPlacement: QrStickerTenantLogoPlacement::BottomRight,
             tenantAddressPlacement: QrStickerTenantLogoPlacement::BottomLeft,
         ),

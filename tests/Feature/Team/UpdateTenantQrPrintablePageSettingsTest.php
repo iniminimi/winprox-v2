@@ -7,6 +7,7 @@ use App\Data\Team\UpdateTenantQrPrintablePageSettingsData;
 use App\Enums\QrPrintablePageBackgroundPreset;
 use App\Models\Tenant;
 use App\Support\Qr\QrPrintablePageBackground;
+use App\Support\Qr\QrPrintablePageStockBackgroundCatalog;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Qr\Word\QrStickerWordExporter;
 use App\Support\Qr\QrCodePngWriter;
@@ -17,32 +18,34 @@ use Illuminate\Support\Facades\Storage;
 it('saves a shared printable page background preset for a6 a5 and a4', function () {
     Storage::fake('public');
 
+    $presetKey = QrPrintablePageStockBackgroundCatalog::PRESET_PREFIX.'back_08.jpg';
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
 
     $updated = app(UpdateTenantQrPrintablePageSettingsAction::class)->handle(
         $tenant,
-        new UpdateTenantQrPrintablePageSettingsData('green'),
+        new UpdateTenantQrPrintablePageSettingsData($presetKey),
         actorUserId: null,
     );
 
     $setting = $updated->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
     expect($setting)->not->toBeNull()
-        ->and($setting->layout_config['background_preset'] ?? null)->toBe('green');
+        ->and($setting->layout_config['background_preset'] ?? null)->toBe($presetKey);
 
     foreach ([QrStickerSheetTemplate::A6Print, QrStickerSheetTemplate::A5Print, QrStickerSheetTemplate::A4Print] as $template) {
         $path = QrPrintablePageBackground::absolutePathForTemplate($template, $setting);
-        expect($path)->toEndWith('QR_printable_green.png');
+        expect($path)->toEndWith('back_08.jpg');
     }
 });
 
 it('lets a custom printable upload override the preset for all paper sizes', function () {
     Storage::fake('public');
 
+    $presetKey = QrPrintablePageStockBackgroundCatalog::PRESET_PREFIX.'back_09.jpg';
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
 
     app(UpdateTenantQrPrintablePageSettingsAction::class)->handle(
         $tenant,
-        new UpdateTenantQrPrintablePageSettingsData('multi'),
+        new UpdateTenantQrPrintablePageSettingsData($presetKey),
         actorUserId: null,
     );
 
@@ -68,20 +71,21 @@ it('lets a custom printable upload override the preset for all paper sizes', fun
     $after = $cleared->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
     expect($after?->background_path)->toBeNull()
         ->and(QrPrintablePageBackground::absolutePathForTemplate(QrStickerSheetTemplate::A6Print, $after))
-        ->toEndWith('QR_printable_multi_color.png');
+        ->toEndWith('back_09.jpg');
 });
 
-it('exports a6 printable docx using the shared green preset', function () {
+it('exports a6 printable docx using a shared stock preset', function () {
     if (! QrCodePngWriter::canGenerate()) {
         test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
     }
 
     Storage::fake('public');
 
+    $presetKey = QrPrintablePageStockBackgroundCatalog::PRESET_PREFIX.'back_08.jpg';
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     app(UpdateTenantQrPrintablePageSettingsAction::class)->handle(
         $tenant,
-        new UpdateTenantQrPrintablePageSettingsData('green'),
+        new UpdateTenantQrPrintablePageSettingsData($presetKey),
         actorUserId: null,
     );
 
@@ -125,6 +129,24 @@ it('saves a stock printable page background preset from public/images/qr/backgro
     expect($path)->toEndWith(str_replace('stock:', '', $stockKey));
 });
 
+it('maps legacy blue green and multi presets to stock backgrounds 07 through 09', function () {
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+
+    $setting = \App\Models\TenantQrStickerSheetSetting::query()->create([
+        'tenant_id' => $tenant->id,
+        'template' => QrStickerSheetTemplate::printablePageSettings()->value,
+        'layout_config' => ['background_preset' => 'green'],
+    ]);
+
+    expect(QrPrintablePageBackgroundPreset::presetKeyFromSetting($setting))
+        ->toBe(QrPrintablePageStockBackgroundCatalog::PRESET_PREFIX.'back_08.jpg');
+
+    $path = QrPrintablePageBackground::absolutePathForTemplate(QrStickerSheetTemplate::A6Print, $setting);
+    expect($path)->toEndWith('back_08.jpg');
+});
+
 it('saves printable page logo and address placements with the shared preset', function () {
     Storage::fake('public');
 
@@ -137,10 +159,12 @@ it('saves printable page logo and address placements with the shared preset', fu
         'city' => 'Antwerpen',
     ]);
 
+    $presetKey = QrPrintablePageStockBackgroundCatalog::PRESET_PREFIX.'back_09.jpg';
+
     $updated = app(UpdateTenantQrPrintablePageSettingsAction::class)->handle(
         $tenant,
         new UpdateTenantQrPrintablePageSettingsData(
-            'multi',
+            $presetKey,
             \App\Enums\QrStickerTenantLogoPlacement::BottomRight,
             \App\Enums\QrStickerTenantLogoPlacement::BottomLeft,
         ),
@@ -149,14 +173,14 @@ it('saves printable page logo and address placements with the shared preset', fu
 
     $setting = $updated->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
     expect($setting)->not->toBeNull()
-        ->and($setting->layout_config['background_preset'] ?? null)->toBe('multi')
+        ->and($setting->layout_config['background_preset'] ?? null)->toBe($presetKey)
         ->and($setting->layout_config['tenant_logo'] ?? null)->toBeNull()
         ->and($setting->layout_config['tenant_address'] ?? null)->toBeNull();
 
     $custom = app(UpdateTenantQrPrintablePageSettingsAction::class)->handle(
         $tenant,
         new UpdateTenantQrPrintablePageSettingsData(
-            'blue',
+            QrPrintablePageBackgroundPreset::defaultPresetKey(),
             \App\Enums\QrStickerTenantLogoPlacement::TopLeft,
             \App\Enums\QrStickerTenantLogoPlacement::None,
         ),

@@ -85,9 +85,6 @@
             "tenant_logo_none": "No en la hoja",
             "tenant_address_label": "Posición de la dirección en la hoja",
             "preset_label": "Fondo",
-            "preset_blue": "Azul",
-            "preset_green": "Verde",
-            "preset_multi": "Multicolor",
             "preset_hint": "Aplica a A6, A5 y A4. Una subida propia sustituye el preajuste.",
             "background_hint": "Opcional: fondo propio (PNG/JPG, máx. 4 MB).",
             "background_uploading": "Guardando fondo…",
@@ -97,8 +94,7 @@
             "preview_label": "Vista previa del fondo",
             "preview_alt": "Vista previa del fondo de la hoja QR",
             "preview_loading": "Actualizando vista previa…",
-            "preview_unavailable": "Vista previa no disponible.",
-            "preset_stock": "Fondo :name"
+            "preview_unavailable": "Vista previa no disponible."
         }
     },
     "notifications": {
