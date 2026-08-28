@@ -181,6 +181,18 @@
                         @endif
                         <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
                         @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
+                        @if (filled($organisationTenant->portal_background_path))
+                            <div class="wp-cluster">
+                                <button
+                                    type="button"
+                                    class="btn btn--ghost btn--sm"
+                                    wire:click="removeOrganisationPortalBackground"
+                                    wire:confirm="{{ __('settings.org.portal_background_remove_confirm') }}"
+                                >
+                                    {{ __('settings.org.portal_background_remove') }}
+                                </button>
+                            </div>
+                        @endif
                     </div>
                 </div>
 

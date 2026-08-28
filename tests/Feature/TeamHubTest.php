@@ -301,6 +301,21 @@ it('laat een medewerker een portaal-achtergrond uploaden', function () {
     expect($tenant->fresh()->portal_background_path)->not->toBeNull();
 });
 
+it('laat een medewerker een portaal-achtergrond verwijderen', function () {
+    Storage::fake('public');
+    [$tenant] = tenantWithAdmin();
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('portalBackground', UploadedFile::fake()->image('portal-bg.jpg'))
+        ->assertHasNoErrors()
+        ->call('removeOrganisationPortalBackground')
+        ->assertHasNoErrors();
+
+    expect($tenant->fresh()->portal_background_path)->toBeNull();
+});
+
 it('staat avif toe als livewire preview-mime voor portaal-achtergrond', function () {
     expect(config('livewire.temporary_file_upload.preview_mimes'))->toContain('avif');
 });

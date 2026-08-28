@@ -37,7 +37,9 @@
         "theme_preview_issues": "Open issues",
         "theme_preview_issue_label": "Sample issue",
         "theme_preview_issue_title": "Lift out of order",
-        "theme_preview_issue_desc": "Lift 3 is not working"
+        "theme_preview_issue_desc": "Lift 3 is not working",
+        "portal_background_remove": "Remove portal background",
+        "portal_background_remove_confirm": "Remove the portal background? The report portal will no longer use a background image."
     },
     "qr_stickers": {
         "title": "QR print sheet",

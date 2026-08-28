@@ -37,7 +37,9 @@
         "theme_preview_issues": "Segnalazioni aperte",
         "theme_preview_issue_label": "Segnalazione di esempio",
         "theme_preview_issue_title": "Ascensore fuori servizio",
-        "theme_preview_issue_desc": "L'ascensore 3 non funziona"
+        "theme_preview_issue_desc": "L'ascensore 3 non funziona",
+        "portal_background_remove": "Rimuovi sfondo portale",
+        "portal_background_remove_confirm": "Rimuovere lo sfondo del portale? Il portale segnalazioni non userà più un’immagine di sfondo."
     },
     "qr_stickers": {
         "title": "Foglio di stampa QR",

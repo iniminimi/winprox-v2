@@ -37,7 +37,9 @@
         "theme_preview_issues": "Signalements ouverts",
         "theme_preview_issue_label": "Exemple de signalement",
         "theme_preview_issue_title": "Ascenseur en panne",
-        "theme_preview_issue_desc": "L'ascenseur 3 ne fonctionne pas"
+        "theme_preview_issue_desc": "L'ascenseur 3 ne fonctionne pas",
+        "portal_background_remove": "Supprimer l’arrière-plan du portail",
+        "portal_background_remove_confirm": "Supprimer l’arrière-plan du portail ? Le portail de signalement n’utilisera plus d’image de fond."
     },
     "qr_stickers": {
         "title": "Feuille d’impression QR",

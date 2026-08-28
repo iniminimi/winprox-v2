@@ -37,7 +37,9 @@
         "theme_preview_issues": "Incidencias abiertas",
         "theme_preview_issue_label": "Incidencia de ejemplo",
         "theme_preview_issue_title": "Ascensor fuera de servicio",
-        "theme_preview_issue_desc": "El ascensor 3 no funciona"
+        "theme_preview_issue_desc": "El ascensor 3 no funciona",
+        "portal_background_remove": "Eliminar fondo del portal",
+        "portal_background_remove_confirm": "¿Eliminar el fondo del portal? El portal de informes ya no usará imagen de fondo."
     },
     "qr_stickers": {
         "title": "Hoja de impresión QR",

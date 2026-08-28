@@ -37,7 +37,9 @@
         "theme_preview_issues": "Offene Meldungen",
         "theme_preview_issue_label": "Beispielmeldung",
         "theme_preview_issue_title": "Aufzug defekt",
-        "theme_preview_issue_desc": "Aufzug 3 funktioniert nicht"
+        "theme_preview_issue_desc": "Aufzug 3 funktioniert nicht",
+        "portal_background_remove": "Portal-Hintergrund entfernen",
+        "portal_background_remove_confirm": "Portal-Hintergrund entfernen? Das Meldeportal verwendet danach kein Hintergrundbild mehr."
     },
     "qr_stickers": {
         "title": "QR-Druckbogen",

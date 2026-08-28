@@ -12,6 +12,7 @@ use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
 use App\Actions\Team\UpdateTenantWorkMenuAction;
+use App\Actions\Team\RemoveOrganisationPortalBackgroundAction;
 use App\Actions\Team\RemoveTenantQrStickerSheetBackgroundAction;
 use App\Actions\Team\UpdateTenantQrPrintablePageSettingsAction;
 use App\Actions\Team\UpdateTenantQrStickerSheetSettingsAction;
@@ -552,6 +553,27 @@ class Settings extends Component
         )->validate();
 
         $updated = $updateBackground->handle($tenant, $this->portalBackground, (int) auth()->id());
+        $this->reset('portalBackground');
+        $this->fillOrganisationFromTenant($updated);
+
+        $user = auth()->user();
+        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
+            $user->setRelation('tenant', $updated);
+        }
+
+        $this->dispatch('saved');
+    }
+
+    public function removeOrganisationPortalBackground(RemoveOrganisationPortalBackgroundAction $removeBackground): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('updateTenantBranding', $tenant);
+
+        $updated = $removeBackground->handle($tenant, (int) auth()->id());
         $this->reset('portalBackground');
         $this->fillOrganisationFromTenant($updated);
 

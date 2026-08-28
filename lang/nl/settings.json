@@ -37,7 +37,9 @@
         "theme_preview_issues": "Open meldingen",
         "theme_preview_issue_label": "Voorbeeld melding",
         "theme_preview_issue_title": "Lift defect",
-        "theme_preview_issue_desc": "Lift 3 werkt niet"
+        "theme_preview_issue_desc": "Lift 3 werkt niet",
+        "portal_background_remove": "Portaal-achtergrond verwijderen",
+        "portal_background_remove_confirm": "Portaal-achtergrond verwijderen? Het meldportaal gebruikt daarna geen achtergrondafbeelding meer."
     },
     "qr_stickers": {
         "title": "QR-afdrukblad",
