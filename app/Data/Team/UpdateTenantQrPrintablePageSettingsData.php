@@ -11,7 +11,7 @@ use App\Support\Qr\BrandedQrStickerLayoutConfig;
 readonly class UpdateTenantQrPrintablePageSettingsData
 {
     public function __construct(
-        public QrPrintablePageBackgroundPreset $preset,
+        public string $presetKey,
         public QrStickerTenantLogoPlacement $tenantLogoPlacement = QrStickerTenantLogoPlacement::BottomRight,
         public QrStickerTenantLogoPlacement $tenantAddressPlacement = QrStickerTenantLogoPlacement::BottomLeft,
     ) {}
@@ -25,9 +25,13 @@ readonly class UpdateTenantQrPrintablePageSettingsData
      */
     public static function fromValidated(array $input): self
     {
+        $presetKey = (string) ($input['preset'] ?? '');
+        if (! QrPrintablePageBackgroundPreset::isValidPresetKey($presetKey)) {
+            $presetKey = QrPrintablePageBackgroundPreset::default()->value;
+        }
+
         return new self(
-            preset: QrPrintablePageBackgroundPreset::tryFrom((string) ($input['preset'] ?? ''))
-                ?? QrPrintablePageBackgroundPreset::default(),
+            presetKey: $presetKey,
             tenantLogoPlacement: QrStickerTenantLogoPlacement::tryFromString($input['tenantLogo'] ?? null),
             tenantAddressPlacement: QrStickerTenantLogoPlacement::tryFromString($input['tenantAddress'] ?? null),
         );
@@ -48,8 +52,8 @@ readonly class UpdateTenantQrPrintablePageSettingsData
     {
         $config = [];
 
-        if ($this->preset !== QrPrintablePageBackgroundPreset::default()) {
-            $config[QrPrintablePageBackgroundPreset::LAYOUT_KEY] = $this->preset->value;
+        if ($this->presetKey !== QrPrintablePageBackgroundPreset::default()->value) {
+            $config[QrPrintablePageBackgroundPreset::LAYOUT_KEY] = $this->presetKey;
         }
 
         $branding = $this->brandingLayout();
@@ -62,7 +66,7 @@ readonly class UpdateTenantQrPrintablePageSettingsData
 
     public function isEmpty(?string $backgroundPath = null): bool
     {
-        return $this->preset === QrPrintablePageBackgroundPreset::default()
+        return $this->presetKey === QrPrintablePageBackgroundPreset::default()->value
             && ($backgroundPath === null || $backgroundPath === '')
             && $this->brandingLayout()->usesDefaults();
     }

@@ -97,7 +97,8 @@
             "preview_label": "Anteprima sfondo",
             "preview_alt": "Anteprima dello sfondo del foglio QR",
             "preview_loading": "Aggiornamento anteprima…",
-            "preview_unavailable": "Anteprima non disponibile."
+            "preview_unavailable": "Anteprima non disponibile.",
+            "preset_stock": "Sfondo :name"
         }
     },
     "notifications": {

@@ -27,7 +27,13 @@
                             wire:model.live="qrPrintableBackgroundPreset"
                         >
                             @foreach ($qrPrintableBackgroundPresets as $preset)
-                                <option value="{{ $preset->value }}">{{ __('settings.qr_stickers.printable_page.preset_'.$preset->value) }}</option>
+                                <option value="{{ $preset['value'] }}">
+                                    @if (! empty($preset['labelParams']))
+                                        {{ __($preset['labelKey'], $preset['labelParams']) }}
+                                    @else
+                                        {{ __($preset['labelKey']) }}
+                                    @endif
+                                </option>
                             @endforeach
                         </select>
                         @error('preset') <p class="wp-error">{{ $message }}</p> @enderror

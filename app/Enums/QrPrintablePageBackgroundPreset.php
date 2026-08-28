@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Enums;
 
 use App\Models\TenantQrStickerSheetSetting;
+use App\Support\Qr\QrPrintablePageStockBackgroundCatalog;
 
 enum QrPrintablePageBackgroundPreset: string
 {
@@ -75,15 +76,54 @@ enum QrPrintablePageBackgroundPreset: string
         return self::cases();
     }
 
-    public static function fromSetting(?TenantQrStickerSheetSetting $setting): self
+    /**
+     * @return list<array{value: string, labelKey: string, labelParams?: array<string, string>}>
+     */
+    public static function uiChoices(): array
+    {
+        $choices = [];
+
+        foreach (self::cases() as $preset) {
+            $choices[] = [
+                'value' => $preset->value,
+                'labelKey' => 'settings.qr_stickers.printable_page.preset_'.$preset->value,
+            ];
+        }
+
+        foreach (QrPrintablePageStockBackgroundCatalog::entries() as $entry) {
+            $choices[] = [
+                'value' => $entry['presetKey'],
+                'labelKey' => 'settings.qr_stickers.printable_page.preset_stock',
+                'labelParams' => ['name' => $entry['labelName']],
+            ];
+        }
+
+        return $choices;
+    }
+
+    public static function isValidPresetKey(string $presetKey): bool
+    {
+        return self::tryFrom($presetKey) !== null
+            || QrPrintablePageStockBackgroundCatalog::findByPresetKey($presetKey) !== null;
+    }
+
+    public static function presetKeyFromSetting(?TenantQrStickerSheetSetting $setting): string
     {
         $config = $setting?->layout_config;
         if (! is_array($config)) {
-            return self::default();
+            return self::default()->value;
         }
 
         $value = $config[self::LAYOUT_KEY] ?? null;
+        if (! is_string($value) || $value === '') {
+            return self::default()->value;
+        }
 
-        return self::tryFrom(is_string($value) ? $value : '') ?? self::default();
+        return self::isValidPresetKey($value) ? $value : self::default()->value;
+    }
+
+    public static function fromSetting(?TenantQrStickerSheetSetting $setting): self
+    {
+        return self::tryFrom(self::presetKeyFromSetting($setting)) ?? self::default();
     }
 }

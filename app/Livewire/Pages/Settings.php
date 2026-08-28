@@ -666,7 +666,7 @@ class Settings extends Component
                 : null,
             'qrStickerTenantLogoChoices' => QrStickerTenantLogoPlacement::choices(),
             'qrStickerPreviewDataUrl' => $this->resolveQrStickerPreviewDataUrl(),
-            'qrPrintableBackgroundPresets' => QrPrintablePageBackgroundPreset::choices(),
+            'qrPrintableBackgroundPresets' => QrPrintablePageBackgroundPreset::uiChoices(),
             'qrPrintableBackgroundPreviewUrl' => $this->resolveQrPrintablePreviewDataUrl(),
         ]);
     }
@@ -748,7 +748,7 @@ class Settings extends Component
 
         $printableSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
         $printableLayout = BrandedQrStickerLayoutConfig::fromSetting($printableSetting);
-        $this->qrPrintableBackgroundPreset = QrPrintablePageBackgroundPreset::fromSetting($printableSetting)->value;
+        $this->qrPrintableBackgroundPreset = QrPrintablePageBackgroundPreset::presetKeyFromSetting($printableSetting);
         $this->qrPrintableTenantLogo = $printableLayout->tenantLogoPlacement()->value;
         $this->qrPrintableTenantAddress = $printableLayout->tenantAddressPlacement()->value;
     }

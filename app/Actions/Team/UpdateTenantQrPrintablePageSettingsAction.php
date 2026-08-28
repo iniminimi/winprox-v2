@@ -81,7 +81,7 @@ class UpdateTenantQrPrintablePageSettingsAction
                 'template' => $template->value,
                 'background_path' => $setting->background_path,
                 'layout_config' => $setting->layout_config,
-                QrPrintablePageBackgroundPreset::LAYOUT_KEY => $data->preset->value,
+                QrPrintablePageBackgroundPreset::LAYOUT_KEY => $data->presetKey,
             ],
         );
 

@@ -97,7 +97,8 @@
             "preview_label": "Aperçu du fond",
             "preview_alt": "Aperçu du fond de feuille QR",
             "preview_loading": "Mise à jour de l’aperçu…",
-            "preview_unavailable": "Aperçu indisponible."
+            "preview_unavailable": "Aperçu indisponible.",
+            "preset_stock": "Arrière-plan :name"
         }
     },
     "notifications": {

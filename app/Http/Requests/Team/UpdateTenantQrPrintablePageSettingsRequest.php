@@ -6,6 +6,7 @@ namespace App\Http\Requests\Team;
 
 use App\Enums\QrPrintablePageBackgroundPreset;
 use App\Enums\QrStickerTenantLogoPlacement;
+use App\Support\Qr\QrPrintablePageStockBackgroundCatalog;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -22,7 +23,7 @@ class UpdateTenantQrPrintablePageSettingsRequest extends FormRequest
     public static function rulesFor(): array
     {
         return [
-            'preset' => ['required', 'string', Rule::enum(QrPrintablePageBackgroundPreset::class)],
+            'preset' => ['required', 'string', Rule::in(self::allowedPresetKeys())],
             'tenantLogo' => ['required', 'string', Rule::enum(QrStickerTenantLogoPlacement::class)],
             'tenantAddress' => ['required', 'string', Rule::enum(QrStickerTenantLogoPlacement::class)],
         ];
@@ -34,5 +35,19 @@ class UpdateTenantQrPrintablePageSettingsRequest extends FormRequest
     public function rules(): array
     {
         return self::rulesFor();
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function allowedPresetKeys(): array
+    {
+        return array_merge(
+            array_map(
+                static fn (QrPrintablePageBackgroundPreset $preset): string => $preset->value,
+                QrPrintablePageBackgroundPreset::cases(),
+            ),
+            QrPrintablePageStockBackgroundCatalog::presetKeys(),
+        );
     }
 }

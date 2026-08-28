@@ -11,7 +11,7 @@ use App\Support\Qr\BrandedQrStickerLayoutConfig;
 readonly class BrandedQrPrintablePagePreviewData
 {
     public function __construct(
-        public QrPrintablePageBackgroundPreset $preset,
+        public string $presetKey,
         public QrStickerTenantLogoPlacement $tenantLogoPlacement,
         public QrStickerTenantLogoPlacement $tenantAddressPlacement,
     ) {}
@@ -21,9 +21,12 @@ readonly class BrandedQrPrintablePagePreviewData
         string $tenantLogo,
         string $tenantAddress,
     ): self {
+        $presetKey = QrPrintablePageBackgroundPreset::isValidPresetKey($preset)
+            ? $preset
+            : QrPrintablePageBackgroundPreset::default()->value;
+
         return new self(
-            preset: QrPrintablePageBackgroundPreset::tryFrom($preset)
-                ?? QrPrintablePageBackgroundPreset::default(),
+            presetKey: $presetKey,
             tenantLogoPlacement: QrStickerTenantLogoPlacement::tryFromString($tenantLogo),
             tenantAddressPlacement: QrStickerTenantLogoPlacement::tryFromString($tenantAddress),
         );
@@ -45,7 +48,7 @@ readonly class BrandedQrPrintablePagePreviewData
     public function layoutConfigForPreview(): array
     {
         return array_merge(
-            [QrPrintablePageBackgroundPreset::LAYOUT_KEY => $this->preset->value],
+            [QrPrintablePageBackgroundPreset::LAYOUT_KEY => $this->presetKey],
             $this->brandingLayout()->toArray(),
         );
     }

@@ -27,7 +27,20 @@ final class QrPrintablePageBackground
             return $tenantPath;
         }
 
-        return QrPrintablePageBackgroundPreset::fromSetting($sheetSettings)->absolutePath();
+        return self::absolutePathForPresetKey(
+            QrPrintablePageBackgroundPreset::presetKeyFromSetting($sheetSettings),
+        );
+    }
+
+    public static function absolutePathForPresetKey(string $presetKey): string
+    {
+        $stockPath = QrPrintablePageStockBackgroundCatalog::absolutePathForPresetKey($presetKey);
+        if ($stockPath !== null) {
+            return $stockPath;
+        }
+
+        return QrPrintablePageBackgroundPreset::tryFrom($presetKey)?->absolutePath()
+            ?? QrPrintablePageBackgroundPreset::default()->absolutePath();
     }
 
     public static function defaultAbsolutePath(): string

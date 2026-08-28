@@ -34,9 +34,9 @@ class RemoveTenantQrStickerSheetBackgroundAction
         $this->backgroundStorage->delete($existing->background_path);
 
         if ($template === QrStickerSheetTemplate::PrintablePage) {
-            $preset = \App\Enums\QrPrintablePageBackgroundPreset::fromSetting($existing);
+            $presetKey = \App\Enums\QrPrintablePageBackgroundPreset::presetKeyFromSetting($existing);
             $branding = BrandedQrStickerLayoutConfig::fromSetting($existing);
-            $isDefaultOnly = $preset === \App\Enums\QrPrintablePageBackgroundPreset::default()
+            $isDefaultOnly = $presetKey === \App\Enums\QrPrintablePageBackgroundPreset::default()->value
                 && $branding->usesDefaults();
 
             if ($isDefaultOnly) {

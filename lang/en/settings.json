@@ -97,7 +97,8 @@
             "preview_label": "Background preview",
             "preview_alt": "Preview of the QR print sheet background",
             "preview_loading": "Updating preview…",
-            "preview_unavailable": "Preview unavailable."
+            "preview_unavailable": "Preview unavailable.",
+            "preset_stock": "Background :name"
         }
     },
     "notifications": {

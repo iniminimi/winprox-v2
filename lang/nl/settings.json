@@ -97,7 +97,8 @@
             "preview_label": "Voorbeeld achtergrond",
             "preview_alt": "Voorbeeld van het QR-afdrukblad",
             "preview_loading": "Voorbeeld wordt bijgewerkt…",
-            "preview_unavailable": "Voorbeeld niet beschikbaar."
+            "preview_unavailable": "Voorbeeld niet beschikbaar.",
+            "preset_stock": "Achtergrond :name"
         }
     },
     "notifications": {

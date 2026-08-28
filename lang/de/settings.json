@@ -97,7 +97,8 @@
             "preview_label": "Hintergrundvorschau",
             "preview_alt": "Vorschau des QR-Druckbogen-Hintergrunds",
             "preview_loading": "Vorschau wird aktualisiert…",
-            "preview_unavailable": "Vorschau nicht verfügbar."
+            "preview_unavailable": "Vorschau nicht verfügbar.",
+            "preset_stock": "Hintergrund :name"
         }
     },
     "notifications": {

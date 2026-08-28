@@ -25,7 +25,7 @@ it('renders a printable page preview with logo and address overlays as a data ur
     $dataUrl = app(RenderQrPrintablePagePreviewAction::class)->handle(
         $tenant,
         new BrandedQrPrintablePagePreviewData(
-            preset: QrPrintablePageBackgroundPreset::Multi,
+            presetKey: QrPrintablePageBackgroundPreset::Multi->value,
             tenantLogoPlacement: QrStickerTenantLogoPlacement::BottomRight,
             tenantAddressPlacement: QrStickerTenantLogoPlacement::BottomLeft,
         ),

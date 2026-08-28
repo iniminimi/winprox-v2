@@ -97,7 +97,8 @@
             "preview_label": "Vista previa del fondo",
             "preview_alt": "Vista previa del fondo de la hoja QR",
             "preview_loading": "Actualizando vista previa…",
-            "preview_unavailable": "Vista previa no disponible."
+            "preview_unavailable": "Vista previa no disponible.",
+            "preset_stock": "Fondo :name"
         }
     },
     "notifications": {
