@@ -6,12 +6,17 @@ use App\Models\HelpChatKnowledgeBaseEntry;
 
 class SaveHelpChatKbEntryAction
 {
+    public function __construct(
+        private EnsureHelpChatKbEntryTranslationSlotsAction $ensureSlots,
+        private InvalidateHelpChatKbEntryTranslationsOnSourceChangeAction $invalidateTranslations,
+    ) {}
+
     /**
      * @param  list<string>  $patterns
      */
     public function handle(
         ?int $entryId,
-        string $locale,
+        string $originalLanguage,
         string $matchKey,
         array $patterns,
         string $answer,
@@ -22,7 +27,7 @@ class SaveHelpChatKbEntryAction
         }
 
         $payload = [
-            'locale' => $locale,
+            'original_language' => $originalLanguage,
             'match_key' => $matchKey,
             'patterns' => $patterns,
             'answer' => $answer,
@@ -31,11 +36,22 @@ class SaveHelpChatKbEntryAction
 
         if ($entryId !== null) {
             $entry = HelpChatKnowledgeBaseEntry::query()->findOrFail($entryId);
+            $previousAnswer = (string) $entry->answer;
+            $previousPatterns = array_values($entry->patterns ?? []);
             $entry->update($payload);
+            $entry = $entry->fresh();
 
-            return $entry->fresh();
+            if ($entry instanceof HelpChatKnowledgeBaseEntry) {
+                $this->invalidateTranslations->handle($entry, $previousAnswer, $previousPatterns);
+                $this->ensureSlots->handle($entry);
+            }
+
+            return $entry;
         }
 
-        return HelpChatKnowledgeBaseEntry::create($payload);
+        $entry = HelpChatKnowledgeBaseEntry::create($payload);
+        $this->ensureSlots->handle($entry);
+
+        return $entry;
     }
 }

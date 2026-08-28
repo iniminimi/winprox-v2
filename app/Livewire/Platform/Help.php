@@ -24,7 +24,7 @@ class Help extends Component
 
     public ?int $editingKbId = null;
 
-    public string $kbLocale = '*';
+    public string $kbLocale = 'nl';
 
     public string $kbMatchKey = '';
 
@@ -59,7 +59,7 @@ class Help extends Component
         $this->resetKbForm();
         $this->answeringQuestionId = $question->id;
         $this->answeringQuestionText = $question->question;
-        $this->kbLocale = $question->locale !== '' ? $question->locale : '*';
+        $this->kbLocale = $question->locale !== '' ? $question->locale : 'nl';
         $this->kbMatchKey = Str::limit(Str::slug($question->question, '_'), 120, '');
         if ($this->kbMatchKey === '') {
             $this->kbMatchKey = 'vraag_'.$question->id;
@@ -72,7 +72,7 @@ class Help extends Component
     {
         $entry = HelpChatKnowledgeBaseEntry::query()->findOrFail($id);
         $this->editingKbId = $entry->id;
-        $this->kbLocale = $entry->locale;
+        $this->kbLocale = $entry->original_language;
         $this->kbMatchKey = $entry->match_key;
         $this->kbPatterns = implode("\n", $entry->patterns ?? []);
         $this->kbAnswer = $entry->answer;
@@ -156,7 +156,7 @@ class Help extends Component
     private function resetKbForm(): void
     {
         $this->editingKbId = null;
-        $this->kbLocale = '*';
+        $this->kbLocale = 'nl';
         $this->kbMatchKey = '';
         $this->kbPatterns = '';
         $this->kbAnswer = '';
@@ -175,7 +175,7 @@ class Help extends Component
                 ->limit(100)
                 ->get(),
             'kbEntries' => HelpChatKnowledgeBaseEntry::query()
-                ->orderBy('locale')
+                ->orderBy('original_language')
                 ->orderBy('match_key')
                 ->get(),
             'tenants' => Tenant::query()->orderBy('name')->pluck('name', 'id'),

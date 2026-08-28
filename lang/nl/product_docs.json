@@ -261,6 +261,7 @@
                 "title": "AI (Artificial Intelligence = kunstmatige intelligentie)",
                 "items": [
                     "Na goedkeuring worden operationele teksten (meldingen, taken, units, mededelingen, …) klaargezet voor AI-vertaling.",
+                    "Assistent-kennisbank-antwoorden (superuser) volgen dezelfde Ollama-pipeline als operationele content.",
                     "Draait op een **lokale Ollama-instantie** — geen ChatGPT / externe AI-cloud voor deze functie.",
                     "WinProx voert vertalingen **periodiek** uit (doorgaans dagelijks), **zonder vaste doorlooptijd of garantie**. Organisatiebeheerders kunnen vertalingen **handmatig corrigeren**. Geen aan/uit per organisatie.",
                     "Geen generatieve “AI-assistent” die klantprocessen autonoom beslist — vertaling is ondersteuning, geen besluitvorming."

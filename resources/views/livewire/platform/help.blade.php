@@ -58,7 +58,7 @@
                         <div class="wp-grow">
                             <p class="wp-text-body">
                                 <strong>{{ $entry->match_key }}</strong>
-                                <span class="wp-muted">({{ $entry->locale }})</span>
+                                <span class="wp-muted">({{ $entry->original_language }})</span>
                                 @unless ($entry->is_active)
                                     <span class="wp-pill wp-pill--closed">{{ __('platform.help.inactive') }}</span>
                                 @endunless
@@ -107,7 +107,7 @@
                 <div class="wp-filter-bar">
                     <div class="wp-field">
                         <label class="wp-label" for="kbLocale">{{ __('platform.help.kb_locale') }}</label>
-                        <input id="kbLocale" type="text" class="wp-input" wire:model="kbLocale" placeholder="nl, en, *">
+                        <input id="kbLocale" type="text" class="wp-input" wire:model="kbLocale" placeholder="nl, en, …">
                         @error('kbLocale') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">

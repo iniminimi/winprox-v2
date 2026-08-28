@@ -88,7 +88,7 @@
         "kb_add": "Nieuw kennisbank-item",
         "kb_edit": "Antwoord bewerken",
         "kb_empty": "Nog geen kennisbank-items. Voeg patronen toe die de assistent herkent.",
-        "kb_locale": "Taal (nl, en, of *)",
+        "kb_locale": "Brontaal (nl, en, …)",
         "kb_match_key": "Sleutel",
         "kb_patterns": "Patronen (één per regel)",
         "kb_answer": "Antwoord",
@@ -98,7 +98,9 @@
         "patterns_required": "Voeg minstens één patroon toe.",
         "answer": "Beantwoorden",
         "answer_question": "Vraag beantwoorden",
-        "answer_context": "Doorgestuurde vraag"
+        "answer_context": "Doorgestuurde vraag",
+        "kb_translation_import_missing": "Kennisbank-item niet gevonden of niet actief.",
+        "kb_translation_import_patterns_mismatch": "Aantal patronen komt niet overeen met de brontaal."
     },
     "email_unsubscribe": {
         "title": "E-mail uitschrijvingen",
@@ -362,7 +364,7 @@
     "translation_sync": {
         "nav": "Vertalingen",
         "title": "Vertalingen",
-        "subtitle": "Haal pending vertalingen (meldingen, mededelingen, units, checklists, taken en documenten) van de server op, vertaal lokaal via Ollama en stuur ze terug.",
+        "subtitle": "Haal pending vertalingen (meldingen, mededelingen, units, checklists, taken, documenten en assistent-kennisbank) van de server op, vertaal lokaal via Ollama en stuur ze terug.",
         "intro": "Eén klik: export op de server (goedgekeurde meldingen, actieve mededelingen/units/documenten/checklists en taken met omschrijving), download, Ollama-vertaling met voortgang, upload en directe import. Vertalen gebeurt in reeksen: elke reeks wordt meteen op de server geïmporteerd, dus een onderbroken run verliest het al gedane werk niet. Op de server verwerkt een cron elk uur eventuele importbestanden opnieuw.",
         "setup_hint": "Zet TRANSLATION_SYNC_ENABLED=true en vul TRANSLATION_SYNC_SSH_* in .env (lokaal). Zet QUEUE_CONNECTION=database en draai php artisan queue:work in PowerShell (niet sync via Apache).",
         "sync_queue_warning": "QUEUE_CONNECTION=sync: SSH werkt niet via Apache. Zet database in .env en draai php artisan queue:work in PowerShell.",

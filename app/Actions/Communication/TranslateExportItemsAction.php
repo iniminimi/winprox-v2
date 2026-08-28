@@ -34,11 +34,51 @@ class TranslateExportItemsAction
             $documentId = (int) ($item['document_id'] ?? 0);
             $esgIndicatorId = (int) ($item['esg_indicator_id'] ?? 0);
             $unitCheckListId = (int) ($item['unit_check_list_id'] ?? 0);
+            $helpChatKbEntryId = (int) ($item['help_chat_kb_entry_id'] ?? 0);
             $categoryId = (int) ($item['category_id'] ?? 0);
             $internalTeamId = (int) ($item['internal_team_id'] ?? 0);
             $locale = LocaleSupport::normalize((string) ($item['locale'] ?? ''));
             $sourceText = trim((string) ($item['source_text'] ?? ''));
             $sourceName = trim((string) ($item['source_name'] ?? ''));
+
+            if ($helpChatKbEntryId > 0) {
+                $sourceAnswer = trim((string) ($item['source_answer'] ?? ''));
+
+                if ($locale === '' || $sourceAnswer === '') {
+                    continue;
+                }
+
+                $text = trim($this->translator->translate($sourceAnswer, $locale));
+                if ($text === '') {
+                    $text = $sourceAnswer;
+                }
+
+                $row = [
+                    'locale' => $locale,
+                    'help_chat_kb_entry_id' => $helpChatKbEntryId,
+                    'answer' => $text,
+                ];
+
+                $sourcePatterns = $item['source_patterns'] ?? [];
+                if (is_array($sourcePatterns) && $sourcePatterns !== []) {
+                    $translatedPatterns = [];
+                    foreach ($sourcePatterns as $pattern) {
+                        $translatedPatterns[] = $this->translateShortName((string) $pattern, $locale);
+                    }
+                    $row['patterns'] = $translatedPatterns;
+                }
+
+                $translated[] = $row;
+
+                if ($onProgress !== null) {
+                    $onProgress($index + 1, $total, [
+                        'help_chat_kb_entry_id' => $helpChatKbEntryId,
+                        'locale' => $locale,
+                    ]);
+                }
+
+                continue;
+            }
 
             if ($locationId > 0) {
                 if ($locale === '' || $sourceName === '') {

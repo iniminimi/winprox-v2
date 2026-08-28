@@ -5,6 +5,7 @@ namespace App\Actions\Communication;
 use App\Enums\AnnouncementTranslationStatus;
 use App\Enums\DocumentTranslationStatus;
 use App\Enums\EsgIndicatorTranslationStatus;
+use App\Enums\HelpChatKnowledgeBaseEntryTranslationStatus;
 use App\Enums\IssueTranslationStatus;
 use App\Enums\CategoryTranslationStatus;
 use App\Enums\InternalTeamTranslationStatus;
@@ -17,6 +18,7 @@ use App\Models\CategoryTranslation;
 use App\Models\DocumentTranslation;
 use App\Models\EsgIndicatorTranslation;
 use App\Models\InternalTeamTranslation;
+use App\Models\HelpChatKnowledgeBaseEntryTranslation;
 use App\Models\IssueTranslation;
 use App\Models\LocationTranslation;
 use App\Models\TaskTranslation;
@@ -79,6 +81,11 @@ class CountPendingIssueTranslationsAction
             ->whereHas('list', fn ($query) => $query->where('is_active', true))
             ->count();
 
-        return $issues + $announcements + $locations + $units + $tasks + $documents + $esgIndicators + $categories + $teams + $unitCheckLists;
+        $helpChatKb = HelpChatKnowledgeBaseEntryTranslation::query()
+            ->where('status', HelpChatKnowledgeBaseEntryTranslationStatus::Pending)
+            ->whereHas('entry', fn ($query) => $query->where('is_active', true))
+            ->count();
+
+        return $issues + $announcements + $locations + $units + $tasks + $documents + $esgIndicators + $categories + $teams + $unitCheckLists + $helpChatKb;
     }
 }

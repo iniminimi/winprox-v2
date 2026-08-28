@@ -6,6 +6,7 @@ use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportCategoryTranslationsAction;
 use App\Actions\Communication\ImportDocumentTranslationsAction;
 use App\Actions\Communication\ImportEsgIndicatorTranslationsAction;
+use App\Actions\Communication\ImportHelpChatKbEntryTranslationsAction;
 use App\Actions\Communication\ImportInternalTeamTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Actions\Communication\ImportLocationTranslationsAction;
@@ -31,6 +32,7 @@ class TranslationImportCommand extends Command
         ImportTaskTranslationsAction $importTasks,
         ImportDocumentTranslationsAction $importDocuments,
         ImportCategoryTranslationsAction $importCategories,
+        ImportHelpChatKbEntryTranslationsAction $importHelpChatKb,
         ImportInternalTeamTranslationsAction $importTeams,
         ImportUnitCheckListTranslationsAction $importUnitCheckLists,
     ): int {
@@ -70,13 +72,16 @@ class TranslationImportCommand extends Command
         $categoryItems = [];
         $teamItems = [];
         $unitCheckListItems = [];
+        $helpChatKbItems = [];
 
         foreach ($items as $item) {
             if (! is_array($item)) {
                 continue;
             }
 
-            if (isset($item['unit_check_list_id'])) {
+            if (isset($item['help_chat_kb_entry_id'])) {
+                $helpChatKbItems[] = $item;
+            } elseif (isset($item['unit_check_list_id'])) {
                 $unitCheckListItems[] = $item;
             } elseif (isset($item['document_id'])) {
                 $documentItems[] = $item;
@@ -109,7 +114,8 @@ class TranslationImportCommand extends Command
                 + $importDocuments->handle($documentItems)
                 + $importCategories->handle($categoryItems)
                 + $importTeams->handle($teamItems)
-                + $importUnitCheckLists->handle($unitCheckListItems);
+                + $importUnitCheckLists->handle($unitCheckListItems)
+                + $importHelpChatKb->handle($helpChatKbItems);
         } catch (ValidationException $exception) {
             $this->error($exception->getMessage());
 

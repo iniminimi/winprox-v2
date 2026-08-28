@@ -88,7 +88,7 @@
         "kb_add": "Nuevo elemento de base de conocimiento",
         "kb_edit": "Editar respuesta",
         "kb_empty": "Aún no hay entradas en la base de conocimiento.",
-        "kb_locale": "Locale (nl, en, or *)",
+        "kb_locale": "Idioma de origen (nl, en, …)",
         "kb_match_key": "Clave",
         "kb_patterns": "Patrones (uno por línea)",
         "kb_answer": "Respuesta",
@@ -98,7 +98,9 @@
         "patterns_required": "Añada al menos un patrón.",
         "answer": "Responder",
         "answer_question": "Responder pregunta",
-        "answer_context": "Pregunta reenviada"
+        "answer_context": "Pregunta reenviada",
+        "kb_translation_import_missing": "Elemento de base de conocimiento no encontrado o inactivo.",
+        "kb_translation_import_patterns_mismatch": "El número de patrones no coincide con el idioma de origen."
     },
     "email_unsubscribe": {
         "title": "Bajas de correo",
@@ -362,7 +364,7 @@
     "translation_sync": {
         "nav": "Traducciones",
         "title": "Traducciones",
-        "subtitle": "Obtenga traducciones pendientes (incidencias, anuncios, unidades, listas de control, tareas y documentos) del servidor, tradúzcalas en local vía Ollama y súbalas de nuevo.",
+        "subtitle": "Obtenga traducciones pendientes (incidencias, anuncios, unidades, listas de control, tareas, documentos y base de conocimiento del asistente) del servidor, tradúzcalas en local vía Ollama y súbalas de nuevo.",
         "intro": "Un clic: exportación en el servidor (incidencias aprobadas, anuncios/unidades/documentos/listas de control activos y tareas con descripción), descarga, traducción Ollama con progreso, subida e importación inmediata. La traducción se realiza por lotes: cada lote se importa de inmediato en el servidor, por lo que una ejecución interrumpida no pierde el trabajo ya hecho. En el servidor, un cron reprocesa los archivos de importación cada hora.",
         "setup_hint": "Configure TRANSLATION_SYNC_ENABLED=true y complete TRANSLATION_SYNC_SSH_* en .env (local). Configure QUEUE_CONNECTION=database y ejecute php artisan queue:work en PowerShell (no sync vía Apache).",
         "sync_queue_warning": "QUEUE_CONNECTION=sync: SSH no funciona vía Apache. Use database en .env y ejecute php artisan queue:work en PowerShell.",

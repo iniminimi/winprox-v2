@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
+use App\Actions\Communication\BackfillHelpChatKbEntryTranslationSlotsAction;
 use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
 use App\Actions\Communication\BackfillUnitCheckListTranslationSlotsAction;
 use App\Actions\Communication\ExportPendingCategoryTranslationsAction;
 use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
+use App\Actions\Communication\ExportPendingHelpChatKbEntryTranslationsAction;
 use App\Actions\Communication\ExportPendingInternalTeamTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
 use App\Actions\Communication\ExportPendingLocationTranslationsAction;
@@ -17,6 +19,7 @@ use App\Actions\Communication\ExportPendingUnitTranslationsAction;
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportCategoryTranslationsAction;
 use App\Actions\Communication\ImportDocumentTranslationsAction;
+use App\Actions\Communication\ImportHelpChatKbEntryTranslationsAction;
 use App\Actions\Communication\ImportInternalTeamTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Actions\Communication\ImportLocationTranslationsAction;
@@ -32,6 +35,7 @@ class TranslationController extends Controller
 {
     public function export(
         BackfillCategoryTranslationSlotsAction $backfillCategories,
+        BackfillHelpChatKbEntryTranslationSlotsAction $backfillHelpChatKb,
         BackfillInternalTeamTranslationSlotsAction $backfillTeams,
         BackfillUnitCheckListTranslationSlotsAction $backfillUnitCheckLists,
         ExportPendingIssueTranslationsAction $exportIssues,
@@ -41,6 +45,7 @@ class TranslationController extends Controller
         ExportPendingTaskTranslationsAction $exportTasks,
         ExportPendingDocumentTranslationsAction $exportDocuments,
         ExportPendingCategoryTranslationsAction $exportCategories,
+        ExportPendingHelpChatKbEntryTranslationsAction $exportHelpChatKb,
         ExportPendingInternalTeamTranslationsAction $exportTeams,
         ExportPendingUnitCheckListTranslationsAction $exportUnitCheckLists,
     ): JsonResponse {
@@ -48,6 +53,7 @@ class TranslationController extends Controller
 
         // Ensure legacy categories/teams/checklists receive translation slots before export.
         $backfillCategories->handle();
+        $backfillHelpChatKb->handle();
         $backfillTeams->handle();
         $backfillUnitCheckLists->handle();
 
@@ -59,6 +65,7 @@ class TranslationController extends Controller
             $exportTasks->handle(),
             $exportDocuments->handle(),
             $exportCategories->handle(),
+            $exportHelpChatKb->handle(),
             $exportTeams->handle(),
             $exportUnitCheckLists->handle(),
         );
@@ -79,6 +86,7 @@ class TranslationController extends Controller
         ImportTaskTranslationsAction $importTasks,
         ImportDocumentTranslationsAction $importDocuments,
         ImportCategoryTranslationsAction $importCategories,
+        ImportHelpChatKbEntryTranslationsAction $importHelpChatKb,
         ImportInternalTeamTranslationsAction $importTeams,
         ImportUnitCheckListTranslationsAction $importUnitCheckLists,
     ): JsonResponse {
@@ -91,6 +99,9 @@ class TranslationController extends Controller
             'items.*.name' => ['nullable', 'string'],
             'items.*.items' => ['nullable', 'array'],
             'items.*.items.*' => ['nullable', 'string'],
+            'items.*.patterns' => ['nullable', 'array'],
+            'items.*.patterns.*' => ['nullable', 'string'],
+            'items.*.answer' => ['nullable', 'string'],
         ]);
 
         $items = $validated['items'];
@@ -105,9 +116,12 @@ class TranslationController extends Controller
         $categoryItems = [];
         $teamItems = [];
         $unitCheckListItems = [];
+        $helpChatKbItems = [];
 
         foreach ($items as $item) {
-            if (isset($item['document_id'])) {
+            if (isset($item['help_chat_kb_entry_id'])) {
+                $helpChatKbItems[] = $item;
+            } elseif (isset($item['document_id'])) {
                 $documentItems[] = $item;
             } elseif (isset($item['task_id'])) {
                 $taskItems[] = $item;
@@ -136,7 +150,8 @@ class TranslationController extends Controller
             + $importDocuments->handle($documentItems, $actorUserId)
             + $importCategories->handle($categoryItems, $actorUserId)
             + $importTeams->handle($teamItems, $actorUserId)
-            + $importUnitCheckLists->handle($unitCheckListItems, $actorUserId);
+            + $importUnitCheckLists->handle($unitCheckListItems, $actorUserId)
+            + $importHelpChatKb->handle($helpChatKbItems, $actorUserId);
 
         return $this->success(['imported' => $imported]);
     }

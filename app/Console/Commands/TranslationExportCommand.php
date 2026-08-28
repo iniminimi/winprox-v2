@@ -3,12 +3,14 @@
 namespace App\Console\Commands;
 
 use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
+use App\Actions\Communication\BackfillHelpChatKbEntryTranslationSlotsAction;
 use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
 use App\Actions\Communication\BackfillUnitCheckListTranslationSlotsAction;
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\ExportPendingCategoryTranslationsAction;
 use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
 use App\Actions\Communication\ExportPendingEsgIndicatorTranslationsAction;
+use App\Actions\Communication\ExportPendingHelpChatKbEntryTranslationsAction;
 use App\Actions\Communication\ExportPendingInternalTeamTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
 use App\Actions\Communication\ExportPendingLocationTranslationsAction;
@@ -26,6 +28,7 @@ class TranslationExportCommand extends Command
 
     public function handle(
         BackfillCategoryTranslationSlotsAction $backfillCategories,
+        BackfillHelpChatKbEntryTranslationSlotsAction $backfillHelpChatKb,
         BackfillInternalTeamTranslationSlotsAction $backfillTeams,
         BackfillUnitCheckListTranslationSlotsAction $backfillUnitCheckLists,
         ExportPendingIssueTranslationsAction $exportIssues,
@@ -36,10 +39,12 @@ class TranslationExportCommand extends Command
         ExportPendingTaskTranslationsAction $exportTasks,
         ExportPendingDocumentTranslationsAction $exportDocuments,
         ExportPendingCategoryTranslationsAction $exportCategories,
+        ExportPendingHelpChatKbEntryTranslationsAction $exportHelpChatKb,
         ExportPendingInternalTeamTranslationsAction $exportTeams,
         ExportPendingUnitCheckListTranslationsAction $exportUnitCheckLists,
     ): int {
         $backfillCategories->handle();
+        $backfillHelpChatKb->handle();
         $backfillTeams->handle();
         $backfillUnitCheckLists->handle();
 
@@ -52,6 +57,7 @@ class TranslationExportCommand extends Command
             $exportTasks->handle(),
             $exportDocuments->handle(),
             $exportCategories->handle(),
+            $exportHelpChatKb->handle(),
             $exportTeams->handle(),
             $exportUnitCheckLists->handle(),
         );

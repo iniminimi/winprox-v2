@@ -261,6 +261,7 @@
                 "title": "AI (Artificial Intelligence)",
                 "items": [
                     "After approval, operational texts (issues, tasks, units, announcements, …) are queued for AI translation.",
+                    "Assistant knowledge base answers (superuser) use the same Ollama pipeline as operational content.",
                     "Runs on a **local Ollama instance** — no ChatGPT / external AI cloud for this feature.",
                     "WinProx runs translations **periodically** (typically daily), **with no guaranteed turnaround**. Organisation admins can **correct translations manually**. No per-organisation on/off switch.",
                     "No generative “AI assistant” that autonomously decides customer processes — translation is support, not decision-making."

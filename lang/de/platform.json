@@ -88,7 +88,7 @@
         "kb_add": "Neues Wissensbasis-Element",
         "kb_edit": "Antwort bearbeiten",
         "kb_empty": "Noch keine Wissensbasis-Einträge.",
-        "kb_locale": "Sprache (nl, en oder *)",
+        "kb_locale": "Quellsprache (nl, en, …)",
         "kb_match_key": "Schlüssel",
         "kb_patterns": "Muster (eines pro Zeile)",
         "kb_answer": "Antwort",
@@ -98,7 +98,9 @@
         "patterns_required": "Mindestens ein Muster hinzufügen.",
         "answer": "Beantworten",
         "answer_question": "Frage beantworten",
-        "answer_context": "Weitergeleitete Frage"
+        "answer_context": "Weitergeleitete Frage",
+        "kb_translation_import_missing": "Wissensbasis-Eintrag nicht gefunden oder inaktiv.",
+        "kb_translation_import_patterns_mismatch": "Anzahl der Muster stimmt nicht mit der Quellsprache überein."
     },
     "email_unsubscribe": {
         "title": "E-Mail-Abmeldungen",
@@ -362,7 +364,7 @@
     "translation_sync": {
         "nav": "Übersetzungen",
         "title": "Übersetzungen",
-        "subtitle": "Ausstehende Übersetzungen (Meldungen, Mitteilungen, Units, Checklisten, Aufgaben und Dokumente) vom Server holen, lokal via Ollama übersetzen und zurücksenden.",
+        "subtitle": "Ausstehende Übersetzungen (Meldungen, Mitteilungen, Units, Checklisten, Aufgaben, Dokumente und Assistenten-Wissensbasis) vom Server holen, lokal via Ollama übersetzen und zurücksenden.",
         "intro": "Ein Klick: Export auf dem Server (freigegebene Meldungen, aktive Mitteilungen/Units/Dokumente/Checklisten und Aufgaben mit Beschreibung), Download, Ollama-Übersetzung mit Fortschritt, Upload und sofortiger Import. Übersetzt wird in Blöcken: jeder Block wird sofort auf dem Server importiert, ein abgebrochener Lauf verliert die bereits erledigte Arbeit also nicht. Auf dem Server verarbeitet eine Cron stündlich Importdateien erneut.",
         "setup_hint": "TRANSLATION_SYNC_ENABLED=true setzen und TRANSLATION_SYNC_SSH_* in .env (lokal). QUEUE_CONNECTION=database setzen und php artisan queue:work in PowerShell ausführen (nicht sync via Apache).",
         "sync_queue_warning": "QUEUE_CONNECTION=sync: SSH funktioniert nicht über Apache. database in .env und php artisan queue:work in PowerShell.",

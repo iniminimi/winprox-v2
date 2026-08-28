@@ -88,7 +88,7 @@
         "kb_add": "New knowledge base item",
         "kb_edit": "Edit answer",
         "kb_empty": "No knowledge base entries yet.",
-        "kb_locale": "Locale (nl, en, or *)",
+        "kb_locale": "Source language (nl, en, …)",
         "kb_match_key": "Key",
         "kb_patterns": "Patterns (one per line)",
         "kb_answer": "Answer",
@@ -98,7 +98,9 @@
         "patterns_required": "Add at least one pattern.",
         "answer": "Answer",
         "answer_question": "Answer question",
-        "answer_context": "Forwarded question"
+        "answer_context": "Forwarded question",
+        "kb_translation_import_missing": "Knowledge base item not found or inactive.",
+        "kb_translation_import_patterns_mismatch": "Pattern count does not match the source language."
     },
     "email_unsubscribe": {
         "title": "Email unsubscribes",
@@ -362,7 +364,7 @@
     "translation_sync": {
         "nav": "Translations",
         "title": "Translations",
-        "subtitle": "Pull pending translations (issues, announcements, units, checklists, tasks and documents) from the server, translate locally via Ollama, and push them back.",
+        "subtitle": "Pull pending translations (issues, announcements, units, checklists, tasks, documents and assistant knowledge base) from the server, translate locally via Ollama, and push them back.",
         "intro": "One click: export on the server (approved issues, active announcements/units/documents/checklists and tasks with a description), download, Ollama translation with progress, upload and immediate import. Translating runs in batches: each batch is imported on the server right away, so an interrupted run does not lose the work already done. On the server, a cron re-processes import files every hour.",
         "setup_hint": "Set TRANSLATION_SYNC_ENABLED=true and fill TRANSLATION_SYNC_SSH_* in .env (local). Set QUEUE_CONNECTION=database and run php artisan queue:work in PowerShell (not sync via Apache).",
         "sync_queue_warning": "QUEUE_CONNECTION=sync: SSH does not work via Apache. Use database in .env and run php artisan queue:work in PowerShell.",

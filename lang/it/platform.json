@@ -88,7 +88,7 @@
         "kb_add": "Nuovo elemento knowledge base",
         "kb_edit": "Modifica risposta",
         "kb_empty": "Nessuna voce knowledge base ancora.",
-        "kb_locale": "Locale (nl, en, or *)",
+        "kb_locale": "Lingua di origine (nl, en, …)",
         "kb_match_key": "Chiave",
         "kb_patterns": "Pattern (uno per riga)",
         "kb_answer": "Risposta",
@@ -98,7 +98,9 @@
         "patterns_required": "Aggiunga almeno un pattern.",
         "answer": "Rispondi",
         "answer_question": "Rispondi alla domanda",
-        "answer_context": "Domanda inoltrata"
+        "answer_context": "Domanda inoltrata",
+        "kb_translation_import_missing": "Elemento knowledge base non trovato o inattivo.",
+        "kb_translation_import_patterns_mismatch": "Il numero di pattern non corrisponde alla lingua di origine."
     },
     "email_unsubscribe": {
         "title": "Disiscrizioni email",
@@ -362,7 +364,7 @@
     "translation_sync": {
         "nav": "Traduzioni",
         "title": "Traduzioni",
-        "subtitle": "Scarichi traduzioni in sospeso (segnalazioni, annunci, unità, checklist, attività e documenti) dal server, traduca in locale via Ollama e le ricarichi.",
+        "subtitle": "Scarichi traduzioni in sospeso (segnalazioni, annunci, unità, checklist, attività, documenti e knowledge base assistente) dal server, traduca in locale via Ollama e le ricarichi.",
         "intro": "Un clic: esportazione sul server (segnalazioni approvate, annunci/unità/documenti/checklist attivi e attività con descrizione), download, traduzione Ollama con avanzamento, upload e importazione immediata. La traduzione avviene a blocchi: ogni blocco viene importato subito sul server, quindi un'esecuzione interrotta non perde il lavoro già svolto. Sul server, un cron rielabora i file di importazione ogni ora.",
         "setup_hint": "Imposti TRANSLATION_SYNC_ENABLED=true e compili TRANSLATION_SYNC_SSH_* in .env (locale). Imposti QUEUE_CONNECTION=database e esegua php artisan queue:work in PowerShell (non sync via Apache).",
         "sync_queue_warning": "QUEUE_CONNECTION=sync: SSH non funziona via Apache. Usi database in .env e esegua php artisan queue:work in PowerShell.",

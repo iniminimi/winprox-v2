@@ -869,7 +869,9 @@ battery-PNG-widget (vervangen door tekstcapsule).
   superuser-overzicht), ook wanneer de assistent wél een antwoord gaf.
 - Rate-limit (bv. 30/min). Gekoppeld aan de FAQ (§dashboard-assistent = dezelfde feature).
 - **Superuser-beheer** (buiten dit menu): doorgestuurde vragen (knop **Beantwoorden** →
-  kennisbank-item) + Q&A-kennisbank.
+  kennisbank-item) + Q&A-kennisbank. Kennisbank-antwoorden krijgen **vertaalslots** voor alle
+  overige talen; vertaling via **Platform → Vertalingen (Ollama)** (zelfde pipeline als
+  meldingen/checklists).
 
 ### 8.3 NIET overnemen
 Contractor/owner-FAQ-slugs, hospitality-only help-chat-entries, real-estate `how_it_works`-flow,

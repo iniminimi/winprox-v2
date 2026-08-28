@@ -2,7 +2,10 @@
 
 namespace App\Support\HelpChat;
 
+use App\Enums\HelpChatKnowledgeBaseEntryTranslationStatus;
 use App\Models\HelpChatKnowledgeBaseEntry;
+use App\Models\HelpChatKnowledgeBaseEntryTranslation;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Str;
 
 class HelpChatFaqMatcher
@@ -40,17 +43,31 @@ class HelpChatFaqMatcher
 
     protected function matchKnowledgeBase(string $normalized, string $locale): ?string
     {
-        $entries = HelpChatKnowledgeBaseEntry::query()
+        $locale = LocaleSupport::normalize($locale);
+
+        $sourceEntries = HelpChatKnowledgeBaseEntry::query()
             ->where('is_active', true)
-            ->where(function ($query) use ($locale) {
-                $query->where('locale', $locale)->orWhere('locale', '*');
-            })
+            ->where('original_language', $locale)
             ->get();
 
-        foreach ($entries as $entry) {
-            foreach ($entry->patterns as $pattern) {
+        foreach ($sourceEntries as $entry) {
+            foreach ($entry->patterns ?? [] as $pattern) {
                 if ($this->patternMatches($normalized, (string) $pattern)) {
                     return $entry->answer;
+                }
+            }
+        }
+
+        $translations = HelpChatKnowledgeBaseEntryTranslation::query()
+            ->where('locale', $locale)
+            ->where('status', HelpChatKnowledgeBaseEntryTranslationStatus::Completed)
+            ->whereHas('entry', fn ($query) => $query->where('is_active', true))
+            ->get();
+
+        foreach ($translations as $translation) {
+            foreach ($translation->patterns ?? [] as $pattern) {
+                if ($this->patternMatches($normalized, (string) $pattern)) {
+                    return $translation->answer;
                 }
             }
         }
