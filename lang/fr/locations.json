@@ -178,14 +178,22 @@
         "delete_blocked_tasks": "Cette unité a des tâches et ne peut pas être supprimée.",
         "delete_blocked_esg_measurements": "Cette unité a des mesures ESG et ne peut pas être supprimée.",
         "delete_blocked": "Cette unité ne peut pas être supprimée.",
-        "allow_reservations_hint": "Uniquement si la catégorie est Réservable. Désactivé par défaut ; activez pour autoriser les réservations pour cette unité.",
-        "require_reporter_contact_hint": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalements QR anonymes, pas aux agents de terrain.",
-        "require_reporter_email_verification_hint": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalements QR anonymes, pas aux agents de terrain. Le signalement n’est créé qu’après le clic sur le lien.",
+        "allow_reservations_hint": "Reprise de la catégorie Réservable. Modifier seulement si cette unité doit différer.",
+        "require_reporter_contact_hint": "Reprise de la catégorie. Modifier seulement si cette unité doit différer. Melders QR anonymes uniquement.",
+        "require_reporter_email_verification_hint": "Reprise de la catégorie. Modifier seulement si cette unité doit différer. Melders QR anonymes uniquement.",
         "no_check_list": "Aucune liste",
         "check_list_hint": "Optionnel. Créez des listes sous la page Personnes → Équipes (partagées ou par équipe). Uniquement les listes partagées ou celles des équipes liées à la catégorie de cette unité.",
-        "allow_unit_checks_hint": "Uniquement si la catégorie autorise les contrôles d’unité. Désactivé par défaut ; activez pour afficher la tuile Contrôle d’unité sur le QR de l’unité.",
+        "allow_unit_checks_hint": "Reprise de la catégorie. Modifier seulement si cette unité doit différer.",
         "external_id_hint": "Facultatif. ID de cette unité dans votre logiciel facility externe (GMAO, IWMS, ERP, …). Uniquement avec accès API (Corporate). Requis pour les contrôles unit entrants via l'API.",
-        "allow_unit_measurements_hint": "Pertinent seulement si la catégorie autorise les mesures. Désactivé par défaut ; activez pour autoriser via QR ou API."
+        "allow_unit_measurements_hint": "Reprise de la catégorie. Modifier seulement si cette unité doit différer.",
+        "advanced_portal": {
+            "label": "Options portail avancées",
+            "open": "Options portail par unité",
+            "warning": "Configurez de préférence sur la catégorie. Ne modifiez ici que si cette unité doit différer — sinon une option peut ne pas fonctionner alors qu'elle est active sur la catégorie. La localisation GPS est réservée à la catégorie.",
+            "inherits_from": "Suit la catégorie :category (les cases sont reprises quand vous changez de catégorie).",
+            "overrides_active": "Cette unité diffère des réglages de la catégorie.",
+            "no_category_hint": "Choisissez une catégorie pour hériter des options portail. Sans catégorie, seules les cases unité ci-dessous s'appliquent."
+        }
     },
     "bulk": {
         "title": "Ajouter des unités en masse",

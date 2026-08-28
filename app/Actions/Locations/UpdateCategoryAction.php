@@ -8,6 +8,7 @@ use App\Actions\Issues\RemoveUnitsFromInspectionRoundsAction;
 use App\Models\Category;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Units\UnitCategoryPortalInheritance;
 
 class UpdateCategoryAction
 {
@@ -25,6 +26,7 @@ class UpdateCategoryAction
     {
         $previousName = (string) $category->name;
         $unitChecksWereAllowed = (bool) $category->allow_unit_checks;
+        $previousPortalDefaults = UnitCategoryPortalInheritance::defaultsFromCategory($category);
 
         $category->update([
             'name' => trim($data['name']),
@@ -37,6 +39,12 @@ class UpdateCategoryAction
         ]);
 
         $fresh = $category->fresh();
+
+        app(SyncCategoryPortalFlagsToInheritingUnitsAction::class)->handle(
+            $fresh,
+            $previousPortalDefaults,
+            $actorUserId,
+        );
 
         if ($unitChecksWereAllowed && ! (bool) $fresh->allow_unit_checks) {
             $unitIds = Unit::query()

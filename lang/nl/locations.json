@@ -178,14 +178,22 @@
         "delete_blocked_tasks": "Deze unit heeft taken en kan niet worden verwijderd.",
         "delete_blocked_esg_measurements": "Deze unit heeft ESG-metingen en kan niet worden verwijderd.",
         "delete_blocked": "Deze unit kan niet worden verwijderd.",
-        "allow_reservations_hint": "Alleen relevant als de categorie Reserveerbaar is. Staat standaard uit; zet aan om reserveringen voor deze unit toe te staan.",
-        "require_reporter_contact_hint": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders, niet voor veldwerkers.",
-        "require_reporter_email_verification_hint": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders, niet voor veldwerkers. De melding ontstaat pas na klikken op de e-maillink.",
+        "allow_reservations_hint": "Wordt overgenomen van categorie Reserveerbaar. Alleen aanpassen als deze unit afwijkt.",
+        "require_reporter_contact_hint": "Wordt overgenomen van de categorie. Alleen aanpassen als deze unit afwijkt. Geldt alleen voor anonieme QR-melders.",
+        "require_reporter_email_verification_hint": "Wordt overgenomen van de categorie. Alleen aanpassen als deze unit afwijkt. Geldt alleen voor anonieme QR-melders.",
         "no_check_list": "Geen checklist",
         "check_list_hint": "Optioneel. Maak checklists onder pagina Mensen → Teams (gedeeld of per team). Alleen gedeelde checklists of checklists van teams gekoppeld aan de categorie van deze unit.",
-        "allow_unit_checks_hint": "Alleen relevant als de categorie Unit checks toestaat. Staat standaard uit; zet aan om de Unit check-tegel op de unit-QR te tonen.",
+        "allow_unit_checks_hint": "Wordt overgenomen van de categorie. Alleen aanpassen als deze unit afwijkt.",
         "external_id_hint": "Optioneel. ID van deze unit in jullie externe beheersoftware (IWMS, CMMS, ERP, …). Alleen bij API-toegang (Corporate). Nodig voor inbound unit checks via de API.",
-        "allow_unit_measurements_hint": "Alleen relevant als de categorie unitmetingen toestaat. Staat standaard uit; zet aan om metingen via QR of API toe te laten."
+        "allow_unit_measurements_hint": "Wordt overgenomen van de categorie. Alleen aanpassen als deze unit afwijkt.",
+        "advanced_portal": {
+            "label": "Geavanceerde portaal-opties",
+            "open": "Portaal-opties per unit",
+            "warning": "Stel dit bij voorkeur in op de categorie. Pas hier alleen aan als deze unit afwijkt — anders werkt iets soms niet terwijl het op categorie wel aan staat. GPS-locatie staat alleen op categorie.",
+            "inherits_from": "Volgt categorie :category (vinkjes worden automatisch overgenomen bij wijziging van categorie).",
+            "overrides_active": "Deze unit wijkt af van de categorie-instellingen.",
+            "no_category_hint": "Kies een categorie om portaal-opties over te nemen. Zonder categorie gelden alleen de unit-vinkjes hieronder."
+        }
     },
     "bulk": {
         "title": "Bulk units toevoegen",

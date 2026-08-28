@@ -178,14 +178,22 @@
         "delete_blocked_tasks": "Questa unità ha attività e non può essere eliminata.",
         "delete_blocked_esg_measurements": "Questa unità ha misurazioni ESG e non può essere eliminata.",
         "delete_blocked": "Questa unità non può essere eliminata.",
-        "allow_reservations_hint": "Rilevante solo se la categoria è Prenotabile. Disattivo di default; attiva per consentire prenotazioni su questa unità.",
-        "require_reporter_contact_hint": "Rilevante solo se la categoria lo richiede. Disattivo di default. Solo per segnalanti anonimi via QR, non per operatori sul campo.",
-        "require_reporter_email_verification_hint": "Rilevante solo se la categoria lo richiede. Disattivo di default. Solo per segnalanti anonimi via QR, non per operatori sul campo. La segnalazione nasce solo dopo il clic sul link.",
+        "allow_reservations_hint": "Ereditato da categoria Prenotabile. Modificare solo se questa unità deve differire.",
+        "require_reporter_contact_hint": "Ereditato dalla categoria. Modificare solo se questa unità deve differire. Solo segnalatori QR anonimi.",
+        "require_reporter_email_verification_hint": "Ereditato dalla categoria. Modificare solo se questa unità deve differire. Solo segnalatori QR anonimi.",
         "no_check_list": "Nessuna checklist",
         "check_list_hint": "Opzionale. Crea checklist nella pagina Persone → Team (condivise o per team). Solo checklist condivise o di team collegati alla categoria di questa unità.",
-        "allow_unit_checks_hint": "Rilevante solo se la categoria consente i controlli unità. Disattivo di default; attiva per mostrare il riquadro Controllo unità sul QR dell’unità.",
+        "allow_unit_checks_hint": "Ereditato dalla categoria. Modificare solo se questa unità deve differire.",
         "external_id_hint": "Facoltativo. ID di questa unit nel vostro software facility esterno (IWMS, CMMS, ERP, …). Solo con accesso API (Corporate). Necessario per i unit check in ingresso via API.",
-        "allow_unit_measurements_hint": "Rilevante solo se la categoria consente le misurazioni. Disattivo di default; attiva per QR o API."
+        "allow_unit_measurements_hint": "Ereditato dalla categoria. Modificare solo se questa unità deve differire.",
+        "advanced_portal": {
+            "label": "Opzioni portale avanzate",
+            "open": "Opzioni portale per unità",
+            "warning": "Impostate preferibilmente sulla categoria. Modificate qui solo se questa unità deve differire — altrimenti qualcosa può non funzionare pur essendo attivo sulla categoria. La posizione GPS è solo sulla categoria.",
+            "inherits_from": "Segue la categoria :category (le spunte vengono copiate al cambio categoria).",
+            "overrides_active": "Questa unità differisce dalle impostazioni della categoria.",
+            "no_category_hint": "Scegliete una categoria per ereditare le opzioni portale. Senza categoria valgono solo le spunte unità sotto."
+        }
     },
     "bulk": {
         "title": "Aggiungi unità in blocco",

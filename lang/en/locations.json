@@ -178,14 +178,22 @@
         "delete_blocked_tasks": "This unit has tasks and cannot be deleted.",
         "delete_blocked_esg_measurements": "This unit has ESG measurements and cannot be deleted.",
         "delete_blocked": "This unit cannot be deleted.",
-        "allow_reservations_hint": "Only relevant when the category is Reservable. Off by default; turn on to allow reservations for this unit.",
-        "require_reporter_contact_hint": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not field workers.",
-        "require_reporter_email_verification_hint": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not field workers. The report is created only after they click the email link.",
+        "allow_reservations_hint": "Inherited from category Reservable. Change only if this unit should differ.",
+        "require_reporter_contact_hint": "Inherited from category. Change only if this unit should differ. Anonymous QR reporters only.",
+        "require_reporter_email_verification_hint": "Inherited from category. Change only if this unit should differ. Anonymous QR reporters only.",
         "no_check_list": "No checklist",
         "check_list_hint": "Optional. Create checklists under the People → Teams page (shared or per team). Only shared checklists or checklists of teams linked to this unit's category.",
-        "allow_unit_checks_hint": "Only relevant when the category allows unit checks. Off by default; turn on to show the Unit check tile on the unit QR.",
+        "allow_unit_checks_hint": "Inherited from category. Change only if this unit should differ.",
         "external_id_hint": "Optional. ID of this unit in your external facility software (IWMS, CMMS, ERP, …). Only with API access (Corporate). Required for inbound unit checks via the API.",
-        "allow_unit_measurements_hint": "Only relevant if the category allows unit measurements. Off by default; enable to allow measurements via QR or API."
+        "allow_unit_measurements_hint": "Inherited from category. Change only if this unit should differ.",
+        "advanced_portal": {
+            "label": "Advanced portal options",
+            "open": "Per-unit portal options",
+            "warning": "Prefer setting this on the category. Only change here if this unit should differ — otherwise something may not work while it is enabled on the category. GPS location is category-only.",
+            "inherits_from": "Follows category :category (flags are copied when you change the category).",
+            "overrides_active": "This unit differs from the category settings.",
+            "no_category_hint": "Choose a category to inherit portal options. Without a category, only the unit flags below apply."
+        }
     },
     "bulk": {
         "title": "Add bulk units",

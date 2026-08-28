@@ -371,89 +371,119 @@
                     </x-wp-tooltip>
                 @endif
 
-                <label class="wp-check wp-check--boxed">
-                    <input type="checkbox" wire:model="unitPublicReportsEnabled">
-                    <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
-                </label>
+                <div class="wp-field" x-data="{ open: {{ $unitPortalFlagsMatchCategory ? 'false' : 'true' }} }">
+                    <span class="wp-label">{{ __('locations.units.advanced_portal.label') }}</span>
+                    @if ($unitPortalCategory)
+                        <p class="wp-hint">
+                            {{ __('locations.units.advanced_portal.inherits_from', ['category' => $unitPortalCategory->localizedName()]) }}
+                        </p>
+                        @if (! $unitPortalFlagsMatchCategory)
+                            <p class="wp-hint">{{ __('locations.units.advanced_portal.overrides_active') }}</p>
+                        @endif
+                    @else
+                        <p class="wp-hint">{{ __('locations.units.advanced_portal.no_category_hint') }}</p>
+                    @endif
 
-                @if ($workMenuReservationsEnabled || $unitAllowReservations)
-                    <x-wp-tooltip :text="__('locations.units.allow_reservations_hint')" wrap class="wp-tooltip--block">
-                        <label class="wp-check wp-check--boxed">
-                            <input type="checkbox" wire:model="unitAllowReservations"
-                                @disabled(! $workMenuReservationsEnabled && ! $unitAllowReservations)>
-                            <span>{{ __('locations.units.fields.allow_reservations') }}</span>
-                        </label>
-                    </x-wp-tooltip>
-                    @error('unitAllowReservations') <span class="wp-error">{{ $message }}</span> @enderror
-                @endif
+                    <div class="wp-field-panel" :class="{ 'is-open': open }">
+                        <button
+                            type="button"
+                            class="wp-field-panel__trigger"
+                            @click="open = !open"
+                            :aria-expanded="open"
+                        >
+                            <span>{{ __('locations.units.advanced_portal.open') }}</span>
+                            <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                        </button>
 
-                <x-wp-tooltip :text="__('locations.units.allow_unit_checks_hint')" wrap class="wp-tooltip--block">
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model.live="unitAllowUnitChecks">
-                        <span>{{ __('locations.units.fields.allow_unit_checks') }}</span>
-                    </label>
-                </x-wp-tooltip>
+                        <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
+                            <p class="wp-muted wp-text-sm">{{ __('locations.units.advanced_portal.warning') }}</p>
 
-                @if ($unitAllowUnitChecks)
-                    <x-wp-tooltip :text="__('locations.units.check_list_hint')" wrap class="wp-tooltip--block">
-                        <label class="wp-field">
-                            <span class="wp-label">{{ __('locations.units.fields.check_list') }}</span>
-                            <select class="wp-input" wire:model="unitCheckListId">
-                                <option value="">{{ __('locations.units.no_check_list') }}</option>
-                                @foreach ($unitCheckLists as $checkList)
-                                    <option value="{{ $checkList->id }}">{{ $checkList->localizedName() }}</option>
-                                @endforeach
-                            </select>
-                            @error('unitCheckListId') <span class="wp-error">{{ $message }}</span> @enderror
-                        </label>
-                    </x-wp-tooltip>
-                @endif
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model="unitPublicReportsEnabled">
+                                <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
+                            </label>
 
-                @if ($workMenuUnitMeasurementsEnabled || $unitAllowUnitMeasurements)
-                    <x-wp-tooltip :text="__('locations.units.allow_unit_measurements_hint')" wrap class="wp-tooltip--block">
-                        <label class="wp-check wp-check--boxed">
-                            <input type="checkbox" wire:model.live="unitAllowUnitMeasurements"
-                                @disabled(! $workMenuUnitMeasurementsEnabled && ! $unitAllowUnitMeasurements)>
-                            <span>{{ __('locations.units.fields.allow_unit_measurements') }}</span>
-                        </label>
-                    </x-wp-tooltip>
-                    @error('unitAllowUnitMeasurements') <span class="wp-error">{{ $message }}</span> @enderror
-                @endif
+                            @if ($workMenuReservationsEnabled || $unitAllowReservations)
+                                <x-wp-tooltip :text="__('locations.units.allow_reservations_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model="unitAllowReservations"
+                                            @disabled(! $workMenuReservationsEnabled && ! $unitAllowReservations)>
+                                        <span>{{ __('locations.units.fields.allow_reservations') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                                @error('unitAllowReservations') <span class="wp-error">{{ $message }}</span> @enderror
+                            @endif
 
-                @if ($unitAllowUnitMeasurements)
-                    <div class="wp-field">
-                        <span class="wp-label">{{ __('locations.units.fields.measure_fields') }}</span>
-                        <div class="wp-stack-tight">
-                            @forelse ($availableMeasureFields as $measureField)
-                                <label class="wp-check" wire:key="measure-field-opt-{{ $measureField->id }}">
-                                    <input type="checkbox" value="{{ $measureField->id }}" wire:model="unitMeasureFieldIds">
-                                    <span>
-                                        {{ $measureField->name }}
-                                        <span class="wp-muted wp-text-sm">({{ __('unit_measurements.types.'.$measureField->type->value) }})</span>
-                                    </span>
+                            <x-wp-tooltip :text="__('locations.units.allow_unit_checks_hint')" wrap class="wp-tooltip--block">
+                                <label class="wp-check">
+                                    <input type="checkbox" wire:model.live="unitAllowUnitChecks">
+                                    <span>{{ __('locations.units.fields.allow_unit_checks') }}</span>
                                 </label>
-                            @empty
-                                <p class="wp-muted wp-text-sm">{{ __('unit_measurements.fields.empty') }}</p>
-                            @endforelse
+                            </x-wp-tooltip>
+
+                            @if ($unitAllowUnitChecks)
+                                <x-wp-tooltip :text="__('locations.units.check_list_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-field">
+                                        <span class="wp-label">{{ __('locations.units.fields.check_list') }}</span>
+                                        <select class="wp-input" wire:model="unitCheckListId">
+                                            <option value="">{{ __('locations.units.no_check_list') }}</option>
+                                            @foreach ($unitCheckLists as $checkList)
+                                                <option value="{{ $checkList->id }}">{{ $checkList->localizedName() }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('unitCheckListId') <span class="wp-error">{{ $message }}</span> @enderror
+                                    </label>
+                                </x-wp-tooltip>
+                            @endif
+
+                            @if ($workMenuUnitMeasurementsEnabled || $unitAllowUnitMeasurements)
+                                <x-wp-tooltip :text="__('locations.units.allow_unit_measurements_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model.live="unitAllowUnitMeasurements"
+                                            @disabled(! $workMenuUnitMeasurementsEnabled && ! $unitAllowUnitMeasurements)>
+                                        <span>{{ __('locations.units.fields.allow_unit_measurements') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                                @error('unitAllowUnitMeasurements') <span class="wp-error">{{ $message }}</span> @enderror
+                            @endif
+
+                            @if ($unitAllowUnitMeasurements)
+                                <div class="wp-field">
+                                    <span class="wp-label">{{ __('locations.units.fields.measure_fields') }}</span>
+                                    <div class="wp-stack-tight">
+                                        @forelse ($availableMeasureFields as $measureField)
+                                            <label class="wp-check" wire:key="measure-field-opt-{{ $measureField->id }}">
+                                                <input type="checkbox" value="{{ $measureField->id }}" wire:model="unitMeasureFieldIds">
+                                                <span>
+                                                    {{ $measureField->name }}
+                                                    <span class="wp-muted wp-text-sm">({{ __('unit_measurements.types.'.$measureField->type->value) }})</span>
+                                                </span>
+                                            </label>
+                                        @empty
+                                            <p class="wp-muted wp-text-sm">{{ __('unit_measurements.fields.empty') }}</p>
+                                        @endforelse
+                                    </div>
+                                    @error('unitMeasureFieldIds') <span class="wp-error">{{ $message }}</span> @enderror
+                                    @error('unitMeasureFieldIds.*') <span class="wp-error">{{ $message }}</span> @enderror
+                                </div>
+                            @endif
+
+                            <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
+                                <label class="wp-check">
+                                    <input type="checkbox" wire:model="unitRequireReporterContact">
+                                    <span>{{ __('locations.units.fields.require_reporter_contact') }}</span>
+                                </label>
+                            </x-wp-tooltip>
+
+                            <x-wp-tooltip :text="__('locations.units.require_reporter_email_verification_hint')" wrap class="wp-tooltip--block">
+                                <label class="wp-check">
+                                    <input type="checkbox" wire:model="unitRequireReporterEmailVerification">
+                                    <span>{{ __('locations.units.fields.require_reporter_email_verification') }}</span>
+                                </label>
+                            </x-wp-tooltip>
                         </div>
-                        @error('unitMeasureFieldIds') <span class="wp-error">{{ $message }}</span> @enderror
-                        @error('unitMeasureFieldIds.*') <span class="wp-error">{{ $message }}</span> @enderror
                     </div>
-                @endif
-
-                <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model="unitRequireReporterContact">
-                        <span>{{ __('locations.units.fields.require_reporter_contact') }}</span>
-                    </label>
-                </x-wp-tooltip>
-
-                <x-wp-tooltip :text="__('locations.units.require_reporter_email_verification_hint')" wrap class="wp-tooltip--block">
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model="unitRequireReporterEmailVerification">
-                        <span>{{ __('locations.units.fields.require_reporter_email_verification') }}</span>
-                    </label>
-                </x-wp-tooltip>
+                </div>
 
                 @if ($editingUnitId && $this->editingUnit)
                     @php

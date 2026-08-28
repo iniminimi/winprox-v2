@@ -32,6 +32,7 @@ use App\Models\Tenant;
 use App\Support\EntityDetailNavigation;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
+use App\Support\Units\UnitCategoryPortalInheritance;
 use App\Support\Tenant\TenantWorkMenuAccess;
 use App\Support\Translation\LocaleSupport;
 use App\Models\QrLinkPhoto;
@@ -386,6 +387,34 @@ class Show extends Component
         $this->unitRequireReporterEmailVerification = false;
         $this->resetErrorBag();
         $this->showUnitModal = true;
+    }
+
+    public function updatedUnitCategoryId(): void
+    {
+        $this->applyUnitPortalFlagsFromCategory();
+    }
+
+    private function applyUnitPortalFlagsFromCategory(): void
+    {
+        $category = $this->unitCategoryId !== null
+            ? Category::query()->find($this->unitCategoryId)
+            : null;
+
+        $defaults = UnitCategoryPortalInheritance::defaultsFromCategory($category);
+
+        $this->unitAllowReservations = $defaults['allow_reservations'];
+        $this->unitAllowUnitChecks = $defaults['allow_unit_checks'];
+        $this->unitAllowUnitMeasurements = $defaults['allow_unit_measurements'];
+        $this->unitRequireReporterContact = $defaults['require_reporter_contact'];
+        $this->unitRequireReporterEmailVerification = $defaults['require_reporter_email_verification'];
+
+        if (! $this->unitAllowUnitChecks) {
+            $this->unitCheckListId = null;
+        }
+
+        if (! $this->unitAllowUnitMeasurements) {
+            $this->unitMeasureFieldIds = [];
+        }
     }
 
     public function openEditUnit(int $unitId): void
@@ -1167,6 +1196,22 @@ class Show extends Component
 
         $tenant = Tenant::query()->whereKey($this->location->tenant_id)->first();
 
+        $unitPortalCategory = null;
+        $unitPortalFlagsMatchCategory = true;
+        if ($this->showUnitModal && $this->unitCategoryId !== null) {
+            $unitPortalCategory = Category::query()->find($this->unitCategoryId);
+            if ($unitPortalCategory instanceof Category) {
+                $unitPortalFlagsMatchCategory = UnitCategoryPortalInheritance::livewireFlagsMatchDefaults(
+                    $this->unitAllowReservations,
+                    $this->unitAllowUnitChecks,
+                    $this->unitAllowUnitMeasurements,
+                    $this->unitRequireReporterContact,
+                    $this->unitRequireReporterEmailVerification,
+                    UnitCategoryPortalInheritance::defaultsFromCategory($unitPortalCategory),
+                );
+            }
+        }
+
         return view('livewire.locations.show', [
             'units' => $units,
             'bulkSummaries' => $bulkSummaries,
@@ -1198,6 +1243,8 @@ class Show extends Component
             'canImportUnitsCsv' => $this->locationTenant()?->hasCsvUnitsImport() ?? false,
             'workMenuReservationsEnabled' => $this->locationTenant()?->workMenuReservationsEnabled() ?? true,
             'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,
+            'unitPortalCategory' => $unitPortalCategory,
+            'unitPortalFlagsMatchCategory' => $unitPortalFlagsMatchCategory,
         ]);
     }
 

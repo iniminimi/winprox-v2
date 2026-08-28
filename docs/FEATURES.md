@@ -102,6 +102,7 @@ Locatie-lijst → klik op een locatie → **locatie-/unit-detailscherm**.
 - Lijst van categorieën (naam, bewerken, verwijderen). Geen locaties op dit scherm.
 - Lege staat: onboarding-kaart (één team mag aan alle categorieën) + pulserende **Categorie toevoegen**.
 - Modal: naam, teams, GPS, reserveerbaar, unit checks, contactgegevens verplicht, e-mailbevestiging verplicht.
+- **Portaal-vinkjes** (checks, reserveringen, contact, e-mailbevestiging, metingen) gelden primair op **categorie**. Units **erven** bij categoriekeuze; bij categorie-wijziging krijgen units die nog de vorige categorie-defaults hadden automatisch de nieuwe waarden. Per-unit afwijkingen in uitklap **Geavanceerde portaal-opties** op unit bewerken.
 
 ### 2.1 Locatie-lijst
 - Header: titel "Locaties" + subtitel "Beheer je locaties. Klik op een locatie om units te beheren."
