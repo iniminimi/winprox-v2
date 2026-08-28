@@ -76,7 +76,8 @@ linkt naar zijn lijst):
 - **WinProx-assistent** zweeft rechtsonder (chat):
   - Gebruiker stelt een vraag.
   - Staat het antwoord in de DB → toon antwoord.
-  - Zo niet → **vraag opslaan** in een tabel + **e-mail naar de superuser**.
+  - Zo niet → **vraag opslaan** in onbeantwoorde-vragen (superuser); gebruiker kan **zelf**
+    doorsturen naar helpdesk.
   - Assistent is **gekoppeld aan de FAQ & kennisbank**.
 
 **Device:** desktop-first (laptop).
@@ -862,9 +863,9 @@ battery-PNG-widget (vervangen door tekstcapsule).
 - Volgorde: **tenant-inzicht** (DB-tellingen) → **kennisbank** → **pagina-hulp-patronen**
   (`config/help_chat_page_help.php`, zelfde bron als handleiding) → **FAQ-samenvattingen**
   (`config/help_chat_faq.php`) → **handleiding doorzoeken** (alle `page-help`-hoofdstukken +
-  Aan de slag via `HelpChatPageHelpMatcher::searchManual`) → **geen match** → vraag opslaan
-  (`help_chat_unanswered_questions`) + **e-mail naar helpdesk/superuser**; gebruiker kan een
-  antwoord laten **escaleren** naar de helpdesk.
+  Aan de slag via `HelpChatPageHelpMatcher::searchManual`) → **geen match** → vraag opslaan in
+  `help_chat_unanswered_questions` (superuser-overzicht). **Geen automatische helpdesk-mail** —
+  alleen via knop **Doorsturen naar helpdesk** (`EscalateHelpChatAnswerAction`).
 - Rate-limit (bv. 30/min). Gekoppeld aan de FAQ (§dashboard-assistent = dezelfde feature).
 - **Superuser-beheer** (buiten dit menu): onbeantwoorde vragen + Q&A-kennisbank.
 

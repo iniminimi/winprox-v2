@@ -13,7 +13,9 @@ class HelpChat extends Component
 
     public string $draft = '';
 
-    public ?string $lastQuestion = null;
+    public ?string $escalationQuestion = null;
+
+    public ?string $escalationReply = null;
 
     public int $messageSeq = 0;
 
@@ -26,7 +28,6 @@ class HelpChat extends Component
             return;
         }
 
-        $this->lastQuestion = $text;
         $this->draft = '';
 
         $reply = $process->handle(auth()->user(), $text);
@@ -37,19 +38,30 @@ class HelpChat extends Component
             $this->makeMessage('user', $text),
             $this->makeMessage($reply['role'], $reply['content']),
         );
+
+        if (($reply['escalated'] ?? false) === true) {
+            $this->escalationQuestion = $text;
+            $this->escalationReply = $reply['content'];
+        } else {
+            $this->escalationQuestion = null;
+            $this->escalationReply = null;
+        }
     }
 
     public function escalateToHelpdesk(EscalateHelpChatAnswerAction $escalate): void
     {
-        if ($this->lastQuestion === null) {
+        if ($this->escalationQuestion === null) {
             return;
         }
 
         $escalate->escalate(
             auth()->user(),
-            $this->lastQuestion,
-            collect($this->messages)->firstWhere('role', 'assistant')['content'] ?? null,
+            $this->escalationQuestion,
+            $this->escalationReply,
         );
+
+        $this->escalationQuestion = null;
+        $this->escalationReply = null;
 
         array_unshift(
             $this->messages,

@@ -11,7 +11,6 @@ class ProcessHelpChatMessageAction
 {
     public function __construct(
         private HelpChatFaqMatcher $matcher,
-        private EscalateHelpChatAnswerAction $escalate,
         private SaveHelpChatUnansweredQuestionAction $saveUnanswered,
     ) {}
 
@@ -66,8 +65,6 @@ class ProcessHelpChatMessageAction
         }
 
         $this->saveUnanswered->handle($user, $locale, $trimmed);
-
-        $this->escalate->notifyHelpdesk($user, $trimmed);
 
         return [
             'role' => 'assistant',

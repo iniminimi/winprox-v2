@@ -26,7 +26,7 @@
                   placeholder="{{ __('help.input_placeholder') }}"></textarea>
         <div class="wp-cluster">
             <button type="submit" class="btn btn--primary btn--sm">{{ __('help.send') }}</button>
-            @if ($lastQuestion)
+            @if ($escalationQuestion)
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="escalateToHelpdesk">
                     {{ __('help.escalate') }}
                 </button>
