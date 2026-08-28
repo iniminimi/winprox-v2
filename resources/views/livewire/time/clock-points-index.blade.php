@@ -2,6 +2,8 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
+                :assistant-video="asset('video/assistant_time.mp4')"
+                assistant-video-loop
                 :title="__('time.clock_points.title')"
                 help-page="time.clock_points"
                 :subtitle="__('time.clock_points.subtitle')"
