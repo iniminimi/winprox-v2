@@ -54,6 +54,17 @@ it('beantwoordt starttemplate vanuit dashboard-paginahulp', function (): void {
         ->and($matcher->match('op weg geholpen', 'nl'))->toContain('Wil je op weg geholpen worden?');
 });
 
+it('beantwoordt werkmenu vanuit instellingen-paginahulp', function (): void {
+    $matcher = app(HelpChatFaqMatcher::class);
+
+    $answer = $matcher->match('werkmenu', 'nl');
+
+    expect($answer)->toContain('Werkmenu instellingen')
+        ->and($answer)->toContain('Organisatie')
+        ->and($answer)->toContain('Kalender')
+        ->and($answer)->not->toBe(__('faq.items.work_menu.summary'));
+});
+
 it('beantwoordt pricing via FAQ met nieuwe tier-structuur', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 

@@ -190,6 +190,20 @@ return [
             'page' => 'subscription',
         ],
         [
+            'patterns' => [
+                'werkmenu', 'work menu', 'workmenu',
+                'arbeitsmenü', 'arbeitsmenu', 'arbeitsmenü-einstellungen', 'arbeitsmenu-einstellungen',
+                'menu travail', 'paramètres du menu travail', 'parametres du menu travail',
+                'menú trabajo', 'menu trabajo', 'ajustes del menú trabajo', 'ajustes del menu trabajo',
+                'menu lavoro', 'impostazioni menu lavoro',
+            ],
+            'page' => 'settings',
+            'prefer' => [
+                'werkmenu', 'work menu', 'arbeitsmenü', 'menu travail', 'menú trabajo', 'menu lavoro',
+                'kalender', 'reserveringen', 'inspectierondes', 'unitmetingen',
+            ],
+        ],
+        [
             'patterns' => ['instelling', 'settings', 'thema', 'stijl', 'privacy', 'export'],
             'page' => 'settings',
         ],

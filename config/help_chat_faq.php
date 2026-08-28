@@ -158,6 +158,16 @@ return [
             'body_key' => 'faq.items.dynamic_qr_codes.summary',
         ],
         [
+            'patterns' => [
+                'werkmenu', 'work menu', 'workmenu',
+                'arbeitsmenü', 'arbeitsmenu',
+                'menu travail',
+                'menú trabajo', 'menu trabajo',
+                'menu lavoro',
+            ],
+            'body_key' => 'faq.items.work_menu.summary',
+        ],
+        [
             'patterns' => ['thema', 'stijl', 'donker', 'dark', 'portaal-stijl'],
             'body_key' => 'faq.items.style.summary',
         ],
