@@ -868,7 +868,8 @@ battery-PNG-widget (vervangen door tekstcapsule).
   (`EscalateHelpChatAnswerAction`: mail + opslaan in `help_chat_unanswered_questions` voor
   superuser-overzicht), ook wanneer de assistent wél een antwoord gaf.
 - Rate-limit (bv. 30/min). Gekoppeld aan de FAQ (§dashboard-assistent = dezelfde feature).
-- **Superuser-beheer** (buiten dit menu): doorgestuurde vragen + Q&A-kennisbank.
+- **Superuser-beheer** (buiten dit menu): doorgestuurde vragen (knop **Beantwoorden** →
+  kennisbank-item) + Q&A-kennisbank.
 
 ### 8.3 NIET overnemen
 Contractor/owner-FAQ-slugs, hospitality-only help-chat-entries, real-estate `how_it_works`-flow,

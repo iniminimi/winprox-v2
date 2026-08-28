@@ -85,7 +85,7 @@
         "dismiss": "Verwijderen",
         "dismiss_confirm": "Deze vraag verwijderen uit de lijst?",
         "kb_title": "Kennisbank",
-        "kb_add": "Antwoord toevoegen",
+        "kb_add": "Nieuw kennisbank-item",
         "kb_edit": "Antwoord bewerken",
         "kb_empty": "Nog geen kennisbank-items. Voeg patronen toe die de assistent herkent.",
         "kb_locale": "Taal (nl, en, of *)",
@@ -95,7 +95,10 @@
         "kb_active": "Actief",
         "inactive": "Inactief",
         "kb_delete_confirm": "Dit kennisbank-item verwijderen?",
-        "patterns_required": "Voeg minstens één patroon toe."
+        "patterns_required": "Voeg minstens één patroon toe.",
+        "answer": "Beantwoorden",
+        "answer_question": "Vraag beantwoorden",
+        "answer_context": "Doorgestuurde vraag"
     },
     "email_unsubscribe": {
         "title": "E-mail uitschrijvingen",

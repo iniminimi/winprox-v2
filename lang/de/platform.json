@@ -85,7 +85,7 @@
         "dismiss": "Entfernen",
         "dismiss_confirm": "Diese Frage aus der Liste entfernen?",
         "kb_title": "Wissensbasis",
-        "kb_add": "Antwort hinzufügen",
+        "kb_add": "Neues Wissensbasis-Element",
         "kb_edit": "Antwort bearbeiten",
         "kb_empty": "Noch keine Wissensbasis-Einträge.",
         "kb_locale": "Sprache (nl, en oder *)",
@@ -95,7 +95,10 @@
         "kb_active": "Aktiv",
         "inactive": "Inaktiv",
         "kb_delete_confirm": "Diesen Eintrag löschen?",
-        "patterns_required": "Mindestens ein Muster hinzufügen."
+        "patterns_required": "Mindestens ein Muster hinzufügen.",
+        "answer": "Beantworten",
+        "answer_question": "Frage beantworten",
+        "answer_context": "Weitergeleitete Frage"
     },
     "email_unsubscribe": {
         "title": "E-Mail-Abmeldungen",

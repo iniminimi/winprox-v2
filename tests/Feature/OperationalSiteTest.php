@@ -75,6 +75,31 @@ it('superuser kan kennisbank beheren', function () {
     expect(HelpChatKnowledgeBaseEntry::query()->where('match_key', 'test_faq')->exists())->toBeTrue();
 });
 
+it('superuser kan doorgestuurde vraag beantwoorden via knop', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $super = User::factory()->superuser()->create();
+
+    $row = HelpChatUnansweredQuestion::create([
+        'tenant_id' => $tenant->id,
+        'user_id' => $user->id,
+        'locale' => 'nl',
+        'question' => 'Hoe exporteer ik taken?',
+    ]);
+
+    Livewire::actingAs($super)
+        ->test(PlatformHelp::class)
+        ->call('openAnswerQuestion', $row->id)
+        ->assertSet('kbPatterns', 'Hoe exporteer ik taken?')
+        ->assertSet('kbLocale', 'nl')
+        ->set('kbAnswer', 'Ga naar Taken en klik Download rapport.')
+        ->call('saveKb')
+        ->assertHasNoErrors();
+
+    expect(HelpChatUnansweredQuestion::query()->find($row->id))->toBeNull();
+    expect(HelpChatKnowledgeBaseEntry::query()->where('answer', 'Ga naar Taken en klik Download rapport.')->exists())->toBeTrue();
+});
+
 it('superuser kan onbeantwoorde vraag verwijderen', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

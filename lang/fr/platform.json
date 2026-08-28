@@ -85,7 +85,7 @@
         "dismiss": "Supprimer",
         "dismiss_confirm": "Retirer cette question de la liste ?",
         "kb_title": "Base de connaissances",
-        "kb_add": "Ajouter une réponse",
+        "kb_add": "Nouvel élément de base de connaissances",
         "kb_edit": "Modifier la réponse",
         "kb_empty": "Aucune entrée pour l'instant.",
         "kb_locale": "Langue (nl, en ou *)",
@@ -95,7 +95,10 @@
         "kb_active": "Actif",
         "inactive": "Inactif",
         "kb_delete_confirm": "Supprimer cette entrée ?",
-        "patterns_required": "Ajoutez au moins un motif."
+        "patterns_required": "Ajoutez au moins un motif.",
+        "answer": "Répondre",
+        "answer_question": "Répondre à la question",
+        "answer_context": "Question transférée"
     },
     "email_unsubscribe": {
         "title": "Désabonnements e-mail",

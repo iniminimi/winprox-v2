@@ -9,6 +9,7 @@ use App\Models\HelpChatKnowledgeBaseEntry;
 use App\Models\HelpChatUnansweredQuestion;
 use App\Models\Tenant;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -33,6 +34,10 @@ class Help extends Component
 
     public bool $kbIsActive = true;
 
+    public ?int $answeringQuestionId = null;
+
+    public ?string $answeringQuestionText = null;
+
     public function mount(): void
     {
         $this->authorize('viewAny', HelpChatKnowledgeBaseEntry::class);
@@ -42,6 +47,24 @@ class Help extends Component
     {
         $this->resetKbForm();
         $this->editingKbId = null;
+        $this->showKbModal = true;
+    }
+
+    public function openAnswerQuestion(int $id): void
+    {
+        $question = HelpChatUnansweredQuestion::query()->findOrFail($id);
+        $this->authorize('delete', $question);
+        $this->authorize('create', HelpChatKnowledgeBaseEntry::class);
+
+        $this->resetKbForm();
+        $this->answeringQuestionId = $question->id;
+        $this->answeringQuestionText = $question->question;
+        $this->kbLocale = $question->locale !== '' ? $question->locale : '*';
+        $this->kbMatchKey = Str::limit(Str::slug($question->question, '_'), 120, '');
+        if ($this->kbMatchKey === '') {
+            $this->kbMatchKey = 'vraag_'.$question->id;
+        }
+        $this->kbPatterns = $question->question;
         $this->showKbModal = true;
     }
 
@@ -107,6 +130,10 @@ class Help extends Component
             return;
         }
 
+        if ($this->answeringQuestionId !== null) {
+            app(DismissHelpChatUnansweredQuestionAction::class)->handle($this->answeringQuestionId);
+        }
+
         $this->closeKbModal();
     }
 
@@ -134,6 +161,8 @@ class Help extends Component
         $this->kbPatterns = '';
         $this->kbAnswer = '';
         $this->kbIsActive = true;
+        $this->answeringQuestionId = null;
+        $this->answeringQuestionText = null;
         $this->resetErrorBag();
     }
 

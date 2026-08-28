@@ -85,7 +85,7 @@
         "dismiss": "Eliminar",
         "dismiss_confirm": "¿Eliminar esta pregunta de la lista?",
         "kb_title": "Base de conocimiento",
-        "kb_add": "Añadir respuesta",
+        "kb_add": "Nuevo elemento de base de conocimiento",
         "kb_edit": "Editar respuesta",
         "kb_empty": "Aún no hay entradas en la base de conocimiento.",
         "kb_locale": "Locale (nl, en, or *)",
@@ -95,7 +95,10 @@
         "kb_active": "Activo",
         "inactive": "Inactivo",
         "kb_delete_confirm": "¿Eliminar esta entrada de la base de conocimiento?",
-        "patterns_required": "Añada al menos un patrón."
+        "patterns_required": "Añada al menos un patrón.",
+        "answer": "Responder",
+        "answer_question": "Responder pregunta",
+        "answer_context": "Pregunta reenviada"
     },
     "email_unsubscribe": {
         "title": "Bajas de correo",

@@ -85,7 +85,7 @@
         "dismiss": "Remove",
         "dismiss_confirm": "Remove this question from the list?",
         "kb_title": "Knowledge base",
-        "kb_add": "Add answer",
+        "kb_add": "New knowledge base item",
         "kb_edit": "Edit answer",
         "kb_empty": "No knowledge base entries yet.",
         "kb_locale": "Locale (nl, en, or *)",
@@ -95,7 +95,10 @@
         "kb_active": "Active",
         "inactive": "Inactive",
         "kb_delete_confirm": "Delete this knowledge base entry?",
-        "patterns_required": "Add at least one pattern."
+        "patterns_required": "Add at least one pattern.",
+        "answer": "Answer",
+        "answer_question": "Answer question",
+        "answer_context": "Forwarded question"
     },
     "email_unsubscribe": {
         "title": "Email unsubscribes",

@@ -85,7 +85,7 @@
         "dismiss": "Rimuovi",
         "dismiss_confirm": "Rimuovere questa domanda dall'elenco?",
         "kb_title": "Knowledge base",
-        "kb_add": "Aggiungi risposta",
+        "kb_add": "Nuovo elemento knowledge base",
         "kb_edit": "Modifica risposta",
         "kb_empty": "Nessuna voce knowledge base ancora.",
         "kb_locale": "Locale (nl, en, or *)",
@@ -95,7 +95,10 @@
         "kb_active": "Attivo",
         "inactive": "Inattivo",
         "kb_delete_confirm": "Eliminare questa voce della knowledge base?",
-        "patterns_required": "Aggiunga almeno un pattern."
+        "patterns_required": "Aggiunga almeno un pattern.",
+        "answer": "Rispondi",
+        "answer_question": "Rispondi alla domanda",
+        "answer_context": "Domanda inoltrata"
     },
     "email_unsubscribe": {
         "title": "Disiscrizioni email",

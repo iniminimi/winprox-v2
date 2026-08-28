@@ -25,11 +25,17 @@
                                 · {{ $row->created_at?->format('d-m-Y H:i') }}
                             </p>
                         </div>
-                        <button type="button" class="btn btn--ghost btn--sm"
-                                wire:click="dismissUnanswered({{ $row->id }})"
-                                wire:confirm="{{ __('platform.help.dismiss_confirm') }}">
-                            {{ __('platform.help.dismiss') }}
-                        </button>
+                        <div class="wp-cluster">
+                            <button type="button" class="btn btn--primary btn--sm"
+                                    wire:click="openAnswerQuestion({{ $row->id }})">
+                                {{ __('platform.help.answer') }}
+                            </button>
+                            <button type="button" class="btn btn--ghost btn--sm"
+                                    wire:click="dismissUnanswered({{ $row->id }})"
+                                    wire:confirm="{{ __('platform.help.dismiss_confirm') }}">
+                                {{ __('platform.help.dismiss') }}
+                            </button>
+                        </div>
                     </li>
                 @endforeach
             </ul>
@@ -80,10 +86,23 @@
             <form wire:submit="saveKb" class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide">
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">
-                        {{ $editingKbId ? __('platform.help.kb_edit') : __('platform.help.kb_add') }}
+                        @if ($editingKbId)
+                            {{ __('platform.help.kb_edit') }}
+                        @elseif ($answeringQuestionId)
+                            {{ __('platform.help.answer_question') }}
+                        @else
+                            {{ __('platform.help.kb_add') }}
+                        @endif
                     </h2>
                     <x-wp-modal-close wire:click="closeKbModal" />
                 </div>
+
+                @if ($answeringQuestionText)
+                    <p class="wp-muted wp-text-sm">
+                        <strong>{{ __('platform.help.answer_context') }}:</strong>
+                        {{ $answeringQuestionText }}
+                    </p>
+                @endif
 
                 <div class="wp-filter-bar">
                     <div class="wp-field">
