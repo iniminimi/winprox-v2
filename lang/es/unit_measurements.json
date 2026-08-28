@@ -55,7 +55,8 @@
                     "full": "Llena",
                     "overcrowded": "Sobrecargada"
                 }
-            }
+            },
+            "placeholder": "Elija un ejemplo…"
         }
     },
     "history": {

@@ -55,7 +55,8 @@
                     "full": "Full",
                     "overcrowded": "Over capacity"
                 }
-            }
+            },
+            "placeholder": "Choose an example…"
         }
     },
     "history": {

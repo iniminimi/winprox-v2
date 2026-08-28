@@ -55,7 +55,8 @@
                     "full": "Vol",
                     "overcrowded": "Overbezet"
                 }
-            }
+            },
+            "placeholder": "Kies een voorbeeld…"
         }
     },
     "history": {

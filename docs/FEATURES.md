@@ -468,7 +468,7 @@ zonder ESG. Los van unit checks.
 ### Beheer
 - **Beheer** (`/unit-measurements`): pagina Unitmetingen — uitvouwbare Meetvelden + zoekfilters + resultaten.
   Meetvelden: naam, type, eenheid/min/max/opties; actief/inactief. Bij **Veld toevoegen**: voorbeeldsjablonen
-  (km, temperatuur, urenstand, status, brandstof, voorraad, bezetting) vullen het formulier voor — uitleg via hover-?.
+  (km, temperatuur, urenstand, status, brandstof, voorraad, bezetting) vullen het formulier voor via dropdown — uitleg via hover-?.
 - **Download rapport** (`x-wp-list-export`): CSV + afdrukken (kaartlayout) van de gefilterde
   historiek — zie §Rapporten.
 - **Aan/uit:** Plaatsen → Categorieën (`allow_unit_measurements`) én unit bewerken

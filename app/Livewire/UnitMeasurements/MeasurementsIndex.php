@@ -62,6 +62,8 @@ class MeasurementsIndex extends Component
 
     public bool $editingHasMeasurements = false;
 
+    public string $selectedFieldTemplate = '';
+
     public function mount(): void
     {
         $this->authorize('viewAny', UnitMeasurement::class);
@@ -147,8 +149,13 @@ class MeasurementsIndex extends Component
             return;
         }
 
+        if (! UnitMeasureFieldTemplateCatalog::isValidKey($key)) {
+            return;
+        }
+
         $defaults = UnitMeasureFieldTemplateCatalog::formDefaults($key);
 
+        $this->selectedFieldTemplate = $key;
         $this->name = $defaults['name'];
         $this->type = $defaults['type'];
         $this->unitOfMeasure = $defaults['unitOfMeasure'];
@@ -157,6 +164,15 @@ class MeasurementsIndex extends Component
         $this->choiceOptions = $defaults['choiceOptions'];
         $this->lockedChoiceOptions = [];
         $this->resetErrorBag();
+    }
+
+    public function updatedSelectedFieldTemplate(?string $value): void
+    {
+        if ($value === null || $value === '' || $this->editingFieldId !== null) {
+            return;
+        }
+
+        $this->applyFieldTemplate($value);
     }
 
     public function save(SaveUnitMeasureFieldAction $save): void
@@ -304,6 +320,7 @@ class MeasurementsIndex extends Component
         $this->choiceOptions = ['', ''];
         $this->lockedChoiceOptions = [];
         $this->editingHasMeasurements = false;
+        $this->selectedFieldTemplate = '';
         $this->resetErrorBag();
     }
 }

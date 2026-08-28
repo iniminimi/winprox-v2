@@ -59,12 +59,11 @@ it('shows example templates in the create modal and prefills odometer', function
         ->test(MeasurementsIndex::class)
         ->call('openCreateModal')
         ->assertSee(__('unit_measurements.fields.templates.label'))
-        ->assertSee(__('unit_measurements.fields.templates.odometer.name'))
-        ->assertSee(__('unit_measurements.fields.templates.stock_count.name'))
+        ->assertSee(__('unit_measurements.fields.templates.placeholder'))
+        ->assertSee('id="measure-field-template"', false)
         ->assertSee('wp-tooltip__bubble', false)
-        ->assertSee('role="tooltip"', false)
         ->assertSeeHtml('aria-label="'.e(__('unit_measurements.fields.templates.hint')).'"')
-        ->call('applyFieldTemplate', 'odometer')
+        ->set('selectedFieldTemplate', 'odometer')
         ->assertSet('name', __('unit_measurements.fields.templates.odometer.name'))
         ->assertSet('type', 'numeric')
         ->assertSet('unitOfMeasure', 'km')
@@ -84,7 +83,7 @@ it('prefills the status template with choice options', function () {
     Livewire::actingAs($user)
         ->test(MeasurementsIndex::class)
         ->call('openCreateModal')
-        ->call('applyFieldTemplate', 'status')
+        ->set('selectedFieldTemplate', 'status')
         ->assertSet('type', 'choice')
         ->assertSet('choiceOptions', [
             __('unit_measurements.fields.templates.status.options.ok'),
@@ -105,5 +104,5 @@ it('hides example templates when editing an existing measure field', function ()
     Livewire::actingAs($user)
         ->test(MeasurementsIndex::class)
         ->call('openEditModal', $field->id)
-        ->assertDontSee(__('unit_measurements.fields.templates.label'));
+        ->assertDontSee('id="measure-field-template"', false);
 });

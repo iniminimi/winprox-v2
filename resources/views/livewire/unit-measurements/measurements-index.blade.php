@@ -153,9 +153,9 @@
 
                 <div class="wp-modal-body wp-stack">
                     @if (! $editingFieldId)
-                        <div class="wp-stack-tight">
+                        <div class="wp-field">
                             <div class="wp-cluster wp-cluster--tight">
-                                <p class="wp-label">{{ __('unit_measurements.fields.templates.label') }}</p>
+                                <label class="wp-label" for="measure-field-template">{{ __('unit_measurements.fields.templates.label') }}</label>
                                 <x-wp-tooltip :text="__('unit_measurements.fields.templates.hint')" wrap>
                                     <button
                                         type="button"
@@ -165,17 +165,12 @@
                                     >?</button>
                                 </x-wp-tooltip>
                             </div>
-                            <div class="wp-cluster wp-cluster--wrap">
+                            <select id="measure-field-template" class="wp-select" wire:model.live="selectedFieldTemplate">
+                                <option value="">{{ __('unit_measurements.fields.templates.placeholder') }}</option>
                                 @foreach ($fieldTemplates as $template)
-                                    <button
-                                        type="button"
-                                        class="btn btn--ghost btn--sm"
-                                        wire:click="applyFieldTemplate('{{ $template['key'] }}')"
-                                    >
-                                        {{ $template['label'] }}
-                                    </button>
+                                    <option value="{{ $template['key'] }}">{{ $template['label'] }}</option>
                                 @endforeach
-                            </div>
+                            </select>
                         </div>
                     @endif
 
@@ -206,13 +201,13 @@
                             <input id="measure-field-uom" type="text" class="wp-input" wire:model="unitOfMeasure" maxlength="32" placeholder="km, °C, L…" autocomplete="off">
                             @error('unitOfMeasure') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
-                        <div class="wp-cluster wp-cluster--wrap">
-                            <div class="wp-field wp-grow">
+                        <div class="wp-measure-field-range">
+                            <div class="wp-field">
                                 <label class="wp-label" for="measure-field-min">{{ __('unit_measurements.fields.form.min_value') }}</label>
                                 <input id="measure-field-min" type="number" step="any" class="wp-input" wire:model="minValue">
                                 @error('minValue') <p class="wp-error">{{ $message }}</p> @enderror
                             </div>
-                            <div class="wp-field wp-grow">
+                            <div class="wp-field">
                                 <label class="wp-label" for="measure-field-max">{{ __('unit_measurements.fields.form.max_value') }}</label>
                                 <input id="measure-field-max" type="number" step="any" class="wp-input" wire:model="maxValue">
                                 @error('maxValue') <p class="wp-error">{{ $message }}</p> @enderror

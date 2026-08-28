@@ -55,7 +55,8 @@
                     "full": "Pieno",
                     "overcrowded": "Sovraffollato"
                 }
-            }
+            },
+            "placeholder": "Scegli un esempio…"
         }
     },
     "history": {
