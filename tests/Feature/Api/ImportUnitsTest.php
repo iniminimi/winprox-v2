@@ -227,3 +227,62 @@ it('imports units from an Excel xlsx file', function () {
 
     @unlink($xlsxPath);
 });
+
+it('imports optional unit flags and external_id from csv', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $csvContent = implode(',', ImportUnitsAction::allHeaders())."\n";
+    $csvContent .= 'Fleet Van 1,Odometer check,Vehicles,FLEET-001,1,1,0,0,0,1'."\n";
+
+    $file = UploadedFile::fake()->createWithContent('units.csv', $csvContent);
+
+    $result = app(ImportUnitsAction::class)->handle(
+        new ImportUnitsData(
+            filePath: $file->getRealPath(),
+            originalName: $file->getClientOriginalName(),
+            locationId: $location->id,
+        ),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeTrue();
+
+    $unit = Unit::query()->where('name', 'Fleet Van 1')->first();
+    expect($unit)->not->toBeNull()
+        ->and($unit->external_id)->toBe('FLEET-001')
+        ->and($unit->allow_reservations)->toBeTrue()
+        ->and($unit->allow_unit_checks)->toBeTrue()
+        ->and($unit->allow_unit_measurements)->toBeFalse()
+        ->and($unit->public_reports_enabled)->toBeTrue();
+});
+
+it('rejects invalid boolean values in unit import', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $csvContent = "unit_name,allow_reservations\n";
+    $csvContent .= "Broken Unit,maybe\n";
+
+    $file = UploadedFile::fake()->createWithContent('units.csv', $csvContent);
+
+    $result = app(ImportUnitsAction::class)->handle(
+        new ImportUnitsData(
+            filePath: $file->getRealPath(),
+            originalName: $file->getClientOriginalName(),
+            locationId: $location->id,
+        ),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeFalse()
+        ->and(Unit::query()->count())->toBe(0);
+});

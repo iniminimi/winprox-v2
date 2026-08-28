@@ -7,7 +7,7 @@
     "units_csv": {
         "button": "Importer unités",
         "title": "Importer des unités (CSV / Excel)",
-        "hint": "Importez des unités pour :location via CSV ou Excel (.xlsx). Obligatoire : unit_name. Optionnel : description, category_name. Pas de colonnes de lieu ici.",
+        "hint": "Importez des unités pour :location via CSV ou Excel (.xlsx). Obligatoire : unit_name. Optionnel : description, category_name, external_id et cases (allow_reservations, allow_unit_checks, allow_unit_measurements, require_reporter_contact, require_reporter_email_verification, public_reports_enabled). Cases vides = défauts comme création manuelle. Valeurs : 1/0, oui/non, yes/no. Pas de colonnes lieu.",
         "errors": {
             "file_required": "Choisissez un fichier CSV ou Excel (.xlsx).",
             "failed": "Échec de l'import.",
@@ -19,7 +19,12 @@
             "row": "Ligne :line : :message",
             "no_rows": "Aucune ligne valide trouvée.",
             "database": "Erreur de base de données : :message",
-            "unsupported_format": "Format de fichier invalide. Utilisez CSV ou Excel (.xlsx)."
+            "unsupported_format": "Format de fichier invalide. Utilisez CSV ou Excel (.xlsx).",
+            "invalid_boolean": "Valeur invalide pour :column (1/0, oui/non ou yes/no).",
+            "duplicate_name": "unit_name en double dans ce fichier.",
+            "name_taken": "Nom d'unité déjà présent sur ce lieu.",
+            "duplicate_external_id": "external_id en double dans ce fichier.",
+            "external_id_taken": "external_id existe déjà dans cet environnement."
         }
     },
     "import_file_label": "Fichier CSV ou Excel (.xlsx)",
@@ -30,7 +35,8 @@
         "sample_unit_name": "Pelle Takeuchi TB210R",
         "sample_description": "Vérifier compteur horaire à la sortie",
         "sample_category_name": "Terrassement",
-        "download_sample_xlsx": "Télécharger un exemple XLSX"
+        "download_sample_xlsx": "Télécharger un exemple XLSX",
+        "sample_external_id": "VEH-001"
     },
     "create_title": "Ajouter un site",
     "edit_title": "Modifier le site",

@@ -335,7 +335,7 @@
                 },
                 {
                     "label": "Units importieren",
-                    "text": "Importieren Sie Units für diesen Standort per CSV oder Excel (.xlsx). Pflicht: unit_name. Optional: description, category_name. Standortspalten sind nicht nötig — alles landet auf diesem Standort. Bei falschen Headern oder fehlenden Pflichtfeldern wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Kategorien werden automatisch erstellt, wenn sie noch nicht existieren."
+                    "text": "Units für diesen Standort per CSV oder Excel (.xlsx) importieren. Pflicht: unit_name. Optional: description, category_name, external_id (API) und Schalter allow_reservations, allow_unit_checks, allow_unit_measurements, require_reporter_contact, require_reporter_email_verification, public_reports_enabled (1/0, ja/nein, yes/no — leer = Standard wie manuelle Anlage). Keine Standortspalten. Falsche Header oder fehlende Pflichtfelder lehnen den gesamten Import mit Fehler pro Zeile ab. Kategorien werden bei Bedarf angelegt."
                 },
                 {
                     "label": "Letzte Imports",

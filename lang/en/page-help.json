@@ -339,7 +339,7 @@
                 },
                 {
                     "label": "Import units",
-                    "text": "Import units for this location via CSV or Excel (.xlsx). Required: unit_name. Optional: description, category_name. Location columns are not needed — everything goes on this location. If headers are wrong or required fields are missing, the entire import is rejected with a clear error per row. Categories are created automatically if they do not exist yet."
+                    "text": "Import units for this location via CSV or Excel (.xlsx). Required: unit_name. Optional: description, category_name, external_id (API mapping) and flags allow_reservations, allow_unit_checks, allow_unit_measurements, require_reporter_contact, require_reporter_email_verification, public_reports_enabled (1/0, yes/no — empty = defaults as manual create). Location columns are not needed. Wrong headers or missing required fields reject the entire import with a clear error per row. Categories are created automatically if they do not exist yet."
                 },
                 {
                     "label": "Recent imports",

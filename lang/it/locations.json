@@ -7,7 +7,7 @@
     "units_csv": {
         "button": "Importa unità",
         "title": "Importa unità (CSV / Excel)",
-        "hint": "Importi unità per :location via CSV o Excel (.xlsx). Obbligatorio: unit_name. Opzionale: description, category_name. Qui non servono colonne della sede.",
+        "hint": "Importa unit per :location via CSV o Excel (.xlsx). Obbligatorio: unit_name. Opzionale: description, category_name, external_id e flag (allow_reservations, allow_unit_checks, allow_unit_measurements, require_reporter_contact, require_reporter_email_verification, public_reports_enabled). Flag vuoti = default come creazione manuale. Valori: 1/0, sì/no, yes/no. Nessuna colonna sede.",
         "errors": {
             "file_required": "Scelga un file CSV o Excel (.xlsx).",
             "failed": "Importazione non riuscita.",
@@ -19,7 +19,12 @@
             "row": "Riga :line: :message",
             "no_rows": "Nessuna riga valida trovata.",
             "database": "Errore database: :message",
-            "unsupported_format": "Formato file non valido. Usi CSV o Excel (.xlsx)."
+            "unsupported_format": "Formato file non valido. Usi CSV o Excel (.xlsx).",
+            "invalid_boolean": "Valore non valido per :column (1/0, sì/no o yes/no).",
+            "duplicate_name": "unit_name duplicato in questo file.",
+            "name_taken": "Nome unit già presente in questa sede.",
+            "duplicate_external_id": "external_id duplicato in questo file.",
+            "external_id_taken": "external_id già presente in questo tenant."
         }
     },
     "import_file_label": "File CSV o Excel (.xlsx)",
@@ -30,7 +35,8 @@
         "sample_unit_name": "Excavator Takeuchi TB210R",
         "sample_description": "Check hour meter on issue",
         "sample_category_name": "Earthmoving",
-        "download_sample_xlsx": "Scarica esempio XLSX"
+        "download_sample_xlsx": "Scarica esempio XLSX",
+        "sample_external_id": "VEH-001"
     },
     "create_title": "Aggiungi nuova sede",
     "edit_title": "Modifica sede",

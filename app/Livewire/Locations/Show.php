@@ -809,11 +809,18 @@ class Show extends Component
         $this->authorize('create', Unit::class);
         abort_unless($this->locationTenant()?->hasCsvUnitsImport() ?? false, 403);
 
-        $headers = ['unit_name', 'description', 'category_name'];
+        $headers = ImportUnitsAction::allHeaders();
         $sampleRow = [
             __('locations.import_sample.sample_unit_name'),
             __('locations.import_sample.sample_description'),
             __('locations.import_sample.sample_category_name'),
+            __('locations.import_sample.sample_external_id'),
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
         ];
 
         return response()->streamDownload(function () use ($headers, $sampleRow) {
@@ -833,11 +840,18 @@ class Show extends Component
         abort_unless($this->locationTenant()?->hasCsvUnitsImport() ?? false, 403);
 
         $rows = [
-            ['unit_name', 'description', 'category_name'],
+            ImportUnitsAction::allHeaders(),
             [
                 __('locations.import_sample.sample_unit_name'),
                 __('locations.import_sample.sample_description'),
                 __('locations.import_sample.sample_category_name'),
+                __('locations.import_sample.sample_external_id'),
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
             ],
         ];
 

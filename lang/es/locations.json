@@ -7,7 +7,7 @@
     "units_csv": {
         "button": "Importar unidades",
         "title": "Importar unidades (CSV / Excel)",
-        "hint": "Importe unidades para :location vía CSV o Excel (.xlsx). Obligatorio: unit_name. Opcional: description, category_name. No se necesitan columnas de ubicación aquí.",
+        "hint": "Importe unidades para :location vía CSV o Excel (.xlsx). Obligatorio: unit_name. Opcional: description, category_name, external_id y casillas (allow_reservations, allow_unit_checks, allow_unit_measurements, require_reporter_contact, require_reporter_email_verification, public_reports_enabled). Casillas vacías = mismos valores por defecto que al crear manualmente. Valores: 1/0, sí/no, yes/no. Sin columnas de ubicación.",
         "errors": {
             "file_required": "Elija un archivo CSV o Excel (.xlsx).",
             "failed": "Error en la importación.",
@@ -19,7 +19,12 @@
             "row": "Fila :line: :message",
             "no_rows": "No se encontraron filas válidas.",
             "database": "Error de base de datos: :message",
-            "unsupported_format": "Formato de archivo no válido. Use CSV o Excel (.xlsx)."
+            "unsupported_format": "Formato de archivo no válido. Use CSV o Excel (.xlsx).",
+            "invalid_boolean": "Valor no válido para :column (1/0, sí/no o yes/no).",
+            "duplicate_name": "unit_name duplicado en este archivo.",
+            "name_taken": "El nombre de unidad ya existe en esta ubicación.",
+            "duplicate_external_id": "external_id duplicado en este archivo.",
+            "external_id_taken": "external_id ya existe en este entorno."
         }
     },
     "import_file_label": "Archivo CSV o Excel (.xlsx)",
@@ -30,7 +35,8 @@
         "sample_unit_name": "Excavadora Takeuchi TB210R",
         "sample_description": "Comprobar contador horario en la incidencia",
         "sample_category_name": "Movimiento de tierras",
-        "download_sample_xlsx": "Descargar ejemplo XLSX"
+        "download_sample_xlsx": "Descargar ejemplo XLSX",
+        "sample_external_id": "VEH-001"
     },
     "create_title": "Añadir nueva ubicación",
     "edit_title": "Editar ubicación",

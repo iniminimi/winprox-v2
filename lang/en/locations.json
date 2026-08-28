@@ -7,7 +7,7 @@
     "units_csv": {
         "button": "Import units",
         "title": "Import units (CSV / Excel)",
-        "hint": "Import units for :location via CSV or Excel (.xlsx). Required: unit_name. Optional: description, category_name. Location columns are not needed here.",
+        "hint": "Import units for :location via CSV or Excel (.xlsx). Required: unit_name. Optional: description, category_name, external_id and flags (allow_reservations, allow_unit_checks, allow_unit_measurements, require_reporter_contact, require_reporter_email_verification, public_reports_enabled). Empty flags = same defaults as manual create. Flags: 1/0, yes/no. Location columns are not needed.",
         "errors": {
             "file_required": "Choose a CSV or Excel (.xlsx) file.",
             "failed": "Import failed.",
@@ -19,7 +19,12 @@
             "row": "Row :line: :message",
             "no_rows": "No valid rows found.",
             "database": "Database error: :message",
-            "unsupported_format": "Invalid file format. Use CSV or Excel (.xlsx)."
+            "unsupported_format": "Invalid file format. Use CSV or Excel (.xlsx).",
+            "invalid_boolean": "Invalid value for :column (use 1/0, yes/no).",
+            "duplicate_name": "Duplicate unit_name in this file.",
+            "name_taken": "Unit name already exists on this location.",
+            "duplicate_external_id": "Duplicate external_id in this file.",
+            "external_id_taken": "external_id already exists in this tenant."
         }
     },
     "import_file_label": "CSV or Excel file (.xlsx)",
@@ -30,7 +35,8 @@
         "sample_unit_name": "Excavator Takeuchi TB210R",
         "sample_description": "Check hour meter on issue",
         "sample_category_name": "Earthmoving",
-        "download_sample_xlsx": "Download sample XLSX"
+        "download_sample_xlsx": "Download sample XLSX",
+        "sample_external_id": "VEH-001"
     },
     "create_title": "Add new location",
     "edit_title": "Edit location",

@@ -7,7 +7,7 @@
     "units_csv": {
         "button": "Units importeren",
         "title": "Units importeren (CSV / Excel)",
-        "hint": "Importeer units voor :location via CSV of Excel (.xlsx). Verplicht: unit_name. Optioneel: description, category_name. Locatiekolommen zijn hier niet nodig.",
+        "hint": "Importeer units voor :location via CSV of Excel (.xlsx). Verplicht: unit_name. Optioneel: description, category_name, external_id en vinkjes (allow_reservations, allow_unit_checks, allow_unit_measurements, require_reporter_contact, require_reporter_email_verification, public_reports_enabled). Lege vinkjes = zelfde default als handmatig aanmaken. Vinkjes: 1/0, ja/nee, yes/no. Locatiekolommen zijn hier niet nodig.",
         "errors": {
             "file_required": "Kies een CSV- of Excel-bestand (.xlsx).",
             "failed": "Import mislukt.",
@@ -19,7 +19,12 @@
             "row": "Rij :line: :message",
             "no_rows": "Geen geldige rijen gevonden.",
             "database": "Databasefout: :message",
-            "unsupported_format": "Ongeldig bestandsformaat. Gebruik CSV of Excel (.xlsx)."
+            "unsupported_format": "Ongeldig bestandsformaat. Gebruik CSV of Excel (.xlsx).",
+            "invalid_boolean": "Ongeldige waarde voor :column (gebruik 1/0, ja/nee of yes/no).",
+            "duplicate_name": "Dubbele unit_name in dit bestand.",
+            "name_taken": "Unitnaam bestaat al op deze locatie.",
+            "duplicate_external_id": "Dubbele external_id in dit bestand.",
+            "external_id_taken": "external_id bestaat al in deze omgeving."
         }
     },
     "import_file_label": "CSV- of Excel-bestand (.xlsx)",
@@ -30,7 +35,8 @@
         "sample_unit_name": "Graafmachine Takeuchi TB210R",
         "sample_description": "Urenstand controleren bij uitgifte",
         "sample_category_name": "Grondverzet",
-        "download_sample_xlsx": "Download voorbeeld-xlsx"
+        "download_sample_xlsx": "Download voorbeeld-xlsx",
+        "sample_external_id": "VEH-001"
     },
     "create_title": "Nieuwe locatie toevoegen",
     "edit_title": "Locatie bewerken",

@@ -720,6 +720,8 @@ it('downloads sample CSV with correct headers and UTF-8 BOM', function () {
 
     expect($csv)->toStartWith("\xEF\xBB\xBF")
         ->and($csv)->toContain('unit_name,description,category_name')
+        ->and($csv)->toContain('external_id')
+        ->and($csv)->toContain('allow_reservations')
         ->and($csv)->not->toContain('location_name');
 
     $xlsxResponse = $livewireComponent->downloadLocationUnitsSampleXlsx();

@@ -335,7 +335,7 @@
                 },
                 {
                     "label": "Importar unidades",
-                    "text": "Importe unidades para esta ubicación vía CSV o Excel (.xlsx). Obligatorio: unit_name. Opcional: description, category_name. No se necesitan columnas de ubicación: todo va a esta ubicación. Si los encabezados no coinciden o faltan campos obligatorios, toda la importación se rechaza con un mensaje claro por fila. Las categorías se crean automáticamente si aún no existen."
+                    "text": "Importe unidades para esta ubicación vía CSV o Excel (.xlsx). Obligatorio: unit_name. Opcional: description, category_name, external_id (API) y casillas allow_reservations, allow_unit_checks, allow_unit_measurements, require_reporter_contact, require_reporter_email_verification, public_reports_enabled (1/0, sí/no, yes/no — vacío = valores por defecto como creación manual). Sin columnas de ubicación. Encabezados incorrectos o campos obligatorios faltantes rechazan toda la importación con error por fila. Las categorías se crean automáticamente si no existen."
                 },
                 {
                     "label": "Importaciones recientes",

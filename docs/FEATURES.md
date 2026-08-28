@@ -129,6 +129,10 @@ Acties: **Annuleren** / **Locatie opslaan**. Validatie via Form Request; logica 
     (zie §2.5 — werkt perfect in oude app, **overnemen i.p.v. herbouwen**).
   - **"+ Unit toevoegen"** → unit per stuk (pulst wanneer de locatie nog geen units heeft).
   - **"Bulk units toevoegen"** → modal (§2.4).
+- **Units importeren** (CSV/Excel, Corporate): verplicht `unit_name`; optioneel `description`,
+  `category_name`, `external_id`, en vinkjes `allow_reservations`, `allow_unit_checks`,
+  `allow_unit_measurements`, `require_reporter_contact`, `require_reporter_email_verification`,
+  `public_reports_enabled` (1/0, ja/nee — leeg = zelfde default als handmatig aanmaken).
 - **"Recente bulk-aanmaak"**: lijst van bulk-batches (datum/tijd · aantal · unitnaam-bereik),
   met per batch **"Bulk verwijderen ({n})"**. Regel: *"Verwijder per bulk alleen units zonder
   melding of taak. Oudere bulks blijven apart staan."* Units in een bulk die al een melding/taak

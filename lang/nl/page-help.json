@@ -339,7 +339,7 @@
                 },
                 {
                     "label": "Units importeren",
-                    "text": "Importeer units voor deze locatie via CSV of Excel (.xlsx). Verplicht: unit_name. Optioneel: description, category_name. Locatiekolommen zijn niet nodig — alles komt op deze locatie. Bij foute headers of ontbrekende velden wordt de hele import geweigerd met een foutmelding per rij. Categorieën worden automatisch aangemaakt als ze nog niet bestaan."
+                    "text": "Importeer units voor deze locatie via CSV of Excel (.xlsx). Verplicht: unit_name. Optioneel: description, category_name, external_id (API-koppeling) en vinkjes allow_reservations, allow_unit_checks, allow_unit_measurements, require_reporter_contact, require_reporter_email_verification, public_reports_enabled (1/0, ja/nee, yes/no — leeg = default zoals handmatig aanmaken). Locatiekolommen zijn niet nodig. Bij foute headers of ontbrekende velden wordt de hele import geweigerd met een foutmelding per rij. Categorieën worden automatisch aangemaakt als ze nog niet bestaan."
                 },
                 {
                     "label": "Recente imports",

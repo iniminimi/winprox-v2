@@ -1,39 +1,67 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\Units;
 
-use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
+use App\Actions\Locations\CreateUnitAction;
 use App\Data\Units\ImportUnitsData;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Import\TabularImportBoolean;
 use App\Support\Import\TabularImportReader;
-use App\Support\Translation\LocaleSupport;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use RuntimeException;
 
 class ImportUnitsAction
 {
-    public function __construct(
-        private AuditRecorder $audit,
-        private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
-        private TabularImportReader $tabularReader,
-    ) {}
-
     /** @var list<string> */
-    private const REQUIRED_HEADERS = [
+    public const REQUIRED_HEADERS = [
         'unit_name',
     ];
 
     /** @var list<string> */
-    private const OPTIONAL_HEADERS = [
+    public const OPTIONAL_HEADERS = [
         'description',
         'category_name',
+        'external_id',
+        'allow_reservations',
+        'allow_unit_checks',
+        'allow_unit_measurements',
+        'require_reporter_contact',
+        'require_reporter_email_verification',
+        'public_reports_enabled',
     ];
+
+    /** @var list<string> */
+    private const BOOLEAN_HEADERS = [
+        'allow_reservations',
+        'allow_unit_checks',
+        'allow_unit_measurements',
+        'require_reporter_contact',
+        'require_reporter_email_verification',
+        'public_reports_enabled',
+    ];
+
+    public function __construct(
+        private AuditRecorder $audit,
+        private CreateUnitAction $createUnit,
+        private TabularImportReader $tabularReader,
+    ) {}
+
+    /**
+     * @return list<string>
+     */
+    public static function allHeaders(): array
+    {
+        return array_merge(self::REQUIRED_HEADERS, self::OPTIONAL_HEADERS);
+    }
 
     /**
      * @return array{success: bool, count?: int, batch_id?: string, errors?: list<string>}
@@ -95,8 +123,7 @@ class ImportUnitsAction
             ];
         }
 
-        $expectedHeaders = array_merge(self::REQUIRED_HEADERS, self::OPTIONAL_HEADERS);
-        $unexpectedHeaders = array_diff($headers, $expectedHeaders);
+        $unexpectedHeaders = array_diff($headers, self::allHeaders());
         if ($unexpectedHeaders !== []) {
             return [
                 'success' => false,
@@ -111,6 +138,8 @@ class ImportUnitsAction
         $headerCount = count($headers);
         $errors = [];
         $validatedRows = [];
+        $seenNames = [];
+        $seenExternalIds = [];
 
         foreach ($table['rows'] as $row) {
             $values = array_pad(array_slice($row['values'], 0, $headerCount), $headerCount, '');
@@ -119,22 +148,23 @@ class ImportUnitsAction
                 continue;
             }
 
-            $validator = Validator::make($dataRow, [
-                'unit_name' => 'required|string|max:255',
-                'description' => 'nullable|string|max:'.TextDescriptionLimits::MAX,
-                'category_name' => 'nullable|string|max:255',
-            ]);
+            $rowErrors = $this->validateRow(
+                $dataRow,
+                $row['line'],
+                $headers,
+                $location,
+                $tenantId,
+                $seenNames,
+                $seenExternalIds,
+            );
 
-            if ($validator->fails()) {
-                foreach ($validator->errors()->all() as $error) {
-                    $errors[] = __('locations.units_csv.errors.row', [
-                        'line' => $row['line'],
-                        'message' => $error,
-                    ]);
-                }
-            } else {
-                $validatedRows[] = $dataRow;
+            if ($rowErrors !== []) {
+                array_push($errors, ...$rowErrors);
+
+                continue;
             }
+
+            $validatedRows[] = $dataRow;
         }
 
         if ($errors !== []) {
@@ -187,18 +217,8 @@ class ImportUnitsAction
                     $categoryId = $category->id;
                 }
 
-                $unit = Unit::create([
-                    'tenant_id' => $tenantId,
-                    'location_id' => $location->id,
-                    'category_id' => $categoryId,
-                    'name' => $row['unit_name'],
-                    'description' => $row['description'] ?? null,
-                    'original_language' => LocaleSupport::normalize(null),
-                    'import_batch_id' => $batchId,
-                    'is_active' => true,
-                ]);
-
-                $this->ensureTranslationSlots->handle($unit);
+                $unitPayload = $this->buildUnitPayload($row, $headers, $categoryId, $batchId);
+                $this->createUnit->handle($location, $unitPayload, $tenantId, $actorUserId);
 
                 $importedCount++;
             }
@@ -228,6 +248,132 @@ class ImportUnitsAction
                 'errors' => [__('locations.units_csv.errors.database', ['message' => $e->getMessage()])],
             ];
         }
+    }
+
+    /**
+     * @param  array<string, string>  $dataRow
+     * @param  list<string>  $headers
+     * @param  array<string, true>  $seenNames
+     * @param  array<string, true>  $seenExternalIds
+     * @return list<string>
+     */
+    private function validateRow(
+        array $dataRow,
+        int $line,
+        array $headers,
+        Location $location,
+        int $tenantId,
+        array &$seenNames,
+        array &$seenExternalIds,
+    ): array {
+        $errors = [];
+
+        $validator = Validator::make($dataRow, [
+            'unit_name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:'.TextDescriptionLimits::MAX,
+            'category_name' => 'nullable|string|max:255',
+            'external_id' => Schema::hasColumn('units', 'external_id')
+                ? ['nullable', 'string', 'max:100']
+                : ['nullable'],
+        ]);
+
+        if ($validator->fails()) {
+            foreach ($validator->errors()->all() as $error) {
+                $errors[] = __('locations.units_csv.errors.row', [
+                    'line' => $line,
+                    'message' => $error,
+                ]);
+            }
+
+            return $errors;
+        }
+
+        $name = trim((string) $dataRow['unit_name']);
+        if (isset($seenNames[$name])) {
+            $errors[] = __('locations.units_csv.errors.row', [
+                'line' => $line,
+                'message' => __('locations.units_csv.errors.duplicate_name'),
+            ]);
+        } elseif (Unit::query()->where('location_id', $location->id)->where('name', $name)->exists()) {
+            $errors[] = __('locations.units_csv.errors.row', [
+                'line' => $line,
+                'message' => __('locations.units_csv.errors.name_taken'),
+            ]);
+        } else {
+            $seenNames[$name] = true;
+        }
+
+        if (in_array('external_id', $headers, true)) {
+            $externalId = trim((string) ($dataRow['external_id'] ?? ''));
+            if ($externalId !== '') {
+                if (isset($seenExternalIds[$externalId])) {
+                    $errors[] = __('locations.units_csv.errors.row', [
+                        'line' => $line,
+                        'message' => __('locations.units_csv.errors.duplicate_external_id'),
+                    ]);
+                } elseif (Unit::query()->where('tenant_id', $tenantId)->where('external_id', $externalId)->exists()) {
+                    $errors[] = __('locations.units_csv.errors.row', [
+                        'line' => $line,
+                        'message' => __('locations.units_csv.errors.external_id_taken'),
+                    ]);
+                } else {
+                    $seenExternalIds[$externalId] = true;
+                }
+            }
+        }
+
+        foreach (self::BOOLEAN_HEADERS as $column) {
+            if (! in_array($column, $headers, true)) {
+                continue;
+            }
+
+            $parsed = TabularImportBoolean::parseOptional((string) ($dataRow[$column] ?? ''));
+            if (! $parsed['valid']) {
+                $errors[] = __('locations.units_csv.errors.row', [
+                    'line' => $line,
+                    'message' => __('locations.units_csv.errors.invalid_boolean', ['column' => $column]),
+                ]);
+            }
+        }
+
+        return $errors;
+    }
+
+    /**
+     * @param  array<string, string>  $row
+     * @param  list<string>  $headers
+     * @return array<string, mixed>
+     */
+    private function buildUnitPayload(array $row, array $headers, ?int $categoryId, string $batchId): array
+    {
+        $payload = [
+            'name' => trim((string) $row['unit_name']),
+            'description' => trim((string) ($row['description'] ?? '')) !== ''
+                ? trim((string) $row['description'])
+                : null,
+            'category_id' => $categoryId,
+            'import_batch_id' => $batchId,
+        ];
+
+        if (in_array('external_id', $headers, true)) {
+            $externalId = trim((string) ($row['external_id'] ?? ''));
+            if ($externalId !== '') {
+                $payload['external_id'] = $externalId;
+            }
+        }
+
+        foreach (self::BOOLEAN_HEADERS as $column) {
+            if (! in_array($column, $headers, true)) {
+                continue;
+            }
+
+            $parsed = TabularImportBoolean::parseOptional((string) ($row[$column] ?? ''));
+            if ($parsed['value'] !== null) {
+                $payload[$column] = $parsed['value'];
+            }
+        }
+
+        return $payload;
     }
 
     /**

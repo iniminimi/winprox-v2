@@ -66,6 +66,10 @@ class CreateUnitAction
             $payload['external_id'] = $externalId !== '' ? $externalId : null;
         }
 
+        if (Schema::hasColumn('units', 'import_batch_id') && array_key_exists('import_batch_id', $data)) {
+            $payload['import_batch_id'] = $data['import_batch_id'];
+        }
+
         $unit = Unit::create($payload);
 
         $this->audit->record(

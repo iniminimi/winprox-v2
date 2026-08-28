@@ -7,7 +7,7 @@
     "units_csv": {
         "button": "Units importieren",
         "title": "Units importieren (CSV / Excel)",
-        "hint": "Importieren Sie Units für :location per CSV oder Excel (.xlsx). Pflicht: unit_name. Optional: description, category_name. Standortspalten sind hier nicht nötig.",
+        "hint": "Units für :location per CSV oder Excel (.xlsx) importieren. Pflicht: unit_name. Optional: description, category_name, external_id und Schalter (allow_reservations, allow_unit_checks, allow_unit_measurements, require_reporter_contact, require_reporter_email_verification, public_reports_enabled). Leere Schalter = Standard wie manuelle Anlage. Werte: 1/0, ja/nein, yes/no. Standortspalten nicht nötig.",
         "errors": {
             "file_required": "Wählen Sie eine CSV- oder Excel-Datei (.xlsx).",
             "failed": "Import fehlgeschlagen.",
@@ -19,7 +19,12 @@
             "row": "Zeile :line: :message",
             "no_rows": "Keine gültigen Zeilen gefunden.",
             "database": "Datenbankfehler: :message",
-            "unsupported_format": "Ungültiges Dateiformat. Verwenden Sie CSV oder Excel (.xlsx)."
+            "unsupported_format": "Ungültiges Dateiformat. Verwenden Sie CSV oder Excel (.xlsx).",
+            "invalid_boolean": "Ungültiger Wert für :column (1/0, ja/nein oder yes/no).",
+            "duplicate_name": "Doppelte unit_name in dieser Datei.",
+            "name_taken": "Unit-Name existiert bereits an diesem Standort.",
+            "duplicate_external_id": "Doppelte external_id in dieser Datei.",
+            "external_id_taken": "external_id existiert bereits in diesem Mandanten."
         }
     },
     "import_file_label": "CSV- oder Excel-Datei (.xlsx)",
@@ -30,7 +35,8 @@
         "sample_unit_name": "Bagger Takeuchi TB210R",
         "sample_description": "Stundenzähler bei Ausgabe prüfen",
         "sample_category_name": "Erdbewegung",
-        "download_sample_xlsx": "Beispiel-XLSX herunterladen"
+        "download_sample_xlsx": "Beispiel-XLSX herunterladen",
+        "sample_external_id": "FAHR-001"
     },
     "create_title": "Neuen Standort hinzufügen",
     "edit_title": "Standort bearbeiten",
