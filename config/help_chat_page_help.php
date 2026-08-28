@@ -4,6 +4,8 @@
  * Help-chat → page-help (handleiding) matches.
  * Order matters: first matching pattern wins. Prefer specific phrases over short words.
  * Answers are built from lang/{locale}/page-help.json via PageHelp (same source as the printed manual).
+ * When no pattern matches, the assistant full-text searches the same handleiding content
+ * (page-help chapters + Aan de slag; FAQ stays on help_chat_faq.php).
  */
 return [
     'max_actions' => 3,

@@ -859,11 +859,12 @@ battery-PNG-widget (vervangen door tekstcapsule).
   gebruik unieke per-page keys.
 
 ### 8.2 WinProx-assistent (help-chat)
-- Volgorde: **tenant-inzicht** (DB-tellingen) → **kennisbank** → **pagina-hulp / handleiding**
-  (`page-help.json` via `HelpChatPageHelpMatcher`, zelfde bron als ManualChapters) →
-  **FAQ-samenvattingen** (`config/help_chat_faq.php`) →
-  **geen match** → vraag opslaan (`help_chat_unanswered_questions`) + **e-mail naar helpdesk/
-  superuser**; gebruiker kan een antwoord laten **escaleren** naar de helpdesk.
+- Volgorde: **tenant-inzicht** (DB-tellingen) → **kennisbank** → **pagina-hulp-patronen**
+  (`config/help_chat_page_help.php`, zelfde bron als handleiding) → **FAQ-samenvattingen**
+  (`config/help_chat_faq.php`) → **handleiding doorzoeken** (alle `page-help`-hoofdstukken +
+  Aan de slag via `HelpChatPageHelpMatcher::searchManual`) → **geen match** → vraag opslaan
+  (`help_chat_unanswered_questions`) + **e-mail naar helpdesk/superuser**; gebruiker kan een
+  antwoord laten **escaleren** naar de helpdesk.
 - Rate-limit (bv. 30/min). Gekoppeld aan de FAQ (§dashboard-assistent = dezelfde feature).
 - **Superuser-beheer** (buiten dit menu): onbeantwoorde vragen + Q&A-kennisbank.
 

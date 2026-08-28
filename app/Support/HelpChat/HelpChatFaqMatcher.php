@@ -30,7 +30,12 @@ class HelpChatFaqMatcher
             return $pageHelpAnswer;
         }
 
-        return $this->matchConfigFaq($normalized, $locale);
+        $faqAnswer = $this->matchConfigFaq($normalized, $locale);
+        if ($faqAnswer !== null) {
+            return $faqAnswer;
+        }
+
+        return $this->pageHelpMatcher->searchManual($message, $locale);
     }
 
     protected function matchKnowledgeBase(string $normalized, string $locale): ?string

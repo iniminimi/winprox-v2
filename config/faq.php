@@ -14,6 +14,7 @@ return [
         'time_clock',
         'unit_checks',
         'unit_measurements',
+        'work_menu',
         'esg',
         'iot',
         'for_who',

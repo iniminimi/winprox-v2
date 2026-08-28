@@ -19,52 +19,6 @@ class ManualIndex extends Component
 {
     use HasManualLocale;
 
-    private const ADMIN_CHAPTER_KEYS = [
-        'team.backoffice',
-        'team.teams',
-        'locations.categories',
-        'locations.list',
-        'locations.show',
-        'issues.list',
-        'issues.show',
-        'issues.create',
-        'tasks.list',
-        'tasks.show',
-        'calendar',
-        'reservations',
-        'unit-checks',
-        'unit-measurements.index',
-        'dashboard',
-        'esg.dashboard',
-        'esg.indicators',
-        'esg.measurements',
-        'iot.index',
-        'time.presence',
-        'time.shifts',
-        'time.clock_points',
-        'settings',
-        'settings.api',
-        'subscription',
-    ];
-
-    private const INTERNET_PORTAL_CHAPTER_KEYS = [
-        'portal.worker.qr',
-        'portal.time',
-        'portal.unit',
-        'portal.team',
-        'portal.worker.photos',
-        'portal.teamleader.role',
-        'portal.teamleader.release',
-        'portal.teamleader.workers',
-        'portal.teamleader.tasks',
-    ];
-
-    /** @var list<string> */
-    private const CHAPTER_KEYS = [
-        ...self::ADMIN_CHAPTER_KEYS,
-        ...self::INTERNET_PORTAL_CHAPTER_KEYS,
-    ];
-
     public function mount(): void
     {
         $this->mountManualLocale();
@@ -100,12 +54,13 @@ class ManualIndex extends Component
 
     public function render(): \Illuminate\View\View
     {
+        $pageHelpKeys = ManualChapters::pageHelpKeys();
         $helpChapters = $this->chaptersWithScreenshotUrls(
             ManualChapterIcons::applyToChapters(
-                ManualChapters::fromPageHelp(self::CHAPTER_KEYS, withoutStatuses: true),
+                ManualChapters::fromPageHelp($pageHelpKeys, withoutStatuses: true),
             ),
         );
-        $splitAt = count(self::ADMIN_CHAPTER_KEYS);
+        $splitAt = ManualChapters::adminPageHelpKeyCount();
 
         $adminChapters = array_slice($helpChapters, 0, $splitAt);
         $internetChapters = array_slice($helpChapters, $splitAt);

@@ -2,6 +2,7 @@
 
 namespace App\Support\HelpChat;
 
+use App\Support\Manual\ManualChapters;
 use App\Support\PageHelp;
 use Illuminate\Support\Str;
 
@@ -10,6 +11,11 @@ use Illuminate\Support\Str;
  */
 class HelpChatPageHelpMatcher
 {
+    /** @var list<string> */
+    private const AMBIGUOUS_SINGLE_WORDS = [
+        'status', 'app', 'help', 'hulp', 'menu', 'winprox', 'qr', 'faq',
+    ];
+
     public function match(string $message, string $locale): ?string
     {
         $normalized = $this->normalize($message);
@@ -51,13 +57,167 @@ class HelpChatPageHelpMatcher
                     }
                 }
             }
+
+            return null;
         } finally {
             if ($locale !== $previousLocale) {
                 app()->setLocale($previousLocale);
             }
         }
+    }
 
-        return null;
+    public function searchManual(string $message, string $locale): ?string
+    {
+        $normalized = $this->normalize($message);
+
+        if ($normalized === '') {
+            return null;
+        }
+
+        $previousLocale = app()->getLocale();
+        if ($locale !== $previousLocale) {
+            app()->setLocale($locale);
+        }
+
+        try {
+            return $this->searchManualNormalized($normalized);
+        } finally {
+            if ($locale !== $previousLocale) {
+                app()->setLocale($previousLocale);
+            }
+        }
+    }
+
+    protected function searchManualNormalized(string $normalized): ?string
+    {
+        if ($this->isAmbiguousSingleWord($normalized)) {
+            return null;
+        }
+
+        $words = $this->significantWords($normalized);
+        if ($words === [] && Str::length($normalized) < 5) {
+            return null;
+        }
+
+        $scored = [];
+
+        foreach ($this->manualSearchChunks() as $chunk) {
+            $haystack = $this->normalize($chunk['chapter'].' '.$chunk['label'].' '.$chunk['text']);
+            $score = 0;
+
+            if (Str::length($normalized) >= 5 && Str::contains($haystack, $normalized)) {
+                $score += 15;
+            }
+
+            foreach ($words as $word) {
+                if (Str::contains($haystack, $word)) {
+                    $score += 2;
+                }
+            }
+
+            if ($score > 0) {
+                $scored[] = [$score, $chunk];
+            }
+        }
+
+        if ($scored === []) {
+            return null;
+        }
+
+        usort($scored, function (array $a, array $b): int {
+            return $b[0] <=> $a[0];
+        });
+
+        $minScore = count($words) <= 1 ? 4 : 2;
+        if ($scored[0][0] < $minScore) {
+            return null;
+        }
+
+        $maxActions = (int) config('help_chat_page_help.max_actions', 3);
+        $picked = array_map(
+            fn (array $row): array => $row[1],
+            array_slice($scored, 0, $maxActions),
+        );
+
+        $lines = [];
+        $currentChapter = null;
+
+        foreach ($picked as $chunk) {
+            if ($chunk['chapter'] !== $currentChapter) {
+                if ($lines !== []) {
+                    $lines[] = '';
+                }
+                $lines[] = $chunk['chapter'];
+                $lines[] = '';
+                $currentChapter = $chunk['chapter'];
+            }
+            $lines[] = $chunk['label'].': '.$this->plainText($chunk['text']);
+            $lines[] = '';
+        }
+
+        $answer = trim(implode("\n", $lines));
+        $maxChars = (int) config('help_chat_page_help.max_chars', 1100);
+
+        return Str::length($answer) > $maxChars
+            ? Str::limit($answer, $maxChars - 1, '…')
+            : $answer;
+    }
+
+    /**
+     * @return list<array{chapter: string, label: string, text: string}>
+     */
+    protected function manualSearchChunks(): array
+    {
+        $chunks = [];
+
+        $gettingStartedTitle = __('manual.getting_started.title');
+        if ($gettingStartedTitle !== 'manual.getting_started.title') {
+            $chunks[] = [
+                'chapter' => $gettingStartedTitle,
+                'label' => $gettingStartedTitle,
+                'text' => __('manual.getting_started.intro'),
+            ];
+
+            for ($i = 1; $i <= 5; $i++) {
+                $stepTitle = __('manual.step_'.$i.'_title');
+                if ($stepTitle === 'manual.step_'.$i.'_title') {
+                    continue;
+                }
+                $chunks[] = [
+                    'chapter' => $gettingStartedTitle,
+                    'label' => $stepTitle,
+                    'text' => __('manual.step_'.$i.'_text'),
+                ];
+            }
+        }
+
+        foreach (ManualChapters::pageHelpKeys() as $pageKey) {
+            $help = PageHelp::for($pageKey);
+            if ($help === null || $help['actions'] === []) {
+                continue;
+            }
+
+            $chapter = $this->cleanTitle($help['title']);
+
+            foreach ($help['actions'] as $action) {
+                $chunks[] = [
+                    'chapter' => $chapter,
+                    'label' => $action['label'],
+                    'text' => $action['text'],
+                ];
+            }
+        }
+
+        return $chunks;
+    }
+
+    protected function isAmbiguousSingleWord(string $normalized): bool
+    {
+        if (! str_contains($normalized, ' ')) {
+            return in_array($normalized, self::AMBIGUOUS_SINGLE_WORDS, true);
+        }
+
+        return false;
     }
 
     /**

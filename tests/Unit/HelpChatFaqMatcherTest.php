@@ -65,6 +65,18 @@ it('beantwoordt werkmenu vanuit instellingen-paginahulp', function (): void {
         ->and($answer)->not->toBe(__('faq.items.work_menu.summary'));
 });
 
+it('doorzoekt de handleiding zonder config-patroon', function (): void {
+    config([
+        'help_chat_page_help.entries' => [],
+        'help_chat_faq.entries' => [],
+    ]);
+
+    $matcher = app(\App\Support\HelpChat\HelpChatFaqMatcher::class);
+
+    expect($matcher->match('werkmenu', 'nl'))->toContain('Werkmenu instellingen')
+        ->and($matcher->match('status', 'nl'))->toBeNull();
+});
+
 it('beantwoordt pricing via FAQ met nieuwe tier-structuur', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 
