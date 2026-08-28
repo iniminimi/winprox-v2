@@ -574,7 +574,7 @@
                 },
                 {
                     "label": "Impostazioni menu Lavoro",
-                    "text": "Solo l'amministratore può scegliere per organizzazione quali voci Lavoro sono visibili: Calendario, Prenotazioni, Giri di ispezione e Misurazioni unità. Disattivata, la voce scompare dalla barra laterale e le route backoffice restituiscono vietato. Le impostazioni di prenotazione o misura esistenti su unità e categorie restano attive sul portale QR; non si possono riattivare finché la voce del menu Lavoro è disattivata. I unit check non sono influenzati se Giri di ispezione è disattivato."
+                    "text": "In Organizzazione → Impostazioni → Impostazioni menu Lavoro, l'amministratore può scegliere per organizzazione quali voci Lavoro sono visibili: Calendario, Prenotazioni, Giri di ispezione e Misurazioni unità. Disattivata, la voce scompare dalla barra laterale e le route backoffice restituiscono vietato. Le impostazioni di prenotazione o misura esistenti su unità e categorie restano attive sul portale QR; non si possono riattivare finché la voce del menu Lavoro è disattivata. I unit check non sono influenzati se Giri di ispezione è disattivato."
                 },
                 {
                     "label": "Stile WinProx",

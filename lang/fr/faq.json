@@ -296,6 +296,13 @@
             "body": "Les unit checks sont des confirmations rapides OK/Pas OK sur le QR unité par les exécutants (après Clock Point). Activez d’abord sur catégorie et unité (désactivé par défaut). Les listes optionnelles se gèrent sous Équipes (partagées ou liées à une équipe ; modèles nettoyage, technique et sécurité) et se lient par unité. Pour OK tous les points doivent être cochés. Historique et filtres dans Unit checks ; webhook unit.check.recorded pour les intégrations. Séparé des signalements et mesures ESG.",
             "summary": "OK/Non OK via QR unité (catégorie + unité) ; listes sous Équipes ; pas de signalement si OK ; webhook unit.check.recorded."
         },
+        "work_menu": {
+            "slug": "work_menu",
+            "type": "text",
+            "title": "Qu'est-ce que le menu Travail ?",
+            "body": "Sous Organisation → Paramètres → Paramètres du menu Travail, l'administrateur choisit par organisation quels éléments Travail sont visibles dans la barre latérale : Calendrier, Réservations, Tournées d'inspection et Mesures d'unité. Désactivé, l'élément disparaît du back-office (routes interdites). Les réglages QR existants sur les units restent actifs ; réactivation sur units ou catégories impossible tant que l'élément du menu Travail est désactivé. Avec un modèle de départ sur le tableau de bord, vous voyez le choix du menu Travail dans l'aperçu avant création, puis sur la carte Modèle de départ créé. Modifiez-le ensuite via Paramètres du menu Travail. Supprimer le modèle de départ ne rétablit pas le menu Travail.",
+            "summary": "Organisation → Paramètres → menu Travail : barre latérale par tenant ; modèle de départ = aperçu + résultat."
+        },
         "unit_measurements": {
             "slug": "unit_measurements",
             "type": "text",

@@ -53,7 +53,7 @@
             },
             {
                 "title": "Menu Lavoro",
-                "body": "In Impostazioni (amministratore): attiva/disattiva Calendario, Prenotazioni, Giri di ispezione e Misurazioni unità per organizzazione nella barra laterale. Off = nessun accesso backoffice; il QR sulle unità che già lo avevano resta attivo (grandfather). Un modello iniziale nel cruscotto imposta automaticamente le voci del menu Lavoro (es. gestione immobiliare senza prenotazioni e misurazioni unità)."
+                "body": "In Organizzazione → Impostazioni → Impostazioni menu Lavoro (amministratore): Calendario, Prenotazioni, Giri ispettivi e Misurazioni unità per organizzazione nella barra laterale. Disattivo = nessun accesso backoffice; il QR sulle unità che lo avevano già resta attivo (grandfather). Un modello iniziale nella dashboard mostra la scelta del menu Lavoro nell'anteprima, la applica alla creazione e la mostra su Modello iniziale creato. Gestione immobiliare disattiva Prenotazioni e Misurazioni unità di default; altri modelli attivano tutto. Rimuovere il modello non modifica il menu Lavoro."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Rapporti operativi: CSV o stampa filtrata su segnalazioni, attività, Time, prenotazioni, unit check, misurazioni unit e ESG — per chi può vedere tali elenchi. La stampa segue dove possibile il layout dell'elenco; Time = foglio ore. Distinto dall'esportazione account GDPR (Impostazioni → Privacy ed esportazione)."
+                    "Rapporti operativi: CSV o stampa filtrata su segnalazioni, attività, Time, prenotazioni, unit check, misurazioni unit e ESG — per chi può vedere tali elenchi. La stampa segue dove possibile il layout dell'elenco; Time = foglio ore. Distinto dall'esportazione account GDPR (Impostazioni → Privacy ed esportazione).",
+                    "Menu Lavoro: colonne tenant work_menu_*_enabled; barra laterale e route backoffice via TenantWorkMenuAccess; modello iniziale imposta default via UpdateTenantWorkMenuAction (rimuovere modello non ripristina il menu)."
                 ]
             },
             {

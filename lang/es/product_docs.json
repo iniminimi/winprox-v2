@@ -53,7 +53,7 @@
             },
             {
                 "title": "Menú Trabajo",
-                "body": "En Ajustes (administrador): activar/desactivar Calendario, Reservas, Rondas de inspección y Mediciones de unidad por organización en la barra lateral. Desactivado = sin acceso backoffice; el QR en unidades que ya lo tenían sigue funcionando (grandfather). Una plantilla inicial en el panel aplica automáticamente los elementos del menú Trabajo (p. ej. gestión inmobiliaria sin reservas ni mediciones de unidad)."
+                "body": "En Organización → Ajustes → Ajustes del menú Trabajo (administrador): Calendario, Reservas, Rondas de inspección y Mediciones de unidad por organización en la barra lateral. Desactivado = sin acceso al backoffice; el QR en unidades que ya lo tenían sigue funcionando (grandfather). Una plantilla inicial en el panel muestra la elección del menú en la vista previa, la aplica al crear y la muestra en Plantilla inicial creada. Gestión inmobiliaria desactiva Reservas y Mediciones de unidad por defecto; otras plantillas activan todo. Eliminar la plantilla no cambia el menú de trabajo."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Informes operativos: CSV o impresión filtrada en incidencias, tareas, Time, reservas, unit checks, mediciones unit y ESG — para quien pueda ver esas listas. La impresión sigue cuando procede el diseño de la lista; Time = hoja de horas. Distinto de la exportación de cuenta RGPD (Ajustes → Privacidad y exportación)."
+                    "Informes operativos: CSV o impresión filtrada en incidencias, tareas, Time, reservas, unit checks, mediciones unit y ESG — para quien pueda ver esas listas. La impresión sigue cuando procede el diseño de la lista; Time = hoja de horas. Distinto de la exportación de cuenta RGPD (Ajustes → Privacidad y exportación).",
+                    "Menú de trabajo: columnas tenant work_menu_*_enabled; barra lateral y rutas backoffice via TenantWorkMenuAccess; plantilla inicial aplica defaults via UpdateTenantWorkMenuAction (eliminar plantilla no revierte el menú)."
                 ]
             },
             {

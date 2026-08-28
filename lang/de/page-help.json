@@ -15,7 +15,7 @@
                 },
                 {
                     "label": "Startvorlage",
-                    "text": "Neue Organisationen sehen die Schaltfläche «Möchten Sie Hilfe beim Start?». Wählen Sie Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement: WinProx legt Beispiel-Teams, Kategorien, einen Standort und Units an — Namen in allen Sprachen — und setzt passende Arbeitsmenü-Einträge in der Seitenleiste (z. B. Immobilienverwaltung ohne Reservierungen und Unit-Messungen). Das ist kein Sektorsystem, nur ein Start. Umbenennen geht immer. Löschen, solange es keine Meldungen gibt; danach können Units nur noch deaktiviert werden."
+                    "text": "Neue Organisationen sehen die Schaltfläche «Möchten Sie Hilfe beim Start?». Wählen Sie Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement: WinProx legt Beispiel-Teams, Kategorien, einen Standort und Units an — Namen in allen Sprachen — und setzt passende Arbeitsmenü-Einträge in der Seitenleiste (z. B. Immobilienverwaltung ohne Reservierungen und Unit-Messungen). In der Popup-Vorschau sehen Sie pro Typ, welche Arbeitsmenü-Einträge an oder aus sind; nach dem Anlegen steht das erneut auf Startvorlage angelegt. Später ändern über Organisation → Einstellungen → Arbeitsmenü-Einstellungen (Löschen der Vorlage setzt das Arbeitsmenü nicht zurück). Das ist kein Sektorsystem, nur ein Start. Umbenennen geht immer. Löschen, solange es keine Meldungen gibt; danach können Units nur noch deaktiviert werden."
                 },
                 {
                     "label": "Briefing drucken",
@@ -574,7 +574,7 @@
                 },
                 {
                     "label": "Arbeitsmenü-Einstellungen",
-                    "text": "Nur der Administrator kann pro Organisation festlegen, welche Arbeitsmenü-Einträge sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag aus der Seitenleiste und Backoffice-Routen sind gesperrt. Bestehende Reservierungs- oder Mess-Einstellungen auf Units und Kategorien funktionieren im QR-Portal weiter; neu aktivieren ist nicht möglich, solange der Menüeintrag aus ist. Unit Checks werden nicht beeinflusst, wenn Inspektionsrunden aus ist."
+                    "text": "Über Organisation → Einstellungen → Arbeitsmenü-Einstellungen kann der Administrator pro Organisation festlegen, welche Arbeitsmenü-Einträge sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag aus der Seitenleiste und Backoffice-Routen sind gesperrt. Bestehende Reservierungs- oder Mess-Einstellungen auf Units und Kategorien funktionieren im QR-Portal weiter; neu aktivieren ist nicht möglich, solange der Menüeintrag aus ist. Unit Checks werden nicht beeinflusst, wenn Inspektionsrunden aus ist."
                 },
                 {
                     "label": "WinProx-Stil",

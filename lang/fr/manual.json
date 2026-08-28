@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Commencer",
         "title": "Opérationnel en 5 étapes",
-        "intro": "Suivez cet ordre pour la première configuration, ou chargez un modèle de départ depuis le tableau de bord. Une équipe suffit pour démarrer. Time (pointeuse) est optionnel ; Clock Point reste le QR d’identification."
+        "intro": "Suivez cet ordre pour la première configuration, ou chargez un modèle de départ sur le tableau de bord (choix du menu Travail visible dans l'aperçu et sur Modèle de départ créé ; modifiez ensuite via Organisation → Paramètres → Paramètres du menu Travail). Une équipe suffit pour démarrer. Time (pointeuse) est optionnel ; Clock Point reste le QR d'inscription."
     },
     "chapter": "Chapitre",
     "toc": {

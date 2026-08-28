@@ -53,7 +53,7 @@
             },
             {
                 "title": "Werkmenu",
-                "body": "Onder Instellingen (beheerder): Kalender, Reserveringen, Inspectierondes en Unitmetingen per organisatie in/uit in de sidebar. Uit = geen backoffice-toegang; QR op units die het al hadden blijft werken (grandfather). Een starttemplate op het dashboard zet passende werkmenu-items automatisch (bv. vastgoedbeheer zonder reserveringen en unitmetingen)."
+                "body": "Via Organisatie → Instellingen → Werkmenu instellingen (beheerder): Kalender, Reserveringen, Inspectierondes en Unitmetingen per organisatie in/uit in de sidebar. Uit = geen backoffice-toegang; QR op units die het al hadden blijft werken (grandfather). Een starttemplate op het dashboard toont de werkmenu-keuze in de preview, past die bij aanmaken toe en toont het resultaat op Starttemplate aangemaakt. Vastgoedbeheer zet standaard Reserveringen en Unitmetingen uit; andere templates zetten alles aan. Verwijderen van het starttemplate wijzigt het werkmenu niet."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                     "**Medewerker**: operationeel (meldingen, taken, locaties) — geen account-/billingbeheer.",
                     "**Uitvoerder / teamleader**: taken via veldportaal; teamleader kan iconen vrijgeven.",
                     "Elke actie wordt gecontroleerd: je mag alleen wat bij je rol past (**minimale rechten**). API-sleutels krijgen aparte toestemmingen — bijvoorbeeld “meldingen lezen” zonder toegang tot alles.",
-                    "Operationele rapporten: gefilterde CSV of afdruk op meldingen, taken, Time, reserveringen, unit checks, unitmetingen en ESG — voor wie die lijsten mag zien. Afdruk volgt waar mogelijk de lijstlayout; Time = urenstaat. Los van de AVG-account-export (Instellingen → Privacy & export)."
+                    "Operationele rapporten: gefilterde CSV of afdruk op meldingen, taken, Time, reserveringen, unit checks, unitmetingen en ESG — voor wie die lijsten mag zien. Afdruk volgt waar mogelijk de lijstlayout; Time = urenstaat. Los van de AVG-account-export (Instellingen → Privacy & export).",
+                    "Werkmenu: tenant-kolommen work_menu_*_enabled; sidebar en backoffice-routes via TenantWorkMenuAccess; starttemplate zet defaults via UpdateTenantWorkMenuAction (verwijderen template zet menu niet terug)."
                 ]
             },
             {

@@ -296,6 +296,13 @@
             "body": "I unit check sono conferme rapide OK/Non OK sul QR unità da parte degli esecutori (dopo Clock Point). Abilita prima su categoria e unità (disattivato di default). Le checklist opzionali si gestiscono in Team (condivise o collegate a un team; modelli pulizia, tecnica e security) e si collegano per unità. Per OK tutti i punti devono essere spuntati. Cronologia e filtri in Unit checks; webhook unit.check.recorded per integrazioni. Separato da segnalazioni e misure ESG.",
             "summary": "OK/Non OK via QR unit (categoria + unit); checklist in Team; OK senza segnalazione; webhook unit.check.recorded."
         },
+        "work_menu": {
+            "slug": "work_menu",
+            "type": "text",
+            "title": "Cos'è il menu Lavoro?",
+            "body": "In Organizzazione → Impostazioni → Impostazioni menu Lavoro, l'amministratore sceglie per organizzazione quali voci Lavoro sono visibili nella barra laterale: Calendario, Prenotazioni, Giri ispettivi e Misurazioni unità. Disattivato, la voce scompare dal backoffice (route non consentite). Le impostazioni QR esistenti sulle unità restano attive; non si possono riattivare su unità o categorie finché la voce del menu Lavoro è disattivata. Con un modello iniziale nella dashboard, la scelta del menu Lavoro compare nell'anteprima prima della creazione e di nuovo sulla scheda Modello iniziale creato. Modificatela poi in Impostazioni menu Lavoro. Rimuovere il modello iniziale non ripristina il menu Lavoro.",
+            "summary": "Organizzazione → Impostazioni → menu Lavoro: barra laterale per tenant; modello iniziale = anteprima + risultato."
+        },
         "unit_measurements": {
             "slug": "unit_measurements",
             "type": "text",

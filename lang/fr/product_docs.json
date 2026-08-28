@@ -79,7 +79,7 @@
             },
             {
                 "title": "Menu Travail",
-                "body": "Sous Paramètres (administrateur) : activer/désactiver Calendrier, Réservations, Tournées d'inspection et Mesures d'unité par organisation dans la barre latérale. Désactivé = pas d'accès back-office ; le QR sur les unités déjà configurées reste actif (grandfather). Un modèle de départ sur le tableau de bord règle automatiquement les entrées du menu Travail (ex. gestion immobilière sans réservations ni mesures d'unité)."
+                "body": "Via Organisation → Paramètres → Paramètres du menu Travail (administrateur) : Calendrier, Réservations, Tournées d'inspection et Mesures d'unité par organisation dans la barre latérale. Désactivé = pas d'accès back-office ; le QR sur les units qui l'avaient déjà reste actif (grandfather). Un modèle de départ sur le tableau de bord montre le choix du menu Travail dans l'aperçu, l'applique à la création et l'affiche sur Modèle de départ créé. Gestion immobilière : Réservations et Mesures d'unité désactivées par défaut ; autres modèles : tout activé. Supprimer le modèle ne modifie pas le menu Travail."
             }
         ],
         "right": [
@@ -180,7 +180,8 @@
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Rapports opérationnels : CSV ou impression filtrés sur signalements, tâches, Time, réservations, contrôles unit, mesures unit et ESG — pour qui peut voir ces listes. L'impression suit la mise en page de la liste quand c'est pertinent ; Time = feuille d'heures. Distinct de l'export compte RGPD (Paramètres → Confidentialité et export)."
+                    "Rapports opérationnels : CSV ou impression filtrés sur signalements, tâches, Time, réservations, contrôles unit, mesures unit et ESG — pour qui peut voir ces listes. L'impression suit la mise en page de la liste quand c'est pertinent ; Time = feuille d'heures. Distinct de l'export compte RGPD (Paramètres → Confidentialité et export).",
+                    "Menu Travail : colonnes tenant work_menu_*_enabled ; barre latérale et routes back-office via TenantWorkMenuAccess ; modèle de départ applique les defaults via UpdateTenantWorkMenuAction (supprimer le modèle ne rétablit pas le menu)."
                 ]
             },
             {

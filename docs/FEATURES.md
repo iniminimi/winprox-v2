@@ -25,11 +25,12 @@ Corporate — groep alleen als minstens één module aan staat) ·
 **Organisatie** (Instellingen, API, Abonnement) · **Hulp** (FAQ, Handleiding, Juridisch,
 Contact).
 
-**Werkmenu instellingen** (Instellingen, admin): per tenant Kalender, Reserveringen,
+**Werkmenu instellingen** (Organisatie → Instellingen, admin): per tenant Kalender, Reserveringen,
 Inspectierondes en Unitmetingen in/uit in de sidebar; uit = geen backoffice-routes (403).
 Bestaande unit/categorie-vlaggen op het QR-portaal blijven werken (grandfather); nieuw
 inschakelen op units/categorieën kan niet zolang het werkmenu-item uit staat. Inspectierondes
-uit heeft geen invloed op unit checks.
+uit heeft geen invloed op unit checks. Een starttemplate toont de keuze in preview en op
+**Starttemplate aangemaakt**; verwijderen van het template zet het werkmenu niet terug.
 
 ---
 
@@ -39,8 +40,8 @@ uit heeft geen invloed op unit checks.
 
 **Starttemplate (optioneel, nieuwe organisaties)**
 - Op het dashboard zolang er nog geen teams/categorieën/units zijn: knop **"Wil je op weg geholpen worden?"**. Een bestaande locatie zonder units wordt bij het laden van het template vervangen (locaties kun je in de UI alleen deactiveren).
-- Modal: **kies je type organisatie** (hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer, fleet management) + uitleg wat er in de DB komt. Knoppen **Aanmaken** / **Annuleren**. Dit is **geen sectorsysteem** — alleen een starttemplate.
-- Na aanmaken: kaart **Starttemplate aangemaakt** met het resultaat, volgende stap in het rood, pulserende knop **Ga naar units via Locaties** en knop **Verwijder starttemplate**.
+- Modal: **kies je type organisatie** (hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer, fleet management) + uitleg wat er in de DB komt, inclusief **werkmenu** (aan/uit per sidebar-item). Knoppen **Aanmaken** / **Annuleren**. Dit is **geen sectorsysteem** — alleen een starttemplate.
+- Na aanmaken: kaart **Starttemplate aangemaakt** met het resultaat (teams, categorieën, locatie, units **en werkmenu**), volgende stap in het rood, pulserende knop **Ga naar units via Locaties** en knop **Verwijder starttemplate**. Werkmenu later wijzigen via **Organisatie → Instellingen → Werkmenu instellingen**.
 - Stelt tegelijk passende **werkmenu**-defaults in (sidebar): vastgoedbeheer zonder Reserveringen/Unitmetingen; gemeentebestuur, ziekenhuis, industrie, hotel en fleet management met Kalender, Reserveringen, Inspectierondes en Unitmetingen aan (portaal-vinkjes op categorieën/units blijven apart — hotel activeert unitmetingen niet automatisch op units).
 - Namen van teams/categorieën/locatie/units worden in **alle talen** in de DB gezet. Hernoemen blijft altijd mogelijk. Zodra er meldingen zijn, kunnen units alleen nog **gedeactiveerd** worden; het template blijft dan bestaan.
 

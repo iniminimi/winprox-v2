@@ -582,7 +582,7 @@
                 },
                 {
                     "label": "Paramètres du menu Travail",
-                    "text": "Seul l'administrateur peut choisir par organisation quels éléments Travail sont visibles : Calendrier, Réservations, Tournées d'inspection et Mesures d'unité. Désactivé, l'élément disparaît de la barre latérale et les routes back-office renvoient interdit. Les réglages de réservation ou de mesure existants sur unités et catégories restent actifs sur le portail QR ; réactivation impossible tant que l'élément du menu Travail est désactivé. Les unit checks ne sont pas affectés si Tournées d'inspection est désactivé."
+                    "text": "Via Organisation → Paramètres → Paramètres du menu Travail, l'administrateur peut choisir par organisation quels éléments Travail sont visibles : Calendrier, Réservations, Tournées d'inspection et Mesures d'unité. Désactivé, l'élément disparaît de la barre latérale et les routes back-office renvoient interdit. Les réglages de réservation ou de mesure existants sur unités et catégories restent actifs sur le portail QR ; réactivation impossible tant que l'élément du menu Travail est désactivé. Les unit checks ne sont pas affectés si Tournées d'inspection est désactivé."
                 },
                 {
                     "label": "Style WinProx",

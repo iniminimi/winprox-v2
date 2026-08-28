@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Erste Schritte",
         "title": "In 5 Schritten einsatzbereit",
-        "intro": "Folgen Sie dieser Reihenfolge bei der Ersteinrichtung, oder laden Sie auf dem Dashboard eine Startvorlage. Ein Team reicht zum Start. Time (Stechuhr) ist optional; Clock Point bleibt der Anmelde-QR."
+        "intro": "Folgen Sie dieser Reihenfolge bei der Ersteinrichtung, oder laden Sie auf dem Dashboard eine Startvorlage (Arbeitsmenü-Wahl sichtbar in der Vorschau und auf Startvorlage angelegt; später über Organisation → Einstellungen → Arbeitsmenü-Einstellungen). Ein Team reicht zum Start. Time (Stechuhr) ist optional; Clock Point bleibt der Anmelde-QR."
     },
     "chapter": "Kapitel",
     "toc": {

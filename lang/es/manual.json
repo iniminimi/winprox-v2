@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Primeros pasos",
         "title": "En funcionamiento en 5 pasos",
-        "intro": "Siga este orden en la primera configuración, o cargue una plantilla inicial desde el panel. Un equipo basta para empezar. Time (reloj de fichar) es opcional; Clock Point sigue siendo el QR de identificación."
+        "intro": "Siga este orden en la primera configuración, o cargue una plantilla inicial en el panel (elección del menú de trabajo visible en la vista previa y en Plantilla inicial creada; cámbiela después en Organización → Ajustes → Ajustes del menú Trabajo). Un equipo basta para empezar. Time (fichaje) es opcional; Clock Point sigue siendo el QR de registro."
     },
     "chapter": "Capítulo",
     "toc": {

@@ -15,7 +15,7 @@
                 },
                 {
                     "label": "Starter template",
-                    "text": "New organisations see the button «Would you like a hand getting started?». Choose hotel, hospital, industry, municipality, property management or fleet management: WinProx creates sample teams, categories, one location and units — names in every language — and sets suitable work menu items in the sidebar (e.g. property management without reservations and unit measurements). This is not a sector system, only a start. You can rename everything later. Remove it while there are no issues; after that, units can only be deactivated."
+                    "text": "New organisations see the button «Would you like a hand getting started?». Choose hotel, hospital, industry, municipality, property management or fleet management: WinProx creates sample teams, categories, one location and units — names in every language — and sets suitable work menu items in the sidebar (e.g. property management without reservations and unit measurements). In the popup you also see per type which work menu items are on or off; after creating, that appears again on Starter template created. Change later via Organisation → Settings → Work menu settings (removing the template does not revert the work menu). This is not a sector system, only a start. You can rename everything later. Remove it while there are no issues; after that, units can only be deactivated."
                 },
                 {
                     "label": "Print briefing",
@@ -574,7 +574,7 @@
                 },
                 {
                     "label": "Work menu settings",
-                    "text": "Only the administrator can choose per organisation which Work items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the sidebar and backoffice routes return forbidden. Existing reservation or measurement settings on units and categories keep working on the QR portal; you cannot newly enable them while the work menu item is off. Unit checks are not affected when Inspection rounds is off."
+                    "text": "Via Organisation → Settings → Work menu settings, the administrator can choose per organisation which Work items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the sidebar and backoffice routes return forbidden. Existing reservation or measurement settings on units and categories keep working on the QR portal; you cannot newly enable them while the work menu item is off. Unit checks are not affected when Inspection rounds is off."
                 },
                 {
                     "label": "WinProx style",

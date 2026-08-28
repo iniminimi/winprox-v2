@@ -300,6 +300,13 @@
             "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by field workers (after Clock Point). Enable first on category and unit (off by default). Optional checklists are managed under Teams (shared or linked to a team; starters for cleaning, technical and security) and linked per unit. For OK all points must be ticked. History and filters in Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements.",
             "summary": "OK/Not OK via unit QR (enable category + unit); checklists under Teams; OK does not create an issue; webhook unit.check.recorded."
         },
+        "work_menu": {
+            "slug": "work_menu",
+            "type": "text",
+            "title": "What is the work menu?",
+            "body": "Under Organisation → Settings → Work menu settings, the administrator chooses per organisation which Work sidebar items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the back office (routes return forbidden). Existing QR settings on units keep working; you cannot newly enable them on units or categories while the work menu item is off. With a starter template on the dashboard, you see the work menu choice in the preview before you create it, and again on the Starter template created card. Change it later under Work menu settings. Removing the starter template does not revert the work menu.",
+            "summary": "Organisation → Settings → Work menu: per-tenant sidebar; starter template shows preview and result."
+        },
         "unit_measurements": {
             "slug": "unit_measurements",
             "type": "text",

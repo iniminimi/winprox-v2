@@ -15,7 +15,7 @@
                 },
                 {
                     "label": "Starttemplate",
-                    "text": "Nieuwe organisaties zien de knop «Wil je op weg geholpen worden?». Kies hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer of fleet management: WinProx maakt voorbeeldteams, categorieën, één locatie en units — namen in alle talen — en zet passende werkmenu-items in de sidebar (bv. vastgoedbeheer zonder reserveringen en unitmetingen). Dit is geen sectorsysteem, alleen een start. Hernoemen kan altijd. Verwijderen zolang er geen meldingen zijn; daarna kunnen units alleen nog gedeactiveerd worden."
+                    "text": "Nieuwe organisaties zien de knop «Wil je op weg geholpen worden?». Kies hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer of fleet management: WinProx maakt voorbeeldteams, categorieën, één locatie en units — namen in alle talen — en zet passende werkmenu-items in de sidebar (bv. vastgoedbeheer zonder reserveringen en unitmetingen). In de popup zie je per type ook welke werkmenu-items aan of uit staan; na aanmaken staat dat opnieuw op Starttemplate aangemaakt. Wijzig later via Organisatie → Instellingen → Werkmenu instellingen (verwijderen van het template zet het werkmenu niet terug). Dit is geen sectorsysteem, alleen een start. Hernoemen kan altijd. Verwijderen zolang er geen meldingen zijn; daarna kunnen units alleen nog gedeactiveerd worden."
                 },
                 {
                     "label": "Briefing afdrukken",
@@ -574,7 +574,7 @@
                 },
                 {
                     "label": "Werkmenu instellingen",
-                    "text": "Alleen de beheerder kan per organisatie bepalen welke onderdelen onder Werk zichtbaar zijn: Kalender, Reserveringen, Inspectierondes en Unitmetingen. Uitgeschakeld verdwijnt het item uit de sidebar en zijn de backoffice-routes niet bereikbaar. Bestaande reserverings- of meet-instellingen op units en categorieën blijven op het QR-portaal werken; nieuw inschakelen kan niet zolang het werkmenu-item uit staat. Unit checks worden niet beïnvloed door Inspectierondes uit."
+                    "text": "Via Organisatie → Instellingen → Werkmenu instellingen kan de beheerder per organisatie bepalen welke onderdelen onder Werk zichtbaar zijn: Kalender, Reserveringen, Inspectierondes en Unitmetingen. Uitgeschakeld verdwijnt het item uit de sidebar en zijn de backoffice-routes niet bereikbaar. Bestaande reserverings- of meet-instellingen op units en categorieën blijven op het QR-portaal werken; nieuw inschakelen kan niet zolang het werkmenu-item uit staat. Unit checks worden niet beïnvloed door Inspectierondes uit."
                 },
                 {
                     "label": "WinProx-stijl",

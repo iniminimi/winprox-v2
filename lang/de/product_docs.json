@@ -53,7 +53,7 @@
             },
             {
                 "title": "Arbeitsmenü",
-                "body": "Unter Einstellungen (Administrator): Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen pro Organisation in der Seitenleiste ein/aus. Aus = kein Backoffice-Zugriff; QR auf Units, die es bereits hatten, bleibt aktiv (Grandfather). Eine Startvorlage auf dem Dashboard setzt passende Arbeitsmenü-Einträge automatisch (z. B. Immobilienverwaltung ohne Reservierungen und Unit-Messungen)."
+                "body": "Über Organisation → Einstellungen → Arbeitsmenü-Einstellungen (Administrator): Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen pro Organisation in der Seitenleiste ein/aus. Aus = kein Backoffice-Zugriff; QR auf Units, die es bereits hatten, bleibt aktiv (Grandfather). Eine Startvorlage auf dem Dashboard zeigt die Arbeitsmenü-Wahl in der Vorschau, wendet sie beim Anlegen an und zeigt das Ergebnis auf Startvorlage angelegt. Immobilienverwaltung schaltet standardmäßig Reservierungen und Unit-Messungen aus; andere Vorlagen schalten alles ein. Löschen der Startvorlage ändert das Arbeitsmenü nicht."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Betriebliche Berichte: gefilterte CSV oder Druck auf Meldungen, Aufgaben, Time, Reservierungen, Unit-Checks, Unit-Messungen und ESG — für Nutzer, die diese Listen sehen dürfen. Druck folgt wo sinnvoll dem Listenlayout; Time = Stundenübersicht. Getrennt vom DSGVO-Kontoexport (Einstellungen → Datenschutz und Export)."
+                    "Betriebliche Berichte: gefilterte CSV oder Druck auf Meldungen, Aufgaben, Time, Reservierungen, Unit-Checks, Unit-Messungen und ESG — für Nutzer, die diese Listen sehen dürfen. Druck folgt wo sinnvoll dem Listenlayout; Time = Stundenübersicht. Getrennt vom DSGVO-Kontoexport (Einstellungen → Datenschutz und Export).",
+                    "Arbeitsmenü: Tenant-Spalten work_menu_*_enabled; Seitenleiste und Backoffice-Routen via TenantWorkMenuAccess; Startvorlage setzt Defaults via UpdateTenantWorkMenuAction (Löschen der Vorlage setzt Menü nicht zurück)."
                 ]
             },
             {

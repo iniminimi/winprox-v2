@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Per iniziare",
         "title": "Operativo in 5 passi",
-        "intro": "Segua quest’ordine alla prima configurazione, oppure carichi un modello iniziale dal cruscotto. Un team basta per iniziare. Time (timbratrice) è opzionale; Clock Point resta il QR di identificazione."
+        "intro": "Segui questo ordine per la prima configurazione, o carica un modello iniziale nella dashboard (scelta menu Lavoro visibile in anteprima e su Modello iniziale creato; modifica poi in Organizzazione → Impostazioni → Impostazioni menu Lavoro). Un team basta per iniziare. Time (timbratura) è opzionale; Clock Point resta il QR di accesso."
     },
     "chapter": "Capitolo",
     "toc": {

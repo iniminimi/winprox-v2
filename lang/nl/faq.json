@@ -300,6 +300,13 @@
             "body": "Unit checks zijn snelle OK/Niet OK-bevestigingen op de unit-QR door uitvoerders (na Clock Point). Schakel eerst in op categorie én unit (standaard uit). Optionele checklists maak je onder Teams (gedeeld of gekoppeld aan een team; starters voor schoonmaak, techniek en security) en koppel je per unit. Bij OK moeten alle punten afgevinkt zijn. Historiek en filters in Unit checks; webhook unit.check.recorded voor integraties. Los van meldingen en ESG-metingen.",
             "summary": "OK/Niet OK via unit-QR (categorie + unit aan); checklists onder Teams; geen melding bij OK; webhook unit.check.recorded."
         },
+        "work_menu": {
+            "slug": "work_menu",
+            "type": "text",
+            "title": "Wat is het werkmenu?",
+            "body": "Onder Organisatie → Instellingen → Werkmenu instellingen kiest de beheerder per organisatie welke onderdelen van het Werk-menu in de sidebar staan: Kalender, Reserveringen, Inspectierondes en Unitmetingen. Uitgeschakeld verdwijnt het item uit beheer (routes zijn dan niet bereikbaar). Bestaande QR-instellingen op units blijven werken; nieuw inschakelen op units of categorieën kan niet zolang het werkmenu-item uit staat. Bij een starttemplate op het dashboard zie je de werkmenu-keuze al in de preview vóór je aanmaakt, en opnieuw op de kaart Starttemplate aangemaakt. Daarna pas je het aan via Werkmenu instellingen. Het starttemplate verwijderen zet het werkmenu niet terug.",
+            "summary": "Organisatie → Instellingen → Werkmenu: sidebar per tenant; starttemplate toont preview en resultaat."
+        },
         "unit_measurements": {
             "slug": "unit_measurements",
             "type": "text",

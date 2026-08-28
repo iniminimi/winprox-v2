@@ -296,6 +296,13 @@
             "body": "Los unit checks son confirmaciones rápidas OK/No OK en el QR de la unidad por operarios (tras Clock Point). Active primero en categoría y unidad (desactivado por defecto). Las listas opcionales se gestionan en Equipos (compartidas o vinculadas a un equipo; plantillas de limpieza, técnica y seguridad) y se vinculan por unidad. Para OK deben marcarse todos los puntos. Historial y filtros en Unit checks; webhook unit.check.recorded para integraciones. Separado de incidencias y mediciones ESG.",
             "summary": "OK/No OK vía QR unit (categoría + unit); listas en Equipos; OK sin aviso; webhook unit.check.recorded."
         },
+        "work_menu": {
+            "slug": "work_menu",
+            "type": "text",
+            "title": "¿Qué es el menú de trabajo?",
+            "body": "En Organización → Ajustes → Ajustes del menú Trabajo, el administrador elige por organización qué elementos de Trabajo aparecen en la barra lateral: Calendario, Reservas, Rondas de inspección y Mediciones de unidad. Desactivado, el elemento desaparece del backoffice (rutas prohibidas). Los ajustes QR existentes en unidades siguen funcionando; no puede activarlos de nuevo en unidades o categorías mientras el elemento del menú esté desactivado. Con una plantilla inicial en el panel, ve la elección del menú de trabajo en la vista previa antes de crearla y de nuevo en la tarjeta Plantilla inicial creada. Cámbielo después en Ajustes del menú Trabajo. Eliminar la plantilla inicial no revierte el menú de trabajo.",
+            "summary": "Organización → Ajustes → menú Trabajo: barra lateral por tenant; plantilla inicial muestra vista previa y resultado."
+        },
         "unit_measurements": {
             "slug": "unit_measurements",
             "type": "text",

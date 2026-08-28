@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Getting started",
         "title": "Up and running in 5 steps",
-        "intro": "Follow this order for first-time setup, or load a starter template from the dashboard. One team is enough to get started. Time (punch clock) is optional; Clock Point remains the sign-in QR."
+        "intro": "Follow this order for first-time setup, or load a starter template on the dashboard (work menu choice visible in the preview and on Starter template created; change later via Organisation → Settings → Work menu settings). One team is enough to get started. Time (punch clock) is optional; Clock Point remains the sign-in QR."
     },
     "chapter": "Chapter",
     "toc": {

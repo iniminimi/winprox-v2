@@ -53,7 +53,7 @@
             },
             {
                 "title": "Work menu",
-                "body": "Under Settings (administrator): toggle Calendar, Reservations, Inspection rounds and Unit measurements per organisation in the sidebar. Off = no backoffice access; QR on units that already had the feature keeps working (grandfather). A starter template on the dashboard sets suitable work menu items automatically (e.g. property management without reservations and unit measurements)."
+                "body": "Via Organisation → Settings → Work menu settings (administrator): toggle Calendar, Reservations, Inspection rounds and Unit measurements per organisation in the sidebar. Off = no backoffice access; QR on units that already had the feature keeps working (grandfather). A starter template on the dashboard shows the work menu choice in the preview, applies it on create and shows the result on Starter template created. Property management turns off Reservations and Unit measurements by default; other templates turn all on. Removing the starter template does not change the work menu."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Operational reports: filtered CSV or print on issues, tasks, Time, reservations, unit checks, unit measurements and ESG — for users who may view those lists. Print follows the list layout where possible; Time = timesheet. Separate from the GDPR account export (Settings → Privacy & data export)."
+                    "Operational reports: filtered CSV or print on issues, tasks, Time, reservations, unit checks, unit measurements and ESG — for users who may view those lists. Print follows the list layout where possible; Time = timesheet. Separate from the GDPR account export (Settings → Privacy & data export).",
+                    "Work menu: tenant columns work_menu_*_enabled; sidebar and backoffice routes via TenantWorkMenuAccess; starter template sets defaults via UpdateTenantWorkMenuAction (removing template does not revert menu)."
                 ]
             },
             {

@@ -296,6 +296,13 @@
             "body": "Unit-Checks sind schnelle OK/Nicht-OK-Bestätigungen auf dem Unit-QR durch Ausführende (nach Clock Point). Zuerst an Kategorie und Unit aktivieren (standardmäßig aus). Optionale Checklisten erstellen Sie unter Teams (geteilt oder einem Team zugeordnet; Vorlagen für Reinigung, Technik und Security) und verknüpfen sie pro Unit. Bei OK müssen alle Punkte abgehakt sein. Verlauf und Filter unter Unit-Checks; Webhook unit.check.recorded für Integrationen. Getrennt von Meldungen und ESG-Messungen.",
             "summary": "OK/Nicht OK via Unit-QR (Kategorie + Unit an); Checklisten unter Teams; OK ohne Meldung; Webhook unit.check.recorded."
         },
+        "work_menu": {
+            "slug": "work_menu",
+            "type": "text",
+            "title": "Was ist das Arbeitsmenü?",
+            "body": "Unter Organisation → Einstellungen → Arbeitsmenü-Einstellungen wählt der Administrator pro Organisation, welche Einträge unter Arbeit in der Seitenleiste sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag im Backoffice (Routen sind dann gesperrt). Bestehende QR-Einstellungen auf Units bleiben aktiv; neu aktivieren auf Units oder Kategorien ist nicht möglich, solange der Menüeintrag aus ist. Bei einer Startvorlage auf dem Dashboard sehen Sie die Arbeitsmenü-Wahl schon in der Vorschau vor dem Anlegen und erneut auf der Karte Startvorlage angelegt. Später ändern Sie das unter Arbeitsmenü-Einstellungen. Das Löschen der Startvorlage setzt das Arbeitsmenü nicht zurück.",
+            "summary": "Organisation → Einstellungen → Arbeitsmenü: Seitenleiste pro Mandant; Startvorlage zeigt Vorschau und Ergebnis."
+        },
         "unit_measurements": {
             "slug": "unit_measurements",
             "type": "text",

@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Aan de slag",
         "title": "In 5 stappen up-and-running",
-        "intro": "Volg deze volgorde bij de eerste inrichting, of laad op het dashboard een starttemplate. Eén team is genoeg om te starten. Time (prikklok) is optioneel; Clock Point blijft de aanmeld-QR."
+        "intro": "Volg deze volgorde bij de eerste inrichting, of laad op het dashboard een starttemplate (werkmenu-keuze zichtbaar in preview en op Starttemplate aangemaakt; later via Organisatie → Instellingen → Werkmenu instellingen). Eén team is genoeg om te starten. Time (prikklok) is optioneel; Clock Point blijft de aanmeld-QR."
     },
     "chapter": "Hoofdstuk",
     "toc": {
