@@ -273,24 +273,33 @@
                     "text": "In the category edit form you can manually update the name per language (NL, EN, FR, DE). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
                 },
                 {
+                    "label": "Portal settings (category)",
+                    "text": "Set GPS, reservable, unit checks, unit measurements, contact and email confirmation at category level. Units in this category inherit these flags when you choose or change the category. When you update category settings, units that still had the old defaults get the new values. Per-unit exceptions go in Advanced portal options on the unit form."
+                },
+                {
                     "label": "Reservable",
-                    "text": "Turn on Reservable on a category for shared resources with a time slot (meeting room, vehicle, key, …). Then turn on Allow reservations per unit (off by default). The unit QR then shows the Reserve tile. Defect reports remain via Issue → task."
+                    "nested": true,
+                    "text": "For shared resources with a time slot (meeting room, vehicle, key, …). Units inherit this; the unit QR shows the Reserve tile when both category and unit allow it. Defect reports remain via Issue → task."
                 },
                 {
                     "label": "Allow unit checks",
-                    "text": "Turn on Allow unit checks on a category for quick OK/Not OK rounds (security, cleaning, …). Then turn on Allow unit checks per unit (off by default). Both must be on before workers see the Unit check tile on the unit QR. Separate from ESG measurements."
+                    "nested": true,
+                    "text": "For quick OK/Not OK rounds (security, cleaning, …). Units inherit this; workers see the Unit check tile only when both category and unit are on. Separate from ESG measurements."
                 },
                 {
                     "label": "Require contact details",
-                    "text": "Turn this on if anonymous reporters via the unit QR must enter first name, last name and email. Off by default. Only takes effect when also enabled on the unit. Does not apply to signed-in field workers — they are already identified."
+                    "nested": true,
+                    "text": "Anonymous reporters via the unit QR must enter first name, last name and email. Units inherit this from the category. Does not apply to signed-in field workers."
                 },
                 {
                     "label": "Require email confirmation",
-                    "text": "Turn this on if anonymous reporters via the unit QR must confirm their email. The report, task and webhook are created only after they click the link in the email. Off by default. Only takes effect when also enabled on the unit. Does not apply to signed-in field workers."
+                    "nested": true,
+                    "text": "Anonymous reporters must confirm their email; the report, task and webhook are created only after they click the link. Units inherit this from the category. Does not apply to signed-in field workers."
                 },
                 {
                     "label": "Allow unit measurements",
-                    "text": "Enable Allow unit measurements on a category for readings via the unit QR (km, temperature, status, …). Then enable it per unit and link measure fields (Work → Unit measurements). Both flags must be on. Separate from ESG and unit checks."
+                    "nested": true,
+                    "text": "Readings via the unit QR (km, temperature, status, …). Units inherit this; link measure fields under Work → Unit measurements. Both category and unit must be on. Separate from ESG and unit checks."
                 }
             ]
         },
@@ -299,7 +308,7 @@
             "actions": [
                 {
                     "label": "Add unit",
-                    "text": "Add an object/machine/asset/space with QR token and default team. A unit can be diverse: a machine, room, vehicle, aerial work platform, fitness device, etc. Set per unit whether visitors may submit reports."
+                    "text": "Add an object/machine/asset/space with QR token and default team. A unit can be diverse: a machine, room, vehicle, aerial work platform, fitness device, etc. Portal behaviour (reports, reservations, checks, …) follows the chosen category by default; see Advanced portal options for exceptions."
                 },
                 {
                     "label": "Location translations",
@@ -310,12 +319,13 @@
                     "text": "In the unit edit form you can manually update name and description per language (NL, EN, FR, DE). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
                 },
                 {
-                    "label": "Allow reservations",
-                    "text": "Only relevant if the category is Reservable. Off by default; turn on to allow reservations for this unit. Other units in the same category stay independent."
+                    "label": "Advanced portal options",
+                    "text": "In the unit edit form, portal checkboxes are grouped in the collapsible «Portal options per unit» menu (below Category), similar to Translation. Prefer setting these on the category: units inherit those values automatically. Open the submenu only when one unit must differ. Hover over Category or Portal options per unit for help in a tooltip."
                 },
                 {
-                    "label": "Allow unit checks",
-                    "text": "Only relevant when the category allows unit checks. Off by default; turn on so workers can record OK/Not OK via the unit QR."
+                    "label": "What is in the submenu?",
+                    "nested": true,
+                    "text": "Public reports, reservations, unit checks (+ optional checklist), unit measurements (+ measure fields), required contact details and email confirmation. GPS location is category-only, not per unit. Both category and unit must be on before a feature appears on the QR portal."
                 },
                 {
                     "label": "External ID",
@@ -324,14 +334,6 @@
                 {
                     "label": "Checklist (unit check)",
                     "text": "Optionally link a checklist to the unit (templates under the People → Teams page, shared or from the category’s teams). On Unit check in the portal the worker ticks each item before OK is saved."
-                },
-                {
-                    "label": "Require contact details",
-                    "text": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters (first name, last name and email), not to workers signed in via Clock Point."
-                },
-                {
-                    "label": "Require email confirmation",
-                    "text": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not to workers signed in via Clock Point. The report is created only after they click the email link."
                 },
                 {
                     "label": "Bulk units",
@@ -358,10 +360,6 @@
                 {
                     "label": "Documents & announcements",
                     "text": "Manage documents and announcements for the unit QR portal. Documents: turn on «Active» to publish in the portal. Without «Field workers only», any visitor can view and download the file. With «Field workers only», only a field worker signed in to the portal (name + icon) can see and download it — not via the admin screen with email login. Inactive documents remain visible only here. Active documents are translated automatically by WinProx (periodically; description); the edit form shows a translation preview per language. The title stays in the source language."
-                },
-                {
-                    "label": "Allow unit measurements",
-                    "text": "Only relevant if the category allows unit measurements. Off by default. Enable and select which measure fields belong to this unit."
                 }
             ]
         },
@@ -430,7 +428,7 @@
                 },
                 {
                     "label": "Enable",
-                    "text": "Turn on Reservable on the category. Then turn on Allow reservations per unit (off by default). The unit QR then shows the Reserve tile."
+                    "text": "Turn on Reservable on the category. Units in that category inherit Allow reservations automatically. The unit QR then shows the Reserve tile (both category and unit must be on). To override per unit, use Advanced portal options when editing the unit."
                 },
                 {
                     "label": "Guest flow",
@@ -1311,7 +1309,7 @@
             "actions": [
                 {
                     "label": "Enable",
-                    "text": "Turn on Allow unit checks on the category, then per unit (off by default). Only then does Unit check appear on the portal for signed-in workers."
+                    "text": "Turn on Allow unit checks on the category. Units inherit this automatically. Unit check then appears on the portal for signed-in workers (both category and unit must be on). Override per unit via Advanced portal options under Locations → edit unit."
                 },
                 {
                     "label": "Checklists",

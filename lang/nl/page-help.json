@@ -273,24 +273,33 @@
                     "text": "In het categorie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
                 {
+                    "label": "Portaal-instellingen (categorie)",
+                    "text": "GPS, reserveerbaar, unit checks, unitmetingen, contact en e-mailbevestiging stel je hier in op categorieniveau. Units in deze categorie nemen deze vinkjes automatisch over bij categoriekeuze of -wijziging. Wijzig je de categorie-instellingen, dan krijgen units die nog de oude defaults hadden de nieuwe waarden mee. Alleen uitzonderingen per unit stel je in via Geavanceerde portaal-opties op het unit-formulier."
+                },
+                {
                     "label": "Reserveerbaar",
-                    "text": "Zet bij een categorie Reserveerbaar aan voor deelbare middelen met een tijdslot (vergaderzaal, voertuig, sleutel, …). Zet daarna per unit Reserveringen toestaan aan (standaard uit). Op de unit-QR verschijnt dan de tegel Reserveren. Defectmeldingen blijven via Melding → taak."
+                    "nested": true,
+                    "text": "Voor deelbare middelen met tijdslot (vergaderzaal, voertuig, sleutel, …). Units erven dit; op de unit-QR verschijnt de tegel Reserveren wanneer categorie én unit het toestaan. Defectmeldingen blijven via Melding → taak."
                 },
                 {
                     "label": "Unit checks toestaan",
-                    "text": "Zet bij een categorie Unit checks toestaan aan voor snelle OK/Niet OK-rondes (security, schoonmaak, …). Zet daarna per unit Unit checks toestaan aan (standaard uit). Beide moeten aanstaan voordat uitvoerders op de unit-QR de tegel Unit check zien. Los van ESG-metingen."
+                    "nested": true,
+                    "text": "Voor snelle OK/Niet OK-rondes (security, schoonmaak, …). Units erven dit; uitvoerders zien de tegel Unit check pas wanneer categorie én unit aanstaan. Los van ESG-metingen."
                 },
                 {
                     "label": "Contactgegevens invullen verplicht",
-                    "text": "Zet dit aan als anonieme melders via de unit-QR hun voornaam, naam en e-mail moeten invullen. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat. Voor ingelogde uitvoerders (veldwerkers) geldt dit niet — zij zijn al bekend."
+                    "nested": true,
+                    "text": "Anonieme melders via de unit-QR moeten voornaam, naam en e-mail invullen. Units erven dit van de categorie. Geldt niet voor ingelogde uitvoerders."
                 },
                 {
                     "label": "E-mailbevestiging verplicht",
-                    "text": "Zet dit aan als anonieme melders via de unit-QR hun e-mail moeten bevestigen. De melding, taak en webhook ontstaan pas na klikken op de link in de mail. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat. Voor ingelogde uitvoerders geldt dit niet."
+                    "nested": true,
+                    "text": "Anonieme melders moeten hun e-mail bevestigen; melding, taak en webhook ontstaan pas na klikken op de link. Units erven dit van de categorie. Geldt niet voor ingelogde uitvoerders."
                 },
                 {
                     "label": "Unitmetingen toestaan",
-                    "text": "Zet bij een categorie Unitmetingen toestaan aan voor meetwaarden via de unit-QR (km, temperatuur, status, …). Zet daarna per unit Unitmetingen toestaan aan en koppel meetvelden (Werk → Unitmetingen). Beide vlaggen moeten aanstaan. Los van ESG en van unit checks."
+                    "nested": true,
+                    "text": "Meetwaarden via de unit-QR (km, temperatuur, status, …). Units erven dit; koppel meetvelden onder Werk → Unitmetingen. Categorie én unit moeten aanstaan. Los van ESG en unit checks."
                 }
             ]
         },
@@ -299,7 +308,7 @@
             "actions": [
                 {
                     "label": "Unit toevoegen",
-                    "text": "Voeg een object/machine/asset/ruimte toe met QR-token en standaardteam. Een unit kan divers zijn: een machine, ruimte, voertuig, hoogtewerker, fitnesstoestel, enz. Stel per unit in of bezoekers meldingen mogen indienen."
+                    "text": "Voeg een object/machine/asset/ruimte toe met QR-token en standaardteam. Een unit kan divers zijn: een machine, ruimte, voertuig, hoogtewerker, fitnesstoestel, enz. Portaal-gedrag (meldingen, reserveringen, checks, …) volgt standaard de gekozen categorie; zie Geavanceerde portaal-opties voor uitzonderingen."
                 },
                 {
                     "label": "Locatievertalingen",
@@ -310,12 +319,13 @@
                     "text": "In het unit-bewerkformulier kun je naam en omschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
                 {
-                    "label": "Reserveringen toestaan",
-                    "text": "Alleen relevant als de categorie Reserveerbaar is. Staat standaard uit; zet aan om reserveringen voor deze unit toe te staan. Andere units in dezelfde categorie blijven onafhankelijk."
+                    "label": "Geavanceerde portaal-opties",
+                    "text": "In het unit-bewerkformulier staan portaal-vinkjes gebundeld in het uitklapmenu «Portaal-opties per unit» (onder Categorie), vergelijkbaar met Vertaling. Stel dit bij voorkeur in op de categorie: units nemen die waarden automatisch over. Open het submenu alleen als één unit moet afwijken. Hover over Categorie of Portaal-opties per unit voor uitleg in een ballon."
                 },
                 {
-                    "label": "Unit checks toestaan",
-                    "text": "Alleen relevant als de categorie Unit checks toestaat. Staat standaard uit; zet aan zodat uitvoerders OK/Niet OK kunnen registreren via de unit-QR."
+                    "label": "Wat zit in het submenu?",
+                    "nested": true,
+                    "text": "Publieke meldingen, reserveringen, unit checks (+ optionele checklist), unitmetingen (+ meetvelden), contactgegevens verplicht en e-mailbevestiging. GPS-locatie staat alleen op categorie, niet per unit. Categorie én unit moeten aanstaan voordat een functie op het QR-portaal zichtbaar is."
                 },
                 {
                     "label": "Externe ID",
@@ -324,14 +334,6 @@
                 {
                     "label": "Checklist (unit check)",
                     "text": "Koppel optioneel een checklist aan de unit (templates onder pagina Mensen → Teams, gedeeld of van teams van de categorie). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK wordt opgeslagen."
-                },
-                {
-                    "label": "Contactgegevens invullen verplicht",
-                    "text": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders (voornaam, naam en e-mail), niet voor uitvoerders die zich via Clock Point hebben aangemeld."
-                },
-                {
-                    "label": "E-mailbevestiging verplicht",
-                    "text": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders, niet voor uitvoerders die zich via Clock Point hebben aangemeld. De melding ontstaat pas na klikken op de e-maillink."
                 },
                 {
                     "label": "Bulk units",
@@ -358,10 +360,6 @@
                 {
                     "label": "Documenten & mededelingen",
                     "text": "Beheer documenten en mededelingen voor het unit-QR-portaal. Documenten: zet «Actief» aan om het in het portaal te publiceren. Zonder «Alleen voor uitvoerders» kan elke bezoeker het document bekijken en downloaden. Met «Alleen voor uitvoerders» ziet en downloadt alleen een uitvoerder die zich in het portaal heeft aangemeld (naam + icoon) — niet via het beheerscherm met e-mail. Niet-actieve documenten blijven alleen hier zichtbaar. Actieve documenten worden automatisch vertaald door WinProx (periodiek; omschrijving); in het bewerkformulier ziet u een vertaal-preview per taal. De titel blijft in de brontaal."
-                },
-                {
-                    "label": "Unitmetingen toestaan",
-                    "text": "Alleen relevant als de categorie Unitmetingen toestaat. Staat standaard uit. Zet aan en selecteer welke meetvelden op deze unit horen."
                 }
             ]
         },
@@ -430,7 +428,7 @@
                 },
                 {
                     "label": "Inschakelen",
-                    "text": "Zet op de categorie Reserveerbaar aan. Zet daarna per unit Reserveringen toestaan aan (standaard uit). Daarna verschijnt op de unit-QR de tegel Reserveren."
+                    "text": "Zet op de categorie Reserveerbaar aan. Units in die categorie erven Reserveringen toestaan automatisch. Daarna verschijnt op de unit-QR de tegel Reserveren (categorie én unit moeten aanstaan). Afwijken per unit kan via Geavanceerde portaal-opties bij unit bewerken."
                 },
                 {
                     "label": "Gastflow",
@@ -1311,7 +1309,7 @@
             "actions": [
                 {
                     "label": "Inschakelen",
-                    "text": "Zet op de categorie Unit checks toestaan aan en daarna per unit (standaard uit). Pas dan verschijnt Unit check op het portaal voor ingelogde uitvoerders."
+                    "text": "Zet op de categorie Unit checks toestaan aan. Units erven dit automatisch. Pas dan verschijnt Unit check op het portaal voor ingelogde uitvoerders (categorie én unit moeten aanstaan). Afwijken per unit via Geavanceerde portaal-opties bij Locaties → unit bewerken."
                 },
                 {
                     "label": "Checklists",

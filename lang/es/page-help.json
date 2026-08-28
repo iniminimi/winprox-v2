@@ -273,24 +273,33 @@
                     "text": "En el formulario de edición de categoría puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
                 {
+                    "label": "Ajustes del portal (categoría)",
+                    "text": "GPS, reservable, controles de unidad, mediciones de unidad, contacto y confirmación por e-mail se configuran aquí a nivel categoría. Las unidades de esta categoría heredan estas casillas al elegir o cambiar la categoría. Si cambia la categoría, las unidades que aún tenían los valores por defecto anteriores reciben los nuevos. Las excepciones por unidad van en Opciones avanzadas del portal en el formulario de unidad."
+                },
+                {
                     "label": "Reservable",
-                    "text": "Active Reservable en una categoría para recursos compartidos con franja horaria (sala, vehículo, llave, …). Luego active Permitir reservas por unidad (desactivado por defecto). El QR de la unidad muestra entonces la ficha Reservar. Los avisos de avería siguen vía Aviso → tarea."
+                    "nested": true,
+                    "text": "Para recursos compartidos con franja horaria (sala, vehículo, llave, …). Las unidades heredan; el QR de la unidad muestra la ficha Reservar cuando categoría y unidad lo permiten. Los avisos de defecto siguen vía Aviso → tarea."
                 },
                 {
                     "label": "Permitir comprobaciones de unidad",
-                    "text": "Active Permitir comprobaciones de unidad en una categoría para rondas rápidas OK/No OK (seguridad, limpieza, …). Luego actívelo por unit (desactivado por defecto). Ambos deben estar activos antes de que los ejecutores vean la ficha Comprobación de unidad en el QR. Separado de las mediciones ESG."
+                    "nested": true,
+                    "text": "Para rondas OK/No OK rápidas (seguridad, limpieza, …). Las unidades heredan; los ejecutores ven la ficha Comprobación de unidad solo si categoría y unidad están activas. Separado de mediciones ESG."
                 },
                 {
                     "label": "Datos de contacto obligatorios",
-                    "text": "Actívelo si los informantes anónimos vía QR de la unidad deben indicar nombre, apellidos y correo. Desactivado por defecto. Solo aplica si también está activado en la unidad. No aplica a trabajadores de campo conectados — ya están identificados."
+                    "nested": true,
+                    "text": "Los informantes anónimos vía QR deben indicar nombre, apellidos y e-mail. Las unidades heredan de la categoría. No aplica a ejecutores con sesión iniciada."
                 },
                 {
                     "label": "Confirmación de correo obligatoria",
-                    "text": "Actívelo si los informantes anónimos vía QR de la unidad deben confirmar su correo. El informe, la tarea y el webhook solo se crean tras hacer clic en el enlace. Desactivado por defecto. Solo aplica si también está activado en la unidad. No aplica a trabajadores conectados."
+                    "nested": true,
+                    "text": "Los informantes anónimos deben confirmar su correo; aviso, tarea y webhook se crean solo tras hacer clic en el enlace. Las unidades heredan de la categoría. No aplica a ejecutores con sesión iniciada."
                 },
                 {
                     "label": "Permitir mediciones de unidad",
-                    "text": "Active Permitir mediciones en la categoría para lecturas vía QR de unidad (km, temperatura, estado…). Luego actívelo por unidad y vincule campos (Trabajo → Mediciones de unidad). Ambos deben estar activos. Independiente de ESG y unit checks."
+                    "nested": true,
+                    "text": "Lecturas vía QR de unidad (km, temperatura, estado, …). Las unidades heredan; vincule campos en Trabajo → Mediciones de unidad. Categoría y unidad deben estar activas. Separado de ESG y controles de unidad."
                 }
             ]
         },
@@ -299,7 +308,7 @@
             "actions": [
                 {
                     "label": "Añadir unidad",
-                    "text": "Añada un objeto/máquina/activo/espacio con token QR y equipo predeterminado. Una unit puede ser diversa: máquina, sala, vehículo, plataforma elevadora, aparato de fitness, etc. Indique por unit si los visitantes pueden enviar avisos."
+                    "text": "Añada un objeto/máquina/activo/espacio con token QR y equipo predeterminado. Una unidad puede ser diversa: máquina, sala, vehículo, plataforma elevadora, aparato fitness, etc. El comportamiento del portal (avisos, reservas, controles, …) sigue la categoría elegida por defecto; vea Opciones avanzadas del portal para excepciones."
                 },
                 {
                     "label": "Traducciones de ubicación",
@@ -310,24 +319,17 @@
                     "text": "En el formulario de edición de unidad puede actualizar manualmente el nombre y la descripción por idioma (NL, EN, FR, DE). Útil cuando la traducción automática por WinProx (periódicamente) es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
                 {
-                    "label": "Permitir reservas",
-                    "text": "Solo si la categoría es Reservable. Desactivado por defecto; actívelo para permitir reservas en esta unidad. Otras unidades de la misma categoría siguen independientes."
+                    "label": "Opciones avanzadas del portal",
+                    "text": "En el formulario de unidad, las casillas del portal están agrupadas en el menú desplegable «Opciones del portal por unidad» (debajo de Categoría), similar a Traducción. Prefiera configurarlas en la categoría: las unidades heredan los valores automáticamente. Abra el submenú solo si una unidad debe diferir. Pase el cursor sobre Categoría u Opciones del portal por unidad para ayuda en un tooltip."
                 },
                 {
-                    "label": "Permitir comprobaciones de unidad",
-                    "text": "Solo si la categoría permite comprobaciones de unidad. Desactivado por defecto; actívelo para que los ejecutores registren OK/No OK vía el QR de la unit."
+                    "label": "¿Qué hay en el submenú?",
+                    "nested": true,
+                    "text": "Avisos públicos, reservas, controles de unidad (+ checklist opcional), mediciones de unidad (+ campos), contacto obligatorio y confirmación por e-mail. La ubicación GPS solo está en categoría, no por unidad. Categoría y unidad deben estar activas antes de que una función aparezca en el portal QR."
                 },
                 {
                     "label": "Checklist (comprobación de unit)",
                     "text": "Vincule opcionalmente una lista a la unidad (plantillas en la página Personas → Equipos, compartida o de los equipos de la categoría). En Unit check del portal el operario marca cada punto antes de guardar OK."
-                },
-                {
-                    "label": "Datos de contacto obligatorios",
-                    "text": "Solo relevante si la categoría lo exige. Desactivado por defecto. Solo para informantes anónimos por QR (nombre, apellidos y correo), no para trabajadores conectados vía Clock Point."
-                },
-                {
-                    "label": "Confirmación de correo obligatoria",
-                    "text": "Solo relevante si la categoría lo exige. Desactivado por defecto. Solo para informantes anónimos por QR, no para trabajadores conectados vía Clock Point. El informe se crea solo tras hacer clic en el enlace."
                 },
                 {
                     "label": "Unidades en bloque",
@@ -358,10 +360,6 @@
                 {
                     "label": "ID externo",
                     "text": "Visible solo con acceso API (Corporate, o prueba con API). Vincule la unidad a su software de facility (IWMS, GMAO, ERP, …). Los sistemas externos pueden enviar comprobaciones vía POST /api/v1/units/checks."
-                },
-                {
-                    "label": "Permitir mediciones de unidad",
-                    "text": "Solo si la categoría permite mediciones. Desactivado por defecto. Active y elija los campos de esta unidad."
                 }
             ]
         },
@@ -430,7 +428,7 @@
                 },
                 {
                     "label": "Activar",
-                    "text": "Active Reservable en la categoría. Luego active Permitir reservas por unidad (desactivado por defecto). El QR de la unidad muestra entonces la ficha Reservar."
+                    "text": "Active Reservable en la categoría. Las unidades de esa categoría heredan Permitir reservas automáticamente. El QR de la unidad muestra entonces la ficha Reservar (categoría y unidad deben estar activas). Excepción por unidad vía Opciones avanzadas del portal al editar la unidad."
                 },
                 {
                     "label": "Invitado",
@@ -1311,7 +1309,7 @@
             "actions": [
                 {
                     "label": "Activar",
-                    "text": "Active en la categoría y luego por unit (desactivado por defecto). Solo entonces aparece Comprobación de unit en el portal para ejecutores con sesión."
+                    "text": "Active Permitir controles de unidad en la categoría. Las unidades heredan automáticamente. El control de unidad aparece entonces en el portal para ejecutores con sesión (categoría y unidad activas). Excepción por unidad vía Opciones avanzadas del portal en Ubicaciones → editar unidad."
                 },
                 {
                     "label": "Listas de comprobación",

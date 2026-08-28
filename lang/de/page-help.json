@@ -273,24 +273,33 @@
                     "text": "Im Kategorie-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
+                    "label": "Portal-Einstellungen (Kategorie)",
+                    "text": "GPS, reservierbar, Unit-Checks, Unit-Messungen, Kontakt und E-Mail-Bestätigung legen Sie hier auf Kategorieebene fest. Units in dieser Kategorie übernehmen diese Häkchen bei Kategoriewahl oder -änderung automatisch. Ändern Sie Kategorie-Einstellungen, erhalten Units mit den alten Standardwerten die neuen Werte. Ausnahmen pro Unit stellen Sie unter Erweiterte Portal-Optionen im Unit-Formular ein."
+                },
+                {
                     "label": "Reservierbar",
-                    "text": "Aktivieren Sie Reservierbar an einer Kategorie für teilbare Ressourcen mit Zeitslot (Raum, Fahrzeug, Schlüssel, …). Schalten Sie danach pro Unit Reservierungen erlauben ein (standardmäßig aus). Der Unit-QR zeigt dann die Kachel Reservieren. Störungsmeldungen bleiben über Meldung → Aufgabe."
+                    "nested": true,
+                    "text": "Für gemeinsam genutzte Ressourcen mit Zeitfenster (Besprechungsraum, Fahrzeug, Schlüssel, …). Units erben dies; die Unit-QR zeigt die Kachel Reservieren, wenn Kategorie und Unit es erlauben. Störmeldungen bleiben über Meldung → Aufgabe."
                 },
                 {
                     "label": "Unit-Checks erlauben",
-                    "text": "Aktivieren Sie Unit-Checks erlauben an einer Kategorie für schnelle OK/Nicht-OK-Runden (Sicherheit, Reinigung, …). Schalten Sie danach pro Unit Unit-Checks erlauben ein (standardmäßig aus). Beides muss an sein, bevor Ausführer auf dem Unit-QR die Kachel Unit-Check sehen. Getrennt von ESG-Messungen."
+                    "nested": true,
+                    "text": "Für schnelle OK/Nicht-OK-Runden (Security, Reinigung, …). Units erben dies; Ausführende sehen die Kachel Unit-Check erst, wenn Kategorie und Unit aktiv sind. Getrennt von ESG-Messungen."
                 },
                 {
                     "label": "Kontaktdaten Pflicht",
-                    "text": "Aktivieren Sie dies, wenn anonyme Melder über den Unit-QR Vorname, Name und E-Mail angeben müssen. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für angemeldete Feldmitarbeiter — sie sind bereits bekannt."
+                    "nested": true,
+                    "text": "Anonyme Melder über die Unit-QR müssen Vorname, Nachname und E-Mail angeben. Units erben dies von der Kategorie. Gilt nicht für angemeldete Ausführende."
                 },
                 {
                     "label": "E-Mail-Bestätigung Pflicht",
-                    "text": "Aktivieren Sie dies, wenn anonyme Melder über den Unit-QR ihre E-Mail bestätigen müssen. Meldung, Aufgabe und Webhook entstehen erst nach Klick auf den Link. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für angemeldete Feldmitarbeiter."
+                    "nested": true,
+                    "text": "Anonyme Melder müssen ihre E-Mail bestätigen; Meldung, Aufgabe und Webhook entstehen erst nach Klick auf den Link. Units erben dies von der Kategorie. Gilt nicht für angemeldete Ausführende."
                 },
                 {
                     "label": "Unit-Messungen erlauben",
-                    "text": "Aktivieren Sie Unit-Messungen erlauben an der Kategorie für Messwerte per Unit-QR (km, Temperatur, Status…). Danach pro Unit aktivieren und Messfelder verknüpfen (Arbeit → Unit-Messungen). Beide Flags müssen an sein. Getrennt von ESG und Unit-Checks."
+                    "nested": true,
+                    "text": "Messwerte über die Unit-QR (km, Temperatur, Status, …). Units erben dies; Messfelder unter Arbeit → Unit-Messungen verknüpfen. Kategorie und Unit müssen aktiv sein. Getrennt von ESG und Unit-Checks."
                 }
             ]
         },
@@ -299,7 +308,7 @@
             "actions": [
                 {
                     "label": "Unit hinzufügen",
-                    "text": "Fügen Sie ein Objekt/Maschine/Asset/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann vielfältig sein: Maschine, Raum, Fahrzeug, Hubarbeitsbühne, Fitnessgerät usw. Legen Sie pro Unit fest, ob Besucher Meldungen einreichen dürfen."
+                    "text": "Fügen Sie ein Objekt/Maschine/Asset/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann vielfältig sein: Maschine, Raum, Fahrzeug, Hubarbeitsbühne, Fitnessgerät usw. Portal-Verhalten (Meldungen, Reservierungen, Checks, …) folgt standardmäßig der gewählten Kategorie; Ausnahmen siehe Erweiterte Portal-Optionen."
                 },
                 {
                     "label": "Standort-Übersetzungen",
@@ -310,24 +319,17 @@
                     "text": "Im Unit-Bearbeitungsformular können Sie Name und Beschreibung pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung durch WinProx (periodisch) falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
-                    "label": "Reservierungen erlauben",
-                    "text": "Nur relevant, wenn die Kategorie Reservierbar ist. Standardmäßig aus; einschalten, um Reservierungen für diese Unit zu erlauben. Andere Units derselben Kategorie bleiben unabhängig."
+                    "label": "Erweiterte Portal-Optionen",
+                    "text": "Im Unit-Bearbeitungsformular sind Portal-Häkchen im ausklappbaren Menü «Portal-Optionen pro Unit» (unter Kategorie) gebündelt, ähnlich wie Übersetzung. Bevorzugt auf der Kategorie einstellen: Units übernehmen die Werte automatisch. Submenu nur öffnen, wenn eine Unit abweichen soll. Über Kategorie oder Portal-Optionen pro Unit fahren für Hilfe im Tooltip."
                 },
                 {
-                    "label": "Unit-Checks erlauben",
-                    "text": "Nur relevant, wenn die Kategorie Unit-Checks erlaubt. Standardmäßig aus; einschalten, damit Ausführer OK/Nicht OK über den Unit-QR erfassen können."
+                    "label": "Was steckt im Submenu?",
+                    "nested": true,
+                    "text": "Öffentliche Meldungen, Reservierungen, Unit-Checks (+ optionale Checkliste), Unit-Messungen (+ Messfelder), Pflicht-Kontaktdaten und E-Mail-Bestätigung. GPS-Standort nur auf Kategorie, nicht pro Unit. Kategorie und Unit müssen aktiv sein, bevor eine Funktion im QR-Portal sichtbar ist."
                 },
                 {
                     "label": "Checkliste (Unit-Check)",
                     "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter der Seite Menschen → Teams, geteilt oder von Teams der Kategorie). Beim Unit-Check im Portal hakt der Ausführende jeden Punkt ab, bevor OK gespeichert wird."
-                },
-                {
-                    "label": "Kontaktdaten Pflicht",
-                    "text": "Nur relevant, wenn die Kategorie dies verlangt. Standardmäßig aus. Gilt nur für anonyme QR-Melder (Vorname, Name und E-Mail), nicht für über Clock Point angemeldete Mitarbeiter."
-                },
-                {
-                    "label": "E-Mail-Bestätigung Pflicht",
-                    "text": "Nur relevant, wenn die Kategorie dies verlangt. Standardmäßig aus. Gilt nur für anonyme QR-Melder, nicht für über Clock Point angemeldete Mitarbeiter. Die Meldung entsteht erst nach Klick auf den E-Mail-Link."
                 },
                 {
                     "label": "Bulk-Units",
@@ -358,10 +360,6 @@
                 {
                     "label": "Externe ID",
                     "text": "Nur sichtbar mit API-Zugang (Corporate oder Testphase mit API). Verknüpfen Sie die Unit mit Ihrer Facility-Software (IWMS, CMMS, ERP, …). Externe Systeme können dann Unit-Checks per POST /api/v1/units/checks senden."
-                },
-                {
-                    "label": "Unit-Messungen erlauben",
-                    "text": "Nur relevant, wenn die Kategorie Unit-Messungen erlaubt. Standard aus. Aktivieren und Messfelder für diese Unit wählen."
                 }
             ]
         },
@@ -430,7 +428,7 @@
                 },
                 {
                     "label": "Aktivieren",
-                    "text": "Aktivieren Sie Reservierbar an der Kategorie. Schalten Sie danach pro Unit Reservierungen erlauben ein (standardmäßig aus). Der Unit-QR zeigt dann die Kachel Reservieren."
+                    "text": "Aktivieren Sie Reservierbar auf der Kategorie. Units in dieser Kategorie erben Reservierungen erlauben automatisch. Die Unit-QR zeigt dann die Kachel Reservieren (Kategorie und Unit müssen aktiv sein). Abweichung pro Unit über Erweiterte Portal-Optionen beim Bearbeiten der Unit."
                 },
                 {
                     "label": "Gastflow",
@@ -1311,7 +1309,7 @@
             "actions": [
                 {
                     "label": "Aktivieren",
-                    "text": "Unit-Checks erlauben an der Kategorie und danach pro Unit (standardmäßig aus). Erst dann erscheint Unit-Check im Portal für angemeldete Ausführer."
+                    "text": "Aktivieren Sie Unit-Checks erlauben auf der Kategorie. Units erben dies automatisch. Unit-Check erscheint dann im Portal für angemeldete Ausführende (Kategorie und Unit müssen aktiv sein). Abweichung pro Unit über Erweiterte Portal-Optionen unter Standorte → Unit bearbeiten."
                 },
                 {
                     "label": "Checklisten",

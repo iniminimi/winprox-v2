@@ -273,24 +273,33 @@
                     "text": "Nel modulo di modifica categoria può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
+                    "label": "Impostazioni portale (categoria)",
+                    "text": "GPS, prenotabile, controlli unità, misurazioni unità, contatto e conferma e-mail si impostano qui a livello categoria. Le unit in questa categoria ereditano automaticamente queste spunte alla scelta o modifica della categoria. Se modificate la categoria, le unit che avevano ancora i vecchi default ricevono i nuovi valori. Le eccezioni per unit si impostano in Opzioni portale avanzate nel form unit."
+                },
+                {
                     "label": "Prenotabile",
-                    "text": "Attivi Prenotabile su una categoria per risorse condivise con fascia oraria (sala, veicolo, chiave, …). Poi attivi Consenti prenotazioni per unità (disattivo di default). Il QR dell’unità mostra allora la tessera Prenota. Le segnalazioni di guasto restano via Segnalazione → compito."
+                    "nested": true,
+                    "text": "Per risorse condivise con fascia oraria (sala, veicolo, chiave, …). Le unit ereditano; il QR unit mostra la tessera Prenota quando categoria e unit lo consentono. Le segnalazioni guasto restano via Segnalazione → compito."
                 },
                 {
                     "label": "Consenti controlli unità",
-                    "text": "Attiva Consenti controlli unità su una categoria per rapide ronde OK/Non OK (sicurezza, pulizie, …). Poi attiva per unit (disattivo di default). Entrambi devono essere attivi prima che gli esecutori vedano la tile Controllo unità sul QR. Separato dalle misurazioni ESG."
+                    "nested": true,
+                    "text": "Per rapide ronde OK/Non OK (sicurezza, pulizie, …). Le unit ereditano; gli esecutori vedono la tessera Controllo unità solo se categoria e unit sono attive. Separato dalle misurazioni ESG."
                 },
                 {
                     "label": "Dati di contatto obbligatori",
-                    "text": "Attivi se i segnalanti anonimi tramite QR dell’unità devono indicare nome, cognome e e-mail. Disattivo di default. Vale solo se attivato anche sull’unità. Non vale per operatori sul campo già autenticati — sono già identificati."
+                    "nested": true,
+                    "text": "I segnalatori anonimi via QR unit devono inserire nome, cognome e e-mail. Le unit ereditano dalla categoria. Non vale per esecutori con accesso."
                 },
                 {
                     "label": "Conferma e-mail obbligatoria",
-                    "text": "Attivi se i segnalanti anonimi tramite QR dell’unità devono confermare l’e-mail. Segnalazione, attività e webhook nascono solo dopo il clic sul link. Disattivo di default. Vale solo se attivato anche sull’unità. Non vale per gli operatori connessi."
+                    "nested": true,
+                    "text": "I segnalatori anonimi devono confermare l'e-mail; segnalazione, compito e webhook nascono solo dopo il clic sul link. Le unit ereditano dalla categoria. Non vale per esecutori con accesso."
                 },
                 {
                     "label": "Consenti misurazioni unità",
-                    "text": "Attiva Consenti misurazioni sulla categoria per letture via QR unità (km, temperatura, stato…). Poi per unità e collega i campi (Lavoro → Misurazioni unità). Entrambi i flag devono essere attivi. Distinto da ESG e unit check."
+                    "nested": true,
+                    "text": "Letture via QR unit (km, temperatura, stato, …). Le unit ereditano; collega i campi in Lavoro → Misurazioni unità. Categoria e unit devono essere attive. Distinto da ESG e controlli unità."
                 }
             ]
         },
@@ -299,7 +308,7 @@
             "actions": [
                 {
                     "label": "Aggiungi unità",
-                    "text": "Aggiungi un oggetto/macchina/asset/spazio con token QR e team predefinito. Una unit può essere diversa: macchina, stanza, veicolo, piattaforma aerea, attrezzo fitness, ecc. Imposta per unit se i visitatori possono inviare segnalazioni."
+                    "text": "Aggiungi un oggetto/macchina/asset/spazio con token QR e team predefinito. Una unit può essere diversa: macchina, stanza, veicolo, piattaforma aerea, attrezzo fitness, ecc. Il comportamento portale (segnalazioni, prenotazioni, controlli, …) segue la categoria scelta per default; vedi Opzioni portale avanzate per eccezioni."
                 },
                 {
                     "label": "Traduzioni sede",
@@ -310,24 +319,17 @@
                     "text": "Nel modulo di modifica unità può aggiornare manualmente nome e descrizione per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica da WinProx (periodicamente) è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
-                    "label": "Consenti prenotazioni",
-                    "text": "Rilevante solo se la categoria è Prenotabile. Disattivo di default; attivi per consentire prenotazioni su questa unità. Le altre unità della stessa categoria restano indipendenti."
+                    "label": "Opzioni portale avanzate",
+                    "text": "Nel form unit, le spunte portale sono raggruppate nel menu espandibile «Opzioni portale per unit» (sotto Categoria), come Traduzione. Impostale preferibilmente sulla categoria: le unit ereditano i valori automaticamente. Apri il sottomenu solo se una unit deve differire. Passa il mouse su Categoria o Opzioni portale per unit per aiuto nel tooltip."
                 },
                 {
-                    "label": "Consenti controlli unità",
-                    "text": "Rilevante solo se la categoria consente i controlli unità. Disattivo di default; attiva per permettere OK/Non OK via QR dell'unità."
+                    "label": "Cosa c'è nel sottomenu?",
+                    "nested": true,
+                    "text": "Segnalazioni pubbliche, prenotazioni, controlli unità (+ checklist opzionale), misurazioni unità (+ campi), contatto obbligatorio e conferma e-mail. La posizione GPS è solo su categoria, non per unit. Categoria e unit devono essere attive prima che una funzione appaia sul portale QR."
                 },
                 {
                     "label": "Checklist (controllo unità)",
                     "text": "Collega opzionalmente una checklist all’unità (modelli nella pagina Persone → Team, condivisa o dei team della categoria). Nel Unit check del portale l’esecutore spunta ogni punto prima che OK venga salvato."
-                },
-                {
-                    "label": "Dati di contatto obbligatori",
-                    "text": "Rilevante solo se la categoria lo richiede. Disattivo di default. Solo per segnalanti anonimi via QR (nome, cognome e e-mail), non per operatori autenticati via Clock Point."
-                },
-                {
-                    "label": "Conferma e-mail obbligatoria",
-                    "text": "Rilevante solo se la categoria lo richiede. Disattivo di default. Solo per segnalanti anonimi via QR, non per operatori autenticati via Clock Point. La segnalazione nasce solo dopo il clic sul link."
                 },
                 {
                     "label": "Unità in blocco",
@@ -358,10 +360,6 @@
                 {
                     "label": "ID esterno",
                     "text": "Visibile solo con accesso API (Corporate, o prova con API). Collega la unit al vostro software facility (IWMS, CMMS, ERP, …). I sistemi esterni possono inviare unit check via POST /api/v1/units/checks."
-                },
-                {
-                    "label": "Consenti misurazioni unità",
-                    "text": "Solo se la categoria consente le misurazioni. Disattivo di default. Attiva e seleziona i campi per questa unità."
                 }
             ]
         },
@@ -430,7 +428,7 @@
                 },
                 {
                     "label": "Abilitare",
-                    "text": "Attivi Prenotabile sulla categoria. Poi attivi Consenti prenotazioni per unità (disattivo di default). Il QR dell’unità mostra allora la tessera Prenota."
+                    "text": "Attiva Prenotabile sulla categoria. Le unit di quella categoria ereditano automaticamente Consenti prenotazioni. Il QR unit mostra allora la tessera Prenota (categoria e unit devono essere attive). Eccezione per unit via Opzioni portale avanzate modificando l'unit."
                 },
                 {
                     "label": "Ospite",
@@ -1311,7 +1309,7 @@
             "actions": [
                 {
                     "label": "Abilitare",
-                    "text": "Attiva sulla categoria e poi per unit (disattivo di default). Solo allora Controllo unità appare sul portale per esecutori con accesso."
+                    "text": "Attiva Consenti controlli unità sulla categoria. Le unit ereditano automaticamente. Controllo unità appare allora sul portale per esecutori con accesso (categoria e unit attive). Eccezione per unit via Opzioni portale avanzate in Sedi → modifica unit."
                 },
                 {
                     "label": "Checklist",

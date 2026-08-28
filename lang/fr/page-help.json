@@ -273,20 +273,33 @@
                     "text": "Dans le formulaire d’édition de catégorie, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
+                    "label": "Paramètres portail (catégorie)",
+                    "text": "GPS, réservable, contrôles unité, mesures unité, contact et confirmation e-mail se règlent ici au niveau catégorie. Les unités de cette catégorie héritent automatiquement de ces cases lors du choix ou changement de catégorie. Si vous modifiez la catégorie, les unités qui avaient encore les anciennes valeurs par défaut reçoivent les nouvelles. Les exceptions par unité se font via Options portail avancées sur le formulaire unité."
+                },
+                {
                     "label": "Réservable",
-                    "text": "Activez Réservable sur une catégorie pour les ressources partagées avec créneau (salle, véhicule, clé, …). Activez ensuite Autoriser les réservations par unité (désactivé par défaut). Le QR de l’unité affiche alors la tuile Réserver. Les signalements de défaut restent via Signalement → tâche."
+                    "nested": true,
+                    "text": "Pour ressources partagées avec créneau (salle, véhicule, clé, …). Les unités héritent ; la QR unité affiche la tuile Réserver quand catégorie et unité l'autorisent. Les signalements de défaut restent via Signalement → tâche."
                 },
                 {
                     "label": "Autoriser les contrôles d'unité",
-                    "text": "Activez Autoriser les contrôles d'unité sur une catégorie pour des rondes OK/Non OK rapides (sécurité, ménage, …). Puis activez par unité (désactivé par défaut). Les deux doivent être actifs avant que les exécutants voient la tuile Contrôle d'unité sur le QR. Distinct des mesures ESG."
+                    "nested": true,
+                    "text": "Pour des rondes OK/Non OK rapides (sécurité, ménage, …). Les unités héritent ; les exécutants voient la tuile Contrôle d'unité seulement si catégorie et unité sont actives. Distinct des mesures ESG."
                 },
                 {
                     "label": "Coordonnées obligatoires",
-                    "text": "Activez si les signalants anonymes via le QR de l’unité doivent indiquer prénom, nom et e-mail. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents de terrain connectés — ils sont déjà identifiés."
+                    "nested": true,
+                    "text": "Les signaleurs anonymes via la QR unité doivent saisir prénom, nom et e-mail. Les unités héritent de la catégorie. Ne s'applique pas aux exécutants connectés."
                 },
                 {
                     "label": "Confirmation e-mail obligatoire",
-                    "text": "Activez si les signalants anonymes via le QR de l’unité doivent confirmer leur e-mail. Le signalement, la tâche et le webhook ne sont créés qu’après le clic sur le lien. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents connectés."
+                    "nested": true,
+                    "text": "Les signaleurs anonymes doivent confirmer leur e-mail ; signalement, tâche et webhook ne sont créés qu'après clic sur le lien. Les unités héritent de la catégorie. Ne s'applique pas aux exécutants connectés."
+                },
+                {
+                    "label": "Autoriser les mesures d'unité",
+                    "nested": true,
+                    "text": "Relevés via la QR unité (km, température, statut, …). Les unités héritent ; liez les champs de mesure sous Travail → Mesures d'unité. Catégorie et unité doivent être actives. Distinct de l'ESG et des contrôles d'unité."
                 },
                 {
                     "label": "Autoriser les mesures d’unité",
@@ -299,7 +312,7 @@
             "actions": [
                 {
                     "label": "Ajouter une unité",
-                    "text": "Ajoutez un objet/machine/actif/espace avec jeton QR et équipe par défaut. Une unité peut être très diversifiée : une chambre d'hôtel, une perceuse, une nacelle élévatrice, un appareil de fitness, etc. Cela dépend du secteur dans lequel l'entreprise évolue. Autorisez ou non les signalements par unité."
+                    "text": "Ajoutez un objet/machine/actif/espace avec jeton QR et équipe par défaut. Une unité peut être variée : machine, salle, véhicule, nacelle, appareil fitness, etc. Le comportement portail (signalements, réservations, contrôles, …) suit la catégorie choisie par défaut ; voir Options portail avancées pour les exceptions."
                 },
                 {
                     "label": "Traductions de lieu",
@@ -310,24 +323,17 @@
                     "text": "Dans le formulaire d'édition d'unité, vous pouvez mettre à jour manuellement le nom et la description par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique par WinProx (périodiquement) est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
-                    "label": "Autoriser les réservations",
-                    "text": "Uniquement si la catégorie est Réservable. Désactivé par défaut ; activez pour autoriser les réservations pour cette unité. Les autres unités de la même catégorie restent indépendantes."
+                    "label": "Options portail avancées",
+                    "text": "Dans le formulaire unité, les cases portail sont regroupées dans le menu dépliant « Options portail par unité » (sous Catégorie), comme Traduction. Préférez les régler sur la catégorie : les unités héritent automatiquement. Ouvrez le sous-menu seulement si une unité doit différer. Survolez Catégorie ou Options portail par unité pour l'aide en infobulle."
                 },
                 {
-                    "label": "Autoriser les contrôles d'unité",
-                    "text": "Uniquement si la catégorie autorise les contrôles d'unité. Désactivé par défaut ; activez pour permettre OK/Non OK via le QR de l'unité."
+                    "label": "Que contient le sous-menu ?",
+                    "nested": true,
+                    "text": "Signalements publics, réservations, contrôles unité (+ checklist optionnelle), mesures unité (+ champs), coordonnées obligatoires et confirmation e-mail. La localisation GPS est uniquement sur la catégorie, pas par unité. Catégorie et unité doivent être actives avant qu'une fonction apparaisse sur le portail QR."
                 },
                 {
                     "label": "Checklist (contrôle d'unité)",
                     "text": "Associez éventuellement une liste à l’unité (modèles sous la page Personnes → Équipes, partagée ou des équipes de la catégorie). Lors du Unit check sur le portail, l’exécutant coche chaque point avant l’enregistrement de OK."
-                },
-                {
-                    "label": "Coordonnées obligatoires",
-                    "text": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalants anonymes via QR (prénom, nom et e-mail), pas aux agents connectés via Clock Point."
-                },
-                {
-                    "label": "Confirmation e-mail obligatoire",
-                    "text": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalants anonymes via QR, pas aux agents connectés via Clock Point. Le signalement n’est créé qu’après le clic sur le lien."
                 },
                 {
                     "label": "Unités en masse",
@@ -430,7 +436,7 @@
                 },
                 {
                     "label": "Activer",
-                    "text": "Activez Réservable sur la catégorie. Activez ensuite Autoriser les réservations par unité (désactivé par défaut). Le QR de l’unité affiche alors la tuile Réserver."
+                    "text": "Activez Réservable sur la catégorie. Les unités de cette catégorie héritent automatiquement Autoriser réservations. La QR unité affiche alors la tuile Réserver (catégorie et unité doivent être actives). Exception par unité via Options portail avancées lors de l'édition."
                 },
                 {
                     "label": "Invité",
@@ -1311,7 +1317,7 @@
             "actions": [
                 {
                     "label": "Activer",
-                    "text": "Activez sur la catégorie, puis par unité (désactivé par défaut). Le contrôle d'unité n'apparaît alors sur le portail que pour les exécutants connectés."
+                    "text": "Activez Autoriser contrôles unité sur la catégorie. Les unités héritent automatiquement. Le contrôle unité apparaît alors sur le portail pour les exécutants connectés (catégorie et unité actives). Exception par unité via Options portail avancées sous Emplacements → modifier l'unité."
                 },
                 {
                     "label": "Listes de contrôle",
