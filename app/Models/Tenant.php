@@ -39,6 +39,10 @@ class Tenant extends Model
         'has_iot_module',
         'time_qr_rotation_months',
         'has_time_module',
+        'work_menu_calendar_enabled',
+        'work_menu_reservations_enabled',
+        'work_menu_inspection_rounds_enabled',
+        'work_menu_unit_measurements_enabled',
         'starter_pack_key',
         'starter_pack_applied_at',
         'starter_pack_payload',
@@ -55,6 +59,10 @@ class Tenant extends Model
             'has_esg_module' => 'boolean',
             'has_iot_module' => 'boolean',
             'has_time_module' => 'boolean',
+            'work_menu_calendar_enabled' => 'boolean',
+            'work_menu_reservations_enabled' => 'boolean',
+            'work_menu_inspection_rounds_enabled' => 'boolean',
+            'work_menu_unit_measurements_enabled' => 'boolean',
             'starter_pack_applied_at' => 'datetime',
             'starter_pack_payload' => 'array',
         ];
@@ -268,6 +276,26 @@ class Tenant extends Model
     public function hasTimeModule(): bool
     {
         return (bool) $this->has_time_module;
+    }
+
+    public function workMenuCalendarEnabled(): bool
+    {
+        return (bool) ($this->work_menu_calendar_enabled ?? true);
+    }
+
+    public function workMenuReservationsEnabled(): bool
+    {
+        return (bool) ($this->work_menu_reservations_enabled ?? true);
+    }
+
+    public function workMenuInspectionRoundsEnabled(): bool
+    {
+        return (bool) ($this->work_menu_inspection_rounds_enabled ?? true);
+    }
+
+    public function workMenuUnitMeasurementsEnabled(): bool
+    {
+        return (bool) ($this->work_menu_unit_measurements_enabled ?? true);
     }
 
     public function trialDaysRemaining(): int

@@ -4,12 +4,14 @@ namespace App\Policies;
 
 use App\Models\Reservation;
 use App\Models\User;
+use App\Support\Tenant\TenantWorkMenuAccess;
 
 class ReservationPolicy
 {
     public function viewAny(User $user): bool
     {
-        return $user->is_superuser || $user->tenant_id !== null;
+        return ($user->is_superuser || $user->tenant_id !== null)
+            && $this->workMenuReservationsEnabledFor($user);
     }
 
     public function view(User $user, Reservation $reservation): bool
@@ -19,7 +21,8 @@ class ReservationPolicy
 
     public function create(User $user): bool
     {
-        return $user->isAdmin() || $user->isEmployee();
+        return ($user->isAdmin() || $user->isEmployee())
+            && $this->workMenuReservationsEnabledFor($user);
     }
 
     public function update(User $user, Reservation $reservation): bool
@@ -40,5 +43,18 @@ class ReservationPolicy
         }
 
         return $user->tenant_id !== null && (int) $user->tenant_id === (int) $reservation->tenant_id;
+    }
+
+    private function workMenuReservationsEnabledFor(User $user): bool
+    {
+        if ($user->tenant_id !== null) {
+            return TenantWorkMenuAccess::reservationsEnabled($user->tenant);
+        }
+
+        if ($user->is_superuser) {
+            return TenantWorkMenuAccess::activeTenantReservationsEnabled();
+        }
+
+        return false;
     }
 }

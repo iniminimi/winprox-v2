@@ -8,10 +8,12 @@ use App\Actions\Locations\CreateUnitAction;
 use App\Data\Units\ImportUnitsData;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Import\TabularImportBoolean;
 use App\Support\Import\TabularImportReader;
+use App\Support\Tenant\TenantWorkMenuAccess;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -153,7 +155,7 @@ class ImportUnitsAction
                 $row['line'],
                 $headers,
                 $location,
-                $tenantId,
+                $tenant,
                 $seenNames,
                 $seenExternalIds,
             );
@@ -262,7 +264,7 @@ class ImportUnitsAction
         int $line,
         array $headers,
         Location $location,
-        int $tenantId,
+        Tenant $tenant,
         array &$seenNames,
         array &$seenExternalIds,
     ): array {
@@ -311,7 +313,7 @@ class ImportUnitsAction
                         'line' => $line,
                         'message' => __('locations.units_csv.errors.duplicate_external_id'),
                     ]);
-                } elseif (Unit::query()->where('tenant_id', $tenantId)->where('external_id', $externalId)->exists()) {
+                } elseif (Unit::query()->where('tenant_id', $tenant->id)->where('external_id', $externalId)->exists()) {
                     $errors[] = __('locations.units_csv.errors.row', [
                         'line' => $line,
                         'message' => __('locations.units_csv.errors.external_id_taken'),
@@ -333,6 +335,24 @@ class ImportUnitsAction
                     'line' => $line,
                     'message' => __('locations.units_csv.errors.invalid_boolean', ['column' => $column]),
                 ]);
+
+                continue;
+            }
+
+            if ($parsed['value'] === true) {
+                if ($column === 'allow_reservations' && ! TenantWorkMenuAccess::reservationsEnabled($tenant)) {
+                    $errors[] = __('locations.units_csv.errors.row', [
+                        'line' => $line,
+                        'message' => __('settings.work_menu.errors.reservations_disabled'),
+                    ]);
+                }
+
+                if ($column === 'allow_unit_measurements' && ! TenantWorkMenuAccess::unitMeasurementsEnabled($tenant)) {
+                    $errors[] = __('locations.units_csv.errors.row', [
+                        'line' => $line,
+                        'message' => __('settings.work_menu.errors.unit_measurements_disabled'),
+                    ]);
+                }
             }
         }
 

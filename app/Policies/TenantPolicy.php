@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Platform\SuperuserTenantAccess;
+use App\Support\Tenant\TenantWorkMenuAccess;
 
 class TenantPolicy
 {
@@ -16,6 +17,17 @@ class TenantPolicy
     public function manageOrganisation(User $user, Tenant $tenant): bool
     {
         return $this->isTenantAdminFor($user, $tenant);
+    }
+
+    public function manageWorkMenu(User $user, Tenant $tenant): bool
+    {
+        return $this->isTenantAdminFor($user, $tenant);
+    }
+
+    public function accessWorkMenuCalendar(User $user, Tenant $tenant): bool
+    {
+        return $this->isTenantMemberFor($user, $tenant)
+            && TenantWorkMenuAccess::calendarEnabled($tenant);
     }
 
     /** Portaal-achtergrond, eigen portaal-stijl, QR-stickers — beheerder én medewerker. */

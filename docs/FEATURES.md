@@ -25,6 +25,12 @@ Corporate — groep alleen als minstens één module aan staat) ·
 **Organisatie** (Instellingen, API, Abonnement) · **Hulp** (FAQ, Handleiding, Juridisch,
 Contact).
 
+**Werkmenu instellingen** (Instellingen, admin): per tenant Kalender, Reserveringen,
+Inspectierondes en Unitmetingen in/uit in de sidebar; uit = geen backoffice-routes (403).
+Bestaande unit/categorie-vlaggen op het QR-portaal blijven werken (grandfather); nieuw
+inschakelen op units/categorieën kan niet zolang het werkmenu-item uit staat. Inspectierondes
+uit heeft geen invloed op unit checks.
+
 ---
 
 ## 1. Dashboard

@@ -52,6 +52,10 @@
                 "body": "Segnalazione ricorrente con percorso fisso di unità (fermate), anche su più sedi. Pianifica da Segnalazioni → Pianifica giro di ispezione (fermate, intervallo e team in un passo) o tramite la procedura guidata. Lavoro → Giri di ispezione apre la stessa lista filtrata sui giri. Nell’elenco delle fermate compaiono solo le unità con controlli unità; le altre sono nascoste. Un task per ciclo; a ogni fermata Unit check OK, Non OK (con segnalazione; descrizione precompilata) o salta con motivo. Completo quando tutte le fermate del ciclo sono gestite."
             },
             {
+                "title": "Menu Lavoro",
+                "body": "In Impostazioni (amministratore): attiva/disattiva Calendario, Prenotazioni, Giri di ispezione e Misurazioni unità per organizzazione nella barra laterale. Off = nessun accesso backoffice; il QR sulle unità che già lo avevano resta attivo (grandfather)."
+            },
+            {
                 "title": "Branding & QR",
                 "body": "Logo organizzazione, sfondo portale e colori portale (sfondo e pulsanti) in Impostazioni; foto unità e foto di sfondo per unità. Formati Avery o A6/A5/A4 — pronti per la stampa."
             },

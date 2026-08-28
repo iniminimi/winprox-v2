@@ -285,15 +285,18 @@
                     @error('categoryAllowGpsLocation') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
 
-                <div class="wp-field">
-                    <x-wp-tooltip :text="__('locations.categories.is_reservable_hint')" wrap>
-                        <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryIsReservable" />
-                            <span>{{ __('locations.categories.fields.is_reservable') }}</span>
-                        </label>
-                    </x-wp-tooltip>
-                    @error('categoryIsReservable') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
+                @if ($workMenuReservationsEnabled || $categoryIsReservable)
+                    <div class="wp-field">
+                        <x-wp-tooltip :text="__('locations.categories.is_reservable_hint')" wrap>
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model="categoryIsReservable"
+                                    @disabled(! $workMenuReservationsEnabled && ! $categoryIsReservable) />
+                                <span>{{ __('locations.categories.fields.is_reservable') }}</span>
+                            </label>
+                        </x-wp-tooltip>
+                        @error('categoryIsReservable') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                @endif
 
                 <div class="wp-field">
                     <x-wp-tooltip :text="__('locations.categories.allow_unit_checks_hint')" wrap>
@@ -305,15 +308,18 @@
                     @error('categoryAllowUnitChecks') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
 
-                <div class="wp-field">
-                    <x-wp-tooltip :text="__('locations.categories.allow_unit_measurements_hint')" wrap>
-                        <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryAllowUnitMeasurements" />
-                            <span>{{ __('locations.categories.fields.allow_unit_measurements') }}</span>
-                        </label>
-                    </x-wp-tooltip>
-                    @error('categoryAllowUnitMeasurements') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
+                @if ($workMenuUnitMeasurementsEnabled || $categoryAllowUnitMeasurements)
+                    <div class="wp-field">
+                        <x-wp-tooltip :text="__('locations.categories.allow_unit_measurements_hint')" wrap>
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model="categoryAllowUnitMeasurements"
+                                    @disabled(! $workMenuUnitMeasurementsEnabled && ! $categoryAllowUnitMeasurements) />
+                                <span>{{ __('locations.categories.fields.allow_unit_measurements') }}</span>
+                            </label>
+                        </x-wp-tooltip>
+                        @error('categoryAllowUnitMeasurements') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                @endif
 
                 <div class="wp-field">
                     <x-wp-tooltip :text="__('locations.categories.require_reporter_contact_hint')" wrap>

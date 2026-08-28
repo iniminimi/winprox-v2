@@ -104,6 +104,22 @@
         "new_qr_issue_label": "Riceva un'e-mail per ogni nuova segnalazione",
         "new_qr_issue_hint": "Solo per segnalazioni inviate tramite il portale QR."
     },
+    "work_menu": {
+        "title": "Impostazioni menu Lavoro",
+        "hint": "Scegli quali voci del menu Lavoro sono visibili nel backoffice. Le voci disattivate scompaiono dalla barra laterale; le impostazioni unità/categorie esistenti sul portale QR restano attive.",
+        "calendar_label": "Calendario",
+        "calendar_hint": "Vista calendario per attività, segnalazioni e prenotazioni.",
+        "reservations_label": "Prenotazioni",
+        "reservations_hint": "Gestione prenotazioni nel backoffice. La prenotazione QR sulle unità che già la avevano resta disponibile.",
+        "inspection_rounds_label": "Giri di ispezione",
+        "inspection_rounds_hint": "Elenco e pianificazione dei giri di ispezione. I unit check restano disponibili separatamente.",
+        "unit_measurements_label": "Misurazioni unità",
+        "unit_measurements_hint": "Campi di misura e storico nel backoffice. Le misurazioni QR sulle unità che già le avevano restano disponibili.",
+        "errors": {
+            "reservations_disabled": "Le prenotazioni sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie.",
+            "unit_measurements_disabled": "Le misurazioni unità sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie."
+        }
+    },
     "privacy": {
         "title": "Privacy ed esportazione dati",
         "hint": "Solo l'amministratore può scaricare una panoramica leggibile da macchina (JSON in un file ZIP) dell'account e dell'attività rilevante nel Suo tenant. Il file può contenere dati sensibili — conservilo in modo sicuro.",

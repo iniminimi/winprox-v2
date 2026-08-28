@@ -104,6 +104,22 @@
         "new_qr_issue_label": "Recevoir un e-mail pour chaque nouveau signalement",
         "new_qr_issue_hint": "Uniquement pour les signalements via le portail QR."
     },
+    "work_menu": {
+        "title": "Paramètres du menu Travail",
+        "hint": "Choisissez quels éléments du menu Travail sont visibles dans le back-office. Les éléments désactivés disparaissent de la barre latérale ; les réglages unités/catégories existants sur le portail QR restent actifs.",
+        "calendar_label": "Calendrier",
+        "calendar_hint": "Vue calendrier pour tâches, signalements et réservations.",
+        "reservations_label": "Réservations",
+        "reservations_hint": "Gestion des réservations dans le back-office. La réservation QR sur les unités déjà configurées reste disponible.",
+        "inspection_rounds_label": "Tournées d'inspection",
+        "inspection_rounds_hint": "Liste et planification des tournées d'inspection. Les unit checks restent disponibles séparément.",
+        "unit_measurements_label": "Mesures d'unité",
+        "unit_measurements_hint": "Champs de mesure et historique dans le back-office. Les mesures QR sur les unités déjà configurées restent disponibles.",
+        "errors": {
+            "reservations_disabled": "Les réservations sont désactivées dans le menu Travail. Vous ne pouvez pas les activer à nouveau sur des unités ou catégories.",
+            "unit_measurements_disabled": "Les mesures d'unité sont désactivées dans le menu Travail. Vous ne pouvez pas les activer à nouveau sur des unités ou catégories."
+        }
+    },
     "privacy": {
         "title": "Confidentialité et export de données",
         "hint": "Seul l'administrateur peut télécharger un aperçu lisible par machine (JSON dans un fichier ZIP) du compte et de l'activité pertinente dans votre environnement. Le fichier peut contenir des données sensibles — conservez-le en lieu sûr.",

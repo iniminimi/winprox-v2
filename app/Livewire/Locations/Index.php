@@ -19,7 +19,9 @@ use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Support\Onboarding\TenantOnboardingState;
+use App\Support\Tenant\TenantWorkMenuAccess;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\Schema;
 use InvalidArgumentException;
@@ -408,6 +410,33 @@ class Index extends Component
             'selectedCategoryTeamIds.min' => __('locations.categories.errors.teams_required'),
         ]);
 
+        $tenant = auth()->user()?->tenant;
+        $currentCategory = $this->editingCategoryId !== null
+            ? Category::query()->find($this->editingCategoryId)
+            : null;
+
+        if ($tenant instanceof Tenant) {
+            if (! TenantWorkMenuAccess::mayEnableCategoryReservable(
+                $tenant,
+                (bool) $validated['categoryIsReservable'],
+                (bool) ($currentCategory?->is_reservable ?? false),
+            )) {
+                $this->addError('categoryIsReservable', __('settings.work_menu.errors.reservations_disabled'));
+
+                return;
+            }
+
+            if (! TenantWorkMenuAccess::mayEnableCategoryUnitMeasurements(
+                $tenant,
+                (bool) $validated['categoryAllowUnitMeasurements'],
+                (bool) ($currentCategory?->allow_unit_measurements ?? false),
+            )) {
+                $this->addError('categoryAllowUnitMeasurements', __('settings.work_menu.errors.unit_measurements_disabled'));
+
+                return;
+            }
+        }
+
         if ($this->editingCategoryId === null) {
             $this->authorize('create', Category::class);
             $category = $createCategory->handle($tenantId, [
@@ -640,6 +669,8 @@ class Index extends Component
             'locationTranslationLocales' => $locationTranslationLocales,
             'categoryTranslationLocales' => $categoryTranslationLocales,
             'onboarding' => TenantOnboardingState::current(),
+            'workMenuReservationsEnabled' => auth()->user()?->tenant?->workMenuReservationsEnabled() ?? true,
+            'workMenuUnitMeasurementsEnabled' => auth()->user()?->tenant?->workMenuUnitMeasurementsEnabled() ?? true,
         ]);
     }
 }

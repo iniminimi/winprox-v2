@@ -76,6 +76,10 @@
             {
                 "title": "AI translation",
                 "body": "After approval, texts are queued for translation (issues, tasks, documents, announcements, …). WinProx fills the other languages periodically via local AI (no external AI cloud), typically daily — with no guaranteed turnaround. Organisation admins can correct translations manually; there is no per-organisation on/off switch."
+            },
+            {
+                "title": "Menu Travail",
+                "body": "Sous Paramètres (administrateur) : activer/désactiver Calendrier, Réservations, Tournées d'inspection et Mesures d'unité par organisation dans la barre latérale. Désactivé = pas d'accès back-office ; le QR sur les unités déjà configurées reste actif (grandfather)."
             }
         ],
         "right": [

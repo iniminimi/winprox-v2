@@ -52,6 +52,10 @@
                 "body": "Incidencia recurrente con una ruta fija de unidades (paradas), también entre ubicaciones. Planifica vía Incidencias → Planificar ronda de inspección (paradas, intervalo y equipo en un paso) o vía el asistente. Trabajo → Rondas de inspección abre la misma lista filtrada a rondas. Solo aparecen las unidades con unit checks; las demás quedan ocultas. Una tarea por ciclo; en cada parada Unit check OK, No OK (con incidencia; descripción prediligenciada) o omitir con motivo. Listo cuando todas las paradas del ciclo están gestionadas."
             },
             {
+                "title": "Menú Trabajo",
+                "body": "En Ajustes (administrador): activar/desactivar Calendario, Reservas, Rondas de inspección y Mediciones de unidad por organización en la barra lateral. Desactivado = sin acceso backoffice; el QR en unidades que ya lo tenían sigue funcionando (grandfather)."
+            },
+            {
                 "title": "Branding & QR",
                 "body": "Logotipo de la organización, fondo del portal y colores del portal (fondo y botones) en Configuración; fotos de unidad y foto de fondo por unidad. Formatos Avery o A6/A5/A4 — listos para imprimir."
             },

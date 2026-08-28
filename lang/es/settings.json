@@ -104,6 +104,22 @@
         "new_qr_issue_label": "Recibir un correo por cada nuevo informe",
         "new_qr_issue_hint": "Solo para informes enviados mediante el portal QR."
     },
+    "work_menu": {
+        "title": "Ajustes del menú Trabajo",
+        "hint": "Elige qué elementos del menú Trabajo son visibles en el backoffice. Los desactivados desaparecen de la barra lateral; los ajustes existentes en unidades/categorías del portal QR siguen funcionando.",
+        "calendar_label": "Calendario",
+        "calendar_hint": "Vista de calendario para tareas, incidencias y reservas.",
+        "reservations_label": "Reservas",
+        "reservations_hint": "Gestión de reservas en backoffice. La reserva QR en unidades que ya la tenían sigue disponible.",
+        "inspection_rounds_label": "Rondas de inspección",
+        "inspection_rounds_hint": "Lista y planificación de rondas de inspección. Los unit checks siguen disponibles por separado.",
+        "unit_measurements_label": "Mediciones de unidad",
+        "unit_measurements_hint": "Campos de medición e historial en backoffice. Las mediciones QR en unidades que ya las tenían siguen disponibles.",
+        "errors": {
+            "reservations_disabled": "Las reservas están desactivadas en el menú Trabajo. No puedes activarlas de nuevo en unidades o categorías.",
+            "unit_measurements_disabled": "Las mediciones de unidad están desactivadas en el menú Trabajo. No puedes activarlas de nuevo en unidades o categorías."
+        }
+    },
     "privacy": {
         "title": "Privacidad y exportación de datos",
         "hint": "Solo el administrador puede descargar un resumen legible por máquina (JSON en un archivo ZIP) de la cuenta y la actividad relevante dentro de su entorno. El archivo puede contener datos sensibles — guárdelo de forma segura.",

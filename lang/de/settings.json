@@ -104,6 +104,22 @@
         "new_qr_issue_label": "E-Mail bei jeder neuen Meldung erhalten",
         "new_qr_issue_hint": "Nur für Meldungen über das QR-Portal."
     },
+    "work_menu": {
+        "title": "Arbeitsmenü-Einstellungen",
+        "hint": "Legen Sie fest, welche Arbeitsmenü-Einträge in der Verwaltung sichtbar sind. Deaktivierte Einträge verschwinden aus der Seitenleiste; bestehende Unit- und Kategorie-Einstellungen im QR-Portal bleiben aktiv.",
+        "calendar_label": "Kalender",
+        "calendar_hint": "Kalenderansicht für Aufgaben, Meldungen und Reservierungen.",
+        "reservations_label": "Reservierungen",
+        "reservations_hint": "Reservierungsverwaltung in der Verwaltung. QR-Reservierung auf Units, die es bereits hatten, bleibt verfügbar.",
+        "inspection_rounds_label": "Inspektionsrunden",
+        "inspection_rounds_hint": "Liste und Planung von Inspektionsrunden. Unit Checks bleiben separat verfügbar.",
+        "unit_measurements_label": "Unit-Messungen",
+        "unit_measurements_hint": "Messfelder und Historie in der Verwaltung. QR-Messungen auf Units, die es bereits hatten, bleiben verfügbar.",
+        "errors": {
+            "reservations_disabled": "Reservierungen sind im Arbeitsmenü deaktiviert. Sie können dies nicht neu für Units oder Kategorien aktivieren.",
+            "unit_measurements_disabled": "Unit-Messungen sind im Arbeitsmenü deaktiviert. Sie können dies nicht neu für Units oder Kategorien aktivieren."
+        }
+    },
     "privacy": {
         "title": "Datenschutz & Datenexport",
         "hint": "Nur der Administrator kann einen maschinenlesbaren Überblick (JSON in einer ZIP-Datei) über das Konto und relevante Aktivität in Ihrer Umgebung herunterladen. Die Datei kann sensible Daten enthalten — sicher aufbewahren.",

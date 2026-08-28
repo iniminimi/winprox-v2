@@ -52,6 +52,10 @@
                 "body": "Recurring issue with a fixed route of units (stops), including across locations. Plan via Issues → Plan inspection round (stops, interval and team in one step) or optionally via the issue wizard. Work → Inspection rounds opens the same list filtered to rounds. Only units with unit checks appear in the stop list; other units are hidden. One task per cycle; at each stop Unit check OK, Not OK (with issue; description prefilled), or skip with reason. Done when all stops for that cycle are handled."
             },
             {
+                "title": "Work menu",
+                "body": "Under Settings (administrator): toggle Calendar, Reservations, Inspection rounds and Unit measurements per organisation in the sidebar. Off = no backoffice access; QR on units that already had the feature keeps working (grandfather)."
+            },
+            {
                 "title": "Branding & QR",
                 "body": "Organisation logo, portal background and portal colours (background and button colour) under Settings; unit photos and a background photo per unit. Avery or A6/A5/A4 sticker formats — print-ready."
             },

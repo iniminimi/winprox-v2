@@ -8,8 +8,11 @@ use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Reservation;
 use App\Models\Task;
+use App\Models\Tenant;
 use App\Support\Onboarding\TenantOnboardingState;
+use App\Support\Tenant\TenantWorkMenuAccess;
 use Carbon\Carbon;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -19,6 +22,8 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Calendar extends Component
 {
+    use AuthorizesRequests;
+
     #[Url(as: 'view')]
     public string $viewMode = 'month';
 
@@ -38,6 +43,13 @@ class Calendar extends Component
 
     public function mount(): void
     {
+        $tenant = auth()->user()?->tenant;
+        if ($tenant instanceof Tenant) {
+            $this->authorize('accessWorkMenuCalendar', $tenant);
+        } elseif (auth()->user()?->is_superuser) {
+            abort_unless(TenantWorkMenuAccess::activeTenantCalendarEnabled(), 403);
+        }
+
         if ($this->currentDate === '') {
             $this->currentDate = now()->toDateString();
         }

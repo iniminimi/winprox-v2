@@ -11,6 +11,7 @@ use App\Data\Qr\BrandedQrStickerPreviewData;
 use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
+use App\Actions\Team\UpdateTenantWorkMenuAction;
 use App\Actions\Team\RemoveTenantQrStickerSheetBackgroundAction;
 use App\Actions\Team\UpdateTenantQrPrintablePageSettingsAction;
 use App\Actions\Team\UpdateTenantQrStickerSheetSettingsAction;
@@ -28,6 +29,7 @@ use App\Http\Requests\Team\UpdateTenantQrStickerSheetSettingsRequest;
 use App\Support\Qr\BrandedQrStickerLayoutConfig;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
+use App\Http\Requests\Team\UpdateTenantWorkMenuRequest;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Support\Admin\AdminHealthService;
@@ -98,6 +100,14 @@ class Settings extends Component
 
     public bool $notifyOnNewIssueEmail = true;
 
+    public bool $workMenuCalendarEnabled = true;
+
+    public bool $workMenuReservationsEnabled = true;
+
+    public bool $workMenuInspectionRoundsEnabled = true;
+
+    public bool $workMenuUnitMeasurementsEnabled = true;
+
     public bool $canManageOrganisation = false;
 
     public bool $canUpdateTenantBranding = false;
@@ -125,6 +135,62 @@ class Settings extends Component
         if ($this->canUpdateTenantBranding) {
             $this->fillOrganisationFromTenant($tenant);
         }
+
+        if ($this->canManageOrganisation) {
+            $this->fillWorkMenuFromTenant($tenant);
+        }
+    }
+
+    public function updatedWorkMenuCalendarEnabled(): void
+    {
+        $this->persistWorkMenuSettings();
+    }
+
+    public function updatedWorkMenuReservationsEnabled(): void
+    {
+        $this->persistWorkMenuSettings();
+    }
+
+    public function updatedWorkMenuInspectionRoundsEnabled(): void
+    {
+        $this->persistWorkMenuSettings();
+    }
+
+    public function updatedWorkMenuUnitMeasurementsEnabled(): void
+    {
+        $this->persistWorkMenuSettings();
+    }
+
+    private function persistWorkMenuSettings(): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageWorkMenu', $tenant);
+
+        $validated = Validator::make(
+            [
+                'work_menu_calendar_enabled' => $this->workMenuCalendarEnabled,
+                'work_menu_reservations_enabled' => $this->workMenuReservationsEnabled,
+                'work_menu_inspection_rounds_enabled' => $this->workMenuInspectionRoundsEnabled,
+                'work_menu_unit_measurements_enabled' => $this->workMenuUnitMeasurementsEnabled,
+            ],
+            UpdateTenantWorkMenuRequest::ruleSet(),
+        )->validate();
+
+        $updated = app(UpdateTenantWorkMenuAction::class)->handle($tenant, $validated, (int) auth()->id());
+        $this->fillWorkMenuFromTenant($updated);
+        $this->dispatch('saved');
+    }
+
+    private function fillWorkMenuFromTenant(Tenant $tenant): void
+    {
+        $this->workMenuCalendarEnabled = $tenant->workMenuCalendarEnabled();
+        $this->workMenuReservationsEnabled = $tenant->workMenuReservationsEnabled();
+        $this->workMenuInspectionRoundsEnabled = $tenant->workMenuInspectionRoundsEnabled();
+        $this->workMenuUnitMeasurementsEnabled = $tenant->workMenuUnitMeasurementsEnabled();
     }
 
     public function openOrgModal(): void

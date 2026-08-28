@@ -104,6 +104,22 @@
         "new_qr_issue_label": "Receive an email for every new report",
         "new_qr_issue_hint": "Only for reports submitted via the QR portal."
     },
+    "work_menu": {
+        "title": "Work menu settings",
+        "hint": "Choose which Work menu items are visible in backoffice. Disabled items disappear from the sidebar; existing unit and category settings on the QR portal keep working.",
+        "calendar_label": "Calendar",
+        "calendar_hint": "Calendar view for tasks, issues and reservations.",
+        "reservations_label": "Reservations",
+        "reservations_hint": "Reservation management in backoffice. QR booking on units that already had it stays available.",
+        "inspection_rounds_label": "Inspection rounds",
+        "inspection_rounds_hint": "List and planning of inspection rounds. Unit checks remain available separately.",
+        "unit_measurements_label": "Unit measurements",
+        "unit_measurements_hint": "Measure fields and history in backoffice. QR measurements on units that already had them stay available.",
+        "errors": {
+            "reservations_disabled": "Reservations are disabled in the work menu. You cannot newly enable this on units or categories.",
+            "unit_measurements_disabled": "Unit measurements are disabled in the work menu. You cannot newly enable this on units or categories."
+        }
+    },
     "privacy": {
         "title": "Privacy & data export",
         "hint": "Only the administrator can download a machine-readable overview (JSON in a ZIP file) of the account and relevant activity within your tenant. The file may contain sensitive data — store it securely.",

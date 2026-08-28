@@ -32,6 +32,7 @@ use App\Models\Tenant;
 use App\Support\EntityDetailNavigation;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
+use App\Support\Tenant\TenantWorkMenuAccess;
 use App\Support\Translation\LocaleSupport;
 use App\Models\QrLinkPhoto;
 use App\Models\Unit;
@@ -541,6 +542,33 @@ class Show extends Component
             'unitPhotos.*.image' => __('portal.report.errors.photos_image'),
             'unitPhotos.*.max' => __('portal.report.errors.photos_size'),
         ]);
+
+        $tenant = $this->locationTenant();
+        $currentUnit = $this->editingUnitId !== null
+            ? Unit::query()->find($this->editingUnitId)
+            : null;
+
+        if ($tenant instanceof Tenant) {
+            if (! TenantWorkMenuAccess::mayEnableReservations(
+                $tenant,
+                (bool) $validated['unitAllowReservations'],
+                (bool) ($currentUnit?->allow_reservations ?? false),
+            )) {
+                $this->addError('unitAllowReservations', __('settings.work_menu.errors.reservations_disabled'));
+
+                return;
+            }
+
+            if (! TenantWorkMenuAccess::mayEnableUnitMeasurements(
+                $tenant,
+                (bool) $validated['unitAllowUnitMeasurements'],
+                (bool) ($currentUnit?->allow_unit_measurements ?? false),
+            )) {
+                $this->addError('unitAllowUnitMeasurements', __('settings.work_menu.errors.unit_measurements_disabled'));
+
+                return;
+            }
+        }
 
         $payload = [
             'name' => $validated['unitName'],
@@ -1168,6 +1196,8 @@ class Show extends Component
             'descriptionLocales' => $descriptionLocales,
             'locationTranslationLocales' => $locationTranslationLocales,
             'canImportUnitsCsv' => $this->locationTenant()?->hasCsvUnitsImport() ?? false,
+            'workMenuReservationsEnabled' => $this->locationTenant()?->workMenuReservationsEnabled() ?? true,
+            'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,
         ]);
     }
 

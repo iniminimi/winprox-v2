@@ -22,6 +22,7 @@ use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Esg\EsgModuleAccess;
 use App\Support\PerStatusListLimit;
 use App\Support\Tenancy;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -32,6 +33,7 @@ use Livewire\WithFileUploads;
 #[Title('WinProx')]
 class Index extends Component
 {
+    use AuthorizesRequests;
     use WithFileUploads;
     #[Url(as: 'status')]
     public string $statusFilter = '';
@@ -111,6 +113,7 @@ class Index extends Component
 
         // Inspectierondes zijn altijd terugkerend; sidebar deep-link zet beide params.
         if ($this->inspectionRoundOnly) {
+            $this->authorize('viewInspectionRounds', Issue::class);
             $this->recurring = true;
         }
 
@@ -181,7 +184,7 @@ class Index extends Component
 
     public function openRoundCreateModal(): void
     {
-        $this->authorize('create', Issue::class);
+        $this->authorize('createInspectionRound', Issue::class);
         $this->resetRoundCreateForm();
         $this->showRoundCreateModal = true;
     }
@@ -294,6 +297,7 @@ class Index extends Component
         $isInspectionRound = count($this->round_stop_unit_ids) >= 2;
 
         if ($isInspectionRound) {
+            $this->authorize('createInspectionRound', Issue::class);
             $this->unit_id = null;
             $this->esg_indicator_id = null;
         }
@@ -352,7 +356,7 @@ class Index extends Component
 
     public function saveRoundCreate(CreateInspectionRoundAction $createRound): mixed
     {
-        $this->authorize('create', Issue::class);
+        $this->authorize('createInspectionRound', Issue::class);
 
         $this->description = trim($this->description);
 

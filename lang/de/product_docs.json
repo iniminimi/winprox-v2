@@ -52,6 +52,10 @@
                 "body": "Wiederkehrende Meldung mit fester Unit-Route (Stops), auch über Standorte hinweg. Planen über Meldungen → Inspektionsrunde planen (Stops, Intervall und Team in einem Schritt) oder optional über den Melde-Assistenten. Arbeit → Inspektionsrunden öffnet dieselbe Liste gefiltert auf Runden. Nur Units mit Unit-Checks erscheinen in der Stoppliste; andere Units sind ausgeblendet. Pro Zyklus eine Aufgabe; pro Stop Unit-Check OK, Nicht OK (mit Meldung; Beschreibung vorausgefüllt) oder Überspringen mit Grund. Fertig, wenn alle Stops dieses Zyklus erledigt sind."
             },
             {
+                "title": "Arbeitsmenü",
+                "body": "Unter Einstellungen (Administrator): Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen pro Organisation in der Seitenleiste ein/aus. Aus = kein Backoffice-Zugriff; QR auf Units, die es bereits hatten, bleibt aktiv (Grandfather)."
+            },
+            {
                 "title": "Branding & QR",
                 "body": "Organisationslogo, Portal-Hintergrund und Portal-Farben (Hintergrund- und Schaltflächenfarbe) unter Einstellungen; Unit-Fotos und Hintergrundfoto pro Unit. Avery- oder A6/A5/A4-Stickerformate — druckfertig."
             },

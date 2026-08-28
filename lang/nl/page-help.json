@@ -579,6 +579,10 @@
                     "text": "Rechts (op een breed scherm) zie je een live voorbeeld van één sticker met demo-QR en -nummer. Bij export op een locatie worden de echte unit-QR-codes en stickernummers van die locatie gebruikt."
                 },
                 {
+                    "label": "Werkmenu instellingen",
+                    "text": "Alleen de beheerder kan per organisatie bepalen welke onderdelen onder Werk zichtbaar zijn: Kalender, Reserveringen, Inspectierondes en Unitmetingen. Uitgeschakeld verdwijnt het item uit de sidebar en zijn de backoffice-routes niet bereikbaar. Bestaande reserverings- of meet-instellingen op units en categorieën blijven op het QR-portaal werken; nieuw inschakelen kan niet zolang het werkmenu-item uit staat. Unit checks worden niet beïnvloed door Inspectierondes uit."
+                },
+                {
                     "label": "Privacy & export van gegevens",
                     "text": "Alleen de beheerder kan een machineleesbaar overzicht (JSON) van het account en relevante activiteit binnen jullie omgeving downloaden. Deze rubriek staat alleen op Instellingen voor de beheerder. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig."
                 }

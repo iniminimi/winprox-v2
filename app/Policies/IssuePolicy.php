@@ -6,6 +6,7 @@ use App\Models\Issue;
 use App\Models\User;
 use App\Support\Platform\SuperuserTenantAccess;
 use App\Support\Tenancy;
+use App\Support\Tenant\TenantWorkMenuAccess;
 
 class IssuePolicy
 {
@@ -38,6 +39,36 @@ class IssuePolicy
     {
         return $this->sameTenant($user, $issue->tenant_id)
             && ($user->isAdmin() || $user->isEmployee());
+    }
+
+    public function viewInspectionRounds(User $user): bool
+    {
+        return $this->hasTenantAccess($user)
+            && $this->workMenuInspectionRoundsEnabledFor($user);
+    }
+
+    public function createInspectionRound(User $user): bool
+    {
+        if ($user->is_superuser) {
+            return Tenancy::id() !== null
+                && $this->workMenuInspectionRoundsEnabledFor($user);
+        }
+
+        return ($user->isAdmin() || $user->isEmployee())
+            && $this->workMenuInspectionRoundsEnabledFor($user);
+    }
+
+    private function workMenuInspectionRoundsEnabledFor(User $user): bool
+    {
+        if ($user->tenant_id !== null) {
+            return TenantWorkMenuAccess::inspectionRoundsEnabled($user->tenant);
+        }
+
+        if ($user->is_superuser) {
+            return TenantWorkMenuAccess::activeTenantInspectionRoundsEnabled();
+        }
+
+        return false;
     }
 
     private function hasTenantAccess(User $user): bool

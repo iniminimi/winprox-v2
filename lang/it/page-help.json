@@ -579,6 +579,10 @@
                     "text": "A destra (su schermo largo) vede un'anteprima live di un adesivo con codice QR demo e numero. All'esportazione in una sede, vengono usati i codici QR unità reali e i numeri adesivo per quella sede."
                 },
                 {
+                    "label": "Impostazioni menu Lavoro",
+                    "text": "Solo l'amministratore può scegliere per organizzazione quali voci Lavoro sono visibili: Calendario, Prenotazioni, Giri di ispezione e Misurazioni unità. Disattivata, la voce scompare dalla barra laterale e le route backoffice restituiscono vietato. Le impostazioni di prenotazione o misura esistenti su unità e categorie restano attive sul portale QR; non si possono riattivare finché la voce del menu Lavoro è disattivata. I unit check non sono influenzati se Giri di ispezione è disattivato."
+                },
+                {
                     "label": "Privacy ed esportazione dati",
                     "text": "Solo l'amministratore può scaricare una panoramica leggibile da macchina (JSON) dell'account e dell'attività rilevante nel Suo ambiente. Questa sezione compare in Impostazioni solo per gli amministratori. Il file può contenere dati sensibili — conservilo in modo sicuro."
                 }

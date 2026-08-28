@@ -579,6 +579,10 @@
                     "text": "À droite (sur un écran large), un aperçu en direct d'un autocollant avec QR code et numéro de démonstration. Lors de l'export sur un emplacement, les vrais QR codes d'unités et numéros d'autocollants de cet emplacement sont utilisés."
                 },
                 {
+                    "label": "Paramètres du menu Travail",
+                    "text": "Seul l'administrateur peut choisir par organisation quels éléments Travail sont visibles : Calendrier, Réservations, Tournées d'inspection et Mesures d'unité. Désactivé, l'élément disparaît de la barre latérale et les routes back-office renvoient interdit. Les réglages de réservation ou de mesure existants sur unités et catégories restent actifs sur le portail QR ; réactivation impossible tant que l'élément du menu Travail est désactivé. Les unit checks ne sont pas affectés si Tournées d'inspection est désactivé."
+                },
+                {
                     "label": "Confidentialité & export de données",
                     "text": "Seul l'administrateur peut télécharger un aperçu lisible par machine (JSON) du compte et de l'activité pertinente dans votre environnement. Cette rubrique n'apparaît dans Paramètres que pour l'administrateur. Le fichier peut contenir des données sensibles — conservez-le en lieu sûr."
                 }

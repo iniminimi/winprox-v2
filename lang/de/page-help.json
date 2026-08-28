@@ -579,6 +579,10 @@
                     "text": "Rechts (auf einem breiten Bildschirm) sehen Sie eine Live-Vorschau eines Aufklebers mit Demo-QR-Code und -Nummer. Beim Export an einem Standort werden die echten Unit-QR-Codes und Aufklebernummern dieses Standorts verwendet."
                 },
                 {
+                    "label": "Arbeitsmenü-Einstellungen",
+                    "text": "Nur der Administrator kann pro Organisation festlegen, welche Arbeitsmenü-Einträge sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag aus der Seitenleiste und Backoffice-Routen sind gesperrt. Bestehende Reservierungs- oder Mess-Einstellungen auf Units und Kategorien funktionieren im QR-Portal weiter; neu aktivieren ist nicht möglich, solange der Menüeintrag aus ist. Unit Checks werden nicht beeinflusst, wenn Inspektionsrunden aus ist."
+                },
+                {
                     "label": "Datenschutz & Datenexport",
                     "text": "Nur der Administrator kann eine maschinenlesbare Übersicht (JSON) des Kontos und relevanter Aktivität in Ihrer Umgebung herunterladen. Dieser Bereich erscheint in Einstellungen nur für den Administrator. Die Datei kann sensible Daten enthalten — sicher aufbewahren."
                 }

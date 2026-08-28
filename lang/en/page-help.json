@@ -579,6 +579,10 @@
                     "text": "On the right (on a wide screen) you see a live preview of one sticker with a demo QR code and number. When exporting at a location, the real unit QR codes and sticker numbers for that location are used."
                 },
                 {
+                    "label": "Work menu settings",
+                    "text": "Only the administrator can choose per organisation which Work items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the sidebar and backoffice routes return forbidden. Existing reservation or measurement settings on units and categories keep working on the QR portal; you cannot newly enable them while the work menu item is off. Unit checks are not affected when Inspection rounds is off."
+                },
+                {
                     "label": "Privacy & data export",
                     "text": "Only the administrator can download a machine-readable overview (JSON) of the account and relevant activity within your environment. This section appears on Settings for administrators only. The file may contain sensitive data — keep it secure."
                 }

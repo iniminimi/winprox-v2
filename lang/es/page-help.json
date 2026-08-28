@@ -579,6 +579,10 @@
                     "text": "A la derecha (en pantalla ancha) ve una vista previa en directo de una pegatina con un código QR de demostración y número. Al exportar en una ubicación, se usan los códigos QR de unidad y números de pegatina reales de esa ubicación."
                 },
                 {
+                    "label": "Ajustes del menú Trabajo",
+                    "text": "Solo el administrador puede elegir por organización qué elementos de Trabajo son visibles: Calendario, Reservas, Rondas de inspección y Mediciones de unidad. Desactivado, el elemento desaparece de la barra lateral y las rutas de backoffice devuelven prohibido. Los ajustes de reserva o medición existentes en unidades y categorías siguen funcionando en el portal QR; no se pueden activar de nuevo mientras el elemento del menú Trabajo esté desactivado. Los unit checks no se ven afectados si Rondas de inspección está desactivado."
+                },
+                {
                     "label": "Privacidad y exportación de datos",
                     "text": "Solo el administrador puede descargar un resumen legible por máquina (JSON) de la cuenta y la actividad relevante dentro de su entorno. Esta sección aparece en Configuración solo para administradores. El archivo puede contener datos sensibles — guárdelo de forma segura."
                 }

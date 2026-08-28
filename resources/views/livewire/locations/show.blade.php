@@ -376,12 +376,16 @@
                     <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
                 </label>
 
-                <x-wp-tooltip :text="__('locations.units.allow_reservations_hint')" wrap class="wp-tooltip--block">
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model="unitAllowReservations">
-                        <span>{{ __('locations.units.fields.allow_reservations') }}</span>
-                    </label>
-                </x-wp-tooltip>
+                @if ($workMenuReservationsEnabled || $unitAllowReservations)
+                    <x-wp-tooltip :text="__('locations.units.allow_reservations_hint')" wrap class="wp-tooltip--block">
+                        <label class="wp-check wp-check--boxed">
+                            <input type="checkbox" wire:model="unitAllowReservations"
+                                @disabled(! $workMenuReservationsEnabled && ! $unitAllowReservations)>
+                            <span>{{ __('locations.units.fields.allow_reservations') }}</span>
+                        </label>
+                    </x-wp-tooltip>
+                    @error('unitAllowReservations') <span class="wp-error">{{ $message }}</span> @enderror
+                @endif
 
                 <x-wp-tooltip :text="__('locations.units.allow_unit_checks_hint')" wrap class="wp-tooltip--block">
                     <label class="wp-check wp-check--boxed">
@@ -405,12 +409,16 @@
                     </x-wp-tooltip>
                 @endif
 
-                <x-wp-tooltip :text="__('locations.units.allow_unit_measurements_hint')" wrap class="wp-tooltip--block">
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model.live="unitAllowUnitMeasurements">
-                        <span>{{ __('locations.units.fields.allow_unit_measurements') }}</span>
-                    </label>
-                </x-wp-tooltip>
+                @if ($workMenuUnitMeasurementsEnabled || $unitAllowUnitMeasurements)
+                    <x-wp-tooltip :text="__('locations.units.allow_unit_measurements_hint')" wrap class="wp-tooltip--block">
+                        <label class="wp-check wp-check--boxed">
+                            <input type="checkbox" wire:model.live="unitAllowUnitMeasurements"
+                                @disabled(! $workMenuUnitMeasurementsEnabled && ! $unitAllowUnitMeasurements)>
+                            <span>{{ __('locations.units.fields.allow_unit_measurements') }}</span>
+                        </label>
+                    </x-wp-tooltip>
+                    @error('unitAllowUnitMeasurements') <span class="wp-error">{{ $message }}</span> @enderror
+                @endif
 
                 @if ($unitAllowUnitMeasurements)
                     <div class="wp-field">

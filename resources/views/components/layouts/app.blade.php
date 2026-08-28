@@ -26,6 +26,10 @@
         $showEsgNav = $activeTenant instanceof Tenant && $activeTenant->hasEsgModule();
         $showIotNav = $activeTenant instanceof Tenant && $activeTenant->hasIotModule();
         $showTimeNav = $activeTenant instanceof Tenant && $activeTenant->hasTimeModule();
+        $showWorkMenuCalendar = $activeTenant instanceof Tenant && $activeTenant->workMenuCalendarEnabled();
+        $showWorkMenuReservations = $activeTenant instanceof Tenant && $activeTenant->workMenuReservationsEnabled();
+        $showWorkMenuInspectionRounds = $activeTenant instanceof Tenant && $activeTenant->workMenuInspectionRoundsEnabled();
+        $showWorkMenuUnitMeasurements = $activeTenant instanceof Tenant && $activeTenant->workMenuUnitMeasurementsEnabled();
 
         $primaryNav = [
             ...($isPlatformOnlySuperuser ? [
@@ -177,9 +181,10 @@
 
                             $workGroupActive = request()->routeIs('issues.*')
                                 || request()->routeIs('tasks.*')
-                                || request()->routeIs('calendar.*')
-                                || request()->routeIs('reservations.*')
-                                || request()->routeIs('unit-measurements.*');
+                                || ($showWorkMenuCalendar && request()->routeIs('calendar.*'))
+                                || ($showWorkMenuReservations && request()->routeIs('reservations.*'))
+                                || ($showWorkMenuUnitMeasurements && request()->routeIs('unit-measurements.*'))
+                                || ($showWorkMenuInspectionRounds && $inspectionRoundOnlyActive);
 
                             $categoriesActive = request()->routeIs('locations.index')
                                 && (request()->query('section') === 'categories' || request()->filled('edit_category'));
@@ -236,26 +241,34 @@
                                        @click="nav = false">
                                         <span>{{ __('common.nav.tasks') }}</span>
                                     </a>
-                                    <a href="{{ route('calendar.index') }}"
-                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('calendar.*') ? 'is-active' : '' }}"
-                                       @click="nav = false">
-                                        <span>{{ __('common.nav.calendar') }}</span>
-                                    </a>
-                                    <a href="{{ route('reservations.index') }}"
-                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('reservations.*') ? 'is-active' : '' }}"
-                                       @click="nav = false">
-                                        <span>{{ __('common.nav.reservations') }}</span>
-                                    </a>
-                                    <a href="{{ route('issues.index', ['recurring' => 1, 'inspection_round' => 1]) }}"
-                                       class="wp-nav-link wp-nav-link--sub {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
-                                       @click="nav = false">
-                                        <span>{{ __('issues.list.inspection_rounds') }}</span>
-                                    </a>
-                                    <a href="{{ route('unit-measurements.index') }}"
-                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-measurements.*') ? 'is-active' : '' }}"
-                                       @click="nav = false">
-                                        <span>{{ __('common.nav.unit_measurements') }}</span>
-                                    </a>
+                                    @if ($showWorkMenuCalendar)
+                                        <a href="{{ route('calendar.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('calendar.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.calendar') }}</span>
+                                        </a>
+                                    @endif
+                                    @if ($showWorkMenuReservations)
+                                        <a href="{{ route('reservations.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('reservations.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.reservations') }}</span>
+                                        </a>
+                                    @endif
+                                    @if ($showWorkMenuInspectionRounds)
+                                        <a href="{{ route('issues.index', ['recurring' => 1, 'inspection_round' => 1]) }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('issues.list.inspection_rounds') }}</span>
+                                        </a>
+                                    @endif
+                                    @if ($showWorkMenuUnitMeasurements)
+                                        <a href="{{ route('unit-measurements.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-measurements.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.unit_measurements') }}</span>
+                                        </a>
+                                    @endif
                                 </div>
                             </details>
 

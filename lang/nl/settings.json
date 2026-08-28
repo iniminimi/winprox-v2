@@ -104,6 +104,22 @@
         "new_qr_issue_label": "Ontvang een e-mail bij elke nieuwe melding",
         "new_qr_issue_hint": "Alleen voor meldingen via het QR-portaal."
     },
+    "work_menu": {
+        "title": "Werkmenu instellingen",
+        "hint": "Bepaal welke onderdelen van het Werk-menu zichtbaar zijn in beheer. Uitgeschakelde items verdwijnen uit de sidebar; bestaande unit- en categorie-instellingen op het QR-portaal blijven werken.",
+        "calendar_label": "Kalender",
+        "calendar_hint": "Kalenderweergave voor taken, meldingen en reserveringen.",
+        "reservations_label": "Reserveringen",
+        "reservations_hint": "Reserveringsbeheer in backoffice. QR-reserveren op units die het al hadden blijft beschikbaar.",
+        "inspection_rounds_label": "Inspectierondes",
+        "inspection_rounds_hint": "Lijst en planning van inspectierondes. Unit checks blijven onafhankelijk beschikbaar.",
+        "unit_measurements_label": "Unitmetingen",
+        "unit_measurements_hint": "Meetvelden en historiek in backoffice. QR-metingen op units die het al hadden blijven beschikbaar.",
+        "errors": {
+            "reservations_disabled": "Reserveringen staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën.",
+            "unit_measurements_disabled": "Unitmetingen staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën."
+        }
+    },
     "privacy": {
         "title": "Privacy & export van gegevens",
         "hint": "Alleen de beheerder kan een machineleesbaar overzicht (JSON in een ZIP-bestand) van het account en relevante activiteit binnen jullie omgeving downloaden. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig.",
