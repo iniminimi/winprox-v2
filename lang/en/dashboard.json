@@ -101,6 +101,10 @@
         "preview_categories": "Categories",
         "preview_location": "Location",
         "preview_units": "Units",
+        "preview_work_menu": "Work menu",
+        "preview_work_menu_on": "on",
+        "preview_work_menu_off": "off",
+        "work_menu_adjust_before": "You can change this later under",
         "errors": {
             "type_required": "Choose an organisation type.",
             "unknown": "This starter template is not available.",

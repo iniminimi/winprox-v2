@@ -101,6 +101,10 @@
         "preview_categories": "Categorías",
         "preview_location": "Ubicación",
         "preview_units": "Units",
+        "preview_work_menu": "Menú de trabajo",
+        "preview_work_menu_on": "activado",
+        "preview_work_menu_off": "desactivado",
+        "work_menu_adjust_before": "Puedes cambiarlo más tarde en",
         "errors": {
             "type_required": "Elige un tipo de organización.",
             "unknown": "Esta plantilla inicial no está disponible.",

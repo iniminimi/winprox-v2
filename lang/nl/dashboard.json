@@ -101,6 +101,10 @@
         "preview_categories": "Categorieën",
         "preview_location": "Locatie",
         "preview_units": "Units",
+        "preview_work_menu": "Werkmenu",
+        "preview_work_menu_on": "aan",
+        "preview_work_menu_off": "uit",
+        "work_menu_adjust_before": "Je kunt dit later wijzigen via",
         "errors": {
             "type_required": "Kies een type organisatie.",
             "unknown": "Dit starttemplate is niet beschikbaar.",

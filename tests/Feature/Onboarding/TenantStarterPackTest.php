@@ -19,6 +19,7 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
 use App\Support\Onboarding\TenantOnboardingState;
+use App\Support\Onboarding\TenantStarterPackCatalog;
 use App\Support\Platform\SupportTenantContext;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Mail;
@@ -219,6 +220,32 @@ it('houdt het starttemplate wanneer er al een melding op een unit staat', functi
     $tenant->refresh();
     expect($tenant->starter_pack_key)->toBe('hospital')
         ->and(Unit::query()->count())->toBe(3);
+});
+
+it('toont werkmenu-onderdelen in starttemplate-preview', function () {
+    $preview = TenantStarterPackCatalog::preview(TenantStarterPackType::RealEstate, 'nl');
+
+    expect($preview['work_menu'])->toHaveCount(4);
+
+    $byLabel = collect($preview['work_menu'])->keyBy('label');
+
+    expect($byLabel['Kalender']['enabled'])->toBeTrue()
+        ->and($byLabel['Reserveringen']['enabled'])->toBeFalse()
+        ->and($byLabel['Inspectierondes']['enabled'])->toBeTrue()
+        ->and($byLabel['Unitmetingen']['enabled'])->toBeFalse();
+});
+
+it('toont werkmenu-preview in starttemplate-modal', function () {
+    [, $admin] = setupStarterPackAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->call('openStarterPackModal')
+        ->set('starterPackType', TenantStarterPackType::RealEstate->value)
+        ->assertSee(__('dashboard.starter_pack.preview_work_menu'))
+        ->assertSee(__('settings.work_menu.reservations_label'))
+        ->assertSee(__('dashboard.starter_pack.preview_work_menu_off'))
+        ->assertSee(__('settings.work_menu.title'));
 });
 
 it('toont de starttemplate-knop op het dashboard van een lege werkruimte', function () {

@@ -101,6 +101,10 @@
         "preview_categories": "Kategorien",
         "preview_location": "Standort",
         "preview_units": "Units",
+        "preview_work_menu": "Arbeitsmenü",
+        "preview_work_menu_on": "an",
+        "preview_work_menu_off": "aus",
+        "work_menu_adjust_before": "Sie können dies später ändern unter",
         "errors": {
             "type_required": "Wählen Sie einen Organisationstyp.",
             "unknown": "Diese Startvorlage ist nicht verfügbar.",

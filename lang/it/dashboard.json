@@ -101,6 +101,10 @@
         "preview_categories": "Categorie",
         "preview_location": "Sede",
         "preview_units": "Unit",
+        "preview_work_menu": "Menu Lavoro",
+        "preview_work_menu_on": "attivo",
+        "preview_work_menu_off": "disattivo",
+        "work_menu_adjust_before": "Puoi modificarlo in seguito in",
         "errors": {
             "type_required": "Scegli un tipo di organizzazione.",
             "unknown": "Questo modello iniziale non è disponibile.",

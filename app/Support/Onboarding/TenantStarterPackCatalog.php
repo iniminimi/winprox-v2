@@ -11,6 +11,13 @@ use InvalidArgumentException;
 
 final class TenantStarterPackCatalog
 {
+    /** @var array<string, string> */
+    private const WORK_MENU_LABEL_KEYS = [
+        'calendar' => 'settings.work_menu.calendar_label',
+        'reservations' => 'settings.work_menu.reservations_label',
+        'inspection_rounds' => 'settings.work_menu.inspection_rounds_label',
+        'unit_measurements' => 'settings.work_menu.unit_measurements_label',
+    ];
     /**
      * @return array{
      *     teams: array<string, array{categories: list<string>}>,
@@ -131,7 +138,8 @@ final class TenantStarterPackCatalog
      *     teams: list<string>,
      *     categories: list<string>,
      *     location: string,
-     *     units: list<string>
+     *     units: list<string>,
+     *     work_menu: list<array{label: string, enabled: bool}>
      * }
      */
     public static function preview(TenantStarterPackType $type, string $locale): array
@@ -154,11 +162,21 @@ final class TenantStarterPackCatalog
             $units[] = self::name(self::unitNameKey($type, (string) $unit['key']), $locale);
         }
 
+        $flags = self::workMenuFlags($type);
+        $workMenu = [];
+        foreach (self::WORK_MENU_LABEL_KEYS as $key => $labelKey) {
+            $workMenu[] = [
+                'label' => Lang::get($labelKey, [], $locale),
+                'enabled' => $flags[$key],
+            ];
+        }
+
         return [
             'teams' => $teams,
             'categories' => $categories,
             'location' => self::name(self::locationNameKey($type), $locale),
             'units' => $units,
+            'work_menu' => $workMenu,
         ];
     }
 }

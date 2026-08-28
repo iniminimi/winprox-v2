@@ -317,6 +317,18 @@
                         <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_categories') }}</strong> — {{ implode(', ', $starterPackPreview['categories']) }}</p>
                         <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_location') }}</strong> — {{ $starterPackPreview['location'] }}</p>
                         <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_units') }}</strong> — {{ implode(', ', $starterPackPreview['units']) }}</p>
+                        <p class="wp-text-body">
+                            <strong>{{ __('dashboard.starter_pack.preview_work_menu') }}</strong>
+                            —
+                            @foreach ($starterPackPreview['work_menu'] as $item)
+                                {{ $item['label'] }}
+                                <span class="wp-muted">({{ $item['enabled'] ? __('dashboard.starter_pack.preview_work_menu_on') : __('dashboard.starter_pack.preview_work_menu_off') }})</span>@if (! $loop->last), @endif
+                            @endforeach
+                        </p>
+                        <p class="wp-muted wp-text-sm">
+                            {{ __('dashboard.starter_pack.work_menu_adjust_before') }}
+                            <a href="{{ route('settings.index') }}#settings-work-menu" class="wp-link">{{ __('common.nav.organization') }} → {{ __('common.nav.settings') }} → {{ __('settings.work_menu.title') }}</a>.
+                        </p>
                     </div>
                 @endif
 

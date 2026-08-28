@@ -101,6 +101,10 @@
         "preview_categories": "Catégories",
         "preview_location": "Lieu",
         "preview_units": "Units",
+        "preview_work_menu": "Menu Travail",
+        "preview_work_menu_on": "activé",
+        "preview_work_menu_off": "désactivé",
+        "work_menu_adjust_before": "Vous pouvez modifier cela plus tard via",
         "errors": {
             "type_required": "Choisissez un type d’organisation.",
             "unknown": "Ce modèle de départ n’est pas disponible.",

@@ -126,7 +126,7 @@
     @endif
 
     @if ($canManageOrganisation)
-        <x-wp-settings-section :title="__('settings.work_menu.title')">
+        <x-wp-settings-section :title="__('settings.work_menu.title')" titleId="settings-work-menu">
             <form wire:submit="saveWorkMenuSettings" class="wp-stack">
                 <p class="wp-muted wp-text-sm">{{ __('settings.work_menu.hint') }}</p>
                 <div class="wp-stack-tight">
