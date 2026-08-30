@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\V1\UnitController;
 use App\Http\Controllers\Api\V1\UnitGpsReportController;
 use App\Http\Controllers\Api\V1\UnitCheckController;
 use App\Http\Controllers\Api\V1\UnitMeasurementController;
+use App\Http\Controllers\Api\V1\PromoCampaignController;
 use App\Http\Controllers\Api\V1\ReservationController;
 use App\Http\Controllers\Api\V1\WorkerController;
 use App\Http\Controllers\Api\V1\WorkShiftController;
@@ -137,5 +138,28 @@ Route::prefix('v1')->group(function () {
             ->name('api.v1.translations.import');
         Route::get('translations/status', [TranslationController::class, 'status'])
             ->name('api.v1.translations.status');
+    });
+
+    // Platform promo-campagnes (superuser, geen tenant-scope / api.access)
+    Route::middleware(['auth:sanctum'])->group(function () {
+        Route::get('promo-campaigns', [PromoCampaignController::class, 'index'])
+            ->name('api.v1.promo-campaigns.index');
+        Route::get('promo-campaigns/{promoCampaign}', [PromoCampaignController::class, 'show'])
+            ->name('api.v1.promo-campaigns.show');
+
+        Route::middleware('idempotency')->group(function () {
+            Route::post('promo-campaigns', [PromoCampaignController::class, 'store'])
+                ->name('api.v1.promo-campaigns.store');
+            Route::patch('promo-campaigns/{promoCampaign}', [PromoCampaignController::class, 'update'])
+                ->name('api.v1.promo-campaigns.update');
+            Route::delete('promo-campaigns/{promoCampaign}', [PromoCampaignController::class, 'destroy'])
+                ->name('api.v1.promo-campaigns.destroy');
+            Route::post('promo-campaigns/{promoCampaign}/queue-emails', [PromoCampaignController::class, 'queueEmails'])
+                ->name('api.v1.promo-campaigns.queue-emails');
+            Route::post('promo-campaigns/{promoCampaign}/pause-sending', [PromoCampaignController::class, 'pauseSending'])
+                ->name('api.v1.promo-campaigns.pause-sending');
+            Route::post('promo-campaigns/{promoCampaign}/resume-sending', [PromoCampaignController::class, 'resumeSending'])
+                ->name('api.v1.promo-campaigns.resume-sending');
+        });
     });
 });

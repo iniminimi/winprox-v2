@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Data\Marketing\PromoCampaignDeliverySummaryData;
 use App\Enums\PromoLanding;
 use App\Enums\PromoEmailsPauseReason;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PromoCampaign extends Model
 {
+    public ?PromoCampaignDeliverySummaryData $deliverySummary = null;
+
     protected $attributes = [
         'attach_letter_to_email' => false,
         'landing' => 'government',
