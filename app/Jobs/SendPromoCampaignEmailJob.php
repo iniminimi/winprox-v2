@@ -69,23 +69,27 @@ class SendPromoCampaignEmailJob implements ShouldBeUnique, ShouldQueue
         }
 
         if (! (bool) config('winprox.promo_campaign_emails_enabled', true)) {
-            Log::info('promo_campaign_email_job_skipped', [
-                'promo_campaign_id' => $this->promoCampaignId,
-                'promo_campaign_target_id' => $this->promoCampaignTargetId,
-                'reason' => 'disabled',
-            ]);
+            if ($this->overrideRecipientEmail === null) {
+                Log::info('promo_campaign_email_job_skipped', [
+                    'promo_campaign_id' => $this->promoCampaignId,
+                    'promo_campaign_target_id' => $this->promoCampaignTargetId,
+                    'reason' => 'disabled',
+                ]);
 
-            return;
+                return;
+            }
         }
 
         if ($campaign->isEmailSendingPaused()) {
-            Log::info('promo_campaign_email_job_skipped', [
-                'promo_campaign_id' => $this->promoCampaignId,
-                'promo_campaign_target_id' => $this->promoCampaignTargetId,
-                'reason' => 'paused',
-            ]);
+            if ($this->overrideRecipientEmail === null) {
+                Log::info('promo_campaign_email_job_skipped', [
+                    'promo_campaign_id' => $this->promoCampaignId,
+                    'promo_campaign_target_id' => $this->promoCampaignTargetId,
+                    'reason' => 'paused',
+                ]);
 
-            return;
+                return;
+            }
         }
 
         if ($this->alreadyDelivered($campaign, $target)) {

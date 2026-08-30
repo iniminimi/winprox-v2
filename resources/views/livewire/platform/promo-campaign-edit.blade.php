@@ -296,6 +296,7 @@
         <div class="wp-border-top wp-stack-tight">
             <p class="wp-subhead">{{ __('platform.promo_campaigns.test_email_section') }}</p>
             <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.test_email_lead') }}</p>
+            <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.test_email_always_available') }}</p>
             <div class="wp-row wp-gap-md wp-wrap wp-items-end">
                 <div class="wp-promo-actions__field">
                     <label class="wp-label" for="test-email-to">{{ __('platform.promo_campaigns.test_email_to') }}</label>

@@ -63,10 +63,6 @@ class SendPromoCampaignEmailAction
         $isUnsubscribed = EmailUnsubscribe::isUnsubscribed($normalizedRecipientEmail)
             && ! EmailUnsubscribeExemptions::isExempt($normalizedRecipientEmail);
 
-        if ($isUnsubscribed && $isTestSend) {
-            throw new RuntimeException('Recipient is unsubscribed.');
-        }
-
         if ($isUnsubscribed && ! $isTestSend) {
             return $this->markUnsubscribedSkipped($campaign, $target, $normalizedRecipientEmail, $actorUserId);
         }

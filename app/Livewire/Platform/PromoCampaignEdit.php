@@ -413,12 +413,24 @@ class PromoCampaignEdit extends Component
             return;
         }
 
-        $send->handle(
-            campaign: $this->campaign,
-            target: $target->load('promoRecipient'),
-            actorUserId: (int) $user->id,
-            overrideRecipientEmail: $testEmail,
-        );
+        try {
+            $send->handle(
+                campaign: $this->campaign,
+                target: $target->load('promoRecipient'),
+                actorUserId: (int) $user->id,
+                overrideRecipientEmail: $testEmail,
+            );
+        } catch (\RuntimeException $exception) {
+            $message = match ($exception->getMessage()) {
+                'Email subject and body are required.' => __('platform.promo_campaigns.test_email_missing_body'),
+                default => __('platform.promo_campaigns.test_email_failed', [
+                    'reason' => $exception->getMessage(),
+                ]),
+            };
+            $this->showNotice($message, 'error');
+
+            return;
+        }
 
         $this->showNotice(__('platform.promo_campaigns.test_email_sent', ['email' => $testEmail]));
     }

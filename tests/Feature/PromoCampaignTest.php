@@ -1566,6 +1566,42 @@ it('bevestigt bulk verzenden zonder testadres mee te nemen', function () {
     });
 });
 
+it('stuurt testmail ook wanneer campagne onderbroken is', function () {
+    Mail::fake();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmail($superuser, 'paused-test@example.com');
+    app(PausePromoCampaignSendingAction::class)->handle($campaign, (int) $superuser->id);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign->fresh()])
+        ->set('testEmailTo', 'test@winprox.app')
+        ->call('sendTestEmail')
+        ->assertSet('noticeType', 'success');
+
+    Mail::assertSent(PromoCampaignLetterMail::class, function (PromoCampaignLetterMail $mail): bool {
+        return $mail->hasTo('test@winprox.app');
+    });
+});
+
+it('stuurt testmail ook wanneer promo-mails globaal uit staan', function () {
+    Mail::fake();
+    config(['winprox.promo_campaign_emails_enabled' => false]);
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmail($superuser, 'disabled-test@example.com');
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
+        ->set('testEmailTo', 'test@winprox.app')
+        ->call('sendTestEmail')
+        ->assertSet('noticeType', 'success');
+
+    Mail::assertSent(PromoCampaignLetterMail::class, function (PromoCampaignLetterMail $mail): bool {
+        return $mail->hasTo('test@winprox.app');
+    });
+});
+
 it('stuurt testmail alleen naar ingevuld testadres', function () {
     Mail::fake();
 
