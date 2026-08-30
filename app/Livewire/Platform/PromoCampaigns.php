@@ -10,6 +10,7 @@ use App\Actions\Marketing\DeletePromoCampaignAction;
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\ProcessPromoMailboxBouncesAction;
 use App\Actions\Marketing\ResumePromoCampaignSendingAction;
+use App\Actions\Marketing\ReleasePromoCampaignPauseIfCompleteAction;
 use App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction;
 use App\Http\Requests\Marketing\CopyPromoCampaignRequest;
 use App\Http\Requests\Marketing\CreatePromoCampaignRequest;
@@ -324,11 +325,14 @@ class PromoCampaigns extends Component
         $this->flashMessage = __('platform.promo_campaigns.resumed_notice');
     }
 
-    public function render(SummarizePromoCampaignsDeliveryAction $summarize)
-    {
+    public function render(
+        SummarizePromoCampaignsDeliveryAction $summarize,
+        ReleasePromoCampaignPauseIfCompleteAction $releasePauseIfComplete,
+    ) {
         $this->consumeBounceScanCache();
 
         $campaigns = PromoCampaign::query()->latest('id')->get();
+        $releasePauseIfComplete->handleCollection($campaigns);
 
         return view('livewire.platform.promo-campaigns', [
             'campaigns' => $campaigns,

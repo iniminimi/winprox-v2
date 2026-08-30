@@ -916,6 +916,41 @@ it('toont verzendstatus per promo-campagne in de lijst', function () {
         ]));
 });
 
+it('toont afgerond i.p.v. onderbroken wanneer alle mails verstuurd zijn ondanks 23:00-pause', function () {
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'done@example.com');
+
+    PromoCampaignEmailSend::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_target_id' => $target->id,
+        'recipient_email' => 'done@example.com',
+        'status' => MunicipalPromoEmailSendStatus::Sent,
+        'sent_at' => now(),
+        'created_by' => $superuser->id,
+    ]);
+
+    $campaign->update([
+        'emails_paused_at' => now(),
+        'emails_paused_reason' => \App\Enums\PromoEmailsPauseReason::Schedule->value,
+    ]);
+
+    $summary = app(\App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction::class)
+        ->handle(collect([$campaign->fresh()]))[$campaign->id];
+
+    expect($summary->status)->toBe('complete')
+        ->and($summary->remaining)->toBe(0);
+
+    app(\App\Actions\Marketing\ReleasePromoCampaignPauseIfCompleteAction::class)
+        ->handle($campaign->fresh());
+
+    expect($campaign->fresh()->isEmailSendingPaused())->toBeFalse();
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->assertSee(__('platform.promo_campaigns.delivery_status.complete'))
+        ->assertDontSee(__('platform.promo_campaigns.delivery_paused_hint'));
+});
+
 it('telt database-queue jobs per promo-campagne in de verzendstatus', function () {
     config(['queue.default' => 'database']);
 

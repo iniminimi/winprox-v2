@@ -262,20 +262,20 @@ class SummarizePromoCampaignsDeliveryAction
         int $remaining,
         int $queuedJobs,
     ): string {
-        if ($campaign->isEmailSendingPaused()) {
-            return 'paused';
-        }
-
         if ($withEmail === 0) {
             return 'no_recipients';
         }
 
-        if ($queuedJobs > 0 && $remaining > 0) {
-            return 'sending';
+        if ($remaining === 0 && $queuedJobs === 0) {
+            return 'complete';
         }
 
-        if ($remaining === 0) {
-            return 'complete';
+        if ($campaign->isEmailSendingPaused()) {
+            return 'paused';
+        }
+
+        if ($queuedJobs > 0 && $remaining > 0) {
+            return 'sending';
         }
 
         if ($sent > 0 || $failed > 0) {

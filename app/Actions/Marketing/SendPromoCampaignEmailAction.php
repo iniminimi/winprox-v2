@@ -26,6 +26,7 @@ class SendPromoCampaignEmailAction
     public function __construct(
         private LogAuditAction $logAudit,
         private CreatePromoRecipientAction $createPromoRecipient,
+        private ReleasePromoCampaignPauseIfCompleteAction $releasePauseIfComplete,
     ) {}
 
     public function handle(
@@ -146,6 +147,8 @@ class SendPromoCampaignEmailAction
                     'sent_at' => now(),
                 ]);
             }
+
+            $this->releasePauseIfComplete->handle($campaign->fresh() ?? $campaign);
         } catch (Throwable $exception) {
             if ($send !== null) {
                 $send->update([

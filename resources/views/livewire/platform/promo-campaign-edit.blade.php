@@ -311,7 +311,7 @@
 
         <div class="wp-border-top wp-stack-tight">
             <p class="wp-subhead">{{ __('platform.promo_campaigns.queue_section') }}</p>
-            @if ($campaign->isEmailSendingPaused())
+            @if ($campaign->isEmailSendingPaused() && ($delivery?->status ?? '') !== 'complete')
                 <div class="wp-flash wp-flash--danger">
                     <p>{{ __('platform.promo_campaigns.paused_banner') }}</p>
                     @if ($campaign->emailsPauseReasonLabelKey())
@@ -336,7 +336,7 @@
                     <input type="checkbox" wire:model="forceSend">
                     {{ __('platform.promo_campaigns.force_send') }}
                 </label>
-                @if ($campaign->isEmailSendingPaused())
+                @if ($campaign->isEmailSendingPaused() && ($delivery?->status ?? '') !== 'complete')
                     <button type="button" class="btn btn--primary btn--sm" wire:click="resumeSending">
                         {{ __('platform.promo_campaigns.resume_submit') }}
                     </button>
