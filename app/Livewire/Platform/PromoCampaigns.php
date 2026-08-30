@@ -10,6 +10,7 @@ use App\Actions\Marketing\DeletePromoCampaignAction;
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\ProcessPromoMailboxBouncesAction;
 use App\Actions\Marketing\ResumePromoCampaignSendingAction;
+use App\Actions\Marketing\SortPromoCampaignsForPlatformListAction;
 use App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction;
 use App\Http\Requests\Marketing\CopyPromoCampaignRequest;
 use App\Http\Requests\Marketing\CreatePromoCampaignRequest;
@@ -324,15 +325,18 @@ class PromoCampaigns extends Component
         $this->flashMessage = __('platform.promo_campaigns.resumed_notice');
     }
 
-    public function render(SummarizePromoCampaignsDeliveryAction $summarize)
-    {
+    public function render(
+        SummarizePromoCampaignsDeliveryAction $summarize,
+        SortPromoCampaignsForPlatformListAction $sort,
+    ) {
         $this->consumeBounceScanCache();
 
         $campaigns = PromoCampaign::query()->latest('id')->get();
+        $deliverySummaries = $summarize->handle($campaigns);
 
         return view('livewire.platform.promo-campaigns', [
-            'campaigns' => $campaigns,
-            'deliverySummaries' => $summarize->handle($campaigns),
+            'campaigns' => $sort->handle($campaigns, $deliverySummaries),
+            'deliverySummaries' => $deliverySummaries,
             'anyPaused' => $campaigns->contains(fn (PromoCampaign $campaign): bool => $campaign->isEmailSendingPaused()),
             'bulkSendingEnabled' => (bool) config('winprox.promo_campaign_emails_enabled', true),
         ]);

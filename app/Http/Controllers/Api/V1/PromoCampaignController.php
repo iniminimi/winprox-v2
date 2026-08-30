@@ -9,6 +9,7 @@ use App\Actions\Marketing\DeletePromoCampaignAction;
 use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
 use App\Actions\Marketing\ResumePromoCampaignSendingAction;
+use App\Actions\Marketing\SortPromoCampaignsForPlatformListAction;
 use App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
@@ -25,8 +26,10 @@ use RuntimeException;
 
 class PromoCampaignController extends Controller
 {
-    public function index(SummarizePromoCampaignsDeliveryAction $summarize): JsonResponse
-    {
+    public function index(
+        SummarizePromoCampaignsDeliveryAction $summarize,
+        SortPromoCampaignsForPlatformListAction $sort,
+    ): JsonResponse {
         $this->authorize('viewAny', PromoCampaign::class);
 
         $campaigns = PromoCampaign::query()
@@ -35,6 +38,8 @@ class PromoCampaignController extends Controller
             ->paginate(25);
 
         $summaries = $summarize->handle($campaigns->getCollection());
+        $sorted = $sort->handle($campaigns->getCollection(), $summaries);
+        $campaigns->setCollection($sorted);
 
         $campaigns->getCollection()->each(
             function (PromoCampaign $campaign) use ($summaries): void {
