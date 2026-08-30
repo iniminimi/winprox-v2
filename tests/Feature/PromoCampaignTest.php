@@ -14,6 +14,7 @@ use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
 use App\Enums\EmailUnsubscribeSource;
 use App\Enums\MunicipalPromoEmailSendStatus;
+use App\Enums\PromoCampaignDeliveryStatus;
 use App\Enums\PromoEmailPreflightReason;
 use App\Enums\PromoVisitPage;
 use App\Jobs\ProcessPromoMailboxBouncesJob;
@@ -868,7 +869,7 @@ it('toont verzendstatus per promo-campagne in de lijst', function () {
     $summary = app(\App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction::class)
         ->handle(collect([$campaign->fresh()]))[$campaign->id];
 
-    expect($summary->status)->toBe('needs_restart')
+    expect($summary->status)->toBe(PromoCampaignDeliveryStatus::NeedsRestart)
         ->and($summary->sent)->toBe(1)
         ->and($summary->remaining)->toBe(1)
         ->and($summary->bounced)->toBe(0)
@@ -937,18 +938,52 @@ it('toont afgerond i.p.v. onderbroken wanneer alle mails verstuurd zijn ondanks 
     $summary = app(\App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction::class)
         ->handle(collect([$campaign->fresh()]))[$campaign->id];
 
-    expect($summary->status)->toBe('complete')
+    expect($summary->status)->toBe(PromoCampaignDeliveryStatus::Complete)
         ->and($summary->remaining)->toBe(0);
 
     app(\App\Actions\Marketing\ReleasePromoCampaignPauseIfCompleteAction::class)
-        ->handle($campaign->fresh());
+        ->handle($campaign->fresh(), (int) $superuser->id);
 
     expect($campaign->fresh()->isEmailSendingPaused())->toBeFalse();
+
+    expect(AuditLog::query()
+        ->where('action', 'marketing.promo_campaign_pause_released_complete')
+        ->where('model_id', $campaign->id)
+        ->exists())->toBeTrue();
 
     Livewire::actingAs($superuser)
         ->test(PromoCampaigns::class)
         ->assertSee(__('platform.promo_campaigns.delivery_status.complete'))
         ->assertDontSee(__('platform.promo_campaigns.delivery_paused_hint'));
+});
+
+it('geeft voltooide gepauzeerde campagnes vrij via scheduler-command', function () {
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'scheduler@example.com');
+
+    PromoCampaignEmailSend::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_target_id' => $target->id,
+        'recipient_email' => 'scheduler@example.com',
+        'status' => MunicipalPromoEmailSendStatus::Sent,
+        'sent_at' => now(),
+        'created_by' => $superuser->id,
+    ]);
+
+    $campaign->update([
+        'emails_paused_at' => now(),
+        'emails_paused_reason' => \App\Enums\PromoEmailsPauseReason::Schedule->value,
+    ]);
+
+    $this->artisan('marketing:release-completed-promo-pauses')
+        ->assertSuccessful();
+
+    expect($campaign->fresh()->isEmailSendingPaused())->toBeFalse();
+
+    expect(AuditLog::query()
+        ->where('action', 'marketing.promo_campaign_pause_released_complete')
+        ->where('model_id', $campaign->id)
+        ->exists())->toBeTrue();
 });
 
 it('telt database-queue jobs per promo-campagne in de verzendstatus', function () {
@@ -967,7 +1002,7 @@ it('telt database-queue jobs per promo-campagne in de verzendstatus', function (
         ->handle(collect([$campaign->fresh()]))[$campaign->id];
 
     expect($summary->queuedJobs)->toBe(1)
-        ->and($summary->status)->toBe('sending');
+        ->and($summary->status)->toBe(PromoCampaignDeliveryStatus::Sending);
 
     \Illuminate\Support\Facades\DB::table('jobs')->where('payload', 'like', '%SendPromoCampaignEmailJob%')->delete();
 });

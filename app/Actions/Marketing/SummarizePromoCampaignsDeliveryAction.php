@@ -7,6 +7,7 @@ namespace App\Actions\Marketing;
 use App\Data\Marketing\PromoCampaignDeliverySummaryData;
 use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Enums\PromoBounceKind;
+use App\Enums\PromoCampaignDeliveryStatus;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
@@ -261,28 +262,28 @@ class SummarizePromoCampaignsDeliveryAction
         int $failed,
         int $remaining,
         int $queuedJobs,
-    ): string {
+    ): PromoCampaignDeliveryStatus {
         if ($withEmail === 0) {
-            return 'no_recipients';
+            return PromoCampaignDeliveryStatus::NoRecipients;
         }
 
         if ($remaining === 0 && $queuedJobs === 0) {
-            return 'complete';
+            return PromoCampaignDeliveryStatus::Complete;
         }
 
         if ($campaign->isEmailSendingPaused()) {
-            return 'paused';
+            return PromoCampaignDeliveryStatus::Paused;
         }
 
         if ($queuedJobs > 0 && $remaining > 0) {
-            return 'sending';
+            return PromoCampaignDeliveryStatus::Sending;
         }
 
         if ($sent > 0 || $failed > 0) {
-            return 'needs_restart';
+            return PromoCampaignDeliveryStatus::NeedsRestart;
         }
 
-        return 'not_started';
+        return PromoCampaignDeliveryStatus::NotStarted;
     }
 
     private function parseSentAt(mixed $value): ?Carbon

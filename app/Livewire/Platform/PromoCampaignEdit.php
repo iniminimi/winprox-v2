@@ -9,7 +9,6 @@ use App\Actions\Marketing\PausePromoCampaignSendingAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
 use App\Actions\Marketing\ResumePromoCampaignSendingAction;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
-use App\Actions\Marketing\ReleasePromoCampaignPauseIfCompleteAction;
 use App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction;
 use App\Actions\Marketing\SummarizePromoCampaignVisitStatsAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
@@ -486,8 +485,6 @@ class PromoCampaignEdit extends Component
             'sent' => $this->campaign->emailSends()->where('status', 'sent')->count(),
             'bounced' => $this->campaign->targets()->where('undelivered', true)->count(),
         ];
-
-        app(ReleasePromoCampaignPauseIfCompleteAction::class)->handle($this->campaign);
 
         $delivery = app(SummarizePromoCampaignsDeliveryAction::class)
             ->handle(collect([$this->campaign]))[$this->campaign->id] ?? null;

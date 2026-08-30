@@ -136,7 +136,7 @@
                             @if ($summary)
                                 <div class="wp-stack-tight">
                                     <span class="{{ $summary->pillClass() }}">
-                                        {{ __('platform.promo_campaigns.delivery_status.'.$summary->status) }}
+                                        {{ __($summary->status->labelKey()) }}
                                     </span>
                                     <p class="wp-muted wp-text-sm">
                                         {{ __('platform.promo_campaigns.delivery_stats', [
@@ -159,11 +159,11 @@
                                             ]) }}
                                         </p>
                                     @endif
-                                    @if ($summary->status === 'needs_restart')
+                                    @if ($summary->status === \App\Enums\PromoCampaignDeliveryStatus::NeedsRestart)
                                         <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_restart_hint') }}</p>
-                                    @elseif ($summary->status === 'sending')
+                                    @elseif ($summary->status === \App\Enums\PromoCampaignDeliveryStatus::Sending)
                                         <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_sending_hint') }}</p>
-                                    @elseif ($summary->status === 'paused')
+                                    @elseif ($summary->status === \App\Enums\PromoCampaignDeliveryStatus::Paused)
                                         <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_paused_hint') }}</p>
                                         @if ($campaign->emailsPauseReasonLabelKey())
                                             <p class="wp-muted wp-text-sm">

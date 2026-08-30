@@ -32,3 +32,11 @@ yarn-error.log
 /scripts/seed-tenant-volume.php
 /scripts/seed-hospital-demo.php
 /scripts/verify-tenant-volume.php
+# Lokale marketing-data en tijdelijke scripts (niet committen)
+/*-bedrijven*.csv
+/*-bedrijven*.json
+/*-bedrijven*.xlsx
+/*-bedrijven*.xlsm
+/scripts/marketing/__pycache__/
+/public/images/test/
+/public/video/assistant_*.mp4

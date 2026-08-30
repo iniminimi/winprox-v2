@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Data\Marketing;
 
+use App\Enums\PromoCampaignDeliveryStatus;
 use Illuminate\Support\Carbon;
 
 final readonly class PromoCampaignDeliverySummaryData
@@ -23,20 +24,13 @@ final readonly class PromoCampaignDeliverySummaryData
         public int $bounceDomainBlock,
         public int $remaining,
         public int $queuedJobs,
-        public string $status,
+        public PromoCampaignDeliveryStatus $status,
         public ?Carbon $firstSentAt = null,
         public ?Carbon $lastSentAt = null,
     ) {}
 
     public function pillClass(): string
     {
-        return match ($this->status) {
-            'complete' => 'wp-pill wp-pill--done',
-            'sending' => 'wp-pill wp-pill--progress',
-            'paused' => 'wp-pill wp-pill--new',
-            'needs_restart' => 'wp-pill wp-pill--new',
-            'not_started' => 'wp-pill wp-pill--closed',
-            default => 'wp-pill wp-pill--closed',
-        };
+        return $this->status->pillClass();
     }
 }
