@@ -34,12 +34,11 @@
         "open_tasks": "Open tasks",
         "announcements": "Announcements",
         "documents": "Documents",
-        "reserve": "Reserve",
         "my_reservations": "My reservations",
         "unit_check": "Unit check",
         "unit_check_sub": "Confirm this unit is OK",
-        "measure": "Measurement",
-        "measure_sub": "Record measurement values for this unit"
+        "measurements": "Measurements",
+        "reservations": "Reservations"
     },
     "report": {
         "title": "Create a report",

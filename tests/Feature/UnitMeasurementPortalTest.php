@@ -60,7 +60,7 @@ it('shows measure tile when measurements are enabled and fields are linked', fun
     unitMeasurementPortalFixture();
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
-        ->assertSee(__('portal.tiles.measure'))
+        ->assertSee(__('portal.tiles.measurements'))
         ->call('openSection', 'measure')
         ->assertSet('portalSection', 'measure')
         ->assertSee('Kilometerstand');
@@ -70,7 +70,7 @@ it('hides measure tile when flag or fields are missing', function () {
     ['unit' => $unit] = unitMeasurementPortalFixture(['allow_unit_measurements' => false]);
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
-        ->assertDontSee(__('portal.tiles.measure'))
+        ->assertDontSee(__('portal.tiles.measurements'))
         ->call('openSection', 'measure')
         ->assertSet('portalSection', 'home');
 
@@ -78,7 +78,7 @@ it('hides measure tile when flag or fields are missing', function () {
     $unit->measureFields()->sync([]);
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
-        ->assertDontSee(__('portal.tiles.measure'))
+        ->assertDontSee(__('portal.tiles.measurements'))
         ->call('openSection', 'measure')
         ->assertSet('portalSection', 'home');
 });

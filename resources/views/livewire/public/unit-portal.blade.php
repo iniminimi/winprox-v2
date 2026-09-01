@@ -290,19 +290,18 @@
                 </button>
                 @if (($allowsUnitMeasurements ?? false) && ($measureFields ?? collect())->isNotEmpty())
                     <button type="button" class="wp-tile" wire:click="openSection('measure')">
-                        <span class="wp-tile-title">{{ __('portal.tiles.measure') }}</span>
-                        <span class="wp-tile-sub">{{ __('portal.tiles.measure_sub') }}</span>
+                        <span class="wp-tile-title">{{ __('portal.tiles.measurements') }} : {{ $measureFields->count() }}</span>
                     </button>
                 @endif
                 @if ($isReservable)
-                    <button type="button" class="wp-tile" wire:click="openSection('reserve')">
-                        <span class="wp-tile-title">{{ __('portal.tiles.reserve') }}</span>
+                    <button type="button" class="wp-tile"
+                            @if ($guestReservations->isNotEmpty())
+                                wire:click="openSection('my_reservations')"
+                            @else
+                                wire:click="openSection('reserve')"
+                            @endif>
+                        <span class="wp-tile-title">{{ __('portal.tiles.reservations') }} : {{ $guestReservations->count() }}</span>
                     </button>
-                    @if ($guestReservations->isNotEmpty())
-                        <button type="button" class="wp-tile" wire:click="openSection('my_reservations')">
-                            <span class="wp-tile-title">{{ __('portal.tiles.my_reservations') }} : {{ $guestReservations->count() }}</span>
-                        </button>
-                    @endif
                 @endif
             </div>
 

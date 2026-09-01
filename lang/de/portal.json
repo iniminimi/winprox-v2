@@ -34,12 +34,11 @@
         "open_tasks": "Offene Aufgaben",
         "announcements": "Mitteilungen",
         "documents": "Dokumente",
-        "reserve": "Reservieren",
         "my_reservations": "Meine Reservierungen",
         "unit_check": "Unit-Check",
         "unit_check_sub": "Bestätigen, dass diese Unit OK ist",
-        "measure": "Messung",
-        "measure_sub": "Messwerte für diese Unit erfassen"
+        "measurements": "Messungen",
+        "reservations": "Reservierungen"
     },
     "report": {
         "title": "Eine Meldung erstellen",

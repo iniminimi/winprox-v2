@@ -34,12 +34,11 @@
         "open_tasks": "Open Taken",
         "announcements": "Mededelingen",
         "documents": "Documenten",
-        "reserve": "Reserveren",
         "my_reservations": "Mijn reserveringen",
         "unit_check": "Unit check",
         "unit_check_sub": "Bevestig dat deze unit OK is",
-        "measure": "Meting",
-        "measure_sub": "Registreer meetwaarden voor deze unit"
+        "measurements": "Metingen",
+        "reservations": "Reserveringen"
     },
     "report": {
         "title": "Een melding maken",

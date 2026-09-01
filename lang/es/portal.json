@@ -34,12 +34,11 @@
         "open_tasks": "Tareas abiertas",
         "announcements": "Anuncios",
         "documents": "Documentos",
-        "reserve": "Reservar",
         "my_reservations": "Mis reservas",
         "unit_check": "Chequeo de unit",
         "unit_check_sub": "Confirmar que esta unit está OK",
-        "measure": "Medición",
-        "measure_sub": "Registrar valores de medición para esta unit"
+        "measurements": "Mediciones",
+        "reservations": "Reservas"
     },
     "report": {
         "title": "Crear un informe",

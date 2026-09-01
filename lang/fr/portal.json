@@ -34,12 +34,11 @@
         "open_tasks": "Tâches ouvertes",
         "announcements": "Annonces",
         "documents": "Documents",
-        "reserve": "Réserver",
         "my_reservations": "Mes réservations",
         "unit_check": "Contrôle unit",
         "unit_check_sub": "Confirmer que cette unit est OK",
-        "measure": "Mesure",
-        "measure_sub": "Enregistrer des mesures pour cette unit"
+        "measurements": "Mesures",
+        "reservations": "Réservations"
     },
     "report": {
         "title": "Créer un signalement",

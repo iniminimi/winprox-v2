@@ -34,12 +34,11 @@
         "open_tasks": "Attività aperte",
         "announcements": "Annunci",
         "documents": "Documenti",
-        "reserve": "Prenota",
         "my_reservations": "Le mie prenotazioni",
         "unit_check": "Controllo unit",
         "unit_check_sub": "Conferma che questa unit è OK",
-        "measure": "Misurazione",
-        "measure_sub": "Registra i valori di misura per questa unit"
+        "measurements": "Misurazioni",
+        "reservations": "Prenotazioni"
     },
     "report": {
         "title": "Crea una segnalazione",
