@@ -32,8 +32,27 @@
         "footer_right": "Zie ook: Technische fiche (hosting, GDPR, veiligheid)",
         "left": [
             {
-                "title": "Geen app nodig",
-                "body": "Alles in de browser. Beheer desktop-first; veld- en QR-portalen mobiel-first. Geen App Store, geen installatie."
+                "title": "Meldingen",
+                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud (pauzeren of sluiten). Optioneel: contactgegevens verplicht en/of e-mailbevestiging voor anonieme QR-melders (categorie én unit; bevestiging houdt de melding vast tot de link in de mail). Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen. In beheer toont een pil Melder bevestigd als de QR-melder de e-maillink heeft bevestigd.",
+                "badge": "kern"
+            },
+            {
+                "title": "Taken",
+                "body": "Eén melding → één of meer taken, elk voor één team. Prio, deadline, notities. Opvolging via Taken-lijst en QR op de werkvloer.",
+                "badge": "kern"
+            },
+            {
+                "title": "Afhandeling",
+                "badge": "kern",
+                "body": "Updates op melding en taken, taak afronden (met optionele foto en notitie), melding sluiten wanneer alles klaar is. Status en historiek in beheer; uitvoerders afhandelen via unit-QR of Clock Point."
+            },
+            {
+                "title": "Facility",
+                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Onder Plaatsen: Categorieën, Locaties en Units (tenant-breed). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Unit checks aanzetten per categorie én unit; checklists beheren onder Mensen → Teams — gedeeld of per team. Nieuwe organisaties kunnen op het dashboard een starttemplate kiezen (hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer of fleet management) met voorbeeldteams, categorieën, een locatie, units en passende werkmenu-defaults — namen in alle talen. Je kunt alles later hernoemen; na meldingen kunnen units alleen nog gedeactiveerd worden."
+            },
+            {
+                "title": "Dashboard",
+                "body": "Overzicht van open meldingen en taken vandaag, met snelle toegang tot de belangrijkste werkstromen. Nieuwe organisaties kiezen hier een starttemplate; briefing en rapporten zijn vanaf het dashboard bereikbaar."
             },
             {
                 "title": "QR-portals",
@@ -44,24 +63,12 @@
                 "body": "Snel doorgeven dat een unit in orde is — bijvoorbeeld na een securityronde, schoonmaakcontrole of technische check. Via de unit-QR kies je OK of Niet OK; bij OK hoef je geen aparte melding te maken. Optioneel eerst een checklist afvinken. Niet OK blijft naast de gewone meldflow beschikbaar."
             },
             {
-                "title": "Unitmetingen",
-                "body": "Meetwaarden op een unit (kilometerstand, temperatuur, status, …) via QR-portaal of API. Velden beheer je onder Werk → Unitmetingen; per categorie én unit aanzetten en meetvelden koppelen. Historiek in beheer; webhook unit.measurement.recorded."
-            },
-            {
                 "title": "Inspectierondes",
                 "body": "Terugkerende melding met een vaste route van units (stops), ook over meerdere locaties. Plan via Meldingen → Inspectieronde plannen (stops, interval en team in één stap) of optioneel via de melding-wizard. Via Werk → Inspectierondes zie je dezelfde lijst gefilterd op rondes. Alleen units met unit checks staan in de stop-lijst; andere units zijn verborgen. Per cyclus één taak; bij elke stop Unit check OK, Niet OK (met melding; omschrijving vooringevuld), of overslaan met reden. Klaar als alle stops van die cyclus afgehandeld zijn."
             },
             {
-                "title": "Werkmenu",
-                "body": "Via Organisatie → Instellingen → Werkmenu instellingen (beheerder): Kalender, Reserveringen, Inspectierondes en Unitmetingen per organisatie in/uit in de sidebar. Uit = geen backoffice-toegang; QR op units die het al hadden blijft werken (grandfather). Een starttemplate op het dashboard toont de werkmenu-keuze in de preview, past die bij aanmaken toe en toont het resultaat op Starttemplate aangemaakt. Vastgoedbeheer zet standaard Reserveringen en Unitmetingen uit; andere templates zetten alles aan. Verwijderen van het starttemplate wijzigt het werkmenu niet."
-            },
-            {
-                "title": "Branding & QR",
-                "body": "Organisatielogo, portaal-achtergrond en portaalkleuren (achtergrond- en knopkleur) onder Instellingen; unitfoto’s en achtergrondfoto per unit. Stickerformats Avery of A6/A5/A4 — klaar voor print."
-            },
-            {
-                "title": "Meldingen",
-                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud (pauzeren of sluiten). Optioneel: contactgegevens verplicht en/of e-mailbevestiging voor anonieme QR-melders (categorie én unit; bevestiging houdt de melding vast tot de link in de mail). Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen. In beheer toont een pil Melder bevestigd als de QR-melder de e-maillink heeft bevestigd."
+                "title": "Unitmetingen",
+                "body": "Meetwaarden op een unit (kilometerstand, temperatuur, status, …) via QR-portaal of API. Velden beheer je onder Werk → Unitmetingen; per categorie én unit aanzetten en meetvelden koppelen. Historiek in beheer; webhook unit.measurement.recorded."
             },
             {
                 "title": "Foto’s",
@@ -70,31 +77,12 @@
             {
                 "title": "GPS",
                 "body": "Per categorie: “GPS-locatie toestaan” voor mobiele units (voertuig, machine, …). Locatie vastleggen via het portaal; historiek in beheer, openen in Maps."
-            },
-            {
-                "title": "ESG & Compliance",
-                "badge": "Corporate",
-                "badge_mod": "corp",
-                "body": "ESG = Environmental, Social & Governance: meetwaarden voor milieu, veiligheid en compliance (energie, inspecties, …). Optionele module op WinProx Corporate: indicatoren, metingen en opvolgtaken bij terugkerende controles. Registratie via portaal, beheer of API."
-            },
-            {
-                "title": "AI-vertaling",
-                "body": "Na goedkeuring worden teksten klaargezet voor vertaling (meldingen, taken, documenten, mededelingen, …). WinProx vult de andere talen periodiek via lokale AI (geen externe AI-cloud), doorgaans dagelijks — zonder vaste doorlooptijd of garantie. Organisatiebeheerders kunnen vertalingen handmatig corrigeren; er is geen aan/uit-schakelaar per organisatie."
             }
         ],
         "right": [
             {
-                "title": "Multi-tenant",
-                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (WinProx 10/50/100 + Corporate)."
-            },
-            {
-                "title": "Facility",
-                "badge": "kern",
-                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Onder Plaatsen: Categorieën, Locaties en Units (tenant-breed). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Unit checks aanzetten per categorie én unit; checklists beheren onder Mensen → Teams — gedeeld of per team. Nieuwe organisaties kunnen op het dashboard een starttemplate kiezen (hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer of fleet management) met voorbeeldteams, categorieën, een locatie, units en passende werkmenu-defaults — namen in alle talen. Je kunt alles later hernoemen; na meldingen kunnen units alleen nog gedeactiveerd worden."
-            },
-            {
-                "title": "Taken",
-                "body": "Eén melding → één of meer taken, elk voor één team. Prio, deadline, notities. Opvolging via Taken-lijst en QR op de werkvloer."
+                "title": "Kalender",
+                "body": "Maand-, week- en dagweergave van taken, meldingen en reserveringen. Vanuit de kalender ook briefing afdrukken voor die dag."
             },
             {
                 "title": "Briefing",
@@ -103,10 +91,6 @@
             {
                 "title": "Rapporten",
                 "body": "Op zoekschermen (meldingen, taken, Time, reserveringen, unit checks, unitmetingen, ESG): knop Download rapport — CSV (tabel voor Excel) of afdrukken (Ctrl+P naar PDF). Afdruk volgt waar mogelijk dezelfde kaartlayout als de backoffice-lijst; Time toont een urenstaat. Zelfde filters als de lijst (max. 5000 rijen). Later: Organisatie → Rapporten voor opgeslagen sjablonen."
-            },
-            {
-                "title": "Kalender",
-                "body": "Maand-, week- en dagweergave van taken, meldingen en reserveringen. Vanuit de kalender ook briefing afdrukken voor die dag."
             },
             {
                 "title": "Time",
@@ -118,6 +102,12 @@
                 "body": "Voor deelbare middelen met tijdslot (zaal, voertuig, sleutel). Categorie Reserveerbaar + per unit Reserveringen toestaan (standaard uit). Gast boekt via unit-QR (hold + e-mailbevestiging). Beheer via menu Reserveringen en kalender."
             },
             {
+                "title": "ESG & Compliance",
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "ESG = Environmental, Social & Governance: meetwaarden voor milieu, veiligheid en compliance (energie, inspecties, …). Optionele module op WinProx Corporate: indicatoren, metingen en opvolgtaken bij terugkerende controles. Registratie via portaal, beheer of API."
+            },
+            {
                 "title": "IoT Connect",
                 "badge": "Corporate",
                 "body": "Sensor-gateways sturen events; alarmen worden goedgekeurde melding + taak. Metingen → ESG. Alleen op WinProx Corporate. Gateway-token (ook zonder volledige REST API)."
@@ -127,6 +117,26 @@
                 "badge": "Corporate",
                 "badge_mod": "corp",
                 "body": "REST API-tokens en uitgaande webhooks (HMAC) onder Instellingen. Koppeling voor meldingen, taken, unit checks, unitmetingen, ESG, … IoT-ingest apart via gateway-token. Zie ook de fiche API & Webhooks en de technische fiche."
+            },
+            {
+                "title": "Multi-tenant",
+                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (WinProx 10/50/100 + Corporate)."
+            },
+            {
+                "title": "Branding & QR",
+                "body": "Organisatielogo, portaal-achtergrond en portaalkleuren (achtergrond- en knopkleur) onder Instellingen; unitfoto’s en achtergrondfoto per unit. Stickerformats Avery of A6/A5/A4 — klaar voor print."
+            },
+            {
+                "title": "Werkmenu",
+                "body": "Via Organisatie → Instellingen → Werkmenu instellingen (beheerder): Kalender, Reserveringen, Inspectierondes en Unitmetingen per organisatie in/uit in de sidebar. Uit = geen backoffice-toegang; QR op units die het al hadden blijft werken (grandfather). Een starttemplate op het dashboard toont de werkmenu-keuze in de preview, past die bij aanmaken toe en toont het resultaat op Starttemplate aangemaakt. Vastgoedbeheer zet standaard Reserveringen en Unitmetingen uit; andere templates zetten alles aan. Verwijderen van het starttemplate wijzigt het werkmenu niet."
+            },
+            {
+                "title": "AI-vertaling",
+                "body": "Na goedkeuring worden teksten klaargezet voor vertaling (meldingen, taken, documenten, mededelingen, …). WinProx vult de andere talen periodiek via lokale AI (geen externe AI-cloud), doorgaans dagelijks — zonder vaste doorlooptijd of garantie. Organisatiebeheerders kunnen vertalingen handmatig corrigeren; er is geen aan/uit-schakelaar per organisatie."
+            },
+            {
+                "title": "Geen app nodig",
+                "body": "Alles in de browser. Beheer desktop-first; veld- en QR-portalen mobiel-first. Geen App Store, geen installatie."
             }
         ],
         "full": [

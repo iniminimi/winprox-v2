@@ -32,8 +32,27 @@
         "footer_right": "See also: Technical fact sheet (hosting, GDPR, security)",
         "left": [
             {
-                "title": "No app required",
-                "body": "Everything runs in the browser. Back office is desktop-first; field and QR portals are mobile-first. No App Store, no install."
+                "title": "Issues",
+                "body": "Via QR unità, manualmente in amministrazione, o (con IoT) allarme sensore. Filtri, approvazione delle segnalazioni QR, manutenzione ricorrente (pausa o chiusura). Opzionale: dati di contatto obbligatori e/o conferma e-mail per segnalanti anonimi via QR (categoria e unità; la conferma trattiene la segnalazione fino al link nell’e-mail). Sulle pagine QR pubbliche visibili solo dopo approvazione; l’amministrazione vede tutto subito. In amministrazione compare la pillola Segnalante confermato quando il segnalante QR ha confermato il link e-mail.",
+                "badge": "core"
+            },
+            {
+                "title": "Tasks",
+                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via the Tasks list and QR on the floor.",
+                "badge": "core"
+            },
+            {
+                "title": "Completamento",
+                "badge": "core",
+                "body": "Aggiornamenti su segnalazioni e compiti, completare un compito (foto e nota opzionali), chiudere la segnalazione quando tutto è fatto. Stato e cronologia in amministrazione; gli esecutori chiudono via QR unità o Clock Point."
+            },
+            {
+                "title": "Facility",
+                "body": "Sedi, unit, categorie, team e lavoratori (interni o esterni). Sotto Sedi: Categorie, Sedi e Units (a livello tenant). Import massivo/CSV, dashboard, documenti e avvisi sul portale. Attivi i controlli unit per categoria e unit; checklist sotto Persone → Teams — condivise o per team. Le nuove organizzazioni possono caricare dal cruscotto un modello iniziale (hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta) con team, categorie, una sede, unit di esempio e default del menu Lavoro — nomi in tutte le lingue. Puoi rinominare tutto in seguito; con le segnalazioni le unit possono solo essere disattivate."
+            },
+            {
+                "title": "Dashboard",
+                "body": "Panoramica delle segnalazioni aperte e dei compiti di oggi, con accesso rapido ai flussi principali. Le nuove organizzazioni scelgono qui un modello iniziale; briefing e rapporti sono disponibili dalla dashboard."
             },
             {
                 "title": "QR portals",
@@ -44,24 +63,12 @@
                 "body": "Confermare in fretta che un’unità è a posto — ad es. dopo un giro sicurezza, controllo pulizie o verifica tecnica. Sul QR unità: OK o Non OK; con OK non serve una segnalazione a parte. Checklist opzionale. Non OK resta disponibile insieme al flusso di segnalazione."
             },
             {
-                "title": "Misurazioni unit",
-                "body": "Registra valori su una unit (chilometraggio, temperatura, stato, …) via portale QR o API. Campi in Lavoro → Misurazioni unit; attiva per categoria e unit. Cronologia in admin; webhook unit.measurement.recorded."
-            },
-            {
                 "title": "Giri di ispezione",
                 "body": "Segnalazione ricorrente con percorso fisso di unità (fermate), anche su più sedi. Pianifica da Segnalazioni → Pianifica giro di ispezione (fermate, intervallo e team in un passo) o tramite la procedura guidata. Lavoro → Giri di ispezione apre la stessa lista filtrata sui giri. Nell’elenco delle fermate compaiono solo le unità con controlli unità; le altre sono nascoste. Un task per ciclo; a ogni fermata Unit check OK, Non OK (con segnalazione; descrizione precompilata) o salta con motivo. Completo quando tutte le fermate del ciclo sono gestite."
             },
             {
-                "title": "Menu Lavoro",
-                "body": "In Organizzazione → Impostazioni → Impostazioni menu Lavoro (amministratore): Calendario, Prenotazioni, Giri ispettivi e Misurazioni unità per organizzazione nella barra laterale. Disattivo = nessun accesso backoffice; il QR sulle unità che lo avevano già resta attivo (grandfather). Un modello iniziale nella dashboard mostra la scelta del menu Lavoro nell'anteprima, la applica alla creazione e la mostra su Modello iniziale creato. Gestione immobiliare disattiva Prenotazioni e Misurazioni unità di default; altri modelli attivano tutto. Rimuovere il modello non modifica il menu Lavoro."
-            },
-            {
-                "title": "Branding & QR",
-                "body": "Logo organizzazione, sfondo portale e colori portale (sfondo e pulsanti) in Impostazioni; foto unità e foto di sfondo per unità. Formati Avery o A6/A5/A4 — pronti per la stampa."
-            },
-            {
-                "title": "Issues",
-                "body": "Via QR unità, manualmente in amministrazione, o (con IoT) allarme sensore. Filtri, approvazione delle segnalazioni QR, manutenzione ricorrente (pausa o chiusura). Opzionale: dati di contatto obbligatori e/o conferma e-mail per segnalanti anonimi via QR (categoria e unità; la conferma trattiene la segnalazione fino al link nell’e-mail). Sulle pagine QR pubbliche visibili solo dopo approvazione; l’amministrazione vede tutto subito. In amministrazione compare la pillola Segnalante confermato quando il segnalante QR ha confermato il link e-mail."
+                "title": "Misurazioni unit",
+                "body": "Registra valori su una unit (chilometraggio, temperatura, stato, …) via portale QR o API. Campi in Lavoro → Misurazioni unit; attiva per categoria e unit. Cronologia in admin; webhook unit.measurement.recorded."
             },
             {
                 "title": "Photos",
@@ -70,31 +77,12 @@
             {
                 "title": "GPS",
                 "body": "Per category: “Allow GPS location” for mobile units (vehicle, machine, …). Capture location via the portal; history in the back office, open in Maps."
-            },
-            {
-                "title": "ESG & Compliance",
-                "badge": "Corporate",
-                "badge_mod": "corp",
-                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Modulo opzionale su WinProx Corporate: indicatori, misurazioni e attività di follow-up per controlli ricorrenti. Record via portal, back office or API."
-            },
-            {
-                "title": "AI translation",
-                "body": "After approval, texts are queued for translation (issues, tasks, documents, announcements, …). WinProx fills the other languages periodically via local AI (no external AI cloud), typically daily — with no guaranteed turnaround. Organisation admins can correct translations manually; there is no per-organisation on/off switch."
             }
         ],
         "right": [
             {
-                "title": "Multi-tenant",
-                "body": "Ogni organizzazione ha un ambiente proprio con limiti per piano (WinProx 10/50/100 + Corporate)."
-            },
-            {
-                "title": "Facility",
-                "badge": "core",
-                "body": "Sedi, unit, categorie, team e lavoratori (interni o esterni). Sotto Sedi: Categorie, Sedi e Units (a livello tenant). Import massivo/CSV, dashboard, documenti e avvisi sul portale. Attivi i controlli unit per categoria e unit; checklist sotto Persone → Teams — condivise o per team. Le nuove organizzazioni possono caricare dal cruscotto un modello iniziale (hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta) con team, categorie, una sede, unit di esempio e default del menu Lavoro — nomi in tutte le lingue. Puoi rinominare tutto in seguito; con le segnalazioni le unit possono solo essere disattivate."
-            },
-            {
-                "title": "Tasks",
-                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via the Tasks list and QR on the floor."
+                "title": "Calendar",
+                "body": "Month, week and day views of tasks, issues and reservations. From the calendar you can also print the briefing for that day."
             },
             {
                 "title": "Briefing",
@@ -103,10 +91,6 @@
             {
                 "title": "Rapporti",
                 "body": "Nelle schermate di ricerca (segnalazioni, attività, Time, prenotazioni, unit check, misurazioni unit, ESG): Scarica rapporto — CSV (tabella per Excel) o stampa (Ctrl+P a PDF). La stampa segue dove possibile il layout a schede dell'elenco backoffice; Time mostra un foglio ore. Stessi filtri dell'elenco (max. 5000 righe). Più avanti: Organizzazione → Rapporti per modelli salvati."
-            },
-            {
-                "title": "Calendar",
-                "body": "Month, week and day views of tasks, issues and reservations. From the calendar you can also print the briefing for that day."
             },
             {
                 "title": "Time",
@@ -118,6 +102,12 @@
                 "body": "Per risorse condivise con fascia (sala, veicolo, chiave). Categoria Prenotabile + Consenti prenotazioni per unità (disattivo di default). L’ospite prenota via QR unità (hold + conferma e-mail). Gestione via menu Prenotazioni e calendario."
             },
             {
+                "title": "ESG & Compliance",
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Modulo opzionale su WinProx Corporate: indicatori, misurazioni e attività di follow-up per controlli ricorrenti. Record via portal, back office or API."
+            },
+            {
                 "title": "IoT Connect",
                 "badge": "Corporate",
                 "body": "I gateway sensori inviano eventi; gli allarmi diventano segnalazione approvata + compito. Misure → ESG. Solo WinProx Corporate. Token gateway (anche senza l'API REST completa)."
@@ -127,6 +117,26 @@
                 "badge": "Corporate",
                 "badge_mod": "corp",
                 "body": "Token API REST e webhook in uscita (HMAC) sotto Impostazioni. Collegamento per segnalazioni, attività, controlli unità, ESG, … Ingest IoT con token gateway separato. Vedi anche la scheda API & Webhooks e la scheda tecnica."
+            },
+            {
+                "title": "Multi-tenant",
+                "body": "Ogni organizzazione ha un ambiente proprio con limiti per piano (WinProx 10/50/100 + Corporate)."
+            },
+            {
+                "title": "Branding & QR",
+                "body": "Logo organizzazione, sfondo portale e colori portale (sfondo e pulsanti) in Impostazioni; foto unità e foto di sfondo per unità. Formati Avery o A6/A5/A4 — pronti per la stampa."
+            },
+            {
+                "title": "Menu Lavoro",
+                "body": "In Organizzazione → Impostazioni → Impostazioni menu Lavoro (amministratore): Calendario, Prenotazioni, Giri ispettivi e Misurazioni unità per organizzazione nella barra laterale. Disattivo = nessun accesso backoffice; il QR sulle unità che lo avevano già resta attivo (grandfather). Un modello iniziale nella dashboard mostra la scelta del menu Lavoro nell'anteprima, la applica alla creazione e la mostra su Modello iniziale creato. Gestione immobiliare disattiva Prenotazioni e Misurazioni unità di default; altri modelli attivano tutto. Rimuovere il modello non modifica il menu Lavoro."
+            },
+            {
+                "title": "AI translation",
+                "body": "After approval, texts are queued for translation (issues, tasks, documents, announcements, …). WinProx fills the other languages periodically via local AI (no external AI cloud), typically daily — with no guaranteed turnaround. Organisation admins can correct translations manually; there is no per-organisation on/off switch."
+            },
+            {
+                "title": "No app required",
+                "body": "Everything runs in the browser. Back office is desktop-first; field and QR portals are mobile-first. No App Store, no install."
             }
         ],
         "full": [

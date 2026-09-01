@@ -32,8 +32,27 @@
         "footer_right": "See also: Technical fact sheet (hosting, GDPR, security)",
         "left": [
             {
-                "title": "No app required",
-                "body": "Everything runs in the browser. Back office is desktop-first; field and QR portals are mobile-first. No App Store, no install."
+                "title": "Issues",
+                "body": "Via unit QR, manually in admin, or (with IoT) a sensor alarm. Filters, approval of QR reports, recurring maintenance (pause or close). Optional: required contact details and/or email confirmation for anonymous QR reporters (category and unit; confirmation holds the report until the email link). On public QR pages visible only after approval; admin sees everything immediately. In admin a Reporter confirmed pill appears when the QR reporter confirmed the email link.",
+                "badge": "core"
+            },
+            {
+                "title": "Tasks",
+                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via the Tasks list and QR on the floor.",
+                "badge": "core"
+            },
+            {
+                "title": "Resolution",
+                "badge": "core",
+                "body": "Updates on issues and tasks, complete a task (optional photo and note), close the issue when everything is done. Status and history in the back office; workers resolve via unit QR or Clock Point."
+            },
+            {
+                "title": "Facility",
+                "body": "Locations, units, categories, teams and workers (internal or external). Under Places: Categories, Locations and Units (tenant-wide). Bulk/CSV import, dashboard, documents and announcements on the portal. Enable unit checks per category and unit; manage checklists under People → Teams — shared or per team. New organisations can load a starter template on the dashboard (hotel, hospital, industry, municipality, property management or fleet management) with sample teams, categories, a location, units and matching work menu defaults — names in every language. You can rename everything later; once issues exist, units can only be deactivated."
+            },
+            {
+                "title": "Dashboard",
+                "body": "Overview of open issues and today's tasks, with quick access to key workflows. New organisations pick a starter template here; briefing and reports are available from the dashboard."
             },
             {
                 "title": "QR portals",
@@ -44,24 +63,12 @@
                 "body": "Quickly confirm a unit is fine — for example after a security round, cleaning check or technical inspection. On the unit QR you tap OK or Not OK; OK needs no separate issue. Optionally tick a checklist first. Not OK still works alongside the normal report flow."
             },
             {
-                "title": "Unit measurements",
-                "body": "Record values on a unit (odometer, temperature, status, …) via QR portal or API. Manage fields under Work → Unit measurements; enable per category and unit and link fields. History in admin; webhook unit.measurement.recorded."
-            },
-            {
                 "title": "Inspection rounds",
                 "body": "Recurring issue with a fixed route of units (stops), including across locations. Plan via Issues → Plan inspection round (stops, interval and team in one step) or optionally via the issue wizard. Work → Inspection rounds opens the same list filtered to rounds. Only units with unit checks appear in the stop list; other units are hidden. One task per cycle; at each stop Unit check OK, Not OK (with issue; description prefilled), or skip with reason. Done when all stops for that cycle are handled."
             },
             {
-                "title": "Work menu",
-                "body": "Via Organisation → Settings → Work menu settings (administrator): toggle Calendar, Reservations, Inspection rounds and Unit measurements per organisation in the sidebar. Off = no backoffice access; QR on units that already had the feature keeps working (grandfather). A starter template on the dashboard shows the work menu choice in the preview, applies it on create and shows the result on Starter template created. Property management turns off Reservations and Unit measurements by default; other templates turn all on. Removing the starter template does not change the work menu."
-            },
-            {
-                "title": "Branding & QR",
-                "body": "Organisation logo, portal background and portal colours (background and button colour) under Settings; unit photos and a background photo per unit. Avery or A6/A5/A4 sticker formats — print-ready."
-            },
-            {
-                "title": "Issues",
-                "body": "Via unit QR, manually in admin, or (with IoT) a sensor alarm. Filters, approval of QR reports, recurring maintenance (pause or close). Optional: required contact details and/or email confirmation for anonymous QR reporters (category and unit; confirmation holds the report until the email link). On public QR pages visible only after approval; admin sees everything immediately. In admin a Reporter confirmed pill appears when the QR reporter confirmed the email link."
+                "title": "Unit measurements",
+                "body": "Record values on a unit (odometer, temperature, status, …) via QR portal or API. Manage fields under Work → Unit measurements; enable per category and unit and link fields. History in admin; webhook unit.measurement.recorded."
             },
             {
                 "title": "Photos",
@@ -70,31 +77,12 @@
             {
                 "title": "GPS",
                 "body": "Per category: “Allow GPS location” for mobile units (vehicle, machine, …). Capture location via the portal; history in the back office, open in Maps."
-            },
-            {
-                "title": "ESG & Compliance",
-                "badge": "Corporate",
-                "badge_mod": "corp",
-                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Optional module on WinProx Corporate: indicators, measurements and follow-up tasks for recurring checks. Record via portal, back office or API."
-            },
-            {
-                "title": "AI translation",
-                "body": "After approval, texts are queued for translation (issues, tasks, documents, announcements, …). WinProx fills the other languages periodically via local AI (no external AI cloud), typically daily — with no guaranteed turnaround. Organisation admins can correct translations manually; there is no per-organisation on/off switch."
             }
         ],
         "right": [
             {
-                "title": "Multi-tenant",
-                "body": "Each organisation has its own environment with limits per plan (WinProx 10/50/100 + Corporate)."
-            },
-            {
-                "title": "Facility",
-                "badge": "core",
-                "body": "Locations, units, categories, teams and workers (internal or external). Under Places: Categories, Locations and Units (tenant-wide). Bulk/CSV import, dashboard, documents and announcements on the portal. Enable unit checks per category and unit; manage checklists under People → Teams — shared or per team. New organisations can load a starter template on the dashboard (hotel, hospital, industry, municipality, property management or fleet management) with sample teams, categories, a location, units and matching work menu defaults — names in every language. You can rename everything later; once issues exist, units can only be deactivated."
-            },
-            {
-                "title": "Tasks",
-                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via the Tasks list and QR on the floor."
+                "title": "Calendar",
+                "body": "Month, week and day views of tasks, issues and reservations. From the calendar you can also print the briefing for that day."
             },
             {
                 "title": "Briefing",
@@ -103,10 +91,6 @@
             {
                 "title": "Reports",
                 "body": "On search screens (issues, tasks, Time, reservations, unit checks, unit measurements, ESG): Download report — CSV (table for Excel) or print (Ctrl+P to PDF). Print follows the backoffice list card layout where possible; Time shows a timesheet. Same filters as the list (max. 5000 rows). Later: Organisation → Reports for saved templates."
-            },
-            {
-                "title": "Calendar",
-                "body": "Month, week and day views of tasks, issues and reservations. From the calendar you can also print the briefing for that day."
             },
             {
                 "title": "Time",
@@ -118,6 +102,12 @@
                 "body": "For shared resources with a time slot (room, vehicle, key). Category Reservable + Allow reservations per unit (off by default). Guest books via unit QR (hold + email confirmation). Manage via Reservations menu and calendar."
             },
             {
+                "title": "ESG & Compliance",
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Optional module on WinProx Corporate: indicators, measurements and follow-up tasks for recurring checks. Record via portal, back office or API."
+            },
+            {
                 "title": "IoT Connect",
                 "badge": "Corporate",
                 "body": "Sensor gateways send events; alarms become an approved issue + task. Measurements → ESG. WinProx Corporate only. Gateway token (also without the full REST API)."
@@ -127,6 +117,26 @@
                 "badge": "Corporate",
                 "badge_mod": "corp",
                 "body": "REST API tokens and outbound webhooks (HMAC) under Settings. Connect issues, tasks, unit checks, unit measurements, ESG, … IoT ingest via a separate gateway token. See also the API & Webhooks sheet and the technical fact sheet."
+            },
+            {
+                "title": "Multi-tenant",
+                "body": "Each organisation has its own environment with limits per plan (WinProx 10/50/100 + Corporate)."
+            },
+            {
+                "title": "Branding & QR",
+                "body": "Organisation logo, portal background and portal colours (background and button colour) under Settings; unit photos and a background photo per unit. Avery or A6/A5/A4 sticker formats — print-ready."
+            },
+            {
+                "title": "Work menu",
+                "body": "Via Organisation → Settings → Work menu settings (administrator): toggle Calendar, Reservations, Inspection rounds and Unit measurements per organisation in the sidebar. Off = no backoffice access; QR on units that already had the feature keeps working (grandfather). A starter template on the dashboard shows the work menu choice in the preview, applies it on create and shows the result on Starter template created. Property management turns off Reservations and Unit measurements by default; other templates turn all on. Removing the starter template does not change the work menu."
+            },
+            {
+                "title": "AI translation",
+                "body": "After approval, texts are queued for translation (issues, tasks, documents, announcements, …). WinProx fills the other languages periodically via local AI (no external AI cloud), typically daily — with no guaranteed turnaround. Organisation admins can correct translations manually; there is no per-organisation on/off switch."
+            },
+            {
+                "title": "No app required",
+                "body": "Everything runs in the browser. Back office is desktop-first; field and QR portals are mobile-first. No App Store, no install."
             }
         ],
         "full": [

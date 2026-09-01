@@ -32,8 +32,27 @@
         "footer_right": "See also: Technical fact sheet (hosting, GDPR, security)",
         "left": [
             {
-                "title": "No app required",
-                "body": "Everything runs in the browser. Back office is desktop-first; field and QR portals are mobile-first. No App Store, no install."
+                "title": "Issues",
+                "body": "Vía QR de unidad, manualmente en administración, o (con IoT) alarma de sensor. Filtros, aprobación de avisos QR, mantenimiento recurrente (pausar o cerrar). Opcional: datos de contacto obligatorios y/o confirmación de correo para informantes anónimos por QR (categoría y unidad; la confirmación retiene el informe hasta el enlace del correo). En páginas QR públicas visibles solo tras aprobación; la administración lo ve todo de inmediato. En administración aparece la pastilla Informante confirmado cuando el informante QR confirmó el enlace de correo.",
+                "badge": "core"
+            },
+            {
+                "title": "Tasks",
+                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via the Tasks list and QR on the floor.",
+                "badge": "core"
+            },
+            {
+                "title": "Resolución",
+                "badge": "core",
+                "body": "Actualizaciones en avisos y tareas, completar una tarea (foto y nota opcionales), cerrar el aviso cuando todo está hecho. Estado e historial en administración; los operarios resuelven vía QR de unidad o Clock Point."
+            },
+            {
+                "title": "Facility",
+                "body": "Ubicaciones, units, categorías, equipos y operarios (internos o externos). Bajo Ubicaciones: Categorías, Ubicaciones y Units (todo el tenant). Importación masiva/CSV, panel, documentos y anuncios en el portal. Active comprobaciones de unit por categoría y unit; listas bajo Personas → Equipos — compartidas o por equipo. Las organizaciones nuevas pueden cargar en el panel una plantilla inicial (hotel, hospital, industria, ayuntamiento, gestión inmobiliaria o gestión de flotas) con equipos, categorías, una ubicación, units de ejemplo y defaults del menú Trabajo — nombres en todos los idiomas. Luego puedes cambiar los nombres; cuando hay incidencias, las units solo se pueden desactivar."
+            },
+            {
+                "title": "Panel",
+                "body": "Resumen de avisos abiertos y tareas de hoy, con acceso rápido a los flujos principales. Las organizaciones nuevas eligen aquí una plantilla inicial; briefing e informes están disponibles desde el panel."
             },
             {
                 "title": "QR portals",
@@ -44,24 +63,12 @@
                 "body": "Confirmar rápido que una unidad está en orden — p. ej. tras una ronda de seguridad, limpieza o revisión técnica. En el QR de unidad: OK o No OK; con OK no hace falta un aviso aparte. Lista de verificación opcional. No OK sigue disponible junto al flujo de aviso habitual."
             },
             {
-                "title": "Mediciones de unit",
-                "body": "Registrar valores en una unit (kilometraje, temperatura, estado, …) vía portal QR o API. Campos en Trabajo → Mediciones de unit; activar por categoría y unit. Historial en admin; webhook unit.measurement.recorded."
-            },
-            {
                 "title": "Rondas de inspección",
                 "body": "Incidencia recurrente con una ruta fija de unidades (paradas), también entre ubicaciones. Planifica vía Incidencias → Planificar ronda de inspección (paradas, intervalo y equipo en un paso) o vía el asistente. Trabajo → Rondas de inspección abre la misma lista filtrada a rondas. Solo aparecen las unidades con unit checks; las demás quedan ocultas. Una tarea por ciclo; en cada parada Unit check OK, No OK (con incidencia; descripción prediligenciada) o omitir con motivo. Listo cuando todas las paradas del ciclo están gestionadas."
             },
             {
-                "title": "Menú Trabajo",
-                "body": "En Organización → Ajustes → Ajustes del menú Trabajo (administrador): Calendario, Reservas, Rondas de inspección y Mediciones de unidad por organización en la barra lateral. Desactivado = sin acceso al backoffice; el QR en unidades que ya lo tenían sigue funcionando (grandfather). Una plantilla inicial en el panel muestra la elección del menú en la vista previa, la aplica al crear y la muestra en Plantilla inicial creada. Gestión inmobiliaria desactiva Reservas y Mediciones de unidad por defecto; otras plantillas activan todo. Eliminar la plantilla no cambia el menú de trabajo."
-            },
-            {
-                "title": "Branding & QR",
-                "body": "Logotipo de la organización, fondo del portal y colores del portal (fondo y botones) en Configuración; fotos de unidad y foto de fondo por unidad. Formatos Avery o A6/A5/A4 — listos para imprimir."
-            },
-            {
-                "title": "Issues",
-                "body": "Vía QR de unidad, manualmente en administración, o (con IoT) alarma de sensor. Filtros, aprobación de avisos QR, mantenimiento recurrente (pausar o cerrar). Opcional: datos de contacto obligatorios y/o confirmación de correo para informantes anónimos por QR (categoría y unidad; la confirmación retiene el informe hasta el enlace del correo). En páginas QR públicas visibles solo tras aprobación; la administración lo ve todo de inmediato. En administración aparece la pastilla Informante confirmado cuando el informante QR confirmó el enlace de correo."
+                "title": "Mediciones de unit",
+                "body": "Registrar valores en una unit (kilometraje, temperatura, estado, …) vía portal QR o API. Campos en Trabajo → Mediciones de unit; activar por categoría y unit. Historial en admin; webhook unit.measurement.recorded."
             },
             {
                 "title": "Photos",
@@ -70,31 +77,12 @@
             {
                 "title": "GPS",
                 "body": "Per category: “Allow GPS location” for mobile units (vehicle, machine, …). Capture location via the portal; history in the back office, open in Maps."
-            },
-            {
-                "title": "ESG & Compliance",
-                "badge": "Corporate",
-                "badge_mod": "corp",
-                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Módulo opcional en WinProx Corporate: indicadores, mediciones y tareas de seguimiento en controles recurrentes. Record via portal, back office or API."
-            },
-            {
-                "title": "AI translation",
-                "body": "After approval, texts are queued for translation (issues, tasks, documents, announcements, …). WinProx fills the other languages periodically via local AI (no external AI cloud), typically daily — with no guaranteed turnaround. Organisation admins can correct translations manually; there is no per-organisation on/off switch."
             }
         ],
         "right": [
             {
-                "title": "Multi-tenant",
-                "body": "Cada organización tiene su entorno con límites por plan (WinProx 10/50/100 + Corporate)."
-            },
-            {
-                "title": "Facility",
-                "badge": "core",
-                "body": "Ubicaciones, units, categorías, equipos y operarios (internos o externos). Bajo Ubicaciones: Categorías, Ubicaciones y Units (todo el tenant). Importación masiva/CSV, panel, documentos y anuncios en el portal. Active comprobaciones de unit por categoría y unit; listas bajo Personas → Equipos — compartidas o por equipo. Las organizaciones nuevas pueden cargar en el panel una plantilla inicial (hotel, hospital, industria, ayuntamiento, gestión inmobiliaria o gestión de flotas) con equipos, categorías, una ubicación, units de ejemplo y defaults del menú Trabajo — nombres en todos los idiomas. Luego puedes cambiar los nombres; cuando hay incidencias, las units solo se pueden desactivar."
-            },
-            {
-                "title": "Tasks",
-                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via the Tasks list and QR on the floor."
+                "title": "Calendar",
+                "body": "Month, week and day views of tasks, issues and reservations. From the calendar you can also print the briefing for that day."
             },
             {
                 "title": "Briefing",
@@ -103,10 +91,6 @@
             {
                 "title": "Informes",
                 "body": "En pantallas de búsqueda (incidencias, tareas, Time, reservas, unit checks, mediciones unit, ESG): Descargar informe — CSV (tabla para Excel) o imprimir (Ctrl+P a PDF). La impresión sigue cuando procede el diseño de tarjetas de la lista de backoffice; Time muestra una hoja de horas. Los mismos filtros que la lista (máx. 5000 filas). Más adelante: Organización → Informes para plantillas guardadas."
-            },
-            {
-                "title": "Calendar",
-                "body": "Month, week and day views of tasks, issues and reservations. From the calendar you can also print the briefing for that day."
             },
             {
                 "title": "Time",
@@ -118,6 +102,12 @@
                 "body": "Para recursos compartidos con franja (sala, vehículo, llave). Categoría Reservable + Permitir reservas por unidad (desactivado por defecto). El invitado reserva vía QR de unidad (retención + confirmación por correo). Gestión vía menú Reservas y calendario."
             },
             {
+                "title": "ESG & Compliance",
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Módulo opcional en WinProx Corporate: indicadores, mediciones y tareas de seguimiento en controles recurrentes. Record via portal, back office or API."
+            },
+            {
                 "title": "IoT Connect",
                 "badge": "Corporate",
                 "body": "Las pasarelas de sensores envían eventos; las alarmas se convierten en aviso aprobado + tarea. Mediciones → ESG. Solo WinProx Corporate. Token de pasarela (también sin la API REST completa)."
@@ -127,6 +117,26 @@
                 "badge": "Corporate",
                 "badge_mod": "corp",
                 "body": "Tokens API REST y webhooks salientes (HMAC) en Ajustes. Conexión para avisos, tareas, comprobaciones de unidad, ESG, … Ingest IoT con token de gateway aparte. Véase también la ficha API & Webhooks y la ficha técnica."
+            },
+            {
+                "title": "Multi-tenant",
+                "body": "Cada organización tiene su entorno con límites por plan (WinProx 10/50/100 + Corporate)."
+            },
+            {
+                "title": "Branding & QR",
+                "body": "Logotipo de la organización, fondo del portal y colores del portal (fondo y botones) en Configuración; fotos de unidad y foto de fondo por unidad. Formatos Avery o A6/A5/A4 — listos para imprimir."
+            },
+            {
+                "title": "Menú Trabajo",
+                "body": "En Organización → Ajustes → Ajustes del menú Trabajo (administrador): Calendario, Reservas, Rondas de inspección y Mediciones de unidad por organización en la barra lateral. Desactivado = sin acceso al backoffice; el QR en unidades que ya lo tenían sigue funcionando (grandfather). Una plantilla inicial en el panel muestra la elección del menú en la vista previa, la aplica al crear y la muestra en Plantilla inicial creada. Gestión inmobiliaria desactiva Reservas y Mediciones de unidad por defecto; otras plantillas activan todo. Eliminar la plantilla no cambia el menú de trabajo."
+            },
+            {
+                "title": "AI translation",
+                "body": "After approval, texts are queued for translation (issues, tasks, documents, announcements, …). WinProx fills the other languages periodically via local AI (no external AI cloud), typically daily — with no guaranteed turnaround. Organisation admins can correct translations manually; there is no per-organisation on/off switch."
+            },
+            {
+                "title": "No app required",
+                "body": "Everything runs in the browser. Back office is desktop-first; field and QR portals are mobile-first. No App Store, no install."
             }
         ],
         "full": [
