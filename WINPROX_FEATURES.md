@@ -141,7 +141,7 @@ Support: tenant **impersoneren** (`support.tenant`) voor hulp zonder tenant-logi
 
 ## Billing & limieten
 
-- Proefperiode + grace; plannen met **unit-**, **document-** en **plaatsenlimieten** (collega's + uitvoerders).
+- Proefperiode + grace; plannen met **unit-**, **document-** en **licentielimieten** (collega's + uitvoerders).
 - Stripe checkout / customer portal (optioneel via `.env`).
 - Rate limiting per plan (API).
 

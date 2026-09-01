@@ -704,7 +704,7 @@ geen betaalde SSO-dienst (WorkOS e.d.).
 - Alleen **bestaande** WinProx-users; e-mail moet gelijk zijn aan het Microsoft-account
   (`mail` of UPN). Geen match → weigeren, geen nieuw account.
 - Geen automatische accounts (geen JIT): collega’s blijven via `CreateColleagueAction` +
-  plaatsenlimiet (collega's + uitvoerders).
+  licentielimiet (collega's + uitvoerders).
 - E-mail + wachtwoord blijft; `users.password` blijft verplicht (o.a. tenant-purge).
 - `is_active=false` → weigeren. Superuser nooit via Entra.
 - Zelfregistratie van een nieuwe tenant blijft e-mail + wachtwoord (geen “aanmelden met Microsoft”).
@@ -780,13 +780,13 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
 
 ### 7.2 Plannen
 - **WinProx** (`winprox_10` / `winprox_50` / `winprox_100`): **jaarlijks**, units + documenten (1:1)
-  + **plaatsen** (collega's met login + uitvoerders, zelfde getal als units per tier).
+  + **licenties** (collega's met login + uitvoerders, zelfde getal als units per tier).
   Onbeperkt locaties/foto's. **Geen** Time, IoT, ESG of API. Clock Point blijft de
   aanmeld-QR (identiteit + takenlijst).
 - **Time (prikklok)** — modulenaam Time, inhoud = prikklok: optionele plan-variant
   (`winprox_*_time`), zelfde units, `time_module` aan. Toeslag €29 / €39 / €49 per maand,
   op de **jaarfactuur** (×12). In-/uitklokken, pauze, aanwezigheid, urenstaat.
-- **Trial:** 50 units, 50 plaatsen, Time (prikklok) inbegrepen, geen IoT/ESG/API.
+- **Trial:** 50 units, 50 licenties, Time (prikklok) inbegrepen, geen IoT/ESG/API.
 - **Corporate:** geen self-activate; superuser zet `billing_plan=corporate` + `billing_units_cap`
   via Platform → Organisaties. Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
 - **Legacy `facility_*`:** blijven in config voor bestaande abonnees (niet in catalogus, niet

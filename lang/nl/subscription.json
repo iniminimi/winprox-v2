@@ -3,15 +3,15 @@
     "public_title": "Prijzen & formules",
     "public_subtitle": "Kies het aantal units. WinProx is per jaar. Time (prikklok) is inbegrepen in de proefperiode, daarna optioneel.",
     "public_register_cta": "Start gratis proefperiode",
-    "subtitle": "Na je gratis maand kies je een formule. Limieten gelden voor units, documenten (1 per unit) en plaatsen (collega's + uitvoerders); locaties en foto's zijn onbeperkt.",
+    "subtitle": "Na je gratis maand kies je een formule. Limieten gelden voor units, documenten (1 per unit) en licenties (collega's + uitvoerders); locaties en foto's zijn onbeperkt.",
     "plans_heading": "Formules",
-    "plans_intro": "Begin klein en groei mee. Elke WinProx-formule heeft een limiet op units, documenten en plaatsen (collega's + uitvoerders). Locaties en foto's zijn onbeperkt. Time (prikklok) is optioneel.",
+    "plans_intro": "Begin klein en groei mee. Elke WinProx-formule heeft een limiet op units, documenten en licenties (collega's + uitvoerders). Locaties en foto's zijn onbeperkt. Time (prikklok) is optioneel.",
     "glossary": {
-        "heading": "Units, documenten, plaatsen en foto's",
+        "heading": "Units, documenten, licenties en foto's",
         "unit": "Unit — een object of plaats met een QR-code, zoals een hotelkamer, ziekenhuiskamer, printer of voertuig.",
         "document": "Document — een document dat beschikbaar is via het QR-portaal, zoals een handleiding of huisreglement. Maximaal 1 document per unit.",
         "photo": "Foto's — foto's bij meldingen en taken zijn onbeperkt.",
-        "seat": "Plaats — een collega met login (beheerder of medewerker) of een uitvoerder (Clock Point, zonder login). Telt mee tot de limiet van je formule."
+        "seat": "Licentie — een collega met login (beheerder of medewerker) of een uitvoerder (Clock Point, zonder login). Telt mee tot de limiet van je formule."
     },
     "choose_plan": "Kies deze formule",
     "choose_plan_loading": "Bezig met kiezen...",
@@ -26,13 +26,13 @@
     "status_active": "Actief abonnement: :plan, geldig tot :date.",
     "status_grace": "Abonnement :plan beëindigd op :ended. Respijtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng op tijd om onderbreking te vermijden.",
     "status_expired": "Je proefperiode is afgelopen. Kies hieronder een formule om verder te gaan.",
-    "pricing_intro": "WinProx bevat een gratis proefmaand (50 units, 50 plaatsen, inclusief Time-prikklok). Daarna kies je 10, 50 of 100 units per jaar met evenveel plaatsen. Time kun je optioneel behouden.",
+    "pricing_intro": "WinProx bevat een gratis proefmaand (50 units, 50 licenties, inclusief Time-prikklok). Daarna kies je 10, 50 of 100 units per jaar met evenveel licenties. Time kun je optioneel behouden.",
     "status_module_esg": "ESG-module actief op je account.",
     "status_module_time": "Time (prikklok) actief op je account.",
     "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
     "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" blijft uitgeschakeld tot je upgradet.",
     "page_limits_locations_body": "Je gebruikt :current van :max locaties. \"Locatie toevoegen\" blijft uitgeschakeld tot je upgradet.",
-    "page_limits_users_body": "Je gebruikt :current van :max plaatsen (collega's + uitvoerders) op je formule. Voeg geen extra personen toe tot je upgradet.",
+    "page_limits_users_body": "Je gebruikt :current van :max licenties (collega's + uitvoerders) op je formule. Voeg geen extra personen toe tot je upgradet.",
     "page_limits_documents_body": "Je organisatie gebruikt :current van :max documenten. Verwijder een document of upgrade je formule om meer te uploaden.",
     "page_limits_photos_body": "Je organisatie gebruikt :current van :max foto's. Verwijder foto's of upgrade je formule om meer te uploaden.",
     "manage_in_stripe": "Abonnement beheren (factuur, betaalmethode)",
@@ -54,12 +54,12 @@
     },
     "limits": {
         "units": ":count units",
-        "users": ":count plaatsen",
+        "users": ":count licenties",
         "unlimited": "onbeperkt",
         "warning_units": "Je hebt nog :remaining unitplaatsen op je formule.",
         "critical_units": "Je unitlimiet is bereikt. Upgrade je formule om meer units toe te voegen.",
-        "warning_users": "Je hebt nog :remaining plaatsen op je formule.",
-        "critical_users": "Je plaatsenlimiet is bereikt. Upgrade je formule om meer collega's of uitvoerders toe te voegen.",
+        "warning_users": "Je hebt nog :remaining licenties over op je formule.",
+        "critical_users": "Je licentielimiet is bereikt. Upgrade je formule om meer collega's of uitvoerders toe te voegen.",
         "cta": "Bekijk abonnement"
     },
     "plans": {
@@ -69,7 +69,7 @@
         "winprox_10": {
             "name": "10 units",
             "price": "€149 / jaar",
-            "scale": "Tot 10 units, 10 documenten en 10 plaatsen (collega's + uitvoerders).",
+            "scale": "Tot 10 units, 10 documenten en 10 licenties (collega's + uitvoerders).",
             "features": [
                 "Melden en opvolgen via QR.",
                 "Time (prikklok) optioneel.",
@@ -79,7 +79,7 @@
         "winprox_10_time": {
             "name": "10 units + Time (prikklok)",
             "price": "€497 / jaar",
-            "scale": "Tot 10 units, 10 documenten en 10 plaatsen (collega's + uitvoerders).",
+            "scale": "Tot 10 units, 10 documenten en 10 licenties (collega's + uitvoerders).",
             "features": [
                 "Melden en opvolgen via QR.",
                 "Time (prikklok) inbegrepen.",
@@ -89,7 +89,7 @@
         "winprox_50": {
             "name": "50 units",
             "price": "€399 / jaar",
-            "scale": "Tot 50 units, 50 documenten en 50 plaatsen (collega's + uitvoerders).",
+            "scale": "Tot 50 units, 50 documenten en 50 licenties (collega's + uitvoerders).",
             "features": [
                 "Melden en opvolgen via QR.",
                 "Time (prikklok) optioneel.",
@@ -99,7 +99,7 @@
         "winprox_50_time": {
             "name": "50 units + Time (prikklok)",
             "price": "€867 / jaar",
-            "scale": "Tot 50 units, 50 documenten en 50 plaatsen (collega's + uitvoerders).",
+            "scale": "Tot 50 units, 50 documenten en 50 licenties (collega's + uitvoerders).",
             "features": [
                 "Melden en opvolgen via QR.",
                 "Time (prikklok) inbegrepen.",
@@ -109,7 +109,7 @@
         "winprox_100": {
             "name": "100 units",
             "price": "€699 / jaar",
-            "scale": "Tot 100 units, 100 documenten en 100 plaatsen (collega's + uitvoerders).",
+            "scale": "Tot 100 units, 100 documenten en 100 licenties (collega's + uitvoerders).",
             "features": [
                 "Melden en opvolgen via QR.",
                 "Time (prikklok) optioneel.",
@@ -119,7 +119,7 @@
         "winprox_100_time": {
             "name": "100 units + Time (prikklok)",
             "price": "€1.287 / jaar",
-            "scale": "Tot 100 units, 100 documenten en 100 plaatsen (collega's + uitvoerders).",
+            "scale": "Tot 100 units, 100 documenten en 100 licenties (collega's + uitvoerders).",
             "features": [
                 "Melden en opvolgen via QR.",
                 "Time (prikklok) inbegrepen.",
@@ -300,5 +300,5 @@
         "hint": "In-, uitklokken en pauze. Wordt meegenomen op de jaarfactuur (12 × de maandprijs).",
         "public_hint": "Time (prikklok) optioneel vanaf :price / maand, op de jaarfactuur."
     },
-    "comparison_col_seats": "Plaatsen"
+    "comparison_col_seats": "Licenties"
 }
