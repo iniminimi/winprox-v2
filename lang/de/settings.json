@@ -27,6 +27,8 @@
         "portal_background_label": "Portal-Hintergrund",
         "portal_background_preview_alt": "Aktueller Portal-Hintergrund",
         "portal_background_hint": "Hintergrundbild für das Meldeportal nach dem Scannen eines QR-Codes (PNG/JPG, max. 2 MB, mindestens 1080 px Breite empfohlen).",
+        "portal_background_stock_none": "Kein Standardhintergrund",
+        "portal_background_stock_hint": "Gleiche Beispielhintergründe wie beim QR-Druckblatt. Die Auswahl wird sofort gespeichert; ein eigener Upload überschreibt die Vorlage.",
         "custom_theme_title": "Eigener Portal-Stil",
         "portal_colors_label": "Portal-Farben",
         "custom_theme_bg_label": "Hintergrundfarbe",

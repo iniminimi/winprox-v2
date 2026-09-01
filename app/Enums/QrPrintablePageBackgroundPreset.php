@@ -56,6 +56,17 @@ enum QrPrintablePageBackgroundPreset: string
         return $choices;
     }
 
+    /**
+     * @return list<string>
+     */
+    public static function uiChoiceValues(): array
+    {
+        return array_map(
+            static fn (array $choice): string => $choice['value'],
+            self::uiChoices(),
+        );
+    }
+
     public static function isValidPresetKey(string $presetKey): bool
     {
         return QrPrintablePageStockBackgroundCatalog::findByPresetKey(

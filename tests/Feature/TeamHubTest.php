@@ -2,6 +2,8 @@
 
 use App\Livewire\Auth\Login;
 use App\Livewire\Pages\Settings;
+use App\Support\Qr\QrPrintablePageStockBackgroundCatalog;
+use App\Support\TenantPortalBackground;
 use App\Livewire\Pages\Team;
 use App\Models\InternalTeam;
 use App\Models\InternalTeamTranslation;
@@ -314,6 +316,40 @@ it('laat een medewerker een portaal-achtergrond verwijderen', function () {
         ->assertHasNoErrors();
 
     expect($tenant->fresh()->portal_background_path)->toBeNull();
+});
+
+it('laat een medewerker een standaard portaal-achtergrond kiezen', function () {
+    [$tenant] = tenantWithAdmin();
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $presetKey = QrPrintablePageStockBackgroundCatalog::defaultPresetKey();
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('portalBackgroundStockPreset', $presetKey)
+        ->assertHasNoErrors();
+
+    $fresh = $tenant->fresh();
+    expect($fresh->portal_background_path)->toBe($presetKey)
+        ->and($fresh->portalBackgroundPublicUrl())->toBe(
+            QrPrintablePageStockBackgroundCatalog::findByPresetKey($presetKey)['publicUrl'],
+        );
+});
+
+it('vervangt een standaard portaal-achtergrond door een eigen upload', function () {
+    Storage::fake('public');
+    [$tenant] = tenantWithAdmin();
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $presetKey = QrPrintablePageStockBackgroundCatalog::defaultPresetKey();
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('portalBackgroundStockPreset', $presetKey)
+        ->set('portalBackground', UploadedFile::fake()->image('portal-bg.jpg'))
+        ->assertHasNoErrors();
+
+    $path = $tenant->fresh()->portal_background_path;
+    expect($path)->not->toBeNull()
+        ->and(TenantPortalBackground::isStockPath($path))->toBeFalse();
 });
 
 it('staat avif toe als livewire preview-mime voor portaal-achtergrond', function () {

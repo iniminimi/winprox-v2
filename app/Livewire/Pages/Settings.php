@@ -11,6 +11,7 @@ use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
 use App\Actions\Team\UpdateTenantWorkMenuAction;
 use App\Actions\Team\RemoveOrganisationPortalBackgroundAction;
+use App\Actions\Team\SetOrganisationPortalStockBackgroundAction;
 use App\Actions\Team\RemoveTenantQrStickerSheetBackgroundAction;
 use App\Actions\Team\UpdateTenantQrPrintablePageSettingsAction;
 use App\Actions\Team\UpdateTenantQrStickerSheetSettingsAction;
@@ -20,6 +21,7 @@ use App\Data\Team\UpdateTenantQrStickerSheetSettingsData;
 use App\Enums\QrPrintablePageBackgroundPreset;
 use App\Enums\QrStickerTenantLogoPlacement;
 use App\Enums\UiTheme;
+use App\Http\Requests\Team\SetOrganisationPortalStockBackgroundRequest;
 use App\Http\Requests\Team\UploadOrganisationLogoRequest;
 use App\Http\Requests\Team\UploadOrganisationPortalBackgroundRequest;
 use App\Http\Requests\Team\UploadTenantQrStickerSheetBackgroundRequest;
@@ -28,6 +30,7 @@ use App\Http\Requests\Team\UpdateTenantQrStickerSheetSettingsRequest;
 use App\Support\Qr\BrandedQrStickerLayoutConfig;
 use App\Support\Qr\QrPrintablePageBackground;
 use App\Support\Qr\QrStickerSheetTemplate;
+use App\Support\TenantPortalBackground;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Http\Requests\Team\UpdateTenantWorkMenuRequest;
 use App\Models\Location;
@@ -77,6 +80,8 @@ class Settings extends Component
 
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $portalBackground = null;
+
+    public string $portalBackgroundStockPreset = '';
 
     public string $qrBrandingHeaderText = '';
 
@@ -493,6 +498,42 @@ class Settings extends Component
         );
     }
 
+    public function updatedPortalBackgroundStockPreset(
+        SetOrganisationPortalStockBackgroundAction $setStock,
+        RemoveOrganisationPortalBackgroundAction $removeBackground,
+    ): void {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('updateTenantBranding', $tenant);
+
+        if ($this->portalBackgroundStockPreset === '') {
+            if (TenantPortalBackground::isStockPath($tenant->portal_background_path)) {
+                $updated = $removeBackground->handle($tenant, (int) auth()->id());
+                $this->fillOrganisationFromTenant($updated);
+                $this->dispatch('saved');
+            }
+
+            return;
+        }
+
+        Validator::make(
+            ['portalBackgroundStockPreset' => $this->portalBackgroundStockPreset],
+            SetOrganisationPortalStockBackgroundRequest::ruleSet(),
+        )->validate();
+
+        $updated = $setStock->handle(
+            $tenant,
+            $this->portalBackgroundStockPreset,
+            (int) auth()->id(),
+        );
+        $this->reset('portalBackground');
+        $this->fillOrganisationFromTenant($updated);
+        $this->dispatch('saved');
+    }
+
     private function persistOrganisationPortalBackground(UpdateOrganisationPortalBackgroundAction $updateBackground): void
     {
         $tenant = $this->resolveTenant();
@@ -677,6 +718,9 @@ class Settings extends Component
         $this->customThemeActive = (bool) $tenant->custom_theme_active;
         $this->customThemeBg = $tenant->custom_theme_bg ?? '#e7e8ec';
         $this->customThemeBtn = $tenant->custom_theme_btn ?? '#059669';
+        $this->portalBackgroundStockPreset = TenantPortalBackground::stockPresetKeyFromPath(
+            $tenant->portal_background_path,
+        ) ?? '';
         $tenant->loadMissing('qrStickerSheetSettings');
         $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);
         $layout = BrandedQrStickerLayoutConfig::fromSetting($sheetSetting);

@@ -27,6 +27,8 @@
         "portal_background_label": "Portal background",
         "portal_background_preview_alt": "Current portal background",
         "portal_background_hint": "Background image for the report portal after scanning a QR code (PNG/JPG, max. 2 MB, minimum 1080 px wide recommended).",
+        "portal_background_stock_none": "No stock background",
+        "portal_background_stock_hint": "Same sample backgrounds as QR printable page. Your choice is saved immediately; a custom upload overrides the preset.",
         "custom_theme_title": "Custom portal style",
         "portal_colors_label": "Portal colours",
         "custom_theme_bg_label": "Background colour",

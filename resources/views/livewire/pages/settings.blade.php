@@ -171,6 +171,21 @@
                     <h3 class="wp-settings-subblock-title">{{ __('settings.org.portal_background_label') }}</h3>
                     <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_hint') }}</p>
                     <div class="wp-field">
+                        <label class="wp-label" for="portalBackgroundStockPreset">{{ __('settings.qr_stickers.branding.preset_label') }}</label>
+                        <select
+                            id="portalBackgroundStockPreset"
+                            class="wp-input"
+                            wire:model.live="portalBackgroundStockPreset"
+                        >
+                            <option value="">{{ __('settings.org.portal_background_stock_none') }}</option>
+                            @foreach ($qrPrintableBackgroundPresets as $preset)
+                                <option value="{{ $preset['value'] }}">{{ $preset['label'] }}</option>
+                            @endforeach
+                        </select>
+                        @error('portalBackgroundStockPreset') <p class="wp-error">{{ $message }}</p> @enderror
+                        <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_stock_hint') }}</p>
+                    </div>
+                    <div class="wp-field">
                         @if ($portalBackgroundUrl)
                             <img
                                 src="{{ $portalBackgroundUrl }}"

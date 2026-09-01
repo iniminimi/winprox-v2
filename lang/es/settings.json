@@ -27,6 +27,8 @@
         "portal_background_label": "Fondo del portal",
         "portal_background_preview_alt": "Fondo actual del portal",
         "portal_background_hint": "Imagen de fondo para el portal de informes tras escanear un código QR (PNG/JPG, máx. 2 MB, se recomienda mínimo 1080 px de ancho).",
+        "portal_background_stock_none": "Sin fondo estándar",
+        "portal_background_stock_hint": "Los mismos fondos de ejemplo que en la hoja QR. La elección se guarda al instante; una carga propia sustituye el preset.",
         "custom_theme_title": "Estilo personalizado del portal",
         "portal_colors_label": "Colores del portal",
         "custom_theme_bg_label": "Color de fondo",

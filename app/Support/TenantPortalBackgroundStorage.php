@@ -14,8 +14,10 @@ class TenantPortalBackgroundStorage
 
     public function delete(?string $path): void
     {
-        if ($path !== null && $path !== '') {
-            Storage::disk('public')->delete($path);
+        if ($path === null || $path === '' || \App\Support\TenantPortalBackground::isStockPath($path)) {
+            return;
         }
+
+        Storage::disk('public')->delete($path);
     }
 }

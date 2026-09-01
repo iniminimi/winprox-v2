@@ -27,6 +27,8 @@
         "portal_background_label": "Sfondo portale",
         "portal_background_preview_alt": "Sfondo portale attuale",
         "portal_background_hint": "Immagine di sfondo per il portale segnalazioni dopo la scansione di un codice QR (PNG/JPG, max. 2 MB, larghezza minima 1080 px consigliata).",
+        "portal_background_stock_none": "Nessuno sfondo standard",
+        "portal_background_stock_hint": "Stessi sfondi di esempio della stampa QR. La scelta viene salvata subito; un caricamento personalizzato sostituisce il preset.",
         "custom_theme_title": "Stile portale personalizzato",
         "portal_colors_label": "Colori portale",
         "custom_theme_bg_label": "Colore sfondo",

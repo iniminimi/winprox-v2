@@ -27,6 +27,8 @@
         "portal_background_label": "Portaal-achtergrond",
         "portal_background_preview_alt": "Huidige portaal-achtergrond",
         "portal_background_hint": "Achtergrondafbeelding voor het meldportaal na het scannen van een QR-code (PNG/JPG, max. 2 MB, minimaal 1080 px breed aanbevolen).",
+        "portal_background_stock_none": "Geen standaardachtergrond",
+        "portal_background_stock_hint": "Zelfde voorbeeldachtergronden als bij QR-afdrukblad. Keuze wordt meteen opgeslagen; een eigen upload overschrijft de preset.",
         "custom_theme_title": "Eigen portaal-stijl",
         "portal_colors_label": "Portaal kleuren",
         "custom_theme_bg_label": "Achtergrondkleur",

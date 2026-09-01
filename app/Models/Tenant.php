@@ -886,16 +886,7 @@ class Tenant extends Model
     /** Publieke URL van het portaal-achtergrond, of null. */
     public function portalBackgroundPublicUrl(): ?string
     {
-        $path = $this->portal_background_path;
-        if (! is_string($path) || $path === '') {
-            return null;
-        }
-
-        if (! Storage::disk('public')->exists($path)) {
-            return null;
-        }
-
-        return Storage::disk('public')->url($path);
+        return \App\Support\TenantPortalBackground::publicUrl($this->portal_background_path);
     }
 
     public function organisationAddressLine(): ?string
