@@ -156,6 +156,7 @@
                                                 'mailbox_full' => $summary->bounceMailboxFull,
                                                 'spam' => $summary->bounceSpam,
                                                 'domain_block' => $summary->bounceDomainBlock,
+                                                'other' => $summary->bounceOther,
                                             ]) }}
                                         </p>
                                     @endif

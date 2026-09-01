@@ -329,7 +329,7 @@
             "paused": "Interrotto"
         },
         "delivery_stats": ":sent inviate · :remaining da inviare · :failed fallite · :bounced bounced (:bounce_percent%) · :queued in coda",
-        "delivery_bounce_kinds": ":unknown indirizzo sconosciuto · :blacklist blacklist · :mailbox_full casella piena · :spam rifiutato come spam · :domain_block dominio listato",
+        "delivery_bounce_kinds": ":unknown indirizzo sconosciuto · :blacklist blacklist · :mailbox_full casella piena · :spam rifiutato come spam · :domain_block dominio listato · :other altro",
         "delivery_restart_hint": "Apri la campagna e rimetti in coda le email (senza Reinvia). Verrà inviato solo il resto.",
         "delivery_sending_hint": "La coda è ancora attiva. Aggiornamento automatico; attendi.",
         "delivery_paused_hint": "La coda è stata svuotata (manuale, 23:00 o listing Spamhaus). Riprendi di giorno e rimetti in coda.",

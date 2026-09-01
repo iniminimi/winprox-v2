@@ -101,6 +101,7 @@ class SummarizePromoCampaignsDeliveryAction
                 PromoBounceKind::MailboxFull->value => 0,
                 PromoBounceKind::Spam->value => 0,
                 PromoBounceKind::DomainBlock->value => 0,
+                PromoBounceKind::Other->value => 0,
             ];
 
             $sentAt = $sentAtRows->get($campaignId);
@@ -119,6 +120,7 @@ class SummarizePromoCampaignsDeliveryAction
                 bounceMailboxFull: (int) ($kinds[PromoBounceKind::MailboxFull->value] ?? 0),
                 bounceSpam: (int) ($kinds[PromoBounceKind::Spam->value] ?? 0),
                 bounceDomainBlock: (int) ($kinds[PromoBounceKind::DomainBlock->value] ?? 0),
+                bounceOther: (int) ($kinds[PromoBounceKind::Other->value] ?? 0),
                 remaining: $remaining,
                 queuedJobs: $queuedJobs,
                 status: $this->resolveStatus(
@@ -178,34 +180,65 @@ class SummarizePromoCampaignsDeliveryAction
             PromoBounceKind::MailboxFull->value => 0,
             PromoBounceKind::Spam->value => 0,
             PromoBounceKind::DomainBlock->value => 0,
+            PromoBounceKind::Other->value => 0,
         ];
         $counts = [];
         foreach ($campaignIds as $id) {
             $counts[$id] = $empty;
         }
 
-        $rows = PromoCampaignEmailSend::query()
+        $targets = PromoCampaignTarget::query()
+            ->whereIn('promo_campaign_id', $campaignIds)
+            ->where('undelivered', true)
+            ->get(['id', 'promo_campaign_id', 'email']);
+
+        if ($targets->isEmpty()) {
+            return $counts;
+        }
+
+        $targetIds = $targets->pluck('id')->map(fn ($id): int => (int) $id)->all();
+
+        /** @var array<int, string> $reasonByTarget */
+        $reasonByTarget = [];
+        $bouncedSends = PromoCampaignEmailSend::query()
+            ->whereIn('promo_campaign_target_id', $targetIds)
+            ->where('status', MunicipalPromoEmailSendStatus::Bounced)
+            ->orderByDesc('id')
+            ->get(['promo_campaign_target_id', 'error_message']);
+
+        foreach ($bouncedSends as $send) {
+            $targetId = (int) $send->promo_campaign_target_id;
+            if (! isset($reasonByTarget[$targetId])) {
+                $reasonByTarget[$targetId] = (string) $send->error_message;
+            }
+        }
+
+        /** @var array<string, string> $reasonByEmail */
+        $reasonByEmail = [];
+        $emailSends = PromoCampaignEmailSend::query()
             ->whereIn('promo_campaign_id', $campaignIds)
             ->where('status', MunicipalPromoEmailSendStatus::Bounced)
-            ->get(['promo_campaign_id', 'error_message']);
+            ->orderByDesc('id')
+            ->get(['recipient_email', 'error_message']);
 
-        foreach ($rows as $row) {
-            $kind = PromoBounceKind::fromStoredReason($row->error_message);
-            if ($kind === PromoBounceKind::Other || $kind === PromoBounceKind::Blacklist) {
-                $classified = PromoBounceMessageParser::classify((string) $row->error_message);
-                if ($classified === PromoBounceKind::DomainBlock || $kind === PromoBounceKind::Other) {
-                    $kind = $classified;
-                }
-            }
-            if ($kind === PromoBounceKind::Other) {
+        foreach ($emailSends as $send) {
+            $email = strtolower(trim((string) $send->recipient_email));
+            if ($email === '' || isset($reasonByEmail[$email])) {
                 continue;
             }
 
-            $campaignId = (int) $row->promo_campaign_id;
-            if (! isset($counts[$campaignId])) {
-                $counts[$campaignId] = $empty;
+            $reasonByEmail[$email] = (string) $send->error_message;
+        }
+
+        foreach ($targets as $target) {
+            $campaignId = (int) $target->promo_campaign_id;
+            $reason = $reasonByTarget[(int) $target->id] ?? null;
+
+            if ($reason === null && filled($target->email)) {
+                $reason = $reasonByEmail[strtolower(trim((string) $target->email))] ?? null;
             }
 
+            $kind = PromoBounceMessageParser::resolveKind($reason);
             $counts[$campaignId][$kind->value]++;
         }
 

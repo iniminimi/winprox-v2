@@ -329,7 +329,7 @@
             "paused": "Paused"
         },
         "delivery_stats": ":sent sent · :remaining left to send · :failed failed · :bounced bounced (:bounce_percent%) · :queued queued",
-        "delivery_bounce_kinds": ":unknown unknown address · :blacklist blacklist · :mailbox_full mailbox full · :spam rejected as spam · :domain_block domain listed",
+        "delivery_bounce_kinds": ":unknown unknown address · :blacklist blacklist · :mailbox_full mailbox full · :spam rejected as spam · :domain_block domain listed · :other other",
         "delivery_restart_hint": "Open the campaign and queue emails again (without Resend). Only the remainder will be sent.",
         "delivery_sending_hint": "Queue is still running. Auto-refreshes; leave it alone.",
         "delivery_paused_hint": "Queue was cleared (manually, at 23:00, or after a Spamhaus listing). Resume during the day and queue emails again.",

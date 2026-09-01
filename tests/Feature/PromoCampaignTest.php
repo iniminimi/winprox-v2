@@ -1526,7 +1526,50 @@ it('telt blacklist-bounces in de verzendstatus van een promo-campagne', function
             'mailbox_full' => 0,
             'spam' => 0,
             'domain_block' => 0,
+            'other' => 0,
         ]));
+});
+
+it('telt bounce-soorten per onbezorgd target zodat de som overeenkomt met gebounced', function () {
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'bounce@example.com');
+
+    PromoCampaignEmailSend::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_target_id' => $target->id,
+        'recipient_email' => 'bounce@example.com',
+        'status' => MunicipalPromoEmailSendStatus::Sent,
+        'sent_at' => now(),
+        'created_by' => $superuser->id,
+    ]);
+
+    $import = $campaign->imports()->firstOrFail();
+    $duplicate = PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_import_id' => $import->id,
+        'name' => 'Dubbel adres',
+        'email' => 'bounce@example.com',
+        'street_address' => 'Straat 2',
+        'postal_code' => '2000',
+        'city' => 'Antwerpen',
+        'docx_filename' => $target->docx_filename,
+        'generated_at' => now(),
+    ]);
+
+    $reason = PromoBounceMessageParser::storageReason('550 5.1.1 User unknown');
+    app(\App\Actions\Marketing\MarkPromoCampaignEmailBouncedAction::class)
+        ->handle('bounce@example.com', $reason);
+
+    $summary = app(\App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction::class)
+        ->handle(collect([$campaign->fresh()]))[$campaign->id];
+
+    expect($summary->bounced)->toBe(2)
+        ->and($summary->bounceUnknown)->toBe(2)
+        ->and($summary->bounceOther)->toBe(0)
+        ->and($summary->bounceUnknown + $summary->bounceBlacklist + $summary->bounceMailboxFull + $summary->bounceSpam + $summary->bounceDomainBlock + $summary->bounceOther)
+        ->toBe($summary->bounced);
+
+    expect($duplicate->fresh()->undelivered)->toBeTrue();
 });
 
 it('telt als-spam-geweigerd ook als de bounce eerder als overig is opgeslagen', function () {

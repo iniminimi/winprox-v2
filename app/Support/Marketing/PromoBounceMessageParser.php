@@ -192,6 +192,23 @@ final class PromoBounceMessageParser
         return PromoBounceKind::Other;
     }
 
+    public static function resolveKind(?string $reason): PromoBounceKind
+    {
+        if ($reason === null || trim($reason) === '') {
+            return PromoBounceKind::Other;
+        }
+
+        $kind = PromoBounceKind::fromStoredReason($reason);
+        if ($kind === PromoBounceKind::Other || $kind === PromoBounceKind::Blacklist) {
+            $classified = self::classify($reason);
+            if ($classified === PromoBounceKind::DomainBlock || $kind === PromoBounceKind::Other) {
+                $kind = $classified;
+            }
+        }
+
+        return $kind;
+    }
+
     public static function storageReason(string $haystack): string
     {
         $kind = self::classify($haystack);

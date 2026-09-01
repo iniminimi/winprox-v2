@@ -329,7 +329,7 @@
             "paused": "Onderbroken"
         },
         "delivery_stats": ":sent verstuurd · :remaining nog te sturen · :failed mislukt · :bounced gebounced (:bounce_percent%) · :queued in wachtrij",
-        "delivery_bounce_kinds": ":unknown onbekend adres · :blacklist blacklist · :mailbox_full mailbox vol · :spam als spam geweigerd · :domain_block domein geblokkeerd",
+        "delivery_bounce_kinds": ":unknown onbekend adres · :blacklist blacklist · :mailbox_full mailbox vol · :spam als spam geweigerd · :domain_block domein geblokkeerd · :other overig",
         "delivery_restart_hint": "Open de campagne en zet opnieuw Mails in wachtrij (zonder Opnieuw versturen). Alleen de rest wordt gestuurd.",
         "delivery_sending_hint": "Wachtrij loopt nog. Vernieuwt automatisch; even laten staan.",
         "delivery_paused_hint": "Wachtrij is leeggemaakt (handmatig, 23:00 of Spamhaus-listing). Hervat overdag en zet opnieuw mails in de wachtrij.",

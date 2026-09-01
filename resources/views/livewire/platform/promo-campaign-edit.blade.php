@@ -39,6 +39,7 @@
                         'mailbox_full' => $delivery->bounceMailboxFull,
                         'spam' => $delivery->bounceSpam,
                         'domain_block' => $delivery->bounceDomainBlock,
+                        'other' => $delivery->bounceOther,
                     ]) }}
                 </p>
             @endif

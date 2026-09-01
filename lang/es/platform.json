@@ -329,7 +329,7 @@
             "paused": "Interrumpido"
         },
         "delivery_stats": ":sent enviados · :remaining pendientes · :failed fallidos · :bounced rebotados (:bounce_percent%) · :queued en cola",
-        "delivery_bounce_kinds": ":unknown dirección desconocida · :blacklist blacklist · :mailbox_full buzón lleno · :spam rechazado como spam · :domain_block dominio listado",
+        "delivery_bounce_kinds": ":unknown dirección desconocida · :blacklist blacklist · :mailbox_full buzón lleno · :spam rechazado como spam · :domain_block dominio listado · :other otro",
         "delivery_restart_hint": "Abre la campaña y vuelve a poner en cola (sin Reenviar). Solo se enviará el resto.",
         "delivery_sending_hint": "La cola sigue activa. Se actualiza sola; espera.",
         "delivery_paused_hint": "La cola se vació (manual, 23:00 o listing Spamhaus). Reanuda de día y vuelve a poner en cola.",
