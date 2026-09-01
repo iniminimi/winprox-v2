@@ -29,6 +29,7 @@
         "portal_background_hint": "Image d'arrière-plan pour le portail de signalement après scan d'un code QR (PNG/JPG, max. 2 Mo, minimum 1080 px de large recommandé).",
         "portal_background_stock_none": "Aucun arrière-plan standard",
         "portal_background_stock_hint": "Mêmes arrière-plans d'exemple que pour la feuille QR. Le choix est enregistré immédiatement ; un téléversement personnalisé remplace le preset.",
+        "portal_background_upload_label": "Image personnalisée",
         "custom_theme_title": "Style de portail personnalisé",
         "portal_colors_label": "Couleurs du portail",
         "custom_theme_bg_label": "Couleur d'arrière-plan",

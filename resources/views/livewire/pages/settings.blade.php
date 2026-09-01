@@ -170,44 +170,49 @@
                 <div class="wp-settings-subblock">
                     <h3 class="wp-settings-subblock-title">{{ __('settings.org.portal_background_label') }}</h3>
                     <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_hint') }}</p>
-                    <div class="wp-field">
-                        <label class="wp-label" for="portalBackgroundStockPreset">{{ __('settings.qr_stickers.branding.preset_label') }}</label>
-                        <select
-                            id="portalBackgroundStockPreset"
-                            class="wp-input"
-                            wire:model.live="portalBackgroundStockPreset"
-                        >
-                            <option value="">{{ __('settings.org.portal_background_stock_none') }}</option>
-                            @foreach ($qrPrintableBackgroundPresets as $preset)
-                                <option value="{{ $preset['value'] }}">{{ $preset['label'] }}</option>
-                            @endforeach
-                        </select>
-                        @error('portalBackgroundStockPreset') <p class="wp-error">{{ $message }}</p> @enderror
-                        <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_stock_hint') }}</p>
-                    </div>
-                    <div class="wp-field">
-                        @if ($portalBackgroundUrl)
-                            <img
-                                src="{{ $portalBackgroundUrl }}"
-                                alt="{{ __('settings.org.portal_background_preview_alt') }}"
-                                class="wp-portal-bg-preview"
-                                wire:key="portal-bg-inline-{{ md5($portalBackgroundUrl) }}"
+
+                    <div class="wp-portal-bg-settings wp-stack-tight">
+                        <div class="wp-field">
+                            <label class="wp-label" for="portalBackgroundStockPreset">{{ __('settings.qr_stickers.branding.preset_label') }}</label>
+                            <select
+                                id="portalBackgroundStockPreset"
+                                class="wp-select wp-portal-bg-preset-select"
+                                wire:model.live="portalBackgroundStockPreset"
                             >
-                        @endif
-                        <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
-                        @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
-                        @if (filled($organisationTenant->portal_background_path))
-                            <div class="wp-cluster">
-                                <button
-                                    type="button"
-                                    class="btn btn--ghost btn--sm"
-                                    wire:click="removeOrganisationPortalBackground"
-                                    wire:confirm="{{ __('settings.org.portal_background_remove_confirm') }}"
+                                <option value="">{{ __('settings.org.portal_background_stock_none') }}</option>
+                                @foreach ($qrPrintableBackgroundPresets as $preset)
+                                    <option value="{{ $preset['value'] }}">{{ $preset['label'] }}</option>
+                                @endforeach
+                            </select>
+                            @error('portalBackgroundStockPreset') <p class="wp-error">{{ $message }}</p> @enderror
+                            <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_stock_hint') }}</p>
+                        </div>
+
+                        <div class="wp-field wp-portal-bg-upload">
+                            <span class="wp-label">{{ __('settings.org.portal_background_upload_label') }}</span>
+                            @if ($portalBackgroundUrl)
+                                <img
+                                    src="{{ $portalBackgroundUrl }}"
+                                    alt="{{ __('settings.org.portal_background_preview_alt') }}"
+                                    class="wp-portal-bg-preview"
+                                    wire:key="portal-bg-inline-{{ md5($portalBackgroundUrl) }}"
                                 >
-                                    {{ __('settings.org.portal_background_remove') }}
-                                </button>
-                            </div>
-                        @endif
+                            @endif
+                            <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
+                            @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
+                            @if (filled($organisationTenant->portal_background_path))
+                                <div class="wp-cluster">
+                                    <button
+                                        type="button"
+                                        class="btn btn--ghost btn--sm"
+                                        wire:click="removeOrganisationPortalBackground"
+                                        wire:confirm="{{ __('settings.org.portal_background_remove_confirm') }}"
+                                    >
+                                        {{ __('settings.org.portal_background_remove') }}
+                                    </button>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
 
