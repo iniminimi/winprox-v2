@@ -167,6 +167,22 @@ TXT;
         ->and(PromoBounceMessageParser::storageReason($telenet))->toStartWith('[spam]');
 });
 
+it('classificeert Italiaanse spam-detected bounces als spam', function () {
+    $aruba = <<<'TXT'
+<info@albergoposta.com>: host in.arubabusiness.it[62.149.157.166] said: 552
+    5.2.0 1IRvxc2LtPuD91IRwxqLKX rilevato spam / spam detected (in reply to end
+    of DATA command)
+TXT;
+
+    $register = <<<'TXT'
+<info@albergoombrettola.it>: host mail.register.it[195.110.124.132] said: 552
+    5.2.0 1IPLxl9zn4i2G1IPLxPEGx spam detected (in reply to end of DATA command)
+TXT;
+
+    expect(PromoBounceMessageParser::classify($aruba))->toBe(\App\Enums\PromoBounceKind::Spam)
+        ->and(PromoBounceMessageParser::classify($register))->toBe(\App\Enums\PromoBounceKind::Spam);
+});
+
 it('classificeert enorme of ongeldige MIME zonder te crashen', function () {
     $haystack = str_repeat("\x80\xFF", 80_000)."\n550 User unknown for info@hotel.com\n";
 
