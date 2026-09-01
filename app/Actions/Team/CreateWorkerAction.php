@@ -3,6 +3,7 @@
 namespace App\Actions\Team;
 
 use App\Models\InternalTeam;
+use App\Models\Tenant;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 
@@ -28,6 +29,9 @@ class CreateWorkerAction
                 throw new \InvalidArgumentException('wrong_team');
             }
         }
+
+        $tenant = Tenant::query()->findOrFail($team->tenant_id);
+        $tenant->assertCanAddSeats(1);
 
         $companyName = self::normalizedCompanyName($data['company_name'] ?? null);
         $isExternal = $companyName !== null || (bool) ($data['is_external'] ?? false);

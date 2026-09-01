@@ -3,14 +3,15 @@
     "public_title": "Pricing & plans",
     "public_subtitle": "Choose your unit count. WinProx is billed yearly. Time (punch clock) is included in the trial, optional afterwards.",
     "public_register_cta": "Start free trial",
-    "subtitle": "After your free month, choose a plan. Limits apply to units and documents (1 per unit); locations, users and photos are unlimited.",
+    "subtitle": "After your free month, choose a plan. Limits apply to units, documents (1 per unit) and seats (colleagues + workers); locations and photos are unlimited.",
     "plans_heading": "Plans",
-    "plans_intro": "Start small and grow. Every WinProx plan includes unlimited locations, users and photos. Time (punch clock) is optional.",
+    "plans_intro": "Start small and grow. Each WinProx plan limits units, documents and seats (colleagues + workers). Locations and photos are unlimited. Time (punch clock) is optional.",
     "glossary": {
-        "heading": "Units, documents and photos",
+        "heading": "Units, documents, seats and photos",
         "unit": "Unit — an object or place with a QR code, such as a hotel room, hospital room, printer or vehicle.",
         "document": "Document — a file available on the QR portal, such as a manual or house rules. Maximum 1 document per unit.",
-        "photo": "Photos — photos on issues and tasks are unlimited."
+        "photo": "Photos — photos on issues and tasks are unlimited.",
+        "seat": "Seat — a colleague with login (admin or employee) or a worker (Clock Point, no login). Counts toward your plan limit."
     },
     "choose_plan": "Choose this plan",
     "choose_plan_loading": "Choosing...",
@@ -25,13 +26,13 @@
     "status_active": "Active subscription: :plan, valid until :date.",
     "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
     "status_expired": "Your trial has ended. Choose a plan below to continue.",
-    "pricing_intro": "WinProx includes a free trial month (50 units, including Time punch clock). Then choose 10, 50 or 100 units per year. You can keep Time as an add-on.",
+    "pricing_intro": "WinProx includes a free trial month (50 units, 50 seats, including Time). Then choose 10, 50 or 100 units per year with the same number of seats. You can optionally keep Time.",
     "status_module_esg": "ESG module active on your account.",
     "status_module_time": "Time (punch clock) is active on your account.",
     "page_limits_title": "Why certain actions are unavailable",
     "page_limits_units_body": "You are using :current of :max units. \"Add unit\" stays disabled until you upgrade.",
     "page_limits_locations_body": "You are using :current of :max locations. \"Add location\" stays disabled until you upgrade.",
-    "page_limits_users_body": "You are using :current of :max team seats on your plan. \"Add user\" is disabled until you upgrade.",
+    "page_limits_users_body": "You are using :current of :max seats (colleagues + workers) on your plan. Do not add more people until you upgrade.",
     "page_limits_documents_body": "Your organisation is using :current of :max documents. Delete a document or upgrade your plan to upload more.",
     "page_limits_photos_body": "Your organisation is using :current of :max photos. Delete photos or upgrade your plan to upload more.",
     "manage_in_stripe": "Manage subscription (invoice, payment method)",
@@ -53,12 +54,12 @@
     },
     "limits": {
         "units": ":count units",
-        "users": ":count users",
+        "users": ":count seats",
         "unlimited": "unlimited",
         "warning_units": "You have :remaining unit slots left in your plan.",
         "critical_units": "Your unit limit is reached. Upgrade your plan to add more units.",
-        "warning_users": "You have :remaining user slots left in your plan.",
-        "critical_users": "Your user limit is reached. Upgrade your plan to invite more colleagues.",
+        "warning_users": "You have :remaining seats left on your plan.",
+        "critical_users": "Your seat limit is reached. Upgrade your plan to add more colleagues or workers.",
         "cta": "View subscription"
     },
     "plans": {
@@ -68,7 +69,7 @@
         "winprox_10": {
             "name": "10 units",
             "price": "€149 / year",
-            "scale": "Up to 10 units and 10 documents.",
+            "scale": "Up to 10 units, 10 documents and 10 seats (colleagues + workers).",
             "features": [
                 "Report and follow up via QR.",
                 "Time (punch clock) optional.",
@@ -78,7 +79,7 @@
         "winprox_10_time": {
             "name": "10 units + Time (punch clock)",
             "price": "€497 / year",
-            "scale": "Up to 10 units and 10 documents.",
+            "scale": "Up to 10 units, 10 documents and 10 seats (colleagues + workers).",
             "features": [
                 "Report and follow up via QR.",
                 "Time (punch clock) included.",
@@ -88,7 +89,7 @@
         "winprox_50": {
             "name": "50 units",
             "price": "€399 / year",
-            "scale": "Up to 50 units and 50 documents.",
+            "scale": "Up to 50 units, 50 documents and 50 seats (colleagues + workers).",
             "features": [
                 "Report and follow up via QR.",
                 "Time (punch clock) optional.",
@@ -98,7 +99,7 @@
         "winprox_50_time": {
             "name": "50 units + Time (punch clock)",
             "price": "€867 / year",
-            "scale": "Up to 50 units and 50 documents.",
+            "scale": "Up to 50 units, 50 documents and 50 seats (colleagues + workers).",
             "features": [
                 "Report and follow up via QR.",
                 "Time (punch clock) included.",
@@ -108,7 +109,7 @@
         "winprox_100": {
             "name": "100 units",
             "price": "€699 / year",
-            "scale": "Up to 100 units and 100 documents.",
+            "scale": "Up to 100 units, 100 documents and 100 seats (colleagues + workers).",
             "features": [
                 "Report and follow up via QR.",
                 "Time (punch clock) optional.",
@@ -118,7 +119,7 @@
         "winprox_100_time": {
             "name": "100 units + Time (punch clock)",
             "price": "€1,287 / year",
-            "scale": "Up to 100 units and 100 documents.",
+            "scale": "Up to 100 units, 100 documents and 100 seats (colleagues + workers).",
             "features": [
                 "Report and follow up via QR.",
                 "Time (punch clock) included.",
@@ -285,7 +286,7 @@
     "comparison_trial_price": "Free",
     "comparison_notes": {
         "trial": "Trial: 50 units, including Time (punch clock).",
-        "unlimited": "All plans: unlimited locations, users and photos.",
+        "unlimited": "All plans: unlimited locations and photos.",
         "corporate": "IoT, ESG and API: available only with WinProx Corporate."
     },
     "contact_sales_cta": "Contact us",
@@ -298,5 +299,6 @@
         "monthly": ":price / month",
         "hint": "Clock in, out and breaks. Added to the yearly invoice (12 × the monthly price).",
         "public_hint": "Time (punch clock) optional from :price / month, billed yearly."
-    }
+    },
+    "comparison_col_seats": "Seats"
 }

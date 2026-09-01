@@ -72,7 +72,13 @@ trait PortalTeamleaderManageWorkers
                 null,
                 $teamleader,
             );
-        } catch (\InvalidArgumentException) {
+        } catch (\InvalidArgumentException $e) {
+            if ($e->getMessage() === 'seat_limit_exceeded') {
+                $this->addError('newWorkerFirstName', __('team.errors.seat_limit'));
+
+                return;
+            }
+
             return;
         }
 

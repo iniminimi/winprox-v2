@@ -464,7 +464,7 @@
             "actions": [
                 {
                     "label": "Kollegenbenutzer",
-                    "text": "Verwalten Sie administrative Mitarbeiter, die hauptsächlich am PC arbeiten. Sie melden sich mit E-Mail und Passwort an, oder über **Mit Microsoft anmelden** (die Microsoft-E-Mail muss mit dem bestehenden WinProx-Konto übereinstimmen; es wird kein neues Konto angelegt). Ein Administrator ist der Hauptbenutzer, der Unternehmensdaten ändern kann. Administratoren und Mitarbeiter sind unbegrenzt — Einheiten bestimmen Ihr Abonnement. Ausführende nutzen keine Microsoft-Anmeldung (Clock-Point-QR)."
+                    "text": "Verwalten Sie administrative Mitarbeiter, die hauptsächlich am PC arbeiten. Sie melden sich mit E-Mail und Passwort an, oder über **Mit Microsoft anmelden** (die Microsoft-E-Mail muss mit dem bestehenden WinProx-Konto übereinstimmen; es wird kein neues Konto angelegt). Ein Administrator ist der Hauptbenutzer, der Unternehmensdaten ändern kann. Mehrere Administratoren sind möglich. Kollegen (Admin und Mitarbeiter) und Ausführende teilen sich das Platzlimit Ihres Abos. Ausführende nutzen keine Microsoft-Anmeldung (Clock-Point-QR)."
                 }
             ]
         },

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Team;
 
+use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Audit\AuditRecorder;
 
@@ -15,6 +16,10 @@ class SetColleagueActiveAction
 
     public function handle(User $user, bool $active, ?int $actorUserId = null): User
     {
+        if ($active && ! $user->is_active && ! $user->is_superuser) {
+            Tenant::query()->findOrFail($user->tenant_id)->assertCanAddSeats(1);
+        }
+
         $user->update(['is_active' => $active]);
 
         $fresh = $user->fresh();

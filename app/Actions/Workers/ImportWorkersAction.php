@@ -121,6 +121,11 @@ class ImportWorkersAction
             return ['success' => false, 'errors' => [__('team.workers.errors.no_rows')]];
         }
 
+        $remainingSeats = $tenant->remainingSeatSlots();
+        if ($remainingSeats !== null && count($validatedRows) > $remainingSeats) {
+            return ['success' => false, 'errors' => [__('team.errors.seat_limit')]];
+        }
+
         $batchId = (string) Str::uuid();
 
         DB::beginTransaction();

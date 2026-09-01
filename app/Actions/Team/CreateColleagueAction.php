@@ -27,7 +27,7 @@ class CreateColleagueAction
     public function handle(array $data, int $tenantId, ?int $actorUserId = null): User
     {
         $tenant = Tenant::query()->findOrFail($tenantId);
-        $tenant->assertCanAddUsers(1);
+        $tenant->assertCanAddSeats(1);
 
         $user = User::create([
             'tenant_id' => $tenantId,

@@ -3,6 +3,7 @@
 namespace App\Actions\Portal;
 
 use App\Models\InternalTeam;
+use App\Models\Tenant;
 use App\Models\Worker;
 use App\Support\Portal\WorkerIcon;
 
@@ -29,6 +30,8 @@ class RegisterWorkerForPortalAction
 
             return $this->attachDevice->handle($claimable);
         }
+
+        Tenant::query()->findOrFail($team->tenant_id)->assertCanAddSeats(1);
 
         $worker = Worker::create([
             'tenant_id' => $team->tenant_id,

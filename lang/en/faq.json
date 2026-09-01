@@ -48,37 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "How much does WinProx cost?",
-            "intro": "You start with a free trial month (50 units, including Time punch clock). IoT, ESG and API are not in the trial. Then choose 10, 50 or 100 units per year. Time (punch clock) is optional afterwards. Corporate is custom (more than 100 units or when API/webhooks are required).",
-            "summary": "Trial up to 50 units, including Time (punch clock). IoT, ESG and API on Corporate. Then 10/50/100 per year.",
-            "content_note": "Unit = object or place with a QR. Document = file on the QR portal, maximum 1 per unit. Photos on issues are unlimited. Exact prices are under Subscription.",
+            "intro": "You start with a free trial month (50 units, 50 seats, including Time punch clock). IoT, ESG and API are not in the trial. Then choose 10, 50 or 100 units per year with the same number of seats. Time is optional afterwards. Corporate is custom (more than 100 units or when API/webhooks are needed).",
+            "summary": "Trial up to 50 units and 50 seats, including Time. IoT, ESG and API on Corporate. Then 10/50/100 per year.",
+            "content_note": "Unit = object or place with a QR. Document = file on the QR portal, maximum 1 per unit. Seat = colleague with login or worker (Clock Point). Photos on issues are unlimited. Exact prices are under Subscription.",
             "plans": {
                 "winprox_10": {
                     "units": "Up to 10 units and 10 documents.",
                     "announcements": "€149 / year",
                     "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
                     "description": "Report and follow up via QR.",
-                    "users": "Unlimited locations, users and photos on reports"
+                    "users": "Up to 10 seats (colleagues + workers); unlimited locations and photos on issues"
                 },
                 "winprox_50": {
                     "units": "Up to 50 units and 50 documents.",
                     "announcements": "€399 / year",
                     "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
                     "description": "Report and follow up via QR.",
-                    "users": "Unlimited locations, users and photos on reports"
+                    "users": "Up to 50 seats (colleagues + workers); unlimited locations and photos on issues"
                 },
                 "winprox_100": {
                     "units": "Up to 100 units and 100 documents.",
                     "announcements": "€699 / year",
                     "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
                     "description": "Report and follow up via QR.",
-                    "users": "Unlimited locations, users and photos on reports"
+                    "users": "Up to 100 seats (colleagues + workers); unlimited locations and photos on issues"
                 },
                 "corporate": {
                     "units": "More than 100 units, or API/webhooks/integrations required.",
                     "announcements": "Custom pricing",
                     "documents": "Time (punch clock), IoT Connect and ESG included.",
                     "description": "For >1,000 units or when API/webhooks/integrations are required.",
-                    "users": "Unlimited locations, users and photos on reports"
+                    "users": "Custom seats; unlimited locations and photos on issues"
                 }
             }
         },

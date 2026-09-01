@@ -175,11 +175,12 @@
         "worker_email_max": "Het e-mailadres mag maximaal 255 tekens zijn.",
         "worker_phone_max": "Het telefoonnummer mag maximaal 50 tekens zijn.",
         "worker_company_name_max": "De bedrijfsnaam mag maximaal 120 tekens zijn.",
-        "user_limit": "Het gebruikerslimiet van je abonnement is bereikt. Upgrade je abonnement om meer collega's toe te voegen.",
+        "user_limit": "Het plaatsenlimiet van je abonnement is bereikt (collega's + uitvoerders). Upgrade je abonnement.",
         "import_file_required": "Selecteer een CSV-bestand om te importeren.",
         "import_file_type": "Het bestand moet een CSV-bestand zijn.",
         "import_file_max": "Het bestand mag maximaal 10MB groot zijn.",
-        "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve teams."
+        "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve teams.",
+        "seat_limit": "Het plaatsenlimiet van je abonnement is bereikt (collega's + uitvoerders). Upgrade je abonnement."
     },
     "checklists": {
         "click_to_manage": "Klik hier om checklists te beheren"

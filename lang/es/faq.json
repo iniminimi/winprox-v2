@@ -48,37 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "¿Cuánto cuesta WinProx?",
-            "intro": "Empieza con un mes de prueba (50 unidades, Time reloj de fichar incluido). IoT, ESG y API no están en la prueba. Luego elija 10, 50 o 100 unidades al año. Time (reloj de fichar) es opcional después. Corporate es a medida (más de 100 unidades o API/webhooks).",
-            "summary": "Prueba hasta 50 unidades, Time (reloj de fichar) incluido. IoT, ESG y API en Corporate. Luego 10/50/100 al año.",
-            "content_note": "Unidad = objeto o lugar con QR. Documento = archivo en el portal QR, máximo 1 por unidad. Fotos en avisos ilimitadas. Los precios exactos están en Suscripción.",
+            "intro": "Prueba gratis (50 units, 50 plazas, Time incluido). IoT, ESG y API no en la prueba. Luego 10, 50 o 100 units al año con igual número de plazas. Time opcional. Corporate a medida.",
+            "summary": "Prueba hasta 50 units y 50 plazas, Time incluido. IoT, ESG y API en Corporate.",
+            "content_note": "Unit = objeto o lugar con QR. Documento = archivo en el portal QR, máx. 1 por unit. Plaza = colega con acceso o ejecutor (Clock Point). Fotos ilimitadas.",
             "plans": {
                 "winprox_10": {
                     "units": "Hasta 10 unidades y 10 documentos.",
                     "announcements": "149 € / año",
                     "documents": "Avisos y seguimiento por QR. · Time (reloj de fichar) opcional. · Sin IoT, ESG ni API.",
                     "description": "Avisos y seguimiento por QR.",
-                    "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
+                    "users": "Hasta 10 plazas (colegas + ejecutores); ubicaciones y fotos ilimitadas"
                 },
                 "winprox_50": {
                     "units": "Hasta 50 unidades y 50 documentos.",
                     "announcements": "399 € / año",
                     "documents": "Avisos y seguimiento por QR. · Time (reloj de fichar) opcional. · Sin IoT, ESG ni API.",
                     "description": "Avisos y seguimiento por QR.",
-                    "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
+                    "users": "Hasta 50 plazas (colegas + ejecutores); ubicaciones y fotos ilimitadas"
                 },
                 "winprox_100": {
                     "units": "Hasta 100 unidades y 100 documentos.",
                     "announcements": "699 € / año",
                     "documents": "Avisos y seguimiento por QR. · Time (reloj de fichar) opcional. · Sin IoT, ESG ni API.",
                     "description": "Avisos y seguimiento por QR.",
-                    "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
+                    "users": "Hasta 100 plazas (colegas + ejecutores); ubicaciones y fotos ilimitadas"
                 },
                 "corporate": {
                     "units": "Más de 100 unidades, o API/webhooks/integraciones.",
                     "announcements": "Precio personalizado",
                     "documents": "Time (reloj de fichar), IoT Connect y ESG incluidos.",
                     "description": "Para >1.000 unidades o cuando se requieren API/webhooks/integraciones.",
-                    "users": "Ubicaciones, usuarios y fotos en incidencias ilimitados"
+                    "users": "Plazas a medida; ubicaciones y fotos ilimitadas"
                 }
             }
         },

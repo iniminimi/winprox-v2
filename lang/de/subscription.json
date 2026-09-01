@@ -3,14 +3,15 @@
     "public_title": "Preise & Pakete",
     "public_subtitle": "Wählen Sie die Anzahl Units. WinProx wird jährlich berechnet. Time (Stechuhr) ist in der Testphase enthalten, danach optional.",
     "public_register_cta": "Kostenlose Testphase starten",
-    "subtitle": "Nach dem Gratis-Monat wählen Sie einen Tarif. Limits gelten für Einheiten und Dokumente (1 pro Einheit); Standorte, Benutzer und Fotos sind unbegrenzt.",
+    "subtitle": "Nach dem Gratismonat wählen Sie einen Tarif. Limits gelten für Units, Dokumente (1 pro Unit) und Plätze (Kollegen + Ausführende); Standorte und Fotos unbegrenzt.",
     "plans_heading": "Tarife",
-    "plans_intro": "Klein starten und mitwachsen. Jeder WinProx-Tarif enthält unbegrenzte Standorte, Benutzer und Fotos. Time (Stechuhr) ist optional.",
+    "plans_intro": "Klein starten und wachsen. Jeder WinProx-Tarif begrenzt Units, Dokumente und Plätze (Kollegen + Ausführende). Standorte und Fotos unbegrenzt. Time (Stechuhr) optional.",
     "glossary": {
-        "heading": "Units, Dokumente und Fotos",
+        "heading": "Units, Dokumente, Plätze und Fotos",
         "unit": "Unit — ein Objekt oder Ort mit QR-Code, etwa Hotelzimmer, Krankenzimmer, Drucker oder Fahrzeug.",
         "document": "Dokument — ein Dokument im QR-Portal, etwa eine Anleitung oder Hausordnung. Maximal 1 Dokument pro Unit.",
-        "photo": "Fotos — Fotos bei Meldungen und Aufgaben sind unbegrenzt."
+        "photo": "Fotos — Fotos bei Meldungen und Aufgaben sind unbegrenzt.",
+        "seat": "Platz — Kollege mit Login (Admin oder Mitarbeiter) oder Ausführender (Clock Point, ohne Login). Zählt zum Tariflimit."
     },
     "page_limits_locations_body": "Sie nutzen :current von :max Standorten. \"Standort hinzufügen\" bleibt deaktiviert bis zum Upgrade.",
     "choose_plan": "Diesen Tarif wählen",
@@ -26,12 +27,12 @@
     "status_active": "Aktives Abonnement: :plan, gültig bis :date.",
     "status_grace": "Abonnement :plan endete am :ended. Kulanzfrist bis :grace_end — noch :days Tage voller Zugang.",
     "status_expired": "Ihre Testphase ist abgelaufen. Wählen Sie unten einen Tarif.",
-    "pricing_intro": "WinProx enthält einen kostenlosen Testmonat (50 Units, inkl. Time-Stechuhr). Danach 10, 50 oder 100 Units pro Jahr. Time können Sie optional behalten.",
+    "pricing_intro": "Gratis-Probe (50 Units, 50 Plätze, Time inklusive). Dann 10, 50 oder 100 Units pro Jahr mit gleicher Platzanzahl. Time optional.",
     "status_module_esg": "ESG-Modul auf Ihrem Konto aktiv.",
     "status_module_time": "Time (Stechuhr) ist auf Ihrem Konto aktiv.",
     "page_limits_title": "Warum bestimmte Aktionen nicht verfügbar sind",
     "page_limits_units_body": "Sie nutzen :current von :max Units. \"Unit hinzufügen\" bleibt deaktiviert bis zum Upgrade.",
-    "page_limits_users_body": "Sie nutzen :current von :max Teamplätzen. \"Benutzer hinzufügen\" bleibt deaktiviert bis zum Upgrade.",
+    "page_limits_users_body": "Sie nutzen :current von :max Plätzen (Kollegen + Ausführende). Keine weiteren Personen bis zum Upgrade.",
     "page_limits_documents_body": "Ihre Organisation nutzt :current von :max Dokumenten. Löschen Sie Dokumente oder upgraden Sie.",
     "page_limits_photos_body": "Ihre Organisation nutzt :current von :max Fotos. Löschen Sie Fotos oder upgraden Sie.",
     "manage_in_stripe": "Abonnement verwalten (Rechnung, Zahlungsmethode)",
@@ -53,12 +54,12 @@
     },
     "limits": {
         "units": ":count Units",
-        "users": ":count Benutzer",
+        "users": ":count Plätze",
         "unlimited": "unbegrenzt",
         "warning_units": "Sie haben noch :remaining Unit-Plätze.",
         "critical_units": "Unit-Limit erreicht. Upgraden Sie Ihren Tarif.",
-        "warning_users": "Sie haben noch :remaining Benutzer-Plätze.",
-        "critical_users": "Benutzer-Limit erreicht. Upgraden Sie Ihren Tarif.",
+        "warning_users": "Sie haben noch :remaining Plätze in Ihrem Tarif.",
+        "critical_users": "Platzlimit erreicht. Upgraden Sie Ihren Tarif für weitere Kollegen oder Ausführende.",
         "cta": "Abonnement ansehen"
     },
     "plans": {
@@ -68,7 +69,7 @@
         "winprox_10": {
             "name": "10 Units",
             "price": "149 € / Jahr",
-            "scale": "Bis zu 10 Units und 10 Dokumente.",
+            "scale": "Bis zu 10 Units, 10 Dokumente und 10 Plätze (Kollegen + Ausführende).",
             "features": [
                 "Melden und nachverfolgen per QR.",
                 "Time (Stechuhr) optional.",
@@ -78,7 +79,7 @@
         "winprox_10_time": {
             "name": "10 Units + Time (Stechuhr)",
             "price": "497 € / Jahr",
-            "scale": "Bis zu 10 Units und 10 Dokumente.",
+            "scale": "Bis zu 10 Units, 10 Dokumente und 10 Plätze (Kollegen + Ausführende).",
             "features": [
                 "Melden und nachverfolgen per QR.",
                 "Time (Stechuhr) inklusive.",
@@ -88,7 +89,7 @@
         "winprox_50": {
             "name": "50 Units",
             "price": "399 € / Jahr",
-            "scale": "Bis zu 50 Units und 50 Dokumente.",
+            "scale": "Bis zu 50 Units, 50 Dokumente und 50 Plätze (Kollegen + Ausführende).",
             "features": [
                 "Melden und nachverfolgen per QR.",
                 "Time (Stechuhr) optional.",
@@ -98,7 +99,7 @@
         "winprox_50_time": {
             "name": "50 Units + Time (Stechuhr)",
             "price": "867 € / Jahr",
-            "scale": "Bis zu 50 Units und 50 Dokumente.",
+            "scale": "Bis zu 50 Units, 50 Dokumente und 50 Plätze (Kollegen + Ausführende).",
             "features": [
                 "Melden und nachverfolgen per QR.",
                 "Time (Stechuhr) inklusive.",
@@ -108,7 +109,7 @@
         "winprox_100": {
             "name": "100 Units",
             "price": "699 € / Jahr",
-            "scale": "Bis zu 100 Units und 100 Dokumente.",
+            "scale": "Bis zu 100 Units, 100 Dokumente und 100 Plätze (Kollegen + Ausführende).",
             "features": [
                 "Melden und nachverfolgen per QR.",
                 "Time (Stechuhr) optional.",
@@ -118,7 +119,7 @@
         "winprox_100_time": {
             "name": "100 Units + Time (Stechuhr)",
             "price": "1.287 € / Jahr",
-            "scale": "Bis zu 100 Units und 100 Dokumente.",
+            "scale": "Bis zu 100 Units, 100 Dokumente und 100 Plätze (Kollegen + Ausführende).",
             "features": [
                 "Melden und nachverfolgen per QR.",
                 "Time (Stechuhr) inklusive.",
@@ -285,7 +286,7 @@
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
         "trial": "Testphase: 50 Units, inkl. Time (Stechuhr).",
-        "unlimited": "Alle Tarife: unbegrenzte Standorte, Benutzer und Fotos.",
+        "unlimited": "Alle Tarife: unbegrenzt Standorte und Fotos.",
         "corporate": "IoT, ESG und API: ausschließlich mit WinProx Corporate."
     },
     "contact_sales_cta": "Kontakt aufnehmen",
@@ -298,5 +299,6 @@
         "monthly": ":price / Monat",
         "hint": "Ein-, Ausstempeln und Pause. Wird auf der Jahresrechnung mitberechnet (12 × Monatspreis).",
         "public_hint": "Time (Stechuhr) optional ab :price / Monat, auf der Jahresrechnung."
-    }
+    },
+    "comparison_col_seats": "Plätze"
 }

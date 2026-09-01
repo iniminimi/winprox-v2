@@ -464,7 +464,7 @@
             "actions": [
                 {
                     "label": "Usuarios colegas",
-                    "text": "Gestione empleados administrativos que trabajan principalmente en PC. Inician sesión con correo y contraseña, o con **Iniciar sesión con Microsoft** (el correo de Microsoft debe coincidir con la cuenta WinProx existente; no se crea una cuenta nueva). Un administrador es el usuario principal que puede modificar los datos de la empresa. Administradores y empleados son ilimitados — las unidades determinan su suscripción. Los ejecutores no usan el inicio de sesión Microsoft (QR Clock Point)."
+                    "text": "Gestione empleados administrativos que trabajan principalmente en PC. Inician sesión con correo y contraseña, o con **Iniciar sesión con Microsoft** (el correo de Microsoft debe coincidir con la cuenta WinProx existente; no se crea una cuenta nueva). Un administrador es el usuario principal que puede modificar los datos de la empresa. Pueden existir varios administradores. Los colegas (admin y empleado) y los operarios comparten el límite de plazas del plan. Los operarios no usan el inicio de sesión Microsoft (QR Clock Point)."
                 }
             ]
         },

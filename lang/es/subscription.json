@@ -3,14 +3,15 @@
     "public_title": "Precios y planes",
     "public_subtitle": "Elija el número de unidades. WinProx se factura por año. Time (reloj de fichar) está incluido en la prueba, opcional después.",
     "public_register_cta": "Iniciar prueba gratuita",
-    "subtitle": "Tras el mes gratis, elija un plan. Los límites aplican a unidades y documentos (1 por unidad); ubicaciones, usuarios y fotos ilimitados.",
+    "subtitle": "Tras el mes gratis, elija un plan. Los límites aplican a units, documentos (1 por unit) y plazas (colegas + ejecutores); ubicaciones y fotos ilimitadas.",
     "plans_heading": "Planes",
-    "plans_intro": "Empiece pequeño y crezca. Cada plan WinProx incluye sedes, usuarios y fotos ilimitados. Time (reloj de fichar) es opcional.",
+    "plans_intro": "Empiece pequeño y crezca. Cada plan WinProx limita units, documentos y plazas (colegas + ejecutores). Ubicaciones y fotos ilimitadas. Time (reloj) opcional.",
     "glossary": {
-        "heading": "Unidades, documentos y fotos",
+        "heading": "Units, documentos, plazas y fotos",
         "unit": "Unidad — un objeto o lugar con código QR, como una habitación de hotel, una habitación de hospital, una impresora o un vehículo.",
         "document": "Documento — un documento disponible en el portal QR, como un manual o el reglamento interno. Máximo 1 documento por unidad.",
-        "photo": "Fotos — las fotos en avisos y tareas son ilimitadas."
+        "photo": "Fotos — las fotos en avisos y tareas son ilimitadas.",
+        "seat": "Plaza — colega con acceso (admin o empleado) o ejecutor (Clock Point, sin acceso). Cuenta en el límite del plan."
     },
     "page_limits_locations_body": "Usa :current de :max ubicaciones. \"Añadir ubicación\" permanece desactivado hasta actualizar.",
     "choose_plan": "Elegir este plan",
@@ -26,12 +27,12 @@
     "status_active": "Suscripción activa: :plan, válida hasta :date.",
     "status_grace": "Suscripción :plan finalizó el :ended. Período de gracia hasta :grace_end — :days días de acceso completo restantes.",
     "status_expired": "Su prueba ha terminado. Elija un plan abajo.",
-    "pricing_intro": "WinProx incluye un mes de prueba (50 unidades, Time reloj de fichar incluido). Después elija 10, 50 o 100 unidades al año. Time puede mantenerlo como extra.",
+    "pricing_intro": "Prueba gratis (50 units, 50 plazas, Time incluido). Luego 10, 50 o 100 units al año con igual número de plazas. Time opcional.",
     "status_module_esg": "Módulo ESG activo en su cuenta.",
     "status_module_time": "Time (reloj de fichar) está activo en su cuenta.",
     "page_limits_title": "Por qué ciertas acciones no están disponibles",
     "page_limits_units_body": "Usa :current de :max unidades. \"Añadir unidad\" permanece desactivado hasta actualizar.",
-    "page_limits_users_body": "Usa :current de :max plazas de equipo. \"Añadir usuario\" permanece desactivado.",
+    "page_limits_users_body": "Usa :current de :max plazas (colegas + ejecutores). No añada más personas hasta actualizar.",
     "page_limits_documents_body": "Su organización usa :current de :max documentos. Elimine o actualice.",
     "page_limits_photos_body": "Su organización usa :current de :max fotos. Elimine o actualice.",
     "manage_in_stripe": "Gestionar suscripción (factura, método de pago)",
@@ -53,12 +54,12 @@
     },
     "limits": {
         "units": ":count unidades",
-        "users": ":count usuarios",
+        "users": ":count plazas",
         "unlimited": "ilimitado",
         "warning_units": "Le quedan :remaining plazas de unidades.",
         "critical_units": "Límite de unidades alcanzado. Actualice su plan.",
-        "warning_users": "Le quedan :remaining plazas de usuarios.",
-        "critical_users": "Límite de usuarios alcanzado. Actualice su plan.",
+        "warning_users": "Le quedan :remaining plazas en su plan.",
+        "critical_users": "Límite de plazas alcanzado. Actualice su plan para más colegas o ejecutores.",
         "cta": "Ver suscripción"
     },
     "plans": {
@@ -68,7 +69,7 @@
         "winprox_10": {
             "name": "10 unidades",
             "price": "149 € / año",
-            "scale": "Hasta 10 unidades y 10 documentos.",
+            "scale": "Hasta 10 units, 10 documentos y 10 plazas (colegas + ejecutores).",
             "features": [
                 "Avisos y seguimiento por QR.",
                 "Time (reloj de fichar) opcional.",
@@ -78,7 +79,7 @@
         "winprox_10_time": {
             "name": "10 unidades + Time (reloj de fichar)",
             "price": "497 € / año",
-            "scale": "Hasta 10 unidades y 10 documentos.",
+            "scale": "Hasta 10 units, 10 documentos y 10 plazas (colegas + ejecutores).",
             "features": [
                 "Avisos y seguimiento por QR.",
                 "Time (reloj de fichar) incluido.",
@@ -88,7 +89,7 @@
         "winprox_50": {
             "name": "50 unidades",
             "price": "399 € / año",
-            "scale": "Hasta 50 unidades y 50 documentos.",
+            "scale": "Hasta 50 units, 50 documentos y 50 plazas (colegas + ejecutores).",
             "features": [
                 "Avisos y seguimiento por QR.",
                 "Time (reloj de fichar) opcional.",
@@ -98,7 +99,7 @@
         "winprox_50_time": {
             "name": "50 unidades + Time (reloj de fichar)",
             "price": "867 € / año",
-            "scale": "Hasta 50 unidades y 50 documentos.",
+            "scale": "Hasta 50 units, 50 documentos y 50 plazas (colegas + ejecutores).",
             "features": [
                 "Avisos y seguimiento por QR.",
                 "Time (reloj de fichar) incluido.",
@@ -108,7 +109,7 @@
         "winprox_100": {
             "name": "100 unidades",
             "price": "699 € / año",
-            "scale": "Hasta 100 unidades y 100 documentos.",
+            "scale": "Hasta 100 units, 100 documentos y 100 plazas (colegas + ejecutores).",
             "features": [
                 "Avisos y seguimiento por QR.",
                 "Time (reloj de fichar) opcional.",
@@ -118,7 +119,7 @@
         "winprox_100_time": {
             "name": "100 unidades + Time (reloj de fichar)",
             "price": "1.287 € / año",
-            "scale": "Hasta 100 unidades y 100 documentos.",
+            "scale": "Hasta 100 units, 100 documentos y 100 plazas (colegas + ejecutores).",
             "features": [
                 "Avisos y seguimiento por QR.",
                 "Time (reloj de fichar) incluido.",
@@ -285,7 +286,7 @@
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
         "trial": "Prueba: 50 unidades, Time (reloj de fichar) incluido.",
-        "unlimited": "Todos los planes: sedes, usuarios y fotos ilimitados.",
+        "unlimited": "Todos los planes: ubicaciones y fotos ilimitadas.",
         "corporate": "IoT, ESG y API: exclusivamente con WinProx Corporate."
     },
     "contact_sales_cta": "Contactar",
@@ -298,5 +299,6 @@
         "monthly": ":price / mes",
         "hint": "Entrada, salida y pausas. Se añade a la factura anual (12 × el precio mensual).",
         "public_hint": "Time (reloj de fichar) opcional desde :price / mes, en la factura anual."
-    }
+    },
+    "comparison_col_seats": "Plazas"
 }

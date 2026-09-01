@@ -472,7 +472,7 @@
             "actions": [
                 {
                     "label": "Utilisateurs collègues",
-                    "text": "Gérez les collaborateurs administratifs qui travaillent surtout sur PC. Ils se connectent par e-mail et mot de passe, ou via **Se connecter avec Microsoft** (l’e-mail Microsoft doit correspondre au compte WinProx existant ; aucun nouveau compte n’est créé). Un administrateur est l’utilisateur principal qui peut modifier les données de l’entreprise. Administrateurs et collaborateurs sont illimités — les unités déterminent votre abonnement. Les exécutants n’utilisent pas la connexion Microsoft (QR Clock Point)."
+                    "text": "Gérez les collaborateurs administratifs qui travaillent surtout sur PC. Ils se connectent par e-mail et mot de passe, ou via **Se connecter avec Microsoft** (l’e-mail Microsoft doit correspondre au compte WinProx existant ; aucun nouveau compte n’est créé). Un administrateur est l’utilisateur principal qui peut modifier les données de l’entreprise. Plusieurs administrateurs sont possibles. Les collègues (admin et employé) et les exécutants partagent la limite de places de votre formule. Les exécutants n’utilisent pas la connexion Microsoft (QR Clock Point)."
                 }
             ]
         },

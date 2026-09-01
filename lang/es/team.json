@@ -175,11 +175,12 @@
         "worker_email_max": "El correo electrónico no puede superar 255 caracteres.",
         "worker_phone_max": "El número de teléfono no puede superar 50 caracteres.",
         "worker_company_name_max": "El nombre de la empresa no puede superar 120 caracteres.",
-        "user_limit": "Ha alcanzado el límite de usuarios de su plan. Actualice su suscripción para añadir más colegas.",
+        "user_limit": "Límite de plazas alcanzado (colegas + ejecutores). Actualice su suscripción.",
         "import_file_required": "Seleccione un archivo CSV para importar.",
         "import_file_type": "El archivo debe ser un CSV.",
         "import_file_max": "El archivo no puede superar 10 MB.",
-        "translation_requires_active": "Las traducciones solo están disponibles para equipos activos."
+        "translation_requires_active": "Las traducciones solo están disponibles para equipos activos.",
+        "seat_limit": "Límite de plazas alcanzado (colegas + ejecutores). Actualice su suscripción."
     },
     "checklists": {
         "click_to_manage": "Haga clic aquí para gestionar las listas de comprobación"

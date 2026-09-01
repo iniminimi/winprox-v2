@@ -464,7 +464,7 @@
             "actions": [
                 {
                     "label": "Colleague users",
-                    "text": "Manage administrative staff who mainly work on a PC. They sign in with email and password, or via **Sign in with Microsoft** (the Microsoft email must match the existing WinProx account; no new account is created). An administrator is the main user who can change company details. Administrators and staff are unlimited — units determine your subscription. Workers do not use Microsoft sign-in (Clock Point QR)."
+                    "text": "Manage administrative staff who mainly work on a PC. They sign in with email and password, or via **Sign in with Microsoft** (the Microsoft email must match the existing WinProx account; no new account is created). An administrator is the main user who can change company details. Multiple administrators are allowed. Colleagues (admin and employee) and workers share the seat limit of your plan. Workers do not use Microsoft sign-in (Clock Point QR)."
                 }
             ]
         },

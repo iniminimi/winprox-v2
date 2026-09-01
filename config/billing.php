@@ -11,11 +11,12 @@
  * geen self-activate). Limits/entitlements blijven werken.
  *
  *  - Units bepalen de schaal; documenten = units (1 per unit).
- *  - Locaties en gebruikers: altijd onbeperkt.
+ *  - Seats = actieve login-users (admin + medewerker) + actieve workers (1:1 met units per tier).
+ *  - Locaties: altijd onbeperkt.
  *  - Foto's: altijd onbeperkt.
  *  - Time: optionele prikklok (niet inbegrepen in WinProx; wél in de proefperiode).
  *  - IoT + ESG + API: uitsluitend Corporate.
- *  - Trial: tot 50 units, Time inbegrepen, geen IoT/ESG/API.
+ *  - Trial: tot 50 units en 50 plaatsen, Time inbegrepen, geen IoT/ESG/API.
  *  - Corporate: afgesproken units via `tenants.billing_units_cap` (superuser).
  */
 
@@ -24,6 +25,7 @@ $winproxShared = static function (int $units): array {
         'units_limit'            => $units,
         'locations_limit'        => null,
         'users_limit'            => null,
+        'seats_limit'            => $units,
         'documents_org_limit'    => $units,
         'photos_org_limit'       => null,
         'documents_per_unit'     => null,
@@ -68,6 +70,7 @@ $legacyFacility = static function (int $units, bool $iotEsg): array {
         'units_limit'            => $units,
         'locations_limit'        => null,
         'users_limit'            => null,
+        'seats_limit'            => null,
         'documents_org_limit'    => $units,
         'photos_org_limit'       => null,
         'documents_per_unit'     => null,
@@ -116,6 +119,7 @@ return [
         'units_limit'            => 50,
         'locations_limit'        => null,
         'users_limit'            => null,
+        'seats_limit'            => 50,
         'documents_org_limit'    => 50,
         'photos_org_limit'       => null,
         'documents_per_unit'     => null,
@@ -148,6 +152,7 @@ return [
                 'units_limit'            => null,
                 'locations_limit'        => null,
                 'users_limit'            => null,
+                'seats_limit'            => null,
                 'documents_org_limit'    => null,
                 'photos_org_limit'       => null,
                 'documents_per_unit'     => null,

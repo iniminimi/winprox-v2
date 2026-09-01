@@ -48,37 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Hoeveel kost WinProx?",
-            "intro": "U start met een gratis proefmaand (50 units, inclusief Time-prikklok). IoT, ESG en API zitten niet in de proef. Daarna kiest u 10, 50 of 100 units per jaar. Time (prikklok) is daarna optioneel. Corporate is op maat (meer dan 100 units of wanneer API/webhooks nodig zijn).",
-            "summary": "Proefperiode tot 50 units, inclusief Time (prikklok). IoT, ESG en API op Corporate. Daarna 10/50/100 per jaar.",
-            "content_note": "Unit = object of plaats met QR. Document = bestand op het QR-portaal, maximaal 1 per unit. Foto's bij meldingen zijn onbeperkt. Exacte prijzen staan onder Abonnement.",
+            "intro": "U start met een gratis proefmaand (50 units, 50 plaatsen, inclusief Time-prikklok). IoT, ESG en API zitten niet in de proef. Daarna kiest u 10, 50 of 100 units per jaar met evenveel plaatsen. Time (prikklok) is daarna optioneel. Corporate is op maat (meer dan 100 units of wanneer API/webhooks nodig zijn).",
+            "summary": "Proefperiode tot 50 units en 50 plaatsen, inclusief Time (prikklok). IoT, ESG en API op Corporate. Daarna 10/50/100 per jaar.",
+            "content_note": "Unit = object of plaats met QR. Document = bestand op het QR-portaal, maximaal 1 per unit. Plaats = collega met login of uitvoerder (Clock Point). Foto's bij meldingen zijn onbeperkt. Exacte prijzen staan onder Abonnement.",
             "plans": {
                 "winprox_10": {
                     "units": "Tot 10 units en 10 documenten.",
                     "announcements": "€149 / jaar",
                     "documents": "Melden en opvolgen via QR. · Time (prikklok) optioneel. · Geen IoT, ESG of API.",
                     "description": "Melden en opvolgen via QR.",
-                    "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
+                    "users": "Tot 10 plaatsen (collega's + uitvoerders); onbeperkt locaties en foto's bij meldingen"
                 },
                 "winprox_50": {
                     "units": "Tot 50 units en 50 documenten.",
                     "announcements": "€399 / jaar",
                     "documents": "Melden en opvolgen via QR. · Time (prikklok) optioneel. · Geen IoT, ESG of API.",
                     "description": "Melden en opvolgen via QR.",
-                    "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
+                    "users": "Tot 50 plaatsen (collega's + uitvoerders); onbeperkt locaties en foto's bij meldingen"
                 },
                 "winprox_100": {
                     "units": "Tot 100 units en 100 documenten.",
                     "announcements": "€699 / jaar",
                     "documents": "Melden en opvolgen via QR. · Time (prikklok) optioneel. · Geen IoT, ESG of API.",
                     "description": "Melden en opvolgen via QR.",
-                    "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
+                    "users": "Tot 100 plaatsen (collega's + uitvoerders); onbeperkt locaties en foto's bij meldingen"
                 },
                 "corporate": {
                     "units": "Meer dan 100 units, of API/webhooks/integraties nodig.",
                     "announcements": "Prijs op maat",
                     "documents": "Time (prikklok), IoT Connect en ESG inbegrepen.",
                     "description": "Voor >1.000 units of wanneer API/webhooks/integraties nodig zijn.",
-                    "users": "Onbeperkt locaties, gebruikers en foto's bij meldingen"
+                    "users": "Plaatsen op maat; onbeperkt locaties en foto's bij meldingen"
                 }
             }
         },

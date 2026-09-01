@@ -48,37 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Was kostet WinProx?",
-            "intro": "Sie starten mit einem kostenlosen Testmonat (50 Units, inkl. Time-Stechuhr). IoT, ESG und API sind nicht in der Testphase. Danach wählen Sie 10, 50 oder 100 Units pro Jahr. Time (Stechuhr) ist danach optional. Corporate ist maßgeschneidert (mehr als 100 Units oder API/Webhooks).",
-            "summary": "Test bis 50 Units, inkl. Time (Stechuhr). IoT, ESG und API bei Corporate. Danach 10/50/100 pro Jahr.",
-            "content_note": "Unit = Objekt oder Ort mit QR. Dokument = Datei im QR-Portal, maximal 1 pro Unit. Fotos bei Meldungen unbegrenzt. Genaue Preise stehen unter Abo.",
+            "intro": "Gratis-Probe (50 Units, 50 Plätze, Time inklusive). IoT, ESG und API nicht in der Probe. Dann 10, 50 oder 100 Units pro Jahr mit gleicher Platzanzahl. Time optional. Corporate individuell.",
+            "summary": "Probe bis 50 Units und 50 Plätze, Time inklusive. IoT, ESG und API auf Corporate.",
+            "content_note": "Unit = Objekt oder Ort mit QR. Dokument = Datei im QR-Portal, max. 1 pro Unit. Platz = Kollege mit Login oder Ausführender (Clock Point). Fotos unbegrenzt.",
             "plans": {
                 "winprox_10": {
                     "units": "Bis zu 10 Units und 10 Dokumente.",
                     "announcements": "149 € / Jahr",
                     "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
                     "description": "Melden und nachverfolgen per QR.",
-                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
+                    "users": "Bis zu 10 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
                 },
                 "winprox_50": {
                     "units": "Bis zu 50 Units und 50 Dokumente.",
                     "announcements": "399 € / Jahr",
                     "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
                     "description": "Melden und nachverfolgen per QR.",
-                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
+                    "users": "Bis zu 50 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
                 },
                 "winprox_100": {
                     "units": "Bis zu 100 Units und 100 Dokumente.",
                     "announcements": "699 € / Jahr",
                     "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
                     "description": "Melden und nachverfolgen per QR.",
-                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
+                    "users": "Bis zu 100 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
                 },
                 "corporate": {
                     "units": "Mehr als 100 Units oder API/Webhooks/Integrationen erforderlich.",
                     "announcements": "Individueller Preis",
                     "documents": "Time (Stechuhr), IoT Connect und ESG inklusive.",
                     "description": "Für >1.000 Einheiten oder bei Bedarf an API/Webhooks/Integrationen.",
-                    "users": "Unbegrenzt Standorte, Benutzer und Fotos bei Meldungen"
+                    "users": "Plätze nach Vereinbarung; unbegrenzt Standorte und Fotos"
                 }
             }
         },

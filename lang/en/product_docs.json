@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Each organisation has its own environment with limits per plan (WinProx 10/50/100 + Corporate)."
+                "body": "Each organisation has its own environment with limits per plan (WinProx 10/50/100 + Corporate): units, documents and seats (colleagues + workers)."
             },
             {
                 "title": "Branding & QR",

@@ -194,8 +194,8 @@ class Team extends Component
         }
 
         $tenant = Tenant::query()->findOrFail(Tenancy::id());
-        if (! $tenant->canAddUser()) {
-            $this->addError('colleagueCreate', __('team.errors.user_limit'));
+        if (! $tenant->canAddSeat()) {
+            $this->addError('colleagueCreate', __('team.errors.seat_limit'));
             return;
         }
 
@@ -239,8 +239,8 @@ class Team extends Component
             try {
                 $createColleague->handle($validated, (int) Tenancy::id(), (int) auth()->id());
             } catch (InvalidArgumentException $e) {
-                if ($e->getMessage() === 'user_limit_exceeded') {
-                    $this->addError('colleagueEmail', __('team.errors.user_limit'));
+                if (in_array($e->getMessage(), ['seat_limit_exceeded', 'user_limit_exceeded'], true)) {
+                    $this->addError('colleagueEmail', __('team.errors.seat_limit'));
 
                     return;
                 }
@@ -353,7 +353,14 @@ class Team extends Component
 
         $user = User::where('tenant_id', Tenancy::id())->findOrFail($id);
         $this->authorize('update', $user);
-        $setActive->handle($user, $active, (int) auth()->id());
+
+        try {
+            $setActive->handle($user, $active, (int) auth()->id());
+        } catch (InvalidArgumentException $e) {
+            if ($e->getMessage() === 'seat_limit_exceeded') {
+                $this->addError('colleagueCreate', __('team.errors.seat_limit'));
+            }
+        }
     }
 
     public function cancelColleague(): void
@@ -665,6 +672,13 @@ class Team extends Component
 
         $this->expandTeam($teamId);
         $this->addingWorkerTeamId = $teamId;
+
+        $tenant = Tenant::query()->findOrFail(Tenancy::id());
+        if (! $tenant->canAddSeat()) {
+            $this->addError('workerFirstName', __('team.errors.seat_limit'));
+            return;
+        }
+
         $this->editingWorkerId = null;
         $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName']);
         $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName']);
@@ -738,14 +752,24 @@ class Team extends Component
                 ],
             );
 
-            $createWorker->handle($team, [
-                'first_name' => $validated['workerFirstName'],
-                'last_name' => $validated['workerLastName'],
-                'email' => $validated['workerEmail'] ?? null,
-                'phone' => $validated['workerPhone'] ?? null,
-                'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
-                'company_name' => $validated['workerCompanyName'] ?? null,
-            ], (int) auth()->id());
+            try {
+                $createWorker->handle($team, [
+                    'first_name' => $validated['workerFirstName'],
+                    'last_name' => $validated['workerLastName'],
+                    'email' => $validated['workerEmail'] ?? null,
+                    'phone' => $validated['workerPhone'] ?? null,
+                    'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
+                    'company_name' => $validated['workerCompanyName'] ?? null,
+                ], (int) auth()->id());
+            } catch (InvalidArgumentException $e) {
+                if ($e->getMessage() === 'seat_limit_exceeded') {
+                    $this->addError('workerFirstName', __('team.errors.seat_limit'));
+
+                    return;
+                }
+
+                throw $e;
+            }
         }
 
         $this->cancelWorkerModal();
@@ -780,7 +804,14 @@ class Team extends Component
     public function setWorkerActive(int $workerId, bool $active, SetWorkerActiveAction $setActive): void
     {
         $worker = $this->authorizedWorker($workerId);
-        $setActive->handle($worker, $active, (int) auth()->id());
+
+        try {
+            $setActive->handle($worker, $active, (int) auth()->id());
+        } catch (InvalidArgumentException $e) {
+            if ($e->getMessage() === 'seat_limit_exceeded') {
+                $this->addError('workerFirstName', __('team.errors.seat_limit'));
+            }
+        }
     }
 
     public function setWorkerTeamleader(int $workerId, bool $isTeamleader, SetWorkerTeamleaderAction $setTeamleader): void

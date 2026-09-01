@@ -175,11 +175,12 @@
         "worker_email_max": "The email address may not exceed 255 characters.",
         "worker_phone_max": "The phone number may not exceed 50 characters.",
         "worker_company_name_max": "The company name may not exceed 120 characters.",
-        "user_limit": "Your plan user limit has been reached. Upgrade your subscription to add more colleagues.",
+        "user_limit": "Your plan seat limit has been reached (colleagues + workers). Upgrade your subscription.",
         "import_file_required": "Please select a CSV file to import.",
         "import_file_type": "The file must be a CSV file.",
         "import_file_max": "The file may not be larger than 10MB.",
-        "translation_requires_active": "Translations are only available for active teams."
+        "translation_requires_active": "Translations are only available for active teams.",
+        "seat_limit": "Your plan seat limit has been reached (colleagues + workers). Upgrade your subscription."
     },
     "checklists": {
         "click_to_manage": "Click here to manage checklists"

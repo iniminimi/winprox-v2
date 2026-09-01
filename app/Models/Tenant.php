@@ -501,12 +501,26 @@ class Tenant extends Model
         return Unit::query()->withoutGlobalScopes()->where('tenant_id', $this->id)->count();
     }
 
+    public function currentSeatsCount(): int
+    {
+        $users = $this->users()
+            ->where('is_superuser', false)
+            ->where('is_active', true)
+            ->count();
+
+        $workers = Worker::query()
+            ->withoutGlobalScopes()
+            ->where('tenant_id', $this->id)
+            ->where('is_active', true)
+            ->count();
+
+        return $users + $workers;
+    }
+
+    /** @deprecated Gebruik {@see currentSeatsCount()} — telt collega's (admin + medewerker) + workers. */
     public function currentUsersCount(): int
     {
-        return $this->users()
-            ->where('is_superuser', false)
-            ->where('role', '!=', User::ROLE_ADMIN)
-            ->count();
+        return $this->currentSeatsCount();
     }
 
     public function effectivePlanKey(): ?string
@@ -603,9 +617,15 @@ class Tenant extends Model
     }
 
     /** null = onbeperkt (legacy of enterprise). */
+    public function maxSeatsLimit(): ?int
+    {
+        return $this->billingLimitValue('seats_limit');
+    }
+
+    /** @deprecated Gebruik {@see maxSeatsLimit()}. */
     public function maxUsersLimit(): ?int
     {
-        return $this->billingLimitValue('users_limit');
+        return $this->maxSeatsLimit();
     }
 
     /** null = onbeperkt (legacy of enterprise). */
@@ -798,14 +818,20 @@ class Tenant extends Model
         return is_int($max) ? $max : (is_numeric($max) ? (int) $max : null);
     }
 
-    public function remainingUserSlots(): ?int
+    public function remainingSeatSlots(): ?int
     {
-        $max = $this->maxUsersLimit();
+        $max = $this->maxSeatsLimit();
         if ($max === null) {
             return null;
         }
 
-        return max(0, $max - $this->currentUsersCount());
+        return max(0, $max - $this->currentSeatsCount());
+    }
+
+    /** @deprecated Gebruik {@see remainingSeatSlots()}. */
+    public function remainingUserSlots(): ?int
+    {
+        return $this->remainingSeatSlots();
     }
 
     public function isAtUnitLimit(): bool
@@ -815,11 +841,17 @@ class Tenant extends Model
         return $remaining !== null && $remaining === 0;
     }
 
-    public function canAddUser(): bool
+    public function canAddSeat(): bool
     {
-        $remaining = $this->remainingUserSlots();
+        $remaining = $this->remainingSeatSlots();
 
         return $remaining === null || $remaining > 0;
+    }
+
+    /** @deprecated Gebruik {@see canAddSeat()}. */
+    public function canAddUser(): bool
+    {
+        return $this->canAddSeat();
     }
 
     /** null = geen limiet of ruim voldoende; warning | critical */
@@ -832,12 +864,18 @@ class Tenant extends Model
     }
 
     /** null = geen limiet of ruim voldoende; warning | critical */
-    public function userLimitWarning(): ?string
+    public function seatLimitWarning(): ?string
     {
         return $this->limitWarningLevel(
-            $this->remainingUserSlots(),
-            $this->maxUsersLimit(),
+            $this->remainingSeatSlots(),
+            $this->maxSeatsLimit(),
         );
+    }
+
+    /** @deprecated Gebruik {@see seatLimitWarning()}. */
+    public function userLimitWarning(): ?string
+    {
+        return $this->seatLimitWarning();
     }
 
     private function limitWarningLevel(?int $remaining, ?int $max): ?string
@@ -859,16 +897,22 @@ class Tenant extends Model
         return null;
     }
 
-    public function assertCanAddUsers(int $count): void
+    public function assertCanAddSeats(int $count): void
     {
-        $remaining = $this->remainingUserSlots();
+        $remaining = $this->remainingSeatSlots();
         if ($remaining === null) {
             return;
         }
 
         if ($count > $remaining) {
-            throw new \InvalidArgumentException('user_limit_exceeded');
+            throw new \InvalidArgumentException('seat_limit_exceeded');
         }
+    }
+
+    /** @deprecated Gebruik {@see assertCanAddSeats()}. */
+    public function assertCanAddUsers(int $count): void
+    {
+        $this->assertCanAddSeats($count);
     }
 
     /** Absoluut pad voor QR-centrelogo (organisatie of WinProx-fallback). */

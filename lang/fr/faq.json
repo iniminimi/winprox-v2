@@ -48,37 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Combien coûte WinProx ?",
-            "intro": "Vous commencez par un mois d'essai gratuit (50 unités, Time pointeuse incluse). IoT, ESG et API ne sont pas dans l'essai. Ensuite, choisissez 10, 50 ou 100 unités par an. Time (pointeuse) est optionnel ensuite. Corporate est sur mesure (plus de 100 unités ou API/webhooks).",
-            "summary": "Essai jusqu'à 50 unités, Time (pointeuse) inclus. IoT, ESG et API en Corporate. Puis 10/50/100 par an.",
-            "content_note": "Unité = objet ou lieu avec QR. Document = fichier sur le portail QR, maximum 1 par unité. Photos sur les signalements illimitées. Les prix exacts sont sous Abonnement.",
+            "intro": "Essai gratuit d'un mois (50 unités, 50 places, Time inclus). IoT, ESG et API hors essai. Puis 10, 50 ou 100 unités par an avec autant de places. Time en option. Corporate sur mesure.",
+            "summary": "Essai jusqu'à 50 unités et 50 places, Time inclus. IoT, ESG et API sur Corporate.",
+            "content_note": "Unité = objet ou lieu avec QR. Document = fichier sur le portail QR, max. 1 par unité. Place = collègue connecté ou exécutant (Clock Point). Photos illimitées.",
             "plans": {
                 "winprox_10": {
                     "units": "Jusqu'à 10 unités et 10 documents.",
                     "announcements": "149 € / an",
                     "documents": "Signaler et suivre via QR. · Time (pointeuse) en option. · Pas d'IoT, ESG ni API.",
                     "description": "Signaler et suivre via QR.",
-                    "users": "Sites, utilisateurs et photos sur signalements illimités"
+                    "users": "Jusqu'à 10 places (collègues + exécutants) ; emplacements et photos illimités"
                 },
                 "winprox_50": {
                     "units": "Jusqu'à 50 unités et 50 documents.",
                     "announcements": "399 € / an",
                     "documents": "Signaler et suivre via QR. · Time (pointeuse) en option. · Pas d'IoT, ESG ni API.",
                     "description": "Signaler et suivre via QR.",
-                    "users": "Sites, utilisateurs et photos sur signalements illimités"
+                    "users": "Jusqu'à 50 places (collègues + exécutants) ; emplacements et photos illimités"
                 },
                 "winprox_100": {
                     "units": "Jusqu'à 100 unités et 100 documents.",
                     "announcements": "699 € / an",
                     "documents": "Signaler et suivre via QR. · Time (pointeuse) en option. · Pas d'IoT, ESG ni API.",
                     "description": "Signaler et suivre via QR.",
-                    "users": "Sites, utilisateurs et photos sur signalements illimités"
+                    "users": "Jusqu'à 100 places (collègues + exécutants) ; emplacements et photos illimités"
                 },
                 "corporate": {
                     "units": "Plus de 100 unités, ou API/webhooks/intégrations nécessaires.",
                     "announcements": "Tarif sur mesure",
                     "documents": "Time (pointeuse), IoT Connect et ESG inclus.",
                     "description": "Pour >1 000 unités ou si API/webhooks/intégrations requis.",
-                    "users": "Sites, utilisateurs et photos sur signalements illimités"
+                    "users": "Places sur mesure ; emplacements et photos illimités"
                 }
             }
         },

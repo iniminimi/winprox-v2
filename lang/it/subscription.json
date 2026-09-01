@@ -3,14 +3,15 @@
     "public_title": "Prezzi e piani",
     "public_subtitle": "Scegli il numero di unit. WinProx è annuale. Time (timbratrice) è inclusa nella prova, opzionale dopo.",
     "public_register_cta": "Inizia prova gratuita",
-    "subtitle": "Dopo il mese gratuito, scegli un piano. I limiti valgono per unità e documenti (1 per unità); sedi, utenti e foto illimitati.",
+    "subtitle": "Dopo il mese gratuito, scegli un piano. I limiti valgono per unit, documenti (1 per unit) e posti (colleghi + esecutori); sedi e foto illimitati.",
     "plans_heading": "Piani",
-    "plans_intro": "Inizia in piccolo e cresci. Ogni piano WinProx include sedi, utenti e foto illimitati. Time (timbratrice) è opzionale.",
+    "plans_intro": "Inizia in piccolo e cresci. Ogni piano WinProx limita unit, documenti e posti (colleghi + esecutori). Sedi e foto illimitati. Time (timbratrice) opzionale.",
     "glossary": {
-        "heading": "Unit, documenti e foto",
+        "heading": "Unit, documenti, posti e foto",
         "unit": "Unit — un oggetto o un luogo con codice QR, come una camera d’albergo, una stanza d’ospedale, una stampante o un veicolo.",
         "document": "Documento — un documento disponibile sul portale QR, come un manuale o il regolamento interno. Massimo 1 documento per unit.",
-        "photo": "Foto — le foto su segnalazioni e compiti sono illimitate."
+        "photo": "Foto — le foto su segnalazioni e compiti sono illimitate.",
+        "seat": "Posto — collega con accesso (admin o dipendente) o esecutore (Clock Point, senza accesso). Conta nel limite del piano."
     },
     "page_limits_locations_body": "Stai usando :current di :max sedi. \"Aggiungi sede\" resta disabilitato fino all'upgrade.",
     "choose_plan": "Scegli questo piano",
@@ -26,12 +27,12 @@
     "status_active": "Abbonamento attivo: :plan, valido fino al :date.",
     "status_grace": "Abbonamento :plan terminato il :ended. Periodo di grazia fino al :grace_end — :days giorni di accesso completo rimasti.",
     "status_expired": "La prova è terminata. Scegli un piano qui sotto.",
-    "pricing_intro": "WinProx include un mese di prova (50 unit, Time timbratrice inclusa). Poi scegli 10, 50 o 100 unit all'anno. Time resta opzionale dopo la prova.",
+    "pricing_intro": "Prova gratuita (50 unit, 50 posti, Time incluso). Poi 10, 50 o 100 unit all'anno con lo stesso numero di posti. Time opzionale.",
     "status_module_esg": "Modulo ESG attivo sul tuo account.",
     "status_module_time": "Time (timbratrice) è attivo sul tuo account.",
     "page_limits_title": "Perché alcune azioni non sono disponibili",
     "page_limits_units_body": "Stai usando :current di :max unità. \"Aggiungi unità\" resta disabilitato fino all'upgrade.",
-    "page_limits_users_body": "Stai usando :current di :max posti team. \"Aggiungi utente\" resta disabilitato.",
+    "page_limits_users_body": "Stai usando :current di :max posti (colleghi + esecutori). Non aggiungere persone finché non aggiorni.",
     "page_limits_documents_body": "La tua organizzazione usa :current di :max documenti. Elimina o aggiorna.",
     "page_limits_photos_body": "La tua organizzazione usa :current di :max foto. Elimina o aggiorna.",
     "manage_in_stripe": "Gestisci abbonamento (fattura, metodo di pagamento)",
@@ -53,12 +54,12 @@
     },
     "limits": {
         "units": ":count unità",
-        "users": ":count utenti",
+        "users": ":count posti",
         "unlimited": "illimitato",
         "warning_units": "Hai ancora :remaining posti unità.",
         "critical_units": "Limite unità raggiunto. Aggiorna il piano.",
-        "warning_users": "Hai ancora :remaining posti utenti.",
-        "critical_users": "Limite utenti raggiunto. Aggiorna il piano.",
+        "warning_users": "Hai ancora :remaining posti sul piano.",
+        "critical_users": "Limite posti raggiunto. Aggiorna il piano per altri colleghi o esecutori.",
         "cta": "Vedi abbonamento"
     },
     "plans": {
@@ -68,7 +69,7 @@
         "winprox_10": {
             "name": "10 unit",
             "price": "149 € / anno",
-            "scale": "Fino a 10 unit e 10 documenti.",
+            "scale": "Fino a 10 unit, 10 documenti e 10 posti (colleghi + esecutori).",
             "features": [
                 "Segnalazioni e follow-up via QR.",
                 "Time (timbratrice) opzionale.",
@@ -78,7 +79,7 @@
         "winprox_10_time": {
             "name": "10 unit + Time (timbratrice)",
             "price": "497 € / anno",
-            "scale": "Fino a 10 unit e 10 documenti.",
+            "scale": "Fino a 10 unit, 10 documenti e 10 posti (colleghi + esecutori).",
             "features": [
                 "Segnalazioni e follow-up via QR.",
                 "Time (timbratrice) incluso.",
@@ -88,7 +89,7 @@
         "winprox_50": {
             "name": "50 unit",
             "price": "399 € / anno",
-            "scale": "Fino a 50 unit e 50 documenti.",
+            "scale": "Fino a 50 unit, 50 documenti e 50 posti (colleghi + esecutori).",
             "features": [
                 "Segnalazioni e follow-up via QR.",
                 "Time (timbratrice) opzionale.",
@@ -98,7 +99,7 @@
         "winprox_50_time": {
             "name": "50 unit + Time (timbratrice)",
             "price": "867 € / anno",
-            "scale": "Fino a 50 unit e 50 documenti.",
+            "scale": "Fino a 50 unit, 50 documenti e 50 posti (colleghi + esecutori).",
             "features": [
                 "Segnalazioni e follow-up via QR.",
                 "Time (timbratrice) incluso.",
@@ -108,7 +109,7 @@
         "winprox_100": {
             "name": "100 unit",
             "price": "699 € / anno",
-            "scale": "Fino a 100 unit e 100 documenti.",
+            "scale": "Fino a 100 unit, 100 documenti e 100 posti (colleghi + esecutori).",
             "features": [
                 "Segnalazioni e follow-up via QR.",
                 "Time (timbratrice) opzionale.",
@@ -118,7 +119,7 @@
         "winprox_100_time": {
             "name": "100 unit + Time (timbratrice)",
             "price": "1.287 € / anno",
-            "scale": "Fino a 100 unit e 100 documenti.",
+            "scale": "Fino a 100 unit, 100 documenti e 100 posti (colleghi + esecutori).",
             "features": [
                 "Segnalazioni e follow-up via QR.",
                 "Time (timbratrice) incluso.",
@@ -285,7 +286,7 @@
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
         "trial": "Prova: 50 unit, Time (timbratrice) inclusa.",
-        "unlimited": "Tutti i piani: sedi, utenti e foto illimitati.",
+        "unlimited": "Tutti i piani: sedi e foto illimitati.",
         "corporate": "IoT, ESG e API: esclusivamente con WinProx Corporate."
     },
     "contact_sales_cta": "Contattaci",
@@ -298,5 +299,6 @@
         "monthly": ":price / mese",
         "hint": "Entrata, uscita e pause. Incluso nella fattura annuale (12 × il prezzo mensile).",
         "public_hint": "Time (timbratrice) opzionale da :price / mese, sulla fattura annuale."
-    }
+    },
+    "comparison_col_seats": "Posti"
 }

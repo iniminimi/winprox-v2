@@ -165,6 +165,7 @@
             <ul class="wp-billing-status-list">
                 <li>{{ __('subscription.glossary.unit') }}</li>
                 <li>{{ __('subscription.glossary.document') }}</li>
+                <li>{{ __('subscription.glossary.seat') }}</li>
                 <li>{{ __('subscription.glossary.photo') }}</li>
             </ul>
         </header>
@@ -180,6 +181,7 @@
                                 <th scope="col">{{ __('subscription.comparison_col_price') }}</th>
                                 <th scope="col">{{ __('subscription.comparison_col_units') }}</th>
                                 <th scope="col">{{ __('subscription.comparison_col_documents') }}</th>
+                                <th scope="col">{{ __('subscription.comparison_col_seats') }}</th>
                                 <th scope="col">{{ __('subscription.comparison_col_time') }}</th>
                                 <th scope="col">{{ __('subscription.comparison_col_api') }}</th>
                             </tr>
@@ -190,6 +192,7 @@
                                 <td>{{ __('subscription.comparison_trial_price') }}</td>
                                 <td>50</td>
                                 <td>50</td>
+                                <td>50</td>
                                 <td>{{ __('subscription.comparison_included') }}</td>
                                 <td>{{ __('subscription.comparison_no') }}</td>
                             </tr>
@@ -198,6 +201,7 @@
                                     $planConfig = config("billing.plans.{$planKey}", []);
                                     $unitsLimit = $planConfig['units_limit'] ?? null;
                                     $docsLimit = $planConfig['documents_org_limit'] ?? null;
+                                    $seatsLimit = $planConfig['seats_limit'] ?? null;
                                     $hasTimeVariant = is_string($planConfig['time_variant'] ?? null);
                                 @endphp
                                 <tr>
@@ -213,6 +217,13 @@
                                     <td>
                                         @if ($docsLimit !== null)
                                             {{ number_format((int) $docsLimit, 0, ',', '.') }}
+                                        @else
+                                            {{ __('subscription.comparison_custom') }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($seatsLimit !== null)
+                                            {{ number_format((int) $seatsLimit, 0, ',', '.') }}
                                         @else
                                             {{ __('subscription.comparison_custom') }}
                                         @endif
