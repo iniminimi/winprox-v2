@@ -152,8 +152,10 @@
         },
         "active": "Active",
         "photo": "Photo",
-        "photo_hint": "Optional portrait photo (automatically resized). Shown in Time → Presence, Workers and Teams.",
-        "photo_remove": "Remove photo"
+        "photo_hint": "Optional portrait photo: choose a crop (e.g. the face), then it is resized automatically. Shown in Time → Presence, Workers and Teams.",
+        "photo_remove": "Remove photo",
+        "photo_crop_title": "Crop photo",
+        "photo_crop_apply": "Use selection"
     },
     "import_history": {
         "title": "Recent imports",

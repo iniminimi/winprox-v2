@@ -152,8 +152,10 @@
         },
         "active": "Actif",
         "photo": "Photo",
-        "photo_hint": "Photo portrait optionnelle (redimensionnée automatiquement). Affichée dans Time → Présence, Exécutants et Équipes.",
-        "photo_remove": "Supprimer la photo"
+        "photo_hint": "Photo portrait optionnelle : choisissez un cadrage (p. ex. le visage), puis redimensionnement automatique. Affichée dans Time → Présence, Exécutants et Équipes.",
+        "photo_remove": "Supprimer la photo",
+        "photo_crop_title": "Recadrer la photo",
+        "photo_crop_apply": "Utiliser la sélection"
     },
     "import_history": {
         "title": "Imports récents",

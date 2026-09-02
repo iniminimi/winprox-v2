@@ -3332,6 +3332,58 @@ svg.wp-release-worker-row__icon,
     gap: 0.75rem;
 }
 
+.wp-worker-photo-crop {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: color-mix(in srgb, var(--wp-text) 45%, transparent);
+}
+
+.wp-worker-photo-crop__panel {
+    width: min(28rem, 100%);
+    max-height: min(90vh, 40rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+.wp-worker-photo-crop__head {
+    flex-shrink: 0;
+}
+
+.wp-worker-photo-crop__stage {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 16rem;
+    max-height: 24rem;
+    overflow: hidden;
+    background: var(--wp-surface-2);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+}
+
+.wp-worker-photo-crop__image {
+    display: block;
+    max-width: 100%;
+}
+
+.wp-worker-photo-crop__stage .cropper-view-box,
+.wp-worker-photo-crop__stage .cropper-face {
+    border-radius: 50%;
+}
+
+.wp-worker-photo-crop__foot {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
 .wp-worker-avatar {
     display: inline-flex;
     align-items: center;

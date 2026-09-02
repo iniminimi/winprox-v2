@@ -152,8 +152,10 @@
         },
         "active": "Aktiv",
         "photo": "Foto",
-        "photo_hint": "Optionales Porträtfoto (wird automatisch verkleinert). Angezeigt unter Time → Anwesenheit, Ausführende und Teams.",
-        "photo_remove": "Foto entfernen"
+        "photo_hint": "Optionales Porträtfoto: Ausschnitt wählen (z. B. Gesicht), danach automatische Verkleinerung. Angezeigt unter Time → Anwesenheit, Ausführende und Teams.",
+        "photo_remove": "Foto entfernen",
+        "photo_crop_title": "Foto zuschneiden",
+        "photo_crop_apply": "Auswahl verwenden"
     },
     "import_history": {
         "title": "Letzte Imports",

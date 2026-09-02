@@ -152,8 +152,10 @@
         },
         "active": "Activo",
         "photo": "Foto",
-        "photo_hint": "Foto de retrato opcional (se redimensiona automáticamente). Se muestra en Time → Presencia, Operarios y Equipos.",
-        "photo_remove": "Eliminar foto"
+        "photo_hint": "Foto de retrato opcional: elige un recorte (p. ej. el rostro) y se redimensiona automáticamente. Se muestra en Time → Presencia, Operarios y Equipos.",
+        "photo_remove": "Eliminar foto",
+        "photo_crop_title": "Recortar foto",
+        "photo_crop_apply": "Usar selección"
     },
     "import_history": {
         "title": "Importaciones recientes",

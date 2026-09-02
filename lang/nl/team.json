@@ -152,8 +152,10 @@
         },
         "active": "Actief",
         "photo": "Foto",
-        "photo_hint": "Optionele portretfoto (wordt automatisch verkleind). Getoond in Time → Aanwezigheid, Uitvoerders en Teams.",
-        "photo_remove": "Foto verwijderen"
+        "photo_hint": "Optionele portretfoto: kies een uitsnede (bijv. gezicht), daarna wordt die automatisch verkleind. Getoond in Time → Aanwezigheid, Uitvoerders en Teams.",
+        "photo_remove": "Foto verwijderen",
+        "photo_crop_title": "Foto bijsnijden",
+        "photo_crop_apply": "Gebruik selectie"
     },
     "import_history": {
         "title": "Recente imports",

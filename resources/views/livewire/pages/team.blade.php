@@ -432,10 +432,29 @@
                                     x-on:change="
                                         const input = $event.target;
                                         const file = input.files?.[0];
-                                        if (!file || typeof window.wpCompressImageFile !== 'function') {
+                                        if (!file) {
                                             return;
                                         }
-                                        window.wpCompressImageFile(file, { maxDimension: 400, quality: 0.8 }).then((compressed) => {
+                                        const crop = typeof window.wpCropImageFile === 'function'
+                                            ? window.wpCropImageFile(file, {
+                                                aspectRatio: 1,
+                                                title: @js(__('team.workers.photo_crop_title')),
+                                                applyLabel: @js(__('team.workers.photo_crop_apply')),
+                                                cancelLabel: @js(__('common.button.cancel')),
+                                              })
+                                            : Promise.resolve(file);
+                                        crop.then((cropped) => {
+                                            if (!cropped) {
+                                                return null;
+                                            }
+                                            if (typeof window.wpCompressImageFile !== 'function') {
+                                                return cropped;
+                                            }
+                                            return window.wpCompressImageFile(cropped, { maxDimension: 400, quality: 0.8 });
+                                        }).then((compressed) => {
+                                            if (!compressed) {
+                                                return;
+                                            }
                                             $wire.upload('workerPhoto', compressed, () => $wire.set('removeWorkerPhoto', false));
                                         }).finally(() => { input.value = ''; });
                                     "

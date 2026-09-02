@@ -685,8 +685,9 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - Per team: workers toevoegen (voor-/achternaam), **locatie-multi-select** (leeg = overal inklokken
   behalve Clock Point-filter op naam), lijst met **icoon-status**; **teamleader-vlag**
   (`is_teamleader`) toewijzen/intrekken; **actief/inactief**-toggle (V2-verbetering); verwijderen.
-- **Optionele portretfoto** bij aanmaken/bewerken (client-side verkleind, max. ~400px); getoond in
-  ronde avatar op **Time → Aanwezigheid**, **Uitvoerders** en **Teams** (zelfde stijl; zonder foto = initiaal).
+- **Optionele portretfoto** bij aanmaken/bewerken: uitsnede via Cropper.js (vierkant/rond), daarna
+  client-side verkleind (max. ~400px); getoond in ronde avatar op **Time → Aanwezigheid**,
+  **Uitvoerders** en **Teams** (zelfde stijl; zonder foto = initiaal).
 - **Icoon vrijgeven/resetten** (= ontgrendelt lockout + wist icoon/devices/sessies):
   - In **beheer** (Team-hub): door admin/medewerker.
   - In het **veld-portaal**: door een **teamleader** van het team (follow-up op de portaal-build).

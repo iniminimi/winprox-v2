@@ -1,6 +1,7 @@
 import './bootstrap';
 import './date-input-locale';
 import './image-upload-compress';
+import './worker-photo-crop';
 import './bulk-unit-ranges';
 import './qr-pack-download';
 import './promo-tracking';

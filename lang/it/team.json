@@ -152,8 +152,10 @@
         },
         "active": "Attivo",
         "photo": "Foto",
-        "photo_hint": "Foto ritratto opzionale (ridimensionata automaticamente). Mostrata in Time → Presenza, Esecutori e Team.",
-        "photo_remove": "Rimuovi foto"
+        "photo_hint": "Foto ritratto opzionale: scegli un ritaglio (es. il volto), poi viene ridimensionata automaticamente. Mostrata in Time → Presenza, Esecutori e Team.",
+        "photo_remove": "Rimuovi foto",
+        "photo_crop_title": "Ritaglia foto",
+        "photo_crop_apply": "Usa selezione"
     },
     "import_history": {
         "title": "Importazioni recenti",
