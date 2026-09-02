@@ -77,8 +77,8 @@
 }
 
 [data-theme='modern'] .wp-sidebar-header-logo {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-color: rgba(255, 255, 255, 0.2);
+    background-color: #ffffff;
+    border-color: #ffffff;
 }
 
 [data-theme='modern'] .wp-sidebar .wp-nav-link {
