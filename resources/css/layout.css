@@ -86,9 +86,10 @@
 
 .wp-sidebar-header-logo {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    width: fit-content;
+    max-width: 100%;
     border: 1px solid rgba(15, 23, 42, 0.06);
     border-radius: var(--wp-radius-lg);
     background-color: #ffffff;
@@ -98,9 +99,9 @@
 
 .wp-sidebar-header-logo img {
     display: block;
-    width: 100%;
+    width: auto;
     height: auto;
-    max-height: 3.25rem;
+    max-width: 100%;
     object-fit: contain;
     border-radius: calc(var(--wp-radius-lg) - 2px);
 }
