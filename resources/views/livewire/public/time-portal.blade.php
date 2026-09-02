@@ -166,9 +166,24 @@
                                 {{ __('time.portal.clock.in') }}
                             </button>
                         @else
+                            @php
+                                $clockInPoint = $openShift->clockInClockPoint;
+                                $clockInPlace = $clockInPoint?->location?->name
+                                    ? $clockInPoint->location->name.($clockInPoint->name ? ' · '.$clockInPoint->name : '')
+                                    : ($clockInPoint?->name ?? '');
+                                $openElsewhere = $clockInPoint !== null
+                                    && (int) $clockInPoint->id !== (int) $clockPointId;
+                            @endphp
                             <p class="wp-muted">
-                                {{ __('time.portal.clock.clocked_in_since', ['time' => $openShift->clock_in_at->format('H:i')]) }}
+                                @if ($clockInPlace !== '')
+                                    {{ __('time.portal.clock.clocked_in_since_at', ['time' => $openShift->clock_in_at->format('H:i'), 'place' => $clockInPlace]) }}
+                                @else
+                                    {{ __('time.portal.clock.clocked_in_since', ['time' => $openShift->clock_in_at->format('H:i')]) }}
+                                @endif
                             </p>
+                            @if ($openElsewhere)
+                                <p class="wp-muted">{{ __('time.portal.clock.open_elsewhere_hint') }}</p>
+                            @endif
                             @if ($openShift->openBreak)
                                 <p class="wp-muted">{{ __('time.portal.clock.on_break_since', ['time' => $openShift->openBreak->started_at->format('H:i')]) }}</p>
                                 <button type="button" class="btn btn--primary btn--block" wire:click="endBreak">
@@ -176,10 +191,16 @@
                                 </button>
                             @else
                                 <div class="wp-cluster">
-                                    <button type="button" class="btn btn--surface" wire:click="startBreak">
-                                        {{ __('time.portal.clock.start_break') }}
-                                    </button>
-                                    <button type="button" class="btn btn--primary" wire:click="clockOut">
+                                    @if ($openElsewhere)
+                                        <button type="button" class="btn btn--primary" wire:click="transferToThisClockPoint">
+                                            {{ __('time.portal.clock.transfer_here') }}
+                                        </button>
+                                    @else
+                                        <button type="button" class="btn btn--surface" wire:click="startBreak">
+                                            {{ __('time.portal.clock.start_break') }}
+                                        </button>
+                                    @endif
+                                    <button type="button" @class(['btn', 'btn--surface' => $openElsewhere, 'btn--primary' => ! $openElsewhere]) wire:click="clockOut">
                                         {{ __('time.portal.clock.out') }}
                                     </button>
                                 </div>

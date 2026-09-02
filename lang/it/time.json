@@ -222,18 +222,22 @@
             "in": "Timbra entrata",
             "out": "Timbra uscita",
             "start_break": "Inizia pausa",
-            "end_break": "Termina pausa"
+            "end_break": "Termina pausa",
+            "clocked_in_since_at": "Timbrato dal :time presso :place",
+            "open_elsewhere_hint": "Hai già timbrato in un'altra sede. Sposta la presenza qui oppure timbra l'uscita.",
+            "transfer_here": "Sposta qui"
         },
         "clocked_in": "Hai timbrato l'entrata.",
         "clocked_out": "Hai timbrato l'uscita.",
         "break_started": "Pausa iniziata.",
         "break_ended": "Pausa terminata.",
         "errors": {
-            "already_clocked_in": "Hai già timbrato l'entrata.",
+            "already_clocked_in": "Hai già timbrato. Vedi sopra dove, oppure sposta in questa sede.",
             "not_clocked_in": "Non hai timbrato l'entrata.",
             "break_already_open": "La pausa è già in corso.",
             "break_not_open": "Non sei in pausa.",
             "icon_not_configured": "Il tuo account non è ancora completamente configurato. Contatta l'amministratore."
-        }
+        },
+        "transferred": "Presenza spostata in questa sede."
     }
 }

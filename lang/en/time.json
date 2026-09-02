@@ -222,18 +222,22 @@
             "in": "Clock in",
             "out": "Clock out",
             "start_break": "Start break",
-            "end_break": "End break"
+            "end_break": "End break",
+            "clocked_in_since_at": "Clocked in since :time at :place",
+            "open_elsewhere_hint": "You are already clocked in at another location. Move your presence here, or clock out.",
+            "transfer_here": "Move here"
         },
         "clocked_in": "You are clocked in.",
         "clocked_out": "You are clocked out.",
         "break_started": "Break started.",
         "break_ended": "Break ended.",
         "errors": {
-            "already_clocked_in": "You are already clocked in.",
+            "already_clocked_in": "You are already clocked in. See above where, or move to this location.",
             "not_clocked_in": "You are not clocked in.",
             "break_already_open": "Your break is already running.",
             "break_not_open": "You are not on break.",
             "icon_not_configured": "Your account is not fully set up yet. Please contact the administrator."
-        }
+        },
+        "transferred": "Presence moved to this location."
     }
 }

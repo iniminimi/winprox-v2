@@ -11,6 +11,7 @@ use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\StartWorkBreakAction;
+use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
 use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
@@ -297,7 +298,7 @@ class TimePortal extends Component
         $this->taskBaselineSyncedThisVisit = true;
     }
 
-    public function clockIn(ClockInAction $clockIn): void
+    public function clockIn(ClockInAction $clockIn, FindOpenWorkShiftForWorkerAction $findShift, TransferOpenWorkShiftToClockPointAction $transfer): void
     {
         $worker = $this->authorizedWorker();
         $clockPoint = $this->activeClockPoint();
@@ -305,9 +306,54 @@ class TimePortal extends Component
             return;
         }
 
+        $openShift = $findShift->handle($worker);
+        if ($openShift !== null && (int) $openShift->clock_in_clock_point_id !== (int) $clockPoint->id) {
+            try {
+                $transfer->handle($worker, $clockPoint, $this->deviceForWorker($worker));
+                $this->flashMessage = __('time.portal.transferred');
+            } catch (InvalidArgumentException $e) {
+                if ($e->getMessage() === 'shift_already_open') {
+                    $this->flashMessage = __('time.portal.errors.already_clocked_in');
+                }
+            }
+
+            return;
+        }
+
         try {
             $clockIn->handle($worker, $clockPoint, $this->deviceForWorker($worker));
             $this->flashMessage = __('time.portal.clocked_in');
+        } catch (InvalidArgumentException $e) {
+            if ($e->getMessage() === 'shift_already_open') {
+                $this->flashMessage = __('time.portal.errors.already_clocked_in');
+            }
+        }
+    }
+
+    public function transferToThisClockPoint(TransferOpenWorkShiftToClockPointAction $transfer, FindOpenWorkShiftForWorkerAction $findShift): void
+    {
+        $worker = $this->authorizedWorker();
+        $clockPoint = $this->activeClockPoint();
+        if ($worker === null || $clockPoint === null) {
+            return;
+        }
+
+        $openShift = $findShift->handle($worker);
+        if ($openShift === null) {
+            $this->flashMessage = __('time.portal.errors.not_clocked_in');
+
+            return;
+        }
+
+        if ((int) $openShift->clock_in_clock_point_id === (int) $clockPoint->id) {
+            $this->flashMessage = __('time.portal.errors.already_clocked_in');
+
+            return;
+        }
+
+        try {
+            $transfer->handle($worker, $clockPoint, $this->deviceForWorker($worker));
+            $this->flashMessage = __('time.portal.transferred');
         } catch (InvalidArgumentException $e) {
             if ($e->getMessage() === 'shift_already_open') {
                 $this->flashMessage = __('time.portal.errors.already_clocked_in');

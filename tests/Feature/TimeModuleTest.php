@@ -217,6 +217,118 @@ it('klokt in met lockForUpdate en weigert dubbele open shift', function () {
         ->toThrow(InvalidArgumentException::class, 'shift_already_open');
 });
 
+it('verplaatst open shift naar een ander clock point', function () {
+    [$tenant] = timeTenantWithAdmin();
+    Tenancy::actAs($tenant->id);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'field_icon_slug' => 'heart',
+    ]);
+    $locationA = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Vestiging A']);
+    $locationB = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Vestiging B']);
+    $clockA = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationA->id,
+        'name' => 'Ingang A',
+    ]);
+    $clockB = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationB->id,
+        'name' => 'Ingang B',
+    ]);
+
+    $first = app(ClockInAction::class)->handle($worker, $clockA);
+    $moved = app(\App\Actions\Time\TransferOpenWorkShiftToClockPointAction::class)->handle($worker->fresh(), $clockB);
+
+    expect($first->fresh()->status)->toBe(WorkShiftStatus::Closed)
+        ->and($first->fresh()->clock_out_source)->toBe(ClockSource::Auto)
+        ->and((int) $first->fresh()->clock_out_clock_point_id)->toBe($clockB->id)
+        ->and($moved->status)->toBe(WorkShiftStatus::Open)
+        ->and((int) $moved->clock_in_clock_point_id)->toBe($clockB->id)
+        ->and(WorkShift::query()->where('worker_id', $worker->id)->where('status', WorkShiftStatus::Open)->count())->toBe(1);
+});
+
+it('toont op clock point B dat de worker elders is ingeklokt en laat verplaatsen', function () {
+    [$tenant] = timeTenantWithAdmin();
+    Tenancy::actAs($tenant->id);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+    $locationA = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Vestiging A']);
+    $locationB = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Vestiging B']);
+    $clockA = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationA->id,
+        'name' => 'Ingang A',
+        'qr_token' => 'transfer-clock-a',
+    ]);
+    $clockB = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationB->id,
+        'name' => 'Ingang B',
+        'qr_token' => 'transfer-clock-b',
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockA);
+
+    Livewire::test(TimePortal::class, ['token' => 'transfer-clock-b'])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSee(__('time.portal.clock.transfer_here'), false)
+        ->assertSee('Vestiging A', false)
+        ->assertSee(__('time.portal.clock.open_elsewhere_hint'), false)
+        ->call('transferToThisClockPoint')
+        ->assertSet('flashMessage', __('time.portal.transferred'));
+
+    expect(WorkShift::query()->where('worker_id', $worker->id)->where('status', WorkShiftStatus::Open)->value('clock_in_clock_point_id'))
+        ->toBe($clockB->id);
+});
+
+it('verplaatst automatisch bij inklokken als er elders al een open shift is', function () {
+    [$tenant] = timeTenantWithAdmin();
+    Tenancy::actAs($tenant->id);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Piet',
+        'last_name' => 'Pieters',
+        'field_icon_slug' => 'star',
+    ]);
+    $clockA = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'auto-transfer-a',
+    ]);
+    $clockB = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'auto-transfer-b',
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockA);
+
+    Livewire::test(TimePortal::class, ['token' => 'auto-transfer-b'])
+        ->set('first_name', 'Piet')
+        ->set('last_name', 'Pieters')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'star')
+        ->call('signInWithIcon')
+        ->call('clockIn')
+        ->assertSet('flashMessage', __('time.portal.transferred'));
+
+    expect(WorkShift::query()->where('worker_id', $worker->id)->where('status', WorkShiftStatus::Open)->value('clock_in_clock_point_id'))
+        ->toBe($clockB->id);
+});
+
 it('sluit een shift via uitklokken en berekent pauzeminuten', function () {
     [$tenant] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);

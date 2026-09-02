@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "optional",
-                "body": "Time is an optional punch clock: clock in/out, breaks, presence and timesheets. Clock Point remains the sign-in QR (name + icon, task list) even without Time. Time is included in the trial. On WinProx it is optional: monthly add-on on the yearly invoice. Name lookup on a clock point is scoped to that site; workers only appear on assigned sites (except floater teams)."
+                "body": "Time is an optional punch clock: clock in/out, breaks, presence and timesheets. Clock Point remains the sign-in QR (name + icon, task list) even without Time. Time is included in the trial. On WinProx it is optional: monthly add-on on the yearly invoice. Name lookup on a clock point is scoped to that site; workers only appear on assigned sites (except floater teams). One open shift per worker: at another Clock Point you see where you are clocked in and can move presence."
             },
             {
                 "title": "Reservations",

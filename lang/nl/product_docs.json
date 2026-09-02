@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "optioneel",
-                "body": "Time is een optionele prikklok: in-/uitklokken, pauze, aanwezigheid en urenstaat. Clock Point blijft de aanmeld-QR (naam + icoon, takenlijst) ook zonder Time. In de proefperiode is Time inbegrepen. Bij WinProx is het optioneel: toeslag per maand, op de jaarfactuur. Naamlookup op Clock Point is per vestiging; uitvoerders zien hun naam alleen op toegewezen locaties (tenzij invaller)."
+                "body": "Time is een optionele prikklok: in-/uitklokken, pauze, aanwezigheid en urenstaat. Clock Point blijft de aanmeld-QR (naam + icoon, takenlijst) ook zonder Time. In de proefperiode is Time inbegrepen. Bij WinProx is het optioneel: toeslag per maand, op de jaarfactuur. Naamlookup op Clock Point is per vestiging; uitvoerders zien hun naam alleen op toegewezen locaties (tenzij invaller). Eén open dienst per uitvoerder: op een andere Clock Point zie je waar je bent ingeklokt en kun je aanwezigheid verplaatsen."
             },
             {
                 "title": "Reserveringen",

@@ -915,8 +915,8 @@
                     "text": "Dopo l'accesso vede una panoramica di sola lettura delle attività aperte del Suo team. Per avviare o completare un'attività, scansioni il QR unità sul posto."
                 },
                 {
-                    "label": "Timbratura entrata e uscita",
-                    "text": "Timbri qui entrata, uscita e registri le pause. Poi usi il QR unità sul posto per avviare o completare attività."
+                    "label": "Timbra entrata e uscita",
+                    "text": "Timbra qui entrata, uscita e pause. Un solo turno aperto alla volta. Su un altro Clock Point vedi dove hai timbrato e puoi spostare la presenza qui. Poi usa il QR unit in loco per i task."
                 },
                 {
                     "label": "Esci",

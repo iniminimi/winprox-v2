@@ -222,18 +222,22 @@
             "in": "Einstempeln",
             "out": "Ausstempeln",
             "start_break": "Pause starten",
-            "end_break": "Pause beenden"
+            "end_break": "Pause beenden",
+            "clocked_in_since_at": "Eingestempelt seit :time bei :place",
+            "open_elsewhere_hint": "Sie sind bereits an einem anderen Standort eingestempelt. Verschieben Sie die Anwesenheit hierher oder stempeln Sie aus.",
+            "transfer_here": "Hierher verschieben"
         },
         "clocked_in": "Sie sind eingestempelt.",
         "clocked_out": "Sie sind ausgestempelt.",
         "break_started": "Pause gestartet.",
         "break_ended": "Pause beendet.",
         "errors": {
-            "already_clocked_in": "Sie sind bereits eingestempelt.",
+            "already_clocked_in": "Sie sind bereits eingestempelt. Siehe oben wo, oder hierher verschieben.",
             "not_clocked_in": "Sie sind nicht eingestempelt.",
             "break_already_open": "Ihre Pause läuft bereits.",
             "break_not_open": "Sie sind nicht in Pause.",
             "icon_not_configured": "Ihr Konto ist noch nicht vollständig eingerichtet. Bitte wenden Sie sich an den Administrator."
-        }
+        },
+        "transferred": "Anwesenheit an diesen Standort verschoben."
     }
 }

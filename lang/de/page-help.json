@@ -915,8 +915,8 @@
                     "text": "Nach der Anmeldung sehen Sie eine schreibgeschützte Übersicht der offenen Aufgaben Ihres Teams. Um eine Aufgabe zu starten oder abzuschließen, scannen Sie die Unit-QR vor Ort."
                 },
                 {
-                    "label": "Ein- und ausstempeln",
-                    "text": "Stempeln Sie hier ein, aus und erfassen Sie Pausen. Nutzen Sie danach den Unit-QR vor Ort, um Aufgaben zu starten oder abzuschließen."
+                    "label": "Ein- und Ausstempeln",
+                    "text": "Stempeln Sie hier ein, aus und erfassen Sie Pausen. Sie haben eine offene Schicht gleichzeitig. An einem anderen Clock Point sehen Sie, wo Sie eingestempelt sind, und können die Anwesenheit hierher verschieben. Danach die Unit-QR vor Ort für Aufgaben."
                 },
                 {
                     "label": "Abmelden",

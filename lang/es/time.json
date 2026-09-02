@@ -222,18 +222,22 @@
             "in": "Fichar entrada",
             "out": "Fichar salida",
             "start_break": "Iniciar pausa",
-            "end_break": "Finalizar pausa"
+            "end_break": "Finalizar pausa",
+            "clocked_in_since_at": "Fichado desde :time en :place",
+            "open_elsewhere_hint": "Ya has fichado en otra sede. Traslada tu presencia aquí o ficha la salida.",
+            "transfer_here": "Trasladar aquí"
         },
         "clocked_in": "Ha fichado la entrada.",
         "clocked_out": "Ha fichado la salida.",
         "break_started": "Pausa iniciada.",
         "break_ended": "Pausa finalizada.",
         "errors": {
-            "already_clocked_in": "Ya ha fichado la entrada.",
+            "already_clocked_in": "Ya estás fichado. Mira arriba dónde, o trasládalo a esta sede.",
             "not_clocked_in": "No ha fichado la entrada.",
             "break_already_open": "Su pausa ya está en curso.",
             "break_not_open": "No está en pausa.",
             "icon_not_configured": "Su cuenta aún no está completamente configurada. Contacte al administrador."
-        }
+        },
+        "transferred": "Presencia trasladada a esta sede."
     }
 }

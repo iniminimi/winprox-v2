@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "opzionale",
-                "body": "Time è una timbratrice opzionale: ingresso/uscita, pausa, presenza e cartellino. Clock Point resta il QR di riconoscimento (nome + icona, elenco compiti) anche senza Time. Time è inclusa nella prova. Su WinProx è opzionale: supplemento mensile sulla fattura annuale. La ricerca per nome al punto timbratura è limitata alla sede; gli esecutori compaiono solo sulle sedi assegnate (eccetto team mobili)."
+                "body": "Time è una timbratrice opzionale: ingresso/uscita, pausa, presenza e cartellino. Clock Point resta il QR di riconoscimento (nome + icona, elenco compiti) anche senza Time. Time è inclusa nella prova. Su WinProx è opzionale: supplemento mensile sulla fattura annuale. La ricerca per nome al punto timbratura è limitata alla sede; gli esecutori compaiono solo sulle sedi assegnate (eccetto team mobili). Un turno aperto per esecutore: su un altro Clock Point vedi dove hai timbrato e puoi spostare la presenza."
             },
             {
                 "title": "Reservations",

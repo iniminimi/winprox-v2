@@ -916,7 +916,7 @@
                 },
                 {
                     "label": "Fichar entrada y salida",
-                    "text": "Fiche aquí entrada, salida y registre pausas. Después use el QR de unidad en el lugar para iniciar o completar tareas."
+                    "text": "Ficha entrada, salida y pausas aquí. Solo un turno abierto a la vez. En otro Clock Point ves en qué sede estás fichado y puedes trasladar la presencia aquí. Luego usa el QR de unit in situ para tareas."
                 },
                 {
                     "label": "Cerrar sesión",

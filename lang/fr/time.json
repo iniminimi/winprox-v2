@@ -222,18 +222,22 @@
             "in": "Pointer l'entrée",
             "out": "Pointer la sortie",
             "start_break": "Commencer la pause",
-            "end_break": "Terminer la pause"
+            "end_break": "Terminer la pause",
+            "clocked_in_since_at": "Pointé depuis :time à :place",
+            "open_elsewhere_hint": "Vous êtes déjà pointé sur un autre site. Déplacez votre présence ici, ou pointez la sortie.",
+            "transfer_here": "Déplacer ici"
         },
         "clocked_in": "Vous êtes pointé.",
         "clocked_out": "Vous êtes dépointé.",
         "break_started": "Pause commencée.",
         "break_ended": "Pause terminée.",
         "errors": {
-            "already_clocked_in": "Vous êtes déjà pointé.",
+            "already_clocked_in": "Vous êtes déjà pointé. Voir ci-dessus où, ou déplacer vers ce site.",
             "not_clocked_in": "Vous n'êtes pas pointé.",
             "break_already_open": "Votre pause est déjà en cours.",
             "break_not_open": "Vous n'êtes pas en pause.",
             "icon_not_configured": "Votre compte n'est pas encore entièrement configuré. Contactez l'administrateur."
-        }
+        },
+        "transferred": "Présence déplacée vers ce site."
     }
 }
