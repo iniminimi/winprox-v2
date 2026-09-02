@@ -112,7 +112,7 @@
         "activate": "Aktivieren",
         "import": "Import",
         "import_title": "Mitarbeiter importieren (CSV / Excel)",
-        "import_hint": "Importieren Sie Mitarbeiter in großer Menge über CSV oder Excel (.xlsx). Pflichtkolumnen: team_name, first_name, last_name. Optional: email, phone, company_name. Ein ausgefüllter Firmenname markiert den Mitarbeiter automatisch als extern. Teams werden automatisch erstellt, wenn sie noch nicht existieren.",
+        "import_hint": "Mitarbeiter per CSV oder Excel (.xlsx) importieren. Pflichtspalten: team_name, first_name, last_name. Optional: email, phone, company_name, location_names (Standortnamen, kommagetrennt). Leeres location_names = überall stempeln. Ausgefüllter Firmenname markiert extern. Teams werden bei Bedarf angelegt.",
         "import_file_label": "CSV- oder Excel-Datei (.xlsx)",
         "import_submit": "Importieren",
         "flash": {
@@ -124,7 +124,8 @@
             "last_name": "Müller",
             "email": "hans.mueller@unternehmen.de",
             "phone": "+49 170 1234567",
-            "company_name": "Elektro Müller"
+            "company_name": "Elektro Müller",
+            "location_names": "Standort A, Standort B"
         },
         "modal": {
             "create_title": "Mitarbeiter hinzufügen",
@@ -146,7 +147,8 @@
             "unexpected_headers": "Die Spalten in Ihrer Datei stimmen nicht mit der WinProx-Vorlage überein. Unerwartete Spalten: :columns",
             "row": "Zeile :line: :message",
             "no_rows": "Keine gültigen Zeilen gefunden.",
-            "database": "Während des Imports ist ein Datenbankfehler aufgetreten: :message"
+            "database": "Während des Imports ist ein Datenbankfehler aufgetreten: :message",
+            "unknown_locations": "Unbekannte Standorte: :names"
         },
         "active": "Aktiv"
     },

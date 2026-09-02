@@ -112,7 +112,7 @@
         "activate": "Attiva",
         "import": "Importazione",
         "import_title": "Importa lavoratori (CSV / Excel)",
-        "import_hint": "Importi lavoratori in massa tramite CSV o Excel (.xlsx). Colonne obbligatorie: team_name, first_name, last_name. Facoltative: email, phone, company_name. Un nome azienda compilato segna automaticamente il lavoratore come esterno. I team vengono creati automaticamente se non esistono ancora.",
+        "import_hint": "Importa esecutori via CSV o Excel (.xlsx). Colonne obbligatorie: team_name, first_name, last_name. Opzionale: email, phone, company_name, location_names (nomi sede separati da virgole). location_names vuoto = timbra ovunque. Nome azienda compilato = esecutore esterno. I team vengono creati automaticamente se mancanti.",
         "import_file_label": "File CSV o Excel (.xlsx)",
         "import_submit": "Importa",
         "flash": {
@@ -124,7 +124,8 @@
             "last_name": "Rossi",
             "email": "marco.rossi@azienda.it",
             "phone": "+39 333 123 4567",
-            "company_name": "Elettricità Rossi"
+            "company_name": "Elettricità Rossi",
+            "location_names": "Sede A, Sede B"
         },
         "modal": {
             "create_title": "Aggiungi lavoratore",
@@ -146,7 +147,8 @@
             "unexpected_headers": "Le colonne del file non corrispondono al modello WinProx. Colonne inattese: :columns",
             "row": "Riga :line: :message",
             "no_rows": "Nessuna riga valida trovata.",
-            "database": "Si è verificato un errore del database durante l'importazione: :message"
+            "database": "Si è verificato un errore del database durante l'importazione: :message",
+            "unknown_locations": "Sede sconosciute: :names"
         },
         "active": "Attivo"
     },

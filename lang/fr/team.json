@@ -112,7 +112,7 @@
         "activate": "Activer",
         "import": "Import",
         "import_title": "Importer des intervenants (CSV / Excel)",
-        "import_hint": "Importez des intervenants en masse via CSV ou Excel (.xlsx). Colonnes obligatoires : team_name, first_name, last_name. Optionnel : email, phone, company_name. Un nom d’entreprise renseigné marque automatiquement l’intervenant comme externe. Les équipes sont créées automatiquement si elles n'existent pas encore.",
+        "import_hint": "Importez des exécutants via CSV ou Excel (.xlsx). Colonnes obligatoires : team_name, first_name, last_name. Optionnel : email, phone, company_name, location_names (noms de sites séparés par des virgules). location_names vide = pointer partout. Un nom d’entreprise rempli marque l’exécutant comme externe. Les équipes sont créées automatiquement si besoin.",
         "import_file_label": "Fichier CSV ou Excel (.xlsx)",
         "import_submit": "Importer",
         "flash": {
@@ -124,7 +124,8 @@
             "last_name": "Dupont",
             "email": "jean.dupont@entreprise.fr",
             "phone": "+33 6 12 34 56 78",
-            "company_name": "Électricité Dupont"
+            "company_name": "Électricité Dupont",
+            "location_names": "Site A, Site B"
         },
         "modal": {
             "create_title": "Ajouter un intervenant",
@@ -146,7 +147,8 @@
             "unexpected_headers": "Les colonnes de votre fichier ne correspondent pas au modèle WinProx. Colonnes inattendues : :columns",
             "row": "Ligne :line : :message",
             "no_rows": "Aucune ligne valide trouvée.",
-            "database": "Une erreur de base de données est survenue pendant l'import : :message"
+            "database": "Une erreur de base de données est survenue pendant l'import : :message",
+            "unknown_locations": "Site(s) inconnu(s) : :names"
         },
         "active": "Actif"
     },

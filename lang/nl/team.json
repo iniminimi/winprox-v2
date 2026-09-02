@@ -112,7 +112,7 @@
         "activate": "Activeren",
         "import": "Import",
         "import_title": "Uitvoerders importeren (CSV / Excel)",
-        "import_hint": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Verplichte kolommen: team_name, first_name, last_name. Optioneel: email, phone, company_name. Een ingevulde bedrijfsnaam markeert de uitvoerder automatisch als extern. Teams worden automatisch aangemaakt als ze nog niet bestaan.",
+        "import_hint": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Verplichte kolommen: team_name, first_name, last_name. Optioneel: email, phone, company_name, location_names (komma-gescheiden locatienamen). Leeg location_names = overal inklokken. Een ingevulde bedrijfsnaam markeert de uitvoerder automatisch als extern. Teams worden automatisch aangemaakt als ze nog niet bestaan.",
         "import_file_label": "CSV- of Excel-bestand (.xlsx)",
         "import_submit": "Importeren",
         "flash": {
@@ -124,7 +124,8 @@
             "last_name": "Janssen",
             "email": "jan.janssen@bedrijf.be",
             "phone": "+32 470 12 34 56",
-            "company_name": "Elektro Peeters"
+            "company_name": "Elektro Peeters",
+            "location_names": "Vestiging A, Vestiging B"
         },
         "modal": {
             "create_title": "Uitvoerder toevoegen",
@@ -146,7 +147,8 @@
             "unexpected_headers": "De kolommen in uw bestand komen niet overeen met het WinProx-sjabloon. Onverwachte kolommen: :columns",
             "row": "Rij :line: :message",
             "no_rows": "Geen geldige rijen gevonden.",
-            "database": "Er is een databasefout opgetreden tijdens het importeren: :message"
+            "database": "Er is een databasefout opgetreden tijdens het importeren: :message",
+            "unknown_locations": "Onbekende locatie(s): :names"
         },
         "active": "Actief"
     },

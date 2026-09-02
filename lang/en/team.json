@@ -112,7 +112,7 @@
         "activate": "Activate",
         "import": "Import",
         "import_title": "Import workers (CSV / Excel)",
-        "import_hint": "Import workers in bulk via CSV or Excel (.xlsx). Required columns: team_name, first_name, last_name. Optional: email, phone, company_name. A filled company name automatically marks the worker as external. Teams are automatically created if they do not exist yet.",
+        "import_hint": "Import workers in bulk via CSV or Excel (.xlsx). Required columns: team_name, first_name, last_name. Optional: email, phone, company_name, location_names (comma-separated location names). Empty location_names = clock in anywhere. A filled company name marks the worker as external. Teams are created automatically if they do not exist yet.",
         "import_file_label": "CSV or Excel file (.xlsx)",
         "import_submit": "Import",
         "flash": {
@@ -124,7 +124,8 @@
             "last_name": "Smith",
             "email": "john.smith@company.com",
             "phone": "+44 7700 900123",
-            "company_name": "BrightSpark Electrical"
+            "company_name": "BrightSpark Electrical",
+            "location_names": "Site A, Site B"
         },
         "modal": {
             "create_title": "Add worker",
@@ -146,7 +147,8 @@
             "unexpected_headers": "The columns in your file do not match the WinProx template. Unexpected columns: :columns",
             "row": "Row :line: :message",
             "no_rows": "No valid rows found.",
-            "database": "A database error occurred during import: :message"
+            "database": "A database error occurred during import: :message",
+            "unknown_locations": "Unknown location(s): :names"
         },
         "active": "Active"
     },

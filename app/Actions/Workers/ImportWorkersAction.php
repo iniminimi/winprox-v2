@@ -2,8 +2,10 @@
 
 namespace App\Actions\Workers;
 
+use App\Actions\Locations\SyncUserLocationsAction;
 use App\Data\Workers\ImportWorkersData;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Import\TabularImportReader;
@@ -17,6 +19,7 @@ class ImportWorkersAction
     public function __construct(
         private AuditRecorder $audit,
         private TabularImportReader $tabularReader,
+        private SyncUserLocationsAction $syncLocations,
     ) {}
 
     /** @var list<string> */
@@ -31,6 +34,7 @@ class ImportWorkersAction
         'email',
         'phone',
         'company_name',
+        'location_names',
     ];
 
     /**
@@ -81,6 +85,7 @@ class ImportWorkersAction
             ];
         }
 
+        $locationsByKey = $this->locationIdsByNormalizedName($tenantId);
         $headerCount = count($headers);
         $errors = [];
         $validatedRows = [];
@@ -99,6 +104,7 @@ class ImportWorkersAction
                 'email' => 'nullable|email|max:255',
                 'phone' => 'nullable|string|max:64',
                 'company_name' => 'nullable|string|max:120',
+                'location_names' => 'nullable|string|max:1000',
             ]);
 
             if ($validator->fails()) {
@@ -108,9 +114,28 @@ class ImportWorkersAction
                         'message' => $error,
                     ]);
                 }
-            } else {
-                $validatedRows[] = $dataRow;
+
+                continue;
             }
+
+            [$locationIds, $unknownNames] = $this->resolveLocationNames(
+                $dataRow['location_names'] ?? null,
+                $locationsByKey,
+            );
+
+            if ($unknownNames !== []) {
+                $errors[] = __('team.workers.errors.row', [
+                    'line' => $row['line'],
+                    'message' => __('team.workers.errors.unknown_locations', [
+                        'names' => implode(', ', $unknownNames),
+                    ]),
+                ]);
+
+                continue;
+            }
+
+            $dataRow['_location_ids'] = $locationIds;
+            $validatedRows[] = $dataRow;
         }
 
         if ($errors !== []) {
@@ -145,7 +170,7 @@ class ImportWorkersAction
 
                 $companyName = self::normalizedCompanyName($row['company_name'] ?? null);
 
-                Worker::create([
+                $worker = Worker::create([
                     'tenant_id' => $tenantId,
                     'internal_team_id' => $team->id,
                     'first_name' => trim($row['first_name']),
@@ -158,6 +183,11 @@ class ImportWorkersAction
                     'is_active' => true,
                     'is_teamleader' => false,
                 ]);
+
+                $locationIds = $row['_location_ids'] ?? [];
+                if ($locationIds !== []) {
+                    $this->syncLocations->handleForWorker($worker, $locationIds, $actorUserId);
+                }
 
                 $importedCount++;
             }
@@ -191,6 +221,80 @@ class ImportWorkersAction
                 'errors' => [__('team.workers.errors.database', ['message' => $e->getMessage()])],
             ];
         }
+    }
+
+    /**
+     * @return array<string, int>
+     */
+    private function locationIdsByNormalizedName(int $tenantId): array
+    {
+        $map = [];
+
+        Location::query()
+            ->withoutGlobalScopes()
+            ->where('tenant_id', $tenantId)
+            ->orderBy('id')
+            ->get(['id', 'name'])
+            ->each(function (Location $location) use (&$map) {
+                $key = mb_strtolower(trim((string) $location->name));
+                if ($key === '' || isset($map[$key])) {
+                    return;
+                }
+
+                $map[$key] = (int) $location->id;
+            });
+
+        return $map;
+    }
+
+    /**
+     * @param  array<string, int>  $locationsByKey
+     * @return array{0: list<int>, 1: list<string>}
+     */
+    private function resolveLocationNames(mixed $value, array $locationsByKey): array
+    {
+        $names = self::parseLocationNames($value);
+        if ($names === []) {
+            return [[], []];
+        }
+
+        $locationIds = [];
+        $unknownNames = [];
+
+        foreach ($names as $name) {
+            $key = mb_strtolower($name);
+            if (! isset($locationsByKey[$key])) {
+                $unknownNames[] = $name;
+
+                continue;
+            }
+
+            $locationIds[] = $locationsByKey[$key];
+        }
+
+        return [array_values(array_unique($locationIds)), $unknownNames];
+    }
+
+    /**
+     * @return list<string>
+     */
+    private static function parseLocationNames(mixed $value): array
+    {
+        if (! is_string($value)) {
+            return [];
+        }
+
+        $trimmed = trim($value);
+        if ($trimmed === '') {
+            return [];
+        }
+
+        $parts = preg_split('/[,;]+/u', $trimmed) ?: [];
+
+        return array_values(array_filter(
+            array_map(static fn (string $part) => trim($part), $parts),
+            static fn (string $part) => $part !== '',
+        ));
     }
 
     private static function normalizedCompanyName(mixed $value): ?string

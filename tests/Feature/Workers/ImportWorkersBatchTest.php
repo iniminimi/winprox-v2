@@ -104,6 +104,92 @@ it('imports workers from an Excel xlsx file', function () {
     @unlink($xlsxPath);
 });
 
+it('imports workers with location_names from csv', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $locationA = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Vestiging A']);
+    $locationB = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Vestiging B']);
+
+    $csvPath = makeCsvFile([
+        ['team_name', 'first_name', 'last_name', 'location_names'],
+        ['Team A', 'Jan', 'Janssen', 'Vestiging A, Vestiging B'],
+        ['Team B', 'Piet', 'Pieters', 'Vestiging A'],
+    ]);
+
+    $result = app(ImportWorkersAction::class)->handle(
+        new ImportWorkersData(filePath: $csvPath, originalName: 'workers_locations.csv'),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeTrue()
+        ->and($result['count'])->toBe(2);
+
+    $jan = Worker::where('tenant_id', $tenant->id)->where('first_name', 'Jan')->first();
+    expect($jan)->not->toBeNull()
+        ->and($jan->locations()->pluck('locations.id')->sort()->values()->all())
+        ->toEqual(collect([$locationA->id, $locationB->id])->sort()->values()->all());
+
+    $piet = Worker::where('tenant_id', $tenant->id)->where('first_name', 'Piet')->first();
+    expect($piet->locations()->pluck('locations.id')->all())->toBe([$locationA->id]);
+
+    unlink($csvPath);
+});
+
+it('imports workers with location_names from xlsx', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site One']);
+
+    $xlsxPath = tempnam(sys_get_temp_dir(), 'workers_xlsx_loc_').'.xlsx';
+    \App\Support\Import\MinimalXlsxWriter::write($xlsxPath, [
+        ['team_name', 'first_name', 'last_name', 'location_names'],
+        ['Excel Team', 'Anna', 'Anders', 'Site One'],
+    ]);
+
+    $result = app(ImportWorkersAction::class)->handle(
+        new ImportWorkersData(filePath: $xlsxPath, originalName: 'workers_locations.xlsx'),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeTrue();
+
+    $worker = Worker::where('tenant_id', $tenant->id)->where('first_name', 'Anna')->first();
+    expect($worker->locations()->pluck('locations.id')->all())->toBe([$location->id]);
+
+    @unlink($xlsxPath);
+});
+
+it('rejects import rows with unknown location names', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Bestaand']);
+
+    $csvPath = makeCsvFile([
+        ['team_name', 'first_name', 'last_name', 'location_names'],
+        ['Team', 'Jan', 'Janssen', 'Onbekend'],
+    ]);
+
+    $result = app(ImportWorkersAction::class)->handle(
+        new ImportWorkersData(filePath: $csvPath, originalName: 'bad_locations.csv'),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeFalse()
+        ->and($result['errors'][0])->toContain('Onbekend')
+        ->and(Worker::where('tenant_id', $tenant->id)->count())->toBe(0);
+
+    unlink($csvPath);
+});
+
 // ---------------------------------------------------------------------------
 // Scenario 2: Succesvolle import zonder optionele velden
 // ---------------------------------------------------------------------------
