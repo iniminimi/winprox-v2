@@ -28,8 +28,8 @@
     /* Transitie */
     --wp-transition: 0.15s ease;
 
-    /* Beheer-hoofdkolom: breed genoeg op desktop, begrensd op ultrawide. */
-    --wp-content-max: 96rem;
+    /* Beheer-hoofdkolom: leesbare breedte, links uitgelijnd (niet gecentreerd). */
+    --wp-content-max: 76rem;
 
     /* Foto-thumbnails (QR-portaal: 4 naast elkaar op smal scherm; beheer zet --wp-photo-thumb-size). */
     --wp-photo-thumb-columns: 4;
