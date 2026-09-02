@@ -85,6 +85,7 @@
         "choose_type": "Choisissez votre type d’organisation",
         "create": "Créer",
         "result_title": "Modèle de départ créé",
+        "dismiss_result": "Fermer",
         "result_type": "Type : :type",
         "result_teams": "Équipes",
         "result_categories": "Catégories",

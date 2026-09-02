@@ -2,7 +2,18 @@
     @if ($starterPackSummary)
         <div class="wp-card wp-card-pad">
             <div class="wp-stack">
-                <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_title') }}</strong></p>
+                <div class="wp-row">
+                    <p class="wp-text-body wp-grow"><strong>{{ __('dashboard.starter_pack.result_title') }}</strong></p>
+                    @if ($canDismissStarterPackResult)
+                        <button type="button"
+                                class="btn btn--ghost btn--sm"
+                                wire:click="dismissStarterPackResult"
+                                wire:loading.attr="disabled"
+                                aria-label="{{ __('dashboard.starter_pack.dismiss_result') }}">
+                            {{ __('dashboard.starter_pack.dismiss_result') }}
+                        </button>
+                    @endif
+                </div>
                 <p class="wp-muted">{{ __('dashboard.starter_pack.result_type', ['type' => __($starterPackSummary->type->labelKey())]) }}</p>
                 <div class="wp-stack-tight">
                     <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_teams') }}</strong> — {{ implode(', ', $starterPackSummary->teamNames) }}</p>

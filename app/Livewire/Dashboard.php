@@ -7,6 +7,7 @@ use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Actions\Onboarding\ApplyTenantStarterPackAction;
+use App\Actions\Onboarding\DismissTenantStarterPackResultAction;
 use App\Actions\Onboarding\RemoveTenantStarterPackAction;
 use App\Data\Onboarding\ApplyTenantStarterPackData;
 use App\Enums\TenantStarterPackType;
@@ -98,6 +99,17 @@ class Dashboard extends Component
         $this->closeRemoveStarterPackModal();
     }
 
+    public function dismissStarterPackResult(DismissTenantStarterPackResultAction $dismiss): void
+    {
+        $user = $this->starterPackActor();
+        $tenant = $this->starterPackTenant();
+        $this->authorize('dismissStarterPackResult', $tenant);
+
+        $dismiss->handle($tenant, $user);
+
+        $user->unsetRelation('tenant');
+    }
+
     public function render(
         RealignSubscriptionPeriodAction $realign,
         ApplyPlanEntitlementsAction $applyEntitlements,
@@ -122,6 +134,9 @@ class Dashboard extends Component
         $canManageStarterPack = $user instanceof User
             && $tenant !== null
             && $user->can('removeStarterPack', $tenant);
+        $canDismissStarterPackResult = $user instanceof User
+            && $tenant !== null
+            && $user->can('dismissStarterPackResult', $tenant);
         $canApplyStarterPack = $onboarding->canApplyStarterPack
             && ! ($tenant?->hasStarterPack() ?? false)
             && $user instanceof User
@@ -138,7 +153,9 @@ class Dashboard extends Component
 
         $stats = $buildStats->handle($tenantId, $hasTimeModule, $hasIotModule);
         $recent = $listRecentIssues->handle($tenantId);
-        $starterPackSummary = $tenant !== null ? TenantStarterPackSummary::for($tenant) : null;
+        $starterPackSummary = $tenant !== null && $tenant->shouldShowStarterPackResultCard()
+            ? TenantStarterPackSummary::for($tenant)
+            : null;
 
         return view('livewire.dashboard', [
             'stats' => $stats,
@@ -150,6 +167,7 @@ class Dashboard extends Component
             'hasTimeModule' => $hasTimeModule,
             'canApplyStarterPack' => $canApplyStarterPack,
             'canManageStarterPack' => $canManageStarterPack,
+            'canDismissStarterPackResult' => $canDismissStarterPackResult,
             'starterPackSummary' => $starterPackSummary,
             'starterPackTypes' => TenantStarterPackType::cases(),
             'starterPackPreview' => $starterPackPreview,

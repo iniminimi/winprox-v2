@@ -85,6 +85,7 @@
         "choose_type": "Wählen Sie Ihren Organisationstyp",
         "create": "Anlegen",
         "result_title": "Startvorlage angelegt",
+        "dismiss_result": "Schließen",
         "result_type": "Typ: :type",
         "result_teams": "Teams",
         "result_categories": "Kategorien",

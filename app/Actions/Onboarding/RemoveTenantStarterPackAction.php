@@ -110,6 +110,7 @@ class RemoveTenantStarterPackAction
                 'starter_pack_key' => null,
                 'starter_pack_applied_at' => null,
                 'starter_pack_payload' => null,
+                'starter_pack_result_dismissed_at' => null,
             ])->save();
 
             $this->audit->record(

@@ -46,6 +46,7 @@ class Tenant extends Model
         'starter_pack_key',
         'starter_pack_applied_at',
         'starter_pack_payload',
+        'starter_pack_result_dismissed_at',
     ];
 
     protected function casts(): array
@@ -65,12 +66,28 @@ class Tenant extends Model
             'work_menu_unit_measurements_enabled' => 'boolean',
             'starter_pack_applied_at' => 'datetime',
             'starter_pack_payload' => 'array',
+            'starter_pack_result_dismissed_at' => 'datetime',
         ];
     }
 
     public function hasStarterPack(): bool
     {
         return filled($this->starter_pack_key);
+    }
+
+    public function shouldShowStarterPackResultCard(): bool
+    {
+        if (! $this->hasStarterPack() || $this->starter_pack_applied_at === null) {
+            return false;
+        }
+
+        if ($this->starter_pack_result_dismissed_at !== null) {
+            return false;
+        }
+
+        $days = max(1, (int) config('onboarding.starter_pack_result_visible_days', 7));
+
+        return $this->starter_pack_applied_at->gte(now()->subDays($days));
     }
 
     public function users(): HasMany

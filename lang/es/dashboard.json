@@ -85,6 +85,7 @@
         "choose_type": "Elige tu tipo de organización",
         "create": "Crear",
         "result_title": "Plantilla inicial creada",
+        "dismiss_result": "Cerrar",
         "result_type": "Tipo: :type",
         "result_teams": "Equipos",
         "result_categories": "Categorías",

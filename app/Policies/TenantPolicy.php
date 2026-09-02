@@ -80,6 +80,11 @@ class TenantPolicy
             || ($user->is_superuser && SuperuserTenantAccess::canAccessTenant($user, (int) $tenant->id));
     }
 
+    public function dismissStarterPackResult(User $user, Tenant $tenant): bool
+    {
+        return $this->applyStarterPack($user, $tenant);
+    }
+
     private function isTenantAdminFor(User $user, Tenant $tenant): bool
     {
         return $user->tenant_id !== null

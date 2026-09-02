@@ -85,6 +85,7 @@
         "choose_type": "Choose your organisation type",
         "create": "Create",
         "result_title": "Starter template created",
+        "dismiss_result": "Close",
         "result_type": "Type: :type",
         "result_teams": "Teams",
         "result_categories": "Categories",

@@ -22,6 +22,7 @@ use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Onboarding\TenantStarterPackCatalog;
 use App\Support\Platform\SupportTenantContext;
 use App\Support\Tenancy;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
 
@@ -305,4 +306,48 @@ it('toont de starttemplate-knop voor een superuser in support view', function ()
         ->call('applyStarterPack')
         ->assertHasNoErrors()
         ->assertSee(__('dashboard.starter_pack.result_title'));
+});
+
+it('verbergt de starttemplate-resultaatkaart na sluiten', function () {
+    [$tenant, $admin] = setupStarterPackAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->call('openStarterPackModal')
+        ->set('starterPackType', TenantStarterPackType::Hotel->value)
+        ->call('applyStarterPack')
+        ->assertHasNoErrors()
+        ->assertSeeHtml('wire:click="dismissStarterPackResult"')
+        ->call('dismissStarterPackResult')
+        ->assertHasNoErrors()
+        ->assertDontSeeHtml('wire:click="dismissStarterPackResult"');
+
+    expect($tenant->fresh()->starter_pack_result_dismissed_at)->not->toBeNull()
+        ->and($tenant->fresh()->starter_pack_key)->toBe('hotel');
+});
+
+it('verbergt de starttemplate-resultaatkaart na de zichtbaarheidsperiode op het dashboard', function () {
+    Carbon::setTestNow('2026-09-02 12:00:00');
+
+    [$tenant, $admin] = setupStarterPackAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->call('openStarterPackModal')
+        ->set('starterPackType', TenantStarterPackType::Hotel->value)
+        ->call('applyStarterPack')
+        ->assertHasNoErrors()
+        ->assertSeeHtml('wire:click="dismissStarterPackResult"');
+
+    $tenant->forceFill([
+        'starter_pack_applied_at' => now()->subDays(8),
+    ])->save();
+
+    $admin->unsetRelation('tenant');
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->assertDontSeeHtml('wire:click="dismissStarterPackResult"');
+
+    Carbon::setTestNow();
 });

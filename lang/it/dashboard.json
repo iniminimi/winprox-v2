@@ -85,6 +85,7 @@
         "choose_type": "Scegli il tipo di organizzazione",
         "create": "Crea",
         "result_title": "Modello iniziale creato",
+        "dismiss_result": "Chiudi",
         "result_type": "Tipo: :type",
         "result_teams": "Team",
         "result_categories": "Categorie",

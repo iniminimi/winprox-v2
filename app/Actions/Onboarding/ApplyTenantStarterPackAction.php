@@ -178,6 +178,7 @@ class ApplyTenantStarterPackAction
                 'starter_pack_key' => $data->type->value,
                 'starter_pack_applied_at' => now(),
                 'starter_pack_payload' => $payload,
+                'starter_pack_result_dismissed_at' => null,
             ])->save();
 
             return $payload;
