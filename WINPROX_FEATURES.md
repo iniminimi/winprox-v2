@@ -74,8 +74,8 @@ Middleware: geldige tenant + trial/abonnement (`support.tenant`). Rollen: **admi
 - Geplande taken (`scheduled_for`) en recurring-cycli.
 
 ### Team
-- **Mensen → Backoffice:** collega’s (admin) — users met rol admin/employee.
-- **Mensen → Teams:** checklists + interne teams + workers (zonder login): icoon, teamleader-vlag, Clock Point-QR.
+- **Personen → Backoffice:** collega’s (admin) — users met rol admin/employee.
+- **Personen → Teams:** checklists + interne teams + workers (zonder login): icoon, teamleader-vlag, Clock Point-QR.
 - Desktop-login: e-mail + wachtwoord, plus **Inloggen met Microsoft** (Entra OIDC) voor admin/employee wanneer `ENTRA_*` gezet is. Uitvoerders: geen SSO.
 - Worker-icoon reset / lockout-beheer.
 
