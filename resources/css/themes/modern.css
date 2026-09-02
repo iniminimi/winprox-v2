@@ -20,6 +20,7 @@
     --wp-accent: #059669;
     --wp-accent-strong: #047857;
     --wp-accent-soft: rgba(16, 185, 129, 0.18);
+    --wp-accent-soft-panel: color-mix(in srgb, var(--wp-accent) 18%, var(--wp-surface) 82%);
     --wp-accent-border: rgba(5, 150, 105, 0.35);
     --wp-accent-text: #047857;
 
@@ -164,9 +165,11 @@
         0 0 0 1px rgba(255, 255, 255, 0.45) inset;
 }
 
-/* KPI-aandacht: groene tint, zelfde dekking als witte tiles (--wp-surface 90%). */
-[data-theme='modern'] .wp-kpi--alert {
-    background-color: color-mix(in srgb, #ecfdf5 90%, transparent);
+/* KPI-aandacht + recente-meldingen highlight: zelfde groen als op witte kaart. */
+[data-theme='modern'] .wp-kpi--alert,
+[data-theme='modern'] .wp-issue-row--highlight {
+    background-color: var(--wp-accent-soft-panel);
+    border-color: var(--wp-accent-border);
 }
 
 [data-theme='modern'] .btn--surface,
