@@ -5,9 +5,9 @@
 
 [data-theme='modern'] {
     --wp-bg: #dbe4f0;
-    --wp-surface: rgba(255, 255, 255, 0.78);
-    --wp-surface-2: rgba(255, 255, 255, 0.62);
-    --wp-surface-hover: rgba(255, 255, 255, 0.9);
+    --wp-surface: rgba(255, 255, 255, 0.9);
+    --wp-surface-2: rgba(255, 255, 255, 0.82);
+    --wp-surface-hover: rgba(255, 255, 255, 0.96);
 
     --wp-border: rgba(15, 23, 42, 0.12);
     --wp-border-strong: rgba(15, 23, 42, 0.2);
@@ -140,7 +140,7 @@
 }
 
 [data-theme='modern'] .btn--surface {
-    background-color: rgba(255, 255, 255, 0.72);
+    background-color: rgba(255, 255, 255, 0.88);
 }
 
 [data-theme='modern'] .btn--primary {
@@ -150,8 +150,11 @@
 
 [data-theme='modern'] .wp-header-search .wp-input,
 [data-theme='modern'] .wp-filter-cell .wp-input,
-[data-theme='modern'] .wp-filter-cell .wp-select {
-    background-color: rgba(255, 255, 255, 0.78);
+[data-theme='modern'] .wp-filter-cell .wp-select,
+[data-theme='modern'] .wp-input,
+[data-theme='modern'] .wp-select,
+[data-theme='modern'] .wp-textarea {
+    background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px) saturate(1.2);
     -webkit-backdrop-filter: blur(10px) saturate(1.2);
 }
@@ -159,11 +162,11 @@
 [data-theme='modern'] .wp-brand-float {
     backdrop-filter: blur(12px) saturate(1.25);
     -webkit-backdrop-filter: blur(12px) saturate(1.25);
-    background-color: rgba(255, 255, 255, 0.88);
+    background-color: rgba(255, 255, 255, 0.96);
 }
 
 [data-theme='modern'] .wp-portal-actions {
-    background-color: color-mix(in srgb, var(--wp-surface) 88%, transparent);
+    background-color: color-mix(in srgb, var(--wp-surface) 96%, transparent);
     border-top-color: var(--wp-border);
 }
 
