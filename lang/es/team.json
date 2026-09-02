@@ -147,7 +147,8 @@
             "row": "Fila :line: :message",
             "no_rows": "No se encontraron filas válidas.",
             "database": "Se produjo un error de base de datos durante la importación: :message"
-        }
+        },
+        "active": "Activo"
     },
     "import_history": {
         "title": "Importaciones recientes",

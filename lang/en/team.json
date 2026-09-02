@@ -147,7 +147,8 @@
             "row": "Row :line: :message",
             "no_rows": "No valid rows found.",
             "database": "A database error occurred during import: :message"
-        }
+        },
+        "active": "Active"
     },
     "import_history": {
         "title": "Recent imports",

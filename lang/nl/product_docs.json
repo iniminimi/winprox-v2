@@ -48,7 +48,7 @@
             },
             {
                 "title": "Facility",
-                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Onder Plaatsen: Categorieën, Locaties en Units (tenant-breed). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Unit checks aanzetten per categorie én unit; checklists beheren onder Mensen → Teams — gedeeld of per team. Nieuwe organisaties kunnen op het dashboard een starttemplate kiezen (hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer of fleet management) met voorbeeldteams, categorieën, een locatie, units en passende werkmenu-defaults — namen in alle talen. Je kunt alles later hernoemen; na meldingen kunnen units alleen nog gedeactiveerd worden."
+                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Onder Plaatsen: Categorieën, Locaties en Units (tenant-breed). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Unit checks aanzetten per categorie én unit; checklists beheren onder Mensen → Teams — gedeeld of per team. Nieuwe organisaties kunnen op het dashboard een starttemplate kiezen (hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer of fleet management) met voorbeeldteams, categorieën, een locatie, units en passende werkmenu-defaults — namen in alle talen. Je kunt alles later hernoemen; na meldingen kunnen units alleen nog gedeactiveerd worden. Onder Mensen → Uitvoerders: zoekscherm voor alle uitvoerders. Uitvoerders en medewerkers kunnen aan vestigingen gekoppeld worden; invallerteams mogen overal inklokken."
             },
             {
                 "title": "Dashboard",
@@ -56,7 +56,7 @@
             },
             {
                 "title": "QR-portals",
-                "body": "Unit-QR: problemen melden, optioneel unit check (OK/Niet OK) en optioneel unitmetingen (km, temperatuur, status). Clock Point-QR: aanmelden (naam + icoon) en teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden. Ongeldige of vervallen QR-codes tonen een korte foutmelding met een knop naar de startpagina."
+                "body": "Unit-QR: problemen melden, optioneel unit check (OK/Niet OK) en optioneel unitmetingen (km, temperatuur, status). Clock Point-QR: aanmelden (naam + icoon) en teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden. Ongeldige of vervallen QR-codes tonen een korte foutmelding met een knop naar de startpagina. Clock Point toont alleen uitvoerders die op die vestiging mogen inklokken."
             },
             {
                 "title": "Unit checks",
@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "optioneel",
-                "body": "Time is een optionele prikklok: in-/uitklokken, pauze, aanwezigheid en urenstaat. Clock Point blijft de aanmeld-QR (naam + icoon, takenlijst) ook zonder Time. In de proefperiode is Time inbegrepen. Bij WinProx is het optioneel: toeslag per maand, op de jaarfactuur."
+                "body": "Time is een optionele prikklok: in-/uitklokken, pauze, aanwezigheid en urenstaat. Clock Point blijft de aanmeld-QR (naam + icoon, takenlijst) ook zonder Time. In de proefperiode is Time inbegrepen. Bij WinProx is het optioneel: toeslag per maand, op de jaarfactuur. Naamlookup op Clock Point is per vestiging; uitvoerders zien hun naam alleen op toegewezen locaties (tenzij invaller)."
             },
             {
                 "title": "Reserveringen",
@@ -187,7 +187,7 @@
                 "title": "Rechten",
                 "items": [
                     "**Beheerder**: alles (users, bedrijf, abonnement, teams).",
-                    "**Medewerker**: operationeel (meldingen, taken, locaties) — geen account-/billingbeheer.",
+                    "**Medewerker**: operationeel (meldingen, taken, locaties) — geen account-/billingbeheer; optioneel beperkt tot toegewezen locaties.",
                     "**Uitvoerder / teamleader**: taken via veldportaal; teamleader kan iconen vrijgeven.",
                     "Elke actie wordt gecontroleerd: je mag alleen wat bij je rol past (**minimale rechten**). API-sleutels krijgen aparte toestemmingen — bijvoorbeeld “meldingen lezen” zonder toegang tot alles.",
                     "Operationele rapporten: gefilterde CSV of afdruk op meldingen, taken, Time, reserveringen, unit checks, unitmetingen en ESG — voor wie die lijsten mag zien. Afdruk volgt waar mogelijk de lijstlayout; Time = urenstaat. Los van de AVG-account-export (Instellingen → Privacy & export).",

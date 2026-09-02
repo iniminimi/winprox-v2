@@ -48,7 +48,7 @@
             },
             {
                 "title": "Facility",
-                "body": "Locations, units, categories, teams and workers (internal or external). Under Places: Categories, Locations and Units (tenant-wide). Bulk/CSV import, dashboard, documents and announcements on the portal. Enable unit checks per category and unit; manage checklists under People → Teams — shared or per team. New organisations can load a starter template on the dashboard (hotel, hospital, industry, municipality, property management or fleet management) with sample teams, categories, a location, units and matching work menu defaults — names in every language. You can rename everything later; once issues exist, units can only be deactivated."
+                "body": "Locations, units, categories, teams and workers (internal or external). Under Places: Categories, Locations and Units (tenant-wide). Bulk/CSV import, dashboard, documents and announcements on the portal. Enable unit checks per category and unit; manage checklists under People → Teams — shared or per team. New organisations can load a starter template on the dashboard (hotel, hospital, industry, municipality, property management or fleet management) with sample teams, categories, a location, units and matching work menu defaults — names in every language. You can rename everything later; once issues exist, units can only be deactivated. Under People → Workers: search screen for all workers. Workers and employees can be linked to sites; floater teams may clock in anywhere."
             },
             {
                 "title": "Dashboard",
@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "optional",
-                "body": "Time is an optional punch clock: clock in/out, breaks, presence and timesheets. Clock Point remains the sign-in QR (name + icon, task list) even without Time. Time is included in the trial. On WinProx it is optional: monthly add-on on the yearly invoice."
+                "body": "Time is an optional punch clock: clock in/out, breaks, presence and timesheets. Clock Point remains the sign-in QR (name + icon, task list) even without Time. Time is included in the trial. On WinProx it is optional: monthly add-on on the yearly invoice. Name lookup on a clock point is scoped to that site; workers only appear on assigned sites (except floater teams)."
             },
             {
                 "title": "Reservations",

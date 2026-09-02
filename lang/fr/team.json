@@ -147,7 +147,8 @@
             "row": "Ligne :line : :message",
             "no_rows": "Aucune ligne valide trouvée.",
             "database": "Une erreur de base de données est survenue pendant l'import : :message"
-        }
+        },
+        "active": "Actif"
     },
     "import_history": {
         "title": "Imports récents",

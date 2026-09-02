@@ -147,7 +147,8 @@
             "row": "Rij :line: :message",
             "no_rows": "Geen geldige rijen gevonden.",
             "database": "Er is een databasefout opgetreden tijdens het importeren: :message"
-        }
+        },
+        "active": "Actief"
     },
     "import_history": {
         "title": "Recente imports",

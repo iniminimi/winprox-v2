@@ -147,7 +147,8 @@
             "row": "Zeile :line: :message",
             "no_rows": "Keine gültigen Zeilen gefunden.",
             "database": "Während des Imports ist ein Datenbankfehler aufgetreten: :message"
-        }
+        },
+        "active": "Aktiv"
     },
     "import_history": {
         "title": "Letzte Imports",

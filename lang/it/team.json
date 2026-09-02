@@ -147,7 +147,8 @@
             "row": "Riga :line: :message",
             "no_rows": "Nessuna riga valida trovata.",
             "database": "Si è verificato un errore del database durante l'importazione: :message"
-        }
+        },
+        "active": "Attivo"
     },
     "import_history": {
         "title": "Importazioni recenti",

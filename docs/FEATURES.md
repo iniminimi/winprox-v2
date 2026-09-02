@@ -644,8 +644,9 @@ stuurt events; WinProx zet die om in workflow.
 
 ## 6. Mensen (Backoffice + Teams)
 
-**Doel:** twee pagina’s onder **Mensen**. **Backoffice** = collega-gebruikers (login).
+**Doel:** drie pagina’s onder **Mensen**. **Backoffice** = collega-gebruikers (login).
 **Teams** = checklists + operationele teams + workers.
+**Uitvoerders** (`/workers`) = tenant-breed zoek-/filteroverzicht (grote teams).
 Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een aparte team-QR.
 **Sector/hospitality (`InternalTeams`, `category_slug`) eruit.**
 
@@ -655,7 +656,8 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   abonnement. (`superuser` = platformrol die kan overnemen, los van dit scherm.)
 - **Medewerker (`employee`)** — login-account; **kan minder**: operationeel (dashboard, meldingen
   incl. goedkeuren, taken, locaties/units, kalender) + workers/teams-inhoud beheren. **Geen**
-  accountbeheer, **geen** bedrijfsgegevens, **geen** abonnement.
+  accountbeheer, **geen** bedrijfsgegevens, **geen** abonnement. Optioneel **beperkt tot
+  toegewezen locaties** (leeg = alle locaties, grandfathering).
 - **Worker** — veldmedewerker **zonder login** (identificatie via naam + persoonlijk icoon op het
   QR-portaal). **Handelt taken af.** Elke worker kan **teamleader** zijn.
 - **Teamleader** = een worker met vlag `is_teamleader`. Mag **iconen vrijgeven** (lockout + icoon van
@@ -666,23 +668,29 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 ### 6.1 Collega-gebruikers (alleen admin)
 - Lijst + aanmaken/bewerken/deactiveren van gebruikers, met **rol** (admin/medewerker);
   welkomst-/accountmail (set-password-link via reset-broker). `users.is_active` → inactief = geen login.
+- Medewerker: optioneel **locatie-multi-select** (leeg = alle vestigingen). Met Time-module:
+  optioneel **prikklok-team** → gekoppeld worker-profiel (`workers.user_id`, telt niet dubbel als licentie).
 - Sidebar **Mensen → Backoffice** (`/team?section=backoffice`). Alleen admin ziet dit menu-item.
 
 ### 6.2 Teams
 - Sidebar **Mensen → Teams** (`/team?section=teams`): **checklists** (unit checks) + teamlijst.
 - Lijst: teamnaam, aantal actieve workers, actief/inactief.
-- Aanmaken/bewerken (naam, `sort_order`, actief) — **aanmaken/deactiveren = admin**; inhoud
+- Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
 - **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` voor aanmelden
   (naam + icoon), in-/uitklokken en teamtaken-overzicht. Afhandelen van taken blijft via de unit-QR.
 
 ### 6.3 Workers
-- Per team: workers toevoegen (voor-/achternaam), lijst met **icoon-status**; **teamleader-vlag**
+- Sidebar **Mensen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status.
+- Per team: workers toevoegen (voor-/achternaam), **locatie-multi-select** (leeg = overal inklokken
+  behalve Clock Point-filter op naam), lijst met **icoon-status**; **teamleader-vlag**
   (`is_teamleader`) toewijzen/intrekken; **actief/inactief**-toggle (V2-verbetering); verwijderen.
 - **Icoon vrijgeven/resetten** (= ontgrendelt lockout + wist icoon/devices/sessies):
   - In **beheer** (Team-hub): door admin/medewerker.
   - In het **veld-portaal**: door een **teamleader** van het team (follow-up op de portaal-build).
 - Icoon-set = **12** (zie QR-portaal); lockout automatisch na 2 foute pogingen.
+- **Clock Point-lookup** filtert op vestiging van het Clock Point; **invallerteam** (`clocks_all_locations`) ziet naam overal.
+- **Licentie:** actieve users + actieve workers **zonder** `user_id` (gekoppeld collega+worker = 1 licentie).
 
 ### 6.4 Desktop SSO — Microsoft Entra OIDC (v1)
 
