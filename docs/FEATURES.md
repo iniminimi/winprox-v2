@@ -687,7 +687,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   (`is_teamleader`) toewijzen/intrekken; **actief/inactief**-toggle (V2-verbetering); verwijderen.
 - **Optionele portretfoto** bij aanmaken/bewerken: uitsnede via Cropper.js (vierkant/rond), daarna
   client-side verkleind (max. ~400px); getoond in ronde avatar op **Time → Aanwezigheid**,
-  **Uitvoerders** en **Teams** (zelfde stijl; zonder foto = initiaal).
+  **Uitvoerders** en **Teams** (zelfde stijl; zonder foto = initiaal; hover toont grotere preview).
 - **Icoon vrijgeven/resetten** (= ontgrendelt lockout + wist icoon/devices/sessies):
   - In **beheer** (Team-hub): door admin/medewerker.
   - In het **veld-portaal**: door een **teamleader** van het team (follow-up op de portaal-build).
