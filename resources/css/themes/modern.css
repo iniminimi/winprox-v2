@@ -96,7 +96,18 @@
 }
 
 [data-theme='modern'] .wp-sidebar .wp-nav-link .wp-nav-icon {
-    color: inherit;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+[data-theme='modern'] .wp-sidebar .wp-nav-link:hover .wp-nav-icon {
+    background-color: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+}
+
+[data-theme='modern'] .wp-sidebar .wp-nav-link.is-active .wp-nav-icon {
+    background-color: rgba(16, 185, 129, 0.28);
+    color: #6ee7b7;
 }
 
 [data-theme='modern'] .wp-sidebar .wp-text-muted,
