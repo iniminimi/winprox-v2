@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Each organisation has its own environment with limits per plan (WinProx 10/50/100 + Corporate): units, documents and seats (colleagues + workers)."
+                "body": "Each organisation has its own environment with limits per plan (WinProx 10/50/100 + Corporate): units, documents and licences (active colleagues + active workers without linked user_id; colleague + punch-clock profile = one licence)."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                 "items": [
                     "**MySQL**, relational model per tenant.",
                     "Strict **tenant isolation**: every query/API call stays within the organisation.",
-                    "No shared visibility between customers."
+                    "No shared visibility between customers.",
+                    "**Location scope:** pivot tables location_user and location_worker; teams.clocks_all_locations for floaters; workers.user_id links colleague to worker profile."
                 ]
             },
             {
@@ -232,7 +233,8 @@
                     "**SSO** (one work login via Microsoft Entra): for admins and employees on desktop (**Sign in with Microsoft**). Only existing WinProx accounts (email must match the Microsoft account); email + password still works. No automatic new accounts. Workers stay on Clock Point QR (name + icon). Connecting other software (Ultimo, IWMS, …) uses API tokens, not SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
-                    "Reporters: public QR portal without an account. Optional mailbox proof (category and unit): no login; the issue is created only after the link in the mail."
+                    "Reporters: public QR portal without an account. Optional mailbox proof (category and unit): no login; the issue is created only after the link in the mail.",
+                    "Colleague with **punch-clock team** gets a linked worker profile for Clock Point (name + icon); does not count twice towards the licence."
                 ]
             },
             {

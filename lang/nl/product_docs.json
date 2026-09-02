@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (WinProx 10/50/100 + Corporate): units, documenten en licenties (collega's + uitvoerders)."
+                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (WinProx 10/50/100 + Corporate): units, documenten en licenties (actieve collega's + actieve uitvoerders zonder gekoppeld user_id; collega + Prikklok-profiel = één licentie)."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                 "items": [
                     "**MySQL**, relationeel model per tenant.",
                     "Strikte **tenant-isolatie**: elke query/API-call blijft binnen de eigen organisatie.",
-                    "Geen gedeelde zichtbaarheid tussen klanten."
+                    "Geen gedeelde zichtbaarheid tussen klanten.",
+                    "**Locatiescope:** pivot-tabellen location_user en location_worker; teams.clocks_all_locations voor invallers; workers.user_id koppelt collega aan uitvoerderprofiel."
                 ]
             },
             {
@@ -232,7 +233,8 @@
                     "**SSO** (één bedrijfs-login via Microsoft Entra): op desktop voor beheerder en medewerker (**Inloggen met Microsoft**). Alleen bestaande WinProx-accounts (e-mail gelijk aan het Microsoft-account); e-mail + wachtwoord blijft werken. Geen automatische nieuwe accounts. Uitvoerders blijven Clock Point-QR (naam + icoon). Koppeling met andere software (Ultimo, IWMS, …) loopt via API-sleutels, niet via SSO.",
                     "API: persoonlijke **toegangssleutel** (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.",
                     "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon.",
-                    "Melders: publiek QR-portaal zonder account. Optioneel mailboxbewijs (categorie én unit): geen login; de melding ontstaat pas na de link in de mail."
+                    "Melders: publiek QR-portaal zonder account. Optioneel mailboxbewijs (categorie én unit): geen login; de melding ontstaat pas na de link in de mail.",
+                    "Collega met **Prikklok-team** krijgt een gekoppeld uitvoerderprofiel voor Clock Point (naam + icoon); telt niet dubbel als licentie."
                 ]
             },
             {

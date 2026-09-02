@@ -1,314 +1,321 @@
 {
-    "meta_title": "Häufig gestellte Fragen | WinProx",
-    "social": {
-        "og_title": "Häufig gestellte Fragen | WinProx",
-        "og_description": "Antworten zu Meldungen, Aufgaben, QR-Portalen, Time, ESG und Abos."
-    },
-    "eyebrow": "FAQ",
-    "title": "Häufig gestellte Fragen",
-    "subtitle": "Kurze Erklärung für Administratoren, Mitarbeiter und Außendienstteams — abgestimmt auf die aktuelle WinProx Facility-App.",
-    "items": {
-        "how_it_works": {
-            "slug": "how_it_works",
-            "type": "steps",
-            "title": "Wie funktioniert WinProx?",
-            "intro": "WinProx folgt einem Kernfluss: Meldung → Aufgaben → Abschluss. Time (Stechuhr) ist optional; ESG (Messungen) ebenfalls.",
-            "summary": "Standorte und Units, Meldung per QR oder Verwaltung, Freigabe im öffentlichen Portal, Aufgaben pro Team, Nachverfolgung über Dashboard, Briefing und Kalender. Time (Stechuhr) optional; ESG optional.",
-            "steps": [
-                {
-                    "title": "Standorte und Units",
-                    "text": "Erstellen Sie Standorte und fügen Sie Units hinzu (Maschinen, Zonen oder Räume), einzeln oder in Bulk — oder laden Sie auf dem Dashboard eine Startvorlage (Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement). Unter Orte sind Kategorien, Standorte und Units getrennt. Verknüpfen Sie ein Team mit einer Unit, damit Aufgaben automatisch richtig landen."
+        "meta_title": "Häufig gestellte Fragen | WinProx",
+        "social": {
+                "og_title": "Häufig gestellte Fragen | WinProx",
+                "og_description": "Antworten zu Meldungen, Aufgaben, QR-Portalen, Time, ESG und Abos."
+        },
+        "eyebrow": "FAQ",
+        "title": "Häufig gestellte Fragen",
+        "subtitle": "Kurze Erklärung für Administratoren, Mitarbeiter und Außendienstteams — abgestimmt auf die aktuelle WinProx Facility-App.",
+        "items": {
+                "how_it_works": {
+                        "slug": "how_it_works",
+                        "type": "steps",
+                        "title": "Wie funktioniert WinProx?",
+                        "intro": "WinProx folgt einem Kernfluss: Meldung → Aufgaben → Abschluss. Time (Stechuhr) ist optional; ESG (Messungen) ebenfalls.",
+                        "summary": "Standorte und Units, Meldung per QR oder Verwaltung, Freigabe im öffentlichen Portal, Aufgaben pro Team, Nachverfolgung über Dashboard, Briefing und Kalender. Time (Stechuhr) optional; ESG optional.",
+                        "steps": [
+                                {
+                                        "title": "Standorte und Units",
+                                        "text": "Erstellen Sie Standorte und fügen Sie Units hinzu (Maschinen, Zonen oder Räume), einzeln oder in Bulk — oder laden Sie auf dem Dashboard eine Startvorlage (Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement). Unter Orte sind Kategorien, Standorte und Units getrennt. Verknüpfen Sie ein Team mit einer Unit, damit Aufgaben automatisch richtig landen."
+                                },
+                                {
+                                        "title": "Meldung erstellen",
+                                        "text": "Administratoren und Mitarbeiter melden in der App (mit bis zu 4 Fotos). Melder scannen den Unit-QR und tun dasselbe im Browser — ohne App-Installation. Optional verlangt die Verwaltung eine E-Mail-Bestätigung: die Meldung entsteht erst nach dem Link in der Mail."
+                                },
+                                {
+                                        "title": "Freigabe (öffentlich)",
+                                        "text": "Neue Meldungen per QR sind im öffentlichen Portal verschwommen, bis ein Administrator oder Mitarbeiter sie freigibt. In der Verwaltung sehen Sie alles immer unverkürzt."
+                                },
+                                {
+                                        "title": "Aufgaben für Teams",
+                                        "text": "Eine Meldung kann mehrere Aufgaben haben, jeweils einem Team zugewiesen. Planen Sie auch wiederkehrende Wartung über den Kalender."
+                                },
+                                {
+                                        "title": "Außendienst per QR",
+                                        "text": "Ausführende melden sich über den Clock-Point-QR an (Name + Icon) und erledigen Aufgaben über den Unit-QR — ohne WinProx-Login.",
+                                        "highlight": "Clock Point = Anmeldung (Name + Symbol); Einstempeln braucht Time (Stechuhr); Unit-QR = Aufgaben und Meldungen vor Ort."
+                                },
+                                {
+                                        "title": "Nachverfolgen und abschließen",
+                                        "text": "Verfolgen Sie den Fortschritt in Dashboard, Briefing und Kalender. Schließen Sie Aufgaben mit Notiz und Fotos ab; schließen Sie die Meldung, wenn die Arbeit erledigt ist."
+                                }
+                        ],
+                        "box_title": "Interne Teams",
+                        "box_body": "Legen Sie unter Menschen → Teams mindestens ein Team an — in einer kleinen Organisation reicht Hotel oder Facility. Verknüpfen Sie das Team mit Kategorien. Über Clock Point und Unit-QR erfassen Ausführende Updates und Fotos vor Ort."
                 },
-                {
-                    "title": "Meldung erstellen",
-                    "text": "Administratoren und Mitarbeiter melden in der App (mit bis zu 4 Fotos). Melder scannen den Unit-QR und tun dasselbe im Browser — ohne App-Installation. Optional verlangt die Verwaltung eine E-Mail-Bestätigung: die Meldung entsteht erst nach dem Link in der Mail."
+                "pricing": {
+                        "slug": "pricing",
+                        "type": "pricing",
+                        "title": "Was kostet WinProx?",
+                        "intro": "Gratis-Probe (50 Units, 50 Plätze, Time inklusive). IoT, ESG und API nicht in der Probe. Dann 10, 50 oder 100 Units pro Jahr mit gleicher Platzanzahl. Time optional. Corporate individuell.",
+                        "summary": "Probe bis 50 Units und 50 Plätze, Time inklusive. IoT, ESG und API auf Corporate.",
+                        "content_note": "Unit = Objekt oder Ort mit QR. Dokument = Datei im QR-Portal, max. 1 pro Unit. Platz = Kollege mit Login oder Ausführender (Clock Point); Kollege mit verknüpftem Stempeluhr-Team zählt einmal (nicht doppelt). Fotos unbegrenzt.",
+                        "plans": {
+                                "winprox_10": {
+                                        "units": "Bis zu 10 Units und 10 Dokumente.",
+                                        "announcements": "149 € / Jahr",
+                                        "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
+                                        "description": "Melden und nachverfolgen per QR.",
+                                        "users": "Bis zu 10 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
+                                },
+                                "winprox_50": {
+                                        "units": "Bis zu 50 Units und 50 Dokumente.",
+                                        "announcements": "399 € / Jahr",
+                                        "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
+                                        "description": "Melden und nachverfolgen per QR.",
+                                        "users": "Bis zu 50 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
+                                },
+                                "winprox_100": {
+                                        "units": "Bis zu 100 Units und 100 Dokumente.",
+                                        "announcements": "699 € / Jahr",
+                                        "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
+                                        "description": "Melden und nachverfolgen per QR.",
+                                        "users": "Bis zu 100 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
+                                },
+                                "corporate": {
+                                        "units": "Mehr als 100 Units oder API/Webhooks/Integrationen erforderlich.",
+                                        "announcements": "Individueller Preis",
+                                        "documents": "Time (Stechuhr), IoT Connect und ESG inklusive.",
+                                        "description": "Für >1.000 Einheiten oder bei Bedarf an API/Webhooks/Integrationen.",
+                                        "users": "Plätze nach Vereinbarung; unbegrenzt Standorte und Fotos"
+                                }
+                        }
                 },
-                {
-                    "title": "Freigabe (öffentlich)",
-                    "text": "Neue Meldungen per QR sind im öffentlichen Portal verschwommen, bis ein Administrator oder Mitarbeiter sie freigibt. In der Verwaltung sehen Sie alles immer unverkürzt."
+                "qr_code": {
+                        "slug": "qr_code",
+                        "type": "text",
+                        "title": "Welche QR-Codes gibt es?",
+                        "body": "Unit-QR: Melder erstellen Meldungen; Ausführer (nach Clock-Point-Anmeldung) bearbeiten offene Aufgaben und können — wenn Kategorie und Unit Unit-Checks erlauben — OK/Nicht OK erfassen. Clock-Point-QR: Anmeldung (Name + Symbol) und Teamaufgaben; Ein-/Ausstempeln nur mit Time (Stechuhr). Standort-QR: allgemeiner Link zum Standort. Alles im Browser — ohne App.",
+                        "summary": "Unit-QR (Meldungen/Aufgaben/Unit-Check), Clock-Point-QR (Anmeldung; Stempeln mit Time), Standort-QR — alles im Browser."
                 },
-                {
-                    "title": "Aufgaben für Teams",
-                    "text": "Eine Meldung kann mehrere Aufgaben haben, jeweils einem Team zugewiesen. Planen Sie auch wiederkehrende Wartung über den Kalender."
+                "reporter_portal": {
+                        "slug": "reporter_portal",
+                        "type": "portal",
+                        "title": "Wie funktioniert das Melderportal?",
+                        "intro": "Nach dem Scannen des Unit-QR öffnet sich eine Webseite für diese Unit. Melder beschreiben Probleme; freigegebene Meldungen sowie Dokumente/Mitteilungen sind sichtbar. Ausführer mit Teamzugang bearbeiten offene Aufgaben und — wenn aktiviert — Unit-Checks.",
+                        "summary": "Unit-QR-Portal: Meldung, freigegebene Meldungen, Dokumente, Mitteilungen, Aufgaben vor Ort und optional Unit-Check für Ausführer. Optional: Kontaktdaten und/oder E-Mail-Bestätigung (Kategorie und Unit); bis zum Link gibt es keine Meldung.",
+                        "sections": [
+                                {
+                                        "title": "Neue Meldung",
+                                        "text": "Beschreiben Sie das Problem und fügen Sie optional bis zu 4 Fotos hinzu. Fotos werden auf dem Gerät verkleinert vor dem Upload. Vorname, Name und E-Mail sind optional, es sei denn die Verwaltung hat Kontaktdaten Pflicht gemacht (Kategorie und Unit). Optional kann die Verwaltung eine E-Mail-Bestätigung verlangen (Kategorie und Unit): Sie erhalten einen Link; Meldung, Aufgabe und Webhook entstehen erst nach diesem Klick. Angemeldete Mitarbeiter müssen diese Felder nicht ausfüllen und erhalten keine Bestätigungsmail. Gegen Spam gelten Limits (z. B. höchstens eine Meldung alle paar Minuten pro Gerät)."
+                                },
+                                {
+                                        "title": "Wartet auf Prüfung",
+                                        "text": "Bis ein Administrator oder Mitarbeiter freigibt, bleiben Text und Fotos im öffentlichen Portal verschwommen. In der Verwaltung ist alles sofort lesbar."
+                                },
+                                {
+                                        "title": "Offene Meldungen",
+                                        "text": "Übersicht freigegebener, aktiver Meldungen für diese Unit, mit Status."
+                                },
+                                {
+                                        "title": "Dokumente und Mitteilungen",
+                                        "text": "Geteilte Anleitungen und Ankündigungen für den Standort oder die Unit, mit Sprachwahl und automatischer Übersetzung, wenn verfügbar."
+                                },
+                                {
+                                        "title": "Aufgaben vor Ort",
+                                        "text": "Ausführende, die über Clock Point angemeldet sind und zum Team gehören, starten und schließen Aufgaben über den Unit-QR ab."
+                                },
+                                {
+                                        "title": "Unit-Check (Ausführer)",
+                                        "text": "Nur für Ausführer nach Clock-Point-Anmeldung und nur wenn der Administrator Unit-Checks an Kategorie und Unit aktiviert hat. OK oder Nicht OK erfassen, optional mit Checkliste. OK erstellt keine Meldung; nach Nicht OK kann eine normale Meldung folgen."
+                                }
+                        ]
                 },
-                {
-                    "title": "Außendienst per QR",
-                    "text": "Ausführende melden sich über den Clock-Point-QR an (Name + Icon) und erledigen Aufgaben über den Unit-QR — ohne WinProx-Login.",
-                    "highlight": "Clock Point = Anmeldung (Name + Symbol); Einstempeln braucht Time (Stechuhr); Unit-QR = Aufgaben und Meldungen vor Ort."
+                "moderation": {
+                        "slug": "moderation",
+                        "type": "text",
+                        "title": "Warum ist Inhalt im QR-Portal verschwommen?",
+                        "body": "Öffentliche QR-Seiten verschwimmen Beschreibung und Fotos, bis ein Administrator oder Mitarbeiter die Meldung freigibt. So verhindern Sie, dass unangemessene oder falsche Inhalte öffentlich sichtbar sind. Verwaltungsbildschirme (Dashboard, Meldungen, Aufgaben) zeigen immer alles unverkürzt — dort bewerten Sie den Inhalt.",
+                        "summary": "Blur nur auf öffentlichen QR-Portalen bis Freigabe; Verwaltung nie verschwommen."
                 },
-                {
-                    "title": "Nachverfolgen und abschließen",
-                    "text": "Verfolgen Sie den Fortschritt in Dashboard, Briefing und Kalender. Schließen Sie Aufgaben mit Notiz und Fotos ab; schließen Sie die Meldung, wenn die Arbeit erledigt ist."
+                "photos": {
+                        "slug": "photos",
+                        "type": "text",
+                        "title": "Wie funktionieren Fotos bei Meldungen und Aufgaben?",
+                        "body": "Bei einer Meldung oder Aufgabenabschluss können Sie bis zu 4 Fotos hinzufügen. Auf Telefon und im Browser werden sie zuerst verkleinert (schnellerer Upload). In der Verwaltung sehen Sie Fotos scharf; im öffentlichen Portal bleiben sie verschwommen bis zur Freigabe der Meldung.",
+                        "summary": "Maximal 4 Fotos, clientseitig verkleinert; Blur nur im öffentlichen Portal vor Freigabe."
+                },
+                "time_clock": {
+                        "slug": "time_clock",
+                        "type": "text",
+                        "title": "Was ist das Time-Modul / Clock Point?",
+                        "body": "Time ist die optionale Stempeluhr: Ein-/Ausstempeln über die Clock-Point-QR (Pausen und Schichten inklusive). Namensuche am Clock Point pro Standort: nur berechtigte Ausführende (oder Springer-Teams) sehen ihren Namen. Kollegen mit Stempeluhr-Team stempeln über das verknüpfte Profil ein. Clock Point bleibt die Anmelde-QR (Name + Symbol) auch ohne Time. In der Testphase ist Time enthalten; im bezahlten Abo optional.",
+                        "summary": "Time: Ein-/Ausstempeln via Clock Point, Suche pro Standort; Kollegen via Stempeluhr-Team."
+                },
+                "esg": {
+                        "slug": "esg",
+                        "type": "text",
+                        "title": "Was ist ESG & Compliance?",
+                        "body": "ESG ist ein optionales Modul auf WinProx Corporate, um Messwerte bei wiederkehrenden Inspektionen zu erfassen (Energie, Sicherheit, …). Administratoren sehen Indikatoren, Messungen und Folgeaufgaben. Indikator an wiederkehrende Meldung koppeln; Messungen über Portal oder API.",
+                        "summary": "ESG-Modul auf Corporate: Indikatoren, Messungen und Nachverfolgung bei wiederkehrenden Inspektionen."
+                },
+                "for_who": {
+                        "slug": "for_who",
+                        "type": "text",
+                        "title": "Für wen ist WinProx?",
+                        "body": "Für Facility-Organisationen — Fabriken, Pflege, Kommunen, Campusse — die Meldungen, interne Teams, Feldnachverfolgung, optional Time (Stechuhr) und optional ESG oder IoT Connect zentral steuern wollen. Keine separaten Hospitality- oder Auftragnehmerportale: eine Facility-App.",
+                        "summary": "Facility-Organisationen: Meldungen, Teams, Feldarbeit; Time (Stechuhr) optional; ESG und IoT bei Corporate."
+                },
+                "user_roles": {
+                        "slug": "user_roles",
+                        "type": "roles",
+                        "title": "Wie funktionieren die verschiedenen Benutzer?",
+                        "summary": "Administrator: volle Kontrolle und Abonnement. Mitarbeiter: tägliche Nachverfolgung. Ausführender: Außendienst über Clock Point und QR ohne Login.",
+                        "roles": [
+                                {
+                                        "title": "Administrator",
+                                        "text": "Volle Kontrolle: Standorte, Meldungen, Aufgaben, Team, Abonnement, Kollegenkonten und (falls zutreffend) API-Einstellungen. Am Desktop können sie sich mit E-Mail + Passwort oder **Mit Microsoft anmelden** anmelden (E-Mail muss übereinstimmen)."
+                                },
+                                {
+                                        "title": "Mitarbeiter",
+                                        "text": "Tägliche Nachverfolgung von Standorten, Meldungen und Aufgaben. Keine Verwaltung von Abonnement oder Kollegenkonten. Am Desktop können sie sich mit E-Mail + Passwort oder **Mit Microsoft anmelden** anmelden (E-Mail muss übereinstimmen)."
+                                },
+                                {
+                                        "title": "Ausführender",
+                                        "text": "Arbeitet ohne WinProx-Login. Meldet sich über Clock-Point-QR an; startet/schließt Aufgaben über den Unit-QR, mit Fotos und Notizen."
+                                }
+                        ]
+                },
+                "microsoft_login": {
+                        "slug": "microsoft_login",
+                        "type": "text",
+                        "title": "Kann ich mich mit Microsoft anmelden?",
+                        "body": "Ja, für Administratoren und Mitarbeiter auf dem Desktop-Anmeldebildschirm, über **Mit Microsoft anmelden**. Die E-Mail Ihres Microsoft-Arbeitskontos muss mit Ihrem bestehenden WinProx-Konto übereinstimmen. Es wird kein neues Konto angelegt. E-Mail + Passwort bleibt möglich. Ausführende melden sich über Clock-Point-QR (Name + Symbol) an, nicht über Microsoft. Anbindung anderer Software (Ultimo, IWMS, …) über API-Token, nicht über diese Anmeldung.",
+                        "summary": "Administrator/Mitarbeiter: Mit Microsoft anmelden am Desktop; E-Mail muss übereinstimmen. Ausführende: Clock-Point-QR. Keine neuen Konten."
+                },
+                "data_export": {
+                        "slug": "data_export",
+                        "type": "text",
+                        "title": "Kann ich meine Daten exportieren?",
+                        "body": "Ja. Gehen Sie zu Einstellungen → Datenschutz & Datenexport. Dort kann der Administrator einen maschinenlesbaren Export (JSON in einer ZIP) des Kontos und relevanter Aktivitäten herunterladen. Bewahren Sie die Datei sicher auf. Das ist der DSGVO-Kontoexport — getrennt von operativen Listenberichten (Bericht herunterladen auf Suchbildschirmen).",
+                        "summary": "Administratoren exportieren unter Einstellungen → Datenschutz & Datenexport (DSGVO)."
+                },
+                "list_reports": {
+                        "slug": "list_reports",
+                        "type": "text",
+                        "title": "Was ist Bericht herunterladen auf Suchbildschirmen?",
+                        "body": "Auf gefilterten Suchbildschirmen (Meldungen, Aufgaben, Time/Stunden, Reservierungen, Unit-Checks, Unit-Messungen, ESG-Messungen) finden Sie Bericht herunterladen. Wählen Sie CSV (Tabelle für Excel) oder Drucken (Strg+P zu PDF). Der Druck folgt wo sinnvoll dem Kartenlayout der Backoffice-Liste; Time zeigt eine Stundenübersicht. Der Export nutzt dieselben Filter wie die Liste, nicht nur die aktuelle Seite (max. 5000 Zeilen). Nur für Nutzer, die diese Listen sehen dürfen. Das ist nicht der DSGVO-Kontoexport — der bleibt unter Einstellungen → Datenschutz und Export. Später: Organisation → Berichte mit gespeicherten Vorlagen.",
+                        "summary": "Bericht herunterladen auf Suchbildschirmen: gefilterte CSV oder Druck; max. 5000 Zeilen — getrennt vom DSGVO-Export."
+                },
+                "delete_account": {
+                        "slug": "delete_account",
+                        "type": "text",
+                        "title": "Wie lösche ich mein Konto / Organisationsdaten?",
+                        "body": "Nur ein Administrator kann das. Gehen Sie zu Abonnement → Organisationsdaten löschen. Laden Sie zuerst einen Export unter Einstellungen → Datenschutz & Datenexport herunter, bestätigen Sie mit Passwort und E-Mail. In der Testphase können Sie danach selbst endgültig löschen. Bei einem bezahlten Abonnement folgt eine 7-tägige Wartezeit; die WinProx-Administration führt die Löschung durch. Bis dahin können Sie über Abonnement abbrechen. Mediendateien (Fotos, Dokumente) werden nicht im Wiederherstellungs-Snapshot gespeichert. Endet die Testphase ohne Abonnement, sendet WinProx Warnungen und kann die Organisation automatisch löschen (Standard etwa Tag 14 nach Testende).",
+                        "summary": "Admin: Abonnement → Daten löschen (Export + Passwort + E-Mail; Trial selbst, bezahlt über WinProx nach 7 Tagen; abgelaufene Testphase kann auto-löschen)."
+                },
+                "internal_teams": {
+                        "slug": "internal_teams",
+                        "type": "text",
+                        "title": "Wie richte ich interne Teams ein?",
+                        "body": "Klein starten: ein Team (zum Beispiel Hotel oder Facility) und alle, die Aufgaben ausführen. Gehen Sie zu Menschen → Teams. Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie Teams mit Kategorien. Ausführende manuell oder per CSV/Excel. Unter Teams verwalten Sie auch Checklisten für Unit-Checks. Drucken Sie den Clock-Point-QR für die Fläche (Time → Clock Points).",
+                        "summary": "Ein Team reicht zum Start. Menschen → Teams; mit Kategorien verknüpfen; Clock-Point-QR."
+                },
+                "team_follow_up": {
+                        "slug": "team_follow_up",
+                        "type": "text",
+                        "title": "Wie verfolgen Teams Aufgaben?",
+                        "body": "Aufgaben erscheinen in Aufgaben, Kalender, Briefing, Clock-Point-QR und Unit-QR. Ausführer starten und schließen vor Ort ab. Koordinatoren verfolgen den Status in der Verwaltung. Wiederkehrende Meldungen erzeugen Zyklen mit geplantem Fälligkeitsdatum; wiederkehrende Aufgaben zeigen die Pill «Wiederkehrend».",
+                        "summary": "Nachverfolgung via Aufgaben, Kalender, Briefing und QR; wiederkehrende Zyklen mit Pill «Wiederkehrend»."
+                },
+                "reservations": {
+                        "slug": "reservations",
+                        "type": "text",
+                        "title": "Wie funktionieren Reservierungen?",
+                        "body": "Reservierungen sind für teilbare Ressourcen mit Zeitslot (Räume, Fahrzeuge, Schlüssel) — nicht für Störungsmeldungen. Aktivieren Sie Reservierbar an der Kategorie und Reservierungen erlauben an der Unit (standardmäßig aus). Gäste buchen über den Unit-QR (30 Min. Hold + E-Mail-Bestätigung). Die Verwaltung legt an, ändert und storniert; überlappende Slots werden blockiert.",
+                        "summary": "In der App: Menü Reservierungen (und Kalender). Kategorie Reservierbar + Unit Reservierungen erlauben (standardmäßig aus); Gast bucht per QR mit E-Mail-Bestätigung."
+                },
+                "multiple_locations": {
+                        "slug": "multiple_locations",
+                        "type": "text",
+                        "title": "Kann ich mehrere Standorte verwalten?",
+                        "body": "Ja. Unter Orte verwalten Sie Kategorien, Standorte und Units getrennt. Mehrere Standorte und Units in einer Organisation, mit Filtern. Ausführende und Kollegen können Standorten zugeordnet werden; Clock Point zeigt Namen nur an zugewiesenen Standorten (Springer-Teams überall). Limits hängen vom Abonnement ab.",
+                        "summary": "Mehrere Standorte über Orte; Ausführende/Kollegen optional pro Standort; Springer-Team überall."
+                },
+                "page_help": {
+                        "slug": "page_help",
+                        "type": "text",
+                        "title": "Wo finde ich Hilfe auf einem Bildschirm?",
+                        "body": "Auf den meisten Bildschirmen steht ein ? neben dem Titel. Es öffnet Seitenhilfe mit Aktionen und — wo relevant — Erklärungen zu Statussen (neu, in Bearbeitung, erledigt, geschlossen). Auf öffentlichen QR-Portalen steht dieselbe Hilfe in der Kopfzeile.",
+                        "summary": "Nutzen Sie die ?-Schaltfläche neben dem Seitentitel für Aktions- und Statushilfe."
+                },
+                "mobile": {
+                        "slug": "mobile",
+                        "type": "text",
+                        "title": "Funktioniert WinProx auf dem Smartphone?",
+                        "body": "Ja. Verwaltung ist desktop-first, aber auf Tablet nutzbar. Außendienst- und QR-Portale sind mobile-first. Ausführende arbeiten am Handy über Clock Point und Unit-QR. Das Dunkel-Thema ist am Handy praktisch.",
+                        "summary": "Browser auf Handy/Tablet/Desktop; Außendienst per QR ist mobile-first."
+                },
+                "install": {
+                        "slug": "install",
+                        "type": "text",
+                        "title": "Muss ich Software installieren?",
+                        "body": "Nein. WinProx ist eine Web-App. Koordinatoren und Außendienstteams arbeiten im Browser, ohne separate Installation oder App-Store.",
+                        "summary": "Keine Installation — alles über den Browser."
+                },
+                "dynamic_qr_codes": {
+                        "slug": "dynamic_qr_codes",
+                        "type": "text",
+                        "title": "Dynamische QR-Codes",
+                        "body": "Dynamische QR-Aufkleber können später einer anderen Unit zugeordnet werden. Drucken Sie in Bulk (z.B. Avery-Bögen), kleben Sie vor Ort, scannen Sie angemeldet und weisen Sie eine Unit zu. Statische Codes bleiben an einer Unit gebunden.",
+                        "summary": "Dynamische QRs neu zuordenbar; Bulk-Aufkleber drucken und vor Ort eine Unit zuweisen."
+                },
+                "stickers": {
+                        "slug": "stickers",
+                        "type": "text",
+                        "title": "Welche Aufkleber kann ich verwenden?",
+                        "body": "Zum Drucken empfehlen wir Avery- oder Herma-Etiketten (A4). Unter Standorte laden Sie ein Etikettenblatt (Word) im passenden Format herunter. Optional stellen Sie unter Einstellungen einen Etikettenhintergrund oder Organisationslogo ein.",
+                        "summary": "Avery/Herma A4; Etikettenblatt aus Standorte; optionales Logo/Hintergrund in Einstellungen."
+                },
+                "style": {
+                        "slug": "style",
+                        "type": "text",
+                        "title": "WinProx-Stil und eigener Portal-Stil",
+                        "body": "Unter Einstellungen wählen Sie WinProx-Stil: Standard oder Dunkel (für die App). Eigener Portal-Stil ist optional: Hintergrund- und Buttonfarben (und optional Hintergrundfoto) für das öffentliche QR-Portal, das Melder und Ausführende sehen.",
+                        "summary": "Standard/Dunkel für die App; optionale eigene Farben/Hintergrund für das QR-Portal."
+                },
+                "api_webhooks": {
+                        "slug": "api_webhooks",
+                        "type": "text",
+                        "title": "API und Webhooks?",
+                        "body": "Bei Corporate (oder wenn API freigeschaltet) verwalten Sie API-Tokens und ausgehende Webhooks (HMAC) unter Einstellungen. Koppeln Sie WinProx an andere Systeme für Meldungen, Aufgaben, Unit-Checks (unit.check.recorded), ESG-Messungen u. a. IoT Connect nutzt ein separates Gateway-Token für Sensor-Ingest (Corporate).",
+                        "summary": "API-Tokens und Webhooks unter Einstellungen (Corporate); Meldungen, Aufgaben, Unit-Checks, ESG; HMAC-Lieferungen. IoT-Ingest via Gateway-Token (Corporate)."
+                },
+                "iot": {
+                        "slug": "iot",
+                        "type": "text",
+                        "title": "Was ist IoT Connect?",
+                        "body": "IoT Connect verbindet Sensor-Gateways mit WinProx (Corporate). Alarme (Wasserleck, Tür zu lange offen) erstellen automatisch eine freigegebene Meldung und Aufgabe. Sensor-Messungen können als ESG-Messungen gespeichert werden. Gateways, Sensoren und Regeln unter IoT Connect verwalten; Gateway sendet an POST /api/v1/iot/events mit Gateway-Token.",
+                        "summary": "IoT Connect bei Corporate: Sensor-Alarme → Meldungen; Messungen → ESG. Gateway-Token-Ingest."
+                },
+                "unit_checks": {
+                        "slug": "unit_checks",
+                        "type": "text",
+                        "title": "Was sind Unit-Checks?",
+                        "body": "Unit-Checks sind schnelle OK/Nicht-OK-Bestätigungen auf dem Unit-QR durch Ausführende (nach Clock Point). Zuerst an Kategorie und Unit aktivieren (standardmäßig aus). Optionale Checklisten erstellen Sie unter Teams (geteilt oder einem Team zugeordnet; Vorlagen für Reinigung, Technik und Security) und verknüpfen sie pro Unit. Bei OK müssen alle Punkte abgehakt sein. Verlauf und Filter unter Unit-Checks; Webhook unit.check.recorded für Integrationen. Getrennt von Meldungen und ESG-Messungen.",
+                        "summary": "OK/Nicht OK via Unit-QR (Kategorie + Unit an); Checklisten unter Teams; OK ohne Meldung; Webhook unit.check.recorded."
+                },
+                "work_menu": {
+                        "slug": "work_menu",
+                        "type": "text",
+                        "title": "Was ist das Arbeitsmenü?",
+                        "body": "Unter Organisation → Einstellungen → Arbeitsmenü-Einstellungen wählt der Administrator pro Organisation, welche Einträge unter Arbeit in der Seitenleiste sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag im Backoffice (Routen sind dann gesperrt). Bestehende QR-Einstellungen auf Units bleiben aktiv; neu aktivieren auf Units oder Kategorien ist nicht möglich, solange der Menüeintrag aus ist. Bei einer Startvorlage auf dem Dashboard sehen Sie die Arbeitsmenü-Wahl schon in der Vorschau vor dem Anlegen und erneut auf der Karte Startvorlage angelegt. Später ändern Sie das unter Arbeitsmenü-Einstellungen. Das Löschen der Startvorlage setzt das Arbeitsmenü nicht zurück.",
+                        "summary": "Organisation → Einstellungen → Arbeitsmenü: Seitenleiste pro Mandant; Startvorlage zeigt Vorschau und Ergebnis."
+                },
+                "unit_measurements": {
+                        "slug": "unit_measurements",
+                        "type": "text",
+                        "title": "Was sind Unit-Messungen?",
+                        "body": "Unit-Messungen sind einfache Messwerte an einer Unit über den Unit-QR — z. B. Kilometerstand, Raumtemperatur oder Fahrzeugstatus. Kein ESG-Modul nötig. Messfelder unter Arbeit → Unit-Messungen anlegen (Name, Typ, Einheit), Unit-Messungen erlauben an Kategorie und Unit aktivieren und Felder verknüpfen. Das QR-Portal zeigt die Kachel Messung; Historie im Admin. API: POST /api/v1/units/{unit}/measurements (Ability units:update). Webhook: unit.measurement.recorded. Getrennt von Unit-Checks (OK/Nicht OK) und ESG (Corporate).",
+                        "summary": "Messwerte per Unit-QR (km, °C, Status…): Felder unter Arbeit → Unit-Messungen; Kategorie + Unit an; Historie; API/Webhook. Kein ESG nötig."
+                },
+                "worker_locations": {
+                        "slug": "worker_locations",
+                        "type": "text",
+                        "title": "Wie beschränke ich Ausführende auf bestimmte Standorte?",
+                        "body": "Unter Menschen → Teams Ausführenden bearbeiten oder mit Spalte location_names importieren (kommagetrennte Namen). Leere Auswahl = überall (Standard für bestehende). Für Springer: **Darf überall einstempeln** am Team. Große Listen unter Menschen → Ausführende suchen.",
+                        "summary": "Standorte pro Ausführendem in Teams; Import location_names; Springer = überall; Suche unter Ausführende."
                 }
-            ],
-            "box_title": "Interne Teams",
-            "box_body": "Legen Sie unter Menschen → Teams mindestens ein Team an — in einer kleinen Organisation reicht Hotel oder Facility. Verknüpfen Sie das Team mit Kategorien. Über Clock Point und Unit-QR erfassen Ausführende Updates und Fotos vor Ort."
-        },
-        "pricing": {
-            "slug": "pricing",
-            "type": "pricing",
-            "title": "Was kostet WinProx?",
-            "intro": "Gratis-Probe (50 Units, 50 Plätze, Time inklusive). IoT, ESG und API nicht in der Probe. Dann 10, 50 oder 100 Units pro Jahr mit gleicher Platzanzahl. Time optional. Corporate individuell.",
-            "summary": "Probe bis 50 Units und 50 Plätze, Time inklusive. IoT, ESG und API auf Corporate.",
-            "content_note": "Unit = Objekt oder Ort mit QR. Dokument = Datei im QR-Portal, max. 1 pro Unit. Platz = Kollege mit Login oder Ausführender (Clock Point). Fotos unbegrenzt.",
-            "plans": {
-                "winprox_10": {
-                    "units": "Bis zu 10 Units und 10 Dokumente.",
-                    "announcements": "149 € / Jahr",
-                    "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
-                    "description": "Melden und nachverfolgen per QR.",
-                    "users": "Bis zu 10 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
-                },
-                "winprox_50": {
-                    "units": "Bis zu 50 Units und 50 Dokumente.",
-                    "announcements": "399 € / Jahr",
-                    "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
-                    "description": "Melden und nachverfolgen per QR.",
-                    "users": "Bis zu 50 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
-                },
-                "winprox_100": {
-                    "units": "Bis zu 100 Units und 100 Dokumente.",
-                    "announcements": "699 € / Jahr",
-                    "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
-                    "description": "Melden und nachverfolgen per QR.",
-                    "users": "Bis zu 100 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
-                },
-                "corporate": {
-                    "units": "Mehr als 100 Units oder API/Webhooks/Integrationen erforderlich.",
-                    "announcements": "Individueller Preis",
-                    "documents": "Time (Stechuhr), IoT Connect und ESG inklusive.",
-                    "description": "Für >1.000 Einheiten oder bei Bedarf an API/Webhooks/Integrationen.",
-                    "users": "Plätze nach Vereinbarung; unbegrenzt Standorte und Fotos"
-                }
-            }
-        },
-        "qr_code": {
-            "slug": "qr_code",
-            "type": "text",
-            "title": "Welche QR-Codes gibt es?",
-            "body": "Unit-QR: Melder erstellen Meldungen; Ausführer (nach Clock-Point-Anmeldung) bearbeiten offene Aufgaben und können — wenn Kategorie und Unit Unit-Checks erlauben — OK/Nicht OK erfassen. Clock-Point-QR: Anmeldung (Name + Symbol) und Teamaufgaben; Ein-/Ausstempeln nur mit Time (Stechuhr). Standort-QR: allgemeiner Link zum Standort. Alles im Browser — ohne App.",
-            "summary": "Unit-QR (Meldungen/Aufgaben/Unit-Check), Clock-Point-QR (Anmeldung; Stempeln mit Time), Standort-QR — alles im Browser."
-        },
-        "reporter_portal": {
-            "slug": "reporter_portal",
-            "type": "portal",
-            "title": "Wie funktioniert das Melderportal?",
-            "intro": "Nach dem Scannen des Unit-QR öffnet sich eine Webseite für diese Unit. Melder beschreiben Probleme; freigegebene Meldungen sowie Dokumente/Mitteilungen sind sichtbar. Ausführer mit Teamzugang bearbeiten offene Aufgaben und — wenn aktiviert — Unit-Checks.",
-            "summary": "Unit-QR-Portal: Meldung, freigegebene Meldungen, Dokumente, Mitteilungen, Aufgaben vor Ort und optional Unit-Check für Ausführer. Optional: Kontaktdaten und/oder E-Mail-Bestätigung (Kategorie und Unit); bis zum Link gibt es keine Meldung.",
-            "sections": [
-                {
-                    "title": "Neue Meldung",
-                    "text": "Beschreiben Sie das Problem und fügen Sie optional bis zu 4 Fotos hinzu. Fotos werden auf dem Gerät verkleinert vor dem Upload. Vorname, Name und E-Mail sind optional, es sei denn die Verwaltung hat Kontaktdaten Pflicht gemacht (Kategorie und Unit). Optional kann die Verwaltung eine E-Mail-Bestätigung verlangen (Kategorie und Unit): Sie erhalten einen Link; Meldung, Aufgabe und Webhook entstehen erst nach diesem Klick. Angemeldete Mitarbeiter müssen diese Felder nicht ausfüllen und erhalten keine Bestätigungsmail. Gegen Spam gelten Limits (z. B. höchstens eine Meldung alle paar Minuten pro Gerät)."
-                },
-                {
-                    "title": "Wartet auf Prüfung",
-                    "text": "Bis ein Administrator oder Mitarbeiter freigibt, bleiben Text und Fotos im öffentlichen Portal verschwommen. In der Verwaltung ist alles sofort lesbar."
-                },
-                {
-                    "title": "Offene Meldungen",
-                    "text": "Übersicht freigegebener, aktiver Meldungen für diese Unit, mit Status."
-                },
-                {
-                    "title": "Dokumente und Mitteilungen",
-                    "text": "Geteilte Anleitungen und Ankündigungen für den Standort oder die Unit, mit Sprachwahl und automatischer Übersetzung, wenn verfügbar."
-                },
-                {
-                    "title": "Aufgaben vor Ort",
-                    "text": "Ausführende, die über Clock Point angemeldet sind und zum Team gehören, starten und schließen Aufgaben über den Unit-QR ab."
-                },
-                {
-                    "title": "Unit-Check (Ausführer)",
-                    "text": "Nur für Ausführer nach Clock-Point-Anmeldung und nur wenn der Administrator Unit-Checks an Kategorie und Unit aktiviert hat. OK oder Nicht OK erfassen, optional mit Checkliste. OK erstellt keine Meldung; nach Nicht OK kann eine normale Meldung folgen."
-                }
-            ]
-        },
-        "moderation": {
-            "slug": "moderation",
-            "type": "text",
-            "title": "Warum ist Inhalt im QR-Portal verschwommen?",
-            "body": "Öffentliche QR-Seiten verschwimmen Beschreibung und Fotos, bis ein Administrator oder Mitarbeiter die Meldung freigibt. So verhindern Sie, dass unangemessene oder falsche Inhalte öffentlich sichtbar sind. Verwaltungsbildschirme (Dashboard, Meldungen, Aufgaben) zeigen immer alles unverkürzt — dort bewerten Sie den Inhalt.",
-            "summary": "Blur nur auf öffentlichen QR-Portalen bis Freigabe; Verwaltung nie verschwommen."
-        },
-        "photos": {
-            "slug": "photos",
-            "type": "text",
-            "title": "Wie funktionieren Fotos bei Meldungen und Aufgaben?",
-            "body": "Bei einer Meldung oder Aufgabenabschluss können Sie bis zu 4 Fotos hinzufügen. Auf Telefon und im Browser werden sie zuerst verkleinert (schnellerer Upload). In der Verwaltung sehen Sie Fotos scharf; im öffentlichen Portal bleiben sie verschwommen bis zur Freigabe der Meldung.",
-            "summary": "Maximal 4 Fotos, clientseitig verkleinert; Blur nur im öffentlichen Portal vor Freigabe."
-        },
-        "time_clock": {
-            "slug": "time_clock",
-            "type": "text",
-            "title": "Was ist das Time-Modul / Clock Point?",
-            "body": "Time ist die optionale Stechuhr: Ausführende stempeln über den Clock-Point-QR ein und aus (Pausen und Schichten inklusive). Clock Point bleibt der Anmelde-QR (Name + Symbol) auch ohne Time. In der Testphase ist Time enthalten. Bei einem bezahlten WinProx-Abo ist es optional; Sie wählen es unter Abo.",
-            "summary": "Time (Stechuhr): Ein-/Ausstempeln über Clock Point. Optional, nicht standardmäßig enthalten."
-        },
-        "esg": {
-            "slug": "esg",
-            "type": "text",
-            "title": "Was ist ESG & Compliance?",
-            "body": "ESG ist ein optionales Modul auf WinProx Corporate, um Messwerte bei wiederkehrenden Inspektionen zu erfassen (Energie, Sicherheit, …). Administratoren sehen Indikatoren, Messungen und Folgeaufgaben. Indikator an wiederkehrende Meldung koppeln; Messungen über Portal oder API.",
-            "summary": "ESG-Modul auf Corporate: Indikatoren, Messungen und Nachverfolgung bei wiederkehrenden Inspektionen."
-        },
-        "for_who": {
-            "slug": "for_who",
-            "type": "text",
-            "title": "Für wen ist WinProx?",
-            "body": "Für Facility-Organisationen — Fabriken, Pflege, Kommunen, Campusse — die Meldungen, interne Teams, Feldnachverfolgung, optional Time (Stechuhr) und optional ESG oder IoT Connect zentral steuern wollen. Keine separaten Hospitality- oder Auftragnehmerportale: eine Facility-App.",
-            "summary": "Facility-Organisationen: Meldungen, Teams, Feldarbeit; Time (Stechuhr) optional; ESG und IoT bei Corporate."
-        },
-        "user_roles": {
-            "slug": "user_roles",
-            "type": "roles",
-            "title": "Wie funktionieren die verschiedenen Benutzer?",
-            "summary": "Administrator: volle Kontrolle und Abonnement. Mitarbeiter: tägliche Nachverfolgung. Ausführender: Außendienst über Clock Point und QR ohne Login.",
-            "roles": [
-                {
-                    "title": "Administrator",
-                    "text": "Volle Kontrolle: Standorte, Meldungen, Aufgaben, Team, Abonnement, Kollegenkonten und (falls zutreffend) API-Einstellungen. Am Desktop können sie sich mit E-Mail + Passwort oder **Mit Microsoft anmelden** anmelden (E-Mail muss übereinstimmen)."
-                },
-                {
-                    "title": "Mitarbeiter",
-                    "text": "Tägliche Nachverfolgung von Standorten, Meldungen und Aufgaben. Keine Verwaltung von Abonnement oder Kollegenkonten. Am Desktop können sie sich mit E-Mail + Passwort oder **Mit Microsoft anmelden** anmelden (E-Mail muss übereinstimmen)."
-                },
-                {
-                    "title": "Ausführender",
-                    "text": "Arbeitet ohne WinProx-Login. Meldet sich über Clock-Point-QR an; startet/schließt Aufgaben über den Unit-QR, mit Fotos und Notizen."
-                }
-            ]
-        },
-        "microsoft_login": {
-            "slug": "microsoft_login",
-            "type": "text",
-            "title": "Kann ich mich mit Microsoft anmelden?",
-            "body": "Ja, für Administratoren und Mitarbeiter auf dem Desktop-Anmeldebildschirm, über **Mit Microsoft anmelden**. Die E-Mail Ihres Microsoft-Arbeitskontos muss mit Ihrem bestehenden WinProx-Konto übereinstimmen. Es wird kein neues Konto angelegt. E-Mail + Passwort bleibt möglich. Ausführende melden sich über Clock-Point-QR (Name + Symbol) an, nicht über Microsoft. Anbindung anderer Software (Ultimo, IWMS, …) über API-Token, nicht über diese Anmeldung.",
-            "summary": "Administrator/Mitarbeiter: Mit Microsoft anmelden am Desktop; E-Mail muss übereinstimmen. Ausführende: Clock-Point-QR. Keine neuen Konten."
-        },
-        "data_export": {
-            "slug": "data_export",
-            "type": "text",
-            "title": "Kann ich meine Daten exportieren?",
-            "body": "Ja. Gehen Sie zu Einstellungen → Datenschutz & Datenexport. Dort kann der Administrator einen maschinenlesbaren Export (JSON in einer ZIP) des Kontos und relevanter Aktivitäten herunterladen. Bewahren Sie die Datei sicher auf. Das ist der DSGVO-Kontoexport — getrennt von operativen Listenberichten (Bericht herunterladen auf Suchbildschirmen).",
-            "summary": "Administratoren exportieren unter Einstellungen → Datenschutz & Datenexport (DSGVO)."
-        },
-        "list_reports": {
-            "slug": "list_reports",
-            "type": "text",
-            "title": "Was ist Bericht herunterladen auf Suchbildschirmen?",
-            "body": "Auf gefilterten Suchbildschirmen (Meldungen, Aufgaben, Time/Stunden, Reservierungen, Unit-Checks, Unit-Messungen, ESG-Messungen) finden Sie Bericht herunterladen. Wählen Sie CSV (Tabelle für Excel) oder Drucken (Strg+P zu PDF). Der Druck folgt wo sinnvoll dem Kartenlayout der Backoffice-Liste; Time zeigt eine Stundenübersicht. Der Export nutzt dieselben Filter wie die Liste, nicht nur die aktuelle Seite (max. 5000 Zeilen). Nur für Nutzer, die diese Listen sehen dürfen. Das ist nicht der DSGVO-Kontoexport — der bleibt unter Einstellungen → Datenschutz und Export. Später: Organisation → Berichte mit gespeicherten Vorlagen.",
-            "summary": "Bericht herunterladen auf Suchbildschirmen: gefilterte CSV oder Druck; max. 5000 Zeilen — getrennt vom DSGVO-Export."
-        },
-        "delete_account": {
-            "slug": "delete_account",
-            "type": "text",
-            "title": "Wie lösche ich mein Konto / Organisationsdaten?",
-            "body": "Nur ein Administrator kann das. Gehen Sie zu Abonnement → Organisationsdaten löschen. Laden Sie zuerst einen Export unter Einstellungen → Datenschutz & Datenexport herunter, bestätigen Sie mit Passwort und E-Mail. In der Testphase können Sie danach selbst endgültig löschen. Bei einem bezahlten Abonnement folgt eine 7-tägige Wartezeit; die WinProx-Administration führt die Löschung durch. Bis dahin können Sie über Abonnement abbrechen. Mediendateien (Fotos, Dokumente) werden nicht im Wiederherstellungs-Snapshot gespeichert. Endet die Testphase ohne Abonnement, sendet WinProx Warnungen und kann die Organisation automatisch löschen (Standard etwa Tag 14 nach Testende).",
-            "summary": "Admin: Abonnement → Daten löschen (Export + Passwort + E-Mail; Trial selbst, bezahlt über WinProx nach 7 Tagen; abgelaufene Testphase kann auto-löschen)."
-        },
-        "internal_teams": {
-            "slug": "internal_teams",
-            "type": "text",
-            "title": "Wie richte ich interne Teams ein?",
-            "body": "Klein starten: ein Team (zum Beispiel Hotel oder Facility) und alle, die Aufgaben ausführen. Gehen Sie zu Menschen → Teams. Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie Teams mit Kategorien. Ausführende manuell oder per CSV/Excel. Unter Teams verwalten Sie auch Checklisten für Unit-Checks. Drucken Sie den Clock-Point-QR für die Fläche (Time → Clock Points).",
-            "summary": "Ein Team reicht zum Start. Menschen → Teams; mit Kategorien verknüpfen; Clock-Point-QR."
-        },
-        "team_follow_up": {
-            "slug": "team_follow_up",
-            "type": "text",
-            "title": "Wie verfolgen Teams Aufgaben?",
-            "body": "Aufgaben erscheinen in Aufgaben, Kalender, Briefing, Clock-Point-QR und Unit-QR. Ausführer starten und schließen vor Ort ab. Koordinatoren verfolgen den Status in der Verwaltung. Wiederkehrende Meldungen erzeugen Zyklen mit geplantem Fälligkeitsdatum; wiederkehrende Aufgaben zeigen die Pill «Wiederkehrend».",
-            "summary": "Nachverfolgung via Aufgaben, Kalender, Briefing und QR; wiederkehrende Zyklen mit Pill «Wiederkehrend»."
-        },
-        "reservations": {
-            "slug": "reservations",
-            "type": "text",
-            "title": "Wie funktionieren Reservierungen?",
-            "body": "Reservierungen sind für teilbare Ressourcen mit Zeitslot (Räume, Fahrzeuge, Schlüssel) — nicht für Störungsmeldungen. Aktivieren Sie Reservierbar an der Kategorie und Reservierungen erlauben an der Unit (standardmäßig aus). Gäste buchen über den Unit-QR (30 Min. Hold + E-Mail-Bestätigung). Die Verwaltung legt an, ändert und storniert; überlappende Slots werden blockiert.",
-            "summary": "In der App: Menü Reservierungen (und Kalender). Kategorie Reservierbar + Unit Reservierungen erlauben (standardmäßig aus); Gast bucht per QR mit E-Mail-Bestätigung."
-        },
-        "multiple_locations": {
-            "slug": "multiple_locations",
-            "type": "text",
-            "title": "Kann ich mehrere Standorte verwalten?",
-            "body": "Ja. Unter Orte verwalten Sie Kategorien, Standorte und Units getrennt. Mehrere Standorte und Units in einer Organisation, mit Filtern. Limits hängen von Ihrem Abonnement ab.",
-            "summary": "Mehrere Standorte und Units über Orte (Kategorien, Standorte, Units); Limits pro Formel."
-        },
-        "page_help": {
-            "slug": "page_help",
-            "type": "text",
-            "title": "Wo finde ich Hilfe auf einem Bildschirm?",
-            "body": "Auf den meisten Bildschirmen steht ein ? neben dem Titel. Es öffnet Seitenhilfe mit Aktionen und — wo relevant — Erklärungen zu Statussen (neu, in Bearbeitung, erledigt, geschlossen). Auf öffentlichen QR-Portalen steht dieselbe Hilfe in der Kopfzeile.",
-            "summary": "Nutzen Sie die ?-Schaltfläche neben dem Seitentitel für Aktions- und Statushilfe."
-        },
-        "mobile": {
-            "slug": "mobile",
-            "type": "text",
-            "title": "Funktioniert WinProx auf dem Smartphone?",
-            "body": "Ja. Verwaltung ist desktop-first, aber auf Tablet nutzbar. Außendienst- und QR-Portale sind mobile-first. Ausführende arbeiten am Handy über Clock Point und Unit-QR. Das Dunkel-Thema ist am Handy praktisch.",
-            "summary": "Browser auf Handy/Tablet/Desktop; Außendienst per QR ist mobile-first."
-        },
-        "install": {
-            "slug": "install",
-            "type": "text",
-            "title": "Muss ich Software installieren?",
-            "body": "Nein. WinProx ist eine Web-App. Koordinatoren und Außendienstteams arbeiten im Browser, ohne separate Installation oder App-Store.",
-            "summary": "Keine Installation — alles über den Browser."
-        },
-        "dynamic_qr_codes": {
-            "slug": "dynamic_qr_codes",
-            "type": "text",
-            "title": "Dynamische QR-Codes",
-            "body": "Dynamische QR-Aufkleber können später einer anderen Unit zugeordnet werden. Drucken Sie in Bulk (z.B. Avery-Bögen), kleben Sie vor Ort, scannen Sie angemeldet und weisen Sie eine Unit zu. Statische Codes bleiben an einer Unit gebunden.",
-            "summary": "Dynamische QRs neu zuordenbar; Bulk-Aufkleber drucken und vor Ort eine Unit zuweisen."
-        },
-        "stickers": {
-            "slug": "stickers",
-            "type": "text",
-            "title": "Welche Aufkleber kann ich verwenden?",
-            "body": "Zum Drucken empfehlen wir Avery- oder Herma-Etiketten (A4). Unter Standorte laden Sie ein Etikettenblatt (Word) im passenden Format herunter. Optional stellen Sie unter Einstellungen einen Etikettenhintergrund oder Organisationslogo ein.",
-            "summary": "Avery/Herma A4; Etikettenblatt aus Standorte; optionales Logo/Hintergrund in Einstellungen."
-        },
-        "style": {
-            "slug": "style",
-            "type": "text",
-            "title": "WinProx-Stil und eigener Portal-Stil",
-            "body": "Unter Einstellungen wählen Sie WinProx-Stil: Standard oder Dunkel (für die App). Eigener Portal-Stil ist optional: Hintergrund- und Buttonfarben (und optional Hintergrundfoto) für das öffentliche QR-Portal, das Melder und Ausführende sehen.",
-            "summary": "Standard/Dunkel für die App; optionale eigene Farben/Hintergrund für das QR-Portal."
-        },
-        "api_webhooks": {
-            "slug": "api_webhooks",
-            "type": "text",
-            "title": "API und Webhooks?",
-            "body": "Bei Corporate (oder wenn API freigeschaltet) verwalten Sie API-Tokens und ausgehende Webhooks (HMAC) unter Einstellungen. Koppeln Sie WinProx an andere Systeme für Meldungen, Aufgaben, Unit-Checks (unit.check.recorded), ESG-Messungen u. a. IoT Connect nutzt ein separates Gateway-Token für Sensor-Ingest (Corporate).",
-            "summary": "API-Tokens und Webhooks unter Einstellungen (Corporate); Meldungen, Aufgaben, Unit-Checks, ESG; HMAC-Lieferungen. IoT-Ingest via Gateway-Token (Corporate)."
-        },
-        "iot": {
-            "slug": "iot",
-            "type": "text",
-            "title": "Was ist IoT Connect?",
-            "body": "IoT Connect verbindet Sensor-Gateways mit WinProx (Corporate). Alarme (Wasserleck, Tür zu lange offen) erstellen automatisch eine freigegebene Meldung und Aufgabe. Sensor-Messungen können als ESG-Messungen gespeichert werden. Gateways, Sensoren und Regeln unter IoT Connect verwalten; Gateway sendet an POST /api/v1/iot/events mit Gateway-Token.",
-            "summary": "IoT Connect bei Corporate: Sensor-Alarme → Meldungen; Messungen → ESG. Gateway-Token-Ingest."
-        },
-        "unit_checks": {
-            "slug": "unit_checks",
-            "type": "text",
-            "title": "Was sind Unit-Checks?",
-            "body": "Unit-Checks sind schnelle OK/Nicht-OK-Bestätigungen auf dem Unit-QR durch Ausführende (nach Clock Point). Zuerst an Kategorie und Unit aktivieren (standardmäßig aus). Optionale Checklisten erstellen Sie unter Teams (geteilt oder einem Team zugeordnet; Vorlagen für Reinigung, Technik und Security) und verknüpfen sie pro Unit. Bei OK müssen alle Punkte abgehakt sein. Verlauf und Filter unter Unit-Checks; Webhook unit.check.recorded für Integrationen. Getrennt von Meldungen und ESG-Messungen.",
-            "summary": "OK/Nicht OK via Unit-QR (Kategorie + Unit an); Checklisten unter Teams; OK ohne Meldung; Webhook unit.check.recorded."
-        },
-        "work_menu": {
-            "slug": "work_menu",
-            "type": "text",
-            "title": "Was ist das Arbeitsmenü?",
-            "body": "Unter Organisation → Einstellungen → Arbeitsmenü-Einstellungen wählt der Administrator pro Organisation, welche Einträge unter Arbeit in der Seitenleiste sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag im Backoffice (Routen sind dann gesperrt). Bestehende QR-Einstellungen auf Units bleiben aktiv; neu aktivieren auf Units oder Kategorien ist nicht möglich, solange der Menüeintrag aus ist. Bei einer Startvorlage auf dem Dashboard sehen Sie die Arbeitsmenü-Wahl schon in der Vorschau vor dem Anlegen und erneut auf der Karte Startvorlage angelegt. Später ändern Sie das unter Arbeitsmenü-Einstellungen. Das Löschen der Startvorlage setzt das Arbeitsmenü nicht zurück.",
-            "summary": "Organisation → Einstellungen → Arbeitsmenü: Seitenleiste pro Mandant; Startvorlage zeigt Vorschau und Ergebnis."
-        },
-        "unit_measurements": {
-            "slug": "unit_measurements",
-            "type": "text",
-            "title": "Was sind Unit-Messungen?",
-            "body": "Unit-Messungen sind einfache Messwerte an einer Unit über den Unit-QR — z. B. Kilometerstand, Raumtemperatur oder Fahrzeugstatus. Kein ESG-Modul nötig. Messfelder unter Arbeit → Unit-Messungen anlegen (Name, Typ, Einheit), Unit-Messungen erlauben an Kategorie und Unit aktivieren und Felder verknüpfen. Das QR-Portal zeigt die Kachel Messung; Historie im Admin. API: POST /api/v1/units/{unit}/measurements (Ability units:update). Webhook: unit.measurement.recorded. Getrennt von Unit-Checks (OK/Nicht OK) und ESG (Corporate).",
-            "summary": "Messwerte per Unit-QR (km, °C, Status…): Felder unter Arbeit → Unit-Messungen; Kategorie + Unit an; Historie; API/Webhook. Kein ESG nötig."
         }
-    }
 }

@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Ogni organizzazione ha un ambiente proprio con limiti per piano (WinProx 10/50/100 + Corporate): unit, documenti e posti (colleghi + esecutori)."
+                "body": "Ogni organizzazione ha il proprio ambiente con limiti per piano (WinProx 10/50/100 + Corporate): unit, documenti e licenze (colleghi attivi + esecutori attivi senza user_id collegato; collega + profilo timbratura = una licenza)."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                 "items": [
                     "**MySQL**, relational model per tenant.",
                     "Strict **tenant isolation**: every query/API call stays within the organisation.",
-                    "No shared visibility between customers."
+                    "No shared visibility between customers.",
+                    "**Ambito sede:** tabelle pivot location_user e location_worker; teams.clocks_all_locations per sostituti; workers.user_id collega collega e profilo esecutore."
                 ]
             },
             {
@@ -232,7 +233,8 @@
                     "**SSO** (un accesso aziendale via Microsoft Entra): per amministratori e dipendenti sul desktop (**Accedi con Microsoft**). Solo account WinProx esistenti (l’e-mail deve corrispondere all’account Microsoft); e-mail + password resta disponibile. Nessun account nuovo automatico. Gli esecutori restano sul QR Clock Point (nome + icona). Il collegamento ad altro software (Ultimo, IWMS, …) usa token API, non SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
-                    "Segnalatori: portale QR pubblico senza account. Prova della casella opzionale (categoria e unità): nessun login; la segnalazione nasce solo dopo il link nella mail."
+                    "Segnalatori: portale QR pubblico senza account. Prova della casella opzionale (categoria e unità): nessun login; la segnalazione nasce solo dopo il link nella mail.",
+                    "Collega con **team timbratura** ottiene profilo esecutore collegato per Clock Point (nome + icona); non conta doppio nella licenza."
                 ]
             },
             {

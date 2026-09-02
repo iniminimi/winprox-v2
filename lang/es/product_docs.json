@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Cada organización tiene su entorno con límites por plan (WinProx 10/50/100 + Corporate): units, documentos y plazas (colegas + operarios)."
+                "body": "Cada organización tiene su entorno con límites por plan (WinProx 10/50/100 + Corporate): units, documentos y licencias (colegas activos + ejecutores activos sin user_id vinculado; colega + perfil de fichaje = una licencia)."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                 "items": [
                     "**MySQL**, relational model per tenant.",
                     "Strict **tenant isolation**: every query/API call stays within the organisation.",
-                    "No shared visibility between customers."
+                    "No shared visibility between customers.",
+                    "**Ámbito de sede:** tablas pivot location_user y location_worker; teams.clocks_all_locations para relevos; workers.user_id vincula colega y perfil ejecutor."
                 ]
             },
             {
@@ -232,7 +233,8 @@
                     "**SSO** (un inicio de sesión de empresa vía Microsoft Entra): para administradores y empleados en escritorio (**Iniciar sesión con Microsoft**). Solo cuentas WinProx existentes (el correo debe coincidir con la cuenta Microsoft); correo + contraseña sigue funcionando. No se crean cuentas nuevas automáticamente. Los ejecutores siguen con el QR Clock Point (nombre + icono). La conexión con otro software (Ultimo, IWMS, …) usa tokens de API, no SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
-                    "Avisadores: portal QR público sin cuenta. Prueba de buzón opcional (categoría y unidad): sin inicio de sesión; el aviso solo se crea tras el enlace del correo."
+                    "Avisadores: portal QR público sin cuenta. Prueba de buzón opcional (categoría y unidad): sin inicio de sesión; el aviso solo se crea tras el enlace del correo.",
+                    "Colega con **equipo de fichaje** obtiene perfil ejecutor vinculado para Clock Point (nombre + icono); no cuenta doble en la licencia."
                 ]
             },
             {

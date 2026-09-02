@@ -464,7 +464,11 @@
             "actions": [
                 {
                     "label": "Kollegenbenutzer",
-                    "text": "Verwalten Sie administrative Mitarbeiter, die hauptsächlich am PC arbeiten. Sie melden sich mit E-Mail und Passwort an, oder über **Mit Microsoft anmelden** (die Microsoft-E-Mail muss mit dem bestehenden WinProx-Konto übereinstimmen; es wird kein neues Konto angelegt). Ein Administrator ist der Hauptbenutzer, der Unternehmensdaten ändern kann. Mehrere Administratoren sind möglich. Kollegen (Admin und Mitarbeiter) und Ausführende teilen sich das Platzlimit Ihres Abos. Ausführende nutzen keine Microsoft-Anmeldung (Clock-Point-QR)."
+                    "text": "Verwalten Sie administrative Mitarbeiter, die hauptsächlich am PC arbeiten. Sie melden sich mit E-Mail und Passwort an, oder über **Mit Microsoft anmelden** (die Microsoft-E-Mail muss mit dem bestehenden WinProx-Konto übereinstimmen; es wird kein neues Konto angelegt). Ein Administrator ist der Hauptbenutzer, der Unternehmensdaten ändern kann. Mehrere Administratoren sind möglich. Kollegen (Admin und Mitarbeiter) und Ausführende teilen sich das Platzlimit Ihres Abos. Ausführende nutzen keine Microsoft-Anmeldung (Clock-Point-QR). Optional weisen Sie Kollegen Standorte zu (leer = alle Standorte im Backoffice)."
+                },
+                {
+                    "label": "Stempeluhr-Team (Kollegen)",
+                    "text": "Kollegen, die selbst einstempeln müssen, erhalten unter Backoffice → bearbeiten ein **Stempeluhr-Team**. WinProx erstellt dann automatisch ein verknüpftes Ausführenden-Profil (Name aus dem Kollegen-Konto). Dieses Profil zählt nicht doppelt zur Lizenz. Einstempeln über Clock Point (Name + Symbol)."
                 }
             ]
         },
@@ -477,7 +481,7 @@
                 },
                 {
                     "label": "Operative Teams",
-                    "text": "Ein Team reicht zum Start (zum Beispiel Hotel oder Facility). Fügen Sie alle hinzu, die Aufgaben ausführen (Name + Symbol). Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie das Team mit Kategorien, damit Aufgaben landen. Solange keine Ausführenden im Team sind, können Sie das Team noch löschen."
+                    "text": "Ein Team reicht zum Start (zum Beispiel Hotel oder Facility). Fügen Sie alle hinzu, die Aufgaben ausführen (Name + Symbol). Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie das Team mit Kategorien, damit Aufgaben landen. Solange keine Ausführenden im Team sind, können Sie das Team noch löschen. Aktivieren Sie **Darf überall einstempeln** für Springer- oder Vertretungsteams."
                 },
                 {
                     "label": "Checklisten",
@@ -493,7 +497,11 @@
                 },
                 {
                     "label": "Ausführende",
-                    "text": "Ausführende haben keinen E-Mail-Login; sie melden sich über die Clock Point QR mit Name und Icon an. Sie können auch ihre E-Mail-Adresse und Telefonnummer hinzufügen."
+                    "text": "Ausführende haben kein E-Mail-Login; sie melden sich über die Clock-Point-QR mit Name und Symbol an. Optional Standorte zuordnen (leer = überall). Große Listen unter **Menschen → Ausführende** verwalten."
+                },
+                {
+                    "label": "Standorte pro Ausführendem",
+                    "text": "Beim Bearbeiten einen oder mehrere Standorte wählen. Leer = überall einstempeln (Standard für bestehende Ausführende). Am Clock Point sieht der Ausführende seinen Namen nur an zugewiesenen Standorten, außer das Team hat **Darf überall einstempeln**."
                 },
                 {
                     "label": "Externe Ausführende",
@@ -525,7 +533,7 @@
                 },
                 {
                     "label": "Import",
-                    "text": "Importieren Sie Mitarbeiter in großer Menge über CSV oder Excel (.xlsx). Die Datei muss genau diese Header haben: team_name, first_name, last_name (erforderlich), email, phone, company_name (optional). Ein ausgefüllter Firmenname markiert den Mitarbeiter automatisch als extern. Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Teams werden automatisch erstellt, wenn sie noch nicht existieren. Beim Rückgängigmachen werden Mitarbeiter ohne verknüpftes Gerät entfernt und leere durch den Import erstellte Teams aufgeräumt. Mitarbeiter mit einem Gerät (worker_device) bleiben immer erhalten."
+                    "text": "Massenimport per CSV oder Excel (.xlsx). Pflicht-Header: team_name, first_name, last_name. Optional: email, phone, company_name, location_names (kommagetrennte Standortnamen; leer = überall). Ausgefüllter Firmenname markiert automatisch als extern. Fehlen Header oder Pflichtfelder, wird der gesamte Import mit klarer Fehlermeldung pro Zeile abgelehnt. Teams werden bei Bedarf automatisch angelegt."
                 },
                 {
                     "label": "Letzte Imports",
@@ -1461,6 +1469,31 @@
                     "label": "API & Webhooks",
                     "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Jede Messung löst unit.measurement.recorded aus. Verwaltung unter Einstellungen → API.",
                     "requires_api": true
+                }
+            ]
+        },
+        "team.workers_index": {
+            "title": "Hilfe — Ausführende",
+            "actions": [
+                {
+                    "label": "Übersicht",
+                    "text": "Mandantenweite Übersicht aller Ausführenden: Name, Team, zugeordnete Standorte, Status und ob das Profil mit einem Kollegen-Login verknüpft ist. Nützlich bei großen Teams (Dutzende bis Hunderte)."
+                },
+                {
+                    "label": "Suchen",
+                    "text": "Filtern nach Name, Team, Standort oder Status (aktiv/inaktiv). Leerer Standortfilter zeigt alle; wählen Sie einen Standort, um nur Ausführende zu sehen, die dort einstempeln dürfen (oder überall bei Springer-Teams)."
+                },
+                {
+                    "label": "Standorte",
+                    "text": "Pro Ausführendem sehen Sie zugewiesene Standorte. Keine Auswahl = überall einstempeln (bestehende Ausführende). Verwalten unter Menschen → Teams (bearbeiten) oder Massenimport mit location_names."
+                },
+                {
+                    "label": "Kollegen-Verknüpfung",
+                    "text": "Ausführende mit verknüpftem Backoffice-Konto (Stempeluhr-Team) zählen als eine Lizenz. Einstempeln erfolgt über Clock Point (Name + Symbol), nicht über das Backoffice-Login."
+                },
+                {
+                    "label": "Bearbeiten",
+                    "text": "Ausführende hinzufügen, ändern oder deaktivieren unter Menschen → Teams. Diese Seite dient zum schnellen Suchen und Filtern."
                 }
             ]
         }

@@ -472,7 +472,11 @@
             "actions": [
                 {
                     "label": "Utilisateurs collègues",
-                    "text": "Gérez les collaborateurs administratifs qui travaillent surtout sur PC. Ils se connectent par e-mail et mot de passe, ou via **Se connecter avec Microsoft** (l’e-mail Microsoft doit correspondre au compte WinProx existant ; aucun nouveau compte n’est créé). Un administrateur est l’utilisateur principal qui peut modifier les données de l’entreprise. Plusieurs administrateurs sont possibles. Les collègues (admin et employé) et les exécutants partagent la limite de places de votre formule. Les exécutants n’utilisent pas la connexion Microsoft (QR Clock Point)."
+                    "text": "Gérez les collaborateurs administratifs qui travaillent surtout sur PC. Ils se connectent par e-mail et mot de passe, ou via **Se connecter avec Microsoft** (l’e-mail Microsoft doit correspondre au compte WinProx existant ; aucun nouveau compte n’est créé). Un administrateur est l’utilisateur principal qui peut modifier les données de l’entreprise. Plusieurs administrateurs sont possibles. Les collègues (admin et employé) et les exécutants partagent la limite de places de votre formule. Les exécutants n’utilisent pas la connexion Microsoft (QR Clock Point). Vous pouvez assigner des sites aux collègues (vide = tous les sites en backoffice)."
+                },
+                {
+                    "label": "Équipe pointeuse (collègues)",
+                    "text": "Les collègues qui doivent pointer reçoivent une **Équipe pointeuse** sous Backoffice → modifier. WinProx crée alors un profil exécutant lié (nom du compte collègue). Ce profil ne compte pas deux fois dans la licence. Le pointage se fait via Clock Point (nom + icône)."
                 }
             ]
         },
@@ -485,7 +489,7 @@
                 },
                 {
                     "label": "Équipes opérationnelles",
-                    "text": "Une équipe suffit pour démarrer (par exemple Hôtel ou Facility). Ajoutez toutes les personnes qui exécutent des tâches (nom + icône). Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez l’équipe aux catégories pour que les tâches aboutissent. Tant qu’il n’y a pas d’exécutants dans l’équipe, vous pouvez encore la supprimer."
+                    "text": "Une équipe suffit pour démarrer (par exemple Hôtel ou Facility). Ajoutez toutes les personnes qui exécutent des tâches (nom + icône). Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez l’équipe aux catégories pour que les tâches aboutissent. Tant qu’il n’y a pas d’exécutants dans l’équipe, vous pouvez encore la supprimer. Cochez **Peut pointer partout** pour les équipes volantes ou de remplacement."
                 },
                 {
                     "label": "Listes de contrôle",
@@ -501,7 +505,11 @@
                 },
                 {
                     "label": "Exécutants",
-                    "text": "Les exécutants n'ont pas de connexion e-mail ; ils s'identifient via le QR Clock Point avec nom et icône. Vous pouvez également ajouter leur adresse e-mail et numéro de téléphone."
+                    "text": "Les exécutants n'ont pas de login e-mail ; ils s'identifient via la QR Clock Point (nom + icône). Liez optionnellement des sites (vide = partout). Grandes listes via **Personnes → Exécutants**."
+                },
+                {
+                    "label": "Sites par exécutant",
+                    "text": "À la modification, choisissez un ou plusieurs sites. Vide = pointer partout (défaut pour les exécutants existants). Sur Clock Point, le nom n'apparaît que sur les sites assignés, sauf si l'équipe a **Peut pointer partout**."
                 },
                 {
                     "label": "Exécutants externes",
@@ -533,7 +541,7 @@
                 },
                 {
                     "label": "Import",
-                    "text": "Importez des intervenants en masse via CSV ou Excel (.xlsx). Le fichier doit avoir exactement ces en-têtes : team_name, first_name, last_name (obligatoires), email, phone, company_name (optionnels). Un nom d’entreprise renseigné marque automatiquement l’intervenant comme externe. Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les équipes sont créées automatiquement si elles n'existent pas encore. L'annulation supprime les intervenants sans appareil lié et nettoie les équipes vides créées par l'import. Les intervenants liés à un appareil (worker_device) sont toujours conservés."
+                    "text": "Import en masse via CSV ou Excel (.xlsx). En-têtes obligatoires : team_name, first_name, last_name. Optionnel : email, phone, company_name, location_names (noms de sites séparés par des virgules ; vide = partout). Un nom d'entreprise rempli marque automatiquement comme externe. En-têtes ou champs obligatoires manquants → import entier refusé avec message clair par ligne. Les équipes sont créées automatiquement si besoin."
                 },
                 {
                     "label": "Imports récents",
@@ -1469,6 +1477,31 @@
                     "label": "API & webhooks",
                     "text": "Corporate : POST /api/v1/units/{unit}/measurements (units:update). Chaque mesure déclenche unit.measurement.recorded. Gestion sous Paramètres → API.",
                     "requires_api": true
+                }
+            ]
+        },
+        "team.workers_index": {
+            "title": "Aide — Exécutants",
+            "actions": [
+                {
+                    "label": "Vue d'ensemble",
+                    "text": "Vue tenant de tous les exécutants : nom, équipe, sites liés, statut et lien éventuel avec un compte collègue. Utile pour les grandes équipes (dizaines à centaines d'exécutants)."
+                },
+                {
+                    "label": "Rechercher",
+                    "text": "Filtrer par nom, équipe, site ou statut (actif/inactif). Sans filtre site, tout le monde ; choisissez un site pour voir uniquement ceux autorisés à pointer là (ou partout pour les équipes volantes)."
+                },
+                {
+                    "label": "Sites",
+                    "text": "Chaque exécutant affiche les sites assignés. Aucune sélection = pointer partout (exécutants existants). Gérer via Personnes → Équipes (modifier) ou import en masse avec location_names."
+                },
+                {
+                    "label": "Lien collègue",
+                    "text": "Les exécutants liés à un compte backoffice (équipe pointeuse) comptent pour une licence. Ils pointent via Clock Point (nom + icône), pas via le login backoffice."
+                },
+                {
+                    "label": "Modifier",
+                    "text": "Ajouter, modifier ou désactiver via Personnes → Équipes. Cet écran sert à rechercher et filtrer rapidement."
                 }
             ]
         }

@@ -464,7 +464,11 @@
             "actions": [
                 {
                     "label": "Utenti colleghi",
-                    "text": "Gestisci collaboratori amministrativi che lavorano principalmente al PC. Accedono con e-mail e password, oppure con **Accedi con Microsoft** (l’e-mail Microsoft deve corrispondere all’account WinProx esistente; non viene creato un account nuovo). Un amministratore è l’utente principale che può modificare i dati aziendali. Sono possibili più amministratori. Colleghi (admin e dipendente) ed esecutori condividono il limite di posti del piano. Gli esecutori non usano l’accesso Microsoft (QR Clock Point)."
+                    "text": "Gestisci collaboratori amministrativi che lavorano principalmente al PC. Accedono con e-mail e password, oppure con **Accedi con Microsoft** (l’e-mail Microsoft deve corrispondere all’account WinProx esistente; non viene creato un account nuovo). Un amministratore è l’utente principale che può modificare i dati aziendali. Sono possibili più amministratori. Colleghi (admin e dipendente) ed esecutori condividono il limite di posti del piano. Gli esecutori non usano l’accesso Microsoft (QR Clock Point). Opzionalmente assegna sedi ai colleghi (vuoto = tutte le sedi in backoffice)."
+                },
+                {
+                    "label": "Team timbratura (colleghi)",
+                    "text": "I colleghi che devono timbrare ricevono un **Team timbratura** in Backoffice → modifica. WinProx crea automaticamente un profilo esecutore collegato (nome dall'account collega). Quel profilo non conta due volte nella licenza. La timbratura avviene via Clock Point (nome + icona)."
                 }
             ]
         },
@@ -477,7 +481,7 @@
                 },
                 {
                     "label": "Team operativi",
-                    "text": "Un team basta per iniziare (ad esempio Hotel o Facility). Aggiunga tutti coloro che eseguono attività (nome + icona). Un caposquadra non è necessario. Altri team solo se ci sono gruppi davvero distinti. Colleghi il team alle categorie così le attività arrivano. Finché non ci sono esecutori nel team, può ancora eliminarlo."
+                    "text": "Un team basta per iniziare (ad esempio Hotel o Facility). Aggiunga tutti coloro che eseguono attività (nome + icona). Un caposquadra non è necessario. Altri team solo se ci sono gruppi davvero distinti. Colleghi il team alle categorie così le attività arrivano. Finché non ci sono esecutori nel team, può ancora eliminarlo. Spunta **Può timbrare ovunque** per team di sostituzione o volanti."
                 },
                 {
                     "label": "Checklist",
@@ -493,7 +497,11 @@
                 },
                 {
                     "label": "Lavoratori",
-                    "text": "I lavoratori non hanno accesso e-mail; accedono tramite il QR Clock Point con nome e icona. Può anche aggiungere indirizzo e-mail e numero di telefono."
+                    "text": "Gli esecutori non hanno login e-mail; si identificano con la QR Clock Point (nome + icona). Collega opzionalmente le sedi (vuoto = ovunque). Liste grandi in **Persone → Esecutori**."
+                },
+                {
+                    "label": "Sedi per esecutore",
+                    "text": "In modifica, scegli una o più sedi. Vuoto = timbrare ovunque (default per esecutori esistenti). Su Clock Point il nome appare solo sulle sedi assegnate, salvo che il team abbia **Può timbrare ovunque**."
                 },
                 {
                     "label": "Lavoratori esterni",
@@ -525,7 +533,7 @@
                 },
                 {
                     "label": "Importazione",
-                    "text": "Importi lavoratori in massa tramite CSV o Excel (.xlsx). Il file deve avere esattamente queste intestazioni: team_name, first_name, last_name (obbligatorie), email, phone, company_name (facoltative). Un nome azienda compilato segna automaticamente il lavoratore come esterno. Se le intestazioni non corrispondono o mancano campi obbligatori, l'intera importazione viene rifiutata con un messaggio di errore chiaro per riga. I team vengono creati automaticamente se non esistono ancora. L'annullamento rimuove i lavoratori senza dispositivo collegato e ripulisce i team vuoti creati dall'importazione. I lavoratori collegati a un dispositivo (worker_device) vengono sempre conservati."
+                    "text": "Import di massa via CSV o Excel (.xlsx). Intestazioni obbligatorie: team_name, first_name, last_name. Opzionale: email, phone, company_name, location_names (nomi sede separati da virgola; vuoto = ovunque). Nome azienda compilato = automaticamente esterno. Intestazioni o campi obbligatori mancanti → import intero rifiutato con errore chiaro per riga. I team vengono creati automaticamente se non esistono."
                 },
                 {
                     "label": "Importazioni recenti",
@@ -1461,6 +1469,31 @@
                     "label": "API e webhook",
                     "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Ogni misurazione attiva unit.measurement.recorded. Gestione in Impostazioni → API.",
                     "requires_api": true
+                }
+            ]
+        },
+        "team.workers_index": {
+            "title": "Guida — Esecutori",
+            "actions": [
+                {
+                    "label": "Panoramica",
+                    "text": "Vista tenant di tutti gli esecutori: nome, team, sedi collegate, stato e eventuale collegamento a un login collega. Utile con team grandi (decine o centinaia di esecutori)."
+                },
+                {
+                    "label": "Cerca",
+                    "text": "Filtra per nome, team, sede o stato (attivo/inattivo). Filtro sede vuoto = tutti; scegli una sede per vedere solo chi può timbrare lì (o ovunque con team di sostituzione)."
+                },
+                {
+                    "label": "Sedi",
+                    "text": "Ogni esecutore mostra le sedi asignate. Nessuna selezione = timbrare ovunque (esecutori esistenti). Gestisci in Persone → Team (modifica) o import di massa con location_names."
+                },
+                {
+                    "label": "Collegamento collega",
+                    "text": "Esecutori collegati a un account backoffice (team timbratura) contano come una licenza. Timbrano via Clock Point (nome + icona), non con il login backoffice."
+                },
+                {
+                    "label": "Modifica",
+                    "text": "Aggiungi, modifica o disattiva esecutori in Persone → Team. Questa schermata serve per cercare e filtrare rapidamente."
                 }
             ]
         }

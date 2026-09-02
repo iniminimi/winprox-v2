@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "People through settings",
-            "intro": "Chapters on the signed-in admin portal: People (Backoffice for colleague users, Teams for checklists and workers), locations, issues, tasks, calendar, reservations, dashboard, optional Time punch clock, unit measurements, optional ESG module, IoT Connect, settings and subscription (including data deletion)."
+            "intro": "Chapters on the signed-in admin portal: People (Backoffice for colleague users, Teams for checklists and workers, Workers for search/filter), locations, issues, tasks, calendar, reservations, dashboard, optional Time punch clock, unit measurements, optional ESG module, IoT Connect, settings and subscription (including data deletion)."
         },
         "internet_portal": {
             "title": "QR codes on site",
@@ -51,7 +51,7 @@
         }
     },
     "step_1_title": "Team & workers",
-    "step_1_text": "Start simply: create one team (for example Hotel or Facility) and add everyone who carries out tasks. They sign in with name and icon. A team leader is not required. Link the team to your categories. Larger organisations add extra teams later, or import via CSV/Excel. Unit-check checklists are under People → Teams. Colleague users with login (administrator and employee) under People → Backoffice. Those colleagues sign in with email + password or **Sign in with Microsoft** (email must match the existing account).",
+    "step_1_text": "Start simply: create one team (for example Hotel or Facility) and add everyone who carries out tasks. They sign in with name and icon. A team leader is not required. Link the team to your categories. Larger organisations add extra teams later, or import via CSV/Excel (optionally with location_names). Unit-check checklists are under People → Teams. Colleague users with login (administrator and employee) under People → Backoffice — optionally pick a **Punch-clock team** if they need to clock in themselves. Search large worker lists via **People → Workers**. Link workers and colleagues to locations (empty = everywhere); floater teams may clock in anywhere. Colleagues sign in with email + password or **Sign in with Microsoft** (email must match the existing account).",
     "step_2_title": "Set up locations & units",
     "step_2_text": "Group units into categories (for example: drills, plumbing, fitness equipment, office or electrical). Mark categories as Reservable if units should accept time-slot bookings, and turn on Allow reservations per unit (off by default). Optional: Require contact details (category and unit) for anonymous QR reporters. Optional: Require email confirmation (category and unit, off by default) — the issue is created only after the link in the mail (no account; Clock Point workers exempt). By linking teams to specific categories, WinProx ensures tasks are always picked up by the right team. Add locations and create units per location — via the form, bulk series or CSV/Excel import. Use Places → Units for a tenant-wide overview (location and category filters, unit count, status and unit-check pills). You can update unit names and descriptions manually per language. Optional: Allow unit checks (category and unit, off by default) for OK/Not OK rounds via the portal — separate from ESG. Link a checklist per unit (templates under People → Teams); the dropdown shows shared checklists and those of teams linked to the category.",
     "step_3_title": "Print & hang QR codes",

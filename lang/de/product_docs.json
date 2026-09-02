@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Jede Organisation hat eine eigene Umgebung mit Grenzen je nach Abo (WinProx 10/50/100 + Corporate): Units, Dokumente und Plätze (Kollegen + Ausführende)."
+                "body": "Jede Organisation hat eine eigene Umgebung mit Limits pro Abo (WinProx 10/50/100 + Corporate): Units, Dokumente und Lizenzen (aktive Kollegen + aktive Ausführende ohne verknüpfte user_id; Kollege + Stempelprofil = eine Lizenz)."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                 "items": [
                     "**MySQL**, relational model per tenant.",
                     "Strict **tenant isolation**: every query/API call stays within the organisation.",
-                    "No shared visibility between customers."
+                    "No shared visibility between customers.",
+                    "**Standort-Scope:** Pivot-Tabellen location_user und location_worker; teams.clocks_all_locations für Springer; workers.user_id verknüpft Kollege mit Ausführenden-Profil."
                 ]
             },
             {
@@ -232,7 +233,8 @@
                     "**SSO** (eine Firmenanmeldung über Microsoft Entra): für Administratoren und Mitarbeiter am Desktop (**Mit Microsoft anmelden**). Nur bestehende WinProx-Konten (E-Mail muss mit dem Microsoft-Konto übereinstimmen); E-Mail + Passwort bleibt möglich. Keine automatischen neuen Konten. Ausführende bleiben beim Clock-Point-QR (Name + Symbol). Anbindung anderer Software (Ultimo, IWMS, …) über API-Token, nicht über SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
-                    "Melder: öffentliches QR-Portal ohne Konto. Optionaler Postfachnachweis (Kategorie und Unit): kein Login; die Meldung entsteht erst nach dem Link in der Mail."
+                    "Melder: öffentliches QR-Portal ohne Konto. Optionaler Postfachnachweis (Kategorie und Unit): kein Login; die Meldung entsteht erst nach dem Link in der Mail.",
+                    "Kollege mit **Stempeluhr-Team** erhält verknüpftes Ausführenden-Profil für Clock Point (Name + Symbol); zählt nicht doppelt zur Lizenz."
                 ]
             },
             {

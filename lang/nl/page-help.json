@@ -464,7 +464,11 @@
             "actions": [
                 {
                     "label": "Collega-gebruikers",
-                    "text": "Beheer administratieve medewerkers die voornamelijk op een pc werken. Zij loggen in met e-mail en wachtwoord, of via **Inloggen met Microsoft** (het Microsoft-e-mailadres moet gelijk zijn aan het bestaande WinProx-account; er wordt geen nieuw account aangemaakt). Een beheerder is de hoofdgebruiker die de bedrijfsgegevens kan aanpassen. Er kunnen meerdere beheerders zijn. Collega's (beheerder en medewerker) en uitvoerders tellen samen mee als licenties tot de limiet van uw abonnement. Uitvoerders gebruiken geen Microsoft-login (Clock Point-QR)."
+                    "text": "Beheer administratieve medewerkers die voornamelijk op een pc werken. Zij loggen in met e-mail en wachtwoord, of via **Inloggen met Microsoft** (het Microsoft-e-mailadres moet gelijk zijn aan het bestaande WinProx-account; er wordt geen nieuw account aangemaakt). Een beheerder is de hoofdgebruiker die de bedrijfsgegevens kan aanpassen. Er kunnen meerdere beheerders zijn. Collega's (beheerder en medewerker) en uitvoerders tellen samen mee als licenties tot de limiet van uw abonnement. Uitvoerders gebruiken geen Microsoft-login (Clock Point-QR). Optioneel wijs je collega's vestigingen toe (leeg = alle locaties in beheer)."
+                },
+                {
+                    "label": "Prikklok-team (collega's)",
+                    "text": "Collega's die zelf moeten inklokken krijgen onder Backoffice → bewerken een **Prikklok-team**. WinProx maakt dan automatisch een gekoppeld uitvoerderprofiel (naam uit het collega-account). Dat profiel telt niet dubbel als licentie. Inklokken verloopt via Clock Point (naam + icoon)."
                 }
             ]
         },
@@ -477,7 +481,7 @@
                 },
                 {
                     "label": "Operationele teams",
-                    "text": "Eén team is genoeg om te starten (bijvoorbeeld Hotel of Faciliteit). Voeg iedereen die taken uitvoert toe (naam + icoon). Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel het team aan categorieën zodat taken landen. Zolang er geen uitvoerders in het team zijn, kun je het team nog verwijderen."
+                    "text": "Eén team is genoeg om te starten (bijvoorbeeld Hotel of Faciliteit). Voeg iedereen die taken uitvoert toe (naam + icoon). Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel het team aan categorieën zodat taken landen. Zolang er geen uitvoerders in het team zijn, kun je het team nog verwijderen. Vink **Mag overal inklokken** aan voor invaller- of vlinderteams."
                 },
                 {
                     "label": "Checklists",
@@ -493,7 +497,11 @@
                 },
                 {
                     "label": "Uitvoerders",
-                    "text": "Uitvoerders hebben geen e-maillogin; ze melden zich aan via de Clock Point QR met naam en icoon. Je kan ook hun e-mailadres en telefoonnummer toevoegen."
+                    "text": "Uitvoerders hebben geen e-maillogin; ze melden zich aan via de Clock Point QR met naam en icoon. Koppel optioneel vestigingen (leeg = overal). Beheer grote lijsten via **Mensen → Uitvoerders**."
+                },
+                {
+                    "label": "Vestigingen per uitvoerder",
+                    "text": "Bij bewerken kies je één of meer vestigingen. Leeg = overal inklokken (standaard voor bestaande uitvoerders). Op Clock Point ziet de uitvoerder zijn naam alleen op toegewezen vestigingen, tenzij het team **Mag overal inklokken** heeft."
                 },
                 {
                     "label": "Externe uitvoerders",
@@ -525,7 +533,7 @@
                 },
                 {
                     "label": "Import",
-                    "text": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Het bestand moet exact de headers hebben: team_name, first_name, last_name (verplicht), email, phone, company_name (optioneel). Een ingevulde bedrijfsnaam markeert de uitvoerder automatisch als extern. Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan. Bij ongedaan maken worden uitvoerders zonder gekoppeld toestel verwijderd; lege teams die door de import zijn aangemaakt worden ook opgeruimd. Uitvoerders met een toestel (worker_device) blijven altijd staan."
+                    "text": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Verplichte headers: team_name, first_name, last_name. Optioneel: email, phone, company_name, location_names (komma-gescheiden locatienamen; leeg = overal). Een ingevulde bedrijfsnaam markeert de uitvoerder automatisch als extern. Als headers of verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan."
                 },
                 {
                     "label": "Recente imports",
@@ -1461,6 +1469,31 @@
                     "label": "API & webhooks",
                     "text": "Corporate: POST /api/v1/units/{unit}/measurements (ability units:update). Elke nieuwe meting triggert webhook unit.measurement.recorded. Beheer onder Instellingen → API.",
                     "requires_api": true
+                }
+            ]
+        },
+        "team.workers_index": {
+            "title": "Hulp — Uitvoerders",
+            "actions": [
+                {
+                    "label": "Overzicht",
+                    "text": "Tenant-breed overzicht van alle uitvoerders: naam, team, gekoppelde vestigingen, status en of het profiel gekoppeld is aan een collega-login. Handig bij grote teams (tientallen tot honderden uitvoerders)."
+                },
+                {
+                    "label": "Zoeken",
+                    "text": "Filter op naam, team, vestiging of status (actief/inactief). Lege vestigingsfilter toont iedereen; kies een locatie om alleen uitvoerders te zien die daar mogen inklokken (of overal bij invallerteams)."
+                },
+                {
+                    "label": "Vestigingen",
+                    "text": "Per uitvoerder zie je toegewezen vestigingen. Geen selectie = overal inklokken (bestaande uitvoerders). Beheer locaties via Mensen → Teams (bewerken) of bulk-import met location_names."
+                },
+                {
+                    "label": "Collega-koppeling",
+                    "text": "Uitvoerders met een gekoppeld Backoffice-account (Prikklok-team) tellen als één licentie. Zij klokken in via Clock Point (naam + icoon), niet via de Backoffice-login."
+                },
+                {
+                    "label": "Bewerken",
+                    "text": "Voeg uitvoerders toe, wijzig of deactiveer via Mensen → Teams. Dit scherm is bedoeld om snel te zoeken en te filteren."
                 }
             ]
         }

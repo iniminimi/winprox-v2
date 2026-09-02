@@ -4,7 +4,7 @@
             <x-wp-page-head-title
                 icon="team"
                 :title="__('team.workers_index.title')"
-                help-page="team"
+                help-page="team.workers_index"
                 :subtitle="__('team.workers_index.subtitle')"
             />
         </div>

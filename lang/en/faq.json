@@ -1,318 +1,325 @@
 {
-    "meta_title": "Frequently asked questions | WinProx",
-    "social": {
-        "og_title": "Frequently asked questions | WinProx",
-        "og_description": "Answers about issues, tasks, QR portals, Time, ESG and plans."
-    },
-    "eyebrow": "FAQ",
-    "title": "Frequently asked questions",
-    "subtitle": "Short guide for administrators, staff, and field teams — aligned with the current WinProx Facility app.",
-    "items": {
-        "how_it_works": {
-            "slug": "how_it_works",
-            "type": "steps",
-            "title": "How does WinProx work?",
-            "intro": "WinProx follows one core flow: issue → tasks → completion. Time (punch clock) is optional; ESG (measurements) is also optional. Optional unit measurements via the unit QR.",
-            "summary": "Sites and units, issues via QR or admin, approval on the public portal, tasks per team, follow-up via dashboard, briefing, and calendar. Time (punch clock) optional; ESG optional.",
-            "steps": [
-                {
-                    "title": "Sites and units",
-                    "text": "Create locations and add units (machines, zones, or areas), one by one or in bulk — or load a starter template from the dashboard (hotel, hospital, industry, municipality, property management or fleet management). Under Places, Categories, Locations and Units are separate. Link a team to a unit so tasks land automatically."
+        "meta_title": "Frequently asked questions | WinProx",
+        "social": {
+                "og_title": "Frequently asked questions | WinProx",
+                "og_description": "Answers about issues, tasks, QR portals, Time, ESG and plans."
+        },
+        "eyebrow": "FAQ",
+        "title": "Frequently asked questions",
+        "subtitle": "Short guide for administrators, staff, and field teams — aligned with the current WinProx Facility app.",
+        "items": {
+                "how_it_works": {
+                        "slug": "how_it_works",
+                        "type": "steps",
+                        "title": "How does WinProx work?",
+                        "intro": "WinProx follows one core flow: issue → tasks → completion. Time (punch clock) is optional; ESG (measurements) is also optional. Optional unit measurements via the unit QR.",
+                        "summary": "Sites and units, issues via QR or admin, approval on the public portal, tasks per team, follow-up via dashboard, briefing, and calendar. Time (punch clock) optional; ESG optional.",
+                        "steps": [
+                                {
+                                        "title": "Sites and units",
+                                        "text": "Create locations and add units (machines, zones, or areas), one by one or in bulk — or load a starter template from the dashboard (hotel, hospital, industry, municipality, property management or fleet management). Under Places, Categories, Locations and Units are separate. Link a team to a unit so tasks land automatically."
+                                },
+                                {
+                                        "title": "Create an issue",
+                                        "text": "Administrators and staff report in the app (with up to 4 photos). Reporters scan the unit QR and do the same in the browser — no app installation required. Optionally the administrator requires email confirmation: the issue is created only after the link in the mail."
+                                },
+                                {
+                                        "title": "Approval (public)",
+                                        "text": "New issues via QR are blurred on the public portal until an administrator or staff member approves them. In admin, you always see everything in full."
+                                },
+                                {
+                                        "title": "Tasks for teams",
+                                        "text": "An issue can have multiple tasks, each assigned to one team. Also schedule recurring maintenance via the calendar."
+                                },
+                                {
+                                        "title": "Field work via QR",
+                                        "text": "Field workers sign in via the Clock Point QR (name + icon) and complete tasks via the unit QR — without a WinProx login.",
+                                        "highlight": "Clock Point = sign in (name + icon); clocking in requires Time (punch clock); unit QR = tasks and issues on site."
+                                },
+                                {
+                                        "title": "Follow up and close",
+                                        "text": "Track progress in the dashboard, briefing, and calendar. Complete tasks with notes and photos; close the issue when work is done."
+                                }
+                        ],
+                        "box_title": "Internal teams",
+                        "box_body": "Under People → Teams create at least one team — in a small organisation Hotel or Facility is enough. Link the team to categories. Via Clock Point and unit QR, workers record updates and photos on site."
                 },
-                {
-                    "title": "Create an issue",
-                    "text": "Administrators and staff report in the app (with up to 4 photos). Reporters scan the unit QR and do the same in the browser — no app installation required. Optionally the administrator requires email confirmation: the issue is created only after the link in the mail."
+                "pricing": {
+                        "slug": "pricing",
+                        "type": "pricing",
+                        "title": "How much does WinProx cost?",
+                        "intro": "You start with a free trial month (50 units, 50 seats, including Time punch clock). IoT, ESG and API are not in the trial. Then choose 10, 50 or 100 units per year with the same number of seats. Time is optional afterwards. Corporate is custom (more than 100 units or when API/webhooks are needed).",
+                        "summary": "Trial up to 50 units and 50 seats, including Time. IoT, ESG and API on Corporate. Then 10/50/100 per year.",
+                        "content_note": "Unit = object or place with a QR. Document = file on the QR portal, maximum 1 per unit. Seat = colleague with login or worker (Clock Point); colleague with linked punch-clock team counts as one seat (not twice). Photos on issues are unlimited. Exact prices are under Subscription.",
+                        "plans": {
+                                "winprox_10": {
+                                        "units": "Up to 10 units and 10 documents.",
+                                        "announcements": "€149 / year",
+                                        "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
+                                        "description": "Report and follow up via QR.",
+                                        "users": "Up to 10 seats (colleagues + workers); unlimited locations and photos on issues"
+                                },
+                                "winprox_50": {
+                                        "units": "Up to 50 units and 50 documents.",
+                                        "announcements": "€399 / year",
+                                        "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
+                                        "description": "Report and follow up via QR.",
+                                        "users": "Up to 50 seats (colleagues + workers); unlimited locations and photos on issues"
+                                },
+                                "winprox_100": {
+                                        "units": "Up to 100 units and 100 documents.",
+                                        "announcements": "€699 / year",
+                                        "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
+                                        "description": "Report and follow up via QR.",
+                                        "users": "Up to 100 seats (colleagues + workers); unlimited locations and photos on issues"
+                                },
+                                "corporate": {
+                                        "units": "More than 100 units, or API/webhooks/integrations required.",
+                                        "announcements": "Custom pricing",
+                                        "documents": "Time (punch clock), IoT Connect and ESG included.",
+                                        "description": "For >1,000 units or when API/webhooks/integrations are required.",
+                                        "users": "Custom seats; unlimited locations and photos on issues"
+                                }
+                        }
                 },
-                {
-                    "title": "Approval (public)",
-                    "text": "New issues via QR are blurred on the public portal until an administrator or staff member approves them. In admin, you always see everything in full."
+                "qr_code": {
+                        "slug": "qr_code",
+                        "type": "text",
+                        "title": "Which QR codes are there?",
+                        "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Clock Point QR: workers sign in (name + icon) and see their team tasks; clock in/out only with Time (punch clock). Location QR: general link to the site. Everything opens in the browser — no app. Optionally also unit measurements (km, temperature, status) when category and unit allow it.",
+                        "summary": "Unit QR (reports/tasks/unit check), Clock Point QR (sign-in; clocking with Time), location QR — all in the browser. Optional unit measurements."
                 },
-                {
-                    "title": "Tasks for teams",
-                    "text": "An issue can have multiple tasks, each assigned to one team. Also schedule recurring maintenance via the calendar."
+                "reporter_portal": {
+                        "slug": "reporter_portal",
+                        "type": "portal",
+                        "title": "How does the reporter portal work?",
+                        "intro": "Scanning the unit QR opens a web page for that unit. Reporters describe problems; approved issues and shared documents/announcements are visible. Workers with team access can complete open tasks and — when enabled — run unit checks.",
+                        "summary": "Unit QR portal: report, approved issues, documents, announcements, on-site tasks and optional unit check for workers. Optional: contact details and/or email confirmation (category and unit); until the link there is no issue. Optional unit measurements via the Measure tile.",
+                        "sections": [
+                                {
+                                        "title": "New issue",
+                                        "text": "Describe the problem and optionally add up to 4 photos. Photos are resized on the device before upload. First name, last name and email are optional unless the administrator required contact details (category and unit). Optionally the administrator can require email confirmation (category and unit): you get a link; the issue, task and webhook are created only after that click. Signed-in workers do not need those fields and do not get a confirmation mail. Anti-spam limits apply (e.g. at most one report every few minutes per device)."
+                                },
+                                {
+                                        "title": "Awaiting review",
+                                        "text": "Until an administrator or staff member approves, text and photos remain blurred on the public portal. In admin, everything is readable immediately."
+                                },
+                                {
+                                        "title": "Open issues",
+                                        "text": "Overview of approved, active issues for this unit, with status."
+                                },
+                                {
+                                        "title": "Documents and announcements",
+                                        "text": "Shared manuals and announcements for the site or unit, with language choice and automatic translation when available."
+                                },
+                                {
+                                        "title": "Tasks on site",
+                                        "text": "Field workers signed in via Clock Point and belonging to the team start and complete tasks via the unit QR."
+                                },
+                                {
+                                        "title": "Unit check (workers)",
+                                        "text": "Workers only, after Clock Point sign-in, and only when the administrator enabled unit checks on category and unit. Record OK or Not OK, optionally with a checklist. OK does not create an issue; after Not OK a normal report can follow."
+                                },
+                                {
+                                        "title": "Unit measurements",
+                                        "text": "When unit measurements are enabled on category and unit and fields are linked, visitors or workers can submit values via the Measure tile (Clock Point not required). History under Work → Unit measurements."
+                                }
+                        ]
                 },
-                {
-                    "title": "Field work via QR",
-                    "text": "Field workers sign in via the Clock Point QR (name + icon) and complete tasks via the unit QR — without a WinProx login.",
-                    "highlight": "Clock Point = sign in (name + icon); clocking in requires Time (punch clock); unit QR = tasks and issues on site."
+                "moderation": {
+                        "slug": "moderation",
+                        "type": "text",
+                        "title": "Why is content on the QR portal blurred?",
+                        "body": "Public QR pages blur description and photos until an administrator or staff member approves the issue. This prevents inappropriate or incorrect content from being publicly visible. Admin screens (dashboard, issues, tasks) always show everything in full — that is where you review content.",
+                        "summary": "Blur only on public QR portals until approval; admin never blurred."
                 },
-                {
-                    "title": "Follow up and close",
-                    "text": "Track progress in the dashboard, briefing, and calendar. Complete tasks with notes and photos; close the issue when work is done."
+                "photos": {
+                        "slug": "photos",
+                        "type": "text",
+                        "title": "How do photos work for issues and tasks?",
+                        "body": "When reporting an issue or completing a task, you can add up to 4 photos. On phone and in the browser, they are compressed first (faster upload). In admin, photos are shown clearly; on the public portal they remain blurred until the issue is approved.",
+                        "summary": "Up to 4 photos, client-side compression; blur only on public portal before approval."
+                },
+                "time_clock": {
+                        "slug": "time_clock",
+                        "type": "text",
+                        "title": "What is the Time module / Clock Point?",
+                        "body": "Time is the optional punch clock: workers clock in and out via the Clock Point QR (breaks and shifts included). Name lookup on Clock Point is per location: only workers allowed there (or floater teams) see their name. Colleagues with a punch-clock team clock in via the linked worker profile. Clock Point remains the sign-in QR (name + icon) even without Time. Time is included in the trial. On a paid WinProx plan it is optional; tick it on the subscription.",
+                        "summary": "Time: clock in/out via Clock Point, lookup per location; colleagues via punch-clock team."
+                },
+                "esg": {
+                        "slug": "esg",
+                        "type": "text",
+                        "title": "What is ESG & Compliance?",
+                        "body": "ESG is an optional module on WinProx Corporate to record measurement values during recurring inspections (energy, safety, …). Administrators see indicators, measurements and follow-up tasks. Link an indicator to a recurring issue; measurements via portal or API. For simple meter readings without ESG setup, use unit measurements (Work → Unit measurements).",
+                        "summary": "ESG module on Corporate: indicators, measurements and follow-up for recurring inspections."
+                },
+                "for_who": {
+                        "slug": "for_who",
+                        "type": "text",
+                        "title": "Who is WinProx for?",
+                        "body": "For facility organisations — factories, care, municipalities, campuses — that want issues, internal teams, field follow-up, optional Time (punch clock) and optionally ESG or IoT Connect in one place. No separate hospitality or contractor portals: one Facility app.",
+                        "summary": "Facility organisations: issues, teams, field work; Time (punch clock) optional; ESG and IoT on Corporate."
+                },
+                "user_roles": {
+                        "slug": "user_roles",
+                        "type": "roles",
+                        "title": "How do the different users work?",
+                        "summary": "Administrator: full control and subscription. Staff member: daily follow-up. Field worker: field work via Clock Point and QR without login.",
+                        "roles": [
+                                {
+                                        "title": "Administrator",
+                                        "text": "Full control: sites, issues, tasks, team, subscription, colleague accounts, and (where applicable) API settings. On desktop they can sign in with email + password or **Sign in with Microsoft** (email must match)."
+                                },
+                                {
+                                        "title": "Staff member",
+                                        "text": "Daily follow-up of sites, issues, and tasks. No management of subscription or colleague accounts. On desktop they can sign in with email + password or **Sign in with Microsoft** (email must match)."
+                                },
+                                {
+                                        "title": "Field worker",
+                                        "text": "Works without a WinProx login. Signs in via Clock Point QR; starts/completes tasks via the unit QR, with photos and notes."
+                                }
+                        ]
+                },
+                "microsoft_login": {
+                        "slug": "microsoft_login",
+                        "type": "text",
+                        "title": "Can I sign in with Microsoft?",
+                        "body": "Yes, for admins and employees on the desktop login screen, via **Sign in with Microsoft**. The email of your Microsoft work account must match your existing WinProx account. No new account is created. Email + password still works. Workers sign in via Clock Point QR (name + icon), not Microsoft. Connecting other software (Ultimo, IWMS, …) uses API tokens, not this login.",
+                        "summary": "Admin/employee: Sign in with Microsoft on desktop; email must match. Workers: Clock Point QR. No new accounts."
+                },
+                "data_export": {
+                        "slug": "data_export",
+                        "type": "text",
+                        "title": "Can I export my data?",
+                        "body": "Yes. Go to Settings → Privacy & data export. There an administrator can download a machine-readable export (JSON in a ZIP) of the account and relevant activity in your environment. Keep the file safe. This is the GDPR account export — distinct from operational list reports (Download report on search screens).",
+                        "summary": "Administrators export via Settings → Privacy & data export (GDPR)."
+                },
+                "list_reports": {
+                        "slug": "list_reports",
+                        "type": "text",
+                        "title": "What is Download report on search screens?",
+                        "body": "On filtered search screens (Issues, Tasks, Time/shifts, Reservations, Unit checks, Unit measurements, ESG measurements) you find Download report. Choose CSV (table for Excel) or Print (Ctrl+P to PDF). Print follows the backoffice list card layout where possible; Time shows a timesheet. The export uses the same filters as the list, not only the current page (max. 5000 rows). Only for users who may view those lists. This is not the GDPR account export — that remains under Settings → Privacy & data export. Later: Organisation → Reports with saved templates.",
+                        "summary": "Download report on search screens: filtered CSV or print; max. 5000 rows — separate from GDPR export."
+                },
+                "delete_account": {
+                        "slug": "delete_account",
+                        "type": "text",
+                        "title": "How do I delete my account / organisation data?",
+                        "body": "Only an administrator can do this. Go to Subscription → Delete organisation data. First download an export via Settings → Privacy & data export, then confirm with password and email. During a trial you can permanently delete yourself afterwards. On a paid plan there is a 7-day wait; WinProx administration performs the deletion. You can cancel until then via Subscription. Media files (photos, documents) are not kept in the recovery snapshot. If the trial ends without a subscription, WinProx sends warnings and may delete the organisation automatically (default around day 14 after trial end).",
+                        "summary": "Admin: Subscription → delete data (export + password + email; trial self-serve, paid via WinProx after 7 days; expired trial may auto-delete)."
+                },
+                "internal_teams": {
+                        "slug": "internal_teams",
+                        "type": "text",
+                        "title": "How do I set up internal teams?",
+                        "body": "Start small: one team (for example Hotel or Facility) and everyone who carries out tasks in it. Go to People → Teams. A team leader is not required. Extra teams only if there are genuinely separate groups. Link teams to categories. Add workers manually, or via CSV/Excel. Under Teams you also manage unit-check checklists. Print the Clock Point QR for the floor (Time → Clock Points).",
+                        "summary": "One team is enough to start. People → Teams; link to categories; Clock Point QR."
+                },
+                "team_follow_up": {
+                        "slug": "team_follow_up",
+                        "type": "text",
+                        "title": "How do teams follow up on tasks?",
+                        "body": "Tasks appear in Tasks, on the calendar, in the briefing, on the Clock Point QR and on the unit QR. Workers start and complete on site. Coordinators follow status in admin. Recurring issues generate cycles with planned due dates; recurring tasks show the Recurring pill.",
+                        "summary": "Follow-up via Tasks, calendar, briefing and QR; recurring cycles with Recurring pill."
+                },
+                "reservations": {
+                        "slug": "reservations",
+                        "type": "text",
+                        "title": "How do reservations work?",
+                        "body": "Reservations are for shared resources with a time slot (meeting rooms, vehicles, keys) — not for defect reports. Turn on Reservable on the category and Allow reservations on the unit (off by default). Guests book via the unit QR (30 min hold + email confirmation). Staff create, edit and cancel bookings; overlapping slots are blocked.",
+                        "summary": "In the app: Reservations menu (and calendar). Category Reservable + unit Allow reservations (off by default); guest books via QR with email confirmation."
+                },
+                "multiple_locations": {
+                        "slug": "multiple_locations",
+                        "type": "text",
+                        "title": "Can I manage multiple sites?",
+                        "body": "Yes. Under Places you manage Categories, Locations and Units separately. Multiple locations and units on one organisation, with filters. Workers and colleagues can be linked to locations; Clock Point only shows names at assigned locations (floater teams everywhere). Limits depend on your plan.",
+                        "summary": "Multiple locations via Places; workers/colleagues optionally per location; floater team everywhere."
+                },
+                "page_help": {
+                        "slug": "page_help",
+                        "type": "text",
+                        "title": "Where do I find help on a screen?",
+                        "body": "On most screens, a ? appears next to the title. It opens page help with actions and — where relevant — explanations of statuses (new, in progress, done, closed). On public QR portals, the same help appears in the header.",
+                        "summary": "Use the ? button next to the page title for action and status help."
+                },
+                "mobile": {
+                        "slug": "mobile",
+                        "type": "text",
+                        "title": "Does WinProx work on a smartphone?",
+                        "body": "Yes. Admin is desktop-first but usable on tablet. Field and QR portals are mobile-first. Field workers work on their phone via Clock Point and unit QR. Dark theme is handy on phone.",
+                        "summary": "Browser on phone/tablet/desktop; field via QR is mobile-first."
+                },
+                "install": {
+                        "slug": "install",
+                        "type": "text",
+                        "title": "Do I need to install software?",
+                        "body": "No. WinProx is a web app. Coordinators and field teams work in the browser, with no separate installation or app store.",
+                        "summary": "No installation — everything via the browser."
+                },
+                "dynamic_qr_codes": {
+                        "slug": "dynamic_qr_codes",
+                        "type": "text",
+                        "title": "Dynamic QR codes",
+                        "body": "Dynamic QR stickers can later be linked to a different unit. Print in bulk (e.g. Avery sheets), stick on site, scan while signed in, and assign a unit. Static codes stay fixed to one unit.",
+                        "summary": "Dynamic QRs re-linkable; print bulk stickers and assign a unit on site."
+                },
+                "stickers": {
+                        "slug": "stickers",
+                        "type": "text",
+                        "title": "Which stickers can I use?",
+                        "body": "For printing we recommend Avery or Herma labels (A4). In Sites, download a sticker sheet (Word) in the correct format. Optionally set a sticker background or organisation logo under Settings.",
+                        "summary": "Avery/Herma A4; sticker sheet from Sites; optional logo/background in Settings."
+                },
+                "style": {
+                        "slug": "style",
+                        "type": "text",
+                        "title": "WinProx style and Custom portal style",
+                        "body": "Under Settings, choose WinProx style: Standard or Dark (for the app). Custom portal style is optional: background and button colours (and optional background photo) for the public QR portal that reporters and field workers see.",
+                        "summary": "Standard/Dark for the app; optional custom colours/background for the QR portal."
+                },
+                "api_webhooks": {
+                        "slug": "api_webhooks",
+                        "type": "text",
+                        "title": "API and webhooks?",
+                        "body": "On Corporate (or when API is enabled) manage API tokens and outgoing webhooks (HMAC-signed) under Settings. Connect WinProx to other systems for issues, tasks, unit checks (unit.check.recorded), unit measurements (unit.measurement.recorded), ESG measurements and more. IoT Connect uses a separate gateway token for sensor ingest (Corporate).",
+                        "summary": "API tokens and webhooks under Settings (Corporate); issues, tasks, unit checks, unit measurements, ESG; HMAC deliveries. IoT ingest via gateway token (Corporate)."
+                },
+                "iot": {
+                        "slug": "iot",
+                        "type": "text",
+                        "title": "What is IoT Connect?",
+                        "body": "IoT Connect links sensor gateways to WinProx (Corporate). Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. Sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway sends events to POST /api/v1/iot/events with a gateway token.",
+                        "summary": "IoT Connect on Corporate: sensor alarms → issues; readings → ESG. Gateway token ingest."
+                },
+                "unit_checks": {
+                        "slug": "unit_checks",
+                        "type": "text",
+                        "title": "What are unit checks?",
+                        "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by field workers (after Clock Point). Enable first on category and unit (off by default). Optional checklists are managed under Teams (shared or linked to a team; starters for cleaning, technical and security) and linked per unit. For OK all points must be ticked. History and filters in Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements.",
+                        "summary": "OK/Not OK via unit QR (enable category + unit); checklists under Teams; OK does not create an issue; webhook unit.check.recorded."
+                },
+                "work_menu": {
+                        "slug": "work_menu",
+                        "type": "text",
+                        "title": "What is the work menu?",
+                        "body": "Under Organisation → Settings → Work menu settings, the administrator chooses per organisation which Work sidebar items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the back office (routes return forbidden). Existing QR settings on units keep working; you cannot newly enable them on units or categories while the work menu item is off. With a starter template on the dashboard, you see the work menu choice in the preview before you create it, and again on the Starter template created card. Change it later under Work menu settings. Removing the starter template does not revert the work menu.",
+                        "summary": "Organisation → Settings → Work menu: per-tenant sidebar; starter template shows preview and result."
+                },
+                "unit_measurements": {
+                        "slug": "unit_measurements",
+                        "type": "text",
+                        "title": "What are unit measurements?",
+                        "body": "Unit measurements are simple readings on a unit via the unit QR — for example odometer, room temperature or vehicle status. No ESG module required. Create measure fields under Work → Unit measurements (name, type, unit of measure), enable Allow unit measurements on category and unit, and link fields to the unit. The QR portal shows a Measure tile; history is in admin. API: POST /api/v1/units/{unit}/measurements (units:update ability). Webhook: unit.measurement.recorded. Separate from unit checks (OK/Not OK) and from ESG (Corporate compliance with recurring tasks).",
+                        "summary": "Readings via unit QR (km, °C, status, …): fields under Work → Unit measurements; category + unit on; history; API/webhook. No ESG required."
+                },
+                "worker_locations": {
+                        "slug": "worker_locations",
+                        "type": "text",
+                        "title": "How do I limit workers to certain locations?",
+                        "body": "Under People → Teams edit a worker or import with the location_names column (comma-separated names). Empty selection = clock in anywhere (default for existing workers). For floaters: tick **May clock in anywhere** on the team. Search and filter large lists via People → Workers.",
+                        "summary": "Locations per worker in Teams; import location_names; floater team = everywhere; search via Workers."
                 }
-            ],
-            "box_title": "Internal teams",
-            "box_body": "Under People → Teams create at least one team — in a small organisation Hotel or Facility is enough. Link the team to categories. Via Clock Point and unit QR, workers record updates and photos on site."
-        },
-        "pricing": {
-            "slug": "pricing",
-            "type": "pricing",
-            "title": "How much does WinProx cost?",
-            "intro": "You start with a free trial month (50 units, 50 seats, including Time punch clock). IoT, ESG and API are not in the trial. Then choose 10, 50 or 100 units per year with the same number of seats. Time is optional afterwards. Corporate is custom (more than 100 units or when API/webhooks are needed).",
-            "summary": "Trial up to 50 units and 50 seats, including Time. IoT, ESG and API on Corporate. Then 10/50/100 per year.",
-            "content_note": "Unit = object or place with a QR. Document = file on the QR portal, maximum 1 per unit. Seat = colleague with login or worker (Clock Point). Photos on issues are unlimited. Exact prices are under Subscription.",
-            "plans": {
-                "winprox_10": {
-                    "units": "Up to 10 units and 10 documents.",
-                    "announcements": "€149 / year",
-                    "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
-                    "description": "Report and follow up via QR.",
-                    "users": "Up to 10 seats (colleagues + workers); unlimited locations and photos on issues"
-                },
-                "winprox_50": {
-                    "units": "Up to 50 units and 50 documents.",
-                    "announcements": "€399 / year",
-                    "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
-                    "description": "Report and follow up via QR.",
-                    "users": "Up to 50 seats (colleagues + workers); unlimited locations and photos on issues"
-                },
-                "winprox_100": {
-                    "units": "Up to 100 units and 100 documents.",
-                    "announcements": "€699 / year",
-                    "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
-                    "description": "Report and follow up via QR.",
-                    "users": "Up to 100 seats (colleagues + workers); unlimited locations and photos on issues"
-                },
-                "corporate": {
-                    "units": "More than 100 units, or API/webhooks/integrations required.",
-                    "announcements": "Custom pricing",
-                    "documents": "Time (punch clock), IoT Connect and ESG included.",
-                    "description": "For >1,000 units or when API/webhooks/integrations are required.",
-                    "users": "Custom seats; unlimited locations and photos on issues"
-                }
-            }
-        },
-        "qr_code": {
-            "slug": "qr_code",
-            "type": "text",
-            "title": "Which QR codes are there?",
-            "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Clock Point QR: workers sign in (name + icon) and see their team tasks; clock in/out only with Time (punch clock). Location QR: general link to the site. Everything opens in the browser — no app. Optionally also unit measurements (km, temperature, status) when category and unit allow it.",
-            "summary": "Unit QR (reports/tasks/unit check), Clock Point QR (sign-in; clocking with Time), location QR — all in the browser. Optional unit measurements."
-        },
-        "reporter_portal": {
-            "slug": "reporter_portal",
-            "type": "portal",
-            "title": "How does the reporter portal work?",
-            "intro": "Scanning the unit QR opens a web page for that unit. Reporters describe problems; approved issues and shared documents/announcements are visible. Workers with team access can complete open tasks and — when enabled — run unit checks.",
-            "summary": "Unit QR portal: report, approved issues, documents, announcements, on-site tasks and optional unit check for workers. Optional: contact details and/or email confirmation (category and unit); until the link there is no issue. Optional unit measurements via the Measure tile.",
-            "sections": [
-                {
-                    "title": "New issue",
-                    "text": "Describe the problem and optionally add up to 4 photos. Photos are resized on the device before upload. First name, last name and email are optional unless the administrator required contact details (category and unit). Optionally the administrator can require email confirmation (category and unit): you get a link; the issue, task and webhook are created only after that click. Signed-in workers do not need those fields and do not get a confirmation mail. Anti-spam limits apply (e.g. at most one report every few minutes per device)."
-                },
-                {
-                    "title": "Awaiting review",
-                    "text": "Until an administrator or staff member approves, text and photos remain blurred on the public portal. In admin, everything is readable immediately."
-                },
-                {
-                    "title": "Open issues",
-                    "text": "Overview of approved, active issues for this unit, with status."
-                },
-                {
-                    "title": "Documents and announcements",
-                    "text": "Shared manuals and announcements for the site or unit, with language choice and automatic translation when available."
-                },
-                {
-                    "title": "Tasks on site",
-                    "text": "Field workers signed in via Clock Point and belonging to the team start and complete tasks via the unit QR."
-                },
-                {
-                    "title": "Unit check (workers)",
-                    "text": "Workers only, after Clock Point sign-in, and only when the administrator enabled unit checks on category and unit. Record OK or Not OK, optionally with a checklist. OK does not create an issue; after Not OK a normal report can follow."
-                },
-                {
-                    "title": "Unit measurements",
-                    "text": "When unit measurements are enabled on category and unit and fields are linked, visitors or workers can submit values via the Measure tile (Clock Point not required). History under Work → Unit measurements."
-                }
-            ]
-        },
-        "moderation": {
-            "slug": "moderation",
-            "type": "text",
-            "title": "Why is content on the QR portal blurred?",
-            "body": "Public QR pages blur description and photos until an administrator or staff member approves the issue. This prevents inappropriate or incorrect content from being publicly visible. Admin screens (dashboard, issues, tasks) always show everything in full — that is where you review content.",
-            "summary": "Blur only on public QR portals until approval; admin never blurred."
-        },
-        "photos": {
-            "slug": "photos",
-            "type": "text",
-            "title": "How do photos work for issues and tasks?",
-            "body": "When reporting an issue or completing a task, you can add up to 4 photos. On phone and in the browser, they are compressed first (faster upload). In admin, photos are shown clearly; on the public portal they remain blurred until the issue is approved.",
-            "summary": "Up to 4 photos, client-side compression; blur only on public portal before approval."
-        },
-        "time_clock": {
-            "slug": "time_clock",
-            "type": "text",
-            "title": "What is the Time module / Clock Point?",
-            "body": "Time is the optional punch clock: field workers clock in and out via the Clock Point QR (breaks and shifts included). Clock Point remains the sign-in QR (name + icon) even without Time. Time is included in the trial. On a paid WinProx plan it is optional; you add it on Subscription.",
-            "summary": "Time (punch clock): clock in/out via Clock Point. Optional, not included by default."
-        },
-        "esg": {
-            "slug": "esg",
-            "type": "text",
-            "title": "What is ESG & Compliance?",
-            "body": "ESG is an optional module on WinProx Corporate to record measurement values during recurring inspections (energy, safety, …). Administrators see indicators, measurements and follow-up tasks. Link an indicator to a recurring issue; measurements via portal or API. For simple meter readings without ESG setup, use unit measurements (Work → Unit measurements).",
-            "summary": "ESG module on Corporate: indicators, measurements and follow-up for recurring inspections."
-        },
-        "for_who": {
-            "slug": "for_who",
-            "type": "text",
-            "title": "Who is WinProx for?",
-            "body": "For facility organisations — factories, care, municipalities, campuses — that want issues, internal teams, field follow-up, optional Time (punch clock) and optionally ESG or IoT Connect in one place. No separate hospitality or contractor portals: one Facility app.",
-            "summary": "Facility organisations: issues, teams, field work; Time (punch clock) optional; ESG and IoT on Corporate."
-        },
-        "user_roles": {
-            "slug": "user_roles",
-            "type": "roles",
-            "title": "How do the different users work?",
-            "summary": "Administrator: full control and subscription. Staff member: daily follow-up. Field worker: field work via Clock Point and QR without login.",
-            "roles": [
-                {
-                    "title": "Administrator",
-                    "text": "Full control: sites, issues, tasks, team, subscription, colleague accounts, and (where applicable) API settings. On desktop they can sign in with email + password or **Sign in with Microsoft** (email must match)."
-                },
-                {
-                    "title": "Staff member",
-                    "text": "Daily follow-up of sites, issues, and tasks. No management of subscription or colleague accounts. On desktop they can sign in with email + password or **Sign in with Microsoft** (email must match)."
-                },
-                {
-                    "title": "Field worker",
-                    "text": "Works without a WinProx login. Signs in via Clock Point QR; starts/completes tasks via the unit QR, with photos and notes."
-                }
-            ]
-        },
-        "microsoft_login": {
-            "slug": "microsoft_login",
-            "type": "text",
-            "title": "Can I sign in with Microsoft?",
-            "body": "Yes, for admins and employees on the desktop login screen, via **Sign in with Microsoft**. The email of your Microsoft work account must match your existing WinProx account. No new account is created. Email + password still works. Workers sign in via Clock Point QR (name + icon), not Microsoft. Connecting other software (Ultimo, IWMS, …) uses API tokens, not this login.",
-            "summary": "Admin/employee: Sign in with Microsoft on desktop; email must match. Workers: Clock Point QR. No new accounts."
-        },
-        "data_export": {
-            "slug": "data_export",
-            "type": "text",
-            "title": "Can I export my data?",
-            "body": "Yes. Go to Settings → Privacy & data export. There an administrator can download a machine-readable export (JSON in a ZIP) of the account and relevant activity in your environment. Keep the file safe. This is the GDPR account export — distinct from operational list reports (Download report on search screens).",
-            "summary": "Administrators export via Settings → Privacy & data export (GDPR)."
-        },
-        "list_reports": {
-            "slug": "list_reports",
-            "type": "text",
-            "title": "What is Download report on search screens?",
-            "body": "On filtered search screens (Issues, Tasks, Time/shifts, Reservations, Unit checks, Unit measurements, ESG measurements) you find Download report. Choose CSV (table for Excel) or Print (Ctrl+P to PDF). Print follows the backoffice list card layout where possible; Time shows a timesheet. The export uses the same filters as the list, not only the current page (max. 5000 rows). Only for users who may view those lists. This is not the GDPR account export — that remains under Settings → Privacy & data export. Later: Organisation → Reports with saved templates.",
-            "summary": "Download report on search screens: filtered CSV or print; max. 5000 rows — separate from GDPR export."
-        },
-        "delete_account": {
-            "slug": "delete_account",
-            "type": "text",
-            "title": "How do I delete my account / organisation data?",
-            "body": "Only an administrator can do this. Go to Subscription → Delete organisation data. First download an export via Settings → Privacy & data export, then confirm with password and email. During a trial you can permanently delete yourself afterwards. On a paid plan there is a 7-day wait; WinProx administration performs the deletion. You can cancel until then via Subscription. Media files (photos, documents) are not kept in the recovery snapshot. If the trial ends without a subscription, WinProx sends warnings and may delete the organisation automatically (default around day 14 after trial end).",
-            "summary": "Admin: Subscription → delete data (export + password + email; trial self-serve, paid via WinProx after 7 days; expired trial may auto-delete)."
-        },
-        "internal_teams": {
-            "slug": "internal_teams",
-            "type": "text",
-            "title": "How do I set up internal teams?",
-            "body": "Start small: one team (for example Hotel or Facility) and everyone who carries out tasks in it. Go to People → Teams. A team leader is not required. Extra teams only if there are genuinely separate groups. Link teams to categories. Add workers manually, or via CSV/Excel. Under Teams you also manage unit-check checklists. Print the Clock Point QR for the floor (Time → Clock Points).",
-            "summary": "One team is enough to start. People → Teams; link to categories; Clock Point QR."
-        },
-        "team_follow_up": {
-            "slug": "team_follow_up",
-            "type": "text",
-            "title": "How do teams follow up on tasks?",
-            "body": "Tasks appear in Tasks, on the calendar, in the briefing, on the Clock Point QR and on the unit QR. Workers start and complete on site. Coordinators follow status in admin. Recurring issues generate cycles with planned due dates; recurring tasks show the Recurring pill.",
-            "summary": "Follow-up via Tasks, calendar, briefing and QR; recurring cycles with Recurring pill."
-        },
-        "reservations": {
-            "slug": "reservations",
-            "type": "text",
-            "title": "How do reservations work?",
-            "body": "Reservations are for shared resources with a time slot (meeting rooms, vehicles, keys) — not for defect reports. Turn on Reservable on the category and Allow reservations on the unit (off by default). Guests book via the unit QR (30 min hold + email confirmation). Staff create, edit and cancel bookings; overlapping slots are blocked.",
-            "summary": "In the app: Reservations menu (and calendar). Category Reservable + unit Allow reservations (off by default); guest books via QR with email confirmation."
-        },
-        "multiple_locations": {
-            "slug": "multiple_locations",
-            "type": "text",
-            "title": "Can I manage multiple sites?",
-            "body": "Yes. Under Places you manage Categories, Locations and Units separately. Multiple locations and units in one organisation, with filters. Limits depend on your subscription.",
-            "summary": "Multiple locations and units via Places (Categories, Locations, Units); limits per plan."
-        },
-        "page_help": {
-            "slug": "page_help",
-            "type": "text",
-            "title": "Where do I find help on a screen?",
-            "body": "On most screens, a ? appears next to the title. It opens page help with actions and — where relevant — explanations of statuses (new, in progress, done, closed). On public QR portals, the same help appears in the header.",
-            "summary": "Use the ? button next to the page title for action and status help."
-        },
-        "mobile": {
-            "slug": "mobile",
-            "type": "text",
-            "title": "Does WinProx work on a smartphone?",
-            "body": "Yes. Admin is desktop-first but usable on tablet. Field and QR portals are mobile-first. Field workers work on their phone via Clock Point and unit QR. Dark theme is handy on phone.",
-            "summary": "Browser on phone/tablet/desktop; field via QR is mobile-first."
-        },
-        "install": {
-            "slug": "install",
-            "type": "text",
-            "title": "Do I need to install software?",
-            "body": "No. WinProx is a web app. Coordinators and field teams work in the browser, with no separate installation or app store.",
-            "summary": "No installation — everything via the browser."
-        },
-        "dynamic_qr_codes": {
-            "slug": "dynamic_qr_codes",
-            "type": "text",
-            "title": "Dynamic QR codes",
-            "body": "Dynamic QR stickers can later be linked to a different unit. Print in bulk (e.g. Avery sheets), stick on site, scan while signed in, and assign a unit. Static codes stay fixed to one unit.",
-            "summary": "Dynamic QRs re-linkable; print bulk stickers and assign a unit on site."
-        },
-        "stickers": {
-            "slug": "stickers",
-            "type": "text",
-            "title": "Which stickers can I use?",
-            "body": "For printing we recommend Avery or Herma labels (A4). In Sites, download a sticker sheet (Word) in the correct format. Optionally set a sticker background or organisation logo under Settings.",
-            "summary": "Avery/Herma A4; sticker sheet from Sites; optional logo/background in Settings."
-        },
-        "style": {
-            "slug": "style",
-            "type": "text",
-            "title": "WinProx style and Custom portal style",
-            "body": "Under Settings, choose WinProx style: Standard or Dark (for the app). Custom portal style is optional: background and button colours (and optional background photo) for the public QR portal that reporters and field workers see.",
-            "summary": "Standard/Dark for the app; optional custom colours/background for the QR portal."
-        },
-        "api_webhooks": {
-            "slug": "api_webhooks",
-            "type": "text",
-            "title": "API and webhooks?",
-            "body": "On Corporate (or when API is enabled) manage API tokens and outgoing webhooks (HMAC-signed) under Settings. Connect WinProx to other systems for issues, tasks, unit checks (unit.check.recorded), unit measurements (unit.measurement.recorded), ESG measurements and more. IoT Connect uses a separate gateway token for sensor ingest (Corporate).",
-            "summary": "API tokens and webhooks under Settings (Corporate); issues, tasks, unit checks, unit measurements, ESG; HMAC deliveries. IoT ingest via gateway token (Corporate)."
-        },
-        "iot": {
-            "slug": "iot",
-            "type": "text",
-            "title": "What is IoT Connect?",
-            "body": "IoT Connect links sensor gateways to WinProx (Corporate). Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. Sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway sends events to POST /api/v1/iot/events with a gateway token.",
-            "summary": "IoT Connect on Corporate: sensor alarms → issues; readings → ESG. Gateway token ingest."
-        },
-        "unit_checks": {
-            "slug": "unit_checks",
-            "type": "text",
-            "title": "What are unit checks?",
-            "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by field workers (after Clock Point). Enable first on category and unit (off by default). Optional checklists are managed under Teams (shared or linked to a team; starters for cleaning, technical and security) and linked per unit. For OK all points must be ticked. History and filters in Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements.",
-            "summary": "OK/Not OK via unit QR (enable category + unit); checklists under Teams; OK does not create an issue; webhook unit.check.recorded."
-        },
-        "work_menu": {
-            "slug": "work_menu",
-            "type": "text",
-            "title": "What is the work menu?",
-            "body": "Under Organisation → Settings → Work menu settings, the administrator chooses per organisation which Work sidebar items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the back office (routes return forbidden). Existing QR settings on units keep working; you cannot newly enable them on units or categories while the work menu item is off. With a starter template on the dashboard, you see the work menu choice in the preview before you create it, and again on the Starter template created card. Change it later under Work menu settings. Removing the starter template does not revert the work menu.",
-            "summary": "Organisation → Settings → Work menu: per-tenant sidebar; starter template shows preview and result."
-        },
-        "unit_measurements": {
-            "slug": "unit_measurements",
-            "type": "text",
-            "title": "What are unit measurements?",
-            "body": "Unit measurements are simple readings on a unit via the unit QR — for example odometer, room temperature or vehicle status. No ESG module required. Create measure fields under Work → Unit measurements (name, type, unit of measure), enable Allow unit measurements on category and unit, and link fields to the unit. The QR portal shows a Measure tile; history is in admin. API: POST /api/v1/units/{unit}/measurements (units:update ability). Webhook: unit.measurement.recorded. Separate from unit checks (OK/Not OK) and from ESG (Corporate compliance with recurring tasks).",
-            "summary": "Readings via unit QR (km, °C, status, …): fields under Work → Unit measurements; category + unit on; history; API/webhook. No ESG required."
         }
-    }
 }

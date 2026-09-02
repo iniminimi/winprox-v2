@@ -464,7 +464,11 @@
             "actions": [
                 {
                     "label": "Usuarios colegas",
-                    "text": "Gestione empleados administrativos que trabajan principalmente en PC. Inician sesión con correo y contraseña, o con **Iniciar sesión con Microsoft** (el correo de Microsoft debe coincidir con la cuenta WinProx existente; no se crea una cuenta nueva). Un administrador es el usuario principal que puede modificar los datos de la empresa. Pueden existir varios administradores. Los colegas (admin y empleado) y los operarios comparten el límite de plazas del plan. Los operarios no usan el inicio de sesión Microsoft (QR Clock Point)."
+                    "text": "Gestione empleados administrativos que trabajan principalmente en PC. Inician sesión con correo y contraseña, o con **Iniciar sesión con Microsoft** (el correo de Microsoft debe coincidir con la cuenta WinProx existente; no se crea una cuenta nueva). Un administrador es el usuario principal que puede modificar los datos de la empresa. Pueden existir varios administradores. Los colegas (admin y empleado) y los operarios comparten el límite de plazas del plan. Los operarios no usan el inicio de sesión Microsoft (QR Clock Point). Opcionalmente asigne sedes a los colegas (vacío = todas las sedes en backoffice)."
+                },
+                {
+                    "label": "Equipo de fichaje (colegas)",
+                    "text": "Los colegas que deben fichar reciben un **Equipo de fichaje** en Backoffice → editar. WinProx crea entonces un perfil de ejecutor vinculado (nombre del cuenta de colega). Ese perfil no cuenta doble en la licencia. El fichaje es vía Clock Point (nombre + icono)."
                 }
             ]
         },
@@ -477,7 +481,7 @@
                 },
                 {
                     "label": "Equipos operativos",
-                    "text": "Un equipo basta para empezar (por ejemplo Hotel o Facility). Añada a todos los que ejecutan tareas (nombre + icono). No hace falta un jefe de equipo. Más equipos solo si hay grupos realmente distintos. Vincule el equipo a las categorías para que las tareas lleguen. Mientras no haya operarios en el equipo, aún puede eliminarlo."
+                    "text": "Un equipo basta para empezar (por ejemplo Hotel o Facility). Añada a todos los que ejecutan tareas (nombre + icono). No hace falta un jefe de equipo. Más equipos solo si hay grupos realmente distintos. Vincule el equipo a las categorías para que las tareas lleguen. Mientras no haya operarios en el equipo, aún puede eliminarlo. Marque **Puede fichar en cualquier sede** para equipos de relevo."
                 },
                 {
                     "label": "Listas de comprobación",
@@ -493,7 +497,11 @@
                 },
                 {
                     "label": "Trabajadores",
-                    "text": "Los trabajadores no tienen inicio de sesión por correo; se identifican mediante el QR Clock Point con nombre e icono. También puede añadir su correo electrónico y número de teléfono."
+                    "text": "Los ejecutores no tienen login por correo; se identifican con la QR Clock Point (nombre + icono). Opcionalmente vincule sedes (vacío = en todas). Listas grandes en **Personas → Ejecutores**."
+                },
+                {
+                    "label": "Sedes por ejecutor",
+                    "text": "Al editar, elija una o más sedes. Vacío = fichar en cualquier sitio (predeterminado para ejecutores existentes). En Clock Point el ejecutor solo ve su nombre en sedes asignadas, salvo que el equipo tenga **Puede fichar en cualquier sede**."
                 },
                 {
                     "label": "Trabajadores externos",
@@ -525,7 +533,7 @@
                 },
                 {
                     "label": "Importación",
-                    "text": "Importe trabajadores en bloque mediante CSV o Excel (.xlsx). El archivo debe tener exactamente estos encabezados: team_name, first_name, last_name (obligatorios), email, phone, company_name (opcionales). Un nombre de empresa rellenado marca automáticamente al trabajador como externo. Si los encabezados no coinciden o faltan campos obligatorios, toda la importación se rechaza con un mensaje de error claro por fila. Los equipos se crean automáticamente si aún no existen. Deshacer elimina trabajadores sin dispositivo vinculado y limpia equipos vacíos creados por la importación. Los trabajadores vinculados a un dispositivo (worker_device) siempre se conservan."
+                    "text": "Importación masiva por CSV o Excel (.xlsx). Cabeceras obligatorias: team_name, first_name, last_name. Opcional: email, phone, company_name, location_names (nombres de sede separados por comas; vacío = en todas). Un nombre de empresa relleno marca automáticamente como externo. Si faltan cabeceras o campos obligatorios, se rechaza toda la importación con error claro por fila. Los equipos se crean automáticamente si no existen."
                 },
                 {
                     "label": "Importaciones recientes",
@@ -1461,6 +1469,31 @@
                     "label": "API y webhooks",
                     "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update). Cada medición dispara unit.measurement.recorded. Gestión en Ajustes → API.",
                     "requires_api": true
+                }
+            ]
+        },
+        "team.workers_index": {
+            "title": "Ayuda — Ejecutores",
+            "actions": [
+                {
+                    "label": "Resumen",
+                    "text": "Vista de todos los ejecutores del inquilino: nombre, equipo, sedes vinculadas, estado y si el perfil está vinculado a un login de colega. Útil con equipos grandes (decenas o cientos de ejecutores)."
+                },
+                {
+                    "label": "Buscar",
+                    "text": "Filtrar por nombre, equipo, sede o estado (activo/inactivo). Sin filtro de sede se muestran todos; elija una sede para ver solo quienes pueden fichar allí (o en todas con equipos de relevo)."
+                },
+                {
+                    "label": "Sedes",
+                    "text": "Cada ejecutor muestra las sedes asignadas. Sin selección = fichar en cualquier sitio (ejecutores existentes). Gestionar en Personas → Equipos (editar) o importación masiva con location_names."
+                },
+                {
+                    "label": "Vínculo con colega",
+                    "text": "Ejecutores vinculados a una cuenta de backoffice (equipo de fichaje) cuentan como una licencia. Fichan vía Clock Point (nombre + icono), no con el login de backoffice."
+                },
+                {
+                    "label": "Editar",
+                    "text": "Añadir, editar o desactivar ejecutores en Personas → Equipos. Esta pantalla sirve para buscar y filtrar rápidamente."
                 }
             ]
         }

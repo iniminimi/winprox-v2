@@ -464,7 +464,11 @@
             "actions": [
                 {
                     "label": "Colleague users",
-                    "text": "Manage administrative staff who mainly work on a PC. They sign in with email and password, or via **Sign in with Microsoft** (the Microsoft email must match the existing WinProx account; no new account is created). An administrator is the main user who can change company details. Multiple administrators are allowed. Colleagues (admin and employee) and workers share the seat limit of your plan. Workers do not use Microsoft sign-in (Clock Point QR)."
+                    "text": "Manage administrative staff who mainly work on a PC. They sign in with email and password, or via **Sign in with Microsoft** (the Microsoft email must match the existing WinProx account; no new account is created). An administrator is the main user who can change company details. Multiple administrators are allowed. Colleagues (admin and employee) and workers share the seat limit of your plan. Workers do not use Microsoft sign-in (Clock Point QR). Optionally assign locations to colleagues (empty = all locations in the back office)."
+                },
+                {
+                    "label": "Punch-clock team (colleagues)",
+                    "text": "Colleagues who need to clock in themselves get a **Punch-clock team** under Backoffice → edit. WinProx then creates a linked worker profile automatically (name from the colleague account). That profile does not count twice towards the licence limit. Clock-in goes via Clock Point (name + icon)."
                 }
             ]
         },
@@ -477,7 +481,7 @@
                 },
                 {
                     "label": "Operational teams",
-                    "text": "One team is enough to get started (for example Hotel or Facility). Add everyone who carries out tasks (name + icon). A team leader is not required. Extra teams only if there are genuinely separate groups. Link the team to categories so tasks land correctly. As long as there are no workers in the team, you can still delete the team."
+                    "text": "One team is enough to get started (for example Hotel or Facility). Add everyone who carries out tasks (name + icon). A team leader is not required. Extra teams only if there are genuinely separate groups. Link the team to categories so tasks land correctly. As long as there are no workers in the team, you can still delete the team. Tick **May clock in anywhere** for floater or relief teams."
                 },
                 {
                     "label": "Checklists",
@@ -493,7 +497,11 @@
                 },
                 {
                     "label": "Workers",
-                    "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon. You can also add their email address and phone number."
+                    "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon. Optionally link locations (empty = everywhere). Manage large lists via **People → Workers**."
+                },
+                {
+                    "label": "Locations per worker",
+                    "text": "When editing, pick one or more locations. Empty = clock in anywhere (default for existing workers). On Clock Point the worker only sees their name at assigned locations, unless the team has **May clock in anywhere**."
                 },
                 {
                     "label": "External workers",
@@ -525,7 +533,7 @@
                 },
                 {
                     "label": "Import",
-                    "text": "Import workers in bulk via CSV or Excel (.xlsx). The file must have exactly these headers: team_name, first_name, last_name (required), email, phone, company_name (optional). A filled company name automatically marks the worker as external. If the headers do not match or required fields are missing, the entire import is rejected with a clear error message per row. Teams are automatically created if they do not exist yet. Undo removes workers without a linked device and cleans up empty teams created by the import. Workers linked to a device (worker_device) are always kept."
+                    "text": "Import workers in bulk via CSV or Excel (.xlsx). Required headers: team_name, first_name, last_name. Optional: email, phone, company_name, location_names (comma-separated location names; empty = everywhere). A filled company name automatically marks the worker as external. If headers or required fields are missing, the entire import is rejected with a clear error per row. Teams are created automatically if they do not exist yet."
                 },
                 {
                     "label": "Recent imports",
@@ -1461,6 +1469,31 @@
                     "label": "API & webhooks",
                     "text": "Corporate: POST /api/v1/units/{unit}/measurements (units:update ability). Each new reading fires webhook unit.measurement.recorded. Manage under Settings → API.",
                     "requires_api": true
+                }
+            ]
+        },
+        "team.workers_index": {
+            "title": "Help — Workers",
+            "actions": [
+                {
+                    "label": "Overview",
+                    "text": "Tenant-wide overview of all workers: name, team, linked locations, status and whether the profile is linked to a colleague login. Useful for large teams (dozens to hundreds of workers)."
+                },
+                {
+                    "label": "Search",
+                    "text": "Filter by name, team, location or status (active/inactive). An empty location filter shows everyone; pick a location to see only workers allowed to clock in there (or everywhere for floater teams)."
+                },
+                {
+                    "label": "Locations",
+                    "text": "Each worker shows assigned locations. No selection = clock in anywhere (existing workers). Manage locations via People → Teams (edit) or bulk import with location_names."
+                },
+                {
+                    "label": "Colleague link",
+                    "text": "Workers linked to a Backoffice account (punch-clock team) count as one licence. They clock in via Clock Point (name + icon), not via the backoffice login."
+                },
+                {
+                    "label": "Edit",
+                    "text": "Add, edit or deactivate workers via People → Teams. This screen is for quick search and filtering."
                 }
             ]
         }

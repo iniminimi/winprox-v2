@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Chaque organisation a son environnement avec des limites par abonnement (WinProx 10/50/100 + Corporate) : unités, documents et places (collègues + exécutants)."
+                "body": "Chaque organisation a son environnement avec limites par abonnement (WinProx 10/50/100 + Corporate) : units, documents et licences (collègues actifs + exécutants actifs sans user_id lié ; collègue + profil pointeuse = une licence)."
             },
             {
                 "title": "Branding & QR",
@@ -180,7 +180,8 @@
                 "items": [
                     "**MySQL**, relational model per tenant.",
                     "Strict **tenant isolation**: every query/API call stays within the organisation.",
-                    "No shared visibility between customers."
+                    "No shared visibility between customers.",
+                    "**Périmètre site :** tables pivot location_user et location_worker ; teams.clocks_all_locations pour volants ; workers.user_id lie collègue et profil exécutant."
                 ]
             },
             {
@@ -232,7 +233,8 @@
                     "**SSO** (une connexion professionnelle via Microsoft Entra) : pour administrateurs et collaborateurs sur ordinateur (**Se connecter avec Microsoft**). Uniquement des comptes WinProx existants (l’e-mail doit correspondre au compte Microsoft) ; e-mail + mot de passe reste possible. Pas de nouveaux comptes automatiques. Les exécutants restent sur le QR Clock Point (nom + icône). Les liaisons avec d’autres logiciels (Ultimo, IWMS, …) passent par des jetons API, pas par le SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon.",
-                    "Signalants : portail QR public sans compte. Preuve de boîte mail optionnelle (catégorie et unité) : pas de login ; le signalement n’existe qu’après le lien dans le mail."
+                    "Signalants : portail QR public sans compte. Preuve de boîte mail optionnelle (catégorie et unité) : pas de login ; le signalement n’existe qu’après le lien dans le mail.",
+                    "Collègue avec **équipe pointeuse** reçoit un profil exécutant lié pour Clock Point (nom + icône) ; ne compte pas deux fois dans la licence."
                 ]
             },
             {
