@@ -1,6 +1,6 @@
 {
     "title": "Unit checks",
-    "subtitle": "Historiek van OK / Niet OK controles via QR. Checklists beheer je onder pagina Mensen → Teams. Schakel eerst Unit checks in op categorie én unit.",
+    "subtitle": "Historiek van OK / Niet OK controles via QR. Checklists beheer je onder pagina Personen → Teams. Schakel eerst Unit checks in op categorie én unit.",
     "list_title": "Recente checks",
     "empty": "Nog geen unit checks.",
     "worker_unknown": "Onbekende uitvoerder",

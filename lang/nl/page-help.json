@@ -333,7 +333,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Koppel optioneel een checklist aan de unit (templates onder pagina Mensen → Teams, gedeeld of van teams van de categorie). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK wordt opgeslagen."
+                    "text": "Koppel optioneel een checklist aan de unit (templates onder pagina Personen → Teams, gedeeld of van teams van de categorie). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK wordt opgeslagen."
                 },
                 {
                     "label": "Bulk units",
@@ -485,7 +485,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder pagina Mensen → Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
+                    "text": "Maak checklists onder pagina Personen → Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
                 },
                 {
                     "label": "Teamvertalingen",
@@ -493,11 +493,11 @@
                 },
                 {
                     "label": "Clock Point QR-code",
-                    "text": "De Clock Point QR is de printbare QR waarmee uitvoerders zich aanmelden (naam + icoon). Met Time (prikklok) klokken ze daar ook in of uit. Beheer en print via <strong>Time → Clock Points</strong> als Time aan staat, anders via Mensen → Teams."
+                    "text": "De Clock Point QR is de printbare QR waarmee uitvoerders zich aanmelden (naam + icoon). Met Time (prikklok) klokken ze daar ook in of uit. Beheer en print via <strong>Time → Clock Points</strong> als Time aan staat, anders via Personen → Teams."
                 },
                 {
                     "label": "Uitvoerders",
-                    "text": "Uitvoerders hebben geen e-maillogin; ze melden zich aan via de Clock Point QR met naam en icoon. Koppel optioneel vestigingen (leeg = overal). Beheer grote lijsten via **Mensen → Uitvoerders**."
+                    "text": "Uitvoerders hebben geen e-maillogin; ze melden zich aan via de Clock Point QR met naam en icoon. Koppel optioneel vestigingen (leeg = overal). Beheer grote lijsten via **Personen → Uitvoerders**."
                 },
                 {
                     "label": "Vestigingen per uitvoerder",
@@ -1321,11 +1321,11 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder pagina Mensen → Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
+                    "text": "Maak checklists onder pagina Personen → Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
                 },
                 {
                     "label": "Starters",
-                    "text": "Onder pagina Mensen → Teams → Checklists kun je een sjabloon kopiëren (schoonmaak, techniek, security) en daarna aanpassen. Daarna koppel je de checklist per unit."
+                    "text": "Onder pagina Personen → Teams → Checklists kun je een sjabloon kopiëren (schoonmaak, techniek, security) en daarna aanpassen. Daarna koppel je de checklist per unit."
                 },
                 {
                     "label": "OK en open taken",
@@ -1370,7 +1370,7 @@
                 },
                 {
                     "label": "Unit checks",
-                    "text": "Wanneer unit checks aangevinkt zijn (bij de unit en de categorie waaraan de unit gekoppeld is) kan een uitvoerder in het unit-QR-portaal een snelle check uitvoeren. Daar bevestigt de uitvoerder dat de unit OK of niet OK is. Stel checks in onder Plaatsen → Categorieën / Locaties, en checklists onder Mensen → Teams."
+                    "text": "Wanneer unit checks aangevinkt zijn (bij de unit en de categorie waaraan de unit gekoppeld is) kan een uitvoerder in het unit-QR-portaal een snelle check uitvoeren. Daar bevestigt de uitvoerder dat de unit OK of niet OK is. Stel checks in onder Plaatsen → Categorieën / Locaties, en checklists onder Personen → Teams."
                 },
                 {
                     "label": "Unitmetingen",
@@ -1485,7 +1485,7 @@
                 },
                 {
                     "label": "Vestigingen",
-                    "text": "Per uitvoerder zie je toegewezen vestigingen. Geen selectie = overal inklokken (bestaande uitvoerders). Beheer locaties via Mensen → Teams (bewerken) of bulk-import met location_names."
+                    "text": "Per uitvoerder zie je toegewezen vestigingen. Geen selectie = overal inklokken (bestaande uitvoerders). Beheer locaties via Personen → Teams (bewerken) of bulk-import met location_names."
                 },
                 {
                     "label": "Collega-koppeling",
@@ -1493,7 +1493,7 @@
                 },
                 {
                     "label": "Bewerken",
-                    "text": "Voeg uitvoerders toe, wijzig of deactiveer via Mensen → Teams. Dit scherm is bedoeld om snel te zoeken en te filteren."
+                    "text": "Voeg uitvoerders toe, wijzig of deactiveer via Personen → Teams. Dit scherm is bedoeld om snel te zoeken en te filteren."
                 }
             ]
         }

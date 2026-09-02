@@ -19,7 +19,7 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
 Menu-volgorde (sidebar, accordion): Dashboard · **Werk** (Meldingen, Inspectierondes,
-Taken, Kalender, Reserveringen, Unit checks) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Mensen** (Backoffice = Beheerder/Medewerker;
+Taken, Kalender, Reserveringen, Unit checks) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Personen** (Backoffice = Beheerder/Medewerker;
 Teams = Uitvoerder/Teamleader) · **Time** (module) · **Automatisering** (IoT Connect
 Corporate — groep alleen als minstens één module aan staat) ·
 **Organisatie** (Instellingen, API, Abonnement) · **Hulp** (FAQ, Handleiding, Juridisch,
@@ -642,9 +642,9 @@ stuurt events; WinProx zet die om in workflow.
 
 ---
 
-## 6. Mensen (Backoffice + Teams)
+## 6. Personen (Backoffice + Teams)
 
-**Doel:** drie pagina’s onder **Mensen**. **Backoffice** = collega-gebruikers (login).
+**Doel:** drie pagina’s onder **Personen**. **Backoffice** = collega-gebruikers (login).
 **Teams** = checklists + operationele teams + workers.
 **Uitvoerders** (`/workers`) = tenant-breed zoek-/filteroverzicht (grote teams).
 Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een aparte team-QR.
@@ -670,10 +670,10 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   welkomst-/accountmail (set-password-link via reset-broker). `users.is_active` → inactief = geen login.
 - Medewerker: optioneel **locatie-multi-select** (leeg = alle vestigingen). Met Time-module:
   optioneel **prikklok-team** → gekoppeld worker-profiel (`workers.user_id`, telt niet dubbel als licentie).
-- Sidebar **Mensen → Backoffice** (`/team?section=backoffice`). Alleen admin ziet dit menu-item.
+- Sidebar **Personen → Backoffice** (`/team?section=backoffice`). Alleen admin ziet dit menu-item.
 
 ### 6.2 Teams
-- Sidebar **Mensen → Teams** (`/team?section=teams`): **checklists** (unit checks) + teamlijst.
+- Sidebar **Personen → Teams** (`/team?section=teams`): **checklists** (unit checks) + teamlijst.
 - Lijst: teamnaam, aantal actieve workers, actief/inactief.
 - Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
@@ -681,7 +681,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   (naam + icoon), in-/uitklokken en teamtaken-overzicht. Afhandelen van taken blijft via de unit-QR.
 
 ### 6.3 Workers
-- Sidebar **Mensen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status.
+- Sidebar **Personen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status.
 - Per team: workers toevoegen (voor-/achternaam), **locatie-multi-select** (leeg = overal inklokken
   behalve Clock Point-filter op naam), lijst met **icoon-status**; **teamleader-vlag**
   (`is_teamleader`) toewijzen/intrekken; **actief/inactief**-toggle (V2-verbetering); verwijderen.

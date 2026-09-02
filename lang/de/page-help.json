@@ -329,7 +329,7 @@
                 },
                 {
                     "label": "Checkliste (Unit-Check)",
-                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter der Seite Menschen → Teams, geteilt oder von Teams der Kategorie). Beim Unit-Check im Portal hakt der Ausführende jeden Punkt ab, bevor OK gespeichert wird."
+                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter der Seite Personen → Teams, geteilt oder von Teams der Kategorie). Beim Unit-Check im Portal hakt der Ausführende jeden Punkt ab, bevor OK gespeichert wird."
                 },
                 {
                     "label": "Bulk-Units",
@@ -485,7 +485,7 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter der Seite Menschen → Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
+                    "text": "Erstellen Sie Checklisten unter der Seite Personen → Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
                 },
                 {
                     "label": "Team-Übersetzungen",
@@ -493,11 +493,11 @@
                 },
                 {
                     "label": "Clock Point QR-code",
-                    "text": "Der Clock-Point-QR ist der druckbare QR, mit dem Ausführende sich anmelden (Name + Symbol). Mit Time (Stechuhr) stempeln sie dort auch ein oder aus. Verwalten und drucken Sie ihn unter <strong>Time → Clock Points</strong> wenn Time an ist, sonst Menschen → Teams."
+                    "text": "Der Clock-Point-QR ist der druckbare QR, mit dem Ausführende sich anmelden (Name + Symbol). Mit Time (Stechuhr) stempeln sie dort auch ein oder aus. Verwalten und drucken Sie ihn unter <strong>Time → Clock Points</strong> wenn Time an ist, sonst Personen → Teams."
                 },
                 {
                     "label": "Ausführende",
-                    "text": "Ausführende haben kein E-Mail-Login; sie melden sich über die Clock-Point-QR mit Name und Symbol an. Optional Standorte zuordnen (leer = überall). Große Listen unter **Menschen → Ausführende** verwalten."
+                    "text": "Ausführende haben kein E-Mail-Login; sie melden sich über die Clock-Point-QR mit Name und Symbol an. Optional Standorte zuordnen (leer = überall). Große Listen unter **Personen → Ausführende** verwalten."
                 },
                 {
                     "label": "Standorte pro Ausführendem",
@@ -1321,11 +1321,11 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter der Seite Menschen → Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
+                    "text": "Erstellen Sie Checklisten unter der Seite Personen → Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
                 },
                 {
                     "label": "Vorlagen",
-                    "text": "Unter der Seite Menschen → Teams → Checklisten können Sie eine Vorlage kopieren (Reinigung, Technik, Security) und danach anpassen. Anschließend verknüpfen Sie die Checkliste pro Unit."
+                    "text": "Unter der Seite Personen → Teams → Checklisten können Sie eine Vorlage kopieren (Reinigung, Technik, Security) und danach anpassen. Anschließend verknüpfen Sie die Checkliste pro Unit."
                 },
                 {
                     "label": "OK und offene Aufgaben",
@@ -1370,7 +1370,7 @@
                 },
                 {
                     "label": "Unit-Checks",
-                    "text": "Wenn Unit-Checks aktiviert sind (bei der Unit und bei der Kategorie, der die Unit zugeordnet ist), kann ein Ausführender im Unit-QR-Portal eine schnelle Prüfung durchführen. Dort bestätigt der Ausführende, dass die Unit OK oder nicht OK ist. Checks unter Orte → Kategorien / Standorte; Checklisten unter Menschen → Teams."
+                    "text": "Wenn Unit-Checks aktiviert sind (bei der Unit und bei der Kategorie, der die Unit zugeordnet ist), kann ein Ausführender im Unit-QR-Portal eine schnelle Prüfung durchführen. Dort bestätigt der Ausführende, dass die Unit OK oder nicht OK ist. Checks unter Orte → Kategorien / Standorte; Checklisten unter Personen → Teams."
                 },
                 {
                     "label": "Unit-Messungen",
@@ -1485,7 +1485,7 @@
                 },
                 {
                     "label": "Standorte",
-                    "text": "Pro Ausführendem sehen Sie zugewiesene Standorte. Keine Auswahl = überall einstempeln (bestehende Ausführende). Verwalten unter Menschen → Teams (bearbeiten) oder Massenimport mit location_names."
+                    "text": "Pro Ausführendem sehen Sie zugewiesene Standorte. Keine Auswahl = überall einstempeln (bestehende Ausführende). Verwalten unter Personen → Teams (bearbeiten) oder Massenimport mit location_names."
                 },
                 {
                     "label": "Kollegen-Verknüpfung",
@@ -1493,7 +1493,7 @@
                 },
                 {
                     "label": "Bearbeiten",
-                    "text": "Ausführende hinzufügen, ändern oder deaktivieren unter Menschen → Teams. Diese Seite dient zum schnellen Suchen und Filtern."
+                    "text": "Ausführende hinzufügen, ändern oder deaktivieren unter Personen → Teams. Diese Seite dient zum schnellen Suchen und Filtern."
                 }
             ]
         }
