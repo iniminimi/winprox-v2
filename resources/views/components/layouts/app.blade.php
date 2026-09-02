@@ -145,7 +145,7 @@
                 @if($tenantBg) style="--wp-tenant-bg: {{ $tenantBg }};" @endif>
             <div class="wp-sidebar-header">
                 <div class="wp-sidebar-header-logo">
-                    <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="WinProx">
+                    <img src="{{ asset('images/winprox_logo_wide.jpg') }}" alt="WinProx">
                 </div>
             </div>
             <div class="wp-sidebar-body">

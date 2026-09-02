@@ -81,24 +81,28 @@
     border-bottom: 1px solid var(--wp-border);
     background-color: var(--wp-tenant-bg, var(--wp-surface));
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .wp-sidebar-header-logo {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius);
+    border-radius: var(--wp-radius-lg);
     background-color: var(--wp-surface);
-    padding: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    overflow: hidden;
 }
 
 .wp-sidebar-header-logo img {
     display: block;
-    max-width: 6.25rem;
-    max-height: 60px;
+    width: 100%;
+    height: auto;
+    max-height: 3.25rem;
     object-fit: contain;
+    border-radius: calc(var(--wp-radius-lg) - 2px);
 }
 
 .wp-card.wp-onboarding-card {
