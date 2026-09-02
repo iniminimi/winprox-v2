@@ -230,14 +230,17 @@
                             <div class="wp-list">
                                 @forelse ($team->workers as $worker)
                                     <div @class(['wp-data-row', 'wp-issue-row--highlight' => $highlightWorkerId === $worker->id]) wire:key="worker-{{ $worker->id }}">
-                                        <div class="wp-data-row-main">
-                                            <span class="wp-data-row-title">{{ $worker->displayName() }}</span>
-                                            @if ($worker->company_name)
-                                                <span class="wp-muted">{{ $worker->company_name }}</span>
-                                            @endif
-                                            @unless ($worker->field_icon_slug)
-                                                <span class="wp-muted">{{ __('team.workers.no_icon') }}</span>
-                                            @endunless
+                                        <div class="wp-data-row-identity">
+                                            <x-wp-worker-avatar :worker="$worker" size="sm" :tone="$worker->is_active ? 'present' : 'absent'" />
+                                            <div class="wp-data-row-main">
+                                                <span class="wp-data-row-title">{{ $worker->displayName() }}</span>
+                                                @if ($worker->company_name)
+                                                    <span class="wp-muted">{{ $worker->company_name }}</span>
+                                                @endif
+                                                @unless ($worker->field_icon_slug)
+                                                    <span class="wp-muted">{{ __('team.workers.no_icon') }}</span>
+                                                @endunless
+                                            </div>
                                         </div>
                                         <div class="wp-cluster wp-cluster--tight">
                                             @if ($worker->is_external)
@@ -401,6 +404,55 @@
                 </div>
 
                 <div class="wp-modal-body wp-stack">
+                    <div class="wp-field">
+                        <span class="wp-label">{{ __('team.workers.photo') }}</span>
+                        <p class="wp-hint">{{ __('team.workers.photo_hint') }}</p>
+                        <div class="wp-worker-photo-picker">
+                            @php
+                                $photoPreviewUrl = $this->workerPhotoPreviewUrl();
+                                $photoInitial = mb_strtoupper(mb_substr(trim($workerFirstName !== '' ? $workerFirstName : '?'), 0, 1));
+                            @endphp
+                            <span @class([
+                                'wp-worker-avatar',
+                                'wp-worker-avatar--lg',
+                                'wp-worker-avatar--photo' => filled($photoPreviewUrl),
+                            ]) aria-hidden="true">
+                                @if (filled($photoPreviewUrl))
+                                    <img src="{{ $photoPreviewUrl }}" alt="" class="wp-worker-avatar__img">
+                                @else
+                                    {{ $photoInitial }}
+                                @endif
+                            </span>
+                            <div class="wp-stack-tight">
+                                <input
+                                    type="file"
+                                    id="workerPhoto"
+                                    class="wp-input"
+                                    accept="image/jpeg,image/png,image/webp,image/*"
+                                    x-on:change="
+                                        const input = $event.target;
+                                        const file = input.files?.[0];
+                                        if (!file || typeof window.wpCompressImageFile !== 'function') {
+                                            return;
+                                        }
+                                        window.wpCompressImageFile(file, { maxDimension: 400, quality: 0.8 }).then((compressed) => {
+                                            $wire.upload('workerPhoto', compressed, () => $wire.set('removeWorkerPhoto', false));
+                                        }).finally(() => { input.value = ''; });
+                                    "
+                                >
+                                @if (filled($photoPreviewUrl))
+                                    <button
+                                        type="button"
+                                        class="btn btn--ghost btn--sm"
+                                        wire:click="clearWorkerPhotoSelection"
+                                    >
+                                        {{ __('team.workers.photo_remove') }}
+                                    </button>
+                                @endif
+                            </div>
+                        </div>
+                        @error('workerPhoto') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
                     <div class="wp-field">
                         <label class="wp-label" for="workerFirstName">{{ __('team.workers.first_name') }}</label>
                         <input type="text" id="workerFirstName" class="wp-input" wire:model="workerFirstName">

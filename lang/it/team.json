@@ -150,7 +150,10 @@
             "database": "Si è verificato un errore del database durante l'importazione: :message",
             "unknown_locations": "Sede sconosciute: :names"
         },
-        "active": "Attivo"
+        "active": "Attivo",
+        "photo": "Foto",
+        "photo_hint": "Foto ritratto opzionale (ridimensionata automaticamente). Mostrata in Time → Presenza, Esecutori e Team.",
+        "photo_remove": "Rimuovi foto"
     },
     "import_history": {
         "title": "Importazioni recenti",
@@ -194,7 +197,9 @@
         "import_file_type": "Il file deve essere un file CSV.",
         "import_file_max": "Il file non può superare 10 MB.",
         "translation_requires_active": "Le traduzioni sono disponibili solo per team attivi.",
-        "seat_limit": "Limite posti raggiunto (colleghi + esecutori). Aggiorna l'abbonamento."
+        "seat_limit": "Limite posti raggiunto (colleghi + esecutori). Aggiorna l'abbonamento.",
+        "worker_photo_invalid": "Scegli un'immagine valida (JPEG, PNG o WebP).",
+        "worker_photo_max": "La foto può essere al massimo di 2 MB."
     },
     "checklists": {
         "click_to_manage": "Clicca qui per gestire le checklist"

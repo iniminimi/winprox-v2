@@ -14,6 +14,7 @@ use App\Actions\Team\CreateTeamAction;
 use App\Actions\Team\CreateWorkerAction;
 use App\Actions\Team\DeleteTeamAction;
 use App\Actions\Team\DeleteWorkerAction;
+use App\Actions\Team\DeleteWorkerPhotoAction;
 use App\Actions\Team\ResetWorkerIconAction;
 use App\Actions\Team\SetColleagueActiveAction;
 use App\Actions\Team\SetTeamActiveAction;
@@ -23,6 +24,7 @@ use App\Actions\Team\SyncTeamCategoriesAction;
 use App\Actions\Team\UpdateColleagueAction;
 use App\Actions\Team\UpdateTeamAction;
 use App\Actions\Team\UpdateWorkerAction;
+use App\Actions\Team\UpdateWorkerPhotoAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Http\Requests\Team\StoreColleagueRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
@@ -53,6 +55,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
 /**
@@ -123,6 +126,13 @@ class Team extends Component
     public string $workerPhone = '';
     public bool $workerIsExternal = false;
     public string $workerCompanyName = '';
+
+    /** @var TemporaryUploadedFile|null */
+    public $workerPhoto = null;
+
+    public bool $removeWorkerPhoto = false;
+
+    public ?string $existingWorkerPhotoUrl = null;
 
     /** @var list<int> */
     public array $selectedWorkerLocationIds = [];
@@ -706,8 +716,9 @@ class Team extends Component
         }
 
         $this->editingWorkerId = null;
+        $this->resetWorkerPhotoState();
         $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds', 'workerPhoto']);
         $this->showWorkerModal = true;
     }
 
@@ -719,8 +730,12 @@ class Team extends Component
         }
     }
 
-    public function saveWorker(CreateWorkerAction $createWorker, UpdateWorkerAction $updateWorker): void
-    {
+    public function saveWorker(
+        CreateWorkerAction $createWorker,
+        UpdateWorkerAction $updateWorker,
+        UpdateWorkerPhotoAction $updateWorkerPhoto,
+        DeleteWorkerPhotoAction $deleteWorkerPhoto,
+    ): void {
         if ($this->editingWorkerId) {
             // Edit mode
             $worker = $this->authorizedWorker((int) $this->editingWorkerId);
@@ -734,6 +749,7 @@ class Team extends Component
                     'workerPhone' => $request->rules()['phone'],
                     'workerIsExternal' => $request->rules()['is_external'],
                     'workerCompanyName' => $request->rules()['company_name'],
+                    'workerPhoto' => $request->rules()['photo'],
                 ],
                 [
                     'workerFirstName.required' => __('team.errors.worker_name_required'),
@@ -742,10 +758,13 @@ class Team extends Component
                     'workerEmail.max' => __('team.errors.worker_email_max'),
                     'workerPhone.max' => __('team.errors.worker_phone_max'),
                     'workerCompanyName.max' => __('team.errors.worker_company_name_max'),
+                    'workerPhoto.image' => __('team.errors.worker_photo_invalid'),
+                    'workerPhoto.mimes' => __('team.errors.worker_photo_invalid'),
+                    'workerPhoto.max' => __('team.errors.worker_photo_max'),
                 ],
             );
 
-            $updateWorker->handle($worker, [
+            $worker = $updateWorker->handle($worker, [
                 'first_name' => $validated['workerFirstName'],
                 'last_name' => $validated['workerLastName'],
                 'email' => $validated['workerEmail'] ?? null,
@@ -754,6 +773,8 @@ class Team extends Component
                 'company_name' => $validated['workerCompanyName'] ?? null,
                 'location_ids' => $this->selectedWorkerLocationIds,
             ], (int) auth()->id());
+
+            $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
         } else {
             // Create mode
             $team = InternalTeam::findOrFail((int) $this->addingWorkerTeamId);
@@ -768,6 +789,7 @@ class Team extends Component
                     'workerPhone' => $request->rules()['phone'],
                     'workerIsExternal' => $request->rules()['is_external'],
                     'workerCompanyName' => $request->rules()['company_name'],
+                    'workerPhoto' => $request->rules()['photo'],
                 ],
                 [
                     'workerFirstName.required' => __('team.errors.worker_name_required'),
@@ -776,11 +798,14 @@ class Team extends Component
                     'workerEmail.max' => __('team.errors.worker_email_max'),
                     'workerPhone.max' => __('team.errors.worker_phone_max'),
                     'workerCompanyName.max' => __('team.errors.worker_company_name_max'),
+                    'workerPhoto.image' => __('team.errors.worker_photo_invalid'),
+                    'workerPhoto.mimes' => __('team.errors.worker_photo_invalid'),
+                    'workerPhoto.max' => __('team.errors.worker_photo_max'),
                 ],
             );
 
             try {
-                $createWorker->handle($team, [
+                $worker = $createWorker->handle($team, [
                     'first_name' => $validated['workerFirstName'],
                     'last_name' => $validated['workerLastName'],
                     'email' => $validated['workerEmail'] ?? null,
@@ -798,10 +823,33 @@ class Team extends Component
 
                 throw $e;
             }
+
+            $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
         }
 
         $this->cancelWorkerModal();
         $this->dispatch('saved');
+    }
+
+    public function clearWorkerPhotoSelection(): void
+    {
+        $this->workerPhoto = null;
+        $this->removeWorkerPhoto = true;
+        $this->existingWorkerPhotoUrl = null;
+        $this->resetErrorBag(['workerPhoto']);
+    }
+
+    public function workerPhotoPreviewUrl(): ?string
+    {
+        if ($this->workerPhoto instanceof TemporaryUploadedFile) {
+            try {
+                return $this->workerPhoto->temporaryUrl();
+            } catch (\Throwable) {
+                // Fall through to existing stored photo.
+            }
+        }
+
+        return $this->existingWorkerPhotoUrl;
     }
 
     public function openEditWorker(int $workerId): void
@@ -815,13 +863,52 @@ class Team extends Component
         $this->workerIsExternal = (bool) $worker->is_external;
         $this->workerCompanyName = $worker->company_name ?? '';
         $this->selectedWorkerLocationIds = $worker->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
+        $this->resetWorkerPhotoState();
+        $this->existingWorkerPhotoUrl = $worker->photoPublicUrl();
         $this->showWorkerModal = true;
     }
 
     public function cancelWorkerModal(): void
     {
-        $this->reset(['showWorkerModal', 'editingWorkerId', 'addingWorkerTeamId', 'workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds']);
+        $this->reset([
+            'showWorkerModal',
+            'editingWorkerId',
+            'addingWorkerTeamId',
+            'workerFirstName',
+            'workerLastName',
+            'workerEmail',
+            'workerPhone',
+            'workerIsExternal',
+            'workerCompanyName',
+            'selectedWorkerLocationIds',
+            'workerPhoto',
+            'removeWorkerPhoto',
+            'existingWorkerPhotoUrl',
+        ]);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds', 'workerPhoto']);
+    }
+
+    private function resetWorkerPhotoState(): void
+    {
+        $this->workerPhoto = null;
+        $this->removeWorkerPhoto = false;
+        $this->existingWorkerPhotoUrl = null;
+    }
+
+    private function persistWorkerPhoto(
+        Worker $worker,
+        UpdateWorkerPhotoAction $updateWorkerPhoto,
+        DeleteWorkerPhotoAction $deleteWorkerPhoto,
+    ): void {
+        if ($this->workerPhoto instanceof TemporaryUploadedFile) {
+            $updateWorkerPhoto->handle($worker, $this->workerPhoto, (int) auth()->id());
+
+            return;
+        }
+
+        if ($this->removeWorkerPhoto) {
+            $deleteWorkerPhoto->handle($worker, (int) auth()->id());
+        }
     }
 
     public function resetWorkerIcon(int $workerId, ResetWorkerIconAction $resetIcon): void

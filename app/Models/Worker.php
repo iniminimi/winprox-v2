@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
 class Worker extends Model
 {
@@ -29,6 +30,7 @@ class Worker extends Model
         'import_batch_id',
         'email',
         'phone',
+        'photo_path',
     ];
 
     protected $casts = [
@@ -62,6 +64,23 @@ class Worker extends Model
     public function displayName(): string
     {
         return trim($this->first_name.' '.$this->last_name);
+    }
+
+    public function photoPublicUrl(): ?string
+    {
+        $path = $this->photo_path;
+        if (! is_string($path) || $path === '') {
+            return null;
+        }
+
+        return Storage::disk('public')->url($path);
+    }
+
+    public function initialsLetter(): string
+    {
+        $name = trim((string) $this->first_name);
+
+        return mb_strtoupper(mb_substr($name !== '' ? $name : '?', 0, 1));
     }
 
     public function clocksAllLocations(): bool

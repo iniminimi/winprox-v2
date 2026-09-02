@@ -4,6 +4,7 @@ namespace App\Actions\Team;
 
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
+use Illuminate\Support\Facades\Storage;
 
 class DeleteWorkerAction
 {
@@ -27,9 +28,14 @@ class DeleteWorkerAction
 
         $tenantId = (int) $worker->tenant_id;
         $id = (int) $worker->id;
+        $photoPath = $worker->photo_path;
 
         $worker->devices()->delete();
         $worker->delete();
+
+        if (is_string($photoPath) && $photoPath !== '') {
+            Storage::disk('public')->delete($photoPath);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

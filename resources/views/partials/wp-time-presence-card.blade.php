@@ -10,7 +10,6 @@
     use App\Enums\TimePresenceAttentionType;
     use App\Support\Time\WorkDurationFormatter;
 
-    $initial = mb_strtoupper(mb_substr(trim((string) ($shift->worker?->first_name ?? '?')), 0, 1));
     $isOnBreak = $variant === 'break' || $shift->isOnBreak();
     $attentionHours = null;
     $attentionLabel = null;
@@ -23,6 +22,12 @@
         };
         $attentionLabel = __('time.presence.attention.'.$attentionItem->type->value, ['hours' => $attentionHours]);
     }
+
+    $avatarTone = match (true) {
+        $isOnBreak => 'break',
+        $attentionItem !== null => 'attention',
+        default => 'present',
+    };
 @endphp
 
 <article @class([
@@ -31,11 +36,16 @@
     'wp-time-presence-card--attention' => $attentionItem !== null,
 ]) wire:key="presence-card-{{ $shift->id }}">
     <div class="wp-time-presence-card__avatar-wrap">
-        <span @class([
-            'wp-time-presence-card__avatar',
-            'wp-time-presence-card__avatar--break' => $isOnBreak,
-            'wp-time-presence-card__avatar--attention' => $attentionItem !== null && ! $isOnBreak,
-        ]) aria-hidden="true">{{ $initial }}</span>
+        <x-wp-worker-avatar
+            :worker="$shift->worker"
+            size="md"
+            :tone="$avatarTone"
+            @class([
+                'wp-time-presence-card__avatar',
+                'wp-time-presence-card__avatar--break' => $isOnBreak,
+                'wp-time-presence-card__avatar--attention' => $attentionItem !== null && ! $isOnBreak,
+            ])
+        />
         <span @class([
             'wp-time-presence-card__status-dot',
             'wp-time-presence-card__status-dot--break' => $isOnBreak,

@@ -150,7 +150,10 @@
             "database": "Er is een databasefout opgetreden tijdens het importeren: :message",
             "unknown_locations": "Onbekende locatie(s): :names"
         },
-        "active": "Actief"
+        "active": "Actief",
+        "photo": "Foto",
+        "photo_hint": "Optionele portretfoto (wordt automatisch verkleind). Getoond in Time → Aanwezigheid, Uitvoerders en Teams.",
+        "photo_remove": "Foto verwijderen"
     },
     "import_history": {
         "title": "Recente imports",
@@ -194,7 +197,9 @@
         "import_file_type": "Het bestand moet een CSV-bestand zijn.",
         "import_file_max": "Het bestand mag maximaal 10MB groot zijn.",
         "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve teams.",
-        "seat_limit": "Het licentielimiet van je abonnement is bereikt (collega's + uitvoerders). Upgrade je abonnement."
+        "seat_limit": "Het licentielimiet van je abonnement is bereikt (collega's + uitvoerders). Upgrade je abonnement.",
+        "worker_photo_invalid": "Kies een geldige afbeelding (JPEG, PNG of WebP).",
+        "worker_photo_max": "De foto mag maximaal 2 MB groot zijn."
     },
     "checklists": {
         "click_to_manage": "Klik hier om checklists te beheren"

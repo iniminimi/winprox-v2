@@ -8,13 +8,17 @@
 @php
     use App\Support\Time\WorkDurationFormatter;
 
-    $initial = mb_strtoupper(mb_substr(trim((string) ($shift->worker?->first_name ?? '?')), 0, 1));
     $isOnBreak = $variant === 'break' || $shift->isOnBreak();
 @endphp
 
 <div class="wp-time-presence-row @if ($isOnBreak) wp-time-presence-row--break @endif" wire:key="presence-shift-{{ $shift->id }}">
     <div class="wp-time-presence-row__identity">
-        <span class="wp-time-presence-row__initial" aria-hidden="true">{{ $initial }}</span>
+        <x-wp-worker-avatar
+            :worker="$shift->worker"
+            size="sm"
+            :tone="$isOnBreak ? 'break' : 'present'"
+            class="wp-time-presence-row__initial"
+        />
         <div class="wp-time-presence-row__copy">
             <span class="wp-time-presence-row__name">{{ $shift->worker?->displayName() }}</span>
             @if ($showTeam)

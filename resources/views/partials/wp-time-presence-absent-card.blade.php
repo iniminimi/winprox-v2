@@ -3,13 +3,14 @@
     'showTeam' => false,
 ])
 
-@php
-    $initial = mb_strtoupper(mb_substr(trim((string) ($worker->first_name ?? '?')), 0, 1));
-@endphp
-
 <article class="wp-time-presence-card wp-time-presence-card--absent" wire:key="presence-absent-card-{{ $worker->id }}">
     <div class="wp-time-presence-card__avatar-wrap">
-        <span class="wp-time-presence-card__avatar wp-time-presence-card__avatar--absent" aria-hidden="true">{{ $initial }}</span>
+        <x-wp-worker-avatar
+            :worker="$worker"
+            size="md"
+            tone="absent"
+            class="wp-time-presence-card__avatar wp-time-presence-card__avatar--absent"
+        />
         <span class="wp-time-presence-card__status-dot wp-time-presence-card__status-dot--absent" aria-hidden="true"></span>
     </div>
 

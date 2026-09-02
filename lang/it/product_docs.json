@@ -48,7 +48,7 @@
             },
             {
                 "title": "Facility",
-                "body": "Sedi, unit, categorie, team e lavoratori (interni o esterni). Sotto Sedi: Categorie, Sedi e Units (a livello tenant). Import massivo/CSV, dashboard, documenti e avvisi sul portale. Attivi i controlli unit per categoria e unit; checklist sotto Persone → Teams — condivise o per team. Le nuove organizzazioni possono caricare dal cruscotto un modello iniziale (hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta) con team, categorie, una sede, unit di esempio e default del menu Lavoro — nomi in tutte le lingue. Puoi rinominare tutto in seguito; con le segnalazioni le unit possono solo essere disattivate. In Persone → Esecutori: schermata di ricerca per tutti gli esecutori. Esecutori e colleghi possono essere collegati alle sedi; i team mobili possono timbrare ovunque."
+                "body": "Sedi, unit, categorie, team e lavoratori (interni o esterni). Sotto Sedi: Categorie, Sedi e Units (a livello tenant). Import massivo/CSV, dashboard, documenti e avvisi sul portale. Attivi i controlli unit per categoria e unit; checklist sotto Persone → Teams — condivise o per team. Le nuove organizzazioni possono caricare dal cruscotto un modello iniziale (hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta) con team, categorie, una sede, unit di esempio e default del menu Lavoro — nomi in tutte le lingue. Puoi rinominare tutto in seguito; con le segnalazioni le unit possono solo essere disattivate. In Persone → Esecutori: schermata di ricerca per tutti gli esecutori. Esecutori e colleghi possono essere collegati alle sedi; i team mobili possono timbrare ovunque. Foto ritratto opzionale per esecutore (ridimensionata automaticamente); visibile in Team, Esecutori e Time → Presenza."
             },
             {
                 "title": "Dashboard",
@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "opzionale",
-                "body": "Time è una timbratrice opzionale: ingresso/uscita, pausa, presenza e cartellino. Clock Point resta il QR di riconoscimento (nome + icona, elenco compiti) anche senza Time. Time è inclusa nella prova. Su WinProx è opzionale: supplemento mensile sulla fattura annuale. La ricerca per nome al punto timbratura è limitata alla sede; gli esecutori compaiono solo sulle sedi assegnate (eccetto team mobili). Un turno aperto per esecutore: su un altro Clock Point vedi dove hai timbrato e puoi spostare la presenza."
+                "body": "Time è una timbratrice opzionale: ingresso/uscita, pausa, presenza e cartellino. Clock Point resta il QR di riconoscimento (nome + icona, elenco compiti) anche senza Time. Time è inclusa nella prova. Su WinProx è opzionale: supplemento mensile sulla fattura annuale. La ricerca per nome al punto timbratura è limitata alla sede; gli esecutori compaiono solo sulle sedi assegnate (eccetto team mobili). Un turno aperto per esecutore: su un altro Clock Point vedi dove hai timbrato e puoi spostare la presenza. La presenza mostra opzionalmente la foto ritratto dell’esecutore nell’avatar rotondo (altrimenti l’iniziale)."
             },
             {
                 "title": "Reservations",

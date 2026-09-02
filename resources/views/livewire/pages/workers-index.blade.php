@@ -43,21 +43,24 @@
         <div class="wp-list wp-list--entity-rows">
             @forelse ($workers as $worker)
                 <div class="wp-issue-row" wire:key="worker-{{ $worker->id }}">
-                    <div class="wp-grow wp-stack-tight">
-                        <a
-                            href="{{ route('team.index', ['section' => 'teams', 'worker' => $worker->id]) }}"
-                            class="wp-issue-row-link wp-stack-tight"
-                        >
-                            <p class="wp-issue-card-title">{{ $worker->displayName() }}</p>
-                            <p class="wp-issue-card-meta">
-                                {{ __('team.workers_index.row.meta', [
-                                    'team' => $worker->team?->name ?? '—',
-                                    'locations' => $worker->locations->isNotEmpty()
-                                        ? $worker->locations->pluck('name')->filter()->join(', ')
-                                        : __('team.workers_index.row.all_locations'),
-                                ]) }}
-                            </p>
-                        </a>
+                    <div class="wp-data-row-identity wp-grow">
+                        <x-wp-worker-avatar :worker="$worker" size="sm" :tone="$worker->is_active ? 'present' : 'absent'" />
+                        <div class="wp-grow wp-stack-tight">
+                            <a
+                                href="{{ route('team.index', ['section' => 'teams', 'worker' => $worker->id]) }}"
+                                class="wp-issue-row-link wp-stack-tight"
+                            >
+                                <p class="wp-issue-card-title">{{ $worker->displayName() }}</p>
+                                <p class="wp-issue-card-meta">
+                                    {{ __('team.workers_index.row.meta', [
+                                        'team' => $worker->team?->name ?? '—',
+                                        'locations' => $worker->locations->isNotEmpty()
+                                            ? $worker->locations->pluck('name')->filter()->join(', ')
+                                            : __('team.workers_index.row.all_locations'),
+                                    ]) }}
+                                </p>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="wp-cluster wp-cluster--tight">

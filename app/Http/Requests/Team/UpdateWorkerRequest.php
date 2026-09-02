@@ -23,6 +23,7 @@ class UpdateWorkerRequest extends FormRequest
             'phone' => ['nullable', 'string', 'max:50'],
             'is_external' => ['sometimes', 'boolean'],
             'company_name' => ['nullable', 'string', 'max:120'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
         ];
     }
 
@@ -38,6 +39,9 @@ class UpdateWorkerRequest extends FormRequest
             'email.max' => __('team.errors.worker_email_max'),
             'phone.max' => __('team.errors.worker_phone_max'),
             'company_name.max' => __('team.errors.worker_company_name_max'),
+            'photo.image' => __('team.errors.worker_photo_invalid'),
+            'photo.mimes' => __('team.errors.worker_photo_invalid'),
+            'photo.max' => __('team.errors.worker_photo_max'),
         ];
     }
 }

@@ -150,7 +150,10 @@
             "database": "A database error occurred during import: :message",
             "unknown_locations": "Unknown location(s): :names"
         },
-        "active": "Active"
+        "active": "Active",
+        "photo": "Photo",
+        "photo_hint": "Optional portrait photo (automatically resized). Shown in Time → Presence, Workers and Teams.",
+        "photo_remove": "Remove photo"
     },
     "import_history": {
         "title": "Recent imports",
@@ -194,7 +197,9 @@
         "import_file_type": "The file must be a CSV file.",
         "import_file_max": "The file may not be larger than 10MB.",
         "translation_requires_active": "Translations are only available for active teams.",
-        "seat_limit": "Your plan seat limit has been reached (colleagues + workers). Upgrade your subscription."
+        "seat_limit": "Your plan seat limit has been reached (colleagues + workers). Upgrade your subscription.",
+        "worker_photo_invalid": "Choose a valid image (JPEG, PNG or WebP).",
+        "worker_photo_max": "The photo may be at most 2 MB."
     },
     "checklists": {
         "click_to_manage": "Click here to manage checklists"

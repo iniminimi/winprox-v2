@@ -150,7 +150,10 @@
             "database": "Während des Imports ist ein Datenbankfehler aufgetreten: :message",
             "unknown_locations": "Unbekannte Standorte: :names"
         },
-        "active": "Aktiv"
+        "active": "Aktiv",
+        "photo": "Foto",
+        "photo_hint": "Optionales Porträtfoto (wird automatisch verkleinert). Angezeigt unter Time → Anwesenheit, Ausführende und Teams.",
+        "photo_remove": "Foto entfernen"
     },
     "import_history": {
         "title": "Letzte Imports",
@@ -194,7 +197,9 @@
         "import_file_type": "Die Datei muss eine CSV-Datei sein.",
         "import_file_max": "Die Datei darf nicht größer als 10 MB sein.",
         "translation_requires_active": "Übersetzungen sind nur für aktive Teams möglich.",
-        "seat_limit": "Platzlimit Ihres Tarifs erreicht (Kollegen + Ausführende). Upgraden Sie Ihr Abonnement."
+        "seat_limit": "Platzlimit Ihres Tarifs erreicht (Kollegen + Ausführende). Upgraden Sie Ihr Abonnement.",
+        "worker_photo_invalid": "Wählen Sie ein gültiges Bild (JPEG, PNG oder WebP).",
+        "worker_photo_max": "Das Foto darf höchstens 2 MB groß sein."
     },
     "checklists": {
         "click_to_manage": "Klicken Sie hier, um Checklisten zu verwalten"

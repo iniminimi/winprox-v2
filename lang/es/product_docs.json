@@ -48,7 +48,7 @@
             },
             {
                 "title": "Facility",
-                "body": "Ubicaciones, units, categorías, equipos y operarios (internos o externos). Bajo Ubicaciones: Categorías, Ubicaciones y Units (todo el tenant). Importación masiva/CSV, panel, documentos y anuncios en el portal. Active comprobaciones de unit por categoría y unit; listas bajo Personas → Equipos — compartidas o por equipo. Las organizaciones nuevas pueden cargar en el panel una plantilla inicial (hotel, hospital, industria, ayuntamiento, gestión inmobiliaria o gestión de flotas) con equipos, categorías, una ubicación, units de ejemplo y defaults del menú Trabajo — nombres en todos los idiomas. Luego puedes cambiar los nombres; cuando hay incidencias, las units solo se pueden desactivar. En Personas → Ejecutores: pantalla de búsqueda para todos los ejecutores. Ejecutores y colegas pueden vincularse a sedes; los equipos flotantes pueden fichar en cualquier sitio."
+                "body": "Ubicaciones, units, categorías, equipos y operarios (internos o externos). Bajo Ubicaciones: Categorías, Ubicaciones y Units (todo el tenant). Importación masiva/CSV, panel, documentos y anuncios en el portal. Active comprobaciones de unit por categoría y unit; listas bajo Personas → Equipos — compartidas o por equipo. Las organizaciones nuevas pueden cargar en el panel una plantilla inicial (hotel, hospital, industria, ayuntamiento, gestión inmobiliaria o gestión de flotas) con equipos, categorías, una ubicación, units de ejemplo y defaults del menú Trabajo — nombres en todos los idiomas. Luego puedes cambiar los nombres; cuando hay incidencias, las units solo se pueden desactivar. En Personas → Ejecutores: pantalla de búsqueda para todos los ejecutores. Ejecutores y colegas pueden vincularse a sedes; los equipos flotantes pueden fichar en cualquier sitio. Foto de retrato opcional por operario (redimensionada automáticamente); visible en Equipos, Operarios y Time → Presencia."
             },
             {
                 "title": "Panel",
@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "opcional",
-                "body": "Time es un reloj de fichar opcional: entrada/salida, pausa, presencia y hoja de horas. Clock Point sigue siendo el QR de identificación (nombre + icono, lista de tareas) también sin Time. Time está incluido en la prueba. En WinProx es opcional: recargo mensual en la factura anual. La búsqueda por nombre en el punto de fichaje está limitada a la sede; los ejecutores solo aparecen en sedes asignadas (excepto equipos flotantes). Un turno abierto por ejecutor: en otro Clock Point ves dónde has fichado y puedes trasladar la presencia."
+                "body": "Time es un reloj de fichar opcional: entrada/salida, pausa, presencia y hoja de horas. Clock Point sigue siendo el QR de identificación (nombre + icono, lista de tareas) también sin Time. Time está incluido en la prueba. En WinProx es opcional: recargo mensual en la factura anual. La búsqueda por nombre en el punto de fichaje está limitada a la sede; los ejecutores solo aparecen en sedes asignadas (excepto equipos flotantes). Un turno abierto por ejecutor: en otro Clock Point ves dónde has fichado y puedes trasladar la presencia. Presencia muestra opcionalmente la foto de retrato del operario en el avatar redondo (si no, la inicial)."
             },
             {
                 "title": "Reservations",
