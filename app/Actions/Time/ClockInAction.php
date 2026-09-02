@@ -34,6 +34,11 @@ class ClockInAction
             throw new InvalidArgumentException('clock_point_inactive');
         }
 
+        $worker->loadMissing(['team', 'locations']);
+        if (! $worker->canClockAt($clockPoint->location_id !== null ? (int) $clockPoint->location_id : null)) {
+            throw new InvalidArgumentException('worker_location_not_allowed');
+        }
+
         TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
 
         return DB::transaction(function () use ($worker, $clockPoint, $device, $clientTimestamp, $source) {

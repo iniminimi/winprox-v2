@@ -31,6 +31,7 @@ class CreateTeamAction
             'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'sort_order' => (int) ($data['sort_order'] ?? 0),
             'is_active' => (bool) ($data['is_active'] ?? true),
+            'clocks_all_locations' => (bool) ($data['clocks_all_locations'] ?? false),
             'session_lifespan_hours' => $data['session_lifespan_hours'] ?? null,
         ]);
 

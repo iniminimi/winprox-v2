@@ -41,7 +41,13 @@
             "notify_on_new_issue_email": "Receive an email for every new report",
             "notify_on_new_issue_email_hint": "Only for reports submitted via the QR portal.",
             "edit_password_hint": "Leave password fields empty to keep the current password.",
-            "save": "Save user"
+            "save": "Save user",
+            "locations_title": "Locations",
+            "locations_hint": "Empty = all locations. Select to restrict to specific sites.",
+            "locations_empty": "No locations yet. Add a location first.",
+            "punch_clock_team": "Punch clock team",
+            "punch_clock_team_none": "No punch clock profile",
+            "punch_clock_team_hint": "Link a worker profile so this colleague can clock in via QR."
         }
     },
     "teams": {
@@ -78,7 +84,9 @@
             "session_lifespan_custom_hours": "Number of hours",
             "categories_title": "Categories",
             "categories_subtitle": "Select the categories this team has access to.",
-            "categories_empty": "There are no categories yet."
+            "categories_empty": "There are no categories yet.",
+            "clocks_all_locations": "May clock in anywhere (floater team)",
+            "clocks_all_locations_hint": "Workers on this team appear on every clock point regardless of location links."
         }
     },
     "workers": {
@@ -123,7 +131,10 @@
             "create_subtitle": "Add a new worker to this team.",
             "edit_title": "Edit worker",
             "edit_subtitle": "Update this worker's details.",
-            "save": "Save worker"
+            "save": "Save worker",
+            "locations_title": "Locations",
+            "locations_hint": "Empty = clock in anywhere. Select sites to restrict.",
+            "locations_empty": "No locations yet."
         },
         "import_download_sample_csv": "Download sample CSV",
         "import_download_sample_xlsx": "Download sample XLSX",
@@ -184,5 +195,26 @@
     },
     "checklists": {
         "click_to_manage": "Click here to manage checklists"
+    },
+    "workers_index": {
+        "title": "Workers",
+        "subtitle": "Search and filter all workers — even in large teams.",
+        "filters": {
+            "label": "Filter",
+            "search": "Search by name or email",
+            "team": "Team",
+            "all_teams": "All teams",
+            "location": "Location",
+            "all_locations": "All locations",
+            "status": "Status",
+            "all_statuses": "All statuses",
+            "count": ":count workers"
+        },
+        "row": {
+            "meta": ":team · :locations",
+            "all_locations": "All locations"
+        },
+        "linked_user": "Colleague login",
+        "empty": "No workers found."
     }
 }

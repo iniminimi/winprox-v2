@@ -20,7 +20,13 @@ class SetColleagueActiveAction
             Tenant::query()->findOrFail($user->tenant_id)->assertCanAddSeats(1);
         }
 
+        $user->load('linkedWorker');
         $user->update(['is_active' => $active]);
+
+        $linkedWorker = $user->linkedWorker;
+        if ($linkedWorker !== null && (bool) $linkedWorker->is_active !== $active) {
+            $linkedWorker->update(['is_active' => $active]);
+        }
 
         $fresh = $user->fresh();
 

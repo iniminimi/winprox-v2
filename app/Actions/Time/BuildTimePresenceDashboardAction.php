@@ -27,12 +27,20 @@ class BuildTimePresenceDashboardAction
         TimePresenceStatusFilter $statusFilter = TimePresenceStatusFilter::All,
         array $expandedTeamIds = [],
         bool $includeAbsentRoster = false,
+        ?array $scopeLocationIds = null,
     ): TimePresenceDashboard {
         $needle = mb_strtolower(trim((string) $search));
         $isSearchMode = $needle !== '';
         $expandedTeamIds = array_map(intval(...), $expandedTeamIds);
 
         $clockPointIdsForLocation = $this->clockPointIdsForLocation($tenantId, $locationId);
+        if ($clockPointIdsForLocation === null && $scopeLocationIds !== null && $scopeLocationIds !== []) {
+            $clockPointIdsForLocation = ClockPoint::query()
+                ->where('tenant_id', $tenantId)
+                ->whereIn('location_id', $scopeLocationIds)
+                ->pluck('id')
+                ->all();
+        }
 
         $openShifts = WorkShift::query()
             ->where('tenant_id', $tenantId)

@@ -41,7 +41,13 @@
             "notify_on_new_issue_email": "Riceva un'e-mail per ogni nuova segnalazione",
             "notify_on_new_issue_email_hint": "Solo per segnalazioni inviate tramite il portale QR.",
             "edit_password_hint": "Lasci i campi password vuoti per mantenere la password attuale.",
-            "save": "Salva utente"
+            "save": "Salva utente",
+            "locations_title": "Sedi",
+            "locations_hint": "Vuoto = tutte le sedi. Seleziona per limitare a sedi specifiche.",
+            "locations_empty": "Nessuna sede ancora. Aggiungi prima una sede.",
+            "punch_clock_team": "Team timbratura",
+            "punch_clock_team_none": "Nessun profilo timbratura",
+            "punch_clock_team_hint": "Collega un profilo esecutore così il collega può timbrare via QR."
         }
     },
     "teams": {
@@ -78,7 +84,9 @@
             "session_lifespan_custom_hours": "Numero di ore",
             "categories_title": "Categorie",
             "categories_subtitle": "Selezioni le categorie a cui questo team ha accesso.",
-            "categories_empty": "Non ci sono ancora categorie."
+            "categories_empty": "Non ci sono ancora categorie.",
+            "clocks_all_locations": "Può timbrare ovunque (team mobile)",
+            "clocks_all_locations_hint": "Gli esecutori di questo team compaiono su ogni punto timbratura indipendentemente dalle sedi."
         }
     },
     "workers": {
@@ -123,7 +131,10 @@
             "create_subtitle": "Aggiunga un nuovo lavoratore a questo team.",
             "edit_title": "Modifica lavoratore",
             "edit_subtitle": "Aggiorni i dati di questo lavoratore.",
-            "save": "Salva lavoratore"
+            "save": "Salva lavoratore",
+            "locations_title": "Sedi",
+            "locations_hint": "Vuoto = timbra ovunque. Seleziona sedi per limitare.",
+            "locations_empty": "Nessuna sede ancora."
         },
         "import_download_sample_csv": "Scarica esempio CSV",
         "import_download_sample_xlsx": "Scarica esempio XLSX",
@@ -184,5 +195,26 @@
     },
     "checklists": {
         "click_to_manage": "Clicca qui per gestire le checklist"
+    },
+    "workers_index": {
+        "title": "Esecutori",
+        "subtitle": "Cerca e filtra tutti gli esecutori — anche in team numerosi.",
+        "filters": {
+            "label": "Filtro",
+            "search": "Cerca per nome o e-mail",
+            "team": "Team",
+            "all_teams": "Tutti i team",
+            "location": "Sede",
+            "all_locations": "Tutte le sedi",
+            "status": "Stato",
+            "all_statuses": "Tutti gli stati",
+            "count": ":count esecutori"
+        },
+        "row": {
+            "meta": ":team · :locations",
+            "all_locations": "Tutte le sedi"
+        },
+        "linked_user": "Login collega",
+        "empty": "Nessun esecutore trovato."
     }
 }

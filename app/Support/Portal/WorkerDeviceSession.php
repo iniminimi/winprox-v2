@@ -191,9 +191,9 @@ final class WorkerDeviceSession
      *
      * @return array{status: 'found'|'claimable'|'not_found'|'ambiguous', worker?: Worker}
      */
-    public static function resolveIdentityForTenant(int $tenantId, string $firstName, string $lastName): array
+    public static function resolveIdentityForTenant(int $tenantId, string $firstName, string $lastName, ?int $clockPointLocationId = null): array
     {
-        $result = app(ResolveWorkerIdentityForTenantAction::class)->handle($tenantId, $firstName, $lastName);
+        $result = app(ResolveWorkerIdentityForTenantAction::class)->handle($tenantId, $firstName, $lastName, $clockPointLocationId);
 
         return array_filter([
             'status' => $result['status']->value,

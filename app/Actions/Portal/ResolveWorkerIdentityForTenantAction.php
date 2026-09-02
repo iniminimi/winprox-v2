@@ -11,7 +11,7 @@ class ResolveWorkerIdentityForTenantAction
     /**
      * @return array{status: WorkerIdentityStatus, worker?: Worker}
      */
-    public function handle(int $tenantId, string $firstName, string $lastName): array
+    public function handle(int $tenantId, string $firstName, string $lastName, ?int $clockPointLocationId = null): array
     {
         $first = mb_strtolower(trim($firstName));
         $last = mb_strtolower(trim($lastName));
@@ -22,9 +22,11 @@ class ResolveWorkerIdentityForTenantAction
         $matches = Worker::query()
             ->where('tenant_id', $tenantId)
             ->where('is_active', true)
+            ->with(['team', 'locations'])
             ->get()
             ->filter(fn (Worker $worker) => mb_strtolower(trim((string) $worker->first_name)) === $first
-                && mb_strtolower(trim((string) $worker->last_name)) === $last)
+                && mb_strtolower(trim((string) $worker->last_name)) === $last
+                && $worker->canClockAt($clockPointLocationId))
             ->values();
 
         if ($matches->count() === 0) {

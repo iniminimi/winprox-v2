@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Enums\UiTheme;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -43,6 +45,49 @@ class User extends Authenticatable implements MustVerifyEmail
     public function tenant(): BelongsTo
     {
         return $this->belongsTo(Tenant::class);
+    }
+
+    public function locations(): BelongsToMany
+    {
+        return $this->belongsToMany(Location::class, 'location_user')->withTimestamps();
+    }
+
+    public function linkedWorker(): HasOne
+    {
+        return $this->hasOne(Worker::class);
+    }
+
+    /** Admin en superuser: alle locaties. */
+    public function hasUnrestrictedLocationAccess(): bool
+    {
+        return $this->is_superuser || $this->isAdmin();
+    }
+
+    /** null = alle locaties; anders expliciete id-lijst (leeg = geen toegang). */
+    public function accessibleLocationIds(): ?array
+    {
+        if ($this->hasUnrestrictedLocationAccess()) {
+            return null;
+        }
+
+        $ids = $this->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
+
+        // Lege pivot = alle locaties (bestaande tenants).
+        if ($ids === []) {
+            return null;
+        }
+
+        return $ids;
+    }
+
+    public function canAccessLocation(int $locationId): bool
+    {
+        $allowed = $this->accessibleLocationIds();
+        if ($allowed === null) {
+            return true;
+        }
+
+        return in_array($locationId, $allowed, true);
     }
 
     /** Beheerder: mag accounts, bedrijfsgegevens, teams aanmaken/deactiveren, billing. */

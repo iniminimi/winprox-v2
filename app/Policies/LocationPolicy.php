@@ -15,7 +15,8 @@ class LocationPolicy
 
     public function view(User $user, Location $location): bool
     {
-        return SuperuserTenantAccess::canAccessTenant($user, (int) $location->tenant_id);
+        return SuperuserTenantAccess::canAccessTenant($user, (int) $location->tenant_id)
+            && $user->canAccessLocation((int) $location->id);
     }
 
     public function create(User $user): bool

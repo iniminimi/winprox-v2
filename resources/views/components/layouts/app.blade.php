@@ -192,10 +192,11 @@
                             $unitsActive = request()->routeIs('units.index');
                             $placesGroupActive = request()->routeIs('locations.*') || $unitsActive;
 
-                            $peopleGroupActive = request()->routeIs('team.index');
-                            $peopleSection = $peopleGroupActive ? (string) request()->query('section', '') : '';
-                            $backofficeNavActive = $peopleGroupActive && $peopleSection === 'backoffice';
-                            $teamsNavActive = $peopleGroupActive && $peopleSection !== 'backoffice';
+                            $peopleGroupActive = request()->routeIs('team.index') || request()->routeIs('workers.index');
+                            $peopleSection = request()->routeIs('team.index') ? (string) request()->query('section', '') : '';
+                            $backofficeNavActive = request()->routeIs('team.index') && $peopleSection === 'backoffice';
+                            $teamsNavActive = request()->routeIs('team.index') && $peopleSection !== 'backoffice';
+                            $workersNavActive = request()->routeIs('workers.index');
 
                             $timeGroupActive = request()->routeIs('time.*');
                             $automationGroupActive = request()->routeIs('iot.*') || request()->routeIs('esg.*');
@@ -313,6 +314,11 @@
                                        class="wp-nav-link wp-nav-link--sub {{ $teamsNavActive ? 'is-active' : '' }}"
                                        @click="nav = false">
                                         <span>{{ __('team.nav.teams') }}</span>
+                                    </a>
+                                    <a href="{{ route('workers.index') }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ $workersNavActive ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('common.nav.workers') }}</span>
                                     </a>
                                 </div>
                             </details>

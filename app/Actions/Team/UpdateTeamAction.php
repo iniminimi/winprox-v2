@@ -26,6 +26,7 @@ class UpdateTeamAction
             'name' => $data['name'],
             'sort_order' => (int) ($data['sort_order'] ?? 0),
             'is_active' => (bool) ($data['is_active'] ?? $team->is_active),
+            'clocks_all_locations' => (bool) ($data['clocks_all_locations'] ?? $team->clocks_all_locations),
             'session_lifespan_hours' => $data['session_lifespan_hours'] ?? null,
         ]);
 

@@ -512,6 +512,7 @@ class Tenant extends Model
             ->withoutGlobalScopes()
             ->where('tenant_id', $this->id)
             ->where('is_active', true)
+            ->whereNull('user_id')
             ->count();
 
         return $users + $workers;

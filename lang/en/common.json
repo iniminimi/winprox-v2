@@ -29,7 +29,8 @@
         "reservations": "Reservations",
         "iot": "IoT Connect",
         "unit_checks": "Unit checks",
-        "unit_measurements": "Unit measurements"
+        "unit_measurements": "Unit measurements",
+        "workers": "Workers"
     },
     "status": {
         "new": "New (Open)",

@@ -139,7 +139,12 @@ class TimePortal extends Component
             'last_name.required' => __('portal.worker.errors.name_required'),
         ]);
 
-        $identity = WorkerDeviceSession::resolveIdentityForTenant($this->tenantId, $this->first_name, $this->last_name);
+        $identity = WorkerDeviceSession::resolveIdentityForTenant(
+            $this->tenantId,
+            $this->first_name,
+            $this->last_name,
+            $this->activeClockPoint()?->location_id !== null ? (int) $this->activeClockPoint()->location_id : null,
+        );
 
         if ($identity['status'] === 'ambiguous') {
             $this->addError('identify', __('portal.worker.errors.identify_ambiguous'));
@@ -466,7 +471,12 @@ class TimePortal extends Component
 
     private function resolveOnboardingTeam(string $firstName, string $lastName): ?InternalTeam
     {
-        $identity = WorkerDeviceSession::resolveIdentityForTenant($this->tenantId, $firstName, $lastName);
+        $identity = WorkerDeviceSession::resolveIdentityForTenant(
+            $this->tenantId,
+            $firstName,
+            $lastName,
+            $this->activeClockPoint()?->location_id !== null ? (int) $this->activeClockPoint()->location_id : null,
+        );
         if ($identity['status'] === 'claimable') {
             $worker = $identity['worker'] ?? null;
 

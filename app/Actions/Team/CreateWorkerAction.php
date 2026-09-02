@@ -2,8 +2,10 @@
 
 namespace App\Actions\Team;
 
+use App\Actions\Locations\SyncUserLocationsAction;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 
@@ -13,7 +15,10 @@ use App\Support\Audit\AuditRecorder;
  */
 class CreateWorkerAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private SyncUserLocationsAction $syncLocations,
+    ) {}
 
     /**
      * @param  array<string, mixed>  $data
@@ -31,13 +36,21 @@ class CreateWorkerAction
         }
 
         $tenant = Tenant::query()->findOrFail($team->tenant_id);
-        $tenant->assertCanAddSeats(1);
+
+        $linkedUserId = isset($data['user_id']) ? (int) $data['user_id'] : null;
+        $skipSeatCheck = $linkedUserId !== null
+            && User::query()->whereKey($linkedUserId)->where('is_active', true)->exists();
+
+        if (! $skipSeatCheck) {
+            $tenant->assertCanAddSeats(1);
+        }
 
         $companyName = self::normalizedCompanyName($data['company_name'] ?? null);
         $isExternal = $companyName !== null || (bool) ($data['is_external'] ?? false);
 
         $worker = Worker::create([
             'tenant_id' => $team->tenant_id,
+            'user_id' => $linkedUserId,
             'internal_team_id' => $team->id,
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -47,6 +60,10 @@ class CreateWorkerAction
             'company_name' => $companyName,
             'is_active' => true,
         ]);
+
+        if (array_key_exists('location_ids', $data)) {
+            $this->syncLocations->handleForWorker($worker, $data['location_ids'] ?? [], $actorUserId);
+        }
 
         $this->audit->record(
             userId: $actorUserId,
@@ -60,7 +77,7 @@ class CreateWorkerAction
             ),
         );
 
-        return $worker;
+        return $worker->fresh(['locations']);
     }
 
     private static function normalizedCompanyName(mixed $value): ?string

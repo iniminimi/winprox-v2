@@ -36,6 +36,7 @@ use App\Actions\Units\SaveUnitCheckListAction;
 use App\Data\Units\SaveUnitCheckListData;
 use App\Http\Requests\Units\SaveUnitCheckListRequest;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\UnitCheckList;
 use App\Models\User;
@@ -77,12 +78,18 @@ class Team extends Component
 
     public bool $colleagueNotifyOnNewIssueEmail = true;
 
+    /** @var list<int> */
+    public array $colleagueLocationIds = [];
+
+    public ?int $colleaguePunchClockTeamId = null;
+
     // Team (modal)
     public bool $showTeamModal = false;
     public ?int $editingTeamId = null;
     public string $teamName = '';
     public int $teamSortOrder = 0;
     public bool $teamIsActive = true;
+    public bool $teamClocksAllLocations = false;
     public string $teamSessionLifespanType = 'daily';
     public ?int $teamSessionLifespanCustomHours = null;
     public string $teamPreviewLocale = '';
@@ -116,6 +123,9 @@ class Team extends Component
     public string $workerPhone = '';
     public bool $workerIsExternal = false;
     public string $workerCompanyName = '';
+
+    /** @var list<int> */
+    public array $selectedWorkerLocationIds = [];
 
     // Worker bewerken/aanmaken (modal)
     public bool $showWorkerModal = false;
@@ -218,6 +228,10 @@ class Team extends Component
         $this->colleaguePasswordConfirmation = '';
         $this->colleagueSendAccountEmail = false;
         $this->colleagueNotifyOnNewIssueEmail = (bool) $user->notify_on_new_issue_email;
+        $this->colleagueLocationIds = $user->role === User::ROLE_EMPLOYEE
+            ? $user->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all()
+            : [];
+        $this->colleaguePunchClockTeamId = $user->linkedWorker?->internal_team_id;
         $this->resetErrorBag();
         $this->showColleagueModal = true;
     }
@@ -284,6 +298,8 @@ class Team extends Component
             'password' => $validated['colleaguePassword'],
             'send_account_email' => (bool) $validated['colleagueSendAccountEmail'],
             'notify_on_new_issue_email' => (bool) $validated['colleagueNotifyOnNewIssueEmail'],
+            'location_ids' => $this->colleagueLocationIds,
+            'punch_clock_team_id' => $this->colleaguePunchClockTeamId,
         ];
     }
 
@@ -319,6 +335,9 @@ class Team extends Component
         if ($validated['colleaguePassword'] !== '') {
             $payload['password'] = $validated['colleaguePassword'];
         }
+
+        $payload['location_ids'] = $this->colleagueLocationIds;
+        $payload['punch_clock_team_id'] = $this->colleaguePunchClockTeamId;
 
         return $payload;
     }
@@ -380,6 +399,8 @@ class Team extends Component
             'colleaguePasswordConfirmation',
             'colleagueSendAccountEmail',
             'colleagueNotifyOnNewIssueEmail',
+            'colleagueLocationIds',
+            'colleaguePunchClockTeamId',
             'editingColleagueId',
         ]);
         $this->colleagueLocale = (string) (auth()->user()?->locale ?: config('locales.default', 'nl'));
@@ -409,6 +430,7 @@ class Team extends Component
         $this->teamName = $team->name;
         $this->teamSortOrder = $team->sort_order;
         $this->teamIsActive = $team->is_active;
+        $this->teamClocksAllLocations = (bool) $team->clocks_all_locations;
 
         // Determine session lifespan type
         if ($team->session_lifespan_hours === 14) {
@@ -480,6 +502,7 @@ class Team extends Component
                 'name' => $validated['teamName'],
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $active,
+                'clocks_all_locations' => $this->teamClocksAllLocations,
                 'session_lifespan_hours' => $sessionLifespanHours,
             ], (int) auth()->id());
 
@@ -493,6 +516,7 @@ class Team extends Component
                 'original_language' => auth()->user()?->locale,
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $this->teamIsActive,
+                'clocks_all_locations' => $this->teamClocksAllLocations,
                 'session_lifespan_hours' => $sessionLifespanHours,
             ], (int) Tenancy::id(), (int) auth()->id());
 
@@ -617,6 +641,7 @@ class Team extends Component
             'teamName',
             'teamSortOrder',
             'teamIsActive',
+            'teamClocksAllLocations',
             'teamSessionLifespanType',
             'teamSessionLifespanCustomHours',
             'editingTeamId',
@@ -625,6 +650,7 @@ class Team extends Component
             'teamTranslationName',
         ]);
         $this->teamIsActive = true;
+        $this->teamClocksAllLocations = false;
         $this->teamSessionLifespanType = 'daily';
         $this->teamSessionLifespanCustomHours = null;
         $this->selectedCategoryIds = [];
@@ -680,8 +706,8 @@ class Team extends Component
         }
 
         $this->editingWorkerId = null;
-        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds']);
         $this->showWorkerModal = true;
     }
 
@@ -726,6 +752,7 @@ class Team extends Component
                 'phone' => $validated['workerPhone'] ?? null,
                 'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                 'company_name' => $validated['workerCompanyName'] ?? null,
+                'location_ids' => $this->selectedWorkerLocationIds,
             ], (int) auth()->id());
         } else {
             // Create mode
@@ -760,6 +787,7 @@ class Team extends Component
                     'phone' => $validated['workerPhone'] ?? null,
                     'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                     'company_name' => $validated['workerCompanyName'] ?? null,
+                    'location_ids' => $this->selectedWorkerLocationIds,
                 ], (int) auth()->id());
             } catch (InvalidArgumentException $e) {
                 if ($e->getMessage() === 'seat_limit_exceeded') {
@@ -786,13 +814,14 @@ class Team extends Component
         $this->workerPhone = $worker->phone ?? '';
         $this->workerIsExternal = (bool) $worker->is_external;
         $this->workerCompanyName = $worker->company_name ?? '';
+        $this->selectedWorkerLocationIds = $worker->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
         $this->showWorkerModal = true;
     }
 
     public function cancelWorkerModal(): void
     {
-        $this->reset(['showWorkerModal', 'editingWorkerId', 'addingWorkerTeamId', 'workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName']);
+        $this->reset(['showWorkerModal', 'editingWorkerId', 'addingWorkerTeamId', 'workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds']);
     }
 
     public function resetWorkerIcon(int $workerId, ResetWorkerIconAction $resetIcon): void
@@ -1431,6 +1460,12 @@ class Team extends Component
                     ->orderBy('name')
                     ->get(['id', 'name', 'original_language']),
             'checkListStarters' => $isBackoffice ? [] : config('unit_check_starters', []),
+            'allLocations' => Location::query()->orderBy('name')->get(['id', 'name', 'address']),
+            'punchClockTeams' => InternalTeam::query()
+                ->where('is_active', true)
+                ->orderBy('sort_order')
+                ->orderBy('name')
+                ->get(['id', 'name']),
         ]);
     }
 }

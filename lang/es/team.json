@@ -41,7 +41,13 @@
             "notify_on_new_issue_email": "Recibir un correo por cada nuevo informe",
             "notify_on_new_issue_email_hint": "Solo para informes enviados mediante el portal QR.",
             "edit_password_hint": "Deje los campos de contraseña vacíos para mantener la contraseña actual.",
-            "save": "Guardar usuario"
+            "save": "Guardar usuario",
+            "locations_title": "Ubicaciones",
+            "locations_hint": "Vacío = todas las ubicaciones. Seleccione para limitar a sitios específicos.",
+            "locations_empty": "Aún no hay ubicaciones. Añada primero una ubicación.",
+            "punch_clock_team": "Equipo de fichaje",
+            "punch_clock_team_none": "Sin perfil de fichaje",
+            "punch_clock_team_hint": "Vincule un perfil de ejecutor para que este colega pueda fichar vía QR."
         }
     },
     "teams": {
@@ -78,7 +84,9 @@
             "session_lifespan_custom_hours": "Número de horas",
             "categories_title": "Categorías",
             "categories_subtitle": "Seleccione las categorías a las que tiene acceso este equipo.",
-            "categories_empty": "Aún no hay categorías."
+            "categories_empty": "Aún no hay categorías.",
+            "clocks_all_locations": "Puede fichar en cualquier sitio (equipo flotante)",
+            "clocks_all_locations_hint": "Los ejecutores de este equipo aparecen en cada punto de fichaje sin importar la ubicación."
         }
     },
     "workers": {
@@ -123,7 +131,10 @@
             "create_subtitle": "Añada un nuevo trabajador a este equipo.",
             "edit_title": "Editar trabajador",
             "edit_subtitle": "Actualice los datos de este trabajador.",
-            "save": "Guardar trabajador"
+            "save": "Guardar trabajador",
+            "locations_title": "Ubicaciones",
+            "locations_hint": "Vacío = fichar en cualquier sitio. Seleccione ubicaciones para restringir.",
+            "locations_empty": "Aún no hay ubicaciones."
         },
         "import_download_sample_csv": "Descargar ejemplo CSV",
         "import_download_sample_xlsx": "Descargar ejemplo XLSX",
@@ -184,5 +195,26 @@
     },
     "checklists": {
         "click_to_manage": "Haga clic aquí para gestionar las listas de comprobación"
+    },
+    "workers_index": {
+        "title": "Ejecutores",
+        "subtitle": "Buscar y filtrar todos los ejecutores — incluso en equipos grandes.",
+        "filters": {
+            "label": "Filtro",
+            "search": "Buscar por nombre o correo",
+            "team": "Equipo",
+            "all_teams": "Todos los equipos",
+            "location": "Ubicación",
+            "all_locations": "Todas las ubicaciones",
+            "status": "Estado",
+            "all_statuses": "Todos los estados",
+            "count": ":count ejecutores"
+        },
+        "row": {
+            "meta": ":team · :locations",
+            "all_locations": "Todas las ubicaciones"
+        },
+        "linked_user": "Inicio de sesión colega",
+        "empty": "No se encontraron ejecutores."
     }
 }

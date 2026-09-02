@@ -17,4 +17,10 @@ class WorkerPolicy
     {
         return SuperuserTenantAccess::canAccessTenant($user, (int) $worker->tenant_id);
     }
+
+    public function update(User $user, Worker $worker): bool
+    {
+        return $this->view($user, $worker)
+            && ($user->isAdmin() || $user->isEmployee());
+    }
 }

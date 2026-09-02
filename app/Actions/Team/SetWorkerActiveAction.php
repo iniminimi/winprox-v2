@@ -3,6 +3,7 @@
 namespace App\Actions\Team;
 
 use App\Models\Tenant;
+use App\Models\User;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 
@@ -13,7 +14,12 @@ class SetWorkerActiveAction
     public function handle(Worker $worker, bool $active, ?int $actorUserId = null): Worker
     {
         if ($active && ! $worker->is_active) {
-            Tenant::query()->findOrFail($worker->tenant_id)->assertCanAddSeats(1);
+            $linkedUserActive = $worker->user_id !== null
+                && User::query()->whereKey($worker->user_id)->where('is_active', true)->exists();
+
+            if (! $linkedUserActive) {
+                Tenant::query()->findOrFail($worker->tenant_id)->assertCanAddSeats(1);
+            }
         }
 
         $worker->update(['is_active' => $active]);

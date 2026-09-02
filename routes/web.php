@@ -78,6 +78,7 @@ use App\Livewire\Pages\Team;
 use App\Livewire\Pages\TeamleaderManualIndex;
 use App\Livewire\Pages\UnitChecksIndex;
 use App\Livewire\Pages\UnitsIndex;
+use App\Livewire\Pages\WorkersIndex;
 use App\Livewire\UnitMeasurements\MeasurementsIndex as UnitMeasurementsIndex;
 use App\Livewire\Pages\WorkerManualIndex;
 use App\Livewire\Platform\Audit as PlatformAudit;
@@ -388,6 +389,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/time/clock-points/{clockPoint}/qr', ClockPointQrController::class)->name('time.clock-points.qr');
         Route::get('/time/clock-points/{clockPoint}/qr-pack', ClockPointQrPackDownloadController::class)->name('time.clock-points.qr-pack');
         Route::get('/team', Team::class)->name('team.index');
+        Route::get('/workers', WorkersIndex::class)->name('workers.index');
         Route::get('/settings', Settings::class)->name('settings.index');
         Route::get('/settings/api', ApiSettings::class)->name('settings.api');
         Route::get('/settings/api/docs', ApiDocumentation::class)->name('settings.api.docs');

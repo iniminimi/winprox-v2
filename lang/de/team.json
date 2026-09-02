@@ -41,7 +41,13 @@
             "notify_on_new_issue_email": "E-Mail bei jeder neuen Meldung erhalten",
             "notify_on_new_issue_email_hint": "Nur für Meldungen über das QR-Portal.",
             "edit_password_hint": "Passwortfelder leer lassen, um das aktuelle Passwort zu behalten.",
-            "save": "Benutzer speichern"
+            "save": "Benutzer speichern",
+            "locations_title": "Standorte",
+            "locations_hint": "Leer = alle Standorte. Auswählen, um auf bestimmte Standorte zu beschränken.",
+            "locations_empty": "Noch keine Standorte. Fügen Sie zuerst einen Standort hinzu.",
+            "punch_clock_team": "Stempeluhr-Team",
+            "punch_clock_team_none": "Kein Stempelprofil",
+            "punch_clock_team_hint": "Verknüpfen Sie ein Mitarbeiterprofil, damit dieser Kollege per QR stempeln kann."
         }
     },
     "teams": {
@@ -78,7 +84,9 @@
             "session_lifespan_custom_hours": "Anzahl Stunden",
             "categories_title": "Kategorien",
             "categories_subtitle": "Wählen Sie die Kategorien aus, auf die dieses Team Zugriff hat.",
-            "categories_empty": "Es gibt noch keine Kategorien."
+            "categories_empty": "Es gibt noch keine Kategorien.",
+            "clocks_all_locations": "Darf überall stempeln (Springer-Team)",
+            "clocks_all_locations_hint": "Mitarbeiter dieses Teams erscheinen an jedem Stempelpunkt unabhängig von Standortzuweisungen."
         }
     },
     "workers": {
@@ -123,7 +131,10 @@
             "create_subtitle": "Fügen Sie einen neuen Mitarbeiter zu diesem Team hinzu.",
             "edit_title": "Mitarbeiter bearbeiten",
             "edit_subtitle": "Aktualisieren Sie die Daten dieses Mitarbeiters.",
-            "save": "Mitarbeiter speichern"
+            "save": "Mitarbeiter speichern",
+            "locations_title": "Standorte",
+            "locations_hint": "Leer = überall stempeln. Standorte auswählen, um einzuschränken.",
+            "locations_empty": "Noch keine Standorte."
         },
         "import_download_sample_csv": "Beispiel-CSV herunterladen",
         "import_download_sample_xlsx": "Beispiel-XLSX herunterladen",
@@ -184,5 +195,26 @@
     },
     "checklists": {
         "click_to_manage": "Klicken Sie hier, um Checklisten zu verwalten"
+    },
+    "workers_index": {
+        "title": "Mitarbeiter",
+        "subtitle": "Alle Mitarbeiter suchen und filtern — auch bei großen Teams.",
+        "filters": {
+            "label": "Filter",
+            "search": "Nach Name oder E-Mail suchen",
+            "team": "Team",
+            "all_teams": "Alle Teams",
+            "location": "Standort",
+            "all_locations": "Alle Standorte",
+            "status": "Status",
+            "all_statuses": "Alle Status",
+            "count": ":count Mitarbeiter"
+        },
+        "row": {
+            "meta": ":team · :locations",
+            "all_locations": "Alle Standorte"
+        },
+        "linked_user": "Kollegen-Login",
+        "empty": "Keine Mitarbeiter gefunden."
     }
 }

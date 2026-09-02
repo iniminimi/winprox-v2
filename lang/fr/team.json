@@ -41,7 +41,13 @@
             "notify_on_new_issue_email": "Recevoir un e-mail pour chaque nouveau signalement",
             "notify_on_new_issue_email_hint": "Uniquement pour les signalements via le portail QR.",
             "edit_password_hint": "Laissez les champs mot de passe vides pour conserver le mot de passe actuel.",
-            "save": "Enregistrer l'utilisateur"
+            "save": "Enregistrer l'utilisateur",
+            "locations_title": "Sites",
+            "locations_hint": "Vide = tous les sites. Sélectionnez pour limiter à certains sites.",
+            "locations_empty": "Pas encore de sites. Ajoutez d'abord un site.",
+            "punch_clock_team": "Équipe pointeuse",
+            "punch_clock_team_none": "Pas de profil pointeuse",
+            "punch_clock_team_hint": "Liez un profil exécutant pour que ce collègue puisse pointer via QR."
         }
     },
     "teams": {
@@ -78,7 +84,9 @@
             "session_lifespan_custom_hours": "Nombre d'heures",
             "categories_title": "Catégories",
             "categories_subtitle": "Sélectionnez les catégories auxquelles cette équipe a accès.",
-            "categories_empty": "Il n'y a pas encore de catégories."
+            "categories_empty": "Il n'y a pas encore de catégories.",
+            "clocks_all_locations": "Peut pointer partout (équipe volante)",
+            "clocks_all_locations_hint": "Les exécutants de cette équipe apparaissent sur chaque pointeuse, quelle que soit l'affectation au site."
         }
     },
     "workers": {
@@ -123,7 +131,10 @@
             "create_subtitle": "Ajoutez un nouvel intervenant à cette équipe.",
             "edit_title": "Modifier l'intervenant",
             "edit_subtitle": "Modifiez les données de cet intervenant.",
-            "save": "Enregistrer l'intervenant"
+            "save": "Enregistrer l'intervenant",
+            "locations_title": "Sites",
+            "locations_hint": "Vide = pointer partout. Sélectionnez des sites pour restreindre.",
+            "locations_empty": "Pas encore de sites."
         },
         "import_download_sample_csv": "Télécharger un exemple CSV",
         "import_download_sample_xlsx": "Télécharger un exemple XLSX",
@@ -184,5 +195,26 @@
     },
     "checklists": {
         "click_to_manage": "Cliquez ici pour gérer les listes de contrôle"
+    },
+    "workers_index": {
+        "title": "Exécutants",
+        "subtitle": "Rechercher et filtrer tous les exécutants — même dans de grandes équipes.",
+        "filters": {
+            "label": "Filtre",
+            "search": "Rechercher par nom ou e-mail",
+            "team": "Équipe",
+            "all_teams": "Toutes les équipes",
+            "location": "Site",
+            "all_locations": "Tous les sites",
+            "status": "Statut",
+            "all_statuses": "Tous les statuts",
+            "count": ":count exécutants"
+        },
+        "row": {
+            "meta": ":team · :locations",
+            "all_locations": "Tous les sites"
+        },
+        "linked_user": "Connexion collègue",
+        "empty": "Aucun exécutant trouvé."
     }
 }

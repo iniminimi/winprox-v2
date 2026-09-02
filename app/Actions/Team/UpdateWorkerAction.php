@@ -2,12 +2,16 @@
 
 namespace App\Actions\Team;
 
+use App\Actions\Locations\SyncUserLocationsAction;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 
 class UpdateWorkerAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private SyncUserLocationsAction $syncLocations,
+    ) {}
 
     /**
      * @param  array<string, mixed>  $data
@@ -26,6 +30,10 @@ class UpdateWorkerAction
             'company_name' => $companyName,
         ]);
 
+        if (array_key_exists('location_ids', $data)) {
+            $this->syncLocations->handleForWorker($worker, $data['location_ids'] ?? [], $actorUserId);
+        }
+
         $this->audit->record(
             userId: $actorUserId,
             tenantId: (int) $worker->tenant_id,
@@ -35,7 +43,7 @@ class UpdateWorkerAction
             payload: ['id' => $worker->id, 'internal_team_id' => $worker->internal_team_id],
         );
 
-        return $worker->fresh();
+        return $worker->fresh(['locations']);
     }
 
     private static function normalizedCompanyName(mixed $value): ?string

@@ -41,7 +41,13 @@
             "notify_on_new_issue_email": "Ontvang een e-mail bij elke nieuwe melding",
             "notify_on_new_issue_email_hint": "Alleen voor meldingen via het QR-portaal.",
             "edit_password_hint": "Laat wachtwoordvelden leeg om het huidige wachtwoord te behouden.",
-            "save": "Gebruiker opslaan"
+            "save": "Gebruiker opslaan",
+            "locations_title": "Locaties",
+            "locations_hint": "Leeg = alle locaties. Selecteer om te beperken tot specifieke vestigingen.",
+            "locations_empty": "Nog geen locaties. Voeg eerst een locatie toe.",
+            "punch_clock_team": "Prikklok-team",
+            "punch_clock_team_none": "Geen prikklok-profiel",
+            "punch_clock_team_hint": "Koppel een uitvoerdersprofiel zodat deze collega kan inklokken via de QR."
         }
     },
     "teams": {
@@ -78,7 +84,9 @@
             "session_lifespan_custom_hours": "Aantal uren",
             "categories_title": "Categorieën",
             "categories_subtitle": "Selecteer de categorieën waaraan dit team toegang heeft.",
-            "categories_empty": "Er zijn nog geen categorieën."
+            "categories_empty": "Er zijn nog geen categorieën.",
+            "clocks_all_locations": "Mag overal inklokken (invaller / vlinder)",
+            "clocks_all_locations_hint": "Workers in dit team zien hun naam op elke Clock Point, ongeacht locatie-koppeling."
         }
     },
     "workers": {
@@ -123,7 +131,10 @@
             "create_subtitle": "Voeg een nieuwe uitvoerder toe aan dit team.",
             "edit_title": "Uitvoerder bewerken",
             "edit_subtitle": "Pas de gegevens van deze uitvoerder aan.",
-            "save": "Uitvoerder opslaan"
+            "save": "Uitvoerder opslaan",
+            "locations_title": "Locaties",
+            "locations_hint": "Leeg = overal inklokken (behalve locatiegebonden Clock Points filteren op naam). Selecteer vestigingen om te beperken.",
+            "locations_empty": "Nog geen locaties."
         },
         "import_download_sample_csv": "Download voorbeeld-CSV",
         "import_download_sample_xlsx": "Download voorbeeld-xlsx",
@@ -184,5 +195,26 @@
     },
     "checklists": {
         "click_to_manage": "Klik hier om checklists te beheren"
+    },
+    "workers_index": {
+        "title": "Uitvoerders",
+        "subtitle": "Zoek en filter alle uitvoerders — ook bij grote teams.",
+        "filters": {
+            "label": "Filter",
+            "search": "Zoeken op naam of e-mail",
+            "team": "Team",
+            "all_teams": "Alle teams",
+            "location": "Locatie",
+            "all_locations": "Alle locaties",
+            "status": "Status",
+            "all_statuses": "Alle statussen",
+            "count": ":count uitvoerders"
+        },
+        "row": {
+            "meta": ":team · :locations",
+            "all_locations": "Alle locaties"
+        },
+        "linked_user": "Collega-login",
+        "empty": "Geen uitvoerders gevonden."
     }
 }

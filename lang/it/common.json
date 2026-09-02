@@ -29,7 +29,8 @@
         "reservations": "Prenotazioni",
         "iot": "IoT Connect",
         "unit_checks": "Controlli unit",
-        "unit_measurements": "Misurazioni unit"
+        "unit_measurements": "Misurazioni unit",
+        "workers": "Esecutori"
     },
     "status": {
         "new": "Nuova (Aperta)",

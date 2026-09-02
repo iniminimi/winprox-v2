@@ -155,6 +155,14 @@ class PresenceIndex extends Component
             $includeAbsentRoster = true;
         }
 
+        $user = auth()->user();
+        $scopeLocationIds = $user?->accessibleLocationIds();
+
+        $locationsQuery = Location::query()->orderBy('name');
+        if ($scopeLocationIds !== null) {
+            $locationsQuery->whereIn('id', $scopeLocationIds);
+        }
+
         $dashboard = $buildDashboard->handle(
             $tenantId,
             $this->teamFilter,
@@ -164,13 +172,14 @@ class PresenceIndex extends Component
             TimePresenceStatusFilter::tryFromRequest($this->statusFilter),
             $expandedTeamIds,
             $includeAbsentRoster,
+            $scopeLocationIds,
         );
 
         return view('livewire.time.presence-index', [
             'dashboard' => $dashboard,
             'teams' => InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
-            'locations' => Location::query()->orderBy('name')->get(),
+            'locations' => $locationsQuery->get(),
             'staleHours' => (int) config('time.stale_shift_hours', 16),
             'teamPageSize' => (int) config('time.presence_team_page_size', 50),
             'boardLimit' => $this->boardLimit,

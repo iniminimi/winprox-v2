@@ -321,6 +321,36 @@
                         </select>
                         @error('colleagueRole') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
+                    @if ($colleagueRole === \App\Models\User::ROLE_EMPLOYEE)
+                        <div class="wp-field">
+                            <h3 class="wp-label">{{ __('team.colleagues.modal.locations_title') }}</h3>
+                            <p class="wp-hint">{{ __('team.colleagues.modal.locations_hint') }}</p>
+                            @if ($allLocations->isNotEmpty())
+                                <div class="wp-grid wp-grid--2">
+                                    @foreach ($allLocations as $location)
+                                        <label class="wp-check">
+                                            <input type="checkbox" wire:model="colleagueLocationIds" value="{{ $location->id }}">
+                                            <span>{{ $location->name ?: $location->address }}</span>
+                                        </label>
+                                    @endforeach
+                                </div>
+                            @else
+                                <p class="wp-muted">{{ __('team.colleagues.modal.locations_empty') }}</p>
+                            @endif
+                        </div>
+                    @endif
+                    @if ($hasTimeModule)
+                        <div class="wp-field">
+                            <label class="wp-label" for="colleaguePunchClockTeamId">{{ __('team.colleagues.modal.punch_clock_team') }}</label>
+                            <select id="colleaguePunchClockTeamId" class="wp-select" wire:model="colleaguePunchClockTeamId">
+                                <option value="">{{ __('team.colleagues.modal.punch_clock_team_none') }}</option>
+                                @foreach ($punchClockTeams as $team)
+                                    <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                @endforeach
+                            </select>
+                            <p class="wp-hint">{{ __('team.colleagues.modal.punch_clock_team_hint') }}</p>
+                        </div>
+                    @endif
                     <div class="wp-field">
                         <x-wp-password-input wireModel="colleaguePassword" id="colleaguePassword"
                                              placeholder="{{ __('team.colleagues.modal.placeholder_password') }}" />
@@ -402,6 +432,22 @@
                             @error('workerCompanyName') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     @endif
+                    <div class="wp-field">
+                        <h3 class="wp-label">{{ __('team.workers.modal.locations_title') }}</h3>
+                        <p class="wp-hint">{{ __('team.workers.modal.locations_hint') }}</p>
+                        @if ($allLocations->isNotEmpty())
+                            <div class="wp-grid wp-grid--2">
+                                @foreach ($allLocations as $location)
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model="selectedWorkerLocationIds" value="{{ $location->id }}">
+                                        <span>{{ $location->name ?: $location->address }}</span>
+                                    </label>
+                                @endforeach
+                            </div>
+                        @else
+                            <p class="wp-muted">{{ __('team.workers.modal.locations_empty') }}</p>
+                        @endif
+                    </div>
                 </div>
 
                 <div class="wp-modal-foot">
@@ -562,6 +608,11 @@
                         {{ __('team.teams.modal.active') }}
                     </label>
                 @endif
+                <label class="wp-check">
+                    <input type="checkbox" wire:model="teamClocksAllLocations">
+                    {{ __('team.teams.modal.clocks_all_locations') }}
+                </label>
+                <p class="wp-hint">{{ __('team.teams.modal.clocks_all_locations_hint') }}</p>
 
                 <div class="wp-field">
                     <h3 class="wp-label">{{ __('team.teams.modal.categories_title') }}</h3>

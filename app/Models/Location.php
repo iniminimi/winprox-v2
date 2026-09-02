@@ -7,6 +7,7 @@ use App\Models\Concerns\BelongsToTenant;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Location extends Model
@@ -57,6 +58,16 @@ class Location extends Model
     public function hasCompleteAddress(): bool
     {
         return trim($this->formattedAddress()) !== '';
+    }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'location_user')->withTimestamps();
+    }
+
+    public function workers(): BelongsToMany
+    {
+        return $this->belongsToMany(Worker::class, 'location_worker')->withTimestamps();
     }
 
     public function units(): HasMany
