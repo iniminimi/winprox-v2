@@ -1154,7 +1154,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "KPI live in alto: timbrati, attivi, pausa, non timbrati e attenzione. <strong>Attenzione</strong> apre la schermata Allarmi."
+                    "text": "KPI live in alto: <strong>Timbrato</strong> (tutti con turno aperto), <strong>Attivo</strong> (timbrato e non in pausa), <strong>Pausa</strong>, <strong>Non timbrato</strong> e <strong>Attenzione</strong>. Timbrato = Attivo + Pausa. Clicca una tessera per filtrare. <strong>Attenzione</strong> apre la schermata Allarmi."
                 },
                 {
                     "label": "Vista",

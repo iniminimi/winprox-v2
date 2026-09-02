@@ -1154,7 +1154,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "Oben sehen Sie Live-KPIs: eingestempelt, aktiv, Pause, nicht eingestempelt und Aufmerksamkeit. <strong>Aufmerksamkeit</strong> öffnet den Alarmbildschirm."
+                    "text": "Oben sehen Sie Live-KPIs: <strong>Eingestempelt</strong> (alle mit offener Schicht), <strong>Aktiv</strong> (eingestempelt und nicht in Pause), <strong>Pause</strong>, <strong>Nicht eingestempelt</strong> und <strong>Aufmerksamkeit</strong>. Eingestempelt = Aktiv + Pause. Klicken Sie eine Kachel zum Filtern. <strong>Aufmerksamkeit</strong> öffnet den Alarmbildschirm."
                 },
                 {
                     "label": "Ansicht",

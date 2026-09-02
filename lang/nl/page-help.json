@@ -1154,7 +1154,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "Bovenaan ziet u live KPI's: ingelogd, actief, pauze, niet ingeklokt en aandacht. Klik op een tegel om te filteren. <strong>Aandacht</strong> opent het alarmenscherm."
+                    "text": "Bovenaan ziet u live KPI's: <strong>Ingeklokt</strong> (iedereen met een open dienst), <strong>Actief</strong> (ingeklokt en niet op pauze), <strong>Pauze</strong>, <strong>Niet ingeklokt</strong> en <strong>Aandacht</strong>. Ingeklokt = Actief + Pauze. Klik op een tegel om te filteren. <strong>Aandacht</strong> opent het alarmenscherm."
                 },
                 {
                     "label": "Weergave",

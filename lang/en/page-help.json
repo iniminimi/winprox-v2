@@ -1154,7 +1154,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "Live KPIs at the top: clocked in, active, break, not clocked in, and attention. Click a tile to filter. <strong>Attention</strong> opens the alarms screen."
+                    "text": "Live KPIs at the top: <strong>Clocked in</strong> (everyone with an open shift), <strong>Active</strong> (clocked in and not on break), <strong>Break</strong>, <strong>Not clocked in</strong> and <strong>Attention</strong>. Clocked in = Active + Break. Click a tile to filter. <strong>Attention</strong> opens the alarms screen."
                 },
                 {
                     "label": "Views",

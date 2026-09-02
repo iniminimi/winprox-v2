@@ -42,7 +42,7 @@
         "team_summary_absent": ":count niet ingeklokt",
         "team_summary_attention": ":count aandacht",
         "kpi": {
-            "clocked_in": "Ingelogd",
+            "clocked_in": "Ingeklokt",
             "active": "Actief",
             "break": "Pauze",
             "absent": "Niet ingeklokt",

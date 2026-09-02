@@ -1162,7 +1162,7 @@
             "actions": [
                 {
                     "label": "Tableau de bord",
-                    "text": "KPI en direct en haut : pointés, actifs, pause, non pointés et à surveiller. <strong>À surveiller</strong> ouvre l'écran Alertes."
+                    "text": "KPI en direct en haut : <strong>Pointé</strong> (tous avec une vacation ouverte), <strong>Actif</strong> (pointé et pas en pause), <strong>Pause</strong>, <strong>Non pointé</strong> et <strong>À surveiller</strong>. Pointé = Actif + Pause. Cliquez une tuile pour filtrer. <strong>À surveiller</strong> ouvre l'écran Alertes."
                 },
                 {
                     "label": "Affichage",

@@ -1154,7 +1154,7 @@
             "actions": [
                 {
                     "label": "Panel",
-                    "text": "KPI en vivo arriba: fichados, activos, pausa, no fichados y atención. <strong>Atención</strong> abre la pantalla de alertas."
+                    "text": "KPI en vivo arriba: <strong>Fichado</strong> (todos con turno abierto), <strong>Activo</strong> (fichado y no en pausa), <strong>Pausa</strong>, <strong>No fichado</strong> y <strong>Atención</strong>. Fichado = Activo + Pausa. Pulse una tarjeta para filtrar. <strong>Atención</strong> abre la pantalla de alertas."
                 },
                 {
                     "label": "Vista",
