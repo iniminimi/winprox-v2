@@ -27,6 +27,7 @@
     --wp-warning: #d97706;
     --wp-warning-strong: #b45309;
     --wp-warning-soft: rgba(251, 191, 36, 0.22);
+    --wp-warning-soft-panel: color-mix(in srgb, var(--wp-warning) 22%, var(--wp-surface) 78%);
     --wp-warning-border: rgba(217, 119, 6, 0.35);
     --wp-warning-text: #b45309;
 
@@ -168,6 +169,22 @@
 /* KPI-aandacht + recente-meldingen highlight: zelfde groen als op witte kaart. */
 [data-theme='modern'] .wp-kpi--alert,
 [data-theme='modern'] .wp-issue-row--highlight {
+    background-color: var(--wp-accent-soft-panel);
+    border-color: var(--wp-accent-border);
+}
+
+/* Pills/badges op foto-achtergrond (Time aanwezigheid, nav, …). */
+[data-theme='modern'] .wp-pill--done {
+    background-color: var(--wp-accent-soft-panel);
+    border-color: var(--wp-accent-border);
+}
+
+[data-theme='modern'] .wp-pill--progress {
+    background-color: var(--wp-warning-soft-panel);
+    border-color: var(--wp-warning-border);
+}
+
+[data-theme='modern'] .wp-kpi--present_now .wp-kpi-icon {
     background-color: var(--wp-accent-soft-panel);
     border-color: var(--wp-accent-border);
 }
