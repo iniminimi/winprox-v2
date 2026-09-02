@@ -108,7 +108,10 @@
         "tasks_heading": "Tâches pendant ce shift :",
         "task_unknown": "Tâche",
         "task_duration": ":minutes min",
-        "task_open": "en cours"
+        "task_open": "en cours",
+        "location_hops_heading": "Déplacements pendant cette vacation",
+        "location_hop": ":time — de :from vers :to",
+        "presence_at": "Dernière présence : :name"
     },
     "corrections": {
         "button": "Corriger",
@@ -225,7 +228,8 @@
             "end_break": "Terminer la pause",
             "clocked_in_since_at": "Pointé depuis :time à :place",
             "open_elsewhere_hint": "Vous êtes déjà pointé sur un autre site. Déplacez votre présence ici, ou pointez la sortie.",
-            "transfer_here": "Déplacer ici"
+            "transfer_here": "Déplacer ici",
+            "started_at": "Démarré à :place (même vacation)."
         },
         "clocked_in": "Vous êtes pointé.",
         "clocked_out": "Vous êtes dépointé.",
@@ -238,6 +242,6 @@
             "break_not_open": "Vous n'êtes pas en pause.",
             "icon_not_configured": "Votre compte n'est pas encore entièrement configuré. Contactez l'administrateur."
         },
-        "transferred": "Présence déplacée vers ce site."
+        "transferred": "Présence déplacée vers ce site (même vacation)."
     }
 }

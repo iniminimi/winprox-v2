@@ -108,7 +108,10 @@
         "tasks_heading": "Tareas durante este turno:",
         "task_unknown": "Tarea",
         "task_duration": ":minutes min",
-        "task_open": "en curso"
+        "task_open": "en curso",
+        "location_hops_heading": "Trasladados durante este turno",
+        "location_hop": ":time — de :from a :to",
+        "presence_at": "Última presencia: :name"
     },
     "corrections": {
         "button": "Corregir",
@@ -225,7 +228,8 @@
             "end_break": "Finalizar pausa",
             "clocked_in_since_at": "Fichado desde :time en :place",
             "open_elsewhere_hint": "Ya has fichado en otra sede. Traslada tu presencia aquí o ficha la salida.",
-            "transfer_here": "Trasladar aquí"
+            "transfer_here": "Trasladar aquí",
+            "started_at": "Iniciado en :place (mismo turno)."
         },
         "clocked_in": "Ha fichado la entrada.",
         "clocked_out": "Ha fichado la salida.",
@@ -238,6 +242,6 @@
             "break_not_open": "No está en pausa.",
             "icon_not_configured": "Su cuenta aún no está completamente configurada. Contacte al administrador."
         },
-        "transferred": "Presencia trasladada a esta sede."
+        "transferred": "Presencia trasladada a esta sede (mismo turno)."
     }
 }

@@ -108,7 +108,10 @@
         "tasks_heading": "Taken tijdens deze shift:",
         "task_unknown": "Taak",
         "task_duration": ":minutes min",
-        "task_open": "nog bezig"
+        "task_open": "nog bezig",
+        "location_hops_heading": "Verplaatsingen tijdens deze dienst",
+        "location_hop": ":time — van :from naar :to",
+        "presence_at": "Laatste aanwezigheid: :name"
     },
     "corrections": {
         "button": "Corrigeren",
@@ -225,7 +228,8 @@
             "end_break": "Pauze beëindigen",
             "clocked_in_since_at": "Ingeklokt sinds :time bij :place",
             "open_elsewhere_hint": "Je bent al ingeklokt op een andere vestiging. Verplaats je aanwezigheid naar hier, of klok uit.",
-            "transfer_here": "Verplaats naar hier"
+            "transfer_here": "Verplaats naar hier",
+            "started_at": "Gestart bij :place (zelfde dienst)."
         },
         "clocked_in": "Je bent ingeklokt.",
         "clocked_out": "Je bent uitgeklokt.",
@@ -238,6 +242,6 @@
             "break_not_open": "Je bent niet op pauze.",
             "icon_not_configured": "Je account is nog niet volledig ingesteld. Neem contact op met de beheerder."
         },
-        "transferred": "Aanwezigheid verplaatst naar deze vestiging."
+        "transferred": "Aanwezigheid verplaatst naar deze vestiging (zelfde dienst)."
     }
 }

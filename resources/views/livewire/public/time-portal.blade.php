@@ -167,12 +167,14 @@
                             </button>
                         @else
                             @php
-                                $clockInPoint = $openShift->clockInClockPoint;
-                                $clockInPlace = $clockInPoint?->location?->name
-                                    ? $clockInPoint->location->name.($clockInPoint->name ? ' · '.$clockInPoint->name : '')
-                                    : ($clockInPoint?->name ?? '');
-                                $openElsewhere = $clockInPoint !== null
-                                    && (int) $clockInPoint->id !== (int) $clockPointId;
+                                $presencePoint = $openShift->currentClockPoint();
+                                $clockInPlace = $presencePoint?->location?->name
+                                    ? $presencePoint->location->name.($presencePoint->name ? ' · '.$presencePoint->name : '')
+                                    : ($presencePoint?->name ?? '');
+                                $openElsewhere = $presencePoint !== null
+                                    && (int) $presencePoint->id !== (int) $clockPointId;
+                                $startedElsewhere = $openShift->hasLocationHops()
+                                    && (int) $openShift->clock_in_clock_point_id !== (int) ($presencePoint?->id ?? 0);
                             @endphp
                             <p class="wp-muted">
                                 @if ($clockInPlace !== '')
@@ -181,6 +183,9 @@
                                     {{ __('time.portal.clock.clocked_in_since', ['time' => $openShift->clock_in_at->format('H:i')]) }}
                                 @endif
                             </p>
+                            @if ($startedElsewhere && $openShift->clockInClockPoint)
+                                <p class="wp-muted">{{ __('time.portal.clock.started_at', ['place' => $openShift->clockInClockPoint->name]) }}</p>
+                            @endif
                             @if ($openElsewhere)
                                 <p class="wp-muted">{{ __('time.portal.clock.open_elsewhere_hint') }}</p>
                             @endif

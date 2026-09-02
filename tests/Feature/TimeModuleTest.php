@@ -242,11 +242,12 @@ it('verplaatst open shift naar een ander clock point', function () {
     $first = app(ClockInAction::class)->handle($worker, $clockA);
     $moved = app(\App\Actions\Time\TransferOpenWorkShiftToClockPointAction::class)->handle($worker->fresh(), $clockB);
 
-    expect($first->fresh()->status)->toBe(WorkShiftStatus::Closed)
-        ->and($first->fresh()->clock_out_source)->toBe(ClockSource::Auto)
-        ->and((int) $first->fresh()->clock_out_clock_point_id)->toBe($clockB->id)
+    expect($moved->id)->toBe($first->id)
         ->and($moved->status)->toBe(WorkShiftStatus::Open)
-        ->and((int) $moved->clock_in_clock_point_id)->toBe($clockB->id)
+        ->and((int) $moved->clock_in_clock_point_id)->toBe($clockA->id)
+        ->and((int) $moved->presence_clock_point_id)->toBe($clockB->id)
+        ->and($moved->hasLocationHops())->toBeTrue()
+        ->and(WorkShift::query()->where('worker_id', $worker->id)->count())->toBe(1)
         ->and(WorkShift::query()->where('worker_id', $worker->id)->where('status', WorkShiftStatus::Open)->count())->toBe(1);
 });
 
@@ -290,8 +291,12 @@ it('toont op clock point B dat de worker elders is ingeklokt en laat verplaatsen
         ->call('transferToThisClockPoint')
         ->assertSet('flashMessage', __('time.portal.transferred'));
 
-    expect(WorkShift::query()->where('worker_id', $worker->id)->where('status', WorkShiftStatus::Open)->value('clock_in_clock_point_id'))
-        ->toBe($clockB->id);
+    expect(WorkShift::query()->where('worker_id', $worker->id)->count())->toBe(1);
+    $open = WorkShift::query()->where('worker_id', $worker->id)->where('status', WorkShiftStatus::Open)->first();
+    expect($open)->not->toBeNull()
+        ->and((int) $open->presence_clock_point_id)->toBe($clockB->id)
+        ->and((int) $open->clock_in_clock_point_id)->toBe($clockA->id)
+        ->and($open->hasLocationHops())->toBeTrue();
 });
 
 it('verplaatst automatisch bij inklokken als er elders al een open shift is', function () {
@@ -325,7 +330,8 @@ it('verplaatst automatisch bij inklokken als er elders al een open shift is', fu
         ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.transferred'));
 
-    expect(WorkShift::query()->where('worker_id', $worker->id)->where('status', WorkShiftStatus::Open)->value('clock_in_clock_point_id'))
+    expect(WorkShift::query()->where('worker_id', $worker->id)->count())->toBe(1);
+    expect(WorkShift::query()->where('worker_id', $worker->id)->where('status', WorkShiftStatus::Open)->value('presence_clock_point_id'))
         ->toBe($clockB->id);
 });
 

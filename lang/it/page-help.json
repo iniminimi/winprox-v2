@@ -916,7 +916,7 @@
                 },
                 {
                     "label": "Timbra entrata e uscita",
-                    "text": "Timbra qui entrata, uscita e pause. Un solo turno aperto alla volta. Su un altro Clock Point vedi dove hai timbrato e puoi spostare la presenza qui. Poi usa il QR unit in loco per i task."
+                    "text": "Timbra qui entrata, uscita e pause. Un solo turno aperto alla volta. Su un altro Clock Point vedi dove hai timbrato e puoi spostare la presenza qui. Poi usa il QR unit in loco per i task. Il turno resta unico; nel foglio ore lo spostamento compare come nota."
                 },
                 {
                     "label": "Esci",

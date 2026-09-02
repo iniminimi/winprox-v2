@@ -108,7 +108,10 @@
         "tasks_heading": "Tasks during this shift:",
         "task_unknown": "Task",
         "task_duration": ":minutes min",
-        "task_open": "in progress"
+        "task_open": "in progress",
+        "location_hops_heading": "Moves during this shift",
+        "location_hop": ":time — from :from to :to",
+        "presence_at": "Latest presence: :name"
     },
     "corrections": {
         "button": "Correct",
@@ -225,7 +228,8 @@
             "end_break": "End break",
             "clocked_in_since_at": "Clocked in since :time at :place",
             "open_elsewhere_hint": "You are already clocked in at another location. Move your presence here, or clock out.",
-            "transfer_here": "Move here"
+            "transfer_here": "Move here",
+            "started_at": "Started at :place (same shift)."
         },
         "clocked_in": "You are clocked in.",
         "clocked_out": "You are clocked out.",
@@ -238,6 +242,6 @@
             "break_not_open": "You are not on break.",
             "icon_not_configured": "Your account is not fully set up yet. Please contact the administrator."
         },
-        "transferred": "Presence moved to this location."
+        "transferred": "Presence moved to this location (same shift)."
     }
 }

@@ -916,7 +916,7 @@
                 },
                 {
                     "label": "Clock in and out",
-                    "text": "Clock in, out and register breaks here. You have one open shift at a time. At another Clock Point you see which site you are clocked in at and can move presence here. Then use the unit QR on site to start or finish tasks."
+                    "text": "Clock in, out and register breaks here. You have one open shift at a time. At another Clock Point you see which site you are clocked in at and can move presence here. Then use the unit QR on site to start or finish tasks. The shift stays one continuous period; the timesheet shows the hop as a note."
                 },
                 {
                     "label": "Sign out",

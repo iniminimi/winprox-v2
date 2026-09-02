@@ -916,7 +916,7 @@
                 },
                 {
                     "label": "Ein- und Ausstempeln",
-                    "text": "Stempeln Sie hier ein, aus und erfassen Sie Pausen. Sie haben eine offene Schicht gleichzeitig. An einem anderen Clock Point sehen Sie, wo Sie eingestempelt sind, und können die Anwesenheit hierher verschieben. Danach die Unit-QR vor Ort für Aufgaben."
+                    "text": "Stempeln Sie hier ein, aus und erfassen Sie Pausen. Sie haben eine offene Schicht gleichzeitig. An einem anderen Clock Point sehen Sie, wo Sie eingestempelt sind, und können die Anwesenheit hierher verschieben. Danach die Unit-QR vor Ort für Aufgaben. Die Schicht bleibt durchgehend; in der Stundenübersicht erscheint der Wechsel als Hinweis."
                 },
                 {
                     "label": "Abmelden",

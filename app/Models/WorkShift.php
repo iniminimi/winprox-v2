@@ -21,6 +21,7 @@ class WorkShift extends Model
         'worker_id',
         'internal_team_id',
         'clock_in_clock_point_id',
+        'presence_clock_point_id',
         'clock_out_clock_point_id',
         'status',
         'clock_in_at',
@@ -31,6 +32,7 @@ class WorkShift extends Model
         'clock_out_client_at',
         'clock_out_source',
         'total_break_minutes',
+        'location_hops',
     ];
 
     protected $casts = [
@@ -41,6 +43,7 @@ class WorkShift extends Model
         'clock_in_client_at' => 'datetime',
         'clock_out_at' => 'datetime',
         'clock_out_client_at' => 'datetime',
+        'location_hops' => 'array',
     ];
 
     public function worker(): BelongsTo
@@ -58,9 +61,46 @@ class WorkShift extends Model
         return $this->belongsTo(ClockPoint::class, 'clock_in_clock_point_id');
     }
 
+    public function presenceClockPoint(): BelongsTo
+    {
+        return $this->belongsTo(ClockPoint::class, 'presence_clock_point_id');
+    }
+
     public function clockOutClockPoint(): BelongsTo
     {
         return $this->belongsTo(ClockPoint::class, 'clock_out_clock_point_id');
+    }
+
+    /** Clock point waar de uitvoerder nu als aanwezig telt (na eventuele hops). */
+    public function currentClockPointId(): int
+    {
+        return (int) ($this->presence_clock_point_id ?? $this->clock_in_clock_point_id);
+    }
+
+    public function currentClockPoint(): ?ClockPoint
+    {
+        if ($this->relationLoaded('presenceClockPoint') && $this->presenceClockPoint !== null) {
+            return $this->presenceClockPoint;
+        }
+
+        if ($this->presence_clock_point_id !== null) {
+            return $this->presenceClockPoint()->first();
+        }
+
+        return $this->relationLoaded('clockInClockPoint')
+            ? $this->clockInClockPoint
+            : $this->clockInClockPoint()->first();
+    }
+
+    /** @return list<array<string, mixed>> */
+    public function locationHops(): array
+    {
+        return is_array($this->location_hops) ? $this->location_hops : [];
+    }
+
+    public function hasLocationHops(): bool
+    {
+        return $this->locationHops() !== [];
     }
 
     public function clockInDevice(): BelongsTo

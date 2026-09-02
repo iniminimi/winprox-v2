@@ -59,6 +59,7 @@ class ClockInAction
                 'worker_id' => $worker->id,
                 'internal_team_id' => $worker->internal_team_id,
                 'clock_in_clock_point_id' => $clockPoint->id,
+                'presence_clock_point_id' => $clockPoint->id,
                 'status' => WorkShiftStatus::Open,
                 'clock_in_at' => now(),
                 'clock_in_client_at' => $clientTimestamp,
@@ -68,7 +69,7 @@ class ClockInAction
 
             event(new TimeShiftStarted($shift->fresh()));
 
-            return $shift->fresh(['worker', 'team', 'clockInClockPoint', 'openBreak']);
+            return $shift->fresh(['worker', 'team', 'clockInClockPoint', 'presenceClockPoint', 'openBreak']);
         });
     }
 }

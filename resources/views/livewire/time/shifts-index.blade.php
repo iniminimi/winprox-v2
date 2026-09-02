@@ -82,6 +82,26 @@
                             &middot; {{ __('time.shifts.clocked_out_at', ['name' => $shift->clockOutClockPoint->name]) }}
                         @endif
                     </p>
+                    @if ($shift->hasLocationHops())
+                        <p class="wp-muted wp-text-sm">{{ __('time.shifts.location_hops_heading') }}</p>
+                        <ul class="wp-muted wp-text-sm">
+                            @foreach ($shift->locationHops() as $hopIndex => $hop)
+                                @php
+                                    $hopAt = isset($hop['at']) ? \Illuminate\Support\Carbon::parse($hop['at'])->format('H:i') : '—';
+                                    $hopFrom = $hop['from_clock_point_name'] ?? '—';
+                                    $hopTo = $hop['to_clock_point_name'] ?? '—';
+                                @endphp
+                                <li wire:key="shift-{{ $shift->id }}-hop-{{ $hopIndex }}">
+                                    {{ __('time.shifts.location_hop', ['time' => $hopAt, 'from' => $hopFrom, 'to' => $hopTo]) }}
+                                </li>
+                            @endforeach
+                        </ul>
+                        @if ($shift->presenceClockPoint && (int) $shift->presence_clock_point_id !== (int) $shift->clock_in_clock_point_id)
+                            <p class="wp-muted wp-text-sm">
+                                {{ __('time.shifts.presence_at', ['name' => $shift->presenceClockPoint->name]) }}
+                            </p>
+                        @endif
+                    @endif
                     @if ($shift->taskLogs->isNotEmpty())
                         <p class="wp-muted wp-text-sm">{{ __('time.shifts.tasks_heading') }}</p>
                         <ul class="wp-muted wp-text-sm">

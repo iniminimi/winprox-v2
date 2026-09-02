@@ -307,7 +307,7 @@ class TimePortal extends Component
         }
 
         $openShift = $findShift->handle($worker);
-        if ($openShift !== null && (int) $openShift->clock_in_clock_point_id !== (int) $clockPoint->id) {
+        if ($openShift !== null && $openShift->currentClockPointId() !== (int) $clockPoint->id) {
             try {
                 $transfer->handle($worker, $clockPoint, $this->deviceForWorker($worker));
                 $this->flashMessage = __('time.portal.transferred');
@@ -345,7 +345,7 @@ class TimePortal extends Component
             return;
         }
 
-        if ((int) $openShift->clock_in_clock_point_id === (int) $clockPoint->id) {
+        if ($openShift->currentClockPointId() === (int) $clockPoint->id) {
             $this->flashMessage = __('time.portal.errors.already_clocked_in');
 
             return;

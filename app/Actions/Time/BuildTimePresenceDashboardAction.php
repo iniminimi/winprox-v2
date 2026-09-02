@@ -45,10 +45,10 @@ class BuildTimePresenceDashboardAction
         $openShifts = WorkShift::query()
             ->where('tenant_id', $tenantId)
             ->where('status', WorkShiftStatus::Open)
-            ->with(['worker.team.translations', 'openBreak', 'clockInClockPoint', 'breaks'])
+            ->with(['worker.team.translations', 'openBreak', 'clockInClockPoint.location', 'presenceClockPoint.location', 'breaks'])
             ->when($teamId, fn ($q) => $q->where('internal_team_id', $teamId))
-            ->when($clockPointId, fn ($q) => $q->where('clock_in_clock_point_id', $clockPointId))
-            ->when($clockPointIdsForLocation !== null, fn ($q) => $q->whereIn('clock_in_clock_point_id', $clockPointIdsForLocation))
+            ->when($clockPointId, fn ($q) => $q->where('presence_clock_point_id', $clockPointId))
+            ->when($clockPointIdsForLocation !== null, fn ($q) => $q->whereIn('presence_clock_point_id', $clockPointIdsForLocation))
             ->when($isSearchMode, function ($q) use ($needle) {
                 $q->whereHas('worker', function ($workerQuery) use ($needle) {
                     $workerQuery->whereRaw('LOWER(first_name) LIKE ?', ['%'.$needle.'%'])
@@ -209,19 +209,20 @@ class BuildTimePresenceDashboardAction
             ->get();
 
         $locationIds = $locations->pluck('id')->all();
-        $hasUnknown = $openShifts->contains(
-            fn (WorkShift $shift) => $shift->clockInClockPoint?->location_id === null
-                || ! in_array((int) $shift->clockInClockPoint?->location_id, $locationIds, true)
-        );
+        $hasUnknown = $openShifts->contains(function (WorkShift $shift) use ($locationIds) {
+            $locationId = $shift->currentClockPoint()?->location_id;
+
+            return $locationId === null || ! in_array((int) $locationId, $locationIds, true);
+        });
 
         $buckets = $locations->map(function (Location $location) use ($openShifts, $attentionItems) {
             $shifts = $openShifts->filter(
-                fn (WorkShift $shift) => (int) $shift->clockInClockPoint?->location_id === (int) $location->id
+                fn (WorkShift $shift) => (int) $shift->currentClockPoint()?->location_id === (int) $location->id
             );
             $activeCount = $shifts->filter(fn (WorkShift $s) => $s->openBreak === null)->count();
             $breakCount = $shifts->count() - $activeCount;
             $attentionCount = $attentionItems->filter(
-                fn ($item) => (int) $item->shift->clockInClockPoint?->location_id === (int) $location->id
+                fn ($item) => (int) $item->shift->currentClockPoint()?->location_id === (int) $location->id
             )->count();
 
             return new TimePresenceLocationBucket(
@@ -235,14 +236,14 @@ class BuildTimePresenceDashboardAction
 
         if ($hasUnknown) {
             $unknownShifts = $openShifts->filter(function (WorkShift $shift) use ($locationIds) {
-                $id = $shift->clockInClockPoint?->location_id;
+                $id = $shift->currentClockPoint()?->location_id;
 
                 return $id === null || ! in_array((int) $id, $locationIds, true);
             });
             $activeCount = $unknownShifts->filter(fn (WorkShift $s) => $s->openBreak === null)->count();
             $breakCount = $unknownShifts->count() - $activeCount;
             $attentionCount = $attentionItems->filter(
-                fn ($item) => $item->shift->clockInClockPoint?->location_id === null
+                fn ($item) => $item->shift->currentClockPoint()?->location_id === null
             )->count();
 
             $buckets->push(new TimePresenceLocationBucket(

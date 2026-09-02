@@ -108,7 +108,10 @@
         "tasks_heading": "Attività durante questo turno:",
         "task_unknown": "Attività",
         "task_duration": ":minutes min",
-        "task_open": "in corso"
+        "task_open": "in corso",
+        "location_hops_heading": "Spostamenti durante questo turno",
+        "location_hop": ":time — da :from a :to",
+        "presence_at": "Ultima presenza: :name"
     },
     "corrections": {
         "button": "Correggi",
@@ -225,7 +228,8 @@
             "end_break": "Termina pausa",
             "clocked_in_since_at": "Timbrato dal :time presso :place",
             "open_elsewhere_hint": "Hai già timbrato in un'altra sede. Sposta la presenza qui oppure timbra l'uscita.",
-            "transfer_here": "Sposta qui"
+            "transfer_here": "Sposta qui",
+            "started_at": "Iniziato presso :place (stesso turno)."
         },
         "clocked_in": "Hai timbrato l'entrata.",
         "clocked_out": "Hai timbrato l'uscita.",
@@ -238,6 +242,6 @@
             "break_not_open": "Non sei in pausa.",
             "icon_not_configured": "Il tuo account non è ancora completamente configurato. Contatta l'amministratore."
         },
-        "transferred": "Presenza spostata in questa sede."
+        "transferred": "Presenza spostata in questa sede (stesso turno)."
     }
 }
