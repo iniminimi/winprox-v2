@@ -116,8 +116,28 @@
 }
 
 [data-theme='modern'] .wp-sidebar .wp-sidebar-user {
-    background-color: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.1);
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+[data-theme='modern'] .wp-sidebar .wp-sidebar-user-name {
+    color: #0f172a;
+}
+
+[data-theme='modern'] .wp-sidebar .wp-sidebar-user-meta {
+    color: #64748b;
+}
+
+[data-theme='modern'] .wp-sidebar .wp-sidebar-logout {
+    background-color: #f8fafc;
+    border-color: rgba(15, 23, 42, 0.1);
+    color: #334155;
+}
+
+[data-theme='modern'] .wp-sidebar .wp-sidebar-logout:hover {
+    background-color: #f1f5f9;
+    border-color: rgba(15, 23, 42, 0.15);
+    color: #0f172a;
 }
 
 [data-theme='modern'] .wp-sidebar .btn--ghost {
