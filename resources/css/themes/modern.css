@@ -166,3 +166,28 @@
     background-color: color-mix(in srgb, var(--wp-surface) 88%, transparent);
     border-top-color: var(--wp-border);
 }
+
+/* Paginatitel leesbaar op foto-achtergrond (zelfde glass als kaarten). */
+[data-theme='modern'] .wp-page-head,
+[data-theme='modern'] .wp-stack > .wp-page-head-main:not(.wp-card),
+[data-theme='modern'] .wp-main > .wp-page-head-main:not(.wp-card) {
+    padding: 0.85rem 1rem;
+    border-radius: var(--wp-radius-lg);
+    border: 1px solid var(--wp-border);
+    background-color: var(--wp-surface);
+    backdrop-filter: var(--wp-card-backdrop);
+    -webkit-backdrop-filter: var(--wp-card-backdrop);
+    box-shadow:
+        var(--wp-shadow-lg),
+        0 0 0 1px rgba(255, 255, 255, 0.45) inset;
+}
+
+[data-theme='modern'] .wp-page-head {
+    align-items: center;
+}
+
+[data-theme='modern'] .wp-page-head .wp-muted,
+[data-theme='modern'] .wp-stack > .wp-page-head-main:not(.wp-card) .wp-muted,
+[data-theme='modern'] .wp-main > .wp-page-head-main:not(.wp-card) .wp-muted {
+    color: var(--wp-text-body);
+}
