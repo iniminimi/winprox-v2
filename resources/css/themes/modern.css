@@ -191,3 +191,10 @@
 [data-theme='modern'] .wp-main > .wp-page-head-main:not(.wp-card) .wp-muted {
     color: var(--wp-text-body);
 }
+
+/* Zoekresultaten: volledig dekkend (geen glass door tekst eronder). */
+[data-theme='modern'] .wp-search-results {
+    background-color: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
