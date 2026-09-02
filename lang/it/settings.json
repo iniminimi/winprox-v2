@@ -109,11 +109,15 @@
     },
     "style": {
         "title": "Personalizza stile WinProx",
-        "hint": "Scelga come WinProx appare per Lei. La Sua scelta si applica su ogni dispositivo in cui è connesso.",
+        "hint": "Scegli come appare WinProx per te. La scelta vale su tutti i dispositivi in cui sei collegato. Moderno è l’impostazione predefinita.",
         "options": {
+            "modern": {
+                "label": "Moderno",
+                "description": "Barra laterale scura, sfondo foto e schede glass — lo stile predefinito di WinProx."
+            },
             "simple": {
                 "label": "Standard",
-                "description": "Chiaro e sobrio — l'aspetto WinProx predefinito."
+                "description": "Chiaro e calmo — sfondo chiaro senza foto."
             },
             "dark": {
                 "label": "Scuro",

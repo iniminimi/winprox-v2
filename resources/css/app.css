@@ -9,6 +9,7 @@
 /* Design system (volgorde: structurele tokens -> thema-kleuren -> base -> layout -> componenten) */
 @import './tokens.css';
 @import './themes/simple.css';
+@import './themes/modern.css';
 @import './themes/dark.css';
 @import './base.css';
 @import './layout.css';

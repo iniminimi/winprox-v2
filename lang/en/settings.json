@@ -109,11 +109,15 @@
     },
     "style": {
         "title": "Customise WinProx style",
-        "hint": "Choose how WinProx looks for you. Your choice applies on every device where you are signed in.",
+        "hint": "Choose how WinProx looks for you. Your choice applies on all devices where you are signed in. Modern is the default.",
         "options": {
+            "modern": {
+                "label": "Modern",
+                "description": "Dark sidebar, photo background and glass cards — the default WinProx style."
+            },
             "simple": {
                 "label": "Standard",
-                "description": "Clear and calm — the default WinProx look."
+                "description": "Bright and calm — light background without a photo."
             },
             "dark": {
                 "label": "Dark",

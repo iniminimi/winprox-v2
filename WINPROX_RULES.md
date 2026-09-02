@@ -13,8 +13,9 @@ FAQ & kennisbank, juridische documenten, contact, hulp-chat, briefing), zonder d
 > elk toegewezen aan **één operationeel team**.
 
 **Visuele stijl (hard):** screenshots van de oude app dienen als doel voor **layout, structuur en
-UX** — **kleuren NIET kopiëren**. Behoud het minimale `standard`-thema (emerald als enige accent,
-wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
+UX** — **kleuren NIET kopiëren**. Beheer-UI-thema's: **Modern** (default; donkere sidebar,
+foto-achtergrond, glass surfaces), **Standaard** (licht), **Donker** (nachtmodus). Emerald blijft
+het enige accent. Geen regenboogaccenten.
 
 > ## ⚠ Werkwijze nr. 0 (hard) — Herlees ALTIJD eerst deze regels
 > **V1 is ontspoord doordat regels niet (her)gelezen werden.** Daarom, vóór én tijdens elke taak:
@@ -206,14 +207,19 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 
 ### 6.2 Tokens & thema's
 - **`tokens.css`** = structurele tokens (radius, schaduw, knop-geometrie, transitie) — thema-onafhankelijk.
-- **`themes/simple.css`** = standaardthema (licht, modern, emerald). **`themes/dark.css`** = donker (vooral QR-portaal op gsm).
-- Geen extra thema's — componenten veranderen **niet** per thema; enkel token-overschrijving onder `[data-theme="..."]`.
+- **`themes/modern.css`** = **default** beheer-thema (donkere sidebar, shell-foto + glass via tokens).
+- **`themes/simple.css`** = licht “Standaard”. **`themes/dark.css`** = donker (handig op gsm / QR).
+- Componenten veranderen **niet** per thema; enkel token-overschrijving + minimale selectors onder
+  `[data-theme="..."]`. Geen per-pagina theme-CSS.
 - Componenten verwijzen **altijd** naar variabelen, nooit naar harde kleuren.
+- **Blur:** moderatie-blur (`.wp-pending-review`) blijft **alleen** op publieke QR-portalen.
+  **Decoratieve** `backdrop-filter` (glass) is toegestaan op beheer in thema **Modern**.
 
-### 6.3 Kleuren (standaardthema)
-- Achtergrond `#f9fafb`, oppervlak `#ffffff`, rand `#e5e7eb`.
+### 6.3 Kleuren (Standaard / simple)
+- Achtergrond `#e7e8ec` / `#f9fafb`, oppervlak `#ffffff`, rand `#e5e7eb`.
 - Tekst: kop `#111827`, body `#4b5563`, secundair `#6b7280`. **Nooit puur zwart `#000`.**
 - Accent emerald: `#059669` / `#047857` / `#ecfdf5` / `#bbf7d0`.
+- Modern/Donker: zie de tokenwaarden in `themes/modern.css` / `themes/dark.css` (zelfde accentfamilie).
 
 ### 6.4 Knoppen, pillen & kaders — ÉÉN definitie, ALTIJD hergebruiken
 - **Hard principe (overal, altijd):** knoppen, pillen en kaders/kaarten hebben **één** gedeelde
@@ -259,9 +265,9 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - **Blur geldt UITSLUITEND op publieke QR-pagina's** (na scan): zolang niet goedgekeurd worden
   **beschrijving én foto's geblurd** getoond met overlay "Wacht op controle". Gebruik de klasse
   **`.wp-pending-review`** (blur + overlay).
-- **Beheerschermen (desktop) tonen NOOIT geblurd.** Dashboard, meldingen, taken, detail enz. zijn
-  alleen voor **beheerders en medewerkers**; zij moeten de inhoud juist **onverkort** zien om te
-  kunnen beoordelen en goedkeuren.
+- **Beheerschermen tonen NOOIT moderatie-blur** op meldingstekst/foto's. Dashboard, meldingen, taken,
+  detail enz. blijven onverkort leesbaar om te beoordelen. (Thema **Modern** mag wél decoratieve
+  glass-`backdrop-filter` op kaarten/knoppen — dat is geen moderatie-blur.)
 - Een beheerder/medewerker keurt goed via **`ApproveIssueAction`** (zet `approved_at`/`approved_by`);
   pas dan unblurt de inhoud ook op de publieke pagina's. Afkeuren = verwijderen.
 - Doel: voorkomen dat een malafide melder compromitterende foto's of tekst **publiek** publiceert.

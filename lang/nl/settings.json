@@ -109,11 +109,15 @@
     },
     "style": {
         "title": "WinProx-stijl aanpassen",
-        "hint": "Kies hoe WinProx er voor jou uitziet. Je keuze geldt op al je apparaten waar je bent ingelogd.",
+        "hint": "Kies hoe WinProx er voor jou uitziet. Je keuze geldt op al je apparaten waar je bent ingelogd. Modern is de standaard.",
         "options": {
+            "modern": {
+                "label": "Modern",
+                "description": "Donkere menubalk, foto-achtergrond en glazen kaarten — de standaard WinProx-stijl."
+            },
             "simple": {
                 "label": "Standaard",
-                "description": "Helder en rustig — de standaard WinProx-stijl."
+                "description": "Helder en rustig — lichte achtergrond zonder foto."
             },
             "dark": {
                 "label": "Donker",

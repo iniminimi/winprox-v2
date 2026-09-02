@@ -586,7 +586,7 @@
                 },
                 {
                     "label": "WinProx style",
-                    "text": "Choose how WinProx looks for you in admin: Standard or Dark. Your choice applies on all devices where you are signed in. At the bottom of the page, just before the export section."
+                    "text": "Choose how WinProx looks in the back office: Modern (default), Standard or Dark. Your choice applies on all signed-in devices."
                 },
                 {
                     "label": "Privacy & data export",

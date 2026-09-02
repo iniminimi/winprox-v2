@@ -11,7 +11,8 @@ Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bi
 
 ## Product (hard)
 - Eén **Facility**-app: melding → taken → afhandeling. Geen hospitality, contractors, owners, demo.
-- **Blur** alleen op publieke QR-portalen (`.wp-pending-review`). Beheer nooit geblurd.
+- **Blur:** moderatie-blur (`.wp-pending-review`) alleen op publieke QR-portalen. Beheer nooit
+  moderatie-blur. Thema **Modern** mag decoratieve glass-`backdrop-filter` op beheer.
 - **Productfiches** (`lang/*/product_docs.json`): bij feature/security-wijzigingen mee updaten
   (zie `WINPROX_RULES.md` §10a) — welcome + `/manual` (features, technical, API & Webhooks).
 

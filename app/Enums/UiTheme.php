@@ -6,12 +6,13 @@ namespace App\Enums;
 
 enum UiTheme: string
 {
+    case Modern = 'modern';
     case Simple = 'simple';
     case Dark = 'dark';
 
     public static function default(): self
     {
-        return self::Simple;
+        return self::Modern;
     }
 
     public static function tryFromString(?string $value): self
@@ -22,6 +23,6 @@ enum UiTheme: string
     /** @return list<self> */
     public static function choices(): array
     {
-        return [self::Simple, self::Dark];
+        return [self::Modern, self::Simple, self::Dark];
     }
 }

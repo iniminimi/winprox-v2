@@ -109,15 +109,19 @@
     },
     "style": {
         "title": "Personalizar el estilo WinProx",
-        "hint": "Elija cómo se ve WinProx para usted. Su elección se aplica en todos los dispositivos donde haya iniciado sesión.",
+        "hint": "Elige cómo se ve WinProx para ti. Tu elección vale en todos los dispositivos donde hayas iniciado sesión. Moderno es el valor predeterminado.",
         "options": {
+            "modern": {
+                "label": "Moderno",
+                "description": "Barra lateral oscura, fondo con foto y tarjetas de cristal: el estilo predeterminado de WinProx."
+            },
             "simple": {
                 "label": "Estándar",
-                "description": "Claro y tranquilo — el aspecto predeterminado de WinProx."
+                "description": "Claro y tranquilo: fondo claro sin foto."
             },
             "dark": {
                 "label": "Oscuro",
-                "description": "Modo nocturno con fondos oscuros, como en su teléfono."
+                "description": "Modo nocturno con fondos oscuros, como en el teléfono."
             }
         }
     },

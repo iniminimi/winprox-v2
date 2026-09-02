@@ -46,5 +46,7 @@ it('toont stijlkeuze op unit portaal', function () {
     portalThemeScaffold();
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
-        ->assertSee(__('settings.style.options.simple.label'));
+        ->assertSee(__('settings.style.options.modern.label'))
+        ->assertSee(__('settings.style.options.simple.label'))
+        ->assertSee(__('settings.style.options.dark.label'));
 });

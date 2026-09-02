@@ -2,7 +2,8 @@
 
 Levende specificatie, opgebouwd door het menu **top‑down** te doorlopen met de gebruiker.
 Doel: dezelfde functionaliteit als de oude WinProx Facility, **schoon herschreven**, in de
-minimale `standard`-stijl (kleuren NIET uit de oude app overnemen — zie `WINPROX_RULES.md`).
+minimale WinProx-stijlen (Modern default, Standaard, Donker — kleuren NIET uit de oude app
+overnemen — zie `WINPROX_RULES.md`).
 
 Per scherm: doel · weergave · acties · data · rollen · device · bijzonderheden.
 
