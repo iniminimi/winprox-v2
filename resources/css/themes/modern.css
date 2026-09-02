@@ -164,9 +164,9 @@
         0 0 0 1px rgba(255, 255, 255, 0.45) inset;
 }
 
-/* KPI-aandacht (dashboard, Time): dekkender dan --wp-accent-soft (18%). */
+/* KPI-aandacht: zelfde dekking als witte tiles (--wp-surface 90%), met mint-tint. */
 [data-theme='modern'] .wp-kpi--alert {
-    background-color: color-mix(in srgb, #ecfdf5 92%, var(--wp-accent) 8%);
+    background-color: color-mix(in srgb, var(--wp-surface) 100%, #ecfdf5 32%);
 }
 
 [data-theme='modern'] .btn--surface,
