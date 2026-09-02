@@ -174,7 +174,7 @@
     background-color: rgba(255, 255, 255, 0.88);
 }
 
-[data-theme='modern'] .btn--primary {
+[data-theme='modern'] .btn--primary:not(.wp-theme-preview-btn) {
     background: linear-gradient(135deg, var(--wp-accent) 0%, #10b981 55%, var(--wp-accent-strong) 100%);
     border-color: transparent;
 }

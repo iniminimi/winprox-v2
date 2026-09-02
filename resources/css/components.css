@@ -2443,6 +2443,7 @@ button.wp-issue-row:disabled {
 
 .wp-theme-preview-btn {
     font-size: 0.75rem;
+    background-image: none;
 }
 
 .wp-theme-preview-card {
