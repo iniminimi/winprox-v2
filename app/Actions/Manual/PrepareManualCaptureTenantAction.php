@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Manual;
 
+use App\Actions\TenantPurge\CancelOpenExpiredTrialPurgesForTenantAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
@@ -14,6 +15,7 @@ final class PrepareManualCaptureTenantAction
 {
     public function __construct(
         private EnsureDefaultClockPointAction $ensureDefaultClockPoint,
+        private CancelOpenExpiredTrialPurgesForTenantAction $cancelExpiredTrialPurges,
     ) {}
 
     public function handle(?string $email = null): Tenant
@@ -38,6 +40,12 @@ final class PrepareManualCaptureTenantAction
 
         $updates = [];
 
+        // Verlopen trial → redirect naar /subscription; capture-selectors verschijnen nooit.
+        if (! $tenant->hasFullAppAccess()) {
+            $updates['trial_ends_at'] = now()->addDays(max(1, (int) config('billing.trial_days', 14)));
+            $updates['is_active'] = true;
+        }
+
         if (! $tenant->hasEsgModule()) {
             $updates['has_esg_module'] = true;
         }
@@ -54,6 +62,8 @@ final class PrepareManualCaptureTenantAction
             $tenant->update($updates);
             $tenant->refresh();
         }
+
+        $this->cancelExpiredTrialPurges->handle($tenant, $user);
 
         $this->ensureDefaultClockPoint->handle(
             $tenant,

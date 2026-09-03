@@ -12,6 +12,7 @@ final class ManualScreenshotAssets
     /** Capture filenames that differ from the chapter key (legacy shots). */
     private const CHAPTER_FILENAME_ALIASES = [
         'team.teams' => 'team.png',
+        'team.workers_index' => 'workers-index.png',
     ];
 
     public static function filenameForChapter(string $chapterKey): string

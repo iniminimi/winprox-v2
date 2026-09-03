@@ -15,6 +15,13 @@
             "auth": true
         },
         {
+            "id": "workers-index",
+            "path": "/workers",
+            "selector": "[data-manual-capture=\"workers-index\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
             "id": "locations-categories",
             "path": "/locations?section=categories",
             "selector": "[data-manual-capture=\"locations-categories\"]",
@@ -96,6 +103,20 @@
             "id": "reservations",
             "path": "/reservations",
             "selector": "[data-manual-capture=\"reservations\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "unit-checks",
+            "path": "/unit-checks",
+            "selector": "[data-manual-capture=\"unit-checks\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "unit-measurements-index",
+            "path": "/unit-measurements",
+            "selector": "[data-manual-capture=\"unit-measurements-index\"]",
             "viewport": { "width": 1280, "height": 800 },
             "auth": true
         },

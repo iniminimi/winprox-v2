@@ -8,7 +8,9 @@ it('mapt een hoofdstuksleutel naar een bestandsnaam', function () {
         ->and(ManualScreenshotAssets::filenameForChapter('team.teams'))
         ->toBe('team.png')
         ->and(ManualScreenshotAssets::filenameForChapter('team.backoffice'))
-        ->toBe('team-backoffice.png');
+        ->toBe('team-backoffice.png')
+        ->and(ManualScreenshotAssets::filenameForChapter('team.workers_index'))
+        ->toBe('workers-index.png');
 });
 
 it('geeft een public url wanneer het screenshot-bestand bestaat', function () {

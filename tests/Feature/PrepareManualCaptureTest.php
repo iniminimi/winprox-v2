@@ -44,6 +44,27 @@ it('zet has_time_module aan en maakt een clock point aan voor de capture-tenant'
     expect($token)->not->toBeNull()->not->toBe('');
 });
 
+it('vernieuwt de trial wanneer de capture-tenant geen app-toegang meer heeft', function () {
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->subDay(),
+        'billing_plan' => null,
+        'billing_active_until' => null,
+        'is_active' => true,
+        'has_esg_module' => true,
+        'has_time_module' => true,
+        'has_iot_module' => true,
+    ]);
+    User::factory()->admin()->for($tenant)->create(['email' => 'capture@example.com']);
+    config(['manual_capture.email' => 'capture@example.com']);
+
+    expect($tenant->hasFullAppAccess())->toBeFalse();
+
+    $result = app(PrepareManualCaptureTenantAction::class)->handle();
+
+    expect($result->fresh()->hasFullAppAccess())->toBeTrue()
+        ->and($result->fresh()->trial_ends_at?->isFuture())->toBeTrue();
+});
+
 it('laat has_esg_module ongemoeid wanneer al actief', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => true]);
     User::factory()->admin()->for($tenant)->create(['email' => 'capture@example.com']);

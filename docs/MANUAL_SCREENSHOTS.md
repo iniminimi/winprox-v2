@@ -69,8 +69,11 @@ php artisan config:clear
 .\scripts\capture-manual-local.ps1
 ```
 
-Stap **2b** zet `has_esg_module`, `has_time_module` en `has_iot_module` aan en maakt zonodig een Clock Point aan
-voor de tenant van `MANUAL_CAPTURE_EMAIL` (`php artisan winprox:prepare-manual-capture`).
+Stap **2b** (`php artisan winprox:prepare-manual-capture`) voor de tenant van `MANUAL_CAPTURE_EMAIL`:
+
+- vernieuwt de **trial** als die verlopen is (anders redirect naar `/subscription` → selector-timeout)
+- zet `has_esg_module`, `has_time_module` en `has_iot_module` aan
+- maakt zonodig een Clock Point aan
 
 Het script doet **altijd** alles:
 
@@ -148,6 +151,7 @@ Viewport-richtlijn:
 | `locations-gps-history` skip | Geen unit met GPS op de capture-locatie — minstens één `unit_gps_reports`-rij nodig |
 | `esg-indicators` / `esg-measurements` skip | ESG-module uit op capture-tenant — zet `has_esg_module` aan voor die tenant |
 | `iot-index` skip | IoT-module uit — `winprox:prepare-manual-capture` zet `has_iot_module` aan |
+| Timeout op `team-backoffice` / eerste beheer-shot, URL `/subscription` | Trial/abonnement verlopen — prepare vernieuwt trial; opnieuw `capture-manual-local.ps1` |
 | Server `pthread_create` | Shared hosting — capture lokaal |
 | “Klaar” maar 0 PNG's | PowerShell toont nu een error; check script-output |
 

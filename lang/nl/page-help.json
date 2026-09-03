@@ -1485,7 +1485,7 @@
                 },
                 {
                     "label": "Vestigingen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Per uitvoerder ziet u de toegewezen vestigingen. Geen selectie = overal inklokken (bestaande uitvoerders). Beheer via Personen → Teams (bewerken) of massa-import met location_names."
                 },
                 {
                     "label": "Collega-koppeling",

@@ -144,10 +144,19 @@ try {
                 if (target.optional === true) {
                     console.warn(
                         `Skip ${target.id}: selector not visible (${target.selector}). `
-                        + 'Zie docs/MANUAL_SCREENSHOTS.md — ESG/IoT vereisen has_esg_module / has_iot_module op de capture-tenant.',
+                        + 'Zie docs/MANUAL_SCREENSHOTS.md — ESG/IoT/Time vereisen modules + trial/abonnement op de capture-tenant.',
                     );
                     skipped++;
                     continue;
+                }
+
+                const currentPath = new URL(page.url()).pathname;
+                if (currentPath.includes('/subscription')) {
+                    throw new Error(
+                        `Capture ${target.id}: redirect naar /subscription (trial/abonnement verlopen). `
+                        + 'Draai `php artisan winprox:prepare-manual-capture` — die vernieuwt de trial van MANUAL_CAPTURE_EMAIL. '
+                        + `Selector: ${target.selector}`,
+                    );
                 }
 
                 throw error;

@@ -12,7 +12,7 @@ class PrepareManualCaptureCommand extends Command
 {
     protected $signature = 'winprox:prepare-manual-capture';
 
-    protected $description = 'Bereid de MANUAL_CAPTURE_EMAIL-tenant voor (ESG, Time, IoT, Clock Point)';
+    protected $description = 'Bereid de MANUAL_CAPTURE_EMAIL-tenant voor (trial/toegang, ESG, Time, IoT, Clock Point)';
 
     public function handle(PrepareManualCaptureTenantAction $prepare): int
     {
@@ -24,7 +24,7 @@ class PrepareManualCaptureCommand extends Command
             return self::FAILURE;
         }
 
-        $this->info("Capture-tenant #{$tenant->id} ({$tenant->name}): ESG-, Time- en IoT-module actief.");
+        $this->info("Capture-tenant #{$tenant->id} ({$tenant->name}): app-toegang + ESG/Time/IoT klaar.");
 
         $clockPointToken = $prepare->clockPointQrToken($tenant);
         if (is_string($clockPointToken) && $clockPointToken !== '') {

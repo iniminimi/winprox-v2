@@ -12,6 +12,7 @@ final class ManualChapters
     private const ADMIN_PAGE_HELP_KEYS = [
         'team.backoffice',
         'team.teams',
+        'team.workers_index',
         'locations.categories',
         'locations.list',
         'locations.show',
