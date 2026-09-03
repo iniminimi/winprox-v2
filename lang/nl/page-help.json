@@ -15,7 +15,7 @@
                 },
                 {
                     "label": "Starttemplate",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Nieuwe organisaties zien de knop «Wil je op weg geholpen worden?». Kies hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer of fleet management: WinProx maakt voorbeeldteams, categorieën, één locatie en units — namen in alle talen — en zet passende werkmenu-items in de sidebar (bv. vastgoedbeheer zonder reserveringen en unitmetingen). In de popup zie je per type ook welke werkmenu-items aan of uit staan; na aanmaken staat dat opnieuw op Starttemplate aangemaakt. Wijzig later via Organisatie → Instellingen → Werkmenu instellingen (verwijderen van het template zet het werkmenu niet terug). Dit is geen sectorsysteem, alleen een start. Hernoemen kan altijd. Verwijderen zolang er geen meldingen zijn; daarna kunnen units alleen nog gedeactiveerd worden."
                 },
                 {
                     "label": "Briefing afdrukken",
@@ -112,7 +112,7 @@
             "actions": [
                 {
                     "label": "Taak toevoegen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Voeg een taak toe aan een bestaand melding of bewerk een bestaande taak. Geef een duidelijke, concrete beschrijving van het probleem of de uit te voeren handeling (bijv. \"Printer drukt vuil\"). Selecteer een specifieke uitvoerdatum via de kalender. Laat dit leeg als de taak direct of flexibel moet worden opgepakt. Bepaal de urgentie van de taak (Prio 1 t/m 3). Dit veld is exclusief voor beheerders om prioriteitsinflatie op de werkvloer te voorkomen. Wijs de taak toe aan het juiste operationele team. Dit team krijgt direct een notificatie. Uitvoerders starten taken via het unit-QR-portaal nadat ze zijn ingelogd via de Clock Point QR."
                 },
                 {
                     "label": "Update plaatsen",
@@ -266,7 +266,7 @@
             "actions": [
                 {
                     "label": "Categorieën",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team. Gps locatie categorie : wanneer \"GPS-locatie toestaan\" aangevinkt is, kan de gps-locatie van een unit via het portaal doorgegeven worden. Dit is om gebruikers van mobiele units (vb. kraan, grote machine) toe te laten hun locatie snel te communiceren met de administratie."
                 },
                 {
                     "label": "Categorievertalingen",
@@ -329,7 +329,7 @@
                 },
                 {
                     "label": "Externe ID",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Alleen zichtbaar met API-toegang (Corporate, of proef met API). Koppel de unit aan jullie externe beheersoftware (IWMS, CMMS, ERP, …). Externe systemen kunnen dan unit checks pushen via POST /api/v1/units/checks."
                 },
                 {
                     "label": "Checklist (unit check)",
@@ -349,7 +349,7 @@
                 },
                 {
                     "label": "QR-afdrukblad",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Download een Word-bestand met QR-stickers (Avery/HERMA) of full-page afdrukbladen (A6/A5/A4, 1 QR per blad) voor alle units op deze locatie. Je kunt ook vrije dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit. Deze kunnen eerst bevestigd worden op een unit en dan via dezelfde QR-code toegewezen worden aan een unit. Beheerders/medewerkers kunnen alle units koppelen aan deze dynamische QR-codes. Team werkers kunnen enkel units koppelen die aan hun Team verbonden zijn."
                 },
                 {
                     "label": "GPS",
@@ -359,7 +359,7 @@
                 },
                 {
                     "label": "Documenten & mededelingen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Beheer documenten en mededelingen voor het unit-QR-portaal. Documenten: zet «Actief» aan om het in het portaal te publiceren. Zonder «Alleen voor uitvoerders» kan elke bezoeker het document bekijken en downloaden. Met «Alleen voor uitvoerders» ziet en downloadt alleen een uitvoerder die zich in het portaal heeft aangemeld (naam + icoon) — niet via het beheerscherm met e-mail. Niet-actieve documenten blijven alleen hier zichtbaar. Actieve documenten worden automatisch vertaald door WinProx (periodiek; omschrijving); in het bewerkformulier ziet u een vertaal-preview per taal. De titel blijft in de brontaal."
                 }
             ]
         },
@@ -368,7 +368,7 @@
             "actions": [
                 {
                     "label": "Doel",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Overzicht van geplande taken, aangemaakte meldingen en unit-reserveringen in de tijd. Beheer ziet alles onversluierd — geen blur op dit scherm."
                 },
                 {
                     "label": "Weergave",
@@ -464,7 +464,7 @@
             "actions": [
                 {
                     "label": "Collega-gebruikers",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Beheer administratieve medewerkers die vooral op een pc werken. Zij melden zich aan met e-mail en wachtwoord, of via **Aanmelden met Microsoft** (het Microsoft-e-mailadres moet overeenkomen met het bestaande WinProx-account; er wordt geen nieuw account aangemaakt). Een beheerder is de hoofdgebruiker die bedrijfsgegevens kan wijzigen. Meerdere beheerders zijn mogelijk. Collega's (beheerder en medewerker) en uitvoerders delen het plaatslimiet van je abonnement. Uitvoerders gebruiken geen Microsoft-aanmelding (Clock Point-QR). Optioneel wijs je collega's vestigingen toe (leeg = alle vestigingen in de backoffice)."
                 },
                 {
                     "label": "Prikklok-team (collega's)",
@@ -493,11 +493,11 @@
                 },
                 {
                     "label": "Clock Point QR-code",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "De Clock Point-QR is de afdrukbare QR waarmee uitvoerders zich aanmelden (naam + icoon). Met Time (prikklok) klokken ze daar ook in of uit. Beheer en print onder <strong>Time → Clock Points</strong> als Time aan staat, anders Personen → Teams."
                 },
                 {
                     "label": "Uitvoerders",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Uitvoerders hebben geen e-mail-login; zij melden zich aan via de Clock Point-QR met naam en icoon. Optioneel vestigingen koppelen (leeg = overal). Grote lijsten beheer je onder **Personen → Uitvoerders**."
                 },
                 {
                     "label": "Vestigingen per uitvoerder",
@@ -550,11 +550,11 @@
                 },
                 {
                     "label": "Organisatiegegevens",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Onder Je organisatie staan drie delen: Organisatiegegevens (naam, e-mail, telefoon en adres — alleen de beheerder kan bewerken via 'Organisatiegegevens bewerken'), Organisatielogo (upload PNG/JPG, max. 2 MB) en E-mailmeldingen (persoonlijke voorkeur: e-mail bij elke nieuwe QR-melding). Als medewerker zie je gegevens en logo alleen ter informatie; e-mailmeldingen kun je wel zelf aan- of uitzetten. Het logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
                 },
                 {
                     "label": "Eigen portaal-stijl",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Twee delen: Portaal-achtergrond (optionele afbeelding voor het meldportaal na een QR-scan, PNG/JPG, max. 4 MB — niet hetzelfde als de sticker-achtergrond) en Portaal kleuren (achtergrond- en knopkleur). Klik Opslaan om kleuren toe te passen op het meldportaal. Het voorbeeldkaartje toont hoe melders het portaal zien na een scan. Dit geldt niet voor het beheerscherm."
                 },
                 {
                     "label": "QR-afdrukblad",
@@ -582,7 +582,7 @@
                 },
                 {
                     "label": "Werkmenu instellingen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Via Organisatie → Instellingen → Werkmenu instellingen kan de beheerder per organisatie bepalen welke onderdelen onder Werk zichtbaar zijn: Kalender, Reserveringen, Inspectierondes en Unitmetingen. Uitgeschakeld verdwijnt het item uit de sidebar en zijn de backoffice-routes niet bereikbaar. Bestaande reserverings- of meet-instellingen op units en categorieën blijven op het QR-portaal werken; nieuw inschakelen kan niet zolang het werkmenu-item uit staat. Unit checks worden niet beïnvloed door Inspectierondes uit."
                 },
                 {
                     "label": "WinProx-stijl",
@@ -590,7 +590,7 @@
                 },
                 {
                     "label": "Privacy & export van gegevens",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Alleen de beheerder kan een machineleesbaar overzicht (JSON) van het account en relevante activiteit binnen jullie omgeving downloaden. Deze rubriek staat alleen op Instellingen voor de beheerder. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig."
                 }
             ]
         },
@@ -603,7 +603,7 @@
                 },
                 {
                     "label": "Heb ik dit nodig?",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen.<br><br>Voor eenmalige inrichting: Wil je in één keer duizenden units of uitvoerders importeren? Gebruik dan de CSV/Excel-import op een locatie (units) of bij Teams (uitvoerders). Dat is vaak sneller en eenvoudiger voor een eerste migratie.<br><br>Voor continue automatisering: Deze API-pagina is bedoeld voor beheerders of IT-partners die een live koppeling willen bouwen om systemen automatisch met elkaar te laten praten (bijv. voor realtime ERP-koppelingen of eigen dashboards)."
                 },
                 {
                     "label": "API — wat is dat?",
@@ -635,7 +635,7 @@
                 },
                 {
                     "label": "Gebeurtenis: issue.approved",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Een beheerder heeft een melding (meestal via QR) goedgekeurd. Pas daarna is de inhoud ook publiek zichtbaar op de QR-pagina's."
                 },
                 {
                     "label": "Gebeurtenis: issue.status_changed",
@@ -655,7 +655,7 @@
                 },
                 {
                     "label": "Gebeurtenis: unit.gps_reported",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Een GPS-locatie is vastgelegd voor een unit via het portaal (burger, worker of beheerder bij QR-koppeling). Payload bevat coördinaten, optioneel location_name en country_code (GeoNames)."
                 },
                 {
                     "label": "Endpoint actief of inactief",
@@ -684,11 +684,11 @@
                 },
                 {
                     "label": "Plan kiezen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Selecteer een plan dat past bij het aantal units dat je beheert."
                 },
                 {
                     "label": "Organisatiegegevens verwijderen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Alleen beheerders. Download eerst een gegevensexport via Instellingen → Privacy & export van gegevens. Vink daarna op Abonnement de bevestiging aan en geef je wachtwoord. Alle beheerders krijgen een bevestigingsmail. Bij een proefperiode kun je daarna zelf definitief wissen (technische snapshot zonder media, 30 dagen bewaard). Bij een betaald abonnement volgt een wachttijd van 7 dagen met banner en herinneringsmail; WinProx-administratie voert de verwijdering uit. Annuleren kan tot die tijd via Abonnement. Eindigt de proef zonder abonnement, dan volgen waarschuwingsmails en kan de organisatie automatisch worden verwijderd (standaard rond dag 14)."
                 }
             ]
         },
@@ -732,7 +732,7 @@
                 },
                 {
                     "label": "Melding doen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Voornaam, naam en e-mail zijn optioneel — tenzij de beheerder contactgegevens verplicht heeft gemaakt; vul ze dan in. Als e-mailbevestiging aanstaat, ontvang je een link: de melding wordt pas aangemaakt nadat je die bevestigt. Er wordt vervolgens een taak aangemaakt voor het team. De melding moet eerst worden goedgekeurd voordat deze zichtbaar wordt op het portaal. Tegen spam gelden limieten: maximaal één melding per 3 minuten en maximaal vijf meldingen per 30 minuten voor deze unit (per apparaat)."
                 },
                 {
                     "label": "Reserveren",
@@ -760,7 +760,7 @@
                 },
                 {
                     "label": "Unitmetingen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Wanneer categorie én unit Unitmetingen toestaan en er meetvelden gekoppeld zijn, toont het portaal de tegel Meting. Vul de waarden in en verstuur — geen Clock Point vereist. Historiek in beheer onder Werk → Unitmetingen."
                 }
             ],
             "status_note": "Open taken op deze pagina volgen de onderstaande statussen.",
@@ -789,15 +789,15 @@
             "actions": [
                 {
                     "label": "Naam en icoon",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Nadat je de Clock Point QR hebt gescand, vul je je voor- en achternaam in en kies je een persoonlijk icoon. Onthoud dit icoon goed, want de volgende keer moet je dit opnieuw selecteren. Je krijgt twee pogingen om je aan te melden met het juiste icoon; daarna wordt je account geblokkeerd. Een teamleider of beheerder kan je account in dat geval weer vrijgeven."
                 },
                 {
                     "label": "Eerste keer",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Nieuw in het team? Vraag je teamleider of beheerder om een account voor je aan te maken. Daarna kun je jezelf aanmelden met je voor- en achternaam en je eigen icoon kiezen."
                 },
                 {
                     "label": "Afmelden",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Meld je af wanneer je klaar bent. Op door de beheerder ingestelde tijdstippen word je bovendien automatisch afgemeld."
                 },
                 {
                     "label": "Open taken",
@@ -841,7 +841,7 @@
                 },
                 {
                     "label": "Aanwijzen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "De beheerder wijst teamleaders toe in WinProx bij het team. Je ziet het badge «Teamleader» na aanmelden."
                 },
                 {
                     "label": "Clock Point QR",
@@ -908,7 +908,7 @@
             "actions": [
                 {
                     "label": "Inloggen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Scan de Clock Point QR-sticker en meld je aan met je voor- en achternaam en je persoonlijke icoon. Twee foute pogingen blokkeren je account tijdelijk — een teamleider of beheerder kan dat vrijgeven."
                 },
                 {
                     "label": "Open taken",
@@ -920,7 +920,7 @@
                 },
                 {
                     "label": "Afmelden",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Meld je af wanneer je klaar bent. Op door de beheerder ingestelde tijdstippen word je bovendien automatisch afgemeld."
                 }
             ]
         },
@@ -975,7 +975,7 @@
                 },
                 {
                     "label": "Kennisbank",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Beheer FAQ-artikelen en help-antwoorden voor alle tenants."
                 }
             ]
         },
@@ -984,7 +984,7 @@
             "actions": [
                 {
                     "label": "Wat is dit scherm?",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Hier beheert u adressen die <strong>geen WinProx-e-mails</strong> meer ontvangen — marketing, contact en systeemmails. Alleen superusers zien deze pagina."
                 },
                 {
                     "label": "Adres blokkeren",
@@ -1009,7 +1009,7 @@
             "actions": [
                 {
                     "label": "Wat is dit scherm?",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Het ESG-dashboard geeft een operationeel overzicht van uw meetprogramma: laatste waarden, drempelalarmen, trends en openstaande opvolgacties. Het is uw startpunt voor dagelijks ESG-beheer — detail en historiek vindt u onder <strong>Metingen</strong>."
                 },
                 {
                     "label": "KPI-kaarten bovenaan",
@@ -1204,7 +1204,7 @@
                 },
                 {
                     "label": "Corrigeren",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Bij een gesloten shift kan een beheerder in- en uitkloktijden of pauzeminuten aanpassen met een verplichte reden. Wijzigingen worden vastgelegd in het auditlog."
                 },
                 {
                     "label": "Shift sluiten",
@@ -1212,7 +1212,7 @@
                 },
                 {
                     "label": "Statussen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "<strong>Open</strong> — nog ingeklokt. <strong>Gesloten</strong> — normaal uitgeklokt. <strong>Gesloten (admin)</strong> — handmatig gesloten door beheerder. <strong>Gesloten (automatisch)</strong> — systeem sloot een vergeten shift na de drempel."
                 },
                 {
                     "label": "Taken koppelen",
@@ -1225,7 +1225,7 @@
             "actions": [
                 {
                     "label": "Wat is een clock point?",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Beheer inklokpunten en printbare QR-codes via Time → Clock Points. Er wordt automatisch een standaard clock point aangemaakt indien nodig."
                 },
                 {
                     "label": "QR",
@@ -1280,7 +1280,7 @@
             "actions": [
                 {
                     "label": "Wat is dit scherm?",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Hier beheert u <strong>gateways</strong>, <strong>sensoren</strong>, <strong>alarmregels</strong> en bekijkt u recente <strong>events</strong>. WinProx ontvangt sensordata; de fysieke sensoren en protocollen blijven bij uw gateway/leverancier."
                 },
                 {
                     "label": "WinProx Corporate",
@@ -1374,7 +1374,7 @@
                 },
                 {
                     "label": "Unitmetingen",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Wanneer unitmetingen aangevinkt zijn (unit én categorie) en meetvelden gekoppeld, kunnen waarden via de unit-QR worden doorgegeven. Meetvelden beheer je onder Werk → Unitmetingen."
                 }
             ]
         },
@@ -1383,7 +1383,7 @@
             "actions": [
                 {
                     "label": "Overzicht",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Onder Werk → Unitmetingen beheer je meetvelden (uitvouwbaar bovenaan) en zoek je metingen via filters. Resultaten tonen tijdstip, veld, waarde, locatie/unit, bron en eventueel de uitvoerder."
                 },
                 {
                     "label": "Meetvelden",
@@ -1403,7 +1403,7 @@
                 },
                 {
                     "label": "API & webhooks",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten.",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (ability units:update). Elke nieuwe meting triggert webhook unit.measurement.recorded. Beheer onder Instellingen → API.",
                     "requires_api": true
                 }
             ]
@@ -1413,7 +1413,7 @@
             "actions": [
                 {
                     "label": "Overzicht",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Onder Werk → Unitmetingen beheer je meetvelden (uitvouwbaar bovenaan) en zoek je metingen via filters. Resultaten tonen tijdstip, veld, waarde, locatie/unit, bron en eventueel de uitvoerder."
                 },
                 {
                     "label": "Meetvelden",
@@ -1433,7 +1433,7 @@
                 },
                 {
                     "label": "API & webhooks",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten.",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (ability units:update). Elke nieuwe meting triggert webhook unit.measurement.recorded. Beheer onder Instellingen → API.",
                     "requires_api": true
                 }
             ]
@@ -1443,7 +1443,7 @@
             "actions": [
                 {
                     "label": "Overzicht",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Onder Werk → Unitmetingen beheer je meetvelden (uitvouwbaar bovenaan) en zoek je metingen via filters. Resultaten tonen tijdstip, veld, waarde, locatie/unit, bron en eventueel de uitvoerder."
                 },
                 {
                     "label": "Meetvelden",
@@ -1467,7 +1467,7 @@
                 },
                 {
                     "label": "API & webhooks",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten.",
+                    "text": "Corporate: POST /api/v1/units/{unit}/measurements (ability units:update). Elke nieuwe meting triggert webhook unit.measurement.recorded. Beheer onder Instellingen → API.",
                     "requires_api": true
                 }
             ]
