@@ -643,6 +643,44 @@ stuurt events; WinProx zet die om in workflow.
 
 ---
 
+## 5g. Time (prikklok) & RSZ-aanwezigheid (CIAO)
+
+**Status specificatie:** vastgelegd in `WINPROX_RULES.md` §4.5. **Implementatie:** backlog —
+eerst golf 1 (schoonmaak); golf 2 (bouw) na officiële RSZ-specs (~1 apr 2027).
+
+**Doel:** optionele compliance-laag op **Time**: realtime IN/OUT (+ pauzes) doorsturen naar
+RSZ **Check In and Out at Work** (`presenceRegistration`), via dezelfde Clock Point-QR-flow.
+Facility-kern (melding → taken) blijft; dit is **geen** aparte schoonmaak-/bouw-app en **geen**
+productsector op `Tenant`.
+
+### 5g.1 Bestaande Time-basis (behouden)
+- Module `has_time_module`; Clock Point QR; `WorkShift` / `WorkBreak`; aanwezigheid, urenstaat,
+  export; events `time.shift.started` / `time.shift.ended`.
+- Worker zonder login (naam + icoon); één open shift; hops tussen Clock Points.
+
+### 5g.2 Golf 1 — CIAO schoonmaak (`CiaoCleaning`)
+- Voor organisaties die schoonmaak/onderhoud **onroerend voor derden** doen onder Aangifte van
+  werken / 30bis-drempels (wettelijke scope; copy in product_docs, niet als `tenant.sector`).
+- Vereiste data: tenant **BCE** (of foreign VAT); worker **NISS/SSIN**; per werkplaats
+  **DDT-ref** (`contractual_relationship_reference`) + placeOfWork (adres of coords) op
+  Location en/of Clock Point.
+- Events: clock in → IN; break start → OUT; break end → IN; clock out → OUT; realtime queue;
+  submission-log + validity/remarks raadplegen.
+- UI: Instellingen (credentials + aan/uit), Time (status/fouten), Personen/Locaties (NISS, DDT).
+- **Niet in golf 1:** Checkinatwork (CAW)-API, Construbadge-hardware, Dimona/payroll, vlees-CAW.
+
+### 5g.3 Golf 2 — CIAO bouw (`CiaoConstruction`)
+- Zelfde pijplijn/client; nieuwe scope + mapper/validatie wanneer RSZ bouw/beton IN+OUT op
+  CIAO live zet (streefdatum 1 apr 2027, drempel o.a. ≥ €500k excl. btw). Feature-flag tot specs.
+- Geen belofte “automatic update zonder release”; wel hergebruik van Actions/client uit golf 1.
+
+### 5g.4 Architectuur / billing
+- Actions + jobs alleen; zie §4.5 regels. Webhook-events voor presence-submissions waar zinvol.
+- Billing: hangt aan **Time** (en/of Corporate) — geen los “CIAO-only”-plan zonder Time tenzij
+  later expliciet beslist. Product_docs + FAQ bij implementatie (alle locales).
+
+---
+
 ## 6. Personen (Backoffice + Teams)
 
 **Doel:** drie pagina’s onder **Personen**. **Backoffice** = collega-gebruikers (login).

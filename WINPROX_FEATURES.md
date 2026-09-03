@@ -23,6 +23,9 @@ het product doet; voor scherm-voor-scherm bouwspecificatie en backlog, zie **`do
 ## Product (hard)
 
 - **Eén Facility-app:** melding → taken → afhandeling. Geen hospitality, contractors, owners, demo-sector.
+- **Time (optioneel):** prikklok via Clock Point. Geplande uitbreiding: **RSZ CIAO-aanwezigheid**
+  (schoonmaak eerst, bouw later) als compliance-laag op Time — zie `WINPROX_RULES.md` §4.5 en
+  `docs/FEATURES.md` §5g. Geen aparte productsector.
 - **Blur** alleen op **publieke QR-portalen** (niet-goedgekeurde meldingen). Beheer toont alles onverkort.
 - **Talen:** `nl`, `en`, `fr`, `de`, `es`, `it` (`config/locales.php`, pariteit via `npm run check:locales:parity`).
 - **Thema:** minimale `standard`-stijl (emerald accent, wit/lichtgrijs, `wp-*`-tokens).

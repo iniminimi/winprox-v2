@@ -141,7 +141,9 @@ het enige accent. Geen regenboogaccenten.
 ## 4. Datamodel & statussen
 
 ### 4.1 Entiteiten (kern)
-- **Tenant** — organisatie (root van multi-tenancy). Geen sector meer.
+- **Tenant** — organisatie (root van multi-tenancy). **Geen productsector** (geen hospitality /
+  real-estate-fork, geen `tenant.sector`). Wettelijke **aanwezigheidsregimes** (CIAO schoonmaak /
+  later bouw) zijn **config op Time**, geen aparte apps — zie §4.5.
 - **User** — beheerder/staff met login.
 - **Location** — locatie/site (was "Property"; we werken **niet** meer met eigendommen).
 - **Unit** — asset/ruimte/machine binnen een Location, met QR-token.
@@ -151,6 +153,61 @@ het enige accent. Geen regenboogaccenten.
 - **Task** — een **taak** op een melding, toegewezen aan **één team**. Een melding heeft er ≥1.
 - **IssueUpdate** — tijdlijn/notities op een melding.
 - **Document** / **Announcement** — per Unit/Location (bv. handleiding van een machine, mededeling "groot onderhoud").
+
+### 4.5 Aanwezigheidscompliance RSZ (CIAO) — Time-uitbreiding
+Optionele laag **boven Time** (niet boven Facility-kern). Doel: realtime aanwezigheid doorsturen
+naar de Belgische RSZ-dienst **Check In and Out at Work** (`presenceRegistration`), zonder een
+tweede product of V1-sectorfork.
+
+**Productkader (hard)**
+- Facility blijft: melding → taken → afhandeling. CIAO = **Time-compliance-add-on**.
+- **Geen** aparte schoonmaak-/bouw-app, **geen** contractor-/owner-portalen, **geen** Dimona/
+  payroll-suite in deze laag.
+- **Geen** Checkinatwork (CAW)-webservice in golf 1 — dat is een ander RSZ-kanaal (bouw tot
+  vóór de CIAO-uitbreiding). Golf 2 =zelfde CIAO-pijplijn + nieuwe **scope**, niet CAW nabootsen
+  “voor het geval dat”.
+
+**Golven**
+1. **Golf 1 (nu):** scope `CiaoCleaning` — schoonmaak/onderhoud onroerend voor derden (30bis /
+   Aangifte van werken), IN + OUT + pauzes, realtime, worker zelf via Clock Point.
+2. **Golf 2 (vanaf RSZ-live, streefdatum 1 apr 2027):** scope `CiaoConstruction` — werken in
+   onroerende staat + stortklaar beton (drempel o.a. ≥ €500k excl. btw volgens RSZ). Zelfde
+   client/pijplijn; mapper/validatie/copy aanpassen aan officiële specs. Feature-flag tot specs
+   bekend zijn. Geen belofte “automatisch 100 % compliant zonder release”.
+
+**Architectuur (herbruikbaar — Integration First)**
+```
+ClockIn / ClockOut / StartBreak / EndBreak
+  → MapPresenceEventsAction (scope-aware IN/OUT)
+  → SubmitPresenceBatchAction → RszPresenceRegistrationClient
+  → PresenceSubmission (log: rsz id, validity, remarks)
+```
+- Business logic alleen in **Actions** + queued jobs; Livewire dun.
+- **Eén** RSZ-client (`presenceRegistration` sim/prod); scope = enum/config, geen
+  `CleaningClient` vs `BuildingClient` tenzij RSZ een tweede contract publiceert.
+- Clock-/break-Actions blijven **sector-agnostisch**; enqueue alleen als tenant compliance aan heeft.
+
+**Datamodel-schets (nog te migreren bij implementatie — geen magic strings: enums)**
+
+| Entiteit | Velden (richting) | Opmerking |
+|----------|-------------------|-----------|
+| `Tenant` | `enterprise_number` *of* `foreign_vat_number`; compliance credentials (secure); `presence_compliance_enabled`; actieve `PresenceComplianceScope` | BCE/VAT; OAuth/certificaat buiten gewone fillable waar nodig |
+| `Worker` | `ssin` (11 cijfers, encrypted at rest) | NISS/INSZ; least-privilege UI; GDPR/DPA |
+| `Location` en/of `ClockPoint` | `contractual_relationship_reference` (DDT, 13 chars); placeOfWork via bestaand adres **of** coords | Één bron per prikpunt; geen duplicatie zonder reden |
+| `presence_submissions` (nieuw) | tenant, worker, shift/break-ref, type IN/OUT, payload-meta, rsz_id, validity, remarks JSON, submitted_at | Audit + herprobeer; geen business logic in model |
+
+**Mapping (golf 1 — schoonmaak, bekend):** clock in → IN; break start → OUT; break end → IN;
+clock out → OUT. Golf 2: zelfde events, verplichtingen bevestigen tegen RSZ-bouwspecs.
+
+**UI:** settings (BCE + credentials + aan/uit), Location/Clock Point (DDT + werkplaats), Worker
+(NISS), Time (submission-status/remarks). Geen nieuwe sidebar-producten buiten Time/Instellingen.
+
+**Verboden in deze laag:** Protime-achtige planning/payroll; CAW-only flows in golf 1;
+`tenant.sector`; losse “Schoonmaak”-welkompagina als productvariant (campagne-landings blijven
+marketing, geen tenant-fork).
+
+**Docs bij implementatie:** `docs/FEATURES.md`, `lang/*/product_docs.json` (features + technical +
+API indien events), DPA/subverwerkers indien NISS/RSZ-doorgifte, `PRODUCT_DOCS_LAST_UPDATED`.
 
 ### 4.2 Statussen (exact vier)
 Statussen leven op de **Task**:
@@ -338,6 +395,8 @@ proactief tenzij de taak dat expliciet vraagt.
 
 **Onthoud:**
 - **Nu:** Facility-pariteit (`docs/FEATURES.md` + `WINPROX_FEATURES.md`).
+- **Time + CIAO (aanwezigheid RSZ):** zie §4.5 — golf 1 schoonmaak mag als expliciete taak;
+  golf 2 bouw pas na RSZ-specs (zelfde pijplijn). Geen parallelle CAW-rebuild “voor 2027”.
 - **Handleiding-screenshots:** runbook `docs/MANUAL_SCREENSHOTS.md` — golden path =
   `.\scripts\capture-manual-local.ps1` (lokaal Windows), PNG's committen; server-capture op Plesk
   shared meestal niet haalbaar.

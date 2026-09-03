@@ -11,6 +11,9 @@ Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bi
 
 ## Product (hard)
 - Eén **Facility**-app: melding → taken → afhandeling. Geen hospitality, contractors, owners, demo.
+- **Geen productsector** op tenant. Wettelijke aanwezigheidsregimes (CIAO) = optionele **Time**-laag
+  (`WINPROX_RULES.md` §4.5 / `docs/FEATURES.md` §5g): golf 1 schoonmaak, golf 2 bouw na RSZ-specs.
+  Geen CAW-rebuild parallel; geen Dimona/payroll in die laag. Alleen bouwen als de taak het vraagt.
 - **Blur:** moderatie-blur (`.wp-pending-review`) alleen op publieke QR-portalen. Beheer nooit
   moderatie-blur. Thema **Modern** mag decoratieve glass-`backdrop-filter` op beheer.
 - **Productfiches** (`lang/*/product_docs.json`): bij feature/security-wijzigingen mee updaten

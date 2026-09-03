@@ -8,6 +8,9 @@ Inspecties en checklists
 ESG-dashboard met manuele registraties
 Basisrapportering = **list-export** op zoekschermen (CSV + print/PDF via Ctrl+P),
 zelfde filters als de lijst; max. rijen; geen BI-builder. Zie `docs/FEATURES.md` §Rapporten.
+**Belgische aanwezigheid (CIAO):** optioneel op Time — golf 1 schoonmaak (RSZ
+`presenceRegistration`), golf 2 bouw na RSZ-specs (~2027). Geen productsector; zie
+`WINPROX_RULES.md` §4.5. Bouwen alleen als expliciete taak (niet “stiekem” naast ESG).
 
 ➡️ Snel te ontwikkelen en direct bruikbaar voor audits.
 
