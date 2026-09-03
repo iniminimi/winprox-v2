@@ -8,7 +8,8 @@
         "presence": "Presence",
         "alarms": "Alarms",
         "shifts": "Hours",
-        "clock_points": "Clock Points"
+        "clock_points": "Clock Points",
+        "ciao": "CIAO"
     },
     "presence": {
         "title": "Presence",
@@ -243,5 +244,50 @@
             "icon_not_configured": "Your account is not fully set up yet. Please contact the administrator."
         },
         "transferred": "Presence moved to this location (same shift)."
+    },
+    "ciao": {
+        "title": "CIAO submissions",
+        "subtitle": "Status of presence registrations sent to the NSSO (Check In and Out).",
+        "compliance_off": "CIAO is not enabled. Turn it on under Organisation → Settings.",
+        "search_label": "Search worker",
+        "search_placeholder": "Name…",
+        "status_label": "Status",
+        "status_all": "All",
+        "empty": "No CIAO submissions yet.",
+        "retry": "Retry",
+        "retried": "Submission queued again.",
+        "status": {
+            "pending": "Queued",
+            "submitted": "Submitted",
+            "failed": "Failed",
+            "skipped": "Skipped"
+        },
+        "event": {
+            "clock_in": "Clock in",
+            "clock_out": "Clock out",
+            "break_start": "Break start",
+            "break_end": "Break end"
+        },
+        "col": {
+            "when": "When",
+            "worker": "Worker",
+            "event": "Event",
+            "type": "IN/OUT",
+            "status": "Status",
+            "detail": "Detail"
+        },
+        "errors": {
+            "ssin_missing_or_invalid": "NISS is missing or invalid.",
+            "employer_number_missing": "Enterprise number or foreign VAT is missing.",
+            "enterprise_number_invalid": "Enterprise number is invalid.",
+            "ddt_missing_or_invalid": "DDT reference is missing or invalid.",
+            "place_of_work_missing": "Place of work (address or coordinates) is missing.",
+            "rsz_submit_too_late": "Too late for real-time NSSO submission.",
+            "rsz_not_created": "NSSO did not create the registration.",
+            "time_module_disabled": "Time module is disabled.",
+            "presence_compliance_disabled": "CIAO is disabled.",
+            "presence_submission_not_retryable": "This submission cannot be retried.",
+            "retry_failed": "Retry failed."
+        }
     }
 }

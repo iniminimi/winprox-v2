@@ -1496,6 +1496,23 @@
                     "text": "Ausführende hinzufügen, ändern oder deaktivieren unter Personen → Teams. Diese Seite dient zum schnellen Suchen und Filtern."
                 }
             ]
+        },
+        "time.ciao": {
+            "title": "Hilfe — CIAO",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Zeigt Clock-Point-Ereignisse an die RSZ (Check In and Out at Work): Status, Fehler und RSZ-ID."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Filter nach Status (Warteschlange, gesendet, fehlgeschlagen, übersprungen) oder suche nach Ausführer."
+                },
+                {
+                    "label": "Erneut",
+                    "text": "Bei <strong>Fehlgeschlagen</strong> oder <strong>Übersprungen</strong> erneut einreihen, nachdem NISS, DDT oder Zugangsdaten korrigiert wurden."
+                }
+            ]
         }
     }
 }

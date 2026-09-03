@@ -1496,6 +1496,23 @@
                     "text": "Add, edit or deactivate workers via People → Teams. This screen is for quick search and filtering."
                 }
             ]
+        },
+        "time.ciao": {
+            "title": "Help — CIAO",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "Shows Clock Point events sent to the NSSO (Check In and Out at Work): status, errors and NSSO id."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Filter by status (queued, submitted, failed, skipped) or search by worker name."
+                },
+                {
+                    "label": "Retry",
+                    "text": "For <strong>Failed</strong> or <strong>Skipped</strong>, queue the submission again after fixing NISS, DDT or credentials."
+                }
+            ]
         }
     }
 }

@@ -1496,6 +1496,23 @@
                     "text": "Aggiungi, modifica o disattiva esecutori in Persone → Team. Questa schermata serve per cercare e filtrare rapidamente."
                 }
             ]
+        },
+        "time.ciao": {
+            "title": "Aiuto — CIAO",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "Mostra gli invii Clock Point all’ONSS (Check In and Out at Work): stato, errori e id ONSS."
+                },
+                {
+                    "label": "Filtri",
+                    "text": "Filtra per stato (coda, inviato, non riuscito, saltato) o cerca per nome esecutore."
+                },
+                {
+                    "label": "Riprova",
+                    "text": "Per <strong>Non riuscito</strong> o <strong>Saltato</strong>, rimetti in coda dopo aver corretto NISS, DDT o credenziali."
+                }
+            ]
         }
     }
 }

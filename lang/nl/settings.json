@@ -224,6 +224,7 @@
         "save": "CIAO-instellingen opslaan",
         "saved": "CIAO-instellingen opgeslagen.",
         "recent": "Recente inzendingen",
-        "scope_construction": "Bouw / beton (CIAO)"
+        "scope_construction": "Bouw / beton (CIAO)",
+        "view_all": "Alle CIAO-inzendingen"
     }
 }

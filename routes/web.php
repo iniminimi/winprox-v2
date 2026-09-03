@@ -105,6 +105,7 @@ use App\Livewire\Tasks\Show as TaskShow;
 use App\Livewire\Time\AlarmsIndex;
 use App\Livewire\Time\ClockPointsIndex;
 use App\Livewire\Time\PresenceIndex;
+use App\Livewire\Time\PresenceSubmissionsIndex;
 use App\Livewire\Time\ShiftsIndex;
 use App\Support\Platform\SupportTenantContext;
 use App\Support\ResolveAppLocale;
@@ -383,6 +384,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/time/presence', PresenceIndex::class)->name('time.presence.index');
         Route::get('/time/alarms', AlarmsIndex::class)->name('time.alarms.index');
         Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');
+        Route::get('/time/ciao', PresenceSubmissionsIndex::class)->name('time.ciao.index');
         Route::get('/time/shifts/export', WorkShiftExportController::class)->name('time.shifts.export');
         Route::get('/time/shifts/print', WorkShiftTimesheetPrintController::class)->name('time.shifts.print');
         Route::get('/time/clock-points', ClockPointsIndex::class)->name('time.clock-points.index');

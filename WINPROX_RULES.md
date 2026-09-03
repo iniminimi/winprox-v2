@@ -201,7 +201,8 @@ ClockIn / ClockOut / StartBreak / EndBreak
 clock out → OUT. Golf 2: zelfde events, verplichtingen bevestigen tegen RSZ-bouwspecs.
 
 **UI:** settings (BCE + credentials + aan/uit), Location/Clock Point (DDT + werkplaats), Worker
-(NISS), Time (submission-status/remarks). Geen nieuwe sidebar-producten buiten Time/Instellingen.
+(NISS), Time → CIAO (submission-status/remarks + opnieuw). Geen nieuwe sidebar-producten buiten
+Time/Instellingen.
 
 **Verboden in deze laag:** Protime-achtige planning/payroll; CAW-webservice (ook niet in golf 2);
 `tenant.sector`; losse “Schoonmaak”-welkompagina als productvariant (campagne-landings blijven

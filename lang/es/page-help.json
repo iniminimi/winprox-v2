@@ -1496,6 +1496,23 @@
                     "text": "Añadir, editar o desactivar ejecutores en Personas → Equipos. Esta pantalla sirve para buscar y filtrar rápidamente."
                 }
             ]
+        },
+        "time.ciao": {
+            "title": "Ayuda — CIAO",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Muestra los envíos de Clock Point a la ONSS (Check In and Out at Work): estado, errores e id ONSS."
+                },
+                {
+                    "label": "Filtros",
+                    "text": "Filtra por estado (cola, enviado, fallido, omitido) o busca por nombre del ejecutor."
+                },
+                {
+                    "label": "Reintentar",
+                    "text": "En <strong>Fallido</strong> u <strong>Omitido</strong>, vuelve a poner el envío en cola tras corregir NISS, DDT o credenciales."
+                }
+            ]
         }
     }
 }

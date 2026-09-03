@@ -224,6 +224,7 @@
         "save": "CIAO-Einstellungen speichern",
         "saved": "CIAO-Einstellungen gespeichert.",
         "recent": "Letzte Übermittlungen",
-        "scope_construction": "Bau / Beton (CIAO)"
+        "scope_construction": "Bau / Beton (CIAO)",
+        "view_all": "Alle CIAO-Meldungen"
     }
 }

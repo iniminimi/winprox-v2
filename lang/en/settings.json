@@ -224,6 +224,7 @@
         "save": "Save CIAO settings",
         "saved": "CIAO settings saved.",
         "recent": "Recent submissions",
-        "scope_construction": "Construction / concrete (CIAO)"
+        "scope_construction": "Construction / concrete (CIAO)",
+        "view_all": "All CIAO submissions"
     }
 }

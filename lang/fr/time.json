@@ -8,7 +8,8 @@
         "presence": "Présence",
         "alarms": "Alarmes",
         "shifts": "Heures",
-        "clock_points": "Clock Points"
+        "clock_points": "Clock Points",
+        "ciao": "CIAO"
     },
     "presence": {
         "title": "Présence",
@@ -243,5 +244,50 @@
             "icon_not_configured": "Votre compte n'est pas encore entièrement configuré. Contactez l'administrateur."
         },
         "transferred": "Présence déplacée vers ce site (même vacation)."
+    },
+    "ciao": {
+        "title": "Envois CIAO",
+        "subtitle": "Statut des présences envoyées à l’ONSS (Check In and Out).",
+        "compliance_off": "CIAO n’est pas activé. Activez-le sous Organisation → Paramètres.",
+        "search_label": "Rechercher un exécutant",
+        "search_placeholder": "Nom…",
+        "status_label": "Statut",
+        "status_all": "Tous",
+        "empty": "Aucun envoi CIAO pour le moment.",
+        "retry": "Réessayer",
+        "retried": "Envoi remis en file d’attente.",
+        "status": {
+            "pending": "En file",
+            "submitted": "Envoyé",
+            "failed": "Échoué",
+            "skipped": "Ignoré"
+        },
+        "event": {
+            "clock_in": "Pointage entrée",
+            "clock_out": "Pointage sortie",
+            "break_start": "Début pause",
+            "break_end": "Fin pause"
+        },
+        "col": {
+            "when": "Quand",
+            "worker": "Exécutant",
+            "event": "Événement",
+            "type": "IN/OUT",
+            "status": "Statut",
+            "detail": "Détail"
+        },
+        "errors": {
+            "ssin_missing_or_invalid": "NISS manquant ou invalide.",
+            "employer_number_missing": "Numéro d’entreprise ou TVA étrangère manquant.",
+            "enterprise_number_invalid": "Numéro d’entreprise invalide.",
+            "ddt_missing_or_invalid": "Référence DDT manquante ou invalide.",
+            "place_of_work_missing": "Lieu de travail (adresse ou coordonnées) manquant.",
+            "rsz_submit_too_late": "Trop tard pour un envoi temps réel à l’ONSS.",
+            "rsz_not_created": "L’ONSS n’a pas créé l’enregistrement.",
+            "time_module_disabled": "Le module Time est désactivé.",
+            "presence_compliance_disabled": "CIAO est désactivé.",
+            "presence_submission_not_retryable": "Cet envoi ne peut pas être réessayé.",
+            "retry_failed": "Nouvel essai échoué."
+        }
     }
 }

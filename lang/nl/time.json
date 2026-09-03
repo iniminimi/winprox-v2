@@ -8,7 +8,8 @@
         "presence": "Aanwezigheid",
         "alarms": "Alarmen",
         "shifts": "Uren",
-        "clock_points": "Clock Points"
+        "clock_points": "Clock Points",
+        "ciao": "CIAO"
     },
     "presence": {
         "title": "Aanwezigheid",
@@ -243,5 +244,50 @@
             "icon_not_configured": "Je account is nog niet volledig ingesteld. Neem contact op met de beheerder."
         },
         "transferred": "Aanwezigheid verplaatst naar deze vestiging (zelfde dienst)."
+    },
+    "ciao": {
+        "title": "CIAO-inzendingen",
+        "subtitle": "Status van aanwezigheidsregistraties naar de RSZ (Check In and Out).",
+        "compliance_off": "CIAO is niet ingeschakeld. Zet dit aan onder Organisatie → Instellingen.",
+        "search_label": "Zoek uitvoerder",
+        "search_placeholder": "Naam…",
+        "status_label": "Status",
+        "status_all": "Alle",
+        "empty": "Nog geen CIAO-inzendingen.",
+        "retry": "Opnieuw",
+        "retried": "Inzending opnieuw in de wachtrij gezet.",
+        "status": {
+            "pending": "In wachtrij",
+            "submitted": "Verstuurd",
+            "failed": "Mislukt",
+            "skipped": "Overgeslagen"
+        },
+        "event": {
+            "clock_in": "Inklokken",
+            "clock_out": "Uitklokken",
+            "break_start": "Pauze start",
+            "break_end": "Pauze einde"
+        },
+        "col": {
+            "when": "Tijdstip",
+            "worker": "Uitvoerder",
+            "event": "Gebeurtenis",
+            "type": "IN/OUT",
+            "status": "Status",
+            "detail": "Detail"
+        },
+        "errors": {
+            "ssin_missing_or_invalid": "NISS ontbreekt of is ongeldig.",
+            "employer_number_missing": "Ondernemingsnummer of buitenlands btw-nummer ontbreekt.",
+            "enterprise_number_invalid": "Ondernemingsnummer is ongeldig.",
+            "ddt_missing_or_invalid": "DDT-referentie ontbreekt of is ongeldig.",
+            "place_of_work_missing": "Werkplaats (adres of coördinaten) ontbreekt.",
+            "rsz_submit_too_late": "Te laat voor realtime-indiening bij de RSZ.",
+            "rsz_not_created": "RSZ heeft de registratie niet aangemaakt.",
+            "time_module_disabled": "Time-module is uitgeschakeld.",
+            "presence_compliance_disabled": "CIAO is uitgeschakeld.",
+            "presence_submission_not_retryable": "Deze inzending kan niet opnieuw worden verstuurd.",
+            "retry_failed": "Opnieuw versturen mislukt."
+        }
     }
 }

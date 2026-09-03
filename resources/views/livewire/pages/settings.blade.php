@@ -229,6 +229,7 @@
                             </li>
                         @endforeach
                     </ul>
+                    <a href="{{ route('time.ciao.index') }}" class="btn btn--sm btn--surface">{{ __('settings.presence.view_all') }}</a>
                 </div>
             @endif
         </x-wp-settings-section>

@@ -1504,6 +1504,23 @@
                     "text": "Ajouter, modifier ou désactiver via Personnes → Équipes. Cet écran sert à rechercher et filtrer rapidement."
                 }
             ]
+        },
+        "time.ciao": {
+            "title": "Aide — CIAO",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Affiche les envois Clock Point vers l’ONSS (Check In and Out at Work) : statut, erreurs et id ONSS."
+                },
+                {
+                    "label": "Filtres",
+                    "text": "Filtrez par statut (file, envoyé, échoué, ignoré) ou cherchez un exécutant."
+                },
+                {
+                    "label": "Réessayer",
+                    "text": "Pour <strong>Échoué</strong> ou <strong>Ignoré</strong>, remettez l’envoi en file après correction du NISS, DDT ou des identifiants."
+                }
+            ]
         }
     }
 }

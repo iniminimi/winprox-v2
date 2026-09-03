@@ -224,6 +224,7 @@
         "save": "Enregistrer les réglages CIAO",
         "saved": "Réglages CIAO enregistrés.",
         "recent": "Envois récents",
-        "scope_construction": "Construction / béton (CIAO)"
+        "scope_construction": "Construction / béton (CIAO)",
+        "view_all": "Tous les envois CIAO"
     }
 }

@@ -8,7 +8,8 @@
         "presence": "Anwesenheit",
         "alarms": "Alarme",
         "shifts": "Stunden",
-        "clock_points": "Clock Points"
+        "clock_points": "Clock Points",
+        "ciao": "CIAO"
     },
     "presence": {
         "title": "Anwesenheit",
@@ -243,5 +244,50 @@
             "icon_not_configured": "Ihr Konto ist noch nicht vollständig eingerichtet. Bitte wenden Sie sich an den Administrator."
         },
         "transferred": "Anwesenheit an diesen Standort verschoben (gleiche Schicht)."
+    },
+    "ciao": {
+        "title": "CIAO-Meldungen",
+        "subtitle": "Status der Anwesenheitsmeldungen an die RSZ (Check In and Out).",
+        "compliance_off": "CIAO ist nicht aktiv. Aktivieren unter Organisation → Einstellungen.",
+        "search_label": "Ausführer suchen",
+        "search_placeholder": "Name…",
+        "status_label": "Status",
+        "status_all": "Alle",
+        "empty": "Noch keine CIAO-Meldungen.",
+        "retry": "Erneut",
+        "retried": "Meldung erneut in die Warteschlange gestellt.",
+        "status": {
+            "pending": "Warteschlange",
+            "submitted": "Gesendet",
+            "failed": "Fehlgeschlagen",
+            "skipped": "Übersprungen"
+        },
+        "event": {
+            "clock_in": "Einstempeln",
+            "clock_out": "Ausstempeln",
+            "break_start": "Pause Start",
+            "break_end": "Pause Ende"
+        },
+        "col": {
+            "when": "Zeitpunkt",
+            "worker": "Ausführer",
+            "event": "Ereignis",
+            "type": "IN/OUT",
+            "status": "Status",
+            "detail": "Detail"
+        },
+        "errors": {
+            "ssin_missing_or_invalid": "NISS fehlt oder ist ungültig.",
+            "employer_number_missing": "Unternehmensnummer oder ausländische MwSt. fehlt.",
+            "enterprise_number_invalid": "Unternehmensnummer ist ungültig.",
+            "ddt_missing_or_invalid": "DDT-Referenz fehlt oder ist ungültig.",
+            "place_of_work_missing": "Arbeitsort (Adresse oder Koordinaten) fehlt.",
+            "rsz_submit_too_late": "Zu spät für Echtzeit-Einreichung bei der RSZ.",
+            "rsz_not_created": "RSZ hat die Registrierung nicht erstellt.",
+            "time_module_disabled": "Time-Modul ist deaktiviert.",
+            "presence_compliance_disabled": "CIAO ist deaktiviert.",
+            "presence_submission_not_retryable": "Diese Meldung kann nicht erneut gesendet werden.",
+            "retry_failed": "Erneutes Senden fehlgeschlagen."
+        }
     }
 }

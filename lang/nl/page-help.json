@@ -1496,6 +1496,23 @@
                     "text": "Voeg uitvoerders toe, wijzig of deactiveer via Personen → Teams. Dit scherm is bedoeld om snel te zoeken en te filteren."
                 }
             ]
+        },
+        "time.ciao": {
+            "title": "Hulp — CIAO",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Toont de inzendingen van Clock Point-gebeurtenissen naar de RSZ (Check In and Out at Work): status, fouten en RSZ-id."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Filter op status (wachtrij, verstuurd, mislukt, overgeslagen) of zoek op uitvoerdersnaam."
+                },
+                {
+                    "label": "Opnieuw",
+                    "text": "Bij <strong>Mislukt</strong> of <strong>Overgeslagen</strong> kun je de inzending opnieuw in de wachtrij zetten na het corrigeren van NISS, DDT of credentials."
+                }
+            ]
         }
     }
 }

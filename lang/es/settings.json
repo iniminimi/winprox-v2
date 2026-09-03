@@ -224,6 +224,7 @@
         "save": "Guardar ajustes CIAO",
         "saved": "Ajustes CIAO guardados.",
         "recent": "Envíos recientes",
-        "scope_construction": "Construcción / hormigón (CIAO)"
+        "scope_construction": "Construcción / hormigón (CIAO)",
+        "view_all": "Todos los envíos CIAO"
     }
 }
