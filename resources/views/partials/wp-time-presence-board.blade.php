@@ -70,7 +70,7 @@
 @else
     <div class="wp-time-presence-board">
         @if ($showPresentColumn)
-            <section class="wp-time-presence-board__column" aria-labelledby="presence-board-present-heading">
+            <section class="wp-card wp-card-pad wp-time-presence-board__column" aria-labelledby="presence-board-present-heading">
                 <header class="wp-time-presence-board__head">
                     <div>
                         <h2 id="presence-board-present-heading" class="wp-time-presence-board__title">{{ __('time.presence.present') }}</h2>
@@ -102,7 +102,7 @@
         @endif
 
         @if ($showAbsentColumn)
-            <section class="wp-time-presence-board__column" aria-labelledby="presence-board-absent-heading">
+            <section class="wp-card wp-card-pad wp-time-presence-board__column" aria-labelledby="presence-board-absent-heading">
                 <header class="wp-time-presence-board__head">
                     <div>
                         <h2 id="presence-board-absent-heading" class="wp-time-presence-board__title">
@@ -137,7 +137,7 @@
         @endif
 
         @if ($statusFilter === TimePresenceStatusFilter::Attention)
-            <section class="wp-time-presence-board__column" aria-labelledby="presence-board-attention-heading">
+            <section class="wp-card wp-card-pad wp-time-presence-board__column" aria-labelledby="presence-board-attention-heading">
                 <header class="wp-time-presence-board__head">
                     <div>
                         <h2 id="presence-board-attention-heading" class="wp-time-presence-board__title">{{ __('time.presence.attention_title') }}</h2>

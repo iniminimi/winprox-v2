@@ -5149,7 +5149,6 @@ a.wp-kpi.wp-kpi--attention {
     flex-direction: column;
     gap: 0.75rem;
     min-width: 0;
-    padding: 0.25rem;
 }
 
 .wp-time-presence-board__head {
@@ -5157,7 +5156,6 @@ a.wp-kpi.wp-kpi--attention {
     align-items: flex-start;
     justify-content: space-between;
     gap: 0.75rem;
-    padding: 0 0.15rem;
 }
 
 .wp-time-presence-board__title {
