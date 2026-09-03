@@ -252,7 +252,7 @@
             {
                 "title": "Webhooks",
                 "items": [
-                    "HTTP POST sortant sur événements (not. statut issue/tâche, contrôle d’unité, ESG, GPS).",
+                    "HTTP POST sortant sur événements (not. statut issue/tâche, contrôle d’unité, ESG, GPS, Time/CIAO).",
                     "Configured under Settings → API; secret for verification.",
                     "Automatic retries on failure (several attempts with increasing delay).",
                     "Same plan requirement as API (Corporate).",
@@ -390,7 +390,7 @@
                     "**Configuration :** Paramètres → API → Webhooks (URL + événements). Le secret s’affiche une fois — conservez-le en sécurité.",
                     "**Preuve d’origine :** chaque message porte une signature HMAC (vérifiable avec votre secret).",
                     "**Fiabilité :** en cas d’échec, WinProx réessaie (avec pause croissante). Les livraisons apparaissent dans un journal.",
-                    "**Autres événements p. ex. :** signalement créé / approuvé / statut modifié · tâche créée / démarrée / terminée · Time · GPS · ESG · réservations · bouton de test · contrôle d'unité enregistré. Avec confirmation e-mail : **signalement créé** seulement après le lien."
+                    "**Autres événements p. ex. :** signalement créé / approuvé / statut modifié · tâche créée / démarrée / terminée · Time (incl. présence CIAO) · GPS · ESG · réservations · bouton de test · contrôle d'unité enregistré. Avec confirmation e-mail : **signalement créé** seulement après le lien."
                 ],
                 "emphasis": "Exemple : un collaborateur termine une tâche. WinProx envoie automatiquement un webhook vers votre système externe (GMAO, IWMS ou ERP) pour mettre à jour immédiatement un ordre de travail."
             }

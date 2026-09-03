@@ -18,9 +18,10 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
+use App\Jobs\SubmitPresenceSubmissionJob;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Queue;
-use App\Jobs\SubmitPresenceSubmissionJob;
 
 function ciaoTenantReady(): array
 {
@@ -107,6 +108,7 @@ it('mapped break start/end en clock-out naar OUT/IN/OUT', function () {
 
 it('skipped submission zonder NISS', function () {
     config(['rsz.static_access_token' => 'test-token']);
+    Event::fake([\App\Events\Time\PresenceSubmissionSkipped::class]);
     [$tenant, $worker, $clockPoint] = ciaoTenantReady();
     $worker->update(['ssin' => null]);
 
@@ -118,6 +120,8 @@ it('skipped submission zonder NISS', function () {
 
     expect($submission->fresh()->status)->toBe(PresenceSubmissionStatus::Skipped)
         ->and($submission->fresh()->error_message)->toBe('ssin_missing_or_invalid');
+
+    Event::assertDispatched(\App\Events\Time\PresenceSubmissionSkipped::class);
 });
 
 it('stuurt registerInBulk bij geldige data', function () {
@@ -133,6 +137,7 @@ it('stuurt registerInBulk bij geldige data', function () {
             ]],
         ], 200),
     ]);
+    Event::fake([\App\Events\Time\PresenceSubmissionSubmitted::class]);
 
     [$tenant, $worker, $clockPoint] = ciaoTenantReady();
     Queue::fake();
@@ -144,6 +149,8 @@ it('stuurt registerInBulk bij geldige data', function () {
     expect($fresh->status)->toBe(PresenceSubmissionStatus::Submitted)
         ->and($fresh->rsz_id)->toBe(17611)
         ->and($fresh->rsz_validity)->toBe('pending');
+
+    Event::assertDispatched(\App\Events\Time\PresenceSubmissionSubmitted::class);
 
     Http::assertSent(function ($request) {
         $data = $request->data();
@@ -200,4 +207,12 @@ it('enqueue met CiaoConstruction wanneer flag aan staat', function () {
     expect($submission)->not->toBeNull()
         ->and($submission->scope)->toBe(PresenceComplianceScope::CiaoConstruction)
         ->and($submission->presence_type)->toBe(PresenceType::In);
+});
+
+it('exposeert time.presence webhook-events', function () {
+    expect(\App\Models\WebhookEndpoint::AVAILABLE_EVENTS)->toContain(
+        'time.presence.submitted',
+        'time.presence.failed',
+        'time.presence.skipped',
+    );
 });

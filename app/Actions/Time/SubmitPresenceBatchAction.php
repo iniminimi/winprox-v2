@@ -3,6 +3,9 @@
 namespace App\Actions\Time;
 
 use App\Enums\PresenceSubmissionStatus;
+use App\Events\Time\PresenceSubmissionFailed;
+use App\Events\Time\PresenceSubmissionSkipped;
+use App\Events\Time\PresenceSubmissionSubmitted;
 use App\Models\Location;
 use App\Models\PresenceSubmission;
 use App\Models\Tenant;
@@ -259,7 +262,7 @@ class SubmitPresenceBatchAction
         ?string $error,
         array $meta,
     ): PresenceSubmission {
-        return DB::transaction(function () use ($submission, $status, $rszId, $validity, $remarks, $error, $meta) {
+        $result = DB::transaction(function () use ($submission, $status, $rszId, $validity, $remarks, $error, $meta) {
             $locked = PresenceSubmission::query()->whereKey($submission->id)->lockForUpdate()->firstOrFail();
             $locked->update([
                 'status' => $status,
@@ -289,5 +292,14 @@ class SubmitPresenceBatchAction
 
             return $fresh;
         });
+
+        match ($status) {
+            PresenceSubmissionStatus::Submitted => event(new PresenceSubmissionSubmitted($result)),
+            PresenceSubmissionStatus::Failed => event(new PresenceSubmissionFailed($result)),
+            PresenceSubmissionStatus::Skipped => event(new PresenceSubmissionSkipped($result)),
+            PresenceSubmissionStatus::Pending => null,
+        };
+
+        return $result;
     }
 }

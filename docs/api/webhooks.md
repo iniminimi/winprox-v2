@@ -28,6 +28,11 @@ Webhooks allow you to receive real-time notifications about events in WinProx. W
 | `task.created` | A new task was created | Task data |
 | `task.started` | A task was started | Task data |
 | `task.completed` | A task was completed | Task data |
+| `time.shift.started` | A worker clocked in | Shift metadata |
+| `time.shift.ended` | A worker clocked out | Shift metadata |
+| `time.presence.submitted` | CIAO presence accepted by NSSO/RSZ | Presence submission (no NISS) |
+| `time.presence.failed` | CIAO presence rejected or transport error | Presence submission (no NISS) |
+| `time.presence.skipped` | CIAO presence skipped (validation / too late) | Presence submission (no NISS) |
 | `unit.gps_reported` | A GPS report was recorded for a unit | GPS report metadata |
 | `unit.check.recorded` | A unit check (OK / Not OK) was recorded | Check metadata + optional GPS |
 | `esg.measurement.recorded` | An ESG measurement was recorded | Measurement metadata |
@@ -80,6 +85,36 @@ Webhooks allow you to receive real-time notifications about events in WinProx. W
 ```
 
 For issues, replace `announcement_id` with `issue_id` and use event `issue.translation_imported`.
+
+### CIAO presence webhook payload
+
+`time.presence.submitted`, `time.presence.failed`, and `time.presence.skipped` fire after a Clock Point
+IN/OUT attempt is processed for RSZ Check In and Out. Payloads never include NISS/SSIN.
+
+```json
+{
+  "version": "1.0",
+  "event": "time.presence.submitted",
+  "payload": {
+    "id": 88,
+    "worker_id": 12,
+    "work_shift_id": 40,
+    "work_break_id": null,
+    "clock_point_id": 3,
+    "location_id": 5,
+    "source_event": "clock_in",
+    "presence_type": "IN",
+    "scope": "ciao_cleaning",
+    "status": "submitted",
+    "registration_at": "2026-09-03T18:00:00+00:00",
+    "submitted_at": "2026-09-03T18:00:02+00:00",
+    "rsz_id": 17611,
+    "rsz_validity": "pending",
+    "error_message": null
+  },
+  "delivery_id": 501
+}
+```
 
 ## Webhook Payload
 

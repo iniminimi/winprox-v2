@@ -679,7 +679,8 @@ productsector op `Tenant`.
 - Geen CAW-webservice; geen belofte “automatic update zonder release”.
 
 ### 5g.4 Architectuur / billing
-- Actions + jobs alleen; zie §4.5 regels. Webhook-events voor presence-submissions waar zinvol.
+- Actions + jobs alleen; zie §4.5 regels. Webhooks:
+  `time.presence.submitted` / `time.presence.failed` / `time.presence.skipped` (geen NISS in payload).
 - Billing: hangt aan **Time** (en/of Corporate) — geen los “CIAO-only”-plan zonder Time tenzij
   later expliciet beslist. Product_docs + FAQ bij implementatie (alle locales).
 

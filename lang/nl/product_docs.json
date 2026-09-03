@@ -252,7 +252,7 @@
             {
                 "title": "Webhooks",
                 "items": [
-                    "Uitgaande HTTP POST bij events (o.a. issue/task-status, unit check, unitmeting, ESG, GPS).",
+                    "Uitgaande HTTP POST bij events (o.a. issue/task-status, unit check, unitmeting, ESG, GPS, Time/CIAO).",
                     "Configuratie onder Instellingen → API; secret voor verificatie.",
                     "Automatische retries bij falen (tot enkele pogingen met oplopende pauze).",
                     "Zelfde planvereiste als API (Corporate).",
@@ -392,7 +392,7 @@
                     "**Instellen:** Instellingen → API → Webhooks (URL + welke events). Secret één keer tonen — bewaar die veilig.",
                     "**Bewijs van herkomst:** elk bericht heeft een HMAC-handtekening (controleerbaar met jouw secret).",
                     "**Betrouwbaarheid:** mislukt het? WinProx probeert opnieuw (met oplopende pauze). Leveringen zie je in een log.",
-                    "**Andere events o.a.:** melding aangemaakt / goedgekeurd / status gewijzigd · taak aangemaakt / gestart / afgerond · Time · GPS · ESG · reserveringen · testknop · unit check geregistreerd. Bij e-mailbevestiging: **melding aangemaakt** pas na de link."
+                    "**Andere events o.a.:** melding aangemaakt / goedgekeurd / status gewijzigd · taak aangemaakt / gestart / afgerond · Time (incl. CIAO presence) · GPS · ESG · reserveringen · testknop · unit check geregistreerd. Bij e-mailbevestiging: **melding aangemaakt** pas na de link."
                 ],
                 "emphasis": "Voorbeeld: een medewerker sluit een taak af. WinProx stuurt automatisch een webhook naar jullie externe systeem (IWMS, CMMS of ERP), zodat daar onmiddellijk een werkorder kan worden bijgewerkt."
             }
