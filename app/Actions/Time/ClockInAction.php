@@ -3,6 +3,7 @@
 namespace App\Actions\Time;
 
 use App\Enums\ClockSource;
+use App\Enums\PresenceSourceEvent;
 use App\Enums\WorkShiftStatus;
 use App\Events\Time\TimeShiftStarted;
 use App\Models\ClockPoint;
@@ -15,6 +16,10 @@ use InvalidArgumentException;
 
 class ClockInAction
 {
+    public function __construct(
+        private EnqueuePresenceFromTimeEventAction $enqueuePresence,
+    ) {}
+
     public function handle(
         Worker $worker,
         ClockPoint $clockPoint,
@@ -67,9 +72,11 @@ class ClockInAction
                 'clock_in_device_id' => $device?->id,
             ]);
 
-            event(new TimeShiftStarted($shift->fresh()));
+            $shift = $shift->fresh(['worker', 'team', 'clockInClockPoint', 'presenceClockPoint', 'openBreak']);
+            event(new TimeShiftStarted($shift));
+            $this->enqueuePresence->handle(PresenceSourceEvent::ClockIn, $shift);
 
-            return $shift->fresh(['worker', 'team', 'clockInClockPoint', 'presenceClockPoint', 'openBreak']);
+            return $shift;
         });
     }
 }

@@ -94,7 +94,12 @@
         "postal_code": "Code postal",
         "city": "Ville",
         "country_code": "Code pays ISO",
-        "notes": "Notes internes"
+        "notes": "Notes internes",
+        "ddt": "Déclaration de travaux (DDT)",
+        "ddt_hint": "13 caractères (lieu CIAO).",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "coords_hint": "Facultatif : GPS à la place de l’adresse pour placeOfWork."
     },
     "flash": {
         "created": "Site créé.",
@@ -292,7 +297,9 @@
         "location_limit": "La limite de sites de votre forfait est atteinte. Passez à un abonnement supérieur pour en ajouter.",
         "translation_import_missing": "Site introuvable ou inactif.",
         "translation_import_name_too_long": "Le nom de site traduit est trop long.",
-        "translation_requires_active": "Les traductions ne sont possibles que pour les sites actifs."
+        "translation_requires_active": "Les traductions ne sont possibles que pour les sites actifs.",
+        "ddt_invalid": "La référence DDT doit comporter exactement 13 caractères valides.",
+        "coords_invalid": "Coordonnées invalides."
     },
     "qr_pack": {
         "unavailable": "L'export QR n'est pas disponible sur ce serveur.",

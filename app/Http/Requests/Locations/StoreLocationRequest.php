@@ -27,6 +27,9 @@ class StoreLocationRequest extends FormRequest
             'city' => ['nullable', 'string', 'max:255'],
             'country_code' => ['nullable', 'string', 'size:2', 'alpha'],
             'notes' => ['nullable', 'string', 'max:5000'],
+            'contractual_relationship_reference' => ['nullable', 'regex:/^[A-HJ-NP-Z0-9]{13}$/'],
+            'latitude' => ['nullable', 'numeric', 'between:-90,90'],
+            'longitude' => ['nullable', 'numeric', 'between:-180,180'],
         ];
     }
 
@@ -38,6 +41,9 @@ class StoreLocationRequest extends FormRequest
         return [
             'country_code.size' => __('locations.errors.country_code_invalid'),
             'country_code.alpha' => __('locations.errors.country_code_invalid'),
+            'contractual_relationship_reference.regex' => __('locations.errors.ddt_invalid'),
+            'latitude.between' => __('locations.errors.coords_invalid'),
+            'longitude.between' => __('locations.errors.coords_invalid'),
         ];
     }
 

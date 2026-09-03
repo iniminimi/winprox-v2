@@ -3,6 +3,7 @@
 namespace App\Actions\Time;
 
 use App\Enums\ClockSource;
+use App\Enums\PresenceSourceEvent;
 use App\Enums\WorkShiftStatus;
 use App\Events\Time\TimeShiftEnded;
 use App\Models\Tenant;
@@ -15,6 +16,7 @@ class AutoCloseStaleWorkShiftsAction
     public function __construct(
         private EndWorkBreakAction $endWorkBreak,
         private CloseOpenWorkShiftTaskLogsAction $closeOpenTaskLogs,
+        private EnqueuePresenceFromTimeEventAction $enqueuePresence,
     ) {}
 
     public function handle(?int $staleHours = null): int
@@ -75,6 +77,7 @@ class AutoCloseStaleWorkShiftsAction
             $this->closeOpenTaskLogs->handle($locked, $locked->clock_out_at);
 
             event(new TimeShiftEnded($locked, null));
+            $this->enqueuePresence->handle(PresenceSourceEvent::ClockOut, $locked);
 
             return true;
         });

@@ -155,7 +155,9 @@
         "photo_hint": "Photo portrait optionnelle : choisissez un cadrage (p. ex. le visage), puis redimensionnement automatique. Affichée dans Time → Présence, Exécutants et Équipes.",
         "photo_remove": "Supprimer la photo",
         "photo_crop_title": "Recadrer la photo",
-        "photo_crop_apply": "Utiliser la sélection"
+        "photo_crop_apply": "Utiliser la sélection",
+        "ssin": "Numéro national (NISS)",
+        "ssin_hint": "11 chiffres. Requis pour Check In and Out (CIAO)."
     },
     "import_history": {
         "title": "Imports récents",
@@ -201,7 +203,8 @@
         "translation_requires_active": "Les traductions ne sont possibles que pour les équipes actives.",
         "seat_limit": "Limite de places atteinte (collègues + exécutants). Mettez à niveau votre abonnement.",
         "worker_photo_invalid": "Choisissez une image valide (JPEG, PNG ou WebP).",
-        "worker_photo_max": "La photo peut faire au maximum 2 Mo."
+        "worker_photo_max": "La photo peut faire au maximum 2 Mo.",
+        "worker_ssin_invalid": "Indiquez un NISS valide de 11 chiffres ou laissez vide."
     },
     "checklists": {
         "click_to_manage": "Cliquez ici pour gérer les listes de contrôle"

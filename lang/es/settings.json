@@ -138,7 +138,10 @@
         "org_logo_required": "Elija una imagen de logotipo.",
         "org_logo_upload_failed": "Error al subir. Use una imagen PNG o JPG de hasta :max MB.",
         "org_logo_image": "Elija una imagen PNG o JPG.",
-        "org_logo_max": "El logotipo es demasiado grande (máx. :max MB)."
+        "org_logo_max": "El logotipo es demasiado grande (máx. :max MB).",
+        "enterprise_number_invalid": "Número de empresa no válido.",
+        "presence_scope_invalid": "Este régimen de presencia no está disponible.",
+        "time_module_required": "Time (fichaje) debe estar activo para CIAO."
     },
     "api": {
         "nav": "API y webhooks",
@@ -205,5 +208,21 @@
             "documents_active": "Documentos activos",
             "documents_inactive": "Documentos inactivos"
         }
+    },
+    "presence": {
+        "title": "Presencia ONSS (CIAO)",
+        "lead": "Opcional: enviar fichajes Clock Point y pausas en tiempo real a Check In and Out at Work (limpieza).",
+        "enabled": "Activar presencia CIAO",
+        "scope": "Régimen",
+        "scope_cleaning": "Limpieza (CIAO)",
+        "enterprise_number": "Número de empresa (BCE)",
+        "foreign_vat": "NIF IVA extranjero",
+        "client_id": "Client id OAuth ONSS",
+        "client_id_kept": "Configurado (dejar vacío para conservar)",
+        "private_key": "Clave privada ONSS (PEM)",
+        "credentials_hint": "Credenciales del portal ONSS (Chaman). Un client id vacío no cambia el valor guardado.",
+        "save": "Guardar ajustes CIAO",
+        "saved": "Ajustes CIAO guardados.",
+        "recent": "Envíos recientes"
     }
 }

@@ -155,7 +155,9 @@
         "photo_hint": "Optionele portretfoto: kies een uitsnede (bijv. gezicht), daarna wordt die automatisch verkleind. Getoond in Time → Aanwezigheid, Uitvoerders en Teams.",
         "photo_remove": "Foto verwijderen",
         "photo_crop_title": "Foto bijsnijden",
-        "photo_crop_apply": "Gebruik selectie"
+        "photo_crop_apply": "Gebruik selectie",
+        "ssin": "Rijksregisternummer (NISS)",
+        "ssin_hint": "11 cijfers. Nodig voor RSZ Check In and Out (CIAO)."
     },
     "import_history": {
         "title": "Recente imports",
@@ -201,7 +203,8 @@
         "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve teams.",
         "seat_limit": "Het licentielimiet van je abonnement is bereikt (collega's + uitvoerders). Upgrade je abonnement.",
         "worker_photo_invalid": "Kies een geldige afbeelding (JPEG, PNG of WebP).",
-        "worker_photo_max": "De foto mag maximaal 2 MB groot zijn."
+        "worker_photo_max": "De foto mag maximaal 2 MB groot zijn.",
+        "worker_ssin_invalid": "Geef een geldig NISS van 11 cijfers of laat leeg."
     },
     "checklists": {
         "click_to_manage": "Klik hier om checklists te beheren"

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Enums\PresenceSourceEvent;
 use App\Enums\WorkShiftStatus;
 use App\Models\Worker;
 use App\Models\WorkBreak;
@@ -12,6 +13,10 @@ use InvalidArgumentException;
 
 class EndWorkBreakAction
 {
+    public function __construct(
+        private EnqueuePresenceFromTimeEventAction $enqueuePresence,
+    ) {}
+
     public function handle(Worker $worker, WorkShift $shift): WorkBreak
     {
         if ((int) $worker->id !== (int) $shift->worker_id) {
@@ -43,8 +48,11 @@ class EndWorkBreakAction
             }
 
             $openBreak->update(['ended_at' => now()]);
+            $break = $openBreak->fresh();
 
-            return $openBreak->fresh();
+            $this->enqueuePresence->handle(PresenceSourceEvent::BreakEnd, $shift, $break);
+
+            return $break;
         });
     }
 }

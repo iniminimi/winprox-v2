@@ -187,7 +187,7 @@ ClockIn / ClockOut / StartBreak / EndBreak
   `CleaningClient` vs `BuildingClient` tenzij RSZ een tweede contract publiceert.
 - Clock-/break-Actions blijven **sector-agnostisch**; enqueue alleen als tenant compliance aan heeft.
 
-**Datamodel-schets (nog te migreren bij implementatie — geen magic strings: enums)**
+**Datamodel (golf 1 geïmplementeerd — geen magic strings: enums)**
 
 | Entiteit | Velden (richting) | Opmerking |
 |----------|-------------------|-----------|

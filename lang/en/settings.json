@@ -138,7 +138,10 @@
         "org_logo_required": "Choose a logo image.",
         "org_logo_upload_failed": "Upload failed. Use a PNG or JPG image up to :max MB.",
         "org_logo_image": "Choose a PNG or JPG image.",
-        "org_logo_max": "The logo is too large (max. :max MB)."
+        "org_logo_max": "The logo is too large (max. :max MB).",
+        "enterprise_number_invalid": "Invalid company number.",
+        "presence_scope_invalid": "This presence regime is not available.",
+        "time_module_required": "Time (punch clock) must be enabled for CIAO."
     },
     "api": {
         "nav": "API & webhooks",
@@ -205,5 +208,21 @@
             "documents_active": "Active documents",
             "documents_inactive": "Inactive documents"
         }
+    },
+    "presence": {
+        "title": "RSZ presence (CIAO)",
+        "lead": "Optional: send Clock Point clock-in/out and breaks in real time to Check In and Out at Work (cleaning).",
+        "enabled": "Enable CIAO presence",
+        "scope": "Regime",
+        "scope_cleaning": "Cleaning (CIAO)",
+        "enterprise_number": "Company number (BCE)",
+        "foreign_vat": "Foreign VAT number",
+        "client_id": "RSZ OAuth client id",
+        "client_id_kept": "Set (leave blank to keep)",
+        "private_key": "RSZ private key (PEM)",
+        "credentials_hint": "Credentials from the RSZ portal (Chaman). Empty client id leaves the stored value unchanged.",
+        "save": "Save CIAO settings",
+        "saved": "CIAO settings saved.",
+        "recent": "Recent submissions"
     }
 }

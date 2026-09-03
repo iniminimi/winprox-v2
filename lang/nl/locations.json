@@ -94,7 +94,12 @@
         "postal_code": "Postcode",
         "city": "Plaats",
         "country_code": "ISO-landcode",
-        "notes": "Interne notities"
+        "notes": "Interne notities",
+        "ddt": "Aangifte van werken (DDT)",
+        "ddt_hint": "13 tekens (CIAO werkplaats).",
+        "latitude": "Breedtegraad",
+        "longitude": "Lengtegraad",
+        "coords_hint": "Optioneel: GPS i.p.v. adres voor placeOfWork."
     },
     "flash": {
         "created": "Locatie aangemaakt.",
@@ -292,7 +297,9 @@
         "location_limit": "Je planlimiet voor locaties is bereikt. Upgrade je abonnement om meer locaties toe te voegen.",
         "translation_import_missing": "Locatie niet gevonden of niet actief.",
         "translation_import_name_too_long": "De vertaalde locatienaam is te lang.",
-        "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve locaties."
+        "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve locaties.",
+        "ddt_invalid": "DDT-referentie moet exact 13 geldige tekens zijn.",
+        "coords_invalid": "Ongeldige coördinaten."
     },
     "qr_pack": {
         "unavailable": "QR-export is niet beschikbaar op deze server.",

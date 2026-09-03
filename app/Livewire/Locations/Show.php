@@ -110,6 +110,12 @@ class Show extends Component
 
     public string $locationFormNotes = '';
 
+    public string $locationFormDdt = '';
+
+    public string $locationFormLatitude = '';
+
+    public string $locationFormLongitude = '';
+
     public string $unitName = '';
 
     public string $unitDescription = '';
@@ -299,6 +305,9 @@ class Show extends Component
             'city' => $this->locationFormCity,
             'country_code' => $this->locationFormCountryCode,
             'notes' => $this->locationFormNotes,
+            'contractual_relationship_reference' => $this->locationFormDdt,
+            'latitude' => $this->locationFormLatitude,
+            'longitude' => $this->locationFormLongitude,
         ];
     }
 
@@ -311,6 +320,9 @@ class Show extends Component
         $this->locationFormCity = (string) ($this->location->city ?? '');
         $this->locationFormCountryCode = (string) ($this->location->country_code ?? 'BE');
         $this->locationFormNotes = (string) ($this->location->notes ?? '');
+        $this->locationFormDdt = (string) ($this->location->contractual_relationship_reference ?? '');
+        $this->locationFormLatitude = $this->location->latitude !== null ? (string) $this->location->latitude : '';
+        $this->locationFormLongitude = $this->location->longitude !== null ? (string) $this->location->longitude : '';
     }
 
     private function resetLocationForm(): void
@@ -322,6 +334,9 @@ class Show extends Component
             'locationFormPostalCode',
             'locationFormCity',
             'locationFormNotes',
+            'locationFormDdt',
+            'locationFormLatitude',
+            'locationFormLongitude',
             'locationPreviewLocale',
             'locationTranslationName',
         ]);

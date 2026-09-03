@@ -138,7 +138,10 @@
         "org_logo_required": "Wählen Sie ein Logo-Bild.",
         "org_logo_upload_failed": "Upload fehlgeschlagen. Verwenden Sie ein PNG- oder JPG-Bild mit höchstens :max MB.",
         "org_logo_image": "Wählen Sie ein PNG- oder JPG-Bild.",
-        "org_logo_max": "Das Logo ist zu groß (max. :max MB)."
+        "org_logo_max": "Das Logo ist zu groß (max. :max MB).",
+        "enterprise_number_invalid": "Ungültige Unternehmensnummer.",
+        "presence_scope_invalid": "Dieses Anwesenheitsregime ist nicht verfügbar.",
+        "time_module_required": "Time (Stechuhr) muss für CIAO aktiv sein."
     },
     "api": {
         "nav": "API & Webhooks",
@@ -205,5 +208,21 @@
             "documents_active": "Aktive Dokumente",
             "documents_inactive": "Inaktive Dokumente"
         }
+    },
+    "presence": {
+        "title": "RSZ-Anwesenheit (CIAO)",
+        "lead": "Optional: Clock-Point Ein-/Ausstempeln und Pausen in Echtzeit an Check In and Out at Work (Reinigung) senden.",
+        "enabled": "CIAO-Anwesenheit aktivieren",
+        "scope": "Regime",
+        "scope_cleaning": "Reinigung (CIAO)",
+        "enterprise_number": "Unternehmensnummer (BCE)",
+        "foreign_vat": "Ausländische USt-IdNr.",
+        "client_id": "RSZ-OAuth-Client-ID",
+        "client_id_kept": "Gesetzt (leer lassen zum Behalten)",
+        "private_key": "RSZ-Privatschlüssel (PEM)",
+        "credentials_hint": "Zugangsdaten vom RSZ-Portal (Chaman). Leere Client-ID ändert den gespeicherten Wert nicht.",
+        "save": "CIAO-Einstellungen speichern",
+        "saved": "CIAO-Einstellungen gespeichert.",
+        "recent": "Letzte Übermittlungen"
     }
 }

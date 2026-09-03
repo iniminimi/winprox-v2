@@ -21,14 +21,20 @@ class UpdateWorkerAction
         $companyName = self::normalizedCompanyName($data['company_name'] ?? null);
         $isExternal = $companyName !== null || (bool) ($data['is_external'] ?? false);
 
-        $worker->update([
+        $updates = [
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'] ?? null,
             'phone' => $data['phone'] ?? null,
             'is_external' => $isExternal,
             'company_name' => $companyName,
-        ]);
+        ];
+
+        if (array_key_exists('ssin', $data)) {
+            $updates['ssin'] = self::normalizedSsin($data['ssin'] ?? null);
+        }
+
+        $worker->update($updates);
 
         if (array_key_exists('location_ids', $data)) {
             $this->syncLocations->handleForWorker($worker, $data['location_ids'] ?? [], $actorUserId);
@@ -55,5 +61,20 @@ class UpdateWorkerAction
         $trimmed = trim($value);
 
         return $trimmed === '' ? null : $trimmed;
+    }
+
+    private static function normalizedSsin(mixed $value): ?string
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        if (! is_string($value) && ! is_numeric($value)) {
+            return null;
+        }
+
+        $digits = preg_replace('/\D+/', '', (string) $value) ?? '';
+
+        return strlen($digits) === 11 ? $digits : null;
     }
 }

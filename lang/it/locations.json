@@ -94,7 +94,12 @@
         "postal_code": "CAP",
         "city": "Città",
         "country_code": "Codice paese ISO",
-        "notes": "Note interne"
+        "notes": "Note interne",
+        "ddt": "Dichiarazione di lavori (DDT)",
+        "ddt_hint": "13 caratteri (luogo CIAO).",
+        "latitude": "Latitudine",
+        "longitude": "Longitudine",
+        "coords_hint": "Opzionale: GPS al posto dell’indirizzo per placeOfWork."
     },
     "flash": {
         "created": "Sede creata.",
@@ -292,7 +297,9 @@
         "location_limit": "Ha raggiunto il limite sedi del Suo piano. Aggiorni l'abbonamento per aggiungere altre sedi.",
         "translation_import_missing": "Sede non trovata o non attiva.",
         "translation_import_name_too_long": "Il nome sede tradotto è troppo lungo.",
-        "translation_requires_active": "Le traduzioni sono disponibili solo per sedi attive."
+        "translation_requires_active": "Le traduzioni sono disponibili solo per sedi attive.",
+        "ddt_invalid": "Il riferimento DDT deve avere esattamente 13 caratteri validi.",
+        "coords_invalid": "Coordinate non valide."
     },
     "qr_pack": {
         "unavailable": "Esportazione QR non disponibile su questo server.",

@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "optioneel",
-                "body": "Time is een optionele prikklok: in-/uitklokken, pauze, aanwezigheid en urenstaat. Clock Point blijft de aanmeld-QR (naam + icoon, takenlijst) ook zonder Time. In de proefperiode is Time inbegrepen. Bij WinProx is het optioneel: toeslag per maand, op de jaarfactuur. Naamlookup op Clock Point is per vestiging; uitvoerders zien hun naam alleen op toegewezen locaties (tenzij invaller). Eén open dienst per uitvoerder: op een andere Clock Point zie je waar je bent ingeklokt en kun je aanwezigheid verplaatsen (zelfde dienst, met vermelding van de hop). Aanwezigheid toont optioneel de portretfoto van de uitvoerder in de ronde avatar (anders de initiaal)."
+                "body": "Time is een optionele prikklok: in-/uitklokken, pauze, aanwezigheid en urenstaat. Clock Point blijft de aanmeld-QR (naam + icoon, takenlijst) ook zonder Time. In de proefperiode is Time inbegrepen. Bij WinProx is het optioneel: toeslag per maand, op de jaarfactuur. Naamlookup op Clock Point is per vestiging; uitvoerders zien hun naam alleen op toegewezen locaties (tenzij invaller). Eén open dienst per uitvoerder: op een andere Clock Point zie je waar je bent ingeklokt en kun je aanwezigheid verplaatsen (zelfde dienst, met vermelding van de hop). Aanwezigheid toont optioneel de portretfoto van de uitvoerder in de ronde avatar (anders de initiaal). Optioneel CIAO (RSZ Check In and Out): realtime IN/OUT + pauzes voor schoonmaak; instellingen onder Organisatie → Instellingen; NISS op uitvoerder; DDT op locatie."
             },
             {
                 "title": "Reserveringen",
@@ -214,7 +214,8 @@
                     "Verwerkersovereenkomst (DPA) en subverwerkerslijst beschikbaar.",
                     "Data-export (account), self-service organisatieverwijdering, bewaartermijnen vastgelegd.",
                     "Gegevens blijven in de **EU** (hosting/e-mail). Stripe EU/US indien betalend. Bij **Inloggen met Microsoft** gaat de gebruiker naar Microsoft Entra ID (Microsoft, EU/US); WinProx ontvangt e-mail (en eventueel naam) om het bestaande account te herkennen.",
-                    "Optionele e-mailbevestiging bij QR-meldingen: tijdelijke conceptopslag tot de link; onbevestigd automatisch verwijderd (standaard 60 minuten, inclusief foto’s). De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar (bounce) is gemarkeerd. Uitschrijven van marketingmails blokkeert deze bevestiging niet. Geen gebruikersaccount."
+                    "Optionele e-mailbevestiging bij QR-meldingen: tijdelijke conceptopslag tot de link; onbevestigd automatisch verwijderd (standaard 60 minuten, inclusief foto’s). De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar (bounce) is gemarkeerd. Uitschrijven van marketingmails blokkeert deze bevestiging niet. Geen gebruikersaccount.",
+                    "Optionele **CIAO**-doorgifte (RSZ Check In and Out): bij inschakeling bewaart WinProx NISS (encrypted) en stuurt aanwezigheidsregistraties naar de **Belgische RSZ** (overheid / wettelijke verplichting van de klant). RSZ is geen WinProx-subverwerker voor marketing; doorgifte is functioneel voor compliance. Credentials van de klant (OAuth) blijven encrypted at rest."
                 ]
             },
             {

@@ -94,7 +94,12 @@
         "postal_code": "PLZ",
         "city": "Ort",
         "country_code": "ISO-Ländercode",
-        "notes": "Interne Notizen"
+        "notes": "Interne Notizen",
+        "ddt": "Werkmeldung (DDT)",
+        "ddt_hint": "13 Zeichen (CIAO-Arbeitsort).",
+        "latitude": "Breitengrad",
+        "longitude": "Längengrad",
+        "coords_hint": "Optional: GPS statt Adresse für placeOfWork."
     },
     "flash": {
         "created": "Standort angelegt.",
@@ -292,7 +297,9 @@
         "location_limit": "Das Standort-Limit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Standorte hinzuzufügen.",
         "translation_import_missing": "Standort nicht gefunden oder nicht aktiv.",
         "translation_import_name_too_long": "Der übersetzte Standortname ist zu lang.",
-        "translation_requires_active": "Übersetzungen sind nur für aktive Standorte möglich."
+        "translation_requires_active": "Übersetzungen sind nur für aktive Standorte möglich.",
+        "ddt_invalid": "DDT-Referenz muss genau 13 gültige Zeichen haben.",
+        "coords_invalid": "Ungültige Koordinaten."
     },
     "qr_pack": {
         "unavailable": "QR-Export ist auf diesem Server nicht verfügbar.",

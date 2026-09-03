@@ -3,6 +3,7 @@
 namespace App\Actions\Time;
 
 use App\Enums\ClockSource;
+use App\Enums\PresenceSourceEvent;
 use App\Enums\WorkShiftStatus;
 use App\Events\Time\TimeShiftEnded;
 use App\Models\WorkShift;
@@ -15,6 +16,7 @@ class ForceCloseWorkShiftAction
     public function __construct(
         private EndWorkBreakAction $endWorkBreak,
         private CloseOpenWorkShiftTaskLogsAction $closeOpenTaskLogs,
+        private EnqueuePresenceFromTimeEventAction $enqueuePresence,
         private AuditRecorder $audit,
     ) {}
 
@@ -83,6 +85,7 @@ class ForceCloseWorkShiftAction
             );
 
             event(new TimeShiftEnded($locked, $actorUserId));
+            $this->enqueuePresence->handle(PresenceSourceEvent::ClockOut, $locked);
 
             return $locked;
         });

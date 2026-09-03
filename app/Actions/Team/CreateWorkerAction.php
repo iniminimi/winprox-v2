@@ -56,6 +56,7 @@ class CreateWorkerAction
             'last_name' => $data['last_name'],
             'email' => $data['email'] ?? null,
             'phone' => $data['phone'] ?? null,
+            'ssin' => self::normalizedSsin($data['ssin'] ?? null),
             'is_external' => $isExternal,
             'company_name' => $companyName,
             'is_active' => true,
@@ -89,5 +90,16 @@ class CreateWorkerAction
         $trimmed = trim($value);
 
         return $trimmed === '' ? null : $trimmed;
+    }
+
+    private static function normalizedSsin(mixed $value): ?string
+    {
+        if (! is_string($value) && ! is_numeric($value)) {
+            return null;
+        }
+
+        $digits = preg_replace('/\D+/', '', (string) $value) ?? '';
+
+        return strlen($digits) === 11 ? $digits : null;
     }
 }

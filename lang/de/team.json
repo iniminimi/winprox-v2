@@ -155,7 +155,9 @@
         "photo_hint": "Optionales Porträtfoto: Ausschnitt wählen (z. B. Gesicht), danach automatische Verkleinerung. Angezeigt unter Time → Anwesenheit, Ausführende und Teams.",
         "photo_remove": "Foto entfernen",
         "photo_crop_title": "Foto zuschneiden",
-        "photo_crop_apply": "Auswahl verwenden"
+        "photo_crop_apply": "Auswahl verwenden",
+        "ssin": "Nationalregisternummer (NISS)",
+        "ssin_hint": "11 Ziffern. Erforderlich für RSZ Check In and Out (CIAO)."
     },
     "import_history": {
         "title": "Letzte Imports",
@@ -201,7 +203,8 @@
         "translation_requires_active": "Übersetzungen sind nur für aktive Teams möglich.",
         "seat_limit": "Platzlimit Ihres Tarifs erreicht (Kollegen + Ausführende). Upgraden Sie Ihr Abonnement.",
         "worker_photo_invalid": "Wählen Sie ein gültiges Bild (JPEG, PNG oder WebP).",
-        "worker_photo_max": "Das Foto darf höchstens 2 MB groß sein."
+        "worker_photo_max": "Das Foto darf höchstens 2 MB groß sein.",
+        "worker_ssin_invalid": "Geben Sie eine gültige 11-stellige NISS ein oder lassen Sie das Feld leer."
     },
     "checklists": {
         "click_to_manage": "Klicken Sie hier, um Checklisten zu verwalten"

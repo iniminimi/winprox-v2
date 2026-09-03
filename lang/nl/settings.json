@@ -138,7 +138,10 @@
         "org_logo_required": "Kies een logo-afbeelding.",
         "org_logo_upload_failed": "Upload mislukt. Gebruik een PNG- of JPG-afbeelding van maximaal :max MB.",
         "org_logo_image": "Kies een PNG- of JPG-afbeelding.",
-        "org_logo_max": "Het logo is te groot (max. :max MB)."
+        "org_logo_max": "Het logo is te groot (max. :max MB).",
+        "enterprise_number_invalid": "Ongeldig ondernemingsnummer.",
+        "presence_scope_invalid": "Dit aanwezigheidsregime is niet beschikbaar.",
+        "time_module_required": "Time (prikklok) moet actief zijn voor CIAO."
     },
     "api": {
         "nav": "API & webhooks",
@@ -205,5 +208,21 @@
             "documents_active": "Actieve documenten",
             "documents_inactive": "Inactieve documenten"
         }
+    },
+    "presence": {
+        "title": "Aanwezigheid RSZ (CIAO)",
+        "lead": "Optioneel: stuur Clock Point in-/uitklokken en pauzes realtime naar Check In and Out at Work (schoonmaak).",
+        "enabled": "CIAO-aanwezigheid inschakelen",
+        "scope": "Regime",
+        "scope_cleaning": "Schoonmaak (CIAO)",
+        "enterprise_number": "Ondernemingsnummer (BCE)",
+        "foreign_vat": "Buitenlands btw-nummer",
+        "client_id": "RSZ OAuth client-id",
+        "client_id_kept": "Ingevuld (laat leeg om te behouden)",
+        "private_key": "RSZ private key (PEM)",
+        "credentials_hint": "Credentials van het RSZ-portaal (Chaman). Lege client-id wijzigt niets.",
+        "save": "CIAO-instellingen opslaan",
+        "saved": "CIAO-instellingen opgeslagen.",
+        "recent": "Recente inzendingen"
     }
 }

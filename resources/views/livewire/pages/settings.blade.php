@@ -164,6 +164,74 @@
         </x-wp-settings-section>
     @endif
 
+    @if ($canManageOrganisation && $hasTimeModule)
+        <x-wp-settings-section :title="__('settings.presence.title')">
+            <p class="wp-muted wp-text-sm">{{ __('settings.presence.lead') }}</p>
+            <form wire:submit="savePresenceCompliance" class="wp-stack">
+                <label class="wp-check">
+                    <input type="checkbox" wire:model="presenceComplianceEnabled">
+                    <span>{{ __('settings.presence.enabled') }}</span>
+                </label>
+                @error('presenceComplianceEnabled') <p class="wp-error">{{ $message }}</p> @enderror
+
+                <div class="wp-field">
+                    <label class="wp-label" for="presenceComplianceScope">{{ __('settings.presence.scope') }}</label>
+                    <select id="presenceComplianceScope" class="wp-select" wire:model="presenceComplianceScope">
+                        <option value="ciao_cleaning">{{ __('settings.presence.scope_cleaning') }}</option>
+                    </select>
+                    @error('presenceComplianceScope') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+
+                <div class="wp-form-grid-2">
+                    <div class="wp-field">
+                        <label class="wp-label" for="enterpriseNumber">{{ __('settings.presence.enterprise_number') }}</label>
+                        <input type="text" id="enterpriseNumber" class="wp-input" wire:model="enterpriseNumber" autocomplete="off">
+                        @error('enterpriseNumber') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="foreignVatNumber">{{ __('settings.presence.foreign_vat') }}</label>
+                        <input type="text" id="foreignVatNumber" class="wp-input" wire:model="foreignVatNumber" autocomplete="off">
+                        @error('foreignVatNumber') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                </div>
+
+                <div class="wp-field">
+                    <label class="wp-label" for="presenceRszClientId">{{ __('settings.presence.client_id') }}</label>
+                    <input type="text" id="presenceRszClientId" class="wp-input" wire:model="presenceRszClientId" autocomplete="off" placeholder="{{ $hasRszCredentials ? __('settings.presence.client_id_kept') : '' }}">
+                    <p class="wp-hint">{{ __('settings.presence.credentials_hint') }}</p>
+                    @error('presenceRszClientId') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+
+                <div class="wp-field">
+                    <label class="wp-label" for="presenceRszPrivateKey">{{ __('settings.presence.private_key') }}</label>
+                    <textarea id="presenceRszPrivateKey" class="wp-input" rows="4" wire:model="presenceRszPrivateKey" autocomplete="off"></textarea>
+                    @error('presenceRszPrivateKey') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.presence.save') }}</button>
+            </form>
+
+            @if ($recentPresenceSubmissions->isNotEmpty())
+                <div class="wp-stack-tight wp-mt-4">
+                    <h3 class="wp-settings-subblock-title">{{ __('settings.presence.recent') }}</h3>
+                    <ul class="wp-stack-tight">
+                        @foreach ($recentPresenceSubmissions as $submission)
+                            <li class="wp-muted wp-text-sm">
+                                {{ $submission->registration_at?->format('Y-m-d H:i') }}
+                                · {{ $submission->worker?->displayName() }}
+                                · {{ $submission->presence_type->value }}
+                                · {{ $submission->status->value }}
+                                @if ($submission->error_message)
+                                    · {{ $submission->error_message }}
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </x-wp-settings-section>
+    @endif
+
     @if ($canUpdateTenantBranding && $organisationTenant)
         <x-wp-settings-section :title="__('settings.org.custom_theme_title')">
             <div class="wp-stack wp-settings-subblocks">

@@ -155,7 +155,9 @@
         "photo_hint": "Foto ritratto opzionale: scegli un ritaglio (es. il volto), poi viene ridimensionata automaticamente. Mostrata in Time → Presenza, Esecutori e Team.",
         "photo_remove": "Rimuovi foto",
         "photo_crop_title": "Ritaglia foto",
-        "photo_crop_apply": "Usa selezione"
+        "photo_crop_apply": "Usa selezione",
+        "ssin": "Numero di registro nazionale (NISS)",
+        "ssin_hint": "11 cifre. Necessario per Check In and Out (CIAO)."
     },
     "import_history": {
         "title": "Importazioni recenti",
@@ -201,7 +203,8 @@
         "translation_requires_active": "Le traduzioni sono disponibili solo per team attivi.",
         "seat_limit": "Limite posti raggiunto (colleghi + esecutori). Aggiorna l'abbonamento.",
         "worker_photo_invalid": "Scegli un'immagine valida (JPEG, PNG o WebP).",
-        "worker_photo_max": "La foto può essere al massimo di 2 MB."
+        "worker_photo_max": "La foto può essere al massimo di 2 MB.",
+        "worker_ssin_invalid": "Inserire un NISS valido di 11 cifre oppure lasciare vuoto."
     },
     "checklists": {
         "click_to_manage": "Clicca qui per gestire le checklist"

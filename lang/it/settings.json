@@ -138,7 +138,10 @@
         "org_logo_required": "Scelga un'immagine logo.",
         "org_logo_upload_failed": "Caricamento non riuscito. Usi un'immagine PNG o JPG fino a :max MB.",
         "org_logo_image": "Scelga un'immagine PNG o JPG.",
-        "org_logo_max": "Il logo è troppo grande (max. :max MB)."
+        "org_logo_max": "Il logo è troppo grande (max. :max MB).",
+        "enterprise_number_invalid": "Numero d’impresa non valido.",
+        "presence_scope_invalid": "Questo regime di presenza non è disponibile.",
+        "time_module_required": "Time (timbratura) deve essere attivo per CIAO."
     },
     "api": {
         "nav": "API e webhooks",
@@ -205,5 +208,21 @@
             "documents_active": "Documenti attivi",
             "documents_inactive": "Documenti inattivi"
         }
+    },
+    "presence": {
+        "title": "Presenza ONSS (CIAO)",
+        "lead": "Opzionale: inviare in tempo reale timbrature Clock Point e pause a Check In and Out at Work (pulizia).",
+        "enabled": "Attiva presenza CIAO",
+        "scope": "Regime",
+        "scope_cleaning": "Pulizia (CIAO)",
+        "enterprise_number": "Numero d’impresa (BCE)",
+        "foreign_vat": "Partita IVA estera",
+        "client_id": "Client id OAuth ONSS",
+        "client_id_kept": "Impostato (lasciare vuoto per mantenere)",
+        "private_key": "Chiave privata ONSS (PEM)",
+        "credentials_hint": "Credenziali del portale ONSS (Chaman). Un client id vuoto non modifica il valore salvato.",
+        "save": "Salva impostazioni CIAO",
+        "saved": "Impostazioni CIAO salvate.",
+        "recent": "Invii recenti"
     }
 }

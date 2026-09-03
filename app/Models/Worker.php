@@ -30,6 +30,7 @@ class Worker extends Model
         'import_batch_id',
         'email',
         'phone',
+        'ssin',
         'photo_path',
     ];
 
@@ -39,6 +40,7 @@ class Worker extends Model
         'is_active' => 'boolean',
         'is_teamleader' => 'boolean',
         'is_external' => 'boolean',
+        'ssin' => 'encrypted',
     ];
 
     public function team(): BelongsTo

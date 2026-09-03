@@ -645,8 +645,9 @@ stuurt events; WinProx zet die om in workflow.
 
 ## 5g. Time (prikklok) & RSZ-aanwezigheid (CIAO)
 
-**Status specificatie:** vastgelegd in `WINPROX_RULES.md` §4.5. **Implementatie:** backlog —
-eerst golf 1 (schoonmaak); golf 2 (bouw) na officiële RSZ-specs (~1 apr 2027).
+**Status specificatie:** vastgelegd in `WINPROX_RULES.md` §4.5. **Implementatie golf 1:**
+datamodel + enqueue + RSZ-client + settings/worker/location-UI + Pest-tests. Golf 2 (bouw)
+feature-flag `rsz.construction_scope_enabled` (default uit).
 
 **Doel:** optionele compliance-laag op **Time**: realtime IN/OUT (+ pauzes) doorsturen naar
 RSZ **Check In and Out at Work** (`presenceRegistration`), via dezelfde Clock Point-QR-flow.

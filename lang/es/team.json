@@ -155,7 +155,9 @@
         "photo_hint": "Foto de retrato opcional: elige un recorte (p. ej. el rostro) y se redimensiona automáticamente. Se muestra en Time → Presencia, Operarios y Equipos.",
         "photo_remove": "Eliminar foto",
         "photo_crop_title": "Recortar foto",
-        "photo_crop_apply": "Usar selección"
+        "photo_crop_apply": "Usar selección",
+        "ssin": "Número de registro nacional (NISS)",
+        "ssin_hint": "11 dígitos. Necesario para Check In and Out (CIAO)."
     },
     "import_history": {
         "title": "Importaciones recientes",
@@ -201,7 +203,8 @@
         "translation_requires_active": "Las traducciones solo están disponibles para equipos activos.",
         "seat_limit": "Límite de plazas alcanzado (colegas + ejecutores). Actualice su suscripción.",
         "worker_photo_invalid": "Elige una imagen válida (JPEG, PNG o WebP).",
-        "worker_photo_max": "La foto puede ocupar como máximo 2 MB."
+        "worker_photo_max": "La foto puede ocupar como máximo 2 MB.",
+        "worker_ssin_invalid": "Introduzca un NISS válido de 11 dígitos o déjelo vacío."
     },
     "checklists": {
         "click_to_manage": "Haga clic aquí para gestionar las listas de comprobación"

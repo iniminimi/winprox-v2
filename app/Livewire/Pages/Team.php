@@ -126,6 +126,7 @@ class Team extends Component
     public string $workerPhone = '';
     public bool $workerIsExternal = false;
     public string $workerCompanyName = '';
+    public string $workerSsin = '';
 
     /** @var TemporaryUploadedFile|null */
     public $workerPhoto = null;
@@ -717,8 +718,8 @@ class Team extends Component
 
         $this->editingWorkerId = null;
         $this->resetWorkerPhotoState();
-        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds', 'workerPhoto']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerPhoto']);
         $this->showWorkerModal = true;
     }
 
@@ -749,6 +750,7 @@ class Team extends Component
                     'workerPhone' => $request->rules()['phone'],
                     'workerIsExternal' => $request->rules()['is_external'],
                     'workerCompanyName' => $request->rules()['company_name'],
+                    'workerSsin' => $request->rules()['ssin'],
                     'workerPhoto' => $request->rules()['photo'],
                 ],
                 [
@@ -758,6 +760,7 @@ class Team extends Component
                     'workerEmail.max' => __('team.errors.worker_email_max'),
                     'workerPhone.max' => __('team.errors.worker_phone_max'),
                     'workerCompanyName.max' => __('team.errors.worker_company_name_max'),
+                    'workerSsin.regex' => __('team.errors.worker_ssin_invalid'),
                     'workerPhoto.image' => __('team.errors.worker_photo_invalid'),
                     'workerPhoto.mimes' => __('team.errors.worker_photo_invalid'),
                     'workerPhoto.max' => __('team.errors.worker_photo_max'),
@@ -771,6 +774,7 @@ class Team extends Component
                 'phone' => $validated['workerPhone'] ?? null,
                 'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                 'company_name' => $validated['workerCompanyName'] ?? null,
+                'ssin' => preg_replace('/\D+/', '', (string) ($validated['workerSsin'] ?? '')) ?: null,
                 'location_ids' => $this->selectedWorkerLocationIds,
             ], (int) auth()->id());
 
@@ -789,6 +793,7 @@ class Team extends Component
                     'workerPhone' => $request->rules()['phone'],
                     'workerIsExternal' => $request->rules()['is_external'],
                     'workerCompanyName' => $request->rules()['company_name'],
+                    'workerSsin' => $request->rules()['ssin'],
                     'workerPhoto' => $request->rules()['photo'],
                 ],
                 [
@@ -798,6 +803,7 @@ class Team extends Component
                     'workerEmail.max' => __('team.errors.worker_email_max'),
                     'workerPhone.max' => __('team.errors.worker_phone_max'),
                     'workerCompanyName.max' => __('team.errors.worker_company_name_max'),
+                    'workerSsin.regex' => __('team.errors.worker_ssin_invalid'),
                     'workerPhoto.image' => __('team.errors.worker_photo_invalid'),
                     'workerPhoto.mimes' => __('team.errors.worker_photo_invalid'),
                     'workerPhoto.max' => __('team.errors.worker_photo_max'),
@@ -812,6 +818,7 @@ class Team extends Component
                     'phone' => $validated['workerPhone'] ?? null,
                     'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                     'company_name' => $validated['workerCompanyName'] ?? null,
+                    'ssin' => preg_replace('/\D+/', '', (string) ($validated['workerSsin'] ?? '')) ?: null,
                     'location_ids' => $this->selectedWorkerLocationIds,
                 ], (int) auth()->id());
             } catch (InvalidArgumentException $e) {
@@ -862,6 +869,7 @@ class Team extends Component
         $this->workerPhone = $worker->phone ?? '';
         $this->workerIsExternal = (bool) $worker->is_external;
         $this->workerCompanyName = $worker->company_name ?? '';
+        $this->workerSsin = $worker->ssin ?? '';
         $this->selectedWorkerLocationIds = $worker->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
         $this->resetWorkerPhotoState();
         $this->existingWorkerPhotoUrl = $worker->photoPublicUrl();
@@ -880,12 +888,13 @@ class Team extends Component
             'workerPhone',
             'workerIsExternal',
             'workerCompanyName',
+            'workerSsin',
             'selectedWorkerLocationIds',
             'workerPhoto',
             'removeWorkerPhoto',
             'existingWorkerPhotoUrl',
         ]);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'selectedWorkerLocationIds', 'workerPhoto']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerPhoto']);
     }
 
     private function resetWorkerPhotoState(): void

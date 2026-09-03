@@ -94,7 +94,12 @@
         "postal_code": "Código postal",
         "city": "Ciudad",
         "country_code": "Código de país ISO",
-        "notes": "Notas internas"
+        "notes": "Notas internas",
+        "ddt": "Declaración de obras (DDT)",
+        "ddt_hint": "13 caracteres (lugar CIAO).",
+        "latitude": "Latitud",
+        "longitude": "Longitud",
+        "coords_hint": "Opcional: GPS en lugar de dirección para placeOfWork."
     },
     "flash": {
         "created": "Ubicación creada.",
@@ -292,7 +297,9 @@
         "location_limit": "Ha alcanzado el límite de ubicaciones de su plan. Actualice su suscripción para añadir más ubicaciones.",
         "translation_import_missing": "Ubicación no encontrada o no activa.",
         "translation_import_name_too_long": "El nombre de ubicación traducido es demasiado largo.",
-        "translation_requires_active": "Las traducciones solo están disponibles para ubicaciones activas."
+        "translation_requires_active": "Las traducciones solo están disponibles para ubicaciones activas.",
+        "ddt_invalid": "La referencia DDT debe tener exactamente 13 caracteres válidos.",
+        "coords_invalid": "Coordenadas no válidas."
     },
     "qr_pack": {
         "unavailable": "La exportación QR no está disponible en este servidor.",

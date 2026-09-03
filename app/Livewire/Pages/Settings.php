@@ -10,6 +10,10 @@ use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
 use App\Actions\Team\UpdateTenantWorkMenuAction;
+use App\Actions\Time\UpdatePresenceComplianceSettingsAction;
+use App\Enums\PresenceComplianceScope;
+use App\Http\Requests\Time\UpdatePresenceComplianceSettingsRequest;
+use App\Models\PresenceSubmission;
 use App\Actions\Team\RemoveOrganisationPortalBackgroundAction;
 use App\Actions\Team\SetOrganisationPortalStockBackgroundAction;
 use App\Actions\Team\RemoveTenantQrStickerSheetBackgroundAction;
@@ -106,6 +110,18 @@ class Settings extends Component
 
     public bool $workMenuUnitMeasurementsEnabled = true;
 
+    public bool $presenceComplianceEnabled = false;
+
+    public string $presenceComplianceScope = 'ciao_cleaning';
+
+    public string $enterpriseNumber = '';
+
+    public string $foreignVatNumber = '';
+
+    public string $presenceRszClientId = '';
+
+    public string $presenceRszPrivateKey = '';
+
     public bool $canManageOrganisation = false;
 
     public bool $canUpdateTenantBranding = false;
@@ -143,6 +159,52 @@ class Settings extends Component
     {
         $this->persistWorkMenuSettings();
         $this->redirect(route('settings.index'), navigate: false);
+    }
+
+    public function savePresenceCompliance(UpdatePresenceComplianceSettingsAction $update): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $validated = Validator::make(
+            [
+                'presence_compliance_enabled' => $this->presenceComplianceEnabled,
+                'presence_compliance_scope' => $this->presenceComplianceScope !== ''
+                    ? $this->presenceComplianceScope
+                    : null,
+                'enterprise_number' => $this->enterpriseNumber,
+                'foreign_vat_number' => $this->foreignVatNumber,
+                'presence_rsz_client_id' => $this->presenceRszClientId,
+                'presence_rsz_private_key' => $this->presenceRszPrivateKey,
+            ],
+            UpdatePresenceComplianceSettingsRequest::ruleSet(),
+            UpdatePresenceComplianceSettingsRequest::messageSet(),
+        )->validate();
+
+        try {
+            $updated = $update->handle($tenant, $validated, (int) auth()->id());
+        } catch (\InvalidArgumentException $e) {
+            if ($e->getMessage() === 'time_module_disabled') {
+                $this->addError('presenceComplianceEnabled', __('settings.errors.time_module_required'));
+
+                return;
+            }
+            if ($e->getMessage() === 'presence_scope_unavailable') {
+                $this->addError('presenceComplianceScope', __('settings.errors.presence_scope_invalid'));
+
+                return;
+            }
+
+            throw $e;
+        }
+
+        $this->fillOrganisationFromTenant($updated);
+        $this->dispatch('saved');
+        session()->flash('success', __('settings.presence.saved'));
     }
 
     private function persistWorkMenuSettings(): void
@@ -668,6 +730,16 @@ class Settings extends Component
             'qrStickerTenantLogoChoices' => QrStickerTenantLogoPlacement::choices(),
             'qrBrandingPreviewDataUrl' => $this->resolveQrBrandingPreviewDataUrl(),
             'qrPrintableBackgroundPresets' => QrPrintablePageBackgroundPreset::uiChoices(),
+            'hasTimeModule' => $tenant instanceof Tenant && $tenant->hasTimeModule(),
+            'hasRszCredentials' => $tenant instanceof Tenant && filled($tenant->presence_rsz_client_id),
+            'recentPresenceSubmissions' => $tenant instanceof Tenant && $tenant->hasTimeModule()
+                ? PresenceSubmission::query()
+                    ->where('tenant_id', $tenant->id)
+                    ->with('worker')
+                    ->orderByDesc('id')
+                    ->limit(10)
+                    ->get()
+                : collect(),
         ]);
     }
 
@@ -718,6 +790,13 @@ class Settings extends Component
         $this->customThemeActive = (bool) $tenant->custom_theme_active;
         $this->customThemeBg = $tenant->custom_theme_bg ?? '#e7e8ec';
         $this->customThemeBtn = $tenant->custom_theme_btn ?? '#059669';
+        $this->presenceComplianceEnabled = (bool) $tenant->presence_compliance_enabled;
+        $this->presenceComplianceScope = (string) ($tenant->presence_compliance_scope
+            ?? PresenceComplianceScope::CiaoCleaning->value);
+        $this->enterpriseNumber = (string) ($tenant->enterprise_number ?? '');
+        $this->foreignVatNumber = (string) ($tenant->foreign_vat_number ?? '');
+        $this->presenceRszClientId = '';
+        $this->presenceRszPrivateKey = '';
         $this->portalBackgroundStockPreset = TenantPortalBackground::stockPresetKeyFromPath(
             $tenant->portal_background_path,
         ) ?? '';

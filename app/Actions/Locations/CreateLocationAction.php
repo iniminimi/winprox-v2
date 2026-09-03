@@ -38,6 +38,9 @@ class CreateLocationAction
             'city' => $this->nullableString($data['city'] ?? null),
             'country_code' => strtoupper((string) ($data['country_code'] ?? 'BE')),
             'notes' => $this->nullableString($data['notes'] ?? null),
+            'contractual_relationship_reference' => $this->nullableString($data['contractual_relationship_reference'] ?? null),
+            'latitude' => self::nullableFloat($data['latitude'] ?? null),
+            'longitude' => self::nullableFloat($data['longitude'] ?? null),
             'address' => null,
             'location_qr_token' => Str::lower(Str::random(40)),
             'is_active' => true,
@@ -63,5 +66,14 @@ class CreateLocationAction
         $trimmed = trim((string) $value);
 
         return $trimmed !== '' ? $trimmed : null;
+    }
+
+    private static function nullableFloat(mixed $value): ?float
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        return is_numeric($value) ? (float) $value : null;
     }
 }

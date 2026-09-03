@@ -57,6 +57,12 @@ class Index extends Component
 
     public string $locationFormNotes = '';
 
+    public string $locationFormDdt = '';
+
+    public string $locationFormLatitude = '';
+
+    public string $locationFormLongitude = '';
+
     public string $locationPreviewLocale = '';
 
     public string $locationTranslationName = '';
@@ -135,6 +141,9 @@ class Index extends Component
         $this->locationFormCity = (string) ($location->city ?? '');
         $this->locationFormCountryCode = (string) ($location->country_code ?? 'BE');
         $this->locationFormNotes = (string) ($location->notes ?? '');
+        $this->locationFormDdt = (string) ($location->contractual_relationship_reference ?? '');
+        $this->locationFormLatitude = $location->latitude !== null ? (string) $location->latitude : '';
+        $this->locationFormLongitude = $location->longitude !== null ? (string) $location->longitude : '';
         $this->locationPreviewLocale = $this->defaultTranslationLocaleForLocation($location);
         $this->hydrateLocationTranslationInput($location->fresh('translations'));
         $this->resetErrorBag();
@@ -286,13 +295,16 @@ class Index extends Component
             'city' => $this->locationFormCity,
             'country_code' => $this->locationFormCountryCode,
             'notes' => $this->locationFormNotes,
+            'contractual_relationship_reference' => $this->locationFormDdt,
+            'latitude' => $this->locationFormLatitude,
+            'longitude' => $this->locationFormLongitude,
         ];
     }
 
     private function resetForm(): void
     {
         $this->reset([
-            'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'editingLocationId',
+            'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'locationFormDdt', 'locationFormLatitude', 'locationFormLongitude', 'editingLocationId',
             'locationPreviewLocale', 'locationTranslationName',
         ]);
         $this->editingLocationId = null;

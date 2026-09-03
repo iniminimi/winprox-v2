@@ -25,11 +25,16 @@ class Location extends Model
         'city',
         'country_code',
         'notes',
+        'contractual_relationship_reference',
+        'latitude',
+        'longitude',
         'is_active',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'latitude' => 'float',
+        'longitude' => 'float',
     ];
 
     protected static function booted(): void

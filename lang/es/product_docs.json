@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "opcional",
-                "body": "Time es un reloj de fichar opcional: entrada/salida, pausa, presencia y hoja de horas. Clock Point sigue siendo el QR de identificación (nombre + icono, lista de tareas) también sin Time. Time está incluido en la prueba. En WinProx es opcional: recargo mensual en la factura anual. La búsqueda por nombre en el punto de fichaje está limitada a la sede; los ejecutores solo aparecen en sedes asignadas (excepto equipos flotantes). Un turno abierto por ejecutor: en otro Clock Point ves dónde has fichado y puedes trasladar la presencia (mismo turno, con nota del traslado). Presencia muestra opcionalmente la foto de retrato del operario en el avatar redondo (si no, la inicial)."
+                "body": "Time es un reloj de fichar opcional: entrada/salida, pausa, presencia y hoja de horas. Clock Point sigue siendo el QR de identificación (nombre + icono, lista de tareas) también sin Time. Time está incluido en la prueba. En WinProx es opcional: recargo mensual en la factura anual. La búsqueda por nombre en el punto de fichaje está limitada a la sede; los ejecutores solo aparecen en sedes asignadas (excepto equipos flotantes). Un turno abierto por ejecutor: en otro Clock Point ves dónde has fichado y puedes trasladar la presencia (mismo turno, con nota del traslado). Presencia muestra opcionalmente la foto de retrato del operario en el avatar redondo (si no, la inicial). CIAO opcional (Check In and Out ONSS): IN/OUT + pausas en tiempo real para limpieza; ajustes en Organización → Ajustes; NISS en el ejecutor; DDT en la ubicación."
             },
             {
                 "title": "Reservations",
@@ -214,7 +214,8 @@
                     "Data Processing Agreement (DPA) and subprocessor list available.",
                     "Data export (account), self-service organisation deletion, retention periods documented.",
                     "Los datos permanecen en la **UE** (alojamiento/correo). Stripe UE/EE. UU. si hay pago. Con **Iniciar sesión con Microsoft**, el usuario va a Microsoft Entra ID (Microsoft, UE/EE. UU.); WinProx recibe el correo (y posiblemente el nombre) para reconocer la cuenta existente.",
-                    "Confirmación por correo opcional en avisos QR: almacenamiento temporal del borrador hasta el enlace; los borradores no confirmados se eliminan automáticamente (normalmente 60 minutos, fotos incluidas). El correo de confirmación solo se envía a una dirección válida que no esté marcada como no entregable (bounce). Darse de baja del correo de marketing no bloquea esta confirmación. Sin cuenta de usuario."
+                    "Confirmación por correo opcional en avisos QR: almacenamiento temporal del borrador hasta el enlace; los borradores no confirmados se eliminan automáticamente (normalmente 60 minutos, fotos incluidas). El correo de confirmación solo se envía a una dirección válida que no esté marcada como no entregable (bounce). Darse de baja del correo de marketing no bloquea esta confirmación. Sin cuenta de usuario.",
+                    "Envío opcional **CIAO** (Check In and Out ONSS): si se activa, WinProx guarda el NISS (cifrado) y envía registros de presencia a la **ONSS belga** (autoridad / obligación legal del cliente). La ONSS no es un subencargado de marketing de WinProx; la cesión es de cumplimiento. Credenciales OAuth del cliente cifradas en reposo."
                 ]
             },
             {

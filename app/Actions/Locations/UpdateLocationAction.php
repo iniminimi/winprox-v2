@@ -44,6 +44,15 @@ class UpdateLocationAction
             'city' => $city,
             'country_code' => strtoupper((string) ($data['country_code'] ?? $location->country_code ?? 'BE')),
             'notes' => $this->nullableString($data['notes'] ?? null),
+            'contractual_relationship_reference' => array_key_exists('contractual_relationship_reference', $data)
+                ? $this->nullableString($data['contractual_relationship_reference'])
+                : $location->contractual_relationship_reference,
+            'latitude' => array_key_exists('latitude', $data)
+                ? self::nullableFloat($data['latitude'])
+                : $location->latitude,
+            'longitude' => array_key_exists('longitude', $data)
+                ? self::nullableFloat($data['longitude'])
+                : $location->longitude,
             'address' => $this->legacyAddressLine($street, $houseNumber, $postalCode, $city),
         ]);
 
@@ -78,5 +87,14 @@ class UpdateLocationAction
         $legacy = trim(collect([$lineOne, $lineTwo])->filter()->implode(', '));
 
         return $legacy !== '' ? $legacy : null;
+    }
+
+    private static function nullableFloat(mixed $value): ?float
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        return is_numeric($value) ? (float) $value : null;
     }
 }

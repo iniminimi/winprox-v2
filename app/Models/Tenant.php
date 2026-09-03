@@ -39,6 +39,12 @@ class Tenant extends Model
         'has_iot_module',
         'time_qr_rotation_months',
         'has_time_module',
+        'enterprise_number',
+        'foreign_vat_number',
+        'presence_compliance_enabled',
+        'presence_compliance_scope',
+        'presence_rsz_client_id',
+        'presence_rsz_private_key',
         'work_menu_calendar_enabled',
         'work_menu_reservations_enabled',
         'work_menu_inspection_rounds_enabled',
@@ -60,6 +66,9 @@ class Tenant extends Model
             'has_esg_module' => 'boolean',
             'has_iot_module' => 'boolean',
             'has_time_module' => 'boolean',
+            'presence_compliance_enabled' => 'boolean',
+            'presence_rsz_client_id' => 'encrypted',
+            'presence_rsz_private_key' => 'encrypted',
             'work_menu_calendar_enabled' => 'boolean',
             'work_menu_reservations_enabled' => 'boolean',
             'work_menu_inspection_rounds_enabled' => 'boolean',
@@ -293,6 +302,21 @@ class Tenant extends Model
     public function hasTimeModule(): bool
     {
         return (bool) $this->has_time_module;
+    }
+
+    public function presenceComplianceEnabled(): bool
+    {
+        return $this->hasTimeModule() && (bool) $this->presence_compliance_enabled;
+    }
+
+    public function presenceComplianceScope(): ?\App\Enums\PresenceComplianceScope
+    {
+        $raw = $this->presence_compliance_scope;
+        if (! is_string($raw) || $raw === '') {
+            return null;
+        }
+
+        return \App\Enums\PresenceComplianceScope::tryFrom($raw);
     }
 
     public function workMenuCalendarEnabled(): bool

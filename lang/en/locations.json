@@ -94,7 +94,12 @@
         "postal_code": "Postal code",
         "city": "City",
         "country_code": "ISO country code",
-        "notes": "Internal notes"
+        "notes": "Internal notes",
+        "ddt": "Declaration of works (DDT)",
+        "ddt_hint": "13 characters (CIAO workplace).",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "coords_hint": "Optional: GPS instead of address for placeOfWork."
     },
     "flash": {
         "created": "Location created.",
@@ -292,7 +297,9 @@
         "location_limit": "Your plan location limit has been reached. Upgrade your subscription to add more locations.",
         "translation_import_missing": "Location not found or not active.",
         "translation_import_name_too_long": "The translated location name is too long.",
-        "translation_requires_active": "Translations are only available for active locations."
+        "translation_requires_active": "Translations are only available for active locations.",
+        "ddt_invalid": "DDT reference must be exactly 13 valid characters.",
+        "coords_invalid": "Invalid coordinates."
     },
     "qr_pack": {
         "unavailable": "QR export is unavailable on this server.",
