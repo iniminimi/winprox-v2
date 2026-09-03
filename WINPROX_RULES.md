@@ -172,8 +172,9 @@ tweede product of V1-sectorfork.
    Aangifte van werken), IN + OUT + pauzes, realtime, worker zelf via Clock Point.
 2. **Golf 2 (vanaf RSZ-live, streefdatum 1 apr 2027):** scope `CiaoConstruction` — werken in
    onroerende staat + stortklaar beton (drempel o.a. ≥ €500k excl. btw volgens RSZ). Zelfde
-   client/pijplijn; mapper/validatie/copy aanpassen aan officiële specs. Feature-flag tot specs
-   bekend zijn. Geen belofte “automatisch 100 % compliant zonder release”.
+   client/pijplijn; mapper/validatie/copy aanpassen aan officiële specs. Feature-flag
+   `rsz.construction_scope_enabled` (default uit) tot specs bekend/live zijn. Scope + UI +
+   tests staan klaar achter die flag. Geen belofte “automatisch 100 % compliant zonder release”.
 
 **Architectuur (herbruikbaar — Integration First)**
 ```
@@ -202,7 +203,7 @@ clock out → OUT. Golf 2: zelfde events, verplichtingen bevestigen tegen RSZ-bo
 **UI:** settings (BCE + credentials + aan/uit), Location/Clock Point (DDT + werkplaats), Worker
 (NISS), Time (submission-status/remarks). Geen nieuwe sidebar-producten buiten Time/Instellingen.
 
-**Verboden in deze laag:** Protime-achtige planning/payroll; CAW-only flows in golf 1;
+**Verboden in deze laag:** Protime-achtige planning/payroll; CAW-webservice (ook niet in golf 2);
 `tenant.sector`; losse “Schoonmaak”-welkompagina als productvariant (campagne-landings blijven
 marketing, geen tenant-fork).
 

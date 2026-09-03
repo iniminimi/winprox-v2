@@ -177,7 +177,9 @@
                 <div class="wp-field">
                     <label class="wp-label" for="presenceComplianceScope">{{ __('settings.presence.scope') }}</label>
                     <select id="presenceComplianceScope" class="wp-select" wire:model="presenceComplianceScope">
-                        <option value="ciao_cleaning">{{ __('settings.presence.scope_cleaning') }}</option>
+                        @foreach ($availablePresenceScopes as $scope)
+                            <option value="{{ $scope->value }}">{{ __($scope->settingsLabelKey()) }}</option>
+                        @endforeach
                     </select>
                     @error('presenceComplianceScope') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>

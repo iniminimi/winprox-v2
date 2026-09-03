@@ -211,7 +211,7 @@
     },
     "presence": {
         "title": "RSZ-Anwesenheit (CIAO)",
-        "lead": "Optional: Clock-Point Ein-/Ausstempeln und Pausen in Echtzeit an Check In and Out at Work (Reinigung) senden.",
+        "lead": "Optional: Clock-Point Ein-/Ausstempeln und Pausen in Echtzeit an Check In and Out at Work senden (Reinigung; Bau wenn freigegeben).",
         "enabled": "CIAO-Anwesenheit aktivieren",
         "scope": "Regime",
         "scope_cleaning": "Reinigung (CIAO)",
@@ -223,6 +223,7 @@
         "credentials_hint": "Zugangsdaten vom RSZ-Portal (Chaman). Leere Client-ID ändert den gespeicherten Wert nicht.",
         "save": "CIAO-Einstellungen speichern",
         "saved": "CIAO-Einstellungen gespeichert.",
-        "recent": "Letzte Übermittlungen"
+        "recent": "Letzte Übermittlungen",
+        "scope_construction": "Bau / Beton (CIAO)"
     }
 }

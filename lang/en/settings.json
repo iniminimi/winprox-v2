@@ -211,7 +211,7 @@
     },
     "presence": {
         "title": "RSZ presence (CIAO)",
-        "lead": "Optional: send Clock Point clock-in/out and breaks in real time to Check In and Out at Work (cleaning).",
+        "lead": "Optional: send Clock Point clock-in/out and breaks in real time to Check In and Out at Work (cleaning; construction when released).",
         "enabled": "Enable CIAO presence",
         "scope": "Regime",
         "scope_cleaning": "Cleaning (CIAO)",
@@ -223,6 +223,7 @@
         "credentials_hint": "Credentials from the RSZ portal (Chaman). Empty client id leaves the stored value unchanged.",
         "save": "Save CIAO settings",
         "saved": "CIAO settings saved.",
-        "recent": "Recent submissions"
+        "recent": "Recent submissions",
+        "scope_construction": "Construction / concrete (CIAO)"
     }
 }

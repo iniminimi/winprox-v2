@@ -14,11 +14,13 @@ class MapPresenceEventsAction
             throw new \InvalidArgumentException('presence_scope_unavailable');
         }
 
-        // Golf 1 schoonmaak (bekend): clock in / break end → IN; clock out / break start → OUT.
-        // Golf 2 hergebruikt dezelfde mapping tot RSZ anders voorschrijft.
-        return match ($source) {
-            PresenceSourceEvent::ClockIn, PresenceSourceEvent::BreakEnd => PresenceType::In,
-            PresenceSourceEvent::ClockOut, PresenceSourceEvent::BreakStart => PresenceType::Out,
+        // Schoonmaak (golf 1) én bouw (golf 2): zelfde IN/OUT tot RSZ bouwspecs anders eisen.
+        return match ($scope) {
+            PresenceComplianceScope::CiaoCleaning,
+            PresenceComplianceScope::CiaoConstruction => match ($source) {
+                PresenceSourceEvent::ClockIn, PresenceSourceEvent::BreakEnd => PresenceType::In,
+                PresenceSourceEvent::ClockOut, PresenceSourceEvent::BreakStart => PresenceType::Out,
+            },
         };
     }
 }

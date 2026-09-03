@@ -174,3 +174,30 @@ it('slaat presence-instellingen op via Action', function () {
         ->and($updated->enterprise_number)->toBe('0123456789')
         ->and($updated->presence_rsz_client_id)->toBe('cid-1');
 });
+
+it('weigert bouw-scope zolang construction flag uit staat', function () {
+    config(['rsz.construction_scope_enabled' => false]);
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+
+    expect(fn () => app(UpdatePresenceComplianceSettingsAction::class)->handle($tenant, [
+        'presence_compliance_enabled' => true,
+        'presence_compliance_scope' => PresenceComplianceScope::CiaoConstruction->value,
+    ]))->toThrow(InvalidArgumentException::class, 'presence_scope_unavailable');
+});
+
+it('enqueue met CiaoConstruction wanneer flag aan staat', function () {
+    config(['rsz.construction_scope_enabled' => true]);
+    Queue::fake();
+
+    [$tenant, $worker, $clockPoint] = ciaoTenantReady();
+    $tenant->update([
+        'presence_compliance_scope' => PresenceComplianceScope::CiaoConstruction->value,
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    $submission = PresenceSubmission::query()->first();
+    expect($submission)->not->toBeNull()
+        ->and($submission->scope)->toBe(PresenceComplianceScope::CiaoConstruction)
+        ->and($submission->presence_type)->toBe(PresenceType::In);
+});

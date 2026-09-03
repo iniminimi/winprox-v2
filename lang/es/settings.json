@@ -211,7 +211,7 @@
     },
     "presence": {
         "title": "Presencia ONSS (CIAO)",
-        "lead": "Opcional: enviar fichajes Clock Point y pausas en tiempo real a Check In and Out at Work (limpieza).",
+        "lead": "Opcional: enviar fichajes y pausas de Clock Point en tiempo real a Check In and Out at Work (limpieza; construcción cuando esté disponible).",
         "enabled": "Activar presencia CIAO",
         "scope": "Régimen",
         "scope_cleaning": "Limpieza (CIAO)",
@@ -223,6 +223,7 @@
         "credentials_hint": "Credenciales del portal ONSS (Chaman). Un client id vacío no cambia el valor guardado.",
         "save": "Guardar ajustes CIAO",
         "saved": "Ajustes CIAO guardados.",
-        "recent": "Envíos recientes"
+        "recent": "Envíos recientes",
+        "scope_construction": "Construcción / hormigón (CIAO)"
     }
 }

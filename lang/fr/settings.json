@@ -211,7 +211,7 @@
     },
     "presence": {
         "title": "Présence ONSS (CIAO)",
-        "lead": "Optionnel : envoyer en temps réel les pointages Clock Point et pauses vers Check In and Out at Work (nettoyage).",
+        "lead": "Optionnel : envoyer pointage et pauses Clock Point en temps réel vers Check In and Out at Work (nettoyage ; construction si disponible).",
         "enabled": "Activer la présence CIAO",
         "scope": "Régime",
         "scope_cleaning": "Nettoyage (CIAO)",
@@ -223,6 +223,7 @@
         "credentials_hint": "Identifiants du portail ONSS (Chaman). Un client id vide ne modifie pas la valeur stockée.",
         "save": "Enregistrer les réglages CIAO",
         "saved": "Réglages CIAO enregistrés.",
-        "recent": "Envois récents"
+        "recent": "Envois récents",
+        "scope_construction": "Construction / béton (CIAO)"
     }
 }

@@ -732,6 +732,7 @@ class Settings extends Component
             'qrPrintableBackgroundPresets' => QrPrintablePageBackgroundPreset::uiChoices(),
             'hasTimeModule' => $tenant instanceof Tenant && $tenant->hasTimeModule(),
             'hasRszCredentials' => $tenant instanceof Tenant && filled($tenant->presence_rsz_client_id),
+            'availablePresenceScopes' => PresenceComplianceScope::availableCases(),
             'recentPresenceSubmissions' => $tenant instanceof Tenant && $tenant->hasTimeModule()
                 ? PresenceSubmission::query()
                     ->where('tenant_id', $tenant->id)

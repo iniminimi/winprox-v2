@@ -646,8 +646,9 @@ stuurt events; WinProx zet die om in workflow.
 ## 5g. Time (prikklok) & RSZ-aanwezigheid (CIAO)
 
 **Status specificatie:** vastgelegd in `WINPROX_RULES.md` §4.5. **Implementatie golf 1:**
-datamodel + enqueue + RSZ-client + settings/worker/location-UI + Pest-tests. Golf 2 (bouw)
-feature-flag `rsz.construction_scope_enabled` (default uit).
+datamodel + enqueue + RSZ-client + settings/worker/location-UI + Pest-tests.
+**Golf 2:** scope `CiaoConstruction` + zelfde mapping/UI achter flag
+`rsz.construction_scope_enabled` (default uit tot RSZ-bouwspecs live).
 
 **Doel:** optionele compliance-laag op **Time**: realtime IN/OUT (+ pauzes) doorsturen naar
 RSZ **Check In and Out at Work** (`presenceRegistration`), via dezelfde Clock Point-QR-flow.
@@ -671,9 +672,10 @@ productsector op `Tenant`.
 - **Niet in golf 1:** Checkinatwork (CAW)-API, Construbadge-hardware, Dimona/payroll, vlees-CAW.
 
 ### 5g.3 Golf 2 — CIAO bouw (`CiaoConstruction`)
-- Zelfde pijplijn/client; nieuwe scope + mapper/validatie wanneer RSZ bouw/beton IN+OUT op
-  CIAO live zet (streefdatum 1 apr 2027, drempel o.a. ≥ €500k excl. btw). Feature-flag tot specs.
-- Geen belofte “automatic update zonder release”; wel hergebruik van Actions/client uit golf 1.
+- Zelfde pijplijn/client; scope + UI-optie achter `RSZ_CONSTRUCTION_SCOPE_ENABLED`
+  (default uit). Mapping = schoonmaak (IN/OUT + pauzes) tot RSZ bouw/beton-specs anders eisen
+  (streefdatum 1 apr 2027, drempel o.a. ≥ €500k excl. btw).
+- Geen CAW-webservice; geen belofte “automatic update zonder release”.
 
 ### 5g.4 Architectuur / billing
 - Actions + jobs alleen; zie §4.5 regels. Webhook-events voor presence-submissions waar zinvol.

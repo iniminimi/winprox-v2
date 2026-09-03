@@ -14,4 +14,23 @@ enum PresenceComplianceScope: string
             self::CiaoConstruction => (bool) config('rsz.construction_scope_enabled', false),
         };
     }
+
+    /**
+     * @return list<self>
+     */
+    public static function availableCases(): array
+    {
+        return array_values(array_filter(
+            self::cases(),
+            static fn (self $scope): bool => $scope->isAvailable(),
+        ));
+    }
+
+    public function settingsLabelKey(): string
+    {
+        return match ($this) {
+            self::CiaoCleaning => 'settings.presence.scope_cleaning',
+            self::CiaoConstruction => 'settings.presence.scope_construction',
+        };
+    }
 }

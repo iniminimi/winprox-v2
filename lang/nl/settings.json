@@ -211,7 +211,7 @@
     },
     "presence": {
         "title": "Aanwezigheid RSZ (CIAO)",
-        "lead": "Optioneel: stuur Clock Point in-/uitklokken en pauzes realtime naar Check In and Out at Work (schoonmaak).",
+        "lead": "Optioneel: stuur Clock Point in-/uitklokken en pauzes realtime naar Check In and Out at Work (schoonmaak; bouw wanneer vrijgegeven).",
         "enabled": "CIAO-aanwezigheid inschakelen",
         "scope": "Regime",
         "scope_cleaning": "Schoonmaak (CIAO)",
@@ -223,6 +223,7 @@
         "credentials_hint": "Credentials van het RSZ-portaal (Chaman). Lege client-id wijzigt niets.",
         "save": "CIAO-instellingen opslaan",
         "saved": "CIAO-instellingen opgeslagen.",
-        "recent": "Recente inzendingen"
+        "recent": "Recente inzendingen",
+        "scope_construction": "Bouw / beton (CIAO)"
     }
 }

@@ -211,7 +211,7 @@
     },
     "presence": {
         "title": "Presenza ONSS (CIAO)",
-        "lead": "Opzionale: inviare in tempo reale timbrature Clock Point e pause a Check In and Out at Work (pulizia).",
+        "lead": "Opzionale: invia timbrature e pause Clock Point in tempo reale a Check In and Out at Work (pulizie; edilizia quando disponibile).",
         "enabled": "Attiva presenza CIAO",
         "scope": "Regime",
         "scope_cleaning": "Pulizia (CIAO)",
@@ -223,6 +223,7 @@
         "credentials_hint": "Credenziali del portale ONSS (Chaman). Un client id vuoto non modifica il valore salvato.",
         "save": "Salva impostazioni CIAO",
         "saved": "Impostazioni CIAO salvate.",
-        "recent": "Invii recenti"
+        "recent": "Invii recenti",
+        "scope_construction": "Edilizia / calcestruzzo (CIAO)"
     }
 }
