@@ -53,18 +53,18 @@
         <span class="wp-hint">{{ __('locations.fields.ddt_hint') }}</span>
         @error('contractual_relationship_reference') <span class="wp-error">{{ $message }}</span> @enderror
     </label>
-@endif
 
-<div class="wp-form-grid-2">
-    <label class="wp-field">
-        <span class="wp-label">{{ __('locations.fields.latitude') }}</span>
-        <input type="text" class="wp-input" wire:model="locationFormLatitude" inputmode="decimal" />
-        @error('latitude') <span class="wp-error">{{ $message }}</span> @enderror
-    </label>
-    <label class="wp-field">
-        <span class="wp-label">{{ __('locations.fields.longitude') }}</span>
-        <input type="text" class="wp-input" wire:model="locationFormLongitude" inputmode="decimal" />
-        @error('longitude') <span class="wp-error">{{ $message }}</span> @enderror
-    </label>
-</div>
-<p class="wp-hint">{{ __('locations.fields.coords_hint') }}</p>
+    <div class="wp-form-grid-2">
+        <label class="wp-field">
+            <span class="wp-label">{{ __('locations.fields.latitude') }}</span>
+            <input type="text" class="wp-input" wire:model="locationFormLatitude" inputmode="decimal" />
+            @error('latitude') <span class="wp-error">{{ $message }}</span> @enderror
+        </label>
+        <label class="wp-field">
+            <span class="wp-label">{{ __('locations.fields.longitude') }}</span>
+            <input type="text" class="wp-input" wire:model="locationFormLongitude" inputmode="decimal" />
+            @error('longitude') <span class="wp-error">{{ $message }}</span> @enderror
+        </label>
+    </div>
+    <p class="wp-hint">{{ __('locations.fields.coords_hint') }}</p>
+@endif
