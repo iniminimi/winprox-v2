@@ -55,6 +55,30 @@ final class PromoCampaignQuillHtmlNormalizer
     }
 
     /**
+     * Platte promo-mail: geen groene knopstijlen; links uitgelijnd, sobere links.
+     */
+    public static function forPlainMail(?string $html): string
+    {
+        $html = self::normalize($html);
+        if ($html === '') {
+            return '';
+        }
+
+        $html = self::collapseEmptyParagraphs($html);
+
+        if (self::lacksBlockStructure($html)) {
+            $html = self::plainTextToParagraphHtml($html);
+        }
+
+        $html = self::splitSingleParagraphOnBreaks($html);
+        $html = self::promoteUniformFontSizeToParagraphs($html);
+        $html = self::applyMailBodyParagraphSpacing($html);
+        $html = self::compactMailSignatureSpacing($html);
+
+        return self::applyPlainMailLinkStyles($html);
+    }
+
+    /**
      * Brief voor DOCX: lijsten naar bullets; handtekeningblok onderaan blijft vast.
      */
     public static function forDocx(?string $html, string $locale): string
@@ -286,6 +310,24 @@ final class PromoCampaignQuillHtmlNormalizer
                 }
 
                 return '<a style="'.$style.'"'.$attrs.'>';
+            },
+            $html,
+        ) ?? $html;
+    }
+
+    private static function applyPlainMailLinkStyles(string $html): string
+    {
+        return preg_replace_callback(
+            '/<a(\s[^>]*)?>/i',
+            static function (array $matches): string {
+                $attrs = $matches[1] ?? '';
+                if (preg_match('/\bhref=/i', $attrs) !== 1) {
+                    return $matches[0];
+                }
+
+                $attrs = preg_replace('/\s+style="[^"]*"/', '', $attrs) ?? $attrs;
+
+                return '<a style="color:#111111;font-weight:400;text-decoration:underline;text-align:left"'.$attrs.'>';
             },
             $html,
         ) ?? $html;

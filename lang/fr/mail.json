@@ -25,7 +25,8 @@
         "text_intro": "Si vous ne souhaitez plus recevoir d'e-mails, vous pouvez vous désabonner ici :",
         "link_label": "désabonner ici",
         "settings_hint_html": "Vous pouvez aussi gérer vos préférences e-mail dans vos <a href=\":url\" style=\"color:#059669;font-weight:600;\">Paramètres</a>.",
-        "settings_hint_text": "Vous pouvez aussi gérer vos préférences e-mail dans Paramètres : :url"
+        "settings_hint_text": "Vous pouvez aussi gérer vos préférences e-mail dans Paramètres : :url",
+        "plain_link_label": "Se désinscrire"
     },
     "verify_email": {
         "subject": "WinProx : confirmez votre adresse e-mail",

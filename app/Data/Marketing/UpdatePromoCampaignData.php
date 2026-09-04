@@ -21,5 +21,6 @@ final class UpdatePromoCampaignData
         public readonly ?string $youtubeUrl,
         public readonly ?array $columnMapping,
         public readonly PromoLanding $landing = PromoLanding::Government,
+        public readonly bool $emailPlain = false,
     ) {}
 }

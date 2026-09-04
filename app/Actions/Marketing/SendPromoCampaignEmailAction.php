@@ -101,12 +101,14 @@ class SendPromoCampaignEmailAction
         );
 
         $emailSubject = PromoCampaignPlaceholderRenderer::render($emailSubject, $placeholders);
-        $emailBodyHtml = PromoCampaignYoutubeThumbnail::expandInMailHtml(
-            PromoCampaignQuillHtmlNormalizer::forMail(
-                PromoCampaignPlaceholderRenderer::render($emailBodyHtml, $placeholders),
-            ),
-            $campaign->youtube_url,
-        );
+        $plain = (bool) $campaign->email_plain;
+        $renderedBody = PromoCampaignPlaceholderRenderer::render($emailBodyHtml, $placeholders);
+        $emailBodyHtml = $plain
+            ? PromoCampaignQuillHtmlNormalizer::forPlainMail($renderedBody)
+            : PromoCampaignYoutubeThumbnail::expandInMailHtml(
+                PromoCampaignQuillHtmlNormalizer::forMail($renderedBody),
+                $campaign->youtube_url,
+            );
 
         $send = null;
 
@@ -139,6 +141,7 @@ class SendPromoCampaignEmailAction
                 emailSubject: $emailSubject,
                 emailBodyHtml: $emailBodyHtml,
                 mailLocale: $campaign->locale,
+                plainLayout: $plain,
             ));
 
             if ($send !== null) {

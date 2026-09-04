@@ -25,7 +25,8 @@
         "text_intro": "If you no longer wish to receive emails, you can unsubscribe here:",
         "link_label": "unsubscribe here",
         "settings_hint_html": "You can also manage email preferences in your <a href=\":url\" style=\"color:#059669;font-weight:600;\">Settings</a>.",
-        "settings_hint_text": "You can also manage email preferences in Settings: :url"
+        "settings_hint_text": "You can also manage email preferences in Settings: :url",
+        "plain_link_label": "Unsubscribe"
     },
     "verify_email": {
         "subject": "WinProx: confirm your email address",

@@ -343,7 +343,9 @@
         "bounces_failed": "Échec du traitement des bounces : :error",
         "bounces_failed_generic": "Échec du traitement des bounces.",
         "landing": "Page d'arrivée",
-        "landing_hint": "{{promo_url}} ouvre cette landing avec le jeton de suivi du destinataire. Choisissez la landing qui correspond à la campagne."
+        "landing_hint": "{{promo_url}} ouvre cette landing avec le jeton de suivi du destinataire. Choisissez la landing qui correspond à la campagne.",
+        "email_plain": "Sans mise en page",
+        "email_plain_hint": "Pas de logo ni de modèle coloré : HTML simple, aligné à gauche. En bas seulement une ligne et le lien Se désinscrire (List-Unsubscribe conservé)."
     },
     "manual_screenshots": {
         "nav": "Captures",

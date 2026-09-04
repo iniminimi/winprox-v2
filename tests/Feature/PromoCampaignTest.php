@@ -590,6 +590,21 @@ it('rendert promo-campagne e-mail met youtube thumbnail', function () {
         ->toContain('email-wrapper');
 });
 
+it('rendert promo-campagne e-mail zonder opmaak (geen logo/template)', function () {
+    $html = (new PromoCampaignLetterMail(
+        emailSubject: 'Korte vraag',
+        emailBodyHtml: PromoCampaignQuillHtmlNormalizer::forPlainMail('<p>Antwoord JA of NEE.</p>'),
+        mailLocale: 'nl',
+        plainLayout: true,
+    ))->render();
+
+    expect($html)
+        ->toContain('Antwoord JA of NEE.')
+        ->toContain('text-align:left')
+        ->not->toContain('email-wrapper')
+        ->not->toContain('Winprox_logo_100.png');
+});
+
 it('behoudt lettergrootte en veilige links in promo html', function () {
     $html = '<p><span style="font-size: 18px; color: red;">Hallo</span> '
         .'<a href="https://winprox.app" onclick="alert(1)">site</a></p>'

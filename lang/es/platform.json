@@ -343,7 +343,9 @@
         "bounces_failed": "Error al procesar bounces: :error",
         "bounces_failed_generic": "Error al procesar bounces.",
         "landing": "Página de destino",
-        "landing_hint": "{{promo_url}} abre esta landing con el token de seguimiento del destinatario. Elija la landing que corresponde a la campaña."
+        "landing_hint": "{{promo_url}} abre esta landing con el token de seguimiento del destinatario. Elija la landing que corresponde a la campaña.",
+        "email_plain": "Sin formato",
+        "email_plain_hint": "Sin logo ni plantilla de marca: HTML simple, alineado a la izquierda. Abajo solo una línea y Cancelar suscripción (List-Unsubscribe se mantiene)."
     },
     "manual_screenshots": {
         "nav": "Capturas de pantalla",

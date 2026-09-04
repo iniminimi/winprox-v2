@@ -343,7 +343,9 @@
         "bounces_failed": "Elaborazione bounce non riuscita: :error",
         "bounces_failed_generic": "Elaborazione bounce non riuscita.",
         "landing": "Pagina di destinazione",
-        "landing_hint": "{{promo_url}} apre questa landing con il token di tracciamento del destinatario. Scegli la landing della campagna."
+        "landing_hint": "{{promo_url}} apre questa landing con il token di tracciamento del destinatario. Scegli la landing della campagna.",
+        "email_plain": "Senza layout",
+        "email_plain_hint": "Niente logo né template brandizzato: HTML semplice, allineato a sinistra. In fondo solo una riga e Annulla iscrizione (List-Unsubscribe resta)."
     },
     "manual_screenshots": {
         "nav": "Screenshot",

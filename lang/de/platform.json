@@ -343,7 +343,9 @@
         "bounces_failed": "Bounce-Verarbeitung fehlgeschlagen: :error",
         "bounces_failed_generic": "Bounce-Verarbeitung fehlgeschlagen.",
         "landing": "Landingpage",
-        "landing_hint": "{{promo_url}} öffnet diese Landing mit dem Tracking-Token des Empfängers. Wählen Sie die Landing, die zur Kampagne passt."
+        "landing_hint": "{{promo_url}} öffnet diese Landing mit dem Tracking-Token des Empfängers. Wählen Sie die Landing, die zur Kampagne passt.",
+        "email_plain": "Ohne Layout",
+        "email_plain_hint": "Kein Logo und keine Markenvorlage: schlichtes HTML, linksbündig. Unten nur eine Linie und Abmelden (List-Unsubscribe bleibt)."
     },
     "manual_screenshots": {
         "nav": "Screenshots",

@@ -51,6 +51,7 @@ class UpdatePromoCampaignAction
             'letter_body_html' => $letterBodyHtml !== '' ? $letterBodyHtml : null,
             'email_subject' => $data->emailSubject !== null ? trim($data->emailSubject) : null,
             'email_body_html' => $emailBodyHtml !== '' ? $emailBodyHtml : null,
+            'email_plain' => $data->emailPlain,
             'attach_letter_to_email' => false,
             'flow_image_path' => $data->flowImagePath !== null && trim($data->flowImagePath) !== ''
                 ? trim($data->flowImagePath)
@@ -68,6 +69,7 @@ class UpdatePromoCampaignAction
             payload: [
                 'slug' => $campaign->slug,
                 'landing' => $campaign->landing->value,
+                'email_plain' => $campaign->email_plain,
             ],
         );
 

@@ -343,7 +343,9 @@
         "bounces_failed": "Bounces verwerken mislukt: :error",
         "bounces_failed_generic": "Bounces verwerken mislukt.",
         "landing": "Landingspagina",
-        "landing_hint": "{{promo_url}} opent deze landing met de trackingtoken van de ontvanger. Kies de landing die bij de campagne past."
+        "landing_hint": "{{promo_url}} opent deze landing met de trackingtoken van de ontvanger. Kies de landing die bij de campagne past.",
+        "email_plain": "Zonder opmaak",
+        "email_plain_hint": "Geen logo of gekleurde template: platte HTML, links uitgelijnd. Onderaan alleen een streep en de link Uitschrijven (List-Unsubscribe blijft)."
     },
     "manual_screenshots": {
         "nav": "Screenshots",

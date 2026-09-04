@@ -28,6 +28,7 @@ class PromoCampaignResource extends JsonResource
             'locale' => $this->locale,
             'landing' => $this->landing->value,
             'email_subject' => $this->email_subject,
+            'email_plain' => (bool) $this->email_plain,
             'letter_body_html' => $this->when($this->includeContent, $this->letter_body_html),
             'email_body_html' => $this->when($this->includeContent, $this->email_body_html),
             'flow_image_path' => $this->flow_image_path,

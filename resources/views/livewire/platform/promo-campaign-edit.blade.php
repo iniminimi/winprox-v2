@@ -135,10 +135,17 @@
         <div class="wp-card wp-card-pad wp-stack">
             <p class="wp-subhead">{{ __('platform.promo_campaigns.email_title') }}</p>
             <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.email_placeholders_hint')</p>
-            <div class="wp-flash wp-flash--muted">
-                <p class="wp-text-body">@lang('platform.promo_campaigns.youtube_thumbnail_how_to_title')</p>
-                <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.youtube_thumbnail_how_to')</p>
-            </div>
+            <label class="wp-check">
+                <input type="checkbox" wire:model.live="emailPlain">
+                <span>{{ __('platform.promo_campaigns.email_plain') }}</span>
+            </label>
+            <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.email_plain_hint') }}</p>
+            @unless ($emailPlain)
+                <div class="wp-flash wp-flash--muted">
+                    <p class="wp-text-body">@lang('platform.promo_campaigns.youtube_thumbnail_how_to_title')</p>
+                    <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.youtube_thumbnail_how_to')</p>
+                </div>
+            @endunless
             <div class="wp-flash wp-flash--muted">
                 <p class="wp-text-body">@lang('platform.promo_campaigns.welcome_url_how_to_title')</p>
                 <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.welcome_url_how_to')</p>

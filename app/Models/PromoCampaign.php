@@ -15,6 +15,7 @@ class PromoCampaign extends Model
 
     protected $attributes = [
         'attach_letter_to_email' => false,
+        'email_plain' => false,
         'landing' => 'government',
     ];
 
@@ -26,6 +27,7 @@ class PromoCampaign extends Model
         'letter_body_html',
         'email_subject',
         'email_body_html',
+        'email_plain',
         'attach_letter_to_email',
         'flow_image_path',
         'youtube_url',
@@ -42,6 +44,7 @@ class PromoCampaign extends Model
             'landing' => PromoLanding::class,
             'column_mapping' => 'array',
             'attach_letter_to_email' => 'boolean',
+            'email_plain' => 'boolean',
             'emails_paused_at' => 'datetime',
         ];
     }

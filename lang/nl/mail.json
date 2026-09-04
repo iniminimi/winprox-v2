@@ -25,7 +25,8 @@
         "text_intro": "Als je geen e-mails meer wilt ontvangen, kun je je hier uitschrijven:",
         "link_label": "hier uitschrijven",
         "settings_hint_html": "Je kunt e-mailvoorkeuren ook beheren in je <a href=\":url\" style=\"color:#059669;font-weight:600;\">Instellingen</a>.",
-        "settings_hint_text": "Je kunt e-mailvoorkeuren ook beheren in je Instellingen: :url"
+        "settings_hint_text": "Je kunt e-mailvoorkeuren ook beheren in je Instellingen: :url",
+        "plain_link_label": "Uitschrijven"
     },
     "verify_email": {
         "subject": "WinProx: bevestig je e-mailadres",

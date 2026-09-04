@@ -37,6 +37,7 @@ class CopyPromoCampaignAction
                 'letter_body_html' => $source->letter_body_html,
                 'email_subject' => $source->email_subject,
                 'email_body_html' => $source->email_body_html,
+                'email_plain' => (bool) $source->email_plain,
                 'attach_letter_to_email' => false,
                 'flow_image_path' => $source->flow_image_path,
                 'youtube_url' => $source->youtube_url,

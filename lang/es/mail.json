@@ -25,7 +25,8 @@
         "text_intro": "Si ya no desea recibir correos electrónicos, puede darse de baja aquí:",
         "link_label": "darse de baja aquí",
         "settings_hint_html": "También puede gestionar las preferencias de correo en su <a href=\":url\" style=\"color:#059669;font-weight:600;\">Configuración</a>.",
-        "settings_hint_text": "También puede gestionar las preferencias de correo en Configuración: :url"
+        "settings_hint_text": "También puede gestionar las preferencias de correo en Configuración: :url",
+        "plain_link_label": "Cancelar suscripción"
     },
     "verify_email": {
         "subject": "WinProx: confirma tu dirección de correo",
