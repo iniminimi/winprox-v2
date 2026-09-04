@@ -1273,6 +1273,7 @@ class Show extends Component
             'canImportUnitsCsv' => $this->locationTenant()?->hasCsvUnitsImport() ?? false,
             'workMenuReservationsEnabled' => $this->locationTenant()?->workMenuReservationsEnabled() ?? true,
             'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,
+            'presenceComplianceEnabled' => $this->locationTenant()?->presenceComplianceEnabled() ?? false,
             'unitPortalCategory' => $unitPortalCategory,
             'unitPortalFlagsMatchCategory' => $unitPortalFlagsMatchCategory,
             'unitCategoryPortalTooltip' => $unitCategoryPortalTooltip,

@@ -683,6 +683,7 @@ class Index extends Component
             'onboarding' => TenantOnboardingState::current(),
             'workMenuReservationsEnabled' => auth()->user()?->tenant?->workMenuReservationsEnabled() ?? true,
             'workMenuUnitMeasurementsEnabled' => auth()->user()?->tenant?->workMenuUnitMeasurementsEnabled() ?? true,
+            'presenceComplianceEnabled' => (bool) (auth()->user()?->tenant?->presenceComplianceEnabled()),
         ]);
     }
 }
