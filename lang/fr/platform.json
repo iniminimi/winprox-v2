@@ -345,7 +345,8 @@
         "landing": "Page d'arrivée",
         "landing_hint": "{{promo_url}} ouvre cette landing avec le jeton de suivi du destinataire. Choisissez la landing qui correspond à la campagne.",
         "email_plain": "Sans mise en page",
-        "email_plain_hint": "Pas de logo ni de modèle coloré : HTML simple, aligné à gauche. En bas seulement une ligne et le lien Se désinscrire (List-Unsubscribe conservé)."
+        "email_plain_hint": "Pas de logo ni de modèle coloré : HTML simple, aligné à gauche. En bas seulement une ligne et le lien Se désinscrire (List-Unsubscribe conservé).",
+        "force_send_hint": "Renvoie aux adresses déjà envoyées avec le texte e-mail actuel (campagne enregistrée). Les adresses bounced/désinscrites restent ignorées."
     },
     "manual_screenshots": {
         "nav": "Captures",

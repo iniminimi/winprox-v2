@@ -345,7 +345,8 @@
         "landing": "Landingspagina",
         "landing_hint": "{{promo_url}} opent deze landing met de trackingtoken van de ontvanger. Kies de landing die bij de campagne past.",
         "email_plain": "Zonder opmaak",
-        "email_plain_hint": "Geen logo of gekleurde template: platte HTML, links uitgelijnd. Onderaan alleen een streep en de link Uitschrijven (List-Unsubscribe blijft)."
+        "email_plain_hint": "Geen logo of gekleurde template: platte HTML, links uitgelijnd. Onderaan alleen een streep en de link Uitschrijven (List-Unsubscribe blijft).",
+        "force_send_hint": "Stuurt opnieuw naar eerder verstuurde adressen, met de huidige e-mailtekst (opgeslagen campagne). Gebouncede/uitgeschreven adressen blijven overgeslagen."
     },
     "manual_screenshots": {
         "nav": "Screenshots",

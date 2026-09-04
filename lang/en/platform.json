@@ -345,7 +345,8 @@
         "landing": "Landing page",
         "landing_hint": "{{promo_url}} opens this landing with the recipient tracking token. Choose the landing that matches the campaign.",
         "email_plain": "Plain layout",
-        "email_plain_hint": "No logo or branded template: plain HTML, left-aligned. Footer is only a line and Unsubscribe (List-Unsubscribe kept)."
+        "email_plain_hint": "No logo or branded template: plain HTML, left-aligned. Footer is only a line and Unsubscribe (List-Unsubscribe kept).",
+        "force_send_hint": "Resends to previously sent addresses using the current email text (saved campaign). Bounced/unsubscribed addresses stay skipped."
     },
     "manual_screenshots": {
         "nav": "Screenshots",

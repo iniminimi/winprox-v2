@@ -1838,19 +1838,62 @@ it('schrijft geen auditregel per verstuurde promo-mail of auto-bestemmeling', fu
         ->and(AuditLog::query()->where('action', 'marketing.promo_recipient_created')->count())->toBe(0);
 });
 
-it('zet bulk-mails in wachtrij zonder brief wanneer bijlage uit staat', function () {
+it('stuurt bij opnieuw versturen de actuele e-mailtekst opnieuw', function () {
+    Mail::fake();
     Queue::fake();
+    \Illuminate\Support\Facades\RateLimiter::clear(\App\Support\Marketing\PromoSmtpThrottle::cacheKey());
 
     $superuser = User::factory()->superuser()->create();
-    [$campaign] = promoCampaignReadyForEmailOnly($superuser);
+    [$campaign, $target] = promoCampaignReadyForEmailOnly($superuser, 'hospital@example.com');
 
-    app(QueuePromoCampaignEmailsAction::class)->handle(
+    app(SendPromoCampaignEmailAction::class)->handle(
         campaign: $campaign,
+        target: $target,
         actorUserId: (int) $superuser->id,
-        delaySeconds: 0,
     );
 
-    Queue::assertPushed(SendPromoCampaignEmailJob::class);
+    expect(PromoCampaignEmailSend::query()
+        ->where('promo_campaign_target_id', $target->id)
+        ->value('status'))->toBe(MunicipalPromoEmailSendStatus::Sent);
+
+    app(UpdatePromoCampaignAction::class)->handle(
+        campaign: $campaign->fresh(),
+        data: new UpdatePromoCampaignData(
+            name: 'Email only',
+            locale: 'nl',
+            letterBodyHtml: null,
+            emailSubject: 'Nieuwe vraag',
+            emailBodyHtml: '<p>Antwoord gerust met JA of NEE.</p>',
+            flowImagePath: null,
+            youtubeUrl: null,
+            columnMapping: null,
+        ),
+        actorUserId: (int) $superuser->id,
+    );
+
+    $queued = app(QueuePromoCampaignEmailsAction::class)->handle(
+        campaign: $campaign->fresh(),
+        actorUserId: (int) $superuser->id,
+        delaySeconds: 0,
+        forceResend: true,
+    );
+
+    expect($queued['queued'])->toBe(1)
+        ->and(PromoCampaignEmailSend::query()
+            ->where('promo_campaign_target_id', $target->id)
+            ->value('status'))->toBe(MunicipalPromoEmailSendStatus::Pending);
+
+    (new SendPromoCampaignEmailJob(
+        promoCampaignId: (int) $campaign->id,
+        promoCampaignTargetId: (int) $target->id,
+        actorUserId: (int) $superuser->id,
+    ))->handle(app(SendPromoCampaignEmailAction::class));
+
+    Mail::assertSent(PromoCampaignLetterMail::class, function (PromoCampaignLetterMail $mail): bool {
+        return $mail->hasTo('hospital@example.com')
+            && $mail->emailSubject === 'Nieuwe vraag'
+            && str_contains($mail->emailBodyHtml, 'JA of NEE');
+    });
 });
 
 it('stuurt testmail zonder brief wanneer bijlage uit staat', function () {

@@ -345,7 +345,8 @@
         "landing": "Pagina di destinazione",
         "landing_hint": "{{promo_url}} apre questa landing con il token di tracciamento del destinatario. Scegli la landing della campagna.",
         "email_plain": "Senza layout",
-        "email_plain_hint": "Niente logo né template brandizzato: HTML semplice, allineato a sinistra. In fondo solo una riga e Annulla iscrizione (List-Unsubscribe resta)."
+        "email_plain_hint": "Niente logo né template brandizzato: HTML semplice, allineato a sinistra. In fondo solo una riga e Annulla iscrizione (List-Unsubscribe resta).",
+        "force_send_hint": "Reinvia agli indirizzi già inviati con il testo e-mail attuale (campagna salvata). Gli indirizzi bounced/disiscritti restano esclusi."
     },
     "manual_screenshots": {
         "nav": "Screenshot",

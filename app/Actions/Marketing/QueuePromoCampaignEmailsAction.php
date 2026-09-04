@@ -56,6 +56,10 @@ class QueuePromoCampaignEmailsAction
         $resolved = $this->resolveTargets($campaign, $forceResend);
         $queueIndex = 0;
 
+        if ($forceResend) {
+            $this->resetSentRecordsForResend($campaign, $resolved['targets']);
+        }
+
         foreach ($resolved['unsubscribed_targets'] as $target) {
             $this->markUnsubscribedSkipped($campaign, $target, $actorUserId);
         }
@@ -169,6 +173,31 @@ class QueuePromoCampaignEmailsAction
             'targets' => $targets,
             'unsubscribed_targets' => $unsubscribedTargets,
         ];
+    }
+
+    /**
+     * @param  list<PromoCampaignTarget>  $targets
+     */
+    private function resetSentRecordsForResend(PromoCampaign $campaign, array $targets): void
+    {
+        if ($targets === []) {
+            return;
+        }
+
+        $targetIds = array_map(
+            static fn (PromoCampaignTarget $target): int => (int) $target->id,
+            $targets,
+        );
+
+        PromoCampaignEmailSend::query()
+            ->where('promo_campaign_id', $campaign->id)
+            ->whereIn('promo_campaign_target_id', $targetIds)
+            ->where('status', MunicipalPromoEmailSendStatus::Sent)
+            ->update([
+                'status' => MunicipalPromoEmailSendStatus::Pending,
+                'sent_at' => null,
+                'error_message' => null,
+            ]);
     }
 
     private function markUnsubscribedSkipped(

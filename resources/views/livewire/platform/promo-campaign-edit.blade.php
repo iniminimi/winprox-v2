@@ -344,6 +344,7 @@
                     <input type="checkbox" wire:model="forceSend">
                     {{ __('platform.promo_campaigns.force_send') }}
                 </label>
+                <p class="wp-muted wp-text-sm wp-basis-full">{{ __('platform.promo_campaigns.force_send_hint') }}</p>
                 @if ($campaign->isEmailSendingPaused() && ($delivery?->status ?? null) !== \App\Enums\PromoCampaignDeliveryStatus::Complete)
                     <button type="button" class="btn btn--primary btn--sm" wire:click="resumeSending">
                         {{ __('platform.promo_campaigns.resume_submit') }}
