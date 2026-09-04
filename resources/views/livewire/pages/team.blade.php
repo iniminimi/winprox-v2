@@ -492,12 +492,14 @@
                         <input type="tel" id="workerPhone" class="wp-input" wire:model="workerPhone">
                         @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
-                    <div>
-                        <label class="wp-label" for="workerSsin">{{ __('team.workers.ssin') }}</label>
-                        <input type="text" id="workerSsin" class="wp-input" wire:model="workerSsin" inputmode="numeric" autocomplete="off" maxlength="11">
-                        <p class="wp-hint">{{ __('team.workers.ssin_hint') }}</p>
-                        @error('workerSsin') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
+                    @if ($presenceComplianceEnabled)
+                        <div>
+                            <label class="wp-label" for="workerSsin">{{ __('team.workers.ssin') }}</label>
+                            <input type="text" id="workerSsin" class="wp-input" wire:model="workerSsin" inputmode="numeric" autocomplete="off" maxlength="11">
+                            <p class="wp-hint">{{ __('team.workers.ssin_hint') }}</p>
+                            @error('workerSsin') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    @endif
                     <label class="wp-check wp-check--boxed">
                         <input type="checkbox" wire:model.live="workerIsExternal">
                         <span>{{ __('team.workers.is_external') }}</span>

@@ -116,13 +116,23 @@ it('retry via Action weigert submitted inzendingen', function () {
         ->toThrow(InvalidArgumentException::class, 'presence_submission_not_retryable');
 });
 
-it('toont CIAO-nav op Time-schermen', function () {
-    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+it('toont CIAO-nav op Time-schermen alleen als aanwezigheidscompliance aan staat', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'presence_compliance_enabled' => false,
+    ]);
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->create([
         'tenant_id' => $tenant->id,
         'role' => User::ROLE_ADMIN,
     ]);
+
+    $this->actingAs($admin)
+        ->get(route('time.presence.index'))
+        ->assertOk()
+        ->assertDontSee(__('time.nav.ciao'), false);
+
+    $tenant->update(['presence_compliance_enabled' => true]);
 
     $this->actingAs($admin)
         ->get(route('time.presence.index'))

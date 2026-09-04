@@ -737,46 +737,32 @@ class Team extends Component
         UpdateWorkerPhotoAction $updateWorkerPhoto,
         DeleteWorkerPhotoAction $deleteWorkerPhoto,
     ): void {
+        $presenceComplianceEnabled = $this->tenantPresenceComplianceEnabled();
+
         if ($this->editingWorkerId) {
             // Edit mode
             $worker = $this->authorizedWorker((int) $this->editingWorkerId);
 
             $request = new UpdateWorkerRequest;
             $validated = $this->validate(
-                [
-                    'workerFirstName' => $request->rules()['first_name'],
-                    'workerLastName' => $request->rules()['last_name'],
-                    'workerEmail' => $request->rules()['email'],
-                    'workerPhone' => $request->rules()['phone'],
-                    'workerIsExternal' => $request->rules()['is_external'],
-                    'workerCompanyName' => $request->rules()['company_name'],
-                    'workerSsin' => $request->rules()['ssin'],
-                    'workerPhoto' => $request->rules()['photo'],
-                ],
-                [
-                    'workerFirstName.required' => __('team.errors.worker_name_required'),
-                    'workerLastName.required' => __('team.errors.worker_name_required'),
-                    'workerEmail.email' => __('team.errors.worker_email_invalid'),
-                    'workerEmail.max' => __('team.errors.worker_email_max'),
-                    'workerPhone.max' => __('team.errors.worker_phone_max'),
-                    'workerCompanyName.max' => __('team.errors.worker_company_name_max'),
-                    'workerSsin.regex' => __('team.errors.worker_ssin_invalid'),
-                    'workerPhoto.image' => __('team.errors.worker_photo_invalid'),
-                    'workerPhoto.mimes' => __('team.errors.worker_photo_invalid'),
-                    'workerPhoto.max' => __('team.errors.worker_photo_max'),
-                ],
+                $this->workerModalValidationRules($request->rules(), $presenceComplianceEnabled),
+                $this->workerModalValidationMessages($presenceComplianceEnabled),
             );
 
-            $worker = $updateWorker->handle($worker, [
+            $payload = [
                 'first_name' => $validated['workerFirstName'],
                 'last_name' => $validated['workerLastName'],
                 'email' => $validated['workerEmail'] ?? null,
                 'phone' => $validated['workerPhone'] ?? null,
                 'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                 'company_name' => $validated['workerCompanyName'] ?? null,
-                'ssin' => preg_replace('/\D+/', '', (string) ($validated['workerSsin'] ?? '')) ?: null,
                 'location_ids' => $this->selectedWorkerLocationIds,
-            ], (int) auth()->id());
+            ];
+            if ($presenceComplianceEnabled) {
+                $payload['ssin'] = preg_replace('/\D+/', '', (string) ($validated['workerSsin'] ?? '')) ?: null;
+            }
+
+            $worker = $updateWorker->handle($worker, $payload, (int) auth()->id());
 
             $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
         } else {
@@ -786,41 +772,25 @@ class Team extends Component
 
             $request = new StoreWorkerRequest;
             $validated = $this->validate(
-                [
-                    'workerFirstName' => $request->rules()['first_name'],
-                    'workerLastName' => $request->rules()['last_name'],
-                    'workerEmail' => $request->rules()['email'],
-                    'workerPhone' => $request->rules()['phone'],
-                    'workerIsExternal' => $request->rules()['is_external'],
-                    'workerCompanyName' => $request->rules()['company_name'],
-                    'workerSsin' => $request->rules()['ssin'],
-                    'workerPhoto' => $request->rules()['photo'],
-                ],
-                [
-                    'workerFirstName.required' => __('team.errors.worker_name_required'),
-                    'workerLastName.required' => __('team.errors.worker_name_required'),
-                    'workerEmail.email' => __('team.errors.worker_email_invalid'),
-                    'workerEmail.max' => __('team.errors.worker_email_max'),
-                    'workerPhone.max' => __('team.errors.worker_phone_max'),
-                    'workerCompanyName.max' => __('team.errors.worker_company_name_max'),
-                    'workerSsin.regex' => __('team.errors.worker_ssin_invalid'),
-                    'workerPhoto.image' => __('team.errors.worker_photo_invalid'),
-                    'workerPhoto.mimes' => __('team.errors.worker_photo_invalid'),
-                    'workerPhoto.max' => __('team.errors.worker_photo_max'),
-                ],
+                $this->workerModalValidationRules($request->rules(), $presenceComplianceEnabled),
+                $this->workerModalValidationMessages($presenceComplianceEnabled),
             );
 
             try {
-                $worker = $createWorker->handle($team, [
+                $payload = [
                     'first_name' => $validated['workerFirstName'],
                     'last_name' => $validated['workerLastName'],
                     'email' => $validated['workerEmail'] ?? null,
                     'phone' => $validated['workerPhone'] ?? null,
                     'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                     'company_name' => $validated['workerCompanyName'] ?? null,
-                    'ssin' => preg_replace('/\D+/', '', (string) ($validated['workerSsin'] ?? '')) ?: null,
                     'location_ids' => $this->selectedWorkerLocationIds,
-                ], (int) auth()->id());
+                ];
+                if ($presenceComplianceEnabled) {
+                    $payload['ssin'] = preg_replace('/\D+/', '', (string) ($validated['workerSsin'] ?? '')) ?: null;
+                }
+
+                $worker = $createWorker->handle($team, $payload, (int) auth()->id());
             } catch (InvalidArgumentException $e) {
                 if ($e->getMessage() === 'seat_limit_exceeded') {
                     $this->addError('workerFirstName', __('team.errors.seat_limit'));
@@ -836,6 +806,65 @@ class Team extends Component
 
         $this->cancelWorkerModal();
         $this->dispatch('saved');
+    }
+
+    /**
+     * @param  array<string, mixed>  $requestRules
+     * @return array<string, mixed>
+     */
+    private function workerModalValidationRules(array $requestRules, bool $presenceComplianceEnabled): array
+    {
+        $rules = [
+            'workerFirstName' => $requestRules['first_name'],
+            'workerLastName' => $requestRules['last_name'],
+            'workerEmail' => $requestRules['email'],
+            'workerPhone' => $requestRules['phone'],
+            'workerIsExternal' => $requestRules['is_external'],
+            'workerCompanyName' => $requestRules['company_name'],
+            'workerPhoto' => $requestRules['photo'],
+        ];
+
+        if ($presenceComplianceEnabled) {
+            $rules['workerSsin'] = $requestRules['ssin'];
+        }
+
+        return $rules;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private function workerModalValidationMessages(bool $presenceComplianceEnabled): array
+    {
+        $messages = [
+            'workerFirstName.required' => __('team.errors.worker_name_required'),
+            'workerLastName.required' => __('team.errors.worker_name_required'),
+            'workerEmail.email' => __('team.errors.worker_email_invalid'),
+            'workerEmail.max' => __('team.errors.worker_email_max'),
+            'workerPhone.max' => __('team.errors.worker_phone_max'),
+            'workerCompanyName.max' => __('team.errors.worker_company_name_max'),
+            'workerPhoto.image' => __('team.errors.worker_photo_invalid'),
+            'workerPhoto.mimes' => __('team.errors.worker_photo_invalid'),
+            'workerPhoto.max' => __('team.errors.worker_photo_max'),
+        ];
+
+        if ($presenceComplianceEnabled) {
+            $messages['workerSsin.regex'] = __('team.errors.worker_ssin_invalid');
+        }
+
+        return $messages;
+    }
+
+    private function tenantPresenceComplianceEnabled(): bool
+    {
+        $tenantId = Tenancy::id();
+        if ($tenantId === null) {
+            return false;
+        }
+
+        $tenant = Tenant::query()->find($tenantId);
+
+        return $tenant instanceof Tenant && $tenant->presenceComplianceEnabled();
     }
 
     public function clearWorkerPhotoSelection(): void
@@ -1537,6 +1566,7 @@ class Team extends Component
             'canManageTeams' => $user->can('create', InternalTeam::class),
             'canEditContent' => $user->can('manageContent', InternalTeam::class),
             'hasTimeModule' => $tenant?->hasTimeModule() ?? false,
+            'presenceComplianceEnabled' => $tenant instanceof Tenant && $tenant->presenceComplianceEnabled(),
             'canImportWorkers' => $tenant?->hasCsvWorkersImport() ?? false,
             'roles' => User::ROLES,
             'categories' => $isBackoffice ? collect() : $categories,

@@ -1,9 +1,12 @@
 @props(['alarmCount' => null, 'ciaoFailCount' => null])
 
 @php
-    if ($ciaoFailCount === null) {
+    $tenantId = \App\Support\Tenancy::id();
+    $tenant = $tenantId !== null ? \App\Models\Tenant::query()->find($tenantId) : null;
+    $ciaoEnabled = $tenant instanceof \App\Models\Tenant && $tenant->presenceComplianceEnabled();
+    if ($ciaoEnabled && $ciaoFailCount === null) {
         $ciaoFailCount = app(\App\Actions\Time\CountFailedPresenceSubmissionsAction::class)
-            ->handle((int) (\App\Support\Tenancy::id() ?? 0));
+            ->handle((int) $tenantId);
     }
 @endphp
 
@@ -20,12 +23,14 @@
     <a href="{{ route('time.shifts.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.shifts.*') ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.nav.shifts') }}
     </a>
-    <a href="{{ route('time.ciao.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.ciao.*') ? 'btn--primary' : 'btn--surface'])>
-        {{ __('time.nav.ciao') }}
-        @if ($ciaoFailCount > 0)
-            <span class="wp-pill wp-pill--new wp-time-nav__ciao-count">{{ $ciaoFailCount }}</span>
-        @endif
-    </a>
+    @if ($ciaoEnabled)
+        <a href="{{ route('time.ciao.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.ciao.*') ? 'btn--primary' : 'btn--surface'])>
+            {{ __('time.nav.ciao') }}
+            @if (($ciaoFailCount ?? 0) > 0)
+                <span class="wp-pill wp-pill--new wp-time-nav__ciao-count">{{ $ciaoFailCount }}</span>
+            @endif
+        </a>
+    @endif
     <a href="{{ route('time.clock-points.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.clock-points.*') ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.nav.clock_points') }}
     </a>

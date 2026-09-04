@@ -120,3 +120,24 @@ it('slaat foto op via uitvoerder-modal', function () {
         ->and($worker->photo_path)->not->toBeNull()
         ->and(Storage::disk('public')->exists($worker->photo_path))->toBeTrue();
 });
+
+it('toont rijksregisternummer in uitvoerders-popup alleen bij CIAO', function () {
+    [$tenant, $admin] = workerPhotoTenantWithAdmin();
+    $tenant->update([
+        'has_time_module' => true,
+        'presence_compliance_enabled' => false,
+    ]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openAddWorker', $team->id)
+        ->assertDontSee(__('team.workers.ssin'), false);
+
+    $tenant->update(['presence_compliance_enabled' => true]);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openAddWorker', $team->id)
+        ->assertSee(__('team.workers.ssin'), false);
+});
