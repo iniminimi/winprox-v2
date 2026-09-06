@@ -144,8 +144,8 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Wat is de Time-module / Clock Point?",
-            "body": "Time is de optionele prikklok: uitvoerders klokken in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). De naamlookup op Clock Point is per vestiging: alleen uitvoerders die daar mogen inklokken (of invallerteams) zien hun naam. Collega's met een Prikklok-team klokken in via het gekoppelde uitvoerderprofiel. Clock Point blijft de aanmeld-QR (naam + icoon) ook zonder Time. In de proefperiode is Time inbegrepen. Bij een betaald WinProx-abonnement is het optioneel; u vinkt het aan bij het abonnement. Elke uitvoerder klokt in met één eigen gsm. Beheer of teamleader kan een nieuw toestel toestaan.",
-            "summary": "Time: in-/uitklokken via Clock Point, lookup per vestiging; collega's via Prikklok-team."
+            "body": "Time is de optionele prikklok: uitvoerders klokken in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). De naamlookup op Clock Point is per vestiging: alleen uitvoerders die daar mogen inklokken (of invallerteams) zien hun naam. Collega's met een Prikklok-team klokken in via het gekoppelde uitvoerderprofiel. Clock Point blijft de aanmeld-QR (naam + icoon, optioneel pincode) ook zonder Time. Elke uitvoerder gebruikt één eigen gsm; een ander toestel wordt geweigerd tot beheer (Personen → Teams → Bewerken) of teamleader (portaal) een nieuw toestel toestaat. Optioneel GPS bij de prik: zonder signaal indoor gaat de prik toch door. Te snelle verplaatsing tussen Clock Points (binnen 5 minuten) geeft een alarm. Na aanmelden staat een tegel Evacuatielijst: namen pas na bevestiging dat de raadpleging uitzonderlijk is en wordt gelogd. In de proefperiode is Time inbegrepen. Bij een betaald WinProx-abonnement is het optioneel; u vinkt het aan bij het abonnement.",
+            "summary": "Time: in-/uitklokken via Clock Point, één gsm, optionele PIN/GPS, hop-alarm 5 min, evacuatielijst na bevestiging."
         },
         "esg": {
             "slug": "esg",
@@ -177,7 +177,7 @@
                 },
                 {
                     "title": "Uitvoerder",
-                    "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR; taken starten/afronden via de unit-QR, met foto's en notities."
+                    "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR (naam + icoon, optioneel pincode) op één gsm; taken starten/afronden via de unit-QR, met foto's en notities."
                 }
             ]
         },
@@ -213,7 +213,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Hoe richt ik interne teams in?",
-            "body": "Klein beginnen: één team (bijvoorbeeld Hotel of Faciliteit) en iedereen die taken uitvoert daarin. Ga naar Personen → Teams. Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel teams aan categorieën. Uitvoerders voeg je handmatig toe, of via CSV/Excel. Onder Teams beheer je ook checklists voor unit checks. Print de Clock Point-QR voor de werkvloer (Time → Clock Points).",
+            "body": "Klein beginnen: één team (bijvoorbeeld Hotel of Faciliteit) en iedereen die taken uitvoert daarin. Ga naar Personen → Teams. Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel teams aan categorieën. Uitvoerders voeg je handmatig toe, of via CSV/Excel. Zeldzame acties (teamleader, icoon/gsm/PIN, deactiveren) zitten in **Bewerken**. Onder Teams beheer je ook checklists voor unit checks. Print de Clock Point-QR voor de werkvloer (Time → Clock Points).",
             "summary": "Eén team volstaat om te starten. Personen → Teams; koppel aan categorieën; Clock Point-QR."
         },
         "team_follow_up": {

@@ -20,7 +20,7 @@
 <p>
     WinProx verarbeitet personenbezogene Daten im Auftrag des Kunden im Zusammenhang mit der Nutzung der Plattform für
     Standortmanagement, QR-Meldungen und Nachverfolgung von Issues und Aufgaben sowie — falls aktiviert — optionale
-    Unit-Messungen, ESG-/Compliance-Messungen und IoT Connect (Sensor-Events in den Workflow).
+    Zeiterfassung (Time), Unit-Messungen, ESG-/Compliance-Messungen und IoT Connect (Sensor-Events in den Workflow).
 </p>
 
 <h2>3. Zweck der Verarbeitung</h2>
@@ -34,6 +34,7 @@
     <li>Erfassung von Unit-Messungen (Messwerte per Unit-QR), sofern an Kategorie und Unit aktiviert.</li>
     <li>Verwaltung von Benutzern und internen Teams.</li>
     <li>Verwaltung von Ausführenden (ohne Login) und Zuweisung zu Aufgaben.</li>
+    <li>optionale Zeiterfassung (Time): Ein-/Ausstempeln, Anwesenheit, Gerätebindung, optionales GPS beim Stempeln und protokollierte Einsicht in die Evakuierungsliste.</li>
     <li>Verwaltung von Standorten und Units.</li>
     <li>Versand von E-Mail-Benachrichtigungen im Auftrag des Kunden.</li>
     <li>Protokollierung und Sicherheit.</li>
@@ -49,6 +50,7 @@
     <li>Issue- und Aufgabendaten (einschließlich Fotos und Beschreibungen).</li>
     <li>Unit-Check-Daten (Ergebnis, Zeitpunkt, Unit, optional GPS, Ausführender).</li>
     <li>Daten von Ausführenden und QR-Meldern, soweit vom Kunden erhoben (einschließlich vorübergehender Entwurfsmeldungen bis zur E-Mail-Bestätigung).</li>
+    <li>Time-/Clock-Point-Daten (Anwesenheit, gekoppeltes Gerät, gehashte PIN falls gesetzt, optionales GPS beim Stempeln, Protokoll der Evakuierungslisten-Einsicht).</li>
     <li>Zugangs- und Sitzungsdaten.</li>
     <li>Abonnement- und Zugriffsmetadaten.</li>
     <li>ESG-/Compliance-Daten (Indikatordefinitionen, Messwerte, Verknüpfungen, Schwellennachverfolgung und optionale Zuordnung zu Ausführenden).</li>

@@ -916,7 +916,7 @@
             "actions": [
                 {
                     "label": "Sign in",
-                    "text": "Scan the Clock Point QR sticker and sign in with your first and last name and your personal icon. Two wrong attempts temporarily block your account — a team leader or administrator can release it."
+                    "text": "Scan the Clock Point QR sticker and sign in with your first and last name and your personal icon (optional PIN) on your own phone. Two wrong attempts temporarily block your account — a team leader or administrator can release it."
                 },
                 {
                     "label": "Open tasks",
@@ -1182,7 +1182,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon — no separate login."
+                    "text": "Workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon (optional PIN) on one phone — no separate login."
                 },
                 {
                     "label": "Evacuation list",

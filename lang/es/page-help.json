@@ -916,7 +916,7 @@
             "actions": [
                 {
                     "label": "Iniciar sesión",
-                    "text": "Escanee la pegatina QR Clock Point e inicie sesión con su nombre, apellidos e icono personal. Dos intentos incorrectos bloquean temporalmente su cuenta — un jefe de equipo o administrador puede desbloquearla."
+                    "text": "Escanee la pegatina QR Clock Point e inicie sesión con su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Dos intentos incorrectos bloquean temporalmente su cuenta — un jefe de equipo o administrador puede desbloquearla."
                 },
                 {
                     "label": "Tareas abiertas",
@@ -1182,7 +1182,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Los trabajadores fichan mediante la pegatina QR en un clock point (<code>/time/…</code>)."
+                    "text": "Los trabajadores fichan mediante la pegatina QR en un clock point (<code>/time/…</code>). Identificación con nombre e icono (PIN opcional) en un solo móvil — sin inicio de sesión aparte."
                 },
                 {
                     "label": "Lista de evacuación",

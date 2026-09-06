@@ -10,6 +10,7 @@
     <li>gestion de session (notamment cookie de session Laravel).</li>
     <li>sécurité (notamment jeton CSRF ou XSRF).</li>
     <li>préférence de langue et fonctionnalité de connexion, y compris l’état temporaire pour Se connecter avec Microsoft (via la session).</li>
+    <li>portail Clock Point : un cookie d’appareil essentiel (environ 1 an) pour reconnaître un téléphone par exécutant.</li>
 </ul>
 
 <p>

@@ -916,7 +916,7 @@
             "actions": [
                 {
                     "label": "Anmelden",
-                    "text": "Scannen Sie den Clock Point QR-Aufkleber und melden Sie sich mit Vor- und Nachname und Ihrem persönlichen Icon an. Zwei falsche Versuche sperren Ihr Konto vorübergehend — ein Teamleiter oder Administrator kann das freigeben."
+                    "text": "Scannen Sie den Clock Point QR-Aufkleber und melden Sie sich mit Vor- und Nachname und Ihrem persönlichen Icon (optional PIN) auf Ihrem eigenen Handy an. Zwei falsche Versuche sperren Ihr Konto vorübergehend — ein Teamleiter oder Administrator kann das freigeben."
                 },
                 {
                     "label": "Offene Aufgaben",
@@ -1182,7 +1182,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Mitarbeiter stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>)."
+                    "text": "Mitarbeiter stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>). Identifikation mit Name und Symbol (optional PIN) auf einem Handy — keine separate Anmeldung."
                 },
                 {
                     "label": "Evakuierungsliste",

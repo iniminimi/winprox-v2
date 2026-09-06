@@ -68,7 +68,10 @@
                 "Iniciar/detener pausas",
                 "Panel de presencia y alarmas",
                 "Listas de turnos y exportar/imprimir",
-                "Misma identidad de trabajador (nombre + icono) que Facility"
+                "Misma identidad de trabajador (nombre + icono) que Facility",
+                "Un móvil por trabajador, PIN y GPS opcionales",
+                "Lista de evacuación en Clock Point tras confirmación",
+                "Alarma al saltar entre Clock Points en menos de 5 min"
             ]
         },
         "audience": {

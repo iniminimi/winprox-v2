@@ -10,6 +10,7 @@
     <li>sessiebeheer (o.a. Laravel-sessiecookie).</li>
     <li>beveiliging (o.a. CSRF- of XSRF-token).</li>
     <li>taalvoorkeur en aanmeldfunctionaliteit, inclusief de tijdelijke status voor Inloggen met Microsoft (via de sessie).</li>
+    <li>Clock Point-portaal: een noodzakelijke toestelcookie (circa 1 jaar) zodat één gsm per uitvoerder herkend wordt.</li>
 </ul>
 
 <p>

@@ -19,8 +19,8 @@
 
 <p>
     WinProx traite des données personnelles sur instruction du client dans le cadre de l’utilisation de la plateforme pour
-    la gestion de sites, les signalements QR et le suivi des issues et tâches, et — si activé — des mesures
-    mesures d’unité, ESG/conformité en option et IoT Connect (événements capteurs vers le workflow).
+    la gestion de sites, les signalements QR et le suivi des issues et tâches, et — si activé — le pointage
+    optionnel (Time), des mesures d’unité, ESG/conformité en option et IoT Connect (événements capteurs vers le workflow).
 </p>
 
 <h2>3. Finalité du traitement</h2>
@@ -34,6 +34,7 @@
     <li>enregistrement des mesures d’unité (relevés via QR d’unité), si activées sur catégorie et unité.</li>
     <li>gestion des utilisateurs et équipes internes.</li>
     <li>gestion des exécutants (sans connexion) et affectation aux tâches.</li>
+    <li>pointage optionnel (Time) : entrée/sortie, présence, liaison d’appareil, GPS optionnel à la pointe, et consultations enregistrées de la liste d’évacuation.</li>
     <li>gestion des sites et unités.</li>
     <li>envoi de notifications par e-mail sur instruction du client.</li>
     <li>journalisation et sécurité.</li>
@@ -49,6 +50,7 @@
     <li>données d’issues et de tâches (y compris photos et descriptions).</li>
     <li>données de contrôle d’unité (résultat, horodatage, unité, GPS optionnel, exécutant).</li>
     <li>données des exécutants et des personnes signalant via QR, dans la mesure collectées par le client (y compris les brouillons temporaires en attente de confirmation e-mail).</li>
+    <li>données Time/Clock Point (présence, appareil lié, PIN haché le cas échéant, GPS optionnel à la pointe, audit des consultations de la liste d’évacuation).</li>
     <li>données d’accès et de session.</li>
     <li>métadonnées d’abonnement et d’accès.</li>
     <li>données ESG/conformité (définitions d’indicateurs, valeurs de mesure, liens, suivi des seuils et attribution optionnelle aux exécutants).</li>

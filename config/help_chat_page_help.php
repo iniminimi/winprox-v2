@@ -154,6 +154,20 @@ return [
         ],
         [
             'patterns' => [
+                'nieuw toestel', 'new device', 'neues gerät', 'nouvel appareil',
+                'nuevo dispositivo', 'nuovo dispositivo',
+                'pincode', 'pin code', 'code pin',
+            ],
+            'page' => 'team.teams',
+        ],
+        [
+            'patterns' => [
+                'evacuatie', 'evacuation', 'évacuation', 'evakuierung', 'evacuación', 'evacuazione',
+            ],
+            'page' => 'time.presence',
+        ],
+        [
+            'patterns' => [
                 'uitvoerder', 'worker', 'teamleider', 'teamleader', 'operationeel team',
                 'checklist', 'clock point',
             ],

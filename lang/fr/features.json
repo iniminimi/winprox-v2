@@ -68,7 +68,10 @@
                 "Démarrer/arrêter les pauses",
                 "Tableau de présence et alertes",
                 "Listes de shifts et export/impression",
-                "Même identité ouvrier (nom + icône) que Facility"
+                "Même identité ouvrier (nom + icône) que Facility",
+                "Un téléphone par exécutant, PIN et GPS optionnels",
+                "Liste d’évacuation sur Clock Point après confirmation",
+                "Alarme si hop entre Clock Points en moins de 5 min"
             ]
         },
         "audience": {

@@ -14,6 +14,7 @@ This is a working draft for legal validation under **Belgian / EU** data protect
 | Users and authentication | Name, email, role | Controller | Processor | Tenant decides who is invited |
 | Buildings and units | Address, identifiers | Controller | Processor | Operational property data |
 | Issues and tasks | Reports, descriptions, status | Controller | Processor | Maintenance workflow data |
+| Time / Clock Point | Shifts, bound device, hashed PIN, optional GPS, evacuation-list views | Controller | Processor | Optional punch clock; one phone per worker |
 | Owner records | Name, email, phone | Controller | Processor | Contact data for owner communication |
 | Owner notification emails | Subject/body, recipients, send logs | Controller | Processor | Sent on tenant instruction |
 | Activity logs | Actor, action, timestamps | Controller | Processor | Security and audit purpose |

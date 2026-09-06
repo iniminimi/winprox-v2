@@ -140,8 +140,8 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Was ist das Time-Modul / Clock Point?",
-            "body": "Time ist die optionale Stempeluhr: Ein-/Ausstempeln über die Clock-Point-QR (Pausen und Schichten inklusive). Namensuche am Clock Point pro Standort: nur berechtigte Ausführende (oder Springer-Teams) sehen ihren Namen. Kollegen mit Stempeluhr-Team stempeln über das verknüpfte Profil ein. Clock Point bleibt die Anmelde-QR (Name + Symbol) auch ohne Time. In der Testphase ist Time enthalten; im bezahlten Abo optional. Jede Person stempelt mit einem eigenen Handy. Verwaltung oder Teamleiter können ein neues Gerät zulassen.",
-            "summary": "Time: Ein-/Ausstempeln via Clock Point, Suche pro Standort; Kollegen via Stempeluhr-Team."
+            "body": "Time ist die optionale Stechuhr: Ein-/Ausstempeln über den Clock-Point-QR (Pausen und Schichten inklusive). Namensuche pro Standort: nur dort zugelassene Ausführende (oder Springer-Teams) sehen ihren Namen. Kollegen mit Stempeluhr-Team stempeln über das verknüpfte Ausführenden-Profil. Clock Point bleibt der Anmelde-QR (Name + Symbol, optionale PIN) auch ohne Time. Jeder Ausführende nutzt ein eigenes Handy; ein anderes Gerät wird abgelehnt, bis Verwaltung (Personen → Teams → Bearbeiten) oder Teamleiter (Portal) ein neues Gerät zulässt. Optionales GPS beim Stempeln: ohne Signal indoor geht der Stempel trotzdem durch. Zu schnelles Wechseln zwischen Clock Points (innerhalb von 5 Minuten) löst einen Alarm aus. Nach der Anmeldung gibt es die Kachel Evakuierungsliste: Namen erst nach Bestätigung, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird. In der Testphase enthalten; danach optional auf dem bezahlten Abo.",
+            "summary": "Time: Stempeln über Clock Point, ein Handy, optionale PIN/GPS, Hop-Alarm 5 Min., Evakuierungsliste nach Bestätigung."
         },
         "esg": {
             "slug": "esg",
@@ -173,7 +173,7 @@
                 },
                 {
                     "title": "Ausführender",
-                    "text": "Arbeitet ohne WinProx-Login. Meldet sich über Clock-Point-QR an; startet/schließt Aufgaben über den Unit-QR, mit Fotos und Notizen."
+                    "text": "Arbeitet ohne WinProx-Login. Anmeldung über Clock-Point-QR (Name + Symbol, optionale PIN) auf einem Handy; Aufgaben starten/abschließen über den Unit-QR, mit Fotos und Notizen."
                 }
             ]
         },
@@ -209,7 +209,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Wie richte ich interne Teams ein?",
-            "body": "Klein starten: ein Team (zum Beispiel Hotel oder Facility) und alle, die Aufgaben ausführen. Gehen Sie zu Personen → Teams. Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie Teams mit Kategorien. Ausführende manuell oder per CSV/Excel. Unter Teams verwalten Sie auch Checklisten für Unit-Checks. Drucken Sie den Clock-Point-QR für die Fläche (Time → Clock Points).",
+            "body": "Klein starten: ein Team (zum Beispiel Hotel oder Facility) und alle, die Aufgaben ausführen. Gehen Sie zu Personen → Teams. Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie Teams mit Kategorien. Ausführende manuell oder per CSV/Excel. Seltene Aktionen (Teamleiter, Symbol/Handy/PIN, deaktivieren) stehen unter **Bearbeiten**. Unter Teams verwalten Sie auch Checklisten für Unit-Checks. Drucken Sie den Clock-Point-QR für die Fläche (Time → Clock Points).",
             "summary": "Ein Team reicht zum Start. Personen → Teams; mit Kategorien verknüpfen; Clock-Point-QR."
         },
         "team_follow_up": {

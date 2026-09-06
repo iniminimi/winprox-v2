@@ -1,8 +1,8 @@
 <h2>1. Qui sommes-nous</h2>
 <p>
     WinProx (« Work in Proximity ») est une plateforme SaaS de gestion technique et opérationnelle de sites :
-    signalements par QR, suivi des issues et des tâches pour les équipes opérationnelles internes, et enregistrement
-    mesures d’unité, ESG/conformité en option ainsi qu’IoT Connect (événements capteurs vers le workflow).
+    signalements par QR, suivi des issues et des tâches pour les équipes opérationnelles internes, et
+    Time (pointeuse) en option, mesures d’unité, ESG/conformité en option ainsi qu’IoT Connect (événements capteurs vers le workflow).
 </p>
 <p>
     La plateforme est exploitée par :
@@ -74,9 +74,20 @@
     <li>nom ou nom d’affichage.</li>
     <li>coordonnées (par ex. adresse e-mail), si saisies par le client.</li>
     <li>affectation aux tâches au sein des équipes internes.</li>
+    <li>icône personnelle pour l’identification Clock Point.</li>
+    <li>appareil lié (un téléphone par exécutant) et, le cas échéant, un code PIN haché.</li>
 </ul>
 <p>
     Ces données sont gérées par le client / administrateur. WinProx n’exerce aucun contrôle de fond sur ce que le client saisit.
+</p>
+<p><strong>Time (pointeuse optionnelle) et Clock Point</strong></p>
+<p>
+    Les exécutants s’identifient via la QR Clock Point (nom + icône, PIN optionnel). WinProx lie un téléphone par exécutant.
+    Un autre appareil est refusé jusqu’à libération par le client (admin ou chef d’équipe).
+    Avec Time, WinProx conserve les heures d’entrée/sortie, les pauses et la présence ; GPS optionnel à la pointe
+    (sans signal en intérieur, la pointe passe). Sur le portail Clock Point, un exécutant identifié peut, après
+    confirmation, consulter la liste d’évacuation de qui est pointé ; chaque consultation est enregistrée
+    (prénom, nom, date et heure de la personne qui consulte).
 </p>
 
 <p><strong>Signalements QR</strong></p>

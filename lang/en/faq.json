@@ -144,8 +144,8 @@
             "slug": "time_clock",
             "type": "text",
             "title": "What is the Time module / Clock Point?",
-            "body": "Time is the optional punch clock: workers clock in and out via the Clock Point QR (breaks and shifts included). Name lookup on Clock Point is per location: only workers allowed there (or floater teams) see their name. Colleagues with a punch-clock team clock in via the linked worker profile. Clock Point remains the sign-in QR (name + icon) even without Time. Time is included in the trial. On a paid WinProx plan it is optional; tick it on the subscription. Each worker clocks in with one personal phone. An admin or team leader can allow a new device.",
-            "summary": "Time: clock in/out via Clock Point, lookup per location; colleagues via punch-clock team."
+            "body": "Time is the optional punch clock: workers clock in and out via the Clock Point QR (breaks and shifts included). Name lookup on Clock Point is per location: only workers allowed there (or floater teams) see their name. Colleagues with a punch-clock team clock in via the linked worker profile. Clock Point remains the sign-in QR (name + icon, optional PIN) even without Time. Each worker uses one personal phone; another device is refused until an admin (People → Teams → Edit) or team leader (portal) allows a new device. Optional GPS at the punch: without a signal indoors the punch still goes through. Moving between Clock Points too quickly (within 5 minutes) raises an alarm. After sign-in there is an Evacuation list tile: names only after confirming that the consultation is exceptional and is logged. Time is included in the trial. On a paid WinProx plan it is optional; tick it on the subscription.",
+            "summary": "Time: clock in/out via Clock Point, one phone, optional PIN/GPS, 5-min hop alarm, evacuation list after confirmation."
         },
         "esg": {
             "slug": "esg",
@@ -177,7 +177,7 @@
                 },
                 {
                     "title": "Field worker",
-                    "text": "Works without a WinProx login. Signs in via Clock Point QR; starts/completes tasks via the unit QR, with photos and notes."
+                    "text": "Works without a WinProx login. Signs in via Clock Point QR (name + icon, optional PIN) on one phone; starts/completes tasks via the unit QR, with photos and notes."
                 }
             ]
         },
@@ -213,7 +213,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "How do I set up internal teams?",
-            "body": "Start small: one team (for example Hotel or Facility) and everyone who carries out tasks in it. Go to People → Teams. A team leader is not required. Extra teams only if there are genuinely separate groups. Link teams to categories. Add workers manually, or via CSV/Excel. Under Teams you also manage unit-check checklists. Print the Clock Point QR for the floor (Time → Clock Points).",
+            "body": "Start small: one team (for example Hotel or Facility) and everyone who carries out tasks in it. Go to People → Teams. A team leader is not required. Extra teams only if there are genuinely separate groups. Link teams to categories. Add workers manually, or via CSV/Excel. Rare actions (team leader, icon/phone/PIN, deactivate) are in **Edit**. Under Teams you also manage unit-check checklists. Print the Clock Point QR for the floor (Time → Clock Points).",
             "summary": "One team is enough to start. People → Teams; link to categories; Clock Point QR."
         },
         "team_follow_up": {

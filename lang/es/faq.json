@@ -140,8 +140,8 @@
             "slug": "time_clock",
             "type": "text",
             "title": "¿Qué es el módulo Time / Clock Point?",
-            "body": "Time es el fichaje opcional: entrada/salida vía QR Clock Point (pausas y turnos incluidos). La búsqueda de nombre en Clock Point es por sede: solo quienes pueden fichar allí (o equipos de relevo). Colegas con equipo de fichaje fichan con el perfil vinculado. Clock Point sigue siendo la QR de identificación (nombre + icono) también sin Time. Incluido en la prueba; opcional en el plan de pago. Cada ejecutor ficha con un móvil propio. Un admin o responsable puede autorizar un dispositivo nuevo.",
-            "summary": "Time: fichaje vía Clock Point, búsqueda por sede; colegas vía equipo de fichaje."
+            "body": "Time es el reloj de fichar opcional: entrada/salida por el QR Clock Point (pausas y turnos incluidos). La búsqueda de nombre es por sede: solo los trabajadores autorizados (o equipos flotantes) ven su nombre. Los colegas con equipo de fichaje fichan con el perfil vinculado. Clock Point sigue siendo el QR de identificación (nombre + icono, PIN opcional) también sin Time. Cada trabajador usa un móvil propio; otro dispositivo se rechaza hasta que un admin (Personas → Equipos → Editar) o un jefe de equipo (portal) permita uno nuevo. GPS opcional al fichar: sin señal en interior, el fichaje sigue. Un salto demasiado rápido entre Clock Points (menos de 5 minutos) genera una alarma. Tras identificarse hay una ficha Lista de evacuación: los nombres solo tras confirmar que la consulta es excepcional y se registra. Incluido en la prueba; opcional en el plan de pago.",
+            "summary": "Time: fichaje por Clock Point, un móvil, PIN/GPS opcionales, alarma de salto 5 min, lista de evacuación tras confirmación."
         },
         "esg": {
             "slug": "esg",
@@ -173,7 +173,7 @@
                 },
                 {
                     "title": "Operario",
-                    "text": "Trabaja sin login WinProx. Se registra vía QR Clock Point; inicia/completa tareas vía el QR de unit, con fotos y notas."
+                    "text": "Trabaja sin inicio de sesión WinProx. Se identifica con el QR Clock Point (nombre + icono, PIN opcional) en un móvil; inicia/cierra tareas con el QR de unidad, con fotos y notas."
                 }
             ]
         },
@@ -209,7 +209,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "¿Cómo configuro equipos internos?",
-            "body": "Empiece en pequeño: un equipo (por ejemplo Hotel o Facility) y todos los que ejecutan tareas. Vaya a Personas → Teams. No hace falta un jefe de equipo. Más equipos solo si hay grupos realmente distintos. Vincule equipos a categorías. Añada operarios a mano o por CSV/Excel. En Teams también gestiona las listas de unit check. Imprima el QR Clock Point para el terreno (Time → Clock Points).",
+            "body": "Empiece en pequeño: un equipo (por ejemplo Hotel o Facility) y todos los que ejecutan tareas. Vaya a Personas → Teams. No hace falta un jefe de equipo. Más equipos solo si hay grupos realmente distintos. Vincule equipos a categorías. Añada operarios a mano o por CSV/Excel. Las acciones poco frecuentes (jefe de equipo, icono/móvil/PIN, desactivar) están en **Editar**. En Teams también gestiona las listas de unit check. Imprima el QR Clock Point para el terreno (Time → Clock Points).",
             "summary": "Un equipo basta para empezar. Personas → Teams; vincular a categorías; QR Clock Point."
         },
         "team_follow_up": {

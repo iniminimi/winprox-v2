@@ -65,7 +65,11 @@ return [
             'body_key' => 'faq.items.photos.summary',
         ],
         [
-            'patterns' => ['time', 'klokken', 'inchecken', 'uitchecken', 'clock', 'pauze', 'shift', 'stempeln', 'fichaje', 'pointage'],
+            'patterns' => [
+                'time', 'klokken', 'inchecken', 'uitchecken', 'clock', 'pauze', 'shift', 'stempeln', 'fichaje', 'pointage',
+                'evacuatie', 'evacuation', 'évacuation', 'evakuierung', 'evacuación',
+                'pincode', 'pin code', 'nieuw toestel', 'new device',
+            ],
             'body_key' => 'faq.items.time_clock.summary',
         ],
         [

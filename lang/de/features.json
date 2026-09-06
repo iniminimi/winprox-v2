@@ -68,7 +68,10 @@
                 "Pausen starten/stoppen",
                 "Anwesenheitstafel und Alarme",
                 "Schichtlisten und Export/Druck",
-                "Gleiche Mitarbeiteridentität (Name + Icon) wie Facility"
+                "Gleiche Mitarbeiteridentität (Name + Icon) wie Facility",
+                "Ein Handy pro Ausführendem, optionale PIN und GPS",
+                "Evakuierungsliste am Clock Point nach Bestätigung",
+                "Alarm bei Hop zwischen Clock Points innerhalb von 5 Min."
             ]
         },
         "audience": {

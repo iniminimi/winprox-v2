@@ -1,8 +1,8 @@
 <h2>1. Quiénes somos</h2>
 <p>
     WinProx («Work in Proximity») es una plataforma SaaS para la gestión técnica y operativa de instalaciones:
-    informes de incidencias mediante QR y seguimiento de tareas para equipos operativos internos, y registro
-    mediciones de unidad, ESG/cumplimiento opcional e IoT Connect (eventos de sensores al flujo de trabajo).
+    informes de incidencias mediante QR y seguimiento de tareas para equipos operativos internos, y
+    Time (reloj de fichaje) opcional, mediciones de unidad, ESG/cumplimiento opcional e IoT Connect (eventos de sensores al flujo de trabajo).
 </p>
 <p>
     La plataforma está operada por:
@@ -74,9 +74,20 @@
     <li>nombre o nombre visible</li>
     <li>datos de contacto (como la dirección de correo electrónico), cuando los introduce el cliente</li>
     <li>asignación a tareas dentro de equipos internos</li>
+    <li>icono personal para identificarse en Clock Point</li>
+    <li>dispositivo vinculado (un móvil por trabajador) y, si se configura, un PIN hasheado</li>
 </ul>
 <p>
     Estos datos los gestiona el cliente / administrador. WinProx no tiene control sustancial sobre lo que introduce el cliente.
+</p>
+<p><strong>Time (reloj de fichar opcional) y Clock Point</strong></p>
+<p>
+    Los trabajadores se identifican con el QR Clock Point (nombre + icono, PIN opcional). WinProx vincula un móvil
+    por trabajador. Otro dispositivo se rechaza hasta que el cliente lo libere (admin o jefe de equipo).
+    Con Time, WinProx guarda horas de entrada/salida, pausas y presencia; GPS opcional al fichar
+    (sin señal en interior, el fichaje sigue). En el portal Clock Point, un trabajador identificado puede,
+    tras confirmación, consultar la lista de evacuación de quién está fichado; cada consulta se registra
+    (nombre, apellidos, fecha y hora de quien consulta).
 </p>
 
 <p><strong>Informes QR</strong></p>

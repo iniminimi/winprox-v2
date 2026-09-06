@@ -68,7 +68,10 @@
                 "Pauzes starten/stoppen",
                 "Aanwezigheidsbord en alarmen",
                 "Shiftlijsten en export/print",
-                "Zelfde worker-identiteit (naam + icoon) als facility"
+                "Zelfde worker-identiteit (naam + icoon) als facility",
+                "Eén gsm per uitvoerder, optionele PIN en GPS",
+                "Evacuatielijst op Clock Point na bevestiging",
+                "Alarm bij hop tussen Clock Points binnen 5 min"
             ]
         },
         "audience": {

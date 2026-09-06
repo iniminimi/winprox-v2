@@ -464,7 +464,7 @@
             "actions": [
                 {
                     "label": "Collega-gebruikers",
-                    "text": "Beheer administratieve medewerkers die vooral op een pc werken. Zij melden zich aan met e-mail en wachtwoord, of via **Aanmelden met Microsoft** (het Microsoft-e-mailadres moet overeenkomen met het bestaande WinProx-account; er wordt geen nieuw account aangemaakt). Een beheerder is de hoofdgebruiker die bedrijfsgegevens kan wijzigen. Meerdere beheerders zijn mogelijk. Collega's (beheerder en medewerker) en uitvoerders delen het plaatslimiet van je abonnement. Uitvoerders gebruiken geen Microsoft-aanmelding (Clock Point-QR). Optioneel wijs je collega's vestigingen toe (leeg = alle vestigingen in de backoffice)."
+                    "text": "Beheer administratieve medewerkers die vooral op een pc werken. Zij melden zich aan met e-mail en wachtwoord, of via **Inloggen met Microsoft** (het Microsoft-e-mailadres moet overeenkomen met het bestaande WinProx-account; er wordt geen nieuw account aangemaakt). Een beheerder is de hoofdgebruiker die bedrijfsgegevens kan wijzigen. Meerdere beheerders zijn mogelijk. Collega's (beheerder en medewerker) en uitvoerders delen het plaatslimiet van je abonnement. Uitvoerders gebruiken geen Microsoft-aanmelding (Clock Point-QR). Optioneel wijs je collega's vestigingen toe (leeg = alle vestigingen in de backoffice)."
                 },
                 {
                     "label": "Prikklok-team (collega's)",
@@ -916,7 +916,7 @@
             "actions": [
                 {
                     "label": "Inloggen",
-                    "text": "Scan de Clock Point QR-sticker en meld je aan met je voor- en achternaam en je persoonlijke icoon. Twee foute pogingen blokkeren je account tijdelijk — een teamleider of beheerder kan dat vrijgeven."
+                    "text": "Scan de Clock Point QR-sticker en meld je aan met je voor- en achternaam en je persoonlijke icoon (optioneel pincode) op je eigen gsm. Twee foute pogingen blokkeren je account tijdelijk — een teamleider of beheerder kan dat vrijgeven."
                 },
                 {
                     "label": "Open taken",
@@ -1182,7 +1182,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Medewerkers klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon — geen aparte login."
+                    "text": "Medewerkers klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon (optioneel pincode) op één gsm — geen aparte login."
                 },
                 {
                     "label": "Evacuatielijst",

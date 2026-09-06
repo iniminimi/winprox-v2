@@ -68,7 +68,10 @@
                 "Start/stop breaks",
                 "Presence board and alarms",
                 "Shift lists and export/print",
-                "Same worker identity (name + icon) as facility"
+                "Same worker identity (name + icon) as facility",
+                "One phone per worker, optional PIN and GPS",
+                "Evacuation list on Clock Point after confirmation",
+                "Alarm when hopping Clock Points within 5 min"
             ]
         },
         "audience": {

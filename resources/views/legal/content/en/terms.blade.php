@@ -8,7 +8,7 @@
 <p>
     WinProx (“Work in Proximity”) is a SaaS platform for technical and operational site management:
     QR issue reporting and task follow-up for internal operational teams, and optional
-    unit measurements, optional ESG/compliance recording and IoT Connect (sensor events into workflow).
+    Time (punch clock), unit measurements, optional ESG/compliance recording and IoT Connect (sensor events into workflow).
 </p>
 
 <h2>2. Service provider identity</h2>
@@ -24,6 +24,7 @@
     <li>register issues, including via QR portals.</li>
     <li>manage and follow up tasks.</li>
     <li>assign work to internal teams and workers.</li>
+    <li>optionally use Time (punch clock): clock in/out via Clock Point QR, with one device bound per worker.</li>
     <li>optionally record and follow up ESG/compliance measurements (if the module is enabled).</li>
     <li>record unit measurements (readings via unit QR) when enabled on category and unit.</li>
     <li>optionally use IoT Connect: link gateways/sensors so alarms and (where applicable) measurements start workflow in WinProx.</li>

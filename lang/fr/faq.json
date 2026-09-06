@@ -140,8 +140,8 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Qu'est-ce que le module Time / Clock Point ?",
-            "body": "Time est la pointeuse optionnelle : entrée/sortie via la QR Clock Point (pauses et shifts inclus). La recherche de nom sur Clock Point est par site : seuls les exécutants autorisés (ou équipes volantes) voient leur nom. Collègues avec équipe pointeuse pointent via le profil lié. Clock Point reste la QR d'identification (nom + icône) aussi sans Time. Inclus à l'essai ; optionnel sur l'abonnement payant. Chaque exécutant pointe avec un téléphone personnel. Un admin ou chef d'équipe peut autoriser un nouvel appareil.",
-            "summary": "Time : pointage via Clock Point, recherche par site ; collègues via équipe pointeuse."
+            "body": "Time est la pointeuse optionnelle : entrée/sortie via la QR Clock Point (pauses et shifts inclus). La recherche de nom est par site : seuls les exécutants autorisés (ou équipes volantes) voient leur nom. Les collègues avec équipe pointeuse pointent via le profil lié. Clock Point reste la QR d’identification (nom + icône, code PIN optionnel) aussi sans Time. Chaque exécutant utilise un téléphone personnel ; un autre appareil est refusé jusqu’à ce qu’un admin (Personnes → Équipes → Modifier) ou un chef d’équipe (portail) autorise un nouvel appareil. GPS optionnel à la pointe : sans signal en intérieur, la pointe passe quand même. Un déplacement trop rapide entre Clock Points (moins de 5 minutes) déclenche une alarme. Après connexion, une tuile Liste d’évacuation : les noms seulement après confirmation que la consultation est exceptionnelle et enregistrée. Inclus à l’essai ; optionnel sur l’abonnement payant.",
+            "summary": "Time : pointage Clock Point, un téléphone, PIN/GPS optionnels, alarme de hop 5 min, liste d’évacuation après confirmation."
         },
         "esg": {
             "slug": "esg",
@@ -173,7 +173,7 @@
                 },
                 {
                     "title": "Exécutant",
-                    "text": "Travaille sans connexion WinProx. S'enregistre via QR Clock Point ; démarre/clôture les tâches via le QR unité, avec photos et notes."
+                    "text": "Travaille sans connexion WinProx. Identification via QR Clock Point (nom + icône, PIN optionnel) sur un téléphone ; démarre/termine les tâches via le QR unité, avec photos et notes."
                 }
             ]
         },
@@ -209,7 +209,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Comment configurer les équipes internes ?",
-            "body": "Commencez petit : une équipe (par exemple Hôtel ou Facility) et toutes les personnes qui exécutent des tâches. Allez dans Personnes → Équipes. Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez les équipes aux catégories. Ajoutez les exécutants à la main, ou via CSV/Excel. Sous Équipes vous gérez aussi les listes de contrôle unit check. Imprimez le QR Clock Point pour le terrain (Time → Clock Points).",
+            "body": "Commencez petit : une équipe (par exemple Hôtel ou Facility) et toutes les personnes qui exécutent des tâches. Allez dans Personnes → Équipes. Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez les équipes aux catégories. Ajoutez les exécutants à la main, ou via CSV/Excel. Les actions rares (chef d’équipe, icône/téléphone/PIN, désactiver) sont dans **Modifier**. Sous Équipes vous gérez aussi les listes de contrôle unit check. Imprimez le QR Clock Point pour le terrain (Time → Clock Points).",
             "summary": "Une équipe suffit pour démarrer. Personnes → Équipes ; lier aux catégories ; QR Clock Point."
         },
         "team_follow_up": {

@@ -20,7 +20,7 @@
 <p>
     WinProx tratta dati personali seguendo le istruzioni del cliente in relazione all'utilizzo della piattaforma per
     la gestione degli impianti, la segnalazione di problematiche tramite QR e il follow-up di problematiche e attività, e — se
-    attivato — misurazioni misurazioni unità, ESG/conformità opzionali e IoT Connect (eventi sensore nel flusso di lavoro).
+    attivato — timbratura opzionale (Time), misurazioni unità, ESG/conformità opzionali e IoT Connect (eventi sensore nel flusso di lavoro).
 </p>
 
 <h2>3. Finalità del trattamento</h2>
@@ -32,6 +32,7 @@
     <li>registrazione dei controlli unità (OK/Non OK via QR unità), se attivati su categoria e unità.</li>
     <li>gestione di utenti e team interni.</li>
     <li>gestione di lavoratori (senza accesso) e assegnazione ad attività.</li>
+    <li>timbratura opzionale (Time): ingresso/uscita, presenza, associazione dispositivo, GPS opzionale alla timbratura e consultazioni registrate dell’elenco evacuazione.</li>
     <li>gestione di sedi e unità.</li>
     <li>invio di notifiche e-mail seguendo le istruzioni del cliente.</li>
     <li>registrazione delle attività e sicurezza.</li>
@@ -47,6 +48,7 @@
     <li>dati di problematiche e attività (inclusi foto e descrizioni).</li>
     <li>dati di controllo unità (risultato, orario, unità, GPS opzionale, esecutore).</li>
     <li>dati di lavoratori e segnalanti QR, nella misura in cui raccolti dal cliente (incluse bozze temporanee in attesa di conferma e-mail).</li>
+    <li>dati Time/Clock Point (presenza, dispositivo associato, PIN con hash se impostato, GPS opzionale alla timbratura, audit delle consultazioni dell’elenco evacuazione).</li>
     <li>dati di accesso e sessione.</li>
     <li>metadati di abbonamento e accesso.</li>
     <li>dati ESG/conformità (definizioni degli indicatori, valori di misurazione, collegamenti, follow-up soglie e attribuzione opzionale ai lavoratori).</li>

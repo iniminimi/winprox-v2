@@ -10,6 +10,7 @@
     <li>session management (including the Laravel session cookie).</li>
     <li>security (including CSRF or XSRF token).</li>
     <li>language preference and login functionality, including the temporary state for Sign in with Microsoft (via the session).</li>
+    <li>Clock Point portal: an essential device cookie (about 1 year) so one phone per worker can be recognised.</li>
 </ul>
 
 <p>

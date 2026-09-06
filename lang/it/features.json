@@ -68,7 +68,10 @@
                 "Avviare/fermare pause",
                 "Bacheca presenze e allarmi",
                 "Elenchi turni ed export/stampa",
-                "Stessa identità operatore (nome + icona) di Facility"
+                "Stessa identità operatore (nome + icona) di Facility",
+                "Un telefono per esecutore, PIN e GPS opzionali",
+                "Elenco evacuazione su Clock Point dopo conferma",
+                "Allarme se si salta tra Clock Point entro 5 min"
             ]
         },
         "audience": {

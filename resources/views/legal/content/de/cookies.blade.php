@@ -10,6 +10,7 @@
     <li>Sitzungsverwaltung (u. a. Laravel-Sitzungscookie).</li>
     <li>Sicherheit (u. a. CSRF- oder XSRF-Token).</li>
     <li>Spracheinstellung und Anmeldefunktion, einschließlich des temporären Status für Mit Microsoft anmelden (über die Sitzung).</li>
+    <li>Clock-Point-Portal: ein erforderliches Geräte-Cookie (ca. 1 Jahr), damit ein Handy pro Ausführendem erkannt wird.</li>
 </ul>
 
 <p>

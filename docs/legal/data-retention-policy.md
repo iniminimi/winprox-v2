@@ -20,6 +20,7 @@ This policy is a draft and requires legal approval.
 | Issues/tasks | Reports, statuses, notes | Contract period + 36 months | Archive or delete |
 | ESG measurements | Indicator definitions, values, thresholds, follow-up tasks, API/webhooks | Contract period + 36 months | Delete with related records |
 | IoT Connect | Gateway/sensor metadata, alarm rules, event records (not time-series) | Contract period + 36 months | Delete with tenant / related workflow records |
+| Time / Clock Point | Shifts, breaks, bound device, hashed PIN, optional GPS at punch, evacuation-list views | Contract period + 36 months | Delete with tenant / related records |
 | Issue translations | AI-generated translations of issue descriptions | Contract period + 36 months | Delete with parent issue |
 | Owner contacts | Name, email, phone | While linked + 24 months | Delete if no legal need remains |
 | Notification logs | Sent/failed recipients, subject | 24 months | Delete or aggregate stats only |

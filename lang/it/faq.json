@@ -140,8 +140,8 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Cos'è il modulo Time / Clock Point?",
-            "body": "Time è la timbratura opzionale: entrata/uscita via QR Clock Point (pause e turni inclusi). La ricerca nome su Clock Point è per sede: solo chi può timbrare lì (o team di sostituzione). Colleghi con team timbratura timbrano con il profilo collegato. Clock Point resta la QR di accesso (nome + icona) anche senza Time. Incluso nella prova; opzionale nel piano a pagamento. Ogni esecutore timbra con un telefono personale. Un admin o team leader può autorizzare un nuovo dispositivo.",
-            "summary": "Time: timbratura via Clock Point, ricerca per sede; colleghi via team timbratura."
+            "body": "Time è la timbratrice opzionale: ingresso/uscita tramite QR Clock Point (pause e turni inclusi). La ricerca per nome è per sede: solo gli esecutori autorizzati (o team mobili) vedono il nome. I colleghi con team timbratura timbrano dal profilo collegato. Clock Point resta il QR di accesso (nome + icona, PIN opzionale) anche senza Time. Ogni esecutore usa un telefono personale; un altro dispositivo è rifiutato finché un admin (Persone → Team → Modifica) o un caposquadra (portale) non consente un nuovo dispositivo. GPS opzionale alla timbratura: senza segnale al chiuso la timbratura passa comunque. Uno spostamento troppo rapido tra Clock Point (entro 5 minuti) genera un allarme. Dopo l’accesso c’è la tessera Elenco evacuazione: i nomi solo dopo conferma che la consultazione è eccezionale e viene registrata. Inclusa nella prova; opzionale sul piano a pagamento.",
+            "summary": "Time: timbratura Clock Point, un telefono, PIN/GPS opzionali, allarme hop 5 min, elenco evacuazione dopo conferma."
         },
         "esg": {
             "slug": "esg",
@@ -173,7 +173,7 @@
                 },
                 {
                     "title": "Esecutore",
-                    "text": "Lavora senza login WinProx. Si registra via QR Clock Point; avvia/completa task via QR unit, con foto e note."
+                    "text": "Lavora senza login WinProx. Accesso tramite QR Clock Point (nome + icona, PIN opzionale) su un telefono; avvia/chiude attività tramite QR unità, con foto e note."
                 }
             ]
         },
@@ -209,7 +209,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Come configuro i team interni?",
-            "body": "Inizi in piccolo: un team (ad esempio Hotel o Facility) e tutti coloro che eseguono attività. Vada a Persone → Teams. Un caposquadra non è necessario. Altri team solo se ci sono gruppi davvero distinti. Colleghi i team alle categorie. Aggiunga gli esecutori a mano o via CSV/Excel. In Teams gestisce anche le checklist dei unit check. Stampi il QR Clock Point per il campo (Time → Clock Points).",
+            "body": "Inizi in piccolo: un team (ad esempio Hotel o Facility) e tutti coloro che eseguono attività. Vada a Persone → Teams. Un caposquadra non è necessario. Altri team solo se ci sono gruppi davvero distinti. Colleghi i team alle categorie. Aggiunga gli esecutori a mano o via CSV/Excel. Le azioni rare (caposquadra, icona/telefono/PIN, disattivare) sono in **Modifica**. In Teams gestisce anche le checklist dei unit check. Stampi il QR Clock Point per il campo (Time → Clock Points).",
             "summary": "Un team basta per iniziare. Persone → Teams; collega alle categorie; QR Clock Point."
         },
         "team_follow_up": {

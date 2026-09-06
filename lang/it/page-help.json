@@ -916,7 +916,7 @@
             "actions": [
                 {
                     "label": "Accesso",
-                    "text": "Scansioni l'adesivo QR Clock Point e acceda con nome, cognome e icona personale. Due tentativi errati bloccano temporaneamente il Suo account — un caposquadra o amministratore può sbloccarlo."
+                    "text": "Scansioni l'adesivo QR Clock Point e acceda con nome, cognome e icona personale (PIN opzionale) sul proprio telefono. Due tentativi errati bloccano temporaneamente il Suo account — un caposquadra o amministratore può sbloccarlo."
                 },
                 {
                     "label": "Attività aperte",
@@ -1182,7 +1182,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "I lavoratori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>)."
+                    "text": "I lavoratori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>). Identificazione con nome e icona (PIN opzionale) su un solo telefono — nessun accesso separato."
                 },
                 {
                     "label": "Elenco evacuazione",
