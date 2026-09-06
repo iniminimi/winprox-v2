@@ -497,7 +497,7 @@
                 },
                 {
                     "label": "Ausführende",
-                    "text": "Ausführende haben kein E-Mail-Login; sie melden sich über die Clock-Point-QR mit Name und Symbol an. Optional Standorte zuordnen (leer = überall). Große Listen unter **Personen → Ausführende** verwalten."
+                    "text": "Ausführende haben kein E-Mail-Login; sie melden sich über den Clock-Point-QR mit Name und Symbol (optionale PIN) auf einem Handy an. Die Teamliste zeigt Status-Pills und **Bearbeiten** — Teamleiter, Stechuhr (Symbol/Handy/PIN) und Status stehen in diesem Dialog. Optional Standorte (leer = überall). Große Listen: **Personen → Ausführende**."
                 },
                 {
                     "label": "Standorte pro Ausführendem",
@@ -518,6 +518,14 @@
                 {
                     "label": "Icon zurücksetzen",
                     "text": "Öffnen Sie **Bearbeiten** beim Ausführenden unter Personen → Teams. Zurücksetzen löscht Symbol, PIN und gekoppeltes Handy, damit er sich erneut anmelden kann. Nützlich bei verlorenem Gerät, Sperre oder falschem Symbol. Teamleiter können im Portal auch Icons von ihren Teammitgliedern entfernen."
+                },
+                {
+                    "label": "Neues Gerät oder PIN",
+                    "text": "Öffnen Sie **Bearbeiten**. **Neues Gerät zulassen** erscheint, wenn ein Handy gekoppelt ist; **PIN zurücksetzen**, wenn eine PIN gesetzt ist. Nur nötig bei verlorenem Handy, Sperre oder neuem Symbol."
+                },
+                {
+                    "label": "Teamleiter",
+                    "text": "Teamleiter zuweisen oder entziehen über **Bearbeiten**. Teamleiter können im Clock-Point-Portal auch Symbole von Teammitgliedern freigeben."
                 },
                 {
                     "label": "Team deaktivieren",
@@ -1187,15 +1195,15 @@
             "actions": [
                 {
                     "label": "Zweck",
-                    "text": "Zeigt offene Schichten mit Auffälligkeiten: zu lange eingestempelt, vergessene Ausstempelung, keine Pause, oder Einsicht in die Evakuierungsliste heute."
+                    "text": "Zeigt alles mit Handlungsbedarf: zu lange eingestempelt, vergessene Ausstempelung, keine Pause, zu schneller Wechsel zwischen Clock Points oder Einsicht in die Evakuierungsliste heute."
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter: <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.), <strong>Keine Pause</strong> (&gt;6 Std.) oder <strong>Evakuierungsliste</strong> (Einsichten heute)."
+                    "text": "Filter: <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.), <strong>Keine Pause</strong> (&gt;6 Std.), <strong>Schneller Wechsel</strong> (innerhalb von 5 Min.) oder <strong>Evakuierungsliste</strong> (Einsichten heute)."
                 },
                 {
                     "label": "Aktion",
-                    "text": "Mit <strong>Schicht schließen</strong> beenden Sie eine Schicht mit Begründung. Das Badge in der Navigation zeigt die Anzahl."
+                    "text": "Bei einer offenen Schicht: mit <strong>Schicht schließen</strong> beenden Sie sie mit Begründung. Einsichten in die Evakuierungsliste sind keine Schicht — sie fallen nach heute weg. Das Badge in der Navigation zeigt die Anzahl."
                 }
             ]
         },
@@ -1501,7 +1509,7 @@
                 },
                 {
                     "label": "Bearbeiten",
-                    "text": "Ausführende hinzufügen, ändern oder deaktivieren unter Personen → Teams. Diese Seite dient zum schnellen Suchen und Filtern."
+                    "text": "Ausführende hinzufügen, ändern oder deaktivieren unter Personen → Teams → **Bearbeiten**. Symbol, Handy, PIN, Teamleiter und Löschen stehen in diesem Dialog. Diese Seite dient zum schnellen Suchen und Filtern."
                 }
             ]
         },

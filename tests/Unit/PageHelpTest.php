@@ -75,10 +75,18 @@ it('laadt paginahulp voor ESG-schermen', function (): void {
 it('laadt paginahulp voor Time-schermen', function (): void {
     app()->setLocale('nl');
 
+    $alarms = PageHelp::for('time.alarms');
+    $alarmTypes = collect($alarms['actions'])->first(fn (array $a): bool => $a['label'] === 'Typen');
+    $alarmGoal = collect($alarms['actions'])->first(fn (array $a): bool => $a['label'] === 'Doel');
+
     expect(PageHelp::for('time.presence'))->not->toBeNull()
         ->and(PageHelp::for('time.presence')['title'])->toBe('Hulp — Aanwezigheid')
-        ->and(PageHelp::for('time.alarms'))->not->toBeNull()
-        ->and(PageHelp::for('time.alarms')['title'])->toBe('Hulp — Alarmen')
+        ->and($alarms)->not->toBeNull()
+        ->and($alarms['title'])->toBe('Hulp — Alarmen')
+        ->and($alarmGoal['text'])->toContain('snelle hop')
+        ->and($alarmGoal['text'])->toContain('evacuatielijst')
+        ->and($alarmTypes['text'])->toContain('Snelle hop')
+        ->and($alarmTypes['text'])->toContain('Evacuatielijst')
         ->and(PageHelp::for('time.shifts'))->not->toBeNull()
         ->and(PageHelp::for('time.clock_points'))->not->toBeNull()
         ->and(PageHelp::for('portal.time'))->not->toBeNull()

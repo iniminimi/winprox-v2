@@ -497,7 +497,7 @@
                 },
                 {
                     "label": "Workers",
-                    "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon. Optionally link locations (empty = everywhere). Manage large lists via **People → Workers**."
+                    "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon (optional PIN) on one phone. The team list shows status pills and **Edit** — team leader, time clock (icon/phone/PIN) and status live in that modal. Optionally link sites (empty = anywhere). Large lists: **People → Workers**."
                 },
                 {
                     "label": "Locations per worker",
@@ -518,6 +518,14 @@
                 {
                     "label": "Reset icon",
                     "text": "Open **Edit** on the worker in People → Teams. Resetting clears the icon, PIN and bound phone so the worker can sign in again. Useful for a lost device, lockout, or a mistaken icon. Team leaders can also remove icons from their team members in their portal."
+                },
+                {
+                    "label": "New device or PIN",
+                    "text": "Open **Edit**. **Allow new device** appears if a phone is bound; **Reset PIN** if a PIN is set. Only needed for a lost phone, lockout, or a new icon."
+                },
+                {
+                    "label": "Team leader",
+                    "text": "Assign or remove team leader via **Edit**. Team leaders can also release icons of teammates in the Clock Point portal."
                 },
                 {
                     "label": "Deactivate team",
@@ -1187,15 +1195,15 @@
             "actions": [
                 {
                     "label": "Purpose",
-                    "text": "Shows open shifts that need attention: clocked in too long, forgotten clock-out, no break recorded, or an evacuation-list view today."
+                    "text": "Shows everything that needs attention: clocked in too long, forgotten clock-out, no break recorded, a too-quick hop between Clock Points, or an evacuation-list view today."
                 },
                 {
                     "label": "Types",
-                    "text": "Filter by <strong>Long shift</strong> (&gt;10 h), <strong>Not clocked out</strong> (&gt;16 h), <strong>No break</strong> (&gt;6 h without a break), or <strong>Evacuation list</strong> (views today)."
+                    "text": "Filter by <strong>Long shift</strong> (&gt;10 h), <strong>Not clocked out</strong> (&gt;16 h), <strong>No break</strong> (&gt;6 h without a break), <strong>Rapid hop</strong> (move within 5 min), or <strong>Evacuation list</strong> (views today)."
                 },
                 {
                     "label": "Action",
-                    "text": "Use <strong>Close shift</strong> to end a shift with a reason. The nav badge shows the total alarm count."
+                    "text": "For an open shift, use <strong>Close shift</strong> to end it with a reason. Evacuation-list views are not a shift — they drop off after today. The nav badge shows the total alarm count."
                 }
             ]
         },
@@ -1501,7 +1509,7 @@
                 },
                 {
                     "label": "Edit",
-                    "text": "Add, edit or deactivate workers via People → Teams. This screen is for quick search and filtering."
+                    "text": "Add, edit or deactivate workers via People → Teams → **Edit**. Icon, phone, PIN, team leader and delete live in that modal. This screen is for quick search and filtering."
                 }
             ]
         },

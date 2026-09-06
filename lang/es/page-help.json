@@ -497,7 +497,7 @@
                 },
                 {
                     "label": "Trabajadores",
-                    "text": "Los ejecutores no tienen login por correo; se identifican con la QR Clock Point (nombre + icono). Opcionalmente vincule sedes (vacío = en todas). Listas grandes en **Personas → Ejecutores**."
+                    "text": "Los trabajadores no tienen inicio de sesión por correo; se identifican con el QR Clock Point (nombre + icono, PIN opcional) en un móvil. La lista del equipo muestra pastillas de estado y **Editar**: jefe de equipo, reloj (icono/móvil/PIN) y estado están en esa ventana. Sedes opcionales (vacío = en todas). Listas grandes: **Personas → Trabajadores**."
                 },
                 {
                     "label": "Sedes por ejecutor",
@@ -518,6 +518,14 @@
                 {
                     "label": "Restablecer icono",
                     "text": "Abra **Editar** en el trabajador en Personas → Equipos. Restablecer borra el icono, el PIN y el móvil vinculado para que pueda identificarse de nuevo. Útil si se pierde el dispositivo, hay bloqueo o el icono es incorrecto. Los jefes de equipo también pueden eliminar iconos de sus compañeros en su portal."
+                },
+                {
+                    "label": "Dispositivo nuevo o PIN",
+                    "text": "Abra **Editar**. **Permitir dispositivo nuevo** aparece si hay un móvil vinculado; **Restablecer PIN** si hay un PIN. Solo hace falta si se pierde el móvil, hay bloqueo o se necesita un icono nuevo."
+                },
+                {
+                    "label": "Jefe de equipo",
+                    "text": "Asigne o quite el rol de jefe de equipo en **Editar**. Los jefes de equipo también pueden liberar iconos de compañeros en el portal Clock Point."
                 },
                 {
                     "label": "Desactivar equipo",
@@ -1187,15 +1195,15 @@
             "actions": [
                 {
                     "label": "Objetivo",
-                    "text": "Muestra turnos abiertos que requieren atención: demasiado tiempo fichado, salida olvidada, sin pausa, o consulta de la lista de evacuación hoy."
+                    "text": "Muestra todo lo que requiere atención: demasiado tiempo fichado, salida olvidada, sin pausa, salto demasiado rápido entre Clock Points, o consulta de la lista de evacuación hoy."
                 },
                 {
                     "label": "Tipos",
-                    "text": "Filtre: <strong>Turno largo</strong> (&gt;10 h), <strong>Sin fichar salida</strong> (&gt;16 h), <strong>Sin pausa</strong> (&gt;6 h) o <strong>Lista de evacuación</strong> (consultas de hoy)."
+                    "text": "Filtre: <strong>Turno largo</strong> (&gt;10 h), <strong>Sin fichar salida</strong> (&gt;16 h), <strong>Sin pausa</strong> (&gt;6 h), <strong>Salto rápido</strong> (traslado en menos de 5 min) o <strong>Lista de evacuación</strong> (consultas de hoy)."
                 },
                 {
                     "label": "Acción",
-                    "text": "Use <strong>Cerrar turno</strong> con motivo. La insignia en la navegación muestra el número de alertas."
+                    "text": "En un turno abierto, use <strong>Cerrar turno</strong> con motivo. Las consultas de la lista de evacuación no son un turno: desaparecen después de hoy. La insignia en la navegación muestra el número de alertas."
                 }
             ]
         },
@@ -1501,7 +1509,7 @@
                 },
                 {
                     "label": "Editar",
-                    "text": "Añadir, editar o desactivar ejecutores en Personas → Equipos. Esta pantalla sirve para buscar y filtrar rápidamente."
+                    "text": "Añada, edite o desactive trabajadores en Personas → Equipos → **Editar**. Icono, móvil, PIN, jefe de equipo y eliminar están en esa ventana. Esta pantalla sirve para buscar y filtrar rápido."
                 }
             ]
         },

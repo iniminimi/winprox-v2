@@ -497,7 +497,7 @@
                 },
                 {
                     "label": "Uitvoerders",
-                    "text": "Uitvoerders hebben geen e-mail-login; zij melden zich aan via de Clock Point-QR met naam en icoon. Optioneel vestigingen koppelen (leeg = overal). Grote lijsten beheer je onder **Personen → Uitvoerders**."
+                    "text": "Uitvoerders hebben geen e-mail-login; zij melden zich aan via de Clock Point-QR met naam en icoon (optioneel pincode) op één gsm. In de teamlijst zie je statuspills en **Bewerken** — teamleader, prikklok (icoon/gsm/PIN) en status staan in die modal. Optioneel vestigingen koppelen (leeg = overal). Grote lijsten beheer je onder **Personen → Uitvoerders**."
                 },
                 {
                     "label": "Vestigingen per uitvoerder",
@@ -518,6 +518,14 @@
                 {
                     "label": "Icoon resetten",
                     "text": "Open **Bewerken** bij de uitvoerder in Personen → Teams. Resetten wist het icoon, de pincode en de gekoppelde gsm, zodat de uitvoerder zich opnieuw kan aanmelden. Handig bij verloren toestel, lockout of een verkeerd icoon. Teamleaders kunnen in hun portal ook iconen verwijderen van hun teamgenoten."
+                },
+                {
+                    "label": "Nieuw toestel of pincode",
+                    "text": "Open **Bewerken**. **Nieuw toestel toestaan** verschijnt als er een gsm gekoppeld is; **Pincode resetten** als er een pincode staat. Alleen nodig bij verloren gsm, lockout of een nieuw icoon."
+                },
+                {
+                    "label": "Teamleader",
+                    "text": "Wijs teamleader toe of trek in via **Bewerken**. Teamleaders kunnen in het Clock Point-portaal iconen van teamgenoten vrijgeven."
                 },
                 {
                     "label": "Team deactiveren",
@@ -1187,15 +1195,15 @@
             "actions": [
                 {
                     "label": "Doel",
-                    "text": "Toont open shifts die aandacht vragen: te lang ingeklokt, vergeten uit te klokken, geen pauze, of raadpleging van de evacuatielijst vandaag."
+                    "text": "Toont alles wat aandacht vraagt: te lang ingeklokt, vergeten uit te klokken, geen pauze, te snelle hop tussen Clock Points, of raadpleging van de evacuatielijst vandaag."
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur), <strong>Geen pauze</strong> (&gt;6 uur zonder break) of <strong>Evacuatielijst</strong> (raadplegingen vandaag)."
+                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur), <strong>Geen pauze</strong> (&gt;6 uur zonder break), <strong>Snelle hop</strong> (verplaatsing binnen 5 min) of <strong>Evacuatielijst</strong> (raadplegingen vandaag)."
                 },
                 {
                     "label": "Actie",
-                    "text": "Gebruik <strong>Shift sluiten</strong> om een shift af te sluiten met reden. De badge in de navigatie toont het totaal aantal alarmen."
+                    "text": "Bij een open shift: gebruik <strong>Shift sluiten</strong> om af te sluiten met reden. Evacuatielijst-raadplegingen zijn geen shift — die vallen na vandaag vanzelf weg. De badge in de navigatie toont het totaal."
                 }
             ]
         },
@@ -1501,7 +1509,7 @@
                 },
                 {
                     "label": "Bewerken",
-                    "text": "Voeg uitvoerders toe, wijzig of deactiveer via Personen → Teams. Dit scherm is bedoeld om snel te zoeken en te filteren."
+                    "text": "Voeg uitvoerders toe, wijzig of deactiveer via Personen → Teams → **Bewerken**. Icoon, gsm, pincode, teamleader en verwijderen zitten in die modal. Dit scherm is bedoeld om snel te zoeken en te filteren."
                 }
             ]
         },

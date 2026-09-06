@@ -505,7 +505,7 @@
                 },
                 {
                     "label": "Exécutants",
-                    "text": "Les exécutants n'ont pas de login e-mail ; ils s'identifient via la QR Clock Point (nom + icône). Liez optionnellement des sites (vide = partout). Grandes listes via **Personnes → Exécutants**."
+                    "text": "Les exécutants n’ont pas de login e-mail ; ils s’identifient via la QR Clock Point avec nom et icône (PIN optionnel) sur un téléphone. La liste d’équipe montre des pastilles de statut et **Modifier** — rôle, pointeuse (icône/téléphone/PIN) et statut sont dans cette fenêtre. Sites optionnels (vide = partout). Grandes listes : **Personnes → Exécutants**."
                 },
                 {
                     "label": "Sites par exécutant",
@@ -526,6 +526,14 @@
                 {
                     "label": "Réinitialiser l'icône",
                     "text": "Ouvrez **Modifier** sur l’exécutant dans Personnes → Équipes. La réinitialisation efface l’icône, le code PIN et le téléphone lié, pour qu’il puisse se reconnecter. Utile en cas d’appareil perdu, de verrouillage ou d’icône erronée. Les chefs d’équipe peuvent aussi supprimer des icônes de leurs coéquipiers dans leur portail."
+                },
+                {
+                    "label": "Nouvel appareil ou code PIN",
+                    "text": "Ouvrez **Modifier**. **Autoriser un nouvel appareil** apparaît s’il y a un téléphone lié ; **Réinitialiser le PIN** s’il y a un code. Uniquement en cas d’appareil perdu, de verrouillage ou d’une nouvelle icône."
+                },
+                {
+                    "label": "Chef d’équipe",
+                    "text": "Attribuez ou retirez le rôle via **Modifier**. Les chefs d’équipe peuvent aussi libérer les icônes de leurs coéquipiers dans le portail Clock Point."
                 },
                 {
                     "label": "Désactiver l'équipe",
@@ -1195,15 +1203,15 @@
             "actions": [
                 {
                     "label": "Objectif",
-                    "text": "Affiche les shifts ouverts à surveiller : trop longtemps pointés, sortie oubliée, pas de pause, ou consultation de la liste d’évacuation aujourd’hui."
+                    "text": "Affiche tout ce qui demande une attention : trop longtemps pointé, sortie oubliée, pas de pause, saut trop rapide entre Clock Points, ou consultation de la liste d’évacuation aujourd’hui."
                 },
                 {
                     "label": "Types",
-                    "text": "Filtrez : <strong>Shift long</strong> (&gt;10 h), <strong>Non dépointé</strong> (&gt;16 h), <strong>Pas de pause</strong> (&gt;6 h) ou <strong>Liste d’évacuation</strong> (consultations aujourd’hui)."
+                    "text": "Filtrez : <strong>Shift long</strong> (&gt;10 h), <strong>Non dépointé</strong> (&gt;16 h), <strong>Pas de pause</strong> (&gt;6 h), <strong>Saut rapide</strong> (déplacement en moins de 5 min) ou <strong>Liste d’évacuation</strong> (consultations aujourd’hui)."
                 },
                 {
                     "label": "Action",
-                    "text": "Utilisez <strong>Fermer le shift</strong> avec un motif. Le badge de navigation indique le nombre d'alertes."
+                    "text": "Pour un shift ouvert : utilisez <strong>Fermer le shift</strong> avec un motif. Les consultations de la liste d’évacuation ne sont pas un shift — elles disparaissent après aujourd’hui. Le badge de navigation indique le nombre d’alertes."
                 }
             ]
         },
@@ -1509,7 +1517,7 @@
                 },
                 {
                     "label": "Modifier",
-                    "text": "Ajouter, modifier ou désactiver via Personnes → Équipes. Cet écran sert à rechercher et filtrer rapidement."
+                    "text": "Ajoutez, modifiez ou désactivez des exécutants via Personnes → Équipes → **Modifier**. Icône, téléphone, PIN, chef d’équipe et suppression sont dans cette fenêtre. Cet écran sert à chercher et filtrer rapidement."
                 }
             ]
         },
