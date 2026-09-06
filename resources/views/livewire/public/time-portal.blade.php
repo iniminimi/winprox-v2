@@ -184,19 +184,36 @@
 
         @if ($canAct)
             <div class="wp-stack" data-manual-capture="portal-team-signed-in">
-                <div class="wp-card wp-card-pad wp-cluster">
-                    <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
-                </div>
+                @if ($rosterListOpen && $roster !== null)
+                    <x-wp-portal-back wire:click="closeRoster" />
+                    <x-wp-page-head-title variant="portal" icon="fire" :title="__('time.roster.title')">
+                        <p class="wp-muted">{{ __('time.roster.subtitle') }}</p>
+                    </x-wp-page-head-title>
+                    @include('partials.wp-time-roster-list', ['roster' => $roster])
+                @else
+                    <div class="wp-card wp-card-pad wp-cluster">
+                        <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
+                    </div>
 
-                <div class="wp-portal-worker-actions">
-                    @include('partials.wp-portal-sign-out')
-                </div>
+                    <div class="wp-portal-worker-actions">
+                        @include('partials.wp-portal-sign-out')
+                    </div>
 
-                @if ($verifiedWorker?->is_teamleader)
-                    @include('partials.wp-portal-teamleader-release')
-                @endif
+                    @if ($verifiedWorker?->is_teamleader)
+                        @include('partials.wp-portal-teamleader-release')
+                    @endif
 
-                @if ($hasTimeModule)
+                    @if ($hasTimeModule)
+                        <div class="wp-tiles">
+                            <button type="button" class="wp-tile" wire:click="openRoster">
+                                <x-wp-icon name="fire" class="wp-tile-icon" />
+                                <span class="wp-tile-title">{{ __('time.roster.tile') }}</span>
+                                <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
+                            </button>
+                        </div>
+                    @endif
+
+                    @if ($hasTimeModule)
                     <div
                         class="wp-card wp-card-pad wp-stack"
                         x-data="{
@@ -298,7 +315,29 @@
                         <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p></div>
                     @endforelse
                 </div>
+                @endif
             </div>
+
+            @if ($rosterAckOpen)
+                <x-wp-modal closeMethod="closeRoster" aria-labelledby="time-roster-ack-title">
+                    <form wire:submit="acknowledgeRoster" class="wp-card wp-card-pad wp-stack wp-modal-card">
+                        <div class="wp-modal-head">
+                            <h2 id="time-roster-ack-title" class="wp-h2">{{ __('time.roster.ack_title') }}</h2>
+                            <x-wp-modal-close wire:click="closeRoster" />
+                        </div>
+                        <p class="wp-muted">{{ __('time.roster.ack_intro') }}</p>
+                        <label class="wp-check">
+                            <input type="checkbox" wire:model="rosterAcknowledged">
+                            <span>{{ __('time.roster.ack_label') }}</span>
+                        </label>
+                        @error('rosterAcknowledged') <p class="wp-error">{{ $message }}</p> @enderror
+                        <div class="wp-cluster">
+                            <button type="button" class="btn btn--surface" wire:click="closeRoster">{{ __('common.button.cancel') }}</button>
+                            <button type="submit" class="btn btn--primary">{{ __('time.roster.ack_submit') }}</button>
+                        </div>
+                    </form>
+                </x-wp-modal>
+            @endif
         @endif
     @endif
 </div>

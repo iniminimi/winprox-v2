@@ -80,22 +80,20 @@
     "roster": {
         "title": "Anwesende",
         "subtitle": "Wer jetzt eingestempelt ist — für Evakuierung oder Kontrolle.",
-        "identify_hint": "Nur angemeldete Ausführende sehen diese Liste. Geben Sie Ihren Namen wie am Clock Point ein.",
         "ack_title": "Einsicht wird protokolliert",
-        "ack_intro": "Wer diese Liste öffnet, wird festgehalten: Vorname, Name, Datum und Uhrzeit.",
-        "ack_label": "Ich verstehe, dass mein Vorname, Name, Datum und Uhrzeit protokolliert werden.",
+        "ack_intro": "Diese Liste darf nur ausnahmsweise eingesehen werden (Evakuierung oder Kontrolle). Wer sie öffnet, wird festgehalten: Vorname, Name, Datum und Uhrzeit.",
+        "ack_label": "Ich nehme zur Kenntnis, dass diese Einsicht ausnahmsweise erfolgt und dass Vorname, Name, Datum und Uhrzeit protokolliert werden.",
         "ack_required": "Bestätigen Sie, dass Sie die Protokollierung verstehen.",
         "ack_submit": "Liste anzeigen",
         "count": ":count anwesend",
         "empty": "Derzeit ist niemand eingestempelt.",
-        "qr_title": "Anwesenheits-QR",
-        "qr_subtitle": "Scannen für die Liste der Eingestempelten (Evakuierung).",
-        "qr_hint": "Hängen Sie diesen QR am Sammelplatz auf. Nur ein angemeldeter Ausführender sieht die Namen, nach Bestätigung der Protokollierung.",
         "role": {
             "worker": "Ausführender",
             "employee": "Mitarbeiter",
             "admin": "Administrator"
-        }
+        },
+        "tile": "Evakuierungsliste",
+        "tile_sub": "Wer jetzt eingestempelt ist"
     },
     "alarms": {
         "title": "Alarme",

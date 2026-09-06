@@ -308,16 +308,6 @@ class Tenant extends Model
         return (bool) $this->has_time_module;
     }
 
-    public function timeRosterPortalUrl(): ?string
-    {
-        $token = trim((string) $this->time_roster_qr_token);
-        if ($token === '') {
-            return null;
-        }
-
-        return route('public.time-roster', $token);
-    }
-
     public function requiresWorkerPin(): bool
     {
         return $this->hasTimeModule() && (bool) $this->time_require_worker_pin;

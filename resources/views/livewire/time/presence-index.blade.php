@@ -12,21 +12,6 @@
 
     @include('partials.wp-time-nav', ['alarmCount' => $dashboard->kpis->attention])
 
-    @if ($rosterQrSvg && $rosterQrUrl)
-        <div class="wp-card wp-card-pad wp-time-roster-qr">
-            <div class="wp-time-roster-qr__code">
-                @include('partials.qr-print-code', ['qrSvg' => $rosterQrSvg, 'centerLogoUrl' => $rosterCenterLogoUrl])
-            </div>
-            <div class="wp-stack-tight wp-grow">
-                <h2 class="wp-section-title">{{ __('time.roster.qr_title') }}</h2>
-                <p class="wp-muted">{{ __('time.roster.qr_hint') }}</p>
-                <a class="btn btn--surface btn--sm" href="{{ route('time.presence.qr') }}" target="_blank" rel="noopener">
-                    {{ __('common.qr.print') }}
-                </a>
-            </div>
-        </div>
-    @endif
-
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif

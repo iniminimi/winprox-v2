@@ -658,10 +658,10 @@ productsector op `Tenant`.
 ### 5g.1 Bestaande Time-basis (behouden)
 - Module `has_time_module`; Clock Point QR; `WorkShift` / `WorkBreak`; aanwezigheid, urenstaat,
   export; events `time.shift.started` / `time.shift.ended`.
-- **Aanwezigheids-QR** (apart van Clock Point): printbaar vanaf Time → Aanwezigheid
-  (`/time/roster/{token}`). Toont alle open shifts (uitvoerders én collega's/admin met
-  prikklok-profiel). Alleen een via naam + icoon aangemelde uitvoerder ziet de lijst, na
-  aanvinken dat de raadpleging wordt gelogd (voornaam, naam, datum/uur → `time.roster.viewed`).
+- **Evacuatielijst** op het Clock Point-portaal (na aanmelden, tegel met brandicoon).
+  Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel). Eerst
+  aanvinken dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam,
+  datum/uur → `time.roster.viewed`). Geen extra QR.
 - Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
   (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit
   tot beheer/teamleader vrijgeeft); één open shift;
@@ -1062,8 +1062,8 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
 - **Clock Point-QR** (`/time/{token}`): **worker**-aanmelding (naam + icoon), in-/uitklokken en
   overzicht van open teamtaken. **BESLIST:** via Clock Point zijn taakacties **alleen-lezen** —
   afhandelen moet via de **unit-QR**. (Vervangt de oude team-QR `/team/{token}`.)
-- **Time-aanwezigheids-QR** (`/time/roster/{token}`): evacuatielijst van ingeklokten. Niet
-  publiek: worker-aanmelding (naam + icoon) + audit-bevestiging. Hangt op Time → Aanwezigheid.
+  Met Time: tegel **Evacuatielijst** (brandicoon) na aanmelden; checkbox dat de raadpleging
+  uitzonderlijk is en wordt gelogd; daarna de lijst van ingeklokten. Geen extra QR.
 
 ### Unit-portaal — secties (burger)
 `home · new · issues · issue_detail · documents · announcements`

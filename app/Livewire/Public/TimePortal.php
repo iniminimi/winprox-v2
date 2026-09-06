@@ -4,18 +4,21 @@ namespace App\Livewire\Public;
 
 use App\Actions\Portal\ClearWorkerTaskBaselineAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
+use App\Actions\Time\AcknowledgeTimeRosterViewAction;
 use App\Actions\Time\AssertWorkerClockDeviceAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\ConfirmWorkerClockPinAction;
 use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
+use App\Actions\Time\ListOpenTimeRosterAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\SetWorkerClockPinAction;
 use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
 use App\Enums\ClockDeviceRefusalReason;
+use App\Http\Requests\Time\AcknowledgeTimeRosterViewRequest;
 use App\Http\Requests\Time\WorkerClockPinRequest;
 use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
@@ -70,6 +73,9 @@ class TimePortal extends Component
     public string $pin_code_confirm = '';
     public ?string $clockGpsLatitude = null;
     public ?string $clockGpsLongitude = null;
+    public bool $rosterAckOpen = false;
+    public bool $rosterListOpen = false;
+    public bool $rosterAcknowledged = false;
 
     /** Baseline alleen bij openen/login synchen — niet bij elke wire:poll. */
     public bool $taskBaselineSyncedThisVisit = false;
@@ -265,8 +271,56 @@ class TimePortal extends Component
         }
 
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm']);
-        $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'rosterAcknowledged']);
+        $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
+    }
+
+    public function openRoster(): void
+    {
+        if ($this->authorizedWorker() === null || $this->activeClockPoint() === null) {
+            return;
+        }
+
+        if (! TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId))) {
+            return;
+        }
+
+        $this->rosterAckOpen = true;
+        $this->rosterListOpen = false;
+        $this->rosterAcknowledged = false;
+        $this->resetErrorBag(['rosterAcknowledged']);
+    }
+
+    public function closeRoster(): void
+    {
+        $this->rosterAckOpen = false;
+        $this->rosterListOpen = false;
+        $this->rosterAcknowledged = false;
+        $this->resetErrorBag(['rosterAcknowledged']);
+    }
+
+    public function acknowledgeRoster(AcknowledgeTimeRosterViewAction $acknowledge): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null || ! $this->rosterAckOpen) {
+            return;
+        }
+
+        $this->validate(
+            ['rosterAcknowledged' => AcknowledgeTimeRosterViewRequest::rulesFor()['acknowledged']],
+            ['rosterAcknowledged.accepted' => AcknowledgeTimeRosterViewRequest::messagesFor()['acknowledged.accepted']],
+        );
+
+        try {
+            $acknowledge->handle($worker, $this->tenantId);
+        } catch (InvalidArgumentException) {
+            $this->addError('rosterAcknowledged', __('time.roster.ack_required'));
+
+            return;
+        }
+
+        $this->rosterAckOpen = false;
+        $this->rosterListOpen = true;
     }
 
     public function signInWithIcon(): void
@@ -567,7 +621,7 @@ class TimePortal extends Component
         }
     }
 
-    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline)
+    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster)
     {
         app()->setLocale($this->locale);
 
@@ -628,8 +682,8 @@ class TimePortal extends Component
         if ($canAct && $verifiedWorker !== null && TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId))) {
             $openShift = $findShift->handle($verifiedWorker);
         }
-        $tasks = $canAct && $verifiedWorker !== null ? TimePortalData::openTasksForWorker($verifiedWorker) : collect();
         $hasTimeModule = TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId));
+        $tasks = $canAct && $verifiedWorker !== null ? TimePortalData::openTasksForWorker($verifiedWorker) : collect();
         $teamWorkers = ($team !== null && $verifiedWorker !== null && $verifiedWorker->is_teamleader)
             ? Worker::query()
                 ->where('internal_team_id', $team->id)
@@ -638,6 +692,16 @@ class TimePortal extends Component
                 ->orderBy('first_name')
                 ->get()
             : collect();
+
+        if (! $canAct || ! $hasTimeModule) {
+            $this->rosterAckOpen = false;
+            $this->rosterListOpen = false;
+        }
+
+        $roster = null;
+        if ($canAct && $this->rosterListOpen && $verifiedWorker !== null && $hasTimeModule) {
+            $roster = $listRoster->handle($this->tenantId);
+        }
 
         return view('livewire.public.time-portal', [
             'canAct' => $canAct,
@@ -662,6 +726,7 @@ class TimePortal extends Component
             'gpsOnClock' => $this->tenantRequestsClockGps(),
             'teamWorkers' => $teamWorkers,
             'manageWorkersMessage' => $this->manageWorkersMessage,
+            'roster' => $roster,
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);

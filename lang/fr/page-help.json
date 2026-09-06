@@ -927,25 +927,12 @@
                     "text": "Pointez ici entrée, sortie et pauses sur votre propre téléphone. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Utilisez ensuite le QR d'unité sur place pour les tâches."
                 },
                 {
+                    "label": "Liste d’évacuation",
+                    "text": "Après connexion, la tuile Liste d’évacuation (icône feu) apparaît. Confirmez d’abord que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Ensuite s’affiche qui est pointé, par site."
+                },
+                {
                     "label": "Déconnexion",
                     "text": "Déconnectez-vous lorsque vous avez terminé. Aux heures définies par l'administrateur, vous êtes également automatiquement déconnecté."
-                }
-            ]
-        },
-        "portal.time_roster": {
-            "title": "Aide — Liste de présence",
-            "actions": [
-                {
-                    "label": "Qui peut voir ?",
-                    "text": "Seul un exécutant identifié par prénom, nom et icône personnelle. Pas une liste publique."
-                },
-                {
-                    "label": "Journal",
-                    "text": "Avant la liste, confirmez que la consultation est enregistrée : prénom, nom, date et heure."
-                },
-                {
-                    "label": "Ce que vous voyez",
-                    "text": "Toute personne actuellement pointée, y compris collègues et admins avec pointeuse. Groupé par site ; les pauses restent présentes."
                 }
             ]
         },
@@ -1198,8 +1185,8 @@
                     "text": "Les collaborateurs pointent via l'autocollant QR sur un clock point (<code>/time/…</code>)."
                 },
                 {
-                    "label": "QR présence",
-                    "text": "Cette page propose un QR distinct pour une liste d’évacuation. Placez-le au point de rassemblement. Seul un exécutant identifié par nom et icône voit qui est pointé (exécutants et collègues/admin avec pointeuse). Avant la liste, il confirme que la consultation est enregistrée (prénom, nom, date et heure)."
+                    "label": "Liste d’évacuation",
+                    "text": "La liste d’évacuation est sur le portail Clock Point après connexion (tuile Liste d’évacuation). Pas de QR distinct. Avant la liste, l’exécutant confirme que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure)."
                 }
             ]
         },

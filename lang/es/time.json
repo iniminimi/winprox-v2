@@ -80,22 +80,20 @@
     "roster": {
         "title": "Presentes",
         "subtitle": "Quién está fichado ahora — para evacuación o control.",
-        "identify_hint": "Solo los ejecutores identificados ven esta lista. Introduzca su nombre como en el Clock Point.",
         "ack_title": "La consulta se registra",
-        "ack_intro": "Quien abre esta lista queda registrado: nombre, apellidos, fecha y hora.",
-        "ack_label": "Entiendo que se registrarán mi nombre, apellidos, fecha y hora.",
+        "ack_intro": "Esta lista solo puede consultarse de forma excepcional (evacuación o control). Quien la abre queda registrado: nombre, apellidos, fecha y hora.",
+        "ack_label": "Tomo nota de que esta consulta es excepcional y de que se registrarán mi nombre, apellidos, fecha y hora.",
         "ack_required": "Confirme que entiende que esta consulta se registra.",
         "ack_submit": "Mostrar lista",
         "count": ":count presente(s)",
         "empty": "Nadie está fichado ahora.",
-        "qr_title": "QR de presencia",
-        "qr_subtitle": "Escanee para la lista de fichados (evacuación).",
-        "qr_hint": "Coloque este QR en el punto de reunión. Solo un ejecutor identificado ve los nombres, tras confirmar que la consulta se registra.",
         "role": {
             "worker": "Ejecutor",
             "employee": "Colaborador",
             "admin": "Administrador"
-        }
+        },
+        "tile": "Lista de evacuación",
+        "tile_sub": "Quién está fichado ahora"
     },
     "alarms": {
         "title": "Alarmas",

@@ -919,25 +919,12 @@
                     "text": "Timbra qui ingresso, uscita e pause con il tuo telefono. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Poi usa il QR unità sul posto per i compiti."
                 },
                 {
+                    "label": "Elenco evacuazione",
+                    "text": "Dopo l’accesso vedi il riquadro Elenco evacuazione (icona fuoco). Prima conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Poi vedi chi è timbrato ora, per sede."
+                },
+                {
                     "label": "Esci",
                     "text": "Esca quando ha finito. A orari impostati dall'amministratore viene disconnesso automaticamente."
-                }
-            ]
-        },
-        "portal.time_roster": {
-            "title": "Aiuto — Elenco presenze",
-            "actions": [
-                {
-                    "label": "Chi può vederlo?",
-                    "text": "Solo un esecutore identificato con nome, cognome e icona personale. Non è un elenco pubblico."
-                },
-                {
-                    "label": "Registrazione",
-                    "text": "Prima dell’elenco conferma che la consultazione viene registrata: nome, cognome, data e ora."
-                },
-                {
-                    "label": "Cosa vedi",
-                    "text": "Tutti i timbrati in questo momento, inclusi colleghi e admin con timbratrice. Raggruppato per sede; chi è in pausa resta presente."
                 }
             ]
         },
@@ -1190,8 +1177,8 @@
                     "text": "I lavoratori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>)."
                 },
                 {
-                    "label": "QR presenza",
-                    "text": "Questa pagina ha un QR separato per un elenco di evacuazione. Appendilo al punto di raccolta. Solo un esecutore identificato con nome e icona vede chi è timbrato (esecutori e colleghi/admin con timbratrice). Prima dell’elenco deve confermare che la consultazione viene registrata (nome, cognome, data e ora)."
+                    "label": "Elenco evacuazione",
+                    "text": "L’elenco evacuazione è sul portale Clock Point dopo l’accesso (riquadro Elenco evacuazione). Nessun QR separato. Prima dell’elenco l’esecutore conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora)."
                 }
             ]
         },

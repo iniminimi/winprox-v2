@@ -80,22 +80,20 @@
     "roster": {
         "title": "Aanwezigen",
         "subtitle": "Wie is nu ingeklokt — voor evacuatie of controle.",
-        "identify_hint": "Alleen aangemelde uitvoerders zien deze lijst. Vul je naam in zoals bij de Clock Point.",
         "ack_title": "Raadpleging wordt gelogd",
-        "ack_intro": "Wie deze lijst opent, wordt vastgelegd: voornaam, naam, datum en uur.",
-        "ack_label": "Ik begrijp dat mijn voornaam, naam, datum en uur worden gelogd.",
+        "ack_intro": "Deze lijst mag alleen uitzonderlijk geraadpleegd worden (evacuatie of controle). Wie ze opent, wordt vastgelegd: voornaam, naam, datum en uur.",
+        "ack_label": "Ik neem kennis dat deze raadpleging uitzonderlijk is en dat mijn voornaam, naam, datum en uur worden gelogd.",
         "ack_required": "Bevestig dat je begrijpt dat deze raadpleging wordt gelogd.",
         "ack_submit": "Lijst tonen",
         "count": ":count aanwezig",
         "empty": "Niemand is nu ingeklokt.",
-        "qr_title": "Aanwezigheids-QR",
-        "qr_subtitle": "Scan voor de lijst van ingeklokten (evacuatie).",
-        "qr_hint": "Hang deze QR bij de verzamelplaats. Alleen een aangemelde uitvoerder ziet de namen, na bevestiging dat de raadpleging wordt gelogd.",
         "role": {
             "worker": "Uitvoerder",
             "employee": "Medewerker",
             "admin": "Beheerder"
-        }
+        },
+        "tile": "Evacuatielijst",
+        "tile_sub": "Wie is nu ingeklokt"
     },
     "alarms": {
         "title": "Alarmen",

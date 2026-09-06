@@ -3134,6 +3134,10 @@ a.wp-pagination__page:active:not(.is-active) {
     gap: 0.75rem;
 }
 
+.wp-tiles > .wp-tile:only-child {
+    grid-column: 1 / -1;
+}
+
 .wp-tile {
     display: flex;
     flex-direction: column;
@@ -3172,6 +3176,12 @@ a.wp-pagination__page:active:not(.is-active) {
 .wp-tile-title {
     font-size: 1rem;
     font-weight: 700;
+}
+
+.wp-tile-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--wp-warning-text);
 }
 
 .wp-tile-sub {
@@ -5526,24 +5536,8 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 /* ---------------------------------------------------------------------------
- | Time — evacuatie-QR (aanwezigheid)
+ | Time — evacuatielijst (Clock Point-portaal)
  * ------------------------------------------------------------------------- */
-.wp-time-roster-qr {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-}
-
-.wp-time-roster-qr__code {
-    flex: 0 0 7.5rem;
-    max-width: 7.5rem;
-}
-
-.wp-time-roster-qr__code .wp-qr-code-frame {
-    width: 100%;
-}
-
 .wp-time-roster__head {
     display: flex;
     align-items: baseline;

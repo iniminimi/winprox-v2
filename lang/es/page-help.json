@@ -919,25 +919,12 @@
                     "text": "Ficha aquí entrada, salida y pausas con tu propio móvil. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Luego usa el QR de unidad in situ para las tareas."
                 },
                 {
+                    "label": "Lista de evacuación",
+                    "text": "Tras identificarse verá la ficha Lista de evacuación (icono de fuego). Primero confirme que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Después verá quién está fichado, por sede."
+                },
+                {
                     "label": "Cerrar sesión",
                     "text": "Cierre sesión cuando haya terminado. En los horarios establecidos por el administrador también se cierra la sesión automáticamente."
-                }
-            ]
-        },
-        "portal.time_roster": {
-            "title": "Ayuda — Lista de presencia",
-            "actions": [
-                {
-                    "label": "¿Quién puede verla?",
-                    "text": "Solo un ejecutor identificado con nombre, apellidos e icono personal. No es una lista pública."
-                },
-                {
-                    "label": "Registro",
-                    "text": "Antes de la lista, confirme que la consulta se registra: nombre, apellidos, fecha y hora."
-                },
-                {
-                    "label": "Qué ve",
-                    "text": "Todos los fichados ahora, incluido personal y administradores con reloj. Agrupado por sede; quienes están en pausa siguen presentes."
                 }
             ]
         },
@@ -1190,8 +1177,8 @@
                     "text": "Los trabajadores fichan mediante la pegatina QR en un clock point (<code>/time/…</code>)."
                 },
                 {
-                    "label": "QR de presencia",
-                    "text": "Esta página tiene un QR aparte para una lista de evacuación. Colóquelo en el punto de reunión. Solo un ejecutor identificado con nombre e icono ve quién está fichado (operarios y personal/admin con reloj). Antes de la lista debe confirmar que la consulta se registra (nombre, apellidos, fecha y hora)."
+                    "label": "Lista de evacuación",
+                    "text": "La lista de evacuación está en el portal Clock Point tras identificarse (ficha Lista de evacuación). No hay un QR aparte. Antes de la lista, el ejecutor confirma que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora)."
                 }
             ]
         },

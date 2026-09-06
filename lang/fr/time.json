@@ -80,22 +80,20 @@
     "roster": {
         "title": "Présents",
         "subtitle": "Qui est pointé — pour une évacuation ou un contrôle.",
-        "identify_hint": "Seuls les exécutants connectés voient cette liste. Saisissez votre nom comme au Clock Point.",
         "ack_title": "Consultation enregistrée",
-        "ack_intro": "L’ouverture de cette liste est enregistrée : prénom, nom, date et heure.",
-        "ack_label": "Je comprends que mon prénom, mon nom, la date et l’heure seront consignés.",
+        "ack_intro": "Cette liste ne peut être consultée qu’à titre exceptionnel (évacuation ou contrôle). Son ouverture est enregistrée : prénom, nom, date et heure.",
+        "ack_label": "Je prends acte que cette consultation est exceptionnelle et que mon prénom, mon nom, la date et l’heure seront consignés.",
         "ack_required": "Confirmez que vous comprenez que cette consultation est enregistrée.",
         "ack_submit": "Afficher la liste",
         "count": ":count présent(s)",
         "empty": "Personne n’est pointé pour le moment.",
-        "qr_title": "QR présence",
-        "qr_subtitle": "Scannez pour la liste des personnes pointées (évacuation).",
-        "qr_hint": "Placez ce QR au point de rassemblement. Seul un exécutant connecté voit les noms, après confirmation que la consultation est enregistrée.",
         "role": {
             "worker": "Exécutant",
             "employee": "Collaborateur",
             "admin": "Administrateur"
-        }
+        },
+        "tile": "Liste d’évacuation",
+        "tile_sub": "Qui est pointé maintenant"
     },
     "alarms": {
         "title": "Alarmes",

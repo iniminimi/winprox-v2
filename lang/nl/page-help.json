@@ -919,25 +919,12 @@
                     "text": "Klok hier in, uit en registreer pauzes op je eigen gsm. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Gebruik daarna de unit-QR op locatie om taken te starten of af te ronden."
                 },
                 {
+                    "label": "Evacuatielijst",
+                    "text": "Na aanmelden zie je de tegel Evacuatielijst (brandicoon). Eerst bevestig je dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Daarna zie je wie nu is ingeklokt, per locatie."
+                },
+                {
                     "label": "Afmelden",
                     "text": "Meld je af wanneer je klaar bent. Op door de beheerder ingestelde tijdstippen word je bovendien automatisch afgemeld."
-                }
-            ]
-        },
-        "portal.time_roster": {
-            "title": "Hulp — Aanwezigheidslijst",
-            "actions": [
-                {
-                    "label": "Wie mag kijken?",
-                    "text": "Alleen een uitvoerder die zich aanmeldt met voornaam, achternaam en persoonlijk icoon. Geen openbare namenlijst."
-                },
-                {
-                    "label": "Logging",
-                    "text": "Voor de lijst verschijnt, bevestig je dat de raadpleging wordt gelogd: voornaam, naam, datum en uur."
-                },
-                {
-                    "label": "Wat zie je?",
-                    "text": "Iedereen die nu is ingeklokt, inclusief medewerkers en beheerders met een prikklok-profiel. Groepen per locatie; pauzes blijven zichtbaar (nog aanwezig)."
                 }
             ]
         },
@@ -1190,8 +1177,8 @@
                     "text": "Medewerkers klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon — geen aparte login."
                 },
                 {
-                    "label": "Aanwezigheids-QR",
-                    "text": "Op deze pagina staat een aparte QR voor een evacuatielijst. Hang die bij de verzamelplaats. Alleen een uitvoerder die zich aanmeldt met naam en icoon ziet wie ingeklokt is (uitvoerders én collega’s/beheer met prikklok). Voor de lijst verschijnt, moet hij bevestigen dat de raadpleging wordt gelogd (voornaam, naam, datum en uur)."
+                    "label": "Evacuatielijst",
+                    "text": "De evacuatielijst staat op het Clock Point-portaal na aanmelden (tegel Evacuatielijst). Geen aparte QR. Voor de lijst bevestigt de uitvoerder dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur)."
                 }
             ]
         },

@@ -132,7 +132,7 @@
             "items": [
                 "Unit-QR: melden + worker-taken ter plaatse",
                 "Clock Point-QR: aanmelden / inklokken",
-                "Time-aanwezigheids-QR: evacuatielijst van ingeklokten",
+                "Clock Point: tegel Evacuatielijst van ingeklokten",
                 "Locatie-QR en stickerbladen (o.a. Avery)",
                 "Dynamische QR die later een unit kan krijgen",
                 "Moderatie: blur tot goedkeuring op publieke pagina's"

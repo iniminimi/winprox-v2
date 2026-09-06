@@ -919,25 +919,12 @@
                     "text": "Stemple hier ein, aus und erfasse Pausen mit deinem eigenen Handy. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Danach Unit-QR vor Ort für Aufgaben."
                 },
                 {
+                    "label": "Evakuierungsliste",
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Evakuierungsliste (Feuersymbol). Bestätigen Sie zuerst, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Danach sehen Sie, wer jetzt eingestempelt ist, nach Standort."
+                },
+                {
                     "label": "Abmelden",
                     "text": "Melden Sie sich ab, wenn Sie fertig sind. Zu vom Administrator festgelegten Zeiten werden Sie außerdem automatisch abgemeldet."
-                }
-            ]
-        },
-        "portal.time_roster": {
-            "title": "Hilfe — Anwesenheitsliste",
-            "actions": [
-                {
-                    "label": "Wer darf sehen?",
-                    "text": "Nur ein Ausführender mit Vorname, Name und persönlichem Symbol. Keine öffentliche Namensliste."
-                },
-                {
-                    "label": "Protokoll",
-                    "text": "Vor der Liste bestätigen Sie, dass die Einsicht protokolliert wird: Vorname, Name, Datum und Uhrzeit."
-                },
-                {
-                    "label": "Was Sie sehen",
-                    "text": "Alle aktuell Eingestempelten, einschließlich Mitarbeiter und Admins mit Stechuhr. Gruppiert nach Standort; Pause zählt als anwesend."
                 }
             ]
         },
@@ -1190,8 +1177,8 @@
                     "text": "Mitarbeiter stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>)."
                 },
                 {
-                    "label": "Anwesenheits-QR",
-                    "text": "Auf dieser Seite hängt ein eigener QR für eine Evakuierungsliste. Hängen Sie ihn am Sammelplatz auf. Nur ein Ausführender mit Name und Symbol sieht, wer eingestempelt ist (Ausführende und Kollegen/Admin mit Stechuhr). Vor der Liste muss er die Protokollierung bestätigen (Vorname, Name, Datum und Uhrzeit)."
+                    "label": "Evakuierungsliste",
+                    "text": "Die Evakuierungsliste steht nach der Anmeldung auf dem Clock-Point-Portal (Kachel Evakuierungsliste). Kein eigener QR. Vor der Liste bestätigt der Ausführende, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit)."
                 }
             ]
         },

@@ -3,17 +3,13 @@
 namespace App\Livewire\Time;
 
 use App\Actions\Time\BuildTimePresenceDashboardAction;
-use App\Actions\Time\EnsureTimeRosterQrTokenAction;
 use App\Enums\TimePresenceStatusFilter;
 use App\Enums\TimePresenceViewMode;
 use App\Livewire\Concerns\ManagesWorkShiftForceClose;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
-use App\Models\Tenant;
 use App\Models\WorkShift;
-use App\Support\Qr\QrCenterLogo;
-use App\Support\Qr\QrSvg;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
@@ -57,11 +53,6 @@ class PresenceIndex extends Component
     public function mount(): void
     {
         $this->authorize('viewAny', WorkShift::class);
-
-        $tenant = Tenant::query()->find(Tenancy::id());
-        if ($tenant !== null) {
-            app(EnsureTimeRosterQrTokenAction::class)->handle($tenant, auth()->id());
-        }
 
         if ($this->teamFilter !== null) {
             $this->expandedTeams = [$this->teamFilter];
@@ -184,9 +175,6 @@ class PresenceIndex extends Component
             $scopeLocationIds,
         );
 
-        $tenant = Tenant::query()->find($tenantId);
-        $rosterUrl = $tenant?->timeRosterPortalUrl();
-
         return view('livewire.time.presence-index', [
             'dashboard' => $dashboard,
             'teams' => InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
@@ -195,9 +183,6 @@ class PresenceIndex extends Component
             'staleHours' => (int) config('time.stale_shift_hours', 16),
             'teamPageSize' => (int) config('time.presence_team_page_size', 50),
             'boardLimit' => $this->boardLimit,
-            'rosterQrUrl' => $rosterUrl,
-            'rosterQrSvg' => $rosterUrl !== null ? QrSvg::svg($rosterUrl, 180) : null,
-            'rosterCenterLogoUrl' => QrCenterLogo::publicUrl($tenant),
         ]);
     }
 }
