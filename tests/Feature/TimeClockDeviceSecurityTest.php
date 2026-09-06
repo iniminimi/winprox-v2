@@ -81,7 +81,7 @@ it('laat opnieuw inklokken nadat beheer het toestel vrijgeeft', function () {
     );
 
     app(\App\Actions\Time\ClockOutAction::class)->handle($worker, $clockPoint);
-    app(ClearWorkerClockDeviceAction::class)->handle($worker->fresh());
+    app(ClearWorkerClockDeviceAction::class)->handle($worker->fresh(), (int) $worker->tenant_id);
 
     $second = app(AttachWorkerDeviceAction::class)->handle($worker->fresh());
     $secondDevice = $worker->fresh()->devices()->where('device_token', $second['device_token'])->first();
@@ -101,14 +101,14 @@ it('laat opnieuw inklokken nadat beheer het toestel vrijgeeft', function () {
 it('slaagt een 4-cijferige pincode op gehashed en bevestigt die', function () {
     [, , , $worker] = clockSecurityTenant();
 
-    app(SetWorkerClockPinAction::class)->handle($worker, '1234');
+    app(SetWorkerClockPinAction::class)->handle($worker, '1234', (int) $worker->tenant_id);
     $fresh = $worker->fresh();
 
     expect($fresh->hasClockPin())->toBeTrue()
         ->and($fresh->clock_pin_hash)->not->toBe('1234');
 
-    expect(app(ConfirmWorkerClockPinAction::class)->handle($fresh, '1234'))->not->toBeNull()
-        ->and(app(ConfirmWorkerClockPinAction::class)->handle($fresh, '0000'))->toBeNull();
+    expect(app(ConfirmWorkerClockPinAction::class)->handle($fresh, '1234', (int) $fresh->tenant_id))->not->toBeNull()
+        ->and(app(ConfirmWorkerClockPinAction::class)->handle($fresh, '0000', (int) $fresh->tenant_id))->toBeNull();
 });
 
 it('toont een alarm bij een hop binnen 5 minuten', function () {
@@ -160,4 +160,48 @@ it('klokt in via het portaal na icoon en toont het icoon niet meer op het welkom
         ->assertSet('flashMessage', __('time.portal.clocked_in'));
 
     expect((int) $worker->fresh()->clock_device_id)->toBeGreaterThan(0);
+});
+
+it('koppelt geen gsm bij API-inkloken', function () {
+    [$tenant, , $clockPoint, $worker] = clockSecurityTenant();
+    $user = \App\Models\User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => \App\Models\User::ROLE_ADMIN,
+    ]);
+    $token = $user->createToken('test', ['time:write'])->plainTextToken;
+
+    $this->withToken($token)
+        ->postJson('/api/v1/time/clock-in', [
+            'worker_id' => $worker->id,
+            'clock_point_id' => $clockPoint->id,
+        ])
+        ->assertCreated();
+
+    expect($worker->fresh()->clock_device_id)->toBeNull();
+});
+
+it('geeft een gekoppeld toestel vrij via de API met time:write', function () {
+    [$tenant, , $clockPoint, $worker] = clockSecurityTenant();
+
+    $device = app(AttachWorkerDeviceAction::class)->handle($worker);
+    $deviceModel = $worker->devices()->where('device_token', $device['device_token'])->first();
+    app(ClockInAction::class)->handle(
+        $worker,
+        $clockPoint,
+        $deviceModel,
+        enforceClockDevice: true,
+        requestDeviceToken: $device['device_token'],
+    );
+
+    $user = \App\Models\User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => \App\Models\User::ROLE_ADMIN,
+    ]);
+    $token = $user->createToken('test', ['time:write'])->plainTextToken;
+
+    $this->withToken($token)
+        ->postJson('/api/v1/time/workers/'.$worker->id.'/release-clock-device')
+        ->assertOk();
+
+    expect($worker->fresh()->clock_device_id)->toBeNull();
 });

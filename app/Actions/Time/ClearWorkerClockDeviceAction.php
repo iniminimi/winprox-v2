@@ -4,13 +4,18 @@ namespace App\Actions\Time;
 
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
+use InvalidArgumentException;
 
 class ClearWorkerClockDeviceAction
 {
     public function __construct(private AuditRecorder $audit) {}
 
-    public function handle(Worker $worker, ?int $actorUserId = null): Worker
+    public function handle(Worker $worker, int $tenantId, ?int $actorUserId = null): Worker
     {
+        if ((int) $worker->tenant_id !== $tenantId) {
+            throw new InvalidArgumentException('tenant_mismatch');
+        }
+
         $previous = $worker->clock_device_id !== null ? (int) $worker->clock_device_id : null;
 
         $worker->forceFill(['clock_device_id' => null])->save();

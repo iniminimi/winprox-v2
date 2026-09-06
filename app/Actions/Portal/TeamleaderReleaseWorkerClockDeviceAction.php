@@ -26,6 +26,6 @@ class TeamleaderReleaseWorkerClockDeviceAction
             throw new InvalidArgumentException('cannot_release_self');
         }
 
-        return $this->clearDevice->handle($target);
+        return $this->clearDevice->handle($target, (int) $team->tenant_id);
     }
 }

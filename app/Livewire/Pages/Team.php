@@ -960,13 +960,15 @@ class Team extends Component
     public function clearWorkerClockDevice(int $workerId, ClearWorkerClockDeviceAction $clearDevice): void
     {
         $worker = $this->authorizedWorker($workerId);
-        $clearDevice->handle($worker, (int) auth()->id());
+        $this->authorize('clearClockDevice', $worker);
+        $clearDevice->handle($worker, (int) Tenancy::id(), (int) auth()->id());
     }
 
     public function clearWorkerClockPin(int $workerId, ClearWorkerClockPinAction $clearPin): void
     {
         $worker = $this->authorizedWorker($workerId);
-        $clearPin->handle($worker, (int) auth()->id());
+        $this->authorize('clearClockPin', $worker);
+        $clearPin->handle($worker, (int) Tenancy::id(), (int) auth()->id());
     }
 
     public function setWorkerActive(int $workerId, bool $active, SetWorkerActiveAction $setActive): void

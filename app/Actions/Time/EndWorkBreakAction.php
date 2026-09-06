@@ -33,7 +33,12 @@ class EndWorkBreakAction
         TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
 
         if ($enforceClockDevice) {
-            $this->assertClockDevice->handle($worker, $device, $requestDeviceToken);
+            $this->assertClockDevice->handle(
+                $worker,
+                $device,
+                (int) $worker->tenant_id,
+                $requestDeviceToken,
+            );
         }
 
         return DB::transaction(function () use ($worker, $shift) {

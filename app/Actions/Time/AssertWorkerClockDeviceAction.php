@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Enums\ClockDeviceRefusalReason;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
 use App\Support\Audit\AuditRecorder;
@@ -15,29 +16,37 @@ class AssertWorkerClockDeviceAction
 {
     public function __construct(private AuditRecorder $audit) {}
 
-    public function handle(Worker $worker, ?WorkerDevice $device, ?string $requestToken = null): WorkerDevice
-    {
+    public function handle(
+        Worker $worker,
+        ?WorkerDevice $device,
+        int $tenantId,
+        ?string $requestToken = null,
+    ): WorkerDevice {
+        if ((int) $worker->tenant_id !== $tenantId) {
+            throw new InvalidArgumentException('tenant_mismatch');
+        }
+
         $foreign = $this->foreignDeviceFromToken($worker, $requestToken);
         if ($foreign !== null) {
-            $this->logRefusal($worker, $foreign, 'clock_device_foreign');
+            $this->logRefusal($worker, $foreign, ClockDeviceRefusalReason::Foreign);
 
-            throw new InvalidArgumentException('clock_device_mismatch');
+            throw new InvalidArgumentException(ClockDeviceRefusalReason::Mismatch->value);
         }
 
         if ($device === null) {
             if ($worker->clock_device_id !== null) {
-                $this->logRefusal($worker, null, 'clock_device_missing');
+                $this->logRefusal($worker, null, ClockDeviceRefusalReason::Missing);
 
-                throw new InvalidArgumentException('clock_device_mismatch');
+                throw new InvalidArgumentException(ClockDeviceRefusalReason::Mismatch->value);
             }
 
-            throw new InvalidArgumentException('clock_device_missing');
+            throw new InvalidArgumentException(ClockDeviceRefusalReason::Missing->value);
         }
 
         if ((int) $device->worker_id !== (int) $worker->id) {
-            $this->logRefusal($worker, $device, 'clock_device_foreign');
+            $this->logRefusal($worker, $device, ClockDeviceRefusalReason::Foreign);
 
-            throw new InvalidArgumentException('clock_device_mismatch');
+            throw new InvalidArgumentException(ClockDeviceRefusalReason::Mismatch->value);
         }
 
         $boundId = $worker->clock_device_id !== null ? (int) $worker->clock_device_id : null;
@@ -61,9 +70,9 @@ class AssertWorkerClockDeviceAction
         }
 
         if ($boundId !== (int) $device->id) {
-            $this->logRefusal($worker, $device, 'clock_device_mismatch');
+            $this->logRefusal($worker, $device, ClockDeviceRefusalReason::Mismatch);
 
-            throw new InvalidArgumentException('clock_device_mismatch');
+            throw new InvalidArgumentException(ClockDeviceRefusalReason::Mismatch->value);
         }
 
         return $device;
@@ -87,7 +96,7 @@ class AssertWorkerClockDeviceAction
         return (int) $device->worker_id !== (int) $worker->id ? $device : null;
     }
 
-    private function logRefusal(Worker $worker, ?WorkerDevice $attempted, string $reason): void
+    private function logRefusal(Worker $worker, ?WorkerDevice $attempted, ClockDeviceRefusalReason $reason): void
     {
         $this->audit->record(
             userId: null,
@@ -100,7 +109,7 @@ class AssertWorkerClockDeviceAction
                 'bound_device_id' => $worker->clock_device_id !== null ? (int) $worker->clock_device_id : null,
                 'attempted_device_id' => $attempted?->id,
                 'attempted_worker_id' => $attempted !== null ? (int) $attempted->worker_id : null,
-                'reason' => $reason,
+                'reason' => $reason->value,
             ],
         );
     }

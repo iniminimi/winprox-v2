@@ -52,7 +52,12 @@ class ClockInAction
         TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
 
         if ($enforceClockDevice) {
-            $device = $this->assertClockDevice->handle($worker, $device, $requestDeviceToken);
+            $device = $this->assertClockDevice->handle(
+                $worker,
+                $device,
+                (int) $worker->tenant_id,
+                $requestDeviceToken,
+            );
         }
 
         return DB::transaction(function () use ($worker, $clockPoint, $device, $clientTimestamp, $source, $latitude, $longitude) {

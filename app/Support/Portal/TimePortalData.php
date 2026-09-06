@@ -7,6 +7,7 @@ use App\Enums\TaskStatus;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Task;
+use App\Models\Tenant;
 use App\Models\Worker;
 use Illuminate\Support\Collection;
 
@@ -65,5 +66,19 @@ final class TimePortalData
     public static function allowsOpenRegistration(InternalTeam $team): bool
     {
         return $team->workers()->where('workers.is_active', true)->count() === 0;
+    }
+
+    public static function tenantRequiresPin(int $tenantId): bool
+    {
+        $tenant = Tenant::query()->find($tenantId);
+
+        return $tenant !== null && $tenant->requiresWorkerPin();
+    }
+
+    public static function tenantRequestsClockGps(int $tenantId): bool
+    {
+        $tenant = Tenant::query()->find($tenantId);
+
+        return $tenant !== null && $tenant->requestsClockGps();
     }
 }

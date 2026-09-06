@@ -23,4 +23,14 @@ class WorkerPolicy
         return $this->view($user, $worker)
             && ($user->isAdmin() || $user->isEmployee());
     }
+
+    public function clearClockDevice(User $user, Worker $worker): bool
+    {
+        return $this->update($user, $worker);
+    }
+
+    public function clearClockPin(User $user, Worker $worker): bool
+    {
+        return $this->update($user, $worker);
+    }
 }

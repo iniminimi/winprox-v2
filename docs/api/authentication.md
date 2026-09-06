@@ -57,6 +57,8 @@ $token = $user->createToken('Read Only', [
 | `units:read` | `GET /api/v1/units` |
 | `teams:read` | `GET /api/v1/teams` |
 | `workers:read` | `GET /api/v1/workers` |
+| `time:read` | `GET /api/v1/time/work-shifts` |
+| `time:write` | `POST /api/v1/time/clock-in`, `POST /api/v1/time/clock-out`, `POST /api/v1/time/workers/{id}/release-clock-device` |
 | `esg:create` | `POST /api/v1/esg/measurements` |
 | `webhooks:manage` | Manage webhook endpoints via UI |
 | `*` | All endpoints |

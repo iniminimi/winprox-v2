@@ -231,7 +231,7 @@ class Settings extends Component
         )->validate();
 
         try {
-            $updated = $update->handle($tenant, $validated, (int) auth()->id());
+            $updated = $update->handle($tenant, (int) $tenant->id, $validated, (int) auth()->id());
         } catch (\InvalidArgumentException $e) {
             if ($e->getMessage() === 'time_module_disabled') {
                 $this->addError('timeRequireWorkerPin', __('settings.errors.time_module_required'));

@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "optioneel",
-                "body": "Time is een optionele prikklok: in-/uitklokken, pauze, aanwezigheid en urenstaat. Clock Point blijft de aanmeld-QR (naam + icoon, takenlijst) ook zonder Time. In de proefperiode is Time inbegrepen. Bij WinProx is het optioneel: toeslag per maand, op de jaarfactuur. Naamlookup op Clock Point is per vestiging; uitvoerders zien hun naam alleen op toegewezen locaties (tenzij invaller). Eén open dienst per uitvoerder: op een andere Clock Point zie je waar je bent ingeklokt en kun je aanwezigheid verplaatsen (zelfde dienst, met vermelding van de hop). Aanwezigheid toont optioneel de portretfoto van de uitvoerder in de ronde avatar (anders de initiaal). Optioneel CIAO (RSZ Check In and Out): realtime IN/OUT + pauzes voor schoonmaak; instellingen onder Organisatie → Instellingen; NISS op uitvoerder; DDT op locatie. Bouw/beton-scope (CIAO) volgt achter feature-flag tot RSZ-live (~apr 2027). Inklokken is gekoppeld aan één gsm per uitvoerder; een ander toestel wordt geweigerd tot beheer of teamleader een nieuw toestel toestaat. Optioneel: pincode (4 cijfers) op Clock Point en GPS bij de prik (zonder signaal indoor gaat de prik toch door). Te snelle verplaatsing tussen Clock Points (binnen 5 min) verschijnt als alarm. Het persoonlijke icoon wordt na aanmelden niet meer getoond."
+                "body": "Time is een optionele prikklok: in-/uitklokken, pauze, aanwezigheid en urenstaat. Clock Point blijft de aanmeld-QR (naam + icoon, takenlijst) ook zonder Time. In de proefperiode is Time inbegrepen. Bij WinProx is het optioneel: toeslag per maand, op de jaarfactuur. Naamlookup op Clock Point is per vestiging; uitvoerders zien hun naam alleen op toegewezen locaties (tenzij invaller). Eén open dienst per uitvoerder: op een andere Clock Point zie je waar je bent ingeklokt en kun je aanwezigheid verplaatsen (zelfde dienst, met vermelding van de hop). Aanwezigheid toont optioneel de portretfoto van de uitvoerder in de ronde avatar (anders de initiaal). Optioneel CIAO (RSZ Check In and Out): realtime IN/OUT + pauzes voor schoonmaak; instellingen onder Organisatie → Instellingen; NISS op uitvoerder; DDT op locatie. Bouw/beton-scope (CIAO) volgt achter feature-flag tot RSZ-live (~apr 2027). Inklokken is gekoppeld aan één gsm per uitvoerder; een ander toestel wordt geweigerd tot beheer of teamleader een nieuw toestel toestaat. Optioneel: pincode (4 cijfers) op Clock Point en GPS bij de prik (zonder signaal indoor gaat de prik toch door). Te snelle verplaatsing tussen Clock Points (binnen 5 min) verschijnt als alarm. Het persoonlijke icoon wordt na aanmelden niet meer getoond. API-inkloken (POST /api/v1/time/clock-in) koppelt geen gsm — dat geldt alleen voor de Clock Point-QR. Een gekoppeld toestel vrijgeven kan via beheer, teamleader of API (time:write)."
             },
             {
                 "title": "Reserveringen",
@@ -189,7 +189,7 @@
                 "items": [
                     "**Beheerder**: alles (users, bedrijf, abonnement, teams).",
                     "**Medewerker**: operationeel (meldingen, taken, locaties) — geen account-/billingbeheer; optioneel beperkt tot toegewezen locaties.",
-                    "**Uitvoerder / teamleader**: taken via veldportaal; teamleader kan iconen vrijgeven.",
+                    "**Uitvoerder / teamleader**: taken via veldportaal; teamleader kan iconen en gekoppelde gsm vrijgeven.",
                     "Elke actie wordt gecontroleerd: je mag alleen wat bij je rol past (**minimale rechten**). API-sleutels krijgen aparte toestemmingen — bijvoorbeeld “meldingen lezen” zonder toegang tot alles.",
                     "Operationele rapporten: gefilterde CSV of afdruk op meldingen, taken, Time, reserveringen, unit checks, unitmetingen en ESG — voor wie die lijsten mag zien. Afdruk volgt waar mogelijk de lijstlayout; Time = urenstaat. Los van de AVG-account-export (Instellingen → Privacy & export).",
                     "Werkmenu: tenant-kolommen work_menu_*_enabled; sidebar en backoffice-routes via TenantWorkMenuAccess; starttemplate zet defaults via UpdateTenantWorkMenuAction (verwijderen template zet menu niet terug)."
@@ -233,7 +233,7 @@
                     "Zelfregistratie vereist **e-mailverificatie**: het account werkt pas na het klikken op de link in de bevestigingsmail. De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar (bounce) is gemarkeerd. Uitschrijven van marketingmails blokkeert deze bevestiging niet. Niet-geverifieerde aanmeldingen worden na 7 dagen automatisch en volledig verwijderd.",
                     "**SSO** (één bedrijfs-login via Microsoft Entra): op desktop voor beheerder en medewerker (**Inloggen met Microsoft**). Alleen bestaande WinProx-accounts (e-mail gelijk aan het Microsoft-account); e-mail + wachtwoord blijft werken. Geen automatische nieuwe accounts. Uitvoerders blijven Clock Point-QR (naam + icoon). Koppeling met andere software (Ultimo, IWMS, …) loopt via API-sleutels, niet via SSO.",
                     "API: persoonlijke **toegangssleutel** (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.",
-                    "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon.",
+                    "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon (of optionele PIN). Eén gsm per uitvoerder; het icoon wordt na aanmelden niet getoond.",
                     "Melders: publiek QR-portaal zonder account. Optioneel mailboxbewijs (categorie én unit): geen login; de melding ontstaat pas na de link in de mail.",
                     "Collega met **Prikklok-team** krijgt een gekoppeld uitvoerderprofiel voor Clock Point (naam + icoon); telt niet dubbel als licentie."
                 ]
@@ -246,7 +246,8 @@
                     "Tenant-scoping; audit-/activiteitenlogs.",
                     "Webhooks met **HMAC-SHA256**-handtekening (bewijs dat het bericht van WinProx komt).",
                     "API: max. **60 verzoeken/minuut** per token.",
-                    "Supporttoegang: uitzonderlijk, standaard alleen-lezen."
+                    "Supporttoegang: uitzonderlijk, standaard alleen-lezen.",
+                    "Time Clock Point: één gsm per uitvoerder (weigeren + audit bij ander toestel). Optionele PIN (gehasht) en GPS (prik gaat door zonder signaal). API-inkloken bindt geen gsm."
                 ]
             },
             {
@@ -370,7 +371,7 @@
                         ],
                         [
                             "Time",
-                            "In-/uitklokken, Shifts"
+                            "In-/uitklokken, shifts (API-inkloken bindt geen gsm); gekoppeld toestel vrijgeven"
                         ],
                         [
                             "ESG",

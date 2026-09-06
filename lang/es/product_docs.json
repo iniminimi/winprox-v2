@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "opcional",
-                "body": "Time es un reloj de fichar opcional: entrada/salida, pausa, presencia y hoja de horas. Clock Point sigue siendo el QR de identificación (nombre + icono, lista de tareas) también sin Time. Time está incluido en la prueba. En WinProx es opcional: recargo mensual en la factura anual. La búsqueda por nombre en el punto de fichaje está limitada a la sede; los ejecutores solo aparecen en sedes asignadas (excepto equipos flotantes). Un turno abierto por ejecutor: en otro Clock Point ves dónde has fichado y puedes trasladar la presencia (mismo turno, con nota del traslado). Presencia muestra opcionalmente la foto de retrato del operario en el avatar redondo (si no, la inicial). CIAO opcional (Check In and Out ONSS): IN/OUT + pausas en tiempo real para limpieza; ajustes en Organización → Ajustes; NISS en el ejecutor; DDT en la ubicación. Ámbito construcción/hormigón (CIAO) tras feature flag hasta el go-live ONSS (~abr. 2027). El fichaje se vincula a un móvil por ejecutor; otro dispositivo se rechaza hasta que un admin o responsable autorice uno nuevo. Opcional: PIN de 4 dígitos en Clock Point y GPS al fichar (sin señal en interior el fichaje sigue). Un traslado demasiado rápido entre Clock Points (en 5 min) aparece como alarma. El icono personal no se muestra tras identificarse."
+                "body": "Time es un reloj de fichar opcional: entrada/salida, pausa, presencia y hoja de horas. Clock Point sigue siendo el QR de identificación (nombre + icono, lista de tareas) también sin Time. Time está incluido en la prueba. En WinProx es opcional: recargo mensual en la factura anual. La búsqueda por nombre en el punto de fichaje está limitada a la sede; los ejecutores solo aparecen en sedes asignadas (excepto equipos flotantes). Un turno abierto por ejecutor: en otro Clock Point ves dónde has fichado y puedes trasladar la presencia (mismo turno, con nota del traslado). Presencia muestra opcionalmente la foto de retrato del operario en el avatar redondo (si no, la inicial). CIAO opcional (Check In and Out ONSS): IN/OUT + pausas en tiempo real para limpieza; ajustes en Organización → Ajustes; NISS en el ejecutor; DDT en la ubicación. Ámbito construcción/hormigón (CIAO) tras feature flag hasta el go-live ONSS (~abr. 2027). El fichaje se vincula a un móvil por ejecutor; otro dispositivo se rechaza hasta que un admin o responsable autorice uno nuevo. Opcional: PIN de 4 dígitos en Clock Point y GPS al fichar (sin señal en interior el fichaje sigue). Un traslado demasiado rápido entre Clock Points (en 5 min) aparece como alarma. El icono personal no se muestra tras identificarse. El fichaje API (POST /api/v1/time/clock-in) no vincula un móvil: eso solo aplica al QR Clock Point. Un dispositivo vinculado se puede liberar desde administración, el jefe de equipo o la API (time:write)."
             },
             {
                 "title": "Reservations",
@@ -189,7 +189,7 @@
                 "items": [
                     "**Admin**: everything (users, company, subscription, teams).",
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
-                    "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
+                    "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
                     "Informes operativos: CSV o impresión filtrada en incidencias, tareas, Time, reservas, unit checks, mediciones unit y ESG — para quien pueda ver esas listas. La impresión sigue cuando procede el diseño de la lista; Time = hoja de horas. Distinto de la exportación de cuenta RGPD (Ajustes → Privacidad y exportación).",
                     "Menú de trabajo: columnas tenant work_menu_*_enabled; barra lateral y rutas backoffice via TenantWorkMenuAccess; plantilla inicial aplica defaults via UpdateTenantWorkMenuAction (eliminar plantilla no revierte el menú)."
@@ -233,7 +233,7 @@
                     "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. Unverified sign-ups are automatically and completely deleted after 7 days.",
                     "**SSO** (un inicio de sesión de empresa vía Microsoft Entra): para administradores y empleados en escritorio (**Iniciar sesión con Microsoft**). Solo cuentas WinProx existentes (el correo debe coincidir con la cuenta Microsoft); correo + contraseña sigue funcionando. No se crean cuentas nuevas automáticamente. Los ejecutores siguen con el QR Clock Point (nombre + icono). La conexión con otro software (Ultimo, IWMS, …) usa tokens de API, no SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
-                    "Workers: **no email login** — Clock Point QR + name + personal icon.",
+                    "Workers: **no email login** — Clock Point QR + name + personal icon (or optional PIN). One phone per worker; the icon is hidden after sign-in.",
                     "Avisadores: portal QR público sin cuenta. Prueba de buzón opcional (categoría y unidad): sin inicio de sesión; el aviso solo se crea tras el enlace del correo.",
                     "Colega con **equipo de fichaje** obtiene perfil ejecutor vinculado para Clock Point (nombre + icono); no cuenta doble en la licencia."
                 ]
@@ -246,7 +246,8 @@
                     "Tenant scoping; audit/activity logs.",
                     "Webhooks with **HMAC-SHA256** signature (proof the message comes from WinProx).",
                     "API: max. **60 requests/minute** per token.",
-                    "Support access: exceptional, read-only by default."
+                    "Support access: exceptional, read-only by default.",
+                    "Time Clock Point: one phone per worker (refuse + audit on another device). Optional hashed PIN and GPS (punch proceeds without a signal). API clock-in does not bind a phone."
                 ]
             },
             {
@@ -368,7 +369,7 @@
                         ],
                         [
                             "Time",
-                            "Fichar entrada/salida, Turnos"
+                            "Fichar entrada/salida, turnos (el fichaje API no vincula un móvil); liberar dispositivo vinculado"
                         ],
                         [
                             "ESG",

@@ -14,6 +14,8 @@ use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\SetWorkerClockPinAction;
 use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
+use App\Enums\ClockDeviceRefusalReason;
+use App\Http\Requests\Time\WorkerClockPinRequest;
 use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
@@ -319,17 +321,10 @@ class TimePortal extends Component
             return;
         }
 
-        $this->validate([
-            'pin_code' => ['required', 'regex:/^\d{4}$/'],
-            'pin_code_confirm' => ['required', 'same:pin_code'],
-        ], [
-            'pin_code.required' => __('portal.worker.errors.pin_required'),
-            'pin_code.regex' => __('portal.worker.errors.pin_invalid'),
-            'pin_code_confirm.same' => __('portal.worker.errors.pin_mismatch'),
-        ]);
+        $this->validate(WorkerClockPinRequest::setupRulesFor(), WorkerClockPinRequest::messagesFor());
 
         try {
-            $setPin->handle($deviceWorker, $this->pin_code);
+            $setPin->handle($deviceWorker, $this->pin_code, $this->tenantId);
         } catch (InvalidArgumentException) {
             $this->addError('pin_code', __('portal.worker.errors.pin_invalid'));
 
@@ -368,15 +363,9 @@ class TimePortal extends Component
             return;
         }
 
-        $this->validate(
-            ['pin_code' => ['required', 'regex:/^\d{4}$/']],
-            [
-                'pin_code.required' => __('portal.worker.errors.pin_required'),
-                'pin_code.regex' => __('portal.worker.errors.pin_invalid'),
-            ],
-        );
+        $this->validate(WorkerClockPinRequest::verifyRulesFor(), WorkerClockPinRequest::messagesFor());
 
-        $worker = $confirmPin->handle($deviceWorker, $this->pin_code);
+        $worker = $confirmPin->handle($deviceWorker, $this->pin_code, $this->tenantId);
         if ($worker === null) {
             WorkerIconGuard::recordFailedAttempt($team);
             $this->pin_code = '';
@@ -661,16 +650,12 @@ class TimePortal extends Component
 
     private function tenantRequiresPin(): bool
     {
-        $tenant = Tenant::query()->find($this->tenantId);
-
-        return $tenant !== null && $tenant->requiresWorkerPin();
+        return TimePortalData::tenantRequiresPin($this->tenantId);
     }
 
     private function tenantRequestsClockGps(): bool
     {
-        $tenant = Tenant::query()->find($this->tenantId);
-
-        return $tenant !== null && $tenant->requestsClockGps();
+        return TimePortalData::tenantRequestsClockGps($this->tenantId);
     }
 
     private function markPortalVerified(Worker $worker): void
@@ -715,7 +700,7 @@ class TimePortal extends Component
 
     private function flashClockDeviceError(InvalidArgumentException $e): bool
     {
-        if (! in_array($e->getMessage(), ['clock_device_mismatch', 'clock_device_missing'], true)) {
+        if (ClockDeviceRefusalReason::tryFrom($e->getMessage()) === null) {
             return false;
         }
 

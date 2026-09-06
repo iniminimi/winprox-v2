@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Actions\Time\ClearWorkerClockDeviceAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Enums\ClockSource;
 use App\Http\Requests\Time\ApiClockInRequest;
 use App\Http\Requests\Time\ApiClockOutRequest;
+use App\Http\Resources\WorkerResource;
 use App\Http\Resources\WorkShiftResource;
 use App\Models\ClockPoint;
 use App\Models\Worker;
 use App\Models\WorkShift;
+use App\Support\Tenancy;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use InvalidArgumentException;
@@ -71,5 +74,18 @@ class WorkShiftController extends Controller
         }
 
         return $this->item(new WorkShiftResource($shift));
+    }
+
+    public function releaseClockDevice(Worker $worker, ClearWorkerClockDeviceAction $clear): JsonResponse
+    {
+        $this->authorize('clearClockDevice', $worker);
+
+        try {
+            $updated = $clear->handle($worker, (int) Tenancy::id(), auth()->id());
+        } catch (InvalidArgumentException $e) {
+            return response()->json(['message' => $e->getMessage()], 422);
+        }
+
+        return $this->item(new WorkerResource($updated));
     }
 }

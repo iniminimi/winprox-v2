@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "optionnel",
-                "body": "Time est une pointeuse optionnelle : entrée/sortie, pause, présence et relevé d'heures. Clock Point reste le QR d'identification (nom + icône, liste des tâches) même sans Time. Time est inclus pendant l’essai. Sur WinProx, il est optionnel : supplément mensuel sur la facture annuelle. La recherche par nom au pointeuse est limitée au site ; les exécutants n’apparaissent que sur les sites assignés (sauf équipes volantes). Une vacation ouverte par exécutant : sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence (même vacation, avec mention du déplacement). La présence affiche éventuellement la photo portrait de l’exécutant dans l’avatar rond (sinon l’initiale). CIAO optionnel (Check In and Out ONSS) : IN/OUT + pauses en temps réel pour le nettoyage ; réglages sous Organisation → Paramètres ; NISS sur l’exécutant ; DDT sur le site. Portée construction/béton (CIAO) derrière un feature flag jusqu’à la mise en ligne ONSS (~avr. 2027). Le pointage est lié à un téléphone par exécutant ; un autre appareil est refusé jusqu'à autorisation d'un admin ou chef d'équipe. Optionnel : PIN à 4 chiffres sur Clock Point et GPS au pointage (sans signal à l'intérieur, le pointage continue). Un déplacement trop rapide entre Clock Points (moins de 5 min) apparaît comme alarme. L'icône personnelle n'est plus affichée après connexion."
+                "body": "Time est une pointeuse optionnelle : entrée/sortie, pause, présence et relevé d'heures. Clock Point reste le QR d'identification (nom + icône, liste des tâches) même sans Time. Time est inclus pendant l’essai. Sur WinProx, il est optionnel : supplément mensuel sur la facture annuelle. La recherche par nom au pointeuse est limitée au site ; les exécutants n’apparaissent que sur les sites assignés (sauf équipes volantes). Une vacation ouverte par exécutant : sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence (même vacation, avec mention du déplacement). La présence affiche éventuellement la photo portrait de l’exécutant dans l’avatar rond (sinon l’initiale). CIAO optionnel (Check In and Out ONSS) : IN/OUT + pauses en temps réel pour le nettoyage ; réglages sous Organisation → Paramètres ; NISS sur l’exécutant ; DDT sur le site. Portée construction/béton (CIAO) derrière un feature flag jusqu’à la mise en ligne ONSS (~avr. 2027). Le pointage est lié à un téléphone par exécutant ; un autre appareil est refusé jusqu'à autorisation d'un admin ou chef d'équipe. Optionnel : PIN à 4 chiffres sur Clock Point et GPS au pointage (sans signal à l'intérieur, le pointage continue). Un déplacement trop rapide entre Clock Points (moins de 5 min) apparaît comme alarme. L'icône personnelle n'est plus affichée après connexion. Le pointage API (POST /api/v1/time/clock-in) ne lie pas de téléphone — cela vaut uniquement pour le QR Clock Point. Un appareil lié peut être libéré via l’admin, le chef d’équipe ou l’API (time:write)."
             },
             {
                 "title": "Reservations",
@@ -189,7 +189,7 @@
                 "items": [
                     "**Admin**: everything (users, company, subscription, teams).",
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
-                    "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
+                    "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
                     "Rapports opérationnels : CSV ou impression filtrés sur signalements, tâches, Time, réservations, contrôles unit, mesures unit et ESG — pour qui peut voir ces listes. L'impression suit la mise en page de la liste quand c'est pertinent ; Time = feuille d'heures. Distinct de l'export compte RGPD (Paramètres → Confidentialité et export).",
                     "Menu Travail : colonnes tenant work_menu_*_enabled ; barre latérale et routes back-office via TenantWorkMenuAccess ; modèle de départ applique les defaults via UpdateTenantWorkMenuAction (supprimer le modèle ne rétablit pas le menu)."
@@ -233,7 +233,7 @@
                     "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. Unverified sign-ups are automatically and completely deleted after 7 days.",
                     "**SSO** (une connexion professionnelle via Microsoft Entra) : pour administrateurs et collaborateurs sur ordinateur (**Se connecter avec Microsoft**). Uniquement des comptes WinProx existants (l’e-mail doit correspondre au compte Microsoft) ; e-mail + mot de passe reste possible. Pas de nouveaux comptes automatiques. Les exécutants restent sur le QR Clock Point (nom + icône). Les liaisons avec d’autres logiciels (Ultimo, IWMS, …) passent par des jetons API, pas par le SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
-                    "Workers: **no email login** — Clock Point QR + name + personal icon.",
+                    "Workers: **no email login** — Clock Point QR + name + personal icon (or optional PIN). One phone per worker; the icon is hidden after sign-in.",
                     "Signalants : portail QR public sans compte. Preuve de boîte mail optionnelle (catégorie et unité) : pas de login ; le signalement n’existe qu’après le lien dans le mail.",
                     "Collègue avec **équipe pointeuse** reçoit un profil exécutant lié pour Clock Point (nom + icône) ; ne compte pas deux fois dans la licence."
                 ]
@@ -246,7 +246,8 @@
                     "Tenant scoping; audit/activity logs.",
                     "Webhooks with **HMAC-SHA256** signature (proof the message comes from WinProx).",
                     "API: max. **60 requests/minute** per token.",
-                    "Support access: exceptional, read-only by default."
+                    "Support access: exceptional, read-only by default.",
+                    "Time Clock Point: one phone per worker (refuse + audit on another device). Optional hashed PIN and GPS (punch proceeds without a signal). API clock-in does not bind a phone."
                 ]
             },
             {
@@ -368,7 +369,7 @@
                         ],
                         [
                             "Time",
-                            "Pointage entrée/sortie, Shifts"
+                            "Pointage entrée/sortie, shifts (le pointage API ne lie pas de téléphone) ; libérer l’appareil lié"
                         ],
                         [
                             "ESG",

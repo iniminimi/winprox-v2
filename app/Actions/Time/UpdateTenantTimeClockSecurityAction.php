@@ -14,8 +14,12 @@ class UpdateTenantTimeClockSecurityAction
     /**
      * @param  array{time_require_worker_pin?: bool, time_gps_on_clock?: bool}  $data
      */
-    public function handle(Tenant $tenant, array $data, ?int $actorUserId): Tenant
+    public function handle(Tenant $tenant, int $tenantId, array $data, ?int $actorUserId): Tenant
     {
+        if ((int) $tenant->id !== $tenantId) {
+            throw new InvalidArgumentException('tenant_mismatch');
+        }
+
         if (! TimeModuleAccess::tenantHasModule($tenant)) {
             throw new InvalidArgumentException('time_module_disabled');
         }

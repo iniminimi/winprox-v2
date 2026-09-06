@@ -95,7 +95,7 @@
             {
                 "title": "Time",
                 "badge": "optional",
-                "body": "Time ist eine optionale Stechuhr: Ein-/Ausstempeln, Pause, Anwesenheit und Stundenliste. Clock Point bleibt der Anmelde-QR (Name + Symbol, Aufgabenliste) auch ohne Time. In der Testphase ist Time enthalten. Bei WinProx ist es optional: Monatszuschlag auf der Jahresrechnung. Namensuche am Stempelpunkt ist standortbezogen; Mitarbeiter erscheinen nur an zugewiesenen Standorten (außer Springer-Teams). Eine offene Schicht pro Ausführendem: an einem anderen Clock Point sehen Sie, wo Sie eingestempelt sind, und können die Anwesenheit verschieben (gleiche Schicht, mit Hinweis auf den Wechsel). Anwesenheit zeigt optional das Porträtfoto des Ausführenden im runden Avatar (sonst den Anfangsbuchstaben). Optional CIAO (RSZ Check In and Out): Echtzeit IN/OUT + Pausen für Reinigung; Einstellungen unter Organisation → Einstellungen; NISS am Ausführer; DDT am Standort. Bau-/Beton-Scope (CIAO) hinter Feature-Flag bis RSZ-Go-live (~Apr 2027). Einstempeln ist an ein Handy pro Person gebunden; ein anderes Gerät wird abgelehnt, bis Verwaltung oder Teamleiter ein neues Gerät zulassen. Optional: 4-stellige PIN am Clock Point und GPS beim Stempeln (ohne Signal drinnen geht es trotzdem). Ein zu schneller Wechsel zwischen Clock Points (innerhalb von 5 Min.) erscheint als Alarm. Das persönliche Symbol wird nach der Anmeldung nicht mehr angezeigt."
+                "body": "Time ist eine optionale Stechuhr: Ein-/Ausstempeln, Pause, Anwesenheit und Stundenliste. Clock Point bleibt der Anmelde-QR (Name + Symbol, Aufgabenliste) auch ohne Time. In der Testphase ist Time enthalten. Bei WinProx ist es optional: Monatszuschlag auf der Jahresrechnung. Namensuche am Stempelpunkt ist standortbezogen; Mitarbeiter erscheinen nur an zugewiesenen Standorten (außer Springer-Teams). Eine offene Schicht pro Ausführendem: an einem anderen Clock Point sehen Sie, wo Sie eingestempelt sind, und können die Anwesenheit verschieben (gleiche Schicht, mit Hinweis auf den Wechsel). Anwesenheit zeigt optional das Porträtfoto des Ausführenden im runden Avatar (sonst den Anfangsbuchstaben). Optional CIAO (RSZ Check In and Out): Echtzeit IN/OUT + Pausen für Reinigung; Einstellungen unter Organisation → Einstellungen; NISS am Ausführer; DDT am Standort. Bau-/Beton-Scope (CIAO) hinter Feature-Flag bis RSZ-Go-live (~Apr 2027). Einstempeln ist an ein Handy pro Person gebunden; ein anderes Gerät wird abgelehnt, bis Verwaltung oder Teamleiter ein neues Gerät zulassen. Optional: 4-stellige PIN am Clock Point und GPS beim Stempeln (ohne Signal drinnen geht es trotzdem). Ein zu schneller Wechsel zwischen Clock Points (innerhalb von 5 Min.) erscheint als Alarm. Das persönliche Symbol wird nach der Anmeldung nicht mehr angezeigt. API-Einstempeln (POST /api/v1/time/clock-in) bindet kein Handy — das gilt nur für den Clock-Point-QR. Ein gebundenes Gerät kann über Admin, Teamleiter oder API (time:write) freigegeben werden."
             },
             {
                 "title": "Reservations",
@@ -189,7 +189,7 @@
                 "items": [
                     "**Admin**: everything (users, company, subscription, teams).",
                     "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
-                    "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
+                    "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
                     "Betriebliche Berichte: gefilterte CSV oder Druck auf Meldungen, Aufgaben, Time, Reservierungen, Unit-Checks, Unit-Messungen und ESG — für Nutzer, die diese Listen sehen dürfen. Druck folgt wo sinnvoll dem Listenlayout; Time = Stundenübersicht. Getrennt vom DSGVO-Kontoexport (Einstellungen → Datenschutz und Export).",
                     "Arbeitsmenü: Tenant-Spalten work_menu_*_enabled; Seitenleiste und Backoffice-Routen via TenantWorkMenuAccess; Startvorlage setzt Defaults via UpdateTenantWorkMenuAction (Löschen der Vorlage setzt Menü nicht zurück)."
@@ -233,7 +233,7 @@
                     "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. Unverified sign-ups are automatically and completely deleted after 7 days.",
                     "**SSO** (eine Firmenanmeldung über Microsoft Entra): für Administratoren und Mitarbeiter am Desktop (**Mit Microsoft anmelden**). Nur bestehende WinProx-Konten (E-Mail muss mit dem Microsoft-Konto übereinstimmen); E-Mail + Passwort bleibt möglich. Keine automatischen neuen Konten. Ausführende bleiben beim Clock-Point-QR (Name + Symbol). Anbindung anderer Software (Ultimo, IWMS, …) über API-Token, nicht über SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
-                    "Workers: **no email login** — Clock Point QR + name + personal icon.",
+                    "Workers: **no email login** — Clock Point QR + name + personal icon (or optional PIN). One phone per worker; the icon is hidden after sign-in.",
                     "Melder: öffentliches QR-Portal ohne Konto. Optionaler Postfachnachweis (Kategorie und Unit): kein Login; die Meldung entsteht erst nach dem Link in der Mail.",
                     "Kollege mit **Stempeluhr-Team** erhält verknüpftes Ausführenden-Profil für Clock Point (Name + Symbol); zählt nicht doppelt zur Lizenz."
                 ]
@@ -246,7 +246,8 @@
                     "Tenant scoping; audit/activity logs.",
                     "Webhooks with **HMAC-SHA256** signature (proof the message comes from WinProx).",
                     "API: max. **60 requests/minute** per token.",
-                    "Support access: exceptional, read-only by default."
+                    "Support access: exceptional, read-only by default.",
+                    "Time Clock Point: one phone per worker (refuse + audit on another device). Optional hashed PIN and GPS (punch proceeds without a signal). API clock-in does not bind a phone."
                 ]
             },
             {
@@ -368,7 +369,7 @@
                         ],
                         [
                             "Time",
-                            "Ein-/Ausstempeln, Schichten"
+                            "Ein-/Ausstempeln, Schichten (API-Einstempeln bindet kein Handy); gebundenes Gerät freigeben"
                         ],
                         [
                             "ESG",

@@ -115,6 +115,9 @@ Route::prefix('v1')->group(function () {
             Route::post('time/clock-out', [WorkShiftController::class, 'clockOut'])
                 ->middleware([CheckTokenAbilities::class.':time:write'])
                 ->name('api.v1.time.clock-out');
+            Route::post('time/workers/{worker}/release-clock-device', [WorkShiftController::class, 'releaseClockDevice'])
+                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->name('api.v1.time.workers.release-clock-device');
 
             Route::get('reservations', [ReservationController::class, 'index'])
                 ->middleware([CheckTokenAbilities::class.':reservations:read'])

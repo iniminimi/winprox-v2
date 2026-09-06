@@ -661,7 +661,7 @@ productsector op `Tenant`.
 - Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
   (ander toestel weigeren + audit tot beheer/teamleader vrijgeeft); één open shift;
   hops tussen Clock Points (alarm bij hop < 5 min). Optioneel GPS bij de prik
-  (geen weigering zonder signaal).
+  (geen weigering zonder signaal). API `POST /time/clock-in` (bron API) koppelt **geen** gsm.
 
 ### 5g.2 Golf 1 — CIAO schoonmaak (`CiaoCleaning`)
 - Voor organisaties die schoonmaak/onderhoud **onroerend voor derden** doen onder Aangifte van
@@ -708,7 +708,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - **Worker** — veldmedewerker **zonder login** (identificatie via naam + persoonlijk icoon op het
   QR-portaal). **Handelt taken af.** Elke worker kan **teamleader** zijn.
 - **Teamleader** = een worker met vlag `is_teamleader`. Mag **iconen vrijgeven** (lockout + icoon van
-  een collega-worker resetten) — in het **veld-portaal** (teamleader bevestigt eerst eigen icoon).
+  een collega-worker resetten) en **een gekoppelde gsm vrijgeven** — in het **veld-portaal** (teamleader bevestigt eerst eigen icoon).
 - Implementatie: `users.role` (`admin`|`employee`), `workers.is_teamleader` (bool). Géén losse
   "team-manager"-user-pivot meer (RBAC verloopt via `role`).
 

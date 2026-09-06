@@ -42,6 +42,8 @@ API tokens can be created with specific abilities to follow the principle of lea
 | `units:read` | Read units |
 | `teams:read` | Read teams |
 | `workers:read` | Read workers |
+| `time:read` | Read work shifts |
+| `time:write` | Clock in/out; release a worker’s bound phone |
 | `esg:create` | Record ESG measurements |
 | `webhooks:manage` | Manage webhook endpoints |
 | `*` | Full access (all abilities) |
@@ -110,6 +112,7 @@ The API follows RESTful conventions with some specific action endpoints:
 - [Units](./units.md)
 - [Teams](./teams.md)
 - [Workers](./workers.md)
+- [Time](./time.md)
 - [ESG Measurements](./esg.md)
 - [Unit Checks](./unit-checks.md)
 - [IoT Connect](./iot.md)

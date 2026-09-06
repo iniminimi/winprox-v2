@@ -2,7 +2,7 @@
 
 namespace App\Support\Portal;
 
-use App\Actions\Portal\AttachWorkerDeviceAction;
+use App\Actions\Portal\EnsureWorkerPortalDeviceAction;
 use App\Actions\Portal\RegisterWorkerForPortalAction;
 use App\Actions\Portal\ResolveWorkerIdentityAction;
 use App\Actions\Portal\ResolveWorkerIdentityForTenantAction;
@@ -153,8 +153,6 @@ final class WorkerDeviceSession
             return null;
         }
 
-        self::restoreDeviceCookieForWorker($worker, $team);
-
         return $worker;
     }
 
@@ -258,40 +256,16 @@ final class WorkerDeviceSession
      */
     public static function ensureUniqueDeviceForWorker(Worker $worker): ?WorkerDevice
     {
-        $existingToken = self::deviceTokenFromRequest();
-        $team = $worker->team;
+        $device = app(EnsureWorkerPortalDeviceAction::class)->handle(
+            $worker,
+            self::deviceTokenFromRequest(),
+            (int) $worker->tenant_id,
+        );
 
-        if ($existingToken !== '') {
-            $existing = WorkerDevice::withoutGlobalScope('tenant')
-                ->where('device_token', $existingToken)
-                ->first();
-
-            if ($existing !== null && (int) $existing->worker_id === (int) $worker->id) {
-                self::persistDeviceToken($existingToken, $team);
-                app(TouchWorkerDeviceAction::class)->handle($existing);
-
-                return $existing;
-            }
-
-            if ($existing !== null) {
-                return null;
-            }
+        if ($device !== null) {
+            self::persistDeviceToken($device->device_token, $worker->team);
         }
 
-        $result = app(AttachWorkerDeviceAction::class)->handle($worker);
-        self::persistDeviceToken($result['device_token'], $team);
-
-        return $worker->devices()->where('device_token', $result['device_token'])->first();
-    }
-
-    private static function restoreDeviceCookieForWorker(Worker $worker, ?InternalTeam $team = null): void
-    {
-        $existingToken = self::deviceTokenFromRequest();
-        if ($existingToken !== '') {
-            return;
-        }
-
-        $result = app(AttachWorkerDeviceAction::class)->handle($worker);
-        self::persistDeviceToken($result['device_token'], $team);
+        return $device;
     }
 }
