@@ -340,7 +340,6 @@
         <x-wp-settings-section
             :title="__('settings.presence.title')"
             class="{{ $presenceComplianceEnabled ? '' : 'wp-settings-section--locked' }}"
-            :open-by-default="! $presenceComplianceEnabled"
         >
             @if (! $presenceComplianceEnabled)
                 <p class="wp-muted wp-text-sm">{{ __('settings.presence.lead') }}</p>

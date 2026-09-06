@@ -4766,11 +4766,6 @@ svg.wp-release-worker-row__icon,
     color: var(--wp-muted);
 }
 
-.wp-settings-section--locked .wp-settings-section-toggle {
-    cursor: default;
-    pointer-events: none;
-}
-
 .wp-settings-section--locked .wp-settings-section-toggle:hover .wp-section-title {
     color: var(--wp-muted);
 }
