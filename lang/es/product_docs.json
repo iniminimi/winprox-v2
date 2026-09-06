@@ -247,7 +247,7 @@
                     "Webhooks with **HMAC-SHA256** signature (proof the message comes from WinProx).",
                     "API: max. **60 requests/minute** per token.",
                     "Support access: exceptional, read-only by default.",
-                    "Time Clock Point: one phone per worker (refuse + audit on another device). Optional hashed PIN and GPS (punch proceeds without a signal). API clock-in does not bind a phone."
+                    "Time Clock Point: un móvil por ejecutor (rechazo + registro si es otro dispositivo). PIN hasheado y GPS opcionales (el fichaje sigue sin señal). El fichaje API no vincula un móvil. Lista de evacuación (ficha tras identificarse): nombres solo tras confirmar que la consulta es excepcional; cada consulta se registra (nombre, apellidos, fecha y hora)."
                 ]
             },
             {

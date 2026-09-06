@@ -247,7 +247,7 @@
                     "Webhooks met **HMAC-SHA256**-handtekening (bewijs dat het bericht van WinProx komt).",
                     "API: max. **60 verzoeken/minuut** per token.",
                     "Supporttoegang: uitzonderlijk, standaard alleen-lezen.",
-                    "Time Clock Point: één gsm per uitvoerder (weigeren + audit bij ander toestel). Optionele PIN (gehasht) en GPS (prik gaat door zonder signaal). API-inkloken bindt geen gsm."
+                    "Time Clock Point: één gsm per uitvoerder (weigeren + audit bij ander toestel). Optionele PIN (gehasht) en GPS (prik gaat door zonder signaal). API-inkloken bindt geen gsm. Evacuatielijst (tegel na aanmelden): namen pas na bevestiging dat de raadpleging uitzonderlijk is; elke raadpleging wordt gelogd (voornaam, naam, datum en uur)."
                 ]
             },
             {

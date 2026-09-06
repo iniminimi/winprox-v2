@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Route;
+use Livewire\Features\SupportLockedProperties\CannotUpdateLockedPropertyException;
 use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
@@ -127,6 +128,19 @@ it('eist de audit-checkbox voor de lijst', function () {
         ->assertSet('rosterListOpen', false);
 });
 
+it('weigert de lijst zonder audit via Livewire-state', function () {
+    [, , $clockPoint, $worker] = rosterTenantWithPeople();
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    $component = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart');
+
+    expect(fn () => $component->set('rosterListOpen', true))
+        ->toThrow(CannotUpdateLockedPropertyException::class);
+
+    $component->assertSet('rosterListOpen', false)
+        ->assertDontSee('Ann Admin', false);
+});
+
 it('isoleert de aanwezigheidslijst per tenant', function () {
     [, , $clockPointA, $workerA] = rosterTenantWithPeople();
     app(ClockInAction::class)->handle($workerA, $clockPointA);
@@ -145,11 +159,13 @@ it('isoleert de aanwezigheidslijst per tenant', function () {
         'last_name' => 'Buiten',
         'field_icon_slug' => 'leaf',
     ]);
+    app(ClockInAction::class)->handle($workerB, $clockPointB);
 
     signInClockPointWorker($clockPointB, 'Bram', 'Buiten', 'leaf')
-        ->set('rosterAcknowledged', true)
         ->call('openRoster')
+        ->set('rosterAcknowledged', true)
         ->call('acknowledgeRoster')
+        ->assertSee('Bram Buiten', false)
         ->assertDontSee('Jan Janssen', false);
 });
 

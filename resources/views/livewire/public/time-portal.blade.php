@@ -211,9 +211,6 @@
                                 <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
                             </button>
                         </div>
-                    @endif
-
-                    @if ($hasTimeModule)
                     <div
                         class="wp-card wp-card-pad wp-stack"
                         x-data="{

@@ -41,6 +41,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Validation\Rule;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -73,8 +74,12 @@ class TimePortal extends Component
     public string $pin_code_confirm = '';
     public ?string $clockGpsLatitude = null;
     public ?string $clockGpsLongitude = null;
+    #[Locked]
     public bool $rosterAckOpen = false;
+
+    #[Locked]
     public bool $rosterListOpen = false;
+
     public bool $rosterAcknowledged = false;
 
     /** Baseline alleen bij openen/login synchen — niet bij elke wire:poll. */
@@ -281,7 +286,9 @@ class TimePortal extends Component
             return;
         }
 
-        if (! TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId))) {
+        try {
+            TimeModuleAccess::assertEnabledForTenantId($this->tenantId);
+        } catch (InvalidArgumentException) {
             return;
         }
 
@@ -314,8 +321,6 @@ class TimePortal extends Component
         try {
             $acknowledge->handle($worker, $this->tenantId);
         } catch (InvalidArgumentException) {
-            $this->addError('rosterAcknowledged', __('time.roster.ack_required'));
-
             return;
         }
 
