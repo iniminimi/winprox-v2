@@ -77,6 +77,26 @@
         "unknown_location": "Senza sede",
         "load_more": "Mostra altri :count"
     },
+    "roster": {
+        "title": "Presenti",
+        "subtitle": "Chi è timbrato ora — per evacuazione o controllo.",
+        "identify_hint": "Solo gli esecutori identificati vedono questo elenco. Inserisci il nome come al Clock Point.",
+        "ack_title": "La consultazione viene registrata",
+        "ack_intro": "Chi apre questo elenco viene registrato: nome, cognome, data e ora.",
+        "ack_label": "Capisco che nome, cognome, data e ora verranno registrati.",
+        "ack_required": "Conferma di aver compreso che questa consultazione viene registrata.",
+        "ack_submit": "Mostra elenco",
+        "count": ":count presenti",
+        "empty": "Nessuno è timbrato in questo momento.",
+        "qr_title": "QR presenza",
+        "qr_subtitle": "Scansiona per l’elenco dei timbrati (evacuazione).",
+        "qr_hint": "Appendi questo QR al punto di raccolta. Solo un esecutore identificato vede i nomi, dopo aver confermato che la consultazione viene registrata.",
+        "role": {
+            "worker": "Esecutore",
+            "employee": "Collaboratore",
+            "admin": "Amministratore"
+        }
+    },
     "alarms": {
         "title": "Allarmi",
         "subtitle": "Turni aperti da controllare: turni lunghi, uscita dimenticata, nessuna pausa o spostamento troppo rapido.",

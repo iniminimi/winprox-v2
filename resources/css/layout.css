@@ -1213,6 +1213,12 @@
     border-bottom: 1px solid var(--wp-border);
 }
 
+.wp-portal-head .wp-brand img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+}
+
 .wp-portal-welcome-title {
     margin: 0.75rem 0 0;
     font-size: clamp(1.125rem, 2.5vw, 1.35rem);

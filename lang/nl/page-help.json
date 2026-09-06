@@ -924,6 +924,23 @@
                 }
             ]
         },
+        "portal.time_roster": {
+            "title": "Hulp — Aanwezigheidslijst",
+            "actions": [
+                {
+                    "label": "Wie mag kijken?",
+                    "text": "Alleen een uitvoerder die zich aanmeldt met voornaam, achternaam en persoonlijk icoon. Geen openbare namenlijst."
+                },
+                {
+                    "label": "Logging",
+                    "text": "Voor de lijst verschijnt, bevestig je dat de raadpleging wordt gelogd: voornaam, naam, datum en uur."
+                },
+                {
+                    "label": "Wat zie je?",
+                    "text": "Iedereen die nu is ingeklokt, inclusief medewerkers en beheerders met een prikklok-profiel. Groepen per locatie; pauzes blijven zichtbaar (nog aanwezig)."
+                }
+            ]
+        },
         "platform.translations": {
             "title": "Hulp — Vertalingen",
             "actions": [
@@ -1171,6 +1188,10 @@
                 {
                     "label": "Clock Point QR",
                     "text": "Medewerkers klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon — geen aparte login."
+                },
+                {
+                    "label": "Aanwezigheids-QR",
+                    "text": "Op deze pagina staat een aparte QR voor een evacuatielijst. Hang die bij de verzamelplaats. Alleen een uitvoerder die zich aanmeldt met naam en icoon ziet wie ingeklokt is (uitvoerders én collega’s/beheer met prikklok). Voor de lijst verschijnt, moet hij bevestigen dat de raadpleging wordt gelogd (voornaam, naam, datum en uur)."
                 }
             ]
         },

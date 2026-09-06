@@ -69,6 +69,14 @@ final class PortalAccess
     /**
      * @return null|string Vertaalsleutel onder portal.inactive.*
      */
+    public static function tenantPortalInactiveReasonKey(?Tenant $tenant): ?string
+    {
+        return self::tenantInactiveReasonKey($tenant);
+    }
+
+    /**
+     * @return null|string Vertaalsleutel onder portal.inactive.*
+     */
     private static function tenantInactiveReasonKey(?Tenant $tenant): ?string
     {
         if ($tenant === null) {

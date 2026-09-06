@@ -132,6 +132,7 @@
             "items": [
                 "QR unità: segnalazione + attività operatore in loco",
                 "Clock Point QR: accesso / timbratura entrata",
+                "QR presenza Time: elenco di evacuazione dei timbrati",
                 "QR sede e fogli adesivi (es. Avery)",
                 "QR dinamico assegnabile a un'unità in seguito",
                 "Moderazione: sfocatura fino all'approvazione sulle pagine pubbliche"

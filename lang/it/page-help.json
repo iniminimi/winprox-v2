@@ -924,6 +924,23 @@
                 }
             ]
         },
+        "portal.time_roster": {
+            "title": "Aiuto — Elenco presenze",
+            "actions": [
+                {
+                    "label": "Chi può vederlo?",
+                    "text": "Solo un esecutore identificato con nome, cognome e icona personale. Non è un elenco pubblico."
+                },
+                {
+                    "label": "Registrazione",
+                    "text": "Prima dell’elenco conferma che la consultazione viene registrata: nome, cognome, data e ora."
+                },
+                {
+                    "label": "Cosa vedi",
+                    "text": "Tutti i timbrati in questo momento, inclusi colleghi e admin con timbratrice. Raggruppato per sede; chi è in pausa resta presente."
+                }
+            ]
+        },
         "platform.translations": {
             "title": "Aiuto — Traduzioni",
             "actions": [
@@ -1171,6 +1188,10 @@
                 {
                     "label": "QR Clock Point",
                     "text": "I lavoratori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>)."
+                },
+                {
+                    "label": "QR presenza",
+                    "text": "Questa pagina ha un QR separato per un elenco di evacuazione. Appendilo al punto di raccolta. Solo un esecutore identificato con nome e icona vede chi è timbrato (esecutori e colleghi/admin con timbratrice). Prima dell’elenco deve confermare che la consultazione viene registrata (nome, cognome, data e ora)."
                 }
             ]
         },

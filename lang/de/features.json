@@ -132,6 +132,7 @@
             "items": [
                 "Einheiten-QR: Meldung + Mitarbeiteraufgaben vor Ort",
                 "Clock Point QR: Anmeldung / Einstempeln",
+                "Time-Anwesenheits-QR: Evakuierungsliste der Eingestempelten",
                 "Standort-QR und Aufkleberbögen (z. B. Avery)",
                 "Dynamischer QR, der später einer Einheit zugewiesen werden kann",
                 "Moderation: Unschärfe bis Genehmigung auf öffentlichen Seiten"

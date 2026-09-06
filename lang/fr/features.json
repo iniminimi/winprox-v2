@@ -132,6 +132,7 @@
             "items": [
                 "QR unité : signalement + tâches ouvrier sur site",
                 "Clock Point QR : connexion / pointage entrée",
+                "QR présence Time : liste d’évacuation des personnes pointées",
                 "QR emplacement et planches d'autocollants (p. ex. Avery)",
                 "QR dynamique assignable à une unité ultérieurement",
                 "Modération : flou jusqu'à approbation sur les pages publiques"

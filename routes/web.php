@@ -30,6 +30,7 @@ use App\Http\Controllers\StopSupportViewController;
 use App\Http\Controllers\TenantPurgeConfirmController;
 use App\Http\Controllers\Time\ClockPointQrController;
 use App\Http\Controllers\Time\ClockPointQrPackDownloadController;
+use App\Http\Controllers\Time\TimeRosterQrController;
 use App\Http\Controllers\Time\WorkShiftExportController;
 use App\Http\Controllers\Time\WorkShiftTimesheetPrintController;
 use App\Http\Controllers\Tasks\TaskExportController;
@@ -98,6 +99,7 @@ use App\Livewire\Public\ConfirmQrReportEmail;
 use App\Livewire\Public\ReservationConfirm;
 use App\Livewire\Public\ReservationManage;
 use App\Livewire\Public\TimePortal;
+use App\Livewire\Public\TimeRosterPortal;
 use App\Livewire\Public\UnassignedQrPortal;
 use App\Livewire\Public\UnitPortal;
 use App\Livewire\Tasks\Index as TaskIndex;
@@ -143,6 +145,10 @@ Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
 Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
 Route::get('/reservations/confirm/{token}', ReservationConfirm::class)->name('reservations.confirm');
 Route::get('/reservations/manage/{token}', ReservationManage::class)->name('reservations.manage');
+
+Route::get('/time/roster/{token}', TimeRosterPortal::class)
+    ->where('token', '[a-z0-9]{20,64}')
+    ->name('public.time-roster');
 
 Route::get('/time/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
@@ -382,6 +388,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/esg/point', EsgPointHistory::class)->name('esg.point.history');
         Route::get('/iot', IotIndex::class)->name('iot.index');
         Route::get('/time/presence', PresenceIndex::class)->name('time.presence.index');
+        Route::get('/time/presence/qr', TimeRosterQrController::class)->name('time.presence.qr');
         Route::get('/time/alarms', AlarmsIndex::class)->name('time.alarms.index');
         Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');
         Route::get('/time/ciao', PresenceSubmissionsIndex::class)->name('time.ciao.index');

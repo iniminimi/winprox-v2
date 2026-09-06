@@ -932,6 +932,23 @@
                 }
             ]
         },
+        "portal.time_roster": {
+            "title": "Aide — Liste de présence",
+            "actions": [
+                {
+                    "label": "Qui peut voir ?",
+                    "text": "Seul un exécutant identifié par prénom, nom et icône personnelle. Pas une liste publique."
+                },
+                {
+                    "label": "Journal",
+                    "text": "Avant la liste, confirmez que la consultation est enregistrée : prénom, nom, date et heure."
+                },
+                {
+                    "label": "Ce que vous voyez",
+                    "text": "Toute personne actuellement pointée, y compris collègues et admins avec pointeuse. Groupé par site ; les pauses restent présentes."
+                }
+            ]
+        },
         "platform.translations": {
             "title": "Aide — Traductions",
             "actions": [
@@ -1179,6 +1196,10 @@
                 {
                     "label": "QR Clock Point",
                     "text": "Les collaborateurs pointent via l'autocollant QR sur un clock point (<code>/time/…</code>)."
+                },
+                {
+                    "label": "QR présence",
+                    "text": "Cette page propose un QR distinct pour une liste d’évacuation. Placez-le au point de rassemblement. Seul un exécutant identifié par nom et icône voit qui est pointé (exécutants et collègues/admin avec pointeuse). Avant la liste, il confirme que la consultation est enregistrée (prénom, nom, date et heure)."
                 }
             ]
         },

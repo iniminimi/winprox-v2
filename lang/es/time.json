@@ -77,6 +77,26 @@
         "unknown_location": "Sin ubicación",
         "load_more": "Mostrar :count más"
     },
+    "roster": {
+        "title": "Presentes",
+        "subtitle": "Quién está fichado ahora — para evacuación o control.",
+        "identify_hint": "Solo los ejecutores identificados ven esta lista. Introduzca su nombre como en el Clock Point.",
+        "ack_title": "La consulta se registra",
+        "ack_intro": "Quien abre esta lista queda registrado: nombre, apellidos, fecha y hora.",
+        "ack_label": "Entiendo que se registrarán mi nombre, apellidos, fecha y hora.",
+        "ack_required": "Confirme que entiende que esta consulta se registra.",
+        "ack_submit": "Mostrar lista",
+        "count": ":count presente(s)",
+        "empty": "Nadie está fichado ahora.",
+        "qr_title": "QR de presencia",
+        "qr_subtitle": "Escanee para la lista de fichados (evacuación).",
+        "qr_hint": "Coloque este QR en el punto de reunión. Solo un ejecutor identificado ve los nombres, tras confirmar que la consulta se registra.",
+        "role": {
+            "worker": "Ejecutor",
+            "employee": "Colaborador",
+            "admin": "Administrador"
+        }
+    },
     "alarms": {
         "title": "Alarmas",
         "subtitle": "Turnos abiertos que requieren atención: turnos largos, salida olvidada, sin pausa o traslado demasiado rápido.",

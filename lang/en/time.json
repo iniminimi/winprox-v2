@@ -77,6 +77,26 @@
         "unknown_location": "No location",
         "load_more": "Show :count more"
     },
+    "roster": {
+        "title": "Who is in",
+        "subtitle": "Who is clocked in now — for evacuation or a headcount.",
+        "identify_hint": "Only signed-in field workers can see this list. Enter your name as on the Clock Point.",
+        "ack_title": "This view is logged",
+        "ack_intro": "Opening this list is recorded: first name, last name, date and time.",
+        "ack_label": "I understand that my first name, last name, date and time will be logged.",
+        "ack_required": "Confirm that you understand this view is logged.",
+        "ack_submit": "Show list",
+        "count": ":count present",
+        "empty": "Nobody is clocked in right now.",
+        "qr_title": "Presence QR",
+        "qr_subtitle": "Scan for the list of people clocked in (evacuation).",
+        "qr_hint": "Put this QR at the assembly point. Only a signed-in field worker sees the names, after confirming that the view is logged.",
+        "role": {
+            "worker": "Field worker",
+            "employee": "Staff",
+            "admin": "Admin"
+        }
+    },
     "alarms": {
         "title": "Alarms",
         "subtitle": "Open shifts that need attention — long shifts, forgotten clock-out, no break, or a too-quick move.",

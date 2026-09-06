@@ -5525,3 +5525,77 @@ a.wp-kpi.wp-kpi--attention {
     pointer-events: none;
 }
 
+/* ---------------------------------------------------------------------------
+ | Time — evacuatie-QR (aanwezigheid)
+ * ------------------------------------------------------------------------- */
+.wp-time-roster-qr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wp-time-roster-qr__code {
+    flex: 0 0 7.5rem;
+    max-width: 7.5rem;
+}
+
+.wp-time-roster-qr__code .wp-qr-code-frame {
+    width: 100%;
+}
+
+.wp-time-roster__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.wp-time-roster__count {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.wp-time-roster__updated {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.wp-time-roster__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.65rem;
+}
+
+.wp-time-roster__person {
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-time-roster__person:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.wp-time-roster__name-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem 0.75rem;
+}
+
+.wp-time-roster__name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.wp-time-roster__meta {
+    margin: 0.2rem 0 0;
+    font-size: 0.875rem;
+}
+

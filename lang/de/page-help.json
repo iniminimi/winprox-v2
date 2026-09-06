@@ -924,6 +924,23 @@
                 }
             ]
         },
+        "portal.time_roster": {
+            "title": "Hilfe — Anwesenheitsliste",
+            "actions": [
+                {
+                    "label": "Wer darf sehen?",
+                    "text": "Nur ein Ausführender mit Vorname, Name und persönlichem Symbol. Keine öffentliche Namensliste."
+                },
+                {
+                    "label": "Protokoll",
+                    "text": "Vor der Liste bestätigen Sie, dass die Einsicht protokolliert wird: Vorname, Name, Datum und Uhrzeit."
+                },
+                {
+                    "label": "Was Sie sehen",
+                    "text": "Alle aktuell Eingestempelten, einschließlich Mitarbeiter und Admins mit Stechuhr. Gruppiert nach Standort; Pause zählt als anwesend."
+                }
+            ]
+        },
         "platform.translations": {
             "title": "Hilfe — Übersetzungen",
             "actions": [
@@ -1171,6 +1188,10 @@
                 {
                     "label": "Clock Point QR",
                     "text": "Mitarbeiter stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>)."
+                },
+                {
+                    "label": "Anwesenheits-QR",
+                    "text": "Auf dieser Seite hängt ein eigener QR für eine Evakuierungsliste. Hängen Sie ihn am Sammelplatz auf. Nur ein Ausführender mit Name und Symbol sieht, wer eingestempelt ist (Ausführende und Kollegen/Admin mit Stechuhr). Vor der Liste muss er die Protokollierung bestätigen (Vorname, Name, Datum und Uhrzeit)."
                 }
             ]
         },

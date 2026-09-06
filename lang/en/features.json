@@ -132,6 +132,7 @@
             "items": [
                 "Unit QR: report + worker tasks on site",
                 "Clock Point QR: sign-in / clock in",
+                "Time presence QR: evacuation list of people clocked in",
                 "Location QR and sticker sheets (e.g. Avery)",
                 "Dynamic QR that can be assigned to a unit later",
                 "Moderation: blur until approval on public pages"

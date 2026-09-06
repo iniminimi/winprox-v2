@@ -39,6 +39,7 @@ final class ManualChapterIcons
         'statuses.internet-portal' => 'map-pin',
         'portal.worker.qr' => 'map-pin',
         'portal.time' => 'clock',
+        'portal.time_roster' => 'team',
         'portal.unit' => 'eye',
         'portal.team' => 'team',
         'portal.worker.photos' => 'document',

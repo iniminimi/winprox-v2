@@ -924,6 +924,23 @@
                 }
             ]
         },
+        "portal.time_roster": {
+            "title": "Help — Presence list",
+            "actions": [
+                {
+                    "label": "Who can view it?",
+                    "text": "Only a field worker who signs in with first name, last name and personal icon. Not a public name list."
+                },
+                {
+                    "label": "Logging",
+                    "text": "Before the list appears, confirm that the view is logged: first name, last name, date and time."
+                },
+                {
+                    "label": "What you see",
+                    "text": "Everyone currently clocked in, including staff and admins with a punch-clock profile. Grouped by site; people on break still count as present."
+                }
+            ]
+        },
         "platform.translations": {
             "title": "Help — Translations",
             "actions": [
@@ -1171,6 +1188,10 @@
                 {
                     "label": "Clock Point QR",
                     "text": "Workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon — no separate login."
+                },
+                {
+                    "label": "Presence QR",
+                    "text": "This page has a separate QR for an evacuation list. Put it at the assembly point. Only a field worker who signs in with name and icon sees who is clocked in (workers and staff/admin with a punch-clock profile). Before the list appears they must confirm that the view is logged (first name, last name, date and time)."
                 }
             ]
         },
