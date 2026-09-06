@@ -320,7 +320,7 @@
                             <h3 class="wp-label">{{ __('team.colleagues.modal.locations_title') }}</h3>
                             <p class="wp-hint">{{ __('team.colleagues.modal.locations_hint') }}</p>
                             @if ($allLocations->isNotEmpty())
-                                <div class="wp-grid wp-grid--2">
+                                <div class="wp-form-grid-2">
                                     @foreach ($allLocations as $location)
                                         <label class="wp-check">
                                             <input type="checkbox" wire:model="colleagueLocationIds" value="{{ $location->id }}">
@@ -506,7 +506,7 @@
                         <h3 class="wp-label">{{ __('team.workers.modal.locations_title') }}</h3>
                         <p class="wp-hint">{{ __('team.workers.modal.locations_hint') }}</p>
                         @if ($allLocations->isNotEmpty())
-                            <div class="wp-grid wp-grid--2">
+                            <div class="wp-form-grid-2">
                                 @foreach ($allLocations as $location)
                                     <label class="wp-check">
                                         <input type="checkbox" wire:model="selectedWorkerLocationIds" value="{{ $location->id }}">
@@ -729,7 +729,7 @@
                 </div>
 
                 @if ($categories->isNotEmpty())
-                    <div class="wp-grid wp-grid--2">
+                    <div class="wp-form-grid-2">
                         @foreach ($categories as $category)
                             <label class="wp-check">
                                 <input type="checkbox"

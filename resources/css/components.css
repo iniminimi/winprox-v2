@@ -3595,6 +3595,20 @@ svg.wp-release-worker-row__icon,
     max-width: 36rem;
 }
 
+@media (min-width: 48rem) {
+    .wp-modal-card--form,
+    .wp-modal-card--wide {
+        max-width: 42rem;
+    }
+}
+
+@media (min-width: 64rem) {
+    .wp-modal-card--form,
+    .wp-modal-card--wide {
+        max-width: 48rem;
+    }
+}
+
 .wp-modal-head {
     display: flex;
     align-items: center;

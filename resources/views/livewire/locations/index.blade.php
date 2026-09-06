@@ -347,7 +347,7 @@
                 </div>
 
                 @if ($teams->isNotEmpty())
-                    <div class="wp-grid wp-grid--2">
+                    <div class="wp-form-grid-2">
                         @foreach ($teams as $team)
                             @php
                                 $isTeamSelected = in_array($team->id, $selectedCategoryTeamIds, true);
