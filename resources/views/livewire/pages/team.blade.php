@@ -300,20 +300,22 @@
                                placeholder="{{ __('team.colleagues.modal.placeholder_email') }}" autocomplete="email">
                         @error('colleagueEmail') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
-                    <div class="wp-field">
-                        <select id="colleagueLocale" class="wp-select" wire:model="colleagueLocale" aria-label="{{ __('team.colleagues.modal.locale') }}">
-                            @foreach (config('locales.supported', []) as $localeCode)
-                                <option value="{{ $localeCode }}">{{ config('locales.labels.'.$localeCode, strtoupper($localeCode)) }}</option>
-                            @endforeach
-                        </select>
-                        @error('colleagueLocale') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-field">
-                        <select id="colleagueRole" class="wp-select" wire:model="colleagueRole" aria-label="{{ __('team.colleagues.modal.role') }}">
-                            <option value="{{ \App\Models\User::ROLE_EMPLOYEE }}">{{ __('team.colleagues.role_employee') }}</option>
-                            <option value="{{ \App\Models\User::ROLE_ADMIN }}">{{ __('team.colleagues.role_admin') }}</option>
-                        </select>
-                        @error('colleagueRole') <p class="wp-error">{{ $message }}</p> @enderror
+                    <div class="wp-cluster">
+                        <div>
+                            <select id="colleagueLocale" class="wp-select wp-select--compact" wire:model="colleagueLocale" aria-label="{{ __('team.colleagues.modal.locale') }}">
+                                @foreach (config('locales.supported', []) as $localeCode)
+                                    <option value="{{ $localeCode }}">{{ config('locales.labels.'.$localeCode, strtoupper($localeCode)) }}</option>
+                                @endforeach
+                            </select>
+                            @error('colleagueLocale') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <div>
+                            <select id="colleagueRole" class="wp-select wp-select--compact" wire:model="colleagueRole" aria-label="{{ __('team.colleagues.modal.role') }}">
+                                <option value="{{ \App\Models\User::ROLE_EMPLOYEE }}">{{ __('team.colleagues.role_employee') }}</option>
+                                <option value="{{ \App\Models\User::ROLE_ADMIN }}">{{ __('team.colleagues.role_admin') }}</option>
+                            </select>
+                            @error('colleagueRole') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
                     </div>
                     @if ($colleagueRole === \App\Models\User::ROLE_EMPLOYEE)
                         <div class="wp-field">
