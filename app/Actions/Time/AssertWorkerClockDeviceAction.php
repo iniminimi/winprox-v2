@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Actions\Portal\AttachWorkerDeviceAction;
 use App\Enums\ClockDeviceRefusalReason;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
@@ -14,13 +15,17 @@ use InvalidArgumentException;
  */
 class AssertWorkerClockDeviceAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private AttachWorkerDeviceAction $attachDevice,
+    ) {}
 
     public function handle(
         Worker $worker,
         ?WorkerDevice $device,
         int $tenantId,
         ?string $requestToken = null,
+        bool $attachIfUnbound = false,
     ): WorkerDevice {
         if ((int) $worker->tenant_id !== $tenantId) {
             throw new InvalidArgumentException('tenant_mismatch');
@@ -40,7 +45,15 @@ class AssertWorkerClockDeviceAction
                 throw new InvalidArgumentException(ClockDeviceRefusalReason::Mismatch->value);
             }
 
-            throw new InvalidArgumentException(ClockDeviceRefusalReason::Missing->value);
+            if (! $attachIfUnbound) {
+                throw new InvalidArgumentException(ClockDeviceRefusalReason::Missing->value);
+            }
+
+            $attached = $this->attachDevice->handle($worker);
+            $device = $worker->devices()->where('device_token', $attached['device_token'])->first();
+            if ($device === null) {
+                throw new InvalidArgumentException(ClockDeviceRefusalReason::Missing->value);
+            }
         }
 
         if ((int) $device->worker_id !== (int) $worker->id) {

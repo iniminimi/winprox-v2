@@ -162,6 +162,33 @@ it('klokt in via het portaal na icoon en toont het icoon niet meer op het welkom
     expect((int) $worker->fresh()->clock_device_id)->toBeGreaterThan(0);
 });
 
+it('weigert aanmelden met dezelfde worker op een tweede toestel', function () {
+    [, , $clockPoint, $worker] = clockSecurityTenant();
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSet('flashMessage', __('portal.worker.signed_in'));
+
+    expect($worker->fresh()->clock_device_id)->not->toBeNull();
+
+    $this->flushSession();
+
+    Livewire::withCookie(\App\Support\Portal\WorkerDeviceSession::DEVICE_TOKEN_COOKIE, 'second-phone-token')
+        ->test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSet('flashMessage', __('time.portal.errors.device_mismatch'));
+
+    expect(DB::table('audit_logs')->where('action', 'worker.clock_device_refused')->where('model_id', $worker->id)->exists())->toBeTrue();
+});
+
 it('koppelt geen gsm bij API-inkloken', function () {
     [$tenant, , $clockPoint, $worker] = clockSecurityTenant();
     $user = \App\Models\User::factory()->create([

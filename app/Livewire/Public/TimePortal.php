@@ -4,6 +4,7 @@ namespace App\Livewire\Public;
 
 use App\Actions\Portal\ClearWorkerTaskBaselineAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
+use App\Actions\Time\AssertWorkerClockDeviceAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\ConfirmWorkerClockPinAction;
@@ -239,7 +240,9 @@ class TimePortal extends Component
             return;
         }
 
-        $this->markPortalVerified($worker);
+        if (! $this->markPortalVerified($worker)) {
+            return;
+        }
 
         $this->reset(['first_name', 'last_name', 'selected_icon_slug', 'showRegisterForm', 'sign_in_icon_slug']);
         $this->flashMessage = __('portal.team.onboarding_done');
@@ -301,8 +304,12 @@ class TimePortal extends Component
             return;
         }
 
-        WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
-        WorkerDeviceSession::ensureUniqueDeviceForWorker($worker);
+        if (! $this->bindClockDeviceAfterVerify($worker)) {
+            $this->sign_in_icon_slug = '';
+
+            return;
+        }
+
         $this->sign_in_icon_slug = '';
         $this->flashMessage = __('portal.worker.signed_in');
         $this->taskBaselineSyncedThisVisit = false;
@@ -331,7 +338,13 @@ class TimePortal extends Component
             return;
         }
 
-        $this->markPortalVerified($deviceWorker->fresh());
+        if (! $this->markPortalVerified($deviceWorker->fresh())) {
+            $this->pin_code = '';
+            $this->pin_code_confirm = '';
+
+            return;
+        }
+
         $this->pin_code = '';
         $this->pin_code_confirm = '';
         $this->flashMessage = __('portal.worker.pin_set');
@@ -378,7 +391,12 @@ class TimePortal extends Component
             return;
         }
 
-        $this->markPortalVerified($worker);
+        if (! $this->markPortalVerified($worker)) {
+            $this->pin_code = '';
+
+            return;
+        }
+
         $this->pin_code = '';
         $this->flashMessage = __('portal.worker.signed_in');
         $this->taskBaselineSyncedThisVisit = false;
@@ -658,14 +676,52 @@ class TimePortal extends Component
         return TimePortalData::tenantRequestsClockGps($this->tenantId);
     }
 
-    private function markPortalVerified(Worker $worker): void
+    private function markPortalVerified(Worker $worker): bool
     {
-        WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
-        WorkerDeviceSession::ensureUniqueDeviceForWorker($worker);
+        if (! $this->bindClockDeviceAfterVerify($worker)) {
+            return false;
+        }
+
         $team = $worker->team;
         if ($team !== null) {
             WorkerVerification::markVerified($team, $worker);
         }
+
+        return true;
+    }
+
+    /**
+     * Koppel deze browser als gsm van de uitvoerder, of weiger als al een ander toestel hangt.
+     */
+    private function bindClockDeviceAfterVerify(Worker $worker): bool
+    {
+        $worker->refresh();
+
+        try {
+            $bound = app(AssertWorkerClockDeviceAction::class)->handle(
+                $worker,
+                $this->deviceForWorker($worker),
+                $this->tenantId,
+                WorkerDeviceSession::deviceTokenFromRequest(),
+                true,
+            );
+        } catch (InvalidArgumentException $e) {
+            if ($this->flashClockDeviceError($e)) {
+                $team = $worker->team;
+                if ($team !== null) {
+                    WorkerVerification::clearForTeam((int) $team->id);
+                }
+
+                return false;
+            }
+
+            throw $e;
+        }
+
+        WorkerDeviceSession::persistDeviceToken($bound->device_token, $worker->team);
+        WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
+
+        return true;
     }
 
     /**
@@ -673,12 +729,7 @@ class TimePortal extends Component
      */
     private function clockDeviceContext(Worker $worker): array
     {
-        $device = $this->deviceForWorker($worker);
-        if ($device === null) {
-            $device = WorkerDeviceSession::ensureUniqueDeviceForWorker($worker);
-        }
-
-        return [$device, WorkerDeviceSession::deviceTokenFromRequest()];
+        return [$this->deviceForWorker($worker), WorkerDeviceSession::deviceTokenFromRequest()];
     }
 
     /**
@@ -752,7 +803,30 @@ class TimePortal extends Component
             return null;
         }
 
-        return WorkerVerification::verifiedWorker($team);
+        $verified = WorkerVerification::verifiedWorker($team);
+        if ($verified === null) {
+            return null;
+        }
+
+        if (! $this->workerSessionMatchesBoundDevice($verified)) {
+            WorkerVerification::clearForTeam((int) $team->id);
+
+            return null;
+        }
+
+        return $verified;
+    }
+
+    private function workerSessionMatchesBoundDevice(Worker $worker): bool
+    {
+        $boundId = $worker->clock_device_id !== null ? (int) $worker->clock_device_id : null;
+        if ($boundId === null) {
+            return true;
+        }
+
+        $device = $this->deviceForWorker($worker);
+
+        return $device !== null && (int) $device->id === $boundId;
     }
 
     private function rememberedWorkerForTenant(): ?Worker

@@ -659,7 +659,8 @@ productsector op `Tenant`.
 - Module `has_time_module`; Clock Point QR; `WorkShift` / `WorkBreak`; aanwezigheid, urenstaat,
   export; events `time.shift.started` / `time.shift.ended`.
 - Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
-  (ander toestel weigeren + audit tot beheer/teamleader vrijgeeft); één open shift;
+  (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit
+  tot beheer/teamleader vrijgeeft); één open shift;
   hops tussen Clock Points (alarm bij hop < 5 min). Optioneel GPS bij de prik
   (geen weigering zonder signaal). API `POST /time/clock-in` (bron API) koppelt **geen** gsm.
 
