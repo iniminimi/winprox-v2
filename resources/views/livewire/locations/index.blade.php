@@ -210,12 +210,12 @@
 
     @if ($showCategoriesModal)
         <x-wp-modal closeMethod="closeCategoriesModal">
-            <form wire:submit="saveCategory" class="wp-card wp-card-pad wp-stack wp-modal-card">
-                <div class="wp-modal-head">
+            <form wire:submit="saveCategory" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
                     <h2 class="wp-section-title">{{ $editingCategoryId !== null ? __('locations.categories.edit_title') : __('locations.categories.add_title') }}</h2>
                     <x-wp-modal-close wire:click="closeCategoriesModal" />
                 </div>
-
+                <div class="wp-modal-body wp-stack">
                 <div class="wp-field">
                     <label class="wp-label">{{ __('locations.categories.fields.name') }}</label>
                     <input type="text" class="wp-input" wire:model="categoryName" />
@@ -275,6 +275,7 @@
                     </div>
                 @endif
 
+                <div class="wp-form-grid-2">
                 <div class="wp-field">
                     <x-wp-tooltip :text="__('locations.categories.allow_gps_location_hint')" wrap>
                         <label class="wp-check">
@@ -340,6 +341,7 @@
                     </x-wp-tooltip>
                     @error('categoryRequireReporterEmailVerification') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+                </div>
 
                 <div class="wp-field">
                     <h3 class="wp-label">{{ __('locations.categories.fields.teams') }}</h3>
@@ -365,10 +367,13 @@
                     <p class="wp-muted">{{ __('locations.categories.teams_empty') }}</p>
                 @endif
                 @error('selectedCategoryTeamIds') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
 
-                <div class="wp-cluster wp-cluster--tight">
+                <div class="wp-modal-foot">
                     @if ($editingCategoryId !== null)
                         <button type="button" class="btn btn--ghost" wire:click="cancelEditCategory">{{ __('common.button.cancel') }}</button>
+                    @else
+                        <button type="button" class="btn btn--ghost" wire:click="closeCategoriesModal">{{ __('common.button.cancel') }}</button>
                     @endif
                     <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="saveCategory">
                         <span wire:loading wire:target="saveCategory" class="wp-mr-2">

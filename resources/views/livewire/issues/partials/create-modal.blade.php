@@ -77,7 +77,7 @@
 
             @if ($is_recurring)
                 <div class="wp-card wp-card-pad wp-stack-tight wp-surface-muted">
-                    <div class="wp-filter-bar">
+                    <div class="wp-form-grid-2">
                         <div class="wp-field">
                             <label class="wp-label" for="create_recurrence_interval_value">{{ __('issues.create.interval_value') }}</label>
                             <input type="number" id="create_recurrence_interval_value" class="wp-input" wire:model="recurrence_interval_value" min="1" max="24">
@@ -94,8 +94,6 @@
                             </select>
                             @error('recurrence_interval_unit') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
-                    </div>
-                    <div class="wp-filter-bar">
                         <div class="wp-field">
                             <label class="wp-label" for="create_recurrence_lead_days">{{ __('issues.create.lead_days') }}</label>
                             <input type="number" id="create_recurrence_lead_days" class="wp-input" wire:model.live="recurrence_lead_days" min="1" max="365">

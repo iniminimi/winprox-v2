@@ -33,7 +33,7 @@
         </div>
 
         <div class="wp-card wp-card-pad wp-stack-tight wp-surface-muted">
-            <div class="wp-filter-bar">
+            <div class="wp-form-grid-2">
                 <div class="wp-field">
                     <x-wp-tooltip :text="__('issues.create.recurring_help_interval')" wrap>
                         <label class="wp-label" for="round_create_recurrence_interval_value">{{ __('issues.create.interval_value') }}</label>
@@ -52,8 +52,6 @@
                     </select>
                     @error('recurrence_interval_unit') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-            </div>
-            <div class="wp-filter-bar">
                 <div class="wp-field">
                     <x-wp-tooltip :text="__('issues.create.recurring_help_lead')" wrap>
                         <label class="wp-label" for="round_create_recurrence_lead_days">{{ __('issues.create.lead_days') }}</label>
@@ -134,25 +132,27 @@
             </div>
         </div>
 
-        <div class="wp-field">
-            <label class="wp-label" for="round_create_internal_team_id">{{ __('issues.create.team') }}</label>
-            <select id="round_create_internal_team_id" class="wp-select" wire:model="internal_team_id">
-                <option value="">{{ __('issues.create.team_none') }}</option>
-                @foreach ($createTeams as $team)
-                    <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
-                @endforeach
-            </select>
-            @error('internal_team_id') <p class="wp-error">{{ $message }}</p> @enderror
-        </div>
+        <div class="wp-form-grid-2">
+            <div class="wp-field">
+                <label class="wp-label" for="round_create_internal_team_id">{{ __('issues.create.team') }}</label>
+                <select id="round_create_internal_team_id" class="wp-select" wire:model="internal_team_id">
+                    <option value="">{{ __('issues.create.team_none') }}</option>
+                    @foreach ($createTeams as $team)
+                        <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
+                    @endforeach
+                </select>
+                @error('internal_team_id') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
 
-        <div class="wp-field">
-            <label class="wp-label" for="round_create_task_priority">{{ __('tasks.show.priority') }}</label>
-            <select id="round_create_task_priority" class="wp-select" wire:model="task_priority">
-                @foreach ($priorities as $priority)
-                    <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
-                @endforeach
-            </select>
-            @error('task_priority') <p class="wp-error">{{ $message }}</p> @enderror
+            <div class="wp-field">
+                <label class="wp-label" for="round_create_task_priority">{{ __('tasks.show.priority') }}</label>
+                <select id="round_create_task_priority" class="wp-select" wire:model="task_priority">
+                    @foreach ($priorities as $priority)
+                        <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
+                    @endforeach
+                </select>
+                @error('task_priority') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
         </div>
 
         <div class="wp-field">
