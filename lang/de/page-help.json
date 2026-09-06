@@ -517,7 +517,7 @@
                 },
                 {
                     "label": "Icon zurücksetzen",
-                    "text": "Entfernen Sie das gewählte Icon eines Ausführenden, damit er sich erneut mit einem anderen Icon anmelden kann. Nützlich, wenn ein Ausführender das Icon wechseln möchte oder wenn ein Icon versehentlich falsch ausgewählt wurde. Teamleiter können im Portal auch Icons von ihren Teammitgliedern entfernen."
+                    "text": "Öffnen Sie **Bearbeiten** beim Ausführenden unter Personen → Teams. Zurücksetzen löscht Symbol, PIN und gekoppeltes Handy, damit er sich erneut anmelden kann. Nützlich bei verlorenem Gerät, Sperre oder falschem Symbol. Teamleiter können im Portal auch Icons von ihren Teammitgliedern entfernen."
                 },
                 {
                     "label": "Team deaktivieren",
@@ -525,11 +525,11 @@
                 },
                 {
                     "label": "Ausführender deaktivieren",
-                    "text": "Deaktivieren Sie einen Ausführenden, damit er sich nicht mehr über die Clock Point QR anmelden kann. Der Ausführende bleibt im System erhalten und kann später reaktiviert werden."
+                    "text": "Deaktivieren Sie einen Ausführenden über **Bearbeiten** unter Personen → Teams, damit er sich nicht mehr über die Clock Point QR anmelden kann. Der Ausführende bleibt im System erhalten und kann später reaktiviert werden."
                 },
                 {
                     "label": "Ausführenden löschen",
-                    "text": "Entfernen Sie einen Ausführenden dauerhaft aus dem System. Der gesamte Verlauf und alle Aufgaben dieses Ausführenden bleiben erhalten, aber der Ausführende kann nicht mehr verwendet werden."
+                    "text": "Entfernen Sie einen Ausführenden dauerhaft über **Bearbeiten** unter Personen → Teams. Der gesamte Verlauf und alle Aufgaben dieses Ausführenden bleiben erhalten, aber der Ausführende kann nicht mehr verwendet werden."
                 },
                 {
                     "label": "Import",

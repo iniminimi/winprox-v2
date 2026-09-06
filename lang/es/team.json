@@ -135,7 +135,16 @@
             "save": "Guardar trabajador",
             "locations_title": "Ubicaciones",
             "locations_hint": "Vacío = fichar en cualquier sitio. Seleccione ubicaciones para restringir.",
-            "locations_empty": "Aún no hay ubicaciones."
+            "locations_empty": "Aún no hay ubicaciones.",
+            "role_title": "Rol",
+            "clock_title": "Reloj de fichar",
+            "clock_hint": "Solo hace falta si se pierde el móvil, hay bloqueo o se necesita un icono nuevo.",
+            "status_title": "Estado",
+            "confirm_reset_icon": "¿Restablecer icono, PIN y móvil vinculado? El trabajador elegirá un icono de nuevo en el próximo acceso.",
+            "confirm_clear_clock_device": "¿Desvincular el móvil? El trabajador podrá usar un dispositivo nuevo.",
+            "confirm_clear_clock_pin": "¿Eliminar el PIN? El trabajador podrá establecer uno nuevo después.",
+            "confirm_deactivate": "¿Desactivar a este trabajador? Ya no podrá identificarse por Clock Point.",
+            "confirm_delete": "¿Eliminar definitivamente a este trabajador? El historial se conserva."
         },
         "import_download_sample_csv": "Descargar ejemplo CSV",
         "import_download_sample_xlsx": "Descargar ejemplo XLSX",

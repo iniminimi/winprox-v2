@@ -135,7 +135,16 @@
             "save": "Uitvoerder opslaan",
             "locations_title": "Locaties",
             "locations_hint": "Leeg = overal inklokken (behalve locatiegebonden Clock Points filteren op naam). Selecteer vestigingen om te beperken.",
-            "locations_empty": "Nog geen locaties."
+            "locations_empty": "Nog geen locaties.",
+            "role_title": "Rol",
+            "clock_title": "Prikklok",
+            "clock_hint": "Alleen nodig bij verloren gsm, lockout of een nieuw icoon.",
+            "status_title": "Status",
+            "confirm_reset_icon": "Icoon, pincode en gekoppelde gsm resetten? De uitvoerder kiest bij de volgende aanmelding opnieuw een icoon.",
+            "confirm_clear_clock_device": "Gekoppelde gsm loskoppelen? De uitvoerder mag daarna een nieuw toestel gebruiken.",
+            "confirm_clear_clock_pin": "Pincode verwijderen? De uitvoerder kan daarna optioneel een nieuwe pincode instellen.",
+            "confirm_deactivate": "Deze uitvoerder deactiveren? Aanmelden via Clock Point is dan niet meer mogelijk.",
+            "confirm_delete": "Deze uitvoerder definitief verwijderen? Historie blijft behouden."
         },
         "import_download_sample_csv": "Download voorbeeld-CSV",
         "import_download_sample_xlsx": "Download voorbeeld-xlsx",

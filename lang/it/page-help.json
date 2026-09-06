@@ -517,7 +517,7 @@
                 },
                 {
                     "label": "Reimposta icona",
-                    "text": "Rimuova l'icona scelta da un lavoratore in modo che possa accedere di nuovo con un'icona diversa. Utile se un lavoratore vuole cambiare icona o se un'icona è stata selezionata per errore. I capisquadra possono anche rimuovere icone dai membri del team nel proprio portale."
+                    "text": "Apri **Modifica** sul lavoratore in Persone → Team. Il reset cancella icona, PIN e telefono associato, così può accedere di nuovo. Utile in caso di dispositivo perso, blocco o icona sbagliata. I capisquadra possono anche rimuovere icone dai membri del team nel proprio portale."
                 },
                 {
                     "label": "Disattiva team",
@@ -525,11 +525,11 @@
                 },
                 {
                     "label": "Disattiva lavoratore",
-                    "text": "Disattivi un lavoratore in modo che non possa più accedere tramite il QR Clock Point. Il lavoratore resta nel sistema e può essere riattivato in seguito."
+                    "text": "Disattivi un lavoratore da **Modifica** in Persone → Team, così non può più accedere tramite QR Clock Point. Il lavoratore resta nel sistema e può essere riattivato in seguito."
                 },
                 {
                     "label": "Elimina lavoratore",
-                    "text": "Rimuova definitivamente un lavoratore dal sistema. Tutta la cronologia e le attività per questo lavoratore sono conservate, ma il lavoratore non può più essere utilizzato."
+                    "text": "Rimuova definitivamente un lavoratore da **Modifica** in Persone → Team. Tutta la cronologia e le attività per questo lavoratore sono conservate, ma il lavoratore non può più essere utilizzato."
                 },
                 {
                     "label": "Importazione",

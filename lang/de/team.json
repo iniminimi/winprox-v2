@@ -135,7 +135,16 @@
             "save": "Mitarbeiter speichern",
             "locations_title": "Standorte",
             "locations_hint": "Leer = überall stempeln. Standorte auswählen, um einzuschränken.",
-            "locations_empty": "Noch keine Standorte."
+            "locations_empty": "Noch keine Standorte.",
+            "role_title": "Rolle",
+            "clock_title": "Stechuhr",
+            "clock_hint": "Nur nötig bei verlorenem Handy, Sperre oder einem neuen Symbol.",
+            "status_title": "Status",
+            "confirm_reset_icon": "Symbol, PIN und gekoppeltes Handy zurücksetzen? Der Ausführende wählt beim nächsten Anmelden erneut ein Symbol.",
+            "confirm_clear_clock_device": "Handy entkoppeln? Der Ausführende darf danach ein neues Gerät nutzen.",
+            "confirm_clear_clock_pin": "PIN entfernen? Der Ausführende kann danach optional eine neue PIN setzen.",
+            "confirm_deactivate": "Diesen Ausführenden deaktivieren? Die Anmeldung über Clock Point ist dann nicht mehr möglich.",
+            "confirm_delete": "Diesen Ausführenden endgültig löschen? Der Verlauf bleibt erhalten."
         },
         "import_download_sample_csv": "Beispiel-CSV herunterladen",
         "import_download_sample_xlsx": "Beispiel-XLSX herunterladen",

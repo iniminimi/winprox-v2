@@ -135,7 +135,16 @@
             "save": "Salva lavoratore",
             "locations_title": "Sedi",
             "locations_hint": "Vuoto = timbra ovunque. Seleziona sedi per limitare.",
-            "locations_empty": "Nessuna sede ancora."
+            "locations_empty": "Nessuna sede ancora.",
+            "role_title": "Ruolo",
+            "clock_title": "Timbratrice",
+            "clock_hint": "Serve solo in caso di telefono perso, blocco o nuova icona.",
+            "status_title": "Stato",
+            "confirm_reset_icon": "Reimpostare icona, PIN e telefono associato? Il lavoratore sceglierà di nuovo un’icona al prossimo accesso.",
+            "confirm_clear_clock_device": "Scollegare il telefono? Il lavoratore potrà poi usare un nuovo dispositivo.",
+            "confirm_clear_clock_pin": "Rimuovere il PIN? Il lavoratore potrà poi impostarne uno nuovo.",
+            "confirm_deactivate": "Disattivare questo lavoratore? L’accesso tramite Clock Point non sarà più possibile.",
+            "confirm_delete": "Eliminare definitivamente questo lavoratore? La cronologia viene conservata."
         },
         "import_download_sample_csv": "Scarica esempio CSV",
         "import_download_sample_xlsx": "Scarica esempio XLSX",

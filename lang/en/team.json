@@ -135,7 +135,16 @@
             "save": "Save worker",
             "locations_title": "Locations",
             "locations_hint": "Empty = clock in anywhere. Select sites to restrict.",
-            "locations_empty": "No locations yet."
+            "locations_empty": "No locations yet.",
+            "role_title": "Role",
+            "clock_title": "Time clock",
+            "clock_hint": "Only needed for a lost phone, lockout, or a new icon.",
+            "status_title": "Status",
+            "confirm_reset_icon": "Reset icon, PIN and bound phone? The worker will choose an icon again at the next sign-in.",
+            "confirm_clear_clock_device": "Unbind the phone? The worker can then use a new device.",
+            "confirm_clear_clock_pin": "Remove the PIN? The worker can then optionally set a new PIN.",
+            "confirm_deactivate": "Deactivate this worker? Sign-in via Clock Point will no longer be possible.",
+            "confirm_delete": "Permanently delete this worker? History is kept."
         },
         "import_download_sample_csv": "Download sample CSV",
         "import_download_sample_xlsx": "Download sample XLSX",

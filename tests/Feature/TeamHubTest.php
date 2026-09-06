@@ -636,8 +636,51 @@ it('wisselt de actief-vlag van een worker en verwijdert een worker', function ()
     Livewire::actingAs($admin)->test(Team::class)->call('setWorkerActive', $worker->id, false);
     expect($worker->fresh()->is_active)->toBeFalse();
 
-    Livewire::actingAs($admin)->test(Team::class)->call('deleteWorker', $worker->id);
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openEditWorker', $worker->id)
+        ->assertSet('showWorkerModal', true)
+        ->call('deleteWorker', $worker->id)
+        ->assertSet('showWorkerModal', false)
+        ->assertSet('editingWorkerId', null);
+
     expect(Worker::find($worker->id))->toBeNull();
+});
+
+it('houdt zeldzame worker-acties in de bewerk-modal, niet in de lijst', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $page = Livewire::actingAs($admin)->test(Team::class);
+
+    $page
+        ->call('toggleTeam', $team->id)
+        ->assertSeeHtml('wire:click="openEditWorker('.$worker->id.')"')
+        ->assertDontSeeHtml('wire:click="resetWorkerIcon('.$worker->id.')"')
+        ->assertDontSeeHtml('wire:click="setWorkerTeamleader('.$worker->id)
+        ->assertDontSeeHtml('wire:click="deleteWorker('.$worker->id.')"')
+        ->assertDontSeeHtml('wire:click="setWorkerActive('.$worker->id)
+        ->assertDontSeeHtml('wire:click="clearWorkerClockDevice('.$worker->id.')"')
+        ->assertDontSeeHtml('wire:click="clearWorkerClockPin('.$worker->id.')"');
+
+    $page
+        ->call('openAddWorker', $team->id)
+        ->assertDontSee(__('team.workers.modal.clock_hint'), false)
+        ->call('cancelWorkerModal');
+
+    $page
+        ->call('openEditWorker', $worker->id)
+        ->assertSee(__('team.workers.modal.role_title'), false)
+        ->assertSee(__('team.workers.modal.clock_title'), false)
+        ->assertSee(__('team.workers.modal.status_title'), false)
+        ->assertSeeHtml('wire:click="resetWorkerIcon('.$worker->id.')"')
+        ->assertSeeHtml('wire:click="setWorkerTeamleader('.$worker->id.', true)"')
+        ->assertSeeHtml('wire:click="deleteWorker('.$worker->id.')"')
+        ->assertSeeHtml('wire:click="setWorkerActive('.$worker->id.', false)"');
 });
 
 it('ververst de teamlijst direct na terugdraaien van een worker CSV-import', function () {

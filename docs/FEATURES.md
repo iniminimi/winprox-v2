@@ -735,13 +735,13 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 ### 6.3 Workers
 - Sidebar **Personen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status.
 - Per team: workers toevoegen (voor-/achternaam), **locatie-multi-select** (leeg = overal inklokken
-  behalve Clock Point-filter op naam), lijst met **icoon-status**; **teamleader-vlag**
-  (`is_teamleader`) toewijzen/intrekken; **actief/inactief**-toggle (V2-verbetering); verwijderen.
+  behalve Clock Point-filter op naam), lijst met **status-pills** + **Bewerken**; **teamleader-vlag**,
+  icoon/gsm/PIN-reset, actief/inactief en verwijderen zitten in de bewerk-modal.
 - **Optionele portretfoto** bij aanmaken/bewerken: uitsnede via Cropper.js (vierkant/rond), daarna
   client-side verkleind (max. ~400px); getoond in ronde avatar op **Time → Aanwezigheid**,
   **Uitvoerders** en **Teams** (zelfde stijl; zonder foto = initiaal; hover toont grotere preview).
 - **Icoon vrijgeven/resetten** (= ontgrendelt lockout + wist icoon/devices/sessies):
-  - In **beheer** (Team-hub): door admin/medewerker.
+  - In **beheer** (Team-hub, bewerk-modal): door admin/medewerker.
   - In het **veld-portaal**: door een **teamleader** van het team (follow-up op de portaal-build).
 - Icoon-set = **12** (zie QR-portaal); lockout automatisch na 2 foute pogingen.
 - **Clock Point-lookup** filtert op vestiging van het Clock Point; **invallerteam** (`clocks_all_locations`) ziet naam overal.

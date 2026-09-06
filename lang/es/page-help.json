@@ -517,7 +517,7 @@
                 },
                 {
                     "label": "Restablecer icono",
-                    "text": "Elimine el icono elegido de un trabajador para que pueda iniciar sesión de nuevo con un icono diferente. Útil si un trabajador quiere cambiar de icono o si se seleccionó un icono por error. Los jefes de equipo también pueden eliminar iconos de sus compañeros en su portal."
+                    "text": "Abra **Editar** en el trabajador en Personas → Equipos. Restablecer borra el icono, el PIN y el móvil vinculado para que pueda identificarse de nuevo. Útil si se pierde el dispositivo, hay bloqueo o el icono es incorrecto. Los jefes de equipo también pueden eliminar iconos de sus compañeros en su portal."
                 },
                 {
                     "label": "Desactivar equipo",
@@ -525,11 +525,11 @@
                 },
                 {
                     "label": "Desactivar trabajador",
-                    "text": "Desactive un trabajador para que ya no pueda iniciar sesión mediante el QR Clock Point. El trabajador permanece en el sistema y puede reactivarse más tarde."
+                    "text": "Desactive un trabajador desde **Editar** en Personas → Equipos para que ya no pueda iniciar sesión mediante el QR Clock Point. El trabajador permanece en el sistema y puede reactivarse más tarde."
                 },
                 {
                     "label": "Eliminar trabajador",
-                    "text": "Elimine permanentemente un trabajador del sistema. Todo el historial y las tareas de este trabajador se conservan, pero el trabajador ya no puede usarse."
+                    "text": "Elimine permanentemente un trabajador desde **Editar** en Personas → Equipos. Todo el historial y las tareas de este trabajador se conservan, pero el trabajador ya no puede usarse."
                 },
                 {
                     "label": "Importación",

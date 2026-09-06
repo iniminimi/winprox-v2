@@ -517,7 +517,7 @@
                 },
                 {
                     "label": "Icoon resetten",
-                    "text": "Verwijder het gekozen icoon van een uitvoerder zodat deze zich opnieuw kan aanmelden met een ander icoon. Handig als een uitvoerder van icoon wil wisselen of als een icoon per ongeluk verkeerd is gekozen. Team leaders kunnen in hun portal ook iconen verwijderen van hun teamgenoten."
+                    "text": "Open **Bewerken** bij de uitvoerder in Personen → Teams. Resetten wist het icoon, de pincode en de gekoppelde gsm, zodat de uitvoerder zich opnieuw kan aanmelden. Handig bij verloren toestel, lockout of een verkeerd icoon. Teamleaders kunnen in hun portal ook iconen verwijderen van hun teamgenoten."
                 },
                 {
                     "label": "Team deactiveren",
@@ -525,11 +525,11 @@
                 },
                 {
                     "label": "Uitvoerder deactiveren",
-                    "text": "Schakel een uitvoerder uit zodat deze zich niet meer kan aanmelden via Clock Point QR. De uitvoerder blijft behouden in het systeem en kan later opnieuw worden geactiveerd."
+                    "text": "Schakel een uitvoerder uit via **Bewerken** in Personen → Teams, zodat deze zich niet meer kan aanmelden via Clock Point QR. De uitvoerder blijft behouden in het systeem en kan later opnieuw worden geactiveerd."
                 },
                 {
                     "label": "Uitvoerder verwijderen",
-                    "text": "Verwijder een uitvoerder definitief uit het systeem. Alle historie en taken van deze uitvoerder blijven behouden, maar de uitvoerder kan niet meer worden gebruikt."
+                    "text": "Verwijder een uitvoerder definitief via **Bewerken** in Personen → Teams. Alle historie en taken van deze uitvoerder blijven behouden, maar de uitvoerder kan niet meer worden gebruikt."
                 },
                 {
                     "label": "Import",

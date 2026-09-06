@@ -994,6 +994,24 @@ class Team extends Component
     {
         $worker = $this->authorizedWorker($workerId);
         $deleteWorker->handle($worker, (int) auth()->id());
+
+        if ($this->editingWorkerId === $workerId) {
+            $this->cancelWorkerModal();
+        }
+    }
+
+    public function editingWorkerRecord(): ?Worker
+    {
+        if ($this->editingWorkerId === null) {
+            return null;
+        }
+
+        $worker = Worker::query()->find($this->editingWorkerId);
+        if ($worker === null || Gate::denies('update', $worker->team)) {
+            return null;
+        }
+
+        return $worker;
     }
 
     private function authorizedWorker(int $workerId): Worker

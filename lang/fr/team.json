@@ -135,7 +135,16 @@
             "save": "Enregistrer l'intervenant",
             "locations_title": "Sites",
             "locations_hint": "Vide = pointer partout. Sélectionnez des sites pour restreindre.",
-            "locations_empty": "Pas encore de sites."
+            "locations_empty": "Pas encore de sites.",
+            "role_title": "Rôle",
+            "clock_title": "Pointeuse",
+            "clock_hint": "Uniquement en cas de téléphone perdu, de verrouillage ou d’une nouvelle icône.",
+            "status_title": "Statut",
+            "confirm_reset_icon": "Réinitialiser l’icône, le code PIN et le téléphone lié ? L’exécutant choisira une icône à la prochaine connexion.",
+            "confirm_clear_clock_device": "Dissocier le téléphone ? L’exécutant pourra ensuite utiliser un nouvel appareil.",
+            "confirm_clear_clock_pin": "Supprimer le code PIN ? L’exécutant pourra ensuite en définir un nouveau.",
+            "confirm_deactivate": "Désactiver cet exécutant ? La connexion via Clock Point ne sera plus possible.",
+            "confirm_delete": "Supprimer définitivement cet exécutant ? L’historique est conservé."
         },
         "import_download_sample_csv": "Télécharger un exemple CSV",
         "import_download_sample_xlsx": "Télécharger un exemple XLSX",

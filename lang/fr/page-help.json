@@ -525,7 +525,7 @@
                 },
                 {
                     "label": "Réinitialiser l'icône",
-                    "text": "Supprimez l'icône choisie d'un exécutant pour qu'il puisse se reconnecter avec une autre icône. Utile si un exécutant veut changer d'icône ou si une icône a été sélectionnée par erreur. Les chefs d'équipe peuvent également supprimer des icônes de leurs coéquipiers dans leur portail."
+                    "text": "Ouvrez **Modifier** sur l’exécutant dans Personnes → Équipes. La réinitialisation efface l’icône, le code PIN et le téléphone lié, pour qu’il puisse se reconnecter. Utile en cas d’appareil perdu, de verrouillage ou d’icône erronée. Les chefs d’équipe peuvent aussi supprimer des icônes de leurs coéquipiers dans leur portail."
                 },
                 {
                     "label": "Désactiver l'équipe",
@@ -533,11 +533,11 @@
                 },
                 {
                     "label": "Désactiver l'exécutant",
-                    "text": "Désactivez un exécutant pour qu'il ne puisse plus se connecter via le QR Clock Point. L'exécutant reste dans le système et peut être réactivé plus tard."
+                    "text": "Désactivez un exécutant via **Modifier** dans Personnes → Équipes, pour qu’il ne puisse plus se connecter via le QR Clock Point. L’exécutant reste dans le système et peut être réactivé plus tard."
                 },
                 {
                     "label": "Supprimer l'exécutant",
-                    "text": "Supprimez définitivement un exécutant du système. Tout l'historique et les tâches de cet exécutant sont conservés, mais l'exécutant ne peut plus être utilisé."
+                    "text": "Supprimez définitivement un exécutant via **Modifier** dans Personnes → Équipes. Tout l’historique et les tâches de cet exécutant sont conservés, mais l’exécutant ne peut plus être utilisé."
                 },
                 {
                     "label": "Import",

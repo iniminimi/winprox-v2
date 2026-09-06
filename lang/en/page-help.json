@@ -517,7 +517,7 @@
                 },
                 {
                     "label": "Reset icon",
-                    "text": "Remove the chosen icon from a worker so they can sign in again with a different icon. Useful if a worker wants to change icon or if an icon was selected by mistake. Team leaders can also remove icons from their team members in their portal."
+                    "text": "Open **Edit** on the worker in People → Teams. Resetting clears the icon, PIN and bound phone so the worker can sign in again. Useful for a lost device, lockout, or a mistaken icon. Team leaders can also remove icons from their team members in their portal."
                 },
                 {
                     "label": "Deactivate team",
@@ -525,11 +525,11 @@
                 },
                 {
                     "label": "Deactivate worker",
-                    "text": "Disable a worker so they can no longer sign in via Clock Point QR. The worker remains in the system and can be reactivated later."
+                    "text": "Disable a worker via **Edit** in People → Teams so they can no longer sign in via Clock Point QR. The worker remains in the system and can be reactivated later."
                 },
                 {
                     "label": "Delete worker",
-                    "text": "Permanently remove a worker from the system. All history and tasks for this worker are preserved, but the worker can no longer be used."
+                    "text": "Permanently remove a worker via **Edit** in People → Teams. All history and tasks for this worker are preserved, but the worker can no longer be used."
                 },
                 {
                     "label": "Import",

@@ -237,15 +237,15 @@
                                                 @if ($worker->company_name)
                                                     <span class="wp-muted">{{ $worker->company_name }}</span>
                                                 @endif
-                                                @unless ($worker->field_icon_slug)
-                                                    <span class="wp-muted">{{ __('team.workers.no_icon') }}</span>
-                                                @endunless
                                             </div>
                                         </div>
                                         <div class="wp-cluster wp-cluster--tight">
                                             @if ($worker->is_external)
                                                 <span class="wp-pill wp-pill--progress">{{ __('team.workers.external_badge') }}</span>
                                             @endif
+                                            @unless ($worker->field_icon_slug)
+                                                <span class="wp-pill wp-pill--progress">{{ __('team.workers.no_icon') }}</span>
+                                            @endunless
                                             @if ($worker->is_teamleader)
                                                 <span class="wp-pill wp-pill--done">{{ __('team.workers.teamleader') }}</span>
                                             @endif
@@ -260,24 +260,6 @@
                                             @endunless
                                             @if ($canEditContent)
                                                 <button type="button" class="btn btn--surface btn--sm" wire:click="openEditWorker({{ $worker->id }})">{{ __('common.button.edit') }}</button>
-                                                @if ($worker->is_teamleader)
-                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerTeamleader({{ $worker->id }}, false)">{{ __('team.workers.remove_teamleader') }}</button>
-                                                @else
-                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerTeamleader({{ $worker->id }}, true)">{{ __('team.workers.make_teamleader') }}</button>
-                                                @endif
-                                                <button type="button" class="btn btn--ghost btn--sm" wire:click="resetWorkerIcon({{ $worker->id }})">{{ __('team.workers.reset_icon') }}</button>
-                                                @if ($worker->clock_device_id)
-                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockDevice({{ $worker->id }})">{{ __('team.workers.clear_clock_device') }}</button>
-                                                @endif
-                                                @if ($worker->hasClockPin())
-                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockPin({{ $worker->id }})">{{ __('team.workers.clear_clock_pin') }}</button>
-                                                @endif
-                                                @if ($worker->is_active)
-                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerActive({{ $worker->id }}, false)">{{ __('team.workers.deactivate') }}</button>
-                                                @else
-                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerActive({{ $worker->id }}, true)">{{ __('team.workers.activate') }}</button>
-                                                @endif
-                                                <button type="button" class="btn btn--danger btn--sm" wire:click="deleteWorker({{ $worker->id }})">{{ __('common.button.delete') }}</button>
                                             @endif
                                         </div>
                                     </div>
@@ -536,6 +518,45 @@
                             <p class="wp-muted">{{ __('team.workers.modal.locations_empty') }}</p>
                         @endif
                     </div>
+                    @if ($editingWorkerId)
+                        @php $editingWorker = $this->editingWorkerRecord(); @endphp
+                        @if ($editingWorker)
+                            <div class="wp-modal-section">
+                                <h3 class="wp-label">{{ __('team.workers.modal.role_title') }}</h3>
+                                <div class="wp-cluster wp-cluster--tight">
+                                    @if ($editingWorker->is_teamleader)
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerTeamleader({{ $editingWorker->id }}, false)">{{ __('team.workers.remove_teamleader') }}</button>
+                                    @else
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerTeamleader({{ $editingWorker->id }}, true)">{{ __('team.workers.make_teamleader') }}</button>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="wp-modal-section">
+                                <h3 class="wp-label">{{ __('team.workers.modal.clock_title') }}</h3>
+                                <p class="wp-hint">{{ __('team.workers.modal.clock_hint') }}</p>
+                                <div class="wp-cluster wp-cluster--tight">
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="resetWorkerIcon({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_reset_icon') }}">{{ __('team.workers.reset_icon') }}</button>
+                                    @if ($editingWorker->clock_device_id)
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockDevice({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_clock_device') }}">{{ __('team.workers.clear_clock_device') }}</button>
+                                    @endif
+                                    @if ($editingWorker->hasClockPin())
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockPin({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_clock_pin') }}">{{ __('team.workers.clear_clock_pin') }}</button>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="wp-modal-section">
+                                <h3 class="wp-label">{{ __('team.workers.modal.status_title') }}</h3>
+                                <div class="wp-cluster wp-cluster--tight">
+                                    @if ($editingWorker->is_active)
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerActive({{ $editingWorker->id }}, false)" wire:confirm="{{ __('team.workers.modal.confirm_deactivate') }}">{{ __('team.workers.deactivate') }}</button>
+                                    @else
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerActive({{ $editingWorker->id }}, true)">{{ __('team.workers.activate') }}</button>
+                                    @endif
+                                    <button type="button" class="btn btn--danger btn--sm" wire:click="deleteWorker({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_delete') }}">{{ __('common.button.delete') }}</button>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
                 </div>
 
                 <div class="wp-modal-foot">
