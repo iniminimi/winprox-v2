@@ -1166,7 +1166,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "Bovenaan ziet u live KPI's: <strong>Ingeklokt</strong> (iedereen met een open dienst), <strong>Actief</strong> (ingeklokt en niet op pauze), <strong>Pauze</strong>, <strong>Niet ingeklokt</strong> en <strong>Aandacht</strong>. Ingeklokt = Actief + Pauze. Klik op een tegel om te filteren. <strong>Aandacht</strong> opent het alarmenscherm (inclusief evacuatielijst-raadplegingen van vandaag)."
+                    "text": "Bovenaan ziet u live KPI's: <strong>Ingeklokt</strong> (iedereen met een open dienst), <strong>Actief</strong> (ingeklokt en niet op pauze), <strong>Pauze</strong>, <strong>Niet ingeklokt</strong> en <strong>Aandacht</strong>. Ingeklokt = Actief + Pauze. Klik op een tegel om te filteren. <strong>Aandacht</strong> telt evacuatielijst-raadplegingen van vandaag; Time → Alarmen bewaart de volledige lijst."
                 },
                 {
                     "label": "Weergave",
@@ -1186,7 +1186,7 @@
                 },
                 {
                     "label": "Evacuatielijst",
-                    "text": "De evacuatielijst staat op het Clock Point-portaal na aanmelden (tegel Evacuatielijst). Geen aparte QR. Voor de lijst bevestigt de uitvoerder dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Raadplegingen van vandaag lichten <strong>Aandacht</strong> op (aanwezigheid en dashboard) en staan op Time → Alarmen."
+                    "text": "De evacuatielijst staat op het Clock Point-portaal na aanmelden (tegel Evacuatielijst). Geen aparte QR. Voor de lijst bevestigt de uitvoerder dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Raadplegingen van vandaag lichten <strong>Aandacht</strong> op (aanwezigheid en dashboard). Time → Alarmen houdt de volledige lijst (datum en uur, nieuwste bovenaan)."
                 }
             ]
         },
@@ -1195,15 +1195,15 @@
             "actions": [
                 {
                     "label": "Doel",
-                    "text": "Toont alles wat aandacht vraagt: te lang ingeklokt, vergeten uit te klokken, geen pauze, te snelle hop tussen Clock Points, of raadpleging van de evacuatielijst vandaag."
+                    "text": "Toont alles wat aandacht vraagt: te lang ingeklokt, vergeten uit te klokken, geen pauze, te snelle hop tussen Clock Points, of raadpleging van de evacuatielijst. Raadplegingen blijven in deze lijst staan (datum en uur, nieuwste bovenaan); de Aandacht-badge telt alleen vandaag."
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur), <strong>Geen pauze</strong> (&gt;6 uur zonder break), <strong>Snelle hop</strong> (verplaatsing binnen 5 min) of <strong>Evacuatielijst</strong> (raadplegingen vandaag)."
+                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur), <strong>Geen pauze</strong> (&gt;6 uur zonder break), <strong>Snelle hop</strong> (verplaatsing binnen 5 min) of <strong>Evacuatielijst</strong> (alle raadplegingen, met datum)."
                 },
                 {
                     "label": "Actie",
-                    "text": "Bij een open shift: gebruik <strong>Shift sluiten</strong> om af te sluiten met reden. Evacuatielijst-raadplegingen zijn geen shift — die vallen na vandaag vanzelf weg. De badge in de navigatie toont het totaal."
+                    "text": "Bij een open shift: gebruik <strong>Shift sluiten</strong> om af te sluiten met reden. Evacuatielijst-raadplegingen zijn geen shift: ze blijven raadpleegbaar in deze lijst (datum en uur, nieuwste bovenaan). De badge in de navigatie telt alleen aandacht van vandaag."
                 }
             ]
         },

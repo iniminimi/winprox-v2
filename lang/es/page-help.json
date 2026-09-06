@@ -1166,7 +1166,7 @@
             "actions": [
                 {
                     "label": "Panel",
-                    "text": "KPI en vivo arriba: <strong>Fichado</strong> (todos con turno abierto), <strong>Activo</strong> (fichado y no en pausa), <strong>Pausa</strong>, <strong>No fichado</strong> y <strong>Atención</strong>. Fichado = Activo + Pausa. Pulse una tarjeta para filtrar. <strong>Atención</strong> abre la pantalla de alertas (incluidas las consultas de la lista de evacuación de hoy)."
+                    "text": "KPI en vivo arriba: <strong>Fichado</strong> (todos con turno abierto), <strong>Activo</strong> (fichado y no en pausa), <strong>Pausa</strong>, <strong>No fichado</strong> y <strong>Atención</strong>. Fichado = Activo + Pausa. Pulse una tarjeta para filtrar. <strong>Atención</strong> cuenta las consultas de hoy; Time → Alertas conserva la lista completa."
                 },
                 {
                     "label": "Vista",
@@ -1186,7 +1186,7 @@
                 },
                 {
                     "label": "Lista de evacuación",
-                    "text": "La lista de evacuación está en el portal Clock Point tras identificarse (ficha Lista de evacuación). No hay un QR aparte. Antes de la lista, el ejecutor confirma que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Las consultas de hoy encienden <strong>Atención</strong> (presencia y panel) y aparecen en Time → Alertas."
+                    "text": "La lista de evacuación está en el portal Clock Point tras identificarse (ficha Lista de evacuación). No hay un QR aparte. Antes de la lista, el ejecutor confirma que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Las consultas de hoy encienden <strong>Atención</strong> (presencia y panel). Time → Alertas conserva la lista completa (fecha y hora, la más reciente arriba)."
                 }
             ]
         },
@@ -1195,15 +1195,15 @@
             "actions": [
                 {
                     "label": "Objetivo",
-                    "text": "Muestra todo lo que requiere atención: demasiado tiempo fichado, salida olvidada, sin pausa, salto demasiado rápido entre Clock Points, o consulta de la lista de evacuación hoy."
+                    "text": "Muestra todo lo que requiere atención: demasiado tiempo fichado, salida olvidada, sin pausa, salto demasiado rápido entre Clock Points, o consulta de la lista de evacuación. Las consultas permanecen en esta lista (fecha y hora, la más reciente arriba); la insignia Atención solo cuenta las de hoy."
                 },
                 {
                     "label": "Tipos",
-                    "text": "Filtre: <strong>Turno largo</strong> (&gt;10 h), <strong>Sin fichar salida</strong> (&gt;16 h), <strong>Sin pausa</strong> (&gt;6 h), <strong>Salto rápido</strong> (traslado en menos de 5 min) o <strong>Lista de evacuación</strong> (consultas de hoy)."
+                    "text": "Filtre: <strong>Turno largo</strong> (&gt;10 h), <strong>Sin fichar salida</strong> (&gt;16 h), <strong>Sin pausa</strong> (&gt;6 h), <strong>Salto rápido</strong> (traslado en menos de 5 min) o <strong>Lista de evacuación</strong> (todas las consultas, con fecha)."
                 },
                 {
                     "label": "Acción",
-                    "text": "En un turno abierto, use <strong>Cerrar turno</strong> con motivo. Las consultas de la lista de evacuación no son un turno: desaparecen después de hoy. La insignia en la navegación muestra el número de alertas."
+                    "text": "En un turno abierto, use <strong>Cerrar turno</strong> con motivo. Las consultas de la lista de evacuación no son un turno: permanecen en esta lista (fecha y hora, la más reciente arriba). La insignia de navegación solo cuenta la atención de hoy."
                 }
             ]
         },

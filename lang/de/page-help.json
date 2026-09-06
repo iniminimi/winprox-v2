@@ -1166,7 +1166,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "Oben sehen Sie Live-KPIs: <strong>Eingestempelt</strong> (alle mit offener Schicht), <strong>Aktiv</strong> (eingestempelt und nicht in Pause), <strong>Pause</strong>, <strong>Nicht eingestempelt</strong> und <strong>Aufmerksamkeit</strong>. Eingestempelt = Aktiv + Pause. Klicken Sie eine Kachel zum Filtern. <strong>Aufmerksamkeit</strong> öffnet den Alarmbildschirm (einschließlich heutiger Einsichten in die Evakuierungsliste)."
+                    "text": "Oben sehen Sie Live-KPIs: <strong>Eingestempelt</strong> (alle mit offener Schicht), <strong>Aktiv</strong> (eingestempelt und nicht in Pause), <strong>Pause</strong>, <strong>Nicht eingestempelt</strong> und <strong>Aufmerksamkeit</strong>. Eingestempelt = Aktiv + Pause. Klicken Sie eine Kachel zum Filtern. <strong>Aufmerksamkeit</strong> zählt heutige Einsichten in die Evakuierungsliste; Time → Alarme behält die vollständige Liste."
                 },
                 {
                     "label": "Ansicht",
@@ -1186,7 +1186,7 @@
                 },
                 {
                     "label": "Evakuierungsliste",
-                    "text": "Die Evakuierungsliste steht nach der Anmeldung auf dem Clock-Point-Portal (Kachel Evakuierungsliste). Kein eigener QR. Vor der Liste bestätigt der Ausführende, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Einsichten von heute lassen <strong>Aufmerksamkeit</strong> aufleuchten (Anwesenheit und Dashboard) und stehen unter Time → Alarme."
+                    "text": "Die Evakuierungsliste steht nach der Anmeldung auf dem Clock-Point-Portal (Kachel Evakuierungsliste). Kein eigener QR. Vor der Liste bestätigt der Ausführende, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Einsichten von heute lassen <strong>Aufmerksamkeit</strong> aufleuchten (Anwesenheit und Dashboard). Time → Alarme behält die vollständige Liste (Datum und Uhrzeit, neueste oben)."
                 }
             ]
         },
@@ -1195,15 +1195,15 @@
             "actions": [
                 {
                     "label": "Zweck",
-                    "text": "Zeigt alles mit Handlungsbedarf: zu lange eingestempelt, vergessene Ausstempelung, keine Pause, zu schneller Wechsel zwischen Clock Points oder Einsicht in die Evakuierungsliste heute."
+                    "text": "Zeigt alles mit Handlungsbedarf: zu lange eingestempelt, vergessene Ausstempelung, keine Pause, zu schneller Wechsel zwischen Clock Points oder Einsicht in die Evakuierungsliste. Einsichten bleiben in dieser Liste (Datum und Uhrzeit, neueste oben); das Aufmerksamkeit-Badge zählt nur heute."
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter: <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.), <strong>Keine Pause</strong> (&gt;6 Std.), <strong>Schneller Wechsel</strong> (innerhalb von 5 Min.) oder <strong>Evakuierungsliste</strong> (Einsichten heute)."
+                    "text": "Filter: <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.), <strong>Keine Pause</strong> (&gt;6 Std.), <strong>Schneller Wechsel</strong> (innerhalb von 5 Min.) oder <strong>Evakuierungsliste</strong> (alle Einsichten, mit Datum)."
                 },
                 {
                     "label": "Aktion",
-                    "text": "Bei einer offenen Schicht: mit <strong>Schicht schließen</strong> beenden Sie sie mit Begründung. Einsichten in die Evakuierungsliste sind keine Schicht — sie fallen nach heute weg. Das Badge in der Navigation zeigt die Anzahl."
+                    "text": "Bei einer offenen Schicht: mit <strong>Schicht schließen</strong> beenden Sie sie mit Begründung. Einsichten in die Evakuierungsliste sind keine Schicht: sie bleiben in dieser Liste (Datum und Uhrzeit, neueste oben). Das Badge in der Navigation zählt nur die Aufmerksamkeit von heute."
                 }
             ]
         },

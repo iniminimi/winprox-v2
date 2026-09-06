@@ -247,7 +247,7 @@
                     "Webhooks with **HMAC-SHA256** signature (proof the message comes from WinProx).",
                     "API: max. **60 requests/minute** per token.",
                     "Support access: exceptional, read-only by default.",
-                    "Time Clock Point: un téléphone par exécutant (refus + journal si autre appareil). PIN haché et GPS optionnels (le pointage continue sans signal). Le pointage API ne lie pas de téléphone. Liste d’évacuation (tuile après connexion) : les noms uniquement après confirmation que la consultation est exceptionnelle ; chaque consultation est enregistrée (prénom, nom, date et heure). Les consultations d’aujourd’hui allument l’attention Time (tableau de bord et présence) et apparaissent sous Time → Alertes. L’admin libère téléphone, PIN et icône via Personnes → Équipes → Modifier. Clock Point conserve un cookie d’appareil essentiel (environ 1 an)."
+                    "Time Clock Point: un téléphone par exécutant (refus + journal si autre appareil). PIN haché et GPS optionnels (le pointage continue sans signal). Le pointage API ne lie pas de téléphone. Liste d’évacuation (tuile après connexion) : les noms uniquement après confirmation que la consultation est exceptionnelle ; chaque consultation est enregistrée (prénom, nom, date et heure). Les consultations d’aujourd’hui allument l’attention Time (tableau de bord et présence). Time → Alertes conserve la liste complète (date et heure, plus récente en haut). L’admin libère téléphone, PIN et icône via Personnes → Équipes → Modifier. Clock Point conserve un cookie d’appareil essentiel (environ 1 an)."
                 ]
             },
             {

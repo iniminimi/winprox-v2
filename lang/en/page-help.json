@@ -1166,7 +1166,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "Live KPIs at the top: <strong>Clocked in</strong> (everyone with an open shift), <strong>Active</strong> (clocked in and not on break), <strong>Break</strong>, <strong>Not clocked in</strong> and <strong>Attention</strong>. Clocked in = Active + Break. Click a tile to filter. <strong>Attention</strong> opens the alarms screen (including today’s evacuation-list views)."
+                    "text": "Live KPIs at the top: <strong>Clocked in</strong> (everyone with an open shift), <strong>Active</strong> (clocked in and not on break), <strong>Break</strong>, <strong>Not clocked in</strong> and <strong>Attention</strong>. Clocked in = Active + Break. Click a tile to filter. <strong>Attention</strong> counts today’s evacuation-list views; Time → Alarms keeps the full list."
                 },
                 {
                     "label": "Views",
@@ -1186,7 +1186,7 @@
                 },
                 {
                     "label": "Evacuation list",
-                    "text": "The evacuation list is on the Clock Point portal after sign-in (Evacuation list tile). No extra QR. Before the list, the field worker confirms that the consultation is exceptional and is logged (first name, last name, date and time). Views from today light up <strong>Attention</strong> (presence and dashboard) and appear under Time → Alarms."
+                    "text": "The evacuation list is on the Clock Point portal after sign-in (Evacuation list tile). No extra QR. Before the list, the field worker confirms that the consultation is exceptional and is logged (first name, last name, date and time). Views from today light up <strong>Attention</strong> (presence and dashboard). Time → Alarms keeps the full list (date and time, newest first)."
                 }
             ]
         },
@@ -1195,15 +1195,15 @@
             "actions": [
                 {
                     "label": "Purpose",
-                    "text": "Shows everything that needs attention: clocked in too long, forgotten clock-out, no break recorded, a too-quick hop between Clock Points, or an evacuation-list view today."
+                    "text": "Shows everything that needs attention: clocked in too long, forgotten clock-out, no break recorded, a too-quick hop between Clock Points, or an evacuation-list view. Consultations stay in this list (date and time, newest first); the Attention badge counts only today."
                 },
                 {
                     "label": "Types",
-                    "text": "Filter by <strong>Long shift</strong> (&gt;10 h), <strong>Not clocked out</strong> (&gt;16 h), <strong>No break</strong> (&gt;6 h without a break), <strong>Rapid hop</strong> (move within 5 min), or <strong>Evacuation list</strong> (views today)."
+                    "text": "Filter by <strong>Long shift</strong> (&gt;10 h), <strong>Not clocked out</strong> (&gt;16 h), <strong>No break</strong> (&gt;6 h without a break), <strong>Rapid hop</strong> (move within 5 min), or <strong>Evacuation list</strong> (all views, with date)."
                 },
                 {
                     "label": "Action",
-                    "text": "For an open shift, use <strong>Close shift</strong> to end it with a reason. Evacuation-list views are not a shift — they drop off after today. The nav badge shows the total alarm count."
+                    "text": "For an open shift, use <strong>Close shift</strong> to end it with a reason. Evacuation-list views are not a shift: they remain in this list (date and time, newest first). The nav badge counts only today’s attention."
                 }
             ]
         },

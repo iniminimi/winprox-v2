@@ -247,7 +247,7 @@
                     "Webhooks with **HMAC-SHA256** signature (proof the message comes from WinProx).",
                     "API: max. **60 requests/minute** per token.",
                     "Support access: exceptional, read-only by default.",
-                    "Time Clock Point: ein Handy pro Ausführendem (Ablehnung + Protokoll bei anderem Gerät). Optional gehashte PIN und GPS (Stempelung ohne Signal möglich). API-Einstempeln bindet kein Handy. Evakuierungsliste (Kachel nach Anmeldung): Namen erst nach Bestätigung, dass die Einsicht ausnahmsweise erfolgt; jede Einsicht wird protokolliert (Vorname, Name, Datum und Uhrzeit). Einsichten von heute lassen Time-Aufmerksamkeit aufleuchten (Dashboard und Anwesenheit) und stehen unter Time → Alarme. Die Verwaltung gibt Handy, PIN und Symbol unter Personen → Teams → Bearbeiten frei. Clock Point speichert ein erforderliches Geräte-Cookie (ca. 1 Jahr)."
+                    "Time Clock Point: ein Handy pro Ausführendem (Ablehnung + Protokoll bei anderem Gerät). Optional gehashte PIN und GPS (Stempelung ohne Signal möglich). API-Einstempeln bindet kein Handy. Evakuierungsliste (Kachel nach Anmeldung): Namen erst nach Bestätigung, dass die Einsicht ausnahmsweise erfolgt; jede Einsicht wird protokolliert (Vorname, Name, Datum und Uhrzeit). Einsichten von heute lassen Time-Aufmerksamkeit aufleuchten (Dashboard und Anwesenheit). Time → Alarme behält die vollständige Liste (Datum und Uhrzeit, neueste oben). Die Verwaltung gibt Handy, PIN und Symbol unter Personen → Teams → Bearbeiten frei. Clock Point speichert ein erforderliches Geräte-Cookie (ca. 1 Jahr)."
                 ]
             },
             {

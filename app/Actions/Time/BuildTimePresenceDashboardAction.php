@@ -33,6 +33,7 @@ class BuildTimePresenceDashboardAction
         array $expandedTeamIds = [],
         bool $includeAbsentRoster = false,
         ?array $scopeLocationIds = null,
+        bool $includeHistoricalRosterViews = false,
     ): TimePresenceDashboard {
         $needle = mb_strtolower(trim((string) $search));
         $isSearchMode = $needle !== '';
@@ -66,7 +67,7 @@ class BuildTimePresenceDashboardAction
         $onBreak = $openShifts->filter(fn (WorkShift $shift) => $shift->openBreak !== null)->values();
         $active = $openShifts->filter(fn (WorkShift $shift) => $shift->openBreak === null)->values();
         $attentionItems = TimePresenceAttentionRules::collect($openShifts)
-            ->concat($this->rosterViewItems($tenantId, $teamId, $needle))
+            ->concat($this->rosterViewItems($tenantId, $teamId, $needle, $includeHistoricalRosterViews))
             ->values();
 
         $clockedInWorkerIds = $openShifts->pluck('worker_id')->all();
@@ -418,10 +419,19 @@ class BuildTimePresenceDashboardAction
     /**
      * @return Collection<int, TimePresenceAttentionItem>
      */
-    private function rosterViewItems(int $tenantId, ?int $teamId, string $needle): Collection
-    {
+    private function rosterViewItems(
+        int $tenantId,
+        ?int $teamId,
+        string $needle,
+        bool $includeHistoricalRosterViews,
+    ): Collection {
         return $this->listRosterViews
-            ->handle($tenantId, $teamId, $needle !== '' ? $needle : null)
+            ->handle(
+                $tenantId,
+                $teamId,
+                $needle !== '' ? $needle : null,
+                onlyToday: ! $includeHistoricalRosterViews,
+            )
             ->map(fn (TimeRosterViewAttention $view) => new TimePresenceAttentionItem(
                 TimePresenceAttentionType::RosterViewed,
                 null,

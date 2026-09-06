@@ -13,6 +13,6 @@
         </span>
     </div>
     <span class="wp-time-presence-row__clock wp-tabular">
-        {{ $view->viewedAt->timezone(config('app.timezone'))->format('H:i') }}
+        {{ $view->viewedAt->timezone(config('app.timezone'))->format('d-m-Y H:i') }}
     </span>
 </div>

@@ -11,12 +11,17 @@ use Illuminate\Support\Collection;
 class ListTimeRosterViewsAction
 {
     /**
-     * Raadplegingen van de evacuatielijst vandaag (tenant-tijdzone).
+     * Raadplegingen van de evacuatielijst, nieuwste eerst.
+     * Aandacht-KPI gebruikt alleen vandaag; Time → Alarmen toont de volledige lijst.
      *
      * @return Collection<int, TimeRosterViewAttention>
      */
-    public function handle(int $tenantId, ?int $teamId = null, ?string $search = null): Collection
-    {
+    public function handle(
+        int $tenantId,
+        ?int $teamId = null,
+        ?string $search = null,
+        bool $onlyToday = true,
+    ): Collection {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
         $needle = mb_strtolower(trim((string) $search));
@@ -26,9 +31,12 @@ class ListTimeRosterViewsAction
         $logs = AuditLog::query()
             ->where('tenant_id', $tenantId)
             ->where('action', 'time.roster.viewed')
-            ->where('created_at', '>=', $from)
-            ->where('created_at', '<', $until)
+            ->when($onlyToday, function ($query) use ($from, $until): void {
+                $query->where('created_at', '>=', $from)
+                    ->where('created_at', '<', $until);
+            })
             ->orderByDesc('created_at')
+            ->limit($onlyToday ? 200 : 500)
             ->get();
 
         $workerIds = $logs
@@ -60,14 +68,6 @@ class ListTimeRosterViewsAction
                 }
 
                 $viewedAt = $log->created_at ?? now();
-                $payloadViewedAt = $payload['viewed_at'] ?? null;
-                if (is_string($payloadViewedAt) && $payloadViewedAt !== '') {
-                    try {
-                        $viewedAt = \Carbon\Carbon::parse($payloadViewedAt);
-                    } catch (\Throwable) {
-                        // keep created_at
-                    }
-                }
 
                 return new TimeRosterViewAttention(
                     auditId: (int) $log->id,

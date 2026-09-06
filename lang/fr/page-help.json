@@ -1174,7 +1174,7 @@
             "actions": [
                 {
                     "label": "Tableau de bord",
-                    "text": "KPI en direct en haut : <strong>Pointé</strong> (tous avec une vacation ouverte), <strong>Actif</strong> (pointé et pas en pause), <strong>Pause</strong>, <strong>Non pointé</strong> et <strong>À surveiller</strong>. Pointé = Actif + Pause. Cliquez une tuile pour filtrer. <strong>À surveiller</strong> ouvre l'écran Alertes (y compris les consultations de la liste d’évacuation aujourd’hui)."
+                    "text": "KPI en direct en haut : <strong>Pointé</strong> (tous avec une vacation ouverte), <strong>Actif</strong> (pointé et pas en pause), <strong>Pause</strong>, <strong>Non pointé</strong> et <strong>À surveiller</strong>. Pointé = Actif + Pause. Cliquez une tuile pour filtrer. <strong>À surveiller</strong> compte les consultations d’aujourd’hui ; Time → Alertes conserve la liste complète."
                 },
                 {
                     "label": "Affichage",
@@ -1194,7 +1194,7 @@
                 },
                 {
                     "label": "Liste d’évacuation",
-                    "text": "La liste d’évacuation est sur le portail Clock Point après connexion (tuile Liste d’évacuation). Pas de QR distinct. Avant la liste, l’exécutant confirme que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Les consultations d’aujourd’hui allument <strong>À surveiller</strong> (présence et tableau de bord) et apparaissent sous Time → Alertes."
+                    "text": "La liste d’évacuation est sur le portail Clock Point après connexion (tuile Liste d’évacuation). Pas de QR distinct. Avant la liste, l’exécutant confirme que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Les consultations d’aujourd’hui allument <strong>À surveiller</strong> (présence et tableau de bord). Time → Alertes conserve la liste complète (date et heure, plus récente en haut)."
                 }
             ]
         },
@@ -1203,15 +1203,15 @@
             "actions": [
                 {
                     "label": "Objectif",
-                    "text": "Affiche tout ce qui demande une attention : trop longtemps pointé, sortie oubliée, pas de pause, saut trop rapide entre Clock Points, ou consultation de la liste d’évacuation aujourd’hui."
+                    "text": "Affiche tout ce qui demande une attention : trop longtemps pointé, sortie oubliée, pas de pause, saut trop rapide entre Clock Points, ou consultation de la liste d’évacuation. Les consultations restent dans cette liste (date et heure, plus récente en haut) ; le badge Attention ne compte que aujourd’hui."
                 },
                 {
                     "label": "Types",
-                    "text": "Filtrez : <strong>Shift long</strong> (&gt;10 h), <strong>Non dépointé</strong> (&gt;16 h), <strong>Pas de pause</strong> (&gt;6 h), <strong>Saut rapide</strong> (déplacement en moins de 5 min) ou <strong>Liste d’évacuation</strong> (consultations aujourd’hui)."
+                    "text": "Filtrez : <strong>Shift long</strong> (&gt;10 h), <strong>Non dépointé</strong> (&gt;16 h), <strong>Pas de pause</strong> (&gt;6 h), <strong>Saut rapide</strong> (déplacement en moins de 5 min) ou <strong>Liste d’évacuation</strong> (toutes les consultations, avec date)."
                 },
                 {
                     "label": "Action",
-                    "text": "Pour un shift ouvert : utilisez <strong>Fermer le shift</strong> avec un motif. Les consultations de la liste d’évacuation ne sont pas un shift — elles disparaissent après aujourd’hui. Le badge de navigation indique le nombre d’alertes."
+                    "text": "Pour un shift ouvert : utilisez <strong>Fermer le shift</strong> avec un motif. Les consultations de la liste d’évacuation ne sont pas un shift : elles restent dans cette liste (date et heure, plus récente en haut). Le badge de navigation ne compte que l’attention d’aujourd’hui."
                 }
             ]
         },

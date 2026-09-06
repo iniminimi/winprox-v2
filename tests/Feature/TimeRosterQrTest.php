@@ -238,3 +238,36 @@ it('telt evacuatielijst-raadplegingen van gisteren niet als aandacht', function 
 
     expect(app(CountTimePresenceAttentionAction::class)->handle($tenant->id))->toBe(0);
 });
+
+it('houdt evacuatielijst-raadplegingen op alarmen met datum, nieuwste eerst', function (): void {
+    [$tenant, $admin, , $worker] = rosterTenantWithPeople();
+    $older = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $worker->internal_team_id,
+        'first_name' => 'Piet',
+        'last_name' => 'Peters',
+        'field_icon_slug' => 'plane',
+    ]);
+
+    app(AcknowledgeTimeRosterViewAction::class)->handle($older, $tenant->id);
+    $yesterday = now()->subDay();
+    AuditLog::query()
+        ->where('tenant_id', $tenant->id)
+        ->where('action', 'time.roster.viewed')
+        ->update(['created_at' => $yesterday]);
+
+    app(AcknowledgeTimeRosterViewAction::class)->handle($worker, $tenant->id);
+
+    expect(app(CountTimePresenceAttentionAction::class)->handle($tenant->id))->toBe(1);
+
+    $tz = config('app.timezone');
+
+    Livewire::actingAs($admin)
+        ->test(AlarmsIndex::class)
+        ->set('attentionType', TimePresenceAttentionType::RosterViewed->value)
+        ->assertSee('Jan Janssen', false)
+        ->assertSee('Piet Peters', false)
+        ->assertSee($yesterday->timezone($tz)->format('d-m-Y'), false)
+        ->assertSee(now()->timezone($tz)->format('d-m-Y'), false)
+        ->assertSeeInOrder(['Jan Janssen', 'Piet Peters']);
+});

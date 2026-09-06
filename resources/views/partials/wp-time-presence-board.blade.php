@@ -166,7 +166,7 @@
                                         <x-wp-icon name="clock" class="wp-time-presence-card__metric-icon" />
                                         <span class="wp-time-presence-card__metric-label">{{ __('time.presence.attention.roster_viewed') }}</span>
                                         <strong class="wp-time-presence-card__metric-value wp-tabular">
-                                            {{ $item->rosterView->viewedAt->timezone(config('app.timezone'))->format('H:i') }}
+                                            {{ $item->rosterView->viewedAt->timezone(config('app.timezone'))->format('d-m-Y H:i') }}
                                         </strong>
                                     </span>
                                 </div>

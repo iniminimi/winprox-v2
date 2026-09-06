@@ -247,7 +247,7 @@
                     "Webhooks with **HMAC-SHA256** signature (proof the message comes from WinProx).",
                     "API: max. **60 requests/minute** per token.",
                     "Support access: exceptional, read-only by default.",
-                    "Time Clock Point: one phone per worker (refuse + audit on another device). Optional hashed PIN and GPS (punch proceeds without a signal). API clock-in does not bind a phone. Evacuation list (tile after sign-in): names only after confirming the consultation is exceptional; each view is logged (first name, last name, date and time). Views from today light up Time attention on the dashboard and on Presence, and appear under Time → Alarms. Admins release phone, PIN and icon via People → Teams → Edit. Clock Point stores an essential device cookie (about 1 year)."
+                    "Time Clock Point: one phone per worker (refuse + audit on another device). Optional hashed PIN and GPS (punch proceeds without a signal). API clock-in does not bind a phone. Evacuation list (tile after sign-in): names only after confirming the consultation is exceptional; each view is logged (first name, last name, date and time). Views from today light up Time attention on the dashboard and on Presence. Time → Alarms keeps the full list (date and time, newest first). Admins release phone, PIN and icon via People → Teams → Edit. Clock Point stores an essential device cookie (about 1 year)."
                 ]
             },
             {

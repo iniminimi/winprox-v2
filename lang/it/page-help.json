@@ -1166,7 +1166,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "KPI live in alto: <strong>Timbrato</strong> (tutti con turno aperto), <strong>Attivo</strong> (timbrato e non in pausa), <strong>Pausa</strong>, <strong>Non timbrato</strong> e <strong>Attenzione</strong>. Timbrato = Attivo + Pausa. Clicca una tessera per filtrare. <strong>Attenzione</strong> apre la schermata Allarmi (incluse le consultazioni dell’elenco evacuazione di oggi)."
+                    "text": "KPI live in alto: <strong>Timbrato</strong> (tutti con turno aperto), <strong>Attivo</strong> (timbrato e non in pausa), <strong>Pausa</strong>, <strong>Non timbrato</strong> e <strong>Attenzione</strong>. Timbrato = Attivo + Pausa. Clicca una tessera per filtrare. <strong>Attenzione</strong> conta le consultazioni di oggi; Time → Allarmi conserva l’elenco completo."
                 },
                 {
                     "label": "Vista",
@@ -1186,7 +1186,7 @@
                 },
                 {
                     "label": "Elenco evacuazione",
-                    "text": "L’elenco evacuazione è sul portale Clock Point dopo l’accesso (riquadro Elenco evacuazione). Nessun QR separato. Prima dell’elenco l’esecutore conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Le consultazioni di oggi accendono <strong>Attenzione</strong> (presenza e dashboard) e compaiono in Time → Allarmi."
+                    "text": "L’elenco evacuazione è sul portale Clock Point dopo l’accesso (riquadro Elenco evacuazione). Nessun QR separato. Prima dell’elenco l’esecutore conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Le consultazioni di oggi accendono <strong>Attenzione</strong> (presenza e dashboard). Time → Allarmi conserva l’elenco completo (data e ora, la più recente in alto)."
                 }
             ]
         },
@@ -1195,15 +1195,15 @@
             "actions": [
                 {
                     "label": "Scopo",
-                    "text": "Mostra tutto ciò che richiede attenzione: timbratura troppo lunga, uscita dimenticata, nessuna pausa, salto troppo rapido tra Clock Point, o consultazione dell’elenco evacuazione oggi."
+                    "text": "Mostra tutto ciò che richiede attenzione: timbratura troppo lunga, uscita dimenticata, nessuna pausa, salto troppo rapido tra Clock Point, o consultazione dell’elenco evacuazione. Le consultazioni restano in questo elenco (data e ora, la più recente in alto); il badge Attenzione conta solo oggi."
                 },
                 {
                     "label": "Tipi",
-                    "text": "Filtri: <strong>Turno lungo</strong> (&gt;10 h), <strong>Non timbrato in uscita</strong> (&gt;16 h), <strong>Nessuna pausa</strong> (&gt;6 h), <strong>Salto rapido</strong> (spostamento entro 5 min) o <strong>Elenco evacuazione</strong> (consultazioni di oggi)."
+                    "text": "Filtri: <strong>Turno lungo</strong> (&gt;10 h), <strong>Non timbrato in uscita</strong> (&gt;16 h), <strong>Nessuna pausa</strong> (&gt;6 h), <strong>Salto rapido</strong> (spostamento entro 5 min) o <strong>Elenco evacuazione</strong> (tutte le consultazioni, con data)."
                 },
                 {
                     "label": "Azione",
-                    "text": "Per un turno aperto, usi <strong>Chiudi turno</strong> con motivo. Le consultazioni dell’elenco evacuazione non sono un turno: spariscono dopo oggi. Il badge nella navigazione mostra il numero di allarmi."
+                    "text": "Per un turno aperto, usi <strong>Chiudi turno</strong> con motivo. Le consultazioni dell’elenco evacuazione non sono un turno: restano in questo elenco (data e ora, la più recente in alto). Il badge di navigazione conta solo l’attenzione di oggi."
                 }
             ]
         },

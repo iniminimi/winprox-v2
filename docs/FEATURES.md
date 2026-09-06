@@ -662,7 +662,9 @@ productsector op `Tenant`.
   Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel). Eerst
   aanvinken dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam,
   datum/uur → `time.roster.viewed`). Raadplegingen **vandaag** lichten **Aandacht**
-  op (Time → Aanwezigheid én dashboard) en staan op Time → Alarmen. Geen extra QR.
+  op (Time → Aanwezigheid én dashboard). Time → Alarmen toont de **volledige**
+  raadpleeglijst (datum + uur, nieuwste bovenaan); die valt niet weg na een dag.
+  Geen extra QR.
 - Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
   (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit
   tot beheer/teamleader vrijgeeft); één open shift;
