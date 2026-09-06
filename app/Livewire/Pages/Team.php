@@ -16,6 +16,8 @@ use App\Actions\Team\DeleteTeamAction;
 use App\Actions\Team\DeleteWorkerAction;
 use App\Actions\Team\DeleteWorkerPhotoAction;
 use App\Actions\Team\ResetWorkerIconAction;
+use App\Actions\Time\ClearWorkerClockDeviceAction;
+use App\Actions\Time\ClearWorkerClockPinAction;
 use App\Actions\Team\SetColleagueActiveAction;
 use App\Actions\Team\SetTeamActiveAction;
 use App\Actions\Team\SetWorkerActiveAction;
@@ -953,6 +955,18 @@ class Team extends Component
     {
         $worker = $this->authorizedWorker($workerId);
         $resetIcon->handle($worker, (int) auth()->id());
+    }
+
+    public function clearWorkerClockDevice(int $workerId, ClearWorkerClockDeviceAction $clearDevice): void
+    {
+        $worker = $this->authorizedWorker($workerId);
+        $clearDevice->handle($worker, (int) auth()->id());
+    }
+
+    public function clearWorkerClockPin(int $workerId, ClearWorkerClockPinAction $clearPin): void
+    {
+        $worker = $this->authorizedWorker($workerId);
+        $clearPin->handle($worker, (int) auth()->id());
     }
 
     public function setWorkerActive(int $workerId, bool $active, SetWorkerActiveAction $setActive): void

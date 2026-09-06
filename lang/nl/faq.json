@@ -144,7 +144,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Wat is de Time-module / Clock Point?",
-            "body": "Time is de optionele prikklok: uitvoerders klokken in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). De naamlookup op Clock Point is per vestiging: alleen uitvoerders die daar mogen inklokken (of invallerteams) zien hun naam. Collega's met een Prikklok-team klokken in via het gekoppelde uitvoerderprofiel. Clock Point blijft de aanmeld-QR (naam + icoon) ook zonder Time. In de proefperiode is Time inbegrepen. Bij een betaald WinProx-abonnement is het optioneel; u vinkt het aan bij het abonnement.",
+            "body": "Time is de optionele prikklok: uitvoerders klokken in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). De naamlookup op Clock Point is per vestiging: alleen uitvoerders die daar mogen inklokken (of invallerteams) zien hun naam. Collega's met een Prikklok-team klokken in via het gekoppelde uitvoerderprofiel. Clock Point blijft de aanmeld-QR (naam + icoon) ook zonder Time. In de proefperiode is Time inbegrepen. Bij een betaald WinProx-abonnement is het optioneel; u vinkt het aan bij het abonnement. Elke uitvoerder klokt in met één eigen gsm. Beheer of teamleader kan een nieuw toestel toestaan.",
             "summary": "Time: in-/uitklokken via Clock Point, lookup per vestiging; collega's via Prikklok-team."
         },
         "esg": {

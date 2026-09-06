@@ -16,9 +16,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
 /**
- * Onthoudt een veldworker per toestel (cookie ↔ worker_devices-rij, ~1 jaar) en
- * doet de naam-opzoeking op een team. Bedoeld voor gedeelde telefoons op de
- * werkvloer. Eén worker hoort bij precies één team (internal_team_id).
+     * Onthoudt een veldworker per toestel (cookie ↔ worker_devices-rij, ~1 jaar).
+     * Elk toestel krijgt een eigen token; Time koppelt max. één gsm per worker.
  *
  * Tenant-context wordt door de Livewire-componenten gezet via Tenancy::actAs()
  * in booted(); device-tokens worden defensief buiten de tenant-scope opgezocht.
@@ -27,6 +26,8 @@ final class WorkerDeviceSession
 {
     public const DEVICE_TOKEN_COOKIE = 'winprox_device_token';
 
+    public const DEVICE_TOKEN_SESSION = 'wp_portal_device_token';
+
     public static function persistDeviceToken(string $deviceToken, ?InternalTeam $team = null): void
     {
         $token = trim($deviceToken);
@@ -34,14 +35,9 @@ final class WorkerDeviceSession
             return;
         }
 
-        // Calculate cookie duration based on team configuration
-        $durationMinutes = 60 * 24 * 365; // Default: 1 year
-        if ($team !== null && $team->session_lifespan_hours !== null) {
-            $durationMinutes = $team->session_lifespan_hours * 60;
-        } else {
-            // Fallback to 14 hours if no team configuration
-            $durationMinutes = 14 * 60;
-        }
+        session([self::DEVICE_TOKEN_SESSION => $token]);
+
+        $durationMinutes = 60 * 24 * 365;
 
         Cookie::queue(cookie(
             self::DEVICE_TOKEN_COOKIE,
@@ -59,13 +55,19 @@ final class WorkerDeviceSession
     public static function clearDeviceTokenCookie(): void
     {
         Cookie::queue(cookie()->forget(self::DEVICE_TOKEN_COOKIE));
+        session()->forget(self::DEVICE_TOKEN_SESSION);
     }
 
     public static function deviceTokenFromRequest(?Request $request = null): string
     {
         $request ??= request();
 
-        return trim((string) $request->cookie(self::DEVICE_TOKEN_COOKIE, ''));
+        $fromCookie = trim((string) $request->cookie(self::DEVICE_TOKEN_COOKIE, ''));
+        if ($fromCookie !== '') {
+            return $fromCookie;
+        }
+
+        return trim((string) session(self::DEVICE_TOKEN_SESSION, ''));
     }
 
     /**
@@ -163,7 +165,6 @@ final class WorkerDeviceSession
         }
 
         session([self::rememberedWorkerSessionKey((int) $team->id) => (int) $worker->id]);
-        self::restoreDeviceCookieForWorker($worker, $team);
     }
 
     public static function clearRememberedWorkerForTeam(int $teamId): void
@@ -250,22 +251,47 @@ final class WorkerDeviceSession
         return $result;
     }
 
+    /**
+     * Eigen uniek toestel-token voor deze browser. Kopieert nooit het token van
+     * een andere telefoon. Bestaande cookie van een andere worker blijft staan
+     * (prikken weigert dan); anders nieuw token.
+     */
+    public static function ensureUniqueDeviceForWorker(Worker $worker): ?WorkerDevice
+    {
+        $existingToken = self::deviceTokenFromRequest();
+        $team = $worker->team;
+
+        if ($existingToken !== '') {
+            $existing = WorkerDevice::withoutGlobalScope('tenant')
+                ->where('device_token', $existingToken)
+                ->first();
+
+            if ($existing !== null && (int) $existing->worker_id === (int) $worker->id) {
+                self::persistDeviceToken($existingToken, $team);
+                app(TouchWorkerDeviceAction::class)->handle($existing);
+
+                return $existing;
+            }
+
+            if ($existing !== null) {
+                return null;
+            }
+        }
+
+        $result = app(AttachWorkerDeviceAction::class)->handle($worker);
+        self::persistDeviceToken($result['device_token'], $team);
+
+        return $worker->devices()->where('device_token', $result['device_token'])->first();
+    }
+
     private static function restoreDeviceCookieForWorker(Worker $worker, ?InternalTeam $team = null): void
     {
         $existingToken = self::deviceTokenFromRequest();
-
         if ($existingToken !== '') {
             return;
         }
 
-        $device = $worker->devices()->orderByDesc('last_seen_at')->first();
-        if ($device === null) {
-            $result = app(AttachWorkerDeviceAction::class)->handle($worker);
-            self::persistDeviceToken($result['device_token'], $team);
-
-            return;
-        }
-
-        self::persistDeviceToken($device->device_token, $team);
+        $result = app(AttachWorkerDeviceAction::class)->handle($worker);
+        self::persistDeviceToken($result['device_token'], $team);
     }
 }

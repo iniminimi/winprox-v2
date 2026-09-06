@@ -5,6 +5,7 @@ namespace App\Actions\Time;
 use App\Enums\PresenceSourceEvent;
 use App\Enums\WorkShiftStatus;
 use App\Models\Worker;
+use App\Models\WorkerDevice;
 use App\Models\WorkBreak;
 use App\Models\WorkShift;
 use App\Support\Time\TimeModuleAccess;
@@ -15,15 +16,25 @@ class EndWorkBreakAction
 {
     public function __construct(
         private EnqueuePresenceFromTimeEventAction $enqueuePresence,
+        private AssertWorkerClockDeviceAction $assertClockDevice,
     ) {}
 
-    public function handle(Worker $worker, WorkShift $shift): WorkBreak
-    {
+    public function handle(
+        Worker $worker,
+        WorkShift $shift,
+        bool $enforceClockDevice = false,
+        ?WorkerDevice $device = null,
+        ?string $requestDeviceToken = null,
+    ): WorkBreak {
         if ((int) $worker->id !== (int) $shift->worker_id) {
             throw new InvalidArgumentException('shift_worker_mismatch');
         }
 
         TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
+
+        if ($enforceClockDevice) {
+            $this->assertClockDevice->handle($worker, $device, $requestDeviceToken);
+        }
 
         return DB::transaction(function () use ($worker, $shift) {
             $shift = WorkShift::query()

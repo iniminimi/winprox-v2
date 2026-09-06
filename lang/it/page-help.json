@@ -916,7 +916,7 @@
                 },
                 {
                     "label": "Timbra entrata e uscita",
-                    "text": "Timbra qui entrata, uscita e pause. Un solo turno aperto alla volta. Su un altro Clock Point vedi dove hai timbrato e puoi spostare la presenza qui. Poi usa il QR unit in loco per i task. Il turno resta unico; nel foglio ore lo spostamento compare come nota."
+                    "text": "Timbra qui ingresso, uscita e pause con il tuo telefono. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Poi usa il QR unità sul posto per i compiti."
                 },
                 {
                     "label": "Esci",

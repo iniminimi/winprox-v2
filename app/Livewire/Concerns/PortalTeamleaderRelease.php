@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Concerns;
 
+use App\Actions\Portal\TeamleaderReleaseWorkerClockDeviceAction;
 use App\Actions\Portal\TeamleaderReleaseWorkerIconAction;
 use App\Models\InternalTeam;
 use App\Models\Worker;
@@ -20,6 +21,12 @@ trait PortalTeamleaderRelease
     public ?int $release_worker_id = null;
 
     public string $release_teamleader_icon_slug = '';
+
+    public bool $showDeviceReleasePanel = false;
+
+    public ?int $release_device_worker_id = null;
+
+    public string $release_device_teamleader_icon_slug = '';
 
     public function toggleReleasePanel(): void
     {
@@ -101,6 +108,85 @@ trait PortalTeamleaderRelease
         $this->resetReleaseForm();
         $this->showReleasePanel = false;
         $this->portalReleaseFlash(__('portal.teamleader.released_ok', ['name' => $target->displayName()]));
+    }
+
+    /** @return \Illuminate\Support\Collection<int, Worker> */
+    public function clockDeviceReleaseCandidates()
+    {
+        $team = $this->portalReleaseTeam();
+        $teamleader = $this->portalTeamleaderWorker();
+
+        if ($team === null) {
+            return collect();
+        }
+
+        return Worker::query()
+            ->where('internal_team_id', $team->id)
+            ->where('is_active', true)
+            ->whereNotNull('clock_device_id')
+            ->when($teamleader !== null, fn ($query) => $query->where('id', '!=', $teamleader->id))
+            ->orderBy('last_name')
+            ->orderBy('first_name')
+            ->get();
+    }
+
+    public function toggleDeviceReleasePanel(): void
+    {
+        $this->showDeviceReleasePanel = ! $this->showDeviceReleasePanel;
+        if (! $this->showDeviceReleasePanel) {
+            $this->release_device_worker_id = null;
+            $this->release_device_teamleader_icon_slug = '';
+            $this->resetErrorBag(['release_device_teamleader_icon_slug', 'release_device_worker_id']);
+        }
+    }
+
+    public function releaseColleagueClockDevice(TeamleaderReleaseWorkerClockDeviceAction $releaseDevice): void
+    {
+        $teamleader = $this->portalTeamleaderWorker();
+        $team = $this->portalReleaseTeam();
+
+        if ($teamleader === null || $team === null) {
+            return;
+        }
+
+        $this->validate([
+            'release_device_teamleader_icon_slug' => ['required', 'string', Rule::in(WorkerIcon::SLUGS)],
+            'release_device_worker_id' => ['required', 'integer'],
+        ], [
+            'release_device_teamleader_icon_slug.required' => __('portal.worker.errors.icon_required'),
+            'release_device_worker_id.required' => __('portal.teamleader.errors.device_colleague_required'),
+        ]);
+
+        $expected = trim((string) $teamleader->field_icon_slug);
+        if ($expected === '' || $this->release_device_teamleader_icon_slug !== $expected) {
+            $this->addError('release_device_teamleader_icon_slug', __('portal.teamleader.errors.icon_wrong'));
+
+            return;
+        }
+
+        $target = Worker::query()
+            ->where('internal_team_id', $team->id)
+            ->whereKey($this->release_device_worker_id)
+            ->first();
+
+        if ($target === null || $target->clock_device_id === null) {
+            $this->addError('release_device_worker_id', __('portal.teamleader.errors.device_colleague_not_found'));
+
+            return;
+        }
+
+        try {
+            $releaseDevice->handle($team, $teamleader, $target);
+        } catch (\InvalidArgumentException) {
+            $this->addError('release_device_worker_id', __('portal.teamleader.errors.cannot_release'));
+
+            return;
+        }
+
+        $this->release_device_worker_id = null;
+        $this->release_device_teamleader_icon_slug = '';
+        $this->showDeviceReleasePanel = false;
+        $this->portalReleaseFlash(__('portal.teamleader.device_released_ok', ['name' => $target->displayName()]));
     }
 
     protected function resetReleaseForm(): void

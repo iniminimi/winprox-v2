@@ -144,7 +144,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "What is the Time module / Clock Point?",
-            "body": "Time is the optional punch clock: workers clock in and out via the Clock Point QR (breaks and shifts included). Name lookup on Clock Point is per location: only workers allowed there (or floater teams) see their name. Colleagues with a punch-clock team clock in via the linked worker profile. Clock Point remains the sign-in QR (name + icon) even without Time. Time is included in the trial. On a paid WinProx plan it is optional; tick it on the subscription.",
+            "body": "Time is the optional punch clock: workers clock in and out via the Clock Point QR (breaks and shifts included). Name lookup on Clock Point is per location: only workers allowed there (or floater teams) see their name. Colleagues with a punch-clock team clock in via the linked worker profile. Clock Point remains the sign-in QR (name + icon) even without Time. Time is included in the trial. On a paid WinProx plan it is optional; tick it on the subscription. Each worker clocks in with one personal phone. An admin or team leader can allow a new device.",
             "summary": "Time: clock in/out via Clock Point, lookup per location; colleagues via punch-clock team."
         },
         "esg": {

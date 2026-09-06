@@ -129,8 +129,20 @@
             "icon_required": "Scelga la Sua icona personale.",
             "icon_wrong": "Non è l'icona corretta.",
             "note_max": "La nota è troppo lunga (max. 500 caratteri).",
-            "no_permission": "Non ha l'autorizzazione per farlo."
-        }
+            "no_permission": "Non ha l'autorizzazione per farlo.",
+            "pin_required": "Inserisci il PIN di 4 cifre.",
+            "pin_invalid": "Il PIN deve essere di 4 cifre.",
+            "pin_mismatch": "I PIN non coincidono.",
+            "pin_wrong": "Questo non è il PIN corretto."
+        },
+        "pin": "PIN (4 cifre)",
+        "pin_confirm": "Conferma PIN",
+        "pin_setup_title": "Scegli un PIN",
+        "pin_setup_hint": "Scegli un codice segreto di 4 cifre, come un PIN bancario.",
+        "pin_verify_hint": "Inserisci il tuo PIN",
+        "pin_save": "Salva PIN",
+        "confirm_pin": "Conferma PIN",
+        "pin_set": "PIN salvato. Sei autenticato."
     },
     "team": {
         "title": "Panoramica team",
@@ -176,8 +188,16 @@
             "colleague_required": "Scelga un collega bloccato.",
             "colleague_not_found": "Questo collega non è bloccato o non è nel Suo team.",
             "cannot_release": "Questo collega non può essere rilasciato.",
-            "cannot_delete_self": "Non può eliminare se stesso."
-        }
+            "cannot_delete_self": "Non può eliminare se stesso.",
+            "device_colleague_required": "Scegli un collega.",
+            "device_colleague_not_found": "Questo collega non ha un dispositivo collegato o non appartiene al tuo team."
+        },
+        "device_title": "Consenti un nuovo dispositivo",
+        "device_open": "Sblocca dispositivo",
+        "device_hint": "Se un collega ha un telefono nuovo o temporaneo, sblocca il dispositivo collegato. Potrà poi timbrare sul nuovo dispositivo.",
+        "choose_device_colleague": "Scegli un collega con dispositivo collegato",
+        "device_submit": "Consenti nuovo dispositivo",
+        "device_released_ok": ":name può timbrare di nuovo con un altro dispositivo."
     },
     "documents": {
         "download": "Scarica",

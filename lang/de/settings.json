@@ -226,5 +226,15 @@
         "recent": "Letzte Übermittlungen",
         "scope_construction": "Bau / Beton (CIAO)",
         "view_all": "Alle CIAO-Meldungen"
+    },
+    "time_clock": {
+        "title": "Stempeluhr-Sicherheit",
+        "lead": "Jede ausführende Person stempelt mit einem eigenen Handy. Ein anderes Gerät wird abgelehnt, bis Verwaltung oder Teamleiter ein neues Gerät zulassen. PIN und GPS sind optional.",
+        "require_pin": "4-stellige PIN bei der Clock-Point-Anmeldung verlangen",
+        "require_pin_hint": "Clock Point fragt nach einer PIN statt nach dem Symbol. Das Symbol gilt weiter beim Unit-QR.",
+        "gps_on_clock": "GPS beim Ein- und Ausstempeln anfragen",
+        "gps_on_clock_hint": "Drinnen gibt es oft kein Signal: ohne GPS geht das Stempeln trotzdem. Koordinaten werden gespeichert, wenn vorhanden.",
+        "save": "Stempeluhr-Sicherheit speichern",
+        "saved": "Stempeluhr-Sicherheit gespeichert."
     }
 }

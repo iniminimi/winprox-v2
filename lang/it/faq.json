@@ -140,7 +140,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Cos'è il modulo Time / Clock Point?",
-            "body": "Time è la timbratura opzionale: entrata/uscita via QR Clock Point (pause e turni inclusi). La ricerca nome su Clock Point è per sede: solo chi può timbrare lì (o team di sostituzione). Colleghi con team timbratura timbrano con il profilo collegato. Clock Point resta la QR di accesso (nome + icona) anche senza Time. Incluso nella prova; opzionale nel piano a pagamento.",
+            "body": "Time è la timbratura opzionale: entrata/uscita via QR Clock Point (pause e turni inclusi). La ricerca nome su Clock Point è per sede: solo chi può timbrare lì (o team di sostituzione). Colleghi con team timbratura timbrano con il profilo collegato. Clock Point resta la QR di accesso (nome + icona) anche senza Time. Incluso nella prova; opzionale nel piano a pagamento. Ogni esecutore timbra con un telefono personale. Un admin o team leader può autorizzare un nuovo dispositivo.",
             "summary": "Time: timbratura via Clock Point, ricerca per sede; colleghi via team timbratura."
         },
         "esg": {

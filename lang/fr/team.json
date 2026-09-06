@@ -157,7 +157,10 @@
         "photo_crop_title": "Recadrer la photo",
         "photo_crop_apply": "Utiliser la sélection",
         "ssin": "Numéro national (NISS)",
-        "ssin_hint": "11 chiffres. Requis pour Check In and Out (CIAO)."
+        "ssin_hint": "11 chiffres. Requis pour Check In and Out (CIAO).",
+        "device_bound": "Téléphone lié",
+        "clear_clock_device": "Autoriser un nouvel appareil",
+        "clear_clock_pin": "Réinitialiser le PIN"
     },
     "import_history": {
         "title": "Imports récents",

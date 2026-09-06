@@ -59,7 +59,8 @@
         "attention": {
             "long_shift": "Schicht länger als :hours Stunden",
             "stale_shift": "Nicht ausgestempelt (> :hours Std.)",
-            "no_break": "Keine Pause nach :hours Stunden"
+            "no_break": "Keine Pause nach :hours Stunden",
+            "rapid_hop": "Wechsel innerhalb von :hours Min."
         },
         "view_modes": "Ansicht",
         "board_absent_title": "Abwesend / Extra Aktion",
@@ -78,7 +79,7 @@
     },
     "alarms": {
         "title": "Alarme",
-        "subtitle": "Offene Schichten mit Auffälligkeiten — lange Schicht, vergessene Ausstempelung oder keine Pause.",
+        "subtitle": "Offene Schichten mit Handlungsbedarf — lange Schicht, Ausstempeln vergessen, keine Pause oder zu schneller Standortwechsel.",
         "empty": "Derzeit keine Alarme.",
         "summary": "{0} Keine Alarme|{1} :count Alarm|[2,*] :count Alarme",
         "type_filters": "Alarmtyp",
@@ -86,7 +87,8 @@
         "type_long_shift": "Lange Schicht",
         "type_stale_shift": "Nicht ausgestempelt",
         "type_no_break": "Keine Pause",
-        "shown": ":shown von :total Alarmen angezeigt"
+        "shown": ":shown von :total Alarmen angezeigt",
+        "type_rapid_hop": "Schneller Wechsel"
     },
     "force_close": {
         "title": "Schicht schließen",
@@ -241,7 +243,8 @@
             "not_clocked_in": "Sie sind nicht eingestempelt.",
             "break_already_open": "Ihre Pause läuft bereits.",
             "break_not_open": "Sie sind nicht in Pause.",
-            "icon_not_configured": "Ihr Konto ist noch nicht vollständig eingerichtet. Bitte wenden Sie sich an den Administrator."
+            "icon_not_configured": "Ihr Konto ist noch nicht vollständig eingerichtet. Bitte wenden Sie sich an den Administrator.",
+            "device_mismatch": "Dieses Gerät ist nicht mit deiner Stempeluhr verknüpft. Bitte Teamleiter oder Verwaltung, ein neues Gerät zuzulassen."
         },
         "transferred": "Anwesenheit an diesen Standort verschoben (gleiche Schicht)."
     },

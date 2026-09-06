@@ -157,7 +157,10 @@
         "photo_crop_title": "Recortar foto",
         "photo_crop_apply": "Usar selección",
         "ssin": "Número de registro nacional (NISS)",
-        "ssin_hint": "11 dígitos. Necesario para Check In and Out (CIAO)."
+        "ssin_hint": "11 dígitos. Necesario para Check In and Out (CIAO).",
+        "device_bound": "Móvil vinculado",
+        "clear_clock_device": "Permitir dispositivo nuevo",
+        "clear_clock_pin": "Restablecer PIN"
     },
     "import_history": {
         "title": "Importaciones recientes",

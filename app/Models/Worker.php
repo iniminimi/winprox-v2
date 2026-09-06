@@ -32,6 +32,12 @@ class Worker extends Model
         'phone',
         'ssin',
         'photo_path',
+        'clock_pin_hash',
+        'clock_device_id',
+    ];
+
+    protected $hidden = [
+        'clock_pin_hash',
     ];
 
     protected $casts = [
@@ -61,6 +67,16 @@ class Worker extends Model
     public function devices(): HasMany
     {
         return $this->hasMany(WorkerDevice::class);
+    }
+
+    public function clockDevice(): BelongsTo
+    {
+        return $this->belongsTo(WorkerDevice::class, 'clock_device_id');
+    }
+
+    public function hasClockPin(): bool
+    {
+        return is_string($this->clock_pin_hash) && $this->clock_pin_hash !== '';
     }
 
     public function displayName(): string

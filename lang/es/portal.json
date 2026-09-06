@@ -129,8 +129,20 @@
             "icon_required": "Elija su icono personal.",
             "icon_wrong": "Ese no es el icono correcto.",
             "note_max": "La nota es demasiado larga (máx. 500 caracteres).",
-            "no_permission": "No tiene permiso para hacer esto."
-        }
+            "no_permission": "No tiene permiso para hacer esto.",
+            "pin_required": "Introduce tu PIN de 4 dígitos.",
+            "pin_invalid": "El PIN debe tener 4 dígitos.",
+            "pin_mismatch": "Los PIN no coinciden.",
+            "pin_wrong": "Ese no es el PIN correcto."
+        },
+        "pin": "PIN (4 dígitos)",
+        "pin_confirm": "Confirmar PIN",
+        "pin_setup_title": "Elige un PIN",
+        "pin_setup_hint": "Elige un código secreto de 4 dígitos, como un PIN bancario.",
+        "pin_verify_hint": "Introduce tu PIN",
+        "pin_save": "Guardar PIN",
+        "confirm_pin": "Confirmar PIN",
+        "pin_set": "PIN guardado. Has iniciado sesión."
     },
     "team": {
         "title": "Resumen del equipo",
@@ -176,8 +188,16 @@
             "colleague_required": "Elija un colega bloqueado.",
             "colleague_not_found": "Este colega no está bloqueado o no pertenece a su equipo.",
             "cannot_release": "Este colega no se puede liberar.",
-            "cannot_delete_self": "No puede eliminarse a sí mismo."
-        }
+            "cannot_delete_self": "No puede eliminarse a sí mismo.",
+            "device_colleague_required": "Elige un compañero.",
+            "device_colleague_not_found": "Este compañero no tiene dispositivo vinculado o no pertenece a tu equipo."
+        },
+        "device_title": "Permitir un dispositivo nuevo",
+        "device_open": "Liberar dispositivo",
+        "device_hint": "Si un compañero tiene un móvil nuevo o temporal, libera el dispositivo vinculado. Después podrá fichar en el nuevo dispositivo.",
+        "choose_device_colleague": "Elige un compañero con dispositivo vinculado",
+        "device_submit": "Permitir dispositivo nuevo",
+        "device_released_ok": ":name puede volver a fichar con otro dispositivo."
     },
     "documents": {
         "download": "Descargar",

@@ -916,7 +916,7 @@
                 },
                 {
                     "label": "Ein- und Ausstempeln",
-                    "text": "Stempeln Sie hier ein, aus und erfassen Sie Pausen. Sie haben eine offene Schicht gleichzeitig. An einem anderen Clock Point sehen Sie, wo Sie eingestempelt sind, und können die Anwesenheit hierher verschieben. Danach die Unit-QR vor Ort für Aufgaben. Die Schicht bleibt durchgehend; in der Stundenübersicht erscheint der Wechsel als Hinweis."
+                    "text": "Stemple hier ein, aus und erfasse Pausen mit deinem eigenen Handy. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Danach Unit-QR vor Ort für Aufgaben."
                 },
                 {
                     "label": "Abmelden",

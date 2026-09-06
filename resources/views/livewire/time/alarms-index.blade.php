@@ -70,6 +70,7 @@
                         \App\Enums\TimePresenceAttentionType::StaleShift => (int) config('time.stale_shift_hours', 16),
                         \App\Enums\TimePresenceAttentionType::LongShift => (int) config('time.long_shift_hours', 10),
                         \App\Enums\TimePresenceAttentionType::NoBreak => (int) config('time.break_reminder_hours', 6),
+                        \App\Enums\TimePresenceAttentionType::RapidHop => (int) config('time.rapid_hop_minutes', 5),
                     };
                     $typeTotal = $activeAttentionType !== null
                         ? $filteredCount

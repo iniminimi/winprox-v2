@@ -1,29 +1,20 @@
 <?php
 
-namespace App\Actions\Team;
+namespace App\Actions\Time;
 
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 
-/**
- * Beheerder-"unlock": wist het persoonlijke icoon van de worker, reset de
- * lockout-teller/-tijd en verwijdert de gekoppelde veldtoestellen. Daarna moet
- * de worker zich op de werkvloer opnieuw identificeren en een icoon kiezen.
- */
-class ResetWorkerIconAction
+class ClearWorkerClockPinAction
 {
     public function __construct(private AuditRecorder $audit) {}
 
     public function handle(Worker $worker, ?int $actorUserId = null): Worker
     {
-        $worker->forceFill(['clock_device_id' => null])->save();
-        $worker->devices()->delete();
-
         $worker->forceFill([
-            'field_icon_slug' => null,
+            'clock_pin_hash' => null,
             'field_icon_failed_attempts' => 0,
             'field_icon_locked_at' => null,
-            'clock_pin_hash' => null,
         ])->save();
 
         $fresh = $worker->fresh();
@@ -31,10 +22,10 @@ class ResetWorkerIconAction
         $this->audit->record(
             userId: $actorUserId,
             tenantId: (int) $fresh->tenant_id,
-            action: 'worker.icon_reset',
+            action: 'worker.clock_pin_cleared',
             modelType: Worker::class,
             modelId: (int) $fresh->id,
-            payload: ['id' => $fresh->id],
+            payload: ['worker_id' => (int) $fresh->id],
         );
 
         return $fresh;

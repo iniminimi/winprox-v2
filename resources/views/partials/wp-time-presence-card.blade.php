@@ -19,6 +19,7 @@
             TimePresenceAttentionType::StaleShift => (int) config('time.stale_shift_hours', 16),
             TimePresenceAttentionType::LongShift => (int) config('time.long_shift_hours', 10),
             TimePresenceAttentionType::NoBreak => (int) config('time.break_reminder_hours', 6),
+            TimePresenceAttentionType::RapidHop => (int) config('time.rapid_hop_minutes', 5),
         };
         $attentionLabel = __('time.presence.attention.'.$attentionItem->type->value, ['hours' => $attentionHours]);
     }

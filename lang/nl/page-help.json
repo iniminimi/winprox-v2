@@ -916,7 +916,7 @@
                 },
                 {
                     "label": "In- en uitklokken",
-                    "text": "Klok hier in, uit en registreer pauzes. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier. Gebruik daarna de unit-QR op locatie om taken te starten of af te ronden. De dienst blijft één stuk; in de urenstaat zie je de hop als toelichting."
+                    "text": "Klok hier in, uit en registreer pauzes op je eigen gsm. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Gebruik daarna de unit-QR op locatie om taken te starten of af te ronden."
                 },
                 {
                     "label": "Afmelden",

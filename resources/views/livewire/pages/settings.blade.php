@@ -165,6 +165,28 @@
     @endif
 
     @if ($canManageOrganisation && $hasTimeModule)
+        <x-wp-settings-section :title="__('settings.time_clock.title')">
+            <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.lead') }}</p>
+            <form wire:submit="saveTimeClockSecurity" class="wp-stack">
+                <label class="wp-check">
+                    <input type="checkbox" wire:model="timeRequireWorkerPin">
+                    <span>{{ __('settings.time_clock.require_pin') }}</span>
+                </label>
+                <p class="wp-hint">{{ __('settings.time_clock.require_pin_hint') }}</p>
+                @error('timeRequireWorkerPin') <p class="wp-error">{{ $message }}</p> @enderror
+
+                <label class="wp-check">
+                    <input type="checkbox" wire:model="timeGpsOnClock">
+                    <span>{{ __('settings.time_clock.gps_on_clock') }}</span>
+                </label>
+                <p class="wp-hint">{{ __('settings.time_clock.gps_on_clock_hint') }}</p>
+
+                <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.time_clock.save') }}</button>
+            </form>
+        </x-wp-settings-section>
+    @endif
+
+    @if ($canManageOrganisation && $hasTimeModule)
         <x-wp-settings-section :title="__('settings.presence.title')">
             <p class="wp-muted wp-text-sm">{{ __('settings.presence.lead') }}</p>
             <form wire:submit="savePresenceCompliance" class="wp-stack">

@@ -11,8 +11,10 @@ use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
 use App\Actions\Team\UpdateTenantWorkMenuAction;
 use App\Actions\Time\UpdatePresenceComplianceSettingsAction;
+use App\Actions\Time\UpdateTenantTimeClockSecurityAction;
 use App\Enums\PresenceComplianceScope;
 use App\Http\Requests\Time\UpdatePresenceComplianceSettingsRequest;
+use App\Http\Requests\Time\UpdateTenantTimeClockSecurityRequest;
 use App\Models\PresenceSubmission;
 use App\Actions\Team\RemoveOrganisationPortalBackgroundAction;
 use App\Actions\Team\SetOrganisationPortalStockBackgroundAction;
@@ -112,6 +114,10 @@ class Settings extends Component
 
     public bool $presenceComplianceEnabled = false;
 
+    public bool $timeRequireWorkerPin = false;
+
+    public bool $timeGpsOnClock = false;
+
     public string $presenceComplianceScope = 'ciao_cleaning';
 
     public string $enterpriseNumber = '';
@@ -205,6 +211,40 @@ class Settings extends Component
         $this->fillOrganisationFromTenant($updated);
         $this->dispatch('saved');
         session()->flash('success', __('settings.presence.saved'));
+    }
+
+    public function saveTimeClockSecurity(UpdateTenantTimeClockSecurityAction $update): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $validated = Validator::make(
+            [
+                'time_require_worker_pin' => $this->timeRequireWorkerPin,
+                'time_gps_on_clock' => $this->timeGpsOnClock,
+            ],
+            UpdateTenantTimeClockSecurityRequest::ruleSet(),
+        )->validate();
+
+        try {
+            $updated = $update->handle($tenant, $validated, (int) auth()->id());
+        } catch (\InvalidArgumentException $e) {
+            if ($e->getMessage() === 'time_module_disabled') {
+                $this->addError('timeRequireWorkerPin', __('settings.errors.time_module_required'));
+
+                return;
+            }
+
+            throw $e;
+        }
+
+        $this->fillOrganisationFromTenant($updated);
+        $this->dispatch('saved');
+        session()->flash('success', __('settings.time_clock.saved'));
     }
 
     private function persistWorkMenuSettings(): void
@@ -792,6 +832,8 @@ class Settings extends Component
         $this->customThemeBg = $tenant->custom_theme_bg ?? '#e7e8ec';
         $this->customThemeBtn = $tenant->custom_theme_btn ?? '#059669';
         $this->presenceComplianceEnabled = (bool) $tenant->presence_compliance_enabled;
+        $this->timeRequireWorkerPin = (bool) $tenant->time_require_worker_pin;
+        $this->timeGpsOnClock = (bool) $tenant->time_gps_on_clock;
         $this->presenceComplianceScope = (string) ($tenant->presence_compliance_scope
             ?? PresenceComplianceScope::CiaoCleaning->value);
         $this->enterpriseNumber = (string) ($tenant->enterprise_number ?? '');

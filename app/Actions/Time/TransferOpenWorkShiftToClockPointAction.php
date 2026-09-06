@@ -19,6 +19,7 @@ class TransferOpenWorkShiftToClockPointAction
 {
     public function __construct(
         private EndWorkBreakAction $endWorkBreak,
+        private AssertWorkerClockDeviceAction $assertClockDevice,
     ) {}
 
     public function handle(
@@ -26,6 +27,8 @@ class TransferOpenWorkShiftToClockPointAction
         ClockPoint $clockPoint,
         ?WorkerDevice $device = null,
         ?\Carbon\Carbon $clientTimestamp = null,
+        bool $enforceClockDevice = false,
+        ?string $requestDeviceToken = null,
     ): WorkShift {
         if ((int) $worker->tenant_id !== (int) $clockPoint->tenant_id) {
             throw new InvalidArgumentException('worker_clock_point_tenant_mismatch');
@@ -45,6 +48,10 @@ class TransferOpenWorkShiftToClockPointAction
         }
 
         TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
+
+        if ($enforceClockDevice) {
+            $this->assertClockDevice->handle($worker, $device, $requestDeviceToken);
+        }
 
         return DB::transaction(function () use ($worker, $clockPoint) {
             Worker::query()->whereKey($worker->id)->lockForUpdate()->first();

@@ -140,7 +140,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Qu'est-ce que le module Time / Clock Point ?",
-            "body": "Time est la pointeuse optionnelle : entrée/sortie via la QR Clock Point (pauses et shifts inclus). La recherche de nom sur Clock Point est par site : seuls les exécutants autorisés (ou équipes volantes) voient leur nom. Collègues avec équipe pointeuse pointent via le profil lié. Clock Point reste la QR d'identification (nom + icône) aussi sans Time. Inclus à l'essai ; optionnel sur l'abonnement payant.",
+            "body": "Time est la pointeuse optionnelle : entrée/sortie via la QR Clock Point (pauses et shifts inclus). La recherche de nom sur Clock Point est par site : seuls les exécutants autorisés (ou équipes volantes) voient leur nom. Collègues avec équipe pointeuse pointent via le profil lié. Clock Point reste la QR d'identification (nom + icône) aussi sans Time. Inclus à l'essai ; optionnel sur l'abonnement payant. Chaque exécutant pointe avec un téléphone personnel. Un admin ou chef d'équipe peut autoriser un nouvel appareil.",
             "summary": "Time : pointage via Clock Point, recherche par site ; collègues via équipe pointeuse."
         },
         "esg": {

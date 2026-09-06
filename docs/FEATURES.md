@@ -658,7 +658,10 @@ productsector op `Tenant`.
 ### 5g.1 Bestaande Time-basis (behouden)
 - Module `has_time_module`; Clock Point QR; `WorkShift` / `WorkBreak`; aanwezigheid, urenstaat,
   export; events `time.shift.started` / `time.shift.ended`.
-- Worker zonder login (naam + icoon); één open shift; hops tussen Clock Points.
+- Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
+  (ander toestel weigeren + audit tot beheer/teamleader vrijgeeft); één open shift;
+  hops tussen Clock Points (alarm bij hop < 5 min). Optioneel GPS bij de prik
+  (geen weigering zonder signaal).
 
 ### 5g.2 Golf 1 — CIAO schoonmaak (`CiaoCleaning`)
 - Voor organisaties die schoonmaak/onderhoud **onroerend voor derden** doen onder Aangifte van

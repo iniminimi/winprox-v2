@@ -916,7 +916,7 @@
                 },
                 {
                     "label": "Clock in and out",
-                    "text": "Clock in, out and register breaks here. You have one open shift at a time. At another Clock Point you see which site you are clocked in at and can move presence here. Then use the unit QR on site to start or finish tasks. The shift stays one continuous period; the timesheet shows the hop as a note."
+                    "text": "Clock in, out and record breaks on your own phone. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). Then use the unit QR on site to start or complete tasks."
                 },
                 {
                     "label": "Sign out",

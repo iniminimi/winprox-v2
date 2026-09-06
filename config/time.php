@@ -16,6 +16,6 @@ return [
     /** Standaard QR-rotatie-interval (maanden) wanneer tenant geen eigen waarde heeft. 0 = uit. */
     'qr_rotation_months_default' => (int) env('TIME_QR_ROTATION_MONTHS_DEFAULT', 6),
 
-    /** Grace-periode (dagen) waarin oude QR na vernieuwen nog werkt. */
-    'qr_grace_days' => (int) env('TIME_QR_GRACE_DAYS', 7),
+    /** Hop naar een ander Clock Point binnen dit aantal minuten → aandacht. */
+    'rapid_hop_minutes' => (int) env('TIME_RAPID_HOP_MINUTES', 5),
 ];

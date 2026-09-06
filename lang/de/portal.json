@@ -129,8 +129,20 @@
             "icon_required": "Wählen Sie Ihr persönliches Symbol.",
             "icon_wrong": "Das ist nicht das richtige Symbol.",
             "note_max": "Die Notiz ist zu lang (max. 500 Zeichen).",
-            "no_permission": "Sie haben keine Berechtigung, dies zu tun."
-        }
+            "no_permission": "Sie haben keine Berechtigung, dies zu tun.",
+            "pin_required": "Gib deine 4-stellige PIN ein.",
+            "pin_invalid": "Die PIN muss aus 4 Ziffern bestehen.",
+            "pin_mismatch": "Die PINs stimmen nicht überein.",
+            "pin_wrong": "Das ist nicht die richtige PIN."
+        },
+        "pin": "PIN (4 Ziffern)",
+        "pin_confirm": "PIN bestätigen",
+        "pin_setup_title": "PIN wählen",
+        "pin_setup_hint": "Wähle einen geheimen 4-stelligen Code, wie eine Bank-PIN.",
+        "pin_verify_hint": "Gib deine PIN ein",
+        "pin_save": "PIN speichern",
+        "confirm_pin": "PIN bestätigen",
+        "pin_set": "PIN gespeichert. Du bist angemeldet."
     },
     "team": {
         "title": "Teamübersicht",
@@ -176,8 +188,16 @@
             "colleague_required": "Wählen Sie einen gesperrten Kollegen.",
             "colleague_not_found": "Dieser Kollege ist nicht gesperrt oder gehört nicht zu Ihrem Team.",
             "cannot_release": "Dieser Kollege kann nicht freigegeben werden.",
-            "cannot_delete_self": "Sie können sich nicht selbst löschen."
-        }
+            "cannot_delete_self": "Sie können sich nicht selbst löschen.",
+            "device_colleague_required": "Wähle einen Kollegen.",
+            "device_colleague_not_found": "Dieser Kollege hat kein verknüpftes Gerät oder gehört nicht zu deinem Team."
+        },
+        "device_title": "Neues Gerät zulassen",
+        "device_open": "Gerät freigeben",
+        "device_hint": "Hat ein Kollege ein neues oder vorübergehendes Handy, gib das verknüpfte Gerät frei. Danach kann er mit dem neuen Gerät einstempeln.",
+        "choose_device_colleague": "Kollegen mit verknüpftem Gerät wählen",
+        "device_submit": "Neues Gerät zulassen",
+        "device_released_ok": ":name darf wieder mit einem anderen Gerät einstempeln."
     },
     "documents": {
         "download": "Herunterladen",

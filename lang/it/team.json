@@ -157,7 +157,10 @@
         "photo_crop_title": "Ritaglia foto",
         "photo_crop_apply": "Usa selezione",
         "ssin": "Numero di registro nazionale (NISS)",
-        "ssin_hint": "11 cifre. Necessario per Check In and Out (CIAO)."
+        "ssin_hint": "11 cifre. Necessario per Check In and Out (CIAO).",
+        "device_bound": "Telefono collegato",
+        "clear_clock_device": "Consenti nuovo dispositivo",
+        "clear_clock_pin": "Reimposta PIN"
     },
     "import_history": {
         "title": "Importazioni recenti",

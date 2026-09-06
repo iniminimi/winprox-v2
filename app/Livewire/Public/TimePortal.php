@@ -6,10 +6,12 @@ use App\Actions\Portal\ClearWorkerTaskBaselineAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
+use App\Actions\Time\ConfirmWorkerClockPinAction;
 use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
+use App\Actions\Time\SetWorkerClockPinAction;
 use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
 use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
@@ -61,6 +63,10 @@ class TimePortal extends Component
     public bool $showRegisterForm = false;
     public string $selected_icon_slug = '';
     public string $flashMessage = '';
+    public string $pin_code = '';
+    public string $pin_code_confirm = '';
+    public ?string $clockGpsLatitude = null;
+    public ?string $clockGpsLongitude = null;
 
     /** Baseline alleen bij openen/login synchen — niet bij elke wire:poll. */
     public bool $taskBaselineSyncedThisVisit = false;
@@ -96,14 +102,6 @@ class TimePortal extends Component
         Tenancy::actAs($this->tenantId);
 
         $this->inactiveReasonKey = TimePortalData::clockPointInactiveReasonKey($clockPoint);
-
-        $deviceWorker = WorkerDeviceSession::workerFromDeviceCookie();
-        if ($deviceWorker && (int) $deviceWorker->tenant_id === $this->tenantId) {
-            $team = $deviceWorker->team;
-            if ($team !== null) {
-                WorkerVerification::markVerified($team, $deviceWorker);
-            }
-        }
 
         $this->syncLocaleFromRequest();
     }
@@ -174,7 +172,9 @@ class TimePortal extends Component
         WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
         $this->showRegisterForm = false;
         $this->sign_in_icon_slug = '';
-        $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug']);
+        $this->pin_code = '';
+        $this->pin_code_confirm = '';
+        $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm']);
     }
 
     public function showRegister(): void
@@ -228,7 +228,16 @@ class TimePortal extends Component
 
         $worker = $result['worker'];
         WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
-        WorkerVerification::markVerified($team, $worker);
+
+        if ($this->tenantRequiresPin()) {
+            $this->reset(['selected_icon_slug', 'showRegisterForm', 'sign_in_icon_slug']);
+            $this->flashMessage = '';
+            $this->taskBaselineSyncedThisVisit = false;
+
+            return;
+        }
+
+        $this->markPortalVerified($worker);
 
         $this->reset(['first_name', 'last_name', 'selected_icon_slug', 'showRegisterForm', 'sign_in_icon_slug']);
         $this->flashMessage = __('portal.team.onboarding_done');
@@ -250,8 +259,8 @@ class TimePortal extends Component
         }
 
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm']);
-        $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm']);
+        $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm']);
     }
 
     public function signInWithIcon(): void
@@ -291,7 +300,97 @@ class TimePortal extends Component
         }
 
         WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
+        WorkerDeviceSession::ensureUniqueDeviceForWorker($worker);
         $this->sign_in_icon_slug = '';
+        $this->flashMessage = __('portal.worker.signed_in');
+        $this->taskBaselineSyncedThisVisit = false;
+        app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
+        $this->taskBaselineSyncedThisVisit = true;
+    }
+
+    public function completePinSetup(SetWorkerClockPinAction $setPin): void
+    {
+        if ($this->activeClockPoint() === null || ! $this->tenantRequiresPin()) {
+            return;
+        }
+
+        $deviceWorker = $this->rememberedWorkerForTenant();
+        if ($deviceWorker === null) {
+            return;
+        }
+
+        $this->validate([
+            'pin_code' => ['required', 'regex:/^\d{4}$/'],
+            'pin_code_confirm' => ['required', 'same:pin_code'],
+        ], [
+            'pin_code.required' => __('portal.worker.errors.pin_required'),
+            'pin_code.regex' => __('portal.worker.errors.pin_invalid'),
+            'pin_code_confirm.same' => __('portal.worker.errors.pin_mismatch'),
+        ]);
+
+        try {
+            $setPin->handle($deviceWorker, $this->pin_code);
+        } catch (InvalidArgumentException) {
+            $this->addError('pin_code', __('portal.worker.errors.pin_invalid'));
+
+            return;
+        }
+
+        $this->markPortalVerified($deviceWorker->fresh());
+        $this->pin_code = '';
+        $this->pin_code_confirm = '';
+        $this->flashMessage = __('portal.worker.pin_set');
+        $this->taskBaselineSyncedThisVisit = false;
+        app(SyncWorkerOpenTaskBaselineAction::class)->handle($deviceWorker);
+        $this->taskBaselineSyncedThisVisit = true;
+    }
+
+    public function signInWithPin(ConfirmWorkerClockPinAction $confirmPin): void
+    {
+        if ($this->activeClockPoint() === null || ! $this->tenantRequiresPin()) {
+            return;
+        }
+
+        $deviceWorker = $this->rememberedWorkerForTenant();
+        if ($deviceWorker === null) {
+            return;
+        }
+
+        $team = $deviceWorker->team;
+        if ($team === null) {
+            return;
+        }
+
+        if (WorkerIconGuard::isBlocked($team)) {
+            $this->pin_code = '';
+            $this->addError('pin_code', __('portal.worker.errors.blocked'));
+
+            return;
+        }
+
+        $this->validate(
+            ['pin_code' => ['required', 'regex:/^\d{4}$/']],
+            [
+                'pin_code.required' => __('portal.worker.errors.pin_required'),
+                'pin_code.regex' => __('portal.worker.errors.pin_invalid'),
+            ],
+        );
+
+        $worker = $confirmPin->handle($deviceWorker, $this->pin_code);
+        if ($worker === null) {
+            WorkerIconGuard::recordFailedAttempt($team);
+            $this->pin_code = '';
+            if (WorkerIconGuard::isBlocked($team)) {
+                $this->addError('pin_code', __('portal.worker.errors.blocked'));
+            } else {
+                $this->addError('pin_code', __('portal.worker.errors.pin_wrong'));
+            }
+
+            return;
+        }
+
+        $this->markPortalVerified($worker);
+        $this->pin_code = '';
         $this->flashMessage = __('portal.worker.signed_in');
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
@@ -309,9 +408,13 @@ class TimePortal extends Component
         $openShift = $findShift->handle($worker);
         if ($openShift !== null && $openShift->currentClockPointId() !== (int) $clockPoint->id) {
             try {
-                $transfer->handle($worker, $clockPoint, $this->deviceForWorker($worker));
+                [$device, $token] = $this->clockDeviceContext($worker);
+                $transfer->handle($worker, $clockPoint, $device, null, true, $token);
                 $this->flashMessage = __('time.portal.transferred');
             } catch (InvalidArgumentException $e) {
+                if ($this->flashClockDeviceError($e)) {
+                    return;
+                }
                 if ($e->getMessage() === 'shift_already_open') {
                     $this->flashMessage = __('time.portal.errors.already_clocked_in');
                 }
@@ -321,9 +424,24 @@ class TimePortal extends Component
         }
 
         try {
-            $clockIn->handle($worker, $clockPoint, $this->deviceForWorker($worker));
+            [$device, $token] = $this->clockDeviceContext($worker);
+            [$lat, $lng] = $this->consumeClockGps();
+            $clockIn->handle(
+                $worker,
+                $clockPoint,
+                $device,
+                null,
+                \App\Enums\ClockSource::ClockPointQr,
+                true,
+                $token,
+                $lat,
+                $lng,
+            );
             $this->flashMessage = __('time.portal.clocked_in');
         } catch (InvalidArgumentException $e) {
+            if ($this->flashClockDeviceError($e)) {
+                return;
+            }
             if ($e->getMessage() === 'shift_already_open') {
                 $this->flashMessage = __('time.portal.errors.already_clocked_in');
             }
@@ -352,9 +470,13 @@ class TimePortal extends Component
         }
 
         try {
-            $transfer->handle($worker, $clockPoint, $this->deviceForWorker($worker));
+            [$device, $token] = $this->clockDeviceContext($worker);
+            $transfer->handle($worker, $clockPoint, $device, null, true, $token);
             $this->flashMessage = __('time.portal.transferred');
         } catch (InvalidArgumentException $e) {
+            if ($this->flashClockDeviceError($e)) {
+                return;
+            }
             if ($e->getMessage() === 'shift_already_open') {
                 $this->flashMessage = __('time.portal.errors.already_clocked_in');
             }
@@ -370,9 +492,13 @@ class TimePortal extends Component
         }
 
         try {
-            $clockOut->handle($worker, $clockPoint);
+            [$device, $token] = $this->clockDeviceContext($worker);
+            $clockOut->handle($worker, $clockPoint, null, \App\Enums\ClockSource::ClockPointQr, true, $device, $token);
             $this->flashMessage = __('time.portal.clocked_out');
         } catch (InvalidArgumentException $e) {
+            if ($this->flashClockDeviceError($e)) {
+                return;
+            }
             if ($e->getMessage() === 'shift_not_open') {
                 $this->flashMessage = __('time.portal.errors.not_clocked_in');
             }
@@ -393,9 +519,13 @@ class TimePortal extends Component
         }
 
         try {
-            $startBreak->handle($worker, $shift);
+            [$device, $token] = $this->clockDeviceContext($worker);
+            $startBreak->handle($worker, $shift, true, $device, $token);
             $this->flashMessage = __('time.portal.break_started');
         } catch (InvalidArgumentException $e) {
+            if ($this->flashClockDeviceError($e)) {
+                return;
+            }
             if ($e->getMessage() === 'break_already_open') {
                 $this->flashMessage = __('time.portal.errors.break_already_open');
             }
@@ -416,9 +546,13 @@ class TimePortal extends Component
         }
 
         try {
-            $endBreak->handle($worker, $shift);
+            [$device, $token] = $this->clockDeviceContext($worker);
+            $endBreak->handle($worker, $shift, true, $device, $token);
             $this->flashMessage = __('time.portal.break_ended');
         } catch (InvalidArgumentException $e) {
+            if ($this->flashClockDeviceError($e)) {
+                return;
+            }
             if ($e->getMessage() === 'break_not_open') {
                 $this->flashMessage = __('time.portal.errors.break_not_open');
             }
@@ -458,19 +592,26 @@ class TimePortal extends Component
             && $allowOpenRegistration;
 
         $deviceWorker = null;
-        if (! $canAct && ($hasSignInWorkers || $this->showRegisterForm)) {
+        if (! $canAct && ($hasSignInWorkers || $this->showRegisterForm || $this->tenantRequiresPin())) {
             $deviceWorker = $this->rememberedWorkerForTenant();
         }
 
         $iconBlocked = false;
-        if (! $canAct && $hasSignInWorkers && $deviceWorker?->team !== null) {
+        if (! $canAct && $deviceWorker?->team !== null) {
             $iconBlocked = WorkerIconGuard::isBlocked($deviceWorker->team);
         }
 
+        $requirePin = $this->tenantRequiresPin();
         $showRegisterForm = $this->showRegisterForm && ! $registerOnly;
         $showIdentify = $this->activeClockPoint() !== null && ! $canAct && $hasAnyWorkers
             && $deviceWorker === null && ! $showRegisterForm && ! $registerOnly && ! $iconBlocked;
-        $showVerify = $this->activeClockPoint() !== null && ! $canAct && $hasSignInWorkers
+        $showPinSetup = $requirePin && $this->activeClockPoint() !== null && ! $canAct
+            && $deviceWorker !== null && ! $deviceWorker->hasClockPin()
+            && ! $showRegisterForm && ! $registerOnly && ! $iconBlocked;
+        $showPinVerify = $requirePin && $this->activeClockPoint() !== null && ! $canAct
+            && $deviceWorker !== null && $deviceWorker->hasClockPin()
+            && ! $showRegisterForm && ! $registerOnly && ! $iconBlocked;
+        $showVerify = ! $requirePin && $this->activeClockPoint() !== null && ! $canAct && $hasSignInWorkers
             && $deviceWorker !== null && ! $showRegisterForm && ! $registerOnly && ! $iconBlocked;
         $showNoWorkers = $this->activeClockPoint() !== null && ! $canAct && ! $hasAnyWorkers
             && ! $registerOnly && ! $showRegisterForm && ! $iconBlocked;
@@ -499,6 +640,8 @@ class TimePortal extends Component
             'showRegisterForm' => $showRegisterForm,
             'showIdentify' => $showIdentify,
             'showVerify' => $showVerify,
+            'showPinSetup' => $showPinSetup,
+            'showPinVerify' => $showPinVerify,
             'showNoWorkers' => $showNoWorkers,
             'iconBlocked' => $iconBlocked,
             'deviceWorker' => $deviceWorker,
@@ -508,11 +651,77 @@ class TimePortal extends Component
             'openShift' => $openShift,
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
+            'gpsOnClock' => $this->tenantRequestsClockGps(),
             'teamWorkers' => $teamWorkers,
             'manageWorkersMessage' => $this->manageWorkersMessage,
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);
+    }
+
+    private function tenantRequiresPin(): bool
+    {
+        $tenant = Tenant::query()->find($this->tenantId);
+
+        return $tenant !== null && $tenant->requiresWorkerPin();
+    }
+
+    private function tenantRequestsClockGps(): bool
+    {
+        $tenant = Tenant::query()->find($this->tenantId);
+
+        return $tenant !== null && $tenant->requestsClockGps();
+    }
+
+    private function markPortalVerified(Worker $worker): void
+    {
+        WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
+        WorkerDeviceSession::ensureUniqueDeviceForWorker($worker);
+        $team = $worker->team;
+        if ($team !== null) {
+            WorkerVerification::markVerified($team, $worker);
+        }
+    }
+
+    /**
+     * @return array{0: ?\App\Models\WorkerDevice, 1: string}
+     */
+    private function clockDeviceContext(Worker $worker): array
+    {
+        $device = $this->deviceForWorker($worker);
+        if ($device === null) {
+            $device = WorkerDeviceSession::ensureUniqueDeviceForWorker($worker);
+        }
+
+        return [$device, WorkerDeviceSession::deviceTokenFromRequest()];
+    }
+
+    /**
+     * @return array{0: ?float, 1: ?float}
+     */
+    private function consumeClockGps(): array
+    {
+        $lat = $this->clockGpsLatitude !== null && $this->clockGpsLatitude !== ''
+            ? (float) $this->clockGpsLatitude
+            : null;
+        $lng = $this->clockGpsLongitude !== null && $this->clockGpsLongitude !== ''
+            ? (float) $this->clockGpsLongitude
+            : null;
+        $this->clockGpsLatitude = null;
+        $this->clockGpsLongitude = null;
+
+        return [$lat, $lng];
+    }
+
+    private function flashClockDeviceError(InvalidArgumentException $e): bool
+    {
+        if (! in_array($e->getMessage(), ['clock_device_mismatch', 'clock_device_missing'], true)) {
+            return false;
+        }
+
+        $this->flashMessage = __('time.portal.errors.device_mismatch');
+
+        return true;
     }
 
     private function resolveOnboardingTeam(string $firstName, string $lastName): ?InternalTeam

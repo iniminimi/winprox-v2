@@ -59,7 +59,8 @@
         "attention": {
             "long_shift": "Turno de más de :hours horas",
             "stale_shift": "Sin fichar salida (> :hours h)",
-            "no_break": "Sin pausa tras :hours horas"
+            "no_break": "Sin pausa tras :hours horas",
+            "rapid_hop": "Traslado en menos de :hours min"
         },
         "view_modes": "Vista",
         "board_absent_title": "Ausente / Acción extra",
@@ -78,7 +79,7 @@
     },
     "alarms": {
         "title": "Alarmas",
-        "subtitle": "Turnos abiertos que requieren atención — turnos largos, salida olvidada o sin pausa.",
+        "subtitle": "Turnos abiertos que requieren atención: turnos largos, salida olvidada, sin pausa o traslado demasiado rápido.",
         "empty": "No hay alarmas en este momento.",
         "summary": "{0} Sin alarmas|{1} :count alarma|[2,*] :count alarmas",
         "type_filters": "Tipo de alarma",
@@ -86,7 +87,8 @@
         "type_long_shift": "Turno largo",
         "type_stale_shift": "Sin fichar salida",
         "type_no_break": "Sin pausa",
-        "shown": ":shown de :total alarmas mostradas"
+        "shown": ":shown de :total alarmas mostradas",
+        "type_rapid_hop": "Salto rápido"
     },
     "force_close": {
         "title": "Cerrar turno",
@@ -241,7 +243,8 @@
             "not_clocked_in": "No ha fichado la entrada.",
             "break_already_open": "Su pausa ya está en curso.",
             "break_not_open": "No está en pausa.",
-            "icon_not_configured": "Su cuenta aún no está completamente configurada. Contacte al administrador."
+            "icon_not_configured": "Su cuenta aún no está completamente configurada. Contacte al administrador.",
+            "device_mismatch": "Este dispositivo no está vinculado a tu fichaje. Pide a tu responsable o administrador que autorice un dispositivo nuevo."
         },
         "transferred": "Presencia trasladada a esta sede (mismo turno)."
     },

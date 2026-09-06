@@ -916,7 +916,7 @@
                 },
                 {
                     "label": "Fichar entrada y salida",
-                    "text": "Ficha entrada, salida y pausas aquí. Solo un turno abierto a la vez. En otro Clock Point ves en qué sede estás fichado y puedes trasladar la presencia aquí. Luego usa el QR de unit in situ para tareas. El turno sigue siendo uno; en el parte aparece el traslado como nota."
+                    "text": "Ficha aquí entrada, salida y pausas con tu propio móvil. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Luego usa el QR de unidad in situ para las tareas."
                 },
                 {
                     "label": "Cerrar sesión",

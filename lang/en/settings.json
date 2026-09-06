@@ -226,5 +226,15 @@
         "recent": "Recent submissions",
         "scope_construction": "Construction / concrete (CIAO)",
         "view_all": "All CIAO submissions"
+    },
+    "time_clock": {
+        "title": "Punch clock security",
+        "lead": "Each worker clocks in with one personal phone. Another device is refused until an admin or team leader allows a new device. PIN and GPS are optional extras.",
+        "require_pin": "Require a 4-digit PIN when signing in at Clock Point",
+        "require_pin_hint": "Clock Point asks for a PIN instead of the icon. The icon still applies on the unit QR.",
+        "gps_on_clock": "Ask for GPS when clocking in or out",
+        "gps_on_clock_hint": "Indoors there is often no signal: clocking still proceeds without GPS. Coordinates are stored when available.",
+        "save": "Save punch clock security",
+        "saved": "Punch clock security saved."
     }
 }

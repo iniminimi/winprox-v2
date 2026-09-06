@@ -157,7 +157,10 @@
         "photo_crop_title": "Foto bijsnijden",
         "photo_crop_apply": "Gebruik selectie",
         "ssin": "Rijksregisternummer (NISS)",
-        "ssin_hint": "11 cijfers. Nodig voor RSZ Check In and Out (CIAO)."
+        "ssin_hint": "11 cijfers. Nodig voor RSZ Check In and Out (CIAO).",
+        "device_bound": "Gsm gekoppeld",
+        "clear_clock_device": "Nieuw toestel toestaan",
+        "clear_clock_pin": "Pincode resetten"
     },
     "import_history": {
         "title": "Recente imports",

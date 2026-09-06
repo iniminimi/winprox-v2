@@ -129,8 +129,20 @@
             "icon_required": "Kies je persoonlijke icoon.",
             "icon_wrong": "Dat is niet het juiste icoon.",
             "note_max": "De notitie is te lang (max. 500 tekens).",
-            "no_permission": "Je hebt geen rechten om dit te doen."
-        }
+            "no_permission": "Je hebt geen rechten om dit te doen.",
+            "pin_required": "Vul je pincode van 4 cijfers in.",
+            "pin_invalid": "De pincode moet uit 4 cijfers bestaan.",
+            "pin_mismatch": "De pincodes komen niet overeen.",
+            "pin_wrong": "Dat is niet de juiste pincode."
+        },
+        "pin": "Pincode (4 cijfers)",
+        "pin_confirm": "Pincode bevestigen",
+        "pin_setup_title": "Kies een pincode",
+        "pin_setup_hint": "Kies een geheime code van 4 cijfers, zoals een bankcode.",
+        "pin_verify_hint": "Voer je pincode in",
+        "pin_save": "Pincode opslaan",
+        "confirm_pin": "Pincode bevestigen",
+        "pin_set": "Pincode opgeslagen. Je bent aangemeld."
     },
     "team": {
         "title": "Teamoverzicht",
@@ -176,8 +188,16 @@
             "colleague_required": "Kies een geblokkeerde collega.",
             "colleague_not_found": "Deze collega is niet geblokkeerd of hoort niet bij je team.",
             "cannot_release": "Deze collega kan niet worden vrijgegeven.",
-            "cannot_delete_self": "Je kunt jezelf niet verwijderen."
-        }
+            "cannot_delete_self": "Je kunt jezelf niet verwijderen.",
+            "device_colleague_required": "Kies een collega.",
+            "device_colleague_not_found": "Deze collega heeft geen gekoppeld toestel of hoort niet bij je team."
+        },
+        "device_title": "Nieuw toestel toestaan",
+        "device_open": "Toestel vrijgeven",
+        "device_hint": "Als een collega een nieuwe of tijdelijke gsm heeft, geef je het gekoppelde toestel vrij. Daarna kan die persoon opnieuw inklokken op het nieuwe toestel.",
+        "choose_device_colleague": "Kies een collega met gekoppeld toestel",
+        "device_submit": "Nieuw toestel toestaan",
+        "device_released_ok": ":name mag opnieuw inklokken met een ander toestel."
     },
     "documents": {
         "download": "Downloaden",

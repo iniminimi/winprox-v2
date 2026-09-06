@@ -157,7 +157,10 @@
         "photo_crop_title": "Crop photo",
         "photo_crop_apply": "Use selection",
         "ssin": "National register number (NISS)",
-        "ssin_hint": "11 digits. Required for RSZ Check In and Out (CIAO)."
+        "ssin_hint": "11 digits. Required for RSZ Check In and Out (CIAO).",
+        "device_bound": "Phone linked",
+        "clear_clock_device": "Allow new device",
+        "clear_clock_pin": "Reset PIN"
     },
     "import_history": {
         "title": "Recent imports",

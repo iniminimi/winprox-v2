@@ -140,7 +140,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Was ist das Time-Modul / Clock Point?",
-            "body": "Time ist die optionale Stempeluhr: Ein-/Ausstempeln über die Clock-Point-QR (Pausen und Schichten inklusive). Namensuche am Clock Point pro Standort: nur berechtigte Ausführende (oder Springer-Teams) sehen ihren Namen. Kollegen mit Stempeluhr-Team stempeln über das verknüpfte Profil ein. Clock Point bleibt die Anmelde-QR (Name + Symbol) auch ohne Time. In der Testphase ist Time enthalten; im bezahlten Abo optional.",
+            "body": "Time ist die optionale Stempeluhr: Ein-/Ausstempeln über die Clock-Point-QR (Pausen und Schichten inklusive). Namensuche am Clock Point pro Standort: nur berechtigte Ausführende (oder Springer-Teams) sehen ihren Namen. Kollegen mit Stempeluhr-Team stempeln über das verknüpfte Profil ein. Clock Point bleibt die Anmelde-QR (Name + Symbol) auch ohne Time. In der Testphase ist Time enthalten; im bezahlten Abo optional. Jede Person stempelt mit einem eigenen Handy. Verwaltung oder Teamleiter können ein neues Gerät zulassen.",
             "summary": "Time: Ein-/Ausstempeln via Clock Point, Suche pro Standort; Kollegen via Stempeluhr-Team."
         },
         "esg": {

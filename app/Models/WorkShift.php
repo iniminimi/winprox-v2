@@ -28,6 +28,8 @@ class WorkShift extends Model
         'clock_in_client_at',
         'clock_in_source',
         'clock_in_device_id',
+        'clock_in_latitude',
+        'clock_in_longitude',
         'clock_out_at',
         'clock_out_client_at',
         'clock_out_source',
@@ -43,6 +45,8 @@ class WorkShift extends Model
         'clock_in_client_at' => 'datetime',
         'clock_out_at' => 'datetime',
         'clock_out_client_at' => 'datetime',
+        'clock_in_latitude' => 'float',
+        'clock_in_longitude' => 'float',
         'location_hops' => 'array',
     ];
 

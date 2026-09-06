@@ -226,5 +226,15 @@
         "recent": "Recente inzendingen",
         "scope_construction": "Bouw / beton (CIAO)",
         "view_all": "Alle CIAO-inzendingen"
+    },
+    "time_clock": {
+        "title": "Prikklok-beveiliging",
+        "lead": "Elke uitvoerder klokt in met één eigen gsm. Een ander toestel wordt geweigerd tot beheer of teamleader een nieuw toestel toestaat. Pincode en GPS zijn extra opties.",
+        "require_pin": "Pincode (4 cijfers) verplicht bij aanmelden op Clock Point",
+        "require_pin_hint": "In plaats van het icoon vraagt Clock Point een pincode. Icoon blijft gelden voor de unit-QR.",
+        "gps_on_clock": "GPS vragen bij in- en uitklokken",
+        "gps_on_clock_hint": "Binnen is er vaak geen signaal: zonder GPS mag de prik toch doorgaan. Coördinaten worden bewaard als ze beschikbaar zijn.",
+        "save": "Prikklok-beveiliging opslaan",
+        "saved": "Prikklok-beveiliging opgeslagen."
     }
 }

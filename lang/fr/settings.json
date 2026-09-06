@@ -226,5 +226,15 @@
         "recent": "Envois récents",
         "scope_construction": "Construction / béton (CIAO)",
         "view_all": "Tous les envois CIAO"
+    },
+    "time_clock": {
+        "title": "Sécurité de la pointeuse",
+        "lead": "Chaque exécutant pointe avec un seul téléphone personnel. Un autre appareil est refusé jusqu'à ce qu'un admin ou un chef d'équipe autorise un nouvel appareil. PIN et GPS sont optionnels.",
+        "require_pin": "Exiger un PIN à 4 chiffres à la connexion Clock Point",
+        "require_pin_hint": "Clock Point demande un PIN au lieu de l'icône. L'icône reste valable sur le QR d'unité.",
+        "gps_on_clock": "Demander le GPS à l'entrée et à la sortie",
+        "gps_on_clock_hint": "À l'intérieur, le signal manque souvent : le pointage continue sans GPS. Les coordonnées sont enregistrées si disponibles.",
+        "save": "Enregistrer la sécurité pointeuse",
+        "saved": "Sécurité pointeuse enregistrée."
     }
 }

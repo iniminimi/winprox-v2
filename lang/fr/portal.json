@@ -129,8 +129,20 @@
             "icon_required": "Choisissez votre icône personnelle.",
             "icon_wrong": "Ce n'est pas la bonne icône.",
             "note_max": "La note est trop longue (max. 500 caractères).",
-            "no_permission": "Vous n'avez pas la permission de faire cela."
-        }
+            "no_permission": "Vous n'avez pas la permission de faire cela.",
+            "pin_required": "Entrez votre PIN à 4 chiffres.",
+            "pin_invalid": "Le PIN doit contenir 4 chiffres.",
+            "pin_mismatch": "Les codes PIN ne correspondent pas.",
+            "pin_wrong": "Ce n'est pas le bon PIN."
+        },
+        "pin": "Code PIN (4 chiffres)",
+        "pin_confirm": "Confirmer le PIN",
+        "pin_setup_title": "Choisissez un code PIN",
+        "pin_setup_hint": "Choisissez un code secret à 4 chiffres, comme un code bancaire.",
+        "pin_verify_hint": "Entrez votre code PIN",
+        "pin_save": "Enregistrer le PIN",
+        "confirm_pin": "Confirmer le PIN",
+        "pin_set": "PIN enregistré. Vous êtes connecté."
     },
     "team": {
         "title": "Aperçu de l'équipe",
@@ -176,8 +188,16 @@
             "colleague_required": "Choisissez un collègue bloqué.",
             "colleague_not_found": "Ce collègue n'est pas bloqué ou n'appartient pas à votre équipe.",
             "cannot_release": "Ce collègue ne peut pas être libéré.",
-            "cannot_delete_self": "Vous ne pouvez pas vous supprimer."
-        }
+            "cannot_delete_self": "Vous ne pouvez pas vous supprimer.",
+            "device_colleague_required": "Choisissez un collègue.",
+            "device_colleague_not_found": "Ce collègue n'a pas d'appareil lié ou n'appartient pas à votre équipe."
+        },
+        "device_title": "Autoriser un nouvel appareil",
+        "device_open": "Libérer l'appareil",
+        "device_hint": "Si un collègue a un nouveau téléphone ou un téléphone temporaire, libérez l'appareil lié. Il pourra ensuite pointer sur le nouvel appareil.",
+        "choose_device_colleague": "Choisissez un collègue avec un appareil lié",
+        "device_submit": "Autoriser le nouvel appareil",
+        "device_released_ok": ":name peut à nouveau pointer avec un autre appareil."
     },
     "documents": {
         "download": "Télécharger",

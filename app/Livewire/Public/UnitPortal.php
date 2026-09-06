@@ -878,6 +878,7 @@ class UnitPortal extends Component
         }
 
         WorkerDeviceSession::bindRememberedWorker($team, $worker);
+        WorkerDeviceSession::ensureUniqueDeviceForWorker($worker);
         WorkerVerification::establishUnitFieldTrust($team, $worker);
         $this->sign_in_icon_slug = '';
         $this->flashMessage = __('portal.worker.signed_in');

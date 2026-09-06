@@ -140,7 +140,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "¿Qué es el módulo Time / Clock Point?",
-            "body": "Time es el fichaje opcional: entrada/salida vía QR Clock Point (pausas y turnos incluidos). La búsqueda de nombre en Clock Point es por sede: solo quienes pueden fichar allí (o equipos de relevo). Colegas con equipo de fichaje fichan con el perfil vinculado. Clock Point sigue siendo la QR de identificación (nombre + icono) también sin Time. Incluido en la prueba; opcional en el plan de pago.",
+            "body": "Time es el fichaje opcional: entrada/salida vía QR Clock Point (pausas y turnos incluidos). La búsqueda de nombre en Clock Point es por sede: solo quienes pueden fichar allí (o equipos de relevo). Colegas con equipo de fichaje fichan con el perfil vinculado. Clock Point sigue siendo la QR de identificación (nombre + icono) también sin Time. Incluido en la prueba; opcional en el plan de pago. Cada ejecutor ficha con un móvil propio. Un admin o responsable puede autorizar un dispositivo nuevo.",
             "summary": "Time: fichaje vía Clock Point, búsqueda por sede; colegas vía equipo de fichaje."
         },
         "esg": {

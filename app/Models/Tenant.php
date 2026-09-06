@@ -39,6 +39,8 @@ class Tenant extends Model
         'has_iot_module',
         'time_qr_rotation_months',
         'has_time_module',
+        'time_require_worker_pin',
+        'time_gps_on_clock',
         'enterprise_number',
         'foreign_vat_number',
         'presence_compliance_enabled',
@@ -66,6 +68,8 @@ class Tenant extends Model
             'has_esg_module' => 'boolean',
             'has_iot_module' => 'boolean',
             'has_time_module' => 'boolean',
+            'time_require_worker_pin' => 'boolean',
+            'time_gps_on_clock' => 'boolean',
             'presence_compliance_enabled' => 'boolean',
             'presence_rsz_client_id' => 'encrypted',
             'presence_rsz_private_key' => 'encrypted',
@@ -302,6 +306,16 @@ class Tenant extends Model
     public function hasTimeModule(): bool
     {
         return (bool) $this->has_time_module;
+    }
+
+    public function requiresWorkerPin(): bool
+    {
+        return $this->hasTimeModule() && (bool) $this->time_require_worker_pin;
+    }
+
+    public function requestsClockGps(): bool
+    {
+        return $this->hasTimeModule() && (bool) $this->time_gps_on_clock;
     }
 
     public function presenceComplianceEnabled(): bool

@@ -59,7 +59,8 @@
         "attention": {
             "long_shift": "Turno più lungo di :hours ore",
             "stale_shift": "Uscita non timbrata (> :hours ore)",
-            "no_break": "Nessuna pausa dopo :hours ore"
+            "no_break": "Nessuna pausa dopo :hours ore",
+            "rapid_hop": "Spostato entro :hours min"
         },
         "view_modes": "Vista",
         "board_absent_title": "Assente / Azione extra",
@@ -78,7 +79,7 @@
     },
     "alarms": {
         "title": "Allarmi",
-        "subtitle": "Turni aperti che richiedono attenzione — turni lunghi, uscita dimenticata o nessuna pausa.",
+        "subtitle": "Turni aperti da controllare: turni lunghi, uscita dimenticata, nessuna pausa o spostamento troppo rapido.",
         "empty": "Nessun allarme al momento.",
         "summary": "{0} Nessun allarme|{1} :count allarme|[2,*] :count allarmi",
         "type_filters": "Tipo di allarme",
@@ -86,7 +87,8 @@
         "type_long_shift": "Turno lungo",
         "type_stale_shift": "Uscita non timbrata",
         "type_no_break": "Nessuna pausa",
-        "shown": ":shown di :total allarmi mostrati"
+        "shown": ":shown di :total allarmi mostrati",
+        "type_rapid_hop": "Salto rapido"
     },
     "force_close": {
         "title": "Chiudi turno",
@@ -241,7 +243,8 @@
             "not_clocked_in": "Non hai timbrato l'entrata.",
             "break_already_open": "La pausa è già in corso.",
             "break_not_open": "Non sei in pausa.",
-            "icon_not_configured": "Il tuo account non è ancora completamente configurato. Contatta l'amministratore."
+            "icon_not_configured": "Il tuo account non è ancora completamente configurato. Contatta l'amministratore.",
+            "device_mismatch": "Questo dispositivo non è collegato alla tua marcatura. Chiedi al team leader o all'amministratore di autorizzare un nuovo dispositivo."
         },
         "transferred": "Presenza spostata in questa sede (stesso turno)."
     },

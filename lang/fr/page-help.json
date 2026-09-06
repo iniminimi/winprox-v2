@@ -924,7 +924,7 @@
                 },
                 {
                     "label": "Pointer entrée et sortie",
-                    "text": "Pointez ici entrée, sortie et pauses. Une seule vacation ouverte à la fois. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici. Puis utilisez le QR unit sur place pour les tâches. La vacation reste continue ; la feuille d’heures indique le déplacement."
+                    "text": "Pointez ici entrée, sortie et pauses sur votre propre téléphone. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Utilisez ensuite le QR d'unité sur place pour les tâches."
                 },
                 {
                     "label": "Déconnexion",

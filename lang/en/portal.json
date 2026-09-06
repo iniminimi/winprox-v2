@@ -129,8 +129,20 @@
             "icon_required": "Choose your personal icon.",
             "icon_wrong": "That is not the correct icon.",
             "note_max": "The note is too long (max. 500 characters).",
-            "no_permission": "You do not have permission to do this."
-        }
+            "no_permission": "You do not have permission to do this.",
+            "pin_required": "Enter your 4-digit PIN.",
+            "pin_invalid": "The PIN must be 4 digits.",
+            "pin_mismatch": "The PINs do not match.",
+            "pin_wrong": "That is not the correct PIN."
+        },
+        "pin": "PIN (4 digits)",
+        "pin_confirm": "Confirm PIN",
+        "pin_setup_title": "Choose a PIN",
+        "pin_setup_hint": "Choose a secret 4-digit code, like a bank PIN.",
+        "pin_verify_hint": "Enter your PIN",
+        "pin_save": "Save PIN",
+        "confirm_pin": "Confirm PIN",
+        "pin_set": "PIN saved. You are signed in."
     },
     "team": {
         "title": "Team overview",
@@ -176,8 +188,16 @@
             "colleague_required": "Choose a blocked colleague.",
             "colleague_not_found": "This colleague is not blocked or is not on your team.",
             "cannot_release": "This colleague cannot be released.",
-            "cannot_delete_self": "You cannot delete yourself."
-        }
+            "cannot_delete_self": "You cannot delete yourself.",
+            "device_colleague_required": "Choose a colleague.",
+            "device_colleague_not_found": "This colleague has no linked device or is not on your team."
+        },
+        "device_title": "Allow a new device",
+        "device_open": "Release device",
+        "device_hint": "If a colleague has a new or temporary phone, release the linked device. They can then clock in on the new phone.",
+        "choose_device_colleague": "Choose a colleague with a linked device",
+        "device_submit": "Allow new device",
+        "device_released_ok": ":name may clock in again with another device."
     },
     "documents": {
         "download": "Download",

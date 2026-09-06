@@ -226,5 +226,15 @@
         "recent": "Invii recenti",
         "scope_construction": "Edilizia / calcestruzzo (CIAO)",
         "view_all": "Tutti gli invii CIAO"
+    },
+    "time_clock": {
+        "title": "Sicurezza marcatura",
+        "lead": "Ogni esecutore timbra con un solo telefono personale. Un altro dispositivo è rifiutato finché un admin o team leader non autorizza un nuovo dispositivo. PIN e GPS sono opzionali.",
+        "require_pin": "Richiedi un PIN a 4 cifre all'accesso Clock Point",
+        "require_pin_hint": "Clock Point chiede un PIN al posto dell'icona. L'icona resta valida sul QR dell'unità.",
+        "gps_on_clock": "Chiedi il GPS in ingresso e in uscita",
+        "gps_on_clock_hint": "Al chiuso spesso non c'è segnale: la marcatura procede comunque. Le coordinate si salvano se disponibili.",
+        "save": "Salva sicurezza marcatura",
+        "saved": "Sicurezza marcatura salvata."
     }
 }

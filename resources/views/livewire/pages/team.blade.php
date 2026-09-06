@@ -249,6 +249,9 @@
                                             @if ($worker->is_teamleader)
                                                 <span class="wp-pill wp-pill--done">{{ __('team.workers.teamleader') }}</span>
                                             @endif
+                                            @if ($worker->clock_device_id)
+                                                <span class="wp-pill wp-pill--done">{{ __('team.workers.device_bound') }}</span>
+                                            @endif
                                             @if ($worker->field_icon_locked_at)
                                                 <span class="wp-pill wp-pill--closed">{{ __('team.workers.locked') }}</span>
                                             @endif
@@ -263,6 +266,12 @@
                                                     <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerTeamleader({{ $worker->id }}, true)">{{ __('team.workers.make_teamleader') }}</button>
                                                 @endif
                                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="resetWorkerIcon({{ $worker->id }})">{{ __('team.workers.reset_icon') }}</button>
+                                                @if ($worker->clock_device_id)
+                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockDevice({{ $worker->id }})">{{ __('team.workers.clear_clock_device') }}</button>
+                                                @endif
+                                                @if ($worker->hasClockPin())
+                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockPin({{ $worker->id }})">{{ __('team.workers.clear_clock_pin') }}</button>
+                                                @endif
                                                 @if ($worker->is_active)
                                                     <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerActive({{ $worker->id }}, false)">{{ __('team.workers.deactivate') }}</button>
                                                 @else

@@ -8,6 +8,7 @@ use App\Enums\WorkShiftStatus;
 use App\Events\Time\TimeShiftEnded;
 use App\Models\ClockPoint;
 use App\Models\Worker;
+use App\Models\WorkerDevice;
 use App\Models\WorkShift;
 use App\Support\Time\TimeModuleAccess;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +20,7 @@ class ClockOutAction
         private EndWorkBreakAction $endWorkBreak,
         private CloseOpenWorkShiftTaskLogsAction $closeOpenTaskLogs,
         private EnqueuePresenceFromTimeEventAction $enqueuePresence,
+        private AssertWorkerClockDeviceAction $assertClockDevice,
     ) {}
 
     public function handle(
@@ -26,12 +28,19 @@ class ClockOutAction
         ClockPoint $clockPoint,
         ?\Carbon\Carbon $clientTimestamp = null,
         ClockSource $source = ClockSource::ClockPointQr,
+        bool $enforceClockDevice = false,
+        ?WorkerDevice $device = null,
+        ?string $requestDeviceToken = null,
     ): WorkShift {
         if ((int) $worker->tenant_id !== (int) $clockPoint->tenant_id) {
             throw new InvalidArgumentException('worker_clock_point_tenant_mismatch');
         }
 
         TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
+
+        if ($enforceClockDevice) {
+            $this->assertClockDevice->handle($worker, $device, $requestDeviceToken);
+        }
 
         return DB::transaction(function () use ($worker, $clockPoint, $clientTimestamp, $source) {
             $shift = $this->lockOpenShift($worker);

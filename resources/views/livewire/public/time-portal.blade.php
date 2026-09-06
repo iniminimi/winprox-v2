@@ -97,6 +97,50 @@
                     <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="showRegister">{{ __('portal.team.register.cta') }}</button>
                 @endif
             </div>
+        @elseif ($showPinSetup)
+            <div class="wp-card wp-card-pad wp-stack">
+                <h2 class="wp-section-title">{{ __('portal.worker.pin_setup_title') }}</h2>
+                <p class="wp-muted">
+                    {{ __('portal.worker.pin_setup_hint') }}
+                    @if ($deviceWorker) <strong>{{ $deviceWorker->displayName() }}</strong>@endif
+                </p>
+                <form wire:submit="completePinSetup" class="wp-stack">
+                    <div class="wp-field">
+                        <label class="wp-label" for="pin_code_setup">{{ __('portal.worker.pin') }}</label>
+                        <input id="pin_code_setup" type="password" inputmode="numeric" autocomplete="one-time-code" maxlength="4" class="wp-input" wire:model="pin_code">
+                        @error('pin_code') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="pin_code_confirm">{{ __('portal.worker.pin_confirm') }}</label>
+                        <input id="pin_code_confirm" type="password" inputmode="numeric" autocomplete="one-time-code" maxlength="4" class="wp-input" wire:model="pin_code_confirm">
+                        @error('pin_code_confirm') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--block">{{ __('portal.worker.pin_save') }}</button>
+                    <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="signInAsDifferentWorker">
+                        {{ __('portal.worker.different_worker') }}
+                    </button>
+                </form>
+            </div>
+        @elseif ($showPinVerify)
+            <div class="wp-card wp-card-pad wp-stack">
+                <h2 class="wp-section-title">{{ __('portal.worker.title') }}</h2>
+                <p class="wp-muted">
+                    {{ __('portal.worker.pin_verify_hint') }}
+                    @if ($deviceWorker) <strong>{{ $deviceWorker->displayName() }}</strong>@endif
+                </p>
+                <form wire:submit="signInWithPin" class="wp-stack">
+                    <div class="wp-field">
+                        <label class="wp-label" for="pin_code_verify">{{ __('portal.worker.pin') }}</label>
+                        <input id="pin_code_verify" type="password" inputmode="numeric" autocomplete="one-time-code" maxlength="4" class="wp-input" wire:model="pin_code">
+                        @error('pin_code') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <p class="wp-hint">{{ __('portal.worker.attempts_left', ['count' => $remainingAttempts]) }}</p>
+                    <button type="submit" class="btn btn--primary btn--block">{{ __('portal.worker.confirm_pin') }}</button>
+                    <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="signInAsDifferentWorker">
+                        {{ __('portal.worker.different_worker') }}
+                    </button>
+                </form>
+            </div>
         @elseif ($showVerify)
             <div class="wp-card wp-card-pad wp-stack">
                 <h2 class="wp-section-title">{{ __('portal.worker.title') }}</h2>
@@ -141,11 +185,6 @@
         @if ($canAct)
             <div class="wp-stack" data-manual-capture="portal-team-signed-in">
                 <div class="wp-card wp-card-pad wp-cluster">
-                    @if ($verifiedWorker?->field_icon_slug)
-                        <div class="wp-icon-tile is-selected" aria-hidden="true" style="pointer-events: none; width: 40px; height: 40px; padding: 0.35rem;">
-                            <x-wp-worker-icon :slug="$verifiedWorker->field_icon_slug" />
-                        </div>
-                    @endif
                     <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
                 </div>
 
@@ -158,11 +197,32 @@
                 @endif
 
                 @if ($hasTimeModule)
-                    <div class="wp-card wp-card-pad wp-stack">
+                    <div
+                        class="wp-card wp-card-pad wp-stack"
+                        x-data="{
+                            gpsOn: @js($gpsOnClock ?? false),
+                            async withGps(method) {
+                                const run = () => $wire[method]();
+                                if (!this.gpsOn || !navigator.geolocation) {
+                                    run();
+                                    return;
+                                }
+                                navigator.geolocation.getCurrentPosition(
+                                    (pos) => {
+                                        $wire.clockGpsLatitude = String(pos.coords.latitude);
+                                        $wire.clockGpsLongitude = String(pos.coords.longitude);
+                                        run();
+                                    },
+                                    () => run(),
+                                    { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
+                                );
+                            }
+                        }"
+                    >
                         <h2 class="wp-section-title">{{ __('time.portal.clock.title') }}</h2>
                         @if ($openShift === null)
                             <p class="wp-muted">{{ __('time.portal.clock.not_clocked_in') }}</p>
-                            <button type="button" class="btn btn--primary btn--block" wire:click="clockIn">
+                            <button type="button" class="btn btn--primary btn--block" @click="withGps('clockIn')">
                                 {{ __('time.portal.clock.in') }}
                             </button>
                         @else
@@ -197,7 +257,7 @@
                             @else
                                 <div class="wp-cluster">
                                     @if ($openElsewhere)
-                                        <button type="button" class="btn btn--primary" wire:click="transferToThisClockPoint">
+                                        <button type="button" class="btn btn--primary" @click="withGps('transferToThisClockPoint')">
                                             {{ __('time.portal.clock.transfer_here') }}
                                         </button>
                                     @else
@@ -205,7 +265,7 @@
                                             {{ __('time.portal.clock.start_break') }}
                                         </button>
                                     @endif
-                                    <button type="button" @class(['btn', 'btn--surface' => $openElsewhere, 'btn--primary' => ! $openElsewhere]) wire:click="clockOut">
+                                    <button type="button" @class(['btn', 'btn--surface' => $openElsewhere, 'btn--primary' => ! $openElsewhere]) @click="withGps('clockOut')">
                                         {{ __('time.portal.clock.out') }}
                                     </button>
                                 </div>

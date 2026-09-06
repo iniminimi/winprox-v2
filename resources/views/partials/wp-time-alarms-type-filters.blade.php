@@ -6,6 +6,7 @@
         TimePresenceAttentionType::LongShift->value => __('time.alarms.type_long_shift'),
         TimePresenceAttentionType::StaleShift->value => __('time.alarms.type_stale_shift'),
         TimePresenceAttentionType::NoBreak->value => __('time.alarms.type_no_break'),
+        TimePresenceAttentionType::RapidHop->value => __('time.alarms.type_rapid_hop'),
     ];
 @endphp
 

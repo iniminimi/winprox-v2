@@ -59,7 +59,8 @@
         "attention": {
             "long_shift": "Shift de plus de :hours heures",
             "stale_shift": "Non dépointé (> :hours h)",
-            "no_break": "Pas de pause après :hours heures"
+            "no_break": "Pas de pause après :hours heures",
+            "rapid_hop": "Déplacé en moins de :hours min"
         },
         "view_modes": "Affichage",
         "board_absent_title": "Absent / Action extra",
@@ -78,7 +79,7 @@
     },
     "alarms": {
         "title": "Alarmes",
-        "subtitle": "Shifts ouverts nécessitant une attention — longs shifts, oubli de dépointerage ou pas de pause.",
+        "subtitle": "Services ouverts à surveiller — trop longs, sortie oubliée, sans pause ou déplacement trop rapide.",
         "empty": "Aucune alarme pour le moment.",
         "summary": "{0} Aucune alarme|{1} :count alarme|[2,*] :count alarmes",
         "type_filters": "Type d'alarme",
@@ -86,7 +87,8 @@
         "type_long_shift": "Long shift",
         "type_stale_shift": "Non dépointé",
         "type_no_break": "Pas de pause",
-        "shown": ":shown sur :total alarmes affichées"
+        "shown": ":shown sur :total alarmes affichées",
+        "type_rapid_hop": "Saut rapide"
     },
     "force_close": {
         "title": "Clôturer le shift",
@@ -241,7 +243,8 @@
             "not_clocked_in": "Vous n'êtes pas pointé.",
             "break_already_open": "Votre pause est déjà en cours.",
             "break_not_open": "Vous n'êtes pas en pause.",
-            "icon_not_configured": "Votre compte n'est pas encore entièrement configuré. Contactez l'administrateur."
+            "icon_not_configured": "Votre compte n'est pas encore entièrement configuré. Contactez l'administrateur.",
+            "device_mismatch": "Cet appareil n'est pas lié à votre pointeuse. Demandez à votre chef d'équipe ou à l'admin d'autoriser un nouvel appareil."
         },
         "transferred": "Présence déplacée vers ce site (même vacation)."
     },

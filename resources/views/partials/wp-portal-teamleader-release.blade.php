@@ -66,6 +66,64 @@
         @endif
     @endif
 
+    @if ($isTimePortal ?? false)
+        @php($deviceColleagues = $this->clockDeviceReleaseCandidates())
+        @if ($deviceColleagues->isNotEmpty())
+            @if ($blockedColleagues->isNotEmpty())
+                <div class="wp-divider"></div>
+            @endif
+            <div class="wp-row">
+                <h2 class="wp-section-title">{{ __('portal.teamleader.device_title') }}</h2>
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleDeviceReleasePanel">
+                    {{ $showDeviceReleasePanel ? __('common.button.cancel') : __('portal.teamleader.device_open') }}
+                </button>
+            </div>
+            <p class="wp-muted">{{ __('portal.teamleader.device_hint') }}</p>
+            @if ($showDeviceReleasePanel)
+                <form wire:submit="releaseColleagueClockDevice" class="wp-stack">
+                    <div class="wp-field">
+                        <label class="wp-label">{{ __('portal.teamleader.confirm_own_icon') }}</label>
+                        <div class="wp-icon-grid">
+                            @foreach (\App\Support\Portal\WorkerIcon::SLUGS as $slug)
+                                <button type="button"
+                                        wire:key="release-device-tl-icon-{{ $slug }}"
+                                        wire:click="$set('release_device_teamleader_icon_slug', '{{ $slug }}')"
+                                        @class(['wp-icon-tile', 'is-selected' => $release_device_teamleader_icon_slug === $slug])
+                                        title="{{ \App\Support\Portal\WorkerIcon::label($slug) }}"
+                                        aria-label="{{ \App\Support\Portal\WorkerIcon::label($slug) }}">
+                                    <x-wp-worker-icon :slug="$slug" />
+                                </button>
+                            @endforeach
+                        </div>
+                        @error('release_device_teamleader_icon_slug') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label">{{ __('portal.teamleader.choose_device_colleague') }}</label>
+                        <div class="wp-list wp-list--entity-rows">
+                            @foreach ($deviceColleagues as $colleague)
+                                <button type="button"
+                                        wire:key="release-device-worker-{{ $colleague->id }}"
+                                        wire:click="$set('release_device_worker_id', {{ $colleague->id }})"
+                                        @class([
+                                            'wp-release-worker-row',
+                                            'is-selected' => $release_device_worker_id === $colleague->id,
+                                        ])>
+                                    <span class="wp-release-worker-row__name">{{ $colleague->displayName() }}</span>
+                                </button>
+                            @endforeach
+                        </div>
+                    </div>
+                    @error('release_device_worker_id') <p class="wp-error">{{ $message }}</p> @enderror
+                    <button type="submit"
+                            class="btn btn--warning btn--block"
+                            @disabled($release_device_teamleader_icon_slug === '' || $release_device_worker_id === null)>
+                        {{ __('portal.teamleader.device_submit') }}
+                    </button>
+                </form>
+            @endif
+        @endif
+    @endif
+
     {{-- Worker management: Clock Point- en (legacy) teamportaal --}}
     @if (($isTeamPortal ?? false) || ($isTimePortal ?? false))
         @if ($blockedColleagues->isNotEmpty())
