@@ -80,6 +80,7 @@ it('toont de evacuatietegel na aanmelden op Clock Point', function () {
         ->assertSee(__('time.roster.tile'), false)
         ->assertSee(__('time.roster.tile_sub'), false)
         ->assertDontSee(__('time.roster.ack_title'), false)
+        ->assertDontSee(__('portal.worker.no_open_tasks'), false)
         ->assertSet('rosterListOpen', false);
 });
 

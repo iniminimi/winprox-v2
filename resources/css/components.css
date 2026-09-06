@@ -3181,7 +3181,7 @@ a.wp-pagination__page:active:not(.is-active) {
 .wp-tile-icon {
     width: 1.5rem;
     height: 1.5rem;
-    color: currentColor;
+    color: var(--wp-danger);
 }
 
 .wp-tile-sub {

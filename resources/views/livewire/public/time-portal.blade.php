@@ -204,13 +204,6 @@
                     @endif
 
                     @if ($hasTimeModule)
-                        <div class="wp-tiles">
-                            <button type="button" class="wp-tile" wire:click="openRoster">
-                                <x-wp-icon name="fire" class="wp-tile-icon" />
-                                <span class="wp-tile-title">{{ __('time.roster.tile') }}</span>
-                                <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
-                            </button>
-                        </div>
                     <div
                         class="wp-card wp-card-pad wp-stack"
                         x-data="{
@@ -286,32 +279,44 @@
                             @endif
                         @endif
                     </div>
-                @endif
+                    @endif
 
-                <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
+                    @if ($tasks->isNotEmpty())
+                        <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
 
-                <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.worker.open_tasks')" />
-                <div class="wp-list">
-                    @forelse ($tasks as $task)
-                        <div class="wp-card wp-card-pad wp-stack" wire:key="time-task-{{ $task->id }}">
-                            <div class="wp-cluster">
-                                <span class="wp-badge {{ $task->priority->badgeClass() }}">
-                                    <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
-                                    {{ $task->priority->label() }}
-                                </span>
-                                <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
-                                @if ($task->issue?->location)
-                                    <span class="wp-muted">{{ $task->issue->location->localizedName() }}@if ($task->issue->unit) &middot; {{ $task->issue->unit->localizedName() }}@endif</span>
-                                @endif
-                            </div>
-                            @if ($task->issue?->isApproved())
-                                <p class="wp-text-body">{{ $task->displayDescription() }}</p>
-                            @endif
+                        <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.worker.open_tasks')" />
+                        <div class="wp-list">
+                            @foreach ($tasks as $task)
+                                <div class="wp-card wp-card-pad wp-stack" wire:key="time-task-{{ $task->id }}">
+                                    <div class="wp-cluster">
+                                        <span class="wp-badge {{ $task->priority->badgeClass() }}">
+                                            <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
+                                            {{ $task->priority->label() }}
+                                        </span>
+                                        <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
+                                        @if ($task->issue?->location)
+                                            <span class="wp-muted">{{ $task->issue->location->localizedName() }}@if ($task->issue->unit) &middot; {{ $task->issue->unit->localizedName() }}@endif</span>
+                                        @endif
+                                    </div>
+                                    @if ($task->issue?->isApproved())
+                                        <p class="wp-text-body">{{ $task->displayDescription() }}</p>
+                                    @endif
+                                </div>
+                            @endforeach
                         </div>
-                    @empty
-                        <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p></div>
-                    @endforelse
-                </div>
+                    @endif
+
+                    @if ($hasTimeModule)
+                        <div class="wp-tiles">
+                            <button type="button" class="wp-tile" wire:click="openRoster">
+                                <span class="wp-cluster">
+                                    <x-wp-icon name="fire" class="wp-tile-icon" />
+                                    <span class="wp-tile-title">{{ __('time.roster.tile') }}</span>
+                                </span>
+                                <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
+                            </button>
+                        </div>
+                    @endif
                 @endif
             </div>
 
