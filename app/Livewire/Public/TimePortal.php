@@ -113,6 +113,7 @@ class TimePortal extends Component
     {
         Tenancy::actAs($this->tenantId);
         app()->setLocale($this->locale);
+        $this->enforceClockDeviceForVerifiedSession();
     }
 
     public function switchLocale(string $locale): void
@@ -793,6 +794,25 @@ class TimePortal extends Component
 
     private function verifiedWorker(): ?Worker
     {
+        $verified = $this->sessionVerifiedWorker();
+        if ($verified === null) {
+            return null;
+        }
+
+        if (! $this->workerSessionMatchesBoundDevice($verified)) {
+            $team = $verified->team;
+            if ($team !== null) {
+                WorkerVerification::clearForTeam((int) $team->id);
+            }
+
+            return null;
+        }
+
+        return $verified;
+    }
+
+    private function sessionVerifiedWorker(): ?Worker
+    {
         $deviceWorker = $this->rememberedWorkerForTenant();
         if ($deviceWorker === null) {
             return null;
@@ -803,30 +823,38 @@ class TimePortal extends Component
             return null;
         }
 
-        $verified = WorkerVerification::verifiedWorker($team);
-        if ($verified === null) {
-            return null;
+        return WorkerVerification::verifiedWorker($team);
+    }
+
+    /**
+     * Open sessies zonder gekoppeld toestel (of met een ander toestel) mogen niet actief blijven.
+     */
+    private function enforceClockDeviceForVerifiedSession(): void
+    {
+        if ($this->tenantId < 1) {
+            return;
         }
 
-        if (! $this->workerSessionMatchesBoundDevice($verified)) {
-            WorkerVerification::clearForTeam((int) $team->id);
-
-            return null;
+        $worker = $this->sessionVerifiedWorker();
+        if ($worker === null) {
+            return;
         }
 
-        return $verified;
+        $device = $this->deviceForWorker($worker);
+        $boundId = $worker->clock_device_id !== null ? (int) $worker->clock_device_id : null;
+        if ($boundId !== null && $device !== null && (int) $device->id === $boundId) {
+            return;
+        }
+
+        $this->bindClockDeviceAfterVerify($worker);
     }
 
     private function workerSessionMatchesBoundDevice(Worker $worker): bool
     {
         $boundId = $worker->clock_device_id !== null ? (int) $worker->clock_device_id : null;
-        if ($boundId === null) {
-            return true;
-        }
-
         $device = $this->deviceForWorker($worker);
 
-        return $device !== null && (int) $device->id === $boundId;
+        return $boundId !== null && $device !== null && (int) $device->id === $boundId;
     }
 
     private function rememberedWorkerForTenant(): ?Worker

@@ -7,6 +7,7 @@ use App\Enums\ClockDeviceRefusalReason;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
 use App\Support\Audit\AuditRecorder;
+use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
 /**
@@ -31,18 +32,42 @@ class AssertWorkerClockDeviceAction
             throw new InvalidArgumentException('tenant_mismatch');
         }
 
-        $foreign = $this->foreignDeviceFromToken($worker, $requestToken);
-        if ($foreign !== null) {
-            $this->logRefusal($worker, $foreign, ClockDeviceRefusalReason::Foreign);
+        /** @var array{ok: WorkerDevice}|array{refuse: ClockDeviceRefusalReason, attempted: ?WorkerDevice, worker: Worker} $outcome */
+        $outcome = DB::transaction(function () use ($worker, $device, $requestToken, $attachIfUnbound) {
+            $locked = Worker::query()->whereKey($worker->id)->lockForUpdate()->first();
+            if ($locked === null) {
+                throw new InvalidArgumentException('tenant_mismatch');
+            }
+
+            return $this->assertLocked($locked, $device, $requestToken, $attachIfUnbound);
+        });
+
+        if (isset($outcome['refuse'])) {
+            $this->logRefusal($outcome['worker'], $outcome['attempted'], $outcome['refuse']);
 
             throw new InvalidArgumentException(ClockDeviceRefusalReason::Mismatch->value);
         }
 
+        return $outcome['ok'];
+    }
+
+    /**
+     * @return array{ok: WorkerDevice}|array{refuse: ClockDeviceRefusalReason, attempted: ?WorkerDevice, worker: Worker}
+     */
+    private function assertLocked(
+        Worker $worker,
+        ?WorkerDevice $device,
+        ?string $requestToken,
+        bool $attachIfUnbound,
+    ): array {
+        $foreign = $this->foreignDeviceFromToken($worker, $requestToken);
+        if ($foreign !== null) {
+            return ['refuse' => ClockDeviceRefusalReason::Foreign, 'attempted' => $foreign, 'worker' => $worker];
+        }
+
         if ($device === null) {
             if ($worker->clock_device_id !== null) {
-                $this->logRefusal($worker, null, ClockDeviceRefusalReason::Missing);
-
-                throw new InvalidArgumentException(ClockDeviceRefusalReason::Mismatch->value);
+                return ['refuse' => ClockDeviceRefusalReason::Missing, 'attempted' => null, 'worker' => $worker];
             }
 
             if (! $attachIfUnbound) {
@@ -57,9 +82,7 @@ class AssertWorkerClockDeviceAction
         }
 
         if ((int) $device->worker_id !== (int) $worker->id) {
-            $this->logRefusal($worker, $device, ClockDeviceRefusalReason::Foreign);
-
-            throw new InvalidArgumentException(ClockDeviceRefusalReason::Mismatch->value);
+            return ['refuse' => ClockDeviceRefusalReason::Foreign, 'attempted' => $device, 'worker' => $worker];
         }
 
         $boundId = $worker->clock_device_id !== null ? (int) $worker->clock_device_id : null;
@@ -79,16 +102,14 @@ class AssertWorkerClockDeviceAction
                 ],
             );
 
-            return $device;
+            return ['ok' => $device];
         }
 
         if ($boundId !== (int) $device->id) {
-            $this->logRefusal($worker, $device, ClockDeviceRefusalReason::Mismatch);
-
-            throw new InvalidArgumentException(ClockDeviceRefusalReason::Mismatch->value);
+            return ['refuse' => ClockDeviceRefusalReason::Mismatch, 'attempted' => $device, 'worker' => $worker];
         }
 
-        return $device;
+        return ['ok' => $device];
     }
 
     private function foreignDeviceFromToken(Worker $worker, ?string $requestToken): ?WorkerDevice
