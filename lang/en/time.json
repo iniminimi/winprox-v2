@@ -60,11 +60,12 @@
             "long_shift": "Shift longer than :hours hours",
             "stale_shift": "Not clocked out (> :hours hours)",
             "no_break": "No break after :hours hours",
-            "rapid_hop": "Moved within :hours min"
+            "rapid_hop": "Moved within :hours min",
+            "roster_viewed": "Evacuation list viewed"
         },
         "view_modes": "View",
         "board_absent_title": "Absent / Extra action",
-        "attention_board_subtitle": "Open shifts that need attention",
+        "attention_board_subtitle": "Open shifts and evacuation-list views that need attention",
         "view": {
             "board": "Board",
             "teams": "Teams",
@@ -97,7 +98,7 @@
     },
     "alarms": {
         "title": "Alarms",
-        "subtitle": "Open shifts that need attention — long shifts, forgotten clock-out, no break, or a too-quick move.",
+        "subtitle": "Open shifts that need attention — long shifts, forgotten clock-out, no break, a too-quick move, or an evacuation-list view today.",
         "empty": "No alarms at the moment.",
         "summary": "{0} No alarms|{1} :count alarm|[2,*] :count alarms",
         "type_filters": "Alarm type",
@@ -106,7 +107,8 @@
         "type_stale_shift": "Not clocked out",
         "type_no_break": "No break",
         "shown": ":shown of :total alarms shown",
-        "type_rapid_hop": "Rapid hop"
+        "type_rapid_hop": "Rapid hop",
+        "type_roster_viewed": "Evacuation list"
     },
     "force_close": {
         "title": "Close shift",

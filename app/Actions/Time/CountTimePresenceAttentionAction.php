@@ -8,6 +8,8 @@ use App\Support\Time\TimePresenceAttentionRules;
 
 class CountTimePresenceAttentionAction
 {
+    public function __construct(private ListTimeRosterViewsAction $listRosterViews) {}
+
     public function handle(int $tenantId): int
     {
         $openShifts = WorkShift::query()
@@ -16,6 +18,7 @@ class CountTimePresenceAttentionAction
             ->with(['openBreak', 'breaks'])
             ->get();
 
-        return TimePresenceAttentionRules::collect($openShifts)->count();
+        return TimePresenceAttentionRules::collect($openShifts)->count()
+            + $this->listRosterViews->handle($tenantId)->count();
     }
 }

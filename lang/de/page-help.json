@@ -1158,7 +1158,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "Oben sehen Sie Live-KPIs: <strong>Eingestempelt</strong> (alle mit offener Schicht), <strong>Aktiv</strong> (eingestempelt und nicht in Pause), <strong>Pause</strong>, <strong>Nicht eingestempelt</strong> und <strong>Aufmerksamkeit</strong>. Eingestempelt = Aktiv + Pause. Klicken Sie eine Kachel zum Filtern. <strong>Aufmerksamkeit</strong> öffnet den Alarmbildschirm."
+                    "text": "Oben sehen Sie Live-KPIs: <strong>Eingestempelt</strong> (alle mit offener Schicht), <strong>Aktiv</strong> (eingestempelt und nicht in Pause), <strong>Pause</strong>, <strong>Nicht eingestempelt</strong> und <strong>Aufmerksamkeit</strong>. Eingestempelt = Aktiv + Pause. Klicken Sie eine Kachel zum Filtern. <strong>Aufmerksamkeit</strong> öffnet den Alarmbildschirm (einschließlich heutiger Einsichten in die Evakuierungsliste)."
                 },
                 {
                     "label": "Ansicht",
@@ -1178,7 +1178,7 @@
                 },
                 {
                     "label": "Evakuierungsliste",
-                    "text": "Die Evakuierungsliste steht nach der Anmeldung auf dem Clock-Point-Portal (Kachel Evakuierungsliste). Kein eigener QR. Vor der Liste bestätigt der Ausführende, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit)."
+                    "text": "Die Evakuierungsliste steht nach der Anmeldung auf dem Clock-Point-Portal (Kachel Evakuierungsliste). Kein eigener QR. Vor der Liste bestätigt der Ausführende, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Einsichten von heute lassen <strong>Aufmerksamkeit</strong> aufleuchten (Anwesenheit und Dashboard) und stehen unter Time → Alarme."
                 }
             ]
         },
@@ -1187,11 +1187,11 @@
             "actions": [
                 {
                     "label": "Zweck",
-                    "text": "Zeigt offene Schichten mit Auffälligkeiten: zu lange eingestempelt, vergessene Ausstempelung oder keine Pause."
+                    "text": "Zeigt offene Schichten mit Auffälligkeiten: zu lange eingestempelt, vergessene Ausstempelung, keine Pause, oder Einsicht in die Evakuierungsliste heute."
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter: <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.) oder <strong>Keine Pause</strong> (&gt;6 Std.)."
+                    "text": "Filter: <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.), <strong>Keine Pause</strong> (&gt;6 Std.) oder <strong>Evakuierungsliste</strong> (Einsichten heute)."
                 },
                 {
                     "label": "Aktion",

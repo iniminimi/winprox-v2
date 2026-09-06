@@ -1158,7 +1158,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "Live KPIs at the top: <strong>Clocked in</strong> (everyone with an open shift), <strong>Active</strong> (clocked in and not on break), <strong>Break</strong>, <strong>Not clocked in</strong> and <strong>Attention</strong>. Clocked in = Active + Break. Click a tile to filter. <strong>Attention</strong> opens the alarms screen."
+                    "text": "Live KPIs at the top: <strong>Clocked in</strong> (everyone with an open shift), <strong>Active</strong> (clocked in and not on break), <strong>Break</strong>, <strong>Not clocked in</strong> and <strong>Attention</strong>. Clocked in = Active + Break. Click a tile to filter. <strong>Attention</strong> opens the alarms screen (including today’s evacuation-list views)."
                 },
                 {
                     "label": "Views",
@@ -1178,7 +1178,7 @@
                 },
                 {
                     "label": "Evacuation list",
-                    "text": "The evacuation list is on the Clock Point portal after sign-in (Evacuation list tile). No extra QR. Before the list, the field worker confirms that the consultation is exceptional and is logged (first name, last name, date and time)."
+                    "text": "The evacuation list is on the Clock Point portal after sign-in (Evacuation list tile). No extra QR. Before the list, the field worker confirms that the consultation is exceptional and is logged (first name, last name, date and time). Views from today light up <strong>Attention</strong> (presence and dashboard) and appear under Time → Alarms."
                 }
             ]
         },
@@ -1187,11 +1187,11 @@
             "actions": [
                 {
                     "label": "Purpose",
-                    "text": "Shows open shifts that need attention: clocked in too long, forgotten clock-out, or no break recorded."
+                    "text": "Shows open shifts that need attention: clocked in too long, forgotten clock-out, no break recorded, or an evacuation-list view today."
                 },
                 {
                     "label": "Types",
-                    "text": "Filter by <strong>Long shift</strong> (&gt;10 h), <strong>Not clocked out</strong> (&gt;16 h), or <strong>No break</strong> (&gt;6 h without a break)."
+                    "text": "Filter by <strong>Long shift</strong> (&gt;10 h), <strong>Not clocked out</strong> (&gt;16 h), <strong>No break</strong> (&gt;6 h without a break), or <strong>Evacuation list</strong> (views today)."
                 },
                 {
                     "label": "Action",

@@ -2,10 +2,13 @@
 
 namespace App\Actions\Time;
 
+use App\Data\Time\TimePresenceAttentionItem;
 use App\Data\Time\TimePresenceDashboard;
 use App\Data\Time\TimePresenceKpis;
 use App\Data\Time\TimePresenceLocationBucket;
 use App\Data\Time\TimePresenceTeamBucket;
+use App\Data\Time\TimeRosterViewAttention;
+use App\Enums\TimePresenceAttentionType;
 use App\Enums\TimePresenceStatusFilter;
 use App\Enums\WorkShiftStatus;
 use App\Models\ClockPoint;
@@ -18,6 +21,8 @@ use Illuminate\Support\Collection;
 
 class BuildTimePresenceDashboardAction
 {
+    public function __construct(private ListTimeRosterViewsAction $listRosterViews) {}
+
     public function handle(
         int $tenantId,
         ?int $teamId = null,
@@ -60,7 +65,9 @@ class BuildTimePresenceDashboardAction
 
         $onBreak = $openShifts->filter(fn (WorkShift $shift) => $shift->openBreak !== null)->values();
         $active = $openShifts->filter(fn (WorkShift $shift) => $shift->openBreak === null)->values();
-        $attentionItems = TimePresenceAttentionRules::collect($openShifts);
+        $attentionItems = TimePresenceAttentionRules::collect($openShifts)
+            ->concat($this->rosterViewItems($tenantId, $teamId, $needle))
+            ->values();
 
         $clockedInWorkerIds = $openShifts->pluck('worker_id')->all();
         $absentCount = $this->countAbsentWorkers($tenantId, $teamId, $clockedInWorkerIds, $needle, $clockPointId, $locationId);
@@ -126,7 +133,7 @@ class BuildTimePresenceDashboardAction
             $teamActive = $active->where('internal_team_id', $team->id)->values();
             $teamBreak = $onBreak->where('internal_team_id', $team->id)->values();
             $teamAttention = $attentionItems->filter(
-                fn ($item) => (int) $item->shift->internal_team_id === (int) $team->id
+                fn (TimePresenceAttentionItem $item) => $item->teamId() === (int) $team->id
             )->count();
             $teamAbsentCount = (int) ($absentByTeam[$team->id] ?? 0);
             $isExpanded = in_array((int) $team->id, $expandedTeamIds, true);
@@ -222,7 +229,8 @@ class BuildTimePresenceDashboardAction
             $activeCount = $shifts->filter(fn (WorkShift $s) => $s->openBreak === null)->count();
             $breakCount = $shifts->count() - $activeCount;
             $attentionCount = $attentionItems->filter(
-                fn ($item) => (int) $item->shift->currentClockPoint()?->location_id === (int) $location->id
+                fn (TimePresenceAttentionItem $item) => $item->shift !== null
+                    && (int) $item->shift->currentClockPoint()?->location_id === (int) $location->id
             )->count();
 
             return new TimePresenceLocationBucket(
@@ -243,7 +251,8 @@ class BuildTimePresenceDashboardAction
             $activeCount = $unknownShifts->filter(fn (WorkShift $s) => $s->openBreak === null)->count();
             $breakCount = $unknownShifts->count() - $activeCount;
             $attentionCount = $attentionItems->filter(
-                fn ($item) => $item->shift->currentClockPoint()?->location_id === null
+                fn (TimePresenceAttentionItem $item) => $item->shift !== null
+                    && $item->shift->currentClockPoint()?->location_id === null
             )->count();
 
             $buckets->push(new TimePresenceLocationBucket(
@@ -407,8 +416,22 @@ class BuildTimePresenceDashboardAction
     }
 
     /**
-     * @param  Collection<int, \App\Data\Time\TimePresenceAttentionItem>  $items
-     * @return Collection<int, \App\Data\Time\TimePresenceAttentionItem>
+     * @return Collection<int, TimePresenceAttentionItem>
+     */
+    private function rosterViewItems(int $tenantId, ?int $teamId, string $needle): Collection
+    {
+        return $this->listRosterViews
+            ->handle($tenantId, $teamId, $needle !== '' ? $needle : null)
+            ->map(fn (TimeRosterViewAttention $view) => new TimePresenceAttentionItem(
+                TimePresenceAttentionType::RosterViewed,
+                null,
+                $view,
+            ));
+    }
+
+    /**
+     * @param  Collection<int, TimePresenceAttentionItem>  $items
+     * @return Collection<int, TimePresenceAttentionItem>
      */
     private function filterAttention(Collection $items, TimePresenceStatusFilter $statusFilter): Collection
     {

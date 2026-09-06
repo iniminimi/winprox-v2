@@ -1158,7 +1158,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "Bovenaan ziet u live KPI's: <strong>Ingeklokt</strong> (iedereen met een open dienst), <strong>Actief</strong> (ingeklokt en niet op pauze), <strong>Pauze</strong>, <strong>Niet ingeklokt</strong> en <strong>Aandacht</strong>. Ingeklokt = Actief + Pauze. Klik op een tegel om te filteren. <strong>Aandacht</strong> opent het alarmenscherm."
+                    "text": "Bovenaan ziet u live KPI's: <strong>Ingeklokt</strong> (iedereen met een open dienst), <strong>Actief</strong> (ingeklokt en niet op pauze), <strong>Pauze</strong>, <strong>Niet ingeklokt</strong> en <strong>Aandacht</strong>. Ingeklokt = Actief + Pauze. Klik op een tegel om te filteren. <strong>Aandacht</strong> opent het alarmenscherm (inclusief evacuatielijst-raadplegingen van vandaag)."
                 },
                 {
                     "label": "Weergave",
@@ -1178,7 +1178,7 @@
                 },
                 {
                     "label": "Evacuatielijst",
-                    "text": "De evacuatielijst staat op het Clock Point-portaal na aanmelden (tegel Evacuatielijst). Geen aparte QR. Voor de lijst bevestigt de uitvoerder dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur)."
+                    "text": "De evacuatielijst staat op het Clock Point-portaal na aanmelden (tegel Evacuatielijst). Geen aparte QR. Voor de lijst bevestigt de uitvoerder dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Raadplegingen van vandaag lichten <strong>Aandacht</strong> op (aanwezigheid en dashboard) en staan op Time → Alarmen."
                 }
             ]
         },
@@ -1187,11 +1187,11 @@
             "actions": [
                 {
                     "label": "Doel",
-                    "text": "Toont open shifts die aandacht vragen: te lang ingeklokt, vergeten uit te klokken of geen pauze geregistreerd."
+                    "text": "Toont open shifts die aandacht vragen: te lang ingeklokt, vergeten uit te klokken, geen pauze, of raadpleging van de evacuatielijst vandaag."
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur) of <strong>Geen pauze</strong> (&gt;6 uur zonder break)."
+                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur), <strong>Geen pauze</strong> (&gt;6 uur zonder break) of <strong>Evacuatielijst</strong> (raadplegingen vandaag)."
                 },
                 {
                     "label": "Actie",

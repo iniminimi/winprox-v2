@@ -1158,7 +1158,7 @@
             "actions": [
                 {
                     "label": "Panel",
-                    "text": "KPI en vivo arriba: <strong>Fichado</strong> (todos con turno abierto), <strong>Activo</strong> (fichado y no en pausa), <strong>Pausa</strong>, <strong>No fichado</strong> y <strong>Atención</strong>. Fichado = Activo + Pausa. Pulse una tarjeta para filtrar. <strong>Atención</strong> abre la pantalla de alertas."
+                    "text": "KPI en vivo arriba: <strong>Fichado</strong> (todos con turno abierto), <strong>Activo</strong> (fichado y no en pausa), <strong>Pausa</strong>, <strong>No fichado</strong> y <strong>Atención</strong>. Fichado = Activo + Pausa. Pulse una tarjeta para filtrar. <strong>Atención</strong> abre la pantalla de alertas (incluidas las consultas de la lista de evacuación de hoy)."
                 },
                 {
                     "label": "Vista",
@@ -1178,7 +1178,7 @@
                 },
                 {
                     "label": "Lista de evacuación",
-                    "text": "La lista de evacuación está en el portal Clock Point tras identificarse (ficha Lista de evacuación). No hay un QR aparte. Antes de la lista, el ejecutor confirma que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora)."
+                    "text": "La lista de evacuación está en el portal Clock Point tras identificarse (ficha Lista de evacuación). No hay un QR aparte. Antes de la lista, el ejecutor confirma que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Las consultas de hoy encienden <strong>Atención</strong> (presencia y panel) y aparecen en Time → Alertas."
                 }
             ]
         },
@@ -1187,11 +1187,11 @@
             "actions": [
                 {
                     "label": "Objetivo",
-                    "text": "Muestra turnos abiertos que requieren atención: demasiado tiempo fichado, salida olvidada o sin pausa."
+                    "text": "Muestra turnos abiertos que requieren atención: demasiado tiempo fichado, salida olvidada, sin pausa, o consulta de la lista de evacuación hoy."
                 },
                 {
                     "label": "Tipos",
-                    "text": "Filtre: <strong>Turno largo</strong> (&gt;10 h), <strong>Sin fichar salida</strong> (&gt;16 h) o <strong>Sin pausa</strong> (&gt;6 h)."
+                    "text": "Filtre: <strong>Turno largo</strong> (&gt;10 h), <strong>Sin fichar salida</strong> (&gt;16 h), <strong>Sin pausa</strong> (&gt;6 h) o <strong>Lista de evacuación</strong> (consultas de hoy)."
                 },
                 {
                     "label": "Acción",

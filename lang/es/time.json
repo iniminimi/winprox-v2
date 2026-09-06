@@ -60,11 +60,12 @@
             "long_shift": "Turno de más de :hours horas",
             "stale_shift": "Sin fichar salida (> :hours h)",
             "no_break": "Sin pausa tras :hours horas",
-            "rapid_hop": "Traslado en menos de :hours min"
+            "rapid_hop": "Traslado en menos de :hours min",
+            "roster_viewed": "Lista de evacuación consultada"
         },
         "view_modes": "Vista",
         "board_absent_title": "Ausente / Acción extra",
-        "attention_board_subtitle": "Turnos abiertos que requieren atención",
+        "attention_board_subtitle": "Turnos abiertos y consultas de la lista de evacuación que requieren atención",
         "view": {
             "board": "Tablero",
             "teams": "Equipos",
@@ -97,7 +98,7 @@
     },
     "alarms": {
         "title": "Alarmas",
-        "subtitle": "Turnos abiertos que requieren atención: turnos largos, salida olvidada, sin pausa o traslado demasiado rápido.",
+        "subtitle": "Turnos abiertos que requieren atención: turnos largos, salida olvidada, sin pausa, traslado demasiado rápido o consulta de la lista de evacuación hoy.",
         "empty": "No hay alarmas en este momento.",
         "summary": "{0} Sin alarmas|{1} :count alarma|[2,*] :count alarmas",
         "type_filters": "Tipo de alarma",
@@ -106,7 +107,8 @@
         "type_stale_shift": "Sin fichar salida",
         "type_no_break": "Sin pausa",
         "shown": ":shown de :total alarmas mostradas",
-        "type_rapid_hop": "Salto rápido"
+        "type_rapid_hop": "Salto rápido",
+        "type_roster_viewed": "Lista de evacuación"
     },
     "force_close": {
         "title": "Cerrar turno",

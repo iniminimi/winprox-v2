@@ -13,9 +13,13 @@
 
     $pageSize = $boardLimit > 0 ? $boardLimit : $teamPageSize;
 
-    $attentionByShiftId = $attentionItems->mapWithKeys(
-        fn ($item) => [$item->shift->id => $item]
-    );
+    $attentionByShiftId = $attentionItems
+        ->filter(fn ($item) => $item->shift !== null)
+        ->mapWithKeys(fn ($item) => [$item->shift->id => $item]);
+
+    $rosterViewItems = $attentionItems
+        ->filter(fn ($item) => $item->rosterView !== null)
+        ->values();
 
     $presentShifts = collect();
     $absentWorkers = collect();
@@ -25,9 +29,10 @@
     if ($statusFilter === TimePresenceStatusFilter::Attention) {
         $presentShifts = $attentionItems
             ->map(fn ($item) => $item->shift)
+            ->filter()
             ->sortBy(fn ($shift) => $shift->clock_in_at)
             ->values();
-        $totalPresent = $presentShifts->count();
+        $totalPresent = $attentionItems->count();
     } elseif ($statusFilter === TimePresenceStatusFilter::Active) {
         $presentShifts = $teamBuckets
             ->flatMap(fn ($bucket) => $bucket->activeShifts)
@@ -65,7 +70,7 @@
         || $statusFilter === TimePresenceStatusFilter::Absent;
 @endphp
 
-@if ($teamBuckets->isEmpty())
+@if ($teamBuckets->isEmpty() && $attentionItems->isEmpty())
     <p class="wp-muted">{{ __('time.presence.empty_section') }}</p>
 @else
     <div class="wp-time-presence-board">
@@ -147,7 +152,32 @@
                 </header>
 
                 <div class="wp-time-presence-board__list">
-                    @forelse ($visiblePresent as $shift)
+                    @forelse ($rosterViewItems as $item)
+                        <article class="wp-time-presence-card wp-time-presence-card--attention" wire:key="presence-roster-{{ $item->listKey() }}">
+                            <div class="wp-time-presence-card__content">
+                                <div class="wp-time-presence-card__head">
+                                    <h3 class="wp-time-presence-card__name">{{ $item->rosterView->displayName }}</h3>
+                                    @if ($showTeam && filled($item->rosterView->teamName))
+                                        <p class="wp-time-presence-card__team wp-muted">{{ $item->rosterView->teamName }}</p>
+                                    @endif
+                                </div>
+                                <div class="wp-time-presence-card__metrics">
+                                    <span class="wp-time-presence-card__metric">
+                                        <x-wp-icon name="clock" class="wp-time-presence-card__metric-icon" />
+                                        <span class="wp-time-presence-card__metric-label">{{ __('time.presence.attention.roster_viewed') }}</span>
+                                        <strong class="wp-time-presence-card__metric-value wp-tabular">
+                                            {{ $item->rosterView->viewedAt->timezone(config('app.timezone'))->format('H:i') }}
+                                        </strong>
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+                    @empty
+                        @if ($visiblePresent->isEmpty())
+                            <p class="wp-muted wp-text-sm">{{ __('time.presence.no_attention') }}</p>
+                        @endif
+                    @endforelse
+                    @foreach ($visiblePresent as $shift)
                         @include('partials.wp-time-presence-card', [
                             'shift' => $shift,
                             'attentionItem' => $attentionByShiftId->get($shift->id),
@@ -155,9 +185,7 @@
                             'showTeam' => $showTeam,
                             'variant' => $shift->isOnBreak() ? 'break' : 'active',
                         ])
-                    @empty
-                        <p class="wp-muted wp-text-sm">{{ __('time.presence.no_attention') }}</p>
-                    @endforelse
+                    @endforeach
                 </div>
 
                 @if ($presentShifts->count() > $visiblePresent->count())

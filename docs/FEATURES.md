@@ -61,7 +61,7 @@ linkt naar zijn lijst):
 - Nu aanwezig — open shifts zonder pauze → Time-aanwezigheid (Time-module; inbegrepen in proef, optioneel bij WinProx).
 - **Conditioneel** (alleen tonen als telling **> 0** — geen vaste nullen / geen lege grid-gaten):
   - Te beoordelen — QR-wachtlijst → meldingen
-  - Time-aandacht — open shifts met uitzondering → Time-alarmen
+  - Time-aandacht — open shifts met uitzondering, of evacuatielijst-raadpleging vandaag → Time-alarmen
   - IoT-alarmen — open IoT-meldingen → IoT Connect (alleen bij IoT-module)
 
 **Recente meldingen** (kaart met lijst)
@@ -661,7 +661,8 @@ productsector op `Tenant`.
 - **Evacuatielijst** op het Clock Point-portaal (na aanmelden, tegel met brandicoon).
   Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel). Eerst
   aanvinken dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam,
-  datum/uur → `time.roster.viewed`). Geen extra QR.
+  datum/uur → `time.roster.viewed`). Raadplegingen **vandaag** lichten **Aandacht**
+  op (Time → Aanwezigheid én dashboard) en staan op Time → Alarmen. Geen extra QR.
 - Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
   (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit
   tot beheer/teamleader vrijgeeft); één open shift;

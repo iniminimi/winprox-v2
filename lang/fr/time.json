@@ -60,11 +60,12 @@
             "long_shift": "Shift de plus de :hours heures",
             "stale_shift": "Non dépointé (> :hours h)",
             "no_break": "Pas de pause après :hours heures",
-            "rapid_hop": "Déplacé en moins de :hours min"
+            "rapid_hop": "Déplacé en moins de :hours min",
+            "roster_viewed": "Liste d’évacuation consultée"
         },
         "view_modes": "Affichage",
         "board_absent_title": "Absent / Action extra",
-        "attention_board_subtitle": "Shifts ouverts nécessitant une attention",
+        "attention_board_subtitle": "Shifts ouverts et consultations de la liste d’évacuation à surveiller",
         "view": {
             "board": "Tableau",
             "teams": "Équipes",
@@ -97,7 +98,7 @@
     },
     "alarms": {
         "title": "Alarmes",
-        "subtitle": "Services ouverts à surveiller — trop longs, sortie oubliée, sans pause ou déplacement trop rapide.",
+        "subtitle": "Services ouverts à surveiller — trop longs, sortie oubliée, sans pause, déplacement trop rapide, ou consultation de la liste d’évacuation aujourd’hui.",
         "empty": "Aucune alarme pour le moment.",
         "summary": "{0} Aucune alarme|{1} :count alarme|[2,*] :count alarmes",
         "type_filters": "Type d'alarme",
@@ -106,7 +107,8 @@
         "type_stale_shift": "Non dépointé",
         "type_no_break": "Pas de pause",
         "shown": ":shown sur :total alarmes affichées",
-        "type_rapid_hop": "Saut rapide"
+        "type_rapid_hop": "Saut rapide",
+        "type_roster_viewed": "Liste d’évacuation"
     },
     "force_close": {
         "title": "Clôturer le shift",

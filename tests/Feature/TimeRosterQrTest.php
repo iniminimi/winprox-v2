@@ -2,8 +2,14 @@
 
 declare(strict_types=1);
 
+use App\Actions\Dashboard\BuildDashboardStatsAction;
+use App\Actions\Time\AcknowledgeTimeRosterViewAction;
+use App\Actions\Time\BuildTimePresenceDashboardAction;
 use App\Actions\Time\ClockInAction;
+use App\Actions\Time\CountTimePresenceAttentionAction;
+use App\Enums\TimePresenceAttentionType;
 use App\Livewire\Public\TimePortal;
+use App\Livewire\Time\AlarmsIndex;
 use App\Livewire\Time\PresenceIndex;
 use App\Models\AuditLog;
 use App\Models\ClockPoint;
@@ -188,4 +194,47 @@ it('verbergt de evacuatietegel zonder time-module', function () {
 
     signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
         ->assertDontSeeHtml('wire:click="openRoster"');
+});
+
+it('licht aandacht op na raadpleging van de evacuatielijst', function () {
+    [$tenant, $admin, $clockPoint, $worker] = rosterTenantWithPeople();
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->call('openRoster')
+        ->set('rosterAcknowledged', true)
+        ->call('acknowledgeRoster');
+
+    expect(app(CountTimePresenceAttentionAction::class)->handle($tenant->id))->toBe(1);
+
+    $dashboard = app(BuildTimePresenceDashboardAction::class)->handle($tenant->id);
+    expect($dashboard->kpis->attention)->toBe(1)
+        ->and($dashboard->attentionItems->first()->type)->toBe(TimePresenceAttentionType::RosterViewed)
+        ->and($dashboard->attentionItems->first()->rosterView?->displayName)->toBe('Jan Janssen');
+
+    Livewire::actingAs($admin)
+        ->test(PresenceIndex::class)
+        ->assertSee('wp-kpi--alert', false);
+
+    Livewire::actingAs($admin)
+        ->test(AlarmsIndex::class)
+        ->assertSee('Jan Janssen', false)
+        ->assertSee(__('time.alarms.type_roster_viewed'), false)
+        ->assertSee(__('time.presence.attention.roster_viewed'), false);
+
+    $stats = app(BuildDashboardStatsAction::class)->handle($tenant->id, true, false);
+    expect($stats->timeAttention)->toBe(1)
+        ->and(collect($stats->kpiTiles())->pluck('key')->all())->toContain('time_attention');
+});
+
+it('telt evacuatielijst-raadplegingen van gisteren niet als aandacht', function () {
+    [$tenant, , , $worker] = rosterTenantWithPeople();
+    app(AcknowledgeTimeRosterViewAction::class)->handle($worker, $tenant->id);
+
+    AuditLog::query()
+        ->where('tenant_id', $tenant->id)
+        ->where('action', 'time.roster.viewed')
+        ->update(['created_at' => now()->subDay()]);
+
+    expect(app(CountTimePresenceAttentionAction::class)->handle($tenant->id))->toBe(0);
 });

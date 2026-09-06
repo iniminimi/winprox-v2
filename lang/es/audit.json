@@ -92,6 +92,7 @@
         "tenant.registered": "Organización registrada",
         "tenant.time_module_toggled": "Módulo Time activado/desactivado",
         "tenant.time_qr_rotation_updated": "Rotación QR Time actualizada",
+        "time.roster.viewed": "Lista de evacuación consultada",
         "tenant.trial_api_toggled": "API de prueba activada/desactivada",
         "tenant_purge.unused_deleted": "Cuenta sin usar eliminada",
         "unit.activated": "Unidad activada",

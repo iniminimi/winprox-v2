@@ -1158,7 +1158,7 @@
             "actions": [
                 {
                     "label": "Dashboard",
-                    "text": "KPI live in alto: <strong>Timbrato</strong> (tutti con turno aperto), <strong>Attivo</strong> (timbrato e non in pausa), <strong>Pausa</strong>, <strong>Non timbrato</strong> e <strong>Attenzione</strong>. Timbrato = Attivo + Pausa. Clicca una tessera per filtrare. <strong>Attenzione</strong> apre la schermata Allarmi."
+                    "text": "KPI live in alto: <strong>Timbrato</strong> (tutti con turno aperto), <strong>Attivo</strong> (timbrato e non in pausa), <strong>Pausa</strong>, <strong>Non timbrato</strong> e <strong>Attenzione</strong>. Timbrato = Attivo + Pausa. Clicca una tessera per filtrare. <strong>Attenzione</strong> apre la schermata Allarmi (incluse le consultazioni dell’elenco evacuazione di oggi)."
                 },
                 {
                     "label": "Vista",
@@ -1178,7 +1178,7 @@
                 },
                 {
                     "label": "Elenco evacuazione",
-                    "text": "L’elenco evacuazione è sul portale Clock Point dopo l’accesso (riquadro Elenco evacuazione). Nessun QR separato. Prima dell’elenco l’esecutore conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora)."
+                    "text": "L’elenco evacuazione è sul portale Clock Point dopo l’accesso (riquadro Elenco evacuazione). Nessun QR separato. Prima dell’elenco l’esecutore conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Le consultazioni di oggi accendono <strong>Attenzione</strong> (presenza e dashboard) e compaiono in Time → Allarmi."
                 }
             ]
         },
@@ -1187,11 +1187,11 @@
             "actions": [
                 {
                     "label": "Scopo",
-                    "text": "Mostra turni aperti che richiedono attenzione: timbratura troppo lunga, uscita dimenticata o nessuna pausa."
+                    "text": "Mostra turni aperti che richiedono attenzione: timbratura troppo lunga, uscita dimenticata, nessuna pausa, o consultazione dell’elenco evacuazione oggi."
                 },
                 {
                     "label": "Tipi",
-                    "text": "Filtri: <strong>Turno lungo</strong> (&gt;10 h), <strong>Non timbrato in uscita</strong> (&gt;16 h) o <strong>Nessuna pausa</strong> (&gt;6 h)."
+                    "text": "Filtri: <strong>Turno lungo</strong> (&gt;10 h), <strong>Non timbrato in uscita</strong> (&gt;16 h), <strong>Nessuna pausa</strong> (&gt;6 h) o <strong>Elenco evacuazione</strong> (consultazioni di oggi)."
                 },
                 {
                     "label": "Azione",

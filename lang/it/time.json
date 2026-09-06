@@ -60,11 +60,12 @@
             "long_shift": "Turno più lungo di :hours ore",
             "stale_shift": "Uscita non timbrata (> :hours ore)",
             "no_break": "Nessuna pausa dopo :hours ore",
-            "rapid_hop": "Spostato entro :hours min"
+            "rapid_hop": "Spostato entro :hours min",
+            "roster_viewed": "Elenco evacuazione consultato"
         },
         "view_modes": "Vista",
         "board_absent_title": "Assente / Azione extra",
-        "attention_board_subtitle": "Turni aperti che richiedono attenzione",
+        "attention_board_subtitle": "Turni aperti e consultazioni dell’elenco evacuazione da controllare",
         "view": {
             "board": "Bacheca",
             "teams": "Team",
@@ -97,7 +98,7 @@
     },
     "alarms": {
         "title": "Allarmi",
-        "subtitle": "Turni aperti da controllare: turni lunghi, uscita dimenticata, nessuna pausa o spostamento troppo rapido.",
+        "subtitle": "Turni aperti da controllare: turni lunghi, uscita dimenticata, nessuna pausa, spostamento troppo rapido o consultazione dell’elenco evacuazione oggi.",
         "empty": "Nessun allarme al momento.",
         "summary": "{0} Nessun allarme|{1} :count allarme|[2,*] :count allarmi",
         "type_filters": "Tipo di allarme",
@@ -106,7 +107,8 @@
         "type_stale_shift": "Uscita non timbrata",
         "type_no_break": "Nessuna pausa",
         "shown": ":shown di :total allarmi mostrati",
-        "type_rapid_hop": "Salto rapido"
+        "type_rapid_hop": "Salto rapido",
+        "type_roster_viewed": "Elenco evacuazione"
     },
     "force_close": {
         "title": "Chiudi turno",

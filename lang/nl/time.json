@@ -60,11 +60,12 @@
             "long_shift": "Shift langer dan :hours uur",
             "stale_shift": "Niet uitgeklokt (> :hours uur)",
             "no_break": "Geen pauze na :hours uur",
-            "rapid_hop": "Verplaatst binnen :hours min"
+            "rapid_hop": "Verplaatst binnen :hours min",
+            "roster_viewed": "Evacuatielijst geraadpleegd"
         },
         "view_modes": "Weergave",
         "board_absent_title": "Afwezig / Extra actie",
-        "attention_board_subtitle": "Open shifts die aandacht vragen",
+        "attention_board_subtitle": "Open shifts en evacuatielijst-raadplegingen die aandacht vragen",
         "view": {
             "board": "Board",
             "teams": "Teams",
@@ -97,7 +98,7 @@
     },
     "alarms": {
         "title": "Alarmen",
-        "subtitle": "Open shifts die aandacht vragen — lange shifts, vergeten uitklokken, geen pauze of te snelle verplaatsing.",
+        "subtitle": "Open shifts die aandacht vragen — lange shifts, vergeten uitklokken, geen pauze, te snelle verplaatsing, of raadpleging van de evacuatielijst vandaag.",
         "empty": "Geen alarmen op dit moment.",
         "summary": "{0} Geen alarmen|{1} :count alarm|[2,*] :count alarmen",
         "type_filters": "Type alarm",
@@ -106,7 +107,8 @@
         "type_stale_shift": "Niet uitgeklokt",
         "type_no_break": "Geen pauze",
         "shown": ":shown van :total alarmen getoond",
-        "type_rapid_hop": "Snelle hop"
+        "type_rapid_hop": "Snelle hop",
+        "type_roster_viewed": "Evacuatielijst"
     },
     "force_close": {
         "title": "Shift sluiten",

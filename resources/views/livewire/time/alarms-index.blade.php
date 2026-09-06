@@ -66,12 +66,7 @@
             @foreach ($grouped as $type => $groupItems)
                 @php
                     $typeEnum = \App\Enums\TimePresenceAttentionType::from($type);
-                    $hours = match ($typeEnum) {
-                        \App\Enums\TimePresenceAttentionType::StaleShift => (int) config('time.stale_shift_hours', 16),
-                        \App\Enums\TimePresenceAttentionType::LongShift => (int) config('time.long_shift_hours', 10),
-                        \App\Enums\TimePresenceAttentionType::NoBreak => (int) config('time.break_reminder_hours', 6),
-                        \App\Enums\TimePresenceAttentionType::RapidHop => (int) config('time.rapid_hop_minutes', 5),
-                    };
+                    $hours = $typeEnum->thresholdValue();
                     $typeTotal = $activeAttentionType !== null
                         ? $filteredCount
                         : (int) ($typeCounts[$type] ?? $groupItems->count());
@@ -83,13 +78,20 @@
                     </div>
                     <div class="wp-time-presence-attention__list">
                         @foreach ($groupItems as $item)
-                            <div class="wp-time-presence-attention__item" wire:key="alarm-{{ $type }}-{{ $item->shift->id }}">
-                                @include('partials.wp-time-presence-row', [
-                                    'shift' => $item->shift,
-                                    'showForceClose' => true,
-                                    'showTeam' => true,
-                                    'variant' => $item->shift->isOnBreak() ? 'break' : 'active',
-                                ])
+                            <div class="wp-time-presence-attention__item" wire:key="alarm-{{ $type }}-{{ $item->listKey() }}">
+                                @if ($item->rosterView !== null)
+                                    @include('partials.wp-time-roster-view-row', [
+                                        'view' => $item->rosterView,
+                                        'showTeam' => true,
+                                    ])
+                                @elseif ($item->shift !== null)
+                                    @include('partials.wp-time-presence-row', [
+                                        'shift' => $item->shift,
+                                        'showForceClose' => true,
+                                        'showTeam' => true,
+                                        'variant' => $item->shift->isOnBreak() ? 'break' : 'active',
+                                    ])
+                                @endif
                             </div>
                         @endforeach
                     </div>

@@ -1,12 +1,13 @@
 @php
     use App\Enums\TimePresenceAttentionType;
 
-    $types = [
+        $types = [
         '' => __('time.alarms.type_all'),
         TimePresenceAttentionType::LongShift->value => __('time.alarms.type_long_shift'),
         TimePresenceAttentionType::StaleShift->value => __('time.alarms.type_stale_shift'),
         TimePresenceAttentionType::NoBreak->value => __('time.alarms.type_no_break'),
         TimePresenceAttentionType::RapidHop->value => __('time.alarms.type_rapid_hop'),
+        TimePresenceAttentionType::RosterViewed->value => __('time.alarms.type_roster_viewed'),
     ];
 @endphp
 

@@ -92,6 +92,7 @@
         "tenant.registered": "Organisatie geregistreerd",
         "tenant.time_module_toggled": "Time-module in/uitgeschakeld",
         "tenant.time_qr_rotation_updated": "Time-QR-rotatie bijgewerkt",
+        "time.roster.viewed": "Evacuatielijst geraadpleegd",
         "tenant.trial_api_toggled": "Proef-API in/uitgeschakeld",
         "tenant_purge.unused_deleted": "Ongebruikt account verwijderd",
         "unit.activated": "Unit geactiveerd",

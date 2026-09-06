@@ -15,26 +15,27 @@
     <div class="wp-time-presence-attention__list">
         @foreach ($items as $item)
             @php
-                $shift = $item->shift;
-                $hours = match ($item->type) {
-                    \App\Enums\TimePresenceAttentionType::StaleShift => (int) config('time.stale_shift_hours', 16),
-                    \App\Enums\TimePresenceAttentionType::LongShift => (int) config('time.long_shift_hours', 10),
-                    \App\Enums\TimePresenceAttentionType::NoBreak => (int) config('time.break_reminder_hours', 6),
-                    \App\Enums\TimePresenceAttentionType::RapidHop => (int) config('time.rapid_hop_minutes', 5),
-                };
+                $hours = $item->type->thresholdValue();
                 $labelKey = 'time.presence.attention.'.$item->type->value;
             @endphp
-            <div class="wp-time-presence-attention__item" wire:key="presence-attention-{{ $item->type->value }}-{{ $shift->id }}">
+            <div class="wp-time-presence-attention__item" wire:key="presence-attention-{{ $item->type->value }}-{{ $item->listKey() }}">
                 <p class="wp-time-presence-attention__reason">
                     <x-wp-icon name="alert-triangle" class="wp-time-presence-attention__reason-icon" />
                     <span>{{ __($labelKey, ['hours' => $hours]) }}</span>
                 </p>
-                @include('partials.wp-time-presence-row', [
-                    'shift' => $shift,
-                    'showForceClose' => $showForceClose,
-                    'showTeam' => true,
-                    'variant' => $shift->isOnBreak() ? 'break' : 'active',
-                ])
+                @if ($item->rosterView !== null)
+                    @include('partials.wp-time-roster-view-row', [
+                        'view' => $item->rosterView,
+                        'showTeam' => true,
+                    ])
+                @elseif ($item->shift !== null)
+                    @include('partials.wp-time-presence-row', [
+                        'shift' => $item->shift,
+                        'showForceClose' => $showForceClose,
+                        'showTeam' => true,
+                        'variant' => $item->shift->isOnBreak() ? 'break' : 'active',
+                    ])
+                @endif
             </div>
         @endforeach
     </div>
