@@ -1170,7 +1170,7 @@
                 },
                 {
                     "label": "Vista",
-                    "text": "Elija <strong>Equipos</strong>, <strong>Tarjetas</strong> o <strong>Ubicaciones</strong>. Expanda un equipo solo cuando necesite ver trabajadores."
+                    "text": "Elija <strong>Equipos</strong>, <strong>Tarjetas</strong> o <strong>Ubicaciones</strong>. Expanda un equipo solo cuando necesite ver operarios."
                 },
                 {
                     "label": "Filtros",
@@ -1182,7 +1182,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Los trabajadores fichan mediante la pegatina QR en un clock point (<code>/time/…</code>). Identificación con nombre e icono (PIN opcional) en un solo móvil — sin inicio de sesión aparte."
+                    "text": "Los operarios fichan mediante la pegatina QR en un clock point (<code>/time/…</code>). Identificación con nombre e icono (PIN opcional) en un solo móvil — sin inicio de sesión aparte."
                 },
                 {
                     "label": "Lista de evacuación",
@@ -1212,7 +1212,7 @@
             "actions": [
                 {
                     "label": "Período y filtros",
-                    "text": "Elija fechas de inicio y fin y filtre opcionalmente por equipo, trabajador o clock point. Pulse <strong>Aplicar</strong> para actualizar la lista."
+                    "text": "Elija fechas de inicio y fin y filtre opcionalmente por equipo, operario o clock point. Pulse <strong>Aplicar</strong> para actualizar la lista."
                 },
                 {
                     "label": "Descargar informe",
@@ -1232,7 +1232,7 @@
                 },
                 {
                     "label": "Vincular tareas",
-                    "text": "Inicie o complete una tarea mediante el portal QR de unidad mientras el trabajador está fichado — entonces esa tarea se vincula automáticamente al turno abierto. Al fichar salida, las tareas vinculadas aún abiertas se cierran."
+                    "text": "Inicie o complete una tarea mediante el portal QR de unidad mientras el operario está fichado — entonces esa tarea se vincula automáticamente al turno abierto. Al fichar salida, las tareas vinculadas aún abiertas se cierran."
                 }
             ]
         },

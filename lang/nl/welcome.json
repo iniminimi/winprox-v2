@@ -47,7 +47,7 @@
             "QR-portaal."
         ],
         "subtitle": "Meld defecten, beheer taken, registreer aanwezigheid en volg ESG-acties op — via één QR-code, zonder app.",
-        "body": "Medewerkers klokken in via de Clock Point QR; burgers en teams werken verder via de unit-QR op elke locatie.",
+        "body": "Uitvoerders klokken in via de Clock Point QR; burgers en teams werken verder via de unit-QR op elke locatie.",
         "cta_start": "Gratis proberen",
         "cta_video": "Bekijk video",
         "hero_note": "Geen kredietkaart nodig · binnen 2 minuten gestart",
@@ -218,7 +218,7 @@
     "qr": {
         "eyebrow": "QR-portalen",
         "title": "Iedere unit krijgt een eigen digitale pagina.",
-        "lead": "Medewerkers scannen de Clock Point QR om in te klokken; op locatie werken ze verder via de unit-QR — op elke smartphone.",
+        "lead": "Uitvoerders scannen de Clock Point QR om in te klokken; op locatie werken ze verder via de unit-QR — op elke smartphone.",
         "unit_features": [
             "Documenten",
             "Handleidingen",

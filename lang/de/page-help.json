@@ -1170,7 +1170,7 @@
                 },
                 {
                     "label": "Ansicht",
-                    "text": "Wählen Sie <strong>Teams</strong> (Akkordeon), <strong>Teamkarten</strong> oder <strong>Standorte</strong>. Klappen Sie ein Team erst auf, wenn Sie Mitarbeitende sehen möchten."
+                    "text": "Wählen Sie <strong>Teams</strong> (Akkordeon), <strong>Teamkarten</strong> oder <strong>Standorte</strong>. Klappen Sie ein Team erst auf, wenn Sie Ausführende sehen möchten."
                 },
                 {
                     "label": "Filter",
@@ -1182,7 +1182,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Mitarbeiter stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>). Identifikation mit Name und Symbol (optional PIN) auf einem Handy — keine separate Anmeldung."
+                    "text": "Ausführende stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>). Identifikation mit Name und Symbol (optional PIN) auf einem Handy — keine separate Anmeldung."
                 },
                 {
                     "label": "Evakuierungsliste",
@@ -1212,7 +1212,7 @@
             "actions": [
                 {
                     "label": "Zeitraum und Filter",
-                    "text": "Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Mitarbeiter oder Clock Point. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren."
+                    "text": "Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Ausführendem oder Clock Point. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren."
                 },
                 {
                     "label": "Bericht herunterladen",
@@ -1232,7 +1232,7 @@
                 },
                 {
                     "label": "Aufgaben verknüpfen",
-                    "text": "Starten oder schließen Sie eine Aufgabe über das Unit-QR-Portal, während der Mitarbeiter eingestempelt ist — dann wird diese Aufgabe automatisch mit der offenen Schicht verknüpft. Beim Ausstempeln werden noch offene verknüpfte Aufgaben abgeschlossen."
+                    "text": "Starten oder schließen Sie eine Aufgabe über das Unit-QR-Portal, während der Ausführende eingestempelt ist — dann wird diese Aufgabe automatisch mit der offenen Schicht verknüpft. Beim Ausstempeln werden noch offene verknüpfte Aufgaben abgeschlossen."
                 }
             ]
         },

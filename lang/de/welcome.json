@@ -47,7 +47,7 @@
             "QR-Portal."
         ],
         "subtitle": "Mängel melden, Aufgaben verwalten, Anwesenheit erfassen und ESG-Maßnahmen verfolgen — über einen QR-Code, ohne App.",
-        "body": "Mitarbeitende stempeln über den Clock-Point-QR ein; Bürger und Teams arbeiten vor Ort über den Unit-QR an jedem Standort weiter.",
+        "body": "Ausführende stempeln über den Clock-Point-QR ein; Bürger und Teams arbeiten vor Ort über den Unit-QR an jedem Standort weiter.",
         "cta_start": "Kostenlos testen",
         "cta_video": "Video ansehen",
         "hero_note": "Keine Kreditkarte · Start in 2 Minuten",
@@ -218,7 +218,7 @@
     "qr": {
         "eyebrow": "QR-Portale",
         "title": "Jede Unit erhält eine eigene digitale Seite.",
-        "lead": "Mitarbeitende scannen den Clock-Point-QR zum Einstempeln; vor Ort arbeiten sie über den Unit-QR weiter — auf jedem Smartphone.",
+        "lead": "Ausführende scannen den Clock-Point-QR zum Einstempeln; vor Ort arbeiten sie über den Unit-QR weiter — auf jedem Smartphone.",
         "unit_features": [
             "Dokumente",
             "Anleitungen",

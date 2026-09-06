@@ -49,7 +49,7 @@
             "digital."
         ],
         "subtitle": "Reporte incidencias, gestione tareas, registre presencia y siga acciones ESG — con un solo código QR, sin aplicación.",
-        "body": "El personal ficha con el QR Clock Point; ciudadanos y equipos continúan en sitio con el QR de unidad en cada ubicación.",
+        "body": "Los operarios fichan con el QR Clock Point; ciudadanos y equipos continúan en sitio con el QR de unidad en cada ubicación.",
         "cta_start": "Probar gratis",
         "cta_video": "Ver vídeo",
         "hero_note": "Sin tarjeta de crédito · empiece en 2 minutos",
@@ -220,7 +220,7 @@
     "qr": {
         "eyebrow": "Portales QR",
         "title": "Cada unidad obtiene su propia página digital.",
-        "lead": "El personal escanea el QR Clock Point para fichar; en sitio continúan con el QR de unidad — en cualquier smartphone.",
+        "lead": "Los operarios escanean el QR Clock Point para fichar; en sitio continúan con el QR de unidad — en cualquier smartphone.",
         "unit_features": [
             "Documentos",
             "Manuales",

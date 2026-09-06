@@ -1182,7 +1182,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon (optional PIN) on one phone — no separate login."
+                    "text": "Field workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon (optional PIN) on one phone — no separate login."
                 },
                 {
                     "label": "Evacuation list",

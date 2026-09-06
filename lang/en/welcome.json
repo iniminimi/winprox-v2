@@ -49,7 +49,7 @@
             "portal."
         ],
         "subtitle": "Report issues, manage tasks, track presence and follow ESG actions — via one QR code, no app required.",
-        "body": "Staff clock in via the Clock Point QR; citizens and teams continue on site via the unit QR at each location.",
+        "body": "Field workers clock in via the Clock Point QR; citizens and teams continue on site via the unit QR at each location.",
         "cta_start": "Try for free",
         "cta_video": "Watch video",
         "hero_note": "No credit card required · get started in 2 minutes",
@@ -220,7 +220,7 @@
     "qr": {
         "eyebrow": "QR portals",
         "title": "Every unit gets its own digital page.",
-        "lead": "Staff scan the Clock Point QR to clock in; on site they continue via the unit QR — on any smartphone.",
+        "lead": "Field workers scan the Clock Point QR to clock in; on site they continue via the unit QR — on any smartphone.",
         "unit_features": [
             "Documents",
             "Manuals",

@@ -1178,7 +1178,7 @@
                 },
                 {
                     "label": "Affichage",
-                    "text": "Choisissez <strong>Équipes</strong>, <strong>Cartes équipe</strong> ou <strong>Sites</strong>. Dépliez une équipe uniquement pour voir les collaborateurs."
+                    "text": "Choisissez <strong>Équipes</strong>, <strong>Cartes équipe</strong> ou <strong>Sites</strong>. Dépliez une équipe uniquement pour voir les exécutants."
                 },
                 {
                     "label": "Filtres",
@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Les collaborateurs pointent via l'autocollant QR sur un clock point (<code>/time/…</code>). Identification par nom et icône (PIN optionnel) sur un seul téléphone — pas de connexion séparée."
+                    "text": "Les exécutants pointent via l'autocollant QR sur un clock point (<code>/time/…</code>). Identification par nom et icône (PIN optionnel) sur un seul téléphone — pas de connexion séparée."
                 },
                 {
                     "label": "Liste d’évacuation",
@@ -1220,7 +1220,7 @@
             "actions": [
                 {
                     "label": "Période et filtres",
-                    "text": "Choisissez une date de début et de fin et filtrez éventuellement par équipe, collaborateur ou clock point. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste."
+                    "text": "Choisissez une date de début et de fin et filtrez éventuellement par équipe, exécutant ou clock point. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste."
                 },
                 {
                     "label": "Télécharger le rapport",
@@ -1240,7 +1240,7 @@
                 },
                 {
                     "label": "Lier les tâches",
-                    "text": "Démarrez ou terminez une tâche via le portail QR unité pendant que le collaborateur est pointé — la tâche est alors automatiquement liée au shift ouvert. À la sortie, les tâches liées encore ouvertes sont clôturées."
+                    "text": "Démarrez ou terminez une tâche via le portail QR unité pendant que l’exécutant est pointé — la tâche est alors automatiquement liée au shift ouvert. À la sortie, les tâches liées encore ouvertes sont clôturées."
                 }
             ]
         },

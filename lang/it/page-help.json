@@ -1170,7 +1170,7 @@
                 },
                 {
                     "label": "Vista",
-                    "text": "Scelga <strong>Team</strong>, <strong>Schede team</strong> o <strong>Sedi</strong>. Espanda un team solo per vedere i lavoratori."
+                    "text": "Scelga <strong>Team</strong>, <strong>Schede team</strong> o <strong>Sedi</strong>. Espanda un team solo per vedere gli esecutori."
                 },
                 {
                     "label": "Filtri",
@@ -1182,7 +1182,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "I lavoratori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>). Identificazione con nome e icona (PIN opzionale) su un solo telefono — nessun accesso separato."
+                    "text": "Gli esecutori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>). Identificazione con nome e icona (PIN opzionale) su un solo telefono — nessun accesso separato."
                 },
                 {
                     "label": "Elenco evacuazione",
@@ -1212,7 +1212,7 @@
             "actions": [
                 {
                     "label": "Periodo e filtri",
-                    "text": "Scelga date di inizio e fine e filtri facoltativamente per team, lavoratore o clock point. Clicchi <strong>Applica</strong> per aggiornare l'elenco."
+                    "text": "Scelga date di inizio e fine e filtri facoltativamente per team, esecutore o clock point. Clicchi <strong>Applica</strong> per aggiornare l'elenco."
                 },
                 {
                     "label": "Scarica rapporto",
@@ -1232,7 +1232,7 @@
                 },
                 {
                     "label": "Collega attività",
-                    "text": "Avvii o completi un'attività tramite il portale QR unità mentre il lavoratore è timbrato — l'attività viene collegata automaticamente al turno aperto. All'uscita, le attività collegate ancora aperte vengono chiuse."
+                    "text": "Avvii o completi un'attività tramite il portale QR unità mentre l’esecutore è timbrato — l'attività viene collegata automaticamente al turno aperto. All'uscita, le attività collegate ancora aperte vengono chiuse."
                 }
             ]
         },

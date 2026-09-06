@@ -49,7 +49,7 @@
             "digitale."
         ],
         "subtitle": "Segnala guasti, gestisci attività, registra presenze e segui azioni ESG — con un solo codice QR, senza app.",
-        "body": "Il personale timbra tramite il QR Clock Point; cittadini e team continuano in sede tramite il QR unità in ogni location.",
+        "body": "Gli esecutori timbrano tramite il QR Clock Point; cittadini e team continuano in sede tramite il QR unità in ogni location.",
         "cta_start": "Prova gratuita",
         "cta_video": "Guarda il video",
         "hero_note": "Nessuna carta di credito · avvio in 2 minuti",
@@ -220,7 +220,7 @@
     "qr": {
         "eyebrow": "Portali QR",
         "title": "Ogni unità ottiene la propria pagina digitale.",
-        "lead": "Il personale scansiona il QR Clock Point per timbrare; in sede continuano tramite il QR unità — su qualsiasi smartphone.",
+        "lead": "Gli esecutori scansionano il QR Clock Point per timbrare; in sede continuano tramite il QR unità — su qualsiasi smartphone.",
         "unit_features": [
             "Documenti",
             "Manuali",

@@ -1170,7 +1170,7 @@
                 },
                 {
                     "label": "Weergave",
-                    "text": "Kies tussen <strong>Teams</strong> (accordion), <strong>Teamkaarten</strong> (overzicht per team) of <strong>Locaties</strong> (ingeklokt per vestiging). Open een team pas wanneer u medewerkers wilt zien."
+                    "text": "Kies tussen <strong>Teams</strong> (accordion), <strong>Teamkaarten</strong> (overzicht per team) of <strong>Locaties</strong> (ingeklokt per vestiging). Open een team pas wanneer u uitvoerders wilt zien."
                 },
                 {
                     "label": "Filters",
@@ -1182,7 +1182,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Medewerkers klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon (optioneel pincode) op één gsm — geen aparte login."
+                    "text": "Uitvoerders klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon (optioneel pincode) op één gsm — geen aparte login."
                 },
                 {
                     "label": "Evacuatielijst",
@@ -1212,7 +1212,7 @@
             "actions": [
                 {
                     "label": "Periode en filters",
-                    "text": "Kies een van- en tot-datum en filter optioneel op team, medewerker of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
+                    "text": "Kies een van- en tot-datum en filter optioneel op team, uitvoerder of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
                 },
                 {
                     "label": "Download rapport",
@@ -1232,7 +1232,7 @@
                 },
                 {
                     "label": "Taken koppelen",
-                    "text": "Start of rond een taak af via het unit-QR-portaal terwijl de medewerker ingeklokt is — dan wordt die taak automatisch aan de open shift gekoppeld. Bij uitklokken worden nog open gekoppelde taken afgesloten."
+                    "text": "Start of rond een taak af via het unit-QR-portaal terwijl de uitvoerder ingeklokt is — dan wordt die taak automatisch aan de open shift gekoppeld. Bij uitklokken worden nog open gekoppelde taken afgesloten."
                 }
             ]
         },

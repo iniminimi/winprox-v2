@@ -50,7 +50,7 @@
             "numérique."
         ],
         "subtitle": "Signalez des défauts, gérez les tâches, enregistrez la présence et suivez les actions ESG — via un seul QR code, sans application.",
-        "body": "Le personnel pointe via le QR Clock Point ; les citoyens et les équipes continuent sur site via le QR unité à chaque emplacement.",
+        "body": "Les exécutants pointent via le QR Clock Point ; les citoyens et les équipes continuent sur site via le QR unité à chaque emplacement.",
         "cta_start": "Essai gratuit",
         "cta_video": "Voir la vidéo",
         "hero_note": "Sans carte bancaire · démarrage en 2 minutes",
@@ -221,7 +221,7 @@
     "qr": {
         "eyebrow": "Portails QR",
         "title": "Chaque unité dispose de sa propre page numérique.",
-        "lead": "Le personnel scanne le QR Clock Point pour pointer ; sur site, ils continuent via le QR unité — sur tout smartphone.",
+        "lead": "Les exécutants scannent le QR Clock Point pour pointer ; sur site, ils continuent via le QR unité — sur tout smartphone.",
         "unit_features": [
             "Documents",
             "Manuels",
