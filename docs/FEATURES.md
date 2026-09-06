@@ -679,8 +679,9 @@ productsector op `Tenant`.
   Location en/of Clock Point.
 - Events: clock in → IN; break start → OUT; break end → IN; clock out → OUT; realtime queue;
   submission-log + validity/remarks raadplegen.
-- UI: Instellingen (credentials + aan/uit), Time → **CIAO** (status/fouten + opnieuw),
-  Personen/Locaties (NISS, DDT).
+- UI: Instellingen (CIAO-kader onderaan, grijs tot aanvraag via info@winprox.app;
+  superuser zet aan op Platform → Tenants; daarna credentials), Time → **CIAO**
+  (status/fouten + opnieuw), Personen/Locaties (NISS, DDT).
 - **Niet in golf 1:** Checkinatwork (CAW)-API, Construbadge-hardware, Dimona/payroll, vlees-CAW.
 
 ### 5g.3 Golf 2 — CIAO bouw (`CiaoConstruction`)

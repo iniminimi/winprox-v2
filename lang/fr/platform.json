@@ -12,6 +12,7 @@
     "trial_api": "Accès API",
     "esg_module": "Module ESG",
     "time_module": "Module Time",
+    "ciao_module": "CIAO (ONSS)",
     "open_support": "Ouvrir la vue support",
     "stop": "Terminer la vue support",
     "active": "Vous consultez :name.",
@@ -446,6 +447,7 @@
     "errors": {
         "units_cap_required": "Indiquez un plafond d'unités.",
         "units_cap_invalid": "Le plafond doit être entre 1 et 1 000 000.",
-        "not_corporate": "Cette organisation n'est pas en Corporate."
+        "not_corporate": "Cette organisation n'est pas en Corporate.",
+        "ciao_requires_time": "Activez d’abord le module Time pour CIAO."
     }
 }

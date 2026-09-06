@@ -20,6 +20,9 @@
     @if (session('success'))
         <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
     @endif
+    @if (session('error'))
+        <div class="wp-flash wp-flash--danger">{{ session('error') }}</div>
+    @endif
 
     <div class="wp-card wp-card-pad wp-stack">
         <label class="wp-label" for="platform-search">{{ __('platform.search') }}</label>
@@ -72,6 +75,15 @@
                                 <label class="wp-chip wp-chip--sm">
                                     <input type="checkbox" wire:click="toggleTimeModule({{ $tenant->id }})" {{ $tenant->has_time_module ? 'checked' : '' }}>
                                     <span>{{ __('platform.time_module') }}</span>
+                                </label>
+                                <label class="wp-chip wp-chip--sm {{ (! $tenant->has_time_module && ! $tenant->presence_compliance_enabled) ? 'wp-chip--disabled' : '' }}">
+                                    <input
+                                        type="checkbox"
+                                        wire:click="togglePresenceCompliance({{ $tenant->id }})"
+                                        {{ $tenant->presence_compliance_enabled ? 'checked' : '' }}
+                                        @disabled(! $tenant->has_time_module && ! $tenant->presence_compliance_enabled)
+                                    >
+                                    <span>{{ __('platform.ciao_module') }}</span>
                                 </label>
                             </div>
                         </div>

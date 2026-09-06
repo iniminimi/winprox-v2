@@ -12,6 +12,7 @@
     "trial_api": "API-Zugriff",
     "esg_module": "ESG-Modul",
     "time_module": "Time-Modul",
+    "ciao_module": "CIAO (RSZ)",
     "open_support": "Support-Ansicht öffnen",
     "stop": "Support-Ansicht beenden",
     "active": "Sie sehen :name.",
@@ -446,6 +447,7 @@
     "errors": {
         "units_cap_required": "Bitte Einheiten-Cap eingeben.",
         "units_cap_invalid": "Einheiten-Cap muss zwischen 1 und 1.000.000 liegen.",
-        "not_corporate": "Diese Organisation hat keinen Corporate-Tarif."
+        "not_corporate": "Diese Organisation hat keinen Corporate-Tarif.",
+        "ciao_requires_time": "Schalten Sie zuerst das Time-Modul für CIAO ein."
     }
 }

@@ -200,9 +200,10 @@ ClockIn / ClockOut / StartBreak / EndBreak
 **Mapping (golf 1 — schoonmaak, bekend):** clock in → IN; break start → OUT; break end → IN;
 clock out → OUT. Golf 2: zelfde events, verplichtingen bevestigen tegen RSZ-bouwspecs.
 
-**UI:** settings (BCE + credentials + aan/uit), Location/Clock Point (DDT + werkplaats), Worker
-(NISS), Time → CIAO (submission-status/remarks + opnieuw). Geen nieuwe sidebar-producten buiten
-Time/Instellingen.
+**UI:** settings (CIAO-kader onderaan, grijs tot superuser inschakelt op Platform → Tenants
+na aanvraag via info@winprox.app; daarna BCE + credentials). Location/Clock Point (DDT +
+werkplaats), Worker (NISS), Time → CIAO (submission-status/remarks + opnieuw). Geen nieuwe
+sidebar-producten buiten Time/Instellingen.
 
 **Verboden in deze laag:** Protime-achtige planning/payroll; CAW-webservice (ook niet in golf 2);
 `tenant.sector`; losse “Schoonmaak”-welkompagina als productvariant (campagne-landings blijven

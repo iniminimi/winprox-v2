@@ -597,6 +597,10 @@
                     "text": "Choose how WinProx looks in the back office: Modern (default), Standard or Dark. Your choice applies on all signed-in devices."
                 },
                 {
+                    "label": "RSZ presence (CIAO)",
+                    "text": "This section sits at the bottom, above Privacy. It is grey by default: CIAO is exceptional and cannot be turned on here. Request it via <strong>info@winprox.app</strong>; a superuser then enables it. After that you fill in credentials (BCE, RSZ key)."
+                },
+                {
                     "label": "Privacy & data export",
                     "text": "Only the administrator can download a machine-readable overview (JSON) of the account and relevant activity within your environment. This section appears on Settings for administrators only. The file may contain sensitive data — keep it secure."
                 }
@@ -970,7 +974,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Enable or disable optional modules (Time punch clock, ESG, IoT Connect). Time is included in the trial; optional on WinProx."
+                    "text": "Enable or disable optional modules (Time punch clock, ESG, IoT Connect, CIAO/RSZ). CIAO is exceptional: the organisation requests it via info@winprox.app. Time is included in the trial; optional on WinProx."
                 },
                 {
                     "label": "Corporate units cap",
@@ -1518,7 +1522,7 @@
             "actions": [
                 {
                     "label": "Purpose",
-                    "text": "Shows Clock Point events sent to the NSSO (Check In and Out at Work): status, errors and NSSO id."
+                    "text": "Shows Clock Point events sent to the NSSO (Check In and Out at Work): status, errors and NSSO id. CIAO itself is requested via info@winprox.app and enabled by a superuser."
                 },
                 {
                     "label": "Filters",

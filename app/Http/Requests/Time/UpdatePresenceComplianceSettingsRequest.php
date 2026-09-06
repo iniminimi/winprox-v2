@@ -19,7 +19,6 @@ class UpdatePresenceComplianceSettingsRequest extends FormRequest
     public static function ruleSet(): array
     {
         return [
-            'presence_compliance_enabled' => ['sometimes', 'boolean'],
             'presence_compliance_scope' => ['nullable', Rule::enum(PresenceComplianceScope::class)],
             'enterprise_number' => ['nullable', 'regex:/^[01]?\d{9,10}$/'],
             'foreign_vat_number' => ['nullable', 'string', 'max:255'],

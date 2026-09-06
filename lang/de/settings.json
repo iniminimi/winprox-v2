@@ -141,7 +141,8 @@
         "org_logo_max": "Das Logo ist zu groß (max. :max MB).",
         "enterprise_number_invalid": "Ungültige Unternehmensnummer.",
         "presence_scope_invalid": "Dieses Anwesenheitsregime ist nicht verfügbar.",
-        "time_module_required": "Time (Stechuhr) muss für CIAO aktiv sein."
+        "time_module_required": "Time (Stechuhr) muss für CIAO aktiv sein.",
+        "presence_locked": "CIAO ist nicht eingeschaltet. Beantragen Sie es über info@winprox.app."
     },
     "api": {
         "nav": "API & Webhooks",
@@ -212,7 +213,8 @@
     "presence": {
         "title": "RSZ-Anwesenheit (CIAO)",
         "lead": "Optional: Clock-Point Ein-/Ausstempeln und Pausen in Echtzeit an Check In and Out at Work senden (Reinigung; Bau wenn freigegeben).",
-        "enabled": "CIAO-Anwesenheit aktivieren",
+        "request_hint": "CIAO ist ausnahmsweise und hier nicht selbst einschaltbar. Beantragen Sie es über die Adresse unten; WinProx schaltet es danach ein.",
+        "enabled_note": "CIAO ist eingeschaltet. Tragen Sie unten die RSZ-Daten ein.",
         "scope": "Regime",
         "scope_cleaning": "Reinigung (CIAO)",
         "enterprise_number": "Unternehmensnummer (BCE)",

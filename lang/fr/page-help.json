@@ -605,6 +605,10 @@
                     "text": "Choisissez l'apparence de WinProx pour vous en administration : Standard ou Sombre. Votre choix s'applique sur tous les appareils où vous êtes connecté. En bas de page, juste avant la rubrique d'export."
                 },
                 {
+                    "label": "Présence ONSS (CIAO)",
+                    "text": "Cette rubrique est en bas, au-dessus de Confidentialité. Grisée par défaut : CIAO est exceptionnel et ne s’active pas ici. Demandez-le via <strong>info@winprox.app</strong> ; un superuser l’active ensuite. Vous saisissez alors les identifiants (BCE, clé ONSS)."
+                },
+                {
                     "label": "Confidentialité & export de données",
                     "text": "Seul l'administrateur peut télécharger un aperçu lisible par machine (JSON) du compte et de l'activité pertinente dans votre environnement. Cette rubrique n'apparaît dans Paramètres que pour l'administrateur. Le fichier peut contenir des données sensibles — conservez-le en lieu sûr."
                 }
@@ -978,7 +982,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Activez ou désactivez les modules optionnels (Time pointeuse, ESG, IoT Connect). Time est inclus pendant l’essai ; optionnel sur WinProx."
+                    "text": "Activez ou désactivez les modules optionnels (Time pointeuse, ESG, IoT Connect, CIAO/ONSS). CIAO est exceptionnel : l’organisation le demande via info@winprox.app. Time est inclus pendant l’essai ; optionnel sur WinProx."
                 },
                 {
                     "label": "Plafond Corporate",
@@ -1526,7 +1530,7 @@
             "actions": [
                 {
                     "label": "Objectif",
-                    "text": "Affiche les envois Clock Point vers l’ONSS (Check In and Out at Work) : statut, erreurs et id ONSS."
+                    "text": "Affiche les envois Clock Point vers l’ONSS (Check In and Out at Work) : statut, erreurs et id ONSS. CIAO lui-même se demande via info@winprox.app et est activé par un superuser."
                 },
                 {
                     "label": "Filtres",

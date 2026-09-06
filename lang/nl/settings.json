@@ -141,7 +141,8 @@
         "org_logo_max": "Het logo is te groot (max. :max MB).",
         "enterprise_number_invalid": "Ongeldig ondernemingsnummer.",
         "presence_scope_invalid": "Dit aanwezigheidsregime is niet beschikbaar.",
-        "time_module_required": "Time (prikklok) moet actief zijn voor CIAO."
+        "time_module_required": "Time (prikklok) moet actief zijn voor CIAO.",
+        "presence_locked": "CIAO is niet ingeschakeld. Vraag het aan via info@winprox.app."
     },
     "api": {
         "nav": "API & webhooks",
@@ -212,7 +213,8 @@
     "presence": {
         "title": "Aanwezigheid RSZ (CIAO)",
         "lead": "Optioneel: stuur Clock Point in-/uitklokken en pauzes realtime naar Check In and Out at Work (schoonmaak; bouw wanneer vrijgegeven).",
-        "enabled": "CIAO-aanwezigheid inschakelen",
+        "request_hint": "CIAO is uitzonderlijk en niet zelf in te schakelen. Vraag het aan via onderstaand adres; WinProx zet het daarna aan.",
+        "enabled_note": "CIAO is ingeschakeld. Vul hieronder de RSZ-gegevens in.",
         "scope": "Regime",
         "scope_cleaning": "Schoonmaak (CIAO)",
         "enterprise_number": "Ondernemingsnummer (BCE)",

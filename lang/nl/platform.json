@@ -12,6 +12,7 @@
     "trial_api": "API toegang",
     "esg_module": "ESG-module",
     "time_module": "Time-module",
+    "ciao_module": "CIAO (RSZ)",
     "open_support": "Support view openen",
     "stop": "Support view beëindigen",
     "active": "Je kijkt mee bij :name.",
@@ -446,6 +447,7 @@
     "errors": {
         "units_cap_required": "Vul een units-cap in.",
         "units_cap_invalid": "Units-cap moet tussen 1 en 1.000.000 liggen.",
-        "not_corporate": "Deze organisatie heeft geen Corporate-formule."
+        "not_corporate": "Deze organisatie heeft geen Corporate-formule.",
+        "ciao_requires_time": "Zet eerst de Time-module aan voor CIAO."
     }
 }

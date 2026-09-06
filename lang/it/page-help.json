@@ -597,6 +597,10 @@
                     "text": "Scelga come WinProx appare per Lei nell'admin: Standard o Scuro. La Sua scelta si applica su tutti i dispositivi in cui è connesso. In fondo alla pagina, subito prima della sezione export."
                 },
                 {
+                    "label": "Presenza ONSS (CIAO)",
+                    "text": "Questa sezione è in fondo, sopra Privacy. Grigio di default: CIAO è eccezionale e non si attiva da qui. Richiedilo via <strong>info@winprox.app</strong>; un superuser lo attiva dopo. Poi inserisci le credenziali (BCE, chiave ONSS)."
+                },
+                {
                     "label": "Privacy ed esportazione dati",
                     "text": "Solo l'amministratore può scaricare una panoramica leggibile da macchina (JSON) dell'account e dell'attività rilevante nel Suo ambiente. Questa sezione compare in Impostazioni solo per gli amministratori. Il file può contenere dati sensibili — conservilo in modo sicuro."
                 }
@@ -970,7 +974,7 @@
                 },
                 {
                     "label": "Moduli",
-                    "text": "Attiva o disattiva i moduli opzionali (Time timbratrice, ESG, IoT Connect). Time è inclusa nella prova; opzionale su WinProx."
+                    "text": "Attiva o disattiva i moduli opzionali (Time timbratrice, ESG, IoT Connect, CIAO/ONSS). CIAO è eccezionale: l’organizzazione lo richiede via info@winprox.app. Time è inclusa nella prova; opzionale su WinProx."
                 },
                 {
                     "label": "Cap Corporate",
@@ -1518,7 +1522,7 @@
             "actions": [
                 {
                     "label": "Scopo",
-                    "text": "Mostra gli invii Clock Point all’ONSS (Check In and Out at Work): stato, errori e id ONSS."
+                    "text": "Mostra gli invii Clock Point all’ONSS (Check In and Out at Work): stato, errori e id ONSS. CIAO stesso si richiede via info@winprox.app e lo attiva un superuser."
                 },
                 {
                     "label": "Filtri",

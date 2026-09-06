@@ -597,6 +597,10 @@
                     "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
                 },
                 {
+                    "label": "Aanwezigheid RSZ (CIAO)",
+                    "text": "Dit kader staat onderaan, boven Privacy. Standaard grijs: CIAO is uitzonderlijk en niet zelf in te schakelen. Vraag het aan via <strong>info@winprox.app</strong>; een superuser zet het daarna aan. Daarna vult u credentials (BCE, RSZ-sleutel) in."
+                },
+                {
                     "label": "Privacy & export van gegevens",
                     "text": "Alleen de beheerder kan een machineleesbaar overzicht (JSON) van het account en relevante activiteit binnen jullie omgeving downloaden. Deze rubriek staat alleen op Instellingen voor de beheerder. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig."
                 }
@@ -970,7 +974,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Schakel optionele modules in of uit (Time-prikklok, ESG, IoT Connect). Time is inbegrepen in de proefperiode; bij WinProx optioneel."
+                    "text": "Schakel optionele modules in of uit (Time-prikklok, ESG, IoT Connect, CIAO/RSZ). CIAO is uitzonderlijk: de organisatie vraagt het aan via info@winprox.app. Time is inbegrepen in de proefperiode; bij WinProx optioneel."
                 },
                 {
                     "label": "Corporate units-cap",
@@ -1518,7 +1522,7 @@
             "actions": [
                 {
                     "label": "Doel",
-                    "text": "Toont de inzendingen van Clock Point-gebeurtenissen naar de RSZ (Check In and Out at Work): status, fouten en RSZ-id."
+                    "text": "Toont de inzendingen van Clock Point-gebeurtenissen naar de RSZ (Check In and Out at Work): status, fouten en RSZ-id. CIAO zelf wordt aangevraagd via info@winprox.app en door een superuser ingeschakeld."
                 },
                 {
                     "label": "Filters",

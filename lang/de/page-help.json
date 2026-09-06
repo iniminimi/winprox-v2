@@ -597,6 +597,10 @@
                     "text": "Wählen Sie, wie WinProx für Sie in der Verwaltung aussieht: Standard oder Dunkel. Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind. Steht unten auf der Seite, direkt vor dem Export-Bereich."
                 },
                 {
+                    "label": "RSZ-Anwesenheit (CIAO)",
+                    "text": "Dieser Bereich steht unten, vor Datenschutz. Standardmäßig grau: CIAO ist ausnahmsweise und hier nicht selbst einschaltbar. Beantragen Sie es über <strong>info@winprox.app</strong>; ein Superuser schaltet es danach ein. Danach tragen Sie Credentials (BCE, RSZ-Schlüssel) ein."
+                },
+                {
                     "label": "Datenschutz & Datenexport",
                     "text": "Nur der Administrator kann eine maschinenlesbare Übersicht (JSON) des Kontos und relevanter Aktivität in Ihrer Umgebung herunterladen. Dieser Bereich erscheint in Einstellungen nur für den Administrator. Die Datei kann sensible Daten enthalten — sicher aufbewahren."
                 }
@@ -970,7 +974,7 @@
                 },
                 {
                     "label": "Module",
-                    "text": "Schalten Sie optionale Module ein oder aus (Time-Stechuhr, ESG, IoT Connect). Time ist in der Testphase enthalten; bei WinProx optional."
+                    "text": "Schalten Sie optionale Module ein oder aus (Time-Stechuhr, ESG, IoT Connect, CIAO/RSZ). CIAO ist ausnahmsweise: die Organisation beantragt es über info@winprox.app. Time ist in der Testphase enthalten; bei WinProx optional."
                 },
                 {
                     "label": "Corporate Einheiten-Cap",
@@ -1518,7 +1522,7 @@
             "actions": [
                 {
                     "label": "Zweck",
-                    "text": "Zeigt Clock-Point-Ereignisse an die RSZ (Check In and Out at Work): Status, Fehler und RSZ-ID."
+                    "text": "Zeigt Clock-Point-Ereignisse an die RSZ (Check In and Out at Work): Status, Fehler und RSZ-ID. CIAO selbst wird über info@winprox.app beantragt und von einem Superuser eingeschaltet."
                 },
                 {
                     "label": "Filter",

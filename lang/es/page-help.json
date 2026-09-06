@@ -597,6 +597,10 @@
                     "text": "Elija cómo se ve WinProx para usted en administración: Estándar u Oscuro. Su elección se aplica en todos los dispositivos donde haya iniciado sesión. Al final de la página, justo antes de la sección de exportación."
                 },
                 {
+                    "label": "Presencia ONSS (CIAO)",
+                    "text": "Esta sección está abajo, encima de Privacidad. En gris por defecto: CIAO es excepcional y no se activa aquí. Solicítelo en <strong>info@winprox.app</strong>; un superusuario lo activa después. Luego introduce las credenciales (BCE, clave ONSS)."
+                },
+                {
                     "label": "Privacidad y exportación de datos",
                     "text": "Solo el administrador puede descargar un resumen legible por máquina (JSON) de la cuenta y la actividad relevante dentro de su entorno. Esta sección aparece en Configuración solo para administradores. El archivo puede contener datos sensibles — guárdelo de forma segura."
                 }
@@ -970,7 +974,7 @@
                 },
                 {
                     "label": "Módulos",
-                    "text": "Active o desactive módulos opcionales (Time reloj de fichar, ESG, IoT Connect). Time está incluido en la prueba; opcional en WinProx."
+                    "text": "Active o desactive módulos opcionales (Time reloj de fichar, ESG, IoT Connect, CIAO/ONSS). CIAO es excepcional: la organización lo solicita en info@winprox.app. Time está incluido en la prueba; opcional en WinProx."
                 },
                 {
                     "label": "Tope Corporate",
@@ -1518,7 +1522,7 @@
             "actions": [
                 {
                     "label": "Objetivo",
-                    "text": "Muestra los envíos de Clock Point a la ONSS (Check In and Out at Work): estado, errores e id ONSS."
+                    "text": "Muestra los envíos de Clock Point a la ONSS (Check In and Out at Work): estado, errores e id ONSS. El propio CIAO se solicita en info@winprox.app y lo activa un superusuario."
                 },
                 {
                     "label": "Filtros",

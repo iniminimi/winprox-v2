@@ -91,6 +91,7 @@
         "tenant.qr_sticker_sheet_settings_updated": "QR sticker settings updated",
         "tenant.registered": "Organisation registered",
         "tenant.time_module_toggled": "Time module toggled",
+        "tenant.presence_compliance_toggled": "CIAO presence toggled",
         "tenant.time_qr_rotation_updated": "Time QR rotation updated",
         "time.roster.viewed": "Evacuation list viewed",
         "tenant.trial_api_toggled": "Trial API toggled",

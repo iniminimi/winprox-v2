@@ -14,7 +14,6 @@ class UpdatePresenceComplianceSettingsAction
 
     /**
      * @param  array{
-     *     presence_compliance_enabled?: bool,
      *     presence_compliance_scope?: string|null,
      *     enterprise_number?: string|null,
      *     foreign_vat_number?: string|null,
@@ -27,6 +26,10 @@ class UpdatePresenceComplianceSettingsAction
     {
         if (! TimeModuleAccess::tenantHasModule($tenant)) {
             throw new InvalidArgumentException('time_module_disabled');
+        }
+
+        if (! $tenant->presence_compliance_enabled) {
+            throw new InvalidArgumentException('presence_compliance_locked');
         }
 
         $updates = [];
@@ -54,10 +57,6 @@ class UpdatePresenceComplianceSettingsAction
             }
         }
 
-        if (array_key_exists('presence_compliance_enabled', $data)) {
-            $updates['presence_compliance_enabled'] = (bool) $data['presence_compliance_enabled'];
-        }
-
         if (array_key_exists('presence_rsz_client_id', $data)) {
             $clientId = trim((string) ($data['presence_rsz_client_id'] ?? ''));
             // Lege string = niet wijzigen (wachtwoordachtig veld).
@@ -76,11 +75,6 @@ class UpdatePresenceComplianceSettingsAction
         }
 
         if ($updates !== []) {
-            if (($updates['presence_compliance_enabled'] ?? $tenant->presence_compliance_enabled)
-                && ($updates['presence_compliance_scope'] ?? $tenant->presence_compliance_scope) === null) {
-                $updates['presence_compliance_scope'] = PresenceComplianceScope::CiaoCleaning->value;
-            }
-
             $tenant->update($updates);
         }
 

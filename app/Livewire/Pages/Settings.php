@@ -47,6 +47,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -112,6 +113,7 @@ class Settings extends Component
 
     public bool $workMenuUnitMeasurementsEnabled = true;
 
+    #[Locked]
     public bool $presenceComplianceEnabled = false;
 
     public bool $timeRequireWorkerPin = false;
@@ -176,9 +178,14 @@ class Settings extends Component
 
         $this->authorize('manageOrganisation', $tenant);
 
+        if (! $tenant->presence_compliance_enabled) {
+            $this->addError('presenceComplianceEnabled', __('settings.errors.presence_locked'));
+
+            return;
+        }
+
         $validated = Validator::make(
             [
-                'presence_compliance_enabled' => $this->presenceComplianceEnabled,
                 'presence_compliance_scope' => $this->presenceComplianceScope !== ''
                     ? $this->presenceComplianceScope
                     : null,
@@ -196,6 +203,11 @@ class Settings extends Component
         } catch (\InvalidArgumentException $e) {
             if ($e->getMessage() === 'time_module_disabled') {
                 $this->addError('presenceComplianceEnabled', __('settings.errors.time_module_required'));
+
+                return;
+            }
+            if ($e->getMessage() === 'presence_compliance_locked') {
+                $this->addError('presenceComplianceEnabled', __('settings.errors.presence_locked'));
 
                 return;
             }

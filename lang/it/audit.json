@@ -91,6 +91,7 @@
         "tenant.qr_sticker_sheet_settings_updated": "Impostazioni adesivo QR aggiornate",
         "tenant.registered": "Organizzazione registrata",
         "tenant.time_module_toggled": "Modulo Time attivato/disattivato",
+        "tenant.presence_compliance_toggled": "Presenza CIAO attivata/disattivata",
         "tenant.time_qr_rotation_updated": "Rotazione QR Time aggiornata",
         "time.roster.viewed": "Elenco evacuazione consultato",
         "tenant.trial_api_toggled": "API di prova attivata/disattivata",

@@ -141,7 +141,8 @@
         "org_logo_max": "El logotipo es demasiado grande (máx. :max MB).",
         "enterprise_number_invalid": "Número de empresa no válido.",
         "presence_scope_invalid": "Este régimen de presencia no está disponible.",
-        "time_module_required": "Time (fichaje) debe estar activo para CIAO."
+        "time_module_required": "Time (fichaje) debe estar activo para CIAO.",
+        "presence_locked": "CIAO no está activado. Solicítelo en info@winprox.app."
     },
     "api": {
         "nav": "API y webhooks",
@@ -212,7 +213,8 @@
     "presence": {
         "title": "Presencia ONSS (CIAO)",
         "lead": "Opcional: enviar fichajes y pausas de Clock Point en tiempo real a Check In and Out at Work (limpieza; construcción cuando esté disponible).",
-        "enabled": "Activar presencia CIAO",
+        "request_hint": "CIAO es excepcional y no se puede activar aquí. Solicítelo en la dirección de abajo; WinProx lo activará después.",
+        "enabled_note": "CIAO está activado. Introduzca abajo los datos RSZ.",
         "scope": "Régimen",
         "scope_cleaning": "Limpieza (CIAO)",
         "enterprise_number": "Número de empresa (BCE)",

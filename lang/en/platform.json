@@ -12,6 +12,7 @@
     "trial_api": "API access",
     "esg_module": "ESG module",
     "time_module": "Time module",
+    "ciao_module": "CIAO (RSZ)",
     "open_support": "Open support view",
     "stop": "End support view",
     "active": "You are viewing :name.",
@@ -446,6 +447,7 @@
     "errors": {
         "units_cap_required": "Enter a units cap.",
         "units_cap_invalid": "Units cap must be between 1 and 1,000,000.",
-        "not_corporate": "This organisation is not on Corporate."
+        "not_corporate": "This organisation is not on Corporate.",
+        "ciao_requires_time": "Turn on the Time module before CIAO."
     }
 }

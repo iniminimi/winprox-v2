@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\Platform\TogglePresenceComplianceAction;
+use App\Actions\Platform\ToggleTimeModuleAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\EndWorkBreakAction;
@@ -10,6 +12,9 @@ use App\Enums\PresenceComplianceScope;
 use App\Enums\PresenceSourceEvent;
 use App\Enums\PresenceSubmissionStatus;
 use App\Enums\PresenceType;
+use App\Livewire\Pages\Settings;
+use App\Livewire\Platform\Tenants as PlatformTenants;
+use App\Models\AuditLog;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -22,6 +27,9 @@ use App\Jobs\SubmitPresenceSubmissionJob;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Queue;
+use Livewire\Livewire;
+
+afterEach(fn () => Tenancy::forget());
 
 function ciaoTenantReady(): array
 {
@@ -163,14 +171,13 @@ it('stuurt registerInBulk bij geldige data', function () {
 });
 
 it('slaat presence-instellingen op via Action', function () {
-    $tenant = Tenant::factory()->create(['has_time_module' => true]);
-    $admin = User::factory()->create([
-        'tenant_id' => $tenant->id,
-        'role' => User::ROLE_ADMIN,
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'presence_compliance_enabled' => true,
     ]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     $updated = app(UpdatePresenceComplianceSettingsAction::class)->handle($tenant, [
-        'presence_compliance_enabled' => true,
         'presence_compliance_scope' => PresenceComplianceScope::CiaoCleaning->value,
         'enterprise_number' => '0123456789',
         'presence_rsz_client_id' => 'cid-1',
@@ -182,12 +189,94 @@ it('slaat presence-instellingen op via Action', function () {
         ->and($updated->presence_rsz_client_id)->toBe('cid-1');
 });
 
-it('weigert bouw-scope zolang construction flag uit staat', function () {
-    config(['rsz.construction_scope_enabled' => false]);
+it('weigert tenant-update zolang CIAO vergrendeld is', function () {
     $tenant = Tenant::factory()->create(['has_time_module' => true]);
 
     expect(fn () => app(UpdatePresenceComplianceSettingsAction::class)->handle($tenant, [
+        'enterprise_number' => '0123456789',
+    ]))->toThrow(InvalidArgumentException::class, 'presence_compliance_locked');
+
+    expect($tenant->fresh()->presence_compliance_enabled)->toBeFalse();
+});
+
+it('schakelt CIAO in via platform-action', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    $superuser = User::factory()->superuser()->create();
+
+    app(TogglePresenceComplianceAction::class)->handle($tenant, (int) $superuser->id);
+
+    expect($tenant->fresh()->presence_compliance_enabled)->toBeTrue()
+        ->and($tenant->fresh()->presence_compliance_scope)->toBe(PresenceComplianceScope::CiaoCleaning->value)
+        ->and(AuditLog::query()->where('action', 'tenant.presence_compliance_toggled')->exists())->toBeTrue();
+});
+
+it('weigert CIAO zonder Time-module', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => false]);
+
+    expect(fn () => app(TogglePresenceComplianceAction::class)->handle($tenant))
+        ->toThrow(InvalidArgumentException::class, 'time_module_disabled');
+});
+
+it('zet CIAO uit wanneer Time uit gaat', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
         'presence_compliance_enabled' => true,
+    ]);
+
+    app(ToggleTimeModuleAction::class)->handle($tenant);
+
+    expect($tenant->fresh()->has_time_module)->toBeFalse()
+        ->and($tenant->fresh()->presence_compliance_enabled)->toBeFalse();
+});
+
+it('toont vergrendeld CIAO-kader op instellingen', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->assertSee(__('settings.presence.request_hint'), false)
+        ->assertSee(__('contact.email'), false)
+        ->assertDontSee(__('settings.presence.enabled_note'), false)
+        ->call('savePresenceCompliance')
+        ->assertHasErrors(['presenceComplianceEnabled']);
+
+    expect($tenant->fresh()->presence_compliance_enabled)->toBeFalse();
+});
+
+it('schakelt CIAO in via platform Livewire', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    $superuser = User::factory()->superuser()->create();
+
+    Livewire::actingAs($superuser)
+        ->test(PlatformTenants::class)
+        ->assertSee(__('platform.ciao_module'), false)
+        ->call('togglePresenceCompliance', $tenant->id);
+
+    expect($tenant->fresh()->presence_compliance_enabled)->toBeTrue();
+});
+
+it('weigert CIAO via platform zonder Time', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => false]);
+    $superuser = User::factory()->superuser()->create();
+
+    Livewire::actingAs($superuser)
+        ->test(PlatformTenants::class)
+        ->call('togglePresenceCompliance', $tenant->id)
+        ->assertSee(__('platform.errors.ciao_requires_time'), false);
+
+    expect($tenant->fresh()->presence_compliance_enabled)->toBeFalse();
+});
+
+it('weigert bouw-scope zolang construction flag uit staat', function () {
+    config(['rsz.construction_scope_enabled' => false]);
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'presence_compliance_enabled' => true,
+    ]);
+
+    expect(fn () => app(UpdatePresenceComplianceSettingsAction::class)->handle($tenant, [
         'presence_compliance_scope' => PresenceComplianceScope::CiaoConstruction->value,
     ]))->toThrow(InvalidArgumentException::class, 'presence_scope_unavailable');
 });

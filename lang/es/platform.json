@@ -12,6 +12,7 @@
     "trial_api": "Acceso API",
     "esg_module": "Módulo ESG",
     "time_module": "Módulo Time",
+    "ciao_module": "CIAO (ONSS)",
     "open_support": "Abrir vista de soporte",
     "stop": "Finalizar vista de soporte",
     "active": "Está viendo :name.",
@@ -446,6 +447,7 @@
     "errors": {
         "units_cap_required": "Indique un tope de unidades.",
         "units_cap_invalid": "El tope debe estar entre 1 y 1.000.000.",
-        "not_corporate": "Esta organización no tiene plan Corporate."
+        "not_corporate": "Esta organización no tiene plan Corporate.",
+        "ciao_requires_time": "Active primero el módulo Time para CIAO."
     }
 }

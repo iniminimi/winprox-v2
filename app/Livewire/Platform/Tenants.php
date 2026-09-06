@@ -8,6 +8,7 @@ use App\Actions\Platform\StartSupportViewAction;
 use App\Actions\Platform\StopSupportViewAction;
 use App\Actions\Platform\ToggleEsgModuleAction;
 use App\Actions\Platform\ToggleIotModuleAction;
+use App\Actions\Platform\TogglePresenceComplianceAction;
 use App\Actions\Platform\ToggleTimeModuleAction;
 use App\Actions\Platform\ToggleTrialApiAction;
 use App\Actions\TenantPurge\CollectTenantPurgeCountsAction;
@@ -85,6 +86,23 @@ class Tenants extends Component
     {
         $tenant = Tenant::query()->findOrFail($tenantId);
         $toggle->handle($tenant, (int) auth()->id());
+    }
+
+    public function togglePresenceCompliance(int $tenantId, TogglePresenceComplianceAction $toggle): void
+    {
+        $tenant = Tenant::query()->findOrFail($tenantId);
+
+        try {
+            $toggle->handle($tenant, (int) auth()->id());
+        } catch (\InvalidArgumentException $e) {
+            if ($e->getMessage() === 'time_module_disabled') {
+                session()->flash('error', __('platform.errors.ciao_requires_time'));
+
+                return;
+            }
+
+            throw $e;
+        }
     }
 
     public function saveUnitsCap(int $tenantId, SetBillingUnitsCapAction $action): void

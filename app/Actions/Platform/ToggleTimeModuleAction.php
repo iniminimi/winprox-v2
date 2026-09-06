@@ -17,7 +17,12 @@ class ToggleTimeModuleAction
     {
         $newValue = ! $tenant->has_time_module;
 
-        $tenant->update(['has_time_module' => $newValue]);
+        $updates = ['has_time_module' => $newValue];
+        if (! $newValue) {
+            $updates['presence_compliance_enabled'] = false;
+        }
+
+        $tenant->update($updates);
 
         if ($newValue) {
             $this->ensureDefaultClockPoint->handle(
@@ -33,7 +38,10 @@ class ToggleTimeModuleAction
             action: 'tenant.time_module_toggled',
             modelType: Tenant::class,
             modelId: (int) $tenant->id,
-            payload: ['has_time_module' => $newValue],
+            payload: [
+                'has_time_module' => $newValue,
+                'presence_compliance_enabled' => $newValue ? (bool) $tenant->fresh()->presence_compliance_enabled : false,
+            ],
         );
     }
 }

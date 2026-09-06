@@ -141,7 +141,8 @@
         "org_logo_max": "The logo is too large (max. :max MB).",
         "enterprise_number_invalid": "Invalid company number.",
         "presence_scope_invalid": "This presence regime is not available.",
-        "time_module_required": "Time (punch clock) must be enabled for CIAO."
+        "time_module_required": "Time (punch clock) must be enabled for CIAO.",
+        "presence_locked": "CIAO is not enabled. Request it via info@winprox.app."
     },
     "api": {
         "nav": "API & webhooks",
@@ -212,7 +213,8 @@
     "presence": {
         "title": "RSZ presence (CIAO)",
         "lead": "Optional: send Clock Point clock-in/out and breaks in real time to Check In and Out at Work (cleaning; construction when released).",
-        "enabled": "Enable CIAO presence",
+        "request_hint": "CIAO is exceptional and cannot be turned on here. Request it via the address below; WinProx will enable it afterwards.",
+        "enabled_note": "CIAO is enabled. Enter the RSZ credentials below.",
         "scope": "Regime",
         "scope_cleaning": "Cleaning (CIAO)",
         "enterprise_number": "Company number (BCE)",

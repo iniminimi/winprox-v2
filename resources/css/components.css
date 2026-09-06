@@ -4757,6 +4757,28 @@ svg.wp-release-worker-row__icon,
     padding-top: var(--wp-space-2);
 }
 
+.wp-settings-section--locked {
+    background: var(--wp-surface-2, var(--wp-surface));
+    color: var(--wp-muted);
+}
+
+.wp-settings-section--locked .wp-section-title {
+    color: var(--wp-muted);
+}
+
+.wp-settings-section--locked .wp-settings-section-toggle {
+    cursor: default;
+    pointer-events: none;
+}
+
+.wp-settings-section--locked .wp-settings-section-toggle:hover .wp-section-title {
+    color: var(--wp-muted);
+}
+
+.wp-chip--disabled {
+    opacity: 0.55;
+}
+
 /* Inklapbare secties (zelfde chevron als Teams-pagina). */
 .wp-disclosure-block {
     border: 1px solid var(--wp-border);
