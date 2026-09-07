@@ -932,7 +932,7 @@
                 },
                 {
                     "label": "Evacuation list",
-                    "text": "After signing in you see the Evacuation list tile (fire icon). First confirm that the consultation is exceptional and is logged (first name, last name, date and time). Then you see who is clocked in now, grouped by site."
+                    "text": "After signing in you see the Evacuation list tile (fire icon). First confirm that the consultation is exceptional and is logged (first name, last name, date and time). Then you see who is clocked in now, grouped by site, newest clock-in first."
                 },
                 {
                     "label": "Sign out",

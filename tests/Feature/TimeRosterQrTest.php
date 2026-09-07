@@ -7,6 +7,7 @@ use App\Actions\Time\AcknowledgeTimeRosterViewAction;
 use App\Actions\Time\BuildTimePresenceDashboardAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\CountTimePresenceAttentionAction;
+use App\Actions\Time\ListOpenTimeRosterAction;
 use App\Enums\TimePresenceAttentionType;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Time\AlarmsIndex;
@@ -122,6 +123,26 @@ it('toont ingeklokte uitvoerders en beheer na tegel en audit-bevestiging', funct
         ->and($payload['last_name'] ?? null)->toBe('Janssen')
         ->and($payload['worker_id'] ?? null)->toBe($worker->id)
         ->and($payload['viewed_at'] ?? null)->not->toBeEmpty();
+});
+
+it('toont de evacuatielijst met de laatste inklokking eerst', function () {
+    [$tenant, , $clockPoint, $worker, $adminWorker] = rosterTenantWithPeople();
+    $early = app(ClockInAction::class)->handle($worker, $clockPoint);
+    $early->update(['clock_in_at' => now()->subHours(2)]);
+    app(ClockInAction::class)->handle($adminWorker, $clockPoint);
+
+    $roster = app(ListOpenTimeRosterAction::class)->handle((int) $tenant->id);
+    expect($roster->people->pluck('displayName')->all())->toBe(['Ann Admin', 'Jan Janssen']);
+
+    $locationPeople = $roster->byLocation->first();
+    expect($locationPeople)->not->toBeNull()
+        ->and($locationPeople->pluck('displayName')->all())->toBe(['Ann Admin', 'Jan Janssen']);
+
+    signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->call('openRoster')
+        ->set('rosterAcknowledged', true)
+        ->call('acknowledgeRoster')
+        ->assertSeeInOrder(['Ann Admin', 'Jan Janssen']);
 });
 
 it('eist de audit-checkbox voor de lijst', function () {

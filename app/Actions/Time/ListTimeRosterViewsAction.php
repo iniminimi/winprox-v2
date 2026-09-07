@@ -36,6 +36,7 @@ class ListTimeRosterViewsAction
                     ->where('created_at', '<', $until);
             })
             ->orderByDesc('created_at')
+            ->orderByDesc('id')
             ->limit($onlyToday ? 200 : 500)
             ->get();
 

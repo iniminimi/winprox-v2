@@ -80,7 +80,7 @@
     },
     "roster": {
         "title": "Anwesende",
-        "subtitle": "Wer jetzt eingestempelt ist — für Evakuierung oder Kontrolle.",
+        "subtitle": "Wer jetzt eingestempelt ist — neueste Einstempelung oben.",
         "ack_title": "Einsicht wird protokolliert",
         "ack_intro": "Diese Liste darf nur ausnahmsweise eingesehen werden (Evakuierung oder Kontrolle). Wer sie öffnet, wird festgehalten: Vorname, Name, Datum und Uhrzeit.",
         "ack_label": "Ich nehme zur Kenntnis, dass diese Einsicht ausnahmsweise erfolgt und dass Vorname, Name, Datum und Uhrzeit protokolliert werden.",

@@ -932,7 +932,7 @@
                 },
                 {
                     "label": "Evakuierungsliste",
-                    "text": "Nach der Anmeldung sehen Sie die Kachel Evakuierungsliste (Feuersymbol). Bestätigen Sie zuerst, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Danach sehen Sie, wer jetzt eingestempelt ist, nach Standort."
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Evakuierungsliste (Feuersymbol). Bestätigen Sie zuerst, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Danach sehen Sie, wer jetzt eingestempelt ist, nach Standort, neueste Einstempelung oben."
                 },
                 {
                     "label": "Abmelden",

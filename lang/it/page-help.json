@@ -932,7 +932,7 @@
                 },
                 {
                     "label": "Elenco evacuazione",
-                    "text": "Dopo l’accesso vedi il riquadro Elenco evacuazione (icona fuoco). Prima conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Poi vedi chi è timbrato ora, per sede."
+                    "text": "Dopo l’accesso vedi il riquadro Elenco evacuazione (icona fuoco). Prima conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Poi vedi chi è timbrato ora, per sede, ultima timbratura in alto."
                 },
                 {
                     "label": "Esci",

@@ -932,7 +932,7 @@
                 },
                 {
                     "label": "Lista de evacuación",
-                    "text": "Tras identificarse verá la ficha Lista de evacuación (icono de fuego). Primero confirme que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Después verá quién está fichado, por sede."
+                    "text": "Tras identificarse verá la ficha Lista de evacuación (icono de fuego). Primero confirme que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Después verá quién está fichado, por sede, el fichaje más reciente arriba."
                 },
                 {
                     "label": "Cerrar sesión",

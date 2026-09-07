@@ -940,7 +940,7 @@
                 },
                 {
                     "label": "Liste d’évacuation",
-                    "text": "Après connexion, la tuile Liste d’évacuation (icône feu) apparaît. Confirmez d’abord que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Ensuite s’affiche qui est pointé, par site."
+                    "text": "Après connexion, la tuile Liste d’évacuation (icône feu) apparaît. Confirmez d’abord que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Ensuite s’affiche qui est pointé, par site, dernier pointage en haut."
                 },
                 {
                     "label": "Déconnexion",

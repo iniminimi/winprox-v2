@@ -80,7 +80,7 @@
     },
     "roster": {
         "title": "Who is in",
-        "subtitle": "Who is clocked in now — for evacuation or a headcount.",
+        "subtitle": "Who is clocked in now — newest clock-in first.",
         "ack_title": "This view is logged",
         "ack_intro": "This list may only be consulted in exceptional cases (evacuation or a headcount). Opening it is recorded: first name, last name, date and time.",
         "ack_label": "I acknowledge that this consultation is exceptional and that my first name, last name, date and time will be logged.",

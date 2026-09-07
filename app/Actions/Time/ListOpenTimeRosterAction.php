@@ -10,6 +10,7 @@ use App\Support\Time\TimeModuleAccess;
 
 class ListOpenTimeRosterAction
 {
+    /** Open diensten per locatie, nieuwste inklokking eerst. */
     public function handle(int $tenantId): TimeRosterSnapshot
     {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
@@ -25,10 +26,10 @@ class ListOpenTimeRosterAction
                 'presenceClockPoint.location',
                 'clockInClockPoint.location',
             ])
-            ->orderBy('clock_in_at')
+            ->orderByDesc('clock_in_at')
+            ->orderByDesc('id')
             ->get()
             ->map(fn (WorkShift $shift) => TimeRosterPerson::fromOpenShift($shift))
-            ->sortBy(fn (TimeRosterPerson $person) => mb_strtolower($person->lastName.' '.$person->firstName))
             ->values();
 
         $byLocation = $people

@@ -659,7 +659,8 @@ productsector op `Tenant`.
 - Module `has_time_module`; Clock Point QR; `WorkShift` / `WorkBreak`; aanwezigheid, urenstaat,
   export; events `time.shift.started` / `time.shift.ended`.
 - **Evacuatielijst** op het Clock Point-portaal (na aanmelden, tegel met brandicoon).
-  Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel). Eerst
+  Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel), per
+  locatie met de **nieuwste inklokking bovenaan**. Eerst
   aanvinken dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam,
   datum/uur → `time.roster.viewed`). Raadplegingen **vandaag** lichten **Aandacht**
   op (Time → Aanwezigheid én dashboard). Time → Alarmen toont de **volledige**
@@ -1071,7 +1072,8 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   overzicht van open teamtaken. **BESLIST:** via Clock Point zijn taakacties **alleen-lezen** —
   afhandelen moet via de **unit-QR**. (Vervangt de oude team-QR `/team/{token}`.)
   Met Time: tegel **Evacuatielijst** (brandicoon) na aanmelden; checkbox dat de raadpleging
-  uitzonderlijk is en wordt gelogd; daarna de lijst van ingeklokten. Geen extra QR.
+  uitzonderlijk is en wordt gelogd; daarna de lijst van ingeklokten (per locatie,
+  nieuwste inklokking bovenaan). Geen extra QR.
 
 ### Unit-portaal — secties (burger)
 `home · new · issues · issue_detail · documents · announcements`

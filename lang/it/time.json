@@ -80,7 +80,7 @@
     },
     "roster": {
         "title": "Presenti",
-        "subtitle": "Chi è timbrato ora — per evacuazione o controllo.",
+        "subtitle": "Chi è timbrato ora — ultima timbratura in alto.",
         "ack_title": "La consultazione viene registrata",
         "ack_intro": "Questo elenco può essere consultato solo in casi eccezionali (evacuazione o controllo). Chi lo apre viene registrato: nome, cognome, data e ora.",
         "ack_label": "Prendo atto che questa consultazione è eccezionale e che nome, cognome, data e ora verranno registrati.",

@@ -80,7 +80,7 @@
     },
     "roster": {
         "title": "Presentes",
-        "subtitle": "Quién está fichado ahora — para evacuación o control.",
+        "subtitle": "Quién está fichado ahora — el fichaje más reciente arriba.",
         "ack_title": "La consulta se registra",
         "ack_intro": "Esta lista solo puede consultarse de forma excepcional (evacuación o control). Quien la abre queda registrado: nombre, apellidos, fecha y hora.",
         "ack_label": "Tomo nota de que esta consulta es excepcional y de que se registrarán mi nombre, apellidos, fecha y hora.",

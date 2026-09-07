@@ -932,7 +932,7 @@
                 },
                 {
                     "label": "Evacuatielijst",
-                    "text": "Na aanmelden zie je de tegel Evacuatielijst (brandicoon). Eerst bevestig je dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Daarna zie je wie nu is ingeklokt, per locatie."
+                    "text": "Na aanmelden zie je de tegel Evacuatielijst (brandicoon). Eerst bevestig je dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Daarna zie je wie nu is ingeklokt, per locatie, nieuwste inklokking bovenaan."
                 },
                 {
                     "label": "Afmelden",

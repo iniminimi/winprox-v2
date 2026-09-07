@@ -80,7 +80,7 @@
     },
     "roster": {
         "title": "Présents",
-        "subtitle": "Qui est pointé — pour une évacuation ou un contrôle.",
+        "subtitle": "Qui est pointé — dernier pointage en haut.",
         "ack_title": "Consultation enregistrée",
         "ack_intro": "Cette liste ne peut être consultée qu’à titre exceptionnel (évacuation ou contrôle). Son ouverture est enregistrée : prénom, nom, date et heure.",
         "ack_label": "Je prends acte que cette consultation est exceptionnelle et que mon prénom, mon nom, la date et l’heure seront consignés.",
