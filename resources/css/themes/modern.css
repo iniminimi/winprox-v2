@@ -173,6 +173,12 @@
     border-color: var(--wp-accent-border);
 }
 
+/* Flash-banners op de foto-achtergrond: ondoorzichtig groen, geen glass. */
+[data-theme='modern'] .wp-flash,
+[data-theme='modern'] .wp-flash--success {
+    background-color: color-mix(in srgb, var(--wp-accent) 22%, #ffffff 78%);
+}
+
 /* Pills/badges op foto-achtergrond (Time aanwezigheid, nav, …). */
 [data-theme='modern'] .wp-pill--done {
     background-color: var(--wp-accent-soft-panel);
