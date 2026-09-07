@@ -49,9 +49,9 @@
 
                 <p class="wp-muted wp-text-sm">{{ __('time.clock_points.qr.rotation_renew_intro') }}</p>
                 @if ($clockPoints->isNotEmpty())
-                    <div class="wp-cluster wp-cluster--wrap">
-                        <div class="wp-filter-cell">
-                            <label class="wp-filter-inline-label" for="qr-renew-clock-point">{{ __('time.clock_points.qr.rotation_renew_clock_point') }}</label>
+                    <div class="wp-stack-tight">
+                        <label class="wp-filter-inline-label" for="qr-renew-clock-point">{{ __('time.clock_points.qr.rotation_renew_clock_point') }}</label>
+                        <div class="wp-cluster wp-cluster--wrap">
                             <select id="qr-renew-clock-point" class="wp-select" wire:model.live="renewQrClockPointId">
                                 @foreach ($clockPoints as $clockPoint)
                                     <option value="{{ $clockPoint->id }}">
@@ -59,22 +59,22 @@
                                     </option>
                                 @endforeach
                             </select>
-                        </div>
-                        @if ($selectedRenewClockPoint)
-                            @if ($selectedRenewClockPoint->isRenewalRecommended())
-                                <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
+                            @if ($selectedRenewClockPoint)
+                                @if ($selectedRenewClockPoint->isRenewalRecommended())
+                                    <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
+                                @endif
+                                @can('renewQr', $selectedRenewClockPoint)
+                                    <button
+                                        type="button"
+                                        class="btn btn--surface btn--sm"
+                                        wire:click="renewSelectedQr"
+                                        wire:confirm="{{ __('time.clock_points.qr.renew_confirm') }}"
+                                    >
+                                        {{ __('time.clock_points.qr.renew') }}
+                                    </button>
+                                @endcan
                             @endif
-                            @can('renewQr', $selectedRenewClockPoint)
-                                <button
-                                    type="button"
-                                    class="btn btn--surface btn--sm"
-                                    wire:click="renewSelectedQr"
-                                    wire:confirm="{{ __('time.clock_points.qr.renew_confirm') }}"
-                                >
-                                    {{ __('time.clock_points.qr.renew') }}
-                                </button>
-                            @endcan
-                        @endif
+                        </div>
                     </div>
                     @error('renewQrClockPointId') <p class="wp-error">{{ $message }}</p> @enderror
                 @endif
