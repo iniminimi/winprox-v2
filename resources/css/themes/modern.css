@@ -181,7 +181,7 @@
 
 /* Pills/badges op foto-achtergrond (Time aanwezigheid, nav, …). */
 [data-theme='modern'] .wp-pill--done {
-    background-color: var(--wp-accent-soft-panel);
+    background-color: color-mix(in srgb, var(--wp-accent) 22%, #ffffff 78%);
     border-color: var(--wp-accent-border);
 }
 

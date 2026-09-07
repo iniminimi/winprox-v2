@@ -23,6 +23,13 @@
         $attentionItem !== null => 'attention',
         default => 'present',
     };
+
+    $metaParts = [];
+    if ($showTeam && $shift->team) {
+        $metaParts[] = $shift->team->localizedName();
+    }
+    $metaParts[] = $shift->clock_in_at->format('H:i');
+    $metaParts[] = WorkDurationFormatter::format($shift->netWorkMinutes());
 @endphp
 
 <article @class([
@@ -49,36 +56,16 @@
     </div>
 
     <div class="wp-time-presence-card__content">
-        <div class="wp-time-presence-card__head">
+        <div class="wp-cluster">
             <h3 class="wp-time-presence-card__name">{{ $shift->worker?->displayName() }}</h3>
             @if ($shift->isManuallyClockedIn())
                 <span class="wp-pill">{{ __('time.manual_clock_in.badge') }}</span>
             @endif
-            @if ($showTeam)
-                <p class="wp-time-presence-card__team wp-muted">{{ $shift->team?->localizedName() }}</p>
+            @if ($isOnBreak)
+                <span class="wp-pill wp-pill--progress">{{ __('time.presence.on_break') }}</span>
             @endif
         </div>
-
-        <div class="wp-time-presence-card__metrics">
-            <span class="wp-time-presence-card__metric">
-                <x-wp-icon name="clock" class="wp-time-presence-card__metric-icon" />
-                <span class="wp-time-presence-card__metric-label">{{ __('time.presence.present') }}</span>
-                <strong class="wp-time-presence-card__metric-value wp-tabular">{{ $shift->clock_in_at->format('H:i') }}</strong>
-            </span>
-            <span class="wp-time-presence-card__metric">
-                <x-wp-icon name="hourglass" class="wp-time-presence-card__metric-icon" />
-                <span class="wp-time-presence-card__metric-label">{{ __('time.presence.hours_label') }}</span>
-                <strong class="wp-time-presence-card__metric-value wp-tabular">
-                    {{ WorkDurationFormatter::format($shift->netWorkMinutes()) }}
-                </strong>
-            </span>
-        </div>
-
-        @if ($isOnBreak && $attentionLabel === null)
-            <p class="wp-time-presence-card__inline-note wp-time-presence-card__inline-note--break">
-                {{ __('time.presence.on_break') }}
-            </p>
-        @endif
+        <p class="wp-issue-card-meta">{{ implode(' · ', $metaParts) }}</p>
     </div>
 
     <div class="wp-time-presence-card__aside">

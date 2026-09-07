@@ -15,14 +15,11 @@
     </div>
 
     <div class="wp-time-presence-card__content">
-        <div class="wp-time-presence-card__head">
-            <h3 class="wp-time-presence-card__name">{{ $worker->displayName() }}</h3>
-            @if ($showTeam)
-                <p class="wp-time-presence-card__team wp-muted">{{ $worker->team?->localizedName() }}</p>
+        <h3 class="wp-time-presence-card__name">{{ $worker->displayName() }}</h3>
+        <p class="wp-issue-card-meta">
+            @if ($showTeam && $worker->team)
+                {{ $worker->team->localizedName() }} ·
             @endif
-        </div>
-
-        <p class="wp-time-presence-card__inline-note wp-time-presence-card__inline-note--absent">
             {{ __('time.presence.not_clocked_in') }}
         </p>
     </div>

@@ -155,21 +155,14 @@
                     @forelse ($rosterViewItems as $item)
                         <article class="wp-time-presence-card wp-time-presence-card--attention" wire:key="presence-roster-{{ $item->listKey() }}">
                             <div class="wp-time-presence-card__content">
-                                <div class="wp-time-presence-card__head">
-                                    <h3 class="wp-time-presence-card__name">{{ $item->rosterView->displayName }}</h3>
+                                <h3 class="wp-time-presence-card__name">{{ $item->rosterView->displayName }}</h3>
+                                <p class="wp-issue-card-meta">
                                     @if ($showTeam && filled($item->rosterView->teamName))
-                                        <p class="wp-time-presence-card__team wp-muted">{{ $item->rosterView->teamName }}</p>
+                                        {{ $item->rosterView->teamName }} ·
                                     @endif
-                                </div>
-                                <div class="wp-time-presence-card__metrics">
-                                    <span class="wp-time-presence-card__metric">
-                                        <x-wp-icon name="clock" class="wp-time-presence-card__metric-icon" />
-                                        <span class="wp-time-presence-card__metric-label">{{ __('time.presence.attention.roster_viewed') }}</span>
-                                        <strong class="wp-time-presence-card__metric-value wp-tabular">
-                                            {{ $item->rosterView->viewedAt->timezone(config('app.timezone'))->format('d-m-Y H:i') }}
-                                        </strong>
-                                    </span>
-                                </div>
+                                    {{ __('time.presence.attention.roster_viewed') }}
+                                    {{ $item->rosterView->viewedAt->timezone(config('app.timezone'))->format('d-m-Y H:i') }}
+                                </p>
                             </div>
                         </article>
                     @empty
