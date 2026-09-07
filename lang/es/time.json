@@ -13,7 +13,7 @@
     },
     "presence": {
         "title": "Presencia",
-        "subtitle": "Vista en vivo por equipo — expanda un equipo para ver trabajadores.",
+        "subtitle": "Quién está fichado ahora.",
         "present": "Presente",
         "present_subtitle": "Empleados activos",
         "on_break": "Pausa",
@@ -33,7 +33,6 @@
         "search_empty": "No se encontraron trabajadores.",
         "location": "Ubicación",
         "all_locations": "Todas las ubicaciones",
-        "status_filters": "Estado",
         "no_attention": "No hay excepciones en este momento.",
         "attention_title": "Requiere atención",
         "attention_show_all": "Mostrar las :count excepciones",
@@ -49,13 +48,6 @@
             "absent": "Sin fichar",
             "attention": "Atención"
         },
-        "status": {
-            "all": "Todos",
-            "active": "Presente",
-            "break": "Pausa",
-            "absent": "Ausente",
-            "attention": "Atención"
-        },
         "attention": {
             "long_shift": "Turno de más de :hours horas",
             "stale_shift": "Sin fichar salida (> :hours h)",
@@ -69,10 +61,8 @@
         "view": {
             "board": "Tablero",
             "teams": "Equipos",
-            "cards": "Tarjetas de equipo",
             "locations": "Ubicaciones"
         },
-        "view_team": "Ver",
         "view_location": "Mostrar equipos",
         "empty_locations": "No hay trabajadores fichados por ubicación.",
         "unknown_location": "Sin ubicación",

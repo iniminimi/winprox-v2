@@ -13,7 +13,7 @@
     },
     "presence": {
         "title": "Presenza",
-        "subtitle": "Panoramica live per team — espandi un team per i lavoratori.",
+        "subtitle": "Chi è timbrato adesso.",
         "present": "Presente",
         "present_subtitle": "Dipendenti attivi",
         "on_break": "Pausa",
@@ -33,7 +33,6 @@
         "search_empty": "Nessun lavoratore trovato.",
         "location": "Sede",
         "all_locations": "Tutte le sedi",
-        "status_filters": "Stato",
         "no_attention": "Nessuna anomalia al momento.",
         "attention_title": "Richiede attenzione",
         "attention_show_all": "Mostra tutte le :count anomalie",
@@ -49,13 +48,6 @@
             "absent": "Non timbrato",
             "attention": "Attenzione"
         },
-        "status": {
-            "all": "Tutti",
-            "active": "Presente",
-            "break": "Pausa",
-            "absent": "Assente",
-            "attention": "Attenzione"
-        },
         "attention": {
             "long_shift": "Turno più lungo di :hours ore",
             "stale_shift": "Uscita non timbrata (> :hours ore)",
@@ -69,10 +61,8 @@
         "view": {
             "board": "Bacheca",
             "teams": "Team",
-            "cards": "Schede team",
             "locations": "Sedi"
         },
-        "view_team": "Vedi",
         "view_location": "Mostra team",
         "empty_locations": "Nessun lavoratore timbrato per sede.",
         "unknown_location": "Senza sede",

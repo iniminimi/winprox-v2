@@ -1174,11 +1174,11 @@
                 },
                 {
                     "label": "Weergave",
-                    "text": "Kies tussen <strong>Teams</strong> (accordion), <strong>Teamkaarten</strong> (overzicht per team) of <strong>Locaties</strong> (ingeklokt per vestiging). Open een team pas wanneer u uitvoerders wilt zien."
+                    "text": "Kies <strong>Board</strong> (live lijst), <strong>Teams</strong> (per team uitklappen) of <strong>Locaties</strong> (ingeklokt per vestiging)."
                 },
                 {
                     "label": "Filters",
-                    "text": "Verfijn op team, locatie, clock point of zoek op naam. Statusfilters: aanwezig, pauze of afwezig."
+                    "text": "Verfijn op team, locatie, clock point of zoek op naam. Status filtert u via de tegels bovenaan."
                 },
                 {
                     "label": "Shift sluiten",

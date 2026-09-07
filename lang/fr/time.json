@@ -13,7 +13,7 @@
     },
     "presence": {
         "title": "Présence",
-        "subtitle": "Vue en direct par équipe — développez une équipe pour les collaborateurs.",
+        "subtitle": "Qui est pointé actuellement.",
         "present": "Présent",
         "present_subtitle": "Collaborateurs actifs",
         "on_break": "Pause",
@@ -33,7 +33,6 @@
         "search_empty": "Aucun collaborateur trouvé.",
         "location": "Site",
         "all_locations": "Tous les sites",
-        "status_filters": "Statut",
         "no_attention": "Aucune anomalie pour le moment.",
         "attention_title": "Nécessite une attention",
         "attention_show_all": "Afficher les :count anomalies",
@@ -49,13 +48,6 @@
             "absent": "Non pointé",
             "attention": "Attention"
         },
-        "status": {
-            "all": "Tous",
-            "active": "Présent",
-            "break": "Pause",
-            "absent": "Absent",
-            "attention": "Attention"
-        },
         "attention": {
             "long_shift": "Shift de plus de :hours heures",
             "stale_shift": "Non dépointé (> :hours h)",
@@ -69,10 +61,8 @@
         "view": {
             "board": "Tableau",
             "teams": "Équipes",
-            "cards": "Cartes d'équipe",
             "locations": "Sites"
         },
-        "view_team": "Voir",
         "view_location": "Afficher les équipes",
         "empty_locations": "Aucun collaborateur pointé par site.",
         "unknown_location": "Sans site",

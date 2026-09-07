@@ -13,7 +13,7 @@
     },
     "presence": {
         "title": "Anwesenheit",
-        "subtitle": "Live-Übersicht pro Team — Team aufklappen für Mitarbeitende.",
+        "subtitle": "Wer ist jetzt eingestempelt.",
         "present": "Anwesend",
         "present_subtitle": "Aktive Mitarbeitende",
         "on_break": "Pause",
@@ -33,7 +33,6 @@
         "search_empty": "Keine Mitarbeitenden gefunden.",
         "location": "Standort",
         "all_locations": "Alle Standorte",
-        "status_filters": "Status",
         "no_attention": "Derzeit keine Abweichungen.",
         "attention_title": "Braucht Aufmerksamkeit",
         "attention_show_all": "Alle :count Abweichungen anzeigen",
@@ -49,13 +48,6 @@
             "absent": "Nicht eingestempelt",
             "attention": "Aufmerksamkeit"
         },
-        "status": {
-            "all": "Alle",
-            "active": "Anwesend",
-            "break": "Pause",
-            "absent": "Abwesend",
-            "attention": "Aufmerksamkeit"
-        },
         "attention": {
             "long_shift": "Schicht länger als :hours Stunden",
             "stale_shift": "Nicht ausgestempelt (> :hours Std.)",
@@ -69,10 +61,8 @@
         "view": {
             "board": "Board",
             "teams": "Teams",
-            "cards": "Teamkarten",
             "locations": "Standorte"
         },
-        "view_team": "Anzeigen",
         "view_location": "Teams zeigen",
         "empty_locations": "Keine eingestempelten Mitarbeitenden pro Standort.",
         "unknown_location": "Ohne Standort",

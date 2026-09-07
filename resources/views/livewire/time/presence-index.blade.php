@@ -3,12 +3,21 @@
     $presenceStatusFilter = \App\Enums\TimePresenceStatusFilter::tryFromRequest($statusFilter);
 @endphp
 <div @class(['wp-stack', 'wp-time-presence-page', 'wp-time-presence-page--board' => $presenceView === \App\Enums\TimePresenceViewMode::Board]) wire:poll.visible.30s data-manual-capture="time-presence">
-    <x-wp-page-head-title
-        icon="clock"
-        :title="__('time.presence.title')"
-        help-page="time.presence"
-        :subtitle="__('time.presence.subtitle')"
-    />
+    <div class="wp-page-head">
+        <div class="wp-grow wp-stack-tight">
+            <x-wp-page-head-title
+                icon="clock"
+                :title="__('time.presence.title')"
+                help-page="time.presence"
+                :subtitle="__('time.presence.subtitle')"
+            />
+        </div>
+        @can('manualClockIn', \App\Models\WorkShift::class)
+            <button type="button" class="btn btn--primary" wire:click="openManualClockIn">
+                {{ __('time.manual_clock_in.button') }}
+            </button>
+        @endcan
+    </div>
 
     @include('partials.wp-time-nav', ['alarmCount' => $dashboard->kpis->attention])
 
@@ -23,6 +32,7 @@
 
     <div class="wp-card wp-filter-panel wp-time-presence-toolbar">
         <div class="wp-filter-form wp-time-presence-toolbar__form">
+            <p class="wp-filter-form__title">{{ __('common.list.filters_title') }}</p>
             <div class="wp-filter-form__row wp-time-presence-toolbar__primary">
                 <div class="wp-filter-cell wp-filter-cell--search">
                     <label class="wp-filter-inline-label" for="presence-search">{{ __('time.presence.search_label') }}</label>
@@ -47,8 +57,6 @@
                         @endforeach
                     </select>
                 </div>
-            </div>
-            <div class="wp-filter-form__row">
                 <div class="wp-filter-cell">
                     <label class="wp-filter-inline-label" for="presence-clock-point">{{ __('time.filters.clock_point') }}</label>
                     <select id="presence-clock-point" class="wp-select" wire:model.live="clockPointFilter">
@@ -61,18 +69,16 @@
             </div>
 
             <div class="wp-time-presence-toolbar__meta">
-                <div class="wp-time-presence-toolbar__actions">
-                    @can('manualClockIn', \App\Models\WorkShift::class)
-                        <button type="button" class="btn btn--primary btn--sm" wire:click="openManualClockIn">
-                            {{ __('time.manual_clock_in.button') }}
-                        </button>
-                    @endcan
-                    @include('partials.wp-time-presence-status-filters', ['statusFilter' => $presenceStatusFilter])
-
-                    @if (! $dashboard->isSearchMode)
-                        @include('partials.wp-time-presence-view-toggle', ['presenceView' => $presenceView])
-                    @endif
-                </div>
+                @if (! $dashboard->isSearchMode)
+                    <div class="wp-filter-cell">
+                        <label class="wp-filter-inline-label" for="presence-view">{{ __('time.presence.view_modes') }}</label>
+                        <select id="presence-view" class="wp-select" wire:model.live="viewMode">
+                            <option value="board">{{ __('time.presence.view.board') }}</option>
+                            <option value="teams">{{ __('time.presence.view.teams') }}</option>
+                            <option value="locations">{{ __('time.presence.view.locations') }}</option>
+                        </select>
+                    </div>
+                @endif
                 <p class="wp-time-presence-toolbar__updated wp-muted">
                     <x-wp-icon name="clock" class="wp-time-presence-toolbar__updated-icon" />
                     <span>{{ now()->format('H:i') }}</span>
@@ -97,11 +103,6 @@
             'teamPageSize' => $teamPageSize,
             'showForceClose' => true,
             'showTeam' => $teamFilter === null,
-        ])
-    @elseif ($presenceView === \App\Enums\TimePresenceViewMode::Cards)
-        @include('partials.wp-time-presence-team-cards', [
-            'teamBuckets' => $dashboard->teamBuckets,
-            'statusFilter' => $presenceStatusFilter,
         ])
     @elseif ($presenceView === \App\Enums\TimePresenceViewMode::Locations)
         @include('partials.wp-time-presence-location-cards', [

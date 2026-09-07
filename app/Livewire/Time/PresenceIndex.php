@@ -59,6 +59,8 @@ class PresenceIndex extends Component
         if ($this->teamFilter !== null) {
             $this->expandedTeams = [$this->teamFilter];
         }
+
+        $this->viewMode = TimePresenceViewMode::tryFromRequest($this->viewMode)->value;
     }
 
     public function updatedTeamFilter(?int $value): void
@@ -97,6 +99,11 @@ class PresenceIndex extends Component
         $this->boardLimit = 0;
     }
 
+    public function updatedViewMode(?string $value): void
+    {
+        $this->setViewMode((string) $value);
+    }
+
     public function toggleTeam(int $teamId): void
     {
         if (in_array($teamId, $this->expandedTeams, true)) {
@@ -105,14 +112,6 @@ class PresenceIndex extends Component
         } else {
             $this->expandedTeams[] = $teamId;
         }
-    }
-
-    public function openTeamCard(int $teamId): void
-    {
-        $this->viewMode = TimePresenceViewMode::Teams->value;
-        $this->teamFilter = $teamId;
-        $this->expandedTeams = [$teamId];
-        $this->teamShiftLimits = [];
     }
 
     public function openLocationCard(?int $locationId): void

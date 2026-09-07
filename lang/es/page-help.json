@@ -1174,11 +1174,11 @@
                 },
                 {
                     "label": "Vista",
-                    "text": "Elija <strong>Equipos</strong>, <strong>Tarjetas</strong> o <strong>Ubicaciones</strong>. Expanda un equipo solo cuando necesite ver operarios."
+                    "text": "Elija <strong>Tablero</strong> (lista en vivo), <strong>Equipos</strong> (abrir por equipo) o <strong>Ubicaciones</strong> (fichados por sede)."
                 },
                 {
                     "label": "Filtros",
-                    "text": "Filtre por equipo, ubicación, clock point o nombre. Estados: presentes, pausa o ausentes."
+                    "text": "Filtre por equipo, sede, clock point o busque por nombre. El estado se filtra con las tarjetas de arriba."
                 },
                 {
                     "label": "Cerrar turno",

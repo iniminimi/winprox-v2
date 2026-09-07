@@ -1174,11 +1174,11 @@
                 },
                 {
                     "label": "Ansicht",
-                    "text": "Wählen Sie <strong>Teams</strong> (Akkordeon), <strong>Teamkarten</strong> oder <strong>Standorte</strong>. Klappen Sie ein Team erst auf, wenn Sie Ausführende sehen möchten."
+                    "text": "Wählen Sie <strong>Board</strong> (Live-Liste), <strong>Teams</strong> (pro Team aufklappen) oder <strong>Standorte</strong> (eingestempelt je Standort)."
                 },
                 {
                     "label": "Filter",
-                    "text": "Filtern nach Team, Standort, Clock Point oder Name. Status: anwesend, Pause oder abwesend."
+                    "text": "Filtern Sie nach Team, Standort, Clock Point oder Namen. Den Status filtern Sie über die Kacheln oben."
                 },
                 {
                     "label": "Schicht schließen",

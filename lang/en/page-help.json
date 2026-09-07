@@ -1174,11 +1174,11 @@
                 },
                 {
                     "label": "Views",
-                    "text": "Choose <strong>Teams</strong> (accordion), <strong>Team cards</strong> (summary per team), or <strong>Locations</strong> (clocked in per site). Expand a team only when you need worker details."
+                    "text": "Choose <strong>Board</strong> (live list), <strong>Teams</strong> (expand per team) or <strong>Locations</strong> (clocked in per site)."
                 },
                 {
                     "label": "Filters",
-                    "text": "Filter by team, location, clock point, or search by name. Status filters: present, break, or absent."
+                    "text": "Narrow by team, location, clock point or search by name. Filter status via the tiles at the top."
                 },
                 {
                     "label": "Close shift",

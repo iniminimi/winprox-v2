@@ -13,7 +13,7 @@
     },
     "presence": {
         "title": "Presence",
-        "subtitle": "Live overview by team — expand a team for workers.",
+        "subtitle": "Who is clocked in now.",
         "present": "Present",
         "present_subtitle": "Active employees",
         "on_break": "Break",
@@ -33,7 +33,6 @@
         "search_empty": "No workers found.",
         "location": "Location",
         "all_locations": "All locations",
-        "status_filters": "Status",
         "no_attention": "No exceptions at the moment.",
         "attention_title": "Needs attention",
         "attention_show_all": "Show all :count exceptions",
@@ -49,13 +48,6 @@
             "absent": "Not clocked in",
             "attention": "Attention"
         },
-        "status": {
-            "all": "All",
-            "active": "Present",
-            "break": "Break",
-            "absent": "Absent",
-            "attention": "Attention"
-        },
         "attention": {
             "long_shift": "Shift longer than :hours hours",
             "stale_shift": "Not clocked out (> :hours hours)",
@@ -69,10 +61,8 @@
         "view": {
             "board": "Board",
             "teams": "Teams",
-            "cards": "Team cards",
             "locations": "Locations"
         },
-        "view_team": "View",
         "view_location": "Show teams",
         "empty_locations": "No clocked-in workers by location.",
         "unknown_location": "No location",

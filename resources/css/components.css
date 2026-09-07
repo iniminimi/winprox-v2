@@ -4853,6 +4853,22 @@ svg.wp-release-worker-row__icon,
     box-shadow: inset 0 0 0 1px var(--wp-accent-border);
 }
 
+.wp-kpis.wp-time-presence-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 40rem) {
+    .wp-kpis.wp-time-presence-kpis {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 64rem) {
+    .wp-kpis.wp-time-presence-kpis {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
 .wp-time-presence-toolbar__updated {
     display: inline-flex;
     align-items: center;
@@ -4874,24 +4890,16 @@ svg.wp-release-worker-row__icon,
 }
 
 .wp-time-presence-toolbar__primary {
-    grid-template-columns: minmax(0, 1.15fr) repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.15fr) repeat(3, minmax(0, 1fr));
     gap: 0.5rem 1rem;
 }
 
 .wp-time-presence-toolbar__meta {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     gap: 0.5rem 0.75rem;
-}
-
-.wp-time-presence-toolbar__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 0.75rem;
-    min-width: 0;
 }
 
 .wp-time-presence-toolbar .wp-filter-cell .wp-select,
@@ -4901,6 +4909,12 @@ svg.wp-release-worker-row__icon,
 .wp-time-alarms-toolbar .wp-filter-cell .wp-select {
     flex: 1 1 8rem;
     min-width: 0;
+}
+
+@media (max-width: 1023px) {
+    .wp-time-presence-toolbar__primary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 767px) {

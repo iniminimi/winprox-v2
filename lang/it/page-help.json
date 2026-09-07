@@ -1174,11 +1174,11 @@
                 },
                 {
                     "label": "Vista",
-                    "text": "Scelga <strong>Team</strong>, <strong>Schede team</strong> o <strong>Sedi</strong>. Espanda un team solo per vedere gli esecutori."
+                    "text": "Scegli <strong>Bacheca</strong> (elenco live), <strong>Team</strong> (apri per squadra) o <strong>Sedi</strong> (timbrati per sede)."
                 },
                 {
                     "label": "Filtri",
-                    "text": "Filtri per team, sede, clock point o nome. Stati: presenti, pausa o assenti."
+                    "text": "Filtra per squadra, sede, clock point o cerca per nome. Lo stato si filtra dalle tessere in alto."
                 },
                 {
                     "label": "Chiudi turno",

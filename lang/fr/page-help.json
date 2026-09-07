@@ -1182,11 +1182,11 @@
                 },
                 {
                     "label": "Affichage",
-                    "text": "Choisissez <strong>Équipes</strong>, <strong>Cartes équipe</strong> ou <strong>Sites</strong>. Dépliez une équipe uniquement pour voir les exécutants."
+                    "text": "Choisissez <strong>Tableau</strong> (liste en direct), <strong>Équipes</strong> (ouvrir par équipe) ou <strong>Sites</strong> (pointés par site)."
                 },
                 {
                     "label": "Filtres",
-                    "text": "Filtrez par équipe, site, clock point ou nom. Statuts : présents, pause ou absents."
+                    "text": "Affinez par équipe, site, clock point ou recherchez un nom. Le statut se filtre via les tuiles en haut."
                 },
                 {
                     "label": "Fermer le shift",

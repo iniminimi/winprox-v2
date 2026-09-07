@@ -168,7 +168,7 @@ it('toont afwezige werknemers in uitgeklapt team met status alle', function () {
         ->assertSee(__('time.presence.team_summary_absent', ['count' => 1]), false);
 });
 
-it('wisselt tussen board-, teams-, teamkaarten- en locatie-weergave', function () {
+it('wisselt tussen board-, teams- en locatie-weergave', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
     $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Hoofdkantoor']);
@@ -187,16 +187,26 @@ it('wisselt tussen board-, teams-, teamkaarten- en locatie-weergave', function (
         ->assertSet('viewMode', 'board')
         ->assertSee('wp-time-presence-board', false)
         ->assertSee(__('time.presence.force_close'), false)
+        ->assertSeeHtml('id="presence-view"')
+        ->assertSeeHtml('id="presence-clock-point"')
+        ->assertSee(__('time.manual_clock_in.button'), false)
+        ->assertSee(__('common.list.filters_title'), false)
+        ->assertSee(__('time.presence.view_modes'), false)
         ->call('setViewMode', 'teams')
         ->assertSet('viewMode', 'teams')
         ->assertSee('wp-time-presence-teams', false)
-        ->call('setViewMode', 'cards')
-        ->assertSet('viewMode', 'cards')
-        ->assertSee('wp-time-presence-card-grid', false)
-        ->assertSee(__('time.presence.view_team'), false)
         ->call('setViewMode', 'locations')
         ->assertSet('viewMode', 'locations')
         ->assertSee('Hoofdkantoor', false);
+});
+
+it('zet oude teamkaarten-weergave om naar board', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(PresenceIndex::class)
+        ->call('setViewMode', 'cards')
+        ->assertSet('viewMode', 'board');
 });
 
 it('laat een admin een urenstaat afdrukken', function () {
