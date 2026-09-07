@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Api\V1;
 use App\Actions\Time\ClearWorkerClockDeviceAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
+use App\Actions\Time\ManualClockInWorkShiftAction;
 use App\Enums\ClockSource;
 use App\Http\Requests\Time\ApiClockInRequest;
 use App\Http\Requests\Time\ApiClockOutRequest;
+use App\Http\Requests\Time\ManualClockInWorkShiftRequest;
 use App\Http\Resources\WorkerResource;
 use App\Http\Resources\WorkShiftResource;
 use App\Models\ClockPoint;
@@ -43,6 +45,30 @@ class WorkShiftController extends Controller
 
         try {
             $shift = $clockIn->handle($worker, $clockPoint, source: ClockSource::Api);
+        } catch (InvalidArgumentException $e) {
+            return response()->json(['message' => $e->getMessage()], 422);
+        }
+
+        return $this->item(new WorkShiftResource($shift->load(['worker', 'team', 'clockInClockPoint'])), 201);
+    }
+
+    public function manualClockIn(ManualClockInWorkShiftRequest $request, ManualClockInWorkShiftAction $manualClockIn): JsonResponse
+    {
+        $this->authorize('manualClockIn', WorkShift::class);
+
+        $validated = $request->validated();
+        $worker = Worker::query()->findOrFail($validated['worker_id']);
+        $clockPoint = ClockPoint::query()->findOrFail($validated['clock_point_id']);
+
+        try {
+            $shift = $manualClockIn->handle(
+                $worker,
+                $clockPoint,
+                $validated['reason'],
+                (int) Tenancy::id(),
+                auth()->id(),
+                auth()->user()?->accessibleLocationIds(),
+            );
         } catch (InvalidArgumentException $e) {
             return response()->json(['message' => $e->getMessage()], 422);
         }

@@ -110,6 +110,28 @@
         "type_rapid_hop": "Saut rapide",
         "type_roster_viewed": "Liste d’évacuation"
     },
+    "manual_clock_in": {
+        "button": "Pointer manuellement",
+        "title": "Pointer manuellement",
+        "subtitle": "Pointez un exécutant sur un Clock Point sans téléphone. Le motif est enregistré dans le journal d’audit.",
+        "submit": "Pointer",
+        "saved": "Exécutant pointé manuellement.",
+        "badge": "Pointé manuellement",
+        "fields": {
+            "worker": "Exécutant",
+            "worker_placeholder": "Choisir un exécutant",
+            "clock_point": "Clock Point",
+            "clock_point_placeholder": "Choisir un Clock Point",
+            "reason": "Motif"
+        },
+        "errors": {
+            "shift_already_open": "Cet exécutant est déjà pointé.",
+            "worker_inactive": "Cet exécutant n’est pas actif.",
+            "clock_point_inactive": "Ce Clock Point n’est pas actif.",
+            "worker_location_not_allowed": "Cet exécutant ne peut pas pointer sur ce site.",
+            "clock_point_not_allowed": "Vous ne pouvez pas utiliser ce Clock Point."
+        }
+    },
     "force_close": {
         "title": "Clôturer le shift",
         "subtitle": "Vous clôturez le shift ouvert de :worker à l'heure actuelle. Le motif est enregistré dans le journal d'audit.",

@@ -110,6 +110,28 @@
         "type_rapid_hop": "Salto rápido",
         "type_roster_viewed": "Lista de evacuación"
     },
+    "manual_clock_in": {
+        "button": "Fichar manualmente",
+        "title": "Fichar manualmente",
+        "subtitle": "Fiche a un ejecutor en un Clock Point sin teléfono. El motivo se guarda en el registro de auditoría.",
+        "submit": "Fichar",
+        "saved": "Ejecutor fichado manualmente.",
+        "badge": "Fichado manualmente",
+        "fields": {
+            "worker": "Ejecutor",
+            "worker_placeholder": "Elija un ejecutor",
+            "clock_point": "Clock Point",
+            "clock_point_placeholder": "Elija un Clock Point",
+            "reason": "Motivo"
+        },
+        "errors": {
+            "shift_already_open": "Este ejecutor ya está fichado.",
+            "worker_inactive": "Este ejecutor no está activo.",
+            "clock_point_inactive": "Este Clock Point no está activo.",
+            "worker_location_not_allowed": "Este ejecutor no puede fichar en esta sede.",
+            "clock_point_not_allowed": "No puede usar este Clock Point."
+        }
+    },
     "force_close": {
         "title": "Cerrar turno",
         "subtitle": "Está cerrando el turno abierto de :worker con la hora actual. El motivo se registra en el registro de auditoría.",

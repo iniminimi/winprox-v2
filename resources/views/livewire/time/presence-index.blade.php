@@ -62,6 +62,11 @@
 
             <div class="wp-time-presence-toolbar__meta">
                 <div class="wp-time-presence-toolbar__actions">
+                    @can('manualClockIn', \App\Models\WorkShift::class)
+                        <button type="button" class="btn btn--primary btn--sm" wire:click="openManualClockIn">
+                            {{ __('time.manual_clock_in.button') }}
+                        </button>
+                    @endcan
                     @include('partials.wp-time-presence-status-filters', ['statusFilter' => $presenceStatusFilter])
 
                     @if (! $dashboard->isSearchMode)
@@ -114,4 +119,5 @@
     @endif
 
     @include('partials.wp-time-force-close-modal')
+    @include('partials.wp-time-manual-clock-in-modal')
 </div>

@@ -110,6 +110,28 @@
         "type_rapid_hop": "Rapid hop",
         "type_roster_viewed": "Evacuation list"
     },
+    "manual_clock_in": {
+        "button": "Clock in manually",
+        "title": "Clock in manually",
+        "subtitle": "Clock a worker in at a Clock Point without a phone. The reason is stored in the audit log.",
+        "submit": "Clock in",
+        "saved": "Worker clocked in manually.",
+        "badge": "Clocked in manually",
+        "fields": {
+            "worker": "Worker",
+            "worker_placeholder": "Choose a worker",
+            "clock_point": "Clock Point",
+            "clock_point_placeholder": "Choose a Clock Point",
+            "reason": "Reason"
+        },
+        "errors": {
+            "shift_already_open": "This worker is already clocked in.",
+            "worker_inactive": "This worker is not active.",
+            "clock_point_inactive": "This Clock Point is not active.",
+            "worker_location_not_allowed": "This worker cannot clock in at this site.",
+            "clock_point_not_allowed": "You cannot use this Clock Point."
+        }
+    },
     "force_close": {
         "title": "Close shift",
         "subtitle": "You are closing :worker's open shift at the current time. The reason is recorded in the audit log.",

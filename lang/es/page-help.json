@@ -1189,6 +1189,10 @@
                     "text": "Los operarios fichan mediante la pegatina QR en un clock point (<code>/time/…</code>). Identificación con nombre e icono (PIN opcional) en un solo móvil — sin inicio de sesión aparte."
                 },
                 {
+                    "label": "Fichar manualmente",
+                    "text": "Un administrador o un empleado puede <strong>fichar a un ejecutor manualmente</strong> en el Clock Point correcto (por ejemplo, si olvidó el teléfono). No se vincula ningún dispositivo. El motivo obligatorio se guarda en la auditoría. Presencia, horas y Clock Point muestran la pastilla <strong>Fichado manualmente</strong>. Fichar la salida más tarde por QR o Cerrar turno."
+                },
+                {
                     "label": "Lista de evacuación",
                     "text": "La lista de evacuación está en el portal Clock Point tras identificarse (ficha Lista de evacuación). No hay un QR aparte. Antes de la lista, el ejecutor confirma que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Las consultas de hoy encienden <strong>Atención</strong> (presencia y panel). Time → Alertas conserva la lista completa (fecha y hora, la más reciente arriba)."
                 }
@@ -1229,6 +1233,10 @@
                 {
                     "label": "Cerrar turno",
                     "text": "Los turnos abiertos en este resumen también pueden cerrarse forzosamente aquí, como en la pantalla Presencia."
+                },
+                {
+                    "label": "Fichar manualmente",
+                    "text": "Misma acción que en Presencia: fiche a un ejecutor en un Clock Point sin teléfono. Sin vincular dispositivo; motivo obligatorio en auditoría; pastilla <strong>Fichado manualmente</strong>."
                 },
                 {
                     "label": "Estados",

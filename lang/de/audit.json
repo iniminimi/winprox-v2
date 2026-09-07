@@ -118,6 +118,7 @@
         "webhook_endpoint.updated": "Webhook-Endpunkt aktualisiert",
         "work_shift.corrected": "Schicht korrigiert",
         "work_shift.force_closed": "Schicht zwangsweise geschlossen",
+        "work_shift.manual_clock_in": "Schicht manuell eingestempelt",
         "worker.created": "Ausführender erstellt",
         "worker.deleted": "Ausführender gelöscht",
         "worker.icon_reset": "Ausführenden-Icon zurückgesetzt",

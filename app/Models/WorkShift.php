@@ -141,6 +141,11 @@ class WorkShift extends Model
         return max(0, (int) $this->clock_in_at->diffInMinutes($this->clock_out_at) - (int) $this->total_break_minutes);
     }
 
+    public function isManuallyClockedIn(): bool
+    {
+        return $this->clock_in_source === ClockSource::Admin;
+    }
+
     public function isOnBreak(): bool
     {
         if (! $this->status->isOpen()) {

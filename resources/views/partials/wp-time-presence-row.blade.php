@@ -21,6 +21,9 @@
         />
         <div class="wp-time-presence-row__copy">
             <span class="wp-time-presence-row__name">{{ $shift->worker?->displayName() }}</span>
+            @if ($shift->isManuallyClockedIn())
+                <span class="wp-pill">{{ __('time.manual_clock_in.badge') }}</span>
+            @endif
             @if ($showTeam)
                 <span class="wp-muted wp-text-sm">{{ $shift->team?->localizedName() }}</span>
             @endif

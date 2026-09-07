@@ -118,6 +118,7 @@
         "webhook_endpoint.updated": "Webhook endpoint updated",
         "work_shift.corrected": "Work shift corrected",
         "work_shift.force_closed": "Work shift force-closed",
+        "work_shift.manual_clock_in": "Shift clocked in manually",
         "worker.created": "Worker created",
         "worker.deleted": "Worker deleted",
         "worker.icon_reset": "Worker icon reset",

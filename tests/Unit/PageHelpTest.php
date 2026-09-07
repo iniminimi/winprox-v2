@@ -79,8 +79,13 @@ it('laadt paginahulp voor Time-schermen', function (): void {
     $alarmTypes = collect($alarms['actions'])->first(fn (array $a): bool => $a['label'] === 'Typen');
     $alarmGoal = collect($alarms['actions'])->first(fn (array $a): bool => $a['label'] === 'Doel');
 
+    $presenceLabels = collect(PageHelp::for('time.presence')['actions'])->pluck('label')->all();
+    $shiftLabels = collect(PageHelp::for('time.shifts')['actions'])->pluck('label')->all();
+
     expect(PageHelp::for('time.presence'))->not->toBeNull()
         ->and(PageHelp::for('time.presence')['title'])->toBe('Hulp — Aanwezigheid')
+        ->and($presenceLabels)->toContain('Manueel inklokken')
+        ->and($shiftLabels)->toContain('Manueel inklokken')
         ->and($alarms)->not->toBeNull()
         ->and($alarms['title'])->toBe('Hulp — Alarmen')
         ->and($alarmGoal['text'])->toContain('snelle hop')

@@ -21,6 +21,8 @@ class WorkShiftResource extends JsonResource
             'net_work_minutes' => $this->netWorkMinutes(),
             'clock_in_clock_point_id' => $this->clock_in_clock_point_id,
             'clock_out_clock_point_id' => $this->clock_out_clock_point_id,
+            'clock_in_source' => $this->clock_in_source?->value,
+            'clock_out_source' => $this->clock_out_source?->value,
         ];
     }
 }

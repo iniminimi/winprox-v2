@@ -1197,6 +1197,10 @@
                     "text": "Les exécutants pointent via l'autocollant QR sur un clock point (<code>/time/…</code>). Identification par nom et icône (PIN optionnel) sur un seul téléphone — pas de connexion séparée."
                 },
                 {
+                    "label": "Pointer manuellement",
+                    "text": "Un administrateur ou un collaborateur peut <strong>pointer un exécutant manuellement</strong> sur le bon Clock Point (par ex. téléphone oublié). Aucun appareil n’est lié. Un motif obligatoire est enregistré dans le journal d’audit. Présence, heures et Clock Point affichent la pilule <strong>Pointé manuellement</strong>. Pointer la sortie plus tard via le QR ou Fermer le shift."
+                },
+                {
                     "label": "Liste d’évacuation",
                     "text": "La liste d’évacuation est sur le portail Clock Point après connexion (tuile Liste d’évacuation). Pas de QR distinct. Avant la liste, l’exécutant confirme que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Les consultations d’aujourd’hui allument <strong>À surveiller</strong> (présence et tableau de bord). Time → Alertes conserve la liste complète (date et heure, plus récente en haut)."
                 }
@@ -1237,6 +1241,10 @@
                 {
                     "label": "Fermer le shift",
                     "text": "Les shifts ouverts dans cet aperçu peuvent aussi être fermés de force ici, comme sur l'écran Présence."
+                },
+                {
+                    "label": "Pointer manuellement",
+                    "text": "Même action que sur Présence : pointez un exécutant sur un Clock Point sans téléphone. Aucun appareil lié ; motif obligatoire dans le journal d’audit ; pilule <strong>Pointé manuellement</strong>."
                 },
                 {
                     "label": "Statuts",

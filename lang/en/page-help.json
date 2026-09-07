@@ -1189,6 +1189,10 @@
                     "text": "Field workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon (optional PIN) on one phone — no separate login."
                 },
                 {
+                    "label": "Clock in manually",
+                    "text": "An administrator or staff user can <strong>clock a worker in manually</strong> at the correct Clock Point (for example if they forgot their phone). No device is bound. A required reason is stored in the audit log. Presence, hours and Clock Point show the <strong>Clocked in manually</strong> pill. Clock out later via the QR or Close shift."
+                },
+                {
                     "label": "Evacuation list",
                     "text": "The evacuation list is on the Clock Point portal after sign-in (Evacuation list tile). No extra QR. Before the list, the field worker confirms that the consultation is exceptional and is logged (first name, last name, date and time). Views from today light up <strong>Attention</strong> (presence and dashboard). Time → Alarms keeps the full list (date and time, newest first)."
                 }
@@ -1229,6 +1233,10 @@
                 {
                     "label": "Close shift",
                     "text": "Open shifts in this overview can also be force-closed, same as on the Presence screen."
+                },
+                {
+                    "label": "Clock in manually",
+                    "text": "Same action as on Presence: clock a worker in at a Clock Point without a phone. No device bind; required reason in the audit log; <strong>Clocked in manually</strong> pill."
                 },
                 {
                     "label": "Statuses",

@@ -5,6 +5,7 @@ namespace App\Livewire\Time;
 use App\Actions\Time\BuildTimePresenceDashboardAction;
 use App\Enums\TimePresenceStatusFilter;
 use App\Enums\TimePresenceViewMode;
+use App\Livewire\Concerns\ManagesManualClockIn;
 use App\Livewire\Concerns\ManagesWorkShiftForceClose;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
@@ -22,6 +23,7 @@ use Livewire\Component;
 class PresenceIndex extends Component
 {
     use AuthorizesRequests;
+    use ManagesManualClockIn;
     use ManagesWorkShiftForceClose;
 
     #[Url(as: 'team')]
@@ -157,6 +159,9 @@ class PresenceIndex extends Component
 
         $user = auth()->user();
         $scopeLocationIds = $user?->accessibleLocationIds();
+        $manualClockInOptions = $this->showManualClockInModal
+            ? $this->manualClockInFormOptions($scopeLocationIds)
+            : ['workers' => collect(), 'clockPoints' => collect()];
 
         $locationsQuery = Location::query()->orderBy('name');
         if ($scopeLocationIds !== null) {
@@ -183,6 +188,8 @@ class PresenceIndex extends Component
             'staleHours' => (int) config('time.stale_shift_hours', 16),
             'teamPageSize' => (int) config('time.presence_team_page_size', 50),
             'boardLimit' => $this->boardLimit,
+            'manualClockInWorkers' => $manualClockInOptions['workers'],
+            'manualClockInClockPoints' => $manualClockInOptions['clockPoints'],
         ]);
     }
 }

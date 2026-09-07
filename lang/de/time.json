@@ -110,6 +110,28 @@
         "type_rapid_hop": "Schneller Wechsel",
         "type_roster_viewed": "Evakuierungsliste"
     },
+    "manual_clock_in": {
+        "button": "Manuell einstempeln",
+        "title": "Manuell einstempeln",
+        "subtitle": "Stempeln Sie eine ausführende Person an einem Clock Point ohne Handy ein. Der Grund wird im Audit-Log gespeichert.",
+        "submit": "Einstempeln",
+        "saved": "Ausführende Person manuell eingestempelt.",
+        "badge": "Manuell eingestempelt",
+        "fields": {
+            "worker": "Ausführende Person",
+            "worker_placeholder": "Ausführende Person wählen",
+            "clock_point": "Clock Point",
+            "clock_point_placeholder": "Clock Point wählen",
+            "reason": "Grund"
+        },
+        "errors": {
+            "shift_already_open": "Diese ausführende Person ist bereits eingestempelt.",
+            "worker_inactive": "Diese ausführende Person ist nicht aktiv.",
+            "clock_point_inactive": "Dieser Clock Point ist nicht aktiv.",
+            "worker_location_not_allowed": "Diese ausführende Person darf an diesem Standort nicht einstempeln.",
+            "clock_point_not_allowed": "Sie dürfen diesen Clock Point nicht verwenden."
+        }
+    },
     "force_close": {
         "title": "Schicht schließen",
         "subtitle": "Sie schließen die offene Schicht von :worker mit der aktuellen Zeit ab. Der Grund wird im Auditlog festgehalten.",

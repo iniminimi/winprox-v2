@@ -20,6 +20,15 @@ it('beantwoordt Time-vragen vanuit pagina-hulp Clock Points', function (): void 
         ->and($answer)->not->toBe(__('faq.items.time_clock.summary'));
 });
 
+it('beantwoordt manueel inklokken vanuit aanwezigheid-paginahulp', function (): void {
+    $matcher = app(HelpChatFaqMatcher::class);
+
+    $answer = $matcher->match('gsm vergeten manueel inklokken', 'nl');
+
+    expect($answer)->toContain('Manueel inklokken')
+        ->and($answer)->toContain('geen toestel');
+});
+
 it('beantwoordt taak-toewijzing vanuit pagina-hulp i.p.v. korte FAQ', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 

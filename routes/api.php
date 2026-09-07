@@ -112,6 +112,9 @@ Route::prefix('v1')->group(function () {
             Route::post('time/clock-in', [WorkShiftController::class, 'clockIn'])
                 ->middleware([CheckTokenAbilities::class.':time:write'])
                 ->name('api.v1.time.clock-in');
+            Route::post('time/manual-clock-in', [WorkShiftController::class, 'manualClockIn'])
+                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->name('api.v1.time.manual-clock-in');
             Route::post('time/clock-out', [WorkShiftController::class, 'clockOut'])
                 ->middleware([CheckTokenAbilities::class.':time:write'])
                 ->name('api.v1.time.clock-out');

@@ -3,6 +3,7 @@
 namespace App\Livewire\Time;
 
 use App\Actions\Time\CorrectWorkShiftAction;
+use App\Livewire\Concerns\ManagesManualClockIn;
 use App\Livewire\Concerns\ManagesWorkShiftForceClose;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Http\Requests\Time\CorrectWorkShiftRequest;
@@ -24,6 +25,7 @@ use Livewire\WithPagination;
 class ShiftsIndex extends Component
 {
     use AuthorizesRequests;
+    use ManagesManualClockIn;
     use ManagesWorkShiftForceClose;
     use ProvidesTimeNavAlarmCount;
     use WithPagination;
@@ -142,11 +144,17 @@ class ShiftsIndex extends Component
             ->when($this->clockPointFilter, fn ($q) => $q->where('clock_in_clock_point_id', $this->clockPointFilter))
             ->orderByDesc('clock_in_at');
 
+        $manualClockInOptions = $this->showManualClockInModal
+            ? $this->manualClockInFormOptions(auth()->user()?->accessibleLocationIds())
+            : ['workers' => collect(), 'clockPoints' => collect()];
+
         return view('livewire.time.shifts-index', [
             'shifts' => $query->paginate(25),
             'teams' => InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
             'workers' => Worker::query()->where('is_active', true)->orderBy('last_name')->orderBy('first_name')->get(),
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
+            'manualClockInWorkers' => $manualClockInOptions['workers'],
+            'manualClockInClockPoints' => $manualClockInOptions['clockPoints'],
             'exportUrl' => route('time.shifts.export', array_filter([
                 'from' => $this->from,
                 'to' => $this->to,

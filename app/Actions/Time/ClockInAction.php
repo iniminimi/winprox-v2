@@ -32,6 +32,11 @@ class ClockInAction
         ?float $latitude = null,
         ?float $longitude = null,
     ): WorkShift {
+        if ($source === ClockSource::Admin) {
+            $device = null;
+            $enforceClockDevice = false;
+        }
+
         if ((int) $worker->tenant_id !== (int) $clockPoint->tenant_id) {
             throw new InvalidArgumentException('worker_clock_point_tenant_mismatch');
         }

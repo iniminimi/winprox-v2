@@ -29,6 +29,12 @@ class WorkShiftPolicy
             && ($user->isAdmin() || $user->isEmployee());
     }
 
+    public function manualClockIn(User $user): bool
+    {
+        return $this->moduleEnabledForUser($user)
+            && ($user->isAdmin() || $user->isEmployee() || $user->is_superuser);
+    }
+
     public function correct(User $user, WorkShift $workShift): bool
     {
         return $this->sameTenant($user, (int) $workShift->tenant_id)

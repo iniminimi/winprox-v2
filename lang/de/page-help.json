@@ -1189,6 +1189,10 @@
                     "text": "Ausführende stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>). Identifikation mit Name und Symbol (optional PIN) auf einem Handy — keine separate Anmeldung."
                 },
                 {
+                    "label": "Manuell einstempeln",
+                    "text": "Administrator und Mitarbeiter können eine ausführende Person am richtigen Clock Point <strong>manuell einstempeln</strong> (z. B. Handy vergessen). Es wird kein Gerät gekoppelt. Ein Pflichtgrund steht im Audit-Log. Anwesenheit, Stunden und Clock Point zeigen die Pille <strong>Manuell eingestempelt</strong>. Ausstempeln später per QR oder Schicht schließen."
+                },
+                {
                     "label": "Evakuierungsliste",
                     "text": "Die Evakuierungsliste steht nach der Anmeldung auf dem Clock-Point-Portal (Kachel Evakuierungsliste). Kein eigener QR. Vor der Liste bestätigt der Ausführende, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Einsichten von heute lassen <strong>Aufmerksamkeit</strong> aufleuchten (Anwesenheit und Dashboard). Time → Alarme behält die vollständige Liste (Datum und Uhrzeit, neueste oben)."
                 }
@@ -1229,6 +1233,10 @@
                 {
                     "label": "Schicht schließen",
                     "text": "Offene Schichten in dieser Übersicht können hier ebenfalls erzwungen geschlossen werden, wie auf dem Bildschirm Anwesenheit."
+                },
+                {
+                    "label": "Manuell einstempeln",
+                    "text": "Gleiche Aktion wie unter Anwesenheit: stempeln Sie eine ausführende Person ohne Handy ein. Keine Gerätekopplung; Pflichtgrund im Audit-Log; Pille <strong>Manuell eingestempelt</strong>."
                 },
                 {
                     "label": "Status",

@@ -168,6 +168,20 @@ return [
         ],
         [
             'patterns' => [
+                'manueel inklok', 'manueel inklokken', 'manual clock', 'clock in manually',
+                'pointer manuellement', 'manuell einstempeln', 'fichar manualmente', 'timbratura manuale',
+                'gsm vergeten', 'forgot phone', 'téléphone oublié', 'handy vergessen',
+                'teléfono olvidado', 'telefono dimenticato',
+            ],
+            'page' => 'time.presence',
+            'prefer' => [
+                'manueel inklok', 'clock in manually', 'pointer manuellement',
+                'manuell einstempeln', 'fichar manualmente', 'timbratura manuale',
+                'gsm vergeten',
+            ],
+        ],
+        [
+            'patterns' => [
                 'uitvoerder', 'worker', 'teamleider', 'teamleader', 'operationeel team',
                 'checklist', 'clock point',
             ],

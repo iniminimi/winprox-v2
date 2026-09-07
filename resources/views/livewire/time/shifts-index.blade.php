@@ -53,6 +53,11 @@
                 </div>
             </div>
             <div class="wp-filter-form__actions">
+                @can('manualClockIn', \App\Models\WorkShift::class)
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openManualClockIn">
+                        {{ __('time.manual_clock_in.button') }}
+                    </button>
+                @endcan
                 <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('time.filters.apply') }}</button>
                 <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
             </div>
@@ -133,6 +138,9 @@
                             {{ __('time.corrections.button') }}
                         </button>
                     @endif
+                    @if ($shift->isManuallyClockedIn())
+                        <span class="wp-pill">{{ __('time.manual_clock_in.badge') }}</span>
+                    @endif
                 </div>
             </div>
         @empty
@@ -179,4 +187,5 @@
     @endif
 
     @include('partials.wp-time-force-close-modal')
+    @include('partials.wp-time-manual-clock-in-modal')
 </div>

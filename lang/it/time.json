@@ -110,6 +110,28 @@
         "type_rapid_hop": "Salto rapido",
         "type_roster_viewed": "Elenco evacuazione"
     },
+    "manual_clock_in": {
+        "button": "Timbratura manuale",
+        "title": "Timbratura manuale",
+        "subtitle": "Timbra un esecutore su un Clock Point senza telefono. Il motivo viene registrato nel log di audit.",
+        "submit": "Timbra",
+        "saved": "Esecutore timbrato manualmente.",
+        "badge": "Timbrato manualmente",
+        "fields": {
+            "worker": "Esecutore",
+            "worker_placeholder": "Scegli un esecutore",
+            "clock_point": "Clock Point",
+            "clock_point_placeholder": "Scegli un Clock Point",
+            "reason": "Motivo"
+        },
+        "errors": {
+            "shift_already_open": "Questo esecutore è già timbrato.",
+            "worker_inactive": "Questo esecutore non è attivo.",
+            "clock_point_inactive": "Questo Clock Point non è attivo.",
+            "worker_location_not_allowed": "Questo esecutore non può timbrare in questa sede.",
+            "clock_point_not_allowed": "Non puoi usare questo Clock Point."
+        }
+    },
     "force_close": {
         "title": "Chiudi turno",
         "subtitle": "Stai chiudendo il turno aperto di :worker con l'ora attuale. Il motivo viene registrato nel registro di audit.",

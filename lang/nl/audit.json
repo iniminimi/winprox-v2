@@ -118,6 +118,7 @@
         "webhook_endpoint.updated": "Webhook-endpoint bijgewerkt",
         "work_shift.corrected": "Dienst gecorrigeerd",
         "work_shift.force_closed": "Dienst geforceerd afgesloten",
+        "work_shift.manual_clock_in": "Dienst manueel ingeklokt",
         "worker.created": "Uitvoerder aangemaakt",
         "worker.deleted": "Uitvoerder verwijderd",
         "worker.icon_reset": "Uitvoerder-icoon gereset",

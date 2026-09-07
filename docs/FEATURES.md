@@ -670,6 +670,10 @@ productsector op `Tenant`.
   tot beheer/teamleader vrijgeeft); één open shift;
   hops tussen Clock Points (alarm bij hop < 5 min). Optioneel GPS bij de prik
   (geen weigering zonder signaal). API `POST /time/clock-in` (bron API) koppelt **geen** gsm.
+  Beheerder en medewerker kunnen een uitvoerder **manueel inklokken** op een Clock Point
+  (`ClockSource::Admin`, `POST /api/v1/time/manual-clock-in`): geen gsm-koppeling, verplichte
+  reden in het auditlog (`work_shift.manual_clock_in`), pil **Manueel ingeklokt**. Uitklokken
+  later via Clock Point-QR of Shift sluiten. Geen terugwerkende gesloten dienst in deze slice.
 
 ### 5g.2 Golf 1 — CIAO schoonmaak (`CiaoCleaning`)
 - Voor organisaties die schoonmaak/onderhoud **onroerend voor derden** doen onder Aangifte van

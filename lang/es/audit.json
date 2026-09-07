@@ -118,6 +118,7 @@
         "webhook_endpoint.updated": "Endpoint webhook actualizado",
         "work_shift.corrected": "Turno corregido",
         "work_shift.force_closed": "Turno cerrado a la fuerza",
+        "work_shift.manual_clock_in": "Turno fichado manualmente",
         "worker.created": "Operario creado",
         "worker.deleted": "Operario eliminado",
         "worker.icon_reset": "Icono de operario restablecido",

@@ -250,6 +250,9 @@
                                     {{ __('time.portal.clock.clocked_in_since', ['time' => $openShift->clock_in_at->format('H:i')]) }}
                                 @endif
                             </p>
+                            @if ($openShift->isManuallyClockedIn())
+                                <p class="wp-muted">{{ __('time.manual_clock_in.badge') }}</p>
+                            @endif
                             @if ($startedElsewhere && $openShift->clockInClockPoint)
                                 <p class="wp-muted">{{ __('time.portal.clock.started_at', ['place' => $openShift->clockInClockPoint->name]) }}</p>
                             @endif

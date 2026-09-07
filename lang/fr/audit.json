@@ -118,6 +118,7 @@
         "webhook_endpoint.updated": "Point de terminaison webhook mis à jour",
         "work_shift.corrected": "Vacation corrigée",
         "work_shift.force_closed": "Vacation clôturée de force",
+        "work_shift.manual_clock_in": "Vacation pointée manuellement",
         "worker.created": "Intervenant créé",
         "worker.deleted": "Intervenant supprimé",
         "worker.icon_reset": "Icône d’intervenant réinitialisée",

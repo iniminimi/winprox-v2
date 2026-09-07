@@ -7,6 +7,7 @@ use App\Actions\Time\BuildTimePresenceDashboardAction;
 use App\Enums\TimePresenceStatusFilter;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
+use App\Actions\Time\ManualClockInWorkShiftAction;
 use App\Enums\ClockSource;
 use App\Enums\WorkShiftStatus;
 use App\Livewire\Public\TimePortal;
@@ -16,10 +17,12 @@ use App\Livewire\Time\ShiftsIndex;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
+use App\Models\Location;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
+use App\Models\WorkerDevice;
 use App\Models\WorkShift;
 use App\Models\WorkShiftTaskLog;
 use App\Support\Portal\WorkerVerification;
@@ -702,4 +705,181 @@ it('sluit open taakkoppelingen bij uitklokken', function () {
 
     $log = WorkShiftTaskLog::query()->where('task_id', $task->id)->first();
     expect($log?->ended_at)->not->toBeNull();
+});
+
+it('laat een admin een uitvoerder manueel inklokken zonder gsm-koppeling', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Anna',
+        'last_name' => 'Vergeten',
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(PresenceIndex::class)
+        ->assertSee(__('time.manual_clock_in.button'), false)
+        ->call('openManualClockIn')
+        ->set('manualClockInWorkerId', $worker->id)
+        ->set('manualClockInClockPointId', $clockPoint->id)
+        ->set('manualClockInReason', 'Gsm vergeten')
+        ->call('confirmManualClockIn')
+        ->assertHasNoErrors();
+
+    $shift = WorkShift::query()->where('worker_id', $worker->id)->open()->first();
+
+    expect($shift)->not->toBeNull()
+        ->and($shift->clock_in_source)->toBe(ClockSource::Admin)
+        ->and($shift->clock_in_device_id)->toBeNull()
+        ->and($shift->isManuallyClockedIn())->toBeTrue();
+
+    expect(DB::table('audit_logs')
+        ->where('action', 'work_shift.manual_clock_in')
+        ->where('model_id', $shift->id)
+        ->where('user_id', $admin->id)
+        ->exists())->toBeTrue();
+});
+
+it('laat een medewerker een uitvoerder manueel inklokken', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($employee)
+        ->test(PresenceIndex::class)
+        ->call('openManualClockIn')
+        ->set('manualClockInWorkerId', $worker->id)
+        ->set('manualClockInClockPointId', $clockPoint->id)
+        ->set('manualClockInReason', 'Gsm vergeten')
+        ->call('confirmManualClockIn')
+        ->assertHasNoErrors();
+
+    expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue();
+});
+
+it('weigert manueel inklokken als de uitvoerder al een open shift heeft', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    Livewire::actingAs($admin)
+        ->test(PresenceIndex::class)
+        ->call('openManualClockIn')
+        ->set('manualClockInWorkerId', $worker->id)
+        ->set('manualClockInClockPointId', $clockPoint->id)
+        ->set('manualClockInReason', 'Gsm vergeten')
+        ->call('confirmManualClockIn')
+        ->assertHasErrors(['manualClockInReason']);
+});
+
+it('weigert manueel inklokken op een Clock Point buiten de vestiging van de uitvoerder', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $locationA = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $locationB = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $worker->locations()->sync([$locationA->id]);
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationB->id,
+    ]);
+
+    expect(fn () => app(ManualClockInWorkShiftAction::class)->handle(
+        $worker,
+        $clockPoint,
+        'Gsm vergeten',
+        (int) $tenant->id,
+        $admin->id,
+    ))->toThrow(InvalidArgumentException::class, 'worker_location_not_allowed');
+});
+
+it('weigert manueel inklokken op een Clock Point buiten de locatiescope van de medewerker', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $locationA = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $locationB = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $employee->locations()->sync([$locationA->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationB->id,
+    ]);
+
+    expect(fn () => app(ManualClockInWorkShiftAction::class)->handle(
+        $worker,
+        $clockPoint,
+        'Gsm vergeten',
+        (int) $tenant->id,
+        $employee->id,
+        $employee->accessibleLocationIds(),
+    ))->toThrow(InvalidArgumentException::class, 'clock_point_not_allowed');
+});
+
+it('weigert manueel inklokken op een Clock Point zonder vestiging voor een scoped medewerker', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $locationA = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $employee->locations()->sync([$locationA->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => null,
+    ]);
+
+    expect(fn () => app(ManualClockInWorkShiftAction::class)->handle(
+        $worker,
+        $clockPoint,
+        'Gsm vergeten',
+        (int) $tenant->id,
+        $employee->id,
+        $employee->accessibleLocationIds(),
+    ))->toThrow(InvalidArgumentException::class, 'clock_point_not_allowed');
+});
+
+it('koppelt geen gsm bij ClockInAction met bron admin, ook als er een device meegegeven wordt', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $device = WorkerDevice::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+    ]);
+
+    $shift = app(ClockInAction::class)->handle(
+        $worker,
+        $clockPoint,
+        device: $device,
+        source: ClockSource::Admin,
+        enforceClockDevice: true,
+    );
+
+    expect($shift->clock_in_source)->toBe(ClockSource::Admin)
+        ->and($shift->clock_in_device_id)->toBeNull();
 });

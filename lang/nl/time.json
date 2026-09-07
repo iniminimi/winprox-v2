@@ -110,6 +110,28 @@
         "type_rapid_hop": "Snelle hop",
         "type_roster_viewed": "Evacuatielijst"
     },
+    "manual_clock_in": {
+        "button": "Manueel inklokken",
+        "title": "Manueel inklokken",
+        "subtitle": "Klok een uitvoerder in op een Clock Point zonder gsm. De reden wordt vastgelegd in het auditlog.",
+        "submit": "Inklokken",
+        "saved": "Uitvoerder manueel ingeklokt.",
+        "badge": "Manueel ingeklokt",
+        "fields": {
+            "worker": "Uitvoerder",
+            "worker_placeholder": "Kies een uitvoerder",
+            "clock_point": "Clock Point",
+            "clock_point_placeholder": "Kies een Clock Point",
+            "reason": "Reden"
+        },
+        "errors": {
+            "shift_already_open": "Deze uitvoerder is al ingeklokt.",
+            "worker_inactive": "Deze uitvoerder is niet actief.",
+            "clock_point_inactive": "Dit Clock Point is niet actief.",
+            "worker_location_not_allowed": "Deze uitvoerder mag niet inklokken op deze vestiging.",
+            "clock_point_not_allowed": "Je mag dit Clock Point niet gebruiken."
+        }
+    },
     "force_close": {
         "title": "Shift sluiten",
         "subtitle": "U sluit de open shift van :worker af met de huidige tijd. De reden wordt vastgelegd in het auditlog.",

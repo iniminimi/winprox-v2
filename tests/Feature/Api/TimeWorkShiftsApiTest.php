@@ -84,3 +84,36 @@ it('weigert time write zonder time:write ability', function () {
         ])
         ->assertForbidden();
 });
+
+it('klokt een worker manueel in via de API met time:write zonder gsm-koppeling', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $user = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+    $token = $user->createToken('test', ['time:write'])->plainTextToken;
+
+    $response = $this->withToken($token)
+        ->postJson('/api/v1/time/manual-clock-in', [
+            'worker_id' => $worker->id,
+            'clock_point_id' => $clockPoint->id,
+            'reason' => 'Gsm vergeten',
+        ]);
+
+    $response->assertCreated()
+        ->assertJsonPath('data.worker_id', $worker->id)
+        ->assertJsonPath('data.status', 'open')
+        ->assertJsonPath('data.clock_in_source', 'admin');
+
+    Tenancy::actAs($tenant->id);
+    $shift = WorkShift::query()->where('worker_id', $worker->id)->open()->first();
+    expect($shift)->not->toBeNull()
+        ->and($shift->clock_in_device_id)->toBeNull();
+});

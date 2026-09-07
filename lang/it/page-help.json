@@ -1189,6 +1189,10 @@
                     "text": "Gli esecutori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>). Identificazione con nome e icona (PIN opzionale) su un solo telefono — nessun accesso separato."
                 },
                 {
+                    "label": "Timbratura manuale",
+                    "text": "Un amministratore o un collaboratore può <strong>timbrare manualmente un esecutore</strong> sul Clock Point corretto (ad es. telefono dimenticato). Nessun dispositivo viene collegato. Il motivo obbligatorio va nel log di audit. Presenza, ore e Clock Point mostrano la pillola <strong>Timbrato manualmente</strong>. Timbrare l’uscita più tardi via QR o Chiudi turno."
+                },
+                {
                     "label": "Elenco evacuazione",
                     "text": "L’elenco evacuazione è sul portale Clock Point dopo l’accesso (riquadro Elenco evacuazione). Nessun QR separato. Prima dell’elenco l’esecutore conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Le consultazioni di oggi accendono <strong>Attenzione</strong> (presenza e dashboard). Time → Allarmi conserva l’elenco completo (data e ora, la più recente in alto)."
                 }
@@ -1229,6 +1233,10 @@
                 {
                     "label": "Chiudi turno",
                     "text": "I turni aperti in questa panoramica possono essere chiusi forzatamente anche qui, come nella schermata Presenze."
+                },
+                {
+                    "label": "Timbratura manuale",
+                    "text": "Stessa azione di Presenza: timbra un esecutore su un Clock Point senza telefono. Nessun dispositivo collegato; motivo obbligatorio nel log di audit; pillola <strong>Timbrato manualmente</strong>."
                 },
                 {
                     "label": "Stati",
