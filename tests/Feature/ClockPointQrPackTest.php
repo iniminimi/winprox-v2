@@ -133,6 +133,7 @@ it('opens clock-point qr cluster modal with print pack choices only', function (
         ->test(ClockPointsIndex::class)
         ->assertSee(__('common.qr.button'), false)
         ->assertSee(__('time.clock_points.qr.renew'), false)
+        ->assertSeeHtml('id="qr-renew-clock-point"')
         ->assertDontSee(__('common.qr.print'), false)
         ->assertDontSee(__('common.qr.renew_hint'), false)
         ->call('openQrPackModal', $clockPoint->id)

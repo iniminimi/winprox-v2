@@ -37,6 +37,7 @@ class ClockPointsIndex extends Component
     public ?int $locationId = null;
     public int $sortOrder = 0;
     public ?int $qrRotationMonths = null;
+    public ?int $renewQrClockPointId = null;
 
     public function mount(EnsureDefaultClockPointAction $ensureDefaultClockPoint): void
     {
@@ -127,6 +128,17 @@ class ClockPointsIndex extends Component
         session()->flash('time_flash', __('time.clock_points.qr.renewed'));
     }
 
+    public function renewSelectedQr(RenewClockPointQrAction $renew): void
+    {
+        $this->validate([
+            'renewQrClockPointId' => ['required', 'integer'],
+        ], [], [
+            'renewQrClockPointId' => __('time.clock_points.qr.rotation_renew_clock_point'),
+        ]);
+
+        $this->renewQr((int) $this->renewQrClockPointId, $renew);
+    }
+
     public function openQrPackModal(int $clockPointId): void
     {
         $clockPoint = ClockPoint::query()->findOrFail($clockPointId);
@@ -167,12 +179,18 @@ class ClockPointsIndex extends Component
     public function render()
     {
         $tenantId = (int) Tenancy::id();
+        $clockPoints = ClockPoint::query()->with('location')->orderBy('sort_order')->orderBy('name')->get();
+        if ($this->renewQrClockPointId === null || ! $clockPoints->contains('id', $this->renewQrClockPointId)) {
+            $recommended = $clockPoints->first(fn (ClockPoint $clockPoint) => $clockPoint->isRenewalRecommended());
+            $this->renewQrClockPointId = $recommended?->id ?? $clockPoints->first()?->id;
+        }
         $qrPackClockPoint = $this->qrPackClockPointId !== null
-            ? ClockPoint::query()->with('location')->find($this->qrPackClockPointId)
+            ? $clockPoints->firstWhere('id', $this->qrPackClockPointId)
             : null;
 
         return view('livewire.time.clock-points-index', [
-            'clockPoints' => ClockPoint::query()->with('location')->orderBy('sort_order')->orderBy('name')->get(),
+            'clockPoints' => $clockPoints,
+            'selectedRenewClockPoint' => $clockPoints->firstWhere('id', $this->renewQrClockPointId),
             'locations' => Location::query()->where('is_active', true)->orderBy('name')->get(),
             'blockedQrAttempts' => AuditLog::query()
                 ->where('tenant_id', $tenantId)

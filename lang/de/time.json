@@ -247,6 +247,7 @@
             "rotation_title": "QR-Rotation",
             "rotation_hint": "Nach diesem Intervall erscheint eine Empfehlung zur Erneuerung. 0 = aus (keine Empfehlungen).",
             "rotation_renew_intro": "Erneuern Sie den QR hier bei verlorenem Aufkleber oder vermutetem Missbrauch. Drucken Sie danach einen neuen Aufkleber.",
+            "rotation_renew_clock_point": "Clock Point",
             "rotation_months": "Intervall (Monate)",
             "rotation_saved": "QR-Rotations-Einstellung gespeichert.",
             "blocked_attempts": ":count blockierte QR-Scan(s) in den letzten 7 Tagen.",

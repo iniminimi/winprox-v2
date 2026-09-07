@@ -48,33 +48,36 @@
                 @error('qrRotationMonths') <p class="wp-error">{{ $message }}</p> @enderror
 
                 <p class="wp-muted wp-text-sm">{{ __('time.clock_points.qr.rotation_renew_intro') }}</p>
-                <div class="wp-list wp-list--entity-rows">
-                    @foreach ($clockPoints as $clockPoint)
-                        <div class="wp-issue-row" wire:key="clock-point-qr-rotate-{{ $clockPoint->id }}">
-                            <div class="wp-grow wp-stack-tight">
-                                <p class="wp-issue-card-title">{{ $clockPoint->name }}</p>
-                                @if ($clockPoint->location)
-                                    <p class="wp-issue-card-meta">{{ $clockPoint->location->localizedName() }}</p>
-                                @endif
-                            </div>
-                            <div class="wp-cluster wp-cluster--wrap">
-                                @if ($clockPoint->isRenewalRecommended())
-                                    <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
-                                @endif
-                                @can('renewQr', $clockPoint)
-                                    <button
-                                        type="button"
-                                        class="btn btn--surface btn--sm"
-                                        wire:click="renewQr({{ $clockPoint->id }})"
-                                        wire:confirm="{{ __('time.clock_points.qr.renew_confirm') }}"
-                                    >
-                                        {{ __('time.clock_points.qr.renew') }}
-                                    </button>
-                                @endcan
-                            </div>
+                @if ($clockPoints->isNotEmpty())
+                    <div class="wp-cluster wp-cluster--wrap">
+                        <div class="wp-filter-cell">
+                            <label class="wp-filter-inline-label" for="qr-renew-clock-point">{{ __('time.clock_points.qr.rotation_renew_clock_point') }}</label>
+                            <select id="qr-renew-clock-point" class="wp-select" wire:model.live="renewQrClockPointId">
+                                @foreach ($clockPoints as $clockPoint)
+                                    <option value="{{ $clockPoint->id }}">
+                                        {{ $clockPoint->name }}@if ($clockPoint->isRenewalRecommended()) — {{ __('time.clock_points.qr.renewal_recommended') }}@endif
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
-                    @endforeach
-                </div>
+                        @if ($selectedRenewClockPoint)
+                            @if ($selectedRenewClockPoint->isRenewalRecommended())
+                                <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
+                            @endif
+                            @can('renewQr', $selectedRenewClockPoint)
+                                <button
+                                    type="button"
+                                    class="btn btn--surface btn--sm"
+                                    wire:click="renewSelectedQr"
+                                    wire:confirm="{{ __('time.clock_points.qr.renew_confirm') }}"
+                                >
+                                    {{ __('time.clock_points.qr.renew') }}
+                                </button>
+                            @endcan
+                        @endif
+                    </div>
+                    @error('renewQrClockPointId') <p class="wp-error">{{ $message }}</p> @enderror
+                @endif
             </div>
         </div>
     @endcan

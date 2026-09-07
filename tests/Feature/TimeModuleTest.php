@@ -130,7 +130,24 @@ it('toont Clock Points als paginatitel en QR-rotatie standaard ingeklapt', funct
         ->assertSee('wp-page-icon--assistant', false)
         ->assertSee(__('time.clock_points.qr.rotation_title'))
         ->assertSee(__('time.clock_points.qr.renew'))
+        ->assertSeeHtml('id="qr-renew-clock-point"')
         ->assertSeeHtml('x-data="{ open: false }"');
+});
+
+it('toont QR-vernieuwen als dropdown in plaats van een tweede lijst', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Poort Noord', 'sort_order' => 1]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Poort Zuid', 'sort_order' => 2]);
+
+    $html = Livewire::actingAs($admin)
+        ->test(ClockPointsIndex::class)
+        ->assertSeeHtml('id="qr-renew-clock-point"')
+        ->assertSee('Poort Noord', false)
+        ->assertSee('Poort Zuid', false)
+        ->assertDontSeeHtml('clock-point-qr-rotate-')
+        ->html();
+
+    expect(substr_count($html, e(__('time.clock_points.qr.renew'))))->toBe(1);
 });
 
 it('toont afwezige werknemers in uitgeklapt team met status alle', function () {
@@ -559,7 +576,8 @@ it('vernieuwt een clock point QR en laat oude token werken tijdens grace', funct
 
     Livewire::actingAs($admin)
         ->test(\App\Livewire\Time\ClockPointsIndex::class)
-        ->call('renewQr', $clockPoint->id)
+        ->assertSet('renewQrClockPointId', $clockPoint->id)
+        ->call('renewSelectedQr')
         ->assertHasNoErrors();
 
     $clockPoint = $clockPoint->fresh();

@@ -247,6 +247,7 @@
             "rotation_title": "QR rotation",
             "rotation_hint": "After this interval a renewal recommendation appears. 0 = off (no recommendations).",
             "rotation_renew_intro": "Renew the QR here if a sticker is lost or you suspect misuse. Then print a new sticker.",
+            "rotation_renew_clock_point": "Clock Point",
             "rotation_months": "Interval (months)",
             "rotation_saved": "QR rotation setting saved.",
             "blocked_attempts": ":count blocked QR scan(s) in the last 7 days.",
