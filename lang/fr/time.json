@@ -246,6 +246,7 @@
             "renewal_recommended": "À remplacer",
             "rotation_title": "Rotation QR",
             "rotation_hint": "Après cet intervalle, une recommandation de renouvellement apparaît. 0 = désactivé (pas de recommandations).",
+            "rotation_renew_intro": "Renouvelez ici le QR en cas d’autocollant perdu ou de suspicion d’abus. Imprimez ensuite un nouveau sticker.",
             "rotation_months": "Intervalle (mois)",
             "rotation_saved": "Paramètre de rotation QR enregistré.",
             "blocked_attempts": ":count scan(s) QR bloqué(s) au cours des 7 derniers jours.",

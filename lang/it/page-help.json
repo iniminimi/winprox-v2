@@ -1257,11 +1257,11 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Con <strong>QR</strong> apre una finestra: visualizza/stampa nel browser, un foglio Word (A6, A5 o A4) con lo stesso branding di Impostazioni → Foglio di stampa QR, oppure rinnova il codice QR se l'adesivo è perso o sospetta un uso improprio. Il vecchio codice funziona ancora per alcuni giorni (periodo di grazia), poi viene bloccato. Ogni clock point ha un codice unico."
+                    "text": "Con <strong>QR</strong> apre una finestra: visualizza/stampa nel browser, o un foglio Word (A6, A5 o A4) con lo stesso branding di Impostazioni → Foglio di stampa QR. Ogni clock point ha un codice unico."
                 },
                 {
                     "label": "Rotazione QR",
-                    "text": "Imposti un intervallo (mesi). Il sistema consiglia in un momento casuale in quell'intervallo di rinnovare l'adesivo. Può usarlo per prevenire o tracciare frodi (es. qualcuno fotografa il QR e timbra da casa). Fino al rinnovo, la timbratura continua normalmente — è un consiglio, non un blocco."
+                    "text": "In <strong>Rotazione QR</strong> imposti un intervallo (mesi) e rinnovi il QR per Clock Point (adesivo perso o sospetto uso improprio). Il sistema consiglia il rinnovo in un momento casuale di quell’intervallo. Il vecchio codice funziona ancora per alcuni giorni (periodo di grazia), poi viene bloccato. Fino al rinnovo la timbratura continua — l’intervallo è un consiglio, non un cambio automatico."
                 },
                 {
                     "label": "Scansioni bloccate",

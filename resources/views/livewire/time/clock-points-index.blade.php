@@ -26,25 +26,56 @@
 
     @can('create', \App\Models\ClockPoint::class)
         <div class="wp-card wp-card-pad wp-time-qr-rotation" x-data="{ open: false }">
-            <form wire:submit="saveQrRotationSettings" class="wp-stack-tight">
-                <button
-                    type="button"
-                    class="wp-settings-section-toggle"
-                    @click="open = !open"
-                    :aria-expanded="open"
-                    aria-controls="qr-rotation-fields"
-                    title="{{ __('time.clock_points.qr.rotation_hint') }}"
-                >
-                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
-                    <span class="wp-section-title">{{ __('time.clock_points.qr.rotation_title') }}</span>
-                </button>
-                <div id="qr-rotation-fields" class="wp-filter-cell" x-show="open" x-cloak>
-                    <label class="wp-filter-inline-label" for="qr-rotation-months">{{ __('time.clock_points.qr.rotation_months') }}</label>
-                    <input id="qr-rotation-months" type="number" min="0" max="120" class="wp-input" wire:model="qrRotationMonths">
+            <button
+                type="button"
+                class="wp-settings-section-toggle"
+                @click="open = !open"
+                :aria-expanded="open"
+                aria-controls="qr-rotation-fields"
+            >
+                <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                <span class="wp-section-title">{{ __('time.clock_points.qr.rotation_title') }}</span>
+            </button>
+            <div id="qr-rotation-fields" class="wp-stack" x-show="open" x-cloak>
+                <p class="wp-muted wp-text-sm">{{ __('time.clock_points.qr.rotation_hint') }}</p>
+                <form wire:submit="saveQrRotationSettings" class="wp-cluster wp-cluster--wrap">
+                    <div class="wp-filter-cell">
+                        <label class="wp-filter-inline-label" for="qr-rotation-months">{{ __('time.clock_points.qr.rotation_months') }}</label>
+                        <input id="qr-rotation-months" type="number" min="0" max="120" class="wp-input" wire:model="qrRotationMonths">
+                    </div>
                     <button type="submit" class="btn btn--surface btn--sm">{{ __('common.button.save') }}</button>
-                    @error('qrRotationMonths') <p class="wp-error">{{ $message }}</p> @enderror
+                </form>
+                @error('qrRotationMonths') <p class="wp-error">{{ $message }}</p> @enderror
+
+                <p class="wp-muted wp-text-sm">{{ __('time.clock_points.qr.rotation_renew_intro') }}</p>
+                <div class="wp-list wp-list--entity-rows">
+                    @foreach ($clockPoints as $clockPoint)
+                        <div class="wp-issue-row" wire:key="clock-point-qr-rotate-{{ $clockPoint->id }}">
+                            <div class="wp-grow wp-stack-tight">
+                                <p class="wp-issue-card-title">{{ $clockPoint->name }}</p>
+                                @if ($clockPoint->location)
+                                    <p class="wp-issue-card-meta">{{ $clockPoint->location->localizedName() }}</p>
+                                @endif
+                            </div>
+                            <div class="wp-cluster wp-cluster--wrap">
+                                @if ($clockPoint->isRenewalRecommended())
+                                    <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
+                                @endif
+                                @can('renewQr', $clockPoint)
+                                    <button
+                                        type="button"
+                                        class="btn btn--surface btn--sm"
+                                        wire:click="renewQr({{ $clockPoint->id }})"
+                                        wire:confirm="{{ __('time.clock_points.qr.renew_confirm') }}"
+                                    >
+                                        {{ __('time.clock_points.qr.renew') }}
+                                    </button>
+                                @endcan
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-            </form>
+            </div>
         </div>
     @endcan
 
@@ -122,14 +153,6 @@
     @endif
 
     @if ($showQrPackModal && $qrPackClockPoint)
-        @php
-            $clockQrRenewMethod = null;
-        @endphp
-        @can('renewQr', $qrPackClockPoint)
-            @php
-                $clockQrRenewMethod = 'renewQr('.$qrPackClockPoint->id.')';
-            @endphp
-        @endcan
         <x-wp-qr-cluster-modal
             closeMethod="closeQrPackModal"
             title-id="clock-point-qr-cluster-modal-title"
@@ -148,9 +171,6 @@
             ])->all()"
             :generating="__('time.clock_points.qr.pack.generating')"
             :download-failed="__('time.clock_points.qr.pack.download_failed')"
-            :renew-method="$clockQrRenewMethod"
-            :renew-label="__('time.clock_points.qr.renew')"
-            :renew-confirm="__('time.clock_points.qr.renew_confirm')"
         />
     @endif
 </div>

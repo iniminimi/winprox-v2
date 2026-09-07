@@ -1257,11 +1257,11 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, download a Word print sheet (A6, A5 or A4) with the same branding as Settings → QR print sheet, or renew the QR code if a sticker is lost or you suspect misuse. The old code still works for a few days (grace period), then it is blocked. Each clock point has a unique code."
+                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, or download a Word print sheet (A6, A5 or A4) with the same branding as Settings → QR print sheet. Each clock point has a unique code."
                 },
                 {
                     "label": "QR rotation",
-                    "text": "Set an interval (months). The system recommends renewal at a random moment within that interval. You can use this to prevent or trace fraud (e.g. someone photographs the QR code and clocks in from home). Until you renew, clocking in still works — it is a recommendation, not a block."
+                    "text": "Under <strong>QR rotation</strong> you set an interval (months) and renew the QR per Clock Point (lost sticker or suspected misuse). The system recommends renewal at a random moment within that interval. The old code still works for a few days (grace period), then it is blocked. Until you renew, clocking in still works — the interval is a recommendation, not an automatic swap."
                 },
                 {
                     "label": "Blocked scans",

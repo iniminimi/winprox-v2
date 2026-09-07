@@ -246,6 +246,7 @@
             "renewal_recommended": "Da sostituire",
             "rotation_title": "Rotazione QR",
             "rotation_hint": "Dopo questo intervallo compare una raccomandazione di rinnovo. 0 = disattivato (nessuna raccomandazione).",
+            "rotation_renew_intro": "Rinnova qui il QR se l’adesivo è perso o sospetti un uso improprio. Poi stampa un nuovo adesivo.",
             "rotation_months": "Intervallo (mesi)",
             "rotation_saved": "Impostazione rotazione QR salvata.",
             "blocked_attempts": ":count scansione/i QR bloccata/e negli ultimi 7 giorni.",

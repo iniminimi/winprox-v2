@@ -1257,11 +1257,11 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Ansehen/Drucken im Browser, ein Word-Druckblatt (A6, A5 oder A4) mit derselben Marke wie unter Einstellungen → QR-Druckblatt, oder den QR-Code erneuern bei verlorenem Aufkleber oder vermutetem Missbrauch. Der alte Code funktioniert noch einige Tage (Grace-Periode), danach wird er gesperrt. Jeder Clock Point hat einen einzigartigen Code."
+                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Ansehen/Drucken im Browser, oder ein Word-Druckblatt (A6, A5 oder A4) mit derselben Marke wie unter Einstellungen → QR-Druckblatt. Jeder Clock Point hat einen einzigartigen Code."
                 },
                 {
                     "label": "QR-Rotation",
-                    "text": "Stellen Sie ein Intervall ein (Monate). Das System empfiehlt zu einem zufälligen Zeitpunkt innerhalb dieses Intervalls, den Aufkleber zu erneuern. Damit können Sie Betrug verhindern oder nachverfolgen (z. B. jemand fotografiert den QR-Code und stempelt zu Hause ein). Bis zur Erneuerung funktioniert das Einstempeln normal — es ist eine Empfehlung, keine Sperre."
+                    "text": "Unter <strong>QR-Rotation</strong> stellen Sie ein Intervall ein (Monate) und erneuern den QR pro Clock Point (verlorener Aufkleber oder vermuteter Missbrauch). Das System empfiehlt die Erneuerung zu einem zufälligen Zeitpunkt in diesem Intervall. Der alte Code funktioniert noch einige Tage (Grace-Periode), danach wird er gesperrt. Bis zur Erneuerung funktioniert das Einstempeln — das Intervall ist eine Empfehlung, kein automatischer Wechsel."
                 },
                 {
                     "label": "Gesperrte Scans",

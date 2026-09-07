@@ -129,6 +129,7 @@ it('toont Clock Points als paginatitel en QR-rotatie standaard ingeklapt', funct
         ->assertSee('video/assistant_time.mp4', false)
         ->assertSee('wp-page-icon--assistant', false)
         ->assertSee(__('time.clock_points.qr.rotation_title'))
+        ->assertSee(__('time.clock_points.qr.renew'))
         ->assertSeeHtml('x-data="{ open: false }"');
 });
 

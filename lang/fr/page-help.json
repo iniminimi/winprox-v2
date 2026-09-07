@@ -1265,11 +1265,11 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Via <strong>QR</strong>, vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, une feuille Word (A6, A5 ou A4) avec la même charte que Paramètres → Feuille d'impression QR, ou renouveler le code QR en cas d'autocollant perdu ou de suspicion d'abus. L'ancien code fonctionne encore quelques jours (période de grâce), puis il est bloqué. Chaque clock point a un code unique."
+                    "text": "Via <strong>QR</strong>, vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4) avec la même charte que Paramètres → Feuille d'impression QR. Chaque clock point a un code unique."
                 },
                 {
                     "label": "Rotation QR",
-                    "text": "Définissez un intervalle (mois). Le système recommande à un moment aléatoire dans cet intervalle de renouveler l'autocollant. Vous pouvez l’utiliser pour prévenir ou retracer la fraude (p. ex. quelqu’un photographie le QR et pointe depuis chez lui). Jusqu'au renouvellement, le pointage continue normalement — c'est une recommandation, pas un blocage."
+                    "text": "Sous <strong>Rotation QR</strong> vous définissez un intervalle (mois) et renouvelez le QR par Clock Point (autocollant perdu ou suspicion d’abus). Le système recommande le renouvellement à un moment aléatoire dans cet intervalle. L’ancien code fonctionne encore quelques jours (période de grâce), puis il est bloqué. Jusqu’au renouvellement, le pointage continue — l’intervalle est une recommandation, pas un changement automatique."
                 },
                 {
                     "label": "Scans bloqués",

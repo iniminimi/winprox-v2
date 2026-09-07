@@ -1257,11 +1257,11 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR, o renovar el código QR si se pierde una pegatina o sospecha un uso indebido. El código antiguo sigue funcionando unos días (periodo de gracia) y luego se bloquea. Cada clock point tiene un código único."
+                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR. Cada clock point tiene un código único."
                 },
                 {
                     "label": "Rotación QR",
-                    "text": "Configure un intervalo (meses). El sistema recomienda en un momento aleatorio dentro de ese intervalo renovar la pegatina. Puede usarlo para prevenir o rastrear fraude (p. ej. alguien fotografía el código QR y ficha desde casa). Hasta renovar, el fichaje sigue funcionando con normalidad — es una recomendación, no un bloqueo."
+                    "text": "En <strong>Rotación QR</strong> configura un intervalo (meses) y renueva el QR por Clock Point (pegatina perdida o sospecha de uso indebido). El sistema recomienda la renovación en un momento aleatorio de ese intervalo. El código antiguo sigue funcionando unos días (periodo de gracia) y luego se bloquea. Hasta renovar, el fichaje sigue — el intervalo es una recomendación, no un cambio automático."
                 },
                 {
                     "label": "Escaneos bloqueados",

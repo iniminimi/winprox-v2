@@ -1257,11 +1257,11 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad, of de QR-code vernieuwen bij verloren sticker of vermoed misbruik. De oude code werkt nog enkele dagen (grace-periode), daarna wordt die geblokkeerd. Elke clock point heeft een unieke code."
+                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad. Elke clock point heeft een unieke code."
                 },
                 {
                     "label": "QR-rotatie",
-                    "text": "Stel een interval in (maanden). Het systeem beveelt op een willekeurig moment binnen dat interval aan om de sticker te vernieuwen. Je kan dit gebruiken om fraude te voorkomen of te traceren (vb iemand neemt foto van QR-code en klokt thuis in). Tot u vernieuwt blijft inklokken gewoon werken — het is een aanbeveling, geen blokkade."
+                    "text": "Onder <strong>QR-rotatie</strong> stelt u een interval in (maanden) én vernieuwt u de QR per Clock Point (verloren sticker of vermoed misbruik). Het systeem beveelt op een willekeurig moment binnen dat interval aan om de sticker te vernieuwen. De oude code werkt nog enkele dagen (grace-periode), daarna wordt die geblokkeerd. Tot u vernieuwt blijft inklokken gewoon werken — het interval is een aanbeveling, geen automatische wissel."
                 },
                 {
                     "label": "Geblokkeerde scans",

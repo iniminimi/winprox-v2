@@ -246,6 +246,7 @@
             "renewal_recommended": "Pendiente de sustitución",
             "rotation_title": "Rotación QR",
             "rotation_hint": "Tras este intervalo aparece una recomendación de renovación. 0 = desactivado (sin recomendaciones).",
+            "rotation_renew_intro": "Renueve aquí el QR si pierde una pegatina o sospecha un uso indebido. Luego imprima una pegatina nueva.",
             "rotation_months": "Intervalo (meses)",
             "rotation_saved": "Ajuste de rotación QR guardado.",
             "blocked_attempts": ":count escaneo(s) QR bloqueado(s) en los últimos 7 días.",
