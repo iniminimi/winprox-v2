@@ -16,7 +16,9 @@ it('laat een admin de handleidingen-hub zien (200)', function () {
         ->assertOk()
         ->assertSee('Handleidingen')
         ->assertSee('video/assistant_legal_80.mp4', false)
-        ->assertSee('wp-page-icon--assistant', false);
+        ->assertSee('wp-page-icon--assistant', false)
+        ->assertSee('wp-card', false)
+        ->assertSee('wp-issue-row', false);
 });
 
 it('laat een medewerker de handleidingen-hub zien (200)', function () {
