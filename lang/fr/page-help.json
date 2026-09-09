@@ -554,6 +554,10 @@
                 {
                     "label": "Imports récents",
                     "text": "Après un import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'exécutants. Cliquez sur Annuler l'import pour supprimer les exécutants de ce lot. Seuls les exécutants sans appareil lié sont supprimés — les exécutants déjà connectés via le QR Clock Point (et donc avec un appareil actif) restent et sont indiqués comme «Appareil lié». Le bouton disparaît lorsque tous les exécutants d'un lot ont été supprimés."
+                },
+                {
+                    "label": "Pause minimale",
+                    "text": "Par équipe, vous pouvez fixer une pause minimale (par exemple 30 minutes). À la sortie ou à la clôture, WinProx compte ce minimum sur la feuille d’heures s’il y a eu moins de pause (ou aucune) et si le service dure plus longtemps que la pause. Ce n’est pas une pause Clock Point ni un événement CIAO. Dans Time → Heures, un admin peut encore appliquer le minimum manuellement ou corriger les minutes de pause."
                 }
             ]
         },
@@ -1257,6 +1261,10 @@
                 {
                     "label": "Lier les tâches",
                     "text": "Démarrez ou terminez une tâche via le portail QR unité pendant que l’exécutant est pointé — la tâche est alors automatiquement liée au shift ouvert. À la sortie, les tâches liées encore ouvertes sont clôturées."
+                },
+                {
+                    "label": "Pause minimale",
+                    "text": "Si une équipe a une pause minimale et qu’un service clos affiche moins de minutes, un admin peut <strong>Appliquer la pause minimale</strong> (journal d’audit) ou modifier les minutes via <strong>Corriger</strong>. À la sortie, le minimum s’applique automatiquement. Pas d’IN/OUT CIAO supplémentaire."
                 }
             ]
         },

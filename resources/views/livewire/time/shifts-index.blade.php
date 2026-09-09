@@ -10,6 +10,9 @@
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
+    @if (session('time_flash_error'))
+        <div class="wp-flash wp-flash--danger">{{ session('time_flash_error') }}</div>
+    @endif
 
     <div class="wp-card wp-filter-panel wp-time-shifts-toolbar">
         <div class="wp-filter-form wp-time-shifts-toolbar__form">
@@ -77,6 +80,18 @@
                         @endif
                         &middot; {{ $shift->team?->localizedName() }}
                     </p>
+                    @php
+                        $clockedBreakMinutes = (int) $shift->breaks->sum(fn ($break) => $break->durationMinutes());
+                        $requiredBreakMinutes = (int) ($shift->team?->required_break_minutes ?? 0);
+                        $shiftDurationMinutes = $shift->clock_out_at !== null
+                            ? max(0, (int) $shift->clock_in_at->diffInMinutes($shift->clock_out_at))
+                            : 0;
+                        $needsRequiredBreak = ! $shift->status->isOpen()
+                            && $requiredBreakMinutes > 0
+                            && (int) $shift->total_break_minutes < $requiredBreakMinutes
+                            && $shiftDurationMinutes > $requiredBreakMinutes;
+                        $appliedTeamBreak = (int) $shift->total_break_minutes > $clockedBreakMinutes;
+                    @endphp
                     <p class="wp-muted wp-text-sm">
                         {{ __('time.shifts.break_minutes', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->total_break_minutes)]) }}
                         &middot; {{ __('time.shifts.worked', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->netWorkMinutes())]) }}
@@ -129,11 +144,19 @@
                     @else
                         <span class="wp-pill">{{ __('time.status.'.$shift->status->value) }}</span>
                     @endif
+                    @if ($appliedTeamBreak)
+                        <span class="wp-pill">{{ __('time.required_break.applied_badge') }}</span>
+                    @endif
                     @if ($shift->status->isOpen())
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="openForceClose({{ $shift->id }})">
                             {{ __('time.presence.force_close') }}
                         </button>
                     @elseif (auth()->user()?->can('correct', $shift))
+                        @if ($needsRequiredBreak)
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="applyRequiredBreak({{ $shift->id }})">
+                                {{ __('time.required_break.apply') }}
+                            </button>
+                        @endif
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="openCorrection({{ $shift->id }})">
                             {{ __('time.corrections.button') }}
                         </button>

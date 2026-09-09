@@ -155,6 +155,7 @@
         "unit_measure_field.deactivated": "Meetveld gedeactiveerd",
         "unit.measure_fields_synced": "Meetvelden van unit bijgewerkt",
         "unit_measurement.recorded": "Unitmeting geregistreerd",
-        "unit.measurement.recorded": "Unitmeting geregistreerd"
+        "unit.measurement.recorded": "Unitmeting geregistreerd",
+        "work_shift.required_break_applied": "Minimumpauze toegepast"
     }
 }

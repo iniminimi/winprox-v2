@@ -16,10 +16,20 @@ class StoreTeamRequest extends FormRequest
      */
     public function rules(): array
     {
+        return self::rulesFor();
+    }
+
+    /**
+     * @return array<string, array<int, mixed>>
+     */
+    public static function rulesFor(): array
+    {
         return [
             'name' => ['required', 'string', 'max:255'],
             'sort_order' => ['integer', 'min:0', 'max:65535'],
             'is_active' => ['boolean'],
+            'clocks_all_locations' => ['boolean'],
+            'required_break_minutes' => ['nullable', 'integer', 'min:0', 'max:240'],
         ];
     }
 

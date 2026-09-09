@@ -155,6 +155,7 @@
         "unit_measure_field.deactivated": "Campo de medición desactivado",
         "unit.measure_fields_synced": "Campos de medición de la unidad sincronizados",
         "unit_measurement.recorded": "Medición de unidad registrada",
-        "unit.measurement.recorded": "Medición de unidad registrada"
+        "unit.measurement.recorded": "Medición de unidad registrada",
+        "work_shift.required_break_applied": "Pausa mínima aplicada"
     }
 }

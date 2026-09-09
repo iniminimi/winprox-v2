@@ -43,6 +43,11 @@ class WorkShiftPolicy
             && ! $workShift->status->isOpen();
     }
 
+    public function applyRequiredBreak(User $user, WorkShift $workShift): bool
+    {
+        return $this->correct($user, $workShift);
+    }
+
     public function clockIn(User $user): bool
     {
         return $this->moduleEnabledForUser($user)

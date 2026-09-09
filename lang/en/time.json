@@ -337,5 +337,18 @@
             "presence_submission_not_retryable": "This submission cannot be retried.",
             "retry_failed": "Retry failed."
         }
+    },
+    "required_break": {
+        "apply": "Apply minimum break",
+        "applied_badge": "Team break",
+        "saved": "Minimum break applied.",
+        "errors": {
+            "already_applied": "This shift already has at least the team break.",
+            "no_team_minimum": "This team has no minimum break.",
+            "shift_still_open": "Open shifts cannot receive a minimum break.",
+            "shift_missing_clock_out": "This shift has no clock-out time.",
+            "shift_too_short": "The shift is too short for the minimum break.",
+            "tenant_mismatch": "This shift does not belong to this organisation."
+        }
     }
 }

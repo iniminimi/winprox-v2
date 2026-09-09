@@ -546,6 +546,10 @@
                 {
                     "label": "Recente imports",
                     "text": "Na een import verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal uitvoerders. Klik op Import terugdraaien om de uitvoerders van die batch te verwijderen. Alleen uitvoerders zonder gekoppeld toestel worden verwijderd — uitvoerders die al aangemeld zijn via Clock Point QR (en dus een actief toestel hebben) blijven staan en werden als «Heeft toestellen» aangeduid. De knop verdwijnt zodra alle uitvoerders van een batch verwijderd zijn."
+                },
+                {
+                    "label": "Minimumpauze",
+                    "text": "Per team kun je een minimum aantal pauzeminuten instellen (bijvoorbeeld 30). Bij uitklokken of sluiten telt WinProx dat minimum op de urenstaat als er minder of geen live pauze is geklokt én de dienst langer duurt dan die pauze. Dat is geen Clock Point-pauze en geen CIAO-event. Op Time → Uren kan een beheerder het minimum nog manueel toepassen of de pauzeminuten corrigeren."
                 }
             ]
         },
@@ -1249,6 +1253,10 @@
                 {
                     "label": "Taken koppelen",
                     "text": "Start of rond een taak af via het unit-QR-portaal terwijl de uitvoerder ingeklokt is — dan wordt die taak automatisch aan de open shift gekoppeld. Bij uitklokken worden nog open gekoppelde taken afgesloten."
+                },
+                {
+                    "label": "Minimumpauze",
+                    "text": "Als een team een minimumpauze heeft en een gesloten dienst minder pauzeminuten toont, kan een beheerder <strong>Minimumpauze toepassen</strong> (auditlog) of de minuten via <strong>Corrigeren</strong> aanpassen. Bij uitklokken gebeurt het minimum automatisch. Geen extra CIAO IN/OUT."
                 }
             ]
         },

@@ -32,6 +32,7 @@ class CreateTeamAction
             'sort_order' => (int) ($data['sort_order'] ?? 0),
             'is_active' => (bool) ($data['is_active'] ?? true),
             'clocks_all_locations' => (bool) ($data['clocks_all_locations'] ?? false),
+            'required_break_minutes' => self::normalizeRequiredBreakMinutes($data['required_break_minutes'] ?? null),
             'session_lifespan_hours' => $data['session_lifespan_hours'] ?? null,
         ]);
 
@@ -47,5 +48,16 @@ class CreateTeamAction
         );
 
         return $team;
+    }
+
+    private static function normalizeRequiredBreakMinutes(mixed $value): ?int
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        $minutes = (int) $value;
+
+        return $minutes > 0 ? $minutes : null;
     }
 }

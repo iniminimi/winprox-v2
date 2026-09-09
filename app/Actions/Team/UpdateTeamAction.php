@@ -27,6 +27,9 @@ class UpdateTeamAction
             'sort_order' => (int) ($data['sort_order'] ?? 0),
             'is_active' => (bool) ($data['is_active'] ?? $team->is_active),
             'clocks_all_locations' => (bool) ($data['clocks_all_locations'] ?? $team->clocks_all_locations),
+            'required_break_minutes' => array_key_exists('required_break_minutes', $data)
+                ? self::normalizeRequiredBreakMinutes($data['required_break_minutes'])
+                : $team->required_break_minutes,
             'session_lifespan_hours' => $data['session_lifespan_hours'] ?? null,
         ]);
 
@@ -45,5 +48,16 @@ class UpdateTeamAction
         );
 
         return $fresh;
+    }
+
+    private static function normalizeRequiredBreakMinutes(mixed $value): ?int
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        $minutes = (int) $value;
+
+        return $minutes > 0 ? $minutes : null;
     }
 }

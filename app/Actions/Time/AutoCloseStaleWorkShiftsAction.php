@@ -17,6 +17,7 @@ class AutoCloseStaleWorkShiftsAction
         private EndWorkBreakAction $endWorkBreak,
         private CloseOpenWorkShiftTaskLogsAction $closeOpenTaskLogs,
         private EnqueuePresenceFromTimeEventAction $enqueuePresence,
+        private ResolveWorkShiftBreakMinutesAction $resolveBreakMinutes,
     ) {}
 
     public function handle(?int $staleHours = null): int
@@ -51,7 +52,7 @@ class AutoCloseStaleWorkShiftsAction
                 ->whereKey($shift->id)
                 ->where('status', WorkShiftStatus::Open)
                 ->lockForUpdate()
-                ->with(['openBreak', 'breaks', 'worker'])
+                ->with(['openBreak', 'breaks', 'worker', 'team'])
                 ->first();
 
             if ($locked === null) {
@@ -60,14 +61,16 @@ class AutoCloseStaleWorkShiftsAction
 
             if ($locked->openBreak !== null) {
                 $this->endWorkBreak->handle($locked->worker, $locked);
-                $locked = $locked->fresh(['openBreak', 'breaks']);
+                $locked = $locked->fresh(['openBreak', 'breaks', 'team']);
             }
 
-            $totalBreakMinutes = (int) $locked->breaks->sum(fn ($break) => $break->durationMinutes());
+            $endedAt = now();
+            $clockedBreakMinutes = (int) $locked->breaks->sum(fn ($break) => $break->durationMinutes());
+            $totalBreakMinutes = $this->resolveBreakMinutes->handle($locked, $clockedBreakMinutes, $endedAt);
 
             $locked->update([
                 'status' => WorkShiftStatus::ForceClosed,
-                'clock_out_at' => now(),
+                'clock_out_at' => $endedAt,
                 'clock_out_source' => ClockSource::Auto,
                 'clock_out_clock_point_id' => $locked->clock_out_clock_point_id ?? $locked->clock_in_clock_point_id,
                 'total_break_minutes' => $totalBreakMinutes,

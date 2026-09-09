@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Time;
 
+use App\Actions\Time\ApplyRequiredBreakToWorkShiftAction;
 use App\Actions\Time\CorrectWorkShiftAction;
 use App\Livewire\Concerns\ManagesManualClockIn;
 use App\Livewire\Concerns\ManagesWorkShiftForceClose;
@@ -133,10 +134,26 @@ class ShiftsIndex extends Component
         session()->flash('time_flash', __('time.corrections.saved'));
     }
 
+    public function applyRequiredBreak(int $shiftId, ApplyRequiredBreakToWorkShiftAction $apply): void
+    {
+        $shift = WorkShift::query()->findOrFail($shiftId);
+        $this->authorize('applyRequiredBreak', $shift);
+
+        try {
+            $apply->handle($shift, (int) Tenancy::id(), auth()->id());
+        } catch (InvalidArgumentException $e) {
+            session()->flash('time_flash_error', __('time.required_break.errors.'.$e->getMessage()));
+
+            return;
+        }
+
+        session()->flash('time_flash', __('time.required_break.saved'));
+    }
+
     public function render()
     {
         $query = WorkShift::query()
-            ->with(['worker', 'team.translations', 'clockInClockPoint', 'presenceClockPoint', 'clockOutClockPoint', 'taskLogs.task'])
+            ->with(['worker', 'team.translations', 'clockInClockPoint', 'presenceClockPoint', 'clockOutClockPoint', 'taskLogs.task', 'breaks'])
             ->when($this->from !== '', fn ($q) => $q->where('clock_in_at', '>=', $this->from.' 00:00:00'))
             ->when($this->to !== '', fn ($q) => $q->where('clock_in_at', '<=', $this->to.' 23:59:59'))
             ->when($this->teamFilter, fn ($q) => $q->where('internal_team_id', $this->teamFilter))

@@ -86,7 +86,10 @@
             "categories_subtitle": "Selezioni le categorie a cui questo team ha accesso.",
             "categories_empty": "Non ci sono ancora categorie.",
             "clocks_all_locations": "Può timbrare ovunque (team mobile)",
-            "clocks_all_locations_hint": "Gli esecutori di questo team compaiono su ogni punto timbratura indipendentemente dalle sedi."
+            "clocks_all_locations_hint": "Gli esecutori di questo team compaiono su ogni punto timbratura indipendentemente dalle sedi.",
+            "required_break_minutes": "Pausa minima (minuti)",
+            "required_break_minutes_placeholder": "es. 30",
+            "required_break_minutes_hint": "Vuoto o 0 = nessun minimo. All’uscita WinProx conta almeno questi minuti di pausa sul foglio ore se il turno dura più della pausa. Non è una pausa Clock Point né un evento CIAO."
         }
     },
     "workers": {

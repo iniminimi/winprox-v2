@@ -546,6 +546,10 @@
                 {
                     "label": "Recent imports",
                     "text": "After an import, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of workers. Click Undo import to remove the workers of that batch. Only workers without a linked device are deleted — workers who are already signed in via Clock Point QR (and thus have an active device) remain and are marked as «Has devices». The button disappears once all workers in a batch have been deleted."
+                },
+                {
+                    "label": "Minimum break",
+                    "text": "Per team you can set a minimum unpaid break (for example 30 minutes). On clock-out or close, WinProx counts that minimum on the timesheet if less or no live break was clocked and the shift is longer than the break. That is not a Clock Point break and not a CIAO event. On Time → Hours an admin can still apply the minimum manually or correct break minutes."
                 }
             ]
         },
@@ -1249,6 +1253,10 @@
                 {
                     "label": "Link tasks",
                     "text": "Start or complete a task via the unit QR portal while clocked in — the task is automatically linked to the open shift. Open links are closed on clock-out."
+                },
+                {
+                    "label": "Minimum break",
+                    "text": "If a team has a minimum break and a closed shift shows fewer break minutes, an admin can <strong>Apply minimum break</strong> (audit log) or change minutes via <strong>Correct</strong>. On clock-out the minimum is applied automatically. No extra CIAO IN/OUT."
                 }
             ]
         },

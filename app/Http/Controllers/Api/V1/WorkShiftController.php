@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Actions\Time\ApplyRequiredBreakToWorkShiftAction;
 use App\Actions\Time\ClearWorkerClockDeviceAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
@@ -9,6 +10,7 @@ use App\Actions\Time\ManualClockInWorkShiftAction;
 use App\Enums\ClockSource;
 use App\Http\Requests\Time\ApiClockInRequest;
 use App\Http\Requests\Time\ApiClockOutRequest;
+use App\Http\Requests\Time\ApplyRequiredBreakToWorkShiftRequest;
 use App\Http\Requests\Time\ManualClockInWorkShiftRequest;
 use App\Http\Resources\WorkerResource;
 use App\Http\Resources\WorkShiftResource;
@@ -95,6 +97,23 @@ class WorkShiftController extends Controller
 
         try {
             $shift = $clockOut->handle($worker, $clockPoint, source: ClockSource::Api);
+        } catch (InvalidArgumentException $e) {
+            return response()->json(['message' => $e->getMessage()], 422);
+        }
+
+        return $this->item(new WorkShiftResource($shift));
+    }
+
+    public function applyRequiredBreak(
+        ApplyRequiredBreakToWorkShiftRequest $request,
+        WorkShift $workShift,
+        ApplyRequiredBreakToWorkShiftAction $apply,
+    ): JsonResponse {
+        $this->authorize('applyRequiredBreak', $workShift);
+
+        try {
+            $request->validated();
+            $shift = $apply->handle($workShift, (int) Tenancy::id(), auth()->id());
         } catch (InvalidArgumentException $e) {
             return response()->json(['message' => $e->getMessage()], 422);
         }

@@ -546,6 +546,10 @@
                 {
                     "label": "Importaciones recientes",
                     "text": "Tras una importación, aparece automáticamente un resumen de las últimas 10 importaciones (30 días). Por importación ve el nombre del archivo, la fecha y el número de trabajadores. Pulse Deshacer importación para eliminar los trabajadores de ese lote. Solo se eliminan trabajadores sin dispositivo vinculado — los que ya iniciaron sesión vía Clock Point QR (y por tanto tienen un dispositivo activo) permanecen y se marcan como «Con dispositivo». El botón desaparece cuando se han eliminado todos los trabajadores de un lote."
+                },
+                {
+                    "label": "Pausa mínima",
+                    "text": "Por equipo puedes fijar una pausa mínima (por ejemplo 30 minutos). Al fichar la salida o al cerrar, WinProx cuenta ese mínimo en el parte de horas si se fichó menos pausa o ninguna y el turno dura más que la pausa. No es una pausa de Clock Point ni un evento CIAO. En Time → Horas un administrador aún puede aplicar el mínimo manualmente o corregir los minutos de pausa."
                 }
             ]
         },
@@ -1249,6 +1253,10 @@
                 {
                     "label": "Vincular tareas",
                     "text": "Inicie o complete una tarea mediante el portal QR de unidad mientras el operario está fichado — entonces esa tarea se vincula automáticamente al turno abierto. Al fichar salida, las tareas vinculadas aún abiertas se cierran."
+                },
+                {
+                    "label": "Pausa mínima",
+                    "text": "Si un equipo tiene pausa mínima y un turno cerrado muestra menos minutos, un administrador puede <strong>Aplicar pausa mínima</strong> (registro de auditoría) o cambiar los minutos con <strong>Corregir</strong>. Al fichar la salida el mínimo se aplica solo. Sin IN/OUT CIAO extra."
                 }
             ]
         },

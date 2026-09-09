@@ -86,7 +86,10 @@
             "categories_subtitle": "Selecteer de categorieën waaraan dit team toegang heeft.",
             "categories_empty": "Er zijn nog geen categorieën.",
             "clocks_all_locations": "Mag overal inklokken (invaller / vlinder)",
-            "clocks_all_locations_hint": "Workers in dit team zien hun naam op elke Clock Point, ongeacht locatie-koppeling."
+            "clocks_all_locations_hint": "Workers in dit team zien hun naam op elke Clock Point, ongeacht locatie-koppeling.",
+            "required_break_minutes": "Minimumpauze (minuten)",
+            "required_break_minutes_placeholder": "bv. 30",
+            "required_break_minutes_hint": "Leeg of 0 = geen minimum. Bij uitklokken telt WinProx minstens zoveel pauzeminuten op de urenstaat als de dienst langer duurt dan de pauze. Dat is geen Clock Point-pauze en geen CIAO-event."
         }
     },
     "workers": {

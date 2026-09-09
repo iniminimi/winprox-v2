@@ -337,5 +337,18 @@
             "presence_submission_not_retryable": "Cet envoi ne peut pas être réessayé.",
             "retry_failed": "Nouvel essai échoué."
         }
+    },
+    "required_break": {
+        "apply": "Appliquer la pause minimale",
+        "applied_badge": "Pause équipe",
+        "saved": "Pause minimale appliquée.",
+        "errors": {
+            "already_applied": "Ce service a déjà au moins la pause d’équipe.",
+            "no_team_minimum": "Cette équipe n’a pas de pause minimale.",
+            "shift_still_open": "Les services ouverts ne peuvent pas recevoir la pause minimale.",
+            "shift_missing_clock_out": "Ce service n’a pas d’heure de sortie.",
+            "shift_too_short": "Le service est trop court pour la pause minimale.",
+            "tenant_mismatch": "Ce service n’appartient pas à cette organisation."
+        }
     }
 }

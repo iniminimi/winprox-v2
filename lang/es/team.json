@@ -86,7 +86,10 @@
             "categories_subtitle": "Seleccione las categorías a las que tiene acceso este equipo.",
             "categories_empty": "Aún no hay categorías.",
             "clocks_all_locations": "Puede fichar en cualquier sitio (equipo flotante)",
-            "clocks_all_locations_hint": "Los ejecutores de este equipo aparecen en cada punto de fichaje sin importar la ubicación."
+            "clocks_all_locations_hint": "Los ejecutores de este equipo aparecen en cada punto de fichaje sin importar la ubicación.",
+            "required_break_minutes": "Pausa mínima (minutos)",
+            "required_break_minutes_placeholder": "p. ej. 30",
+            "required_break_minutes_hint": "Vacío o 0 = sin mínimo. Al fichar la salida, WinProx cuenta al menos estos minutos de pausa en el parte de horas si el turno dura más que la pausa. No es una pausa de Clock Point ni un evento CIAO."
         }
     },
     "workers": {

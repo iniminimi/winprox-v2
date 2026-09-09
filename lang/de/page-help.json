@@ -546,6 +546,10 @@
                 {
                     "label": "Letzte Imports",
                     "text": "Nach einem Import erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Mitarbeiter. Klicken Sie auf Import rückgängig machen, um die Mitarbeiter dieses Batches zu entfernen. Nur Mitarbeiter ohne verknüpftes Gerät werden gelöscht — Mitarbeiter, die bereits über Clock Point QR angemeldet sind (und damit ein aktives Gerät haben), bleiben und mit «Gerät vorhanden» gekennzeichnet werden. Die Schaltfläche verschwindet, sobald alle Mitarbeiter eines Batches gelöscht wurden."
+                },
+                {
+                    "label": "Mindestpause",
+                    "text": "Pro Team können Sie eine Mindestpause festlegen (z. B. 30 Minuten). Beim Ausstempeln oder Schließen zählt WinProx dieses Minimum auf der Stundenliste, wenn weniger oder keine Live-Pause gestempelt wurde und die Schicht länger dauert als die Pause. Das ist keine Clock-Point-Pause und kein CIAO-Ereignis. Unter Time → Stunden kann ein Admin das Minimum noch manuell anwenden oder Pauseminuten korrigieren."
                 }
             ]
         },
@@ -1249,6 +1253,10 @@
                 {
                     "label": "Aufgaben verknüpfen",
                     "text": "Starten oder schließen Sie eine Aufgabe über das Unit-QR-Portal, während der Ausführende eingestempelt ist — dann wird diese Aufgabe automatisch mit der offenen Schicht verknüpft. Beim Ausstempeln werden noch offene verknüpfte Aufgaben abgeschlossen."
+                },
+                {
+                    "label": "Mindestpause",
+                    "text": "Hat ein Team eine Mindestpause und eine geschlossene Schicht weniger Pauseminuten, kann ein Admin <strong>Mindestpause anwenden</strong> (Auditlog) oder die Minuten über <strong>Korrigieren</strong> ändern. Beim Ausstempeln gilt das Minimum automatisch. Kein zusätzliches CIAO IN/OUT."
                 }
             ]
         },

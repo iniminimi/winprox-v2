@@ -337,5 +337,18 @@
             "presence_submission_not_retryable": "Questo invio non può essere ritentato.",
             "retry_failed": "Nuovo tentativo non riuscito."
         }
+    },
+    "required_break": {
+        "apply": "Applica pausa minima",
+        "applied_badge": "Pausa team",
+        "saved": "Pausa minima applicata.",
+        "errors": {
+            "already_applied": "Questo turno ha già almeno la pausa del team.",
+            "no_team_minimum": "Questo team non ha una pausa minima.",
+            "shift_still_open": "I turni aperti non possono ricevere la pausa minima.",
+            "shift_missing_clock_out": "Questo turno non ha un orario di uscita.",
+            "shift_too_short": "Il turno è troppo breve per la pausa minima.",
+            "tenant_mismatch": "Questo turno non appartiene a questa organizzazione."
+        }
     }
 }

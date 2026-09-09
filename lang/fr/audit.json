@@ -155,6 +155,7 @@
         "unit_measure_field.deactivated": "Champ de mesure désactivé",
         "unit.measure_fields_synced": "Champs de mesure de l’unité synchronisés",
         "unit_measurement.recorded": "Mesure d’unité enregistrée",
-        "unit.measurement.recorded": "Mesure d’unité enregistrée"
+        "unit.measurement.recorded": "Mesure d’unité enregistrée",
+        "work_shift.required_break_applied": "Pause minimale appliquée"
     }
 }

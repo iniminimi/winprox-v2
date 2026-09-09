@@ -86,7 +86,10 @@
             "categories_subtitle": "Wählen Sie die Kategorien aus, auf die dieses Team Zugriff hat.",
             "categories_empty": "Es gibt noch keine Kategorien.",
             "clocks_all_locations": "Darf überall stempeln (Springer-Team)",
-            "clocks_all_locations_hint": "Mitarbeiter dieses Teams erscheinen an jedem Stempelpunkt unabhängig von Standortzuweisungen."
+            "clocks_all_locations_hint": "Mitarbeiter dieses Teams erscheinen an jedem Stempelpunkt unabhängig von Standortzuweisungen.",
+            "required_break_minutes": "Mindestpause (Minuten)",
+            "required_break_minutes_placeholder": "z. B. 30",
+            "required_break_minutes_hint": "Leer oder 0 = kein Minimum. Beim Ausstempeln zählt WinProx mindestens diese Pauseminuten auf der Stundenliste, wenn die Schicht länger dauert als die Pause. Das ist keine Clock-Point-Pause und kein CIAO-Ereignis."
         }
     },
     "workers": {

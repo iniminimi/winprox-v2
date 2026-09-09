@@ -14,12 +14,13 @@ class InternalTeam extends Model
 {
     use BelongsToTenant, HasFactory;
 
-    protected $fillable = ['tenant_id', 'name', 'original_language', 'sort_order', 'is_active', 'clocks_all_locations', 'session_lifespan_hours'];
+    protected $fillable = ['tenant_id', 'name', 'original_language', 'sort_order', 'is_active', 'clocks_all_locations', 'required_break_minutes', 'session_lifespan_hours'];
 
     protected $casts = [
         'sort_order' => 'integer',
         'is_active' => 'boolean',
         'clocks_all_locations' => 'boolean',
+        'required_break_minutes' => 'integer',
     ];
 
     public function workers(): HasMany

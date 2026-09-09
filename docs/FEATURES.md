@@ -661,6 +661,14 @@ productsector op `Tenant`.
 - **Mijn uren** op het Clock Point-portaal (na aanmelden, tegel). Toont **alleen de eigen**
   diensten van de gekozen maand (in-/uitklok, pauze, gewerkte tijd). Vorige/volgende maand;
   geen correctie, geen export, geen uren van collega's. Geen extra QR.
+- **Minimumpauze per team** (`internal_teams.required_break_minutes`, leeg/0 = uit).
+  Bij uitklokken, force-close en auto-close: `total_break_minutes = max(geklokte pauzes,
+  teamminimum)` als de dienst **langer** duurt dan dat minimum. Geen `WorkBreak`-rij
+  en **geen** CIAO IN/OUT voor het toegepaste minimum (alleen urenstaat). Live pauze
+  die al ≥ het minimum is blijft staan. Op Time → Uren: beheerder kan het minimum
+  één klik toepassen (audit `work_shift.required_break_applied`) of pauzeminuten
+  corrigeren. API: `POST /api/v1/time/work-shifts/{id}/apply-required-break`;
+  `GET /api/v1/teams` bevat `required_break_minutes`.
 - **Evacuatielijst** op het Clock Point-portaal (na aanmelden, tegel met brandicoon).
   Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel), per
   locatie met de **nieuwste inklokking bovenaan**. Eerst

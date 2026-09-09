@@ -86,7 +86,10 @@
             "categories_subtitle": "Sélectionnez les catégories auxquelles cette équipe a accès.",
             "categories_empty": "Il n'y a pas encore de catégories.",
             "clocks_all_locations": "Peut pointer partout (équipe volante)",
-            "clocks_all_locations_hint": "Les exécutants de cette équipe apparaissent sur chaque pointeuse, quelle que soit l'affectation au site."
+            "clocks_all_locations_hint": "Les exécutants de cette équipe apparaissent sur chaque pointeuse, quelle que soit l'affectation au site.",
+            "required_break_minutes": "Pause minimale (minutes)",
+            "required_break_minutes_placeholder": "ex. 30",
+            "required_break_minutes_hint": "Vide ou 0 = pas de minimum. À la sortie, WinProx compte au moins ces minutes de pause sur la feuille d’heures si le service dure plus longtemps que la pause. Ce n’est pas une pause Clock Point ni un événement CIAO."
         }
     },
     "workers": {

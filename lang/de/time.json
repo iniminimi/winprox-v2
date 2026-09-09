@@ -337,5 +337,18 @@
             "presence_submission_not_retryable": "Diese Meldung kann nicht erneut gesendet werden.",
             "retry_failed": "Erneutes Senden fehlgeschlagen."
         }
+    },
+    "required_break": {
+        "apply": "Mindestpause anwenden",
+        "applied_badge": "Team-Pause",
+        "saved": "Mindestpause angewendet.",
+        "errors": {
+            "already_applied": "Diese Schicht hat bereits mindestens die Team-Pause.",
+            "no_team_minimum": "Dieses Team hat keine Mindestpause.",
+            "shift_still_open": "Offene Schichten können keine Mindestpause erhalten.",
+            "shift_missing_clock_out": "Diese Schicht hat keine Ausstempelzeit.",
+            "shift_too_short": "Die Schicht ist zu kurz für die Mindestpause.",
+            "tenant_mismatch": "Diese Schicht gehört nicht zu dieser Organisation."
+        }
     }
 }

@@ -21,6 +21,7 @@ class ClockOutAction
         private CloseOpenWorkShiftTaskLogsAction $closeOpenTaskLogs,
         private EnqueuePresenceFromTimeEventAction $enqueuePresence,
         private AssertWorkerClockDeviceAction $assertClockDevice,
+        private ResolveWorkShiftBreakMinutesAction $resolveBreakMinutes,
     ) {}
 
     public function handle(
@@ -53,14 +54,18 @@ class ClockOutAction
 
             if ($shift->openBreak !== null) {
                 $this->endWorkBreak->handle($worker, $shift);
-                $shift = $shift->fresh(['breaks']);
+                $shift = $shift->fresh(['breaks', 'team']);
+            } else {
+                $shift->loadMissing(['breaks', 'team']);
             }
 
-            $totalBreakMinutes = (int) $shift->breaks->sum(fn ($break) => $break->durationMinutes());
+            $endedAt = now();
+            $clockedBreakMinutes = (int) $shift->breaks->sum(fn ($break) => $break->durationMinutes());
+            $totalBreakMinutes = $this->resolveBreakMinutes->handle($shift, $clockedBreakMinutes, $endedAt);
 
             $shift->update([
                 'status' => WorkShiftStatus::Closed,
-                'clock_out_at' => now(),
+                'clock_out_at' => $endedAt,
                 'clock_out_client_at' => $clientTimestamp,
                 'clock_out_source' => $source,
                 'clock_out_clock_point_id' => $clockPoint->id,

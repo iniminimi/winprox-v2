@@ -155,6 +155,7 @@
         "unit_measure_field.deactivated": "Messfeld deaktiviert",
         "unit.measure_fields_synced": "Unit-Messfelder synchronisiert",
         "unit_measurement.recorded": "Unit-Messung erfasst",
-        "unit.measurement.recorded": "Unit-Messung erfasst"
+        "unit.measurement.recorded": "Unit-Messung erfasst",
+        "work_shift.required_break_applied": "Mindestpause angewendet"
     }
 }

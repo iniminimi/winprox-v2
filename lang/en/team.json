@@ -86,7 +86,10 @@
             "categories_subtitle": "Select the categories this team has access to.",
             "categories_empty": "There are no categories yet.",
             "clocks_all_locations": "May clock in anywhere (floater team)",
-            "clocks_all_locations_hint": "Workers on this team appear on every clock point regardless of location links."
+            "clocks_all_locations_hint": "Workers on this team appear on every clock point regardless of location links.",
+            "required_break_minutes": "Minimum break (minutes)",
+            "required_break_minutes_placeholder": "e.g. 30",
+            "required_break_minutes_hint": "Empty or 0 = no minimum. On clock-out WinProx counts at least this many unpaid break minutes on the timesheet if the shift is longer than the break. This is not a Clock Point break and not a CIAO event."
         }
     },
     "workers": {

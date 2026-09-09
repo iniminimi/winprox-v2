@@ -19,6 +19,9 @@ class TeamResource extends JsonResource
             'name' => $this->name,
             'sort_order' => (int) $this->sort_order,
             'is_active' => (bool) $this->is_active,
+            'required_break_minutes' => $this->required_break_minutes !== null
+                ? (int) $this->required_break_minutes
+                : null,
         ];
     }
 }

@@ -337,5 +337,18 @@
             "presence_submission_not_retryable": "Deze inzending kan niet opnieuw worden verstuurd.",
             "retry_failed": "Opnieuw versturen mislukt."
         }
+    },
+    "required_break": {
+        "apply": "Minimumpauze toepassen",
+        "applied_badge": "Teampauze",
+        "saved": "Minimumpauze toegepast.",
+        "errors": {
+            "already_applied": "Deze dienst heeft al minstens de teampauze.",
+            "no_team_minimum": "Dit team heeft geen minimumpauze.",
+            "shift_still_open": "Open diensten kunnen geen minimumpauze krijgen.",
+            "shift_missing_clock_out": "Deze dienst heeft geen uitkloktijd.",
+            "shift_too_short": "De dienst is te kort voor de minimumpauze.",
+            "tenant_mismatch": "Deze dienst hoort niet bij deze organisatie."
+        }
     }
 }

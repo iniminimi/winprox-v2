@@ -95,6 +95,7 @@ class Team extends Component
     public int $teamSortOrder = 0;
     public bool $teamIsActive = true;
     public bool $teamClocksAllLocations = false;
+    public mixed $teamRequiredBreakMinutes = null;
     public string $teamSessionLifespanType = 'daily';
     public ?int $teamSessionLifespanCustomHours = null;
     public string $teamPreviewLocale = '';
@@ -444,6 +445,7 @@ class Team extends Component
         $this->teamSortOrder = $team->sort_order;
         $this->teamIsActive = $team->is_active;
         $this->teamClocksAllLocations = (bool) $team->clocks_all_locations;
+        $this->teamRequiredBreakMinutes = $team->required_break_minutes;
 
         // Determine session lifespan type
         if ($team->session_lifespan_hours === 14) {
@@ -486,10 +488,14 @@ class Team extends Component
     public function saveTeam(CreateTeamAction $createTeam, UpdateTeamAction $updateTeam, SyncTeamCategoriesAction $syncCategories): void
     {
         $request = new StoreTeamRequest;
+        if ($this->teamRequiredBreakMinutes === '' || $this->teamRequiredBreakMinutes === false) {
+            $this->teamRequiredBreakMinutes = null;
+        }
         $validated = $this->validate(
             [
                 'teamName' => $request->rules()['name'],
                 'teamSortOrder' => $request->rules()['sort_order'],
+                'teamRequiredBreakMinutes' => $request->rules()['required_break_minutes'],
             ],
             ['teamName.required' => __('team.errors.team_name_required')],
         );
@@ -516,6 +522,7 @@ class Team extends Component
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $active,
                 'clocks_all_locations' => $this->teamClocksAllLocations,
+                'required_break_minutes' => $validated['teamRequiredBreakMinutes'] ?? null,
                 'session_lifespan_hours' => $sessionLifespanHours,
             ], (int) auth()->id());
 
@@ -530,6 +537,7 @@ class Team extends Component
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $this->teamIsActive,
                 'clocks_all_locations' => $this->teamClocksAllLocations,
+                'required_break_minutes' => $validated['teamRequiredBreakMinutes'] ?? null,
                 'session_lifespan_hours' => $sessionLifespanHours,
             ], (int) Tenancy::id(), (int) auth()->id());
 
@@ -655,6 +663,7 @@ class Team extends Component
             'teamSortOrder',
             'teamIsActive',
             'teamClocksAllLocations',
+            'teamRequiredBreakMinutes',
             'teamSessionLifespanType',
             'teamSessionLifespanCustomHours',
             'editingTeamId',
@@ -664,6 +673,7 @@ class Team extends Component
         ]);
         $this->teamIsActive = true;
         $this->teamClocksAllLocations = false;
+        $this->teamRequiredBreakMinutes = null;
         $this->teamSessionLifespanType = 'daily';
         $this->teamSessionLifespanCustomHours = null;
         $this->selectedCategoryIds = [];

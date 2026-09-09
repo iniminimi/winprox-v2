@@ -155,6 +155,7 @@
         "unit_measure_field.deactivated": "Measure field deactivated",
         "unit.measure_fields_synced": "Unit measure fields synced",
         "unit_measurement.recorded": "Unit measurement recorded",
-        "unit.measurement.recorded": "Unit measurement recorded"
+        "unit.measurement.recorded": "Unit measurement recorded",
+        "work_shift.required_break_applied": "Minimum break applied"
     }
 }

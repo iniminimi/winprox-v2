@@ -724,6 +724,22 @@
                     {{ __('team.teams.modal.clocks_all_locations') }}
                 </label>
                 <p class="wp-hint">{{ __('team.teams.modal.clocks_all_locations_hint') }}</p>
+                @if ($hasTimeModule)
+                    <div class="wp-field">
+                        <label class="wp-label" for="teamRequiredBreakMinutes">{{ __('team.teams.modal.required_break_minutes') }}</label>
+                        <input
+                            type="number"
+                            id="teamRequiredBreakMinutes"
+                            class="wp-input"
+                            wire:model="teamRequiredBreakMinutes"
+                            min="0"
+                            max="240"
+                            placeholder="{{ __('team.teams.modal.required_break_minutes_placeholder') }}"
+                        >
+                        <p class="wp-hint">{{ __('team.teams.modal.required_break_minutes_hint') }}</p>
+                        @error('teamRequiredBreakMinutes') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                @endif
 
                 <div class="wp-field">
                     <h3 class="wp-label">{{ __('team.teams.modal.categories_title') }}</h3>
