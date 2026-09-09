@@ -943,6 +943,10 @@
                     "text": "Après connexion, la tuile Liste d’évacuation (icône feu) apparaît. Confirmez d’abord que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Ensuite s’affiche qui est pointé, par site, dernier pointage en haut."
                 },
                 {
+                    "label": "Mes heures",
+                    "text": "Après connexion, vous voyez la tuile Mes heures. Elle n’affiche que vos services du mois choisi : entrée, sortie, pause et temps travaillé. Parcourez avec le mois précédent/suivant."
+                },
+                {
                     "label": "Déconnexion",
                     "text": "Déconnectez-vous lorsque vous avez terminé. Aux heures définies par l'administrateur, vous êtes également automatiquement déconnecté."
                 }

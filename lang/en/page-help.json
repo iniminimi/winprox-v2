@@ -935,6 +935,10 @@
                     "text": "After signing in you see the Evacuation list tile (fire icon). First confirm that the consultation is exceptional and is logged (first name, last name, date and time). Then you see who is clocked in now, grouped by site, newest clock-in first."
                 },
                 {
+                    "label": "My hours",
+                    "text": "After signing in you see the My hours tile. It shows only your shifts for the selected month: clock-in and clock-out, break and time worked. Browse with previous/next month."
+                },
+                {
                     "label": "Sign out",
                     "text": "Sign out when you are finished. At times set by the administrator you are also automatically signed out."
                 }

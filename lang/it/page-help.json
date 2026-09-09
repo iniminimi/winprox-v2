@@ -935,6 +935,10 @@
                     "text": "Dopo l’accesso vedi il riquadro Elenco evacuazione (icona fuoco). Prima conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Poi vedi chi è timbrato ora, per sede, ultima timbratura in alto."
                 },
                 {
+                    "label": "Le mie ore",
+                    "text": "Dopo l’accesso vedi il riquadro Le mie ore. Mostra solo i tuoi turni del mese scelto: ingresso, uscita, pausa e tempo lavorato. Sfoglia con il mese precedente/successivo."
+                },
+                {
                     "label": "Esci",
                     "text": "Esca quando ha finito. A orari impostati dall'amministratore viene disconnesso automaticamente."
                 }

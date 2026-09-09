@@ -935,6 +935,10 @@
                     "text": "Tras identificarse verá la ficha Lista de evacuación (icono de fuego). Primero confirme que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Después verá quién está fichado, por sede, el fichaje más reciente arriba."
                 },
                 {
+                    "label": "Mis horas",
+                    "text": "Tras identificarse verá la ficha Mis horas. Muestra solo sus turnos del mes elegido: entrada, salida, pausa y tiempo trabajado. Navegue con el mes anterior/siguiente."
+                },
+                {
                     "label": "Cerrar sesión",
                     "text": "Cierre sesión cuando haya terminado. En los horarios establecidos por el administrador también se cierra la sesión automáticamente."
                 }

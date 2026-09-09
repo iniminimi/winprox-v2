@@ -280,7 +280,18 @@
             "icon_not_configured": "Your account is not fully set up yet. Please contact the administrator.",
             "device_mismatch": "This device is not linked to your punch clock. Ask your team leader or admin to allow a new device."
         },
-        "transferred": "Presence moved to this location (same shift)."
+        "transferred": "Presence moved to this location (same shift).",
+        "hours": {
+            "tile": "My hours",
+            "tile_sub": "Your recorded shifts",
+            "title": "My hours",
+            "subtitle": "Only your clock-in and clock-out times.",
+            "empty": "No hours in this month.",
+            "total": "Total this month: :duration",
+            "month_nav": "Month",
+            "previous_month": "Previous month",
+            "next_month": "Next month"
+        }
     },
     "ciao": {
         "title": "CIAO submissions",

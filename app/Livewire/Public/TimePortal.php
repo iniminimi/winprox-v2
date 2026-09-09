@@ -12,6 +12,7 @@ use App\Actions\Time\ConfirmWorkerClockPinAction;
 use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
 use App\Actions\Time\ListOpenTimeRosterAction;
+use App\Actions\Time\ListWorkerHoursAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\SetWorkerClockPinAction;
@@ -19,6 +20,7 @@ use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
 use App\Enums\ClockDeviceRefusalReason;
 use App\Http\Requests\Time\AcknowledgeTimeRosterViewRequest;
+use App\Http\Requests\Time\ListWorkerHoursRequest;
 use App\Http\Requests\Time\WorkerClockPinRequest;
 use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
@@ -37,6 +39,7 @@ use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
 use App\Support\Time\TimeModuleAccess;
 use App\Support\Time\ClockPointPortalTokenResolution;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Validation\Rule;
 use InvalidArgumentException;
@@ -46,7 +49,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 /**
- * Time-portaal (Clock Point QR): in-/uitklokken, pauze en read-only takenoverzicht.
+ * Time-portaal (Clock Point QR): in-/uitklokken, pauze, eigen uren en read-only takenoverzicht.
  */
 #[Layout('components.layouts.public')]
 #[Title('WinProx')]
@@ -79,6 +82,11 @@ class TimePortal extends Component
 
     #[Locked]
     public bool $rosterListOpen = false;
+
+    #[Locked]
+    public bool $hoursListOpen = false;
+
+    public string $hoursMonth = '';
 
     public bool $rosterAcknowledged = false;
 
@@ -276,7 +284,7 @@ class TimePortal extends Component
         }
 
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'rosterAcknowledged']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -292,10 +300,66 @@ class TimePortal extends Component
             return;
         }
 
+        $this->hoursListOpen = false;
         $this->rosterAckOpen = true;
         $this->rosterListOpen = false;
         $this->rosterAcknowledged = false;
         $this->resetErrorBag(['rosterAcknowledged']);
+    }
+
+    public function openHours(): void
+    {
+        if ($this->authorizedWorker() === null || $this->activeClockPoint() === null) {
+            return;
+        }
+
+        try {
+            TimeModuleAccess::assertEnabledForTenantId($this->tenantId);
+        } catch (InvalidArgumentException) {
+            return;
+        }
+
+        $this->closeRoster();
+        $this->hoursMonth = now()->format('Y-m');
+        $this->hoursListOpen = true;
+    }
+
+    public function closeHours(): void
+    {
+        $this->hoursListOpen = false;
+    }
+
+    public function previousHoursMonth(): void
+    {
+        if (! $this->hoursListOpen) {
+            return;
+        }
+
+        $start = $this->hoursMonthStart();
+        if ($start === null) {
+            return;
+        }
+
+        $this->hoursMonth = $start->subMonth()->format('Y-m');
+    }
+
+    public function nextHoursMonth(): void
+    {
+        if (! $this->hoursListOpen) {
+            return;
+        }
+
+        $start = $this->hoursMonthStart();
+        if ($start === null) {
+            return;
+        }
+
+        $next = $start->addMonth()->startOfMonth();
+        if ($next->gt(now()->startOfMonth())) {
+            return;
+        }
+
+        $this->hoursMonth = $next->format('Y-m');
     }
 
     public function closeRoster(): void
@@ -626,7 +690,7 @@ class TimePortal extends Component
         }
     }
 
-    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster)
+    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours)
     {
         app()->setLocale($this->locale);
 
@@ -701,11 +765,23 @@ class TimePortal extends Component
         if (! $canAct || ! $hasTimeModule) {
             $this->rosterAckOpen = false;
             $this->rosterListOpen = false;
+            $this->hoursListOpen = false;
         }
 
         $roster = null;
         if ($canAct && $this->rosterListOpen && $verifiedWorker !== null && $hasTimeModule) {
             $roster = $listRoster->handle($this->tenantId);
+        }
+
+        $hours = null;
+        $hoursMonthLabel = '';
+        $hoursIsCurrentMonth = true;
+        if ($canAct && $this->hoursListOpen && $verifiedWorker !== null && $hasTimeModule) {
+            $from = $this->hoursMonthStart() ?? now()->startOfMonth();
+            $this->hoursMonth = $from->format('Y-m');
+            $hours = $listHours->handle($verifiedWorker, $this->tenantId, $from, $from->copy()->endOfMonth());
+            $hoursMonthLabel = $from->copy()->locale($this->locale)->translatedFormat('F Y');
+            $hoursIsCurrentMonth = $from->isSameMonth(now());
         }
 
         return view('livewire.public.time-portal', [
@@ -732,6 +808,9 @@ class TimePortal extends Component
             'teamWorkers' => $teamWorkers,
             'manageWorkersMessage' => $this->manageWorkersMessage,
             'roster' => $roster,
+            'hours' => $hours,
+            'hoursMonthLabel' => $hoursMonthLabel,
+            'hoursIsCurrentMonth' => $hoursIsCurrentMonth,
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);
@@ -953,6 +1032,19 @@ class TimePortal extends Component
     private function authorizedWorker(): ?Worker
     {
         return $this->verifiedWorker();
+    }
+
+    private function hoursMonthStart(): ?Carbon
+    {
+        $month = $this->hoursMonth !== '' ? $this->hoursMonth : now()->format('Y-m');
+        $validator = validator(['month' => $month], ListWorkerHoursRequest::rulesFor());
+        if ($validator->fails()) {
+            return now()->startOfMonth();
+        }
+
+        $parsed = Carbon::createFromFormat('!Y-m', $month);
+
+        return $parsed instanceof Carbon ? $parsed->startOfMonth() : now()->startOfMonth();
     }
 
     private function deviceForWorker(Worker $worker): ?\App\Models\WorkerDevice

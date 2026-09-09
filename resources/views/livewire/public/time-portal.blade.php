@@ -184,7 +184,17 @@
 
         @if ($canAct)
             <div class="wp-stack" data-manual-capture="portal-team-signed-in">
-                @if ($rosterListOpen && $roster !== null)
+                @if ($hoursListOpen && $hours !== null)
+                    <x-wp-portal-back wire:click="closeHours" />
+                    <x-wp-page-head-title variant="portal" icon="clock" :title="__('time.portal.hours.title')">
+                        <p class="wp-muted">{{ __('time.portal.hours.subtitle') }}</p>
+                    </x-wp-page-head-title>
+                    @include('partials.wp-portal-worker-hours', [
+                        'hours' => $hours,
+                        'hoursMonthLabel' => $hoursMonthLabel,
+                        'hoursIsCurrentMonth' => $hoursIsCurrentMonth,
+                    ])
+                @elseif ($rosterListOpen && $roster !== null)
                     <x-wp-portal-back wire:click="closeRoster" />
                     <x-wp-page-head-title variant="portal" icon="fire" :title="__('time.roster.title')">
                         <p class="wp-muted">{{ __('time.roster.subtitle') }}</p>
@@ -311,6 +321,13 @@
 
                     @if ($hasTimeModule)
                         <div class="wp-tiles">
+                            <button type="button" class="wp-tile" wire:click="openHours">
+                                <span class="wp-cluster">
+                                    <x-wp-icon name="clock" class="wp-tile-icon" />
+                                    <span class="wp-tile-title">{{ __('time.portal.hours.tile') }}</span>
+                                </span>
+                                <span class="wp-tile-sub">{{ __('time.portal.hours.tile_sub') }}</span>
+                            </button>
                             <button type="button" class="wp-tile" wire:click="openRoster">
                                 <span class="wp-cluster">
                                     <x-wp-icon name="fire" class="wp-tile-icon" />

@@ -238,7 +238,7 @@ return [
             'page' => 'settings',
         ],
         [
-            'patterns' => ['clock point portaal', 'aanmelden uitvoerder', 'icoon'],
+            'patterns' => ['clock point portaal', 'aanmelden uitvoerder', 'icoon', 'mijn uren', 'my hours'],
             'page' => 'portal.time',
         ],
         [

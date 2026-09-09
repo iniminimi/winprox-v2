@@ -280,7 +280,18 @@
             "icon_not_configured": "Il tuo account non è ancora completamente configurato. Contatta l'amministratore.",
             "device_mismatch": "Questo dispositivo non è collegato alla tua marcatura. Chiedi al team leader o all'amministratore di autorizzare un nuovo dispositivo."
         },
-        "transferred": "Presenza spostata in questa sede (stesso turno)."
+        "transferred": "Presenza spostata in questa sede (stesso turno).",
+        "hours": {
+            "tile": "Le mie ore",
+            "tile_sub": "I tuoi turni registrati",
+            "title": "Le mie ore",
+            "subtitle": "Solo i tuoi orari di ingresso e uscita.",
+            "empty": "Nessuna ora in questo mese.",
+            "total": "Totale questo mese: :duration",
+            "month_nav": "Mese",
+            "previous_month": "Mese precedente",
+            "next_month": "Mese successivo"
+        }
     },
     "ciao": {
         "title": "Invii CIAO",

@@ -280,7 +280,18 @@
             "icon_not_configured": "Ihr Konto ist noch nicht vollständig eingerichtet. Bitte wenden Sie sich an den Administrator.",
             "device_mismatch": "Dieses Gerät ist nicht mit deiner Stempeluhr verknüpft. Bitte Teamleiter oder Verwaltung, ein neues Gerät zuzulassen."
         },
-        "transferred": "Anwesenheit an diesen Standort verschoben (gleiche Schicht)."
+        "transferred": "Anwesenheit an diesen Standort verschoben (gleiche Schicht).",
+        "hours": {
+            "tile": "Meine Stunden",
+            "tile_sub": "Deine erfassten Schichten",
+            "title": "Meine Stunden",
+            "subtitle": "Nur deine Ein- und Ausstempelzeiten.",
+            "empty": "Keine Stunden in diesem Monat.",
+            "total": "Summe diesen Monat: :duration",
+            "month_nav": "Monat",
+            "previous_month": "Vorheriger Monat",
+            "next_month": "Nächster Monat"
+        }
     },
     "ciao": {
         "title": "CIAO-Meldungen",

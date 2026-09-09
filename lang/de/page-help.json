@@ -935,6 +935,10 @@
                     "text": "Nach der Anmeldung sehen Sie die Kachel Evakuierungsliste (Feuersymbol). Bestätigen Sie zuerst, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Danach sehen Sie, wer jetzt eingestempelt ist, nach Standort, neueste Einstempelung oben."
                 },
                 {
+                    "label": "Meine Stunden",
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Meine Stunden. Dort stehen nur Ihre Schichten des gewählten Monats: Ein-/Ausstempelzeit, Pause und Arbeitszeit. Blättern Sie mit vorherigem/nächstem Monat."
+                },
+                {
                     "label": "Abmelden",
                     "text": "Melden Sie sich ab, wenn Sie fertig sind. Zu vom Administrator festgelegten Zeiten werden Sie außerdem automatisch abgemeldet."
                 }

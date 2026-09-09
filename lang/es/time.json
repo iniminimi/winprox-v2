@@ -280,7 +280,18 @@
             "icon_not_configured": "Su cuenta aún no está completamente configurada. Contacte al administrador.",
             "device_mismatch": "Este dispositivo no está vinculado a tu fichaje. Pide a tu responsable o administrador que autorice un dispositivo nuevo."
         },
-        "transferred": "Presencia trasladada a esta sede (mismo turno)."
+        "transferred": "Presencia trasladada a esta sede (mismo turno).",
+        "hours": {
+            "tile": "Mis horas",
+            "tile_sub": "Tus turnos registrados",
+            "title": "Mis horas",
+            "subtitle": "Solo tus fichajes de entrada y salida.",
+            "empty": "No hay horas en este mes.",
+            "total": "Total este mes: :duration",
+            "month_nav": "Mes",
+            "previous_month": "Mes anterior",
+            "next_month": "Mes siguiente"
+        }
     },
     "ciao": {
         "title": "Envíos CIAO",

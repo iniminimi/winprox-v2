@@ -280,7 +280,18 @@
             "icon_not_configured": "Je account is nog niet volledig ingesteld. Neem contact op met de beheerder.",
             "device_mismatch": "Dit toestel is niet gekoppeld aan jouw prikklok. Vraag je teamleader of beheerder om een nieuw toestel toe te staan."
         },
-        "transferred": "Aanwezigheid verplaatst naar deze vestiging (zelfde dienst)."
+        "transferred": "Aanwezigheid verplaatst naar deze vestiging (zelfde dienst).",
+        "hours": {
+            "tile": "Mijn uren",
+            "tile_sub": "Jouw geregistreerde diensten",
+            "title": "Mijn uren",
+            "subtitle": "Alleen jouw in- en uitkloktijden.",
+            "empty": "Geen uren in deze maand.",
+            "total": "Totaal deze maand: :duration",
+            "month_nav": "Maand",
+            "previous_month": "Vorige maand",
+            "next_month": "Volgende maand"
+        }
     },
     "ciao": {
         "title": "CIAO-inzendingen",

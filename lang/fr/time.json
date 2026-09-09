@@ -280,7 +280,18 @@
             "icon_not_configured": "Votre compte n'est pas encore entièrement configuré. Contactez l'administrateur.",
             "device_mismatch": "Cet appareil n'est pas lié à votre pointeuse. Demandez à votre chef d'équipe ou à l'admin d'autoriser un nouvel appareil."
         },
-        "transferred": "Présence déplacée vers ce site (même vacation)."
+        "transferred": "Présence déplacée vers ce site (même vacation).",
+        "hours": {
+            "tile": "Mes heures",
+            "tile_sub": "Tes services enregistrés",
+            "title": "Mes heures",
+            "subtitle": "Uniquement tes heures d’entrée et de sortie.",
+            "empty": "Aucune heure ce mois-ci.",
+            "total": "Total ce mois-ci : :duration",
+            "month_nav": "Mois",
+            "previous_month": "Mois précédent",
+            "next_month": "Mois suivant"
+        }
     },
     "ciao": {
         "title": "Envois CIAO",

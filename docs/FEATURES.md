@@ -658,6 +658,9 @@ productsector op `Tenant`.
 ### 5g.1 Bestaande Time-basis (behouden)
 - Module `has_time_module`; Clock Point QR; `WorkShift` / `WorkBreak`; aanwezigheid, urenstaat,
   export; events `time.shift.started` / `time.shift.ended`.
+- **Mijn uren** op het Clock Point-portaal (na aanmelden, tegel). Toont **alleen de eigen**
+  diensten van de gekozen maand (in-/uitklok, pauze, gewerkte tijd). Vorige/volgende maand;
+  geen correctie, geen export, geen uren van collega's. Geen extra QR.
 - **Evacuatielijst** op het Clock Point-portaal (na aanmelden, tegel met brandicoon).
   Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel), per
   locatie met de **nieuwste inklokking bovenaan**. Eerst
@@ -1071,7 +1074,8 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
 - **Clock Point-QR** (`/time/{token}`): **worker**-aanmelding (naam + icoon), in-/uitklokken en
   overzicht van open teamtaken. **BESLIST:** via Clock Point zijn taakacties **alleen-lezen** —
   afhandelen moet via de **unit-QR**. (Vervangt de oude team-QR `/team/{token}`.)
-  Met Time: tegel **Evacuatielijst** (brandicoon) na aanmelden; checkbox dat de raadpleging
+  Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en tegel
+  **Evacuatielijst** (brandicoon) na aanmelden; checkbox dat de raadpleging
   uitzonderlijk is en wordt gelogd; daarna de lijst van ingeklokten (per locatie,
   nieuwste inklokking bovenaan). Geen extra QR.
 
