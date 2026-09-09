@@ -47,7 +47,7 @@
         "meta_title": "Tijdregistratie via Clock Point QR | WinProx",
         "social": {
             "og_title": "Tijdregistratie via Clock Point QR | WinProx",
-            "og_description": "In-/uitklokken en pauzes via Clock Point-QR, aanwezigheid en shifts — gekoppeld aan facility-workflows."
+            "og_description": "In-/uitklokken en pauzes via Clock Point-QR, aanwezigheid, urenstaat, Mijn uren en minimumpauze per team — gekoppeld aan facility-workflows."
         },
         "eyebrow": "Time",
         "logo_alt": "Module Time — onderdeel van WinProx Facility",
@@ -71,7 +71,9 @@
                 "Zelfde worker-identiteit (naam + icoon) als facility",
                 "Eén gsm per uitvoerder, optionele PIN en GPS",
                 "Evacuatielijst op Clock Point na bevestiging",
-                "Alarm bij hop tussen Clock Points binnen 5 min"
+                "Alarm bij hop tussen Clock Points binnen 5 min",
+                "Mijn uren op Clock Point (alleen eigen diensten)",
+                "Minimumpauze per team op de urenstaat (geen extra CIAO-event)"
             ]
         },
         "audience": {
@@ -138,7 +140,8 @@
                 "Clock Point: tegel Evacuatielijst van ingeklokten",
                 "Locatie-QR en stickerbladen (o.a. Avery)",
                 "Dynamische QR die later een unit kan krijgen",
-                "Moderatie: blur tot goedkeuring op publieke pagina's"
+                "Moderatie: blur tot goedkeuring op publieke pagina's",
+                "Clock Point: tegel Mijn uren (alleen eigen diensten)"
             ]
         },
         "audience": {

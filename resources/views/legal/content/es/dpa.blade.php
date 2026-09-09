@@ -33,7 +33,7 @@
     <li>registro de mediciones de unidad (lecturas vía QR de unidad), si están activadas en categoría y unidad.</li>
     <li>gestión de usuarios y equipos internos.</li>
     <li>gestión de trabajadores (sin inicio de sesión) y asignación a tareas.</li>
-    <li>fichaje opcional (Time): entrada/salida, presencia, vinculación de dispositivo, GPS opcional al fichar y consultas registradas de la lista de evacuación.</li>
+    <li>fichaje opcional (Time): entrada/salida, presencia, parte de horas (incluidos posibles minutos de pausa de equipo), vinculación de dispositivo, GPS opcional al fichar, consulta de Mis horas en Clock Point y consultas registradas de la lista de evacuación.</li>
     <li>gestión de ubicaciones y unidades.</li>
     <li>envío de notificaciones por correo electrónico siguiendo las instrucciones del cliente.</li>
     <li>registro de actividad y seguridad.</li>
@@ -50,7 +50,7 @@
     <li>datos de comprobación de unidad (resultado, marca de tiempo, unidad, GPS opcional, ejecutor).</li>
     <li>datos de mediciones de unidad (campo, valor, fecha/hora, unidad, origen, ejecutor o usuario opcional).</li>
     <li>datos de trabajadores e informantes QR, en la medida en que los recopile el cliente (incluidos borradores temporales a la espera de confirmación por correo).</li>
-    <li>datos Time/Clock Point (presencia, dispositivo vinculado, PIN hasheado si se configura, GPS opcional al fichar, auditoría de consultas de la lista de evacuación).</li>
+    <li>datos Time/Clock Point (presencia, dispositivo vinculado, PIN hasheado si se configura, GPS opcional al fichar, minutos de pausa en el parte incluido el mínimo de equipo aplicado — sin evento CIAO extra, auditoría de consultas de la lista de evacuación).</li>
     <li>datos de acceso y sesión.</li>
     <li>metadatos de suscripción y acceso.</li>
     <li>datos ESG/cumplimiento (definiciones de indicadores, valores de medición, vínculos, seguimiento de umbrales y atribución opcional a trabajadores).</li>

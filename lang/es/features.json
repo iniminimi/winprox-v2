@@ -47,7 +47,7 @@
         "meta_title": "Control horario vía Clock Point QR | WinProx",
         "social": {
             "og_title": "Control horario vía Clock Point QR | WinProx",
-            "og_description": "Fichaje entrada/salida y pausas vía Clock Point QR, presencia y turnos — vinculados a flujos Facility."
+            "og_description": "Fichar entrada/salida y pausas vía QR Clock Point, presencia, parte de horas, Mis horas y pausa mínima por equipo — ligado a los flujos de facility."
         },
         "eyebrow": "Time",
         "logo_alt": "Módulo Time — parte de WinProx Facility",
@@ -71,7 +71,9 @@
                 "Misma identidad de trabajador (nombre + icono) que Facility",
                 "Un móvil por trabajador, PIN y GPS opcionales",
                 "Lista de evacuación en Clock Point tras confirmación",
-                "Alarma al saltar entre Clock Points en menos de 5 min"
+                "Alarma al saltar entre Clock Points en menos de 5 min",
+                "Mis horas en Clock Point (solo tus turnos)",
+                "Pausa mínima por equipo en el parte (sin evento CIAO extra)"
             ]
         },
         "audience": {
@@ -138,7 +140,8 @@
                 "Clock Point: ficha lista de evacuación de fichados",
                 "QR de ubicación y hojas de pegatinas (p. ej. Avery)",
                 "QR dinámico asignable a una unidad más tarde",
-                "Moderación: difuminado hasta aprobación en páginas públicas"
+                "Moderación: difuminado hasta aprobación en páginas públicas",
+                "Clock Point: ficha Mis horas (solo tus turnos)"
             ]
         },
         "audience": {

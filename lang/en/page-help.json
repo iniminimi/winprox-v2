@@ -940,7 +940,7 @@
                 },
                 {
                     "label": "My hours",
-                    "text": "After signing in you see the My hours tile. It shows only your shifts for the selected month: clock-in and clock-out, break and time worked. Browse with previous/next month."
+                    "text": "After sign-in you see the My hours tile. It lists only your shifts for the selected month: clock-in/out, break and time worked. Browse previous/next month. The break shown is the timesheet value; it may include the team minimum if you clocked no (or too short a) live break."
                 },
                 {
                     "label": "Sign out",
@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Close shift",
-                    "text": "Close an open shift at the current time when someone forgot to clock out. The reason is recorded in the audit log."
+                    "text": "Close an open shift at the current time when someone forgot to clock out. The reason goes in the audit log. If the team has a minimum break and the shift is long enough, it is counted on the timesheet (no extra CIAO event)."
                 },
                 {
                     "label": "Clock Point QR",
@@ -1215,7 +1215,7 @@
                 },
                 {
                     "label": "Types",
-                    "text": "Filter by <strong>Long shift</strong> (&gt;10 h), <strong>Not clocked out</strong> (&gt;16 h), <strong>No break</strong> (&gt;6 h without a break), <strong>Rapid hop</strong> (move within 5 min), or <strong>Evacuation list</strong> (all views, with date)."
+                    "text": "Filter by <strong>Long shift</strong> (&gt;10 hours), <strong>Not clocked out</strong> (&gt;16 hours), <strong>No break</strong> (&gt;6 hours without a live Clock Point break), <strong>Quick hop</strong> (move within 5 min) or <strong>Evacuation list</strong> (all views, with date). The <strong>No break</strong> alarm does not look at the team minimum on the timesheet."
                 },
                 {
                     "label": "Action",
@@ -1236,11 +1236,11 @@
                 },
                 {
                     "label": "Correct",
-                    "text": "For closed shifts, an admin can adjust clock-in/out times or break minutes with a required reason. Changes are recorded in the audit log."
+                    "text": "On a closed shift an admin can change clock-in/out times or break minutes with a required reason. Changes go in the audit log. If the team break is missing, use <strong>Apply minimum break</strong>."
                 },
                 {
                     "label": "Close shift",
-                    "text": "Open shifts in this overview can also be force-closed, same as on the Presence screen."
+                    "text": "Open shifts in this list can also be force-closed here, as on Presence. If the team has a minimum break and the shift is long enough, it is counted on the timesheet (no extra CIAO event)."
                 },
                 {
                     "label": "Clock in manually",

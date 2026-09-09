@@ -213,8 +213,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Hoe richt ik interne teams in?",
-            "body": "Klein beginnen: één team (bijvoorbeeld Hotel of Faciliteit) en iedereen die taken uitvoert daarin. Ga naar Personen → Teams. Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel teams aan categorieën. Uitvoerders voeg je handmatig toe, of via CSV/Excel. Zeldzame acties (teamleader, icoon/gsm/PIN, deactiveren) zitten in **Bewerken**. Onder Teams beheer je ook checklists voor unit checks. Print de Clock Point-QR voor de werkvloer (Time → Clock Points).",
-            "summary": "Eén team volstaat om te starten. Personen → Teams; koppel aan categorieën; Clock Point-QR."
+            "body": "Klein beginnen: één team (bijvoorbeeld Hotel of Faciliteit) en iedereen die taken uitvoert daarin. Ga naar Personen → Teams. Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel teams aan categorieën. Uitvoerders voeg je handmatig toe, of via CSV/Excel. Zeldzame acties (teamleader, icoon/gsm/PIN, deactiveren) zitten in **Bewerken**. Onder Teams beheer je ook checklists voor unit checks. Print de Clock Point-QR voor de werkvloer (Time → Clock Points). Met Time kun je per team een minimumpauze op de urenstaat zetten (bijv. 30 minuten).",
+            "summary": "Eén team volstaat om te starten. Personen → Teams; koppel aan categorieën; Clock Point-QR. Met Time: optionele minimumpauze per team op de urenstaat."
         },
         "team_follow_up": {
             "slug": "team_follow_up",

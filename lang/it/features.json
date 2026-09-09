@@ -47,7 +47,7 @@
         "meta_title": "Rilevazione presenze via Clock Point QR | WinProx",
         "social": {
             "og_title": "Rilevazione presenze via Clock Point QR | WinProx",
-            "og_description": "Timbratura entrata/uscita e pause via Clock Point QR, presenze e turni — collegati ai workflow Facility."
+            "og_description": "Timbratura ingresso/uscita e pause via QR Clock Point, presenza, foglio ore, Le mie ore e pausa minima per team — collegati ai flussi facility."
         },
         "eyebrow": "Time",
         "logo_alt": "Modulo Time — parte di WinProx Facility",
@@ -71,7 +71,9 @@
                 "Stessa identità operatore (nome + icona) di Facility",
                 "Un telefono per esecutore, PIN e GPS opzionali",
                 "Elenco evacuazione su Clock Point dopo conferma",
-                "Allarme se si salta tra Clock Point entro 5 min"
+                "Allarme se si salta tra Clock Point entro 5 min",
+                "Le mie ore su Clock Point (solo i propri turni)",
+                "Pausa minima per team sul foglio ore (nessun evento CIAO extra)"
             ]
         },
         "audience": {
@@ -138,7 +140,8 @@
                 "Clock Point: riquadro elenco evacuazione dei timbrati",
                 "QR sede e fogli adesivi (es. Avery)",
                 "QR dinamico assegnabile a un'unità in seguito",
-                "Moderazione: sfocatura fino all'approvazione sulle pagine pubbliche"
+                "Moderazione: sfocatura fino all'approvazione sulle pagine pubbliche",
+                "Clock Point: riquadro Le mie ore (solo i propri turni)"
             ]
         },
         "audience": {

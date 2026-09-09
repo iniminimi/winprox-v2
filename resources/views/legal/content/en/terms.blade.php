@@ -24,7 +24,7 @@
     <li>register issues, including via QR portals.</li>
     <li>manage and follow up tasks.</li>
     <li>assign work to internal teams and workers.</li>
-    <li>optionally use Time (punch clock): clock in/out via Clock Point QR, with one device bound per worker.</li>
+    <li>optionally use Time (punch clock): clock in/out via Clock Point QR, timesheets, optional per-team minimum break on the timesheet (no extra RSZ event), with one device bound per worker.</li>
     <li>optionally record and follow up ESG/compliance measurements (if the module is enabled).</li>
     <li>record unit measurements (readings via unit QR) when enabled on category and unit.</li>
     <li>optionally use IoT Connect: link gateways/sensors so alarms and (where applicable) measurements start workflow in WinProx.</li>

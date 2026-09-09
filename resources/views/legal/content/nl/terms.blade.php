@@ -24,7 +24,7 @@
     <li>meldingen (issues) kunnen registreren, onder meer via QR-portalen.</li>
     <li>taken kunnen beheren en opvolgen.</li>
     <li>werk kunnen toewijzen aan interne teams en uitvoerders.</li>
-    <li>optioneel Time (prikklok) gebruiken: in-/uitklokken via Clock Point-QR, met koppeling van één toestel per uitvoerder.</li>
+    <li>optioneel Time (prikklok) gebruiken: in-/uitklokken via Clock Point-QR, urenstaat, optionele minimumpauze per team op de urenstaat (geen extra RSZ-event), met koppeling van één toestel per uitvoerder.</li>
     <li>optioneel ESG-/compliance-metingen kunnen registreren en opvolgen (indien de module is geactiveerd).</li>
     <li>unitmetingen (meetwaarden via unit-QR) kunnen registreren indien ingeschakeld op categorie en unit.</li>
     <li>optioneel IoT Connect gebruiken: gateways/sensoren koppelen zodat alarms en (waar van toepassing) metingen workflow in WinProx starten.</li>

@@ -24,7 +24,7 @@
     <li>registrar incidencias, incluidas a través de portales QR.</li>
     <li>gestionar y dar seguimiento a tareas.</li>
     <li>asignar trabajo a equipos internos y trabajadores.</li>
-    <li>usar Time (reloj de fichaje) de forma opcional: fichar entrada/salida mediante el QR Clock Point, con un dispositivo vinculado por trabajador.</li>
+    <li>usar Time (reloj de fichaje) de forma opcional: fichar entrada/salida mediante el QR Clock Point, parte de horas, pausa mínima opcional por equipo en el parte (sin evento RSZ extra), con un dispositivo vinculado por trabajador.</li>
     <li>registrar mediciones de unidad (lecturas vía QR de unidad) si están activadas en categoría y unidad.</li>
     <li>registrar y dar seguimiento a mediciones ESG/cumplimiento de forma opcional (si el módulo está activado).</li>
     <li>usar IoT Connect de forma opcional: vincular pasarelas/sensores para que las alarmas y (si aplica) las mediciones inicien el flujo de trabajo en WinProx.</li>

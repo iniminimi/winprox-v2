@@ -209,8 +209,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Wie richte ich interne Teams ein?",
-            "body": "Klein starten: ein Team (zum Beispiel Hotel oder Facility) und alle, die Aufgaben ausführen. Gehen Sie zu Personen → Teams. Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie Teams mit Kategorien. Ausführende manuell oder per CSV/Excel. Seltene Aktionen (Teamleiter, Symbol/Handy/PIN, deaktivieren) stehen unter **Bearbeiten**. Unter Teams verwalten Sie auch Checklisten für Unit-Checks. Drucken Sie den Clock-Point-QR für die Fläche (Time → Clock Points).",
-            "summary": "Ein Team reicht zum Start. Personen → Teams; mit Kategorien verknüpfen; Clock-Point-QR."
+            "body": "Klein starten: ein Team (zum Beispiel Hotel oder Facility) und alle, die Aufgaben ausführen. Gehen Sie zu Personen → Teams. Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie Teams mit Kategorien. Ausführende manuell oder per CSV/Excel. Seltene Aktionen (Teamleiter, Symbol/Handy/PIN, deaktivieren) stehen unter **Bearbeiten**. Unter Teams verwalten Sie auch Checklisten für Unit-Checks. Drucken Sie den Clock-Point-QR für die Fläche (Time → Clock Points). Mit Time können Sie pro Team eine Mindestpause auf der Stundenliste festlegen (z. B. 30 Minuten).",
+            "summary": "Ein Team reicht zum Start. Personen → Teams; mit Kategorien verknüpfen; Clock-Point-QR. Mit Time: optionale Mindestpause pro Team auf der Stundenliste."
         },
         "team_follow_up": {
             "slug": "team_follow_up",

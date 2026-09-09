@@ -47,7 +47,7 @@
         "meta_title": "Zeiterfassung per Clock Point QR | WinProx",
         "social": {
             "og_title": "Zeiterfassung per Clock Point QR | WinProx",
-            "og_description": "Ein-/Ausstempeln und Pausen per Clock Point QR, Anwesenheit und Schichten — verknüpft mit Facility-Workflows."
+            "og_description": "Ein-/Ausstempeln und Pausen per Clock-Point-QR, Anwesenheit, Stundenliste, Meine Stunden und Mindestpause pro Team — gekoppelt an Facility-Abläufe."
         },
         "eyebrow": "Time",
         "logo_alt": "Modul Time — Teil von WinProx Facility",
@@ -71,7 +71,9 @@
                 "Gleiche Mitarbeiteridentität (Name + Icon) wie Facility",
                 "Ein Handy pro Ausführendem, optionale PIN und GPS",
                 "Evakuierungsliste am Clock Point nach Bestätigung",
-                "Alarm bei Hop zwischen Clock Points innerhalb von 5 Min."
+                "Alarm bei Hop zwischen Clock Points innerhalb von 5 Min.",
+                "Meine Stunden am Clock Point (nur eigene Schichten)",
+                "Mindestpause pro Team auf der Stundenliste (kein extra CIAO-Ereignis)"
             ]
         },
         "audience": {
@@ -138,7 +140,8 @@
                 "Clock Point: Kachel Evakuierungsliste der Eingestempelten",
                 "Standort-QR und Aufkleberbögen (z. B. Avery)",
                 "Dynamischer QR, der später einer Einheit zugewiesen werden kann",
-                "Moderation: Unschärfe bis Genehmigung auf öffentlichen Seiten"
+                "Moderation: Unschärfe bis Genehmigung auf öffentlichen Seiten",
+                "Clock Point: Kachel Meine Stunden (nur eigene Schichten)"
             ]
         },
         "audience": {

@@ -47,7 +47,7 @@
         "meta_title": "Suivi du temps via Clock Point QR | WinProx",
         "social": {
             "og_title": "Suivi du temps via Clock Point QR | WinProx",
-            "og_description": "Pointage entrée/sortie et pauses via Clock Point QR, présence et shifts — liés aux workflows Facility."
+            "og_description": "Pointage entrée/sortie et pauses via QR Clock Point, présence, feuille d’heures, Mes heures et pause minimale par équipe — liés aux flux facility."
         },
         "eyebrow": "Time",
         "logo_alt": "Module Time — composant de WinProx Facility",
@@ -71,7 +71,9 @@
                 "Même identité ouvrier (nom + icône) que Facility",
                 "Un téléphone par exécutant, PIN et GPS optionnels",
                 "Liste d’évacuation sur Clock Point après confirmation",
-                "Alarme si hop entre Clock Points en moins de 5 min"
+                "Alarme si hop entre Clock Points en moins de 5 min",
+                "Mes heures sur Clock Point (uniquement vos services)",
+                "Pause minimale par équipe sur la feuille d’heures (pas d’événement CIAO extra)"
             ]
         },
         "audience": {
@@ -138,7 +140,8 @@
                 "Clock Point : tuile liste d’évacuation des personnes pointées",
                 "QR emplacement et planches d'autocollants (p. ex. Avery)",
                 "QR dynamique assignable à une unité ultérieurement",
-                "Modération : flou jusqu'à approbation sur les pages publiques"
+                "Modération : flou jusqu'à approbation sur les pages publiques",
+                "Clock Point : tuile Mes heures (uniquement vos services)"
             ]
         },
         "audience": {

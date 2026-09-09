@@ -940,7 +940,7 @@
                 },
                 {
                     "label": "Meine Stunden",
-                    "text": "Nach der Anmeldung sehen Sie die Kachel Meine Stunden. Dort stehen nur Ihre Schichten des gewählten Monats: Ein-/Ausstempelzeit, Pause und Arbeitszeit. Blättern Sie mit vorherigem/nächstem Monat."
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Meine Stunden. Dort stehen nur Ihre Schichten des gewählten Monats: Ein-/Ausstempelzeit, Pause und Arbeitszeit. Vorheriger/nächster Monat. Die angezeigte Pause ist der Stundenlistenwert; sie kann das Teamminimum enthalten, wenn Sie keine (oder zu kurze) Live-Pause gestempelt haben."
                 },
                 {
                     "label": "Abmelden",
@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Schicht schließen",
-                    "text": "Schließen Sie eine offene Schicht mit der aktuellen Zeit. Der Grund wird im Auditlog festgehalten."
+                    "text": "Schließen Sie eine offene Schicht mit der aktuellen Zeit, wenn jemand das Ausstempeln vergessen hat. Der Grund steht im Auditlog. Hat das Team eine Mindestpause und die Schicht dauert länger, zählt sie auf der Stundenliste (kein extra CIAO-Ereignis)."
                 },
                 {
                     "label": "Clock Point QR",
@@ -1215,7 +1215,7 @@
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter: <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.), <strong>Keine Pause</strong> (&gt;6 Std.), <strong>Schneller Wechsel</strong> (innerhalb von 5 Min.) oder <strong>Evakuierungsliste</strong> (alle Einsichten, mit Datum)."
+                    "text": "Filter auf <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.), <strong>Keine Pause</strong> (&gt;6 Std. ohne Live-Clock-Point-Pause), <strong>Schneller Hop</strong> (Wechsel innerhalb 5 Min) oder <strong>Evakuierungsliste</strong> (alle Einsichten, mit Datum). Der Alarm <strong>Keine Pause</strong> berücksichtigt nicht das Teamminimum auf der Stundenliste."
                 },
                 {
                     "label": "Aktion",
@@ -1236,11 +1236,11 @@
                 },
                 {
                     "label": "Korrigieren",
-                    "text": "Bei einer geschlossenen Schicht kann ein Administrator Ein- und Ausstempelzeiten oder Pausenminuten mit einer Pflichtbegründung anpassen. Änderungen werden im Audit-Log festgehalten."
+                    "text": "Bei einer geschlossenen Schicht kann ein Admin Ein-/Ausstempelzeiten oder Pauseminuten mit Pflichtgrund ändern. Änderungen stehen im Auditlog. Fehlt die Team-Pause, nutzen Sie <strong>Mindestpause anwenden</strong>."
                 },
                 {
                     "label": "Schicht schließen",
-                    "text": "Offene Schichten in dieser Übersicht können hier ebenfalls erzwungen geschlossen werden, wie auf dem Bildschirm Anwesenheit."
+                    "text": "Offene Schichten in dieser Liste können hier ebenfalls zwangsweise geschlossen werden, wie unter Anwesenheit. Hat das Team eine Mindestpause und die Schicht dauert länger, zählt sie auf der Stundenliste (kein extra CIAO-Ereignis)."
                 },
                 {
                     "label": "Manuell einstempeln",

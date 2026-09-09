@@ -940,7 +940,7 @@
                 },
                 {
                     "label": "Mis horas",
-                    "text": "Tras identificarse verá la ficha Mis horas. Muestra solo sus turnos del mes elegido: entrada, salida, pausa y tiempo trabajado. Navegue con el mes anterior/siguiente."
+                    "text": "Tras identificarte ves la ficha Mis horas. Solo tus turnos del mes elegido: entrada/salida, pausa y tiempo trabajado. Mes anterior/siguiente. La pausa mostrada es la del parte; puede incluir el mínimo del equipo si no fichaste (suficiente) pausa en vivo."
                 },
                 {
                     "label": "Cerrar sesión",
@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Cerrar turno",
-                    "text": "Cierre un turno abierto con la hora actual. El motivo queda en el registro de auditoría."
+                    "text": "Cierre un turno abierto con la hora actual si alguien olvidó fichar la salida. El motivo va al registro de auditoría. Si el equipo tiene pausa mínima y el turno es bastante largo, cuenta en el parte (sin evento CIAO extra)."
                 },
                 {
                     "label": "QR Clock Point",
@@ -1215,7 +1215,7 @@
                 },
                 {
                     "label": "Tipos",
-                    "text": "Filtre: <strong>Turno largo</strong> (&gt;10 h), <strong>Sin fichar salida</strong> (&gt;16 h), <strong>Sin pausa</strong> (&gt;6 h), <strong>Salto rápido</strong> (traslado en menos de 5 min) o <strong>Lista de evacuación</strong> (todas las consultas, con fecha)."
+                    "text": "Filtre por <strong>Turno largo</strong> (&gt;10 h), <strong>Sin salida</strong> (&gt;16 h), <strong>Sin pausa</strong> (&gt;6 h sin pausa Clock Point en vivo), <strong>Salto rápido</strong> (cambio en menos de 5 min) o <strong>Lista de evacuación</strong> (todas las consultas, con fecha). La alarma <strong>Sin pausa</strong> no mira el mínimo de equipo del parte."
                 },
                 {
                     "label": "Acción",
@@ -1236,11 +1236,11 @@
                 },
                 {
                     "label": "Corregir",
-                    "text": "En un turno cerrado, un administrador puede ajustar horas de entrada y salida o minutos de pausa con un motivo obligatorio. Los cambios quedan registrados en el registro de auditoría."
+                    "text": "En un turno cerrado un administrador puede cambiar horas de entrada/salida o minutos de pausa con motivo obligatorio. Los cambios van al registro de auditoría. Si falta la pausa de equipo, use <strong>Aplicar pausa mínima</strong>."
                 },
                 {
                     "label": "Cerrar turno",
-                    "text": "Los turnos abiertos en este resumen también pueden cerrarse forzosamente aquí, como en la pantalla Presencia."
+                    "text": "Los turnos abiertos de esta lista también se pueden cerrar aquí, como en Presencia. Si el equipo tiene pausa mínima y el turno es bastante largo, cuenta en el parte (sin evento CIAO extra)."
                 },
                 {
                     "label": "Fichar manualmente",

@@ -34,7 +34,7 @@
     <li>enregistrement des mesures d’unité (relevés via QR d’unité), si activées sur catégorie et unité.</li>
     <li>gestion des utilisateurs et équipes internes.</li>
     <li>gestion des exécutants (sans connexion) et affectation aux tâches.</li>
-    <li>pointage optionnel (Time) : entrée/sortie, présence, liaison d’appareil, GPS optionnel à la pointe, et consultations enregistrées de la liste d’évacuation.</li>
+    <li>pointage optionnel (Time) : entrée/sortie, présence, feuille d’heures (y compris d’éventuelles minutes de pause d’équipe), liaison d’appareil, GPS optionnel à la pointe, consultation de Mes heures sur Clock Point, et consultations enregistrées de la liste d’évacuation.</li>
     <li>gestion des sites et unités.</li>
     <li>envoi de notifications par e-mail sur instruction du client.</li>
     <li>journalisation et sécurité.</li>
@@ -50,7 +50,7 @@
     <li>données d’issues et de tâches (y compris photos et descriptions).</li>
     <li>données de contrôle d’unité (résultat, horodatage, unité, GPS optionnel, exécutant).</li>
     <li>données des exécutants et des personnes signalant via QR, dans la mesure collectées par le client (y compris les brouillons temporaires en attente de confirmation e-mail).</li>
-    <li>données Time/Clock Point (présence, appareil lié, PIN haché le cas échéant, GPS optionnel à la pointe, audit des consultations de la liste d’évacuation).</li>
+    <li>données Time/Clock Point (présence, appareil lié, PIN haché le cas échéant, GPS optionnel à la pointe, minutes de pause sur la feuille d’heures y compris le minimum d’équipe appliqué — pas d’événement CIAO extra, audit des consultations de la liste d’évacuation).</li>
     <li>données d’accès et de session.</li>
     <li>métadonnées d’abonnement et d’accès.</li>
     <li>données ESG/conformité (définitions d’indicateurs, valeurs de mesure, liens, suivi des seuils et attribution optionnelle aux exécutants).</li>

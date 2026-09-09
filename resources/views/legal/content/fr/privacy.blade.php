@@ -88,6 +88,10 @@
     (sans signal en intérieur, la pointe passe). Sur le portail Clock Point, un exécutant identifié peut, après
     confirmation, consulter la liste d’évacuation de qui est pointé ; chaque consultation est enregistrée
     (prénom, nom, date et heure de la personne qui consulte).
+    Après connexion, l’exécutant peut ouvrir Mes heures : uniquement ses propres services du mois choisi.
+    Le client peut fixer une pause minimale non payée par équipe sur la feuille d’heures. S’il n’y a pas (assez)
+    de pause live et que le service est assez long, WinProx peut enregistrer ce minimum en minutes de pause.
+    Cette valeur de feuille d’heures n’est pas envoyée à RSZ CIAO comme IN/OUT supplémentaire.
 </p>
 
 <p><strong>Signalements QR</strong></p>

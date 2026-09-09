@@ -40,7 +40,7 @@
             },
             {
                 "name": "Time",
-                "text": "Fichaje entrada/salida y pausas vía QR Clock Point, presencia y turnos."
+                "text": "Fichar entrada/salida y pausas vía QR Clock Point, presencia, parte de horas, Mis horas y pausa mínima opcional por equipo."
             },
             {
                 "name": "ESG",

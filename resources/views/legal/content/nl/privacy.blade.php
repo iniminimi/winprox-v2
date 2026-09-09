@@ -88,6 +88,10 @@
     (zonder signaal indoor gaat de prik door). Op het Clock Point-portaal kan een aangemelde uitvoerder na
     bevestiging de evacuatielijst van wie nu is ingeklokt raadplegen; elke raadpleging wordt gelogd
     (voornaam, naam, datum en uur van de raadpleger).
+    Na aanmelden kan de uitvoerder Mijn uren openen: alleen de eigen diensten van de gekozen maand.
+    De klant kan per team een minimum onbetaalde pauze op de urenstaat zetten. Als er geen of te weinig
+    live pauze is geklokt en de dienst lang genoeg is, kan WinProx dat minimum als pauzeminuten bewaren.
+    Die urenstaatwaarde gaat niet als extra IN/OUT naar RSZ CIAO.
 </p>
 
 <p><strong>QR-meldingen</strong></p>

@@ -88,6 +88,10 @@
     (without a signal indoors the punch still goes through). On the Clock Point portal a signed-in worker can,
     after confirmation, consult the evacuation list of who is currently clocked in; each consultation is logged
     (first name, last name, date and time of the person who viewed it).
+    After sign-in a worker can open My hours: only their own shifts for the selected month.
+    The customer may set a minimum unpaid break per team on the timesheet. If little or no live break
+    was clocked and the shift is long enough, WinProx may store that minimum as break minutes.
+    That timesheet value is not sent to RSZ CIAO as an extra IN/OUT.
 </p>
 
 <p><strong>QR reports</strong></p>

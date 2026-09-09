@@ -69,6 +69,8 @@ return [
                 'time', 'klokken', 'inchecken', 'uitchecken', 'clock', 'pauze', 'shift', 'stempeln', 'fichaje', 'pointage',
                 'evacuatie', 'evacuation', 'évacuation', 'evakuierung', 'evacuación',
                 'pincode', 'pin code', 'nieuw toestel', 'new device',
+                'mijn uren', 'my hours', 'minimumpauze', 'teampauze', 'minimum break',
+                'pause minimale', 'mindestpause', 'pausa mínima', 'pausa minima',
             ],
             'body_key' => 'faq.items.time_clock.summary',
         ],

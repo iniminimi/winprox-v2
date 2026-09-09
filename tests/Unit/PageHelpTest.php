@@ -81,17 +81,23 @@ it('laadt paginahulp voor Time-schermen', function (): void {
 
     $presenceLabels = collect(PageHelp::for('time.presence')['actions'])->pluck('label')->all();
     $shiftLabels = collect(PageHelp::for('time.shifts')['actions'])->pluck('label')->all();
+    $portalLabels = collect(PageHelp::for('portal.time')['actions'])->pluck('label')->all();
+    $teamLabels = collect(PageHelp::for('team.teams')['actions'])->pluck('label')->all();
 
     expect(PageHelp::for('time.presence'))->not->toBeNull()
         ->and(PageHelp::for('time.presence')['title'])->toBe('Hulp — Aanwezigheid')
         ->and($presenceLabels)->toContain('Manueel inklokken')
         ->and($shiftLabels)->toContain('Manueel inklokken')
+        ->and($shiftLabels)->toContain('Minimumpauze')
+        ->and($portalLabels)->toContain('Mijn uren')
+        ->and($teamLabels)->toContain('Minimumpauze')
         ->and($alarms)->not->toBeNull()
         ->and($alarms['title'])->toBe('Hulp — Alarmen')
         ->and($alarmGoal['text'])->toContain('snelle hop')
         ->and($alarmGoal['text'])->toContain('evacuatielijst')
         ->and($alarmTypes['text'])->toContain('Snelle hop')
         ->and($alarmTypes['text'])->toContain('Evacuatielijst')
+        ->and($alarmTypes['text'])->toContain('teamminimum')
         ->and(PageHelp::for('time.shifts'))->not->toBeNull()
         ->and(PageHelp::for('time.clock_points'))->not->toBeNull()
         ->and(PageHelp::for('portal.time'))->not->toBeNull()

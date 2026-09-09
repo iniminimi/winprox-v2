@@ -215,7 +215,7 @@
                     "Data export (account), self-service organisation deletion, retention periods documented.",
                     "Les données restent dans l’**UE** (hébergement/e-mail). Stripe UE/US en cas de paiement. Avec **Se connecter avec Microsoft**, l’utilisateur est envoyé vers Microsoft Entra ID (Microsoft, UE/US) ; WinProx reçoit l’e-mail (et éventuellement le nom) pour reconnaître le compte existant.",
                     "Confirmation e-mail optionnelle pour les signalements QR : stockage temporaire du brouillon jusqu’au lien ; les brouillons non confirmés sont supprimés automatiquement (en général 60 minutes, photos comprises). Le mail de confirmation n’est envoyé qu’à une adresse valide qui n’est pas marquée comme non distribuable (bounce). Se désinscrire des e-mails marketing ne bloque pas cette confirmation. Pas de compte utilisateur.",
-                    "Transmission **CIAO** optionnelle (Check In and Out ONSS) : si activée, WinProx stocke le NISS (chiffré) et envoie les présences à l’**ONSS belge** (autorité / obligation légale du client). L’ONSS n’est pas un sous-traitant marketing WinProx ; le transfert sert à la conformité. Identifiants OAuth du client chiffrés au repos."
+                    "Transmission **CIAO** optionnelle (Check In and Out ONSS) : si activée, WinProx stocke le NISS (chiffré) et envoie les présences à l’**ONSS belge** (autorité / obligation légale du client). L’ONSS n’est pas un sous-traitant marketing WinProx ; le transfert sert à la conformité. Identifiants OAuth du client chiffrés au repos. Une pause d’équipe appliquée sur la feuille d’heures n’est pas un IN/OUT RSZ supplémentaire."
                 ]
             },
             {

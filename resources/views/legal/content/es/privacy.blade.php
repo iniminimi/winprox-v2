@@ -88,6 +88,10 @@
     (sin señal en interior, el fichaje sigue). En el portal Clock Point, un trabajador identificado puede,
     tras confirmación, consultar la lista de evacuación de quién está fichado; cada consulta se registra
     (nombre, apellidos, fecha y hora de quien consulta).
+    Tras identificarse, el ejecutor puede abrir Mis horas: solo sus propios turnos del mes elegido.
+    El cliente puede fijar una pausa mínima no remunerada por equipo en el parte. Si no se fichó (suficiente)
+    pausa en vivo y el turno es bastante largo, WinProx puede guardar ese mínimo como minutos de pausa.
+    Ese valor del parte no se envía a RSZ CIAO como IN/OUT extra.
 </p>
 
 <p><strong>Informes QR</strong></p>

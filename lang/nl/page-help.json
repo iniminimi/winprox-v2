@@ -940,7 +940,7 @@
                 },
                 {
                     "label": "Mijn uren",
-                    "text": "Na aanmelden zie je de tegel Mijn uren. Daar staan alleen jouw diensten van de gekozen maand: in- en uitkloktijd, pauze en gewerkte tijd. Blader met vorige/volgende maand."
+                    "text": "Na aanmelden zie je de tegel Mijn uren. Daar staan alleen jouw diensten van de gekozen maand: in- en uitkloktijd, pauze en gewerkte tijd. Blader met vorige/volgende maand. De getoonde pauze is de urenstaat; die kan het teamminimum bevatten als je geen (of te korte) live pauze klokte."
                 },
                 {
                     "label": "Afmelden",
@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Shift sluiten",
-                    "text": "Sluit een open shift met de huidige tijd wanneer iemand is vergeten uit te klokken. De reden wordt vastgelegd in het auditlog."
+                    "text": "Sluit een open shift met de huidige tijd wanneer iemand is vergeten uit te klokken. De reden gaat in het auditlog. Heeft het team een minimumpauze en duurt de dienst langer, dan telt die op de urenstaat (geen extra CIAO-event)."
                 },
                 {
                     "label": "Clock Point QR",
@@ -1215,7 +1215,7 @@
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur), <strong>Geen pauze</strong> (&gt;6 uur zonder break), <strong>Snelle hop</strong> (verplaatsing binnen 5 min) of <strong>Evacuatielijst</strong> (alle raadplegingen, met datum)."
+                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur), <strong>Geen pauze</strong> (&gt;6 uur zonder live Clock Point-pauze), <strong>Snelle hop</strong> (verplaatsing binnen 5 min) of <strong>Evacuatielijst</strong> (alle raadplegingen, met datum). Het alarm <strong>Geen pauze</strong> kijkt niet naar het teamminimum op de urenstaat."
                 },
                 {
                     "label": "Actie",
@@ -1236,11 +1236,11 @@
                 },
                 {
                     "label": "Corrigeren",
-                    "text": "Bij een gesloten shift kan een beheerder in- en uitkloktijden of pauzeminuten aanpassen met een verplichte reden. Wijzigingen worden vastgelegd in het auditlog."
+                    "text": "Bij een gesloten shift kan een beheerder in- en uitkloktijden of pauzeminuten aanpassen met een verplichte reden. Wijzigingen gaan in het auditlog. Ontbreekt de teampauze, gebruik dan <strong>Minimumpauze toepassen</strong>."
                 },
                 {
                     "label": "Shift sluiten",
-                    "text": "Open shifts in dit overzicht kunnen hier ook geforceerd worden gesloten, net als op het scherm Aanwezigheid."
+                    "text": "Open shifts in dit overzicht kunnen hier ook geforceerd worden gesloten, net als op Aanwezigheid. Heeft het team een minimumpauze en duurt de dienst langer, dan telt die op de urenstaat (geen extra CIAO-event)."
                 },
                 {
                     "label": "Manueel inklokken",

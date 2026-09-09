@@ -209,8 +209,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Comment configurer les équipes internes ?",
-            "body": "Commencez petit : une équipe (par exemple Hôtel ou Facility) et toutes les personnes qui exécutent des tâches. Allez dans Personnes → Équipes. Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez les équipes aux catégories. Ajoutez les exécutants à la main, ou via CSV/Excel. Les actions rares (chef d’équipe, icône/téléphone/PIN, désactiver) sont dans **Modifier**. Sous Équipes vous gérez aussi les listes de contrôle unit check. Imprimez le QR Clock Point pour le terrain (Time → Clock Points).",
-            "summary": "Une équipe suffit pour démarrer. Personnes → Équipes ; lier aux catégories ; QR Clock Point."
+            "body": "Commencez petit : une équipe (par exemple Hôtel ou Facility) et toutes les personnes qui exécutent des tâches. Allez dans Personnes → Équipes. Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez les équipes aux catégories. Ajoutez les exécutants à la main, ou via CSV/Excel. Les actions rares (chef d’équipe, icône/téléphone/PIN, désactiver) sont dans **Modifier**. Sous Équipes vous gérez aussi les listes de contrôle unit check. Imprimez le QR Clock Point pour le terrain (Time → Clock Points). Avec Time, vous pouvez fixer une pause minimale par équipe sur la feuille d’heures (ex. 30 minutes).",
+            "summary": "Une équipe suffit pour démarrer. Personnes → Équipes ; lier aux catégories ; QR Clock Point. Avec Time : pause minimale optionnelle par équipe sur la feuille d’heures."
         },
         "team_follow_up": {
             "slug": "team_follow_up",

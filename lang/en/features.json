@@ -47,7 +47,7 @@
         "meta_title": "Time tracking via Clock Point QR | WinProx",
         "social": {
             "og_title": "Time tracking via Clock Point QR | WinProx",
-            "og_description": "Clock in/out and breaks via Clock Point QR, presence and shifts — linked to facility workflows."
+            "og_description": "Clock in/out and breaks via Clock Point QR, presence, timesheets, My hours and a per-team minimum break — tied to facility workflows."
         },
         "eyebrow": "Time",
         "logo_alt": "Module Time — part of WinProx Facility",
@@ -71,7 +71,9 @@
                 "Same worker identity (name + icon) as facility",
                 "One phone per worker, optional PIN and GPS",
                 "Evacuation list on Clock Point after confirmation",
-                "Alarm when hopping Clock Points within 5 min"
+                "Alarm when hopping Clock Points within 5 min",
+                "My hours on Clock Point (own shifts only)",
+                "Per-team minimum break on the timesheet (no extra CIAO event)"
             ]
         },
         "audience": {
@@ -138,7 +140,8 @@
                 "Clock Point: Evacuation list tile of people clocked in",
                 "Location QR and sticker sheets (e.g. Avery)",
                 "Dynamic QR that can be assigned to a unit later",
-                "Moderation: blur until approval on public pages"
+                "Moderation: blur until approval on public pages",
+                "Clock Point: My hours tile (own shifts only)"
             ]
         },
         "audience": {

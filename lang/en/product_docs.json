@@ -215,7 +215,7 @@
                     "Data export (account), self-service organisation deletion, retention periods documented.",
                     "Data stays in the **EU** (hosting/email). Stripe EU/US when paying. With **Sign in with Microsoft**, the user is sent to Microsoft Entra ID (Microsoft, EU/US); WinProx receives email (and possibly name) to match the existing account.",
                     "Optional email confirmation for QR reports: temporary draft storage until the link; unverified drafts are deleted automatically (typically 60 minutes, including photos). The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. No user account.",
-                    "Optional **CIAO** forwarding (RSZ Check In and Out): when enabled, WinProx stores NISS (encrypted) and sends presence registrations to the **Belgian NSSO/RSZ** (public authority / customer legal duty). RSZ is not a WinProx marketing sub-processor; transfer is for compliance. Customer OAuth credentials stay encrypted at rest."
+                    "Optional **CIAO** forwarding (RSZ Check In and Out): when enabled, WinProx stores NISS (encrypted) and sends presence registrations to the **Belgian NSSO/RSZ** (public authority / customer legal duty). RSZ is not a WinProx marketing sub-processor; transfer is for compliance. Customer OAuth credentials stay encrypted at rest. An applied team break on the timesheet is not an extra RSZ IN/OUT."
                 ]
             },
             {

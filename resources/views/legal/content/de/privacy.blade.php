@@ -88,6 +88,10 @@
     (ohne Signal indoor geht der Stempel durch). Am Clock-Point-Portal kann ein angemeldeter Ausführender nach
     Bestätigung die Evakuierungsliste der aktuell Eingestempelten einsehen; jede Einsicht wird protokolliert
     (Vorname, Name, Datum und Uhrzeit der einsehenden Person).
+    Nach der Anmeldung kann der Ausführende Meine Stunden öffnen: nur die eigenen Schichten des gewählten Monats.
+    Der Kunde kann pro Team eine unbezahlte Mindestpause auf der Stundenliste festlegen. Wurde keine oder zu wenig
+    Live-Pause gestempelt und dauert die Schicht lange genug, kann WinProx dieses Minimum als Pauseminuten speichern.
+    Dieser Stundenlistenwert wird nicht als zusätzliches IN/OUT an RSZ CIAO gesendet.
 </p>
 
 <p><strong>QR-Meldungen</strong></p>

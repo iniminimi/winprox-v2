@@ -88,6 +88,10 @@
     (senza segnale al chiuso la timbratura passa). Sul portale Clock Point un esecutore autenticato può,
     dopo conferma, consultare l’elenco evacuazione di chi è timbrato; ogni consultazione è registrata
     (nome, cognome, data e ora di chi consulta).
+    Dopo l’accesso l’esecutore può aprire Le mie ore: solo i propri turni del mese scelto.
+    Il cliente può impostare una pausa minima non retribuita per team sul foglio ore. Se non è stata timbrata
+    (abbastanza) pausa live e il turno è abbastanza lungo, WinProx può conservare quel minimo come minuti di pausa.
+    Quel valore del foglio ore non viene inviato a RSZ CIAO come IN/OUT extra.
 </p>
 
 <p><strong>Segnalazioni QR</strong></p>

@@ -40,7 +40,7 @@
             },
             {
                 "name": "Time",
-                "text": "Pointage entrée/sortie et pauses via QR Clock Point, présence et vues de shifts."
+                "text": "Pointage entrée/sortie et pauses via QR Clock Point, présence, feuille d’heures, Mes heures et pause minimale optionnelle par équipe."
             },
             {
                 "name": "ESG",

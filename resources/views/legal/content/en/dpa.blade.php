@@ -33,7 +33,7 @@
     <li>recording of unit measurements (readings via unit QR), when enabled on category and unit.</li>
     <li>management of users and internal teams.</li>
     <li>management of workers (without login) and assignment to tasks.</li>
-    <li>optional time tracking (Time): clock in/out, presence, device binding, optional GPS at the punch, and logged evacuation-list consultations.</li>
+    <li>optional time tracking (Time): clock in/out, presence, timesheet (including any team-break minutes), device binding, optional GPS at the punch, own-hours view on Clock Point, and logged evacuation-list consultations.</li>
     <li>management of locations and units.</li>
     <li>sending email notifications on the customer’s instructions.</li>
     <li>logging and security.</li>
@@ -50,7 +50,7 @@
     <li>unit check data (result, timestamp, unit, optional GPS, worker).</li>
     <li>unit measurement data (measure field, value, timestamp, unit, source, optional worker or staff user).</li>
     <li>data of workers and QR reporters, to the extent collected by the customer (including temporary draft reports pending email confirmation).</li>
-    <li>Time/Clock Point data (presence, bound device, hashed PIN if set, optional GPS at the punch, audit of evacuation-list consultations).</li>
+    <li>Time/Clock Point data (presence, bound device, hashed PIN if set, optional GPS at the punch, timesheet break minutes including an applied team minimum — not an extra CIAO event, audit of evacuation-list consultations).</li>
     <li>access and session data.</li>
     <li>subscription and access metadata.</li>
     <li>ESG/compliance data (indicator definitions, measurement values, links, threshold follow-up and optional attribution to workers).</li>

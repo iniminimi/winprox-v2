@@ -89,12 +89,12 @@
         "time": {
             "name": "Modulo Time",
             "tagline": "Timbratrice opzionale",
-            "body": "Ore, pause e turni tramite il QR Clock Point. Inclusa nella prova; opzionale dopo su WinProx.",
+            "body": "Ore, pause, Le mie ore e turni tramite il QR Clock Point. Inclusa nella prova; opzionale dopo su WinProx.",
             "logo_alt": "Modulo Time — parte di WinProx Facility",
             "bullets": [
                 "Timbratura",
                 "Pause",
-                "Turni",
+                "Le mie ore",
                 "Clock Points"
             ]
         }
@@ -121,7 +121,7 @@
                 "bullets": [
                     "Presenze",
                     "Pause",
-                    "Turni",
+                    "Le mie ore",
                     "Clock Points"
                 ]
             },

@@ -209,8 +209,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "¿Cómo configuro equipos internos?",
-            "body": "Empiece en pequeño: un equipo (por ejemplo Hotel o Facility) y todos los que ejecutan tareas. Vaya a Personas → Teams. No hace falta un jefe de equipo. Más equipos solo si hay grupos realmente distintos. Vincule equipos a categorías. Añada operarios a mano o por CSV/Excel. Las acciones poco frecuentes (jefe de equipo, icono/móvil/PIN, desactivar) están en **Editar**. En Teams también gestiona las listas de unit check. Imprima el QR Clock Point para el terreno (Time → Clock Points).",
-            "summary": "Un equipo basta para empezar. Personas → Teams; vincular a categorías; QR Clock Point."
+            "body": "Empiece en pequeño: un equipo (por ejemplo Hotel o Facility) y todos los que ejecutan tareas. Vaya a Personas → Teams. No hace falta un jefe de equipo. Más equipos solo si hay grupos realmente distintos. Vincule equipos a categorías. Añada operarios a mano o por CSV/Excel. Las acciones poco frecuentes (jefe de equipo, icono/móvil/PIN, desactivar) están en **Editar**. En Teams también gestiona las listas de unit check. Imprima el QR Clock Point para el terreno (Time → Clock Points). Con Time puedes fijar una pausa mínima por equipo en el parte de horas (p. ej. 30 minutos).",
+            "summary": "Un equipo basta para empezar. Personas → Teams; vincular a categorías; QR Clock Point. Con Time: pausa mínima opcional por equipo en el parte de horas."
         },
         "team_follow_up": {
             "slug": "team_follow_up",

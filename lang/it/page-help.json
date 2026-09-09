@@ -940,7 +940,7 @@
                 },
                 {
                     "label": "Le mie ore",
-                    "text": "Dopo l’accesso vedi il riquadro Le mie ore. Mostra solo i tuoi turni del mese scelto: ingresso, uscita, pausa e tempo lavorato. Sfoglia con il mese precedente/successivo."
+                    "text": "Dopo l’accesso vedi il riquadro Le mie ore. Solo i tuoi turni del mese scelto: ingresso/uscita, pausa e tempo lavorato. Mese precedente/successivo. La pausa mostrata è quella del foglio ore; può includere il minimo del team se non hai timbrato (abbastanza) pausa live."
                 },
                 {
                     "label": "Esci",
@@ -1190,7 +1190,7 @@
                 },
                 {
                     "label": "Chiudi turno",
-                    "text": "Chiuda un turno aperto all'ora attuale. Il motivo viene registrato nel log di audit."
+                    "text": "Chiuda un turno aperto all’ora attuale se qualcuno ha dimenticato di timbrare l’uscita. Il motivo va nel log di audit. Se il team ha una pausa minima e il turno è abbastanza lungo, conta sul foglio ore (nessun evento CIAO extra)."
                 },
                 {
                     "label": "QR Clock Point",
@@ -1215,7 +1215,7 @@
                 },
                 {
                     "label": "Tipi",
-                    "text": "Filtri: <strong>Turno lungo</strong> (&gt;10 h), <strong>Non timbrato in uscita</strong> (&gt;16 h), <strong>Nessuna pausa</strong> (&gt;6 h), <strong>Salto rapido</strong> (spostamento entro 5 min) o <strong>Elenco evacuazione</strong> (tutte le consultazioni, con data)."
+                    "text": "Filtra per <strong>Turno lungo</strong> (&gt;10 ore), <strong>Non uscito</strong> (&gt;16 ore), <strong>Nessuna pausa</strong> (&gt;6 ore senza pausa Clock Point live), <strong>Salto rapido</strong> (spostamento entro 5 min) o <strong>Elenco evacuazione</strong> (tutte le consultazioni, con data). L’allarme <strong>Nessuna pausa</strong> non guarda il minimo team sul foglio ore."
                 },
                 {
                     "label": "Azione",
@@ -1236,11 +1236,11 @@
                 },
                 {
                     "label": "Correggi",
-                    "text": "Su un turno chiuso, un amministratore può modificare orari di entrata/uscita o minuti di pausa con motivo obbligatorio. Le modifiche sono registrate nel log di audit."
+                    "text": "Su un turno chiuso un admin può modificare orari di ingresso/uscita o minuti di pausa con motivo obbligatorio. Le modifiche vanno nel log di audit. Se manca la pausa team, usa <strong>Applica pausa minima</strong>."
                 },
                 {
                     "label": "Chiudi turno",
-                    "text": "I turni aperti in questa panoramica possono essere chiusi forzatamente anche qui, come nella schermata Presenze."
+                    "text": "I turni aperti di questo elenco si possono chiudere anche qui, come in Presenza. Se il team ha una pausa minima e il turno è abbastanza lungo, conta sul foglio ore (nessun evento CIAO extra)."
                 },
                 {
                     "label": "Timbratura manuale",

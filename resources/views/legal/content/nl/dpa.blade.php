@@ -33,7 +33,7 @@
     <li>registratie van unitmetingen (meetwaarden via unit-QR), indien ingeschakeld op categorie en unit.</li>
     <li>beheer van gebruikers en interne teams.</li>
     <li>beheer van uitvoerders (zonder login) en toewijzing aan taken.</li>
-    <li>optionele tijdregistratie (Time): in-/uitklokken, aanwezigheid, toestelkoppeling, optionele GPS bij de prik, en gelogde raadplegingen van de evacuatielijst.</li>
+    <li>optionele tijdregistratie (Time): in-/uitklokken, aanwezigheid, urenstaat (inclusief eventuele teampauze-minuten), toestelkoppeling, optionele GPS bij de prik, eigen-urenraadpleging op Clock Point, en gelogde raadplegingen van de evacuatielijst.</li>
     <li>beheer van locaties en units.</li>
     <li>verzenden van e-mailnotificaties in opdracht van de klant.</li>
     <li>logging en beveiliging.</li>
@@ -50,7 +50,7 @@
     <li>unit-checkgegevens (resultaat, tijdstip, unit, optioneel GPS, uitvoerder).</li>
     <li>unitmetinggegevens (meetveld, waarde, tijdstip, unit, bron, optioneel uitvoerder of beheerder).</li>
     <li>gegevens van uitvoerders en QR-melders, voor zover door de klant verzameld (inclusief tijdelijke conceptmeldingen in afwachting van e-mailbevestiging).</li>
-    <li>Time-/Clock Point-gegevens (aanwezigheid, gekoppeld toestel, gehashte pincode indien ingesteld, optionele GPS bij de prik, audit van evacuatielijst-raadplegingen).</li>
+    <li>Time-/Clock Point-gegevens (aanwezigheid, gekoppeld toestel, gehashte pincode indien ingesteld, optionele GPS bij de prik, pauzeminuten op de urenstaat inclusief toegepast teamminimum — geen extra CIAO-event, audit van evacuatielijst-raadplegingen).</li>
     <li>toegangs- en sessiegegevens.</li>
     <li>abonnements- en toegangsmetadata.</li>
     <li>ESG-/compliance-gegevens (indicatordefinities, meetwaarden, koppelingen, drempelopvolging en optionele toeschrijving aan uitvoerders).</li>

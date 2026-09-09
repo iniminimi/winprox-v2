@@ -87,12 +87,12 @@
         "time": {
             "name": "Module Time",
             "tagline": "Optionele prikklok",
-            "body": "Urenregistratie, pauzes en shifts via de Clock Point QR. Inbegrepen in de proefperiode; daarna optioneel bij WinProx.",
+            "body": "Urenregistratie, pauzes, Mijn uren en shifts via de Clock Point QR. Inbegrepen in de proefperiode; daarna optioneel bij WinProx.",
             "logo_alt": "Module Time — onderdeel van WinProx Facility",
             "bullets": [
                 "In- en uitklokken",
                 "Pauzes",
-                "Shifts",
+                "Mijn uren",
                 "Clock Points"
             ]
         }
@@ -119,7 +119,7 @@
                 "bullets": [
                     "Aanwezigheid",
                     "Pauzes",
-                    "Shifts",
+                    "Mijn uren",
                     "Clock Points"
                 ]
             },

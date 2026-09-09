@@ -87,12 +87,12 @@
         "time": {
             "name": "Modul Time",
             "tagline": "Optionale Stechuhr",
-            "body": "Stunden, Pausen und Schichten über die Clock-Point-QR. In der Testphase enthalten; danach optional bei WinProx.",
+            "body": "Stunden, Pausen, Meine Stunden und Schichten über die Clock-Point-QR. In der Testphase enthalten; danach optional bei WinProx.",
             "logo_alt": "Modul Time — Teil von WinProx Facility",
             "bullets": [
                 "Ein- und Ausstempeln",
                 "Pausen",
-                "Schichten",
+                "Meine Stunden",
                 "Clock Points"
             ]
         }
@@ -119,7 +119,7 @@
                 "bullets": [
                     "Anwesenheit",
                     "Pausen",
-                    "Schichten",
+                    "Meine Stunden",
                     "Clock Points"
                 ]
             },

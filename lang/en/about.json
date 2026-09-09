@@ -40,7 +40,7 @@
             },
             {
                 "name": "Time",
-                "text": "Clock in/out and breaks via Clock Point QR, presence and shift overviews."
+                "text": "Clock in/out and breaks via Clock Point QR, presence, timesheets, My hours and an optional per-team minimum break."
             },
             {
                 "name": "ESG",

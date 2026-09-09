@@ -168,6 +168,32 @@ return [
         ],
         [
             'patterns' => [
+                'mijn uren', 'my hours', 'mes heures', 'meine stunden', 'mis horas', 'le mie ore',
+            ],
+            'page' => 'portal.time',
+            'prefer' => ['mijn uren', 'my hours', 'mes heures', 'meine stunden', 'mis horas', 'le mie ore'],
+        ],
+        [
+            'patterns' => [
+                'minimumpauze instellen', 'minimumpauze per team', 'pauze per team instellen',
+                'set minimum break', 'minimum break per team',
+                'pause minimale par équipe', 'mindestpause pro team',
+                'pausa mínima por equipo', 'pausa minima per team',
+            ],
+            'page' => 'team.teams',
+            'prefer' => ['minimumpauze instellen', 'minimum break per team', 'pause minimale par équipe'],
+        ],
+        [
+            'patterns' => [
+                'minimumpauze', 'teampauze', 'minimum break', 'team break',
+                'pause minimale', 'pause d’équipe', 'mindestpause', 'team-pause',
+                'pausa mínima', 'pausa de equipo', 'pausa minima', 'pausa team',
+            ],
+            'page' => 'time.shifts',
+            'prefer' => ['minimumpauze', 'minimum break', 'pause minimale', 'mindestpause', 'pausa mínima', 'pausa minima'],
+        ],
+        [
+            'patterns' => [
                 'manueel inklok', 'manueel inklokken', 'manual clock', 'clock in manually',
                 'pointer manuellement', 'manuell einstempeln', 'fichar manualmente', 'timbratura manuale',
                 'gsm vergeten', 'forgot phone', 'téléphone oublié', 'handy vergessen',

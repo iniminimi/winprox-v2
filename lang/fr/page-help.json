@@ -948,7 +948,7 @@
                 },
                 {
                     "label": "Mes heures",
-                    "text": "Après connexion, vous voyez la tuile Mes heures. Elle n’affiche que vos services du mois choisi : entrée, sortie, pause et temps travaillé. Parcourez avec le mois précédent/suivant."
+                    "text": "Après connexion, la tuile Mes heures n’affiche que vos services du mois choisi : entrée/sortie, pause et temps travaillé. Mois précédent/suivant. La pause affichée est celle de la feuille d’heures ; elle peut inclure le minimum d’équipe si vous n’avez pas (assez) pointé de pause live."
                 },
                 {
                     "label": "Déconnexion",
@@ -1198,7 +1198,7 @@
                 },
                 {
                     "label": "Fermer le shift",
-                    "text": "Fermez un shift ouvert à l'heure actuelle. Le motif est enregistré dans le journal d'audit."
+                    "text": "Fermez un shift ouvert à l’heure actuelle si quelqu’un a oublié de pointer la sortie. Le motif va au journal d’audit. Si l’équipe a une pause minimale et que le service est assez long, elle compte sur la feuille d’heures (pas d’événement CIAO extra)."
                 },
                 {
                     "label": "QR Clock Point",
@@ -1223,7 +1223,7 @@
                 },
                 {
                     "label": "Types",
-                    "text": "Filtrez : <strong>Shift long</strong> (&gt;10 h), <strong>Non dépointé</strong> (&gt;16 h), <strong>Pas de pause</strong> (&gt;6 h), <strong>Saut rapide</strong> (déplacement en moins de 5 min) ou <strong>Liste d’évacuation</strong> (toutes les consultations, avec date)."
+                    "text": "Filtrez sur <strong>Long shift</strong> (&gt;10 h), <strong>Non pointé sortie</strong> (&gt;16 h), <strong>Pas de pause</strong> (&gt;6 h sans pause Clock Point live), <strong>Hop rapide</strong> (déplacement en moins de 5 min) ou <strong>Liste d’évacuation</strong> (toutes les consultations, avec date). L’alarme <strong>Pas de pause</strong> ne regarde pas le minimum d’équipe sur la feuille d’heures."
                 },
                 {
                     "label": "Action",
@@ -1244,11 +1244,11 @@
                 },
                 {
                     "label": "Corriger",
-                    "text": "Pour un shift fermé, un administrateur peut ajuster les heures d'entrée et de sortie ou les minutes de pause avec une raison obligatoire. Les modifications sont enregistrées dans le journal d'audit."
+                    "text": "Sur un service clos, un admin peut modifier les heures d’entrée/sortie ou les minutes de pause avec un motif obligatoire. Les changements vont au journal d’audit. Si la pause d’équipe manque, utilisez <strong>Appliquer la pause minimale</strong>."
                 },
                 {
                     "label": "Fermer le shift",
-                    "text": "Les shifts ouverts dans cet aperçu peuvent aussi être fermés de force ici, comme sur l'écran Présence."
+                    "text": "Les services ouverts de cette liste peuvent aussi être fermés ici, comme sur Présence. Si l’équipe a une pause minimale et que le service est assez long, elle compte sur la feuille d’heures (pas d’événement CIAO extra)."
                 },
                 {
                     "label": "Pointer manuellement",

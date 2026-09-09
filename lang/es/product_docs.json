@@ -215,7 +215,7 @@
                     "Data export (account), self-service organisation deletion, retention periods documented.",
                     "Los datos permanecen en la **UE** (alojamiento/correo). Stripe UE/EE. UU. si hay pago. Con **Iniciar sesión con Microsoft**, el usuario va a Microsoft Entra ID (Microsoft, UE/EE. UU.); WinProx recibe el correo (y posiblemente el nombre) para reconocer la cuenta existente.",
                     "Confirmación por correo opcional en avisos QR: almacenamiento temporal del borrador hasta el enlace; los borradores no confirmados se eliminan automáticamente (normalmente 60 minutos, fotos incluidas). El correo de confirmación solo se envía a una dirección válida que no esté marcada como no entregable (bounce). Darse de baja del correo de marketing no bloquea esta confirmación. Sin cuenta de usuario.",
-                    "Envío opcional **CIAO** (Check In and Out ONSS): si se activa, WinProx guarda el NISS (cifrado) y envía registros de presencia a la **ONSS belga** (autoridad / obligación legal del cliente). La ONSS no es un subencargado de marketing de WinProx; la cesión es de cumplimiento. Credenciales OAuth del cliente cifradas en reposo."
+                    "Envío opcional **CIAO** (Check In and Out ONSS): si se activa, WinProx guarda el NISS (cifrado) y envía registros de presencia a la **ONSS belga** (autoridad / obligación legal del cliente). La ONSS no es un subencargado de marketing de WinProx; la cesión es de cumplimiento. Credenciales OAuth del cliente cifradas en reposo. Una pausa de equipo aplicada en el parte no es un IN/OUT RSZ extra."
                 ]
             },
             {

@@ -24,7 +24,7 @@
     <li>registrare problematiche, anche tramite portali QR.</li>
     <li>gestire e monitorare le attività.</li>
     <li>assegnare lavoro ai team interni e ai lavoratori.</li>
-    <li>usare Time (timbratura) in modo opzionale: timbrare ingresso/uscita tramite QR Clock Point, con un dispositivo collegato per lavoratore.</li>
+    <li>usare Time (timbratura) in modo opzionale: timbrare ingresso/uscita tramite QR Clock Point, foglio ore, pausa minima opzionale per team sul foglio ore (nessun evento RSZ extra), con un dispositivo collegato per lavoratore.</li>
     <li>registrare misurazioni unità (letture via QR unità) se attivate su categoria e unità.</li>
     <li>registrare e monitorare misurazioni ESG/conformità in modo opzionale (se il modulo è attivato).</li>
     <li>usare IoT Connect in modo opzionale: collegare gateway/sensori affinché allarmi e (ove applicabile) misurazioni avviino il workflow in WinProx.</li>

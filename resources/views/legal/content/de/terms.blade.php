@@ -24,7 +24,7 @@
     <li>Issues registrieren können, auch über QR-Portale.</li>
     <li>Aufgaben verwalten und nachverfolgen können.</li>
     <li>Arbeit internen Teams und Ausführenden zuweisen können.</li>
-    <li>optional Time (Stempeluhr) nutzen: Ein-/Ausstempeln über Clock-Point-QR, mit Kopplung eines Geräts pro Ausführendem.</li>
+    <li>optional Time (Stempeluhr) nutzen: Ein-/Ausstempeln über Clock-Point-QR, Stundenliste, optionale Mindestpause pro Team auf der Stundenliste (kein extra RSZ-Ereignis), mit Kopplung eines Geräts pro Ausführendem.</li>
     <li>Unit-Messungen (Messwerte per Unit-QR) erfassen, sofern an Kategorie und Unit aktiviert.</li>
     <li>optional ESG-/Compliance-Messungen erfassen und nachverfolgen können (falls das Modul aktiviert ist).</li>
     <li>optional IoT Connect nutzen: Gateways/Sensoren verknüpfen, damit Alarme und (soweit zutreffend) Messungen Workflow in WinProx starten.</li>
