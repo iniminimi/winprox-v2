@@ -940,7 +940,7 @@
                 },
                 {
                     "label": "Pointer entrée et sortie",
-                    "text": "Pointez ici entrée, sortie et pauses sur votre propre téléphone. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Utilisez ensuite le QR d'unité sur place pour les tâches."
+                    "text": "Chaque entrée, sortie ou déplacement exige un nouveau scan du QR Clock Point sur site — un onglet ouvert ne suffit pas. Les pauses peuvent démarrer sur le même téléphone sans nouveau scan. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Utilisez ensuite le QR d'unité sur place pour les tâches."
                 },
                 {
                     "label": "Liste d’évacuation",

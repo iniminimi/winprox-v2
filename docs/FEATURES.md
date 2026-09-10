@@ -680,7 +680,10 @@ productsector op `Tenant`.
 - Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
   (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit
   tot beheer/teamleader vrijgeeft); één open shift;
-  hops tussen Clock Points (alarm bij hop < 5 min). Optioneel GPS bij de prik
+  hops tussen Clock Points (alarm bij hop < 5 min). **In-/uitklokken en verplaatsen**
+  op Clock Point vereisen een **verse QR-scan** (volle page-load, één prik, ~10 min);
+  een open tab of `wire:poll` volstaat niet. Pauzes, uren en evacuatielijst blijven
+  na aanmelden mogelijk zonder nieuwe scan. Optioneel GPS bij de prik
   (geen weigering zonder signaal). API `POST /time/clock-in` (bron API) koppelt **geen** gsm.
   Beheerder en medewerker kunnen een uitvoerder **manueel inklokken** op een Clock Point
   (`ClockSource::Admin`, `POST /api/v1/time/manual-clock-in`): geen gsm-koppeling, verplichte

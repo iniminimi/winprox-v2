@@ -932,7 +932,7 @@
                 },
                 {
                     "label": "Fichar entrada y salida",
-                    "text": "Ficha aquí entrada, salida y pausas con tu propio móvil. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Luego usa el QR de unidad in situ para las tareas."
+                    "text": "Cada entrada, salida o traslado exige un escaneo nuevo del QR de Clock Point en la sede: una pestaña abierta no basta. Las pausas se pueden iniciar en el mismo móvil sin un nuevo escaneo. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Luego usa el QR de unidad in situ para las tareas."
                 },
                 {
                     "label": "Lista de evacuación",

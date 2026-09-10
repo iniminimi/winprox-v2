@@ -239,9 +239,13 @@
                         <h2 class="wp-section-title">{{ __('time.portal.clock.title') }}</h2>
                         @if ($openShift === null)
                             <p class="wp-muted">{{ __('time.portal.clock.not_clocked_in') }}</p>
-                            <button type="button" class="btn btn--primary btn--block" @click="withGps('clockIn')">
-                                {{ __('time.portal.clock.in') }}
-                            </button>
+                            @if ($canPunch ?? false)
+                                <button type="button" class="btn btn--primary btn--block" @click="withGps('clockIn')">
+                                    {{ __('time.portal.clock.in') }}
+                                </button>
+                            @else
+                                <p class="wp-muted">{{ __('time.portal.clock.scan_required_hint') }}</p>
+                            @endif
                         @else
                             @php
                                 $presencePoint = $openShift->currentClockPoint();
@@ -274,7 +278,7 @@
                                 <button type="button" class="btn btn--primary btn--block" wire:click="endBreak">
                                     {{ __('time.portal.clock.end_break') }}
                                 </button>
-                            @else
+                            @elseif ($canPunch ?? false)
                                 <div class="wp-cluster">
                                     @if ($openElsewhere)
                                         <button type="button" class="btn btn--primary" @click="withGps('transferToThisClockPoint')">
@@ -289,6 +293,13 @@
                                         {{ __('time.portal.clock.out') }}
                                     </button>
                                 </div>
+                            @else
+                                @unless ($openElsewhere)
+                                    <button type="button" class="btn btn--surface btn--block" wire:click="startBreak">
+                                        {{ __('time.portal.clock.start_break') }}
+                                    </button>
+                                @endunless
+                                <p class="wp-muted">{{ __('time.portal.clock.scan_required_hint') }}</p>
                             @endif
                         @endif
                     </div>

@@ -932,7 +932,7 @@
                 },
                 {
                     "label": "Timbra entrata e uscita",
-                    "text": "Timbra qui ingresso, uscita e pause con il tuo telefono. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Poi usa il QR unità sul posto per i compiti."
+                    "text": "Ogni ingresso, uscita o spostamento richiede una nuova scansione del QR Clock Point in sede: una scheda aperta non basta. Le pause si possono avviare sullo stesso telefono senza nuova scansione. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Poi usa il QR unità sul posto per i compiti."
                 },
                 {
                     "label": "Elenco evacuazione",

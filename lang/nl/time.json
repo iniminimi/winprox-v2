@@ -266,7 +266,8 @@
             "clocked_in_since_at": "Ingeklokt sinds :time bij :place",
             "open_elsewhere_hint": "Je bent al ingeklokt op een andere vestiging. Verplaats je aanwezigheid naar hier, of klok uit.",
             "transfer_here": "Verplaats naar hier",
-            "started_at": "Gestart bij :place (zelfde dienst)."
+            "started_at": "Gestart bij :place (zelfde dienst).",
+            "scan_required_hint": "Scan de Clock Point-QR op de vestiging om in of uit te klokken. Een open tab volstaat niet."
         },
         "clocked_in": "Je bent ingeklokt.",
         "clocked_out": "Je bent uitgeklokt.",
@@ -278,7 +279,8 @@
             "break_already_open": "Je pauze loopt al.",
             "break_not_open": "Je bent niet op pauze.",
             "icon_not_configured": "Je account is nog niet volledig ingesteld. Neem contact op met de beheerder.",
-            "device_mismatch": "Dit toestel is niet gekoppeld aan jouw prikklok. Vraag je teamleader of beheerder om een nieuw toestel toe te staan."
+            "device_mismatch": "Dit toestel is niet gekoppeld aan jouw prikklok. Vraag je teamleader of beheerder om een nieuw toestel toe te staan.",
+            "scan_required": "Scan de Clock Point-QR om in of uit te klokken. Zo weten we dat je ter plaatse bent."
         },
         "transferred": "Aanwezigheid verplaatst naar deze vestiging (zelfde dienst).",
         "hours": {

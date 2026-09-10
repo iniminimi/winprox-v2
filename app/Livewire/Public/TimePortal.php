@@ -29,6 +29,7 @@ use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Portal\TimePortalData;
 use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerIcon;
@@ -126,6 +127,10 @@ class TimePortal extends Component
         $this->inactiveReasonKey = TimePortalData::clockPointInactiveReasonKey($clockPoint);
 
         $this->syncLocaleFromRequest();
+
+        if ($this->inactiveReasonKey === null) {
+            ClockPointScanGrant::grant($this->clockPointId);
+        }
     }
 
     public function booted(): void
@@ -536,11 +541,16 @@ class TimePortal extends Component
             return;
         }
 
+        if (! $this->requirePunchScanGrant()) {
+            return;
+        }
+
         $openShift = $findShift->handle($worker);
         if ($openShift !== null && $openShift->currentClockPointId() !== (int) $clockPoint->id) {
             try {
                 [$device, $token] = $this->clockDeviceContext($worker);
                 $transfer->handle($worker, $clockPoint, $device, null, true, $token);
+                ClockPointScanGrant::consume((int) $clockPoint->id);
                 $this->flashMessage = __('time.portal.transferred');
             } catch (InvalidArgumentException $e) {
                 if ($this->flashClockDeviceError($e)) {
@@ -568,6 +578,7 @@ class TimePortal extends Component
                 $lat,
                 $lng,
             );
+            ClockPointScanGrant::consume((int) $clockPoint->id);
             $this->flashMessage = __('time.portal.clocked_in');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
@@ -587,6 +598,10 @@ class TimePortal extends Component
             return;
         }
 
+        if (! $this->requirePunchScanGrant()) {
+            return;
+        }
+
         $openShift = $findShift->handle($worker);
         if ($openShift === null) {
             $this->flashMessage = __('time.portal.errors.not_clocked_in');
@@ -603,6 +618,7 @@ class TimePortal extends Component
         try {
             [$device, $token] = $this->clockDeviceContext($worker);
             $transfer->handle($worker, $clockPoint, $device, null, true, $token);
+            ClockPointScanGrant::consume((int) $clockPoint->id);
             $this->flashMessage = __('time.portal.transferred');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
@@ -622,9 +638,14 @@ class TimePortal extends Component
             return;
         }
 
+        if (! $this->requirePunchScanGrant()) {
+            return;
+        }
+
         try {
             [$device, $token] = $this->clockDeviceContext($worker);
             $clockOut->handle($worker, $clockPoint, null, \App\Enums\ClockSource::ClockPointQr, true, $device, $token);
+            ClockPointScanGrant::consume((int) $clockPoint->id);
             $this->flashMessage = __('time.portal.clocked_out');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
@@ -805,6 +826,7 @@ class TimePortal extends Component
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
             'gpsOnClock' => $this->tenantRequestsClockGps(),
+            'canPunch' => ClockPointScanGrant::isValid($this->clockPointId),
             'teamWorkers' => $teamWorkers,
             'manageWorkersMessage' => $this->manageWorkersMessage,
             'roster' => $roster,
@@ -814,6 +836,17 @@ class TimePortal extends Component
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);
+    }
+
+    private function requirePunchScanGrant(): bool
+    {
+        if (ClockPointScanGrant::isValid($this->clockPointId)) {
+            return true;
+        }
+
+        $this->flashMessage = __('time.portal.errors.scan_required');
+
+        return false;
     }
 
     private function tenantRequiresPin(): bool

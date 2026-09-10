@@ -266,7 +266,8 @@
             "clocked_in_since_at": "Clocked in since :time at :place",
             "open_elsewhere_hint": "You are already clocked in at another location. Move your presence here, or clock out.",
             "transfer_here": "Move here",
-            "started_at": "Started at :place (same shift)."
+            "started_at": "Started at :place (same shift).",
+            "scan_required_hint": "Scan the Clock Point QR at the site to clock in or out. An open tab is not enough."
         },
         "clocked_in": "You are clocked in.",
         "clocked_out": "You are clocked out.",
@@ -278,7 +279,8 @@
             "break_already_open": "Your break is already running.",
             "break_not_open": "You are not on break.",
             "icon_not_configured": "Your account is not fully set up yet. Please contact the administrator.",
-            "device_mismatch": "This device is not linked to your punch clock. Ask your team leader or admin to allow a new device."
+            "device_mismatch": "This device is not linked to your punch clock. Ask your team leader or admin to allow a new device.",
+            "scan_required": "Scan the Clock Point QR to clock in or out. That shows you are on site."
         },
         "transferred": "Presence moved to this location (same shift).",
         "hours": {

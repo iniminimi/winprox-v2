@@ -266,7 +266,8 @@
             "clocked_in_since_at": "Eingestempelt seit :time bei :place",
             "open_elsewhere_hint": "Sie sind bereits an einem anderen Standort eingestempelt. Verschieben Sie die Anwesenheit hierher oder stempeln Sie aus.",
             "transfer_here": "Hierher verschieben",
-            "started_at": "Gestartet bei :place (gleiche Schicht)."
+            "started_at": "Gestartet bei :place (gleiche Schicht).",
+            "scan_required_hint": "Scannen Sie den Clock-Point-QR vor Ort zum Ein- oder Ausstempeln. Ein offener Tab reicht nicht."
         },
         "clocked_in": "Sie sind eingestempelt.",
         "clocked_out": "Sie sind ausgestempelt.",
@@ -278,7 +279,8 @@
             "break_already_open": "Ihre Pause läuft bereits.",
             "break_not_open": "Sie sind nicht in Pause.",
             "icon_not_configured": "Ihr Konto ist noch nicht vollständig eingerichtet. Bitte wenden Sie sich an den Administrator.",
-            "device_mismatch": "Dieses Gerät ist nicht mit deiner Stempeluhr verknüpft. Bitte Teamleiter oder Verwaltung, ein neues Gerät zuzulassen."
+            "device_mismatch": "Dieses Gerät ist nicht mit deiner Stempeluhr verknüpft. Bitte Teamleiter oder Verwaltung, ein neues Gerät zuzulassen.",
+            "scan_required": "Scannen Sie den Clock-Point-QR zum Ein- oder Ausstempeln. So sehen wir, dass Sie vor Ort sind."
         },
         "transferred": "Anwesenheit an diesen Standort verschoben (gleiche Schicht).",
         "hours": {

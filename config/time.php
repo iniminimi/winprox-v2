@@ -18,4 +18,10 @@ return [
 
     /** Hop naar een ander Clock Point binnen dit aantal minuten → aandacht. */
     'rapid_hop_minutes' => (int) env('TIME_RAPID_HOP_MINUTES', 5),
+
+    /**
+     * Na een verse Clock Point-QR-scan (volle page-load): zolang mag je één prik
+     * (in, uit of verplaatsen) doen. Een open tab of poll verlengt dit niet.
+     */
+    'punch_scan_seconds' => (int) env('TIME_PUNCH_SCAN_SECONDS', 600),
 ];

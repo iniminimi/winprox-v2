@@ -266,7 +266,8 @@
             "clocked_in_since_at": "Timbrato dal :time presso :place",
             "open_elsewhere_hint": "Hai già timbrato in un'altra sede. Sposta la presenza qui oppure timbra l'uscita.",
             "transfer_here": "Sposta qui",
-            "started_at": "Iniziato presso :place (stesso turno)."
+            "started_at": "Iniziato presso :place (stesso turno).",
+            "scan_required_hint": "Scansiona il QR Clock Point in sede per timbrare entrata o uscita. Una scheda aperta non basta."
         },
         "clocked_in": "Hai timbrato l'entrata.",
         "clocked_out": "Hai timbrato l'uscita.",
@@ -278,7 +279,8 @@
             "break_already_open": "La pausa è già in corso.",
             "break_not_open": "Non sei in pausa.",
             "icon_not_configured": "Il tuo account non è ancora completamente configurato. Contatta l'amministratore.",
-            "device_mismatch": "Questo dispositivo non è collegato alla tua marcatura. Chiedi al team leader o all'amministratore di autorizzare un nuovo dispositivo."
+            "device_mismatch": "Questo dispositivo non è collegato alla tua marcatura. Chiedi al team leader o all'amministratore di autorizzare un nuovo dispositivo.",
+            "scan_required": "Scansiona il QR Clock Point per timbrare entrata o uscita. Così sappiamo che sei in sede."
         },
         "transferred": "Presenza spostata in questa sede (stesso turno).",
         "hours": {

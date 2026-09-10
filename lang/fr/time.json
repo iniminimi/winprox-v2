@@ -266,7 +266,8 @@
             "clocked_in_since_at": "Pointé depuis :time à :place",
             "open_elsewhere_hint": "Vous êtes déjà pointé sur un autre site. Déplacez votre présence ici, ou pointez la sortie.",
             "transfer_here": "Déplacer ici",
-            "started_at": "Démarré à :place (même vacation)."
+            "started_at": "Démarré à :place (même vacation).",
+            "scan_required_hint": "Scannez le QR Clock Point sur site pour pointer l'entrée ou la sortie. Un onglet ouvert ne suffit pas."
         },
         "clocked_in": "Vous êtes pointé.",
         "clocked_out": "Vous êtes dépointé.",
@@ -278,7 +279,8 @@
             "break_already_open": "Votre pause est déjà en cours.",
             "break_not_open": "Vous n'êtes pas en pause.",
             "icon_not_configured": "Votre compte n'est pas encore entièrement configuré. Contactez l'administrateur.",
-            "device_mismatch": "Cet appareil n'est pas lié à votre pointeuse. Demandez à votre chef d'équipe ou à l'admin d'autoriser un nouvel appareil."
+            "device_mismatch": "Cet appareil n'est pas lié à votre pointeuse. Demandez à votre chef d'équipe ou à l'admin d'autoriser un nouvel appareil.",
+            "scan_required": "Scannez le QR Clock Point pour pointer l'entrée ou la sortie. Cela prouve que vous êtes sur place."
         },
         "transferred": "Présence déplacée vers ce site (même vacation).",
         "hours": {

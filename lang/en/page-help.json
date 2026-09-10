@@ -932,7 +932,7 @@
                 },
                 {
                     "label": "Clock in and out",
-                    "text": "Clock in, out and record breaks on your own phone. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). Then use the unit QR on site to start or complete tasks."
+                    "text": "Each clock-in, clock-out or move needs a fresh scan of the Clock Point QR on site — an open tab is not enough. You can start breaks on the same phone without a new scan. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). Then use the unit QR on site to start or complete tasks."
                 },
                 {
                     "label": "Evacuation list",

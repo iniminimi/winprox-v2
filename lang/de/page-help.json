@@ -932,7 +932,7 @@
                 },
                 {
                     "label": "Ein- und Ausstempeln",
-                    "text": "Stemple hier ein, aus und erfasse Pausen mit deinem eigenen Handy. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Danach Unit-QR vor Ort für Aufgaben."
+                    "text": "Jedes Ein-/Ausstempeln oder Verschieben braucht einen frischen Scan des Clock-Point-QR vor Ort — ein offener Tab reicht nicht. Pausen können am selben Handy ohne neuen Scan starten. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Danach Unit-QR vor Ort für Aufgaben."
                 },
                 {
                     "label": "Evakuierungsliste",

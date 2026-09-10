@@ -932,7 +932,7 @@
                 },
                 {
                     "label": "In- en uitklokken",
-                    "text": "Klok hier in, uit en registreer pauzes op je eigen gsm. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Gebruik daarna de unit-QR op locatie om taken te starten of af te ronden."
+                    "text": "Elke in-/uitklok of verplaatsing vraagt een verse scan van de Clock Point-QR op de vestiging — een open tab volstaat niet. Pauzes kan je op dezelfde gsm starten zonder nieuwe scan. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Gebruik daarna de unit-QR op locatie om taken te starten of af te ronden."
                 },
                 {
                     "label": "Evacuatielijst",
