@@ -35,7 +35,8 @@ it('serveert llms.txt voor AI-bots', function () {
         ->assertSee('# WinProx', false)
         ->assertSee('> Facility management via QR portals', false)
         ->assertSee(route('faq.public', ['locale' => 'en'], absolute: true), false)
-        ->assertSee(__('faq.items.how_it_works.title', [], 'en'), false);
+        ->assertSee(__('faq.items.how_it_works.title', [], 'en'), false)
+        ->assertSee(route('product.technical.md', ['locale' => 'en'], absolute: true), false);
 });
 
 it('toont de publieke FAQ-pagina met alle antwoorden zichtbaar', function () {
@@ -343,7 +344,8 @@ it('toont privacy-document publiek', function () {
         ->assertSee(__('legal.applicable_law_notice', [], 'en'))
         ->assertSee('QR reports', false)
         ->assertSee('ESG & Compliance', false)
-        ->assertSee('Sign in with Microsoft', false);
+        ->assertSee('Sign in with Microsoft', false)
+        ->assertSee('type="text/markdown"', false);
 });
 
 it('toont contact voor gasten', function () {

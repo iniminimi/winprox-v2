@@ -11,6 +11,7 @@ use App\Http\Controllers\IndexNowKeyController;
 use App\Http\Controllers\Issues\IssueExportController;
 use App\Http\Controllers\Issues\IssuePrintController;
 use App\Http\Controllers\LegalDocumentController;
+use App\Http\Controllers\LlmsFullTxtController;
 use App\Http\Controllers\LlmsTxtController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Locations\LocationQrPackDownloadController;
@@ -123,6 +124,7 @@ Route::get('/welcome-1995', function () {
 
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::get('/llms.txt', LlmsTxtController::class)->name('llms.txt');
+Route::get('/llms-full.txt', LlmsFullTxtController::class)->name('llms.full');
 
 $indexNowKey = trim((string) config('indexnow.key', ''));
 if ($indexNowKey !== '' && preg_match('/^[a-f0-9]{8,128}$/i', $indexNowKey)) {
@@ -213,10 +215,12 @@ Route::get('/features/qr-portals', $redirectToLocalized('features.qr'));
 
 foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
     Route::get("/legal/{$legalDoc}", $redirectToLocalized($legalMeta['route']));
+    Route::get("/legal/{$legalDoc}.md", $redirectToLocalized($legalMeta['route'].'.md'));
 }
 
 foreach (config('product_docs.documents', []) as $productDoc => $productMeta) {
     Route::get("/docs/{$productDoc}", $redirectToLocalized($productMeta['route']));
+    Route::get("/docs/{$productDoc}.md", $redirectToLocalized($productMeta['route'].'.md'));
 }
 
 Route::prefix('{locale}')
@@ -245,12 +249,18 @@ Route::prefix('{locale}')
             Route::get("/legal/{$legalDoc}", function () use ($legalDoc) {
                 return app(LegalDocumentController::class)->show(request(), $legalDoc);
             })->name($legalMeta['route']);
+            Route::get("/legal/{$legalDoc}.md", function () use ($legalDoc) {
+                return app(LegalDocumentController::class)->markdown(request(), $legalDoc);
+            })->name($legalMeta['route'].'.md');
         }
 
         foreach (config('product_docs.documents', []) as $productDoc => $productMeta) {
             Route::get("/docs/{$productDoc}", function () use ($productDoc) {
                 return app(ProductDocumentController::class)->show(request(), $productDoc);
             })->name($productMeta['route']);
+            Route::get("/docs/{$productDoc}.md", function () use ($productDoc) {
+                return app(ProductDocumentController::class)->markdown(request(), $productDoc);
+            })->name($productMeta['route'].'.md');
         }
     });
 

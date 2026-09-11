@@ -61,10 +61,14 @@ it('toont FAQPage schema op publieke FAQ', function () {
         ->assertSee('"@type":"FAQPage"', false);
 });
 
-it('llms.txt bevat about, features en API & Webhooks fiche', function () {
+it('llms.txt bevat about, feature-pagina\'s en Markdown-fiches', function () {
     $this->get(route('llms.txt'))
         ->assertOk()
         ->assertSee(route('about', ['locale' => 'en'], absolute: true), false)
         ->assertSee(route('features.facility', ['locale' => 'en'], absolute: true), false)
-        ->assertSee(route('product.api_webhooks', ['locale' => 'en'], absolute: true), false);
+        ->assertSee(route('product.api_webhooks.md', ['locale' => 'en'], absolute: true), false)
+        ->assertSee(route('product.features.md', ['locale' => 'en'], absolute: true), false)
+        ->assertSee(route('product.technical.md', ['locale' => 'en'], absolute: true), false)
+        ->assertSee(route('legal.dpa.md', ['locale' => 'en'], absolute: true), false)
+        ->assertSee(url('/llms-full.txt'), false);
 });

@@ -18,6 +18,8 @@ class BuildLlmsTxtAction
             '',
             'WinProx is a multi-tenant facility platform. Core flow: **issue → tasks → completion**. Citizens and on-site workers use public QR portals; admins and staff use the authenticated workspace. Languages: Dutch, English, French, German, Spanish, Italian.',
             '',
+            'Public product fact sheets and legal pages are also available as Markdown (`…/docs/{name}.md`, `…/legal/{name}.md`) and as one English dump: '.url('/llms-full.txt').'.',
+            '',
             '## Product pages',
         ];
 
@@ -51,7 +53,9 @@ class BuildLlmsTxtAction
             $lines[] = '- [ESG ('.$label.')]('.route('features.esg', ['locale' => $locale], absolute: true).'): Optional ESG measurements on the same portals.';
             $lines[] = '- [IoT Connect ('.$label.')]('.route('features.iot', ['locale' => $locale], absolute: true).'): Sensor gateway ingest: alarms become issues; Corporate also records ESG measurements.';
             $lines[] = '- [QR portals ('.$label.')]('.route('features.qr', ['locale' => $locale], absolute: true).'): Unit QR and Clock Point QR without a native app.';
-            $lines[] = '- [API & Webhooks ('.$label.')]('.route('product.api_webhooks', ['locale' => $locale], absolute: true).'): REST API and webhooks fact sheet for integrators.';
+            $lines[] = '- [API & Webhooks ('.$label.')]('.route('product.api_webhooks.md', ['locale' => $locale], absolute: true).'): REST API and webhooks fact sheet for integrators (Markdown).';
+            $lines[] = '- [Features overview ('.$label.')]('.route('product.features.md', ['locale' => $locale], absolute: true).'): Product fact sheet aligned with the in-app manual (Markdown).';
+            $lines[] = '- [Technical fact sheet ('.$label.')]('.route('product.technical.md', ['locale' => $locale], absolute: true).'): Hosting, GDPR, backups, auth and security for IT (Markdown).';
         }
 
         $lines[] = '';
@@ -90,11 +94,12 @@ class BuildLlmsTxtAction
             if (! isset($meta['route'], $meta['label_key']) || ! is_string($meta['route'])) {
                 continue;
             }
-            $url = route($meta['route'], ['locale' => 'en'], absolute: true);
+            $url = route($meta['route'].'.md', ['locale' => 'en'], absolute: true);
             $label = __($meta['label_key'], [], 'en');
-            $lines[] = "- [{$label}]({$url}): Legal document (English).";
+            $lines[] = "- [{$label}]({$url}): Legal document in Markdown (English).";
         }
 
+        $lines[] = '- [Full documentation dump]('.url('/llms-full.txt').'): English Markdown of features, technical, API & Webhooks, DPA, subprocessors and other legal pages.';
         $lines[] = '- [Sitemap]('.url('/sitemap.xml').'): XML sitemap of marketing pages.';
         $lines[] = '- [Register]('.route('register', absolute: true).'): Start a free trial account.';
         $lines[] = '- [Log in]('.route('login', absolute: true).'): Workspace login for staff.';

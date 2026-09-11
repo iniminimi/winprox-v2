@@ -4,13 +4,19 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Actions\Marketing\BuildProductDocumentMarkdownAction;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class ProductDocumentController extends Controller
 {
-    public function show(Request $request, string $doc): View
+    public function show(Request $request, string $doc): View|Response
     {
+        if ($this->wantsMarkdown($request)) {
+            return $this->markdown($request, $doc);
+        }
+
         $documents = config('product_docs.documents', []);
 
         abort_unless(array_key_exists($doc, $documents), 404);
@@ -33,5 +39,22 @@ class ProductDocumentController extends Controller
             'updatedAt' => $updatedAt,
             'content' => $content,
         ]);
+    }
+
+    public function markdown(Request $request, string $doc): Response
+    {
+        $markdown = app(BuildProductDocumentMarkdownAction::class)->handle($doc, app()->getLocale());
+
+        abort_unless(is_string($markdown) && $markdown !== '', 404);
+
+        return response($markdown, 200, [
+            'Content-Type' => 'text/markdown; charset=utf-8',
+            'Cache-Control' => 'public, max-age=3600',
+        ]);
+    }
+
+    private function wantsMarkdown(Request $request): bool
+    {
+        return str_contains(strtolower((string) $request->header('Accept', '')), 'text/markdown');
     }
 }

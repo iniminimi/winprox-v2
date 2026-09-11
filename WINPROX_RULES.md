@@ -423,11 +423,12 @@ Publieke + in-app documentatie voor prospects en IT:
 
 | Fiche | Route | Bron |
 |---|---|---|
-| Features-overzicht | `/{locale}/docs/features` (`product.features`) | `lang/*/product_docs.json` → `features` |
-| Technische fiche | `/{locale}/docs/technical` (`product.technical`) | `lang/*/product_docs.json` → `technical` |
-| API & Webhooks | `/{locale}/docs/api_webhooks` (`product.api_webhooks`) | `lang/*/product_docs.json` → `api_webhooks` |
+| Features-overzicht | `/{locale}/docs/features` (+ `.md`) | `lang/*/product_docs.json` → `features` |
+| Technische fiche | `/{locale}/docs/technical` (+ `.md`) | `lang/*/product_docs.json` → `technical` |
+| API & Webhooks | `/{locale}/docs/api_webhooks` (+ `.md`) | `lang/*/product_docs.json` → `api_webhooks` |
 
 **Links:** welcome-nav/footer · Handleidingen-hub (`/manual`) · sitemap via `MarketingSeo`.
+Markdown voor AI-crawlers: zelfde paden met `.md` (`/{locale}/docs/features.md`, …) en `/llms-full.txt`.
 
 ### Onderhoud (verplicht bij elke relevante wijziging)
 Als je iets toevoegt of wijzigt dat de fiches raakt (nieuwe module/feature, hosting/GDPR/backup,

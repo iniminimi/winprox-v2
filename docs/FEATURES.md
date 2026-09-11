@@ -639,7 +639,7 @@ stuurt events; WinProx zet die om in workflow.
 
 ### Help / FAQ / marketing
 - FAQ-item `iot` + help-chat patronen; page-help `iot.index`; handleiding-hoofdstuk.
-- Marketing: `/features/iot`, about-link, sitemap/`llms.txt`, abonnementstatusregel.
+- Marketing: `/features/iot`, about-link, sitemap/`llms.txt`/`llms-full.txt`, abonnementstatusregel.
 
 ---
 
@@ -1017,7 +1017,9 @@ foutieve `card_body_facility` (hotel-tekst in DE).
 `/{locale}/contact`, `/{locale}/legal/…`). `/` en oude paden zonder prefix **redirecten** naar
 de gelokaliseerde URL. Oude `/{locale}/promo` **301** naar de campagne-landing (met `ref`) of
 `/{locale}/government`. In `<head>`: hreflang + canonical. Sitemap: `/sitemap.xml` (vermeld in
-`robots.txt`). **IndexNow** (Bing e.a.): key-bestand in site-root +
+`robots.txt`). **`/llms.txt`** (index) + **`/llms-full.txt`** (Markdown-dump van fiches en
+juridische pagina's) + **`.md`-varianten** van `/{locale}/docs/…` en `/{locale}/legal/…`.
+**IndexNow** (Bing e.a.): key-bestand in site-root +
 `php artisan marketing:indexnow-submit` na deploy/content-wijziging (`config/indexnow.php`).
 App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
 
