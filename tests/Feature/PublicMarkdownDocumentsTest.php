@@ -46,3 +46,27 @@ it('zet markdown-alternate op de HTML DPA', function () {
         ->assertSee('type="text/markdown"', false)
         ->assertSee(route('legal.dpa.md', ['locale' => 'en']), false);
 });
+
+it('zet geen sessiecookies op crawler-documenten', function (string $path) {
+    $response = $this->get($path);
+
+    $response->assertOk();
+    expect($response->headers->getCookies())->toBeEmpty()
+        ->and($response->headers->get('Cache-Control'))->toContain('public');
+})->with([
+    'llms' => '/llms.txt',
+    'llms-full' => '/llms-full.txt',
+    'technical-md' => '/en/docs/technical.md',
+    'dpa-md' => '/en/legal/dpa.md',
+    'technical-html' => '/en/docs/technical',
+    'dpa-html' => '/en/legal/dpa',
+]);
+
+it('laat Perplexity-crawlers toe in robots.txt', function () {
+    $robots = (string) file_get_contents(public_path('robots.txt'));
+
+    expect($robots)
+        ->toContain('User-agent: PerplexityBot')
+        ->toContain('User-agent: Perplexity-User')
+        ->toContain('Allow: /');
+});

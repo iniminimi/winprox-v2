@@ -1019,6 +1019,9 @@ de gelokaliseerde URL. Oude `/{locale}/promo` **301** naar de campagne-landing (
 `/{locale}/government`. In `<head>`: hreflang + canonical. Sitemap: `/sitemap.xml` (vermeld in
 `robots.txt`). **`/llms.txt`** (index) + **`/llms-full.txt`** (Markdown-dump van fiches en
 juridische pagina's) + **`.md`-varianten** van `/{locale}/docs/…` en `/{locale}/legal/…`.
+Die crawler-URL's zijn **zonder sessiecookie** (`Cache-Control: public`) zodat Perplexity `fetch_url`
+en soortgelijke tools geen login-achtige `Set-Cookie` zien. `robots.txt` laat PerplexityBot /
+Perplexity-User expliciet toe.
 **IndexNow** (Bing e.a.): key-bestand in site-root +
 `php artisan marketing:indexnow-submit` na deploy/content-wijziging (`config/indexnow.php`).
 App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).

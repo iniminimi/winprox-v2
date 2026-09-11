@@ -429,6 +429,7 @@ Publieke + in-app documentatie voor prospects en IT:
 
 **Links:** welcome-nav/footer · Handleidingen-hub (`/manual`) · sitemap via `MarketingSeo`.
 Markdown voor AI-crawlers: zelfde paden met `.md` (`/{locale}/docs/features.md`, …) en `/llms-full.txt`.
+Die URL's zijn sessieloos (geen `Set-Cookie`) zodat fetch-tools ze kunnen inlezen.
 
 ### Onderhoud (verplicht bij elke relevante wijziging)
 Als je iets toevoegt of wijzigt dat de fiches raakt (nieuwe module/feature, hosting/GDPR/backup,

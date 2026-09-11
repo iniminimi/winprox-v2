@@ -109,6 +109,7 @@ use App\Livewire\Time\PresenceIndex;
 use App\Livewire\Time\PresenceSubmissionsIndex;
 use App\Livewire\Time\ShiftsIndex;
 use App\Support\Platform\SupportTenantContext;
+use App\Support\Marketing\StatelessPublicWeb;
 use App\Support\ResolveAppLocale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -122,9 +123,11 @@ Route::get('/welcome-1995', function () {
         ->header('X-Robots-Tag', 'noindex, nofollow');
 })->name('welcome.classic');
 
-Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
-Route::get('/llms.txt', LlmsTxtController::class)->name('llms.txt');
-Route::get('/llms-full.txt', LlmsFullTxtController::class)->name('llms.full');
+Route::withoutMiddleware(StatelessPublicWeb::sessionCookieMiddleware())->group(function () {
+    Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+    Route::get('/llms.txt', LlmsTxtController::class)->name('llms.txt');
+    Route::get('/llms-full.txt', LlmsFullTxtController::class)->name('llms.full');
+});
 
 $indexNowKey = trim((string) config('indexnow.key', ''));
 if ($indexNowKey !== '' && preg_match('/^[a-f0-9]{8,128}$/i', $indexNowKey)) {
@@ -213,15 +216,17 @@ Route::get('/features/esg', $redirectToLocalized('features.esg'));
 Route::get('/features/iot', $redirectToLocalized('features.iot'));
 Route::get('/features/qr-portals', $redirectToLocalized('features.qr'));
 
-foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
-    Route::get("/legal/{$legalDoc}", $redirectToLocalized($legalMeta['route']));
-    Route::get("/legal/{$legalDoc}.md", $redirectToLocalized($legalMeta['route'].'.md'));
-}
+Route::withoutMiddleware(StatelessPublicWeb::sessionCookieMiddleware())->group(function () use ($redirectToLocalized) {
+    foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
+        Route::get("/legal/{$legalDoc}", $redirectToLocalized($legalMeta['route']));
+        Route::get("/legal/{$legalDoc}.md", $redirectToLocalized($legalMeta['route'].'.md'));
+    }
 
-foreach (config('product_docs.documents', []) as $productDoc => $productMeta) {
-    Route::get("/docs/{$productDoc}", $redirectToLocalized($productMeta['route']));
-    Route::get("/docs/{$productDoc}.md", $redirectToLocalized($productMeta['route'].'.md'));
-}
+    foreach (config('product_docs.documents', []) as $productDoc => $productMeta) {
+        Route::get("/docs/{$productDoc}", $redirectToLocalized($productMeta['route']));
+        Route::get("/docs/{$productDoc}.md", $redirectToLocalized($productMeta['route'].'.md'));
+    }
+});
 
 Route::prefix('{locale}')
     ->where(['locale' => $localePattern])
@@ -245,23 +250,25 @@ Route::prefix('{locale}')
             Route::get('/'.$landing->value, [SectorLandingController::class, 'show'])->name($landing->routeName());
         }
 
-        foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
-            Route::get("/legal/{$legalDoc}", function () use ($legalDoc) {
-                return app(LegalDocumentController::class)->show(request(), $legalDoc);
-            })->name($legalMeta['route']);
-            Route::get("/legal/{$legalDoc}.md", function () use ($legalDoc) {
-                return app(LegalDocumentController::class)->markdown(request(), $legalDoc);
-            })->name($legalMeta['route'].'.md');
-        }
+        Route::withoutMiddleware(StatelessPublicWeb::sessionCookieMiddleware())->group(function () {
+            foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
+                Route::get("/legal/{$legalDoc}", function () use ($legalDoc) {
+                    return app(LegalDocumentController::class)->show(request(), $legalDoc);
+                })->name($legalMeta['route']);
+                Route::get("/legal/{$legalDoc}.md", function () use ($legalDoc) {
+                    return app(LegalDocumentController::class)->markdown(request(), $legalDoc);
+                })->name($legalMeta['route'].'.md');
+            }
 
-        foreach (config('product_docs.documents', []) as $productDoc => $productMeta) {
-            Route::get("/docs/{$productDoc}", function () use ($productDoc) {
-                return app(ProductDocumentController::class)->show(request(), $productDoc);
-            })->name($productMeta['route']);
-            Route::get("/docs/{$productDoc}.md", function () use ($productDoc) {
-                return app(ProductDocumentController::class)->markdown(request(), $productDoc);
-            })->name($productMeta['route'].'.md');
-        }
+            foreach (config('product_docs.documents', []) as $productDoc => $productMeta) {
+                Route::get("/docs/{$productDoc}", function () use ($productDoc) {
+                    return app(ProductDocumentController::class)->show(request(), $productDoc);
+                })->name($productMeta['route']);
+                Route::get("/docs/{$productDoc}.md", function () use ($productDoc) {
+                    return app(ProductDocumentController::class)->markdown(request(), $productDoc);
+                })->name($productMeta['route'].'.md');
+            }
+        });
     });
 
 Route::post('/promo/track/video', PromoVideoTrackController::class)

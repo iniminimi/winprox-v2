@@ -7,11 +7,10 @@ namespace App\Http\Controllers;
 use App\Actions\Marketing\BuildLegalDocumentMarkdownAction;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\View\View;
 
 class LegalDocumentController extends Controller
 {
-    public function show(Request $request, string $doc): View|Response
+    public function show(Request $request, string $doc): Response
     {
         if ($this->wantsMarkdown($request)) {
             return $this->markdown($request, $doc);
@@ -26,13 +25,15 @@ class LegalDocumentController extends Controller
         $updatedRaw = config('legal.documents_last_updated', '2026-05-10');
         $updatedAt = \Illuminate\Support\Carbon::parse($updatedRaw)->format('d/m/Y');
 
-        return view('layouts.components.legal', [
-            'doc' => $doc,
-            'meta' => $meta,
-            'locale' => $locale,
-            'title' => __($meta['label_key']),
-            'updatedAt' => $updatedAt,
-        ]);
+        return response()
+            ->view('layouts.components.legal', [
+                'doc' => $doc,
+                'meta' => $meta,
+                'locale' => $locale,
+                'title' => __($meta['label_key']),
+                'updatedAt' => $updatedAt,
+            ])
+            ->header('Cache-Control', 'public, max-age=3600');
     }
 
     public function markdown(Request $request, string $doc): Response

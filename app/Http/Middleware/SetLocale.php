@@ -22,8 +22,8 @@ class SetLocale
         if (is_string($routeLocale) && in_array($routeLocale, $supported, true)) {
             if ($request->hasSession()) {
                 $request->session()->put('locale', $routeLocale);
+                Cookie::queue(ResolveAppLocale::COOKIE_NAME, $routeLocale, ResolveAppLocale::COOKIE_MINUTES);
             }
-            Cookie::queue(ResolveAppLocale::COOKIE_NAME, $routeLocale, ResolveAppLocale::COOKIE_MINUTES);
             app()->setLocale($routeLocale);
             URL::defaults(['locale' => $routeLocale]);
 

@@ -7,11 +7,10 @@ namespace App\Http\Controllers;
 use App\Actions\Marketing\BuildProductDocumentMarkdownAction;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\View\View;
 
 class ProductDocumentController extends Controller
 {
-    public function show(Request $request, string $doc): View|Response
+    public function show(Request $request, string $doc): Response
     {
         if ($this->wantsMarkdown($request)) {
             return $this->markdown($request, $doc);
@@ -31,14 +30,16 @@ class ProductDocumentController extends Controller
 
         abort_unless(is_array($content) && isset($content['label']), 404);
 
-        return view('layouts.components.product-doc', [
-            'doc' => $doc,
-            'meta' => $meta,
-            'locale' => $locale,
-            'title' => (string) $content['label'],
-            'updatedAt' => $updatedAt,
-            'content' => $content,
-        ]);
+        return response()
+            ->view('layouts.components.product-doc', [
+                'doc' => $doc,
+                'meta' => $meta,
+                'locale' => $locale,
+                'title' => (string) $content['label'],
+                'updatedAt' => $updatedAt,
+                'content' => $content,
+            ])
+            ->header('Cache-Control', 'public, max-age=3600');
     }
 
     public function markdown(Request $request, string $doc): Response

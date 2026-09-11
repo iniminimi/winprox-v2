@@ -5,6 +5,13 @@
 
     RewriteEngine On
 
+    # Public fact sheets / legal / llms: LiteSpeed cache (AI crawlers skip PHP 429).
+    <IfModule LiteSpeed>
+        RewriteCond %{REQUEST_URI} ^/(llms\.txt|llms-full\.txt|sitemap\.xml)$ [NC,OR]
+        RewriteCond %{REQUEST_URI} ^/[a-z]{2}/(docs|legal)/ [NC]
+        RewriteRule .* - [E=cache-control:max-age=3600]
+    </IfModule>
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
