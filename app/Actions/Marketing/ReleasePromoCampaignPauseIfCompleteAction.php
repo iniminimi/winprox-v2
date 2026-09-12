@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Actions\Marketing;
 
-use App\Actions\Audit\LogAuditAction;
 use App\Enums\PromoCampaignDeliveryStatus;
 use App\Models\PromoCampaign;
 use Illuminate\Support\Collection;
@@ -13,13 +12,12 @@ class ReleasePromoCampaignPauseIfCompleteAction
 {
     public function __construct(
         private SummarizePromoCampaignsDeliveryAction $summarize,
-        private LogAuditAction $logAudit,
     ) {}
 
     /**
      * @param  Collection<int, PromoCampaign>|iterable<PromoCampaign>  $campaigns
      */
-    public function handleCollection(iterable $campaigns, ?int $actorUserId = null): int
+    public function handleCollection(iterable $campaigns): int
     {
         $paused = Collection::make($campaigns)->filter(
             fn (PromoCampaign $campaign): bool => $campaign->isEmailSendingPaused(),
@@ -38,7 +36,7 @@ class ReleasePromoCampaignPauseIfCompleteAction
                 continue;
             }
 
-            if ($this->release($campaign, $actorUserId)) {
+            if ($this->release($campaign)) {
                 $released++;
             }
         }
@@ -46,7 +44,7 @@ class ReleasePromoCampaignPauseIfCompleteAction
         return $released;
     }
 
-    public function handle(PromoCampaign $campaign, ?int $actorUserId = null): bool
+    public function handle(PromoCampaign $campaign): bool
     {
         if (! $campaign->isEmailSendingPaused()) {
             return false;
@@ -57,10 +55,10 @@ class ReleasePromoCampaignPauseIfCompleteAction
             return false;
         }
 
-        return $this->release($campaign, $actorUserId);
+        return $this->release($campaign);
     }
 
-    private function release(PromoCampaign $campaign, ?int $actorUserId): bool
+    private function release(PromoCampaign $campaign): bool
     {
         $updated = PromoCampaign::query()
             ->whereKey($campaign->id)
@@ -80,18 +78,6 @@ class ReleasePromoCampaignPauseIfCompleteAction
             'emails_paused_reason' => null,
             'emails_paused_detail' => null,
         ])->syncOriginal();
-
-        $this->logAudit->handle(
-            userId: $actorUserId,
-            tenantId: null,
-            action: 'marketing.promo_campaign_pause_released_complete',
-            modelType: 'PromoCampaign',
-            modelId: $campaign->id,
-            payload: [
-                'promo_campaign_id' => $campaign->id,
-                'automatic' => $actorUserId === null,
-            ],
-        );
 
         return true;
     }

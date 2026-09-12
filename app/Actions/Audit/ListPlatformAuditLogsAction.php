@@ -11,6 +11,15 @@ use Illuminate\Support\Collection;
 
 class ListPlatformAuditLogsAction
 {
+    /**
+     * Housekeeping writes that must not appear in the platform activity log.
+     *
+     * @var list<string>
+     */
+    public const HIDDEN_ACTIONS = [
+        'marketing.promo_campaign_pause_released_complete',
+    ];
+
     public function __construct(
         private SummarizeAuditLog $summarize,
     ) {}
@@ -27,6 +36,7 @@ class ListPlatformAuditLogsAction
 
         $rows = AuditLog::query()
             ->with(['tenant', 'user'])
+            ->whereNotIn('action', self::HIDDEN_ACTIONS)
             ->when($search !== '', function ($query) use ($search): void {
                 $like = '%'.addcslashes($search, '%_\\').'%';
                 $actionCodes = $this->actionCodesMatchingLabel($search);
@@ -68,6 +78,7 @@ class ListPlatformAuditLogsAction
     {
         return AuditLog::query()
             ->with(['tenant', 'user'])
+            ->whereNotIn('action', self::HIDDEN_ACTIONS)
             ->latest('created_at')
             ->limit($limit)
             ->get()

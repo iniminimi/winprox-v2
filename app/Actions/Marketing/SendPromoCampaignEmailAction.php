@@ -151,7 +151,7 @@ class SendPromoCampaignEmailAction
                 ]);
             }
 
-            $this->releasePauseIfComplete->handle($campaign->fresh() ?? $campaign, $actorUserId);
+            $this->releasePauseIfComplete->handle($campaign->fresh() ?? $campaign);
         } catch (Throwable $exception) {
             if ($send !== null) {
                 $send->update([

@@ -80,6 +80,44 @@ it('zoekt auditregels op menselijke actielabel', function () {
         ->and($result['summaries']->first()['title'])->toBe('E-mail uitgeschreven');
 });
 
+it('verbergt automatische promo-pauze-vrijgave in het activiteitenlog', function () {
+    app()->setLocale('nl');
+
+    $superuser = User::factory()->superuser()->create();
+    app(LogAuditAction::class)->handle(
+        userId: null,
+        tenantId: null,
+        action: 'marketing.promo_campaign_pause_released_complete',
+        modelType: 'PromoCampaign',
+        modelId: 3,
+        payload: ['automatic' => true],
+    );
+    app(LogAuditAction::class)->handle(
+        userId: $superuser->id,
+        tenantId: null,
+        action: 'marketing.promo_campaign_created',
+        modelType: 'PromoCampaign',
+        modelId: 3,
+        payload: ['name' => 'Havens Wave'],
+    );
+
+    $result = app(ListPlatformAuditLogsAction::class)->handle('', 1, 20);
+    $recent = app(ListPlatformAuditLogsAction::class)->recentSummaries(8);
+
+    expect($result['rows']->pluck('action')->all())
+        ->not->toContain('marketing.promo_campaign_pause_released_complete')
+        ->toContain('marketing.promo_campaign_created')
+        ->and(collect($recent)->pluck('action')->all())
+        ->not->toContain('marketing.promo_campaign_pause_released_complete')
+        ->toContain('marketing.promo_campaign_created');
+
+    Livewire::actingAs($superuser)
+        ->test(Audit::class)
+        ->assertSee('Promo-campagne aangemaakt')
+        ->assertDontSee('Systeemactie')
+        ->assertDontSee('promo campaign pause released');
+});
+
 it('toont recente activiteiten op het platform-dashboard', function () {
     app()->setLocale('nl');
 

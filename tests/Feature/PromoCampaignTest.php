@@ -957,14 +957,14 @@ it('toont afgerond i.p.v. onderbroken wanneer alle mails verstuurd zijn ondanks 
         ->and($summary->remaining)->toBe(0);
 
     app(\App\Actions\Marketing\ReleasePromoCampaignPauseIfCompleteAction::class)
-        ->handle($campaign->fresh(), (int) $superuser->id);
+        ->handle($campaign->fresh());
 
     expect($campaign->fresh()->isEmailSendingPaused())->toBeFalse();
 
     expect(AuditLog::query()
         ->where('action', 'marketing.promo_campaign_pause_released_complete')
         ->where('model_id', $campaign->id)
-        ->exists())->toBeTrue();
+        ->exists())->toBeFalse();
 
     Livewire::actingAs($superuser)
         ->test(PromoCampaigns::class)
@@ -998,7 +998,7 @@ it('geeft voltooide gepauzeerde campagnes vrij via scheduler-command', function 
     expect(AuditLog::query()
         ->where('action', 'marketing.promo_campaign_pause_released_complete')
         ->where('model_id', $campaign->id)
-        ->exists())->toBeTrue();
+        ->exists())->toBeFalse();
 });
 
 it('telt database-queue jobs per promo-campagne in de verzendstatus', function () {
