@@ -10,6 +10,7 @@ use App\Actions\Time\ResolveRosterPeriodAction;
 use App\Actions\Time\SavePlannedShiftsAction;
 use App\Data\Time\CopyWeekData;
 use App\Data\Time\PublishWeekData;
+use App\Data\Time\RosterWeekSnapshot;
 use App\Data\Time\SavePlannedShiftsData;
 use App\Exceptions\RosterValidationException;
 use App\Http\Requests\Time\CopyWeekRequest;
@@ -245,9 +246,7 @@ class RosterIndex extends Component
         return view('livewire.time.roster-index', [
             'legendTypes' => $listTypes->handle((int) Tenancy::id(), true),
             'teams' => $snapshot->teams,
-            'weekLabel' => $this->isMonth()
-                ? $snapshot->monthLabel
-                : $snapshot->weekStart.' – '.$snapshot->weekEnd,
+            'weekLabel' => $this->periodLabel($snapshot),
             'snapshot' => $snapshot,
             'isMonth' => $this->isMonth(),
             'alarmCount' => $this->timeNavAlarmCount(),
@@ -262,6 +261,23 @@ class RosterIndex extends Component
     private function isMonth(): bool
     {
         return $this->view === 'month';
+    }
+
+    private function periodLabel(RosterWeekSnapshot $snapshot): string
+    {
+        if ($this->isMonth()) {
+            return $snapshot->monthLabel;
+        }
+
+        $locale = app()->getLocale();
+        $start = Carbon::parse($snapshot->weekStart)->locale($locale);
+        $end = Carbon::parse($snapshot->weekEnd)->locale($locale);
+
+        if ($start->year === $end->year) {
+            return $start->translatedFormat('j M').' – '.$end->translatedFormat('j M Y');
+        }
+
+        return $start->translatedFormat('j M Y').' – '.$end->translatedFormat('j M Y');
     }
 
     private function normalizeView(): void
