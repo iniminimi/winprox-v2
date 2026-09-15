@@ -95,8 +95,8 @@
             $unitLegend = collect($snapshot->units)->unique('id')->values();
         @endphp
         <x-wp-modal closeMethod="closeLegendModal" aria-labelledby="roster-legend-title">
-            <div class="wp-stack">
-                <div class="wp-cluster wp-cluster--between">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide wp-roster-legend-modal-card">
+                <div class="wp-modal-head">
                     <h2 id="roster-legend-title" class="wp-section-title">{{ __('time.schedule.legend_title') }}</h2>
                     <x-wp-modal-close wire:click="closeLegendModal" />
                 </div>
@@ -146,12 +146,15 @@
                     @if ($unitLegend->isNotEmpty())
                         <section class="wp-roster-legend-modal__section">
                             <h3 class="wp-roster-legend-modal__heading">{{ __('time.schedule.legend_units') }}</h3>
-                            <div class="wp-roster-legend-modal__grid">
+                            <div class="wp-roster-legend-modal__grid wp-roster-legend-modal__grid--units">
                                 @foreach ($unitLegend as $unit)
                                     <div class="wp-roster-legend-modal__item wp-roster-legend-modal__item--unit">
                                         <div class="wp-roster-legend-modal__text">
                                             <strong>{{ $unit['code'] }}</strong>
                                             <span class="wp-muted">{{ $unit['name'] }}</span>
+                                            @if (($unit['location_name'] ?? '') !== '')
+                                                <span class="wp-muted wp-roster-legend-modal__location">{{ $unit['location_name'] }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                 @endforeach
@@ -160,7 +163,7 @@
                     @endif
                 </div>
 
-                <div class="wp-cluster wp-cluster--end">
+                <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeLegendModal">{{ __('common.button.close') }}</button>
                 </div>
             </div>

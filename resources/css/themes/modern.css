@@ -180,7 +180,8 @@
 }
 
 /* Uurrooster-legende op de foto-achtergrond: ondoorzichtig wit, geen glass. */
-[data-theme='modern'] .wp-roster-legend {
+[data-theme='modern'] .wp-roster-legend,
+[data-theme='modern'] .wp-roster-legend-modal-card {
     background-color: #ffffff;
 }
 

@@ -128,6 +128,7 @@ class ListRosterWeekAction
             ->all();
 
         $units = Unit::query()
+            ->with(['location:id,name'])
             ->where('tenant_id', $tenantId)
             ->where('is_active', true)
             ->whereNotNull('roster_code')
@@ -141,6 +142,7 @@ class ListRosterWeekAction
                 'code' => $unit->roster_code,
                 'name' => $unit->name,
                 'location_id' => $unit->location_id,
+                'location_name' => $unit->location?->name ?? '',
             ])
             ->unique('id')
             ->values()
