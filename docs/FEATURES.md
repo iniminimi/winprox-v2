@@ -721,7 +721,7 @@ productsector op `Tenant`.
 **Doel:** geplande diensten per uitvoerder, los van geklokte `WorkShift`. Excel-achtige grid
 (Jspreadsheet CE): codes (shiftypes) of vrije tijd `07:00-15:00`. Eén cel per uitvoerder per dag.
 Week- of **maandweergave**; maandkolommen zijn smaller (dagnummer + weekdag onder de maandnaam).
-In **week- en maandweergave** toont het vinkje **Weekends aan** zaterdag en zondag;
+In **week- en maandweergave** toont het vinkje **Weekends** zaterdag en zondag;
 uit = alleen maandag–vrijdag. Bij uitgeschakelde weekends staat tussen vrijdag en de
 volgende maandag een **zware verticale streep** (zichtbaar in de maandgrid). Standaard
 staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.

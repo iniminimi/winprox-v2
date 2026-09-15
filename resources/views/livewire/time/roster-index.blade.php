@@ -24,7 +24,6 @@
             <div class="wp-time-roster-toolbar__bar">
                 <div class="wp-cluster">
                     <div class="wp-filter-cell">
-                        <span class="wp-filter-inline-label">{{ __('time.schedule.period') }}</span>
                         <div class="wp-cluster wp-cluster--tight">
                             <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--surface' : 'btn--primary']) wire:click="setView('week')">{{ __('time.schedule.view_week') }}</button>
                             <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--primary' : 'btn--surface']) wire:click="setView('month')">{{ __('time.schedule.view_month') }}</button>
