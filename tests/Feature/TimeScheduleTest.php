@@ -762,10 +762,34 @@ it('filtert uitvoerders op locatie in het uurrooster', function () {
 
     $ids = array_map(fn ($row) => (int) $row['id'], $snapshot->workers);
     expect($ids)->toContain((int) $home->id)
-        ->and($ids)->toContain((int) $worker->id)
+        ->and($ids)->not->toContain((int) $worker->id)
         ->and($ids)->not->toContain((int) $away->id)
         ->and($snapshot->locations)->not->toBeEmpty()
         ->and($snapshot->units)->toBeArray();
+
+    $floaterTeam = InternalTeam::factory()->create([
+        'tenant_id' => $tenant->id,
+        'clocks_all_locations' => true,
+    ]);
+    $floater = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $floaterTeam->id,
+        'is_active' => true,
+    ]);
+
+    $withFloater = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        scheduleWeekStart(),
+        null,
+        $admin,
+        'week',
+        true,
+        (int) $siteA->id,
+    );
+    $floaterIds = array_map(fn ($row) => (int) $row['id'], $withFloater->workers);
+    expect($floaterIds)->toContain((int) $floater->id)
+        ->and($floaterIds)->toContain((int) $home->id)
+        ->and($floaterIds)->not->toContain((int) $worker->id);
 });
 
 it('groepeert workers in sectierijen bij locatiefilter en negeert uitgevinkte groepen', function () {

@@ -740,7 +740,10 @@ Opslaan zonder weekends raakt za/zo niet. Maand toont altijd alle dagen.
   Opslaan blijft `D1/G1`. `units.roster_code` uniek per locatie. Snapshot op `planned_shifts`
   (`unit_id`, `unit_code`, `unit_name`, `location_id`). Parser lost codes op; save eist
   `Worker::canClockAt`. Zelfde code op twee locaties → `ambiguous_unit` tot locatiefilter.
-  Afwezigheid + groep ongeldig. Locatiefilter op het rooster. Mijn rooster toont snapshot-`unit_name`.
+  Afwezigheid + groep ongeldig. Locatiefilter op het rooster: alleen workers toegewezen aan die
+  locatie of in een **floater-team** (`clocks_all_locations`). Workers zonder locatie verschijnen
+  niet op elk locatie-uurrooster (wél in de platte lijst zonder locatiefilter). Mijn rooster toont
+  snapshot-`unit_name`.
 - **Thuisgroep (weergave):** optioneel `workers.default_unit_id` → unit met `roster_code` op een
   locatie waar de worker mag klokken (of floater-team). Bij **locatiefilter**: vinkjes per groep
   + “Zonder groep”; grid toont **sectiekoppen** (`rows`: `section` \| `worker`). Sortering:

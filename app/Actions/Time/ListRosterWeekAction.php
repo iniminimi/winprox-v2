@@ -313,15 +313,14 @@ class ListRosterWeekAction
 
         if ($actorLocationIds !== null) {
             $query->where(function ($q) use ($actorLocationIds) {
-                $q->whereDoesntHave('locations')
-                    ->orWhereHas('locations', fn ($locations) => $locations->whereIn('locations.id', $actorLocationIds));
+                $q->whereHas('team', fn ($team) => $team->where('clocks_all_locations', true))
+                    ->orWhereHas('locations', fn ($locations) => $locations->whereIn('locations.id', $actorLocationIds ?: [0]));
             });
         }
 
         if ($locationId !== null) {
             $query->where(function ($q) use ($locationId) {
                 $q->whereHas('team', fn ($team) => $team->where('clocks_all_locations', true))
-                    ->orWhereDoesntHave('locations')
                     ->orWhereHas('locations', fn ($locations) => $locations->where('locations.id', $locationId));
             });
         }
