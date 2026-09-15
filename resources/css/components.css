@@ -5741,6 +5741,36 @@ a.wp-kpi.wp-kpi--attention {
     padding-left: 0.4rem;
 }
 
+/* Dienst + groep: groep onder code (smaller) → smallere maandkolommen */
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--stacked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.05rem;
+    line-height: 1.05;
+    white-space: normal;
+    vertical-align: middle;
+}
+
+.wp-roster-cell__duty {
+    display: block;
+    font-weight: 600;
+}
+
+.wp-roster-cell__unit {
+    display: block;
+    font-size: 0.68em;
+    font-weight: 500;
+    opacity: 0.82;
+    letter-spacing: 0.01em;
+}
+
+.wp-roster-sheet--month .jss_worksheet > tbody > tr > td.wp-roster-cell--stacked {
+    padding-top: 0.12rem;
+    padding-bottom: 0.12rem;
+}
+
 .wp-roster-cell--emerald {
     background: color-mix(in srgb, var(--wp-accent) 48%, var(--wp-surface) 52%) !important;
 }

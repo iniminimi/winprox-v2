@@ -189,6 +189,36 @@ function applyWeekendColumns(worksheet, weekendCols) {
     }
 }
 
+/**
+ * Toon groepscode onder de dienst (smaller), cell-value blijft D1/G1 voor edit/save.
+ */
+function paintCellDisplay(cell, value) {
+    const text = cellText(value).trim();
+    const split = text === '' ? null : splitDutyAndUnit(text);
+    const hadStack = cell.classList.contains('wp-roster-cell--stacked');
+
+    if (split && split[1] && !text.includes('\n')) {
+        const duty = split[0];
+        const unit = split[1].toUpperCase();
+        cell.classList.add('wp-roster-cell--stacked');
+        cell.replaceChildren();
+        const dutyEl = document.createElement('span');
+        dutyEl.className = 'wp-roster-cell__duty';
+        dutyEl.textContent = duty;
+        const unitEl = document.createElement('span');
+        unitEl.className = 'wp-roster-cell__unit';
+        unitEl.textContent = unit;
+        cell.append(dutyEl, unitEl);
+
+        return;
+    }
+
+    cell.classList.remove('wp-roster-cell--stacked');
+    if (hadStack || cell.querySelector('.wp-roster-cell__duty')) {
+        cell.textContent = cellText(value);
+    }
+}
+
 function applyCellClasses(worksheet, payload) {
     if (!worksheet || typeof worksheet.getData !== 'function') {
         return;
@@ -214,6 +244,7 @@ function applyCellClasses(worksheet, payload) {
                 }
             });
             cell.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
+            paintCellDisplay(cell, value);
             const worker = payload.workers?.[rowIndex];
             const parsed = parseRosterCell(value, types, catalogForWorker(worker, payload.units));
             const date = payload.dates?.[colIndex - 1];
