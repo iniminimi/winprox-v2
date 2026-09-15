@@ -1,6 +1,9 @@
 <?php
 
+use App\Livewire\Locations\Index as LocationIndex;
 use App\Livewire\Platform\Tenants;
+use App\Models\Category;
+use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Tenant;
 use App\Models\User;
@@ -94,6 +97,41 @@ it('beëindigt support view vanaf de tenantlijst en herlaadt platform', function
         ->assertRedirect(route('platform.tenants'));
 
     expect(SupportTenantContext::isActive())->toBeFalse();
+});
+
+it('laat superuser in support view een categorie bekijken zonder te wijzigen', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $super = User::factory()->superuser()->create();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Kamers',
+        'show_previous_issues' => false,
+    ]);
+    $category->teams()->sync([$team->id]);
+
+    Livewire::actingAs($super)
+        ->test(Tenants::class)
+        ->call('startSupport', $tenant->id)
+        ->assertRedirect(route('dashboard'));
+
+    Livewire::actingAs($super)
+        ->test(LocationIndex::class, ['section' => 'categories'])
+        ->assertSee('Kamers')
+        ->assertSee(__('common.button.view'))
+        ->assertDontSee(__('locations.categories.add'))
+        ->call('openEditCategory', $category->id)
+        ->assertSet('showCategoriesModal', true)
+        ->assertSet('categoryName', 'Kamers')
+        ->assertSet('categoryShowPreviousIssues', false)
+        ->assertSee(__('locations.categories.view_title'))
+        ->assertDontSee(__('common.button.save'))
+        ->call('saveCategory')
+        ->assertForbidden();
+
+    expect($category->fresh()->name)->toBe('Kamers')
+        ->and($category->fresh()->show_previous_issues)->toBeFalse();
 });
 
 it('blokkeert platform voor normale gebruikers', function () {

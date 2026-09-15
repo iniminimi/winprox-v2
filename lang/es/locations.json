@@ -255,6 +255,7 @@
         "title": "Categorías",
         "subtitle": "Agrupe units (máquinas, salas, zonas) y vincule equipos.",
         "edit_title": "Editar categoría",
+        "view_title": "Ver categoría",
         "add_title": "Añadir categoría",
         "add": "Añadir categoría",
         "confirm_delete": "¿Eliminar esta categoría? Las unidades vinculadas perderán su categoría.",

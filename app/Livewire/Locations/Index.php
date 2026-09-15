@@ -21,6 +21,7 @@ use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Support\Onboarding\TenantOnboardingState;
+use App\Support\Platform\SupportTenantContext;
 use App\Support\Tenant\TenantWorkMenuAccess;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\Schema;
@@ -360,10 +361,22 @@ class Index extends Component
         $this->resetErrorBag();
     }
 
+    public function canMutateOpenedCategory(): bool
+    {
+        if ($this->editingCategoryId === null) {
+            return auth()->user()?->can('create', Category::class) === true;
+        }
+
+        $category = Category::query()->find($this->editingCategoryId);
+
+        return $category instanceof Category
+            && auth()->user()?->can('update', $category) === true;
+    }
+
     public function openEditCategory(int $categoryId): void
     {
         $category = Category::query()->findOrFail($categoryId);
-        $this->authorize('update', $category);
+        $this->authorize('view', $category);
         $this->editingCategoryId = (int) $category->id;
         $this->categoryName = (string) $category->name;
         $this->categoryAllowGpsLocation = (bool) $category->allow_gps_location;
@@ -402,6 +415,12 @@ class Index extends Component
 
     public function saveCategory(CreateCategoryAction $createCategory, UpdateCategoryAction $updateCategory, SyncCategoryTeamsAction $syncTeams): void
     {
+        if ($this->editingCategoryId === null) {
+            $this->authorize('create', Category::class);
+        } else {
+            $this->authorize('update', Category::query()->findOrFail($this->editingCategoryId));
+        }
+
         $tenantId = (int) auth()->user()->tenant_id;
 
         $rules = $this->editingCategoryId === null
@@ -454,7 +473,6 @@ class Index extends Component
         }
 
         if ($this->editingCategoryId === null) {
-            $this->authorize('create', Category::class);
             $category = $createCategory->handle($tenantId, [
                 'name' => $validated['categoryName'],
                 'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
@@ -468,7 +486,6 @@ class Index extends Component
             ], (int) auth()->id());
         } else {
             $category = Category::query()->findOrFail($this->editingCategoryId);
-            $this->authorize('update', $category);
             $updateCategory->handle($category, [
                 'name' => $validated['categoryName'],
                 'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
@@ -646,7 +663,7 @@ class Index extends Component
             : collect();
 
         $categories = $categoriesEnabled
-            ? Category::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language'])
+            ? Category::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language', 'tenant_id'])
             : collect();
 
         $categoryTranslationLocales = config('locales.labels', []);
@@ -665,6 +682,7 @@ class Index extends Component
 
         $locationTranslationLocales = config('locales.labels', []);
         $editingLocation = null;
+        $viewerTenant = $this->viewerTenant();
         if ($this->showModal && $this->editingLocationId !== null) {
             $editingLocation = Location::query()->find($this->editingLocationId);
 
@@ -688,9 +706,24 @@ class Index extends Component
             'locationTranslationLocales' => $locationTranslationLocales,
             'categoryTranslationLocales' => $categoryTranslationLocales,
             'onboarding' => TenantOnboardingState::current(),
-            'workMenuReservationsEnabled' => auth()->user()?->tenant?->workMenuReservationsEnabled() ?? true,
-            'workMenuUnitMeasurementsEnabled' => auth()->user()?->tenant?->workMenuUnitMeasurementsEnabled() ?? true,
-            'presenceComplianceEnabled' => (bool) (auth()->user()?->tenant?->presenceComplianceEnabled()),
+            'canMutateOpenedCategory' => $this->canMutateOpenedCategory(),
+            'workMenuReservationsEnabled' => $viewerTenant?->workMenuReservationsEnabled() ?? true,
+            'workMenuUnitMeasurementsEnabled' => $viewerTenant?->workMenuUnitMeasurementsEnabled() ?? true,
+            'presenceComplianceEnabled' => (bool) ($viewerTenant?->presenceComplianceEnabled()),
         ]);
+    }
+
+    private function viewerTenant(): ?Tenant
+    {
+        $user = auth()->user();
+        if ($user?->tenant instanceof Tenant) {
+            return $user->tenant;
+        }
+
+        if ($user?->is_superuser && SupportTenantContext::isActive()) {
+            return Tenant::query()->find(SupportTenantContext::activeTenantId());
+        }
+
+        return null;
     }
 }

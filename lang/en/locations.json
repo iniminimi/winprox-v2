@@ -255,6 +255,7 @@
         "title": "Categories",
         "subtitle": "Group units (machines, rooms, zones) and link teams.",
         "edit_title": "Edit category",
+        "view_title": "View category",
         "add_title": "Add category",
         "add": "Add category",
         "confirm_delete": "Delete this category? Linked units will lose their category.",

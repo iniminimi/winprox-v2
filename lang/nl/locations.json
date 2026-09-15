@@ -255,6 +255,7 @@
         "title": "Categorieën",
         "subtitle": "Groepeer units (machines, ruimtes, zones) en koppel teams.",
         "edit_title": "Categorie bewerken",
+        "view_title": "Categorie bekijken",
         "add_title": "Categorie toevoegen",
         "add": "Categorie toevoegen",
         "confirm_delete": "Deze categorie verwijderen? Gekoppelde units verliezen hun categorie.",

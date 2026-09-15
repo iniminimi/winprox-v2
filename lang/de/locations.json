@@ -255,6 +255,7 @@
         "title": "Kategorien",
         "subtitle": "Gruppieren Sie Units (Maschinen, Räume, Zonen) und verknüpfen Sie Teams.",
         "edit_title": "Kategorie bearbeiten",
+        "view_title": "Kategorie ansehen",
         "add_title": "Kategorie hinzufügen",
         "add": "Kategorie hinzufügen",
         "confirm_delete": "Diese Kategorie löschen? Verknüpfte Units verlieren ihre Kategorie.",

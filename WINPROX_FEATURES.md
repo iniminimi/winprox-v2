@@ -131,6 +131,7 @@ Alleen voor platformbeheerders (`is_superuser`), routes onder `/platform`:
 - Handleiding-screenshots (platform-tool)
 
 Support: tenant **impersoneren** (`support.tenant`) voor hulp zonder tenant-login.
+Categorieën in support view zijn **alleen-lezen** (bekijken van vinkjes, geen opslaan).
 
 ---
 

@@ -20,9 +20,11 @@
         </div>
         <div class="wp-cluster">
             @if ($isCategories)
-                <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseCategoriesAdd]) wire:click="openCategoriesModal">
-                    {{ __('locations.categories.add') }}
-                </button>
+                @can('create', \App\Models\Category::class)
+                    <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseCategoriesAdd]) wire:click="openCategoriesModal">
+                        {{ __('locations.categories.add') }}
+                    </button>
+                @endcan
             @else
                 <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseAddLocationButton]) wire:click="openCreate">
                     {{ __('locations.add') }}
@@ -45,9 +47,15 @@
                                 <span class="wp-data-row-title">{{ $category->localizedName() }}</span>
                             </div>
                             <div class="wp-cluster wp-cluster--tight">
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.edit') }}</button>
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteCategory({{ $category->id }})"
-                                        wire:confirm="{{ __('locations.categories.confirm_delete') }}">{{ __('common.button.delete') }}</button>
+                                @can('update', $category)
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.edit') }}</button>
+                                @elsecan('view', $category)
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.view') }}</button>
+                                @endcan
+                                @can('delete', $category)
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteCategory({{ $category->id }})"
+                                            wire:confirm="{{ __('locations.categories.confirm_delete') }}">{{ __('common.button.delete') }}</button>
+                                @endcan
                             </div>
                         </div>
                     @endforeach
@@ -210,15 +218,15 @@
 
     @if ($showCategoriesModal)
         <x-wp-modal closeMethod="closeCategoriesModal">
-            <form wire:submit="saveCategory" class="wp-card wp-modal-card wp-modal-card--form">
+            <form @if ($canMutateOpenedCategory) wire:submit="saveCategory" @endif class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
-                    <h2 class="wp-section-title">{{ $editingCategoryId !== null ? __('locations.categories.edit_title') : __('locations.categories.add_title') }}</h2>
+                    <h2 class="wp-section-title">{{ $editingCategoryId !== null ? ($canMutateOpenedCategory ? __('locations.categories.edit_title') : __('locations.categories.view_title')) : __('locations.categories.add_title') }}</h2>
                     <x-wp-modal-close wire:click="closeCategoriesModal" />
                 </div>
                 <div class="wp-modal-body wp-stack">
                 <div class="wp-field">
                     <label class="wp-label">{{ __('locations.categories.fields.name') }}</label>
-                    <input type="text" class="wp-input" wire:model="categoryName" />
+                    <input type="text" class="wp-input" wire:model="categoryName" @disabled(! $canMutateOpenedCategory) />
                     @error('categoryName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
 
@@ -252,10 +260,11 @@
 
                                 <label class="wp-field">
                                     <span class="wp-label">{{ __('locations.categories.translation_edit.name') }}</span>
-                                    <textarea class="wp-input" wire:model="categoryTranslationName" rows="1"></textarea>
+                                    <textarea class="wp-input" wire:model="categoryTranslationName" rows="1" @disabled(! $canMutateOpenedCategory)></textarea>
                                     @error('categoryTranslationName') <span class="wp-error">{{ $message }}</span> @enderror
                                 </label>
 
+                                @if ($canMutateOpenedCategory)
                                 <div class="wp-row">
                                     <button
                                         type="button"
@@ -270,6 +279,7 @@
                                         <span>{{ __('locations.categories.translation_edit.save') }}</span>
                                     </button>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -279,7 +289,7 @@
                 <div class="wp-field">
                     <x-wp-tooltip :text="__('locations.categories.allow_gps_location_hint')" wrap>
                         <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryAllowGpsLocation" />
+                            <input type="checkbox" wire:model="categoryAllowGpsLocation" @disabled(! $canMutateOpenedCategory) />
                             <span>{{ __('locations.categories.fields.allow_gps_location') }}</span>
                         </label>
                     </x-wp-tooltip>
@@ -291,7 +301,7 @@
                         <x-wp-tooltip :text="__('locations.categories.is_reservable_hint')" wrap>
                             <label class="wp-check">
                                 <input type="checkbox" wire:model="categoryIsReservable"
-                                    @disabled(! $workMenuReservationsEnabled && ! $categoryIsReservable) />
+                                    @disabled((! $workMenuReservationsEnabled && ! $categoryIsReservable) || ! $canMutateOpenedCategory) />
                                 <span>{{ __('locations.categories.fields.is_reservable') }}</span>
                             </label>
                         </x-wp-tooltip>
@@ -302,7 +312,7 @@
                 <div class="wp-field">
                     <x-wp-tooltip :text="__('locations.categories.allow_unit_checks_hint')" wrap>
                         <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryAllowUnitChecks" />
+                            <input type="checkbox" wire:model="categoryAllowUnitChecks" @disabled(! $canMutateOpenedCategory) />
                             <span>{{ __('locations.categories.fields.allow_unit_checks') }}</span>
                         </label>
                     </x-wp-tooltip>
@@ -314,7 +324,7 @@
                         <x-wp-tooltip :text="__('locations.categories.allow_unit_measurements_hint')" wrap>
                             <label class="wp-check">
                                 <input type="checkbox" wire:model="categoryAllowUnitMeasurements"
-                                    @disabled(! $workMenuUnitMeasurementsEnabled && ! $categoryAllowUnitMeasurements) />
+                                    @disabled((! $workMenuUnitMeasurementsEnabled && ! $categoryAllowUnitMeasurements) || ! $canMutateOpenedCategory) />
                                 <span>{{ __('locations.categories.fields.allow_unit_measurements') }}</span>
                             </label>
                         </x-wp-tooltip>
@@ -325,7 +335,7 @@
                 <div class="wp-field">
                     <x-wp-tooltip :text="__('locations.categories.require_reporter_contact_hint')" wrap>
                         <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryRequireReporterContact" />
+                            <input type="checkbox" wire:model="categoryRequireReporterContact" @disabled(! $canMutateOpenedCategory) />
                             <span>{{ __('locations.categories.fields.require_reporter_contact') }}</span>
                         </label>
                     </x-wp-tooltip>
@@ -335,7 +345,7 @@
                 <div class="wp-field">
                     <x-wp-tooltip :text="__('locations.categories.require_reporter_email_verification_hint')" wrap>
                         <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryRequireReporterEmailVerification" />
+                            <input type="checkbox" wire:model="categoryRequireReporterEmailVerification" @disabled(! $canMutateOpenedCategory) />
                             <span>{{ __('locations.categories.fields.require_reporter_email_verification') }}</span>
                         </label>
                     </x-wp-tooltip>
@@ -345,7 +355,7 @@
                 <div class="wp-field">
                     <x-wp-tooltip :text="__('locations.categories.show_previous_issues_hint')" wrap>
                         <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryShowPreviousIssues" />
+                            <input type="checkbox" wire:model="categoryShowPreviousIssues" @disabled(! $canMutateOpenedCategory) />
                             <span>{{ __('locations.categories.fields.show_previous_issues') }}</span>
                         </label>
                     </x-wp-tooltip>
@@ -368,6 +378,7 @@
                                 <input type="checkbox"
                                        wire:model.live="selectedCategoryTeamIds"
                                        value="{{ $team->id }}"
+                                       @disabled(! $canMutateOpenedCategory)
                                        @if ($isTeamSelected) checked @endif>
                                 <span>{{ $team->localizedName() }}</span>
                             </label>
@@ -385,12 +396,14 @@
                     @else
                         <button type="button" class="btn btn--ghost" wire:click="closeCategoriesModal">{{ __('common.button.cancel') }}</button>
                     @endif
+                    @if ($canMutateOpenedCategory)
                     <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="saveCategory">
                         <span wire:loading wire:target="saveCategory" class="wp-mr-2">
                             <x-wp-spinner size="sm" />
                         </span>
                         <span>{{ $editingCategoryId !== null ? __('common.button.save') : __('locations.categories.add') }}</span>
                     </button>
+                    @endif
                 </div>
             </form>
         </x-wp-modal>

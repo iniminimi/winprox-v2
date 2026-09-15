@@ -4,12 +4,18 @@ namespace App\Policies;
 
 use App\Models\Category;
 use App\Models\User;
+use App\Support\Platform\SuperuserTenantAccess;
 
 class CategoryPolicy
 {
     public function viewAny(User $user): bool
     {
         return $user->is_superuser || $user->tenant_id !== null;
+    }
+
+    public function view(User $user, Category $category): bool
+    {
+        return SuperuserTenantAccess::canAccessTenant($user, (int) $category->tenant_id);
     }
 
     public function create(User $user): bool
@@ -19,7 +25,11 @@ class CategoryPolicy
 
     public function update(User $user, Category $category): bool
     {
-        if ($user->tenant_id !== $category->tenant_id) {
+        if ($user->is_superuser) {
+            return false;
+        }
+
+        if ((int) $user->tenant_id !== (int) $category->tenant_id) {
             return false;
         }
 
@@ -28,7 +38,11 @@ class CategoryPolicy
 
     public function delete(User $user, Category $category): bool
     {
-        if ($user->tenant_id !== $category->tenant_id) {
+        if ($user->is_superuser) {
+            return false;
+        }
+
+        if ((int) $user->tenant_id !== (int) $category->tenant_id) {
             return false;
         }
 
@@ -37,7 +51,11 @@ class CategoryPolicy
 
     public function syncTeams(User $user, Category $category): bool
     {
-        if ($user->tenant_id !== $category->tenant_id) {
+        if ($user->is_superuser) {
+            return false;
+        }
+
+        if ((int) $user->tenant_id !== (int) $category->tenant_id) {
             return false;
         }
 

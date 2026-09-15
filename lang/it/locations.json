@@ -255,6 +255,7 @@
         "title": "Categorie",
         "subtitle": "Raggruppi le unit (macchine, stanze, zone) e colleghi i team.",
         "edit_title": "Modifica categoria",
+        "view_title": "Visualizza categoria",
         "add_title": "Aggiungi categoria",
         "add": "Aggiungi categoria",
         "confirm_delete": "Eliminare questa categoria? Le unità collegate perderanno la categoria.",
