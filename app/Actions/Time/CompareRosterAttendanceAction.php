@@ -2,7 +2,6 @@
 
 namespace App\Actions\Time;
 
-use App\Enums\PlannedShiftStatus;
 use App\Enums\RosterAttendanceStatus;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
@@ -18,13 +17,14 @@ class CompareRosterAttendanceAction
      * @param  list<string>  $dates
      * @return array<string, string>
      */
-    public function handle(int $tenantId, Collection $shifts, array $workerIds, array $dates): array
+    public function handle(int $tenantId, Collection $shifts, array $workerIds, array $dates, ?Carbon $now = null): array
     {
         if ($workerIds === [] || $dates === []) {
             return [];
         }
 
-        $today = now()->toDateString();
+        $now = ($now ?? now())->copy();
+        $today = $now->toDateString();
         $from = Carbon::parse($dates[0])->startOfDay();
         $to = Carbon::parse($dates[array_key_last($dates)])->endOfDay();
 
@@ -45,7 +45,7 @@ class CompareRosterAttendanceAction
         $result = [];
         foreach ($workerIds as $workerId) {
             foreach ($dates as $date) {
-                if ($date >= $today) {
+                if ($date > $today) {
                     continue;
                 }
 
@@ -58,7 +58,7 @@ class CompareRosterAttendanceAction
                     $planned = null;
                 }
 
-                $result[$key] = $this->status($planned, $hasPunch, $dayPunches)->value;
+                $result[$key] = $this->status($planned, $hasPunch, $dayPunches, $date, $now)->value;
             }
         }
 
@@ -71,20 +71,25 @@ class CompareRosterAttendanceAction
     /**
      * @param  Collection<int, WorkShift>  $dayPunches
      */
-    private function status(?PlannedShift $planned, bool $hasPunch, Collection $dayPunches): RosterAttendanceStatus
-    {
+    private function status(
+        ?PlannedShift $planned,
+        bool $hasPunch,
+        Collection $dayPunches,
+        string $date,
+        Carbon $now,
+    ): RosterAttendanceStatus {
         if ($planned === null) {
             return $hasPunch ? RosterAttendanceStatus::Unplanned : RosterAttendanceStatus::None;
         }
 
         if ($planned->kind->isWork()) {
-            if (! $hasPunch) {
-                return RosterAttendanceStatus::Missing;
+            if ($hasPunch) {
+                return $this->workPunchStatus($planned, $dayPunches, $date, $now);
             }
 
-            return $this->workMatches($planned, $dayPunches)
-                ? RosterAttendanceStatus::Ok
-                : RosterAttendanceStatus::Deviation;
+            return $this->plannedEndPassed($planned, $date, $now)
+                ? RosterAttendanceStatus::Missing
+                : RosterAttendanceStatus::None;
         }
 
         return $hasPunch ? RosterAttendanceStatus::Unplanned : RosterAttendanceStatus::Ok;
@@ -93,32 +98,58 @@ class CompareRosterAttendanceAction
     /**
      * @param  Collection<int, WorkShift>  $dayPunches
      */
-    private function workMatches(PlannedShift $planned, Collection $dayPunches): bool
-    {
+    private function workPunchStatus(
+        PlannedShift $planned,
+        Collection $dayPunches,
+        string $date,
+        Carbon $now,
+    ): RosterAttendanceStatus {
         if ($planned->start_time === null || $planned->end_time === null) {
-            return false;
+            return RosterAttendanceStatus::Deviation;
         }
 
         $start = ShiftType::timeToMinutes($planned->start_time);
         $end = ShiftType::timeToMinutes($planned->end_time);
+        $pastEnd = $this->plannedEndPassed($planned, $date, $now);
 
         foreach ($dayPunches as $punch) {
             $in = ($punch->clock_in_at->hour * 60) + $punch->clock_in_at->minute;
-            if ($in > $start) {
-                return false;
+            if ($in !== $start) {
+                return RosterAttendanceStatus::Deviation;
             }
-            if ($in < $start) {
-                return false;
-            }
+
             if ($punch->clock_out_at === null) {
-                return false;
+                return $pastEnd
+                    ? RosterAttendanceStatus::Deviation
+                    : RosterAttendanceStatus::Ok;
             }
+
             $out = ($punch->clock_out_at->hour * 60) + $punch->clock_out_at->minute;
             if ($out < $end) {
-                return false;
+                return RosterAttendanceStatus::Deviation;
             }
         }
 
-        return true;
+        return RosterAttendanceStatus::Ok;
+    }
+
+    private function plannedEndPassed(PlannedShift $planned, string $date, Carbon $now): bool
+    {
+        if ($date < $now->toDateString()) {
+            return true;
+        }
+
+        if ($date > $now->toDateString()) {
+            return false;
+        }
+
+        if ($planned->end_time === null) {
+            return $now->greaterThanOrEqualTo(Carbon::parse($date)->endOfDay());
+        }
+
+        $endMinutes = ShiftType::timeToMinutes($planned->end_time);
+        $plannedEnd = Carbon::parse($date)->startOfDay()->addMinutes($endMinutes);
+
+        return $now->greaterThanOrEqualTo($plannedEnd);
     }
 }

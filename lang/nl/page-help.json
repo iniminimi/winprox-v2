@@ -1591,7 +1591,7 @@
                 },
                 {
                     "label": "Gepland vs geklokt",
-                    "text": "Op <strong>verleden</strong> dagen van een <strong>gepubliceerde</strong> periode markeert het rooster ontbrekende prikken, afwijkingen en ongeplande prikken. Afwezigheid zonder prik is in orde. Publiceren stuurt niets naar de RSZ."
+                    "text": "Op een <strong>gepubliceerde</strong> periode markeert het rooster afwijkingen (te laat/te vroeg) meteen, ook <strong>vandaag</strong>. Ontbrekende prikken pas na het geplande einde (of op vorige dagen). Ongeplande prikken en afwezigheid zonder prik blijven zoals eerder. Publiceren stuurt niets naar de RSZ."
                 }
             ]
         },

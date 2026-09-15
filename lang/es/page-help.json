@@ -1591,7 +1591,7 @@
                 },
                 {
                     "label": "Planificado vs fichado",
-                    "text": "En días <strong>pasados</strong> de un periodo <strong>publicado</strong>, la cuadrícula marca fichajes faltantes, desviaciones y fichajes no previstos. Una ausencia sin fichaje es correcta."
+                    "text": "En un periodo <strong>publicado</strong>, la cuadrícula marca desviaciones (tarde/temprano) de inmediato, también <strong>hoy</strong>. Fichajes faltantes solo después del fin previsto (o en días pasados). Fichajes no previstos y ausencia sin fichaje siguen igual."
                 }
             ]
         },

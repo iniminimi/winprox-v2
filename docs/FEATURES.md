@@ -759,8 +759,11 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   worden overgeslagen. Badge = ongelezen `roster_published` (`wp-pill--new`). Klik opent de
   maand van de nieuwste ongelezen publicatie en zet `read_at` voor dat type. Geen inbox, geen
   mail, geen Laravel notifications.
-- **Golf 2 — gepland vs geklokt:** alleen beheer, verleden, published. Missing / deviation /
-  unplanned / ok. Afwezigheid zonder prik = ok; mét prik = ungepland. Geen locatievergelijking.
+- **Golf 2 — gepland vs geklokt:** alleen beheer, **published**. Missing / deviation /
+  unplanned / ok. **Deviation** (te laat/te vroeg inklokken, te vroeg uit, open na einde)
+  meteen, ook **vandaag**. **Missing** pas na het geplande einde (of op vorige dagen).
+  Toekomstige dagen: geen markering. Afwezigheid zonder prik = ok; mét prik = ungepland.
+  Geen locatievergelijking.
 - **Niet in deze slice:** saldo, aanvraag/ruilen, CSV, rusttijden, beschikbaarheid, mail/SMS.
 
 ---

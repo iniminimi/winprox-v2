@@ -1591,7 +1591,7 @@
                 },
                 {
                     "label": "Pianificato vs timbrato",
-                    "text": "Nei giorni <strong>passati</strong> di un periodo <strong>pubblicato</strong> la griglia marca timbrature mancanti, scostamenti e timbrature non previste. Un’assenza senza timbratura è corretta."
+                    "text": "In un periodo <strong>pubblicato</strong> la griglia marca gli scostamenti (in ritardo/in anticipo) subito, anche <strong>oggi</strong>. Timbrature mancanti solo dopo la fine prevista (o nei giorni passati). Timbrature non previste e assenza senza timbratura restano come prima."
                 }
             ]
         },

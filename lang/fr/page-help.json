@@ -1599,7 +1599,7 @@
                 },
                 {
                     "label": "Planifié vs pointé",
-                    "text": "Sur les jours <strong>passés</strong> d’une période <strong>publiée</strong>, la grille marque les pointages manquants, les écarts et les pointages non prévus. Une absence sans pointage est correcte."
+                    "text": "Sur une période <strong>publiée</strong>, la grille marque les écarts (en retard/en avance) immédiatement, y compris <strong>aujourd’hui</strong>. Pointages manquants seulement après la fin prévue (ou les jours passés). Pointages non prévus et absence sans pointage restent comme avant."
                 }
             ]
         },

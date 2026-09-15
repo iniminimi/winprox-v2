@@ -325,7 +325,7 @@
             "slug": "time_schedule",
             "type": "text",
             "title": "Wat is het uurrooster?",
-            "body": "Onder Time → Uurrooster plant u diensten per uitvoerder: typ een code (shiftype) of een vrije tijd zoals 07:00-15:00. U kunt ook afwezigheidscodes (verlof, recup, ziek) instellen onder Time → Shiftypes; die vullen de hele dag en tellen geen uren. U schakelt tussen week en maand. Opslaan bewaart de zichtbare periode; publiceren maakt die zichtbaar op Clock Point (Mijn rooster) en toont een badge. Publiceren stuurt niets naar de RSZ. Op verleden dagen toont het beheer-rooster of er geklokt is. Een week kopiëren (alleen weekweergave) is alles-of-niets.",
+            "body": "Onder Time → Uurrooster plant u diensten per uitvoerder: typ een code (shiftype) of een vrije tijd zoals 07:00-15:00. U kunt ook afwezigheidscodes (verlof, recup, ziek) instellen onder Time → Shiftypes; die vullen de hele dag en tellen geen uren. U schakelt tussen week en maand. Opslaan bewaart de zichtbare periode; publiceren maakt die zichtbaar op Clock Point (Mijn rooster) en toont een badge. Publiceren stuurt niets naar de RSZ. Afwijkingen (te laat inklokken) ziet u meteen, ook vandaag; ontbrekende prikken pas na het geplande einde. Een week kopiëren (alleen weekweergave) is alles-of-niets.",
             "summary": "Time → Uurrooster: codes, afwezigheid, Mijn rooster op Clock Point, gepland vs geklokt."
         }
     }
