@@ -507,6 +507,10 @@
     width: 100%;
 }
 
+.wp-main:has(.wp-roster-page--month) {
+    max-width: none;
+}
+
 /* Zwevend WinProx-logo rechtsboven (V1). */
 .wp-brand-float {
     position: fixed;

@@ -1,5 +1,5 @@
 <div
-    class="wp-stack"
+    @class(['wp-stack', 'wp-roster-page--month' => $isMonth])
     data-manual-capture="time-schedule"
     x-data
     x-init="window.wpRosterSheet && window.wpRosterSheet.bind($el, $wire)"

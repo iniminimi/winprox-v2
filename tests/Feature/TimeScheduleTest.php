@@ -311,6 +311,7 @@ it('toont een maandoverzicht met dagnummers', function () {
         ->get(route('time.schedule.index', ['view' => 'month', 'week' => '2026-09-01']))
         ->assertOk()
         ->assertSee(__('time.schedule.view_month'), false)
+        ->assertSee('wp-roster-page--month', false)
         ->assertSee('wp-roster-month', false);
 
     $snapshot = app(ListRosterWeekAction::class)->handle(

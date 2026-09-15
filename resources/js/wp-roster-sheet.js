@@ -223,7 +223,35 @@ export function bind(root, wire) {
 
         worksheet = Array.isArray(instances) ? instances[0] : instances;
         applyCellClasses(worksheet, payload);
+        if (isMonth) {
+            requestAnimationFrame(() => fitMonthColumns(worksheet, grid, dayCount));
+        }
     };
+
+    const fitMonthColumns = (sheet, host, dayCount) => {
+        if (!sheet || typeof sheet.setWidth !== 'function' || dayCount < 1) {
+            return;
+        }
+        const nameWidth = 132;
+        const total = Math.floor(host.clientWidth);
+        const dayWidth = Math.max(36, Math.floor((total - nameWidth) / dayCount));
+        sheet.setWidth(0, nameWidth);
+        const dayIndexes = [];
+        const dayWidths = [];
+        for (let i = 1; i <= dayCount; i += 1) {
+            dayIndexes.push(i);
+            dayWidths.push(dayWidth);
+        }
+        sheet.setWidth(dayIndexes, dayWidths);
+    };
+
+    if (typeof ResizeObserver === 'function') {
+        new ResizeObserver(() => {
+            if (payload?.period === 'month' && worksheet) {
+                fitMonthColumns(worksheet, grid, payload.dates.length);
+            }
+        }).observe(grid);
+    }
 
     root.querySelector('[data-wp-roster-save]')?.addEventListener('click', async () => {
         if (!worksheet || !payload) {

@@ -5658,6 +5658,22 @@ a.wp-kpi.wp-kpi--attention {
     font-weight: 700;
 }
 
+.wp-roster-sheet--month {
+    width: 100%;
+}
+
+.wp-roster-sheet--month .jss_container,
+.wp-roster-sheet--month .jss_content,
+.wp-roster-sheet--month .jss_overflow {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.wp-roster-sheet--month .jss_worksheet {
+    width: 100% !important;
+}
+
 .wp-roster-sheet--month .jss_worksheet > thead > tr > td {
     white-space: pre-line;
     text-align: center;
