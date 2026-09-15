@@ -2,8 +2,46 @@ import jspreadsheet from 'jspreadsheet-ce';
 import 'jspreadsheet-ce/dist/jspreadsheet.css';
 import 'jsuites/dist/jsuites.css';
 
+function cellText(raw) {
+    if (raw == null) {
+        return '';
+    }
+    if (typeof raw === 'object') {
+        if (raw.value != null && typeof raw.value !== 'object') {
+            return String(raw.value);
+        }
+        if (typeof raw.display === 'string') {
+            return raw.display;
+        }
+
+        return '';
+    }
+
+    return String(raw);
+}
+
+function pasteGrid(data) {
+    if (typeof data === 'string') {
+        return data.replace(/\r\n|\r/g, '\n').split('\n').map((line) => line.split('\t'));
+    }
+    if (!Array.isArray(data)) {
+        return [];
+    }
+
+    return data.map((row) => {
+        if (typeof row === 'string') {
+            return row.split('\t');
+        }
+        if (!Array.isArray(row)) {
+            return [cellText(row)];
+        }
+
+        return row.map(cellText);
+    });
+}
+
 function parseRosterCell(raw, types) {
-    const trimmed = String(raw ?? '').trim();
+    const trimmed = cellText(raw).trim();
     if (trimmed === '') {
         return { kind: 'empty' };
     }
@@ -97,7 +135,7 @@ function collectCells(worksheet, payload) {
             cells.push({
                 worker_id: worker.id,
                 date,
-                raw: raw == null ? '' : String(raw),
+                raw: cellText(raw),
             });
         });
     });
@@ -208,25 +246,17 @@ export function bind(root, wire) {
                 if (Number(x) === 0) {
                     return false;
                 }
-                if (typeof value === 'string' && value.trim().startsWith('=')) {
+                value = cellText(value);
+                if (value.trim().startsWith('=')) {
                     return false;
                 }
-                if (typeof value === 'string' && !value.includes('-')) {
+                if (!value.includes('-')) {
                     return value.trim().toUpperCase();
                 }
 
                 return value;
             },
-            onbeforepaste: (_instance, data) => {
-                if (typeof data === 'string') {
-                    return data
-                        .split('\n')
-                        .map((line) => line.split('\t').slice(0, dayCount).join('\t'))
-                        .join('\n');
-                }
-
-                return data;
-            },
+            onbeforepaste: (_instance, data) => pasteGrid(data).map((line) => line.slice(0, dayCount)),
             onafterchanges: (instance) => {
                 applyCellClasses(instance, payload);
             },
