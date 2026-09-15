@@ -452,7 +452,8 @@
         "nav_prev": "Zurück",
         "nav_next": "Weiter",
         "week_current": "Aktuelle Woche (:number)",
-        "week_numbered": "Woche (:number)"
+        "week_numbered": "Woche (:number)",
+        "weekends": "Wochenenden an"
     },
     "shift_types": {
         "title": "Schichttypen",

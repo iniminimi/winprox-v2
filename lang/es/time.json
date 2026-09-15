@@ -452,7 +452,8 @@
         "nav_prev": "Anterior",
         "nav_next": "Siguiente",
         "week_current": "Semana actual (:number)",
-        "week_numbered": "Semana (:number)"
+        "week_numbered": "Semana (:number)",
+        "weekends": "Fines de semana"
     },
     "shift_types": {
         "title": "Tipos de turno",

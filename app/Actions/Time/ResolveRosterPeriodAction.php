@@ -14,10 +14,19 @@ class ResolveRosterPeriodAction
     /**
      * @return array{0: Carbon, 1: Carbon, 2: list<string>}
      */
-    public function handle(string $cursor, string $period = 'week'): array
+    public function handle(string $cursor, string $period = 'week', bool $includeWeekends = true): array
     {
-        return $period === 'month'
+        [$start, $end, $dates] = $period === 'month'
             ? $this->resolveMonth->handle($cursor)
             : $this->resolveWeek->handle($cursor);
+
+        if ($period === 'week' && ! $includeWeekends) {
+            $dates = array_values(array_filter(
+                $dates,
+                fn (string $date) => ! Carbon::parse($date)->isWeekend(),
+            ));
+        }
+
+        return [$start, $end, $dates];
     }
 }

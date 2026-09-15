@@ -1563,7 +1563,7 @@
             "actions": [
                 {
                     "label": "Weergave",
-                    "text": "Schakel tussen <strong>week</strong> en <strong>maand</strong>. Opslaan en publiceren gelden voor de zichtbare periode. Een week kopiëren kan alleen in weekweergave."
+                    "text": "Schakel tussen <strong>week</strong> en <strong>maand</strong>. In weekweergave toont <strong>Weekends aan</strong> zaterdag en zondag; uit = alleen maandag tot vrijdag. Opslaan zonder weekends laat za/zo ongewijzigd. Een week kopiëren kan alleen in weekweergave."
                 },
                 {
                     "label": "Codes en vrije tijden",

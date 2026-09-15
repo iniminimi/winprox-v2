@@ -22,14 +22,16 @@ class ListRosterWeekAction
         private CompareRosterAttendanceAction $compareAttendance,
     ) {}
 
-    public function handle(int $tenantId, string $weekStart, ?int $teamId = null, ?User $actor = null, string $period = 'week'): RosterWeekSnapshot
+    public function handle(int $tenantId, string $weekStart, ?int $teamId = null, ?User $actor = null, string $period = 'week', bool $includeWeekends = true): RosterWeekSnapshot
     {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
         $period = $period === 'month' ? 'month' : 'week';
-        [$rangeStart, , $dates] = $this->resolvePeriod->handle($weekStart, $period);
-        $weekStartDate = $dates[0];
-        $weekEndDate = $dates[array_key_last($dates)];
+        [$rangeStart, $rangeEnd, $dates] = $this->resolvePeriod->handle($weekStart, $period, $includeWeekends);
+        $weekStartDate = $rangeStart->toDateString();
+        $weekEndDate = $rangeEnd->toDateString();
+        $visibleStart = $dates[0];
+        $visibleEnd = $dates[array_key_last($dates)];
 
         $workers = $this->workers($tenantId, $teamId, $actor, $weekStartDate, $weekEndDate);
         $workerIds = $workers->pluck('id')->map(fn ($id) => (int) $id)->all();
@@ -37,7 +39,7 @@ class ListRosterWeekAction
         $shifts = PlannedShift::query()
             ->with('shiftType')
             ->whereIn('worker_id', $workerIds ?: [0])
-            ->whereBetween('work_date', [$weekStartDate, $weekEndDate])
+            ->whereBetween('work_date', [$visibleStart, $visibleEnd])
             ->orderBy('start_time')
             ->get();
 

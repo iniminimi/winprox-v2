@@ -452,7 +452,8 @@
         "nav_prev": "Vorige",
         "nav_next": "Volgende",
         "week_current": "Huidige week (:number)",
-        "week_numbered": "Week (:number)"
+        "week_numbered": "Week (:number)",
+        "weekends": "Weekends aan"
     },
     "shift_types": {
         "title": "Shiftypes",

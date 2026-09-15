@@ -77,6 +77,14 @@ function scheduleCells(array $workers, string $weekStart, array $values = []): a
     return $cells;
 }
 
+function scheduleWeekdayCells(array $workers, string $weekStart, array $values = []): array
+{
+    return array_values(array_filter(
+        scheduleCells($workers, $weekStart, $values),
+        fn (array $cell) => ! Carbon::parse($cell['date'])->isWeekend(),
+    ));
+}
+
 it('parses codes, free times and rejects night shifts', function () {
     [$tenant] = scheduleTenant();
     $type = app(SaveShiftTypeAction::class)->handle(
@@ -266,6 +274,8 @@ it('opent het uurrooster voor een admin', function () {
         ->assertSee('data-wp-roster-legend', false)
         ->assertSee(__('time.schedule.nav_prev'), false)
         ->assertSee(__('time.schedule.week_current', ['number' => now()->startOfWeek(Carbon::MONDAY)->isoWeek()]), false)
+        ->assertSee(__('time.schedule.weekends'), false)
+        ->assertSee('id="schedule-weekends"', false)
         ->assertDontSee('id="schedule-type"', false)
         ->assertDontSee('<label class="wp-filter-inline-label" for="schedule-team">', false);
 
@@ -322,7 +332,8 @@ it('toont een maandoverzicht met dagnummers', function () {
         ->assertSee(__('time.schedule.view_month'), false)
         ->assertSee('wp-roster-page--month', false)
         ->assertSee('wp-roster-month', false)
-        ->assertSee(__('time.schedule.nav_next'), false);
+        ->assertSee(__('time.schedule.nav_next'), false)
+        ->assertDontSee('id="schedule-weekends"', false);
 
     $snapshot = app(ListRosterWeekAction::class)->handle(
         (int) $tenant->id,
@@ -337,6 +348,60 @@ it('toont een maandoverzicht met dagnummers', function () {
         ->and($snapshot->dayNumbers[0])->toBe(1)
         ->and($snapshot->dayNumbers[29])->toBe(30)
         ->and($snapshot->monthLabel)->toContain('2026');
+});
+
+it('toont geen weekendkolommen als weekends uit staan', function () {
+    [$tenant, $admin] = scheduleTenant();
+    $week = scheduleWeekStart();
+
+    $snapshot = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        $week,
+        null,
+        $admin,
+        'week',
+        false,
+    );
+
+    expect($snapshot->dates)->toHaveCount(5)
+        ->and($snapshot->dates)->not->toContain(Carbon::parse($week)->addDays(5)->toDateString())
+        ->and($snapshot->dates)->not->toContain(Carbon::parse($week)->addDays(6)->toDateString());
+
+    $this->actingAs($admin)
+        ->get(route('time.schedule.index', ['week' => $week, 'weekends' => 0]))
+        ->assertOk()
+        ->assertSee('id="schedule-weekends"', false);
+});
+
+it('laat weekenddiensten staan als weekends uit staan bij opslaan', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $week = scheduleWeekStart();
+    $saturday = Carbon::parse($week)->addDays(5)->toDateString();
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], scheduleCells([$worker], $week, [
+            $worker->id.':'.$saturday => '07:00-12:00',
+        ])),
+        $admin->id,
+    );
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], scheduleWeekdayCells([$worker], $week, [
+            $worker->id.':'.$week => '08:00-16:00',
+        ]), 'week', false),
+        $admin->id,
+    );
+
+    Tenancy::actAs($tenant->id);
+    $monday = PlannedShift::query()->whereDate('work_date', $week)->first();
+    $weekend = PlannedShift::query()->whereDate('work_date', $saturday)->first();
+
+    expect($monday)->not->toBeNull()
+        ->and($monday->start_time)->toBe('08:00')
+        ->and($weekend)->not->toBeNull()
+        ->and($weekend->start_time)->toBe('07:00');
 });
 
 it('slaat een maandgrid op', function () {

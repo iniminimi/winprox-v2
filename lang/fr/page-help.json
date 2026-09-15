@@ -1571,7 +1571,7 @@
             "actions": [
                 {
                     "label": "Affichage",
-                    "text": "Passez de la <strong>semaine</strong> au <strong>mois</strong>. Enregistrer et publier s’appliquent à la période visible. Copier une semaine n’existe qu’en vue semaine."
+                    "text": "Passez de la <strong>semaine</strong> au <strong>mois</strong>. En vue semaine, <strong>Week-ends activés</strong> affiche samedi et dimanche ; décoché = lundi à vendredi. Enregistrer sans week-ends laisse samedi/dimanche inchangés. Copier une semaine n’existe qu’en vue semaine."
                 },
                 {
                     "label": "Codes et heures libres",

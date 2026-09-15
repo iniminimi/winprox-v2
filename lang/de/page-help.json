@@ -1563,7 +1563,7 @@
             "actions": [
                 {
                     "label": "Ansicht",
-                    "text": "Wechseln Sie zwischen <strong>Woche</strong> und <strong>Monat</strong>. Speichern und Veröffentlichen gelten für den sichtbaren Zeitraum. Woche kopieren nur in der Wochenansicht."
+                    "text": "Wechseln Sie zwischen <strong>Woche</strong> und <strong>Monat</strong>. In der Wochenansicht zeigt <strong>Wochenenden an</strong> Samstag und Sonntag; aus = nur Montag bis Freitag. Speichern ohne Wochenenden lässt Sa/So unverändert. Woche kopieren nur in der Wochenansicht."
                 },
                 {
                     "label": "Codes und freie Zeiten",

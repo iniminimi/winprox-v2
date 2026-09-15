@@ -36,11 +36,14 @@ class TimeScheduleController extends Controller
 
         $weekStart = (string) $request->query('week_start', now()->toDateString());
         $teamId = $request->query('team_id');
+        $period = $request->query('period') === 'month' ? 'month' : 'week';
         $snapshot = $list->handle(
             (int) Tenancy::id(),
             $weekStart,
             $teamId !== null && $teamId !== '' ? (int) $teamId : null,
             $request->user(),
+            $period,
+            $request->boolean('include_weekends', true),
         );
 
         return $this->success($snapshot->toArray());
@@ -63,6 +66,7 @@ class TimeScheduleController extends Controller
                         'raw' => (string) ($cell['raw'] ?? ''),
                     ], $validated['cells']),
                     $validated['period'] ?? 'week',
+                    array_key_exists('include_weekends', $validated) ? (bool) $validated['include_weekends'] : true,
                 ),
                 $request->user()?->id,
             );

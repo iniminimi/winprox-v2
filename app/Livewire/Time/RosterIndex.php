@@ -45,6 +45,9 @@ class RosterIndex extends Component
     #[Url(as: 'team')]
     public ?int $teamFilter = null;
 
+    #[Url(as: 'weekends')]
+    public bool $showWeekends = true;
+
     public function mount(ResolveRosterPeriodAction $resolvePeriod): void
     {
         $this->authorize('viewAny', PlannedShift::class);
@@ -100,6 +103,12 @@ class RosterIndex extends Component
         $this->dispatch('roster-week-changed');
     }
 
+    public function updatedShowWeekends(): void
+    {
+        $this->showWeekends = (bool) $this->showWeekends;
+        $this->dispatch('roster-week-changed');
+    }
+
     /**
      * @return array<string, mixed>
      */
@@ -112,6 +121,7 @@ class RosterIndex extends Component
             $this->teamFilter,
             auth()->user(),
             $this->period(),
+            $this->includeWeekends(),
         );
 
         $array = $snapshot->toArray();
@@ -142,6 +152,7 @@ class RosterIndex extends Component
             [
                 'week_start' => $this->weekStart,
                 'period' => $this->period(),
+                'include_weekends' => $this->includeWeekends(),
                 'worker_ids' => $workerIds,
                 'cells' => $normalized,
             ],
@@ -151,7 +162,7 @@ class RosterIndex extends Component
         try {
             $save->handle(
                 Tenant::query()->findOrFail(Tenancy::id()),
-                new SavePlannedShiftsData($this->weekStart, $workerIds, $normalized, $this->period()),
+                new SavePlannedShiftsData($this->weekStart, $workerIds, $normalized, $this->period(), $this->includeWeekends()),
                 auth()->id(),
             );
         } catch (RosterValidationException|InvalidArgumentException $e) {
@@ -241,6 +252,7 @@ class RosterIndex extends Component
             $this->teamFilter,
             auth()->user(),
             $this->period(),
+            $this->includeWeekends(),
         );
 
         return view('livewire.time.roster-index', [
@@ -261,6 +273,11 @@ class RosterIndex extends Component
     private function isMonth(): bool
     {
         return $this->view === 'month';
+    }
+
+    private function includeWeekends(): bool
+    {
+        return $this->isMonth() || $this->showWeekends;
     }
 
     private function periodLabel(RosterWeekSnapshot $snapshot): string

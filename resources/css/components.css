@@ -4969,6 +4969,11 @@ svg.wp-release-worker-row__icon,
     padding-inline: 0.75rem;
 }
 
+.wp-time-roster-toolbar .wp-check {
+    padding: 0;
+    white-space: nowrap;
+}
+
 .wp-time-alarms-toolbar__form {
     gap: 0.625rem;
 }

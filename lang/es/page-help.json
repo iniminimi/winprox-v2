@@ -1563,7 +1563,7 @@
             "actions": [
                 {
                     "label": "Vista",
-                    "text": "Cambie entre <strong>semana</strong> y <strong>mes</strong>. Guardar y publicar aplican al periodo visible. Copiar una semana solo en vista semanal."
+                    "text": "Cambie entre <strong>semana</strong> y <strong>mes</strong>. En vista semanal, <strong>Fines de semana</strong> muestra sábado y domingo; desactivado = lunes a viernes. Guardar sin fines de semana no cambia sáb/dom. Copiar una semana solo en vista semanal."
                 },
                 {
                     "label": "Códigos y horas libres",

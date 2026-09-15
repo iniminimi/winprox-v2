@@ -31,7 +31,7 @@ class SavePlannedShiftsAction
         TimeModuleAccess::assertEnabledForTenantId((int) $tenant->id);
 
         $period = $data->period === 'month' ? 'month' : 'week';
-        [, , $dates] = $this->resolvePeriod->handle($data->weekStart, $period);
+        [, , $dates] = $this->resolvePeriod->handle($data->weekStart, $period, $data->includeWeekends);
         $weekStart = $dates[0];
         $weekEnd = $dates[array_key_last($dates)];
         $dateSet = array_fill_keys($dates, true);

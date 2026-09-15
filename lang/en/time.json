@@ -452,7 +452,8 @@
         "nav_prev": "Previous",
         "nav_next": "Next",
         "week_current": "Current week (:number)",
-        "week_numbered": "Week (:number)"
+        "week_numbered": "Week (:number)",
+        "weekends": "Weekends on"
     },
     "shift_types": {
         "title": "Shift types",

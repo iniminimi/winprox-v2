@@ -721,6 +721,8 @@ productsector op `Tenant`.
 **Doel:** geplande diensten per uitvoerder, los van geklokte `WorkShift`. Excel-achtige grid
 (Jspreadsheet CE): codes (shiftypes) of vrije tijd `07:00-15:00`. Eén cel per uitvoerder per dag.
 Week- of **maandweergave**; maandkolommen zijn smaller (dagnummer + weekdag onder de maandnaam).
+In **weekweergave** toont het vinkje **Weekends aan** zaterdag en zondag; uit = alleen maandag–vrijdag.
+Opslaan zonder weekends raakt za/zo niet. Maand toont altijd alle dagen.
 
 - **Overlap:** halfopen interval `[start, eind)` — `07:00–11:00` en `11:00–15:00` is geldig.
   Zelfde worker, echte overlap → harde fout. Nachtshift (`eind <= start`) verboden in golf 1.

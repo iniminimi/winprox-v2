@@ -1563,7 +1563,7 @@
             "actions": [
                 {
                     "label": "View",
-                    "text": "Switch between <strong>week</strong> and <strong>month</strong>. Save and publish apply to the visible period. Copying a week is week view only."
+                    "text": "Switch between <strong>week</strong> and <strong>month</strong>. In week view, <strong>Weekends on</strong> shows Saturday and Sunday; off = Monday to Friday only. Saving with weekends off leaves Sat/Sun unchanged. Copying a week is week view only."
                 },
                 {
                     "label": "Codes and free times",

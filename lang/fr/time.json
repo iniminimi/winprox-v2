@@ -452,7 +452,8 @@
         "nav_prev": "Précédent",
         "nav_next": "Suivant",
         "week_current": "Semaine actuelle (:number)",
-        "week_numbered": "Semaine (:number)"
+        "week_numbered": "Semaine (:number)",
+        "weekends": "Week-ends activés"
     },
     "shift_types": {
         "title": "Types de service",

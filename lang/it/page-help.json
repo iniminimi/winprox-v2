@@ -1563,7 +1563,7 @@
             "actions": [
                 {
                     "label": "Vista",
-                    "text": "Passa da <strong>settimana</strong> a <strong>mese</strong>. Salva e pubblica valgono per il periodo visibile. Copiare una settimana solo in vista settimana."
+                    "text": "Passa da <strong>settimana</strong> a <strong>mese</strong>. In vista settimana, <strong>Fine settimana attivi</strong> mostra sabato e domenica; spento = lunedì–venerdì. Salvare senza weekend non modifica sab/dom. Copiare una settimana solo in vista settimana."
                 },
                 {
                     "label": "Codici e orari liberi",
