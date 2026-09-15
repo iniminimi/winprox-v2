@@ -1553,6 +1553,27 @@
                     "text": "Bei <strong>Fehlgeschlagen</strong> oder <strong>Übersprungen</strong> erneut einreihen, nachdem NISS, DDT oder Zugangsdaten korrigiert wurden."
                 }
             ]
+        },
+        "time.schedule": {
+            "title": "Hilfe — Dienstplan",
+            "actions": [
+                {
+                    "label": "Codes und freie Zeiten",
+                    "text": "Geben Sie einen <strong>Code</strong> (z. B. V) oder eine Zeit <strong>07:00-15:00</strong> ein. Tab, Enter und Pfeile navigieren; Kopieren/Einfügen über mehrere Zellen. Ungültige Zellen werden markiert."
+                },
+                {
+                    "label": "Speichern und veröffentlichen",
+                    "text": "Speichern sichert die sichtbare Woche. <strong>Veröffentlichen</strong> markiert die Woche als geplant. Korrekturen bleiben veröffentlicht."
+                },
+                {
+                    "label": "Woche kopieren",
+                    "text": "<strong>In nächste Woche kopieren</strong> gilt alles-oder-nichts. Hat die Zielwoche bereits Dienste, wird die Kopie abgelehnt."
+                },
+                {
+                    "label": "Schichttypen",
+                    "text": "Unter <strong>Schichttypen</strong> legen Sie Codes fest. Eine spätere Änderung ändert bestehende Zellen nicht."
+                }
+            ]
         }
     }
 }

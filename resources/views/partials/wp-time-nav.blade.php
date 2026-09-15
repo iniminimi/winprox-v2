@@ -14,6 +14,9 @@
     <a href="{{ route('time.presence.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.presence.index') ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.nav.presence') }}
     </a>
+    <a href="{{ route('time.schedule.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.schedule.*') ? 'btn--primary' : 'btn--surface'])>
+        {{ __('time.nav.schedule') }}
+    </a>
     <a href="{{ route('time.alarms.index') }}" @class(['btn', 'btn--sm', 'wp-time-nav__alarms', request()->routeIs('time.alarms.*') ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.nav.alarms') }}
         @if (($alarmCount ?? 0) > 0)

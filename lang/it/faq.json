@@ -316,6 +316,13 @@
             "title": "Come limito gli esecutori a certe sedi?",
             "body": "In Persone → Team modificate un esecutore o importate con colonna location_names (nomi separati da virgola). Vuoto = ovunque (default esistenti). Per sostituti: **Può timbrare ovunque** sul team. Cercate liste grandi in Persone → Esecutori.",
             "summary": "Sedi per esecutore in Team; import location_names; sostituzione = ovunque; cerca in Esecutori."
+        },
+        "time_schedule": {
+            "slug": "time_schedule",
+            "type": "text",
+            "title": "Che cos’è il turno pianificato?",
+            "body": "In Time → Turni pianifichi i servizi per esecutore: digita un codice (tipo turno) o un orario libero come 07:00-15:00. Salva conserva la settimana visibile; pubblica la segna come pianificata. La pubblicazione non invia nulla all’ONSS: la timbratrice resta il tempo reale. Copiare una settimana è tutto o niente: se la settimana di destinazione ha già turni, la copia è rifiutata. I turni notturni (fine precedente o uguale all’inizio) non sono ammessi.",
+            "summary": "Time → Turni: codici o orari liberi al giorno; pubblicare non è CIAO/ONSS; copia tutto o niente."
         }
     }
 }

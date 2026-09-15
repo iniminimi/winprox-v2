@@ -1553,6 +1553,27 @@
                     "text": "Bij <strong>Mislukt</strong> of <strong>Overgeslagen</strong> kun je de inzending opnieuw in de wachtrij zetten na het corrigeren van NISS, DDT of credentials."
                 }
             ]
+        },
+        "time.schedule": {
+            "title": "Hulp — Uurrooster",
+            "actions": [
+                {
+                    "label": "Codes en vrije tijden",
+                    "text": "Typ een <strong>code</strong> (bv. V) of een tijd <strong>07:00-15:00</strong>. Tab, Enter en pijltjes navigeren; kopiëren/plakken werkt over meerdere cellen. Ongeldige cellen lichten op — corrigeer ze vóór opslaan."
+                },
+                {
+                    "label": "Opslaan en publiceren",
+                    "text": "Opslaan bewaart de zichtbare week en uitvoerders. <strong>Publiceren</strong> maakt de week zichtbaar als gepland (Clock Point volgt later). Bewerken na publiceren blijft gepubliceerd."
+                },
+                {
+                    "label": "Week kopiëren",
+                    "text": "<strong>Kopieer naar volgende week</strong> kopieert alles-of-niets. Als de doelweek al diensten heeft, wordt de kopie geweigerd."
+                },
+                {
+                    "label": "Shiftypes",
+                    "text": "Onder <strong>Shiftypes</strong> legt u codes vast (start, einde, pauze, kleur). Een latere wijziging aan een type verandert bestaande cellen niet."
+                }
+            ]
         }
     }
 }

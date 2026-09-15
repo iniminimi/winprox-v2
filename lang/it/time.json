@@ -9,7 +9,8 @@
         "alarms": "Allarmi",
         "shifts": "Ore",
         "clock_points": "Clock Points",
-        "ciao": "CIAO"
+        "ciao": "CIAO",
+        "schedule": "Turni"
     },
     "presence": {
         "title": "Presenza",
@@ -352,5 +353,58 @@
             "shift_too_short": "Il turno è troppo breve per la pausa minima.",
             "tenant_mismatch": "Questo turno non appartiene a questa organizzazione."
         }
+    },
+    "schedule": {
+        "title": "Turni",
+        "subtitle": "Pianifica i turni per esecutore. Codici o orari liberi (hh:mm-hh:mm).",
+        "week": "Settimana",
+        "workers": "Esecutori",
+        "cells": "Celle",
+        "prev_week": "Settimana precedente",
+        "this_week": "Questa settimana",
+        "next_week": "Settimana successiva",
+        "copy_next": "Copia nella settimana successiva",
+        "copy_target": "Settimana di destinazione",
+        "publish": "Pubblica",
+        "publish_confirm": "Pubblicare questa settimana per gli esecutori visibili?",
+        "saved": "Turni salvati.",
+        "copied": "Settimana copiata.",
+        "published": "Settimana pubblicata.",
+        "errors": {
+            "unknown_code": "Codice sconosciuto.",
+            "invalid_time": "Orario non valido. Usare hh:mm-hh:mm.",
+            "night_not_allowed": "I turni notturni (fine precedente o uguale all’inizio) non sono consentiti.",
+            "invalid_code": "Codice non valido. Usare lettere o numeri.",
+            "code_taken": "Questo codice esiste già.",
+            "invalid_cells": "La settimana contiene celle non valide. Correggerle prima di salvare.",
+            "overlap": "Questo esecutore ha turni sovrapposti.",
+            "unknown_worker": "Esecutore sconosciuto.",
+            "cell_out_of_scope": "La cella è fuori dalla settimana visibile.",
+            "duplicate_cell": "Cella duplicata nella stessa settimana.",
+            "incomplete_grid": "La griglia è incompleta.",
+            "copy_same_week": "Settimana di origine e destinazione coincidono.",
+            "copy_conflict": "La settimana di destinazione ha già turni. Copia rifiutata."
+        },
+        "types": {
+            "manage": "Tipi di turno",
+            "add": "Aggiungi tipo",
+            "edit": "Modifica tipo",
+            "code": "Codice",
+            "label": "Nome",
+            "start": "Inizio",
+            "end": "Fine",
+            "break": "Pausa (minuti)",
+            "color": "Colore",
+            "deactivate": "Disattiva",
+            "activate": "Attiva",
+            "saved": "Tipo salvato.",
+            "colors": {
+                "emerald": "Verde",
+                "amber": "Ambra",
+                "slate": "Grigio",
+                "sky": "Blu"
+            }
+        },
+        "empty_workers": "Nessun esecutore in questa settimana. Aggiungili in Persone → Team."
     }
 }

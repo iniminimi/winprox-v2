@@ -1553,6 +1553,27 @@
                     "text": "Per <strong>Non riuscito</strong> o <strong>Saltato</strong>, rimetti in coda dopo aver corretto NISS, DDT o credenziali."
                 }
             ]
+        },
+        "time.schedule": {
+            "title": "Guida — Turni",
+            "actions": [
+                {
+                    "label": "Codici e orari liberi",
+                    "text": "Digitare un <strong>codice</strong> (es. V) o un orario <strong>07:00-15:00</strong>. Tab, Invio e frecce per navigare; copia/incolla su più celle. Le celle non valide sono evidenziate."
+                },
+                {
+                    "label": "Salva e pubblica",
+                    "text": "Salva memorizza la settimana visibile. <strong>Pubblica</strong> segna la settimana come pianificata. Le correzioni restano pubblicate."
+                },
+                {
+                    "label": "Copia settimana",
+                    "text": "<strong>Copia nella settimana successiva</strong> è tutto o niente. Se la settimana di destinazione ha già turni, la copia è rifiutata."
+                },
+                {
+                    "label": "Tipi di turno",
+                    "text": "In <strong>Tipi di turno</strong> definite i codici. Modificare un tipo in seguito non cambia le celle esistenti."
+                }
+            ]
         }
     }
 }

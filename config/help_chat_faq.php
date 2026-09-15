@@ -66,6 +66,13 @@ return [
         ],
         [
             'patterns' => [
+                'uurrooster', 'dienstplan', 'shift types', 'shiftypes', 'planned shift',
+                'horaire', 'roster', 'orario', 'horario',
+            ],
+            'body_key' => 'faq.items.time_schedule.summary',
+        ],
+        [
+            'patterns' => [
                 'time', 'klokken', 'inchecken', 'uitchecken', 'clock', 'pauze', 'shift', 'stempeln', 'fichaje', 'pointage',
                 'evacuatie', 'evacuation', 'évacuation', 'evakuierung', 'evacuación',
                 'pincode', 'pin code', 'nieuw toestel', 'new device',

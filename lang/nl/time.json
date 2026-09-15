@@ -9,7 +9,8 @@
         "alarms": "Alarmen",
         "shifts": "Uren",
         "clock_points": "Clock Points",
-        "ciao": "CIAO"
+        "ciao": "CIAO",
+        "schedule": "Uurrooster"
     },
     "presence": {
         "title": "Aanwezigheid",
@@ -352,5 +353,58 @@
             "shift_too_short": "De dienst is te kort voor de minimumpauze.",
             "tenant_mismatch": "Deze dienst hoort niet bij deze organisatie."
         }
+    },
+    "schedule": {
+        "title": "Uurrooster",
+        "subtitle": "Plan diensten per uitvoerder. Codes typen of vrije tijden (uu:mm-uu:mm).",
+        "week": "Week",
+        "workers": "Uitvoerders",
+        "cells": "Cellen",
+        "prev_week": "Vorige week",
+        "this_week": "Deze week",
+        "next_week": "Volgende week",
+        "copy_next": "Kopieer naar volgende week",
+        "copy_target": "Doelweek",
+        "publish": "Publiceren",
+        "publish_confirm": "Deze week publiceren voor de zichtbare uitvoerders?",
+        "saved": "Uurrooster opgeslagen.",
+        "copied": "Week gekopieerd.",
+        "published": "Week gepubliceerd.",
+        "errors": {
+            "unknown_code": "Onbekende code.",
+            "invalid_time": "Ongeldige tijd. Gebruik uu:mm-uu:mm.",
+            "night_not_allowed": "Nachtshiften (eind voor of gelijk aan start) zijn niet toegestaan.",
+            "invalid_code": "Ongeldige code. Gebruik letters of cijfers.",
+            "code_taken": "Deze code bestaat al.",
+            "invalid_cells": "Er staan ongeldige cellen in de week. Corrigeer die vóór opslaan.",
+            "overlap": "Deze uitvoerder heeft overlappende diensten.",
+            "unknown_worker": "Onbekende uitvoerder.",
+            "cell_out_of_scope": "Cel valt buiten de zichtbare week.",
+            "duplicate_cell": "Dubbele cel in dezelfde week.",
+            "incomplete_grid": "Het rooster is onvolledig.",
+            "copy_same_week": "Bron- en doelweek zijn hetzelfde.",
+            "copy_conflict": "De doelweek heeft al diensten. Kopie geweigerd."
+        },
+        "types": {
+            "manage": "Shiftypes",
+            "add": "Shiftype toevoegen",
+            "edit": "Shiftype bewerken",
+            "code": "Code",
+            "label": "Naam",
+            "start": "Start",
+            "end": "Einde",
+            "break": "Pauze (minuten)",
+            "color": "Kleur",
+            "deactivate": "Deactiveren",
+            "activate": "Activeren",
+            "saved": "Shiftype opgeslagen.",
+            "colors": {
+                "emerald": "Groen",
+                "amber": "Amber",
+                "slate": "Grijs",
+                "sky": "Blauw"
+            }
+        },
+        "empty_workers": "Geen uitvoerders in deze week. Voeg uitvoerders toe onder Personen → Teams."
     }
 }

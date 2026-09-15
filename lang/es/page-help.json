@@ -1553,6 +1553,27 @@
                     "text": "En <strong>Fallido</strong> u <strong>Omitido</strong>, vuelve a poner el envío en cola tras corregir NISS, DDT o credenciales."
                 }
             ]
+        },
+        "time.schedule": {
+            "title": "Ayuda — Horario",
+            "actions": [
+                {
+                    "label": "Códigos y horas libres",
+                    "text": "Escriba un <strong>código</strong> (p. ej. V) o una hora <strong>07:00-15:00</strong>. Tab, Intro y flechas para navegar; copiar/pegar en varias celdas. Las celdas no válidas se destacan."
+                },
+                {
+                    "label": "Guardar y publicar",
+                    "text": "Guardar almacena la semana visible. <strong>Publicar</strong> marca la semana como planificada. Las correcciones siguen publicadas."
+                },
+                {
+                    "label": "Copiar semana",
+                    "text": "<strong>Copiar a la semana siguiente</strong> es todo o nada. Si la semana de destino ya tiene turnos, se rechaza la copia."
+                },
+                {
+                    "label": "Tipos de turno",
+                    "text": "En <strong>Tipos de turno</strong> define códigos. Cambiar un tipo después no altera las celdas existentes."
+                }
+            ]
         }
     }
 }

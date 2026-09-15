@@ -17,8 +17,10 @@ use App\Models\Issue;
 use App\Models\IssuePhoto;
 use App\Models\IssueUpdate;
 use App\Models\Location;
+use App\Models\PlannedShift;
 use App\Models\QrCode;
 use App\Models\Reservation;
+use App\Models\ShiftType;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -57,6 +59,8 @@ final class CollectTenantPurgeCountsAction
             'reservations' => Reservation::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'webhooks' => WebhookEndpoint::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'work_shifts' => WorkShift::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
+            'planned_shifts' => PlannedShift::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
+            'shift_types' => ShiftType::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'clock_points' => ClockPoint::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'esg_indicators' => EsgIndicator::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'esg_measurements' => EsgMeasurement::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),

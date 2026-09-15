@@ -51,3 +51,25 @@ Clears the phone bound to a worker so they can clock in on a new device via Cloc
 curl -X POST "https://your-domain.com/api/v1/time/workers/1/release-clock-device" \
   -H "Authorization: Bearer your-token"
 ```
+
+### Roster (planned shifts)
+
+Planned time is separate from punched `WorkShift`. Publishing does not send CIAO/RSZ events.
+
+`GET /time/schedule?week_start=2026-09-14&team_id=`
+
+**Required Ability:** `time:read`
+
+`PUT /time/schedule`
+
+**Required Ability:** `time:write`
+
+Body: `week_start`, `worker_ids`, `cells` (`worker_id`, `date`, `raw` code or `07:00-15:00`). Full visible week snapshot.
+
+`POST /time/schedule/copy` — all-or-nothing copy to another week; refused if the target week already has shifts.
+
+`POST /time/schedule/publish` — marks the visible week as published.
+
+Shift types: `GET/POST /time/shift-types`, `PATCH /time/shift-types/{id}`, `POST /time/shift-types/{id}/active`.
+
+Webhooks: `time.schedule.saved`, `time.schedule.copied`, `time.schedule.published`, `time.shift_type.saved`.

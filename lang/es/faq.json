@@ -316,6 +316,13 @@
             "title": "¿Cómo limito ejecutores a ciertas sedes?",
             "body": "En Personas → Equipos edite un ejecutor o importe con la columna location_names (nombres separados por comas). Vacío = en todas (predeterminado). Para relevos: **Puede fichar en cualquier sede** en el equipo. Busque listas grandes en Personas → Ejecutores.",
             "summary": "Sedes por ejecutor en Equipos; import location_names; relevo = todas; buscar en Ejecutores."
+        },
+        "time_schedule": {
+            "slug": "time_schedule",
+            "type": "text",
+            "title": "¿Qué es el horario?",
+            "body": "En Time → Horario planifica turnos por operario: escriba un código (tipo de turno) o un horario libre como 07:00-15:00. Guardar conserva la semana visible; publicar la marca como planificada. Publicar no envía nada a la ONSS: el fichaje sigue siendo el tiempo real. Copiar una semana es todo o nada: si la semana destino ya tiene turnos, se rechaza la copia. Los turnos nocturnos (fin anterior o igual al inicio) no están permitidos.",
+            "summary": "Time → Horario: códigos u horas libres por día; publicar no es CIAO/ONSS; copiar todo o nada."
         }
     }
 }

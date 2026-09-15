@@ -9,7 +9,8 @@
         "alarms": "Alarme",
         "shifts": "Stunden",
         "clock_points": "Clock Points",
-        "ciao": "CIAO"
+        "ciao": "CIAO",
+        "schedule": "Dienstplan"
     },
     "presence": {
         "title": "Anwesenheit",
@@ -352,5 +353,58 @@
             "shift_too_short": "Die Schicht ist zu kurz für die Mindestpause.",
             "tenant_mismatch": "Diese Schicht gehört nicht zu dieser Organisation."
         }
+    },
+    "schedule": {
+        "title": "Dienstplan",
+        "subtitle": "Dienste pro Mitarbeiter planen. Codes oder freie Zeiten (hh:mm-hh:mm).",
+        "week": "Woche",
+        "workers": "Mitarbeiter",
+        "cells": "Zellen",
+        "prev_week": "Vorherige Woche",
+        "this_week": "Diese Woche",
+        "next_week": "Nächste Woche",
+        "copy_next": "In nächste Woche kopieren",
+        "copy_target": "Zielwoche",
+        "publish": "Veröffentlichen",
+        "publish_confirm": "Diese Woche für die sichtbaren Mitarbeiter veröffentlichen?",
+        "saved": "Dienstplan gespeichert.",
+        "copied": "Woche kopiert.",
+        "published": "Woche veröffentlicht.",
+        "errors": {
+            "unknown_code": "Unbekannter Code.",
+            "invalid_time": "Ungültige Zeit. Format hh:mm-hh:mm.",
+            "night_not_allowed": "Nachtschichten (Ende vor oder gleich Start) sind nicht erlaubt.",
+            "invalid_code": "Ungültiger Code. Nur Buchstaben oder Ziffern.",
+            "code_taken": "Dieser Code existiert bereits.",
+            "invalid_cells": "Die Woche enthält ungültige Zellen. Korrigieren Sie sie vor dem Speichern.",
+            "overlap": "Dieser Mitarbeiter hat überlappende Dienste.",
+            "unknown_worker": "Unbekannter Mitarbeiter.",
+            "cell_out_of_scope": "Zelle liegt außerhalb der sichtbaren Woche.",
+            "duplicate_cell": "Doppelte Zelle in derselben Woche.",
+            "incomplete_grid": "Der Plan ist unvollständig.",
+            "copy_same_week": "Quell- und Zielwoche sind gleich.",
+            "copy_conflict": "Die Zielwoche hat bereits Dienste. Kopie abgelehnt."
+        },
+        "types": {
+            "manage": "Schichttypen",
+            "add": "Schichttyp hinzufügen",
+            "edit": "Schichttyp bearbeiten",
+            "code": "Code",
+            "label": "Name",
+            "start": "Start",
+            "end": "Ende",
+            "break": "Pause (Minuten)",
+            "color": "Farbe",
+            "deactivate": "Deaktivieren",
+            "activate": "Aktivieren",
+            "saved": "Schichttyp gespeichert.",
+            "colors": {
+                "emerald": "Grün",
+                "amber": "Amber",
+                "slate": "Grau",
+                "sky": "Blau"
+            }
+        },
+        "empty_workers": "Keine Ausführenden in dieser Woche. Legen Sie sie unter Personen → Teams an."
     }
 }

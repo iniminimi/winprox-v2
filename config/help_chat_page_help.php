@@ -72,6 +72,14 @@ return [
             'page' => 'issues.list',
         ],
         [
+            'patterns' => [
+                'uurrooster', 'dienstplan', 'shift types', 'shiftypes', 'planned shift',
+                'horaire', 'roster', 'orario', 'horario',
+            ],
+            'page' => 'time.schedule',
+            'prefer' => ['uurrooster', 'roster', 'horaire', 'dienstplan'],
+        ],
+        [
             'patterns' => ['kalender', 'calendar', 'briefing', 'planning'],
             'page' => 'calendar',
         ],

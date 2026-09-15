@@ -9,7 +9,8 @@
         "alarms": "Alarmas",
         "shifts": "Horas",
         "clock_points": "Clock Points",
-        "ciao": "CIAO"
+        "ciao": "CIAO",
+        "schedule": "Horario"
     },
     "presence": {
         "title": "Presencia",
@@ -352,5 +353,58 @@
             "shift_too_short": "El turno es demasiado corto para la pausa mínima.",
             "tenant_mismatch": "Este turno no pertenece a esta organización."
         }
+    },
+    "schedule": {
+        "title": "Horario",
+        "subtitle": "Planifique turnos por trabajador. Códigos o horas libres (hh:mm-hh:mm).",
+        "week": "Semana",
+        "workers": "Trabajadores",
+        "cells": "Celdas",
+        "prev_week": "Semana anterior",
+        "this_week": "Esta semana",
+        "next_week": "Semana siguiente",
+        "copy_next": "Copiar a la semana siguiente",
+        "copy_target": "Semana de destino",
+        "publish": "Publicar",
+        "publish_confirm": "¿Publicar esta semana para los trabajadores visibles?",
+        "saved": "Horario guardado.",
+        "copied": "Semana copiada.",
+        "published": "Semana publicada.",
+        "errors": {
+            "unknown_code": "Código desconocido.",
+            "invalid_time": "Hora no válida. Use hh:mm-hh:mm.",
+            "night_not_allowed": "No se permiten turnos nocturnos (fin anterior o igual al inicio).",
+            "invalid_code": "Código no válido. Use letras o números.",
+            "code_taken": "Este código ya existe.",
+            "invalid_cells": "La semana tiene celdas no válidas. Corríjalas antes de guardar.",
+            "overlap": "Este trabajador tiene turnos solapados.",
+            "unknown_worker": "Trabajador desconocido.",
+            "cell_out_of_scope": "La celda está fuera de la semana visible.",
+            "duplicate_cell": "Celda duplicada en la misma semana.",
+            "incomplete_grid": "La cuadrícula está incompleta.",
+            "copy_same_week": "La semana de origen y destino son la misma.",
+            "copy_conflict": "La semana de destino ya tiene turnos. Copia rechazada."
+        },
+        "types": {
+            "manage": "Tipos de turno",
+            "add": "Añadir tipo",
+            "edit": "Editar tipo",
+            "code": "Código",
+            "label": "Nombre",
+            "start": "Inicio",
+            "end": "Fin",
+            "break": "Pausa (minutos)",
+            "color": "Color",
+            "deactivate": "Desactivar",
+            "activate": "Activar",
+            "saved": "Tipo guardado.",
+            "colors": {
+                "emerald": "Verde",
+                "amber": "Ámbar",
+                "slate": "Gris",
+                "sky": "Azul"
+            }
+        },
+        "empty_workers": "No hay operarios en esta semana. Añádalos en Personas → Equipos."
     }
 }

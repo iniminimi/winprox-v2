@@ -156,6 +156,10 @@
         "unit.measure_fields_synced": "Unit measure fields synced",
         "unit_measurement.recorded": "Unit measurement recorded",
         "unit.measurement.recorded": "Unit measurement recorded",
-        "work_shift.required_break_applied": "Minimum break applied"
+        "work_shift.required_break_applied": "Minimum break applied",
+        "time.schedule.saved": "Roster saved",
+        "time.schedule.copied": "Roster week copied",
+        "time.schedule.published": "Roster published",
+        "time.shift_type.saved": "Shift type saved"
     }
 }

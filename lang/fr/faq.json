@@ -316,6 +316,13 @@
             "title": "Comment limiter les exécutants à certains sites ?",
             "body": "Sous Personnes → Équipes, modifiez un exécutant ou importez avec la colonne location_names (noms séparés par des virgules). Vide = partout (défaut pour existants). Pour volants : **Peut pointer partout** sur l'équipe. Recherchez les grandes listes via Personnes → Exécutants.",
             "summary": "Sites par exécutant dans Équipes ; import location_names ; volant = partout ; recherche Exécutants."
+        },
+        "time_schedule": {
+            "slug": "time_schedule",
+            "type": "text",
+            "title": "Qu’est-ce que l’horaire ?",
+            "body": "Sous Time → Horaire vous planifiez les services par exécutant : saisissez un code (type de service) ou une plage libre comme 07:00-15:00. Enregistrer conserve la semaine visible ; publier la marque comme planifiée. La publication n’envoie rien à l’ONSS — la pointeuse reste le temps réel. Copier une semaine est tout ou rien : si la semaine cible a déjà des services, la copie est refusée. Les services de nuit (fin avant ou égale au début) ne sont pas autorisés.",
+            "summary": "Time → Horaire : codes ou heures libres par jour ; publier n’est pas du CIAO/ONSS ; copie tout ou rien."
         }
     }
 }

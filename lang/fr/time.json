@@ -9,7 +9,8 @@
         "alarms": "Alarmes",
         "shifts": "Heures",
         "clock_points": "Clock Points",
-        "ciao": "CIAO"
+        "ciao": "CIAO",
+        "schedule": "Horaire"
     },
     "presence": {
         "title": "Présence",
@@ -352,5 +353,58 @@
             "shift_too_short": "Le service est trop court pour la pause minimale.",
             "tenant_mismatch": "Ce service n’appartient pas à cette organisation."
         }
+    },
+    "schedule": {
+        "title": "Horaire",
+        "subtitle": "Planifiez les services par exécutant. Codes ou heures libres (hh:mm-hh:mm).",
+        "week": "Semaine",
+        "workers": "Exécutants",
+        "cells": "Cellules",
+        "prev_week": "Semaine précédente",
+        "this_week": "Cette semaine",
+        "next_week": "Semaine suivante",
+        "copy_next": "Copier vers la semaine suivante",
+        "copy_target": "Semaine cible",
+        "publish": "Publier",
+        "publish_confirm": "Publier cette semaine pour les exécutants visibles ?",
+        "saved": "Horaire enregistré.",
+        "copied": "Semaine copiée.",
+        "published": "Semaine publiée.",
+        "errors": {
+            "unknown_code": "Code inconnu.",
+            "invalid_time": "Heure invalide. Utilisez hh:mm-hh:mm.",
+            "night_not_allowed": "Les services de nuit (fin avant ou égale au début) ne sont pas autorisés.",
+            "invalid_code": "Code invalide. Utilisez des lettres ou des chiffres.",
+            "code_taken": "Ce code existe déjà.",
+            "invalid_cells": "La semaine contient des cellules invalides. Corrigez-les avant d’enregistrer.",
+            "overlap": "Cet exécutant a des services qui se chevauchent.",
+            "unknown_worker": "Exécutant inconnu.",
+            "cell_out_of_scope": "Cellule hors de la semaine visible.",
+            "duplicate_cell": "Cellule en double dans la même semaine.",
+            "incomplete_grid": "La grille est incomplète.",
+            "copy_same_week": "La semaine source et la semaine cible sont identiques.",
+            "copy_conflict": "La semaine cible a déjà des services. Copie refusée."
+        },
+        "types": {
+            "manage": "Types de service",
+            "add": "Ajouter un type",
+            "edit": "Modifier le type",
+            "code": "Code",
+            "label": "Nom",
+            "start": "Début",
+            "end": "Fin",
+            "break": "Pause (minutes)",
+            "color": "Couleur",
+            "deactivate": "Désactiver",
+            "activate": "Activer",
+            "saved": "Type enregistré.",
+            "colors": {
+                "emerald": "Vert",
+                "amber": "Ambre",
+                "slate": "Gris",
+                "sky": "Bleu"
+            }
+        },
+        "empty_workers": "Aucun exécutant pour cette semaine. Ajoutez-les sous Personnes → Équipes."
     }
 }

@@ -320,6 +320,13 @@
             "title": "Hoe beperk ik uitvoerders tot bepaalde vestigingen?",
             "body": "Onder Personen → Teams bewerkt u een uitvoerder of importeert u met de kolom location_names (komma-gescheiden namen). Lege selectie = overal inklokken (standaard voor bestaande uitvoerders). Voor invallers of vlinders: vink bij het team **Mag overal inklokken** aan. Zoek en filter grote lijsten via Personen → Uitvoerders.",
             "summary": "Vestigingen per uitvoerder in Teams; import location_names; invallerteam = overal; zoeken via Uitvoerders."
+        },
+        "time_schedule": {
+            "slug": "time_schedule",
+            "type": "text",
+            "title": "Wat is het uurrooster?",
+            "body": "Onder Time → Uurrooster plant u diensten per uitvoerder: typ een code (shiftype) of een vrije tijd zoals 07:00-15:00. Opslaan bewaart de zichtbare week; publiceren maakt die week gepland. Publiceren stuurt niets naar de RSZ — de prikklok blijft de werkelijke tijd. Een week kopiëren is alles-of-niets: als de doelweek al diensten heeft, wordt de kopie geweigerd. Nachtshiften (eind voor of gelijk aan start) zijn niet toegestaan.",
+            "summary": "Time → Uurrooster: codes of vrije tijden per dag; publiceren is geen CIAO/RSZ; kopiëren alles-of-niets."
         }
     }
 }

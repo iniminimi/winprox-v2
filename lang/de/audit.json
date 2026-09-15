@@ -156,6 +156,10 @@
         "unit.measure_fields_synced": "Unit-Messfelder synchronisiert",
         "unit_measurement.recorded": "Unit-Messung erfasst",
         "unit.measurement.recorded": "Unit-Messung erfasst",
-        "work_shift.required_break_applied": "Mindestpause angewendet"
+        "work_shift.required_break_applied": "Mindestpause angewendet",
+        "time.schedule.saved": "Dienstplan gespeichert",
+        "time.schedule.copied": "Dienstplanwoche kopiert",
+        "time.schedule.published": "Dienstplan veröffentlicht",
+        "time.shift_type.saved": "Schichttyp gespeichert"
     }
 }

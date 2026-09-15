@@ -149,6 +149,9 @@ het enige accent. Geen regenboogaccenten.
 - **Unit** — asset/ruimte/machine binnen een Location, met QR-token.
 - **InternalTeam** — operationeel team (veldwerk via Clock Point-QR).
 - **Worker** — uitvoerder **zonder** login (meldt zich aan via Clock Point-QR).
+- **Time** omvat prikklok (`WorkShift`) én **planning** (`shift_types` + `planned_shifts` / uurrooster).
+  Facility blijft in dezelfde app. Het uurrooster is geen payroll en geen CIAO-submit:
+  publiceren stuurt niets naar de RSZ.
 - **Issue** — de **melding**.
 - **Task** — een **taak** op een melding, toegewezen aan **één team**. Een melding heeft er ≥1.
 - **IssueUpdate** — tijdlijn/notities op een melding.
@@ -161,6 +164,8 @@ tweede product of V1-sectorfork.
 
 **Productkader (hard)**
 - Facility blijft: melding → taken → afhandeling. CIAO = **Time-compliance-add-on**.
+- Het **uurrooster** (`planned_shifts`) is planning, geen aanwezigheid: publiceren stuurt
+  niets naar de RSZ. CIAO blijft Clock Point IN/OUT + pauzes.
 - **Geen** aparte schoonmaak-/bouw-app, **geen** contractor-/owner-portalen, **geen** Dimona/
   payroll-suite in deze laag.
 - **Geen** Checkinatwork (CAW)-webservice in golf 1 — dat is een ander RSZ-kanaal (bouw tot

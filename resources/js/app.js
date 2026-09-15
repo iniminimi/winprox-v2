@@ -8,3 +8,4 @@ import './promo-tracking';
 import './promo-campaign-editor';
 import './welcome-text-reveal';
 import './reservation-default-window';
+import './wp-roster-sheet';

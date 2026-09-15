@@ -320,6 +320,13 @@
             "title": "How do I limit workers to certain locations?",
             "body": "Under People → Teams edit a worker or import with the location_names column (comma-separated names). Empty selection = clock in anywhere (default for existing workers). For floaters: tick **May clock in anywhere** on the team. Search and filter large lists via People → Workers.",
             "summary": "Locations per worker in Teams; import location_names; floater team = everywhere; search via Workers."
+        },
+        "time_schedule": {
+            "slug": "time_schedule",
+            "type": "text",
+            "title": "What is the roster?",
+            "body": "Under Time → Roster you plan shifts per worker: type a code (shift type) or a free time such as 07:00-15:00. Save stores the visible week; publish marks that week as planned. Publishing does not send anything to RSZ — the punch clock remains actual time. Copying a week is all-or-nothing: if the target week already has shifts, the copy is refused. Night shifts (end before or equal to start) are not allowed.",
+            "summary": "Time → Roster: codes or free times per day; publishing is not CIAO/RSZ; copy is all-or-nothing."
         }
     }
 }

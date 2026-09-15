@@ -29,6 +29,7 @@ final class ManualChapterIcons
         'esg.measurements' => 'sliders',
         'iot.index' => 'api',
         'time.presence' => 'clock',
+        'time.schedule' => 'calendar',
         'time.alarms' => 'alert-triangle',
         'time.shifts' => 'calendar',
         'time.clock_points' => 'map-pin',

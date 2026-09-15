@@ -149,6 +149,7 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
         'chapter-esg-measurements',
         'chapter-iot-index',
         'chapter-time-presence',
+        'chapter-time-schedule',
         'chapter-time-shifts',
         'chapter-time-clock_points',
         'chapter-settings',

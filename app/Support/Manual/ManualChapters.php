@@ -31,6 +31,7 @@ final class ManualChapters
         'esg.measurements',
         'iot.index',
         'time.presence',
+        'time.schedule',
         'time.shifts',
         'time.clock_points',
         'settings',

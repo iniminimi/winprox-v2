@@ -316,6 +316,13 @@
             "title": "Wie beschränke ich Ausführende auf bestimmte Standorte?",
             "body": "Unter Personen → Teams Ausführenden bearbeiten oder mit Spalte location_names importieren (kommagetrennte Namen). Leere Auswahl = überall (Standard für bestehende). Für Springer: **Darf überall einstempeln** am Team. Große Listen unter Personen → Ausführende suchen.",
             "summary": "Standorte pro Ausführendem in Teams; Import location_names; Springer = überall; Suche unter Ausführende."
+        },
+        "time_schedule": {
+            "slug": "time_schedule",
+            "type": "text",
+            "title": "Was ist der Dienstplan?",
+            "body": "Unter Time → Dienstplan planen Sie Dienste je Ausführendem: geben Sie einen Code (Schichttyp) oder eine freie Zeit wie 07:00-15:00 ein. Speichern bewahrt die sichtbare Woche; Veröffentlichen markiert sie als geplant. Veröffentlichen sendet nichts an die RSZ — die Stechuhr bleibt die tatsächliche Zeit. Eine Woche kopieren ist alles oder nichts: hat die Zielwoche schon Dienste, wird die Kopie abgelehnt. Nachtschichten (Ende vor oder gleich Start) sind nicht erlaubt.",
+            "summary": "Time → Dienstplan: Codes oder freie Zeiten pro Tag; Veröffentlichen ist kein CIAO/RSZ; Kopieren alles-oder-nichts."
         }
     }
 }

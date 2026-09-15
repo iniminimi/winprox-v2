@@ -156,6 +156,10 @@
         "unit.measure_fields_synced": "Meetvelden van unit bijgewerkt",
         "unit_measurement.recorded": "Unitmeting geregistreerd",
         "unit.measurement.recorded": "Unitmeting geregistreerd",
-        "work_shift.required_break_applied": "Minimumpauze toegepast"
+        "work_shift.required_break_applied": "Minimumpauze toegepast",
+        "time.schedule.saved": "Uurrooster opgeslagen",
+        "time.schedule.copied": "Uurrooster-week gekopieerd",
+        "time.schedule.published": "Uurrooster gepubliceerd",
+        "time.shift_type.saved": "Shiftype opgeslagen"
     }
 }

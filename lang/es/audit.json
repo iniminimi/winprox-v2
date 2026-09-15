@@ -156,6 +156,10 @@
         "unit.measure_fields_synced": "Campos de medición de la unidad sincronizados",
         "unit_measurement.recorded": "Medición de unidad registrada",
         "unit.measurement.recorded": "Medición de unidad registrada",
-        "work_shift.required_break_applied": "Pausa mínima aplicada"
+        "work_shift.required_break_applied": "Pausa mínima aplicada",
+        "time.schedule.saved": "Horario guardado",
+        "time.schedule.copied": "Semana de horario copiada",
+        "time.schedule.published": "Horario publicado",
+        "time.shift_type.saved": "Tipo de turno guardado"
     }
 }

@@ -338,6 +338,11 @@
                                            @click="nav = false">
                                             <span>{{ __('time.nav.presence') }}</span>
                                         </a>
+                                        <a href="{{ route('time.schedule.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('time.schedule.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('time.nav.schedule') }}</span>
+                                        </a>
                                     </div>
                                 </details>
                             @endif

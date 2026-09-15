@@ -1561,6 +1561,27 @@
                     "text": "Pour <strong>Échoué</strong> ou <strong>Ignoré</strong>, remettez l’envoi en file après correction du NISS, DDT ou des identifiants."
                 }
             ]
+        },
+        "time.schedule": {
+            "title": "Aide — Horaire",
+            "actions": [
+                {
+                    "label": "Codes et heures libres",
+                    "text": "Saisissez un <strong>code</strong> (ex. V) ou une heure <strong>07:00-15:00</strong>. Tab, Entrée et flèches pour naviguer ; copier/coller sur plusieurs cellules. Les cellules invalides sont mises en évidence."
+                },
+                {
+                    "label": "Enregistrer et publier",
+                    "text": "Enregistrer conserve la semaine visible. <strong>Publier</strong> marque la semaine comme planifiée. Les corrections après publication restent publiées."
+                },
+                {
+                    "label": "Copier la semaine",
+                    "text": "<strong>Copier vers la semaine suivante</strong> est tout ou rien. Si la semaine cible a déjà des services, la copie est refusée."
+                },
+                {
+                    "label": "Types de service",
+                    "text": "Sous <strong>Types de service</strong> vous définissez les codes. Modifier un type plus tard ne change pas les cellules existantes."
+                }
+            ]
         }
     }
 }

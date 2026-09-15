@@ -9,7 +9,8 @@
         "alarms": "Alarms",
         "shifts": "Hours",
         "clock_points": "Clock Points",
-        "ciao": "CIAO"
+        "ciao": "CIAO",
+        "schedule": "Roster"
     },
     "presence": {
         "title": "Presence",
@@ -352,5 +353,58 @@
             "shift_too_short": "The shift is too short for the minimum break.",
             "tenant_mismatch": "This shift does not belong to this organisation."
         }
+    },
+    "schedule": {
+        "title": "Roster",
+        "subtitle": "Plan shifts per worker. Type codes or free times (hh:mm-hh:mm).",
+        "week": "Week",
+        "workers": "Workers",
+        "cells": "Cells",
+        "prev_week": "Previous week",
+        "this_week": "This week",
+        "next_week": "Next week",
+        "copy_next": "Copy to next week",
+        "copy_target": "Target week",
+        "publish": "Publish",
+        "publish_confirm": "Publish this week for the visible workers?",
+        "saved": "Roster saved.",
+        "copied": "Week copied.",
+        "published": "Week published.",
+        "errors": {
+            "unknown_code": "Unknown code.",
+            "invalid_time": "Invalid time. Use hh:mm-hh:mm.",
+            "night_not_allowed": "Overnight shifts (end at or before start) are not allowed.",
+            "invalid_code": "Invalid code. Use letters or digits.",
+            "code_taken": "This code already exists.",
+            "invalid_cells": "The week has invalid cells. Fix them before saving.",
+            "overlap": "This worker has overlapping shifts.",
+            "unknown_worker": "Unknown worker.",
+            "cell_out_of_scope": "Cell is outside the visible week.",
+            "duplicate_cell": "Duplicate cell in the same week.",
+            "incomplete_grid": "The roster grid is incomplete.",
+            "copy_same_week": "Source and target week are the same.",
+            "copy_conflict": "The target week already has shifts. Copy refused."
+        },
+        "types": {
+            "manage": "Shift types",
+            "add": "Add shift type",
+            "edit": "Edit shift type",
+            "code": "Code",
+            "label": "Name",
+            "start": "Start",
+            "end": "End",
+            "break": "Break (minutes)",
+            "color": "Colour",
+            "deactivate": "Deactivate",
+            "activate": "Activate",
+            "saved": "Shift type saved.",
+            "colors": {
+                "emerald": "Green",
+                "amber": "Amber",
+                "slate": "Grey",
+                "sky": "Blue"
+            }
+        },
+        "empty_workers": "No workers in this week. Add workers under People → Teams."
     }
 }

@@ -86,6 +86,8 @@ it('laadt paginahulp voor Time-schermen', function (): void {
 
     expect(PageHelp::for('time.presence'))->not->toBeNull()
         ->and(PageHelp::for('time.presence')['title'])->toBe('Hulp — Aanwezigheid')
+        ->and(PageHelp::for('time.schedule'))->not->toBeNull()
+        ->and(PageHelp::for('time.schedule')['title'])->toBe('Hulp — Uurrooster')
         ->and($presenceLabels)->toContain('Manueel inklokken')
         ->and($shiftLabels)->toContain('Manueel inklokken')
         ->and($shiftLabels)->toContain('Minimumpauze')
