@@ -5,6 +5,12 @@
         ? $snapshot->rows
         : array_map(fn ($worker) => ['type' => 'worker', 'worker_id' => $worker['id']], $snapshot->workers);
     $workersById = collect($snapshot->workers)->keyBy('id');
+    $workLegend = collect($legendTypes)->filter(fn ($type) => $type->kind->isWork())->values();
+    $absenceLegend = collect($legendTypes)->filter(fn ($type) => $type->kind->isAbsence())->values();
+    $unitLegend = ($snapshot->groupMode ?? false)
+        ? collect($snapshot->units)->unique('id')->values()
+        : collect();
+    $hasLegend = $workLegend->isNotEmpty() || $absenceLegend->isNotEmpty() || $unitLegend->isNotEmpty();
 @endphp
 
 <x-layouts.print :title="__('time.schedule.document_title')">
@@ -18,8 +24,8 @@
     </style>
 
     <div class="wp-container wp-stack wp-roster-print">
-        <div class="wp-page-head">
-            <div class="wp-grow wp-stack-tight">
+        <div class="wp-page-head wp-roster-print__head">
+            <div class="wp-roster-print__head-start wp-stack-tight">
                 <x-wp-page-head-title
                     icon="calendar"
                     :title="__('time.schedule.title')"
@@ -29,7 +35,33 @@
                     <button type="button" class="btn btn--primary btn--sm" onclick="window.print()">{{ __('common.button.print') }}</button>
                 </div>
             </div>
-            <div class="wp-cluster wp-cluster--tight wp-page-actions">
+
+            @if ($hasLegend)
+                <div class="wp-roster-print__legend" aria-label="{{ __('time.schedule.legend_title') }}">
+                    @foreach ($workLegend as $type)
+                        <span class="wp-roster-print__legend-item">
+                            <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
+                            <strong>{{ $type->code }}</strong>
+                            <span class="wp-muted">{{ $type->start_time }}–{{ $type->end_time }}</span>
+                        </span>
+                    @endforeach
+                    @foreach ($absenceLegend as $type)
+                        <span class="wp-roster-print__legend-item">
+                            <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
+                            <strong>{{ $type->code }}</strong>
+                            <span class="wp-muted">{{ __('time.schedule.types.kinds.'.$type->kind->value) }}</span>
+                        </span>
+                    @endforeach
+                    @foreach ($unitLegend as $unit)
+                        <span class="wp-roster-print__legend-item wp-roster-print__legend-item--unit">
+                            <strong>{{ $unit['code'] }}</strong>
+                            <span class="wp-muted">{{ $unit['name'] }}</span>
+                        </span>
+                    @endforeach
+                </div>
+            @endif
+
+            <div class="wp-cluster wp-cluster--tight wp-page-actions wp-roster-print__head-end">
                 <div class="wp-sidebar-header-logo">
                     <img
                         src="{{ $organisationLogoUrl ?? asset('images/Winprox_logo_100.png') }}"

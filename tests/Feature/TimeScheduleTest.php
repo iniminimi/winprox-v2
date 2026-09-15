@@ -986,12 +986,21 @@ it('houdt canClockAt voor cel-plek onafhankelijk van default_unit_id', function 
 it('opent de uurrooster-printpagina in een apart venster-patroon', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
     $week = scheduleWeekStart();
+    $type = ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'D1',
+        'start_time' => '07:00',
+        'end_time' => '15:00',
+        'is_active' => true,
+    ]);
 
     $this->actingAs($admin)
         ->get(route('time.schedule.print', ['week' => $week, 'view' => 'week']))
         ->assertOk()
         ->assertSee(__('time.schedule.title'), false)
         ->assertSee($worker->displayName(), false)
-        ->assertSee(__('common.button.print'), false);
+        ->assertSee(__('common.button.print'), false)
+        ->assertSee($type->code, false)
+        ->assertSee('07:00–15:00', false);
 });
 

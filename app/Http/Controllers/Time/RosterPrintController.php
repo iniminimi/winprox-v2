@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Time;
 
 use App\Actions\Time\ListRosterWeekAction;
+use App\Actions\Time\ListShiftTypesAction;
 use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Support\Tenancy;
@@ -13,8 +14,11 @@ use Illuminate\Support\Facades\Gate;
 
 class RosterPrintController
 {
-    public function __invoke(Request $request, ListRosterWeekAction $list): View
-    {
+    public function __invoke(
+        Request $request,
+        ListRosterWeekAction $list,
+        ListShiftTypesAction $listTypes,
+    ): View {
         Gate::authorize('viewAny', PlannedShift::class);
 
         $tenant = Tenant::query()->findOrFail(Tenancy::id());
@@ -53,11 +57,14 @@ class RosterPrintController
                 'number' => Carbon::parse($snapshot->weekStart)->isoWeek(),
             ]);
 
+        $legendTypes = $listTypes->handle((int) $tenant->id, true);
+
         return view('time.roster-print', [
             'tenant' => $tenant,
             'snapshot' => $snapshot,
             'period' => $period,
             'periodLabel' => $periodLabel,
+            'legendTypes' => $legendTypes,
         ]);
     }
 }
