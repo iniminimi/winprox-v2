@@ -58,6 +58,7 @@ class CopyWeekAction
                     'worker_id' => $shift->worker_id,
                     'work_date' => $shift->work_date->copy()->addDays($offsetDays)->toDateString(),
                     'shift_type_id' => $shift->shift_type_id,
+                    'kind' => $shift->kind,
                     'start_time' => $shift->start_time,
                     'end_time' => $shift->end_time,
                     'break_minutes' => $shift->break_minutes,

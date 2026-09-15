@@ -295,6 +295,16 @@
             "month_nav": "Maand",
             "previous_month": "Vorige maand",
             "next_month": "Volgende maand"
+        },
+        "schedule": {
+            "tile": "Mijn rooster",
+            "tile_sub": "Jouw geplande week",
+            "title": "Mijn rooster",
+            "subtitle": "Alleen jouw gepubliceerde diensten en afwezigheden.",
+            "empty": "Niets gepland in deze week.",
+            "week_nav": "Week",
+            "previous_week": "Vorige week",
+            "next_week": "Volgende week"
         }
     },
     "ciao": {
@@ -384,7 +394,8 @@
             "duplicate_cell": "Dubbele cel in het rooster.",
             "incomplete_grid": "Het rooster is onvolledig.",
             "copy_same_week": "Bron- en doelweek zijn hetzelfde.",
-            "copy_conflict": "De doelweek heeft al diensten. Kopie geweigerd."
+            "copy_conflict": "De doelweek heeft al diensten. Kopie geweigerd.",
+            "invalid_notification_reference": "Ongeldige notificatie-verwijzing."
         },
         "types": {
             "add": "Shiftype toevoegen",
@@ -411,6 +422,13 @@
                 "sand": "Zand",
                 "rose": "Rood",
                 "slate": "Grijs"
+            },
+            "kind": "Soort",
+            "kinds": {
+                "work": "Werk",
+                "leave": "Verlof",
+                "recup": "Recup",
+                "sick": "Ziek"
             }
         },
         "empty_workers": "Geen uitvoerders in deze periode. Voeg uitvoerders toe onder Personen → Teams.",
@@ -423,7 +441,14 @@
         "prev_month": "Vorige maand",
         "this_month": "Deze maand",
         "next_month": "Volgende maand",
-        "publish_confirm_month": "Deze maand publiceren voor de zichtbare uitvoerders?"
+        "publish_confirm_month": "Deze maand publiceren voor de zichtbare uitvoerders?",
+        "legend_absence": "Afwezigheid",
+        "attendance": {
+            "missing": "Gepland, niet geklokt",
+            "deviation": "Geklokt buiten het geplande venster",
+            "unplanned": "Geklokt zonder (of tijdens) afwezigheid",
+            "ok": "Komt overeen met de planning"
+        }
     },
     "shift_types": {
         "title": "Shiftypes",

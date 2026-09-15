@@ -943,6 +943,10 @@
                     "text": "Dopo l’accesso vedi il riquadro Le mie ore. Solo i tuoi turni del mese scelto: ingresso/uscita, pausa e tempo lavorato. Mese precedente/successivo. La pausa mostrata è quella del foglio ore; può includere il minimo del team se non hai timbrato (abbastanza) pausa live."
                 },
                 {
+                    "label": "Il mio turno",
+                    "text": "Dopo l’accesso vedi la tessera Il mio turno. Mostra solo i tuoi turni e assenze <strong>pubblicati</strong> della settimana scelta. Un badge indica un turno appena pubblicato; aprendolo il badge sparisce."
+                },
+                {
                     "label": "Esci",
                     "text": "Esca quando ha finito. A orari impostati dall'amministratore viene disconnesso automaticamente."
                 }
@@ -1567,7 +1571,7 @@
                 },
                 {
                     "label": "Salva e pubblica",
-                    "text": "Salva conserva la settimana o il mese visibile. <strong>Pubblica</strong> segna quel periodo come pianificato (Clock Point più avanti). Modificare dopo resta pubblicato."
+                    "text": "Salva conserva la settimana o il mese visibile. <strong>Pubblica</strong> rende il periodo visibile sul Clock Point (Il mio turno) e imposta un badge. Le modifiche dopo la pubblicazione restano pubblicate."
                 },
                 {
                     "label": "Copia settimana",
@@ -1576,12 +1580,24 @@
                 {
                     "label": "Tipi di turno",
                     "text": "La <strong>legenda</strong> mostra i codici attivi. I tipi si gestiscono in Time → <strong>Tipi di turno</strong> (di solito una volta)."
+                },
+                {
+                    "label": "Assenza",
+                    "text": "I tipi di turno possono essere <strong>ferie</strong>, <strong>recupero</strong> o <strong>malattia</strong>. Quei codici riempiono l’intera giornata, non contano ore e non possono stare insieme al lavoro quel giorno."
+                },
+                {
+                    "label": "Pianificato vs timbrato",
+                    "text": "Nei giorni <strong>passati</strong> di un periodo <strong>pubblicato</strong> la griglia marca timbrature mancanti, scostamenti e timbrature non previste. Un’assenza senza timbratura è corretta."
                 }
             ]
         },
         "time.shift_types": {
             "title": "Guida — Tipi di turno",
             "actions": [
+                {
+                    "label": "Tipo",
+                    "text": "Scegli <strong>Lavoro</strong> (inizio, fine, pausa) o un’assenza. Le assenze non hanno ore."
+                },
                 {
                     "label": "Aggiungi",
                     "text": "Un tipo di turno è un <strong>codice</strong> con inizio, fine, pausa e colore. Di solito si imposta una volta. Le celle esistenti non cambiano se in seguito modifichi il tipo."

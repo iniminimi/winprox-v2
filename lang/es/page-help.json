@@ -943,6 +943,10 @@
                     "text": "Tras identificarte ves la ficha Mis horas. Solo tus turnos del mes elegido: entrada/salida, pausa y tiempo trabajado. Mes anterior/siguiente. La pausa mostrada es la del parte; puede incluir el mínimo del equipo si no fichaste (suficiente) pausa en vivo."
                 },
                 {
+                    "label": "Mi cuadrante",
+                    "text": "Tras identificarte ves la ficha Mi cuadrante. Solo muestra tus turnos y ausencias <strong>publicados</strong> de la semana elegida. Una insignia significa un cuadrante recién publicado; al abrirlo desaparece."
+                },
+                {
                     "label": "Cerrar sesión",
                     "text": "Cierre sesión cuando haya terminado. En los horarios establecidos por el administrador también se cierra la sesión automáticamente."
                 }
@@ -1567,7 +1571,7 @@
                 },
                 {
                     "label": "Guardar y publicar",
-                    "text": "Guardar conserva la semana o el mes visible. <strong>Publicar</strong> marca ese periodo como planificado (Clock Point después). Editar tras publicar sigue publicado."
+                    "text": "Guardar conserva la semana o el mes visible. <strong>Publicar</strong> hace visible el periodo en Clock Point (Mi cuadrante) y pone una insignia. Editar después de publicar sigue publicado."
                 },
                 {
                     "label": "Copiar semana",
@@ -1576,12 +1580,24 @@
                 {
                     "label": "Tipos de turno",
                     "text": "La <strong>leyenda</strong> muestra los códigos activos. Los tipos se gestionan en Time → <strong>Tipos de turno</strong> (suele ser una vez)."
+                },
+                {
+                    "label": "Ausencia",
+                    "text": "Los tipos de turno pueden ser <strong>vacaciones</strong>, <strong>descanso compensatorio</strong> o <strong>baja</strong>. Esos códigos ocupan el día entero, no cuentan horas y no pueden ir con trabajo ese día."
+                },
+                {
+                    "label": "Planificado vs fichado",
+                    "text": "En días <strong>pasados</strong> de un periodo <strong>publicado</strong>, la cuadrícula marca fichajes faltantes, desviaciones y fichajes no previstos. Una ausencia sin fichaje es correcta."
                 }
             ]
         },
         "time.shift_types": {
             "title": "Ayuda — Tipos de turno",
             "actions": [
+                {
+                    "label": "Tipo",
+                    "text": "Elija <strong>Trabajo</strong> (inicio, fin, pausa) o una ausencia. Las ausencias no tienen horas."
+                },
                 {
                     "label": "Añadir",
                     "text": "Un tipo de turno es un <strong>código</strong> con inicio, fin, pausa y color. Suele configurarse una vez. Las celdas existentes no cambian si edita el tipo después."

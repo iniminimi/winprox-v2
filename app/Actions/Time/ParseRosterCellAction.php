@@ -4,6 +4,7 @@ namespace App\Actions\Time;
 
 use App\Data\Time\RosterCellData;
 use App\Enums\RosterCellKind;
+use App\Enums\ShiftTypeKind;
 use App\Models\ShiftType;
 use Illuminate\Support\Collection;
 
@@ -43,6 +44,19 @@ class ParseRosterCellAction
             );
         }
 
+        if ($type->kind->isAbsence()) {
+            return new RosterCellData(
+                kind: RosterCellKind::Absence,
+                raw: $raw,
+                code: $type->code,
+                shiftTypeId: (int) $type->id,
+                startTime: null,
+                endTime: null,
+                breakMinutes: 0,
+                shiftTypeKind: $type->kind,
+            );
+        }
+
         return new RosterCellData(
             kind: RosterCellKind::ShiftType,
             raw: $raw,
@@ -51,6 +65,7 @@ class ParseRosterCellAction
             startTime: ShiftType::formatTime($type->start_time),
             endTime: ShiftType::formatTime($type->end_time),
             breakMinutes: (int) $type->break_minutes,
+            shiftTypeKind: ShiftTypeKind::Work,
         );
     }
 
@@ -99,6 +114,7 @@ class ParseRosterCellAction
             startTime: $start,
             endTime: $end,
             breakMinutes: 0,
+            shiftTypeKind: ShiftTypeKind::Work,
         );
     }
 }

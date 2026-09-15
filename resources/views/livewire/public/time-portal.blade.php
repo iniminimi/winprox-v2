@@ -194,6 +194,15 @@
                         'hoursMonthLabel' => $hoursMonthLabel,
                         'hoursIsCurrentMonth' => $hoursIsCurrentMonth,
                     ])
+                @elseif ($scheduleListOpen && $schedule !== null)
+                    <x-wp-portal-back wire:click="closeSchedule" />
+                    <x-wp-page-head-title variant="portal" icon="calendar" :title="__('time.portal.schedule.title')">
+                        <p class="wp-muted">{{ __('time.portal.schedule.subtitle') }}</p>
+                    </x-wp-page-head-title>
+                    @include('partials.wp-portal-worker-schedule', [
+                        'schedule' => $schedule,
+                        'scheduleWeekLabel' => $scheduleWeekLabel,
+                    ])
                 @elseif ($rosterListOpen && $roster !== null)
                     <x-wp-portal-back wire:click="closeRoster" />
                     <x-wp-page-head-title variant="portal" icon="fire" :title="__('time.roster.title')">
@@ -332,6 +341,16 @@
 
                     @if ($hasTimeModule)
                         <div class="wp-tiles">
+                            <button type="button" class="wp-tile" wire:click="openSchedule">
+                                <span class="wp-cluster">
+                                    <x-wp-icon name="calendar" class="wp-tile-icon" />
+                                    <span class="wp-tile-title">{{ __('time.portal.schedule.tile') }}</span>
+                                    @if (($scheduleUnreadCount ?? 0) > 0)
+                                        <span class="wp-pill wp-pill--new">{{ $scheduleUnreadCount }}</span>
+                                    @endif
+                                </span>
+                                <span class="wp-tile-sub">{{ __('time.portal.schedule.tile_sub') }}</span>
+                            </button>
                             <button type="button" class="wp-tile" wire:click="openHours">
                                 <span class="wp-cluster">
                                     <x-wp-icon name="clock" class="wp-tile-icon" />

@@ -3,6 +3,7 @@
 namespace App\Data\Time;
 
 use App\Enums\RosterCellKind;
+use App\Enums\ShiftTypeKind;
 
 final class RosterCellData
 {
@@ -14,6 +15,7 @@ final class RosterCellData
         public ?string $startTime = null,
         public ?string $endTime = null,
         public int $breakMinutes = 0,
+        public ?ShiftTypeKind $shiftTypeKind = null,
         public ?string $errorKey = null,
     ) {}
 

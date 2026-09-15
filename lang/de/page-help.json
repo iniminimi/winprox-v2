@@ -943,6 +943,10 @@
                     "text": "Nach der Anmeldung sehen Sie die Kachel Meine Stunden. Dort stehen nur Ihre Schichten des gewählten Monats: Ein-/Ausstempelzeit, Pause und Arbeitszeit. Vorheriger/nächster Monat. Die angezeigte Pause ist der Stundenlistenwert; sie kann das Teamminimum enthalten, wenn Sie keine (oder zu kurze) Live-Pause gestempelt haben."
                 },
                 {
+                    "label": "Mein Dienstplan",
+                    "text": "Nach der Anmeldung siehst du die Kachel Mein Dienstplan. Dort stehen nur deine <strong>veröffentlichten</strong> Dienste und Abwesenheiten der gewählten Woche. Ein Badge bedeutet einen neu veröffentlichten Plan; Öffnen entfernt das Badge."
+                },
+                {
                     "label": "Abmelden",
                     "text": "Melden Sie sich ab, wenn Sie fertig sind. Zu vom Administrator festgelegten Zeiten werden Sie außerdem automatisch abgemeldet."
                 }
@@ -1567,7 +1571,7 @@
                 },
                 {
                     "label": "Speichern und veröffentlichen",
-                    "text": "Speichern bewahrt die sichtbare Woche oder den Monat. <strong>Veröffentlichen</strong> markiert den Zeitraum als geplant (Clock Point folgt). Bearbeiten danach bleibt veröffentlicht."
+                    "text": "Speichern bewahrt die sichtbare Woche oder den Monat. <strong>Veröffentlichen</strong> macht den Zeitraum auf dem Clock Point (Mein Dienstplan) sichtbar und setzt ein Badge. Bearbeiten nach dem Veröffentlichen bleibt veröffentlicht."
                 },
                 {
                     "label": "Woche kopieren",
@@ -1576,12 +1580,24 @@
                 {
                     "label": "Schichttypen",
                     "text": "Die <strong>Legende</strong> zeigt die aktiven Codes. Typen verwalten Sie unter Time → <strong>Schichttypen</strong> (meist einmal)."
+                },
+                {
+                    "label": "Abwesenheit",
+                    "text": "Schichttypen können <strong>Urlaub</strong>, <strong>Ausgleich</strong> oder <strong>Krank</strong> sein. Diese Codes füllen den ganzen Tag, zählen keine Stunden und dürfen nicht mit Arbeit am selben Tag stehen."
+                },
+                {
+                    "label": "Geplant vs. gestempelt",
+                    "text": "An <strong>vergangenen</strong> Tagen einer <strong>veröffentlichten</strong> Periode markiert der Plan fehlende Stempelungen, Abweichungen und ungeplante Stempelungen. Abwesenheit ohne Stempelung ist in Ordnung."
                 }
             ]
         },
         "time.shift_types": {
             "title": "Hilfe — Schichttypen",
             "actions": [
+                {
+                    "label": "Art",
+                    "text": "Wählen Sie <strong>Arbeit</strong> (Start, Ende, Pause) oder eine Abwesenheit. Abwesenheiten haben keine Stunden."
+                },
                 {
                     "label": "Hinzufügen",
                     "text": "Ein Schichttyp ist ein <strong>Code</strong> mit Start, Ende, Pause und Farbe. Meist einmal einrichten. Bestehende Zellen ändern sich nicht, wenn Sie den Typ später anpassen."

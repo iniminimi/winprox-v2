@@ -325,8 +325,8 @@
             "slug": "time_schedule",
             "type": "text",
             "title": "What is the roster?",
-            "body": "Under Time → Roster you plan shifts per worker: type a code (shift type) or a free time such as 07:00-15:00. Switch between week and month; the month shows day number and weekday in narrower columns. Set shift types under Time → Shift types (usually once); the roster shows a code legend. Invalid cells have a red border. Save stores the visible period; publish marks it as planned. Publishing does not send anything to RSZ — the punch clock remains actual time. Copying a week (week view only) is all-or-nothing: if the target week already has shifts, the copy is refused. Night shifts (end before or equal to start) are not allowed.",
-            "summary": "Time → Roster: week or month; codes or free times; types under Shift types."
+            "body": "Under Time → Roster you plan shifts per worker: type a code (shift type) or a free time such as 07:00-15:00. You can also set absence codes (leave, time off in lieu, sick) under Time → Shift types; those fill the whole day and count no hours. Switch between week and month. Save stores the visible period; publish makes it visible on Clock Point (My roster) and shows a badge. Publishing does not send anything to the NSSO. On past days the admin grid shows whether someone clocked. Copying a week (week view only) is all-or-nothing.",
+            "summary": "Time → Roster: codes, absences, My roster on Clock Point, planned vs clocked."
         }
     }
 }

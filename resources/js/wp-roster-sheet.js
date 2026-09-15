@@ -59,17 +59,31 @@ function applyCellClasses(worksheet, payload) {
                 }
             });
             const parsed = parseRosterCell(value, types);
+            const worker = payload.workers?.[rowIndex];
+            const date = payload.dates?.[colIndex - 1];
+            const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
+            const attendance = attendanceKey ? payload.attendance?.[attendanceKey] : null;
             if (parsed.kind === 'invalid') {
                 cell.classList.add('wp-roster-cell--invalid');
                 cell.title = payload.invalid_message || '';
                 cell.setAttribute('aria-invalid', 'true');
             } else if (parsed.color && parsed.color !== 'none') {
                 cell.classList.add(`wp-roster-cell--${parsed.color}`);
-                cell.removeAttribute('title');
                 cell.removeAttribute('aria-invalid');
+                if (attendance && attendance !== 'none' && attendance !== 'ok') {
+                    cell.classList.add(`wp-roster-cell--${attendance}`);
+                    cell.title = payload.attendance_messages?.[attendance] || '';
+                } else {
+                    cell.removeAttribute('title');
+                }
             } else {
-                cell.removeAttribute('title');
                 cell.removeAttribute('aria-invalid');
+                if (attendance && attendance !== 'none' && attendance !== 'ok') {
+                    cell.classList.add(`wp-roster-cell--${attendance}`);
+                    cell.title = payload.attendance_messages?.[attendance] || '';
+                } else {
+                    cell.removeAttribute('title');
+                }
             }
         });
     });

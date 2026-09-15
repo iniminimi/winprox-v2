@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\PlannedShiftStatus;
+use App\Enums\ShiftTypeKind;
 use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Models\Worker;
@@ -20,6 +21,7 @@ class PlannedShiftFactory extends Factory
             'worker_id' => Worker::factory(),
             'work_date' => now()->toDateString(),
             'shift_type_id' => null,
+            'kind' => ShiftTypeKind::Work,
             'start_time' => '07:00',
             'end_time' => '15:00',
             'break_minutes' => 0,

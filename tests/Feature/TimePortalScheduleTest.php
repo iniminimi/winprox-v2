@@ -1,0 +1,120 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Actions\Time\PublishWeekAction;
+use App\Actions\Time\SavePlannedShiftsAction;
+use App\Actions\Time\SaveShiftTypeAction;
+use App\Data\Time\PublishWeekData;
+use App\Data\Time\SavePlannedShiftsData;
+use App\Data\Time\SaveShiftTypeData;
+use App\Enums\ShiftTypeColor;
+use App\Enums\ShiftTypeKind;
+use App\Livewire\Public\TimePortal;
+use App\Models\ClockPoint;
+use App\Models\InternalTeam;
+use App\Models\Tenant;
+use App\Models\Worker;
+use App\Models\WorkerNotification;
+use App\Support\Tenancy;
+use Carbon\Carbon;
+use Livewire\Features\SupportLockedProperties\CannotUpdateLockedPropertyException;
+use Livewire\Livewire;
+
+afterEach(fn () => Tenancy::forget());
+
+function schedulePortalTenant(): array
+{
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Poort Noord',
+        'qr_token' => 'schedule-clock-'.$tenant->id,
+    ]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+
+    return [$tenant, $team, $clockPoint, $worker];
+}
+
+function signInScheduleWorker(ClockPoint $clockPoint): mixed
+{
+    return Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon');
+}
+
+it('toont de tegel Mijn rooster na aanmelden', function () {
+    [, , $clockPoint] = schedulePortalTenant();
+
+    signInScheduleWorker($clockPoint)
+        ->assertSee(__('time.portal.schedule.tile'), false)
+        ->assertSet('scheduleListOpen', false);
+});
+
+it('toont alleen published eigen diensten en zet de badge weg', function () {
+    [$tenant, $team, $clockPoint, $worker] = schedulePortalTenant();
+    $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
+    app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
+        null,
+    );
+
+    $cells = [];
+    $monday = Carbon::parse($week);
+    for ($i = 0; $i < 7; $i++) {
+        $date = $monday->copy()->addDays($i)->toDateString();
+        $cells[] = [
+            'worker_id' => $worker->id,
+            'date' => $date,
+            'raw' => $date === $week ? 'VL' : '',
+        ];
+    }
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], $cells),
+        null,
+    );
+
+    $component = signInScheduleWorker($clockPoint)
+        ->call('openSchedule')
+        ->assertSet('scheduleListOpen', true)
+        ->assertSee(__('time.portal.schedule.empty'), false);
+
+    app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData($week, [$worker->id]),
+        null,
+    );
+
+    expect(WorkerNotification::query()->where('worker_id', $worker->id)->whereNull('read_at')->count())->toBe(1);
+
+    signInScheduleWorker($clockPoint)
+        ->assertSeeHtml('wp-pill--new')
+        ->call('openSchedule')
+        ->assertSet('scheduleListOpen', true)
+        ->assertSee(__('time.schedule.types.kinds.leave'), false)
+        ->assertSet('scheduleWeek', $week);
+
+    expect(WorkerNotification::query()->where('worker_id', $worker->id)->whereNull('read_at')->count())->toBe(0);
+});
+
+it('weigert de roosterlijst via Livewire-state', function () {
+    [, , $clockPoint] = schedulePortalTenant();
+    $component = signInScheduleWorker($clockPoint);
+
+    expect(fn () => $component->set('scheduleListOpen', true))
+        ->toThrow(CannotUpdateLockedPropertyException::class);
+});

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\PlannedShiftStatus;
+use App\Enums\ShiftTypeKind;
 use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,7 @@ class PlannedShift extends Model
         'worker_id',
         'work_date',
         'shift_type_id',
+        'kind',
         'start_time',
         'end_time',
         'break_minutes',
@@ -25,6 +27,7 @@ class PlannedShift extends Model
 
     protected $casts = [
         'work_date' => 'date',
+        'kind' => ShiftTypeKind::class,
         'break_minutes' => 'integer',
         'status' => PlannedShiftStatus::class,
     ];
@@ -51,6 +54,14 @@ class PlannedShift extends Model
 
     public function displayValue(): string
     {
+        if ($this->kind->isAbsence()) {
+            if ($this->shiftType !== null && $this->shiftType->is_active) {
+                return $this->shiftType->code;
+            }
+
+            return strtoupper($this->kind->value);
+        }
+
         if ($this->shiftType !== null && $this->shiftType->is_active) {
             return $this->shiftType->code;
         }

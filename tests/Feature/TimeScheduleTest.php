@@ -1,5 +1,8 @@
 <?php
 
+use App\Actions\Notifications\CreateNotificationAction;
+use App\Actions\Notifications\ListWorkerNotificationsAction;
+use App\Actions\Notifications\MarkWorkerNotificationsReadAction;
 use App\Actions\Time\AssertPlannedShiftNoOverlapAction;
 use App\Actions\Time\CopyWeekAction;
 use App\Actions\Time\ListRosterWeekAction;
@@ -14,6 +17,8 @@ use App\Data\Time\SaveShiftTypeData;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\RosterCellKind;
 use App\Enums\ShiftTypeColor;
+use App\Enums\ShiftTypeKind;
+use App\Enums\WorkerNotificationType;
 use App\Exceptions\RosterValidationException;
 use App\Livewire\Time\RosterIndex;
 use App\Livewire\Time\ShiftTypesIndex;
@@ -24,6 +29,7 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Models\WebhookEndpoint;
 use App\Models\Worker;
+use App\Models\WorkerNotification;
 use App\Support\Tenancy;
 use Carbon\Carbon;
 use Livewire\Livewire;
@@ -357,3 +363,155 @@ it('bevat schedule-webhook-events', function () {
         ->and(WebhookEndpoint::AVAILABLE_EVENTS)->toContain('time.schedule.published')
         ->and(WebhookEndpoint::AVAILABLE_EVENTS)->toContain('time.shift_type.saved');
 });
+
+it('slaat verlof op zonder uren en weigert overlap met werk', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $leave = app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
+        $admin->id,
+    );
+    expect($leave->kind)->toBe(ShiftTypeKind::Leave)
+        ->and($leave->start_time)->toBeNull();
+
+    $parse = app(ParseRosterCellAction::class);
+    $parsed = $parse->handle('VL', ShiftType::query()->get());
+    expect($parsed->kind)->toBe(RosterCellKind::Absence)
+        ->and($parsed->startTime)->toBeNull();
+
+    $week = scheduleWeekStart();
+    $saved = app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], scheduleCells([$worker], $week, [
+            $worker->id.':'.$week => 'VL',
+        ])),
+        $admin->id,
+    );
+
+    expect($saved)->toHaveCount(1)
+        ->and($saved[0]->kind)->toBe(ShiftTypeKind::Leave)
+        ->and($saved[0]->start_time)->toBeNull()
+        ->and($saved[0]->break_minutes)->toBe(0);
+
+    $assert = app(AssertPlannedShiftNoOverlapAction::class);
+    expect(fn () => $assert->handle([
+        ['worker_id' => 1, 'date' => $week, 'start' => '07:00', 'end' => '15:00', 'kind' => 'work'],
+        ['worker_id' => 1, 'date' => $week, 'start' => null, 'end' => null, 'kind' => 'leave'],
+    ]))->toThrow(RosterValidationException::class);
+});
+
+it('maakt bij publiceren één notificatie per uitvoerder en reset read_at bij republish', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $week = scheduleWeekStart();
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], scheduleCells([$worker], $week, [
+            $worker->id.':'.$week => '07:00-15:00',
+        ])),
+        $admin->id,
+    );
+
+    app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData($week, [$worker->id]),
+        $admin->id,
+    );
+
+    $row = WorkerNotification::query()->first();
+    expect($row)->not->toBeNull()
+        ->and($row->type)->toBe(WorkerNotificationType::RosterPublished)
+        ->and($row->reference_id)->toBe($week)
+        ->and($row->read_at)->toBeNull();
+
+    $items = app(ListWorkerNotificationsAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        WorkerNotificationType::RosterPublished,
+    );
+    expect($items)->toHaveCount(1)
+        ->and($items[0]->target->screen)->toBe('schedule')
+        ->and($items[0]->target->cursor)->toBe($week);
+
+    app(MarkWorkerNotificationsReadAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        WorkerNotificationType::RosterPublished,
+    );
+    expect(WorkerNotification::query()->first()->read_at)->not->toBeNull();
+
+    app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData($week, [$worker->id]),
+        $admin->id,
+    );
+    expect(WorkerNotification::query()->count())->toBe(1)
+        ->and(WorkerNotification::query()->first()->read_at)->toBeNull();
+});
+
+it('weigert een planned_shift-id als roster_published reference_id', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    expect(fn () => app(CreateNotificationAction::class)->handle(
+        $tenant,
+        $worker,
+        WorkerNotificationType::RosterPublished,
+        '42',
+    ))->toThrow(InvalidArgumentException::class);
+});
+
+it('markeert gepland vs geklokt op een verleden published dag', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $week = scheduleWeekStart();
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], scheduleCells([$worker], $week, [
+            $worker->id.':'.$week => '07:00-15:00',
+        ])),
+        $admin->id,
+    );
+    app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData($week, [$worker->id]),
+        $admin->id,
+    );
+
+    $snapshot = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        $week,
+        null,
+        $admin,
+        'week',
+    );
+
+    expect($snapshot->attendance[$worker->id.':'.$week] ?? null)->toBe('missing');
+});
+
+it('kopieert afwezigheid als draft naar de volgende week', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
+        $admin->id,
+    );
+    $week = scheduleWeekStart();
+    $next = Carbon::parse($week)->addWeek()->toDateString();
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], scheduleCells([$worker], $week, [
+            $worker->id.':'.$week => 'VL',
+        ])),
+        $admin->id,
+    );
+
+    $copied = app(CopyWeekAction::class)->handle(
+        $tenant,
+        new CopyWeekData($week, $next, [$worker->id]),
+        $admin->id,
+    );
+
+    expect($copied)->toHaveCount(1)
+        ->and($copied[0]->kind)->toBe(ShiftTypeKind::Leave)
+        ->and($copied[0]->start_time)->toBeNull()
+        ->and($copied[0]->status)->toBe(PlannedShiftStatus::Draft);
+});
+

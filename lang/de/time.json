@@ -295,6 +295,16 @@
             "month_nav": "Monat",
             "previous_month": "Vorheriger Monat",
             "next_month": "Nächster Monat"
+        },
+        "schedule": {
+            "tile": "Mein Dienstplan",
+            "tile_sub": "Deine geplante Woche",
+            "title": "Mein Dienstplan",
+            "subtitle": "Nur deine veröffentlichten Dienste und Abwesenheiten.",
+            "empty": "Diese Woche nichts geplant.",
+            "week_nav": "Woche",
+            "previous_week": "Vorherige Woche",
+            "next_week": "Nächste Woche"
         }
     },
     "ciao": {
@@ -384,7 +394,8 @@
             "duplicate_cell": "Doppelte Zelle im Plan.",
             "incomplete_grid": "Der Plan ist unvollständig.",
             "copy_same_week": "Quell- und Zielwoche sind gleich.",
-            "copy_conflict": "Die Zielwoche hat bereits Dienste. Kopie abgelehnt."
+            "copy_conflict": "Die Zielwoche hat bereits Dienste. Kopie abgelehnt.",
+            "invalid_notification_reference": "Ungültige Benachrichtigungsreferenz."
         },
         "types": {
             "add": "Schichttyp hinzufügen",
@@ -411,6 +422,13 @@
                 "sand": "Sand",
                 "rose": "Rot",
                 "slate": "Grau"
+            },
+            "kind": "Art",
+            "kinds": {
+                "work": "Arbeit",
+                "leave": "Urlaub",
+                "recup": "Ausgleich",
+                "sick": "Krank"
             }
         },
         "empty_workers": "Keine Ausführenden in diesem Zeitraum. Legen Sie sie unter Personen → Teams an.",
@@ -423,7 +441,14 @@
         "prev_month": "Voriger Monat",
         "this_month": "Dieser Monat",
         "next_month": "Nächster Monat",
-        "publish_confirm_month": "Diesen Monat für die sichtbaren Ausführenden veröffentlichen?"
+        "publish_confirm_month": "Diesen Monat für die sichtbaren Ausführenden veröffentlichen?",
+        "legend_absence": "Abwesenheit",
+        "attendance": {
+            "missing": "Geplant, nicht gestempelt",
+            "deviation": "Außerhalb des geplanten Fensters gestempelt",
+            "unplanned": "Gestempelt ohne Plan (oder während Abwesenheit)",
+            "ok": "Stimmt mit der Planung überein"
+        }
     },
     "shift_types": {
         "title": "Schichttypen",

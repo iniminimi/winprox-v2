@@ -951,6 +951,10 @@
                     "text": "Après connexion, la tuile Mes heures n’affiche que vos services du mois choisi : entrée/sortie, pause et temps travaillé. Mois précédent/suivant. La pause affichée est celle de la feuille d’heures ; elle peut inclure le minimum d’équipe si vous n’avez pas (assez) pointé de pause live."
                 },
                 {
+                    "label": "Mon planning",
+                    "text": "Après connexion, tu vois la tuile Mon planning. Elle n’affiche que tes services et absences <strong>publiés</strong> de la semaine choisie. Un badge signifie un planning tout juste publié ; l’ouvrir l’efface."
+                },
+                {
                     "label": "Déconnexion",
                     "text": "Déconnectez-vous lorsque vous avez terminé. Aux heures définies par l'administrateur, vous êtes également automatiquement déconnecté."
                 }
@@ -1575,7 +1579,7 @@
                 },
                 {
                     "label": "Enregistrer et publier",
-                    "text": "Enregistrer conserve la semaine ou le mois visible. <strong>Publier</strong> marque cette période comme planifiée (Clock Point plus tard). Modifier après publication reste publié."
+                    "text": "Enregistrer conserve la semaine ou le mois visible. <strong>Publier</strong> rend la période visible sur le Clock Point (Mon planning) et pose un badge. Les corrections après publication restent publiées."
                 },
                 {
                     "label": "Copier la semaine",
@@ -1584,12 +1588,24 @@
                 {
                     "label": "Types de service",
                     "text": "La <strong>légende</strong> montre les codes actifs. Les types se gèrent sous Time → <strong>Types de service</strong> (en général une fois)."
+                },
+                {
+                    "label": "Absence",
+                    "text": "Les types de shift peuvent être <strong>congé</strong>, <strong>récup</strong> ou <strong>maladie</strong>. Ces codes remplissent toute la journée, ne comptent pas d’heures et ne peuvent pas coexister avec du travail ce jour-là."
+                },
+                {
+                    "label": "Planifié vs pointé",
+                    "text": "Sur les jours <strong>passés</strong> d’une période <strong>publiée</strong>, la grille marque les pointages manquants, les écarts et les pointages non prévus. Une absence sans pointage est correcte."
                 }
             ]
         },
         "time.shift_types": {
             "title": "Aide — Types de service",
             "actions": [
+                {
+                    "label": "Type",
+                    "text": "Choisissez <strong>Travail</strong> (début, fin, pause) ou une absence. Les absences n’ont pas d’heures."
+                },
                 {
                     "label": "Ajouter",
                     "text": "Un type est un <strong>code</strong> avec début, fin, pause et couleur. En général une seule fois. Les cellules existantes ne changent pas si vous modifiez un type plus tard."

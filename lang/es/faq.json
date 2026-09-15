@@ -321,8 +321,8 @@
             "slug": "time_schedule",
             "type": "text",
             "title": "¿Qué es el horario?",
-            "body": "En Time → Horario planifica turnos por operario: escriba un código (tipo de turno) o un horario libre como 07:00-15:00. Alterne semana y mes; el mes muestra el número de día y el día de la semana en columnas más estrechas. Los tipos se configuran en Time → Tipos de turno (suele ser una vez); el horario muestra una leyenda. Las celdas no válidas tienen borde rojo. Guardar conserva el periodo visible; publicar lo marca como planificado. Publicar no envía nada a la ONSS. Copiar una semana (solo vista semanal) es todo o nada. Los turnos nocturnos no están permitidos.",
-            "summary": "Time → Horario: semana o mes; códigos u horas libres; tipos en Tipos de turno."
+            "body": "En Time → Cuadrante planifica turnos por trabajador: código o horario libre 07:00-15:00. Los códigos de ausencia se definen en Time → Tipos de turno. Guardar conserva el periodo visible; publicar lo hace visible en Clock Point. Publicar no envía nada a la ONSS.",
+            "summary": "Time → Cuadrante: códigos, ausencias, Mi cuadrante en Clock Point."
         }
     }
 }

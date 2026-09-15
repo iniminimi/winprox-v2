@@ -321,8 +321,8 @@
             "slug": "time_schedule",
             "type": "text",
             "title": "Che cos’è il turno pianificato?",
-            "body": "In Time → Turni pianifichi i servizi per esecutore: digita un codice (tipo turno) o un orario libero come 07:00-15:00. Passa da settimana a mese; il mese mostra numero del giorno e giorno della settimana in colonne più strette. I tipi si impostano in Time → Tipi di turno (di solito una volta); il foglio mostra una legenda. Le celle non valide hanno un bordo rosso. Salva conserva il periodo visibile; pubblica lo segna come pianificato. La pubblicazione non invia nulla all’ONSS. Copiare una settimana (solo vista settimana) è tutto o niente. I turni notturni non sono ammessi.",
-            "summary": "Time → Turni: settimana o mese; codici o orari liberi; tipi in Tipi di turno."
+            "body": "In Time → Turni pianifichi i servizi per esecutore: codice o orario libero 07:00-15:00. I codici di assenza si impostano in Time → Tipi di turno. Salva conserva il periodo visibile; pubblica lo rende visibile sul Clock Point. Pubblicare non invia nulla all’ONSS.",
+            "summary": "Time → Turni: codici, assenze, Il mio turno sul Clock Point."
         }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ShiftTypeColor;
+use App\Enums\ShiftTypeKind;
 use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,6 +17,7 @@ class ShiftType extends Model
         'tenant_id',
         'code',
         'label',
+        'kind',
         'start_time',
         'end_time',
         'break_minutes',
@@ -27,6 +29,7 @@ class ShiftType extends Model
         'break_minutes' => 'integer',
         'is_active' => 'boolean',
         'color' => ShiftTypeColor::class,
+        'kind' => ShiftTypeKind::class,
     ];
 
     public function plannedShifts(): HasMany
@@ -58,8 +61,12 @@ class ShiftType extends Model
         return ($hours * 60) + $minutes;
     }
 
-    public static function formatTime(string $time): string
+    public static function formatTime(?string $time): string
     {
+        if ($time === null || $time === '') {
+            return '';
+        }
+
         return substr($time, 0, 5);
     }
 }

@@ -26,7 +26,12 @@
                         <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
                         <div class="wp-stack-tight">
                             <p class="wp-issue-card-title"><strong>{{ $type->code }}</strong> {{ $type->label }}</p>
-                            <p class="wp-issue-card-meta">{{ $type->start_time }}–{{ $type->end_time }} · {{ __('time.schedule.types.break') }} {{ $type->break_minutes }}</p>
+                            <p class="wp-issue-card-meta">
+                                {{ __('time.schedule.types.kinds.'.$type->kind->value) }}
+                                @if ($type->kind->isWork())
+                                    · {{ $type->start_time }}–{{ $type->end_time }} · {{ __('time.schedule.types.break') }} {{ $type->break_minutes }}
+                                @endif
+                            </p>
                         </div>
                     </div>
                     <div class="wp-cluster wp-cluster--wrap">
@@ -64,6 +69,16 @@
                     <input id="type-label" class="wp-input" wire:model="typeLabel" maxlength="80">
                     @error('typeLabel') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+                <div class="wp-field">
+                    <label class="wp-label" for="type-kind">{{ __('time.schedule.types.kind') }}</label>
+                    <select id="type-kind" class="wp-select" wire:model.live="typeKind">
+                        @foreach ($kinds as $kind)
+                            <option value="{{ $kind->value }}">{{ __('time.schedule.types.kinds.'.$kind->value) }}</option>
+                        @endforeach
+                    </select>
+                    @error('typeKind') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                @if ($typeKind === \App\Enums\ShiftTypeKind::Work->value)
                 <div class="wp-measure-field-range">
                     <div class="wp-field">
                         <label class="wp-label" for="type-start">{{ __('time.schedule.types.start') }}</label>
@@ -81,6 +96,7 @@
                     <input id="type-break" type="number" min="0" max="720" class="wp-input" wire:model="typeBreak">
                     @error('typeBreak') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+                @endif
                 <div class="wp-field">
                     <label class="wp-label" for="type-color">{{ __('time.schedule.types.color') }}</label>
                     <div class="wp-cluster wp-cluster--tight">

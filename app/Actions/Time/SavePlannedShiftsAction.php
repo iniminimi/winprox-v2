@@ -5,6 +5,7 @@ namespace App\Actions\Time;
 use App\Data\Time\SavePlannedShiftsData;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\RosterCellKind;
+use App\Enums\ShiftTypeKind;
 use App\Events\Time\ScheduleSaved;
 use App\Exceptions\RosterValidationException;
 use App\Models\PlannedShift;
@@ -87,6 +88,7 @@ class SavePlannedShiftsAction
                     'worker_id' => (int) $item['cell']['worker_id'],
                     'work_date' => $item['cell']['date'],
                     'shift_type_id' => $parsed->shiftTypeId,
+                    'kind' => $parsed->shiftTypeKind ?? ShiftTypeKind::Work,
                     'start_time' => $parsed->startTime,
                     'end_time' => $parsed->endTime,
                     'break_minutes' => $parsed->breakMinutes,
@@ -98,6 +100,7 @@ class SavePlannedShiftsAction
                     'date' => $shift->work_date->toDateString(),
                     'start' => $shift->start_time,
                     'end' => $shift->end_time,
+                    'kind' => $shift->kind->value,
                 ];
             }
 

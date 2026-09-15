@@ -716,7 +716,7 @@ productsector op `Tenant`.
 - Billing: hangt aan **Time** (en/of Corporate) — geen los “CIAO-only”-plan zonder Time tenzij
   later expliciet beslist. Product_docs + FAQ bij implementatie (alle locales).
 
-### 5g.5 Uurrooster (golf 1)
+### 5g.5 Uurrooster (golf 1 + golf 2)
 
 **Doel:** geplande diensten per uitvoerder, los van geklokte `WorkShift`. Excel-achtige grid
 (Jspreadsheet CE): codes (shiftypes) of vrije tijd `07:00-15:00`. Eén cel per uitvoerder per dag.
@@ -724,15 +724,22 @@ Week- of **maandweergave**; maandkolommen zijn smaller (dagnummer + weekdag onde
 
 - **Overlap:** halfopen interval `[start, eind)` — `07:00–11:00` en `11:00–15:00` is geldig.
   Zelfde worker, echte overlap → harde fout. Nachtshift (`eind <= start`) verboden in golf 1.
-- **Snapshot:** code vult start/eind/pauze uit het type op dat moment; latere type-wijziging
-  raakt bestaande cellen niet. Vrije tijd: `pauze = 0`.
+- **Snapshot:** code vult start/eind/pauze/`kind` uit het type op dat moment; latere type-wijziging
+  raakt bestaande cellen niet. Vrije tijd: `pauze = 0`, `kind = work`.
 - **Scope:** opslaan / publiceren = zichtbare periode (week of maand) × zichtbare workers (teamfilter).
 - **Publiceren:** periode-scoped; bewerken daarna blijft `published`. Geen RSZ/CIAO.
-- **Shiftypes:** eigen scherm onder Time (eenmalig instellen). Het uurrooster toont alleen
-  een compacte codelegende. Ongeldige cellen: rode rand.
+  Na publiceren: `PublishWeekAction` → `NotifyWorkersRosterPublishedAction` →
+  `CreateNotificationAction` (`roster_published`, `reference_id` = periode-start `Y-m-d`).
+- **Shiftypes:** eigen scherm onder Time (eenmalig instellen). `kind`: work / leave / recup / sick.
+  Afwezigheid: hele kalenderdag, geen uren, blokkeert werk die dag. Het uurrooster toont een
+  codelegende (werk vs afwezigheid). Ongeldige cellen: rode rand.
 - **Copy week:** alles-of-niets; alleen in weekweergave; doelweek met bestaande diensten → weigeren.
-- **Niet in golf 1:** gepland vs geklokt, Mijn rooster op Clock Point, mail bij publiceren,
-  afwezigheid, CSV, rusttijden, ruilen, beschikbaarheid.
+- **Golf 2 — Mijn rooster:** Clock Point-tegel, alleen eigen `published` week. Badge = ongelezen
+  `roster_published` (`wp-pill--new`). Klik opent de nieuwste ongelezen week en zet `read_at`
+  voor dat type. Geen inbox, geen mail, geen Laravel notifications.
+- **Golf 2 — gepland vs geklokt:** alleen beheer, verleden, published. Missing / deviation /
+  unplanned / ok. Afwezigheid zonder prik = ok; mét prik = ungepland. Geen locatievergelijking.
+- **Niet in deze slice:** saldo, aanvraag/ruilen, CSV, rusttijden, beschikbaarheid, mail/SMS.
 
 ---
 

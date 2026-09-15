@@ -321,8 +321,8 @@
             "slug": "time_schedule",
             "type": "text",
             "title": "Was ist der Dienstplan?",
-            "body": "Unter Time → Dienstplan planen Sie Dienste je Ausführendem: geben Sie einen Code (Schichttyp) oder eine freie Zeit wie 07:00-15:00 ein. Wechseln Sie zwischen Woche und Monat; der Monat zeigt Tagesnummer und Wochentag in schmaleren Spalten. Schichttypen richten Sie unter Time → Schichttypen ein (meist einmal); der Plan zeigt eine Code-Legende. Ungültige Zellen haben einen roten Rand. Speichern bewahrt den sichtbaren Zeitraum; Veröffentlichen markiert ihn als geplant. Veröffentlichen sendet nichts an die RSZ. Eine Woche kopieren (nur Wochenansicht) ist alles oder nichts. Nachtschichten (Ende vor oder gleich Start) sind nicht erlaubt.",
-            "summary": "Time → Dienstplan: Woche oder Monat; Codes oder freie Zeiten; Typen unter Schichttypen."
+            "body": "Unter Time → Dienstplan planen Sie Schichten pro Ausführendem: Code (Schichttyp) oder freie Zeit wie 07:00-15:00. Abwesenheitscodes (Urlaub, Ausgleich, Krank) unter Time → Schichttypen füllen den ganzen Tag. Speichern bewahrt den sichtbaren Zeitraum; Veröffentlichen macht ihn auf dem Clock Point sichtbar. Veröffentlichen sendet nichts an den LSS.",
+            "summary": "Time → Dienstplan: Codes, Abwesenheit, Mein Dienstplan am Clock Point."
         }
     }
 }

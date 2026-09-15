@@ -24,6 +24,7 @@ class ShiftTypeSaved implements WebhookEvent
             'id' => $this->shiftType->id,
             'code' => $this->shiftType->code,
             'label' => $this->shiftType->label,
+            'kind' => $this->shiftType->kind->value,
             'start_time' => $this->shiftType->start_time,
             'end_time' => $this->shiftType->end_time,
             'break_minutes' => $this->shiftType->break_minutes,

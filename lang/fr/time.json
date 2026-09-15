@@ -295,6 +295,16 @@
             "month_nav": "Mois",
             "previous_month": "Mois précédent",
             "next_month": "Mois suivant"
+        },
+        "schedule": {
+            "tile": "Mon planning",
+            "tile_sub": "Votre semaine planifiée",
+            "title": "Mon planning",
+            "subtitle": "Uniquement vos services et absences publiés.",
+            "empty": "Rien de planifié cette semaine.",
+            "week_nav": "Semaine",
+            "previous_week": "Semaine précédente",
+            "next_week": "Semaine suivante"
         }
     },
     "ciao": {
@@ -384,7 +394,8 @@
             "duplicate_cell": "Cellule en double dans l’horaire.",
             "incomplete_grid": "La grille est incomplète.",
             "copy_same_week": "La semaine source et la semaine cible sont identiques.",
-            "copy_conflict": "La semaine cible a déjà des services. Copie refusée."
+            "copy_conflict": "La semaine cible a déjà des services. Copie refusée.",
+            "invalid_notification_reference": "Référence de notification invalide."
         },
         "types": {
             "add": "Ajouter un type",
@@ -411,6 +422,13 @@
                 "sand": "Sable",
                 "rose": "Rouge",
                 "slate": "Gris"
+            },
+            "kind": "Type",
+            "kinds": {
+                "work": "Travail",
+                "leave": "Congé",
+                "recup": "Récup",
+                "sick": "Maladie"
             }
         },
         "empty_workers": "Aucun exécutant pour cette période. Ajoutez-les sous Personnes → Équipes.",
@@ -423,7 +441,14 @@
         "prev_month": "Mois précédent",
         "this_month": "Ce mois",
         "next_month": "Mois suivant",
-        "publish_confirm_month": "Publier ce mois pour les exécutants visibles ?"
+        "publish_confirm_month": "Publier ce mois pour les exécutants visibles ?",
+        "legend_absence": "Absence",
+        "attendance": {
+            "missing": "Planifié, non pointé",
+            "deviation": "Pointé hors de la plage prévue",
+            "unplanned": "Pointé sans planning (ou pendant une absence)",
+            "ok": "Correspond au planning"
+        }
     },
     "shift_types": {
         "title": "Types de service",

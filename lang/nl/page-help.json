@@ -943,6 +943,10 @@
                     "text": "Na aanmelden zie je de tegel Mijn uren. Daar staan alleen jouw diensten van de gekozen maand: in- en uitkloktijd, pauze en gewerkte tijd. Blader met vorige/volgende maand. De getoonde pauze is de urenstaat; die kan het teamminimum bevatten als je geen (of te korte) live pauze klokte."
                 },
                 {
+                    "label": "Mijn rooster",
+                    "text": "Na aanmelden zie je de tegel Mijn rooster. Daar staan alleen jouw <strong>gepubliceerde</strong> diensten en afwezigheden van de gekozen week. Een groene badge betekent een nieuw gepubliceerd rooster; openen zet de badge weg."
+                },
+                {
                     "label": "Afmelden",
                     "text": "Meld je af wanneer je klaar bent. Op door de beheerder ingestelde tijdstippen word je bovendien automatisch afgemeld."
                 }
@@ -1567,7 +1571,7 @@
                 },
                 {
                     "label": "Opslaan en publiceren",
-                    "text": "Opslaan bewaart de zichtbare week of maand en uitvoerders. <strong>Publiceren</strong> maakt die periode zichtbaar als gepland (Clock Point volgt later). Bewerken na publiceren blijft gepubliceerd."
+                    "text": "Opslaan bewaart de zichtbare week of maand en uitvoerders. <strong>Publiceren</strong> maakt die periode zichtbaar op Clock Point (Mijn rooster) en zet een badge. Bewerken na publiceren blijft gepubliceerd; een nieuwe badge volgt alleen bij opnieuw publiceren."
                 },
                 {
                     "label": "Week kopiëren",
@@ -1576,12 +1580,24 @@
                 {
                     "label": "Shiftypes",
                     "text": "De <strong>legende</strong> toont de actieve codes. Types zelf beheert u onder Time → <strong>Shiftypes</strong> (meestal één keer)."
+                },
+                {
+                    "label": "Afwezigheid",
+                    "text": "Shiftypes kunnen <strong>verlof</strong>, <strong>recup</strong> of <strong>ziek</strong> zijn. Die codes vullen de hele dag, tellen geen uren en mogen niet samen met werk die dag. Halve dagen zitten niet in deze slice."
+                },
+                {
+                    "label": "Gepland vs geklokt",
+                    "text": "Op <strong>verleden</strong> dagen van een <strong>gepubliceerde</strong> periode markeert het rooster ontbrekende prikken, afwijkingen en ongeplande prikken. Afwezigheid zonder prik is in orde. Publiceren stuurt niets naar de RSZ."
                 }
             ]
         },
         "time.shift_types": {
             "title": "Hulp — Shiftypes",
             "actions": [
+                {
+                    "label": "Soort",
+                    "text": "Kies <strong>Werk</strong> (start, einde, pauze) of een afwezigheid. Afwezigheid heeft geen uren. Bestaande cellen in het uurrooster wijzigen niet als u later een type aanpast."
+                },
                 {
                     "label": "Toevoegen",
                     "text": "Een shiftype is een <strong>code</strong> met start, einde, pauze en kleur. Dat stelt u meestal één keer in. Bestaande cellen in het uurrooster wijzigen niet als u later een type aanpast."

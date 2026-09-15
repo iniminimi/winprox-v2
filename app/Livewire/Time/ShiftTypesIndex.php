@@ -7,6 +7,7 @@ use App\Actions\Time\SaveShiftTypeAction;
 use App\Actions\Time\SetShiftTypeActiveAction;
 use App\Data\Time\SaveShiftTypeData;
 use App\Enums\ShiftTypeColor;
+use App\Enums\ShiftTypeKind;
 use App\Exceptions\RosterValidationException;
 use App\Http\Requests\Time\SaveShiftTypeRequest;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
@@ -34,6 +35,7 @@ class ShiftTypesIndex extends Component
     public string $typeEnd = '15:00';
     public int $typeBreak = 0;
     public string $typeColor = 'none';
+    public string $typeKind = 'work';
 
     public function mount(): void
     {
@@ -54,10 +56,11 @@ class ShiftTypesIndex extends Component
         $this->editingTypeId = $type->id;
         $this->typeCode = $type->code;
         $this->typeLabel = $type->label;
-        $this->typeStart = $type->start_time;
-        $this->typeEnd = $type->end_time;
+        $this->typeStart = $type->start_time ?? '07:00';
+        $this->typeEnd = $type->end_time ?? '15:00';
         $this->typeBreak = (int) $type->break_minutes;
         $this->typeColor = $type->color->value;
+        $this->typeKind = $type->kind->value;
         $this->showModal = true;
     }
 
@@ -70,16 +73,22 @@ class ShiftTypesIndex extends Component
     public function save(SaveShiftTypeAction $save): void
     {
         $rules = SaveShiftTypeRequest::rulesFor();
-        $validated = $this->validate([
+        $fieldRules = [
             'typeCode' => $rules['code'],
             'typeLabel' => $rules['label'],
-            'typeStart' => $rules['start_time'],
-            'typeEnd' => $rules['end_time'],
-            'typeBreak' => $rules['break_minutes'],
+            'typeKind' => $rules['kind'],
             'typeColor' => $rules['color'],
-        ], [], [
+        ];
+        if ($this->typeKind === ShiftTypeKind::Work->value) {
+            $fieldRules['typeStart'] = $rules['start_time'];
+            $fieldRules['typeEnd'] = $rules['end_time'];
+            $fieldRules['typeBreak'] = $rules['break_minutes'];
+        }
+
+        $validated = $this->validate($fieldRules, [], [
             'typeCode' => __('time.schedule.types.code'),
             'typeLabel' => __('time.schedule.types.label'),
+            'typeKind' => __('time.schedule.types.kind'),
             'typeStart' => __('time.schedule.types.start'),
             'typeEnd' => __('time.schedule.types.end'),
             'typeBreak' => __('time.schedule.types.break'),
@@ -87,6 +96,7 @@ class ShiftTypesIndex extends Component
         ]);
 
         $color = ShiftTypeColor::from($validated['typeColor']);
+        $kind = ShiftTypeKind::from($validated['typeKind']);
 
         try {
             if ($this->editingTypeId) {
@@ -97,11 +107,12 @@ class ShiftTypesIndex extends Component
                     new SaveShiftTypeData(
                         code: $validated['typeCode'],
                         label: $validated['typeLabel'],
-                        startTime: $validated['typeStart'],
-                        endTime: $validated['typeEnd'],
-                        breakMinutes: (int) $validated['typeBreak'],
+                        startTime: $kind->isWork() ? $validated['typeStart'] : null,
+                        endTime: $kind->isWork() ? $validated['typeEnd'] : null,
+                        breakMinutes: $kind->isWork() ? (int) $validated['typeBreak'] : 0,
                         color: $color,
                         isActive: $type->is_active,
+                        kind: $kind,
                     ),
                     auth()->id(),
                     $type->id,
@@ -113,11 +124,12 @@ class ShiftTypesIndex extends Component
                     new SaveShiftTypeData(
                         code: $validated['typeCode'],
                         label: $validated['typeLabel'],
-                        startTime: $validated['typeStart'],
-                        endTime: $validated['typeEnd'],
-                        breakMinutes: (int) $validated['typeBreak'],
+                        startTime: $kind->isWork() ? $validated['typeStart'] : null,
+                        endTime: $kind->isWork() ? $validated['typeEnd'] : null,
+                        breakMinutes: $kind->isWork() ? (int) $validated['typeBreak'] : 0,
                         color: $color,
                         isActive: true,
+                        kind: $kind,
                     ),
                     auth()->id(),
                 );
@@ -144,6 +156,7 @@ class ShiftTypesIndex extends Component
         return view('livewire.time.shift-types-index', [
             'shiftTypes' => $listTypes->handle((int) Tenancy::id(), false),
             'colors' => ShiftTypeColor::cases(),
+            'kinds' => ShiftTypeKind::cases(),
             'alarmCount' => $this->timeNavAlarmCount(),
         ]);
     }
@@ -157,6 +170,7 @@ class ShiftTypesIndex extends Component
         $this->typeEnd = '15:00';
         $this->typeBreak = 0;
         $this->typeColor = ShiftTypeColor::default()->value;
+        $this->typeKind = ShiftTypeKind::Work->value;
         $this->resetErrorBag();
     }
 }

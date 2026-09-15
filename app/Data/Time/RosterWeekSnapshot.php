@@ -12,6 +12,8 @@ final class RosterWeekSnapshot
      * @param  list<array<string, mixed>>  $types
      * @param  list<array<string, mixed>>  $teams
      * @param  list<int>  $dayNumbers
+     * @param  array<string, string>  $attendance
+     * @param  array<string, string>  $attendanceMessages
      */
     public function __construct(
         public string $weekStart,
@@ -27,6 +29,8 @@ final class RosterWeekSnapshot
         public string $period = 'week',
         public string $monthLabel = '',
         public array $dayNumbers = [],
+        public array $attendance = [],
+        public array $attendanceMessages = [],
     ) {}
 
     /**
@@ -49,6 +53,8 @@ final class RosterWeekSnapshot
             'period' => $this->period,
             'month_label' => $this->monthLabel,
             'day_numbers' => $this->dayNumbers,
+            'attendance' => $this->attendance,
+            'attendance_messages' => $this->attendanceMessages,
         ];
     }
 }

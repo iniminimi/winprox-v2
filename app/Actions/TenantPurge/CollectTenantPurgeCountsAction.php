@@ -27,6 +27,7 @@ use App\Models\Unit;
 use App\Models\User;
 use App\Models\WebhookEndpoint;
 use App\Models\Worker;
+use App\Models\WorkerNotification;
 use App\Models\WorkShift;
 use Illuminate\Support\Facades\DB;
 
@@ -61,6 +62,7 @@ final class CollectTenantPurgeCountsAction
             'work_shifts' => WorkShift::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'planned_shifts' => PlannedShift::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'shift_types' => ShiftType::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
+            'worker_notifications' => WorkerNotification::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'clock_points' => ClockPoint::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'esg_indicators' => EsgIndicator::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'esg_measurements' => EsgMeasurement::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),

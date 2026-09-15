@@ -3,6 +3,7 @@
 namespace App\Actions\Time;
 
 use App\Data\Time\RosterWeekSnapshot;
+use App\Enums\RosterAttendanceStatus;
 use App\Enums\ShiftTypeColor;
 use App\Models\InternalTeam;
 use App\Models\PlannedShift;
@@ -18,6 +19,7 @@ class ListRosterWeekAction
     public function __construct(
         private ResolveRosterPeriodAction $resolvePeriod,
         private ListShiftTypesAction $listShiftTypes,
+        private CompareRosterAttendanceAction $compareAttendance,
     ) {}
 
     public function handle(int $tenantId, string $weekStart, ?int $teamId = null, ?User $actor = null, string $period = 'week'): RosterWeekSnapshot
@@ -49,8 +51,9 @@ class ListRosterWeekAction
                 'code' => $activeType ? $shift->shiftType->code : null,
                 'color' => ($activeType ? $shift->shiftType->color : ShiftTypeColor::freeTime())->value,
                 'status' => $shift->status->value,
-                'start' => ShiftType::formatTime($shift->start_time),
-                'end' => ShiftType::formatTime($shift->end_time),
+                'kind' => $shift->kind->value,
+                'start' => $shift->start_time !== null ? ShiftType::formatTime($shift->start_time) : null,
+                'end' => $shift->end_time !== null ? ShiftType::formatTime($shift->end_time) : null,
             ];
         }
 
@@ -59,12 +62,20 @@ class ListRosterWeekAction
             'id' => $type->id,
             'code' => $type->code,
             'label' => $type->label,
-            'start' => ShiftType::formatTime($type->start_time),
-            'end' => ShiftType::formatTime($type->end_time),
+            'kind' => $type->kind->value,
+            'start' => $type->start_time !== null ? ShiftType::formatTime($type->start_time) : null,
+            'end' => $type->end_time !== null ? ShiftType::formatTime($type->end_time) : null,
             'break_minutes' => $type->break_minutes,
             'color' => $type->color->value,
             'active' => $type->is_active,
         ], $types);
+
+        $attendance = $this->compareAttendance->handle(
+            $tenantId,
+            $shifts,
+            $workerIds,
+            $dates,
+        );
 
         $weekPublished = $shifts->contains(fn (PlannedShift $shift) => $shift->status->isPublished());
 
@@ -116,6 +127,13 @@ class ListRosterWeekAction
             period: $period,
             monthLabel: $monthLabel,
             dayNumbers: $dayNumbers,
+            attendance: $attendance,
+            attendanceMessages: [
+                RosterAttendanceStatus::Missing->value => __('time.schedule.attendance.missing'),
+                RosterAttendanceStatus::Deviation->value => __('time.schedule.attendance.deviation'),
+                RosterAttendanceStatus::Unplanned->value => __('time.schedule.attendance.unplanned'),
+                RosterAttendanceStatus::Ok->value => __('time.schedule.attendance.ok'),
+            ],
         );
     }
 

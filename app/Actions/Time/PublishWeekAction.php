@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Actions\Time\NotifyWorkersRosterPublishedAction;
 use App\Data\Time\PublishWeekData;
 use App\Enums\PlannedShiftStatus;
 use App\Events\Time\SchedulePublished;
@@ -14,7 +15,10 @@ use Illuminate\Support\Facades\DB;
 
 class PublishWeekAction
 {
-    public function __construct(private ResolveRosterPeriodAction $resolvePeriod) {}
+    public function __construct(
+        private ResolveRosterPeriodAction $resolvePeriod,
+        private NotifyWorkersRosterPublishedAction $notifyPublished,
+    ) {}
 
     public function handle(Tenant $tenant, PublishWeekData $data, ?int $actorUserId): int
     {
@@ -25,7 +29,7 @@ class PublishWeekAction
         $workerIds = array_values(array_unique(array_map('intval', $data->workerIds)));
         $this->assertWorkersBelongToTenant((int) $tenant->id, $workerIds);
 
-        return DB::transaction(function () use ($tenant, $workerIds, $dates, $actorUserId) {
+        $count = DB::transaction(function () use ($tenant, $workerIds, $dates, $actorUserId) {
             $shifts = PlannedShift::query()
                 ->whereIn('worker_id', $workerIds ?: [0])
                 ->whereBetween('work_date', [$dates[0], $dates[array_key_last($dates)]])
@@ -48,6 +52,10 @@ class PublishWeekAction
 
             return $count;
         });
+
+        $this->notifyPublished->handle($tenant, $workerIds, $dates[0]);
+
+        return $count;
     }
 
     /**

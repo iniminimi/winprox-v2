@@ -3,11 +3,11 @@
 namespace App\Actions\Time;
 
 use App\Data\Time\SaveShiftTypeData;
+use App\Enums\RosterCellKind;
 use App\Events\Time\ShiftTypeSaved;
 use App\Exceptions\RosterValidationException;
 use App\Models\ShiftType;
 use App\Models\Tenant;
-use App\Enums\RosterCellKind;
 use App\Support\Time\TimeModuleAccess;
 
 class SaveShiftTypeAction
@@ -23,7 +23,7 @@ class SaveShiftTypeAction
             throw new RosterValidationException('time.schedule.errors.invalid_code');
         }
 
-        [$startTime, $endTime] = $this->normalizedWindow($data->startTime, $data->endTime);
+        [$startTime, $endTime, $breakMinutes] = $this->normalizedWindow($data);
 
         $duplicate = ShiftType::query()
             ->where('tenant_id', $tenant->id)
@@ -39,9 +39,10 @@ class SaveShiftTypeAction
             'tenant_id' => $tenant->id,
             'code' => $code,
             'label' => trim($data->label),
+            'kind' => $data->kind,
             'start_time' => $startTime,
             'end_time' => $endTime,
-            'break_minutes' => $data->breakMinutes,
+            'break_minutes' => $breakMinutes,
             'color' => $data->color,
             'is_active' => $data->isActive,
         ];
@@ -60,15 +61,19 @@ class SaveShiftTypeAction
     }
 
     /**
-     * @return array{0: string, 1: string}
+     * @return array{0: ?string, 1: ?string, 2: int}
      */
-    private function normalizedWindow(string $start, string $end): array
+    private function normalizedWindow(SaveShiftTypeData $data): array
     {
-        $parsed = $this->parseCell->handle($start.'-'.$end, collect());
+        if ($data->kind->isAbsence()) {
+            return [null, null, 0];
+        }
+
+        $parsed = $this->parseCell->handle((string) $data->startTime.'-'.(string) $data->endTime, collect());
         if ($parsed->kind !== RosterCellKind::FreeTime || $parsed->startTime === null || $parsed->endTime === null) {
             throw new RosterValidationException($parsed->errorKey ?? 'time.schedule.errors.invalid_time');
         }
 
-        return [$parsed->startTime, $parsed->endTime];
+        return [$parsed->startTime, $parsed->endTime, $data->breakMinutes];
     }
 }

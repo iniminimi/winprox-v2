@@ -14,6 +14,7 @@ use App\Data\Time\PublishWeekData;
 use App\Data\Time\SavePlannedShiftsData;
 use App\Data\Time\SaveShiftTypeData;
 use App\Enums\ShiftTypeColor;
+use App\Enums\ShiftTypeKind;
 use App\Exceptions\RosterValidationException;
 use App\Http\Requests\Time\CopyWeekRequest;
 use App\Http\Requests\Time\PublishWeekRequest;
@@ -128,6 +129,7 @@ class TimeScheduleController extends Controller
             'id' => $type->id,
             'code' => $type->code,
             'label' => $type->label,
+            'kind' => $type->kind->value,
             'start_time' => $type->start_time,
             'end_time' => $type->end_time,
             'break_minutes' => $type->break_minutes,
@@ -171,11 +173,12 @@ class TimeScheduleController extends Controller
                 new SaveShiftTypeData(
                     $validated['code'],
                     $validated['label'],
-                    $validated['start_time'],
-                    $validated['end_time'],
-                    (int) $validated['break_minutes'],
+                    $validated['start_time'] ?? null,
+                    $validated['end_time'] ?? null,
+                    (int) ($validated['break_minutes'] ?? 0),
                     ShiftTypeColor::from($validated['color']),
                     (bool) ($validated['is_active'] ?? true),
+                    ShiftTypeKind::from($validated['kind']),
                 ),
                 $request->user()?->id,
                 $shiftTypeId,

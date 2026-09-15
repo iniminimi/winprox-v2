@@ -74,6 +74,11 @@ class Worker extends Model
         return $this->hasMany(PlannedShift::class);
     }
 
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(WorkerNotification::class);
+    }
+
     public function clockDevice(): BelongsTo
     {
         return $this->belongsTo(WorkerDevice::class, 'clock_device_id');

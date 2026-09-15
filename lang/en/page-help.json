@@ -943,6 +943,10 @@
                     "text": "After sign-in you see the My hours tile. It lists only your shifts for the selected month: clock-in/out, break and time worked. Browse previous/next month. The break shown is the timesheet value; it may include the team minimum if you clocked no (or too short a) live break."
                 },
                 {
+                    "label": "My roster",
+                    "text": "After signing in you see the My roster tile. It shows only your <strong>published</strong> shifts and absences for the chosen week. A badge means a newly published roster; opening it clears the badge."
+                },
+                {
                     "label": "Sign out",
                     "text": "Sign out when you are finished. At times set by the administrator you are also automatically signed out."
                 }
@@ -1567,7 +1571,7 @@
                 },
                 {
                     "label": "Save and publish",
-                    "text": "Save stores the visible week or month and workers. <strong>Publish</strong> marks that period as planned (Clock Point comes later). Editing after publish stays published."
+                    "text": "Save stores the visible week or month and workers. <strong>Publish</strong> makes that period visible on Clock Point (My roster) and sets a badge. Edits after publishing stay published; a new badge only appears if you publish again."
                 },
                 {
                     "label": "Copy week",
@@ -1576,12 +1580,24 @@
                 {
                     "label": "Shift types",
                     "text": "The <strong>legend</strong> shows active codes. Manage types under Time → <strong>Shift types</strong> (usually once)."
+                },
+                {
+                    "label": "Absence",
+                    "text": "Shift types can be <strong>leave</strong>, <strong>time off in lieu</strong> or <strong>sick</strong>. Those codes fill the whole day, count no hours, and cannot sit with work that day."
+                },
+                {
+                    "label": "Planned vs clocked",
+                    "text": "On <strong>past</strong> days of a <strong>published</strong> period the grid marks missing punches, deviations and unplanned punches. Absence without a punch is fine. Publishing does not send anything to the NSSO."
                 }
             ]
         },
         "time.shift_types": {
             "title": "Help — Shift types",
             "actions": [
+                {
+                    "label": "Type",
+                    "text": "Choose <strong>Work</strong> (start, end, break) or an absence. Absences have no hours. Existing roster cells do not change if you later edit a type."
+                },
                 {
                     "label": "Add",
                     "text": "A shift type is a <strong>code</strong> with start, end, break and colour. This is usually set once. Existing roster cells do not change if you edit a type later."

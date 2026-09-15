@@ -153,7 +153,7 @@
     "technical": {
         "label": "Ficha técnica",
         "tagline": "Facility issues: QR → tasks → completion · SaaS for operational teams",
-        "intro": "Overview for IT / security. WinProx is a multi-tenant web application (Laravel + MySQL) where each customer organisation has its own isolated environment. Horario Time: shift_types y planned_shifts (draft/published), solape semiabierto [inicio, fin), API /api/v1/time/schedule y webhooks time.schedule.*.",
+        "intro": "Overview for IT / security. WinProx is a multi-tenant web application (Laravel + MySQL) where each customer organisation has its own isolated environment. Horario Time: shift_types y planned_shifts (draft/published), solape semiabierto [inicio, fin), API /api/v1/time/schedule y webhooks time.schedule.*. Cuadrante oleada 2: tipos trabajo/vacaciones/descanso/baja; Clock Point Mi cuadrante (publicado) con insignia; admin planificado vs fichado. worker_notifications.roster_published reference_id = inicio de periodo Y-m-d.",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
         "left": [
@@ -287,7 +287,7 @@
         "label": "API & Webhooks",
         "tagline": "Integre WinProx con su software existente mediante API y webhooks.",
         "highlight": "WinProx no sustituye los sistemas IWMS o ERP existentes. Gracias a las API y webhooks, WinProx trabaja con ellos.",
-        "intro": "WinProx está pensado para que otro software use los mismos datos, avisos, tareas y comprobaciones de unidad que WinProx. Gestión y docs en Ajustes → API. **Iniciar sesión con Microsoft** en escritorio no es una integración API: el otro software usa tokens, no SSO. Horario Time: GET/PUT /api/v1/time/schedule, POST .../copy y .../publish (time:read / time:write). Eventos: time.schedule.saved, time.schedule.copied, time.schedule.published, time.shift_type.saved.",
+        "intro": "WinProx está pensado para que otro software use los mismos datos, avisos, tareas y comprobaciones de unidad que WinProx. Gestión y docs en Ajustes → API. **Iniciar sesión con Microsoft** en escritorio no es una integración API: el otro software usa tokens, no SSO. Horario Time: GET/PUT /api/v1/time/schedule, POST .../copy y .../publish (time:read / time:write). Eventos: time.schedule.saved, time.schedule.copied, time.schedule.published, time.shift_type.saved. Cuadrante oleada 2: tipos trabajo/vacaciones/descanso/baja; Clock Point Mi cuadrante (publicado) con insignia; admin planificado vs fichado. worker_notifications.roster_published reference_id = inicio de periodo Y-m-d.",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "Véase también: resumen de funciones · ficha técnica",
         "left": [

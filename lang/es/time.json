@@ -295,6 +295,16 @@
             "month_nav": "Mes",
             "previous_month": "Mes anterior",
             "next_month": "Mes siguiente"
+        },
+        "schedule": {
+            "tile": "Mi cuadrante",
+            "tile_sub": "Tu semana planificada",
+            "title": "Mi cuadrante",
+            "subtitle": "Solo tus turnos y ausencias publicados.",
+            "empty": "Nada planificado esta semana.",
+            "week_nav": "Semana",
+            "previous_week": "Semana anterior",
+            "next_week": "Semana siguiente"
         }
     },
     "ciao": {
@@ -384,7 +394,8 @@
             "duplicate_cell": "Celda duplicada en el horario.",
             "incomplete_grid": "La cuadrícula está incompleta.",
             "copy_same_week": "La semana de origen y destino son la misma.",
-            "copy_conflict": "La semana de destino ya tiene turnos. Copia rechazada."
+            "copy_conflict": "La semana de destino ya tiene turnos. Copia rechazada.",
+            "invalid_notification_reference": "Referencia de notificación no válida."
         },
         "types": {
             "add": "Añadir tipo",
@@ -411,6 +422,13 @@
                 "sand": "Arena",
                 "rose": "Rojo",
                 "slate": "Gris"
+            },
+            "kind": "Tipo",
+            "kinds": {
+                "work": "Trabajo",
+                "leave": "Vacaciones",
+                "recup": "Descanso compensatorio",
+                "sick": "Baja"
             }
         },
         "empty_workers": "No hay operarios en este periodo. Añádalos en Personas → Equipos.",
@@ -423,7 +441,14 @@
         "prev_month": "Mes anterior",
         "this_month": "Este mes",
         "next_month": "Mes siguiente",
-        "publish_confirm_month": "¿Publicar este mes para los operarios visibles?"
+        "publish_confirm_month": "¿Publicar este mes para los operarios visibles?",
+        "legend_absence": "Ausencia",
+        "attendance": {
+            "missing": "Planificado, sin fichaje",
+            "deviation": "Fichado fuera de la franja prevista",
+            "unplanned": "Fichado sin plan (o durante una ausencia)",
+            "ok": "Coincide con lo planificado"
+        }
     },
     "shift_types": {
         "title": "Tipos de turno",

@@ -66,20 +66,36 @@
 
     <div class="wp-roster-legend" data-wp-roster-legend>
         <span class="wp-filter-inline-label">{{ __('time.schedule.legend') }}</span>
-        @forelse ($legendTypes as $type)
+        @php
+            $workLegend = collect($legendTypes)->filter(fn ($type) => $type->kind->isWork());
+            $absenceLegend = collect($legendTypes)->filter(fn ($type) => $type->kind->isAbsence());
+        @endphp
+        @forelse ($workLegend as $type)
             <span class="wp-roster-legend__item">
                 <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
                 <strong>{{ $type->code }}</strong>
                 <span class="wp-muted">{{ $type->start_time }}–{{ $type->end_time }}</span>
             </span>
         @empty
-            <p class="wp-muted">
-                {{ __('time.schedule.legend_empty') }}
-                @can('viewAny', \App\Models\ShiftType::class)
-                    <a href="{{ route('time.shift-types.index') }}">{{ __('time.nav.shift_types') }}</a>
-                @endcan
-            </p>
+            @if ($absenceLegend->isEmpty())
+                <p class="wp-muted">
+                    {{ __('time.schedule.legend_empty') }}
+                    @can('viewAny', \App\Models\ShiftType::class)
+                        <a href="{{ route('time.shift-types.index') }}">{{ __('time.nav.shift_types') }}</a>
+                    @endcan
+                </p>
+            @endif
         @endforelse
+        @if ($absenceLegend->isNotEmpty())
+            <span class="wp-filter-inline-label">{{ __('time.schedule.legend_absence') }}</span>
+            @foreach ($absenceLegend as $type)
+                <span class="wp-roster-legend__item">
+                    <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
+                    <strong>{{ $type->code }}</strong>
+                    <span class="wp-muted">{{ __('time.schedule.types.kinds.'.$type->kind->value) }}</span>
+                </span>
+            @endforeach
+        @endif
     </div>
 
     <div @class(['wp-card', 'wp-card-pad', 'wp-roster-month' => $isMonth])>

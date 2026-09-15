@@ -295,6 +295,16 @@
             "month_nav": "Month",
             "previous_month": "Previous month",
             "next_month": "Next month"
+        },
+        "schedule": {
+            "tile": "My roster",
+            "tile_sub": "Your planned week",
+            "title": "My roster",
+            "subtitle": "Only your published shifts and absences.",
+            "empty": "Nothing planned this week.",
+            "week_nav": "Week",
+            "previous_week": "Previous week",
+            "next_week": "Next week"
         }
     },
     "ciao": {
@@ -384,7 +394,8 @@
             "duplicate_cell": "Duplicate cell in the roster.",
             "incomplete_grid": "The roster grid is incomplete.",
             "copy_same_week": "Source and target week are the same.",
-            "copy_conflict": "The target week already has shifts. Copy refused."
+            "copy_conflict": "The target week already has shifts. Copy refused.",
+            "invalid_notification_reference": "Invalid notification reference."
         },
         "types": {
             "add": "Add shift type",
@@ -411,6 +422,13 @@
                 "sand": "Sand",
                 "rose": "Rose",
                 "slate": "Grey"
+            },
+            "kind": "Type",
+            "kinds": {
+                "work": "Work",
+                "leave": "Leave",
+                "recup": "Time off in lieu",
+                "sick": "Sick"
             }
         },
         "empty_workers": "No workers in this period. Add workers under People → Teams.",
@@ -423,7 +441,14 @@
         "prev_month": "Previous month",
         "this_month": "This month",
         "next_month": "Next month",
-        "publish_confirm_month": "Publish this month for the visible workers?"
+        "publish_confirm_month": "Publish this month for the visible workers?",
+        "legend_absence": "Absence",
+        "attendance": {
+            "missing": "Planned, not clocked",
+            "deviation": "Clocked outside the planned window",
+            "unplanned": "Clocked with no plan (or during absence)",
+            "ok": "Matches the plan"
+        }
     },
     "shift_types": {
         "title": "Shift types",

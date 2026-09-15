@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Public;
 
+use App\Actions\Notifications\ListWorkerNotificationsAction;
+use App\Actions\Notifications\MarkWorkerNotificationsReadAction;
 use App\Actions\Portal\ClearWorkerTaskBaselineAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
@@ -12,13 +14,16 @@ use App\Actions\Time\ConfirmWorkerClockPinAction;
 use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
 use App\Actions\Time\ListOpenTimeRosterAction;
+use App\Actions\Time\ListPublishedWorkerRosterAction;
 use App\Actions\Time\ListWorkerHoursAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
+use App\Actions\Time\ResolveRosterWeekAction;
 use App\Actions\Time\SetWorkerClockPinAction;
 use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
 use App\Enums\ClockDeviceRefusalReason;
+use App\Enums\WorkerNotificationType;
 use App\Http\Requests\Time\AcknowledgeTimeRosterViewRequest;
 use App\Http\Requests\Time\ListWorkerHoursRequest;
 use App\Http\Requests\Time\WorkerClockPinRequest;
@@ -86,6 +91,11 @@ class TimePortal extends Component
 
     #[Locked]
     public bool $hoursListOpen = false;
+
+    #[Locked]
+    public bool $scheduleListOpen = false;
+
+    public string $scheduleWeek = '';
 
     public string $hoursMonth = '';
 
@@ -289,7 +299,7 @@ class TimePortal extends Component
         }
 
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleWeek']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -306,6 +316,7 @@ class TimePortal extends Component
         }
 
         $this->hoursListOpen = false;
+        $this->scheduleListOpen = false;
         $this->rosterAckOpen = true;
         $this->rosterListOpen = false;
         $this->rosterAcknowledged = false;
@@ -325,6 +336,7 @@ class TimePortal extends Component
         }
 
         $this->closeRoster();
+        $this->scheduleListOpen = false;
         $this->hoursMonth = now()->format('Y-m');
         $this->hoursListOpen = true;
     }
@@ -332,6 +344,64 @@ class TimePortal extends Component
     public function closeHours(): void
     {
         $this->hoursListOpen = false;
+    }
+
+    public function openSchedule(
+        ListWorkerNotificationsAction $listNotifications,
+        MarkWorkerNotificationsReadAction $markRead,
+        ResolveRosterWeekAction $resolveWeek,
+    ): void {
+        $worker = $this->authorizedWorker();
+        if ($worker === null || $this->activeClockPoint() === null) {
+            return;
+        }
+
+        try {
+            TimeModuleAccess::assertEnabledForTenantId($this->tenantId);
+        } catch (InvalidArgumentException) {
+            return;
+        }
+
+        $this->closeRoster();
+        $this->hoursListOpen = false;
+
+        $unread = $listNotifications->handle(
+            $worker,
+            $this->tenantId,
+            WorkerNotificationType::RosterPublished,
+            true,
+        );
+        $newest = $unread[0] ?? null;
+        $cursor = $newest?->target->cursor ?? now()->toDateString();
+        [$monday] = $resolveWeek->handle($cursor);
+        $this->scheduleWeek = $monday->toDateString();
+        $markRead->handle($worker, $this->tenantId, WorkerNotificationType::RosterPublished);
+        $this->scheduleListOpen = true;
+    }
+
+    public function closeSchedule(): void
+    {
+        $this->scheduleListOpen = false;
+    }
+
+    public function previousScheduleWeek(ResolveRosterWeekAction $resolveWeek): void
+    {
+        if (! $this->scheduleListOpen) {
+            return;
+        }
+
+        [$monday] = $resolveWeek->handle($this->scheduleWeek !== '' ? $this->scheduleWeek : now()->toDateString());
+        $this->scheduleWeek = $monday->subWeek()->toDateString();
+    }
+
+    public function nextScheduleWeek(ResolveRosterWeekAction $resolveWeek): void
+    {
+        if (! $this->scheduleListOpen) {
+            return;
+        }
+
+        [$monday] = $resolveWeek->handle($this->scheduleWeek !== '' ? $this->scheduleWeek : now()->toDateString());
+        $this->scheduleWeek = $monday->addWeek()->toDateString();
     }
 
     public function previousHoursMonth(): void
@@ -711,7 +781,7 @@ class TimePortal extends Component
         }
     }
 
-    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours)
+    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications)
     {
         app()->setLocale($this->locale);
 
@@ -787,6 +857,7 @@ class TimePortal extends Component
             $this->rosterAckOpen = false;
             $this->rosterListOpen = false;
             $this->hoursListOpen = false;
+            $this->scheduleListOpen = false;
         }
 
         $roster = null;
@@ -803,6 +874,28 @@ class TimePortal extends Component
             $hours = $listHours->handle($verifiedWorker, $this->tenantId, $from, $from->copy()->endOfMonth());
             $hoursMonthLabel = $from->copy()->locale($this->locale)->translatedFormat('F Y');
             $hoursIsCurrentMonth = $from->isSameMonth(now());
+        }
+
+        $schedule = null;
+        $scheduleWeekLabel = '';
+        $scheduleUnreadCount = 0;
+        if ($canAct && $verifiedWorker !== null && $hasTimeModule) {
+            $scheduleUnreadCount = count($listNotifications->handle(
+                $verifiedWorker,
+                $this->tenantId,
+                WorkerNotificationType::RosterPublished,
+                true,
+            ));
+            if ($this->scheduleListOpen) {
+                $cursor = $this->scheduleWeek !== '' ? $this->scheduleWeek : now()->toDateString();
+                $schedule = $listSchedule->handle($verifiedWorker, $this->tenantId, $cursor);
+                $this->scheduleWeek = $schedule->weekStart;
+                $start = Carbon::parse($schedule->weekStart)->locale($this->locale);
+                $end = Carbon::parse($schedule->weekEnd)->locale($this->locale);
+                $scheduleWeekLabel = $start->year === $end->year
+                    ? $start->translatedFormat('j M').' – '.$end->translatedFormat('j M Y')
+                    : $start->translatedFormat('j M Y').' – '.$end->translatedFormat('j M Y');
+            }
         }
 
         return view('livewire.public.time-portal', [
@@ -833,6 +926,9 @@ class TimePortal extends Component
             'hours' => $hours,
             'hoursMonthLabel' => $hoursMonthLabel,
             'hoursIsCurrentMonth' => $hoursIsCurrentMonth,
+            'schedule' => $schedule,
+            'scheduleWeekLabel' => $scheduleWeekLabel,
+            'scheduleUnreadCount' => $scheduleUnreadCount,
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);

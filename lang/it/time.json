@@ -295,6 +295,16 @@
             "month_nav": "Mese",
             "previous_month": "Mese precedente",
             "next_month": "Mese successivo"
+        },
+        "schedule": {
+            "tile": "Il mio turno",
+            "tile_sub": "La tua settimana pianificata",
+            "title": "Il mio turno",
+            "subtitle": "Solo i tuoi turni e assenze pubblicati.",
+            "empty": "Niente di pianificato in questa settimana.",
+            "week_nav": "Settimana",
+            "previous_week": "Settimana precedente",
+            "next_week": "Settimana successiva"
         }
     },
     "ciao": {
@@ -384,7 +394,8 @@
             "duplicate_cell": "Cella duplicata nel turno.",
             "incomplete_grid": "La griglia è incompleta.",
             "copy_same_week": "Settimana di origine e destinazione coincidono.",
-            "copy_conflict": "La settimana di destinazione ha già turni. Copia rifiutata."
+            "copy_conflict": "La settimana di destinazione ha già turni. Copia rifiutata.",
+            "invalid_notification_reference": "Riferimento notifica non valido."
         },
         "types": {
             "add": "Aggiungi tipo",
@@ -411,6 +422,13 @@
                 "sand": "Sabbia",
                 "rose": "Rosso",
                 "slate": "Grigio"
+            },
+            "kind": "Tipo",
+            "kinds": {
+                "work": "Lavoro",
+                "leave": "Ferie",
+                "recup": "Recupero",
+                "sick": "Malattia"
             }
         },
         "empty_workers": "Nessun esecutore in questo periodo. Aggiungili in Persone → Team.",
@@ -423,7 +441,14 @@
         "prev_month": "Mese precedente",
         "this_month": "Questo mese",
         "next_month": "Mese successivo",
-        "publish_confirm_month": "Pubblicare questo mese per gli esecutori visibili?"
+        "publish_confirm_month": "Pubblicare questo mese per gli esecutori visibili?",
+        "legend_absence": "Assenza",
+        "attendance": {
+            "missing": "Pianificato, non timbrato",
+            "deviation": "Timbrato fuori dalla fascia prevista",
+            "unplanned": "Timbrato senza piano (o durante un'assenza)",
+            "ok": "Corrisponde alla pianificazione"
+        }
     },
     "shift_types": {
         "title": "Tipi di turno",
