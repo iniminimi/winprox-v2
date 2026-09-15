@@ -405,25 +405,42 @@ function buildData(payload) {
     });
 }
 
+function rowTitleOptions(payload) {
+    const rows = {};
+    let personNo = 0;
+    gridRowDefs(payload).forEach((row, rowIndex) => {
+        if (row.type === 'section') {
+            rows[rowIndex] = { title: '\u00a0' };
+        } else {
+            personNo += 1;
+            rows[rowIndex] = { title: String(personNo) };
+        }
+    });
+
+    return rows;
+}
+
 function applySectionRowStyles(worksheet, payload) {
     const dayCount = payload.dates?.length ?? 0;
     let personNo = 0;
     gridRowDefs(payload).forEach((row, rowIndex) => {
         const isSection = row.type === 'section';
-        const nameCell = typeof worksheet.getCellFromCoords === 'function'
-            ? rosterTd(worksheet.getCellFromCoords(0, rowIndex))
-            : null;
-        const tr = nameCell?.closest('tr') ?? null;
+        const tr = worksheet.rows?.[rowIndex]?.element
+            ?? rosterTd(typeof worksheet.getCellFromCoords === 'function'
+                ? worksheet.getCellFromCoords(0, rowIndex)
+                : null)?.closest('tr')
+            ?? null;
         if (tr) {
             tr.classList.toggle('wp-roster-row--section', isSection);
-            const indexTd = tr.querySelector(':scope > td:first-child');
-            if (indexTd && indexTd !== nameCell) {
-                indexTd.classList.toggle('wp-roster-row--section', isSection);
+            const indexTd = tr.querySelector('td.jss_row');
+            if (indexTd) {
                 if (isSection) {
-                    indexTd.textContent = '';
+                    indexTd.textContent = '\u00a0';
+                    indexTd.classList.add('wp-roster-row--section');
                 } else {
                     personNo += 1;
                     indexTd.textContent = String(personNo);
+                    indexTd.classList.remove('wp-roster-row--section');
                 }
             }
         }
@@ -499,6 +516,7 @@ export function bind(root, wire) {
         const worksheetConfig = {
             data: buildData(payload),
             columns,
+            rows: rowTitleOptions(payload),
             freezeColumns: 1,
             tableOverflow: true,
             tableWidth: '100%',
@@ -521,6 +539,11 @@ export function bind(root, wire) {
             ]];
         }
 
+        const paint = (instance) => {
+            applyCellClasses(instance, payload);
+            applySectionRowStyles(instance, payload);
+        };
+
         const instances = jspreadsheet(grid, {
             worksheets: [worksheetConfig],
             contextMenu: () => false,
@@ -542,21 +565,24 @@ export function bind(root, wire) {
             onbeforepaste: (_instance, data) => pasteGrid(data)
                 .map((line) => line.slice(0, dayCount).map((value) => formatCellDisplay(value))),
             onafterchanges: (instance) => {
-                applyCellClasses(instance, payload);
-                applySectionRowStyles(instance, payload);
+                paint(instance);
             },
             onload: (instance) => {
-                applyCellClasses(instance, payload);
-                applySectionRowStyles(instance, payload);
+                paint(instance);
             },
         });
 
         worksheet = Array.isArray(instances) ? instances[0] : instances;
-        applyCellClasses(worksheet, payload);
-        applySectionRowStyles(worksheet, payload);
-        if (isMonth) {
-            requestAnimationFrame(() => fitMonthColumns(worksheet, grid, dayCount));
-        }
+        paint(worksheet);
+        requestAnimationFrame(() => {
+            if (worksheet) {
+                paint(worksheet);
+            }
+            if (isMonth) {
+                fitMonthColumns(worksheet, grid, dayCount);
+                requestAnimationFrame(() => worksheet && paint(worksheet));
+            }
+        });
     };
 
     const fitMonthColumns = (sheet, host, dayCount) => {

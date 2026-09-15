@@ -5757,10 +5757,12 @@ a.wp-kpi.wp-kpi--attention {
     font-size: 0.75rem;
     text-align: left !important;
     pointer-events: none;
+    border-top: 2px solid var(--wp-text) !important;
 }
 
-.wp-roster-sheet .jss_worksheet > tbody > tr.wp-roster-row--section > td:first-child {
-    color: transparent;
+.wp-roster-sheet .jss_worksheet > tbody > tr.wp-roster-row--section > td.jss_row {
+    color: transparent !important;
+    font-size: 0 !important;
     user-select: none;
 }
 
