@@ -179,6 +179,11 @@
     background-color: color-mix(in srgb, var(--wp-accent) 22%, #ffffff 78%);
 }
 
+/* Uurrooster-legende op de foto-achtergrond: ondoorzichtig wit, geen glass. */
+[data-theme='modern'] .wp-roster-legend {
+    background-color: #ffffff;
+}
+
 /* Pills/badges op foto-achtergrond (Time aanwezigheid, nav, …). */
 [data-theme='modern'] .wp-pill--done {
     background-color: color-mix(in srgb, var(--wp-accent) 22%, #ffffff 78%);

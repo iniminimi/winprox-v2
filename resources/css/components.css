@@ -5608,6 +5608,10 @@ a.wp-kpi.wp-kpi--attention {
     flex-wrap: wrap;
     align-items: center;
     gap: 0.45rem 0.85rem;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
 }
 
 .wp-roster-legend__item {
