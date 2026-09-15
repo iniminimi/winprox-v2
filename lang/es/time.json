@@ -399,11 +399,21 @@
             "activate": "Activar",
             "saved": "Tipo guardado.",
             "colors": {
+                "none": "Neutro",
                 "emerald": "Verde",
+                "mint": "Menta",
+                "teal": "Verde azulado",
+                "sky": "Azul",
+                "ice": "Hielo",
+                "navy": "Azul marino",
                 "amber": "Ámbar",
-                "slate": "Gris",
-                "sky": "Azul"
-            }
+                "gold": "Oro",
+                "sand": "Arena",
+                "rose": "Rojo",
+                "slate": "Gris"
+            },
+            "choose": "Elegir un tipo de turno",
+            "inactive_suffix": "(inactivo)"
         },
         "empty_workers": "No hay operarios en esta semana. Añádalos en Personas → Equipos."
     }

@@ -1571,7 +1571,7 @@
                 },
                 {
                     "label": "Shift types",
-                    "text": "Under <strong>Shift types</strong> you define codes (start, end, break, colour). Changing a type later does not change existing cells."
+                    "text": "Use the <strong>Shift types</strong> list to pick a code to edit or deactivate. <strong>Add shift type</strong> opens the form (start, end, break, colour). Neutral = no background colour on the roster. Changing a type later does not update existing cells."
                 }
             ]
         }

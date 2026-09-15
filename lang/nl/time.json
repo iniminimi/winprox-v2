@@ -399,11 +399,21 @@
             "activate": "Activeren",
             "saved": "Shiftype opgeslagen.",
             "colors": {
+                "none": "Neutraal",
                 "emerald": "Groen",
+                "mint": "Mint",
+                "teal": "Petrol",
+                "sky": "Blauw",
+                "ice": "IJsblauw",
+                "navy": "Nachtblauw",
                 "amber": "Amber",
-                "slate": "Grijs",
-                "sky": "Blauw"
-            }
+                "gold": "Goud",
+                "sand": "Zand",
+                "rose": "Rood",
+                "slate": "Grijs"
+            },
+            "choose": "Kies een shiftype",
+            "inactive_suffix": "(inactief)"
         },
         "empty_workers": "Geen uitvoerders in deze week. Voeg uitvoerders toe onder Personen → Teams."
     }

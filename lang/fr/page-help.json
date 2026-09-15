@@ -1579,7 +1579,7 @@
                 },
                 {
                     "label": "Types de service",
-                    "text": "Sous <strong>Types de service</strong> vous définissez les codes. Modifier un type plus tard ne change pas les cellules existantes."
+                    "text": "Dans la liste <strong>Types de service</strong>, choisissez un code à modifier ou désactiver. <strong>Ajouter un type</strong> ouvre le formulaire (début, fin, pause, couleur). Neutre = aucune couleur de fond dans l’horaire. Une modification ultérieure du type ne change pas les cellules existantes."
                 }
             ]
         }

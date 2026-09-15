@@ -399,11 +399,21 @@
             "activate": "Activate",
             "saved": "Shift type saved.",
             "colors": {
+                "none": "Neutral",
                 "emerald": "Green",
+                "mint": "Mint",
+                "teal": "Teal",
+                "sky": "Blue",
+                "ice": "Ice",
+                "navy": "Navy",
                 "amber": "Amber",
-                "slate": "Grey",
-                "sky": "Blue"
-            }
+                "gold": "Gold",
+                "sand": "Sand",
+                "rose": "Rose",
+                "slate": "Grey"
+            },
+            "choose": "Choose a shift type",
+            "inactive_suffix": "(inactive)"
         },
         "empty_workers": "No workers in this week. Add workers under People → Teams."
     }

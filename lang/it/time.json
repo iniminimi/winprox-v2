@@ -399,11 +399,21 @@
             "activate": "Attiva",
             "saved": "Tipo salvato.",
             "colors": {
+                "none": "Neutro",
                 "emerald": "Verde",
+                "mint": "Menta",
+                "teal": "Petrolio",
+                "sky": "Blu",
+                "ice": "Ghiaccio",
+                "navy": "Blu notte",
                 "amber": "Ambra",
-                "slate": "Grigio",
-                "sky": "Blu"
-            }
+                "gold": "Oro",
+                "sand": "Sabbia",
+                "rose": "Rosso",
+                "slate": "Grigio"
+            },
+            "choose": "Scegli un tipo di turno",
+            "inactive_suffix": "(inattivo)"
         },
         "empty_workers": "Nessun esecutore in questa settimana. Aggiungili in Persone → Team."
     }

@@ -1571,7 +1571,7 @@
                 },
                 {
                     "label": "Schichttypen",
-                    "text": "Unter <strong>Schichttypen</strong> legen Sie Codes fest. Eine spätere Änderung ändert bestehende Zellen nicht."
+                    "text": "In der Liste <strong>Schichttypen</strong> wählen Sie einen Code zum Bearbeiten oder Deaktivieren. <strong>Schichttyp hinzufügen</strong> öffnet das Formular (Start, Ende, Pause, Farbe). Neutral = keine Hintergrundfarbe im Plan. Eine spätere Änderung am Typ ändert bestehende Zellen nicht."
                 }
             ]
         }

@@ -5603,23 +5603,13 @@ a.wp-kpi.wp-kpi--attention {
     font-size: 0.875rem;
 }
 
-.wp-roster-types {
-    gap: 0.5rem;
-}
-
-.wp-roster-type-chip {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.35rem 0.6rem;
-    padding: 0.35rem 0.65rem;
+.wp-roster-color-preview {
+    width: 1.75rem;
+    height: 1.75rem;
+    flex: 0 0 1.75rem;
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius);
-    font-size: 0.875rem;
-}
-
-.wp-roster-type-chip.is-inactive {
-    opacity: 0.55;
+    background: transparent;
 }
 
 .wp-roster-sheet {
@@ -5647,16 +5637,44 @@ a.wp-kpi.wp-kpi--attention {
     background: var(--wp-accent-soft) !important;
 }
 
-.wp-roster-cell--amber {
-    background: var(--wp-warning-soft) !important;
+.wp-roster-cell--mint {
+    background: color-mix(in srgb, var(--wp-accent-soft) 42%, var(--wp-surface) 58%) !important;
 }
 
-.wp-roster-cell--slate {
-    background: var(--wp-surface-2) !important;
+.wp-roster-cell--teal {
+    background: color-mix(in srgb, var(--wp-accent-soft) 52%, var(--wp-info-soft) 48%) !important;
 }
 
 .wp-roster-cell--sky {
     background: var(--wp-info-soft) !important;
+}
+
+.wp-roster-cell--ice {
+    background: color-mix(in srgb, var(--wp-info-soft) 38%, var(--wp-surface) 62%) !important;
+}
+
+.wp-roster-cell--navy {
+    background: color-mix(in srgb, var(--wp-info-soft) 72%, var(--wp-surface-2) 28%) !important;
+}
+
+.wp-roster-cell--amber {
+    background: var(--wp-warning-soft) !important;
+}
+
+.wp-roster-cell--gold {
+    background: color-mix(in srgb, var(--wp-warning-soft) 68%, var(--wp-surface-2) 32%) !important;
+}
+
+.wp-roster-cell--sand {
+    background: color-mix(in srgb, var(--wp-warning-soft) 38%, var(--wp-surface) 62%) !important;
+}
+
+.wp-roster-cell--rose {
+    background: var(--wp-danger-soft) !important;
+}
+
+.wp-roster-cell--slate {
+    background: var(--wp-surface-2) !important;
 }
 
 .wp-roster-cell--invalid {

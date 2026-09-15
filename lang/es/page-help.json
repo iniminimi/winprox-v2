@@ -1571,7 +1571,7 @@
                 },
                 {
                     "label": "Tipos de turno",
-                    "text": "En <strong>Tipos de turno</strong> define códigos. Cambiar un tipo después no altera las celdas existentes."
+                    "text": "En la lista <strong>Tipos de turno</strong> elija un código para editar o desactivar. <strong>Añadir tipo de turno</strong> abre el formulario (inicio, fin, pausa, color). Neutro = sin color de fondo en el horario. Un cambio posterior del tipo no altera las celdas existentes."
                 }
             ]
         }

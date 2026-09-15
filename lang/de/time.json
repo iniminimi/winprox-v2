@@ -399,11 +399,21 @@
             "activate": "Aktivieren",
             "saved": "Schichttyp gespeichert.",
             "colors": {
+                "none": "Neutral",
                 "emerald": "Grün",
-                "amber": "Amber",
-                "slate": "Grau",
-                "sky": "Blau"
-            }
+                "mint": "Mint",
+                "teal": "Petrol",
+                "sky": "Blau",
+                "ice": "Eisblau",
+                "navy": "Nachtblau",
+                "amber": "Bernstein",
+                "gold": "Gold",
+                "sand": "Sand",
+                "rose": "Rot",
+                "slate": "Grau"
+            },
+            "choose": "Schichttyp wählen",
+            "inactive_suffix": "(inaktiv)"
         },
         "empty_workers": "Keine Ausführenden in dieser Woche. Legen Sie sie unter Personen → Teams an."
     }

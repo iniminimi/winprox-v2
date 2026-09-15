@@ -89,7 +89,16 @@ it('parses codes, free times and rejects night shifts', function () {
         ->and($parse->handle('22:00-06:00', $types)->kind)->toBe(RosterCellKind::Invalid)
         ->and($parse->handle('22:00-06:00', $types)->errorKey)->toBe('time.schedule.errors.night_not_allowed')
         ->and($parse->handle('X', $types)->kind)->toBe(RosterCellKind::Invalid)
-        ->and($type->code)->toBe('V');
+        ->and($type->code)->toBe('V')
+        ->and($type->color)->toBe(ShiftTypeColor::Emerald);
+
+    $neutral = app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('N', 'Neutraal', '08:00', '12:00', 0, ShiftTypeColor::None),
+        null,
+    );
+    expect($neutral->color)->toBe(ShiftTypeColor::None)
+        ->and($neutral->color->hasFill())->toBeFalse();
 });
 
 it('telt raakvlak-tijden niet als overlap', function () {
@@ -245,7 +254,9 @@ it('opent het uurrooster voor een admin', function () {
     $this->actingAs($admin)
         ->get(route('time.schedule.index'))
         ->assertOk()
-        ->assertSee('wp-roster-sheet', false);
+        ->assertSee('wp-roster-sheet', false)
+        ->assertSee('id="schedule-type"', false)
+        ->assertDontSee('wp-roster-type-chip', false);
 
     Livewire::actingAs($admin)
         ->test(RosterIndex::class)

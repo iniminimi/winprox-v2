@@ -1571,7 +1571,7 @@
                 },
                 {
                     "label": "Shiftypes",
-                    "text": "Onder <strong>Shiftypes</strong> legt u codes vast (start, einde, pauze, kleur). Een latere wijziging aan een type verandert bestaande cellen niet."
+                    "text": "In de lijst <strong>Shiftypes</strong> kiest u een code om te bewerken of te deactiveren. <strong>Shiftype toevoegen</strong> opent het formulier (start, einde, pauze, kleur). Neutraal = geen achtergrondkleur in het rooster. Een latere wijziging aan een type verandert bestaande cellen niet."
                 }
             ]
         }

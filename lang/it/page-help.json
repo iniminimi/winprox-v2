@@ -1571,7 +1571,7 @@
                 },
                 {
                     "label": "Tipi di turno",
-                    "text": "In <strong>Tipi di turno</strong> definite i codici. Modificare un tipo in seguito non cambia le celle esistenti."
+                    "text": "Nell’elenco <strong>Tipi di turno</strong> scegli un codice da modificare o disattivare. <strong>Aggiungi tipo di turno</strong> apre il modulo (inizio, fine, pausa, colore). Neutro = nessuno sfondo nel turno. Una modifica successiva al tipo non cambia le celle esistenti."
                 }
             ]
         }

@@ -40,10 +40,29 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="schedule-type">{{ __('time.schedule.types.manage') }}</label>
+                    <select id="schedule-type" class="wp-select" wire:model.live="selectedTypeId">
+                        <option value="">{{ __('time.schedule.types.choose') }}</option>
+                        @foreach ($shiftTypes as $type)
+                            <option value="{{ $type->id }}">
+                                {{ $type->code }} · {{ $type->label }} · {{ $type->start_time }}–{{ $type->end_time }}{{ $type->is_active ? '' : ' '.__('time.schedule.types.inactive_suffix') }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
             <div class="wp-filter-form__actions">
+                @if ($selectedType)
+                    @can('update', $selectedType)
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="editSelectedType">{{ __('common.button.edit') }}</button>
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleSelectedTypeActive">
+                            {{ $selectedType->is_active ? __('time.schedule.types.deactivate') : __('time.schedule.types.activate') }}
+                        </button>
+                    @endcan
+                @endif
                 @can('create', \App\Models\ShiftType::class)
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openCreateType">{{ __('time.schedule.types.manage') }}</button>
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openCreateType">{{ __('time.schedule.types.add') }}</button>
                 @endcan
                 @can('update', \App\Models\PlannedShift::class)
                     <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-save>{{ __('common.button.save') }}</button>
@@ -55,24 +74,6 @@
             </div>
         </div>
     </div>
-
-    @if ($shiftTypes !== [])
-        <div class="wp-cluster wp-cluster--wrap wp-roster-types">
-            @foreach ($shiftTypes as $type)
-                <span class="wp-roster-type-chip wp-roster-cell--{{ $type->color->value }} {{ $type->is_active ? '' : 'is-inactive' }}">
-                    <strong>{{ $type->code }}</strong>
-                    {{ $type->label }}
-                    {{ $type->start_time }}–{{ $type->end_time }}
-                    @can('update', $type)
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditType({{ $type->id }})">{{ __('common.button.edit') }}</button>
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleTypeActive({{ $type->id }})">
-                            {{ $type->is_active ? __('time.schedule.types.deactivate') : __('time.schedule.types.activate') }}
-                        </button>
-                    @endcan
-                </span>
-            @endforeach
-        </div>
-    @endif
 
     <div class="wp-card wp-card-pad">
         @if ($snapshot->workers === [])
@@ -119,11 +120,14 @@
                     </div>
                     <div class="wp-filter-cell">
                         <label class="wp-filter-inline-label" for="type-color">{{ __('time.schedule.types.color') }}</label>
-                        <select id="type-color" class="wp-select" wire:model="typeColor">
-                            @foreach ($colors as $color)
-                                <option value="{{ $color->value }}">{{ __('time.schedule.types.colors.'.$color->value) }}</option>
-                            @endforeach
-                        </select>
+                        <div class="wp-cluster wp-cluster--tight">
+                            <select id="type-color" class="wp-select" wire:model.live="typeColor">
+                                @foreach ($colors as $color)
+                                    <option value="{{ $color->value }}">{{ __('time.schedule.types.colors.'.$color->value) }}</option>
+                                @endforeach
+                            </select>
+                            <span class="wp-roster-color-preview {{ $typeColor !== 'none' ? 'wp-roster-cell--'.$typeColor : '' }}" aria-hidden="true"></span>
+                        </div>
                     </div>
                     <div class="wp-cluster">
                         <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>

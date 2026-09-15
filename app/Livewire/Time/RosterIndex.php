@@ -49,12 +49,13 @@ class RosterIndex extends Component
 
     public bool $showTypeModal = false;
     public ?int $editingTypeId = null;
+    public ?int $selectedTypeId = null;
     public string $typeCode = '';
     public string $typeLabel = '';
     public string $typeStart = '07:00';
     public string $typeEnd = '15:00';
     public int $typeBreak = 0;
-    public string $typeColor = 'emerald';
+    public string $typeColor = 'none';
 
     public function mount(ResolveRosterWeekAction $resolveWeek): void
     {
@@ -92,6 +93,11 @@ class RosterIndex extends Component
     {
         $this->teamFilter = $value === '' || $value === null ? null : (int) $value;
         $this->dispatch('roster-week-changed');
+    }
+
+    public function updatedSelectedTypeId(mixed $value): void
+    {
+        $this->selectedTypeId = $value === '' || $value === null ? null : (int) $value;
     }
 
     /**
@@ -267,24 +273,40 @@ class RosterIndex extends Component
         ]);
 
         $color = ShiftTypeColor::from($validated['typeColor']);
-        $data = new SaveShiftTypeData(
-            code: $validated['typeCode'],
-            label: $validated['typeLabel'],
-            startTime: $validated['typeStart'],
-            endTime: $validated['typeEnd'],
-            breakMinutes: (int) $validated['typeBreak'],
-            color: $color,
-            isActive: true,
-        );
 
         try {
             if ($this->editingTypeId) {
                 $type = ShiftType::query()->findOrFail($this->editingTypeId);
                 $this->authorize('update', $type);
-                $save->handle(Tenant::query()->findOrFail(Tenancy::id()), $data, auth()->id(), $type->id);
+                $saved = $save->handle(
+                    Tenant::query()->findOrFail(Tenancy::id()),
+                    new SaveShiftTypeData(
+                        code: $validated['typeCode'],
+                        label: $validated['typeLabel'],
+                        startTime: $validated['typeStart'],
+                        endTime: $validated['typeEnd'],
+                        breakMinutes: (int) $validated['typeBreak'],
+                        color: $color,
+                        isActive: $type->is_active,
+                    ),
+                    auth()->id(),
+                    $type->id,
+                );
             } else {
                 $this->authorize('create', ShiftType::class);
-                $save->handle(Tenant::query()->findOrFail(Tenancy::id()), $data, auth()->id());
+                $saved = $save->handle(
+                    Tenant::query()->findOrFail(Tenancy::id()),
+                    new SaveShiftTypeData(
+                        code: $validated['typeCode'],
+                        label: $validated['typeLabel'],
+                        startTime: $validated['typeStart'],
+                        endTime: $validated['typeEnd'],
+                        breakMinutes: (int) $validated['typeBreak'],
+                        color: $color,
+                        isActive: true,
+                    ),
+                    auth()->id(),
+                );
             }
         } catch (RosterValidationException|InvalidArgumentException $e) {
             $this->addError('typeCode', __($e->getMessage()));
@@ -292,9 +314,28 @@ class RosterIndex extends Component
             return;
         }
 
+        $this->selectedTypeId = $saved->id;
         $this->closeTypeModal();
         session()->flash('time_flash', __('time.schedule.types.saved'));
         $this->dispatch('roster-week-changed');
+    }
+
+    public function editSelectedType(): void
+    {
+        if ($this->selectedTypeId === null) {
+            return;
+        }
+
+        $this->openEditType($this->selectedTypeId);
+    }
+
+    public function toggleSelectedTypeActive(SetShiftTypeActiveAction $setActive): void
+    {
+        if ($this->selectedTypeId === null) {
+            return;
+        }
+
+        $this->toggleTypeActive($this->selectedTypeId, $setActive);
     }
 
     public function toggleTypeActive(int $typeId, SetShiftTypeActiveAction $setActive): void
@@ -315,8 +356,13 @@ class RosterIndex extends Component
             auth()->user(),
         );
 
+        $selectedType = collect($types)->first(
+            fn (ShiftType $type): bool => $type->id === $this->selectedTypeId,
+        );
+
         return view('livewire.time.roster-index', [
             'shiftTypes' => $types,
+            'selectedType' => $selectedType,
             'colors' => ShiftTypeColor::cases(),
             'teams' => $snapshot->teams,
             'weekLabel' => $snapshot->weekStart.' – '.$snapshot->weekEnd,
@@ -333,6 +379,6 @@ class RosterIndex extends Component
         $this->typeStart = '07:00';
         $this->typeEnd = '15:00';
         $this->typeBreak = 0;
-        $this->typeColor = ShiftTypeColor::Emerald->value;
+        $this->typeColor = ShiftTypeColor::default()->value;
     }
 }

@@ -24,7 +24,7 @@ function parseRosterCell(raw, types) {
             return { kind: 'invalid' };
         }
 
-        return { kind: 'free', color: 'slate' };
+        return { kind: 'free', color: 'none' };
     }
 
     const code = trimmed.toUpperCase();
@@ -53,17 +53,15 @@ function applyCellClasses(worksheet, payload) {
             if (!cell) {
                 return;
             }
-            cell.classList.remove(
-                'wp-roster-cell--invalid',
-                'wp-roster-cell--emerald',
-                'wp-roster-cell--amber',
-                'wp-roster-cell--slate',
-                'wp-roster-cell--sky',
-            );
+            [...cell.classList].forEach((name) => {
+                if (name.startsWith('wp-roster-cell--')) {
+                    cell.classList.remove(name);
+                }
+            });
             const parsed = parseRosterCell(value, types);
             if (parsed.kind === 'invalid') {
                 cell.classList.add('wp-roster-cell--invalid');
-            } else if (parsed.color) {
+            } else if (parsed.color && parsed.color !== 'none') {
                 cell.classList.add(`wp-roster-cell--${parsed.color}`);
             }
         });

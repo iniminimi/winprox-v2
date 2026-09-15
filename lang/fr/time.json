@@ -399,11 +399,21 @@
             "activate": "Activer",
             "saved": "Type enregistré.",
             "colors": {
+                "none": "Neutre",
                 "emerald": "Vert",
+                "mint": "Menthe",
+                "teal": "Sarcelle",
+                "sky": "Bleu",
+                "ice": "Glace",
+                "navy": "Marine",
                 "amber": "Ambre",
-                "slate": "Gris",
-                "sky": "Bleu"
-            }
+                "gold": "Or",
+                "sand": "Sable",
+                "rose": "Rouge",
+                "slate": "Gris"
+            },
+            "choose": "Choisir un type de service",
+            "inactive_suffix": "(inactif)"
         },
         "empty_workers": "Aucun exécutant pour cette semaine. Ajoutez-les sous Personnes → Équipes."
     }
