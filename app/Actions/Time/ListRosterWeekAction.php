@@ -90,11 +90,7 @@ class ListRosterWeekAction
                 return in_array($defaultId, $selectedUnitIds, true);
             })->values();
 
-            $workers = $workers->sortBy([
-                fn (Worker $worker) => $worker->defaultUnit?->roster_code ?? 'ÿÿÿ',
-                fn (Worker $worker) => mb_strtolower($worker->first_name),
-                fn (Worker $worker) => mb_strtolower($worker->last_name),
-            ])->values();
+            $workers = $this->sortWorkersForGroups($workers);
         }
 
         $workerIds = $workers->pluck('id')->map(fn ($id) => (int) $id)->all();
@@ -257,12 +253,7 @@ class ListRosterWeekAction
             if (! in_array($unitId, $selectedUnitIds, true)) {
                 continue;
             }
-            $groupWorkers = $byUnit->get($unitId, collect())
-                ->sortBy([
-                    fn (Worker $worker) => mb_strtolower($worker->first_name),
-                    fn (Worker $worker) => mb_strtolower($worker->last_name),
-                ])
-                ->values();
+            $groupWorkers = $this->sortWorkersByName($byUnit->get($unitId, collect()));
             if ($groupWorkers->isEmpty()) {
                 continue;
             }
@@ -280,12 +271,7 @@ class ListRosterWeekAction
         }
 
         if ($includeUngrouped) {
-            $ungrouped = $byUnit->get(0, collect())
-                ->sortBy([
-                    fn (Worker $worker) => mb_strtolower($worker->first_name),
-                    fn (Worker $worker) => mb_strtolower($worker->last_name),
-                ])
-                ->values();
+            $ungrouped = $this->sortWorkersByName($byUnit->get(0, collect()));
             if ($ungrouped->isNotEmpty()) {
                 $rows[] = [
                     'type' => 'section',
@@ -302,6 +288,37 @@ class ListRosterWeekAction
         }
 
         return $rows;
+    }
+
+    /**
+     * @param  Collection<int, Worker>  $workers
+     * @return Collection<int, Worker>
+     */
+    private function sortWorkersForGroups(Collection $workers): Collection
+    {
+        return $workers->sortBy(
+            fn (Worker $worker) => sprintf(
+                '%s\0%s\0%s',
+                mb_strtolower($worker->defaultUnit?->roster_code ?? 'ÿÿÿ'),
+                mb_strtolower((string) $worker->first_name),
+                mb_strtolower((string) $worker->last_name),
+            ),
+        )->values();
+    }
+
+    /**
+     * @param  Collection<int, Worker>  $workers
+     * @return Collection<int, Worker>
+     */
+    private function sortWorkersByName(Collection $workers): Collection
+    {
+        return $workers->sortBy(
+            fn (Worker $worker) => sprintf(
+                '%s\0%s',
+                mb_strtolower((string) $worker->first_name),
+                mb_strtolower((string) $worker->last_name),
+            ),
+        )->values();
     }
 
     /**
