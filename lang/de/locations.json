@@ -266,7 +266,8 @@
             "require_reporter_contact": "Kontaktdaten Pflicht",
             "require_reporter_email_verification": "E-Mail-Bestätigung Pflicht",
             "allow_unit_checks": "Unit-Checks erlauben",
-            "allow_unit_measurements": "Unit-Messungen erlauben"
+            "allow_unit_measurements": "Unit-Messungen erlauben",
+            "show_previous_issues": "Frühere Meldungen anzeigen"
         },
         "allow_gps_location_hint": "Erlaubt, den GPS-Standort von Units in dieser Kategorie über das Portal zu übermitteln.",
         "teams_subtitle": "Wählen Sie die für diese Kategorie verantwortlichen Teams aus.",
@@ -292,7 +293,8 @@
         "require_reporter_contact_hint": "Vorname, Name und E-Mail bei anonymen Meldungen über den Unit-QR verlangen. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert.",
         "require_reporter_email_verification_hint": "Verlangt eine Bestätigungsmail bei anonymen Meldungen über den Unit-QR. Die Meldung entsteht erst nach Klick auf den Link. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für Feldmitarbeiter.",
         "allow_unit_checks_hint": "Aktiviert Unit-Checks für alle Units dieser Kategorie (Sicherheitsrunde, Reinigungskontrolle, …). Standardmäßig aus; muss auch pro Unit aktiviert werden.",
-        "allow_unit_measurements_hint": "Unit-Messungen für alle Units in dieser Kategorie aktivieren. Standardmäßig aus; muss auch pro Unit an sein."
+        "allow_unit_measurements_hint": "Unit-Messungen für alle Units in dieser Kategorie aktivieren. Standardmäßig aus; muss auch pro Unit an sein.",
+        "show_previous_issues_hint": "Besucher sehen offene Meldungen dieser Unit nach einem QR-Scan. Deaktivieren Sie dies, wenn die Liste nicht öffentlich sein soll (Hotelzimmer, Sanitärraum, …). Gilt für alle Units dieser Kategorie."
     },
     "errors": {
         "name_or_address_required": "Geben Sie einen Standortnamen an oder füllen Sie Straße, Postleitzahl und Ort vollständig aus.",

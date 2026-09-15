@@ -33,7 +33,7 @@
         "left": [
             {
                 "title": "Issues",
-                "body": "Via unit QR, manually in admin, or (with IoT) a sensor alarm. Filters, approval of QR reports, recurring maintenance (pause or close). Optional: required contact details and/or email confirmation for anonymous QR reporters (category and unit; confirmation holds the report until the email link). On public QR pages visible only after approval; admin sees everything immediately. In admin a Reporter confirmed pill appears when the QR reporter confirmed the email link.",
+                "body": "Via unit QR, manually in admin, or (with IoT) a sensor alarm. Filters, approval of QR reports, recurring maintenance (pause or close). Optional: required contact details and/or email confirmation for anonymous QR reporters (category and unit; confirmation holds the report until the email link). On public QR pages visible only after approval; admin sees everything immediately. In admin a Reporter confirmed pill appears when the QR reporter confirmed the email link. Optional per category: hide previous/open reports on the unit QR.",
                 "badge": "core"
             },
             {
@@ -56,7 +56,7 @@
             },
             {
                 "title": "QR portals",
-                "body": "Unit QR: report issues, plus an optional unit check (quick OK or Not OK). Clock Point QR: sign in (name + icon) and team tasks; clock in/out only with Time (punch clock). Location QR. Printable as sticker sheet (Avery) or full-page A6/A5/A4. Dynamic QRs that can be linked to a unit later. Invalid or expired QR codes show a short error with a button to the homepage."
+                "body": "Unit QR: report issues, plus an optional unit check (quick OK or Not OK). Clock Point QR: sign in (name + icon) and team tasks; clock in/out only with Time (punch clock). Location QR. Printable as sticker sheet (Avery) or full-page A6/A5/A4. Dynamic QRs that can be linked to a unit later. Invalid or expired QR codes show a short error with a button to the homepage. Per category you can hide previous reports on the unit QR."
             },
             {
                 "title": "Unit checks",

@@ -25,6 +25,7 @@ class Category extends Model
         'allow_unit_measurements',
         'require_reporter_contact',
         'require_reporter_email_verification',
+        'show_previous_issues',
     ];
 
     protected $casts = [
@@ -34,6 +35,7 @@ class Category extends Model
         'allow_unit_measurements' => 'boolean',
         'require_reporter_contact' => 'boolean',
         'require_reporter_email_verification' => 'boolean',
+        'show_previous_issues' => 'boolean',
     ];
 
     public function tenant(): BelongsTo

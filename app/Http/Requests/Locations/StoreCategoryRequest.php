@@ -33,6 +33,7 @@ class StoreCategoryRequest extends FormRequest
             'allow_unit_measurements' => ['sometimes', 'boolean'],
             'require_reporter_contact' => ['sometimes', 'boolean'],
             'require_reporter_email_verification' => ['sometimes', 'boolean'],
+            'show_previous_issues' => ['sometimes', 'boolean'],
         ];
     }
 

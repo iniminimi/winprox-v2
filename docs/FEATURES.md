@@ -106,7 +106,7 @@ Locatie-lijst → klik op een locatie → **locatie-/unit-detailscherm**.
 - Header: titel "Categorieën" + **"Categorie toevoegen"**.
 - Lijst van categorieën (naam, bewerken, verwijderen). Geen locaties op dit scherm.
 - Lege staat: onboarding-kaart (één team mag aan alle categorieën) + pulserende **Categorie toevoegen**.
-- Modal: naam, teams, GPS, reserveerbaar, unit checks, contactgegevens verplicht, e-mailbevestiging verplicht.
+- Modal: naam, teams, GPS, reserveerbaar, unit checks, contactgegevens verplicht, e-mailbevestiging verplicht, vroegere meldingen (standaard aan; uitzetten verbergt de meldingenlijst op de unit-QR).
 - **Portaal-vinkjes** (checks, reserveringen, contact, e-mailbevestiging, metingen) gelden primair op **categorie**. Units **erven** bij categoriekeuze; bij categorie-wijziging krijgen units die nog de vorige categorie-defaults hadden automatisch de nieuwe waarden. Per-unit afwijkingen in uitklap **Geavanceerde portaal-opties** op unit bewerken.
 
 ### 2.1 Locatie-lijst
@@ -1149,7 +1149,8 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
 ### Unit-portaal — secties (burger)
 `home · new · issues · issue_detail · documents · announcements`
 - **home**: tenant-logo, locatie/unit-regel, tegels: **Nieuwe melding** (altijd), en — alleen indien
-  niet leeg — **Open meldingen**, **Mededelingen**, **Documenten**. Voor veldworkers extra: blok met
+  niet leeg — **Open meldingen**, **Mededelingen**, **Documenten**. **Open meldingen** verdwijnt als
+  de categorie **Vroegere meldingen tonen** uit heeft. Voor veldworkers extra: blok met
   open taken + sign-in.
 - **new** (melden): veld **omschrijving** (verplicht, min 3) + **tot 4 foto's** (`image`, max 10 MB).
   Optioneel voornaam/achternaam/e-mail; verplicht wanneer categorie **én** unit
@@ -1165,7 +1166,7 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   - **Automatisch een taak** voor het **standaardteam van de unit** (oud: `FacilityQrIntake`),
     starttaakstatus = onze `Nieuw`/`assigned`-equivalent; geen team → enkel melding.
   - Daarna flash "melding verzonden" → sectie `issues`. Met e-mailbevestiging: flash "check inbox".
-- **issues**: lijst open meldingen van deze unit (omschrijving), → **detail**.
+- **issues**: lijst open meldingen van deze unit (omschrijving), → **detail**. Verborgen wanneer de categorie **Vroegere meldingen tonen** uitstaat.
 - **issue_detail**: omschrijving + datum; burger ziet evt. statusregel ("gepland"/"in uitvoering");
   worker ziet sign-in + taakacties.
 - **documents**: titel + omschrijving; downloadlink alleen als `is_public && !requires_verification`,

@@ -1352,6 +1352,31 @@ it('rejects unit photo uploads that exceed the four-photo limit', function () {
     expect($unit->fresh()->qrLinkPhotos()->count())->toBe(3);
 });
 
+it('hides previous reports on the unit QR when the category flag is off', function () {
+    ['unit' => $unit, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
+    $unit->category->update(['show_previous_issues' => false]);
+
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'description' => 'Vorige melding die niet publiek mag.',
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertDontSee(__('portal.tiles.issues'))
+        ->assertDontSee('Vorige melding die niet publiek mag.')
+        ->call('openSection', 'issues')
+        ->assertSet('portalSection', 'home')
+        ->set('description', 'Nieuwe melding zonder lijst.')
+        ->call('submitReport')
+        ->assertHasNoErrors()
+        ->assertSet('portalSection', 'home')
+        ->assertSee(__('portal.report.sent'));
+});
+
 it('hides the new report tile from public visitors when unit reports are disabled', function () {
     unitPortalScaffold(['public_reports_enabled' => false]);
 

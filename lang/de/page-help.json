@@ -274,7 +274,7 @@
                 },
                 {
                     "label": "Portal-Einstellungen (Kategorie)",
-                    "text": "GPS, reservierbar, Unit-Checks, Unit-Messungen, Kontakt und E-Mail-Bestätigung legen Sie hier auf Kategorieebene fest. Units in dieser Kategorie übernehmen diese Häkchen bei Kategoriewahl oder -änderung automatisch. Ändern Sie Kategorie-Einstellungen, erhalten Units mit den alten Standardwerten die neuen Werte. Ausnahmen pro Unit stellen Sie unter Erweiterte Portal-Optionen im Unit-Formular ein."
+                    "text": "GPS, reservierbar, Unit-Checks, Unit-Messungen, Kontakt und E-Mail-Bestätigung legen Sie hier auf Kategorieebene fest. Units in dieser Kategorie übernehmen diese Häkchen bei Kategoriewahl oder -änderung automatisch. Frühere Meldungen schalten Sie hier ebenfalls ein oder aus; das gilt für alle Units der Kategorie, ohne Ausnahme pro Unit. Ändern Sie Kategorie-Einstellungen, erhalten Units mit den alten Standardwerten die neuen Werte. Ausnahmen pro Unit stellen Sie unter Erweiterte Portal-Optionen im Unit-Formular ein."
                 },
                 {
                     "label": "Reservierbar",
@@ -300,6 +300,11 @@
                     "label": "Unit-Messungen erlauben",
                     "nested": true,
                     "text": "Messwerte über die Unit-QR (km, Temperatur, Status, …). Units erben dies; Messfelder unter Arbeit → Unit-Messungen verknüpfen. Kategorie und Unit müssen aktiv sein. Getrennt von ESG und Unit-Checks."
+                },
+                {
+                    "label": "Frühere Meldungen anzeigen",
+                    "nested": true,
+                    "text": "Standardmäßig an: Besucher sehen offene Meldungen der Unit nach einem QR-Scan. Deaktivieren, wenn die Liste nicht öffentlich sein soll (Hotelzimmer, Sanitärraum, …). Gilt für alle Units dieser Kategorie; keine Ausnahme pro Unit."
                 }
             ]
         },

@@ -33,7 +33,7 @@
         "left": [
             {
                 "title": "Issues",
-                "body": "Via QR unità, manualmente in amministrazione, o (con IoT) allarme sensore. Filtri, approvazione delle segnalazioni QR, manutenzione ricorrente (pausa o chiusura). Opzionale: dati di contatto obbligatori e/o conferma e-mail per segnalanti anonimi via QR (categoria e unità; la conferma trattiene la segnalazione fino al link nell’e-mail). Sulle pagine QR pubbliche visibili solo dopo approvazione; l’amministrazione vede tutto subito. In amministrazione compare la pillola Segnalante confermato quando il segnalante QR ha confermato il link e-mail.",
+                "body": "Via QR unità, manualmente in amministrazione, o (con IoT) allarme sensore. Filtri, approvazione delle segnalazioni QR, manutenzione ricorrente (pausa o chiusura). Opzionale: dati di contatto obbligatori e/o conferma e-mail per segnalanti anonimi via QR (categoria e unità; la conferma trattiene la segnalazione fino al link nell’e-mail). Sulle pagine QR pubbliche visibili solo dopo approvazione; l’amministrazione vede tutto subito. In amministrazione compare la pillola Segnalante confermato quando il segnalante QR ha confermato il link e-mail. Opzionale per categoria: nascondere le segnalazioni precedenti/aperte sul QR unit.",
                 "badge": "core"
             },
             {
@@ -56,7 +56,7 @@
             },
             {
                 "title": "QR portals",
-                "body": "QR unità: segnalare un problema, più un controllo unità opzionale (OK o Non OK in un tocco). QR Clock Point: identificazione (nome + icona) e attività di team; timbrare solo con Time (timbratrice). QR sede. Stampabile come foglio etichette (Avery) o pagina A6/A5/A4. QR dinamici collegabili in seguito a un’unità. I codici QR non validi o scaduti mostrano un breve messaggio di errore con un pulsante alla home."
+                "body": "QR unità: segnalare un problema, più un controllo unità opzionale (OK o Non OK in un tocco). QR Clock Point: identificazione (nome + icona) e attività di team; timbrare solo con Time (timbratrice). QR sede. Stampabile come foglio etichette (Avery) o pagina A6/A5/A4. QR dinamici collegabili in seguito a un’unità. I codici QR non validi o scaduti mostrano un breve messaggio di errore con un pulsante alla home. Per categoria può nascondere le segnalazioni precedenti sul QR unit."
             },
             {
                 "title": "Controlli unità",

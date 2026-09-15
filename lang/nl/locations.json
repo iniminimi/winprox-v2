@@ -266,7 +266,8 @@
             "require_reporter_contact": "Contactgegevens invullen verplicht",
             "require_reporter_email_verification": "E-mailbevestiging verplicht",
             "allow_unit_checks": "Unit checks toestaan",
-            "allow_unit_measurements": "Unitmetingen toestaan"
+            "allow_unit_measurements": "Unitmetingen toestaan",
+            "show_previous_issues": "Vroegere meldingen tonen"
         },
         "allow_gps_location_hint": "Sta toe dat de GPS-locatie van units in deze categorie via het portaal wordt doorgegeven.",
         "teams_subtitle": "Selecteer de teams die verantwoordelijk zijn voor deze categorie.",
@@ -292,7 +293,8 @@
         "require_reporter_contact_hint": "Verplicht voornaam, naam en e-mail bij anonieme meldingen via de unit-QR. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat.",
         "require_reporter_email_verification_hint": "Verplicht een bevestigingsmail bij anonieme meldingen via de unit-QR. De melding wordt pas aangemaakt nadat de melder op de link klikt. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat. Geldt niet voor veldwerkers.",
         "allow_unit_checks_hint": "Schakel Unit checks in voor alle units in deze categorie (securityronde, schoonmaakcontrole, …). Staat standaard uit; moet ook per unit aanstaan.",
-        "allow_unit_measurements_hint": "Schakel unitmetingen in voor alle units in deze categorie. Staat standaard uit; moet ook per unit aanstaan."
+        "allow_unit_measurements_hint": "Schakel unitmetingen in voor alle units in deze categorie. Staat standaard uit; moet ook per unit aanstaan.",
+        "show_previous_issues_hint": "Bezoekers zien open meldingen van deze unit na een QR-scan. Zet uit als je die lijst niet publiek wilt (hotelkamer, sanitaire ruimte, …). Geldt voor alle units in deze categorie."
     },
     "errors": {
         "name_or_address_required": "Vul een locatienaam in, of vul straat, postcode en plaats volledig in.",

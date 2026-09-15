@@ -266,7 +266,8 @@
             "require_reporter_contact": "Require contact details",
             "require_reporter_email_verification": "Require email confirmation",
             "allow_unit_checks": "Allow unit checks",
-            "allow_unit_measurements": "Allow unit measurements"
+            "allow_unit_measurements": "Allow unit measurements",
+            "show_previous_issues": "Show previous reports"
         },
         "allow_gps_location_hint": "Allow the GPS location of units in this category to be submitted via the portal.",
         "teams_subtitle": "Select the teams responsible for this category.",
@@ -292,7 +293,8 @@
         "require_reporter_contact_hint": "Require first name, last name and email for anonymous reports via the unit QR. Off by default. Only takes effect when also enabled on the unit.",
         "require_reporter_email_verification_hint": "Require a confirmation email for anonymous reports via the unit QR. The report is only created after the reporter clicks the link. Off by default. Only takes effect when also enabled on the unit. Does not apply to field workers.",
         "allow_unit_checks_hint": "Enable unit checks for all units in this category (security round, cleaning check, …). Off by default; must also be enabled per unit.",
-        "allow_unit_measurements_hint": "Enable unit measurements for all units in this category. Off by default; must also be enabled per unit."
+        "allow_unit_measurements_hint": "Enable unit measurements for all units in this category. Off by default; must also be enabled per unit.",
+        "show_previous_issues_hint": "Visitors see open reports for this unit after scanning the QR code. Turn off if you do not want that list public (hotel room, restroom, …). Applies to all units in this category."
     },
     "errors": {
         "name_or_address_required": "Enter a location name, or fill in street, postal code and city.",

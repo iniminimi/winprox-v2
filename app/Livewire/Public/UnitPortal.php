@@ -222,6 +222,10 @@ class UnitPortal extends Component
             return;
         }
 
+        if (in_array($section, ['issues', 'issue_detail'], true) && ! $this->unit()->showsPreviousIssues()) {
+            return;
+        }
+
         if ($section === 'reserve' && ! $this->unit()->isReservable()) {
             return;
         }
@@ -561,6 +565,10 @@ class UnitPortal extends Component
             return;
         }
 
+        if (! $this->unit()->showsPreviousIssues()) {
+            return;
+        }
+
         $issue = UnitPortalData::findActiveIssueForUnit($this->unit(), $issueId);
         if ($issue === null || ! $issue->isApproved()) {
             return;
@@ -629,7 +637,7 @@ class UnitPortal extends Component
         $this->flashMessage = $result->awaitingEmailVerification
             ? __('portal.report.sent_verify_email')
             : __('portal.report.sent');
-        $this->portalSection = 'issues';
+        $this->portalSection = $this->unit()->showsPreviousIssues() ? 'issues' : 'home';
     }
 
     private function rateLimitMessage(PublicReportRateLimitExceededException $exception): string
@@ -1235,6 +1243,7 @@ class UnitPortal extends Component
         $newTeamTasksCount = 0;
         $clockPointPortalUrl = null;
         $isReservable = $unit->isReservable();
+        $showPreviousIssues = $unit->showsPreviousIssues();
         $guestReservations = collect();
         $unitCheckListItems = collect();
         $unitCheckList = null;
@@ -1250,6 +1259,10 @@ class UnitPortal extends Component
         }
 
         if ($this->inactiveReasonKey === null) {
+            if (! $showPreviousIssues && in_array($this->portalSection, ['issues', 'issue_detail'], true)) {
+                $this->portalSection = 'home';
+                $this->selectedIssueId = null;
+            }
             if (in_array($this->portalSection, ['home', 'measure'], true) && $unit->allowsUnitMeasurements()) {
                 $measureFields = $unit->activeMeasureFields()->orderBy('name')->get();
             }
@@ -1260,7 +1273,7 @@ class UnitPortal extends Component
                     $unitCheckListItems = $unitCheckList->items;
                 }
             }
-            if (in_array($this->portalSection, ['home', 'issues', 'issue_detail'], true)) {
+            if ($showPreviousIssues && in_array($this->portalSection, ['home', 'issues', 'issue_detail'], true)) {
                 $issues = UnitPortalData::activeIssuesForUnit($unit);
             }
             if (in_array($this->portalSection, ['home', 'documents'], true)) {
@@ -1285,7 +1298,7 @@ class UnitPortal extends Component
                     $this->selectedIssueId = null;
                     $selectedIssue = null;
                     if ($this->portalSection === 'issue_detail') {
-                        $this->portalSection = 'issues';
+                        $this->portalSection = $showPreviousIssues ? 'issues' : 'home';
                     }
                 } elseif ($team !== null) {
                     $openTasksForIssue = UnitPortalData::openTeamTasksForIssue($selectedIssue, (int) $team->id);
@@ -1313,6 +1326,7 @@ class UnitPortal extends Component
             'unitCheckList' => $unitCheckList,
             'unitCheckListItems' => $unitCheckListItems,
             'showNewReportSection' => $this->showNewReportSection(),
+            'showPreviousIssues' => $showPreviousIssues,
             'requiresReporterContact' => $canAct ? false : $unit->requiresReporterContact(),
             'requiresReporterEmailVerification' => $canAct ? false : $unit->requiresReporterEmailVerification(),
             'worker' => $worker,

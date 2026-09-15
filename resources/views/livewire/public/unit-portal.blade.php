@@ -268,9 +268,11 @@
                         <span class="wp-tile-sub">{{ __('portal.tiles.new_sub') }}</span>
                     </button>
                 @endif
-                <button type="button" class="wp-tile" wire:click="openSection('issues')">
-                    <span class="wp-tile-title">{{ __('portal.tiles.issues') }} : {{ $issues->count() }}</span>
-                </button>
+                @if ($showPreviousIssues)
+                    <button type="button" class="wp-tile" wire:click="openSection('issues')">
+                        <span class="wp-tile-title">{{ __('portal.tiles.issues') }} : {{ $issues->count() }}</span>
+                    </button>
+                @endif
                 @if ($canAct)
                     <button type="button"
                             class="wp-tile"
@@ -593,7 +595,7 @@
         @endif
 
         {{-- ============================ ISSUES ============================ --}}
-        @if ($portalSection === 'issues')
+        @if ($portalSection === 'issues' && $showPreviousIssues)
             <x-wp-portal-back wire:click="openSection('home')" />
             <x-wp-page-head-title variant="portal" icon="issues" :title="__('portal.tiles.issues')" />
             <div class="wp-list">
@@ -624,7 +626,7 @@
         @endif
 
         {{-- ========================= ISSUE DETAIL ========================= --}}
-        @if ($portalSection === 'issue_detail' && $selectedIssue)
+        @if ($portalSection === 'issue_detail' && $selectedIssue && $showPreviousIssues)
             <x-wp-portal-back wire:click="openSection('issues')" />
             <div class="wp-card wp-card-pad wp-stack">
                 <div class="wp-cluster">

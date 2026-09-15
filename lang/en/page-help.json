@@ -274,7 +274,7 @@
                 },
                 {
                     "label": "Portal settings (category)",
-                    "text": "Set GPS, reservable, unit checks, unit measurements, contact and email confirmation at category level. Units in this category inherit these flags when you choose or change the category. When you update category settings, units that still had the old defaults get the new values. Per-unit exceptions go in Advanced portal options on the unit form."
+                    "text": "Set GPS, reservable, unit checks, unit measurements, contact and email confirmation at category level. Units in this category inherit these flags when you choose or change the category. Previous reports are also turned on or off here; that applies to all units in the category, with no per-unit exception. When you update category settings, units that still had the old defaults get the new values. Per-unit exceptions go in Advanced portal options on the unit form."
                 },
                 {
                     "label": "Reservable",
@@ -300,6 +300,11 @@
                     "label": "Allow unit measurements",
                     "nested": true,
                     "text": "Readings via the unit QR (km, temperature, status, …). Units inherit this; link measure fields under Work → Unit measurements. Both category and unit must be on. Separate from ESG and unit checks."
+                },
+                {
+                    "label": "Show previous reports",
+                    "nested": true,
+                    "text": "On by default: visitors see open reports for the unit after a QR scan. Turn off if you do not want that list public (hotel room, restroom, …). Applies to all units in this category; no per-unit exception."
                 }
             ]
         },

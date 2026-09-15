@@ -274,7 +274,7 @@
                 },
                 {
                     "label": "Ajustes del portal (categoría)",
-                    "text": "GPS, reservable, controles de unidad, mediciones de unidad, contacto y confirmación por e-mail se configuran aquí a nivel categoría. Las unidades de esta categoría heredan estas casillas al elegir o cambiar la categoría. Si cambia la categoría, las unidades que aún tenían los valores por defecto anteriores reciben los nuevos. Las excepciones por unidad van en Opciones avanzadas del portal en el formulario de unidad."
+                    "text": "GPS, reservable, controles de unidad, mediciones de unidad, contacto y confirmación por e-mail se configuran aquí a nivel categoría. Las unidades de esta categoría heredan estas casillas al elegir o cambiar la categoría. Los informes anteriores también se activan o desactivan aquí; aplica a todas las unidades de la categoría, sin excepción por unidad. Si cambia la categoría, las unidades que aún tenían los valores por defecto anteriores reciben los nuevos. Las excepciones por unidad van en Opciones avanzadas del portal en el formulario de unidad."
                 },
                 {
                     "label": "Reservable",
@@ -300,6 +300,11 @@
                     "label": "Permitir mediciones de unidad",
                     "nested": true,
                     "text": "Lecturas vía QR de unidad (km, temperatura, estado, …). Las unidades heredan; vincule campos en Trabajo → Mediciones de unidad. Categoría y unidad deben estar activas. Separado de ESG y controles de unidad."
+                },
+                {
+                    "label": "Mostrar informes anteriores",
+                    "nested": true,
+                    "text": "Activado por defecto: los visitantes ven los avisos abiertos de la unidad tras escanear el QR. Desactive si no quiere esa lista pública (habitación de hotel, aseo, …). Aplica a todas las unidades de esta categoría; sin excepción por unidad."
                 }
             ]
         },

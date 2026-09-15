@@ -33,7 +33,7 @@
         "left": [
             {
                 "title": "Issues",
-                "body": "Vía QR de unidad, manualmente en administración, o (con IoT) alarma de sensor. Filtros, aprobación de avisos QR, mantenimiento recurrente (pausar o cerrar). Opcional: datos de contacto obligatorios y/o confirmación de correo para informantes anónimos por QR (categoría y unidad; la confirmación retiene el informe hasta el enlace del correo). En páginas QR públicas visibles solo tras aprobación; la administración lo ve todo de inmediato. En administración aparece la pastilla Informante confirmado cuando el informante QR confirmó el enlace de correo.",
+                "body": "Vía QR de unidad, manualmente en administración, o (con IoT) alarma de sensor. Filtros, aprobación de avisos QR, mantenimiento recurrente (pausar o cerrar). Opcional: datos de contacto obligatorios y/o confirmación de correo para informantes anónimos por QR (categoría y unidad; la confirmación retiene el informe hasta el enlace del correo). En páginas QR públicas visibles solo tras aprobación; la administración lo ve todo de inmediato. En administración aparece la pastilla Informante confirmado cuando el informante QR confirmó el enlace de correo. Opcional por categoría: ocultar avisos anteriores/abiertos en el QR de la unidad.",
                 "badge": "core"
             },
             {
@@ -56,7 +56,7 @@
             },
             {
                 "title": "QR portals",
-                "body": "QR de unidad: avisar un problema, más un control de unidad opcional (OK o No OK en un toque). QR Clock Point: identificación (nombre + icono) y tareas de equipo; fichar solo con Time (reloj de fichar). QR de ubicación. Imprimible como hoja de etiquetas (Avery) o página A6/A5/A4. QR dinámicos que luego se vinculan a una unidad. Los códigos QR no válidos o caducados muestran un mensaje breve con un botón a la página de inicio."
+                "body": "QR de unidad: avisar un problema, más un control de unidad opcional (OK o No OK en un toque). QR Clock Point: identificación (nombre + icono) y tareas de equipo; fichar solo con Time (reloj de fichar). QR de ubicación. Imprimible como hoja de etiquetas (Avery) o página A6/A5/A4. QR dinámicos que luego se vinculan a una unidad. Los códigos QR no válidos o caducados muestran un mensaje breve con un botón a la página de inicio. Por categoría puede ocultar los informes anteriores en el QR de la unidad."
             },
             {
                 "title": "Controles de unidad",

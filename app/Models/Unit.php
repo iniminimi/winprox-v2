@@ -183,6 +183,17 @@ class Unit extends Model
         return [$grouped, max(0, $activeCount - $units->count())];
     }
 
+    public function showsPreviousIssues(): bool
+    {
+        $this->loadMissing('category');
+
+        if ($this->category_id === null || $this->category === null) {
+            return true;
+        }
+
+        return (bool) $this->category->show_previous_issues;
+    }
+
     public function requiresReporterContact(): bool
     {
         $this->loadMissing('category');

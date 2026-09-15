@@ -274,7 +274,7 @@
                 },
                 {
                     "label": "Paramètres portail (catégorie)",
-                    "text": "GPS, réservable, contrôles unité, mesures unité, contact et confirmation e-mail se règlent ici au niveau catégorie. Les unités de cette catégorie héritent automatiquement de ces cases lors du choix ou changement de catégorie. Si vous modifiez la catégorie, les unités qui avaient encore les anciennes valeurs par défaut reçoivent les nouvelles. Les exceptions par unité se font via Options portail avancées sur le formulaire unité."
+                    "text": "GPS, réservable, contrôles unité, mesures unité, contact et confirmation e-mail se règlent ici au niveau catégorie. Les unités de cette catégorie héritent automatiquement de ces cases lors du choix ou changement de catégorie. Les signalements précédents s’activent ou se masquent aussi ici ; cela s’applique à toutes les unités de la catégorie, sans exception par unité. Si vous modifiez la catégorie, les unités qui avaient encore les anciennes valeurs par défaut reçoivent les nouvelles. Les exceptions par unité se font via Options portail avancées sur le formulaire unité."
                 },
                 {
                     "label": "Réservable",
@@ -300,6 +300,11 @@
                     "label": "Autoriser les mesures d'unité",
                     "nested": true,
                     "text": "Relevés via la QR unité (km, température, statut, …). Les unités héritent ; liez les champs de mesure sous Travail → Mesures d'unité. Catégorie et unité doivent être actives. Distinct de l'ESG et des contrôles d'unité."
+                },
+                {
+                    "label": "Afficher les signalements précédents",
+                    "nested": true,
+                    "text": "Activé par défaut : les visiteurs voient les signalements ouverts de l’unité après un scan QR. Décochez si la liste ne doit pas être publique (chambre d’hôtel, sanitaires, …). S’applique à toutes les unités de cette catégorie ; pas d’exception par unité."
                 },
                 {
                     "label": "Autoriser les mesures d’unité",

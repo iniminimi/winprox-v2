@@ -274,7 +274,7 @@
                 },
                 {
                     "label": "Impostazioni portale (categoria)",
-                    "text": "GPS, prenotabile, controlli unità, misurazioni unità, contatto e conferma e-mail si impostano qui a livello categoria. Le unit in questa categoria ereditano automaticamente queste spunte alla scelta o modifica della categoria. Se modificate la categoria, le unit che avevano ancora i vecchi default ricevono i nuovi valori. Le eccezioni per unit si impostano in Opzioni portale avanzate nel form unit."
+                    "text": "GPS, prenotabile, controlli unità, misurazioni unità, contatto e conferma e-mail si impostano qui a livello categoria. Le unit in questa categoria ereditano automaticamente queste spunte alla scelta o modifica della categoria. Le segnalazioni precedenti si attivano o nascondono anche qui; vale per tutte le unit della categoria, senza eccezione per unit. Se modificate la categoria, le unit che avevano ancora i vecchi default ricevono i nuovi valori. Le eccezioni per unit si impostano in Opzioni portale avanzate nel form unit."
                 },
                 {
                     "label": "Prenotabile",
@@ -300,6 +300,11 @@
                     "label": "Consenti misurazioni unità",
                     "nested": true,
                     "text": "Letture via QR unit (km, temperatura, stato, …). Le unit ereditano; collega i campi in Lavoro → Misurazioni unità. Categoria e unit devono essere attive. Distinto da ESG e controlli unità."
+                },
+                {
+                    "label": "Mostra segnalazioni precedenti",
+                    "nested": true,
+                    "text": "Attivo di default: i visitatori vedono le segnalazioni aperte della unit dopo la scansione QR. Disattivi se l’elenco non deve essere pubblico (camera d’albergo, servizi, …). Vale per tutte le unit di questa categoria; nessuna eccezione per unit."
                 }
             ]
         },

@@ -266,7 +266,8 @@
             "require_reporter_contact": "Dati di contatto obbligatori",
             "require_reporter_email_verification": "Conferma e-mail obbligatoria",
             "allow_unit_checks": "Consenti controlli unità",
-            "allow_unit_measurements": "Consenti misurazioni unit"
+            "allow_unit_measurements": "Consenti misurazioni unit",
+            "show_previous_issues": "Mostra segnalazioni precedenti"
         },
         "allow_gps_location_hint": "Consenta l'invio della posizione GPS delle unità in questa categoria tramite il portale.",
         "teams_subtitle": "Selezioni i team responsabili per questa categoria.",
@@ -292,7 +293,8 @@
         "require_reporter_contact_hint": "Richiede nome, cognome e e-mail per segnalazioni anonime tramite QR dell’unità. Disattivo di default. Vale solo se attivato anche sull’unità.",
         "require_reporter_email_verification_hint": "Richiede un’e-mail di conferma per segnalazioni anonime tramite QR dell’unità. La segnalazione viene creata solo dopo il clic sul link. Disattivo di default. Vale solo se attivato anche sull’unità. Non vale per gli operatori sul campo.",
         "allow_unit_checks_hint": "Abilita i controlli unità per tutte le unità di questa categoria (giro sicurezza, controllo pulizie, …). Disattivo di default; deve essere attivato anche per unità.",
-        "allow_unit_measurements_hint": "Abilita le misurazioni unit per tutte le unit di questa categoria. Disattivo di default; va abilitato anche per unit."
+        "allow_unit_measurements_hint": "Abilita le misurazioni unit per tutte le unit di questa categoria. Disattivo di default; va abilitato anche per unit.",
+        "show_previous_issues_hint": "I visitatori vedono le segnalazioni aperte di questa unit dopo la scansione QR. Disattivi se non vuole l’elenco pubblico (camera d’albergo, servizi, …). Vale per tutte le unit di questa categoria."
     },
     "errors": {
         "name_or_address_required": "Inserisca un nome sede, oppure compili via, CAP e città.",

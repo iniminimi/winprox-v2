@@ -20,7 +20,7 @@ class UpdateCategoryAction
     ) {}
 
     /**
-     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, allow_unit_measurements?: bool, require_reporter_contact?: bool, require_reporter_email_verification?: bool}  $data
+     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, allow_unit_measurements?: bool, require_reporter_contact?: bool, require_reporter_email_verification?: bool, show_previous_issues?: bool}  $data
      */
     public function handle(Category $category, array $data, ?int $actorUserId = null): Category
     {
@@ -36,6 +36,7 @@ class UpdateCategoryAction
             'allow_unit_measurements' => (bool) ($data['allow_unit_measurements'] ?? false),
             'require_reporter_contact' => (bool) ($data['require_reporter_contact'] ?? false),
             'require_reporter_email_verification' => (bool) ($data['require_reporter_email_verification'] ?? false),
+            'show_previous_issues' => (bool) ($data['show_previous_issues'] ?? $category->show_previous_issues),
         ]);
 
         $fresh = $category->fresh();
@@ -75,6 +76,7 @@ class UpdateCategoryAction
                 'allow_unit_measurements' => $fresh->allow_unit_measurements,
                 'require_reporter_contact' => $fresh->require_reporter_contact,
                 'require_reporter_email_verification' => $fresh->require_reporter_email_verification,
+                'show_previous_issues' => $fresh->show_previous_issues,
             ],
         );
 

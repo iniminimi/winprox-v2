@@ -266,7 +266,8 @@
             "require_reporter_contact": "Coordonnées obligatoires",
             "require_reporter_email_verification": "Confirmation e-mail obligatoire",
             "allow_unit_checks": "Autoriser les contrôles d’unité",
-            "allow_unit_measurements": "Autoriser les mesures unit"
+            "allow_unit_measurements": "Autoriser les mesures unit",
+            "show_previous_issues": "Afficher les signalements précédents"
         },
         "allow_gps_location_hint": "Autorise la transmission de la localisation GPS des unités de cette catégorie via le portail.",
         "teams_subtitle": "Sélectionnez les équipes responsables de cette catégorie.",
@@ -292,7 +293,8 @@
         "require_reporter_contact_hint": "Exige prénom, nom et e-mail pour les signalements anonymes via le QR de l’unité. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité.",
         "require_reporter_email_verification_hint": "Exige un e-mail de confirmation pour les signalements anonymes via le QR de l’unité. Le signalement n’est créé qu’après le clic sur le lien. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents de terrain.",
         "allow_unit_checks_hint": "Active les contrôles d’unité pour toutes les unités de cette catégorie (ronde sécurité, contrôle ménage, …). Désactivé par défaut ; doit aussi être activé par unité.",
-        "allow_unit_measurements_hint": "Active les mesures unit pour toutes les units de cette catégorie. Désactivé par défaut ; doit aussi être activé par unit."
+        "allow_unit_measurements_hint": "Active les mesures unit pour toutes les units de cette catégorie. Désactivé par défaut ; doit aussi être activé par unit.",
+        "show_previous_issues_hint": "Les visiteurs voient les signalements ouverts de cette unité après un scan QR. Décochez si vous ne voulez pas cette liste publique (chambre d’hôtel, sanitaires, …). S’applique à toutes les unités de cette catégorie."
     },
     "errors": {
         "name_or_address_required": "Saisissez un nom de site, ou remplissez rue, code postal et ville.",

@@ -33,7 +33,7 @@
         "left": [
             {
                 "title": "Meldingen",
-                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud (pauzeren of sluiten). Optioneel: contactgegevens verplicht en/of e-mailbevestiging voor anonieme QR-melders (categorie én unit; bevestiging houdt de melding vast tot de link in de mail). Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen. In beheer toont een pil Melder bevestigd als de QR-melder de e-maillink heeft bevestigd.",
+                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud (pauzeren of sluiten). Optioneel: contactgegevens verplicht en/of e-mailbevestiging voor anonieme QR-melders (categorie én unit; bevestiging houdt de melding vast tot de link in de mail). Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen. In beheer toont een pil Melder bevestigd als de QR-melder de e-maillink heeft bevestigd. Optioneel per categorie: vroegere/open meldingen op de unit-QR uitzetten.",
                 "badge": "kern"
             },
             {
@@ -56,7 +56,7 @@
             },
             {
                 "title": "QR-portals",
-                "body": "Unit-QR: problemen melden, optioneel unit check (OK/Niet OK) en optioneel unitmetingen (km, temperatuur, status). Clock Point-QR: aanmelden (naam + icoon) en teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden. Ongeldige of vervallen QR-codes tonen een korte foutmelding met een knop naar de startpagina. Clock Point toont alleen uitvoerders die op die vestiging mogen inklokken."
+                "body": "Unit-QR: problemen melden, optioneel unit check (OK/Niet OK) en optioneel unitmetingen (km, temperatuur, status). Clock Point-QR: aanmelden (naam + icoon) en teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden. Ongeldige of vervallen QR-codes tonen een korte foutmelding met een knop naar de startpagina. Clock Point toont alleen uitvoerders die op die vestiging mogen inklokken. Per categorie kun je vroegere meldingen op de unit-QR uitzetten."
             },
             {
                 "title": "Unit checks",

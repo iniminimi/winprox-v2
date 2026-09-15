@@ -341,6 +341,16 @@
                     </x-wp-tooltip>
                     @error('categoryRequireReporterEmailVerification') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+
+                <div class="wp-field">
+                    <x-wp-tooltip :text="__('locations.categories.show_previous_issues_hint')" wrap>
+                        <label class="wp-check">
+                            <input type="checkbox" wire:model="categoryShowPreviousIssues" />
+                            <span>{{ __('locations.categories.fields.show_previous_issues') }}</span>
+                        </label>
+                    </x-wp-tooltip>
+                    @error('categoryShowPreviousIssues') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
                 </div>
 
                 <div class="wp-field">

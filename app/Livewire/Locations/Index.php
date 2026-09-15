@@ -88,6 +88,8 @@ class Index extends Component
 
     public bool $categoryRequireReporterEmailVerification = false;
 
+    public bool $categoryShowPreviousIssues = true;
+
     /** @var array<int, int> */
     public array $selectedCategoryTeamIds = [];
 
@@ -370,6 +372,7 @@ class Index extends Component
         $this->categoryAllowUnitMeasurements = (bool) $category->allow_unit_measurements;
         $this->categoryRequireReporterContact = (bool) $category->require_reporter_contact;
         $this->categoryRequireReporterEmailVerification = (bool) $category->require_reporter_email_verification;
+        $this->categoryShowPreviousIssues = (bool) $category->show_previous_issues;
         $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
         $this->categoryPreviewLocale = $this->defaultTranslationLocaleForCategory($category);
         $this->hydrateCategoryTranslationInput($category->fresh('translations'));
@@ -413,6 +416,7 @@ class Index extends Component
             'categoryAllowUnitMeasurements' => $rules['allow_unit_measurements'],
             'categoryRequireReporterContact' => $rules['require_reporter_contact'],
             'categoryRequireReporterEmailVerification' => $rules['require_reporter_email_verification'],
+            'categoryShowPreviousIssues' => $rules['show_previous_issues'],
             'selectedCategoryTeamIds' => 'required|array|min:1',
             'selectedCategoryTeamIds.*' => 'exists:internal_teams,id',
         ], [
@@ -459,6 +463,7 @@ class Index extends Component
                 'allow_unit_measurements' => (bool) $validated['categoryAllowUnitMeasurements'],
                 'require_reporter_contact' => (bool) $validated['categoryRequireReporterContact'],
                 'require_reporter_email_verification' => (bool) $validated['categoryRequireReporterEmailVerification'],
+                'show_previous_issues' => (bool) $validated['categoryShowPreviousIssues'],
                 'original_language' => auth()->user()?->locale,
             ], (int) auth()->id());
         } else {
@@ -472,6 +477,7 @@ class Index extends Component
                 'allow_unit_measurements' => (bool) $validated['categoryAllowUnitMeasurements'],
                 'require_reporter_contact' => (bool) $validated['categoryRequireReporterContact'],
                 'require_reporter_email_verification' => (bool) $validated['categoryRequireReporterEmailVerification'],
+                'show_previous_issues' => (bool) $validated['categoryShowPreviousIssues'],
             ], (int) auth()->id());
         }
 
@@ -558,6 +564,7 @@ class Index extends Component
         $this->categoryAllowUnitMeasurements = false;
         $this->categoryRequireReporterContact = false;
         $this->categoryRequireReporterEmailVerification = false;
+        $this->categoryShowPreviousIssues = true;
         $this->selectedCategoryTeamIds = [];
         $this->categoryPreviewLocale = '';
         $this->categoryTranslationName = '';

@@ -274,7 +274,7 @@
                 },
                 {
                     "label": "Portaal-instellingen (categorie)",
-                    "text": "GPS, reserveerbaar, unit checks, unitmetingen, contact en e-mailbevestiging stel je hier in op categorieniveau. Units in deze categorie nemen deze vinkjes automatisch over bij categoriekeuze of -wijziging. Wijzig je de categorie-instellingen, dan krijgen units die nog de oude defaults hadden de nieuwe waarden mee. Alleen uitzonderingen per unit stel je in via Geavanceerde portaal-opties op het unit-formulier."
+                    "text": "GPS, reserveerbaar, unit checks, unitmetingen, contact en e-mailbevestiging stel je hier in op categorieniveau. Units in deze categorie nemen deze vinkjes automatisch over bij categoriekeuze of -wijziging. Vroegere meldingen zet je hier ook aan of uit; dat geldt voor alle units in de categorie, zonder uitzondering per unit. Wijzig je de categorie-instellingen, dan krijgen units die nog de oude defaults hadden de nieuwe waarden mee. Alleen uitzonderingen per unit stel je in via Geavanceerde portaal-opties op het unit-formulier."
                 },
                 {
                     "label": "Reserveerbaar",
@@ -300,6 +300,11 @@
                     "label": "Unitmetingen toestaan",
                     "nested": true,
                     "text": "Meetwaarden via de unit-QR (km, temperatuur, status, …). Units erven dit; koppel meetvelden onder Werk → Unitmetingen. Categorie én unit moeten aanstaan. Los van ESG en unit checks."
+                },
+                {
+                    "label": "Vroegere meldingen tonen",
+                    "nested": true,
+                    "text": "Standaard aan: bezoekers zien open meldingen van de unit na een QR-scan. Zet uit als je die lijst niet publiek wilt (hotelkamer, sanitaire ruimte, …). Geldt voor alle units in deze categorie; geen aparte uitzondering per unit."
                 }
             ]
         },

@@ -15,7 +15,7 @@ class CreateCategoryAction
     ) {}
 
     /**
-     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, allow_unit_measurements?: bool, require_reporter_contact?: bool, require_reporter_email_verification?: bool, original_language?: string|null}  $data
+     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, allow_unit_measurements?: bool, require_reporter_contact?: bool, require_reporter_email_verification?: bool, show_previous_issues?: bool, original_language?: string|null}  $data
      */
     public function handle(int $tenantId, array $data, ?int $actorUserId = null): Category
     {
@@ -29,6 +29,7 @@ class CreateCategoryAction
             'allow_unit_measurements' => (bool) ($data['allow_unit_measurements'] ?? false),
             'require_reporter_contact' => (bool) ($data['require_reporter_contact'] ?? false),
             'require_reporter_email_verification' => (bool) ($data['require_reporter_email_verification'] ?? false),
+            'show_previous_issues' => (bool) ($data['show_previous_issues'] ?? true),
         ]);
 
         $this->ensureSlots->handle($category);
@@ -48,6 +49,7 @@ class CreateCategoryAction
                 'allow_unit_measurements' => $category->allow_unit_measurements,
                 'require_reporter_contact' => $category->require_reporter_contact,
                 'require_reporter_email_verification' => $category->require_reporter_email_verification,
+                'show_previous_issues' => $category->show_previous_issues,
             ],
         );
 

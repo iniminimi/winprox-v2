@@ -148,6 +148,27 @@ it('laat een admin een categorie bewerken via Categorieën', function () {
     expect($category->fresh()->name)->toBe('Nieuw');
 });
 
+it('laat een admin vroegere meldingen uitzetten via Categorie bewerken', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Kamers',
+        'show_previous_issues' => true,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Index::class, ['section' => 'categories'])
+        ->call('openEditCategory', $category->id)
+        ->assertSet('categoryShowPreviousIssues', true)
+        ->set('selectedCategoryTeamIds', [$team->id])
+        ->set('categoryShowPreviousIssues', false)
+        ->call('saveCategory')
+        ->assertHasNoErrors();
+
+    expect($category->fresh()->show_previous_issues)->toBeFalse();
+});
+
 it('sluit de categorie-modal na annuleren tijdens bewerken', function () {
     [$tenant, $admin] = setupTenantAdminForLocations();
     $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Oud']);

@@ -52,7 +52,7 @@ Middleware: geldige tenant + trial/abonnement (`support.tenant`). Rollen: **admi
 
 ### Plaatsen (Categorieën, Locaties, Units)
 - Locaties CRUD, zoeken, (de)activeren; adresvelden + landcode.
-- **Categorieën** koppelen units aan **teams** (QR-routing).
+- **Categorieën** koppelen units aan **teams** (QR-routing). Vinkje **Vroegere meldingen tonen** (standaard aan) verbergt de open-meldingenlijst op de unit-QR.
 - Units per locatie: CRUD, bulk-aanmaak met patroon, batch verwijderen (veiligheidsregels).
 - **QR-stickerblad** (.docx, Avery 55×55) per locatie; unit-QR en locatie-QR.
 - **Documenten** en **mededelingen** per locatie/unit (publiek op QR-portaal).
