@@ -41,18 +41,14 @@ function pasteGrid(data) {
 }
 
 function splitDutyAndUnit(raw) {
-    if (raw.includes('/')) {
-        const parts = raw.split('/');
-        if (parts.length !== 2) {
-            return null;
-        }
-        const duty = parts[0].trim();
-        const unit = parts[1].trim();
-        if (duty === '' || unit === '' || unit.includes('/')) {
+    const normalized = raw.replace(/\r\n|\r|\n/g, '/');
+    if (normalized.includes('/')) {
+        const parts = normalized.split('/').map((part) => part.trim());
+        if (parts.length !== 2 || parts[0] === '' || parts[1] === '' || parts[1].includes('/')) {
             return null;
         }
 
-        return [duty, unit];
+        return [parts[0], parts[1]];
     }
 
     const timeMatch = raw.match(/^(\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2})(?:\s+(\S+))?$/);
@@ -66,6 +62,34 @@ function splitDutyAndUnit(raw) {
     }
 
     return [raw, null];
+}
+
+/** Celwaarde voor de grid: dienst + newline + groep (smalle kolommen). */
+function formatCellDisplay(raw) {
+    const text = cellText(raw).trim();
+    if (text === '') {
+        return '';
+    }
+    const split = splitDutyAndUnit(text);
+    if (!split || !split[1]) {
+        return text.replace(/\r\n|\r|\n/g, ' ').trim();
+    }
+
+    return `${split[0]}\n${split[1].toUpperCase()}`;
+}
+
+/** Terug naar canonical D1/G1 voor opslaan/API. */
+function canonicalizeCellValue(raw) {
+    const text = cellText(raw).trim();
+    if (text === '') {
+        return '';
+    }
+    const split = splitDutyAndUnit(text);
+    if (!split || !split[1]) {
+        return text.replace(/\r\n|\r|\n/g, ' ').trim();
+    }
+
+    return `${split[0]}/${split[1].toUpperCase()}`;
 }
 
 function parseDuty(duty, types) {
@@ -189,36 +213,6 @@ function applyWeekendColumns(worksheet, weekendCols) {
     }
 }
 
-/**
- * Toon groepscode onder de dienst (smaller), cell-value blijft D1/G1 voor edit/save.
- */
-function paintCellDisplay(cell, value) {
-    const text = cellText(value).trim();
-    const split = text === '' ? null : splitDutyAndUnit(text);
-    const hadStack = cell.classList.contains('wp-roster-cell--stacked');
-
-    if (split && split[1] && !text.includes('\n')) {
-        const duty = split[0];
-        const unit = split[1].toUpperCase();
-        cell.classList.add('wp-roster-cell--stacked');
-        cell.replaceChildren();
-        const dutyEl = document.createElement('span');
-        dutyEl.className = 'wp-roster-cell__duty';
-        dutyEl.textContent = duty;
-        const unitEl = document.createElement('span');
-        unitEl.className = 'wp-roster-cell__unit';
-        unitEl.textContent = unit;
-        cell.append(dutyEl, unitEl);
-
-        return;
-    }
-
-    cell.classList.remove('wp-roster-cell--stacked');
-    if (hadStack || cell.querySelector('.wp-roster-cell__duty')) {
-        cell.textContent = cellText(value);
-    }
-}
-
 function applyCellClasses(worksheet, payload) {
     if (!worksheet || typeof worksheet.getData !== 'function') {
         return;
@@ -244,7 +238,10 @@ function applyCellClasses(worksheet, payload) {
                 }
             });
             cell.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
-            paintCellDisplay(cell, value);
+            const split = splitDutyAndUnit(cellText(value).trim());
+            if (split && split[1]) {
+                cell.classList.add('wp-roster-cell--stacked');
+            }
             const worker = payload.workers?.[rowIndex];
             const parsed = parseRosterCell(value, types, catalogForWorker(worker, payload.units));
             const date = payload.dates?.[colIndex - 1];
@@ -284,7 +281,7 @@ function collectCells(worksheet, payload) {
             cells.push({
                 worker_id: worker.id,
                 date,
-                raw: cellText(raw),
+                raw: canonicalizeCellValue(raw),
             });
         });
     });
@@ -305,7 +302,7 @@ function buildData(payload) {
         const row = [worker.name];
         payload.dates.forEach((date) => {
             const key = `${worker.id}:${date}`;
-            row.push(payload.cells[key]?.display ?? '');
+            row.push(formatCellDisplay(payload.cells[key]?.display ?? ''));
         });
 
         return row;
@@ -402,12 +399,13 @@ export function bind(root, wire) {
                     return false;
                 }
                 if (!value.includes('-')) {
-                    return value.trim().toUpperCase();
+                    value = value.trim().toUpperCase();
                 }
 
-                return value;
+                return formatCellDisplay(value);
             },
-            onbeforepaste: (_instance, data) => pasteGrid(data).map((line) => line.slice(0, dayCount)),
+            onbeforepaste: (_instance, data) => pasteGrid(data)
+                .map((line) => line.slice(0, dayCount).map((value) => formatCellDisplay(value))),
             onafterchanges: (instance) => {
                 applyCellClasses(instance, payload);
             },

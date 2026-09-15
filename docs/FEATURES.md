@@ -736,8 +736,8 @@ Opslaan zonder weekends raakt za/zo niet. Maand toont altijd alle dagen.
   Afwezigheid: hele kalenderdag, geen uren, blokkeert werk die dag. Het uurrooster toont een
   codelegende (werk vs afwezigheid). Ongeldige cellen: rode rand.
 - **Plek (groep/unit):** optioneel in dezelfde cel: `D1/G1` of `07:00-12:00/G1` (spatie mag;
-  canonical `/`). In de grid: **groep onder de dienstcode**, kleiner lettertype (waarde blijft
-  `D1/G1` bij bewerken/opslaan). `units.roster_code` uniek per locatie. Snapshot op `planned_shifts`
+  canonical `/`). In de grid: **groep op de regel onder de dienstcode** (newline; iets kleiner
+  lettertype). Opslaan blijft `D1/G1`. `units.roster_code` uniek per locatie. Snapshot op `planned_shifts`
   (`unit_id`, `unit_code`, `unit_name`, `location_id`). Parser lost codes op; save eist
   `Worker::canClockAt`. Zelfde code op twee locaties → `ambiguous_unit` tot locatiefilter.
   Afwezigheid + groep ongeldig. Locatiefilter op het rooster. Mijn rooster toont snapshot-`unit_name`.

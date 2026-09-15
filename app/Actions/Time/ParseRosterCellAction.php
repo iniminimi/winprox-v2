@@ -57,8 +57,10 @@ class ParseRosterCellAction
      */
     private function splitDutyAndUnit(string $raw): ?array
     {
-        if (str_contains($raw, '/')) {
-            $parts = array_map('trim', explode('/', $raw, 2));
+        $normalized = str_replace(["\r\n", "\r", "\n"], '/', $raw);
+
+        if (str_contains($normalized, '/')) {
+            $parts = array_map('trim', explode('/', $normalized, 2));
             if (count($parts) !== 2 || $parts[0] === '' || $parts[1] === '' || str_contains($parts[1], '/')) {
                 return null;
             }
