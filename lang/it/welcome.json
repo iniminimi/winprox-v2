@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Monitoraggio del lavoro sul posto",
+    "meta_title": "WinProx — Il lavoro sul posto, ben organizzato",
     "social": {
-        "og_title": "WinProx — Monitoraggio del lavoro sul posto",
-        "og_description": "Chi c'è, cosa va fatto e cosa è fatto — monitoraggio semplice del lavoro sul posto, via QR, senza app."
+        "og_title": "WinProx — Il lavoro sul posto, ben organizzato",
+        "og_description": "Il lavoro nella Sua sede, semplicemente ben organizzato. Dalla segnalazione e pianificazione all'esecuzione e alla chiusura — via QR, senza app."
     },
     "login": "Accedi",
     "register": "Registrati",
@@ -20,8 +20,8 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Chi c'è. Cosa va fatto. Cosa è fatto.",
-        "subtitle": "Monitoraggio semplice del lavoro per chi è sul posto.",
+        "headline": "Il lavoro nella Sua sede, semplicemente ben organizzato.",
+        "subtitle": "Dalla segnalazione e pianificazione all'esecuzione e alla chiusura.",
         "flow": "Scansiona → Segnala → Lavora → Fatto",
         "cta_start": "Prova gratis",
         "cta_how": "Scopri come funziona"

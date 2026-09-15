@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Work tracking on site",
+    "meta_title": "WinProx — Work on site, properly organised",
     "social": {
-        "og_title": "WinProx — Work tracking on site",
-        "og_description": "Who is here, what needs doing and what is done — simple work tracking for people on site, via QR, no app."
+        "og_title": "WinProx — Work on site, properly organised",
+        "og_description": "Work on your site, simply well organised. From reporting and planning to execution and completion — via QR, no app."
     },
     "login": "Log in",
     "register": "Register",
@@ -20,8 +20,8 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Who is here. What needs doing. What is done.",
-        "subtitle": "Simple work tracking for people on site.",
+        "headline": "Work on your site, simply well organised.",
+        "subtitle": "From reporting and planning to execution and completion.",
         "flow": "Scan → Report → Work → Done",
         "cta_start": "Try for free",
         "cta_how": "See how it works"

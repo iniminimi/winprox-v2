@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Arbeitsnachverfolgung vor Ort",
+    "meta_title": "WinProx — Arbeit vor Ort, gut geregelt",
     "social": {
-        "og_title": "WinProx — Arbeitsnachverfolgung vor Ort",
-        "og_description": "Wer ist da, was ist zu tun und was ist erledigt — einfache Arbeitsnachverfolgung vor Ort, per QR, ohne App."
+        "og_title": "WinProx — Arbeit vor Ort, gut geregelt",
+        "og_description": "Die Arbeit an Ihrem Standort, einfach gut geregelt. Von Meldung und Planung bis Ausführung und Abschluss — per QR, ohne App."
     },
     "login": "Anmelden",
     "register": "Registrieren",
@@ -20,8 +20,8 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Wer ist da. Was ist zu tun. Was ist erledigt.",
-        "subtitle": "Einfache Arbeitsnachverfolgung für Teams vor Ort.",
+        "headline": "Die Arbeit an Ihrem Standort, einfach gut geregelt.",
+        "subtitle": "Von Meldung und Planung bis Ausführung und Abschluss.",
         "flow": "Scan → Melden → Arbeiten → Fertig",
         "cta_start": "Kostenlos testen",
         "cta_how": "So funktioniert es"

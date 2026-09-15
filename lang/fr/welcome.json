@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Suivi du travail sur site",
+    "meta_title": "WinProx — Le travail sur site, bien organisé",
     "social": {
-        "og_title": "WinProx — Suivi du travail sur site",
-        "og_description": "Qui est présent, que faut-il faire et qu'est-ce qui est terminé — suivi simple du travail sur site, via QR, sans app."
+        "og_title": "WinProx — Le travail sur site, bien organisé",
+        "og_description": "Le travail sur votre site, simplement bien organisé. Du signalement et de la planification à l'exécution et au bouclage — via QR, sans app."
     },
     "login": "Connexion",
     "register": "Inscription",
@@ -20,8 +20,8 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Qui est présent. Que faut-il faire. Qu'est-ce qui est terminé.",
-        "subtitle": "Suivi du travail simple pour les équipes sur site.",
+        "headline": "Le travail sur votre site, simplement bien organisé.",
+        "subtitle": "Du signalement et de la planification à l'exécution et au bouclage.",
         "flow": "Scan → Signaler → Travailler → Terminé",
         "cta_start": "Essai gratuit",
         "cta_how": "Voir comment ça marche"

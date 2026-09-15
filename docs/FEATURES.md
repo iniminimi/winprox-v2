@@ -1084,8 +1084,9 @@ App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
 ### 11.1 Structuur (minimaal — eerste gesprek)
 - **Nav:** WinProx-logo, **taal-pillen**, **Prijzen**, **Meer** (features, FAQ, about, docs, sectorvoorbeelden),
   **Inloggen**, **Gratis proberen**. Geen module-badges (Facility/Time/ESG/IoT) in de nav.
-- **Hero (één viewport):** WinProx · *Wie is er. Wat moet er gebeuren. Wat is klaar.* · ondertitel
-  werkopvolging op locatie · **Scan → Meld → Werk → Klaar** · CTA's **Gratis proberen** / **Bekijk hoe het werkt**.
+- **Hero (één viewport):** WinProx · *Het werk op uw locatie, gewoon goed geregeld.* ·
+  *Van melding en planning tot uitvoering en afhandeling.* · **Scan → Meld → Werk → Klaar** ·
+  CTA's **Gratis proberen** / **Bekijk hoe het werkt**.
 - **Video:** korte demo (`video/{locale}/issue_{locale}_01.mp4`) direct onder de hero.
 - **Footer:** productfiches, juridisch, contact.
 - **Facility, Time, ESG, IoT, CIAO** blijven in productfiches, pricing, sectorlandings en handleiding —

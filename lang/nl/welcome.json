@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Werkopvolging op locatie",
+    "meta_title": "WinProx — Werk op locatie, goed geregeld",
     "social": {
-        "og_title": "WinProx — Werkopvolging op locatie",
-        "og_description": "Wie is er, wat moet gebeuren en wat is klaar — eenvoudige werkopvolging voor mensen op locatie, via QR, zonder app."
+        "og_title": "WinProx — Werk op locatie, goed geregeld",
+        "og_description": "Het werk op uw locatie, gewoon goed geregeld. Van melding en planning tot uitvoering en afhandeling — via QR, zonder app."
     },
     "login": "Inloggen",
     "register": "Registreren",
@@ -20,8 +20,8 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Wie is er. Wat moet er gebeuren. Wat is klaar.",
-        "subtitle": "Eenvoudige werkopvolging voor mensen op locatie.",
+        "headline": "Het werk op uw locatie, gewoon goed geregeld.",
+        "subtitle": "Van melding en planning tot uitvoering en afhandeling.",
         "flow": "Scan → Meld → Werk → Klaar",
         "cta_start": "Gratis proberen",
         "cta_how": "Bekijk hoe het werkt"

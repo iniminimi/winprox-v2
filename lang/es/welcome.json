@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Seguimiento del trabajo in situ",
+    "meta_title": "WinProx — El trabajo in situ, bien organizado",
     "social": {
-        "og_title": "WinProx — Seguimiento del trabajo in situ",
-        "og_description": "Quién está, qué hay que hacer y qué está listo — seguimiento sencillo del trabajo in situ, vía QR, sin app."
+        "og_title": "WinProx — El trabajo in situ, bien organizado",
+        "og_description": "El trabajo en su ubicación, simplemente bien organizado. Del aviso y la planificación a la ejecución y el cierre — vía QR, sin app."
     },
     "login": "Iniciar sesión",
     "register": "Registrarse",
@@ -20,8 +20,8 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Quién está. Qué hay que hacer. Qué está listo.",
-        "subtitle": "Seguimiento sencillo del trabajo para personas in situ.",
+        "headline": "El trabajo en su ubicación, simplemente bien organizado.",
+        "subtitle": "Del aviso y la planificación a la ejecución y el cierre.",
         "flow": "Escanear → Informar → Trabajar → Listo",
         "cta_start": "Probar gratis",
         "cta_how": "Ver cómo funciona"

@@ -39,7 +39,7 @@ final class JsonLd
             'applicationCategory' => 'BusinessApplication',
             'operatingSystem' => 'Web',
             'url' => route('welcome', ['locale' => 'en'], absolute: true),
-            'description' => 'Simple work tracking for people on site: who is here, what needs doing and what is done — via QR in the browser, no app.',
+            'description' => 'Work on your site, simply well organised: from reporting and planning to execution and completion — via QR in the browser, no app.',
             'offers' => [
                 '@type' => 'AggregateOffer',
                 'url' => route('pricing', ['locale' => 'en'], absolute: true),
