@@ -1576,7 +1576,7 @@
                 },
                 {
                     "label": "Groups",
-                    "text": "First choose a <strong>location filter</strong>. Then tick <strong>groups</strong> (roster codes) and <strong>Ungrouped</strong>. Workers appear under section headers. Set the default group on the worker; the place in a cell (D1/G1) stays separate."
+                    "text": "First choose a <strong>location filter</strong> — you then only see workers assigned to that site (no floaters). Then tick <strong>groups</strong> (roster codes) and <strong>Ungrouped</strong>. Workers appear under section headers. Set the default group on the worker; the place in a cell (D1/G1) stays separate."
                 },
                 {
                     "label": "Save and publish",

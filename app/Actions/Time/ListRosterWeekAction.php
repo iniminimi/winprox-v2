@@ -346,10 +346,13 @@ class ListRosterWeekAction
         }
 
         if ($locationId !== null) {
-            $query->where(function ($q) use ($locationId) {
-                $q->whereHas('team', fn ($team) => $team->where('clocks_all_locations', true))
-                    ->orWhereHas('locations', fn ($locations) => $locations->where('locations.id', $locationId));
-            });
+            // Locatie-uurrooster = alleen toegewezen workers. Vlinders/invallers
+            // (lege locaties of clocks_all_locations) blijven inklokken overal, maar
+            // horen niet in dit gefilterde rooster.
+            $query->whereHas(
+                'locations',
+                fn ($locations) => $locations->where('locations.id', $locationId),
+            );
         }
 
         return $query

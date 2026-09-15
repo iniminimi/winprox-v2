@@ -1576,7 +1576,7 @@
                 },
                 {
                     "label": "Grupos",
-                    "text": "Elija primero un <strong>filtro de ubicación</strong>. Luego marque <strong>grupos</strong> (códigos de cuadrante) y <strong>Sin grupo</strong>. Los ejecutores aparecen bajo encabezados de sección. El grupo predeterminado se define en el ejecutor; el lugar en una celda (D1/G1) sigue aparte."
+                    "text": "Elija primero un <strong>filtro de ubicación</strong>: solo verá ejecutores asignados a esa sede (sin relevos). Luego marque <strong>grupos</strong> (códigos de cuadrante) y <strong>Sin grupo</strong>. Los ejecutores aparecen bajo encabezados de sección. El grupo predeterminado se define en el ejecutor; el lugar en una celda (D1/G1) sigue aparte."
                 },
                 {
                     "label": "Guardar y publicar",

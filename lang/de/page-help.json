@@ -1576,7 +1576,7 @@
                 },
                 {
                     "label": "Gruppen",
-                    "text": "Wählen Sie zuerst einen <strong>Standortfilter</strong>. Danach können Sie <strong>Gruppen</strong> (Dienstplancodes) und <strong>Ohne Gruppe</strong> ankreuzen. Ausführende stehen unter Abschnittsüberschriften. Die Standardgruppe setzen Sie beim Ausführenden; der Ort in einer Zelle (D1/G1) bleibt getrennt."
+                    "text": "Wählen Sie zuerst einen <strong>Standortfilter</strong> — dann sehen Sie nur Ausführende, die diesem Standort zugewiesen sind (keine Springer). Danach können Sie <strong>Gruppen</strong> (Dienstplancodes) und <strong>Ohne Gruppe</strong> ankreuzen. Ausführende stehen unter Abschnittsüberschriften. Die Standardgruppe setzen Sie beim Ausführenden; der Ort in einer Zelle (D1/G1) bleibt getrennt."
                 },
                 {
                     "label": "Speichern und veröffentlichen",

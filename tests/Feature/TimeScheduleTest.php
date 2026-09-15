@@ -807,7 +807,7 @@ it('filtert uitvoerders op locatie in het uurrooster', function () {
         (int) $siteA->id,
     );
     $floaterIds = array_map(fn ($row) => (int) $row['id'], $withFloater->workers);
-    expect($floaterIds)->toContain((int) $floater->id)
+    expect($floaterIds)->not->toContain((int) $floater->id)
         ->and($floaterIds)->toContain((int) $home->id)
         ->and($floaterIds)->not->toContain((int) $worker->id);
 });

@@ -1576,7 +1576,7 @@
                 },
                 {
                     "label": "Gruppi",
-                    "text": "Scegli prima un <strong>filtro sede</strong>. Poi spunta i <strong>gruppi</strong> (codici turno) e <strong>Senza gruppo</strong>. Gli esecutori compaiono sotto intestazioni di sezione. Il gruppo predefinito si imposta sull’esecutore; il posto in una cella (D1/G1) resta separato."
+                    "text": "Scegli prima un <strong>filtro sede</strong>: vedi solo gli esecutori assegnati a quella sede (niente sostituti). Poi spunta i <strong>gruppi</strong> (codici turno) e <strong>Senza gruppo</strong>. Gli esecutori compaiono sotto intestazioni di sezione. Il gruppo predefinito si imposta sull’esecutore; il posto in una cella (D1/G1) resta separato."
                 },
                 {
                     "label": "Salva e pubblica",

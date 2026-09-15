@@ -1576,7 +1576,7 @@
                 },
                 {
                     "label": "Groepen",
-                    "text": "Kies eerst een <strong>locatiefilter</strong>. Daarna kunt u <strong>groepen</strong> (roostercodes) aanvinken en <strong>Zonder groep</strong>. Uitvoerders staan onder sectiekoppen. De standaardgroep stelt u in bij de uitvoerder; de plek in een cel (D1/G1) blijft apart."
+                    "text": "Kies eerst een <strong>locatiefilter</strong> — dan ziet u alleen uitvoerders die aan die vestiging zijn toegewezen (geen vlinders). Daarna kunt u <strong>groepen</strong> (roostercodes) aanvinken en <strong>Zonder groep</strong>. Uitvoerders staan onder sectiekoppen. De standaardgroep stelt u in bij de uitvoerder; de plek in een cel (D1/G1) blijft apart."
                 },
                 {
                     "label": "Opslaan en publiceren",

@@ -1584,7 +1584,7 @@
                 },
                 {
                     "label": "Groupes",
-                    "text": "Choisissez d’abord un <strong>filtre de site</strong>. Cochez ensuite les <strong>groupes</strong> (codes planning) et <strong>Sans groupe</strong>. Les exécutants apparaissent sous des en-têtes de section. Le groupe par défaut se règle sur l’exécutant ; le lieu dans une cellule (D1/G1) reste séparé."
+                    "text": "Choisissez d’abord un <strong>filtre de site</strong> — vous ne voyez alors que les exécutants affectés à ce site (pas les volants). Cochez ensuite les <strong>groupes</strong> (codes planning) et <strong>Sans groupe</strong>. Les exécutants apparaissent sous des en-têtes de section. Le groupe par défaut se règle sur l’exécutant ; le lieu dans une cellule (D1/G1) reste séparé."
                 },
                 {
                     "label": "Enregistrer et publier",
