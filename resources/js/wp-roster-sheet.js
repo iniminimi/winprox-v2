@@ -285,43 +285,6 @@ function rosterTd(cell) {
     return cell.closest?.('td') ?? cell;
 }
 
-/**
- * Groep kleiner onder de code. Eén wrapper, idempotent — geen flex op de TD
- * (dat gaf eerder herhaalde stacks in Jspreadsheet).
- */
-function paintStackedCell(td, value) {
-    const text = cellText(value).trim();
-    const split = text === '' ? null : splitDutyAndUnit(text);
-    const key = split && split[1] ? `${split[0]}/${split[1].toUpperCase()}` : '';
-
-    if (!key) {
-        if (td.dataset.wpStack) {
-            delete td.dataset.wpStack;
-            td.textContent = text;
-        }
-
-        return false;
-    }
-
-    if (td.dataset.wpStack === key && td.querySelector(':scope > .wp-roster-cell__stack')) {
-        return true;
-    }
-
-    const wrap = document.createElement('span');
-    wrap.className = 'wp-roster-cell__stack';
-    const dutyEl = document.createElement('span');
-    dutyEl.className = 'wp-roster-cell__duty';
-    dutyEl.textContent = split[0];
-    const unitEl = document.createElement('span');
-    unitEl.className = 'wp-roster-cell__unit';
-    unitEl.textContent = split[1].toUpperCase();
-    wrap.append(dutyEl, unitEl);
-    td.replaceChildren(wrap);
-    td.dataset.wpStack = key;
-
-    return true;
-}
-
 function applyCellClasses(worksheet, payload) {
     if (!worksheet || typeof worksheet.getData !== 'function') {
         return;
@@ -358,7 +321,10 @@ function applyCellClasses(worksheet, payload) {
             cell.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
             cell.classList.toggle('wp-roster-col--today', todayCols.has(colIndex));
             cell.classList.toggle('wp-roster-col--week-start', weekStartCols.has(colIndex));
-            if (paintStackedCell(cell, value)) {
+            // Geen DOM-injectie in cellen: Jspreadsheet breekt na de eerste edit.
+            // Groep onder dienst via newline + CSS (white-space: pre-line).
+            const split = splitDutyAndUnit(cellText(value).trim());
+            if (split && split[1]) {
                 cell.classList.add('wp-roster-cell--stacked');
             }
             const rowDef = gridRowDefs(payload)[rowIndex];
@@ -487,7 +453,7 @@ function rowTitleOptions(payload) {
     return rows;
 }
 
-function applySectionRowStyles(worksheet, payload) {
+function applySectionRowStyles(worksheet, payload, { lockSections = false } = {}) {
     const dayCount = payload.dates?.length ?? 0;
     let personNo = 0;
     gridRowDefs(payload).forEach((row, rowIndex) => {
@@ -503,10 +469,15 @@ function applySectionRowStyles(worksheet, payload) {
             if (indexTd) {
                 indexTd.classList.toggle('wp-roster-row--section', isSection);
                 if (isSection) {
-                    indexTd.textContent = '\u00a0';
+                    if (indexTd.textContent !== '\u00a0') {
+                        indexTd.textContent = '\u00a0';
+                    }
                 } else {
                     personNo += 1;
-                    indexTd.textContent = String(personNo);
+                    const label = String(personNo);
+                    if (indexTd.textContent !== label) {
+                        indexTd.textContent = label;
+                    }
                     indexTd.classList.remove('wp-roster-row--section');
                 }
             }
@@ -519,7 +490,7 @@ function applySectionRowStyles(worksheet, payload) {
                 continue;
             }
             cell.classList.toggle('wp-roster-row--section', isSection);
-            if (isSection && typeof worksheet.setReadOnly === 'function') {
+            if (lockSections && isSection && typeof worksheet.setReadOnly === 'function') {
                 worksheet.setReadOnly(colIndex, rowIndex, true);
             }
         }
@@ -606,9 +577,9 @@ export function bind(root, wire) {
             ]];
         }
 
-        const paint = (instance) => {
+        const paint = (instance, { lockSections = false } = {}) => {
             applyCellClasses(instance, payload);
-            applySectionRowStyles(instance, payload);
+            applySectionRowStyles(instance, payload, { lockSections });
         };
 
         const instances = jspreadsheet(grid, {
@@ -635,12 +606,12 @@ export function bind(root, wire) {
                 paint(instance);
             },
             onload: (instance) => {
-                paint(instance);
+                paint(instance, { lockSections: true });
             },
         });
 
         worksheet = Array.isArray(instances) ? instances[0] : instances;
-        paint(worksheet);
+        paint(worksheet, { lockSections: true });
         requestAnimationFrame(() => {
             if (worksheet) {
                 paint(worksheet);
