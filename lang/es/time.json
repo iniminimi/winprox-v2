@@ -10,7 +10,8 @@
         "shifts": "Horas",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
-        "schedule": "Horario"
+        "schedule": "Horario",
+        "shift_types": "Tipos de turno"
     },
     "presence": {
         "title": "Presencia",
@@ -386,7 +387,6 @@
             "copy_conflict": "La semana de destino ya tiene turnos. Copia rechazada."
         },
         "types": {
-            "manage": "Tipos de turno",
             "add": "Añadir tipo",
             "edit": "Editar tipo",
             "code": "Código",
@@ -411,10 +411,19 @@
                 "sand": "Arena",
                 "rose": "Rojo",
                 "slate": "Gris"
-            },
-            "choose": "Elegir un tipo de turno",
-            "inactive_suffix": "(inactivo)"
+            }
         },
-        "empty_workers": "No hay operarios en esta semana. Añádalos en Personas → Equipos."
+        "empty_workers": "No hay operarios en esta semana. Añádalos en Personas → Equipos.",
+        "legend": "Códigos",
+        "legend_empty": "Aún no hay códigos activos."
+    },
+    "shift_types": {
+        "title": "Tipos de turno",
+        "subtitle": "Códigos del horario. Suele configurarse una vez.",
+        "empty": "Aún no hay tipos de turno. Añada uno: suele ser una sola vez.",
+        "status": {
+            "active": "Activo",
+            "inactive": "Inactivo"
+        }
     }
 }

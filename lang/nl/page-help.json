@@ -1559,7 +1559,7 @@
             "actions": [
                 {
                     "label": "Codes en vrije tijden",
-                    "text": "Typ een <strong>code</strong> (bv. V) of een tijd <strong>07:00-15:00</strong>. Tab, Enter en pijltjes navigeren; kopiëren/plakken werkt over meerdere cellen. Ongeldige cellen lichten op — corrigeer ze vóór opslaan."
+                    "text": "Typ een <strong>code</strong> uit de legende of een tijd <strong>07:00-15:00</strong>. Ongeldige cellen hebben een <strong>rode rand</strong> en een uitroepteken — corrigeer die vóór opslaan."
                 },
                 {
                     "label": "Opslaan en publiceren",
@@ -1571,7 +1571,20 @@
                 },
                 {
                     "label": "Shiftypes",
-                    "text": "In de lijst <strong>Shiftypes</strong> kiest u een code om te bewerken of te deactiveren. <strong>Shiftype toevoegen</strong> opent het formulier (start, einde, pauze, kleur). Neutraal = geen achtergrondkleur in het rooster. Een latere wijziging aan een type verandert bestaande cellen niet."
+                    "text": "De <strong>legende</strong> toont de actieve codes. Types zelf beheert u onder Time → <strong>Shiftypes</strong> (meestal één keer)."
+                }
+            ]
+        },
+        "time.shift_types": {
+            "title": "Hulp — Shiftypes",
+            "actions": [
+                {
+                    "label": "Toevoegen",
+                    "text": "Een shiftype is een <strong>code</strong> met start, einde, pauze en kleur. Dat stelt u meestal één keer in. Bestaande cellen in het uurrooster wijzigen niet als u later een type aanpast."
+                },
+                {
+                    "label": "Deactiveren",
+                    "text": "Een inactieve code kunt u niet meer in het rooster typen. Bestaande diensten blijven staan als vrije tijd."
                 }
             ]
         }

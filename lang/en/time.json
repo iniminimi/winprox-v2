@@ -10,7 +10,8 @@
         "shifts": "Hours",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
-        "schedule": "Roster"
+        "schedule": "Roster",
+        "shift_types": "Shift types"
     },
     "presence": {
         "title": "Presence",
@@ -386,7 +387,6 @@
             "copy_conflict": "The target week already has shifts. Copy refused."
         },
         "types": {
-            "manage": "Shift types",
             "add": "Add shift type",
             "edit": "Edit shift type",
             "code": "Code",
@@ -411,10 +411,19 @@
                 "sand": "Sand",
                 "rose": "Rose",
                 "slate": "Grey"
-            },
-            "choose": "Choose a shift type",
-            "inactive_suffix": "(inactive)"
+            }
         },
-        "empty_workers": "No workers in this week. Add workers under People → Teams."
+        "empty_workers": "No workers in this week. Add workers under People → Teams.",
+        "legend": "Codes",
+        "legend_empty": "No active codes yet."
+    },
+    "shift_types": {
+        "title": "Shift types",
+        "subtitle": "Codes for the roster. Usually set once.",
+        "empty": "No shift types yet. Add one — this is usually a one-time setup.",
+        "status": {
+            "active": "Active",
+            "inactive": "Inactive"
+        }
     }
 }

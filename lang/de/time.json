@@ -10,7 +10,8 @@
         "shifts": "Stunden",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
-        "schedule": "Dienstplan"
+        "schedule": "Dienstplan",
+        "shift_types": "Schichttypen"
     },
     "presence": {
         "title": "Anwesenheit",
@@ -386,7 +387,6 @@
             "copy_conflict": "Die Zielwoche hat bereits Dienste. Kopie abgelehnt."
         },
         "types": {
-            "manage": "Schichttypen",
             "add": "Schichttyp hinzufügen",
             "edit": "Schichttyp bearbeiten",
             "code": "Code",
@@ -411,10 +411,19 @@
                 "sand": "Sand",
                 "rose": "Rot",
                 "slate": "Grau"
-            },
-            "choose": "Schichttyp wählen",
-            "inactive_suffix": "(inaktiv)"
+            }
         },
-        "empty_workers": "Keine Ausführenden in dieser Woche. Legen Sie sie unter Personen → Teams an."
+        "empty_workers": "Keine Ausführenden in dieser Woche. Legen Sie sie unter Personen → Teams an.",
+        "legend": "Codes",
+        "legend_empty": "Noch keine aktiven Codes."
+    },
+    "shift_types": {
+        "title": "Schichttypen",
+        "subtitle": "Codes für den Dienstplan. Meist einmal einrichten.",
+        "empty": "Noch keine Schichttypen. Fügen Sie einen hinzu — das ist meist einmalig.",
+        "status": {
+            "active": "Aktiv",
+            "inactive": "Inaktiv"
+        }
     }
 }

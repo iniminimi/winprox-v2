@@ -15,6 +15,7 @@ use App\Enums\RosterCellKind;
 use App\Enums\ShiftTypeColor;
 use App\Exceptions\RosterValidationException;
 use App\Livewire\Time\RosterIndex;
+use App\Livewire\Time\ShiftTypesIndex;
 use App\Models\InternalTeam;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
@@ -255,12 +256,31 @@ it('opent het uurrooster voor een admin', function () {
         ->get(route('time.schedule.index'))
         ->assertOk()
         ->assertSee('wp-roster-sheet', false)
-        ->assertSee('id="schedule-type"', false)
-        ->assertDontSee('wp-roster-type-chip', false);
+        ->assertSee('data-wp-roster-legend', false)
+        ->assertDontSee('id="schedule-type"', false);
+
+    $this->actingAs($admin)
+        ->get(route('time.shift-types.index'))
+        ->assertOk()
+        ->assertSee(__('time.shift_types.title'), false);
 
     Livewire::actingAs($admin)
         ->test(RosterIndex::class)
         ->assertOk();
+
+    Livewire::actingAs($admin)
+        ->test(ShiftTypesIndex::class)
+        ->call('openCreate')
+        ->set('typeCode', 'VM')
+        ->set('typeLabel', 'Voormiddag')
+        ->set('typeStart', '07:00')
+        ->set('typeEnd', '15:00')
+        ->set('typeBreak', 30)
+        ->set('typeColor', 'emerald')
+        ->call('save')
+        ->assertHasNoErrors();
+
+    expect(ShiftType::query()->where('tenant_id', $tenant->id)->where('code', 'VM')->exists())->toBeTrue();
 });
 
 it('slaat een week op via de API', function () {

@@ -1559,7 +1559,7 @@
             "actions": [
                 {
                     "label": "Codici e orari liberi",
-                    "text": "Digitare un <strong>codice</strong> (es. V) o un orario <strong>07:00-15:00</strong>. Tab, Invio e frecce per navigare; copia/incolla su più celle. Le celle non valide sono evidenziate."
+                    "text": "Digita un <strong>codice</strong> della legenda o un orario <strong>07:00-15:00</strong>. Le celle non valide hanno un <strong>bordo rosso</strong> e un punto esclamativo."
                 },
                 {
                     "label": "Salva e pubblica",
@@ -1571,7 +1571,20 @@
                 },
                 {
                     "label": "Tipi di turno",
-                    "text": "Nell’elenco <strong>Tipi di turno</strong> scegli un codice da modificare o disattivare. <strong>Aggiungi tipo di turno</strong> apre il modulo (inizio, fine, pausa, colore). Neutro = nessuno sfondo nel turno. Una modifica successiva al tipo non cambia le celle esistenti."
+                    "text": "La <strong>legenda</strong> mostra i codici attivi. I tipi si gestiscono in Time → <strong>Tipi di turno</strong> (di solito una volta)."
+                }
+            ]
+        },
+        "time.shift_types": {
+            "title": "Guida — Tipi di turno",
+            "actions": [
+                {
+                    "label": "Aggiungi",
+                    "text": "Un tipo di turno è un <strong>codice</strong> con inizio, fine, pausa e colore. Di solito si imposta una volta. Le celle esistenti non cambiano se in seguito modifichi il tipo."
+                },
+                {
+                    "label": "Disattiva",
+                    "text": "Un codice inattivo non si può più digitare nel turno. I servizi esistenti restano come orario libero."
                 }
             ]
         }

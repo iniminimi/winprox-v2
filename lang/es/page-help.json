@@ -1559,7 +1559,7 @@
             "actions": [
                 {
                     "label": "Códigos y horas libres",
-                    "text": "Escriba un <strong>código</strong> (p. ej. V) o una hora <strong>07:00-15:00</strong>. Tab, Intro y flechas para navegar; copiar/pegar en varias celdas. Las celdas no válidas se destacan."
+                    "text": "Escriba un <strong>código</strong> de la leyenda o una hora <strong>07:00-15:00</strong>. Las celdas no válidas tienen <strong>borde rojo</strong> y un signo de exclamación."
                 },
                 {
                     "label": "Guardar y publicar",
@@ -1571,7 +1571,20 @@
                 },
                 {
                     "label": "Tipos de turno",
-                    "text": "En la lista <strong>Tipos de turno</strong> elija un código para editar o desactivar. <strong>Añadir tipo de turno</strong> abre el formulario (inicio, fin, pausa, color). Neutro = sin color de fondo en el horario. Un cambio posterior del tipo no altera las celdas existentes."
+                    "text": "La <strong>leyenda</strong> muestra los códigos activos. Los tipos se gestionan en Time → <strong>Tipos de turno</strong> (suele ser una vez)."
+                }
+            ]
+        },
+        "time.shift_types": {
+            "title": "Ayuda — Tipos de turno",
+            "actions": [
+                {
+                    "label": "Añadir",
+                    "text": "Un tipo de turno es un <strong>código</strong> con inicio, fin, pausa y color. Suele configurarse una vez. Las celdas existentes no cambian si edita el tipo después."
+                },
+                {
+                    "label": "Desactivar",
+                    "text": "Un código inactivo ya no se puede escribir en el horario. Los turnos existentes siguen como hora libre."
                 }
             ]
         }

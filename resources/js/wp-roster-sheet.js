@@ -61,8 +61,15 @@ function applyCellClasses(worksheet, payload) {
             const parsed = parseRosterCell(value, types);
             if (parsed.kind === 'invalid') {
                 cell.classList.add('wp-roster-cell--invalid');
+                cell.title = payload.invalid_message || '';
+                cell.setAttribute('aria-invalid', 'true');
             } else if (parsed.color && parsed.color !== 'none') {
                 cell.classList.add(`wp-roster-cell--${parsed.color}`);
+                cell.removeAttribute('title');
+                cell.removeAttribute('aria-invalid');
+            } else {
+                cell.removeAttribute('title');
+                cell.removeAttribute('aria-invalid');
             }
         });
     });

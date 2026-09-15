@@ -35,6 +35,10 @@ it('weigert time-beheerschermen zonder time-module', function () {
     $this->actingAs($admin)
         ->get(route('time.schedule.index'))
         ->assertForbidden();
+
+    $this->actingAs($admin)
+        ->get(route('time.shift-types.index'))
+        ->assertForbidden();
 });
 
 it('laat time-beheerschermen toe met time-module', function () {
@@ -47,6 +51,10 @@ it('laat time-beheerschermen toe met time-module', function () {
 
     $this->actingAs($admin)
         ->get(route('time.schedule.index'))
+        ->assertOk();
+
+    $this->actingAs($admin)
+        ->get(route('time.shift-types.index'))
         ->assertOk();
 });
 

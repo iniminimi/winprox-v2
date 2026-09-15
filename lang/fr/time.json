@@ -10,7 +10,8 @@
         "shifts": "Heures",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
-        "schedule": "Horaire"
+        "schedule": "Horaire",
+        "shift_types": "Types de service"
     },
     "presence": {
         "title": "Présence",
@@ -386,7 +387,6 @@
             "copy_conflict": "La semaine cible a déjà des services. Copie refusée."
         },
         "types": {
-            "manage": "Types de service",
             "add": "Ajouter un type",
             "edit": "Modifier le type",
             "code": "Code",
@@ -411,10 +411,19 @@
                 "sand": "Sable",
                 "rose": "Rouge",
                 "slate": "Gris"
-            },
-            "choose": "Choisir un type de service",
-            "inactive_suffix": "(inactif)"
+            }
         },
-        "empty_workers": "Aucun exécutant pour cette semaine. Ajoutez-les sous Personnes → Équipes."
+        "empty_workers": "Aucun exécutant pour cette semaine. Ajoutez-les sous Personnes → Équipes.",
+        "legend": "Codes",
+        "legend_empty": "Pas encore de codes actifs."
+    },
+    "shift_types": {
+        "title": "Types de service",
+        "subtitle": "Codes pour l’horaire. En général une seule fois.",
+        "empty": "Aucun type de service. Ajoutez-en un — c’est en général unique.",
+        "status": {
+            "active": "Actif",
+            "inactive": "Inactif"
+        }
     }
 }

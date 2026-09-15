@@ -108,6 +108,7 @@ use App\Livewire\Time\ClockPointsIndex;
 use App\Livewire\Time\PresenceIndex;
 use App\Livewire\Time\PresenceSubmissionsIndex;
 use App\Livewire\Time\RosterIndex;
+use App\Livewire\Time\ShiftTypesIndex;
 use App\Livewire\Time\ShiftsIndex;
 use App\Support\Platform\SupportTenantContext;
 use App\Support\Marketing\StatelessPublicWeb;
@@ -401,6 +402,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/iot', IotIndex::class)->name('iot.index');
         Route::get('/time/presence', PresenceIndex::class)->name('time.presence.index');
         Route::get('/time/schedule', RosterIndex::class)->name('time.schedule.index');
+        Route::get('/time/shift-types', ShiftTypesIndex::class)->name('time.shift-types.index');
         Route::get('/time/alarms', AlarmsIndex::class)->name('time.alarms.index');
         Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');
         Route::get('/time/ciao', PresenceSubmissionsIndex::class)->name('time.ciao.index');

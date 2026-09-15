@@ -10,7 +10,8 @@
         "shifts": "Uren",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
-        "schedule": "Uurrooster"
+        "schedule": "Uurrooster",
+        "shift_types": "Shiftypes"
     },
     "presence": {
         "title": "Aanwezigheid",
@@ -386,7 +387,6 @@
             "copy_conflict": "De doelweek heeft al diensten. Kopie geweigerd."
         },
         "types": {
-            "manage": "Shiftypes",
             "add": "Shiftype toevoegen",
             "edit": "Shiftype bewerken",
             "code": "Code",
@@ -411,10 +411,19 @@
                 "sand": "Zand",
                 "rose": "Rood",
                 "slate": "Grijs"
-            },
-            "choose": "Kies een shiftype",
-            "inactive_suffix": "(inactief)"
+            }
         },
-        "empty_workers": "Geen uitvoerders in deze week. Voeg uitvoerders toe onder Personen → Teams."
+        "empty_workers": "Geen uitvoerders in deze week. Voeg uitvoerders toe onder Personen → Teams.",
+        "legend": "Codes",
+        "legend_empty": "Nog geen actieve codes."
+    },
+    "shift_types": {
+        "title": "Shiftypes",
+        "subtitle": "Codes voor het uurrooster. Meestal één keer instellen.",
+        "empty": "Nog geen shiftypes. Voeg er één toe — dat doe je meestal één keer.",
+        "status": {
+            "active": "Actief",
+            "inactive": "Inactief"
+        }
     }
 }

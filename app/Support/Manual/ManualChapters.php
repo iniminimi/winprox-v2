@@ -32,6 +32,7 @@ final class ManualChapters
         'iot.index',
         'time.presence',
         'time.schedule',
+        'time.shift_types',
         'time.shifts',
         'time.clock_points',
         'settings',

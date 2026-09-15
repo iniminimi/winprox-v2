@@ -73,7 +73,15 @@ return [
         ],
         [
             'patterns' => [
-                'uurrooster', 'dienstplan', 'shift types', 'shiftypes', 'planned shift',
+                'shift types', 'shiftypes', 'shiftype', 'schichttyp', 'types de service',
+                'tipos de turno', 'tipi di turno',
+            ],
+            'page' => 'time.shift_types',
+            'prefer' => ['shiftype', 'shift types', 'schichttyp'],
+        ],
+        [
+            'patterns' => [
+                'uurrooster', 'dienstplan', 'planned shift',
                 'horaire', 'roster', 'orario', 'horario',
             ],
             'page' => 'time.schedule',

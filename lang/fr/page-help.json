@@ -1567,7 +1567,7 @@
             "actions": [
                 {
                     "label": "Codes et heures libres",
-                    "text": "Saisissez un <strong>code</strong> (ex. V) ou une heure <strong>07:00-15:00</strong>. Tab, Entrée et flèches pour naviguer ; copier/coller sur plusieurs cellules. Les cellules invalides sont mises en évidence."
+                    "text": "Saisissez un <strong>code</strong> de la légende ou une heure <strong>07:00-15:00</strong>. Les cellules invalides ont un <strong>bord rouge</strong> et un point d’exclamation."
                 },
                 {
                     "label": "Enregistrer et publier",
@@ -1579,7 +1579,20 @@
                 },
                 {
                     "label": "Types de service",
-                    "text": "Dans la liste <strong>Types de service</strong>, choisissez un code à modifier ou désactiver. <strong>Ajouter un type</strong> ouvre le formulaire (début, fin, pause, couleur). Neutre = aucune couleur de fond dans l’horaire. Une modification ultérieure du type ne change pas les cellules existantes."
+                    "text": "La <strong>légende</strong> montre les codes actifs. Les types se gèrent sous Time → <strong>Types de service</strong> (en général une fois)."
+                }
+            ]
+        },
+        "time.shift_types": {
+            "title": "Aide — Types de service",
+            "actions": [
+                {
+                    "label": "Ajouter",
+                    "text": "Un type est un <strong>code</strong> avec début, fin, pause et couleur. En général une seule fois. Les cellules existantes ne changent pas si vous modifiez un type plus tard."
+                },
+                {
+                    "label": "Désactiver",
+                    "text": "Un code inactif ne peut plus être saisi dans l’horaire. Les services existants restent en heures libres."
                 }
             ]
         }

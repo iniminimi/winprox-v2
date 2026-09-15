@@ -10,7 +10,8 @@
         "shifts": "Ore",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
-        "schedule": "Turni"
+        "schedule": "Turni",
+        "shift_types": "Tipi di turno"
     },
     "presence": {
         "title": "Presenza",
@@ -386,7 +387,6 @@
             "copy_conflict": "La settimana di destinazione ha già turni. Copia rifiutata."
         },
         "types": {
-            "manage": "Tipi di turno",
             "add": "Aggiungi tipo",
             "edit": "Modifica tipo",
             "code": "Codice",
@@ -411,10 +411,19 @@
                 "sand": "Sabbia",
                 "rose": "Rosso",
                 "slate": "Grigio"
-            },
-            "choose": "Scegli un tipo di turno",
-            "inactive_suffix": "(inattivo)"
+            }
         },
-        "empty_workers": "Nessun esecutore in questa settimana. Aggiungili in Persone → Team."
+        "empty_workers": "Nessun esecutore in questa settimana. Aggiungili in Persone → Team.",
+        "legend": "Codici",
+        "legend_empty": "Nessun codice attivo."
+    },
+    "shift_types": {
+        "title": "Tipi di turno",
+        "subtitle": "Codici per i turni. Di solito si impostano una volta.",
+        "empty": "Nessun tipo di turno. Aggiungine uno: di solito è una tantum.",
+        "status": {
+            "active": "Attivo",
+            "inactive": "Inattivo"
+        }
     }
 }

@@ -1559,7 +1559,7 @@
             "actions": [
                 {
                     "label": "Codes and free times",
-                    "text": "Type a <strong>code</strong> (e.g. V) or a time <strong>07:00-15:00</strong>. Tab, Enter and arrows navigate; copy/paste works across cells. Invalid cells are highlighted — fix them before saving."
+                    "text": "Type a <strong>code</strong> from the legend or a time <strong>07:00-15:00</strong>. Invalid cells have a <strong>red border</strong> and an exclamation mark — fix them before saving."
                 },
                 {
                     "label": "Save and publish",
@@ -1571,7 +1571,20 @@
                 },
                 {
                     "label": "Shift types",
-                    "text": "Use the <strong>Shift types</strong> list to pick a code to edit or deactivate. <strong>Add shift type</strong> opens the form (start, end, break, colour). Neutral = no background colour on the roster. Changing a type later does not update existing cells."
+                    "text": "The <strong>legend</strong> shows active codes. Manage types under Time → <strong>Shift types</strong> (usually once)."
+                }
+            ]
+        },
+        "time.shift_types": {
+            "title": "Help — Shift types",
+            "actions": [
+                {
+                    "label": "Add",
+                    "text": "A shift type is a <strong>code</strong> with start, end, break and colour. This is usually set once. Existing roster cells do not change if you edit a type later."
+                },
+                {
+                    "label": "Deactivate",
+                    "text": "An inactive code can no longer be typed on the roster. Existing shifts remain as free time."
                 }
             ]
         }

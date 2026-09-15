@@ -17,6 +17,9 @@
     <a href="{{ route('time.schedule.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.schedule.*') ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.nav.schedule') }}
     </a>
+    <a href="{{ route('time.shift-types.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.shift-types.*') ? 'btn--primary' : 'btn--surface'])>
+        {{ __('time.nav.shift_types') }}
+    </a>
     <a href="{{ route('time.alarms.index') }}" @class(['btn', 'btn--sm', 'wp-time-nav__alarms', request()->routeIs('time.alarms.*') ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.nav.alarms') }}
         @if (($alarmCount ?? 0) > 0)

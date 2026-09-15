@@ -321,8 +321,8 @@
             "slug": "time_schedule",
             "type": "text",
             "title": "Che cos’è il turno pianificato?",
-            "body": "In Time → Turni pianifichi i servizi per esecutore: digita un codice (tipo turno) o un orario libero come 07:00-15:00. Salva conserva la settimana visibile; pubblica la segna come pianificata. La pubblicazione non invia nulla all’ONSS: la timbratrice resta il tempo reale. Copiare una settimana è tutto o niente: se la settimana di destinazione ha già turni, la copia è rifiutata. I turni notturni (fine precedente o uguale all’inizio) non sono ammessi.",
-            "summary": "Time → Turni: codici o orari liberi al giorno; pubblicare non è CIAO/ONSS; copia tutto o niente."
+            "body": "In Time → Turni pianifichi i servizi per esecutore: digita un codice (tipo turno) o un orario libero come 07:00-15:00. I tipi si impostano in Time → Tipi di turno (di solito una volta); il foglio mostra una legenda. Le celle non valide hanno un bordo rosso. Salva conserva la settimana visibile; pubblica la segna come pianificata. La pubblicazione non invia nulla all’ONSS: la timbratrice resta il tempo reale. Copiare una settimana è tutto o niente: se la settimana di destinazione ha già turni, la copia è rifiutata. I turni notturni (fine precedente o uguale all’inizio) non sono ammessi.",
+            "summary": "Time → Turni: codici o orari liberi; tipi in Tipi di turno; pubblicare non è CIAO/ONSS."
         }
     }
 }

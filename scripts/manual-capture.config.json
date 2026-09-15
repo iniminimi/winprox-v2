@@ -168,6 +168,14 @@
             "optional": true
         },
         {
+            "id": "time-shift-types",
+            "path": "/time/shift-types",
+            "selector": "[data-manual-capture=\"time-shift-types\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "optional": true
+        },
+        {
             "id": "time-alarms",
             "path": "/time/alarms",
             "selector": "[data-manual-capture=\"time-alarms\"]",

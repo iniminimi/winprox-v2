@@ -1559,7 +1559,7 @@
             "actions": [
                 {
                     "label": "Codes und freie Zeiten",
-                    "text": "Geben Sie einen <strong>Code</strong> (z. B. V) oder eine Zeit <strong>07:00-15:00</strong> ein. Tab, Enter und Pfeile navigieren; Kopieren/Einfügen über mehrere Zellen. Ungültige Zellen werden markiert."
+                    "text": "Geben Sie einen <strong>Code</strong> aus der Legende oder eine Zeit <strong>07:00-15:00</strong> ein. Ungültige Zellen haben einen <strong>roten Rand</strong> und ein Ausrufezeichen."
                 },
                 {
                     "label": "Speichern und veröffentlichen",
@@ -1571,7 +1571,20 @@
                 },
                 {
                     "label": "Schichttypen",
-                    "text": "In der Liste <strong>Schichttypen</strong> wählen Sie einen Code zum Bearbeiten oder Deaktivieren. <strong>Schichttyp hinzufügen</strong> öffnet das Formular (Start, Ende, Pause, Farbe). Neutral = keine Hintergrundfarbe im Plan. Eine spätere Änderung am Typ ändert bestehende Zellen nicht."
+                    "text": "Die <strong>Legende</strong> zeigt die aktiven Codes. Typen verwalten Sie unter Time → <strong>Schichttypen</strong> (meist einmal)."
+                }
+            ]
+        },
+        "time.shift_types": {
+            "title": "Hilfe — Schichttypen",
+            "actions": [
+                {
+                    "label": "Hinzufügen",
+                    "text": "Ein Schichttyp ist ein <strong>Code</strong> mit Start, Ende, Pause und Farbe. Meist einmal einrichten. Bestehende Zellen ändern sich nicht, wenn Sie den Typ später anpassen."
+                },
+                {
+                    "label": "Deaktivieren",
+                    "text": "Einen inaktiven Code können Sie im Plan nicht mehr eingeben. Bestehende Dienste bleiben als freie Zeit stehen."
                 }
             ]
         }

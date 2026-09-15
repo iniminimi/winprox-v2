@@ -727,7 +727,8 @@ productsector op `Tenant`.
   raakt bestaande cellen niet. Vrije tijd: `pauze = 0`.
 - **Scope:** opslaan / kopiëren / publiceren = zichtbare week × zichtbare workers (teamfilter).
 - **Publiceren:** week-scoped; bewerken daarna blijft `published`. Geen RSZ/CIAO.
-- **Copy week:** alles-of-niets; doelweek met bestaande diensten → weigeren.
+- **Shiftypes:** eigen scherm onder Time (eenmalig instellen). Het uurrooster toont alleen
+  een compacte codelegende. Ongeldige cellen: rode rand.
 - **Niet in golf 1:** gepland vs geklokt, Mijn rooster op Clock Point, mail bij publiceren,
   afwezigheid, maand/CSV, rusttijden, ruilen, beschikbaarheid.
 

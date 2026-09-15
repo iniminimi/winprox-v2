@@ -40,30 +40,8 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="wp-filter-cell">
-                    <label class="wp-filter-inline-label" for="schedule-type">{{ __('time.schedule.types.manage') }}</label>
-                    <select id="schedule-type" class="wp-select" wire:model.live="selectedTypeId">
-                        <option value="">{{ __('time.schedule.types.choose') }}</option>
-                        @foreach ($shiftTypes as $type)
-                            <option value="{{ $type->id }}">
-                                {{ $type->code }} · {{ $type->label }} · {{ $type->start_time }}–{{ $type->end_time }}{{ $type->is_active ? '' : ' '.__('time.schedule.types.inactive_suffix') }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
             </div>
             <div class="wp-filter-form__actions">
-                @if ($selectedType)
-                    @can('update', $selectedType)
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="editSelectedType">{{ __('common.button.edit') }}</button>
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleSelectedTypeActive">
-                            {{ $selectedType->is_active ? __('time.schedule.types.deactivate') : __('time.schedule.types.activate') }}
-                        </button>
-                    @endcan
-                @endif
-                @can('create', \App\Models\ShiftType::class)
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openCreateType">{{ __('time.schedule.types.add') }}</button>
-                @endcan
                 @can('update', \App\Models\PlannedShift::class)
                     <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-save>{{ __('common.button.save') }}</button>
                     <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-copy>{{ __('time.schedule.copy_next') }}</button>
@@ -75,6 +53,24 @@
         </div>
     </div>
 
+    <div class="wp-roster-legend" data-wp-roster-legend>
+        <span class="wp-filter-inline-label">{{ __('time.schedule.legend') }}</span>
+        @forelse ($legendTypes as $type)
+            <span class="wp-roster-legend__item">
+                <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
+                <strong>{{ $type->code }}</strong>
+                <span class="wp-muted">{{ $type->start_time }}–{{ $type->end_time }}</span>
+            </span>
+        @empty
+            <p class="wp-muted">
+                {{ __('time.schedule.legend_empty') }}
+                @can('viewAny', \App\Models\ShiftType::class)
+                    <a href="{{ route('time.shift-types.index') }}">{{ __('time.nav.shift_types') }}</a>
+                @endcan
+            </p>
+        @endforelse
+    </div>
+
     <div class="wp-card wp-card-pad">
         @if ($snapshot->workers === [])
             <p class="wp-muted">{{ __('time.schedule.empty_workers') }}</p>
@@ -82,59 +78,4 @@
         <p class="wp-flash wp-flash--danger" data-wp-roster-banner hidden></p>
         <div class="wp-roster-sheet" data-wp-roster-grid wire:ignore></div>
     </div>
-
-    @if ($showTypeModal)
-        <x-wp-modal closeMethod="closeTypeModal">
-            <div class="wp-modal__dialog wp-card wp-card-pad">
-                <div class="wp-cluster wp-cluster--spread">
-                    <h2 class="wp-h2">{{ $editingTypeId ? __('time.schedule.types.edit') : __('time.schedule.types.add') }}</h2>
-                    <button type="button" class="btn btn--ghost" wire:click="closeTypeModal">{{ __('common.button.cancel') }}</button>
-                </div>
-                <form class="wp-stack" wire:submit="saveType">
-                    <div class="wp-filter-cell">
-                        <label class="wp-filter-inline-label" for="type-code">{{ __('time.schedule.types.code') }}</label>
-                        <input id="type-code" class="wp-input" wire:model="typeCode" maxlength="8">
-                        @error('typeCode') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-filter-cell">
-                        <label class="wp-filter-inline-label" for="type-label">{{ __('time.schedule.types.label') }}</label>
-                        <input id="type-label" class="wp-input" wire:model="typeLabel" maxlength="80">
-                        @error('typeLabel') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-cluster">
-                        <div class="wp-filter-cell">
-                            <label class="wp-filter-inline-label" for="type-start">{{ __('time.schedule.types.start') }}</label>
-                            <input id="type-start" class="wp-input" wire:model="typeStart" placeholder="07:00">
-                            @error('typeStart') <p class="wp-error">{{ $message }}</p> @enderror
-                        </div>
-                        <div class="wp-filter-cell">
-                            <label class="wp-filter-inline-label" for="type-end">{{ __('time.schedule.types.end') }}</label>
-                            <input id="type-end" class="wp-input" wire:model="typeEnd" placeholder="15:00">
-                            @error('typeEnd') <p class="wp-error">{{ $message }}</p> @enderror
-                        </div>
-                        <div class="wp-filter-cell">
-                            <label class="wp-filter-inline-label" for="type-break">{{ __('time.schedule.types.break') }}</label>
-                            <input id="type-break" type="number" min="0" max="720" class="wp-input" wire:model="typeBreak">
-                            @error('typeBreak') <p class="wp-error">{{ $message }}</p> @enderror
-                        </div>
-                    </div>
-                    <div class="wp-filter-cell">
-                        <label class="wp-filter-inline-label" for="type-color">{{ __('time.schedule.types.color') }}</label>
-                        <div class="wp-cluster wp-cluster--tight">
-                            <select id="type-color" class="wp-select" wire:model.live="typeColor">
-                                @foreach ($colors as $color)
-                                    <option value="{{ $color->value }}">{{ __('time.schedule.types.colors.'.$color->value) }}</option>
-                                @endforeach
-                            </select>
-                            <span class="wp-roster-color-preview {{ $typeColor !== 'none' ? 'wp-roster-cell--'.$typeColor : '' }}" aria-hidden="true"></span>
-                        </div>
-                    </div>
-                    <div class="wp-cluster">
-                        <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
-                        <button type="button" class="btn btn--ghost" wire:click="closeTypeModal">{{ __('common.button.cancel') }}</button>
-                    </div>
-                </form>
-            </div>
-        </x-wp-modal>
-    @endif
 </div>

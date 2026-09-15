@@ -30,6 +30,7 @@ final class ManualChapterIcons
         'iot.index' => 'api',
         'time.presence' => 'clock',
         'time.schedule' => 'calendar',
+        'time.shift_types' => 'calendar',
         'time.alarms' => 'alert-triangle',
         'time.shifts' => 'calendar',
         'time.clock_points' => 'map-pin',

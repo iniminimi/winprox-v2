@@ -5603,6 +5603,26 @@ a.wp-kpi.wp-kpi--attention {
     font-size: 0.875rem;
 }
 
+.wp-roster-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem 0.85rem;
+}
+
+.wp-roster-legend__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8125rem;
+}
+
+.wp-roster-legend .wp-roster-color-preview {
+    width: 0.85rem;
+    height: 0.85rem;
+    flex-basis: 0.85rem;
+}
+
 .wp-roster-color-preview {
     width: 1.75rem;
     height: 1.75rem;
@@ -5677,9 +5697,26 @@ a.wp-kpi.wp-kpi--attention {
     background: var(--wp-surface-2) !important;
 }
 
-.wp-roster-cell--invalid {
+.wp-roster-sheet .jss > tbody > tr > td.wp-roster-cell--invalid {
     background: var(--wp-danger-soft) !important;
-    box-shadow: inset 0 0 0 1px var(--wp-danger-border);
+    box-shadow: inset 0 0 0 2px var(--wp-danger) !important;
+    color: var(--wp-danger);
+    font-weight: 700;
+    position: relative;
+    padding-right: 1.15rem;
+    overflow: visible;
+}
+
+.wp-roster-sheet .jss > tbody > tr > td.wp-roster-cell--invalid::after {
+    content: "!";
+    position: absolute;
+    top: 0.15rem;
+    right: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--wp-danger);
+    pointer-events: none;
 }
 
 
