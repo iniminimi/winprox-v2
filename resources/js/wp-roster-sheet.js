@@ -200,6 +200,23 @@ function weekendColumnIndexes(payload) {
     );
 }
 
+function localTodayIso() {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+
+    return `${y}-${m}-${day}`;
+}
+
+function todayColumnIndexes(payload) {
+    const today = localTodayIso();
+
+    return new Set(
+        (payload.dates ?? []).flatMap((date, index) => (date === today ? [index + 1] : [])),
+    );
+}
+
 /** Kolommen die een nieuwe week starten na een gap (vrijdag → maandag zonder weekends). */
 function weekStartColumnIndexes(payload) {
     const dates = payload.dates ?? [];
@@ -227,6 +244,19 @@ function applyWeekendColumns(worksheet, weekendCols) {
     if (Array.isArray(worksheet.cols)) {
         worksheet.cols.forEach((col, colIndex) => {
             col?.colElement?.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
+        });
+    }
+}
+
+function applyTodayColumns(worksheet, todayCols) {
+    if (Array.isArray(worksheet.headers)) {
+        worksheet.headers.forEach((header, colIndex) => {
+            header?.classList.toggle('wp-roster-col--today', todayCols.has(colIndex));
+        });
+    }
+    if (Array.isArray(worksheet.cols)) {
+        worksheet.cols.forEach((col, colIndex) => {
+            col?.colElement?.classList.toggle('wp-roster-col--today', todayCols.has(colIndex));
         });
     }
 }
@@ -298,8 +328,10 @@ function applyCellClasses(worksheet, payload) {
     }
     const types = payload.types ?? [];
     const weekendCols = weekendColumnIndexes(payload);
+    const todayCols = todayColumnIndexes(payload);
     const weekStartCols = weekStartColumnIndexes(payload);
     applyWeekendColumns(worksheet, weekendCols);
+    applyTodayColumns(worksheet, todayCols);
     applyWeekStartColumns(worksheet, weekStartCols);
     const rows = worksheet.getData() ?? [];
     rows.forEach((row, rowIndex) => {
@@ -324,6 +356,7 @@ function applyCellClasses(worksheet, payload) {
                 }
             });
             cell.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
+            cell.classList.toggle('wp-roster-col--today', todayCols.has(colIndex));
             cell.classList.toggle('wp-roster-col--week-start', weekStartCols.has(colIndex));
             if (paintStackedCell(cell, value)) {
                 cell.classList.add('wp-roster-cell--stacked');
