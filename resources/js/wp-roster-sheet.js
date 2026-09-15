@@ -74,11 +74,42 @@ function parseRosterCell(raw, types) {
     return { kind: 'type', color: type.color, display: type.code };
 }
 
+function isWeekendIso(isoDate) {
+    const match = String(isoDate).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) {
+        return false;
+    }
+    const weekday = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])).getDay();
+
+    return weekday === 0 || weekday === 6;
+}
+
+function weekendColumnIndexes(payload) {
+    return new Set(
+        (payload.dates ?? []).flatMap((date, index) => (isWeekendIso(date) ? [index + 1] : [])),
+    );
+}
+
+function applyWeekendColumns(worksheet, weekendCols) {
+    if (Array.isArray(worksheet.headers)) {
+        worksheet.headers.forEach((header, colIndex) => {
+            header?.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
+        });
+    }
+    if (Array.isArray(worksheet.cols)) {
+        worksheet.cols.forEach((col, colIndex) => {
+            col?.colElement?.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
+        });
+    }
+}
+
 function applyCellClasses(worksheet, payload) {
     if (!worksheet || typeof worksheet.getData !== 'function') {
         return;
     }
     const types = payload.types ?? [];
+    const weekendCols = weekendColumnIndexes(payload);
+    applyWeekendColumns(worksheet, weekendCols);
     const rows = worksheet.getData() ?? [];
     rows.forEach((row, rowIndex) => {
         row.forEach((value, colIndex) => {
@@ -96,6 +127,7 @@ function applyCellClasses(worksheet, payload) {
                     cell.classList.remove(name);
                 }
             });
+            cell.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
             const parsed = parseRosterCell(value, types);
             const worker = payload.workers?.[rowIndex];
             const date = payload.dates?.[colIndex - 1];

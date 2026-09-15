@@ -5684,6 +5684,15 @@ a.wp-kpi.wp-kpi--attention {
     font-weight: 700;
 }
 
+.wp-roster-sheet col.wp-roster-col--weekend,
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-col--weekend {
+    background: color-mix(in srgb, var(--wp-text) 8%, var(--wp-surface) 92%);
+}
+
+.wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-col--weekend {
+    background: color-mix(in srgb, var(--wp-text) 12%, var(--wp-surface-2) 88%);
+}
+
 .wp-roster-sheet--month {
     width: 100%;
 }
