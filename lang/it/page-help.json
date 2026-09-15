@@ -1563,7 +1563,7 @@
             "actions": [
                 {
                     "label": "Vista",
-                    "text": "Passa tra <strong>settimana</strong> e <strong>mese</strong>. <strong>Weekend attivi</strong> mostra sabato e domenica (disattivati di default); disattivati = solo lunedì–venerdì. Nella griglia mensile una linea verticale marcata separa allora venerdì e lunedì. Salvare senza weekend lascia sab/dom invariati. Copiare una settimana solo in vista settimana."
+                    "text": "Passa tra <strong>settimana</strong> e <strong>mese</strong>. <strong>Weekend</strong> mostra sabato e domenica (disattivati di default); disattivati = solo lunedì–venerdì. Nella griglia mensile una linea verticale marcata separa allora venerdì e lunedì. Salvare senza weekend lascia sab/dom invariati. Copiare una settimana solo in vista settimana."
                 },
                 {
                     "label": "Codici e orari liberi",

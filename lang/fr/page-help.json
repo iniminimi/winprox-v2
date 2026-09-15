@@ -1571,7 +1571,7 @@
             "actions": [
                 {
                     "label": "Affichage",
-                    "text": "Basculez entre <strong>semaine</strong> et <strong>mois</strong>. <strong>Week-ends activés</strong> affiche samedi et dimanche (désactivé par défaut) ; désactivé = lundi à vendredi. Dans la grille mensuelle, une ligne verticale marquée sépare alors vendredi et lundi. Enregistrer sans week-ends laisse sam./dim. inchangés. Copier une semaine n’est possible qu’en vue semaine."
+                    "text": "Basculez entre <strong>semaine</strong> et <strong>mois</strong>. <strong>Week-ends</strong> affiche samedi et dimanche (désactivé par défaut) ; désactivé = lundi à vendredi. Dans la grille mensuelle, une ligne verticale marquée sépare alors vendredi et lundi. Enregistrer sans week-ends laisse sam./dim. inchangés. Copier une semaine n’est possible qu’en vue semaine."
                 },
                 {
                     "label": "Codes et heures libres",

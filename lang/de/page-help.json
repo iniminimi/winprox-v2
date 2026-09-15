@@ -1563,7 +1563,7 @@
             "actions": [
                 {
                     "label": "Ansicht",
-                    "text": "Wechseln Sie zwischen <strong>Woche</strong> und <strong>Monat</strong>. <strong>Wochenenden an</strong> zeigt Samstag und Sonntag (standardmäßig aus); aus = nur Montag bis Freitag. Im Monatsraster trennt dann ein kräftiger vertikaler Strich Freitag und Montag. Speichern ohne Wochenenden lässt Sa/So unverändert. Eine Woche kopieren geht nur in der Wochenansicht."
+                    "text": "Wechseln Sie zwischen <strong>Woche</strong> und <strong>Monat</strong>. <strong>Wochenenden</strong> zeigt Samstag und Sonntag (standardmäßig aus); aus = nur Montag bis Freitag. Im Monatsraster trennt dann ein kräftiger vertikaler Strich Freitag und Montag. Speichern ohne Wochenenden lässt Sa/So unverändert. Eine Woche kopieren geht nur in der Wochenansicht."
                 },
                 {
                     "label": "Codes und freie Zeiten",

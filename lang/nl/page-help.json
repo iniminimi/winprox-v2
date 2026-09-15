@@ -1563,7 +1563,7 @@
             "actions": [
                 {
                     "label": "Weergave",
-                    "text": "Schakel tussen <strong>week</strong> en <strong>maand</strong>. <strong>Weekends aan</strong> toont zaterdag en zondag (standaard uit); uit = alleen maandag tot vrijdag. In de maandgrid staat dan een zware verticale streep tussen vrijdag en maandag. Opslaan zonder weekends laat za/zo ongewijzigd. Een week kopiëren kan alleen in weekweergave."
+                    "text": "Schakel tussen <strong>week</strong> en <strong>maand</strong>. <strong>Weekends</strong> toont zaterdag en zondag (standaard uit); uit = alleen maandag tot vrijdag. In de maandgrid staat dan een zware verticale streep tussen vrijdag en maandag. Opslaan zonder weekends laat za/zo ongewijzigd. Een week kopiëren kan alleen in weekweergave."
                 },
                 {
                     "label": "Codes en vrije tijden",

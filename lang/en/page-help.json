@@ -1563,7 +1563,7 @@
             "actions": [
                 {
                     "label": "View",
-                    "text": "Switch between <strong>week</strong> and <strong>month</strong>. <strong>Weekends on</strong> shows Saturday and Sunday (off by default); off = Monday to Friday only. In the month grid a heavy vertical line then separates Friday from Monday. Saving with weekends off leaves Sat/Sun unchanged. Copying a week is week view only."
+                    "text": "Switch between <strong>week</strong> and <strong>month</strong>. <strong>Weekends</strong> shows Saturday and Sunday (off by default); off = Monday to Friday only. In the month grid a heavy vertical line then separates Friday from Monday. Saving with weekends off leaves Sat/Sun unchanged. Copying a week is week view only."
                 },
                 {
                     "label": "Codes and free times",
