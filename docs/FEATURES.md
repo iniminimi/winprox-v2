@@ -1081,13 +1081,15 @@ Perplexity-User expliciet toe.
 `php artisan marketing:indexnow-submit` na deploy/content-wijziging (`config/indexnow.php`).
 App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
 
-### 11.1 Structuur (behouden, opgeschoond)
-- **Nav:** WinProx-logo, **taal-pillen** (NL/FR/EN/DE), **Inloggen**, **Account aanmaken**.
-- **Hero:** kicker, titel, subtitel en CTA's naast `images/landing/general/welcome_01.jpg`
-  (split zoals campagne-landings; algemene welcome-copy, geen sectortekst).
-- **Probleem** (3 kaarten) · **Oplossing** (lead + **QR-leaflet** als illustratie) · **Features**
-  (6 kaarten met iconen) · **Hoe werkt het** (stappen) · **CTA-band** · **screenshots** · **footer**
-  (juridische links + contact).
+### 11.1 Structuur (minimaal — eerste gesprek)
+- **Nav:** WinProx-logo, **taal-pillen**, **Prijzen**, **Meer** (features, FAQ, about, docs, sectorvoorbeelden),
+  **Inloggen**, **Gratis proberen**. Geen module-badges (Facility/Time/ESG/IoT) in de nav.
+- **Hero (één viewport):** WinProx · *Wie is er. Wat moet er gebeuren. Wat is klaar.* · ondertitel
+  werkopvolging op locatie · **Scan → Meld → Werk → Klaar** · CTA's **Gratis proberen** / **Bekijk hoe het werkt**.
+- **Video:** korte demo (`video/{locale}/issue_{locale}_01.mp4`) direct onder de hero.
+- **Footer:** productfiches, juridisch, contact.
+- **Facility, Time, ESG, IoT, CIAO** blijven in productfiches, pricing, sectorlandings en handleiding —
+  niet op de homepage zelf.
 
 ### 11.2 Zonder demo (voorlopig)
 - **Verwijderen:** alle "Probeer demo"-CTA's, `demo.index`-links en de flow-stap "demo".

@@ -65,38 +65,21 @@ it('toont unieke welcome-statistieken op platformdashboard', function () {
 it('logt welcome-bezoek via de publieke route', function () {
     $html = $this->get('/nl/?utm_source=promo&utm_campaign=wave-1')
         ->assertOk()
-        ->assertSee('wp-welcome-nav-group', false)
-        ->assertSee(__('welcome.nav.group_products'), false)
-        ->assertSee(__('welcome.nav.group_how'), false)
-        ->assertSee(__('welcome.nav.group_more'), false)
-        ->assertSee(__('welcome.nav.sectors'), false)
+        ->assertSee('wp-welcome-hero--minimal', false)
+        ->assertSee(__('welcome.hero.headline'))
+        ->assertSee(__('welcome.hero.flow'))
+        ->assertSee(__('welcome.nav.more'), false)
+        ->assertSee(__('welcome.nav.pricing'), false)
         ->assertSee(__('landings.hospitality.nav_label'), false)
-        ->assertSee(__('landings.industry.nav_label'), false)
-        ->assertSee(__('landings.healthcare.nav_label'), false)
-        ->assertSee(__('landings.government.nav_label'), false)
-        ->assertSee(__('landings.realestate.nav_label'), false)
         ->assertSee(route('hospitality', absolute: false), false)
-        ->assertSee(route('industry', absolute: false), false)
-        ->assertSee(route('healthcare', absolute: false), false)
-        ->assertSee(route('government', absolute: false), false)
-        ->assertSee(route('realestate', absolute: false), false)
-        ->assertSee('images/landing/general/welcome_01.jpg', false)
-        ->assertSee('wp-welcome-hero--split', false)
-        ->assertSee('wp-welcome-badge--hero-top', false)
-        ->assertSee('wp-welcome-hero-actions', false)
-        ->assertSee(__('welcome.hero.photo_alt'), false)
-        ->assertSee(__('welcome.hero.subtitle'), false)
-        ->assertSee('images/landing/general/welcome_04.jpg', false)
-        ->assertSee('wp-welcome-split--flow', false)
-        ->assertSee('wp-welcome-steps-card--list', false)
-        ->assertSee('id="iot"', false)
-        ->assertSee(__('welcome.iot.eyebrow'), false)
-        ->assertSee(__('welcome.iot.body'), false)
-        ->assertSee('images/welcome/IoT.jpg', false)
+        ->assertSee('id="video"', false)
+        ->assertDontSee('wp-welcome-badge', false)
+        ->assertDontSee('id="iot"', false)
+        ->assertDontSee('id="platform"', false)
+        ->assertDontSee('images/landing/general/welcome_01.jpg', false)
         ->getContent();
 
-    expect($html)->toContain('video/nl/hospitality_NL.mp4')
-        ->and($html)->not->toMatch('/wp-welcome-hero-qr-video[\s\S]*?\bautoplay\b[\s\S]*?hospitality_NL\.mp4/');
+    expect($html)->toContain('video/nl/issue_nl_01.mp4');
 
     expect(WelcomeVisit::query()->count())->toBe(1)
         ->and(WelcomeVisit::query()->first()?->utm_source)->toBe('promo')
@@ -104,12 +87,15 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->and(WelcomeVisit::query()->first()?->locale)->toBe('nl');
 });
 
-it('toont hospitality-video op welcome per locale', function (string $locale) {
-    $file = 'hospitality_'.strtoupper($locale).'.mp4';
+it('toont issue-video op welcome wanneer het bestand bestaat', function (string $locale) {
+    $rel = "video/{$locale}/issue_{$locale}_01.mp4";
+    if (! is_file(public_path($rel))) {
+        $this->markTestSkipped("Issue-video ontbreekt voor {$locale}.");
+    }
 
     $this->get('/'.$locale.'/')
         ->assertOk()
-        ->assertSee('video/'.$locale.'/'.$file, false);
+        ->assertSee($rel, false);
 })->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
 
 it('koppelt een welcome-bezoek aan een promo-bestemmeling via ref', function () {

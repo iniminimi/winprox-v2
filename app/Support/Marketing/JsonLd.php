@@ -39,7 +39,7 @@ final class JsonLd
             'applicationCategory' => 'BusinessApplication',
             'operatingSystem' => 'Web',
             'url' => route('welcome', ['locale' => 'en'], absolute: true),
-            'description' => 'QR-code based facility management platform: report issues, assign tasks to teams, clock presence (Time), and optionally track ESG — in the browser without a native app.',
+            'description' => 'Simple work tracking for people on site: who is here, what needs doing and what is done — via QR in the browser, no app.',
             'offers' => [
                 '@type' => 'AggregateOffer',
                 'url' => route('pricing', ['locale' => 'en'], absolute: true),

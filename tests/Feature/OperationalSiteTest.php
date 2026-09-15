@@ -13,13 +13,16 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
-it('toont volledige welcome landingspagina', function () {
+it('toont de minimale welcome landingspagina', function () {
     $this->get(route('welcome'))
         ->assertOk()
-        ->assertSee(__('welcome.hero.badge'))
-        ->assertSee(__('welcome.pillars.eyebrow'))
-        ->assertSee(__('welcome.flow.steps.0.title'))
-        ->assertSee(__('welcome.closing.cta_start'));
+        ->assertSee(__('welcome.hero.headline'))
+        ->assertSee(__('welcome.hero.subtitle'))
+        ->assertSee(__('welcome.hero.flow'))
+        ->assertSee(__('welcome.hero.cta_start'))
+        ->assertSee('id="video"', false)
+        ->assertDontSee('id="platform"', false)
+        ->assertDontSee('id="esg"', false);
 });
 
 it('briefing filtert op datum en team', function () {
