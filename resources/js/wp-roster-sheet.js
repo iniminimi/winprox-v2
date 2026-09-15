@@ -200,6 +200,24 @@ function weekendColumnIndexes(payload) {
     );
 }
 
+/** Kolommen die een nieuwe week starten na een gap (vrijdag → maandag zonder weekends). */
+function weekStartColumnIndexes(payload) {
+    const dates = payload.dates ?? [];
+    const cols = new Set();
+    for (let i = 1; i < dates.length; i += 1) {
+        const prev = Date.parse(`${dates[i - 1]}T12:00:00`);
+        const cur = Date.parse(`${dates[i]}T12:00:00`);
+        if (!Number.isFinite(prev) || !Number.isFinite(cur)) {
+            continue;
+        }
+        if ((cur - prev) / 86400000 > 1) {
+            cols.add(i + 1);
+        }
+    }
+
+    return cols;
+}
+
 function applyWeekendColumns(worksheet, weekendCols) {
     if (Array.isArray(worksheet.headers)) {
         worksheet.headers.forEach((header, colIndex) => {
@@ -209,6 +227,19 @@ function applyWeekendColumns(worksheet, weekendCols) {
     if (Array.isArray(worksheet.cols)) {
         worksheet.cols.forEach((col, colIndex) => {
             col?.colElement?.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
+        });
+    }
+}
+
+function applyWeekStartColumns(worksheet, weekStartCols) {
+    if (Array.isArray(worksheet.headers)) {
+        worksheet.headers.forEach((header, colIndex) => {
+            header?.classList.toggle('wp-roster-col--week-start', weekStartCols.has(colIndex));
+        });
+    }
+    if (Array.isArray(worksheet.cols)) {
+        worksheet.cols.forEach((col, colIndex) => {
+            col?.colElement?.classList.toggle('wp-roster-col--week-start', weekStartCols.has(colIndex));
         });
     }
 }
@@ -267,7 +298,9 @@ function applyCellClasses(worksheet, payload) {
     }
     const types = payload.types ?? [];
     const weekendCols = weekendColumnIndexes(payload);
+    const weekStartCols = weekStartColumnIndexes(payload);
     applyWeekendColumns(worksheet, weekendCols);
+    applyWeekStartColumns(worksheet, weekStartCols);
     const rows = worksheet.getData() ?? [];
     rows.forEach((row, rowIndex) => {
         row.forEach((value, colIndex) => {
@@ -291,6 +324,7 @@ function applyCellClasses(worksheet, payload) {
                 }
             });
             cell.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
+            cell.classList.toggle('wp-roster-col--week-start', weekStartCols.has(colIndex));
             if (paintStackedCell(cell, value)) {
                 cell.classList.add('wp-roster-cell--stacked');
             }

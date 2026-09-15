@@ -20,7 +20,7 @@ class ResolveRosterPeriodAction
             ? $this->resolveMonth->handle($cursor)
             : $this->resolveWeek->handle($cursor);
 
-        if ($period === 'week' && ! $includeWeekends) {
+        if (! $includeWeekends) {
             $dates = array_values(array_filter(
                 $dates,
                 fn (string $date) => ! Carbon::parse($date)->isWeekend(),

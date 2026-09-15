@@ -336,7 +336,7 @@ it('toont een maandoverzicht met dagnummers', function () {
         ->assertSee('wp-roster-page--month', false)
         ->assertSee('wp-roster-month', false)
         ->assertSee(__('time.schedule.nav_next'), false)
-        ->assertDontSee('id="schedule-weekends"', false);
+        ->assertSee('id="schedule-weekends"', false);
 
     $snapshot = app(ListRosterWeekAction::class)->handle(
         (int) $tenant->id,
@@ -344,6 +344,7 @@ it('toont een maandoverzicht met dagnummers', function () {
         null,
         $admin,
         'month',
+        true,
     );
 
     expect($snapshot->dates)->toHaveCount(30)
@@ -351,6 +352,25 @@ it('toont een maandoverzicht met dagnummers', function () {
         ->and($snapshot->dayNumbers[0])->toBe(1)
         ->and($snapshot->dayNumbers[29])->toBe(30)
         ->and($snapshot->monthLabel)->toContain('2026');
+});
+
+it('toont geen weekendkolommen in maandweergave als weekends uit staan', function () {
+    [$tenant, $admin] = scheduleTenant();
+
+    $snapshot = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        '2026-09-15',
+        null,
+        $admin,
+        'month',
+        false,
+    );
+
+    expect($snapshot->dates)->not->toBeEmpty()
+        ->and(collect($snapshot->dates)->every(
+            fn (string $date) => ! Carbon::parse($date)->isWeekend(),
+        ))->toBeTrue()
+        ->and($snapshot->dates)->toHaveCount(22);
 });
 
 it('toont geen weekendkolommen als weekends uit staan', function () {

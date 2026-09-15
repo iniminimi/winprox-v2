@@ -1563,7 +1563,7 @@
             "actions": [
                 {
                     "label": "Vista",
-                    "text": "Cambie entre <strong>semana</strong> y <strong>mes</strong>. En vista semanal, <strong>Fines de semana</strong> muestra sábado y domingo; desactivado = lunes a viernes. Guardar sin fines de semana no cambia sáb/dom. Copiar una semana solo en vista semanal."
+                    "text": "Cambie entre <strong>semana</strong> y <strong>mes</strong>. <strong>Fines de semana activados</strong> muestra sábado y domingo (desactivado por defecto); desactivado = solo lunes a viernes. En la cuadrícula mensual una línea vertical gruesa separa entonces viernes y lunes. Guardar sin fines de semana deja sáb/dom sin cambios. Copiar una semana solo en vista semanal."
                 },
                 {
                     "label": "Códigos y horas libres",

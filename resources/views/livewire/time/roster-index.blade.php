@@ -30,14 +30,12 @@
                             <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--primary' : 'btn--surface']) wire:click="setView('month')">{{ __('time.schedule.view_month') }}</button>
                         </div>
                     </div>
-                    @unless ($isMonth)
-                        <div class="wp-filter-cell">
-                            <label class="wp-check" for="schedule-weekends">
-                                <input id="schedule-weekends" type="checkbox" wire:model.live="showWeekends">
-                                {{ __('time.schedule.weekends') }}
-                            </label>
-                        </div>
-                    @endunless
+                    <div class="wp-filter-cell">
+                        <label class="wp-check" for="schedule-weekends">
+                            <input id="schedule-weekends" type="checkbox" wire:model.live="showWeekends">
+                            {{ __('time.schedule.weekends') }}
+                        </label>
+                    </div>
                     <div class="wp-filter-cell">
                         <select id="schedule-team" class="wp-select" wire:model.live="teamFilter" aria-label="{{ __('time.filters.team') }}">
                             <option value="">{{ __('time.filters.all_teams') }}</option>

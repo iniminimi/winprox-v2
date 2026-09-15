@@ -49,7 +49,7 @@ class RosterIndex extends Component
     public ?int $locationFilter = null;
 
     #[Url(as: 'weekends')]
-    public bool $showWeekends = true;
+    public bool $showWeekends = false;
 
     /** @var list<int> */
     public array $groupUnitIds = [];
@@ -362,7 +362,7 @@ class RosterIndex extends Component
 
     private function includeWeekends(): bool
     {
-        return $this->isMonth() || $this->showWeekends;
+        return $this->showWeekends;
     }
 
     private function periodLabel(RosterWeekSnapshot $snapshot): string
