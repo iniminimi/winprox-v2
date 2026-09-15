@@ -89,6 +89,9 @@
     bevestiging de evacuatielijst van wie nu is ingeklokt raadplegen; elke raadpleging wordt gelogd
     (voornaam, naam, datum en uur van de raadpleger).
     Na aanmelden kan de uitvoerder Mijn uren openen: alleen de eigen diensten van de gekozen maand.
+    Na publiceren van het uurrooster ziet de uitvoerder Mijn rooster: alleen de eigen gepubliceerde
+    diensten en afwezigheden (verlof, recup, ziek) van de maand. Die codes voert de klant in;
+    WinProx bewaart ze als verwerker.
     De klant kan per team een minimum onbetaalde pauze op de urenstaat zetten. Als er geen of te weinig
     live pauze is geklokt en de dienst lang genoeg is, kan WinProx dat minimum als pauzeminuten bewaren.
     Die urenstaatwaarde gaat niet als extra IN/OUT naar RSZ CIAO.

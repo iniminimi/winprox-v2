@@ -89,6 +89,9 @@
     tras confirmación, consultar la lista de evacuación de quién está fichado; cada consulta se registra
     (nombre, apellidos, fecha y hora de quien consulta).
     Tras identificarse, el ejecutor puede abrir Mis horas: solo sus propios turnos del mes elegido.
+    Tras publicar el cuadrante, Mi cuadrante muestra solo sus turnos y ausencias publicados
+    (permiso, compensación, baja) del mes. Esos códigos los introduce el cliente;
+    WinProx los guarda como encargado.
     El cliente puede fijar una pausa mínima no remunerada por equipo en el parte. Si no se fichó (suficiente)
     pausa en vivo y el turno es bastante largo, WinProx puede guardar ese mínimo como minutos de pausa.
     Ese valor del parte no se envía a RSZ CIAO como IN/OUT extra.

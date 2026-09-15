@@ -89,6 +89,8 @@
     confirmation, consulter la liste d’évacuation de qui est pointé ; chaque consultation est enregistrée
     (prénom, nom, date et heure de la personne qui consulte).
     Après connexion, l’exécutant peut ouvrir Mes heures : uniquement ses propres services du mois choisi.
+    Après publication du planning, Mon planning n’affiche que ses services et absences publiés
+    (congé, récup, maladie) du mois. Ces codes sont saisis par le client ; WinProx les conserve comme sous-traitant.
     Le client peut fixer une pause minimale non payée par équipe sur la feuille d’heures. S’il n’y a pas (assez)
     de pause live et que le service est assez long, WinProx peut enregistrer ce minimum en minutes de pause.
     Cette valeur de feuille d’heures n’est pas envoyée à RSZ CIAO comme IN/OUT supplémentaire.

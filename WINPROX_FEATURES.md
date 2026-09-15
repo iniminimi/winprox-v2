@@ -24,7 +24,9 @@ het product doet; voor scherm-voor-scherm bouwspecificatie en backlog, zie **`do
 
 - **Eén Facility-app:** melding → taken → afhandeling. Geen hospitality, contractors, owners, demo-sector.
 - **Time (optioneel):** prikklok via Clock Point; **Mijn uren** (alleen eigen diensten) en
-  optionele **minimumpauze per team** op de urenstaat (geen extra CIAO-event). Geplande
+  optionele **minimumpauze per team** op de urenstaat (geen extra CIAO-event). **Uurrooster**
+  (week/maand): geplande diensten en afwezigheden (verlof/recup/ziek); publiceren toont
+  **Mijn rooster** op Clock Point; beheer ziet gepland vs geklokt. Geplande
   uitbreiding: **RSZ CIAO-aanwezigheid** (schoonmaak eerst, bouw later) als compliance-laag
   op Time — zie `WINPROX_RULES.md` §4.5 en `docs/FEATURES.md` §5g. Geen aparte productsector.
 - **Blur** alleen op **publieke QR-portalen** (niet-goedgekeurde meldingen). Beheer toont alles onverkort.

@@ -517,6 +517,10 @@
                     "text": "À la modification, choisissez un ou plusieurs sites. Vide = pointer partout (défaut pour les exécutants existants). Sur Clock Point, le nom n'apparaît que sur les sites assignés, sauf si l'équipe a **Peut pointer partout**."
                 },
                 {
+                    "label": "Groupe d’attache (planning)",
+                    "text": "Vous pouvez fixer un <strong>groupe d’attache</strong> sur l’exécutant (unité avec code planning). Dans Time → Planning, avec filtre site, cela groupe les lignes. La place dans une cellule (D1/G1) reste séparée."
+                },
+                {
                     "label": "Exécutants externes",
                     "text": "Lors de l’ajout ou de la modification, cochez <strong>Intervenant externe</strong> pour les installateurs, peintres, indépendants ou autres intervenants externes. Vous pouvez ensuite saisir optionnellement un nom d’entreprise (ex. Électricité Dupont). Dans la liste, ils portent le badge <strong>Ext</strong> et le nom d’entreprise s’il est renseigné. Ils utilisent le même parcours Clock Point et QR d’unité que les exécutants internes — pas de portail ni de connexion séparés."
                 },
@@ -762,6 +766,10 @@
                 {
                     "label": "Signaler un problème",
                     "text": "Appuyez sur « Créer un signalement », décrivez le problème et ajoutez éventuellement jusqu’à quatre photos. Prénom, nom et e-mail sont facultatifs — sauf si l’administrateur a rendu les coordonnées obligatoires ; remplissez-les alors. Si la confirmation e-mail est activée, vous recevez un lien : le signalement n’est créé qu’après confirmation. Une tâche est créée pour l’équipe. Le signalement doit d’abord être approuvé avant d’apparaître sur le portail. Limites anti-spam : au plus un signalement toutes les 3 minutes et cinq toutes les 30 minutes pour cette unité (par appareil)."
+                },
+                {
+                    "label": "Signalements précédents",
+                    "text": "Si l’administrateur laisse cette option activée pour la catégorie, vous voyez les signalements ouverts de cette unité après approbation. Si elle est désactivée, la tuile n’apparaît pas (chambre d’hôtel, sanitaires, …)."
                 },
                 {
                     "label": "Réserver",

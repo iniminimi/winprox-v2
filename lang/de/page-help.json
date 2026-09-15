@@ -509,6 +509,10 @@
                     "text": "Beim Bearbeiten einen oder mehrere Standorte wählen. Leer = überall einstempeln (Standard für bestehende Ausführende). Am Clock Point sieht der Ausführende seinen Namen nur an zugewiesenen Standorten, außer das Team hat **Darf überall einstempeln**."
                 },
                 {
+                    "label": "Stammgruppe (Dienstplan)",
+                    "text": "Optional setzen Sie beim Ausführenden eine <strong>Stammgruppe</strong> (Unit mit Dienstplancode). Unter Time → Dienstplan gruppiert das bei Standortfilter die Zeilen. Die Stelle in einer Zelle (D1/G1) bleibt getrennt."
+                },
+                {
                     "label": "Externe Ausführende",
                     "text": "Aktivieren Sie beim Anlegen oder Bearbeiten <strong>Externer Mitarbeiter</strong> für Installateure, Maler, Freelancer oder andere externe Kräfte. Optional tragen Sie danach einen Firmennamen ein (z. B. Elektro Müller). In der Liste erkennen Sie sie am Badge <strong>Ext</strong> und ggf. am Firmennamen. Sie nutzen dieselbe Clock-Point- und Unit-QR-Ablauf wie interne Ausführende — kein separates Portal und kein Login."
                 },
@@ -754,6 +758,10 @@
                 {
                     "label": "Meldung erstellen",
                     "text": "Tippen Sie auf „Meldung erstellen“, beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Vorname, Name und E-Mail sind optional — außer die Verwaltung hat Kontaktdaten zur Pflicht gemacht; füllen Sie sie dann aus. Ist E-Mail-Bestätigung aktiv, erhalten Sie einen Link: die Meldung entsteht erst nach der Bestätigung. Anschließend wird eine Aufgabe für das Team erstellt. Die Meldung muss erst freigegeben werden, bevor sie im Portal sichtbar ist. Gegen Spam gelten Limits: höchstens eine Meldung alle 3 Minuten und fünf alle 30 Minuten für diese Unit (pro Gerät)."
+                },
+                {
+                    "label": "Frühere Meldungen",
+                    "text": "Wenn der Administrator das für die Kategorie anlässt, sehen Sie nach Freigabe offene Meldungen dieser Unit. Ist es aus, fehlt die Kachel (z. B. Hotelzimmer oder Sanitärraum)."
                 },
                 {
                     "label": "Reservieren",

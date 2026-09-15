@@ -89,6 +89,9 @@
     Bestätigung die Evakuierungsliste der aktuell Eingestempelten einsehen; jede Einsicht wird protokolliert
     (Vorname, Name, Datum und Uhrzeit der einsehenden Person).
     Nach der Anmeldung kann der Ausführende Meine Stunden öffnen: nur die eigenen Schichten des gewählten Monats.
+    Nach Veröffentlichung des Dienstplans zeigt Mein Dienstplan nur die eigenen veröffentlichten Schichten und
+    Abwesenheiten (Urlaub, Ausgleich, Krank) des Monats. Diese Codes erfasst der Kunde;
+    WinProx speichert sie als Auftragsverarbeiter.
     Der Kunde kann pro Team eine unbezahlte Mindestpause auf der Stundenliste festlegen. Wurde keine oder zu wenig
     Live-Pause gestempelt und dauert die Schicht lange genug, kann WinProx dieses Minimum als Pauseminuten speichern.
     Dieser Stundenlistenwert wird nicht als zusätzliches IN/OUT an RSZ CIAO gesendet.

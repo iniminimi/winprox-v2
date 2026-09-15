@@ -509,6 +509,10 @@
                     "text": "In modifica, scegli una o più sedi. Vuoto = timbrare ovunque (default per esecutori esistenti). Su Clock Point il nome appare solo sulle sedi assegnate, salvo che il team abbia **Può timbrare ovunque**."
                 },
                 {
+                    "label": "Gruppo base (turno)",
+                    "text": "In opzione imposti un <strong>gruppo base</strong> sull’esecutore (unità con codice turno). In Time → Turni, con filtro sede, raggruppa le righe. Il posto in una cella (D1/G1) resta separato."
+                },
+                {
                     "label": "Lavoratori esterni",
                     "text": "In creazione o modifica, selezioni <strong>Lavoratore esterno</strong> per installatori, imbianchini, freelance o altre forze esterne. Può poi inserire facoltativamente un nome azienda (es. Elettricità Rossi). Nell’elenco li riconosce dal badge <strong>Ext</strong> e dal nome azienda se indicato. Usano lo stesso flusso Clock Point e QR unità dei lavoratori interni — nessun portale o accesso separato."
                 },
@@ -754,6 +758,10 @@
                 {
                     "label": "Segnala problema",
                     "text": "Tocchi «Crea segnalazione», descriva il problema e aggiunga facoltativamente fino a quattro foto. Nome, cognome e e-mail sono facoltativi — salvo che l’amministratore abbia reso obbligatori i dati di contatto; li compili allora. Se la conferma e-mail è attiva, ricevi un link: la segnalazione nasce solo dopo la conferma. Viene creato un compito per il team. La segnalazione deve essere approvata prima di apparire sul portale. Limiti anti-spam: al massimo una segnalazione ogni 3 minuti e cinque ogni 30 minuti per questa unità (per dispositivo)."
+                },
+                {
+                    "label": "Segnalazioni precedenti",
+                    "text": "Se l’amministratore lascia questa opzione attiva per la categoria, vedi le segnalazioni aperte di questa unità dopo l’approvazione. Se è disattivata, il riquadro non c’è (camera d’albergo, servizi, …)."
                 },
                 {
                     "label": "Prenota",

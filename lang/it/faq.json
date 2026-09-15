@@ -94,7 +94,7 @@
             "type": "portal",
             "title": "Come funziona il portale segnalatori?",
             "intro": "La scansione del QR unit apre una pagina web per quell'unità. I segnalatori descrivono i problemi; segnalazioni approvate, documenti e avvisi condivisi visibili. Gli esecutori con accesso team completano task aperti e — se attivato — controlli unità.",
-            "summary": "Portale QR unit: segnalazione, segnalazioni approvate, documenti, avvisi, task in sito e controllo unità opzionale per esecutori. Opzionale: dati di contatto e/o conferma e-mail (categoria e unità); fino al link non esiste una segnalazione.",
+            "summary": "Portale QR unit: segnalazione, segnalazioni approvate (disattivabile per categoria), documenti, avvisi, task in sito e controllo unità opzionale per esecutori. Opzionale: dati di contatto e/o conferma e-mail (categoria e unità); fino al link non esiste una segnalazione.",
             "sections": [
                 {
                     "title": "Nuova segnalazione",
@@ -106,7 +106,7 @@
                 },
                 {
                     "title": "Segnalazioni aperte",
-                    "text": "Panoramica delle segnalazioni approvate e attive per questa unit, con stato."
+                    "text": "Riepilogo delle segnalazioni approvate e attive di questa unità, con stato. L’amministratore può nascondere questo elenco per categoria (Mostra segnalazioni precedenti)."
                 },
                 {
                     "title": "Documenti e comunicazioni",
@@ -140,7 +140,7 @@
             "slug": "time_clock",
             "type": "text",
             "title": "Cos'è il modulo Time / Clock Point?",
-            "body": "Time è la timbratrice opzionale: ingresso/uscita tramite QR Clock Point (pause e turni inclusi). Ogni marcatura (ingresso, uscita, spostamento) richiede una nuova scansione dell’adesivo QR; una scheda aperta non basta per timbrare da casa. La ricerca per nome è per sede: solo gli esecutori autorizzati (o team mobili) vedono il nome. I colleghi con team timbratura timbrano dal profilo collegato. Clock Point resta il QR di accesso (nome + icona, PIN opzionale) anche senza Time. Ogni esecutore usa un telefono personale; un altro dispositivo è rifiutato finché un admin (Persone → Team → Modifica) o un caposquadra (portale) non consente un nuovo dispositivo. GPS opzionale alla timbratura: senza segnale al chiuso la timbratura passa comunque. Uno spostamento troppo rapido tra Clock Point (entro 5 minuti) genera un allarme. Dopo l’accesso ci sono Le mie ore (solo i tuoi turni, per mese) e la tessera Elenco evacuazione: i nomi solo dopo conferma che la consultazione è eccezionale e viene registrata. Inclusa nella prova; opzionale sul piano a pagamento. Un amministratore o un collaboratore può timbrare manualmente un esecutore su un Clock Point se ha dimenticato il telefono (nessun dispositivo collegato; etichetta Timbrato manualmente). Per team puoi impostare una pausa minima (es. 30 minuti): all’uscita viene conteggiata sul foglio ore se è stata timbrata meno pausa (o nessuna); un admin può anche applicarla in Time → Ore. Nessun evento CIAO extra.",
+            "body": "Time è la timbratrice opzionale: ingresso/uscita tramite QR Clock Point (pause e turni inclusi). Ogni marcatura (ingresso, uscita, spostamento) richiede una nuova scansione dell’adesivo QR; una scheda aperta non basta per timbrare da casa. La ricerca per nome è per sede: solo gli esecutori autorizzati (o team mobili) vedono il nome. I colleghi con team timbratura timbrano dal profilo collegato. Clock Point resta il QR di accesso (nome + icona, PIN opzionale) anche senza Time. Ogni esecutore usa un telefono personale; un altro dispositivo è rifiutato finché un admin (Persone → Team → Modifica) o un caposquadra (portale) non consente un nuovo dispositivo. GPS opzionale alla timbratura: senza segnale al chiuso la timbratura passa comunque. Uno spostamento troppo rapido tra Clock Point (entro 5 minuti) genera un allarme. Dopo l’accesso ci sono Le mie ore (solo i tuoi turni, per mese) e Il mio turno (servizi pubblicati del mese) e la tessera Elenco evacuazione: i nomi solo dopo conferma che la consultazione è eccezionale e viene registrata. Inclusa nella prova; opzionale sul piano a pagamento. Un amministratore o un collaboratore può timbrare manualmente un esecutore su un Clock Point se ha dimenticato il telefono (nessun dispositivo collegato; etichetta Timbrato manualmente). Per team puoi impostare una pausa minima (es. 30 minuti): all’uscita viene conteggiata sul foglio ore se è stata timbrata meno pausa (o nessuna); un admin può anche applicarla in Time → Ore. Nessun evento CIAO extra.",
             "summary": "Time: timbratura Clock Point (nuova scansione QR per marcatura), un telefono, PIN/GPS opzionali, allarme hop 5 min, Le mie ore su Clock Point, elenco evacuazione dopo conferma; timbratura manuale in back office se il telefono è dimenticato. Pausa team: minimo per team sul foglio ore, automatico in uscita o manuale in back office."
         },
         "esg": {
@@ -321,8 +321,8 @@
             "slug": "time_schedule",
             "type": "text",
             "title": "Che cos’è il turno pianificato?",
-            "body": "In Time → Turni pianifichi i servizi per esecutore: codice o orario libero 07:00-15:00. I codici di assenza si impostano in Time → Tipi di turno. Salva conserva il periodo visibile; pubblica lo rende visibile sul Clock Point. Pubblicare non invia nulla all’ONSS.",
-            "summary": "Time → Turni: codici, assenze, Il mio turno sul Clock Point."
+            "body": "In Time → Turni pianifichi i servizi per esecutore: codice (tipo di turno) o orario libero 07:00-15:00. I codici di assenza (ferie, recupero, malattia) si impostano in Time → Tipi di turno; coprono l’intera giornata e non contano ore. Passa da settimana a mese. Salva conserva il periodo visibile; pubblica lo rende visibile sul Clock Point (Il mio turno) con un badge. Pubblicare non invia nulla all’ONSS. Gli scostamenti (timbratura in ritardo) si vedono subito, anche oggi; le timbrature mancanti solo dopo la fine prevista. Copiare una settimana (solo vista settimana) è tutto o niente.",
+            "summary": "Time → Turni: codici, assenze, settimana/mese, Il mio turno sul Clock Point, pianificato vs timbrato."
         }
     }
 }

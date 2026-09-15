@@ -66,6 +66,23 @@ return [
         ],
         [
             'patterns' => [
+                'mijn rooster', 'my roster', 'mon planning', 'mein dienstplan',
+                'mi cuadrante', 'il mio turno',
+                'afwezigheid', 'verlof', 'ziek', 'absence', 'sick leave',
+                'congé', 'urlaub', 'ferie', 'baja',
+                'gepland vs geklokt', 'planned vs clocked',
+            ],
+            'body_key' => 'faq.items.time_schedule.summary',
+        ],
+        [
+            'patterns' => [
+                'vroegere meldingen', 'previous reports', 'anciens signalements',
+                'frühere meldungen', 'informes anteriores', 'segnalazioni precedenti',
+            ],
+            'body_key' => 'faq.items.reporter_portal.summary',
+        ],
+        [
+            'patterns' => [
                 'uurrooster', 'dienstplan', 'shift types', 'shiftypes', 'planned shift',
                 'horaire', 'roster', 'orario', 'horario',
             ],

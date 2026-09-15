@@ -822,6 +822,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - Icoon-set = **12** (zie QR-portaal); lockout automatisch na 2 foute pogingen.
 - **Clock Point-lookup** filtert op vestiging van het Clock Point; **invallerteam** (`clocks_all_locations`) ziet naam overal.
 - **Eén open WorkShift** per worker; op een andere Clock Point toont het portaal waar je bent ingeklokt + **Verplaats naar hier** (zelfde dienst: `presence_clock_point_id` + hop in `location_hops`, geen nieuwe shift).
+- **Thuisgroep (uurrooster):** optioneel `workers.default_unit_id` → unit met `roster_code` (zie §5g.5). Cel-plek `D1/G1` blijft apart.
 - **Licentie:** actieve users + actieve workers **zonder** `user_id` (gekoppeld collega+worker = 1 licentie).
 
 ### 6.4 Desktop SSO — Microsoft Entra OIDC (v1)

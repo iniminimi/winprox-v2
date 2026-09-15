@@ -73,11 +73,38 @@ return [
         ],
         [
             'patterns' => [
+                'mijn rooster', 'my roster', 'mon planning', 'mein dienstplan',
+                'mi cuadrante', 'il mio turno',
+            ],
+            'page' => 'portal.time',
+            'prefer' => ['mijn rooster', 'my roster', 'mon planning', 'mein dienstplan'],
+        ],
+        [
+            'patterns' => [
                 'shift types', 'shiftypes', 'shiftype', 'schichttyp', 'types de service',
                 'tipos de turno', 'tipi di turno',
             ],
             'page' => 'time.shift_types',
             'prefer' => ['shiftype', 'shift types', 'schichttyp'],
+        ],
+        [
+            'patterns' => [
+                'afwezigheid', 'verlof', 'ziek', 'recup',
+                'absence', 'sick leave', 'time off in lieu',
+                'congé', 'maladie', 'urlaub', 'krank',
+                'baja', 'permiso', 'ferie', 'malattia',
+                'gepland vs geklokt', 'planned vs clocked',
+            ],
+            'page' => 'time.schedule',
+            'prefer' => ['afwezigheid', 'absence', 'verlof', 'ziek'],
+        ],
+        [
+            'patterns' => [
+                'vroegere meldingen', 'previous reports', 'anciens signalements',
+                'frühere meldungen', 'informes anteriores', 'segnalazioni precedenti',
+            ],
+            'page' => 'locations.categories',
+            'prefer' => ['vroegere meldingen', 'previous reports'],
         ],
         [
             'patterns' => [

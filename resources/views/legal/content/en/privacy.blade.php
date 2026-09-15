@@ -89,6 +89,9 @@
     after confirmation, consult the evacuation list of who is currently clocked in; each consultation is logged
     (first name, last name, date and time of the person who viewed it).
     After sign-in a worker can open My hours: only their own shifts for the selected month.
+    After the roster is published, My roster shows only that worker’s published shifts and absences
+    (leave, time off in lieu, sick) for the month. Those codes are entered by the customer;
+    WinProx stores them as processor.
     The customer may set a minimum unpaid break per team on the timesheet. If little or no live break
     was clocked and the shift is long enough, WinProx may store that minimum as break minutes.
     That timesheet value is not sent to RSZ CIAO as an extra IN/OUT.

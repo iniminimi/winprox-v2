@@ -509,6 +509,10 @@
                     "text": "Al editar, elija una o más sedes. Vacío = fichar en cualquier sitio (predeterminado para ejecutores existentes). En Clock Point el ejecutor solo ve su nombre en sedes asignadas, salvo que el equipo tenga **Puede fichar en cualquier sede**."
                 },
                 {
+                    "label": "Grupo base (cuadrante)",
+                    "text": "Opcionalmente elija un <strong>grupo base</strong> en el ejecutor (unidad con código de cuadrante). En Time → Cuadrante, con filtro de sede, agrupa las filas. La plaza en una celda (D1/G1) sigue aparte."
+                },
+                {
                     "label": "Trabajadores externos",
                     "text": "Al añadir o editar, marque <strong>Trabajador externo</strong> para instaladores, pintores, autónomos u otras fuerzas externas. Después puede indicar opcionalmente un nombre de empresa (p. ej. Electricidad García). En la lista se reconocen por la insignia <strong>Ext</strong> y el nombre de empresa si está indicado. Usan el mismo flujo de Clock Point y QR de unidad que los trabajadores internos: sin portal ni inicio de sesión aparte."
                 },
@@ -754,6 +758,10 @@
                 {
                     "label": "Informar incidencia",
                     "text": "Pulse «Crear aviso», describa el problema y añada opcionalmente hasta cuatro fotos. Nombre, apellidos y correo son opcionales — salvo que el administrador haya hecho obligatorios los datos de contacto; rellénelos entonces. Si la confirmación de correo está activa, recibes un enlace: el informe solo se crea tras confirmarlo. Se crea una tarea para el equipo. El aviso debe aprobarse antes de verse en el portal. Límites anti-spam: como máximo un aviso cada 3 minutos y cinco cada 30 minutos para esta unidad (por dispositivo)."
+                },
+                {
+                    "label": "Informes anteriores",
+                    "text": "Si el administrador deja esto activado para la categoría, verá informes abiertos de esta unidad tras la aprobación. Si está desactivado, no aparece el mosaico (habitación de hotel, aseo, …)."
                 },
                 {
                     "label": "Reservar",

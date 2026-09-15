@@ -509,6 +509,10 @@
                     "text": "When editing, pick one or more locations. Empty = clock in anywhere (default for existing workers). On Clock Point the worker only sees their name at assigned locations, unless the team has **May clock in anywhere**."
                 },
                 {
+                    "label": "Home group (roster)",
+                    "text": "Optionally set a <strong>home group</strong> on the worker (unit with a roster code). On Time → Roster, with a location filter, that groups the rows. The slot in a cell (D1/G1) stays separate — the home group is not auto-filled."
+                },
+                {
                     "label": "External workers",
                     "text": "When adding or editing a worker, tick <strong>External worker</strong> for installers, painters, freelancers or other external staff. You can then optionally enter a company name (e.g. BrightSpark Electrical). In the list they show an <strong>Ext</strong> badge and the company name if set. They use the same Clock Point and unit-QR flow as internal workers — no separate portal or login."
                 },
@@ -754,6 +758,10 @@
                 {
                     "label": "Report issue",
                     "text": "Tap \"Create report\", describe the problem and optionally add up to four photos. First name, last name and email are optional — unless the administrator made contact details required; then fill them in. If email confirmation is on, you receive a link: the report is only created after you confirm it. A task is then created for the team. The report must be approved before it appears on the portal. Anti-spam limits apply: at most one report per 3 minutes and five reports per 30 minutes for this unit (per device)."
+                },
+                {
+                    "label": "Previous reports",
+                    "text": "If the administrator leaves this on for the category, you see open reports for this unit after approval. If it is off, that tile is hidden (for example a hotel room or restroom)."
                 },
                 {
                     "label": "Reserve",

@@ -509,6 +509,10 @@
                     "text": "Bij bewerken kies je één of meer vestigingen. Leeg = overal inklokken (standaard voor bestaande uitvoerders). Op Clock Point ziet de uitvoerder zijn naam alleen op toegewezen vestigingen, tenzij het team **Mag overal inklokken** heeft."
                 },
                 {
+                    "label": "Standaardgroep (uurrooster)",
+                    "text": "Optioneel kiest u bij de uitvoerder een <strong>thuisgroep</strong> (unit met roostercode). Op Time → Uurrooster, met locatiefilter, groepeert dat de rijen. De plek in een cel (D1/G1) blijft apart — die vult de thuisgroep niet automatisch in."
+                },
+                {
                     "label": "Externe uitvoerders",
                     "text": "Vink bij het toevoegen of bewerken <strong>Externe uitvoerder</strong> aan voor installateurs, schilders, zzp’ers of andere externe krachten. Optioneel vul je daarna een bedrijfsnaam in (bijv. Elektro Peeters). In de lijst herken je hen aan het badge <strong>Ext</strong> en eventueel de bedrijfsnaam. Ze gebruiken dezelfde Clock Point- en unit-QR-flow als interne uitvoerders — geen apart portaal of login."
                 },
@@ -754,6 +758,10 @@
                 {
                     "label": "Melding doen",
                     "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Voornaam, naam en e-mail zijn optioneel — tenzij de beheerder contactgegevens verplicht heeft gemaakt; vul ze dan in. Als e-mailbevestiging aanstaat, ontvang je een link: de melding wordt pas aangemaakt nadat je die bevestigt. Er wordt vervolgens een taak aangemaakt voor het team. De melding moet eerst worden goedgekeurd voordat deze zichtbaar wordt op het portaal. Tegen spam gelden limieten: maximaal één melding per 3 minuten en maximaal vijf meldingen per 30 minuten voor deze unit (per apparaat)."
+                },
+                {
+                    "label": "Vroegere meldingen",
+                    "text": "Als de beheerder dit voor de categorie aan laat staan, zie je na goedkeuring open meldingen van deze unit. Staat het uit, dan ontbreekt die tegel (bijvoorbeeld hotelkamer of sanitaire ruimte)."
                 },
                 {
                     "label": "Reserveren",
