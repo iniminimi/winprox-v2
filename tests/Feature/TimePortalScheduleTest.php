@@ -106,7 +106,9 @@ it('toont alleen published eigen diensten en zet de badge weg', function () {
         ->call('openSchedule')
         ->assertSet('scheduleListOpen', true)
         ->assertSee(__('time.schedule.types.kinds.leave'), false)
-        ->assertSet('scheduleWeek', $week);
+        ->assertSee('14/09', false)
+        ->assertSet('scheduleMonth', '2026-09-01')
+        ->assertDontSee('wp-list', false);
 
     expect(WorkerNotification::query()->where('worker_id', $worker->id)->whereNull('read_at')->count())->toBe(0);
 });
@@ -160,5 +162,47 @@ it('toont de groepsnaam uit de snapshot op Mijn rooster', function () {
     signInScheduleWorker($clockPoint)
         ->call('openSchedule')
         ->assertSee('Groep 1', false)
-        ->assertSee('Dagdienst', false);
+        ->assertSee('Dagdienst', false)
+        ->assertSee('07:00-15:00', false)
+        ->assertSee('14/09', false);
+});
+
+it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () {
+    [$tenant, $team, $clockPoint, $worker] = schedulePortalTenant();
+    $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
+    app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('D1', 'Dagdienst 1', '08:00', '17:00', 30, ShiftTypeColor::Emerald),
+        null,
+    );
+
+    $cells = [];
+    $monday = Carbon::parse($week);
+    for ($i = 0; $i < 7; $i++) {
+        $date = $monday->copy()->addDays($i)->toDateString();
+        $cells[] = [
+            'worker_id' => $worker->id,
+            'date' => $date,
+            'raw' => in_array($i, [0, 2], true) ? 'D1' : '',
+        ];
+    }
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], $cells),
+        null,
+    );
+    app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData($week, [$worker->id]),
+        null,
+    );
+
+    signInScheduleWorker($clockPoint)
+        ->call('openSchedule')
+        ->assertSee('Dagdienst 1 - 08:00-17:00', false)
+        ->assertSee('14/09 : Dagdienst 1 - 08:00-17:00', false)
+        ->assertSee('16/09 : Dagdienst 1 - 08:00-17:00', false)
+        ->assertDontSee('15/09', false)
+        ->assertSeeHtml('wp-portal-schedule__lines');
 });

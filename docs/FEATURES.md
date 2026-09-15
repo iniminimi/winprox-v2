@@ -753,9 +753,11 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   blijft onafhankelijk (geen auto-invullen van thuisgroep).
   Locatie leegmaken → platte workerlijst, groepfilters reset.
 - **Copy week:** alles-of-niets; alleen in weekweergave; doelweek met bestaande diensten → weigeren.
-- **Golf 2 — Mijn rooster:** Clock Point-tegel, alleen eigen `published` week. Badge = ongelezen
-  `roster_published` (`wp-pill--new`). Klik opent de nieuwste ongelezen week en zet `read_at`
-  voor dat type. Geen inbox, geen mail, geen Laravel notifications.
+- **Golf 2 — Mijn rooster:** Clock Point-tegel, alleen eigen `published` diensten van de
+  **maand**. Beknopte lijst in één kader (`ma 14/09 : Dagdienst - 08:00-17:00`); lege dagen
+  worden overgeslagen. Badge = ongelezen `roster_published` (`wp-pill--new`). Klik opent de
+  maand van de nieuwste ongelezen publicatie en zet `read_at` voor dat type. Geen inbox, geen
+  mail, geen Laravel notifications.
 - **Golf 2 — gepland vs geklokt:** alleen beheer, verleden, published. Missing / deviation /
   unplanned / ok. Afwezigheid zonder prik = ok; mét prik = ungepland. Geen locatievergelijking.
 - **Niet in deze slice:** saldo, aanvraag/ruilen, CSV, rusttijden, beschikbaarheid, mail/SMS.

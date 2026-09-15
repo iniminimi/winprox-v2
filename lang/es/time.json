@@ -300,13 +300,13 @@
         },
         "schedule": {
             "tile": "Mi cuadrante",
-            "tile_sub": "Tu semana planificada",
+            "tile_sub": "Su mes planificado",
             "title": "Mi cuadrante",
-            "subtitle": "Solo tus turnos y ausencias publicados.",
-            "empty": "Nada planificado esta semana.",
-            "week_nav": "Semana",
-            "previous_week": "Semana anterior",
-            "next_week": "Semana siguiente"
+            "subtitle": "Solo sus turnos y ausencias publicados.",
+            "empty": "Nada planificado este mes.",
+            "month_nav": "Mes",
+            "previous_month": "Mes anterior",
+            "next_month": "Mes siguiente"
         }
     },
     "ciao": {

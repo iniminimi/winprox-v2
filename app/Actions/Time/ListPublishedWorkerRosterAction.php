@@ -13,9 +13,9 @@ use InvalidArgumentException;
 
 class ListPublishedWorkerRosterAction
 {
-    public function __construct(private ResolveRosterWeekAction $resolveWeek) {}
+    public function __construct(private ResolveRosterMonthAction $resolveMonth) {}
 
-    public function handle(Worker $worker, int $tenantId, string $weekStart): WorkerRosterSnapshot
+    public function handle(Worker $worker, int $tenantId, string $cursor, ?string $locale = null): WorkerRosterSnapshot
     {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
@@ -23,16 +23,17 @@ class ListPublishedWorkerRosterAction
             throw new InvalidArgumentException('worker_tenant_mismatch');
         }
 
-        [$monday, , $dates] = $this->resolveWeek->handle($weekStart);
-        $weekStartDate = $dates[0];
-        $weekEndDate = $dates[6];
+        $locale = $locale ?: app()->getLocale();
+        [$start, $end] = $this->resolveMonth->handle($cursor);
+        $monthStart = $start->toDateString();
+        $monthEnd = $end->toDateString();
 
         $shifts = PlannedShift::query()
             ->with('shiftType')
             ->where('tenant_id', $tenantId)
             ->where('worker_id', $worker->id)
             ->where('status', PlannedShiftStatus::Published->value)
-            ->whereBetween('work_date', [$weekStartDate, $weekEndDate])
+            ->whereBetween('work_date', [$monthStart, $monthEnd])
             ->orderBy('work_date')
             ->orderBy('id')
             ->get();
@@ -41,40 +42,49 @@ class ListPublishedWorkerRosterAction
         foreach ($shifts as $shift) {
             $entries[] = new WorkerRosterEntry(
                 date: $shift->work_date->toDateString(),
-                label: $this->label($shift),
+                line: $this->line($shift, $locale),
                 kind: $shift->kind->value,
             );
         }
 
         return new WorkerRosterSnapshot(
-            weekStart: $monday->toDateString(),
-            weekEnd: $weekEndDate,
-            dates: $dates,
+            monthStart: $monthStart,
+            monthEnd: $monthEnd,
+            monthLabel: $start->locale($locale)->translatedFormat('F Y'),
             entries: $entries,
         );
     }
 
-    private function label(PlannedShift $shift): string
+    private function line(PlannedShift $shift, string $locale): string
     {
+        $day = $shift->work_date->copy()->locale($locale);
+        $prefix = $day->isoFormat('dd').' '.$day->format('d/m');
+
         if ($shift->kind->isAbsence()) {
-            return __('time.schedule.types.kinds.'.$shift->kind->value);
+            return $prefix.' : '.__('time.schedule.types.kinds.'.$shift->kind->value);
         }
 
-        $start = $shift->start_time !== null ? substr($shift->start_time, 0, 5) : '';
-        $end = $shift->end_time !== null ? substr($shift->end_time, 0, 5) : '';
-        $window = $start !== '' && $end !== '' ? $start.'–'.$end : '';
+        $start = $shift->start_time !== null ? substr((string) $shift->start_time, 0, 5) : '';
+        $end = $shift->end_time !== null ? substr((string) $shift->end_time, 0, 5) : '';
+        $window = $start !== '' && $end !== '' ? $start.'-'.$end : '';
 
         $type = $shift->shiftType;
         if ($type !== null && $type->is_active && $type->kind === ShiftTypeKind::Work) {
-            $base = trim($type->label.' '.$window);
+            $duty = $window !== '' ? $type->label.' - '.$window : $type->label;
         } else {
-            $base = $window;
+            $duty = $window;
         }
 
         $place = is_string($shift->unit_name) && $shift->unit_name !== ''
             ? $shift->unit_name
             : '';
 
-        return $place !== '' ? trim($base.' · '.$place) : $base;
+        if ($place !== '' && $duty !== '') {
+            $duty .= ' · '.$place;
+        } elseif ($place !== '') {
+            $duty = $place;
+        }
+
+        return $prefix.' : '.$duty;
     }
 }

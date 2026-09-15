@@ -300,13 +300,13 @@
         },
         "schedule": {
             "tile": "Mijn rooster",
-            "tile_sub": "Jouw geplande week",
+            "tile_sub": "Jouw geplande maand",
             "title": "Mijn rooster",
             "subtitle": "Alleen jouw gepubliceerde diensten en afwezigheden.",
-            "empty": "Niets gepland in deze week.",
-            "week_nav": "Week",
-            "previous_week": "Vorige week",
-            "next_week": "Volgende week"
+            "empty": "Niets gepland in deze maand.",
+            "month_nav": "Maand",
+            "previous_month": "Vorige maand",
+            "next_month": "Volgende maand"
         }
     },
     "ciao": {

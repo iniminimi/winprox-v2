@@ -944,7 +944,7 @@
                 },
                 {
                     "label": "Mi cuadrante",
-                    "text": "Tras identificarte ves la ficha Mi cuadrante. Solo muestra tus turnos y ausencias <strong>publicados</strong> de la semana elegida. Una insignia significa un cuadrante recién publicado; al abrirlo desaparece."
+                    "text": "Tras identificarte ves la ficha Mi cuadrante. Solo muestra tus turnos y ausencias <strong>publicados</strong> del <strong>mes</strong> elegido, en lista compacta (días vacíos omitidos). Una insignia significa un cuadrante recién publicado; al abrirlo desaparece."
                 },
                 {
                     "label": "Cerrar sesión",

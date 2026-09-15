@@ -201,7 +201,7 @@
                     </x-wp-page-head-title>
                     @include('partials.wp-portal-worker-schedule', [
                         'schedule' => $schedule,
-                        'scheduleWeekLabel' => $scheduleWeekLabel,
+                        'scheduleMonthLabel' => $scheduleMonthLabel,
                     ])
                 @elseif ($rosterListOpen && $roster !== null)
                     <x-wp-portal-back wire:click="closeRoster" />

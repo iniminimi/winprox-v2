@@ -3118,6 +3118,19 @@ a.wp-pagination__page:active:not(.is-active) {
     flex-shrink: 0;
 }
 
+.wp-portal-schedule__lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.wp-portal-schedule__line {
+    margin: 0;
+    color: var(--wp-text-body);
+    font-size: 0.9375rem;
+    line-height: 1.4;
+}
+
 .wp-flash {
     padding: 0.75rem 1rem;
     border: 1px solid var(--wp-accent-border);

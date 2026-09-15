@@ -300,13 +300,13 @@
         },
         "schedule": {
             "tile": "Mein Dienstplan",
-            "tile_sub": "Deine geplante Woche",
+            "tile_sub": "Ihr geplanter Monat",
             "title": "Mein Dienstplan",
-            "subtitle": "Nur deine veröffentlichten Dienste und Abwesenheiten.",
-            "empty": "Diese Woche nichts geplant.",
-            "week_nav": "Woche",
-            "previous_week": "Vorherige Woche",
-            "next_week": "Nächste Woche"
+            "subtitle": "Nur Ihre veröffentlichten Dienste und Abwesenheiten.",
+            "empty": "Nichts geplant in diesem Monat.",
+            "month_nav": "Monat",
+            "previous_month": "Vorheriger Monat",
+            "next_month": "Nächster Monat"
         }
     },
     "ciao": {

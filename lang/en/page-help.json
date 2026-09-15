@@ -944,7 +944,7 @@
                 },
                 {
                     "label": "My roster",
-                    "text": "After signing in you see the My roster tile. It shows only your <strong>published</strong> shifts and absences for the chosen week. A badge means a newly published roster; opening it clears the badge."
+                    "text": "After signing in you see the My roster tile. It shows only your <strong>published</strong> shifts and absences for the chosen <strong>month</strong>, as a compact list (empty days are skipped). A badge means a newly published roster; opening it clears the badge."
                 },
                 {
                     "label": "Sign out",

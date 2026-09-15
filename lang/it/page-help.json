@@ -944,7 +944,7 @@
                 },
                 {
                     "label": "Il mio turno",
-                    "text": "Dopo l’accesso vedi la tessera Il mio turno. Mostra solo i tuoi turni e assenze <strong>pubblicati</strong> della settimana scelta. Un badge indica un turno appena pubblicato; aprendolo il badge sparisce."
+                    "text": "Dopo l’accesso vedi la tessera Il mio turno. Mostra solo i tuoi turni e assenze <strong>pubblicati</strong> del <strong>mese</strong> scelto, in elenco compatto (giorni vuoti saltati). Un badge indica un turno appena pubblicato; aprendolo il badge sparisce."
                 },
                 {
                     "label": "Esci",

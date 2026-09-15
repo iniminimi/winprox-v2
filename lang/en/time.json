@@ -300,13 +300,13 @@
         },
         "schedule": {
             "tile": "My roster",
-            "tile_sub": "Your planned week",
+            "tile_sub": "Your planned month",
             "title": "My roster",
             "subtitle": "Only your published shifts and absences.",
-            "empty": "Nothing planned this week.",
-            "week_nav": "Week",
-            "previous_week": "Previous week",
-            "next_week": "Next week"
+            "empty": "Nothing planned this month.",
+            "month_nav": "Month",
+            "previous_month": "Previous month",
+            "next_month": "Next month"
         }
     },
     "ciao": {

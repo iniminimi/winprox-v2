@@ -300,13 +300,13 @@
         },
         "schedule": {
             "tile": "Mon planning",
-            "tile_sub": "Votre semaine planifiée",
+            "tile_sub": "Votre mois planifié",
             "title": "Mon planning",
             "subtitle": "Uniquement vos services et absences publiés.",
-            "empty": "Rien de planifié cette semaine.",
-            "week_nav": "Semaine",
-            "previous_week": "Semaine précédente",
-            "next_week": "Semaine suivante"
+            "empty": "Rien de planifié ce mois-ci.",
+            "month_nav": "Mois",
+            "previous_month": "Mois précédent",
+            "next_month": "Mois suivant"
         }
     },
     "ciao": {
