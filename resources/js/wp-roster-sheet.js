@@ -213,6 +213,54 @@ function applyWeekendColumns(worksheet, weekendCols) {
     }
 }
 
+function rosterTd(cell) {
+    if (!cell) {
+        return null;
+    }
+    if (cell.tagName === 'TD') {
+        return cell;
+    }
+
+    return cell.closest?.('td') ?? cell;
+}
+
+/**
+ * Groep kleiner onder de code. Eén wrapper, idempotent — geen flex op de TD
+ * (dat gaf eerder herhaalde stacks in Jspreadsheet).
+ */
+function paintStackedCell(td, value) {
+    const text = cellText(value).trim();
+    const split = text === '' ? null : splitDutyAndUnit(text);
+    const key = split && split[1] ? `${split[0]}/${split[1].toUpperCase()}` : '';
+
+    if (!key) {
+        if (td.dataset.wpStack) {
+            delete td.dataset.wpStack;
+            td.textContent = text;
+        }
+
+        return false;
+    }
+
+    if (td.dataset.wpStack === key && td.querySelector(':scope > .wp-roster-cell__stack')) {
+        return true;
+    }
+
+    const wrap = document.createElement('span');
+    wrap.className = 'wp-roster-cell__stack';
+    const dutyEl = document.createElement('span');
+    dutyEl.className = 'wp-roster-cell__duty';
+    dutyEl.textContent = split[0];
+    const unitEl = document.createElement('span');
+    unitEl.className = 'wp-roster-cell__unit';
+    unitEl.textContent = split[1].toUpperCase();
+    wrap.append(dutyEl, unitEl);
+    td.replaceChildren(wrap);
+    td.dataset.wpStack = key;
+
+    return true;
+}
+
 function applyCellClasses(worksheet, payload) {
     if (!worksheet || typeof worksheet.getData !== 'function') {
         return;
@@ -226,9 +274,11 @@ function applyCellClasses(worksheet, payload) {
             if (colIndex === 0) {
                 return;
             }
-            const cell = typeof worksheet.getCellFromCoords === 'function'
-                ? worksheet.getCellFromCoords(colIndex, rowIndex)
-                : null;
+            const cell = rosterTd(
+                typeof worksheet.getCellFromCoords === 'function'
+                    ? worksheet.getCellFromCoords(colIndex, rowIndex)
+                    : null,
+            );
             if (!cell) {
                 return;
             }
@@ -238,8 +288,7 @@ function applyCellClasses(worksheet, payload) {
                 }
             });
             cell.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
-            const split = splitDutyAndUnit(cellText(value).trim());
-            if (split && split[1]) {
+            if (paintStackedCell(cell, value)) {
                 cell.classList.add('wp-roster-cell--stacked');
             }
             const worker = payload.workers?.[rowIndex];
