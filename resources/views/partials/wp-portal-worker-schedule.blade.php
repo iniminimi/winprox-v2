@@ -10,10 +10,19 @@
     @if ($schedule->entries === [])
         <p class="wp-muted">{{ __('time.portal.schedule.empty') }}</p>
     @else
-        <div class="wp-portal-schedule__lines">
-            @foreach ($schedule->entries as $entry)
-                <p class="wp-portal-schedule__line" wire:key="schedule-entry-{{ $entry->date }}-{{ $entry->kind }}">{{ $entry->line }}</p>
-            @endforeach
-        </div>
+        <table class="wp-portal-schedule__table">
+            <tbody>
+                @foreach ($schedule->entries as $entry)
+                    <tr
+                        wire:key="schedule-entry-{{ $entry->date }}-{{ $entry->kind }}"
+                        @class(['wp-portal-schedule__row--week-start' => $entry->weekStart])
+                    >
+                        <td class="wp-portal-schedule__day">{{ $entry->dayLabel }}</td>
+                        <td class="wp-portal-schedule__sep" aria-hidden="true">:</td>
+                        <td class="wp-portal-schedule__detail">{{ $entry->detail }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     @endif
 </div>

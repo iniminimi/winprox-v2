@@ -183,7 +183,17 @@ it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () 
         $cells[] = [
             'worker_id' => $worker->id,
             'date' => $date,
-            'raw' => in_array($i, [0, 2], true) ? 'D1' : '',
+            'raw' => in_array($i, [0, 4], true) ? 'D1' : '', // ma + vr
+        ];
+    }
+    $nextMonday = $monday->copy()->addWeek()->toDateString();
+    $nextWeekCells = [];
+    for ($i = 0; $i < 7; $i++) {
+        $date = Carbon::parse($nextMonday)->addDays($i)->toDateString();
+        $nextWeekCells[] = [
+            'worker_id' => $worker->id,
+            'date' => $date,
+            'raw' => $i === 0 ? 'D1' : '',
         ];
     }
 
@@ -192,17 +202,30 @@ it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () 
         new SavePlannedShiftsData($week, [$worker->id], $cells),
         null,
     );
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($nextMonday, [$worker->id], $nextWeekCells),
+        null,
+    );
     app(PublishWeekAction::class)->handle(
         $tenant,
         new PublishWeekData($week, [$worker->id]),
         null,
     );
+    app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData($nextMonday, [$worker->id]),
+        null,
+    );
 
     signInScheduleWorker($clockPoint)
         ->call('openSchedule')
-        ->assertSee('Dagdienst 1 - 08:00-17:00', false)
-        ->assertSee('14/09 : Dagdienst 1 - 08:00-17:00', false)
-        ->assertSee('16/09 : Dagdienst 1 - 08:00-17:00', false)
+        ->assertSee('Dagdienst 1', false)
+        ->assertSee('08:00-17:00', false)
+        ->assertSee('14/09', false)
+        ->assertSee('18/09', false)
+        ->assertSee('21/09', false)
         ->assertDontSee('15/09', false)
-        ->assertSeeHtml('wp-portal-schedule__lines');
+        ->assertSeeHtml('wp-portal-schedule__table')
+        ->assertSeeHtml('wp-portal-schedule__row--week-start');
 });

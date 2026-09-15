@@ -3118,17 +3118,39 @@ a.wp-pagination__page:active:not(.is-active) {
     flex-shrink: 0;
 }
 
-.wp-portal-schedule__lines {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+.wp-portal-schedule__table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.wp-portal-schedule__line {
-    margin: 0;
+.wp-portal-schedule__table td {
+    padding: 0.2rem 0;
+    vertical-align: top;
     color: var(--wp-text-body);
     font-size: 0.9375rem;
     line-height: 1.4;
+}
+
+.wp-portal-schedule__day {
+    width: 1%;
+    white-space: nowrap;
+    padding-right: 0.15rem !important;
+}
+
+.wp-portal-schedule__sep {
+    width: 1%;
+    white-space: nowrap;
+    padding-right: 0.5rem !important;
+    color: var(--wp-text-muted);
+}
+
+.wp-portal-schedule__detail {
+    width: 99%;
+}
+
+.wp-portal-schedule__row--week-start > td {
+    border-top: 1px solid var(--wp-border);
+    padding-top: 0.55rem !important;
 }
 
 .wp-flash {

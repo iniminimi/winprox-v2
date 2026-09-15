@@ -9,6 +9,7 @@ use App\Enums\ShiftTypeKind;
 use App\Models\PlannedShift;
 use App\Models\Worker;
 use App\Support\Time\TimeModuleAccess;
+use Carbon\Carbon;
 use InvalidArgumentException;
 
 class ListPublishedWorkerRosterAction
@@ -39,12 +40,20 @@ class ListPublishedWorkerRosterAction
             ->get();
 
         $entries = [];
+        $previousDate = null;
         foreach ($shifts as $shift) {
+            $date = $shift->work_date->copy()->startOfDay();
+            $weekStart = $previousDate instanceof Carbon
+                && $date->isMonday()
+                && $previousDate->lt($date);
             $entries[] = new WorkerRosterEntry(
-                date: $shift->work_date->toDateString(),
-                line: $this->line($shift, $locale),
+                date: $date->toDateString(),
+                dayLabel: $this->dayLabel($shift, $locale),
+                detail: $this->detail($shift),
                 kind: $shift->kind->value,
+                weekStart: $weekStart,
             );
+            $previousDate = $date;
         }
 
         return new WorkerRosterSnapshot(
@@ -55,13 +64,17 @@ class ListPublishedWorkerRosterAction
         );
     }
 
-    private function line(PlannedShift $shift, string $locale): string
+    private function dayLabel(PlannedShift $shift, string $locale): string
     {
         $day = $shift->work_date->copy()->locale($locale);
-        $prefix = $day->isoFormat('dd').' '.$day->format('d/m');
 
+        return $day->isoFormat('dd').' '.$day->format('d/m');
+    }
+
+    private function detail(PlannedShift $shift): string
+    {
         if ($shift->kind->isAbsence()) {
-            return $prefix.' : '.__('time.schedule.types.kinds.'.$shift->kind->value);
+            return __('time.schedule.types.kinds.'.$shift->kind->value);
         }
 
         $start = $shift->start_time !== null ? substr((string) $shift->start_time, 0, 5) : '';
@@ -80,11 +93,9 @@ class ListPublishedWorkerRosterAction
             : '';
 
         if ($place !== '' && $duty !== '') {
-            $duty .= ' · '.$place;
-        } elseif ($place !== '') {
-            $duty = $place;
+            return $duty.' · '.$place;
         }
 
-        return $prefix.' : '.$duty;
+        return $place !== '' ? $place : $duty;
     }
 }
