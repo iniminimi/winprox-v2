@@ -461,7 +461,8 @@
         "weekends": "Week-ends activés",
         "legend_units": "Groupes",
         "legend_button": "Légende",
-        "legend_title": "Légende du planning"
+        "legend_title": "Légende du planning",
+        "column_name": "Nom"
     },
     "shift_types": {
         "title": "Types de service",

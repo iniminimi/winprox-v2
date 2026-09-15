@@ -461,7 +461,8 @@
         "weekends": "Fine settimana attivi",
         "legend_units": "Gruppi",
         "legend_button": "Legenda",
-        "legend_title": "Legenda turni"
+        "legend_title": "Legenda turni",
+        "column_name": "Nome"
     },
     "shift_types": {
         "title": "Tipi di turno",

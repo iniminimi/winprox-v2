@@ -461,7 +461,8 @@
         "weekends": "Fines de semana",
         "legend_units": "Grupos",
         "legend_button": "Leyenda",
-        "legend_title": "Leyenda del horario"
+        "legend_title": "Leyenda del horario",
+        "column_name": "Nombre"
     },
     "shift_types": {
         "title": "Tipos de turno",

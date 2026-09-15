@@ -461,7 +461,8 @@
         "weekends": "Weekends on",
         "legend_units": "Groups",
         "legend_button": "Legend",
-        "legend_title": "Roster legend"
+        "legend_title": "Roster legend",
+        "column_name": "Name"
     },
     "shift_types": {
         "title": "Shift types",

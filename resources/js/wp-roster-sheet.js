@@ -398,7 +398,7 @@ export function bind(root, wire) {
         const columns = [
             {
                 type: 'text',
-                title: '',
+                title: payload.name_column || 'Name',
                 width: isMonth ? 128 : 180,
                 readOnly: true,
             },
@@ -431,7 +431,7 @@ export function bind(root, wire) {
         };
         if (isMonth && payload.month_label) {
             worksheetConfig.nestedHeaders = [[
-                { title: '', colspan: 1 },
+                { title: payload.name_column || 'Name', colspan: 1 },
                 { title: payload.month_label, colspan: dayCount },
             ]];
         }

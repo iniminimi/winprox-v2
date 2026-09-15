@@ -461,7 +461,8 @@
         "weekends": "Weekends aan",
         "legend_units": "Groepen",
         "legend_button": "Legende",
-        "legend_title": "Legende uurrooster"
+        "legend_title": "Legende uurrooster",
+        "column_name": "Naam"
     },
     "shift_types": {
         "title": "Shiftypes",

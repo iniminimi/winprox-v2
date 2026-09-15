@@ -148,6 +148,7 @@ class RosterIndex extends Component
 
         $array = $snapshot->toArray();
         $array['invalid_message'] = __('time.schedule.errors.invalid_cells');
+        $array['name_column'] = __('time.schedule.column_name');
 
         return $array;
     }

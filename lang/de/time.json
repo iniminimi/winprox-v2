@@ -461,7 +461,8 @@
         "weekends": "Wochenenden an",
         "legend_units": "Gruppen",
         "legend_button": "Legende",
-        "legend_title": "Dienstplan-Legende"
+        "legend_title": "Dienstplan-Legende",
+        "column_name": "Name"
     },
     "shift_types": {
         "title": "Schichttypen",
