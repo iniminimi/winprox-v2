@@ -73,7 +73,7 @@ linkt naar zijn lijst):
 - Knop **"Meldingen openen"** → meldingenlijst.
 
 **Zwevende elementen**
-- **WinProx-logo** zweeft rechtsboven.
+- **WinProx-logo** staat in de **sidebar** (niet zwevend rechtsboven).
 - **WinProx-assistent** zweeft rechtsonder (chat):
   - Gebruiker stelt een vraag.
   - Staat het antwoord in de DB → toon antwoord.
@@ -89,7 +89,8 @@ klikbare KPI-tegels + alert-state, highlight net-aangemaakte melding, proefperio
 
 **NIET overnemen uit V1-dashboard:** `facility-setup-panel` (onboarding-checklist), contractor-
 panelen ("offerte-documenten" + "wacht op aannemers-reacties"), onboarding-banners,
-proefperiode-**battery-png** (capsule wordt platte tekst), `SectorCapabilities`/`SectorUiCopy`/
+proefperiode-**battery-png** (capsule wordt platte tekst), zwevend WinProx-logo rechtsboven,
+`SectorCapabilities`/`SectorUiCopy`/
 `appMarketingFlow`, alle sector-/property-conditionals. Property → **Location** in copy en data.
 
 ---

@@ -485,7 +485,7 @@
     min-width: 0;
 }
 
-/* Hoofdkolom (geen topbalk â€” logo zweeft rechtsboven). */
+/* Hoofdkolom (geen topbalk). */
 .wp-content {
     min-width: 0;
     display: flex;
@@ -493,8 +493,7 @@
 }
 
 .wp-header-search {
-    padding: 0.75rem 1.75rem 0.75rem 1.75rem;
-    padding-right: 6.5rem;
+    padding: 0.75rem 1.75rem;
     max-width: var(--wp-content-max);
     width: 100%;
 }
@@ -502,45 +501,12 @@
 .wp-main {
     min-width: 0;
     padding: 1.75rem;
-    padding-right: 6.5rem;
     max-width: var(--wp-content-max);
     width: 100%;
 }
 
 .wp-main:has(.wp-roster-page--month) {
     max-width: none;
-}
-
-/* Zwevend WinProx-logo rechtsboven (V1). */
-.wp-brand-float {
-    position: fixed;
-    top: max(0.75rem, env(safe-area-inset-top));
-    right: max(0.75rem, env(safe-area-inset-right));
-    z-index: 35;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid var(--wp-border-strong);
-    border-radius: 0.95rem;
-    background-color: var(--wp-surface);
-    box-shadow: var(--wp-shadow-lg);
-    text-decoration: none;
-    transition: box-shadow var(--wp-transition), transform var(--wp-transition);
-}
-
-.wp-brand-float:hover {
-    text-decoration: none;
-    box-shadow: var(--wp-shadow-lg);
-    transform: translateY(-1px);
-}
-
-.wp-brand-float-img {
-    display: block;
-    width: auto;
-    height: 2rem;
-    max-width: min(4rem, 22vw);
-    object-fit: contain;
 }
 
 /* Menu-knop linksboven op smalle schermen (zijbalk is off-canvas). */
@@ -807,7 +773,6 @@
 
     .wp-header-search {
         padding-left: 3.5rem;
-        padding-top: max(3.25rem, calc(0.75rem + env(safe-area-inset-top)));
     }
 
     .wp-main {

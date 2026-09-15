@@ -65,6 +65,26 @@ it('toont na registratie een succesblok met assistant task video op dashboard', 
         ->assertSee(__('dashboard.register_success.title'));
 });
 
+it('toont geen zwevend WinProx-logo in de desktop-app', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSee('wp-brand-float', false)
+        ->assertSee('wp-sidebar-header-logo', false);
+});
+
 it('toont meldingen van een andere tenant niet op het dashboard', function () {
     $tenantA = Tenant::factory()->create();
     $tenantB = Tenant::factory()->create();

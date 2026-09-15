@@ -465,14 +465,6 @@
             <x-wp-icon name="menu" class="wp-icon" />
         </button>
 
-        <a href="{{ route('dashboard') }}" class="wp-brand-float" aria-label="WinProx">
-            @if (file_exists(public_path('images/Winprox_logo_100.png')))
-                <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="" width="32" height="32" class="wp-brand-float-img">
-            @else
-                <img src="{{ asset('images/Winprox_logo_200.png') }}" alt="" width="72" height="40" class="wp-brand-float-img">
-            @endif
-        </a>
-
         <div class="wp-content">
             @if ($supportTenant)
                 <div class="wp-support-banner-bar" role="status">
