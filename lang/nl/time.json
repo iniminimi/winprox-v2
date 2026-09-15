@@ -369,6 +369,7 @@
     },
     "schedule": {
         "title": "Uurrooster",
+        "document_title": "Uurrooster — WinProx",
         "subtitle": "Plan diensten per uitvoerder. Codes of vrije tijden, optioneel met groep (D1/G1).",
         "week": "Week",
         "workers": "Uitvoerders",

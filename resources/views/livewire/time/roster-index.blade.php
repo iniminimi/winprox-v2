@@ -1,5 +1,5 @@
 <div
-    @class(['wp-stack', 'wp-roster-page--month' => $isMonth, 'wp-roster-print-root'])
+    @class(['wp-stack', 'wp-roster-page--month' => $isMonth])
     data-manual-capture="time-schedule"
     x-data
     x-init="window.wpRosterSheet && window.wpRosterSheet.bind($el, $wire)"
@@ -10,11 +10,31 @@
         :subtitle="__('time.schedule.subtitle')"
     >
         <x-slot:toolbar>
-            <button
-                type="button"
-                class="btn btn--ghost btn--sm wp-no-print"
-                onclick="window.wpRosterSheet && window.wpRosterSheet.print()"
-            >{{ __('common.button.print') }}</button>
+            @php
+                $printParams = [
+                    'week' => $weekStart,
+                    'view' => $isMonth ? 'month' : 'week',
+                ];
+                if ($teamFilter) {
+                    $printParams['team'] = $teamFilter;
+                }
+                if ($locationFilter) {
+                    $printParams['location'] = $locationFilter;
+                    $printParams['ungrouped'] = $showUngrouped ? 1 : 0;
+                    if ($groupUnitIds !== []) {
+                        $printParams['groups'] = $groupUnitIds;
+                    }
+                }
+                if ($showWeekends) {
+                    $printParams['weekends'] = 1;
+                }
+            @endphp
+            <a
+                href="{{ route('time.schedule.print', $printParams) }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn--ghost btn--sm"
+            >{{ __('common.button.print') }}</a>
         </x-slot:toolbar>
     </x-wp-page-head-title>
 

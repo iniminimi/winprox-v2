@@ -369,6 +369,7 @@
     },
     "schedule": {
         "title": "Horaire",
+        "document_title": "Horaire — WinProx",
         "subtitle": "Planifiez les services par exécutant. Codes ou horaires libres, éventuellement avec un groupe (D1/G1).",
         "week": "Semaine",
         "workers": "Exécutants",

@@ -369,6 +369,7 @@
     },
     "schedule": {
         "title": "Horario",
+        "document_title": "Horario — WinProx",
         "subtitle": "Planifique turnos por trabajador. Códigos u horarios libres, opcionalmente con grupo (D1/G1).",
         "week": "Semana",
         "workers": "Trabajadores",

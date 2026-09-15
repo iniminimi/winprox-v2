@@ -369,6 +369,7 @@
     },
     "schedule": {
         "title": "Turni",
+        "document_title": "Turni — WinProx",
         "subtitle": "Pianifica i turni per esecutore. Codici o orari liberi, facoltativamente con gruppo (D1/G1).",
         "week": "Settimana",
         "workers": "Esecutori",

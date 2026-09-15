@@ -1604,7 +1604,7 @@
                 },
                 {
                     "label": "Planificado vs fichado",
-                    "text": "En un periodo <strong>publicado</strong>, la cuadrícula marca desviaciones (tarde/temprano) de inmediato, también <strong>hoy</strong>. Fichajes faltantes solo después del fin previsto (o en días pasados). Fichajes no previstos y ausencia sin fichaje siguen igual. Haga clic en la marca de arriba a la derecha para abrir <strong>Horas</strong> de ese ejecutor ese día. <strong>Imprimir</strong> (junto al título) imprime en A4 apaisado."
+                    "text": "En un periodo <strong>publicado</strong>, la cuadrícula marca desviaciones (tarde/temprano) de inmediato, también <strong>hoy</strong>. Fichajes faltantes solo después del fin previsto (o en días pasados). Fichajes no previstos y ausencia sin fichaje siguen igual. Haga clic en la marca de arriba a la derecha para abrir <strong>Horas</strong> de ese ejecutor ese día. <strong>Imprimir</strong> (junto al título) abre una ventana nueva (A4 apaisado)."
                 }
             ]
         },

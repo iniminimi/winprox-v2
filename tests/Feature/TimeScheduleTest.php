@@ -983,3 +983,15 @@ it('houdt canClockAt voor cel-plek onafhankelijk van default_unit_id', function 
         ->and($awayUnit->roster_code)->toBe('AW');
 });
 
+it('opent de uurrooster-printpagina in een apart venster-patroon', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $week = scheduleWeekStart();
+
+    $this->actingAs($admin)
+        ->get(route('time.schedule.print', ['week' => $week, 'view' => 'week']))
+        ->assertOk()
+        ->assertSee(__('time.schedule.title'), false)
+        ->assertSee($worker->displayName(), false)
+        ->assertSee(__('common.button.print'), false);
+});
+

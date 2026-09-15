@@ -1604,7 +1604,7 @@
                 },
                 {
                     "label": "Gepland vs geklokt",
-                    "text": "Op een <strong>gepubliceerde</strong> periode markeert het rooster afwijkingen (te laat/te vroeg) meteen, ook <strong>vandaag</strong>. Ontbrekende prikken pas na het geplande einde (of op vorige dagen). Ongeplande prikken en afwezigheid zonder prik blijven zoals eerder. Klik op de markering rechtsboven in de cel om <strong>Uren</strong> van die uitvoerder die dag te openen. <strong>Afdrukken</strong> (naast de titel) print A4 liggend. Publiceren stuurt niets naar de RSZ."
+                    "text": "Op een <strong>gepubliceerde</strong> periode markeert het rooster afwijkingen (te laat/te vroeg) meteen, ook <strong>vandaag</strong>. Ontbrekende prikken pas na het geplande einde (of op vorige dagen). Ongeplande prikken en afwezigheid zonder prik blijven zoals eerder. Klik op de markering rechtsboven in de cel om <strong>Uren</strong> van die uitvoerder die dag te openen. <strong>Afdrukken</strong> (naast de titel) opent een nieuw venster (A4 liggend). Publiceren stuurt niets naar de RSZ."
                 }
             ]
         },

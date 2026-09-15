@@ -1612,7 +1612,7 @@
                 },
                 {
                     "label": "Planifié vs pointé",
-                    "text": "Sur une période <strong>publiée</strong>, la grille marque les écarts (en retard/en avance) immédiatement, y compris <strong>aujourd’hui</strong>. Pointages manquants seulement après la fin prévue (ou les jours passés). Pointages non prévus et absence sans pointage restent comme avant. Cliquez sur le marqueur en haut à droite pour ouvrir <strong>Heures</strong> de cet exécutant ce jour-là. <strong>Imprimer</strong> (à côté du titre) imprime en A4 paysage."
+                    "text": "Sur une période <strong>publiée</strong>, la grille marque les écarts (en retard/en avance) immédiatement, y compris <strong>aujourd’hui</strong>. Pointages manquants seulement après la fin prévue (ou les jours passés). Pointages non prévus et absence sans pointage restent comme avant. Cliquez sur le marqueur en haut à droite pour ouvrir <strong>Heures</strong> de cet exécutant ce jour-là. <strong>Imprimer</strong> (à côté du titre) ouvre une nouvelle fenêtre (A4 paysage)."
                 }
             ]
         },

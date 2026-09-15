@@ -369,6 +369,7 @@
     },
     "schedule": {
         "title": "Dienstplan",
+        "document_title": "Dienstplan — WinProx",
         "subtitle": "Planen Sie Dienste je Ausführendem. Codes oder freie Zeiten, optional mit Gruppe (D1/G1).",
         "week": "Woche",
         "workers": "Mitarbeiter",

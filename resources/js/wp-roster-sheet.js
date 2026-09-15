@@ -790,22 +790,4 @@ export function bind(root, wire) {
     mount();
 }
 
-export function printRoster() {
-    let style = document.getElementById('wp-roster-print-page');
-    if (!style) {
-        style = document.createElement('style');
-        style.id = 'wp-roster-print-page';
-        style.textContent = '@media print { @page { size: A4 landscape; margin: 0.8cm; } }';
-        document.head.appendChild(style);
-    }
-    document.documentElement.classList.add('wp-print-roster');
-    const cleanup = () => {
-        document.documentElement.classList.remove('wp-print-roster');
-        style.remove();
-        window.removeEventListener('afterprint', cleanup);
-    };
-    window.addEventListener('afterprint', cleanup);
-    window.print();
-}
-
-window.wpRosterSheet = { bind, print: printRoster };
+window.wpRosterSheet = { bind };

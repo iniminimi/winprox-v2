@@ -6070,73 +6070,67 @@ a.wp-kpi.wp-kpi--attention {
     background: var(--wp-accent);
 }
 
+.wp-roster-print__sheet {
+    overflow-x: auto;
+}
+
+.wp-roster-print__table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 0.75rem;
+}
+
+.wp-roster-print__table th,
+.wp-roster-print__table td {
+    border: 1px solid var(--wp-border);
+    padding: 0.2rem 0.25rem;
+    text-align: center;
+    vertical-align: middle;
+    word-break: break-word;
+}
+
+.wp-roster-print__table thead th {
+    background: var(--wp-surface-2);
+    color: var(--wp-text);
+    font-weight: 600;
+    font-size: 0.7rem;
+    line-height: 1.15;
+}
+
+.wp-roster-print__table tbody th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--wp-text);
+    white-space: nowrap;
+    width: 9rem;
+}
+
+.wp-roster-print__section td {
+    background: color-mix(in srgb, var(--wp-accent) 28%, var(--wp-surface) 72%);
+    font-weight: 600;
+    text-align: left !important;
+}
+
+.wp-roster-print__cell {
+    white-space: pre-line;
+    line-height: 1.15;
+}
+
 @media print {
-    html.wp-print-roster .wp-sidebar,
-    html.wp-print-roster .wp-nav-toggle-fixed,
-    html.wp-print-roster .wp-help,
-    html.wp-print-roster .wp-flash,
-    html.wp-print-roster .wp-page-help,
-    html.wp-print-roster .wp-no-print,
-    html.wp-print-roster [data-wp-modal],
-    html.wp-print-roster .wp-modal,
-    html.wp-print-roster .wp-theme-bg {
-        display: none !important;
+    .wp-roster-print .wp-container {
+        max-width: none;
+        padding: 0;
     }
 
-    html.wp-print-roster,
-    html.wp-print-roster body,
-    html.wp-print-roster .wp-shell,
-    html.wp-print-roster .wp-app,
-    html.wp-print-roster .wp-main {
-        background: #fff !important;
-        color: #111 !important;
-    }
-
-    html.wp-print-roster .wp-app {
-        display: block !important;
-    }
-
-    html.wp-print-roster .wp-main {
-        max-width: none !important;
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    html.wp-print-roster .wp-page-title {
-        font-size: 1rem;
-        margin: 0 0 0.35rem;
-    }
-
-    html.wp-print-roster .wp-muted {
-        font-size: 0.75rem;
-        margin: 0 0 0.5rem;
-    }
-
-    html.wp-print-roster .wp-card {
+    .wp-roster-print__sheet {
         box-shadow: none !important;
         border: none !important;
-        background: transparent !important;
         padding: 0 !important;
-        border-radius: 0 !important;
     }
 
-    html.wp-print-roster .wp-roster-sheet,
-    html.wp-print-roster .wp-roster-sheet .jss_container,
-    html.wp-print-roster .wp-roster-sheet .jss_content,
-    html.wp-print-roster .wp-roster-sheet .jss_overflow {
-        max-height: none !important;
-        height: auto !important;
-        overflow: visible !important;
-        width: 100% !important;
-    }
-
-    html.wp-print-roster .wp-roster-sheet .jss_worksheet {
-        width: 100% !important;
-    }
-
-    html.wp-print-roster .wp-roster-cell--attendance-link::after {
-        display: none !important;
+    .wp-roster-print__table {
+        font-size: 0.65rem;
     }
 }
 

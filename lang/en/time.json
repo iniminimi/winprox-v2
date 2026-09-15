@@ -369,6 +369,7 @@
     },
     "schedule": {
         "title": "Roster",
+        "document_title": "Roster — WinProx",
         "subtitle": "Plan shifts per worker. Codes or free times, optionally with a group (D1/G1).",
         "week": "Week",
         "workers": "Workers",

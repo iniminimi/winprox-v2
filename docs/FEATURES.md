@@ -766,7 +766,8 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   Toekomstige dagen: geen markering. Afwezigheid zonder prik = ok; mét prik = ungepland.
   Markering rechtsboven in de cel opent **Time → Uren** (worker + die dag;
   bij **missing** de hele maand, want die dag heeft geen prik). Geen locatievergelijking.
-- **Print:** knop naast de titel; A4 **liggend**, zichtbare periode/filters.
+- **Print:** knop naast de titel opent een **nieuw venster** (zoals briefing); A4 **liggend**,
+  zichtbare periode/filters.
 
 ---
 
