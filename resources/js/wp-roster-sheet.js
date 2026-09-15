@@ -649,6 +649,11 @@ export function bind(root, wire) {
         ];
 
         const rowDefs = gridRowDefs(payload);
+        const rowCount = Math.max(rowDefs.length, 1);
+        // Hoogte = inhoud: geen vast kader met interne verticale scroll.
+        const rowPx = isMonth ? 34 : 38;
+        const headerPx = isMonth && payload.month_label ? 72 : 44;
+        const tableHeight = `${headerPx + (rowCount * rowPx) + 12}px`;
         const worksheetConfig = {
             data: buildData(payload),
             columns,
@@ -656,7 +661,7 @@ export function bind(root, wire) {
             freezeColumns: 1,
             tableOverflow: true,
             tableWidth: '100%',
-            tableHeight: '480px',
+            tableHeight,
             allowInsertRow: false,
             allowManualInsertRow: false,
             allowInsertColumn: false,
@@ -666,7 +671,7 @@ export function bind(root, wire) {
             columnDrag: false,
             rowDrag: false,
             parseFormulas: false,
-            minDimensions: [dayCount + 1, Math.max(rowDefs.length, 1)],
+            minDimensions: [dayCount + 1, rowCount],
         };
         if (isMonth && payload.month_label) {
             worksheetConfig.nestedHeaders = [[

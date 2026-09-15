@@ -5782,11 +5782,16 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 .wp-roster-sheet {
-    min-height: 20rem;
+    min-height: 0;
     font-family: 'Inter', 'Segoe UI Variable', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+}
+
+.wp-roster-sheet .jss_content {
+    /* Verticaal meegroeien met de berekende tableHeight; geen dubbele scroll. */
+    max-height: none !important;
 }
 
 .wp-roster-sheet .jss_container,
