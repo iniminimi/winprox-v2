@@ -568,7 +568,7 @@ export function bind(root, wire) {
         };
         if (isMonth && payload.month_label) {
             worksheetConfig.nestedHeaders = [[
-                { title: payload.name_column || 'Name', colspan: 1 },
+                { title: '', colspan: 1 },
                 { title: payload.month_label, colspan: dayCount },
             ]];
         }
