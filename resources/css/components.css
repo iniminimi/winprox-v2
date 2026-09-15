@@ -5783,6 +5783,21 @@ a.wp-kpi.wp-kpi--attention {
 
 .wp-roster-sheet {
     min-height: 20rem;
+    font-family: 'Inter', 'Segoe UI Variable', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.wp-roster-sheet .jss_container,
+.wp-roster-sheet .jss,
+.wp-roster-sheet .jss_content,
+.wp-roster-sheet .jss_worksheet,
+.wp-roster-sheet .jss_worksheet td,
+.wp-roster-sheet .jss_worksheet input,
+.wp-roster-sheet .jss_worksheet textarea,
+.wp-roster-sheet .jss_worksheet select {
+    font-family: inherit !important;
 }
 
 .wp-roster-sheet .jss_worksheet > tbody > tr.wp-roster-row--section > td,
@@ -5816,19 +5831,37 @@ a.wp-kpi.wp-kpi--attention {
 .wp-roster-sheet .jss_container,
 .wp-roster-sheet .jss,
 .wp-roster-sheet .jss_worksheet {
-    font-family: inherit;
     border-color: var(--wp-border);
 }
 
 .wp-roster-sheet .jss_worksheet > thead > tr > td,
 .wp-roster-sheet .jss_worksheet > tbody > tr > td {
     border-color: var(--wp-border);
-    color: var(--wp-text);
+    color: var(--wp-text-body);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.35;
 }
 
 .wp-roster-sheet .jss_worksheet > thead > tr > td {
     background: var(--wp-surface-2);
-    font-weight: 700;
+    color: var(--wp-text);
+    font-weight: 600;
+    font-size: 0.8125rem;
+}
+
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.jss_row,
+.wp-roster-sheet .jss_worksheet > thead > tr > td.jss_selectall {
+    color: var(--wp-text-muted);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Naamkolom (na rijnummer) */
+.wp-roster-sheet .jss_worksheet > tbody > tr > td:nth-child(2) {
+    color: var(--wp-text);
+    font-weight: 500;
+    text-align: left;
 }
 
 .wp-roster-sheet col.wp-roster-col--weekend,
@@ -5892,42 +5925,46 @@ a.wp-kpi.wp-kpi--attention {
     padding: 0.2rem 0.08rem;
 }
 
-.wp-roster-sheet--month .jss_worksheet > tbody > tr > td:first-child {
+.wp-roster-sheet--month .jss_worksheet > tbody > tr > td:nth-child(2) {
     text-align: left;
     font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--wp-text);
     padding-left: 0.4rem;
 }
 
-/* Dienst + groep: newline in celwaarde, tweede regel kleiner via ::first-line */
+/* Dienst + groep: newline in celwaarde, tweede regel iets kleiner */
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--stacked {
     white-space: pre-line;
     vertical-align: middle;
-    line-height: 1.1;
-    padding-top: 0.12rem;
-    padding-bottom: 0.12rem;
-    font-size: 0.55rem;
-}
-
-.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--stacked::first-line {
+    line-height: 1.2;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     font-size: 0.75rem;
 }
 
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--stacked::first-line {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
 .wp-roster-sheet--month .jss_worksheet > tbody > tr > td.wp-roster-cell--stacked {
-    font-size: 0.5rem;
+    font-size: 0.625rem;
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
 }
 
 .wp-roster-sheet--month .jss_worksheet > tbody > tr > td.wp-roster-cell--stacked::first-line {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 500;
 }
 
 .wp-roster-sheet:not(.wp-roster-sheet--month) .jss_worksheet > tbody > tr > td.wp-roster-cell--stacked {
-    font-size: 0.625rem;
+    font-size: 0.75rem;
 }
 
 .wp-roster-sheet:not(.wp-roster-sheet--month) .jss_worksheet > tbody > tr > td.wp-roster-cell--stacked::first-line {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
 }
 
 .wp-roster-cell--emerald {
