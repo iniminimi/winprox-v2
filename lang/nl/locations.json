@@ -130,7 +130,9 @@
             "allow_unit_checks": "Unit checks toestaan",
             "external_id": "Externe ID",
             "allow_unit_measurements": "Unitmetingen toestaan",
-            "measure_fields": "Meetvelden"
+            "measure_fields": "Meetvelden",
+            "roster_code": "Roostercode",
+            "roster_code_hint": "Optioneel. Korte code voor het uurrooster, uniek per locatie (bijv. G1)."
         },
         "translation_preview": "Vertaling (portaal)",
         "translation_edit": {
@@ -169,7 +171,9 @@
             "translation_import_missing": "Unit niet gevonden of niet actief.",
             "translation_import_name_too_long": "De vertaalde unitnaam is te lang.",
             "invalid_check_list": "Ongeldige checklist.",
-            "external_id_taken": "Deze externe ID is al in gebruik bij een andere unit."
+            "external_id_taken": "Deze externe ID is al in gebruik bij een andere unit.",
+            "duplicate_roster_code": "Deze roostercode bestaat al op deze locatie.",
+            "invalid_roster_code": "Gebruik alleen letters en cijfers (max. 8)."
         },
         "flash": {
             "created": "Unit aangemaakt.",

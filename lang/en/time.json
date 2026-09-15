@@ -184,7 +184,9 @@
         "all_teams": "All teams",
         "all_workers": "All workers",
         "all_clock_points": "All clock points",
-        "apply": "Apply"
+        "apply": "Apply",
+        "location": "Location",
+        "all_locations": "All locations"
     },
     "export": {
         "columns": {
@@ -367,7 +369,7 @@
     },
     "schedule": {
         "title": "Roster",
-        "subtitle": "Plan shifts per worker. Type codes or free times (hh:mm-hh:mm).",
+        "subtitle": "Plan shifts per worker. Codes or free times, optionally with a group (D1/G1).",
         "week": "Week",
         "workers": "Workers",
         "cells": "Cells",
@@ -395,7 +397,10 @@
             "incomplete_grid": "The roster grid is incomplete.",
             "copy_same_week": "Source and target week are the same.",
             "copy_conflict": "The target week already has shifts. Copy refused.",
-            "invalid_notification_reference": "Invalid notification reference."
+            "invalid_notification_reference": "Invalid notification reference.",
+            "unknown_unit": "Unknown group code.",
+            "ambiguous_unit": "This group code exists at :count locations. Choose a location filter.",
+            "absence_has_unit": "Absence cannot include a group."
         },
         "types": {
             "add": "Add shift type",
@@ -453,7 +458,8 @@
         "nav_next": "Next",
         "week_current": "Current week (:number)",
         "week_numbered": "Week (:number)",
-        "weekends": "Weekends on"
+        "weekends": "Weekends on",
+        "legend_units": "Groups"
     },
     "shift_types": {
         "title": "Shift types",

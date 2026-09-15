@@ -23,9 +23,11 @@ use App\Exceptions\RosterValidationException;
 use App\Livewire\Time\RosterIndex;
 use App\Livewire\Time\ShiftTypesIndex;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use App\Models\WebhookEndpoint;
 use App\Models\Worker;
@@ -276,6 +278,7 @@ it('opent het uurrooster voor een admin', function () {
         ->assertSee(__('time.schedule.week_current', ['number' => now()->startOfWeek(Carbon::MONDAY)->isoWeek()]), false)
         ->assertSee(__('time.schedule.weekends'), false)
         ->assertSee('id="schedule-weekends"', false)
+        ->assertSee('id="schedule-location"', false)
         ->assertDontSee('id="schedule-type"', false)
         ->assertDontSee('<label class="wp-filter-inline-label" for="schedule-team">', false);
 
@@ -582,5 +585,186 @@ it('kopieert afwezigheid als draft naar de volgende week', function () {
         ->and($copied[0]->kind)->toBe(ShiftTypeKind::Leave)
         ->and($copied[0]->start_time)->toBeNull()
         ->and($copied[0]->status)->toBe(PlannedShiftStatus::Draft);
+});
+
+it('parses a unit code in the same cell and snapshots place on save', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Noord']);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Groep 1',
+        'roster_code' => 'G1',
+        'is_active' => true,
+    ]);
+    app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        $admin->id,
+    );
+    $types = ShiftType::query()->get();
+    $units = Unit::query()->get();
+    $parse = app(ParseRosterCellAction::class);
+
+    $slash = $parse->handle('D1/G1', $types, $units);
+    $space = $parse->handle('D1 G1', $types, $units);
+    $time = $parse->handle('07:00-12:00/g1', $types, $units);
+
+    expect($slash->kind)->toBe(RosterCellKind::ShiftType)
+        ->and($slash->unitId)->toBe((int) $unit->id)
+        ->and($slash->unitCode)->toBe('G1')
+        ->and($slash->unitName)->toBe('Groep 1')
+        ->and($slash->locationId)->toBe((int) $location->id)
+        ->and($space->unitCode)->toBe('G1')
+        ->and($time->kind)->toBe(RosterCellKind::FreeTime)
+        ->and($time->unitCode)->toBe('G1');
+
+    $week = scheduleWeekStart();
+    $saved = app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], scheduleCells([$worker], $week, [
+            $worker->id.':'.$week => 'D1/G1',
+        ])),
+        $admin->id,
+    );
+
+    expect($saved)->toHaveCount(1)
+        ->and($saved[0]->unit_id)->toBe($unit->id)
+        ->and($saved[0]->unit_code)->toBe('G1')
+        ->and($saved[0]->unit_name)->toBe('Groep 1')
+        ->and($saved[0]->location_id)->toBe($location->id)
+        ->and($saved[0]->displayValue())->toBe('D1/G1');
+
+    $next = Carbon::parse($week)->addWeek()->toDateString();
+    $copied = app(CopyWeekAction::class)->handle(
+        $tenant,
+        new CopyWeekData($week, $next, [$worker->id]),
+        $admin->id,
+    );
+    expect($copied[0]->unit_code)->toBe('G1')
+        ->and($copied[0]->unit_name)->toBe('Groep 1');
+});
+
+it('weigert afwezigheid met groep en dubbele groepscode zonder locatiefilter', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $siteA = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $siteB = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $siteA->id,
+        'name' => 'Groep 1 A',
+        'roster_code' => 'G1',
+    ]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $siteB->id,
+        'name' => 'Groep 1 B',
+        'roster_code' => 'G1',
+    ]);
+    app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 0, ShiftTypeColor::Emerald),
+        $admin->id,
+    );
+    app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
+        $admin->id,
+    );
+    $types = ShiftType::query()->get();
+    $units = Unit::query()->get();
+    $parse = app(ParseRosterCellAction::class);
+
+    expect($parse->handle('VL/G1', $types, $units)->errorKey)->toBe('time.schedule.errors.absence_has_unit')
+        ->and($parse->handle('D1/G1', $types, $units)->errorKey)->toBe('time.schedule.errors.ambiguous_unit')
+        ->and($parse->handle('D1/G1', $types, $units)->ambiguousCount)->toBe(2)
+        ->and($parse->handle('D1/XX', $types, $units)->errorKey)->toBe('time.schedule.errors.unknown_unit')
+        ->and($parse->handle('D1/G1', $types, $units->where('location_id', $siteA->id))->unitId)->not->toBeNull();
+
+    $week = scheduleWeekStart();
+    expect(fn () => app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], scheduleCells([$worker], $week, [
+            $worker->id.':'.$week => 'D1/G1',
+        ])),
+        $admin->id,
+    ))->toThrow(RosterValidationException::class);
+
+    $saved = app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], scheduleCells([$worker], $week, [
+            $worker->id.':'.$week => 'D1/G1',
+        ]), 'week', true, (int) $siteA->id),
+        $admin->id,
+        null,
+    );
+    expect($saved[0]->location_id)->toBe($siteA->id);
+});
+
+it('negeert een groepscode op een locatie waar de uitvoerder niet mag prikken', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $home = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $other = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $worker->locations()->sync([$home->id]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $other->id,
+        'name' => 'Babyland',
+        'roster_code' => 'G1',
+    ]);
+    app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 0, ShiftTypeColor::Emerald),
+        $admin->id,
+    );
+
+    $week = scheduleWeekStart();
+    try {
+        app(SavePlannedShiftsAction::class)->handle(
+            $tenant,
+            new SavePlannedShiftsData($week, [$worker->id], scheduleCells([$worker], $week, [
+                $worker->id.':'.$week => 'D1/G1',
+            ])),
+            $admin->id,
+        );
+        expect(false)->toBeTrue();
+    } catch (RosterValidationException $e) {
+        expect($e->cells[0]['error'] ?? null)->toBe('time.schedule.errors.unknown_unit');
+    }
+});
+
+it('filtert uitvoerders op locatie in het uurrooster', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $siteA = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Noord']);
+    $siteB = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Zuid']);
+    $home = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+    ]);
+    $away = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+    ]);
+    $home->locations()->sync([$siteA->id]);
+    $away->locations()->sync([$siteB->id]);
+
+    $snapshot = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        scheduleWeekStart(),
+        null,
+        $admin,
+        'week',
+        true,
+        (int) $siteA->id,
+    );
+
+    $ids = array_map(fn ($row) => (int) $row['id'], $snapshot->workers);
+    expect($ids)->toContain((int) $home->id)
+        ->and($ids)->toContain((int) $worker->id)
+        ->and($ids)->not->toContain((int) $away->id)
+        ->and($snapshot->locations)->not->toBeEmpty()
+        ->and($snapshot->units)->toBeArray();
 });
 

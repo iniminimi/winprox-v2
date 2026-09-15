@@ -40,38 +40,124 @@ function pasteGrid(data) {
     });
 }
 
-function parseRosterCell(raw, types) {
-    const trimmed = cellText(raw).trim();
-    if (trimmed === '') {
-        return { kind: 'empty' };
+function splitDutyAndUnit(raw) {
+    if (raw.includes('/')) {
+        const parts = raw.split('/');
+        if (parts.length !== 2) {
+            return null;
+        }
+        const duty = parts[0].trim();
+        const unit = parts[1].trim();
+        if (duty === '' || unit === '' || unit.includes('/')) {
+            return null;
+        }
+
+        return [duty, unit];
     }
 
-    if (trimmed.includes('-')) {
-        const match = trimmed.match(/^(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})$/);
+    const timeMatch = raw.match(/^(\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2})(?:\s+(\S+))?$/);
+    if (timeMatch) {
+        return [timeMatch[1], timeMatch[2] || null];
+    }
+
+    const two = raw.match(/^(\S+)\s+(\S+)$/);
+    if (two) {
+        return [two[1], two[2]];
+    }
+
+    return [raw, null];
+}
+
+function parseDuty(duty, types) {
+    if (duty.includes('-')) {
+        const match = duty.match(/^(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})$/);
         if (!match) {
-            return { kind: 'invalid' };
+            return { kind: 'invalid', error: 'time.schedule.errors.invalid_time' };
         }
         const startHour = Number(match[1]);
         const startMinute = Number(match[2]);
         const endHour = Number(match[3]);
         const endMinute = Number(match[4]);
         if (startHour > 23 || endHour > 23 || startMinute > 59 || endMinute > 59) {
-            return { kind: 'invalid' };
+            return { kind: 'invalid', error: 'time.schedule.errors.invalid_time' };
         }
         if (endHour * 60 + endMinute <= startHour * 60 + startMinute) {
-            return { kind: 'invalid' };
+            return { kind: 'invalid', error: 'time.schedule.errors.night_not_allowed' };
         }
 
         return { kind: 'free', color: 'none' };
     }
 
-    const code = trimmed.toUpperCase();
+    const code = duty.trim().toUpperCase();
     const type = types.find((item) => item.active && item.code === code);
     if (!type) {
-        return { kind: 'invalid' };
+        return { kind: 'invalid', error: 'time.schedule.errors.unknown_code' };
     }
 
-    return { kind: 'type', color: type.color, display: type.code };
+    return {
+        kind: type.kind && type.kind !== 'work' ? 'absence' : 'type',
+        color: type.color,
+        display: type.code,
+        absence: Boolean(type.kind && type.kind !== 'work'),
+    };
+}
+
+function catalogForWorker(worker, units) {
+    const all = Array.isArray(units) ? units : [];
+    if (!worker || worker.clocks_all_locations) {
+        return all;
+    }
+    const ids = worker.location_ids ?? [];
+    if (ids.length === 0) {
+        return all;
+    }
+
+    return all.filter((unit) => ids.includes(unit.location_id));
+}
+
+function parseRosterCell(raw, types, units) {
+    const trimmed = cellText(raw).trim();
+    if (trimmed === '') {
+        return { kind: 'empty' };
+    }
+
+    const split = splitDutyAndUnit(trimmed);
+    if (!split) {
+        return { kind: 'invalid', error: 'time.schedule.errors.unknown_code' };
+    }
+
+    const [duty, unitToken] = split;
+    const parsed = parseDuty(duty, types);
+    if (parsed.kind === 'invalid' || !unitToken) {
+        return parsed;
+    }
+
+    if (parsed.absence || parsed.kind === 'absence') {
+        return { kind: 'invalid', error: 'time.schedule.errors.absence_has_unit' };
+    }
+
+    const code = unitToken.trim().toUpperCase();
+    if (code === '' || code.length > 8 || !/^[A-Z0-9]+$/.test(code)) {
+        return { kind: 'invalid', error: 'time.schedule.errors.unknown_unit' };
+    }
+
+    const matches = (Array.isArray(units) ? units : []).filter(
+        (unit) => String(unit.code || '').toUpperCase() === code,
+    );
+    if (matches.length === 0) {
+        return { kind: 'invalid', error: 'time.schedule.errors.unknown_unit' };
+    }
+    if (matches.length > 1) {
+        return { kind: 'invalid', error: 'time.schedule.errors.ambiguous_unit', count: matches.length };
+    }
+
+    return { ...parsed, unit: code };
+}
+
+function cellErrorTitle(parsed, payload) {
+    const template = payload.error_messages?.[parsed.error] || payload.invalid_message || '';
+
+    return template.replaceAll(':count', String(parsed.count ?? ''));
 }
 
 function isWeekendIso(isoDate) {
@@ -128,14 +214,14 @@ function applyCellClasses(worksheet, payload) {
                 }
             });
             cell.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
-            const parsed = parseRosterCell(value, types);
             const worker = payload.workers?.[rowIndex];
+            const parsed = parseRosterCell(value, types, catalogForWorker(worker, payload.units));
             const date = payload.dates?.[colIndex - 1];
             const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
             const attendance = attendanceKey ? payload.attendance?.[attendanceKey] : null;
             if (parsed.kind === 'invalid') {
                 cell.classList.add('wp-roster-cell--invalid');
-                cell.title = payload.invalid_message || '';
+                cell.title = cellErrorTitle(parsed, payload);
                 cell.setAttribute('aria-invalid', 'true');
             } else if (parsed.color && parsed.color !== 'none') {
                 cell.classList.add(`wp-roster-cell--${parsed.color}`);
@@ -176,9 +262,11 @@ function collectCells(worksheet, payload) {
 }
 
 function hasInvalidCells(worksheet, payload) {
-    return collectCells(worksheet, payload).some(
-        (cell) => parseRosterCell(cell.raw, payload.types ?? []).kind === 'invalid',
-    );
+    return collectCells(worksheet, payload).some((cell) => {
+        const worker = payload.workers.find((item) => item.id === cell.worker_id);
+
+        return parseRosterCell(cell.raw, payload.types ?? [], catalogForWorker(worker, payload.units)).kind === 'invalid';
+    });
 }
 
 function buildData(payload) {

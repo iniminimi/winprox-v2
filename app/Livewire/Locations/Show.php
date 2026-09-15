@@ -118,6 +118,8 @@ class Show extends Component
 
     public string $unitName = '';
 
+    public string $unitRosterCode = '';
+
     public string $unitDescription = '';
 
     public ?int $unitCategoryId = null;
@@ -389,6 +391,7 @@ class Show extends Component
         $this->authorize('create', Unit::class);
         $this->editingUnitId = null;
         $this->unitName = '';
+        $this->unitRosterCode = '';
         $this->unitDescription = '';
         $this->unitCategoryId = null;
         $this->unitCheckListId = null;
@@ -440,6 +443,7 @@ class Show extends Component
         $this->authorize('update', $unit);
         $this->editingUnitId = $unit->id;
         $this->unitName = $unit->name;
+        $this->unitRosterCode = (string) ($unit->roster_code ?? '');
         $this->unitDescription = $unit->description ?? '';
         $this->unitCategoryId = $unit->category_id;
         $this->unitCheckListId = $unit->unit_check_list_id;
@@ -468,6 +472,7 @@ class Show extends Component
         $this->showUnitModal = false;
         $this->editingUnitId = null;
         $this->unitName = '';
+        $this->unitRosterCode = '';
         $this->unitDescription = '';
         $this->unitCategoryId = null;
         $this->unitCheckListId = null;
@@ -560,8 +565,11 @@ class Show extends Component
             $photoSlotsLeft = max(0, 4 - (int) QrLinkPhoto::query()->where('unit_id', $this->editingUnitId)->count());
         }
 
+        $this->unitRosterCode = Unit::normalizeRosterCode($this->unitRosterCode);
+
         $validated = $this->validate([
             'unitName' => $rules['name'],
+            'unitRosterCode' => $rules['roster_code'],
             'unitDescription' => $rules['description'],
             'unitCategoryId' => $rules['category_id'],
             'unitCheckListId' => $rules['unit_check_list_id'],
@@ -579,6 +587,8 @@ class Show extends Component
         ], [
             'unitName.required' => __('locations.units.errors.name_required'),
             'unitName.unique' => __('locations.units.errors.duplicate_name'),
+            'unitRosterCode.unique' => __('locations.units.errors.duplicate_roster_code'),
+            'unitRosterCode.regex' => __('locations.units.errors.invalid_roster_code'),
             'unitCategoryId.exists' => __('locations.units.errors.invalid_category'),
             'unitCheckListId.exists' => __('locations.units.errors.invalid_check_list'),
             'unitExternalId.unique' => __('locations.units.errors.external_id_taken'),
@@ -616,6 +626,7 @@ class Show extends Component
 
         $payload = [
             'name' => $validated['unitName'],
+            'roster_code' => $validated['unitRosterCode'] ?? null,
             'description' => $validated['unitDescription'] ?? null,
             'category_id' => $validated['unitCategoryId'] ?? null,
             'unit_check_list_id' => $validated['unitCheckListId'] ?? null,

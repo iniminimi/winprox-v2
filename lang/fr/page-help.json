@@ -1575,7 +1575,7 @@
                 },
                 {
                     "label": "Codes et heures libres",
-                    "text": "Saisissez un <strong>code</strong> de la légende ou une heure <strong>07:00-15:00</strong>. Les cellules invalides ont un <strong>bord rouge</strong> et un point d’exclamation."
+                    "text": "Saisissez un <strong>code</strong> de la légende ou une heure <strong>07:00-15:00</strong>. Ajoutez éventuellement un groupe dans la même cellule : <strong>D1/G1</strong> ou <strong>07:00-12:00/G1</strong> (espace autorisé). Les cellules invalides ont une <strong>bordure rouge</strong> — corrigez-les avant d’enregistrer. Si un code de groupe existe sur plusieurs sites, choisissez un filtre de site."
                 },
                 {
                     "label": "Enregistrer et publier",

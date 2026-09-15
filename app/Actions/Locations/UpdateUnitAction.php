@@ -39,6 +39,11 @@ class UpdateUnitAction
             'description' => $data['description'] ?? null,
         ];
 
+        if (array_key_exists('roster_code', $data) && Schema::hasColumn('units', 'roster_code')) {
+            $code = Unit::normalizeRosterCode((string) ($data['roster_code'] ?? ''));
+            $payload['roster_code'] = $code !== '' ? $code : null;
+        }
+
         if (array_key_exists('public_reports_enabled', $data)) {
             $payload['public_reports_enabled'] = (bool) $data['public_reports_enabled'];
         }

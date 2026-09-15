@@ -184,7 +184,9 @@
         "all_teams": "Todos los equipos",
         "all_workers": "Todos los trabajadores",
         "all_clock_points": "Todos los clock points",
-        "apply": "Aplicar"
+        "apply": "Aplicar",
+        "location": "Sede",
+        "all_locations": "Todas las sedes"
     },
     "export": {
         "columns": {
@@ -367,7 +369,7 @@
     },
     "schedule": {
         "title": "Horario",
-        "subtitle": "Planifique turnos por trabajador. Códigos o horas libres (hh:mm-hh:mm).",
+        "subtitle": "Planifique turnos por trabajador. Códigos u horarios libres, opcionalmente con grupo (D1/G1).",
         "week": "Semana",
         "workers": "Trabajadores",
         "cells": "Celdas",
@@ -395,7 +397,10 @@
             "incomplete_grid": "La cuadrícula está incompleta.",
             "copy_same_week": "La semana de origen y destino son la misma.",
             "copy_conflict": "La semana de destino ya tiene turnos. Copia rechazada.",
-            "invalid_notification_reference": "Referencia de notificación no válida."
+            "invalid_notification_reference": "Referencia de notificación no válida.",
+            "unknown_unit": "Código de grupo desconocido.",
+            "ambiguous_unit": "Este código de grupo existe en :count sedes. Elija un filtro de sede.",
+            "absence_has_unit": "Una ausencia no puede incluir un grupo."
         },
         "types": {
             "add": "Añadir tipo",
@@ -453,7 +458,8 @@
         "nav_next": "Siguiente",
         "week_current": "Semana actual (:number)",
         "week_numbered": "Semana (:number)",
-        "weekends": "Fines de semana"
+        "weekends": "Fines de semana",
+        "legend_units": "Grupos"
     },
     "shift_types": {
         "title": "Tipos de turno",

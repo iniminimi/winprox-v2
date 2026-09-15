@@ -66,9 +66,15 @@ class ListPublishedWorkerRosterAction
 
         $type = $shift->shiftType;
         if ($type !== null && $type->is_active && $type->kind === ShiftTypeKind::Work) {
-            return trim($type->label.' '.$window);
+            $base = trim($type->label.' '.$window);
+        } else {
+            $base = $window;
         }
 
-        return $window;
+        $place = is_string($shift->unit_name) && $shift->unit_name !== ''
+            ? $shift->unit_name
+            : '';
+
+        return $place !== '' ? trim($base.' · '.$place) : $base;
     }
 }

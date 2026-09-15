@@ -184,7 +184,9 @@
         "all_teams": "Tutti i team",
         "all_workers": "Tutti i lavoratori",
         "all_clock_points": "Tutti i clock points",
-        "apply": "Applica"
+        "apply": "Applica",
+        "location": "Sede",
+        "all_locations": "Tutte le sedi"
     },
     "export": {
         "columns": {
@@ -367,7 +369,7 @@
     },
     "schedule": {
         "title": "Turni",
-        "subtitle": "Pianifica i turni per esecutore. Codici o orari liberi (hh:mm-hh:mm).",
+        "subtitle": "Pianifica i turni per esecutore. Codici o orari liberi, facoltativamente con gruppo (D1/G1).",
         "week": "Settimana",
         "workers": "Esecutori",
         "cells": "Celle",
@@ -395,7 +397,10 @@
             "incomplete_grid": "La griglia è incompleta.",
             "copy_same_week": "Settimana di origine e destinazione coincidono.",
             "copy_conflict": "La settimana di destinazione ha già turni. Copia rifiutata.",
-            "invalid_notification_reference": "Riferimento notifica non valido."
+            "invalid_notification_reference": "Riferimento notifica non valido.",
+            "unknown_unit": "Codice gruppo sconosciuto.",
+            "ambiguous_unit": "Questo codice gruppo è presente in :count sedi. Scegli un filtro sede.",
+            "absence_has_unit": "Un’assenza non può avere un gruppo."
         },
         "types": {
             "add": "Aggiungi tipo",
@@ -453,7 +458,8 @@
         "nav_next": "Successivo",
         "week_current": "Settimana attuale (:number)",
         "week_numbered": "Settimana (:number)",
-        "weekends": "Fine settimana attivi"
+        "weekends": "Fine settimana attivi",
+        "legend_units": "Gruppi"
     },
     "shift_types": {
         "title": "Tipi di turno",

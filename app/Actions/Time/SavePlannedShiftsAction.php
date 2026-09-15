@@ -10,8 +10,10 @@ use App\Events\Time\ScheduleSaved;
 use App\Exceptions\RosterValidationException;
 use App\Models\PlannedShift;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Time\TimeModuleAccess;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class SavePlannedShiftsAction
@@ -24,9 +26,10 @@ class SavePlannedShiftsAction
     ) {}
 
     /**
+     * @param  list<int>|null  $actorLocationIds
      * @return list<PlannedShift>
      */
-    public function handle(Tenant $tenant, SavePlannedShiftsData $data, ?int $actorUserId): array
+    public function handle(Tenant $tenant, SavePlannedShiftsData $data, ?int $actorUserId, ?array $actorLocationIds = null): array
     {
         TimeModuleAccess::assertEnabledForTenantId((int) $tenant->id);
 
@@ -41,17 +44,29 @@ class SavePlannedShiftsAction
         $this->assertCompleteGrid($workerIds, $dates, $data->cells, $dateSet);
 
         $types = collect($this->listShiftTypes->handle((int) $tenant->id, false));
+        $units = $this->rosterUnits((int) $tenant->id, $data->locationId, $actorLocationIds);
+        $workers = Worker::query()
+            ->with(['team', 'locations'])
+            ->where('tenant_id', $tenant->id)
+            ->whereIn('id', $workerIds ?: [0])
+            ->get()
+            ->keyBy('id');
 
         $parsedCells = [];
         $invalid = [];
         foreach ($data->cells as $cell) {
-            $parsed = $this->parseCell->handle((string) $cell['raw'], $types);
+            $worker = $workers->get((int) $cell['worker_id']);
+            $catalog = $units->filter(
+                fn (Unit $unit) => $worker instanceof Worker && $worker->canClockAt((int) $unit->location_id),
+            );
+            $parsed = $this->parseCell->handle((string) $cell['raw'], $types, $catalog);
             if ($parsed->kind === RosterCellKind::Invalid) {
                 $invalid[] = [
                     'worker_id' => (int) $cell['worker_id'],
                     'date' => (string) $cell['date'],
                     'raw' => (string) $cell['raw'],
                     'error' => $parsed->errorKey,
+                    'count' => $parsed->ambiguousCount,
                 ];
             }
             $parsedCells[] = ['cell' => $cell, 'parsed' => $parsed];
@@ -89,6 +104,10 @@ class SavePlannedShiftsAction
                     'work_date' => $item['cell']['date'],
                     'shift_type_id' => $parsed->shiftTypeId,
                     'kind' => $parsed->shiftTypeKind ?? ShiftTypeKind::Work,
+                    'unit_id' => $parsed->unitId,
+                    'unit_code' => $parsed->unitCode,
+                    'unit_name' => $parsed->unitName,
+                    'location_id' => $parsed->locationId,
                     'start_time' => $parsed->startTime,
                     'end_time' => $parsed->endTime,
                     'break_minutes' => $parsed->breakMinutes,
@@ -117,6 +136,22 @@ class SavePlannedShiftsAction
 
             return $created;
         });
+    }
+
+    /**
+     * @param  list<int>|null  $actorLocationIds
+     * @return Collection<int, Unit>
+     */
+    private function rosterUnits(int $tenantId, ?int $locationId, ?array $actorLocationIds): Collection
+    {
+        return Unit::query()
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->whereNotNull('roster_code')
+            ->where('roster_code', '!=', '')
+            ->when($locationId !== null, fn ($q) => $q->where('location_id', $locationId))
+            ->when($actorLocationIds !== null, fn ($q) => $q->whereIn('location_id', $actorLocationIds ?: [0]))
+            ->get();
     }
 
     /**

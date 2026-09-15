@@ -735,6 +735,11 @@ Opslaan zonder weekends raakt za/zo niet. Maand toont altijd alle dagen.
 - **Shiftypes:** eigen scherm onder Time (eenmalig instellen). `kind`: work / leave / recup / sick.
   Afwezigheid: hele kalenderdag, geen uren, blokkeert werk die dag. Het uurrooster toont een
   codelegende (werk vs afwezigheid). Ongeldige cellen: rode rand.
+- **Plek (groep/unit):** optioneel in dezelfde cel: `D1/G1` of `07:00-12:00/G1` (spatie mag;
+  canonical `/`). `units.roster_code` uniek per locatie. Snapshot op `planned_shifts`
+  (`unit_id`, `unit_code`, `unit_name`, `location_id`). Parser lost codes op; save eist
+  `Worker::canClockAt`. Zelfde code op twee locaties → `ambiguous_unit` tot locatiefilter.
+  Afwezigheid + groep ongeldig. Locatiefilter op het rooster. Mijn rooster toont snapshot-`unit_name`.
 - **Copy week:** alles-of-niets; alleen in weekweergave; doelweek met bestaande diensten → weigeren.
 - **Golf 2 — Mijn rooster:** Clock Point-tegel, alleen eigen `published` week. Badge = ongelezen
   `roster_published` (`wp-pill--new`). Klik opent de nieuwste ongelezen week en zet `read_at`

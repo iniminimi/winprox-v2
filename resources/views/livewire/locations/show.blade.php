@@ -286,6 +286,12 @@
                     @error('unitName') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
                 <label class="wp-field">
+                    <span class="wp-label">{{ __('locations.units.fields.roster_code') }}</span>
+                    <input type="text" class="wp-input" wire:model="unitRosterCode" maxlength="8" autocomplete="off" />
+                    <span class="wp-muted">{{ __('locations.units.fields.roster_code_hint') }}</span>
+                    @error('unitRosterCode') <span class="wp-error">{{ $message }}</span> @enderror
+                </label>
+                <label class="wp-field">
                     <span class="wp-label">{{ __('locations.units.fields.description') }}</span>
                     <textarea class="wp-input" wire:model="unitDescription" rows="1"></textarea>
                     @error('unitDescription') <span class="wp-error">{{ $message }}</span> @enderror

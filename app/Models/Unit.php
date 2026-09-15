@@ -27,6 +27,7 @@ class Unit extends Model
         'bulk_batch_id',
         'import_batch_id',
         'name',
+        'roster_code',
         'description',
         'original_language',
         'is_active',
@@ -66,6 +67,11 @@ class Unit extends Model
         } while (static::withoutGlobalScopes()->where('qr_token', $token)->exists());
 
         return $token;
+    }
+
+    public static function normalizeRosterCode(string $code): string
+    {
+        return mb_strtoupper(trim($code), 'UTF-8');
     }
 
     public function location(): BelongsTo

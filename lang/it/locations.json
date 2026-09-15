@@ -130,7 +130,9 @@
             "allow_unit_checks": "Consenti controlli unità",
             "external_id": "ID esterno",
             "allow_unit_measurements": "Consenti misurazioni unit",
-            "measure_fields": "Campi di misura"
+            "measure_fields": "Campi di misura",
+            "roster_code": "Codice turno",
+            "roster_code_hint": "Facoltativo. Codice breve per il turno, univoco per sede (es. G1)."
         },
         "translation_preview": "Traduzione (portale)",
         "translation_edit": {
@@ -169,7 +171,9 @@
             "translation_import_missing": "Unità non trovata o non attiva.",
             "translation_import_name_too_long": "Il nome unità tradotto è troppo lungo.",
             "invalid_check_list": "Checklist non valida.",
-            "external_id_taken": "Questo ID esterno è già usato da un'altra unit."
+            "external_id_taken": "Questo ID esterno è già usato da un'altra unit.",
+            "duplicate_roster_code": "Questo codice turno esiste già in questa sede.",
+            "invalid_roster_code": "Usa solo lettere e cifre (max. 8)."
         },
         "flash": {
             "created": "Unità creata.",

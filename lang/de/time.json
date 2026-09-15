@@ -184,7 +184,9 @@
         "all_teams": "Alle Teams",
         "all_workers": "Alle Mitarbeitenden",
         "all_clock_points": "Alle Clock Points",
-        "apply": "Anwenden"
+        "apply": "Anwenden",
+        "location": "Standort",
+        "all_locations": "Alle Standorte"
     },
     "export": {
         "columns": {
@@ -367,7 +369,7 @@
     },
     "schedule": {
         "title": "Dienstplan",
-        "subtitle": "Dienste pro Mitarbeiter planen. Codes oder freie Zeiten (hh:mm-hh:mm).",
+        "subtitle": "Planen Sie Dienste je Ausführendem. Codes oder freie Zeiten, optional mit Gruppe (D1/G1).",
         "week": "Woche",
         "workers": "Mitarbeiter",
         "cells": "Zellen",
@@ -395,7 +397,10 @@
             "incomplete_grid": "Der Plan ist unvollständig.",
             "copy_same_week": "Quell- und Zielwoche sind gleich.",
             "copy_conflict": "Die Zielwoche hat bereits Dienste. Kopie abgelehnt.",
-            "invalid_notification_reference": "Ungültige Benachrichtigungsreferenz."
+            "invalid_notification_reference": "Ungültige Benachrichtigungsreferenz.",
+            "unknown_unit": "Unbekannter Gruppencode.",
+            "ambiguous_unit": "Dieser Gruppencode kommt an :count Standorten vor. Wählen Sie einen Standortfilter.",
+            "absence_has_unit": "Abwesenheit darf keine Gruppe haben."
         },
         "types": {
             "add": "Schichttyp hinzufügen",
@@ -453,7 +458,8 @@
         "nav_next": "Weiter",
         "week_current": "Aktuelle Woche (:number)",
         "week_numbered": "Woche (:number)",
-        "weekends": "Wochenenden an"
+        "weekends": "Wochenenden an",
+        "legend_units": "Gruppen"
     },
     "shift_types": {
         "title": "Schichttypen",

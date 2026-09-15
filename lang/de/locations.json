@@ -130,7 +130,9 @@
             "allow_unit_checks": "Unit-Checks erlauben",
             "external_id": "Externe ID",
             "allow_unit_measurements": "Unit-Messungen erlauben",
-            "measure_fields": "Messfelder"
+            "measure_fields": "Messfelder",
+            "roster_code": "Dienstplancode",
+            "roster_code_hint": "Optional. Kurzer Code für den Dienstplan, eindeutig pro Standort (z. B. G1)."
         },
         "translation_preview": "Übersetzung (Portal)",
         "translation_edit": {
@@ -169,7 +171,9 @@
             "translation_import_missing": "Unit nicht gefunden oder nicht aktiv.",
             "translation_import_name_too_long": "Der übersetzte Unit-Name ist zu lang.",
             "invalid_check_list": "Ungültige Checkliste.",
-            "external_id_taken": "Diese externe ID wird bereits von einer anderen Unit verwendet."
+            "external_id_taken": "Diese externe ID wird bereits von einer anderen Unit verwendet.",
+            "duplicate_roster_code": "Dieser Dienstplancode existiert bereits an diesem Standort.",
+            "invalid_roster_code": "Nur Buchstaben und Ziffern (max. 8)."
         },
         "flash": {
             "created": "Unit angelegt.",

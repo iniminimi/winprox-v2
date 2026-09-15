@@ -6,8 +6,10 @@ use App\Data\Time\RosterWeekSnapshot;
 use App\Enums\RosterAttendanceStatus;
 use App\Enums\ShiftTypeColor;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
+use App\Models\Unit;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Time\TimeModuleAccess;
@@ -22,7 +24,7 @@ class ListRosterWeekAction
         private CompareRosterAttendanceAction $compareAttendance,
     ) {}
 
-    public function handle(int $tenantId, string $weekStart, ?int $teamId = null, ?User $actor = null, string $period = 'week', bool $includeWeekends = true): RosterWeekSnapshot
+    public function handle(int $tenantId, string $weekStart, ?int $teamId = null, ?User $actor = null, string $period = 'week', bool $includeWeekends = true, ?int $locationId = null): RosterWeekSnapshot
     {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
@@ -32,8 +34,9 @@ class ListRosterWeekAction
         $weekEndDate = $rangeEnd->toDateString();
         $visibleStart = $dates[0];
         $visibleEnd = $dates[array_key_last($dates)];
+        $actorLocationIds = $actor?->accessibleLocationIds();
 
-        $workers = $this->workers($tenantId, $teamId, $actor, $weekStartDate, $weekEndDate);
+        $workers = $this->workers($tenantId, $teamId, $actorLocationIds, $weekStartDate, $weekEndDate, $locationId);
         $workerIds = $workers->pluck('id')->map(fn ($id) => (int) $id)->all();
 
         $shifts = PlannedShift::query()
@@ -54,6 +57,7 @@ class ListRosterWeekAction
                 'color' => ($activeType ? $shift->shiftType->color : ShiftTypeColor::freeTime())->value,
                 'status' => $shift->status->value,
                 'kind' => $shift->kind->value,
+                'unit_code' => $shift->unit_code,
                 'start' => $shift->start_time !== null ? ShiftType::formatTime($shift->start_time) : null,
                 'end' => $shift->end_time !== null ? ShiftType::formatTime($shift->end_time) : null,
             ];
@@ -110,6 +114,37 @@ class ListRosterWeekAction
             ->values()
             ->all();
 
+        $locations = Location::query()
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->when($actorLocationIds !== null, fn ($q) => $q->whereIn('id', $actorLocationIds ?: [0]))
+            ->orderBy('name')
+            ->get(['id', 'name'])
+            ->map(fn (Location $location) => [
+                'id' => $location->id,
+                'name' => $location->name,
+            ])
+            ->values()
+            ->all();
+
+        $units = Unit::query()
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->whereNotNull('roster_code')
+            ->where('roster_code', '!=', '')
+            ->when($locationId !== null, fn ($q) => $q->where('location_id', $locationId))
+            ->when($actorLocationIds !== null, fn ($q) => $q->whereIn('location_id', $actorLocationIds ?: [0]))
+            ->orderBy('roster_code')
+            ->get(['id', 'name', 'roster_code', 'location_id'])
+            ->map(fn (Unit $unit) => [
+                'id' => $unit->id,
+                'code' => $unit->roster_code,
+                'name' => $unit->name,
+                'location_id' => $unit->location_id,
+            ])
+            ->values()
+            ->all();
+
         return new RosterWeekSnapshot(
             weekStart: $weekStartDate,
             weekEnd: $weekEndDate,
@@ -120,6 +155,10 @@ class ListRosterWeekAction
                 'name' => $worker->displayName(),
                 'team_id' => $worker->internal_team_id,
                 'team_name' => $worker->team?->localizedName(),
+                'location_ids' => $worker->clocksAllLocations()
+                    ? []
+                    : $worker->locations->pluck('id')->map(fn ($id) => (int) $id)->values()->all(),
+                'clocks_all_locations' => $worker->clocksAllLocations(),
             ])->values()->all(),
             cells: $cells,
             types: $typePayload,
@@ -136,18 +175,19 @@ class ListRosterWeekAction
                 RosterAttendanceStatus::Unplanned->value => __('time.schedule.attendance.unplanned'),
                 RosterAttendanceStatus::Ok->value => __('time.schedule.attendance.ok'),
             ],
+            locations: $locations,
+            units: $units,
         );
     }
 
     /**
+     * @param  list<int>|null  $actorLocationIds
      * @return Collection<int, Worker>
      */
-    private function workers(int $tenantId, ?int $teamId, ?User $actor, string $weekStart, string $weekEnd): Collection
+    private function workers(int $tenantId, ?int $teamId, ?array $actorLocationIds, string $weekStart, string $weekEnd, ?int $locationId): Collection
     {
-        $locationIds = $actor?->accessibleLocationIds();
-
         $query = Worker::query()
-            ->with('team.translations')
+            ->with(['team.translations', 'locations'])
             ->where('tenant_id', $tenantId)
             ->when($teamId !== null, fn ($q) => $q->where('internal_team_id', $teamId))
             ->where(function ($q) use ($weekStart, $weekEnd) {
@@ -157,10 +197,18 @@ class ListRosterWeekAction
                     });
             });
 
-        if ($locationIds !== null) {
-            $query->where(function ($q) use ($locationIds) {
+        if ($actorLocationIds !== null) {
+            $query->where(function ($q) use ($actorLocationIds) {
                 $q->whereDoesntHave('locations')
-                    ->orWhereHas('locations', fn ($locations) => $locations->whereIn('locations.id', $locationIds));
+                    ->orWhereHas('locations', fn ($locations) => $locations->whereIn('locations.id', $actorLocationIds));
+            });
+        }
+
+        if ($locationId !== null) {
+            $query->where(function ($q) use ($locationId) {
+                $q->whereHas('team', fn ($team) => $team->where('clocks_all_locations', true))
+                    ->orWhereDoesntHave('locations')
+                    ->orWhereHas('locations', fn ($locations) => $locations->where('locations.id', $locationId));
             });
         }
 

@@ -45,6 +45,9 @@ class RosterIndex extends Component
     #[Url(as: 'team')]
     public ?int $teamFilter = null;
 
+    #[Url(as: 'location')]
+    public ?int $locationFilter = null;
+
     #[Url(as: 'weekends')]
     public bool $showWeekends = true;
 
@@ -103,6 +106,12 @@ class RosterIndex extends Component
         $this->dispatch('roster-week-changed');
     }
 
+    public function updatedLocationFilter(mixed $value): void
+    {
+        $this->locationFilter = $value === '' || $value === null ? null : (int) $value;
+        $this->dispatch('roster-week-changed');
+    }
+
     public function updatedShowWeekends(): void
     {
         $this->showWeekends = (bool) $this->showWeekends;
@@ -122,6 +131,7 @@ class RosterIndex extends Component
             auth()->user(),
             $this->period(),
             $this->includeWeekends(),
+            $this->locationFilter,
         );
 
         $array = $snapshot->toArray();
@@ -153,6 +163,7 @@ class RosterIndex extends Component
                 'week_start' => $this->weekStart,
                 'period' => $this->period(),
                 'include_weekends' => $this->includeWeekends(),
+                'location_id' => $this->locationFilter,
                 'worker_ids' => $workerIds,
                 'cells' => $normalized,
             ],
@@ -162,8 +173,16 @@ class RosterIndex extends Component
         try {
             $save->handle(
                 Tenant::query()->findOrFail(Tenancy::id()),
-                new SavePlannedShiftsData($this->weekStart, $workerIds, $normalized, $this->period(), $this->includeWeekends()),
+                new SavePlannedShiftsData(
+                    $this->weekStart,
+                    $workerIds,
+                    $normalized,
+                    $this->period(),
+                    $this->includeWeekends(),
+                    $this->locationFilter,
+                ),
                 auth()->id(),
+                auth()->user()?->accessibleLocationIds(),
             );
         } catch (RosterValidationException|InvalidArgumentException $e) {
             $this->dispatch('roster-save-failed', message: __($e->getMessage()), cells: $e instanceof RosterValidationException ? $e->cells : []);
@@ -253,11 +272,13 @@ class RosterIndex extends Component
             auth()->user(),
             $this->period(),
             $this->includeWeekends(),
+            $this->locationFilter,
         );
 
         return view('livewire.time.roster-index', [
             'legendTypes' => $listTypes->handle((int) Tenancy::id(), true),
             'teams' => $snapshot->teams,
+            'locations' => $snapshot->locations,
             'weekLabel' => $this->periodLabel($snapshot),
             'snapshot' => $snapshot,
             'isMonth' => $this->isMonth(),

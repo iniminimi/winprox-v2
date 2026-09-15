@@ -130,7 +130,9 @@
             "allow_unit_checks": "Permitir comprobaciones de unidad",
             "external_id": "ID externo",
             "allow_unit_measurements": "Permitir mediciones de unit",
-            "measure_fields": "Campos de medición"
+            "measure_fields": "Campos de medición",
+            "roster_code": "Código de cuadrante",
+            "roster_code_hint": "Opcional. Código corto para el cuadrante, único por sede (p. ej. G1)."
         },
         "translation_preview": "Traducción (portal)",
         "translation_edit": {
@@ -169,7 +171,9 @@
             "translation_import_missing": "Unidad no encontrada o no activa.",
             "translation_import_name_too_long": "El nombre traducido de la unidad es demasiado largo.",
             "invalid_check_list": "Lista no válida.",
-            "external_id_taken": "Este ID externo ya está en uso en otra unidad."
+            "external_id_taken": "Este ID externo ya está en uso en otra unidad.",
+            "duplicate_roster_code": "Este código de cuadrante ya existe en esta sede.",
+            "invalid_roster_code": "Use solo letras y dígitos (máx. 8)."
         },
         "flash": {
             "created": "Unidad creada.",

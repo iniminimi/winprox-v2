@@ -130,7 +130,9 @@
             "allow_unit_checks": "Allow unit checks",
             "external_id": "External ID",
             "allow_unit_measurements": "Allow unit measurements",
-            "measure_fields": "Measure fields"
+            "measure_fields": "Measure fields",
+            "roster_code": "Roster code",
+            "roster_code_hint": "Optional. Short code for the roster, unique per location (e.g. G1)."
         },
         "translation_preview": "Translation (portal)",
         "translation_edit": {
@@ -169,7 +171,9 @@
             "translation_import_missing": "Unit not found or not active.",
             "translation_import_name_too_long": "The translated unit name is too long.",
             "invalid_check_list": "Invalid checklist.",
-            "external_id_taken": "This external ID is already used by another unit."
+            "external_id_taken": "This external ID is already used by another unit.",
+            "duplicate_roster_code": "This roster code already exists at this location.",
+            "invalid_roster_code": "Use letters and digits only (max. 8)."
         },
         "flash": {
             "created": "Unit created.",

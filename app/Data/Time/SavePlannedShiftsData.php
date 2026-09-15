@@ -14,5 +14,6 @@ final class SavePlannedShiftsData
         public array $cells,
         public string $period = 'week',
         public bool $includeWeekends = true,
+        public ?int $locationId = null,
     ) {}
 }

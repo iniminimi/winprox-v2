@@ -118,3 +118,47 @@ it('weigert de roosterlijst via Livewire-state', function () {
     expect(fn () => $component->set('scheduleListOpen', true))
         ->toThrow(CannotUpdateLockedPropertyException::class);
 });
+
+it('toont de groepsnaam uit de snapshot op Mijn rooster', function () {
+    [$tenant, $team, $clockPoint, $worker] = schedulePortalTenant();
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Groep 1',
+        'roster_code' => 'G1',
+    ]);
+    $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
+    app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        null,
+    );
+
+    $cells = [];
+    $monday = Carbon::parse($week);
+    for ($i = 0; $i < 7; $i++) {
+        $date = $monday->copy()->addDays($i)->toDateString();
+        $cells[] = [
+            'worker_id' => $worker->id,
+            'date' => $date,
+            'raw' => $date === $week ? 'D1/G1' : '',
+        ];
+    }
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], $cells),
+        null,
+    );
+    app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData($week, [$worker->id]),
+        null,
+    );
+
+    signInScheduleWorker($clockPoint)
+        ->call('openSchedule')
+        ->assertSee('Groep 1', false)
+        ->assertSee('Dagdienst', false);
+});

@@ -1567,7 +1567,7 @@
                 },
                 {
                     "label": "Codes and free times",
-                    "text": "Type a <strong>code</strong> from the legend or a time <strong>07:00-15:00</strong>. Invalid cells have a <strong>red border</strong> and an exclamation mark — fix them before saving."
+                    "text": "Type a <strong>code</strong> from the legend or a time <strong>07:00-15:00</strong>. Optionally add a group in the same cell: <strong>D1/G1</strong> or <strong>07:00-12:00/G1</strong> (a space is allowed). Invalid cells have a <strong>red border</strong> — fix them before saving. If a group code exists at more than one location, choose a location filter."
                 },
                 {
                     "label": "Save and publish",

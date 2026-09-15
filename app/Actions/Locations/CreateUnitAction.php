@@ -70,6 +70,11 @@ class CreateUnitAction
             $payload['import_batch_id'] = $data['import_batch_id'];
         }
 
+        if (Schema::hasColumn('units', 'roster_code') && array_key_exists('roster_code', $data)) {
+            $code = Unit::normalizeRosterCode((string) ($data['roster_code'] ?? ''));
+            $payload['roster_code'] = $code !== '' ? $code : null;
+        }
+
         $unit = Unit::create($payload);
 
         $this->audit->record(

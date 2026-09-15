@@ -130,7 +130,9 @@
             "allow_unit_checks": "Autoriser les contrôles d’unité",
             "external_id": "ID externe",
             "allow_unit_measurements": "Autoriser les mesures unit",
-            "measure_fields": "Champs de mesure"
+            "measure_fields": "Champs de mesure",
+            "roster_code": "Code planning",
+            "roster_code_hint": "Facultatif. Code court pour le planning, unique par site (ex. G1)."
         },
         "translation_preview": "Traduction (portail)",
         "translation_edit": {
@@ -169,7 +171,9 @@
             "translation_import_missing": "Unité introuvable ou inactive.",
             "translation_import_name_too_long": "Le nom d'unité traduit est trop long.",
             "invalid_check_list": "Liste invalide.",
-            "external_id_taken": "Cet ID externe est déjà utilisé par une autre unité."
+            "external_id_taken": "Cet ID externe est déjà utilisé par une autre unité.",
+            "duplicate_roster_code": "Ce code planning existe déjà sur ce site.",
+            "invalid_roster_code": "Utilisez uniquement des lettres et des chiffres (max. 8)."
         },
         "flash": {
             "created": "Unité créée.",

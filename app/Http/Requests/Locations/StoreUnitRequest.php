@@ -55,9 +55,20 @@ class StoreUnitRequest extends FormRequest
             $externalIdRules[] = $externalUnique;
         }
 
+        $rosterCodeRules = ['nullable', 'string', 'max:8', 'regex:/^[A-Za-z0-9]*$/'];
+        if (Schema::hasColumn('units', 'roster_code') && $locationId !== null) {
+            $rosterUnique = Rule::unique('units', 'roster_code')
+                ->where(fn ($q) => $q->where('location_id', $locationId)->whereNotNull('roster_code')->where('roster_code', '!=', ''));
+            if ($ignoreUnitId !== null) {
+                $rosterUnique->ignore($ignoreUnitId);
+            }
+            $rosterCodeRules[] = $rosterUnique;
+        }
+
         return [
             'name' => ['required', 'string', 'min:1', 'max:255', $unique],
             'description' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
+            'roster_code' => $rosterCodeRules,
             'category_id' => $categoryRules,
             'unit_check_list_id' => $checkListRules,
             'external_id' => $externalIdRules,

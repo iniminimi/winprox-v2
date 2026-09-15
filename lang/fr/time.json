@@ -184,7 +184,9 @@
         "all_teams": "Toutes les équipes",
         "all_workers": "Tous les collaborateurs",
         "all_clock_points": "Tous les clock points",
-        "apply": "Appliquer"
+        "apply": "Appliquer",
+        "location": "Site",
+        "all_locations": "Tous les sites"
     },
     "export": {
         "columns": {
@@ -367,7 +369,7 @@
     },
     "schedule": {
         "title": "Horaire",
-        "subtitle": "Planifiez les services par exécutant. Codes ou heures libres (hh:mm-hh:mm).",
+        "subtitle": "Planifiez les services par exécutant. Codes ou horaires libres, éventuellement avec un groupe (D1/G1).",
         "week": "Semaine",
         "workers": "Exécutants",
         "cells": "Cellules",
@@ -395,7 +397,10 @@
             "incomplete_grid": "La grille est incomplète.",
             "copy_same_week": "La semaine source et la semaine cible sont identiques.",
             "copy_conflict": "La semaine cible a déjà des services. Copie refusée.",
-            "invalid_notification_reference": "Référence de notification invalide."
+            "invalid_notification_reference": "Référence de notification invalide.",
+            "unknown_unit": "Code de groupe inconnu.",
+            "ambiguous_unit": "Ce code de groupe existe sur :count sites. Choisissez un filtre de site.",
+            "absence_has_unit": "Une absence ne peut pas avoir de groupe."
         },
         "types": {
             "add": "Ajouter un type",
@@ -453,7 +458,8 @@
         "nav_next": "Suivant",
         "week_current": "Semaine actuelle (:number)",
         "week_numbered": "Semaine (:number)",
-        "weekends": "Week-ends activés"
+        "weekends": "Week-ends activés",
+        "legend_units": "Groupes"
     },
     "shift_types": {
         "title": "Types de service",

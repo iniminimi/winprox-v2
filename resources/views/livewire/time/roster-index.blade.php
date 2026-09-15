@@ -47,6 +47,14 @@
                         </select>
                     </div>
                     <div class="wp-filter-cell">
+                        <select id="schedule-location" class="wp-select" wire:model.live="locationFilter" aria-label="{{ __('time.filters.location') }}">
+                            <option value="">{{ __('time.filters.all_locations') }}</option>
+                            @foreach ($locations as $location)
+                                <option value="{{ $location['id'] }}">{{ $location['name'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="wp-filter-cell">
                         <nav class="wp-pagination" aria-label="{{ $isMonth ? __('time.schedule.month') : __('time.schedule.week') }}">
                             <div class="wp-pagination__pages">
                                 <button type="button" class="wp-pagination__control" wire:click="previousWeek" aria-label="{{ $isMonth ? __('time.schedule.prev_month') : __('time.schedule.prev_week') }}">{{ __('time.schedule.nav_prev') }}</button>
@@ -100,6 +108,15 @@
                     <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
                     <strong>{{ $type->code }}</strong>
                     <span class="wp-muted">{{ __('time.schedule.types.kinds.'.$type->kind->value) }}</span>
+                </span>
+            @endforeach
+        @endif
+        @if ($snapshot->units !== [])
+            <span class="wp-filter-inline-label">{{ __('time.schedule.legend_units') }}</span>
+            @foreach ($snapshot->units as $unit)
+                <span class="wp-roster-legend__item">
+                    <strong>{{ $unit['code'] }}</strong>
+                    <span class="wp-muted">{{ $unit['name'] }}</span>
                 </span>
             @endforeach
         @endif

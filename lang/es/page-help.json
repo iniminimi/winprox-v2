@@ -1567,7 +1567,7 @@
                 },
                 {
                     "label": "Códigos y horas libres",
-                    "text": "Escriba un <strong>código</strong> de la leyenda o una hora <strong>07:00-15:00</strong>. Las celdas no válidas tienen <strong>borde rojo</strong> y un signo de exclamación."
+                    "text": "Escriba un <strong>código</strong> de la leyenda o una hora <strong>07:00-15:00</strong>. Opcionalmente un grupo en la misma celda: <strong>D1/G1</strong> o <strong>07:00-12:00/G1</strong> (se admite un espacio). Las celdas no válidas tienen un <strong>borde rojo</strong>: corríjalas antes de guardar. Si un código de grupo existe en varias sedes, elija un filtro de sede."
                 },
                 {
                     "label": "Guardar y publicar",

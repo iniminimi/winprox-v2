@@ -19,6 +19,10 @@ class PlannedShift extends Model
         'work_date',
         'shift_type_id',
         'kind',
+        'unit_id',
+        'unit_code',
+        'unit_name',
+        'location_id',
         'start_time',
         'end_time',
         'break_minutes',
@@ -42,6 +46,16 @@ class PlannedShift extends Model
         return $this->belongsTo(ShiftType::class);
     }
 
+    public function unit(): BelongsTo
+    {
+        return $this->belongsTo(Unit::class);
+    }
+
+    public function location(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
+    }
+
     public function startMinutes(): int
     {
         return ShiftType::timeToMinutes($this->start_time);
@@ -53,6 +67,16 @@ class PlannedShift extends Model
     }
 
     public function displayValue(): string
+    {
+        $duty = $this->dutyDisplay();
+        if (is_string($this->unit_code) && $this->unit_code !== '') {
+            return $duty === '' ? $this->unit_code : $duty.'/'.$this->unit_code;
+        }
+
+        return $duty;
+    }
+
+    private function dutyDisplay(): string
     {
         if ($this->kind->isAbsence()) {
             if ($this->shiftType !== null && $this->shiftType->is_active) {

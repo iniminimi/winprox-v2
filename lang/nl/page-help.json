@@ -1567,7 +1567,7 @@
                 },
                 {
                     "label": "Codes en vrije tijden",
-                    "text": "Typ een <strong>code</strong> uit de legende of een tijd <strong>07:00-15:00</strong>. Ongeldige cellen hebben een <strong>rode rand</strong> en een uitroepteken — corrigeer die vóór opslaan."
+                    "text": "Typ een <strong>code</strong> uit de legende of een tijd <strong>07:00-15:00</strong>. Optioneel een groep in dezelfde cel: <strong>D1/G1</strong> of <strong>07:00-12:00/G1</strong> (spatie mag). Ongeldige cellen hebben een <strong>rode rand</strong> — corrigeer die vóór opslaan. Komt een groepscode op meerdere locaties voor, kies dan een locatiefilter."
                 },
                 {
                     "label": "Opslaan en publiceren",

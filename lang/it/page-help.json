@@ -1567,7 +1567,7 @@
                 },
                 {
                     "label": "Codici e orari liberi",
-                    "text": "Digita un <strong>codice</strong> della legenda o un orario <strong>07:00-15:00</strong>. Le celle non valide hanno un <strong>bordo rosso</strong> e un punto esclamativo."
+                    "text": "Digita un <strong>codice</strong> della legenda o un orario <strong>07:00-15:00</strong>. Facoltativamente un gruppo nella stessa cella: <strong>D1/G1</strong> o <strong>07:00-12:00/G1</strong> (lo spazio è ammesso). Le celle non valide hanno un <strong>bordo rosso</strong>: correggile prima di salvare. Se un codice gruppo è presente in più sedi, scegli un filtro sede."
                 },
                 {
                     "label": "Salva e pubblica",

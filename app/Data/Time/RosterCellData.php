@@ -16,7 +16,12 @@ final class RosterCellData
         public ?string $endTime = null,
         public int $breakMinutes = 0,
         public ?ShiftTypeKind $shiftTypeKind = null,
+        public ?int $unitId = null,
+        public ?string $unitCode = null,
+        public ?string $unitName = null,
+        public ?int $locationId = null,
         public ?string $errorKey = null,
+        public ?int $ambiguousCount = null,
     ) {}
 
     public function isEmpty(): bool

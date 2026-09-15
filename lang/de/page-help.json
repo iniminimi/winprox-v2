@@ -1567,7 +1567,7 @@
                 },
                 {
                     "label": "Codes und freie Zeiten",
-                    "text": "Geben Sie einen <strong>Code</strong> aus der Legende oder eine Zeit <strong>07:00-15:00</strong> ein. Ungültige Zellen haben einen <strong>roten Rand</strong> und ein Ausrufezeichen."
+                    "text": "Geben Sie einen <strong>Code</strong> aus der Legende oder eine Zeit <strong>07:00-15:00</strong> ein. Optional eine Gruppe in derselben Zelle: <strong>D1/G1</strong> oder <strong>07:00-12:00/G1</strong> (Leerzeichen erlaubt). Ungültige Zellen haben einen <strong>roten Rand</strong> — korrigieren Sie sie vor dem Speichern. Kommt ein Gruppencode an mehreren Standorten vor, wählen Sie einen Standortfilter."
                 },
                 {
                     "label": "Speichern und veröffentlichen",

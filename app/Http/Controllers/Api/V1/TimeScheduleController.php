@@ -36,6 +36,7 @@ class TimeScheduleController extends Controller
 
         $weekStart = (string) $request->query('week_start', now()->toDateString());
         $teamId = $request->query('team_id');
+        $locationId = $request->query('location_id');
         $period = $request->query('period') === 'month' ? 'month' : 'week';
         $snapshot = $list->handle(
             (int) Tenancy::id(),
@@ -44,6 +45,7 @@ class TimeScheduleController extends Controller
             $request->user(),
             $period,
             $request->boolean('include_weekends', true),
+            $locationId !== null && $locationId !== '' ? (int) $locationId : null,
         );
 
         return $this->success($snapshot->toArray());
@@ -67,8 +69,12 @@ class TimeScheduleController extends Controller
                     ], $validated['cells']),
                     $validated['period'] ?? 'week',
                     array_key_exists('include_weekends', $validated) ? (bool) $validated['include_weekends'] : true,
+                    array_key_exists('location_id', $validated) && $validated['location_id'] !== null
+                        ? (int) $validated['location_id']
+                        : null,
                 ),
                 $request->user()?->id,
+                $request->user()?->accessibleLocationIds(),
             );
         } catch (RosterValidationException|InvalidArgumentException $e) {
             return response()->json([

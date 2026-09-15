@@ -184,7 +184,9 @@
         "all_teams": "Alle teams",
         "all_workers": "Alle medewerkers",
         "all_clock_points": "Alle clock points",
-        "apply": "Toepassen"
+        "apply": "Toepassen",
+        "location": "Locatie",
+        "all_locations": "Alle locaties"
     },
     "export": {
         "columns": {
@@ -367,7 +369,7 @@
     },
     "schedule": {
         "title": "Uurrooster",
-        "subtitle": "Plan diensten per uitvoerder. Codes typen of vrije tijden (uu:mm-uu:mm).",
+        "subtitle": "Plan diensten per uitvoerder. Codes of vrije tijden, optioneel met groep (D1/G1).",
         "week": "Week",
         "workers": "Uitvoerders",
         "cells": "Cellen",
@@ -395,7 +397,10 @@
             "incomplete_grid": "Het rooster is onvolledig.",
             "copy_same_week": "Bron- en doelweek zijn hetzelfde.",
             "copy_conflict": "De doelweek heeft al diensten. Kopie geweigerd.",
-            "invalid_notification_reference": "Ongeldige notificatie-verwijzing."
+            "invalid_notification_reference": "Ongeldige notificatie-verwijzing.",
+            "unknown_unit": "Onbekende groepscode.",
+            "ambiguous_unit": "Deze groepscode komt voor op :count locaties. Kies een locatiefilter.",
+            "absence_has_unit": "Afwezigheid kan geen groep hebben."
         },
         "types": {
             "add": "Shiftype toevoegen",
@@ -453,7 +458,8 @@
         "nav_next": "Volgende",
         "week_current": "Huidige week (:number)",
         "week_numbered": "Week (:number)",
-        "weekends": "Weekends aan"
+        "weekends": "Weekends aan",
+        "legend_units": "Groepen"
     },
     "shift_types": {
         "title": "Shiftypes",

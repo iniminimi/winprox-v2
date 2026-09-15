@@ -62,6 +62,10 @@ class CopyWeekAction
                     'start_time' => $shift->start_time,
                     'end_time' => $shift->end_time,
                     'break_minutes' => $shift->break_minutes,
+                    'unit_id' => $shift->unit_id,
+                    'unit_code' => $shift->unit_code,
+                    'unit_name' => $shift->unit_name,
+                    'location_id' => $shift->location_id,
                     'status' => PlannedShiftStatus::Draft,
                 ]);
             }
