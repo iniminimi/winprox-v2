@@ -451,7 +451,8 @@
             "missing": "Gepland, niet geklokt",
             "deviation": "Geklokt buiten het geplande venster",
             "unplanned": "Geklokt zonder (of tijdens) afwezigheid",
-            "ok": "Komt overeen met de planning"
+            "ok": "Komt overeen met de planning",
+            "open_hours": "Klik op de markering rechtsboven om Uren te openen"
         },
         "nav_prev": "Vorige",
         "nav_next": "Volgende",

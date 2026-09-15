@@ -285,6 +285,52 @@ function rosterTd(cell) {
     return cell.closest?.('td') ?? cell;
 }
 
+function hoursUrlFor(payload, workerId, date) {
+    const base = payload.hours_url;
+    if (!base || !workerId || !date) {
+        return '';
+    }
+    try {
+        const url = new URL(base, window.location.origin);
+        url.searchParams.set('worker', String(workerId));
+        url.searchParams.set('from', date);
+        url.searchParams.set('to', date);
+
+        return `${url.pathname}${url.search}`;
+    } catch {
+        return '';
+    }
+}
+
+function attendanceTitle(payload, attendance) {
+    const base = payload.attendance_messages?.[attendance] || '';
+    const hint = payload.attendance_open_hint || '';
+    if (!base) {
+        return hint;
+    }
+    if (!hint || !payload.hours_url) {
+        return base;
+    }
+
+    return `${base} — ${hint}`;
+}
+
+function isAttendanceMarkerClick(td, event) {
+    const rect = td.getBoundingClientRect();
+
+    return event.clientX >= rect.right - 18 && event.clientY <= rect.top + 18;
+}
+
+function applyAttendanceLink(cell, url) {
+    if (url) {
+        cell.dataset.wpHoursUrl = url;
+        cell.classList.add('wp-roster-cell--attendance-link');
+    } else {
+        delete cell.dataset.wpHoursUrl;
+        cell.classList.remove('wp-roster-cell--attendance-link');
+    }
+}
+
 function applyCellClasses(worksheet, payload) {
     if (!worksheet || typeof worksheet.getData !== 'function') {
         return;
@@ -332,6 +378,7 @@ function applyCellClasses(worksheet, payload) {
                 cell.classList.add('wp-roster-row--section');
                 cell.removeAttribute('aria-invalid');
                 cell.removeAttribute('title');
+                applyAttendanceLink(cell, '');
 
                 return;
             }
@@ -340,26 +387,33 @@ function applyCellClasses(worksheet, payload) {
             const date = payload.dates?.[colIndex - 1];
             const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
             const attendance = attendanceKey ? payload.attendance?.[attendanceKey] : null;
+            const actionable = attendance && attendance !== 'none' && attendance !== 'ok';
+            const hoursUrl = actionable ? hoursUrlFor(payload, worker?.id, date) : '';
             if (parsed.kind === 'invalid') {
                 cell.classList.add('wp-roster-cell--invalid');
                 cell.title = cellErrorTitle(parsed, payload);
                 cell.setAttribute('aria-invalid', 'true');
+                applyAttendanceLink(cell, '');
             } else if (parsed.color && parsed.color !== 'none') {
                 cell.classList.add(`wp-roster-cell--${parsed.color}`);
                 cell.removeAttribute('aria-invalid');
-                if (attendance && attendance !== 'none' && attendance !== 'ok') {
+                if (actionable) {
                     cell.classList.add(`wp-roster-cell--${attendance}`);
-                    cell.title = payload.attendance_messages?.[attendance] || '';
+                    cell.title = attendanceTitle(payload, attendance);
+                    applyAttendanceLink(cell, hoursUrl);
                 } else {
                     cell.removeAttribute('title');
+                    applyAttendanceLink(cell, '');
                 }
             } else {
                 cell.removeAttribute('aria-invalid');
-                if (attendance && attendance !== 'none' && attendance !== 'ok') {
+                if (actionable) {
                     cell.classList.add(`wp-roster-cell--${attendance}`);
-                    cell.title = payload.attendance_messages?.[attendance] || '';
+                    cell.title = attendanceTitle(payload, attendance);
+                    applyAttendanceLink(cell, hoursUrl);
                 } else {
                     cell.removeAttribute('title');
+                    applyAttendanceLink(cell, '');
                 }
             }
         });
@@ -519,6 +573,24 @@ export function bind(root, wire) {
         banner.hidden = !message;
         banner.textContent = message || '';
     };
+
+    const openHoursFromAttendance = (event) => {
+        if (event.button !== 0) {
+            return;
+        }
+        const td = event.target?.closest?.('td');
+        const url = td?.dataset?.wpHoursUrl;
+        if (!url) {
+            return;
+        }
+        if (!event.ctrlKey && !event.metaKey && !isAttendanceMarkerClick(td, event)) {
+            return;
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        window.location.assign(url);
+    };
+    grid.addEventListener('mousedown', openHoursFromAttendance, true);
 
     const destroy = () => {
         if (worksheet) {

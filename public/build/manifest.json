@@ -32,12 +32,12 @@
     "src": "node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CK2FhZx5.css",
+    "file": "assets/app-DR8gfAkX.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CusW1jA9.js",
+    "file": "assets/app-BLtgzn33.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

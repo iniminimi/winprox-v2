@@ -451,7 +451,8 @@
             "missing": "Planned, not clocked",
             "deviation": "Clocked outside the planned window",
             "unplanned": "Clocked with no plan (or during absence)",
-            "ok": "Matches the plan"
+            "ok": "Matches the plan",
+            "open_hours": "Click the top-right marker to open Hours"
         },
         "nav_prev": "Previous",
         "nav_next": "Next",

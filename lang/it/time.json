@@ -451,7 +451,8 @@
             "missing": "Pianificato, non timbrato",
             "deviation": "Timbrato fuori dalla fascia prevista",
             "unplanned": "Timbrato senza piano (o durante un'assenza)",
-            "ok": "Corrisponde alla pianificazione"
+            "ok": "Corrisponde alla pianificazione",
+            "open_hours": "Fai clic sul contrassegno in alto a destra per aprire Ore"
         },
         "nav_prev": "Precedente",
         "nav_next": "Successivo",

@@ -451,7 +451,8 @@
             "missing": "Planificado, sin fichaje",
             "deviation": "Fichado fuera de la franja prevista",
             "unplanned": "Fichado sin plan (o durante una ausencia)",
-            "ok": "Coincide con lo planificado"
+            "ok": "Coincide con lo planificado",
+            "open_hours": "Haga clic en la marca de arriba a la derecha para abrir Horas"
         },
         "nav_prev": "Anterior",
         "nav_next": "Siguiente",

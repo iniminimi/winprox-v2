@@ -19,6 +19,7 @@ use App\Http\Requests\Time\SavePlannedShiftsRequest;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Models\PlannedShift;
 use App\Models\Tenant;
+use App\Models\WorkShift;
 use App\Support\Tenancy;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -197,6 +198,10 @@ class RosterIndex extends Component
         $array = $snapshot->toArray();
         $array['invalid_message'] = __('time.schedule.errors.invalid_cells');
         $array['name_column'] = __('time.schedule.column_name');
+        if (auth()->user()?->can('viewAny', WorkShift::class)) {
+            $array['hours_url'] = route('time.shifts.index');
+        }
+        $array['attendance_open_hint'] = __('time.schedule.attendance.open_hours');
 
         return $array;
     }

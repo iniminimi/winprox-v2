@@ -451,7 +451,8 @@
             "missing": "Planifié, non pointé",
             "deviation": "Pointé hors de la plage prévue",
             "unplanned": "Pointé sans planning (ou pendant une absence)",
-            "ok": "Correspond au planning"
+            "ok": "Correspond au planning",
+            "open_hours": "Cliquez sur le marqueur en haut à droite pour ouvrir Heures"
         },
         "nav_prev": "Précédent",
         "nav_next": "Suivant",

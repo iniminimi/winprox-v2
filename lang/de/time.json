@@ -451,7 +451,8 @@
             "missing": "Geplant, nicht gestempelt",
             "deviation": "Außerhalb des geplanten Fensters gestempelt",
             "unplanned": "Gestempelt ohne Plan (oder während Abwesenheit)",
-            "ok": "Stimmt mit der Planung überein"
+            "ok": "Stimmt mit der Planung überein",
+            "open_hours": "Klicken Sie oben rechts auf die Markierung, um Stunden zu öffnen"
         },
         "nav_prev": "Zurück",
         "nav_next": "Weiter",

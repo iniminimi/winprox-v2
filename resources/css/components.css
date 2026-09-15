@@ -6000,4 +6000,30 @@ a.wp-kpi.wp-kpi--attention {
     box-shadow: inset 0 0 0 2px var(--wp-accent) !important;
 }
 
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--attendance-link {
+    position: relative;
+}
+
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--attendance-link::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: var(--wp-warning, var(--wp-accent));
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--wp-surface) 70%, transparent);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--missing.wp-roster-cell--attendance-link::after {
+    background: var(--wp-danger);
+}
+
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--unplanned.wp-roster-cell--attendance-link::after {
+    background: var(--wp-accent);
+}
+
 
