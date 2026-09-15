@@ -285,7 +285,26 @@ function rosterTd(cell) {
     return cell.closest?.('td') ?? cell;
 }
 
-function hoursUrlFor(payload, workerId, date) {
+function pad2(n) {
+    return String(n).padStart(2, '0');
+}
+
+function monthBoundsIso(date) {
+    const match = String(date).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) {
+        return null;
+    }
+    const year = Number(match[1]);
+    const month = Number(match[2]);
+    const lastDay = new Date(year, month, 0).getDate();
+
+    return {
+        from: `${year}-${pad2(month)}-01`,
+        to: `${year}-${pad2(month)}-${pad2(lastDay)}`,
+    };
+}
+
+function hoursUrlFor(payload, workerId, date, attendance) {
     const base = payload.hours_url;
     if (!base || !workerId || !date) {
         return '';
@@ -293,8 +312,15 @@ function hoursUrlFor(payload, workerId, date) {
     try {
         const url = new URL(base, window.location.origin);
         url.searchParams.set('worker', String(workerId));
-        url.searchParams.set('from', date);
-        url.searchParams.set('to', date);
+        // Missing = geen prik die dag → maand tonen i.p.v. lege dagfilter.
+        if (attendance === 'missing') {
+            const bounds = monthBoundsIso(date);
+            url.searchParams.set('from', bounds?.from ?? date);
+            url.searchParams.set('to', bounds?.to ?? date);
+        } else {
+            url.searchParams.set('from', date);
+            url.searchParams.set('to', date);
+        }
 
         return `${url.pathname}${url.search}`;
     } catch {
@@ -388,7 +414,7 @@ function applyCellClasses(worksheet, payload) {
             const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
             const attendance = attendanceKey ? payload.attendance?.[attendanceKey] : null;
             const actionable = attendance && attendance !== 'none' && attendance !== 'ok';
-            const hoursUrl = actionable ? hoursUrlFor(payload, worker?.id, date) : '';
+            const hoursUrl = actionable ? hoursUrlFor(payload, worker?.id, date, attendance) : '';
             if (parsed.kind === 'invalid') {
                 cell.classList.add('wp-roster-cell--invalid');
                 cell.title = cellErrorTitle(parsed, payload);

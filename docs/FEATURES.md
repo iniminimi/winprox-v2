@@ -764,7 +764,8 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   unplanned / ok. **Deviation** (te laat/te vroeg inklokken, te vroeg uit, open na einde)
   meteen, ook **vandaag**. **Missing** pas na het geplande einde (of op vorige dagen).
   Toekomstige dagen: geen markering. Afwezigheid zonder prik = ok; mét prik = ungepland.
-  Markering rechtsboven in de cel opent **Time → Uren** (worker + die dag). Geen locatievergelijking.
+  Markering rechtsboven in de cel opent **Time → Uren** (worker + die dag;
+  bij **missing** de hele maand, want die dag heeft geen prik). Geen locatievergelijking.
 - **Niet in deze slice:** saldo, aanvraag/ruilen, CSV, rusttijden, beschikbaarheid, mail/SMS.
 
 ---

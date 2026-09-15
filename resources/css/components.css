@@ -6002,6 +6002,7 @@ a.wp-kpi.wp-kpi--attention {
 
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--attendance-link {
     position: relative;
+    cursor: pointer;
 }
 
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--attendance-link::after {
@@ -6016,6 +6017,7 @@ a.wp-kpi.wp-kpi--attention {
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--wp-surface) 70%, transparent);
     pointer-events: none;
     z-index: 2;
+    cursor: pointer;
 }
 
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--missing.wp-roster-cell--attendance-link::after {
