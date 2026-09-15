@@ -5817,14 +5817,14 @@ a.wp-kpi.wp-kpi--attention {
 .wp-roster-cell__duty {
     display: block;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1.05;
 }
 
 .wp-roster-cell__unit {
     display: block;
     font-size: 0.55rem;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.05;
     opacity: 0.78;
 }
