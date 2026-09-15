@@ -92,8 +92,8 @@ class ListRosterWeekAction
 
             $workers = $workers->sortBy([
                 fn (Worker $worker) => $worker->defaultUnit?->roster_code ?? 'ÿÿÿ',
-                fn (Worker $worker) => mb_strtolower($worker->last_name),
                 fn (Worker $worker) => mb_strtolower($worker->first_name),
+                fn (Worker $worker) => mb_strtolower($worker->last_name),
             ])->values();
         }
 
@@ -257,7 +257,12 @@ class ListRosterWeekAction
             if (! in_array($unitId, $selectedUnitIds, true)) {
                 continue;
             }
-            $groupWorkers = $byUnit->get($unitId, collect());
+            $groupWorkers = $byUnit->get($unitId, collect())
+                ->sortBy([
+                    fn (Worker $worker) => mb_strtolower($worker->first_name),
+                    fn (Worker $worker) => mb_strtolower($worker->last_name),
+                ])
+                ->values();
             if ($groupWorkers->isEmpty()) {
                 continue;
             }
@@ -275,7 +280,12 @@ class ListRosterWeekAction
         }
 
         if ($includeUngrouped) {
-            $ungrouped = $byUnit->get(0, collect());
+            $ungrouped = $byUnit->get(0, collect())
+                ->sortBy([
+                    fn (Worker $worker) => mb_strtolower($worker->first_name),
+                    fn (Worker $worker) => mb_strtolower($worker->last_name),
+                ])
+                ->values();
             if ($ungrouped->isNotEmpty()) {
                 $rows[] = [
                     'type' => 'section',

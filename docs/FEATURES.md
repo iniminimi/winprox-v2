@@ -749,7 +749,8 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
 - **Thuisgroep (weergave):** optioneel `workers.default_unit_id` → unit met `roster_code` op een
   locatie waar de worker mag klokken (of floater-team). Bij **locatiefilter**: vinkjes per groep
   + “Zonder groep”; grid toont **sectiekoppen** (`rows`: `section` \| `worker`). Sortering:
-  roostercode → naam. Cel-plek `D1/G1` blijft onafhankelijk (geen auto-invullen van thuisgroep).
+  roostercode → voornaam → achternaam (alfabetisch binnen elke groep). Cel-plek `D1/G1`
+  blijft onafhankelijk (geen auto-invullen van thuisgroep).
   Locatie leegmaken → platte workerlijst, groepfilters reset.
 - **Copy week:** alles-of-niets; alleen in weekweergave; doelweek met bestaande diensten → weigeren.
 - **Golf 2 — Mijn rooster:** Clock Point-tegel, alleen eigen `published` week. Badge = ongelezen

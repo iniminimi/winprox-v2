@@ -830,11 +830,27 @@ it('groepeert workers in sectierijen bij locatiefilter en negeert uitgevinkte gr
         'is_active' => true,
     ]);
 
-    $inA = Worker::factory()->create([
+    $inALate = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Zara',
+        'last_name' => 'Alpha',
+        'default_unit_id' => $unitA->id,
+        'is_active' => true,
+    ]);
+    $inAEarly = Worker::factory()->create([
         'tenant_id' => $tenant->id,
         'internal_team_id' => $team->id,
         'first_name' => 'Ada',
-        'last_name' => 'Alpha',
+        'last_name' => 'Zebra',
+        'default_unit_id' => $unitA->id,
+        'is_active' => true,
+    ]);
+    $inA = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Mia',
+        'last_name' => 'Middle',
         'default_unit_id' => $unitA->id,
         'is_active' => true,
     ]);
@@ -854,7 +870,7 @@ it('groepeert workers in sectierijen bij locatiefilter en negeert uitgevinkte gr
         'default_unit_id' => null,
         'is_active' => true,
     ]);
-    foreach ([$inA, $inB, $ungrouped] as $person) {
+    foreach ([$inA, $inAEarly, $inALate, $inB, $ungrouped] as $person) {
         $person->locations()->sync([$location->id]);
     }
 
@@ -878,8 +894,23 @@ it('groepeert workers in sectierijen bij locatiefilter en negeert uitgevinkte gr
         ])
         ->and($all->rows[1])->toMatchArray([
             'type' => 'worker',
+            'worker_id' => (int) $inAEarly->id,
+        ])
+        ->and($all->rows[2])->toMatchArray([
+            'type' => 'worker',
             'worker_id' => (int) $inA->id,
+        ])
+        ->and($all->rows[3])->toMatchArray([
+            'type' => 'worker',
+            'worker_id' => (int) $inALate->id,
         ]);
+
+    $groupANames = collect($all->workers)
+        ->where('default_unit_id', (int) $unitA->id)
+        ->pluck('name')
+        ->values()
+        ->all();
+    expect($groupANames)->toBe(['Ada Zebra', 'Mia Middle', 'Zara Alpha']);
 
     $sectionLabels = array_values(array_map(
         fn (array $row) => $row['label'] ?? null,
@@ -907,7 +938,7 @@ it('groepeert workers in sectierijen bij locatiefilter en negeert uitgevinkte gr
         ->map(fn ($id) => (int) $id)
         ->all();
 
-    expect($workerIds)->toBe([(int) $inA->id])
+    expect($workerIds)->toBe([(int) $inAEarly->id, (int) $inA->id, (int) $inALate->id])
         ->and($workerIds)->not->toContain((int) $inB->id)
         ->and($workerIds)->not->toContain((int) $ungrouped->id)
         ->and($sectionUnitIds)->toBe([(int) $unitA->id]);
