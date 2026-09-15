@@ -16,17 +16,18 @@ use Illuminate\Support\Collection;
 class ListRosterWeekAction
 {
     public function __construct(
-        private ResolveRosterWeekAction $resolveWeek,
+        private ResolveRosterPeriodAction $resolvePeriod,
         private ListShiftTypesAction $listShiftTypes,
     ) {}
 
-    public function handle(int $tenantId, string $weekStart, ?int $teamId = null, ?User $actor = null): RosterWeekSnapshot
+    public function handle(int $tenantId, string $weekStart, ?int $teamId = null, ?User $actor = null, string $period = 'week'): RosterWeekSnapshot
     {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
-        [$monday, , $dates] = $this->resolveWeek->handle($weekStart);
-        $weekStartDate = $monday->toDateString();
-        $weekEndDate = $dates[6];
+        $period = $period === 'month' ? 'month' : 'week';
+        [$rangeStart, , $dates] = $this->resolvePeriod->handle($weekStart, $period);
+        $weekStartDate = $dates[0];
+        $weekEndDate = $dates[array_key_last($dates)];
 
         $workers = $this->workers($tenantId, $teamId, $actor, $weekStartDate, $weekEndDate);
         $workerIds = $workers->pluck('id')->map(fn ($id) => (int) $id)->all();
@@ -67,10 +68,20 @@ class ListRosterWeekAction
 
         $weekPublished = $shifts->contains(fn (PlannedShift $shift) => $shift->status->isPublished());
 
+        $locale = app()->getLocale();
         $dayLabels = array_map(
-            fn (string $date) => Carbon::parse($date)->locale(app()->getLocale())->translatedFormat('D d/m'),
+            fn (string $date) => $period === 'month'
+                ? Carbon::parse($date)->locale($locale)->isoFormat('dd')
+                : Carbon::parse($date)->locale($locale)->translatedFormat('D d/m'),
             $dates,
         );
+        $dayNumbers = array_map(
+            fn (string $date) => (int) Carbon::parse($date)->day,
+            $dates,
+        );
+        $monthLabel = $period === 'month'
+            ? $rangeStart->locale($locale)->translatedFormat('F Y')
+            : '';
 
         $teams = InternalTeam::query()
             ->with('translations')
@@ -102,6 +113,9 @@ class ListRosterWeekAction
             teams: $teams,
             weekPublished: $weekPublished,
             nightShifts: false,
+            period: $period,
+            monthLabel: $monthLabel,
+            dayNumbers: $dayNumbers,
         );
     }
 

@@ -11,6 +11,7 @@ final class RosterWeekSnapshot
      * @param  array<string, array<string, mixed>>  $cells
      * @param  list<array<string, mixed>>  $types
      * @param  list<array<string, mixed>>  $teams
+     * @param  list<int>  $dayNumbers
      */
     public function __construct(
         public string $weekStart,
@@ -23,6 +24,9 @@ final class RosterWeekSnapshot
         public array $teams,
         public bool $weekPublished,
         public bool $nightShifts,
+        public string $period = 'week',
+        public string $monthLabel = '',
+        public array $dayNumbers = [],
     ) {}
 
     /**
@@ -42,6 +46,9 @@ final class RosterWeekSnapshot
             'week_published' => $this->weekPublished,
             'night_shifts' => $this->nightShifts,
             'free_color' => 'slate',
+            'period' => $this->period,
+            'month_label' => $this->monthLabel,
+            'day_numbers' => $this->dayNumbers,
         ];
     }
 }

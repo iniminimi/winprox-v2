@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 class SavePlannedShiftsAction
 {
     public function __construct(
-        private ResolveRosterWeekAction $resolveWeek,
+        private ResolveRosterPeriodAction $resolvePeriod,
         private ParseRosterCellAction $parseCell,
         private AssertPlannedShiftNoOverlapAction $assertNoOverlap,
         private ListShiftTypesAction $listShiftTypes,
@@ -29,9 +29,10 @@ class SavePlannedShiftsAction
     {
         TimeModuleAccess::assertEnabledForTenantId((int) $tenant->id);
 
-        [$monday, , $dates] = $this->resolveWeek->handle($data->weekStart);
-        $weekStart = $monday->toDateString();
-        $weekEnd = $dates[6];
+        $period = $data->period === 'month' ? 'month' : 'week';
+        [, , $dates] = $this->resolvePeriod->handle($data->weekStart, $period);
+        $weekStart = $dates[0];
+        $weekEnd = $dates[array_key_last($dates)];
         $dateSet = array_fill_keys($dates, true);
         $workerIds = array_values(array_unique(array_map('intval', $data->workerIds)));
 

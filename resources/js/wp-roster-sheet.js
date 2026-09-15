@@ -143,41 +143,52 @@ export function bind(root, wire) {
     const mount = async () => {
         destroy();
         payload = await wire.payload();
+        const isMonth = payload.period === 'month';
+        const dayCount = payload.dates.length;
+        grid.classList.toggle('wp-roster-sheet--month', isMonth);
         const columns = [
             {
                 type: 'text',
                 title: '',
-                width: 180,
+                width: isMonth ? 128 : 180,
                 readOnly: true,
             },
-            ...payload.day_labels.map((label) => ({
+            ...payload.dates.map((_date, index) => ({
                 type: 'text',
-                title: label,
-                width: 110,
+                title: isMonth
+                    ? `${payload.day_numbers[index]}\n${payload.day_labels[index]}`
+                    : payload.day_labels[index],
+                width: isMonth ? 40 : 110,
             })),
         ];
 
+        const worksheetConfig = {
+            data: buildData(payload),
+            columns,
+            freezeColumns: 1,
+            tableOverflow: true,
+            tableWidth: '100%',
+            tableHeight: '480px',
+            allowInsertRow: false,
+            allowManualInsertRow: false,
+            allowInsertColumn: false,
+            allowManualInsertColumn: false,
+            allowDeleteRow: false,
+            allowDeleteColumn: false,
+            columnDrag: false,
+            rowDrag: false,
+            parseFormulas: false,
+            minDimensions: [dayCount + 1, Math.max(payload.workers.length, 1)],
+        };
+        if (isMonth && payload.month_label) {
+            worksheetConfig.nestedHeaders = [[
+                { title: '', colspan: 1 },
+                { title: payload.month_label, colspan: dayCount },
+            ]];
+        }
+
         const instances = jspreadsheet(grid, {
-            worksheets: [
-                {
-                    data: buildData(payload),
-                    columns,
-                    freezeColumns: 1,
-                    tableOverflow: true,
-                    tableWidth: '100%',
-                    tableHeight: '480px',
-                    allowInsertRow: false,
-                    allowManualInsertRow: false,
-                    allowInsertColumn: false,
-                    allowManualInsertColumn: false,
-                    allowDeleteRow: false,
-                    allowDeleteColumn: false,
-                    columnDrag: false,
-                    rowDrag: false,
-                    parseFormulas: false,
-                    minDimensions: [8, Math.max(payload.workers.length, 1)],
-                },
-            ],
+            worksheets: [worksheetConfig],
             contextMenu: () => false,
             onbeforechange: (_instance, _cell, x, _y, value) => {
                 if (Number(x) === 0) {
@@ -196,7 +207,7 @@ export function bind(root, wire) {
                 if (typeof data === 'string') {
                     return data
                         .split('\n')
-                        .map((line) => line.split('\t').slice(0, 7).join('\t'))
+                        .map((line) => line.split('\t').slice(0, dayCount).join('\t'))
                         .join('\n');
                 }
 

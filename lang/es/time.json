@@ -377,11 +377,11 @@
             "night_not_allowed": "No se permiten turnos nocturnos (fin anterior o igual al inicio).",
             "invalid_code": "Código no válido. Use letras o números.",
             "code_taken": "Este código ya existe.",
-            "invalid_cells": "La semana tiene celdas no válidas. Corríjalas antes de guardar.",
+            "invalid_cells": "Hay celdas no válidas en el horario. Corríjalas antes de guardar.",
             "overlap": "Este trabajador tiene turnos solapados.",
             "unknown_worker": "Trabajador desconocido.",
-            "cell_out_of_scope": "La celda está fuera de la semana visible.",
-            "duplicate_cell": "Celda duplicada en la misma semana.",
+            "cell_out_of_scope": "La celda está fuera del horario visible.",
+            "duplicate_cell": "Celda duplicada en el horario.",
             "incomplete_grid": "La cuadrícula está incompleta.",
             "copy_same_week": "La semana de origen y destino son la misma.",
             "copy_conflict": "La semana de destino ya tiene turnos. Copia rechazada."
@@ -413,9 +413,17 @@
                 "slate": "Gris"
             }
         },
-        "empty_workers": "No hay operarios en esta semana. Añádalos en Personas → Equipos.",
+        "empty_workers": "No hay operarios en este periodo. Añádalos en Personas → Equipos.",
         "legend": "Códigos",
-        "legend_empty": "Aún no hay códigos activos."
+        "legend_empty": "Aún no hay códigos activos.",
+        "period": "Vista",
+        "view_week": "Semana",
+        "view_month": "Mes",
+        "month": "Mes",
+        "prev_month": "Mes anterior",
+        "this_month": "Este mes",
+        "next_month": "Mes siguiente",
+        "publish_confirm_month": "¿Publicar este mes para los operarios visibles?"
     },
     "shift_types": {
         "title": "Tipos de turno",

@@ -10,5 +10,6 @@ final class PublishWeekData
     public function __construct(
         public string $weekStart,
         public array $workerIds,
+        public string $period = 'week',
     ) {}
 }

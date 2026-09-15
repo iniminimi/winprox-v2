@@ -377,11 +377,11 @@
             "night_not_allowed": "Overnight shifts (end at or before start) are not allowed.",
             "invalid_code": "Invalid code. Use letters or digits.",
             "code_taken": "This code already exists.",
-            "invalid_cells": "The week has invalid cells. Fix them before saving.",
+            "invalid_cells": "There are invalid cells in the roster. Fix them before saving.",
             "overlap": "This worker has overlapping shifts.",
             "unknown_worker": "Unknown worker.",
-            "cell_out_of_scope": "Cell is outside the visible week.",
-            "duplicate_cell": "Duplicate cell in the same week.",
+            "cell_out_of_scope": "Cell is outside the visible roster.",
+            "duplicate_cell": "Duplicate cell in the roster.",
             "incomplete_grid": "The roster grid is incomplete.",
             "copy_same_week": "Source and target week are the same.",
             "copy_conflict": "The target week already has shifts. Copy refused."
@@ -413,9 +413,17 @@
                 "slate": "Grey"
             }
         },
-        "empty_workers": "No workers in this week. Add workers under People → Teams.",
+        "empty_workers": "No workers in this period. Add workers under People → Teams.",
         "legend": "Codes",
-        "legend_empty": "No active codes yet."
+        "legend_empty": "No active codes yet.",
+        "period": "View",
+        "view_week": "Week",
+        "view_month": "Month",
+        "month": "Month",
+        "prev_month": "Previous month",
+        "this_month": "This month",
+        "next_month": "Next month",
+        "publish_confirm_month": "Publish this month for the visible workers?"
     },
     "shift_types": {
         "title": "Shift types",

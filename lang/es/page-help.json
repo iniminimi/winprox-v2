@@ -1558,12 +1558,16 @@
             "title": "Ayuda — Horario",
             "actions": [
                 {
+                    "label": "Vista",
+                    "text": "Cambie entre <strong>semana</strong> y <strong>mes</strong>. Guardar y publicar aplican al periodo visible. Copiar una semana solo en vista semanal."
+                },
+                {
                     "label": "Códigos y horas libres",
                     "text": "Escriba un <strong>código</strong> de la leyenda o una hora <strong>07:00-15:00</strong>. Las celdas no válidas tienen <strong>borde rojo</strong> y un signo de exclamación."
                 },
                 {
                     "label": "Guardar y publicar",
-                    "text": "Guardar almacena la semana visible. <strong>Publicar</strong> marca la semana como planificada. Las correcciones siguen publicadas."
+                    "text": "Guardar conserva la semana o el mes visible. <strong>Publicar</strong> marca ese periodo como planificado (Clock Point después). Editar tras publicar sigue publicado."
                 },
                 {
                     "label": "Copiar semana",

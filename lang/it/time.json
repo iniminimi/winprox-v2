@@ -377,11 +377,11 @@
             "night_not_allowed": "I turni notturni (fine precedente o uguale all’inizio) non sono consentiti.",
             "invalid_code": "Codice non valido. Usare lettere o numeri.",
             "code_taken": "Questo codice esiste già.",
-            "invalid_cells": "La settimana contiene celle non valide. Correggerle prima di salvare.",
+            "invalid_cells": "Ci sono celle non valide. Correggile prima di salvare.",
             "overlap": "Questo esecutore ha turni sovrapposti.",
             "unknown_worker": "Esecutore sconosciuto.",
-            "cell_out_of_scope": "La cella è fuori dalla settimana visibile.",
-            "duplicate_cell": "Cella duplicata nella stessa settimana.",
+            "cell_out_of_scope": "La cella è fuori dal turno visibile.",
+            "duplicate_cell": "Cella duplicata nel turno.",
             "incomplete_grid": "La griglia è incompleta.",
             "copy_same_week": "Settimana di origine e destinazione coincidono.",
             "copy_conflict": "La settimana di destinazione ha già turni. Copia rifiutata."
@@ -413,9 +413,17 @@
                 "slate": "Grigio"
             }
         },
-        "empty_workers": "Nessun esecutore in questa settimana. Aggiungili in Persone → Team.",
+        "empty_workers": "Nessun esecutore in questo periodo. Aggiungili in Persone → Team.",
         "legend": "Codici",
-        "legend_empty": "Nessun codice attivo."
+        "legend_empty": "Nessun codice attivo.",
+        "period": "Vista",
+        "view_week": "Settimana",
+        "view_month": "Mese",
+        "month": "Mese",
+        "prev_month": "Mese precedente",
+        "this_month": "Questo mese",
+        "next_month": "Mese successivo",
+        "publish_confirm_month": "Pubblicare questo mese per gli esecutori visibili?"
     },
     "shift_types": {
         "title": "Tipi di turno",

@@ -1566,12 +1566,16 @@
             "title": "Aide — Horaire",
             "actions": [
                 {
+                    "label": "Affichage",
+                    "text": "Passez de la <strong>semaine</strong> au <strong>mois</strong>. Enregistrer et publier s’appliquent à la période visible. Copier une semaine n’existe qu’en vue semaine."
+                },
+                {
                     "label": "Codes et heures libres",
                     "text": "Saisissez un <strong>code</strong> de la légende ou une heure <strong>07:00-15:00</strong>. Les cellules invalides ont un <strong>bord rouge</strong> et un point d’exclamation."
                 },
                 {
                     "label": "Enregistrer et publier",
-                    "text": "Enregistrer conserve la semaine visible. <strong>Publier</strong> marque la semaine comme planifiée. Les corrections après publication restent publiées."
+                    "text": "Enregistrer conserve la semaine ou le mois visible. <strong>Publier</strong> marque cette période comme planifiée (Clock Point plus tard). Modifier après publication reste publié."
                 },
                 {
                     "label": "Copier la semaine",

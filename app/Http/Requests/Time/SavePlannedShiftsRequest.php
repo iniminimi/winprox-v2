@@ -23,6 +23,7 @@ class SavePlannedShiftsRequest extends FormRequest
     {
         return [
             'week_start' => ['required', 'date'],
+            'period' => ['sometimes', 'in:week,month'],
             'worker_ids' => ['required', 'array'],
             'worker_ids.*' => ['integer'],
             'cells' => ['present', 'array'],

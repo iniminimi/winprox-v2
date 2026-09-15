@@ -5658,6 +5658,33 @@ a.wp-kpi.wp-kpi--attention {
     font-weight: 700;
 }
 
+.wp-roster-sheet--month .jss_worksheet > thead > tr > td {
+    white-space: pre-line;
+    text-align: center;
+    font-size: 0.7rem;
+    line-height: 1.15;
+    padding: 0.15rem 0.05rem;
+    vertical-align: middle;
+}
+
+.wp-roster-sheet--month .jss_worksheet > thead > tr:first-child > td {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.wp-roster-sheet--month .jss_worksheet > tbody > tr > td {
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 0.2rem 0.08rem;
+}
+
+.wp-roster-sheet--month .jss_worksheet > tbody > tr > td:first-child {
+    text-align: left;
+    font-size: 0.8125rem;
+    padding-left: 0.4rem;
+}
+
 .wp-roster-cell--emerald {
     background: color-mix(in srgb, var(--wp-accent) 48%, var(--wp-surface) 52%) !important;
 }

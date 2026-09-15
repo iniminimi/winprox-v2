@@ -12,5 +12,6 @@ final class SavePlannedShiftsData
         public string $weekStart,
         public array $workerIds,
         public array $cells,
+        public string $period = 'week',
     ) {}
 }

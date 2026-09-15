@@ -1558,12 +1558,16 @@
             "title": "Guida — Turni",
             "actions": [
                 {
+                    "label": "Vista",
+                    "text": "Passa da <strong>settimana</strong> a <strong>mese</strong>. Salva e pubblica valgono per il periodo visibile. Copiare una settimana solo in vista settimana."
+                },
+                {
                     "label": "Codici e orari liberi",
                     "text": "Digita un <strong>codice</strong> della legenda o un orario <strong>07:00-15:00</strong>. Le celle non valide hanno un <strong>bordo rosso</strong> e un punto esclamativo."
                 },
                 {
                     "label": "Salva e pubblica",
-                    "text": "Salva memorizza la settimana visibile. <strong>Pubblica</strong> segna la settimana come pianificata. Le correzioni restano pubblicate."
+                    "text": "Salva conserva la settimana o il mese visibile. <strong>Pubblica</strong> segna quel periodo come pianificato (Clock Point più avanti). Modificare dopo resta pubblicato."
                 },
                 {
                     "label": "Copia settimana",

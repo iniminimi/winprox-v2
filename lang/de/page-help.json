@@ -1558,12 +1558,16 @@
             "title": "Hilfe — Dienstplan",
             "actions": [
                 {
+                    "label": "Ansicht",
+                    "text": "Wechseln Sie zwischen <strong>Woche</strong> und <strong>Monat</strong>. Speichern und Veröffentlichen gelten für den sichtbaren Zeitraum. Woche kopieren nur in der Wochenansicht."
+                },
+                {
                     "label": "Codes und freie Zeiten",
                     "text": "Geben Sie einen <strong>Code</strong> aus der Legende oder eine Zeit <strong>07:00-15:00</strong> ein. Ungültige Zellen haben einen <strong>roten Rand</strong> und ein Ausrufezeichen."
                 },
                 {
                     "label": "Speichern und veröffentlichen",
-                    "text": "Speichern sichert die sichtbare Woche. <strong>Veröffentlichen</strong> markiert die Woche als geplant. Korrekturen bleiben veröffentlicht."
+                    "text": "Speichern bewahrt die sichtbare Woche oder den Monat. <strong>Veröffentlichen</strong> markiert den Zeitraum als geplant (Clock Point folgt). Bearbeiten danach bleibt veröffentlicht."
                 },
                 {
                     "label": "Woche kopieren",

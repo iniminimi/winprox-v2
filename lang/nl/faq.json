@@ -325,8 +325,8 @@
             "slug": "time_schedule",
             "type": "text",
             "title": "Wat is het uurrooster?",
-            "body": "Onder Time → Uurrooster plant u diensten per uitvoerder: typ een code (shiftype) of een vrije tijd zoals 07:00-15:00. Shiftypes stelt u in onder Time → Shiftypes (meestal één keer); het rooster toont een codelegende. Ongeldige cellen hebben een rode rand. Opslaan bewaart de zichtbare week; publiceren maakt die week gepland. Publiceren stuurt niets naar de RSZ — de prikklok blijft de werkelijke tijd. Een week kopiëren is alles-of-niets: als de doelweek al diensten heeft, wordt de kopie geweigerd. Nachtshiften (eind voor of gelijk aan start) zijn niet toegestaan.",
-            "summary": "Time → Uurrooster: codes of vrije tijden; types onder Shiftypes; publiceren is geen CIAO/RSZ."
+            "body": "Onder Time → Uurrooster plant u diensten per uitvoerder: typ een code (shiftype) of een vrije tijd zoals 07:00-15:00. U schakelt tussen week en maand; de maand toont dagnummer en weekdag in smallere kolommen. Shiftypes stelt u in onder Time → Shiftypes (meestal één keer); het rooster toont een codelegende. Ongeldige cellen hebben een rode rand. Opslaan bewaart de zichtbare periode; publiceren maakt die gepland. Publiceren stuurt niets naar de RSZ — de prikklok blijft de werkelijke tijd. Een week kopiëren (alleen weekweergave) is alles-of-niets: als de doelweek al diensten heeft, wordt de kopie geweigerd. Nachtshiften (eind voor of gelijk aan start) zijn niet toegestaan.",
+            "summary": "Time → Uurrooster: week of maand; codes of vrije tijden; types onder Shiftypes."
         }
     }
 }

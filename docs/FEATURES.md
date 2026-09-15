@@ -718,19 +718,21 @@ productsector op `Tenant`.
 
 ### 5g.5 Uurrooster (golf 1)
 
-**Doel:** geplande diensten per uitvoerder, los van geklokte `WorkShift`. Excel-achtige weekgrid
+**Doel:** geplande diensten per uitvoerder, los van geklokte `WorkShift`. Excel-achtige grid
 (Jspreadsheet CE): codes (shiftypes) of vrije tijd `07:00-15:00`. Eén cel per uitvoerder per dag.
+Week- of **maandweergave**; maandkolommen zijn smaller (dagnummer + weekdag onder de maandnaam).
 
 - **Overlap:** halfopen interval `[start, eind)` — `07:00–11:00` en `11:00–15:00` is geldig.
   Zelfde worker, echte overlap → harde fout. Nachtshift (`eind <= start`) verboden in golf 1.
 - **Snapshot:** code vult start/eind/pauze uit het type op dat moment; latere type-wijziging
   raakt bestaande cellen niet. Vrije tijd: `pauze = 0`.
-- **Scope:** opslaan / kopiëren / publiceren = zichtbare week × zichtbare workers (teamfilter).
-- **Publiceren:** week-scoped; bewerken daarna blijft `published`. Geen RSZ/CIAO.
+- **Scope:** opslaan / publiceren = zichtbare periode (week of maand) × zichtbare workers (teamfilter).
+- **Publiceren:** periode-scoped; bewerken daarna blijft `published`. Geen RSZ/CIAO.
 - **Shiftypes:** eigen scherm onder Time (eenmalig instellen). Het uurrooster toont alleen
   een compacte codelegende. Ongeldige cellen: rode rand.
+- **Copy week:** alles-of-niets; alleen in weekweergave; doelweek met bestaande diensten → weigeren.
 - **Niet in golf 1:** gepland vs geklokt, Mijn rooster op Clock Point, mail bij publiceren,
-  afwezigheid, maand/CSV, rusttijden, ruilen, beschikbaarheid.
+  afwezigheid, CSV, rusttijden, ruilen, beschikbaarheid.
 
 ---
 

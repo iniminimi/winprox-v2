@@ -61,6 +61,7 @@ class TimeScheduleController extends Controller
                         'date' => (string) $cell['date'],
                         'raw' => (string) ($cell['raw'] ?? ''),
                     ], $validated['cells']),
+                    $validated['period'] ?? 'week',
                 ),
                 $request->user()?->id,
             );
@@ -107,6 +108,7 @@ class TimeScheduleController extends Controller
                 new PublishWeekData(
                     $validated['week_start'],
                     array_map('intval', $validated['worker_ids']),
+                    $validated['period'] ?? 'week',
                 ),
                 $request->user()?->id,
             );

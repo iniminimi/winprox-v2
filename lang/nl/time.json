@@ -377,11 +377,11 @@
             "night_not_allowed": "Nachtshiften (eind voor of gelijk aan start) zijn niet toegestaan.",
             "invalid_code": "Ongeldige code. Gebruik letters of cijfers.",
             "code_taken": "Deze code bestaat al.",
-            "invalid_cells": "Er staan ongeldige cellen in de week. Corrigeer die vóór opslaan.",
+            "invalid_cells": "Er staan ongeldige cellen in het rooster. Corrigeer die vóór opslaan.",
             "overlap": "Deze uitvoerder heeft overlappende diensten.",
             "unknown_worker": "Onbekende uitvoerder.",
-            "cell_out_of_scope": "Cel valt buiten de zichtbare week.",
-            "duplicate_cell": "Dubbele cel in dezelfde week.",
+            "cell_out_of_scope": "Cel valt buiten het zichtbare rooster.",
+            "duplicate_cell": "Dubbele cel in het rooster.",
             "incomplete_grid": "Het rooster is onvolledig.",
             "copy_same_week": "Bron- en doelweek zijn hetzelfde.",
             "copy_conflict": "De doelweek heeft al diensten. Kopie geweigerd."
@@ -413,9 +413,17 @@
                 "slate": "Grijs"
             }
         },
-        "empty_workers": "Geen uitvoerders in deze week. Voeg uitvoerders toe onder Personen → Teams.",
+        "empty_workers": "Geen uitvoerders in deze periode. Voeg uitvoerders toe onder Personen → Teams.",
         "legend": "Codes",
-        "legend_empty": "Nog geen actieve codes."
+        "legend_empty": "Nog geen actieve codes.",
+        "period": "Weergave",
+        "view_week": "Week",
+        "view_month": "Maand",
+        "month": "Maand",
+        "prev_month": "Vorige maand",
+        "this_month": "Deze maand",
+        "next_month": "Volgende maand",
+        "publish_confirm_month": "Deze maand publiceren voor de zichtbare uitvoerders?"
     },
     "shift_types": {
         "title": "Shiftypes",

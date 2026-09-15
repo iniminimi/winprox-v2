@@ -1558,12 +1558,16 @@
             "title": "Help — Roster",
             "actions": [
                 {
+                    "label": "View",
+                    "text": "Switch between <strong>week</strong> and <strong>month</strong>. Save and publish apply to the visible period. Copying a week is week view only."
+                },
+                {
                     "label": "Codes and free times",
                     "text": "Type a <strong>code</strong> from the legend or a time <strong>07:00-15:00</strong>. Invalid cells have a <strong>red border</strong> and an exclamation mark — fix them before saving."
                 },
                 {
                     "label": "Save and publish",
-                    "text": "Save stores the visible week and workers. <strong>Publish</strong> marks the week as planned (Clock Point comes later). Edits after publish stay published."
+                    "text": "Save stores the visible week or month and workers. <strong>Publish</strong> marks that period as planned (Clock Point comes later). Editing after publish stays published."
                 },
                 {
                     "label": "Copy week",

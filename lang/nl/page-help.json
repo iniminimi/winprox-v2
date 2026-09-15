@@ -1558,12 +1558,16 @@
             "title": "Hulp — Uurrooster",
             "actions": [
                 {
+                    "label": "Weergave",
+                    "text": "Schakel tussen <strong>week</strong> en <strong>maand</strong>. Opslaan en publiceren gelden voor de zichtbare periode. Een week kopiëren kan alleen in weekweergave."
+                },
+                {
                     "label": "Codes en vrije tijden",
                     "text": "Typ een <strong>code</strong> uit de legende of een tijd <strong>07:00-15:00</strong>. Ongeldige cellen hebben een <strong>rode rand</strong> en een uitroepteken — corrigeer die vóór opslaan."
                 },
                 {
                     "label": "Opslaan en publiceren",
-                    "text": "Opslaan bewaart de zichtbare week en uitvoerders. <strong>Publiceren</strong> maakt de week zichtbaar als gepland (Clock Point volgt later). Bewerken na publiceren blijft gepubliceerd."
+                    "text": "Opslaan bewaart de zichtbare week of maand en uitvoerders. <strong>Publiceren</strong> maakt die periode zichtbaar als gepland (Clock Point volgt later). Bewerken na publiceren blijft gepubliceerd."
                 },
                 {
                     "label": "Week kopiëren",

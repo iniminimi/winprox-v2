@@ -6,7 +6,7 @@ use App\Actions\Time\CopyWeekAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ListShiftTypesAction;
 use App\Actions\Time\PublishWeekAction;
-use App\Actions\Time\ResolveRosterWeekAction;
+use App\Actions\Time\ResolveRosterPeriodAction;
 use App\Actions\Time\SavePlannedShiftsAction;
 use App\Data\Time\CopyWeekData;
 use App\Data\Time\PublishWeekData;
@@ -38,38 +38,58 @@ class RosterIndex extends Component
     #[Url(as: 'week')]
     public string $weekStart = '';
 
+    #[Url(as: 'view')]
+    public string $view = 'week';
+
     #[Url(as: 'team')]
     public ?int $teamFilter = null;
 
-    public function mount(ResolveRosterWeekAction $resolveWeek): void
+    public function mount(ResolveRosterPeriodAction $resolvePeriod): void
     {
         $this->authorize('viewAny', PlannedShift::class);
+        $this->normalizeView();
 
         if ($this->weekStart === '') {
-            $this->weekStart = now()->startOfWeek(Carbon::MONDAY)->toDateString();
+            $this->weekStart = $this->isMonth()
+                ? now()->startOfMonth()->toDateString()
+                : now()->startOfWeek(Carbon::MONDAY)->toDateString();
         } else {
-            [$monday] = $resolveWeek->handle($this->weekStart);
-            $this->weekStart = $monday->toDateString();
+            [$start] = $resolvePeriod->handle($this->weekStart, $this->period());
+            $this->weekStart = $start->toDateString();
         }
     }
 
-    public function previousWeek(ResolveRosterWeekAction $resolveWeek): void
+    public function setView(string $view, ResolveRosterPeriodAction $resolvePeriod): void
     {
-        [$monday] = $resolveWeek->handle($this->weekStart);
-        $this->weekStart = $monday->subWeek()->toDateString();
+        $this->view = $view === 'month' ? 'month' : 'week';
+        [$start] = $resolvePeriod->handle($this->weekStart !== '' ? $this->weekStart : now()->toDateString(), $this->period());
+        $this->weekStart = $start->toDateString();
         $this->dispatch('roster-week-changed');
     }
 
-    public function nextWeek(ResolveRosterWeekAction $resolveWeek): void
+    public function previousWeek(ResolveRosterPeriodAction $resolvePeriod): void
     {
-        [$monday] = $resolveWeek->handle($this->weekStart);
-        $this->weekStart = $monday->addWeek()->toDateString();
+        $cursor = Carbon::parse($this->weekStart);
+        $this->weekStart = $this->isMonth()
+            ? $cursor->subMonthNoOverflow()->startOfMonth()->toDateString()
+            : $resolvePeriod->handle($this->weekStart, 'week')[0]->subWeek()->toDateString();
+        $this->dispatch('roster-week-changed');
+    }
+
+    public function nextWeek(ResolveRosterPeriodAction $resolvePeriod): void
+    {
+        $cursor = Carbon::parse($this->weekStart);
+        $this->weekStart = $this->isMonth()
+            ? $cursor->addMonthNoOverflow()->startOfMonth()->toDateString()
+            : $resolvePeriod->handle($this->weekStart, 'week')[0]->addWeek()->toDateString();
         $this->dispatch('roster-week-changed');
     }
 
     public function thisWeek(): void
     {
-        $this->weekStart = now()->startOfWeek(Carbon::MONDAY)->toDateString();
+        $this->weekStart = $this->isMonth()
+            ? now()->startOfMonth()->toDateString()
+            : now()->startOfWeek(Carbon::MONDAY)->toDateString();
         $this->dispatch('roster-week-changed');
     }
 
@@ -90,6 +110,7 @@ class RosterIndex extends Component
             $this->weekStart,
             $this->teamFilter,
             auth()->user(),
+            $this->period(),
         );
 
         $array = $snapshot->toArray();
@@ -119,6 +140,7 @@ class RosterIndex extends Component
         Validator::make(
             [
                 'week_start' => $this->weekStart,
+                'period' => $this->period(),
                 'worker_ids' => $workerIds,
                 'cells' => $normalized,
             ],
@@ -128,7 +150,7 @@ class RosterIndex extends Component
         try {
             $save->handle(
                 Tenant::query()->findOrFail(Tenancy::id()),
-                new SavePlannedShiftsData($this->weekStart, $workerIds, $normalized),
+                new SavePlannedShiftsData($this->weekStart, $workerIds, $normalized, $this->period()),
                 auth()->id(),
             );
         } catch (RosterValidationException|InvalidArgumentException $e) {
@@ -141,12 +163,16 @@ class RosterIndex extends Component
         $this->dispatch('roster-week-changed');
     }
 
-    public function copyToNextWeek(CopyWeekAction $copy, ResolveRosterWeekAction $resolveWeek): void
+    public function copyToNextWeek(CopyWeekAction $copy, ResolveRosterPeriodAction $resolvePeriod): void
     {
+        if ($this->isMonth()) {
+            return;
+        }
+
         $this->authorize('update', PlannedShift::class);
         $payload = $this->payload(app(ListRosterWeekAction::class));
         $workerIds = array_map(fn ($worker) => (int) $worker['id'], $payload['workers']);
-        [$monday] = $resolveWeek->handle($this->weekStart);
+        [$monday] = $resolvePeriod->handle($this->weekStart, 'week');
         $target = $monday->copy()->addWeek()->toDateString();
 
         Validator::make(
@@ -184,6 +210,7 @@ class RosterIndex extends Component
         Validator::make(
             [
                 'week_start' => $this->weekStart,
+                'period' => $this->period(),
                 'worker_ids' => $workerIds,
             ],
             PublishWeekRequest::rulesFor(),
@@ -192,7 +219,7 @@ class RosterIndex extends Component
         try {
             $publish->handle(
                 Tenant::query()->findOrFail(Tenancy::id()),
-                new PublishWeekData($this->weekStart, $workerIds),
+                new PublishWeekData($this->weekStart, $workerIds, $this->period()),
                 auth()->id(),
             );
         } catch (RosterValidationException|InvalidArgumentException $e) {
@@ -212,14 +239,33 @@ class RosterIndex extends Component
             $this->weekStart,
             $this->teamFilter,
             auth()->user(),
+            $this->period(),
         );
 
         return view('livewire.time.roster-index', [
             'legendTypes' => $listTypes->handle((int) Tenancy::id(), true),
             'teams' => $snapshot->teams,
-            'weekLabel' => $snapshot->weekStart.' – '.$snapshot->weekEnd,
+            'weekLabel' => $this->isMonth()
+                ? $snapshot->monthLabel
+                : $snapshot->weekStart.' – '.$snapshot->weekEnd,
             'snapshot' => $snapshot,
+            'isMonth' => $this->isMonth(),
             'alarmCount' => $this->timeNavAlarmCount(),
         ]);
+    }
+
+    private function period(): string
+    {
+        return $this->isMonth() ? 'month' : 'week';
+    }
+
+    private function isMonth(): bool
+    {
+        return $this->view === 'month';
+    }
+
+    private function normalizeView(): void
+    {
+        $this->view = $this->view === 'month' ? 'month' : 'week';
     }
 }

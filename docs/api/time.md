@@ -64,11 +64,11 @@ Planned time is separate from punched `WorkShift`. Publishing does not send CIAO
 
 **Required Ability:** `time:write`
 
-Body: `week_start`, `worker_ids`, `cells` (`worker_id`, `date`, `raw` code or `07:00-15:00`). Full visible week snapshot.
+Body: `week_start`, optional `period` (`week` default, or `month`), `worker_ids`, `cells` (`worker_id`, `date`, `raw` code or `07:00-15:00`). Full visible week or month snapshot.
 
 `POST /time/schedule/copy` — all-or-nothing copy to another week; refused if the target week already has shifts.
 
-`POST /time/schedule/publish` — marks the visible week as published.
+`POST /time/schedule/publish` — marks the visible week (or month if `period=month`) as published.
 
 Shift types: `GET/POST /time/shift-types`, `PATCH /time/shift-types/{id}`, `POST /time/shift-types/{id}/active`.
 

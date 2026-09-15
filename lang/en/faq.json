@@ -325,8 +325,8 @@
             "slug": "time_schedule",
             "type": "text",
             "title": "What is the roster?",
-            "body": "Under Time → Roster you plan shifts per worker: type a code (shift type) or a free time such as 07:00-15:00. Set shift types under Time → Shift types (usually once); the roster shows a code legend. Invalid cells have a red border. Save stores the visible week; publish marks that week as planned. Publishing does not send anything to RSZ — the punch clock remains actual time. Copying a week is all-or-nothing: if the target week already has shifts, the copy is refused. Night shifts (end before or equal to start) are not allowed.",
-            "summary": "Time → Roster: codes or free times; types under Shift types; publishing is not CIAO/RSZ."
+            "body": "Under Time → Roster you plan shifts per worker: type a code (shift type) or a free time such as 07:00-15:00. Switch between week and month; the month shows day number and weekday in narrower columns. Set shift types under Time → Shift types (usually once); the roster shows a code legend. Invalid cells have a red border. Save stores the visible period; publish marks it as planned. Publishing does not send anything to RSZ — the punch clock remains actual time. Copying a week (week view only) is all-or-nothing: if the target week already has shifts, the copy is refused. Night shifts (end before or equal to start) are not allowed.",
+            "summary": "Time → Roster: week or month; codes or free times; types under Shift types."
         }
     }
 }

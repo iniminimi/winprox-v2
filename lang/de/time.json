@@ -377,11 +377,11 @@
             "night_not_allowed": "Nachtschichten (Ende vor oder gleich Start) sind nicht erlaubt.",
             "invalid_code": "Ungültiger Code. Nur Buchstaben oder Ziffern.",
             "code_taken": "Dieser Code existiert bereits.",
-            "invalid_cells": "Die Woche enthält ungültige Zellen. Korrigieren Sie sie vor dem Speichern.",
+            "invalid_cells": "Es gibt ungültige Zellen im Plan. Korrigieren Sie diese vor dem Speichern.",
             "overlap": "Dieser Mitarbeiter hat überlappende Dienste.",
             "unknown_worker": "Unbekannter Mitarbeiter.",
-            "cell_out_of_scope": "Zelle liegt außerhalb der sichtbaren Woche.",
-            "duplicate_cell": "Doppelte Zelle in derselben Woche.",
+            "cell_out_of_scope": "Zelle liegt außerhalb des sichtbaren Plans.",
+            "duplicate_cell": "Doppelte Zelle im Plan.",
             "incomplete_grid": "Der Plan ist unvollständig.",
             "copy_same_week": "Quell- und Zielwoche sind gleich.",
             "copy_conflict": "Die Zielwoche hat bereits Dienste. Kopie abgelehnt."
@@ -413,9 +413,17 @@
                 "slate": "Grau"
             }
         },
-        "empty_workers": "Keine Ausführenden in dieser Woche. Legen Sie sie unter Personen → Teams an.",
+        "empty_workers": "Keine Ausführenden in diesem Zeitraum. Legen Sie sie unter Personen → Teams an.",
         "legend": "Codes",
-        "legend_empty": "Noch keine aktiven Codes."
+        "legend_empty": "Noch keine aktiven Codes.",
+        "period": "Ansicht",
+        "view_week": "Woche",
+        "view_month": "Monat",
+        "month": "Monat",
+        "prev_month": "Voriger Monat",
+        "this_month": "Dieser Monat",
+        "next_month": "Nächster Monat",
+        "publish_confirm_month": "Diesen Monat für die sichtbaren Ausführenden veröffentlichen?"
     },
     "shift_types": {
         "title": "Schichttypen",

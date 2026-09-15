@@ -14,20 +14,21 @@ use Illuminate\Support\Facades\DB;
 
 class PublishWeekAction
 {
-    public function __construct(private ResolveRosterWeekAction $resolveWeek) {}
+    public function __construct(private ResolveRosterPeriodAction $resolvePeriod) {}
 
     public function handle(Tenant $tenant, PublishWeekData $data, ?int $actorUserId): int
     {
         TimeModuleAccess::assertEnabledForTenantId((int) $tenant->id);
 
-        [, , $dates] = $this->resolveWeek->handle($data->weekStart);
+        $period = $data->period === 'month' ? 'month' : 'week';
+        [, , $dates] = $this->resolvePeriod->handle($data->weekStart, $period);
         $workerIds = array_values(array_unique(array_map('intval', $data->workerIds)));
         $this->assertWorkersBelongToTenant((int) $tenant->id, $workerIds);
 
         return DB::transaction(function () use ($tenant, $workerIds, $dates, $actorUserId) {
             $shifts = PlannedShift::query()
                 ->whereIn('worker_id', $workerIds ?: [0])
-                ->whereBetween('work_date', [$dates[0], $dates[6]])
+                ->whereBetween('work_date', [$dates[0], $dates[array_key_last($dates)]])
                 ->lockForUpdate()
                 ->get();
 

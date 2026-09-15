@@ -2,6 +2,7 @@
 
 use App\Actions\Time\AssertPlannedShiftNoOverlapAction;
 use App\Actions\Time\CopyWeekAction;
+use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ParseRosterCellAction;
 use App\Actions\Time\PublishWeekAction;
 use App\Actions\Time\SavePlannedShiftsAction;
@@ -301,6 +302,52 @@ it('slaat een week op via de API', function () {
 
     Tenancy::actAs($tenant->id);
     expect(PlannedShift::query()->count())->toBe(1);
+});
+
+it('toont een maandoverzicht met dagnummers', function () {
+    [$tenant, $admin] = scheduleTenant();
+
+    $this->actingAs($admin)
+        ->get(route('time.schedule.index', ['view' => 'month', 'week' => '2026-09-01']))
+        ->assertOk()
+        ->assertSee(__('time.schedule.view_month'), false)
+        ->assertSee('wp-roster-month', false);
+
+    $snapshot = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        '2026-09-15',
+        null,
+        $admin,
+        'month',
+    );
+
+    expect($snapshot->dates)->toHaveCount(30)
+        ->and($snapshot->period)->toBe('month')
+        ->and($snapshot->dayNumbers[0])->toBe(1)
+        ->and($snapshot->dayNumbers[29])->toBe(30)
+        ->and($snapshot->monthLabel)->toContain('2026');
+});
+
+it('slaat een maandgrid op', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $cells = [];
+    for ($day = 1; $day <= 30; $day++) {
+        $date = sprintf('2026-09-%02d', $day);
+        $cells[] = [
+            'worker_id' => $worker->id,
+            'date' => $date,
+            'raw' => $date === '2026-09-14' ? '07:00-15:00' : '',
+        ];
+    }
+
+    $saved = app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData('2026-09-01', [$worker->id], $cells, 'month'),
+        $admin->id,
+    );
+
+    expect($saved)->toHaveCount(1)
+        ->and($saved[0]->work_date->toDateString())->toBe('2026-09-14');
 });
 
 it('bevat schedule-webhook-events', function () {

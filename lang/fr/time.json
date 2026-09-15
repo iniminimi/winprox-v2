@@ -377,11 +377,11 @@
             "night_not_allowed": "Les services de nuit (fin avant ou égale au début) ne sont pas autorisés.",
             "invalid_code": "Code invalide. Utilisez des lettres ou des chiffres.",
             "code_taken": "Ce code existe déjà.",
-            "invalid_cells": "La semaine contient des cellules invalides. Corrigez-les avant d’enregistrer.",
+            "invalid_cells": "Il y a des cellules invalides. Corrigez-les avant d’enregistrer.",
             "overlap": "Cet exécutant a des services qui se chevauchent.",
             "unknown_worker": "Exécutant inconnu.",
-            "cell_out_of_scope": "Cellule hors de la semaine visible.",
-            "duplicate_cell": "Cellule en double dans la même semaine.",
+            "cell_out_of_scope": "La cellule est hors de l’horaire visible.",
+            "duplicate_cell": "Cellule en double dans l’horaire.",
             "incomplete_grid": "La grille est incomplète.",
             "copy_same_week": "La semaine source et la semaine cible sont identiques.",
             "copy_conflict": "La semaine cible a déjà des services. Copie refusée."
@@ -413,9 +413,17 @@
                 "slate": "Gris"
             }
         },
-        "empty_workers": "Aucun exécutant pour cette semaine. Ajoutez-les sous Personnes → Équipes.",
+        "empty_workers": "Aucun exécutant pour cette période. Ajoutez-les sous Personnes → Équipes.",
         "legend": "Codes",
-        "legend_empty": "Pas encore de codes actifs."
+        "legend_empty": "Pas encore de codes actifs.",
+        "period": "Affichage",
+        "view_week": "Semaine",
+        "view_month": "Mois",
+        "month": "Mois",
+        "prev_month": "Mois précédent",
+        "this_month": "Ce mois",
+        "next_month": "Mois suivant",
+        "publish_confirm_month": "Publier ce mois pour les exécutants visibles ?"
     },
     "shift_types": {
         "title": "Types de service",

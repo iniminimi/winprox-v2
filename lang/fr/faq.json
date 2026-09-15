@@ -321,8 +321,8 @@
             "slug": "time_schedule",
             "type": "text",
             "title": "Qu’est-ce que l’horaire ?",
-            "body": "Sous Time → Horaire vous planifiez les services par exécutant : saisissez un code (type de service) ou une plage libre comme 07:00-15:00. Les types se gèrent sous Time → Types de service (en général une fois) ; l’horaire montre une légende. Les cellules invalides ont un bord rouge. Enregistrer conserve la semaine visible ; publier la marque comme planifiée. La publication n’envoie rien à l’ONSS — la pointeuse reste le temps réel. Copier une semaine est tout ou rien : si la semaine cible a déjà des services, la copie est refusée. Les services de nuit (fin avant ou égale au début) ne sont pas autorisés.",
-            "summary": "Time → Horaire : codes ou heures libres ; types sous Types de service ; publier n’est pas du CIAO/ONSS."
+            "body": "Sous Time → Horaire vous planifiez les services par exécutant : saisissez un code (type de service) ou une plage libre comme 07:00-15:00. Passez de la semaine au mois ; le mois montre le numéro de jour et le jour de la semaine en colonnes plus étroites. Les types se gèrent sous Time → Types de service (en général une fois) ; l’horaire montre une légende. Les cellules invalides ont un bord rouge. Enregistrer conserve la période visible ; publier la marque comme planifiée. La publication n’envoie rien à l’ONSS — la pointeuse reste le temps réel. Copier une semaine (vue semaine seulement) est tout ou rien. Les services de nuit (fin avant ou égale au début) ne sont pas autorisés.",
+            "summary": "Time → Horaire : semaine ou mois ; codes ou heures libres ; types sous Types de service."
         }
     }
 }
