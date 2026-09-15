@@ -636,7 +636,7 @@ export function bind(root, wire) {
             {
                 type: 'text',
                 title: payload.name_column || 'Name',
-                width: isMonth ? 128 : 180,
+                width: isMonth ? 168 : 180,
                 readOnly: true,
             },
             ...payload.dates.map((_date, index) => ({
@@ -730,7 +730,7 @@ export function bind(root, wire) {
         if (!sheet || typeof sheet.setWidth !== 'function' || dayCount < 1) {
             return;
         }
-        const nameWidth = 132;
+        const nameWidth = 168;
         const total = Math.floor(host.clientWidth);
         const dayWidth = Math.max(36, Math.floor((total - nameWidth) / dayCount));
         sheet.setWidth(0, nameWidth);

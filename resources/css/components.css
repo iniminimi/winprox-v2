@@ -5863,10 +5863,14 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 /* Naamkolom (na rijnummer) */
-.wp-roster-sheet .jss_worksheet > tbody > tr > td:nth-child(2) {
+.wp-roster-sheet .jss_worksheet > tbody > tr > td:nth-child(2),
+.wp-roster-sheet .jss_worksheet > thead > tr > td:nth-child(2) {
     color: var(--wp-text);
     font-weight: 500;
     text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .wp-roster-sheet col.wp-roster-col--weekend,
@@ -5936,6 +5940,9 @@ a.wp-kpi.wp-kpi--attention {
     font-weight: 500;
     color: var(--wp-text);
     padding-left: 0.4rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* Dienst + groep: newline in celwaarde, tweede regel iets kleiner */
@@ -6084,10 +6091,10 @@ a.wp-kpi.wp-kpi--attention {
 .wp-roster-print__table th,
 .wp-roster-print__table td {
     border: 1px solid var(--wp-border);
-    padding: 0.2rem 0.25rem;
+    padding: 0.15rem 0.2rem;
     text-align: center;
     vertical-align: middle;
-    word-break: break-word;
+    overflow: hidden;
 }
 
 .wp-roster-print__table thead th {
@@ -6098,23 +6105,33 @@ a.wp-kpi.wp-kpi--attention {
     line-height: 1.15;
 }
 
+.wp-roster-print__table col.wp-roster-print__name-col {
+    width: 11rem;
+}
+
+.wp-roster-print__table thead th:first-child,
 .wp-roster-print__table tbody th {
     text-align: left;
     font-weight: 500;
     color: var(--wp-text);
-    white-space: nowrap;
-    width: 9rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    background: var(--wp-surface);
 }
 
 .wp-roster-print__section td {
     background: color-mix(in srgb, var(--wp-accent) 28%, var(--wp-surface) 72%);
     font-weight: 600;
     text-align: left !important;
+    overflow: hidden;
 }
 
 .wp-roster-print__cell {
     white-space: pre-line;
     line-height: 1.15;
+    font-size: 0.65rem;
+    overflow: hidden;
 }
 
 @media print {
@@ -6131,6 +6148,14 @@ a.wp-kpi.wp-kpi--attention {
 
     .wp-roster-print__table {
         font-size: 0.65rem;
+    }
+
+    .wp-roster-print__table col.wp-roster-print__name-col {
+        width: 3.2cm;
+    }
+
+    .wp-roster-print__cell {
+        font-size: 0.55rem;
     }
 }
 

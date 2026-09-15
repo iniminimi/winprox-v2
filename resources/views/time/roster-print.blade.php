@@ -52,6 +52,12 @@
         @else
             <div class="wp-card wp-card-pad wp-roster-print__sheet">
                 <table class="wp-roster-print__table">
+                    <colgroup>
+                        <col class="wp-roster-print__name-col">
+                        @foreach ($snapshot->dates as $date)
+                            <col>
+                        @endforeach
+                    </colgroup>
                     <thead>
                         @if ($period === 'month' && $snapshot->monthLabel !== '')
                             <tr>
@@ -89,7 +95,11 @@
                                     @foreach ($snapshot->dates as $date)
                                         @php
                                             $cell = $snapshot->cells[$worker['id'].':'.$date] ?? null;
-                                            $display = is_array($cell) ? (string) ($cell['display'] ?? '') : '';
+                                            $rawDisplay = is_array($cell) ? trim((string) ($cell['display'] ?? '')) : '';
+                                            $slash = strpos($rawDisplay, '/');
+                                            $display = ($slash !== false && ! str_contains($rawDisplay, "\n") && substr_count($rawDisplay, '/') === 1)
+                                                ? substr($rawDisplay, 0, $slash)."\n".strtoupper(substr($rawDisplay, $slash + 1))
+                                                : $rawDisplay;
                                             $color = is_array($cell) ? (string) ($cell['color'] ?? 'none') : 'none';
                                         @endphp
                                         <td @class([
