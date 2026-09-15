@@ -271,15 +271,18 @@ function applyCellClasses(worksheet, payload) {
     const rows = worksheet.getData() ?? [];
     rows.forEach((row, rowIndex) => {
         row.forEach((value, colIndex) => {
-            if (colIndex === 0) {
-                return;
-            }
             const cell = rosterTd(
                 typeof worksheet.getCellFromCoords === 'function'
                     ? worksheet.getCellFromCoords(colIndex, rowIndex)
                     : null,
             );
             if (!cell) {
+                return;
+            }
+            if (colIndex === 0) {
+                const rowDef = gridRowDefs(payload)[rowIndex];
+                cell.classList.toggle('wp-roster-row--section', rowDef?.type === 'section');
+
                 return;
             }
             [...cell.classList].forEach((name) => {
@@ -404,8 +407,26 @@ function buildData(payload) {
 
 function applySectionRowStyles(worksheet, payload) {
     const dayCount = payload.dates?.length ?? 0;
+    let personNo = 0;
     gridRowDefs(payload).forEach((row, rowIndex) => {
         const isSection = row.type === 'section';
+        const nameCell = typeof worksheet.getCellFromCoords === 'function'
+            ? rosterTd(worksheet.getCellFromCoords(0, rowIndex))
+            : null;
+        const tr = nameCell?.closest('tr') ?? null;
+        if (tr) {
+            tr.classList.toggle('wp-roster-row--section', isSection);
+            const indexTd = tr.querySelector(':scope > td:first-child');
+            if (indexTd && indexTd !== nameCell) {
+                indexTd.classList.toggle('wp-roster-row--section', isSection);
+                if (isSection) {
+                    indexTd.textContent = '';
+                } else {
+                    personNo += 1;
+                    indexTd.textContent = String(personNo);
+                }
+            }
+        }
         for (let colIndex = 0; colIndex <= dayCount; colIndex += 1) {
             const cell = typeof worksheet.getCellFromCoords === 'function'
                 ? rosterTd(worksheet.getCellFromCoords(colIndex, rowIndex))
