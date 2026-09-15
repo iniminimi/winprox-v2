@@ -1604,7 +1604,7 @@
                 },
                 {
                     "label": "Geplant vs. gestempelt",
-                    "text": "In einer <strong>veröffentlichten</strong> Periode markiert der Plan Abweichungen (zu spät/zu früh) sofort, auch <strong>heute</strong>. Fehlende Stempelungen erst nach dem geplanten Ende (oder an vergangenen Tagen). Ungeplante Stempelungen und Abwesenheit ohne Stempelung bleiben wie zuvor. Klicken Sie oben rechts auf die Markierung, um <strong>Stunden</strong> für diesen Ausführenden an diesem Tag zu öffnen."
+                    "text": "In einer <strong>veröffentlichten</strong> Periode markiert der Plan Abweichungen (zu spät/zu früh) sofort, auch <strong>heute</strong>. Fehlende Stempelungen erst nach dem geplanten Ende (oder an vergangenen Tagen). Ungeplante Stempelungen und Abwesenheit ohne Stempelung bleiben wie zuvor. Klicken Sie oben rechts auf die Markierung, um <strong>Stunden</strong> für diesen Ausführenden an diesem Tag zu öffnen. <strong>Drucken</strong> (neben dem Titel) druckt A4 quer."
                 }
             ]
         },

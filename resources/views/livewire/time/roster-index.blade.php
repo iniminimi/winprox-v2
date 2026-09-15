@@ -1,5 +1,5 @@
 <div
-    @class(['wp-stack', 'wp-roster-page--month' => $isMonth])
+    @class(['wp-stack', 'wp-roster-page--month' => $isMonth, 'wp-roster-print-root'])
     data-manual-capture="time-schedule"
     x-data
     x-init="window.wpRosterSheet && window.wpRosterSheet.bind($el, $wire)"
@@ -8,9 +8,19 @@
         :title="__('time.schedule.title')"
         help-page="time.schedule"
         :subtitle="__('time.schedule.subtitle')"
-    />
+    >
+        <x-slot:toolbar>
+            <button
+                type="button"
+                class="btn btn--ghost btn--sm wp-no-print"
+                onclick="window.wpRosterSheet && window.wpRosterSheet.print()"
+            >{{ __('common.button.print') }}</button>
+        </x-slot:toolbar>
+    </x-wp-page-head-title>
 
-    @include('partials.wp-time-nav', ['alarmCount' => $alarmCount])
+    <div class="wp-no-print">
+        @include('partials.wp-time-nav', ['alarmCount' => $alarmCount])
+    </div>
 
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
@@ -19,7 +29,7 @@
         <div class="wp-flash wp-flash--danger">{{ session('time_flash_error') }}</div>
     @endif
 
-    <div class="wp-card wp-filter-panel wp-time-roster-toolbar">
+    <div class="wp-card wp-filter-panel wp-time-roster-toolbar wp-no-print">
         <div class="wp-filter-form wp-time-roster-toolbar__form">
             <div class="wp-time-roster-toolbar__bar">
                 <div class="wp-cluster">
