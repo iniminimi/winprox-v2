@@ -64,7 +64,7 @@
                     <input id="type-label" class="wp-input" wire:model="typeLabel" maxlength="80">
                     @error('typeLabel') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <div class="wp-cluster">
+                <div class="wp-measure-field-range">
                     <div class="wp-field">
                         <label class="wp-label" for="type-start">{{ __('time.schedule.types.start') }}</label>
                         <input id="type-start" class="wp-input" wire:model="typeStart" placeholder="07:00">
@@ -75,11 +75,11 @@
                         <input id="type-end" class="wp-input" wire:model="typeEnd" placeholder="15:00">
                         @error('typeEnd') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="type-break">{{ __('time.schedule.types.break') }}</label>
-                        <input id="type-break" type="number" min="0" max="720" class="wp-input" wire:model="typeBreak">
-                        @error('typeBreak') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
+                </div>
+                <div class="wp-field">
+                    <label class="wp-label" for="type-break">{{ __('time.schedule.types.break') }}</label>
+                    <input id="type-break" type="number" min="0" max="720" class="wp-input" wire:model="typeBreak">
+                    @error('typeBreak') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-field">
                     <label class="wp-label" for="type-color">{{ __('time.schedule.types.color') }}</label>
