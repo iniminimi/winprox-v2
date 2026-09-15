@@ -511,7 +511,7 @@
                             <div class="wp-form-grid-2">
                                 @foreach ($allLocations as $location)
                                     <label class="wp-check">
-                                        <input type="checkbox" wire:model="selectedWorkerLocationIds" value="{{ $location->id }}">
+                                        <input type="checkbox" wire:model.live="selectedWorkerLocationIds" value="{{ $location->id }}">
                                         <span>{{ $location->name ?: $location->address }}</span>
                                     </label>
                                 @endforeach
@@ -519,6 +519,17 @@
                         @else
                             <p class="wp-muted">{{ __('team.workers.modal.locations_empty') }}</p>
                         @endif
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="workerDefaultUnitId">{{ __('team.workers.default_unit') }}</label>
+                        <select id="workerDefaultUnitId" class="wp-select" wire:model="workerDefaultUnitId">
+                            <option value="">{{ __('team.workers.default_unit_none') }}</option>
+                            @foreach ($workerDefaultUnits as $unit)
+                                <option value="{{ $unit->id }}">{{ $unit->roster_code }} — {{ $unit->name }}@if ($unit->location) ({{ $unit->location->name }})@endif</option>
+                            @endforeach
+                        </select>
+                        <p class="wp-hint">{{ __('team.workers.default_unit_hint') }}</p>
+                        @error('workerDefaultUnitId') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     @if ($editingWorkerId)
                         @php $editingWorker = $this->editingWorkerRecord(); @endphp

@@ -172,7 +172,10 @@
         "ssin_hint": "11 digits. Required for RSZ Check In and Out (CIAO).",
         "device_bound": "Phone linked",
         "clear_clock_device": "Allow new device",
-        "clear_clock_pin": "Reset PIN"
+        "clear_clock_pin": "Reset PIN",
+        "default_unit": "Default group / roster code",
+        "default_unit_none": "No group",
+        "default_unit_hint": "Optional home group on the roster. The place in a cell (D1/G1) stays separate."
     },
     "import_history": {
         "title": "Recent imports",
@@ -219,7 +222,9 @@
         "seat_limit": "Your plan seat limit has been reached (colleagues + workers). Upgrade your subscription.",
         "worker_photo_invalid": "Choose a valid image (JPEG, PNG or WebP).",
         "worker_photo_max": "The photo may be at most 2 MB.",
-        "worker_ssin_invalid": "Enter a valid 11-digit NISS or leave blank."
+        "worker_ssin_invalid": "Enter a valid 11-digit NISS or leave blank.",
+        "worker_default_unit_invalid": "Choose a valid default group with a roster code, or leave empty.",
+        "worker_default_unit_location": "The default group must be on an assigned location."
     },
     "checklists": {
         "click_to_manage": "Click here to manage checklists"

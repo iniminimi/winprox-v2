@@ -172,7 +172,10 @@
         "ssin_hint": "11 cifre. Necessario per Check In and Out (CIAO).",
         "device_bound": "Telefono collegato",
         "clear_clock_device": "Consenti nuovo dispositivo",
-        "clear_clock_pin": "Reimposta PIN"
+        "clear_clock_pin": "Reimposta PIN",
+        "default_unit": "Gruppo predefinito / codice turno",
+        "default_unit_none": "Senza gruppo",
+        "default_unit_hint": "Gruppo di appartenenza opzionale sul turno. Il posto in una cella (D1/G1) resta separato."
     },
     "import_history": {
         "title": "Importazioni recenti",
@@ -219,7 +222,9 @@
         "seat_limit": "Limite posti raggiunto (colleghi + esecutori). Aggiorna l'abbonamento.",
         "worker_photo_invalid": "Scegli un'immagine valida (JPEG, PNG o WebP).",
         "worker_photo_max": "La foto può essere al massimo di 2 MB.",
-        "worker_ssin_invalid": "Inserire un NISS valido di 11 cifre oppure lasciare vuoto."
+        "worker_ssin_invalid": "Inserire un NISS valido di 11 cifre oppure lasciare vuoto.",
+        "worker_default_unit_invalid": "Scegli un gruppo predefinito valido con codice turno, oppure lascia vuoto.",
+        "worker_default_unit_location": "Il gruppo predefinito deve essere su una sede assegnata."
     },
     "checklists": {
         "click_to_manage": "Clicca qui per gestire le checklist"

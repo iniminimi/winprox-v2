@@ -5750,6 +5750,18 @@ a.wp-kpi.wp-kpi--attention {
     min-height: 20rem;
 }
 
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-row--section {
+    background: color-mix(in srgb, var(--wp-text) 8%, var(--wp-surface) 92%) !important;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-align: left !important;
+    pointer-events: none;
+}
+
+.wp-time-roster-groups {
+    flex: 1 1 100%;
+}
+
 .wp-roster-sheet .jss_container,
 .wp-roster-sheet .jss,
 .wp-roster-sheet .jss_worksheet {

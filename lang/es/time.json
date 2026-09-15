@@ -462,7 +462,9 @@
         "legend_units": "Grupos",
         "legend_button": "Leyenda",
         "legend_title": "Leyenda del horario",
-        "column_name": "Nombre"
+        "column_name": "Nombre",
+        "groups_filter": "Grupos",
+        "group_ungrouped": "Sin grupo"
     },
     "shift_types": {
         "title": "Tipos de turno",

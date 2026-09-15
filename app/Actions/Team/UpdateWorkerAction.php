@@ -5,6 +5,7 @@ namespace App\Actions\Team;
 use App\Actions\Locations\SyncUserLocationsAction;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Team\WorkerDefaultUnit;
 
 class UpdateWorkerAction
 {
@@ -34,11 +35,26 @@ class UpdateWorkerAction
             $updates['ssin'] = self::normalizedSsin($data['ssin'] ?? null);
         }
 
-        $worker->update($updates);
-
         if (array_key_exists('location_ids', $data)) {
             $this->syncLocations->handleForWorker($worker, $data['location_ids'] ?? [], $actorUserId);
+            $worker->unsetRelation('locations');
         }
+
+        if (array_key_exists('default_unit_id', $data) || array_key_exists('location_ids', $data)) {
+            $worker->loadMissing(['team', 'locations']);
+            $locationIds = $worker->locations->pluck('id')->map(fn ($id) => (int) $id)->all();
+            $rawDefault = array_key_exists('default_unit_id', $data)
+                ? $data['default_unit_id']
+                : $worker->default_unit_id;
+            $updates['default_unit_id'] = WorkerDefaultUnit::normalize(
+                $rawDefault !== null && $rawDefault !== '' ? (int) $rawDefault : null,
+                (int) $worker->tenant_id,
+                $locationIds,
+                $worker->clocksAllLocations(),
+            );
+        }
+
+        $worker->update($updates);
 
         $this->audit->record(
             userId: $actorUserId,
@@ -46,10 +62,14 @@ class UpdateWorkerAction
             action: 'worker.updated',
             modelType: Worker::class,
             modelId: (int) $worker->id,
-            payload: ['id' => $worker->id, 'internal_team_id' => $worker->internal_team_id],
+            payload: [
+                'id' => $worker->id,
+                'internal_team_id' => $worker->internal_team_id,
+                'default_unit_id' => $worker->default_unit_id,
+            ],
         );
 
-        return $worker->fresh(['locations']);
+        return $worker->fresh(['locations', 'defaultUnit']);
     }
 
     private static function normalizedCompanyName(mixed $value): ?string

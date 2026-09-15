@@ -172,7 +172,10 @@
         "ssin_hint": "11 chiffres. Requis pour Check In and Out (CIAO).",
         "device_bound": "Téléphone lié",
         "clear_clock_device": "Autoriser un nouvel appareil",
-        "clear_clock_pin": "Réinitialiser le PIN"
+        "clear_clock_pin": "Réinitialiser le PIN",
+        "default_unit": "Groupe par défaut / code planning",
+        "default_unit_none": "Sans groupe",
+        "default_unit_hint": "Groupe d’origine optionnel sur le planning. Le lieu dans une cellule (D1/G1) reste séparé."
     },
     "import_history": {
         "title": "Imports récents",
@@ -219,7 +222,9 @@
         "seat_limit": "Limite de places atteinte (collègues + exécutants). Mettez à niveau votre abonnement.",
         "worker_photo_invalid": "Choisissez une image valide (JPEG, PNG ou WebP).",
         "worker_photo_max": "La photo peut faire au maximum 2 Mo.",
-        "worker_ssin_invalid": "Indiquez un NISS valide de 11 chiffres ou laissez vide."
+        "worker_ssin_invalid": "Indiquez un NISS valide de 11 chiffres ou laissez vide.",
+        "worker_default_unit_invalid": "Choisissez un groupe par défaut valide avec code planning, ou laissez vide.",
+        "worker_default_unit_location": "Le groupe par défaut doit appartenir à un site assigné."
     },
     "checklists": {
         "click_to_manage": "Cliquez ici pour gérer les listes de contrôle"

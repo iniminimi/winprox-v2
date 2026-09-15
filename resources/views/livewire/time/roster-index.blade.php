@@ -54,6 +54,23 @@
                             @endforeach
                         </select>
                     </div>
+                    @if ($locationFilter && $groupUnits !== [])
+                        <div class="wp-filter-cell wp-time-roster-groups">
+                            <span class="wp-filter-inline-label">{{ __('time.schedule.groups_filter') }}</span>
+                            <div class="wp-cluster wp-cluster--tight">
+                                @foreach ($groupUnits as $groupUnit)
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model.live="groupUnitIds" value="{{ $groupUnit['id'] }}">
+                                        <span>{{ $groupUnit['code'] }}</span>
+                                    </label>
+                                @endforeach
+                                <label class="wp-check">
+                                    <input type="checkbox" wire:model.live="showUngrouped">
+                                    <span>{{ __('time.schedule.group_ungrouped') }}</span>
+                                </label>
+                            </div>
+                        </div>
+                    @endif
                     <div class="wp-filter-cell">
                         <nav class="wp-pagination" aria-label="{{ $isMonth ? __('time.schedule.month') : __('time.schedule.week') }}">
                             <div class="wp-pagination__pages">

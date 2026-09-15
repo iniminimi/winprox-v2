@@ -18,6 +18,7 @@ class Worker extends Model
         'tenant_id',
         'user_id',
         'internal_team_id',
+        'default_unit_id',
         'first_name',
         'last_name',
         'field_icon_slug',
@@ -52,6 +53,11 @@ class Worker extends Model
     public function team(): BelongsTo
     {
         return $this->belongsTo(InternalTeam::class, 'internal_team_id');
+    }
+
+    public function defaultUnit(): BelongsTo
+    {
+        return $this->belongsTo(Unit::class, 'default_unit_id');
     }
 
     public function user(): BelongsTo

@@ -25,6 +25,7 @@ class UpdateWorkerRequest extends FormRequest
             'company_name' => ['nullable', 'string', 'max:120'],
             'ssin' => ['nullable', 'regex:/^\d{11}$/'],
             'photo' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
+            'default_unit_id' => ['nullable', 'integer'],
         ];
     }
 
@@ -44,6 +45,7 @@ class UpdateWorkerRequest extends FormRequest
             'photo.image' => __('team.errors.worker_photo_invalid'),
             'photo.mimes' => __('team.errors.worker_photo_invalid'),
             'photo.max' => __('team.errors.worker_photo_max'),
+            'default_unit_id.integer' => __('team.errors.worker_default_unit_invalid'),
         ];
     }
 }

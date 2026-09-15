@@ -8,6 +8,7 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Team\WorkerDefaultUnit;
 
 /**
  * Voegt een worker (uitvoerder zonder login) toe aan een team. De worker
@@ -48,10 +49,20 @@ class CreateWorkerAction
         $companyName = self::normalizedCompanyName($data['company_name'] ?? null);
         $isExternal = $companyName !== null || (bool) ($data['is_external'] ?? false);
 
+        $locationIds = array_values(array_map('intval', $data['location_ids'] ?? []));
+        $team->loadMissing('translations');
+        $defaultUnitId = WorkerDefaultUnit::normalize(
+            isset($data['default_unit_id']) ? (int) $data['default_unit_id'] : null,
+            (int) $team->tenant_id,
+            $locationIds,
+            (bool) $team->clocks_all_locations,
+        );
+
         $worker = Worker::create([
             'tenant_id' => $team->tenant_id,
             'user_id' => $linkedUserId,
             'internal_team_id' => $team->id,
+            'default_unit_id' => $defaultUnitId,
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'] ?? null,
@@ -73,12 +84,16 @@ class CreateWorkerAction
             modelType: Worker::class,
             modelId: (int) $worker->id,
             payload: array_merge(
-                ['id' => $worker->id, 'internal_team_id' => $worker->internal_team_id],
+                [
+                    'id' => $worker->id,
+                    'internal_team_id' => $worker->internal_team_id,
+                    'default_unit_id' => $worker->default_unit_id,
+                ],
                 $actorWorker !== null ? ['actor_worker_id' => $actorWorker->id] : []
             ),
         );
 
-        return $worker->fresh(['locations']);
+        return $worker->fresh(['locations', 'defaultUnit']);
     }
 
     private static function normalizedCompanyName(mixed $value): ?string

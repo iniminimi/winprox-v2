@@ -462,7 +462,9 @@
         "legend_units": "Groups",
         "legend_button": "Legend",
         "legend_title": "Roster legend",
-        "column_name": "Name"
+        "column_name": "Name",
+        "groups_filter": "Groups",
+        "group_ungrouped": "Ungrouped"
     },
     "shift_types": {
         "title": "Shift types",

@@ -741,6 +741,11 @@ Opslaan zonder weekends raakt za/zo niet. Maand toont altijd alle dagen.
   (`unit_id`, `unit_code`, `unit_name`, `location_id`). Parser lost codes op; save eist
   `Worker::canClockAt`. Zelfde code op twee locaties → `ambiguous_unit` tot locatiefilter.
   Afwezigheid + groep ongeldig. Locatiefilter op het rooster. Mijn rooster toont snapshot-`unit_name`.
+- **Thuisgroep (weergave):** optioneel `workers.default_unit_id` → unit met `roster_code` op een
+  locatie waar de worker mag klokken (of floater-team). Bij **locatiefilter**: vinkjes per groep
+  + “Zonder groep”; grid toont **sectiekoppen** (`rows`: `section` \| `worker`). Sortering:
+  roostercode → naam. Cel-plek `D1/G1` blijft onafhankelijk (geen auto-invullen van thuisgroep).
+  Locatie leegmaken → platte workerlijst, groepfilters reset.
 - **Copy week:** alles-of-niets; alleen in weekweergave; doelweek met bestaande diensten → weigeren.
 - **Golf 2 — Mijn rooster:** Clock Point-tegel, alleen eigen `published` week. Badge = ongelezen
   `roster_published` (`wp-pill--new`). Klik opent de nieuwste ongelezen week en zet `read_at`

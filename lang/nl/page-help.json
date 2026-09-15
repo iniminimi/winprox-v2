@@ -1570,6 +1570,10 @@
                     "text": "Typ een <strong>code</strong> uit de legende of een tijd <strong>07:00-15:00</strong>. Optioneel een groep in dezelfde cel: <strong>D1/G1</strong> of <strong>07:00-12:00/G1</strong> (spatie mag). Ongeldige cellen hebben een <strong>rode rand</strong> — corrigeer die vóór opslaan. Komt een groepscode op meerdere locaties voor, kies dan een locatiefilter."
                 },
                 {
+                    "label": "Groepen",
+                    "text": "Kies eerst een <strong>locatiefilter</strong>. Daarna kunt u <strong>groepen</strong> (roostercodes) aanvinken en <strong>Zonder groep</strong>. Uitvoerders staan onder sectiekoppen. De standaardgroep stelt u in bij de uitvoerder; de plek in een cel (D1/G1) blijft apart."
+                },
+                {
                     "label": "Opslaan en publiceren",
                     "text": "Opslaan bewaart de zichtbare week of maand en uitvoerders. <strong>Publiceren</strong> maakt die periode zichtbaar op Clock Point (Mijn rooster) en zet een badge. Bewerken na publiceren blijft gepubliceerd; een nieuwe badge volgt alleen bij opnieuw publiceren."
                 },

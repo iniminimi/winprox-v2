@@ -172,7 +172,10 @@
         "ssin_hint": "11 dígitos. Necesario para Check In and Out (CIAO).",
         "device_bound": "Móvil vinculado",
         "clear_clock_device": "Permitir dispositivo nuevo",
-        "clear_clock_pin": "Restablecer PIN"
+        "clear_clock_pin": "Restablecer PIN",
+        "default_unit": "Grupo predeterminado / código de cuadrante",
+        "default_unit_none": "Sin grupo",
+        "default_unit_hint": "Grupo de origen opcional en el cuadrante. El lugar en una celda (D1/G1) sigue aparte."
     },
     "import_history": {
         "title": "Importaciones recientes",
@@ -219,7 +222,9 @@
         "seat_limit": "Límite de plazas alcanzado (colegas + ejecutores). Actualice su suscripción.",
         "worker_photo_invalid": "Elige una imagen válida (JPEG, PNG o WebP).",
         "worker_photo_max": "La foto puede ocupar como máximo 2 MB.",
-        "worker_ssin_invalid": "Introduzca un NISS válido de 11 dígitos o déjelo vacío."
+        "worker_ssin_invalid": "Introduzca un NISS válido de 11 dígitos o déjelo vacío.",
+        "worker_default_unit_invalid": "Elija un grupo predeterminado válido con código de cuadrante, o déjelo vacío.",
+        "worker_default_unit_location": "El grupo predeterminado debe estar en una ubicación asignada."
     },
     "checklists": {
         "click_to_manage": "Haga clic aquí para gestionar las listas de comprobación"

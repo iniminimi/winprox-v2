@@ -16,6 +16,7 @@ final class RosterWeekSnapshot
      * @param  list<int>  $dayNumbers
      * @param  array<string, string>  $attendance
      * @param  array<string, string>  $attendanceMessages
+     * @param  list<array<string, mixed>>  $rows
      */
     public function __construct(
         public string $weekStart,
@@ -35,6 +36,8 @@ final class RosterWeekSnapshot
         public array $attendanceMessages = [],
         public array $locations = [],
         public array $units = [],
+        public array $rows = [],
+        public bool $groupMode = false,
     ) {}
 
     /**
@@ -53,6 +56,8 @@ final class RosterWeekSnapshot
             'teams' => $this->teams,
             'locations' => $this->locations,
             'units' => $this->units,
+            'rows' => $this->rows,
+            'group_mode' => $this->groupMode,
             'week_published' => $this->weekPublished,
             'night_shifts' => $this->nightShifts,
             'free_color' => 'slate',

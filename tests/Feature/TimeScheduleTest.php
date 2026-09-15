@@ -768,3 +768,143 @@ it('filtert uitvoerders op locatie in het uurrooster', function () {
         ->and($snapshot->units)->toBeArray();
 });
 
+it('groepeert workers in sectierijen bij locatiefilter en negeert uitgevinkte groepen', function () {
+    [$tenant, $admin, $team] = scheduleTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Groep']);
+    $unitA = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Lokaal A',
+        'roster_code' => 'GA',
+        'is_active' => true,
+    ]);
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Lokaal B',
+        'roster_code' => 'GB',
+        'is_active' => true,
+    ]);
+
+    $inA = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Ada',
+        'last_name' => 'Alpha',
+        'default_unit_id' => $unitA->id,
+        'is_active' => true,
+    ]);
+    $inB = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Bea',
+        'last_name' => 'Beta',
+        'default_unit_id' => $unitB->id,
+        'is_active' => true,
+    ]);
+    $ungrouped = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Una',
+        'last_name' => 'None',
+        'default_unit_id' => null,
+        'is_active' => true,
+    ]);
+    foreach ([$inA, $inB, $ungrouped] as $person) {
+        $person->locations()->sync([$location->id]);
+    }
+
+    $all = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        scheduleWeekStart(),
+        null,
+        $admin,
+        'week',
+        true,
+        (int) $location->id,
+        null,
+        true,
+    );
+
+    expect($all->groupMode)->toBeTrue()
+        ->and($all->workers[0]['group_code'])->toBe('GA')
+        ->and($all->rows[0])->toMatchArray([
+            'type' => 'section',
+            'unit_id' => (int) $unitA->id,
+        ])
+        ->and($all->rows[1])->toMatchArray([
+            'type' => 'worker',
+            'worker_id' => (int) $inA->id,
+        ]);
+
+    $sectionLabels = array_values(array_map(
+        fn (array $row) => $row['label'] ?? null,
+        array_filter($all->rows, fn (array $row) => $row['type'] === 'section'),
+    ));
+    expect($sectionLabels[0])->toContain('GA')
+        ->and($sectionLabels)->toContain(__('time.schedule.group_ungrouped'));
+
+    $filtered = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        scheduleWeekStart(),
+        null,
+        $admin,
+        'week',
+        true,
+        (int) $location->id,
+        [(int) $unitA->id],
+        false,
+    );
+
+    $workerIds = array_map(fn (array $row) => (int) $row['id'], $filtered->workers);
+    $sectionUnitIds = collect($filtered->rows)
+        ->where('type', 'section')
+        ->pluck('unit_id')
+        ->map(fn ($id) => (int) $id)
+        ->all();
+
+    expect($workerIds)->toBe([(int) $inA->id])
+        ->and($workerIds)->not->toContain((int) $inB->id)
+        ->and($workerIds)->not->toContain((int) $ungrouped->id)
+        ->and($sectionUnitIds)->toBe([(int) $unitA->id]);
+
+    $flat = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        scheduleWeekStart(),
+        null,
+        $admin,
+        'week',
+        true,
+        null,
+    );
+
+    expect($flat->groupMode)->toBeFalse()
+        ->and(collect($flat->rows)->every(fn (array $row) => $row['type'] === 'worker'))->toBeTrue();
+});
+
+it('houdt canClockAt voor cel-plek onafhankelijk van default_unit_id', function () {
+    [$tenant, , $team, $worker] = scheduleTenant();
+    $home = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $away = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $homeUnit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $home->id,
+        'roster_code' => 'HM',
+        'is_active' => true,
+    ]);
+    $awayUnit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $away->id,
+        'roster_code' => 'AW',
+        'is_active' => true,
+    ]);
+    $worker->locations()->sync([$home->id]);
+    $worker->update(['default_unit_id' => $homeUnit->id]);
+    $worker->refresh()->load('locations');
+
+    expect($worker->canClockAt((int) $home->id))->toBeTrue()
+        ->and($worker->canClockAt((int) $away->id))->toBeFalse()
+        ->and($worker->default_unit_id)->toBe((int) $homeUnit->id)
+        ->and($awayUnit->roster_code)->toBe('AW');
+});
+

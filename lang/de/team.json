@@ -172,7 +172,10 @@
         "ssin_hint": "11 Ziffern. Erforderlich für RSZ Check In and Out (CIAO).",
         "device_bound": "Handy verknüpft",
         "clear_clock_device": "Neues Gerät zulassen",
-        "clear_clock_pin": "PIN zurücksetzen"
+        "clear_clock_pin": "PIN zurücksetzen",
+        "default_unit": "Standardgruppe / Dienstplancode",
+        "default_unit_none": "Ohne Gruppe",
+        "default_unit_hint": "Optionale Stammgruppe im Dienstplan. Der Ort in einer Zelle (D1/G1) bleibt getrennt."
     },
     "import_history": {
         "title": "Letzte Imports",
@@ -219,7 +222,9 @@
         "seat_limit": "Platzlimit Ihres Tarifs erreicht (Kollegen + Ausführende). Upgraden Sie Ihr Abonnement.",
         "worker_photo_invalid": "Wählen Sie ein gültiges Bild (JPEG, PNG oder WebP).",
         "worker_photo_max": "Das Foto darf höchstens 2 MB groß sein.",
-        "worker_ssin_invalid": "Geben Sie eine gültige 11-stellige NISS ein oder lassen Sie das Feld leer."
+        "worker_ssin_invalid": "Geben Sie eine gültige 11-stellige NISS ein oder lassen Sie das Feld leer.",
+        "worker_default_unit_invalid": "Wählen Sie eine gültige Standardgruppe mit Dienstplancode oder lassen Sie das Feld leer.",
+        "worker_default_unit_location": "Die Standardgruppe muss an einem zugewiesenen Standort liegen."
     },
     "checklists": {
         "click_to_manage": "Klicken Sie hier, um Checklisten zu verwalten"

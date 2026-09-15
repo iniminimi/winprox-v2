@@ -462,7 +462,9 @@
         "legend_units": "Groupes",
         "legend_button": "Légende",
         "legend_title": "Légende du planning",
-        "column_name": "Nom"
+        "column_name": "Nom",
+        "groups_filter": "Groupes",
+        "group_ungrouped": "Sans groupe"
     },
     "shift_types": {
         "title": "Types de service",

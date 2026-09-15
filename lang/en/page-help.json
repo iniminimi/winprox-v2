@@ -1570,6 +1570,10 @@
                     "text": "Type a <strong>code</strong> from the legend or a time <strong>07:00-15:00</strong>. Optionally add a group in the same cell: <strong>D1/G1</strong> or <strong>07:00-12:00/G1</strong> (a space is allowed). Invalid cells have a <strong>red border</strong> — fix them before saving. If a group code exists at more than one location, choose a location filter."
                 },
                 {
+                    "label": "Groups",
+                    "text": "First choose a <strong>location filter</strong>. Then tick <strong>groups</strong> (roster codes) and <strong>Ungrouped</strong>. Workers appear under section headers. Set the default group on the worker; the place in a cell (D1/G1) stays separate."
+                },
+                {
                     "label": "Save and publish",
                     "text": "Save stores the visible week or month and workers. <strong>Publish</strong> makes that period visible on Clock Point (My roster) and sets a badge. Edits after publishing stay published; a new badge only appears if you publish again."
                 },

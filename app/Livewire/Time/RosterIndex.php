@@ -51,6 +51,13 @@ class RosterIndex extends Component
     #[Url(as: 'weekends')]
     public bool $showWeekends = true;
 
+    /** @var list<int> */
+    public array $groupUnitIds = [];
+
+    public bool $showUngrouped = true;
+
+    public bool $groupsReady = false;
+
     public bool $showLegendModal = false;
 
     public function mount(ResolveRosterPeriodAction $resolvePeriod): void
@@ -66,6 +73,8 @@ class RosterIndex extends Component
             [$start] = $resolvePeriod->handle($this->weekStart, $this->period());
             $this->weekStart = $start->toDateString();
         }
+
+        $this->syncGroupFiltersFromLocation();
     }
 
     public function openLegendModal(): void
@@ -121,6 +130,7 @@ class RosterIndex extends Component
     public function updatedLocationFilter(mixed $value): void
     {
         $this->locationFilter = $value === '' || $value === null ? null : (int) $value;
+        $this->syncGroupFiltersFromLocation();
         $this->dispatch('roster-week-changed');
     }
 
@@ -128,6 +138,42 @@ class RosterIndex extends Component
     {
         $this->showWeekends = (bool) $this->showWeekends;
         $this->dispatch('roster-week-changed');
+    }
+
+    public function updatedGroupUnitIds(): void
+    {
+        $this->groupUnitIds = array_values(array_map('intval', $this->groupUnitIds));
+        $this->dispatch('roster-week-changed');
+    }
+
+    public function updatedShowUngrouped(): void
+    {
+        $this->showUngrouped = (bool) $this->showUngrouped;
+        $this->dispatch('roster-week-changed');
+    }
+
+    private function syncGroupFiltersFromLocation(): void
+    {
+        if ($this->locationFilter === null) {
+            $this->groupUnitIds = [];
+            $this->showUngrouped = true;
+            $this->groupsReady = false;
+
+            return;
+        }
+
+        $this->groupUnitIds = \App\Models\Unit::query()
+            ->where('location_id', $this->locationFilter)
+            ->where('is_active', true)
+            ->whereNotNull('roster_code')
+            ->where('roster_code', '!=', '')
+            ->orderBy('roster_code')
+            ->pluck('id')
+            ->map(fn ($id) => (int) $id)
+            ->values()
+            ->all();
+        $this->showUngrouped = true;
+        $this->groupsReady = true;
     }
 
     /**
@@ -144,6 +190,8 @@ class RosterIndex extends Component
             $this->period(),
             $this->includeWeekends(),
             $this->locationFilter,
+            $this->locationFilter !== null ? $this->groupUnitIds : null,
+            $this->showUngrouped,
         );
 
         $array = $snapshot->toArray();
@@ -286,12 +334,15 @@ class RosterIndex extends Component
             $this->period(),
             $this->includeWeekends(),
             $this->locationFilter,
+            $this->locationFilter !== null ? $this->groupUnitIds : null,
+            $this->showUngrouped,
         );
 
         return view('livewire.time.roster-index', [
             'legendTypes' => $listTypes->handle((int) Tenancy::id(), true),
             'teams' => $snapshot->teams,
             'locations' => $snapshot->locations,
+            'groupUnits' => $this->locationFilter !== null ? $snapshot->units : [],
             'weekLabel' => $this->periodLabel($snapshot),
             'snapshot' => $snapshot,
             'isMonth' => $this->isMonth(),

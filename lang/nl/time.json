@@ -462,7 +462,9 @@
         "legend_units": "Groepen",
         "legend_button": "Legende",
         "legend_title": "Legende uurrooster",
-        "column_name": "Naam"
+        "column_name": "Naam",
+        "groups_filter": "Groepen",
+        "group_ungrouped": "Zonder groep"
     },
     "shift_types": {
         "title": "Shiftypes",

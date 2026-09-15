@@ -172,7 +172,10 @@
         "ssin_hint": "11 cijfers. Nodig voor RSZ Check In and Out (CIAO).",
         "device_bound": "Gsm gekoppeld",
         "clear_clock_device": "Nieuw toestel toestaan",
-        "clear_clock_pin": "Pincode resetten"
+        "clear_clock_pin": "Pincode resetten",
+        "default_unit": "Standaardgroep / roostercode",
+        "default_unit_none": "Zonder groep",
+        "default_unit_hint": "Optionele thuisgroep op het uurrooster. De plek in een cel (D1/G1) blijft apart."
     },
     "import_history": {
         "title": "Recente imports",
@@ -219,7 +222,9 @@
         "seat_limit": "Het licentielimiet van je abonnement is bereikt (collega's + uitvoerders). Upgrade je abonnement.",
         "worker_photo_invalid": "Kies een geldige afbeelding (JPEG, PNG of WebP).",
         "worker_photo_max": "De foto mag maximaal 2 MB groot zijn.",
-        "worker_ssin_invalid": "Geef een geldig NISS van 11 cijfers of laat leeg."
+        "worker_ssin_invalid": "Geef een geldig NISS van 11 cijfers of laat leeg.",
+        "worker_default_unit_invalid": "Kies een geldige standaardgroep met roostercode, of laat leeg.",
+        "worker_default_unit_location": "De standaardgroep moet op een toegewezen locatie liggen."
     },
     "checklists": {
         "click_to_manage": "Klik hier om checklists te beheren"

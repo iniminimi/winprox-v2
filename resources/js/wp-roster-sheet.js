@@ -291,7 +291,15 @@ function applyCellClasses(worksheet, payload) {
             if (paintStackedCell(cell, value)) {
                 cell.classList.add('wp-roster-cell--stacked');
             }
-            const worker = payload.workers?.[rowIndex];
+            const rowDef = gridRowDefs(payload)[rowIndex];
+            if (rowDef?.type === 'section') {
+                cell.classList.add('wp-roster-row--section');
+                cell.removeAttribute('aria-invalid');
+                cell.removeAttribute('title');
+
+                return;
+            }
+            const worker = workerById(payload)[rowDef?.worker_id];
             const parsed = parseRosterCell(value, types, catalogForWorker(worker, payload.units));
             const date = payload.dates?.[colIndex - 1];
             const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
@@ -322,9 +330,37 @@ function applyCellClasses(worksheet, payload) {
     });
 }
 
+function workerById(payload) {
+    const map = {};
+    (payload.workers ?? []).forEach((worker) => {
+        map[worker.id] = worker;
+    });
+
+    return map;
+}
+
+function gridRowDefs(payload) {
+    if (Array.isArray(payload.rows) && payload.rows.length > 0) {
+        return payload.rows;
+    }
+
+    return (payload.workers ?? []).map((worker) => ({
+        type: 'worker',
+        worker_id: worker.id,
+    }));
+}
+
 function collectCells(worksheet, payload) {
     const cells = [];
-    payload.workers.forEach((worker, rowIndex) => {
+    const byId = workerById(payload);
+    gridRowDefs(payload).forEach((row, rowIndex) => {
+        if (row.type !== 'worker') {
+            return;
+        }
+        const worker = byId[row.worker_id];
+        if (!worker) {
+            return;
+        }
         payload.dates.forEach((date, dayIndex) => {
             const raw = worksheet.getValueFromCoords(dayIndex + 1, rowIndex);
             cells.push({
@@ -339,22 +375,49 @@ function collectCells(worksheet, payload) {
 }
 
 function hasInvalidCells(worksheet, payload) {
+    const byId = workerById(payload);
+
     return collectCells(worksheet, payload).some((cell) => {
-        const worker = payload.workers.find((item) => item.id === cell.worker_id);
+        const worker = byId[cell.worker_id];
 
         return parseRosterCell(cell.raw, payload.types ?? [], catalogForWorker(worker, payload.units)).kind === 'invalid';
     });
 }
 
 function buildData(payload) {
-    return payload.workers.map((worker) => {
-        const row = [worker.name];
+    const byId = workerById(payload);
+
+    return gridRowDefs(payload).map((row) => {
+        if (row.type === 'section') {
+            return [row.label || '', ...payload.dates.map(() => '')];
+        }
+        const worker = byId[row.worker_id];
+        const line = [worker?.name ?? ''];
         payload.dates.forEach((date) => {
-            const key = `${worker.id}:${date}`;
-            row.push(formatCellDisplay(payload.cells[key]?.display ?? ''));
+            const key = `${row.worker_id}:${date}`;
+            line.push(formatCellDisplay(payload.cells[key]?.display ?? ''));
         });
 
-        return row;
+        return line;
+    });
+}
+
+function applySectionRowStyles(worksheet, payload) {
+    const dayCount = payload.dates?.length ?? 0;
+    gridRowDefs(payload).forEach((row, rowIndex) => {
+        const isSection = row.type === 'section';
+        for (let colIndex = 0; colIndex <= dayCount; colIndex += 1) {
+            const cell = typeof worksheet.getCellFromCoords === 'function'
+                ? rosterTd(worksheet.getCellFromCoords(colIndex, rowIndex))
+                : null;
+            if (!cell) {
+                continue;
+            }
+            cell.classList.toggle('wp-roster-row--section', isSection);
+            if (isSection && typeof worksheet.setReadOnly === 'function') {
+                worksheet.setReadOnly(colIndex, rowIndex, true);
+            }
+        }
     });
 }
 
@@ -411,6 +474,7 @@ export function bind(root, wire) {
             })),
         ];
 
+        const rowDefs = gridRowDefs(payload);
         const worksheetConfig = {
             data: buildData(payload),
             columns,
@@ -427,7 +491,7 @@ export function bind(root, wire) {
             columnDrag: false,
             rowDrag: false,
             parseFormulas: false,
-            minDimensions: [dayCount + 1, Math.max(payload.workers.length, 1)],
+            minDimensions: [dayCount + 1, Math.max(rowDefs.length, 1)],
         };
         if (isMonth && payload.month_label) {
             worksheetConfig.nestedHeaders = [[
@@ -439,8 +503,9 @@ export function bind(root, wire) {
         const instances = jspreadsheet(grid, {
             worksheets: [worksheetConfig],
             contextMenu: () => false,
-            onbeforechange: (_instance, _cell, x, _y, value) => {
-                if (Number(x) === 0) {
+            onbeforechange: (_instance, _cell, x, y, value) => {
+                const rowDef = gridRowDefs(payload)[Number(y)];
+                if (rowDef?.type === 'section' || Number(x) === 0) {
                     return false;
                 }
                 value = cellText(value);
@@ -457,14 +522,17 @@ export function bind(root, wire) {
                 .map((line) => line.slice(0, dayCount).map((value) => formatCellDisplay(value))),
             onafterchanges: (instance) => {
                 applyCellClasses(instance, payload);
+                applySectionRowStyles(instance, payload);
             },
             onload: (instance) => {
                 applyCellClasses(instance, payload);
+                applySectionRowStyles(instance, payload);
             },
         });
 
         worksheet = Array.isArray(instances) ? instances[0] : instances;
         applyCellClasses(worksheet, payload);
+        applySectionRowStyles(worksheet, payload);
         if (isMonth) {
             requestAnimationFrame(() => fitMonthColumns(worksheet, grid, dayCount));
         }

@@ -1570,6 +1570,10 @@
                     "text": "Digita un <strong>codice</strong> della legenda o un orario <strong>07:00-15:00</strong>. Facoltativamente un gruppo nella stessa cella: <strong>D1/G1</strong> o <strong>07:00-12:00/G1</strong> (lo spazio è ammesso). Le celle non valide hanno un <strong>bordo rosso</strong>: correggile prima di salvare. Se un codice gruppo è presente in più sedi, scegli un filtro sede."
                 },
                 {
+                    "label": "Gruppi",
+                    "text": "Scegli prima un <strong>filtro sede</strong>. Poi spunta i <strong>gruppi</strong> (codici turno) e <strong>Senza gruppo</strong>. Gli esecutori compaiono sotto intestazioni di sezione. Il gruppo predefinito si imposta sull’esecutore; il posto in una cella (D1/G1) resta separato."
+                },
+                {
                     "label": "Salva e pubblica",
                     "text": "Salva conserva la settimana o il mese visibile. <strong>Pubblica</strong> rende il periodo visibile sul Clock Point (Il mio turno) e imposta un badge. Le modifiche dopo la pubblicazione restano pubblicate."
                 },

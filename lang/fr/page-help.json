@@ -1578,6 +1578,10 @@
                     "text": "Saisissez un <strong>code</strong> de la légende ou une heure <strong>07:00-15:00</strong>. Ajoutez éventuellement un groupe dans la même cellule : <strong>D1/G1</strong> ou <strong>07:00-12:00/G1</strong> (espace autorisé). Les cellules invalides ont une <strong>bordure rouge</strong> — corrigez-les avant d’enregistrer. Si un code de groupe existe sur plusieurs sites, choisissez un filtre de site."
                 },
                 {
+                    "label": "Groupes",
+                    "text": "Choisissez d’abord un <strong>filtre de site</strong>. Cochez ensuite les <strong>groupes</strong> (codes planning) et <strong>Sans groupe</strong>. Les exécutants apparaissent sous des en-têtes de section. Le groupe par défaut se règle sur l’exécutant ; le lieu dans une cellule (D1/G1) reste séparé."
+                },
+                {
                     "label": "Enregistrer et publier",
                     "text": "Enregistrer conserve la semaine ou le mois visible. <strong>Publier</strong> rend la période visible sur le Clock Point (Mon planning) et pose un badge. Les corrections après publication restent publiées."
                 },

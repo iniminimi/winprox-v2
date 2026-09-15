@@ -42,6 +42,7 @@ use App\Http\Requests\Units\SaveUnitCheckListRequest;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\UnitCheckList;
 use App\Models\User;
 use App\Models\Worker;
@@ -140,6 +141,8 @@ class Team extends Component
 
     /** @var list<int> */
     public array $selectedWorkerLocationIds = [];
+
+    public ?int $workerDefaultUnitId = null;
 
     // Worker bewerken/aanmaken (modal)
     public bool $showWorkerModal = false;
@@ -730,8 +733,8 @@ class Team extends Component
 
         $this->editingWorkerId = null;
         $this->resetWorkerPhotoState();
-        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerPhoto']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto']);
         $this->showWorkerModal = true;
     }
 
@@ -769,12 +772,19 @@ class Team extends Component
                 'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                 'company_name' => $validated['workerCompanyName'] ?? null,
                 'location_ids' => $this->selectedWorkerLocationIds,
+                'default_unit_id' => $validated['workerDefaultUnitId'] ?? null,
             ];
             if ($presenceComplianceEnabled) {
                 $payload['ssin'] = preg_replace('/\D+/', '', (string) ($validated['workerSsin'] ?? '')) ?: null;
             }
 
-            $worker = $updateWorker->handle($worker, $payload, (int) auth()->id());
+            try {
+                $worker = $updateWorker->handle($worker, $payload, (int) auth()->id());
+            } catch (\Illuminate\Validation\ValidationException $e) {
+                $this->mapWorkerDefaultUnitErrors($e);
+
+                return;
+            }
 
             $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
         } else {
@@ -797,6 +807,7 @@ class Team extends Component
                     'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                     'company_name' => $validated['workerCompanyName'] ?? null,
                     'location_ids' => $this->selectedWorkerLocationIds,
+                    'default_unit_id' => $validated['workerDefaultUnitId'] ?? null,
                 ];
                 if ($presenceComplianceEnabled) {
                     $payload['ssin'] = preg_replace('/\D+/', '', (string) ($validated['workerSsin'] ?? '')) ?: null;
@@ -811,6 +822,10 @@ class Team extends Component
                 }
 
                 throw $e;
+            } catch (\Illuminate\Validation\ValidationException $e) {
+                $this->mapWorkerDefaultUnitErrors($e);
+
+                return;
             }
 
             $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
@@ -818,6 +833,18 @@ class Team extends Component
 
         $this->cancelWorkerModal();
         $this->dispatch('saved');
+    }
+
+    private function mapWorkerDefaultUnitErrors(\Illuminate\Validation\ValidationException $e): void
+    {
+        $messages = $e->errors()['default_unit_id'] ?? null;
+        if (is_array($messages) && $messages !== []) {
+            $this->addError('workerDefaultUnitId', (string) $messages[0]);
+
+            return;
+        }
+
+        throw $e;
     }
 
     /**
@@ -834,6 +861,7 @@ class Team extends Component
             'workerIsExternal' => $requestRules['is_external'],
             'workerCompanyName' => $requestRules['company_name'],
             'workerPhoto' => $requestRules['photo'],
+            'workerDefaultUnitId' => $requestRules['default_unit_id'],
         ];
 
         if ($presenceComplianceEnabled) {
@@ -858,6 +886,7 @@ class Team extends Component
             'workerPhoto.image' => __('team.errors.worker_photo_invalid'),
             'workerPhoto.mimes' => __('team.errors.worker_photo_invalid'),
             'workerPhoto.max' => __('team.errors.worker_photo_max'),
+            'workerDefaultUnitId.integer' => __('team.errors.worker_default_unit_invalid'),
         ];
 
         if ($presenceComplianceEnabled) {
@@ -912,6 +941,7 @@ class Team extends Component
         $this->workerCompanyName = $worker->company_name ?? '';
         $this->workerSsin = $worker->ssin ?? '';
         $this->selectedWorkerLocationIds = $worker->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
+        $this->workerDefaultUnitId = $worker->default_unit_id !== null ? (int) $worker->default_unit_id : null;
         $this->resetWorkerPhotoState();
         $this->existingWorkerPhotoUrl = $worker->photoPublicUrl();
         $this->showWorkerModal = true;
@@ -931,11 +961,39 @@ class Team extends Component
             'workerCompanyName',
             'workerSsin',
             'selectedWorkerLocationIds',
+            'workerDefaultUnitId',
             'workerPhoto',
             'removeWorkerPhoto',
             'existingWorkerPhotoUrl',
         ]);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerPhoto']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto']);
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection<int, Unit>
+     */
+    public function availableWorkerDefaultUnits()
+    {
+        $query = Unit::query()
+            ->with('location:id,name')
+            ->where('is_active', true)
+            ->whereNotNull('roster_code')
+            ->where('roster_code', '!=', '')
+            ->orderBy('roster_code');
+
+        $teamId = $this->addingWorkerTeamId ?? $this->editingWorkerRecord()?->internal_team_id;
+        $team = $teamId !== null ? InternalTeam::query()->find($teamId) : null;
+        $clocksAll = $team !== null && (bool) $team->clocks_all_locations;
+
+        if (! $clocksAll) {
+            $locationIds = array_values(array_map('intval', $this->selectedWorkerLocationIds));
+            if ($locationIds === []) {
+                return collect();
+            }
+            $query->whereIn('location_id', $locationIds);
+        }
+
+        return $query->get(['id', 'name', 'roster_code', 'location_id']);
     }
 
     private function resetWorkerPhotoState(): void
@@ -1633,6 +1691,7 @@ class Team extends Component
                     ->get(['id', 'name', 'original_language']),
             'checkListStarters' => $isBackoffice ? [] : config('unit_check_starters', []),
             'allLocations' => Location::query()->orderBy('name')->get(['id', 'name', 'address']),
+            'workerDefaultUnits' => $this->showWorkerModal ? $this->availableWorkerDefaultUnits() : collect(),
             'punchClockTeams' => InternalTeam::query()
                 ->where('is_active', true)
                 ->orderBy('sort_order')
