@@ -4957,7 +4957,7 @@ svg.wp-release-worker-row__icon,
 }
 
 .wp-time-roster-toolbar__form {
-    gap: 0;
+    gap: 0.75rem;
 }
 
 .wp-time-roster-toolbar__bar {
@@ -5771,7 +5771,11 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 .wp-time-roster-groups {
-    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    width: 100%;
 }
 
 .wp-roster-sheet .jss_container,
