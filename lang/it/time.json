@@ -448,7 +448,11 @@
             "deviation": "Timbrato fuori dalla fascia prevista",
             "unplanned": "Timbrato senza piano (o durante un'assenza)",
             "ok": "Corrisponde alla pianificazione"
-        }
+        },
+        "nav_prev": "Precedente",
+        "nav_next": "Successivo",
+        "week_current": "Settimana attuale (:number)",
+        "week_numbered": "Settimana (:number)"
     },
     "shift_types": {
         "title": "Tipi di turno",

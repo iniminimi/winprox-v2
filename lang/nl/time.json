@@ -448,7 +448,11 @@
             "deviation": "Geklokt buiten het geplande venster",
             "unplanned": "Geklokt zonder (of tijdens) afwezigheid",
             "ok": "Komt overeen met de planning"
-        }
+        },
+        "nav_prev": "Vorige",
+        "nav_next": "Volgende",
+        "week_current": "Huidige week (:number)",
+        "week_numbered": "Week (:number)"
     },
     "shift_types": {
         "title": "Shiftypes",

@@ -448,7 +448,11 @@
             "deviation": "Fichado fuera de la franja prevista",
             "unplanned": "Fichado sin plan (o durante una ausencia)",
             "ok": "Coincide con lo planificado"
-        }
+        },
+        "nav_prev": "Anterior",
+        "nav_next": "Siguiente",
+        "week_current": "Semana actual (:number)",
+        "week_numbered": "Semana (:number)"
     },
     "shift_types": {
         "title": "Tipos de turno",

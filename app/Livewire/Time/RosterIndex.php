@@ -269,15 +269,13 @@ class RosterIndex extends Component
             return $snapshot->monthLabel;
         }
 
-        $locale = app()->getLocale();
-        $start = Carbon::parse($snapshot->weekStart)->locale($locale);
-        $end = Carbon::parse($snapshot->weekEnd)->locale($locale);
+        $start = Carbon::parse($snapshot->weekStart)->startOfWeek(Carbon::MONDAY);
+        $number = $start->isoWeek();
+        $isCurrent = $start->isSameWeek(now(), Carbon::MONDAY);
 
-        if ($start->year === $end->year) {
-            return $start->translatedFormat('j M').' – '.$end->translatedFormat('j M Y');
-        }
-
-        return $start->translatedFormat('j M Y').' – '.$end->translatedFormat('j M Y');
+        return $isCurrent
+            ? __('time.schedule.week_current', ['number' => $number])
+            : __('time.schedule.week_numbered', ['number' => $number]);
     }
 
     private function normalizeView(): void

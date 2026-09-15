@@ -264,7 +264,10 @@ it('opent het uurrooster voor een admin', function () {
         ->assertOk()
         ->assertSee('wp-roster-sheet', false)
         ->assertSee('data-wp-roster-legend', false)
-        ->assertDontSee('id="schedule-type"', false);
+        ->assertSee(__('time.schedule.nav_prev'), false)
+        ->assertSee(__('time.schedule.week_current', ['number' => now()->startOfWeek(Carbon::MONDAY)->isoWeek()]), false)
+        ->assertDontSee('id="schedule-type"', false)
+        ->assertDontSee('<label class="wp-filter-inline-label" for="schedule-team">', false);
 
     $this->actingAs($admin)
         ->get(route('time.shift-types.index'))
@@ -318,7 +321,8 @@ it('toont een maandoverzicht met dagnummers', function () {
         ->assertOk()
         ->assertSee(__('time.schedule.view_month'), false)
         ->assertSee('wp-roster-page--month', false)
-        ->assertSee('wp-roster-month', false);
+        ->assertSee('wp-roster-month', false)
+        ->assertSee(__('time.schedule.nav_next'), false);
 
     $snapshot = app(ListRosterWeekAction::class)->handle(
         (int) $tenant->id,

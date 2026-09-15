@@ -31,8 +31,7 @@
                         </div>
                     </div>
                     <div class="wp-filter-cell">
-                        <label class="wp-filter-inline-label" for="schedule-team">{{ __('time.filters.team') }}</label>
-                        <select id="schedule-team" class="wp-select" wire:model.live="teamFilter">
+                        <select id="schedule-team" class="wp-select" wire:model.live="teamFilter" aria-label="{{ __('time.filters.team') }}">
                             <option value="">{{ __('time.filters.all_teams') }}</option>
                             @foreach ($teams as $team)
                                 <option value="{{ $team['id'] }}">{{ $team['name'] }}</option>
@@ -40,13 +39,13 @@
                         </select>
                     </div>
                     <div class="wp-filter-cell">
-                        <span class="wp-filter-inline-label">{{ $isMonth ? __('time.schedule.month') : __('time.schedule.week') }}</span>
-                        <span class="wp-muted">{{ $weekLabel }}</span>
-                        <div class="wp-cluster wp-cluster--tight">
-                            <button type="button" class="wp-pagination__control" wire:click="previousWeek">{{ $isMonth ? __('time.schedule.prev_month') : __('time.schedule.prev_week') }}</button>
-                            <button type="button" class="wp-pagination__control" wire:click="thisWeek">{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}</button>
-                            <button type="button" class="wp-pagination__control" wire:click="nextWeek">{{ $isMonth ? __('time.schedule.next_month') : __('time.schedule.next_week') }}</button>
-                        </div>
+                        <nav class="wp-pagination" aria-label="{{ $isMonth ? __('time.schedule.month') : __('time.schedule.week') }}">
+                            <div class="wp-pagination__pages">
+                                <button type="button" class="wp-pagination__control" wire:click="previousWeek" aria-label="{{ $isMonth ? __('time.schedule.prev_month') : __('time.schedule.prev_week') }}">{{ __('time.schedule.nav_prev') }}</button>
+                                <button type="button" class="wp-pagination__page is-active" wire:click="thisWeek" aria-label="{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}">{{ $weekLabel }}</button>
+                                <button type="button" class="wp-pagination__control" wire:click="nextWeek" aria-label="{{ $isMonth ? __('time.schedule.next_month') : __('time.schedule.next_week') }}">{{ __('time.schedule.nav_next') }}</button>
+                            </div>
+                        </nav>
                     </div>
                 </div>
                 <div class="wp-filter-form__actions">

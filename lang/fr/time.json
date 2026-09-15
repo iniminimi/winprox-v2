@@ -448,7 +448,11 @@
             "deviation": "Pointé hors de la plage prévue",
             "unplanned": "Pointé sans planning (ou pendant une absence)",
             "ok": "Correspond au planning"
-        }
+        },
+        "nav_prev": "Précédent",
+        "nav_next": "Suivant",
+        "week_current": "Semaine actuelle (:number)",
+        "week_numbered": "Semaine (:number)"
     },
     "shift_types": {
         "title": "Types de service",

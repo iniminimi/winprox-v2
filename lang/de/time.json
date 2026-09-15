@@ -448,7 +448,11 @@
             "deviation": "Außerhalb des geplanten Fensters gestempelt",
             "unplanned": "Gestempelt ohne Plan (oder während Abwesenheit)",
             "ok": "Stimmt mit der Planung überein"
-        }
+        },
+        "nav_prev": "Zurück",
+        "nav_next": "Weiter",
+        "week_current": "Aktuelle Woche (:number)",
+        "week_numbered": "Woche (:number)"
     },
     "shift_types": {
         "title": "Schichttypen",

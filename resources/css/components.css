@@ -4960,6 +4960,15 @@ svg.wp-release-worker-row__icon,
     min-width: 8rem;
 }
 
+.wp-time-roster-toolbar .wp-pagination {
+    margin-top: 0;
+}
+
+.wp-time-roster-toolbar .wp-pagination__page {
+    min-width: auto;
+    padding-inline: 0.75rem;
+}
+
 .wp-time-alarms-toolbar__form {
     gap: 0.625rem;
 }

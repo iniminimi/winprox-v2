@@ -448,7 +448,11 @@
             "deviation": "Clocked outside the planned window",
             "unplanned": "Clocked with no plan (or during absence)",
             "ok": "Matches the plan"
-        }
+        },
+        "nav_prev": "Previous",
+        "nav_next": "Next",
+        "week_current": "Current week (:number)",
+        "week_numbered": "Week (:number)"
     },
     "shift_types": {
         "title": "Shift types",
