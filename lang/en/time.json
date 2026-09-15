@@ -459,7 +459,9 @@
         "week_current": "Current week (:number)",
         "week_numbered": "Week (:number)",
         "weekends": "Weekends on",
-        "legend_units": "Groups"
+        "legend_units": "Groups",
+        "legend_button": "Legend",
+        "legend_title": "Roster legend"
     },
     "shift_types": {
         "title": "Shift types",

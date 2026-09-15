@@ -1579,7 +1579,7 @@
                 },
                 {
                     "label": "Tipos de turno",
-                    "text": "La <strong>leyenda</strong> muestra los códigos activos. Los tipos se gestionan en Time → <strong>Tipos de turno</strong> (suele ser una vez)."
+                    "text": "El botón <strong>Leyenda</strong> (junto a Publicar) abre códigos, ausencias y grupos. Los tipos se gestionan en Time → <strong>Tipos de turno</strong> (suele ser una vez)."
                 },
                 {
                     "label": "Ausencia",

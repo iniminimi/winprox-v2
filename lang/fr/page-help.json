@@ -1587,7 +1587,7 @@
                 },
                 {
                     "label": "Types de service",
-                    "text": "La <strong>légende</strong> montre les codes actifs. Les types se gèrent sous Time → <strong>Types de service</strong> (en général une fois)."
+                    "text": "Le bouton <strong>Légende</strong> (à côté de Publier) ouvre codes, absences et groupes. Les types se gèrent sous Time → <strong>Types de service</strong> (en général une fois)."
                 },
                 {
                     "label": "Absence",

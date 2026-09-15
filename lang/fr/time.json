@@ -459,7 +459,9 @@
         "week_current": "Semaine actuelle (:number)",
         "week_numbered": "Semaine (:number)",
         "weekends": "Week-ends activés",
-        "legend_units": "Groupes"
+        "legend_units": "Groupes",
+        "legend_button": "Légende",
+        "legend_title": "Légende du planning"
     },
     "shift_types": {
         "title": "Types de service",

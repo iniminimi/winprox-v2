@@ -51,6 +51,8 @@ class RosterIndex extends Component
     #[Url(as: 'weekends')]
     public bool $showWeekends = true;
 
+    public bool $showLegendModal = false;
+
     public function mount(ResolveRosterPeriodAction $resolvePeriod): void
     {
         $this->authorize('viewAny', PlannedShift::class);
@@ -64,6 +66,16 @@ class RosterIndex extends Component
             [$start] = $resolvePeriod->handle($this->weekStart, $this->period());
             $this->weekStart = $start->toDateString();
         }
+    }
+
+    public function openLegendModal(): void
+    {
+        $this->showLegendModal = true;
+    }
+
+    public function closeLegendModal(): void
+    {
+        $this->showLegendModal = false;
     }
 
     public function setView(string $view, ResolveRosterPeriodAction $resolvePeriod): void

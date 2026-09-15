@@ -142,6 +142,7 @@ class ListRosterWeekAction
                 'name' => $unit->name,
                 'location_id' => $unit->location_id,
             ])
+            ->unique('id')
             ->values()
             ->all();
 

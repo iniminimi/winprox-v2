@@ -1579,7 +1579,7 @@
                 },
                 {
                     "label": "Tipi di turno",
-                    "text": "La <strong>legenda</strong> mostra i codici attivi. I tipi si gestiscono in Time → <strong>Tipi di turno</strong> (di solito una volta)."
+                    "text": "Il pulsante <strong>Legenda</strong> (accanto a Pubblica) apre codici, assenze e gruppi. I tipi si gestiscono in Time → <strong>Tipi di turno</strong> (di solito una volta)."
                 },
                 {
                     "label": "Assenza",

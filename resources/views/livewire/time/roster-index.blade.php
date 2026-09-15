@@ -74,52 +74,10 @@
                     @can('publish', \App\Models\PlannedShift::class)
                         <button type="button" class="btn btn--primary btn--sm" data-wp-roster-publish data-confirm="{{ $isMonth ? __('time.schedule.publish_confirm_month') : __('time.schedule.publish_confirm') }}">{{ __('time.schedule.publish') }}</button>
                     @endcan
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openLegendModal">{{ __('time.schedule.legend_button') }}</button>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="wp-roster-legend" data-wp-roster-legend>
-        <span class="wp-filter-inline-label">{{ __('time.schedule.legend') }}</span>
-        @php
-            $workLegend = collect($legendTypes)->filter(fn ($type) => $type->kind->isWork());
-            $absenceLegend = collect($legendTypes)->filter(fn ($type) => $type->kind->isAbsence());
-        @endphp
-        @forelse ($workLegend as $type)
-            <span class="wp-roster-legend__item">
-                <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
-                <strong>{{ $type->code }}</strong>
-                <span class="wp-muted">{{ $type->start_time }}–{{ $type->end_time }}</span>
-            </span>
-        @empty
-            @if ($absenceLegend->isEmpty())
-                <p class="wp-muted">
-                    {{ __('time.schedule.legend_empty') }}
-                    @can('viewAny', \App\Models\ShiftType::class)
-                        <a href="{{ route('time.shift-types.index') }}">{{ __('time.nav.shift_types') }}</a>
-                    @endcan
-                </p>
-            @endif
-        @endforelse
-        @if ($absenceLegend->isNotEmpty())
-            <span class="wp-filter-inline-label">{{ __('time.schedule.legend_absence') }}</span>
-            @foreach ($absenceLegend as $type)
-                <span class="wp-roster-legend__item">
-                    <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
-                    <strong>{{ $type->code }}</strong>
-                    <span class="wp-muted">{{ __('time.schedule.types.kinds.'.$type->kind->value) }}</span>
-                </span>
-            @endforeach
-        @endif
-        @if ($snapshot->units !== [])
-            <span class="wp-filter-inline-label">{{ __('time.schedule.legend_units') }}</span>
-            @foreach ($snapshot->units as $unit)
-                <span class="wp-roster-legend__item">
-                    <strong>{{ $unit['code'] }}</strong>
-                    <span class="wp-muted">{{ $unit['name'] }}</span>
-                </span>
-            @endforeach
-        @endif
     </div>
 
     <div @class(['wp-card', 'wp-card-pad', 'wp-roster-month' => $isMonth])>
@@ -129,4 +87,83 @@
         <p class="wp-flash wp-flash--danger" data-wp-roster-banner hidden></p>
         <div class="wp-roster-sheet" data-wp-roster-grid wire:ignore></div>
     </div>
+
+    @if ($showLegendModal)
+        @php
+            $workLegend = collect($legendTypes)->filter(fn ($type) => $type->kind->isWork());
+            $absenceLegend = collect($legendTypes)->filter(fn ($type) => $type->kind->isAbsence());
+            $unitLegend = collect($snapshot->units)->unique('id')->values();
+        @endphp
+        <x-wp-modal closeMethod="closeLegendModal" aria-labelledby="roster-legend-title">
+            <div class="wp-stack">
+                <div class="wp-cluster wp-cluster--between">
+                    <h2 id="roster-legend-title" class="wp-section-title">{{ __('time.schedule.legend_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeLegendModal" />
+                </div>
+
+                <div class="wp-roster-legend-modal">
+                    <section class="wp-roster-legend-modal__section">
+                        <h3 class="wp-roster-legend-modal__heading">{{ __('time.schedule.legend') }}</h3>
+                        @if ($workLegend->isEmpty() && $absenceLegend->isEmpty())
+                            <p class="wp-muted">
+                                {{ __('time.schedule.legend_empty') }}
+                                @can('viewAny', \App\Models\ShiftType::class)
+                                    <a href="{{ route('time.shift-types.index') }}">{{ __('time.nav.shift_types') }}</a>
+                                @endcan
+                            </p>
+                        @else
+                            <div class="wp-roster-legend-modal__grid">
+                                @foreach ($workLegend as $type)
+                                    <div class="wp-roster-legend-modal__item">
+                                        <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
+                                        <div class="wp-roster-legend-modal__text">
+                                            <strong>{{ $type->code }}</strong>
+                                            <span class="wp-muted">{{ $type->start_time }}–{{ $type->end_time }}</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    </section>
+
+                    @if ($absenceLegend->isNotEmpty())
+                        <section class="wp-roster-legend-modal__section">
+                            <h3 class="wp-roster-legend-modal__heading">{{ __('time.schedule.legend_absence') }}</h3>
+                            <div class="wp-roster-legend-modal__grid">
+                                @foreach ($absenceLegend as $type)
+                                    <div class="wp-roster-legend-modal__item">
+                                        <span class="wp-roster-color-preview {{ $type->color->hasFill() ? 'wp-roster-cell--'.$type->color->value : '' }}" aria-hidden="true"></span>
+                                        <div class="wp-roster-legend-modal__text">
+                                            <strong>{{ $type->code }}</strong>
+                                            <span class="wp-muted">{{ __('time.schedule.types.kinds.'.$type->kind->value) }}</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </section>
+                    @endif
+
+                    @if ($unitLegend->isNotEmpty())
+                        <section class="wp-roster-legend-modal__section">
+                            <h3 class="wp-roster-legend-modal__heading">{{ __('time.schedule.legend_units') }}</h3>
+                            <div class="wp-roster-legend-modal__grid">
+                                @foreach ($unitLegend as $unit)
+                                    <div class="wp-roster-legend-modal__item wp-roster-legend-modal__item--unit">
+                                        <div class="wp-roster-legend-modal__text">
+                                            <strong>{{ $unit['code'] }}</strong>
+                                            <span class="wp-muted">{{ $unit['name'] }}</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </section>
+                    @endif
+                </div>
+
+                <div class="wp-cluster wp-cluster--end">
+                    <button type="button" class="btn btn--ghost" wire:click="closeLegendModal">{{ __('common.button.close') }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
 </div>

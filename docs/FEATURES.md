@@ -733,8 +733,8 @@ Opslaan zonder weekends raakt za/zo niet. Maand toont altijd alle dagen.
   Na publiceren: `PublishWeekAction` → `NotifyWorkersRosterPublishedAction` →
   `CreateNotificationAction` (`roster_published`, `reference_id` = periode-start `Y-m-d`).
 - **Shiftypes:** eigen scherm onder Time (eenmalig instellen). `kind`: work / leave / recup / sick.
-  Afwezigheid: hele kalenderdag, geen uren, blokkeert werk die dag. Het uurrooster toont een
-  codelegende (werk vs afwezigheid). Ongeldige cellen: rode rand.
+  Afwezigheid: hele kalenderdag, geen uren, blokkeert werk die dag. Codelegende (werk /
+  afwezigheid / groepen) via knop **Legende** (modal naast Publiceren). Ongeldige cellen: rode rand.
 - **Plek (groep/unit):** optioneel in dezelfde cel: `D1/G1` of `07:00-12:00/G1` (spatie mag;
   canonical `/`). In de grid: **groep op de regel onder de dienstcode**, kleiner lettertype.
   Opslaan blijft `D1/G1`. `units.roster_code` uniek per locatie. Snapshot op `planned_shifts`

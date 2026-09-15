@@ -5658,6 +5658,60 @@ a.wp-kpi.wp-kpi--attention {
     flex-basis: 0.85rem;
 }
 
+.wp-roster-legend-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.wp-roster-legend-modal__section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.wp-roster-legend-modal__heading {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--wp-text);
+}
+
+.wp-roster-legend-modal__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+    gap: 0.45rem 0.75rem;
+}
+
+.wp-roster-legend-modal__item {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-width: 0;
+}
+
+.wp-roster-legend-modal__item--unit {
+    padding-left: 0.15rem;
+}
+
+.wp-roster-legend-modal__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+    min-width: 0;
+    line-height: 1.2;
+}
+
+.wp-roster-legend-modal__text .wp-muted {
+    font-size: 0.75rem;
+}
+
+.wp-roster-legend-modal .wp-roster-color-preview {
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 1rem;
+}
+
 .wp-roster-color-preview {
     width: 1.75rem;
     height: 1.75rem;

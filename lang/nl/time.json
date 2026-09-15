@@ -459,7 +459,9 @@
         "week_current": "Huidige week (:number)",
         "week_numbered": "Week (:number)",
         "weekends": "Weekends aan",
-        "legend_units": "Groepen"
+        "legend_units": "Groepen",
+        "legend_button": "Legende",
+        "legend_title": "Legende uurrooster"
     },
     "shift_types": {
         "title": "Shiftypes",

@@ -459,7 +459,9 @@
         "week_current": "Semana actual (:number)",
         "week_numbered": "Semana (:number)",
         "weekends": "Fines de semana",
-        "legend_units": "Grupos"
+        "legend_units": "Grupos",
+        "legend_button": "Leyenda",
+        "legend_title": "Leyenda del horario"
     },
     "shift_types": {
         "title": "Tipos de turno",

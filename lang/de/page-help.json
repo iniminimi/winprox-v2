@@ -1579,7 +1579,7 @@
                 },
                 {
                     "label": "Schichttypen",
-                    "text": "Die <strong>Legende</strong> zeigt die aktiven Codes. Typen verwalten Sie unter Time → <strong>Schichttypen</strong> (meist einmal)."
+                    "text": "Über die Schaltfläche <strong>Legende</strong> (neben Veröffentlichen) sehen Sie Codes, Abwesenheiten und Gruppen. Typen verwalten Sie unter Time → <strong>Schichttypen</strong> (meist einmal)."
                 },
                 {
                     "label": "Abwesenheit",

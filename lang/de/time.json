@@ -459,7 +459,9 @@
         "week_current": "Aktuelle Woche (:number)",
         "week_numbered": "Woche (:number)",
         "weekends": "Wochenenden an",
-        "legend_units": "Gruppen"
+        "legend_units": "Gruppen",
+        "legend_button": "Legende",
+        "legend_title": "Dienstplan-Legende"
     },
     "shift_types": {
         "title": "Schichttypen",

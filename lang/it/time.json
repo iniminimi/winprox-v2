@@ -459,7 +459,9 @@
         "week_current": "Settimana attuale (:number)",
         "week_numbered": "Settimana (:number)",
         "weekends": "Fine settimana attivi",
-        "legend_units": "Gruppi"
+        "legend_units": "Gruppi",
+        "legend_button": "Legenda",
+        "legend_title": "Legenda turni"
     },
     "shift_types": {
         "title": "Tipi di turno",

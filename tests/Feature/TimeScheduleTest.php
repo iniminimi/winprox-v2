@@ -273,7 +273,7 @@ it('opent het uurrooster voor een admin', function () {
         ->get(route('time.schedule.index'))
         ->assertOk()
         ->assertSee('wp-roster-sheet', false)
-        ->assertSee('data-wp-roster-legend', false)
+        ->assertSee(__('time.schedule.legend_button'), false)
         ->assertSee(__('time.schedule.nav_prev'), false)
         ->assertSee(__('time.schedule.week_current', ['number' => now()->startOfWeek(Carbon::MONDAY)->isoWeek()]), false)
         ->assertSee(__('time.schedule.weekends'), false)

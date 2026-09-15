@@ -1579,7 +1579,7 @@
                 },
                 {
                     "label": "Shift types",
-                    "text": "The <strong>legend</strong> shows active codes. Manage types under Time → <strong>Shift types</strong> (usually once)."
+                    "text": "Use the <strong>Legend</strong> button (next to Publish) for codes, absences and groups. Manage types under Time → <strong>Shift types</strong> (usually once)."
                 },
                 {
                     "label": "Absence",
