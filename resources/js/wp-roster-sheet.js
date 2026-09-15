@@ -432,11 +432,11 @@ function applySectionRowStyles(worksheet, payload) {
             ?? null;
         if (tr) {
             tr.classList.toggle('wp-roster-row--section', isSection);
-            const indexTd = tr.querySelector('td.jss_row');
+            const indexTd = tr.children[0];
             if (indexTd) {
+                indexTd.classList.toggle('wp-roster-row--section', isSection);
                 if (isSection) {
                     indexTd.textContent = '\u00a0';
-                    indexTd.classList.add('wp-roster-row--section');
                 } else {
                     personNo += 1;
                     indexTd.textContent = String(personNo);

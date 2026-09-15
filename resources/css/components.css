@@ -5751,6 +5751,7 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 .wp-roster-sheet .jss_worksheet > tbody > tr.wp-roster-row--section > td,
+.wp-roster-sheet .jss_worksheet > tbody > tr:has(> td.wp-roster-row--section) > td,
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-row--section {
     background: color-mix(in srgb, var(--wp-accent) 28%, var(--wp-surface) 72%) !important;
     font-weight: 600;
@@ -5758,12 +5759,17 @@ a.wp-kpi.wp-kpi--attention {
     text-align: left !important;
     pointer-events: none;
     border-top: 2px solid var(--wp-text) !important;
+    box-shadow: inset 0 2px 0 0 var(--wp-text);
 }
 
-.wp-roster-sheet .jss_worksheet > tbody > tr.wp-roster-row--section > td.jss_row {
+.wp-roster-sheet .jss_worksheet > tbody > tr.wp-roster-row--section > td.jss_row,
+.wp-roster-sheet .jss_worksheet > tbody > tr:has(> td.wp-roster-row--section) > td:first-child {
     color: transparent !important;
     font-size: 0 !important;
     user-select: none;
+    border-top: 2px solid var(--wp-text) !important;
+    box-shadow: inset 0 2px 0 0 var(--wp-text);
+    background: color-mix(in srgb, var(--wp-accent) 28%, var(--wp-surface) 72%) !important;
 }
 
 .wp-time-roster-groups {
