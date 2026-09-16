@@ -2724,6 +2724,10 @@
     padding: clamp(1.5rem, 4vh, 2.5rem) 1.5rem 2.5rem;
 }
 
+[data-theme='standard'] .wp-welcome-hero--minimal .wp-welcome-main {
+    max-width: 60rem;
+}
+
 [data-theme='standard'] .wp-welcome-hero-minimal__photo-frame {
     position: relative;
     display: flex;
@@ -2752,7 +2756,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 82% center;
+    object-position: 88% center;
 }
 
 [data-theme='standard'] .wp-welcome-hero-minimal {
@@ -2817,8 +2821,8 @@
 }
 
 [data-theme='standard'] .wp-welcome-hero-flow__icon .wp-icon {
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 1.75rem;
+    height: 1.75rem;
 }
 
 [data-theme='standard'] .wp-welcome-hero-flow__label {
