@@ -638,6 +638,7 @@ export function bind(root, wire) {
                 title: payload.name_column || 'Name',
                 width: isMonth ? 168 : 180,
                 readOnly: true,
+                align: 'left',
             },
             ...payload.dates.map((_date, index) => ({
                 type: 'text',
@@ -715,10 +716,12 @@ export function bind(root, wire) {
 
         worksheet = Array.isArray(instances) ? instances[0] : instances;
         paint(worksheet, { lockSections: true });
+        shrinkRowHeader(grid);
         requestAnimationFrame(() => {
             if (worksheet) {
                 paint(worksheet);
             }
+            shrinkRowHeader(grid);
             if (isMonth) {
                 fitMonthColumns(worksheet, grid, dayCount);
                 requestAnimationFrame(() => worksheet && paint(worksheet));
@@ -726,13 +729,22 @@ export function bind(root, wire) {
         });
     };
 
+    const shrinkRowHeader = (host) => {
+        host.querySelectorAll('.jss_worksheet col:first-child').forEach((col) => {
+            col.setAttribute('width', '28');
+            col.style.width = '28px';
+        });
+    };
+
     const fitMonthColumns = (sheet, host, dayCount) => {
         if (!sheet || typeof sheet.setWidth !== 'function' || dayCount < 1) {
             return;
         }
+        shrinkRowHeader(host);
         const nameWidth = 168;
+        const rowHeaderWidth = 28;
         const total = Math.floor(host.clientWidth);
-        const dayWidth = Math.max(36, Math.floor((total - nameWidth) / dayCount));
+        const dayWidth = Math.max(36, Math.floor((total - nameWidth - rowHeaderWidth) / dayCount));
         sheet.setWidth(0, nameWidth);
         const dayIndexes = [];
         const dayWidths = [];

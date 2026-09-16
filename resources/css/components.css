@@ -5860,14 +5860,34 @@ a.wp-kpi.wp-kpi--attention {
     color: var(--wp-text-muted);
     font-size: 0.75rem;
     font-weight: 500;
+    width: 1.75rem !important;
+    min-width: 1.75rem !important;
+    max-width: 1.75rem !important;
+    padding-inline: 0.1rem;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.wp-roster-sheet .jss_worksheet col:first-child {
+    width: 1.75rem !important;
 }
 
 /* Naamkolom (na rijnummer) */
 .wp-roster-sheet .jss_worksheet > tbody > tr > td:nth-child(2),
-.wp-roster-sheet .jss_worksheet > thead > tr > td:nth-child(2) {
+.wp-roster-sheet .jss_worksheet td[data-x="0"] {
     color: var(--wp-text);
     font-weight: 500;
-    text-align: left;
+    text-align: left !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wp-roster-sheet .jss_worksheet > thead > tr > td:nth-child(2) {
+    color: var(--wp-text);
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: left !important;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -5934,8 +5954,14 @@ a.wp-kpi.wp-kpi--attention {
     padding: 0.2rem 0.08rem;
 }
 
+.wp-roster-sheet--month .jss_worksheet > thead > tr > td:nth-child(2) {
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: left !important;
+}
+
 .wp-roster-sheet--month .jss_worksheet > tbody > tr > td:nth-child(2) {
-    text-align: left;
+    text-align: left !important;
     font-size: 0.8125rem;
     font-weight: 500;
     color: var(--wp-text);
