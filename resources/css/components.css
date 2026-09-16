@@ -6328,8 +6328,8 @@ a.wp-kpi.wp-kpi--attention {
         border-width: 0 1px 1px 0;
         border-color: color-mix(in srgb, var(--wp-border) 50%, var(--wp-text) 50%);
         border-radius: 0 !important;
-        padding: 0.04rem 0.08rem;
-        line-height: 1.05;
+        padding: 0.12rem 0.12rem;
+        line-height: 1.2;
     }
 
     .wp-roster-print__table tr > :first-child {
@@ -6342,17 +6342,17 @@ a.wp-kpi.wp-kpi--attention {
 
     .wp-roster-print__table thead th {
         font-size: 0.5rem;
-        line-height: 1.05;
-        padding: 0.05rem 0.06rem;
+        line-height: 1.15;
+        padding: 0.1rem 0.1rem;
     }
 
     .wp-roster-print__table tbody th {
         font-size: 0.55rem;
-        padding: 0.04rem 0.12rem;
+        padding: 0.12rem 0.14rem;
     }
 
     .wp-roster-print__section td {
-        padding: 0.05rem 0.12rem;
+        padding: 0.1rem 0.14rem;
         font-size: 0.5rem;
     }
 
@@ -6362,7 +6362,7 @@ a.wp-kpi.wp-kpi--attention {
 
     .wp-roster-print__cell {
         font-size: 0.48rem;
-        line-height: 1.05;
+        line-height: 1.2;
     }
 }
 
