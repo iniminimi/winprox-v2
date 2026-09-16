@@ -82,7 +82,7 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->assertDontSee('images/landing/general/welcome_01.jpg', false)
         ->getContent();
 
-    expect($html)->toContain('video/nl/issue_nl_01.mp4');
+    expect($html)->toContain('video/welcome.mp4');
 
     expect(WelcomeVisit::query()->count())->toBe(1)
         ->and(WelcomeVisit::query()->first()?->utm_source)->toBe('promo')
@@ -90,15 +90,16 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->and(WelcomeVisit::query()->first()?->locale)->toBe('nl');
 });
 
-it('toont issue-video op welcome wanneer het bestand bestaat', function (string $locale) {
-    $rel = "video/{$locale}/issue_{$locale}_01.mp4";
+it('toont dezelfde welcome-video op alle talen wanneer het bestand bestaat', function (string $locale) {
+    $rel = 'video/welcome.mp4';
     if (! is_file(public_path($rel))) {
-        $this->markTestSkipped("Issue-video ontbreekt voor {$locale}.");
+        $this->markTestSkipped('Welcome-video ontbreekt.');
     }
 
     $this->get('/'.$locale.'/')
         ->assertOk()
-        ->assertSee($rel, false);
+        ->assertSee($rel, false)
+        ->assertDontSee("video/{$locale}/issue_{$locale}_01.mp4", false);
 })->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
 
 it('koppelt een welcome-bezoek aan een promo-bestemmeling via ref', function () {

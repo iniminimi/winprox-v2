@@ -1,6 +1,6 @@
 @php
     $locale = app()->getLocale();
-    $welcomeVideoRel = "video/{$locale}/issue_{$locale}_01.mp4";
+    $welcomeVideoRel = 'video/welcome.mp4';
     $welcomeVideoAvailable = is_file(public_path($welcomeVideoRel));
 @endphp
 <!DOCTYPE html>
@@ -71,8 +71,8 @@
     <section id="video" class="wp-welcome-video-section" aria-label="{{ __('welcome.video.title') }}">
         <div class="wp-welcome-main">
             @if ($welcomeVideoAvailable)
-                @include('partials.wp-locale-video', [
-                    'basename' => 'issue',
+                @include('partials.wp-video-player', [
+                    'src' => asset($welcomeVideoRel),
                     'title' => __('welcome.video.title'),
                 ])
             @else

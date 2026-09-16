@@ -1090,7 +1090,7 @@ App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
   WinProx · *Het werk op uw locatie, gewoon goed geregeld.* ·
   *Van melding en planning tot uitvoering en afhandeling.* · **Scan → Meld → Werk → Klaar**
   (met iconen) · CTA's **Gratis proberen** / **Bekijk hoe het werkt**.
-- **Video:** korte demo (`video/{locale}/issue_{locale}_01.mp4`) direct onder de hero.
+- **Video:** korte demo (`video/welcome.mp4`, alle talen) direct onder de hero.
 - **Footer:** productfiches, juridisch, contact.
 - **Facility, Time, ESG, IoT, CIAO** blijven in productfiches, pricing, sectorlandings en handleiding —
   niet op de homepage zelf.
