@@ -6195,7 +6195,7 @@ a.wp-kpi.wp-kpi--attention {
 
 .wp-roster-print__table th,
 .wp-roster-print__table td {
-    border: 1px solid var(--wp-border);
+    border: 1px solid color-mix(in srgb, var(--wp-border) 50%, var(--wp-text) 50%);
     padding: 0.15rem 0.2rem;
     text-align: center;
     vertical-align: middle;
@@ -6282,6 +6282,7 @@ a.wp-kpi.wp-kpi--attention {
     .wp-roster-print__table th,
     .wp-roster-print__table td {
         border-width: 0 1px 1px 0;
+        border-color: color-mix(in srgb, var(--wp-border) 50%, var(--wp-text) 50%);
     }
 
     .wp-roster-print__table tr > :first-child {
