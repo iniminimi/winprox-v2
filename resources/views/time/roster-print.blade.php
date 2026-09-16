@@ -18,7 +18,7 @@
         @media print {
             @page {
                 size: A4 landscape;
-                margin: 0.8cm;
+                margin: 0.45cm;
             }
 
             .wp-roster-print,
