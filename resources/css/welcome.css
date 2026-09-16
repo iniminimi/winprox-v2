@@ -2721,25 +2721,44 @@
 /* Minimal welcome (hero + video) */
 [data-theme='standard'] .wp-welcome-hero--minimal {
     --wp-welcome-hero-panel-fill: #e6dccf;
-    padding: clamp(1.75rem, 5vh, 3rem) 1.5rem 2.5rem;
+    padding: clamp(1.5rem, 4vh, 2.5rem) 1.5rem 2.5rem;
 }
 
-[data-theme='standard'] .wp-welcome-hero-minimal-row {
-    display: grid;
-    gap: 1.25rem;
-    align-items: stretch;
-    width: 100%;
+[data-theme='standard'] .wp-welcome-hero-minimal__photo-frame {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    min-height: min(32rem, calc(100svh - 8rem));
+    padding: 1.25rem;
+    border-radius: var(--wp-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--wp-shadow-lg);
+    background: var(--wp-welcome-hero-panel-fill);
 }
 
-@media (min-width: 64rem) {
-    [data-theme='standard'] .wp-welcome-hero-minimal-row {
-        grid-template-columns: minmax(22rem, 32rem) minmax(0, 1fr);
-        gap: 1.5rem;
+@media (min-width: 48rem) {
+    [data-theme='standard'] .wp-welcome-hero-minimal__photo-frame {
+        padding: 1.75rem;
+        min-height: min(36rem, calc(100svh - 7rem));
     }
 }
 
-[data-theme='standard'] .wp-welcome-hero-minimal {
+[data-theme='standard'] .wp-welcome-hero-minimal__photo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 82% center;
+}
+
+[data-theme='standard'] .wp-welcome-hero-minimal {
+    position: relative;
+    z-index: 1;
+    width: min(32rem, 100%);
     margin: 0;
     text-align: center;
     padding: 1.75rem 1.25rem 2rem;
@@ -2752,34 +2771,6 @@
     [data-theme='standard'] .wp-welcome-hero-minimal {
         padding: 2.25rem 2rem 2.5rem;
     }
-}
-
-[data-theme='standard'] .wp-welcome-hero-minimal__photo-frame {
-    position: relative;
-    margin: 0;
-    min-height: 16rem;
-    height: 100%;
-    border-radius: var(--wp-radius-lg);
-    overflow: hidden;
-    box-shadow: var(--wp-shadow-lg);
-    background: var(--wp-welcome-hero-panel-fill);
-}
-
-@media (max-width: 63.99rem) {
-    [data-theme='standard'] .wp-welcome-hero-minimal__photo-frame {
-        height: 16rem;
-        max-height: 20rem;
-    }
-}
-
-[data-theme='standard'] .wp-welcome-hero-minimal__photo {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 78% center;
 }
 
 [data-theme='standard'] .wp-welcome-hero-flow {
