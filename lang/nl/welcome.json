@@ -23,6 +23,12 @@
         "headline": "Het werk op uw locatie, gewoon goed geregeld.",
         "subtitle": "Van melding en planning tot uitvoering en afhandeling.",
         "flow": "Scan → Meld → Werk → Klaar",
+        "flow_steps": {
+            "scan": "Scan",
+            "report": "Meld",
+            "work": "Werk",
+            "done": "Klaar"
+        },
         "cta_start": "Gratis proberen",
         "cta_how": "Bekijk hoe het werkt"
     },

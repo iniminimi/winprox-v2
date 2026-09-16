@@ -30,24 +30,40 @@
         @include('partials.wp-welcome-nav')
 
         <header class="wp-welcome-hero wp-welcome-hero--minimal">
-            <img
-                class="wp-welcome-hero-minimal__photo"
-                src="{{ asset('images/welcome/welcome_reception.jpg') }}"
-                alt=""
-                decoding="async"
-                fetchpriority="high"
-            >
-            <div class="wp-welcome-main">
+            <div class="wp-welcome-main wp-welcome-hero-minimal-row">
                 <div class="wp-welcome-hero-minimal">
                     <h1 class="wp-welcome-hero-minimal__brand">{{ __('welcome.hero.brand') }}</h1>
                     <p class="wp-welcome-hero-minimal__headline">{{ __('welcome.hero.headline') }}</p>
                     <p class="wp-welcome-hero-minimal__subtitle">{{ __('welcome.hero.subtitle') }}</p>
-                    <p class="wp-welcome-hero-minimal__flow">{{ __('welcome.hero.flow') }}</p>
+                    <ol class="wp-welcome-hero-flow" aria-label="{{ __('welcome.hero.flow') }}">
+                        @foreach ([
+                            ['icon' => 'qr', 'key' => 'scan'],
+                            ['icon' => 'alert-triangle', 'key' => 'report'],
+                            ['icon' => 'clipboard-check', 'key' => 'work'],
+                            ['icon' => 'check', 'key' => 'done'],
+                        ] as $step)
+                            <li class="wp-welcome-hero-flow__step">
+                                <span class="wp-welcome-hero-flow__icon" aria-hidden="true">
+                                    <x-wp-icon :name="$step['icon']" />
+                                </span>
+                                <span class="wp-welcome-hero-flow__label">{{ __('welcome.hero.flow_steps.'.$step['key']) }}</span>
+                            </li>
+                        @endforeach
+                    </ol>
                     <div class="wp-welcome-cta-row">
                         <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
                         <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_how') }}</a>
                     </div>
                 </div>
+                <figure class="wp-welcome-hero-minimal__photo-frame">
+                    <img
+                        class="wp-welcome-hero-minimal__photo"
+                        src="{{ asset('images/welcome/welcome_reception.jpg') }}"
+                        alt=""
+                        decoding="async"
+                        fetchpriority="high"
+                    >
+                </figure>
             </div>
         </header>
     </div>

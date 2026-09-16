@@ -69,6 +69,8 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->assertSee('images/welcome/welcome_reception.jpg', false)
         ->assertSee(__('welcome.hero.headline'))
         ->assertSee(__('welcome.hero.flow'))
+        ->assertSee(__('welcome.hero.flow_steps.scan'))
+        ->assertSee('wp-welcome-hero-flow', false)
         ->assertSee(__('welcome.nav.more'), false)
         ->assertSee(__('welcome.nav.pricing'), false)
         ->assertSee(__('landings.hospitality.nav_label'), false)

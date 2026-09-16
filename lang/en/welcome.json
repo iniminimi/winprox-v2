@@ -23,6 +23,12 @@
         "headline": "Work on your site, simply well organised.",
         "subtitle": "From reporting and planning to execution and completion.",
         "flow": "Scan → Report → Work → Done",
+        "flow_steps": {
+            "scan": "Scan",
+            "report": "Report",
+            "work": "Work",
+            "done": "Done"
+        },
         "cta_start": "Try for free",
         "cta_how": "See how it works"
     },

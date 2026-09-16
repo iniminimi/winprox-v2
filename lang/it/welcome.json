@@ -23,6 +23,12 @@
         "headline": "Il lavoro nella Sua sede, semplicemente ben organizzato.",
         "subtitle": "Dalla segnalazione e pianificazione all'esecuzione e alla chiusura.",
         "flow": "Scansiona → Segnala → Lavora → Fatto",
+        "flow_steps": {
+            "scan": "Scansiona",
+            "report": "Segnala",
+            "work": "Lavora",
+            "done": "Fatto"
+        },
         "cta_start": "Prova gratis",
         "cta_how": "Scopri come funziona"
     },

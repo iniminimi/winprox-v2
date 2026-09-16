@@ -23,6 +23,12 @@
         "headline": "Le travail sur votre site, simplement bien organisé.",
         "subtitle": "Du signalement et de la planification à l'exécution et au bouclage.",
         "flow": "Scan → Signaler → Travailler → Terminé",
+        "flow_steps": {
+            "scan": "Scan",
+            "report": "Signaler",
+            "work": "Travailler",
+            "done": "Terminé"
+        },
         "cta_start": "Essai gratuit",
         "cta_how": "Voir comment ça marche"
     },

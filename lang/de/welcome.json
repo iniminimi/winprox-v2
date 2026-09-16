@@ -23,6 +23,12 @@
         "headline": "Die Arbeit an Ihrem Standort, einfach gut geregelt.",
         "subtitle": "Von Meldung und Planung bis Ausführung und Abschluss.",
         "flow": "Scan → Melden → Arbeiten → Fertig",
+        "flow_steps": {
+            "scan": "Scan",
+            "report": "Melden",
+            "work": "Arbeiten",
+            "done": "Fertig"
+        },
         "cta_start": "Kostenlos testen",
         "cta_how": "So funktioniert es"
     },

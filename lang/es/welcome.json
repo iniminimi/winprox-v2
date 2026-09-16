@@ -23,6 +23,12 @@
         "headline": "El trabajo en su ubicación, simplemente bien organizado.",
         "subtitle": "Del aviso y la planificación a la ejecución y el cierre.",
         "flow": "Escanear → Informar → Trabajar → Listo",
+        "flow_steps": {
+            "scan": "Escanear",
+            "report": "Informar",
+            "work": "Trabajar",
+            "done": "Listo"
+        },
         "cta_start": "Probar gratis",
         "cta_how": "Ver cómo funciona"
     },
