@@ -66,6 +66,7 @@ it('logt welcome-bezoek via de publieke route', function () {
     $html = $this->get('/nl/?utm_source=promo&utm_campaign=wave-1')
         ->assertOk()
         ->assertSee('wp-welcome-hero--minimal', false)
+        ->assertSee('images/welcome/welcome_reception.jpg', false)
         ->assertSee(__('welcome.hero.headline'))
         ->assertSee(__('welcome.hero.flow'))
         ->assertSee(__('welcome.nav.more'), false)

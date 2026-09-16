@@ -18,6 +18,7 @@ it('toont de welcome-pagina voor gasten', function () {
         ->assertSee(__('welcome.hero.headline'))
         ->assertSee(__('welcome.hero.flow'))
         ->assertSee(__('welcome.hero.cta_how'))
+        ->assertSee('images/welcome/welcome_reception.jpg', false)
         ->assertSee('id="video"', false)
         ->assertDontSee('id="producten"', false)
         ->assertDontSee('id="platform"', false)

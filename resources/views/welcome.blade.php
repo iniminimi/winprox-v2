@@ -30,6 +30,13 @@
         @include('partials.wp-welcome-nav')
 
         <header class="wp-welcome-hero wp-welcome-hero--minimal">
+            <img
+                class="wp-welcome-hero-minimal__photo"
+                src="{{ asset('images/welcome/welcome_reception.jpg') }}"
+                alt=""
+                decoding="async"
+                fetchpriority="high"
+            >
             <div class="wp-welcome-main">
                 <div class="wp-welcome-hero-minimal">
                     <h1 class="wp-welcome-hero-minimal__brand">{{ __('welcome.hero.brand') }}</h1>
