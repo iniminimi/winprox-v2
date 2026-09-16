@@ -20,6 +20,15 @@
                 size: A4 landscape;
                 margin: 0.8cm;
             }
+
+            .wp-roster-print,
+            .wp-roster-print th,
+            .wp-roster-print td,
+            .wp-roster-print .wp-roster-color-preview {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
         }
     </style>
 

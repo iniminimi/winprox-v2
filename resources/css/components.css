@@ -6103,6 +6103,15 @@ a.wp-kpi.wp-kpi--attention {
     background: var(--wp-accent);
 }
 
+.wp-roster-print,
+.wp-roster-print th,
+.wp-roster-print td,
+.wp-roster-print .wp-roster-color-preview {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+}
+
 .wp-roster-print__head {
     align-items: center;
     gap: 0.75rem 1rem;
@@ -6265,6 +6274,22 @@ a.wp-kpi.wp-kpi--attention {
 
     .wp-roster-print__table {
         font-size: 0.65rem;
+        /* Chrome skips td backgrounds when border-collapse is collapse. */
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .wp-roster-print__table th,
+    .wp-roster-print__table td {
+        border-width: 0 1px 1px 0;
+    }
+
+    .wp-roster-print__table tr > :first-child {
+        border-left-width: 1px;
+    }
+
+    .wp-roster-print__table thead tr:first-child > * {
+        border-top-width: 1px;
     }
 
     .wp-roster-print__table col.wp-roster-print__name-col {
