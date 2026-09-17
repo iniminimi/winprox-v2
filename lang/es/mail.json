@@ -29,13 +29,7 @@
         "plain_link_label": "Cancelar suscripción"
     },
     "verify_email": {
-        "subject": ":tenant — nuevo espacio de trabajo",
-        "intro": "Hay un nuevo espacio de trabajo listo vía WinProx para :tenant.",
-        "field_organization": "Organización",
-        "field_description": "Descripción",
-        "description": "Gestionar ubicaciones, avisos y tareas.",
-        "cta": "Abrir espacio de trabajo",
-        "link_fallback": "Si el botón no funciona, copia este enlace:"
+        "description": "Seguir el mantenimiento y las tareas de las ubicaciones."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirma tu informe",

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
 /**
- * Verstuurt de welkomstmail met een korte numerieke dashboard-URL.
+ * Verstuurt de welkomstmail in dezelfde vorm als NewQrIssueMail (`/issues/{id}`).
  */
 class SendUserEmailVerificationAction
 {

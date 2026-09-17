@@ -29,13 +29,7 @@
         "plain_link_label": "Uitschrijven"
     },
     "verify_email": {
-        "subject": ":tenant — nieuwe werkruimte",
-        "intro": "Er is een nieuwe werkruimte klaar via WinProx voor :tenant.",
-        "field_organization": "Organisatie",
-        "field_description": "Omschrijving",
-        "description": "Locaties, meldingen en taken beheren.",
-        "cta": "Werkruimte openen",
-        "link_fallback": "Als de knop niet werkt, kopieer dan deze link:"
+        "description": "Onderhoud en taken opvolgen voor locaties."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — bevestig je melding",

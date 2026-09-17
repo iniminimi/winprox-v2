@@ -45,18 +45,18 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
             $html = $mail->render();
             $locale = (string) ($mail->locale ?: app()->getLocale());
 
-            $mail->assertHasSubject(trans('mail.verify_email.subject', ['tenant' => 'Nieuwe Facility'], $locale));
+            $mail->assertHasSubject(trans('mail.new_qr_issue.subject', ['tenant' => 'Nieuwe Facility'], $locale));
 
             expect($mail->hasTo('nieuw@winprox.test'))->toBeTrue()
-                ->and($url)->toMatch('#/dashboard/[0-9]{8}$#')
+                ->and($url)->toMatch('#/issues/[0-9]{8}$#')
                 ->and($url)->not->toContain('/email/verify')
                 ->and($url)->not->toContain('/welkom/')
+                ->and($url)->not->toContain('/dashboard/')
                 ->and($url)->not->toContain('/start/')
                 ->and($url)->not->toContain('signature=')
-                ->and($html)->toContain('/dashboard/')
-                ->and($html)->toContain(trans('mail.verify_email.field_organization', [], $locale))
-                ->and($html)->toContain(trans('mail.verify_email.field_description', [], $locale))
-                ->and($html)->toContain(trans('mail.verify_email.cta', [], $locale))
+                ->and($html)->toContain('/issues/')
+                ->and($html)->toContain(trans('mail.new_qr_issue.field_location', [], $locale))
+                ->and($html)->toContain(trans('mail.new_qr_issue.open_issue', [], $locale))
                 ->and($html)->not->toContain('nieuw@winprox.test')
                 ->and($html)->not->toContain('/email/verify')
                 ->and($html)->not->toContain('/welkom/')
@@ -244,8 +244,10 @@ it('weigert een ongeldige token-link', function () {
         ->assertRedirect(route('login'));
 });
 
-it('leidt oude welkom-links door naar de dashboard-token', function () {
+it('leidt oude welkom- en dashboard-links door naar de issues-token', function () {
     $this->get('/welkom/00000000')
+        ->assertRedirect(route('verification.start', ['token' => '00000000']));
+    $this->get('/dashboard/00000000')
         ->assertRedirect(route('verification.start', ['token' => '00000000']));
 });
 

@@ -144,10 +144,13 @@ Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.web
 
 Route::get('/q/{token}', QrController::class)->name('qr.scan');
 
-Route::get('/dashboard/{token}', ConfirmUserEmailController::class)
+Route::get('/issues/{token}', ConfirmUserEmailController::class)
     ->middleware('throttle:20,1')
     ->where('token', '[0-9]{8}')
     ->name('verification.start');
+Route::get('/dashboard/{token}', function (string $token) {
+    return redirect()->route('verification.start', ['token' => $token], 301);
+})->where('token', '[0-9]{8}');
 Route::get('/welkom/{token}', function (string $token) {
     return redirect()->route('verification.start', ['token' => $token], 301);
 })->where('token', '[0-9]{8}');

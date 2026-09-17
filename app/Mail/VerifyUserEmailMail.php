@@ -38,14 +38,18 @@ class VerifyUserEmailMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('mail.verify_email.subject', ['tenant' => $this->tenantName()]),
+            subject: __('mail.new_qr_issue.subject', ['tenant' => $this->tenantName()]),
         );
     }
 
     public function content(): Content
     {
         $tenantName = $this->tenantName();
-        $verificationUrl = $this->verificationUrl();
+        $tenant = $this->user->tenant;
+        $addressParts = array_filter([
+            trim(trim((string) ($tenant?->street ?? '')).' '.trim((string) ($tenant?->house_number ?? ''))),
+            trim(trim((string) ($tenant?->postal_code ?? '')).' '.trim((string) ($tenant?->city ?? ''))),
+        ]);
 
         return new Content(
             html: 'emails.contact.winprox-template',
@@ -53,9 +57,13 @@ class VerifyUserEmailMail extends Mailable
                 'recipientName' => (string) $this->user->name,
                 'tenantName' => $tenantName,
                 'bodyText' => '',
-                'bodyHtml' => view('emails.auth.verify-email-body', [
-                    'verificationUrl' => $verificationUrl,
+                'bodyHtml' => view('emails.issues.new-qr-body', [
                     'tenantName' => $tenantName,
+                    'locationLine' => $tenantName,
+                    'address' => implode(', ', $addressParts),
+                    'description' => __('mail.verify_email.description'),
+                    'reporterName' => (string) $this->user->name,
+                    'issueUrl' => $this->verificationUrl(),
                 ])->render(),
             ],
         );

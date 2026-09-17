@@ -29,13 +29,7 @@
         "plain_link_label": "Annulla iscrizione"
     },
     "verify_email": {
-        "subject": ":tenant — nuovo spazio di lavoro",
-        "intro": "Un nuovo spazio di lavoro è pronto via WinProx per :tenant.",
-        "field_organization": "Organizzazione",
-        "field_description": "Descrizione",
-        "description": "Gestire sedi, segnalazioni e attività.",
-        "cta": "Apri spazio di lavoro",
-        "link_fallback": "Se il pulsante non funziona, copia questo link:"
+        "description": "Seguire manutenzione e attività per le sedi."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — conferma la segnalazione",

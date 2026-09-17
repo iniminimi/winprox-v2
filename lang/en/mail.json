@@ -29,13 +29,7 @@
         "plain_link_label": "Unsubscribe"
     },
     "verify_email": {
-        "subject": ":tenant — new workspace",
-        "intro": "A new workspace is ready via WinProx for :tenant.",
-        "field_organization": "Organization",
-        "field_description": "Description",
-        "description": "Manage locations, reports and tasks.",
-        "cta": "Open workspace",
-        "link_fallback": "If the button does not work, copy this link:"
+        "description": "Follow up maintenance and tasks for locations."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirm your report",
