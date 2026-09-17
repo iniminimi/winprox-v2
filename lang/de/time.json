@@ -15,7 +15,7 @@
     },
     "presence": {
         "title": "Anwesenheit",
-        "subtitle": "Wer ist jetzt eingestempelt.",
+        "subtitle": "Wer jetzt eingestempelt ist, und wo sie arbeiten.",
         "present": "Anwesend",
         "present_subtitle": "Aktive Mitarbeitende",
         "on_break": "Pause",

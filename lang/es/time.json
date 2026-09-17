@@ -15,7 +15,7 @@
     },
     "presence": {
         "title": "Presencia",
-        "subtitle": "Quién está fichado ahora.",
+        "subtitle": "Quién está fichado ahora, y dónde trabajan.",
         "present": "Presente",
         "present_subtitle": "Empleados activos",
         "on_break": "Pausa",

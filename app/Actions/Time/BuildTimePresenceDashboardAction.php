@@ -240,6 +240,7 @@ class BuildTimePresenceDashboardAction
                 breakCount: $breakCount,
                 attentionCount: $attentionCount,
                 clockedInCount: $shifts->count(),
+                shifts: $shifts->sortBy(fn ($shift) => $shift->clock_in_at)->values(),
             );
         });
 
@@ -262,6 +263,7 @@ class BuildTimePresenceDashboardAction
                 breakCount: $breakCount,
                 attentionCount: $attentionCount,
                 clockedInCount: $unknownShifts->count(),
+                shifts: $unknownShifts->sortBy(fn ($shift) => $shift->clock_in_at)->values(),
             ));
         }
 

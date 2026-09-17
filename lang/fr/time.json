@@ -15,7 +15,7 @@
     },
     "presence": {
         "title": "Présence",
-        "subtitle": "Qui est pointé actuellement.",
+        "subtitle": "Qui est pointé actuellement, et où ils travaillent.",
         "present": "Présent",
         "present_subtitle": "Collaborateurs actifs",
         "on_break": "Pause",

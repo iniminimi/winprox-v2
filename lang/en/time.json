@@ -15,7 +15,7 @@
     },
     "presence": {
         "title": "Presence",
-        "subtitle": "Who is clocked in now.",
+        "subtitle": "Who is clocked in now, and where they are working.",
         "present": "Present",
         "present_subtitle": "Active employees",
         "on_break": "Break",

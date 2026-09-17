@@ -64,16 +64,9 @@
             @if ($isOnBreak)
                 <span class="wp-pill wp-pill--progress">{{ __('time.presence.on_break') }}</span>
             @endif
+            @include('partials.wp-time-presence-visit-pill', ['shift' => $shift])
         </div>
         <p class="wp-issue-card-meta">{{ implode(' · ', $metaParts) }}</p>
-        @if ($shift->openVisit)
-            @php
-                $visitPlace = trim(($shift->openVisit->location?->name ?? '').' · '.($shift->openVisit->unit?->localizedName() ?? ''), ' · ');
-            @endphp
-            @if ($visitPlace !== '')
-                <p class="wp-muted wp-text-sm">{{ __('time.presence.working_at', ['place' => $visitPlace]) }}</p>
-            @endif
-        @endif
     </div>
 
     <div class="wp-time-presence-card__aside">

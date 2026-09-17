@@ -134,7 +134,10 @@ class WorkShift extends Model
 
     public function openVisit(): HasOne
     {
-        return $this->hasOne(WorkVisit::class)->whereNull('ended_at')->latestOfMany('started_at');
+        return $this->hasOne(WorkVisit::class)->ofMany(
+            ['started_at' => 'max'],
+            fn ($query) => $query->whereNull('ended_at'),
+        );
     }
 
     public function scopeOpen(Builder $query): Builder

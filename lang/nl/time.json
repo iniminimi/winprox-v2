@@ -15,7 +15,7 @@
     },
     "presence": {
         "title": "Aanwezigheid",
-        "subtitle": "Wie is nu ingeklokt.",
+        "subtitle": "Wie is nu ingeklokt, en waar ze werken.",
         "present": "Aanwezig",
         "present_subtitle": "Actieve werknemers",
         "on_break": "Pauze",

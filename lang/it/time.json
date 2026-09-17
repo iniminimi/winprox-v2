@@ -15,7 +15,7 @@
     },
     "presence": {
         "title": "Presenza",
-        "subtitle": "Chi è timbrato adesso.",
+        "subtitle": "Chi è timbrato adesso, e dove lavora.",
         "present": "Presente",
         "present_subtitle": "Dipendenti attivi",
         "on_break": "Pausa",
