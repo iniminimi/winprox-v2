@@ -494,13 +494,14 @@ stops meer zijn voor **deze** cyclus-taak.
   `location_id` alleen als alle stops dezelfde locatie delen, anders null.
   Create- én show-picker: actieve units met unit checks, gegroepeerd per locatie
   (stops mogen over locaties heen). Units zonder checks staan niet in de lijst.
-- **Beheer — intentie-flow:** knop *Inspectieronde plannen* op Meldingen (naast Nieuwe
-  melding): stops + interval + team in één modal; onder water terugkerende melding +
-  eerste taak. Bestaande melding-wizard blijft; rondestops daar optioneel.
-- **Beheer — lijst:** sidebar **Werk → Inspectierondes** opent dezelfde Meldingen-pagina
-  met `?recurring=1&inspection_round=1` (titel/ondertitel/lege staat). Geen
-  “+ Melding toevoegen”, geen vinkjes terugkerend/alleen inspectierondes, geen klik-hint:
-  dit scherm toont alleen rondes. Paginahulp is **Hulp — Inspectierondes**. Optioneel
+- **Beheer — intentie-flow:** knop *Inspectieronde plannen* op **Werk → Inspectierondes**
+  (primaire plek) en nog op Meldingen (naast Nieuwe melding): stops + interval + team
+  in één modal; onder water terugkerende melding + eerste taak. Bestaande
+  melding-wizard blijft; rondestops daar optioneel.
+- **Beheer — lijst:** sidebar **Werk → Inspectierondes** is een eigen scherm (zelfde
+  Livewire als Meldingen, `?recurring=1&inspection_round=1`): titel/ondertitel/lege
+  staat voor rondes. Geen “+ Melding toevoegen”, geen vinkjes terugkerend/alleen
+  inspectierondes, geen klik-hint. Paginahulp is **Hulp — Inspectierondes**. Optioneel
   `?round_create=1` opent direct de plan-modal.
 - Label: **Ronde · N stops**. Geen ESG op ronde-issues.
 - Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).

@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Planifier une tournée d’inspection",
-                    "text": "Flux séparé à côté de Ajouter un signalement : au moins 2 arrêts (unités), intervalle et équipe en un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre immédiatement la première tâche."
+                    "text": "Bouton séparé à côté de Ajouter un signalement : au moins 2 arrêts (unités), intervalle et équipe en un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre immédiatement la première tâche. La liste des tournées est sous Travail → Tournées d’inspection."
                 },
                 {
                     "label": "Intervalle",

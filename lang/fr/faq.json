@@ -29,7 +29,7 @@
                 },
                 {
                     "title": "Tâches pour les équipes",
-                    "text": "Un signalement peut avoir plusieurs tâches, chacune assignée à une équipe. Planifiez aussi la maintenance récurrente via le calendrier."
+                    "text": "Un signalement peut avoir plusieurs tâches, chacune assignée à une équipe. Planifiez la maintenance récurrente via le calendrier, ou les tournées d’inspection via Travail → Tournées d’inspection."
                 },
                 {
                     "title": "Travail terrain via QR",

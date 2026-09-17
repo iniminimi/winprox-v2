@@ -64,7 +64,7 @@
             },
             {
                 "title": "Rondas de inspección",
-                "body": "Incidencia recurrente con una ruta fija de unidades (paradas), también entre ubicaciones. Planifica vía Incidencias → Planificar ronda de inspección (paradas, intervalo y equipo en un paso) o vía el asistente. Trabajo → Rondas de inspección abre la misma lista filtrada a rondas. Solo aparecen las unidades con unit checks; las demás quedan ocultas. Una tarea por ciclo; en cada parada Unit check OK, No OK (con incidencia; descripción prediligenciada) o omitir con motivo. Listo cuando todas las paradas del ciclo están gestionadas."
+                "body": "Incidencia recurrente con una ruta fija de unidades (paradas), también entre ubicaciones. Planifica en Trabajo → Rondas de inspección → Planificar ronda de inspección (paradas, intervalo y equipo en un paso), o vía Incidencias o el asistente. Trabajo → Rondas de inspección es una lista propia solo de rondas, no de incidencias normales. Solo aparecen las unidades con unit checks; las demás quedan ocultas. Una tarea por ciclo; en cada parada Unit check OK, No OK (con incidencia; descripción prediligenciada) o omitir con motivo. Listo cuando todas las paradas del ciclo están gestionadas."
             },
             {
                 "title": "Mediciones de unit",

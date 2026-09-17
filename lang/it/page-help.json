@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Pianifica giro di ispezione",
-                    "text": "Flusso separato accanto ad Aggiungi segnalazione: almeno 2 fermate (unità), intervallo e team in un modulo. Crea una segnalazione ricorrente con fermate del giro e avvia subito la prima attività."
+                    "text": "Pulsante separato accanto ad Aggiungi segnalazione: almeno 2 fermate (unità), intervallo e team in un modulo. Crea una segnalazione ricorrente con fermate del giro e avvia subito la prima attività. L’elenco dei giri è in Lavoro → Giri di ispezione."
                 },
                 {
                     "label": "Intervallo",

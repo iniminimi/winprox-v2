@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Inspectieronde plannen",
-                    "text": "Aparte flow naast Nieuwe melding: kies minstens 2 stops (units), interval en team in één formulier. Maakt een terugkerende melding met ronde-stops en start meteen de eerste taak."
+                    "text": "Aparte knop naast Nieuwe melding: kies minstens 2 stops (units), interval en team in één formulier. Maakt een terugkerende melding met ronde-stops en start meteen de eerste taak. Het overzicht van rondes staat onder Werk → Inspectierondes."
                 },
                 {
                     "label": "Interval",

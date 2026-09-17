@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Planificar ronda de inspección",
-                    "text": "Flujo aparte junto a Añadir incidencia: al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea un aviso recurrente con paradas de ronda e inicia de inmediato la primera tarea."
+                    "text": "Botón aparte junto a Añadir incidencia: al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea un aviso recurrente con paradas de ronda e inicia de inmediato la primera tarea. El listado de rondas está en Trabajo → Rondas de inspección."
                 },
                 {
                     "label": "Intervalo",

@@ -29,7 +29,7 @@
                 },
                 {
                     "title": "Tareas para equipos",
-                    "text": "Una incidencia puede tener varias tareas, cada una asignada a un equipo. Programe también mantenimiento recurrente vía calendario."
+                    "text": "Una incidencia puede tener varias tareas, cada una asignada a un equipo. Programe mantenimiento recurrente vía calendario, o rondas de inspección vía Trabajo → Rondas de inspección."
                 },
                 {
                     "title": "Trabajo de campo vía QR",

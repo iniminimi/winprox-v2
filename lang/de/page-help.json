@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Inspektionsrunde planen",
-                    "text": "Eigener Flow neben Meldung hinzufügen: mindestens 2 Stops (Units), Intervall und Team in einem Formular. Erstellt eine wiederkehrende Meldung mit Runden-Stops und startet sofort die erste Aufgabe."
+                    "text": "Eigene Schaltfläche neben Meldung hinzufügen: mindestens 2 Stops (Units), Intervall und Team in einem Formular. Erstellt eine wiederkehrende Meldung mit Runden-Stops und startet sofort die erste Aufgabe. Die Rundenliste steht unter Arbeit → Inspektionsrunden."
                 },
                 {
                     "label": "Intervall",

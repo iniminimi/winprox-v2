@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Plan inspection round",
-                    "text": "Separate flow next to Add issue: pick at least 2 stops (units), interval and team in one form. Creates a recurring issue with round stops and starts the first task immediately."
+                    "text": "Separate button next to Add issue: pick at least 2 stops (units), interval and team in one form. Creates a recurring issue with round stops and starts the first task immediately. The rounds list is under Work → Inspection rounds."
                 },
                 {
                     "label": "Interval",

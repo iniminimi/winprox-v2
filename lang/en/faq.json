@@ -29,7 +29,7 @@
                 },
                 {
                     "title": "Tasks for teams",
-                    "text": "An issue can have multiple tasks, each assigned to one team. Also schedule recurring maintenance via the calendar."
+                    "text": "An issue can have multiple tasks, each assigned to one team. Schedule recurring maintenance via the calendar, or inspection rounds via Work → Inspection rounds."
                 },
                 {
                     "title": "Field work via QR",
