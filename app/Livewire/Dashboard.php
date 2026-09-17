@@ -187,7 +187,7 @@ class Dashboard extends Component
             'canManageStarterPack' => $canManageStarterPack,
             'canDismissStarterPackResult' => $canDismissStarterPackResult,
             'starterPackSummary' => $starterPackSummary,
-            'starterPackTypes' => TenantStarterPackType::cases(),
+            'starterPackTypes' => TenantStarterPackType::onboardingChoices(),
             'starterPackSizes' => TenantStarterPackSize::cases(),
             'starterPackAsksSize' => $starterPackAsksSize,
             'starterPackPreview' => $starterPackPreview,

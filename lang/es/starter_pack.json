@@ -1,14 +1,31 @@
 {
     "types": {
-        "on_site": "Trabajo in situ (empresas de limpieza o construcción, …)",
+        "own_sites": "En mis propias ubicaciones",
+        "on_site": "En ubicaciones de clientes",
+        "fleet": "Para vehículos y flotas",
         "hotel": "Hotel",
         "hospital": "Hospital",
         "industry": "Industria",
         "municipality": "Ayuntamiento",
-        "realestate": "Gestión inmobiliaria",
-        "fleet": "Gestión de flotas"
+        "realestate": "Gestión inmobiliaria"
     },
     "packs": {
+        "own_sites": {
+            "teams": {
+                "facility": "Facility"
+            },
+            "categories": {
+                "rooms": "Espacios",
+                "sanitary": "Aseos",
+                "technical": "Técnico"
+            },
+            "location": "Edificio principal",
+            "units": {
+                "lobby": "Hall",
+                "sanitary": "Aseos",
+                "plant_room": "Sala técnica"
+            }
+        },
         "on_site": {
             "teams": {
                 "crew": "Cuadrilla",
@@ -128,5 +145,10 @@
                 "bay_01": "Puente 01"
             }
         }
+    },
+    "hints": {
+        "own_sites": "Por ejemplo hoteles, centros sanitarios, industria, ayuntamientos, gestión inmobiliaria, etc.",
+        "on_site": "Por ejemplo empresas de limpieza, construcción, mantenimiento y servicios técnicos.",
+        "fleet": "Para vehículos, controles y seguimiento."
     }
 }

@@ -41,11 +41,11 @@
         "empty": "Nessuna scansione QR negli ultimi 7 giorni.",
         "collapsed_summary": ":units asset · :scans scansioni questa settimana"
     },
-    "welcome": "Benvenuto su Winprox.app",
+    "welcome": "Benvenuto in WinProx",
     "onboarding": {
         "teams": {
             "title": "Inizi con un team",
-            "text": "In una piccola organizzazione basta un team — ad esempio Hotel, Studio o Facility. Aggiunga a quel team tutti coloro che eseguono attività (nome + icona). Un caposquadra non è necessario. Altri team solo più tardi, se ci sono gruppi davvero distinti. Poi colleghi il team alle categorie.",
+            "text": "In una piccola organizzazione basta un team. Aggiungi chi esegue i compiti (nome + icona). Oppure lascia che WinProx prepari prima un piccolo ambiente di esempio.",
             "button": "Crea team"
         },
         "categories": {
@@ -74,31 +74,22 @@
         "body": "Il Suo spazio di lavoro è pronto. Ora può gestire le Sue prime attività."
     },
     "starter_pack": {
-        "help_button": "Vuoi un aiuto per iniziare?",
-        "welcome_intro": "Segua quest’ordine alla prima configurazione, oppure clicchi sul pulsante «:button». Un team basta per iniziare. Time (timbratrice) è opzionale; Clock Point resta il QR di identificazione.",
-        "modal_title": "Aiuto per iniziare",
-        "intro": "Creiamo una piccola configurazione di esempio per provare WinProx subito. Nessuna segnalazione o attività — solo struttura.",
-        "rename_note": "Puoi sempre rinominare team, categorie, sedi e unit.",
+        "help_button": "Vuoi una mano per iniziare?",
+        "modal_title": "Una mano per iniziare",
+        "intro": "Possiamo preparare un piccolo ambiente di esempio. Così puoi guardarti intorno subito e provare qualche azione.",
         "issues_note": "Quando una unit ha segnalazioni, può essere solo disattivata (non eliminata). Il modello iniziale resta.",
-        "choose_type": "Scegli il tipo di organizzazione",
-        "choose_size": "Quanti dipendenti ha l'azienda?",
+        "choose_type": "Per cosa vuoi usare WinProx?",
+        "choose_size": "Quanto è grande la tua organizzazione?",
         "sizes": {
-            "small": "1–5 dipendenti",
-            "medium": "6–20 dipendenti",
-            "large": "21–100 dipendenti"
+            "small": "1–5",
+            "medium": "6–20",
+            "large": "21+"
         },
-        "create": "Crea",
-        "result_title": "Modello iniziale creato",
+        "create": "Crea ambiente di esempio",
+        "result_title": "Il tuo ambiente è pronto 🎉",
         "dismiss_result": "Chiudi",
-        "result_type": "Tipo: :type",
-        "result_size": "Dimensione: :size",
-        "result_teams": "Team",
-        "result_categories": "Categorie",
-        "result_location": "Sede",
-        "result_units": "Unit",
-        "result_next": "Apri una unit, stampa il QR e invia la prima segnalazione.",
         "remove": "Rimuovi modello iniziale",
-        "go_to_units": "Vai alle unit tramite Sedi",
+        "go_to_units": "Vedi il mio ambiente",
         "remove_title": "Rimuovere il modello iniziale?",
         "remove_text": "Team, categorie, sede e unit del modello iniziale verranno eliminati. Ciò che hai aggiunto tu resta.",
         "remove_issues_note": "Se ci sono già segnalazioni, le unit possono solo essere disattivate e il modello resta.",
@@ -107,18 +98,17 @@
         "preview_categories": "Categorie",
         "preview_location": "Sede",
         "preview_units": "Unit",
-        "preview_work_menu": "Menu Lavoro",
-        "preview_work_menu_on": "attivo",
-        "preview_work_menu_off": "disattivo",
-        "work_menu_adjust_before": "Puoi modificarlo in seguito in",
         "errors": {
-            "type_required": "Scegli un tipo di organizzazione.",
+            "type_required": "Scegli per cosa vuoi usare WinProx.",
             "unknown": "Questo modello iniziale non è disponibile.",
             "already_applied": "Un modello iniziale è già caricato.",
             "not_empty": "Hai già team, categorie o unit. Il modello iniziale è disponibile solo se quelli sono vuoti. Una sede senza unit viene sostituita.",
             "missing": "Non c’è un modello iniziale da rimuovere.",
             "has_issues": "Ci sono già segnalazioni o operatori. Le unit possono allora solo essere disattivate; il modello resta. Puoi sempre rinominare.",
-            "size_required": "Scegli la dimensione dell'azienda."
-        }
+            "size_required": "Scegli la dimensione della tua organizzazione."
+        },
+        "result_body": "Abbiamo preparato un piccolo ambiente di esempio. Guardati intorno e prova a creare una segnalazione.",
+        "result_own_later": "Vuoi iniziare subito con il tuo ambiente? Puoi sempre aggiungere sedi, team e unit più tardi.",
+        "self_start": "Preferisci iniziare da solo? Puoi partire anche senza ambiente di esempio."
     }
 }

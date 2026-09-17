@@ -47,6 +47,29 @@ function setupStarterPackAdmin(?string $locale = 'nl'): array
     return [$tenant, $admin];
 }
 
+it('maakt een eigen-locaties-starttemplate zonder grootte', function () {
+    [$tenant, $admin] = setupStarterPackAdmin('nl');
+
+    $payload = app(ApplyTenantStarterPackAction::class)->handle(
+        $tenant,
+        ApplyTenantStarterPackData::fromValidated(['starterPackType' => 'own_sites'], 'nl'),
+        $admin,
+    );
+
+    $tenant->refresh();
+
+    expect($tenant->starter_pack_key)->toBe('own_sites')
+        ->and($payload['size'])->toBeNull()
+        ->and($payload['unit_ids'])->toHaveCount(3)
+        ->and(InternalTeam::query()->count())->toBe(1)
+        ->and(InternalTeam::query()->where('name', 'Faciliteit')->exists())->toBeTrue()
+        ->and(Location::query()->where('name', 'Hoofdgebouw')->exists())->toBeTrue()
+        ->and($tenant->workMenuCalendarEnabled())->toBeTrue()
+        ->and($tenant->workMenuReservationsEnabled())->toBeFalse()
+        ->and($tenant->workMenuInspectionRoundsEnabled())->toBeFalse()
+        ->and($tenant->workMenuUnitMeasurementsEnabled())->toBeFalse();
+});
+
 it('maakt een hotel-starttemplate met namen in alle talen', function () {
     [$tenant, $admin] = setupStarterPackAdmin('nl');
 
@@ -59,7 +82,7 @@ it('maakt een hotel-starttemplate met namen in alle talen', function () {
     $tenant->refresh();
 
     expect($tenant->starter_pack_key)->toBe('hotel')
-        ->and($payload['size'])->toBe(TenantStarterPackSize::Large->value)
+        ->and($payload['size'])->toBeNull()
         ->and($payload['unit_ids'])->toHaveCount(3)
         ->and(InternalTeam::query()->count())->toBe(2)
         ->and(Category::query()->count())->toBe(3)
@@ -245,12 +268,10 @@ it('toont werkmenu-preview in starttemplate-modal', function () {
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
-        ->set('starterPackType', TenantStarterPackType::RealEstate->value)
-        ->set('starterPackSize', TenantStarterPackSize::Large->value)
-        ->assertSee(__('dashboard.starter_pack.preview_work_menu'))
-        ->assertSee(__('settings.work_menu.reservations_label'))
-        ->assertSee(__('dashboard.starter_pack.preview_work_menu_off'))
-        ->assertSee(__('settings.work_menu.title'));
+        ->set('starterPackType', TenantStarterPackType::OwnSites->value)
+        ->assertSee(__('dashboard.starter_pack.preview_teams'))
+        ->assertSee('Hoofdgebouw')
+        ->assertDontSee(__('starter_pack.types.hotel'));
 });
 
 it('toont de starttemplate-knop op het dashboard van een lege werkruimte', function () {
@@ -268,15 +289,11 @@ it('laadt een starttemplate via het dashboard en toont het resultaat', function 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
-        ->set('starterPackType', TenantStarterPackType::RealEstate->value)
-        ->set('starterPackSize', TenantStarterPackSize::Large->value)
+        ->set('starterPackType', TenantStarterPackType::OwnSites->value)
         ->call('applyStarterPack')
         ->assertHasNoErrors()
         ->assertSee(__('dashboard.starter_pack.result_title'))
-        ->assertSee(__('starter_pack.types.realestate'))
-        ->assertSee(__('dashboard.starter_pack.preview_work_menu'))
-        ->assertSee(__('settings.work_menu.reservations_label'))
-        ->assertSee(__('dashboard.starter_pack.preview_work_menu_off'))
+        ->assertSee(__('dashboard.starter_pack.result_body'))
         ->assertSee(__('dashboard.starter_pack.remove'))
         ->assertSee(__('dashboard.starter_pack.go_to_units'))
         ->assertDontSeeHtml('wire:click="openStarterPackModal"');
@@ -307,8 +324,7 @@ it('toont de starttemplate-knop voor een superuser in support view', function ()
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.starter_pack.help_button'))
         ->call('openStarterPackModal')
-        ->set('starterPackType', TenantStarterPackType::Hotel->value)
-        ->set('starterPackSize', TenantStarterPackSize::Large->value)
+        ->set('starterPackType', TenantStarterPackType::OwnSites->value)
         ->call('applyStarterPack')
         ->assertHasNoErrors()
         ->assertSee(__('dashboard.starter_pack.result_title'));
@@ -320,8 +336,7 @@ it('verbergt de starttemplate-resultaatkaart na sluiten', function () {
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
-        ->set('starterPackType', TenantStarterPackType::Hotel->value)
-        ->set('starterPackSize', TenantStarterPackSize::Large->value)
+        ->set('starterPackType', TenantStarterPackType::OwnSites->value)
         ->call('applyStarterPack')
         ->assertHasNoErrors()
         ->assertSeeHtml('wire:click="dismissStarterPackResult"')
@@ -330,7 +345,7 @@ it('verbergt de starttemplate-resultaatkaart na sluiten', function () {
         ->assertDontSeeHtml('wire:click="dismissStarterPackResult"');
 
     expect($tenant->fresh()->starter_pack_result_dismissed_at)->not->toBeNull()
-        ->and($tenant->fresh()->starter_pack_key)->toBe('hotel');
+        ->and($tenant->fresh()->starter_pack_key)->toBe('own_sites');
 });
 
 it('verbergt de starttemplate-resultaatkaart na de zichtbaarheidsperiode op het dashboard', function () {
@@ -341,8 +356,7 @@ it('verbergt de starttemplate-resultaatkaart na de zichtbaarheidsperiode op het 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
-        ->set('starterPackType', TenantStarterPackType::Hotel->value)
-        ->set('starterPackSize', TenantStarterPackSize::Large->value)
+        ->set('starterPackType', TenantStarterPackType::OwnSites->value)
         ->call('applyStarterPack')
         ->assertHasNoErrors()
         ->assertSeeHtml('wire:click="dismissStarterPackResult"');
@@ -408,26 +422,26 @@ it('toont small-werkmenu-preview voor werken op locatie', function () {
         ->and($byLabel['Unitmetingen']['enabled'])->toBeFalse();
 });
 
-it('toont de grootte-vraag alleen bij hotel, werken op locatie en vastgoed', function () {
+it('toont de grootte-vraag alleen bij werken bij klanten', function () {
     [, $admin] = setupStarterPackAdmin();
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
-        ->set('starterPackType', TenantStarterPackType::Hotel->value)
+        ->set('starterPackType', TenantStarterPackType::OnSite->value)
         ->assertSee(__('dashboard.starter_pack.choose_size'))
-        ->set('starterPackType', TenantStarterPackType::Industry->value)
+        ->set('starterPackType', TenantStarterPackType::OwnSites->value)
         ->assertDontSee(__('dashboard.starter_pack.choose_size'))
-        ->assertSee(__('dashboard.starter_pack.preview_work_menu'));
+        ->assertSee(__('dashboard.starter_pack.preview_teams'));
 });
 
-it('weigert een hotel-starttemplate via het dashboard zonder grootte', function () {
+it('weigert een klantlocatie-starttemplate via het dashboard zonder grootte', function () {
     [, $admin] = setupStarterPackAdmin();
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
-        ->set('starterPackType', TenantStarterPackType::Hotel->value)
+        ->set('starterPackType', TenantStarterPackType::OnSite->value)
         ->call('applyStarterPack')
         ->assertHasErrors(['starterPackSize']);
 });
@@ -445,8 +459,6 @@ it('laadt een klein werken-op-locatie-starttemplate via het dashboard', function
         ->call('applyStarterPack')
         ->assertHasNoErrors()
         ->assertSee(__('dashboard.starter_pack.result_title'))
-        ->assertSee(__('starter_pack.types.on_site'))
-        ->assertSee(__('dashboard.starter_pack.sizes.small'))
-        ->assertSee(__('starter_pack.packs.on_site.location'))
-        ->assertSee(__('starter_pack.packs.on_site.teams.crew'));
+        ->assertSee(__('dashboard.starter_pack.result_body'))
+        ->assertSee(__('dashboard.starter_pack.go_to_units'));
 });

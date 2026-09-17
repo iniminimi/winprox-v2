@@ -34,9 +34,13 @@ class ApplyTenantStarterPackRequest extends FormRequest
     {
         $type = TenantStarterPackType::tryFrom((string) $starterPackType);
         $sizeRequired = $type?->asksCompanySize() ?? false;
+        $allowedTypes = array_map(
+            fn (TenantStarterPackType $choice): string => $choice->value,
+            TenantStarterPackType::onboardingChoices(),
+        );
 
         return [
-            'starterPackType' => ['required', 'string', Rule::enum(TenantStarterPackType::class)],
+            'starterPackType' => ['required', 'string', Rule::in($allowedTypes)],
             'starterPackSize' => $sizeRequired
                 ? ['required', 'string', Rule::enum(TenantStarterPackSize::class)]
                 : ['nullable', 'string', Rule::enum(TenantStarterPackSize::class)],
@@ -50,7 +54,7 @@ class ApplyTenantStarterPackRequest extends FormRequest
     {
         return [
             'starterPackType.required' => __('dashboard.starter_pack.errors.type_required'),
-            'starterPackType.enum' => __('dashboard.starter_pack.errors.unknown'),
+            'starterPackType.in' => __('dashboard.starter_pack.errors.unknown'),
             'starterPackSize.required' => __('dashboard.starter_pack.errors.size_required'),
             'starterPackSize.enum' => __('dashboard.starter_pack.errors.size_required'),
         ];

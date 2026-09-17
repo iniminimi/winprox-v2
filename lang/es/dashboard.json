@@ -41,11 +41,11 @@
         "empty": "Aún no hay escaneos QR en los últimos 7 días.",
         "collapsed_summary": ":units activos · :scans escaneos esta semana"
     },
-    "welcome": "Bienvenido a Winprox.app",
+    "welcome": "Bienvenido a WinProx",
     "onboarding": {
         "teams": {
             "title": "Empiece con un equipo",
-            "text": "En una organización pequeña basta un equipo — por ejemplo Hotel, Consulta o Facility. Añada a ese equipo a todos los que ejecutan tareas (nombre + icono). No hace falta un jefe de equipo. Cree más equipos más adelante solo si hay grupos realmente distintos. Luego vincule el equipo a las categorías.",
+            "text": "En una organización pequeña basta un equipo. Añade a todos los que ejecutan tareas (nombre + icono). O deja que WinProx prepare primero un entorno de ejemplo.",
             "button": "Crear equipo"
         },
         "categories": {
@@ -75,30 +75,21 @@
     },
     "starter_pack": {
         "help_button": "¿Quieres ayuda para empezar?",
-        "welcome_intro": "Siga este orden en la primera configuración, o pulse el botón «:button». Un equipo basta para empezar. Time (reloj de fichar) es opcional; Clock Point sigue siendo el QR de identificación.",
         "modal_title": "Ayuda para empezar",
-        "intro": "Crearemos una configuración de ejemplo pequeña para que pruebes WinProx de inmediato. Sin incidencias ni tareas: solo estructura.",
-        "rename_note": "Siempre puedes cambiar el nombre de equipos, categorías, ubicaciones y units.",
+        "intro": "Podemos preparar un entorno de ejemplo pequeño. Así puedes mirar alrededor enseguida y probar algunas cosas.",
         "issues_note": "Cuando una unit tiene incidencias, solo se puede desactivar (no eliminar). La plantilla inicial permanece.",
-        "choose_type": "Elige tu tipo de organización",
-        "choose_size": "¿Cuál es el tamaño de la empresa?",
+        "choose_type": "¿Para qué quieres usar WinProx?",
+        "choose_size": "¿Cuál es el tamaño de tu organización?",
         "sizes": {
-            "small": "1–5 empleados",
-            "medium": "6–20 empleados",
-            "large": "21–100 empleados"
+            "small": "1–5",
+            "medium": "6–20",
+            "large": "21+"
         },
-        "create": "Crear",
-        "result_title": "Plantilla inicial creada",
+        "create": "Crear entorno de ejemplo",
+        "result_title": "Tu entorno está listo 🎉",
         "dismiss_result": "Cerrar",
-        "result_type": "Tipo: :type",
-        "result_size": "Tamaño: :size",
-        "result_teams": "Equipos",
-        "result_categories": "Categorías",
-        "result_location": "Ubicación",
-        "result_units": "Units",
-        "result_next": "Abre una unit, imprime el QR y envía tu primera incidencia.",
         "remove": "Eliminar plantilla inicial",
-        "go_to_units": "Ir a units vía Ubicaciones",
+        "go_to_units": "Ver mi entorno",
         "remove_title": "¿Eliminar la plantilla inicial?",
         "remove_text": "Se eliminarán los equipos, categorías, la ubicación y las units de la plantilla. Lo que hayas añadido tú se conserva.",
         "remove_issues_note": "Si ya hay incidencias, las units solo se pueden desactivar y la plantilla permanece.",
@@ -107,18 +98,17 @@
         "preview_categories": "Categorías",
         "preview_location": "Ubicación",
         "preview_units": "Units",
-        "preview_work_menu": "Menú de trabajo",
-        "preview_work_menu_on": "activado",
-        "preview_work_menu_off": "desactivado",
-        "work_menu_adjust_before": "Puedes cambiarlo más tarde en",
         "errors": {
-            "type_required": "Elige un tipo de organización.",
+            "type_required": "Elige para qué quieres usar WinProx.",
             "unknown": "Esta plantilla inicial no está disponible.",
             "already_applied": "Ya hay una plantilla inicial cargada.",
             "not_empty": "Ya tienes equipos, categorías o units. La plantilla inicial solo está disponible si eso está vacío. Una ubicación sin units se sustituye.",
             "missing": "No hay plantilla inicial que eliminar.",
             "has_issues": "Ya hay incidencias o trabajadores. Entonces las units solo se pueden desactivar; la plantilla permanece. Siempre puedes cambiar el nombre.",
-            "size_required": "Elige el tamaño de la empresa."
-        }
+            "size_required": "Elige el tamaño de tu organización."
+        },
+        "result_body": "Hemos preparado un entorno de ejemplo pequeño. Mira alrededor e intenta crear una incidencia.",
+        "result_own_later": "¿Quieres empezar ya con tu propio entorno? Siempre puedes añadir ubicaciones, equipos y units más adelante.",
+        "self_start": "¿Prefieres empezar por tu cuenta? También puedes empezar sin entorno de ejemplo."
     }
 }

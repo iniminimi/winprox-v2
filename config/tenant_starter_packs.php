@@ -11,6 +11,23 @@ return [
         'inspection_rounds' => true,
         'unit_measurements' => true,
     ],
+    'own_sites' => [
+        'work_menu' => [
+            'calendar' => true,
+            'reservations' => false,
+            'inspection_rounds' => false,
+            'unit_measurements' => false,
+        ],
+        'teams' => [
+            'facility' => ['categories' => ['rooms', 'sanitary', 'technical']],
+        ],
+        'categories' => ['rooms', 'sanitary', 'technical'],
+        'units' => [
+            ['key' => 'lobby', 'category' => 'rooms'],
+            ['key' => 'sanitary', 'category' => 'sanitary'],
+            ['key' => 'plant_room', 'category' => 'technical'],
+        ],
+    ],
     'on_site' => [
         'work_menu' => [
             'calendar' => true,
@@ -100,10 +117,14 @@ return [
         ],
     ],
     'fleet' => [
-        'work_menu' => 'all_work_menu_on',
+        'work_menu' => [
+            'calendar' => true,
+            'reservations' => false,
+            'inspection_rounds' => false,
+            'unit_measurements' => false,
+        ],
         'teams' => [
-            'workshop' => ['categories' => ['vehicles', 'workshop']],
-            'planning' => ['categories' => ['vehicles', 'depot']],
+            'workshop' => ['categories' => ['vehicles', 'workshop', 'depot']],
         ],
         'categories' => ['vehicles', 'workshop', 'depot'],
         'units' => [

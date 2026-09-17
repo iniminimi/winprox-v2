@@ -41,11 +41,11 @@
         "empty": "No QR scans in the past 7 days yet.",
         "collapsed_summary": ":units assets · :scans scans this week"
     },
-    "welcome": "Welcome to Winprox.app",
+    "welcome": "Welcome to WinProx",
     "onboarding": {
         "teams": {
             "title": "Start with one team",
-            "text": "In a small organisation one team is enough — for example Hotel, Practice or Facility. Add everyone who carries out tasks to that team (name + icon). A team leader is not required. Add extra teams later only if there are genuinely separate groups. Then link the team to your categories.",
+            "text": "In a small organisation one team is enough. Add everyone who carries out tasks (name + icon). Or let WinProx set up a small sample environment first.",
             "button": "Create team"
         },
         "categories": {
@@ -75,30 +75,21 @@
     },
     "starter_pack": {
         "help_button": "Would you like a hand getting started?",
-        "welcome_intro": "Follow this order for first-time setup, or click the \":button\" button. One team is enough to get started. Time (punch clock) is optional; Clock Point remains the sign-in QR.",
         "modal_title": "Get a head start",
-        "intro": "We will create a small sample setup so you can try WinProx right away. No issues or tasks — structure only.",
-        "rename_note": "You can always rename teams, categories, locations and units.",
+        "intro": "We can set up a small sample environment for you. You can look around right away and try a few things yourself.",
         "issues_note": "Once a unit has issues, it can only be deactivated (not deleted). The starter template then remains.",
-        "choose_type": "Choose your organisation type",
-        "choose_size": "How large is the company?",
+        "choose_type": "What do you want to use WinProx for?",
+        "choose_size": "How large is your organisation?",
         "sizes": {
-            "small": "1–5 employees",
-            "medium": "6–20 employees",
-            "large": "21–100 employees"
+            "small": "1–5",
+            "medium": "6–20",
+            "large": "21+"
         },
-        "create": "Create",
-        "result_title": "Starter template created",
+        "create": "Create sample environment",
+        "result_title": "Your environment is ready 🎉",
         "dismiss_result": "Close",
-        "result_type": "Type: :type",
-        "result_size": "Size: :size",
-        "result_teams": "Teams",
-        "result_categories": "Categories",
-        "result_location": "Location",
-        "result_units": "Units",
-        "result_next": "Open a unit, print the QR and submit your first issue.",
         "remove": "Remove starter template",
-        "go_to_units": "Go to units via Locations",
+        "go_to_units": "View my environment",
         "remove_title": "Remove starter template?",
         "remove_text": "Teams, categories, location and units from the starter template will be deleted. Anything you added yourself stays.",
         "remove_issues_note": "If issues already exist, units can only be deactivated and the template remains.",
@@ -107,18 +98,17 @@
         "preview_categories": "Categories",
         "preview_location": "Location",
         "preview_units": "Units",
-        "preview_work_menu": "Work menu",
-        "preview_work_menu_on": "on",
-        "preview_work_menu_off": "off",
-        "work_menu_adjust_before": "You can change this later under",
         "errors": {
-            "type_required": "Choose an organisation type.",
+            "type_required": "Choose what you want to use WinProx for.",
             "unknown": "This starter template is not available.",
             "already_applied": "A starter template is already loaded.",
             "not_empty": "You already have teams, categories or units. The starter template is only available when those are empty. A location without units is replaced.",
             "missing": "There is no starter template to remove.",
             "has_issues": "There are already issues or workers. Units can then only be deactivated; the starter template remains. You can always rename.",
-            "size_required": "Choose the company size."
-        }
+            "size_required": "Choose your organisation size."
+        },
+        "result_body": "We have set up a small sample environment for you. Look around and try creating an issue yourself.",
+        "result_own_later": "Want to start with your own setup right away? You can always add locations, teams and units later.",
+        "self_start": "Prefer to start on your own? You can also begin without a sample environment."
     }
 }

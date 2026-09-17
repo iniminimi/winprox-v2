@@ -38,6 +38,7 @@ it('toont teams-onboarding met pulserende knop op het dashboard zonder teams', f
         ->assertSeeHtml('wp-badge-critical')
         ->assertSee(__('dashboard.welcome'))
         ->assertSee(__('dashboard.starter_pack.help_button'))
+        ->assertDontSee(__('manual.getting_started.label'))
         ->assertDontSeeHtml('wp-kpi--locations');
 });
 
@@ -151,7 +152,7 @@ it('toont clock-point-onboarding en stap 3 op het dashboard met time-module', fu
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.onboarding.clock_point.title'))
         ->assertSee(__('dashboard.onboarding.clock_point.button'))
-        ->assertSee(__('manual.step_3_text_time'));
+        ->assertDontSee(__('manual.getting_started.label'));
 });
 
 it('toont dezelfde clock-point-onboarding zonder time-module-flag (Time hoort bij abonnement)', function () {
@@ -168,5 +169,5 @@ it('toont dezelfde clock-point-onboarding zonder time-module-flag (Time hoort bi
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.onboarding.clock_point.title'))
         ->assertSee(__('dashboard.onboarding.clock_point.button'))
-        ->assertSee(__('manual.step_3_text_time'));
+        ->assertDontSee(__('manual.getting_started.label'));
 });

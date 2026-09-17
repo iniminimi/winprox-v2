@@ -1,14 +1,31 @@
 {
     "types": {
-        "on_site": "Arbeiten vor Ort (Reinigungs- oder Bauunternehmen, …)",
+        "own_sites": "An meinen eigenen Standorten",
+        "on_site": "An Standorten von Kunden",
+        "fleet": "Für Fahrzeuge und Fuhrpark",
         "hotel": "Hotel",
         "hospital": "Krankenhaus",
         "industry": "Industrie",
         "municipality": "Gemeindeverwaltung",
-        "realestate": "Immobilienverwaltung",
-        "fleet": "Fuhrparkmanagement"
+        "realestate": "Immobilienverwaltung"
     },
     "packs": {
+        "own_sites": {
+            "teams": {
+                "facility": "Facility"
+            },
+            "categories": {
+                "rooms": "Räume",
+                "sanitary": "Sanitär",
+                "technical": "Technik"
+            },
+            "location": "Hauptgebäude",
+            "units": {
+                "lobby": "Eingangshalle",
+                "sanitary": "Sanitär",
+                "plant_room": "Technikraum"
+            }
+        },
         "on_site": {
             "teams": {
                 "crew": "Kolonne",
@@ -128,5 +145,10 @@
                 "bay_01": "Hebebühne 01"
             }
         }
+    },
+    "hints": {
+        "own_sites": "Zum Beispiel Hotels, Pflegeeinrichtungen, Industrie, Gemeinden, Immobilienverwaltung usw.",
+        "on_site": "Zum Beispiel Reinigungs-, Bau-, Wartungs- und technische Dienstleistungsunternehmen.",
+        "fleet": "Für Fahrzeuge, Kontrollen und Nachverfolgung."
     }
 }

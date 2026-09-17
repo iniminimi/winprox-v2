@@ -15,7 +15,7 @@
                 },
                 {
                     "label": "Starter template",
-                    "text": "New organisations see the button «Would you like a hand getting started?». Choose on-site work, hotel, hospital, industry, municipality, property management or fleet management: WinProx creates sample teams, categories, one location and units — names in every language — and sets suitable work menu items in the sidebar (e.g. property management without reservations and unit measurements). In the popup you also see per type which work menu items are on or off; after creating, that appears again on Starter template created. Change later via Organisation → Settings → Work menu settings (removing the template does not revert the work menu). This is not a sector system, only a start. You can rename everything later. Remove it while there are no issues; after that, units can only be deactivated. For hotel, on-site work and property management you also choose company size (1–5, 6–20 or 21–100 employees): small crews get one team and extra work-menu items off."
+                    "text": "New organisations see the button «Would you like a hand getting started?». Choose what you use WinProx for: at your own locations, at customer sites, or for vehicles and fleet. WinProx creates a small sample environment (teams, categories, one location, units). For customer-site work you also choose size (1–5, 6–20 or 21+). This is not a sector system, only a start. You can add locations, teams and units yourself afterwards."
                 },
                 {
                     "label": "Print briefing",

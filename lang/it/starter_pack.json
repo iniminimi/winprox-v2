@@ -1,14 +1,31 @@
 {
     "types": {
-        "on_site": "Lavoro in sede cliente (imprese di pulizia o edili, …)",
+        "own_sites": "Nelle mie sedi",
+        "on_site": "Sede dei clienti",
+        "fleet": "Per veicoli e flotta",
         "hotel": "Hotel",
         "hospital": "Ospedale",
         "industry": "Industria",
         "municipality": "Comune",
-        "realestate": "Gestione immobiliare",
-        "fleet": "Gestione flotta"
+        "realestate": "Gestione immobiliare"
     },
     "packs": {
+        "own_sites": {
+            "teams": {
+                "facility": "Facility"
+            },
+            "categories": {
+                "rooms": "Spazi",
+                "sanitary": "Sanitari",
+                "technical": "Tecnico"
+            },
+            "location": "Edificio principale",
+            "units": {
+                "lobby": "Atrio",
+                "sanitary": "Sanitari",
+                "plant_room": "Locale tecnico"
+            }
+        },
         "on_site": {
             "teams": {
                 "crew": "Squadra",
@@ -128,5 +145,10 @@
                 "bay_01": "Ponte 01"
             }
         }
+    },
+    "hints": {
+        "own_sites": "Ad esempio hotel, strutture sanitarie, industria, comuni, gestione immobiliare, ecc.",
+        "on_site": "Ad esempio imprese di pulizia, edili, di manutenzione e servizi tecnici.",
+        "fleet": "Per veicoli, controlli e follow-up."
     }
 }

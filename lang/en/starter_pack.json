@@ -1,14 +1,31 @@
 {
     "types": {
-        "on_site": "On-site work (cleaning or construction companies, …)",
+        "own_sites": "At my own locations",
+        "on_site": "At customer sites",
+        "fleet": "For vehicles and fleet",
         "hotel": "Hotel",
         "hospital": "Hospital",
         "industry": "Industry",
         "municipality": "Municipality",
-        "realestate": "Property management",
-        "fleet": "Fleet management"
+        "realestate": "Property management"
     },
     "packs": {
+        "own_sites": {
+            "teams": {
+                "facility": "Facility"
+            },
+            "categories": {
+                "rooms": "Rooms",
+                "sanitary": "Sanitary",
+                "technical": "Technical"
+            },
+            "location": "Main building",
+            "units": {
+                "lobby": "Lobby",
+                "sanitary": "Sanitary",
+                "plant_room": "Plant room"
+            }
+        },
         "on_site": {
             "teams": {
                 "crew": "Crew",
@@ -128,5 +145,10 @@
                 "bay_01": "Bay 01"
             }
         }
+    },
+    "hints": {
+        "own_sites": "For example hotels, care facilities, industry, municipalities, property management, etc.",
+        "on_site": "For example cleaning, construction, maintenance and technical service companies.",
+        "fleet": "For vehicles, checks and follow-up."
     }
 }

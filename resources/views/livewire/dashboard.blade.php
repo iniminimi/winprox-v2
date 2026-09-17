@@ -14,28 +14,8 @@
                         </button>
                     @endif
                 </div>
-                <p class="wp-muted">{{ __('dashboard.starter_pack.result_type', ['type' => __($starterPackSummary->type->labelKey())]) }}</p>
-                @if ($starterPackSummary->size)
-                    <p class="wp-muted">{{ __('dashboard.starter_pack.result_size', ['size' => __($starterPackSummary->size->labelKey())]) }}</p>
-                @endif
-                <div class="wp-stack-tight">
-                    <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_teams') }}</strong> — {{ implode(', ', $starterPackSummary->teamNames) }}</p>
-                    <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_categories') }}</strong> — {{ implode(', ', $starterPackSummary->categoryNames) }}</p>
-                    @if ($starterPackSummary->locationName !== '')
-                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_location') }}</strong> — {{ $starterPackSummary->locationName }}</p>
-                    @endif
-                    <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_units') }}</strong> — {{ implode(', ', $starterPackSummary->unitNames) }}</p>
-                    <p class="wp-text-body">
-                        <strong>{{ __('dashboard.starter_pack.preview_work_menu') }}</strong>
-                        —
-                        @foreach ($starterPackSummary->workMenu as $item)
-                            {{ $item['label'] }}
-                            <span class="wp-muted">({{ $item['enabled'] ? __('dashboard.starter_pack.preview_work_menu_on') : __('dashboard.starter_pack.preview_work_menu_off') }})</span>@if (! $loop->last), @endif
-                        @endforeach
-                    </p>
-                </div>
-                <p class="wp-muted">{{ __('dashboard.starter_pack.rename_note') }} {{ __('dashboard.starter_pack.issues_note') }}</p>
-                <p class="wp-text-body wp-error"><strong>{{ __('dashboard.starter_pack.result_next') }}</strong></p>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.result_body') }}</p>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.result_own_later') }}</p>
                 @error('removeStarterPack')
                     <p class="wp-error">{{ $message }}</p>
                 @enderror
@@ -55,6 +35,9 @@
     @endif
 
     @if ($onboarding->showTeamsBanner())
+        <div class="wp-stack-loose">
+            <h1 class="wp-page-title">{{ __('dashboard.welcome') }}</h1>
+        </div>
         <x-wp-onboarding-banner stage="teams">
             @if ($canApplyStarterPack)
                 <button type="button"
@@ -72,43 +55,6 @@
         <x-wp-onboarding-banner stage="units" />
     @elseif ($onboarding->showClockPointBanner())
         <x-wp-onboarding-banner stage="clock_point" />
-    @endif
-
-    @if ($onboarding->showWelcomeGuide)
-        <div class="wp-stack-loose">
-            <h1 class="text-4xl font-bold text-gray-900">{{ __('dashboard.welcome') }}</h1>
-        </div>
-
-        <div class="wp-card wp-card-pad">
-            <div class="wp-stack">
-                <h2 class="wp-section-title">{{ __('manual.getting_started.label') }}</h2>
-                <p class="wp-text-body"><strong>{{ __('manual.getting_started.title') }}</strong></p>
-                <p class="wp-muted">{{ __('dashboard.starter_pack.welcome_intro', ['button' => __('dashboard.starter_pack.help_button')]) }}</p>
-
-                <div class="wp-stack-tight">
-                    <div class="wp-stack-tight">
-                        <p class="wp-text-body"><strong>{{ __('manual.step_1_title') }}</strong></p>
-                        <p class="wp-muted">{{ __('manual.step_1_text') }}</p>
-                    </div>
-                    <div class="wp-stack-tight">
-                        <p class="wp-text-body"><strong>{{ __('manual.step_2_title') }}</strong></p>
-                        <p class="wp-muted">{{ __('manual.step_2_text') }}</p>
-                    </div>
-                    <div class="wp-stack-tight">
-                        <p class="wp-text-body"><strong>{{ __('manual.step_3_title') }}</strong></p>
-                        <p class="wp-muted">{{ __('manual.step_3_text_time') }}</p>
-                    </div>
-                    <div class="wp-stack-tight">
-                        <p class="wp-text-body"><strong>{{ __('manual.step_4_title') }}</strong></p>
-                        <p class="wp-muted">{{ __('manual.step_4_text') }}</p>
-                    </div>
-                    <div class="wp-stack-tight">
-                        <p class="wp-text-body"><strong>{{ __('manual.step_5_title') }}</strong></p>
-                        <p class="wp-muted">{{ __('manual.step_5_text') }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     @endif
 
     @if (! $onboarding->blocksDashboardMain())
@@ -315,8 +261,6 @@
                 </div>
 
                 <p class="wp-muted">{{ __('dashboard.starter_pack.intro') }}</p>
-                <p class="wp-muted">{{ __('dashboard.starter_pack.rename_note') }}</p>
-                <p class="wp-muted">{{ __('dashboard.starter_pack.issues_note') }}</p>
 
                 <fieldset class="wp-stack-tight">
                     <legend class="wp-label">{{ __('dashboard.starter_pack.choose_type') }}</legend>
@@ -326,7 +270,10 @@
                                    name="starterPackType"
                                    value="{{ $type->value }}"
                                    wire:model.live="starterPackType">
-                            <span>{{ __($type->labelKey()) }}</span>
+                            <span class="wp-stack-tight">
+                                <strong>{{ __($type->labelKey()) }}</strong>
+                                <span class="wp-muted">{{ __($type->hintKey()) }}</span>
+                            </span>
                         </label>
                     @endforeach
                     @error('starterPackType') <p class="wp-error">{{ $message }}</p> @enderror
@@ -354,20 +301,10 @@
                         <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_categories') }}</strong> — {{ implode(', ', $starterPackPreview['categories']) }}</p>
                         <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_location') }}</strong> — {{ $starterPackPreview['location'] }}</p>
                         <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_units') }}</strong> — {{ implode(', ', $starterPackPreview['units']) }}</p>
-                        <p class="wp-text-body">
-                            <strong>{{ __('dashboard.starter_pack.preview_work_menu') }}</strong>
-                            —
-                            @foreach ($starterPackPreview['work_menu'] as $item)
-                                {{ $item['label'] }}
-                                <span class="wp-muted">({{ $item['enabled'] ? __('dashboard.starter_pack.preview_work_menu_on') : __('dashboard.starter_pack.preview_work_menu_off') }})</span>@if (! $loop->last), @endif
-                            @endforeach
-                        </p>
-                        <p class="wp-muted wp-text-sm">
-                            {{ __('dashboard.starter_pack.work_menu_adjust_before') }}
-                            <a href="{{ route('settings.index') }}#settings-work-menu" class="wp-link">{{ __('common.nav.organization') }} → {{ __('common.nav.settings') }} → {{ __('settings.work_menu.title') }}</a>.
-                        </p>
                     </div>
                 @endif
+
+                <p class="wp-muted">{{ __('dashboard.starter_pack.self_start') }}</p>
 
                 <div class="wp-cluster wp-cluster--tight">
                     <button type="submit" class="btn btn--primary" wire:loading.attr="disabled">

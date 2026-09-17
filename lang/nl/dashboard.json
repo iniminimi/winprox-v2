@@ -41,11 +41,11 @@
         "empty": "Nog geen QR-scans in de afgelopen 7 dagen.",
         "collapsed_summary": ":units assets · :scans scans deze week"
     },
-    "welcome": "Welkom op Winprox.app",
+    "welcome": "Welkom bij WinProx",
     "onboarding": {
         "teams": {
             "title": "Begin met één team",
-            "text": "In een kleine organisatie is één team genoeg — bijvoorbeeld Hotel, Praktijk of Faciliteit. Voeg iedereen die taken uitvoert toe aan dat team (naam + icoon). Een teamleider is niet nodig. Extra teams maak je later alleen als er écht andere groepen zijn. Koppel het team daarna aan je categorieën.",
+            "text": "In een kleine organisatie is één team genoeg. Voeg iedereen die taken uitvoert toe (naam + icoon). Of laat WinProx eerst een voorbeeldomgeving klaarzetten.",
             "button": "Team aanmaken"
         },
         "categories": {
@@ -75,30 +75,21 @@
     },
     "starter_pack": {
         "help_button": "Wil je op weg geholpen worden?",
-        "welcome_intro": "Volg deze volgorde bij de eerste inrichting, of klik op de knop \":button\". Eén team is genoeg om te starten. Time (prikklok) is optioneel; Clock Point blijft de aanmeld-QR.",
         "modal_title": "Op weg geholpen worden",
-        "intro": "We maken een kleine voorbeeldinrichting aan zodat je WinProx meteen kunt uitproberen. Geen meldingen of taken — alleen structuur.",
-        "rename_note": "Teams, categorieën, locaties en units kun je altijd hernoemen.",
+        "intro": "We kunnen een kleine voorbeeldomgeving voor je klaarzetten. Zo kun je meteen rondkijken en zelf een paar dingen uitproberen.",
         "issues_note": "Zodra er meldingen op een unit staan, kan die unit alleen nog gedeactiveerd worden (niet verwijderd). Het starttemplate blijft dan bestaan.",
-        "choose_type": "Kies je type organisatie",
-        "choose_size": "Hoe groot is het bedrijf?",
+        "choose_type": "Waarvoor wil je WinProx gebruiken?",
+        "choose_size": "Hoe groot is je organisatie?",
         "sizes": {
-            "small": "1–5 werknemers",
-            "medium": "6–20 werknemers",
-            "large": "21–100 werknemers"
+            "small": "1–5",
+            "medium": "6–20",
+            "large": "21+"
         },
-        "create": "Aanmaken",
-        "result_title": "Starttemplate aangemaakt",
+        "create": "Voorbeeldomgeving maken",
+        "result_title": "Je omgeving is klaar 🎉",
         "dismiss_result": "Sluiten",
-        "result_type": "Type: :type",
-        "result_size": "Grootte: :size",
-        "result_teams": "Teams",
-        "result_categories": "Categorieën",
-        "result_location": "Locatie",
-        "result_units": "Units",
-        "result_next": "Open een unit, druk de QR af en dien je eerste melding in.",
         "remove": "Verwijder starttemplate",
-        "go_to_units": "Ga naar units via Locaties",
+        "go_to_units": "Bekijk mijn omgeving",
         "remove_title": "Starttemplate verwijderen?",
         "remove_text": "Teams, categorieën, locatie en units van het starttemplate worden verwijderd. Eigen toevoegingen blijven staan.",
         "remove_issues_note": "Als er al meldingen zijn, kunnen units alleen nog gedeactiveerd worden en blijft het template bestaan.",
@@ -107,18 +98,17 @@
         "preview_categories": "Categorieën",
         "preview_location": "Locatie",
         "preview_units": "Units",
-        "preview_work_menu": "Werkmenu",
-        "preview_work_menu_on": "aan",
-        "preview_work_menu_off": "uit",
-        "work_menu_adjust_before": "Je kunt dit later wijzigen via",
         "errors": {
-            "type_required": "Kies een type organisatie.",
+            "type_required": "Kies waarvoor je WinProx wilt gebruiken.",
             "unknown": "Dit starttemplate is niet beschikbaar.",
             "already_applied": "Er is al een starttemplate geladen.",
             "not_empty": "Je hebt al teams, categorieën of units. Het starttemplate is alleen als die nog leeg zijn. Een locatie zonder units wordt vervangen.",
             "missing": "Er is geen starttemplate om te verwijderen.",
             "has_issues": "Er zijn al meldingen of uitvoerders. Units kun je dan alleen nog deactiveren; het starttemplate blijft bestaan. Hernoemen kan altijd.",
-            "size_required": "Kies de grootte van het bedrijf."
-        }
+            "size_required": "Kies de grootte van je organisatie."
+        },
+        "result_body": "We hebben een kleine voorbeeldomgeving voor je klaargezet. Kijk rustig rond en probeer zelf een melding te maken.",
+        "result_own_later": "Wil je meteen met je eigen omgeving beginnen? Je kunt later altijd locaties, teams en units toevoegen.",
+        "self_start": "Liever zelf beginnen? Je kunt ook zonder voorbeeldomgeving starten."
     }
 }

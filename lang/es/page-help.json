@@ -15,7 +15,7 @@
                 },
                 {
                     "label": "Plantilla inicial",
-                    "text": "Las organizaciones nuevas ven el botón «¿Quieres ayuda para empezar?». Elige trabajo in situ, hotel, hospital, industria, ayuntamiento, gestión inmobiliaria o gestión de flotas: WinProx crea equipos, categorías, una ubicación y units de ejemplo — nombres en todos los idiomas — y aplica los elementos del menú Trabajo en la barra lateral (p. ej. gestión inmobiliaria sin reservas ni mediciones de unidad). No es un sistema de sectores, solo un arranque. Puedes cambiar los nombres. Se puede eliminar mientras no haya incidencias; después las units solo se pueden desactivar. En hotel, trabajo in situ y gestión inmobiliaria también eliges el tamaño (1–5, 6–20 o 21–100 empleados): las cuadrillas pequeñas reciben un equipo y el menú Trabajo extra queda desactivado."
+                    "text": "Las organizaciones nuevas ven el botón «¿Quieres ayuda para empezar?». Elige para qué usas WinProx: en tus propias ubicaciones, en ubicaciones de clientes, o para vehículos y flotas. WinProx crea un entorno de ejemplo pequeño (equipos, categorías, una ubicación, units). En trabajo en sede de clientes también eliges el tamaño (1–5, 6–20 o 21+). No es un sistema de sectores, solo un arranque. Después puedes añadir tú mismo ubicaciones, equipos y units."
                 },
                 {
                     "label": "Imprimir briefing",

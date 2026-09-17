@@ -15,7 +15,7 @@
                 },
                 {
                     "label": "Modèle de départ",
-                    "text": "Les nouvelles organisations voient le bouton « Voulez-vous un coup de pouce pour démarrer ? ». Choisissez travail sur site, hôtel, hôpital, industrie, commune, gestion immobilière ou gestion de flotte : WinProx crée des équipes, catégories, un lieu et des units d’exemple — noms dans toutes les langues — et règle les entrées du menu Travail dans la barre latérale (ex. gestion immobilière sans réservations ni mesures d’unité). Ce n’est pas un système de secteurs, seulement un démarrage. Vous pouvez tout renommer. Suppression possible tant qu’il n’y a pas de signalements ; ensuite les units ne peuvent plus qu’être désactivés. Pour l’hôtel, le travail sur site et la gestion immobilière, vous choisissez aussi la taille (1–5, 6–20 ou 21–100 employés) : les petites équipes n’ont qu’une équipe et le menu Travail extra est désactivé."
+                    "text": "Les nouvelles organisations voient le bouton « Voulez-vous un coup de pouce pour démarrer ? ». Choisissez à quoi sert WinProx : sur vos propres sites, sur les sites des clients, ou pour véhicules et flotte. WinProx crée un petit environnement d’exemple (équipes, catégories, un lieu, units). Pour le travail chez le client, vous choisissez aussi la taille (1–5, 6–20 ou 21+). Ce n’est pas un système de secteurs, seulement un démarrage. Vous pourrez ensuite ajouter vous-même des lieux, équipes et units."
                 },
                 {
                     "label": "Imprimer le briefing",

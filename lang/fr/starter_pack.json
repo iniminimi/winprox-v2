@@ -1,14 +1,31 @@
 {
     "types": {
-        "on_site": "Travail sur site (entreprises de nettoyage ou de construction, …)",
+        "own_sites": "Sur mes propres sites",
+        "on_site": "Sur les sites des clients",
+        "fleet": "Pour véhicules et flotte",
         "hotel": "Hôtel",
         "hospital": "Hôpital",
         "industry": "Industrie",
         "municipality": "Administration communale",
-        "realestate": "Gestion immobilière",
-        "fleet": "Gestion de flotte"
+        "realestate": "Gestion immobilière"
     },
     "packs": {
+        "own_sites": {
+            "teams": {
+                "facility": "Facility"
+            },
+            "categories": {
+                "rooms": "Espaces",
+                "sanitary": "Sanitaires",
+                "technical": "Technique"
+            },
+            "location": "Bâtiment principal",
+            "units": {
+                "lobby": "Hall d’entrée",
+                "sanitary": "Sanitaires",
+                "plant_room": "Local technique"
+            }
+        },
         "on_site": {
             "teams": {
                 "crew": "Équipe",
@@ -128,5 +145,10 @@
                 "bay_01": "Pont 01"
             }
         }
+    },
+    "hints": {
+        "own_sites": "Par exemple hôtels, établissements de soin, industrie, communes, gestion immobilière, etc.",
+        "on_site": "Par exemple entreprises de nettoyage, de construction, de maintenance et de services techniques.",
+        "fleet": "Pour les véhicules, les contrôles et le suivi."
     }
 }

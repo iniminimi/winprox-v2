@@ -1,14 +1,31 @@
 {
     "types": {
-        "on_site": "Werken op locatie (schoonmaak- of bouwbedrijven, …)",
+        "own_sites": "Op mijn eigen locaties",
+        "on_site": "Op locaties van klanten",
+        "fleet": "Voor voertuigen en fleet",
         "hotel": "Hotel",
         "hospital": "Ziekenhuis",
         "industry": "Industrie",
         "municipality": "Gemeentebestuur",
-        "realestate": "Vastgoedbeheer",
-        "fleet": "Fleet management"
+        "realestate": "Vastgoedbeheer"
     },
     "packs": {
+        "own_sites": {
+            "teams": {
+                "facility": "Faciliteit"
+            },
+            "categories": {
+                "rooms": "Ruimtes",
+                "sanitary": "Sanitair",
+                "technical": "Technisch"
+            },
+            "location": "Hoofdgebouw",
+            "units": {
+                "lobby": "Inkomhal",
+                "sanitary": "Sanitair",
+                "plant_room": "Technische ruimte"
+            }
+        },
         "on_site": {
             "teams": {
                 "crew": "Ploeg",
@@ -128,5 +145,10 @@
                 "bay_01": "Brug 01"
             }
         }
+    },
+    "hints": {
+        "own_sites": "Voor bijvoorbeeld hotels, zorginstellingen, industrie, gemeenten, vastgoedbeheer enz.",
+        "on_site": "Voor bijvoorbeeld schoonmaakbedrijven, bouwbedrijven, onderhoudsbedrijven en technische dienstverlening.",
+        "fleet": "Voor voertuigen, controles en opvolging."
     }
 }

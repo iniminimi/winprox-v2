@@ -41,11 +41,11 @@
         "empty": "Noch keine QR-Scans in den letzten 7 Tagen.",
         "collapsed_summary": ":units Assets · :scans Scans diese Woche"
     },
-    "welcome": "Willkommen auf Winprox.app",
+    "welcome": "Willkommen bei WinProx",
     "onboarding": {
         "teams": {
             "title": "Beginnen Sie mit einem Team",
-            "text": "In einer kleinen Organisation reicht ein Team — zum Beispiel Hotel, Praxis oder Facility. Fügen Sie alle, die Aufgaben ausführen, diesem Team hinzu (Name + Symbol). Ein Teamleiter ist nicht nötig. Weitere Teams legen Sie später nur an, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie das Team danach mit Ihren Kategorien.",
+            "text": "In einer kleinen Organisation reicht ein Team. Fügen Sie alle hinzu, die Aufgaben ausführen (Name + Symbol). Oder lassen Sie WinProx zuerst eine kleine Beispielumgebung anlegen.",
             "button": "Team anlegen"
         },
         "categories": {
@@ -75,30 +75,21 @@
     },
     "starter_pack": {
         "help_button": "Möchten Sie Hilfe beim Start?",
-        "welcome_intro": "Folgen Sie dieser Reihenfolge bei der Ersteinrichtung, oder klicken Sie auf die Schaltfläche „:button“. Ein Team reicht zum Start. Time (Stechuhr) ist optional; Clock Point bleibt der Anmelde-QR.",
         "modal_title": "Hilfe beim Start",
-        "intro": "Wir legen eine kleine Beispielstruktur an, damit Sie WinProx sofort ausprobieren können. Keine Meldungen oder Aufgaben — nur Struktur.",
-        "rename_note": "Teams, Kategorien, Standorte und Units können Sie jederzeit umbenennen.",
+        "intro": "Wir können eine kleine Beispielumgebung für Sie anlegen. So können Sie sofort umschauen und ein paar Dinge ausprobieren.",
         "issues_note": "Sobald eine Unit Meldungen hat, kann sie nur noch deaktiviert (nicht gelöscht) werden. Die Startvorlage bleibt dann bestehen.",
-        "choose_type": "Wählen Sie Ihren Organisationstyp",
-        "choose_size": "Wie groß ist das Unternehmen?",
+        "choose_type": "Wofür möchten Sie WinProx nutzen?",
+        "choose_size": "Wie groß ist Ihre Organisation?",
         "sizes": {
-            "small": "1–5 Mitarbeiter",
-            "medium": "6–20 Mitarbeiter",
-            "large": "21–100 Mitarbeiter"
+            "small": "1–5",
+            "medium": "6–20",
+            "large": "21+"
         },
-        "create": "Anlegen",
-        "result_title": "Startvorlage angelegt",
+        "create": "Beispielumgebung anlegen",
+        "result_title": "Ihre Umgebung ist bereit 🎉",
         "dismiss_result": "Schließen",
-        "result_type": "Typ: :type",
-        "result_size": "Größe: :size",
-        "result_teams": "Teams",
-        "result_categories": "Kategorien",
-        "result_location": "Standort",
-        "result_units": "Units",
-        "result_next": "Öffnen Sie eine Unit, drucken Sie den QR und senden Sie Ihre erste Meldung.",
         "remove": "Startvorlage entfernen",
-        "go_to_units": "Zu Units über Standorte",
+        "go_to_units": "Meine Umgebung ansehen",
         "remove_title": "Startvorlage entfernen?",
         "remove_text": "Teams, Kategorien, Standort und Units der Startvorlage werden gelöscht. Eigene Ergänzungen bleiben.",
         "remove_issues_note": "Gibt es bereits Meldungen, können Units nur noch deaktiviert werden und die Vorlage bleibt.",
@@ -107,18 +98,17 @@
         "preview_categories": "Kategorien",
         "preview_location": "Standort",
         "preview_units": "Units",
-        "preview_work_menu": "Arbeitsmenü",
-        "preview_work_menu_on": "an",
-        "preview_work_menu_off": "aus",
-        "work_menu_adjust_before": "Sie können dies später ändern unter",
         "errors": {
-            "type_required": "Wählen Sie einen Organisationstyp.",
+            "type_required": "Wählen Sie, wofür Sie WinProx nutzen möchten.",
             "unknown": "Diese Startvorlage ist nicht verfügbar.",
             "already_applied": "Es ist bereits eine Startvorlage geladen.",
             "not_empty": "Sie haben bereits Teams, Kategorien oder Units. Die Startvorlage gilt nur, wenn diese noch leer sind. Ein Standort ohne Units wird ersetzt.",
             "missing": "Es gibt keine Startvorlage zum Entfernen.",
             "has_issues": "Es gibt bereits Meldungen oder Ausführende. Units können dann nur noch deaktiviert werden; die Startvorlage bleibt. Umbenennen ist immer möglich.",
-            "size_required": "Wählen Sie die Unternehmensgröße."
-        }
+            "size_required": "Wählen Sie die Größe Ihrer Organisation."
+        },
+        "result_body": "Wir haben eine kleine Beispielumgebung für Sie angelegt. Schauen Sie sich um und versuchen Sie, selbst eine Meldung zu erstellen.",
+        "result_own_later": "Möchten Sie gleich mit Ihrer eigenen Umgebung starten? Standorte, Teams und Units können Sie später jederzeit hinzufügen.",
+        "self_start": "Lieber selbst starten? Sie können auch ohne Beispielumgebung beginnen."
     }
 }
