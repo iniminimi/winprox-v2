@@ -2,18 +2,20 @@
     "meta_title": "About WinProx | Facility via QR",
     "social": {
         "og_title": "About WinProx | Facility via QR",
-        "og_description": "WinProx is a QR-based facility platform: issues, tasks, optional Time punch clock, ESG and IoT Connect — in the browser, no app."
+        "og_description": "WinProx is a QR-based facility platform: issues, tasks, optional Time punch clock with GPS work visits, ESG and IoT Connect. Also for cleaning and construction crews on site — in the browser, no app."
     },
     "eyebrow": "About WinProx",
     "title": "What is WinProx?",
-    "lead": "WinProx is a QR-based facility management platform for issues and tasks. Time (punch clock), ESG and IoT Connect are optional — in the browser, no native app.",
+    "lead": "WinProx is a QR-based facility platform for issues and tasks. Also for cleaning and construction crews who work at the customer site or on the construction site. Time (punch clock, GPS work visits, optional CIAO), ESG and IoT Connect are optional — in the browser, no native app.",
     "what": {
         "title": "Core idea",
-        "body": "Every physical location or unit gets a digital QR portal. Citizens and staff report defects via the unit QR. Field workers sign in via the Clock Point QR and complete tasks on site. Managers follow everything in one workspace: issue → tasks → completion."
+        "body": "Every physical location or unit gets a digital QR portal. Citizens and staff report defects via the unit QR. Field workers sign in via the Clock Point QR, start and stop work on a unit pin (GPS work visits) and complete tasks on site. Managers follow everything in one workspace: issue → tasks → completion. One Facility app — no separate cleaning or construction edition."
     },
     "audience": {
         "title": "Who it is for",
         "items": [
+            "Cleaning and maintenance crews who work at customer sites",
+            "Construction and site crews who clock in, log work visits and finish tasks on site",
             "Facility and maintenance teams who need to steer issues and tasks",
             "Organisations with multiple locations, units or assets",
             "Teams that register time/presence via Clock Point",
@@ -24,6 +26,8 @@
     "sectors": {
         "title": "Sectors",
         "items": [
+            "Cleaning and maintenance at customer sites",
+            "Construction and building sites",
             "Hospitals and care campuses",
             "Factories and warehouses",
             "Municipalities and government buildings",
@@ -40,7 +44,7 @@
             },
             {
                 "name": "Time",
-                "text": "Clock in/out and breaks via Clock Point QR, presence, timesheets, My hours and an optional per-team minimum break."
+                "text": "Clock in/out and breaks via Clock Point QR, GPS work visits on a unit pin, presence, timesheets, My hours and an optional per-team minimum break. Optional CIAO (RSZ Check In and Out) for cleaning; the construction scope is ready behind a feature flag until NSSO specs go live."
             },
             {
                 "name": "ESG",
@@ -65,7 +69,8 @@
         "items": [
             "GDPR-oriented design with public privacy and DPA documents",
             "Photos and text on public QR pages stay blurred until approval",
-            "Tenant isolation: data per organisation"
+            "Tenant isolation: data per organisation, no product sector on the tenant",
+            "Optional CIAO transfer (NISS, presence) to the Belgian NSSO — only if you turn it on"
         ]
     },
     "languages": {

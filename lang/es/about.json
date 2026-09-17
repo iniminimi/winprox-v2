@@ -1,34 +1,38 @@
 {
-    "meta_title": "Sobre WinProx | Facility por QR",
+    "meta_title": "Acerca de WinProx | Facility por QR",
     "social": {
-        "og_title": "Sobre WinProx | Facility por QR",
-        "og_description": "WinProx es una plataforma facility por QR: avisos, tareas, reloj Time opcional, ESG e IoT Connect — en el navegador, sin app."
+        "og_title": "Acerca de WinProx | Facility por QR",
+        "og_description": "WinProx es una plataforma facility por QR: incidencias, tareas, reloj Time opcional con visitas GPS, ESG e IoT Connect. También para equipos de limpieza y construcción in situ — en el navegador, sin app."
     },
-    "eyebrow": "Sobre WinProx",
+    "eyebrow": "Acerca de WinProx",
     "title": "¿Qué es WinProx?",
-    "lead": "WinProx es una plataforma de facility management por QR para avisos y tareas. Time (reloj de fichar), ESG e IoT Connect son opcionales — en el navegador, sin app nativa.",
+    "lead": "WinProx es una plataforma facility por QR para incidencias y tareas. También para equipos de limpieza y construcción que trabajan en el cliente o en la obra. Time (reloj, visitas GPS, CIAO opcional), ESG e IoT Connect son opcionales — en el navegador, sin app nativa.",
     "what": {
         "title": "Idea central",
-        "body": "Cada ubicación o unidad física tiene un portal QR digital. Ciudadanos y personal reportan defectos con el QR de unidad. Los operarios se identifican con el QR Clock Point y cierran tareas in situ. Los gestores siguen todo en un workspace: incidencia → tareas → cierre."
+        "body": "Cada sede o unidad física tiene un portal QR digital. Ciudadanos y personal comunican defectos con el QR de unidad. Los ejecutores se identifican con el QR Clock Point, inician y detienen el trabajo en el pin de la unidad (visitas GPS) y cierran tareas in situ. La gestión sigue todo en un workspace: incidencia → tareas → cierre. Una sola app Facility — no hay edición aparte de limpieza o construcción."
     },
     "audience": {
         "title": "Para quién",
         "items": [
+            "Equipos de limpieza y mantenimiento que trabajan en sedes de clientes",
+            "Equipos de construcción y obra que fichan, registran visitas y cierran tareas in situ",
             "Equipos de facility y mantenimiento que dirigen incidencias y tareas",
-            "Organizaciones con varias ubicaciones, unidades o activos",
-            "Equipos que registran tiempo/presencia vía Clock Point",
+            "Organizaciones con varias sedes, unidades o activos",
+            "Equipos que registran tiempo/presencia con Clock Point",
             "Organizaciones que quieren mediciones ESG en los mismos portales",
-            "Organizaciones que quieren vincular sensores y gateways a las mismas incidencias y tareas (IoT Connect)"
+            "Organizaciones que quieren sensores y pasarelas en las mismas incidencias y tareas (IoT Connect)"
         ]
     },
     "sectors": {
         "title": "Sectores",
         "items": [
+            "Limpieza y mantenimiento en sedes de clientes",
+            "Construcción y obras",
             "Hospitales y campus sanitarios",
             "Fábricas y almacenes",
             "Ayuntamientos y edificios públicos",
             "Puertos, logística y oficinas",
-            "Inmobiliario y gestión de propiedades"
+            "Inmobiliaria y gestión de patrimonio"
         ]
     },
     "modules": {
@@ -40,15 +44,15 @@
             },
             {
                 "name": "Time",
-                "text": "Fichar entrada/salida y pausas vía QR Clock Point, presencia, parte de horas, Mis horas y pausa mínima opcional por equipo."
+                "text": "Fichaje de entrada/salida y pausas por QR Clock Point, visitas GPS en el pin de unidad, presencia, parte de horas, Mis horas y pausa mínima opcional por equipo. CIAO opcional (Check In and Out ONSS) para limpieza; el alcance de construcción está listo detrás de un feature-flag hasta que las specs de la ONSS estén en vivo."
             },
             {
                 "name": "ESG",
-                "text": "Mediciones e indicadores opcionales ligados a unidades y tareas de seguimiento."
+                "text": "Mediciones e indicadores opcionales, ligados a unidades y tareas de seguimiento."
             },
             {
                 "name": "IoT Connect",
-                "text": "Gateways de sensores opcionales: las alarmas se convierten en incidencias y tareas; en Corporate también mediciones ESG."
+                "text": "Pasarelas de sensores opcionales: las alarmas se convierten en incidencias y tareas; en Corporate también mediciones ESG."
             },
             {
                 "name": "API y webhooks",
@@ -58,27 +62,28 @@
     },
     "tech": {
         "title": "Tecnología",
-        "body": "Aplicación web (Laravel + Livewire). Los portales QR públicos funcionan en el móvil sin instalar nada. Multilingüe (NL, EN, FR, DE, ES, IT) con traducción IA opcional de textos de incidencia."
+        "body": "Aplicación web (Laravel + Livewire). Los portales QR públicos funcionan en el móvil sin instalación. Multilingüe (NL, EN, FR, DE, ES, IT) con traducción IA opcional de los textos de incidencia."
     },
     "compliance": {
         "title": "Privacidad y cumplimiento",
         "items": [
             "Diseño orientado al RGPD con documentos públicos de privacidad y DPA",
-            "Fotos y textos en páginas QR públicas permanecen difuminados hasta la aprobación",
-            "Aislamiento multi-tenant: datos por organización"
+            "Fotos y texto en páginas QR públicas permanecen difuminados hasta la aprobación",
+            "Aislamiento por tenant: datos por organización, sin sector de producto en el tenant",
+            "Envío CIAO opcional (NISS, presencia) a la ONSS belga — solo si lo activa"
         ]
     },
     "languages": {
         "title": "Idiomas",
         "body": "Interfaz y marketing en neerlandés, inglés, francés, alemán, español e italiano."
     },
-    "related_title": "Páginas relacionadas",
+    "related_title": "Seguir leyendo",
     "links": {
         "facility": "Facility",
         "time": "Time",
         "esg": "ESG",
         "qr": "Portales QR",
-        "api": "API & Webhooks",
+        "api": "API y Webhooks",
         "faq": "FAQ",
         "pricing": "Precios",
         "iot": "IoT Connect"

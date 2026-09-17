@@ -11,6 +11,13 @@ it('serveert about en feature-pagina\'s met JSON-LD', function () {
         ->assertSee('"@type":"Organization"', false)
         ->assertSee('"@type":"SoftwareApplication"', false);
 
+    $this->get(route('about', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee('Schoonmaak en onderhoud bij klanten', false)
+        ->assertSee('Bouw en werven', false)
+        ->assertSee('Ziekenhuizen en zorgcampussen', false)
+        ->assertSee('Vastgoed en vastgoedbeheer', false);
+
     foreach (['facility', 'time', 'esg', 'qr'] as $slug) {
         $response = $this->get(route('features.'.$slug, ['locale' => 'en']))
             ->assertOk()

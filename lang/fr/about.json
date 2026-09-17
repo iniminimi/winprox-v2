@@ -2,18 +2,20 @@
     "meta_title": "À propos de WinProx | Facility via QR",
     "social": {
         "og_title": "À propos de WinProx | Facility via QR",
-        "og_description": "WinProx est une plateforme facility par QR : signalements, tâches, pointeuse Time optionnelle, ESG et IoT Connect — dans le navigateur, sans appli."
+        "og_description": "WinProx est une plateforme facility par QR : signalements, tâches, pointeuse Time optionnelle avec visites GPS, ESG et IoT Connect. Aussi pour les équipes de nettoyage et de construction sur site — dans le navigateur, sans appli."
     },
     "eyebrow": "À propos de WinProx",
     "title": "Qu'est-ce que WinProx ?",
-    "lead": "WinProx est une plateforme de facility management par QR pour signalements et tâches. Time (pointeuse), ESG et IoT Connect sont optionnels — dans le navigateur, sans appli native.",
+    "lead": "WinProx est une plateforme facility par QR pour signalements et tâches. Aussi pour les équipes de nettoyage et de construction qui travaillent chez le client ou sur le chantier. Time (pointeuse, visites GPS, CIAO optionnel), ESG et IoT Connect sont optionnels — dans le navigateur, sans appli native.",
     "what": {
         "title": "Idée centrale",
-        "body": "Chaque site ou unité physique dispose d'un portail QR numérique. Citoyens et collaborateurs signalent des défauts via le QR unité. Les exécutants s'identifient via le QR Clock Point et traitent les tâches sur place. Les gestionnaires suivent tout dans un workspace : signalement → tâches → clôture."
+        "body": "Chaque site ou unité physique dispose d'un portail QR numérique. Citoyens et collaborateurs signalent des défauts via le QR unité. Les exécutants s'identifient via le QR Clock Point, démarrent et arrêtent le travail sur un pin d'unité (visites GPS) et traitent les tâches sur place. Les gestionnaires suivent tout dans un workspace : signalement → tâches → clôture. Une seule app Facility — pas d'édition nettoyage ou construction séparée."
     },
     "audience": {
         "title": "Pour qui",
         "items": [
+            "Équipes de nettoyage et d'entretien qui travaillent chez les clients",
+            "Équipes de construction et de chantier qui pointent, enregistrent les visites et terminent les tâches sur place",
             "Équipes facility et maintenance qui pilotent signalements et tâches",
             "Organisations avec plusieurs sites, unités ou assets",
             "Équipes qui enregistrent le temps/présence via Clock Point",
@@ -24,6 +26,8 @@
     "sectors": {
         "title": "Secteurs",
         "items": [
+            "Nettoyage et entretien chez les clients",
+            "Construction et chantiers",
             "Hôpitaux et campus de soins",
             "Usines et entrepôts",
             "Communes et bâtiments publics",
@@ -40,7 +44,7 @@
             },
             {
                 "name": "Time",
-                "text": "Pointage entrée/sortie et pauses via QR Clock Point, présence, feuille d’heures, Mes heures et pause minimale optionnelle par équipe."
+                "text": "Pointage entrée/sortie et pauses via QR Clock Point, visites GPS sur pin d'unité, présence, feuille d’heures, Mes heures et pause minimale optionnelle par équipe. CIAO optionnel (Check In and Out ONSS) pour le nettoyage ; le périmètre construction est prêt derrière un feature-flag jusqu’aux specs ONSS."
             },
             {
                 "name": "ESG",
@@ -65,7 +69,8 @@
         "items": [
             "Conception orientée RGPD avec documents privacy et DPA publics",
             "Photos et textes des pages QR publiques restent floutés jusqu'à approbation",
-            "Isolation multi-tenant : données par organisation"
+            "Isolation multi-tenant : données par organisation, pas de secteur produit sur le tenant",
+            "Transmission CIAO optionnelle (NISS, présence) vers l'ONSS belge — seulement si vous l'activez"
         ]
     },
     "languages": {
