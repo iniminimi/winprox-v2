@@ -84,7 +84,7 @@
                 },
                 {
                     "label": "Filters",
-                    "text": "Combineer status, team, zoekterm, terugkerend en inspectierondes om de lijst te verfijnen. De zoekterm zoekt in de omschrijving (brontekst en voltooide vertalingen), locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen. Zijbalk Werk → Inspectierondes opent deze pagina met titel Inspectierondes en filter Alleen inspectierondes (terugkerende meldingen met minstens twee ronde-stops)."
+                    "text": "Combineer status, team, zoekterm, terugkerend en inspectierondes om de lijst te verfijnen. De zoekterm zoekt in de omschrijving (brontekst en voltooide vertalingen), locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen. Zijbalk Werk → Inspectierondes opent deze pagina met titel Inspectierondes en filter Alleen inspectierondes (terugkerende meldingen met minstens twee ronde-stops). Op Inspectierondes ontbreekt het vinkje terugkerend (een ronde is altijd terugkerend) en de klik-hint van de meldingenlijst."
                 },
                 {
                     "label": "Download rapport",
@@ -950,6 +950,10 @@
                 {
                     "label": "In- en uitklokken",
                     "text": "Elke in-/uitklok of verplaatsing vraagt een verse scan van de Clock Point-QR op de vestiging — een open tab volstaat niet. Pauzes kan je op dezelfde gsm starten zonder nieuwe scan. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Gebruik daarna de unit-QR op locatie om taken te starten of af te ronden."
+                },
+                {
+                    "label": "Vandaag",
+                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je de kaart Vandaag: alleen bestemmingen die vandaag gepland zijn. Tik Navigeer voor de route in Google Maps. Start werk verschijnt pas als je ter plaatse bent. Open taken zonder datum blijven onder Open taken."
                 },
                 {
                     "label": "Evacuatielijst",

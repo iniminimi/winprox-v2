@@ -84,7 +84,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Kombinieren Sie Status, Team, Suchbegriff, wiederkehrend und Inspektionsrunden, um die Liste zu verfeinern. Der Suchbegriff durchsucht Beschreibung (Quelltext und fertige Übersetzungen), Standort, Adresse, PLZ, Ort, Unit und Melder. Drücken Sie GO! zum Anwenden. Die Seitenleiste Arbeit → Inspektionsrunden öffnet diese Seite mit Titel Inspektionsrunden und Filter Nur Inspektionsrunden (wiederkehrende Meldungen mit mindestens zwei Runden-Stops)."
+                    "text": "Kombinieren Sie Status, Team, Suchbegriff, wiederkehrend und Inspektionsrunden, um die Liste zu verfeinern. Der Suchbegriff durchsucht Beschreibung (Quelltext und fertige Übersetzungen), Standort, Adresse, PLZ, Ort, Unit und Melder. Drücken Sie GO! zum Anwenden. Die Seitenleiste Arbeit → Inspektionsrunden öffnet diese Seite mit Titel Inspektionsrunden und Filter Nur Inspektionsrunden (wiederkehrende Meldungen mit mindestens zwei Runden-Stops). Auf Inspektionsrunden fehlt das Häkchen „wiederkehrend“ (eine Runde ist immer wiederkehrend) und der Klick-Hinweis der Meldeliste."
                 },
                 {
                     "label": "Bericht herunterladen",

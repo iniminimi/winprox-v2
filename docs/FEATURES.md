@@ -499,7 +499,8 @@ stops meer zijn voor **deze** cyclus-taak.
   eerste taak. Bestaande melding-wizard blijft; rondestops daar optioneel.
 - **Beheer — lijst:** sidebar **Werk → Inspectierondes** opent dezelfde Meldingen-pagina
   met `?recurring=1&inspection_round=1` (titel/ondertitel/lege staat + filter
-  “Alleen inspectierondes”). Optioneel `?round_create=1` opent direct de plan-modal.
+  “Alleen inspectierondes”). Geen vinkje “terugkerend” en geen klik-hint van de
+  meldingenlijst: een ronde is altijd terugkerend. Optioneel `?round_create=1` opent direct de plan-modal.
 - Label: **Ronde · N stops**. Geen ESG op ronde-issues.
 - Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).
 - Taak↔unit (2b): `issue.unit_id = U` **óf** U is stop — via `TaskBelongsToUnitAction`
@@ -715,6 +716,15 @@ productsector op `Tenant`.
   bezoek blijven het bestaande OUT/IN. placeOfWork = gsm-coords of unit-pin; DDT blijft op
   de locatie (klant).
 - Publieke winprox.app-homepage doet **geen** GPS-voorstel van bedrijven.
+- **Clock Point na inklokken (Time + GPS-werkbezoeken):** kaart **Vandaag** = waar de
+  uitvoerder *vandaag* naartoe moet. Bron: open teamtaken met `scheduled_for` of
+  `due_at` vandaag (inspectiestops uitgeklapt) + optioneel de gepubliceerde
+  roostercel van vandaag met `unit_id`. **Geen** undated open taken (die blijven
+  onder Open taken). Per rij: locatie · unit · adres · **Navigeer** (Google Maps
+  deep link: unit-pin, anders locatieadres — nooit `unit_gps_reports`).
+  **Start werk** alleen binnen de bestaande GPS-straal via `StartWorkVisitAction`.
+  Navigeer maakt geen `WorkVisit` en geen CIAO. **Zoek werkplek in de buurt** blijft
+  voor ongepland werk. Een dienst met nul bezoeken blijft geldig.
 - **Beheer:** Werk → **Werkbezoeken** toont de historiek (periode, uitvoerder, locatie,
   open/afgesloten), één kader per uitvoerder per dag met duur per locatie. Time → **Aanwezigheid** toont het
   open werkbezoek (locatie · unit).

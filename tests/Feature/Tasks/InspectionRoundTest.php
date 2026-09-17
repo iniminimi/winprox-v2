@@ -804,6 +804,8 @@ it('shows inspection-rounds page chrome for the sidebar deep link', function () 
         ->assertSee(__('issues.list.inspection_rounds'), false)
         ->assertSee(__('issues.list.subtitle_inspection_rounds'), false)
         ->assertSee(__('issues.filter.inspection_rounds_only'), false)
+        ->assertDontSee(__('issues.filter.recurring_only'), false)
+        ->assertDontSee(__('issues.filter.hint'), false)
         ->assertSee(__('issues.filter.reset'), false);
 });
 

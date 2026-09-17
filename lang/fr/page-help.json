@@ -84,7 +84,7 @@
                 },
                 {
                     "label": "Filtres",
-                    "text": "Combinez statut, équipe, recherche, récurrent et tournées d’inspection pour affiner la liste. La recherche porte sur la description (texte source et traductions terminées), le site, l’adresse, le code postal, la ville, l’unité et le déclarant. Appuyez sur GO! pour appliquer. La barre latérale Travail → Tournées d’inspection ouvre cette page intitulée Tournées d’inspection avec le filtre Tournées d’inspection uniquement (signalements récurrents avec au moins deux arrêts de tournée)."
+                    "text": "Combinez statut, équipe, recherche, récurrent et tournées d’inspection pour affiner la liste. La recherche porte sur la description (texte source et traductions terminées), le site, l’adresse, le code postal, la ville, l’unité et le déclarant. Appuyez sur GO! pour appliquer. La barre latérale Travail → Tournées d’inspection ouvre cette page intitulée Tournées d’inspection avec le filtre Tournées d’inspection uniquement (signalements récurrents avec au moins deux arrêts de tournée). Sur Tournées d’inspection, la case récurrent est masquée (une tournée est toujours récurrente) ainsi que l’indication de clic de la liste des signalements."
                 },
                 {
                     "label": "Télécharger le rapport",

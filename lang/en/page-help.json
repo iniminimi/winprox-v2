@@ -84,7 +84,7 @@
                 },
                 {
                     "label": "Filters",
-                    "text": "Combine status, team, search term, recurring and inspection rounds to refine the list. The search term looks in the description (source text and completed translations), location, address, postcode, city, unit and reporter. Press GO! to apply. Sidebar Work → Inspection rounds opens this page titled Inspection rounds with the Inspection rounds only filter (recurring issues with at least two round stops)."
+                    "text": "Combine status, team, search term, recurring and inspection rounds to refine the list. The search term looks in the description (source text and completed translations), location, address, postcode, city, unit and reporter. Press GO! to apply. Sidebar Work → Inspection rounds opens this page titled Inspection rounds with the Inspection rounds only filter (recurring issues with at least two round stops). On Inspection rounds the recurring checkbox is hidden (a round is always recurring) and the issues click-hint is omitted."
                 },
                 {
                     "label": "Download report",

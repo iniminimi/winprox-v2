@@ -79,10 +79,12 @@
                                placeholder="{{ __('issues.filter.search_placeholder') }}">
                     </div>
                     <div class="wp-filter-cell wp-filter-cell--recurring">
-                        <label class="wp-check">
-                            <input type="checkbox" wire:model.defer="recurring" @disabled($inspectionRoundOnly)>
-                            {{ __('issues.filter.recurring_only') }}
-                        </label>
+                        @unless ($inspectionRoundOnly)
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model.defer="recurring">
+                                {{ __('issues.filter.recurring_only') }}
+                            </label>
+                        @endunless
                         <label class="wp-check">
                             <input type="checkbox" wire:model.live="inspectionRoundOnly">
                             {{ __('issues.filter.inspection_rounds_only') }}
@@ -96,7 +98,9 @@
                         @endif
                     </div>
                 </div>
-                <p class="wp-hint wp-filter-panel-hint">{{ __('issues.filter.hint') }}</p>
+                @unless ($inspectionRoundOnly)
+                    <p class="wp-hint wp-filter-panel-hint">{{ __('issues.filter.hint') }}</p>
+                @endunless
             </div>
         @endif
 

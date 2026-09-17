@@ -84,7 +84,7 @@
                 },
                 {
                     "label": "Filtros",
-                    "text": "Combina estado, equipo, búsqueda, recurrente y rondas de inspección para refinar la lista. La búsqueda mira en la descripción (texto fuente y traducciones completadas), ubicación, dirección, código postal, ciudad, unidad y denunciante. Pulsa GO! para aplicar. La barra lateral Trabajo → Rondas de inspección abre esta página titulada Rondas de inspección con el filtro Solo rondas de inspección (incidencias recurrentes con al menos dos paradas de ronda)."
+                    "text": "Combina estado, equipo, búsqueda, recurrente y rondas de inspección para refinar la lista. La búsqueda mira en la descripción (texto fuente y traducciones completadas), ubicación, dirección, código postal, ciudad, unidad y denunciante. Pulsa GO! para aplicar. La barra lateral Trabajo → Rondas de inspección abre esta página titulada Rondas de inspección con el filtro Solo rondas de inspección (incidencias recurrentes con al menos dos paradas de ronda). En Rondas de inspección no aparece la casilla de recurrentes (una ronda siempre es recurrente) ni la pista de clic de la lista de incidencias."
                 },
                 {
                     "label": "Descargar informe",
