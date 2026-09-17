@@ -8,7 +8,6 @@ use App\Actions\Time\RenewClockPointQrAction;
 use App\Actions\Time\SetClockPointActiveAction;
 use App\Actions\Time\UpdateClockPointAction;
 use App\Actions\Time\UpdateTenantTimeQrRotationMonthsAction;
-use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Http\Requests\Time\StoreClockPointRequest;
 use App\Http\Requests\Time\UpdateClockPointRequest;
 use App\Models\AuditLog;
@@ -27,7 +26,6 @@ use Livewire\Component;
 class ClockPointsIndex extends Component
 {
     use AuthorizesRequests;
-    use ProvidesTimeNavAlarmCount;
 
     public bool $showModal = false;
     public bool $showQrPackModal = false;
@@ -197,7 +195,6 @@ class ClockPointsIndex extends Component
                 ->where('action', 'clock_point.qr_blocked')
                 ->where('created_at', '>=', now()->subDays(7))
                 ->count(),
-            'alarmCount' => $this->timeNavAlarmCount(),
             'qrPackClockPoint' => $qrPackClockPoint,
             'qrPackTemplates' => QrStickerSheetTemplate::printableDownloadCases(),
         ]);

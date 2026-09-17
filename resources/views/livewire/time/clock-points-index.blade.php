@@ -14,8 +14,6 @@
         @endcan
     </div>
 
-    @include('partials.wp-time-nav', ['alarmCount' => $alarmCount])
-
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif

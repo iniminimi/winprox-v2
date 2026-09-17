@@ -126,6 +126,7 @@ it('toont Clock Points als paginatitel en QR-rotatie standaard ingeklapt', funct
         ->test(ClockPointsIndex::class)
         ->assertSeeHtml('>'.e(__('time.clock_points.title')).'</h1>')
         ->assertDontSeeHtml('>'.e(__('time.title')).'</h1>')
+        ->assertDontSee('wp-time-nav', false)
         ->assertSee('video/assistant_time.mp4', false)
         ->assertSee('wp-page-icon--assistant', false)
         ->assertSee(__('time.clock_points.qr.rotation_title'))
