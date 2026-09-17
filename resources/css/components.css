@@ -4348,6 +4348,34 @@ svg.wp-release-worker-row__icon,
     font-weight: 800;
 }
 
+.wp-field-sync-status[hidden] {
+    display: none !important;
+}
+
+[data-wp-task][data-wp-local-status="started"] [data-wp-task-start] {
+    display: none;
+}
+
+[data-wp-task]:not([data-wp-can-complete="1"]):not([data-wp-local-status="started"]) [data-wp-task-complete] {
+    display: none;
+}
+
+[data-wp-task][data-wp-local-status="completed"] [data-wp-task-actions] {
+    display: none;
+}
+
+[data-wp-task-local-done] {
+    display: none;
+}
+
+[data-wp-task][data-wp-local-status="completed"] [data-wp-task-local-done] {
+    display: block;
+}
+
+[data-wp-task][data-wp-local-status="completed"] [data-wp-complete-form] {
+    display: none;
+}
+
 .wp-form-error-list {
     margin: 0;
     padding-left: 1.25rem;

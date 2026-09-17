@@ -45,6 +45,7 @@ use App\Http\Controllers\UnitChecks\UnitCheckPrintController;
 use App\Http\Controllers\UnitMeasurements\UnitMeasurementExportController;
 use App\Http\Controllers\UnitMeasurements\UnitMeasurementPrintController;
 use App\Http\Controllers\UserDataExportController;
+use App\Http\Controllers\Portal\FieldSyncController;
 use App\Http\Controllers\WelcomeController;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
@@ -164,6 +165,9 @@ Route::get('/melden/e/{token}', ConfirmQrReportEmail::class)
     ->name('public.qr-report-email-confirm');
 Route::redirect('/melden/bevestig-email/{token}', '/melden/e/{token}', 301);
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
+Route::post('/portal/field-sync', FieldSyncController::class)
+    ->middleware('throttle:60,1')
+    ->name('portal.field-sync');
 Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
 Route::get('/reservations/confirm/{token}', ReservationConfirm::class)->name('reservations.confirm');
 Route::get('/reservations/manage/{token}', ReservationManage::class)->name('reservations.manage');

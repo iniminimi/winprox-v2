@@ -90,6 +90,22 @@
     <script>
         window.__translations = window.__translations || {};
         window.__translations['portal.unit.upload_failed_offline'] = @json(__('portal.unit.upload_failed_offline'));
+        window.__translations['portal.field_sync.online'] = @json(__('portal.field_sync.online'));
+        window.__translations['portal.field_sync.saved_on_device'] = @json(__('portal.field_sync.saved_on_device'));
+        window.__translations['portal.field_sync.syncing'] = @json(__('portal.field_sync.syncing'));
+        window.__translations['portal.field_sync.synced'] = @json(__('portal.field_sync.synced'));
+        window.__translations['portal.field_sync.error'] = @json(__('portal.field_sync.error'));
+        window.__translations['portal.field_sync.queue_full'] = @json(__('portal.field_sync.queue_full'));
+        window.__translations['portal.field_sync.will_sync'] = @json(__('portal.field_sync.will_sync'));
+        window.__wpFieldSync = Object.assign(window.__wpFieldSync || {}, {
+            url: @json(route('portal.field-sync')),
+        });
+        if ('serviceWorker' in navigator) {
+            const path = window.location.pathname;
+            if (path.startsWith('/melden') || path.startsWith('/time')) {
+                navigator.serviceWorker.register('/sw-portal.js', { scope: '/' }).catch(() => {});
+            }
+        }
     </script>
 </body>
 </html>

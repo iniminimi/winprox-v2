@@ -56,7 +56,7 @@
             },
             {
                 "title": "QR-portals",
-                "body": "Unit-QR: problemen melden, optioneel unit check (OK/Niet OK) en optioneel unitmetingen (km, temperatuur, status). Clock Point-QR: aanmelden (naam + icoon) en teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden. Ongeldige of vervallen QR-codes tonen een korte foutmelding met een knop naar de startpagina. Clock Point toont alleen uitvoerders die op die vestiging mogen inklokken. Per categorie kun je vroegere meldingen op de unit-QR uitzetten."
+                "body": "Unit-QR: problemen melden, optioneel unit check (OK/Niet OK) en optioneel unitmetingen (km, temperatuur, status). Clock Point-QR: aanmelden (naam + icoon) en teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden. Ongeldige of vervallen QR-codes tonen een korte foutmelding met een knop naar de startpagina. Clock Point toont alleen uitvoerders die op die vestiging mogen inklokken. Per categorie kun je vroegere meldingen op de unit-QR uitzetten. Uitvoerders die de unit-QR online hebben geopend, kunnen taken starten en afronden, een melding maken (met foto’s) en een unit check doen zonder bereik; die acties blijven op het toestel en gaan automatisch de lucht in zodra er weer verbinding is. In-/uitklokken op Clock Point blijft online en vraagt een verse QR-scan."
             },
             {
                 "title": "Unit checks",
@@ -223,6 +223,7 @@
                 "title": "Beschikbaarheid",
                 "items": [
                     "24/7 bereikbaar als SaaS (browser + QR-portalen).",
+                    "Unit-QR: een geladen pagina blijft bruikbaar zonder netwerk voor taken, meldingen en unit checks; synchronisatie bij herstel. Clock Point-prik vereist online + verse QR-scan.",
                     "Gepland onderhoud: bij voorkeur buiten kantooruren, met aankondiging waar mogelijk.",
                     "Formele uptime-SLA: op vraag contractueel af te spreken."
                 ]
@@ -235,6 +236,7 @@
                     "**SSO** (één bedrijfs-login via Microsoft Entra): op desktop voor beheerder en medewerker (**Inloggen met Microsoft**). Alleen bestaande WinProx-accounts (e-mail gelijk aan het Microsoft-account); e-mail + wachtwoord blijft werken. Geen automatische nieuwe accounts. Uitvoerders blijven Clock Point-QR (naam + icoon). Koppeling met andere software (Ultimo, IWMS, …) loopt via API-sleutels, niet via SSO.",
                     "API: persoonlijke **toegangssleutel** (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.",
                     "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon (of optionele PIN). Eén gsm per uitvoerder; het icoon wordt na aanmelden niet getoond.",
+                    "Offline veldacties op de unit-QR lopen via POST /portal/field-sync met de toestelcookie (geen API-token). Dezelfde client_id maakt geen dubbele melding of taakwijziging.",
                     "Melders: publiek QR-portaal zonder account. Optioneel mailboxbewijs (categorie én unit): geen login; de melding ontstaat pas na de link in de mail.",
                     "Collega met **Prikklok-team** krijgt een gekoppeld uitvoerderprofiel voor Clock Point (naam + icoon); telt niet dubbel als licentie."
                 ]

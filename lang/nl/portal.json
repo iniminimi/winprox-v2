@@ -337,5 +337,17 @@
             "no_fields": "Geen meetvelden gekoppeld.",
             "value_required": "Vul een waarde in."
         }
+    },
+    "field_sync": {
+        "online": "Online",
+        "saved_on_device": "Opgeslagen op toestel",
+        "syncing": "Synchroniseren",
+        "synced": "Gesynchroniseerd",
+        "error": "Synchronisatie mislukt",
+        "will_sync": "Wordt gesynchroniseerd zodra er weer verbinding is.",
+        "queue_full": "Te veel offline acties. Maak verbinding om te synchroniseren.",
+        "photo_missing": "Een foto kon niet worden bewaard. Probeer het opnieuw.",
+        "check_recorded": "Check bewaard.",
+        "report_saved": "Melding bewaard."
     }
 }

@@ -846,15 +846,15 @@
                 },
                 {
                     "label": "Démarrer",
-                    "text": "Allez vers \"Tâches ouvertes\" et cliquez sur \"Démarrer la tâche\". Les autres membres verront ensuite que vous travaillez sur cette tâche et le statut change en \"En cours\". Une fois terminé, cliquez sur \"Traiter la tâche\"."
+                    "text": "Allez vers \"Tâches ouvertes\" et cliquez sur \"Démarrer la tâche\". Les autres membres verront ensuite que vous travaillez sur cette tâche et le statut change en \"En cours\". Une fois terminé, cliquez sur \"Traiter la tâche\". Sans réseau, le démarrage est enregistré sur l’appareil et envoyé plus tard."
                 },
                 {
                     "label": "Terminer",
-                    "text": "Après avoir démarré la tâche, terminez-la en cliquant sur \"Traiter la tâche\". Ici vous pouvez ajouter une courte note et éventuellement joindre des photos. Parfois le portail demande une valeur de mesure (p. ex. un relevé de compteur) — saisissez-la avant de confirmer. La tâche obtient ensuite le statut \"Traité\"."
+                    "text": "Après avoir démarré la tâche, terminez-la en cliquant sur \"Traiter la tâche\". Ici vous pouvez ajouter une courte note et éventuellement joindre des photos. Parfois le portail demande une valeur de mesure (p. ex. un relevé de compteur) — saisissez-la avant de confirmer. La tâche obtient ensuite le statut \"Traité\". Sans réseau, la note et les photos restent sur l’appareil jusqu’au retour de la connexion."
                 },
                 {
                     "label": "Contrôle d’unité",
-                    "text": "Lorsque catégorie et unit autorisent les contrôles, les exécutants connectés voient la tuile Contrôle d’unité. Enregistrez OK ou Non OK, éventuellement avec checklist. OK ne crée pas de signalement ; après Non OK, un signalement peut suivre."
+                    "text": "Lorsque catégorie et unit autorisent les contrôles, les exécutants connectés voient la tuile Contrôle d’unité. Enregistrez OK ou Non OK, éventuellement avec checklist. OK ne crée pas de signalement ; après Non OK, un signalement peut suivre. Sans réseau, le contrôle est enregistré sur l’appareil et envoyé plus tard."
                 },
                 {
                     "label": "Enregistrer la position GPS",

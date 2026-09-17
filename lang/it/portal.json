@@ -337,5 +337,17 @@
             "no_fields": "Nessun campo collegato.",
             "value_required": "Inserisci un valore."
         }
+    },
+    "field_sync": {
+        "online": "Online",
+        "saved_on_device": "Salvato sul dispositivo",
+        "syncing": "Sincronizzazione",
+        "synced": "Sincronizzato",
+        "error": "Sincronizzazione non riuscita",
+        "will_sync": "Verrà sincronizzato quando la connessione sarà di nuovo disponibile.",
+        "queue_full": "Troppe azioni offline. Connettersi per sincronizzare.",
+        "photo_missing": "Impossibile salvare una foto. Riprovare.",
+        "check_recorded": "Check salvato.",
+        "report_saved": "Segnalazione salvata."
     }
 }

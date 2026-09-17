@@ -337,5 +337,17 @@
             "no_fields": "Aucun champ lié.",
             "value_required": "Saisissez une valeur."
         }
+    },
+    "field_sync": {
+        "online": "En ligne",
+        "saved_on_device": "Enregistré sur l'appareil",
+        "syncing": "Synchronisation",
+        "synced": "Synchronisé",
+        "error": "Échec de la synchronisation",
+        "will_sync": "Sera synchronisé dès que la connexion reviendra.",
+        "queue_full": "Trop d'actions hors ligne. Reconnectez-vous pour synchroniser.",
+        "photo_missing": "Une photo n'a pas pu être enregistrée. Réessayez.",
+        "check_recorded": "Contrôle enregistré.",
+        "report_saved": "Signalement enregistré."
     }
 }

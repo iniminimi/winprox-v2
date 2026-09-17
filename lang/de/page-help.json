@@ -838,15 +838,15 @@
                 },
                 {
                     "label": "Starten",
-                    "text": "Gehen Sie zu \"Offene Aufgaben\" und klicken Sie auf \"Aufgabe starten\". Andere Teammitglieder sehen anschließend, dass Sie an dieser Aufgabe arbeiten, und der Status ändert sich zu \"In Bearbeitung\". Sobald Sie fertig sind, klicken Sie auf \"Aufgabe erledigen\"."
+                    "text": "Gehen Sie zu \"Offene Aufgaben\" und klicken Sie auf \"Aufgabe starten\". Andere Teammitglieder sehen anschließend, dass Sie an dieser Aufgabe arbeiten, und der Status ändert sich zu \"In Bearbeitung\". Sobald Sie fertig sind, klicken Sie auf \"Aufgabe erledigen\". Ohne Empfang wird das Starten auf dem Gerät gespeichert und später gesendet."
                 },
                 {
                     "label": "Abschließen",
-                    "text": "Nachdem Sie die Aufgabe gestartet haben, schließen Sie sie ab, indem Sie auf \"Aufgabe erledigen\" klicken. Hier können Sie eine kurze Notiz hinzufügen und optional Fotos beifügen. Manchmal fragt das Portal nach einem Messwert (z. B. einem Zählerstand) — geben Sie ihn ein, bevor Sie bestätigen. Die Aufgabe erhält anschließend den Status \"Erledigt\"."
+                    "text": "Nachdem Sie die Aufgabe gestartet haben, schließen Sie sie ab, indem Sie auf \"Aufgabe erledigen\" klicken. Hier können Sie eine kurze Notiz hinzufügen und optional Fotos beifügen. Manchmal fragt das Portal nach einem Messwert (z. B. einem Zählerstand) — geben Sie ihn ein, bevor Sie bestätigen. Die Aufgabe erhält anschließend den Status \"Erledigt\". Ohne Empfang bleiben Notiz und Fotos auf dem Gerät, bis wieder Verbindung besteht."
                 },
                 {
                     "label": "Unit-Check",
-                    "text": "Wenn Kategorie und Unit Unit-Checks erlauben, sehen angemeldete Ausführer die Kachel Unit-Check. Erfassen Sie OK oder Nicht OK, optional mit Checkliste. OK erstellt keine Meldung; nach Nicht OK kann eine Meldung folgen."
+                    "text": "Wenn Kategorie und Unit Unit-Checks erlauben, sehen angemeldete Ausführer die Kachel Unit-Check. Erfassen Sie OK oder Nicht OK, optional mit Checkliste. OK erstellt keine Meldung; nach Nicht OK kann eine Meldung folgen. Ohne Empfang wird der Check auf dem Gerät gespeichert und später gesendet."
                 },
                 {
                     "label": "GPS-Standort (neu) erfassen",

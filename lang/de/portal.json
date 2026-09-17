@@ -337,5 +337,17 @@
             "no_fields": "Keine Messfelder verknüpft.",
             "value_required": "Wert eingeben."
         }
+    },
+    "field_sync": {
+        "online": "Online",
+        "saved_on_device": "Auf dem Gerät gespeichert",
+        "syncing": "Synchronisierung",
+        "synced": "Synchronisiert",
+        "error": "Synchronisierung fehlgeschlagen",
+        "will_sync": "Wird synchronisiert, sobald die Verbindung wieder da ist.",
+        "queue_full": "Zu viele Offline-Aktionen. Stellen Sie eine Verbindung her, um zu synchronisieren.",
+        "photo_missing": "Ein Foto konnte nicht gespeichert werden. Bitte erneut versuchen.",
+        "check_recorded": "Check gespeichert.",
+        "report_saved": "Meldung gespeichert."
     }
 }

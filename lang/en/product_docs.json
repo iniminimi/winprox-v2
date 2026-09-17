@@ -56,7 +56,7 @@
             },
             {
                 "title": "QR portals",
-                "body": "Unit QR: report issues, plus an optional unit check (quick OK or Not OK). Clock Point QR: sign in (name + icon) and team tasks; clock in/out only with Time (punch clock). Location QR. Printable as sticker sheet (Avery) or full-page A6/A5/A4. Dynamic QRs that can be linked to a unit later. Invalid or expired QR codes show a short error with a button to the homepage. Per category you can hide previous reports on the unit QR."
+                "body": "Unit QR: report issues, plus an optional unit check (quick OK or Not OK). Clock Point QR: sign in (name + icon) and team tasks; clock in/out only with Time (punch clock). Location QR. Printable as sticker sheet (Avery) or full-page A6/A5/A4. Dynamic QRs that can be linked to a unit later. Invalid or expired QR codes show a short error with a button to the homepage. Per category you can hide previous reports on the unit QR. Workers who opened the unit QR online can start and complete tasks, create a report (with photos) and do a unit check without coverage; those actions stay on the device and sync automatically when the connection returns. Clock in/out at Clock Point stays online and still needs a fresh QR scan."
             },
             {
                 "title": "Unit checks",
@@ -223,6 +223,7 @@
                 "title": "Availability",
                 "items": [
                     "Available 24/7 as SaaS (browser + QR portals).",
+                    "Unit QR: a loaded page stays usable without network for tasks, reports and unit checks; it syncs when connectivity returns. Clock Point punches stay online and need a fresh QR scan.",
                     "Planned maintenance preferably outside business hours, with notice where possible.",
                     "Formal uptime SLA: available contractually on request."
                 ]
@@ -235,6 +236,7 @@
                     "**SSO** (one work login via Microsoft Entra): for admins and employees on desktop (**Sign in with Microsoft**). Only existing WinProx accounts (email must match the Microsoft account); email + password still works. No automatic new accounts. Workers stay on Clock Point QR (name + icon). Connecting other software (Ultimo, IWMS, …) uses API tokens, not SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon (or optional PIN). One phone per worker; the icon is hidden after sign-in.",
+                    "Offline field actions on the unit QR go through POST /portal/field-sync with the device cookie (no API token). The same client_id does not create a duplicate issue or task change.",
                     "Reporters: public QR portal without an account. Optional mailbox proof (category and unit): no login; the issue is created only after the link in the mail.",
                     "Colleague with **punch-clock team** gets a linked worker profile for Clock Point (name + icon); does not count twice towards the licence."
                 ]

@@ -337,5 +337,17 @@
             "no_fields": "No measure fields linked.",
             "value_required": "Enter a value."
         }
+    },
+    "field_sync": {
+        "online": "Online",
+        "saved_on_device": "Saved on device",
+        "syncing": "Syncing",
+        "synced": "Synced",
+        "error": "Sync failed",
+        "will_sync": "Will sync when the connection is restored.",
+        "queue_full": "Too many offline actions. Connect to sync.",
+        "photo_missing": "A photo could not be saved. Please try again.",
+        "check_recorded": "Check saved.",
+        "report_saved": "Report saved."
     }
 }

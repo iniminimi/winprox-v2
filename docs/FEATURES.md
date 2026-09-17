@@ -1240,6 +1240,11 @@ Bedoeld voor gedeelde telefoons op de werkvloer:
   (notitie/foto's); taak → `Afgehandeld` (`completed_at`).
 - **Rollup**: zijn er geen open taken meer op de melding → melding → `Gesloten`.
 - Worker ziet de **melder-foto's** bij de taak (op de publieke worker-weergave).
+- **Offline veld (fase 1):** wie de unit-QR online heeft geladen, kan zonder bereik taken
+  starten/afronden, een melding maken (met foto's) en een unit check doen. Acties gaan in een
+  IndexedDB-outbox en POST `/portal/field-sync` (toestelcookie + CSRF, bestaande Actions,
+  idempotent via `field_sync_receipts`). In-/uitklokken op Clock Point blijft **online** en
+  vraagt een verse QR-scan. Geen Livewire-offline, geen worker-tokens, geen PWA-install.
 
 ### Toegang/gating (oud: `ResidentPortalAccess`)
 Portaal **inactief** (alle acties no-op, toon reden) bij o.a.: tenant zonder geldig abonnement,

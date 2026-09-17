@@ -838,15 +838,15 @@
                 },
                 {
                     "label": "Iniciar",
-                    "text": "Vaya a «Tareas abiertas» y haga clic en «Iniciar tarea». Los demás miembros del equipo verán entonces que está trabajando en esta tarea y el estado cambia a «En curso». Una vez terminado, haga clic en «Completar tarea»."
+                    "text": "Vaya a «Tareas abiertas» y haga clic en «Iniciar tarea». Los demás miembros del equipo verán entonces que está trabajando en esta tarea y el estado cambia a «En curso». Una vez terminado, haga clic en «Completar tarea». Sin cobertura, el inicio se guarda en el dispositivo y se envía más tarde."
                 },
                 {
                     "label": "Completar",
-                    "text": "Tras haber iniciado la tarea, complétela haciendo clic en «Completar tarea». Aquí puede añadir una nota breve y opcionalmente adjuntar fotos. A veces el portal pide un valor de medición (p. ej. una lectura de contador) — introdúzcalo antes de confirmar. La tarea obtiene entonces el estado «Completada»."
+                    "text": "Tras haber iniciado la tarea, complétela haciendo clic en «Completar tarea». Aquí puede añadir una nota breve y opcionalmente adjuntar fotos. A veces el portal pide un valor de medición (p. ej. una lectura de contador) — introdúzcalo antes de confirmar. La tarea obtiene entonces el estado «Completada». Sin cobertura, la nota y las fotos quedan en el dispositivo hasta que vuelva la conexión."
                 },
                 {
                     "label": "Comprobación de unit",
-                    "text": "Si categoría y unit permiten comprobaciones, los ejecutores conectados ven la baldosa Comprobación de unit. Registre OK o No OK, opcionalmente con checklist. OK no crea aviso; tras No OK puede seguir un aviso."
+                    "text": "Si categoría y unit permiten comprobaciones, los ejecutores conectados ven la baldosa Comprobación de unit. Registre OK o No OK, opcionalmente con checklist. OK no crea aviso; tras No OK puede seguir un aviso. Sin cobertura, la comprobación se guarda en el dispositivo y se envía más tarde."
                 },
                 {
                     "label": "Capturar ubicación GPS",

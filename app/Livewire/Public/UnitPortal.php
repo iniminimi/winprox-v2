@@ -1266,7 +1266,7 @@ class UnitPortal extends Component
             if (in_array($this->portalSection, ['home', 'measure'], true) && $unit->allowsUnitMeasurements()) {
                 $measureFields = $unit->activeMeasureFields()->orderBy('name')->get();
             }
-            if ($this->portalSection === 'unit_check' && $canAct) {
+            if ($canAct && $unit->allowsUnitChecks()) {
                 $unit->loadMissing(['unitCheckList.items', 'unitCheckList.translations']);
                 if ($unit->unitCheckList?->is_active) {
                     $unitCheckList = $unit->unitCheckList;

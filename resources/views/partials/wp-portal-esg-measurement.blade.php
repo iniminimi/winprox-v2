@@ -12,6 +12,7 @@
                        step="1"
                        inputmode="numeric"
                        class="wp-input"
+                       data-wp-esg-numeric
                        wire:model="completingEsgValueNumeric"
                        placeholder="{{ __('esg.portal.numeric_placeholder') }}">
                 @if (filled($indicator->unit_of_measure))
@@ -20,7 +21,7 @@
             </div>
             @error('completingEsgValueNumeric') <p class="wp-error">{{ $message }}</p> @enderror
         @elseif ($indicator->type === \App\Enums\EsgIndicatorType::Boolean)
-            <select id="esg-value-{{ $task->id }}" class="wp-select" wire:model="completingEsgValueBoolean">
+            <select id="esg-value-{{ $task->id }}" class="wp-select" data-wp-esg-boolean wire:model="completingEsgValueBoolean">
                 <option value="">{{ __('esg.portal.boolean_choose') }}</option>
                 <option value="1">{{ __('esg.portal.boolean_yes') }}</option>
                 <option value="0">{{ __('esg.portal.boolean_no') }}</option>
@@ -30,11 +31,12 @@
             <input id="esg-value-{{ $task->id }}"
                    type="text"
                    class="wp-input"
+                   data-wp-esg-string
                    wire:model="completingEsgValueString"
                    placeholder="{{ __('esg.portal.string_placeholder') }}">
             @error('completingEsgValueString') <p class="wp-error">{{ $message }}</p> @enderror
         @elseif ($indicator->type === \App\Enums\EsgIndicatorType::Choice)
-            <select id="esg-value-{{ $task->id }}" class="wp-select" wire:model="completingEsgValueString">
+            <select id="esg-value-{{ $task->id }}" class="wp-select" data-wp-esg-string wire:model="completingEsgValueString">
                 <option value="">{{ __('esg.portal.choice_choose') }}</option>
                 @foreach ($indicator->normalizedChoiceOptions() as $option)
                     <option value="{{ $option }}">{{ $indicator->localizedChoiceOptionLabel($option, $locale ?? null) }}</option>
@@ -47,6 +49,7 @@
                     <label class="wp-cluster wp-cluster--tight" wire:key="esg-multi-choice-{{ $task->id }}-{{ $loop->index }}">
                         <input type="checkbox"
                                value="{{ $option }}"
+                               data-wp-esg-multi
                                wire:model="completingEsgValueMultiChoice">
                         <span>{{ $indicator->localizedChoiceOptionLabel($option, $locale ?? null) }}</span>
                     </label>
@@ -57,6 +60,7 @@
             <textarea id="esg-value-{{ $task->id }}"
                       class="wp-textarea"
                       rows="3"
+                      data-wp-esg-json
                       wire:model="completingEsgValueJson"
                       placeholder="{{ __('esg.portal.json_placeholder') }}"></textarea>
             @error('completingEsgValueJson') <p class="wp-error">{{ $message }}</p> @enderror

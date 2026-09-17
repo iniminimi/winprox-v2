@@ -838,15 +838,15 @@
                 },
                 {
                     "label": "Start",
-                    "text": "Go to \"Open tasks\" and click on \"Start task\". Other team members will then see that you are working on this task and the status changes to \"In progress\". Once you are finished, click on \"Complete task\"."
+                    "text": "Go to \"Open tasks\" and click on \"Start task\". Other team members will then see that you are working on this task and the status changes to \"In progress\". Once you are finished, click on \"Complete task\". Without coverage the start is saved on the device and sent later."
                 },
                 {
                     "label": "Complete",
-                    "text": "After you have started the task, complete it by clicking on \"Complete task\". Here you can add a short note and optionally attach photos. Sometimes the portal asks for a measurement value (e.g. a meter reading) — enter it before you confirm. The task then gets status \"Completed\"."
+                    "text": "After you have started the task, complete it by clicking on \"Complete task\". Here you can add a short note and optionally attach photos. Sometimes the portal asks for a measurement value (e.g. a meter reading) — enter it before you confirm. The task then gets status \"Completed\". Without coverage the note and photos stay on the device until you are back online."
                 },
                 {
                     "label": "Unit check",
-                    "text": "When category and unit both allow unit checks, signed-in workers see the Unit check tile. Record OK or Not OK, optionally with a checklist. OK does not create an issue; after Not OK you can create a report."
+                    "text": "When category and unit both allow unit checks, signed-in workers see the Unit check tile. Record OK or Not OK, optionally with a checklist. OK does not create an issue; after Not OK you can create a report. Without coverage the check is saved on the device and sent later."
                 },
                 {
                     "label": "Capture GPS location",

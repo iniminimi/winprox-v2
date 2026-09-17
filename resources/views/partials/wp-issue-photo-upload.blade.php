@@ -6,6 +6,7 @@
     $preferCamera = $preferCamera ?? false;
     $hintKey = $hintKey ?? null;
     $showHint = $showHint ?? true;
+    $storeLocal = $storeLocal ?? false;
     $uploadLocale = app()->getLocale();
 
     $uploadProperty = $model;
@@ -25,6 +26,7 @@
         wire:key="photo-area-{{ $uploadProperty }}-{{ $uploadLocale }}"
         data-wp-photo-remove-method="{{ $removeMethod }}"
         data-wp-photo-max="{{ $max }}"
+        @if ($storeLocal) data-wp-photo-store="local" @endif
         x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
     >
         <div class="wp-photo-grid wp-photo-grid--gallery">

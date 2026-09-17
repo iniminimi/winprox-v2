@@ -206,11 +206,17 @@ function wpAppendLocalPhotoPreview(area, previewRoot, objectUrl, component, remo
             URL.revokeObjectURL(storedUrl);
         }
 
+        const areaEl = wrap.closest('.wp-photo-upload-area');
+        if (areaEl?.dataset.wpPhotoStore === 'local' && Array.isArray(areaEl._wpLocalPhotos)) {
+            const localFile = wrap._wpLocalFile;
+            areaEl._wpLocalPhotos = areaEl._wpLocalPhotos.filter((file) => file !== localFile);
+        }
+
         wrap.remove();
         wpReindexPhotoPreviews(previewRoot);
         wpSyncPhotoPicker(area);
 
-        if (wrap.dataset.wpPhotoUploaded === '1' && typeof component.call === 'function') {
+        if (wrap.dataset.wpPhotoUploaded === '1' && areaEl?.dataset.wpPhotoStore !== 'local' && typeof component.call === 'function') {
             component.call(removeMethod, currentIndex);
         }
     });
@@ -294,7 +300,11 @@ async function wpProcessPhotoBatch(area, input, propertyName, files) {
     const removeMethod = area.dataset.wpPhotoRemoveMethod || 'removePhoto';
     const component = wpResolveUploadComponent(propertyName, input);
 
-    if (!component || !previewRoot) {
+    if (!previewRoot) {
+        return;
+    }
+
+    if (!component && area.dataset.wpPhotoStore !== 'local') {
         return;
     }
 
@@ -310,11 +320,22 @@ async function wpProcessPhotoBatch(area, input, propertyName, files) {
             files.map((file) => wpCompressImageFile(file)),
         );
 
-        await wpLivewireUploadFiles(component, propertyName, compressedFiles);
+        if (area.dataset.wpPhotoStore === 'local') {
+            area._wpLocalPhotos = Array.isArray(area._wpLocalPhotos) ? area._wpLocalPhotos : [];
+            compressedFiles.forEach((file, index) => {
+                area._wpLocalPhotos.push(file);
+                if (entries[index]?.wrap) {
+                    entries[index].wrap.dataset.wpPhotoUploaded = '1';
+                    entries[index].wrap._wpLocalFile = file;
+                }
+            });
+        } else {
+            await wpLivewireUploadFiles(component, propertyName, compressedFiles);
 
-        entries.forEach(({ wrap }) => {
-            wrap.dataset.wpPhotoUploaded = '1';
-        });
+            entries.forEach(({ wrap }) => {
+                wrap.dataset.wpPhotoUploaded = '1';
+            });
+        }
     } catch (error) {
         entries.forEach(({ wrap, objectUrl }) => {
             URL.revokeObjectURL(objectUrl);

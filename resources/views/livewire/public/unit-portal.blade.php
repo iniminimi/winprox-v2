@@ -1,8 +1,38 @@
-<div class="wp-stack">
-    @if ($inactiveReasonKey === null)
+<div
+    class="wp-stack"
+    x-data="{
+        localSection: null,
+        localFlash: '',
+        showWorkerNew() { return this.localSection === 'new'; },
+        showWorkerCheck() { return this.localSection === 'unit_check'; },
+    }"
+    @wp-field-ui.window="
+        if ($event.detail.message !== undefined) localFlash = $event.detail.message;
+        if ($event.detail.section !== undefined) localSection = $event.detail.section;
+    "
+>
+    <script>
+        window.__wpFieldSync = Object.assign(window.__wpFieldSync || {}, {
+            unitToken: @json($token),
+            identity: @json(($canAct ?? false) && isset($worker) && $worker ? 'w:'.$worker->id : ''),
+        });
+    </script>
+
+    @if ($inactiveReasonKey === null && ! ($canAct ?? false))
         <div wire:offline class="wp-flash wp-flash--offline" style="position: sticky; top: 0; z-index: 50; text-align: center;">
             {{ __('portal.offline_message') }}
         </div>
+    @endif
+
+    @if ($canAct ?? false)
+        <div class="wp-cluster wp-cluster--tight" style="position: sticky; top: 0; z-index: 50;">
+            <span
+                class="wp-pill wp-field-sync-status"
+                data-wp-field-sync-status
+                hidden
+            ></span>
+        </div>
+        <p class="wp-flash" x-show="localFlash" x-text="localFlash" x-cloak></p>
     @endif
 
     <div class="wp-portal-head">
@@ -245,7 +275,7 @@
 
         {{-- ============================ HOME ============================ --}}
         @if ($portalSection === 'home')
-            <div data-manual-capture="portal-unit-home" class="wp-stack">
+            <div data-manual-capture="portal-unit-home" class="wp-stack" x-show="!localSection">
             <div class="wp-card wp-card-pad wp-portal-unit-context">
                 <p class="wp-portal-unit-name">
                     @if ($locationName)<span>{{ $locationName }}</span> &middot; @endif<span>{{ $unitName }}</span>
@@ -257,13 +287,18 @@
 
             <div class="wp-tiles">
                 @if ($canAct && ($unitFieldTrustActive ?? false) && ($allowsUnitChecks ?? false))
-                    <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('unit_check')">
+                    <button type="button" class="wp-tile wp-tile--primary" @click="localSection = 'unit_check'">
                         <span class="wp-tile-title">{{ __('portal.tiles.unit_check') }}</span>
                         <span class="wp-tile-sub">{{ __('portal.tiles.unit_check_sub') }}</span>
                     </button>
                 @endif
                 @if ($showNewReportSection)
-                    <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('new')">
+                    <button type="button" class="wp-tile wp-tile--primary"
+                            @if ($canAct)
+                                @click="localSection = 'new'"
+                            @else
+                                wire:click="openSection('new')"
+                            @endif>
                         <span class="wp-tile-title">{{ __('portal.tiles.new') }}</span>
                         <span class="wp-tile-sub">{{ __('portal.tiles.new_sub') }}</span>
                     </button>
@@ -360,13 +395,17 @@
         @endif
 
         {{-- ============================ UNIT CHECK ============================ --}}
-        @if ($portalSection === 'unit_check' && $canAct)
+        @if ($canAct && ($allowsUnitChecks ?? false))
             <div
                 data-manual-capture="portal-unit-check"
                 class="wp-stack"
+                x-show="showWorkerCheck() || @js($portalSection === 'unit_check')"
+                x-cloak
                 x-data="{
                     capturing: false,
                     gpsError: '',
+                    lat: null,
+                    lng: null,
                     browserLocalIso() {
                         const d = new Date();
                         const pad = (n) => String(n).padStart(2, '0');
@@ -391,9 +430,8 @@
                                     maximumAge: 60000,
                                 });
                             });
-                            $wire.checkLatitude = pos.coords.latitude;
-                            $wire.checkLongitude = pos.coords.longitude;
-                            $wire.checkCheckedAt = this.browserLocalIso();
+                            this.lat = pos.coords.latitude;
+                            this.lng = pos.coords.longitude;
                         } catch (e) {
                             this.gpsError = @js(__('portal.unit.gps_denied_hint'));
                         } finally {
@@ -401,16 +439,33 @@
                         }
                     },
                     async submit(result) {
-                        $wire.checkResult = result;
-                        if (!$wire.checkCheckedAt) {
-                            $wire.checkCheckedAt = this.browserLocalIso();
+                        const items = Array.from($el.querySelectorAll('input[type=checkbox]:checked')).map((el) => el.value);
+                        try {
+                            await window.wpFieldUnitCheck({
+                                result,
+                                checked_at: this.browserLocalIso(),
+                                latitude: this.lat,
+                                longitude: this.lng,
+                                checklist_items: items,
+                            });
+                            window.dispatchEvent(new CustomEvent('wp-field-ui', {
+                                detail: {
+                                    message: result === 'ok'
+                                        ? @js(__('portal.field_sync.check_recorded'))
+                                        : @js(__('portal.unit_check.recorded_not_ok')),
+                                    section: result === 'not_ok' ? 'new' : null,
+                                },
+                            }));
+                        } catch (error) {
+                            window.dispatchEvent(new CustomEvent('wp-field-ui', {
+                                detail: { message: error.message || @js(__('portal.field_sync.error')) },
+                            }));
                         }
-                        await $wire.submitUnitCheck();
                     }
                 }"
                 x-init="captureGps()"
             >
-                <x-wp-portal-back wire:click="openSection('home')" />
+                <x-wp-portal-back @click="localSection = null" />
                 <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.unit_check.title')" />
 
                 <div class="wp-card wp-card-pad wp-stack">
@@ -451,7 +506,7 @@
                     </div>
 
                     <p class="wp-muted wp-text-sm" x-show="capturing" x-cloak>{{ __('portal.unit_check.capturing_gps') }}</p>
-                    <p class="wp-muted wp-text-sm" x-show="!capturing && $wire.checkLatitude" x-cloak>
+                    <p class="wp-muted wp-text-sm" x-show="!capturing && lat" x-cloak>
                         {{ __('portal.unit_check.gps_ready') }}
                     </p>
                     <p class="wp-error" x-show="gpsError" x-text="gpsError" x-cloak></p>
@@ -519,11 +574,18 @@
         @endif
 
         {{-- ============================ NEW ============================ --}}
-        @if ($portalSection === 'new' && $showNewReportSection)
-            <div data-manual-capture="portal-unit-new" class="wp-stack">
-            <x-wp-portal-back wire:click="openSection('home')" />
+        @if ($showNewReportSection && ($canAct || $portalSection === 'new'))
+            <div
+                data-manual-capture="portal-unit-new"
+                class="wp-stack"
+                @if ($canAct)
+                    x-show="showWorkerNew() || @js($portalSection === 'new')"
+                    x-cloak
+                @endif
+            >
+            <x-wp-portal-back @if ($canAct) @click="localSection = null" @else wire:click="openSection('home')" @endif />
             <x-wp-page-head-title variant="portal" icon="issues" :title="__('portal.report.title')" />
-            <form x-data="{ 
+            <form x-data="{
                 isOffline: !navigator.onLine,
                 description: $wire.description || sessionStorage.getItem('wp-portal-description') || ''
             }"
@@ -536,7 +598,20 @@
                   @submit.prevent="
                 await window.wpAwaitPhotoUploads($el);
                 sessionStorage.removeItem('wp-portal-description');
-                $wire.submitReport()
+                @if ($canAct)
+                    try {
+                        await window.wpFieldCreateIssue($el);
+                        window.dispatchEvent(new CustomEvent('wp-field-ui', {
+                            detail: { message: @js(__('portal.field_sync.report_saved')), section: null },
+                        }));
+                    } catch (error) {
+                        window.dispatchEvent(new CustomEvent('wp-field-ui', {
+                            detail: { message: error.message || @js(__('portal.field_sync.error')) },
+                        }));
+                    }
+                @else
+                    $wire.submitReport()
+                @endif
             "
                   class="wp-stack">
                 <div class="wp-card wp-card-pad wp-stack">
@@ -550,6 +625,7 @@
                         <label class="wp-label" for="description">{{ __('portal.report.description') }}</label>
                         <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
                             <textarea id="description" class="wp-textarea" x-model="description" wire:model="description" rows="5"
+                                      data-wp-report-description
                                       placeholder="{{ __('portal.report.description_placeholder') }}"
                                       maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
                                       x-init="
@@ -569,13 +645,13 @@
                     </div>
                     <div class="wp-field">
                         <label class="wp-label">{{ __('portal.report.photos.label') }}</label>
-                        @include('partials.wp-issue-photo-upload', ['model' => 'photos', 'preferCamera' => true])
+                        @include('partials.wp-issue-photo-upload', ['model' => 'photos', 'preferCamera' => true, 'storeLocal' => $canAct])
                         @error('photos.*') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('photos') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 </div>
                 <div class="wp-portal-actions">
-                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" wire:target="submitReport" :disabled="isOffline">
+                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" wire:target="submitReport" @if (! $canAct) :disabled="isOffline" @endif>
                         <x-wp-spinner wire:loading wire:target="submitReport" class="wp-mr-2" />
                         <span wire:loading.remove wire:target="submitReport">{{ __('portal.report.submit') }}</span>
                         <span wire:loading wire:target="submitReport">{{ __('portal.report.submit_loading') }}</span>

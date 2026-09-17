@@ -838,15 +838,15 @@
                 },
                 {
                     "label": "Starten",
-                    "text": "Ga naar \"Open taken\" en klik op \"Taak starten\". Andere teamleden zien vervolgens dat jij met deze taak bezig bent en de status verandert naar \"In uitvoering\". Zodra je klaar bent, klik je op \"Taak afhandelen\"."
+                    "text": "Ga naar \"Open taken\" en klik op \"Taak starten\". Andere teamleden zien vervolgens dat jij met deze taak bezig bent en de status verandert naar \"In uitvoering\". Zodra je klaar bent, klik je op \"Taak afhandelen\". Zonder bereik wordt starten op het toestel bewaard en later verstuurd."
                 },
                 {
                     "label": "Afronden",
-                    "text": "Nadat je de taak bent gestart, rond je deze af door op \"Taak afhandelen\" te klikken. Hier kun je een korte notitie toevoegen en eventueel foto's bijvoegen. Soms vraagt het portaal om een meetwaarde (bv. een meterstand) — vul die in voordat je bevestigt. De taak krijgt daarna de status \"Afgehandeld\"."
+                    "text": "Nadat je de taak bent gestart, rond je deze af door op \"Taak afhandelen\" te klikken. Hier kun je een korte notitie toevoegen en eventueel foto's bijvoegen. Soms vraagt het portaal om een meetwaarde (bv. een meterstand) — vul die in voordat je bevestigt. De taak krijgt daarna de status \"Afgehandeld\". Zonder bereik blijven notitie en foto’s op het toestel tot er weer verbinding is."
                 },
                 {
                     "label": "Unit check",
-                    "text": "Wanneer categorie én unit unit checks toestaan, zien aangemelde uitvoerders de tegel Unit check. Registreer OK of Niet OK, eventueel met checklist. OK maakt geen melding; na Niet OK kun je een melding maken."
+                    "text": "Wanneer categorie én unit unit checks toestaan, zien aangemelde uitvoerders de tegel Unit check. Registreer OK of Niet OK, eventueel met checklist. OK maakt geen melding; na Niet OK kun je een melding maken. Zonder bereik wordt de check op het toestel bewaard en later verstuurd."
                 },
                 {
                     "label": "GPS-locatie (her)vastleggen",

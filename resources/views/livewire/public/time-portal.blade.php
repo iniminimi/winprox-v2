@@ -1,4 +1,9 @@
 <div class="wp-stack" @if ($canAct ?? false) wire:poll.visible.30s @endif>
+    <script>
+        window.__wpFieldSync = Object.assign(window.__wpFieldSync || {}, {
+            identity: @json(($canAct ?? false) && isset($verifiedWorker) && $verifiedWorker ? 'w:'.$verifiedWorker->id : ''),
+        });
+    </script>
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
             <span class="wp-brand">
@@ -116,7 +121,7 @@
                         @error('pin_code_confirm') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <button type="submit" class="btn btn--primary btn--block">{{ __('portal.worker.pin_save') }}</button>
-                    <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="signInAsDifferentWorker">
+                    <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
                         {{ __('portal.worker.different_worker') }}
                     </button>
                 </form>
@@ -136,7 +141,7 @@
                     </div>
                     <p class="wp-hint">{{ __('portal.worker.attempts_left', ['count' => $remainingAttempts]) }}</p>
                     <button type="submit" class="btn btn--primary btn--block">{{ __('portal.worker.confirm_pin') }}</button>
-                    <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="signInAsDifferentWorker">
+                    <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
                         {{ __('portal.worker.different_worker') }}
                     </button>
                 </form>
@@ -165,14 +170,14 @@
                 <button type="button" class="btn btn--primary btn--block" wire:click="signInWithIcon" @disabled($sign_in_icon_slug === '')>
                     {{ __('portal.worker.confirm_icon') }}
                 </button>
-                <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="signInAsDifferentWorker">
+                <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
                     {{ __('portal.worker.different_worker') }}
                 </button>
             </div>
         @elseif ($iconBlocked)
             <div class="wp-card wp-card-pad wp-stack">
                 <p class="wp-error">{{ __('portal.worker.errors.blocked') }}</p>
-                <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="signInAsDifferentWorker">
+                <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
                     {{ __('portal.worker.different_worker') }}
                 </button>
             </div>

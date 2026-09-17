@@ -838,15 +838,15 @@
                 },
                 {
                     "label": "Avvia",
-                    "text": "Vada su «Attività aperte» e clicchi su «Avvia attività». Gli altri membri del team vedranno che sta lavorando su questa attività e lo stato cambia in «In corso». Una volta terminato, clicchi su «Completa attività»."
+                    "text": "Vada su «Attività aperte» e clicchi su «Avvia attività». Gli altri membri del team vedranno che sta lavorando su questa attività e lo stato cambia in «In corso». Una volta terminato, clicchi su «Completa attività». Senza rete, l’avvio resta sul dispositivo e viene inviato più tardi."
                 },
                 {
                     "label": "Completa",
-                    "text": "Dopo aver avviato l'attività, la completi cliccando su «Completa attività». Qui può aggiungere una breve nota e allegare facoltativamente foto. A volte il portale chiede un valore di misurazione (es. una lettura contatore) — lo inserisca prima di confermare. L'attività ottiene poi lo stato «Completata»."
+                    "text": "Dopo aver avviato l'attività, la completi cliccando su «Completa attività». Qui può aggiungere una breve nota e allegare facoltativamente foto. A volte il portale chiede un valore di misurazione (es. una lettura contatore) — lo inserisca prima di confermare. L'attività ottiene poi lo stato «Completata». Senza rete, nota e foto restano sul dispositivo fino al ritorno della connessione."
                 },
                 {
                     "label": "Controllo unità",
-                    "text": "Se categoria e unit consentono i controlli, gli esecutori connessi vedono il riquadro Controllo unità. Registra OK o Non OK, eventualmente con checklist. OK non crea segnalazione; dopo Non OK può seguire una segnalazione."
+                    "text": "Se categoria e unit consentono i controlli, gli esecutori connessi vedono il riquadro Controllo unità. Registra OK o Non OK, eventualmente con checklist. OK non crea segnalazione; dopo Non OK può seguire una segnalazione. Senza rete, il controllo resta sul dispositivo e viene inviato più tardi."
                 },
                 {
                     "label": "Registra posizione GPS",

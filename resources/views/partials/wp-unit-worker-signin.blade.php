@@ -41,13 +41,13 @@
         <button type="button" class="btn btn--primary btn--block" wire:click="signInWithIcon" @disabled($sign_in_icon_slug === '')>
             {{ __('portal.worker.confirm_icon') }}
         </button>
-        <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="signInAsDifferentWorker">
+        <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
             {{ __('portal.worker.different_worker') }}
         </button>
 
     @elseif ($phase === \App\Support\Portal\UnitSignInPhase::PHASE_BLOCKED)
         <p class="wp-error">{{ __('portal.worker.errors.blocked') }}</p>
-        <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="signInAsDifferentWorker">
+        <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
             {{ __('portal.worker.different_worker') }}
         </button>
 
@@ -56,7 +56,7 @@
 
     @elseif ($phase === \App\Support\Portal\UnitSignInPhase::PHASE_WRONG_TEAM)
         <p class="wp-muted">{{ __('portal.worker.wrong_team') }}</p>
-        <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="signInAsDifferentWorker">
+        <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
             {{ __('portal.worker.different_worker') }}
         </button>
     @endif

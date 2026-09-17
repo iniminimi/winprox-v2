@@ -56,7 +56,7 @@
             },
             {
                 "title": "QR portals",
-                "body": "QR unità: segnalare un problema, più un controllo unità opzionale (OK o Non OK in un tocco). QR Clock Point: identificazione (nome + icona) e attività di team; timbrare solo con Time (timbratrice). QR sede. Stampabile come foglio etichette (Avery) o pagina A6/A5/A4. QR dinamici collegabili in seguito a un’unità. I codici QR non validi o scaduti mostrano un breve messaggio di errore con un pulsante alla home. Per categoria può nascondere le segnalazioni precedenti sul QR unit."
+                "body": "QR unità: segnalare un problema, più un controllo unità opzionale (OK o Non OK in un tocco). QR Clock Point: identificazione (nome + icona) e attività di team; timbrare solo con Time (timbratrice). QR sede. Stampabile come foglio etichette (Avery) o pagina A6/A5/A4. QR dinamici collegabili in seguito a un’unità. I codici QR non validi o scaduti mostrano un breve messaggio di errore con un pulsante alla home. Per categoria può nascondere le segnalazioni precedenti sul QR unit. Un esecutore che ha aperto il QR unità online può avviare e chiudere attività, creare una segnalazione (con foto) e fare un controllo unità senza rete; le azioni restano sul dispositivo e partono automaticamente al ritorno della connessione. La timbratura al Clock Point resta online e richiede una nuova scansione QR."
             },
             {
                 "title": "Controlli unità",
@@ -223,6 +223,7 @@
                 "title": "Availability",
                 "items": [
                     "Available 24/7 as SaaS (browser + QR portals).",
+                    "Unit QR: a loaded page stays usable without network for tasks, reports and unit checks; it syncs when connectivity returns. Clock Point punches stay online and need a fresh QR scan.",
                     "Planned maintenance preferably outside business hours, with notice where possible.",
                     "Formal uptime SLA: available contractually on request."
                 ]
@@ -235,6 +236,7 @@
                     "**SSO** (un accesso aziendale via Microsoft Entra): per amministratori e dipendenti sul desktop (**Accedi con Microsoft**). Solo account WinProx esistenti (l’e-mail deve corrispondere all’account Microsoft); e-mail + password resta disponibile. Nessun account nuovo automatico. Gli esecutori restano sul QR Clock Point (nome + icona). Il collegamento ad altro software (Ultimo, IWMS, …) usa token API, non SSO.",
                     "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
                     "Workers: **no email login** — Clock Point QR + name + personal icon (or optional PIN). One phone per worker; the icon is hidden after sign-in.",
+                    "Offline field actions on the unit QR go through POST /portal/field-sync with the device cookie (no API token). The same client_id does not create a duplicate issue or task change.",
                     "Segnalatori: portale QR pubblico senza account. Prova della casella opzionale (categoria e unità): nessun login; la segnalazione nasce solo dopo il link nella mail.",
                     "Collega con **team timbratura** ottiene profilo esecutore collegato per Clock Point (nome + icona); non conta doppio nella licenza."
                 ]
