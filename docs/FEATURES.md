@@ -714,6 +714,9 @@ productsector op `Tenant`.
   bezoek blijven het bestaande OUT/IN. placeOfWork = gsm-coords of unit-pin; DDT blijft op
   de locatie (klant).
 - Publieke winprox.app-homepage doet **geen** GPS-voorstel van bedrijven.
+- **Beheer:** Time → **Aanwezigheid** toont het open werkbezoek (locatie · unit).
+  Time → **Uren** toont de historiek per dienst (start–einde per unit). CIAO-scherm
+  is geen werkbezoek-historiek (alleen RSZ-inzendingen).
 
 ### 5g.2 Golf 1 — CIAO schoonmaak (`CiaoCleaning`)
 - Voor organisaties die schoonmaak/onderhoud **onroerend voor derden** doen onder Aangifte van

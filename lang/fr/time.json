@@ -67,6 +67,7 @@
         },
         "view_location": "Afficher les équipes",
         "empty_locations": "Aucun collaborateur pointé par site.",
+        "working_at": "Au travail : :place",
         "unknown_location": "Sans site",
         "load_more": "Afficher :count de plus"
     },
@@ -148,7 +149,10 @@
         "task_open": "en cours",
         "location_hops_heading": "Déplacements pendant cette vacation",
         "location_hop": ":time — de :from vers :to",
-        "presence_at": "Dernière présence : :name"
+        "presence_at": "Dernière présence : :name",
+        "visits_heading": "Visites de travail",
+        "visit_range": ":start–:end · :place",
+        "visit_open": ":start–en cours · :place"
     },
     "corrections": {
         "button": "Corriger",

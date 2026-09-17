@@ -67,6 +67,7 @@
         },
         "view_location": "Teams zeigen",
         "empty_locations": "Keine eingestempelten Mitarbeitenden pro Standort.",
+        "working_at": "Bei der Arbeit: :place",
         "unknown_location": "Ohne Standort",
         "load_more": ":count weitere anzeigen"
     },
@@ -148,7 +149,10 @@
         "task_open": "läuft noch",
         "location_hops_heading": "Verschiebungen in dieser Schicht",
         "location_hop": ":time — von :from nach :to",
-        "presence_at": "Letzte Anwesenheit: :name"
+        "presence_at": "Letzte Anwesenheit: :name",
+        "visits_heading": "Arbeitsbesuche",
+        "visit_range": ":start–:end · :place",
+        "visit_open": ":start–jetzt · :place"
     },
     "corrections": {
         "button": "Korrigieren",

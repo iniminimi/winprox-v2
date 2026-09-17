@@ -27,6 +27,14 @@
             @if ($showTeam)
                 <span class="wp-muted wp-text-sm">{{ $shift->team?->localizedName() }}</span>
             @endif
+            @if ($shift->openVisit)
+                @php
+                    $visitPlace = trim(($shift->openVisit->location?->name ?? '').' · '.($shift->openVisit->unit?->localizedName() ?? ''), ' · ');
+                @endphp
+                @if ($visitPlace !== '')
+                    <span class="wp-muted wp-text-sm">{{ __('time.presence.working_at', ['place' => $visitPlace]) }}</span>
+                @endif
+            @endif
         </div>
     </div>
 

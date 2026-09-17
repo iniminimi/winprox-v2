@@ -67,6 +67,7 @@
         },
         "view_location": "Teams tonen",
         "empty_locations": "Geen ingeklokte medewerkers per locatie.",
+        "working_at": "Aan het werk: :place",
         "unknown_location": "Zonder locatie",
         "load_more": ":count meer tonen"
     },
@@ -148,7 +149,10 @@
         "task_open": "nog bezig",
         "location_hops_heading": "Verplaatsingen tijdens deze dienst",
         "location_hop": ":time — van :from naar :to",
-        "presence_at": "Laatste aanwezigheid: :name"
+        "presence_at": "Laatste aanwezigheid: :name",
+        "visits_heading": "Werkbezoeken",
+        "visit_range": ":start–:end · :place",
+        "visit_open": ":start–nu · :place"
     },
     "corrections": {
         "button": "Corrigeren",

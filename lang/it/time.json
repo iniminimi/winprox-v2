@@ -67,6 +67,7 @@
         },
         "view_location": "Mostra team",
         "empty_locations": "Nessun lavoratore timbrato per sede.",
+        "working_at": "Al lavoro: :place",
         "unknown_location": "Senza sede",
         "load_more": "Mostra altri :count"
     },
@@ -148,7 +149,10 @@
         "task_open": "in corso",
         "location_hops_heading": "Spostamenti durante questo turno",
         "location_hop": ":time — da :from a :to",
-        "presence_at": "Ultima presenza: :name"
+        "presence_at": "Ultima presenza: :name",
+        "visits_heading": "Visite di lavoro",
+        "visit_range": ":start–:end · :place",
+        "visit_open": ":start–ora · :place"
     },
     "corrections": {
         "button": "Correggi",

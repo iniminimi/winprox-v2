@@ -153,7 +153,7 @@ class ShiftsIndex extends Component
     public function render()
     {
         $query = WorkShift::query()
-            ->with(['worker', 'team.translations', 'clockInClockPoint', 'presenceClockPoint', 'clockOutClockPoint', 'taskLogs.task', 'breaks'])
+            ->with(['worker', 'team.translations', 'clockInClockPoint', 'presenceClockPoint', 'clockOutClockPoint', 'taskLogs.task', 'breaks', 'visits' => fn ($q) => $q->orderBy('started_at')->with(['unit', 'location'])])
             ->when($this->from !== '', fn ($q) => $q->where('clock_in_at', '>=', $this->from.' 00:00:00'))
             ->when($this->to !== '', fn ($q) => $q->where('clock_in_at', '<=', $this->to.' 23:59:59'))
             ->when($this->teamFilter, fn ($q) => $q->where('internal_team_id', $this->teamFilter))

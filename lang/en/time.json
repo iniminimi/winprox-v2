@@ -67,6 +67,7 @@
         },
         "view_location": "Show teams",
         "empty_locations": "No clocked-in workers by location.",
+        "working_at": "Working at: :place",
         "unknown_location": "No location",
         "load_more": "Show :count more"
     },
@@ -148,7 +149,10 @@
         "task_open": "in progress",
         "location_hops_heading": "Moves during this shift",
         "location_hop": ":time — from :from to :to",
-        "presence_at": "Latest presence: :name"
+        "presence_at": "Latest presence: :name",
+        "visits_heading": "Work visits",
+        "visit_range": ":start–:end · :place",
+        "visit_open": ":start–now · :place"
     },
     "corrections": {
         "button": "Correct",

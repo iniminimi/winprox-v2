@@ -51,7 +51,7 @@ class BuildTimePresenceDashboardAction
         $openShifts = WorkShift::query()
             ->where('tenant_id', $tenantId)
             ->where('status', WorkShiftStatus::Open)
-            ->with(['worker.team.translations', 'openBreak', 'clockInClockPoint.location', 'presenceClockPoint.location', 'breaks'])
+            ->with(['worker.team.translations', 'openBreak', 'openVisit.unit', 'openVisit.location', 'clockInClockPoint.location', 'presenceClockPoint.location', 'breaks'])
             ->when($teamId, fn ($q) => $q->where('internal_team_id', $teamId))
             ->when($clockPointId, fn ($q) => $q->where('presence_clock_point_id', $clockPointId))
             ->when($clockPointIdsForLocation !== null, fn ($q) => $q->whereIn('presence_clock_point_id', $clockPointIdsForLocation))

@@ -122,6 +122,24 @@
                             </p>
                         @endif
                     @endif
+                    @if ($shift->visits->isNotEmpty())
+                        <p class="wp-muted wp-text-sm">{{ __('time.shifts.visits_heading') }}</p>
+                        <ul class="wp-muted wp-text-sm">
+                            @foreach ($shift->visits as $visit)
+                                @php
+                                    $visitPlace = trim(($visit->location?->name ?? '').' · '.($visit->unit?->localizedName() ?? ''), ' · ');
+                                    $visitStart = $visit->started_at?->format('H:i') ?? '—';
+                                @endphp
+                                <li wire:key="shift-{{ $shift->id }}-visit-{{ $visit->id }}">
+                                    @if ($visit->ended_at)
+                                        {{ __('time.shifts.visit_range', ['start' => $visitStart, 'end' => $visit->ended_at->format('H:i'), 'place' => $visitPlace]) }}
+                                    @else
+                                        {{ __('time.shifts.visit_open', ['start' => $visitStart, 'place' => $visitPlace]) }}
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
                     @if ($shift->taskLogs->isNotEmpty())
                         <p class="wp-muted wp-text-sm">{{ __('time.shifts.tasks_heading') }}</p>
                         <ul class="wp-muted wp-text-sm">

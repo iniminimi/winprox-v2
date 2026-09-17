@@ -67,6 +67,7 @@
         },
         "view_location": "Mostrar equipos",
         "empty_locations": "No hay trabajadores fichados por ubicación.",
+        "working_at": "Trabajando en: :place",
         "unknown_location": "Sin ubicación",
         "load_more": "Mostrar :count más"
     },
@@ -148,7 +149,10 @@
         "task_open": "en curso",
         "location_hops_heading": "Trasladados durante este turno",
         "location_hop": ":time — de :from a :to",
-        "presence_at": "Última presencia: :name"
+        "presence_at": "Última presencia: :name",
+        "visits_heading": "Visitas de trabajo",
+        "visit_range": ":start–:end · :place",
+        "visit_open": ":start–ahora · :place"
     },
     "corrections": {
         "button": "Corregir",

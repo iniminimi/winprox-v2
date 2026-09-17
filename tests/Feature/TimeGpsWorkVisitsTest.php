@@ -1,6 +1,9 @@
 <?php
 
+use App\Actions\Time\BuildTimePresenceDashboardAction;
 use App\Actions\Time\ClockInAction;
+use App\Livewire\Time\PresenceIndex;
+use App\Livewire\Time\ShiftsIndex;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\EndWorkVisitAction;
@@ -23,6 +26,7 @@ use App\Models\WebhookEndpoint;
 use App\Models\Worker;
 use App\Models\WorkVisit;
 use App\Support\Tenancy;
+use Livewire\Livewire;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Queue;
 
@@ -267,6 +271,36 @@ it('start en stopt een bezoek via de API met time:write', function () {
         ->assertOk();
 
     expect(WorkVisit::query()->open()->count())->toBe(0);
+});
+
+it('toont het open werkbezoek op aanwezigheid en de historiek op uren', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $admin = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
+
+    $dashboard = app(BuildTimePresenceDashboardAction::class)->handle(
+        $tenant->id,
+        expandedTeamIds: [(int) $worker->internal_team_id],
+    );
+    $openShift = $dashboard->teamBuckets
+        ->flatMap(fn ($bucket) => $bucket->activeShifts)
+        ->first();
+
+    expect($openShift?->openVisit?->unit_id)->toBe($unit->id);
+
+    Livewire::actingAs($admin)
+        ->test(PresenceIndex::class)
+        ->assertSee(__('time.presence.working_at', ['place' => $location->name.' · '.$unit->name]), false);
+
+    Livewire::actingAs($admin)
+        ->test(ShiftsIndex::class)
+        ->assertSee(__('time.shifts.visits_heading'), false)
+        ->assertSee($unit->name, false);
 });
 
 it('exposeert time.visit webhook-events', function () {
