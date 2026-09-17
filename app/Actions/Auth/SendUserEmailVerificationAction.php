@@ -8,11 +8,10 @@ use App\Mail\VerifyUserEmailMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 /**
- * Verstuurt de verificatiemail met een korte, tijdelijke token-link.
+ * Verstuurt de welkomstmail met een korte numerieke werkruimte-URL.
  */
 class SendUserEmailVerificationAction
 {
@@ -70,7 +69,7 @@ class SendUserEmailVerificationAction
         $minutes = max(1, (int) config('auth.verification.expire', 60));
         $token = $this->issueToken($user, $minutes);
 
-        Mail::to($email)->send(new VerifyUserEmailMail($user, $token, $minutes));
+        Mail::to($email)->send(new VerifyUserEmailMail($user, $token));
 
         return ['sent' => true, 'retry_after' => 0];
     }
@@ -78,7 +77,7 @@ class SendUserEmailVerificationAction
     private function issueToken(User $user, int $minutes): string
     {
         do {
-            $token = Str::lower(Str::random(48));
+            $token = (string) random_int(10000000, 99999999);
             $hash = hash('sha256', $token);
         } while (User::query()->where('email_verify_token', $hash)->exists());
 

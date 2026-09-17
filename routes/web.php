@@ -144,9 +144,14 @@ Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.web
 
 Route::get('/q/{token}', QrController::class)->name('qr.scan');
 
-Route::get('/start/{token}', ConfirmUserEmailController::class)
-    ->where('token', '[a-z0-9]{20,64}')
+Route::get('/welkom/{token}', ConfirmUserEmailController::class)
+    ->middleware('throttle:20,1')
+    ->where('token', '[0-9]{8}')
     ->name('verification.start');
+Route::get('/start/{token}', ConfirmUserEmailController::class)
+    ->middleware('throttle:20,1')
+    ->where('token', '[a-z0-9]{20,64}')
+    ->name('verification.start.legacy');
 
 Route::get('/melden/e/{token}', ConfirmQrReportEmail::class)
     ->where('token', '[a-z0-9]{20,64}')

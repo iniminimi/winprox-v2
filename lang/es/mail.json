@@ -29,12 +29,12 @@
         "plain_link_label": "Cancelar suscripción"
     },
     "verify_email": {
-        "subject": ":tenant — bienvenido a WinProx",
-        "intro": "Bienvenido a :tenant. Abre WinProx para continuar.",
-        "cta": "Abrir WinProx",
-        "link_fallback": "Si el botón no funciona, copia este enlace:",
-        "expiry": "Este enlace es válido durante :hours h.",
-        "footer": "¿No has creado esta cuenta? No hace falta hacer nada."
+        "subject": ":tenant — espacio de trabajo listo",
+        "intro": "Hay un espacio de trabajo listo para :tenant.",
+        "field_organization": "Organización",
+        "field_email": "Correo",
+        "cta": "Abrir espacio de trabajo",
+        "link_fallback": "Si el botón no funciona, copia este enlace:"
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirma tu informe",

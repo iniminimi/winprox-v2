@@ -48,10 +48,12 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
             $mail->assertHasSubject(trans('mail.verify_email.subject', ['tenant' => 'Nieuwe Facility'], $locale));
 
             expect($mail->hasTo('nieuw@winprox.test'))->toBeTrue()
-                ->and($url)->toContain('/start/')
+                ->and($url)->toMatch('#/welkom/[0-9]{8}$#')
                 ->and($url)->not->toContain('/email/verify')
+                ->and($url)->not->toContain('/start/')
                 ->and($url)->not->toContain('signature=')
-                ->and($html)->toContain('/start/')
+                ->and($html)->toContain('/welkom/')
+                ->and($html)->toContain(trans('mail.verify_email.field_organization', [], $locale))
                 ->and($html)->toContain(trans('mail.verify_email.cta', [], $locale))
                 ->and($html)->not->toContain('/email/verify')
                 ->and($html)->not->toContain('signature=');
@@ -234,7 +236,7 @@ it('weigert een verlopen token-link', function () {
 });
 
 it('weigert een ongeldige token-link', function () {
-    $this->get(route('verification.start', ['token' => str_repeat('a', 48)]))
+    $this->get(route('verification.start', ['token' => '00000000']))
         ->assertRedirect(route('login'));
 });
 

@@ -12,7 +12,7 @@ class ConfirmUserEmailByTokenAction
     public function handle(string $token): User
     {
         $normalized = strtolower(trim($token));
-        if ($normalized === '' || ! preg_match('/^[a-z0-9]{20,64}$/', $normalized)) {
+        if ($normalized === '' || ! preg_match('/^([0-9]{8}|[a-z0-9]{20,64})$/', $normalized)) {
             throw ValidationException::withMessages([
                 'token' => [__('auth.verify.link_invalid')],
             ]);

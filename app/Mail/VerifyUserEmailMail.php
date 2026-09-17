@@ -18,7 +18,6 @@ class VerifyUserEmailMail extends Mailable
     public function __construct(
         public User $user,
         public string $token,
-        public int $expiresInMinutes,
     ) {
         $locale = in_array((string) $user->locale, config('locales.supported', []), true)
             ? (string) $user->locale
@@ -56,8 +55,8 @@ class VerifyUserEmailMail extends Mailable
                 'bodyText' => '',
                 'bodyHtml' => view('emails.auth.verify-email-body', [
                     'verificationUrl' => $verificationUrl,
-                    'expiresInMinutes' => $this->expiresInMinutes,
                     'tenantName' => $tenantName,
+                    'email' => (string) $this->user->email,
                 ])->render(),
             ],
         );

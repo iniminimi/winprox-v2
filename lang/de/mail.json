@@ -29,12 +29,12 @@
         "plain_link_label": "Abmelden"
     },
     "verify_email": {
-        "subject": ":tenant — willkommen bei WinProx",
-        "intro": "Willkommen bei :tenant. Öffne WinProx, um weiterzumachen.",
-        "cta": "WinProx öffnen",
-        "link_fallback": "Wenn der Button nicht funktioniert, kopiere diesen Link:",
-        "expiry": "Dieser Link ist :hours Std. gültig.",
-        "footer": "Du hast dieses Konto nicht erstellt? Dann musst du nichts tun."
+        "subject": ":tenant — Arbeitsbereich bereit",
+        "intro": "Ein Arbeitsbereich für :tenant ist bereit.",
+        "field_organization": "Organisation",
+        "field_email": "E-Mail",
+        "cta": "Arbeitsbereich öffnen",
+        "link_fallback": "Wenn der Button nicht funktioniert, kopiere diesen Link:"
     },
     "verify_qr_report_email": {
         "subject": ":tenant — Meldung bestätigen",

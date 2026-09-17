@@ -29,12 +29,12 @@
         "plain_link_label": "Unsubscribe"
     },
     "verify_email": {
-        "subject": ":tenant — welcome to WinProx",
-        "intro": "Welcome to :tenant. Open WinProx to continue.",
-        "cta": "Open WinProx",
-        "link_fallback": "If the button does not work, copy this link:",
-        "expiry": "This link is valid for :hours hours.",
-        "footer": "Did you not create this account? Then no action is needed."
+        "subject": ":tenant — workspace ready",
+        "intro": "A workspace is ready for :tenant.",
+        "field_organization": "Organization",
+        "field_email": "Email",
+        "cta": "Open workspace",
+        "link_fallback": "If the button does not work, copy this link:"
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirm your report",

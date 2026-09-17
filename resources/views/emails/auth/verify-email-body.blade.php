@@ -1,5 +1,15 @@
 <p>{{ __('mail.verify_email.intro', ['tenant' => $tenantName]) }}</p>
 
+<p>
+    <strong>{{ __('mail.verify_email.field_organization') }}</strong><br>
+    {{ $tenantName }}
+</p>
+
+<p>
+    <strong>{{ __('mail.verify_email.field_email') }}</strong><br>
+    {{ $email }}
+</p>
+
 <p style="text-align: center; margin-top: 24px;">
     <a href="{{ $verificationUrl }}" style="display: inline-block; background-color: #059669; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 14px;">
         {{ __('mail.verify_email.cta') }}
@@ -10,6 +20,3 @@
     {{ __('mail.verify_email.link_fallback') }}<br>
     <a href="{{ $verificationUrl }}" style="color: #059669; word-break: break-all;">{{ $verificationUrl }}</a>
 </p>
-
-<p style="font-size: 13px; color: #64748b;">{{ __('mail.verify_email.expiry', ['hours' => max(1, (int) round($expiresInMinutes / 60))]) }}</p>
-<p style="font-size: 13px; color: #64748b;">{{ __('mail.verify_email.footer') }}</p>

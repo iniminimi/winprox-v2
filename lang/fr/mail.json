@@ -29,12 +29,12 @@
         "plain_link_label": "Se désinscrire"
     },
     "verify_email": {
-        "subject": ":tenant — bienvenue chez WinProx",
-        "intro": "Bienvenue chez :tenant. Ouvrez WinProx pour continuer.",
-        "cta": "Ouvrir WinProx",
-        "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :",
-        "expiry": "Ce lien est valable :hours h.",
-        "footer": "Vous n'avez pas créé ce compte ? Aucune action n'est nécessaire."
+        "subject": ":tenant — espace de travail prêt",
+        "intro": "Un espace de travail est prêt pour :tenant.",
+        "field_organization": "Organisation",
+        "field_email": "E-mail",
+        "cta": "Ouvrir l'espace de travail",
+        "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :"
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirmez votre signalement",
