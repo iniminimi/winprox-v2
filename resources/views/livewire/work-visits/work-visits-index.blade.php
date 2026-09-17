@@ -10,51 +10,44 @@
         </div>
     </div>
 
-    <div class="wp-card wp-filter-panel">
-        <div class="wp-filter-form">
+    <div class="wp-card wp-filter-panel wp-work-visits-toolbar">
+        <div class="wp-filter-form wp-work-visits-toolbar__form">
             <p class="wp-filter-form__title">{{ __('common.list.filters_title') }}</p>
-
-            <div class="wp-filter-form__row">
-                <div class="wp-filter-cell">
-                    <label class="wp-filter-inline-label" for="work-visits-from">{{ __('time.filters.from') }}</label>
-                    <input id="work-visits-from" type="date" class="wp-input" wire:model="from">
-                </div>
-                <div class="wp-filter-cell">
-                    <label class="wp-filter-inline-label" for="work-visits-to">{{ __('time.filters.to') }}</label>
-                    <input id="work-visits-to" type="date" class="wp-input" wire:model="to">
-                </div>
-                <div class="wp-filter-cell">
-                    <label class="wp-filter-inline-label" for="work-visits-worker">{{ __('time.filters.worker') }}</label>
-                    <select id="work-visits-worker" class="wp-select" wire:model="workerFilter">
-                        <option value="">{{ __('time.filters.all_workers') }}</option>
-                        @foreach ($workers as $worker)
-                            <option value="{{ $worker->id }}">{{ $worker->displayName() }}</option>
-                        @endforeach
-                    </select>
-                </div>
+            <div class="wp-filter-cell">
+                <label class="wp-filter-inline-label" for="work-visits-from">{{ __('time.filters.from') }}</label>
+                <input id="work-visits-from" type="date" class="wp-input" wire:model="from">
             </div>
-            <div class="wp-filter-form__row">
-                <div class="wp-filter-cell">
-                    <label class="wp-filter-inline-label" for="work-visits-location">{{ __('time.filters.location') }}</label>
-                    <select id="work-visits-location" class="wp-select" wire:model="locationFilter">
-                        <option value="">{{ __('time.filters.all_locations') }}</option>
-                        @foreach ($locations as $location)
-                            <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="wp-filter-cell">
-                    <label class="wp-filter-inline-label" for="work-visits-status">{{ __('work_visits.filter.status') }}</label>
-                    <select id="work-visits-status" class="wp-select" wire:model="statusFilter">
-                        <option value="">{{ __('work_visits.filter.all_statuses') }}</option>
-                        <option value="open">{{ __('work_visits.status.open') }}</option>
-                        <option value="closed">{{ __('work_visits.status.closed') }}</option>
-                    </select>
-                </div>
+            <div class="wp-filter-cell">
+                <label class="wp-filter-inline-label" for="work-visits-to">{{ __('time.filters.to') }}</label>
+                <input id="work-visits-to" type="date" class="wp-input" wire:model="to">
             </div>
-            <div class="wp-filter-form__actions">
-                <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('time.filters.apply') }}</button>
+            <div class="wp-filter-cell">
+                <label class="wp-filter-inline-label" for="work-visits-worker">{{ __('time.filters.worker') }}</label>
+                <select id="work-visits-worker" class="wp-select" wire:model="workerFilter">
+                    <option value="">{{ __('time.filters.all_workers') }}</option>
+                    @foreach ($workers as $worker)
+                        <option value="{{ $worker->id }}">{{ $worker->displayName() }}</option>
+                    @endforeach
+                </select>
             </div>
+            <div class="wp-filter-cell">
+                <label class="wp-filter-inline-label" for="work-visits-location">{{ __('time.filters.location') }}</label>
+                <select id="work-visits-location" class="wp-select" wire:model="locationFilter">
+                    <option value="">{{ __('time.filters.all_locations') }}</option>
+                    @foreach ($locations as $location)
+                        <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="wp-filter-cell">
+                <label class="wp-filter-inline-label" for="work-visits-status">{{ __('work_visits.filter.status') }}</label>
+                <select id="work-visits-status" class="wp-select" wire:model="statusFilter">
+                    <option value="">{{ __('work_visits.filter.all_statuses') }}</option>
+                    <option value="open">{{ __('work_visits.status.open') }}</option>
+                    <option value="closed">{{ __('work_visits.status.closed') }}</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('time.filters.apply') }}</button>
         </div>
     </div>
 

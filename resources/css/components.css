@@ -5013,6 +5013,32 @@ svg.wp-release-worker-row__icon,
     gap: 0.5rem 1rem;
 }
 
+.wp-work-visits-toolbar {
+    padding: 0.75rem 1rem;
+}
+
+.wp-work-visits-toolbar__form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.85rem;
+}
+
+.wp-work-visits-toolbar .wp-filter-form__title {
+    margin-right: 0.25rem;
+}
+
+.wp-work-visits-toolbar .wp-filter-cell {
+    flex: 0 0 auto;
+}
+
+.wp-work-visits-toolbar .wp-filter-cell .wp-input[type='date'] {
+    width: 10rem;
+    min-width: 10rem;
+    max-width: 10rem;
+    flex: 0 0 10rem;
+}
+
 @media (max-width: 767px) {
     .wp-time-shifts-toolbar__primary {
         grid-template-columns: 1fr;
