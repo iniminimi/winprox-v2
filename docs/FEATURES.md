@@ -715,7 +715,8 @@ productsector op `Tenant`.
   bezoek blijven het bestaande OUT/IN. placeOfWork = gsm-coords of unit-pin; DDT blijft op
   de locatie (klant).
 - Publieke winprox.app-homepage doet **geen** GPS-voorstel van bedrijven.
-- **Beheer:** Time → **Aanwezigheid** toont het open werkbezoek (locatie · unit).
+- **Beheer:** Werk → **Werkbezoeken** toont de historiek (periode, uitvoerder, locatie,
+  open/afgesloten). Time → **Aanwezigheid** toont het open werkbezoek (locatie · unit).
   Time → **Uren** toont de historiek per dienst (start–einde per unit). CIAO-scherm
   is geen werkbezoek-historiek (alleen RSZ-inzendingen).
 

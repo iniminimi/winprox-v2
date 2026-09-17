@@ -170,6 +170,17 @@ it('laadt paginahulp voor Categorieën en Locaties apart', function (): void {
         ->and(collect($locations['actions'])->pluck('label')->all())->not->toContain('Categorieën');
 });
 
+it('laadt paginahulp voor werkbezoeken', function (): void {
+    app()->setLocale('nl');
+
+    $help = PageHelp::for('work-visits.index');
+
+    expect($help)->not->toBeNull()
+        ->and($help['title'])->toBe('Hulp — Werkbezoeken')
+        ->and(collect($help['actions'])->pluck('label')->all())->toContain('Overzicht')
+        ->and(collect($help['actions'])->pluck('label')->all())->toContain('Time');
+});
+
 it('verbergt API-hulp bij unitmetingen zonder API-toegang', function (): void {
     app()->setLocale('nl');
 

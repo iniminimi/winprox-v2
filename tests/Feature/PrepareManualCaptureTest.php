@@ -38,6 +38,7 @@ it('zet has_time_module aan en maakt een clock point aan voor de capture-tenant'
     $result = app(PrepareManualCaptureTenantAction::class)->handle();
 
     expect($result->fresh()->has_time_module)->toBeTrue()
+        ->and($result->fresh()->time_gps_visits)->toBeTrue()
         ->and(ClockPoint::query()->where('tenant_id', $tenant->id)->count())->toBe(1);
 
     $token = app(PrepareManualCaptureTenantAction::class)->clockPointQrToken($tenant->fresh());

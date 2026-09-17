@@ -67,4 +67,15 @@ class WorkVisit extends Model
     {
         return $this->ended_at === null;
     }
+
+    public function durationMinutes(): int
+    {
+        if ($this->started_at === null) {
+            return 0;
+        }
+
+        $end = $this->ended_at ?? now();
+
+        return max(0, (int) $this->started_at->diffInMinutes($end));
+    }
 }

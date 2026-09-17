@@ -84,6 +84,7 @@ use App\Livewire\Pages\UnitChecksIndex;
 use App\Livewire\Pages\UnitsIndex;
 use App\Livewire\Pages\WorkersIndex;
 use App\Livewire\UnitMeasurements\MeasurementsIndex as UnitMeasurementsIndex;
+use App\Livewire\WorkVisits\WorkVisitsIndex;
 use App\Livewire\Pages\WorkerManualIndex;
 use App\Livewire\Platform\Audit as PlatformAudit;
 use App\Livewire\Platform\ContactMessages;
@@ -412,6 +413,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/unit-checks/export', UnitCheckExportController::class)->name('unit-checks.export');
         Route::get('/unit-checks/print', UnitCheckPrintController::class)->name('unit-checks.print');
         Route::get('/unit-measurements', UnitMeasurementsIndex::class)->name('unit-measurements.index');
+        Route::get('/work-visits', WorkVisitsIndex::class)->name('work-visits.index');
         Route::get('/unit-measurements/export', UnitMeasurementExportController::class)->name('unit-measurements.export');
         Route::get('/unit-measurements/print', UnitMeasurementPrintController::class)->name('unit-measurements.print');
         Route::get('/unit-measurements/fields', fn () => redirect()->route('unit-measurements.index'))

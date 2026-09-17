@@ -1533,6 +1533,27 @@
                 }
             ]
         },
+        "work-visits.index": {
+            "title": "Hilfe — Arbeitsbesuche",
+            "actions": [
+                {
+                    "label": "Übersicht",
+                    "text": "Unter Arbeit → Arbeitsbesuche sehen Sie GPS-Arbeitsbesuche: wer, wo (Standort · Unit) und Start–Ende. Das Menü erscheint nur, wenn Time und GPS-Arbeitsbesuche in den Einstellungen an sind."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Filtern Sie nach Zeitraum, Mitarbeiter, Standort oder offen/geschlossen. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren."
+                },
+                {
+                    "label": "Time",
+                    "text": "Time → Anwesenheit zeigt den offenen Besuch von wer gerade arbeitet. Time → Stunden zeigt Besuche pro Schicht. CIAO bleibt die RSZ-Meldungen, keine Besuchshistorie."
+                },
+                {
+                    "label": "Feld",
+                    "text": "Ausführende starten und stoppen die Arbeit im Clock-Point-Portal im Radius einer Unit mit festem Pin. Einstempeln öffnet nur die bezahlte Schicht, ohne Standortnachweis."
+                }
+            ]
+        },
         "team.workers_index": {
             "title": "Hilfe — Ausführende",
             "actions": [

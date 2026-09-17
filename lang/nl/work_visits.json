@@ -1,0 +1,16 @@
+{
+    "list": {
+        "title": "Werkbezoeken",
+        "subtitle": "GPS-bezoeken per unit: wie waar werkte, en of het bezoek nog open is.",
+        "empty": "Geen werkbezoeken in deze periode.",
+        "duration": "Duur: :duration"
+    },
+    "filter": {
+        "status": "Status",
+        "all_statuses": "Alle statussen"
+    },
+    "status": {
+        "open": "Open",
+        "closed": "Afgesloten"
+    }
+}

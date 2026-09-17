@@ -1,0 +1,16 @@
+{
+    "list": {
+        "title": "Visite di lavoro",
+        "subtitle": "Visite GPS per unità: chi ha lavorato dove, e se la visita è ancora aperta.",
+        "empty": "Nessuna visita di lavoro in questo periodo.",
+        "duration": "Durata: :duration"
+    },
+    "filter": {
+        "status": "Stato",
+        "all_statuses": "Tutti gli stati"
+    },
+    "status": {
+        "open": "Aperta",
+        "closed": "Chiusa"
+    }
+}

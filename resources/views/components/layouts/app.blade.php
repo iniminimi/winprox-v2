@@ -30,6 +30,7 @@
         $showWorkMenuReservations = $activeTenant instanceof Tenant && $activeTenant->workMenuReservationsEnabled();
         $showWorkMenuInspectionRounds = $activeTenant instanceof Tenant && $activeTenant->workMenuInspectionRoundsEnabled();
         $showWorkMenuUnitMeasurements = $activeTenant instanceof Tenant && $activeTenant->workMenuUnitMeasurementsEnabled();
+        $showWorkVisitsNav = $activeTenant instanceof Tenant && $activeTenant->allowsGpsWorkVisits();
 
         $primaryNav = [
             ...($isPlatformOnlySuperuser ? [
@@ -182,6 +183,7 @@
                                 || ($showWorkMenuCalendar && request()->routeIs('calendar.*'))
                                 || ($showWorkMenuReservations && request()->routeIs('reservations.*'))
                                 || ($showWorkMenuUnitMeasurements && request()->routeIs('unit-measurements.*'))
+                                || ($showWorkVisitsNav && request()->routeIs('work-visits.*'))
                                 || ($showWorkMenuInspectionRounds && $inspectionRoundOnlyActive);
 
                             $categoriesActive = request()->routeIs('locations.index')
@@ -240,6 +242,13 @@
                                        @click="nav = false">
                                         <span>{{ __('common.nav.tasks') }}</span>
                                     </a>
+                                    @if ($showWorkVisitsNav)
+                                        <a href="{{ route('work-visits.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('work-visits.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.work_visits') }}</span>
+                                        </a>
+                                    @endif
                                     @if ($showWorkMenuCalendar)
                                         <a href="{{ route('calendar.index') }}"
                                            class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('calendar.*') ? 'is-active' : '' }}"

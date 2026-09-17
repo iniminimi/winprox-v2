@@ -54,6 +54,11 @@ final class PrepareManualCaptureTenantAction
             $updates['has_time_module'] = true;
         }
 
+        if (! $tenant->allowsGpsWorkVisits()) {
+            $updates['has_time_module'] = true;
+            $updates['time_gps_visits'] = true;
+        }
+
         if (! $tenant->hasIotModule()) {
             $updates['has_iot_module'] = true;
         }

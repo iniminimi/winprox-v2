@@ -4,6 +4,7 @@ use App\Actions\Time\BuildTimePresenceDashboardAction;
 use App\Actions\Time\ClockInAction;
 use App\Livewire\Time\PresenceIndex;
 use App\Livewire\Time\ShiftsIndex;
+use App\Livewire\WorkVisits\WorkVisitsIndex;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\EndWorkVisitAction;
@@ -301,6 +302,35 @@ it('toont het open werkbezoek op aanwezigheid en de historiek op uren', function
         ->test(ShiftsIndex::class)
         ->assertSee(__('time.shifts.visits_heading'), false)
         ->assertSee($unit->name, false);
+
+    Livewire::actingAs($admin)
+        ->test(WorkVisitsIndex::class)
+        ->assertOk()
+        ->assertSee($unit->name, false)
+        ->assertSee($worker->displayName(), false);
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee(route('work-visits.index'), false);
+});
+
+it('verbergt Werkbezoeken als GPS-bezoeken uit staan', function () {
+    [$tenant] = gpsVisitContext();
+    $admin = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+    $tenant->update(['time_gps_visits' => false]);
+
+    Livewire::actingAs($admin)
+        ->test(WorkVisitsIndex::class)
+        ->assertForbidden();
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSee(route('work-visits.index'), false);
 });
 
 it('exposeert time.visit webhook-events', function () {

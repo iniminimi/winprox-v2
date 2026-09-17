@@ -1541,6 +1541,27 @@
                 }
             ]
         },
+        "work-visits.index": {
+            "title": "Aide — Visites de travail",
+            "actions": [
+                {
+                    "label": "Aperçu",
+                    "text": "Sous Travail → Visites de travail vous voyez les visites GPS : qui, où (site · unité) et début–fin. Le menu n’apparaît que si Time et les visites GPS sont activés dans Paramètres."
+                },
+                {
+                    "label": "Filtres",
+                    "text": "Filtrez par période, exécutant, site ou ouverte/clôturée. Appuyez sur <strong>Appliquer</strong> pour actualiser la liste."
+                },
+                {
+                    "label": "Time",
+                    "text": "Time → Présence montre la visite ouverte de qui travaille maintenant. Time → Heures montre les visites par service. CIAO reste les envois ONSS, pas l’historique des visites."
+                },
+                {
+                    "label": "Terrain",
+                    "text": "Les exécutants démarrent et arrêtent le travail sur le portail Clock Point dans le rayon d’une unité avec pin fixe. L’entrée ouvre seulement le temps payé, sans preuve de lieu."
+                }
+            ]
+        },
         "team.workers_index": {
             "title": "Aide — Exécutants",
             "actions": [

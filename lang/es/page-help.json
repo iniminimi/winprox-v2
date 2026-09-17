@@ -1533,6 +1533,27 @@
                 }
             ]
         },
+        "work-visits.index": {
+            "title": "Ayuda — Visitas de trabajo",
+            "actions": [
+                {
+                    "label": "Resumen",
+                    "text": "En Trabajo → Visitas de trabajo ve las visitas GPS: quién, dónde (sede · unidad) y inicio–fin. El menú aparece solo si Time y las visitas GPS están activadas en Ajustes."
+                },
+                {
+                    "label": "Filtros",
+                    "text": "Filtre por periodo, ejecutor, sede o abierta/cerrada. Pulse <strong>Aplicar</strong> para actualizar la lista."
+                },
+                {
+                    "label": "Time",
+                    "text": "Time → Presencia muestra la visita abierta de quien trabaja ahora. Time → Horas muestra las visitas por turno. CIAO sigue siendo los envíos a la ONSS, no el historial de visitas."
+                },
+                {
+                    "label": "Campo",
+                    "text": "Los ejecutores inician y detienen el trabajo en el portal Clock Point dentro del radio de una unidad con pin fijo. El fichaje de entrada solo abre el tiempo pagado, sin prueba de lugar."
+                }
+            ]
+        },
         "team.workers_index": {
             "title": "Ayuda — Ejecutores",
             "actions": [

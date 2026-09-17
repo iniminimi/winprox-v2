@@ -1,0 +1,16 @@
+{
+    "list": {
+        "title": "Arbeitsbesuche",
+        "subtitle": "GPS-Besuche pro Unit: wer wo gearbeitet hat, und ob der Besuch noch offen ist.",
+        "empty": "Keine Arbeitsbesuche in diesem Zeitraum.",
+        "duration": "Dauer: :duration"
+    },
+    "filter": {
+        "status": "Status",
+        "all_statuses": "Alle Status"
+    },
+    "status": {
+        "open": "Offen",
+        "closed": "Geschlossen"
+    }
+}

@@ -1533,6 +1533,27 @@
                 }
             ]
         },
+        "work-visits.index": {
+            "title": "Hulp — Werkbezoeken",
+            "actions": [
+                {
+                    "label": "Overzicht",
+                    "text": "Onder Werk → Werkbezoeken ziet u GPS-werkbezoeken: wie, waar (locatie · unit) en start–einde. Het menu verschijnt alleen als Time én GPS-werkbezoeken in Instellingen aanstaan."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Filter op periode, uitvoerder, locatie of open/afgesloten. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
+                },
+                {
+                    "label": "Time",
+                    "text": "Time → Aanwezigheid toont het open bezoek van wie nu werkt. Time → Uren toont de bezoeken per dienst. CIAO blijft de RSZ-inzendingen, geen bezoekhistoriek."
+                },
+                {
+                    "label": "Veld",
+                    "text": "Uitvoerders starten en stoppen werk op het Clock Point-portaal binnen de straal van een unit met vaste pin. Inklokken opent alleen de betaalde dienst, zonder locatiebewijs."
+                }
+            ]
+        },
         "team.workers_index": {
             "title": "Hulp — Uitvoerders",
             "actions": [

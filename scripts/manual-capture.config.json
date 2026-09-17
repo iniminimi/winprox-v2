@@ -121,6 +121,14 @@
             "auth": true
         },
         {
+            "id": "work-visits-index",
+            "path": "/work-visits",
+            "selector": "[data-manual-capture=\"work-visits-index\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "optional": true
+        },
+        {
             "id": "dashboard",
             "path": "/dashboard",
             "selector": "[data-manual-capture=\"dashboard\"]",

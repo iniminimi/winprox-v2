@@ -1533,6 +1533,27 @@
                 }
             ]
         },
+        "work-visits.index": {
+            "title": "Aiuto — Visite di lavoro",
+            "actions": [
+                {
+                    "label": "Panoramica",
+                    "text": "In Lavoro → Visite di lavoro vedi le visite GPS: chi, dove (sede · unità) e inizio–fine. Il menu compare solo se Time e le visite GPS sono attive in Impostazioni."
+                },
+                {
+                    "label": "Filtri",
+                    "text": "Filtra per periodo, esecutore, sede o aperta/chiusa. Premi <strong>Applica</strong> per aggiornare l’elenco."
+                },
+                {
+                    "label": "Time",
+                    "text": "Time → Presenza mostra la visita aperta di chi lavora ora. Time → Ore mostra le visite per turno. CIAO resta gli invii all’ONSS, non lo storico visite."
+                },
+                {
+                    "label": "Campo",
+                    "text": "Gli esecutori avviano e interrompono il lavoro sul portale Clock Point nel raggio di un’unità con pin fisso. L’entrata apre solo il tempo retribuito, senza prova di luogo."
+                }
+            ]
+        },
         "team.workers_index": {
             "title": "Guida — Esecutori",
             "actions": [

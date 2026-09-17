@@ -144,6 +144,18 @@ return [
         ],
         [
             'patterns' => [
+                'werkbezoek', 'werkbezoeken', 'work visit', 'work visits',
+                'visite de travail', 'visites de travail',
+                'arbeitsbesuch', 'arbeitsbesuche',
+                'visita de trabajo', 'visitas de trabajo',
+                'visita di lavoro', 'visite di lavoro',
+                'gps-bezoek', 'gps visit', 'gps visits',
+            ],
+            'page' => 'work-visits.index',
+            'prefer' => ['werkbezoek', 'work visit', 'visite de travail', 'arbeitsbesuch'],
+        ],
+        [
+            'patterns' => [
                 'unitmeting', 'unitmetingen', 'unit measurement', 'unit measurements',
                 'meetveld', 'meetvelden', 'kilometerstand', 'odometer',
                 'unit-messung', 'messfeld', 'medición de unidad', 'misurazione unità',

@@ -30,6 +30,7 @@
         "iot": "IoT Connect",
         "unit_checks": "Unit checks",
         "unit_measurements": "Unitmetingen",
+        "work_visits": "Werkbezoeken",
         "workers": "Uitvoerders"
     },
     "status": {

@@ -25,6 +25,7 @@ final class ManualChapters
         'reservations',
         'unit-checks',
         'unit-measurements.index',
+        'work-visits.index',
         'dashboard',
         'esg.dashboard',
         'esg.indicators',
