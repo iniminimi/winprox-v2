@@ -271,7 +271,12 @@
             "open_elsewhere_hint": "Hai già timbrato in un'altra sede. Sposta la presenza qui oppure timbra l'uscita.",
             "transfer_here": "Sposta qui",
             "started_at": "Iniziato presso :place (stesso turno).",
-            "scan_required_hint": "Scansiona il QR Clock Point in sede per timbrare entrata o uscita. Una scheda aperta non basta."
+            "scan_required_hint": "Scansiona il QR Clock Point in sede per timbrare entrata o uscita. Una scheda aperta non basta.",
+            "working_at": "Al lavoro presso :place",
+            "stop_work": "Interrompi lavoro",
+            "find_nearby": "Trova un luogo di lavoro vicino",
+            "start_work_at": "Avvia lavoro: :place (:distance m)",
+            "no_nearby_units": "Nessuna unit con pin nel raggio."
         },
         "clocked_in": "Hai timbrato l'entrata.",
         "clocked_out": "Hai timbrato l'uscita.",
@@ -284,7 +289,12 @@
             "break_not_open": "Non sei in pausa.",
             "icon_not_configured": "Il tuo account non è ancora completamente configurato. Contatta l'amministratore.",
             "device_mismatch": "Questo dispositivo non è collegato alla tua marcatura. Chiedi al team leader o all'amministratore di autorizzare un nuovo dispositivo.",
-            "scan_required": "Scansiona il QR Clock Point per timbrare entrata o uscita. Così sappiamo che sei in sede."
+            "scan_required": "Scansiona il QR Clock Point per timbrare entrata o uscita. Così sappiamo che sei in sede.",
+            "visit_gps_required": "Il GPS è obbligatorio per avviare o interrompere il lavoro. Consenti la posizione e riprova.",
+            "visit_unit_out_of_range": "Non sei abbastanza vicino a questo luogo di lavoro.",
+            "visit_already_open": "Stai già lavorando in questo luogo.",
+            "visit_not_open": "Non hai una visita di lavoro aperta.",
+            "gps_visits_disabled": "Le visite GPS sono disattivate per questa organizzazione."
         },
         "transferred": "Presenza spostata in questa sede (stesso turno).",
         "hours": {
@@ -307,7 +317,9 @@
             "month_nav": "Mese",
             "previous_month": "Mese precedente",
             "next_month": "Mese successivo"
-        }
+        },
+        "visit_started": "Visita di lavoro avviata.",
+        "visit_ended": "Visita di lavoro terminata."
     },
     "ciao": {
         "title": "Invii CIAO",
@@ -330,7 +342,9 @@
             "clock_in": "Timbratura entrata",
             "clock_out": "Timbratura uscita",
             "break_start": "Inizio pausa",
-            "break_end": "Fine pausa"
+            "break_end": "Fine pausa",
+            "visit_start": "Inizio visita",
+            "visit_end": "Fine visita"
         },
         "col": {
             "when": "Quando",

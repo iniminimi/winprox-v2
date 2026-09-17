@@ -237,6 +237,9 @@
         "gps_on_clock": "Demander le GPS à l'entrée et à la sortie",
         "gps_on_clock_hint": "À l'intérieur, le signal manque souvent : le pointage continue sans GPS. Les coordonnées sont enregistrées si disponibles.",
         "save": "Enregistrer la sécurité pointeuse",
-        "saved": "Sécurité pointeuse enregistrée."
+        "saved": "Sécurité pointeuse enregistrée.",
+        "gps_visits": "Visites GPS (démarrer/arrêter le travail sur une unité épinglée)",
+        "gps_visits_hint": "L'entrée ouvre toujours la journée payée sans preuve de lieu. Démarrer le travail exige un GPS frais dans le rayon d'une unité avec pin fixe. La sortie est possible partout ; une visite ouverte est d'abord clôturée.",
+        "gps_visit_radius": "Rayon (mètres)"
     }
 }

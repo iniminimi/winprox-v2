@@ -120,6 +120,10 @@ class Settings extends Component
 
     public bool $timeGpsOnClock = false;
 
+    public bool $timeGpsVisits = false;
+
+    public string $timeGpsVisitRadiusMeters = '250';
+
     public string $presenceComplianceScope = 'ciao_cleaning';
 
     public string $enterpriseNumber = '';
@@ -238,6 +242,10 @@ class Settings extends Component
             [
                 'time_require_worker_pin' => $this->timeRequireWorkerPin,
                 'time_gps_on_clock' => $this->timeGpsOnClock,
+                'time_gps_visits' => $this->timeGpsVisits,
+                'time_gps_visit_radius_meters' => $this->timeGpsVisitRadiusMeters !== ''
+                    ? (int) $this->timeGpsVisitRadiusMeters
+                    : null,
             ],
             UpdateTenantTimeClockSecurityRequest::ruleSet(),
         )->validate();
@@ -846,6 +854,10 @@ class Settings extends Component
         $this->presenceComplianceEnabled = (bool) $tenant->presence_compliance_enabled;
         $this->timeRequireWorkerPin = (bool) $tenant->time_require_worker_pin;
         $this->timeGpsOnClock = (bool) $tenant->time_gps_on_clock;
+        $this->timeGpsVisits = (bool) $tenant->time_gps_visits;
+        $this->timeGpsVisitRadiusMeters = $tenant->time_gps_visit_radius_meters
+            ? (string) $tenant->time_gps_visit_radius_meters
+            : (string) config('time.gps_visit_radius_meters', 250);
         $this->presenceComplianceScope = (string) ($tenant->presence_compliance_scope
             ?? PresenceComplianceScope::CiaoCleaning->value);
         $this->enterpriseNumber = (string) ($tenant->enterprise_number ?? '');

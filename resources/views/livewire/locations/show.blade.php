@@ -285,6 +285,19 @@
                     <input type="text" class="wp-input" wire:model="unitName" />
                     @error('unitName') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
+                <div class="wp-settings-split">
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.units.fields.visit_latitude') }}</span>
+                        <input type="text" class="wp-input" wire:model="unitLatitude" inputmode="decimal" />
+                        @error('unitLatitude') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.units.fields.visit_longitude') }}</span>
+                        <input type="text" class="wp-input" wire:model="unitLongitude" inputmode="decimal" />
+                        @error('unitLongitude') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
+                </div>
+                <p class="wp-hint">{{ __('locations.units.fields.visit_pin_hint') }}</p>
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.units.fields.roster_code') }}</span>
                     <input type="text" class="wp-input" wire:model="unitRosterCode" maxlength="8" autocomplete="off" />

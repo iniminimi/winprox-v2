@@ -132,7 +132,10 @@
             "allow_unit_measurements": "Autoriser les mesures unit",
             "measure_fields": "Champs de mesure",
             "roster_code": "Code planning",
-            "roster_code_hint": "Facultatif. Code court pour le planning, unique par site (ex. G1)."
+            "roster_code_hint": "Facultatif. Code court pour le planning, unique par site (ex. G1).",
+            "visit_latitude": "Pin de visite (latitude)",
+            "visit_longitude": "Pin de visite (longitude)",
+            "visit_pin_hint": "Pin fixe du bâtiment pour les visites GPS. Vide = signalements/tâches uniquement. Les rapports GPS du portail ne modifient jamais ce pin."
         },
         "translation_preview": "Traduction (portail)",
         "translation_edit": {

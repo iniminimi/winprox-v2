@@ -8,4 +8,5 @@ enum ClockSource: string
     case Admin = 'admin';
     case Auto = 'auto';
     case Api = 'api';
+    case Gps = 'gps';
 }

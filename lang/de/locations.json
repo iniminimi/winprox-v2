@@ -132,7 +132,10 @@
             "allow_unit_measurements": "Unit-Messungen erlauben",
             "measure_fields": "Messfelder",
             "roster_code": "Dienstplancode",
-            "roster_code_hint": "Optional. Kurzer Code für den Dienstplan, eindeutig pro Standort (z. B. G1)."
+            "roster_code_hint": "Optional. Kurzer Code für den Dienstplan, eindeutig pro Standort (z. B. G1).",
+            "visit_latitude": "Arbeitsbesuch-Pin (Breitengrad)",
+            "visit_longitude": "Arbeitsbesuch-Pin (Längengrad)",
+            "visit_pin_hint": "Fester Gebäude-Pin für GPS-Arbeitsbesuche. Leer = nur Meldungen/Aufgaben. GPS-Meldungen aus dem Portal ändern diesen Pin nie."
         },
         "translation_preview": "Übersetzung (Portal)",
         "translation_edit": {

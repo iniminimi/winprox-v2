@@ -22,6 +22,7 @@ class ClockOutAction
         private EnqueuePresenceFromTimeEventAction $enqueuePresence,
         private AssertWorkerClockDeviceAction $assertClockDevice,
         private ResolveWorkShiftBreakMinutesAction $resolveBreakMinutes,
+        private EndWorkVisitAction $endWorkVisit,
     ) {}
 
     public function handle(
@@ -58,6 +59,8 @@ class ClockOutAction
             } else {
                 $shift->loadMissing(['breaks', 'team']);
             }
+
+            $this->endWorkVisit->handle($worker, required: false, source: $source);
 
             $endedAt = now();
             $clockedBreakMinutes = (int) $shift->breaks->sum(fn ($break) => $break->durationMinutes());

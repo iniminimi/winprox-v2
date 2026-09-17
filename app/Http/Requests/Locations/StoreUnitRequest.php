@@ -80,6 +80,8 @@ class StoreUnitRequest extends FormRequest
             'measure_field_ids.*' => ['integer', 'exists:unit_measure_fields,id'],
             'require_reporter_contact' => ['boolean'],
             'require_reporter_email_verification' => ['boolean'],
+            'latitude' => ['nullable', 'numeric', 'between:-90,90'],
+            'longitude' => ['nullable', 'numeric', 'between:-180,180'],
         ];
     }
 

@@ -28,6 +28,8 @@ class WebhookEndpoint extends Model
         'task.completed',
         'time.shift.started',
         'time.shift.ended',
+        'time.visit.started',
+        'time.visit.ended',
         'time.presence.submitted',
         'time.presence.failed',
         'time.presence.skipped',

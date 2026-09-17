@@ -18,6 +18,7 @@ class AutoCloseStaleWorkShiftsAction
         private CloseOpenWorkShiftTaskLogsAction $closeOpenTaskLogs,
         private EnqueuePresenceFromTimeEventAction $enqueuePresence,
         private ResolveWorkShiftBreakMinutesAction $resolveBreakMinutes,
+        private EndWorkVisitAction $endWorkVisit,
     ) {}
 
     public function handle(?int $staleHours = null): int
@@ -63,6 +64,8 @@ class AutoCloseStaleWorkShiftsAction
                 $this->endWorkBreak->handle($locked->worker, $locked);
                 $locked = $locked->fresh(['openBreak', 'breaks', 'team']);
             }
+
+            $this->endWorkVisit->handle($locked->worker, required: false, source: ClockSource::Auto);
 
             $endedAt = now();
             $clockedBreakMinutes = (int) $locked->breaks->sum(fn ($break) => $break->durationMinutes());

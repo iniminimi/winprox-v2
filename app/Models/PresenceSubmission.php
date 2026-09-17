@@ -19,8 +19,10 @@ class PresenceSubmission extends Model
         'worker_id',
         'work_shift_id',
         'work_break_id',
+        'work_visit_id',
         'clock_point_id',
         'location_id',
+        'unit_id',
         'source_event',
         'presence_type',
         'scope',
@@ -58,6 +60,16 @@ class PresenceSubmission extends Model
     public function workBreak(): BelongsTo
     {
         return $this->belongsTo(WorkBreak::class);
+    }
+
+    public function workVisit(): BelongsTo
+    {
+        return $this->belongsTo(WorkVisit::class);
+    }
+
+    public function unit(): BelongsTo
+    {
+        return $this->belongsTo(Unit::class);
     }
 
     public function clockPoint(): BelongsTo

@@ -160,6 +160,8 @@
         "time.schedule.saved": "Horario guardado",
         "time.schedule.copied": "Semana de horario copiada",
         "time.schedule.published": "Horario publicado",
-        "time.shift_type.saved": "Tipo de turno guardado"
+        "time.shift_type.saved": "Tipo de turno guardado",
+        "time.visit.started": "Visita de trabajo iniciada",
+        "time.visit.ended": "Visita de trabajo finalizada"
     }
 }

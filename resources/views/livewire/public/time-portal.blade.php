@@ -227,6 +227,7 @@
                         class="wp-card wp-card-pad wp-stack"
                         x-data="{
                             gpsOn: @js($gpsOnClock ?? false),
+                            gpsVisits: @js($gpsVisits ?? false),
                             async withGps(method) {
                                 const run = () => $wire[method]();
                                 if (!this.gpsOn || !navigator.geolocation) {
@@ -241,6 +242,24 @@
                                     },
                                     () => run(),
                                     { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
+                                );
+                            },
+                            async withFreshGps(method, arg) {
+                                const call = (lat, lng) => {
+                                    if (arg === undefined) {
+                                        $wire[method](lat, lng);
+                                    } else {
+                                        $wire[method](arg, lat, lng);
+                                    }
+                                };
+                                if (!navigator.geolocation) {
+                                    call(null, null);
+                                    return;
+                                }
+                                navigator.geolocation.getCurrentPosition(
+                                    (pos) => call(pos.coords.latitude, pos.coords.longitude),
+                                    () => call(null, null),
+                                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
                                 );
                             }
                         }"
@@ -275,6 +294,25 @@
                             </p>
                             @if ($openShift->isManuallyClockedIn())
                                 <p class="wp-muted">{{ __('time.manual_clock_in.badge') }}</p>
+                            @endif
+                            @if (($gpsVisits ?? false) && $openShift->openVisit)
+                                <p class="wp-muted">{{ __('time.portal.clock.working_at', ['place' => trim(($openShift->openVisit->location?->name ?? '').' · '.($openShift->openVisit->unit?->name ?? ''), ' ·')]) }}</p>
+                                <button type="button" class="btn btn--primary btn--block" @click="withFreshGps('endWorkVisit')">
+                                    {{ __('time.portal.clock.stop_work') }}
+                                </button>
+                            @elseif ($gpsVisits ?? false)
+                                <button type="button" class="btn btn--primary btn--block" @click="withFreshGps('refreshNearbyClockUnits')">
+                                    {{ __('time.portal.clock.find_nearby') }}
+                                </button>
+                                @forelse ($nearbyClockUnits as $nearby)
+                                    <button type="button" class="btn btn--surface btn--block" @click="withFreshGps('startWorkVisit', {{ (int) $nearby['unit_id'] }})">
+                                        {{ __('time.portal.clock.start_work_at', ['place' => trim($nearby['location_name'].' · '.$nearby['unit_name'], ' · '), 'distance' => $nearby['distance_meters']]) }}
+                                    </button>
+                                @empty
+                                    @if ($nearbyClockUnitsLoaded)
+                                        <p class="wp-muted">{{ __('time.portal.clock.no_nearby_units') }}</p>
+                                    @endif
+                                @endforelse
                             @endif
                             @if ($startedElsewhere && $openShift->clockInClockPoint)
                                 <p class="wp-muted">{{ __('time.portal.clock.started_at', ['place' => $openShift->clockInClockPoint->name]) }}</p>

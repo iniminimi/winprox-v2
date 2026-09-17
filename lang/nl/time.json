@@ -271,7 +271,12 @@
             "open_elsewhere_hint": "Je bent al ingeklokt op een andere vestiging. Verplaats je aanwezigheid naar hier, of klok uit.",
             "transfer_here": "Verplaats naar hier",
             "started_at": "Gestart bij :place (zelfde dienst).",
-            "scan_required_hint": "Scan de Clock Point-QR op de vestiging om in of uit te klokken. Een open tab volstaat niet."
+            "scan_required_hint": "Scan de Clock Point-QR op de vestiging om in of uit te klokken. Een open tab volstaat niet.",
+            "working_at": "Aan het werk bij :place",
+            "stop_work": "Werk stoppen",
+            "find_nearby": "Zoek werkplek in de buurt",
+            "start_work_at": "Start werk: :place (:distance m)",
+            "no_nearby_units": "Geen gepinde unit binnen bereik."
         },
         "clocked_in": "Je bent ingeklokt.",
         "clocked_out": "Je bent uitgeklokt.",
@@ -284,7 +289,12 @@
             "break_not_open": "Je bent niet op pauze.",
             "icon_not_configured": "Je account is nog niet volledig ingesteld. Neem contact op met de beheerder.",
             "device_mismatch": "Dit toestel is niet gekoppeld aan jouw prikklok. Vraag je teamleader of beheerder om een nieuw toestel toe te staan.",
-            "scan_required": "Scan de Clock Point-QR om in of uit te klokken. Zo weten we dat je ter plaatse bent."
+            "scan_required": "Scan de Clock Point-QR om in of uit te klokken. Zo weten we dat je ter plaatse bent.",
+            "visit_gps_required": "GPS is verplicht om werk te starten of te stoppen. Sta locatie toe en probeer opnieuw.",
+            "visit_unit_out_of_range": "Je bent niet dicht genoeg bij deze werkplek.",
+            "visit_already_open": "Je werkt al op deze plek.",
+            "visit_not_open": "Je hebt geen open werkbezoek.",
+            "gps_visits_disabled": "GPS-werkbezoeken staan uit voor deze organisatie."
         },
         "transferred": "Aanwezigheid verplaatst naar deze vestiging (zelfde dienst).",
         "hours": {
@@ -307,7 +317,9 @@
             "month_nav": "Maand",
             "previous_month": "Vorige maand",
             "next_month": "Volgende maand"
-        }
+        },
+        "visit_started": "Werkbezoek gestart.",
+        "visit_ended": "Werkbezoek beëindigd."
     },
     "ciao": {
         "title": "CIAO-inzendingen",
@@ -330,7 +342,9 @@
             "clock_in": "Inklokken",
             "clock_out": "Uitklokken",
             "break_start": "Pauze start",
-            "break_end": "Pauze einde"
+            "break_end": "Pauze einde",
+            "visit_start": "Werkbezoek start",
+            "visit_end": "Werkbezoek einde"
         },
         "col": {
             "when": "Tijdstip",

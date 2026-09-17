@@ -18,8 +18,8 @@ class MapPresenceEventsAction
         return match ($scope) {
             PresenceComplianceScope::CiaoCleaning,
             PresenceComplianceScope::CiaoConstruction => match ($source) {
-                PresenceSourceEvent::ClockIn, PresenceSourceEvent::BreakEnd => PresenceType::In,
-                PresenceSourceEvent::ClockOut, PresenceSourceEvent::BreakStart => PresenceType::Out,
+                PresenceSourceEvent::ClockIn, PresenceSourceEvent::BreakEnd, PresenceSourceEvent::VisitStart => PresenceType::In,
+                PresenceSourceEvent::ClockOut, PresenceSourceEvent::BreakStart, PresenceSourceEvent::VisitEnd => PresenceType::Out,
             },
         };
     }

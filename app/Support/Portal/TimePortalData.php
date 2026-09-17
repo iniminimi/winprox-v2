@@ -81,4 +81,11 @@ final class TimePortalData
 
         return $tenant !== null && $tenant->requestsClockGps();
     }
+
+    public static function tenantAllowsGpsWorkVisits(int $tenantId): bool
+    {
+        $tenant = Tenant::query()->find($tenantId);
+
+        return $tenant !== null && $tenant->allowsGpsWorkVisits();
+    }
 }

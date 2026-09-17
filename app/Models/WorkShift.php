@@ -127,6 +127,16 @@ class WorkShift extends Model
         return $this->hasOne(WorkBreak::class)->whereNull('ended_at')->latestOfMany('started_at');
     }
 
+    public function visits(): HasMany
+    {
+        return $this->hasMany(WorkVisit::class);
+    }
+
+    public function openVisit(): HasOne
+    {
+        return $this->hasOne(WorkVisit::class)->whereNull('ended_at')->latestOfMany('started_at');
+    }
+
     public function scopeOpen(Builder $query): Builder
     {
         return $query->where('status', WorkShiftStatus::Open);

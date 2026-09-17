@@ -59,6 +59,8 @@ it('records a gps report for a unit', function () {
     expect($report)->toBeInstanceOf(UnitGpsReport::class)
         ->and($report->latitude)->toBe(51.12345678)
         ->and($report->longitude)->toBe(4.56789012)
+        ->and($unit->fresh()->latitude)->toBeNull()
+        ->and($unit->fresh()->longitude)->toBeNull()
         ->and($report->location_name)->toBe('Brugge')
         ->and($report->country_code)->toBe('BE')
         ->and($report->reported_at->toIso8601String())->toBe($reportedAt->toIso8601String());

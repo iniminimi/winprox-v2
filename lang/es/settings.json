@@ -237,6 +237,9 @@
         "gps_on_clock": "Pedir GPS al fichar entrada o salida",
         "gps_on_clock_hint": "En interior a menudo no hay señal: el fichaje sigue sin GPS. Las coordenadas se guardan si están disponibles.",
         "save": "Guardar seguridad del fichaje",
-        "saved": "Seguridad del fichaje guardada."
+        "saved": "Seguridad del fichaje guardada.",
+        "gps_visits": "Visitas GPS (iniciar/detener trabajo en el pin de la unidad)",
+        "gps_visits_hint": "El fichaje de entrada sigue abriendo el día pagado sin prueba de lugar. Iniciar el trabajo exige GPS fresco dentro del radio de una unidad con pin fijo. La salida se permite en cualquier sitio; una visita abierta se cierra primero.",
+        "gps_visit_radius": "Radio (metros)"
     }
 }

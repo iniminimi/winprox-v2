@@ -29,6 +29,8 @@ class Unit extends Model
         'name',
         'roster_code',
         'description',
+        'latitude',
+        'longitude',
         'original_language',
         'is_active',
         'public_reports_enabled',
@@ -43,6 +45,8 @@ class Unit extends Model
     ];
 
     protected $casts = [
+        'latitude' => 'float',
+        'longitude' => 'float',
         'is_active' => 'boolean',
         'public_reports_enabled' => 'boolean',
         'allow_reservations' => 'boolean',
@@ -77,6 +81,11 @@ class Unit extends Model
     public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
+    }
+
+    public function hasWorkVisitPin(): bool
+    {
+        return $this->latitude !== null && $this->longitude !== null;
     }
 
     public function bulkBatch(): BelongsTo

@@ -59,6 +59,7 @@ class RecordAuditLogForDomainEvent
             str_starts_with($eventName, 'time.shift_type.') => [\App\Models\ShiftType::class, $id],
             str_starts_with($eventName, 'time.schedule.') => [\App\Models\PlannedShift::class, $id],
             str_starts_with($eventName, 'time.presence.') => [\App\Models\PresenceSubmission::class, $id],
+            str_starts_with($eventName, 'time.visit.') => [\App\Models\WorkVisit::class, $id],
             str_starts_with($eventName, 'time.') => [WorkShift::class, $id],
             str_starts_with($eventName, 'unit.') => [\App\Models\Unit::class, (int) ($payload['unit_id'] ?? $id)],
             str_starts_with($eventName, 'location.') => [\App\Models\Location::class, $id],

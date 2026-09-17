@@ -19,6 +19,7 @@ class ForceCloseWorkShiftAction
         private EnqueuePresenceFromTimeEventAction $enqueuePresence,
         private AuditRecorder $audit,
         private ResolveWorkShiftBreakMinutesAction $resolveBreakMinutes,
+        private EndWorkVisitAction $endWorkVisit,
     ) {}
 
     public function handle(WorkShift $shift, string $reason, int $tenantId, ?int $actorUserId): WorkShift
@@ -53,6 +54,8 @@ class ForceCloseWorkShiftAction
                 $this->endWorkBreak->handle($locked->worker, $locked);
                 $locked = $locked->fresh(['openBreak', 'breaks', 'team']);
             }
+
+            $this->endWorkVisit->handle($locked->worker, required: false, source: ClockSource::Admin);
 
             $endedAt = now();
             $clockedBreakMinutes = (int) $locked->breaks->sum(fn ($break) => $break->durationMinutes());

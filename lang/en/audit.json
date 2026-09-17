@@ -160,6 +160,8 @@
         "time.schedule.saved": "Roster saved",
         "time.schedule.copied": "Roster week copied",
         "time.schedule.published": "Roster published",
-        "time.shift_type.saved": "Shift type saved"
+        "time.shift_type.saved": "Shift type saved",
+        "time.visit.started": "Work visit started",
+        "time.visit.ended": "Work visit ended"
     }
 }

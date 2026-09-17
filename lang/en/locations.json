@@ -132,7 +132,10 @@
             "allow_unit_measurements": "Allow unit measurements",
             "measure_fields": "Measure fields",
             "roster_code": "Roster code",
-            "roster_code_hint": "Optional. Short code for the roster, unique per location (e.g. G1)."
+            "roster_code_hint": "Optional. Short code for the roster, unique per location (e.g. G1).",
+            "visit_latitude": "Work-visit pin (latitude)",
+            "visit_longitude": "Work-visit pin (longitude)",
+            "visit_pin_hint": "Fixed building pin for GPS work visits. Empty = issues/tasks only. Portal GPS reports never change this pin."
         },
         "translation_preview": "Translation (portal)",
         "translation_edit": {

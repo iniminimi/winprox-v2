@@ -237,6 +237,9 @@
         "gps_on_clock": "GPS vragen bij in- en uitklokken",
         "gps_on_clock_hint": "Binnen is er vaak geen signaal: zonder GPS mag de prik toch doorgaan. Coördinaten worden bewaard als ze beschikbaar zijn.",
         "save": "Prikklok-beveiliging opslaan",
-        "saved": "Prikklok-beveiliging opgeslagen."
+        "saved": "Prikklok-beveiliging opgeslagen.",
+        "gps_visits": "GPS-werkbezoeken (werk starten/stoppen op unit-pin)",
+        "gps_visits_hint": "Inklokken blijft de betaalde dag zonder locatiebewijs. Werk starten eist verse GPS binnen de straal van een unit met vaste pin. Uitklokken mag overal; een open bezoek wordt eerst afgesloten.",
+        "gps_visit_radius": "Straal (meter)"
     }
 }

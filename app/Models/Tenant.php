@@ -41,6 +41,8 @@ class Tenant extends Model
         'has_time_module',
         'time_require_worker_pin',
         'time_gps_on_clock',
+        'time_gps_visits',
+        'time_gps_visit_radius_meters',
         'enterprise_number',
         'foreign_vat_number',
         'presence_compliance_enabled',
@@ -70,6 +72,8 @@ class Tenant extends Model
             'has_time_module' => 'boolean',
             'time_require_worker_pin' => 'boolean',
             'time_gps_on_clock' => 'boolean',
+            'time_gps_visits' => 'boolean',
+            'time_gps_visit_radius_meters' => 'integer',
             'presence_compliance_enabled' => 'boolean',
             'presence_rsz_client_id' => 'encrypted',
             'presence_rsz_private_key' => 'encrypted',
@@ -316,6 +320,21 @@ class Tenant extends Model
     public function requestsClockGps(): bool
     {
         return $this->hasTimeModule() && (bool) $this->time_gps_on_clock;
+    }
+
+    public function allowsGpsWorkVisits(): bool
+    {
+        return $this->hasTimeModule() && (bool) $this->time_gps_visits;
+    }
+
+    public function gpsVisitRadiusMeters(): int
+    {
+        $custom = (int) ($this->time_gps_visit_radius_meters ?? 0);
+        if ($custom >= 50) {
+            return min(2000, $custom);
+        }
+
+        return max(50, min(2000, (int) config('time.gps_visit_radius_meters', 250)));
     }
 
     public function presenceComplianceEnabled(): bool

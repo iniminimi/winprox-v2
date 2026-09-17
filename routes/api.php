@@ -125,6 +125,12 @@ Route::prefix('v1')->group(function () {
             Route::post('time/clock-out', [WorkShiftController::class, 'clockOut'])
                 ->middleware([CheckTokenAbilities::class.':time:write'])
                 ->name('api.v1.time.clock-out');
+            Route::post('time/work-visits/start', [WorkShiftController::class, 'startVisit'])
+                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->name('api.v1.time.work-visits.start');
+            Route::post('time/work-visits/end', [WorkShiftController::class, 'endVisit'])
+                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->name('api.v1.time.work-visits.end');
             Route::post('time/work-shifts/{workShift}/apply-required-break', [WorkShiftController::class, 'applyRequiredBreak'])
                 ->middleware([CheckTokenAbilities::class.':time:write'])
                 ->name('api.v1.time.work-shifts.apply-required-break');

@@ -271,7 +271,12 @@
             "open_elsewhere_hint": "Vous êtes déjà pointé sur un autre site. Déplacez votre présence ici, ou pointez la sortie.",
             "transfer_here": "Déplacer ici",
             "started_at": "Démarré à :place (même vacation).",
-            "scan_required_hint": "Scannez le QR Clock Point sur site pour pointer l'entrée ou la sortie. Un onglet ouvert ne suffit pas."
+            "scan_required_hint": "Scannez le QR Clock Point sur site pour pointer l'entrée ou la sortie. Un onglet ouvert ne suffit pas.",
+            "working_at": "Au travail chez :place",
+            "stop_work": "Arrêter le travail",
+            "find_nearby": "Trouver un lieu de travail à proximité",
+            "start_work_at": "Démarrer le travail : :place (:distance m)",
+            "no_nearby_units": "Aucune unité épinglée à portée."
         },
         "clocked_in": "Vous êtes pointé.",
         "clocked_out": "Vous êtes dépointé.",
@@ -284,7 +289,12 @@
             "break_not_open": "Vous n'êtes pas en pause.",
             "icon_not_configured": "Votre compte n'est pas encore entièrement configuré. Contactez l'administrateur.",
             "device_mismatch": "Cet appareil n'est pas lié à votre pointeuse. Demandez à votre chef d'équipe ou à l'admin d'autoriser un nouvel appareil.",
-            "scan_required": "Scannez le QR Clock Point pour pointer l'entrée ou la sortie. Cela prouve que vous êtes sur place."
+            "scan_required": "Scannez le QR Clock Point pour pointer l'entrée ou la sortie. Cela prouve que vous êtes sur place.",
+            "visit_gps_required": "Le GPS est obligatoire pour démarrer ou arrêter le travail. Autorisez la localisation et réessayez.",
+            "visit_unit_out_of_range": "Vous n'êtes pas assez proche de ce lieu de travail.",
+            "visit_already_open": "Vous travaillez déjà à cet endroit.",
+            "visit_not_open": "Vous n'avez pas de visite de travail ouverte.",
+            "gps_visits_disabled": "Les visites GPS sont désactivées pour cette organisation."
         },
         "transferred": "Présence déplacée vers ce site (même vacation).",
         "hours": {
@@ -307,7 +317,9 @@
             "month_nav": "Mois",
             "previous_month": "Mois précédent",
             "next_month": "Mois suivant"
-        }
+        },
+        "visit_started": "Visite de travail démarrée.",
+        "visit_ended": "Visite de travail terminée."
     },
     "ciao": {
         "title": "Envois CIAO",
@@ -330,7 +342,9 @@
             "clock_in": "Pointage entrée",
             "clock_out": "Pointage sortie",
             "break_start": "Début pause",
-            "break_end": "Fin pause"
+            "break_end": "Fin pause",
+            "visit_start": "Début de visite",
+            "visit_end": "Fin de visite"
         },
         "col": {
             "when": "Quand",

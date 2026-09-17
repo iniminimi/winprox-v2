@@ -14,6 +14,11 @@ use App\Support\Time\TimeModuleAccess;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
+/**
+ * Opens paid/workday time (WorkShift). Not location proof.
+ * GPS is optional metadata and must never gate clock-in.
+ * WorkVisit = verified work at a specific unit (see StartWorkVisitAction).
+ */
 class ClockInAction
 {
     public function __construct(

@@ -10,6 +10,7 @@ use App\Models\Location;
 use App\Models\PresenceSubmission;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Models\WorkVisit;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Rsz\RszPresenceRegistrationClient;
 use Carbon\Carbon;
@@ -36,8 +37,11 @@ class SubmitPresenceBatchAction
         $location = $submission->location_id
             ? Location::query()->find($submission->location_id)
             : null;
+        $visit = $submission->work_visit_id
+            ? WorkVisit::query()->with('unit')->find($submission->work_visit_id)
+            : null;
 
-        $validationError = $this->validationError($tenant, $worker, $location, $submission);
+        $validationError = $this->validationError($tenant, $worker, $location, $submission, $visit);
         if ($validationError !== null) {
             return $this->mark($submission, PresenceSubmissionStatus::Skipped, null, null, null, $validationError, []);
         }
@@ -55,7 +59,7 @@ class SubmitPresenceBatchAction
             );
         }
 
-        $item = $this->buildItem($tenant, $worker, $location, $submission);
+        $item = $this->buildItem($tenant, $worker, $location, $submission, $visit);
 
         try {
             $response = $this->client->registerInBulk($tenant, [$item]);
@@ -97,7 +101,7 @@ class SubmitPresenceBatchAction
         );
     }
 
-    private function validationError(Tenant $tenant, Worker $worker, ?Location $location, PresenceSubmission $submission): ?string
+    private function validationError(Tenant $tenant, Worker $worker, ?Location $location, PresenceSubmission $submission, ?WorkVisit $visit): ?string
     {
         $ssin = preg_replace('/\D+/', '', (string) $worker->ssin) ?? '';
         if (strlen($ssin) !== 11) {
@@ -118,15 +122,19 @@ class SubmitPresenceBatchAction
             return 'ddt_missing_or_invalid';
         }
 
-        if ($location === null || ! $this->locationHasPlaceOfWork($location)) {
+        if ($location === null || ! $this->locationHasPlaceOfWork($location, $visit)) {
             return 'place_of_work_missing';
         }
 
         return null;
     }
 
-    private function locationHasPlaceOfWork(Location $location): bool
+    private function locationHasPlaceOfWork(Location $location, ?WorkVisit $visit = null): bool
     {
+        if ($this->visitCoordinates($visit) !== null) {
+            return true;
+        }
+
         if ($location->latitude !== null && $location->longitude !== null) {
             return true;
         }
@@ -137,9 +145,43 @@ class SubmitPresenceBatchAction
     }
 
     /**
+     * @return array{latitude: float, longitude: float}|null
+     */
+    private function visitCoordinates(?WorkVisit $visit): ?array
+    {
+        if ($visit === null) {
+            return null;
+        }
+
+        if ($visit->ended_at !== null && $visit->end_latitude !== null && $visit->end_longitude !== null) {
+            return [
+                'latitude' => (float) $visit->end_latitude,
+                'longitude' => (float) $visit->end_longitude,
+            ];
+        }
+
+        if ($visit->start_latitude !== null && $visit->start_longitude !== null) {
+            return [
+                'latitude' => (float) $visit->start_latitude,
+                'longitude' => (float) $visit->start_longitude,
+            ];
+        }
+
+        $unit = $visit->unit;
+        if ($unit !== null && $unit->hasWorkVisitPin()) {
+            return [
+                'latitude' => (float) $unit->latitude,
+                'longitude' => (float) $unit->longitude,
+            ];
+        }
+
+        return null;
+    }
+
+    /**
      * @return array<string, mixed>
      */
-    private function buildItem(Tenant $tenant, Worker $worker, Location $location, PresenceSubmission $submission): array
+    private function buildItem(Tenant $tenant, Worker $worker, Location $location, PresenceSubmission $submission, ?WorkVisit $visit): array
     {
         $ssin = preg_replace('/\D+/', '', (string) $worker->ssin);
         $employer = [];
@@ -150,7 +192,7 @@ class SubmitPresenceBatchAction
             $employer['foreignVatNumber'] = trim((string) $tenant->foreign_vat_number);
         }
 
-        $placeOfWork = $this->placeOfWork($location);
+        $placeOfWork = $this->placeOfWork($location, $visit);
 
         return [
             'registrationDate' => $submission->registration_at->utc()->format('Y-m-d\TH:i:s\Z'),
@@ -165,8 +207,18 @@ class SubmitPresenceBatchAction
     /**
      * @return array<string, mixed>
      */
-    private function placeOfWork(Location $location): array
+    private function placeOfWork(Location $location, ?WorkVisit $visit = null): array
     {
+        $coords = $this->visitCoordinates($visit);
+        if ($coords !== null) {
+            return [
+                'coordinates' => [
+                    'longitude' => $coords['longitude'],
+                    'latitude' => $coords['latitude'],
+                ],
+            ];
+        }
+
         if ($location->latitude !== null && $location->longitude !== null) {
             return [
                 'coordinates' => [

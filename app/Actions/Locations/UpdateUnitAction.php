@@ -39,9 +39,17 @@ class UpdateUnitAction
             'description' => $data['description'] ?? null,
         ];
 
-        if (array_key_exists('roster_code', $data) && Schema::hasColumn('units', 'roster_code')) {
+        if (Schema::hasColumn('units', 'roster_code') && array_key_exists('roster_code', $data)) {
             $code = Unit::normalizeRosterCode((string) ($data['roster_code'] ?? ''));
             $payload['roster_code'] = $code !== '' ? $code : null;
+        }
+
+        if (Schema::hasColumn('units', 'latitude') && array_key_exists('latitude', $data)) {
+            $payload['latitude'] = self::nullableCoord($data['latitude'] ?? null, -90, 90);
+        }
+
+        if (Schema::hasColumn('units', 'longitude') && array_key_exists('longitude', $data)) {
+            $payload['longitude'] = self::nullableCoord($data['longitude'] ?? null, -180, 180);
         }
 
         if (array_key_exists('public_reports_enabled', $data)) {
@@ -129,5 +137,23 @@ class UpdateUnitAction
         );
 
         return $fresh;
+    }
+
+    private static function nullableCoord(mixed $value, float $min, float $max): ?float
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        if (! is_numeric($value)) {
+            return null;
+        }
+
+        $n = (float) $value;
+        if ($n < $min || $n > $max) {
+            return null;
+        }
+
+        return $n;
     }
 }

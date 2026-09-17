@@ -160,6 +160,8 @@
         "time.schedule.saved": "Horaire enregistré",
         "time.schedule.copied": "Semaine d’horaire copiée",
         "time.schedule.published": "Horaire publié",
-        "time.shift_type.saved": "Type de service enregistré"
+        "time.shift_type.saved": "Type de service enregistré",
+        "time.visit.started": "Visite de travail démarrée",
+        "time.visit.ended": "Visite de travail terminée"
     }
 }

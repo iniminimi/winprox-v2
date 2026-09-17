@@ -183,7 +183,7 @@ tweede product of V1-sectorfork.
 
 **Architectuur (herbruikbaar — Integration First)**
 ```
-ClockIn / ClockOut / StartBreak / EndBreak
+ClockIn / ClockOut / StartBreak / EndBreak / VisitStart / VisitEnd
   → MapPresenceEventsAction (scope-aware IN/OUT)
   → SubmitPresenceBatchAction → RszPresenceRegistrationClient
   → PresenceSubmission (log: rsz id, validity, remarks)
@@ -202,8 +202,13 @@ ClockIn / ClockOut / StartBreak / EndBreak
 | `Location` en/of `ClockPoint` | `contractual_relationship_reference` (DDT, 13 chars); placeOfWork via bestaand adres **of** coords | Één bron per prikpunt; geen duplicatie zonder reden |
 | `presence_submissions` (nieuw) | tenant, worker, shift/break-ref, type IN/OUT, payload-meta, rsz_id, validity, remarks JSON, submitted_at | Audit + herprobeer; geen business logic in model |
 
-**Mapping (golf 1 — schoonmaak, bekend):** clock in → IN; break start → OUT; break end → IN;
-clock out → OUT. Golf 2: zelfde events, verplichtingen bevestigen tegen RSZ-bouwspecs.
+**Invariant (hard):** `WorkShift` = paid/workday time. `WorkVisit` = verified work at a
+specific unit. Inklokken is geen locatiebewijs en mag geen GPS-gate krijgen.
+
+**Mapping (golf 1 — schoonmaak, bekend):** zonder GPS-bezoeken: clock in → IN; break start →
+OUT; break end → IN; clock out → OUT. Met `time_gps_visits`: clock in/out sturen **geen**
+CIAO; visit start → IN; visit end → OUT; pauzes tijdens een bezoek blijven OUT/IN. Golf 2:
+zelfde events, verplichtingen bevestigen tegen RSZ-bouwspecs.
 
 **UI:** settings (CIAO-kader onderaan, grijs tot superuser inschakelt op Platform → Tenants
 na aanvraag via info@winprox.app; daarna BCE + credentials). Location/Clock Point (DDT +

@@ -160,6 +160,8 @@
         "time.schedule.saved": "Turni salvati",
         "time.schedule.copied": "Settimana turni copiata",
         "time.schedule.published": "Turni pubblicati",
-        "time.shift_type.saved": "Tipo di turno salvato"
+        "time.shift_type.saved": "Tipo di turno salvato",
+        "time.visit.started": "Visita di lavoro avviata",
+        "time.visit.ended": "Visita di lavoro terminata"
     }
 }

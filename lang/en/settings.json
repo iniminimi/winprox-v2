@@ -237,6 +237,9 @@
         "gps_on_clock": "Ask for GPS when clocking in or out",
         "gps_on_clock_hint": "Indoors there is often no signal: clocking still proceeds without GPS. Coordinates are stored when available.",
         "save": "Save punch clock security",
-        "saved": "Punch clock security saved."
+        "saved": "Punch clock security saved.",
+        "gps_visits": "GPS work visits (start/stop work on a unit pin)",
+        "gps_visits_hint": "Clock-in still opens the paid day without location proof. Starting work needs fresh GPS within range of a unit with a fixed pin. Clock-out is allowed anywhere; an open visit is closed first.",
+        "gps_visit_radius": "Radius (metres)"
     }
 }

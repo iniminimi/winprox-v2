@@ -54,6 +54,16 @@ class WorkShiftPolicy
             && ($user->is_superuser || $user->tenant_id !== null);
     }
 
+    public function startWorkVisit(User $user): bool
+    {
+        return $this->clockIn($user);
+    }
+
+    public function endWorkVisit(User $user, WorkShift $workShift): bool
+    {
+        return $this->clockOut($user, $workShift);
+    }
+
     public function clockOut(User $user, WorkShift $workShift): bool
     {
         return $this->view($user, $workShift);

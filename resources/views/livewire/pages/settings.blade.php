@@ -181,6 +181,17 @@
                 </label>
                 <p class="wp-hint">{{ __('settings.time_clock.gps_on_clock_hint') }}</p>
 
+                <label class="wp-check">
+                    <input type="checkbox" wire:model="timeGpsVisits">
+                    <span>{{ __('settings.time_clock.gps_visits') }}</span>
+                </label>
+                <p class="wp-hint">{{ __('settings.time_clock.gps_visits_hint') }}</p>
+                <label class="wp-field">
+                    <span class="wp-label">{{ __('settings.time_clock.gps_visit_radius') }}</span>
+                    <input type="number" class="wp-input" wire:model="timeGpsVisitRadiusMeters" min="50" max="2000" step="10">
+                </label>
+                @error('time_gps_visit_radius_meters') <p class="wp-error">{{ $message }}</p> @enderror
+
                 <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.time_clock.save') }}</button>
             </form>
         </x-wp-settings-section>

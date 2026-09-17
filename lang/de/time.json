@@ -271,7 +271,12 @@
             "open_elsewhere_hint": "Sie sind bereits an einem anderen Standort eingestempelt. Verschieben Sie die Anwesenheit hierher oder stempeln Sie aus.",
             "transfer_here": "Hierher verschieben",
             "started_at": "Gestartet bei :place (gleiche Schicht).",
-            "scan_required_hint": "Scannen Sie den Clock-Point-QR vor Ort zum Ein- oder Ausstempeln. Ein offener Tab reicht nicht."
+            "scan_required_hint": "Scannen Sie den Clock-Point-QR vor Ort zum Ein- oder Ausstempeln. Ein offener Tab reicht nicht.",
+            "working_at": "Bei der Arbeit in :place",
+            "stop_work": "Arbeit beenden",
+            "find_nearby": "Arbeitsort in der Nähe suchen",
+            "start_work_at": "Arbeit starten: :place (:distance m)",
+            "no_nearby_units": "Keine gepinnte Unit in Reichweite."
         },
         "clocked_in": "Sie sind eingestempelt.",
         "clocked_out": "Sie sind ausgestempelt.",
@@ -284,7 +289,12 @@
             "break_not_open": "Sie sind nicht in Pause.",
             "icon_not_configured": "Ihr Konto ist noch nicht vollständig eingerichtet. Bitte wenden Sie sich an den Administrator.",
             "device_mismatch": "Dieses Gerät ist nicht mit deiner Stempeluhr verknüpft. Bitte Teamleiter oder Verwaltung, ein neues Gerät zuzulassen.",
-            "scan_required": "Scannen Sie den Clock-Point-QR zum Ein- oder Ausstempeln. So sehen wir, dass Sie vor Ort sind."
+            "scan_required": "Scannen Sie den Clock-Point-QR zum Ein- oder Ausstempeln. So sehen wir, dass Sie vor Ort sind.",
+            "visit_gps_required": "GPS ist nötig, um die Arbeit zu starten oder zu beenden. Standort zulassen und erneut versuchen.",
+            "visit_unit_out_of_range": "Sie sind nicht nah genug an diesem Arbeitsort.",
+            "visit_already_open": "Sie arbeiten bereits an diesem Ort.",
+            "visit_not_open": "Sie haben keinen offenen Arbeitsbesuch.",
+            "gps_visits_disabled": "GPS-Arbeitsbesuche sind für diese Organisation ausgeschaltet."
         },
         "transferred": "Anwesenheit an diesen Standort verschoben (gleiche Schicht).",
         "hours": {
@@ -307,7 +317,9 @@
             "month_nav": "Monat",
             "previous_month": "Vorheriger Monat",
             "next_month": "Nächster Monat"
-        }
+        },
+        "visit_started": "Arbeitsbesuch gestartet.",
+        "visit_ended": "Arbeitsbesuch beendet."
     },
     "ciao": {
         "title": "CIAO-Meldungen",
@@ -330,7 +342,9 @@
             "clock_in": "Einstempeln",
             "clock_out": "Ausstempeln",
             "break_start": "Pause Start",
-            "break_end": "Pause Ende"
+            "break_end": "Pause Ende",
+            "visit_start": "Arbeitsbesuch Start",
+            "visit_end": "Arbeitsbesuch Ende"
         },
         "col": {
             "when": "Zeitpunkt",

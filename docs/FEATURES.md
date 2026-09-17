@@ -692,14 +692,37 @@ productsector op `Tenant`.
   reden in het auditlog (`work_shift.manual_clock_in`), pil **Manueel ingeklokt**. Uitklokken
   later via Clock Point-QR of Shift sluiten. Geen terugwerkende gesloten dienst in deze slice.
 
+### 5g.6 GPS-werkbezoeken (veld, optioneel)
+
+**Invariant (hard, niet heronderhandelen):** `WorkShift` = paid/workday time.
+`WorkVisit` = verified work at a specific unit.
+
+- Locatie = klant (contract). Unit met vaste pin (`units.latitude` / `longitude`) = fysiek
+  gebouw. Units zonder pin = meldingen/taken. `unit_gps_reports` mag de pin **nooit** muteren.
+- Tenant-vlag `time_gps_visits` (alleen met Time). Straal default `config('time.gps_visit_radius_meters')` (250 m).
+- **Inklokken:** opent `WorkShift` via de Clock Point-QR (algemeen aanmeldpunt / PWA). Geen
+  `unit_id`, geen `WorkVisit`. GPS optioneel als metadata, **geen weigering** zonder signaal
+  of zonder nabije unit. Een dienst met nul bezoeken is geldig.
+- **Werk starten:** GPS **verplicht**; controle in `StartWorkVisitAction` op het klikmoment
+  (niet de eerder getoonde lijst). Unit moet een pin hebben, uitvoerder `canClockAt` die
+  klant-locatie, afstand ≤ straal. Geen open dienst → geen bezoek.
+- **Werk stoppen / wissel A→B:** altijd OUT A daarna IN B (één transactie). CIAO volgt die events.
+- **Uitklokken:** mag geografisch overal (zelfde Clock Point-portal). Open visit altijd eerst
+  netjes sluiten (CIAO OUT). Zelfde pad bij force-close en auto-close.
+- CIAO met vlag aan: clock in/out enqueue **niet**; visit start/end wel. Pauzes tijdens een
+  bezoek blijven het bestaande OUT/IN. placeOfWork = gsm-coords of unit-pin; DDT blijft op
+  de locatie (klant).
+- Publieke winprox.app-homepage doet **geen** GPS-voorstel van bedrijven.
+
 ### 5g.2 Golf 1 — CIAO schoonmaak (`CiaoCleaning`)
 - Voor organisaties die schoonmaak/onderhoud **onroerend voor derden** doen onder Aangifte van
   werken / 30bis-drempels (wettelijke scope; copy in product_docs, niet als `tenant.sector`).
 - Vereiste data: tenant **BCE** (of foreign VAT); worker **NISS/SSIN**; per werkplaats
   **DDT-ref** (`contractual_relationship_reference`) + placeOfWork (adres of coords) op
   Location en/of Clock Point.
-- Events: clock in → IN; break start → OUT; break end → IN; clock out → OUT; realtime queue;
-  submission-log + validity/remarks raadplegen.
+- Events: zonder GPS-bezoeken: clock in → IN; break start → OUT; break end → IN; clock out →
+  OUT. Met GPS-bezoeken: visit start → IN; visit end → OUT (clock in/out geen CIAO). Realtime
+  queue; submission-log + validity/remarks raadplegen.
 - UI: Instellingen (CIAO-kader onderaan, grijs tot aanvraag via info@winprox.app;
   superuser zet aan op Platform → Tenants; daarna credentials), Time → **CIAO**
   (status/fouten + opnieuw), Personen/Locaties (NISS, DDT).
@@ -714,6 +737,7 @@ productsector op `Tenant`.
 ### 5g.4 Architectuur / billing
 - Actions + jobs alleen; zie §4.5 regels. Webhooks:
   `time.presence.submitted` / `time.presence.failed` / `time.presence.skipped` (geen NISS in payload);
+  `time.visit.started` / `time.visit.ended`;
   `time.schedule.saved` / `time.schedule.copied` / `time.schedule.published` / `time.shift_type.saved`.
 - Billing: hangt aan **Time** (en/of Corporate) — geen los “CIAO-only”-plan zonder Time tenzij
   later expliciet beslist. Product_docs + FAQ bij implementatie (alle locales).

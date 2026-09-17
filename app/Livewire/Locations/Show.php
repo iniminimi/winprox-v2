@@ -118,6 +118,10 @@ class Show extends Component
 
     public string $unitName = '';
 
+    public string $unitLatitude = '';
+
+    public string $unitLongitude = '';
+
     public string $unitRosterCode = '';
 
     public string $unitDescription = '';
@@ -391,6 +395,8 @@ class Show extends Component
         $this->authorize('create', Unit::class);
         $this->editingUnitId = null;
         $this->unitName = '';
+        $this->unitLatitude = '';
+        $this->unitLongitude = '';
         $this->unitRosterCode = '';
         $this->unitDescription = '';
         $this->unitCategoryId = null;
@@ -443,6 +449,8 @@ class Show extends Component
         $this->authorize('update', $unit);
         $this->editingUnitId = $unit->id;
         $this->unitName = $unit->name;
+        $this->unitLatitude = $unit->latitude !== null ? (string) $unit->latitude : '';
+        $this->unitLongitude = $unit->longitude !== null ? (string) $unit->longitude : '';
         $this->unitRosterCode = (string) ($unit->roster_code ?? '');
         $this->unitDescription = $unit->description ?? '';
         $this->unitCategoryId = $unit->category_id;
@@ -472,6 +480,8 @@ class Show extends Component
         $this->showUnitModal = false;
         $this->editingUnitId = null;
         $this->unitName = '';
+        $this->unitLatitude = '';
+        $this->unitLongitude = '';
         $this->unitRosterCode = '';
         $this->unitDescription = '';
         $this->unitCategoryId = null;
@@ -569,6 +579,8 @@ class Show extends Component
 
         $validated = $this->validate([
             'unitName' => $rules['name'],
+            'unitLatitude' => $rules['latitude'],
+            'unitLongitude' => $rules['longitude'],
             'unitRosterCode' => $rules['roster_code'],
             'unitDescription' => $rules['description'],
             'unitCategoryId' => $rules['category_id'],
@@ -587,6 +599,8 @@ class Show extends Component
         ], [
             'unitName.required' => __('locations.units.errors.name_required'),
             'unitName.unique' => __('locations.units.errors.duplicate_name'),
+            'unitLatitude.between' => __('locations.errors.coords_invalid'),
+            'unitLongitude.between' => __('locations.errors.coords_invalid'),
             'unitRosterCode.unique' => __('locations.units.errors.duplicate_roster_code'),
             'unitRosterCode.regex' => __('locations.units.errors.invalid_roster_code'),
             'unitCategoryId.exists' => __('locations.units.errors.invalid_category'),
@@ -626,6 +640,8 @@ class Show extends Component
 
         $payload = [
             'name' => $validated['unitName'],
+            'latitude' => $validated['unitLatitude'] ?? null,
+            'longitude' => $validated['unitLongitude'] ?? null,
             'roster_code' => $validated['unitRosterCode'] ?? null,
             'description' => $validated['unitDescription'] ?? null,
             'category_id' => $validated['unitCategoryId'] ?? null,

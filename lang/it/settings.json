@@ -237,6 +237,9 @@
         "gps_on_clock": "Chiedi il GPS in ingresso e in uscita",
         "gps_on_clock_hint": "Al chiuso spesso non c'è segnale: la marcatura procede comunque. Le coordinate si salvano se disponibili.",
         "save": "Salva sicurezza marcatura",
-        "saved": "Sicurezza marcatura salvata."
+        "saved": "Sicurezza marcatura salvata.",
+        "gps_visits": "Visite GPS (avvia/interrompi il lavoro sul pin dell'unità)",
+        "gps_visits_hint": "L'entrata apre comunque la giornata retribuita senza prova di luogo. Avviare il lavoro richiede GPS fresco nel raggio di un'unità con pin fisso. L'uscita è consentita ovunque; una visita aperta viene chiusa prima.",
+        "gps_visit_radius": "Raggio (metri)"
     }
 }

@@ -160,6 +160,8 @@
         "time.schedule.saved": "Dienstplan gespeichert",
         "time.schedule.copied": "Dienstplanwoche kopiert",
         "time.schedule.published": "Dienstplan veröffentlicht",
-        "time.shift_type.saved": "Schichttyp gespeichert"
+        "time.shift_type.saved": "Schichttyp gespeichert",
+        "time.visit.started": "Arbeitsbesuch gestartet",
+        "time.visit.ended": "Arbeitsbesuch beendet"
     }
 }

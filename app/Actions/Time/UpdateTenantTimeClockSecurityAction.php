@@ -12,7 +12,7 @@ class UpdateTenantTimeClockSecurityAction
     public function __construct(private AuditRecorder $audit) {}
 
     /**
-     * @param  array{time_require_worker_pin?: bool, time_gps_on_clock?: bool}  $data
+     * @param  array{time_require_worker_pin?: bool, time_gps_on_clock?: bool, time_gps_visits?: bool, time_gps_visit_radius_meters?: int|null}  $data
      */
     public function handle(Tenant $tenant, int $tenantId, array $data, ?int $actorUserId): Tenant
     {
@@ -26,10 +26,21 @@ class UpdateTenantTimeClockSecurityAction
 
         $requirePin = (bool) ($data['time_require_worker_pin'] ?? false);
         $gpsOnClock = (bool) ($data['time_gps_on_clock'] ?? false);
+        $gpsVisits = (bool) ($data['time_gps_visits'] ?? false);
+        $radius = $data['time_gps_visit_radius_meters'] ?? null;
+        $radius = $radius === null || $radius === '' ? null : (int) $radius;
+        if ($radius !== null && $radius < 50) {
+            $radius = 50;
+        }
+        if ($radius !== null && $radius > 2000) {
+            $radius = 2000;
+        }
 
         $tenant->update([
             'time_require_worker_pin' => $requirePin,
             'time_gps_on_clock' => $gpsOnClock,
+            'time_gps_visits' => $gpsVisits,
+            'time_gps_visit_radius_meters' => $radius,
         ]);
 
         $fresh = $tenant->fresh();
@@ -43,6 +54,8 @@ class UpdateTenantTimeClockSecurityAction
             payload: [
                 'time_require_worker_pin' => $requirePin,
                 'time_gps_on_clock' => $gpsOnClock,
+                'time_gps_visits' => $gpsVisits,
+                'time_gps_visit_radius_meters' => $radius,
             ],
         );
 

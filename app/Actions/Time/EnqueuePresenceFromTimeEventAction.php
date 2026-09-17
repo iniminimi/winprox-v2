@@ -10,6 +10,7 @@ use App\Models\PresenceSubmission;
 use App\Models\Tenant;
 use App\Models\WorkBreak;
 use App\Models\WorkShift;
+use App\Models\WorkVisit;
 use App\Support\Time\TimeModuleAccess;
 use Carbon\CarbonInterface;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,7 @@ class EnqueuePresenceFromTimeEventAction
         WorkShift $shift,
         ?WorkBreak $break = null,
         ?CarbonInterface $registrationAt = null,
+        ?WorkVisit $visit = null,
     ): ?PresenceSubmission {
         $tenant = Tenant::query()->find($shift->tenant_id);
         if ($tenant === null || ! TimeModuleAccess::tenantHasModule($tenant)) {
@@ -40,21 +42,33 @@ class EnqueuePresenceFromTimeEventAction
             return null;
         }
 
+        if ($tenant->allowsGpsWorkVisits() && in_array($source, [
+            PresenceSourceEvent::ClockIn,
+            PresenceSourceEvent::ClockOut,
+        ], true)) {
+            return null;
+        }
+
         $at = $registrationAt ?? now();
         $presenceType = $this->mapPresence->handle($source, $scope);
 
         $clockPointId = $shift->currentClockPointId();
         $clockPoint = ClockPoint::query()->find($clockPointId);
-        $locationId = $clockPoint?->location_id !== null ? (int) $clockPoint->location_id : null;
+        $locationId = $visit?->location_id !== null
+            ? (int) $visit->location_id
+            : ($clockPoint?->location_id !== null ? (int) $clockPoint->location_id : null);
+        $unitId = $visit?->unit_id !== null ? (int) $visit->unit_id : null;
 
-        $submission = DB::transaction(function () use ($shift, $break, $source, $presenceType, $scope, $at, $clockPointId, $locationId) {
+        $submission = DB::transaction(function () use ($shift, $break, $visit, $source, $presenceType, $scope, $at, $clockPointId, $locationId, $unitId) {
             return PresenceSubmission::create([
                 'tenant_id' => $shift->tenant_id,
                 'worker_id' => $shift->worker_id,
                 'work_shift_id' => $shift->id,
                 'work_break_id' => $break?->id,
+                'work_visit_id' => $visit?->id,
                 'clock_point_id' => $clockPointId,
                 'location_id' => $locationId,
+                'unit_id' => $unitId,
                 'source_event' => $source,
                 'presence_type' => $presenceType,
                 'scope' => $scope,

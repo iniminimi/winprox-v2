@@ -271,7 +271,12 @@
             "open_elsewhere_hint": "You are already clocked in at another location. Move your presence here, or clock out.",
             "transfer_here": "Move here",
             "started_at": "Started at :place (same shift).",
-            "scan_required_hint": "Scan the Clock Point QR at the site to clock in or out. An open tab is not enough."
+            "scan_required_hint": "Scan the Clock Point QR at the site to clock in or out. An open tab is not enough.",
+            "working_at": "Working at :place",
+            "stop_work": "Stop work",
+            "find_nearby": "Find a nearby workplace",
+            "start_work_at": "Start work: :place (:distance m)",
+            "no_nearby_units": "No pinned unit within range."
         },
         "clocked_in": "You are clocked in.",
         "clocked_out": "You are clocked out.",
@@ -284,7 +289,12 @@
             "break_not_open": "You are not on break.",
             "icon_not_configured": "Your account is not fully set up yet. Please contact the administrator.",
             "device_mismatch": "This device is not linked to your punch clock. Ask your team leader or admin to allow a new device.",
-            "scan_required": "Scan the Clock Point QR to clock in or out. That shows you are on site."
+            "scan_required": "Scan the Clock Point QR to clock in or out. That shows you are on site.",
+            "visit_gps_required": "GPS is required to start or stop work. Allow location and try again.",
+            "visit_unit_out_of_range": "You are not close enough to this workplace.",
+            "visit_already_open": "You are already working at this place.",
+            "visit_not_open": "You have no open work visit.",
+            "gps_visits_disabled": "GPS work visits are off for this organisation."
         },
         "transferred": "Presence moved to this location (same shift).",
         "hours": {
@@ -307,7 +317,9 @@
             "month_nav": "Month",
             "previous_month": "Previous month",
             "next_month": "Next month"
-        }
+        },
+        "visit_started": "Work visit started.",
+        "visit_ended": "Work visit ended."
     },
     "ciao": {
         "title": "CIAO submissions",
@@ -330,7 +342,9 @@
             "clock_in": "Clock in",
             "clock_out": "Clock out",
             "break_start": "Break start",
-            "break_end": "Break end"
+            "break_end": "Break end",
+            "visit_start": "Work visit start",
+            "visit_end": "Work visit end"
         },
         "col": {
             "when": "When",

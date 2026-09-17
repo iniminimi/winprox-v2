@@ -12,7 +12,10 @@ use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\ConfirmWorkerClockPinAction;
 use App\Actions\Time\EndWorkBreakAction;
+use App\Actions\Time\EndWorkVisitAction;
 use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
+use App\Actions\Time\StartWorkVisitAction;
+use App\Actions\Time\SuggestNearbyClockUnitsAction;
 use App\Actions\Time\ListOpenTimeRosterAction;
 use App\Actions\Time\ListPublishedWorkerRosterAction;
 use App\Actions\Time\ListWorkerHoursAction;
@@ -33,6 +36,7 @@ use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Portal\TimePortalData;
@@ -83,6 +87,11 @@ class TimePortal extends Component
     public string $pin_code_confirm = '';
     public ?string $clockGpsLatitude = null;
     public ?string $clockGpsLongitude = null;
+
+    /** @var list<array{unit_id: int, unit_name: string, location_name: string, distance_meters: int}> */
+    public array $nearbyClockUnits = [];
+
+    public bool $nearbyClockUnitsLoaded = false;
     #[Locked]
     public bool $rosterAckOpen = false;
 
@@ -727,6 +736,90 @@ class TimePortal extends Component
         }
     }
 
+    public function refreshNearbyClockUnits(mixed $latitude, mixed $longitude, SuggestNearbyClockUnitsAction $suggest): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return;
+        }
+
+        $lat = $this->parseVisitGps($latitude);
+        $lng = $this->parseVisitGps($longitude);
+        if ($lat === null || $lng === null) {
+            $this->flashMessage = __('time.portal.errors.visit_gps_required');
+
+            return;
+        }
+
+        try {
+            $this->nearbyClockUnits = array_map(
+                fn ($row) => $row->toArray(),
+                $suggest->handle($worker, $lat, $lng),
+            );
+            $this->nearbyClockUnitsLoaded = true;
+        } catch (InvalidArgumentException $e) {
+            $this->flashVisitError($e);
+        }
+    }
+
+    public function startWorkVisit(int $unitId, mixed $latitude, mixed $longitude, StartWorkVisitAction $startVisit): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return;
+        }
+
+        $lat = $this->parseVisitGps($latitude);
+        $lng = $this->parseVisitGps($longitude);
+        if ($lat === null || $lng === null) {
+            $this->flashMessage = __('time.portal.errors.visit_gps_required');
+
+            return;
+        }
+
+        $unit = Unit::query()
+            ->where('tenant_id', $this->tenantId)
+            ->whereKey($unitId)
+            ->first();
+        if ($unit === null) {
+            $this->flashMessage = __('time.portal.errors.visit_unit_out_of_range');
+
+            return;
+        }
+
+        try {
+            $startVisit->handle($worker, $unit, $lat, $lng);
+            $this->nearbyClockUnits = [];
+            $this->nearbyClockUnitsLoaded = false;
+            $this->flashMessage = __('time.portal.visit_started');
+        } catch (InvalidArgumentException $e) {
+            $this->flashVisitError($e);
+        }
+    }
+
+    public function endWorkVisit(mixed $latitude, mixed $longitude, EndWorkVisitAction $endVisit): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return;
+        }
+
+        $lat = $this->parseVisitGps($latitude);
+        $lng = $this->parseVisitGps($longitude);
+        if ($lat === null || $lng === null) {
+            $this->flashMessage = __('time.portal.errors.visit_gps_required');
+
+            return;
+        }
+
+        try {
+            $endVisit->handle($worker, required: true, latitude: $lat, longitude: $lng);
+            $this->flashMessage = __('time.portal.visit_ended');
+        } catch (InvalidArgumentException $e) {
+            $this->flashVisitError($e);
+        }
+    }
+
     public function startBreak(StartWorkBreakAction $startBreak, FindOpenWorkShiftForWorkerAction $findShift): void
     {
         $worker = $this->authorizedWorker();
@@ -915,6 +1008,7 @@ class TimePortal extends Component
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
             'gpsOnClock' => $this->tenantRequestsClockGps(),
+            'gpsVisits' => TimePortalData::tenantAllowsGpsWorkVisits($this->tenantId),
             'canPunch' => ClockPointScanGrant::isValid($this->clockPointId),
             'teamWorkers' => $teamWorkers,
             'manageWorkersMessage' => $this->manageWorkersMessage,
@@ -1022,6 +1116,41 @@ class TimePortal extends Component
         $this->clockGpsLongitude = null;
 
         return [$lat, $lng];
+    }
+
+    private function parseVisitGps(mixed $value): ?float
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        if (! is_numeric($value)) {
+            return null;
+        }
+
+        return (float) $value;
+    }
+
+    private function flashVisitError(InvalidArgumentException $e): bool
+    {
+        $message = match ($e->getMessage()) {
+            'visit_gps_required', 'visit_gps_invalid' => __('time.portal.errors.visit_gps_required'),
+            'visit_unit_out_of_range', 'unit_visit_pin_missing', 'unit_inactive' => __('time.portal.errors.visit_unit_out_of_range'),
+            'visit_already_open' => __('time.portal.errors.visit_already_open'),
+            'visit_not_open' => __('time.portal.errors.visit_not_open'),
+            'shift_not_open' => __('time.portal.errors.not_clocked_in'),
+            'gps_visits_disabled' => __('time.portal.errors.gps_visits_disabled'),
+            'worker_location_not_allowed' => __('time.portal.errors.visit_unit_out_of_range'),
+            default => null,
+        };
+
+        if ($message === null) {
+            return $this->flashClockDeviceError($e);
+        }
+
+        $this->flashMessage = $message;
+
+        return true;
     }
 
     private function flashClockDeviceError(InvalidArgumentException $e): bool
