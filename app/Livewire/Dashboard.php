@@ -31,9 +31,9 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Dashboard extends Component
 {
-    public bool $showStarterPackModal = false;
-
     public bool $showRemoveStarterPackModal = false;
+
+    public bool $skipStarterPack = false;
 
     public string $starterPackType = '';
 
@@ -46,15 +46,22 @@ class Dashboard extends Component
         $this->resetValidation();
         $this->starterPackType = '';
         $this->starterPackSize = '';
-        $this->showStarterPackModal = true;
+        $this->skipStarterPack = false;
+    }
+
+    public function skipStarterPackChooser(): void
+    {
+        $this->authorize('applyStarterPack', $this->starterPackTenant());
+
+        $this->skipStarterPack = true;
+        $this->starterPackType = '';
+        $this->starterPackSize = '';
+        $this->resetValidation();
     }
 
     public function closeStarterPackModal(): void
     {
-        $this->showStarterPackModal = false;
-        $this->starterPackType = '';
-        $this->starterPackSize = '';
-        $this->resetValidation();
+        $this->skipStarterPackChooser();
     }
 
     public function updatedStarterPackType(): void
@@ -84,7 +91,10 @@ class Dashboard extends Component
         );
 
         $user->unsetRelation('tenant');
-        $this->closeStarterPackModal();
+        $this->starterPackType = '';
+        $this->starterPackSize = '';
+        $this->skipStarterPack = false;
+        $this->resetValidation();
     }
 
     public function openRemoveStarterPackModal(): void
@@ -156,6 +166,7 @@ class Dashboard extends Component
             && $user instanceof User
             && $tenant !== null
             && $user->can('applyStarterPack', $tenant);
+        $showStarterPackChooser = $canApplyStarterPack && ! $this->skipStarterPack;
 
         $starterPackType = TenantStarterPackType::tryFrom($this->starterPackType);
         $starterPackSize = TenantStarterPackSize::tryFrom($this->starterPackSize);
@@ -184,6 +195,7 @@ class Dashboard extends Component
             'topScannedUnits' => $topScannedUnits->topForCurrentTenant(),
             'hasTimeModule' => $hasTimeModule,
             'canApplyStarterPack' => $canApplyStarterPack,
+            'showStarterPackChooser' => $showStarterPackChooser,
             'canManageStarterPack' => $canManageStarterPack,
             'canDismissStarterPackResult' => $canDismissStarterPackResult,
             'starterPackSummary' => $starterPackSummary,

@@ -34,7 +34,69 @@
         </div>
     @endif
 
-    @if ($onboarding->showTeamsBanner())
+    @if ($showStarterPackChooser)
+        <div class="wp-stack-loose">
+            <h1 class="wp-page-title">{{ __('dashboard.welcome') }}</h1>
+        </div>
+        <div class="wp-card wp-card-pad wp-onboarding-card">
+            <form wire:submit="applyStarterPack" class="wp-stack">
+                <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.offer_title') }}</strong></p>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.intro') }}</p>
+                <p class="wp-muted">{{ __('dashboard.starter_pack.intro_detail') }}</p>
+
+                <fieldset class="wp-stack-tight">
+                    <legend class="wp-label">{{ __('dashboard.starter_pack.choose_type') }}</legend>
+                    @foreach ($starterPackTypes as $type)
+                        <label class="wp-check wp-check--boxed">
+                            <input type="radio"
+                                   name="starterPackType"
+                                   value="{{ $type->value }}"
+                                   wire:model.live="starterPackType">
+                            <span class="wp-stack-tight">
+                                <strong>{{ __($type->labelKey()) }}</strong>
+                                <span class="wp-muted">{{ __($type->hintKey()) }}</span>
+                            </span>
+                        </label>
+                    @endforeach
+                    @error('starterPackType') <p class="wp-error">{{ $message }}</p> @enderror
+                </fieldset>
+
+                @if ($starterPackAsksSize)
+                    <fieldset class="wp-stack-tight">
+                        <legend class="wp-label">{{ __('dashboard.starter_pack.choose_size') }}</legend>
+                        @foreach ($starterPackSizes as $size)
+                            <label class="wp-check wp-check--boxed">
+                                <input type="radio"
+                                       name="starterPackSize"
+                                       value="{{ $size->value }}"
+                                       wire:model.live="starterPackSize">
+                                <span>{{ __($size->labelKey()) }}</span>
+                            </label>
+                        @endforeach
+                        @error('starterPackSize') <p class="wp-error">{{ $message }}</p> @enderror
+                    </fieldset>
+                @endif
+
+                @if ($starterPackPreview)
+                    <div class="wp-stack-tight">
+                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_teams') }}</strong> — {{ implode(', ', $starterPackPreview['teams']) }}</p>
+                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_categories') }}</strong> — {{ implode(', ', $starterPackPreview['categories']) }}</p>
+                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_location') }}</strong> — {{ $starterPackPreview['location'] }}</p>
+                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_units') }}</strong> — {{ implode(', ', $starterPackPreview['units']) }}</p>
+                    </div>
+                @endif
+
+                <div class="wp-cluster wp-cluster--tight">
+                    <button type="submit" class="btn btn--primary wp-badge-critical" wire:loading.attr="disabled">
+                        {{ __('dashboard.starter_pack.create') }}
+                    </button>
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="skipStarterPackChooser">
+                        {{ __('dashboard.starter_pack.self_start') }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    @elseif ($onboarding->showTeamsBanner())
         <div class="wp-stack-loose">
             <h1 class="wp-page-title">{{ __('dashboard.welcome') }}</h1>
         </div>
@@ -250,72 +312,6 @@
                 @endforelse
             </div>
         </div>
-    @endif
-
-    @if ($showStarterPackModal)
-        <x-wp-modal closeMethod="closeStarterPackModal" aria-labelledby="starter-pack-title">
-            <form wire:submit="applyStarterPack" class="wp-card wp-card-pad wp-stack wp-modal-card">
-                <div class="wp-modal-head">
-                    <h2 id="starter-pack-title" class="wp-section-title">{{ __('dashboard.starter_pack.modal_title') }}</h2>
-                    <x-wp-modal-close wire:click="closeStarterPackModal" />
-                </div>
-
-                <p class="wp-muted">{{ __('dashboard.starter_pack.intro') }}</p>
-
-                <fieldset class="wp-stack-tight">
-                    <legend class="wp-label">{{ __('dashboard.starter_pack.choose_type') }}</legend>
-                    @foreach ($starterPackTypes as $type)
-                        <label class="wp-check wp-check--boxed">
-                            <input type="radio"
-                                   name="starterPackType"
-                                   value="{{ $type->value }}"
-                                   wire:model.live="starterPackType">
-                            <span class="wp-stack-tight">
-                                <strong>{{ __($type->labelKey()) }}</strong>
-                                <span class="wp-muted">{{ __($type->hintKey()) }}</span>
-                            </span>
-                        </label>
-                    @endforeach
-                    @error('starterPackType') <p class="wp-error">{{ $message }}</p> @enderror
-                </fieldset>
-
-                @if ($starterPackAsksSize)
-                    <fieldset class="wp-stack-tight">
-                        <legend class="wp-label">{{ __('dashboard.starter_pack.choose_size') }}</legend>
-                        @foreach ($starterPackSizes as $size)
-                            <label class="wp-check wp-check--boxed">
-                                <input type="radio"
-                                       name="starterPackSize"
-                                       value="{{ $size->value }}"
-                                       wire:model.live="starterPackSize">
-                                <span>{{ __($size->labelKey()) }}</span>
-                            </label>
-                        @endforeach
-                        @error('starterPackSize') <p class="wp-error">{{ $message }}</p> @enderror
-                    </fieldset>
-                @endif
-
-                @if ($starterPackPreview)
-                    <div class="wp-stack-tight">
-                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_teams') }}</strong> — {{ implode(', ', $starterPackPreview['teams']) }}</p>
-                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_categories') }}</strong> — {{ implode(', ', $starterPackPreview['categories']) }}</p>
-                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_location') }}</strong> — {{ $starterPackPreview['location'] }}</p>
-                        <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_units') }}</strong> — {{ implode(', ', $starterPackPreview['units']) }}</p>
-                    </div>
-                @endif
-
-                <p class="wp-muted">{{ __('dashboard.starter_pack.self_start') }}</p>
-
-                <div class="wp-cluster wp-cluster--tight">
-                    <button type="submit" class="btn btn--primary" wire:loading.attr="disabled">
-                        {{ __('dashboard.starter_pack.create') }}
-                    </button>
-                    <button type="button" class="btn btn--ghost" wire:click="closeStarterPackModal">
-                        {{ __('common.button.cancel') }}
-                    </button>
-                </div>
-            </form>
-        </x-wp-modal>
     @endif
 
     @if ($showRemoveStarterPackModal)

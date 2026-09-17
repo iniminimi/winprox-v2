@@ -77,6 +77,8 @@
         "help_button": "¿Quieres ayuda para empezar?",
         "modal_title": "Ayuda para empezar",
         "intro": "Podemos preparar un entorno de ejemplo pequeño. Así puedes mirar alrededor enseguida y probar algunas cosas.",
+        "offer_title": "¿Quieres ver primero cómo funciona WinProx?",
+        "intro_detail": "Obtienes un ejemplo con equipos, categorías, una ubicación y algunas units.",
         "issues_note": "Cuando una unit tiene incidencias, solo se puede desactivar (no eliminar). La plantilla inicial permanece.",
         "choose_type": "¿Para qué quieres usar WinProx?",
         "choose_size": "¿Cuál es el tamaño de tu organización?",
@@ -109,6 +111,6 @@
         },
         "result_body": "Hemos preparado un entorno de ejemplo pequeño. Mira alrededor e intenta crear una incidencia.",
         "result_own_later": "¿Quieres empezar ya con tu propio entorno? Siempre puedes añadir ubicaciones, equipos y units más adelante.",
-        "self_start": "¿Prefieres empezar por tu cuenta? También puedes empezar sin entorno de ejemplo."
+        "self_start": "Empezar por mi cuenta"
     }
 }

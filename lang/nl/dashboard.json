@@ -77,6 +77,8 @@
         "help_button": "Wil je op weg geholpen worden?",
         "modal_title": "Op weg geholpen worden",
         "intro": "We kunnen een kleine voorbeeldomgeving voor je klaarzetten. Zo kun je meteen rondkijken en zelf een paar dingen uitproberen.",
+        "offer_title": "Wil je eerst even kijken hoe WinProx werkt?",
+        "intro_detail": "Je krijgt een voorbeeld met teams, categorieën, een locatie en enkele units.",
         "issues_note": "Zodra er meldingen op een unit staan, kan die unit alleen nog gedeactiveerd worden (niet verwijderd). Het starttemplate blijft dan bestaan.",
         "choose_type": "Waarvoor wil je WinProx gebruiken?",
         "choose_size": "Hoe groot is je organisatie?",
@@ -109,6 +111,6 @@
         },
         "result_body": "We hebben een kleine voorbeeldomgeving voor je klaargezet. Kijk rustig rond en probeer zelf een melding te maken.",
         "result_own_later": "Wil je meteen met je eigen omgeving beginnen? Je kunt later altijd locaties, teams en units toevoegen.",
-        "self_start": "Liever zelf beginnen? Je kunt ook zonder voorbeeldomgeving starten."
+        "self_start": "Liever zelf beginnen"
     }
 }

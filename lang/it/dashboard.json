@@ -77,6 +77,8 @@
         "help_button": "Vuoi una mano per iniziare?",
         "modal_title": "Una mano per iniziare",
         "intro": "Possiamo preparare un piccolo ambiente di esempio. Così puoi guardarti intorno subito e provare qualche azione.",
+        "offer_title": "Vuoi prima vedere come funziona WinProx?",
+        "intro_detail": "Ricevi un esempio con team, categorie, una sede e alcune unit.",
         "issues_note": "Quando una unit ha segnalazioni, può essere solo disattivata (non eliminata). Il modello iniziale resta.",
         "choose_type": "Per cosa vuoi usare WinProx?",
         "choose_size": "Quanto è grande la tua organizzazione?",
@@ -109,6 +111,6 @@
         },
         "result_body": "Abbiamo preparato un piccolo ambiente di esempio. Guardati intorno e prova a creare una segnalazione.",
         "result_own_later": "Vuoi iniziare subito con il tuo ambiente? Puoi sempre aggiungere sedi, team e unit più tardi.",
-        "self_start": "Preferisci iniziare da solo? Puoi partire anche senza ambiente di esempio."
+        "self_start": "Inizia da solo"
     }
 }

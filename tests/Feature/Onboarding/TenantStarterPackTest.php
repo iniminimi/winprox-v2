@@ -262,25 +262,39 @@ it('toont werkmenu-onderdelen in starttemplate-preview', function () {
         ->and($byLabel['Unitmetingen']['enabled'])->toBeFalse();
 });
 
-it('toont werkmenu-preview in starttemplate-modal', function () {
+it('toont preview van de voorbeeldomgeving op het dashboard', function () {
     [, $admin] = setupStarterPackAdmin();
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
-        ->call('openStarterPackModal')
         ->set('starterPackType', TenantStarterPackType::OwnSites->value)
         ->assertSee(__('dashboard.starter_pack.preview_teams'))
         ->assertSee('Hoofdgebouw')
         ->assertDontSee(__('starter_pack.types.hotel'));
 });
 
-it('toont de starttemplate-knop op het dashboard van een lege werkruimte', function () {
+it('toont de voorbeeldomgeving-keuze op het dashboard van een lege werkruimte', function () {
     [, $admin] = setupStarterPackAdmin();
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
+        ->assertSee(__('dashboard.starter_pack.offer_title'))
+        ->assertSee(__('dashboard.starter_pack.choose_type'))
+        ->assertSee(__('starter_pack.types.on_site'))
+        ->assertSee(__('dashboard.starter_pack.create'))
+        ->assertDontSee(__('dashboard.onboarding.teams.button'));
+});
+
+it('toont het zelf-beginnen-pad na overslaan van de voorbeeldomgeving', function () {
+    [, $admin] = setupStarterPackAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->call('skipStarterPackChooser')
+        ->assertSee(__('dashboard.onboarding.teams.title'))
+        ->assertSee(__('dashboard.onboarding.teams.button'))
         ->assertSee(__('dashboard.starter_pack.help_button'))
-        ->assertSee(__('dashboard.onboarding.teams.button'));
+        ->assertDontSee(__('dashboard.starter_pack.choose_type'));
 });
 
 it('laadt een starttemplate via het dashboard en toont het resultaat', function () {
@@ -322,8 +336,7 @@ it('toont de starttemplate-knop voor een superuser in support view', function ()
 
     Livewire::actingAs($super)
         ->test(Dashboard::class)
-        ->assertSee(__('dashboard.starter_pack.help_button'))
-        ->call('openStarterPackModal')
+        ->assertSee(__('dashboard.starter_pack.choose_type'))
         ->set('starterPackType', TenantStarterPackType::OwnSites->value)
         ->call('applyStarterPack')
         ->assertHasNoErrors()

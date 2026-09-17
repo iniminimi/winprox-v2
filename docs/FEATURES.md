@@ -40,8 +40,7 @@ uit heeft geen invloed op unit checks. Een starttemplate toont de keuze in previ
 **Doel:** eerste scherm na login; overzicht van locaties, units, meldingen en taken.
 
 **Starttemplate (optioneel, nieuwe organisaties)**
-- Op het dashboard zolang er nog geen teams/categorieën/units zijn: knop **"Wil je op weg geholpen worden?"**. Een bestaande locatie zonder units wordt bij het laden van het template vervangen (locaties kun je in de UI alleen deactiveren).
-- Modal: **waarvoor wil je WinProx gebruiken?** — op eigen locaties, op locaties van klanten, of voor voertuigen en fleet. Bij **op locaties van klanten** ook de **grootte** (1–5 / 6–20 / 21+). Preview van teams, categorieën, locatie en units. Knop **Voorbeeldomgeving maken**. Dit is **geen sectorsysteem** — alleen een kleine demo.
+- Op het dashboard zolang er nog geen teams/categorieën/units zijn: **welkomkaart** met drie keuzes (eigen locaties, locaties van klanten, voertuigen en fleet). Bij **op locaties van klanten** ook de **grootte** (1–5 / 6–20 / 21+). Preview van teams, categorieën, locatie en units. Knop **Voorbeeldomgeving maken**, of **Liever zelf beginnen**. Een bestaande locatie zonder units wordt bij het laden van het template vervangen.
 - Na aanmaken: kaart **Je omgeving is klaar** met een korte uitleg, knop **Bekijk mijn omgeving** en optioneel **Verwijder starttemplate**. De kaart verdwijnt automatisch na 7 dagen (of eerder via **Sluiten**).
 - Stelt een beperkt **werkmenu** in (sidebar): meldingen en taken centraal; extra’s (reserveringen, unitmetingen, …) later zelf aanzetten via **Organisatie → Instellingen → Werkmenu instellingen**. Kleine ploegen bij klanten: één team, extra-werkmenu uit.
 - Namen van teams/categorieën/locatie/units worden in **alle talen** in de DB gezet. Hernoemen blijft altijd mogelijk. Zodra er meldingen zijn, kunnen units alleen nog **gedeactiveerd** worden; het template blijft dan bestaan.

@@ -77,6 +77,8 @@
         "help_button": "Möchten Sie Hilfe beim Start?",
         "modal_title": "Hilfe beim Start",
         "intro": "Wir können eine kleine Beispielumgebung für Sie anlegen. So können Sie sofort umschauen und ein paar Dinge ausprobieren.",
+        "offer_title": "Möchten Sie zuerst sehen, wie WinProx funktioniert?",
+        "intro_detail": "Sie erhalten ein Beispiel mit Teams, Kategorien, einem Standort und einigen Units.",
         "issues_note": "Sobald eine Unit Meldungen hat, kann sie nur noch deaktiviert (nicht gelöscht) werden. Die Startvorlage bleibt dann bestehen.",
         "choose_type": "Wofür möchten Sie WinProx nutzen?",
         "choose_size": "Wie groß ist Ihre Organisation?",
@@ -109,6 +111,6 @@
         },
         "result_body": "Wir haben eine kleine Beispielumgebung für Sie angelegt. Schauen Sie sich um und versuchen Sie, selbst eine Meldung zu erstellen.",
         "result_own_later": "Möchten Sie gleich mit Ihrer eigenen Umgebung starten? Standorte, Teams und Units können Sie später jederzeit hinzufügen.",
-        "self_start": "Lieber selbst starten? Sie können auch ohne Beispielumgebung beginnen."
+        "self_start": "Lieber selbst starten"
     }
 }

@@ -77,6 +77,8 @@
         "help_button": "Would you like a hand getting started?",
         "modal_title": "Get a head start",
         "intro": "We can set up a small sample environment for you. You can look around right away and try a few things yourself.",
+        "offer_title": "Would you like to see how WinProx works first?",
+        "intro_detail": "You get a sample with teams, categories, a location and a few units.",
         "issues_note": "Once a unit has issues, it can only be deactivated (not deleted). The starter template then remains.",
         "choose_type": "What do you want to use WinProx for?",
         "choose_size": "How large is your organisation?",
@@ -109,6 +111,6 @@
         },
         "result_body": "We have set up a small sample environment for you. Look around and try creating an issue yourself.",
         "result_own_later": "Want to start with your own setup right away? You can always add locations, teams and units later.",
-        "self_start": "Prefer to start on your own? You can also begin without a sample environment."
+        "self_start": "Start on my own"
     }
 }

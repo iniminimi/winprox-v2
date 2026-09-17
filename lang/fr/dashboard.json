@@ -77,6 +77,8 @@
         "help_button": "Voulez-vous un coup de pouce pour démarrer ?",
         "modal_title": "Un coup de pouce pour démarrer",
         "intro": "Nous pouvons préparer un petit environnement d’exemple. Vous pourrez tout de suite explorer et essayer quelques actions.",
+        "offer_title": "Voulez-vous d’abord voir comment WinProx fonctionne ?",
+        "intro_detail": "Vous obtenez un exemple avec des équipes, des catégories, un lieu et quelques units.",
         "issues_note": "Dès qu’un unit a des signalements, il ne peut plus qu’être désactivé (pas supprimé). Le modèle de départ reste alors en place.",
         "choose_type": "À quoi voulez-vous utiliser WinProx ?",
         "choose_size": "Quelle est la taille de votre organisation ?",
@@ -109,6 +111,6 @@
         },
         "result_body": "Nous avons préparé un petit environnement d’exemple. Explorez-le et essayez de créer un signalement.",
         "result_own_later": "Vous préférez commencer tout de suite avec votre propre environnement ? Vous pourrez toujours ajouter des lieux, équipes et units plus tard.",
-        "self_start": "Vous préférez commencer seul ? Vous pouvez aussi démarrer sans environnement d’exemple."
+        "self_start": "Commencer seul"
     }
 }

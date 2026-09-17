@@ -32,12 +32,12 @@ it('toont teams-onboarding met pulserende knop op het dashboard zonder teams', f
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
-        ->assertSee(__('dashboard.onboarding.teams.title'))
-        ->assertSee(__('dashboard.onboarding.teams.text'))
-        ->assertSee(__('dashboard.onboarding.teams.button'))
-        ->assertSeeHtml('wp-badge-critical')
         ->assertSee(__('dashboard.welcome'))
-        ->assertSee(__('dashboard.starter_pack.help_button'))
+        ->assertSee(__('dashboard.starter_pack.offer_title'))
+        ->assertSee(__('dashboard.starter_pack.choose_type'))
+        ->assertSee(__('starter_pack.types.own_sites'))
+        ->assertSee(__('dashboard.starter_pack.create'))
+        ->assertDontSee(__('dashboard.onboarding.teams.title'))
         ->assertDontSee(__('manual.getting_started.label'))
         ->assertDontSeeHtml('wp-kpi--locations');
 });
