@@ -1538,7 +1538,7 @@
             "actions": [
                 {
                     "label": "Overzicht",
-                    "text": "Onder Werk → Werkbezoeken ziet u GPS-werkbezoeken: wie, waar (locatie · unit) en start–einde. Het menu verschijnt alleen als Time én GPS-werkbezoeken in Instellingen aanstaan."
+                    "text": "Onder Werk → Werkbezoeken ziet u GPS-werkbezoeken: wie, waar (locatie · unit) en start–einde, één kader per uitvoerder per dag. Het menu verschijnt alleen als Time én GPS-werkbezoeken in Instellingen aanstaan."
                 },
                 {
                     "label": "Filters",

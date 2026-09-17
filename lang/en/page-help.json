@@ -1538,7 +1538,7 @@
             "actions": [
                 {
                     "label": "Overview",
-                    "text": "Under Work → Work visits you see GPS work visits: who, where (location · unit) and start–end. The menu appears only when Time and GPS work visits are on in Settings."
+                    "text": "Under Work → Work visits you see GPS work visits: who, where (location · unit) and start–end, one card per worker per day. The menu appears only when Time and GPS work visits are on in Settings."
                 },
                 {
                     "label": "Filters",

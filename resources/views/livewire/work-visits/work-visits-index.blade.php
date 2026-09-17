@@ -52,31 +52,34 @@
     </div>
 
     <div class="wp-list">
-        @forelse ($visits as $visit)
-            @php
-                $visitPlace = trim(($visit->location?->name ?? '').' · '.($visit->unit?->localizedName() ?? ''), ' · ');
-                $visitStart = $visit->started_at?->format('H:i') ?? '—';
-            @endphp
-            <div class="wp-card wp-card-pad wp-cluster wp-cluster--spread" wire:key="work-visit-{{ $visit->id }}">
+        @forelse ($visitDays as $day)
+            <div class="wp-card wp-card-pad" wire:key="work-visit-day-{{ $day['worker_id'] }}-{{ $day['date'] }}">
                 <div class="wp-stack-tight">
                     <div class="wp-cluster wp-cluster--wrap">
-                        <strong>{{ $visit->worker?->displayName() }}</strong>
-                        <span class="wp-pill {{ $visit->isOpen() ? 'wp-pill--progress' : 'wp-pill--done' }}">
-                            {{ $visit->isOpen() ? __('work_visits.status.open') : __('work_visits.status.closed') }}
+                        <strong>{{ $day['worker']?->displayName() }}</strong>
+                        <span class="wp-pill {{ $day['has_open'] ? 'wp-pill--progress' : 'wp-pill--done' }}">
+                            {{ $day['has_open'] ? __('work_visits.status.open') : __('work_visits.status.closed') }}
                         </span>
                     </div>
                     <p class="wp-muted wp-text-sm">
-                        {{ $visit->started_at?->format('d-m-Y') }}
-                        &middot;
-                        @if ($visit->ended_at)
-                            {{ __('time.shifts.visit_range', ['start' => $visitStart, 'end' => $visit->ended_at->format('H:i'), 'place' => $visitPlace]) }}
-                        @else
-                            {{ __('time.shifts.visit_open', ['start' => $visitStart, 'place' => $visitPlace]) }}
-                        @endif
+                        {{ \Illuminate\Support\Carbon::parse($day['date'])->format('d-m-Y') }}
+                        &middot; {{ __('work_visits.list.duration', ['duration' => \App\Support\Time\WorkDurationFormatter::format($day['total_minutes'])]) }}
                     </p>
-                    <p class="wp-muted wp-text-sm">
-                        {{ __('work_visits.list.duration', ['duration' => \App\Support\Time\WorkDurationFormatter::format($visit->durationMinutes())]) }}
-                    </p>
+                    <ul class="wp-muted wp-text-sm">
+                        @foreach ($day['visits'] as $visit)
+                            @php
+                                $visitPlace = trim(($visit->location?->name ?? '').' · '.($visit->unit?->localizedName() ?? ''), ' · ');
+                                $visitStart = $visit->started_at?->format('H:i') ?? '—';
+                            @endphp
+                            <li wire:key="work-visit-{{ $visit->id }}">
+                                @if ($visit->ended_at)
+                                    {{ __('time.shifts.visit_range', ['start' => $visitStart, 'end' => $visit->ended_at->format('H:i'), 'place' => $visitPlace]) }}
+                                @else
+                                    {{ __('time.shifts.visit_open', ['start' => $visitStart, 'place' => $visitPlace]) }}
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         @empty
@@ -84,9 +87,9 @@
         @endforelse
     </div>
 
-    @if ($visits->hasPages())
+    @if ($visitDays->hasPages())
         <div class="wp-pagination">
-            {{ $visits->links() }}
+            {{ $visitDays->links() }}
         </div>
     @endif
 </div>

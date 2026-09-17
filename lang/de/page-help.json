@@ -1538,7 +1538,7 @@
             "actions": [
                 {
                     "label": "Übersicht",
-                    "text": "Unter Arbeit → Arbeitsbesuche sehen Sie GPS-Arbeitsbesuche: wer, wo (Standort · Unit) und Start–Ende. Das Menü erscheint nur, wenn Time und GPS-Arbeitsbesuche in den Einstellungen an sind."
+                    "text": "Unter Arbeit → Arbeitsbesuche sehen Sie GPS-Arbeitsbesuche: wer, wo (Standort · Unit) und Start–Ende, ein Rahmen pro Ausführendem und Tag. Das Menü erscheint nur, wenn Time und GPS-Arbeitsbesuche in den Einstellungen an sind."
                 },
                 {
                     "label": "Filter",

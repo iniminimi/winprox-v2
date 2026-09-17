@@ -315,6 +315,27 @@ it('toont het open werkbezoek op aanwezigheid en de historiek op uren', function
         ->assertSee(route('work-visits.index'), false);
 });
 
+it('toont één kader per uitvoerder per dag', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $admin = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
+    app(EndWorkVisitAction::class)->handle($worker, latitude: 51.05, longitude: 3.73);
+    app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
+
+    $html = Livewire::actingAs($admin)
+        ->test(WorkVisitsIndex::class)
+        ->assertOk()
+        ->html();
+
+    expect(substr_count($html, 'wire:key="work-visit-day-'.$worker->id.'-'))->toBe(1)
+        ->and(substr_count($html, 'wire:key="work-visit-'))->toBeGreaterThanOrEqual(3);
+});
+
 it('verbergt Werkbezoeken als GPS-bezoeken uit staan', function () {
     [$tenant] = gpsVisitContext();
     $admin = User::factory()->create([

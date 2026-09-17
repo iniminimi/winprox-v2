@@ -1546,7 +1546,7 @@
             "actions": [
                 {
                     "label": "Aperçu",
-                    "text": "Sous Travail → Visites de travail vous voyez les visites GPS : qui, où (site · unité) et début–fin. Le menu n’apparaît que si Time et les visites GPS sont activés dans Paramètres."
+                    "text": "Sous Travail → Visites de travail vous voyez les visites GPS : qui, où (site · unité) et début–fin, une carte par exécutant et par jour. Le menu n’apparaît que si Time et les visites GPS sont activés dans Paramètres."
                 },
                 {
                     "label": "Filtres",

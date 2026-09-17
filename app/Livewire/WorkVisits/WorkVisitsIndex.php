@@ -61,13 +61,14 @@ class WorkVisitsIndex extends Component
         $tenantId = (int) Tenancy::id();
 
         return view('livewire.work-visits.work-visits-index', [
-            'visits' => $list->handle(
+            'visitDays' => $list->handle(
                 $tenantId,
                 from: $this->from !== '' ? $this->from : null,
                 to: $this->to !== '' ? $this->to : null,
                 workerId: $this->workerFilter,
                 locationId: $this->locationFilter,
                 status: $this->statusFilter !== '' ? $this->statusFilter : null,
+                page: (int) $this->getPage(),
             ),
             'workers' => Worker::query()->where('is_active', true)->orderBy('last_name')->orderBy('first_name')->get(),
             'locations' => Location::query()->orderBy('name')->get(),

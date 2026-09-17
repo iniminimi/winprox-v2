@@ -1538,7 +1538,7 @@
             "actions": [
                 {
                     "label": "Resumen",
-                    "text": "En Trabajo → Visitas de trabajo ve las visitas GPS: quién, dónde (sede · unidad) y inicio–fin. El menú aparece solo si Time y las visitas GPS están activadas en Ajustes."
+                    "text": "En Trabajo → Visitas de trabajo ve las visitas GPS: quién, dónde (sede · unidad) y inicio–fin, una tarjeta por ejecutor y día. El menú aparece solo si Time y las visitas GPS están activadas en Ajustes."
                 },
                 {
                     "label": "Filtros",

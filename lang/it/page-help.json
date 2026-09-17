@@ -1538,7 +1538,7 @@
             "actions": [
                 {
                     "label": "Panoramica",
-                    "text": "In Lavoro → Visite di lavoro vedi le visite GPS: chi, dove (sede · unità) e inizio–fine. Il menu compare solo se Time e le visite GPS sono attive in Impostazioni."
+                    "text": "In Lavoro → Visite di lavoro vedi le visite GPS: chi, dove (sede · unità) e inizio–fine, una scheda per esecutore e giorno. Il menu compare solo se Time e le visite GPS sono attive in Impostazioni."
                 },
                 {
                     "label": "Filtri",
