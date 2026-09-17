@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
 class ListWorkVisitsAction
 {
     /**
-     * @return LengthAwarePaginator<int, array{worker_id: int, date: string, worker: \App\Models\Worker|null, visits: Collection<int, WorkVisit>, has_open: bool, total_minutes: int}>
+     * @return LengthAwarePaginator<int, array{worker_id: int, date: string, worker: \App\Models\Worker|null, customers: Collection<int, array{location_id: int|null, name: string, minutes: int, visits: Collection<int, WorkVisit>}>, has_open: bool, total_minutes: int}>
      */
     public function handle(
         int $tenantId,
@@ -65,12 +65,26 @@ class ListWorkVisitsAction
         $days = $slice->map(function ($row) use ($visitsByDay) {
             $date = Carbon::parse((string) $row->visit_date)->toDateString();
             $visits = $visitsByDay->get($row->worker_id.'|'.$date, collect())->values();
+            $customers = $visits
+                ->groupBy(fn (WorkVisit $visit) => (string) ($visit->location_id ?? '0'))
+                ->map(function (Collection $locationVisits) {
+                    $location = $locationVisits->first()?->location;
+
+                    return [
+                        'location_id' => $locationVisits->first()?->location_id,
+                        'name' => $location?->name ?: (string) ($location?->address ?: '—'),
+                        'minutes' => (int) $locationVisits->sum(fn (WorkVisit $visit) => $visit->durationMinutes()),
+                        'visits' => $locationVisits->values(),
+                    ];
+                })
+                ->sortBy(fn (array $customer) => $customer['visits']->first()?->started_at?->timestamp ?? 0)
+                ->values();
 
             return [
                 'worker_id' => (int) $row->worker_id,
                 'date' => $date,
                 'worker' => $visits->first()?->worker,
-                'visits' => $visits,
+                'customers' => $customers,
                 'has_open' => $visits->contains(fn (WorkVisit $visit) => $visit->isOpen()),
                 'total_minutes' => (int) $visits->sum(fn (WorkVisit $visit) => $visit->durationMinutes()),
             ];

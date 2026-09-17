@@ -65,21 +65,29 @@
                         {{ \Illuminate\Support\Carbon::parse($day['date'])->format('d-m-Y') }}
                         &middot; {{ __('work_visits.list.duration', ['duration' => \App\Support\Time\WorkDurationFormatter::format($day['total_minutes'])]) }}
                     </p>
-                    <ul class="wp-muted wp-text-sm">
-                        @foreach ($day['visits'] as $visit)
-                            @php
-                                $visitPlace = trim(($visit->location?->name ?? '').' · '.($visit->unit?->localizedName() ?? ''), ' · ');
-                                $visitStart = $visit->started_at?->format('H:i') ?? '—';
-                            @endphp
-                            <li wire:key="work-visit-{{ $visit->id }}">
-                                @if ($visit->ended_at)
-                                    {{ __('time.shifts.visit_range', ['start' => $visitStart, 'end' => $visit->ended_at->format('H:i'), 'place' => $visitPlace]) }}
-                                @else
-                                    {{ __('time.shifts.visit_open', ['start' => $visitStart, 'place' => $visitPlace]) }}
-                                @endif
-                            </li>
-                        @endforeach
-                    </ul>
+                    @foreach ($day['customers'] as $customer)
+                        <div class="wp-stack-tight" wire:key="work-visit-day-{{ $day['worker_id'] }}-{{ $day['date'] }}-loc-{{ $customer['location_id'] ?? 'none' }}">
+                            <p class="wp-muted wp-text-sm">
+                                <strong>{{ $customer['name'] }}</strong>
+                                &middot; {{ __('work_visits.list.duration', ['duration' => \App\Support\Time\WorkDurationFormatter::format($customer['minutes'])]) }}
+                            </p>
+                            <ul class="wp-muted wp-text-sm">
+                                @foreach ($customer['visits'] as $visit)
+                                    @php
+                                        $visitPlace = $visit->unit?->localizedName() ?? '—';
+                                        $visitStart = $visit->started_at?->format('H:i') ?? '—';
+                                    @endphp
+                                    <li wire:key="work-visit-{{ $visit->id }}">
+                                        @if ($visit->ended_at)
+                                            {{ __('time.shifts.visit_range', ['start' => $visitStart, 'end' => $visit->ended_at->format('H:i'), 'place' => $visitPlace]) }}
+                                        @else
+                                            {{ __('time.shifts.visit_open', ['start' => $visitStart, 'place' => $visitPlace]) }}
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         @empty

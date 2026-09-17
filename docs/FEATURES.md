@@ -716,7 +716,7 @@ productsector op `Tenant`.
   de locatie (klant).
 - Publieke winprox.app-homepage doet **geen** GPS-voorstel van bedrijven.
 - **Beheer:** Werk → **Werkbezoeken** toont de historiek (periode, uitvoerder, locatie,
-  open/afgesloten), één kader per uitvoerder per dag. Time → **Aanwezigheid** toont het
+  open/afgesloten), één kader per uitvoerder per dag met duur per locatie. Time → **Aanwezigheid** toont het
   open werkbezoek (locatie · unit).
   Time → **Uren** toont de historiek per dienst (start–einde per unit). CIAO-scherm
   is geen werkbezoek-historiek (alleen RSZ-inzendingen).

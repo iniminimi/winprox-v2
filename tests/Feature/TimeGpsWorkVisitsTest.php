@@ -332,8 +332,9 @@ it('toont één kader per uitvoerder per dag', function () {
         ->assertOk()
         ->html();
 
-    expect(substr_count($html, 'wire:key="work-visit-day-'.$worker->id.'-'))->toBe(1)
-        ->and(substr_count($html, 'wire:key="work-visit-'))->toBeGreaterThanOrEqual(3);
+    expect(preg_match_all('/wire:key="work-visit-day-'.preg_quote((string) $worker->id, '/').'-\d{4}-\d{2}-\d{2}"/', $html))->toBe(1)
+        ->and($html)->toContain($location->name)
+        ->and(substr_count($html, __('work_visits.list.duration', ['duration' => ''])))->toBeGreaterThanOrEqual(2);
 });
 
 it('verbergt Werkbezoeken als GPS-bezoeken uit staan', function () {
