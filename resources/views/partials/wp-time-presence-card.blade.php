@@ -64,9 +64,9 @@
             @if ($isOnBreak)
                 <span class="wp-pill wp-pill--progress">{{ __('time.presence.on_break') }}</span>
             @endif
-            @include('partials.wp-time-presence-visit-pill', ['shift' => $shift])
         </div>
         <p class="wp-issue-card-meta">{{ implode(' · ', $metaParts) }}</p>
+        @include('partials.wp-time-presence-visit-pill', ['shift' => $shift])
     </div>
 
     <div class="wp-time-presence-card__aside">

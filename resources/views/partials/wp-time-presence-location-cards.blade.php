@@ -31,7 +31,7 @@
                 @if ($bucket->shifts->isNotEmpty())
                     <ul class="wp-stack-tight">
                         @foreach ($bucket->shifts as $shift)
-                            <li class="wp-cluster" wire:key="presence-location-{{ $bucket->location?->id ?? 'unknown' }}-shift-{{ $shift->id }}">
+                            <li class="wp-stack-tight" wire:key="presence-location-{{ $bucket->location?->id ?? 'unknown' }}-shift-{{ $shift->id }}">
                                 <span>{{ $shift->worker?->displayName() }}</span>
                                 @include('partials.wp-time-presence-visit-pill', ['shift' => $shift])
                             </li>
