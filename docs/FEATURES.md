@@ -1082,7 +1082,8 @@ Perplexity-User expliciet toe.
 App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
 
 ### 11.1 Structuur (minimaal — eerste gesprek)
-- **Nav:** WinProx-logo, **taal-pillen**, **Prijzen**, **Meer** (features, FAQ, about, docs, sectorvoorbeelden),
+- **Nav:** WinProx-logo, **taal-pillen**, **Prijzen**, **Features-overzicht**, **FAQ**,
+  **Voorbeelden** (sectorlandings), **Meer** (about, technical, API & Webhooks),
   **Inloggen**, **Gratis proberen**. Geen module-badges (Facility/Time/ESG/IoT) in de nav.
 - **Hero (één viewport):** foto `images/welcome/welcome_reception.jpg` in een afgerond kader
   (niet pagina-breed); copy-kader (80% dekkend beige) **op** de foto, links, zodat de
