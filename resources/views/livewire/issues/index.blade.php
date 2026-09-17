@@ -47,57 +47,47 @@
             <div class="wp-card wp-filter-panel">
                 <div class="wp-filter-form">
                     <p class="wp-filter-form__title">{{ __('common.list.filters_title') }}</p>
-
-                    <div class="wp-filter-form__row">
-                        <div class="wp-filter-cell">
-                            <label class="wp-filter-inline-label" for="statusFilter">{{ __('issues.filter.status_label') }}</label>
-                            <select id="statusFilter" class="wp-select" wire:model.defer="statusFilter">
-                                <option value="">{{ __('issues.filter.status_all') }}</option>
-                                @foreach ($statuses as $status)
-                                    <option value="{{ $status->value }}">{{ __($status->labelKey()) }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="wp-filter-cell">
-                            <label class="wp-filter-inline-label" for="teamFilter">{{ __('issues.filter.team_label') }}</label>
-                            <select id="teamFilter" class="wp-select" wire:model.defer="teamFilter">
-                                <option value="">{{ __('issues.filter.team_all') }}</option>
-                                @foreach ($teams as $team)
-                                    <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div class="wp-filter-cell">
+                        <label class="wp-filter-inline-label" for="statusFilter">{{ __('issues.filter.status_label') }}</label>
+                        <select id="statusFilter" class="wp-select" wire:model.defer="statusFilter">
+                            <option value="">{{ __('issues.filter.status_all') }}</option>
+                            @foreach ($statuses as $status)
+                                <option value="{{ $status->value }}">{{ __($status->labelKey()) }}</option>
+                            @endforeach
+                        </select>
                     </div>
-
-                    <div class="wp-filter-form__row">
-                        <div class="wp-filter-cell">
-                            <label class="wp-filter-inline-label" for="perStatusLimit">{{ __('common.list.per_status_limit') }}</label>
-                            <select id="perStatusLimit" class="wp-select" wire:model.live="perStatusLimit">
-                                @foreach ($perStatusLimits as $limit)
-                                    <option value="{{ $limit }}">{{ $limit }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div class="wp-filter-cell">
+                        <label class="wp-filter-inline-label" for="teamFilter">{{ __('issues.filter.team_label') }}</label>
+                        <select id="teamFilter" class="wp-select" wire:model.defer="teamFilter">
+                            <option value="">{{ __('issues.filter.team_all') }}</option>
+                            @foreach ($teams as $team)
+                                <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
+                            @endforeach
+                        </select>
                     </div>
-
-                    <div class="wp-filter-form__row wp-filter-form__row--search">
-                        <div class="wp-filter-cell wp-filter-cell--search">
-                            <label class="wp-filter-inline-label" for="search">{{ __('issues.filter.search') }}</label>
-                            <input type="search" id="search" class="wp-input" wire:model.defer="search"
-                                   placeholder="{{ __('issues.filter.search_placeholder') }}">
-                        </div>
-                        <div class="wp-filter-cell wp-filter-cell--recurring">
-                            <label class="wp-check">
-                                <input type="checkbox" wire:model.defer="recurring" @disabled($inspectionRoundOnly)>
-                                {{ __('issues.filter.recurring_only') }}
-                            </label>
-                            <label class="wp-check">
-                                <input type="checkbox" wire:model.live="inspectionRoundOnly">
-                                {{ __('issues.filter.inspection_rounds_only') }}
-                            </label>
-                        </div>
+                    <div class="wp-filter-cell">
+                        <label class="wp-filter-inline-label" for="perStatusLimit">{{ __('common.list.per_status_limit') }}</label>
+                        <select id="perStatusLimit" class="wp-select" wire:model.live="perStatusLimit">
+                            @foreach ($perStatusLimits as $limit)
+                                <option value="{{ $limit }}">{{ $limit }}</option>
+                            @endforeach
+                        </select>
                     </div>
-
+                    <div class="wp-filter-cell wp-filter-cell--search">
+                        <label class="wp-filter-inline-label" for="search">{{ __('issues.filter.search') }}</label>
+                        <input type="search" id="search" class="wp-input" wire:model.defer="search"
+                               placeholder="{{ __('issues.filter.search_placeholder') }}">
+                    </div>
+                    <div class="wp-filter-cell wp-filter-cell--recurring">
+                        <label class="wp-check">
+                            <input type="checkbox" wire:model.defer="recurring" @disabled($inspectionRoundOnly)>
+                            {{ __('issues.filter.recurring_only') }}
+                        </label>
+                        <label class="wp-check">
+                            <input type="checkbox" wire:model.live="inspectionRoundOnly">
+                            {{ __('issues.filter.inspection_rounds_only') }}
+                        </label>
+                    </div>
                     <div class="wp-filter-form__actions">
                         <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('issues.filter.apply') }}</button>
                         <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />

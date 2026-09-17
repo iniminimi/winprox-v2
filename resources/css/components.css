@@ -1711,6 +1711,36 @@ button.wp-issue-row:disabled {
     margin-top: 1rem;
 }
 
+.wp-issues-page .wp-filter-panel {
+    padding: 0.65rem 0.85rem;
+}
+
+.wp-issues-page .wp-filter-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.75rem;
+}
+
+.wp-issues-page .wp-filter-form__title {
+    margin-right: 0.15rem;
+}
+
+.wp-issues-page .wp-filter-cell--search {
+    flex: 1 1 14rem;
+}
+
+.wp-issues-page .wp-filter-cell--recurring {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.85rem;
+}
+
+.wp-issues-page .wp-filter-panel-hint {
+    margin-top: 0.4rem;
+}
+
 .wp-filter-panel {
     padding: 1rem;
 }
