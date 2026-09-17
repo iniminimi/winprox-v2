@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "QR codes on site",
-            "intro": "Help for unit QR and Clock Point QR on site: sign-in, reports, unit check, unit measurements, reservations, tasks, photos, new-team-tasks banner and team leader features."
+            "intro": "Help for unit QR and Clock Point QR on site: sign-in, reports, unit check, unit measurements, reservations, tasks, photos, work without coverage, new-team-tasks banner and team leader features."
         }
     },
     "statuses": "Statuses",
@@ -60,14 +60,14 @@
     "step_4_title": "Receive issues & assign tasks",
     "step_4_text": "Issues come in via a QR scan, manual entry or (with IoT Connect) a sensor alarm. If email confirmation is on, the QR issue arrives only after the reporter confirms the link in the mail. In the back office that issue then shows the Reporter confirmed pill. For each issue, a task is automatically created and directly linked to the responsible team. It is possible to create multiple tasks for one issue. Set a deadline and track progress via the dashboard, calendar and — for bookings — Reservations.",
     "step_5_title": "Follow up & close",
-    "step_5_text": "Workers carry out tasks on site via the unit QR portal (after signing in via Clock Point QR); when new team tasks arrive, a banner appears. Once all tasks for an issue have been handled, the administrator can definitively close the issue. Optional: ESG measurements, Time presence, IoT Connect and unit reservations — see the related chapters. Filtered lists support Download report (CSV + print in the same card layout as the backoffice). Delete organisation data via Subscription (after export in Settings). For inspection rounds: the worker follows stops in a fixed order; on the unit QR they see progress and the next stop.",
+    "step_5_text": "Workers carry out tasks on site via the unit QR portal (after signing in via Clock Point QR); when new team tasks arrive, a banner appears. Once all tasks for an issue have been handled, the administrator can definitively close the issue. Optional: ESG measurements, Time presence, IoT Connect and unit reservations — see the related chapters. Filtered lists support Download report (CSV + print in the same card layout as the backoffice). Delete organisation data via Subscription (after export in Settings). For inspection rounds: the worker follows stops in a fixed order; on the unit QR they see progress and the next stop. If workers already opened the unit QR online, they can also finish tasks, reports and unit checks without coverage; those sync later. Clock in/out at Clock Point stays online.",
     "hub": {
         "title": "Manuals",
         "subtitle": "Choose the manual that fits your role",
         "general": "General manual",
         "general_desc": "Full WinProx app for administrators and staff, including reservations, optional ESG/Time/IoT modules, subscription and QR portal help — print or save as PDF.",
         "workers": "Workers manual",
-        "workers_desc": "Clock Point QR and unit QR on the shop floor — sign-in, unit check, tasks and photos.",
+        "workers_desc": "Clock Point QR and unit QR on the shop floor — sign-in, unit check, tasks, photos and work without coverage.",
         "teamleaders": "Team leader manual",
         "teamleaders_desc": "Release icons, manage workers and coordinate tasks via the Clock Point portal.",
         "features_overview": "Features overview",
@@ -80,7 +80,7 @@
     "workers": {
         "cover": {
             "title": "Workers manual",
-            "subtitle": "Clock Point QR and unit QR — tasks on site"
+            "subtitle": "Clock Point QR and unit QR — tasks on site, including without coverage"
         }
     },
     "teamleaders": {

@@ -78,6 +78,9 @@
     <li>gekoppeltes Gerät (ein Handy pro Ausführendem) und, falls gesetzt, eine gehashte PIN.</li>
 </ul>
 <p>
+    Hat ein Ausführender den Unit-QR schon geöffnet, kann der Browser Aufgaben, Meldungen (einschließlich Fotos) und Unit-Checks vorübergehend auf dem Gerät speichern, bis wieder Verbindung besteht. Diese Daten gehen danach in die Umgebung des Kunden. Die Anmeldung als anderer Ausführender löscht diese lokale Warteschlange.
+</p>
+<p>
     Diese Daten werden vom Kunden / Administrator verwaltet. WinProx hat keine inhaltliche Kontrolle über die Eingaben des Kunden.
 </p>
 <p><strong>Time (optionale Stechuhr) und Clock Point</strong></p>

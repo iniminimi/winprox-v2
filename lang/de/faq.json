@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Standorte und Units",
-                    "text": "Erstellen Sie Standorte und fügen Sie Units hinzu (Maschinen, Zonen oder Räume), einzeln oder in Bulk — oder laden Sie auf dem Dashboard eine Startvorlage (Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement). Unter Orte sind Kategorien, Standorte und Units getrennt. Verknüpfen Sie ein Team mit einer Unit, damit Aufgaben automatisch richtig landen."
+                    "text": "Erstellen Sie Standorte und fügen Sie Units hinzu (Maschinen, Zonen oder Räume), einzeln oder in Bulk — oder laden Sie auf dem Dashboard eine Startvorlage (Arbeiten vor Ort, Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement). Unter Orte sind Kategorien, Standorte und Units getrennt. Verknüpfen Sie ein Team mit einer Unit, damit Aufgaben automatisch richtig landen."
                 },
                 {
                     "title": "Meldung erstellen",
@@ -33,7 +33,7 @@
                 },
                 {
                     "title": "Außendienst per QR",
-                    "text": "Ausführende melden sich über den Clock-Point-QR an (Name + Icon) und erledigen Aufgaben über den Unit-QR — ohne WinProx-Login.",
+                    "text": "Ausführende melden sich über den Clock-Point-QR an (Name + Icon) und erledigen Aufgaben über den Unit-QR — ohne WinProx-Login. Haben sie den Unit-QR schon geöffnet, können sie Aufgaben, Meldungen und Unit-Checks auch ohne Empfang abschließen; das wird später automatisch gesendet.",
                     "highlight": "Clock Point = Anmeldung (Name + Symbol); Einstempeln braucht Time (Stechuhr); Unit-QR = Aufgaben und Meldungen vor Ort."
                 },
                 {
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Welche QR-Codes gibt es?",
-            "body": "Unit-QR: Melder erstellen Meldungen; Ausführer (nach Clock-Point-Anmeldung) bearbeiten offene Aufgaben und können — wenn Kategorie und Unit Unit-Checks erlauben — OK/Nicht OK erfassen. Clock-Point-QR: Anmeldung (Name + Symbol) und Teamaufgaben; Ein-/Ausstempeln nur mit Time (Stechuhr). Standort-QR: allgemeiner Link zum Standort. Alles im Browser — ohne App.",
-            "summary": "Unit-QR (Meldungen/Aufgaben/Unit-Check), Clock-Point-QR (Anmeldung; Stempeln mit Time), Standort-QR — alles im Browser."
+            "body": "Unit-QR: Melder erstellen Meldungen; Ausführer (nach Clock-Point-Anmeldung) bearbeiten offene Aufgaben und können — wenn Kategorie und Unit Unit-Checks erlauben — OK/Nicht OK erfassen. Clock-Point-QR: Anmeldung (Name + Symbol) und Teamaufgaben; Ein-/Ausstempeln nur mit Time (Stechuhr). Standort-QR: allgemeiner Link zum Standort. Alles im Browser — ohne App. Ausführende, die den Unit-QR schon online geöffnet haben, können Aufgaben, Meldungen und Unit-Checks auch ohne Empfang abschließen; Clock-Point-Stempel bleibt online.",
+            "summary": "Unit-QR (Meldungen/Aufgaben/Unit-Check), Clock-Point-QR (Anmeldung; Stempeln mit Time), Standort-QR — alles im Browser. Ein geladener Unit-QR bleibt ohne Empfang nutzbar."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -114,7 +114,7 @@
                 },
                 {
                     "title": "Aufgaben vor Ort",
-                    "text": "Ausführende, die über Clock Point angemeldet sind und zum Team gehören, starten und schließen Aufgaben über den Unit-QR ab."
+                    "text": "Ausführende, die über Clock Point angemeldet sind und zum Team gehören, starten und schließen Aufgaben über den Unit-QR ab. Ist die Seite schon geladen, bleibt das auch ohne Empfang möglich bis zur Synchronisation."
                 },
                 {
                     "title": "Unit-Check (Ausführer)",
@@ -133,7 +133,7 @@
             "slug": "photos",
             "type": "text",
             "title": "Wie funktionieren Fotos bei Meldungen und Aufgaben?",
-            "body": "Bei einer Meldung oder Aufgabenabschluss können Sie bis zu 4 Fotos hinzufügen. Auf Telefon und im Browser werden sie zuerst verkleinert (schnellerer Upload). In der Verwaltung sehen Sie Fotos scharf; im öffentlichen Portal bleiben sie verschwommen bis zur Freigabe der Meldung.",
+            "body": "Bei einer Meldung oder Aufgabenabschluss können Sie bis zu 4 Fotos hinzufügen. Auf Telefon und im Browser werden sie zuerst verkleinert (schnellerer Upload). In der Verwaltung sehen Sie Fotos scharf; im öffentlichen Portal bleiben sie verschwommen bis zur Freigabe der Meldung. Bei Feldarbeit ohne Empfang bleiben Fotos auf dem Gerät bis zur Synchronisation.",
             "summary": "Maximal 4 Fotos, clientseitig verkleinert; Blur nur im öffentlichen Portal vor Freigabe."
         },
         "time_clock": {
@@ -173,7 +173,7 @@
                 },
                 {
                     "title": "Ausführender",
-                    "text": "Arbeitet ohne WinProx-Login. Anmeldung über Clock-Point-QR (Name + Symbol, optionale PIN) auf einem Handy; Aufgaben starten/abschließen über den Unit-QR, mit Fotos und Notizen."
+                    "text": "Arbeitet ohne WinProx-Login. Anmeldung über Clock-Point-QR (Name + Symbol, optionale PIN) auf einem Handy; Aufgaben starten/abschließen über den Unit-QR, mit Fotos und Notizen. Ein geladener Unit-QR bleibt ohne Empfang nutzbar; Ein-/Ausstempeln am Clock Point nicht."
                 }
             ]
         },
@@ -244,14 +244,14 @@
             "slug": "mobile",
             "type": "text",
             "title": "Funktioniert WinProx auf dem Smartphone?",
-            "body": "Ja. Verwaltung ist desktop-first, aber auf Tablet nutzbar. Außendienst- und QR-Portale sind mobile-first. Ausführende arbeiten am Handy über Clock Point und Unit-QR. Das Dunkel-Thema ist am Handy praktisch.",
+            "body": "Ja. Verwaltung ist desktop-first, aber auf Tablet nutzbar. Außendienst- und QR-Portale sind mobile-first. Ausführende arbeiten am Handy über Clock Point und Unit-QR. Das Dunkel-Thema ist am Handy praktisch. Ein geladener Unit-QR bleibt ohne Netz nutzbar für Aufgaben, Meldungen und Unit-Checks.",
             "summary": "Browser auf Handy/Tablet/Desktop; Außendienst per QR ist mobile-first."
         },
         "install": {
             "slug": "install",
             "type": "text",
             "title": "Muss ich Software installieren?",
-            "body": "Nein. WinProx ist eine Web-App. Koordinatoren und Außendienstteams arbeiten im Browser, ohne separate Installation oder App-Store.",
+            "body": "Nein. WinProx ist eine Web-App. Koordinatoren und Außendienstteams arbeiten im Browser, ohne separate Installation oder App-Store. Am Feldportal speichert der Browser Arbeit ohne Empfang vorübergehend bis wieder Verbindung besteht; das ist keine App-Installation.",
             "summary": "Keine Installation — alles über den Browser."
         },
         "dynamic_qr_codes": {
@@ -323,6 +323,13 @@
             "title": "Was ist der Dienstplan?",
             "body": "Unter Time → Dienstplan planen Sie Schichten pro Ausführendem: Code (Schichttyp) oder freie Zeit wie 07:00-15:00. Abwesenheitscodes (Urlaub, Ausgleich, Krank) unter Time → Schichttypen füllen den ganzen Tag und zählen keine Stunden. Wechseln Sie zwischen Woche und Monat. Speichern bewahrt den sichtbaren Zeitraum; Veröffentlichen macht ihn am Clock Point sichtbar (Mein Dienstplan) und zeigt ein Badge. Veröffentlichen sendet nichts an die LSS. Abweichungen (zu spätes Stempeln) sehen Sie sofort, auch heute; fehlende Stempel erst nach dem geplanten Ende. Eine Woche kopieren (nur Wochenansicht) ist alles oder nichts.",
             "summary": "Time → Dienstplan: Codes, Abwesenheit, Woche/Monat, Mein Dienstplan am Clock Point, geplant vs. gestempelt."
+        },
+        "field_offline": {
+            "slug": "field_offline",
+            "type": "text",
+            "title": "Funktioniert das Feldportal ohne Internet?",
+            "body": "Ja, für Ausführende, die den Unit-QR bereits online geöffnet haben. Aufgaben starten und abschließen, eine Meldung (mit Fotos) anlegen und ein Unit-Check bleiben auf dem Gerät, bis wieder Verbindung besteht; danach gehen sie automatisch an WinProx. Ein-/Ausstempeln am Clock Point bleibt online und braucht einen frischen QR-Scan. Öffentliche Melder brauchen Empfang zum Absenden. Es gibt keine separate App-Installation.",
+            "summary": "Unit-QR: eine geladene Seite bleibt ohne Empfang nutzbar für Aufgaben, Meldungen und Unit-Checks; Clock-Point-Stempel bleibt online."
         }
     }
 }

@@ -78,6 +78,9 @@
     <li>bound device (one phone per worker) and, if set, a hashed PIN</li>
 </ul>
 <p>
+    If a worker already opened the unit QR, the browser can temporarily store tasks, reports (including photos) and unit checks on the device until connectivity returns. Those data then go to the customer’s environment. Signing in as another worker clears that local queue.
+</p>
+<p>
     This data is managed by the customer / administrator. WinProx has no substantive control over what the customer enters.
 </p>
 <p><strong>Time (optional punch clock) and Clock Point</strong></p>

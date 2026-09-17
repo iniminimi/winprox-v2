@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "QR-codes op de werkvloer",
-            "intro": "Hulp bij unit-QR en Clock Point QR op locatie: inloggen, meldingen, unit check, unitmetingen, reserveringen, taken, foto's, nieuwe-teamtaken-banner en teamleader-functies."
+            "intro": "Hulp bij unit-QR en Clock Point QR op locatie: inloggen, meldingen, unit check, unitmetingen, reserveringen, taken, foto's, werken zonder bereik, nieuwe-teamtaken-banner en teamleader-functies."
         }
     },
     "statuses": "Statussen",
@@ -60,14 +60,14 @@
     "step_4_title": "Meldingen ontvangen & taken aansturen",
     "step_4_text": "Meldingen komen binnen via een QR-scan, handmatige invoer of (met IoT Connect) een sensoralarm. Staat e-mailbevestiging aan, dan komt de QR-melding pas binnen nadat de melder de link in de mail heeft bevestigd. In beheer zie je dan de pil Melder bevestigd. Voor elke melding wordt automatisch een taak aangemaakt, die direct wordt gekoppeld aan het verantwoordelijke team. Het is mogelijk om meerdere taken voor één melding aan te maken. Stel een deadline in en volg de voortgang via dashboard, kalender en — voor boekingen — Reserveringen.",
     "step_5_title": "Opvolgen & afsluiten",
-    "step_5_text": "Uitvoerders voeren taken uit op locatie via het unit-QR-portaal (na inloggen via Clock Point QR); bij nieuwe teamtaken verschijnt een banner. Zodra alle taken voor een melding zijn afgehandeld, kan de beheerder de melding definitief sluiten. Optioneel: unit checks (OK/Niet OK op de unit-QR), unitmetingen (meetwaarden via unit-QR), ESG-metingen, Time-aanwezigheid, IoT Connect en unit-reserveringen — zie de bijbehorende hoofdstukken. Gefilterde lijsten ondersteunen Download rapport (CSV + afdrukken in dezelfde kaartlayout als de backoffice). Organisatiegegevens wissen doe je via Abonnement (na export in Instellingen). Voor inspectierondes: de worker volgt de stops in vaste volgorde; op de unit-QR ziet hij de voortgang en de volgende stop.",
+    "step_5_text": "Uitvoerders voeren taken uit op locatie via het unit-QR-portaal (na inloggen via Clock Point QR); bij nieuwe teamtaken verschijnt een banner. Zodra alle taken voor een melding zijn afgehandeld, kan de beheerder de melding definitief sluiten. Optioneel: unit checks (OK/Niet OK op de unit-QR), unitmetingen (meetwaarden via unit-QR), ESG-metingen, Time-aanwezigheid, IoT Connect en unit-reserveringen — zie de bijbehorende hoofdstukken. Gefilterde lijsten ondersteunen Download rapport (CSV + afdrukken in dezelfde kaartlayout als de backoffice). Organisatiegegevens wissen doe je via Abonnement (na export in Instellingen). Voor inspectierondes: de worker volgt de stops in vaste volgorde; op de unit-QR ziet hij de voortgang en de volgende stop. Hebben uitvoerders de unit-QR al online geopend, dan kunnen ze taken, meldingen en unit checks ook zonder bereik afronden; die gaan later automatisch mee. In-/uitklokken op Clock Point blijft online.",
     "hub": {
         "title": "Handleidingen",
         "subtitle": "Kies de handleiding die past bij jouw rol",
         "general": "Algemene handleiding",
         "general_desc": "Volledige WinProx-app voor beheerders en medewerkers, inclusief reserveringen, unitmetingen, optionele ESG-/Time-/IoT-modules, abonnement en QR-portaalhulp — afdrukken of opslaan als PDF.",
         "workers": "Handleiding uitvoerders",
-        "workers_desc": "Clock Point QR en unit-QR op de werkvloer — inloggen, unit check, unitmetingen, taken en foto's.",
+        "workers_desc": "Clock Point QR en unit-QR op de werkvloer — inloggen, unit check, unitmetingen, taken, foto's en werken zonder bereik.",
         "teamleaders": "Handleiding teamleaders",
         "teamleaders_desc": "Icoon vrijgeven, workers beheren en taken coördineren via het Clock Point-portaal.",
         "features_overview": "Features-overzicht",
@@ -80,7 +80,7 @@
     "workers": {
         "cover": {
             "title": "Handleiding uitvoerders",
-            "subtitle": "Clock Point QR en unit-QR — taken op locatie"
+            "subtitle": "Clock Point QR en unit-QR — taken op locatie, ook zonder bereik"
         }
     },
     "teamleaders": {

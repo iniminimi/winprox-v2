@@ -11,6 +11,7 @@
     <li>beveiliging (o.a. CSRF- of XSRF-token).</li>
     <li>taalvoorkeur en aanmeldfunctionaliteit, inclusief de tijdelijke status voor Inloggen met Microsoft (via de sessie).</li>
     <li>Clock Point-portaal: een noodzakelijke toestelcookie (circa 1 jaar) zodat één gsm per uitvoerder herkend wordt.</li>
+    <li>unit-QR veldwerk: lokale opslag op het toestel (IndexedDB/localStorage) voor taken, meldingen en foto’s die nog niet zijn verstuurd, plus een kleine service worker zodat de geladen pagina bruikbaar blijft zonder bereik. Geen tracking.</li>
 </ul>
 
 <p>

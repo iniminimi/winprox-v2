@@ -78,6 +78,9 @@
     <li>gekoppeld toestel (één gsm per uitvoerder) en, indien ingesteld, een gehashte pincode.</li>
 </ul>
 <p>
+    Als een uitvoerder de unit-QR al heeft geopend, kan de browser taken, meldingen (inclusief foto’s) en unit checks tijdelijk op het toestel bewaren tot er weer verbinding is. Die gegevens gaan daarna naar de omgeving van de klant. Bij afmelden als andere medewerker wordt die lokale wachtrij gewist.
+</p>
+<p>
     Deze gegevens worden door de klant / beheerder beheerd. WinProx heeft geen inhoudelijke controle over wat de klant invoert.
 </p>
 <p><strong>Time (optionele prikklok) en Clock Point</strong></p>

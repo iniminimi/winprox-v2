@@ -11,6 +11,7 @@
     <li>Sicherheit (u. a. CSRF- oder XSRF-Token).</li>
     <li>Spracheinstellung und Anmeldefunktion, einschließlich des temporären Status für Mit Microsoft anmelden (über die Sitzung).</li>
     <li>Clock-Point-Portal: ein erforderliches Geräte-Cookie (ca. 1 Jahr), damit ein Handy pro Ausführendem erkannt wird.</li>
+    <li>Feldarbeit am Unit-QR: lokale Speicherung auf dem Gerät (IndexedDB/localStorage) für noch nicht gesendete Aufgaben, Meldungen und Fotos, plus ein kleiner Service Worker, damit eine geladene Seite ohne Empfang nutzbar bleibt. Kein Tracking.</li>
 </ul>
 
 <p>

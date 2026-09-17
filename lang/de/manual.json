@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "QR-Codes vor Ort",
-            "intro": "Hilfe zu Unit-QR und Clock-Point-QR vor Ort: Anmeldung, Meldungen, Unit-Check, Reservierungen, Aufgaben, Fotos, Banner für neue Teamaufgaben und Teamleader-Funktionen."
+            "intro": "Hilfe zu Unit-QR und Clock-Point-QR vor Ort: Anmeldung, Meldungen, Unit-Check, Reservierungen, Aufgaben, Fotos, Banner für neue Teamaufgaben und Teamleader-Funktionen. Inclusive Arbeit ohne Empfang auf einem bereits geladenen Unit-QR."
         }
     },
     "statuses": "Status",
@@ -60,14 +60,14 @@
     "step_4_title": "Meldungen empfangen & Aufgaben zuweisen",
     "step_4_text": "Meldungen kommen über einen QR-Scan, manuelle Eingabe oder (mit IoT Connect) einen Sensoralarm herein. Ist die E-Mail-Bestätigung an, kommt die QR-Meldung erst an, nachdem der Melder den Link in der Mail bestätigt hat. In der Verwaltung sehen Sie dann die Pille Melder bestätigt. Für jede Meldung wird automatisch eine Aufgabe erstellt, die direkt dem verantwortlichen Team zugeordnet wird. Es ist möglich, mehrere Aufgaben für eine Meldung zu erstellen. Legen Sie eine Frist fest und verfolgen Sie den Fortschritt über Dashboard, Kalender und — für Buchungen — Reservierungen.",
     "step_5_title": "Nachverfolgen & abschließen",
-    "step_5_text": "Ausführende führen Aufgaben vor Ort über das Unit-QR-Portal aus (nach Anmeldung über Clock Point QR); bei neuen Teamaufgaben erscheint ein Banner. Sobald alle Aufgaben für eine Meldung abgehandelt sind, kann der Administrator die Meldung endgültig schließen. Optional: Unit-Checks (OK/Nicht OK am Unit-QR), Unit-Messungen (Messwerte am Unit-QR), ESG-Messungen, Time-Anwesenheit, IoT Connect und Unit-Reservierungen — siehe die zugehörigen Kapitel. Gefilterte Listen unterstützen Bericht herunterladen (CSV + Druck im gleichen Kartenlayout wie das Backoffice). Organisationsdaten löschen Sie über Abonnement (nach Export in den Einstellungen). Für Inspektionsrunden: Der Worker folgt den Stopps in fester Reihenfolge; auf der Unit-QR sieht er Fortschritt und den nächsten Stopp.",
+    "step_5_text": "Ausführende führen Aufgaben vor Ort über das Unit-QR-Portal aus (nach Anmeldung über Clock Point QR); bei neuen Teamaufgaben erscheint ein Banner. Sobald alle Aufgaben für eine Meldung abgehandelt sind, kann der Administrator die Meldung endgültig schließen. Optional: Unit-Checks (OK/Nicht OK am Unit-QR), Unit-Messungen (Messwerte am Unit-QR), ESG-Messungen, Time-Anwesenheit, IoT Connect und Unit-Reservierungen — siehe die zugehörigen Kapitel. Gefilterte Listen unterstützen Bericht herunterladen (CSV + Druck im gleichen Kartenlayout wie das Backoffice). Organisationsdaten löschen Sie über Abonnement (nach Export in den Einstellungen). Für Inspektionsrunden: Der Worker folgt den Stopps in fester Reihenfolge; auf der Unit-QR sieht er Fortschritt und den nächsten Stopp. Haben Ausführende den Unit-QR schon online geöffnet, können sie Aufgaben, Meldungen und Unit-Checks auch ohne Empfang abschließen; das wird später automatisch gesendet. Ein-/Ausstempeln am Clock Point bleibt online.",
     "hub": {
         "title": "Handbücher",
         "subtitle": "Wählen Sie das Handbuch für Ihre Rolle",
         "general": "Allgemeines Handbuch",
         "general_desc": "Vollständige WinProx-App für Administratoren und Mitarbeiter, inkl. Reservierungen, optionalen ESG-/Time-/IoT-Modulen, Abonnement und QR-Portal-Hilfe — drucken oder als PDF speichern.",
         "workers": "Mitarbeiter-Handbuch",
-        "workers_desc": "Clock-Point-QR und Unit-QR auf der Fläche — Anmeldung, Unit-Check, Aufgaben und Fotos.",
+        "workers_desc": "Clock-Point-QR und Unit-QR auf der Fläche — Anmeldung, Unit-Check, Aufgaben, Fotos und Arbeit ohne Empfang.",
         "teamleaders": "Teamleiter-Handbuch",
         "teamleaders_desc": "Symbole freigeben, Mitarbeiter verwalten und Aufgaben über das Clock Point-Portal koordinieren.",
         "features_overview": "Feature-Übersicht",
@@ -80,7 +80,7 @@
     "workers": {
         "cover": {
             "title": "Mitarbeiter-Handbuch",
-            "subtitle": "Clock Point QR und Unit-QR — Aufgaben vor Ort"
+            "subtitle": "Clock Point QR und Unit-QR — Aufgaben vor Ort, auch ohne Empfang"
         }
     },
     "teamleaders": {

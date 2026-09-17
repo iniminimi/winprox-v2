@@ -78,6 +78,9 @@
     <li>dispositivo associato (un telefono per esecutore) e, se impostato, un PIN con hash</li>
 </ul>
 <p>
+    Se un esecutore ha già aperto il QR unità, il browser può conservare temporaneamente sul dispositivo attività, segnalazioni (incluse foto) e controlli unità fino al ritorno della connessione. Quei dati vanno poi nell’ambiente del cliente. Accedere come un altro esecutore cancella quella coda locale.
+</p>
+<p>
     Questi dati sono gestiti dal cliente / amministratore. WinProx non ha alcun controllo sostanziale su ciò che il cliente inserisce.
 </p>
 <p><strong>Time (timbratrice opzionale) e Clock Point</strong></p>

@@ -11,6 +11,7 @@
     <li>sicurezza (incluso il token CSRF o XSRF).</li>
     <li>preferenza linguistica e funzionalità di accesso, compreso lo stato temporaneo per Accedi con Microsoft (tramite la sessione).</li>
     <li>portale Clock Point: un cookie dispositivo essenziale (circa 1 anno) per riconoscere un telefono per lavoratore.</li>
+    <li>lavoro sul campo via QR unità: archiviazione locale sul dispositivo (IndexedDB/localStorage) per attività, segnalazioni e foto non ancora inviate, più un piccolo service worker così una pagina già aperta resta usabile senza rete. Nessun tracciamento.</li>
 </ul>
 
 <p>

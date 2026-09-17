@@ -24,7 +24,7 @@
         },
         "solution": {
             "title": "Soluzione",
-            "body": "Scansionate il QR dell'unità per segnalare (con foto). Il personale approva (il pubblico resta sfocato fino ad allora). Le attività vanno ai team operativi. Gli operatori agiscono via Clock Point + QR unità in loco."
+            "body": "Scansionate il QR dell'unità per segnalare (con foto). Il personale approva (il pubblico resta sfocato fino ad allora). Le attività vanno ai team operativi. Gli operatori agiscono via Clock Point + QR unità in loco; un QR già aperto resta usabile senza rete."
         },
         "capabilities": {
             "title": "Funzionalità",
@@ -34,7 +34,7 @@
                 "Più attività per segnalazione, ciascuna assegnata a un team",
                 "Calendario, briefing e monitoraggio dashboard",
                 "Team, operatori e flussi teamleader sul campo",
-                "Modello iniziale sul cruscotto (hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta)"
+                "Modello iniziale sul cruscotto (lavoro in sede cliente, hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta)"
             ]
         },
         "audience": {
@@ -130,12 +130,13 @@
         },
         "solution": {
             "title": "Soluzione",
-            "body": "QR unità per segnalazioni e attività su quell'unità. Clock Point QR per accesso operatore (e Time). QR sede per un link generale della sede. Tutto nel browser."
+            "body": "QR unità per segnalazioni e attività su quell'unità. Clock Point QR per accesso operatore (e Time). QR sede per un link generale della sede. Tutto nel browser. Un QR già aperto resta usabile senza rete."
         },
         "capabilities": {
             "title": "Funzionalità",
             "items": [
                 "QR unità: segnalazione + attività operatore in loco",
+                "QR unità: pagina già aperta usabile senza rete",
                 "Clock Point QR: accesso / timbratura entrata",
                 "Clock Point: riquadro elenco evacuazione dei timbrati",
                 "QR sede e fogli adesivi (es. Avery)",

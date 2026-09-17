@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sites and units",
-                    "text": "Create locations and add units (machines, zones, or areas), one by one or in bulk — or load a starter template from the dashboard (hotel, hospital, industry, municipality, property management or fleet management). Under Places, Categories, Locations and Units are separate. Link a team to a unit so tasks land automatically."
+                    "text": "Create locations and add units (machines, zones, or areas), one by one or in bulk — or load a starter template from the dashboard (on-site work, hotel, hospital, industry, municipality, property management or fleet management). Under Places, Categories, Locations and Units are separate. Link a team to a unit so tasks land automatically."
                 },
                 {
                     "title": "Create an issue",
@@ -33,7 +33,7 @@
                 },
                 {
                     "title": "Field work via QR",
-                    "text": "Field workers sign in via the Clock Point QR (name + icon) and complete tasks via the unit QR — without a WinProx login.",
+                    "text": "Field workers sign in via the Clock Point QR (name + icon) and complete tasks via the unit QR — without a WinProx login. If they already opened the unit QR, they can also finish tasks, reports and unit checks without coverage; those sync automatically later.",
                     "highlight": "Clock Point = sign in (name + icon); clocking in requires Time (punch clock); unit QR = tasks and issues on site."
                 },
                 {
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Which QR codes are there?",
-            "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Clock Point QR: workers sign in (name + icon) and see their team tasks; clock in/out only with Time (punch clock). Location QR: general link to the site. Everything opens in the browser — no app. Optionally also unit measurements (km, temperature, status) when category and unit allow it.",
-            "summary": "Unit QR (reports/tasks/unit check), Clock Point QR (sign-in; clocking with Time), location QR — all in the browser. Optional unit measurements."
+            "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Clock Point QR: workers sign in (name + icon) and see their team tasks; clock in/out only with Time (punch clock). Location QR: general link to the site. Everything opens in the browser — no app. Optionally also unit measurements (km, temperature, status) when category and unit allow it. Workers who already opened the unit QR online can also finish tasks, reports and unit checks without coverage; Clock Point punches stay online.",
+            "summary": "Unit QR (reports/tasks/unit check), Clock Point QR (sign-in; clocking with Time), location QR — all in the browser. Optional unit measurements. A loaded unit QR stays usable without coverage."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -114,7 +114,7 @@
                 },
                 {
                     "title": "Tasks on site",
-                    "text": "Field workers signed in via Clock Point and belonging to the team start and complete tasks via the unit QR."
+                    "text": "Field workers signed in via Clock Point and belonging to the team start and complete tasks via the unit QR. If the page is already loaded, that still works without coverage until it syncs."
                 },
                 {
                     "title": "Unit check (workers)",
@@ -137,7 +137,7 @@
             "slug": "photos",
             "type": "text",
             "title": "How do photos work for issues and tasks?",
-            "body": "When reporting an issue or completing a task, you can add up to 4 photos. On phone and in the browser, they are compressed first (faster upload). In admin, photos are shown clearly; on the public portal they remain blurred until the issue is approved.",
+            "body": "When reporting an issue or completing a task, you can add up to 4 photos. On phone and in the browser, they are compressed first (faster upload). In admin, photos are shown clearly; on the public portal they remain blurred until the issue is approved. During field work without coverage, photos stay on the device until they sync.",
             "summary": "Up to 4 photos, client-side compression; blur only on public portal before approval."
         },
         "time_clock": {
@@ -177,7 +177,7 @@
                 },
                 {
                     "title": "Field worker",
-                    "text": "Works without a WinProx login. Signs in via Clock Point QR (name + icon, optional PIN) on one phone; starts/completes tasks via the unit QR, with photos and notes."
+                    "text": "Works without a WinProx login. Signs in via Clock Point QR (name + icon, optional PIN) on one phone; starts/completes tasks via the unit QR, with photos and notes. A loaded unit QR stays usable without coverage; clock in/out at Clock Point does not."
                 }
             ]
         },
@@ -248,14 +248,14 @@
             "slug": "mobile",
             "type": "text",
             "title": "Does WinProx work on a smartphone?",
-            "body": "Yes. Admin is desktop-first but usable on tablet. Field and QR portals are mobile-first. Field workers work on their phone via Clock Point and unit QR. Dark theme is handy on phone.",
+            "body": "Yes. Admin is desktop-first but usable on tablet. Field and QR portals are mobile-first. Field workers work on their phone via Clock Point and unit QR. Dark theme is handy on phone. A loaded unit QR stays usable without network for tasks, reports and unit checks.",
             "summary": "Browser on phone/tablet/desktop; field via QR is mobile-first."
         },
         "install": {
             "slug": "install",
             "type": "text",
             "title": "Do I need to install software?",
-            "body": "No. WinProx is a web app. Coordinators and field teams work in the browser, with no separate installation or app store.",
+            "body": "No. WinProx is a web app. Coordinators and field teams work in the browser, with no separate installation or app store. On the field portal the browser temporarily stores work without coverage until you are back online; that is not an app install.",
             "summary": "No installation — everything via the browser."
         },
         "dynamic_qr_codes": {
@@ -327,6 +327,13 @@
             "title": "What is the roster?",
             "body": "Under Time → Roster you plan shifts per worker: type a code (shift type) or a free time such as 07:00-15:00. You can also set absence codes (leave, time off in lieu, sick) under Time → Shift types; those fill the whole day and count no hours. Switch between week and month. Save stores the visible period; publish makes it visible on Clock Point (My roster) and shows a badge. Publishing does not send anything to the NSSO. Deviations (late clock-in) show immediately, including today; missing punches only after the planned end. Copying a week (week view only) is all-or-nothing.",
             "summary": "Time → Roster: codes, absences, week/month, My roster on Clock Point, planned vs clocked."
+        },
+        "field_offline": {
+            "slug": "field_offline",
+            "type": "text",
+            "title": "Does the field portal work without internet?",
+            "body": "Yes, for workers who already opened the unit QR online. Starting and completing tasks, creating a report (with photos) and a unit check stay on the device until connectivity returns, then they go to WinProx automatically. Clock in/out at Clock Point stays online and still needs a fresh QR scan. Public reporters need coverage to submit. There is no separate app to install.",
+            "summary": "Unit QR: a loaded page stays usable without coverage for tasks, reports and unit checks; Clock Point punches stay online."
         }
     }
 }

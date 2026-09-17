@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sedi e unit",
-                    "text": "Crea sedi e aggiungi unit (macchine, zone o spazi), una per una o in blocco — oppure carica dal cruscotto un modello iniziale (hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta). In Luoghi, Categorie, Sedi e Units sono voci separate. Collega un team a una unit così i task arrivano automaticamente al team giusto."
+                    "text": "Crea sedi e aggiungi unit (macchine, zone o spazi), una per una o in blocco — oppure carica dal cruscotto un modello iniziale (lavoro in sede cliente, hotel, ospedale, industria, comune, gestione immobiliare o gestione flotta). In Luoghi, Categorie, Sedi e Units sono voci separate. Collega un team a una unit così i task arrivano automaticamente al team giusto."
                 },
                 {
                     "title": "Creare segnalazione",
@@ -33,7 +33,7 @@
                 },
                 {
                     "title": "Lavoro sul campo via QR",
-                    "text": "Gli esecutori si registrano via QR Clock Point (nome + icona) e completano task via QR unit — senza login WinProx.",
+                    "text": "Gli esecutori si registrano via QR Clock Point (nome + icona) e completano task via QR unit — senza login WinProx. Se hanno già aperto il QR unità, possono anche chiudere attività, segnalazioni e controlli senza rete; poi partono da soli.",
                     "highlight": "Clock Point = identificazione (nome + icona); timbrare richiede Time (timbratrice); QR unit = task e segnalazioni sul posto."
                 },
                 {
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Quali codici QR ci sono?",
-            "body": "QR unit: i segnalatori creano segnalazioni; gli esecutori (dopo Clock Point) gestiscono task aperti e possono — se categoria e unit consentono controlli — registrare OK/Non OK. QR Clock Point: identificazione (nome + icona) e task del team; timbrare solo con Time (timbratrice). QR sede: link generale. Tutto nel browser — senza app.",
-            "summary": "QR unit (segnalazioni/task/controllo unità), QR Clock Point (identificazione; timbratura con Time), QR sede — tutto nel browser."
+            "body": "QR unit: i segnalatori creano segnalazioni; gli esecutori (dopo Clock Point) gestiscono task aperti e possono — se categoria e unit consentono controlli — registrare OK/Non OK. QR Clock Point: identificazione (nome + icona) e task del team; timbrare solo con Time (timbratrice). QR sede: link generale. Tutto nel browser — senza app. Un esecutore che ha già aperto il QR unità online può anche chiudere attività, segnalazioni e controlli senza rete; la timbratura Clock Point resta online.",
+            "summary": "QR unit (segnalazioni/task/controllo unità), QR Clock Point (identificazione; timbratura con Time), QR sede — tutto nel browser. Un QR unità già aperto resta usabile senza rete."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -114,7 +114,7 @@
                 },
                 {
                     "title": "Task sul posto",
-                    "text": "Gli esecutori registrati via Clock Point e del team avviano e completano task via QR unit."
+                    "text": "Gli esecutori registrati via Clock Point e del team avviano e completano task via QR unit. Se la pagina è già caricata, resta possibile senza rete fino alla sincronizzazione."
                 },
                 {
                     "title": "Controllo unità (esecutori)",
@@ -133,7 +133,7 @@
             "slug": "photos",
             "type": "text",
             "title": "Come funzionano le foto per segnalazioni e task?",
-            "body": "In una segnalazione o chiusura task puoi aggiungere fino a 4 foto. Su telefono e browser vengono prima compresse (upload più veloce). In gestione vedi foto nitide; sul portale pubblico restano sfocate fino all'approvazione della segnalazione.",
+            "body": "In una segnalazione o chiusura task puoi aggiungere fino a 4 foto. Su telefono e browser vengono prima compresse (upload più veloce). In gestione vedi foto nitide; sul portale pubblico restano sfocate fino all'approvazione della segnalazione. Sul campo senza rete le foto restano sul dispositivo fino alla sincronizzazione.",
             "summary": "Max 4 foto, compressione lato client; sfocatura solo sul portale pubblico prima dell'approvazione."
         },
         "time_clock": {
@@ -173,7 +173,7 @@
                 },
                 {
                     "title": "Esecutore",
-                    "text": "Lavora senza login WinProx. Accesso tramite QR Clock Point (nome + icona, PIN opzionale) su un telefono; avvia/chiude attività tramite QR unità, con foto e note."
+                    "text": "Lavora senza login WinProx. Accesso tramite QR Clock Point (nome + icona, PIN opzionale) su un telefono; avvia/chiude attività tramite QR unità, con foto e note. Un QR unità già aperto resta usabile senza rete; la timbratura Clock Point no."
                 }
             ]
         },
@@ -244,14 +244,14 @@
             "slug": "mobile",
             "type": "text",
             "title": "WinProx funziona su smartphone?",
-            "body": "Sì. La gestione è desktop-first ma usabile su tablet. I portali campo e QR sono mobile-first. Gli esecutori lavorano sul telefono via Clock Point e QR unit. Il tema Scuro è comodo sul telefono.",
+            "body": "Sì. La gestione è desktop-first ma usabile su tablet. I portali campo e QR sono mobile-first. Gli esecutori lavorano sul telefono via Clock Point e QR unit. Il tema Scuro è comodo sul telefono. Un QR unità già aperto resta usabile senza rete per attività, segnalazioni e controlli.",
             "summary": "Browser su telefono/tablet/desktop; campo via QR è mobile-first."
         },
         "install": {
             "slug": "install",
             "type": "text",
             "title": "Devo installare software?",
-            "body": "No. WinProx è una webapp. Coordinatori e team sul campo lavorano nel browser, senza installazione o app store.",
+            "body": "No. WinProx è una webapp. Coordinatori e team sul campo lavorano nel browser, senza installazione o app store. Sul portale sul campo il browser conserva temporaneamente il lavoro senza rete fino alla riconnessione; non è un’installazione di app.",
             "summary": "Nessuna installazione — tutto via browser."
         },
         "dynamic_qr_codes": {
@@ -323,6 +323,13 @@
             "title": "Che cos’è il turno pianificato?",
             "body": "In Time → Turni pianifichi i servizi per esecutore: codice (tipo di turno) o orario libero 07:00-15:00. I codici di assenza (ferie, recupero, malattia) si impostano in Time → Tipi di turno; coprono l’intera giornata e non contano ore. Passa da settimana a mese. Salva conserva il periodo visibile; pubblica lo rende visibile sul Clock Point (Il mio turno) con un badge. Pubblicare non invia nulla all’ONSS. Gli scostamenti (timbratura in ritardo) si vedono subito, anche oggi; le timbrature mancanti solo dopo la fine prevista. Copiare una settimana (solo vista settimana) è tutto o niente.",
             "summary": "Time → Turni: codici, assenze, settimana/mese, Il mio turno sul Clock Point, pianificato vs timbrato."
+        },
+        "field_offline": {
+            "slug": "field_offline",
+            "type": "text",
+            "title": "Il portale sul campo funziona senza internet?",
+            "body": "Sì, per gli esecutori che hanno già aperto il QR unità online. Avviare e chiudere attività, creare una segnalazione (con foto) e un controllo unità restano sul dispositivo fino al ritorno della connessione, poi partono automaticamente verso WinProx. La timbratura al Clock Point resta online e richiede una nuova scansione QR. I segnalatori pubblici servono copertura per inviare. Non c’è un’app da installare.",
+            "summary": "QR unità: una pagina già aperta resta usabile senza rete per attività, segnalazioni e controlli; la timbratura Clock Point resta online."
         }
     }
 }

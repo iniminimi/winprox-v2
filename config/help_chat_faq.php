@@ -18,6 +18,17 @@ return [
             'body_key' => 'faq.items.reporter_portal.summary',
         ],
         [
+            'patterns' => [
+                'offline', 'zonder internet', 'geen internet', 'geen bereik', 'zonder bereik',
+                'without internet', 'no internet', 'without coverage', 'offline portal',
+                'hors ligne', 'sans internet', 'sans réseau',
+                'ohne internet', 'ohne empfang', 'offline-modus',
+                'sin internet', 'sin cobertura', 'sin conexión',
+                'senza internet', 'senza rete', 'senza connessione',
+            ],
+            'body_key' => 'faq.items.field_offline.summary',
+        ],
+        [
             'patterns' => ['qr', 'scan', 'melden', 'melder', 'code qr', 'clock point'],
             'body_key' => 'faq.items.qr_code.summary',
         ],

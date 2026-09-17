@@ -78,6 +78,9 @@
     <li>appareil lié (un téléphone par exécutant) et, le cas échéant, un code PIN haché.</li>
 </ul>
 <p>
+    Si un exécutant a déjà ouvert le QR d’unité, le navigateur peut conserver temporairement sur l’appareil les tâches, signalements (y compris photos) et contrôles d’unité jusqu’au retour de la connexion. Ces données vont ensuite dans l’environnement du client. Se connecter comme un autre exécutant efface cette file locale.
+</p>
+<p>
     Ces données sont gérées par le client / administrateur. WinProx n’exerce aucun contrôle de fond sur ce que le client saisit.
 </p>
 <p><strong>Time (pointeuse optionnelle) et Clock Point</strong></p>

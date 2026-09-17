@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "QR codes sur le terrain",
-            "intro": "Aide pour QR unité et QR Clock Point sur site : connexion, signalements, contrôle d'unité, réservations, tâches, photos, bannière nouvelles tâches d'équipe et fonctions team leader."
+            "intro": "Aide pour QR unité et QR Clock Point sur site : connexion, signalements, contrôle d'unité, réservations, tâches, photos, travail hors réseau, bannière nouvelles tâches d'équipe et fonctions team leader."
         }
     },
     "statuses": "Statuts",
@@ -60,14 +60,14 @@
     "step_4_title": "Recevoir des signalements & assigner des tâches",
     "step_4_text": "Les signalements arrivent via un scan QR, une saisie manuelle ou (avec IoT Connect) une alarme capteur. Si la confirmation e-mail est activée, le signalement QR n’arrive qu’après que le déclarant a confirmé le lien dans le mail. Dans l'administration, le signalement affiche alors la pastille Déclarant confirmé. Pour chaque signalement, une tâche est automatiquement créée et directement liée à l'équipe responsable. Il est possible de créer plusieurs tâches pour un signalement. Définissez une date limite et suivez la progression via le tableau de bord, le calendrier et — pour les réservations — Réservations.",
     "step_5_title": "Suivre & clôturer",
-    "step_5_text": "Les exécutants exécutent les tâches sur place via le portail QR unité (après connexion via QR Clock Point) ; une bannière apparaît en cas de nouvelles tâches d'équipe. Une fois toutes les tâches pour un signalement traitées, l'administrateur peut clôturer définitivement le signalement. Optionnel : contrôles d'unité (OK/Non OK sur le QR unité), mesures ESG, présence Time, IoT Connect et réservations d'unité — voir les chapitres correspondants. Les listes filtrées prennent en charge Télécharger le rapport (CSV + impression dans la même mise en page en cartes que le back-office). Effacez les données d'organisation via Abonnement (après export dans Paramètres). Pour les tournées d'inspection : le worker suit les arrêts dans un ordre fixe ; sur le QR d'unité il voit la progression et l'arrêt suivant.",
+    "step_5_text": "Les exécutants exécutent les tâches sur place via le portail QR unité (après connexion via QR Clock Point) ; une bannière apparaît en cas de nouvelles tâches d'équipe. Une fois toutes les tâches pour un signalement traitées, l'administrateur peut clôturer définitivement le signalement. Optionnel : contrôles d'unité (OK/Non OK sur le QR unité), mesures ESG, présence Time, IoT Connect et réservations d'unité — voir les chapitres correspondants. Les listes filtrées prennent en charge Télécharger le rapport (CSV + impression dans la même mise en page en cartes que le back-office). Effacez les données d'organisation via Abonnement (après export dans Paramètres). Pour les tournées d'inspection : le worker suit les arrêts dans un ordre fixe ; sur le QR d'unité il voit la progression et l'arrêt suivant. Si les exécutants ont déjà ouvert le QR d’unité en ligne, ils peuvent aussi terminer tâches, signalements et contrôles sans réseau ; cela part ensuite automatiquement. Le pointage Clock Point reste en ligne.",
     "hub": {
         "title": "Manuels",
         "subtitle": "Choisissez le manuel adapté à votre rôle",
         "general": "Manuel général",
         "general_desc": "Application WinProx complète pour administrateurs et collaborateurs, avec réservations, modules ESG/Time/IoT en option, abonnement et aide des portails QR — imprimer ou enregistrer en PDF.",
         "workers": "Manuel exécutants",
-        "workers_desc": "QR Clock Point et QR unité sur le terrain — connexion, contrôle d'unité, tâches et photos.",
+        "workers_desc": "QR Clock Point et QR unité sur le terrain — connexion, contrôle d'unité, tâches, photos et travail hors réseau.",
         "teamleaders": "Manuel chefs d'équipe",
         "teamleaders_desc": "Libérer des icônes, gérer les exécutants et coordonner les tâches via le portail Clock Point.",
         "features_overview": "Aperçu des fonctionnalités",
@@ -80,7 +80,7 @@
     "workers": {
         "cover": {
             "title": "Manuel exécutants",
-            "subtitle": "QR Clock Point et QR unité — tâches sur le terrain"
+            "subtitle": "QR Clock Point et QR unité — tâches sur le terrain, y compris hors réseau"
         }
     },
     "teamleaders": {

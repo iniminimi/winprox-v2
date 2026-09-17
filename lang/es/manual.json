@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "Códigos QR en el lugar",
-            "intro": "Ayuda para QR de unit y QR Clock Point en sitio: acceso, avisos, comprobación de unit, reservas, tareas, fotos, banner de nuevas tareas del equipo y funciones de team leader."
+            "intro": "Ayuda para QR de unit y QR Clock Point en sitio: acceso, avisos, comprobación de unit, reservas, tareas, fotos, banner de nuevas tareas del equipo y funciones de team leader. Incluye trabajo sin cobertura en un QR de unidad ya abierto."
         }
     },
     "statuses": "Estados",
@@ -60,14 +60,14 @@
     "step_4_title": "Recibir incidencias y asignar tareas",
     "step_4_text": "Las incidencias llegan mediante un escaneo QR, entrada manual o (con IoT Connect) una alarma de sensor. Si la confirmación por correo está activa, el aviso QR solo llega después de que el denunciante confirme el enlace del correo. En la administración verá entonces la pastilla Informante confirmado. Para cada incidencia, se crea automáticamente una tarea vinculada directamente al equipo responsable. Es posible crear varias tareas para una incidencia. Establezca una fecha límite y siga el progreso mediante el panel, el calendario y — para las reservas — Reservas.",
     "step_5_title": "Seguimiento y cierre",
-    "step_5_text": "Los trabajadores ejecutan las tareas en el lugar mediante el portal QR de la unidad (tras iniciar sesión con el QR Clock Point); cuando llegan nuevas tareas del equipo aparece un banner. Una vez gestionadas todas las tareas de una incidencia, el administrador puede cerrarla definitivamente. Opcional: comprobaciones de unit (OK/No OK en el QR de la unit), mediciones ESG, presencia Time, IoT Connect y reservas de unidad — véase los capítulos correspondientes. Las listas filtradas admiten Descargar informe (CSV + impresión con el mismo diseño de tarjetas que el backoffice). Elimine los datos de la organización vía Suscripción (tras exportar en Configuración). Para rondas de inspección: el worker sigue las paradas en orden fijo; en el QR de la unidad ve el progreso y la siguiente parada.",
+    "step_5_text": "Los trabajadores ejecutan las tareas en el lugar mediante el portal QR de la unidad (tras iniciar sesión con el QR Clock Point); cuando llegan nuevas tareas del equipo aparece un banner. Una vez gestionadas todas las tareas de una incidencia, el administrador puede cerrarla definitivamente. Opcional: comprobaciones de unit (OK/No OK en el QR de la unit), mediciones ESG, presencia Time, IoT Connect y reservas de unidad — véase los capítulos correspondientes. Las listas filtradas admiten Descargar informe (CSV + impresión con el mismo diseño de tarjetas que el backoffice). Elimine los datos de la organización vía Suscripción (tras exportar en Configuración). Para rondas de inspección: el worker sigue las paradas en orden fijo; en el QR de la unidad ve el progreso y la siguiente parada. Si los ejecutores ya abrieron el QR de unidad en línea, también pueden cerrar tareas, avisos y controles sin cobertura; luego se envían solos. El fichaje en Clock Point sigue en línea.",
     "hub": {
         "title": "Manuales",
         "subtitle": "Elija el manual que se ajuste a su rol",
         "general": "Manual general",
         "general_desc": "Aplicación WinProx completa para administradores y personal, con reservas, módulos ESG/Time/IoT opcionales, suscripción y ayuda del portal QR — imprimir o guardar como PDF.",
         "workers": "Manual de trabajadores",
-        "workers_desc": "QR Clock Point y QR de unit en planta — acceso, comprobación de unit, tareas y fotos.",
+        "workers_desc": "QR Clock Point y QR de unit en planta — acceso, comprobación de unit, tareas y fotos. Incluye trabajo sin cobertura.",
         "teamleaders": "Manual de jefe de equipo",
         "teamleaders_desc": "Liberar iconos, gestionar trabajadores y coordinar tareas mediante el portal Clock Point.",
         "features_overview": "Resumen de funciones",
@@ -80,7 +80,7 @@
     "workers": {
         "cover": {
             "title": "Manual de trabajadores",
-            "subtitle": "QR Clock Point y QR de unidad — tareas en el lugar"
+            "subtitle": "QR Clock Point y QR de unidad — tareas en el lugar, también sin cobertura"
         }
     },
     "teamleaders": {

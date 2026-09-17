@@ -24,7 +24,7 @@
         },
         "solution": {
             "title": "Solution",
-            "body": "Scan the unit QR to report (with photos). Staff approve (public stays blurred until then). Tasks go to operational teams. Workers act via Clock Point + unit QR on site."
+            "body": "Scan the unit QR to report (with photos). Staff approve (public stays blurred until then). Tasks go to operational teams. Workers act via Clock Point + unit QR on site; a loaded unit QR stays usable without coverage."
         },
         "capabilities": {
             "title": "Capabilities",
@@ -34,7 +34,7 @@
                 "Multiple tasks per issue, each assigned to one team",
                 "Calendar, briefing and dashboard follow-up",
                 "Teams, workers and teamleader flows on the floor",
-                "Starter template on the dashboard (hotel, hospital, industry, municipality, property management or fleet management)"
+                "Starter template on the dashboard (on-site work, hotel, hospital, industry, municipality, property management or fleet management)"
             ]
         },
         "audience": {
@@ -130,12 +130,13 @@
         },
         "solution": {
             "title": "Solution",
-            "body": "Unit QR for reporting and tasks on that unit. Clock Point QR for worker login (and Time). Location QR for a general location link. All in the browser."
+            "body": "Unit QR for reporting and tasks on that unit. Clock Point QR for worker login (and Time). Location QR for a general location link. All in the browser. A loaded unit QR stays usable without coverage."
         },
         "capabilities": {
             "title": "Capabilities",
             "items": [
                 "Unit QR: report + worker tasks on site",
+                "Unit QR: loaded page usable without coverage",
                 "Clock Point QR: sign-in / clock in",
                 "Clock Point: Evacuation list tile of people clocked in",
                 "Location QR and sticker sheets (e.g. Avery)",

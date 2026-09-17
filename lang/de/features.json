@@ -24,7 +24,7 @@
         },
         "solution": {
             "title": "Lösung",
-            "body": "Scannen Sie den Einheiten-QR zum Melden (mit Fotos). Mitarbeiter genehmigen (öffentlich bleibt bis dahin unscharf). Aufgaben gehen an operative Teams. Mitarbeiter handeln über Clock Point + Einheiten-QR vor Ort."
+            "body": "Scannen Sie den Einheiten-QR zum Melden (mit Fotos). Mitarbeiter genehmigen (öffentlich bleibt bis dahin unscharf). Aufgaben gehen an operative Teams. Mitarbeiter handeln über Clock Point + Einheiten-QR vor Ort; eine geladene Unit-QR bleibt ohne Empfang nutzbar."
         },
         "capabilities": {
             "title": "Funktionen",
@@ -34,7 +34,7 @@
                 "Mehrere Aufgaben pro Meldung, jeweils einem Team zugewiesen",
                 "Kalender, Briefing und Dashboard-Nachverfolgung",
                 "Teams, Mitarbeiter und Teamleader-Abläufe vor Ort",
-                "Startvorlage auf dem Dashboard (Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement)"
+                "Startvorlage auf dem Dashboard (Arbeiten vor Ort, Hotel, Krankenhaus, Industrie, Gemeinde, Immobilienverwaltung oder Fuhrparkmanagement)"
             ]
         },
         "audience": {
@@ -130,12 +130,13 @@
         },
         "solution": {
             "title": "Lösung",
-            "body": "Einheiten-QR für Meldungen und Aufgaben an dieser Einheit. Clock Point QR für Mitarbeiter-Login (und Time). Standort-QR für einen allgemeinen Standortlink. Alles im Browser."
+            "body": "Einheiten-QR für Meldungen und Aufgaben an dieser Einheit. Clock Point QR für Mitarbeiter-Login (und Time). Standort-QR für einen allgemeinen Standortlink. Alles im Browser. Eine geladene Unit-QR bleibt ohne Empfang nutzbar."
         },
         "capabilities": {
             "title": "Funktionen",
             "items": [
                 "Einheiten-QR: Meldung + Mitarbeiteraufgaben vor Ort",
+                "Einheiten-QR: geladene Seite ohne Empfang nutzbar",
                 "Clock Point QR: Anmeldung / Einstempeln",
                 "Clock Point: Kachel Evakuierungsliste der Eingestempelten",
                 "Standort-QR und Aufkleberbögen (z. B. Avery)",

@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sites et units",
-                    "text": "Créez des lieux et ajoutez des units (machines, zones ou espaces), une par une ou en masse — ou chargez un modèle de départ depuis le tableau de bord (hôtel, hôpital, industrie, commune, gestion immobilière ou gestion de flotte). Sous Lieux, Catégories, Lieux et Units sont séparés. Liez une équipe à une unit pour que les tâches arrivent automatiquement."
+                    "text": "Créez des lieux et ajoutez des units (machines, zones ou espaces), une par une ou en masse — ou chargez un modèle de départ depuis le tableau de bord (travail sur site, hôtel, hôpital, industrie, commune, gestion immobilière ou gestion de flotte). Sous Lieux, Catégories, Lieux et Units sont séparés. Liez une équipe à une unit pour que les tâches arrivent automatiquement."
                 },
                 {
                     "title": "Créer un signalement",
@@ -33,7 +33,7 @@
                 },
                 {
                     "title": "Travail terrain via QR",
-                    "text": "Les exécutants s'enregistrent via le QR Clock Point (nom + icône) et traitent les tâches via le QR unité — sans connexion WinProx.",
+                    "text": "Les exécutants s'enregistrent via le QR Clock Point (nom + icône) et traitent les tâches via le QR unité — sans connexion WinProx. S’ils ont déjà ouvert le QR d’unité, ils peuvent aussi terminer tâches, signalements et contrôles sans réseau ; cela part ensuite automatiquement.",
                     "highlight": "Clock Point = identification (nom + icône) ; le pointage nécessite Time (pointeuse) ; QR unité = tâches et signalements sur site."
                 },
                 {
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Quels codes QR existent ?",
-            "body": "QR unité : les signaleurs créent un signalement ; les exécutants (après Clock Point) traitent les tâches ouvertes et peuvent — si catégorie et unité autorisent les contrôles — enregistrer OK/Non OK. QR Clock Point : identification (nom + icône) et tâches d’équipe ; le pointage nécessite Time (pointeuse). QR site : lien général. Tout s'ouvre dans le navigateur — sans app.",
-            "summary": "QR unité (signalements/tâches/contrôle d'unité), QR Clock Point (identification ; pointage avec Time), QR site — tout dans le navigateur."
+            "body": "QR unité : les signaleurs créent un signalement ; les exécutants (après Clock Point) traitent les tâches ouvertes et peuvent — si catégorie et unité autorisent les contrôles — enregistrer OK/Non OK. QR Clock Point : identification (nom + icône) et tâches d’équipe ; le pointage nécessite Time (pointeuse). QR site : lien général. Tout s'ouvre dans le navigateur — sans app. Un exécutant qui a déjà ouvert le QR d’unité en ligne peut aussi terminer tâches, signalements et contrôles sans réseau ; le pointage Clock Point reste en ligne.",
+            "summary": "QR unité (signalements/tâches/contrôle d'unité), QR Clock Point (identification ; pointage avec Time), QR site — tout dans le navigateur. Un QR d’unité déjà ouvert reste utilisable sans réseau."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -114,7 +114,7 @@
                 },
                 {
                     "title": "Tâches sur site",
-                    "text": "Les exécutants enregistrés via Clock Point et appartenant à l'équipe démarrent et clôturent les tâches via le QR unité."
+                    "text": "Les exécutants enregistrés via Clock Point et appartenant à l'équipe démarrent et clôturent les tâches via le QR unité. Si la page est déjà chargée, cela reste possible sans réseau jusqu’à la synchronisation."
                 },
                 {
                     "title": "Contrôle d'unité (exécutants)",
@@ -133,7 +133,7 @@
             "slug": "photos",
             "type": "text",
             "title": "Comment fonctionnent les photos pour signalements et tâches ?",
-            "body": "Lors d'un signalement ou clôture de tâche, vous pouvez ajouter jusqu'à 4 photos. Sur téléphone et navigateur, elles sont d'abord compressées (envoi plus rapide). En gestion, les photos sont nettes ; sur le portail public, elles restent floutées jusqu'à approbation du signalement.",
+            "body": "Lors d'un signalement ou clôture de tâche, vous pouvez ajouter jusqu'à 4 photos. Sur téléphone et navigateur, elles sont d'abord compressées (envoi plus rapide). En gestion, les photos sont nettes ; sur le portail public, elles restent floutées jusqu'à approbation du signalement. Sans réseau sur le terrain, les photos restent sur l’appareil jusqu’à la synchronisation.",
             "summary": "Max. 4 photos, compression côté client ; flou uniquement sur portail public avant approbation."
         },
         "time_clock": {
@@ -173,7 +173,7 @@
                 },
                 {
                     "title": "Exécutant",
-                    "text": "Travaille sans connexion WinProx. Identification via QR Clock Point (nom + icône, PIN optionnel) sur un téléphone ; démarre/termine les tâches via le QR unité, avec photos et notes."
+                    "text": "Travaille sans connexion WinProx. Identification via QR Clock Point (nom + icône, PIN optionnel) sur un téléphone ; démarre/termine les tâches via le QR unité, avec photos et notes. Un QR d’unité déjà ouvert reste utilisable sans réseau ; le pointage Clock Point non."
                 }
             ]
         },
@@ -244,14 +244,14 @@
             "slug": "mobile",
             "type": "text",
             "title": "WinProx fonctionne-t-il sur smartphone ?",
-            "body": "Oui. La gestion est desktop-first mais utilisable sur tablette. Les portails terrain et QR sont mobile-first. Les exécutants travaillent sur mobile via Clock Point et QR unité. Le thème Sombre est pratique sur téléphone.",
+            "body": "Oui. La gestion est desktop-first mais utilisable sur tablette. Les portails terrain et QR sont mobile-first. Les exécutants travaillent sur mobile via Clock Point et QR unité. Le thème Sombre est pratique sur téléphone. Un QR d’unité déjà ouvert reste utilisable sans réseau pour tâches, signalements et contrôles.",
             "summary": "Navigateur sur mobile/tablette/desktop ; terrain via QR mobile-first."
         },
         "install": {
             "slug": "install",
             "type": "text",
             "title": "Dois-je installer un logiciel ?",
-            "body": "Non. WinProx est une webapp. Coordinateurs et équipes terrain travaillent dans le navigateur, sans installation ni app store.",
+            "body": "Non. WinProx est une webapp. Coordinateurs et équipes terrain travaillent dans le navigateur, sans installation ni app store. Sur le portail de terrain, le navigateur conserve temporairement le travail sans réseau jusqu’à la reconnexion ; ce n’est pas une installation d’application.",
             "summary": "Pas d'installation — tout via le navigateur."
         },
         "dynamic_qr_codes": {
@@ -323,6 +323,13 @@
             "title": "Qu’est-ce que l’horaire ?",
             "body": "Sous Time → Planning vous planifiez des services par exécutant : code (type de shift) ou horaire libre 07:00-15:00. Les codes d’absence (congé, récup, maladie) se règlent sous Time → Types de shift ; ils remplissent la journée et ne comptent pas d’heures. Passez de la semaine au mois. Enregistrer conserve la période visible ; publier la rend visible sur Clock Point (Mon planning) avec un badge. Publier n’envoie rien à l’ONSS. Les écarts (pointe en retard) s’affichent tout de suite, y compris aujourd’hui ; les pointes manquantes seulement après la fin prévue. Copier une semaine (vue semaine uniquement) est tout ou rien.",
             "summary": "Time → Planning : codes, absences, semaine/mois, Mon planning sur Clock Point, prévu vs pointé."
+        },
+        "field_offline": {
+            "slug": "field_offline",
+            "type": "text",
+            "title": "Le portail de terrain fonctionne-t-il sans internet ?",
+            "body": "Oui, pour les exécutants qui ont déjà ouvert le QR d’unité en ligne. Démarrer et terminer des tâches, créer un signalement (avec photos) et un contrôle d’unité restent sur l’appareil jusqu’au retour de la connexion, puis partent automatiquement vers WinProx. Le pointage au Clock Point reste en ligne et exige un scan QR frais. Les signalants publics ont besoin de réseau pour envoyer. Il n’y a pas d’application à installer.",
+            "summary": "QR unité : une page déjà ouverte reste utilisable sans réseau pour tâches, signalements et contrôles ; le pointage Clock Point reste en ligne."
         }
     }
 }

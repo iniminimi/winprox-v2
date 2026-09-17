@@ -24,7 +24,7 @@
         },
         "solution": {
             "title": "Solución",
-            "body": "Escanee el QR de la unidad para reportar (con fotos). El personal aprueba (lo público permanece difuminado hasta entonces). Las tareas van a equipos operativos. Los trabajadores actúan vía Clock Point + QR de unidad in situ."
+            "body": "Escanee el QR de la unidad para reportar (con fotos). El personal aprueba (lo público permanece difuminado hasta entonces). Las tareas van a equipos operativos. Los trabajadores actúan vía Clock Point + QR de unidad in situ; un QR ya abierto sigue usable sin cobertura."
         },
         "capabilities": {
             "title": "Funcionalidades",
@@ -34,7 +34,7 @@
                 "Varias tareas por incidencia, cada una asignada a un equipo",
                 "Calendario, briefing y seguimiento en panel",
                 "Equipos, trabajadores y flujos teamleader en el terreno",
-                "Plantilla inicial en el panel (hotel, hospital, industria, ayuntamiento, gestión inmobiliaria o gestión de flotas)"
+                "Plantilla inicial en el panel (trabajo in situ, hotel, hospital, industria, ayuntamiento, gestión inmobiliaria o gestión de flotas)"
             ]
         },
         "audience": {
@@ -130,12 +130,13 @@
         },
         "solution": {
             "title": "Solución",
-            "body": "QR de unidad para reportes y tareas en esa unidad. Clock Point QR para inicio de sesión del trabajador (y Time). QR de ubicación para un enlace general de ubicación. Todo en el navegador."
+            "body": "QR de unidad para reportes y tareas en esa unidad. Clock Point QR para inicio de sesión del trabajador (y Time). QR de ubicación para un enlace general de ubicación. Todo en el navegador. Un QR ya abierto sigue usable sin cobertura."
         },
         "capabilities": {
             "title": "Funcionalidades",
             "items": [
                 "QR de unidad: reporte + tareas de trabajador in situ",
+                "QR de unidad: página ya abierta usable sin cobertura",
                 "Clock Point QR: inicio de sesión / fichaje entrada",
                 "Clock Point: ficha lista de evacuación de fichados",
                 "QR de ubicación y hojas de pegatinas (p. ej. Avery)",

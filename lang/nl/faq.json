@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Locaties en units",
-                    "text": "Maak locaties aan en voeg units toe (machines, zones of ruimtes), één voor één of in bulk — of laad op het dashboard een starttemplate (hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer of fleet management). Onder Plaatsen staan Categorieën, Locaties en Units apart. Koppel een team aan een unit zodat taken automatisch goed landen."
+                    "text": "Maak locaties aan en voeg units toe (machines, zones of ruimtes), één voor één of in bulk — of laad op het dashboard een starttemplate (werken op locatie, hotel, ziekenhuis, industrie, gemeentebestuur, vastgoedbeheer of fleet management). Onder Plaatsen staan Categorieën, Locaties en Units apart. Koppel een team aan een unit zodat taken automatisch goed landen."
                 },
                 {
                     "title": "Melding maken",
@@ -33,7 +33,7 @@
                 },
                 {
                     "title": "Veldwerk via QR",
-                    "text": "Uitvoerders melden zich aan via de Clock Point-QR (naam + icoon) en handelen taken af via de unit-QR — zonder WinProx-login.",
+                    "text": "Uitvoerders melden zich aan via de Clock Point-QR (naam + icoon) en handelen taken af via de unit-QR — zonder WinProx-login. Hebben ze de unit-QR al geopend, dan kunnen ze taken, meldingen en unit checks ook zonder bereik afronden; die gaan later automatisch mee.",
                     "highlight": "Clock Point = aanmelden (naam + icoon); inklokken alleen met Time (prikklok); unit-QR = taken en meldingen op locatie."
                 },
                 {
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Welke QR-codes zijn er?",
-            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken af en kunnen — als categorie én unit Unit checks toestaan — OK/Niet OK registreren. Clock Point-QR: uitvoerders melden zich aan (naam + icoon) en zien hun teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app. Optioneel ook unitmetingen (km, temperatuur, status) als categorie én unit dat toestaan.",
-            "summary": "Unit-QR (melden/taken/unit check), Clock Point-QR (aanmelden; inklokken met Time), locatie-QR — allemaal in de browser. Optioneel unitmetingen."
+            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken af en kunnen — als categorie én unit Unit checks toestaan — OK/Niet OK registreren. Clock Point-QR: uitvoerders melden zich aan (naam + icoon) en zien hun teamtaken; in-/uitklokken alleen met Time (prikklok). Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app. Optioneel ook unitmetingen (km, temperatuur, status) als categorie én unit dat toestaan. Uitvoerders die de unit-QR al online openden, kunnen taken, meldingen en unit checks ook zonder bereik afronden; Clock Point-prik blijft online.",
+            "summary": "Unit-QR (melden/taken/unit check), Clock Point-QR (aanmelden; inklokken met Time), locatie-QR — allemaal in de browser. Optioneel unitmetingen. Geladen unit-QR blijft bruikbaar zonder bereik."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -114,7 +114,7 @@
                 },
                 {
                     "title": "Taken op locatie",
-                    "text": "Uitvoerders die via Clock Point zijn aangemeld en bij het team horen, starten en ronden taken af via de unit-QR."
+                    "text": "Uitvoerders die via Clock Point zijn aangemeld en bij het team horen, starten en ronden taken af via de unit-QR. Hebben ze de pagina al geladen, dan blijft dat ook zonder bereik mogelijk tot de synchronisatie."
                 },
                 {
                     "title": "Unit check (uitvoerders)",
@@ -137,7 +137,7 @@
             "slug": "photos",
             "type": "text",
             "title": "Hoe werken foto's bij meldingen en taken?",
-            "body": "Bij een melding of taakafhandeling kunt u tot 4 foto's toevoegen. Op telefoon en in de browser worden ze eerst verkleind (snellere upload). In beheer ziet u foto's scherp; op het publieke portaal blijven ze geblurd tot goedkeuring van de melding.",
+            "body": "Bij een melding of taakafhandeling kunt u tot 4 foto's toevoegen. Op telefoon en in de browser worden ze eerst verkleind (snellere upload). In beheer ziet u foto's scherp; op het publieke portaal blijven ze geblurd tot goedkeuring van de melding. Bij veldwerk zonder bereik blijven foto’s op het toestel tot ze zijn gesynchroniseerd.",
             "summary": "Maximaal 4 foto's, client-side verkleind; blur alleen op publiek portaal vóór goedkeuring."
         },
         "time_clock": {
@@ -177,7 +177,7 @@
                 },
                 {
                     "title": "Uitvoerder",
-                    "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR (naam + icoon, optioneel pincode) op één gsm; taken starten/afronden via de unit-QR, met foto's en notities."
+                    "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR (naam + icoon, optioneel pincode) op één gsm; taken starten/afronden via de unit-QR, met foto's en notities. Een geladen unit-QR blijft bruikbaar zonder bereik; in-/uitklokken op Clock Point niet."
                 }
             ]
         },
@@ -248,14 +248,14 @@
             "slug": "mobile",
             "type": "text",
             "title": "Werkt WinProx op smartphone?",
-            "body": "Ja. Beheer is desktop-first maar bruikbaar op tablet. Veld- en QR-portalen zijn mobiel-first. Uitvoerders werken op de gsm via Clock Point en unit-QR. Thema Donker is handig op telefoon.",
+            "body": "Ja. Beheer is desktop-first maar bruikbaar op tablet. Veld- en QR-portalen zijn mobiel-first. Uitvoerders werken op de gsm via Clock Point en unit-QR. Thema Donker is handig op telefoon. Een geladen unit-QR blijft bruikbaar zonder netwerk voor taken, meldingen en unit checks.",
             "summary": "Browser op gsm/tablet/desktop; veld via QR is mobiel-first."
         },
         "install": {
             "slug": "install",
             "type": "text",
             "title": "Moet ik software installeren?",
-            "body": "Nee. WinProx is een webapp. Coördinatoren en veldteams werken in de browser, zonder aparte installatie of app-store.",
+            "body": "Nee. WinProx is een webapp. Coördinatoren en veldteams werken in de browser, zonder aparte installatie of app-store. Op het veldportaal bewaart de browser tijdelijk werk zonder bereik tot er weer verbinding is; dat is geen app-installatie.",
             "summary": "Geen installatie — alles via de browser."
         },
         "dynamic_qr_codes": {
@@ -327,6 +327,13 @@
             "title": "Wat is het uurrooster?",
             "body": "Onder Time → Uurrooster plant u diensten per uitvoerder: typ een code (shiftype) of een vrije tijd zoals 07:00-15:00. U kunt ook afwezigheidscodes (verlof, recup, ziek) instellen onder Time → Shiftypes; die vullen de hele dag en tellen geen uren. U schakelt tussen week en maand. Opslaan bewaart de zichtbare periode; publiceren maakt die zichtbaar op Clock Point (Mijn rooster) en toont een badge. Publiceren stuurt niets naar de RSZ. Afwijkingen (te laat inklokken) ziet u meteen, ook vandaag; ontbrekende prikken pas na het geplande einde. Een week kopiëren (alleen weekweergave) is alles-of-niets.",
             "summary": "Time → Uurrooster: codes, afwezigheid, week/maand, Mijn rooster op Clock Point, gepland vs geklokt."
+        },
+        "field_offline": {
+            "slug": "field_offline",
+            "type": "text",
+            "title": "Werkt het veldportaal zonder internet?",
+            "body": "Ja, voor uitvoerders die de unit-QR al online hebben geopend. Taken starten en afronden, een melding maken (met foto’s) en een unit check blijven op het toestel staan tot er weer verbinding is; daarna gaan ze automatisch naar WinProx. In-/uitklokken op Clock Point blijft online en vraagt een verse QR-scan. Melders op het publieke portaal hebben bereik nodig om te versturen. Er is geen aparte app-installatie.",
+            "summary": "Unit-QR: geladen pagina blijft bruikbaar zonder bereik voor taken, meldingen en unit checks; Clock Point-prik blijft online."
         }
     }
 }

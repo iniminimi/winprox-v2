@@ -78,6 +78,9 @@
     <li>dispositivo vinculado (un móvil por trabajador) y, si se configura, un PIN hasheado</li>
 </ul>
 <p>
+    Si un ejecutor ya abrió el QR de unidad, el navegador puede guardar temporalmente en el dispositivo tareas, avisos (incluidas fotos) y controles de unidad hasta que vuelva la conexión. Esos datos pasan después al entorno del cliente. Identificarse como otro ejecutor borra esa cola local.
+</p>
+<p>
     Estos datos los gestiona el cliente / administrador. WinProx no tiene control sustancial sobre lo que introduce el cliente.
 </p>
 <p><strong>Time (reloj de fichar opcional) y Clock Point</strong></p>

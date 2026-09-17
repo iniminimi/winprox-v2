@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "Codici QR sul campo",
-            "intro": "Guida a QR unit e QR Clock Point in sito: accesso, segnalazioni, controllo unità, prenotazioni, task, foto, banner nuovi task del team e funzioni team leader."
+            "intro": "Guida a QR unit e QR Clock Point in sito: accesso, segnalazioni, controllo unità, prenotazioni, task, foto, banner nuovi task del team e funzioni team leader. Include il lavoro senza rete su un QR unità già aperto."
         }
     },
     "statuses": "Stati",
@@ -60,14 +60,14 @@
     "step_4_title": "Ricevi segnalazioni e assegna attività",
     "step_4_text": "Le segnalazioni arrivano tramite scansione QR, inserimento manuale o (con IoT Connect) un allarme sensore. Se la conferma e-mail è attiva, la segnalazione QR arriva solo dopo che il segnalatore ha confermato il link nella mail. Nell'amministrazione vedrà allora la pillola Segnalante confermato. Per ogni segnalazione viene creata automaticamente un'attività collegata direttamente al team responsabile. È possibile creare più attività per una segnalazione. Imposti una scadenza e segua l'avanzamento tramite dashboard, calendario e — per le prenotazioni — Prenotazioni.",
     "step_5_title": "Segui e chiudi",
-    "step_5_text": "I lavoratori eseguono le attività sul posto tramite il portale QR unità (dopo l'accesso tramite QR Clock Point); quando arrivano nuove attività del team compare un banner. Una volta gestite tutte le attività di una segnalazione, l'amministratore può chiudere definitivamente la segnalazione. Opzionale: controlli unità (OK/Non OK sul QR unit), misurazioni ESG, presenza Time, IoT Connect e prenotazioni unità — vedi i capitoli correlati. Gli elenchi filtrati supportano Scarica rapporto (CSV + stampa con lo stesso layout a schede del backoffice). Elimini i dati dell'organizzazione tramite Abbonamento (dopo l'export in Impostazioni). Per i giri di ispezione: il worker segue le fermate in ordine fisso; sul QR unità vede avanzamento e fermata successiva.",
+    "step_5_text": "I lavoratori eseguono le attività sul posto tramite il portale QR unità (dopo l'accesso tramite QR Clock Point); quando arrivano nuove attività del team compare un banner. Una volta gestite tutte le attività di una segnalazione, l'amministratore può chiudere definitivamente la segnalazione. Opzionale: controlli unità (OK/Non OK sul QR unit), misurazioni ESG, presenza Time, IoT Connect e prenotazioni unità — vedi i capitoli correlati. Gli elenchi filtrati supportano Scarica rapporto (CSV + stampa con lo stesso layout a schede del backoffice). Elimini i dati dell'organizzazione tramite Abbonamento (dopo l'export in Impostazioni). Per i giri di ispezione: il worker segue le fermate in ordine fisso; sul QR unità vede avanzamento e fermata successiva. Se gli esecutori hanno già aperto il QR unità online, possono anche chiudere attività, segnalazioni e controlli senza rete; poi partono da soli. La timbratura al Clock Point resta online.",
     "hub": {
         "title": "Manuali",
         "subtitle": "Scelga il manuale adatto al Suo ruolo",
         "general": "Manuale generale",
         "general_desc": "App WinProx completa per amministratori e personale, con prenotazioni, moduli ESG/Time/IoT opzionali, abbonamento e aiuto sul portale QR — stampi o salvi come PDF.",
         "workers": "Manuale lavoratori",
-        "workers_desc": "QR Clock Point e QR unit sul campo — accesso, controllo unità, task e foto.",
+        "workers_desc": "QR Clock Point e QR unit sul campo — accesso, controllo unità, task e foto. Include il lavoro senza rete.",
         "teamleaders": "Manuale caposquadra",
         "teamleaders_desc": "Rilascia icone, gestisca lavoratori e coordini attività tramite il portale Clock Point.",
         "features_overview": "Panoramica funzionalità",
@@ -80,7 +80,7 @@
     "workers": {
         "cover": {
             "title": "Manuale lavoratori",
-            "subtitle": "QR Clock Point e QR unità — attività sul posto"
+            "subtitle": "QR Clock Point e QR unità — attività sul posto, anche senza rete"
         }
     },
     "teamleaders": {

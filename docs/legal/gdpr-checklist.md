@@ -17,6 +17,7 @@ Status legend: `TODO`, `IN PROGRESS`, `DONE`
 - [x] `DONE` Privacy / terms / DPA describe self-service organisation deletion, trial vs paid cool-down, expired-trial auto-purge, export path, and snapshot without media (2026-07-28).
 - [x] `DONE` Operational backups / RPO≈24h / RTO best effort ≤1 business day aligned across privacy, DPA, terms, subprocessors and tech fiche (2026-07-30).
 - [x] `DONE` Time/Clock Point: one device per worker, hashed PIN, optional GPS (fail-open), evacuation-list audit; cookies policy names the essential device cookie (2026-09-06). Team-applied timesheet break minutes are hours-only, not an RSZ CIAO IN/OUT (2026-09-09).
+- [x] `DONE` Unit-QR field outbox: IndexedDB/localStorage + small service worker documented in cookies/privacy (2026-09-17). Queue is on-device until sync; no extra subprocessor.
 - [ ] `TODO` Define when explicit consent is needed vs legitimate interest.
 
 ## 3) Contracts

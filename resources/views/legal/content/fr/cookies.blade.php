@@ -11,6 +11,7 @@
     <li>sécurité (notamment jeton CSRF ou XSRF).</li>
     <li>préférence de langue et fonctionnalité de connexion, y compris l’état temporaire pour Se connecter avec Microsoft (via la session).</li>
     <li>portail Clock Point : un cookie d’appareil essentiel (environ 1 an) pour reconnaître un téléphone par exécutant.</li>
+    <li>travail de terrain via QR d’unité : stockage local sur l’appareil (IndexedDB/localStorage) pour les tâches, signalements et photos pas encore envoyés, plus un petit service worker pour qu’une page déjà ouverte reste utilisable sans réseau. Pas de suivi.</li>
 </ul>
 
 <p>

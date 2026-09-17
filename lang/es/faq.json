@@ -17,7 +17,7 @@
             "steps": [
                 {
                     "title": "Sitios y units",
-                    "text": "Cree ubicaciones y añada units (máquinas, zonas o espacios), una a una o en bloque — o cargue en el panel una plantilla inicial (hotel, hospital, industria, ayuntamiento, gestión inmobiliaria o gestión de flotas). En Lugares, Categorías, Ubicaciones y Units van por separado. Vincule un equipo a una unit para que las tareas lleguen automáticamente."
+                    "text": "Cree ubicaciones y añada units (máquinas, zonas o espacios), una a una o en bloque — o cargue en el panel una plantilla inicial (trabajo in situ, hotel, hospital, industria, ayuntamiento, gestión inmobiliaria o gestión de flotas). En Lugares, Categorías, Ubicaciones y Units van por separado. Vincule un equipo a una unit para que las tareas lleguen automáticamente."
                 },
                 {
                     "title": "Crear incidencia",
@@ -33,7 +33,7 @@
                 },
                 {
                     "title": "Trabajo de campo vía QR",
-                    "text": "Los operarios se registran vía QR Clock Point (nombre + icono) y completan tareas vía el QR de unit — sin login WinProx.",
+                    "text": "Los operarios se registran vía QR Clock Point (nombre + icono) y completan tareas vía el QR de unit — sin login WinProx. Si ya abrieron el QR de unidad, también pueden cerrar tareas, avisos y controles sin cobertura; luego se envían solos.",
                     "highlight": "Clock Point = identificación (nombre + icono); fichar requiere Time (reloj de fichar); QR de unit = tareas e incidencias en sitio."
                 },
                 {
@@ -86,8 +86,8 @@
             "slug": "qr_code",
             "type": "text",
             "title": "¿Qué códigos QR hay?",
-            "body": "QR de unit: los avisadores crean avisos; los ejecutores (tras Clock Point) gestionan tareas abiertas y pueden — si categoría y unit permiten comprobaciones — registrar OK/No OK. QR Clock Point: identificación (nombre + icono) y tareas del equipo; fichar solo con Time (reloj de fichar). QR de ubicación: enlace general. Todo en el navegador — sin app.",
-            "summary": "QR unit (avisos/tareas/comprobación de unit), QR Clock Point (identificación; fichaje con Time), QR ubicación — todo en el navegador."
+            "body": "QR de unit: los avisadores crean avisos; los ejecutores (tras Clock Point) gestionan tareas abiertas y pueden — si categoría y unit permiten comprobaciones — registrar OK/No OK. QR Clock Point: identificación (nombre + icono) y tareas del equipo; fichar solo con Time (reloj de fichar). QR de ubicación: enlace general. Todo en el navegador — sin app. Un ejecutor que ya abrió el QR de unidad en línea también puede cerrar tareas, avisos y controles sin cobertura; el fichaje Clock Point sigue en línea.",
+            "summary": "QR unit (avisos/tareas/comprobación de unit), QR Clock Point (identificación; fichaje con Time), QR ubicación — todo en el navegador. Un QR de unidad ya abierto sigue usable sin cobertura."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
@@ -114,7 +114,7 @@
                 },
                 {
                     "title": "Tareas en sitio",
-                    "text": "Operarios registrados vía Clock Point y del equipo inician y completan tareas vía el QR de unit."
+                    "text": "Operarios registrados vía Clock Point y del equipo inician y completan tareas vía el QR de unit. Si la página ya está cargada, eso sigue siendo posible sin cobertura hasta la sincronización."
                 },
                 {
                     "title": "Comprobación de unit (ejecutores)",
@@ -133,7 +133,7 @@
             "slug": "photos",
             "type": "text",
             "title": "¿Cómo funcionan las fotos en incidencias y tareas?",
-            "body": "Al reportar una incidencia o completar una tarea puede añadir hasta 4 fotos. En móvil y navegador se comprimen primero (subida más rápida). En gestión ve fotos nítidas; en el portal público permanecen difuminadas hasta aprobar la incidencia.",
+            "body": "Al reportar una incidencia o completar una tarea puede añadir hasta 4 fotos. En móvil y navegador se comprimen primero (subida más rápida). En gestión ve fotos nítidas; en el portal público permanecen difuminadas hasta aprobar la incidencia. Sin cobertura en campo, las fotos quedan en el dispositivo hasta sincronizar.",
             "summary": "Máx. 4 fotos, compresión en cliente; difuminado solo en portal público antes de aprobación."
         },
         "time_clock": {
@@ -173,7 +173,7 @@
                 },
                 {
                     "title": "Operario",
-                    "text": "Trabaja sin inicio de sesión WinProx. Se identifica con el QR Clock Point (nombre + icono, PIN opcional) en un móvil; inicia/cierra tareas con el QR de unidad, con fotos y notas."
+                    "text": "Trabaja sin inicio de sesión WinProx. Se identifica con el QR Clock Point (nombre + icono, PIN opcional) en un móvil; inicia/cierra tareas con el QR de unidad, con fotos y notas. Un QR de unidad ya abierto sigue usable sin cobertura; fichar en Clock Point no."
                 }
             ]
         },
@@ -244,14 +244,14 @@
             "slug": "mobile",
             "type": "text",
             "title": "¿Funciona WinProx en smartphone?",
-            "body": "Sí. La gestión es desktop-first pero usable en tablet. Los portales de campo y QR son mobile-first. Los operarios trabajan en móvil vía Clock Point y QR de unit. El tema Oscuro es útil en móvil.",
+            "body": "Sí. La gestión es desktop-first pero usable en tablet. Los portales de campo y QR son mobile-first. Los operarios trabajan en móvil vía Clock Point y QR de unit. El tema Oscuro es útil en móvil. Un QR de unidad ya abierto sigue usable sin red para tareas, avisos y controles.",
             "summary": "Navegador en móvil/tablet/escritorio; campo vía QR es mobile-first."
         },
         "install": {
             "slug": "install",
             "type": "text",
             "title": "¿Debo instalar software?",
-            "body": "No. WinProx es una webapp. Coordinadores y equipos de campo trabajan en el navegador, sin instalación ni app store.",
+            "body": "No. WinProx es una webapp. Coordinadores y equipos de campo trabajan en el navegador, sin instalación ni app store. En el portal de campo el navegador guarda el trabajo sin cobertura hasta reconectar; no es instalar una app.",
             "summary": "Sin instalación — todo vía navegador."
         },
         "dynamic_qr_codes": {
@@ -323,6 +323,13 @@
             "title": "¿Qué es el horario?",
             "body": "En Time → Cuadrante planifica turnos por trabajador: código (tipo de turno) u horario libre 07:00-15:00. Los códigos de ausencia (permiso, compensación, baja) se definen en Time → Tipos de turno; cubren el día y no cuentan horas. Alterne semana y mes. Guardar conserva el periodo visible; publicar lo hace visible en Clock Point (Mi cuadrante) con una insignia. Publicar no envía nada a la ONSS. Los desvíos (fichaje tarde) se ven al momento, también hoy; los fichajes faltantes solo tras el fin previsto. Copiar una semana (solo vista semanal) es todo o nada.",
             "summary": "Time → Cuadrante: códigos, ausencias, semana/mes, Mi cuadrante en Clock Point, planificado vs fichado."
+        },
+        "field_offline": {
+            "slug": "field_offline",
+            "type": "text",
+            "title": "¿Funciona el portal de campo sin internet?",
+            "body": "Sí, para ejecutores que ya abrieron el QR de unidad en línea. Iniciar y cerrar tareas, crear un aviso (con fotos) y un control de unidad quedan en el dispositivo hasta que vuelva la conexión; después se envían a WinProx. El fichaje en Clock Point sigue en línea y exige un nuevo escaneo QR. Los avisadores públicos necesitan cobertura para enviar. No hay una app aparte que instalar.",
+            "summary": "QR de unidad: una página ya abierta sigue usable sin cobertura para tareas, avisos y controles; el fichaje Clock Point sigue en línea."
         }
     }
 }

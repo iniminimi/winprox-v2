@@ -24,7 +24,7 @@
         },
         "solution": {
             "title": "Solution",
-            "body": "Scannez le QR de l'unité pour signaler (avec photos). Le personnel approuve (le public reste flouté jusqu'alors). Les tâches vont aux équipes opérationnelles. Les ouvriers agissent via Clock Point + QR unité sur site."
+            "body": "Scannez le QR de l'unité pour signaler (avec photos). Le personnel approuve (le public reste flouté jusqu'alors). Les tâches vont aux équipes opérationnelles. Les ouvriers agissent via Clock Point + QR unité sur site ; un QR déjà ouvert reste utilisable hors réseau."
         },
         "capabilities": {
             "title": "Fonctionnalités",
@@ -34,7 +34,7 @@
                 "Plusieurs tâches par signalement, chacune assignée à une équipe",
                 "Calendrier, briefing et suivi via tableau de bord",
                 "Équipes, ouvriers et flux teamleader sur le terrain",
-                "Modèle de départ sur le tableau de bord (hôtel, hôpital, industrie, commune, gestion immobilière ou gestion de flotte)"
+                "Modèle de départ sur le tableau de bord (travail sur site, hôtel, hôpital, industrie, commune, gestion immobilière ou gestion de flotte)"
             ]
         },
         "audience": {
@@ -130,12 +130,13 @@
         },
         "solution": {
             "title": "Solution",
-            "body": "QR unité pour signaler et tâches sur cette unité. Clock Point QR pour la connexion ouvrier (et Time). QR emplacement pour un lien d'emplacement général. Tout dans le navigateur."
+            "body": "QR unité pour signaler et tâches sur cette unité. Clock Point QR pour la connexion ouvrier (et Time). QR emplacement pour un lien d'emplacement général. Tout dans le navigateur. Un QR déjà ouvert reste utilisable hors réseau."
         },
         "capabilities": {
             "title": "Fonctionnalités",
             "items": [
                 "QR unité : signalement + tâches ouvrier sur site",
+                "QR unité : page déjà ouverte utilisable hors réseau",
                 "Clock Point QR : connexion / pointage entrée",
                 "Clock Point : tuile liste d’évacuation des personnes pointées",
                 "QR emplacement et planches d'autocollants (p. ex. Avery)",

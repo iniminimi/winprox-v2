@@ -315,7 +315,7 @@ return [
             'page' => 'portal.unit',
         ],
         [
-            'patterns' => ['uitvoerders portaal', 'uitvoerder portaal'],
+            'patterns' => ['uitvoerders portaal', 'uitvoerder portaal', 'offline', 'zonder bereik', 'without coverage'],
             'page' => 'portal.team',
         ],
         [

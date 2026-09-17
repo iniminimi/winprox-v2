@@ -11,6 +11,7 @@
     <li>seguridad (incluido el token CSRF o XSRF).</li>
     <li>preferencia de idioma y funcionalidad de inicio de sesión, incluido el estado temporal para Iniciar sesión con Microsoft (a través de la sesión).</li>
     <li>portal Clock Point: una cookie de dispositivo esencial (unos 12 meses) para reconocer un móvil por trabajador.</li>
+    <li>trabajo de campo en el QR de unidad: almacenamiento local en el dispositivo (IndexedDB/localStorage) para tareas, avisos y fotos aún no enviados, más un service worker pequeño para que una página ya abierta siga usable sin cobertura. Sin seguimiento.</li>
 </ul>
 
 <p>

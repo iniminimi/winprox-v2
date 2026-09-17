@@ -24,7 +24,7 @@
         },
         "solution": {
             "title": "Oplossing",
-            "body": "Scan de unit-QR om te melden (met foto's). Beheer keurt goed (publiek blijft geblurd tot dan). Taken gaan naar operationele teams. Uitvoerders werken via Clock Point + unit-QR ter plaatse."
+            "body": "Scan de unit-QR om te melden (met foto's). Beheer keurt goed (publiek blijft geblurd tot dan). Taken gaan naar operationele teams. Uitvoerders werken via Clock Point + unit-QR ter plaatse; een geladen unit-QR blijft bruikbaar zonder bereik."
         },
         "capabilities": {
             "title": "Functies",
@@ -34,7 +34,7 @@
                 "Meerdere taken per melding, elk aan één team",
                 "Kalender, briefing en dashboardopvolging",
                 "Teams, workers en teamleader-flows op de werkvloer",
-                "Starttemplate op het dashboard (hotel, ziekenhuis, industrie, gemeente, vastgoedbeheer of fleet management)"
+                "Starttemplate op het dashboard (werken op locatie, hotel, ziekenhuis, industrie, gemeente, vastgoedbeheer of fleet management)"
             ]
         },
         "audience": {
@@ -130,12 +130,13 @@
         },
         "solution": {
             "title": "Oplossing",
-            "body": "Unit-QR voor melden en taken op die unit. Clock Point-QR voor worker-login (en Time). Locatie-QR voor een algemene locatielink. Alles in de browser."
+            "body": "Unit-QR voor melden en taken op die unit. Clock Point-QR voor worker-login (en Time). Locatie-QR voor een algemene locatielink. Alles in de browser. Een geladen unit-QR blijft bruikbaar zonder bereik."
         },
         "capabilities": {
             "title": "Functies",
             "items": [
                 "Unit-QR: melden + worker-taken ter plaatse",
+                "Unit-QR: geladen pagina bruikbaar zonder bereik",
                 "Clock Point-QR: aanmelden / inklokken",
                 "Clock Point: tegel Evacuatielijst van ingeklokten",
                 "Locatie-QR en stickerbladen (o.a. Avery)",

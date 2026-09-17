@@ -9,6 +9,7 @@ return [
         'pricing',
         'qr_code',
         'reporter_portal',
+        'field_offline',
         'moderation',
         'photos',
         'time_clock',
