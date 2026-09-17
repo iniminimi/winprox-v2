@@ -78,15 +78,20 @@
         "welcome_intro": "Volg deze volgorde bij de eerste inrichting, of klik op de knop \":button\". Eén team is genoeg om te starten. Time (prikklok) is optioneel; Clock Point blijft de aanmeld-QR.",
         "modal_title": "Op weg geholpen worden",
         "intro": "We maken een kleine voorbeeldinrichting aan zodat je WinProx meteen kunt uitproberen. Geen meldingen of taken — alleen structuur.",
-        "will_create": "Dit komt in je werkruimte:",
-        "will_create_items": "twee teams, enkele categorieën, één locatie en drie units. De namen worden in alle talen opgeslagen.",
         "rename_note": "Teams, categorieën, locaties en units kun je altijd hernoemen.",
         "issues_note": "Zodra er meldingen op een unit staan, kan die unit alleen nog gedeactiveerd worden (niet verwijderd). Het starttemplate blijft dan bestaan.",
         "choose_type": "Kies je type organisatie",
+        "choose_size": "Hoe groot is het bedrijf?",
+        "sizes": {
+            "small": "1–5 werknemers",
+            "medium": "6–20 werknemers",
+            "large": "21–100 werknemers"
+        },
         "create": "Aanmaken",
         "result_title": "Starttemplate aangemaakt",
         "dismiss_result": "Sluiten",
         "result_type": "Type: :type",
+        "result_size": "Grootte: :size",
         "result_teams": "Teams",
         "result_categories": "Categorieën",
         "result_location": "Locatie",
@@ -112,7 +117,8 @@
             "already_applied": "Er is al een starttemplate geladen.",
             "not_empty": "Je hebt al teams, categorieën of units. Het starttemplate is alleen als die nog leeg zijn. Een locatie zonder units wordt vervangen.",
             "missing": "Er is geen starttemplate om te verwijderen.",
-            "has_issues": "Er zijn al meldingen of uitvoerders. Units kun je dan alleen nog deactiveren; het starttemplate blijft bestaan. Hernoemen kan altijd."
+            "has_issues": "Er zijn al meldingen of uitvoerders. Units kun je dan alleen nog deactiveren; het starttemplate blijft bestaan. Hernoemen kan altijd.",
+            "size_required": "Kies de grootte van het bedrijf."
         }
     }
 }

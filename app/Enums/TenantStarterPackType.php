@@ -6,6 +6,7 @@ namespace App\Enums;
 
 enum TenantStarterPackType: string
 {
+    case OnSite = 'on_site';
     case Hotel = 'hotel';
     case Hospital = 'hospital';
     case Industry = 'industry';
@@ -16,5 +17,13 @@ enum TenantStarterPackType: string
     public function labelKey(): string
     {
         return 'starter_pack.types.'.$this->value;
+    }
+
+    public function asksCompanySize(): bool
+    {
+        return match ($this) {
+            self::OnSite, self::Hotel, self::RealEstate => true,
+            default => false,
+        };
     }
 }

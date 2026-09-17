@@ -11,6 +11,24 @@ return [
         'inspection_rounds' => true,
         'unit_measurements' => true,
     ],
+    'on_site' => [
+        'work_menu' => [
+            'calendar' => true,
+            'reservations' => false,
+            'inspection_rounds' => true,
+            'unit_measurements' => false,
+        ],
+        'teams' => [
+            'crew' => ['categories' => ['rooms', 'sanitary', 'technical']],
+            'planning' => ['categories' => ['rooms']],
+        ],
+        'categories' => ['rooms', 'sanitary', 'technical'],
+        'units' => [
+            ['key' => 'floor_0', 'category' => 'rooms'],
+            ['key' => 'sanitary', 'category' => 'sanitary'],
+            ['key' => 'floor_1', 'category' => 'rooms'],
+        ],
+    ],
     'hotel' => [
         'work_menu' => 'all_work_menu_on',
         'teams' => [

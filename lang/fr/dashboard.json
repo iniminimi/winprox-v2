@@ -78,15 +78,20 @@
         "welcome_intro": "Suivez cet ordre pour la première configuration, ou cliquez sur le bouton « :button ». Une équipe suffit pour démarrer. Time (pointeuse) est optionnel ; Clock Point reste le QR d’identification.",
         "modal_title": "Un coup de pouce pour démarrer",
         "intro": "Nous créons une petite configuration d’exemple pour essayer WinProx tout de suite. Pas de signalements ni de tâches — uniquement la structure.",
-        "will_create": "Ceci sera ajouté à votre espace :",
-        "will_create_items": "deux équipes, quelques catégories, un lieu et trois units. Les noms sont enregistrés dans toutes les langues.",
         "rename_note": "Vous pouvez toujours renommer les équipes, catégories, lieux et units.",
         "issues_note": "Dès qu’un unit a des signalements, il ne peut plus qu’être désactivé (pas supprimé). Le modèle de départ reste alors en place.",
         "choose_type": "Choisissez votre type d’organisation",
+        "choose_size": "Quelle est la taille de l'entreprise ?",
+        "sizes": {
+            "small": "1–5 employés",
+            "medium": "6–20 employés",
+            "large": "21–100 employés"
+        },
         "create": "Créer",
         "result_title": "Modèle de départ créé",
         "dismiss_result": "Fermer",
         "result_type": "Type : :type",
+        "result_size": "Taille : :size",
         "result_teams": "Équipes",
         "result_categories": "Catégories",
         "result_location": "Lieu",
@@ -112,7 +117,8 @@
             "already_applied": "Un modèle de départ est déjà chargé.",
             "not_empty": "Vous avez déjà des équipes, catégories ou units. Le modèle de départ n'est disponible que si ceux-ci sont vides. Un lieu sans units est remplacé.",
             "missing": "Il n’y a pas de modèle de départ à supprimer.",
-            "has_issues": "Il y a déjà des signalements ou des exécutants. Les units ne peuvent alors plus qu’être désactivés ; le modèle reste. Vous pouvez toujours renommer."
+            "has_issues": "Il y a déjà des signalements ou des exécutants. Les units ne peuvent alors plus qu’être désactivés ; le modèle reste. Vous pouvez toujours renommer.",
+            "size_required": "Choisissez la taille de l'entreprise."
         }
     }
 }

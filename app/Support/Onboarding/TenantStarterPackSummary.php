@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support\Onboarding;
 
+use App\Enums\TenantStarterPackSize;
 use App\Enums\TenantStarterPackType;
 use App\Models\Category;
 use App\Models\InternalTeam;
@@ -22,6 +23,7 @@ final readonly class TenantStarterPackSummary
      */
     public function __construct(
         public TenantStarterPackType $type,
+        public ?TenantStarterPackSize $size,
         public array $teamNames,
         public array $categoryNames,
         public string $locationName,
@@ -86,6 +88,7 @@ final readonly class TenantStarterPackSummary
 
         return new self(
             type: $type,
+            size: TenantStarterPackSize::tryFrom((string) ($payload['size'] ?? '')),
             teamNames: $teamNames,
             categoryNames: $categoryNames,
             locationName: $location?->localizedName() ?? '',

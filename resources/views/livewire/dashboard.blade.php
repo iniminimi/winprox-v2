@@ -15,6 +15,9 @@
                     @endif
                 </div>
                 <p class="wp-muted">{{ __('dashboard.starter_pack.result_type', ['type' => __($starterPackSummary->type->labelKey())]) }}</p>
+                @if ($starterPackSummary->size)
+                    <p class="wp-muted">{{ __('dashboard.starter_pack.result_size', ['size' => __($starterPackSummary->size->labelKey())]) }}</p>
+                @endif
                 <div class="wp-stack-tight">
                     <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_teams') }}</strong> — {{ implode(', ', $starterPackSummary->teamNames) }}</p>
                     <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.result_categories') }}</strong> — {{ implode(', ', $starterPackSummary->categoryNames) }}</p>
@@ -312,7 +315,6 @@
                 </div>
 
                 <p class="wp-muted">{{ __('dashboard.starter_pack.intro') }}</p>
-                <p class="wp-text-body">{{ __('dashboard.starter_pack.will_create') }} {{ __('dashboard.starter_pack.will_create_items') }}</p>
                 <p class="wp-muted">{{ __('dashboard.starter_pack.rename_note') }}</p>
                 <p class="wp-muted">{{ __('dashboard.starter_pack.issues_note') }}</p>
 
@@ -329,6 +331,22 @@
                     @endforeach
                     @error('starterPackType') <p class="wp-error">{{ $message }}</p> @enderror
                 </fieldset>
+
+                @if ($starterPackAsksSize)
+                    <fieldset class="wp-stack-tight">
+                        <legend class="wp-label">{{ __('dashboard.starter_pack.choose_size') }}</legend>
+                        @foreach ($starterPackSizes as $size)
+                            <label class="wp-check wp-check--boxed">
+                                <input type="radio"
+                                       name="starterPackSize"
+                                       value="{{ $size->value }}"
+                                       wire:model.live="starterPackSize">
+                                <span>{{ __($size->labelKey()) }}</span>
+                            </label>
+                        @endforeach
+                        @error('starterPackSize') <p class="wp-error">{{ $message }}</p> @enderror
+                    </fieldset>
+                @endif
 
                 @if ($starterPackPreview)
                     <div class="wp-stack-tight">

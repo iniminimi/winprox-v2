@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support\Onboarding;
 
+use App\Enums\TenantStarterPackSize;
 use App\Enums\TenantStarterPackType;
 use App\Models\Tenant;
 use App\Support\Translation\LocaleSupport;
@@ -19,14 +20,16 @@ final class TenantStarterPackCatalog
         'inspection_rounds' => 'settings.work_menu.inspection_rounds_label',
         'unit_measurements' => 'settings.work_menu.unit_measurements_label',
     ];
+
     /**
      * @return array{
+     *     work_menu?: mixed,
      *     teams: array<string, array{categories: list<string>}>,
      *     categories: list<string>,
      *     units: list<array{key: string, category: string}>
      * }
      */
-    public static function definition(TenantStarterPackType $type): array
+    public static function definition(TenantStarterPackType $type, ?TenantStarterPackSize $size = null): array
     {
         $pack = config('tenant_starter_packs.'.$type->value);
 
@@ -34,7 +37,7 @@ final class TenantStarterPackCatalog
             throw new InvalidArgumentException('Unknown tenant starter pack: '.$type->value);
         }
 
-        return $pack;
+        return self::applySizeOverlay($pack, self::resolvedSize($type, $size));
     }
 
     public static function name(string $key, string $locale): string
@@ -73,9 +76,9 @@ final class TenantStarterPackCatalog
      *     unit_measurements: bool,
      * }
      */
-    public static function workMenuFlags(TenantStarterPackType $type): array
+    public static function workMenuFlags(TenantStarterPackType $type, ?TenantStarterPackSize $size = null): array
     {
-        $pack = self::definition($type);
+        $pack = self::definition($type, TenantStarterPackSize::Large);
         $menu = $pack['work_menu'] ?? 'all_work_menu_on';
 
         if (is_string($menu)) {
@@ -86,12 +89,28 @@ final class TenantStarterPackCatalog
             $menu = $resolved;
         }
 
-        return [
+        $flags = [
             'calendar' => (bool) ($menu['calendar'] ?? true),
             'reservations' => (bool) ($menu['reservations'] ?? true),
             'inspection_rounds' => (bool) ($menu['inspection_rounds'] ?? true),
             'unit_measurements' => (bool) ($menu['unit_measurements'] ?? true),
         ];
+
+        return match (self::resolvedSize($type, $size)) {
+            TenantStarterPackSize::Small => [
+                'calendar' => false,
+                'reservations' => false,
+                'inspection_rounds' => false,
+                'unit_measurements' => false,
+            ],
+            TenantStarterPackSize::Medium => [
+                'calendar' => true,
+                'reservations' => false,
+                'inspection_rounds' => false,
+                'unit_measurements' => false,
+            ],
+            default => $flags,
+        };
     }
 
     /**
@@ -102,9 +121,9 @@ final class TenantStarterPackCatalog
      *     work_menu_unit_measurements_enabled: bool,
      * }
      */
-    public static function workMenuDefaults(TenantStarterPackType $type): array
+    public static function workMenuDefaults(TenantStarterPackType $type, ?TenantStarterPackSize $size = null): array
     {
-        $flags = self::workMenuFlags($type);
+        $flags = self::workMenuFlags($type, $size);
 
         return [
             'work_menu_calendar_enabled' => $flags['calendar'],
@@ -177,9 +196,9 @@ final class TenantStarterPackCatalog
      *     work_menu: list<array{label: string, enabled: bool}>
      * }
      */
-    public static function preview(TenantStarterPackType $type, string $locale): array
+    public static function preview(TenantStarterPackType $type, string $locale, ?TenantStarterPackSize $size = null): array
     {
-        $definition = self::definition($type);
+        $definition = self::definition($type, $size);
         $locale = LocaleSupport::normalize($locale);
 
         $teams = [];
@@ -202,7 +221,76 @@ final class TenantStarterPackCatalog
             'categories' => $categories,
             'location' => self::name(self::locationNameKey($type), $locale),
             'units' => $units,
-            'work_menu' => self::workMenuItems(self::workMenuFlags($type), $locale),
+            'work_menu' => self::workMenuItems(self::workMenuFlags($type, $size), $locale),
         ];
+    }
+
+    private static function resolvedSize(TenantStarterPackType $type, ?TenantStarterPackSize $size): ?TenantStarterPackSize
+    {
+        if (! $type->asksCompanySize()) {
+            return null;
+        }
+
+        return $size ?? TenantStarterPackSize::Large;
+    }
+
+    /**
+     * @param  array{
+     *     work_menu?: mixed,
+     *     teams: array<string, array{categories: list<string>}>,
+     *     categories: list<string>,
+     *     units: list<array{key: string, category: string}>
+     * }  $pack
+     * @return array{
+     *     work_menu?: mixed,
+     *     teams: array<string, array{categories: list<string>}>,
+     *     categories: list<string>,
+     *     units: list<array{key: string, category: string}>
+     * }
+     */
+    private static function applySizeOverlay(array $pack, ?TenantStarterPackSize $size): array
+    {
+        $limits = match ($size) {
+            TenantStarterPackSize::Small => ['teams' => 1, 'categories' => 2, 'units' => 2],
+            TenantStarterPackSize::Medium => ['teams' => 1, 'categories' => 3, 'units' => 3],
+            default => null,
+        };
+
+        if ($limits === null) {
+            return $pack;
+        }
+
+        $categories = array_values(array_slice($pack['categories'], 0, $limits['categories']));
+        $categorySet = array_fill_keys($categories, true);
+
+        $teams = [];
+        foreach ($pack['teams'] as $teamKey => $teamDef) {
+            if (count($teams) >= $limits['teams']) {
+                break;
+            }
+            $teamCategories = array_values(array_filter(
+                $teamDef['categories'] ?? [],
+                fn (mixed $category): bool => is_string($category) && isset($categorySet[$category]),
+            ));
+            $teams[(string) $teamKey] = ['categories' => $teamCategories];
+        }
+
+        $units = [];
+        foreach ($pack['units'] as $unit) {
+            if (count($units) >= $limits['units']) {
+                break;
+            }
+            $category = (string) ($unit['category'] ?? '');
+            if (! isset($categorySet[$category])) {
+                continue;
+            }
+            $units[] = $unit;
+        }
+
+        $pack['teams'] = $teams;
+        $pack['categories'] = $categories;
+        $pack['units'] = $units;
+
+        return $pack;
     }
 }

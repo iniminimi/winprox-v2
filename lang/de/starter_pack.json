@@ -1,5 +1,6 @@
 {
     "types": {
+        "on_site": "Arbeiten vor Ort (Reinigungs- oder Bauunternehmen, …)",
         "hotel": "Hotel",
         "hospital": "Krankenhaus",
         "industry": "Industrie",
@@ -8,6 +9,23 @@
         "fleet": "Fuhrparkmanagement"
     },
     "packs": {
+        "on_site": {
+            "teams": {
+                "crew": "Kolonne",
+                "planning": "Disposition"
+            },
+            "categories": {
+                "rooms": "Räume",
+                "sanitary": "Sanitär",
+                "technical": "Technik"
+            },
+            "location": "Beispielkunde",
+            "units": {
+                "floor_0": "Erdgeschoss",
+                "floor_1": "1. Obergeschoss",
+                "sanitary": "Sanitär"
+            }
+        },
         "hotel": {
             "teams": {
                 "cleaning": "Reinigung",

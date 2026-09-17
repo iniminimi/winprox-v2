@@ -1,5 +1,6 @@
 {
     "types": {
+        "on_site": "Travail sur site (entreprises de nettoyage ou de construction, …)",
         "hotel": "Hôtel",
         "hospital": "Hôpital",
         "industry": "Industrie",
@@ -8,6 +9,23 @@
         "fleet": "Gestion de flotte"
     },
     "packs": {
+        "on_site": {
+            "teams": {
+                "crew": "Équipe",
+                "planning": "Planning"
+            },
+            "categories": {
+                "rooms": "Espaces",
+                "sanitary": "Sanitaires",
+                "technical": "Technique"
+            },
+            "location": "Client exemple",
+            "units": {
+                "floor_0": "Rez-de-chaussée",
+                "floor_1": "Étage 1",
+                "sanitary": "Sanitaires"
+            }
+        },
         "hotel": {
             "teams": {
                 "cleaning": "Nettoyage",

@@ -10,6 +10,7 @@ use App\Actions\Onboarding\ApplyTenantStarterPackAction;
 use App\Actions\Onboarding\DismissTenantStarterPackResultAction;
 use App\Actions\Onboarding\RemoveTenantStarterPackAction;
 use App\Data\Onboarding\ApplyTenantStarterPackData;
+use App\Enums\TenantStarterPackSize;
 use App\Enums\TenantStarterPackType;
 use App\Http\Requests\Onboarding\ApplyTenantStarterPackRequest;
 use App\Models\Tenant;
@@ -36,12 +37,15 @@ class Dashboard extends Component
 
     public string $starterPackType = '';
 
+    public string $starterPackSize = '';
+
     public function openStarterPackModal(): void
     {
         $this->authorize('applyStarterPack', $this->starterPackTenant());
 
         $this->resetValidation();
         $this->starterPackType = '';
+        $this->starterPackSize = '';
         $this->showStarterPackModal = true;
     }
 
@@ -49,7 +53,17 @@ class Dashboard extends Component
     {
         $this->showStarterPackModal = false;
         $this->starterPackType = '';
+        $this->starterPackSize = '';
         $this->resetValidation();
+    }
+
+    public function updatedStarterPackType(): void
+    {
+        $type = TenantStarterPackType::tryFrom($this->starterPackType);
+        if ($type === null || ! $type->asksCompanySize()) {
+            $this->starterPackSize = '';
+        }
+        $this->resetValidation('starterPackSize');
     }
 
     public function applyStarterPack(ApplyTenantStarterPackAction $apply): void
@@ -59,7 +73,7 @@ class Dashboard extends Component
         $this->authorize('applyStarterPack', $tenant);
 
         $validated = $this->validate(
-            ApplyTenantStarterPackRequest::ruleSet(),
+            ApplyTenantStarterPackRequest::ruleSet($this->starterPackType),
             ApplyTenantStarterPackRequest::messageSet(),
         );
 
@@ -144,10 +158,14 @@ class Dashboard extends Component
             && $user->can('applyStarterPack', $tenant);
 
         $starterPackType = TenantStarterPackType::tryFrom($this->starterPackType);
+        $starterPackSize = TenantStarterPackSize::tryFrom($this->starterPackSize);
+        $starterPackAsksSize = $starterPackType?->asksCompanySize() ?? false;
         $starterPackPreview = $starterPackType instanceof TenantStarterPackType
+            && (! $starterPackAsksSize || $starterPackSize instanceof TenantStarterPackSize)
             ? TenantStarterPackCatalog::preview(
                 $starterPackType,
                 LocaleSupport::normalize($user?->locale ?? app()->getLocale()),
+                $starterPackSize,
             )
             : null;
 
@@ -170,6 +188,8 @@ class Dashboard extends Component
             'canDismissStarterPackResult' => $canDismissStarterPackResult,
             'starterPackSummary' => $starterPackSummary,
             'starterPackTypes' => TenantStarterPackType::cases(),
+            'starterPackSizes' => TenantStarterPackSize::cases(),
+            'starterPackAsksSize' => $starterPackAsksSize,
             'starterPackPreview' => $starterPackPreview,
             'starterPackUnitsHref' => $starterPackSummary !== null
                 ? TenantOnboardingState::unitsOnboardingHref()

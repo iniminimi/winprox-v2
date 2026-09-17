@@ -1,5 +1,6 @@
 {
     "types": {
+        "on_site": "Werken op locatie (schoonmaak- of bouwbedrijven, …)",
         "hotel": "Hotel",
         "hospital": "Ziekenhuis",
         "industry": "Industrie",
@@ -8,6 +9,23 @@
         "fleet": "Fleet management"
     },
     "packs": {
+        "on_site": {
+            "teams": {
+                "crew": "Ploeg",
+                "planning": "Planning"
+            },
+            "categories": {
+                "rooms": "Ruimtes",
+                "sanitary": "Sanitair",
+                "technical": "Technisch"
+            },
+            "location": "Voorbeeldklant",
+            "units": {
+                "floor_0": "Gelijkvloers",
+                "floor_1": "Verdieping 1",
+                "sanitary": "Sanitair"
+            }
+        },
         "hotel": {
             "teams": {
                 "cleaning": "Schoonmaak",

@@ -1,5 +1,6 @@
 {
     "types": {
+        "on_site": "Lavoro in sede cliente (imprese di pulizia o edili, …)",
         "hotel": "Hotel",
         "hospital": "Ospedale",
         "industry": "Industria",
@@ -8,6 +9,23 @@
         "fleet": "Gestione flotta"
     },
     "packs": {
+        "on_site": {
+            "teams": {
+                "crew": "Squadra",
+                "planning": "Pianificazione"
+            },
+            "categories": {
+                "rooms": "Spazi",
+                "sanitary": "Servizi igienici",
+                "technical": "Tecnico"
+            },
+            "location": "Cliente di esempio",
+            "units": {
+                "floor_0": "Piano terra",
+                "floor_1": "Piano 1",
+                "sanitary": "Servizi igienici"
+            }
+        },
         "hotel": {
             "teams": {
                 "cleaning": "Pulizie",

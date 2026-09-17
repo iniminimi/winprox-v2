@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Actions\Onboarding;
 
-use App\Actions\Team\UpdateTenantWorkMenuAction;
 use App\Actions\Categories\SyncCategoryTeamsAction;
 use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\CreateUnitAction;
 use App\Actions\Locations\DeleteLocationAction;
 use App\Actions\Team\CreateTeamAction;
+use App\Actions\Team\UpdateTenantWorkMenuAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Data\Categories\SyncCategoryTeamsData;
 use App\Data\Onboarding\ApplyTenantStarterPackData;
@@ -65,7 +65,7 @@ class ApplyTenantStarterPackAction
     {
         $locale = LocaleSupport::normalize($data->locale);
         $this->assertEligible($tenant, $locale);
-        $definition = TenantStarterPackCatalog::definition($data->type);
+        $definition = TenantStarterPackCatalog::definition($data->type, $data->size);
 
         $payload = DB::transaction(function () use ($tenant, $data, $actor, $locale, $definition): array {
             $tenantId = (int) $tenant->id;
@@ -155,12 +155,13 @@ class ApplyTenantStarterPackAction
 
             $this->updateWorkMenu->handle(
                 $tenant,
-                TenantStarterPackCatalog::workMenuDefaults($data->type),
+                TenantStarterPackCatalog::workMenuDefaults($data->type, $data->size),
                 $actorId,
             );
 
             $payload = [
                 'type' => $data->type->value,
+                'size' => $data->size?->value,
                 'locale' => $locale,
                 'team_ids' => array_values(array_map(
                     fn (InternalTeam $team): int => (int) $team->id,

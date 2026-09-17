@@ -78,15 +78,20 @@
         "welcome_intro": "Siga este orden en la primera configuración, o pulse el botón «:button». Un equipo basta para empezar. Time (reloj de fichar) es opcional; Clock Point sigue siendo el QR de identificación.",
         "modal_title": "Ayuda para empezar",
         "intro": "Crearemos una configuración de ejemplo pequeña para que pruebes WinProx de inmediato. Sin incidencias ni tareas: solo estructura.",
-        "will_create": "Esto se añadirá a tu espacio de trabajo:",
-        "will_create_items": "dos equipos, algunas categorías, una ubicación y tres units. Los nombres se guardan en todos los idiomas.",
         "rename_note": "Siempre puedes cambiar el nombre de equipos, categorías, ubicaciones y units.",
         "issues_note": "Cuando una unit tiene incidencias, solo se puede desactivar (no eliminar). La plantilla inicial permanece.",
         "choose_type": "Elige tu tipo de organización",
+        "choose_size": "¿Cuál es el tamaño de la empresa?",
+        "sizes": {
+            "small": "1–5 empleados",
+            "medium": "6–20 empleados",
+            "large": "21–100 empleados"
+        },
         "create": "Crear",
         "result_title": "Plantilla inicial creada",
         "dismiss_result": "Cerrar",
         "result_type": "Tipo: :type",
+        "result_size": "Tamaño: :size",
         "result_teams": "Equipos",
         "result_categories": "Categorías",
         "result_location": "Ubicación",
@@ -112,7 +117,8 @@
             "already_applied": "Ya hay una plantilla inicial cargada.",
             "not_empty": "Ya tienes equipos, categorías o units. La plantilla inicial solo está disponible si eso está vacío. Una ubicación sin units se sustituye.",
             "missing": "No hay plantilla inicial que eliminar.",
-            "has_issues": "Ya hay incidencias o trabajadores. Entonces las units solo se pueden desactivar; la plantilla permanece. Siempre puedes cambiar el nombre."
+            "has_issues": "Ya hay incidencias o trabajadores. Entonces las units solo se pueden desactivar; la plantilla permanece. Siempre puedes cambiar el nombre.",
+            "size_required": "Elige el tamaño de la empresa."
         }
     }
 }

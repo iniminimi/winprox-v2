@@ -6,6 +6,7 @@ use App\Actions\Onboarding\ApplyTenantStarterPackAction;
 use App\Actions\Onboarding\RemoveTenantStarterPackAction;
 use App\Data\Onboarding\ApplyTenantStarterPackData;
 use App\Enums\InternalTeamTranslationStatus;
+use App\Enums\TenantStarterPackSize;
 use App\Enums\TenantStarterPackType;
 use App\Enums\UnitTranslationStatus;
 use App\Livewire\Dashboard;
@@ -24,6 +25,7 @@ use App\Support\Platform\SupportTenantContext;
 use App\Support\Tenancy;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\ValidationException;
 use Livewire\Livewire;
 
 afterEach(function () {
@@ -57,6 +59,7 @@ it('maakt een hotel-starttemplate met namen in alle talen', function () {
     $tenant->refresh();
 
     expect($tenant->starter_pack_key)->toBe('hotel')
+        ->and($payload['size'])->toBe(TenantStarterPackSize::Large->value)
         ->and($payload['unit_ids'])->toHaveCount(3)
         ->and(InternalTeam::query()->count())->toBe(2)
         ->and(Category::query()->count())->toBe(3)
@@ -153,7 +156,7 @@ it('weigert een starttemplate wanneer de werkruimte niet leeg is', function () {
         ApplyTenantStarterPackData::fromValidated(['starterPackType' => 'industry'], 'nl'),
         $admin,
     );
-})->throws(\Illuminate\Validation\ValidationException::class);
+})->throws(ValidationException::class);
 
 it('vervangt een lege restlocatie bij het laden van een starttemplate', function () {
     [$tenant, $admin] = setupStarterPackAdmin();
@@ -216,7 +219,7 @@ it('houdt het starttemplate wanneer er al een melding op een unit staat', functi
     ]);
 
     expect(fn () => app(RemoveTenantStarterPackAction::class)->handle($tenant->fresh(), $admin))
-        ->toThrow(\Illuminate\Validation\ValidationException::class);
+        ->toThrow(ValidationException::class);
 
     $tenant->refresh();
     expect($tenant->starter_pack_key)->toBe('hospital')
@@ -243,6 +246,7 @@ it('toont werkmenu-preview in starttemplate-modal', function () {
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
         ->set('starterPackType', TenantStarterPackType::RealEstate->value)
+        ->set('starterPackSize', TenantStarterPackSize::Large->value)
         ->assertSee(__('dashboard.starter_pack.preview_work_menu'))
         ->assertSee(__('settings.work_menu.reservations_label'))
         ->assertSee(__('dashboard.starter_pack.preview_work_menu_off'))
@@ -265,6 +269,7 @@ it('laadt een starttemplate via het dashboard en toont het resultaat', function 
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
         ->set('starterPackType', TenantStarterPackType::RealEstate->value)
+        ->set('starterPackSize', TenantStarterPackSize::Large->value)
         ->call('applyStarterPack')
         ->assertHasNoErrors()
         ->assertSee(__('dashboard.starter_pack.result_title'))
@@ -303,6 +308,7 @@ it('toont de starttemplate-knop voor een superuser in support view', function ()
         ->assertSee(__('dashboard.starter_pack.help_button'))
         ->call('openStarterPackModal')
         ->set('starterPackType', TenantStarterPackType::Hotel->value)
+        ->set('starterPackSize', TenantStarterPackSize::Large->value)
         ->call('applyStarterPack')
         ->assertHasNoErrors()
         ->assertSee(__('dashboard.starter_pack.result_title'));
@@ -315,6 +321,7 @@ it('verbergt de starttemplate-resultaatkaart na sluiten', function () {
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
         ->set('starterPackType', TenantStarterPackType::Hotel->value)
+        ->set('starterPackSize', TenantStarterPackSize::Large->value)
         ->call('applyStarterPack')
         ->assertHasNoErrors()
         ->assertSeeHtml('wire:click="dismissStarterPackResult"')
@@ -335,6 +342,7 @@ it('verbergt de starttemplate-resultaatkaart na de zichtbaarheidsperiode op het 
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
         ->set('starterPackType', TenantStarterPackType::Hotel->value)
+        ->set('starterPackSize', TenantStarterPackSize::Large->value)
         ->call('applyStarterPack')
         ->assertHasNoErrors()
         ->assertSeeHtml('wire:click="dismissStarterPackResult"');
@@ -350,4 +358,95 @@ it('verbergt de starttemplate-resultaatkaart na de zichtbaarheidsperiode op het 
         ->assertDontSeeHtml('wire:click="dismissStarterPackResult"');
 
     Carbon::setTestNow();
+});
+
+it('maakt een werken-op-locatie-starttemplate voor een kleine ploeg', function () {
+    [$tenant, $admin] = setupStarterPackAdmin('nl');
+
+    $payload = app(ApplyTenantStarterPackAction::class)->handle(
+        $tenant,
+        ApplyTenantStarterPackData::fromValidated([
+            'starterPackType' => 'on_site',
+            'starterPackSize' => 'small',
+        ], 'nl'),
+        $admin,
+    );
+
+    $tenant->refresh();
+
+    expect($tenant->starter_pack_key)->toBe('on_site')
+        ->and($payload['size'])->toBe('small')
+        ->and($payload['unit_ids'])->toHaveCount(2)
+        ->and(InternalTeam::query()->count())->toBe(1)
+        ->and(InternalTeam::query()->where('name', 'Ploeg')->exists())->toBeTrue()
+        ->and(InternalTeam::query()->where('name', 'Planning')->exists())->toBeFalse()
+        ->and(Category::query()->count())->toBe(2)
+        ->and(Location::query()->where('name', 'Voorbeeldklant')->exists())->toBeTrue()
+        ->and(Unit::query()->count())->toBe(2)
+        ->and($tenant->workMenuCalendarEnabled())->toBeFalse()
+        ->and($tenant->workMenuReservationsEnabled())->toBeFalse()
+        ->and($tenant->workMenuInspectionRoundsEnabled())->toBeFalse()
+        ->and($tenant->workMenuUnitMeasurementsEnabled())->toBeFalse();
+});
+
+it('toont small-werkmenu-preview voor werken op locatie', function () {
+    $preview = TenantStarterPackCatalog::preview(
+        TenantStarterPackType::OnSite,
+        'nl',
+        TenantStarterPackSize::Small,
+    );
+
+    expect($preview['teams'])->toBe(['Ploeg'])
+        ->and($preview['location'])->toBe('Voorbeeldklant')
+        ->and($preview['units'])->toHaveCount(2);
+
+    $byLabel = collect($preview['work_menu'])->keyBy('label');
+
+    expect($byLabel['Kalender']['enabled'])->toBeFalse()
+        ->and($byLabel['Reserveringen']['enabled'])->toBeFalse()
+        ->and($byLabel['Inspectierondes']['enabled'])->toBeFalse()
+        ->and($byLabel['Unitmetingen']['enabled'])->toBeFalse();
+});
+
+it('toont de grootte-vraag alleen bij hotel, werken op locatie en vastgoed', function () {
+    [, $admin] = setupStarterPackAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->call('openStarterPackModal')
+        ->set('starterPackType', TenantStarterPackType::Hotel->value)
+        ->assertSee(__('dashboard.starter_pack.choose_size'))
+        ->set('starterPackType', TenantStarterPackType::Industry->value)
+        ->assertDontSee(__('dashboard.starter_pack.choose_size'))
+        ->assertSee(__('dashboard.starter_pack.preview_work_menu'));
+});
+
+it('weigert een hotel-starttemplate via het dashboard zonder grootte', function () {
+    [, $admin] = setupStarterPackAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->call('openStarterPackModal')
+        ->set('starterPackType', TenantStarterPackType::Hotel->value)
+        ->call('applyStarterPack')
+        ->assertHasErrors(['starterPackSize']);
+});
+
+it('laadt een klein werken-op-locatie-starttemplate via het dashboard', function () {
+    [, $admin] = setupStarterPackAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->call('openStarterPackModal')
+        ->set('starterPackType', TenantStarterPackType::OnSite->value)
+        ->set('starterPackSize', TenantStarterPackSize::Small->value)
+        ->assertSee('Ploeg')
+        ->assertDontSee('Planning')
+        ->call('applyStarterPack')
+        ->assertHasNoErrors()
+        ->assertSee(__('dashboard.starter_pack.result_title'))
+        ->assertSee(__('starter_pack.types.on_site'))
+        ->assertSee(__('dashboard.starter_pack.sizes.small'))
+        ->assertSee(__('starter_pack.packs.on_site.location'))
+        ->assertSee(__('starter_pack.packs.on_site.teams.crew'));
 });
