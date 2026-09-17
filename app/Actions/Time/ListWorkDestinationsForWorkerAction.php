@@ -21,7 +21,8 @@ use InvalidArgumentException;
 /**
  * Planned destinations for Clock Point "Vandaag": today's dated team work,
  * expanded inspection-round stops, plus today's published roster unit.
- * Does not include undated open tasks.
+ * Undated open tasks stay out, except an undated inspection-round cycle
+ * whose issue.recurrence_next_due_at falls today.
  */
 class ListWorkDestinationsForWorkerAction
 {
@@ -111,7 +112,17 @@ class ListWorkDestinationsForWorkerAction
             ->where(function (Builder $dateScoped) use ($dayStart, $dayEnd) {
                 $dateScoped
                     ->whereDate('scheduled_for', $dayStart->toDateString())
-                    ->orWhereBetween('due_at', [$dayStart, $dayEnd]);
+                    ->orWhereBetween('due_at', [$dayStart, $dayEnd])
+                    ->orWhere(function (Builder $roundDueToday) use ($dayStart, $dayEnd) {
+                        $roundDueToday
+                            ->whereNull('scheduled_for')
+                            ->whereNull('due_at')
+                            ->whereHas('issue', function (Builder $issueQuery) use ($dayStart, $dayEnd) {
+                                $issueQuery
+                                    ->has('roundStops', '>=', 2)
+                                    ->whereBetween('recurrence_next_due_at', [$dayStart, $dayEnd]);
+                            });
+                    });
             })
             ->orderBy('id')
             ->get();

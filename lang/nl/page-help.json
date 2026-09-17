@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Inspectieronde plannen",
-                    "text": "Aparte knop naast Nieuwe melding: kies minstens 2 stops (units), interval en team in één formulier. Maakt een terugkerende melding met ronde-stops en start meteen de eerste taak. Het overzicht van rondes staat onder Werk → Inspectierondes."
+                    "text": "Aparte knop naast Nieuwe melding: kies minstens 2 stops (units), interval en team in één formulier. Maakt een terugkerende melding met ronde-stops en start meteen de eerste taak. Het overzicht van rondes staat onder Werk → Inspectierondes. Met Time + GPS-werkbezoeken verschijnen de stops van vandaag na inklokken onder Clock Point → Vandaag."
                 },
                 {
                     "label": "Interval",
@@ -116,7 +116,7 @@
                 },
                 {
                     "label": "Inspectieronde plannen",
-                    "text": "Kies minstens 2 stops (units), interval en team in één formulier. Maakt een terugkerende melding met ronde-stops en start meteen de eerste taak."
+                    "text": "Kies minstens 2 stops (units), interval en team in één formulier. Maakt een terugkerende melding met ronde-stops en start meteen de eerste taak. Met Time + GPS-werkbezoeken verschijnen de stops van vandaag na inklokken onder Clock Point → Vandaag."
                 },
                 {
                     "label": "Interval",
@@ -1002,7 +1002,7 @@
                 },
                 {
                     "label": "Open taken",
-                    "text": "Na het aanmelden zie je een read-only overzicht van open taken van je team. Om een taak te starten of af te ronden, scan je de unit-QR op locatie."
+                    "text": "Na het aanmelden zie je een read-only overzicht van open taken van je team. Inspectierondes van vandaag staan na inklokken onder Vandaag. Om een taak of unit-check af te ronden, scan je de unit-QR op locatie."
                 },
                 {
                     "label": "In- en uitklokken",
@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Vandaag",
-                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je de kaart Vandaag: alleen bestemmingen die vandaag gepland zijn. Tik Navigeer voor de route in Google Maps. Start werk verschijnt pas als je ter plaatse bent. Open taken zonder datum blijven onder Open taken."
+                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je de kaart Vandaag: bestemmingen die vandaag gepland zijn, inclusief de stops van een inspectieronde. Tik Navigeer voor de route in Google Maps. Start werk verschijnt pas als je ter plaatse bent. Unit-checks blijven via de unit-QR. Open taken zonder datum blijven onder Open taken."
                 },
                 {
                     "label": "Evacuatielijst",

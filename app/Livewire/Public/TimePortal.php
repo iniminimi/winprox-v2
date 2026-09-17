@@ -942,7 +942,11 @@ class TimePortal extends Component
         }
         $hasTimeModule = TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId));
         $evacuationList = TimePortalData::tenantAllowsEvacuationList($this->tenantId);
+        $gpsVisits = TimePortalData::tenantAllowsGpsWorkVisits($this->tenantId);
         $tasks = $canAct && $verifiedWorker !== null ? TimePortalData::openTasksForWorker($verifiedWorker) : collect();
+        if ($gpsVisits) {
+            $tasks = $tasks->reject(fn ($task) => $task->issue?->isInspectionRound())->values();
+        }
         $teamWorkers = ($team !== null && $verifiedWorker !== null && $verifiedWorker->is_teamleader)
             ? Worker::query()
                 ->where('internal_team_id', $team->id)
@@ -1026,7 +1030,7 @@ class TimePortal extends Component
             'hasTimeModule' => $hasTimeModule,
             'evacuationList' => $evacuationList,
             'gpsOnClock' => $this->tenantRequestsClockGps(),
-            'gpsVisits' => TimePortalData::tenantAllowsGpsWorkVisits($this->tenantId),
+            'gpsVisits' => $gpsVisits,
             'canPunch' => ClockPointScanGrant::isValid($this->clockPointId),
             'teamWorkers' => $teamWorkers,
             'manageWorkersMessage' => $this->manageWorkersMessage,

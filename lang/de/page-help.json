@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Inspektionsrunde planen",
-                    "text": "Eigene Schaltfläche neben Meldung hinzufügen: mindestens 2 Stops (Units), Intervall und Team in einem Formular. Erstellt eine wiederkehrende Meldung mit Runden-Stops und startet sofort die erste Aufgabe. Die Rundenliste steht unter Arbeit → Inspektionsrunden."
+                    "text": "Eigene Schaltfläche neben Meldung hinzufügen: mindestens 2 Stops (Units), Intervall und Team in einem Formular. Erstellt eine wiederkehrende Meldung mit Runden-Stops und startet sofort die erste Aufgabe. Die Rundenliste steht unter Arbeit → Inspektionsrunden. Mit Time + GPS-Arbeitsbesuchen erscheinen die heutigen Stops nach dem Einstempeln unter Clock Point → Heute."
                 },
                 {
                     "label": "Intervall",
@@ -116,7 +116,7 @@
                 },
                 {
                     "label": "Inspektionsrunde planen",
-                    "text": "Wählen Sie mindestens 2 Stops (Units), Intervall und Team in einem Formular. Erstellt eine wiederkehrende Meldung mit Runden-Stops und startet sofort die erste Aufgabe."
+                    "text": "Wählen Sie mindestens 2 Stops (Units), Intervall und Team in einem Formular. Erstellt eine wiederkehrende Meldung mit Runden-Stops und startet sofort die erste Aufgabe. Mit Time + GPS-Arbeitsbesuchen erscheinen die heutigen Stops nach dem Einstempeln unter Clock Point → Heute."
                 },
                 {
                     "label": "Intervall",
@@ -1002,7 +1002,7 @@
                 },
                 {
                     "label": "Offene Aufgaben",
-                    "text": "Nach der Anmeldung sehen Sie eine schreibgeschützte Übersicht der offenen Aufgaben Ihres Teams. Um eine Aufgabe zu starten oder abzuschließen, scannen Sie die Unit-QR vor Ort."
+                    "text": "Nach der Anmeldung sehen Sie eine schreibgeschützte Übersicht der offenen Aufgaben Ihres Teams. Inspektionsrunden von heute stehen nach dem Einstempeln unter Heute. Um eine Aufgabe oder einen Unit-Check abzuschließen, scannen Sie die Unit-QR vor Ort."
                 },
                 {
                     "label": "Ein- und Ausstempeln",
@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Heute",
-                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) zeigt die Karte Heute nur die für heute geplanten Ziele. Tippe auf Navigieren für die Google-Maps-Route. Arbeit starten erscheint erst vor Ort. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
+                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) zeigt die Karte Heute die für heute geplanten Ziele, inklusive der Stops einer Inspektionsrunde. Tippe auf Navigieren für die Google-Maps-Route. Arbeit starten erscheint erst vor Ort. Unit-Checks bleiben über den Unit-QR. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
                 },
                 {
                     "label": "Evakuierungsliste",

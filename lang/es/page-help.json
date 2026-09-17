@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Planificar ronda de inspección",
-                    "text": "Botón aparte junto a Añadir incidencia: al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea un aviso recurrente con paradas de ronda e inicia de inmediato la primera tarea. El listado de rondas está en Trabajo → Rondas de inspección."
+                    "text": "Botón aparte junto a Añadir incidencia: al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea un aviso recurrente con paradas de ronda e inicia de inmediato la primera tarea. El listado de rondas está en Trabajo → Rondas de inspección. Con Time + visitas GPS, las paradas de hoy aparecen tras fichar en Clock Point → Hoy."
                 },
                 {
                     "label": "Intervalo",
@@ -116,7 +116,7 @@
                 },
                 {
                     "label": "Planificar ronda de inspección",
-                    "text": "Elija al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea una incidencia recurrente con paradas de ronda y arranca de inmediato la primera tarea."
+                    "text": "Elija al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea una incidencia recurrente con paradas de ronda y arranca de inmediato la primera tarea. Con Time + visitas GPS, las paradas de hoy aparecen tras fichar en Clock Point → Hoy."
                 },
                 {
                     "label": "Intervalo",
@@ -1002,7 +1002,7 @@
                 },
                 {
                     "label": "Tareas abiertas",
-                    "text": "Tras iniciar sesión ve un resumen de solo lectura de las tareas abiertas de su equipo. Para iniciar o completar una tarea, escanee el QR de unidad en el lugar."
+                    "text": "Tras iniciar sesión ve un resumen de solo lectura de las tareas abiertas de su equipo. Las rondas de inspección de hoy aparecen en Hoy tras fichar. Para completar una tarea o un unit check, escanee el QR de unidad en el lugar."
                 },
                 {
                     "label": "Fichar entrada y salida",
@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Hoy",
-                    "text": "Tras fichar (Time con visitas GPS) la tarjeta Hoy muestra solo destinos planificados para hoy. Pulse Navegar para la ruta en Google Maps. Empezar el trabajo aparece solo in situ. Las tareas abiertas sin fecha siguen en Tareas abiertas."
+                    "text": "Tras fichar (Time con visitas GPS) la tarjeta Hoy muestra destinos planificados para hoy, incluidas las paradas de una ronda de inspección. Pulse Navegar para la ruta en Google Maps. Empezar el trabajo aparece solo in situ. Los unit checks siguen en el QR de unidad. Las tareas abiertas sin fecha siguen en Tareas abiertas."
                 },
                 {
                     "label": "Lista de evacuación",

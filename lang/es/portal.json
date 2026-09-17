@@ -147,6 +147,7 @@
     "team": {
         "title": "Resumen del equipo",
         "read_only_hint": "Esto es un resumen. Completar tareas solo es posible mediante el QR de la unidad en el lugar.",
+        "read_only_hint_visits": "Tras fichar, Hoy muestra a dónde ir. Las comprobaciones de unidad se hacen con el QR de la unidad en el lugar.",
         "onboarding_done": "Está registrado y ha iniciado sesión.",
         "icon_taken": "Este icono ya está en uso. Elija otro.",
         "register": {

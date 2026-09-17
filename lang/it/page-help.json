@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Pianifica giro di ispezione",
-                    "text": "Pulsante separato accanto ad Aggiungi segnalazione: almeno 2 fermate (unità), intervallo e team in un modulo. Crea una segnalazione ricorrente con fermate del giro e avvia subito la prima attività. L’elenco dei giri è in Lavoro → Giri di ispezione."
+                    "text": "Pulsante separato accanto ad Aggiungi segnalazione: almeno 2 fermate (unità), intervallo e team in un modulo. Crea una segnalazione ricorrente con fermate del giro e avvia subito la prima attività. L’elenco dei giri è in Lavoro → Giri di ispezione. Con Time + visite GPS, le fermate di oggi compaiono dopo la timbratura in Clock Point → Oggi."
                 },
                 {
                     "label": "Intervallo",
@@ -116,7 +116,7 @@
                 },
                 {
                     "label": "Pianifica giro di ispezione",
-                    "text": "Scegli almeno 2 fermate (unità), intervallo e team in un modulo. Crea una segnalazione ricorrente con fermate del giro e avvia subito il primo compito."
+                    "text": "Scegli almeno 2 fermate (unità), intervallo e team in un modulo. Crea una segnalazione ricorrente con fermate del giro e avvia subito il primo compito. Con Time + visite GPS, le fermate di oggi compaiono dopo la timbratura in Clock Point → Oggi."
                 },
                 {
                     "label": "Intervallo",
@@ -1002,7 +1002,7 @@
                 },
                 {
                     "label": "Attività aperte",
-                    "text": "Dopo l'accesso vede una panoramica di sola lettura delle attività aperte del Suo team. Per avviare o completare un'attività, scansioni il QR unità sul posto."
+                    "text": "Dopo l'accesso vede una panoramica di sola lettura delle attività aperte del Suo team. I giri di ispezione di oggi compaiono in Oggi dopo la timbratura. Per completare un'attività o un controllo unità, scansioni il QR unità sul posto."
                 },
                 {
                     "label": "Timbra entrata e uscita",
@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Oggi",
-                    "text": "Dopo la timbratura (Time con visite GPS) la scheda Oggi elenca solo le destinazioni previste per oggi. Tocca Naviga per il percorso in Google Maps. Inizia il lavoro compare solo sul posto. Le attività aperte senza data restano in Attività aperte."
+                    "text": "Dopo la timbratura (Time con visite GPS) la scheda Oggi elenca le destinazioni previste per oggi, comprese le fermate di un giro di ispezione. Tocca Naviga per il percorso in Google Maps. Inizia il lavoro compare solo sul posto. I controlli unità restano sul QR unità. Le attività aperte senza data restano in Attività aperte."
                 },
                 {
                     "label": "Elenco evacuazione",

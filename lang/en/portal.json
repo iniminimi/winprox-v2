@@ -147,6 +147,7 @@
     "team": {
         "title": "Team overview",
         "read_only_hint": "This is an overview. Completing tasks is only possible via the unit QR on site.",
+        "read_only_hint_visits": "After clock-in, Today shows where you need to go. Unit checks are done via the unit QR on site.",
         "onboarding_done": "You are registered and signed in.",
         "icon_taken": "This icon is already in use. Choose another one.",
         "register": {

@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Planifier une tournée d’inspection",
-                    "text": "Bouton séparé à côté de Ajouter un signalement : au moins 2 arrêts (unités), intervalle et équipe en un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre immédiatement la première tâche. La liste des tournées est sous Travail → Tournées d’inspection."
+                    "text": "Bouton séparé à côté de Ajouter un signalement : au moins 2 arrêts (unités), intervalle et équipe en un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre immédiatement la première tâche. La liste des tournées est sous Travail → Tournées d’inspection. Avec Time + visites GPS, les arrêts du jour apparaissent après le pointage sous Clock Point → Aujourd'hui."
                 },
                 {
                     "label": "Intervalle",
@@ -116,7 +116,7 @@
                 },
                 {
                     "label": "Planifier une tournée d’inspection",
-                    "text": "Choisissez au moins 2 arrêts (unités), l’intervalle et l’équipe dans un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre tout de suite la première tâche."
+                    "text": "Choisissez au moins 2 arrêts (unités), l’intervalle et l’équipe dans un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre tout de suite la première tâche. Avec Time + visites GPS, les arrêts du jour apparaissent après le pointage sous Clock Point → Aujourd'hui."
                 },
                 {
                     "label": "Intervalle",
@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Tâches ouvertes",
-                    "text": "Après connexion, vous voyez un aperçu en lecture seule des tâches ouvertes de votre équipe. Pour démarrer ou terminer une tâche, scannez le QR unité sur place."
+                    "text": "Après connexion, vous voyez un aperçu en lecture seule des tâches ouvertes de votre équipe. Les tournées d'inspection du jour apparaissent sous Aujourd'hui après le pointage. Pour terminer une tâche ou un contrôle d'unité, scannez le QR unité sur place."
                 },
                 {
                     "label": "Pointer entrée et sortie",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Aujourd'hui",
-                    "text": "Après le pointage (Time avec visites GPS) la carte Aujourd'hui liste uniquement les destinations prévues aujourd'hui. Touchez Naviguer pour l'itinéraire Google Maps. Commencer le travail n'apparaît que sur place. Les tâches ouvertes sans date restent sous Tâches ouvertes."
+                    "text": "Après le pointage (Time avec visites GPS) la carte Aujourd'hui liste les destinations prévues aujourd'hui, y compris les arrêts d'une tournée d'inspection. Touchez Naviguer pour l'itinéraire Google Maps. Commencer le travail n'apparaît que sur place. Les contrôles d'unité restent via le QR unité. Les tâches ouvertes sans date restent sous Tâches ouvertes."
                 },
                 {
                     "label": "Liste d’évacuation",

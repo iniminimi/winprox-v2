@@ -748,7 +748,10 @@ it('creates an inspection round via CreateInspectionRoundAction', function () {
         ->and($issue->tasks)->toHaveCount(1)
         ->and($issue->tasks->first()->internal_team_id)->toBe($team->id)
         ->and($issue->tasks->first()->description)->toBe('Volg de route')
-        ->and($issue->tasks->first()->status)->toBe(TaskStatus::InProgress);
+        ->and($issue->tasks->first()->status)->toBe(TaskStatus::InProgress)
+        ->and($issue->tasks->first()->scheduled_for?->toDateString())->toBe(now()->toDateString())
+        ->and($issue->tasks->first()->due_at?->toDateString())->toBe(now()->toDateString())
+        ->and($issue->tasks->first()->is_recurring_cycle)->toBeTrue();
 });
 
 it('rejects fewer than two stops via CreateInspectionRoundRequest validation', function () {

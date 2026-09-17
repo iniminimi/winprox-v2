@@ -15,8 +15,27 @@ class AssignIssueTeamTaskAction
 {
     public function __construct(private CreateTaskAction $createTask) {}
 
-    public function handle(Issue $issue, int $internalTeamId, ?string $description = null, TaskPriority $priority = TaskPriority::Prio3): Task
-    {
+    /**
+     * @param  array<string, mixed>  $extra
+     */
+    public function handle(
+        Issue $issue,
+        int $internalTeamId,
+        ?string $description = null,
+        TaskPriority $priority = TaskPriority::Prio3,
+        array $extra = [],
+    ): Task {
+        if ($issue->isInspectionRound()) {
+            $dueAt = $issue->recurrence_next_due_at?->copy() ?? now();
+            $extra = array_merge([
+                'scheduled_for' => $dueAt->toDateString(),
+                'due_at' => $dueAt,
+                'is_recurring_cycle' => true,
+                'recurrence_issue_id' => $issue->id,
+                'cycle_number' => 1,
+            ], $extra);
+        }
+
         return $this->createTask->handle(
             issue: $issue,
             internalTeamId: $internalTeamId,
@@ -24,6 +43,7 @@ class AssignIssueTeamTaskAction
             priority: $priority,
             description: $description,
             startedAt: now(),
+            extra: $extra,
         );
     }
 }

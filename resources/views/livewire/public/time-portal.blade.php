@@ -432,7 +432,7 @@
                     @endif
 
                     @if ($tasks->isNotEmpty())
-                        <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
+                        <div class="wp-flash wp-flash--muted">{{ ($gpsVisits ?? false) ? __('portal.team.read_only_hint_visits') : __('portal.team.read_only_hint') }}</div>
 
                         <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.worker.open_tasks')" />
                         <div class="wp-list">

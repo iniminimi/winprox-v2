@@ -64,7 +64,7 @@
             },
             {
                 "title": "Tournées d’inspection",
-                "body": "Signalement récurrent avec un parcours fixe d’unités (arrêts), y compris sur plusieurs sites. Planifiez via Travail → Tournées d’inspection → Planifier une tournée d’inspection (arrêts, intervalle et équipe en une étape), ou via Signalements ou l’assistant. Travail → Tournées d’inspection est une liste propre aux tournées, sans signalements ordinaires. Seules les unités avec contrôle d’unité apparaissent dans la liste des arrêts ; les autres sont masquées. Une tâche par cycle ; à chaque arrêt contrôle d’unité OK, Non OK (avec signalement ; description préremplie) ou passer avec motif. Terminé lorsque tous les arrêts du cycle sont traités."
+                "body": "Signalement récurrent avec un parcours fixe d’unités (arrêts), y compris sur plusieurs sites. Planifiez via Travail → Tournées d’inspection → Planifier une tournée d’inspection (arrêts, intervalle et équipe en une étape), ou via Signalements ou l’assistant. Travail → Tournées d’inspection est une liste propre aux tournées, sans signalements ordinaires. Seules les unités avec contrôle d’unité apparaissent dans la liste des arrêts ; les autres sont masquées. Une tâche par cycle ; à chaque arrêt contrôle d’unité OK, Non OK (avec signalement ; description préremplie) ou passer avec motif. Terminé lorsque tous les arrêts du cycle sont traités. Avec Time + visites GPS, les arrêts d'une tournée prévue aujourd'hui apparaissent après le pointage sous Clock Point → Aujourd'hui (Naviguer / Commencer le travail). Les contrôles d'unité restent via le QR unité."
             },
             {
                 "title": "Mesures unit",

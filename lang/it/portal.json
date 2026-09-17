@@ -147,6 +147,7 @@
     "team": {
         "title": "Panoramica team",
         "read_only_hint": "Questa è una panoramica. Il completamento delle attività è possibile solo tramite il QR unità sul posto.",
+        "read_only_hint_visits": "Dopo la timbratura, Oggi mostra dove andare. I controlli unità si fanno tramite il QR unità sul posto.",
         "onboarding_done": "È registrato e connesso.",
         "icon_taken": "Questa icona è già in uso. Ne scelga un'altra.",
         "register": {

@@ -721,12 +721,16 @@ productsector op `Tenant`.
 - **Clock Point na inklokken (Time + GPS-werkbezoeken):** kaart **Vandaag** = waar de
   uitvoerder *vandaag* naartoe moet. Bron: open teamtaken met `scheduled_for` of
   `due_at` vandaag (inspectiestops uitgeklapt) + optioneel de gepubliceerde
-  roostercel van vandaag met `unit_id`. **Geen** undated open taken (die blijven
-  onder Open taken). Per rij: locatie · unit · adres · **Navigeer** (Google Maps
-  deep link: unit-pin, anders locatieadres — nooit `unit_gps_reports`).
-  **Start werk** alleen binnen de bestaande GPS-straal via `StartWorkVisitAction`.
-  Navigeer maakt geen `WorkVisit` en geen CIAO. **Zoek werkplek in de buurt** blijft
-  voor ongepland werk. Een dienst met nul bezoeken blijft geldig.
+  roostercel van vandaag met `unit_id`. Eerste inspectieronde-cyclus krijgt die
+  datums uit `recurrence_next_due_at`; een bestaande undated ronde-taak telt
+  mee als `recurrence_next_due_at` vandaag is. **Geen** overige undated open
+  taken (die blijven onder Open taken). Inspectierondes zelf verdwijnen uit
+  Open taken (GPS-bezoeken aan): de stops staan op Vandaag. Per rij: locatie ·
+  unit · adres · **Navigeer** (Google Maps deep link: unit-pin, anders
+  locatieadres — nooit `unit_gps_reports`). **Start werk** alleen binnen de
+  bestaande GPS-straal via `StartWorkVisitAction`. Unit-checks blijven via de
+  unit-QR. Navigeer maakt geen `WorkVisit` en geen CIAO. **Zoek werkplek in de
+  buurt** blijft voor ongepland werk. Een dienst met nul bezoeken blijft geldig.
 - **Beheer:** Werk → **Werkbezoeken** toont de historiek (periode, uitvoerder, locatie,
   open/afgesloten), één kader per uitvoerder per dag met duur per locatie. Time → **Aanwezigheid** toont het
   open werkbezoek (locatie · unit).
@@ -1199,7 +1203,9 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   wordt (device-cookie/verified sessie).
 - **Clock Point-QR** (`/time/{token}`): **worker**-aanmelding (naam + icoon), in-/uitklokken en
   overzicht van open teamtaken. **BESLIST:** via Clock Point zijn taakacties **alleen-lezen** —
-  afhandelen moet via de **unit-QR**. (Vervangt de oude team-QR `/team/{token}`.)
+  afhandelen moet via de **unit-QR**. Met Time + GPS-werkbezoeken: inspectierondes van
+  vandaag staan na inklokken onder **Vandaag** (Navigeer / Start werk); unit-checks
+  blijven via de unit-QR. (Vervangt de oude team-QR `/team/{token}`.)
   Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en optioneel tegel
   **Evacuatielijst** (brandicoon) na aanmelden — alleen als Instellingen → Prikklok-beveiliging
   dat aanzet (**standaard uit**); checkbox dat de raadpleging

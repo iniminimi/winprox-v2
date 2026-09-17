@@ -370,6 +370,126 @@ it('toont Vandaag en Zoek werkplek in de buurt na inklokken, zonder WorkVisit', 
     expect(WorkVisit::query()->count())->toBe(0);
 });
 
+it('neemt een undated inspectieronde mee als de volgende vervaldatum vandaag is', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Stop B',
+        'latitude' => 51.06,
+        'longitude' => 3.74,
+        'is_active' => true,
+    ]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => null,
+        'unit_id' => null,
+        'approved_at' => now(),
+        'is_recurring' => true,
+        'recurrence_next_due_at' => now()->endOfDay(),
+    ]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unit->id, 'sort_order' => 0]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unitB->id, 'sort_order' => 1]);
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $worker->internal_team_id,
+        'status' => TaskStatus::InProgress,
+        'scheduled_for' => null,
+        'due_at' => null,
+    ]);
+
+    $rows = app(ListWorkDestinationsForWorkerAction::class)->handle($tenant, $worker);
+
+    expect($rows)->toHaveCount(2)
+        ->and(collect($rows)->pluck('unitId')->all())->toEqualCanonicalizing([(int) $unit->id, (int) $unitB->id]);
+});
+
+it('neemt een undated inspectieronde niet mee als de volgende vervaldatum morgen is', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'is_active' => true,
+    ]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => null,
+        'unit_id' => null,
+        'approved_at' => now(),
+        'is_recurring' => true,
+        'recurrence_next_due_at' => now()->addDay()->endOfDay(),
+    ]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unit->id, 'sort_order' => 0]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unitB->id, 'sort_order' => 1]);
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $worker->internal_team_id,
+        'status' => TaskStatus::InProgress,
+        'scheduled_for' => null,
+        'due_at' => null,
+    ]);
+
+    expect(app(ListWorkDestinationsForWorkerAction::class)->handle($tenant, $worker))->toBe([]);
+});
+
+it('toont inspectiestops op Vandaag en verbergt de ronde onder Open taken', function () {
+    ensureTestEncryptionKey();
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Stop B',
+        'latitude' => 51.06,
+        'longitude' => 3.74,
+        'is_active' => true,
+    ]);
+    $worker->update([
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint->update(['qr_token' => 'today-round-'.$tenant->id]);
+    $location->update(['name' => 'Hotel De Brug']);
+    $unit->update(['name' => 'Kamer 214']);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => null,
+        'unit_id' => null,
+        'approved_at' => now(),
+        'is_recurring' => true,
+        'description' => 'Poetssronde XYZ-hidden',
+        'recurrence_next_due_at' => now()->endOfDay(),
+    ]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unit->id, 'sort_order' => 0]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unitB->id, 'sort_order' => 1]);
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $worker->internal_team_id,
+        'status' => TaskStatus::InProgress,
+        'scheduled_for' => now()->toDateString(),
+        'due_at' => now()->endOfDay(),
+        'description' => 'Poetssronde XYZ-hidden',
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('clockIn')
+        ->assertSee(__('time.portal.today.title'), false)
+        ->assertSee('Kamer 214', false)
+        ->assertSee('Stop B', false)
+        ->assertSee(__('time.portal.today.navigate'), false)
+        ->assertDontSee('Poetssronde XYZ-hidden', false)
+        ->assertDontSee(__('portal.team.read_only_hint'), false)
+        ->assertDontSee(__('portal.team.read_only_hint_visits'), false);
+});
+
 it('toont de lege Vandaag-kaart wanneer er geen geplande bestemmingen zijn', function () {
     ensureTestEncryptionKey();
     [$tenant, $worker, $clockPoint] = gpsVisitContext();
