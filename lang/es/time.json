@@ -323,7 +323,14 @@
             "next_month": "Mes siguiente"
         },
         "visit_started": "Visita de trabajo iniciada.",
-        "visit_ended": "Visita de trabajo finalizada."
+        "visit_ended": "Visita de trabajo finalizada.",
+        "today": {
+            "title": "Hoy",
+            "subtitle": "¿Adónde debo ir hoy?",
+            "empty": "Hoy no hay visitas planificadas",
+            "navigate": "Navegar",
+            "start_work": "Empezar el trabajo"
+        }
     },
     "ciao": {
         "title": "Envíos CIAO",

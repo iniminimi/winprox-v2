@@ -323,7 +323,14 @@
             "next_month": "Nächster Monat"
         },
         "visit_started": "Arbeitsbesuch gestartet.",
-        "visit_ended": "Arbeitsbesuch beendet."
+        "visit_ended": "Arbeitsbesuch beendet.",
+        "today": {
+            "title": "Heute",
+            "subtitle": "Wohin muss ich heute?",
+            "empty": "Heute keine geplanten Besuche",
+            "navigate": "Navigieren",
+            "start_work": "Arbeit starten"
+        }
     },
     "ciao": {
         "title": "CIAO-Meldungen",

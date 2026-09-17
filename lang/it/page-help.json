@@ -952,6 +952,10 @@
                     "text": "Ogni ingresso, uscita o spostamento richiede una nuova scansione del QR Clock Point in sede: una scheda aperta non basta. Le pause si possono avviare sullo stesso telefono senza nuova scansione. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Poi usa il QR unità sul posto per i compiti."
                 },
                 {
+                    "label": "Oggi",
+                    "text": "Dopo la timbratura (Time con visite GPS) la scheda Oggi elenca solo le destinazioni previste per oggi. Tocca Naviga per il percorso in Google Maps. Inizia il lavoro compare solo sul posto. Le attività aperte senza data restano in Attività aperte."
+                },
+                {
                     "label": "Elenco evacuazione",
                     "text": "Se un admin ha attivato l’elenco evacuazione in Impostazioni (disattivato di default), dopo l’accesso vedi il riquadro Elenco evacuazione (icona fuoco). Prima conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Poi vedi chi è timbrato ora, per sede, ultima timbratura in alto."
                 },

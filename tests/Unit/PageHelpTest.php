@@ -94,6 +94,7 @@ it('laadt paginahulp voor Time-schermen', function (): void {
         ->and($shiftLabels)->toContain('Manueel inklokken')
         ->and($shiftLabels)->toContain('Minimumpauze')
         ->and($portalLabels)->toContain('Mijn uren')
+        ->and($portalLabels)->toContain('Vandaag')
         ->and($teamLabels)->toContain('Minimumpauze')
         ->and($alarms)->not->toBeNull()
         ->and($alarms['title'])->toBe('Hulp — Alarmen')

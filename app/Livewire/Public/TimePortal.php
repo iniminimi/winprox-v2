@@ -18,6 +18,7 @@ use App\Actions\Time\StartWorkVisitAction;
 use App\Actions\Time\SuggestNearbyClockUnitsAction;
 use App\Actions\Time\ListOpenTimeRosterAction;
 use App\Actions\Time\ListPublishedWorkerRosterAction;
+use App\Actions\Time\ListWorkDestinationsForWorkerAction;
 use App\Actions\Time\ListWorkerHoursAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
@@ -878,7 +879,7 @@ class TimePortal extends Component
         }
     }
 
-    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications)
+    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations)
     {
         app()->setLocale($this->locale);
 
@@ -1015,6 +1016,12 @@ class TimePortal extends Component
                 ? WorkerIconGuard::remainingAttempts($deviceWorker->team)
                 : WorkerIconGuard::MAX_FAILED_ATTEMPTS,
             'openShift' => $openShift,
+            'todayDestinations' => $this->todayDestinationsForView(
+                $verifiedWorker,
+                $openShift,
+                $listDestinations,
+            ),
+            'openVisitUnitId' => $openShift?->openVisit?->unit_id,
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
             'evacuationList' => $evacuationList,
@@ -1055,6 +1062,33 @@ class TimePortal extends Component
     private function tenantRequestsClockGps(): bool
     {
         return TimePortalData::tenantRequestsClockGps($this->tenantId);
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private function todayDestinationsForView(
+        ?Worker $worker,
+        mixed $openShift,
+        ListWorkDestinationsForWorkerAction $listDestinations,
+    ): array {
+        if ($worker === null || $openShift === null || ! TimePortalData::tenantAllowsGpsWorkVisits($this->tenantId)) {
+            return [];
+        }
+
+        $tenant = Tenant::query()->find($this->tenantId);
+        if ($tenant === null) {
+            return [];
+        }
+
+        try {
+            return array_map(
+                fn ($row) => $row->toArray(),
+                $listDestinations->handle($tenant, $worker),
+            );
+        } catch (InvalidArgumentException) {
+            return [];
+        }
     }
 
     private function markPortalVerified(Worker $worker): bool

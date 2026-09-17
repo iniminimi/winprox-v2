@@ -952,6 +952,10 @@
                     "text": "Jedes Ein-/Ausstempeln oder Verschieben braucht einen frischen Scan des Clock-Point-QR vor Ort — ein offener Tab reicht nicht. Pausen können am selben Handy ohne neuen Scan starten. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Danach Unit-QR vor Ort für Aufgaben."
                 },
                 {
+                    "label": "Heute",
+                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) zeigt die Karte Heute nur die für heute geplanten Ziele. Tippe auf Navigieren für die Google-Maps-Route. Arbeit starten erscheint erst vor Ort. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
+                },
+                {
                     "label": "Evakuierungsliste",
                     "text": "Wenn die Verwaltung die Evakuierungsliste in Einstellungen eingeschaltet hat (standardmäßig aus), sehen Sie nach der Anmeldung die Kachel Evakuierungsliste (Feuersymbol). Bestätigen Sie zuerst, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Danach sehen Sie, wer jetzt eingestempelt ist, nach Standort, neueste Einstempelung oben."
                 },

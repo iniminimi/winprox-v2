@@ -952,6 +952,10 @@
                     "text": "Cada entrada, salida o traslado exige un escaneo nuevo del QR de Clock Point en la sede: una pestaña abierta no basta. Las pausas se pueden iniciar en el mismo móvil sin un nuevo escaneo. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Luego usa el QR de unidad in situ para las tareas."
                 },
                 {
+                    "label": "Hoy",
+                    "text": "Tras fichar (Time con visitas GPS) la tarjeta Hoy muestra solo destinos planificados para hoy. Pulse Navegar para la ruta en Google Maps. Empezar el trabajo aparece solo in situ. Las tareas abiertas sin fecha siguen en Tareas abiertas."
+                },
+                {
                     "label": "Lista de evacuación",
                     "text": "Si un admin activó la lista de evacuación en Ajustes (desactivada por defecto), verá la ficha Lista de evacuación (icono de fuego) tras identificarse. Primero confirme que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Después verá quién está fichado, por sede, el fichaje más reciente arriba."
                 },

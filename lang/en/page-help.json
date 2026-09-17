@@ -952,6 +952,10 @@
                     "text": "Each clock-in, clock-out or move needs a fresh scan of the Clock Point QR on site — an open tab is not enough. You can start breaks on the same phone without a new scan. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). Then use the unit QR on site to start or complete tasks."
                 },
                 {
+                    "label": "Today",
+                    "text": "After clocking in (Time with GPS work visits) you see the Today card: only destinations planned for today. Tap Navigate for the Google Maps route. Start work appears only when you are on site. Open tasks without a date stay under Open tasks."
+                },
+                {
                     "label": "Evacuation list",
                     "text": "If an admin turned the evacuation list on in Settings (off by default), you see the Evacuation list tile (fire icon) after sign-in. First confirm that the consultation is exceptional and is logged (first name, last name, date and time). Then you see who is clocked in now, grouped by site, newest clock-in first."
                 },

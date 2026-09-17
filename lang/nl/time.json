@@ -323,7 +323,14 @@
             "next_month": "Volgende maand"
         },
         "visit_started": "Werkbezoek gestart.",
-        "visit_ended": "Werkbezoek beëindigd."
+        "visit_ended": "Werkbezoek beëindigd.",
+        "today": {
+            "title": "Vandaag",
+            "subtitle": "Waar moet ik vandaag naartoe?",
+            "empty": "Vandaag geen geplande bezoeken",
+            "navigate": "Navigeer",
+            "start_work": "Start werk"
+        }
     },
     "ciao": {
         "title": "CIAO-inzendingen",

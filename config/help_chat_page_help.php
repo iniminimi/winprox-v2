@@ -144,6 +144,16 @@ return [
         ],
         [
             'patterns' => [
+                'waar naartoe', 'waar moet ik heen', 'bestemmingen vandaag',
+                'where do i go today', 'today destinations',
+                'où aller aujourd', 'wohin heute', 'adónde hoy', 'dove andare oggi',
+                'navigeer', 'google maps',
+            ],
+            'page' => 'portal.time',
+            'prefer' => ['waar naartoe', 'navigeer', 'bestemmingen vandaag'],
+        ],
+        [
+            'patterns' => [
                 'werkbezoek', 'werkbezoeken', 'work visit', 'work visits',
                 'visite de travail', 'visites de travail',
                 'arbeitsbesuch', 'arbeitsbesuche',

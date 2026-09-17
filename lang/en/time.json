@@ -323,7 +323,14 @@
             "next_month": "Next month"
         },
         "visit_started": "Work visit started.",
-        "visit_ended": "Work visit ended."
+        "visit_ended": "Work visit ended.",
+        "today": {
+            "title": "Today",
+            "subtitle": "Where do I need to go today?",
+            "empty": "No planned visits today",
+            "navigate": "Navigate",
+            "start_work": "Start work"
+        }
     },
     "ciao": {
         "title": "CIAO submissions",
