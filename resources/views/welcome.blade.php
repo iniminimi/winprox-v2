@@ -85,7 +85,7 @@
 
     <footer class="wp-welcome-footer">
         <div class="wp-welcome-footer-inner">
-            @include('partials.wp-welcome-brand')
+            @include('partials.wp-welcome-brand', ['showAssistant' => true])
             <nav class="wp-welcome-footer-nav" aria-label="{{ __('legal.index_title') }}">
                 @foreach (config('product_docs.documents', []) as $docMeta)
                     <a href="{{ route($docMeta['route']) }}">{{ __($docMeta['label_key']) }}</a>

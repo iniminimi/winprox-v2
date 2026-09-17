@@ -86,6 +86,8 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->getContent();
 
     expect($html)->toContain('video/welcome.mp4');
+    expect(explode('wp-welcome-footer', $html, 2)[0])->not->toContain('assistant_small.mp4');
+    expect($html)->toContain('wp-welcome-brand-logo--assistant');
 
     expect(WelcomeVisit::query()->count())->toBe(1)
         ->and(WelcomeVisit::query()->first()?->utm_source)->toBe('promo')
