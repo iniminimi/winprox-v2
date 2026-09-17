@@ -231,7 +231,7 @@
     },
     "time_clock": {
         "title": "Seguridad del fichaje",
-        "lead": "Cada ejecutor ficha con un solo móvil propio. Otro dispositivo se rechaza hasta que un admin o responsable permita uno nuevo. PIN y GPS son opcionales.",
+        "lead": "Cada ejecutor ficha con un solo móvil propio. Otro dispositivo se rechaza hasta que un admin o responsable permita uno nuevo. PIN, GPS y lista de evacuación son opcionales (desactivados por defecto).",
         "require_pin": "Exigir un PIN de 4 dígitos al identificarse en Clock Point",
         "require_pin_hint": "Clock Point pide un PIN en lugar del icono. El icono sigue valiendo en el QR de unidad.",
         "gps_on_clock": "Pedir GPS al fichar entrada o salida",
@@ -240,6 +240,8 @@
         "saved": "Seguridad del fichaje guardada.",
         "gps_visits": "Visitas GPS (iniciar/detener trabajo en el pin de la unidad)",
         "gps_visits_hint": "El fichaje de entrada sigue abriendo el día pagado sin prueba de lugar. Iniciar el trabajo exige GPS fresco dentro del radio de una unidad con pin fijo. La salida se permite en cualquier sitio; una visita abierta se cierra primero.",
-        "gps_visit_radius": "Radio (metros)"
+        "gps_visit_radius": "Radio (metros)",
+        "evacuation_list": "Lista de evacuación en Clock Point",
+        "evacuation_list_hint": "Tras identificarse, los ejecutores ven una ficha para ver quién está fichado. Confirman que la consulta es excepcional; cada consulta se registra. Desactivada por defecto."
     }
 }

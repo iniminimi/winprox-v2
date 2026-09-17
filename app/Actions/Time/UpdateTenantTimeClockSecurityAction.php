@@ -12,7 +12,7 @@ class UpdateTenantTimeClockSecurityAction
     public function __construct(private AuditRecorder $audit) {}
 
     /**
-     * @param  array{time_require_worker_pin?: bool, time_gps_on_clock?: bool, time_gps_visits?: bool, time_gps_visit_radius_meters?: int|null}  $data
+     * @param  array{time_require_worker_pin?: bool, time_gps_on_clock?: bool, time_gps_visits?: bool, time_gps_visit_radius_meters?: int|null, time_evacuation_list?: bool}  $data
      */
     public function handle(Tenant $tenant, int $tenantId, array $data, ?int $actorUserId): Tenant
     {
@@ -27,6 +27,7 @@ class UpdateTenantTimeClockSecurityAction
         $requirePin = (bool) ($data['time_require_worker_pin'] ?? false);
         $gpsOnClock = (bool) ($data['time_gps_on_clock'] ?? false);
         $gpsVisits = (bool) ($data['time_gps_visits'] ?? false);
+        $evacuationList = (bool) ($data['time_evacuation_list'] ?? false);
         $radius = $data['time_gps_visit_radius_meters'] ?? null;
         $radius = $radius === null || $radius === '' ? null : (int) $radius;
         if ($radius !== null && $radius < 50) {
@@ -41,6 +42,7 @@ class UpdateTenantTimeClockSecurityAction
             'time_gps_on_clock' => $gpsOnClock,
             'time_gps_visits' => $gpsVisits,
             'time_gps_visit_radius_meters' => $radius,
+            'time_evacuation_list' => $evacuationList,
         ]);
 
         $fresh = $tenant->fresh();
@@ -56,6 +58,7 @@ class UpdateTenantTimeClockSecurityAction
                 'time_gps_on_clock' => $gpsOnClock,
                 'time_gps_visits' => $gpsVisits,
                 'time_gps_visit_radius_meters' => $radius,
+                'time_evacuation_list' => $evacuationList,
             ],
         );
 

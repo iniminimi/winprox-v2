@@ -401,13 +401,15 @@
                                 </span>
                                 <span class="wp-tile-sub">{{ __('time.portal.hours.tile_sub') }}</span>
                             </button>
-                            <button type="button" class="wp-tile" wire:click="openRoster">
-                                <span class="wp-cluster">
-                                    <x-wp-icon name="fire" class="wp-tile-icon" />
-                                    <span class="wp-tile-title">{{ __('time.roster.tile') }}</span>
-                                </span>
-                                <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
-                            </button>
+                            @if ($evacuationList)
+                                <button type="button" class="wp-tile" wire:click="openRoster">
+                                    <span class="wp-cluster">
+                                        <x-wp-icon name="fire" class="wp-tile-icon" />
+                                        <span class="wp-tile-title">{{ __('time.roster.tile') }}</span>
+                                    </span>
+                                    <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
+                                </button>
+                            @endif
                         </div>
                     @endif
                 @endif

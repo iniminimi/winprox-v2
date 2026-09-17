@@ -231,7 +231,7 @@
     },
     "time_clock": {
         "title": "Sicurezza marcatura",
-        "lead": "Ogni esecutore timbra con un solo telefono personale. Un altro dispositivo è rifiutato finché un admin o team leader non autorizza un nuovo dispositivo. PIN e GPS sono opzionali.",
+        "lead": "Ogni esecutore timbra con un solo telefono personale. Un altro dispositivo è rifiutato finché un admin o team leader non autorizza un nuovo dispositivo. PIN, GPS ed elenco evacuazione sono opzionali (disattivati di default).",
         "require_pin": "Richiedi un PIN a 4 cifre all'accesso Clock Point",
         "require_pin_hint": "Clock Point chiede un PIN al posto dell'icona. L'icona resta valida sul QR dell'unità.",
         "gps_on_clock": "Chiedi il GPS in ingresso e in uscita",
@@ -240,6 +240,8 @@
         "saved": "Sicurezza marcatura salvata.",
         "gps_visits": "Visite GPS (avvia/interrompi il lavoro sul pin dell'unità)",
         "gps_visits_hint": "L'entrata apre comunque la giornata retribuita senza prova di luogo. Avviare il lavoro richiede GPS fresco nel raggio di un'unità con pin fisso. L'uscita è consentita ovunque; una visita aperta viene chiusa prima.",
-        "gps_visit_radius": "Raggio (metri)"
+        "gps_visit_radius": "Raggio (metri)",
+        "evacuation_list": "Elenco evacuazione su Clock Point",
+        "evacuation_list_hint": "Dopo l’accesso gli esecutori vedono un riquadro per chi è timbrato. Confermano che la consultazione è eccezionale; ogni consultazione è registrata. Disattivato di default."
     }
 }

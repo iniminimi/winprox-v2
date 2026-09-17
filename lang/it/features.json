@@ -70,7 +70,7 @@
                 "Elenchi turni ed export/stampa",
                 "Stessa identità operatore (nome + icona) di Facility",
                 "Un telefono per esecutore, PIN e GPS opzionali",
-                "Elenco evacuazione su Clock Point dopo conferma",
+                "Elenco evacuazione opzionale su Clock Point (Impostazioni, disattivato di default)",
                 "Allarme se si salta tra Clock Point entro 5 min",
                 "Le mie ore su Clock Point (solo i propri turni)",
                 "Pausa minima per team sul foglio ore (nessun evento CIAO extra)"
@@ -138,7 +138,7 @@
                 "QR unità: segnalazione + attività operatore in loco",
                 "QR unità: pagina già aperta usabile senza rete",
                 "Clock Point QR: accesso / timbratura entrata",
-                "Clock Point: riquadro elenco evacuazione dei timbrati",
+                "Clock Point: riquadro opzionale elenco evacuazione dei timbrati (disattivato di default)",
                 "QR sede e fogli adesivi (es. Avery)",
                 "QR dinamico assegnabile a un'unità in seguito",
                 "Moderazione: sfocatura fino all'approvazione sulle pagine pubbliche",

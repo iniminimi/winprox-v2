@@ -182,6 +182,12 @@
                 <p class="wp-hint">{{ __('settings.time_clock.gps_on_clock_hint') }}</p>
 
                 <label class="wp-check">
+                    <input type="checkbox" wire:model="timeEvacuationList">
+                    <span>{{ __('settings.time_clock.evacuation_list') }}</span>
+                </label>
+                <p class="wp-hint">{{ __('settings.time_clock.evacuation_list_hint') }}</p>
+
+                <label class="wp-check">
                     <input type="checkbox" wire:model="timeGpsVisits">
                     <span>{{ __('settings.time_clock.gps_visits') }}</span>
                 </label>

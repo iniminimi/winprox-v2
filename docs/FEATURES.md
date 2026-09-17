@@ -670,7 +670,8 @@ productsector op `Tenant`.
   één klik toepassen (audit `work_shift.required_break_applied`) of pauzeminuten
   corrigeren. API: `POST /api/v1/time/work-shifts/{id}/apply-required-break`;
   `GET /api/v1/teams` bevat `required_break_minutes`.
-- **Evacuatielijst** op het Clock Point-portaal (na aanmelden, tegel met brandicoon).
+- **Evacuatielijst** (optioneel, Instellingen → Prikklok-beveiliging, **standaard uit**)
+  op het Clock Point-portaal (na aanmelden, tegel met brandicoon).
   Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel), per
   locatie met de **nieuwste inklokking bovenaan**. Eerst
   aanvinken dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam,
@@ -683,8 +684,9 @@ productsector op `Tenant`.
   tot beheer/teamleader vrijgeeft); één open shift;
   hops tussen Clock Points (alarm bij hop < 5 min). **In-/uitklokken en verplaatsen**
   op Clock Point vereisen een **verse QR-scan** (volle page-load, één prik, ~10 min);
-  een open tab of `wire:poll` volstaat niet. Pauzes, uren en evacuatielijst blijven
-  na aanmelden mogelijk zonder nieuwe scan. Optioneel GPS bij de prik
+  een open tab of `wire:poll` volstaat niet. Pauzes en uren blijven na aanmelden mogelijk
+  zonder nieuwe scan; de evacuatielijst ook, maar alleen als die in Instellingen aanstaat.
+  Optioneel GPS bij de prik
   (geen weigering zonder signaal). API `POST /time/clock-in` (bron API) koppelt **geen** gsm.
   Beheerder en medewerker kunnen een uitvoerder **manueel inklokken** op een Clock Point
   (`ClockSource::Admin`, `POST /api/v1/time/manual-clock-in`): geen gsm-koppeling, verplichte
@@ -1184,8 +1186,9 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
 - **Clock Point-QR** (`/time/{token}`): **worker**-aanmelding (naam + icoon), in-/uitklokken en
   overzicht van open teamtaken. **BESLIST:** via Clock Point zijn taakacties **alleen-lezen** —
   afhandelen moet via de **unit-QR**. (Vervangt de oude team-QR `/team/{token}`.)
-  Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en tegel
-  **Evacuatielijst** (brandicoon) na aanmelden; checkbox dat de raadpleging
+  Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en optioneel tegel
+  **Evacuatielijst** (brandicoon) na aanmelden — alleen als Instellingen → Prikklok-beveiliging
+  dat aanzet (**standaard uit**); checkbox dat de raadpleging
   uitzonderlijk is en wordt gelogd; daarna de lijst van ingeklokten (per locatie,
   nieuwste inklokking bovenaan). Geen extra QR.
 

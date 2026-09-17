@@ -606,6 +606,10 @@
                     "text": "Via Organisation → Settings → Work menu settings, the administrator can choose per organisation which Work items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the sidebar and backoffice routes return forbidden. Existing reservation or measurement settings on units and categories keep working on the QR portal; you cannot newly enable them while the work menu item is off. Unit checks are not affected when Inspection rounds is off."
                 },
                 {
+                    "label": "Punch clock security",
+                    "text": "Time only: PIN, GPS at the punch, GPS work visits and the <strong>evacuation list</strong> on Clock Point. The evacuation list is off by default; turn it on here if workers may see who is clocked in after sign-in (each view is logged)."
+                },
+                {
                     "label": "WinProx style",
                     "text": "Choose how WinProx looks in the back office: Modern (default), Standard or Dark. Your choice applies on all signed-in devices."
                 },
@@ -949,7 +953,7 @@
                 },
                 {
                     "label": "Evacuation list",
-                    "text": "After signing in you see the Evacuation list tile (fire icon). First confirm that the consultation is exceptional and is logged (first name, last name, date and time). Then you see who is clocked in now, grouped by site, newest clock-in first."
+                    "text": "If an admin turned the evacuation list on in Settings (off by default), you see the Evacuation list tile (fire icon) after sign-in. First confirm that the consultation is exceptional and is logged (first name, last name, date and time). Then you see who is clocked in now, grouped by site, newest clock-in first."
                 },
                 {
                     "label": "My hours",
@@ -1219,7 +1223,7 @@
                 },
                 {
                     "label": "Evacuation list",
-                    "text": "The evacuation list is on the Clock Point portal after sign-in (Evacuation list tile). No extra QR. Before the list, the field worker confirms that the consultation is exceptional and is logged (first name, last name, date and time). Views from today light up <strong>Attention</strong> (presence and dashboard). Time → Alarms keeps the full list (date and time, newest first)."
+                    "text": "If the evacuation list is on in Settings (off by default), it is on the Clock Point portal after sign-in (Evacuation list tile). No extra QR. Before the list, the field worker confirms that the consultation is exceptional and is logged (first name, last name, date and time). Views from today light up <strong>Attention</strong> (presence and dashboard). Time → Alarms keeps the full list (date and time, newest first)."
                 }
             ]
         },

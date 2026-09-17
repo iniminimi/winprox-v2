@@ -26,6 +26,7 @@ class UpdateTenantTimeClockSecurityRequest extends FormRequest
             'time_gps_on_clock' => ['required', 'boolean'],
             'time_gps_visits' => ['required', 'boolean'],
             'time_gps_visit_radius_meters' => ['nullable', 'integer', 'min:50', 'max:2000'],
+            'time_evacuation_list' => ['required', 'boolean'],
         ];
     }
 }

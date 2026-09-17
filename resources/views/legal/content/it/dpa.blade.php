@@ -33,7 +33,7 @@
     <li>gestione di utenti e team interni.</li>
     <li>gestione di lavoratori (senza accesso) e assegnazione ad attività.</li>
     <li>coda temporanea sul dispositivo dell’esecutore fino alla sincronizzazione delle azioni sul campo (attività, segnalazioni, foto, controlli unità).</li>
-    <li>timbratura opzionale (Time): ingresso/uscita, presenza, foglio ore (inclusi eventuali minuti di pausa team), associazione dispositivo, GPS opzionale alla timbratura, consultazione del riquadro Le mie ore su Clock Point, turno pianificato e assenze (ferie, recupero, malattia) inseriti dal cliente, Il mio turno su Clock Point e consultazioni registrate dell’elenco evacuazione.</li>
+    <li>timbratura opzionale (Time): ingresso/uscita, presenza, foglio ore (inclusi eventuali minuti di pausa team), associazione dispositivo, GPS opzionale alla timbratura, consultazione del riquadro Le mie ore su Clock Point, turno pianificato e assenze (ferie, recupero, malattia) inseriti dal cliente, Il mio turno su Clock Point e consultazioni registrate dell’elenco evacuazione (se attivato).</li>
     <li>gestione di sedi e unità.</li>
     <li>invio di notifiche e-mail seguendo le istruzioni del cliente.</li>
     <li>registrazione delle attività e sicurezza.</li>

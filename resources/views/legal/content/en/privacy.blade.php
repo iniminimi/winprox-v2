@@ -88,8 +88,9 @@
     Workers sign in via the Clock Point QR (name + icon, optional PIN). WinProx binds one phone per worker.
     Another device is refused until the customer releases it (admin or team leader).
     With Time, WinProx stores clock-in/out times, breaks and presence; optional GPS at the punch
-    (without a signal indoors the punch still goes through). On the Clock Point portal a signed-in worker can,
-    after confirmation, consult the evacuation list of who is currently clocked in; each consultation is logged
+    (without a signal indoors the punch still goes through). If the customer turns the evacuation list on
+    (Settings, off by default), a signed-in worker on the Clock Point portal can,
+    after confirmation, consult who is currently clocked in; each consultation is logged
     (first name, last name, date and time of the person who viewed it).
     After sign-in a worker can open My hours: only their own shifts for the selected month.
     After the roster is published, My roster shows only that worker’s published shifts and absences

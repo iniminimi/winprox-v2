@@ -70,7 +70,7 @@
                 "Shiftlijsten en export/print",
                 "Zelfde worker-identiteit (naam + icoon) als facility",
                 "Eén gsm per uitvoerder, optionele PIN en GPS",
-                "Evacuatielijst op Clock Point na bevestiging",
+                "Optionele evacuatielijst op Clock Point (Instellingen, standaard uit)",
                 "Alarm bij hop tussen Clock Points binnen 5 min",
                 "Mijn uren op Clock Point (alleen eigen diensten)",
                 "Minimumpauze per team op de urenstaat (geen extra CIAO-event)"
@@ -138,7 +138,7 @@
                 "Unit-QR: melden + worker-taken ter plaatse",
                 "Unit-QR: geladen pagina bruikbaar zonder bereik",
                 "Clock Point-QR: aanmelden / inklokken",
-                "Clock Point: tegel Evacuatielijst van ingeklokten",
+                "Clock Point: optionele tegel Evacuatielijst van ingeklokten (standaard uit)",
                 "Locatie-QR en stickerbladen (o.a. Avery)",
                 "Dynamische QR die later een unit kan krijgen",
                 "Moderatie: blur tot goedkeuring op publieke pagina's",

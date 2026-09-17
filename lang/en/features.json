@@ -70,7 +70,7 @@
                 "Shift lists and export/print",
                 "Same worker identity (name + icon) as facility",
                 "One phone per worker, optional PIN and GPS",
-                "Evacuation list on Clock Point after confirmation",
+                "Optional evacuation list on Clock Point (Settings, off by default)",
                 "Alarm when hopping Clock Points within 5 min",
                 "My hours on Clock Point (own shifts only)",
                 "Per-team minimum break on the timesheet (no extra CIAO event)"
@@ -138,7 +138,7 @@
                 "Unit QR: report + worker tasks on site",
                 "Unit QR: loaded page usable without coverage",
                 "Clock Point QR: sign-in / clock in",
-                "Clock Point: Evacuation list tile of people clocked in",
+                "Clock Point: optional Evacuation list tile of people clocked in (off by default)",
                 "Location QR and sticker sheets (e.g. Avery)",
                 "Dynamic QR that can be assigned to a unit later",
                 "Moderation: blur until approval on public pages",

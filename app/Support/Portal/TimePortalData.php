@@ -88,4 +88,11 @@ final class TimePortalData
 
         return $tenant !== null && $tenant->allowsGpsWorkVisits();
     }
+
+    public static function tenantAllowsEvacuationList(int $tenantId): bool
+    {
+        $tenant = Tenant::query()->find($tenantId);
+
+        return $tenant !== null && $tenant->allowsEvacuationList();
+    }
 }

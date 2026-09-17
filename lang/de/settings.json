@@ -231,7 +231,7 @@
     },
     "time_clock": {
         "title": "Stempeluhr-Sicherheit",
-        "lead": "Jede ausführende Person stempelt mit einem eigenen Handy. Ein anderes Gerät wird abgelehnt, bis Verwaltung oder Teamleiter ein neues Gerät zulassen. PIN und GPS sind optional.",
+        "lead": "Jede ausführende Person stempelt mit einem eigenen Handy. Ein anderes Gerät wird abgelehnt, bis Verwaltung oder Teamleiter ein neues Gerät zulassen. PIN, GPS und Evakuierungsliste sind optional (standardmäßig aus).",
         "require_pin": "4-stellige PIN bei der Clock-Point-Anmeldung verlangen",
         "require_pin_hint": "Clock Point fragt nach einer PIN statt nach dem Symbol. Das Symbol gilt weiter beim Unit-QR.",
         "gps_on_clock": "GPS beim Ein- und Ausstempeln anfragen",
@@ -240,6 +240,8 @@
         "saved": "Stempeluhr-Sicherheit gespeichert.",
         "gps_visits": "GPS-Arbeitsbesuche (Arbeit an Unit-Pin starten/beenden)",
         "gps_visits_hint": "Einstempeln öffnet weiter den bezahlten Tag ohne Standortnachweis. Arbeitsstart braucht frisches GPS im Radius einer Unit mit festem Pin. Ausstempeln geht überall; ein offener Besuch wird zuerst geschlossen.",
-        "gps_visit_radius": "Radius (Meter)"
+        "gps_visit_radius": "Radius (Meter)",
+        "evacuation_list": "Evakuierungsliste am Clock Point",
+        "evacuation_list_hint": "Nach der Anmeldung sehen Ausführende eine Kachel, wer eingestempelt ist. Sie bestätigen, dass die Einsicht außergewöhnlich ist; jede Einsicht wird protokolliert. Standardmäßig aus."
     }
 }

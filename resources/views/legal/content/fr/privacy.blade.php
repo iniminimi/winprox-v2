@@ -88,8 +88,9 @@
     Les exécutants s’identifient via la QR Clock Point (nom + icône, PIN optionnel). WinProx lie un téléphone par exécutant.
     Un autre appareil est refusé jusqu’à libération par le client (admin ou chef d’équipe).
     Avec Time, WinProx conserve les heures d’entrée/sortie, les pauses et la présence ; GPS optionnel à la pointe
-    (sans signal en intérieur, la pointe passe). Sur le portail Clock Point, un exécutant identifié peut, après
-    confirmation, consulter la liste d’évacuation de qui est pointé ; chaque consultation est enregistrée
+    (sans signal en intérieur, la pointe passe). Si le client active la liste d’évacuation (Paramètres, désactivée par défaut),
+    un exécutant identifié sur le portail Clock Point peut, après
+    confirmation, consulter qui est pointé ; chaque consultation est enregistrée
     (prénom, nom, date et heure de la personne qui consulte).
     Après connexion, l’exécutant peut ouvrir Mes heures : uniquement ses propres services du mois choisi.
     Après publication du planning, Mon planning n’affiche que ses services et absences publiés

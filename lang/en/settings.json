@@ -231,7 +231,7 @@
     },
     "time_clock": {
         "title": "Punch clock security",
-        "lead": "Each worker clocks in with one personal phone. Another device is refused until an admin or team leader allows a new device. PIN and GPS are optional extras.",
+        "lead": "Each worker clocks in with one personal phone. Another device is refused until an admin or team leader allows a new device. PIN, GPS and the evacuation list are optional extras (off by default).",
         "require_pin": "Require a 4-digit PIN when signing in at Clock Point",
         "require_pin_hint": "Clock Point asks for a PIN instead of the icon. The icon still applies on the unit QR.",
         "gps_on_clock": "Ask for GPS when clocking in or out",
@@ -240,6 +240,8 @@
         "saved": "Punch clock security saved.",
         "gps_visits": "GPS work visits (start/stop work on a unit pin)",
         "gps_visits_hint": "Clock-in still opens the paid day without location proof. Starting work needs fresh GPS within range of a unit with a fixed pin. Clock-out is allowed anywhere; an open visit is closed first.",
-        "gps_visit_radius": "Radius (metres)"
+        "gps_visit_radius": "Radius (metres)",
+        "evacuation_list": "Evacuation list on Clock Point",
+        "evacuation_list_hint": "After sign-in, workers see a tile to view who is clocked in. They confirm that the consultation is exceptional; each view is logged. Off by default."
     }
 }

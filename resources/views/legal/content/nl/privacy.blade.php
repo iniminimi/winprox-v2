@@ -88,8 +88,9 @@
     Uitvoerders melden zich aan via de Clock Point-QR (naam + icoon, optioneel pincode). WinProx koppelt één gsm
     per uitvoerder. Een ander toestel wordt geweigerd tot de klant het vrijgeeft (beheer of teamleader).
     Met Time bewaart WinProx in- en uitkloktijden, pauzes en aanwezigheid; optioneel GPS-coördinaten bij de prik
-    (zonder signaal indoor gaat de prik door). Op het Clock Point-portaal kan een aangemelde uitvoerder na
-    bevestiging de evacuatielijst van wie nu is ingeklokt raadplegen; elke raadpleging wordt gelogd
+    (zonder signaal indoor gaat de prik door). Als de klant de evacuatielijst inschakelt (Instellingen, standaard uit),
+    kan een aangemelde uitvoerder op het Clock Point-portaal na
+    bevestiging de lijst van wie nu is ingeklokt raadplegen; elke raadpleging wordt gelogd
     (voornaam, naam, datum en uur van de raadpleger).
     Na aanmelden kan de uitvoerder Mijn uren openen: alleen de eigen diensten van de gekozen maand.
     Na publiceren van het uurrooster ziet de uitvoerder Mijn rooster: alleen de eigen gepubliceerde

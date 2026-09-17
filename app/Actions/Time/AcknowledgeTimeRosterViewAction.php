@@ -16,6 +16,11 @@ class AcknowledgeTimeRosterViewAction
     {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
+        $tenant = Tenant::query()->find($tenantId);
+        if ($tenant === null || ! $tenant->allowsEvacuationList()) {
+            throw new InvalidArgumentException('evacuation_list_disabled');
+        }
+
         if ((int) $worker->tenant_id !== $tenantId || ! $worker->is_active) {
             throw new InvalidArgumentException('worker_tenant_mismatch');
         }

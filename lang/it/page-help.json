@@ -606,6 +606,10 @@
                     "text": "In Organizzazione → Impostazioni → Impostazioni menu Lavoro, l'amministratore può scegliere per organizzazione quali voci Lavoro sono visibili: Calendario, Prenotazioni, Giri di ispezione e Misurazioni unità. Disattivata, la voce scompare dalla barra laterale e le route backoffice restituiscono vietato. Le impostazioni di prenotazione o misura esistenti su unità e categorie restano attive sul portale QR; non si possono riattivare finché la voce del menu Lavoro è disattivata. I unit check non sono influenzati se Giri di ispezione è disattivato."
                 },
                 {
+                    "label": "Sicurezza marcatura",
+                    "text": "Solo con Time: PIN, GPS alla timbratura, visite GPS e l’<strong>elenco evacuazione</strong> su Clock Point. L’elenco è disattivato di default; attivalo qui se gli esecutori possono vedere chi è timbrato dopo l’accesso (ogni consultazione è registrata)."
+                },
+                {
                     "label": "Stile WinProx",
                     "text": "Scelga come WinProx appare per Lei nell'admin: Standard o Scuro. La Sua scelta si applica su tutti i dispositivi in cui è connesso. In fondo alla pagina, subito prima della sezione export."
                 },
@@ -949,7 +953,7 @@
                 },
                 {
                     "label": "Elenco evacuazione",
-                    "text": "Dopo l’accesso vedi il riquadro Elenco evacuazione (icona fuoco). Prima conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Poi vedi chi è timbrato ora, per sede, ultima timbratura in alto."
+                    "text": "Se un admin ha attivato l’elenco evacuazione in Impostazioni (disattivato di default), dopo l’accesso vedi il riquadro Elenco evacuazione (icona fuoco). Prima conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Poi vedi chi è timbrato ora, per sede, ultima timbratura in alto."
                 },
                 {
                     "label": "Le mie ore",
@@ -1219,7 +1223,7 @@
                 },
                 {
                     "label": "Elenco evacuazione",
-                    "text": "L’elenco evacuazione è sul portale Clock Point dopo l’accesso (riquadro Elenco evacuazione). Nessun QR separato. Prima dell’elenco l’esecutore conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Le consultazioni di oggi accendono <strong>Attenzione</strong> (presenza e dashboard). Time → Allarmi conserva l’elenco completo (data e ora, la più recente in alto)."
+                    "text": "Se l’elenco evacuazione è attivo in Impostazioni (disattivato di default), è sul portale Clock Point dopo l’accesso (riquadro Elenco evacuazione). Nessun QR separato. Prima dell’elenco l’esecutore conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Le consultazioni di oggi accendono <strong>Attenzione</strong> (presenza e dashboard). Time → Allarmi conserva l’elenco completo (data e ora, la più recente in alto)."
                 }
             ]
         },

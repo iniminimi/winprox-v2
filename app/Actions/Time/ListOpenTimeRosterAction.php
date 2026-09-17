@@ -5,8 +5,10 @@ namespace App\Actions\Time;
 use App\Data\Time\TimeRosterPerson;
 use App\Data\Time\TimeRosterSnapshot;
 use App\Enums\WorkShiftStatus;
+use App\Models\Tenant;
 use App\Models\WorkShift;
 use App\Support\Time\TimeModuleAccess;
+use InvalidArgumentException;
 
 class ListOpenTimeRosterAction
 {
@@ -14,6 +16,11 @@ class ListOpenTimeRosterAction
     public function handle(int $tenantId): TimeRosterSnapshot
     {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
+
+        $tenant = Tenant::query()->find($tenantId);
+        if ($tenant === null || ! $tenant->allowsEvacuationList()) {
+            throw new InvalidArgumentException('evacuation_list_disabled');
+        }
 
         $people = WorkShift::query()
             ->where('tenant_id', $tenantId)

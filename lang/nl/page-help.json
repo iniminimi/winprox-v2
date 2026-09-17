@@ -606,6 +606,10 @@
                     "text": "Via Organisatie → Instellingen → Werkmenu instellingen kan de beheerder per organisatie bepalen welke onderdelen onder Werk zichtbaar zijn: Kalender, Reserveringen, Inspectierondes en Unitmetingen. Uitgeschakeld verdwijnt het item uit de sidebar en zijn de backoffice-routes niet bereikbaar. Bestaande reserverings- of meet-instellingen op units en categorieën blijven op het QR-portaal werken; nieuw inschakelen kan niet zolang het werkmenu-item uit staat. Unit checks worden niet beïnvloed door Inspectierondes uit."
                 },
                 {
+                    "label": "Prikklok-beveiliging",
+                    "text": "Alleen bij Time: pincode, GPS bij de prik, GPS-werkbezoeken en de <strong>evacuatielijst</strong> op Clock Point. De evacuatielijst is standaard uit; zet ze hier aan als uitvoerders na aanmelden mogen zien wie is ingeklokt (raadpleging wordt gelogd)."
+                },
+                {
                     "label": "WinProx-stijl",
                     "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
                 },
@@ -949,7 +953,7 @@
                 },
                 {
                     "label": "Evacuatielijst",
-                    "text": "Na aanmelden zie je de tegel Evacuatielijst (brandicoon). Eerst bevestig je dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Daarna zie je wie nu is ingeklokt, per locatie, nieuwste inklokking bovenaan."
+                    "text": "Als beheer de evacuatielijst in Instellingen heeft aangezet (standaard uit), zie je na aanmelden de tegel Evacuatielijst (brandicoon). Eerst bevestig je dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Daarna zie je wie nu is ingeklokt, per locatie, nieuwste inklokking bovenaan."
                 },
                 {
                     "label": "Mijn uren",
@@ -1219,7 +1223,7 @@
                 },
                 {
                     "label": "Evacuatielijst",
-                    "text": "De evacuatielijst staat op het Clock Point-portaal na aanmelden (tegel Evacuatielijst). Geen aparte QR. Voor de lijst bevestigt de uitvoerder dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Raadplegingen van vandaag lichten <strong>Aandacht</strong> op (aanwezigheid en dashboard). Time → Alarmen houdt de volledige lijst (datum en uur, nieuwste bovenaan)."
+                    "text": "Als de evacuatielijst in Instellingen aanstaat (standaard uit), staat ze op het Clock Point-portaal na aanmelden (tegel Evacuatielijst). Geen aparte QR. Voor de lijst bevestigt de uitvoerder dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Raadplegingen van vandaag lichten <strong>Aandacht</strong> op (aanwezigheid en dashboard). Time → Alarmen houdt de volledige lijst (datum en uur, nieuwste bovenaan)."
                 }
             ]
         },

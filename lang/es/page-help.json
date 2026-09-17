@@ -606,6 +606,10 @@
                     "text": "En Organización → Ajustes → Ajustes del menú Trabajo, el administrador puede elegir por organización qué elementos de Trabajo son visibles: Calendario, Reservas, Rondas de inspección y Mediciones de unidad. Desactivado, el elemento desaparece de la barra lateral y las rutas de backoffice devuelven prohibido. Los ajustes de reserva o medición existentes en unidades y categorías siguen funcionando en el portal QR; no se pueden activar de nuevo mientras el elemento del menú Trabajo esté desactivado. Los unit checks no se ven afectados si Rondas de inspección está desactivado."
                 },
                 {
+                    "label": "Seguridad del fichaje",
+                    "text": "Solo con Time: PIN, GPS al fichar, visitas GPS y la <strong>lista de evacuación</strong> en Clock Point. La lista está desactivada por defecto; actívela aquí si los ejecutores pueden ver quién está fichado tras identificarse (cada consulta se registra)."
+                },
+                {
                     "label": "Estilo WinProx",
                     "text": "Elija cómo se ve WinProx para usted en administración: Estándar u Oscuro. Su elección se aplica en todos los dispositivos donde haya iniciado sesión. Al final de la página, justo antes de la sección de exportación."
                 },
@@ -949,7 +953,7 @@
                 },
                 {
                     "label": "Lista de evacuación",
-                    "text": "Tras identificarse verá la ficha Lista de evacuación (icono de fuego). Primero confirme que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Después verá quién está fichado, por sede, el fichaje más reciente arriba."
+                    "text": "Si un admin activó la lista de evacuación en Ajustes (desactivada por defecto), verá la ficha Lista de evacuación (icono de fuego) tras identificarse. Primero confirme que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Después verá quién está fichado, por sede, el fichaje más reciente arriba."
                 },
                 {
                     "label": "Mis horas",
@@ -1219,7 +1223,7 @@
                 },
                 {
                     "label": "Lista de evacuación",
-                    "text": "La lista de evacuación está en el portal Clock Point tras identificarse (ficha Lista de evacuación). No hay un QR aparte. Antes de la lista, el ejecutor confirma que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Las consultas de hoy encienden <strong>Atención</strong> (presencia y panel). Time → Alertas conserva la lista completa (fecha y hora, la más reciente arriba)."
+                    "text": "Si la lista de evacuación está activada en Ajustes (desactivada por defecto), está en el portal Clock Point tras identificarse (ficha Lista de evacuación). No hay un QR aparte. Antes de la lista, el ejecutor confirma que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Las consultas de hoy encienden <strong>Atención</strong> (presencia y panel). Time → Alertas conserva la lista completa (fecha y hora, la más reciente arriba)."
                 }
             ]
         },

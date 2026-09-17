@@ -8,6 +8,7 @@ use App\Actions\Time\BuildTimePresenceDashboardAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\CountTimePresenceAttentionAction;
 use App\Actions\Time\ListOpenTimeRosterAction;
+use App\Actions\Time\UpdateTenantTimeClockSecurityAction;
 use App\Enums\TimePresenceAttentionType;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Time\AlarmsIndex;
@@ -28,7 +29,7 @@ afterEach(fn () => Tenancy::forget());
 
 function rosterTenantWithPeople(): array
 {
-    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    $tenant = Tenant::factory()->create(['has_time_module' => true, 'time_evacuation_list' => true]);
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Crèche']);
@@ -173,7 +174,7 @@ it('isoleert de aanwezigheidslijst per tenant', function () {
     [, , $clockPointA, $workerA] = rosterTenantWithPeople();
     app(ClockInAction::class)->handle($workerA, $clockPointA);
 
-    $tenantB = Tenant::factory()->create(['has_time_module' => true]);
+    $tenantB = Tenant::factory()->create(['has_time_module' => true, 'time_evacuation_list' => true]);
     Tenancy::actAs($tenantB->id);
     $teamB = InternalTeam::factory()->create(['tenant_id' => $tenantB->id]);
     $clockPointB = ClockPoint::factory()->create([
@@ -215,6 +216,65 @@ it('verbergt de evacuatietegel zonder time-module', function () {
 
     signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
         ->assertDontSeeHtml('wire:click="openRoster"');
+});
+
+it('verbergt de evacuatietegel standaard', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'evac-off-clock',
+    ]);
+    Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+
+    expect($tenant->allowsEvacuationList())->toBeFalse();
+
+    signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->assertDontSeeHtml('wire:click="openRoster"')
+        ->call('openRoster')
+        ->assertSet('rosterAckOpen', false)
+        ->assertSet('rosterListOpen', false);
+});
+
+it('weigert de evacuatielijst als de instelling uit staat', function () {
+    [$tenant, , , $worker] = rosterTenantWithPeople();
+    $tenant->update(['time_evacuation_list' => false]);
+
+    expect(fn () => app(ListOpenTimeRosterAction::class)->handle((int) $tenant->id))
+        ->toThrow(InvalidArgumentException::class, 'evacuation_list_disabled');
+
+    expect(fn () => app(AcknowledgeTimeRosterViewAction::class)->handle($worker, (int) $tenant->id))
+        ->toThrow(InvalidArgumentException::class, 'evacuation_list_disabled');
+});
+
+it('slaat de evacuatielijst-vlag op in Time-instellingen', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    expect($tenant->allowsEvacuationList())->toBeFalse();
+
+    $updated = app(UpdateTenantTimeClockSecurityAction::class)->handle(
+        $tenant,
+        (int) $tenant->id,
+        [
+            'time_require_worker_pin' => false,
+            'time_gps_on_clock' => false,
+            'time_gps_visits' => false,
+            'time_gps_visit_radius_meters' => null,
+            'time_evacuation_list' => true,
+        ],
+        (int) $admin->id,
+    );
+
+    expect($updated->time_evacuation_list)->toBeTrue()
+        ->and($updated->allowsEvacuationList())->toBeTrue();
 });
 
 it('licht aandacht op na raadpleging van de evacuatielijst', function () {

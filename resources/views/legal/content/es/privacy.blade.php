@@ -88,8 +88,9 @@
     Los trabajadores se identifican con el QR Clock Point (nombre + icono, PIN opcional). WinProx vincula un móvil
     por trabajador. Otro dispositivo se rechaza hasta que el cliente lo libere (admin o jefe de equipo).
     Con Time, WinProx guarda horas de entrada/salida, pausas y presencia; GPS opcional al fichar
-    (sin señal en interior, el fichaje sigue). En el portal Clock Point, un trabajador identificado puede,
-    tras confirmación, consultar la lista de evacuación de quién está fichado; cada consulta se registra
+    (sin señal en interior, el fichaje sigue). Si el cliente activa la lista de evacuación (Ajustes, desactivada por defecto),
+    un trabajador identificado en el portal Clock Point puede,
+    tras confirmación, consultar quién está fichado; cada consulta se registra
     (nombre, apellidos, fecha y hora de quien consulta).
     Tras identificarse, el ejecutor puede abrir Mis horas: solo sus propios turnos del mes elegido.
     Tras publicar el cuadrante, Mi cuadrante muestra solo sus turnos y ausencias publicados

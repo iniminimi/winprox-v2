@@ -43,6 +43,7 @@ class Tenant extends Model
         'time_gps_on_clock',
         'time_gps_visits',
         'time_gps_visit_radius_meters',
+        'time_evacuation_list',
         'enterprise_number',
         'foreign_vat_number',
         'presence_compliance_enabled',
@@ -74,6 +75,7 @@ class Tenant extends Model
             'time_gps_on_clock' => 'boolean',
             'time_gps_visits' => 'boolean',
             'time_gps_visit_radius_meters' => 'integer',
+            'time_evacuation_list' => 'boolean',
             'presence_compliance_enabled' => 'boolean',
             'presence_rsz_client_id' => 'encrypted',
             'presence_rsz_private_key' => 'encrypted',
@@ -325,6 +327,11 @@ class Tenant extends Model
     public function allowsGpsWorkVisits(): bool
     {
         return $this->hasTimeModule() && (bool) $this->time_gps_visits;
+    }
+
+    public function allowsEvacuationList(): bool
+    {
+        return $this->hasTimeModule() && (bool) $this->time_evacuation_list;
     }
 
     public function gpsVisitRadiusMeters(): int

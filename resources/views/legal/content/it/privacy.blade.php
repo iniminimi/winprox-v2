@@ -88,8 +88,9 @@
     Gli esecutori accedono con il QR Clock Point (nome + icona, PIN opzionale). WinProx associa un telefono
     per esecutore. Un altro dispositivo è rifiutato finché il cliente non lo sblocca (admin o caposquadra).
     Con Time, WinProx conserva orari di ingresso/uscita, pause e presenza; GPS opzionale alla timbratura
-    (senza segnale al chiuso la timbratura passa). Sul portale Clock Point un esecutore autenticato può,
-    dopo conferma, consultare l’elenco evacuazione di chi è timbrato; ogni consultazione è registrata
+    (senza segnale al chiuso la timbratura passa). Se il cliente attiva l’elenco evacuazione (Impostazioni, disattivato di default),
+    un esecutore autenticato sul portale Clock Point può,
+    dopo conferma, consultare chi è timbrato; ogni consultazione è registrata
     (nome, cognome, data e ora di chi consulta).
     Dopo l’accesso l’esecutore può aprire Le mie ore: solo i propri turni del mese scelto.
     Dopo la pubblicazione del turno, Il mio turno mostra solo i propri servizi e assenze pubblicati

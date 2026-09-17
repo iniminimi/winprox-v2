@@ -614,6 +614,10 @@
                     "text": "Via Organisation → Paramètres → Paramètres du menu Travail, l'administrateur peut choisir par organisation quels éléments Travail sont visibles : Calendrier, Réservations, Tournées d'inspection et Mesures d'unité. Désactivé, l'élément disparaît de la barre latérale et les routes back-office renvoient interdit. Les réglages de réservation ou de mesure existants sur unités et catégories restent actifs sur le portail QR ; réactivation impossible tant que l'élément du menu Travail est désactivé. Les unit checks ne sont pas affectés si Tournées d'inspection est désactivé."
                 },
                 {
+                    "label": "Sécurité de la pointeuse",
+                    "text": "Uniquement avec Time : PIN, GPS à la pointe, visites GPS et la <strong>liste d’évacuation</strong> sur Clock Point. La liste est désactivée par défaut ; activez-la ici si les exécutants peuvent voir qui est pointé après connexion (chaque consultation est enregistrée)."
+                },
+                {
                     "label": "Style WinProx",
                     "text": "Choisissez l'apparence de WinProx pour vous en administration : Standard ou Sombre. Votre choix s'applique sur tous les appareils où vous êtes connecté. En bas de page, juste avant la rubrique d'export."
                 },
@@ -957,7 +961,7 @@
                 },
                 {
                     "label": "Liste d’évacuation",
-                    "text": "Après connexion, la tuile Liste d’évacuation (icône feu) apparaît. Confirmez d’abord que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Ensuite s’affiche qui est pointé, par site, dernier pointage en haut."
+                    "text": "Si un admin a activé la liste d’évacuation dans Paramètres (désactivée par défaut), la tuile Liste d’évacuation (icône feu) apparaît après connexion. Confirmez d’abord que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Ensuite s’affiche qui est pointé, par site, dernier pointage en haut."
                 },
                 {
                     "label": "Mes heures",
@@ -1227,7 +1231,7 @@
                 },
                 {
                     "label": "Liste d’évacuation",
-                    "text": "La liste d’évacuation est sur le portail Clock Point après connexion (tuile Liste d’évacuation). Pas de QR distinct. Avant la liste, l’exécutant confirme que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Les consultations d’aujourd’hui allument <strong>À surveiller</strong> (présence et tableau de bord). Time → Alertes conserve la liste complète (date et heure, plus récente en haut)."
+                    "text": "Si la liste d’évacuation est activée dans Paramètres (désactivée par défaut), elle est sur le portail Clock Point après connexion (tuile Liste d’évacuation). Pas de QR distinct. Avant la liste, l’exécutant confirme que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Les consultations d’aujourd’hui allument <strong>À surveiller</strong> (présence et tableau de bord). Time → Alertes conserve la liste complète (date et heure, plus récente en haut)."
                 }
             ]
         },

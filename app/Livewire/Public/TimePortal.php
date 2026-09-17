@@ -324,6 +324,10 @@ class TimePortal extends Component
             return;
         }
 
+        if (! TimePortalData::tenantAllowsEvacuationList($this->tenantId)) {
+            return;
+        }
+
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
         $this->rosterAckOpen = true;
@@ -936,6 +940,7 @@ class TimePortal extends Component
             $openShift = $findShift->handle($verifiedWorker);
         }
         $hasTimeModule = TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId));
+        $evacuationList = TimePortalData::tenantAllowsEvacuationList($this->tenantId);
         $tasks = $canAct && $verifiedWorker !== null ? TimePortalData::openTasksForWorker($verifiedWorker) : collect();
         $teamWorkers = ($team !== null && $verifiedWorker !== null && $verifiedWorker->is_teamleader)
             ? Worker::query()
@@ -953,8 +958,13 @@ class TimePortal extends Component
             $this->scheduleListOpen = false;
         }
 
+        if (! $evacuationList) {
+            $this->rosterAckOpen = false;
+            $this->rosterListOpen = false;
+        }
+
         $roster = null;
-        if ($canAct && $this->rosterListOpen && $verifiedWorker !== null && $hasTimeModule) {
+        if ($canAct && $this->rosterListOpen && $verifiedWorker !== null && $evacuationList) {
             $roster = $listRoster->handle($this->tenantId);
         }
 
@@ -1007,6 +1017,7 @@ class TimePortal extends Component
             'openShift' => $openShift,
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
+            'evacuationList' => $evacuationList,
             'gpsOnClock' => $this->tenantRequestsClockGps(),
             'gpsVisits' => TimePortalData::tenantAllowsGpsWorkVisits($this->tenantId),
             'canPunch' => ClockPointScanGrant::isValid($this->clockPointId),

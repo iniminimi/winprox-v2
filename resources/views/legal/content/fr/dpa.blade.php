@@ -35,7 +35,7 @@
     <li>gestion des utilisateurs et équipes internes.</li>
     <li>gestion des exécutants (sans connexion) et affectation aux tâches.</li>
     <li>file d’attente temporaire sur l’appareil de l’exécutant jusqu’à synchronisation des actions de terrain (tâches, signalements, photos, contrôles d’unité).</li>
-    <li>pointage optionnel (Time) : entrée/sortie, présence, feuille d’heures (y compris d’éventuelles minutes de pause d’équipe), liaison d’appareil, GPS optionnel à la pointe, consultation de Mes heures sur Clock Point, planning et absences (congé, récup, maladie) saisis par le client, Mon planning sur Clock Point, et consultations enregistrées de la liste d’évacuation.</li>
+    <li>pointage optionnel (Time) : entrée/sortie, présence, feuille d’heures (y compris d’éventuelles minutes de pause d’équipe), liaison d’appareil, GPS optionnel à la pointe, consultation de Mes heures sur Clock Point, planning et absences (congé, récup, maladie) saisis par le client, Mon planning sur Clock Point, et consultations enregistrées de la liste d’évacuation (si activée).</li>
     <li>gestion des sites et unités.</li>
     <li>envoi de notifications par e-mail sur instruction du client.</li>
     <li>journalisation et sécurité.</li>

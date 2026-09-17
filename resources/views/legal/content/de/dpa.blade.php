@@ -35,7 +35,7 @@
     <li>Verwaltung von Benutzern und internen Teams.</li>
     <li>Verwaltung von Ausführenden (ohne Login) und Zuweisung zu Aufgaben.</li>
     <li>vorübergehende lokale Warteschlange auf dem Gerät des Ausführenden bis zur Synchronisation von Feldaktionen (Aufgaben, Meldungen, Fotos, Unit-Checks).</li>
-    <li>optionale Zeiterfassung (Time): Ein-/Ausstempeln, Anwesenheit, Stundenliste (einschließlich etwaiger Team-Pauseminuten), Gerätebindung, optionales GPS beim Stempeln, Einsicht der eigenen Stunden am Clock Point, geplanter Dienstplan und Abwesenheiten (Urlaub, Ausgleich, Krank) die der Kunde erfasst, Mein Dienstplan am Clock Point und protokollierte Einsicht in die Evakuierungsliste.</li>
+    <li>optionale Zeiterfassung (Time): Ein-/Ausstempeln, Anwesenheit, Stundenliste (einschließlich etwaiger Team-Pauseminuten), Gerätebindung, optionales GPS beim Stempeln, Einsicht der eigenen Stunden am Clock Point, geplanter Dienstplan und Abwesenheiten (Urlaub, Ausgleich, Krank) die der Kunde erfasst, Mein Dienstplan am Clock Point und protokollierte Einsicht in die Evakuierungsliste (falls eingeschaltet).</li>
     <li>Verwaltung von Standorten und Units.</li>
     <li>Versand von E-Mail-Benachrichtigungen im Auftrag des Kunden.</li>
     <li>Protokollierung und Sicherheit.</li>

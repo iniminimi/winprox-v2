@@ -606,6 +606,10 @@
                     "text": "Über Organisation → Einstellungen → Arbeitsmenü-Einstellungen kann der Administrator pro Organisation festlegen, welche Arbeitsmenü-Einträge sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag aus der Seitenleiste und Backoffice-Routen sind gesperrt. Bestehende Reservierungs- oder Mess-Einstellungen auf Units und Kategorien funktionieren im QR-Portal weiter; neu aktivieren ist nicht möglich, solange der Menüeintrag aus ist. Unit Checks werden nicht beeinflusst, wenn Inspektionsrunden aus ist."
                 },
                 {
+                    "label": "Stempeluhr-Sicherheit",
+                    "text": "Nur mit Time: PIN, GPS beim Stempeln, GPS-Arbeitsbesuche und die <strong>Evakuierungsliste</strong> am Clock Point. Die Liste ist standardmäßig aus; schalten Sie sie hier ein, wenn Ausführende nach der Anmeldung sehen dürfen, wer eingestempelt ist (jede Einsicht wird protokolliert)."
+                },
+                {
                     "label": "WinProx-Stil",
                     "text": "Wählen Sie, wie WinProx für Sie in der Verwaltung aussieht: Standard oder Dunkel. Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind. Steht unten auf der Seite, direkt vor dem Export-Bereich."
                 },
@@ -949,7 +953,7 @@
                 },
                 {
                     "label": "Evakuierungsliste",
-                    "text": "Nach der Anmeldung sehen Sie die Kachel Evakuierungsliste (Feuersymbol). Bestätigen Sie zuerst, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Danach sehen Sie, wer jetzt eingestempelt ist, nach Standort, neueste Einstempelung oben."
+                    "text": "Wenn die Verwaltung die Evakuierungsliste in Einstellungen eingeschaltet hat (standardmäßig aus), sehen Sie nach der Anmeldung die Kachel Evakuierungsliste (Feuersymbol). Bestätigen Sie zuerst, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Danach sehen Sie, wer jetzt eingestempelt ist, nach Standort, neueste Einstempelung oben."
                 },
                 {
                     "label": "Meine Stunden",
@@ -1219,7 +1223,7 @@
                 },
                 {
                     "label": "Evakuierungsliste",
-                    "text": "Die Evakuierungsliste steht nach der Anmeldung auf dem Clock-Point-Portal (Kachel Evakuierungsliste). Kein eigener QR. Vor der Liste bestätigt der Ausführende, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Einsichten von heute lassen <strong>Aufmerksamkeit</strong> aufleuchten (Anwesenheit und Dashboard). Time → Alarme behält die vollständige Liste (Datum und Uhrzeit, neueste oben)."
+                    "text": "Wenn die Evakuierungsliste in Einstellungen an ist (standardmäßig aus), steht sie nach der Anmeldung auf dem Clock-Point-Portal (Kachel Evakuierungsliste). Kein eigener QR. Vor der Liste bestätigt der Ausführende, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Einsichten von heute lassen <strong>Aufmerksamkeit</strong> aufleuchten (Anwesenheit und Dashboard). Time → Alarme behält die vollständige Liste (Datum und Uhrzeit, neueste oben)."
                 }
             ]
         },

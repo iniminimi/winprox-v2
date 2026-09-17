@@ -70,7 +70,7 @@
                 "Listas de turnos y exportar/imprimir",
                 "Misma identidad de trabajador (nombre + icono) que Facility",
                 "Un móvil por trabajador, PIN y GPS opcionales",
-                "Lista de evacuación en Clock Point tras confirmación",
+                "Lista de evacuación opcional en Clock Point (Ajustes, desactivada por defecto)",
                 "Alarma al saltar entre Clock Points en menos de 5 min",
                 "Mis horas en Clock Point (solo tus turnos)",
                 "Pausa mínima por equipo en el parte (sin evento CIAO extra)"
@@ -138,7 +138,7 @@
                 "QR de unidad: reporte + tareas de trabajador in situ",
                 "QR de unidad: página ya abierta usable sin cobertura",
                 "Clock Point QR: inicio de sesión / fichaje entrada",
-                "Clock Point: ficha lista de evacuación de fichados",
+                "Clock Point: ficha opcional lista de evacuación de fichados (desactivada por defecto)",
                 "QR de ubicación y hojas de pegatinas (p. ej. Avery)",
                 "QR dinámico asignable a una unidad más tarde",
                 "Moderación: difuminado hasta aprobación en páginas públicas",

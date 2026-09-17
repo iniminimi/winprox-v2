@@ -122,6 +122,8 @@ class Settings extends Component
 
     public bool $timeGpsVisits = false;
 
+    public bool $timeEvacuationList = false;
+
     public string $timeGpsVisitRadiusMeters = '250';
 
     public string $presenceComplianceScope = 'ciao_cleaning';
@@ -246,6 +248,7 @@ class Settings extends Component
                 'time_gps_visit_radius_meters' => $this->timeGpsVisitRadiusMeters !== ''
                     ? (int) $this->timeGpsVisitRadiusMeters
                     : null,
+                'time_evacuation_list' => $this->timeEvacuationList,
             ],
             UpdateTenantTimeClockSecurityRequest::ruleSet(),
         )->validate();
@@ -855,6 +858,7 @@ class Settings extends Component
         $this->timeRequireWorkerPin = (bool) $tenant->time_require_worker_pin;
         $this->timeGpsOnClock = (bool) $tenant->time_gps_on_clock;
         $this->timeGpsVisits = (bool) $tenant->time_gps_visits;
+        $this->timeEvacuationList = (bool) $tenant->time_evacuation_list;
         $this->timeGpsVisitRadiusMeters = $tenant->time_gps_visit_radius_meters
             ? (string) $tenant->time_gps_visit_radius_meters
             : (string) config('time.gps_visit_radius_meters', 250);

@@ -88,8 +88,9 @@
     Ausführende melden sich über den Clock-Point-QR an (Name + Symbol, optionale PIN). WinProx koppelt ein Handy
     pro Ausführendem. Ein anderes Gerät wird abgelehnt, bis der Kunde es freigibt (Verwaltung oder Teamleiter).
     Mit Time speichert WinProx Ein-/Ausstempelzeiten, Pausen und Anwesenheit; optional GPS beim Stempeln
-    (ohne Signal indoor geht der Stempel durch). Am Clock-Point-Portal kann ein angemeldeter Ausführender nach
-    Bestätigung die Evakuierungsliste der aktuell Eingestempelten einsehen; jede Einsicht wird protokolliert
+    (ohne Signal indoor geht der Stempel durch). Wenn der Kunde die Evakuierungsliste einschaltet (Einstellungen, standardmäßig aus),
+    kann ein angemeldeter Ausführender am Clock-Point-Portal nach
+    Bestätigung einsehen, wer aktuell eingestempelt ist; jede Einsicht wird protokolliert
     (Vorname, Name, Datum und Uhrzeit der einsehenden Person).
     Nach der Anmeldung kann der Ausführende Meine Stunden öffnen: nur die eigenen Schichten des gewählten Monats.
     Nach Veröffentlichung des Dienstplans zeigt Mein Dienstplan nur die eigenen veröffentlichten Schichten und

@@ -70,7 +70,7 @@
                 "Schichtlisten und Export/Druck",
                 "Gleiche Mitarbeiteridentität (Name + Icon) wie Facility",
                 "Ein Handy pro Ausführendem, optionale PIN und GPS",
-                "Evakuierungsliste am Clock Point nach Bestätigung",
+                "Optionale Evakuierungsliste am Clock Point (Einstellungen, standardmäßig aus)",
                 "Alarm bei Hop zwischen Clock Points innerhalb von 5 Min.",
                 "Meine Stunden am Clock Point (nur eigene Schichten)",
                 "Mindestpause pro Team auf der Stundenliste (kein extra CIAO-Ereignis)"
@@ -138,7 +138,7 @@
                 "Einheiten-QR: Meldung + Mitarbeiteraufgaben vor Ort",
                 "Einheiten-QR: geladene Seite ohne Empfang nutzbar",
                 "Clock Point QR: Anmeldung / Einstempeln",
-                "Clock Point: Kachel Evakuierungsliste der Eingestempelten",
+                "Clock Point: optionale Kachel Evakuierungsliste der Eingestempelten (standardmäßig aus)",
                 "Standort-QR und Aufkleberbögen (z. B. Avery)",
                 "Dynamischer QR, der später einer Einheit zugewiesen werden kann",
                 "Moderation: Unschärfe bis Genehmigung auf öffentlichen Seiten",

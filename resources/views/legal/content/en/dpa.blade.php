@@ -34,7 +34,7 @@
     <li>management of users and internal teams.</li>
     <li>management of workers (without login) and assignment to tasks.</li>
     <li>temporary on-device queue until field actions sync (tasks, reports, photos, unit checks).</li>
-    <li>optional time tracking (Time): clock in/out, presence, timesheet (including any team-break minutes), device binding, optional GPS at the punch, own-hours view on Clock Point, planned roster and absences (leave, time off in lieu, sick) entered by the customer, My roster on Clock Point, and logged evacuation-list consultations.</li>
+    <li>optional time tracking (Time): clock in/out, presence, timesheet (including any team-break minutes), device binding, optional GPS at the punch, own-hours view on Clock Point, planned roster and absences (leave, time off in lieu, sick) entered by the customer, My roster on Clock Point, and logged evacuation-list consultations (if enabled).</li>
     <li>management of locations and units.</li>
     <li>sending email notifications on the customer’s instructions.</li>
     <li>logging and security.</li>

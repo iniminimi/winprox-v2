@@ -34,7 +34,7 @@
     <li>gestión de usuarios y equipos internos.</li>
     <li>gestión de trabajadores (sin inicio de sesión) y asignación a tareas.</li>
     <li>cola temporal en el dispositivo del ejecutor hasta sincronizar las acciones de campo (tareas, avisos, fotos, controles de unidad).</li>
-    <li>fichaje opcional (Time): entrada/salida, presencia, parte de horas (incluidos posibles minutos de pausa de equipo), vinculación de dispositivo, GPS opcional al fichar, consulta de Mis horas en Clock Point, cuadrante y ausencias (permiso, compensación, baja) que introduce el cliente, Mi cuadrante en Clock Point y consultas registradas de la lista de evacuación.</li>
+    <li>fichaje opcional (Time): entrada/salida, presencia, parte de horas (incluidos posibles minutos de pausa de equipo), vinculación de dispositivo, GPS opcional al fichar, consulta de Mis horas en Clock Point, cuadrante y ausencias (permiso, compensación, baja) que introduce el cliente, Mi cuadrante en Clock Point y consultas registradas de la lista de evacuación (si está activada).</li>
     <li>gestión de ubicaciones y unidades.</li>
     <li>envío de notificaciones por correo electrónico siguiendo las instrucciones del cliente.</li>
     <li>registro de actividad y seguridad.</li>
