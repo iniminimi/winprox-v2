@@ -2719,9 +2719,10 @@
 }
 
 /* Minimal welcome (hero + video) */
-[data-theme='standard'] .wp-welcome-hero--minimal {
+[data-theme='standard'] .wp-welcome-hero.wp-welcome-hero--minimal {
     --wp-welcome-hero-panel-fill: #e6dccf;
-    padding: clamp(1.5rem, 4vh, 2.5rem) 1.5rem 2.5rem;
+    overflow: visible;
+    padding: clamp(1.5rem, 4vh, 2.5rem) 1.5rem clamp(3.5rem, 8vh, 5rem);
 }
 
 [data-theme='standard'] .wp-welcome-hero--minimal .wp-welcome-main {
@@ -2736,7 +2737,7 @@
     min-height: min(32rem, calc(100svh - 8rem));
     padding: 1.25rem;
     border-radius: var(--wp-radius-lg);
-    overflow: hidden;
+    overflow: visible;
     box-shadow: var(--wp-shadow-lg);
     background: var(--wp-welcome-hero-panel-fill);
 }
@@ -2757,6 +2758,7 @@
     height: 100%;
     object-fit: cover;
     object-position: 88% center;
+    border-radius: inherit;
 }
 
 [data-theme='standard'] .wp-welcome-hero-minimal {
@@ -2765,6 +2767,7 @@
     width: min(32rem, 100%);
     margin: 0;
     text-align: center;
+    overflow: visible;
     padding: 1.75rem 1.25rem 2rem;
     border-radius: var(--wp-radius-lg);
     background: color-mix(in srgb, var(--wp-welcome-hero-panel-fill) 80%, transparent);
@@ -2863,52 +2866,89 @@
 }
 
 [data-theme='standard'] .wp-welcome-feature-board {
-    position: relative;
-    margin: 1.5rem auto 0;
-    max-width: 22rem;
-    padding: 0.85rem 1rem 1rem;
-    text-align: left;
-    background: #fff8ee;
-    border: 1px solid color-mix(in srgb, var(--wp-text) 14%, transparent);
-    border-radius: 0.35rem;
-    box-shadow: var(--wp-shadow);
-    transform: rotate(-1deg);
+    position: absolute;
+    z-index: 3;
+    top: 100%;
+    right: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    width: 11.5rem;
+    height: 11.5rem;
+    margin: 0;
+    padding: 1.05rem 0.9rem 1.15rem;
+    text-align: center;
+    background: #ffe566;
+    border: 0;
+    border-radius: 0.05rem;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.42),
+        0.2rem 0.4rem 0.75rem rgba(28, 25, 23, 0.22);
+    transform: translate(8%, -18%) rotate(-7deg);
 }
 
 [data-theme='standard'] .wp-welcome-feature-board::before {
     content: '';
     position: absolute;
-    top: -0.42rem;
+    top: -0.38rem;
     left: 50%;
-    width: 2.6rem;
-    height: 0.68rem;
-    transform: translateX(-50%) rotate(-3deg);
-    background: color-mix(in srgb, var(--wp-info-text) 28%, #d4c0a0);
-    opacity: 0.9;
+    width: 2.4rem;
+    height: 0.62rem;
+    transform: translateX(-50%) rotate(-4deg);
+    background: color-mix(in srgb, #fff 55%, transparent);
+    box-shadow: 0 0.08rem 0.18rem rgba(28, 25, 23, 0.12);
+}
+
+[data-theme='standard'] .wp-welcome-feature-board::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: linear-gradient(135deg, transparent 50%, #e6c63f 50%);
+    pointer-events: none;
 }
 
 [data-theme='standard'] .wp-welcome-feature-board .wp-pill {
-    margin-bottom: 0.45rem;
+    margin: 0;
 }
 
 [data-theme='standard'] .wp-welcome-feature-board__title {
     margin: 0;
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    line-height: 1.35;
+    line-height: 1.3;
     color: var(--wp-text);
 }
 
 [data-theme='standard'] .wp-welcome-feature-board__text {
-    margin: 0.2rem 0 0;
-    font-size: 0.875rem;
-    line-height: 1.4;
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.35;
     color: var(--wp-text-body);
+}
+
+@media (min-width: 48rem) {
+    [data-theme='standard'] .wp-welcome-feature-board {
+        width: 12.25rem;
+        height: 12.25rem;
+        right: -0.6rem;
+        transform: translate(22%, -20%) rotate(-8deg);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     [data-theme='standard'] .wp-welcome-feature-board {
-        transform: none;
+        transform: translate(8%, -18%);
+    }
+
+    @media (min-width: 48rem) {
+        [data-theme='standard'] .wp-welcome-feature-board {
+            transform: translate(22%, -20%);
+        }
     }
 }
 

@@ -1119,7 +1119,7 @@ App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
   WinProx · *Het werk op uw locatie, gewoon goed geregeld.* ·
   *Van melding en planning tot uitvoering en afhandeling.* · **Scan → Meld → Werk → Klaar**
   (met iconen) · CTA's **Gratis proberen** / **Bekijk hoe het werkt**.
-  Daaronder een **Nieuw**-bord (papier, licht scheef): *Ook voor schoonmaak & bouw* /
+  Over de kaders een vierkante gele **post-it** (Nieuw): *Ook voor schoonmaak & bouw* /
   *RSZ & Ciao voorbereid*. Geen GPS-claim; bouw-RSZ blijft “voorbereid”, niet live.
 - **Video:** korte demo (`video/welcome.mp4`, alle talen) onder de hero, met ruimte erboven.
   Geen assistent-clip in de topnav.
