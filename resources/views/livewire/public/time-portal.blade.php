@@ -24,7 +24,9 @@
             </div>
         </div>
         <x-wp-page-head-title variant="portal" icon="clock" :title="__('time.portal.title')">
-            <p class="wp-muted">{{ $clockPointName }}</p>
+            @if ($showClockPointName ?? false)
+                <p class="wp-muted">{{ $clockPointName }}</p>
+            @endif
         </x-wp-page-head-title>
     </div>
 

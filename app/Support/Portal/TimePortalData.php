@@ -95,4 +95,20 @@ final class TimePortalData
 
         return $tenant !== null && $tenant->allowsEvacuationList();
     }
+
+    public static function isGenericClockPointName(?string $name): bool
+    {
+        $name = trim((string) $name);
+        if ($name === '') {
+            return true;
+        }
+
+        foreach (config('locales.supported', []) as $locale) {
+            if ($name === trans('team.clock_point_qr.default_name', [], $locale)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

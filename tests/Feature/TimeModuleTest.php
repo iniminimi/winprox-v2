@@ -417,6 +417,32 @@ it('laat een admin een open shift geforceerd sluiten met reden en auditlog', fun
         ->exists())->toBeTrue();
 });
 
+it('verbergt de standaard Clock Point-naam onder Inklokken', function () {
+    [$tenant] = timeTenantWithAdmin();
+    ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => __('team.clock_point_qr.default_name'),
+        'qr_token' => 'generic-clock-name',
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => 'generic-clock-name'])
+        ->assertSee(__('time.portal.title'), false)
+        ->assertDontSeeHtml('<p class="wp-muted">'.e(__('team.clock_point_qr.default_name')).'</p>');
+});
+
+it('toont een eigen Clock Point-naam onder Inklokken', function () {
+    [$tenant] = timeTenantWithAdmin();
+    ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Magazijn',
+        'qr_token' => 'named-clock',
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => 'named-clock'])
+        ->assertSee(__('time.portal.title'), false)
+        ->assertSeeHtml('<p class="wp-muted">Magazijn</p>');
+});
+
 it('toont het time-portaal en laat een worker inklokken na icoonbevestiging', function () {
     [$tenant] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);

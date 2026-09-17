@@ -1030,6 +1030,7 @@ class TimePortal extends Component
             'schedule' => $schedule,
             'scheduleMonthLabel' => $scheduleMonthLabel,
             'scheduleUnreadCount' => $scheduleUnreadCount,
+            'showClockPointName' => ! TimePortalData::isGenericClockPointName($this->clockPointName),
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);
