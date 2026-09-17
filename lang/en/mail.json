@@ -29,12 +29,12 @@
         "plain_link_label": "Unsubscribe"
     },
     "verify_email": {
-        "subject": "WinProx: confirm your email address",
-        "intro": "Welcome to WinProx. Please confirm your email address to activate your account.",
-        "cta": "Confirm email address",
+        "subject": ":tenant — welcome to WinProx",
+        "intro": "Welcome to :tenant. Open WinProx to continue.",
+        "cta": "Open WinProx",
         "link_fallback": "If the button does not work, copy this link:",
         "expiry": "This link is valid for :hours hours.",
-        "footer": "Did you not create this account? Then no action is needed: without confirmation we delete it automatically."
+        "footer": "Did you not create this account? Then no action is needed."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirm your report",

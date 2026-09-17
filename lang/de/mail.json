@@ -29,12 +29,12 @@
         "plain_link_label": "Abmelden"
     },
     "verify_email": {
-        "subject": "WinProx: E-Mail-Adresse bestätigen",
-        "intro": "Willkommen bei WinProx. Bestätige deine E-Mail-Adresse, um dein Konto zu aktivieren.",
-        "cta": "E-Mail-Adresse bestätigen",
+        "subject": ":tenant — willkommen bei WinProx",
+        "intro": "Willkommen bei :tenant. Öffne WinProx, um weiterzumachen.",
+        "cta": "WinProx öffnen",
         "link_fallback": "Wenn der Button nicht funktioniert, kopiere diesen Link:",
         "expiry": "Dieser Link ist :hours Std. gültig.",
-        "footer": "Du hast dieses Konto nicht erstellt? Dann musst du nichts tun: ohne Bestätigung löschen wir es automatisch."
+        "footer": "Du hast dieses Konto nicht erstellt? Dann musst du nichts tun."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — Meldung bestätigen",

@@ -29,12 +29,12 @@
         "plain_link_label": "Annulla iscrizione"
     },
     "verify_email": {
-        "subject": "WinProx: conferma il tuo indirizzo e-mail",
-        "intro": "Benvenuto in WinProx. Conferma il tuo indirizzo e-mail per attivare l'account.",
-        "cta": "Conferma indirizzo e-mail",
+        "subject": ":tenant — benvenuto su WinProx",
+        "intro": "Benvenuto in :tenant. Apri WinProx per continuare.",
+        "cta": "Apri WinProx",
         "link_fallback": "Se il pulsante non funziona, copia questo link:",
         "expiry": "Questo link è valido per :hours ore.",
-        "footer": "Non hai creato questo account? Non devi fare nulla: senza conferma lo eliminiamo automaticamente."
+        "footer": "Non hai creato questo account? Non devi fare nulla."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — conferma la segnalazione",

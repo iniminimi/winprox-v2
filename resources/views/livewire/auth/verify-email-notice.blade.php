@@ -21,6 +21,9 @@
         <p class="wp-muted">{{ __('auth.verify.subtitle', ['email' => $email]) }}</p>
     </div>
 
+    @if (session('error'))
+        <p class="wp-error" role="alert">{{ session('error') }}</p>
+    @endif
     @if ($status)
         <div class="wp-pill wp-pill--done">{{ $status }}</div>
     @endif

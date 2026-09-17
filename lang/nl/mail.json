@@ -29,12 +29,12 @@
         "plain_link_label": "Uitschrijven"
     },
     "verify_email": {
-        "subject": "WinProx: bevestig je e-mailadres",
-        "intro": "Welkom bij WinProx. Bevestig je e-mailadres om je account te activeren.",
-        "cta": "E-mailadres bevestigen",
+        "subject": ":tenant — welkom bij WinProx",
+        "intro": "Welkom bij :tenant. Open WinProx om verder te gaan.",
+        "cta": "WinProx openen",
         "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",
         "expiry": "Deze link is :hoursu geldig.",
-        "footer": "Heb je dit account niet aangemaakt? Dan hoef je niets te doen: zonder bevestiging verwijderen we het automatisch."
+        "footer": "Heb je dit account niet aangemaakt? Dan hoef je niets te doen."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — bevestig je melding",

@@ -29,12 +29,12 @@
         "plain_link_label": "Cancelar suscripción"
     },
     "verify_email": {
-        "subject": "WinProx: confirma tu dirección de correo",
-        "intro": "Bienvenido a WinProx. Confirma tu dirección de correo para activar tu cuenta.",
-        "cta": "Confirmar dirección de correo",
+        "subject": ":tenant — bienvenido a WinProx",
+        "intro": "Bienvenido a :tenant. Abre WinProx para continuar.",
+        "cta": "Abrir WinProx",
         "link_fallback": "Si el botón no funciona, copia este enlace:",
         "expiry": "Este enlace es válido durante :hours h.",
-        "footer": "¿No has creado esta cuenta? No hace falta hacer nada: sin confirmación la eliminamos automáticamente."
+        "footer": "¿No has creado esta cuenta? No hace falta hacer nada."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirma tu informe",

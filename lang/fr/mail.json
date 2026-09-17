@@ -29,12 +29,12 @@
         "plain_link_label": "Se désinscrire"
     },
     "verify_email": {
-        "subject": "WinProx : confirmez votre adresse e-mail",
-        "intro": "Bienvenue chez WinProx. Confirmez votre adresse e-mail pour activer votre compte.",
-        "cta": "Confirmer l'adresse e-mail",
+        "subject": ":tenant — bienvenue chez WinProx",
+        "intro": "Bienvenue chez :tenant. Ouvrez WinProx pour continuer.",
+        "cta": "Ouvrir WinProx",
         "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :",
         "expiry": "Ce lien est valable :hours h.",
-        "footer": "Vous n'avez pas créé ce compte ? Aucune action n'est nécessaire : sans confirmation, nous le supprimons automatiquement."
+        "footer": "Vous n'avez pas créé ce compte ? Aucune action n'est nécessaire."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirmez votre signalement",

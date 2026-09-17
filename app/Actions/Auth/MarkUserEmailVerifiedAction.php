@@ -13,10 +13,21 @@ class MarkUserEmailVerifiedAction
     public function handle(User $user): User
     {
         if ($user->hasVerifiedEmail()) {
+            if ($user->email_verify_token !== null || $user->email_verify_expires_at !== null) {
+                $user->forceFill([
+                    'email_verify_token' => null,
+                    'email_verify_expires_at' => null,
+                ])->save();
+            }
+
             return $user;
         }
 
-        $user->forceFill(['email_verified_at' => now()])->save();
+        $user->forceFill([
+            'email_verified_at' => now(),
+            'email_verify_token' => null,
+            'email_verify_expires_at' => null,
+        ])->save();
 
         event(new Verified($user));
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ConfirmUserEmailController;
 use App\Http\Controllers\Auth\MicrosoftAuthController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Billing\StripeWebhookController;
@@ -142,6 +143,10 @@ Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
 
 Route::get('/q/{token}', QrController::class)->name('qr.scan');
+
+Route::get('/start/{token}', ConfirmUserEmailController::class)
+    ->where('token', '[a-z0-9]{20,64}')
+    ->name('verification.start');
 
 Route::get('/melden/e/{token}', ConfirmQrReportEmail::class)
     ->where('token', '[a-z0-9]{20,64}')

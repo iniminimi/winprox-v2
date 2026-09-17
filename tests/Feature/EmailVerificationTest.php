@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Auth\SendUserEmailVerificationAction;
 use App\Enums\EmailUnsubscribeSource;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\VerifyEmailNotice;
@@ -39,7 +40,24 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
 
     Mail::assertSent(
         VerifyUserEmailMail::class,
-        fn (VerifyUserEmailMail $mail) => $mail->hasTo('nieuw@winprox.test'),
+        function (VerifyUserEmailMail $mail) {
+            $url = $mail->verificationUrl();
+            $html = $mail->render();
+            $locale = (string) ($mail->locale ?: app()->getLocale());
+
+            $mail->assertHasSubject(trans('mail.verify_email.subject', ['tenant' => 'Nieuwe Facility'], $locale));
+
+            expect($mail->hasTo('nieuw@winprox.test'))->toBeTrue()
+                ->and($url)->toContain('/start/')
+                ->and($url)->not->toContain('/email/verify')
+                ->and($url)->not->toContain('signature=')
+                ->and($html)->toContain('/start/')
+                ->and($html)->toContain(trans('mail.verify_email.cta', [], $locale))
+                ->and($html)->not->toContain('/email/verify')
+                ->and($html)->not->toContain('signature=');
+
+            return true;
+        },
     );
 });
 
@@ -164,3 +182,59 @@ it('beperkt het opnieuw versturen van de verificatiemail', function () {
 
     Mail::assertSent(VerifyUserEmailMail::class, 3);
 });
+
+it('bevestigt het e-mailadres via de korte token-link', function () {
+    Mail::fake();
+
+    $user = unverifiedTenantAdmin();
+    app(SendUserEmailVerificationAction::class)->handle($user);
+
+    $mail = Mail::sent(VerifyUserEmailMail::class)->first();
+    expect($mail)->not->toBeNull();
+
+    $this->actingAs($user)
+        ->get($mail->verificationUrl())
+        ->assertRedirect(route('dashboard'));
+
+    expect($user->refresh()->hasVerifiedEmail())->toBeTrue()
+        ->and($user->email_verify_token)->toBeNull()
+        ->and(AuditLog::query()
+            ->where('action', 'auth.email_verified')
+            ->where('tenant_id', $user->tenant_id)
+            ->exists())->toBeTrue();
+});
+
+it('bevestigt via de token-link ook zonder ingelogde sessie', function () {
+    Mail::fake();
+
+    $user = unverifiedTenantAdmin();
+    app(SendUserEmailVerificationAction::class)->handle($user);
+    $mail = Mail::sent(VerifyUserEmailMail::class)->first();
+
+    $this->get($mail->verificationUrl())
+        ->assertRedirect(route('login'));
+
+    expect($user->refresh()->hasVerifiedEmail())->toBeTrue();
+});
+
+it('weigert een verlopen token-link', function () {
+    Mail::fake();
+
+    $user = unverifiedTenantAdmin();
+    app(SendUserEmailVerificationAction::class)->handle($user);
+    $mail = Mail::sent(VerifyUserEmailMail::class)->first();
+
+    $user->forceFill(['email_verify_expires_at' => now()->subMinute()])->save();
+
+    $this->actingAs($user)
+        ->get($mail->verificationUrl())
+        ->assertRedirect(route('verification.notice'));
+
+    expect($user->refresh()->hasVerifiedEmail())->toBeFalse();
+});
+
+it('weigert een ongeldige token-link', function () {
+    $this->get(route('verification.start', ['token' => str_repeat('a', 48)]))
+        ->assertRedirect(route('login'));
+});
+

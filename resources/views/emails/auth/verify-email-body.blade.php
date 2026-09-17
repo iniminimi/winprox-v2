@@ -1,4 +1,4 @@
-<p>{{ __('mail.verify_email.intro') }}</p>
+<p>{{ __('mail.verify_email.intro', ['tenant' => $tenantName]) }}</p>
 
 <p style="text-align: center; margin-top: 24px;">
     <a href="{{ $verificationUrl }}" style="display: inline-block; background-color: #059669; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 14px;">

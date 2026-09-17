@@ -104,7 +104,7 @@ return [
     | E-mailverificatie
     |--------------------------------------------------------------------------
     |
-    | Geldigheid (minuten) van de ondertekende verificatielink na registratie.
+    | Geldigheid (minuten) van de verificatielink na registratie.
     |
     */
 

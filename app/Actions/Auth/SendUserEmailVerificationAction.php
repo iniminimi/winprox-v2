@@ -8,11 +8,11 @@ use App\Mail\VerifyUserEmailMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 /**
- * Verstuurt de verificatiemail met een ondertekende, tijdelijke link.
+ * Verstuurt de verificatiemail met een korte, tijdelijke token-link.
  */
 class SendUserEmailVerificationAction
 {
@@ -68,19 +68,25 @@ class SendUserEmailVerificationAction
         RateLimiter::hit($key, self::WINDOW_SECONDS);
 
         $minutes = max(1, (int) config('auth.verification.expire', 60));
+        $token = $this->issueToken($user, $minutes);
 
-        $url = URL::temporarySignedRoute(
-            'verification.verify',
-            now()->addMinutes($minutes),
-            [
-                'id' => $user->id,
-                'hash' => sha1($user->getEmailForVerification()),
-            ],
-            absolute: true,
-        );
-
-        Mail::to($email)->send(new VerifyUserEmailMail($user, $url, $minutes));
+        Mail::to($email)->send(new VerifyUserEmailMail($user, $token, $minutes));
 
         return ['sent' => true, 'retry_after' => 0];
+    }
+
+    private function issueToken(User $user, int $minutes): string
+    {
+        do {
+            $token = Str::lower(Str::random(48));
+            $hash = hash('sha256', $token);
+        } while (User::query()->where('email_verify_token', $hash)->exists());
+
+        $user->forceFill([
+            'email_verify_token' => $hash,
+            'email_verify_expires_at' => now()->addMinutes($minutes),
+        ])->save();
+
+        return $token;
     }
 }
