@@ -30,7 +30,12 @@
             "done": "Terminé"
         },
         "cta_start": "Essai gratuit",
-        "cta_how": "Voir comment ça marche"
+        "cta_how": "Voir comment ça marche",
+        "feature_board": {
+            "badge": "Nouveau",
+            "title": "🏗️ Aussi pour le nettoyage et le bâtiment",
+            "text": "Préparé pour RSZ & CIAO"
+        }
     },
     "video": {
         "title": "WinProx en action",

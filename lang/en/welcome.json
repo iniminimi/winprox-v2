@@ -30,7 +30,12 @@
             "done": "Done"
         },
         "cta_start": "Try for free",
-        "cta_how": "See how it works"
+        "cta_how": "See how it works",
+        "feature_board": {
+            "badge": "New",
+            "title": "🏗️ Also for cleaning & construction",
+            "text": "Prepared for RSZ & CIAO"
+        }
     },
     "video": {
         "title": "WinProx in action",

@@ -30,7 +30,12 @@
             "done": "Klaar"
         },
         "cta_start": "Gratis proberen",
-        "cta_how": "Bekijk hoe het werkt"
+        "cta_how": "Bekijk hoe het werkt",
+        "feature_board": {
+            "badge": "Nieuw",
+            "title": "🏗️ Ook voor schoonmaak & bouw",
+            "text": "RSZ & Ciao voorbereid"
+        }
     },
     "video": {
         "title": "WinProx in actie",

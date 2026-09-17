@@ -2862,6 +2862,56 @@
     gap: 0.75rem;
 }
 
+[data-theme='standard'] .wp-welcome-feature-board {
+    position: relative;
+    margin: 1.5rem auto 0;
+    max-width: 22rem;
+    padding: 0.85rem 1rem 1rem;
+    text-align: left;
+    background: #fff8ee;
+    border: 1px solid color-mix(in srgb, var(--wp-text) 14%, transparent);
+    border-radius: 0.35rem;
+    box-shadow: var(--wp-shadow);
+    transform: rotate(-1deg);
+}
+
+[data-theme='standard'] .wp-welcome-feature-board::before {
+    content: '';
+    position: absolute;
+    top: -0.42rem;
+    left: 50%;
+    width: 2.6rem;
+    height: 0.68rem;
+    transform: translateX(-50%) rotate(-3deg);
+    background: color-mix(in srgb, var(--wp-info-text) 28%, #d4c0a0);
+    opacity: 0.9;
+}
+
+[data-theme='standard'] .wp-welcome-feature-board .wp-pill {
+    margin-bottom: 0.45rem;
+}
+
+[data-theme='standard'] .wp-welcome-feature-board__title {
+    margin: 0;
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--wp-text);
+}
+
+[data-theme='standard'] .wp-welcome-feature-board__text {
+    margin: 0.2rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--wp-text-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-theme='standard'] .wp-welcome-feature-board {
+        transform: none;
+    }
+}
+
 [data-theme='standard'] .wp-welcome-video-section {
     padding: clamp(2.75rem, 8vh, 4.5rem) 1.5rem clamp(3rem, 10vh, 5rem);
 }
