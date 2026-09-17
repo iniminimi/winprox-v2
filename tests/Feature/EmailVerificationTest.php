@@ -48,14 +48,18 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
             $mail->assertHasSubject(trans('mail.verify_email.subject', ['tenant' => 'Nieuwe Facility'], $locale));
 
             expect($mail->hasTo('nieuw@winprox.test'))->toBeTrue()
-                ->and($url)->toMatch('#/welkom/[0-9]{8}$#')
+                ->and($url)->toMatch('#/dashboard/[0-9]{8}$#')
                 ->and($url)->not->toContain('/email/verify')
+                ->and($url)->not->toContain('/welkom/')
                 ->and($url)->not->toContain('/start/')
                 ->and($url)->not->toContain('signature=')
-                ->and($html)->toContain('/welkom/')
+                ->and($html)->toContain('/dashboard/')
                 ->and($html)->toContain(trans('mail.verify_email.field_organization', [], $locale))
+                ->and($html)->toContain(trans('mail.verify_email.field_description', [], $locale))
                 ->and($html)->toContain(trans('mail.verify_email.cta', [], $locale))
+                ->and($html)->not->toContain('nieuw@winprox.test')
                 ->and($html)->not->toContain('/email/verify')
+                ->and($html)->not->toContain('/welkom/')
                 ->and($html)->not->toContain('signature=');
 
             return true;
@@ -238,5 +242,10 @@ it('weigert een verlopen token-link', function () {
 it('weigert een ongeldige token-link', function () {
     $this->get(route('verification.start', ['token' => '00000000']))
         ->assertRedirect(route('login'));
+});
+
+it('leidt oude welkom-links door naar de dashboard-token', function () {
+    $this->get('/welkom/00000000')
+        ->assertRedirect(route('verification.start', ['token' => '00000000']));
 });
 

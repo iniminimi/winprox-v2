@@ -29,10 +29,11 @@
         "plain_link_label": "Abmelden"
     },
     "verify_email": {
-        "subject": ":tenant — Arbeitsbereich bereit",
-        "intro": "Ein Arbeitsbereich für :tenant ist bereit.",
+        "subject": ":tenant — neuer Arbeitsbereich",
+        "intro": "Ein neuer Arbeitsbereich ist über WinProx für :tenant bereit.",
         "field_organization": "Organisation",
-        "field_email": "E-Mail",
+        "field_description": "Beschreibung",
+        "description": "Standorte, Meldungen und Aufgaben verwalten.",
         "cta": "Arbeitsbereich öffnen",
         "link_fallback": "Wenn der Button nicht funktioniert, kopiere diesen Link:"
     },

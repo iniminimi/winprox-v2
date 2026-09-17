@@ -23,7 +23,7 @@ class AppendEmailUnsubscribeFooterToMessage
 
         $plainLayout = $this->isPlainLayout($message);
 
-        $url = EmailUnsubscribeLink::signedUrl($primary);
+        $url = EmailUnsubscribeLink::url($primary);
         $urlEsc = htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
 
         $htmlIntro = htmlspecialchars(__('mail.unsubscribe.html_intro'), ENT_QUOTES, 'UTF-8');

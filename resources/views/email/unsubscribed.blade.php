@@ -27,7 +27,7 @@
         </p>
 
         <div class="mb-6">
-            <a href="{{ URL::signedRoute('email.resubscribe', ['t' => request()->query('t')]) }}" class="btn btn--ghost btn--sm">
+            <a href="{{ $resubscribeUrl }}" class="btn btn--ghost btn--sm">
                 {{ __('email.unsubscribed.resubscribe_link') }}
             </a>
         </div>

@@ -56,7 +56,6 @@ class VerifyUserEmailMail extends Mailable
                 'bodyHtml' => view('emails.auth.verify-email-body', [
                     'verificationUrl' => $verificationUrl,
                     'tenantName' => $tenantName,
-                    'email' => (string) $this->user->email,
                 ])->render(),
             ],
         );

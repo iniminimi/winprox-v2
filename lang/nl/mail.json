@@ -29,10 +29,11 @@
         "plain_link_label": "Uitschrijven"
     },
     "verify_email": {
-        "subject": ":tenant — werkruimte klaar",
-        "intro": "Er is een werkruimte klaar voor :tenant.",
+        "subject": ":tenant — nieuwe werkruimte",
+        "intro": "Er is een nieuwe werkruimte klaar via WinProx voor :tenant.",
         "field_organization": "Organisatie",
-        "field_email": "E-mail",
+        "field_description": "Omschrijving",
+        "description": "Locaties, meldingen en taken beheren.",
         "cta": "Werkruimte openen",
         "link_fallback": "Als de knop niet werkt, kopieer dan deze link:"
     },

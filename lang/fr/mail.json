@@ -29,10 +29,11 @@
         "plain_link_label": "Se désinscrire"
     },
     "verify_email": {
-        "subject": ":tenant — espace de travail prêt",
-        "intro": "Un espace de travail est prêt pour :tenant.",
+        "subject": ":tenant — nouvel espace de travail",
+        "intro": "Un nouvel espace de travail est prêt via WinProx pour :tenant.",
         "field_organization": "Organisation",
-        "field_email": "E-mail",
+        "field_description": "Description",
+        "description": "Gérer les sites, signalements et tâches.",
         "cta": "Ouvrir l'espace de travail",
         "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :"
     },

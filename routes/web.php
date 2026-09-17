@@ -144,10 +144,13 @@ Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.web
 
 Route::get('/q/{token}', QrController::class)->name('qr.scan');
 
-Route::get('/welkom/{token}', ConfirmUserEmailController::class)
+Route::get('/dashboard/{token}', ConfirmUserEmailController::class)
     ->middleware('throttle:20,1')
     ->where('token', '[0-9]{8}')
     ->name('verification.start');
+Route::get('/welkom/{token}', function (string $token) {
+    return redirect()->route('verification.start', ['token' => $token], 301);
+})->where('token', '[0-9]{8}');
 Route::get('/start/{token}', ConfirmUserEmailController::class)
     ->middleware('throttle:20,1')
     ->where('token', '[a-z0-9]{20,64}')
@@ -166,9 +169,13 @@ Route::get('/time/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.time-portal');
 
-Route::get('/email/unsubscribe', [EmailUnsubscribeController::class, 'confirm'])
-    ->middleware('signed')
+Route::get('/u/{token}', [EmailUnsubscribeController::class, 'confirm'])
+    ->where('token', '[0-9]{8}')
     ->name('email.unsubscribe');
+
+Route::get('/email/unsubscribe', [EmailUnsubscribeController::class, 'confirmLegacy'])
+    ->middleware('signed')
+    ->name('email.unsubscribe.legacy');
 
 Route::get('/email/resubscribe', [EmailUnsubscribeController::class, 'resubscribe'])
     ->middleware('signed')

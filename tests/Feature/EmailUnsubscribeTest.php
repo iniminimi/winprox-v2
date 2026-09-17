@@ -150,7 +150,10 @@ describe('AppendEmailUnsubscribeFooterToMessage listener', function () {
         $listener->handle($event);
 
         $headers = $message->getHeaders();
-        expect($headers->has('List-Unsubscribe'))->toBeTrue();
+        $listUnsubscribe = (string) $headers->get('List-Unsubscribe')?->getBodyAsString();
+        expect($headers->has('List-Unsubscribe'))->toBeTrue()
+            ->and($listUnsubscribe)->toMatch('#/u/[0-9]{8}>#')
+            ->and($listUnsubscribe)->not->toContain('signature=');
     });
 
     it('adds list-unsubscribe on transactional confirmation mail for deliverability', function () {
@@ -163,7 +166,10 @@ describe('AppendEmailUnsubscribeFooterToMessage listener', function () {
         $listener->handle(new MessageSending($message));
 
         expect($message->getHeaders()->has('List-Unsubscribe'))->toBeTrue()
-            ->and($message->getHtmlBody())->toContain('unsubscribe');
+            ->and($message->getHtmlBody())->toContain('unsubscribe')
+            ->and($message->getHtmlBody())->toMatch('#/u/[0-9]{8}#')
+            ->and($message->getHtmlBody())->not->toContain('signature=')
+            ->and($message->getHtmlBody())->not->toContain('/email/unsubscribe');
     });
 
     it('adds unsubscribe footer to html emails', function () {
@@ -403,11 +409,28 @@ it('purgeert Message-ID uitschrijvingen maar behoudt echte adressen', function (
 });
 
 describe('Email unsubscribe confirmation route', function () {
-    it('confirms unsubscribe with valid token', function () {
-        $email = 'test@example.com';
+    it('confirms unsubscribe with a short numeric link', function () {
+        $url = app(\App\Actions\Contact\IssueEmailUnsubscribeLinkAction::class)->handle('test@example.com');
+
+        expect($url)->toMatch('#/u/[0-9]{8}$#')
+            ->and($url)->not->toContain('signature=')
+            ->and(EmailUnsubscribe::isUnsubscribed('test@example.com'))->toBeFalse();
+
+        $response = $this->get($url);
+
+        $response->assertOk();
+        $response->assertViewIs('email.unsubscribed');
+        $response->assertViewHas('email', 'test@example.com');
+        expect(EmailUnsubscribe::isUnsubscribed('test@example.com'))->toBeTrue();
+        expect(EmailUnsubscribe::query()->where('email', 'test@example.com')->value('source'))
+            ->toBe(\App\Enums\EmailUnsubscribeSource::Voluntary);
+    });
+
+    it('confirms unsubscribe with a legacy signed link', function () {
+        $email = 'legacy@example.com';
         $token = Crypt::encryptString($email);
 
-        $url = URL::signedRoute('email.unsubscribe', ['t' => $token]);
+        $url = URL::signedRoute('email.unsubscribe.legacy', ['t' => $token]);
 
         expect(EmailUnsubscribe::isUnsubscribed($email))->toBeFalse();
 
@@ -415,10 +438,12 @@ describe('Email unsubscribe confirmation route', function () {
 
         $response->assertOk();
         $response->assertViewIs('email.unsubscribed');
-        $response->assertViewHas('email', 'test@example.com');
+        $response->assertViewHas('email', 'legacy@example.com');
         expect(EmailUnsubscribe::isUnsubscribed($email))->toBeTrue();
-        expect(EmailUnsubscribe::query()->where('email', $email)->value('source'))
-            ->toBe(\App\Enums\EmailUnsubscribeSource::Voluntary);
+    });
+
+    it('returns 403 for an unknown numeric token', function () {
+        $this->get('/u/00000000')->assertForbidden();
     });
 
     it('returns 403 for invalid token', function () {
@@ -438,8 +463,7 @@ describe('Email unsubscribe confirmation route', function () {
             'email' => 'user@example.com',
         ]);
 
-        $token = Crypt::encryptString('user@example.com');
-        $url = URL::signedRoute('email.unsubscribe', ['t' => $token]);
+        $url = app(\App\Actions\Contact\IssueEmailUnsubscribeLinkAction::class)->handle('user@example.com');
 
         $response = $this->get($url);
 

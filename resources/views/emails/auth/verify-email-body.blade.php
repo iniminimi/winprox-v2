@@ -6,8 +6,8 @@
 </p>
 
 <p>
-    <strong>{{ __('mail.verify_email.field_email') }}</strong><br>
-    {{ $email }}
+    <strong>{{ __('mail.verify_email.field_description') }}</strong><br>
+    {{ __('mail.verify_email.description') }}
 </p>
 
 <p style="text-align: center; margin-top: 24px;">
