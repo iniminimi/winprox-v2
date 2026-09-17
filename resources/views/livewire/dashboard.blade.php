@@ -52,9 +52,9 @@
                                    name="starterPackType"
                                    value="{{ $type->value }}"
                                    wire:model.live="starterPackType">
-                            <span class="wp-stack-tight">
-                                <strong>{{ __($type->labelKey()) }}</strong>
-                                <span class="wp-muted">{{ __($type->hintKey()) }}</span>
+                            <span class="wp-grow wp-stack-tight">
+                                <p class="wp-text-body"><strong>{{ __($type->labelKey()) }}</strong></p>
+                                <p class="wp-muted">{{ __($type->hintKey()) }}</p>
                             </span>
                         </label>
                     @endforeach
