@@ -107,8 +107,17 @@
 }
 
 .wp-card.wp-onboarding-card {
-    background-color: var(--wp-warning-soft) !important;
+    background-color: color-mix(in srgb, var(--wp-warning) 16%, #ffffff 84%) !important;
     border: 2px solid var(--wp-warning) !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: var(--wp-shadow-sm);
+}
+
+.wp-card.wp-onboarding-card .wp-text-body,
+.wp-card.wp-onboarding-card .wp-text-body strong,
+.wp-card.wp-onboarding-card .wp-muted {
+    color: #111827;
 }
 
 /* Zelfde pulse als PRIO1 (.wp-badge-critical) â€” stopt zodra het kader opengeklapt is. */
