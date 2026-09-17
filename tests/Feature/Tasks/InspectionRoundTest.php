@@ -803,9 +803,13 @@ it('shows inspection-rounds page chrome for the sidebar deep link', function () 
         ->assertOk()
         ->assertSee(__('issues.list.inspection_rounds'), false)
         ->assertSee(__('issues.list.subtitle_inspection_rounds'), false)
-        ->assertSee(__('issues.filter.inspection_rounds_only'), false)
+        ->assertSee('Hulp — Inspectierondes', false)
+        ->assertDontSee('Hulp — Meldingen', false)
+        ->assertDontSee(__('issues.filter.inspection_rounds_only'), false)
         ->assertDontSee(__('issues.filter.recurring_only'), false)
         ->assertDontSee(__('issues.filter.hint'), false)
+        ->assertDontSee(__('issues.list.add'), false)
+        ->assertSee(__('issues.list.plan_round'), false)
         ->assertSee(__('issues.filter.reset'), false);
 });
 

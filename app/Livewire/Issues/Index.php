@@ -165,6 +165,8 @@ class Index extends Component
     {
         $this->redirect(route('issues.index', array_filter([
             'highlight' => $this->highlightIssue ?: null,
+            'recurring' => $this->inspectionRoundOnly ? '1' : null,
+            'inspection_round' => $this->inspectionRoundOnly ? '1' : null,
         ])), navigate: true);
     }
 

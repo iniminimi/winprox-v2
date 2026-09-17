@@ -84,7 +84,7 @@
                 },
                 {
                     "label": "Filtros",
-                    "text": "Combina estado, equipo, búsqueda, recurrente y rondas de inspección para refinar la lista. La búsqueda mira en la descripción (texto fuente y traducciones completadas), ubicación, dirección, código postal, ciudad, unidad y denunciante. Pulsa GO! para aplicar. La barra lateral Trabajo → Rondas de inspección abre esta página titulada Rondas de inspección con el filtro Solo rondas de inspección (incidencias recurrentes con al menos dos paradas de ronda). En Rondas de inspección no aparece la casilla de recurrentes (una ronda siempre es recurrente) ni la pista de clic de la lista de incidencias."
+                    "text": "Combina estado, equipo, búsqueda, recurrente y rondas de inspección para refinar la lista. La búsqueda mira en la descripción (texto fuente y traducciones completadas), ubicación, dirección, código postal, ciudad, unidad y denunciante. Pulsa GO! para aplicar. Las rondas de inspección tienen su propia pantalla en Trabajo → Rondas de inspección."
                 },
                 {
                     "label": "Descargar informe",
@@ -105,6 +105,63 @@
                 "in_progress": "El seguimiento está en curso — una tarea se ha iniciado o está en curso.",
                 "done": "Todas las tareas han sido completadas por el equipo.",
                 "closed": "Un administrador ha confirmado y cerrado todo."
+            }
+        },
+        "issues.inspection_rounds": {
+            "title": "Ayuda — Rondas de inspección",
+            "actions": [
+                {
+                    "label": "¿Qué es esta pantalla?",
+                    "text": "Aquí solo aparecen rondas de inspección: rondas recurrentes con al menos dos paradas de unidad. Las incidencias normales se crean en Trabajo → Incidencias, no aquí."
+                },
+                {
+                    "label": "Planificar ronda de inspección",
+                    "text": "Elija al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea una incidencia recurrente con paradas de ronda y arranca de inmediato la primera tarea."
+                },
+                {
+                    "label": "Intervalo",
+                    "nested": true,
+                    "text": "Cada cuánto vuelve la ronda (p. ej. cada 2 semanas, cada mes, cada trimestre, cada año)."
+                },
+                {
+                    "label": "Antelación (días)",
+                    "nested": true,
+                    "text": "Cuántos días antes del vencimiento se crea la tarea (p. ej. 7 días en rondas mensuales)."
+                },
+                {
+                    "label": "Primer vencimiento",
+                    "nested": true,
+                    "text": "Fecha de vencimiento de la primera ronda. La tarea se crea antes según la antelación."
+                },
+                {
+                    "label": "Paradas",
+                    "nested": true,
+                    "text": "Elija al menos 2 unidades en orden (cualquier ubicación). El orden de la lista es el de las paradas. Solo aparecen unidades con unit checks."
+                },
+                {
+                    "label": "Nota de tarea",
+                    "nested": true,
+                    "text": "Instrucción opcional para el equipo. Déjela vacía para usar la descripción de la ronda."
+                },
+                {
+                    "label": "Imprimir briefing",
+                    "text": "Imprime un resumen de tareas abiertas por equipo."
+                },
+                {
+                    "label": "Filtros",
+                    "text": "Afine por estado, equipo o búsqueda. La búsqueda mira descripción, ubicación, dirección, código postal, ciudad, unidad y denunciante. Pulse GO! para aplicar. Esta pantalla muestra siempre solo rondas de inspección."
+                },
+                {
+                    "label": "Descargar informe",
+                    "text": "Exporte los resultados filtrados (no solo la página actual; máx. 5000 filas): CSV (tabla para Excel) o Imprimir (misma maquetación de tarjetas que la lista de backoffice; Ctrl+P a PDF)."
+                }
+            ],
+            "status_note": "El estado de una ronda sigue automáticamente las tareas de esa ronda.",
+            "statuses": {
+                "new": "Ronda nueva; al menos una tarea aún no ha empezado.",
+                "in_progress": "El seguimiento está en curso: una tarea ha empezado o está en marcha.",
+                "done": "El equipo ha completado todas las tareas de la ronda.",
+                "closed": "Un administrador ha confirmado y cerrado la ronda."
             }
         },
         "issues.show": {

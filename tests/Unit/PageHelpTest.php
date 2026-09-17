@@ -17,6 +17,13 @@ it('laadt paginahulp voor een bekende pagina', function (): void {
         ->and($help['title'])->toBe('Hulp — Meldingen')
         ->and($help['actions'])->not->toBeEmpty()
         ->and($help['statuses'])->toHaveCount(4);
+
+    $rounds = PageHelp::for('issues.inspection_rounds');
+
+    expect($rounds)->not->toBeNull()
+        ->and($rounds['title'])->toBe('Hulp — Inspectierondes')
+        ->and(collect($rounds['actions'])->pluck('label')->all())->toContain('Inspectieronde plannen')
+        ->and(collect($rounds['actions'])->pluck('label')->all())->not->toContain('Melding toevoegen');
 });
 
 it('laadt paginahulp voor units-overzicht', function (): void {

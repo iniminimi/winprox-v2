@@ -84,7 +84,7 @@
                 },
                 {
                     "label": "Filtri",
-                    "text": "Combina stato, team, ricerca, ricorrente e giri di ispezione per affinare l’elenco. La ricerca guarda nella descrizione (testo sorgente e traduzioni completate), sede, indirizzo, CAP, città, unità e segnalatore. Premi GO! per applicare. La barra laterale Lavoro → Giri di ispezione apre questa pagina intitolata Giri di ispezione con il filtro Solo giri di ispezione (segnalazioni ricorrenti con almeno due fermate del giro). Nei Giri di ispezione la casella ricorrente è nascosta (un giro è sempre ricorrente) e manca il suggerimento di clic dell’elenco segnalazioni."
+                    "text": "Combina stato, team, ricerca, ricorrente e giri di ispezione per affinare l’elenco. La ricerca guarda nella descrizione (testo sorgente e traduzioni completate), sede, indirizzo, CAP, città, unità e segnalatore. Premi GO! per applicare. I giri di ispezione hanno una schermata propria in Lavoro → Giri di ispezione."
                 },
                 {
                     "label": "Scarica rapporto",
@@ -105,6 +105,63 @@
                 "in_progress": "Il follow-up è in corso — un'attività è stata avviata o è in corso.",
                 "done": "Tutte le attività sono state completate dal team.",
                 "closed": "Un amministratore ha confermato e chiuso tutto."
+            }
+        },
+        "issues.inspection_rounds": {
+            "title": "Aiuto — Giri di ispezione",
+            "actions": [
+                {
+                    "label": "Che schermata è questa?",
+                    "text": "Qui ci sono solo giri di ispezione: giri ricorrenti con almeno due fermate unità. Le segnalazioni normali si creano in Lavoro → Segnalazioni, non qui."
+                },
+                {
+                    "label": "Pianifica giro di ispezione",
+                    "text": "Scegli almeno 2 fermate (unità), intervallo e team in un modulo. Crea una segnalazione ricorrente con fermate del giro e avvia subito il primo compito."
+                },
+                {
+                    "label": "Intervallo",
+                    "nested": true,
+                    "text": "Ogni quanto il giro si ripete (es. ogni 2 settimane, ogni mese, ogni trimestre, ogni anno)."
+                },
+                {
+                    "label": "Anticipo (giorni)",
+                    "nested": true,
+                    "text": "Quanti giorni prima della scadenza viene creato il compito (es. 7 giorni per giri mensili)."
+                },
+                {
+                    "label": "Prima scadenza",
+                    "nested": true,
+                    "text": "Data di scadenza del primo giro. Il compito viene creato prima in base all’anticipo."
+                },
+                {
+                    "label": "Fermate",
+                    "nested": true,
+                    "text": "Scegli almeno 2 unità in ordine (qualsiasi sede). L’ordine dell’elenco è l’ordine delle fermate. Compaiono solo unità con unit check."
+                },
+                {
+                    "label": "Nota compito",
+                    "nested": true,
+                    "text": "Istruzione facoltativa per il team. Lascia vuoto per usare la descrizione del giro."
+                },
+                {
+                    "label": "Stampa briefing",
+                    "text": "Stampa un riepilogo dei compiti aperti per team."
+                },
+                {
+                    "label": "Filtri",
+                    "text": "Affina per stato, team o ricerca. La ricerca guarda descrizione, sede, indirizzo, CAP, città, unità e segnalatore. Premi GO! per applicare. Questa schermata mostra sempre solo giri di ispezione."
+                },
+                {
+                    "label": "Scarica report",
+                    "text": "Esporta i risultati filtrati (non solo la pagina visibile; max. 5000 righe): CSV (tabella per Excel) o Stampa (stesso layout a schede dell’elenco backoffice; Ctrl+P in PDF)."
+                }
+            ],
+            "status_note": "Lo stato di un giro segue automaticamente i compiti di quel giro.",
+            "statuses": {
+                "new": "Giro nuovo; almeno un compito non è ancora iniziato.",
+                "in_progress": "Il follow-up è in corso: un compito è iniziato o in lavorazione.",
+                "done": "Il team ha completato tutti i compiti del giro.",
+                "closed": "Un amministratore ha confermato e chiuso il giro."
             }
         },
         "issues.show": {

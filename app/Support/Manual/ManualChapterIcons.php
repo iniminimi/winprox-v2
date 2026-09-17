@@ -15,6 +15,7 @@ final class ManualChapterIcons
         'locations.list' => 'locations',
         'locations.show' => 'locations',
         'issues.list' => 'issues',
+        'issues.inspection_rounds' => 'tasks',
         'issues.show' => 'issues',
         'issues.create' => 'issues',
         'tasks.list' => 'tasks',

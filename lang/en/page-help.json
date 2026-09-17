@@ -84,7 +84,7 @@
                 },
                 {
                     "label": "Filters",
-                    "text": "Combine status, team, search term, recurring and inspection rounds to refine the list. The search term looks in the description (source text and completed translations), location, address, postcode, city, unit and reporter. Press GO! to apply. Sidebar Work → Inspection rounds opens this page titled Inspection rounds with the Inspection rounds only filter (recurring issues with at least two round stops). On Inspection rounds the recurring checkbox is hidden (a round is always recurring) and the issues click-hint is omitted."
+                    "text": "Combine status, team, search term, recurring and inspection rounds to refine the list. The search term looks in the description (source text and completed translations), location, address, postcode, city, unit and reporter. Press GO! to apply. Inspection rounds have their own screen under Work → Inspection rounds."
                 },
                 {
                     "label": "Download report",
@@ -105,6 +105,63 @@
                 "in_progress": "Follow-up is underway — a task has been started or is in progress.",
                 "done": "All tasks have been completed by the team.",
                 "closed": "An administrator has confirmed and closed everything."
+            }
+        },
+        "issues.inspection_rounds": {
+            "title": "Help — Inspection rounds",
+            "actions": [
+                {
+                    "label": "What is this screen?",
+                    "text": "This list shows inspection rounds only: recurring rounds with at least two unit stops. Create ordinary issues via Work → Issues, not here."
+                },
+                {
+                    "label": "Plan inspection round",
+                    "text": "Pick at least 2 stops (units), interval and team in one form. Creates a recurring issue with round stops and starts the first task immediately."
+                },
+                {
+                    "label": "Interval",
+                    "nested": true,
+                    "text": "How often the round recurs (e.g. every 2 weeks, every month, every quarter, every year)."
+                },
+                {
+                    "label": "Lead (days)",
+                    "nested": true,
+                    "text": "How many days before the due date the task is created (e.g. 7 days for monthly rounds)."
+                },
+                {
+                    "label": "First due date",
+                    "nested": true,
+                    "text": "The date the first round is due. The task is created earlier according to the lead."
+                },
+                {
+                    "label": "Stops",
+                    "nested": true,
+                    "text": "Pick at least 2 units in order (any locations). List order is the stop order. Only units with unit checks appear in the list."
+                },
+                {
+                    "label": "Task note",
+                    "nested": true,
+                    "text": "Optional instruction for the team on this task. Leave empty to use the round description."
+                },
+                {
+                    "label": "Print briefing",
+                    "text": "Print an overview of open tasks per team."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Narrow by status, team or search term. Search looks in description, location, address, postcode, city, unit and reporter. Press GO! to apply. This screen always shows inspection rounds only."
+                },
+                {
+                    "label": "Download report",
+                    "text": "Export the filtered results (not only the current page; max. 5000 rows): CSV (table for Excel) or Print (same card layout as the backoffice list; Ctrl+P to PDF)."
+                }
+            ],
+            "status_note": "Round status is derived automatically from the tasks on that round.",
+            "statuses": {
+                "new": "New round; at least one task has not been started yet.",
+                "in_progress": "Follow-up is underway — a task has been started or is in progress.",
+                "done": "All tasks on the round have been completed by the team.",
+                "closed": "An administrator has confirmed and closed the round."
             }
         },
         "issues.show": {

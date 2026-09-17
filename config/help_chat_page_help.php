@@ -182,7 +182,7 @@ return [
                 'tournée d’inspection', 'inspektionsrunde',
                 'ronda de inspección', 'giro di ispezione',
             ],
-            'page' => 'issues.create',
+            'page' => 'issues.inspection_rounds',
             'prefer' => ['stop', 'ronde', 'unit check'],
         ],
         [

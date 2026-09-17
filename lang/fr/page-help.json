@@ -84,7 +84,7 @@
                 },
                 {
                     "label": "Filtres",
-                    "text": "Combinez statut, équipe, recherche, récurrent et tournées d’inspection pour affiner la liste. La recherche porte sur la description (texte source et traductions terminées), le site, l’adresse, le code postal, la ville, l’unité et le déclarant. Appuyez sur GO! pour appliquer. La barre latérale Travail → Tournées d’inspection ouvre cette page intitulée Tournées d’inspection avec le filtre Tournées d’inspection uniquement (signalements récurrents avec au moins deux arrêts de tournée). Sur Tournées d’inspection, la case récurrent est masquée (une tournée est toujours récurrente) ainsi que l’indication de clic de la liste des signalements."
+                    "text": "Combinez statut, équipe, recherche, récurrent et tournées d’inspection pour affiner la liste. La recherche porte sur la description (texte source et traductions terminées), le site, l’adresse, le code postal, la ville, l’unité et le déclarant. Appuyez sur GO! pour appliquer. Les tournées d’inspection ont leur propre écran sous Travail → Tournées d’inspection."
                 },
                 {
                     "label": "Télécharger le rapport",
@@ -105,6 +105,63 @@
                 "in_progress": "Suivi en cours — une tâche a été démarrée ou est en cours.",
                 "done": "Toutes les tâches ont été terminées par l'équipe.",
                 "closed": "Un administrateur a tout confirmé et clôturé."
+            }
+        },
+        "issues.inspection_rounds": {
+            "title": "Aide — Tournées d’inspection",
+            "actions": [
+                {
+                    "label": "Qu’est-ce que cet écran ?",
+                    "text": "Cette liste n’affiche que les tournées d’inspection : tournées récurrentes avec au moins deux arrêts d’unités. Les signalements ordinaires se créent via Travail → Signalements, pas ici."
+                },
+                {
+                    "label": "Planifier une tournée d’inspection",
+                    "text": "Choisissez au moins 2 arrêts (unités), l’intervalle et l’équipe dans un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre tout de suite la première tâche."
+                },
+                {
+                    "label": "Intervalle",
+                    "nested": true,
+                    "text": "Fréquence de la tournée (p. ex. toutes les 2 semaines, chaque mois, chaque trimestre, chaque année)."
+                },
+                {
+                    "label": "Délai (jours)",
+                    "nested": true,
+                    "text": "Nombre de jours avant l’échéance où la tâche est créée (p. ex. 7 jours pour des tournées mensuelles)."
+                },
+                {
+                    "label": "Première échéance",
+                    "nested": true,
+                    "text": "Date d’échéance de la première tournée. La tâche est créée plus tôt selon le délai."
+                },
+                {
+                    "label": "Arrêts",
+                    "nested": true,
+                    "text": "Choisissez au moins 2 unités dans l’ordre (tous les sites). L’ordre de la liste est l’ordre des arrêts. Seules les unités avec unit checks apparaissent."
+                },
+                {
+                    "label": "Note de tâche",
+                    "nested": true,
+                    "text": "Instruction facultative pour l’équipe. Laissez vide pour utiliser la description de la tournée."
+                },
+                {
+                    "label": "Imprimer le briefing",
+                    "text": "Imprime un aperçu des tâches ouvertes par équipe."
+                },
+                {
+                    "label": "Filtres",
+                    "text": "Affinez par statut, équipe ou recherche. La recherche porte sur la description, le site, l’adresse, le code postal, la ville, l’unité et le déclarant. Appuyez sur GO! pour appliquer. Cet écran n’affiche toujours que les tournées d’inspection."
+                },
+                {
+                    "label": "Télécharger le rapport",
+                    "text": "Exportez les résultats filtrés (pas seulement la page visible ; max. 5000 lignes) : CSV (tableau Excel) ou Imprimer (même mise en carte que la liste back-office ; Ctrl+P vers PDF)."
+                }
+            ],
+            "status_note": "Le statut d’une tournée suit automatiquement les tâches de cette tournée.",
+            "statuses": {
+                "new": "Nouvelle tournée ; au moins une tâche n’a pas encore commencé.",
+                "in_progress": "Le suivi est en cours — une tâche a commencé ou est en cours.",
+                "done": "Toutes les tâches de la tournée ont été traitées par l’équipe.",
+                "closed": "Un administrateur a confirmé et clôturé la tournée."
             }
         },
         "issues.show": {

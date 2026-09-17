@@ -15,7 +15,7 @@
                 <x-wp-page-head-title
                     :icon="$inspectionRoundOnly ? 'tasks' : 'issues'"
                     :title="$inspectionRoundOnly ? __('issues.list.inspection_rounds') : __('issues.list.title')"
-                    help-page="issues.list"
+                    help-page="{{ $inspectionRoundOnly ? 'issues.inspection_rounds' : 'issues.list' }}"
                     :subtitle="$inspectionRoundOnly ? __('issues.list.subtitle_inspection_rounds') : __('issues.list.subtitle')"
                 />
             </div>
@@ -23,9 +23,6 @@
                 @if ($inspectionRoundOnly)
                     <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openRoundCreateModal">
                         {{ __('issues.list.plan_round') }}
-                    </button>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openCreateModal">
-                        {{ __('issues.list.add') }}
                     </button>
                 @else
                     <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openCreateModal">
@@ -78,18 +75,18 @@
                         <input type="search" id="search" class="wp-input" wire:model.defer="search"
                                placeholder="{{ __('issues.filter.search_placeholder') }}">
                     </div>
-                    <div class="wp-filter-cell wp-filter-cell--recurring">
-                        @unless ($inspectionRoundOnly)
+                    @unless ($inspectionRoundOnly)
+                        <div class="wp-filter-cell wp-filter-cell--recurring">
                             <label class="wp-check">
                                 <input type="checkbox" wire:model.defer="recurring">
                                 {{ __('issues.filter.recurring_only') }}
                             </label>
-                        @endunless
-                        <label class="wp-check">
-                            <input type="checkbox" wire:model.live="inspectionRoundOnly">
-                            {{ __('issues.filter.inspection_rounds_only') }}
-                        </label>
-                    </div>
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model.live="inspectionRoundOnly">
+                                {{ __('issues.filter.inspection_rounds_only') }}
+                            </label>
+                        </div>
+                    @endunless
                     <div class="wp-filter-form__actions">
                         <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('issues.filter.apply') }}</button>
                         <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />

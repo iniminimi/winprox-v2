@@ -84,7 +84,7 @@
                 },
                 {
                     "label": "Filters",
-                    "text": "Combineer status, team, zoekterm, terugkerend en inspectierondes om de lijst te verfijnen. De zoekterm zoekt in de omschrijving (brontekst en voltooide vertalingen), locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen. Zijbalk Werk → Inspectierondes opent deze pagina met titel Inspectierondes en filter Alleen inspectierondes (terugkerende meldingen met minstens twee ronde-stops). Op Inspectierondes ontbreekt het vinkje terugkerend (een ronde is altijd terugkerend) en de klik-hint van de meldingenlijst."
+                    "text": "Combineer status, team, zoekterm, terugkerend en inspectierondes om de lijst te verfijnen. De zoekterm zoekt in de omschrijving (brontekst en voltooide vertalingen), locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen. Inspectierondes hebben een eigen scherm onder Werk → Inspectierondes."
                 },
                 {
                     "label": "Download rapport",
@@ -105,6 +105,63 @@
                 "in_progress": "Opvolging loopt — een taak is gestart of bezig.",
                 "done": "Alle taken zijn afgehandeld door het team.",
                 "closed": "Beheerder heeft alles bevestigd en afgesloten."
+            }
+        },
+        "issues.inspection_rounds": {
+            "title": "Hulp — Inspectierondes",
+            "actions": [
+                {
+                    "label": "Wat is dit scherm?",
+                    "text": "Hier staan alleen inspectierondes: terugkerende rondes met minstens twee unit-stops. Nieuwe gewone meldingen maakt u via Werk → Meldingen, niet hier."
+                },
+                {
+                    "label": "Inspectieronde plannen",
+                    "text": "Kies minstens 2 stops (units), interval en team in één formulier. Maakt een terugkerende melding met ronde-stops en start meteen de eerste taak."
+                },
+                {
+                    "label": "Interval",
+                    "nested": true,
+                    "text": "Hoe vaak de ronde terugkomt (bijv. elke 2 weken, elke maand, elk kwartaal, elk jaar)."
+                },
+                {
+                    "label": "Lead (dagen)",
+                    "nested": true,
+                    "text": "Hoeveel dagen voor de vervaldatum de taak al wordt aangemaakt (bijv. 7 dagen voor maandelijkse rondes)."
+                },
+                {
+                    "label": "Eerste vervaldatum",
+                    "nested": true,
+                    "text": "De datum waarop de eerste ronde vervalt. De taak wordt eerder aangemaakt volgens de lead."
+                },
+                {
+                    "label": "Stops",
+                    "nested": true,
+                    "text": "Kies minstens 2 units in volgorde (alle locaties). Volgorde = volgorde in de lijst. Alleen units met unit checks staan in de lijst."
+                },
+                {
+                    "label": "Taaknotitie",
+                    "nested": true,
+                    "text": "Optionele instructie voor het team op de taak. Leeg laten mag; dan geldt de omschrijving van de ronde."
+                },
+                {
+                    "label": "Briefing afdrukken",
+                    "text": "Print een overzicht van open taken per team."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Verfijn op status, team of zoekterm. De zoekterm zoekt in omschrijving, locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen. Dit scherm toont altijd alleen inspectierondes."
+                },
+                {
+                    "label": "Download rapport",
+                    "text": "Exporteer de gefilterde resultaten (niet alleen de huidige pagina; max. 5000 rijen): CSV (tabel voor Excel) of Afdrukken (zelfde kaartlayout als de backoffice-lijst; Ctrl+P naar PDF)."
+                }
+            ],
+            "status_note": "De status van een ronde volgt automatisch de taken op die ronde.",
+            "statuses": {
+                "new": "Nieuwe ronde; minstens één taak is nog niet gestart.",
+                "in_progress": "Opvolging loopt — een taak is gestart of bezig.",
+                "done": "Alle taken van de ronde zijn afgehandeld door het team.",
+                "closed": "Beheerder heeft de ronde bevestigd en afgesloten."
             }
         },
         "issues.show": {

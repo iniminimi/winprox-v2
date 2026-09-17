@@ -498,9 +498,10 @@ stops meer zijn voor **deze** cyclus-taak.
   melding): stops + interval + team in één modal; onder water terugkerende melding +
   eerste taak. Bestaande melding-wizard blijft; rondestops daar optioneel.
 - **Beheer — lijst:** sidebar **Werk → Inspectierondes** opent dezelfde Meldingen-pagina
-  met `?recurring=1&inspection_round=1` (titel/ondertitel/lege staat + filter
-  “Alleen inspectierondes”). Geen vinkje “terugkerend” en geen klik-hint van de
-  meldingenlijst: een ronde is altijd terugkerend. Optioneel `?round_create=1` opent direct de plan-modal.
+  met `?recurring=1&inspection_round=1` (titel/ondertitel/lege staat). Geen
+  “+ Melding toevoegen”, geen vinkjes terugkerend/alleen inspectierondes, geen klik-hint:
+  dit scherm toont alleen rondes. Paginahulp is **Hulp — Inspectierondes**. Optioneel
+  `?round_create=1` opent direct de plan-modal.
 - Label: **Ronde · N stops**. Geen ESG op ronde-issues.
 - Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).
 - Taak↔unit (2b): `issue.unit_id = U` **óf** U is stop — via `TaskBelongsToUnitAction`
