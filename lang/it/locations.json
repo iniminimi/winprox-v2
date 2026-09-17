@@ -133,8 +133,9 @@
             "measure_fields": "Campi di misura",
             "roster_code": "Codice turno",
             "roster_code_hint": "Facoltativo. Codice breve per il turno, univoco per sede (es. G1).",
-            "visit_latitude": "Pin visita (latitudine)",
-            "visit_longitude": "Pin visita (longitudine)",
+            "visit_pin": "Pin visita",
+            "visit_latitude": "Latitudine",
+            "visit_longitude": "Longitudine",
             "visit_pin_hint": "Pin fisso dell'edificio per le visite GPS. Vuoto = solo segnalazioni/attività. I report GPS del portale non modificano mai questo pin."
         },
         "translation_preview": "Traduzione (portale)",

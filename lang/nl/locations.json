@@ -133,8 +133,9 @@
             "measure_fields": "Meetvelden",
             "roster_code": "Roostercode",
             "roster_code_hint": "Optioneel. Korte code voor het uurrooster, uniek per locatie (bijv. G1).",
-            "visit_latitude": "Werkbezoek-pin (breedtegraad)",
-            "visit_longitude": "Werkbezoek-pin (lengtegraad)",
+            "visit_pin": "Werkbezoek-pin",
+            "visit_latitude": "Breedtegraad",
+            "visit_longitude": "Lengtegraad",
             "visit_pin_hint": "Vaste pin van het gebouw voor GPS-werkbezoeken. Leeg = alleen meldingen/taken. GPS-meldingen van het portaal wijzigen deze pin niet."
         },
         "translation_preview": "Vertaling (portaal)",

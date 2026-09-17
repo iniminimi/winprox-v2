@@ -699,6 +699,7 @@ productsector op `Tenant`.
 
 - Locatie = klant (contract). Unit met vaste pin (`units.latitude` / `longitude`) = fysiek
   gebouw. Units zonder pin = meldingen/taken. `unit_gps_reports` mag de pin **nooit** muteren.
+  Pin zetten: Locaties → unit bewerken → **Geavanceerde portaal-opties**.
 - Tenant-vlag `time_gps_visits` (alleen met Time). Straal default `config('time.gps_visit_radius_meters')` (250 m).
 - **Inklokken:** opent `WorkShift` via de Clock Point-QR (algemeen aanmeldpunt / PWA). Geen
   `unit_id`, geen `WorkVisit`. GPS optioneel als metadata, **geen weigering** zonder signaal
@@ -765,7 +766,8 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   afwezigheid / groepen) via knop **Legende** (modal naast Publiceren). Ongeldige cellen: rode rand.
 - **Plek (groep/unit):** optioneel in dezelfde cel: `D1/G1` of `07:00-12:00/G1` (spatie mag;
   canonical `/`). In de grid: **groep op de regel onder de dienstcode**, kleiner lettertype.
-  Opslaan blijft `D1/G1`. `units.roster_code` uniek per locatie. Snapshot op `planned_shifts`
+  Opslaan blijft `D1/G1`. `units.roster_code` uniek per locatie (zetten: Locaties → unit
+  bewerken → **Geavanceerde portaal-opties**). Snapshot op `planned_shifts`
   (`unit_id`, `unit_code`, `unit_name`, `location_id`). Parser lost codes op; save eist
   `Worker::canClockAt`. Zelfde code op twee locaties → `ambiguous_unit` tot locatiefilter.
   Afwezigheid + groep ongeldig. Locatiefilter op het rooster: alleen workers **toegewezen**

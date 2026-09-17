@@ -23,7 +23,17 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
-    align-items: start;
+    align-items: stretch;
+}
+
+.wp-form-grid-2 > .wp-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.wp-form-grid-2 > .wp-field > .wp-input {
+    margin-top: auto;
 }
 
 .wp-form-grid-2 > .wp-field + .wp-field {

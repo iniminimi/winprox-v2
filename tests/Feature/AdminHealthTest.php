@@ -206,7 +206,10 @@ it('opent unit- en locatie-edit modals via query parameters', function () {
         ->withQueryParams(['edit_unit' => $unit->id])
         ->test(LocationShow::class, ['location' => $location])
         ->assertSet('showUnitModal', true)
-        ->assertSet('editingUnitId', $unit->id);
+        ->assertSet('editingUnitId', $unit->id)
+        ->assertSee(__('locations.units.advanced_portal.label'), false)
+        ->assertSee(__('locations.units.fields.roster_code'), false)
+        ->assertSee(__('locations.units.fields.visit_pin'), false);
 });
 
 it('detecteert units zonder gps en melden uitgeschakeld', function () {

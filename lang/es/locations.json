@@ -133,8 +133,9 @@
             "measure_fields": "Campos de medición",
             "roster_code": "Código de cuadrante",
             "roster_code_hint": "Opcional. Código corto para el cuadrante, único por sede (p. ej. G1).",
-            "visit_latitude": "Pin de visita (latitud)",
-            "visit_longitude": "Pin de visita (longitud)",
+            "visit_pin": "Pin de visita",
+            "visit_latitude": "Latitud",
+            "visit_longitude": "Longitud",
             "visit_pin_hint": "Pin fijo del edificio para visitas GPS. Vacío = solo avisos/tareas. Los informes GPS del portal no cambian este pin."
         },
         "translation_preview": "Traducción (portal)",
