@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Snelkoppeling op startscherm",
-                    "text": "Alleen als beheer dit Clock Point zo heeft ingesteld: rechts van Aanmelden staat een WinProx-icoon. Tik voor uitleg: zet een snelkoppeling via het Chrome- of Safari-menu (niet als app installeren). Die opent dezelfde website in de browser. Had je al een app-icoon zonder adresbalk, verwijder dat eerst. Niet bedoeld voor schermen met wisselende QR-codes."
+                    "text": "Alleen als beheer dit Clock Point zo heeft ingesteld: rechts van Aanmelden staat een WinProx-icoon. Tik: op Android zet Chrome het meteen op het startscherm; op iPhone volg je Deel → Zet op beginscherm. Geen App Store. Niet bedoeld voor schermen met wisselende QR-codes."
                 },
                 {
                     "label": "Afmelden",
@@ -1379,7 +1379,7 @@
                 },
                 {
                     "label": "Clock Point-link op startscherm gsm",
-                    "text": "Vinkje per Clock Point (standaard uit). Aan = naast Aanmelden verschijnt een WinProx-icoon met uitleg om een browsersnelkoppeling op het startscherm te zetten (Chrome/Safari, geen app). Alleen voor uitvoerders die geen QR kunnen scannen (thuis of onderweg). Laat dit uit op TFT-schermen met wisselende QR-codes. Geen App Store."
+                    "text": "Vinkje per Clock Point (standaard uit). Aan = naast Aanmelden een WinProx-icoon: op Android één tik om op het startscherm te zetten, op iPhone via Deel. Alleen voor uitvoerders die geen QR kunnen scannen (thuis of onderweg). Laat dit uit op TFT-schermen met wisselende QR-codes. Geen App Store."
                 }
             ]
         },

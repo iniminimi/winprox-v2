@@ -83,7 +83,7 @@ it('toont het WinProx-icoon alleen als het clock point het vinkje aan heeft', fu
 
     $this->get('/time/'.$clockPoint->qr_token)
         ->assertOk()
-        ->assertDontSee('manifest.webmanifest', false)
+        ->assertSee('manifest.webmanifest', false)
         ->assertSee('data-wp-homescreen-install', false);
 });
 
@@ -140,6 +140,6 @@ it('levert een webmanifest alleen als het clock point de startscherm-link aanbie
     $this->get(route('public.time-portal.manifest', $clockPoint->qr_token))
         ->assertOk()
         ->assertJsonPath('name', 'WinProx')
-        ->assertJsonPath('display', 'browser')
+        ->assertJsonPath('display', 'standalone')
         ->assertJsonPath('start_url', route('public.time-portal', $clockPoint->qr_token));
 });

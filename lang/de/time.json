@@ -334,12 +334,12 @@
             "do_check": "Unit-Check"
         },
         "homescreen": {
-            "title": "Verknüpfung auf dem Startbildschirm anlegen",
+            "title": "WinProx auf den Startbildschirm legen",
             "help_title": "Clock Point auf dem Startbildschirm",
-            "help_intro": "Öffnen Sie WinProx beim nächsten Mal in Chrome oder Safari, ohne QR-Scan. Keine eigene App: dieselbe Website wie nach dem Scan.",
-            "help_android": "Android (Chrome): Menü (drei Punkte) → Zum Startbildschirm hinzufügen. Die normale Verknüpfung wählen, nicht „App installieren“. Die Adressleiste muss sichtbar bleiben.",
-            "help_ios": "iPhone (Safari): Teilen → Zum Home-Bildschirm. Safari soll öffnen, kein separates Fenster ohne Adressleiste.",
-            "help_existing": "Haben Sie schon ein WinProx-Symbol, das wie eine App öffnet (keine Adressleiste) und Anmelden hängt? Symbol löschen und die Verknüpfung neu anlegen."
+            "help_intro": "Tippen Sie das WinProx-Symbol: unter Android fragt Chrome, ob WinProx auf den Startbildschirm soll. Danach öffnen Sie denselben Clock Point ohne QR. Kein App Store.",
+            "help_android": "Android (Chrome): ein Tipp auf das Symbol. „Zum Startbildschirm hinzufügen“ bestätigen. Anmelden funktioniert danach in dieser Verknüpfung.",
+            "help_ios": "iPhone (Safari): Apple erlaubt keine automatische Installation. Tippen Sie das Symbol, dann Teilen → Zum Home-Bildschirm.",
+            "help_existing": "Haben Sie noch ein altes Symbol, bei dem Anmelden nichts tat? Symbol löschen, diese Seite neu laden und erneut auf das Plus tippen."
         }
     },
     "ciao": {

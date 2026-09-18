@@ -334,12 +334,12 @@
             "do_check": "Contrôle d’unité"
         },
         "homescreen": {
-            "title": "Créer un raccourci sur l’écran d’accueil",
+            "title": "Ajouter WinProx à l’écran d’accueil",
             "help_title": "Clock Point sur l’écran d’accueil",
-            "help_intro": "Ouvrez WinProx la prochaine fois dans Chrome ou Safari, sans scanner un QR. Pas une appli séparée : c’est le même site qu’après un scan.",
-            "help_android": "Android (Chrome) : menu (trois points) → Ajouter à l’écran d’accueil. Choisissez le raccourci normal, pas « Installer l’application ». La barre d’adresse doit rester visible.",
-            "help_ios": "iPhone (Safari) : Partager → Sur l’écran d’accueil. Safari doit s’ouvrir, pas une fenêtre séparée sans barre d’adresse.",
-            "help_existing": "Vous avez déjà une icône WinProx qui s’ouvre comme une appli (sans barre d’adresse) et la connexion ne fait rien ? Supprimez-la et recréez le raccourci."
+            "help_intro": "Touchez l’icône WinProx : sur Android, Chrome propose d’ajouter WinProx à l’écran d’accueil. Ensuite vous ouvrez le même Clock Point sans QR. Pas d’App Store.",
+            "help_android": "Android (Chrome) : une touche sur l’icône. Confirmez « Ajouter à l’écran d’accueil ». La connexion fonctionne ensuite dans ce raccourci.",
+            "help_ios": "iPhone (Safari) : Apple n’autorise pas l’installation automatique. Touchez l’icône, puis Partager → Sur l’écran d’accueil.",
+            "help_existing": "Vous avez encore une ancienne icône où la connexion ne faisait rien ? Supprimez-la, actualisez cette page et touchez à nouveau l’icône plus."
         }
     },
     "ciao": {

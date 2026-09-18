@@ -334,12 +334,12 @@
             "do_check": "Controllo unità"
         },
         "homescreen": {
-            "title": "Crea un collegamento sulla schermata iniziale",
-            "help_title": "Clock Point sulla schermata iniziale",
-            "help_intro": "Apri WinProx la volta successiva in Chrome o Safari, senza scansionare un QR. Non è un’app a parte: è lo stesso sito di dopo la scansione.",
-            "help_android": "Android (Chrome): menu (tre puntini) → Aggiungi a schermata Home. Scegli il collegamento normale, non «Installa app». Deve restare visibile la barra degli indirizzi.",
-            "help_ios": "iPhone (Safari): Condividi → Aggiungi a Home. Deve aprire Safari, non una finestra separata senza barra degli indirizzi.",
-            "help_existing": "Hai già un’icona WinProx che si apre come app (senza barra degli indirizzi) e Accesso non fa nulla? Eliminala e ricrea il collegamento."
+            "title": "Metti WinProx sulla schermata Home",
+            "help_title": "Clock Point sulla schermata Home",
+            "help_intro": "Tocca l’icona WinProx: su Android Chrome chiede di aggiungere WinProx alla schermata Home. Poi apri lo stesso Clock Point senza QR. Nessun App Store.",
+            "help_android": "Android (Chrome): un tocco sull’icona. Conferma «Aggiungi a schermata Home». L’accesso funziona poi in quel collegamento.",
+            "help_ios": "iPhone (Safari): Apple non consente l’installazione automatica. Tocca l’icona, poi Condividi → Aggiungi a schermata Home.",
+            "help_existing": "Hai ancora un’icona vecchia con cui Accesso non faceva nulla? Eliminala, aggiorna questa pagina e tocca di nuovo l’icona più."
         }
     },
     "ciao": {

@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Raccourci sur l’écran d’accueil",
-                    "text": "Uniquement si l’admin l’a activé sur ce Clock Point : une icône WinProx apparaît à droite de Connexion. Touchez pour les consignes : ajoutez un raccourci via le menu Chrome ou Safari (n’installez pas l’appli). Cela ouvre le même site dans le navigateur. Si vous avez déjà une icône d’appli sans barre d’adresse, supprimez-la d’abord. Pas destiné aux écrans avec QR rotatif."
+                    "text": "Uniquement si l’admin l’a activé sur ce Clock Point : une icône WinProx à droite de Connexion. Touchez : sur Android, Chrome l’ajoute à l’écran d’accueil ; sur iPhone, Partager → Sur l’écran d’accueil. Pas d’App Store. Pas pour les écrans avec QR rotatif."
                 },
                 {
                     "label": "Se déconnecter",
@@ -1387,7 +1387,7 @@
                 },
                 {
                     "label": "Lien Clock Point sur l’écran d’accueil",
-                    "text": "Case par Clock Point (désactivée par défaut). Activée = une icône WinProx à côté de Connexion avec consignes pour un raccourci navigateur sur l’écran d’accueil (Chrome/Safari, pas une appli). Uniquement pour les exécutants qui ne peuvent pas scanner un QR (domicile ou déplacement). Laissez ceci désactivé sur les écrans TFT avec QR rotatif. Pas d’App Store."
+                    "text": "Case par Clock Point (désactivée par défaut). Activée = une icône WinProx à côté de Connexion : sur Android une touche l’ajoute à l’écran d’accueil, sur iPhone via Partager. Uniquement pour les exécutants qui ne peuvent pas scanner un QR (domicile ou déplacement). Laissez ceci désactivé sur les écrans TFT avec QR rotatif. Pas d’App Store."
                 }
             ]
         },

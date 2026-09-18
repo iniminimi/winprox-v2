@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Collegamento sulla schermata iniziale",
-                    "text": "Solo se l’amministrazione l’ha attivato su questo Clock Point: a destra di Accesso c’è un’icona WinProx. Tocca per le istruzioni: crea un collegamento dal menu di Chrome o Safari (non installare l’app). Apre lo stesso sito nel browser. Se hai già un’icona app senza barra degli indirizzi, eliminala prima. Non per schermi con QR rotanti."
+                    "text": "Solo se l’admin l’ha attivato su questo Clock Point: a destra di Accesso c’è un’icona WinProx. Tocca: su Android Chrome la mette sulla schermata Home; su iPhone Condividi → Aggiungi a schermata Home. Nessun App Store. Non per schermi con QR rotanti."
                 },
                 {
                     "label": "Esci",
@@ -1379,7 +1379,7 @@
                 },
                 {
                     "label": "Collegamento Clock Point sulla schermata iniziale",
-                    "text": "Spunta per Clock Point (disattivata di default). Attiva = accanto ad Accesso compare un’icona WinProx con istruzioni per un collegamento del browser sulla schermata iniziale (Chrome/Safari, non un’app). Solo per chi non può scansionare un QR (casa o in viaggio). Lasciare disattivato sugli schermi TFT con QR rotanti. Nessun App Store."
+                    "text": "Spunta per Clock Point (disattivata di default). Attiva = un’icona WinProx accanto ad Accesso: su Android un tocco la mette sulla schermata Home, su iPhone tramite Condividi. Solo per esecutori che non possono scansionare un QR (casa o in viaggio). Lasciare disattivato sugli schermi TFT con QR rotanti. Nessun App Store."
                 }
             ]
         },
