@@ -13,7 +13,7 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
-it('schrijft gedeelde portaalvinkjes en GPS-pin op elke bulk-unit', function () {
+it('schrijft gedeelde portaalvinkjes op elke bulk-unit', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
@@ -26,8 +26,6 @@ it('schrijft gedeelde portaalvinkjes en GPS-pin op elke bulk-unit', function () 
         'public_reports_enabled' => false,
         'allow_unit_checks' => true,
         'require_reporter_contact' => true,
-        'latitude' => 51.0543,
-        'longitude' => 3.7174,
     ], (int) $tenant->id, (int) $admin->id);
 
     expect($result['created'])->toBe(2);
@@ -39,9 +37,7 @@ it('schrijft gedeelde portaalvinkjes en GPS-pin op elke bulk-unit', function () 
         expect($unit->public_reports_enabled)->toBeFalse()
             ->and($unit->allow_unit_checks)->toBeTrue()
             ->and($unit->require_reporter_contact)->toBeTrue()
-            ->and($unit->allow_reservations)->toBeFalse()
-            ->and((float) $unit->latitude)->toBe(51.0543)
-            ->and((float) $unit->longitude)->toBe(3.7174);
+            ->and($unit->allow_reservations)->toBeFalse();
     }
 });
 

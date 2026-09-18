@@ -164,9 +164,9 @@ Genereert in één keer meerdere units via **één reeks**.
 - **Categorie** (optioneel, globaal voor de hele bulk).
 - **Geavanceerde portaal-opties** (optioneel, globaal voor de hele bulk): dezelfde
   vinkjes als het unit-formulier (publieke meldingen, reserveringen, unit checks +
-  checklist, metingen + meetvelden, contact/e-mailbevestiging, optionele GPS-pin).
-  Standaard = gekozen categorie. Roster-code, externe ID en foto’s blijven per unit
-  (uniek / niet deelbaar over een reeks).
+  checklist, metingen + meetvelden, contact/e-mailbevestiging). Standaard = gekozen
+  categorie. Roster-code, externe ID, foto’s en GPS-pin blijven per unit (uniek /
+  niet deelbaar over een reeks). De werkbezoek-pin van het gebouw staat op de locatie.
 - Acties: **Annuleren** / **Alle :count units aanmaken** (max. 500).
 
 **Data (te bevestigen tegen schema):** `locations` (naam, straat, huisnummer, postcode, plaats,

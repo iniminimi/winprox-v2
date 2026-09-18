@@ -65,8 +65,6 @@ class BulkCreateUnitsRequest extends FormRequest
             'measure_field_ids.*' => $unitRules['measure_field_ids.*'],
             'require_reporter_contact' => $unitRules['require_reporter_contact'],
             'require_reporter_email_verification' => $unitRules['require_reporter_email_verification'],
-            'latitude' => $unitRules['latitude'],
-            'longitude' => $unitRules['longitude'],
         ];
     }
 
@@ -88,8 +86,6 @@ class BulkCreateUnitsRequest extends FormRequest
             'measure_field_ids.*' => 'bulkMeasureFieldIds.*',
             'require_reporter_contact' => 'bulkRequireReporterContact',
             'require_reporter_email_verification' => 'bulkRequireReporterEmailVerification',
-            'latitude' => 'bulkLatitude',
-            'longitude' => 'bulkLongitude',
         ];
 
         $rules = self::portalRuleSet($tenantId);

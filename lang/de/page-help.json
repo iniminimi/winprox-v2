@@ -403,7 +403,7 @@
                 },
                 {
                     "label": "Bulk-Units",
-                    "text": "Erstellen Sie eine Reihe Units auf einmal. Geben Sie Startnummer ein (als Text, damit führende Nullen erhalten bleiben, z.B. 01 oder 201), Anzahl, optional Ziffern (Padding; leer = automatisch aus der Startnummer), Präfix (z.B. Zimmer + Leerzeichen) und Suffix (z.B. -A). Beispiele: 01; Zimmer 20–22; Zimmer 201–203; Zimmer 501. Die Vorschau zeigt Namen live; Duplikate werden rot markiert und blockieren Erstellen. Optional alle neuen Units einer Kategorie zuweisen. Unter Erweiterte Portal-Optionen setzen Sie dieselben Häkchen wie bei einer Unit für die ganze Reihe (Meldungen, Checks, Messungen, Kontakt, optionale GPS-Pin). Roster-Code und Fotos bleiben pro Unit. Maximal 500 Units pro Bulk."
+                    "text": "Erstellen Sie eine Reihe Units auf einmal. Geben Sie Startnummer ein (als Text, damit führende Nullen erhalten bleiben, z.B. 01 oder 201), Anzahl, optional Ziffern (Padding; leer = automatisch aus der Startnummer), Präfix (z.B. Zimmer + Leerzeichen) und Suffix (z.B. -A). Beispiele: 01; Zimmer 20–22; Zimmer 201–203; Zimmer 501. Die Vorschau zeigt Namen live; Duplikate werden rot markiert und blockieren Erstellen. Optional alle neuen Units einer Kategorie zuweisen. Unter Erweiterte Portal-Optionen setzen Sie dieselben Häkchen wie bei einer Unit für die ganze Reihe (Meldungen, Checks, Messungen, Kontakt). Roster-Code, Fotos und GPS-Pin bleiben pro Unit. Maximal 500 Units pro Bulk."
                 },
                 {
                     "label": "Units importieren",

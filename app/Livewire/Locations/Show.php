@@ -204,10 +204,6 @@ class Show extends Component
 
     public ?int $bulkCheckListId = null;
 
-    public string $bulkLatitude = '';
-
-    public string $bulkLongitude = '';
-
     public function mount(Location $location): void
     {
         $this->authorize('view', $location);
@@ -623,11 +619,6 @@ class Show extends Component
         return $this->fillGpsPair($text, 'unitLatitude', 'unitLongitude');
     }
 
-    public function applyBulkGpsPair(string $text): bool
-    {
-        return $this->fillGpsPair($text, 'bulkLatitude', 'bulkLongitude');
-    }
-
     public function saveUnit(CreateUnitAction $createUnit, UpdateUnitAction $updateUnit): void
     {
         $rules = $this->editingUnitId === null
@@ -891,8 +882,6 @@ class Show extends Component
     {
         $this->bulkCategoryId = null;
         $this->bulkPublicReportsEnabled = true;
-        $this->bulkLatitude = '';
-        $this->bulkLongitude = '';
         $this->applyBulkPortalFlagsFromCategory();
     }
 
@@ -1130,8 +1119,6 @@ class Show extends Component
             ...BulkCreateUnitsRequest::livewireRuleSet(),
             ...BulkCreateUnitsRequest::livewirePortalRuleSet($tenantId),
         ], [
-            'bulkLatitude.between' => __('locations.errors.coords_invalid'),
-            'bulkLongitude.between' => __('locations.errors.coords_invalid'),
             'bulkCategoryId.exists' => __('locations.units.errors.invalid_category'),
             'bulkCheckListId.exists' => __('locations.units.errors.invalid_check_list'),
         ]);
@@ -1192,8 +1179,6 @@ class Show extends Component
                     : [],
                 'require_reporter_contact' => (bool) $validated['bulkRequireReporterContact'],
                 'require_reporter_email_verification' => (bool) $validated['bulkRequireReporterEmailVerification'],
-                'latitude' => $validated['bulkLatitude'] ?? null,
-                'longitude' => $validated['bulkLongitude'] ?? null,
                 'original_language' => auth()->user()->locale ?? null,
             ], $tenantId, (int) auth()->id());
 

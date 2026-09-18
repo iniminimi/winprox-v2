@@ -586,7 +586,7 @@
             <form
                 class="wp-card wp-card-pad wp-stack wp-modal-card"
                 x-data
-                @submit.prevent="$store.wpBulkUnitRanges.submit($wire)"
+                @submit.prevent="$dispatch('wp-bulk-submit')"
             >
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ __('locations.bulk.title') }}</h2>
@@ -606,6 +606,7 @@
                             previewEmpty: @js(__('locations.bulk.preview_empty')),
                         },
                     })"
+                    @wp-bulk-submit.window="submit($wire)"
                 >
                 <div class="wp-card wp-card-pad wp-surface-2 wp-stack">
                     <div class="wp-form-grid-2">
@@ -693,6 +694,24 @@
                         x-text="duplicatesLabel(preview.duplicates.length)"
                     ></p>
                 </div>
+
+                <template x-teleport="#wp-bulk-actions-slot">
+                    <div class="wp-row">
+                        <button type="button" class="btn btn--ghost" wire:click="closeBulkModal">{{ __('common.button.cancel') }}</button>
+                        <button
+                            type="submit"
+                            class="btn btn--primary"
+                            :disabled="!canSubmit"
+                            wire:loading.attr="disabled"
+                            wire:target="createBulk"
+                        >
+                            <span wire:loading wire:target="createBulk" class="wp-mr-2">
+                                <x-wp-spinner size="sm" />
+                            </span>
+                            <span x-text="submitLabel(preview.total)"></span>
+                        </button>
+                    </div>
+                </template>
                 </div>
 
                 <label class="wp-field">
@@ -708,7 +727,7 @@
                     @error('bulkCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                <div class="wp-field" x-data="{ open: {{ ($bulkPortalFlagsMatchCategory && $this->bulkLatitude === '' && $this->bulkLongitude === '') ? 'false' : 'true' }} }">
+                <div class="wp-field" x-data="{ open: {{ $bulkPortalFlagsMatchCategory ? 'false' : 'true' }} }">
                     <span class="wp-label">{{ __('locations.units.advanced_portal.label') }}</span>
                     <div class="wp-field-panel" :class="{ 'is-open': open }">
                         <button
@@ -807,23 +826,6 @@
                                     <span>{{ __('locations.units.fields.require_reporter_email_verification') }}</span>
                                 </label>
                             </x-wp-tooltip>
-
-                            @include('partials.wp-gps-coords-fields', [
-                                'latProperty' => 'bulkLatitude',
-                                'lngProperty' => 'bulkLongitude',
-                                'applyMethod' => 'applyBulkGpsPair',
-                                'searchQuery' => trim(implode(' ', array_filter([
-                                    $this->location->street,
-                                    $this->location->house_number,
-                                    $this->location->postal_code,
-                                    $this->location->city,
-                                ]))),
-                                'searchProperties' => [],
-                                'labelKey' => 'locations.units.fields.visit_pin',
-                                'hintKey' => 'locations.units.fields.visit_pin_hint',
-                                'latError' => 'bulkLatitude',
-                                'lngError' => 'bulkLongitude',
-                            ])
                         </div>
                     </div>
                 </div>
@@ -831,21 +833,7 @@
                 @error('bulkRanges') <span class="wp-error">{{ $message }}</span> @enderror
                 @error('bulkRanges.0.start') <span class="wp-error">{{ $message }}</span> @enderror
 
-                <div class="wp-row">
-                    <button type="button" class="btn btn--ghost" wire:click="closeBulkModal">{{ __('common.button.cancel') }}</button>
-                    <button
-                        type="submit"
-                        class="btn btn--primary"
-                        :disabled="!$store.wpBulkUnitRanges.canSubmit"
-                        wire:loading.attr="disabled"
-                        wire:target="createBulk"
-                    >
-                        <span wire:loading wire:target="createBulk" class="wp-mr-2">
-                            <x-wp-spinner size="sm" />
-                        </span>
-                        <span x-text="$store.wpBulkUnitRanges.submitLabel"></span>
-                    </button>
-                </div>
+                <div id="wp-bulk-actions-slot" wire:ignore></div>
             </form>
         </x-wp-modal>
     @endif

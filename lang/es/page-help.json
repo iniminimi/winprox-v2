@@ -403,7 +403,7 @@
                 },
                 {
                     "label": "Unidades en bloque",
-                    "text": "Cree una serie de unidades de una vez. Introduzca el número inicial (como texto para conservar ceros iniciales, p. ej. 01 o 201), la cantidad, dígitos opcionales (padding; vacío = automático según el número inicial), prefijo (p. ej. Habitación + espacio) y sufijo (p. ej. -A). Ejemplos: 01; Habitación 20–22; Habitación 201–203; Habitación 501. La vista previa muestra los nombres en vivo; los duplicados se marcan en rojo y bloquean Crear. Opcionalmente asigne todas las unidades nuevas a una categoría. En Opciones avanzadas del portal puede poner las mismas casillas que en una unidad para toda la serie (incidencias, checks, mediciones, contacto, pin GPS opcional). El código de roster y las fotos siguen por unidad. Máximo 500 unidades por lote."
+                    "text": "Cree una serie de unidades de una vez. Introduzca el número inicial (como texto para conservar ceros iniciales, p. ej. 01 o 201), la cantidad, dígitos opcionales (padding; vacío = automático según el número inicial), prefijo (p. ej. Habitación + espacio) y sufijo (p. ej. -A). Ejemplos: 01; Habitación 20–22; Habitación 201–203; Habitación 501. La vista previa muestra los nombres en vivo; los duplicados se marcan en rojo y bloquean Crear. Opcionalmente asigne todas las unidades nuevas a una categoría. En Opciones avanzadas del portal puede poner las mismas casillas que en una unidad para toda la serie (incidencias, checks, mediciones, contacto). El código de roster, las fotos y el pin GPS siguen por unidad. Máximo 500 unidades por lote."
                 },
                 {
                     "label": "Importar unidades",
