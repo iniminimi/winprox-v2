@@ -148,6 +148,10 @@
                     "text": "Druckt eine Übersicht offener Aufgaben pro Team."
                 },
                 {
+                    "label": "Bericht Unit-Checks",
+                    "text": "Öffnet die Historie aller Unit-Checks (OK / Nicht OK, nicht abgehakte Checklistenpunkte, Bemerkung und Fotos). Dort gibt es Bericht herunterladen für CSV oder Drucken (PDF)."
+                },
+                {
                     "label": "Filter",
                     "text": "Verfeinern Sie nach Status, Team oder Suchbegriff. Die Suche prüft Beschreibung, Standort, Adresse, PLZ, Ort, Unit und Melder. Drücken Sie GO! zum Anwenden. Dieses Fenster zeigt immer nur Inspektionsrunden."
                 },
@@ -267,6 +271,10 @@
                 {
                     "label": "Inspektionsrunde",
                     "text": "Bei einer Inspektionsrunde sehen Sie hier den Fortschritt je Stopp (OK, Nicht OK, übersprungen, offen). Datum/Uhrzeit und Ausführender sind klein. Darunter die Checklistenpunkte, die nicht OK waren — der Nachweis für den Kunden. Auf dem Unit-QR-Portal jedes Stopps sieht der Mitarbeiter denselben Fortschritt; die Aufgabe wird automatisch abgeschlossen, wenn alle Stopps erledigt sind. Offene Runden können Sie hier auch manuell abschließen oder schließen (mit Begründung)."
+                },
+                {
+                    "label": "Drucken",
+                    "text": "Nur bei einer Inspektionsrunde. Öffnet eine druckbare Seite dieses Zyklus: Stops, Nicht-OK-Checklistenpunkte, Bemerkung und Fotos. Strg+P als PDF für den Kunden."
                 },
                 {
                     "label": "Team zuweisen",

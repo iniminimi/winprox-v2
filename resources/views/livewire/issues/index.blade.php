@@ -24,6 +24,11 @@
                     <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openRoundCreateModal">
                         {{ __('issues.list.plan_round') }}
                     </button>
+                    @can('viewAny', \App\Models\UnitCheck::class)
+                        <a href="{{ route('unit-checks.index') }}" class="btn btn--ghost btn--sm">
+                            {{ __('issues.list.unit_checks_report') }}
+                        </a>
+                    @endcan
                 @else
                     <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openCreateModal">
                         {{ __('issues.list.add') }}

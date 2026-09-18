@@ -148,6 +148,10 @@
                     "text": "Stampa un riepilogo dei compiti aperti per team."
                 },
                 {
+                    "label": "Report controlli unit",
+                    "text": "Apre lo storico di tutti i controlli unit (OK / Non OK, punti checklist non spuntati, nota e foto). Lì trovi Scarica report per CSV o Stampa (PDF)."
+                },
+                {
                     "label": "Filtri",
                     "text": "Affina per stato, team o ricerca. La ricerca guarda descrizione, sede, indirizzo, CAP, città, unità e segnalatore. Premi GO! per applicare. Questa schermata mostra sempre solo giri di ispezione."
                 },
@@ -267,6 +271,10 @@
                 {
                     "label": "Giro di ispezione",
                     "text": "Per un giro di ispezione vedi qui l’avanzamento per fermata (OK, Non OK, saltata, aperta). Data/ora ed esecutore sono compatti. Sotto, i punti checklist non OK: la prova per il cliente. Sul portale QR di ogni fermata il lavoratore vede lo stesso avanzamento; il compito si completa automaticamente quando tutte le fermate sono fatte. Puoi anche completare o chiudere un giro aperto qui (con motivo)."
+                },
+                {
+                    "label": "Stampa",
+                    "text": "Solo per un giro di ispezione. Apre una pagina stampabile di questo ciclo: fermate, punti checklist Non OK, nota e foto. Ctrl+P in PDF per il cliente."
                 },
                 {
                     "label": "Assegna team",

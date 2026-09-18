@@ -148,6 +148,10 @@
                     "text": "Print een overzicht van open taken per team."
                 },
                 {
+                    "label": "Rapport unit checks",
+                    "text": "Opent de historiek van alle unit checks (OK / Niet OK, niet-afgevinkte checklistpunten, opmerking en foto’s). Daar staat Download rapport voor CSV of Afdrukken (PDF)."
+                },
+                {
                     "label": "Filters",
                     "text": "Verfijn op status, team of zoekterm. De zoekterm zoekt in omschrijving, locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen. Dit scherm toont altijd alleen inspectierondes."
                 },
@@ -267,6 +271,10 @@
                 {
                     "label": "Inspectieronde",
                     "text": "Bij een inspectieronde zie je hier de voortgang per stop (OK, Niet OK, overgeslagen, open). Datum/uur en uitvoerder staan klein. Daaronder de checklistpunten die niet OK waren — dat is het bewijs voor de klant. Op het unit-QR-portaal van elke stop ziet de worker dezelfde voortgang; de taak wordt automatisch afgehandeld als alle stops klaar zijn. Openblijvende ronden kun je hier handmatig afhandelen of sluiten (met reden)."
+                },
+                {
+                    "label": "Afdrukken",
+                    "text": "Alleen bij een inspectieronde. Opent een printbare pagina van deze cyclus: stops, Niet OK-checklistpunten, opmerking en foto’s. Ctrl+P naar PDF voor de klant."
                 },
                 {
                     "label": "Team toewijzen",

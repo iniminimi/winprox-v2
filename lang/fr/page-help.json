@@ -148,6 +148,10 @@
                     "text": "Imprime un aperçu des tâches ouvertes par équipe."
                 },
                 {
+                    "label": "Rapport contrôles unit",
+                    "text": "Ouvre l’historique de tous les contrôles unit (OK / Pas OK, points de check-list non cochés, remarque et photos). Télécharger le rapport y propose CSV ou Imprimer (PDF)."
+                },
+                {
                     "label": "Filtres",
                     "text": "Affinez par statut, équipe ou recherche. La recherche porte sur la description, le site, l’adresse, le code postal, la ville, l’unité et le déclarant. Appuyez sur GO! pour appliquer. Cet écran n’affiche toujours que les tournées d’inspection."
                 },
@@ -267,6 +271,10 @@
                 {
                     "label": "Ronde d’inspection",
                     "text": "Pour une ronde d’inspection, vous voyez ici la progression par arrêt (OK, Pas OK, ignoré, ouvert). Date/heure et exécutant sont compacts. En dessous : les points de check-list qui n’étaient pas OK — la preuve pour le client. Sur le portail QR de chaque arrêt, le worker voit la même progression ; la tâche se termine automatiquement quand tous les arrêts sont faits. Vous pouvez aussi terminer ou fermer une ronde ouverte ici (avec motif)."
+                },
+                {
+                    "label": "Imprimer",
+                    "text": "Uniquement pour une tournée d’inspection. Ouvre une page imprimable de ce cycle : arrêts, points de check-list Pas OK, remarque et photos. Ctrl+P vers PDF pour le client."
                 },
                 {
                     "label": "Assigner une équipe",

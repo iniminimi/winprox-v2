@@ -36,6 +36,7 @@ use App\Http\Controllers\Time\ClockPointQrPackDownloadController;
 use App\Http\Controllers\Time\WorkShiftExportController;
 use App\Http\Controllers\Time\WorkShiftTimesheetPrintController;
 use App\Http\Controllers\Time\RosterPrintController;
+use App\Http\Controllers\Tasks\InspectionRoundTaskPrintController;
 use App\Http\Controllers\Tasks\TaskExportController;
 use App\Http\Controllers\Tasks\TaskPrintController;
 use App\Http\Controllers\UiThemeController;
@@ -408,6 +409,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/tasks', TaskIndex::class)->name('tasks.index');
         Route::get('/tasks/export', TaskExportController::class)->name('tasks.export');
         Route::get('/tasks/print', TaskPrintController::class)->name('tasks.print');
+        Route::get('/tasks/{task}/round-print', InspectionRoundTaskPrintController::class)->name('tasks.round-print');
         Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
         Route::get('/calendar', Calendar::class)->name('calendar.index');
         Route::get('/reservations', ReservationsIndex::class)->name('reservations.index');

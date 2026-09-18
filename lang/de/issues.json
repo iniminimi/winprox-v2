@@ -26,7 +26,8 @@
         "empty": "Noch keine Meldungen. Erstellen Sie eine mit dem \"+ Meldung hinzufügen\"-Button.",
         "empty_filtered": "Keine Meldungen für diese Filter.",
         "subtitle_inspection_rounds": "Wiederkehrende Runden mit mindestens zwei Unit-Stops",
-        "empty_inspection_rounds": "Noch keine Inspektionsrunden. Planen Sie eine über \"Inspektionsrunde planen\"."
+        "empty_inspection_rounds": "Noch keine Inspektionsrunden. Planen Sie eine über \"Inspektionsrunde planen\".",
+        "unit_checks_report": "Bericht Unit-Checks"
     },
     "filter": {
         "status": "Nach Status filtern",

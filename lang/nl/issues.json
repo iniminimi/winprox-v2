@@ -26,7 +26,8 @@
         "empty": "Er zijn nog geen meldingen. Maak er aan via de knop \"+ Melding toevoegen\".",
         "empty_filtered": "Geen meldingen gevonden voor deze filters.",
         "subtitle_inspection_rounds": "Terugkerende rondes met minstens twee unit-stops",
-        "empty_inspection_rounds": "Nog geen inspectierondes. Plan er een via \"Inspectieronde plannen\"."
+        "empty_inspection_rounds": "Nog geen inspectierondes. Plan er een via \"Inspectieronde plannen\".",
+        "unit_checks_report": "Rapport unit checks"
     },
     "filter": {
         "status": "Filter op status",

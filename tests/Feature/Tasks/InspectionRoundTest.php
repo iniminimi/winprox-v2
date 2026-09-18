@@ -771,8 +771,35 @@ it('renders round progress on the task show page', function () {
         ->test(\App\Livewire\Tasks\Show::class, ['task' => $task->fresh()])
         ->assertOk()
         ->assertSee(__('tasks.show.round_progress'))
+        ->assertSee(__('reports.print_button'))
+        ->assertSee(route('tasks.round-print', $task), false)
         ->assertSee(__('portal.round.progress', ['done' => 0, 'total' => 2]))
         ->assertSee($unitA->localizedName());
+});
+
+it('prints inspection-round task progress and rejects a normal task', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'task' => $task, 'unitA' => $unitA] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    $this->actingAs($actor)
+        ->get(route('tasks.round-print', $task))
+        ->assertOk()
+        ->assertSee(__('reports.inspection_round_task.title'), false)
+        ->assertSee(__('tasks.show.round_progress'), false)
+        ->assertSee($unitA->localizedName());
+
+    $plainIssue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'approved_at' => now(),
+    ]);
+    $plainTask = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $plainIssue->id,
+    ]);
+
+    $this->actingAs($actor)
+        ->get(route('tasks.round-print', $plainTask))
+        ->assertNotFound();
 });
 
 it('renders the issue show page for inspection rounds', function () {
@@ -873,6 +900,8 @@ it('shows inspection-rounds page chrome for the sidebar deep link', function () 
         ->assertDontSee(__('issues.filter.hint'), false)
         ->assertDontSee(__('issues.list.add'), false)
         ->assertSee(__('issues.list.plan_round'), false)
+        ->assertSee(__('issues.list.unit_checks_report'), false)
+        ->assertSee(route('unit-checks.index'), false)
         ->assertSee(__('issues.filter.reset'), false);
 });
 

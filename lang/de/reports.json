@@ -23,6 +23,10 @@
         "document_title": "Unit-Checks — WinProx",
         "filename": "unit-checks"
     },
+    "inspection_round_task": {
+        "title": "Inspektionsrunde — Bericht",
+        "document_title": "Inspektionsrunde — WinProx"
+    },
     "esg": {
         "title": "ESG-Messungen — Bericht",
         "document_title": "ESG-Messungen — WinProx",

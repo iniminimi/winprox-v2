@@ -20,7 +20,7 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
 Menu-volgorde (sidebar, accordion): Dashboard · **Werk** (Meldingen, Inspectierondes,
-Taken, Kalender, Reserveringen, Unit checks) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Personen** (Backoffice = Beheerder/Medewerker;
+Taken, Kalender, Reserveringen) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Personen** (Backoffice = Beheerder/Medewerker;
 Teams = Uitvoerder/Teamleader) · **Time** (module) · **Automatisering** (IoT Connect
 Corporate — groep alleen als minstens één module aan staat) ·
 **Organisatie** (Instellingen, API, Abonnement) · **Hulp** (FAQ, Handleiding, Juridisch,
@@ -515,7 +515,9 @@ stops meer zijn voor **deze** cyclus-taak.
   Livewire als Meldingen, `?recurring=1&inspection_round=1`): titel/ondertitel/lege
   staat voor rondes. Geen “+ Melding toevoegen”, geen vinkjes terugkerend/alleen
   inspectierondes, geen klik-hint. Paginahulp is **Hulp — Inspectierondes**. Optioneel
-  `?round_create=1` opent direct de plan-modal.
+  `?round_create=1` opent direct de plan-modal. Knop **Rapport unit checks** opent
+  `/unit-checks` (historiek + Download rapport). Geen extra sidebar-item voor unit
+  checks.
 - Label: **Ronde · N stops**. Geen ESG op ronde-issues.
 - Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).
 - Taak↔unit (2b): `issue.unit_id = U` **óf** U is stop — via `TaskBelongsToUnitAction`
@@ -538,8 +540,10 @@ stops meer zijn voor **deze** cyclus-taak.
 - **Fase 2:** strikte stop-volgorde (alleen de eerstvolgende open stop mag OK/skip);
   rijke progress-UI (balk + genummerde stops met status; compacte datum/uur en uitvoerder;
   **niet-OK checklistpunten**; optionele opmerking en foto’s van de unit check)
-  op **unit-QR (elke stop)** én op **taakdetail in beheer**. Met Time +
-  GPS-werkbezoeken ook op Clock Point ter plaatse (volgende stop).
+  op **unit-QR (elke stop)** én op **taakdetail in beheer**. Knop **Afdrukken** op de
+  ronde-taak: printbare pagina van **deze cyclus** (stops, Niet OK, opmerking, foto’s)
+  voor de klant. Met Time + GPS-werkbezoeken ook op Clock Point ter plaatse (volgende
+  stop).
 
 ### Fasering
 | Fase | Levert | Status |

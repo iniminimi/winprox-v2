@@ -148,6 +148,10 @@
                     "text": "Imprime un resumen de tareas abiertas por equipo."
                 },
                 {
+                    "label": "Informe de unit checks",
+                    "text": "Abre el historial de todos los unit checks (OK / No OK, puntos de lista no marcados, nota y fotos). Ahí está Descargar informe para CSV o Imprimir (PDF)."
+                },
+                {
                     "label": "Filtros",
                     "text": "Afine por estado, equipo o búsqueda. La búsqueda mira descripción, ubicación, dirección, código postal, ciudad, unidad y denunciante. Pulse GO! para aplicar. Esta pantalla muestra siempre solo rondas de inspección."
                 },
@@ -267,6 +271,10 @@
                 {
                     "label": "Ronda de inspección",
                     "text": "En una ronda de inspección ves aquí el progreso por parada (OK, No OK, omitida, abierta). Fecha/hora y ejecutor van compactos. Debajo, los puntos de lista que no estaban OK: la evidencia para el cliente. En el portal QR de cada parada el trabajador ve el mismo progreso; la tarea se completa automáticamente cuando todas las paradas están listas. También puedes completar o cerrar una ronda abierta aquí (con motivo)."
+                },
+                {
+                    "label": "Imprimir",
+                    "text": "Solo en una ronda de inspección. Abre una página imprimible de este ciclo: paradas, puntos de lista No OK, nota y fotos. Ctrl+P a PDF para el cliente."
                 },
                 {
                     "label": "Asignar equipo",

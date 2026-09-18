@@ -88,7 +88,15 @@
 
     @if ($roundProgress)
         <div class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('tasks.show.round_progress') }}</h2>
+            <div class="wp-row">
+                <h2 class="wp-section-title">{{ __('tasks.show.round_progress') }}</h2>
+                <a
+                    href="{{ route('tasks.round-print', $task) }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn--ghost btn--sm"
+                >{{ __('reports.print_button') }}</a>
+            </div>
             @include('partials.wp-portal-round-progress', [
                 'progress' => $roundProgress,
             ])

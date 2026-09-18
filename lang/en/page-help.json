@@ -148,6 +148,10 @@
                     "text": "Print an overview of open tasks per team."
                 },
                 {
+                    "label": "Unit checks report",
+                    "text": "Opens the history of all unit checks (OK / Not OK, unticked checklist points, note and photos). Download report there for CSV or Print (PDF)."
+                },
+                {
                     "label": "Filters",
                     "text": "Narrow by status, team or search term. Search looks in description, location, address, postcode, city, unit and reporter. Press GO! to apply. This screen always shows inspection rounds only."
                 },
@@ -267,6 +271,10 @@
                 {
                     "label": "Inspection round",
                     "text": "For an inspection round you see progress per stop (OK, Not OK, skipped, open). Date/time and worker are compact. Below that: checklist points that were not OK — the evidence for the customer. On each stop’s unit QR portal the worker sees the same progress; the task completes automatically when all stops are done. You can also complete or close an open round here (with a reason)."
+                },
+                {
+                    "label": "Print",
+                    "text": "Inspection rounds only. Opens a printable page of this cycle: stops, Not OK checklist points, note and photos. Ctrl+P to PDF for the customer."
                 },
                 {
                     "label": "Assign team",

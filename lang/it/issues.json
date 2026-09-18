@@ -26,7 +26,8 @@
         "empty": "Nessuna segnalazione ancora. Ne crei una con il pulsante «+ Aggiungi segnalazione».",
         "empty_filtered": "Nessuna segnalazione corrisponde a questi filtri.",
         "subtitle_inspection_rounds": "Giri ricorrenti con almeno due fermate unità",
-        "empty_inspection_rounds": "Nessun giro di ispezione. Pianificane uno con \"Pianifica giro di ispezione\"."
+        "empty_inspection_rounds": "Nessun giro di ispezione. Pianificane uno con \"Pianifica giro di ispezione\".",
+        "unit_checks_report": "Report controlli unit"
     },
     "filter": {
         "status": "Filtra per stato",

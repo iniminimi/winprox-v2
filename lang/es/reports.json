@@ -23,6 +23,10 @@
         "document_title": "Unit checks — WinProx",
         "filename": "unit-checks"
     },
+    "inspection_round_task": {
+        "title": "Ronda de inspección — informe",
+        "document_title": "Ronda de inspección — WinProx"
+    },
     "esg": {
         "title": "Mediciones ESG — informe",
         "document_title": "Mediciones ESG — WinProx",

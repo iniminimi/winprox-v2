@@ -3946,6 +3946,11 @@ svg.wp-release-worker-row__icon,
         break-inside: avoid;
         page-break-inside: avoid;
     }
+
+    .wp-report-print .wp-round-stops__item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
 }
 
 .wp-issue-row--static {

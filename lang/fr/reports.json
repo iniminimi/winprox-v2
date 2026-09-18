@@ -23,6 +23,10 @@
         "document_title": "Contrôles unit — WinProx",
         "filename": "controles-unit"
     },
+    "inspection_round_task": {
+        "title": "Tournée d’inspection — rapport",
+        "document_title": "Tournée d’inspection — WinProx"
+    },
     "esg": {
         "title": "Mesures ESG — rapport",
         "document_title": "Mesures ESG — WinProx",

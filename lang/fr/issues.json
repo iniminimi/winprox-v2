@@ -26,7 +26,8 @@
         "empty": "Aucun signalement pour l'instant. Créez-en un avec le bouton \"+ Ajouter un signalement\".",
         "empty_filtered": "Aucun signalement ne correspond à ces filtres.",
         "subtitle_inspection_rounds": "Tournées récurrentes avec au moins deux arrêts d’unités",
-        "empty_inspection_rounds": "Aucune tournée d’inspection pour le moment. Planifiez-en une via « Planifier une tournée d’inspection »."
+        "empty_inspection_rounds": "Aucune tournée d’inspection pour le moment. Planifiez-en une via « Planifier une tournée d’inspection ».",
+        "unit_checks_report": "Rapport contrôles unit"
     },
     "filter": {
         "status": "Filtrer par statut",
