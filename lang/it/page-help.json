@@ -1005,7 +1005,7 @@
             "title": "Aiuto — Portale Clock Point",
             "actions": [
                 {
-                    "label": "Accesso",
+                    "label": "Timbratura",
                     "text": "Scansioni l'adesivo QR Clock Point e acceda con nome, cognome e icona personale (PIN opzionale) sul proprio telefono. Due tentativi errati bloccano temporaneamente il Suo account — un caposquadra o amministratore può sbloccarlo."
                 },
                 {

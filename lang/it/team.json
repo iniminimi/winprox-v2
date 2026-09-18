@@ -195,7 +195,7 @@
     },
     "clock_point_qr": {
         "button": "Codice QR Clock Point",
-        "default_name": "Accesso"
+        "default_name": "Timbratura"
     },
     "errors": {
         "not_authorized": "Non è autorizzato a eseguire questa azione.",

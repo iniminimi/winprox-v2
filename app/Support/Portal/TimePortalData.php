@@ -15,6 +15,16 @@ use Illuminate\Support\Collection;
  */
 final class TimePortalData
 {
+    /** @var list<string> Former default Clock Point names (login wording). */
+    public const FORMER_GENERIC_NAMES = [
+        'Inloggen',
+        'Sign in',
+        'Anmeldung',
+        'Connexion',
+        'Inicio de sesión',
+        'Accesso',
+    ];
+
     /**
      * @return Collection<int, Task>
      */
@@ -108,6 +118,6 @@ final class TimePortalData
             }
         }
 
-        return false;
+        return in_array($name, self::FORMER_GENERIC_NAMES, true);
     }
 }

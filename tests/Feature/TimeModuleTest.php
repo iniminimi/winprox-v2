@@ -431,6 +431,19 @@ it('verbergt de standaard Clock Point-naam onder Inklokken', function () {
         ->assertDontSeeHtml('<p class="wp-muted">'.e(__('team.clock_point_qr.default_name')).'</p>');
 });
 
+it('verbergt de oude standaardnaam Inloggen op Clock Point', function () {
+    [$tenant] = timeTenantWithAdmin();
+    ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Inloggen',
+        'qr_token' => 'legacy-login-clock-name',
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => 'legacy-login-clock-name'])
+        ->assertSee(__('time.portal.title'), false)
+        ->assertDontSeeHtml('<p class="wp-muted">Inloggen</p>');
+});
+
 it('toont een eigen Clock Point-naam onder Inklokken', function () {
     [$tenant] = timeTenantWithAdmin();
     ClockPoint::factory()->create([

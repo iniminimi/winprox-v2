@@ -1005,7 +1005,7 @@
             "title": "Hilfe — Clock Point-Portal",
             "actions": [
                 {
-                    "label": "Anmelden",
+                    "label": "Einstempeln",
                     "text": "Scannen Sie den Clock Point QR-Aufkleber und melden Sie sich mit Vor- und Nachname und Ihrem persönlichen Icon (optional PIN) auf Ihrem eigenen Handy an. Zwei falsche Versuche sperren Ihr Konto vorübergehend — ein Teamleiter oder Administrator kann das freigeben."
                 },
                 {

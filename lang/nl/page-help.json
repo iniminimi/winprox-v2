@@ -1005,7 +1005,7 @@
             "title": "Hulp — Clock Point portaal",
             "actions": [
                 {
-                    "label": "Inloggen",
+                    "label": "Inklokken",
                     "text": "Scan de Clock Point QR-sticker en meld je aan met je voor- en achternaam en je persoonlijke icoon (optioneel pincode) op je eigen gsm. Twee foute pogingen blokkeren je account tijdelijk — een teamleider of beheerder kan dat vrijgeven."
                 },
                 {

@@ -1013,7 +1013,7 @@
             "title": "Aide — Portail Clock Point",
             "actions": [
                 {
-                    "label": "Connexion",
+                    "label": "Pointage",
                     "text": "Scannez l'autocollant QR Clock Point et connectez-vous avec votre prénom, nom et icône personnelle (PIN optionnel) sur votre propre téléphone. Deux tentatives incorrectes bloquent temporairement votre compte — un chef d'équipe ou un administrateur peut le débloquer."
                 },
                 {

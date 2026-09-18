@@ -195,7 +195,7 @@
     },
     "clock_point_qr": {
         "button": "QR code Clock Point",
-        "default_name": "Connexion"
+        "default_name": "Pointage"
     },
     "errors": {
         "not_authorized": "Vous n'êtes pas autorisé à effectuer cette action.",

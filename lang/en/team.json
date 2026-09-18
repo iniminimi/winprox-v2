@@ -195,7 +195,7 @@
     },
     "clock_point_qr": {
         "button": "Clock Point QR code",
-        "default_name": "Sign in"
+        "default_name": "Clock in"
     },
     "errors": {
         "not_authorized": "You are not authorized to perform this action.",

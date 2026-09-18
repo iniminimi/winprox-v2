@@ -874,7 +874,9 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
 - **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` voor aanmelden
-  (naam + icoon), in-/uitklokken en teamtaken-overzicht. Zonder GPS-werkbezoeken blijven
+  (naam + icoon), in-/uitklokken en teamtaken-overzicht. Standaardnaam van het eerste
+  Clock Point: **Inklokken** (niet Inloggen); die generieke naam blijft op het portaal
+  verborgen. Zonder GPS-werkbezoeken blijven
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
   starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;
   inspectiestops (unit check) ter plaatse op dezelfde bezoek-locatie, in stopvolgorde.

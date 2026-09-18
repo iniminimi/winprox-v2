@@ -89,7 +89,8 @@ it('maakt een default clock point aan via de teams-knop zonder time-module', fun
         ->call('openClockPointQr')
         ->assertRedirect(route('time.clock-points.qr', ClockPoint::query()->first()));
 
-    expect(ClockPoint::query()->count())->toBe(1);
+    expect(ClockPoint::query()->count())->toBe(1)
+        ->and(ClockPoint::query()->value('name'))->toBe(__('team.clock_point_qr.default_name'));
 });
 
 it('maakt een default clock point bij het openen van clock points-beheer', function () {
@@ -103,7 +104,8 @@ it('maakt een default clock point bij het openen van clock points-beheer', funct
         ->test(\App\Livewire\Time\ClockPointsIndex::class)
         ->assertOk();
 
-    expect(ClockPoint::query()->count())->toBe(1);
+    expect(ClockPoint::query()->count())->toBe(1)
+        ->and(ClockPoint::query()->value('name'))->toBe(__('team.clock_point_qr.default_name'));
 });
 
 it('maakt een default clock point bij inschakelen van de time-module', function () {
@@ -113,7 +115,8 @@ it('maakt een default clock point bij inschakelen van de time-module', function 
     app(\App\Actions\Platform\ToggleTimeModuleAction::class)->handle($tenant, null);
 
     expect($tenant->fresh()->has_time_module)->toBeTrue()
-        ->and(ClockPoint::query()->where('tenant_id', $tenant->id)->count())->toBe(1);
+        ->and(ClockPoint::query()->where('tenant_id', $tenant->id)->count())->toBe(1)
+        ->and(ClockPoint::query()->where('tenant_id', $tenant->id)->value('name'))->toBe(__('team.clock_point_qr.default_name'));
 });
 
 it('weigert inklokken zonder time-module', function () {

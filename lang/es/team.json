@@ -195,7 +195,7 @@
     },
     "clock_point_qr": {
         "button": "Código QR Clock Point",
-        "default_name": "Inicio de sesión"
+        "default_name": "Fichar"
     },
     "errors": {
         "not_authorized": "No está autorizado para realizar esta acción.",

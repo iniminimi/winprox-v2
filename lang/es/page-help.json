@@ -1005,7 +1005,7 @@
             "title": "Ayuda — Portal Clock Point",
             "actions": [
                 {
-                    "label": "Iniciar sesión",
+                    "label": "Fichar",
                     "text": "Escanee la pegatina QR Clock Point e inicie sesión con su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Dos intentos incorrectos bloquean temporalmente su cuenta — un jefe de equipo o administrador puede desbloquearla."
                 },
                 {
