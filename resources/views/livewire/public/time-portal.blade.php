@@ -45,12 +45,12 @@
                     $taskHint = __('portal.team.read_only_hint');
                 } elseif ($openShift !== null && ($openVisitLocationId ?? null) === null) {
                     $taskHint = __('portal.team.complete_needs_visit');
-                } elseif (($openVisitLocationId ?? null) !== null) {
-                    $taskHint = __('portal.team.complete_on_site_hint');
                 }
             }
+            $hideVisitStartedFlash = ($onSiteGuidance ?? null) !== null
+                && $flashMessage === __('time.portal.visit_started');
         @endphp
-        @if ($flashMessage !== '' && $flashMessage !== $taskHint)
+        @if ($flashMessage !== '' && $flashMessage !== $taskHint && ! $hideVisitStartedFlash)
             <div class="wp-flash">{{ $flashMessage }}</div>
         @endif
 
@@ -303,6 +303,21 @@
                     <div class="wp-card wp-card-pad wp-cluster">
                         <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
                     </div>
+
+                    @if ($onSiteGuidance)
+                        <div class="wp-flash">
+                            @if (! $onSiteGuidance['remaining_here'] && filled($onSiteGuidance['next']))
+                                {{ __('portal.team.on_site_here_go_next', ['here' => $onSiteGuidance['here'], 'next' => $onSiteGuidance['next']]) }}
+                            @elseif ($onSiteGuidance['remaining_here'])
+                                {{ __('portal.team.on_site_here_work', ['here' => $onSiteGuidance['here']]) }}
+                                @if (filled($onSiteGuidance['next']))
+                                    {{ __('portal.team.on_site_here_then', ['next' => $onSiteGuidance['next']]) }}
+                                @endif
+                            @else
+                                {{ __('portal.team.on_site_here_done', ['here' => $onSiteGuidance['here']]) }}
+                            @endif
+                        </div>
+                    @endif
 
                     @if ($verifiedWorker?->is_teamleader)
                         @include('partials.wp-portal-teamleader-release')

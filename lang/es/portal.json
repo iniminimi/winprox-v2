@@ -149,7 +149,10 @@
         "title": "Resumen del equipo",
         "read_only_hint": "Esto es un resumen. Completar tareas solo es posible mediante el QR de la unidad en el lugar.",
         "complete_needs_visit": "Empieza primero el trabajo en este emplazamiento. Después puedes cerrar tareas de equipo y la siguiente parada de inspección aquí.",
-        "complete_on_site_hint": "Estás en el lugar. Cierra tareas de equipo o pulsa Unit check en la siguiente parada bajo Tareas abiertas.",
+        "on_site_here_work": "Estás en el lugar: :here. Cierra aquí tus tareas.",
+        "on_site_here_then": "Siguiente parada: :next.",
+        "on_site_here_go_next": "Estás en el lugar: :here y ahora debes ir a la siguiente parada: :next.",
+        "on_site_here_done": "Estás en el lugar: :here. Aquí no queda trabajo abierto.",
         "onboarding_done": "Está registrado y ha iniciado sesión.",
         "icon_taken": "Este icono ya está en uso. Elija otro.",
         "register": {

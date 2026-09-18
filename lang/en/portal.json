@@ -149,7 +149,10 @@
         "title": "Team overview",
         "read_only_hint": "This is an overview. Completing tasks is only possible via the unit QR on site.",
         "complete_needs_visit": "Start work at this location first. Then you can complete team tasks and the next inspection stop here.",
-        "complete_on_site_hint": "You are on site. Complete team tasks, or tap Unit check at the next stop under Open tasks.",
+        "on_site_here_work": "You are on site: :here. Complete your tasks here.",
+        "on_site_here_then": "Next stop: :next.",
+        "on_site_here_go_next": "You are on site: :here and should now go to the next stop: :next.",
+        "on_site_here_done": "You are on site: :here. There is no more open work here.",
         "onboarding_done": "You are registered and signed in.",
         "icon_taken": "This icon is already in use. Choose another one.",
         "register": {

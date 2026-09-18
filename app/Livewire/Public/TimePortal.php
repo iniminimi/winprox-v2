@@ -1467,6 +1467,15 @@ class TimePortal extends Component
             }
         }
 
+        $todayDestinations = $this->todayDestinationsForView(
+            $verifiedWorker,
+            $openShift,
+            $listDestinations,
+        );
+        $onSiteGuidance = ($gpsVisits && $openShift?->openVisit !== null)
+            ? TimePortalData::onSiteGuidance($openShift->openVisit, $tasks, $todayDestinations)
+            : null;
+
         return view('livewire.public.time-portal', [
             'canAct' => $canAct,
             'verifiedWorker' => $verifiedWorker,
@@ -1485,11 +1494,8 @@ class TimePortal extends Component
                 ? WorkerIconGuard::remainingAttempts($deviceWorker->team)
                 : WorkerIconGuard::MAX_FAILED_ATTEMPTS,
             'openShift' => $openShift,
-            'todayDestinations' => $this->todayDestinationsForView(
-                $verifiedWorker,
-                $openShift,
-                $listDestinations,
-            ),
+            'todayDestinations' => $todayDestinations,
+            'onSiteGuidance' => $onSiteGuidance,
             'openVisitUnitId' => $openShift?->openVisit?->unit_id,
             'openVisitLocationId' => $openShift?->openVisit?->location_id,
             'checkingUnit' => $checkingUnit,

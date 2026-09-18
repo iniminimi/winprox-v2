@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Open taken",
-                    "text": "Na naam en icoon zie je de open taken van je team. Met Time + GPS-werkbezoeken start of rond je teamtaken af op Clock Point zolang er een open werkbezoek is op die klantlocatie (optionele notitie en foto's). Een inspectieronde toont omschrijving, prio, status en de volgende stop. De knop Unit check verschijnt pas na Start werk op die locatie; de volledige check (OK / Niet OK / overslaan) opent daarna."
+                    "text": "Na naam en icoon zie je de open taken van je team. Met Time + GPS-werkbezoeken start of rond je teamtaken af op Clock Point zolang er een open werkbezoek is op die klantlocatie (optionele notitie en foto's). Bovenaan zie je waar je ter plaatse bent en, als het werk hier klaar is, de volgende locatie. Een inspectieronde toont omschrijving, prio, status en de volgende stop. De knop Unit check verschijnt pas na Start werk op die locatie; de volledige check (OK / Niet OK / overslaan) opent daarna."
                 },
                 {
                     "label": "In- en uitklokken",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Waar moet ik vandaag naartoe",
-                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: alleen locaties (naam + adres). Tik het GPS-icoon voor de route in Google Maps. Start werk verschijnt op de locatie als je ter plaatse bent. Inspectiestops staan onder Open taken; Unit check pas na Start werk. Open taken zonder datum blijven onder Open taken."
+                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: alleen locaties (naam + adres). Tik het GPS-icoon voor de route in Google Maps. Start werk verschijnt op de locatie als je ter plaatse bent. Tijdens het bezoek staat bovenaan de huidige locatie en de volgende stop. Inspectiestops staan onder Open taken; Unit check pas na Start werk. Open taken zonder datum blijven onder Open taken."
                 },
                 {
                     "label": "Evacuatielijst",

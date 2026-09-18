@@ -2,12 +2,15 @@
 
 namespace App\Support\Portal;
 
+use App\Actions\Tasks\RoundTaskCompletionAction;
 use App\Enums\TaskStatus;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Models\WorkVisit;
 use Illuminate\Support\Collection;
 
 /**
@@ -47,7 +50,7 @@ final class TimePortalData
         return Task::where('internal_team_id', $team->id)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q->whereNotNull('approved_at'))
-            ->with(['issue', 'issue.location', 'issue.unit.translations', 'issue.esgIndicator.translations', 'issue.roundStops.unit', 'issue.translations', 'translations', 'issue.photos', 'issue.updates'])
+            ->with(['issue', 'issue.location', 'issue.unit.location', 'issue.unit.translations', 'issue.esgIndicator.translations', 'issue.roundStops.unit.location', 'issue.translations', 'translations', 'issue.photos', 'issue.updates'])
             ->orderByRaw('CASE priority WHEN "prio_1" THEN 1 WHEN "prio_2" THEN 2 WHEN "prio_3" THEN 3 WHEN "prio_4" THEN 4 ELSE 5 END')
             ->orderByDesc('created_at')
             ->limit(50)
@@ -125,5 +128,109 @@ final class TimePortalData
         }
 
         return in_array($name, self::FORMER_GENERIC_NAMES, true);
+    }
+
+    /**
+     * Status bovenaan Clock Point tijdens een open GPS-werkbezoek.
+     *
+     * @param  Collection<int, Task>  $tasks
+     * @param  list<array{location_id: int, location_name: string}>  $todayGroups
+     * @return array{here: string, next: ?string, remaining_here: bool}|null
+     */
+    public static function onSiteGuidance(?WorkVisit $visit, Collection $tasks, array $todayGroups): ?array
+    {
+        if ($visit === null || $visit->location_id === null) {
+            return null;
+        }
+
+        $visit->loadMissing('location');
+        $hereId = (int) $visit->location_id;
+        $here = self::locationLabel($visit->location);
+        if ($here === '') {
+            return null;
+        }
+
+        $tasks->loadMissing([
+            'issue.location',
+            'issue.unit.location',
+            'issue.roundStops.unit.location',
+        ]);
+
+        $remainingHere = false;
+        $nextFromRound = null;
+        $nextFromTask = null;
+        $roundProgress = app(RoundTaskCompletionAction::class);
+
+        foreach ($tasks as $task) {
+            $issue = $task->issue;
+            if ($issue === null) {
+                continue;
+            }
+
+            if ($issue->isInspectionRound()) {
+                $nextUnitId = $roundProgress->nextOpenStopUnitId($task);
+                if ($nextUnitId === null) {
+                    continue;
+                }
+
+                $stop = $issue->roundStops?->firstWhere('unit_id', $nextUnitId);
+                $location = $stop?->unit?->location;
+                $locationId = $location !== null ? (int) $location->id : null;
+                if ($locationId === $hereId) {
+                    $remainingHere = true;
+                } elseif ($nextFromRound === null) {
+                    $label = self::locationLabel($location);
+                    if ($label !== '') {
+                        $nextFromRound = $label;
+                    }
+                }
+
+                continue;
+            }
+
+            $location = $issue->location ?? $issue->unit?->location;
+            $locationId = $location !== null ? (int) $location->id : null;
+            if ($locationId === $hereId) {
+                $remainingHere = true;
+            } elseif ($nextFromTask === null) {
+                $label = self::locationLabel($location);
+                if ($label !== '') {
+                    $nextFromTask = $label;
+                }
+            }
+        }
+
+        $nextFromToday = null;
+        foreach ($todayGroups as $group) {
+            if ((int) ($group['location_id'] ?? 0) === $hereId) {
+                continue;
+            }
+
+            $label = trim((string) ($group['location_name'] ?? ''));
+            if ($label !== '') {
+                $nextFromToday = $label;
+                break;
+            }
+        }
+
+        return [
+            'here' => $here,
+            'next' => $nextFromRound ?? $nextFromTask ?? $nextFromToday,
+            'remaining_here' => $remainingHere,
+        ];
+    }
+
+    private static function locationLabel(?Location $location): string
+    {
+        if ($location === null) {
+            return '';
+        }
+
+        $name = trim($location->localizedName());
+        if ($name === '') {
+            $name = trim((string) $location->name);
+        }
+
+        return $name;
     }
 }

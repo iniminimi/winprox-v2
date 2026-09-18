@@ -754,6 +754,11 @@ productsector op `Tenant`.
   het pad zonder GPS-bezoek. Navigeren maakt geen `WorkVisit` en geen CIAO.
   **Zoek werkplek in de buurt** stelt gepinde units voor, en locaties met pin als
   daar geen nabije unit was. Een dienst met nul bezoeken blijft geldig.
+  Tijdens een open werkbezoek toont Clock Point **bovenaan** (groene status, geen
+  losse flash “Werkbezoek gestart”) waar je ter plaatse bent en de **volgende
+  locatie**. Nog open werk hier: handel hier af (+ optioneel “Volgende stop”).
+  Klaar hier: “moet nu naar de volgende stop”. Geen volgende locatie: “geen open
+  werk meer”. Die status staat niet alleen bij Open taken.
 - **Beheer:** Werk → **Werkbezoeken** toont de historiek (periode, uitvoerder, locatie,
   open/afgesloten), één kader per uitvoerder per dag met duur per locatie. Time → **Aanwezigheid** toont het
   open werkbezoek (locatie · unit).

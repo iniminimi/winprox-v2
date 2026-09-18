@@ -72,7 +72,8 @@ it('start en handelt een taak af op Clock Point met open GPS-bezoek', function (
     app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
 
     $portal = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
-        ->assertSee(__('portal.team.complete_on_site_hint'), false)
+        ->assertSee(__('portal.team.on_site_here_work', ['here' => $location->name]), false)
+        ->assertDontSee(__('time.portal.visit_started'), false)
         ->assertSee(__('portal.worker.start_task'), false)
         ->call('startTask', $task->id)
         ->assertSet('flashMessage', __('portal.worker.task_started'));
@@ -87,6 +88,58 @@ it('start en handelt een taak af op Clock Point met open GPS-bezoek', function (
 
     expect($task->fresh()->status)->toBe(TaskStatus::Done)
         ->and($issue->updates()->where('kind', 'worker_note')->count())->toBe(1);
+});
+
+it('toont ter plaatse en de volgende locatie bovenaan Clock Point', function () {
+    $ctx = prepareClockPointWorker(gpsVisitContext());
+    [$tenant, $worker, $clockPoint, $location, $unit] = $ctx;
+    $location->update(['name' => 'Klant Alpha']);
+    $unit->update(['allow_unit_checks' => true]);
+
+    $nextLocation = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Klant Beta',
+        'street' => 'Kerkstraat',
+        'house_number' => '9',
+        'postal_code' => '8000',
+        'city' => 'Brugge',
+        'is_active' => true,
+    ]);
+    $nextUnit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $nextLocation->id,
+        'name' => 'Stop Beta',
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => null,
+        'unit_id' => null,
+        'approved_at' => now(),
+        'is_recurring' => true,
+        'description' => 'Ronde twee klanten',
+        'recurrence_next_due_at' => now()->endOfDay(),
+    ]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unit->id, 'sort_order' => 0]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $nextUnit->id, 'sort_order' => 1]);
+    clockPointOpenTask($ctx, $issue, ['status' => TaskStatus::InProgress]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
+
+    signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->assertSee(__('portal.team.on_site_here_work', ['here' => 'Klant Alpha']), false)
+        ->assertSee(__('portal.team.on_site_here_then', ['next' => 'Klant Beta']), false)
+        ->assertDontSee(__('portal.team.on_site_here_go_next', ['here' => 'Klant Alpha', 'next' => 'Klant Beta']), false)
+        ->call('openClockPointUnitCheck', $unit->id)
+        ->call('submitClockPointUnitCheck', 'ok')
+        ->assertSet('flashMessage', __('portal.unit_check.recorded_ok'));
+
+    signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->assertSee(__('portal.team.on_site_here_go_next', ['here' => 'Klant Alpha', 'next' => 'Klant Beta']), false)
+        ->assertDontSee(__('portal.team.on_site_here_work', ['here' => 'Klant Alpha']), false);
 });
 
 it('bewaart afhandelingsfoto’s via Clock Point gekoppeld aan de taak', function () {

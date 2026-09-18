@@ -149,7 +149,10 @@
         "title": "Aperçu de l'équipe",
         "read_only_hint": "Ceci est un aperçu. La réalisation des tâches n'est possible que via le QR de l'unité sur place.",
         "complete_needs_visit": "Commencez d’abord le travail sur ce site. Ensuite vous pouvez clôturer les tâches d’équipe et le prochain arrêt d’inspection ici.",
-        "complete_on_site_hint": "Vous êtes sur place. Clôturez les tâches d’équipe, ou touchez Contrôle d’unité à l’arrêt suivant sous Tâches ouvertes.",
+        "on_site_here_work": "Vous êtes sur place : :here. Clôturez vos tâches ici.",
+        "on_site_here_then": "Arrêt suivant : :next.",
+        "on_site_here_go_next": "Vous êtes sur place : :here et devez maintenant aller à l’arrêt suivant : :next.",
+        "on_site_here_done": "Vous êtes sur place : :here. Il n’y a plus de travail ouvert ici.",
         "onboarding_done": "Vous êtes enregistré et connecté.",
         "icon_taken": "Cette icône est déjà utilisée. Choisissez-en une autre.",
         "register": {
