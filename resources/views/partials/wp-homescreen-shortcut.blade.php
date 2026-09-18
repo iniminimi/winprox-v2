@@ -14,5 +14,8 @@
             width="40"
             height="40"
         >
+        <span class="wp-homescreen-shortcut__add" aria-hidden="true">
+            <x-wp-icon name="plus" />
+        </span>
     </button>
 </x-wp-tooltip>

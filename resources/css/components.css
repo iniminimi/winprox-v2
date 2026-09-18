@@ -6613,22 +6613,58 @@ a.wp-kpi.wp-kpi--attention {
     }
 }
 
+.wp-homescreen-shortcut-wrap {
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 0.2rem;
+}
+
+.wp-page-head-main .wp-cluster:has(.wp-homescreen-shortcut-wrap) {
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
 .wp-homescreen-shortcut {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
-    border: 0;
-    background: transparent;
+    padding: 0.2rem;
+    border: 1px solid var(--wp-border-strong);
+    background: var(--wp-surface);
     cursor: pointer;
     border-radius: var(--wp-radius-sm);
+    box-shadow: var(--wp-shadow-sm);
 }
 
 .wp-homescreen-shortcut img {
     display: block;
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 0.55rem;
+    border-radius: 0.4rem;
+}
+
+.wp-homescreen-shortcut__add {
+    position: absolute;
+    right: -0.3rem;
+    bottom: -0.3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    border: 2px solid var(--wp-surface);
+    border-radius: var(--wp-radius-pill);
+    background: var(--wp-accent);
+    color: var(--wp-text-on-accent);
+    pointer-events: none;
+}
+
+.wp-homescreen-shortcut__add .wp-icon {
+    width: 0.7rem;
+    height: 0.7rem;
+    stroke-width: 2.4;
 }
 
 @media (display-mode: standalone) {
