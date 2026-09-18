@@ -141,5 +141,6 @@ it('levert een webmanifest alleen als het clock point de startscherm-link aanbie
         ->assertOk()
         ->assertJsonPath('name', 'WinProx')
         ->assertJsonPath('display', 'standalone')
+        ->assertJsonPath('background_color', '#ffffff')
         ->assertJsonPath('start_url', route('public.time-portal', $clockPoint->qr_token));
 });
