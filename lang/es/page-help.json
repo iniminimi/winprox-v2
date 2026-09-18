@@ -1006,7 +1006,7 @@
             "actions": [
                 {
                     "label": "Nombre e icono",
-                    "text": "Escanee el QR Clock Point y elija su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Eso indica quién es — aún no es fichar. Tras identificarse desaparece el título Inicio de sesión. Dos intentos incorrectos bloquean temporalmente su cuenta; un jefe de equipo o administrador puede desbloquearla."
+                    "text": "Escanee el QR Clock Point y elija su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Eso indica quién es — aún no es fichar. No hay botón para otro ejecutor: el móvil sigue siendo suyo hasta que un admin o un jefe de equipo lo libere. Tras identificarse desaparece el título Inicio de sesión. Dos intentos incorrectos bloquean temporalmente su cuenta; un jefe de equipo o administrador puede desbloquearla."
                 },
                 {
                     "label": "Cerrar sesión",

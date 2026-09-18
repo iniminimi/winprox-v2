@@ -1006,7 +1006,7 @@
             "actions": [
                 {
                     "label": "Name and icon",
-                    "text": "Scan the Clock Point QR and choose your first and last name plus your personal icon (optional PIN) on your own phone. That is who you are — it is not clocking in yet. After sign-in the Sign in heading disappears. Two wrong attempts temporarily block your account; a team leader or administrator can release it."
+                    "text": "Scan the Clock Point QR and choose your first and last name plus your personal icon (optional PIN) on your own phone. That is who you are — it is not clocking in yet. There is no button to sign in as a different worker: the phone stays yours until an admin or team leader releases it. After sign-in the Sign in heading disappears. Two wrong attempts temporarily block your account; a team leader or administrator can release it."
                 },
                 {
                     "label": "Sign out",

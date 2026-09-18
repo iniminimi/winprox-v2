@@ -1006,7 +1006,7 @@
             "actions": [
                 {
                     "label": "Name und Symbol",
-                    "text": "Scannen Sie den Clock-Point-QR und wählen Sie Vor- und Nachname sowie Ihr persönliches Symbol (optional PIN) auf Ihrem eigenen Handy. Das sagt, wer Sie sind — das ist noch kein Einstempeln. Nach der Anmeldung verschwindet die Überschrift Anmeldung. Zwei falsche Versuche sperren Ihr Konto vorübergehend; ein Teamleiter oder Administrator kann das freigeben."
+                    "text": "Scannen Sie den Clock-Point-QR und wählen Sie Vor- und Nachname sowie Ihr persönliches Symbol (optional PIN) auf Ihrem eigenen Handy. Das sagt, wer Sie sind — das ist noch kein Einstempeln. Keine Schaltfläche für einen anderen Mitarbeiter: das Handy bleibt Ihres, bis Verwaltung oder Teamleiter es freigeben. Nach der Anmeldung verschwindet die Überschrift Anmeldung. Zwei falsche Versuche sperren Ihr Konto vorübergehend; ein Teamleiter oder Administrator kann das freigeben."
                 },
                 {
                     "label": "Abmelden",

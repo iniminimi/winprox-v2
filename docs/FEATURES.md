@@ -890,7 +890,8 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   portaal verborgen. Na een geslaagde aanmelding verdwijnt ook de kop **Aanmelden**
   (en een eigen Clock Point-naam); logo, hulp en welkom blijven. **Afmelden** sluit de
   portaal-sessie (opnieuw icoon of PIN); dat is geen uitklokken. De gsm blijft gekoppeld
-  tot beheer of teamleader vrijgeeft. Zonder GPS-werkbezoeken blijven
+  tot beheer of teamleader vrijgeeft. Geen knop **Aanmelden als andere medewerker**
+  (ook niet bij icoon, PIN of blokkade). Zonder GPS-werkbezoeken blijven
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
   starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;
   inspectiestops (unit check) ter plaatse op dezelfde bezoek-locatie, in stopvolgorde.
@@ -1304,10 +1305,9 @@ Bedoeld voor gedeelde telefoons op de werkvloer:
    geslaagde on-site icoonbevestiging.
 4. **Lockout**: na **2** foute icoonpogingen geblokkeerd (sessie + worker-rij
    `field_icon_locked_at`); beheerder kan ontgrendelen/icoon resetten.
-5. **"Aanmelden als andere medewerker"** (unit-QR, en Clock Point vóór volledige
-   aanmelding: PIN/icoon/blokkade) wist device/sessie/trust. Na een geslaagde
-   Clock Point-aanmelding is die knop er niet; wel **Afmelden** (sessie uit,
-   toestelkoppeling blijft).
+5. **"Aanmelden als andere medewerker"** alleen op **unit-QR** (wist device/sessie/trust).
+   Clock Point heeft die knop niet: één gsm per uitvoerder. Na aanmelden wel **Afmelden**
+   (sessie uit, toestelkoppeling blijft tot beheer of teamleader vrijgeeft).
 6. **Clock Point** herstelt verificatie via de device-cookie (geen wipe bij elke scan).
    **BESLIST: open registratie** via Clock Point als er precies **één** actief team zonder
    workers is (onboarding: worker + icoon aanmaken). Daarna identificeren bestaande workers

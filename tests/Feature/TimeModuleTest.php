@@ -490,6 +490,8 @@ it('verbergt de kop Aanmelden na een geslaagde aanmelding', function () {
         ->set('first_name', 'Jan')
         ->set('last_name', 'Janssen')
         ->call('identifyWorker')
+        ->assertSee(__('portal.worker.confirm_icon'), false)
+        ->assertDontSee(__('portal.worker.different_worker'), false)
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>')
@@ -533,7 +535,7 @@ it('sluit Afmelden de portaal-sessie zonder uit te klokken of de gsm los te kopp
         ->assertDontSee(__('common.welcome'), false)
         ->assertDontSeeHtml('wire:click="signOut"')
         ->assertSee(__('portal.worker.confirm_icon'), false)
-        ->assertSee(__('portal.worker.different_worker'), false);
+        ->assertDontSee(__('portal.worker.different_worker'), false);
 
     expect((int) $worker->fresh()->clock_device_id)->toBe($boundDeviceId)
         ->and(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue();

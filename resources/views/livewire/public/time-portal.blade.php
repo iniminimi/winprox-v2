@@ -137,9 +137,6 @@
                         @error('pin_code_confirm') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <button type="submit" class="btn btn--primary btn--block">{{ __('portal.worker.pin_save') }}</button>
-                    <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
-                        {{ __('portal.worker.different_worker') }}
-                    </button>
                 </form>
             </div>
         @elseif ($showPinVerify)
@@ -157,9 +154,6 @@
                     </div>
                     <p class="wp-hint">{{ __('portal.worker.attempts_left', ['count' => $remainingAttempts]) }}</p>
                     <button type="submit" class="btn btn--primary btn--block">{{ __('portal.worker.confirm_pin') }}</button>
-                    <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
-                        {{ __('portal.worker.different_worker') }}
-                    </button>
                 </form>
             </div>
         @elseif ($showVerify)
@@ -186,16 +180,10 @@
                 <button type="button" class="btn btn--primary btn--block" wire:click="signInWithIcon" @disabled($sign_in_icon_slug === '')>
                     {{ __('portal.worker.confirm_icon') }}
                 </button>
-                <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
-                    {{ __('portal.worker.different_worker') }}
-                </button>
             </div>
         @elseif ($iconBlocked)
             <div class="wp-card wp-card-pad wp-stack">
                 <p class="wp-error">{{ __('portal.worker.errors.blocked') }}</p>
-                <button type="button" class="btn btn--ghost btn--block btn--sm" onclick="window.wpFieldFlush?.()" wire:click="signInAsDifferentWorker">
-                    {{ __('portal.worker.different_worker') }}
-                </button>
             </div>
         @elseif ($showNoWorkers)
             <div class="wp-card wp-card-pad">

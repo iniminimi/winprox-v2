@@ -4,7 +4,6 @@ namespace App\Livewire\Public;
 
 use App\Actions\Notifications\ListWorkerNotificationsAction;
 use App\Actions\Notifications\MarkWorkerNotificationsReadAction;
-use App\Actions\Portal\ClearWorkerTaskBaselineAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\RoundTaskCompletionAction;
@@ -374,21 +373,6 @@ class TimePortal extends Component
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;
-    }
-
-    public function signInAsDifferentWorker(): void
-    {
-        $verified = $this->verifiedWorker();
-        $team = $verified?->team;
-
-        WorkerDeviceSession::revokeDeviceSessionFromRequest($team);
-        if ($team !== null) {
-            WorkerIconGuard::clearSessionForTeam((int) $team->id);
-            WorkerVerification::clearForTeam((int) $team->id);
-            app(ClearWorkerTaskBaselineAction::class)->handle((int) $team->id);
-        }
-
-        $this->forgetPortalSignInState();
     }
 
     public function signOut(): void
