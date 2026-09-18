@@ -440,8 +440,16 @@
 }
 
 @media (min-width: 64rem) {
+    [data-theme='standard'] .wp-welcome-split.wp-landing-split--flip:has(.wp-landing-visual--compact) {
+        grid-template-columns: 18rem minmax(0, 1fr);
+        gap: 1.5rem;
+        align-items: start;
+    }
+
     [data-theme='standard'] .wp-landing-split--flip .wp-landing-visual--compact {
-        margin-inline: 0 auto;
+        max-width: none;
+        width: 100%;
+        margin-inline: 0;
     }
 }
 
