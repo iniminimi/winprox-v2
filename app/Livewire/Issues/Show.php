@@ -89,11 +89,11 @@ class Show extends Component
             : $issue;
         $this->issue->loadMissing('translations');
         $this->descriptionLocale = $this->defaultDescriptionLocale($this->issue);
-        $this->round_stop_unit_ids = $this->issue->roundStops()
+        $this->applyRoundStopOrder($this->issue->roundStops()
             ->orderBy('sort_order')
             ->pluck('unit_id')
             ->map(fn ($id) => (int) $id)
-            ->all();
+            ->all());
     }
 
     public function saveRoundStops(SyncIssueRoundStopsAction $syncRoundStops): void

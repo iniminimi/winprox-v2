@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+use App\Actions\Issues\CoalesceInspectionRoundStopsByLocationAction;
 use App\Actions\Issues\CreateInspectionRoundAction;
 use App\Actions\Issues\MergeInspectionRoundStopSelectionAction;
+use App\Actions\Issues\MoveInspectionRoundLocationAction;
 use App\Actions\Issues\MoveInspectionRoundStopAction;
 use App\Actions\Issues\ReorderInspectionRoundStopAction;
 use App\Actions\Issues\SyncIssueRoundStopsAction;
@@ -863,6 +865,23 @@ it('voegt nieuwe stops achteraan toe en behoudt de bestaande volgorde', function
     expect(app(MergeInspectionRoundStopSelectionAction::class)->handle([3, 1], [1, 2, 3]))->toBe([3, 1, 2]);
 });
 
+it('zet nieuwe units van een bekende locatie bij dat locatieblok', function () {
+    expect(app(MergeInspectionRoundStopSelectionAction::class)->handle(
+        [3, 1],
+        [1, 2, 3],
+        [1 => 10, 2 => 10, 3 => 20],
+    ))->toBe([3, 1, 2]);
+});
+
+it('houdt locatieblokken aaneengesloten in de loopvolgorde', function () {
+    $map = [1 => 10, 2 => 20, 3 => 10];
+
+    expect(app(CoalesceInspectionRoundStopsByLocationAction::class)->handle([1, 2, 3], $map))->toBe([1, 3, 2])
+        ->and(app(ReorderInspectionRoundStopAction::class)->handle([1, 3, 2], 2, 0, $map))->toBe([1, 3, 2])
+        ->and(app(ReorderInspectionRoundStopAction::class)->handle([1, 3, 2], 1, 0, $map))->toBe([3, 1, 2])
+        ->and(app(MoveInspectionRoundLocationAction::class)->handle([1, 3, 2], 20, -1, $map))->toBe([2, 1, 3]);
+});
+
 it('wisselt twee opeenvolgende stops in de loopvolgorde', function () {
     $move = app(MoveInspectionRoundStopAction::class);
 
@@ -913,6 +932,41 @@ it('slepen verplaatst een stop naar een andere plaats in de ronde', function () 
         ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id, (int) $unitC->id])
         ->call('reorderRoundStop', 2, 0)
         ->assertSet('round_stop_unit_ids', [(int) $unitC->id, (int) $unitA->id, (int) $unitB->id]);
+});
+
+it('houdt units bij hun locatie en laat locatieblokken als geheel verplaatsen', function () {
+    [
+        'tenant' => $tenant,
+        'actor' => $actor,
+        'unitA' => $unitA,
+        'unitB' => $unitB,
+    ] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    $locationB = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'is_active' => true,
+        'name' => 'Andere locatie',
+    ]);
+    $unitOther = Unit::factory()->withQrToken('round-unit-other')->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationB->id,
+        'category_id' => $unitA->category_id,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->call('openRoundCreateModal')
+        ->call('toggleRoundStop', (int) $unitA->id)
+        ->call('toggleRoundStop', (int) $unitOther->id)
+        ->call('toggleRoundStop', (int) $unitB->id)
+        ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id, (int) $unitOther->id])
+        ->call('reorderRoundStop', 2, 0)
+        ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id, (int) $unitOther->id])
+        ->call('moveRoundLocation', (int) $locationB->id, -1)
+        ->assertSet('round_stop_unit_ids', [(int) $unitOther->id, (int) $unitA->id, (int) $unitB->id]);
 });
 
 it('slaat een omgekeerde stopvolgorde op via de meldingsdetail', function () {

@@ -51,6 +51,15 @@ class SyncIssueRoundStopsAction
             ]);
         }
 
+        $locationByUnitId = [];
+        foreach ($uniqueIds as $unitId) {
+            $locationByUnitId[$unitId] = (int) ($units->get($unitId)?->location_id ?? 0);
+        }
+        $uniqueIds = app(CoalesceInspectionRoundStopsByLocationAction::class)->handle(
+            $uniqueIds,
+            $locationByUnitId,
+        );
+
         $locationIds = $units->pluck('location_id')->unique()->values();
 
         return DB::transaction(function () use ($issue, $uniqueIds, $locationIds) {

@@ -71,7 +71,7 @@
                 {
                     "label": "Paradas",
                     "nested": true,
-                    "text": "Elija al menos 2 unidades (cualquier ubicación). Marcar selecciona; la lista numerada (arrastrar o flechas) define qué sede o unidad va primero. Solo aparecen las unidades con unit checks."
+                    "text": "Elija al menos 2 unidades (cualquier ubicación). Marcar selecciona; la lista numerada (arrastrar dentro de una sede, o el bloque de sede) define qué sede o unidad va primero. Solo aparecen las unidades con unit checks."
                 },
                 {
                     "label": "Nota de la tarea",
@@ -136,7 +136,7 @@
                 {
                     "label": "Paradas",
                     "nested": true,
-                    "text": "Elija al menos 2 unidades (cualquier ubicación). Marcar selecciona; la lista numerada (arrastrar o flechas) define qué sede o unidad va primero. Solo aparecen unidades con unit checks."
+                    "text": "Elija al menos 2 unidades (cualquier ubicación). Marcar selecciona; la lista numerada (arrastrar dentro de una sede, o el bloque de sede) define qué sede o unidad va primero. Solo aparecen unidades con unit checks."
                 },
                 {
                     "label": "Nota de tarea",
@@ -217,7 +217,7 @@
                 },
                 {
                     "label": "Paradas de ronda",
-                    "text": "Elija al menos 2 unidades como paradas (cualquier ubicación; agrupadas por ubicación). Solo aparecen las unidades con unit checks. La lista numerada (arrastrar o flechas) es el recorrido de la ronda (1 = primera parada)."
+                    "text": "Elija al menos 2 unidades como paradas (cualquier ubicación; agrupadas por ubicación). Solo aparecen las unidades con unit checks. La lista numerada (arrastrar dentro de una sede, o el bloque de sede) es el recorrido de la ronda (1 = primera parada)."
                 },
                 {
                     "label": "Seleccionar todas las unidades",

@@ -71,7 +71,7 @@
                 {
                     "label": "Arrêts",
                     "nested": true,
-                    "text": "Choisissez au moins 2 unités (tous les sites). Cocher sélectionne ; la liste numérotée (glisser-déposer ou flèches) définit quel site ou quelle unité vient en premier. Seules les unités avec contrôle d’unité apparaissent dans la liste."
+                    "text": "Choisissez au moins 2 unités (tous les sites). Cocher sélectionne ; la liste numérotée (glisser dans un même site, ou le bloc de site) définit quel site ou quelle unité vient en premier. Seules les unités avec contrôle d’unité apparaissent dans la liste."
                 },
                 {
                     "label": "Note de tâche",
@@ -136,7 +136,7 @@
                 {
                     "label": "Arrêts",
                     "nested": true,
-                    "text": "Choisissez au moins 2 unités (tous les sites). Cocher sélectionne ; la liste numérotée (glisser-déposer ou flèches) définit quel site ou quelle unité vient en premier. Seules les unités avec unit checks apparaissent."
+                    "text": "Choisissez au moins 2 unités (tous les sites). Cocher sélectionne ; la liste numérotée (glisser dans un même site, ou le bloc de site) définit quel site ou quelle unité vient en premier. Seules les unités avec unit checks apparaissent."
                 },
                 {
                     "label": "Note de tâche",
@@ -217,7 +217,7 @@
                 },
                 {
                     "label": "Arrêts de tournée",
-                    "text": "Choisissez au moins 2 unités comme arrêts (tous les sites ; groupés par site). Seules les unités avec contrôle d’unité apparaissent dans la liste. La liste numérotée (glisser-déposer ou flèches) est l’ordre de la tournée (1 = premier arrêt)."
+                    "text": "Choisissez au moins 2 unités comme arrêts (tous les sites ; groupés par site). Seules les unités avec contrôle d’unité apparaissent dans la liste. La liste numérotée (glisser dans un même site, ou le bloc de site) est l’ordre de la tournée (1 = premier arrêt)."
                 },
                 {
                     "label": "Sélectionner toutes les unités",

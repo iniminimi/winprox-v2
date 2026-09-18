@@ -6,9 +6,11 @@ namespace App\Actions\Issues;
 
 /**
  * Behoudt de bestaande stop-volgorde en zet nieuw geselecteerde units achteraan.
+ * Met locatie-kaart blijven units van dezelfde locatie bij elkaar.
  *
  * @param  list<int>  $ordered
  * @param  list<int>  $selected
+ * @param  array<int, int>  $locationByUnitId
  * @return list<int>
  */
 class MergeInspectionRoundStopSelectionAction
@@ -16,9 +18,10 @@ class MergeInspectionRoundStopSelectionAction
     /**
      * @param  list<int|string>  $ordered
      * @param  list<int|string>  $selected
+     * @param  array<int, int>  $locationByUnitId
      * @return list<int>
      */
-    public function handle(array $ordered, array $selected): array
+    public function handle(array $ordered, array $selected, array $locationByUnitId = []): array
     {
         $selectedIds = [];
         foreach ($selected as $id) {
@@ -51,6 +54,10 @@ class MergeInspectionRoundStopSelectionAction
             }
         }
 
-        return $kept;
+        if ($locationByUnitId === []) {
+            return $kept;
+        }
+
+        return app(CoalesceInspectionRoundStopsByLocationAction::class)->handle($kept, $locationByUnitId);
     }
 }

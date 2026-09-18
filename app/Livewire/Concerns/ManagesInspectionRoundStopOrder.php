@@ -2,8 +2,11 @@
 
 namespace App\Livewire\Concerns;
 
+use App\Actions\Issues\CoalesceInspectionRoundStopsByLocationAction;
 use App\Actions\Issues\MergeInspectionRoundStopSelectionAction;
+use App\Actions\Issues\MoveInspectionRoundLocationAction;
 use App\Actions\Issues\MoveInspectionRoundStopAction;
+use App\Actions\Issues\ReorderInspectionRoundLocationAction;
 use App\Actions\Issues\ReorderInspectionRoundStopAction;
 use App\Models\Unit;
 
@@ -18,13 +21,13 @@ trait ManagesInspectionRoundStopOrder
         $position = array_search($unitId, $ids, true);
         if ($position === false) {
             $ids[] = $unitId;
-            $this->round_stop_unit_ids = $ids;
+            $this->applyRoundStopOrder($ids);
 
             return;
         }
 
         unset($ids[$position]);
-        $this->round_stop_unit_ids = array_values($ids);
+        $this->applyRoundStopOrder(array_values($ids));
     }
 
     public function toggleAllRoundStops(): void
@@ -38,28 +41,51 @@ trait ManagesInspectionRoundStopOrder
             return;
         }
 
-        $this->round_stop_unit_ids = app(MergeInspectionRoundStopSelectionAction::class)->handle(
+        $this->applyRoundStopOrder(app(MergeInspectionRoundStopSelectionAction::class)->handle(
             $selected,
             $allIds,
-        );
+            $this->roundStopLocationByUnitId(),
+        ));
     }
 
     public function moveRoundStop(int $index, int $delta): void
     {
-        $this->round_stop_unit_ids = app(MoveInspectionRoundStopAction::class)->handle(
+        $this->applyRoundStopOrder(app(MoveInspectionRoundStopAction::class)->handle(
             $this->normalizedRoundStopUnitIds(),
             $index,
             $delta,
-        );
+            $this->roundStopLocationByUnitId(),
+        ));
     }
 
     public function reorderRoundStop(int $from, int $to): void
     {
-        $this->round_stop_unit_ids = app(ReorderInspectionRoundStopAction::class)->handle(
+        $this->applyRoundStopOrder(app(ReorderInspectionRoundStopAction::class)->handle(
             $this->normalizedRoundStopUnitIds(),
             $from,
             $to,
-        );
+            $this->roundStopLocationByUnitId(),
+        ));
+    }
+
+    public function moveRoundLocation(int $locationId, int $delta): void
+    {
+        $this->applyRoundStopOrder(app(MoveInspectionRoundLocationAction::class)->handle(
+            $this->normalizedRoundStopUnitIds(),
+            $locationId,
+            $delta,
+            $this->roundStopLocationByUnitId(),
+        ));
+    }
+
+    public function reorderRoundLocation(int $fromLocationId, int $toLocationId): void
+    {
+        $this->applyRoundStopOrder(app(ReorderInspectionRoundLocationAction::class)->handle(
+            $this->normalizedRoundStopUnitIds(),
+            $fromLocationId,
+            $toLocationId,
+            $this->roundStopLocationByUnitId(),
+        ));
     }
 
     /**
@@ -71,5 +97,30 @@ trait ManagesInspectionRoundStopOrder
             static fn ($id) => is_numeric($id) ? (int) $id : null,
             $this->round_stop_unit_ids,
         )));
+    }
+
+    /**
+     * @param  list<int|string>  $ids
+     */
+    protected function applyRoundStopOrder(array $ids): void
+    {
+        $this->round_stop_unit_ids = app(CoalesceInspectionRoundStopsByLocationAction::class)->handle(
+            $ids,
+            $this->roundStopLocationByUnitId(),
+        );
+    }
+
+    /**
+     * @return array<int, int>
+     */
+    protected function roundStopLocationByUnitId(): array
+    {
+        [$grouped] = Unit::groupedInspectionRoundStops();
+        $map = [];
+        foreach ($grouped->flatten(1) as $unit) {
+            $map[(int) $unit->id] = (int) ($unit->location_id ?? 0);
+        }
+
+        return $map;
     }
 }

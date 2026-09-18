@@ -5733,31 +5733,82 @@ a.wp-kpi.wp-kpi--attention {
     align-items: center;
 }
 
+.wp-round-stops--route {
+    gap: 0.65rem;
+}
+
+.wp-round-stops--units {
+    gap: 0.25rem;
+    padding-left: 0.15rem;
+}
+
+.wp-round-stops__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.15rem 0 0.1rem;
+    border-radius: var(--wp-radius, 0.5rem);
+    border: 1px solid transparent;
+}
+
+.wp-round-stops__group + .wp-round-stops__group {
+    border-top: 1px solid var(--wp-border);
+    padding-top: 0.65rem;
+}
+
+.wp-round-stops__group-head {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.wp-round-stops__group-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--wp-text-muted, var(--wp-muted));
+}
+
 .wp-round-stops__handle {
-    flex: 0 0 1.1rem;
-    width: 1.1rem;
-    height: 1.35rem;
+    display: inline-flex;
+    flex: 0 0 1.75rem;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--wp-text);
     cursor: grab;
     touch-action: none;
+    border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius, 0.5rem);
-    background-image: radial-gradient(circle, var(--wp-muted) 1.15px, transparent 1.25px);
-    background-size: 0.38rem 0.38rem;
-    background-position: center;
+    background: var(--wp-surface);
+}
+
+.wp-round-stops__grip {
+    display: block;
+    width: 0.7rem;
+    height: 1.05rem;
+    fill: currentColor;
+    pointer-events: none;
 }
 
 .wp-round-stops--sorting {
     user-select: none;
 }
 
-.wp-round-stops__item--dragging {
+.wp-round-stops__item--dragging,
+.wp-round-stops__group--dragging {
     opacity: 0.55;
 }
 
-.wp-round-stops__item--dragging .wp-round-stops__handle {
+.wp-round-stops__item--dragging .wp-round-stops__handle,
+.wp-round-stops__group--dragging .wp-round-stops__handle {
     cursor: grabbing;
 }
 
-.wp-round-stops__item--drop {
+.wp-round-stops__item--drop,
+.wp-round-stops__group--drop {
     border-color: color-mix(in srgb, var(--wp-accent) 35%, var(--wp-border));
     background-color: color-mix(in srgb, var(--wp-accent) 8%, var(--wp-surface));
 }
