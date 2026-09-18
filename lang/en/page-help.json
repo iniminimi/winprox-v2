@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Open tasks",
-                    "text": "After signing in you see open tasks for your team. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). Today's inspection rounds appear under Where do I need to go today and under Open tasks after clock-in. On site you tap the next stop (unit check) without the unit QR."
+                    "text": "After signing in you see open tasks for your team. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). An inspection round shows description, priority, status, the next stop and the Unit check button. The full check (OK / Not OK / skip) opens after that button."
                 },
                 {
                     "label": "Clock in and out",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Where do I need to go today",
-                    "text": "After clock-in (Time with GPS work visits) you see where you need to go today: destinations grouped by location, including stops of an inspection round. Tap the GPS icon at the location (customer) for the Google Maps route; units with their own pin have their own icon. Start work appears at the location or a unit pin when you are on site. On site you tap a unit to do the inspection stop (unit check). Open tasks without a date stay under Open tasks."
+                    "text": "After clock-in (Time with GPS work visits) you see where you need to go today: locations only (name + address). Tap the GPS icon for the Google Maps route. Start work appears at the location when you are on site. Inspection stops and the Unit check button are under Open tasks. Open tasks without a date stay under Open tasks."
                 },
                 {
                     "label": "Evacuation list",

@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Tâches ouvertes",
-                    "text": "Après connexion, vous voyez les tâches ouvertes de votre équipe. Avec Time + visites GPS, vous démarrez ou clôturez les tâches d'équipe sur Clock Point tant qu'une visite de travail est ouverte sur ce site client (note et photos facultatives). Les tournées d'inspection du jour apparaissent sous Où dois-je aller aujourd'hui après le pointage. Sur place, vous touchez le prochain arrêt (contrôle d'unité) sans le QR unité."
+                    "text": "Après connexion, vous voyez les tâches ouvertes de votre équipe. Avec Time + visites GPS, vous démarrez ou clôturez les tâches d'équipe sur Clock Point tant qu'une visite de travail est ouverte sur ce site client (note et photos facultatives). Une tournée d'inspection affiche la description, la priorité, le statut, l'arrêt suivant et le bouton Contrôle d'unité. Le contrôle complet (OK / Non OK / passer) s'ouvre après ce bouton."
                 },
                 {
                     "label": "Pointer entrée et sortie",
@@ -1026,7 +1026,7 @@
                 },
                 {
                     "label": "Où dois-je aller aujourd'hui",
-                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : destinations groupées par site, y compris les arrêts d'une tournée d'inspection. Touchez l'icône GPS du site (client) pour l'itinéraire Google Maps ; les unités avec pin propre ont leur propre icône. Commencer le travail apparaît sur le site ou un pin d'unité une fois sur place. Vous pouvez ensuite clôturer les tâches d'équipe sur Clock Point. Sur place, vous touchez le prochain arrêt (contrôle d'unité) sans le QR unité. Les tâches ouvertes sans date restent sous Tâches ouvertes."
+                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : uniquement les sites (nom + adresse). Touchez l'icône GPS pour l'itinéraire Google Maps. Commencer le travail apparaît sur le site une fois sur place. Les arrêts d'inspection et le bouton Contrôle d'unité sont sous Tâches ouvertes. Les tâches ouvertes sans date restent sous Tâches ouvertes."
                 },
                 {
                     "label": "Liste d’évacuation",

@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Open taken",
-                    "text": "Na het aanmelden zie je de open taken van je team. Met Time + GPS-werkbezoeken start of rond je teamtaken af op Clock Point zolang er een open werkbezoek is op die klantlocatie (optionele notitie en foto's). Inspectierondes van vandaag staan na inklokken onder Waar moet ik vandaag naartoe en onder Open taken. Ter plaatse tik je de volgende stop (unit check) zonder unit-QR."
+                    "text": "Na het aanmelden zie je de open taken van je team. Met Time + GPS-werkbezoeken start of rond je teamtaken af op Clock Point zolang er een open werkbezoek is op die klantlocatie (optionele notitie en foto's). Een inspectieronde toont omschrijving, prio, status, de volgende stop en de knop Unit check. De volledige check (OK / Niet OK / overslaan) opent na die knop."
                 },
                 {
                     "label": "In- en uitklokken",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Waar moet ik vandaag naartoe",
-                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: bestemmingen gegroepeerd per locatie, inclusief de stops van een inspectieronde. Tik het GPS-icoon bij de locatie (klant) voor de route in Google Maps; units met eigen pin hebben een eigen icoon. Start werk verschijnt op de locatie of bij een unit-pin als je ter plaatse bent. Ter plaatse tik je een unit om de inspectiestop (unit check) te doen. Open taken zonder datum blijven onder Open taken."
+                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: alleen locaties (naam + adres). Tik het GPS-icoon voor de route in Google Maps. Start werk verschijnt op de locatie als je ter plaatse bent. Inspectiestops en de knop Unit check staan onder Open taken. Open taken zonder datum blijven onder Open taken."
                 },
                 {
                     "label": "Evacuatielijst",

@@ -273,9 +273,11 @@ it('handelt de volgende inspectiestop af op Clock Point zonder unit-QR', functio
 
     signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
         ->assertSee('Ronde alle units', false)
-        ->assertSee('Stop zonder pin', false)
+        ->assertSee(__('portal.round.next_stop', ['name' => $unit->name]), false)
+        ->assertDontSeeHtml('wp-round-progress')
         ->call('openClockPointUnitCheck', $unit->id)
         ->assertSet('checkingUnitId', $unit->id)
+        ->assertSeeHtml('wp-round-progress')
         ->call('submitClockPointUnitCheck', 'ok')
         ->assertSet('checkingUnitId', null)
         ->assertSet('flashMessage', __('portal.unit_check.recorded_ok'));

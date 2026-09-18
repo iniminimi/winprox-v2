@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Attività aperte",
-                    "text": "Dopo l'accesso vede le attività aperte del Suo team. Con Time + visite GPS avvia o chiude le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). I giri di ispezione di oggi compaiono in Dove devo andare oggi e in Attività aperte dopo la timbratura. Sul posto tocchi la prossima fermata (controllo unità) senza il QR unità."
+                    "text": "Dopo l'accesso vede le attività aperte del Suo team. Con Time + visite GPS avvia o chiude le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). Un giro di ispezione mostra descrizione, priorità, stato, la prossima fermata e il pulsante Controllo unità. Il controllo completo (OK / Non OK / salta) si apre dopo quel pulsante."
                 },
                 {
                     "label": "Timbra entrata e uscita",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Dove devo andare oggi",
-                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: destinazioni raggruppate per sede, comprese le fermate di un giro di ispezione. Tocca l'icona GPS della sede (cliente) per il percorso in Google Maps; le unità con pin proprio hanno un'icona propria. Inizia il lavoro compare sulla sede o su un pin unità sul posto. Sul posto tocchi un’unità per fare la fermata di ispezione (controllo unità). Le attività aperte senza data restano in Attività aperte."
+                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: solo sedi (nome + indirizzo). Tocca l'icona GPS per il percorso in Google Maps. Inizia il lavoro compare sulla sede sul posto. Le fermate di ispezione e il pulsante Controllo unità sono in Attività aperte. Le attività aperte senza data restano in Attività aperte."
                 },
                 {
                     "label": "Elenco evacuazione",

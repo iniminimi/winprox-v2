@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Tareas abiertas",
-                    "text": "Tras iniciar sesión ve las tareas abiertas de su equipo. Con Time + visitas GPS inicia o cierra tareas de equipo en Clock Point mientras hay una visita de trabajo abierta en esa sede de cliente (nota y fotos opcionales). Las rondas de inspección de hoy aparecen en Adónde debo ir hoy y en Tareas abiertas tras fichar. In situ pulsa la siguiente parada (control de unidad) sin el QR de unidad."
+                    "text": "Tras iniciar sesión ve las tareas abiertas de su equipo. Con Time + visitas GPS inicia o cierra tareas de equipo en Clock Point mientras hay una visita de trabajo abierta en esa sede de cliente (nota y fotos opcionales). Una ronda de inspección muestra descripción, prioridad, estado, la siguiente parada y el botón Unit check. El control completo (OK / No OK / omitir) se abre tras ese botón."
                 },
                 {
                     "label": "Fichar entrada y salida",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Adónde debo ir hoy",
-                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: destinos agrupados por sede, incluidas las paradas de una ronda de inspección. Pulsa el icono GPS de la sede (cliente) para la ruta en Google Maps; las unidades con pin propio tienen su icono. Empezar el trabajo aparece en la sede o en un pin de unidad in situ. In situ pulsa una unidad para hacer la parada de inspección (control de unidad). Las tareas abiertas sin fecha siguen en Tareas abiertas."
+                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: solo sedes (nombre + dirección). Pulsa el icono GPS para la ruta en Google Maps. Empezar el trabajo aparece en la sede in situ. Las paradas de inspección y el botón Unit check están en Tareas abiertas. Las tareas abiertas sin fecha siguen en Tareas abiertas."
                 },
                 {
                     "label": "Lista de evacuación",

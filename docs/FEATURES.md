@@ -731,18 +731,17 @@ productsector op `Tenant`.
   DDT blijft op de locatie (klant).
 - Publieke winprox.app-homepage doet **geen** GPS-voorstel van bedrijven.
 - **Clock Point na inklokken (Time + GPS-werkbezoeken):** kaart **Waar moet ik
-  vandaag naartoe** = waar de uitvoerder *vandaag* naartoe moet, gegroepeerd
-  per locatie (locatienaam + adres + locatie-nav, daaronder units). Bron: open
-  teamtaken met `scheduled_for` of `due_at` vandaag (inspectiestops uitgeklapt)
-  + optioneel de gepubliceerde roostercel van vandaag met `unit_id`. Eerste
-  inspectieronde-cyclus krijgt die datums uit `recurrence_next_due_at`; een
+  vandaag naartoe** = waar de uitvoerder *vandaag* naartoe moet, **alleen locaties**
+  (locatienaam + adres + locatie-nav). Bron: open teamtaken met `scheduled_for`
+  of `due_at` vandaag (inspectiestops tellen mee voor de locatie, niet als
+  unit-rijen) + optioneel de gepubliceerde roostercel van vandaag met `unit_id`.
+  Eerste inspectieronde-cyclus krijgt die datums uit `recurrence_next_due_at`; een
   bestaande undated ronde-taak telt mee als `recurrence_next_due_at` vandaag is.
   **Geen** overige undated open taken (die blijven onder Open taken).
-  Inspectierondes blijven onder Open taken (volgende stop). Units met eigen
-  pin hebben een eigen icoon. Units zonder pin staan als naam; **ter plaatse**
-  (open `WorkVisit` op die locatie) is de naam een knop naar de unit check.
-  **Start werk**
-  één keer per locatie (locatie-pin) plus per unit met eigen pin, alleen binnen de
+  Inspectierondes staan onder **Open taken**: omschrijving, prio/status, volgende
+  stop, knop Unit check. De volledige unit check (OK / Niet OK / overslaan +
+  rondevoortgang) opent na die knop. **Start werk**
+  één keer per locatie (locatie-pin), alleen binnen de
   bestaande GPS-straal via `StartWorkVisitAction`. **Teamtaken** starten en
   afronden op Clock Point met optionele notitie
   en foto’s, zolang er een open `WorkVisit` is op de klantlocatie van de
@@ -1229,7 +1228,8 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   (afhandelen via **unit-QR**). Met Time + GPS-werkbezoeken: teamtaken starten/afronden
   op Clock Point (notitie + foto’s) zolang een open `WorkVisit` de klantlocatie van de
   taak dekt; inspectierondes van vandaag staan na inklokken onder **Vandaag**
-  en onder Open taken; ter plaatse tik je de volgende stop (unit check) zonder
+  (alleen locaties) en onder **Open taken** (omschrijving, prio/status, volgende
+  stop, knop Unit check). Ter plaatse opent die knop de unit check zonder
   unit-QR. Zonder GPS-bezoek blijven unit-checks via de unit-QR.
   (Vervangt de oude team-QR `/team/{token}`.)
   Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en optioneel tegel

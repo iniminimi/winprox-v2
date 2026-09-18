@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Offene Aufgaben",
-                    "text": "Nach der Anmeldung sehen Sie die offenen Aufgaben Ihres Teams. Mit Time + GPS-Arbeitsbesuchen starten oder schließen Sie Teamaufgaben am Clock Point, solange ein offener Arbeitsbesuch an diesem Kundenstandort läuft (optionale Notiz und Fotos). Inspektionsrunden von heute stehen nach dem Einstempeln unter Wohin muss ich heute und unter Offene Aufgaben. Vor Ort tippen Sie den nächsten Stopp (Unit-Check) ohne Unit-QR."
+                    "text": "Nach der Anmeldung sehen Sie die offenen Aufgaben Ihres Teams. Mit Time + GPS-Arbeitsbesuchen starten oder schließen Sie Teamaufgaben am Clock Point, solange ein offener Arbeitsbesuch an diesem Kundenstandort läuft (optionale Notiz und Fotos). Eine Inspektionsrunde zeigt Beschreibung, Prio, Status, den nächsten Stopp und die Schaltfläche Unit-Check. Die vollständige Prüfung (OK / Nicht OK / überspringen) öffnet sich nach dieser Schaltfläche."
                 },
                 {
                     "label": "Ein- und Ausstempeln",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Wohin muss ich heute",
-                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: Ziele gruppiert nach Standort, inklusive der Stops einer Inspektionsrunde. Tippen Sie auf das GPS-Symbol am Standort (Kunde) für die Google-Maps-Route; Units mit eigenem Pin haben ein eigenes Symbol. Arbeit starten erscheint am Standort oder am Unit-Pin vor Ort. Vor Ort tippen Sie eine Unit, um den Inspektionsstopp (Unit-Check) zu machen. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
+                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: nur Standorte (Name + Adresse). Tippen Sie auf das GPS-Symbol für die Google-Maps-Route. Arbeit starten erscheint am Standort, wenn Sie vor Ort sind. Inspektionsstopps und die Schaltfläche Unit-Check stehen unter Offene Aufgaben. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
                 },
                 {
                     "label": "Evakuierungsliste",

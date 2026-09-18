@@ -149,7 +149,7 @@
         "title": "Teamübersicht",
         "read_only_hint": "Dies ist eine Übersicht. Aufgaben können nur über den Einheiten-QR vor Ort abgeschlossen werden.",
         "complete_needs_visit": "Starten Sie zuerst die Arbeit an diesem Standort. Danach können Sie Teamaufgaben und den nächsten Inspektionsstopp hier abschließen.",
-        "complete_on_site_hint": "Sie sind vor Ort. Schließen Sie Teamaufgaben ab, oder tippen Sie den nächsten Inspektionsstopp (Unit-Check) unter Wohin muss ich heute.",
+        "complete_on_site_hint": "Sie sind vor Ort. Schließen Sie Teamaufgaben ab, oder tippen Sie Unit-Check beim nächsten Stopp unter Offene Aufgaben.",
         "onboarding_done": "Sie sind registriert und angemeldet.",
         "icon_taken": "Dieses Symbol wird bereits verwendet. Wählen Sie ein anderes.",
         "register": {

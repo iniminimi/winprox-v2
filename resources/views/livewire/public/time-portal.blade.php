@@ -506,53 +506,6 @@
                                                 </button>
                                             </template>
                                         </div>
-                                        @if ($group['units'] !== [])
-                                            <ul class="wp-today-destination__units">
-                                                @foreach ($group['units'] as $destination)
-                                                    @php
-                                                        $onSiteHere = (bool) ($destination['on_site'] ?? $group['on_site'] ?? false);
-                                                    @endphp
-                                                    <li class="wp-today-destination__unit" wire:key="today-dest-{{ $destination['key'] }}">
-                                                        @if ($destination['can_start'] ?? false)
-                                                            <a
-                                                                class="wp-today-destination__nav"
-                                                                href="{{ $destination['maps_url'] }}"
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                aria-label="{{ __('time.portal.today.navigate') }}"
-                                                            >
-                                                                <span>{{ $destination['unit_name'] }}</span>
-                                                                @include('partials.wp-gps-pin-icon', ['class' => 'wp-today-destination__pin'])
-                                                            </a>
-                                                            <template x-if="inRange(@js($destination))">
-                                                                <button type="button" class="btn btn--surface" @click="withFreshGps('startWorkVisit', {{ (int) ($destination['unit_id'] ?? 0) }})">
-                                                                    {{ __('time.portal.today.start_work') }}
-                                                                </button>
-                                                            </template>
-                                                        @elseif ($onSiteHere && (int) ($destination['unit_id'] ?? 0) > 0)
-                                                            <button
-                                                                type="button"
-                                                                class="wp-today-destination__stop"
-                                                                wire:click="openClockPointUnitCheck({{ (int) $destination['unit_id'] }})"
-                                                            >
-                                                                {{ $destination['unit_name'] }}
-                                                            </button>
-                                                        @else
-                                                            <span>{{ $destination['unit_name'] }}</span>
-                                                        @endif
-                                                        @if ($onSiteHere && ($destination['can_start'] ?? false) && (int) ($destination['unit_id'] ?? 0) > 0)
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn--ghost btn--sm"
-                                                                wire:click="openClockPointUnitCheck({{ (int) $destination['unit_id'] }})"
-                                                            >
-                                                                {{ __('time.portal.today.do_check') }}
-                                                            </button>
-                                                        @endif
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
                                     </div>
                                 @empty
                                     <p class="wp-muted">{{ __('time.portal.today.empty') }}</p>
@@ -609,83 +562,89 @@
                                     $onSite = ($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null && $taskLocationId !== null && (int) $taskLocationId === (int) $openVisitLocationId;
                                 @endphp
                                 <div class="wp-card wp-card-pad wp-stack" wire:key="time-task-{{ $task->id }}">
-                                    <div class="wp-cluster">
-                                        <span class="wp-badge {{ $task->priority->badgeClass() }}">
-                                            <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
-                                            {{ $task->priority->label() }}
-                                        </span>
-                                        <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
-                                        @if ($task->issue?->location)
-                                            <span class="wp-muted">{{ $task->issue->location->localizedName() }}@if ($task->issue->unit) &middot; {{ $task->issue->unit->localizedName() }}@endif</span>
-                                        @elseif ($isRound && ($roundProgress['next_unit_name'] ?? null))
-                                            <span class="wp-muted">{{ __('portal.round.next_stop', ['name' => $roundProgress['next_unit_name']]) }}</span>
+                                    @if ($isRound)
+                                        @if ($task->issue?->isApproved())
+                                            <p class="wp-text-body">{{ $task->displayDescription() }}</p>
                                         @endif
-                                    </div>
-                                    @if ($task->issue?->isApproved())
-                                        <p class="wp-text-body">{{ $task->displayDescription() }}</p>
-                                    @endif
-
-                                    @if ($isRound && $roundProgress)
-                                        @include('partials.wp-portal-round-progress', ['progress' => $roundProgress])
-                                    @endif
-
-                                    @include('partials.wp-portal-issue-photos', [
-                                        'issue' => $task->issue,
-                                        'wireKeyPrefix' => 'tp-'.$task->id,
-                                        'forWorker' => true,
-                                    ])
-
-                                    @if ($completingTaskId === $task->id)
-                                        <form
-                                            class="wp-stack"
-                                            x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
-                                            @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitCompleteTask()"
-                                        >
-                                            @include('partials.wp-portal-esg-measurement', ['task' => $task])
-                                            <div class="wp-field">
-                                                <label class="wp-label" for="note-{{ $task->id }}">{{ __('portal.worker.note') }}</label>
-                                                <textarea id="note-{{ $task->id }}" class="wp-textarea" rows="3"
-                                                          wire:model="completingNote"
-                                                          placeholder="{{ __('portal.worker.note_placeholder') }}"></textarea>
-                                                @error('completingNote') <p class="wp-error">{{ $message }}</p> @enderror
-                                            </div>
-                                            <div class="wp-field">
-                                                <label class="wp-label">{{ __('portal.worker.photos') }}</label>
-                                                @include('partials.wp-issue-photo-upload', ['model' => 'completingPhotos', 'preferCamera' => true, 'storeLocal' => false])
-                                                @error('completingPhotos') <p class="wp-error">{{ $message }}</p> @enderror
-                                                @error('completingPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
-                                            </div>
-                                            <div class="wp-stack-tight">
-                                                <button type="submit" class="btn btn--primary btn--block">
-                                                    {{ __('portal.worker.confirm_complete') }}
-                                                </button>
-                                                <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="cancelCompleteTask">{{ __('common.button.cancel') }}</button>
-                                            </div>
-                                        </form>
-                                    @elseif ($onSite && $isRound && $nextStopUnitId)
-                                        <div class="wp-stack-tight">
-                                            <p class="wp-muted wp-text-sm">{{ __('portal.round.do_check_here') }}</p>
+                                        <div class="wp-cluster">
+                                            <span class="wp-badge {{ $task->priority->badgeClass() }}">
+                                                <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
+                                                {{ $task->priority->label() }}
+                                            </span>
+                                            <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
+                                        </div>
+                                        @if ($roundProgress['next_unit_name'] ?? null)
+                                            <p class="wp-muted">{{ __('portal.round.next_stop', ['name' => $roundProgress['next_unit_name']]) }}</p>
+                                        @endif
+                                        @if (($gpsVisits ?? false) && $nextStopUnitId)
                                             <button type="button" class="btn btn--primary btn--block" wire:click="openClockPointUnitCheck({{ (int) $nextStopUnitId }})">
                                                 {{ __('time.portal.today.do_check') }}
                                             </button>
-                                        </div>
-                                    @elseif ($onSite && ! $isRound)
-                                        <div class="wp-stack-tight">
-                                            @if ($task->canStart())
-                                                <button type="button" class="btn btn--warning btn--block" wire:click="startTask({{ $task->id }})">
-                                                    {{ __('portal.worker.start_task') }}
-                                                </button>
-                                            @endif
-                                            @if ($task->canComplete())
-                                                <button type="button" class="btn btn--primary btn--block" wire:click="beginCompleteTask({{ $task->id }})">
-                                                    {{ __('portal.worker.complete_task') }}
-                                                </button>
+                                        @endif
+                                    @else
+                                        <div class="wp-cluster">
+                                            <span class="wp-badge {{ $task->priority->badgeClass() }}">
+                                                <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
+                                                {{ $task->priority->label() }}
+                                            </span>
+                                            <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
+                                            @if ($task->issue?->location)
+                                                <span class="wp-muted">{{ $task->issue->location->localizedName() }}@if ($task->issue->unit) &middot; {{ $task->issue->unit->localizedName() }}@endif</span>
                                             @endif
                                         </div>
-                                    @elseif (($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null && $isRound && ($roundProgress['next_unit_name'] ?? null))
-                                        <p class="wp-muted wp-text-sm">{{ __('portal.round.wait_for_next', ['name' => $roundProgress['next_unit_name']]) }}</p>
-                                    @elseif (($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null)
-                                        <p class="wp-muted wp-text-sm">{{ __('portal.worker.errors.not_this_location') }}</p>
+                                        @if ($task->issue?->isApproved())
+                                            <p class="wp-text-body">{{ $task->displayDescription() }}</p>
+                                        @endif
+
+                                        @include('partials.wp-portal-issue-photos', [
+                                            'issue' => $task->issue,
+                                            'wireKeyPrefix' => 'tp-'.$task->id,
+                                            'forWorker' => true,
+                                        ])
+
+                                        @if ($completingTaskId === $task->id)
+                                            <form
+                                                class="wp-stack"
+                                                x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
+                                                @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitCompleteTask()"
+                                            >
+                                                @include('partials.wp-portal-esg-measurement', ['task' => $task])
+                                                <div class="wp-field">
+                                                    <label class="wp-label" for="note-{{ $task->id }}">{{ __('portal.worker.note') }}</label>
+                                                    <textarea id="note-{{ $task->id }}" class="wp-textarea" rows="3"
+                                                              wire:model="completingNote"
+                                                              placeholder="{{ __('portal.worker.note_placeholder') }}"></textarea>
+                                                    @error('completingNote') <p class="wp-error">{{ $message }}</p> @enderror
+                                                </div>
+                                                <div class="wp-field">
+                                                    <label class="wp-label">{{ __('portal.worker.photos') }}</label>
+                                                    @include('partials.wp-issue-photo-upload', ['model' => 'completingPhotos', 'preferCamera' => true, 'storeLocal' => false])
+                                                    @error('completingPhotos') <p class="wp-error">{{ $message }}</p> @enderror
+                                                    @error('completingPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
+                                                </div>
+                                                <div class="wp-stack-tight">
+                                                    <button type="submit" class="btn btn--primary btn--block">
+                                                        {{ __('portal.worker.confirm_complete') }}
+                                                    </button>
+                                                    <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="cancelCompleteTask">{{ __('common.button.cancel') }}</button>
+                                                </div>
+                                            </form>
+                                        @elseif ($onSite)
+                                            <div class="wp-stack-tight">
+                                                @if ($task->canStart())
+                                                    <button type="button" class="btn btn--warning btn--block" wire:click="startTask({{ $task->id }})">
+                                                        {{ __('portal.worker.start_task') }}
+                                                    </button>
+                                                @endif
+                                                @if ($task->canComplete())
+                                                    <button type="button" class="btn btn--primary btn--block" wire:click="beginCompleteTask({{ $task->id }})">
+                                                        {{ __('portal.worker.complete_task') }}
+                                                    </button>
+                                                @endif
+                                            </div>
+                                        @elseif (($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null)
+                                            <p class="wp-muted wp-text-sm">{{ __('portal.worker.errors.not_this_location') }}</p>
+                                        @endif
                                     @endif
                                 </div>
                             @endforeach

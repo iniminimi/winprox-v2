@@ -122,8 +122,7 @@ it('groepeert Clock Point-bestemmingen per locatie met GPS-icoon', function () {
         ->call('clockIn')
         ->assertSee('Campus Noord, Teststraat 1, 1000 Brussel', false)
         ->assertSee('Hotel De Brug, Kerkstraat 12, 8000 Brugge', false)
-        ->assertSee('Gebouw A', false)
-        ->assertSee('Kamer 214', false)
+        ->assertDontSeeHtml('wp-today-destination__unit')
         ->assertSeeHtml('wp-today-destination__pin')
         ->assertDontSeeHtml('btn btn--primary btn--block">'.__('time.portal.today.navigate'));
 });
@@ -426,7 +425,7 @@ it('toont Vandaag en Zoek werkplek in de buurt na inklokken, zonder WorkVisit', 
         ->assertSee(__('time.portal.today.title'), false)
         ->assertSeeHtml('wp-today-destination')
         ->assertSee('Hotel De Brug', false)
-        ->assertSee('Kamer 214', false)
+        ->assertDontSeeHtml('wp-today-destination__unit')
         ->assertSee(__('time.portal.today.navigate'), false)
         ->assertSee(__('time.portal.clock.find_nearby'), false)
         ->assertSee('google.com/maps/dir', false)
@@ -499,7 +498,7 @@ it('neemt een undated inspectieronde niet mee als de volgende vervaldatum morgen
     expect(app(ListWorkDestinationsForWorkerAction::class)->handle($tenant, $worker))->toBe([]);
 });
 
-it('toont inspectiestops op Vandaag en de ronde onder Open taken', function () {
+it('toont locaties op Vandaag en de compacte ronde onder Open taken', function () {
     ensureTestEncryptionKey();
     [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
     $unitB = Unit::factory()->create([
@@ -547,10 +546,13 @@ it('toont inspectiestops op Vandaag en de ronde onder Open taken', function () {
         ->call('signInWithIcon')
         ->call('clockIn')
         ->assertSee(__('time.portal.today.title'), false)
-        ->assertSee('Kamer 214', false)
-        ->assertSee('Stop B', false)
+        ->assertSee('Hotel De Brug', false)
+        ->assertDontSeeHtml('wp-today-destination__unit')
+        ->assertDontSeeHtml('wp-round-progress')
         ->assertSee(__('time.portal.today.navigate'), false)
         ->assertSee('Poetssronde XYZ-hidden', false)
+        ->assertSee(__('portal.round.next_stop', ['name' => 'Kamer 214']), false)
+        ->assertSee(__('time.portal.today.do_check'), false)
         ->assertDontSee(__('portal.team.read_only_hint'), false)
         ->assertDontSee(__('portal.worker.start_task'), false);
 });
