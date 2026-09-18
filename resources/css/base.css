@@ -51,10 +51,12 @@ a:hover {
 }
 
 .wp-page-title {
+    margin: 0;
     color: var(--wp-text);
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: -0.025em;
+    line-height: 1.25;
 }
 
 /* Cijfers/KPI's netjes uitlijnen. */
