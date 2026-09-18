@@ -5792,19 +5792,11 @@ a.wp-kpi.wp-kpi--attention {
     margin: 0;
 }
 
-.wp-round-stop-picker__body {
-    max-height: 16rem;
-    overflow: auto;
-}
-
 .wp-round-stop-picker__group:not(:last-child) {
     border-bottom: 1px solid var(--wp-border);
 }
 
 .wp-round-stop-picker__group-label {
-    position: sticky;
-    top: 0;
-    z-index: 1;
     display: flex;
     align-items: center;
     gap: 0.45rem;
