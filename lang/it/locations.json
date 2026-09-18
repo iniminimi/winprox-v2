@@ -236,7 +236,14 @@
         "start_hint": "es. 20",
         "prefix_hint": "es. Stanza ",
         "suffix_hint": "es. -A",
-        "preview_empty": "Inserisci un numero iniziale e una quantità per vedere l’anteprima."
+        "preview_empty": "Inserisci un numero iniziale e una quantità per vedere l’anteprima.",
+        "advanced_portal": {
+            "open": "Opzioni portale per questo blocco",
+            "warning": "Queste spunte valgono per tutte le unità di questo blocco. Di default seguono la categoria scelta. Codice roster e foto si impostano per unità.",
+            "inherits_from": "Segue la categoria :category (le spunte vengono copiate al cambio categoria).",
+            "overrides_active": "Questo blocco differisce dalle impostazioni della categoria.",
+            "no_category_hint": "Scegliete una categoria per ereditare le opzioni portale. Senza categoria le spunte sotto valgono per tutto il blocco."
+        }
     },
     "import_history": {
         "title": "Importazioni recenti",

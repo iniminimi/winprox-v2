@@ -236,7 +236,14 @@
         "start_hint": "bv. 20",
         "prefix_hint": "bv. Kamer ",
         "suffix_hint": "bv. -A",
-        "preview_empty": "Vul een startnummer en aantal in om de preview te zien."
+        "preview_empty": "Vul een startnummer en aantal in om de preview te zien.",
+        "advanced_portal": {
+            "open": "Portaal-opties voor deze bulk",
+            "warning": "Deze vinkjes gelden voor alle units in deze bulk. Standaard volgen ze de gekozen categorie. Roster-code en foto's stel je per unit in.",
+            "inherits_from": "Volgt categorie :category (vinkjes worden overgenomen bij wijziging van categorie).",
+            "overrides_active": "Deze bulk wijkt af van de categorie-instellingen.",
+            "no_category_hint": "Kies een categorie om portaal-opties over te nemen. Zonder categorie gelden de vinkjes hieronder voor de hele bulk."
+        }
     },
     "import_history": {
         "title": "Recente imports",

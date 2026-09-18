@@ -407,7 +407,7 @@
                 },
                 {
                     "label": "Bulk units",
-                    "text": "Create a range of units at once. Enter start number (as text so leading zeros are kept, e.g. 01 or 201), count, optional digits (padding; leave empty to auto-detect from the start number), prefix (e.g. Room + space) and suffix (e.g. -A). Examples: 01; Room 20–22; Room 201–203; Room 501. The preview lists names live; duplicates are highlighted in red and block Create. Optionally assign all new units to one category. Maximum 500 units per bulk."
+                    "text": "Create a range of units at once. Enter start number (as text so leading zeros are kept, e.g. 01 or 201), count, optional digits (padding; leave empty to auto-detect from the start number), prefix (e.g. Room + space) and suffix (e.g. -A). Examples: 01; Room 20–22; Room 201–203; Room 501. The preview lists names live; duplicates are highlighted in red and block Create. Optionally assign all new units to one category. Under Advanced portal options you can set the same flags as for a single unit for the whole range (reports, checks, measurements, contact, optional GPS pin). Roster code and photos stay per unit. Maximum 500 units per bulk."
                 },
                 {
                     "label": "Import units",

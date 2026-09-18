@@ -95,6 +95,17 @@ function registerAlpineComponent() {
 
     window.__wpBulkUnitRangesRegistered = true;
 
+    window.Alpine.store('wpBulkUnitRanges', {
+        canSubmit: false,
+        submitLabel: '',
+        submitFn: null,
+        async submit(wire) {
+            if (typeof this.submitFn === 'function') {
+                await this.submitFn(wire);
+            }
+        },
+    });
+
     window.Alpine.data('wpBulkUnitRanges', (config = {}) => ({
         range: {
             ...emptyRange(),
@@ -102,10 +113,22 @@ function registerAlpineComponent() {
                 ? config.initialRanges[0]
                 : (config.initialRange ?? {})),
         },
-        categoryId: config.categoryId ?? '',
         i18n: config.i18n ?? {},
         maxUnits: config.maxUnits ?? MAX_UNITS,
         submitting: false,
+
+        init() {
+            this.syncStore();
+            this.$watch('range', () => this.syncStore(), { deep: true });
+            this.$watch('submitting', () => this.syncStore());
+        },
+
+        syncStore() {
+            const store = this.$store.wpBulkUnitRanges;
+            store.canSubmit = this.canSubmit;
+            store.submitLabel = this.submitLabel(this.preview.total);
+            store.submitFn = (wire) => this.submit(wire);
+        },
 
         get preview() {
             const names = namesFromRange(this.range);
@@ -159,16 +182,13 @@ function registerAlpineComponent() {
             }
 
             this.submitting = true;
+            this.syncStore();
             try {
-                const categoryId = this.categoryId === '' || this.categoryId === null
-                    ? null
-                    : Number.parseInt(String(this.categoryId), 10);
-
                 await wire.set('bulkRanges', [this.rangeForSubmit()]);
-                await wire.set('bulkCategoryId', Number.isFinite(categoryId) ? categoryId : null);
                 await wire.createBulk();
             } finally {
                 this.submitting = false;
+                this.syncStore();
             }
         },
     }));

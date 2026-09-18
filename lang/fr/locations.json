@@ -236,7 +236,14 @@
         "start_hint": "ex. 20",
         "prefix_hint": "ex. Chambre ",
         "suffix_hint": "ex. -A",
-        "preview_empty": "Saisissez un numéro de départ et un nombre pour voir l’aperçu."
+        "preview_empty": "Saisissez un numéro de départ et un nombre pour voir l’aperçu.",
+        "advanced_portal": {
+            "open": "Options portail pour ce lot",
+            "warning": "Ces cases s’appliquent à toutes les unités de ce lot. Elles suivent la catégorie choisie par défaut. Code roster et photos se règlent par unité.",
+            "inherits_from": "Suit la catégorie :category (les cases sont reprises quand vous changez de catégorie).",
+            "overrides_active": "Ce lot diffère des réglages de la catégorie.",
+            "no_category_hint": "Choisissez une catégorie pour hériter des options portail. Sans catégorie, les cases ci-dessous s’appliquent à tout le lot."
+        }
     },
     "import_history": {
         "title": "Imports récents",

@@ -585,24 +585,28 @@
         <x-wp-modal closeMethod="closeBulkModal">
             <form
                 class="wp-card wp-card-pad wp-stack wp-modal-card"
-                x-data="wpBulkUnitRanges({
-                    initialRanges: @js($bulkRanges),
-                    categoryId: @js($bulkCategoryId),
-                    maxUnits: {{ \App\Actions\Locations\BulkCreateUnitsAction::MAX_UNITS }},
-                    i18n: {
-                        batchCount: @js(__('locations.bulk.batch_count')),
-                        submitCount: @js(__('locations.bulk.submit_count')),
-                        duplicatesCount: @js(__('locations.bulk.errors.duplicates_count')),
-                        previewEmpty: @js(__('locations.bulk.preview_empty')),
-                    },
-                })"
-                @submit.prevent="submit($wire)"
+                x-data
+                @submit.prevent="$store.wpBulkUnitRanges.submit($wire)"
             >
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ __('locations.bulk.title') }}</h2>
                     <x-wp-modal-close wire:click="closeBulkModal" />
                 </div>
 
+                <div
+                    class="wp-stack"
+                    wire:ignore
+                    x-data="wpBulkUnitRanges({
+                        initialRanges: @js($bulkRanges),
+                        maxUnits: {{ \App\Actions\Locations\BulkCreateUnitsAction::MAX_UNITS }},
+                        i18n: {
+                            batchCount: @js(__('locations.bulk.batch_count')),
+                            submitCount: @js(__('locations.bulk.submit_count')),
+                            duplicatesCount: @js(__('locations.bulk.errors.duplicates_count')),
+                            previewEmpty: @js(__('locations.bulk.preview_empty')),
+                        },
+                    })"
+                >
                 <div class="wp-card wp-card-pad wp-surface-2 wp-stack">
                     <div class="wp-form-grid-2">
                         <label class="wp-field">
@@ -689,16 +693,140 @@
                         x-text="duplicatesLabel(preview.duplicates.length)"
                     ></p>
                 </div>
+                </div>
 
                 <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
-                    <select class="wp-input" x-model="categoryId">
+                    <x-wp-tooltip :text="$bulkCategoryPortalTooltip" wrap class="wp-tooltip--block">
+                        <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
+                    </x-wp-tooltip>
+                    <select class="wp-input" wire:model.live="bulkCategoryId">
                         <option value="">{{ __('locations.units.no_category') }}</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
                         @endforeach
                     </select>
+                    @error('bulkCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
+
+                <div class="wp-field" x-data="{ open: {{ ($bulkPortalFlagsMatchCategory && $this->bulkLatitude === '' && $this->bulkLongitude === '') ? 'false' : 'true' }} }">
+                    <span class="wp-label">{{ __('locations.units.advanced_portal.label') }}</span>
+                    <div class="wp-field-panel" :class="{ 'is-open': open }">
+                        <button
+                            type="button"
+                            class="wp-field-panel__trigger"
+                            @click="open = !open"
+                            :aria-expanded="open"
+                        >
+                            <x-wp-tooltip :text="__('locations.bulk.advanced_portal.warning')" wrap class="wp-tooltip--block">
+                                <span>{{ __('locations.bulk.advanced_portal.open') }}</span>
+                            </x-wp-tooltip>
+                            <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                        </button>
+
+                        <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model="bulkPublicReportsEnabled">
+                                <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
+                            </label>
+
+                            @if ($workMenuReservationsEnabled || $bulkAllowReservations)
+                                <x-wp-tooltip :text="__('locations.units.allow_reservations_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model="bulkAllowReservations"
+                                            @disabled(! $workMenuReservationsEnabled && ! $bulkAllowReservations)>
+                                        <span>{{ __('locations.units.fields.allow_reservations') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                                @error('bulkAllowReservations') <span class="wp-error">{{ $message }}</span> @enderror
+                            @endif
+
+                            <x-wp-tooltip :text="__('locations.units.allow_unit_checks_hint')" wrap class="wp-tooltip--block">
+                                <label class="wp-check">
+                                    <input type="checkbox" wire:model.live="bulkAllowUnitChecks">
+                                    <span>{{ __('locations.units.fields.allow_unit_checks') }}</span>
+                                </label>
+                            </x-wp-tooltip>
+
+                            @if ($bulkAllowUnitChecks)
+                                <x-wp-tooltip :text="__('locations.units.check_list_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-field">
+                                        <span class="wp-label">{{ __('locations.units.fields.check_list') }}</span>
+                                        <select class="wp-input" wire:model="bulkCheckListId">
+                                            <option value="">{{ __('locations.units.no_check_list') }}</option>
+                                            @foreach ($unitCheckLists as $checkList)
+                                                <option value="{{ $checkList->id }}">{{ $checkList->localizedName() }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('bulkCheckListId') <span class="wp-error">{{ $message }}</span> @enderror
+                                    </label>
+                                </x-wp-tooltip>
+                            @endif
+
+                            @if ($workMenuUnitMeasurementsEnabled || $bulkAllowUnitMeasurements)
+                                <x-wp-tooltip :text="__('locations.units.allow_unit_measurements_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model.live="bulkAllowUnitMeasurements"
+                                            @disabled(! $workMenuUnitMeasurementsEnabled && ! $bulkAllowUnitMeasurements)>
+                                        <span>{{ __('locations.units.fields.allow_unit_measurements') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                                @error('bulkAllowUnitMeasurements') <span class="wp-error">{{ $message }}</span> @enderror
+                            @endif
+
+                            @if ($bulkAllowUnitMeasurements)
+                                <div class="wp-field">
+                                    <span class="wp-label">{{ __('locations.units.fields.measure_fields') }}</span>
+                                    <div class="wp-stack-tight">
+                                        @forelse ($availableMeasureFields as $measureField)
+                                            <label class="wp-check" wire:key="bulk-measure-field-opt-{{ $measureField->id }}">
+                                                <input type="checkbox" value="{{ $measureField->id }}" wire:model="bulkMeasureFieldIds">
+                                                <span>
+                                                    {{ $measureField->name }}
+                                                    <span class="wp-muted wp-text-sm">({{ __('unit_measurements.types.'.$measureField->type->value) }})</span>
+                                                </span>
+                                            </label>
+                                        @empty
+                                            <p class="wp-muted wp-text-sm">{{ __('unit_measurements.fields.empty') }}</p>
+                                        @endforelse
+                                    </div>
+                                    @error('bulkMeasureFieldIds') <span class="wp-error">{{ $message }}</span> @enderror
+                                    @error('bulkMeasureFieldIds.*') <span class="wp-error">{{ $message }}</span> @enderror
+                                </div>
+                            @endif
+
+                            <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
+                                <label class="wp-check">
+                                    <input type="checkbox" wire:model="bulkRequireReporterContact">
+                                    <span>{{ __('locations.units.fields.require_reporter_contact') }}</span>
+                                </label>
+                            </x-wp-tooltip>
+
+                            <x-wp-tooltip :text="__('locations.units.require_reporter_email_verification_hint')" wrap class="wp-tooltip--block">
+                                <label class="wp-check">
+                                    <input type="checkbox" wire:model="bulkRequireReporterEmailVerification">
+                                    <span>{{ __('locations.units.fields.require_reporter_email_verification') }}</span>
+                                </label>
+                            </x-wp-tooltip>
+
+                            @include('partials.wp-gps-coords-fields', [
+                                'latProperty' => 'bulkLatitude',
+                                'lngProperty' => 'bulkLongitude',
+                                'applyMethod' => 'applyBulkGpsPair',
+                                'searchQuery' => trim(implode(' ', array_filter([
+                                    $this->location->street,
+                                    $this->location->house_number,
+                                    $this->location->postal_code,
+                                    $this->location->city,
+                                ]))),
+                                'searchProperties' => [],
+                                'labelKey' => 'locations.units.fields.visit_pin',
+                                'hintKey' => 'locations.units.fields.visit_pin_hint',
+                                'latError' => 'bulkLatitude',
+                                'lngError' => 'bulkLongitude',
+                            ])
+                        </div>
+                    </div>
+                </div>
 
                 @error('bulkRanges') <span class="wp-error">{{ $message }}</span> @enderror
                 @error('bulkRanges.0.start') <span class="wp-error">{{ $message }}</span> @enderror
@@ -708,14 +836,14 @@
                     <button
                         type="submit"
                         class="btn btn--primary"
-                        :disabled="!canSubmit"
+                        :disabled="!$store.wpBulkUnitRanges.canSubmit"
                         wire:loading.attr="disabled"
                         wire:target="createBulk"
                     >
                         <span wire:loading wire:target="createBulk" class="wp-mr-2">
                             <x-wp-spinner size="sm" />
                         </span>
-                        <span x-text="submitLabel(preview.total)"></span>
+                        <span x-text="$store.wpBulkUnitRanges.submitLabel"></span>
                     </button>
                 </div>
             </form>

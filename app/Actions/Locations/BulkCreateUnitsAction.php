@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Actions\Locations;
 
 use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
+use App\Actions\UnitMeasurements\SyncUnitMeasureFieldsAction;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -12,6 +13,7 @@ use App\Models\UnitBulkBatch;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use InvalidArgumentException;
 
 class BulkCreateUnitsAction
@@ -23,6 +25,7 @@ class BulkCreateUnitsAction
     public function __construct(
         private AuditRecorder $audit,
         private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
+        private SyncUnitMeasureFieldsAction $syncMeasureFields,
     ) {}
 
     /**
@@ -219,6 +222,49 @@ class BulkCreateUnitsAction
 
         $rangeCount = count($ranges);
 
+        $allowUnitChecks = array_key_exists('allow_unit_checks', $data)
+            ? (bool) $data['allow_unit_checks']
+            : false;
+        $allowUnitMeasurements = array_key_exists('allow_unit_measurements', $data)
+            ? (bool) $data['allow_unit_measurements']
+            : false;
+
+        $portal = [
+            'public_reports_enabled' => array_key_exists('public_reports_enabled', $data)
+                ? (bool) $data['public_reports_enabled']
+                : true,
+            'allow_reservations' => array_key_exists('allow_reservations', $data)
+                ? (bool) $data['allow_reservations']
+                : false,
+            'allow_unit_checks' => $allowUnitChecks,
+            'allow_unit_measurements' => $allowUnitMeasurements,
+            'require_reporter_contact' => array_key_exists('require_reporter_contact', $data)
+                ? (bool) $data['require_reporter_contact']
+                : false,
+            'require_reporter_email_verification' => array_key_exists('require_reporter_email_verification', $data)
+                ? (bool) $data['require_reporter_email_verification']
+                : false,
+        ];
+
+        if (Schema::hasColumn('units', 'unit_check_list_id')) {
+            $portal['unit_check_list_id'] = $allowUnitChecks
+                ? ($data['unit_check_list_id'] ?? null)
+                : null;
+        }
+
+        if (Schema::hasColumn('units', 'latitude') && array_key_exists('latitude', $data)) {
+            $portal['latitude'] = self::nullableCoord($data['latitude'] ?? null, -90, 90);
+        }
+
+        if (Schema::hasColumn('units', 'longitude') && array_key_exists('longitude', $data)) {
+            $portal['longitude'] = self::nullableCoord($data['longitude'] ?? null, -180, 180);
+        }
+
+        $measureFieldIds = [];
+        if ($allowUnitMeasurements && array_key_exists('measure_field_ids', $data) && is_array($data['measure_field_ids'])) {
+            $measureFieldIds = array_values(array_unique(array_map('intval', $data['measure_field_ids'])));
+        }
+
         return DB::transaction(function () use (
             $location,
             $tenantId,
@@ -229,6 +275,8 @@ class BulkCreateUnitsAction
             $categoryId,
             $actorUserId,
             $data,
+            $portal,
+            $measureFieldIds,
         ): array {
             $batch = UnitBulkBatch::create([
                 'tenant_id' => $tenantId,
@@ -249,9 +297,14 @@ class BulkCreateUnitsAction
                     'category_id' => $categoryId,
                     'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
                     'is_active' => true,
+                    ...$portal,
                 ]);
 
                 $this->ensureTranslationSlots->handle($unit);
+
+                if ($measureFieldIds !== []) {
+                    $this->syncMeasureFields->handle($unit, $measureFieldIds, $actorUserId);
+                }
             }
 
             $this->audit->record(
@@ -265,5 +318,23 @@ class BulkCreateUnitsAction
 
             return ['batch' => $batch, 'created' => $total];
         });
+    }
+
+    private static function nullableCoord(mixed $value, float $min, float $max): ?float
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        if (! is_numeric($value)) {
+            return null;
+        }
+
+        $n = (float) $value;
+        if ($n < $min || $n > $max) {
+            return null;
+        }
+
+        return $n;
     }
 }

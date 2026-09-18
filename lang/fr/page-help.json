@@ -407,7 +407,7 @@
                 },
                 {
                     "label": "Unités en masse",
-                    "text": "Créez une série d’unités d’un coup. Saisissez le numéro de départ (en texte pour garder les zéros, ex. 01 ou 201), le nombre, des chiffres optionnels (padding ; vide = auto selon le numéro de départ), un préfixe (ex. Chambre + espace) et un suffixe (ex. -A). Exemples : 01 ; Chambre 20–22 ; Chambre 201–203 ; Chambre 501. L’aperçu liste les noms en direct ; les doublons sont en rouge et bloquent la création. Optionnellement, liez toutes les nouvelles unités à une catégorie. Maximum 500 unités par lot."
+                    "text": "Créez une série d’unités d’un coup. Saisissez le numéro de départ (en texte pour garder les zéros, ex. 01 ou 201), le nombre, des chiffres optionnels (padding ; vide = auto selon le numéro de départ), un préfixe (ex. Chambre + espace) et un suffixe (ex. -A). Exemples : 01 ; Chambre 20–22 ; Chambre 201–203 ; Chambre 501. L’aperçu liste les noms en direct ; les doublons sont en rouge et bloquent la création. Optionnellement, liez toutes les nouvelles unités à une catégorie. Sous Options portail avancées, vous posez les mêmes cases que pour une unité pour toute la série (signalements, contrôles, mesures, contact, pin GPS optionnel). Code roster et photos restent par unité. Maximum 500 unités par lot."
                 },
                 {
                     "label": "Importer unités",

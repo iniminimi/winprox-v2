@@ -407,7 +407,7 @@
                 },
                 {
                     "label": "Bulk units",
-                    "text": "Maak in één keer een reeks units. Vul startnummer in (als tekst, zodat leidende nullen blijven, bv. 01 of 201), aantal, optioneel cijfers (padding; leeg = automatisch uit het startnummer), prefix (bv. Kamer + spatie) en suffix (bv. -A). Voorbeelden: 01; Kamer 20–22; Kamer 201–203; Kamer 501. Het voorbeeld toont de namen live; dubbele namen worden rood gemarkeerd en blokkeren Aanmaken. Optioneel koppel je alle nieuwe units aan één categorie. Maximum 500 units per bulk."
+                    "text": "Maak in één keer een reeks units. Vul startnummer in (als tekst, zodat leidende nullen blijven, bv. 01 of 201), aantal, optioneel cijfers (padding; leeg = automatisch uit het startnummer), prefix (bv. Kamer + spatie) en suffix (bv. -A). Voorbeelden: 01; Kamer 20–22; Kamer 201–203; Kamer 501. Het voorbeeld toont de namen live; dubbele namen worden rood gemarkeerd en blokkeren Aanmaken. Optioneel koppel je alle nieuwe units aan één categorie. Onder Geavanceerde portaal-opties zet je dezelfde vinkjes als bij één unit voor de hele reeks (meldingen, checks, metingen, contact, optioneel GPS-pin). Roster-code en foto's blijven per unit. Maximum 500 units per bulk."
                 },
                 {
                     "label": "Units importeren",

@@ -46,6 +46,62 @@ class BulkCreateUnitsRequest extends FormRequest
     }
 
     /**
+     * Shared portal flags for a whole bulk (same fields as StoreUnitRequest, minus unique-per-unit).
+     *
+     * @return array<string, array<int, mixed>>
+     */
+    public static function portalRuleSet(?int $tenantId = null): array
+    {
+        $unitRules = StoreUnitRequest::ruleSet(null, null, $tenantId);
+
+        return [
+            'category_id' => $unitRules['category_id'],
+            'unit_check_list_id' => $unitRules['unit_check_list_id'],
+            'public_reports_enabled' => $unitRules['public_reports_enabled'],
+            'allow_reservations' => $unitRules['allow_reservations'],
+            'allow_unit_checks' => $unitRules['allow_unit_checks'],
+            'allow_unit_measurements' => $unitRules['allow_unit_measurements'],
+            'measure_field_ids' => $unitRules['measure_field_ids'],
+            'measure_field_ids.*' => $unitRules['measure_field_ids.*'],
+            'require_reporter_contact' => $unitRules['require_reporter_contact'],
+            'require_reporter_email_verification' => $unitRules['require_reporter_email_verification'],
+            'latitude' => $unitRules['latitude'],
+            'longitude' => $unitRules['longitude'],
+        ];
+    }
+
+    /**
+     * Livewire property map for {@see portalRuleSet()}.
+     *
+     * @return array<string, array<int, mixed>>
+     */
+    public static function livewirePortalRuleSet(?int $tenantId = null): array
+    {
+        $map = [
+            'category_id' => 'bulkCategoryId',
+            'unit_check_list_id' => 'bulkCheckListId',
+            'public_reports_enabled' => 'bulkPublicReportsEnabled',
+            'allow_reservations' => 'bulkAllowReservations',
+            'allow_unit_checks' => 'bulkAllowUnitChecks',
+            'allow_unit_measurements' => 'bulkAllowUnitMeasurements',
+            'measure_field_ids' => 'bulkMeasureFieldIds',
+            'measure_field_ids.*' => 'bulkMeasureFieldIds.*',
+            'require_reporter_contact' => 'bulkRequireReporterContact',
+            'require_reporter_email_verification' => 'bulkRequireReporterEmailVerification',
+            'latitude' => 'bulkLatitude',
+            'longitude' => 'bulkLongitude',
+        ];
+
+        $rules = self::portalRuleSet($tenantId);
+        $mapped = [];
+        foreach ($map as $from => $to) {
+            $mapped[$to] = $rules[$from];
+        }
+
+        return $mapped;
+    }
+
+    /**
      * @return array<string, array<int, mixed>>
      */
     public function rules(): array

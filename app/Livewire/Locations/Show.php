@@ -2,24 +2,24 @@
 
 namespace App\Livewire\Locations;
 
+use App\Actions\Communication\ImportLocationTranslationsAction;
+use App\Actions\Communication\ImportUnitTranslationsAction;
+use App\Actions\Locations\ActivateUnitAction;
 use App\Actions\Locations\BulkCreateUnitsAction;
 use App\Actions\Locations\CreateUnitAction;
 use App\Actions\Locations\DeactivateLocationAction;
-use App\Actions\Locations\ActivateUnitAction;
 use App\Actions\Locations\DeactivateUnitAction;
 use App\Actions\Locations\DeleteUnitAction;
 use App\Actions\Locations\DeleteUnitBulkBatchAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Locations\UpdateUnitAction;
 use App\Actions\QrCodes\DeleteQrLinkPhotoAction;
-use App\Actions\Communication\ImportLocationTranslationsAction;
-use App\Actions\Communication\ImportUnitTranslationsAction;
 use App\Actions\Units\DeleteImportBatchAction;
 use App\Actions\Units\ImportUnitsAction;
 use App\Data\Units\DeleteImportBatchData;
 use App\Data\Units\ImportUnitsData;
+use App\Enums\QrCodeStatus;
 use App\Http\Requests\Locations\BulkCreateUnitsRequest;
-use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\StoreUnitRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Locations\UpdateUnitRequest;
@@ -29,32 +29,35 @@ use App\Models\Category;
 use App\Models\EsgMeasurement;
 use App\Models\InternalTeam;
 use App\Models\Location;
-use App\Models\Tenant;
-use App\Support\EntityDetailNavigation;
-use App\Support\Qr\QrStickerSheetTemplate;
-use App\Support\Tenancy;
-use App\Support\Units\UnitCategoryPortalInheritance;
-use App\Support\Tenant\TenantWorkMenuAccess;
-use App\Support\Translation\LocaleSupport;
 use App\Models\QrLinkPhoto;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
 use App\Models\UnitCheckList;
 use App\Models\UnitMeasureField;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Validator;
+use App\Support\EntityDetailNavigation;
+use App\Support\Import\MinimalXlsxWriter;
+use App\Support\Qr\QrStickerSheetTemplate;
+use App\Support\Tenancy;
+use App\Support\Tenant\TenantWorkMenuAccess;
+use App\Support\Translation\LocaleSupport;
 use App\Support\Units\ImportBatchRegistry;
 use App\Support\Units\UnitBulkBatchRegistry;
+use App\Support\Units\UnitCategoryPortalInheritance;
 use App\Support\Units\UnitDeletionGuard;
 use App\Support\Validation\TextDescriptionLimits;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
-use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 #[Layout('components.layouts.app')]
 #[Title('WinProx')]
@@ -76,7 +79,7 @@ class Show extends Component
 
     public bool $showCsvImportModal = false;
 
-    /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
+    /** @var TemporaryUploadedFile|null */
     public $csvImportFile = null;
 
     /** @var list<string> */
@@ -149,7 +152,7 @@ class Show extends Component
 
     public bool $unitRequireReporterEmailVerification = false;
 
-    /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
+    /** @var array<int, TemporaryUploadedFile> */
     public array $unitPhotos = [];
 
     public ?int $focusUnitId = null;
@@ -183,6 +186,27 @@ class Show extends Component
     public array $bulkRanges = [];
 
     public ?int $bulkCategoryId = null;
+
+    public bool $bulkPublicReportsEnabled = true;
+
+    public bool $bulkAllowReservations = false;
+
+    public bool $bulkAllowUnitChecks = false;
+
+    public bool $bulkAllowUnitMeasurements = false;
+
+    /** @var array<int, int> */
+    public array $bulkMeasureFieldIds = [];
+
+    public bool $bulkRequireReporterContact = false;
+
+    public bool $bulkRequireReporterEmailVerification = false;
+
+    public ?int $bulkCheckListId = null;
+
+    public string $bulkLatitude = '';
+
+    public string $bulkLongitude = '';
 
     public function mount(Location $location): void
     {
@@ -420,6 +444,11 @@ class Show extends Component
         $this->applyUnitPortalFlagsFromCategory();
     }
 
+    public function updatedBulkCategoryId(): void
+    {
+        $this->applyBulkPortalFlagsFromCategory();
+    }
+
     private function applyUnitPortalFlagsFromCategory(): void
     {
         $category = $this->unitCategoryId !== null
@@ -443,10 +472,33 @@ class Show extends Component
         }
     }
 
+    private function applyBulkPortalFlagsFromCategory(): void
+    {
+        $category = $this->bulkCategoryId !== null
+            ? Category::query()->find($this->bulkCategoryId)
+            : null;
+
+        $defaults = UnitCategoryPortalInheritance::defaultsFromCategory($category);
+
+        $this->bulkAllowReservations = $defaults['allow_reservations'];
+        $this->bulkAllowUnitChecks = $defaults['allow_unit_checks'];
+        $this->bulkAllowUnitMeasurements = $defaults['allow_unit_measurements'];
+        $this->bulkRequireReporterContact = $defaults['require_reporter_contact'];
+        $this->bulkRequireReporterEmailVerification = $defaults['require_reporter_email_verification'];
+
+        if (! $this->bulkAllowUnitChecks) {
+            $this->bulkCheckListId = null;
+        }
+
+        if (! $this->bulkAllowUnitMeasurements) {
+            $this->bulkMeasureFieldIds = [];
+        }
+    }
+
     public function openEditUnit(int $unitId): void
     {
         $unit = Unit::where('location_id', $this->location->id)
-            ->with(['qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)])
+            ->with(['qrCodes' => fn ($q) => $q->where('status', QrCodeStatus::Active)])
             ->findOrFail($unitId);
         $this->authorize('update', $unit);
         $this->editingUnitId = $unit->id;
@@ -569,6 +621,11 @@ class Show extends Component
     public function applyUnitGpsPair(string $text): bool
     {
         return $this->fillGpsPair($text, 'unitLatitude', 'unitLongitude');
+    }
+
+    public function applyBulkGpsPair(string $text): bool
+    {
+        return $this->fillGpsPair($text, 'bulkLatitude', 'bulkLongitude');
     }
 
     public function saveUnit(CreateUnitAction $createUnit, UpdateUnitAction $updateUnit): void
@@ -825,9 +882,18 @@ class Show extends Component
     {
         $this->authorize('create', Unit::class);
         $this->bulkRanges = [$this->emptyBulkRange()];
-        $this->bulkCategoryId = null;
+        $this->resetBulkPortalState();
         $this->resetErrorBag();
         $this->showBulkModal = true;
+    }
+
+    private function resetBulkPortalState(): void
+    {
+        $this->bulkCategoryId = null;
+        $this->bulkPublicReportsEnabled = true;
+        $this->bulkLatitude = '';
+        $this->bulkLongitude = '';
+        $this->applyBulkPortalFlagsFromCategory();
     }
 
     /**
@@ -910,7 +976,7 @@ class Show extends Component
         $this->csvImportErrors = $result['errors'] ?? [__('locations.units_csv.errors.failed')];
     }
 
-    public function downloadLocationUnitsSampleCsv(): \Symfony\Component\HttpFoundation\StreamedResponse
+    public function downloadLocationUnitsSampleCsv(): StreamedResponse
     {
         $this->authorize('create', Unit::class);
         abort_unless($this->locationTenant()?->hasCsvUnitsImport() ?? false, 403);
@@ -940,7 +1006,7 @@ class Show extends Component
         ]);
     }
 
-    public function downloadLocationUnitsSampleXlsx(): \Symfony\Component\HttpFoundation\StreamedResponse
+    public function downloadLocationUnitsSampleXlsx(): StreamedResponse
     {
         $this->authorize('create', Unit::class);
         abort_unless($this->locationTenant()?->hasCsvUnitsImport() ?? false, 403);
@@ -964,7 +1030,7 @@ class Show extends Component
         return response()->streamDownload(function () use ($rows) {
             $tempPath = sys_get_temp_dir().DIRECTORY_SEPARATOR.'units-location-sample-'.uniqid('', true).'.xlsx';
             try {
-                \App\Support\Import\MinimalXlsxWriter::write($tempPath, $rows);
+                MinimalXlsxWriter::write($tempPath, $rows);
                 readfile($tempPath);
             } finally {
                 @unlink($tempPath);
@@ -1059,9 +1125,15 @@ class Show extends Component
             ];
         }, $this->bulkRanges));
 
+        $tenantId = (int) auth()->user()->tenant_id;
         $validated = $this->validate([
             ...BulkCreateUnitsRequest::livewireRuleSet(),
-            'bulkCategoryId' => ['nullable', 'integer', 'exists:categories,id'],
+            ...BulkCreateUnitsRequest::livewirePortalRuleSet($tenantId),
+        ], [
+            'bulkLatitude.between' => __('locations.errors.coords_invalid'),
+            'bulkLongitude.between' => __('locations.errors.coords_invalid'),
+            'bulkCategoryId.exists' => __('locations.units.errors.invalid_category'),
+            'bulkCheckListId.exists' => __('locations.units.errors.invalid_check_list'),
         ]);
 
         $consistency = Validator::make([], []);
@@ -1080,11 +1152,50 @@ class Show extends Component
             return;
         }
 
+        $tenant = $this->locationTenant();
+        if ($tenant instanceof Tenant) {
+            if (! TenantWorkMenuAccess::mayEnableReservations(
+                $tenant,
+                (bool) $validated['bulkAllowReservations'],
+                false,
+            )) {
+                $this->addError('bulkAllowReservations', __('settings.work_menu.errors.reservations_disabled'));
+
+                return;
+            }
+
+            if (! TenantWorkMenuAccess::mayEnableUnitMeasurements(
+                $tenant,
+                (bool) $validated['bulkAllowUnitMeasurements'],
+                false,
+            )) {
+                $this->addError('bulkAllowUnitMeasurements', __('settings.work_menu.errors.unit_measurements_disabled'));
+
+                return;
+            }
+        }
+
+        $allowUnitChecks = (bool) $validated['bulkAllowUnitChecks'];
+        $allowUnitMeasurements = (bool) $validated['bulkAllowUnitMeasurements'];
+
         try {
             $result = $bulkCreate->handle($this->location, [
                 'ranges' => $validated['bulkRanges'],
                 'category_id' => $validated['bulkCategoryId'] ?? null,
-            ], (int) auth()->user()->tenant_id, (int) auth()->id());
+                'unit_check_list_id' => $allowUnitChecks ? ($validated['bulkCheckListId'] ?? null) : null,
+                'public_reports_enabled' => (bool) $validated['bulkPublicReportsEnabled'],
+                'allow_reservations' => (bool) $validated['bulkAllowReservations'],
+                'allow_unit_checks' => $allowUnitChecks,
+                'allow_unit_measurements' => $allowUnitMeasurements,
+                'measure_field_ids' => $allowUnitMeasurements
+                    ? array_map('intval', $validated['bulkMeasureFieldIds'] ?? [])
+                    : [],
+                'require_reporter_contact' => (bool) $validated['bulkRequireReporterContact'],
+                'require_reporter_email_verification' => (bool) $validated['bulkRequireReporterEmailVerification'],
+                'latitude' => $validated['bulkLatitude'] ?? null,
+                'longitude' => $validated['bulkLongitude'] ?? null,
+                'original_language' => auth()->user()->locale ?? null,
+            ], $tenantId, (int) auth()->id());
 
             session()->flash('success', __('locations.bulk.created', ['count' => $result['created']]));
             $this->showBulkModal = false;
@@ -1127,7 +1238,7 @@ class Show extends Component
         $units = Unit::query()
             ->where('location_id', $this->location->id)
             ->with(['qrCodes' => function ($q) {
-                $q->where('status', \App\Enums\QrCodeStatus::Active);
+                $q->where('status', QrCodeStatus::Active);
             }])
             ->when($categoriesEnabled, fn ($q) => $q->with([
                 'category.translations',
@@ -1172,9 +1283,10 @@ class Show extends Component
             : collect();
 
         $categoryTeamIds = [];
-        if ($this->unitCategoryId !== null) {
+        $checkListCategoryId = $this->showBulkModal ? $this->bulkCategoryId : $this->unitCategoryId;
+        if ($checkListCategoryId !== null) {
             $categoryTeamIds = Category::query()
-                ->whereKey($this->unitCategoryId)
+                ->whereKey($checkListCategoryId)
                 ->first()
                 ?->teams()
                 ->pluck('internal_teams.id')
@@ -1212,6 +1324,10 @@ class Show extends Component
             } else {
                 $this->unitCheckListId = null;
             }
+        }
+
+        if ($this->showBulkModal && $this->bulkCheckListId !== null && ! $unitCheckLists->contains('id', $this->bulkCheckListId)) {
+            $this->bulkCheckListId = null;
         }
 
         $previewUnit = null;
@@ -1276,6 +1392,35 @@ class Show extends Component
             }
         }
 
+        $bulkPortalCategory = null;
+        $bulkPortalFlagsMatchCategory = true;
+        $bulkCategoryPortalTooltip = '';
+        if ($this->showBulkModal) {
+            if ($this->bulkCategoryId !== null) {
+                $bulkPortalCategory = Category::query()->find($this->bulkCategoryId);
+            }
+
+            if ($bulkPortalCategory instanceof Category) {
+                $bulkPortalFlagsMatchCategory = UnitCategoryPortalInheritance::livewireFlagsMatchDefaults(
+                    $this->bulkAllowReservations,
+                    $this->bulkAllowUnitChecks,
+                    $this->bulkAllowUnitMeasurements,
+                    $this->bulkRequireReporterContact,
+                    $this->bulkRequireReporterEmailVerification,
+                    UnitCategoryPortalInheritance::defaultsFromCategory($bulkPortalCategory),
+                );
+                $bulkCategoryPortalTooltip = __('locations.bulk.advanced_portal.inherits_from', [
+                    'category' => $bulkPortalCategory->localizedName(),
+                ]);
+
+                if (! $bulkPortalFlagsMatchCategory) {
+                    $bulkCategoryPortalTooltip .= ' '.__('locations.bulk.advanced_portal.overrides_active');
+                }
+            } else {
+                $bulkCategoryPortalTooltip = __('locations.bulk.advanced_portal.no_category_hint');
+            }
+        }
+
         return view('livewire.locations.show', [
             'units' => $units,
             'bulkSummaries' => $bulkSummaries,
@@ -1312,7 +1457,8 @@ class Show extends Component
             'unitPortalCategory' => $unitPortalCategory,
             'unitPortalFlagsMatchCategory' => $unitPortalFlagsMatchCategory,
             'unitCategoryPortalTooltip' => $unitCategoryPortalTooltip,
+            'bulkPortalFlagsMatchCategory' => $bulkPortalFlagsMatchCategory,
+            'bulkCategoryPortalTooltip' => $bulkCategoryPortalTooltip,
         ]);
     }
-
 }

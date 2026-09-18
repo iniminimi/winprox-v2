@@ -236,7 +236,14 @@
         "start_hint": "z.B. 20",
         "prefix_hint": "z.B. Zimmer ",
         "suffix_hint": "z.B. -A",
-        "preview_empty": "Geben Sie Startnummer und Anzahl ein, um die Vorschau zu sehen."
+        "preview_empty": "Geben Sie Startnummer und Anzahl ein, um die Vorschau zu sehen.",
+        "advanced_portal": {
+            "open": "Portal-Optionen für diesen Bulk",
+            "warning": "Diese Häkchen gelten für alle Units in diesem Bulk. Standardmäßig folgen sie der gewählten Kategorie. Roster-Code und Fotos stellen Sie pro Unit ein.",
+            "inherits_from": "Folgt Kategorie :category (Häkchen werden bei Kategoriewechsel übernommen).",
+            "overrides_active": "Dieser Bulk weicht von den Kategorie-Einstellungen ab.",
+            "no_category_hint": "Wählen Sie eine Kategorie, um Portal-Optionen zu übernehmen. Ohne Kategorie gelten die Häkchen unten für den ganzen Bulk."
+        }
     },
     "import_history": {
         "title": "Letzte Imports",
