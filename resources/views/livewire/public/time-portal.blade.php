@@ -23,11 +23,13 @@
                 @include('partials.wp-portal-lang')
             </div>
         </div>
-        <x-wp-page-head-title variant="portal" icon="clock" :title="__('time.portal.title')">
-            @if ($showClockPointName ?? false)
-                <p class="wp-muted">{{ $clockPointName }}</p>
-            @endif
-        </x-wp-page-head-title>
+        @unless ($canAct ?? false)
+            <x-wp-page-head-title variant="portal" icon="clock" :title="__('time.portal.title')">
+                @if ($showClockPointName ?? false)
+                    <p class="wp-muted">{{ $clockPointName }}</p>
+                @endif
+            </x-wp-page-head-title>
+        @endunless
     </div>
 
     @if ($inactiveReasonKey !== null)

@@ -160,7 +160,8 @@ it('vernieuwt baseline via time-portaal openen zodat zichtbare taken geen banner
     expect(app(FindNewTeamTasksSinceBaselineAction::class)->handle($worker, (int) $unitA->id))->toHaveCount(1);
 
     Livewire::test(TimePortal::class, ['token' => 'clock-baseline-token'])
-        ->assertSee(__('time.portal.title'), false);
+        ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>')
+        ->assertSee(__('common.welcome'), false);
 
     expect(app(FindNewTeamTasksSinceBaselineAction::class)->handle($worker, (int) $unitA->id))->toHaveCount(0);
 });

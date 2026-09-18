@@ -1006,7 +1006,7 @@
             "actions": [
                 {
                     "label": "Naam en icoon",
-                    "text": "Scan de Clock Point-QR en kies je voor- en achternaam plus je persoonlijke icoon (optioneel pincode) op je eigen gsm. Dat zegt wie je bent — het is nog geen inklokken. Twee foute pogingen blokkeren je account tijdelijk; een teamleider of beheerder kan dat vrijgeven."
+                    "text": "Scan de Clock Point-QR en kies je voor- en achternaam plus je persoonlijke icoon (optioneel pincode) op je eigen gsm. Dat zegt wie je bent — het is nog geen inklokken. Na aanmelden verdwijnt de kop Aanmelden. Twee foute pogingen blokkeren je account tijdelijk; een teamleider of beheerder kan dat vrijgeven."
                 },
                 {
                     "label": "Open taken",

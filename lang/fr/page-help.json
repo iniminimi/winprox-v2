@@ -1014,7 +1014,7 @@
             "actions": [
                 {
                     "label": "Nom et icône",
-                    "text": "Scannez le QR Clock Point et choisissez votre prénom, nom et icône personnelle (PIN optionnel) sur votre propre téléphone. Cela indique qui vous êtes — ce n'est pas encore pointer. Deux tentatives incorrectes bloquent temporairement votre compte ; un chef d'équipe ou un administrateur peut le débloquer."
+                    "text": "Scannez le QR Clock Point et choisissez votre prénom, nom et icône personnelle (PIN optionnel) sur votre propre téléphone. Cela indique qui vous êtes — ce n'est pas encore pointer. Après connexion, le titre Connexion disparaît. Deux tentatives incorrectes bloquent temporairement votre compte ; un chef d'équipe ou un administrateur peut le débloquer."
                 },
                 {
                     "label": "Tâches ouvertes",

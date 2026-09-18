@@ -470,6 +470,34 @@ it('toont een eigen Clock Point-naam onder Aanmelden', function () {
         ->assertSeeHtml('<p class="wp-muted">Magazijn</p>');
 });
 
+it('verbergt de kop Aanmelden na een geslaagde aanmelding', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+    ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Magazijn',
+        'qr_token' => 'signed-in-hides-heading',
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => 'signed-in-hides-heading'])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>')
+        ->assertDontSeeHtml('<p class="wp-muted">Magazijn</p>')
+        ->assertSee(__('common.welcome'), false)
+        ->assertSee('Jan Janssen', false);
+});
+
 it('toont het time-portaal en laat een worker inklokken na icoonbevestiging', function () {
     [$tenant] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);

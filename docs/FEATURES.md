@@ -879,14 +879,14 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   bewerken = admin of medewerker. Geen sectorcopy.
 - **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` voor aanmelden
   (naam + icoon), in-/uitklokken en teamtaken-overzicht. Standaardnaam van het eerste
-  Clock Point: **Inklokken** (niet Inloggen); die generieke naam blijft op het portaal
-  verborgen. Zonder GPS-werkbezoeken blijven
+  Clock Point: **Aanmelden** (niet Inloggen/Inklokken); die generieke naam blijft op het
+  portaal verborgen. Na een geslaagde aanmelding verdwijnt ook de kop **Aanmelden**
+  (en een eigen Clock Point-naam); logo, hulp en welkom blijven. Geen **Afmelden**:
+  de gsm blijft gekoppeld tot beheer of teamleader vrijgeeft. Zonder GPS-werkbezoeken blijven
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
   starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;
   inspectiestops (unit check) ter plaatse op dezelfde bezoek-locatie, in stopvolgorde.
-  Na aanmelden blijft de gsm van die uitvoerder; Clock Point toont geen knop
-  **Andere medewerker**. Gsm vrijgeven: beheer of teamleader. Inklokken blijft
-  onder Aanwezigheid (verse QR-scan).
+  Inklokken blijft onder Aanwezigheid (verse QR-scan).
 
 ### 6.3 Workers
 - Sidebar **Personen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status.
@@ -1246,8 +1246,8 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   (alleen locaties) en onder **Open taken** (omschrijving, prio/status, volgende
   stop; knop Unit check alleen na Start werk op die locatie). Ter plaatse opent
   die knop de unit check zonder unit-QR. Zonder GPS-bezoek blijven unit-checks
-  via de unit-QR. Na aanmelden geen wisselknop; de gsm blijft van die uitvoerder
-  tot beheer of teamleader vrijgeeft.
+  via de unit-QR. Na aanmelden geen kop **Aanmelden** en geen wisselknop; de gsm blijft
+  van die uitvoerder tot beheer of teamleader vrijgeeft.
   (Vervangt de oude team-QR `/team/{token}`.)
   Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en optioneel tegel
   **Evacuatielijst** (brandicoon) na aanmelden — alleen als Instellingen → Prikklok-beveiliging

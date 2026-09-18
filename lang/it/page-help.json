@@ -1006,7 +1006,7 @@
             "actions": [
                 {
                     "label": "Nome e icona",
-                    "text": "Scansiona il QR Clock Point e scegli nome, cognome e icona personale (PIN opzionale) sul tuo telefono. Questo dice chi sei — non è ancora timbrare. Due tentativi errati bloccano temporaneamente l'account; un caposquadra o un amministratore può sbloccarlo."
+                    "text": "Scansiona il QR Clock Point e scegli nome, cognome e icona personale (PIN opzionale) sul tuo telefono. Questo dice chi sei — non è ancora timbrare. Dopo l’accesso scompare il titolo Accesso. Due tentativi errati bloccano temporaneamente l'account; un caposquadra o un amministratore può sbloccarlo."
                 },
                 {
                     "label": "Attività aperte",
