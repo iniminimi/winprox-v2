@@ -4,6 +4,7 @@ namespace App\Livewire\Concerns;
 
 use App\Actions\Issues\MergeInspectionRoundStopSelectionAction;
 use App\Actions\Issues\MoveInspectionRoundStopAction;
+use App\Actions\Issues\ReorderInspectionRoundStopAction;
 use App\Models\Unit;
 
 trait ManagesInspectionRoundStopOrder
@@ -49,6 +50,15 @@ trait ManagesInspectionRoundStopOrder
             $this->normalizedRoundStopUnitIds(),
             $index,
             $delta,
+        );
+    }
+
+    public function reorderRoundStop(int $from, int $to): void
+    {
+        $this->round_stop_unit_ids = app(ReorderInspectionRoundStopAction::class)->handle(
+            $this->normalizedRoundStopUnitIds(),
+            $from,
+            $to,
         );
     }
 

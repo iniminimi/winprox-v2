@@ -16,7 +16,12 @@
 @else
     <p class="wp-muted wp-text-sm">{{ $help }}</p>
     @if ($selectedIds !== [])
-        <ol class="wp-round-stops" aria-label="{{ __('issues.create.round_stops_order') }}">
+        <ol
+            class="wp-round-stops"
+            x-data="wpRoundStopSort"
+            :class="{ 'wp-round-stops--sorting': from !== null }"
+            aria-label="{{ __('issues.create.round_stops_order') }}"
+        >
             @foreach ($selectedIds as $index => $stopUnitId)
                 @php
                     $stopUnit = $unitsById->get($stopUnitId) ?? $unitsById->get((string) $stopUnitId);
@@ -29,7 +34,24 @@
                     $isFirst = $index === 0;
                     $isLast = $index === count($selectedIds) - 1;
                 @endphp
-                <li class="wp-round-stops__item wp-round-stops__item--route" wire:key="{{ $pickerId }}-order-{{ $stopUnitId }}">
+                <li
+                    class="wp-round-stops__item wp-round-stops__item--route"
+                    wire:key="{{ $pickerId }}-order-{{ $stopUnitId }}"
+                    data-round-stop-index="{{ $index }}"
+                    :class="{
+                        'wp-round-stops__item--dragging': from === {{ $index }},
+                        'wp-round-stops__item--drop': over === {{ $index }} && from !== null && from !== {{ $index }},
+                    }"
+                >
+                    <span
+                        class="wp-round-stops__handle"
+                        aria-label="{{ __('issues.create.round_stops_drag') }}"
+                        title="{{ __('issues.create.round_stops_drag') }}"
+                        @pointerdown="onPointerDown($event, {{ $index }})"
+                        @pointermove="onPointerMove($event)"
+                        @pointerup="onPointerUp($event)"
+                        @pointercancel="onPointerUp($event)"
+                    ></span>
                     <span class="wp-round-stops__index">{{ $index + 1 }}</span>
                     <span class="wp-round-stops__name">{{ $stopLabel }}</span>
                     <span class="wp-round-stops__move">

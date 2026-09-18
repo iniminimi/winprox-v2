@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Actions\Issues\CreateInspectionRoundAction;
 use App\Actions\Issues\MergeInspectionRoundStopSelectionAction;
 use App\Actions\Issues\MoveInspectionRoundStopAction;
+use App\Actions\Issues\ReorderInspectionRoundStopAction;
 use App\Actions\Issues\SyncIssueRoundStopsAction;
 use App\Actions\Portal\FindNewTeamTasksSinceBaselineAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
@@ -869,6 +870,15 @@ it('wisselt twee opeenvolgende stops in de loopvolgorde', function () {
         ->and($move->handle([10, 20], 0, -1))->toBe([10, 20]);
 });
 
+it('plaatst een stop op een andere index in de loopvolgorde', function () {
+    $reorder = app(ReorderInspectionRoundStopAction::class);
+
+    expect($reorder->handle([10, 20, 30], 2, 0))->toBe([30, 10, 20])
+        ->and($reorder->handle([10, 20, 30], 0, 2))->toBe([20, 30, 10])
+        ->and($reorder->handle([10, 20], 0, 0))->toBe([10, 20])
+        ->and($reorder->handle([10, 20], 5, 0))->toBe([10, 20]);
+});
+
 it('zet de eerst aangevinkte unit als eerste stop en laat omhoog/omlaag toe', function () {
     ['tenant' => $tenant, 'actor' => $actor, 'unitA' => $unitA, 'unitB' => $unitB, 'unitC' => $unitC] = inspectionRoundScaffold();
     seedTenantPastOnboarding($tenant);
@@ -888,6 +898,21 @@ it('zet de eerst aangevinkte unit als eerste stop en laat omhoog/omlaag toe', fu
         ->and($ids[1])->toBe((int) $unitB->id)
         ->and($ids)->toHaveCount(3)
         ->and($ids)->toContain((int) $unitC->id);
+});
+
+it('slepen verplaatst een stop naar een andere plaats in de ronde', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'unitA' => $unitA, 'unitB' => $unitB, 'unitC' => $unitC] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->call('openRoundCreateModal')
+        ->call('toggleRoundStop', (int) $unitA->id)
+        ->call('toggleRoundStop', (int) $unitB->id)
+        ->call('toggleRoundStop', (int) $unitC->id)
+        ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id, (int) $unitC->id])
+        ->call('reorderRoundStop', 2, 0)
+        ->assertSet('round_stop_unit_ids', [(int) $unitC->id, (int) $unitA->id, (int) $unitB->id]);
 });
 
 it('slaat een omgekeerde stopvolgorde op via de meldingsdetail', function () {

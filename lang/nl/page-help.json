@@ -71,7 +71,7 @@
                 {
                     "label": "Stops",
                     "nested": true,
-                    "text": "Kies minstens 2 units (alle locaties). Vinken selecteert; de genummerde lijst met pijlen bepaalt welke locatie of unit eerst komt. Alleen units met unit checks staan in de lijst."
+                    "text": "Kies minstens 2 units (alle locaties). Vinken selecteert; de genummerde lijst (slepen of pijlen) bepaalt welke locatie of unit eerst komt. Alleen units met unit checks staan in de lijst."
                 },
                 {
                     "label": "Taaknotitie",
@@ -136,7 +136,7 @@
                 {
                     "label": "Stops",
                     "nested": true,
-                    "text": "Kies minstens 2 units (alle locaties). Vinken selecteert; de genummerde lijst met pijlen bepaalt welke locatie of unit eerst komt. Alleen units met unit checks staan in de lijst."
+                    "text": "Kies minstens 2 units (alle locaties). Vinken selecteert; de genummerde lijst (slepen of pijlen) bepaalt welke locatie of unit eerst komt. Alleen units met unit checks staan in de lijst."
                 },
                 {
                     "label": "Taaknotitie",
@@ -217,7 +217,7 @@
                 },
                 {
                     "label": "Inspectieronde-stops",
-                    "text": "Kies minstens 2 units als stops (alle locaties; gegroepeerd per locatie). Alleen units met unit checks staan in de lijst. De genummerde lijst met pijlen is de loopvolgorde (1 = eerste stop)."
+                    "text": "Kies minstens 2 units als stops (alle locaties; gegroepeerd per locatie). Alleen units met unit checks staan in de lijst. De genummerde lijst (slepen of pijlen) is de loopvolgorde (1 = eerste stop)."
                 },
                 {
                     "label": "Selecteer alle units",

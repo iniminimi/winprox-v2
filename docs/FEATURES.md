@@ -499,7 +499,7 @@ stops meer zijn voor **deze** cyclus-taak.
   `location_id` alleen als alle stops dezelfde locatie delen, anders null.
   Create- én show-picker: actieve units met unit checks, gegroepeerd per locatie
   (stops mogen over locaties heen). Gekozen stops staan in een genummerde lijst;
-  omhoog/omlaag bepaalt de loopvolgorde (1 = eerste stop). Units zonder checks
+  slepen of omhoog/omlaag bepaalt de loopvolgorde (1 = eerste stop). Units zonder checks
   staan niet in de lijst.
 - **Beheer — intentie-flow:** knop *Inspectieronde plannen* op **Werk → Inspectierondes**
   (primaire plek) en nog op Meldingen (naast Nieuwe melding): stops + interval + team

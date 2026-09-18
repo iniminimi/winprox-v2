@@ -5733,6 +5733,35 @@ a.wp-kpi.wp-kpi--attention {
     align-items: center;
 }
 
+.wp-round-stops__handle {
+    flex: 0 0 1.1rem;
+    width: 1.1rem;
+    height: 1.35rem;
+    cursor: grab;
+    touch-action: none;
+    border-radius: var(--wp-radius, 0.5rem);
+    background-image: radial-gradient(circle, var(--wp-muted) 1.15px, transparent 1.25px);
+    background-size: 0.38rem 0.38rem;
+    background-position: center;
+}
+
+.wp-round-stops--sorting {
+    user-select: none;
+}
+
+.wp-round-stops__item--dragging {
+    opacity: 0.55;
+}
+
+.wp-round-stops__item--dragging .wp-round-stops__handle {
+    cursor: grabbing;
+}
+
+.wp-round-stops__item--drop {
+    border-color: color-mix(in srgb, var(--wp-accent) 35%, var(--wp-border));
+    background-color: color-mix(in srgb, var(--wp-accent) 8%, var(--wp-surface));
+}
+
 .wp-round-stops__move {
     display: flex;
     flex: 0 0 auto;

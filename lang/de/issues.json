@@ -113,9 +113,10 @@
         "round_stops_empty": "Es gibt keine aktiven Units, die als Stops gewählt werden können.",
         "round_stops_select_help": "Kreuzen Sie Units pro Standort an. Die Reihenfolge legen Sie in der nummerierten Liste fest (1 = erster Stopp).",
         "round_stops_order": "Stopp-Reihenfolge",
-        "round_stops_order_help": "1 ist der erste Stopp. Neu angekreuzte Units kommen ans Ende. Verschieben mit den Pfeilen.",
+        "round_stops_order_help": "1 ist der erste Stopp. Neu angekreuzte Units kommen ans Ende. Ziehen Sie einen Stopp an die richtige Stelle, oder nutzen Sie die Pfeile.",
         "round_stops_move_up": "Früher in der Runde",
         "round_stops_move_down": "Später in der Runde",
+        "round_stops_drag": "Ziehen, um die Reihenfolge zu ändern",
         "round_stops_select_all": "Alle Units auswählen",
         "round_stops_hidden": "{1} :count Unit ist nicht sichtbar, weil Unit-Checks dort ausgeschaltet sind.|[2,*] :count Units sind nicht sichtbar, weil Unit-Checks dort ausgeschaltet sind.",
         "round_stops_unavailable": "{1} Keine Units als Stops verfügbar. :count Unit ist nicht sichtbar, weil Unit-Checks dort ausgeschaltet sind.|[2,*] Keine Units als Stops verfügbar. :count Units sind nicht sichtbar, weil Unit-Checks dort ausgeschaltet sind."

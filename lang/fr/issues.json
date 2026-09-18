@@ -113,9 +113,10 @@
         "round_stops_empty": "Aucune unité active à sélectionner comme arrêts.",
         "round_stops_select_help": "Cochez les unités par site. L’ordre du parcours se règle dans la liste numérotée (1 = premier arrêt).",
         "round_stops_order": "Ordre des arrêts",
-        "round_stops_order_help": "1 est le premier arrêt. Les unités nouvellement cochées s’ajoutent à la fin. Déplacez avec les flèches.",
+        "round_stops_order_help": "1 est le premier arrêt. Les unités nouvellement cochées s’ajoutent à la fin. Glissez un arrêt à sa place, ou utilisez les flèches.",
         "round_stops_move_up": "Plus tôt dans la tournée",
         "round_stops_move_down": "Plus tard dans la tournée",
+        "round_stops_drag": "Glisser pour changer l’ordre",
         "round_stops_select_all": "Sélectionner toutes les unités",
         "round_stops_hidden": "{1} :count unité n’est pas visible car le contrôle d’unité y est désactivé.|[2,*] :count unités ne sont pas visibles car le contrôle d’unité y est désactivé.",
         "round_stops_unavailable": "{1} Aucune unité disponible comme arrêt. :count unité n’est pas visible car le contrôle d’unité y est désactivé.|[2,*] Aucune unité disponible comme arrêt. :count unités ne sont pas visibles car le contrôle d’unité y est désactivé."

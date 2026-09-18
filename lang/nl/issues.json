@@ -113,9 +113,10 @@
         "round_stops_empty": "Er zijn geen actieve units om als stops te selecteren.",
         "round_stops_select_help": "Vink units aan per locatie. De loopvolgorde stel je in de genummerde lijst in (1 = eerste stop).",
         "round_stops_order": "Loopvolgorde",
-        "round_stops_order_help": "1 is de eerste stop. Nieuw aangevinkte units komen onderaan. Verplaats met de pijlen.",
+        "round_stops_order_help": "1 is de eerste stop. Nieuw aangevinkte units komen onderaan. Sleep een stop naar de juiste plaats, of gebruik de pijlen.",
         "round_stops_move_up": "Eerder in de ronde",
         "round_stops_move_down": "Later in de ronde",
+        "round_stops_drag": "Sleep om de volgorde te wijzigen",
         "round_stops_select_all": "Selecteer alle units",
         "round_stops_hidden": "{1} :count unit is niet zichtbaar omdat unit checks daar uit staat.|[2,*] :count units zijn niet zichtbaar omdat unit checks daar uit staan.",
         "round_stops_unavailable": "{1} Geen units beschikbaar als stops. :count unit is niet zichtbaar omdat unit checks daar uit staat.|[2,*] Geen units beschikbaar als stops. :count units zijn niet zichtbaar omdat unit checks daar uit staan."

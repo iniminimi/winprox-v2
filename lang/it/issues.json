@@ -113,9 +113,10 @@
         "round_stops_empty": "Non ci sono unità attive da selezionare come fermate.",
         "round_stops_select_help": "Spunta le unità per sede. L’ordine del percorso si imposta nell’elenco numerato (1 = prima fermata).",
         "round_stops_order": "Ordine delle fermate",
-        "round_stops_order_help": "1 è la prima fermata. Le unità appena spuntate si aggiungono in fondo. Sposta con le frecce.",
+        "round_stops_order_help": "1 è la prima fermata. Le unità appena spuntate si aggiungono in fondo. Trascina una fermata al posto giusto, o usa le frecce.",
         "round_stops_move_up": "Prima nel giro",
         "round_stops_move_down": "Dopo nel giro",
+        "round_stops_drag": "Trascina per cambiare l’ordine",
         "round_stops_select_all": "Seleziona tutte le unità",
         "round_stops_hidden": "{1} :count unità non è visibile perché i controlli unità sono disattivati.|[2,*] :count unità non sono visibili perché i controlli unità sono disattivati.",
         "round_stops_unavailable": "{1} Nessuna unità disponibile come fermata. :count unità non è visibile perché i controlli unità sono disattivati.|[2,*] Nessuna unità disponibile come fermata. :count unità non sono visibili perché i controlli unità sono disattivati."
