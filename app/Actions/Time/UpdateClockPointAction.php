@@ -24,6 +24,7 @@ class UpdateClockPointAction
             'name' => trim((string) ($data['name'] ?? $clockPoint->name)),
             'location_id' => $locationId,
             'sort_order' => (int) ($data['sort_order'] ?? $clockPoint->sort_order),
+            'homescreen_shortcut' => (bool) ($data['homescreen_shortcut'] ?? $clockPoint->homescreen_shortcut),
         ]);
 
         $this->audit->record(

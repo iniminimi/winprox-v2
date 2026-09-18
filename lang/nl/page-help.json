@@ -1009,6 +1009,10 @@
                     "text": "Scan de Clock Point-QR en kies je voor- en achternaam plus je persoonlijke icoon (optioneel pincode) op je eigen gsm. Dat zegt wie je bent — het is nog geen inklokken. Geen knop om als andere medewerker aan te melden: de gsm blijft van jou tot beheer of teamleader vrijgeeft. Na aanmelden verdwijnt de kop Aanmelden. Twee foute pogingen blokkeren je account tijdelijk; een teamleider of beheerder kan dat vrijgeven."
                 },
                 {
+                    "label": "Snelkoppeling op startscherm",
+                    "text": "Alleen als beheer dit Clock Point zo heeft ingesteld: rechts van Aanmelden staat een WinProx-icoon. Tik om de link op het startscherm van je gsm te zetten (Android: venster of Chrome-menu; iPhone: Deel → Zet op beginscherm). Daarna open je WinProx zonder QR. Niet bedoeld voor schermen met wisselende QR-codes."
+                },
+                {
                     "label": "Afmelden",
                     "text": "Na aanmelden kun je Afmelden: het portaal vraagt daarna opnieuw je icoon (of PIN). Dat is geen uitklokken en koppelt de gsm niet los; alleen beheer of een teamleader geeft het toestel vrij. Uitklokken blijft onder Aanwezigheid."
                 },
@@ -1372,6 +1376,10 @@
                 {
                     "label": "Actief / inactief",
                     "text": "Deactiveer een clock point tijdelijk (bv. bij werken op locatie). Het portaal toont dan dat inklokken niet beschikbaar is."
+                },
+                {
+                    "label": "Clock Point-link op startscherm gsm",
+                    "text": "Vinkje per Clock Point (standaard uit). Aan = naast Aanmelden verschijnt een WinProx-icoon om de link op het startscherm van de gsm te zetten. Alleen voor uitvoerders die geen QR kunnen scannen (thuis of onderweg). Laat dit uit op TFT-schermen met wisselende QR-codes. Geen App Store, geen extra offline-app."
                 }
             ]
         },

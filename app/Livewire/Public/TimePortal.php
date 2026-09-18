@@ -190,6 +190,8 @@ class TimePortal extends Component
     /** Baseline alleen bij openen/login synchen — niet bij elke wire:poll. */
     public bool $taskBaselineSyncedThisVisit = false;
 
+    public bool $homescreenHelpOpen = false;
+
     public function mount(string $token): void
     {
         $resolution = app(ResolveClockPointPortalTokenAction::class)->handle($token);
@@ -386,10 +388,24 @@ class TimePortal extends Component
         $this->forgetPortalSignInState();
     }
 
+    public function openHomescreenHelp(): void
+    {
+        if (! $this->clockPointOffersHomescreenShortcut()) {
+            return;
+        }
+
+        $this->homescreenHelpOpen = true;
+    }
+
+    public function closeHomescreenHelp(): void
+    {
+        $this->homescreenHelpOpen = false;
+    }
+
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'homescreenHelpOpen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -1521,6 +1537,7 @@ class TimePortal extends Component
             'scheduleMonthLabel' => $scheduleMonthLabel,
             'scheduleUnreadCount' => $scheduleUnreadCount,
             'showClockPointName' => ! TimePortalData::isGenericClockPointName($this->clockPointName),
+            'offerHomescreenShortcut' => $this->clockPointOffersHomescreenShortcut(),
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);
@@ -1862,6 +1879,11 @@ class TimePortal extends Component
         }
 
         return ClockPoint::find($this->clockPointId);
+    }
+
+    private function clockPointOffersHomescreenShortcut(): bool
+    {
+        return (bool) $this->activeClockPoint()?->homescreen_shortcut;
     }
 
     private function verifiedWorker(): ?Worker

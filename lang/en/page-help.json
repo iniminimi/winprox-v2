@@ -1009,6 +1009,10 @@
                     "text": "Scan the Clock Point QR and choose your first and last name plus your personal icon (optional PIN) on your own phone. That is who you are — it is not clocking in yet. There is no button to sign in as a different worker: the phone stays yours until an admin or team leader releases it. After sign-in the Sign in heading disappears. Two wrong attempts temporarily block your account; a team leader or administrator can release it."
                 },
                 {
+                    "label": "Home screen shortcut",
+                    "text": "Only if admin enabled it on this Clock Point: a WinProx icon sits to the right of Sign in. Tap to put the link on your phone home screen (Android: prompt or Chrome menu; iPhone: Share → Add to Home Screen). After that you open WinProx without a QR. Not for screens with rotating QR codes."
+                },
+                {
                     "label": "Sign out",
                     "text": "After sign-in you can Sign out: the portal then asks for your icon (or PIN) again. That is not clock-out and does not unbind the phone; only an admin or team leader releases the device. Clock-out stays under Presence."
                 },
@@ -1372,6 +1376,10 @@
                 {
                     "label": "Active / inactive",
                     "text": "Deactivate a clock point temporarily (e.g. during off-site work). The portal then shows that clock-in is unavailable."
+                },
+                {
+                    "label": "Clock Point link on phone home screen",
+                    "text": "Per Clock Point checkbox (off by default). On = a WinProx icon appears next to Sign in so the worker can put the link on the phone home screen. Only for workers who cannot scan a QR (home or on the road). Leave this off on TFT screens with rotating QR codes. No App Store, no extra offline app."
                 }
             ]
         },

@@ -145,6 +145,12 @@
                     <input id="cp-sort" type="number" min="0" class="wp-input" wire:model="sortOrder">
                     @error('sortOrder') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+                <label class="wp-check">
+                    <input type="checkbox" wire:model="homescreenShortcut">
+                    <span>{{ __('time.clock_points.fields.homescreen_shortcut') }}</span>
+                </label>
+                <p class="wp-muted wp-text-sm">{{ __('time.clock_points.fields.homescreen_shortcut_hint') }}</p>
+                @error('homescreenShortcut') <p class="wp-error">{{ $message }}</p> @enderror
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--surface" wire:click="closeModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>

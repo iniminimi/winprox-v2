@@ -233,7 +233,9 @@
             "name": "Nome",
             "location": "Sede",
             "no_location": "Nessuna sede collegata",
-            "sort_order": "Ordine"
+            "sort_order": "Ordine",
+            "homescreen_shortcut": "Collegamento Clock Point sulla schermata iniziale del telefono",
+            "homescreen_shortcut_hint": "Solo per gli esecutori che non possono scansionare un QR (partenza da casa o in viaggio). Lasciare disattivato sugli schermi TFT con QR rotanti."
         },
         "qr": {
             "subtitle": "Scansiona per timbrare entrata o uscita",
@@ -330,6 +332,13 @@
             "navigate": "Naviga",
             "start_work": "Inizia il lavoro",
             "do_check": "Controllo unità"
+        },
+        "homescreen": {
+            "title": "Crea un collegamento sulla schermata iniziale",
+            "help_title": "Clock Point sulla schermata iniziale",
+            "help_intro": "Apri WinProx la volta successiva senza scansionare un QR. Solo se parti da casa o in viaggio.",
+            "help_android": "Android (Chrome): tocca l’icona WinProx. Nessuna finestra? Menu (tre puntini) → Aggiungi a schermata Home.",
+            "help_ios": "iPhone (Safari): Condividi → Aggiungi a Home."
         }
     },
     "ciao": {

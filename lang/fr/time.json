@@ -233,7 +233,9 @@
             "name": "Nom",
             "location": "Site",
             "no_location": "Aucun site lié",
-            "sort_order": "Ordre de tri"
+            "sort_order": "Ordre de tri",
+            "homescreen_shortcut": "Lien Clock Point sur l’écran d’accueil du téléphone",
+            "homescreen_shortcut_hint": "Uniquement pour les exécutants qui ne peuvent pas scanner un QR (départ à domicile ou en déplacement). Laissez ceci désactivé sur les écrans TFT avec QR rotatif."
         },
         "qr": {
             "subtitle": "Scannez pour pointer l'entrée ou la sortie",
@@ -330,6 +332,13 @@
             "navigate": "Naviguer",
             "start_work": "Commencer le travail",
             "do_check": "Contrôle d’unité"
+        },
+        "homescreen": {
+            "title": "Créer un raccourci sur l’écran d’accueil",
+            "help_title": "Clock Point sur l’écran d’accueil",
+            "help_intro": "Ouvrez WinProx la prochaine fois sans scanner un QR. Uniquement si vous partez de chez vous ou en déplacement.",
+            "help_android": "Android (Chrome) : touchez l’icône WinProx. Pas de fenêtre ? Menu (trois points) → Ajouter à l’écran d’accueil.",
+            "help_ios": "iPhone (Safari) : Partager → Sur l’écran d’accueil."
         }
     },
     "ciao": {

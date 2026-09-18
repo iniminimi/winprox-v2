@@ -1017,6 +1017,10 @@
                     "text": "Scannez le QR Clock Point et choisissez votre prénom, nom et icône personnelle (PIN optionnel) sur votre propre téléphone. Cela indique qui vous êtes — ce n'est pas encore pointer. Pas de bouton pour un autre exécutant : le téléphone reste le vôtre jusqu’à libération par l’admin ou le chef d’équipe. Après connexion, le titre Connexion disparaît. Deux tentatives incorrectes bloquent temporairement votre compte ; un chef d'équipe ou un administrateur peut le débloquer."
                 },
                 {
+                    "label": "Raccourci sur l’écran d’accueil",
+                    "text": "Uniquement si l’admin l’a activé sur ce Clock Point : une icône WinProx apparaît à droite de Connexion. Touchez pour placer le lien sur l’écran d’accueil (Android : fenêtre ou menu Chrome ; iPhone : Partager → Sur l’écran d’accueil). Ensuite vous ouvrez WinProx sans QR. Pas destiné aux écrans avec QR rotatif."
+                },
+                {
                     "label": "Se déconnecter",
                     "text": "Après connexion vous pouvez Se déconnecter : le portail redemande alors votre icône (ou PIN). Ce n’est pas une sortie et cela ne détache pas le téléphone ; seul un admin ou un chef d’équipe libère l’appareil. La sortie reste sous Présence."
                 },
@@ -1380,6 +1384,10 @@
                 {
                     "label": "Actif / inactif",
                     "text": "Désactivez temporairement un clock point (p. ex. lors de travaux sur site). Le portail indique alors que le pointage n'est pas disponible."
+                },
+                {
+                    "label": "Lien Clock Point sur l’écran d’accueil",
+                    "text": "Case par Clock Point (désactivée par défaut). Activée = une icône WinProx apparaît à côté de Connexion pour placer le lien sur l’écran d’accueil. Uniquement pour les exécutants qui ne peuvent pas scanner un QR (domicile ou déplacement). Laissez ceci désactivé sur les écrans TFT avec QR rotatif. Pas d’App Store, pas d’appli hors ligne supplémentaire."
                 }
             ]
         },

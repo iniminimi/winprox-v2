@@ -24,6 +24,7 @@ class ClockPointFactory extends Factory
             'qr_token' => Str::lower(Str::random(40)),
             'qr_renewed_at' => now(),
             'is_active' => true,
+            'homescreen_shortcut' => false,
             'sort_order' => 0,
         ];
     }

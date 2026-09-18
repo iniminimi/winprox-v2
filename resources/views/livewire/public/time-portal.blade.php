@@ -1,3 +1,13 @@
+@if ($offerHomescreenShortcut ?? false)
+    @push('head')
+        <link rel="manifest" href="{{ route('public.time-portal.manifest', $token) }}">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="WinProx">
+        <link rel="apple-touch-icon" href="{{ asset('images/pwa/winprox-192.png') }}">
+        <meta name="theme-color" content="#059669">
+    @endpush
+@endif
 <div class="wp-stack" @if ($canAct ?? false) wire:poll.visible.30s @endif>
     <script>
         window.__wpFieldSync = Object.assign(window.__wpFieldSync || {}, {
@@ -25,6 +35,11 @@
         </div>
         @unless ($canAct ?? false)
             <x-wp-page-head-title variant="portal" icon="clock" :title="__('time.portal.title')">
+                <x-slot:toolbar>
+                    @if ($offerHomescreenShortcut ?? false)
+                        @include('partials.wp-homescreen-shortcut')
+                    @endif
+                </x-slot:toolbar>
                 @if ($showClockPointName ?? false)
                     <p class="wp-muted">{{ $clockPointName }}</p>
                 @endif
@@ -719,5 +734,22 @@
                 </x-wp-modal>
             @endif
         @endif
+    @endif
+
+    @if (($offerHomescreenShortcut ?? false) && $homescreenHelpOpen)
+        <x-wp-modal closeMethod="closeHomescreenHelp" aria-labelledby="homescreen-help-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="homescreen-help-title" class="wp-h2">{{ __('time.portal.homescreen.help_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeHomescreenHelp" />
+                </div>
+                <p>{{ __('time.portal.homescreen.help_intro') }}</p>
+                <p class="wp-muted">{{ __('time.portal.homescreen.help_android') }}</p>
+                <p class="wp-muted">{{ __('time.portal.homescreen.help_ios') }}</p>
+                <div class="wp-cluster">
+                    <button type="button" class="btn btn--primary" wire:click="closeHomescreenHelp">{{ __('common.button.close') }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
     @endif
 </div>

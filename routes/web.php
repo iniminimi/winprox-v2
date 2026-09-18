@@ -30,6 +30,7 @@ use App\Http\Controllers\QrController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StopSupportViewController;
 use App\Http\Controllers\TenantPurgeConfirmController;
+use App\Http\Controllers\Time\ClockPointHomescreenManifestController;
 use App\Http\Controllers\Time\ClockPointQrController;
 use App\Http\Controllers\Time\ClockPointQrPackDownloadController;
 use App\Http\Controllers\Time\WorkShiftExportController;
@@ -173,6 +174,9 @@ Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.
 Route::get('/reservations/confirm/{token}', ReservationConfirm::class)->name('reservations.confirm');
 Route::get('/reservations/manage/{token}', ReservationManage::class)->name('reservations.manage');
 
+Route::get('/time/{token}/manifest.webmanifest', ClockPointHomescreenManifestController::class)
+    ->where('token', '[a-z0-9]{20,64}')
+    ->name('public.time-portal.manifest');
 Route::get('/time/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.time-portal');

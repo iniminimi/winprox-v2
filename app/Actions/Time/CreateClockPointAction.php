@@ -30,6 +30,7 @@ class CreateClockPointAction
             'qr_token' => Str::lower(Str::random(40)),
             'qr_renewed_at' => now(),
             'is_active' => (bool) ($data['is_active'] ?? true),
+            'homescreen_shortcut' => (bool) ($data['homescreen_shortcut'] ?? false),
             'sort_order' => (int) ($data['sort_order'] ?? 0),
         ]);
 

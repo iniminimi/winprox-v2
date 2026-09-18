@@ -1009,6 +1009,10 @@
                     "text": "Scannen Sie den Clock-Point-QR und wählen Sie Vor- und Nachname sowie Ihr persönliches Symbol (optional PIN) auf Ihrem eigenen Handy. Das sagt, wer Sie sind — das ist noch kein Einstempeln. Keine Schaltfläche für einen anderen Mitarbeiter: das Handy bleibt Ihres, bis Verwaltung oder Teamleiter es freigeben. Nach der Anmeldung verschwindet die Überschrift Anmeldung. Zwei falsche Versuche sperren Ihr Konto vorübergehend; ein Teamleiter oder Administrator kann das freigeben."
                 },
                 {
+                    "label": "Verknüpfung auf dem Startbildschirm",
+                    "text": "Nur wenn die Verwaltung dies am Clock Point eingeschaltet hat: rechts neben Anmelden steht ein WinProx-Symbol. Tippen, um den Link auf den Startbildschirm zu legen (Android: Fenster oder Chrome-Menü; iPhone: Teilen → Zum Home-Bildschirm). Danach öffnen Sie WinProx ohne QR. Nicht für Bildschirme mit wechselnden QR-Codes."
+                },
+                {
                     "label": "Abmelden",
                     "text": "Nach der Anmeldung können Sie Abmelden: das Portal fragt danach erneut nach Ihrem Symbol (oder PIN). Das ist kein Ausstempeln und trennt das Handy nicht; nur Verwaltung oder Teamleiter geben das Gerät frei. Ausstempeln bleibt unter Anwesenheit."
                 },
@@ -1372,6 +1376,10 @@
                 {
                     "label": "Aktiv / inaktiv",
                     "text": "Deaktivieren Sie einen Clock Point vorübergehend (z. B. bei Arbeiten vor Ort). Das Portal zeigt dann an, dass Einstempeln nicht verfügbar ist."
+                },
+                {
+                    "label": "Clock-Point-Link auf dem Startbildschirm",
+                    "text": "Häkchen pro Clock Point (standardmäßig aus). An = neben Anmelden erscheint ein WinProx-Symbol, um den Link auf den Handy-Startbildschirm zu legen. Nur für Ausführende, die keinen QR scannen können (zu Hause oder unterwegs). Bei TFT-Bildschirmen mit wechselnden QR-Codes ausgeschaltet lassen. Kein App Store, keine extra Offline-App."
                 }
             ]
         },

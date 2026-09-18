@@ -25,6 +25,7 @@ class UpdateClockPointRequest extends FormRequest
             'name' => ['required', 'string', 'max:120'],
             'location_id' => ['nullable', 'integer', 'exists:locations,id'],
             'sort_order' => ['nullable', 'integer', 'min:0', 'max:9999'],
+            'homescreen_shortcut' => ['nullable', 'boolean'],
         ];
     }
 }

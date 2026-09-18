@@ -1009,6 +1009,10 @@
                     "text": "Escanee el QR Clock Point y elija su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Eso indica quién es — aún no es fichar. No hay botón para otro ejecutor: el móvil sigue siendo suyo hasta que un admin o un jefe de equipo lo libere. Tras identificarse desaparece el título Inicio de sesión. Dos intentos incorrectos bloquean temporalmente su cuenta; un jefe de equipo o administrador puede desbloquearla."
                 },
                 {
+                    "label": "Acceso directo en la pantalla de inicio",
+                    "text": "Solo si administración lo activó en este Clock Point: a la derecha de Inicio de sesión hay un icono WinProx. Tócalo para poner el enlace en la pantalla de inicio (Android: ventana o menú de Chrome; iPhone: Compartir → Añadir a pantalla de inicio). Después abres WinProx sin QR. No es para pantallas con QR rotativos."
+                },
+                {
                     "label": "Cerrar sesión",
                     "text": "Tras identificarte puedes Cerrar sesión: el portal vuelve a pedir tu icono (o PIN). No es una salida y no desvincula el móvil; solo un admin o un jefe de equipo libera el dispositivo. La salida sigue en Presencia."
                 },
@@ -1372,6 +1376,10 @@
                 {
                     "label": "Activo / inactivo",
                     "text": "Desactive temporalmente un clock point (p. ej. por trabajos en el lugar). El portal indica entonces que el fichaje no está disponible."
+                },
+                {
+                    "label": "Enlace Clock Point en la pantalla de inicio",
+                    "text": "Casilla por Clock Point (desactivada por defecto). Activada = junto a Inicio de sesión aparece un icono WinProx para poner el enlace en la pantalla de inicio del móvil. Solo para operarios que no pueden escanear un QR (casa o de camino). Déjelo desactivado en pantallas TFT con QR rotativos. Sin App Store ni app extra sin conexión."
                 }
             ]
         },

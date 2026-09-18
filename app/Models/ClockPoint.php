@@ -21,11 +21,13 @@ class ClockPoint extends Model
         'qr_renewed_at',
         'qr_renewal_recommended_at',
         'is_active',
+        'homescreen_shortcut',
         'sort_order',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'homescreen_shortcut' => 'boolean',
         'qr_renewed_at' => 'datetime',
         'qr_renewal_recommended_at' => 'datetime',
     ];

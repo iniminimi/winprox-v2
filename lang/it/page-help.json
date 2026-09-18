@@ -1009,6 +1009,10 @@
                     "text": "Scansiona il QR Clock Point e scegli nome, cognome e icona personale (PIN opzionale) sul tuo telefono. Questo dice chi sei — non è ancora timbrare. Nessun pulsante per un altro esecutore: il telefono resta tuo finché un admin o un caposquadra lo sblocca. Dopo l’accesso scompare il titolo Accesso. Due tentativi errati bloccano temporaneamente l'account; un caposquadra o un amministratore può sbloccarlo."
                 },
                 {
+                    "label": "Collegamento sulla schermata iniziale",
+                    "text": "Solo se l’amministrazione l’ha attivato su questo Clock Point: a destra di Accesso c’è un’icona WinProx. Tocca per mettere il link sulla schermata iniziale (Android: finestra o menu Chrome; iPhone: Condividi → Aggiungi a Home). Poi apri WinProx senza QR. Non per schermi con QR rotanti."
+                },
+                {
                     "label": "Esci",
                     "text": "Dopo l’accesso puoi Esci: il portale chiede di nuovo l’icona (o il PIN). Non è un’uscita e non scollega il telefono; solo un admin o un caposquadra sblocca il dispositivo. L’uscita resta in Presenza."
                 },
@@ -1372,6 +1376,10 @@
                 {
                     "label": "Attivo / inattivo",
                     "text": "Disattivi temporaneamente un clock point (es. per lavori sul posto). Il portale indica che la timbratura non è disponibile."
+                },
+                {
+                    "label": "Collegamento Clock Point sulla schermata iniziale",
+                    "text": "Spunta per Clock Point (disattivata di default). Attiva = accanto ad Accesso compare un’icona WinProx per mettere il link sulla schermata iniziale. Solo per chi non può scansionare un QR (casa o in viaggio). Lasciare disattivato sugli schermi TFT con QR rotanti. Nessun App Store, nessuna app extra offline."
                 }
             ]
         },

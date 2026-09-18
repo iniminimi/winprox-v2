@@ -6613,4 +6613,28 @@ a.wp-kpi.wp-kpi--attention {
     }
 }
 
+.wp-homescreen-shortcut {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    border-radius: var(--wp-radius-sm);
+}
+
+.wp-homescreen-shortcut img {
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.55rem;
+}
+
+@media (display-mode: standalone) {
+    .wp-homescreen-shortcut-wrap {
+        display: none;
+    }
+}
+
 

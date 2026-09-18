@@ -233,7 +233,9 @@
             "name": "Name",
             "location": "Standort",
             "no_location": "Kein Standort verknüpft",
-            "sort_order": "Sortierreihenfolge"
+            "sort_order": "Sortierreihenfolge",
+            "homescreen_shortcut": "Clock-Point-Link auf dem Handy-Startbildschirm",
+            "homescreen_shortcut_hint": "Nur für Ausführende, die keinen QR scannen können (Start zu Hause oder unterwegs). Bei TFT-Bildschirmen mit wechselnden QR-Codes ausgeschaltet lassen."
         },
         "qr": {
             "subtitle": "Scannen zum Ein- oder Ausstempeln",
@@ -330,6 +332,13 @@
             "navigate": "Navigieren",
             "start_work": "Arbeit starten",
             "do_check": "Unit-Check"
+        },
+        "homescreen": {
+            "title": "Verknüpfung auf dem Startbildschirm anlegen",
+            "help_title": "Clock Point auf dem Startbildschirm",
+            "help_intro": "Öffnen Sie WinProx beim nächsten Mal ohne QR-Scan. Nur wenn Sie zu Hause oder unterwegs starten.",
+            "help_android": "Android (Chrome): auf das WinProx-Symbol tippen. Kein Fenster? Menü (drei Punkte) → Zum Startbildschirm hinzufügen.",
+            "help_ios": "iPhone (Safari): Teilen → Zum Home-Bildschirm."
         }
     },
     "ciao": {

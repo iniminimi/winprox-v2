@@ -233,7 +233,9 @@
             "name": "Name",
             "location": "Location",
             "no_location": "No location linked",
-            "sort_order": "Sort order"
+            "sort_order": "Sort order",
+            "homescreen_shortcut": "Clock Point link on phone home screen",
+            "homescreen_shortcut_hint": "Only for workers who cannot scan a QR (start at home or on the road). Leave this off on TFT screens with rotating QR codes."
         },
         "qr": {
             "subtitle": "Scan to clock in or out",
@@ -330,6 +332,13 @@
             "navigate": "Navigate",
             "start_work": "Start work",
             "do_check": "Unit check"
+        },
+        "homescreen": {
+            "title": "Add a shortcut to your home screen",
+            "help_title": "Clock Point on your home screen",
+            "help_intro": "Open WinProx next time without scanning a QR. Only for when you start at home or on the road.",
+            "help_android": "Android (Chrome): tap the WinProx icon. No prompt? Menu (three dots) → Add to Home screen.",
+            "help_ios": "iPhone (Safari): Share → Add to Home Screen."
         }
     },
     "ciao": {

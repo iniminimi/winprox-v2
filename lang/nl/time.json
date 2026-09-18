@@ -233,7 +233,9 @@
             "name": "Naam",
             "location": "Locatie",
             "no_location": "Geen locatie gekoppeld",
-            "sort_order": "Sorteervolgorde"
+            "sort_order": "Sorteervolgorde",
+            "homescreen_shortcut": "Clock Point-link op startscherm gsm",
+            "homescreen_shortcut_hint": "Alleen voor uitvoerders die geen QR kunnen scannen (thuis of onderweg starten). Laat dit uit op TFT-schermen met wisselende QR-codes."
         },
         "qr": {
             "subtitle": "Scan om in of uit te klokken",
@@ -330,6 +332,13 @@
             "navigate": "Navigeer",
             "start_work": "Start werk",
             "do_check": "Unit check"
+        },
+        "homescreen": {
+            "title": "Maak een snelkoppeling op je startscherm",
+            "help_title": "Clock Point op je startscherm",
+            "help_intro": "Zo open je WinProx de volgende keer zonder QR te scannen. Alleen bedoeld als je thuis of onderweg start.",
+            "help_android": "Android (Chrome): tik het WinProx-icoon. Geen venster? Menu (drie puntjes) → Toevoegen aan startscherm.",
+            "help_ios": "iPhone (Safari): Deel → Zet op beginscherm."
         }
     },
     "ciao": {

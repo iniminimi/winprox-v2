@@ -34,6 +34,7 @@ class ClockPointsIndex extends Component
     public string $name = '';
     public ?int $locationId = null;
     public int $sortOrder = 0;
+    public bool $homescreenShortcut = false;
     public ?int $qrRotationMonths = null;
     public ?int $renewQrClockPointId = null;
 
@@ -70,6 +71,7 @@ class ClockPointsIndex extends Component
         $this->name = $clockPoint->name;
         $this->locationId = $clockPoint->location_id;
         $this->sortOrder = (int) $clockPoint->sort_order;
+        $this->homescreenShortcut = (bool) $clockPoint->homescreen_shortcut;
         $this->showModal = true;
     }
 
@@ -84,16 +86,19 @@ class ClockPointsIndex extends Component
             'name' => $rules['name'],
             'locationId' => $rules['location_id'],
             'sortOrder' => $rules['sort_order'] ?? ['nullable', 'integer', 'min:0', 'max:9999'],
+            'homescreenShortcut' => $rules['homescreen_shortcut'] ?? ['boolean'],
         ], [], [
             'name' => __('time.clock_points.fields.name'),
             'locationId' => __('time.clock_points.fields.location'),
             'sortOrder' => __('time.clock_points.fields.sort_order'),
+            'homescreenShortcut' => __('time.clock_points.fields.homescreen_shortcut'),
         ]);
 
         $payload = [
             'name' => $validated['name'],
             'location_id' => $validated['locationId'] ?: null,
             'sort_order' => (int) ($validated['sortOrder'] ?? 0),
+            'homescreen_shortcut' => (bool) ($validated['homescreenShortcut'] ?? false),
         ];
 
         if ($this->editingClockPointId) {
@@ -206,6 +211,7 @@ class ClockPointsIndex extends Component
         $this->name = '';
         $this->locationId = null;
         $this->sortOrder = 0;
+        $this->homescreenShortcut = false;
         $this->resetErrorBag();
     }
 }

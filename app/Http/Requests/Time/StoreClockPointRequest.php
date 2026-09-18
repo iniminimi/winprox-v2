@@ -26,6 +26,7 @@ class StoreClockPointRequest extends FormRequest
             'location_id' => ['nullable', 'integer', 'exists:locations,id'],
             'sort_order' => ['nullable', 'integer', 'min:0', 'max:9999'],
             'is_active' => ['nullable', 'boolean'],
+            'homescreen_shortcut' => ['nullable', 'boolean'],
         ];
     }
 }
