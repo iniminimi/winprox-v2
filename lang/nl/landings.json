@@ -695,7 +695,7 @@
         },
         "sites": {
             "title": "Zelfde app, twee typische ploegen",
-            "lead": "WinProx is geen aparte schoonmaak- of bouwapp. Het is Facility + optionele Time-laag, met dezelfde meldingen, taken en Clock Point.",
+            "lead": "WinProx is geen aparte schoonmaak- of bouwapp. Het is Facility + Time (prikklok inbegrepen), met dezelfde meldingen, taken en Clock Point.",
             "items": [
                 {
                     "title": "Schoonmaak",
@@ -710,7 +710,7 @@
         "why": {
             "title": "Waarom WinProx",
             "items": [
-                "Eén facility-app: melding → taken → afhandeling, plus optionele Time.",
+                "Eén facility-app: melding → taken → afhandeling, plus Time (prikklok inbegrepen).",
                 "Geen app voor uitvoerders: smartphone en QR volstaan.",
                 "GPS-werkbezoek bewijst werk op de klantlocatie; inklokken alleen opent de dienst.",
                 "Uurrooster is planning; CIAO blijft echte IN/OUT op Clock Point of bezoek.",

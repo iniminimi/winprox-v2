@@ -2,7 +2,7 @@
 
 ## Overview
 
-Time endpoints clock workers in and out and manage the optional punch-clock module. Clock Point QR binds **one phone per worker**. API clock-in uses source `api` and **does not** bind a phone.
+Time endpoints clock workers in and out and manage the punch-clock module (included in every WinProx plan). Clock Point QR binds **one phone per worker**. API clock-in uses source `api` and **does not** bind a phone.
 
 ## Endpoints
 

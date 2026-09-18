@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Primeros pasos",
         "title": "En funcionamiento en 5 pasos",
-        "intro": "Siga este orden en la primera configuración, o cargue una plantilla inicial en el panel (elección del menú de trabajo visible en la vista previa y en Plantilla inicial creada; cámbiela después en Organización → Ajustes → Ajustes del menú Trabajo). Un equipo basta para empezar. Time (fichaje) es opcional; Clock Point sigue siendo el QR de registro."
+        "intro": "Siga este orden en la primera configuración, o cargue una plantilla inicial en el panel (elección del menú de trabajo visible en la vista previa y en Plantilla inicial creada; cámbiela después en Organización → Ajustes → Ajustes del menú Trabajo). Un equipo basta para empezar. Time (fichaje) está incluido; Clock Point sigue siendo el QR de registro."
     },
     "chapter": "Capítulo",
     "toc": {
@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Personas a través de la configuración",
-            "intro": "Capítulos del portal de administración con sesión iniciada: Personas (Backoffice para usuarios colegas, Teams para listas de comprobación y operarios, Ejecutores para buscar/filtrar), ubicaciones, avisos, tareas, calendario, reservas, panel, Time (reloj de fichar) opcional, módulo ESG opcional, IoT Connect, ajustes y suscripción (incluida la eliminación de datos)."
+            "intro": "Capítulos del portal de administración con sesión iniciada: Personas (Backoffice para usuarios colegas, Teams para listas de comprobación y operarios, Ejecutores para buscar/filtrar), ubicaciones, avisos, tareas, calendario, reservas, panel, Time (reloj de fichar, incluido), módulo ESG opcional, IoT Connect, ajustes y suscripción (incluida la eliminación de datos)."
         },
         "internet_portal": {
             "title": "Códigos QR en el lugar",
@@ -65,7 +65,7 @@
         "title": "Manuales",
         "subtitle": "Elija el manual que se ajuste a su rol",
         "general": "Manual general",
-        "general_desc": "Aplicación WinProx completa para administradores y personal, con reservas, módulos ESG/Time/IoT opcionales, suscripción y ayuda del portal QR — imprimir o guardar como PDF.",
+        "general_desc": "Aplicación WinProx completa para administradores y personal, con reservas, Time (incluido) y módulos ESG/IoT opcionales, suscripción y ayuda del portal QR — imprimir o guardar como PDF.",
         "workers": "Manual de trabajadores",
         "workers_desc": "QR Clock Point y QR de unit en planta — acceso, comprobación de unit, tareas y fotos. Incluye trabajo sin cobertura.",
         "teamleaders": "Manual de jefe de equipo",

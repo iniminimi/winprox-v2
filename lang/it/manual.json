@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Per iniziare",
         "title": "Operativo in 5 passi",
-        "intro": "Segui questo ordine per la prima configurazione, o carica un modello iniziale nella dashboard (scelta menu Lavoro visibile in anteprima e su Modello iniziale creato; modifica poi in Organizzazione → Impostazioni → Impostazioni menu Lavoro). Un team basta per iniziare. Time (timbratura) è opzionale; Clock Point resta il QR di accesso."
+        "intro": "Segui questo ordine per la prima configurazione, o carica un modello iniziale nella dashboard (scelta menu Lavoro visibile in anteprima e su Modello iniziale creato; modifica poi in Organizzazione → Impostazioni → Impostazioni menu Lavoro). Un team basta per iniziare. Time (timbratura) è incluso; Clock Point resta il QR di accesso."
     },
     "chapter": "Capitolo",
     "toc": {
@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Persone tramite impostazioni",
-            "intro": "Capitoli sul portale di amministrazione autenticato: Persone (Backoffice per gli utenti colleghi, Teams per checklist ed esecutori), sedi, segnalazioni, attività, calendario, prenotazioni, dashboard, Time (timbratrice) opzionale, modulo ESG opzionale, IoT Connect, impostazioni e abbonamento (inclusa eliminazione dati)."
+            "intro": "Capitoli sul portale di amministrazione autenticato: Persone (Backoffice per gli utenti colleghi, Teams per checklist ed esecutori), sedi, segnalazioni, attività, calendario, prenotazioni, dashboard, Time (timbratrice) inclusa, modulo ESG opzionale, IoT Connect, impostazioni e abbonamento (inclusa eliminazione dati)."
         },
         "internet_portal": {
             "title": "Codici QR sul campo",
@@ -65,7 +65,7 @@
         "title": "Manuali",
         "subtitle": "Scelga il manuale adatto al Suo ruolo",
         "general": "Manuale generale",
-        "general_desc": "App WinProx completa per amministratori e personale, con prenotazioni, moduli ESG/Time/IoT opzionali, abbonamento e aiuto sul portale QR — stampi o salvi come PDF.",
+        "general_desc": "App WinProx completa per amministratori e personale, con prenotazioni, Time (incluso) e moduli ESG/IoT opzionali, abbonamento e aiuto sul portale QR — stampi o salvi come PDF.",
         "workers": "Manuale lavoratori",
         "workers_desc": "QR Clock Point e QR unit sul campo — accesso, controllo unità, task e foto. Include il lavoro senza rete.",
         "teamleaders": "Manuale caposquadra",

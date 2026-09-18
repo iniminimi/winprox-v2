@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Getting started",
         "title": "Up and running in 5 steps",
-        "intro": "Follow this order for first-time setup, or load a starter template on the dashboard (work menu choice visible in the preview and on Starter template created; change later via Organisation → Settings → Work menu settings). One team is enough to get started. Time (punch clock) is optional; Clock Point remains the sign-in QR."
+        "intro": "Follow this order for first-time setup, or load a starter template on the dashboard (work menu choice visible in the preview and on Starter template created; change later via Organisation → Settings → Work menu settings). One team is enough to get started. Time (punch clock) is included; Clock Point remains the sign-in QR."
     },
     "chapter": "Chapter",
     "toc": {
@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "People through settings",
-            "intro": "Chapters on the signed-in admin portal: People (Backoffice for colleague users, Teams for checklists and workers, Workers for search/filter), locations, issues, tasks, calendar, reservations, dashboard, optional Time punch clock, unit measurements, optional ESG module, IoT Connect, settings and subscription (including data deletion)."
+            "intro": "Chapters on the signed-in admin portal: People (Backoffice for colleague users, Teams for checklists and workers, Workers for search/filter), locations, issues, tasks, calendar, reservations, dashboard, Time punch clock (included), unit measurements, optional ESG module, IoT Connect, settings and subscription (including data deletion)."
         },
         "internet_portal": {
             "title": "QR codes on site",
@@ -65,7 +65,7 @@
         "title": "Manuals",
         "subtitle": "Choose the manual that fits your role",
         "general": "General manual",
-        "general_desc": "Full WinProx app for administrators and staff, including reservations, optional ESG/Time/IoT modules, subscription and QR portal help — print or save as PDF.",
+        "general_desc": "Full WinProx app for administrators and staff, including reservations, Time (included) and optional ESG/IoT modules, subscription and QR portal help — print or save as PDF.",
         "workers": "Workers manual",
         "workers_desc": "Clock Point QR and unit QR on the shop floor — sign-in, unit check, tasks, photos and work without coverage.",
         "teamleaders": "Team leader manual",

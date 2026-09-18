@@ -695,7 +695,7 @@
         },
         "sites": {
             "title": "Même app, deux équipes types",
-            "lead": "WinProx n’est pas une app nettoyage ou construction séparée. C’est Facility plus une couche Time optionnelle, avec les mêmes signalements, tâches et Clock Point.",
+            "lead": "WinProx n’est pas une app nettoyage ou construction séparée. C’est Facility plus Time (pointeuse incluse), avec les mêmes signalements, tâches et Clock Point.",
             "items": [
                 {
                     "title": "Nettoyage",
@@ -710,7 +710,7 @@
         "why": {
             "title": "Pourquoi WinProx",
             "items": [
-                "Une app facility : signalement → tâches → clôture, plus Time optionnel.",
+                "Une app facility : signalement → tâches → clôture, plus Time (pointeuse incluse).",
                 "Pas d’app pour les exécutants : smartphone et QR suffisent.",
                 "La visite GPS prouve le travail chez le client ; le pointage ouvre seulement le service.",
                 "Le planning n’est pas la présence ; le CIAO reste les IN/OUT réels au Clock Point ou à la visite.",

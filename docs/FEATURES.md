@@ -57,7 +57,7 @@ linkt naar zijn lijst):
 - Units — totaal → unit-lijst
 - Nieuwe meldingen — aantal nieuw/open → meldingen (status=nieuw). **Alert-accent** als > 0.
 - Open taken — "In uitvoering" → taken (open/in uitvoering).
-- Nu aanwezig — open shifts zonder pauze → Time-aanwezigheid (Time-module; inbegrepen in proef, optioneel bij WinProx).
+- Nu aanwezig — open shifts zonder pauze → Time-aanwezigheid (Time-module; inbegrepen in elke WinProx-formule).
 - **Conditioneel** (alleen tonen als telling **> 0** — geen vaste nullen / geen lege grid-gaten):
   - Te beoordelen — QR-wachtlijst → meldingen
   - Time-aandacht — open shifts met uitzondering, of evacuatielijst-raadpleging vandaag → Time-alarmen

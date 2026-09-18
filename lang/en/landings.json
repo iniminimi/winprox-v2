@@ -695,7 +695,7 @@
         },
         "sites": {
             "title": "Same app, two typical crews",
-            "lead": "WinProx is not a separate cleaning or construction app. It is Facility plus an optional Time layer, with the same issues, tasks and Clock Point.",
+            "lead": "WinProx is not a separate cleaning or construction app. It is Facility plus Time (punch clock included), with the same issues, tasks and Clock Point.",
             "items": [
                 {
                     "title": "Cleaning",
@@ -710,7 +710,7 @@
         "why": {
             "title": "Why WinProx",
             "items": [
-                "One facility app: issue → tasks → completion, plus optional Time.",
+                "One facility app: issue → tasks → completion, plus Time (punch clock included).",
                 "No app for workers: a smartphone and QR are enough.",
                 "A GPS work visit proves work at the customer location; clock-in only opens the shift.",
                 "The roster is planning; CIAO stays real IN/OUT at Clock Point or the visit.",

@@ -163,7 +163,8 @@
                     "Production on **Linux** (EU), at **Cloud86**.",
                     "Access via **HTTPS** (encrypted connection, TLS).",
                     "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite frontend.",
-                    "Email via SMTP in the EU; billing by yearly invoice (no online checkout)."
+                    "Email via SMTP in the EU; billing by yearly invoice (no online checkout).",
+                    "Pricing: from **€7 / seat / month** (10 seats + 10 units), **€6** (25), **€5** (50). Billed yearly by invoice. Corporate is custom."
                 ]
             },
             {

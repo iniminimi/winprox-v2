@@ -695,7 +695,7 @@
         },
         "sites": {
             "title": "Dieselbe App, zwei typische Trupps",
-            "lead": "WinProx ist keine separate Reinigungs- oder Bau-App. Es ist Facility plus optionale Time-Schicht, mit denselben Meldungen, Aufgaben und Clock Point.",
+            "lead": "WinProx ist keine separate Reinigungs- oder Bau-App. Es ist Facility plus Time (Stechuhr enthalten), mit denselben Meldungen, Aufgaben und Clock Point.",
             "items": [
                 {
                     "title": "Reinigung",
@@ -710,7 +710,7 @@
         "why": {
             "title": "Warum WinProx",
             "items": [
-                "Eine Facility-App: Meldung → Aufgaben → Abschluss, plus optionales Time.",
+                "Eine Facility-App: Meldung → Aufgaben → Abschluss, plus Time (Stechuhr enthalten).",
                 "Keine App für Ausführende: Smartphone und QR reichen.",
                 "Der GPS-Arbeitsbesuch belegt Arbeit am Kundenort; Einstempeln öffnet nur die Schicht.",
                 "Der Dienstplan ist Planung; CIAO bleibt echtes IN/OUT am Clock Point oder Besuch.",

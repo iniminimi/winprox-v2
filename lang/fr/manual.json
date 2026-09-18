@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Commencer",
         "title": "Opérationnel en 5 étapes",
-        "intro": "Suivez cet ordre pour la première configuration, ou chargez un modèle de départ sur le tableau de bord (choix du menu Travail visible dans l'aperçu et sur Modèle de départ créé ; modifiez ensuite via Organisation → Paramètres → Paramètres du menu Travail). Une équipe suffit pour démarrer. Time (pointeuse) est optionnel ; Clock Point reste le QR d'inscription."
+        "intro": "Suivez cet ordre pour la première configuration, ou chargez un modèle de départ sur le tableau de bord (choix du menu Travail visible dans l'aperçu et sur Modèle de départ créé ; modifiez ensuite via Organisation → Paramètres → Paramètres du menu Travail). Une équipe suffit pour démarrer. Time (pointeuse) est inclus ; Clock Point reste le QR d'inscription."
     },
     "chapter": "Chapitre",
     "toc": {
@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Personnes jusqu'aux paramètres",
-            "intro": "Chapitres sur le portail d’administration connecté : Personnes (Backoffice pour les utilisateurs collègues, Équipes pour les listes de contrôle et les exécutants, Exécutants pour rechercher/filtrer), sites, signalements, tâches, calendrier, réservations, tableau de bord, Time (pointeuse) optionnel, module ESG optionnel, IoT Connect, paramètres et abonnement (y compris suppression des données)."
+            "intro": "Chapitres sur le portail d’administration connecté : Personnes (Backoffice pour les utilisateurs collègues, Équipes pour les listes de contrôle et les exécutants, Exécutants pour rechercher/filtrer), sites, signalements, tâches, calendrier, réservations, tableau de bord, Time (pointeuse) inclus, module ESG optionnel, IoT Connect, paramètres et abonnement (y compris suppression des données)."
         },
         "internet_portal": {
             "title": "QR codes sur le terrain",
@@ -65,7 +65,7 @@
         "title": "Manuels",
         "subtitle": "Choisissez le manuel adapté à votre rôle",
         "general": "Manuel général",
-        "general_desc": "Application WinProx complète pour administrateurs et collaborateurs, avec réservations, modules ESG/Time/IoT en option, abonnement et aide des portails QR — imprimer ou enregistrer en PDF.",
+        "general_desc": "Application WinProx complète pour administrateurs et collaborateurs, avec réservations, Time (inclus) et modules ESG/IoT en option, abonnement et aide des portails QR — imprimer ou enregistrer en PDF.",
         "workers": "Manuel exécutants",
         "workers_desc": "QR Clock Point et QR unité sur le terrain — connexion, contrôle d'unité, tâches, photos et travail hors réseau.",
         "teamleaders": "Manuel chefs d'équipe",

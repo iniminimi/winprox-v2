@@ -2,11 +2,11 @@
     "meta_title": "Acerca de WinProx | Facility por QR",
     "social": {
         "og_title": "Acerca de WinProx | Facility por QR",
-        "og_description": "WinProx es una plataforma facility por QR: incidencias, tareas, reloj Time opcional con visitas GPS, ESG e IoT Connect. También para equipos de limpieza y construcción in situ — en el navegador, sin app."
+        "og_description": "WinProx es una plataforma facility por QR: incidencias, tareas, reloj Time (incluido) con visitas GPS, ESG e IoT Connect. También para equipos de limpieza y construcción in situ — en el navegador, sin app."
     },
     "eyebrow": "Acerca de WinProx",
     "title": "¿Qué es WinProx?",
-    "lead": "WinProx es una plataforma facility por QR para incidencias y tareas. También para equipos de limpieza y construcción que trabajan en el cliente o en la obra. Time (reloj, visitas GPS, CIAO opcional), ESG e IoT Connect son opcionales — en el navegador, sin app nativa.",
+    "lead": "WinProx es una plataforma facility por QR para incidencias y tareas. También para equipos de limpieza y construcción que trabajan en el cliente o en la obra. Time (reloj, visitas GPS, CIAO opcional) está incluido; ESG e IoT Connect son opcionales (Corporate) — en el navegador, sin app nativa.",
     "what": {
         "title": "Idea central",
         "body": "Cada sede o unidad física tiene un portal QR digital. Ciudadanos y personal comunican defectos con el QR de unidad. Los ejecutores se identifican con el QR Clock Point, inician y detienen el trabajo en el pin de la unidad (visitas GPS) y cierran tareas in situ. La gestión sigue todo en un workspace: incidencia → tareas → cierre. Una sola app Facility — no hay edición aparte de limpieza o construcción."

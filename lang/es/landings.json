@@ -695,7 +695,7 @@
         },
         "sites": {
             "title": "Misma app, dos cuadrillas típicas",
-            "lead": "WinProx no es una app aparte de limpieza o construcción. Es Facility más una capa Time opcional, con los mismos avisos, tareas y Clock Point.",
+            "lead": "WinProx no es una app aparte de limpieza o construcción. Es Facility más Time (reloj de fichar incluido), con los mismos avisos, tareas y Clock Point.",
             "items": [
                 {
                     "title": "Limpieza",
@@ -710,7 +710,7 @@
         "why": {
             "title": "Por qué WinProx",
             "items": [
-                "Una app facility: aviso → tareas → cierre, más Time opcional.",
+                "Una app facility: aviso → tareas → cierre, más Time (reloj de fichar incluido).",
                 "Sin app para ejecutantes: bastan el smartphone y el QR.",
                 "La visita GPS demuestra el trabajo en el cliente; fichar solo abre el turno.",
                 "El cuadrante es planificación; CIAO sigue siendo IN/OUT real en Clock Point o la visita.",

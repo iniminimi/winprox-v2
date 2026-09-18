@@ -695,7 +695,7 @@
         },
         "sites": {
             "title": "Stessa app, due squadre tipiche",
-            "lead": "WinProx non è un’app pulizie o edilizia separata. È Facility più uno strato Time opzionale, con le stesse segnalazioni, compiti e Clock Point.",
+            "lead": "WinProx non è un’app pulizie o edilizia separata. È Facility più Time (timbratrice inclusa), con le stesse segnalazioni, compiti e Clock Point.",
             "items": [
                 {
                     "title": "Pulizie",
@@ -710,7 +710,7 @@
         "why": {
             "title": "Perché WinProx",
             "items": [
-                "Un’app facility: segnalazione → compiti → chiusura, più Time opzionale.",
+                "Un’app facility: segnalazione → compiti → chiusura, più Time (timbratrice inclusa).",
                 "Niente app per gli esecutori: bastano smartphone e QR.",
                 "La visita GPS prova il lavoro dal cliente; la timbratura apre solo il turno.",
                 "Il turno è pianificazione; il CIAO resta IN/OUT reali al Clock Point o alla visita.",
