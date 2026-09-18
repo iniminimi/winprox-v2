@@ -5729,6 +5729,17 @@ a.wp-kpi.wp-kpi--attention {
     font-size: 0.875rem;
 }
 
+.wp-round-stops__item--route {
+    align-items: center;
+}
+
+.wp-round-stops__move {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.15rem;
+}
+
 .wp-round-stops__meta {
     margin: 0;
     font-size: 0.75rem;

@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use App\Actions\Issues\CreateInspectionRoundAction;
+use App\Actions\Issues\MergeInspectionRoundStopSelectionAction;
+use App\Actions\Issues\MoveInspectionRoundStopAction;
 use App\Actions\Issues\SyncIssueRoundStopsAction;
 use App\Actions\Portal\FindNewTeamTasksSinceBaselineAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
@@ -851,7 +853,56 @@ it('plans an inspection round via the issues index modal', function () {
     expect($issue)->not->toBeNull()
         ->and($issue->isInspectionRound())->toBeTrue()
         ->and($issue->recurrence_active)->toBeTrue()
-        ->and($issue->tasks)->toHaveCount(1);
+        ->and($issue->tasks)->toHaveCount(1)
+        ->and($issue->roundStops()->orderBy('sort_order')->pluck('unit_id')->map(fn ($id) => (int) $id)->all())
+        ->toBe([(int) $unitA->id, (int) $unitB->id]);
+});
+
+it('voegt nieuwe stops achteraan toe en behoudt de bestaande volgorde', function () {
+    expect(app(MergeInspectionRoundStopSelectionAction::class)->handle([3, 1], [1, 2, 3]))->toBe([3, 1, 2]);
+});
+
+it('wisselt twee opeenvolgende stops in de loopvolgorde', function () {
+    $move = app(MoveInspectionRoundStopAction::class);
+
+    expect($move->handle([10, 20, 30], 2, -1))->toBe([10, 30, 20])
+        ->and($move->handle([10, 20], 0, -1))->toBe([10, 20]);
+});
+
+it('zet de eerst aangevinkte unit als eerste stop en laat omhoog/omlaag toe', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'unitA' => $unitA, 'unitB' => $unitB, 'unitC' => $unitC] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    $component = Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->call('openRoundCreateModal')
+        ->call('toggleRoundStop', (int) $unitB->id)
+        ->call('toggleRoundStop', (int) $unitA->id)
+        ->assertSet('round_stop_unit_ids', [(int) $unitB->id, (int) $unitA->id])
+        ->call('moveRoundStop', 1, -1)
+        ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id])
+        ->call('toggleAllRoundStops');
+
+    $ids = $component->get('round_stop_unit_ids');
+    expect($ids[0])->toBe((int) $unitA->id)
+        ->and($ids[1])->toBe((int) $unitB->id)
+        ->and($ids)->toHaveCount(3)
+        ->and($ids)->toContain((int) $unitC->id);
+});
+
+it('slaat een omgekeerde stopvolgorde op via de meldingsdetail', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'issue' => $issue, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Show::class, ['issue' => $issue])
+        ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id])
+        ->call('moveRoundStop', 1, -1)
+        ->call('saveRoundStops')
+        ->assertHasNoErrors();
+
+    expect($issue->fresh()->roundStops()->orderBy('sort_order')->pluck('unit_id')->map(fn ($id) => (int) $id)->all())
+        ->toBe([(int) $unitB->id, (int) $unitA->id]);
 });
 
 it('rejects a single stop on the inspection round create modal', function () {

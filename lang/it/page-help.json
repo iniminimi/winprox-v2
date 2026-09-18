@@ -71,7 +71,7 @@
                 {
                     "label": "Fermate",
                     "nested": true,
-                    "text": "Scegli almeno 2 unità in ordine (qualsiasi sede). L’ordine dell’elenco è l’ordine delle fermate. Nell’elenco compaiono solo le unità con controlli unità."
+                    "text": "Scegli almeno 2 unità (qualsiasi sede). Spuntare seleziona; l’elenco numerato con frecce definisce quale sede o unità viene prima. Nell’elenco compaiono solo le unità con controlli unità."
                 },
                 {
                     "label": "Nota attività",
@@ -136,7 +136,7 @@
                 {
                     "label": "Fermate",
                     "nested": true,
-                    "text": "Scegli almeno 2 unità in ordine (qualsiasi sede). L’ordine dell’elenco è l’ordine delle fermate. Compaiono solo unità con unit check."
+                    "text": "Scegli almeno 2 unità (qualsiasi sede). Spuntare seleziona; l’elenco numerato con frecce definisce quale sede o unità viene prima. Compaiono solo unità con unit check."
                 },
                 {
                     "label": "Nota compito",
@@ -217,7 +217,7 @@
                 },
                 {
                     "label": "Fermate del giro",
-                    "text": "Scegli almeno 2 unità come fermate (qualsiasi sede; raggruppate per sede). Nell’elenco compaiono solo le unità con controlli unità. L’ordine dell’elenco è l’ordine del giro."
+                    "text": "Scegli almeno 2 unità come fermate (qualsiasi sede; raggruppate per sede). Nell’elenco compaiono solo le unità con controlli unità. L’elenco numerato con frecce è l’ordine del giro (1 = prima fermata)."
                 },
                 {
                     "label": "Seleziona tutte le unità",

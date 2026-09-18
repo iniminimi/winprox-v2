@@ -13,6 +13,7 @@ use App\Enums\UnitTranslationStatus;
 use App\Http\Requests\Issues\AssignIssueTeamTaskRequest;
 use App\Http\Requests\Issues\CreateInspectionRoundRequest;
 use App\Http\Requests\Issues\StoreManagerIssueStepOneRequest;
+use App\Livewire\Concerns\ManagesInspectionRoundStopOrder;
 use App\Models\EsgIndicator;
 use App\Models\InternalTeam;
 use App\Models\Issue;
@@ -34,6 +35,7 @@ use Livewire\WithFileUploads;
 class Index extends Component
 {
     use AuthorizesRequests;
+    use ManagesInspectionRoundStopOrder;
     use WithFileUploads;
     #[Url(as: 'status')]
     public string $statusFilter = '';
@@ -90,9 +92,6 @@ class Index extends Component
     public ?string $recurrence_first_due_date = null;
 
     public ?int $esg_indicator_id = null;
-
-    /** @var list<int|string> */
-    public array $round_stop_unit_ids = [];
 
     public ?int $internal_team_id = null;
 

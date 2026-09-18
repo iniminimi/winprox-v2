@@ -18,6 +18,7 @@ use App\Actions\Tasks\UpdateTaskTeamAction;
 use App\Enums\TaskPriority;
 use App\Http\Requests\Issues\EndRecurringIssueRequest;
 use App\Http\Requests\Issues\SyncIssueRoundStopsRequest;
+use App\Livewire\Concerns\ManagesInspectionRoundStopOrder;
 use App\Models\Task;
 use App\Models\InternalTeam;
 use App\Models\Issue;
@@ -36,6 +37,7 @@ use Livewire\WithFileUploads;
 #[Title('WinProx')]
 class Show extends Component
 {
+    use ManagesInspectionRoundStopOrder;
     use WithFileUploads;
 
     public Issue $issue;
@@ -78,9 +80,6 @@ class Show extends Component
     public string $taskPreviewLocale = '';
 
     public string $taskTranslationDescription = '';
-
-    /** @var list<int|string> */
-    public array $round_stop_unit_ids = [];
 
     public function mount(Issue $issue, RemoveUnitsFromInspectionRoundsAction $pruneRoundStops): void
     {
@@ -657,18 +656,10 @@ class Show extends Component
             [$roundStopUnitsGrouped, $roundStopUnitsHiddenCount] = Unit::groupedInspectionRoundStops();
         }
 
-        $roundStopsMultiLocation = $issue->isInspectionRound()
-            && $issue->roundStops
-                ->map(fn ($stop) => $stop->unit?->location_id)
-                ->filter()
-                ->unique()
-                ->count() > 1;
-
         return view('livewire.issues.show', [
             'issue' => $issue,
             'roundStopUnitsGrouped' => $roundStopUnitsGrouped,
             'roundStopUnitsHiddenCount' => $roundStopUnitsHiddenCount,
-            'roundStopsMultiLocation' => $roundStopsMultiLocation,
             'teams' => InternalTeam::query()->with('translations')->orderBy('name')->get(),
             'priorities' => TaskPriority::cases(),
             'headline' => $headline,
