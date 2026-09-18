@@ -4,8 +4,6 @@ namespace App\Livewire\Concerns;
 
 use App\Actions\Issues\CoalesceInspectionRoundStopsByLocationAction;
 use App\Actions\Issues\MergeInspectionRoundStopSelectionAction;
-use App\Actions\Issues\MoveInspectionRoundLocationAction;
-use App\Actions\Issues\MoveInspectionRoundStopAction;
 use App\Actions\Issues\ReorderInspectionRoundLocationAction;
 use App\Actions\Issues\ReorderInspectionRoundStopAction;
 use App\Models\Unit;
@@ -48,32 +46,12 @@ trait ManagesInspectionRoundStopOrder
         ));
     }
 
-    public function moveRoundStop(int $index, int $delta): void
-    {
-        $this->applyRoundStopOrder(app(MoveInspectionRoundStopAction::class)->handle(
-            $this->normalizedRoundStopUnitIds(),
-            $index,
-            $delta,
-            $this->roundStopLocationByUnitId(),
-        ));
-    }
-
     public function reorderRoundStop(int $from, int $to): void
     {
         $this->applyRoundStopOrder(app(ReorderInspectionRoundStopAction::class)->handle(
             $this->normalizedRoundStopUnitIds(),
             $from,
             $to,
-            $this->roundStopLocationByUnitId(),
-        ));
-    }
-
-    public function moveRoundLocation(int $locationId, int $delta): void
-    {
-        $this->applyRoundStopOrder(app(MoveInspectionRoundLocationAction::class)->handle(
-            $this->normalizedRoundStopUnitIds(),
-            $locationId,
-            $delta,
             $this->roundStopLocationByUnitId(),
         ));
     }

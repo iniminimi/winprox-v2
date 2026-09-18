@@ -44,13 +44,10 @@
             :class="{ 'wp-round-stops--sorting': from !== null }"
             aria-label="{{ __('issues.create.round_stops_order') }}"
         >
-            @foreach ($routeGroups as $groupIndex => $routeGroup)
+            @foreach ($routeGroups as $routeGroup)
                 @php
                     $locationId = (int) $routeGroup['location_id'];
-                    $isFirstLocation = $groupIndex === 0;
-                    $isLastLocation = $groupIndex === $locationCount - 1;
                     $groupItems = $routeGroup['items'];
-                    $groupItemCount = count($groupItems);
                 @endphp
                 <li
                     class="wp-round-stops__group"
@@ -61,18 +58,19 @@
                         'wp-round-stops__group--drop': kind === 'location' && over === '{{ $locationId }}' && from !== '{{ $locationId }}',
                     }"
                 >
-                    <div class="wp-round-stops__group-head">
+                    <div
+                        class="wp-round-stops__group-head{{ $locationCount > 1 ? ' wp-round-stops__group-head--drag' : '' }}"
                         @if ($locationCount > 1)
-                            <span
-                                class="wp-round-stops__handle"
-                                aria-label="{{ __('issues.create.round_stops_drag_location') }}"
-                                title="{{ __('issues.create.round_stops_drag_location') }}"
-                                @pointerdown="onLocationPointerDown($event, '{{ $locationId }}')"
-                                @pointermove="onPointerMove($event)"
-                                @pointerup="onPointerUp($event)"
-                                @pointercancel="onPointerUp($event)"
-                            >
-                                <svg class="wp-round-stops__grip" viewBox="0 0 8 14" aria-hidden="true" focusable="false">
+                            title="{{ __('issues.create.round_stops_drag_location') }}"
+                            @pointerdown="onLocationPointerDown($event, '{{ $locationId }}')"
+                            @pointermove="onPointerMove($event)"
+                            @pointerup="onPointerUp($event)"
+                            @pointercancel="onPointerUp($event)"
+                        @endif
+                    >
+                        @if ($locationCount > 1)
+                            <span class="wp-round-stops__handle" aria-hidden="true">
+                                <svg class="wp-round-stops__grip" viewBox="0 0 8 14" focusable="false">
                                     <circle cx="2" cy="2" r="1.35"></circle>
                                     <circle cx="6" cy="2" r="1.35"></circle>
                                     <circle cx="2" cy="7" r="1.35"></circle>
@@ -83,48 +81,27 @@
                             </span>
                         @endif
                         <span class="wp-round-stops__group-label">{{ $routeGroup['label'] }}</span>
-                        @if ($locationCount > 1)
-                            <span class="wp-round-stops__move">
-                                @if ($isFirstLocation)
-                                    <span class="wp-pagination__control" aria-disabled="true" aria-label="{{ __('issues.create.round_stops_move_location_up') }}">‹</span>
-                                @else
-                                    <button type="button" class="wp-pagination__control" wire:click="moveRoundLocation({{ $locationId }}, -1)" aria-label="{{ __('issues.create.round_stops_move_location_up') }}">‹</button>
-                                @endif
-                                @if ($isLastLocation)
-                                    <span class="wp-pagination__control" aria-disabled="true" aria-label="{{ __('issues.create.round_stops_move_location_down') }}">›</span>
-                                @else
-                                    <button type="button" class="wp-pagination__control" wire:click="moveRoundLocation({{ $locationId }}, 1)" aria-label="{{ __('issues.create.round_stops_move_location_down') }}">›</button>
-                                @endif
-                            </span>
-                        @endif
                     </div>
                     <ol class="wp-round-stops wp-round-stops--units">
-                        @foreach ($groupItems as $itemOffset => $item)
-                            @php
-                                $index = (int) $item['index'];
-                                $isFirstInLocation = $itemOffset === 0;
-                                $isLastInLocation = $itemOffset === $groupItemCount - 1;
-                            @endphp
+                        @foreach ($groupItems as $item)
+                            @php $index = (int) $item['index']; @endphp
                             <li
                                 class="wp-round-stops__item wp-round-stops__item--route"
                                 wire:key="{{ $pickerId }}-order-{{ $item['unit_id'] }}"
                                 data-round-stop-index="{{ $index }}"
                                 data-round-stop-location="{{ $locationId }}"
+                                title="{{ __('issues.create.round_stops_drag') }}"
                                 :class="{
                                     'wp-round-stops__item--dragging': kind === 'unit' && from === {{ $index }},
                                     'wp-round-stops__item--drop': kind === 'unit' && over === {{ $index }} && from !== {{ $index }},
                                 }"
+                                @pointerdown.stop="onPointerDown($event, {{ $index }}, '{{ $locationId }}')"
+                                @pointermove="onPointerMove($event)"
+                                @pointerup="onPointerUp($event)"
+                                @pointercancel="onPointerUp($event)"
                             >
-                                <span
-                                    class="wp-round-stops__handle"
-                                    aria-label="{{ __('issues.create.round_stops_drag') }}"
-                                    title="{{ __('issues.create.round_stops_drag') }}"
-                                    @pointerdown="onPointerDown($event, {{ $index }}, '{{ $locationId }}')"
-                                    @pointermove="onPointerMove($event)"
-                                    @pointerup="onPointerUp($event)"
-                                    @pointercancel="onPointerUp($event)"
-                                >
-                                    <svg class="wp-round-stops__grip" viewBox="0 0 8 14" aria-hidden="true" focusable="false">
+                                <span class="wp-round-stops__handle" aria-hidden="true">
+                                    <svg class="wp-round-stops__grip" viewBox="0 0 8 14" focusable="false">
                                         <circle cx="2" cy="2" r="1.35"></circle>
                                         <circle cx="6" cy="2" r="1.35"></circle>
                                         <circle cx="2" cy="7" r="1.35"></circle>
@@ -135,20 +112,6 @@
                                 </span>
                                 <span class="wp-round-stops__index">{{ $index + 1 }}</span>
                                 <span class="wp-round-stops__name">{{ $item['name'] }}</span>
-                                @if ($groupItemCount > 1)
-                                    <span class="wp-round-stops__move">
-                                        @if ($isFirstInLocation)
-                                            <span class="wp-pagination__control" aria-disabled="true" aria-label="{{ __('issues.create.round_stops_move_up') }}">‹</span>
-                                        @else
-                                            <button type="button" class="wp-pagination__control" wire:click="moveRoundStop({{ $index }}, -1)" aria-label="{{ __('issues.create.round_stops_move_up') }}">‹</button>
-                                        @endif
-                                        @if ($isLastInLocation)
-                                            <span class="wp-pagination__control" aria-disabled="true" aria-label="{{ __('issues.create.round_stops_move_down') }}">›</span>
-                                        @else
-                                            <button type="button" class="wp-pagination__control" wire:click="moveRoundStop({{ $index }}, 1)" aria-label="{{ __('issues.create.round_stops_move_down') }}">›</button>
-                                        @endif
-                                    </span>
-                                @endif
                             </li>
                         @endforeach
                     </ol>

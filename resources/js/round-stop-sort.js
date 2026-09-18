@@ -1,6 +1,6 @@
 /**
- * Drag inspection-round stops within a location, or whole location blocks.
- * Persist via Livewire → Action. Arrow buttons stay for keyboard moves.
+ * Drag an inspection-round stop row within a location, or a whole location block.
+ * Persist via Livewire → Action.
  */
 
 function registerAlpineComponent() {

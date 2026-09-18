@@ -5,8 +5,7 @@ declare(strict_types=1);
 use App\Actions\Issues\CoalesceInspectionRoundStopsByLocationAction;
 use App\Actions\Issues\CreateInspectionRoundAction;
 use App\Actions\Issues\MergeInspectionRoundStopSelectionAction;
-use App\Actions\Issues\MoveInspectionRoundLocationAction;
-use App\Actions\Issues\MoveInspectionRoundStopAction;
+use App\Actions\Issues\ReorderInspectionRoundLocationAction;
 use App\Actions\Issues\ReorderInspectionRoundStopAction;
 use App\Actions\Issues\SyncIssueRoundStopsAction;
 use App\Actions\Portal\FindNewTeamTasksSinceBaselineAction;
@@ -879,14 +878,7 @@ it('houdt locatieblokken aaneengesloten in de loopvolgorde', function () {
     expect(app(CoalesceInspectionRoundStopsByLocationAction::class)->handle([1, 2, 3], $map))->toBe([1, 3, 2])
         ->and(app(ReorderInspectionRoundStopAction::class)->handle([1, 3, 2], 2, 0, $map))->toBe([1, 3, 2])
         ->and(app(ReorderInspectionRoundStopAction::class)->handle([1, 3, 2], 1, 0, $map))->toBe([3, 1, 2])
-        ->and(app(MoveInspectionRoundLocationAction::class)->handle([1, 3, 2], 20, -1, $map))->toBe([2, 1, 3]);
-});
-
-it('wisselt twee opeenvolgende stops in de loopvolgorde', function () {
-    $move = app(MoveInspectionRoundStopAction::class);
-
-    expect($move->handle([10, 20, 30], 2, -1))->toBe([10, 30, 20])
-        ->and($move->handle([10, 20], 0, -1))->toBe([10, 20]);
+        ->and(app(ReorderInspectionRoundLocationAction::class)->handle([1, 3, 2], 20, 10, $map))->toBe([2, 1, 3]);
 });
 
 it('plaatst een stop op een andere index in de loopvolgorde', function () {
@@ -894,11 +886,13 @@ it('plaatst een stop op een andere index in de loopvolgorde', function () {
 
     expect($reorder->handle([10, 20, 30], 2, 0))->toBe([30, 10, 20])
         ->and($reorder->handle([10, 20, 30], 0, 2))->toBe([20, 30, 10])
+        ->and($reorder->handle([10, 20, 30], 2, 1))->toBe([10, 30, 20])
         ->and($reorder->handle([10, 20], 0, 0))->toBe([10, 20])
+        ->and($reorder->handle([10, 20], 0, -1))->toBe([10, 20])
         ->and($reorder->handle([10, 20], 5, 0))->toBe([10, 20]);
 });
 
-it('zet de eerst aangevinkte unit als eerste stop en laat omhoog/omlaag toe', function () {
+it('zet de eerst aangevinkte unit als eerste stop en laat herschikken toe', function () {
     ['tenant' => $tenant, 'actor' => $actor, 'unitA' => $unitA, 'unitB' => $unitB, 'unitC' => $unitC] = inspectionRoundScaffold();
     seedTenantPastOnboarding($tenant);
 
@@ -908,7 +902,7 @@ it('zet de eerst aangevinkte unit als eerste stop en laat omhoog/omlaag toe', fu
         ->call('toggleRoundStop', (int) $unitB->id)
         ->call('toggleRoundStop', (int) $unitA->id)
         ->assertSet('round_stop_unit_ids', [(int) $unitB->id, (int) $unitA->id])
-        ->call('moveRoundStop', 1, -1)
+        ->call('reorderRoundStop', 1, 0)
         ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id])
         ->call('toggleAllRoundStops');
 
@@ -965,7 +959,7 @@ it('houdt units bij hun locatie en laat locatieblokken als geheel verplaatsen', 
         ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id, (int) $unitOther->id])
         ->call('reorderRoundStop', 2, 0)
         ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id, (int) $unitOther->id])
-        ->call('moveRoundLocation', (int) $locationB->id, -1)
+        ->call('reorderRoundLocation', (int) $locationB->id, (int) $unitA->location_id)
         ->assertSet('round_stop_unit_ids', [(int) $unitOther->id, (int) $unitA->id, (int) $unitB->id]);
 });
 
@@ -976,7 +970,7 @@ it('slaat een omgekeerde stopvolgorde op via de meldingsdetail', function () {
     Livewire::actingAs($actor)
         ->test(\App\Livewire\Issues\Show::class, ['issue' => $issue])
         ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id])
-        ->call('moveRoundStop', 1, -1)
+        ->call('reorderRoundStop', 1, 0)
         ->call('saveRoundStops')
         ->assertHasNoErrors();
 
