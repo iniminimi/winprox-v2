@@ -262,7 +262,6 @@
     },
     "portal": {
         "title": "Connexion",
-        "switch_worker": "Autre collaborateur",
         "clock": {
             "title": "Présence",
             "not_clocked_in": "Vous n'êtes pas encore pointé.",

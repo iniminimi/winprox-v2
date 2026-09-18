@@ -351,7 +351,7 @@ it('toont Unit check pas na Start werk en verwart Afmelden niet met inklokken', 
     clockPointOpenTask($ctx, $issue, ['status' => TaskStatus::InProgress]);
 
     $portal = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
-        ->assertSee(__('time.portal.switch_worker'), false)
+        ->assertDontSee(__('portal.worker.different_worker'), false)
         ->assertDontSee(__('portal.worker.sign_out'), false)
         ->assertSee(__('time.portal.clock.not_clocked_in'), false)
         ->assertSee('Ronde zonder bezoek', false)

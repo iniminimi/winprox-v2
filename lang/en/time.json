@@ -262,7 +262,6 @@
     },
     "portal": {
         "title": "Sign in",
-        "switch_worker": "Switch worker",
         "clock": {
             "title": "Presence",
             "not_clocked_in": "You are not clocked in yet.",

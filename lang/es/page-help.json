@@ -1031,10 +1031,6 @@
                 {
                     "label": "Mi cuadrante",
                     "text": "Tras identificarte ves la ficha Mi cuadrante. Solo muestra tus turnos y ausencias <strong>publicados</strong> del <strong>mes</strong> elegido, en lista compacta (días vacíos omitidos). Una insignia significa un cuadrante recién publicado; al abrirlo desaparece."
-                },
-                {
-                    "label": "Otro colaborador",
-                    "text": "Pulse Otro colaborador si este no es su nombre. Eso no ficha la salida; fichar entrada y salida está en Presencia. En los horarios establecidos por el administrador también se cierra la sesión automáticamente."
                 }
             ]
         },

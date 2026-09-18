@@ -302,10 +302,6 @@
                         <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
                     </div>
 
-                    <div class="wp-portal-worker-actions">
-                        @include('partials.wp-portal-sign-out', ['signOutLabel' => __('time.portal.switch_worker')])
-                    </div>
-
                     @if ($verifiedWorker?->is_teamleader)
                         @include('partials.wp-portal-teamleader-release')
                     @endif

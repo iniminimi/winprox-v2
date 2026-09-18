@@ -1031,10 +1031,6 @@
                 {
                     "label": "Mein Dienstplan",
                     "text": "Nach der Anmeldung siehst du die Kachel Mein Dienstplan. Dort stehen nur deine <strong>veröffentlichten</strong> Dienste und Abwesenheiten des gewählten <strong>Monats</strong> als kompakte Liste (leere Tage werden übersprungen). Ein Badge bedeutet einen neu veröffentlichten Plan; Öffnen entfernt das Badge."
-                },
-                {
-                    "label": "Anderer Mitarbeiter",
-                    "text": "Tippen Sie auf Anderer Mitarbeiter, wenn das nicht Ihr Name ist. Das stempelt Sie nicht aus; Ein- und Ausstempeln stehen unter Anwesenheit. Zu vom Administrator festgelegten Zeiten werden Sie außerdem automatisch abgemeldet."
                 }
             ]
         },

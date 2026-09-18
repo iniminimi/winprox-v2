@@ -1031,10 +1031,6 @@
                 {
                     "label": "Mijn rooster",
                     "text": "Na aanmelden zie je de tegel Mijn rooster. Daar staan alleen jouw <strong>gepubliceerde</strong> diensten en afwezigheden van de gekozen <strong>maand</strong>, als compacte lijst (lege dagen worden overgeslagen). Een groene badge betekent een nieuw gepubliceerd rooster; openen zet de badge weg."
-                },
-                {
-                    "label": "Andere medewerker",
-                    "text": "Tik Andere medewerker als dit niet jouw naam is. Dat klokt je niet uit; inklokken en uitklokken staan onder Aanwezigheid. Op door de beheerder ingestelde tijdstippen word je bovendien automatisch afgemeld."
                 }
             ]
         },

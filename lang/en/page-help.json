@@ -1031,10 +1031,6 @@
                 {
                     "label": "My roster",
                     "text": "After signing in you see the My roster tile. It shows only your <strong>published</strong> shifts and absences for the chosen <strong>month</strong>, as a compact list (empty days are skipped). A badge means a newly published roster; opening it clears the badge."
-                },
-                {
-                    "label": "Switch worker",
-                    "text": "Tap Switch worker if this is not your name. That does not clock you out; clock in and out are under Presence. You are also signed out automatically at times set by the administrator."
                 }
             ]
         },

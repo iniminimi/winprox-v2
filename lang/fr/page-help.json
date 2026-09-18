@@ -1039,10 +1039,6 @@
                 {
                     "label": "Mon planning",
                     "text": "Après connexion, tu vois la tuile Mon planning. Elle n’affiche que tes services et absences <strong>publiés</strong> du <strong>mois</strong> choisi, en liste compacte (jours vides omis). Un badge signifie un planning tout juste publié ; l’ouvrir l’efface."
-                },
-                {
-                    "label": "Autre collaborateur",
-                    "text": "Touchez Autre collaborateur si ce n'est pas votre nom. Cela ne pointe pas la sortie ; l'entrée et la sortie sont sous Présence. Aux horaires définis par l'administrateur, vous êtes aussi déconnecté automatiquement."
                 }
             ]
         },

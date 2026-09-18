@@ -884,8 +884,9 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
   starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;
   inspectiestops (unit check) ter plaatse op dezelfde bezoek-locatie, in stopvolgorde.
-  **Andere medewerker** wisselt alleen de identiteit (naam + icoon); dat is geen
-  uitklokken. Inklokken blijft onder Aanwezigheid (verse QR-scan).
+  Na aanmelden blijft de gsm van die uitvoerder; Clock Point toont geen knop
+  **Andere medewerker**. Gsm vrijgeven: beheer of teamleader. Inklokken blijft
+  onder Aanwezigheid (verse QR-scan).
 
 ### 6.3 Workers
 - Sidebar **Personen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status.
@@ -1245,7 +1246,8 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   (alleen locaties) en onder **Open taken** (omschrijving, prio/status, volgende
   stop; knop Unit check alleen na Start werk op die locatie). Ter plaatse opent
   die knop de unit check zonder unit-QR. Zonder GPS-bezoek blijven unit-checks
-  via de unit-QR. **Andere medewerker** is identiteit wisselen, geen uitklokken.
+  via de unit-QR. Na aanmelden geen wisselknop; de gsm blijft van die uitvoerder
+  tot beheer of teamleader vrijgeeft.
   (Vervangt de oude team-QR `/team/{token}`.)
   Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en optioneel tegel
   **Evacuatielijst** (brandicoon) na aanmelden — alleen als Instellingen → Prikklok-beveiliging
@@ -1294,7 +1296,9 @@ Bedoeld voor gedeelde telefoons op de werkvloer:
    geslaagde on-site icoonbevestiging.
 4. **Lockout**: na **2** foute icoonpogingen geblokkeerd (sessie + worker-rij
    `field_icon_locked_at`); beheerder kan ontgrendelen/icoon resetten.
-5. **"Aanmelden als andere medewerker"** wist device/sessie/trust.
+5. **"Aanmelden als andere medewerker"** (unit-QR, en Clock Point vóór volledige
+   aanmelding: PIN/icoon/blokkade) wist device/sessie/trust. Na een geslaagde
+   Clock Point-aanmelding is die knop er niet.
 6. **Clock Point** herstelt verificatie via de device-cookie (geen wipe bij elke scan).
    **BESLIST: open registratie** via Clock Point als er precies **één** actief team zonder
    workers is (onboarding: worker + icoon aanmaken). Daarna identificeren bestaande workers
