@@ -131,6 +131,11 @@ class UnitPortal extends Component
     /** @var list<string> */
     public array $checkChecklistItems = [];
 
+    public string $checkDescription = '';
+
+    /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
+    public array $checkPhotos = [];
+
     /** @var array<int|string, mixed> */
     public array $measureValues = [];
 
@@ -257,8 +262,9 @@ class UnitPortal extends Component
         }
 
         if ($section === 'unit_check') {
-            $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems');
-            $this->resetErrorBag(['checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems']);
+            $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems', 'checkDescription', 'checkPhotos');
+            $this->resetErrorBag(['checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems', 'checkDescription', 'checkPhotos']);
+            $this->dispatch('wp-prepare-photo-inputs');
         }
 
         if ($section === 'measure') {
@@ -457,6 +463,8 @@ class UnitPortal extends Component
             latitude: $this->checkLatitude,
             longitude: $this->checkLongitude,
             checklistItems: $selectedLabels === [] ? null : $selectedLabels,
+            description: trim($this->checkDescription),
+            photos: $this->checkPhotos,
         );
 
         $waitingRound = $result === UnitCheckResult::Ok
@@ -472,7 +480,7 @@ class UnitPortal extends Component
             existingReportDescription: $this->description,
         );
 
-        $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems');
+        $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems', 'checkDescription', 'checkPhotos');
 
         if ($result === UnitCheckResult::NotOk) {
             $this->flashMessage = __('portal.unit_check.recorded_not_ok');
@@ -498,6 +506,13 @@ class UnitPortal extends Component
             $this->flashMessage = __('portal.unit_check.recorded_ok');
         }
         $this->portalSection = 'home';
+    }
+
+    public function removeCheckPhoto(int $index): void
+    {
+        if (isset($this->checkPhotos[$index])) {
+            array_splice($this->checkPhotos, $index, 1);
+        }
     }
 
     public function openSkipRoundStop(int $taskId): void

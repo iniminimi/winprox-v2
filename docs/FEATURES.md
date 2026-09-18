@@ -411,13 +411,16 @@ de meldingenlijst te vervuilen. Los van ESG.
       Plaatsen → Categorieën / unit bewerken).
 - Tegel **Unit check** even breed als **Melding maken** (primaire tegel).
 - Keuze **OK** of **Niet OK**; optioneel GPS als locatiebewijs.
+- Optioneel per unit een **opmerking** (max. 500) en tot **4 foto’s** (client-side
+  compressie, golden path). Bewijs hangt aan de `unit_checks`-rij van die cyclus,
+  niet aan de meldingenlijst. **Niet OK** blijft de bestaande meldflow openen.
 - **OK** → rij in `unit_checks`, terug naar home.
 - **Niet OK** → rij in `unit_checks`, daarna bestaande meldflow (`new`) blijft beschikbaar.
 - Optionele **checklist** (indien gekoppeld aan de unit; templates onder **Teams**):
   vinkjes vóór OK.
 
 ### Beheer (`/unit-checks`)
-- Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link.
+- Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link, optionele opmerking en foto’s.
 - Filters: resultaat, locatie. Admin + medewerker via Policy.
 - **Download rapport** (`x-wp-list-export`): CSV + afdrukken van de gefilterde historiek — zie §Rapporten.
 - **Aan/uit:** Plaatsen → Categorieën (`allow_unit_checks`) én unit bewerken (`allow_unit_checks`);
@@ -444,7 +447,7 @@ de meldingenlijst te vervuilen. Los van ESG.
 
 ### API & webhooks
 - `POST /api/v1/units/{unit}/checks` — ability `units:update`; zie `docs/api/unit-checks.md`.
-  Vereist `allow_unit_checks` op categorie én unit. `source=api`.
+  Vereist `allow_unit_checks` op categorie én unit. `source=api`. Optioneel `description`.
 - `POST /api/v1/units/checks` — inbound sync via `external_unit_id` (unit-mapping
   `units.external_id`, beheer alleen zichtbaar met **API-toegang** / Corporate);
   optioneel `external_id` op de check (idempotent). `source=external`.
@@ -531,7 +534,8 @@ stops meer zijn voor **deze** cyclus-taak.
   volgt alleen de unit-vlag. Bestaande stops worden verwijderd bij uitschakelen
   (en self-heal bij openen melding). Ronde met <2 stops over houdt geen stops meer.
 - **Fase 2:** strikte stop-volgorde (alleen de eerstvolgende open stop mag OK/skip);
-  rijke progress-UI (balk + genummerde stops met status, datum/uur en uitvoerder)
+  rijke progress-UI (balk + genummerde stops met status, datum/uur, uitvoerder,
+  optionele opmerking en foto’s van de unit check)
   op **unit-QR (elke stop)** én op **taakdetail in beheer**. Met Time +
   GPS-werkbezoeken ook op Clock Point ter plaatse (volgende stop).
 
@@ -746,7 +750,7 @@ productsector op `Tenant`.
   Inspectierondes staan onder **Open taken**: omschrijving, prio/status, volgende
   stop; knop **Unit check** alleen met open `WorkVisit` op die locatie (zelfde
   regel als teamtaken). De volledige unit check (OK / Niet OK / overslaan +
-  rondevoortgang) opent na die knop. **Start werk**
+  optionele opmerking/foto’s + rondevoortgang) opent na die knop. **Start werk**
   één keer per locatie (locatie-pin), alleen binnen de
   bestaande GPS-straal via `StartWorkVisitAction`. **Teamtaken** starten en
   afronden op Clock Point met optionele notitie

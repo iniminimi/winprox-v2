@@ -286,7 +286,10 @@
     },
     "unit_check": {
         "title": "Unit check",
-        "lead": "Bevestig of deze unit in orde is. Optioneel wordt je GPS meegenomen als locatiebewijs.",
+        "lead": "Bevestig of deze unit in orde is. Optioneel wordt je GPS meegenomen als locatiebewijs. Je kunt een korte opmerking en tot 4 foto's bij deze unit zetten.",
+        "note": "Opmerking (optioneel)",
+        "note_placeholder": "Kort wat je zag of deed…",
+        "photos": "Foto's (optioneel)",
         "ok": "OK",
         "not_ok": "Niet OK",
         "capturing_gps": "GPS ophalen…",

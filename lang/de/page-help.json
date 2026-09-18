@@ -1471,7 +1471,7 @@
                 },
                 {
                     "label": "Was ist ein Unit-Check?",
-                    "text": "Eine schnelle Bestätigung am Unit-QR: OK oder Nicht OK, mit Ausführendem, Zeitstempel und optionalem GPS. OK erzeugt keine Meldung."
+                    "text": "Eine schnelle Bestätigung am Unit-QR: OK oder Nicht OK, mit Ausführendem, Zeitstempel und optionalem GPS. OK erzeugt keine Meldung. Optional eine Bemerkung (max. 500 Zeichen) und bis zu 4 Fotos; sie gehören zur Kontrolle, nicht zur Meldungsliste."
                 },
                 {
                     "label": "Nicht OK",

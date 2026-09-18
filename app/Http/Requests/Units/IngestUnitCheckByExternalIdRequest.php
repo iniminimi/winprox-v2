@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\Units;
 
 use App\Enums\UnitCheckResult;
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
@@ -32,6 +33,7 @@ class IngestUnitCheckByExternalIdRequest extends FormRequest
             'issue_id' => ['nullable', 'integer', 'exists:issues,id'],
             'checklist_items' => ['nullable', 'array'],
             'checklist_items.*' => ['string', 'max:200'],
+            'description' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
         ];
     }
 

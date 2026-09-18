@@ -5770,11 +5770,21 @@ a.wp-kpi.wp-kpi--attention {
     background-color: color-mix(in srgb, var(--wp-accent) 8%, var(--wp-surface));
 }
 
-.wp-round-stops__meta {
-    margin: 0;
-    font-size: 0.75rem;
-    color: var(--wp-muted);
-    line-height: 1.3;
+.wp-round-stops__note {
+    margin: 0.2rem 0 0;
+    font-size: 0.8rem;
+    color: var(--wp-text);
+    line-height: 1.35;
+    white-space: pre-wrap;
+}
+
+.wp-round-stops__photos {
+    margin-top: 0.35rem;
+}
+
+.wp-round-stops__photos .wp-photo-thumb {
+    width: 3rem;
+    height: 3rem;
 }
 
 .wp-round-stop-picker {

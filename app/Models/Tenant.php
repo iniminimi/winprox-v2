@@ -730,7 +730,8 @@ class Tenant extends Model
 
     public function currentPhotosCount(): int
     {
-        return IssuePhoto::query()->withoutGlobalScopes()->where('tenant_id', $this->id)->count();
+        return IssuePhoto::query()->withoutGlobalScopes()->where('tenant_id', $this->id)->count()
+            + UnitCheckPhoto::query()->withoutGlobalScopes()->where('tenant_id', $this->id)->count();
     }
 
     public function remainingPhotoOrgSlots(): ?int

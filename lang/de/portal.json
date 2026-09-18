@@ -286,7 +286,10 @@
     },
     "unit_check": {
         "title": "Unit-Check",
-        "lead": "Bestätigen Sie, ob diese Unit in Ordnung ist. GPS kann als Standortnachweis mitgeführt werden.",
+        "lead": "Bestätigen Sie, ob diese Unit in Ordnung ist. GPS kann als Standortnachweis mitgeführt werden. Sie können eine kurze Bemerkung und bis zu 4 Fotos zu dieser Unit hinzufügen.",
+        "note": "Bemerkung (optional)",
+        "note_placeholder": "Kurz, was Sie gesehen oder gemacht haben…",
+        "photos": "Fotos (optional)",
         "ok": "OK",
         "not_ok": "Nicht OK",
         "capturing_gps": "GPS wird abgerufen…",

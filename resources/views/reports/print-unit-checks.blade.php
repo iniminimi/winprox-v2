@@ -53,6 +53,13 @@
                                     · {{ implode(', ', $check->checklist_items) }}
                                 @endif
                             </p>
+                            @if (filled($check->description))
+                                <p class="wp-text-body">{{ $check->description }}</p>
+                            @endif
+                            @include('partials.wp-issue-photo-gallery', [
+                                'photos' => $check->photos,
+                                'wireKeyPrefix' => 'print-unit-check-'.$check->id,
+                            ])
                         </div>
                     </div>
                 @endforeach

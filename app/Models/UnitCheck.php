@@ -10,6 +10,7 @@ use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class UnitCheck extends Model
 {
@@ -31,6 +32,7 @@ class UnitCheck extends Model
         'task_id',
         'issue_id',
         'checklist_items',
+        'description',
         'external_id',
     ];
 
@@ -72,6 +74,11 @@ class UnitCheck extends Model
     public function issue(): BelongsTo
     {
         return $this->belongsTo(Issue::class);
+    }
+
+    public function photos(): HasMany
+    {
+        return $this->hasMany(UnitCheckPhoto::class);
     }
 
     public function hasGps(): bool

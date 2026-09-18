@@ -30,8 +30,19 @@ class UnitCheckResource extends JsonResource
             'task_id' => $this->task_id,
             'issue_id' => $this->issue_id,
             'checklist_items' => $this->checklist_items,
+            'description' => $this->description,
             'external_id' => $this->external_id,
             'google_maps_url' => $this->googleMapsUrl(),
+            'photo_count' => $this->whenLoaded('photos', fn () => $this->photos->count(), 0),
+            'photos' => $this->whenLoaded('photos', function () {
+                return $this->photos
+                    ->filter(fn ($photo) => $photo->hasPublicFile())
+                    ->values()
+                    ->map(fn ($photo) => [
+                        'id' => $photo->id,
+                        'url' => $photo->publicUrl(),
+                    ]);
+            }),
             'created_at' => optional($this->created_at)->toIso8601String(),
         ];
     }

@@ -79,7 +79,9 @@ class RoundTaskCompletionAction
      *         state: string,
      *         sort_order: int,
      *         at: string|null,
-     *         worker_name: string|null
+     *         worker_name: string|null,
+     *         description: string|null,
+     *         photos: list<array{id: int, url: string}>
      *     }>
      * }
      */
@@ -109,7 +111,7 @@ class RoundTaskCompletionAction
             ->where('task_id', $task->id)
             ->whereIn('unit_id', $stopUnitIds === [] ? [0] : $stopUnitIds)
             ->whereIn('result', [UnitCheckResult::Ok->value, UnitCheckResult::NotOk->value])
-            ->with('worker')
+            ->with(['worker', 'photos'])
             ->orderByDesc('checked_at')
             ->orderByDesc('id')
             ->get()
@@ -142,10 +144,23 @@ class RoundTaskCompletionAction
 
             $at = null;
             $workerName = null;
+            $description = null;
+            $photos = [];
             if ($state === 'ok' || $state === 'not_ok') {
                 $check = $checksByUnit->get($unitId);
                 $at = $check?->checked_at?->format('d/m/Y H:i');
                 $workerName = $check?->worker?->displayName();
+                $description = filled($check?->description) ? (string) $check->description : null;
+                $photos = $check === null
+                    ? []
+                    : $check->photos
+                        ->filter(fn ($photo) => $photo->hasPublicFile())
+                        ->values()
+                        ->map(fn ($photo) => [
+                            'id' => (int) $photo->id,
+                            'url' => (string) $photo->publicUrl(),
+                        ])
+                        ->all();
             } elseif ($state === 'skipped') {
                 $skip = $skippedByUnit->get($unitId);
                 $at = $skip?->created_at?->format('d/m/Y H:i');
@@ -166,6 +181,8 @@ class RoundTaskCompletionAction
                 'sort_order' => (int) $stop->sort_order,
                 'at' => $at,
                 'worker_name' => $workerName,
+                'description' => $description,
+                'photos' => $photos,
             ];
         }
 

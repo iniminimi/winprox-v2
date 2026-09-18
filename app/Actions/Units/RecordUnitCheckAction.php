@@ -6,12 +6,19 @@ namespace App\Actions\Units;
 
 use App\Data\Units\RecordUnitCheckData;
 use App\Events\Units\UnitCheckRecorded;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitCheck;
 use App\Models\Worker;
+use App\Support\UnitCheckPhotoStorage;
+use Illuminate\Http\UploadedFile;
 
 class RecordUnitCheckAction
 {
+    public function __construct(
+        private UnitCheckPhotoStorage $storage,
+    ) {}
+
     public function handle(
         Unit $unit,
         RecordUnitCheckData $data,
@@ -26,11 +33,19 @@ class RecordUnitCheckAction
                 ->first();
 
             if ($existing !== null) {
-                return $existing;
+                return $existing->loadMissing(['worker', 'unit', 'location', 'team', 'photos']);
             }
         }
 
         $unit->loadMissing('location');
+        $description = $data->description !== null ? trim($data->description) : null;
+        $photos = array_values(array_filter(
+            $data->photos,
+            static fn ($photo) => $photo instanceof UploadedFile,
+        ));
+        if (count($photos) > 4) {
+            $photos = array_slice($photos, 0, 4);
+        }
 
         $check = UnitCheck::query()->create([
             'tenant_id' => $tenantId,
@@ -46,13 +61,24 @@ class RecordUnitCheckAction
             'task_id' => $data->taskId,
             'issue_id' => $data->issueId,
             'checklist_items' => $data->checklistItems,
+            'description' => $description !== null && $description !== '' ? $description : null,
             'external_id' => $data->externalId,
         ]);
 
-        event(new UnitCheckRecorded(
-            $check->fresh(['worker', 'unit', 'location', 'team']),
-            $actorUserId,
-        ));
+        if ($photos !== []) {
+            Tenant::query()->findOrFail($tenantId)->assertCanAddPhotos(count($photos));
+        }
+
+        foreach ($photos as $photo) {
+            $check->photos()->create([
+                'tenant_id' => $tenantId,
+                'path' => $this->storage->storePrecompressedCopy($photo),
+            ]);
+        }
+
+        $check->load(['worker', 'unit', 'location', 'team', 'photos']);
+
+        event(new UnitCheckRecorded($check, $actorUserId));
 
         return $check;
     }

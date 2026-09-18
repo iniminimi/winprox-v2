@@ -165,6 +165,11 @@ class TimePortal extends Component
     /** @var list<string> */
     public array $checkChecklistItems = [];
 
+    public string $checkDescription = '';
+
+    /** @var array<int, TemporaryUploadedFile> */
+    public array $checkPhotos = [];
+
     public ?int $skipRoundTaskId = null;
 
     public string $skipReason = '';
@@ -955,6 +960,7 @@ class TimePortal extends Component
         $this->checkLongitude = $visit?->start_longitude;
         $this->checkCheckedAt = now()->toIso8601String();
         $this->cancelCompleteTask();
+        $this->dispatch('wp-prepare-photo-inputs');
     }
 
     public function closeClockPointUnitCheck(): void
@@ -962,6 +968,14 @@ class TimePortal extends Component
         $this->checkingUnitId = null;
         $this->resetClockPointUnitCheckForm();
         $this->closeSkipRoundStop();
+        $this->dispatch('wp-clear-photo-previews');
+    }
+
+    public function removeCheckPhoto(int $index): void
+    {
+        if (isset($this->checkPhotos[$index])) {
+            array_splice($this->checkPhotos, $index, 1);
+        }
     }
 
     public function submitClockPointUnitCheck(
@@ -1055,6 +1069,8 @@ class TimePortal extends Component
                 latitude: $this->checkLatitude,
                 longitude: $this->checkLongitude,
                 checklistItems: $selectedLabels === [] ? null : $selectedLabels,
+                description: trim($this->checkDescription),
+                photos: $this->checkPhotos,
             ),
             tenantId: $this->tenantId,
             worker: $worker,
@@ -1837,7 +1853,9 @@ class TimePortal extends Component
         $this->checkLongitude = null;
         $this->checkCheckedAt = null;
         $this->checkChecklistItems = [];
-        $this->resetErrorBag(['checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems']);
+        $this->checkDescription = '';
+        $this->checkPhotos = [];
+        $this->resetErrorBag(['checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems', 'checkDescription', 'checkPhotos']);
     }
 
     private function resetClockPointEsgFields(): void

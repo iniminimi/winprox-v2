@@ -286,7 +286,10 @@
     },
     "unit_check": {
         "title": "Contrôle unit",
-        "lead": "Confirmez si cette unit est en ordre. Le GPS peut servir de preuve de présence.",
+        "lead": "Confirmez si cette unit est en ordre. Le GPS peut servir de preuve de présence. Vous pouvez ajouter une courte remarque et jusqu’à 4 photos pour cette unité.",
+        "note": "Remarque (facultatif)",
+        "note_placeholder": "Bref ce que vous avez vu ou fait…",
+        "photos": "Photos (facultatif)",
         "ok": "OK",
         "not_ok": "Pas OK",
         "capturing_gps": "Récupération GPS…",

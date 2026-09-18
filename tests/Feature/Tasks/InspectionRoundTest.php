@@ -27,6 +27,7 @@ use App\Models\Worker;
 use App\Support\Portal\UnitPortalData;
 use App\Support\Portal\WorkerVerification;
 use App\Support\Tenancy;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
@@ -672,6 +673,34 @@ it('records not_ok on a round stop and advances to the next stop', function () {
         ->and($progress['next_unit_id'])->toBe((int) $unitB->id)
         ->and($task->fresh()->status)->toBe(TaskStatus::InProgress);
 });
+
+it('shows optional unit-check note and photos on round progress without creating an issue', function () {
+    Storage::fake('public');
+    ['unitA' => $unitA, 'team' => $team, 'worker' => $worker, 'task' => $task] = inspectionRoundScaffold();
+    WorkerVerification::markVerified($team, $worker);
+
+    $jpeg = base64_decode(
+        '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A0AAA/9k=',
+        true,
+    );
+    $file = \Illuminate\Http\UploadedFile::fake()->createWithContent('stop.jpg', $jpeg, 'image/jpeg');
+
+    Livewire::test(UnitPortal::class, ['token' => 'round-unit-a'])
+        ->call('openSection', 'unit_check')
+        ->set('checkResult', 'ok')
+        ->set('checkCheckedAt', now()->toIso8601String())
+        ->set('checkDescription', 'Sanitair nagekeken')
+        ->set('checkPhotos', [$file])
+        ->call('submitUnitCheck')
+        ->assertHasNoErrors();
+
+    $progress = app(RoundTaskCompletionAction::class)->progress($task->fresh());
+
+    expect($progress['stops'][0]['description'])->toBe('Sanitair nagekeken')
+        ->and($progress['stops'][0]['photos'])->toHaveCount(1)
+        ->and(\App\Models\Issue::query()->where('id', '!=', $task->issue_id)->count())->toBe(0);
+});
+
 
 it('does not overwrite an existing report description after round not_ok', function () {
     ['team' => $team, 'worker' => $worker] = inspectionRoundScaffold();

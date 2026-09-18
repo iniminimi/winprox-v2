@@ -439,7 +439,10 @@
                         }
                     },
                     async submit(result) {
-                        const items = Array.from($el.querySelectorAll('input[type=checkbox]:checked')).map((el) => el.value);
+                        const form = $el.querySelector('[data-wp-unit-check-form]') || $el;
+                        await window.wpAwaitPhotoUploads?.(form);
+                        const items = Array.from(form.querySelectorAll('input[type=checkbox]:checked')).map((el) => el.value);
+                        const description = form.querySelector('[data-wp-check-description]')?.value || '';
                         try {
                             await window.wpFieldUnitCheck({
                                 result,
@@ -447,7 +450,8 @@
                                 latitude: this.lat,
                                 longitude: this.lng,
                                 checklist_items: items,
-                            });
+                                description,
+                            }, form);
                             window.dispatchEvent(new CustomEvent('wp-field-ui', {
                                 detail: {
                                     message: result === 'ok'
@@ -468,7 +472,7 @@
                 <x-wp-portal-back @click="localSection = null" />
                 <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.unit_check.title')" />
 
-                <div class="wp-card wp-card-pad wp-stack">
+                <div class="wp-card wp-card-pad wp-stack" data-wp-unit-check-form>
                     <p class="wp-muted">{{ __('portal.unit_check.lead') }}</p>
 
                     @if (($unitCheckListItems ?? collect())->isNotEmpty())
@@ -483,6 +487,12 @@
                             @error('checkChecklistItems') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     @endif
+
+                    @include('partials.wp-portal-unit-check-evidence', [
+                        'descriptionId' => 'unit-check-description',
+                        'preferCamera' => true,
+                        'storeLocal' => true,
+                    ])
 
                     <div class="wp-cluster wp-cluster--wrap">
                         <button

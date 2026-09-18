@@ -6,6 +6,7 @@ namespace App\Http\Requests\Units;
 
 use App\Enums\UnitCheckResult;
 use App\Enums\UnitCheckSource;
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
@@ -49,6 +50,7 @@ class RecordUnitCheckRequest extends FormRequest
             'checklist_items' => ['nullable', 'array'],
             'checklist_items.*' => ['string', 'max:200'],
             'external_id' => ['nullable', 'string', 'max:100'],
+            'description' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
         ];
     }
 
@@ -66,6 +68,9 @@ class RecordUnitCheckRequest extends FormRequest
             'checkCheckedAt' => ['required', 'date'],
             'checkChecklistItems' => ['nullable', 'array'],
             'checkChecklistItems.*' => ['string', 'max:200'],
+            'checkDescription' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
+            'checkPhotos' => ['nullable', 'array', 'max:4'],
+            'checkPhotos.*' => ['image', 'max:10240'],
         ];
     }
 
@@ -79,6 +84,7 @@ class RecordUnitCheckRequest extends FormRequest
             'result.in' => __('unit_checks.validation.result_invalid'),
             'checked_at.required' => __('unit_checks.validation.checked_at_required'),
             'checked_at.date' => __('unit_checks.validation.checked_at_invalid'),
+            'description.max' => __('unit_checks.validation.description_max'),
             'latitude.between' => __('qr.connect.gps_validation_between'),
             'longitude.between' => __('qr.connect.gps_validation_between'),
             'latitude.required_with' => __('qr.connect.gps_validation_required'),
@@ -100,6 +106,10 @@ class RecordUnitCheckRequest extends FormRequest
             'checkLongitude.between' => __('qr.connect.gps_validation_between'),
             'checkLatitude.required_with' => __('qr.connect.gps_validation_required'),
             'checkLongitude.required_with' => __('qr.connect.gps_validation_required'),
+            'checkDescription.max' => __('portal.worker.errors.note_max'),
+            'checkPhotos.max' => __('portal.report.errors.photos_max'),
+            'checkPhotos.*.image' => __('portal.report.errors.photos_image'),
+            'checkPhotos.*.max' => __('portal.report.errors.photos_size'),
         ];
     }
 

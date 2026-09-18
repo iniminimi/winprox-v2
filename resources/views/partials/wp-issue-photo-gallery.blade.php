@@ -1,5 +1,5 @@
 {{--
-  Galerij van opgeslagen meldingsfoto's (beheer): kleine thumbnails, lightbox bij klik.
+  Galerij van opgeslagen foto's (beheer): kleine thumbnails, lightbox bij klik.
   Ontbrekende bestanden op disk worden niet getoond.
 --}}
 @props([
@@ -9,7 +9,9 @@
 
 @php
     $visiblePhotos = collect($photos)->filter(
-        fn ($photo) => $photo instanceof \App\Models\IssuePhoto && $photo->hasPublicFile(),
+        fn ($photo) => is_object($photo)
+            && method_exists($photo, 'hasPublicFile')
+            && $photo->hasPublicFile(),
     );
 @endphp
 

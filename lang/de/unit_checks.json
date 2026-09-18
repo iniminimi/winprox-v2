@@ -1,6 +1,6 @@
 {
     "title": "Unit-Checks",
-    "subtitle": "Verlauf von OK / Nicht OK Kontrollen per QR. Checklisten verwalten Sie unter der Seite Personen → Teams. Aktivieren Sie Unit-Checks zuerst an Kategorie und Unit.",
+    "subtitle": "Verlauf von OK / Nicht OK Kontrollen per QR. Checklisten verwalten Sie unter der Seite Personen → Teams. Aktivieren Sie Unit-Checks zuerst an Kategorie und Unit. Optionale Bemerkungen und Fotos gehören zur Kontrolle, nicht zur Meldungsliste.",
     "list_title": "Aktuelle Checks",
     "empty": "Noch keine Unit-Checks.",
     "worker_unknown": "Unbekannter Ausführender",
@@ -22,7 +22,8 @@
         "checked_at_invalid": "Ungültiger Zeitstempel.",
         "external_unit_id_required": "Externe Unit-ID ist erforderlich.",
         "external_unit_not_found": "Keine Unit mit dieser externen ID gefunden.",
-        "unit_checks_disabled": "Unit-Checks sind für diese Unit nicht aktiviert."
+        "unit_checks_disabled": "Unit-Checks sind für diese Unit nicht aktiviert.",
+        "description_max": "Die Bemerkung darf höchstens 500 Zeichen haben."
     },
     "lists": {
         "title": "Checklisten",

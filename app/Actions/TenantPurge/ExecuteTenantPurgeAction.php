@@ -10,6 +10,7 @@ use App\Models\IssuePhoto;
 use App\Models\QrLinkPhoto;
 use App\Models\Tenant;
 use App\Models\TenantPurgeRequest;
+use App\Models\UnitCheckPhoto;
 use App\Models\User;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\DB;
@@ -234,7 +235,19 @@ final class ExecuteTenantPurgeAction
                 }
             });
 
-            Document::query()
+        UnitCheckPhoto::query()
+            ->withoutGlobalScopes()
+            ->where('tenant_id', $tenant->id)
+            ->orderBy('id')
+            ->chunkById(100, function ($photos) use ($disk): void {
+                foreach ($photos as $photo) {
+                    if (is_string($photo->path) && $photo->path !== '') {
+                        $disk->delete($photo->path);
+                    }
+                }
+            });
+
+        Document::query()
             ->withoutGlobalScopes()
             ->where('tenant_id', $tenant->id)
             ->orderBy('id')

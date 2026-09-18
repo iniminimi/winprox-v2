@@ -293,7 +293,7 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "Cosa sono i controlli unità?",
-            "body": "I unit check sono conferme rapide OK/Non OK sul QR unità da parte degli esecutori (dopo Clock Point). Abilita prima su categoria e unità (disattivato di default). Le checklist opzionali si gestiscono in Team (condivise o collegate a un team; modelli pulizia, tecnica e security) e si collegano per unità. Per OK tutti i punti devono essere spuntati. Cronologia e filtri in Unit checks; webhook unit.check.recorded per integrazioni. Separato da segnalazioni e misure ESG.",
+            "body": "I unit check sono conferme rapide OK/Non OK sul QR unità da parte degli esecutori (dopo Clock Point). Abilita prima su categoria e unità (disattivato di default). Le checklist opzionali si gestiscono in Team (condivise o collegate a un team; modelli pulizia, tecnica e security) e si collegano per unità. Per OK tutti i punti devono essere spuntati. Cronologia e filtri in Unit checks; webhook unit.check.recorded per integrazioni. Separato da segnalazioni e misure ESG. Per unit puoi aggiungere una nota e fino a 4 foto al controllo; restano su quel controllo (storico e avanzamento ronda).",
             "summary": "OK/Non OK via QR unit (categoria + unit); checklist in Team; OK senza segnalazione; webhook unit.check.recorded."
         },
         "work_menu": {

@@ -21,6 +21,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Storage;
 
 afterEach(fn () => Tenancy::forget());
 
@@ -70,6 +71,41 @@ it('records an ok unit check for a worker', function () {
         ->and($check->checked_at->toIso8601String())->toBe($checkedAt->toIso8601String());
 
     Event::assertDispatched(UnitCheckRecorded::class);
+});
+
+it('records optional note and photos on the unit check', function () {
+    Storage::fake('public');
+    Event::fake([UnitCheckRecorded::class]);
+
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+    ]);
+    $jpeg = base64_decode(
+        '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A0AAA/9k=',
+        true,
+    );
+    $file = \Illuminate\Http\UploadedFile::fake()->createWithContent('check.jpg', $jpeg, 'image/jpeg');
+
+    $check = app(RecordUnitCheckAction::class)->handle(
+        unit: $unit,
+        data: new RecordUnitCheckData(
+            result: UnitCheckResult::Ok,
+            checkedAt: CarbonImmutable::now(),
+            description: 'Vloer nagekeken',
+            photos: [$file],
+        ),
+        tenantId: $tenant->id,
+    );
+
+    expect($check->description)->toBe('Vloer nagekeken')
+        ->and($check->photos)->toHaveCount(1)
+        ->and($check->photos->first()?->hasPublicFile())->toBeTrue()
+        ->and(\App\Models\Issue::query()->count())->toBe(0);
 });
 
 it('records not_ok without creating an issue', function () {

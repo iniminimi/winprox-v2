@@ -184,7 +184,7 @@ class SyncFieldOutboxItemAction
             FieldSyncType::TaskStart => $this->startTask($worker, $unit, $payload),
             FieldSyncType::TaskComplete => $this->completeTask($worker, $unit, $payload, $photos),
             FieldSyncType::IssueCreate => $this->createIssue($worker, $unit, $payload, $photos),
-            FieldSyncType::UnitCheck => $this->recordUnitCheck($worker, $unit, $payload),
+            FieldSyncType::UnitCheck => $this->recordUnitCheck($worker, $unit, $payload, $photos),
         };
     }
 
@@ -358,9 +358,10 @@ class SyncFieldOutboxItemAction
 
     /**
      * @param  array<string, mixed>  $payload
+     * @param  array<int, UploadedFile>  $photos
      * @return array<string, mixed>
      */
-    private function recordUnitCheck(Worker $worker, Unit $unit, array $payload): array
+    private function recordUnitCheck(Worker $worker, Unit $unit, array $payload, array $photos): array
     {
         if (! $unit->allowsUnitChecks()) {
             throw new FieldSyncException(__('portal.worker.errors.no_permission'), 422);
@@ -373,6 +374,8 @@ class SyncFieldOutboxItemAction
             'checkLongitude' => $payload['longitude'] ?? null,
             'checkCheckedAt' => $checkedAt !== '' ? $checkedAt : now()->toIso8601String(),
             'checkChecklistItems' => $payload['checklist_items'] ?? [],
+            'checkDescription' => $payload['description'] ?? '',
+            'checkPhotos' => $photos,
         ];
 
         $validator = Validator::make(
@@ -418,6 +421,8 @@ class SyncFieldOutboxItemAction
                 latitude: $input['checkLatitude'] !== null && $input['checkLatitude'] !== '' ? (float) $input['checkLatitude'] : null,
                 longitude: $input['checkLongitude'] !== null && $input['checkLongitude'] !== '' ? (float) $input['checkLongitude'] : null,
                 checklistItems: $selectedLabels === [] ? null : $selectedLabels,
+                description: is_string($input['checkDescription']) ? trim($input['checkDescription']) : null,
+                photos: $photos,
             ),
             tenantId: (int) $unit->tenant_id,
             worker: $worker,

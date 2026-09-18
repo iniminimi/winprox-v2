@@ -173,6 +173,38 @@ it('bewaart afhandelingsfoto’s via Clock Point gekoppeld aan de taak', functio
         ->and($update?->task_id)->toBe($task->id);
 });
 
+it('bewaart optionele opmerking en foto’s op de Clock Point unit check', function () {
+    Storage::fake('public');
+    $ctx = prepareClockPointWorker(gpsVisitContext());
+    [$tenant, $worker, $clockPoint, $location, $unit] = $ctx;
+    $unit->update(['allow_unit_checks' => true]);
+    $unit->category?->update(['allow_unit_checks' => true]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
+
+    $jpeg = base64_decode(
+        '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A0AAA/9k=',
+        true,
+    );
+    $file = UploadedFile::fake()->createWithContent('check.jpg', $jpeg, 'image/jpeg');
+
+    signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->call('openClockPointUnitCheck', $unit->id)
+        ->set('checkDescription', 'Keuken nagekeken')
+        ->set('checkPhotos', [$file])
+        ->call('submitClockPointUnitCheck', 'ok')
+        ->assertHasNoErrors()
+        ->assertSet('flashMessage', __('portal.unit_check.recorded_ok'));
+
+    $check = UnitCheck::query()->where('unit_id', $unit->id)->first();
+    expect($check)->not->toBeNull()
+        ->and($check?->description)->toBe('Keuken nagekeken')
+        ->and($check?->photos)->toHaveCount(1)
+        ->and(\App\Models\Issue::query()->count())->toBe(0);
+});
+
+
 it('weigert taakacties zonder open werkbezoek', function () {
     $ctx = prepareClockPointWorker(gpsVisitContext());
     [$tenant, $worker, $clockPoint] = $ctx;

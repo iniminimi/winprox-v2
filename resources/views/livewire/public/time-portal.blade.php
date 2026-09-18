@@ -275,6 +275,11 @@
                                     @error('checkChecklistItems') <p class="wp-error">{{ $message }}</p> @enderror
                                 </div>
                             @endif
+                            @include('partials.wp-portal-unit-check-evidence', [
+                                'descriptionId' => 'cp-check-description',
+                                'preferCamera' => true,
+                                'storeLocal' => false,
+                            ])
                             <div class="wp-cluster wp-cluster--wrap">
                                 <button type="button" class="btn btn--primary" wire:click="submitClockPointUnitCheck('ok')">
                                     {{ __('portal.unit_check.ok') }}

@@ -286,7 +286,10 @@
     },
     "unit_check": {
         "title": "Controllo unit",
-        "lead": "Conferma se questa unit è in ordine. Il GPS può essere usato come prova di posizione.",
+        "lead": "Conferma se questa unit è in ordine. Il GPS può essere usato come prova di posizione. Puoi aggiungere una breve nota e fino a 4 foto per questa unit.",
+        "note": "Nota (facoltativa)",
+        "note_placeholder": "In breve cosa hai visto o fatto…",
+        "photos": "Foto (facoltative)",
         "ok": "OK",
         "not_ok": "Non OK",
         "capturing_gps": "Recupero GPS…",

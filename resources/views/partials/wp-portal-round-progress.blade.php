@@ -56,6 +56,48 @@
                     @if ($metaParts !== [])
                         <p class="wp-round-stops__meta">{{ implode(' · ', $metaParts) }}</p>
                     @endif
+                    @if (filled($stop['description'] ?? null))
+                        <p class="wp-round-stops__note">{{ $stop['description'] }}</p>
+                    @endif
+                    @if (! empty($stop['photos']))
+                        <div
+                            class="wp-round-stops__photos wp-photo-gallery"
+                            x-data="{ lightboxSrc: null }"
+                            @keydown.escape.window="lightboxSrc = null"
+                        >
+                            <div class="wp-photo-grid wp-photo-grid--gallery">
+                                @foreach ($stop['photos'] as $photo)
+                                    <button
+                                        type="button"
+                                        class="wp-photo-thumb"
+                                        wire:key="round-stop-{{ $stop['unit_id'] }}-photo-{{ $photo['id'] }}"
+                                        @click="lightboxSrc = @js($photo['url'])"
+                                        aria-label="{{ __('issues.show.photo_enlarge') }}"
+                                    >
+                                        <img
+                                            src="{{ $photo['url'] }}"
+                                            alt=""
+                                            width="48"
+                                            height="48"
+                                            loading="lazy"
+                                            x-on:error="$el.closest('.wp-photo-thumb')?.remove()"
+                                        >
+                                    </button>
+                                @endforeach
+                            </div>
+                            <div
+                                class="wp-photo-lightbox"
+                                x-show="lightboxSrc"
+                                x-cloak
+                                x-transition.opacity
+                                role="dialog"
+                                aria-modal="true"
+                                @click="lightboxSrc = null"
+                            >
+                                <img :src="lightboxSrc" alt="" @click.stop>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </li>
         @endforeach

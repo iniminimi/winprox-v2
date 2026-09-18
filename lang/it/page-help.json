@@ -1471,7 +1471,7 @@
                 },
                 {
                     "label": "Cos’è un controllo unit?",
-                    "text": "Una conferma rapida sul QR della unit: OK o Non OK, con esecutore, data/ora e GPS opzionale. OK non crea una segnalazione."
+                    "text": "Una conferma rapida sul QR della unit: OK o Non OK, con esecutore, data/ora e GPS opzionale. OK non crea una segnalazione. Facoltativamente una nota (max. 500 caratteri) e fino a 4 foto; restano sul controllo, non nell’elenco segnalazioni."
                 },
                 {
                     "label": "Non OK",

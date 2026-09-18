@@ -68,17 +68,7 @@ class RecordUnitCheckAndApplyTasksAction
             $primary = $single ?? $round;
             $check = $this->recordUnitCheck->handle(
                 unit: $unit,
-                data: new RecordUnitCheckData(
-                    result: $data->result,
-                    checkedAt: $data->checkedAt,
-                    source: $data->source,
-                    latitude: $data->latitude,
-                    longitude: $data->longitude,
-                    taskId: $primary?->id,
-                    issueId: $primary?->issue_id,
-                    checklistItems: $data->checklistItems,
-                    externalId: $data->externalId,
-                ),
+                data: $data->forTask($primary?->id, $primary?->issue_id),
                 tenantId: $tenantId,
                 worker: $worker,
             );
@@ -94,16 +84,7 @@ class RecordUnitCheckAndApplyTasksAction
                     // Zelfde scan telt ook voor de ronde (aparte check-rij, 4b-scoped op round task_id).
                     $this->recordUnitCheck->handle(
                         unit: $unit,
-                        data: new RecordUnitCheckData(
-                            result: $data->result,
-                            checkedAt: $data->checkedAt,
-                            source: $data->source,
-                            latitude: $data->latitude,
-                            longitude: $data->longitude,
-                            taskId: $round->id,
-                            issueId: $round->issue_id,
-                            checklistItems: $data->checklistItems,
-                        ),
+                        data: $data->forTask($round->id, $round->issue_id, withExternalId: false),
                         tenantId: $tenantId,
                         worker: $worker,
                     );

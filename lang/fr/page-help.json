@@ -1479,7 +1479,7 @@
                 },
                 {
                     "label": "Qu’est-ce qu’un contrôle unit ?",
-                    "text": "Une confirmation rapide via le QR unit : OK ou Pas OK, avec exécutant, horodatage et GPS optionnel. OK ne crée pas de signalement."
+                    "text": "Une confirmation rapide via le QR unit : OK ou Pas OK, avec exécutant, horodatage et GPS optionnel. OK ne crée pas de signalement. Facultativement une remarque (max. 500 caractères) et jusqu’à 4 photos ; elles restent sur le contrôle, pas dans la liste des signalements."
                 },
                 {
                     "label": "Pas OK",

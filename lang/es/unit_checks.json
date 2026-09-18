@@ -1,6 +1,6 @@
 {
     "title": "Chequeos de unit",
-    "subtitle": "Historial de controles OK / No OK vía QR. Gestione las listas en la página Personas → Equipos. Active primero los unit checks en categoría y unidad.",
+    "subtitle": "Historial de controles OK / No OK vía QR. Gestione las listas en la página Personas → Equipos. Active primero los unit checks en categoría y unidad. Las notas y fotos opcionales quedan en el control, no en la lista de incidencias.",
     "list_title": "Chequeos recientes",
     "empty": "Aún no hay chequeos de unit.",
     "worker_unknown": "Ejecutor desconocido",
@@ -22,7 +22,8 @@
         "checked_at_invalid": "Fecha/hora no válida.",
         "external_unit_id_required": "El ID externo de la unidad es obligatorio.",
         "external_unit_not_found": "No se encontró ninguna unidad con este ID externo.",
-        "unit_checks_disabled": "Las comprobaciones unit no están activadas para esta unidad."
+        "unit_checks_disabled": "Las comprobaciones unit no están activadas para esta unidad.",
+        "description_max": "La nota puede tener 500 caracteres como máximo."
     },
     "lists": {
         "title": "Listas de comprobación",

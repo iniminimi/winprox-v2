@@ -1,6 +1,6 @@
 {
     "title": "Unit checks",
-    "subtitle": "History of OK / Not OK checks via QR. Manage checklists under the People → Teams page. First enable unit checks on category and unit.",
+    "subtitle": "History of OK / Not OK checks via QR. Manage checklists under the People → Teams page. First enable unit checks on category and unit. Optional notes and photos stay on the check, not on the issue list.",
     "list_title": "Recent checks",
     "empty": "No unit checks yet.",
     "worker_unknown": "Unknown worker",
@@ -22,7 +22,8 @@
         "checked_at_invalid": "Invalid timestamp.",
         "external_unit_id_required": "External unit ID is required.",
         "external_unit_not_found": "No unit found with this external ID.",
-        "unit_checks_disabled": "Unit checks are not enabled for this unit."
+        "unit_checks_disabled": "Unit checks are not enabled for this unit.",
+        "description_max": "The note may be at most 500 characters."
     },
     "lists": {
         "title": "Checklists",

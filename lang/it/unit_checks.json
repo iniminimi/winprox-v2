@@ -1,6 +1,6 @@
 {
     "title": "Controlli unit",
-    "subtitle": "Cronologia dei controlli OK / Non OK via QR. Gestisci le checklist nella pagina Persone → Team. Abilita prima i unit check su categoria e unità.",
+    "subtitle": "Cronologia dei controlli OK / Non OK via QR. Gestisci le checklist nella pagina Persone → Team. Abilita prima i unit check su categoria e unità. Note e foto facoltative restano sul controllo, non nell’elenco segnalazioni.",
     "list_title": "Controlli recenti",
     "empty": "Nessun controllo unit ancora.",
     "worker_unknown": "Esecutore sconosciuto",
@@ -22,7 +22,8 @@
         "checked_at_invalid": "Data/ora non valida.",
         "external_unit_id_required": "L'ID unit esterno è obbligatorio.",
         "external_unit_not_found": "Nessuna unit trovata con questo ID esterno.",
-        "unit_checks_disabled": "I unit check non sono abilitati per questa unit."
+        "unit_checks_disabled": "I unit check non sono abilitati per questa unit.",
+        "description_max": "La nota può contenere al massimo 500 caratteri."
     },
     "lists": {
         "title": "Checklist",

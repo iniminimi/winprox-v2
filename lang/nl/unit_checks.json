@@ -1,6 +1,6 @@
 {
     "title": "Unit checks",
-    "subtitle": "Historiek van OK / Niet OK controles via QR. Checklists beheer je onder pagina Personen → Teams. Schakel eerst Unit checks in op categorie én unit.",
+    "subtitle": "Historiek van OK / Niet OK controles via QR. Checklists beheer je onder pagina Personen → Teams. Schakel eerst Unit checks in op categorie én unit. Optionele opmerking en foto's horen bij de check, niet bij de meldingenlijst.",
     "list_title": "Recente checks",
     "empty": "Nog geen unit checks.",
     "worker_unknown": "Onbekende uitvoerder",
@@ -22,7 +22,8 @@
         "checked_at_invalid": "Ongeldig tijdstip.",
         "external_unit_id_required": "Externe unit-ID is verplicht.",
         "external_unit_not_found": "Geen unit gevonden met deze externe ID.",
-        "unit_checks_disabled": "Unit checks staan niet aan voor deze unit."
+        "unit_checks_disabled": "Unit checks staan niet aan voor deze unit.",
+        "description_max": "De opmerking mag maximaal 500 tekens zijn."
     },
     "lists": {
         "title": "Checklists",

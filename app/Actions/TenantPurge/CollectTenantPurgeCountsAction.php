@@ -24,6 +24,7 @@ use App\Models\ShiftType;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Models\UnitCheckPhoto;
 use App\Models\User;
 use App\Models\WebhookEndpoint;
 use App\Models\Worker;
@@ -50,6 +51,7 @@ final class CollectTenantPurgeCountsAction
             'issues' => Issue::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'issue_updates' => IssueUpdate::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'issue_photos' => IssuePhoto::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
+            'unit_check_photos' => UnitCheckPhoto::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'tasks' => Task::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'workers' => Worker::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'teams' => InternalTeam::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),

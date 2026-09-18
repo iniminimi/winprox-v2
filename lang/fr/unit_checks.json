@@ -1,6 +1,6 @@
 {
     "title": "Contrôles unit",
-    "subtitle": "Historique des contrôles OK / Pas OK via QR. Gérez les listes sous la page Personnes → Équipes. Activez d’abord les unit checks sur la catégorie et l’unité.",
+    "subtitle": "Historique des contrôles OK / Pas OK via QR. Gérez les listes sous la page Personnes → Équipes. Activez d’abord les unit checks sur la catégorie et l’unité. Les remarques et photos facultatives restent sur le contrôle, pas dans la liste des signalements.",
     "list_title": "Contrôles récents",
     "empty": "Aucun contrôle unit pour le moment.",
     "worker_unknown": "Exécutant inconnu",
@@ -22,7 +22,8 @@
         "checked_at_invalid": "Horodatage invalide.",
         "external_unit_id_required": "L'ID d'unité externe est obligatoire.",
         "external_unit_not_found": "Aucune unité trouvée avec cet ID externe.",
-        "unit_checks_disabled": "Les contrôles unit ne sont pas activés pour cette unité."
+        "unit_checks_disabled": "Les contrôles unit ne sont pas activés pour cette unité.",
+        "description_max": "La remarque peut contenir 500 caractères au maximum."
     },
     "lists": {
         "title": "Listes de contrôle",

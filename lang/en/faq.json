@@ -297,7 +297,7 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "What are unit checks?",
-            "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by field workers (after Clock Point). Enable first on category and unit (off by default). Optional checklists are managed under Teams (shared or linked to a team; starters for cleaning, technical and security) and linked per unit. For OK all points must be ticked. History and filters in Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements.",
+            "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by field workers (after Clock Point). Enable first on category and unit (off by default). Optional checklists are managed under Teams (shared or linked to a team; starters for cleaning, technical and security) and linked per unit. For OK all points must be ticked. History and filters in Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements. Per unit you can optionally add a note and up to 4 photos on the check; they stay on that check (history and round progress).",
             "summary": "OK/Not OK via unit QR (enable category + unit); checklists under Teams; OK does not create an issue; webhook unit.check.recorded."
         },
         "work_menu": {

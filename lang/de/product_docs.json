@@ -60,11 +60,11 @@
             },
             {
                 "title": "Unit-Checks",
-                "body": "Schnell melden, dass eine Unit in Ordnung ist — z. B. nach einer Security-Runde, Reinigungskontrolle oder technischen Prüfung. Am Unit-QR: OK oder Nicht OK; bei OK keine separate Meldung nötig. Optional zuerst eine Checkliste abhaken. Nicht OK bleibt neben dem normalen Meldefluss verfügbar."
+                "body": "Schnell melden, dass eine Unit in Ordnung ist — z. B. nach einer Security-Runde, Reinigungskontrolle oder technischen Prüfung. Am Unit-QR: OK oder Nicht OK; bei OK keine separate Meldung nötig. Optional zuerst eine Checkliste abhaken. Nicht OK bleibt neben dem normalen Meldefluss verfügbar. Pro Unit können Sie optional eine Bemerkung (max. 500 Zeichen) und bis zu 4 Fotos zur Kontrolle setzen; sie bleiben bei dieser Kontrolle (Historie und Rundenfortschritt), nicht in der Meldungsliste."
             },
             {
                 "title": "Inspektionsrunden",
-                "body": "Wiederkehrende Meldung mit fester Unit-Route (Stops), auch über Standorte hinweg. Planen über Arbeit → Inspektionsrunden → Inspektionsrunde planen (Stops, Intervall und Team in einem Schritt), oder über Meldungen oder den Melde-Assistenten. Arbeit → Inspektionsrunden ist eine eigene Liste nur mit Runden, keine normalen Meldungen. Nur Units mit Unit-Checks erscheinen in der Stoppliste; andere Units sind ausgeblendet. Die Routenreihenfolge legen Sie mit der nummerierten Stoppliste fest (Ankreuzen und Ziehen in derselben Liste; 1 = erster Stopp). Pro Zyklus eine Aufgabe; pro Stop Unit-Check OK, Nicht OK (mit Meldung; Beschreibung vorausgefüllt) oder Überspringen mit Grund. Fertig, wenn alle Stops dieses Zyklus erledigt sind. Mit Time + GPS-Arbeitsbesuchen erscheint der heutige Standort der Runde nach dem Einstempeln unter Clock Point → Wohin muss ich heute. Unter Offene Aufgaben sehen Sie Beschreibung, Priorität, Status und den nächsten Stopp. Die Schaltfläche Unit-Check erscheint erst nach Arbeit starten an diesem Standort; die vollständige Prüfung öffnet nach dieser Schaltfläche, ohne Unit-QR."
+                "body": "Wiederkehrende Meldung mit fester Unit-Route (Stops), auch über Standorte hinweg. Planen über Arbeit → Inspektionsrunden → Inspektionsrunde planen (Stops, Intervall und Team in einem Schritt), oder über Meldungen oder den Melde-Assistenten. Arbeit → Inspektionsrunden ist eine eigene Liste nur mit Runden, keine normalen Meldungen. Nur Units mit Unit-Checks erscheinen in der Stoppliste; andere Units sind ausgeblendet. Die Routenreihenfolge legen Sie mit der nummerierten Stoppliste fest (Ankreuzen und Ziehen in derselben Liste; 1 = erster Stopp). Pro Zyklus eine Aufgabe; pro Stop Unit-Check OK, Nicht OK (mit Meldung; Beschreibung vorausgefüllt) oder Überspringen mit Grund. Optional pro Stopp eine Bemerkung und bis zu 4 Fotos auf der Unit-Kontrolle dieses Zyklus. Fertig, wenn alle Stops dieses Zyklus erledigt sind. Mit Time + GPS-Arbeitsbesuchen erscheint der heutige Standort der Runde nach dem Einstempeln unter Clock Point → Wohin muss ich heute. Unter Offene Aufgaben sehen Sie Beschreibung, Priorität, Status und den nächsten Stopp. Die Schaltfläche Unit-Check erscheint erst nach Arbeit starten an diesem Standort; die vollständige Prüfung öffnet nach dieser Schaltfläche, ohne Unit-QR."
             },
             {
                 "title": "Unit-Messungen",
@@ -72,7 +72,7 @@
             },
             {
                 "title": "Photos",
-                "body": "Up to 4 photos per issue or completion (resized on the device before upload). Also: up to 4 unit photos and a background photo per unit for the QR portal. Visible immediately in the back office; reporter photos on the public portal only after approval."
+                "body": "Up to 4 photos per issue, completion or unit check (resized on the device before upload). Also: up to 4 unit photos and a background photo per unit for the QR portal. Visible immediately in the back office; reporter photos on the public portal only after approval."
             },
             {
                 "title": "GPS",

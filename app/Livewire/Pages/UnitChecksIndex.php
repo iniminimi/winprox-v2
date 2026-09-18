@@ -50,7 +50,7 @@ class UnitChecksIndex extends Component
     public function render(): View
     {
         $query = UnitCheck::query()
-            ->with(['unit', 'location', 'worker', 'team'])
+            ->with(['unit', 'location', 'worker', 'team', 'photos'])
             ->orderByDesc('checked_at')
             ->orderByDesc('id');
 

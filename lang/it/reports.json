@@ -57,7 +57,8 @@
         "start_at": "Inizio",
         "end_at": "Fine",
         "guest": "Ospite",
-        "email": "E-mail"
+        "email": "E-mail",
+        "photos": "Foto"
     },
     "yes": "Sì",
     "no": "No",

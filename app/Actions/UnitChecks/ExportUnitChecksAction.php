@@ -21,7 +21,7 @@ class ExportUnitChecksAction
 
         $query = UnitCheck::query()
             ->where('tenant_id', $tenantId)
-            ->with(['unit', 'location', 'worker', 'team'])
+            ->with(['unit', 'location', 'worker', 'team', 'photos'])
             ->when(
                 $filters->result !== 'all' && in_array($filters->result, UnitCheckResult::values(), true),
                 fn ($q) => $q->where('result', $filters->result)

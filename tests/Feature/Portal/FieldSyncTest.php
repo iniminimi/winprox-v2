@@ -111,6 +111,32 @@ function fieldSyncApprovedTask(array $ctx, array $taskOverrides = []): Task
     ], $taskOverrides));
 }
 
+it('records a field-sync unit check with optional note and photos', function () {
+    Storage::fake('public');
+    $ctx = fieldSyncScaffold();
+    $checkId = (string) Str::uuid();
+
+    $response = fieldSyncPost($ctx['device'], [
+        'client_id' => $checkId,
+        'type' => 'unit.check',
+        'unit_token' => 'field-sync-unit',
+        'payload' => json_encode([
+            'result' => 'ok',
+            'checked_at' => now()->toIso8601String(),
+            'description' => 'Offline nagekeken',
+        ]),
+    ], [fieldSyncPhoto('check.jpg')]);
+
+    $response->assertOk()
+        ->assertJsonPath('ok', true)
+        ->assertJsonPath('result.outcome', 'recorded');
+
+    $check = UnitCheck::query()->findOrFail((int) $response->json('result.check_id'));
+    expect($check->description)->toBe('Offline nagekeken')
+        ->and($check->photos)->toHaveCount(1)
+        ->and(Issue::query()->count())->toBe(0);
+});
+
 it('synchroniseert FIFO start, melding met foto’s, unit check en afronden zonder duplicaten bij retry', function () {
     Storage::fake('public');
     $ctx = fieldSyncScaffold();

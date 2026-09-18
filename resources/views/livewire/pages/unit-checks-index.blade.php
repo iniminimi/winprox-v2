@@ -79,6 +79,13 @@
                                             </a>
                                         @endif
                                     </p>
+                                    @if (filled($check->description))
+                                        <p class="wp-text-body">{{ $check->description }}</p>
+                                    @endif
+                                    @include('partials.wp-issue-photo-gallery', [
+                                        'photos' => $check->photos,
+                                        'wireKeyPrefix' => 'unit-check-'.$check->id,
+                                    ])
                                 </div>
                             </div>
                         @endforeach

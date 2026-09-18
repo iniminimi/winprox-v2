@@ -25,6 +25,7 @@ Record a quick **OK / Not OK** visit check on a unit (security rounds, cleaning 
 | `task_id` | integer | No | Optional link to a related task |
 | `issue_id` | integer | No | Optional link when a follow-up issue exists |
 | `checklist_items` | string[] | No | Labels of checked checklist points (when the unit has a checklist; templates are managed under **Teams** in the admin UI) |
+| `description` | string | No | Optional note (max 500). Stored on the check, not as an issue. |
 | `external_id` | string | No | Idempotency key from the caller (unique per tenant) |
 
 ### Example
@@ -66,6 +67,7 @@ Supports HTTP idempotency middleware (`Idempotency-Key` header) **and** optional
 | `latitude` / `longitude` | number | No | Pair required together |
 | `task_id` / `issue_id` | integer | No | Optional links |
 | `checklist_items` | string[] | No | Optional |
+| `description` | string | No | Optional note (max 500) |
 
 ### Example
 

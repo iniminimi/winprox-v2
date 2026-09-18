@@ -1471,7 +1471,7 @@
                 },
                 {
                     "label": "¿Qué es un chequeo de unit?",
-                    "text": "Una confirmación rápida en el QR de la unit: OK o No OK, con ejecutor, fecha/hora y GPS opcional. OK no crea un aviso."
+                    "text": "Una confirmación rápida en el QR de la unit: OK o No OK, con ejecutor, fecha/hora y GPS opcional. OK no crea un aviso. Opcionalmente una nota (máx. 500 caracteres) y hasta 4 fotos; quedan en el control, no en la lista de incidencias."
                 },
                 {
                     "label": "No OK",

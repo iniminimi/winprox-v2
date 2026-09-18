@@ -286,7 +286,10 @@
     },
     "unit_check": {
         "title": "Unit check",
-        "lead": "Confirm whether this unit is OK. Your GPS may be included as location proof.",
+        "lead": "Confirm whether this unit is OK. Your GPS may be included as location proof. You can add a short note and up to 4 photos for this unit.",
+        "note": "Note (optional)",
+        "note_placeholder": "Briefly what you saw or did…",
+        "photos": "Photos (optional)",
         "ok": "OK",
         "not_ok": "Not OK",
         "capturing_gps": "Getting GPS…",

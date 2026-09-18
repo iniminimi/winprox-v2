@@ -333,11 +333,17 @@ export async function wpFieldCreateIssue(form) {
     });
 }
 
-export async function wpFieldUnitCheck(payload) {
+export async function wpFieldUnitCheck(payload, form) {
+    if (form instanceof HTMLElement) {
+        await window.wpAwaitPhotoUploads?.(form);
+    }
+    const photos = form instanceof HTMLElement ? wpCollectLocalPhotos(form) : [];
+
     return wpFieldEnqueue({
         type: 'unit.check',
         unitToken: unitToken(),
         payload,
+        photos,
     });
 }
 

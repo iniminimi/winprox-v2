@@ -60,11 +60,11 @@
             },
             {
                 "title": "Unit checks",
-                "body": "Snel doorgeven dat een unit in orde is — bijvoorbeeld na een securityronde, schoonmaakcontrole of technische check. Via de unit-QR kies je OK of Niet OK; bij OK hoef je geen aparte melding te maken. Optioneel eerst een checklist afvinken. Niet OK blijft naast de gewone meldflow beschikbaar."
+                "body": "Snel doorgeven dat een unit in orde is — bijvoorbeeld na een securityronde, schoonmaakcontrole of technische check. Via de unit-QR kies je OK of Niet OK; bij OK hoef je geen aparte melding te maken. Optioneel eerst een checklist afvinken. Niet OK blijft naast de gewone meldflow beschikbaar. Per unit kun je optioneel een opmerking (max. 500 tekens) en tot 4 foto’s bij de check zetten; die horen bij die check (historiek en rondevoortgang), niet bij de meldingenlijst."
             },
             {
                 "title": "Inspectierondes",
-                "body": "Terugkerende melding met een vaste route van units (stops), ook over meerdere locaties. Plan via Werk → Inspectierondes → Inspectieronde plannen (stops, interval en team in één stap), of via Meldingen of de melding-wizard. Werk → Inspectierondes is een eigen lijst van alleen rondes, geen gewone meldingen. Alleen units met unit checks staan in de stop-lijst; andere units zijn verborgen. De loopvolgorde stel je in met de genummerde stop-lijst (aanvinken en slepen in dezelfde lijst; 1 = eerste stop). Per cyclus één taak; bij elke stop Unit check OK, Niet OK (met melding; omschrijving vooringevuld), of overslaan met reden. Klaar als alle stops van die cyclus afgehandeld zijn. Met Time + GPS-werkbezoeken verschijnt de locatie van een ronde die vandaag gepland is na inklokken onder Clock Point → Waar moet ik vandaag naartoe. Onder Open taken zie je omschrijving, prio, status en de volgende stop. De knop Unit check verschijnt pas na Start werk op die locatie; de volledige check opent na die knop, zonder unit-QR."
+                "body": "Terugkerende melding met een vaste route van units (stops), ook over meerdere locaties. Plan via Werk → Inspectierondes → Inspectieronde plannen (stops, interval en team in één stap), of via Meldingen of de melding-wizard. Werk → Inspectierondes is een eigen lijst van alleen rondes, geen gewone meldingen. Alleen units met unit checks staan in de stop-lijst; andere units zijn verborgen. De loopvolgorde stel je in met de genummerde stop-lijst (aanvinken en slepen in dezelfde lijst; 1 = eerste stop). Per cyclus één taak; bij elke stop Unit check OK, Niet OK (met melding; omschrijving vooringevuld), of overslaan met reden. Optioneel per stop een opmerking en tot 4 foto’s op de unit check van die cyclus. Klaar als alle stops van die cyclus afgehandeld zijn. Met Time + GPS-werkbezoeken verschijnt de locatie van een ronde die vandaag gepland is na inklokken onder Clock Point → Waar moet ik vandaag naartoe. Onder Open taken zie je omschrijving, prio, status en de volgende stop. De knop Unit check verschijnt pas na Start werk op die locatie; de volledige check opent na die knop, zonder unit-QR."
             },
             {
                 "title": "Unitmetingen",
@@ -72,7 +72,7 @@
             },
             {
                 "title": "Foto’s",
-                "body": "Tot 4 foto’s bij melding of afhandeling (verkleining op het toestel vóór upload). Daarnaast: tot 4 unitfoto’s en een achtergrondfoto per unit voor het QR-portaal. In beheer meteen zichtbaar; melderfoto’s op het publieke portaal pas na goedkeuring."
+                "body": "Tot 4 foto’s bij melding, afhandeling of unit check (verkleining op het toestel vóór upload). Daarnaast: tot 4 unitfoto’s en een achtergrondfoto per unit voor het QR-portaal. In beheer meteen zichtbaar; melderfoto’s op het publieke portaal pas na goedkeuring."
             },
             {
                 "title": "GPS",
