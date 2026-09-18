@@ -388,8 +388,24 @@ class TimePortal extends Component
             app(ClearWorkerTaskBaselineAction::class)->handle((int) $team->id);
         }
 
+        $this->forgetPortalSignInState();
+    }
+
+    public function signOut(): void
+    {
+        $verified = $this->verifiedWorker();
+        $team = $verified?->team;
+        if ($team !== null) {
+            WorkerVerification::clearForTeam((int) $team->id);
+        }
+
+        $this->forgetPortalSignInState();
+    }
+
+    private function forgetPortalSignInState(): void
+    {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 

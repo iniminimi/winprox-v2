@@ -1017,6 +1017,10 @@
                     "text": "Scannez le QR Clock Point et choisissez votre prénom, nom et icône personnelle (PIN optionnel) sur votre propre téléphone. Cela indique qui vous êtes — ce n'est pas encore pointer. Après connexion, le titre Connexion disparaît. Deux tentatives incorrectes bloquent temporairement votre compte ; un chef d'équipe ou un administrateur peut le débloquer."
                 },
                 {
+                    "label": "Se déconnecter",
+                    "text": "Après connexion vous pouvez Se déconnecter : le portail redemande alors votre icône (ou PIN). Ce n’est pas une sortie et cela ne détache pas le téléphone ; seul un admin ou un chef d’équipe libère l’appareil. La sortie reste sous Présence."
+                },
+                {
                     "label": "Tâches ouvertes",
                     "text": "Après nom et icône, vous voyez les tâches ouvertes de votre équipe. Avec Time + visites GPS, vous démarrez ou clôturez les tâches d'équipe sur Clock Point tant qu'une visite de travail est ouverte sur ce site client (note et photos facultatives). En haut vous voyez où vous êtes sur place et, une fois le travail ici terminé, le site suivant. Une tournée d'inspection affiche la description, la priorité, le statut et l'arrêt suivant. Le bouton Contrôle d'unité n'apparaît qu'après Commencer le travail sur ce site ; le contrôle complet (OK / Non OK / passer) s'ouvre ensuite."
                 },

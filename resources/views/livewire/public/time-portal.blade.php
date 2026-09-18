@@ -300,8 +300,13 @@
                         <p class="wp-muted">{{ __('portal.worker.errors.no_permission') }}</p>
                     @endif
                 @else
-                    <div class="wp-card wp-card-pad wp-cluster">
-                        <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
+                    <div class="wp-portal-worker-bar">
+                        <div class="wp-card wp-card-pad wp-cluster">
+                            <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
+                        </div>
+                        <div class="wp-portal-worker-actions">
+                            @include('partials.wp-portal-sign-out', ['signOutMethod' => 'signOut'])
+                        </div>
                     </div>
 
                     @if ($onSiteGuidance)

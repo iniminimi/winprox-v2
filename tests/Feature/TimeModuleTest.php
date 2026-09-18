@@ -495,7 +495,48 @@ it('verbergt de kop Aanmelden na een geslaagde aanmelding', function () {
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>')
         ->assertDontSeeHtml('<p class="wp-muted">Magazijn</p>')
         ->assertSee(__('common.welcome'), false)
-        ->assertSee('Jan Janssen', false);
+        ->assertSee('Jan Janssen', false)
+        ->assertSee(__('portal.worker.sign_out'), false)
+        ->assertDontSee(__('portal.worker.different_worker'), false);
+});
+
+it('sluit Afmelden de portaal-sessie zonder uit te klokken of de gsm los te koppelen', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'signed-in-can-sign-out',
+    ]);
+
+    $portal = Livewire::test(TimePortal::class, ['token' => 'signed-in-can-sign-out'])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('clockIn')
+        ->assertSee(__('portal.worker.sign_out'), false);
+
+    $boundDeviceId = (int) $worker->fresh()->clock_device_id;
+    expect($boundDeviceId)->toBeGreaterThan(0)
+        ->and(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue();
+
+    $portal
+        ->call('signOut')
+        ->assertDontSee(__('common.welcome'), false)
+        ->assertDontSeeHtml('wire:click="signOut"')
+        ->assertSee(__('portal.worker.confirm_icon'), false)
+        ->assertSee(__('portal.worker.different_worker'), false);
+
+    expect((int) $worker->fresh()->clock_device_id)->toBe($boundDeviceId)
+        ->and(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue();
 });
 
 it('toont het time-portaal en laat een worker inklokken na icoonbevestiging', function () {

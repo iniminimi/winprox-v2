@@ -406,7 +406,7 @@ it('toont Unit check pas na Start werk en verwart Afmelden niet met inklokken', 
     $portal = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>')
         ->assertDontSee(__('portal.worker.different_worker'), false)
-        ->assertDontSee(__('portal.worker.sign_out'), false)
+        ->assertSee(__('portal.worker.sign_out'), false)
         ->assertSee(__('time.portal.clock.not_clocked_in'), false)
         ->assertSee('Ronde zonder bezoek', false)
         ->assertDontSee(__('portal.team.complete_needs_visit'), false)

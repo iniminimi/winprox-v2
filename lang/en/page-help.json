@@ -1009,6 +1009,10 @@
                     "text": "Scan the Clock Point QR and choose your first and last name plus your personal icon (optional PIN) on your own phone. That is who you are — it is not clocking in yet. After sign-in the Sign in heading disappears. Two wrong attempts temporarily block your account; a team leader or administrator can release it."
                 },
                 {
+                    "label": "Sign out",
+                    "text": "After sign-in you can Sign out: the portal then asks for your icon (or PIN) again. That is not clock-out and does not unbind the phone; only an admin or team leader releases the device. Clock-out stays under Presence."
+                },
+                {
                     "label": "Open tasks",
                     "text": "After name and icon you see open tasks for your team. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). At the top you see where you are on site and, when work here is done, the next location. An inspection round shows description, priority, status and the next stop. The Unit check button appears only after Start work at that location; the full check (OK / Not OK / skip) opens after that."
                 },

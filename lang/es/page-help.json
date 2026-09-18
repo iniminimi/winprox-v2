@@ -1009,6 +1009,10 @@
                     "text": "Escanee el QR Clock Point y elija su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Eso indica quién es — aún no es fichar. Tras identificarse desaparece el título Inicio de sesión. Dos intentos incorrectos bloquean temporalmente su cuenta; un jefe de equipo o administrador puede desbloquearla."
                 },
                 {
+                    "label": "Cerrar sesión",
+                    "text": "Tras identificarte puedes Cerrar sesión: el portal vuelve a pedir tu icono (o PIN). No es una salida y no desvincula el móvil; solo un admin o un jefe de equipo libera el dispositivo. La salida sigue en Presencia."
+                },
+                {
                     "label": "Tareas abiertas",
                     "text": "Tras nombre e icono ve las tareas abiertas de su equipo. Con Time + visitas GPS inicia o cierra tareas de equipo en Clock Point mientras hay una visita de trabajo abierta en esa sede de cliente (nota y fotos opcionales). Arriba ves dónde estás in situ y, si el trabajo aquí está listo, la siguiente sede. Una ronda de inspección muestra descripción, prioridad, estado y la siguiente parada. El botón Unit check aparece solo después de Empezar el trabajo en esa sede; el control completo (OK / No OK / omitir) se abre después."
                 },

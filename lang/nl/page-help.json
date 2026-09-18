@@ -1009,6 +1009,10 @@
                     "text": "Scan de Clock Point-QR en kies je voor- en achternaam plus je persoonlijke icoon (optioneel pincode) op je eigen gsm. Dat zegt wie je bent — het is nog geen inklokken. Na aanmelden verdwijnt de kop Aanmelden. Twee foute pogingen blokkeren je account tijdelijk; een teamleider of beheerder kan dat vrijgeven."
                 },
                 {
+                    "label": "Afmelden",
+                    "text": "Na aanmelden kun je Afmelden: het portaal vraagt daarna opnieuw je icoon (of PIN). Dat is geen uitklokken en koppelt de gsm niet los; alleen beheer of een teamleader geeft het toestel vrij. Uitklokken blijft onder Aanwezigheid."
+                },
+                {
                     "label": "Open taken",
                     "text": "Na naam en icoon zie je de open taken van je team. Met Time + GPS-werkbezoeken start of rond je teamtaken af op Clock Point zolang er een open werkbezoek is op die klantlocatie (optionele notitie en foto's). Bovenaan zie je waar je ter plaatse bent en, als het werk hier klaar is, de volgende locatie. Een inspectieronde toont omschrijving, prio, status en de volgende stop. De knop Unit check verschijnt pas na Start werk op die locatie; de volledige check (OK / Niet OK / overslaan) opent daarna."
                 },
