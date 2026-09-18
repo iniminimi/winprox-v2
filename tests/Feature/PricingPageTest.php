@@ -1,6 +1,9 @@
 <?php
 
 declare(strict_types=1);
+use App\Livewire\Pages\Subscription;
+use App\Models\Tenant;
+use App\Models\User;
 
 it('toont publieke prijzenpagina met WinProx-jaarformules en Corporate voor gasten', function () {
     $this->get(route('pricing'))
@@ -25,11 +28,19 @@ it('toont publieke prijzenpagina met WinProx-jaarformules en Corporate voor gast
         ->assertSee(__('subscription.comparison_notes.corporate'))
         ->assertDontSee(__('subscription.plans.facility_25.price'))
         ->assertDontSee(__('subscription.time_addon.public_hint', ['price' => '€29']), false);
+
+    $html = $this->get(route('pricing'))->getContent();
+    $cardsAt = strpos($html, 'wp-billing-plan-list');
+    $detailsAt = strpos($html, 'wp-billing-plan-details');
+
+    expect($cardsAt)->toBeInt()
+        ->and($detailsAt)->toBeInt()
+        ->and($cardsAt)->toBeLessThan($detailsAt);
 });
 
 it('toont publieke prijzenpagina voor ingelogde gebruikers', function () {
-    $tenant = \App\Models\Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
-    $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     $this->actingAs($user)
         ->get(route('pricing'))
@@ -39,11 +50,11 @@ it('toont publieke prijzenpagina voor ingelogde gebruikers', function () {
 });
 
 it('toont plan-knoppen op abonnementenpagina voor beheerder', function () {
-    $tenant = \App\Models\Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
-    $admin = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     Livewire\Livewire::actingAs($admin)
-        ->test(\App\Livewire\Pages\Subscription::class)
+        ->test(Subscription::class)
         ->assertSee(__('subscription.choose_plan'), false)
         ->assertSee(__('subscription.plans.winprox_10.name'))
         ->assertSee(__('subscription.plans.winprox_25.name'))

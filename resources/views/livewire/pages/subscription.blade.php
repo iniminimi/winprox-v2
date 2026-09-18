@@ -158,109 +158,9 @@
     @endif
 
     <section class="wp-card wp-card-pad wp-billing-page-width">
-        <header class="wp-billing-product__intro wp-stack-tight">
+        <header class="wp-billing-product__intro">
             <h2 class="wp-section-title">{{ __('subscription.plans_heading') }}</h2>
-            <p class="wp-muted">{{ __('subscription.plans_intro') }}</p>
-            <p class="wp-muted">{{ __('subscription.yearly_invoice_notice') }}</p>
-            <h3 class="wp-subhead">{{ __('subscription.glossary.heading') }}</h3>
-            <ul class="wp-billing-status-list">
-                <li>{{ __('subscription.glossary.unit') }}</li>
-                <li>{{ __('subscription.glossary.document') }}</li>
-                <li>{{ __('subscription.glossary.seat') }}</li>
-                <li>{{ __('subscription.glossary.photo') }}</li>
-            </ul>
         </header>
-
-        @if ($publicMode)
-            <div class="wp-billing-comparison wp-stack-tight">
-                <h3 class="wp-subhead">{{ __('subscription.comparison_heading') }}</h3>
-                <div class="wp-billing-comparison-scroll">
-                    <table class="wp-billing-comparison-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">{{ __('subscription.comparison_col_plan') }}</th>
-                                <th scope="col">{{ __('subscription.comparison_col_price') }}</th>
-                                <th scope="col">{{ __('subscription.comparison_col_units') }}</th>
-                                <th scope="col">{{ __('subscription.comparison_col_documents') }}</th>
-                                <th scope="col">{{ __('subscription.comparison_col_seats') }}</th>
-                                <th scope="col">{{ __('subscription.comparison_col_time') }}</th>
-                                <th scope="col">{{ __('subscription.comparison_col_api') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">{{ __('subscription.plans.trial.name') }}</th>
-                                <td>{{ __('subscription.comparison_trial_price') }}</td>
-                                <td>50</td>
-                                <td>50</td>
-                                <td>50</td>
-                                <td>{{ __('subscription.comparison_included') }}</td>
-                                <td>{{ __('subscription.comparison_no') }}</td>
-                            </tr>
-                            @foreach ($planKeys as $planKey)
-                                @php
-                                    $planConfig = config("billing.plans.{$planKey}", []);
-                                    $unitsLimit = $planConfig['units_limit'] ?? null;
-                                    $docsLimit = $planConfig['documents_org_limit'] ?? null;
-                                    $seatsLimit = $planConfig['seats_limit'] ?? null;
-                                    $hasTimeVariant = is_string($planConfig['time_variant'] ?? null);
-                                @endphp
-                                <tr>
-                                    <th scope="row">{{ __("subscription.plans.{$planKey}.name") }}</th>
-                                    <td>{{ __("subscription.plans.{$planKey}.price") }}</td>
-                                    <td>
-                                        @if ($unitsLimit !== null)
-                                            {{ number_format((int) $unitsLimit, 0, ',', '.') }}
-                                        @elseif ($seatsLimit !== null)
-                                            {{ __('subscription.limits.unlimited') }}
-                                        @else
-                                            {{ __('subscription.comparison_custom') }}
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($docsLimit !== null)
-                                            {{ number_format((int) $docsLimit, 0, ',', '.') }}
-                                        @elseif ($seatsLimit !== null)
-                                            {{ __('subscription.limits.unlimited') }}
-                                        @else
-                                            {{ __('subscription.comparison_custom') }}
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($seatsLimit !== null)
-                                            {{ number_format((int) $seatsLimit, 0, ',', '.') }}
-                                        @else
-                                            {{ __('subscription.comparison_custom') }}
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if (! empty($planConfig['time_module']))
-                                            {{ __('subscription.comparison_yes') }}
-                                        @elseif ($hasTimeVariant)
-                                            {{ __('subscription.comparison_time_optional') }}
-                                        @else
-                                            {{ __('subscription.comparison_no') }}
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if (! empty($planConfig['api_access']))
-                                            {{ __('subscription.comparison_yes') }}
-                                        @else
-                                            {{ __('subscription.comparison_no') }}
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <ul class="wp-billing-status-list">
-                    <li>{{ __('subscription.comparison_notes.trial') }}</li>
-                    <li>{{ __('subscription.comparison_notes.unlimited') }}</li>
-                    <li>{{ __('subscription.comparison_notes.corporate') }}</li>
-                </ul>
-            </div>
-        @endif
 
         <div class="wp-billing-plan-list">
             @foreach ($planKeys as $planKey)
@@ -358,6 +258,109 @@
                     @endif
                 </article>
             @endforeach
+        </div>
+
+        <div class="wp-billing-plan-details wp-stack-tight">
+            <p class="wp-muted">{{ __('subscription.plans_intro') }}</p>
+            <p class="wp-muted">{{ __('subscription.yearly_invoice_notice') }}</p>
+            <h3 class="wp-subhead">{{ __('subscription.glossary.heading') }}</h3>
+            <ul class="wp-billing-status-list">
+                <li>{{ __('subscription.glossary.unit') }}</li>
+                <li>{{ __('subscription.glossary.document') }}</li>
+                <li>{{ __('subscription.glossary.seat') }}</li>
+                <li>{{ __('subscription.glossary.photo') }}</li>
+            </ul>
+
+            @if ($publicMode)
+                <div class="wp-billing-comparison wp-stack-tight">
+                    <h3 class="wp-subhead">{{ __('subscription.comparison_heading') }}</h3>
+                    <div class="wp-billing-comparison-scroll">
+                        <table class="wp-billing-comparison-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">{{ __('subscription.comparison_col_plan') }}</th>
+                                    <th scope="col">{{ __('subscription.comparison_col_price') }}</th>
+                                    <th scope="col">{{ __('subscription.comparison_col_units') }}</th>
+                                    <th scope="col">{{ __('subscription.comparison_col_documents') }}</th>
+                                    <th scope="col">{{ __('subscription.comparison_col_seats') }}</th>
+                                    <th scope="col">{{ __('subscription.comparison_col_time') }}</th>
+                                    <th scope="col">{{ __('subscription.comparison_col_api') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">{{ __('subscription.plans.trial.name') }}</th>
+                                    <td>{{ __('subscription.comparison_trial_price') }}</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>{{ __('subscription.comparison_included') }}</td>
+                                    <td>{{ __('subscription.comparison_no') }}</td>
+                                </tr>
+                                @foreach ($planKeys as $planKey)
+                                    @php
+                                        $planConfig = config("billing.plans.{$planKey}", []);
+                                        $unitsLimit = $planConfig['units_limit'] ?? null;
+                                        $docsLimit = $planConfig['documents_org_limit'] ?? null;
+                                        $seatsLimit = $planConfig['seats_limit'] ?? null;
+                                        $hasTimeVariant = is_string($planConfig['time_variant'] ?? null);
+                                    @endphp
+                                    <tr>
+                                        <th scope="row">{{ __("subscription.plans.{$planKey}.name") }}</th>
+                                        <td>{{ __("subscription.plans.{$planKey}.price") }}</td>
+                                        <td>
+                                            @if ($unitsLimit !== null)
+                                                {{ number_format((int) $unitsLimit, 0, ',', '.') }}
+                                            @elseif ($seatsLimit !== null)
+                                                {{ __('subscription.limits.unlimited') }}
+                                            @else
+                                                {{ __('subscription.comparison_custom') }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($docsLimit !== null)
+                                                {{ number_format((int) $docsLimit, 0, ',', '.') }}
+                                            @elseif ($seatsLimit !== null)
+                                                {{ __('subscription.limits.unlimited') }}
+                                            @else
+                                                {{ __('subscription.comparison_custom') }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($seatsLimit !== null)
+                                                {{ number_format((int) $seatsLimit, 0, ',', '.') }}
+                                            @else
+                                                {{ __('subscription.comparison_custom') }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if (! empty($planConfig['time_module']))
+                                                {{ __('subscription.comparison_yes') }}
+                                            @elseif ($hasTimeVariant)
+                                                {{ __('subscription.comparison_time_optional') }}
+                                            @else
+                                                {{ __('subscription.comparison_no') }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if (! empty($planConfig['api_access']))
+                                                {{ __('subscription.comparison_yes') }}
+                                            @else
+                                                {{ __('subscription.comparison_no') }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul class="wp-billing-status-list">
+                        <li>{{ __('subscription.comparison_notes.trial') }}</li>
+                        <li>{{ __('subscription.comparison_notes.unlimited') }}</li>
+                        <li>{{ __('subscription.comparison_notes.corporate') }}</li>
+                    </ul>
+                </div>
+            @endif
         </div>
     </section>
 
