@@ -1769,6 +1769,25 @@ button.wp-issue-row:disabled {
     color: var(--wp-accent);
 }
 
+.wp-today-destination__stop {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+}
+
+.wp-today-destination__stop:hover,
+.wp-today-destination__stop:focus-visible {
+    color: var(--wp-accent);
+}
+
 .wp-today-destination__pin {
     width: 1.25rem;
     height: 1.25rem;

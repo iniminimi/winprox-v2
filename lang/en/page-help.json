@@ -813,7 +813,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Placed at the entrance, warehouse or workshop. Workers sign in here (name + icon). Clocking in/out requires Time (punch clock). With GPS work visits they can complete team tasks on Clock Point; unit checks stay on the unit QR."
+                    "text": "Placed at the entrance, warehouse or workshop. Workers sign in here (name + icon). Clocking in/out requires Time (punch clock). With GPS work visits they can complete team tasks and the next inspection stop (unit check) on Clock Point."
                 }
             ]
         },
@@ -1010,15 +1010,15 @@
                 },
                 {
                     "label": "Open tasks",
-                    "text": "After signing in you see open tasks for your team. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). Today's inspection rounds appear under Where do I need to go today after clock-in. Unit checks stay on the unit QR."
+                    "text": "After signing in you see open tasks for your team. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). Today's inspection rounds appear under Where do I need to go today and under Open tasks after clock-in. On site you tap the next stop (unit check) without the unit QR."
                 },
                 {
                     "label": "Clock in and out",
-                    "text": "Each clock-in, clock-out or move needs a fresh scan of the Clock Point QR on site — an open tab is not enough. You can start breaks on the same phone without a new scan. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). With GPS work visits: start work on site, then team tasks on Clock Point; unit checks stay on the unit QR."
+                    "text": "Each clock-in, clock-out or move needs a fresh scan of the Clock Point QR on site — an open tab is not enough. You can start breaks on the same phone without a new scan. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). With GPS work visits: start work on site, then team tasks and the next inspection stop on Clock Point."
                 },
                 {
                     "label": "Where do I need to go today",
-                    "text": "After clock-in (Time with GPS work visits) you see where you need to go today: destinations grouped by location, including stops of an inspection round. Tap the GPS icon at the location (customer) for the Google Maps route; units with their own pin have their own icon. Start work appears at the location or a unit pin when you are on site. You can then complete team tasks on Clock Point. Unit checks stay on the unit QR. Open tasks without a date stay under Open tasks."
+                    "text": "After clock-in (Time with GPS work visits) you see where you need to go today: destinations grouped by location, including stops of an inspection round. Tap the GPS icon at the location (customer) for the Google Maps route; units with their own pin have their own icon. Start work appears at the location or a unit pin when you are on site. On site you tap a unit to do the inspection stop (unit check). Open tasks without a date stay under Open tasks."
                 },
                 {
                     "label": "Evacuation list",

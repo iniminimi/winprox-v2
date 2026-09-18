@@ -813,7 +813,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Si trova all’ingresso, magazzino o officina. Qui gli esecutori si identificano (nome + icona). Timbrare richiede Time (timbratrice). Con visite GPS possono chiudere le attività di squadra su Clock Point; i controlli unità restano sul QR unità."
+                    "text": "Si trova all’ingresso, magazzino o officina. Qui gli esecutori si identificano (nome + icona). Timbrare richiede Time (timbratrice). Con visite GPS possono chiudere le attività di squadra e la prossima fermata di ispezione (controllo unità) su Clock Point."
                 }
             ]
         },
@@ -1010,15 +1010,15 @@
                 },
                 {
                     "label": "Attività aperte",
-                    "text": "Dopo l'accesso vede le attività aperte del Suo team. Con Time + visite GPS avvia o chiude le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). I giri di ispezione di oggi compaiono in Dove devo andare oggi dopo la timbratura. I controlli unità restano sul QR unità."
+                    "text": "Dopo l'accesso vede le attività aperte del Suo team. Con Time + visite GPS avvia o chiude le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). I giri di ispezione di oggi compaiono in Dove devo andare oggi e in Attività aperte dopo la timbratura. Sul posto tocchi la prossima fermata (controllo unità) senza il QR unità."
                 },
                 {
                     "label": "Timbra entrata e uscita",
-                    "text": "Ogni ingresso, uscita o spostamento richiede una nuova scansione del QR Clock Point in sede: una scheda aperta non basta. Le pause si possono avviare sullo stesso telefono senza nuova scansione. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Con visite GPS: avvia il lavoro sul posto, poi le attività di squadra su Clock Point; i controlli unità restano sul QR unità."
+                    "text": "Ogni ingresso, uscita o spostamento richiede una nuova scansione del QR Clock Point in sede: una scheda aperta non basta. Le pause si possono avviare sullo stesso telefono senza nuova scansione. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Con visite GPS: avvia il lavoro sul posto, poi le attività di squadra e la prossima fermata di ispezione su Clock Point."
                 },
                 {
                     "label": "Dove devo andare oggi",
-                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: destinazioni raggruppate per sede, comprese le fermate di un giro di ispezione. Tocca l'icona GPS della sede (cliente) per il percorso in Google Maps; le unità con pin proprio hanno un'icona propria. Inizia il lavoro compare sulla sede o su un pin unità sul posto. Poi puoi chiudere le attività di squadra su Clock Point. I controlli unità restano sul QR unità. Le attività aperte senza data restano in Attività aperte."
+                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: destinazioni raggruppate per sede, comprese le fermate di un giro di ispezione. Tocca l'icona GPS della sede (cliente) per il percorso in Google Maps; le unità con pin proprio hanno un'icona propria. Inizia il lavoro compare sulla sede o su un pin unità sul posto. Sul posto tocchi un’unità per fare la fermata di ispezione (controllo unità). Le attività aperte senza data restano in Attività aperte."
                 },
                 {
                     "label": "Elenco evacuazione",

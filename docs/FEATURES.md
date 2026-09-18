@@ -529,7 +529,8 @@ stops meer zijn voor **deze** cyclus-taak.
   (en self-heal bij openen melding). Ronde met <2 stops over houdt geen stops meer.
 - **Fase 2:** strikte stop-volgorde (alleen de eerstvolgende open stop mag OK/skip);
   rijke progress-UI (balk + genummerde stops met status, datum/uur en uitvoerder)
-  op **unit-QR (elke stop)** én op **taakdetail in beheer**.
+  op **unit-QR (elke stop)** én op **taakdetail in beheer**. Met Time +
+  GPS-werkbezoeken ook op Clock Point ter plaatse (volgende stop).
 
 ### Fasering
 | Fase | Levert | Status |
@@ -737,16 +738,17 @@ productsector op `Tenant`.
   inspectieronde-cyclus krijgt die datums uit `recurrence_next_due_at`; een
   bestaande undated ronde-taak telt mee als `recurrence_next_due_at` vandaag is.
   **Geen** overige undated open taken (die blijven onder Open taken).
-  Inspectierondes zelf verdwijnen uit Open taken (GPS-bezoeken aan): de stops
-  staan op deze kaart. Klik op **locatie + GPS-icoon** voor de Google Maps deep
-  link (locatie-pin, anders adres — nooit `unit_gps_reports`). Units met eigen
-  pin hebben een eigen icoon. Units zonder pin staan alleen als naam. **Start werk**
+  Inspectierondes blijven onder Open taken (volgende stop). Units met eigen
+  pin hebben een eigen icoon. Units zonder pin staan als naam; **ter plaatse**
+  (open `WorkVisit` op die locatie) is de naam een knop naar de unit check.
+  **Start werk**
   één keer per locatie (locatie-pin) plus per unit met eigen pin, alleen binnen de
-  bestaande GPS-straal via `StartWorkVisitAction`. **Teamtaken** (geen
-  inspectieronde) starten en afronden op Clock Point met optionele notitie
+  bestaande GPS-straal via `StartWorkVisitAction`. **Teamtaken** starten en
+  afronden op Clock Point met optionele notitie
   en foto’s, zolang er een open `WorkVisit` is op de klantlocatie van de
-  taak — het bezoek vervangt de unit-sticker. Unit-checks en inspectiestops
-  blijven via de unit-QR. Navigeren maakt geen `WorkVisit` en geen CIAO.
+  taak — het bezoek vervangt de unit-sticker. **Inspectiestops** (unit check
+  OK / Niet OK / overslaan) idem ter plaatse, in stopvolgorde; unit-QR blijft
+  het pad zonder GPS-bezoek. Navigeren maakt geen `WorkVisit` en geen CIAO.
   **Zoek werkplek in de buurt** stelt gepinde units voor, en locaties met pin als
   daar geen nabije unit was. Een dienst met nul bezoeken blijft geldig.
 - **Beheer:** Werk → **Werkbezoeken** toont de historiek (periode, uitvoerder, locatie,
@@ -876,7 +878,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   (naam + icoon), in-/uitklokken en teamtaken-overzicht. Zonder GPS-werkbezoeken blijven
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
   starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;
-  unit-checks en inspectiestops blijven via de unit-QR.
+  inspectiestops (unit check) ter plaatse op dezelfde bezoek-locatie, in stopvolgorde.
 
 ### 6.3 Workers
 - Sidebar **Personen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status.
@@ -1227,7 +1229,8 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   (afhandelen via **unit-QR**). Met Time + GPS-werkbezoeken: teamtaken starten/afronden
   op Clock Point (notitie + foto’s) zolang een open `WorkVisit` de klantlocatie van de
   taak dekt; inspectierondes van vandaag staan na inklokken onder **Vandaag**
-  (Navigeer / Start werk); unit-checks en inspectiestops blijven via de unit-QR.
+  en onder Open taken; ter plaatse tik je de volgende stop (unit check) zonder
+  unit-QR. Zonder GPS-bezoek blijven unit-checks via de unit-QR.
   (Vervangt de oude team-QR `/team/{token}`.)
   Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en optioneel tegel
   **Evacuatielijst** (brandicoon) na aanmelden — alleen als Instellingen → Prikklok-beveiliging
