@@ -390,24 +390,51 @@
                         @if ($openShift !== null && ($gpsVisits ?? false))
                             <div class="wp-card wp-card-pad wp-stack" data-manual-capture="time-today">
                                 <h2 class="wp-section-title">{{ __('time.portal.today.title') }}</h2>
-                                <p class="wp-muted">{{ __('time.portal.today.subtitle') }}</p>
-                                @forelse ($todayDestinations as $destination)
-                                    <div class="wp-stack" wire:key="today-dest-{{ $destination['key'] }}">
-                                        <strong class="wp-text-body">{{ $destination['location_name'] }}</strong>
-                                        @if ($destination['unit_name'])
-                                            <p class="wp-text-body">{{ $destination['unit_name'] }}</p>
+                                @forelse ($todayDestinations as $group)
+                                    @php
+                                        $placeLabel = $group['location_name'];
+                                        if ($group['address_line'] !== '') {
+                                            $placeLabel .= ', '.$group['address_line'];
+                                        }
+                                    @endphp
+                                    <div class="wp-today-destination" wire:key="today-loc-{{ $group['location_id'] }}">
+                                        @if ($group['location_maps_url'] && $group['units'] === [])
+                                            <a
+                                                class="wp-today-destination__place wp-today-destination__nav"
+                                                href="{{ $group['location_maps_url'] }}"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                aria-label="{{ __('time.portal.today.navigate') }}"
+                                            >
+                                                <span>{{ $placeLabel }}</span>
+                                                @include('partials.wp-gps-pin-icon', ['class' => 'wp-today-destination__pin'])
+                                            </a>
+                                        @else
+                                            <p class="wp-today-destination__place">{{ $placeLabel }}</p>
                                         @endif
-                                        @if ($destination['address_line'] !== '')
-                                            <p class="wp-muted">{{ $destination['address_line'] }}</p>
+                                        @if ($group['units'] !== [])
+                                            <ul class="wp-today-destination__units">
+                                                @foreach ($group['units'] as $destination)
+                                                    <li class="wp-today-destination__unit" wire:key="today-dest-{{ $destination['key'] }}">
+                                                        <a
+                                                            class="wp-today-destination__nav"
+                                                            href="{{ $destination['maps_url'] }}"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            aria-label="{{ __('time.portal.today.navigate') }}"
+                                                        >
+                                                            <span>{{ $destination['unit_name'] }}</span>
+                                                            @include('partials.wp-gps-pin-icon', ['class' => 'wp-today-destination__pin'])
+                                                        </a>
+                                                        <template x-if="inRange(@js($destination))">
+                                                            <button type="button" class="btn btn--surface" @click="withFreshGps('startWorkVisit', {{ (int) ($destination['unit_id'] ?? 0) }})">
+                                                                {{ __('time.portal.today.start_work') }}
+                                                            </button>
+                                                        </template>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         @endif
-                                        <a class="btn btn--primary btn--block" href="{{ $destination['maps_url'] }}" target="_blank" rel="noopener noreferrer">
-                                            {{ __('time.portal.today.navigate') }}
-                                        </a>
-                                        <template x-if="inRange(@js($destination))">
-                                            <button type="button" class="btn btn--surface btn--block" @click="withFreshGps('startWorkVisit', {{ (int) ($destination['unit_id'] ?? 0) }})">
-                                                {{ __('time.portal.today.start_work') }}
-                                            </button>
-                                        </template>
                                     </div>
                                 @empty
                                     <p class="wp-muted">{{ __('time.portal.today.empty') }}</p>

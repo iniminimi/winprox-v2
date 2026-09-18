@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Planificar ronda de inspección",
-                    "text": "Botón aparte junto a Añadir incidencia: al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea un aviso recurrente con paradas de ronda e inicia de inmediato la primera tarea. El listado de rondas está en Trabajo → Rondas de inspección. Con Time + visitas GPS, las paradas de hoy aparecen tras fichar en Clock Point → Hoy."
+                    "text": "Botón aparte junto a Añadir incidencia: al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea un aviso recurrente con paradas de ronda e inicia de inmediato la primera tarea. El listado de rondas está en Trabajo → Rondas de inspección. Con Time + visitas GPS, las paradas de hoy aparecen tras fichar en Clock Point → Adónde debo ir hoy."
                 },
                 {
                     "label": "Intervalo",
@@ -116,7 +116,7 @@
                 },
                 {
                     "label": "Planificar ronda de inspección",
-                    "text": "Elija al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea una incidencia recurrente con paradas de ronda y arranca de inmediato la primera tarea. Con Time + visitas GPS, las paradas de hoy aparecen tras fichar en Clock Point → Hoy."
+                    "text": "Elija al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea una incidencia recurrente con paradas de ronda y arranca de inmediato la primera tarea. Con Time + visitas GPS, las paradas de hoy aparecen tras fichar en Clock Point → Adónde debo ir hoy."
                 },
                 {
                     "label": "Intervalo",
@@ -1002,15 +1002,15 @@
                 },
                 {
                     "label": "Tareas abiertas",
-                    "text": "Tras iniciar sesión ve un resumen de solo lectura de las tareas abiertas de su equipo. Las rondas de inspección de hoy aparecen en Hoy tras fichar. Para completar una tarea o un unit check, escanee el QR de unidad en el lugar."
+                    "text": "Tras iniciar sesión ve un resumen de solo lectura de las tareas abiertas de su equipo. Las rondas de inspección de hoy aparecen en Adónde debo ir hoy tras fichar. Para completar una tarea o un unit check, escanee el QR de unidad en el lugar."
                 },
                 {
                     "label": "Fichar entrada y salida",
                     "text": "Cada entrada, salida o traslado exige un escaneo nuevo del QR de Clock Point en la sede: una pestaña abierta no basta. Las pausas se pueden iniciar en el mismo móvil sin un nuevo escaneo. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Luego usa el QR de unidad in situ para las tareas."
                 },
                 {
-                    "label": "Hoy",
-                    "text": "Tras fichar (Time con visitas GPS) la tarjeta Hoy muestra destinos planificados para hoy, incluidas las paradas de una ronda de inspección. Pulse Navegar para la ruta en Google Maps. Empezar el trabajo aparece solo in situ. Los unit checks siguen en el QR de unidad. Las tareas abiertas sin fecha siguen en Tareas abiertas."
+                    "label": "Adónde debo ir hoy",
+                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: destinos agrupados por sede, incluidas las paradas de una ronda de inspección. Pulsa el icono GPS de una unidad para la ruta en Google Maps. Empezar el trabajo aparece solo in situ. Los unit checks siguen en el QR de unidad. Las tareas abiertas sin fecha siguen en Tareas abiertas."
                 },
                 {
                     "label": "Lista de evacuación",

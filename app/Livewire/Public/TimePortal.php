@@ -1086,13 +1086,52 @@ class TimePortal extends Component
         }
 
         try {
-            return array_map(
+            return $this->groupTodayDestinationsByLocation(array_map(
                 fn ($row) => $row->toArray(),
                 $listDestinations->handle($tenant, $worker),
-            );
+            ));
         } catch (InvalidArgumentException) {
             return [];
         }
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $rows
+     * @return list<array{
+     *     location_id: int,
+     *     location_name: string,
+     *     address_line: string,
+     *     location_maps_url: ?string,
+     *     units: list<array<string, mixed>>
+     * }>
+     */
+    private function groupTodayDestinationsByLocation(array $rows): array
+    {
+        $groups = [];
+
+        foreach ($rows as $row) {
+            $locationId = (int) $row['location_id'];
+            if (! isset($groups[$locationId])) {
+                $groups[$locationId] = [
+                    'location_id' => $locationId,
+                    'location_name' => (string) $row['location_name'],
+                    'address_line' => (string) $row['address_line'],
+                    'location_maps_url' => null,
+                    'units' => [],
+                ];
+            }
+
+            $unitName = trim((string) ($row['unit_name'] ?? ''));
+            if ($unitName !== '') {
+                $groups[$locationId]['units'][] = $row;
+
+                continue;
+            }
+
+            $groups[$locationId]['location_maps_url'] = (string) $row['maps_url'];
+        }
+
+        return array_values($groups);
     }
 
     private function markPortalVerified(Worker $worker): bool

@@ -83,6 +83,51 @@ it('toont twee bestemmingen voor twee taken op twee locaties vandaag', function 
         ->and(collect($rows)->pluck('unitId')->all())->toEqualCanonicalizing([(int) $unit->id, (int) $unitB->id]);
 });
 
+it('groepeert Clock Point-bestemmingen per locatie met GPS-icoon', function () {
+    ensureTestEncryptionKey();
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $locationB = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Hotel De Brug',
+        'street' => 'Kerkstraat',
+        'house_number' => '12',
+        'postal_code' => '8000',
+        'city' => 'Brugge',
+    ]);
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationB->id,
+        'name' => 'Kamer 214',
+        'latitude' => 51.21,
+        'longitude' => 3.22,
+        'is_active' => true,
+    ]);
+    $worker->update([
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint->update(['qr_token' => 'today-group-'.$tenant->id]);
+    $location->update(['name' => 'Campus Noord']);
+    $unit->update(['name' => 'Gebouw A']);
+    workDestTodayTask([$tenant, $worker], $unit, $location);
+    workDestTodayTask([$tenant, $worker], $unitB, $locationB);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('clockIn')
+        ->assertSee('Campus Noord, Teststraat 1, 1000 Brussel', false)
+        ->assertSee('Hotel De Brug, Kerkstraat 12, 8000 Brugge', false)
+        ->assertSee('Gebouw A', false)
+        ->assertSee('Kamer 214', false)
+        ->assertSeeHtml('wp-today-destination__pin')
+        ->assertDontSeeHtml('btn btn--primary btn--block">'.__('time.portal.today.navigate'));
+});
+
 it('ontdubbelt twee taken op dezelfde unit tot één bestemming', function () {
     [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
     workDestTodayTask([$tenant, $worker], $unit, $location, ['scheduled_for' => now()->toDateString()]);
@@ -359,7 +404,7 @@ it('toont Vandaag en Zoek werkplek in de buurt na inklokken, zonder WorkVisit', 
         ->call('signInWithIcon')
         ->call('clockIn')
         ->assertSee(__('time.portal.today.title'), false)
-        ->assertSee(__('time.portal.today.subtitle'), false)
+        ->assertSeeHtml('wp-today-destination')
         ->assertSee('Hotel De Brug', false)
         ->assertSee('Kamer 214', false)
         ->assertSee(__('time.portal.today.navigate'), false)

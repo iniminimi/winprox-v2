@@ -718,19 +718,21 @@ productsector op `Tenant`.
   bezoek blijven het bestaande OUT/IN. placeOfWork = gsm-coords of unit-pin; DDT blijft op
   de locatie (klant).
 - Publieke winprox.app-homepage doet **geen** GPS-voorstel van bedrijven.
-- **Clock Point na inklokken (Time + GPS-werkbezoeken):** kaart **Vandaag** = waar de
-  uitvoerder *vandaag* naartoe moet. Bron: open teamtaken met `scheduled_for` of
-  `due_at` vandaag (inspectiestops uitgeklapt) + optioneel de gepubliceerde
-  roostercel van vandaag met `unit_id`. Eerste inspectieronde-cyclus krijgt die
-  datums uit `recurrence_next_due_at`; een bestaande undated ronde-taak telt
-  mee als `recurrence_next_due_at` vandaag is. **Geen** overige undated open
-  taken (die blijven onder Open taken). Inspectierondes zelf verdwijnen uit
-  Open taken (GPS-bezoeken aan): de stops staan op Vandaag. Per rij: locatie ·
-  unit · adres · **Navigeer** (Google Maps deep link: unit-pin, anders
-  locatieadres — nooit `unit_gps_reports`). **Start werk** alleen binnen de
-  bestaande GPS-straal via `StartWorkVisitAction`. Unit-checks blijven via de
-  unit-QR. Navigeer maakt geen `WorkVisit` en geen CIAO. **Zoek werkplek in de
-  buurt** blijft voor ongepland werk. Een dienst met nul bezoeken blijft geldig.
+- **Clock Point na inklokken (Time + GPS-werkbezoeken):** kaart **Waar moet ik
+  vandaag naartoe** = waar de uitvoerder *vandaag* naartoe moet, gegroepeerd
+  per locatie (locatienaam + adres, daaronder units met GPS-icoon). Bron: open
+  teamtaken met `scheduled_for` of `due_at` vandaag (inspectiestops uitgeklapt)
+  + optioneel de gepubliceerde roostercel van vandaag met `unit_id`. Eerste
+  inspectieronde-cyclus krijgt die datums uit `recurrence_next_due_at`; een
+  bestaande undated ronde-taak telt mee als `recurrence_next_due_at` vandaag is.
+  **Geen** overige undated open taken (die blijven onder Open taken).
+  Inspectierondes zelf verdwijnen uit Open taken (GPS-bezoeken aan): de stops
+  staan op deze kaart. Klik op **unit + GPS-icoon** voor de Google Maps deep
+  link (unit-pin, anders locatieadres — nooit `unit_gps_reports`). **Start werk**
+  alleen binnen de bestaande GPS-straal via `StartWorkVisitAction`. Unit-checks
+  blijven via de unit-QR. Navigeren maakt geen `WorkVisit` en geen CIAO.
+  **Zoek werkplek in de buurt** blijft voor ongepland werk. Een dienst met nul
+  bezoeken blijft geldig.
 - **Beheer:** Werk → **Werkbezoeken** toont de historiek (periode, uitvoerder, locatie,
   open/afgesloten), één kader per uitvoerder per dag met duur per locatie. Time → **Aanwezigheid** toont het
   open werkbezoek (locatie · unit).

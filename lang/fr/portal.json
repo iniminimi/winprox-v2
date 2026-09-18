@@ -147,7 +147,7 @@
     "team": {
         "title": "Aperçu de l'équipe",
         "read_only_hint": "Ceci est un aperçu. La réalisation des tâches n'est possible que via le QR de l'unité sur place.",
-        "read_only_hint_visits": "Après le pointage, Aujourd'hui indique où vous devez aller. Les contrôles d'unité se font via le QR de l'unité sur place.",
+        "read_only_hint_visits": "Après le pointage, vous voyez où vous devez aller aujourd'hui. Les contrôles d'unité se font via le QR de l'unité sur place.",
         "onboarding_done": "Vous êtes enregistré et connecté.",
         "icon_taken": "Cette icône est déjà utilisée. Choisissez-en une autre.",
         "register": {

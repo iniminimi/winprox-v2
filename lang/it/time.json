@@ -325,8 +325,7 @@
         "visit_started": "Visita di lavoro avviata.",
         "visit_ended": "Visita di lavoro terminata.",
         "today": {
-            "title": "Oggi",
-            "subtitle": "Dove devo andare oggi?",
+            "title": "Dove devo andare oggi:",
             "empty": "Nessuna visita pianificata per oggi",
             "navigate": "Naviga",
             "start_work": "Inizia il lavoro"

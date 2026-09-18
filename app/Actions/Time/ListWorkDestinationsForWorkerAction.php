@@ -19,7 +19,7 @@ use Illuminate\Support\Carbon;
 use InvalidArgumentException;
 
 /**
- * Planned destinations for Clock Point "Vandaag": today's dated team work,
+ * Planned destinations for Clock Point "Waar moet ik vandaag naartoe": today's dated team work,
  * expanded inspection-round stops, plus today's published roster unit.
  * Undated open tasks stay out, except an undated inspection-round cycle
  * whose issue.recurrence_next_due_at falls today.

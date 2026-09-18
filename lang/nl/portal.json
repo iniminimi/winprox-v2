@@ -147,7 +147,7 @@
     "team": {
         "title": "Teamoverzicht",
         "read_only_hint": "Dit is een overzicht. Taken afhandelen kan alleen via de unit-QR ter plaatse.",
-        "read_only_hint_visits": "Na inklokken zie je onder Vandaag waar je naartoe moet. Unit-checks doe je via de unit-QR ter plaatse.",
+        "read_only_hint_visits": "Na inklokken zie je waar je vandaag naartoe moet. Unit-checks doe je via de unit-QR ter plaatse.",
         "onboarding_done": "Je bent geregistreerd en aangemeld.",
         "icon_taken": "Dit icoon is al in gebruik. Kies een ander.",
         "register": {

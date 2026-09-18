@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Planifier une tournée d’inspection",
-                    "text": "Bouton séparé à côté de Ajouter un signalement : au moins 2 arrêts (unités), intervalle et équipe en un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre immédiatement la première tâche. La liste des tournées est sous Travail → Tournées d’inspection. Avec Time + visites GPS, les arrêts du jour apparaissent après le pointage sous Clock Point → Aujourd'hui."
+                    "text": "Bouton séparé à côté de Ajouter un signalement : au moins 2 arrêts (unités), intervalle et équipe en un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre immédiatement la première tâche. La liste des tournées est sous Travail → Tournées d’inspection. Avec Time + visites GPS, les arrêts du jour apparaissent après le pointage sous Clock Point → Où dois-je aller aujourd'hui."
                 },
                 {
                     "label": "Intervalle",
@@ -116,7 +116,7 @@
                 },
                 {
                     "label": "Planifier une tournée d’inspection",
-                    "text": "Choisissez au moins 2 arrêts (unités), l’intervalle et l’équipe dans un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre tout de suite la première tâche. Avec Time + visites GPS, les arrêts du jour apparaissent après le pointage sous Clock Point → Aujourd'hui."
+                    "text": "Choisissez au moins 2 arrêts (unités), l’intervalle et l’équipe dans un formulaire. Crée un signalement récurrent avec arrêts de tournée et démarre tout de suite la première tâche. Avec Time + visites GPS, les arrêts du jour apparaissent après le pointage sous Clock Point → Où dois-je aller aujourd'hui."
                 },
                 {
                     "label": "Intervalle",
@@ -1010,15 +1010,15 @@
                 },
                 {
                     "label": "Tâches ouvertes",
-                    "text": "Après connexion, vous voyez un aperçu en lecture seule des tâches ouvertes de votre équipe. Les tournées d'inspection du jour apparaissent sous Aujourd'hui après le pointage. Pour terminer une tâche ou un contrôle d'unité, scannez le QR unité sur place."
+                    "text": "Après connexion, vous voyez un aperçu en lecture seule des tâches ouvertes de votre équipe. Les tournées d'inspection du jour apparaissent sous Où dois-je aller aujourd'hui après le pointage. Pour terminer une tâche ou un contrôle d'unité, scannez le QR unité sur place."
                 },
                 {
                     "label": "Pointer entrée et sortie",
                     "text": "Chaque entrée, sortie ou déplacement exige un nouveau scan du QR Clock Point sur site — un onglet ouvert ne suffit pas. Les pauses peuvent démarrer sur le même téléphone sans nouveau scan. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Utilisez ensuite le QR d'unité sur place pour les tâches."
                 },
                 {
-                    "label": "Aujourd'hui",
-                    "text": "Après le pointage (Time avec visites GPS) la carte Aujourd'hui liste les destinations prévues aujourd'hui, y compris les arrêts d'une tournée d'inspection. Touchez Naviguer pour l'itinéraire Google Maps. Commencer le travail n'apparaît que sur place. Les contrôles d'unité restent via le QR unité. Les tâches ouvertes sans date restent sous Tâches ouvertes."
+                    "label": "Où dois-je aller aujourd'hui",
+                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : destinations groupées par site, y compris les arrêts d'une tournée d'inspection. Touchez l'icône GPS d'une unité pour l'itinéraire Google Maps. Commencer le travail n'apparaît que sur place. Les contrôles d'unité restent via le QR unité. Les tâches ouvertes sans date restent sous Tâches ouvertes."
                 },
                 {
                     "label": "Liste d’évacuation",

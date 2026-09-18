@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Plan inspection round",
-                    "text": "Separate button next to Add issue: pick at least 2 stops (units), interval and team in one form. Creates a recurring issue with round stops and starts the first task immediately. The rounds list is under Work → Inspection rounds. With Time + GPS work visits, today's stops appear on Clock Point → Today after clock-in."
+                    "text": "Separate button next to Add issue: pick at least 2 stops (units), interval and team in one form. Creates a recurring issue with round stops and starts the first task immediately. The rounds list is under Work → Inspection rounds. With Time + GPS work visits, today's stops appear on Clock Point → Where do I need to go today after clock-in."
                 },
                 {
                     "label": "Interval",
@@ -116,7 +116,7 @@
                 },
                 {
                     "label": "Plan inspection round",
-                    "text": "Pick at least 2 stops (units), interval and team in one form. Creates a recurring issue with round stops and starts the first task immediately. With Time + GPS work visits, today's stops appear on Clock Point → Today after clock-in."
+                    "text": "Pick at least 2 stops (units), interval and team in one form. Creates a recurring issue with round stops and starts the first task immediately. With Time + GPS work visits, today's stops appear on Clock Point → Where do I need to go today after clock-in."
                 },
                 {
                     "label": "Interval",
@@ -1002,15 +1002,15 @@
                 },
                 {
                     "label": "Open tasks",
-                    "text": "After signing in you see a read-only overview of open tasks for your team. Today's inspection rounds appear under Today after clock-in. To complete a task or unit check, scan the unit QR on site."
+                    "text": "After signing in you see a read-only overview of open tasks for your team. Today's inspection rounds appear under Where do I need to go today after clock-in. To complete a task or unit check, scan the unit QR on site."
                 },
                 {
                     "label": "Clock in and out",
                     "text": "Each clock-in, clock-out or move needs a fresh scan of the Clock Point QR on site — an open tab is not enough. You can start breaks on the same phone without a new scan. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). Then use the unit QR on site to start or complete tasks."
                 },
                 {
-                    "label": "Today",
-                    "text": "After clocking in (Time with GPS work visits) you see the Today card: destinations planned for today, including inspection-round stops. Tap Navigate for the Google Maps route. Start work appears only when you are on site. Unit checks stay on the unit QR. Open tasks without a date stay under Open tasks."
+                    "label": "Where do I need to go today",
+                    "text": "After clocking in (Time with GPS work visits) you see where you need to go today: destinations grouped by location, including inspection-round stops. Tap the GPS icon next to a unit for the Google Maps route. Start work appears only when you are on site. Unit checks stay on the unit QR. Open tasks without a date stay under Open tasks."
                 },
                 {
                     "label": "Evacuation list",

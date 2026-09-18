@@ -147,7 +147,7 @@
     "team": {
         "title": "Teamübersicht",
         "read_only_hint": "Dies ist eine Übersicht. Aufgaben können nur über den Einheiten-QR vor Ort abgeschlossen werden.",
-        "read_only_hint_visits": "Nach dem Einstempeln zeigt Heute, wohin Sie müssen. Einheiten-Checks erfolgen über den Einheiten-QR vor Ort.",
+        "read_only_hint_visits": "Nach dem Einstempeln sehen Sie, wohin Sie heute müssen. Einheiten-Checks erfolgen über den Einheiten-QR vor Ort.",
         "onboarding_done": "Sie sind registriert und angemeldet.",
         "icon_taken": "Dieses Symbol wird bereits verwendet. Wählen Sie ein anderes.",
         "register": {
