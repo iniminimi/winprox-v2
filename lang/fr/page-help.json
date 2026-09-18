@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Période d'essai",
-                    "text": "Pendant l’essai vous avez jusqu’à 50 licences, Time (pointeuse) inclus. Les unités sont illimitées. Le tableau de bord affiche les jours restants."
+                    "text": "Pendant l’essai vous avez jusqu’à 50 licences et 50 unités, Time (pointeuse) inclus. Le tableau de bord affiche les jours restants."
                 },
                 {
                     "label": "Ajouter un signalement",
@@ -782,11 +782,11 @@
             "actions": [
                 {
                     "label": "Période d'essai",
-                    "text": "Pendant l’essai vous avez jusqu’à 50 licences, Time (pointeuse) inclus. IoT, ESG et API ne sont pas dans l’essai. Le tableau de bord affiche les jours restants."
+                    "text": "Pendant l’essai vous avez jusqu’à 50 licences et 50 unités, Time (pointeuse) inclus. IoT, ESG et API ne sont pas dans l’essai. Le tableau de bord affiche les jours restants."
                 },
                 {
                     "label": "Choisir un plan",
-                    "text": "Choisissez une formule selon le nombre de licences (collègues + exécutants). Paiement annuel par facture."
+                    "text": "Choisissez 10, 25 ou 50 licences (collègues + exécutants), avec autant d’unités et de documents. Lieux et photos illimités. Prix par licence : 7 € / 6 € / 5 € par mois. Paiement annuel par facture. Time (pointeuse) est inclus. Corporate à partir de 100 licences, tarif sur mesure."
                 },
                 {
                     "label": "Supprimer les données de l’organisation",

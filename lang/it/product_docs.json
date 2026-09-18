@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Ogni organizzazione ha il proprio ambiente con limiti per piano (WinProx 10/25/50 licenze + Corporate): licenze (colleghi attivi + esecutori attivi senza user_id collegato; collega + profilo timbratura = una licenza). Sedi, unità, documenti e foto sono illimitati."
+                "body": "Ogni organizzazione ha il proprio ambiente con limiti per piano (WinProx 10/25/50 licenze + Corporate): licenze (colleghi attivi + esecutori attivi senza user_id collegato; collega + profilo timbratura = una licenza). Unità e documenti seguono il numero di licenze (10/25/50). Sedi e foto sono illimitate."
             },
             {
                 "title": "Branding & QR",

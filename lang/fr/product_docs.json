@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Chaque organisation a son environnement avec limites par abonnement (WinProx 10/25/50 licences + Corporate) : licences (collègues actifs + exécutants actifs sans user_id lié ; collègue + profil pointeuse = une licence). Lieux, unités, documents et photos sont illimités."
+                "body": "Chaque organisation a son environnement avec limites par abonnement (WinProx 10/25/50 licences + Corporate) : licences (collègues actifs + exécutants actifs sans user_id lié ; collègue + profil pointeuse = une licence). Unités et documents suivent le nombre de licences (10/25/50). Lieux et photos sont illimités."
             },
             {
                 "title": "Branding & QR",

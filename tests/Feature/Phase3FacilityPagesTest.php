@@ -284,7 +284,7 @@ it('toont WinProx-jaarformules en Corporate op abonnement', function () {
         ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.yearly_invoice_notice'))
-        ->assertDontSee(__('subscription.plans.facility_25.name'));
+        ->assertDontSee(__('subscription.plans.facility_25.price'));
 });
 
 it('toont planlabel correct bij billing_plan met hoofdletter', function () {

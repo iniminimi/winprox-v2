@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Jede Organisation hat eine eigene Umgebung mit Limits pro Abo (WinProx 10/25/50 Lizenzen + Corporate): Lizenzen (aktive Kollegen + aktive Ausführende ohne verknüpfte user_id; Kollege + Stempelprofil = eine Lizenz). Standorte, Units, Dokumente und Fotos sind unbegrenzt."
+                "body": "Jede Organisation hat eine eigene Umgebung mit Limits pro Abo (WinProx 10/25/50 Lizenzen + Corporate): Lizenzen (aktive Kollegen + aktive Ausführende ohne verknüpfte user_id; Kollege + Stempelprofil = eine Lizenz). Units und Dokumente folgen der Lizenzzahl (10/25/50). Standorte und Fotos sind unbegrenzt."
             },
             {
                 "title": "Branding & QR",

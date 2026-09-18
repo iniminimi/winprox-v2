@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 50 licenties, inclusief Time (prikklok). Units zijn onbeperkt. Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 50 licenties en 50 units, inclusief Time (prikklok). Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Melding toevoegen",
@@ -774,11 +774,11 @@
             "actions": [
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 50 licenties, inclusief Time (prikklok). IoT, ESG en API zitten niet in de proef. Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 50 licenties en 50 units, inclusief Time (prikklok). IoT, ESG en API zitten niet in de proef. Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Plan kiezen",
-                    "text": "Kies een formule op het aantal licenties (collega's + uitvoerders). Betaling is jaarlijks via factuur."
+                    "text": "Kies 10, 25 of 50 licenties (collega's + uitvoerders), met evenveel units en documenten. Locaties en foto's onbeperkt. Prijs per licentie: €7 / €6 / €5 per maand. Jaarlijks te betalen via factuur. Time (prikklok) is inbegrepen. Corporate vanaf 100 licenties, prijs op maat."
                 },
                 {
                     "label": "Organisatiegegevens verwijderen",

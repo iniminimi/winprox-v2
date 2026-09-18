@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Cada organización tiene su entorno con límites por plan (WinProx 10/25/50 licencias + Corporate): licencias (colegas activos + ejecutores activos sin user_id vinculado; colega + perfil de fichaje = una licencia). Ubicaciones, unidades, documentos y fotos son ilimitados."
+                "body": "Cada organización tiene su entorno con límites por plan (WinProx 10/25/50 licencias + Corporate): licencias (colegas activos + ejecutores activos sin user_id vinculado; colega + perfil de fichaje = una licencia). Unidades y documentos siguen el número de licencias (10/25/50). Ubicaciones y fotos son ilimitadas."
             },
             {
                 "title": "Branding & QR",

@@ -3,13 +3,13 @@
     "public_title": "Preise & Pakete",
     "public_subtitle": "Wählen Sie die Anzahl der Lizenzen. WinProx wird jährlich berechnet. Time (Stechuhr) ist enthalten.",
     "public_register_cta": "Kostenlose Testphase starten",
-    "subtitle": "Nach dem Gratismonat wählen Sie einen Tarif. Das Limit ist die Zahl der Lizenzen (Kollegen + Ausführende). Standorte, Units und Fotos sind unbegrenzt.",
+    "subtitle": "Nach dem Gratismonat wählen Sie einen Tarif. Jeder Tarif begrenzt Lizenzen und Units (gleiche Zahl). Standorte und Fotos sind unbegrenzt.",
     "plans_heading": "Tarife",
-    "plans_intro": "Zahlung pro Person. Jeder WinProx-Tarif begrenzt die Lizenzen (Kollegen + Ausführende). Standorte, Units und Fotos unbegrenzt. Time (Stechuhr) ist enthalten.",
+    "plans_intro": "Zahlung pro Person. 10, 25 oder 50 Lizenzen (Kollegen + Ausführende) mit ebenso vielen Units und Dokumenten. Standorte und Fotos unbegrenzt. Time (Stechuhr) ist enthalten.",
     "glossary": {
         "heading": "Lizenzen, Units und Fotos",
-        "unit": "Unit — ein Objekt oder Ort mit QR-Code (Maschine, Raum, Fahrzeug). Unbegrenzt in jedem Tarif.",
-        "document": "Dokument — eine Datei im QR-Portal, z. B. eine Anleitung. Unbegrenzt in jedem Tarif.",
+        "unit": "Unit — ein Objekt oder Ort mit QR-Code (Maschine, Raum, Fahrzeug). Anzahl Units = Anzahl Lizenzen (10, 25 oder 50).",
+        "document": "Dokument — eine Datei im QR-Portal, z. B. eine Anleitung. Gleiches Limit wie Units.",
         "photo": "Fotos — Fotos bei Meldungen und Aufgaben sind unbegrenzt.",
         "seat": "Lizenz — Kollege mit Login (Admin oder Mitarbeiter) oder Ausführender (Clock Point, ohne Login). Kollege mit verknüpftem Stechuhr-Profil zählt als eine Lizenz."
     },
@@ -27,7 +27,7 @@
     "status_active": "Aktives Abonnement: :plan, gültig bis :date.",
     "status_grace": "Abonnement :plan endete am :ended. Kulanzfrist bis :grace_end — noch :days Tage voller Zugang.",
     "status_expired": "Ihre Testphase ist abgelaufen. Wählen Sie unten einen Tarif.",
-    "pricing_intro": "Kostenloser Testmonat (50 Lizenzen, inkl. Time). Danach 10, 25 oder 50 Lizenzen pro Jahr. Jährliche Zahlung per Rechnung.",
+    "pricing_intro": "Kostenloser Testmonat (50 Lizenzen und 50 Units, inkl. Time). Danach 10, 25 oder 50 Lizenzen und Units pro Jahr. Jährliche Zahlung per Rechnung.",
     "status_module_esg": "ESG-Modul auf Ihrem Konto aktiv.",
     "status_module_time": "Time (Stechuhr) ist auf Ihrem Konto aktiv.",
     "page_limits_title": "Warum bestimmte Aktionen nicht verfügbar sind",
@@ -73,7 +73,7 @@
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
-                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
+                "10 Units und 10 Dokumente. Standorte und Fotos unbegrenzt. Kein IoT, ESG oder API."
             ]
         },
         "winprox_10_time": {
@@ -83,7 +83,7 @@
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
-                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
+                "10 Units und 10 Dokumente. Standorte und Fotos unbegrenzt. Kein IoT, ESG oder API."
             ]
         },
         "winprox_25": {
@@ -93,7 +93,7 @@
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
-                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
+                "25 Units und 25 Dokumente. Standorte und Fotos unbegrenzt. Kein IoT, ESG oder API."
             ]
         },
         "winprox_25_time": {
@@ -103,7 +103,7 @@
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
-                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
+                "25 Units und 25 Dokumente. Standorte und Fotos unbegrenzt. Kein IoT, ESG oder API."
             ]
         },
         "winprox_50": {
@@ -113,7 +113,7 @@
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
-                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
+                "50 Units und 50 Dokumente. Standorte und Fotos unbegrenzt. Kein IoT, ESG oder API."
             ]
         },
         "winprox_50_time": {
@@ -123,7 +123,7 @@
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
-                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
+                "50 Units und 50 Dokumente. Standorte und Fotos unbegrenzt. Kein IoT, ESG oder API."
             ]
         },
         "winprox_100": {
@@ -303,8 +303,8 @@
     "comparison_custom": "Individuell",
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
-        "trial": "Testphase: 50 Lizenzen, inkl. Time (Stechuhr). Nach dem Test jährliche Rechnung.",
-        "unlimited": "Alle Tarife: unbegrenzte Standorte, Units, Dokumente und Fotos.",
+        "trial": "Testphase: 50 Lizenzen und 50 Units, inkl. Time (Stechuhr). Nach dem Test jährliche Rechnung.",
+        "unlimited": "Units und Dokumente folgen der Lizenzzahl (10/25/50). Standorte und Fotos sind unbegrenzt.",
         "corporate": "IoT, ESG und API: nur WinProx Corporate (ab 100 Lizenzen)."
     },
     "contact_sales_cta": "Kontakt aufnehmen",

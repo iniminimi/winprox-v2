@@ -3,13 +3,13 @@
     "public_title": "Prijzen & formules",
     "public_subtitle": "Kies het aantal licenties. WinProx is jaarlijks te betalen. Time (prikklok) is inbegrepen.",
     "public_register_cta": "Start gratis proefperiode",
-    "subtitle": "Na je gratis maand kies je een formule. De limiet is het aantal licenties (collega's + uitvoerders). Locaties, units en foto's zijn onbeperkt.",
+    "subtitle": "Na je gratis maand kies je een formule. Elke formule beperkt licenties én units (zelfde aantal). Locaties en foto's zijn onbeperkt.",
     "plans_heading": "Formules",
-    "plans_intro": "Betaal per persoon. Elke WinProx-formule beperkt het aantal licenties (collega's + uitvoerders). Locaties, units en foto's zijn onbeperkt. Time (prikklok) is inbegrepen.",
+    "plans_intro": "Betaal per persoon. 10, 25 of 50 licenties (collega's + uitvoerders) met evenveel units en documenten. Locaties en foto's onbeperkt. Time (prikklok) is inbegrepen.",
     "glossary": {
         "heading": "Licenties, units en foto's",
-        "unit": "Unit — een object of plaats met een QR-code (machine, ruimte, voertuig). Onbeperkt op elke formule.",
-        "document": "Document — een bestand op het QR-portaal, zoals een handleiding. Onbeperkt op elke formule.",
+        "unit": "Unit — een object of plaats met een QR-code (machine, ruimte, voertuig). Aantal units = aantal licenties van je formule (10, 25 of 50).",
+        "document": "Document — een bestand op het QR-portaal, zoals een handleiding. Zelfde limiet als units.",
         "photo": "Foto's — foto's bij meldingen en taken zijn onbeperkt.",
         "seat": "Licentie — een collega met login (beheerder of medewerker) of een uitvoerder (Clock Point, zonder login). Collega met gekoppeld prikklok-profiel telt als één licentie."
     },
@@ -26,7 +26,7 @@
     "status_active": "Actief abonnement: :plan, geldig tot :date.",
     "status_grace": "Abonnement :plan beëindigd op :ended. Respijtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng op tijd om onderbreking te vermijden.",
     "status_expired": "Je proefperiode is afgelopen. Kies hieronder een formule om verder te gaan.",
-    "pricing_intro": "Gratis proefmaand (50 licenties, inclusief Time). Daarna 10, 25 of 50 licenties per jaar. Jaarlijks te betalen via factuur.",
+    "pricing_intro": "Gratis proefmaand (50 licenties en 50 units, inclusief Time). Daarna 10, 25 of 50 licenties én units per jaar. Jaarlijks te betalen via factuur.",
     "status_module_esg": "ESG-module actief op je account.",
     "status_module_time": "Time (prikklok) actief op je account.",
     "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
@@ -73,7 +73,7 @@
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
-                "Onbeperkt locaties, units en foto's. Geen IoT, ESG of API."
+                "10 units en 10 documenten. Locaties en foto's onbeperkt. Geen IoT, ESG of API."
             ]
         },
         "winprox_10_time": {
@@ -83,7 +83,7 @@
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
-                "Onbeperkt locaties, units en foto's. Geen IoT, ESG of API."
+                "10 units en 10 documenten. Locaties en foto's onbeperkt. Geen IoT, ESG of API."
             ]
         },
         "winprox_25": {
@@ -93,7 +93,7 @@
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
-                "Onbeperkt locaties, units en foto's. Geen IoT, ESG of API."
+                "25 units en 25 documenten. Locaties en foto's onbeperkt. Geen IoT, ESG of API."
             ]
         },
         "winprox_25_time": {
@@ -103,7 +103,7 @@
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
-                "Onbeperkt locaties, units en foto's. Geen IoT, ESG of API."
+                "25 units en 25 documenten. Locaties en foto's onbeperkt. Geen IoT, ESG of API."
             ]
         },
         "winprox_50": {
@@ -113,7 +113,7 @@
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
-                "Onbeperkt locaties, units en foto's. Geen IoT, ESG of API."
+                "50 units en 50 documenten. Locaties en foto's onbeperkt. Geen IoT, ESG of API."
             ]
         },
         "winprox_50_time": {
@@ -123,7 +123,7 @@
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
-                "Onbeperkt locaties, units en foto's. Geen IoT, ESG of API."
+                "50 units en 50 documenten. Locaties en foto's onbeperkt. Geen IoT, ESG of API."
             ]
         },
         "winprox_100": {
@@ -303,8 +303,8 @@
     "comparison_custom": "Op maat",
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
-        "trial": "Proefperiode: 50 licenties, inclusief Time (prikklok). Jaarlijks te betalen na de proef.",
-        "unlimited": "Alle formules: onbeperkt locaties, units, documenten en foto's.",
+        "trial": "Proefperiode: 50 licenties en 50 units, inclusief Time (prikklok). Jaarlijks te betalen na de proef.",
+        "unlimited": "Units en documenten volgen het aantal licenties (10/25/50). Locaties en foto's zijn onbeperkt.",
         "corporate": "IoT, ESG en API: uitsluitend WinProx Corporate (vanaf 100 licenties)."
     },
     "contact_sales_cta": "Neem contact op",

@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (WinProx 10/25/50 licenties + Corporate): licenties (actieve collega's + actieve uitvoerders zonder gekoppeld user_id; collega + prikklok-profiel = één licentie). Locaties, units, documenten en foto's zijn onbeperkt."
+                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (WinProx 10/25/50 licenties + Corporate): licenties (actieve collega's + actieve uitvoerders zonder gekoppeld user_id; collega + prikklok-profiel = één licentie). Units en documenten volgen het aantal licenties (10/25/50). Locaties en foto's zijn onbeperkt."
             },
             {
                 "title": "Branding & QR",

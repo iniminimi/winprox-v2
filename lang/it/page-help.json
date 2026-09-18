@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova avete fino a 50 licenze, Time (timbratrice) incluso. Le unità sono illimitate. La dashboard mostra i giorni rimanenti."
+                    "text": "Durante la prova avete fino a 50 licenze e 50 unità, Time (timbratrice) incluso. La dashboard mostra i giorni rimanenti."
                 },
                 {
                     "label": "Aggiungi segnalazione",
@@ -774,11 +774,11 @@
             "actions": [
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova avete fino a 50 licenze, Time (timbratrice) incluso. IoT, ESG e API non sono nella prova. La dashboard mostra i giorni rimanenti."
+                    "text": "Durante la prova avete fino a 50 licenze e 50 unità, Time (timbratrice) incluso. IoT, ESG e API non sono nella prova. La dashboard mostra i giorni rimanenti."
                 },
                 {
                     "label": "Scelga piano",
-                    "text": "Scegliete una formula in base al numero di licenze (colleghi + operatori). Pagamento annuale tramite fattura."
+                    "text": "Scegliete 10, 25 o 50 licenze (colleghi + operatori), con altrettante unità e documenti. Sedi e foto illimitate. Prezzo per licenza: 7 € / 6 € / 5 € al mese. Pagamento annuale tramite fattura. Time (timbratrice) è incluso. Corporate da 100 licenze, prezzo su misura."
                 },
                 {
                     "label": "Elimina i dati dell’organizzazione",

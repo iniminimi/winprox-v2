@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 50 licencias, Time (reloj de fichar) incluido. Las unidades son ilimitadas. El panel muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 50 licencias y 50 unidades, Time (reloj de fichar) incluido. El panel muestra los días restantes."
                 },
                 {
                     "label": "Añadir incidencia",
@@ -774,11 +774,11 @@
             "actions": [
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 50 licencias, Time (reloj de fichar) incluido. IoT, ESG y API no están en la prueba. El panel muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 50 licencias y 50 unidades, Time (reloj de fichar) incluido. IoT, ESG y API no están en la prueba. El panel muestra los días restantes."
                 },
                 {
                     "label": "Elegir plan",
-                    "text": "Elija una fórmula según el número de licencias (colegas + operarios). Pago anual por factura."
+                    "text": "Elija 10, 25 o 50 licencias (colegas + operarios), con el mismo número de unidades y documentos. Ubicaciones y fotos ilimitadas. Precio por licencia: 7 € / 6 € / 5 € al mes. Pago anual por factura. Time (reloj de fichar) está incluido. Corporate desde 100 licencias, precio a medida."
                 },
                 {
                     "label": "Eliminar datos de la organización",

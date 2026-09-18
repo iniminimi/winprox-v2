@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Testphase",
-                    "text": "In der Testphase haben Sie bis zu 50 Lizenzen, inkl. Time (Stechuhr). Units sind unbegrenzt. Das Dashboard zeigt die restlichen Tage."
+                    "text": "In der Testphase haben Sie bis zu 50 Lizenzen und 50 Units, inkl. Time (Stechuhr). Das Dashboard zeigt die restlichen Tage."
                 },
                 {
                     "label": "Meldung hinzufügen",
@@ -774,11 +774,11 @@
             "actions": [
                 {
                     "label": "Testphase",
-                    "text": "In der Testphase haben Sie bis zu 50 Lizenzen, inkl. Time (Stechuhr). IoT, ESG und API sind nicht in der Testphase. Das Dashboard zeigt die restlichen Tage."
+                    "text": "In der Testphase haben Sie bis zu 50 Lizenzen und 50 Units, inkl. Time (Stechuhr). IoT, ESG und API sind nicht in der Testphase. Das Dashboard zeigt die restlichen Tage."
                 },
                 {
                     "label": "Plan wählen",
-                    "text": "Wählen Sie einen Tarif nach Anzahl der Lizenzen (Kollegen + Ausführende). Jährliche Zahlung per Rechnung."
+                    "text": "Wählen Sie 10, 25 oder 50 Lizenzen (Kollegen + Ausführende), mit ebenso vielen Units und Dokumenten. Standorte und Fotos unbegrenzt. Preis je Lizenz: 7 € / 6 € / 5 € pro Monat. Jährliche Zahlung per Rechnung. Time (Stechuhr) ist enthalten. Corporate ab 100 Lizenzen, individueller Preis."
                 },
                 {
                     "label": "Organisationsdaten löschen",

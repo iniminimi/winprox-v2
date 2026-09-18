@@ -16,7 +16,7 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
-it('zet trial op 50 licenties met Time-prikklok en maakt een Clock Point', function () {
+it('zet trial op 50 licenties en 50 units met Time-prikklok en maakt een Clock Point', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
@@ -24,7 +24,7 @@ it('zet trial op 50 licenties met Time-prikklok en maakt een Clock Point', funct
 
     $fresh = $tenant->fresh();
 
-    expect($fresh->maxUnitsLimit())->toBeNull()
+    expect($fresh->maxUnitsLimit())->toBe(50)
         ->and($fresh->maxSeatsLimit())->toBe(50)
         ->and($fresh->hasTimeModule())->toBeTrue()
         ->and($fresh->hasIotModule())->toBeFalse()
@@ -59,7 +59,7 @@ it('activeert WinProx 50 met Time inbegrepen', function () {
         ->and($tenant->hasTimeModule())->toBeTrue()
         ->and($tenant->subscriptionPeriodDays())->toBe(365)
         ->and($tenant->maxSeatsLimit())->toBe(50)
-        ->and($tenant->maxUnitsLimit())->toBeNull();
+        ->and($tenant->maxUnitsLimit())->toBe(50);
 });
 
 it('houdt Time-plan-variant beschikbaar buiten de catalogus', function () {

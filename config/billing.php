@@ -7,22 +7,22 @@
  * Time (prikklok) is inbegrepen. CIAO (RSZ) op aanvraag, zonder extra SKU.
  * IoT + ESG + API: uitsluitend Corporate. 100+ licenties = Corporate.
  *
- *  - Licenties (seats) bepalen de schaal: actieve login-users + actieve workers
- *    zonder gekoppeld user_id (collega + prikklok-profiel = 1).
- *  - Locaties, units, foto's: onbeperkt.
- *  - Documenten: onbeperkt (geen 1:1 meer met units).
- *  - Trial: tot 50 licenties, Time inbegrepen, geen IoT/ESG/API.
+ *  - Licenties (seats) én units (en documenten) bepalen de schaal: 10/25/50.
+ *    Collega + prikklok-profiel = 1 licentie.
+ *  - Locaties en foto's: onbeperkt (zoals vroeger op Facility).
+ *  - Documenten: zelfde limiet als units.
+ *  - Trial: tot 50 licenties en 50 units, Time inbegrepen, geen IoT/ESG/API.
  *  - Corporate: afgesproken units via `tenants.billing_units_cap` (superuser).
  *  - Legacy facility_* en winprox_100 / *_time blijven in config (geen catalogus).
  */
 
 $winproxShared = static function (int $seats): array {
     return [
-        'units_limit'            => null,
+        'units_limit'            => $seats,
         'locations_limit'        => null,
         'users_limit'            => null,
         'seats_limit'            => $seats,
-        'documents_org_limit'    => null,
+        'documents_org_limit'    => $seats,
         'photos_org_limit'       => null,
         'documents_per_unit'     => null,
         'announcements_per_unit' => null,
@@ -111,13 +111,13 @@ return [
         'corporate'        => ['max_attempts' => 10000, 'decay_seconds' => 60],
     ],
 
-    // Trial: tot 50 licenties, Time inbegrepen, geen IoT/ESG/API.
+    // Trial: tot 50 licenties en 50 units, Time inbegrepen, geen IoT/ESG/API.
     'trial' => [
-        'units_limit'            => null,
+        'units_limit'            => 50,
         'locations_limit'        => null,
         'users_limit'            => null,
         'seats_limit'            => 50,
-        'documents_org_limit'    => null,
+        'documents_org_limit'    => 50,
         'photos_org_limit'       => null,
         'documents_per_unit'     => null,
         'announcements_per_unit' => null,

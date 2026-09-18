@@ -191,8 +191,8 @@
                             <tr>
                                 <th scope="row">{{ __('subscription.plans.trial.name') }}</th>
                                 <td>{{ __('subscription.comparison_trial_price') }}</td>
-                                <td>{{ __('subscription.limits.unlimited') }}</td>
-                                <td>{{ __('subscription.limits.unlimited') }}</td>
+                                <td>50</td>
+                                <td>50</td>
                                 <td>50</td>
                                 <td>{{ __('subscription.comparison_included') }}</td>
                                 <td>{{ __('subscription.comparison_no') }}</td>

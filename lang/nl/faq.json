@@ -48,26 +48,26 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Hoeveel kost WinProx?",
-            "intro": "U start met een gratis proefmaand (50 licenties, inclusief Time-prikklok). IoT, ESG en API zitten niet in de proef. Daarna 10, 25 of 50 licenties per jaar. Jaarlijks te betalen via factuur. Corporate is op maat (vanaf 100 licenties of wanneer API/webhooks nodig zijn).",
-            "summary": "Proefperiode tot 50 licenties, inclusief Time. Daarna 10/25/50 per jaar, jaarlijks te betalen. IoT, ESG en API op Corporate.",
-            "content_note": "Licentie = collega met login of uitvoerder (Clock Point); collega met gekoppeld prikklok-profiel telt als één. Locaties, units, documenten en foto's zijn onbeperkt. Exacte prijzen staan onder Abonnement.",
+            "intro": "U start met een gratis proefmaand (50 licenties en 50 units, inclusief Time-prikklok). IoT, ESG en API zitten niet in de proef. Daarna 10, 25 of 50 licenties én units. Jaarlijks te betalen via factuur. Corporate is op maat (vanaf 100 licenties of wanneer API/webhooks nodig zijn).",
+            "summary": "Proefperiode tot 50 licenties en 50 units, inclusief Time. Daarna 10/25/50. Jaarlijks te betalen. IoT, ESG en API op Corporate.",
+            "content_note": "Licentie = collega met login of uitvoerder (Clock Point); collega met gekoppeld prikklok-profiel telt als één. Units en documenten volgen het aantal licenties. Locaties en foto's zijn onbeperkt. Exacte prijzen staan onder Abonnement.",
             "plans": {
                 "winprox_10": {
-                    "units": "Onbeperkt locaties en units.",
+                    "units": "Tot 10 units. Locaties onbeperkt.",
                     "announcements": "€7 / licentie / maand (€840 / jaar)",
                     "documents": "Time (prikklok) inbegrepen. · CIAO (RSZ) op aanvraag. · Geen IoT, ESG of API.",
                     "description": "Melden, taken en prikklok. Jaarlijks te betalen.",
                     "users": "Tot 10 licenties (collega's + uitvoerders)"
                 },
                 "winprox_25": {
-                    "units": "Onbeperkt locaties en units.",
+                    "units": "Tot 25 units. Locaties onbeperkt.",
                     "announcements": "€6 / licentie / maand (€1.800 / jaar)",
                     "documents": "Time (prikklok) inbegrepen. · CIAO (RSZ) op aanvraag. · Geen IoT, ESG of API.",
                     "description": "Melden, taken en prikklok. Jaarlijks te betalen.",
                     "users": "Tot 25 licenties (collega's + uitvoerders)"
                 },
                 "winprox_50": {
-                    "units": "Onbeperkt locaties en units.",
+                    "units": "Tot 50 units. Locaties onbeperkt.",
                     "announcements": "€5 / licentie / maand (€3.000 / jaar)",
                     "documents": "Time (prikklok) inbegrepen. · CIAO (RSZ) op aanvraag. · Geen IoT, ESG of API.",
                     "description": "Melden, taken en prikklok. Jaarlijks te betalen.",

@@ -48,26 +48,26 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "How much does WinProx cost?",
-            "intro": "You start with a free trial month (50 seats, including Time). IoT, ESG and API are not in the trial. Then 10, 25 or 50 seats per year. Billed yearly by invoice. Corporate is custom (from 100 seats or when API/webhooks are needed).",
-            "summary": "Trial up to 50 seats, including Time. Then 10/25/50 per year, billed yearly. IoT, ESG and API on Corporate.",
-            "content_note": "Seat = colleague with login or worker (Clock Point); a colleague with a linked punch-clock profile counts as one. Locations, units, documents and photos are unlimited. Exact prices are under Subscription.",
+            "intro": "You start with a free trial month (50 seats and 50 units, including Time). IoT, ESG and API are not in the trial. Then 10, 25 or 50 seats and units. Billed yearly by invoice. Corporate is custom (from 100 seats or when API/webhooks are needed).",
+            "summary": "Trial up to 50 seats and 50 units, including Time. Then 10/25/50. Billed yearly. IoT, ESG and API on Corporate.",
+            "content_note": "Seat = colleague with login or worker (Clock Point); a colleague with a linked punch-clock profile counts as one. Units and documents follow the seat count. Locations and photos are unlimited. Exact prices are under Subscription.",
             "plans": {
                 "winprox_10": {
-                    "units": "Unlimited locations and units.",
+                    "units": "Up to 10 units. Locations unlimited.",
                     "announcements": "€7 / seat / month (€840 / year)",
                     "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
                     "description": "Issues, tasks and punch clock. Billed yearly.",
                     "users": "Up to 10 seats (colleagues + workers)"
                 },
                 "winprox_25": {
-                    "units": "Unlimited locations and units.",
+                    "units": "Up to 25 units. Locations unlimited.",
                     "announcements": "€6 / seat / month (€1,800 / year)",
                     "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
                     "description": "Issues, tasks and punch clock. Billed yearly.",
                     "users": "Up to 25 seats (colleagues + workers)"
                 },
                 "winprox_50": {
-                    "units": "Unlimited locations and units.",
+                    "units": "Up to 50 units. Locations unlimited.",
                     "announcements": "€5 / seat / month (€3,000 / year)",
                     "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
                     "description": "Issues, tasks and punch clock. Billed yearly.",

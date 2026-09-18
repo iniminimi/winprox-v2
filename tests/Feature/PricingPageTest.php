@@ -23,7 +23,7 @@ it('toont publieke prijzenpagina met WinProx-jaarformules en Corporate voor gast
         ->assertSee(__('subscription.comparison_notes.trial'))
         ->assertSee(__('subscription.comparison_notes.unlimited'))
         ->assertSee(__('subscription.comparison_notes.corporate'))
-        ->assertDontSee(__('subscription.plans.facility_25.name'))
+        ->assertDontSee(__('subscription.plans.facility_25.price'))
         ->assertDontSee(__('subscription.time_addon.public_hint', ['price' => '€29']), false);
 });
 
@@ -49,5 +49,5 @@ it('toont plan-knoppen op abonnementenpagina voor beheerder', function () {
         ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.yearly_invoice_notice'))
-        ->assertDontSee(__('subscription.plans.facility_25.name'));
+        ->assertDontSee(__('subscription.plans.facility_25.price'));
 });

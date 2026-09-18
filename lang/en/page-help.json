@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 50 seats, including Time (punch clock). Units are unlimited. The dashboard shows remaining days."
+                    "text": "During the trial you have up to 50 seats and 50 units, including Time (punch clock). The dashboard shows remaining days."
                 },
                 {
                     "label": "Add issue",
@@ -774,11 +774,11 @@
             "actions": [
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 50 seats, including Time (punch clock). IoT, ESG and API are not in the trial. The dashboard shows remaining days."
+                    "text": "During the trial you have up to 50 seats and 50 units, including Time (punch clock). IoT, ESG and API are not in the trial. The dashboard shows remaining days."
                 },
                 {
                     "label": "Choose plan",
-                    "text": "Choose a plan by number of seats (colleagues + workers). Payment is yearly by invoice."
+                    "text": "Choose 10, 25 or 50 seats (colleagues + workers), with the same number of units and documents. Locations and photos unlimited. Price per seat: €7 / €6 / €5 per month. Billed yearly by invoice. Time (punch clock) is included. Corporate from 100 seats, custom price."
                 },
                 {
                     "label": "Delete organisation data",

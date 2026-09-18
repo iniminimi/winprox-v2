@@ -3,13 +3,13 @@
     "public_title": "Precios y planes",
     "public_subtitle": "Elija el número de licencias. WinProx se paga al año. Time (reloj de fichar) está incluido.",
     "public_register_cta": "Iniciar prueba gratuita",
-    "subtitle": "Tras el mes gratis, elija una fórmula. El límite es el número de licencias (colegas + operarios). Ubicaciones, unidades y fotos son ilimitadas.",
+    "subtitle": "Tras el mes gratis, elija una fórmula. Cada fórmula limita licencias y unidades (mismo número). Ubicaciones y fotos son ilimitadas.",
     "plans_heading": "Planes",
-    "plans_intro": "Pago por persona. Cada fórmula WinProx limita las licencias (colegas + operarios). Ubicaciones, unidades y fotos ilimitadas. Time (reloj de fichar) está incluido.",
+    "plans_intro": "Pago por persona. 10, 25 o 50 licencias (colegas + operarios) con el mismo número de unidades y documentos. Ubicaciones y fotos ilimitadas. Time (reloj de fichar) está incluido.",
     "glossary": {
         "heading": "Licencias, unidades y fotos",
-        "unit": "Unidad — un objeto o lugar con código QR (máquina, sala, vehículo). Ilimitado en cada fórmula.",
-        "document": "Documento — un archivo en el portal QR, por ejemplo un manual. Ilimitado en cada fórmula.",
+        "unit": "Unidad — un objeto o lugar con código QR (máquina, sala, vehículo). El número de unidades = el de licencias (10, 25 o 50).",
+        "document": "Documento — un archivo en el portal QR, por ejemplo un manual. El mismo límite que las unidades.",
         "photo": "Fotos — las fotos en avisos y tareas son ilimitadas.",
         "seat": "Licencia — un colega con inicio de sesión (admin o empleado) o un operario (Clock Point, sin inicio de sesión). Un colega con perfil de fichaje vinculado cuenta como una licencia."
     },
@@ -27,7 +27,7 @@
     "status_active": "Suscripción activa: :plan, válida hasta :date.",
     "status_grace": "Suscripción :plan finalizó el :ended. Período de gracia hasta :grace_end — :days días de acceso completo restantes.",
     "status_expired": "Su prueba ha terminado. Elija un plan abajo.",
-    "pricing_intro": "Mes de prueba gratis (50 licencias, Time incluido). Después 10, 25 o 50 licencias al año. Pago anual por factura.",
+    "pricing_intro": "Mes de prueba gratis (50 licencias y 50 unidades, Time incluido). Después 10, 25 o 50 licencias y unidades al año. Pago anual por factura.",
     "status_module_esg": "Módulo ESG activo en su cuenta.",
     "status_module_time": "Time (reloj de fichar) está activo en su cuenta.",
     "page_limits_title": "Por qué ciertas acciones no están disponibles",
@@ -73,7 +73,7 @@
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
-                "Ubicaciones, unidades y fotos ilimitadas. Sin IoT, ESG ni API."
+                "10 unidades y 10 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
             ]
         },
         "winprox_10_time": {
@@ -83,7 +83,7 @@
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
-                "Ubicaciones, unidades y fotos ilimitadas. Sin IoT, ESG ni API."
+                "10 unidades y 10 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
             ]
         },
         "winprox_25": {
@@ -93,7 +93,7 @@
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
-                "Ubicaciones, unidades y fotos ilimitadas. Sin IoT, ESG ni API."
+                "25 unidades y 25 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
             ]
         },
         "winprox_25_time": {
@@ -103,7 +103,7 @@
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
-                "Ubicaciones, unidades y fotos ilimitadas. Sin IoT, ESG ni API."
+                "25 unidades y 25 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
             ]
         },
         "winprox_50": {
@@ -113,7 +113,7 @@
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
-                "Ubicaciones, unidades y fotos ilimitadas. Sin IoT, ESG ni API."
+                "50 unidades y 50 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
             ]
         },
         "winprox_50_time": {
@@ -123,7 +123,7 @@
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
-                "Ubicaciones, unidades y fotos ilimitadas. Sin IoT, ESG ni API."
+                "50 unidades y 50 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
             ]
         },
         "winprox_100": {
@@ -303,8 +303,8 @@
     "comparison_custom": "A medida",
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
-        "trial": "Prueba: 50 licencias, Time (reloj de fichar) incluido. Pago anual tras la prueba.",
-        "unlimited": "Todas las fórmulas: ubicaciones, unidades, documentos y fotos ilimitados.",
+        "trial": "Prueba: 50 licencias y 50 unidades, Time (reloj de fichar) incluido. Pago anual tras la prueba.",
+        "unlimited": "Unidades y documentos siguen el número de licencias (10/25/50). Ubicaciones y fotos son ilimitadas.",
         "corporate": "IoT, ESG y API: solo WinProx Corporate (desde 100 licencias)."
     },
     "contact_sales_cta": "Contactar",

@@ -3,13 +3,13 @@
     "public_title": "Pricing & plans",
     "public_subtitle": "Choose the number of seats. WinProx is billed yearly. Time (punch clock) is included.",
     "public_register_cta": "Start free trial",
-    "subtitle": "After your free month, choose a plan. The limit is the number of seats (colleagues + workers). Locations, units and photos are unlimited.",
+    "subtitle": "After your free month, choose a plan. Each plan limits seats and units (same number). Locations and photos are unlimited.",
     "plans_heading": "Plans",
-    "plans_intro": "Pay per person. Each WinProx plan limits seats (colleagues + workers). Locations, units and photos are unlimited. Time (punch clock) is included.",
+    "plans_intro": "Pay per person. 10, 25 or 50 seats (colleagues + workers) with the same number of units and documents. Locations and photos unlimited. Time (punch clock) is included.",
     "glossary": {
         "heading": "Seats, units and photos",
-        "unit": "Unit — an object or place with a QR code (machine, room, vehicle). Unlimited on every plan.",
-        "document": "Document — a file on the QR portal, such as a manual. Unlimited on every plan.",
+        "unit": "Unit — an object or place with a QR code (machine, room, vehicle). Unit count matches your plan seats (10, 25 or 50).",
+        "document": "Document — a file on the QR portal, such as a manual. Same limit as units.",
         "photo": "Photos — photos on issues and tasks are unlimited.",
         "seat": "Seat — a colleague with login (admin or employee) or a worker (Clock Point, no login). A colleague with a linked punch-clock profile counts as one seat."
     },
@@ -26,7 +26,7 @@
     "status_active": "Active subscription: :plan, valid until :date.",
     "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
     "status_expired": "Your trial has ended. Choose a plan below to continue.",
-    "pricing_intro": "Free trial month (50 seats, including Time). Then 10, 25 or 50 seats per year. Billed yearly by invoice.",
+    "pricing_intro": "Free trial month (50 seats and 50 units, including Time). Then 10, 25 or 50 seats and units per year. Billed yearly by invoice.",
     "status_module_esg": "ESG module active on your account.",
     "status_module_time": "Time (punch clock) is active on your account.",
     "page_limits_title": "Why certain actions are unavailable",
@@ -73,7 +73,7 @@
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
-                "Unlimited locations, units and photos. No IoT, ESG or API."
+                "10 units and 10 documents. Locations and photos unlimited. No IoT, ESG or API."
             ]
         },
         "winprox_10_time": {
@@ -83,7 +83,7 @@
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
-                "Unlimited locations, units and photos. No IoT, ESG or API."
+                "10 units and 10 documents. Locations and photos unlimited. No IoT, ESG or API."
             ]
         },
         "winprox_25": {
@@ -93,7 +93,7 @@
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
-                "Unlimited locations, units and photos. No IoT, ESG or API."
+                "25 units and 25 documents. Locations and photos unlimited. No IoT, ESG or API."
             ]
         },
         "winprox_25_time": {
@@ -103,7 +103,7 @@
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
-                "Unlimited locations, units and photos. No IoT, ESG or API."
+                "25 units and 25 documents. Locations and photos unlimited. No IoT, ESG or API."
             ]
         },
         "winprox_50": {
@@ -113,7 +113,7 @@
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
-                "Unlimited locations, units and photos. No IoT, ESG or API."
+                "50 units and 50 documents. Locations and photos unlimited. No IoT, ESG or API."
             ]
         },
         "winprox_50_time": {
@@ -123,7 +123,7 @@
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
-                "Unlimited locations, units and photos. No IoT, ESG or API."
+                "50 units and 50 documents. Locations and photos unlimited. No IoT, ESG or API."
             ]
         },
         "winprox_100": {
@@ -303,8 +303,8 @@
     "comparison_custom": "Custom",
     "comparison_trial_price": "Free",
     "comparison_notes": {
-        "trial": "Trial: 50 seats, including Time (punch clock). Billed yearly after the trial.",
-        "unlimited": "All plans: unlimited locations, units, documents and photos.",
+        "trial": "Trial: 50 seats and 50 units, including Time (punch clock). Billed yearly after the trial.",
+        "unlimited": "Units and documents follow the seat count (10/25/50). Locations and photos are unlimited.",
         "corporate": "IoT, ESG and API: WinProx Corporate only (from 100 seats)."
     },
     "contact_sales_cta": "Contact us",

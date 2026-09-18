@@ -120,7 +120,7 @@
             },
             {
                 "title": "Multi-tenant",
-                "body": "Each organisation has its own environment with limits per subscription (WinProx 10/25/50 seats + Corporate): seats (active colleagues + active workers without a linked user_id; colleague + punch-clock profile = one seat). Locations, units, documents and photos are unlimited."
+                "body": "Each organisation has its own environment with limits per subscription (WinProx 10/25/50 seats + Corporate): seats (active colleagues + active workers without a linked user_id; colleague + punch-clock profile = one seat). Units and documents follow the seat count (10/25/50). Locations and photos are unlimited."
             },
             {
                 "title": "Branding & QR",

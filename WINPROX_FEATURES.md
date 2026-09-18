@@ -148,8 +148,8 @@ Categorieën in support view zijn **alleen-lezen** (bekijken van vinkjes, geen o
 
 ## Billing & limieten
 
-- Proefperiode + grace; plannen met **unit-**, **document-** en **licentielimieten** (collega's + uitvoerders).
-- Stripe checkout / customer portal (optioneel via `.env`).
+- Proefperiode + grace; plannen met **licenties én units** (zelfde getal 10/25/50) en **documenten**
+  (zelfde limiet). Locaties en foto's onbeperkt. Stripe-checkout zit in de code maar is niet zichtbaar.
 - Rate limiting per plan (API).
 
 ---

@@ -3,13 +3,13 @@
     "public_title": "Prezzi e piani",
     "public_subtitle": "Scegliete il numero di licenze. WinProx si paga all’anno. Time (timbratrice) è incluso.",
     "public_register_cta": "Inizia prova gratuita",
-    "subtitle": "Dopo il mese gratuito scegliete una formula. Il limite è il numero di licenze (colleghi + operatori). Sedi, unità e foto sono illimitate.",
+    "subtitle": "Dopo il mese gratuito scegliete una formula. Ogni formula limita licenze e unità (stesso numero). Sedi e foto sono illimitate.",
     "plans_heading": "Piani",
-    "plans_intro": "Pagamento per persona. Ogni formula WinProx limita le licenze (colleghi + operatori). Sedi, unità e foto illimitate. Time (timbratrice) è incluso.",
+    "plans_intro": "Pagamento per persona. 10, 25 o 50 licenze (colleghi + operatori) con altrettante unità e documenti. Sedi e foto illimitate. Time (timbratrice) è incluso.",
     "glossary": {
         "heading": "Licenze, unità e foto",
-        "unit": "Unità — un oggetto o un luogo con codice QR (macchina, stanza, veicolo). Illimitato in ogni formula.",
-        "document": "Documento — un file sul portale QR, ad esempio un manuale. Illimitato in ogni formula.",
+        "unit": "Unità — un oggetto o un luogo con codice QR (macchina, stanza, veicolo). Il numero di unità = il numero di licenze (10, 25 o 50).",
+        "document": "Documento — un file sul portale QR, ad esempio un manuale. Stesso limite delle unità.",
         "photo": "Foto — le foto su segnalazioni e compiti sono illimitate.",
         "seat": "Licenza — un collega con accesso (admin o dipendente) o un operatore (Clock Point, senza accesso). Un collega con profilo timbratrice collegato conta come una licenza."
     },
@@ -27,7 +27,7 @@
     "status_active": "Abbonamento attivo: :plan, valido fino al :date.",
     "status_grace": "Abbonamento :plan terminato il :ended. Periodo di grazia fino al :grace_end — :days giorni di accesso completo rimasti.",
     "status_expired": "La prova è terminata. Scegli un piano qui sotto.",
-    "pricing_intro": "Mese di prova gratuito (50 licenze, Time incluso). Poi 10, 25 o 50 licenze all’anno. Pagamento annuale tramite fattura.",
+    "pricing_intro": "Mese di prova gratuito (50 licenze e 50 unità, Time incluso). Poi 10, 25 o 50 licenze e unità all’anno. Pagamento annuale tramite fattura.",
     "status_module_esg": "Modulo ESG attivo sul tuo account.",
     "status_module_time": "Time (timbratrice) è attivo sul tuo account.",
     "page_limits_title": "Perché alcune azioni non sono disponibili",
@@ -73,7 +73,7 @@
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
-                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
+                "10 unità e 10 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
             ]
         },
         "winprox_10_time": {
@@ -83,7 +83,7 @@
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
-                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
+                "10 unità e 10 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
             ]
         },
         "winprox_25": {
@@ -93,7 +93,7 @@
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
-                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
+                "25 unità e 25 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
             ]
         },
         "winprox_25_time": {
@@ -103,7 +103,7 @@
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
-                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
+                "25 unità e 25 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
             ]
         },
         "winprox_50": {
@@ -113,7 +113,7 @@
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
-                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
+                "50 unità e 50 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
             ]
         },
         "winprox_50_time": {
@@ -123,7 +123,7 @@
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
-                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
+                "50 unità e 50 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
             ]
         },
         "winprox_100": {
@@ -303,8 +303,8 @@
     "comparison_custom": "Su misura",
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
-        "trial": "Prova: 50 licenze, Time (timbratrice) incluso. Pagamento annuale dopo la prova.",
-        "unlimited": "Tutte le formule: sedi, unità, documenti e foto illimitati.",
+        "trial": "Prova: 50 licenze e 50 unità, Time (timbratrice) incluso. Pagamento annuale dopo la prova.",
+        "unlimited": "Unità e documenti seguono il numero di licenze (10/25/50). Sedi e foto sono illimitate.",
         "corporate": "IoT, ESG e API: solo WinProx Corporate (da 100 licenze)."
     },
     "contact_sales_cta": "Contattaci",
