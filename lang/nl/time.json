@@ -336,9 +336,10 @@
         "homescreen": {
             "title": "Maak een snelkoppeling op je startscherm",
             "help_title": "Clock Point op je startscherm",
-            "help_intro": "Zo open je WinProx de volgende keer zonder QR te scannen. Alleen bedoeld als je thuis of onderweg start.",
-            "help_android": "Android (Chrome): tik het WinProx-icoon. Geen venster? Menu (drie puntjes) → Toevoegen aan startscherm.",
-            "help_ios": "iPhone (Safari): Deel → Zet op beginscherm."
+            "help_intro": "Zo open je WinProx de volgende keer in Chrome of Safari, zonder QR te scannen. Geen aparte app: het is dezelfde website als na het scannen.",
+            "help_android": "Android (Chrome): menu (drie puntjes) → Toevoegen aan startscherm. Kies de gewone snelkoppeling, niet “App installeren”. Daarna zie je de adresbalk.",
+            "help_ios": "iPhone (Safari): Deel → Zet op beginscherm. Daarna opent Safari, niet een apart venster zonder adresbalk.",
+            "help_existing": "Heb je al een WinProx-icoon dat als app opent (geen adresbalk) en waarop Aanmelden vastloopt? Verwijder dat icoon en zet de snelkoppeling opnieuw."
         }
     },
     "ciao": {

@@ -892,10 +892,10 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   portaal-sessie (opnieuw icoon of PIN); dat is geen uitklokken. De gsm blijft gekoppeld
   tot beheer of teamleader vrijgeeft. Geen knop **Aanmelden als andere medewerker**
   (ook niet bij icoon, PIN of blokkade). Optioneel vinkje **Clock Point-link op
-  startscherm gsm** (standaard uit): WinProx-icoon naast Aanmelden om de link op
-  de gsm te zetten. Alleen voor uitvoerders die geen QR kunnen scannen (thuis of
-  onderweg). TFT-schermen met wisselende QR laten dit uit. Geen App Store, geen
-  extra offline-PWA. Zonder GPS-werkbezoeken blijven
+  startscherm gsm** (standaard uit): WinProx-icoon naast Aanmelden met uitleg
+  om een **browsersnelkoppeling** op de gsm te zetten (Chrome/Safari, geen
+  standalone PWA/app). Alleen voor uitvoerders die geen QR kunnen scannen (thuis of
+  onderweg). TFT-schermen met wisselende QR laten dit uit. Geen App Store. Zonder GPS-werkbezoeken blijven
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
   starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;
   inspectiestops (unit check) ter plaatse op dezelfde bezoek-locatie, in stopvolgorde.
@@ -1261,7 +1261,8 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   die knop de unit check zonder unit-QR. Zonder GPS-bezoek blijven unit-checks
   via de unit-QR. Na aanmelden geen kop **Aanmelden** en geen wisselknop; de gsm blijft
   van die uitvoerder tot beheer of teamleader vrijgeeft. Optioneel vinkje
-  **Clock Point-link op startscherm gsm** (standaard uit): icoon naast Aanmelden;
+  **Clock Point-link op startscherm gsm** (standaard uit): icoon naast Aanmelden
+  voor een browsersnelkoppeling (geen standalone app);
   alleen voor veldwerkers zonder QR-scan (niet op TFT met wisselende codes).
   (Vervangt de oude team-QR `/team/{token}`.)
   Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en optioneel tegel
@@ -1331,7 +1332,8 @@ Bedoeld voor gedeelde telefoons op de werkvloer:
   idempotent via `field_sync_receipts`). In-/uitklokken op Clock Point blijft **online** en
   vraagt een verse QR-scan. Geen Livewire-offline, geen worker-tokens. Optionele
   startscherm-snelkoppeling alleen als het Clock Point-vinkje **Clock Point-link
-  op startscherm gsm** aan staat (geen App Store, geen extra offline).
+  op startscherm gsm** aan staat (browsersnelkoppeling, geen App Store, geen
+  standalone PWA).
 
 ### Toegang/gating (oud: `ResidentPortalAccess`)
 Portaal **inactief** (alle acties no-op, toon reden) bij o.a.: tenant zonder geldig abonnement,

@@ -336,9 +336,10 @@
         "homescreen": {
             "title": "Crea un collegamento sulla schermata iniziale",
             "help_title": "Clock Point sulla schermata iniziale",
-            "help_intro": "Apri WinProx la volta successiva senza scansionare un QR. Solo se parti da casa o in viaggio.",
-            "help_android": "Android (Chrome): tocca l’icona WinProx. Nessuna finestra? Menu (tre puntini) → Aggiungi a schermata Home.",
-            "help_ios": "iPhone (Safari): Condividi → Aggiungi a Home."
+            "help_intro": "Apri WinProx la volta successiva in Chrome o Safari, senza scansionare un QR. Non è un’app a parte: è lo stesso sito di dopo la scansione.",
+            "help_android": "Android (Chrome): menu (tre puntini) → Aggiungi a schermata Home. Scegli il collegamento normale, non «Installa app». Deve restare visibile la barra degli indirizzi.",
+            "help_ios": "iPhone (Safari): Condividi → Aggiungi a Home. Deve aprire Safari, non una finestra separata senza barra degli indirizzi.",
+            "help_existing": "Hai già un’icona WinProx che si apre come app (senza barra degli indirizzi) e Accesso non fa nulla? Eliminala e ricrea il collegamento."
         }
     },
     "ciao": {

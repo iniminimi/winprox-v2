@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Home screen shortcut",
-                    "text": "Only if admin enabled it on this Clock Point: a WinProx icon sits to the right of Sign in. Tap to put the link on your phone home screen (Android: prompt or Chrome menu; iPhone: Share → Add to Home Screen). After that you open WinProx without a QR. Not for screens with rotating QR codes."
+                    "text": "Only if admin enabled it on this Clock Point: a WinProx icon sits to the right of Sign in. Tap for instructions: add a shortcut from the Chrome or Safari menu (do not install as an app). That opens the same website in the browser. If you already have an app icon without an address bar, delete it first. Not for screens with rotating QR codes."
                 },
                 {
                     "label": "Sign out",
@@ -1379,7 +1379,7 @@
                 },
                 {
                     "label": "Clock Point link on phone home screen",
-                    "text": "Per Clock Point checkbox (off by default). On = a WinProx icon appears next to Sign in so the worker can put the link on the phone home screen. Only for workers who cannot scan a QR (home or on the road). Leave this off on TFT screens with rotating QR codes. No App Store, no extra offline app."
+                    "text": "Per Clock Point checkbox (off by default). On = a WinProx icon appears next to Sign in with instructions to put a browser shortcut on the phone home screen (Chrome/Safari, not an app). Only for workers who cannot scan a QR (home or on the road). Leave this off on TFT screens with rotating QR codes. No App Store."
                 }
             ]
         },

@@ -336,9 +336,10 @@
         "homescreen": {
             "title": "Add a shortcut to your home screen",
             "help_title": "Clock Point on your home screen",
-            "help_intro": "Open WinProx next time without scanning a QR. Only for when you start at home or on the road.",
-            "help_android": "Android (Chrome): tap the WinProx icon. No prompt? Menu (three dots) → Add to Home screen.",
-            "help_ios": "iPhone (Safari): Share → Add to Home Screen."
+            "help_intro": "Open WinProx next time in Chrome or Safari, without scanning a QR. Not a separate app: it is the same website as after a scan.",
+            "help_android": "Android (Chrome): menu (three dots) → Add to Home screen. Choose the normal shortcut, not “Install app”. You should then see the address bar.",
+            "help_ios": "iPhone (Safari): Share → Add to Home Screen. It should open Safari, not a separate window without an address bar.",
+            "help_existing": "Already have a WinProx icon that opens like an app (no address bar) and Sign in does nothing? Delete that icon and add the shortcut again."
         }
     },
     "ciao": {

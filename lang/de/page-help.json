@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Verknüpfung auf dem Startbildschirm",
-                    "text": "Nur wenn die Verwaltung dies am Clock Point eingeschaltet hat: rechts neben Anmelden steht ein WinProx-Symbol. Tippen, um den Link auf den Startbildschirm zu legen (Android: Fenster oder Chrome-Menü; iPhone: Teilen → Zum Home-Bildschirm). Danach öffnen Sie WinProx ohne QR. Nicht für Bildschirme mit wechselnden QR-Codes."
+                    "text": "Nur wenn die Verwaltung dies am Clock Point eingeschaltet hat: rechts neben Anmelden steht ein WinProx-Symbol. Tippen für die Anleitung: Verknüpfung über das Chrome- oder Safari-Menü (nicht als App installieren). Das öffnet dieselbe Website im Browser. Ein vorhandenes App-Symbol ohne Adressleiste zuerst löschen. Nicht für Bildschirme mit wechselnden QR-Codes."
                 },
                 {
                     "label": "Abmelden",
@@ -1379,7 +1379,7 @@
                 },
                 {
                     "label": "Clock-Point-Link auf dem Startbildschirm",
-                    "text": "Häkchen pro Clock Point (standardmäßig aus). An = neben Anmelden erscheint ein WinProx-Symbol, um den Link auf den Handy-Startbildschirm zu legen. Nur für Ausführende, die keinen QR scannen können (zu Hause oder unterwegs). Bei TFT-Bildschirmen mit wechselnden QR-Codes ausgeschaltet lassen. Kein App Store, keine extra Offline-App."
+                    "text": "Häkchen pro Clock Point (standardmäßig aus). An = neben Anmelden erscheint ein WinProx-Symbol mit Anleitung für eine Browser-Verknüpfung auf dem Startbildschirm (Chrome/Safari, keine App). Nur für Ausführende, die keinen QR scannen können (zu Hause oder unterwegs). Bei TFT-Bildschirmen mit wechselnden QR-Codes ausgeschaltet lassen. Kein App Store."
                 }
             ]
         },

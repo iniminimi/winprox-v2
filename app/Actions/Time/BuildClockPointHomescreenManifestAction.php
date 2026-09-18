@@ -27,7 +27,7 @@ class BuildClockPointHomescreenManifestAction
             'name' => 'WinProx',
             'short_name' => 'WinProx',
             'start_url' => $startUrl,
-            'display' => 'standalone',
+            'display' => 'browser',
             'background_color' => '#059669',
             'theme_color' => '#059669',
             'icons' => [

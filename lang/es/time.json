@@ -336,9 +336,10 @@
         "homescreen": {
             "title": "Crear un acceso directo en la pantalla de inicio",
             "help_title": "Clock Point en la pantalla de inicio",
-            "help_intro": "Abre WinProx la próxima vez sin escanear un QR. Solo si empiezas en casa o de camino.",
-            "help_android": "Android (Chrome): toca el icono de WinProx. ¿Sin ventana? Menú (tres puntos) → Añadir a pantalla de inicio.",
-            "help_ios": "iPhone (Safari): Compartir → Añadir a pantalla de inicio."
+            "help_intro": "Abre WinProx la próxima vez en Chrome o Safari, sin escanear un QR. No es una app aparte: es la misma web que tras escanear.",
+            "help_android": "Android (Chrome): menú (tres puntos) → Añadir a pantalla de inicio. Elige el acceso directo normal, no «Instalar aplicación». Debe verse la barra de direcciones.",
+            "help_ios": "iPhone (Safari): Compartir → Añadir a pantalla de inicio. Debe abrir Safari, no una ventana aparte sin barra de direcciones.",
+            "help_existing": "¿Ya tienes un icono WinProx que abre como app (sin barra de direcciones) y Inicio de sesión no hace nada? Bórralo y vuelve a crear el acceso directo."
         }
     },
     "ciao": {

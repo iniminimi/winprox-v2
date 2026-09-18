@@ -1,11 +1,6 @@
 @if ($offerHomescreenShortcut ?? false)
     @push('head')
-        <link rel="manifest" href="{{ route('public.time-portal.manifest', $token) }}">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-title" content="WinProx">
         <link rel="apple-touch-icon" href="{{ asset('images/pwa/winprox-192.png') }}">
-        <meta name="theme-color" content="#059669">
     @endpush
 @endif
 <div class="wp-stack" @if ($canAct ?? false) wire:poll.visible.30s @endif>
@@ -746,6 +741,7 @@
                 <p>{{ __('time.portal.homescreen.help_intro') }}</p>
                 <p class="wp-muted">{{ __('time.portal.homescreen.help_android') }}</p>
                 <p class="wp-muted">{{ __('time.portal.homescreen.help_ios') }}</p>
+                <p class="wp-muted">{{ __('time.portal.homescreen.help_existing') }}</p>
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--primary" wire:click="closeHomescreenHelp">{{ __('common.button.close') }}</button>
                 </div>
