@@ -99,7 +99,7 @@
         "ddt_hint": "13 tekens (CIAO werkplaats).",
         "latitude": "Breedtegraad",
         "longitude": "Lengtegraad",
-        "coords_hint": "Optioneel: GPS i.p.v. adres voor placeOfWork."
+        "coords_hint": "Optioneel: GPS van de klantlocatie voor werkbezoeken (en CIAO placeOfWork)."
     },
     "flash": {
         "created": "Locatie aangemaakt.",

@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Waar moet ik vandaag naartoe",
-                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: bestemmingen gegroepeerd per locatie, inclusief de stops van een inspectieronde. Tik het GPS-icoon bij een unit voor de route in Google Maps. Start werk verschijnt pas als je ter plaatse bent. Unit-checks blijven via de unit-QR. Open taken zonder datum blijven onder Open taken."
+                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: bestemmingen gegroepeerd per locatie, inclusief de stops van een inspectieronde. Tik het GPS-icoon bij de locatie (klant) voor de route in Google Maps; units met eigen pin hebben een eigen icoon. Start werk verschijnt op de locatie of bij een unit-pin als je ter plaatse bent. Unit-checks blijven via de unit-QR. Open taken zonder datum blijven onder Open taken."
                 },
                 {
                     "label": "Evacuatielijst",
@@ -1611,7 +1611,7 @@
                 },
                 {
                     "label": "Veld",
-                    "text": "Uitvoerders starten en stoppen werk op het Clock Point-portaal binnen de straal van een unit met vaste pin. Inklokken opent alleen de betaalde dienst, zonder locatiebewijs."
+                    "text": "Uitvoerders starten en stoppen werk op het Clock Point-portaal binnen de straal van de locatie-pin (klant) of een unit met vaste pin. Inklokken opent alleen de betaalde dienst, zonder locatiebewijs."
                 }
             ]
         },

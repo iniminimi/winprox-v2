@@ -74,7 +74,8 @@
                             <ul class="wp-muted wp-text-sm">
                                 @foreach ($customer['visits'] as $visit)
                                     @php
-                                        $visitPlace = $visit->unit?->localizedName() ?? '—';
+                                        $visitPlace = $visit->unit?->localizedName()
+                                            ?: ($visit->location?->localizedName() ?: ($visit->location?->name ?? '—'));
                                         $visitStart = $visit->started_at?->format('H:i') ?? '—';
                                     @endphp
                                     <li wire:key="work-visit-{{ $visit->id }}">

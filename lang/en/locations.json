@@ -99,7 +99,7 @@
         "ddt_hint": "13 characters (CIAO workplace).",
         "latitude": "Latitude",
         "longitude": "Longitude",
-        "coords_hint": "Optional: GPS instead of address for placeOfWork."
+        "coords_hint": "Optional: GPS of the customer location for work visits (and CIAO placeOfWork)."
     },
     "flash": {
         "created": "Location created.",

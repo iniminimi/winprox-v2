@@ -53,7 +53,9 @@
         <span class="wp-hint">{{ __('locations.fields.ddt_hint') }}</span>
         @error('contractual_relationship_reference') <span class="wp-error">{{ $message }}</span> @enderror
     </label>
+@endif
 
+@if ($presenceComplianceEnabled || ($gpsWorkVisitsEnabled ?? false))
     <div class="wp-form-grid-2">
         <label class="wp-field">
             <span class="wp-label">{{ __('locations.fields.latitude') }}</span>

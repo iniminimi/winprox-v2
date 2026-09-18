@@ -9,7 +9,7 @@
     "lead": "WinProx is een QR-gebaseerd facility-platform voor meldingen en taken. Ook voor schoonmaak- en bouwploegen die bij de klant of op de werf werken. Time (prikklok, GPS-werkbezoeken, optioneel CIAO), ESG en IoT Connect zijn optioneel — in de browser, zonder native app.",
     "what": {
         "title": "Kernidee",
-        "body": "Elke fysieke locatie of unit krijgt een digitaal QR-portaal. Burgers en medewerkers melden defecten via de unit-QR. Uitvoerders melden zich aan via de Clock Point-QR, starten en stoppen werk op een unit-pin (GPS-werkbezoeken) en handelen taken af ter plaatse. Beheerders volgen alles op in één workspace: melding → taken → afhandeling. Eén Facility-app — geen aparte schoonmaak- of bouwversie."
+        "body": "Elke fysieke locatie of unit krijgt een digitaal QR-portaal. Burgers en medewerkers melden defecten via de unit-QR. Uitvoerders melden zich aan via de Clock Point-QR, starten en stoppen werk op een locatie- of unit-pin (GPS-werkbezoeken) en handelen taken af ter plaatse. Beheerders volgen alles op in één workspace: melding → taken → afhandeling. Eén Facility-app — geen aparte schoonmaak- of bouwversie."
     },
     "audience": {
         "title": "Voor wie",
@@ -44,7 +44,7 @@
             },
             {
                 "name": "Time",
-                "text": "In-/uitklokken en pauzes via Clock Point-QR, GPS-werkbezoeken op unit-pin, aanwezigheid, urenstaat, Mijn uren en optionele minimumpauze per team. Optioneel CIAO (RSZ Check In and Out) voor schoonmaak; bouw-scope zit klaar achter feature-flag tot de RSZ-specs live zijn."
+                "text": "In-/uitklokken en pauzes via Clock Point-QR, GPS-werkbezoeken op locatie- of unit-pin, aanwezigheid, urenstaat, Mijn uren en optionele minimumpauze per team. Optioneel CIAO (RSZ Check In and Out) voor schoonmaak; bouw-scope zit klaar achter feature-flag tot de RSZ-specs live zijn."
             },
             {
                 "name": "ESG",

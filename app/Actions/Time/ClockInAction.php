@@ -17,7 +17,7 @@ use InvalidArgumentException;
 /**
  * Opens paid/workday time (WorkShift). Not location proof.
  * GPS is optional metadata and must never gate clock-in.
- * WorkVisit = verified work at a specific unit (see StartWorkVisitAction).
+ * WorkVisit = verified work at a customer location, or a unit with its own pin (see StartWorkVisitAction).
  */
 class ClockInAction
 {

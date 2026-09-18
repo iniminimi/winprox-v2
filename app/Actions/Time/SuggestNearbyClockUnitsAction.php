@@ -3,6 +3,7 @@
 namespace App\Actions\Time;
 
 use App\Data\Time\NearbyClockUnitData;
+use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
@@ -30,6 +31,8 @@ class SuggestNearbyClockUnitsAction
 
         $worker->loadMissing(['team', 'locations']);
 
+        $matches = [];
+
         $units = Unit::query()
             ->where('tenant_id', $worker->tenant_id)
             ->where('is_active', true)
@@ -40,10 +43,9 @@ class SuggestNearbyClockUnitsAction
             ->with('location')
             ->get();
 
-        $matches = [];
         foreach ($units as $unit) {
             $locationId = $unit->location_id !== null ? (int) $unit->location_id : null;
-            if (! $worker->canClockAt($locationId)) {
+            if (! $worker->canClockAt($locationId) || $locationId === null) {
                 continue;
             }
 
@@ -59,8 +61,53 @@ class SuggestNearbyClockUnitsAction
 
             $matches[] = new NearbyClockUnitData(
                 (int) $unit->id,
+                $locationId,
                 (string) $unit->name,
                 (string) ($unit->location?->name ?? ''),
+                (int) round($meters),
+            );
+        }
+
+        $locations = Location::query()
+            ->where('tenant_id', $worker->tenant_id)
+            ->where('is_active', true)
+            ->whereNotNull('latitude')
+            ->whereNotNull('longitude')
+            ->whereBetween('latitude', [$latitude - $latDelta, $latitude + $latDelta])
+            ->whereBetween('longitude', [$longitude - $lngDelta, $longitude + $lngDelta])
+            ->get();
+
+        $unitLocationIds = [];
+        foreach ($matches as $match) {
+            if ($match->unitId !== null) {
+                $unitLocationIds[$match->locationId] = true;
+            }
+        }
+
+        foreach ($locations as $location) {
+            $locationId = (int) $location->id;
+            if (! $worker->canClockAt($locationId)) {
+                continue;
+            }
+            if (isset($unitLocationIds[$locationId])) {
+                continue;
+            }
+
+            $meters = DistanceMeters::between(
+                $latitude,
+                $longitude,
+                (float) $location->latitude,
+                (float) $location->longitude,
+            );
+            if ($meters > $radius) {
+                continue;
+            }
+
+            $matches[] = new NearbyClockUnitData(
+                null,
+                $locationId,
+                '',
+                (string) ($location->name ?: $location->formattedAddress()),
                 (int) round($meters),
             );
         }

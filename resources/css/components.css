@@ -1707,6 +1707,15 @@ button.wp-issue-row:disabled {
     margin-top: 0.75rem;
 }
 
+.wp-today-destination__head,
+.wp-today-destination__unit {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+}
+
 .wp-today-destination__place {
     margin: 0;
     font-size: 0.9375rem;
@@ -1718,14 +1727,6 @@ button.wp-issue-row:disabled {
     list-style: none;
     margin: 0.25rem 0 0;
     padding: 0;
-}
-
-.wp-today-destination__unit {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    min-height: 2.5rem;
 }
 
 .wp-today-destination__nav {

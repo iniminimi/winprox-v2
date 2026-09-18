@@ -238,8 +238,8 @@
         "gps_on_clock_hint": "À l'intérieur, le signal manque souvent : le pointage continue sans GPS. Les coordonnées sont enregistrées si disponibles.",
         "save": "Enregistrer la sécurité pointeuse",
         "saved": "Sécurité pointeuse enregistrée.",
-        "gps_visits": "Visites GPS (démarrer/arrêter le travail sur une unité épinglée)",
-        "gps_visits_hint": "L'entrée ouvre toujours la journée payée sans preuve de lieu. Démarrer le travail exige un GPS frais dans le rayon d'une unité avec pin fixe. La sortie est possible partout ; une visite ouverte est d'abord clôturée.",
+        "gps_visits": "Visites GPS (démarrer/arrêter le travail sur le pin du site ou d'une unité)",
+        "gps_visits_hint": "L'entrée ouvre toujours la journée payée sans preuve de lieu. Démarrer le travail exige un GPS frais dans le rayon du pin du site (client) ou d'une unité avec pin fixe. La sortie est possible partout ; une visite ouverte est d'abord clôturée.",
         "gps_visit_radius": "Rayon (mètres)",
         "evacuation_list": "Liste d’évacuation sur Clock Point",
         "evacuation_list_hint": "Après connexion, les exécutants voient une tuile pour voir qui est pointé. Ils confirment que la consultation est exceptionnelle ; chaque consultation est enregistrée. Désactivé par défaut."

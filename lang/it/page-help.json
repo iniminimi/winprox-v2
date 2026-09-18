@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Dove devo andare oggi",
-                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: destinazioni raggruppate per sede, comprese le fermate di un giro di ispezione. Tocca l'icona GPS di un'unità per il percorso in Google Maps. Inizia il lavoro compare solo sul posto. I controlli unità restano sul QR unità. Le attività aperte senza data restano in Attività aperte."
+                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: destinazioni raggruppate per sede, comprese le fermate di un giro di ispezione. Tocca l'icona GPS della sede (cliente) per il percorso in Google Maps; le unità con pin proprio hanno un'icona propria. Inizia il lavoro compare sulla sede o su un pin unità sul posto. I controlli unità restano sul QR unità. Le attività aperte senza data restano in Attività aperte."
                 },
                 {
                     "label": "Elenco evacuazione",
@@ -1611,7 +1611,7 @@
                 },
                 {
                     "label": "Campo",
-                    "text": "Gli esecutori avviano e interrompono il lavoro sul portale Clock Point nel raggio di un’unità con pin fisso. L’entrata apre solo il tempo retribuito, senza prova di luogo."
+                    "text": "Gli esecutori avviano e interrompono il lavoro sul portale Clock Point nel raggio del pin della sede (cliente) o di un’unità con pin fisso. L’entrata apre solo il tempo retribuito, senza prova di luogo."
                 }
             ]
         },

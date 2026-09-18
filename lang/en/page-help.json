@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Where do I need to go today",
-                    "text": "After clocking in (Time with GPS work visits) you see where you need to go today: destinations grouped by location, including inspection-round stops. Tap the GPS icon next to a unit for the Google Maps route. Start work appears only when you are on site. Unit checks stay on the unit QR. Open tasks without a date stay under Open tasks."
+                    "text": "After clocking in (Time with GPS work visits) you see where you need to go today: destinations grouped by location, including inspection-round stops. Tap the GPS icon on the location (customer) for the Google Maps route; units with their own pin have a separate icon. Start work appears on the location or a unit pin when you are on site. Unit checks stay on the unit QR. Open tasks without a date stay under Open tasks."
                 },
                 {
                     "label": "Evacuation list",
@@ -1611,7 +1611,7 @@
                 },
                 {
                     "label": "Field",
-                    "text": "Workers start and stop work on the Clock Point portal within range of a unit with a fixed pin. Clock-in only opens paid time, without location proof."
+                    "text": "Workers start and stop work on the Clock Point portal within range of the location pin (customer) or a unit with a fixed pin. Clock-in only opens paid time, without location proof."
                 }
             ]
         },

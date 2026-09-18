@@ -238,6 +238,7 @@
                             hereLat: null,
                             hereLng: null,
                             openVisitUnitId: @js($openVisitUnitId),
+                            openVisitLocationId: @js($openVisitLocationId ?? null),
                             async withGps(method) {
                                 const run = () => $wire[method]();
                                 if (!this.gpsOn || !navigator.geolocation) {
@@ -254,12 +255,14 @@
                                     { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
                                 );
                             },
-                            async withFreshGps(method, arg) {
+                            async withFreshGps(method, arg, extra) {
                                 const call = (lat, lng) => {
                                     if (arg === undefined) {
                                         $wire[method](lat, lng);
-                                    } else {
+                                    } else if (extra === undefined) {
                                         $wire[method](arg, lat, lng);
+                                    } else {
+                                        $wire[method](arg, lat, lng, extra);
                                     }
                                 };
                                 if (!navigator.geolocation) {
@@ -295,6 +298,18 @@
                                     return false;
                                 }
                                 return this.metersBetween(this.hereLat, this.hereLng, dest.pin_latitude, dest.pin_longitude) <= dest.radius_meters;
+                            },
+                            inLocationRange(group) {
+                                if (!group.location_can_start || group.location_pin_latitude === null || group.location_pin_longitude === null) {
+                                    return false;
+                                }
+                                if (this.hereLat === null || this.hereLng === null) {
+                                    return false;
+                                }
+                                if (this.openVisitLocationId && Number(this.openVisitLocationId) === Number(group.location_id)) {
+                                    return false;
+                                }
+                                return this.metersBetween(this.hereLat, this.hereLng, group.location_pin_latitude, group.location_pin_longitude) <= group.radius_meters;
                             },
                             refreshHere() {
                                 if (!navigator.geolocation) {
@@ -398,39 +413,50 @@
                                         }
                                     @endphp
                                     <div class="wp-today-destination" wire:key="today-loc-{{ $group['location_id'] }}">
-                                        @if ($group['location_maps_url'] && $group['units'] === [])
-                                            <a
-                                                class="wp-today-destination__place wp-today-destination__nav"
-                                                href="{{ $group['location_maps_url'] }}"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                aria-label="{{ __('time.portal.today.navigate') }}"
-                                            >
-                                                <span>{{ $placeLabel }}</span>
-                                                @include('partials.wp-gps-pin-icon', ['class' => 'wp-today-destination__pin'])
-                                            </a>
-                                        @else
-                                            <p class="wp-today-destination__place">{{ $placeLabel }}</p>
-                                        @endif
+                                        <div class="wp-today-destination__head">
+                                            @if ($group['location_maps_url'])
+                                                <a
+                                                    class="wp-today-destination__place wp-today-destination__nav"
+                                                    href="{{ $group['location_maps_url'] }}"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label="{{ __('time.portal.today.navigate') }}"
+                                                >
+                                                    <span>{{ $placeLabel }}</span>
+                                                    @include('partials.wp-gps-pin-icon', ['class' => 'wp-today-destination__pin'])
+                                                </a>
+                                            @else
+                                                <p class="wp-today-destination__place">{{ $placeLabel }}</p>
+                                            @endif
+                                            <template x-if="inLocationRange(@js($group))">
+                                                <button type="button" class="btn btn--surface" @click="withFreshGps('startWorkVisit', 0, {{ (int) $group['location_id'] }})">
+                                                    {{ __('time.portal.today.start_work') }}
+                                                </button>
+                                            </template>
+                                        </div>
                                         @if ($group['units'] !== [])
                                             <ul class="wp-today-destination__units">
                                                 @foreach ($group['units'] as $destination)
                                                     <li class="wp-today-destination__unit" wire:key="today-dest-{{ $destination['key'] }}">
-                                                        <a
-                                                            class="wp-today-destination__nav"
-                                                            href="{{ $destination['maps_url'] }}"
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            aria-label="{{ __('time.portal.today.navigate') }}"
-                                                        >
+                                                        @if ($destination['can_start'] ?? false)
+                                                            <a
+                                                                class="wp-today-destination__nav"
+                                                                href="{{ $destination['maps_url'] }}"
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                aria-label="{{ __('time.portal.today.navigate') }}"
+                                                            >
+                                                                <span>{{ $destination['unit_name'] }}</span>
+                                                                @include('partials.wp-gps-pin-icon', ['class' => 'wp-today-destination__pin'])
+                                                            </a>
+                                                            <template x-if="inRange(@js($destination))">
+                                                                <button type="button" class="btn btn--surface" @click="withFreshGps('startWorkVisit', {{ (int) ($destination['unit_id'] ?? 0) }})">
+                                                                    {{ __('time.portal.today.start_work') }}
+                                                                </button>
+                                                            </template>
+                                                        @else
                                                             <span>{{ $destination['unit_name'] }}</span>
-                                                            @include('partials.wp-gps-pin-icon', ['class' => 'wp-today-destination__pin'])
-                                                        </a>
-                                                        <template x-if="inRange(@js($destination))">
-                                                            <button type="button" class="btn btn--surface" @click="withFreshGps('startWorkVisit', {{ (int) ($destination['unit_id'] ?? 0) }})">
-                                                                {{ __('time.portal.today.start_work') }}
-                                                            </button>
-                                                        </template>
+                                                        @endif
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -444,8 +470,16 @@
                                         {{ __('time.portal.clock.find_nearby') }}
                                     </button>
                                     @forelse ($nearbyClockUnits as $nearby)
-                                        <button type="button" class="btn btn--surface btn--block" @click="withFreshGps('startWorkVisit', {{ (int) $nearby['unit_id'] }})">
-                                            {{ __('time.portal.clock.start_work_at', ['place' => trim($nearby['location_name'].' · '.$nearby['unit_name'], ' · '), 'distance' => $nearby['distance_meters']]) }}
+                                        @php
+                                            $nearbyPlace = trim($nearby['location_name'].((string) ($nearby['unit_name'] ?? '') !== '' ? ' · '.$nearby['unit_name'] : ''), ' · ');
+                                            $nearbyUnitId = (int) ($nearby['unit_id'] ?? 0);
+                                        @endphp
+                                        <button
+                                            type="button"
+                                            class="btn btn--surface btn--block"
+                                            @click="withFreshGps('startWorkVisit', {{ $nearbyUnitId }}{{ $nearbyUnitId > 0 ? '' : ', '.(int) $nearby['location_id'] }})"
+                                        >
+                                            {{ __('time.portal.clock.start_work_at', ['place' => $nearbyPlace, 'distance' => $nearby['distance_meters']]) }}
                                         </button>
                                     @empty
                                         @if ($nearbyClockUnitsLoaded)

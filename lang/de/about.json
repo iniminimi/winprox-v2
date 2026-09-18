@@ -9,7 +9,7 @@
     "lead": "WinProx ist eine QR-basierte Facility-Plattform für Meldungen und Aufgaben. Auch für Reinigungs- und Bautrupps, die beim Kunden oder auf der Baustelle arbeiten. Time (Stechuhr, GPS-Arbeitsbesuche, optional CIAO), ESG und IoT Connect sind optional — im Browser, ohne native App.",
     "what": {
         "title": "Kernidee",
-        "body": "Jeder physische Standort oder jede Unit erhält ein digitales QR-Portal. Bürger und Mitarbeitende melden Defekte über den Unit-QR. Ausführende melden sich über den Clock-Point-QR an, starten und stoppen die Arbeit am Unit-Pin (GPS-Arbeitsbesuche) und erledigen Aufgaben vor Ort. Manager verfolgen alles in einem Workspace: Meldung → Aufgaben → Abschluss. Eine Facility-App — keine separate Reinigungs- oder Bau-Edition."
+        "body": "Jeder physische Standort oder jede Unit erhält ein digitales QR-Portal. Bürger und Mitarbeitende melden Defekte über den Unit-QR. Ausführende melden sich über den Clock-Point-QR an, starten und stoppen die Arbeit am Standort- oder Unit-Pin (GPS-Arbeitsbesuche) und erledigen Aufgaben vor Ort. Manager verfolgen alles in einem Workspace: Meldung → Aufgaben → Abschluss. Eine Facility-App — keine separate Reinigungs- oder Bau-Edition."
     },
     "audience": {
         "title": "Für wen",
@@ -44,7 +44,7 @@
             },
             {
                 "name": "Time",
-                "text": "Ein-/Ausstempeln und Pausen per Clock-Point-QR, GPS-Arbeitsbesuche am Unit-Pin, Anwesenheit, Stundenliste, Meine Stunden und optionale Mindestpause pro Team. Optionales CIAO (RSZ Check In and Out) für Reinigung; der Bau-Scope liegt hinter einem Feature-Flag, bis die LSS-Specs live sind."
+                "text": "Ein-/Ausstempeln und Pausen per Clock-Point-QR, GPS-Arbeitsbesuche am Standort- oder Unit-Pin, Anwesenheit, Stundenliste, Meine Stunden und optionale Mindestpause pro Team. Optionales CIAO (RSZ Check In and Out) für Reinigung; der Bau-Scope liegt hinter einem Feature-Flag, bis die LSS-Specs live sind."
             },
             {
                 "name": "ESG",

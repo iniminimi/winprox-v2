@@ -1301,6 +1301,7 @@ class Show extends Component
             'workMenuReservationsEnabled' => $this->locationTenant()?->workMenuReservationsEnabled() ?? true,
             'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => $this->locationTenant()?->presenceComplianceEnabled() ?? false,
+            'gpsWorkVisitsEnabled' => $this->locationTenant()?->allowsGpsWorkVisits() ?? false,
             'unitPortalCategory' => $unitPortalCategory,
             'unitPortalFlagsMatchCategory' => $unitPortalFlagsMatchCategory,
             'unitCategoryPortalTooltip' => $unitCategoryPortalTooltip,

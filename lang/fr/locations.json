@@ -99,7 +99,7 @@
         "ddt_hint": "13 caractères (lieu CIAO).",
         "latitude": "Latitude",
         "longitude": "Longitude",
-        "coords_hint": "Facultatif : GPS à la place de l’adresse pour placeOfWork."
+        "coords_hint": "Facultatif : GPS du site client pour les visites de travail (et CIAO placeOfWork)."
     },
     "flash": {
         "created": "Site créé.",

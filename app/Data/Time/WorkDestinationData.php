@@ -16,6 +16,10 @@ final readonly class WorkDestinationData
         public ?float $pinLatitude,
         public ?float $pinLongitude,
         public int $radiusMeters,
+        public bool $locationCanStart = false,
+        public string $locationMapsUrl = '',
+        public ?float $locationPinLatitude = null,
+        public ?float $locationPinLongitude = null,
     ) {}
 
     /**
@@ -30,7 +34,11 @@ final readonly class WorkDestinationData
      *     can_start: bool,
      *     pin_latitude: ?float,
      *     pin_longitude: ?float,
-     *     radius_meters: int
+     *     radius_meters: int,
+     *     location_can_start: bool,
+     *     location_maps_url: string,
+     *     location_pin_latitude: ?float,
+     *     location_pin_longitude: ?float
      * }
      */
     public function toArray(): array
@@ -47,6 +55,10 @@ final readonly class WorkDestinationData
             'pin_latitude' => $this->pinLatitude,
             'pin_longitude' => $this->pinLongitude,
             'radius_meters' => $this->radiusMeters,
+            'location_can_start' => $this->locationCanStart,
+            'location_maps_url' => $this->locationMapsUrl,
+            'location_pin_latitude' => $this->locationPinLatitude,
+            'location_pin_longitude' => $this->locationPinLongitude,
         ];
     }
 }

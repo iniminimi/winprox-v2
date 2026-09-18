@@ -221,11 +221,12 @@ it('laat een admin een categorie verwijderen vanuit Categorieën', function () {
     expect(Category::find($category->id))->toBeNull();
 });
 
-it('toont DDT en GPS-coords op locatieformulier alleen bij CIAO', function () {
+it('toont DDT alleen bij CIAO; GPS-coords bij CIAO of GPS-werkbezoeken', function () {
     [$tenant, $admin] = setupTenantAdminForLocations();
     $tenant->update([
         'has_time_module' => true,
         'presence_compliance_enabled' => false,
+        'time_gps_visits' => false,
     ]);
 
     Livewire::actingAs($admin)
@@ -235,7 +236,20 @@ it('toont DDT en GPS-coords op locatieformulier alleen bij CIAO', function () {
         ->assertDontSee(__('locations.fields.latitude'), false)
         ->assertDontSee(__('locations.fields.coords_hint'), false);
 
-    $tenant->update(['presence_compliance_enabled' => true]);
+    $tenant->update(['time_gps_visits' => true]);
+    $admin->unsetRelation('tenant');
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->call('openCreate')
+        ->assertDontSee(__('locations.fields.ddt'), false)
+        ->assertSee(__('locations.fields.latitude'), false)
+        ->assertSee(__('locations.fields.coords_hint'), false);
+
+    $tenant->update([
+        'time_gps_visits' => false,
+        'presence_compliance_enabled' => true,
+    ]);
     $admin->unsetRelation('tenant');
 
     Livewire::actingAs($admin)

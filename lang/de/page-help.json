@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Wohin muss ich heute",
-                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: Ziele gruppiert nach Standort, inklusive der Stops einer Inspektionsrunde. Tippen Sie auf das GPS-Symbol neben einer Unit für die Google-Maps-Route. Arbeit starten erscheint erst vor Ort. Unit-Checks bleiben über den Unit-QR. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
+                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: Ziele gruppiert nach Standort, inklusive der Stops einer Inspektionsrunde. Tippen Sie auf das GPS-Symbol am Standort (Kunde) für die Google-Maps-Route; Units mit eigenem Pin haben ein eigenes Symbol. Arbeit starten erscheint am Standort oder am Unit-Pin vor Ort. Unit-Checks bleiben über den Unit-QR. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
                 },
                 {
                     "label": "Evakuierungsliste",
@@ -1611,7 +1611,7 @@
                 },
                 {
                     "label": "Feld",
-                    "text": "Ausführende starten und stoppen die Arbeit im Clock-Point-Portal im Radius einer Unit mit festem Pin. Einstempeln öffnet nur die bezahlte Schicht, ohne Standortnachweis."
+                    "text": "Ausführende starten und stoppen die Arbeit im Clock-Point-Portal im Radius des Standort-Pins (Kunde) oder einer Unit mit festem Pin. Einstempeln öffnet nur die bezahlte Schicht, ohne Standortnachweis."
                 }
             ]
         },

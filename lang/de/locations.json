@@ -99,7 +99,7 @@
         "ddt_hint": "13 Zeichen (CIAO-Arbeitsort).",
         "latitude": "Breitengrad",
         "longitude": "Längengrad",
-        "coords_hint": "Optional: GPS statt Adresse für placeOfWork."
+        "coords_hint": "Optional: GPS des Kundenstandorts für Arbeitsbesuche (und CIAO placeOfWork)."
     },
     "flash": {
         "created": "Standort angelegt.",

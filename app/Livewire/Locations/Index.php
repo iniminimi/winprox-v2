@@ -710,6 +710,7 @@ class Index extends Component
             'workMenuReservationsEnabled' => $viewerTenant?->workMenuReservationsEnabled() ?? true,
             'workMenuUnitMeasurementsEnabled' => $viewerTenant?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => (bool) ($viewerTenant?->presenceComplianceEnabled()),
+            'gpsWorkVisitsEnabled' => (bool) ($viewerTenant?->allowsGpsWorkVisits()),
         ]);
     }
 

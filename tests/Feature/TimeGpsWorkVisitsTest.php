@@ -359,3 +359,72 @@ it('exposeert time.visit webhook-events', function () {
     expect(WebhookEndpoint::AVAILABLE_EVENTS)->toContain('time.visit.started')
         ->and(WebhookEndpoint::AVAILABLE_EVENTS)->toContain('time.visit.ended');
 });
+
+it('start een bezoek op de locatie-pin zonder unit_id', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $unit->update(['latitude' => null, 'longitude' => null]);
+    $location->update(['latitude' => 51.05, 'longitude' => 3.73]);
+    $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    $visit = app(StartWorkVisitAction::class)->handle($worker, $location, 51.0501, 3.7301);
+
+    expect($visit->work_shift_id)->toBe($shift->id)
+        ->and($visit->unit_id)->toBeNull()
+        ->and($visit->location_id)->toBe($location->id)
+        ->and($visit->isOpen())->toBeTrue();
+});
+
+it('start een locatiebezoek via een unit zonder pin als de locatie een pin heeft', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $unit->update(['latitude' => null, 'longitude' => null]);
+    $location->update(['latitude' => 51.05, 'longitude' => 3.73]);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    $visit = app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
+
+    expect($visit->unit_id)->toBeNull()
+        ->and($visit->location_id)->toBe($location->id);
+});
+
+it('stelt een locatie met pin voor als daar geen nabije unit is', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $unit->update(['latitude' => null, 'longitude' => null]);
+    $location->update(['name' => 'Ziekenhuis Noord', 'latitude' => 51.05, 'longitude' => 3.73]);
+
+    $near = app(SuggestNearbyClockUnitsAction::class)->handle($worker, 51.05, 3.73);
+
+    expect(collect($near)->pluck('unitId')->all())->toBe([null])
+        ->and(collect($near)->pluck('locationId')->all())->toBe([(int) $location->id]);
+});
+
+it('start en stopt een locatiebezoek via de API', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $unit->update(['latitude' => null, 'longitude' => null]);
+    $location->update(['latitude' => 51.05, 'longitude' => 3.73]);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    $user = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+    $token = $user->createToken('test', ['time:write'])->plainTextToken;
+
+    $this->withToken($token)
+        ->postJson('/api/v1/time/work-visits/start', [
+            'worker_id' => $worker->id,
+            'location_id' => $location->id,
+            'latitude' => 51.05,
+            'longitude' => 3.73,
+        ])
+        ->assertCreated()
+        ->assertJsonPath('data.status', 'open');
+
+    expect(WorkVisit::query()->open()->where('worker_id', $worker->id)->value('unit_id'))->toBeNull();
+
+    $this->withToken($token)
+        ->postJson('/api/v1/time/work-visits/end', [
+            'worker_id' => $worker->id,
+            'latitude' => 51.05,
+            'longitude' => 3.73,
+        ])
+        ->assertOk();
+});

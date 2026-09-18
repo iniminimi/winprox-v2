@@ -699,40 +699,47 @@ productsector op `Tenant`.
 ### 5g.6 GPS-werkbezoeken (veld, optioneel)
 
 **Invariant (hard, niet heronderhandelen):** `WorkShift` = paid/workday time.
-`WorkVisit` = verified work at a specific unit.
+`WorkVisit` = verified work at a customer location, or at a unit with its own pin.
 
-- Locatie = klant (contract). Unit met vaste pin (`units.latitude` / `longitude`) = fysiek
-  gebouw. Units zonder pin = meldingen/taken. `unit_gps_reports` mag de pin **nooit** muteren.
-  Pin zetten: Locaties → unit bewerken → **Geavanceerde portaal-opties**.
+- Locatie = klant (contract). GPS-pin op de locatie (`locations.latitude` /
+  `longitude`) = ter plaatse bij de klant. Unit met vaste pin (`units.latitude` /
+  `longitude`) = fysiek gebouw/voertuig. Units zonder pin = meldingen/taken
+  (geen eigen Start werk). `unit_gps_reports` mag de pin **nooit** muteren.
+  Locatie-pin zetten: Locaties → bewerken (GPS-velden; zichtbaar bij Time +
+  GPS-werkbezoeken of CIAO). Unit-pin: Locaties → unit bewerken →
+  **Geavanceerde portaal-opties**.
 - Tenant-vlag `time_gps_visits` (alleen met Time). Straal default `config('time.gps_visit_radius_meters')` (250 m).
 - **Inklokken:** opent `WorkShift` via de Clock Point-QR (algemeen aanmeldpunt / PWA). Geen
   `unit_id`, geen `WorkVisit`. GPS optioneel als metadata, **geen weigering** zonder signaal
-  of zonder nabije unit. Een dienst met nul bezoeken is geldig.
+  of zonder nabije pin. Een dienst met nul bezoeken is geldig.
 - **Werk starten:** GPS **verplicht**; controle in `StartWorkVisitAction` op het klikmoment
-  (niet de eerder getoonde lijst). Unit moet een pin hebben, uitvoerder `canClockAt` die
-  klant-locatie, afstand ≤ straal. Geen open dienst → geen bezoek.
+  (niet de eerder getoonde lijst). Doel is een locatie-pin of een unit-pin; uitvoerder
+  `canClockAt` die klant-locatie, afstand ≤ straal. Bezoek op locatie-pin slaat
+  `unit_id` null op. Geen open dienst → geen bezoek.
 - **Werk stoppen / wissel A→B:** altijd OUT A daarna IN B (één transactie). CIAO volgt die events.
 - **Uitklokken:** mag geografisch overal (zelfde Clock Point-portal). Open visit altijd eerst
   netjes sluiten (CIAO OUT). Zelfde pad bij force-close en auto-close.
 - CIAO met vlag aan: clock in/out enqueue **niet**; visit start/end wel. Pauzes tijdens een
-  bezoek blijven het bestaande OUT/IN. placeOfWork = gsm-coords of unit-pin; DDT blijft op
-  de locatie (klant).
+  bezoek blijven het bestaande OUT/IN. placeOfWork = gsm-coords, unit-pin of locatie-pin;
+  DDT blijft op de locatie (klant).
 - Publieke winprox.app-homepage doet **geen** GPS-voorstel van bedrijven.
 - **Clock Point na inklokken (Time + GPS-werkbezoeken):** kaart **Waar moet ik
   vandaag naartoe** = waar de uitvoerder *vandaag* naartoe moet, gegroepeerd
-  per locatie (locatienaam + adres, daaronder units met GPS-icoon). Bron: open
+  per locatie (locatienaam + adres + locatie-nav, daaronder units). Bron: open
   teamtaken met `scheduled_for` of `due_at` vandaag (inspectiestops uitgeklapt)
   + optioneel de gepubliceerde roostercel van vandaag met `unit_id`. Eerste
   inspectieronde-cyclus krijgt die datums uit `recurrence_next_due_at`; een
   bestaande undated ronde-taak telt mee als `recurrence_next_due_at` vandaag is.
   **Geen** overige undated open taken (die blijven onder Open taken).
   Inspectierondes zelf verdwijnen uit Open taken (GPS-bezoeken aan): de stops
-  staan op deze kaart. Klik op **unit + GPS-icoon** voor de Google Maps deep
-  link (unit-pin, anders locatieadres — nooit `unit_gps_reports`). **Start werk**
-  alleen binnen de bestaande GPS-straal via `StartWorkVisitAction`. Unit-checks
+  staan op deze kaart. Klik op **locatie + GPS-icoon** voor de Google Maps deep
+  link (locatie-pin, anders adres — nooit `unit_gps_reports`). Units met eigen
+  pin hebben een eigen icoon. Units zonder pin staan alleen als naam. **Start werk**
+  één keer per locatie (locatie-pin) plus per unit met eigen pin, alleen binnen de
+  bestaande GPS-straal via `StartWorkVisitAction`. Unit-checks
   blijven via de unit-QR. Navigeren maakt geen `WorkVisit` en geen CIAO.
-  **Zoek werkplek in de buurt** blijft voor ongepland werk. Een dienst met nul
-  bezoeken blijft geldig.
+  **Zoek werkplek in de buurt** stelt gepinde units voor, en locaties met pin als
+  daar geen nabije unit was. Een dienst met nul bezoeken blijft geldig.
 - **Beheer:** Werk → **Werkbezoeken** toont de historiek (periode, uitvoerder, locatie,
   open/afgesloten), één kader per uitvoerder per dag met duur per locatie. Time → **Aanwezigheid** toont het
   open werkbezoek (locatie · unit).

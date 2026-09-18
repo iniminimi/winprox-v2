@@ -19,6 +19,7 @@ use App\Http\Requests\Time\ManualClockInWorkShiftRequest;
 use App\Http\Resources\WorkerResource;
 use App\Http\Resources\WorkShiftResource;
 use App\Models\ClockPoint;
+use App\Models\Location;
 use App\Models\Unit;
 use App\Models\Worker;
 use App\Models\WorkShift;
@@ -115,12 +116,14 @@ class WorkShiftController extends Controller
 
         $validated = $request->validated();
         $worker = Worker::query()->findOrFail($validated['worker_id']);
-        $unit = Unit::query()->findOrFail($validated['unit_id']);
+        $place = isset($validated['unit_id'])
+            ? Unit::query()->findOrFail($validated['unit_id'])
+            : Location::query()->findOrFail($validated['location_id']);
 
         try {
             $visit = $startVisit->handle(
                 $worker,
-                $unit,
+                $place,
                 (float) $validated['latitude'],
                 (float) $validated['longitude'],
                 ClockSource::Api,

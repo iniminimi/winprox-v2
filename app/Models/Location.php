@@ -65,6 +65,11 @@ class Location extends Model
         return trim($this->formattedAddress()) !== '';
     }
 
+    public function hasWorkVisitPin(): bool
+    {
+        return $this->latitude !== null && $this->longitude !== null;
+    }
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'location_user')->withTimestamps();

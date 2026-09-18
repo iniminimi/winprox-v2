@@ -202,21 +202,26 @@ class ListWorkDestinationsForWorkerAction
 
     private function destinationFromUnit(Unit $unit, Location $location, int $radius): ?WorkDestinationData
     {
-        $hasPin = $unit->hasWorkVisitPin();
+        $hasUnitPin = $unit->hasWorkVisitPin();
+        $hasLocationPin = $location->hasWorkVisitPin();
         $address = $location->formattedAddress();
-        if (! $hasPin && trim($address) === '') {
+        if (! $hasUnitPin && ! $hasLocationPin && trim($address) === '') {
             return null;
         }
 
-        $mapsUrl = $hasPin
-            ? $this->mapsUrlFromCoordinates((float) $unit->latitude, (float) $unit->longitude)
-            : $this->mapsUrlFromAddress($address);
+        $locationMapsUrl = $hasLocationPin
+            ? $this->mapsUrlFromCoordinates((float) $location->latitude, (float) $location->longitude)
+            : (trim($address) !== '' ? $this->mapsUrlFromAddress($address) : '');
 
-        $locationName = trim($location->localizedName());
-        if ($locationName === '') {
-            $locationName = trim((string) $location->name);
+        $mapsUrl = $hasUnitPin
+            ? $this->mapsUrlFromCoordinates((float) $unit->latitude, (float) $unit->longitude)
+            : $locationMapsUrl;
+
+        if ($mapsUrl === '') {
+            return null;
         }
 
+        $locationName = $this->locationLabel($location);
         $unitName = trim((string) $unit->localizedName());
         if ($unitName === '') {
             $unitName = trim((string) $unit->name);
@@ -230,24 +235,30 @@ class ListWorkDestinationsForWorkerAction
             unitName: $unitName !== '' ? $unitName : null,
             addressLine: $address,
             mapsUrl: $mapsUrl,
-            canStartVisit: $hasPin,
-            pinLatitude: $hasPin ? (float) $unit->latitude : null,
-            pinLongitude: $hasPin ? (float) $unit->longitude : null,
+            canStartVisit: $hasUnitPin,
+            pinLatitude: $hasUnitPin ? (float) $unit->latitude : null,
+            pinLongitude: $hasUnitPin ? (float) $unit->longitude : null,
             radiusMeters: $radius,
+            locationCanStart: $hasLocationPin,
+            locationMapsUrl: $locationMapsUrl,
+            locationPinLatitude: $hasLocationPin ? (float) $location->latitude : null,
+            locationPinLongitude: $hasLocationPin ? (float) $location->longitude : null,
         );
     }
 
     private function destinationFromLocationOnly(Location $location, int $radius): ?WorkDestinationData
     {
+        $hasLocationPin = $location->hasWorkVisitPin();
         $address = $location->formattedAddress();
-        if (trim($address) === '') {
+        if (! $hasLocationPin && trim($address) === '') {
             return null;
         }
 
-        $locationName = trim($location->localizedName());
-        if ($locationName === '') {
-            $locationName = trim((string) $location->name);
-        }
+        $locationMapsUrl = $hasLocationPin
+            ? $this->mapsUrlFromCoordinates((float) $location->latitude, (float) $location->longitude)
+            : $this->mapsUrlFromAddress($address);
+
+        $locationName = $this->locationLabel($location);
 
         return new WorkDestinationData(
             key: 'location:'.(int) $location->id,
@@ -256,12 +267,26 @@ class ListWorkDestinationsForWorkerAction
             locationName: $locationName,
             unitName: null,
             addressLine: $address,
-            mapsUrl: $this->mapsUrlFromAddress($address),
-            canStartVisit: false,
-            pinLatitude: null,
-            pinLongitude: null,
+            mapsUrl: $locationMapsUrl,
+            canStartVisit: $hasLocationPin,
+            pinLatitude: $hasLocationPin ? (float) $location->latitude : null,
+            pinLongitude: $hasLocationPin ? (float) $location->longitude : null,
             radiusMeters: $radius,
+            locationCanStart: $hasLocationPin,
+            locationMapsUrl: $locationMapsUrl,
+            locationPinLatitude: $hasLocationPin ? (float) $location->latitude : null,
+            locationPinLongitude: $hasLocationPin ? (float) $location->longitude : null,
         );
+    }
+
+    private function locationLabel(Location $location): string
+    {
+        $locationName = trim($location->localizedName());
+        if ($locationName === '') {
+            $locationName = trim((string) $location->name);
+        }
+
+        return $locationName;
     }
 
     private function mapsUrlFromCoordinates(float $latitude, float $longitude): string

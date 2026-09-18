@@ -6,6 +6,7 @@ use App\Enums\ClockSource;
 use App\Enums\PresenceSourceEvent;
 use App\Enums\WorkShiftStatus;
 use App\Events\Time\WorkVisitStarted;
+use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\WorkShift;
@@ -17,8 +18,8 @@ use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
 /**
- * Verified work at a specific unit. GPS is checked here at click time.
- * WorkShift = paid/workday time and is not location proof.
+ * Verified work at a customer location, or at a unit that has its own pin.
+ * GPS is checked here at click time. WorkShift = paid/workday time and is not location proof.
  */
 class StartWorkVisitAction
 {
@@ -29,7 +30,7 @@ class StartWorkVisitAction
 
     public function handle(
         Worker $worker,
-        Unit $unit,
+        Unit|Location $place,
         float $latitude,
         float $longitude,
         ClockSource $source = ClockSource::Gps,
@@ -41,39 +42,32 @@ class StartWorkVisitAction
             throw new InvalidArgumentException('gps_visits_disabled');
         }
 
-        if ((int) $unit->tenant_id !== (int) $worker->tenant_id) {
-            throw new InvalidArgumentException('unit_tenant_mismatch');
-        }
-
-        if (! $unit->is_active) {
-            throw new InvalidArgumentException('unit_inactive');
-        }
-
-        if (! $unit->hasWorkVisitPin() || $unit->location_id === null) {
-            throw new InvalidArgumentException('unit_visit_pin_missing');
-        }
+        [$location, $unit, $pinLatitude, $pinLongitude] = $this->resolvePlace($place, $worker);
 
         if ($latitude < -90 || $latitude > 90 || $longitude < -180 || $longitude > 180) {
             throw new InvalidArgumentException('visit_gps_invalid');
         }
 
         $worker->loadMissing(['team', 'locations']);
-        $locationId = $unit->location_id !== null ? (int) $unit->location_id : null;
-        if (! $worker->canClockAt($locationId)) {
+        if (! $worker->canClockAt((int) $location->id)) {
             throw new InvalidArgumentException('worker_location_not_allowed');
         }
 
         $meters = DistanceMeters::between(
             $latitude,
             $longitude,
-            (float) $unit->latitude,
-            (float) $unit->longitude,
+            $pinLatitude,
+            $pinLongitude,
         );
         if ($meters > $tenant->gpsVisitRadiusMeters()) {
             throw new InvalidArgumentException('visit_unit_out_of_range');
         }
 
-        return DB::transaction(function () use ($worker, $unit, $latitude, $longitude, $source) {
+        $storedUnitId = $unit instanceof Unit && $unit->hasWorkVisitPin()
+            ? (int) $unit->id
+            : null;
+
+        return DB::transaction(function () use ($worker, $location, $storedUnitId, $latitude, $longitude, $source) {
             Worker::query()->whereKey($worker->id)->lockForUpdate()->first();
 
             $shift = WorkShift::query()
@@ -93,7 +87,8 @@ class StartWorkVisitAction
                 ->first();
 
             if ($open !== null) {
-                if ((int) $open->unit_id === (int) $unit->id) {
+                $openUnitId = $open->unit_id !== null ? (int) $open->unit_id : null;
+                if ((int) $open->location_id === (int) $location->id && $openUnitId === $storedUnitId) {
                     throw new InvalidArgumentException('visit_already_open');
                 }
 
@@ -104,8 +99,8 @@ class StartWorkVisitAction
                 'tenant_id' => $worker->tenant_id,
                 'worker_id' => $worker->id,
                 'work_shift_id' => $shift->id,
-                'unit_id' => $unit->id,
-                'location_id' => $unit->location_id,
+                'unit_id' => $storedUnitId,
+                'location_id' => $location->id,
                 'started_at' => now(),
                 'start_latitude' => $latitude,
                 'start_longitude' => $longitude,
@@ -119,5 +114,52 @@ class StartWorkVisitAction
 
             return $visit;
         });
+    }
+
+    /**
+     * @return array{0: Location, 1: ?Unit, 2: float, 3: float}
+     */
+    private function resolvePlace(Unit|Location $place, Worker $worker): array
+    {
+        if ($place instanceof Location) {
+            if ((int) $place->tenant_id !== (int) $worker->tenant_id) {
+                throw new InvalidArgumentException('unit_tenant_mismatch');
+            }
+            if (! $place->is_active) {
+                throw new InvalidArgumentException('unit_inactive');
+            }
+            if (! $place->hasWorkVisitPin()) {
+                throw new InvalidArgumentException('unit_visit_pin_missing');
+            }
+
+            return [$place, null, (float) $place->latitude, (float) $place->longitude];
+        }
+
+        $unit = $place;
+        if ((int) $unit->tenant_id !== (int) $worker->tenant_id) {
+            throw new InvalidArgumentException('unit_tenant_mismatch');
+        }
+        if (! $unit->is_active) {
+            throw new InvalidArgumentException('unit_inactive');
+        }
+
+        $unit->loadMissing('location');
+        $location = $unit->location;
+        if (! $location instanceof Location || $unit->location_id === null) {
+            throw new InvalidArgumentException('unit_visit_pin_missing');
+        }
+        if (! $location->is_active) {
+            throw new InvalidArgumentException('unit_inactive');
+        }
+
+        if ($unit->hasWorkVisitPin()) {
+            return [$location, $unit, (float) $unit->latitude, (float) $unit->longitude];
+        }
+
+        if ($location->hasWorkVisitPin()) {
+            return [$location, $unit, (float) $location->latitude, (float) $location->longitude];
+        }
+
+        throw new InvalidArgumentException('unit_visit_pin_missing');
     }
 }

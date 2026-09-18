@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Où dois-je aller aujourd'hui",
-                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : destinations groupées par site, y compris les arrêts d'une tournée d'inspection. Touchez l'icône GPS d'une unité pour l'itinéraire Google Maps. Commencer le travail n'apparaît que sur place. Les contrôles d'unité restent via le QR unité. Les tâches ouvertes sans date restent sous Tâches ouvertes."
+                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : destinations groupées par site, y compris les arrêts d'une tournée d'inspection. Touchez l'icône GPS du site (client) pour l'itinéraire Google Maps ; les unités avec pin propre ont leur propre icône. Commencer le travail apparaît sur le site ou un pin d'unité une fois sur place. Les contrôles d'unité restent via le QR unité. Les tâches ouvertes sans date restent sous Tâches ouvertes."
                 },
                 {
                     "label": "Liste d’évacuation",
@@ -1619,7 +1619,7 @@
                 },
                 {
                     "label": "Terrain",
-                    "text": "Les exécutants démarrent et arrêtent le travail sur le portail Clock Point dans le rayon d’une unité avec pin fixe. L’entrée ouvre seulement le temps payé, sans preuve de lieu."
+                    "text": "Les exécutants démarrent et arrêtent le travail sur le portail Clock Point dans le rayon du pin du site (client) ou d’une unité avec pin fixe. L’entrée ouvre seulement le temps payé, sans preuve de lieu."
                 }
             ]
         },

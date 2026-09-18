@@ -23,7 +23,8 @@ class ApiStartWorkVisitRequest extends FormRequest
     {
         return [
             'worker_id' => ['required', 'integer', 'exists:workers,id'],
-            'unit_id' => ['required', 'integer', 'exists:units,id'],
+            'unit_id' => ['nullable', 'integer', 'exists:units,id', 'required_without:location_id'],
+            'location_id' => ['nullable', 'integer', 'exists:locations,id', 'required_without:unit_id'],
             'latitude' => ['required', 'numeric', 'between:-90,90'],
             'longitude' => ['required', 'numeric', 'between:-180,180'],
         ];

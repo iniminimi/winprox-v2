@@ -270,8 +270,28 @@ it('gebruikt het locatieadres zonder werkbezoek-pin', function () {
     $row = app(ListWorkDestinationsForWorkerAction::class)->handle($tenant, $worker)[0];
 
     expect($row->canStartVisit)->toBeFalse()
+        ->and($row->locationCanStart)->toBeFalse()
         ->and($row->mapsUrl)->toContain(rawurlencode('Kerkstraat 12, 8000 Brugge'))
         ->and($row->pinLatitude)->toBeNull();
+});
+
+it('vouwt units zonder pin onder de locatie-pin', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $unit->update(['latitude' => null, 'longitude' => null, 'name' => 'Kamer 12']);
+    $location->update([
+        'name' => 'Ziekenhuis Noord',
+        'latitude' => 51.05,
+        'longitude' => 3.73,
+    ]);
+    workDestTodayTask([$tenant, $worker], $unit, $location);
+
+    $row = app(ListWorkDestinationsForWorkerAction::class)->handle($tenant, $worker)[0];
+
+    expect($row->canStartVisit)->toBeFalse()
+        ->and($row->locationCanStart)->toBeTrue()
+        ->and($row->unitName)->toBe('Kamer 12')
+        ->and($row->locationMapsUrl)->toContain('51.05')
+        ->and($row->mapsUrl)->toContain('51.05');
 });
 
 it('gebruikt geen oud GPS-rapport voor navigatie', function () {

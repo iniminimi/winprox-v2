@@ -1010,7 +1010,7 @@
                 },
                 {
                     "label": "Adónde debo ir hoy",
-                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: destinos agrupados por sede, incluidas las paradas de una ronda de inspección. Pulsa el icono GPS de una unidad para la ruta en Google Maps. Empezar el trabajo aparece solo in situ. Los unit checks siguen en el QR de unidad. Las tareas abiertas sin fecha siguen en Tareas abiertas."
+                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: destinos agrupados por sede, incluidas las paradas de una ronda de inspección. Pulsa el icono GPS de la sede (cliente) para la ruta en Google Maps; las unidades con pin propio tienen su icono. Empezar el trabajo aparece en la sede o en un pin de unidad in situ. Los unit checks siguen en el QR de unidad. Las tareas abiertas sin fecha siguen en Tareas abiertas."
                 },
                 {
                     "label": "Lista de evacuación",
@@ -1611,7 +1611,7 @@
                 },
                 {
                     "label": "Campo",
-                    "text": "Los ejecutores inician y detienen el trabajo en el portal Clock Point dentro del radio de una unidad con pin fijo. El fichaje de entrada solo abre el tiempo pagado, sin prueba de lugar."
+                    "text": "Los ejecutores inician y detienen el trabajo en el portal Clock Point dentro del radio del pin de sede (cliente) o de una unidad con pin fijo. El fichaje de entrada solo abre el tiempo pagado, sin prueba de lugar."
                 }
             ]
         },

@@ -238,8 +238,8 @@
         "gps_on_clock_hint": "Drinnen gibt es oft kein Signal: ohne GPS geht das Stempeln trotzdem. Koordinaten werden gespeichert, wenn vorhanden.",
         "save": "Stempeluhr-Sicherheit speichern",
         "saved": "Stempeluhr-Sicherheit gespeichert.",
-        "gps_visits": "GPS-Arbeitsbesuche (Arbeit an Unit-Pin starten/beenden)",
-        "gps_visits_hint": "Einstempeln öffnet weiter den bezahlten Tag ohne Standortnachweis. Arbeitsstart braucht frisches GPS im Radius einer Unit mit festem Pin. Ausstempeln geht überall; ein offener Besuch wird zuerst geschlossen.",
+        "gps_visits": "GPS-Arbeitsbesuche (Arbeit an Standort- oder Unit-Pin starten/beenden)",
+        "gps_visits_hint": "Einstempeln öffnet weiter den bezahlten Tag ohne Standortnachweis. Arbeitsstart braucht frisches GPS im Radius des Standort-Pins (Kunde) oder einer Unit mit festem Pin. Ausstempeln geht überall; ein offener Besuch wird zuerst geschlossen.",
         "gps_visit_radius": "Radius (Meter)",
         "evacuation_list": "Evakuierungsliste am Clock Point",
         "evacuation_list_hint": "Nach der Anmeldung sehen Ausführende eine Kachel, wer eingestempelt ist. Sie bestätigen, dass die Einsicht außergewöhnlich ist; jede Einsicht wird protokolliert. Standardmäßig aus."

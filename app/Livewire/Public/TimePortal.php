@@ -36,6 +36,7 @@ use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
@@ -89,7 +90,7 @@ class TimePortal extends Component
     public ?string $clockGpsLatitude = null;
     public ?string $clockGpsLongitude = null;
 
-    /** @var list<array{unit_id: int, unit_name: string, location_name: string, distance_meters: int}> */
+    /** @var list<array{unit_id: ?int, location_id: int, unit_name: string, location_name: string, distance_meters: int}> */
     public array $nearbyClockUnits = [];
 
     public bool $nearbyClockUnitsLoaded = false;
@@ -767,7 +768,7 @@ class TimePortal extends Component
         }
     }
 
-    public function startWorkVisit(int $unitId, mixed $latitude, mixed $longitude, StartWorkVisitAction $startVisit): void
+    public function startWorkVisit(int $unitId, mixed $latitude, mixed $longitude, int $locationId = 0, StartWorkVisitAction $startVisit): void
     {
         $worker = $this->authorizedWorker();
         if ($worker === null) {
@@ -782,18 +783,27 @@ class TimePortal extends Component
             return;
         }
 
-        $unit = Unit::query()
-            ->where('tenant_id', $this->tenantId)
-            ->whereKey($unitId)
-            ->first();
-        if ($unit === null) {
+        $place = null;
+        if ($unitId > 0) {
+            $place = Unit::query()
+                ->where('tenant_id', $this->tenantId)
+                ->whereKey($unitId)
+                ->first();
+        } elseif ($locationId > 0) {
+            $place = Location::query()
+                ->where('tenant_id', $this->tenantId)
+                ->whereKey($locationId)
+                ->first();
+        }
+
+        if ($place === null) {
             $this->flashMessage = __('time.portal.errors.visit_unit_out_of_range');
 
             return;
         }
 
         try {
-            $startVisit->handle($worker, $unit, $lat, $lng);
+            $startVisit->handle($worker, $place, $lat, $lng);
             $this->nearbyClockUnits = [];
             $this->nearbyClockUnitsLoaded = false;
             $this->flashMessage = __('time.portal.visit_started');
@@ -1026,6 +1036,7 @@ class TimePortal extends Component
                 $listDestinations,
             ),
             'openVisitUnitId' => $openShift?->openVisit?->unit_id,
+            'openVisitLocationId' => $openShift?->openVisit?->location_id,
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
             'evacuationList' => $evacuationList,
@@ -1101,7 +1112,11 @@ class TimePortal extends Component
      *     location_id: int,
      *     location_name: string,
      *     address_line: string,
-     *     location_maps_url: ?string,
+     *     location_maps_url: string,
+     *     location_can_start: bool,
+     *     location_pin_latitude: ?float,
+     *     location_pin_longitude: ?float,
+     *     radius_meters: int,
      *     units: list<array<string, mixed>>
      * }>
      */
@@ -1116,19 +1131,34 @@ class TimePortal extends Component
                     'location_id' => $locationId,
                     'location_name' => (string) $row['location_name'],
                     'address_line' => (string) $row['address_line'],
-                    'location_maps_url' => null,
+                    'location_maps_url' => (string) ($row['location_maps_url'] ?? $row['maps_url'] ?? ''),
+                    'location_can_start' => (bool) ($row['location_can_start'] ?? false),
+                    'location_pin_latitude' => $row['location_pin_latitude'] ?? null,
+                    'location_pin_longitude' => $row['location_pin_longitude'] ?? null,
+                    'radius_meters' => (int) ($row['radius_meters'] ?? 0),
                     'units' => [],
                 ];
             }
 
-            $unitName = trim((string) ($row['unit_name'] ?? ''));
-            if ($unitName !== '') {
-                $groups[$locationId]['units'][] = $row;
-
-                continue;
+            $group = &$groups[$locationId];
+            $locationMapsUrl = trim((string) ($row['location_maps_url'] ?? ''));
+            if ($locationMapsUrl !== '') {
+                $group['location_maps_url'] = $locationMapsUrl;
+            }
+            if ($row['location_can_start'] ?? false) {
+                $group['location_can_start'] = true;
+                $group['location_pin_latitude'] = $row['location_pin_latitude'] ?? $group['location_pin_latitude'];
+                $group['location_pin_longitude'] = $row['location_pin_longitude'] ?? $group['location_pin_longitude'];
+            }
+            if ((int) ($row['radius_meters'] ?? 0) > 0) {
+                $group['radius_meters'] = (int) $row['radius_meters'];
             }
 
-            $groups[$locationId]['location_maps_url'] = (string) $row['maps_url'];
+            $unitName = trim((string) ($row['unit_name'] ?? ''));
+            if ($unitName !== '') {
+                $group['units'][] = $row;
+            }
+            unset($group);
         }
 
         return array_values($groups);

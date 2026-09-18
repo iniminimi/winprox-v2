@@ -9,7 +9,7 @@
     "lead": "WinProx è una piattaforma facility via QR per segnalazioni e compiti. Anche per squadre di pulizie e cantiere che lavorano dal cliente o in cantiere. Time (timbratrice, visite GPS, CIAO opzionale), ESG e IoT Connect sono opzionali — nel browser, senza app nativa.",
     "what": {
         "title": "Idea centrale",
-        "body": "Ogni sede o unità fisica ha un portale QR digitale. Cittadini e collaboratori segnalano i difetti con il QR dell'unità. Gli esecutori si identificano con il QR Clock Point, avviano e interrompono il lavoro sul pin dell'unità (visite GPS) e chiudono i compiti in loco. La gestione segue tutto in un workspace: segnalazione → compiti → chiusura. Un'unica app Facility — niente edizione separata per pulizie o edilizia."
+        "body": "Ogni sede o unità fisica ha un portale QR digitale. Cittadini e collaboratori segnalano i difetti con il QR dell'unità. Gli esecutori si identificano con il QR Clock Point, avviano e interrompono il lavoro sul pin della sede o dell'unità (visite GPS) e chiudono i compiti in loco. La gestione segue tutto in un workspace: segnalazione → compiti → chiusura. Un'unica app Facility — niente edizione separata per pulizie o edilizia."
     },
     "audience": {
         "title": "Per chi",
@@ -44,7 +44,7 @@
             },
             {
                 "name": "Time",
-                "text": "Timbratura ingresso/uscita e pause via QR Clock Point, visite GPS sul pin dell'unità, presenza, foglio ore, Le mie ore e pausa minima opzionale per team. CIAO opzionale (Check In and Out ONSS) per le pulizie; lo scope edilizia è pronto dietro feature-flag fino alle spec ONSS live."
+                "text": "Timbratura ingresso/uscita e pause via QR Clock Point, visite GPS sul pin della sede o dell'unità, presenza, foglio ore, Le mie ore e pausa minima opzionale per team. CIAO opzionale (Check In and Out ONSS) per le pulizie; lo scope edilizia è pronto dietro feature-flag fino alle spec ONSS live."
             },
             {
                 "name": "ESG",

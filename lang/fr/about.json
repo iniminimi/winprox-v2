@@ -9,7 +9,7 @@
     "lead": "WinProx est une plateforme facility par QR pour signalements et tâches. Aussi pour les équipes de nettoyage et de construction qui travaillent chez le client ou sur le chantier. Time (pointeuse, visites GPS, CIAO optionnel), ESG et IoT Connect sont optionnels — dans le navigateur, sans appli native.",
     "what": {
         "title": "Idée centrale",
-        "body": "Chaque site ou unité physique dispose d'un portail QR numérique. Citoyens et collaborateurs signalent des défauts via le QR unité. Les exécutants s'identifient via le QR Clock Point, démarrent et arrêtent le travail sur un pin d'unité (visites GPS) et traitent les tâches sur place. Les gestionnaires suivent tout dans un workspace : signalement → tâches → clôture. Une seule app Facility — pas d'édition nettoyage ou construction séparée."
+        "body": "Chaque site ou unité physique dispose d'un portail QR numérique. Citoyens et collaborateurs signalent des défauts via le QR unité. Les exécutants s'identifient via le QR Clock Point, démarrent et arrêtent le travail sur un pin de site ou d'unité (visites GPS) et traitent les tâches sur place. Les gestionnaires suivent tout dans un workspace : signalement → tâches → clôture. Une seule app Facility — pas d'édition nettoyage ou construction séparée."
     },
     "audience": {
         "title": "Pour qui",
@@ -44,7 +44,7 @@
             },
             {
                 "name": "Time",
-                "text": "Pointage entrée/sortie et pauses via QR Clock Point, visites GPS sur pin d'unité, présence, feuille d’heures, Mes heures et pause minimale optionnelle par équipe. CIAO optionnel (Check In and Out ONSS) pour le nettoyage ; le périmètre construction est prêt derrière un feature-flag jusqu’aux specs ONSS."
+                "text": "Pointage entrée/sortie et pauses via QR Clock Point, visites GPS sur pin de site ou d'unité, présence, feuille d’heures, Mes heures et pause minimale optionnelle par équipe. CIAO optionnel (Check In and Out ONSS) pour le nettoyage ; le périmètre construction est prêt derrière un feature-flag jusqu’aux specs ONSS."
             },
             {
                 "name": "ESG",
