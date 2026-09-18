@@ -325,3 +325,47 @@ it('weigert een unit-check op Clock Point op een andere locatie', function () {
         ->assertSet('checkingUnitId', null)
         ->assertSet('flashMessage', __('portal.worker.errors.not_this_location'));
 });
+
+it('toont Unit check pas na Start werk en verwart Afmelden niet met inklokken', function () {
+    $ctx = prepareClockPointWorker(gpsVisitContext());
+    [$tenant, $worker, $clockPoint, $location, $unit] = $ctx;
+    $unit->update(['allow_unit_checks' => true]);
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Stop B',
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => null,
+        'unit_id' => null,
+        'approved_at' => now(),
+        'is_recurring' => true,
+        'description' => 'Ronde zonder bezoek',
+        'recurrence_next_due_at' => now()->endOfDay(),
+    ]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unit->id, 'sort_order' => 0]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unitB->id, 'sort_order' => 1]);
+    clockPointOpenTask($ctx, $issue, ['status' => TaskStatus::InProgress]);
+
+    $portal = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->assertSee(__('time.portal.switch_worker'), false)
+        ->assertDontSee(__('portal.worker.sign_out'), false)
+        ->assertSee(__('time.portal.clock.not_clocked_in'), false)
+        ->assertSee('Ronde zonder bezoek', false)
+        ->assertDontSee(__('portal.team.complete_needs_visit'), false)
+        ->assertDontSeeHtml('wire:click="openClockPointUnitCheck');
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    $portal = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->assertSee(__('portal.team.complete_needs_visit'), false)
+        ->assertDontSeeHtml('wire:click="openClockPointUnitCheck')
+        ->call('openClockPointUnitCheck', $unit->id)
+        ->assertSet('checkingUnitId', null)
+        ->assertSet('flashMessage', __('portal.team.complete_needs_visit'));
+
+    expect(substr_count($portal->html(), __('portal.team.complete_needs_visit')))->toBe(1);
+});

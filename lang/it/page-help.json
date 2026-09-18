@@ -1005,12 +1005,12 @@
             "title": "Aiuto — Portale Clock Point",
             "actions": [
                 {
-                    "label": "Timbratura",
-                    "text": "Scansioni l'adesivo QR Clock Point e acceda con nome, cognome e icona personale (PIN opzionale) sul proprio telefono. Due tentativi errati bloccano temporaneamente il Suo account — un caposquadra o amministratore può sbloccarlo."
+                    "label": "Nome e icona",
+                    "text": "Scansiona il QR Clock Point e scegli nome, cognome e icona personale (PIN opzionale) sul tuo telefono. Questo dice chi sei — non è ancora timbrare. Due tentativi errati bloccano temporaneamente l'account; un caposquadra o un amministratore può sbloccarlo."
                 },
                 {
                     "label": "Attività aperte",
-                    "text": "Dopo l'accesso vede le attività aperte del Suo team. Con Time + visite GPS avvia o chiude le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). Un giro di ispezione mostra descrizione, priorità, stato, la prossima fermata e il pulsante Controllo unità. Il controllo completo (OK / Non OK / salta) si apre dopo quel pulsante."
+                    "text": "Dopo nome e icona vedi le attività aperte del tuo team. Con Time + visite GPS avvii o chiudi le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). Un giro di ispezione mostra descrizione, priorità, stato e la prossima fermata. Il pulsante Controllo unità compare solo dopo Avvia lavoro in quella sede; il controllo completo (OK / Non OK / salta) si apre dopo."
                 },
                 {
                     "label": "Timbra entrata e uscita",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Dove devo andare oggi",
-                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: solo sedi (nome + indirizzo). Tocca l'icona GPS per il percorso in Google Maps. Inizia il lavoro compare sulla sede sul posto. Le fermate di ispezione e il pulsante Controllo unità sono in Attività aperte. Le attività aperte senza data restano in Attività aperte."
+                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: solo sedi (nome + indirizzo). Tocca l'icona GPS per il percorso Google Maps. Avvia lavoro compare in sede sul posto. Le fermate di ispezione sono sotto Attività aperte; Controllo unità solo dopo Avvia lavoro. Le attività aperte senza data restano sotto Attività aperte."
                 },
                 {
                     "label": "Elenco evacuazione",
@@ -1033,8 +1033,8 @@
                     "text": "Dopo l’accesso vedi la tessera Il mio turno. Mostra solo i tuoi turni e assenze <strong>pubblicati</strong> del <strong>mese</strong> scelto, in elenco compatto (giorni vuoti saltati). Un badge indica un turno appena pubblicato; aprendolo il badge sparisce."
                 },
                 {
-                    "label": "Esci",
-                    "text": "Esca quando ha finito. A orari impostati dall'amministratore viene disconnesso automaticamente."
+                    "label": "Altro collaboratore",
+                    "text": "Tocca Altro collaboratore se non è il tuo nome. Questo non timbra l'uscita; ingresso e uscita sono sotto Presenza. Negli orari impostati dall'amministratore vieni anche disconnesso automaticamente."
                 }
             ]
         },

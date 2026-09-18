@@ -262,6 +262,7 @@
     },
     "portal": {
         "title": "Inklokken",
+        "switch_worker": "Andere medewerker",
         "clock": {
             "title": "Aanwezigheid",
             "not_clocked_in": "Je bent nog niet ingeklokt.",

@@ -1005,12 +1005,12 @@
             "title": "Ayuda — Portal Clock Point",
             "actions": [
                 {
-                    "label": "Fichar",
-                    "text": "Escanee la pegatina QR Clock Point e inicie sesión con su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Dos intentos incorrectos bloquean temporalmente su cuenta — un jefe de equipo o administrador puede desbloquearla."
+                    "label": "Nombre e icono",
+                    "text": "Escanee el QR Clock Point y elija su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Eso indica quién es — aún no es fichar. Dos intentos incorrectos bloquean temporalmente su cuenta; un jefe de equipo o administrador puede desbloquearla."
                 },
                 {
                     "label": "Tareas abiertas",
-                    "text": "Tras iniciar sesión ve las tareas abiertas de su equipo. Con Time + visitas GPS inicia o cierra tareas de equipo en Clock Point mientras hay una visita de trabajo abierta en esa sede de cliente (nota y fotos opcionales). Una ronda de inspección muestra descripción, prioridad, estado, la siguiente parada y el botón Unit check. El control completo (OK / No OK / omitir) se abre tras ese botón."
+                    "text": "Tras nombre e icono ve las tareas abiertas de su equipo. Con Time + visitas GPS inicia o cierra tareas de equipo en Clock Point mientras hay una visita de trabajo abierta en esa sede de cliente (nota y fotos opcionales). Una ronda de inspección muestra descripción, prioridad, estado y la siguiente parada. El botón Unit check aparece solo después de Empezar el trabajo en esa sede; el control completo (OK / No OK / omitir) se abre después."
                 },
                 {
                     "label": "Fichar entrada y salida",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Adónde debo ir hoy",
-                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: solo sedes (nombre + dirección). Pulsa el icono GPS para la ruta en Google Maps. Empezar el trabajo aparece en la sede in situ. Las paradas de inspección y el botón Unit check están en Tareas abiertas. Las tareas abiertas sin fecha siguen en Tareas abiertas."
+                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: solo sedes (nombre + dirección). Pulsa el icono GPS para la ruta en Google Maps. Empezar el trabajo aparece en la sede in situ. Las paradas de inspección están en Tareas abiertas; Unit check solo después de Empezar el trabajo. Las tareas abiertas sin fecha siguen en Tareas abiertas."
                 },
                 {
                     "label": "Lista de evacuación",
@@ -1033,8 +1033,8 @@
                     "text": "Tras identificarte ves la ficha Mi cuadrante. Solo muestra tus turnos y ausencias <strong>publicados</strong> del <strong>mes</strong> elegido, en lista compacta (días vacíos omitidos). Una insignia significa un cuadrante recién publicado; al abrirlo desaparece."
                 },
                 {
-                    "label": "Cerrar sesión",
-                    "text": "Cierre sesión cuando haya terminado. En los horarios establecidos por el administrador también se cierra la sesión automáticamente."
+                    "label": "Otro colaborador",
+                    "text": "Pulse Otro colaborador si este no es su nombre. Eso no ficha la salida; fichar entrada y salida está en Presencia. En los horarios establecidos por el administrador también se cierra la sesión automáticamente."
                 }
             ]
         },

@@ -262,6 +262,7 @@
     },
     "portal": {
         "title": "Fichar",
+        "switch_worker": "Otro colaborador",
         "clock": {
             "title": "Presencia",
             "not_clocked_in": "Aún no ha fichado.",

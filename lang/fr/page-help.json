@@ -1013,12 +1013,12 @@
             "title": "Aide — Portail Clock Point",
             "actions": [
                 {
-                    "label": "Pointage",
-                    "text": "Scannez l'autocollant QR Clock Point et connectez-vous avec votre prénom, nom et icône personnelle (PIN optionnel) sur votre propre téléphone. Deux tentatives incorrectes bloquent temporairement votre compte — un chef d'équipe ou un administrateur peut le débloquer."
+                    "label": "Nom et icône",
+                    "text": "Scannez le QR Clock Point et choisissez votre prénom, nom et icône personnelle (PIN optionnel) sur votre propre téléphone. Cela indique qui vous êtes — ce n'est pas encore pointer. Deux tentatives incorrectes bloquent temporairement votre compte ; un chef d'équipe ou un administrateur peut le débloquer."
                 },
                 {
                     "label": "Tâches ouvertes",
-                    "text": "Après connexion, vous voyez les tâches ouvertes de votre équipe. Avec Time + visites GPS, vous démarrez ou clôturez les tâches d'équipe sur Clock Point tant qu'une visite de travail est ouverte sur ce site client (note et photos facultatives). Une tournée d'inspection affiche la description, la priorité, le statut, l'arrêt suivant et le bouton Contrôle d'unité. Le contrôle complet (OK / Non OK / passer) s'ouvre après ce bouton."
+                    "text": "Après nom et icône, vous voyez les tâches ouvertes de votre équipe. Avec Time + visites GPS, vous démarrez ou clôturez les tâches d'équipe sur Clock Point tant qu'une visite de travail est ouverte sur ce site client (note et photos facultatives). Une tournée d'inspection affiche la description, la priorité, le statut et l'arrêt suivant. Le bouton Contrôle d'unité n'apparaît qu'après Commencer le travail sur ce site ; le contrôle complet (OK / Non OK / passer) s'ouvre ensuite."
                 },
                 {
                     "label": "Pointer entrée et sortie",
@@ -1026,7 +1026,7 @@
                 },
                 {
                     "label": "Où dois-je aller aujourd'hui",
-                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : uniquement les sites (nom + adresse). Touchez l'icône GPS pour l'itinéraire Google Maps. Commencer le travail apparaît sur le site une fois sur place. Les arrêts d'inspection et le bouton Contrôle d'unité sont sous Tâches ouvertes. Les tâches ouvertes sans date restent sous Tâches ouvertes."
+                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : uniquement les sites (nom + adresse). Touchez l'icône GPS pour l'itinéraire Google Maps. Commencer le travail apparaît sur le site une fois sur place. Les arrêts d'inspection sont sous Tâches ouvertes ; Contrôle d'unité seulement après Commencer le travail. Les tâches ouvertes sans date restent sous Tâches ouvertes."
                 },
                 {
                     "label": "Liste d’évacuation",
@@ -1041,8 +1041,8 @@
                     "text": "Après connexion, tu vois la tuile Mon planning. Elle n’affiche que tes services et absences <strong>publiés</strong> du <strong>mois</strong> choisi, en liste compacte (jours vides omis). Un badge signifie un planning tout juste publié ; l’ouvrir l’efface."
                 },
                 {
-                    "label": "Déconnexion",
-                    "text": "Déconnectez-vous lorsque vous avez terminé. Aux heures définies par l'administrateur, vous êtes également automatiquement déconnecté."
+                    "label": "Autre collaborateur",
+                    "text": "Touchez Autre collaborateur si ce n'est pas votre nom. Cela ne pointe pas la sortie ; l'entrée et la sortie sont sous Présence. Aux horaires définis par l'administrateur, vous êtes aussi déconnecté automatiquement."
                 }
             ]
         },

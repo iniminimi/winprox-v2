@@ -1005,12 +1005,12 @@
             "title": "Help — Clock Point portal",
             "actions": [
                 {
-                    "label": "Clock in",
-                    "text": "Scan the Clock Point QR sticker and sign in with your first and last name and your personal icon (optional PIN) on your own phone. Two wrong attempts temporarily block your account — a team leader or administrator can release it."
+                    "label": "Name and icon",
+                    "text": "Scan the Clock Point QR and choose your first and last name plus your personal icon (optional PIN) on your own phone. That is who you are — it is not clocking in yet. Two wrong attempts temporarily block your account; a team leader or administrator can release it."
                 },
                 {
                     "label": "Open tasks",
-                    "text": "After signing in you see open tasks for your team. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). An inspection round shows description, priority, status, the next stop and the Unit check button. The full check (OK / Not OK / skip) opens after that button."
+                    "text": "After name and icon you see open tasks for your team. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). An inspection round shows description, priority, status and the next stop. The Unit check button appears only after Start work at that location; the full check (OK / Not OK / skip) opens after that."
                 },
                 {
                     "label": "Clock in and out",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Where do I need to go today",
-                    "text": "After clock-in (Time with GPS work visits) you see where you need to go today: locations only (name + address). Tap the GPS icon for the Google Maps route. Start work appears at the location when you are on site. Inspection stops and the Unit check button are under Open tasks. Open tasks without a date stay under Open tasks."
+                    "text": "After clock-in (Time with GPS work visits) you see where you need to go today: locations only (name + address). Tap the GPS icon for the Google Maps route. Start work appears at the location when you are on site. Inspection stops are under Open tasks; Unit check only after Start work. Open tasks without a date stay under Open tasks."
                 },
                 {
                     "label": "Evacuation list",
@@ -1033,8 +1033,8 @@
                     "text": "After signing in you see the My roster tile. It shows only your <strong>published</strong> shifts and absences for the chosen <strong>month</strong>, as a compact list (empty days are skipped). A badge means a newly published roster; opening it clears the badge."
                 },
                 {
-                    "label": "Sign out",
-                    "text": "Sign out when you are finished. At times set by the administrator you are also automatically signed out."
+                    "label": "Switch worker",
+                    "text": "Tap Switch worker if this is not your name. That does not clock you out; clock in and out are under Presence. You are also signed out automatically at times set by the administrator."
                 }
             ]
         },

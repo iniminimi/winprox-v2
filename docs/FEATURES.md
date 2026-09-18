@@ -742,7 +742,8 @@ productsector op `Tenant`.
   bestaande undated ronde-taak telt mee als `recurrence_next_due_at` vandaag is.
   **Geen** overige undated open taken (die blijven onder Open taken).
   Inspectierondes staan onder **Open taken**: omschrijving, prio/status, volgende
-  stop, knop Unit check. De volledige unit check (OK / Niet OK / overslaan +
+  stop; knop **Unit check** alleen met open `WorkVisit` op die locatie (zelfde
+  regel als teamtaken). De volledige unit check (OK / Niet OK / overslaan +
   rondevoortgang) opent na die knop. **Start werk**
   één keer per locatie (locatie-pin), alleen binnen de
   bestaande GPS-straal via `StartWorkVisitAction`. **Teamtaken** starten en
@@ -883,6 +884,8 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
   starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;
   inspectiestops (unit check) ter plaatse op dezelfde bezoek-locatie, in stopvolgorde.
+  **Andere medewerker** wisselt alleen de identiteit (naam + icoon); dat is geen
+  uitklokken. Inklokken blijft onder Aanwezigheid (verse QR-scan).
 
 ### 6.3 Workers
 - Sidebar **Personen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status.
@@ -1239,8 +1242,9 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   op Clock Point (notitie + foto’s) zolang een open `WorkVisit` de klantlocatie van de
   taak dekt; inspectierondes van vandaag staan na inklokken onder **Vandaag**
   (alleen locaties) en onder **Open taken** (omschrijving, prio/status, volgende
-  stop, knop Unit check). Ter plaatse opent die knop de unit check zonder
-  unit-QR. Zonder GPS-bezoek blijven unit-checks via de unit-QR.
+  stop; knop Unit check alleen na Start werk op die locatie). Ter plaatse opent
+  die knop de unit check zonder unit-QR. Zonder GPS-bezoek blijven unit-checks
+  via de unit-QR. **Andere medewerker** is identiteit wisselen, geen uitklokken.
   (Vervangt de oude team-QR `/team/{token}`.)
   Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en optioneel tegel
   **Evacuatielijst** (brandicoon) na aanmelden — alleen als Instellingen → Prikklok-beveiliging

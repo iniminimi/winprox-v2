@@ -262,6 +262,7 @@
     },
     "portal": {
         "title": "Timbratura",
+        "switch_worker": "Altro collaboratore",
         "clock": {
             "title": "Presenza",
             "not_clocked_in": "Non hai ancora timbrato.",

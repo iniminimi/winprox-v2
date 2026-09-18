@@ -262,6 +262,7 @@
     },
     "portal": {
         "title": "Einstempeln",
+        "switch_worker": "Anderer Mitarbeiter",
         "clock": {
             "title": "Anwesenheit",
             "not_clocked_in": "Sie sind noch nicht eingestempelt.",

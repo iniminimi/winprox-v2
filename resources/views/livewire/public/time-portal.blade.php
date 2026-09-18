@@ -36,7 +36,19 @@
             <p class="wp-muted">{{ __($inactiveReasonKey) }}</p>
         </div>
     @else
-        @if ($flashMessage !== '')
+        @php
+            $taskHint = null;
+            if (($tasks ?? collect())->isNotEmpty()) {
+                if (! ($gpsVisits ?? false)) {
+                    $taskHint = __('portal.team.read_only_hint');
+                } elseif ($openShift !== null && ($openVisitLocationId ?? null) === null) {
+                    $taskHint = __('portal.team.complete_needs_visit');
+                } elseif (($openVisitLocationId ?? null) !== null) {
+                    $taskHint = __('portal.team.complete_on_site_hint');
+                }
+            }
+        @endphp
+        @if ($flashMessage !== '' && $flashMessage !== $taskHint)
             <div class="wp-flash">{{ $flashMessage }}</div>
         @endif
 
@@ -291,7 +303,7 @@
                     </div>
 
                     <div class="wp-portal-worker-actions">
-                        @include('partials.wp-portal-sign-out')
+                        @include('partials.wp-portal-sign-out', ['signOutLabel' => __('time.portal.switch_worker')])
                     </div>
 
                     @if ($verifiedWorker?->is_teamleader)
@@ -538,12 +550,8 @@
                     @endif
 
                     @if ($tasks->isNotEmpty())
-                        @if (! ($gpsVisits ?? false))
-                            <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
-                        @elseif (($openVisitLocationId ?? null) === null)
-                            <div class="wp-flash wp-flash--muted">{{ __('portal.team.complete_needs_visit') }}</div>
-                        @else
-                            <div class="wp-flash wp-flash--muted">{{ __('portal.team.complete_on_site_hint') }}</div>
+                        @if ($taskHint !== null)
+                            <div class="wp-flash wp-flash--muted">{{ $taskHint }}</div>
                         @endif
 
                         <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.worker.open_tasks')" />
@@ -576,7 +584,7 @@
                                         @if ($roundProgress['next_unit_name'] ?? null)
                                             <p class="wp-muted">{{ __('portal.round.next_stop', ['name' => $roundProgress['next_unit_name']]) }}</p>
                                         @endif
-                                        @if (($gpsVisits ?? false) && $nextStopUnitId)
+                                        @if ($onSite && $nextStopUnitId)
                                             <button type="button" class="btn btn--primary btn--block" wire:click="openClockPointUnitCheck({{ (int) $nextStopUnitId }})">
                                                 {{ __('time.portal.today.do_check') }}
                                             </button>

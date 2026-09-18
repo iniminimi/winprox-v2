@@ -1005,12 +1005,12 @@
             "title": "Hilfe — Clock Point-Portal",
             "actions": [
                 {
-                    "label": "Einstempeln",
-                    "text": "Scannen Sie den Clock Point QR-Aufkleber und melden Sie sich mit Vor- und Nachname und Ihrem persönlichen Icon (optional PIN) auf Ihrem eigenen Handy an. Zwei falsche Versuche sperren Ihr Konto vorübergehend — ein Teamleiter oder Administrator kann das freigeben."
+                    "label": "Name und Symbol",
+                    "text": "Scannen Sie den Clock-Point-QR und wählen Sie Vor- und Nachname sowie Ihr persönliches Symbol (optional PIN) auf Ihrem eigenen Handy. Das sagt, wer Sie sind — das ist noch kein Einstempeln. Zwei falsche Versuche sperren Ihr Konto vorübergehend; ein Teamleiter oder Administrator kann das freigeben."
                 },
                 {
                     "label": "Offene Aufgaben",
-                    "text": "Nach der Anmeldung sehen Sie die offenen Aufgaben Ihres Teams. Mit Time + GPS-Arbeitsbesuchen starten oder schließen Sie Teamaufgaben am Clock Point, solange ein offener Arbeitsbesuch an diesem Kundenstandort läuft (optionale Notiz und Fotos). Eine Inspektionsrunde zeigt Beschreibung, Prio, Status, den nächsten Stopp und die Schaltfläche Unit-Check. Die vollständige Prüfung (OK / Nicht OK / überspringen) öffnet sich nach dieser Schaltfläche."
+                    "text": "Nach Name und Symbol sehen Sie die offenen Aufgaben Ihres Teams. Mit Time + GPS-Arbeitsbesuchen starten oder schließen Sie Teamaufgaben am Clock Point, solange ein offener Arbeitsbesuch an diesem Kundenstandort läuft (optionale Notiz und Fotos). Eine Inspektionsrunde zeigt Beschreibung, Prio, Status und den nächsten Stopp. Die Schaltfläche Unit-Check erscheint erst nach Arbeit starten an diesem Standort; die vollständige Prüfung (OK / Nicht OK / überspringen) öffnet sich danach."
                 },
                 {
                     "label": "Ein- und Ausstempeln",
@@ -1018,7 +1018,7 @@
                 },
                 {
                     "label": "Wohin muss ich heute",
-                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: nur Standorte (Name + Adresse). Tippen Sie auf das GPS-Symbol für die Google-Maps-Route. Arbeit starten erscheint am Standort, wenn Sie vor Ort sind. Inspektionsstopps und die Schaltfläche Unit-Check stehen unter Offene Aufgaben. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
+                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: nur Standorte (Name + Adresse). Tippen Sie auf das GPS-Symbol für die Google-Maps-Route. Arbeit starten erscheint am Standort, wenn Sie vor Ort sind. Inspektionsstopps stehen unter Offene Aufgaben; Unit-Check erst nach Arbeit starten. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
                 },
                 {
                     "label": "Evakuierungsliste",
@@ -1033,8 +1033,8 @@
                     "text": "Nach der Anmeldung siehst du die Kachel Mein Dienstplan. Dort stehen nur deine <strong>veröffentlichten</strong> Dienste und Abwesenheiten des gewählten <strong>Monats</strong> als kompakte Liste (leere Tage werden übersprungen). Ein Badge bedeutet einen neu veröffentlichten Plan; Öffnen entfernt das Badge."
                 },
                 {
-                    "label": "Abmelden",
-                    "text": "Melden Sie sich ab, wenn Sie fertig sind. Zu vom Administrator festgelegten Zeiten werden Sie außerdem automatisch abgemeldet."
+                    "label": "Anderer Mitarbeiter",
+                    "text": "Tippen Sie auf Anderer Mitarbeiter, wenn das nicht Ihr Name ist. Das stempelt Sie nicht aus; Ein- und Ausstempeln stehen unter Anwesenheit. Zu vom Administrator festgelegten Zeiten werden Sie außerdem automatisch abgemeldet."
                 }
             ]
         },

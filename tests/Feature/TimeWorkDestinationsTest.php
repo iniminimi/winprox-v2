@@ -552,7 +552,8 @@ it('toont locaties op Vandaag en de compacte ronde onder Open taken', function (
         ->assertSee(__('time.portal.today.navigate'), false)
         ->assertSee('Poetssronde XYZ-hidden', false)
         ->assertSee(__('portal.round.next_stop', ['name' => 'Kamer 214']), false)
-        ->assertSee(__('time.portal.today.do_check'), false)
+        ->assertDontSeeHtml('wire:click="openClockPointUnitCheck')
+        ->assertSee(__('portal.team.complete_needs_visit'), false)
         ->assertDontSee(__('portal.team.read_only_hint'), false)
         ->assertDontSee(__('portal.worker.start_task'), false);
 });
