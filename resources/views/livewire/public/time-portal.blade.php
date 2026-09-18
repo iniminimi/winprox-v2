@@ -493,11 +493,19 @@
                     @endif
 
                     @if ($tasks->isNotEmpty())
-                        <div class="wp-flash wp-flash--muted">{{ ($gpsVisits ?? false) ? __('portal.team.read_only_hint_visits') : __('portal.team.read_only_hint') }}</div>
+                        @if (! ($gpsVisits ?? false))
+                            <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
+                        @elseif (($openVisitLocationId ?? null) === null)
+                            <div class="wp-flash wp-flash--muted">{{ __('portal.team.complete_needs_visit') }}</div>
+                        @else
+                            <div class="wp-flash wp-flash--muted">{{ __('portal.team.complete_on_site_hint') }}</div>
+                        @endif
 
                         <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.worker.open_tasks')" />
                         <div class="wp-list">
                             @foreach ($tasks as $task)
+                                @php($taskLocationId = $task->issue?->location_id ?? $task->issue?->unit?->location_id)
+                                @php($onSite = ($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null && $taskLocationId !== null && (int) $taskLocationId === (int) $openVisitLocationId)
                                 <div class="wp-card wp-card-pad wp-stack" wire:key="time-task-{{ $task->id }}">
                                     <div class="wp-cluster">
                                         <span class="wp-badge {{ $task->priority->badgeClass() }}">
@@ -511,6 +519,56 @@
                                     </div>
                                     @if ($task->issue?->isApproved())
                                         <p class="wp-text-body">{{ $task->displayDescription() }}</p>
+                                    @endif
+
+                                    @include('partials.wp-portal-issue-photos', [
+                                        'issue' => $task->issue,
+                                        'wireKeyPrefix' => 'tp-'.$task->id,
+                                        'forWorker' => true,
+                                    ])
+
+                                    @if ($completingTaskId === $task->id)
+                                        <form
+                                            class="wp-stack"
+                                            x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
+                                            @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitCompleteTask()"
+                                        >
+                                            @include('partials.wp-portal-esg-measurement', ['task' => $task])
+                                            <div class="wp-field">
+                                                <label class="wp-label" for="note-{{ $task->id }}">{{ __('portal.worker.note') }}</label>
+                                                <textarea id="note-{{ $task->id }}" class="wp-textarea" rows="3"
+                                                          wire:model="completingNote"
+                                                          placeholder="{{ __('portal.worker.note_placeholder') }}"></textarea>
+                                                @error('completingNote') <p class="wp-error">{{ $message }}</p> @enderror
+                                            </div>
+                                            <div class="wp-field">
+                                                <label class="wp-label">{{ __('portal.worker.photos') }}</label>
+                                                @include('partials.wp-issue-photo-upload', ['model' => 'completingPhotos', 'preferCamera' => true, 'storeLocal' => false])
+                                                @error('completingPhotos') <p class="wp-error">{{ $message }}</p> @enderror
+                                                @error('completingPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
+                                            </div>
+                                            <div class="wp-stack-tight">
+                                                <button type="submit" class="btn btn--primary btn--block">
+                                                    {{ __('portal.worker.confirm_complete') }}
+                                                </button>
+                                                <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="cancelCompleteTask">{{ __('common.button.cancel') }}</button>
+                                            </div>
+                                        </form>
+                                    @elseif ($onSite)
+                                        <div class="wp-stack-tight">
+                                            @if ($task->canStart())
+                                                <button type="button" class="btn btn--warning btn--block" wire:click="startTask({{ $task->id }})">
+                                                    {{ __('portal.worker.start_task') }}
+                                                </button>
+                                            @endif
+                                            @if ($task->canComplete())
+                                                <button type="button" class="btn btn--primary btn--block" wire:click="beginCompleteTask({{ $task->id }})">
+                                                    {{ __('portal.worker.complete_task') }}
+                                                </button>
+                                            @endif
+                                        </div>
+                                    @elseif (($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null)
+                                        <p class="wp-muted wp-text-sm">{{ __('portal.worker.errors.not_this_location') }}</p>
                                     @endif
                                 </div>
                             @endforeach

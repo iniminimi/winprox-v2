@@ -239,7 +239,7 @@
         "save": "Salva sicurezza marcatura",
         "saved": "Sicurezza marcatura salvata.",
         "gps_visits": "Visite GPS (avvia/interrompi il lavoro sul pin della sede o dell'unità)",
-        "gps_visits_hint": "L'entrata apre comunque la giornata retribuita senza prova di luogo. Avviare il lavoro richiede GPS fresco nel raggio del pin della sede (cliente) o di un'unità con pin fisso. L'uscita è consentita ovunque; una visita aperta viene chiusa prima.",
+        "gps_visits_hint": "L'entrata apre comunque la giornata retribuita senza prova di luogo. Avviare il lavoro richiede GPS fresco nel raggio del pin della sede (cliente) o di un'unità con pin fisso. L'uscita è consentita ovunque; una visita aperta viene chiusa prima. Con una visita aperta puoi chiudere le attività di squadra su Clock Point (senza adesivo unità); i controlli unità restano sul QR unità.",
         "gps_visit_radius": "Raggio (metri)",
         "evacuation_list": "Elenco evacuazione su Clock Point",
         "evacuation_list_hint": "Dopo l’accesso gli esecutori vedono un riquadro per chi è timbrato. Confermano che la consultazione è eccezionale; ogni consultazione è registrata. Disattivato di default."

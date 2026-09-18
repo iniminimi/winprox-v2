@@ -552,7 +552,7 @@ it('toont inspectiestops op Vandaag en verbergt de ronde onder Open taken', func
         ->assertSee(__('time.portal.today.navigate'), false)
         ->assertDontSee('Poetssronde XYZ-hidden', false)
         ->assertDontSee(__('portal.team.read_only_hint'), false)
-        ->assertDontSee(__('portal.team.read_only_hint_visits'), false);
+        ->assertDontSee(__('portal.worker.start_task'), false);
 });
 
 it('toont de lege Vandaag-kaart wanneer er geen geplande bestemmingen zijn', function () {

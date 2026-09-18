@@ -289,7 +289,7 @@
                     "text": "Visible uniquement sur les tâches de mesure ESG. Affiche la valeur enregistrée, une alarme de seuil éventuelle, la tâche de mesure et une tâche de suivi. <strong>Ouvrir</strong> sur Mesure mène à l'aperçu filtré ; sur Tâche de mesure ouvre la tâche liée."
                 }
             ],
-            "status_note": "Sur le terrain, les exécutants démarrent et terminent les tâches via le portail QR unité (après connexion via le QR Clock Point).",
+            "status_note": "Sur le terrain, les exécutants démarrent et terminent les tâches via le portail QR unité (après connexion via le QR Clock Point), ou via Clock Point avec une visite GPS ouverte sur ce site.",
             "statuses": {
                 "new": "Pas encore démarré sur site.",
                 "in_progress": "L'équipe est en cours.",
@@ -813,7 +813,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Placé à l’entrée, à l’entrepôt ou à l’atelier. Les exécutants s’identifient ici (nom + icône). Pointer nécessite Time (pointeuse). Ils peuvent ensuite traiter les tâches via les codes QR unité."
+                    "text": "Placé à l’entrée, à l’entrepôt ou à l’atelier. Les exécutants s’identifient ici (nom + icône). Pointer nécessite Time (pointeuse). Avec visites GPS ils peuvent clôturer les tâches d’équipe sur Clock Point ; les contrôles d’unité restent via le QR unité."
                 }
             ]
         },
@@ -1010,15 +1010,15 @@
                 },
                 {
                     "label": "Tâches ouvertes",
-                    "text": "Après connexion, vous voyez un aperçu en lecture seule des tâches ouvertes de votre équipe. Les tournées d'inspection du jour apparaissent sous Où dois-je aller aujourd'hui après le pointage. Pour terminer une tâche ou un contrôle d'unité, scannez le QR unité sur place."
+                    "text": "Après connexion, vous voyez les tâches ouvertes de votre équipe. Avec Time + visites GPS, vous démarrez ou clôturez les tâches d'équipe sur Clock Point tant qu'une visite de travail est ouverte sur ce site client (note et photos facultatives). Les tournées d'inspection du jour apparaissent sous Où dois-je aller aujourd'hui après le pointage. Les contrôles d'unité restent via le QR unité."
                 },
                 {
                     "label": "Pointer entrée et sortie",
-                    "text": "Chaque entrée, sortie ou déplacement exige un nouveau scan du QR Clock Point sur site — un onglet ouvert ne suffit pas. Les pauses peuvent démarrer sur le même téléphone sans nouveau scan. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Utilisez ensuite le QR d'unité sur place pour les tâches."
+                    "text": "Chaque entrée, sortie ou déplacement exige un nouveau scan du QR Clock Point sur site — un onglet ouvert ne suffit pas. Les pauses peuvent démarrer sur le même téléphone sans nouveau scan. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Avec visites GPS : commencez le travail sur place, puis les tâches d'équipe sur Clock Point ; les contrôles d'unité restent via le QR unité."
                 },
                 {
                     "label": "Où dois-je aller aujourd'hui",
-                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : destinations groupées par site, y compris les arrêts d'une tournée d'inspection. Touchez l'icône GPS du site (client) pour l'itinéraire Google Maps ; les unités avec pin propre ont leur propre icône. Commencer le travail apparaît sur le site ou un pin d'unité une fois sur place. Les contrôles d'unité restent via le QR unité. Les tâches ouvertes sans date restent sous Tâches ouvertes."
+                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : destinations groupées par site, y compris les arrêts d'une tournée d'inspection. Touchez l'icône GPS du site (client) pour l'itinéraire Google Maps ; les unités avec pin propre ont leur propre icône. Commencer le travail apparaît sur le site ou un pin d'unité une fois sur place. Vous pouvez ensuite clôturer les tâches d'équipe sur Clock Point. Les contrôles d'unité restent via le QR unité. Les tâches ouvertes sans date restent sous Tâches ouvertes."
                 },
                 {
                     "label": "Liste d’évacuation",

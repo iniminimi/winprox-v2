@@ -130,6 +130,7 @@
             "icon_wrong": "Ese no es el icono correcto.",
             "note_max": "La nota es demasiado larga (máx. 500 caracteres).",
             "no_permission": "No tiene permiso para hacer esto.",
+            "not_this_location": "Esta tarea pertenece a otro emplazamiento. Empieza primero el trabajo allí.",
             "pin_required": "Introduce tu PIN de 4 dígitos.",
             "pin_invalid": "El PIN debe tener 4 dígitos.",
             "pin_mismatch": "Los PIN no coinciden.",
@@ -147,7 +148,8 @@
     "team": {
         "title": "Resumen del equipo",
         "read_only_hint": "Esto es un resumen. Completar tareas solo es posible mediante el QR de la unidad en el lugar.",
-        "read_only_hint_visits": "Tras fichar ves adónde debes ir hoy. Las comprobaciones de unidad se hacen con el QR de la unidad en el lugar.",
+        "complete_needs_visit": "Empieza primero el trabajo en este emplazamiento. Después puedes cerrar tareas aquí. Las comprobaciones de unidad siguen en el QR de la unidad.",
+        "complete_on_site_hint": "Estás en el lugar. Inicia o cierra tareas de equipo, con nota y fotos opcionales. Las comprobaciones de unidad siguen en el QR de la unidad.",
         "onboarding_done": "Está registrado y ha iniciado sesión.",
         "icon_taken": "Este icono ya está en uso. Elija otro.",
         "register": {

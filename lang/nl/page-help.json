@@ -289,7 +289,7 @@
                     "text": "Verschijnt alleen bij ESG-meettaken. Toont de geregistreerde waarde, eventueel een drempelalarm, de meettaak en een opvolgtaak. <strong>Openen</strong> bij Meting gaat naar het gefilterde metingenoverzicht; bij Meettaak opent u de gekoppelde taak."
                 }
             ],
-            "status_note": "Op de werkvloer starten en ronden uitvoerders taken af via het unit-QR-portaal (na inloggen via Clock Point QR).",
+            "status_note": "Op de werkvloer starten en ronden uitvoerders taken af via het unit-QR-portaal (na aanmelden via Clock Point QR), of via Clock Point met een open GPS-werkbezoek op die locatie.",
             "statuses": {
                 "new": "Nog niet gestart op locatie.",
                 "in_progress": "Team is bezig.",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Hangt bij de ingang, magazijn of werkplaats. Hier melden uitvoerders zich aan (naam + icoon). In- en uitklokken kan alleen met Time (prikklok). Daarna kunnen ze taken afhandelen via unit-QR-codes."
+                    "text": "Hangt bij de ingang, magazijn of werkplaats. Hier melden uitvoerders zich aan (naam + icoon). In- en uitklokken kan alleen met Time (prikklok). Met GPS-werkbezoeken kunnen ze teamtaken op Clock Point afhandelen; unit-checks blijven via de unit-QR."
                 }
             ]
         },
@@ -1002,15 +1002,15 @@
                 },
                 {
                     "label": "Open taken",
-                    "text": "Na het aanmelden zie je een read-only overzicht van open taken van je team. Inspectierondes van vandaag staan na inklokken onder Waar moet ik vandaag naartoe. Om een taak of unit-check af te ronden, scan je de unit-QR op locatie."
+                    "text": "Na het aanmelden zie je de open taken van je team. Met Time + GPS-werkbezoeken start of rond je teamtaken af op Clock Point zolang er een open werkbezoek is op die klantlocatie (optionele notitie en foto's). Inspectierondes van vandaag staan na inklokken onder Waar moet ik vandaag naartoe. Unit-checks blijven via de unit-QR."
                 },
                 {
                     "label": "In- en uitklokken",
-                    "text": "Elke in-/uitklok of verplaatsing vraagt een verse scan van de Clock Point-QR op de vestiging — een open tab volstaat niet. Pauzes kan je op dezelfde gsm starten zonder nieuwe scan. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Gebruik daarna de unit-QR op locatie om taken te starten of af te ronden."
+                    "text": "Elke in-/uitklok of verplaatsing vraagt een verse scan van de Clock Point-QR op de vestiging — een open tab volstaat niet. Pauzes kan je op dezelfde gsm starten zonder nieuwe scan. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Met GPS-werkbezoeken: start werk ter plaatse, daarna teamtaken op Clock Point; unit-checks blijven via de unit-QR."
                 },
                 {
                     "label": "Waar moet ik vandaag naartoe",
-                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: bestemmingen gegroepeerd per locatie, inclusief de stops van een inspectieronde. Tik het GPS-icoon bij de locatie (klant) voor de route in Google Maps; units met eigen pin hebben een eigen icoon. Start werk verschijnt op de locatie of bij een unit-pin als je ter plaatse bent. Unit-checks blijven via de unit-QR. Open taken zonder datum blijven onder Open taken."
+                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: bestemmingen gegroepeerd per locatie, inclusief de stops van een inspectieronde. Tik het GPS-icoon bij de locatie (klant) voor de route in Google Maps; units met eigen pin hebben een eigen icoon. Start werk verschijnt op de locatie of bij een unit-pin als je ter plaatse bent. Daarna kun je teamtaken op Clock Point afhandelen. Unit-checks blijven via de unit-QR. Open taken zonder datum blijven onder Open taken."
                 },
                 {
                     "label": "Evacuatielijst",

@@ -130,6 +130,7 @@
             "icon_wrong": "Ce n'est pas la bonne icône.",
             "note_max": "La note est trop longue (max. 500 caractères).",
             "no_permission": "Vous n'avez pas la permission de faire cela.",
+            "not_this_location": "Cette tâche appartient à un autre site. Commencez d'abord le travail là-bas.",
             "pin_required": "Entrez votre PIN à 4 chiffres.",
             "pin_invalid": "Le PIN doit contenir 4 chiffres.",
             "pin_mismatch": "Les codes PIN ne correspondent pas.",
@@ -147,7 +148,8 @@
     "team": {
         "title": "Aperçu de l'équipe",
         "read_only_hint": "Ceci est un aperçu. La réalisation des tâches n'est possible que via le QR de l'unité sur place.",
-        "read_only_hint_visits": "Après le pointage, vous voyez où vous devez aller aujourd'hui. Les contrôles d'unité se font via le QR de l'unité sur place.",
+        "complete_needs_visit": "Commencez d'abord le travail sur ce site. Ensuite vous pouvez clôturer les tâches ici. Les contrôles d'unité restent via le QR unité.",
+        "complete_on_site_hint": "Vous êtes sur place. Démarrez ou clôturez les tâches d'équipe, avec une note et des photos facultatives. Les contrôles d'unité restent via le QR unité.",
         "onboarding_done": "Vous êtes enregistré et connecté.",
         "icon_taken": "Cette icône est déjà utilisée. Choisissez-en une autre.",
         "register": {

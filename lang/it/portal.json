@@ -130,6 +130,7 @@
             "icon_wrong": "Non è l'icona corretta.",
             "note_max": "La nota è troppo lunga (max. 500 caratteri).",
             "no_permission": "Non ha l'autorizzazione per farlo.",
+            "not_this_location": "Questa attività appartiene a un'altra sede. Avvia prima il lavoro lì.",
             "pin_required": "Inserisci il PIN di 4 cifre.",
             "pin_invalid": "Il PIN deve essere di 4 cifre.",
             "pin_mismatch": "I PIN non coincidono.",
@@ -147,7 +148,8 @@
     "team": {
         "title": "Panoramica team",
         "read_only_hint": "Questa è una panoramica. Il completamento delle attività è possibile solo tramite il QR unità sul posto.",
-        "read_only_hint_visits": "Dopo la timbratura vedi dove andare oggi. I controlli unità si fanno tramite il QR unità sul posto.",
+        "complete_needs_visit": "Avvia prima il lavoro in questa sede. Poi puoi chiudere le attività qui. I controlli unità restano tramite il QR unità.",
+        "complete_on_site_hint": "Sei sul posto. Avvia o chiudi le attività di squadra, con nota e foto opzionali. I controlli unità restano tramite il QR unità.",
         "onboarding_done": "È registrato e connesso.",
         "icon_taken": "Questa icona è già in uso. Ne scelga un'altra.",
         "register": {

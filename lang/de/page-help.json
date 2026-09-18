@@ -289,7 +289,7 @@
                     "text": "Nur bei ESG-Messaufgaben sichtbar. Zeigt den erfassten Wert, ggf. einen Schwellenalarm, die Messaufgabe und eine Folgeaufgabe. <strong>Öffnen</strong> bei Messung führt zur gefilterten Messungsübersicht; bei Messaufgabe zur verknüpften Aufgabe."
                 }
             ],
-            "status_note": "Auf der Baustelle starten und schließen Ausführende Aufgaben über das Unit-QR-Portal (nach Anmeldung über die Clock Point QR).",
+            "status_note": "Auf der Baustelle starten und schließen Ausführende Aufgaben über das Unit-QR-Portal (nach Anmeldung über die Clock Point QR), oder über Clock Point mit einem offenen GPS-Arbeitsbesuch an diesem Standort.",
             "statuses": {
                 "new": "Noch nicht vor Ort gestartet.",
                 "in_progress": "Team ist beschäftigt.",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "An Eingang, Lager oder Werkstatt angebracht. Hier melden sich Ausführende an (Name + Icon). Ein-/Ausstempeln braucht Time (Stechuhr). Danach können sie Aufgaben über Unit-QR-Codes bearbeiten."
+                    "text": "An Eingang, Lager oder Werkstatt angebracht. Hier melden sich Ausführende an (Name + Icon). Ein-/Ausstempeln braucht Time (Stechuhr). Mit GPS-Arbeitsbesuchen können sie Teamaufgaben am Clock Point abschließen; Einheiten-Checks bleiben über den Unit-QR."
                 }
             ]
         },
@@ -1002,15 +1002,15 @@
                 },
                 {
                     "label": "Offene Aufgaben",
-                    "text": "Nach der Anmeldung sehen Sie eine schreibgeschützte Übersicht der offenen Aufgaben Ihres Teams. Inspektionsrunden von heute stehen nach dem Einstempeln unter Wohin muss ich heute. Um eine Aufgabe oder einen Unit-Check abzuschließen, scannen Sie die Unit-QR vor Ort."
+                    "text": "Nach der Anmeldung sehen Sie die offenen Aufgaben Ihres Teams. Mit Time + GPS-Arbeitsbesuchen starten oder schließen Sie Teamaufgaben am Clock Point, solange ein offener Arbeitsbesuch an diesem Kundenstandort läuft (optionale Notiz und Fotos). Inspektionsrunden von heute stehen nach dem Einstempeln unter Wohin muss ich heute. Einheiten-Checks bleiben über den Einheiten-QR."
                 },
                 {
                     "label": "Ein- und Ausstempeln",
-                    "text": "Jedes Ein-/Ausstempeln oder Verschieben braucht einen frischen Scan des Clock-Point-QR vor Ort — ein offener Tab reicht nicht. Pausen können am selben Handy ohne neuen Scan starten. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Danach Unit-QR vor Ort für Aufgaben."
+                    "text": "Jedes Ein-/Ausstempeln oder Verschieben braucht einen frischen Scan des Clock-Point-QR vor Ort — ein offener Tab reicht nicht. Pausen können am selben Handy ohne neuen Scan starten. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Mit GPS-Arbeitsbesuchen: Arbeit vor Ort starten, danach Teamaufgaben am Clock Point; Einheiten-Checks bleiben über den Einheiten-QR."
                 },
                 {
                     "label": "Wohin muss ich heute",
-                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: Ziele gruppiert nach Standort, inklusive der Stops einer Inspektionsrunde. Tippen Sie auf das GPS-Symbol am Standort (Kunde) für die Google-Maps-Route; Units mit eigenem Pin haben ein eigenes Symbol. Arbeit starten erscheint am Standort oder am Unit-Pin vor Ort. Unit-Checks bleiben über den Unit-QR. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
+                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: Ziele gruppiert nach Standort, inklusive der Stops einer Inspektionsrunde. Tippen Sie auf das GPS-Symbol am Standort (Kunde) für die Google-Maps-Route; Units mit eigenem Pin haben ein eigenes Symbol. Arbeit starten erscheint am Standort oder am Unit-Pin vor Ort. Danach können Sie Teamaufgaben am Clock Point abschließen. Einheiten-Checks bleiben über den Unit-QR. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
                 },
                 {
                     "label": "Evakuierungsliste",

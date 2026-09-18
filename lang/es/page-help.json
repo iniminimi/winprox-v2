@@ -289,7 +289,7 @@
                     "text": "Solo en tareas de medición ESG. Muestra el valor registrado, una alarma de umbral si aplica, la tarea de medición y una tarea de seguimiento. <strong>Abrir</strong> en Medición lleva al resumen filtrado; en Tarea de medición abre la tarea vinculada."
                 }
             ],
-            "status_note": "En el taller, los trabajadores inician y completan tareas mediante el portal QR de unidad (tras iniciar sesión con el QR Clock Point).",
+            "status_note": "En el taller, los trabajadores inician y completan tareas mediante el portal QR de unidad (tras iniciar sesión con el QR Clock Point), o mediante Clock Point con una visita GPS abierta en esa sede.",
             "statuses": {
                 "new": "Aún no iniciada en el lugar.",
                 "in_progress": "El equipo está trabajando en ella.",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Colocado en la entrada, almacén o taller. Aquí los operarios se identifican (nombre + icono). Fichar requiere Time (reloj de fichar). Después pueden gestionar tareas mediante códigos QR de unidad."
+                    "text": "Colocado en la entrada, almacén o taller. Aquí los operarios se identifican (nombre + icono). Fichar requiere Time (reloj de fichar). Con visitas GPS pueden cerrar tareas de equipo en Clock Point; las comprobaciones de unidad siguen en el QR de unidad."
                 }
             ]
         },
@@ -1002,15 +1002,15 @@
                 },
                 {
                     "label": "Tareas abiertas",
-                    "text": "Tras iniciar sesión ve un resumen de solo lectura de las tareas abiertas de su equipo. Las rondas de inspección de hoy aparecen en Adónde debo ir hoy tras fichar. Para completar una tarea o un unit check, escanee el QR de unidad en el lugar."
+                    "text": "Tras iniciar sesión ve las tareas abiertas de su equipo. Con Time + visitas GPS inicia o cierra tareas de equipo en Clock Point mientras hay una visita de trabajo abierta en esa sede de cliente (nota y fotos opcionales). Las rondas de inspección de hoy aparecen en Adónde debo ir hoy tras fichar. Las comprobaciones de unidad siguen en el QR de la unidad."
                 },
                 {
                     "label": "Fichar entrada y salida",
-                    "text": "Cada entrada, salida o traslado exige un escaneo nuevo del QR de Clock Point en la sede: una pestaña abierta no basta. Las pausas se pueden iniciar en el mismo móvil sin un nuevo escaneo. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Luego usa el QR de unidad in situ para las tareas."
+                    "text": "Cada entrada, salida o traslado exige un escaneo nuevo del QR de Clock Point en la sede: una pestaña abierta no basta. Las pausas se pueden iniciar en el mismo móvil sin un nuevo escaneo. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Con visitas GPS: empieza el trabajo in situ y luego las tareas de equipo en Clock Point; las comprobaciones de unidad siguen en el QR de la unidad."
                 },
                 {
                     "label": "Adónde debo ir hoy",
-                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: destinos agrupados por sede, incluidas las paradas de una ronda de inspección. Pulsa el icono GPS de la sede (cliente) para la ruta en Google Maps; las unidades con pin propio tienen su icono. Empezar el trabajo aparece en la sede o en un pin de unidad in situ. Los unit checks siguen en el QR de unidad. Las tareas abiertas sin fecha siguen en Tareas abiertas."
+                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: destinos agrupados por sede, incluidas las paradas de una ronda de inspección. Pulsa el icono GPS de la sede (cliente) para la ruta en Google Maps; las unidades con pin propio tienen su icono. Empezar el trabajo aparece en la sede o en un pin de unidad in situ. Después puedes cerrar tareas de equipo en Clock Point. Los unit checks siguen en el QR de unidad. Las tareas abiertas sin fecha siguen en Tareas abiertas."
                 },
                 {
                     "label": "Lista de evacuación",

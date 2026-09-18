@@ -239,7 +239,7 @@
         "save": "Guardar seguridad del fichaje",
         "saved": "Seguridad del fichaje guardada.",
         "gps_visits": "Visitas GPS (iniciar/detener trabajo en el pin de sede o unidad)",
-        "gps_visits_hint": "El fichaje de entrada sigue abriendo el día pagado sin prueba de lugar. Iniciar el trabajo exige GPS fresco dentro del radio del pin de sede (cliente) o de una unidad con pin fijo. La salida se permite en cualquier sitio; una visita abierta se cierra primero.",
+        "gps_visits_hint": "El fichaje de entrada sigue abriendo el día pagado sin prueba de lugar. Iniciar el trabajo exige GPS fresco dentro del radio del pin de sede (cliente) o de una unidad con pin fijo. La salida se permite en cualquier sitio; una visita abierta se cierra primero. Con una visita abierta puedes cerrar tareas de equipo en Clock Point (sin pegatina de unidad); las comprobaciones de unidad siguen en el QR de la unidad.",
         "gps_visit_radius": "Radio (metros)",
         "evacuation_list": "Lista de evacuación en Clock Point",
         "evacuation_list_hint": "Tras identificarse, los ejecutores ven una ficha para ver quién está fichado. Confirman que la consulta es excepcional; cada consulta se registra. Desactivada por defecto."

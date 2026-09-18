@@ -24,10 +24,16 @@ use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\ResolveRosterMonthAction;
 use App\Actions\Time\SetWorkerClockPinAction;
+use App\Actions\Tasks\CompleteTaskAction;
+use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Time\StartWorkBreakAction;
+use App\Actions\Time\AssertClockPointTaskVisitAction;
 use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
 use App\Enums\ClockDeviceRefusalReason;
+use App\Enums\TaskStatus;
 use App\Enums\WorkerNotificationType;
+use App\Http\Requests\Esg\RecordEsgMeasurementRequest;
+use App\Http\Requests\Public\CompletePortalTaskRequest;
 use App\Http\Requests\Time\AcknowledgeTimeRosterViewRequest;
 use App\Http\Requests\Time\ListWorkerHoursRequest;
 use App\Http\Requests\Time\WorkerClockPinRequest;
@@ -37,6 +43,7 @@ use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
@@ -54,14 +61,17 @@ use App\Support\Time\ClockPointPortalTokenResolution;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 /**
- * Time-portaal (Clock Point QR): in-/uitklokken, pauze, eigen uren en read-only takenoverzicht.
+ * Time-portaal (Clock Point QR): in-/uitklokken, pauze, eigen uren.
+ * Taken starten/afhandelen alleen met GPS-werkbezoek op die locatie.
  */
 #[Layout('components.layouts.public')]
 #[Title('WinProx')]
@@ -70,6 +80,7 @@ class TimePortal extends Component
     use PortalTeamleaderManageWorkers;
     use PortalTeamleaderRelease;
     use SwitchesPortalUiTheme;
+    use WithFileUploads;
 
     public string $token;
     public int $clockPointId;
@@ -94,6 +105,27 @@ class TimePortal extends Component
     public array $nearbyClockUnits = [];
 
     public bool $nearbyClockUnitsLoaded = false;
+
+    public ?int $completingTaskId = null;
+
+    public string $completingNote = '';
+
+    /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
+    public array $completingPhotos = [];
+
+    public ?string $completingEsgValueNumeric = null;
+
+    public ?bool $completingEsgValueBoolean = null;
+
+    public string $completingEsgValueString = '';
+
+    public string $completingEsgValueJson = '';
+
+    /** @var list<string> */
+    public array $completingEsgValueMultiChoice = [];
+
+    public ?string $completingRecordedAt = null;
+
     #[Locked]
     public bool $rosterAckOpen = false;
 
@@ -835,6 +867,164 @@ class TimePortal extends Component
         }
     }
 
+    public function startTask(int $taskId, StartTaskAction $startTask, AssertClockPointTaskVisitAction $assertVisit): void
+    {
+        $worker = $this->authorizedWorker();
+        $task = $worker !== null ? $this->findClockPointTask($worker, $taskId) : null;
+        if ($task === null) {
+            return;
+        }
+
+        try {
+            $assertVisit->handle($worker, $task);
+        } catch (InvalidArgumentException $e) {
+            $this->flashVisitError($e);
+
+            return;
+        }
+
+        $startTask->handle($task, $worker);
+        $this->cancelCompleteTask();
+        $this->flashMessage = __('portal.worker.task_started');
+    }
+
+    public function beginCompleteTask(int $taskId, AssertClockPointTaskVisitAction $assertVisit): void
+    {
+        $worker = $this->authorizedWorker();
+        $task = $worker !== null ? $this->findClockPointTask($worker, $taskId) : null;
+        if ($task === null || ! $task->canComplete()) {
+            return;
+        }
+
+        try {
+            $assertVisit->handle($worker, $task);
+        } catch (InvalidArgumentException $e) {
+            $this->flashVisitError($e);
+
+            return;
+        }
+
+        $this->completingTaskId = $task->id;
+        $this->completingNote = '';
+        $this->completingPhotos = [];
+        $this->resetClockPointEsgFields();
+        $this->completingRecordedAt = now()->toIso8601String();
+        $this->dispatch('wp-prepare-photo-inputs');
+    }
+
+    public function cancelCompleteTask(): void
+    {
+        $this->completingTaskId = null;
+        $this->completingNote = '';
+        $this->completingPhotos = [];
+        $this->resetClockPointEsgFields();
+        $this->dispatch('wp-clear-photo-previews');
+    }
+
+    public function removeCompletingPhoto(int $index): void
+    {
+        if (isset($this->completingPhotos[$index])) {
+            array_splice($this->completingPhotos, $index, 1);
+        }
+    }
+
+    public function submitCompleteTask(
+        CompleteTaskAction $completeTask,
+        AssertClockPointTaskVisitAction $assertVisit,
+    ): void {
+        $worker = $this->authorizedWorker();
+        if ($worker === null || $this->completingTaskId === null) {
+            return;
+        }
+
+        $this->validate(
+            CompletePortalTaskRequest::ruleSet(),
+            CompletePortalTaskRequest::validationMessages(),
+        );
+
+        $task = $this->findClockPointTask($worker, $this->completingTaskId);
+        if ($task === null) {
+            return;
+        }
+
+        try {
+            $assertVisit->handle($worker, $task);
+        } catch (InvalidArgumentException $e) {
+            $this->flashVisitError($e);
+
+            return;
+        }
+
+        $task->loadMissing(['issue.esgIndicator']);
+        $esgIndicator = $task->issue?->esgIndicator;
+        $esgType = $esgIndicator?->type;
+
+        $this->validate(
+            CompletePortalTaskRequest::ruleSet($esgType),
+            CompletePortalTaskRequest::validationMessages($esgType),
+        );
+
+        if ($esgType !== null) {
+            if ($this->completingRecordedAt === null || $this->completingRecordedAt === '') {
+                $this->completingRecordedAt = now()->toIso8601String();
+            }
+            $recordedAtValidator = \Illuminate\Support\Facades\Validator::make(
+                ['completingRecordedAt' => $this->completingRecordedAt],
+                ['completingRecordedAt' => ['required', 'date']],
+            );
+            RecordEsgMeasurementRequest::assertPortalRecordedAt((string) $this->completingRecordedAt, $recordedAtValidator);
+            if ($recordedAtValidator->fails()) {
+                foreach ($recordedAtValidator->errors()->getMessages() as $field => $messages) {
+                    foreach ($messages as $message) {
+                        $this->addError($field, $message);
+                    }
+                }
+
+                return;
+            }
+        }
+
+        $esgMeasurement = null;
+        $clientTimestamp = null;
+        if ($esgIndicator !== null && filled($this->completingRecordedAt)) {
+            $esgMeasurement = RecordEsgMeasurementRequest::portalToData(
+                $task->id,
+                $esgIndicator,
+                (string) $this->completingRecordedAt,
+                [
+                    'completingEsgValueNumeric' => $this->completingEsgValueNumeric,
+                    'completingEsgValueBoolean' => $this->completingEsgValueBoolean,
+                    'completingEsgValueString' => $this->completingEsgValueString,
+                    'completingEsgValueJson' => $this->completingEsgValueJson,
+                    'completingEsgValueMultiChoice' => $this->completingEsgValueMultiChoice,
+                ],
+            );
+            $clientTimestamp = Carbon::parse((string) $this->completingRecordedAt);
+        }
+
+        try {
+            $completeTask->handle(
+                $task,
+                $worker,
+                $this->completingNote,
+                $this->completingPhotos,
+                $clientTimestamp,
+                $esgMeasurement,
+            );
+        } catch (ValidationException $e) {
+            foreach ($e->errors() as $field => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($field, $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->cancelCompleteTask();
+        $this->flashMessage = __('portal.worker.task_completed');
+    }
+
     public function startBreak(StartWorkBreakAction $startBreak, FindOpenWorkShiftForWorkerAction $findShift): void
     {
         $worker = $this->authorizedWorker();
@@ -1037,6 +1227,7 @@ class TimePortal extends Component
             ),
             'openVisitUnitId' => $openShift?->openVisit?->unit_id,
             'openVisitLocationId' => $openShift?->openVisit?->location_id,
+            'completingTaskId' => $this->completingTaskId,
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
             'evacuationList' => $evacuationList,
@@ -1260,6 +1451,9 @@ class TimePortal extends Component
             'shift_not_open' => __('time.portal.errors.not_clocked_in'),
             'gps_visits_disabled' => __('time.portal.errors.gps_visits_disabled'),
             'worker_location_not_allowed' => __('time.portal.errors.visit_unit_out_of_range'),
+            'clock_point_task_read_only' => __('portal.team.read_only_hint'),
+            'clock_point_visit_required' => __('portal.team.complete_needs_visit'),
+            'clock_point_visit_location_mismatch' => __('portal.worker.errors.not_this_location'),
             default => null,
         };
 
@@ -1281,6 +1475,32 @@ class TimePortal extends Component
         $this->flashMessage = __('time.portal.errors.device_mismatch');
 
         return true;
+    }
+
+    private function findClockPointTask(Worker $worker, int $taskId): ?Task
+    {
+        $task = Task::query()
+            ->where('tenant_id', $worker->tenant_id)
+            ->where('internal_team_id', $worker->internal_team_id)
+            ->whereIn('status', TaskStatus::openValues())
+            ->with(['issue.esgIndicator.translations', 'issue.location', 'issue.unit', 'issue.roundStops'])
+            ->find($taskId);
+
+        if ($task === null || $task->issue?->isInspectionRound()) {
+            return null;
+        }
+
+        return $task;
+    }
+
+    private function resetClockPointEsgFields(): void
+    {
+        $this->completingEsgValueNumeric = null;
+        $this->completingEsgValueBoolean = null;
+        $this->completingEsgValueString = '';
+        $this->completingEsgValueJson = '';
+        $this->completingEsgValueMultiChoice = [];
+        $this->completingRecordedAt = null;
     }
 
     private function resolveOnboardingTeam(string $firstName, string $lastName): ?InternalTeam

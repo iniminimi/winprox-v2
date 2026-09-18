@@ -736,7 +736,10 @@ productsector op `Tenant`.
   link (locatie-pin, anders adres — nooit `unit_gps_reports`). Units met eigen
   pin hebben een eigen icoon. Units zonder pin staan alleen als naam. **Start werk**
   één keer per locatie (locatie-pin) plus per unit met eigen pin, alleen binnen de
-  bestaande GPS-straal via `StartWorkVisitAction`. Unit-checks
+  bestaande GPS-straal via `StartWorkVisitAction`. **Teamtaken** (geen
+  inspectieronde) starten en afronden op Clock Point met optionele notitie
+  en foto’s, zolang er een open `WorkVisit` is op de klantlocatie van de
+  taak — het bezoek vervangt de unit-sticker. Unit-checks en inspectiestops
   blijven via de unit-QR. Navigeren maakt geen `WorkVisit` en geen CIAO.
   **Zoek werkplek in de buurt** stelt gepinde units voor, en locaties met pin als
   daar geen nabije unit was. Een dienst met nul bezoeken blijft geldig.
@@ -864,7 +867,10 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
 - **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` voor aanmelden
-  (naam + icoon), in-/uitklokken en teamtaken-overzicht. Afhandelen van taken blijft via de unit-QR.
+  (naam + icoon), in-/uitklokken en teamtaken-overzicht. Zonder GPS-werkbezoeken blijven
+  taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
+  starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;
+  unit-checks en inspectiestops blijven via de unit-QR.
 
 ### 6.3 Workers
 - Sidebar **Personen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status.
@@ -1211,10 +1217,12 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   zien dezelfde URL; de worker-acties verschijnen alleen als het toestel als veldtoestel herkend
   wordt (device-cookie/verified sessie).
 - **Clock Point-QR** (`/time/{token}`): **worker**-aanmelding (naam + icoon), in-/uitklokken en
-  overzicht van open teamtaken. **BESLIST:** via Clock Point zijn taakacties **alleen-lezen** —
-  afhandelen moet via de **unit-QR**. Met Time + GPS-werkbezoeken: inspectierondes van
-  vandaag staan na inklokken onder **Vandaag** (Navigeer / Start werk); unit-checks
-  blijven via de unit-QR. (Vervangt de oude team-QR `/team/{token}`.)
+  overzicht van open teamtaken. Zonder GPS-werkbezoeken zijn taakacties **alleen-lezen**
+  (afhandelen via **unit-QR**). Met Time + GPS-werkbezoeken: teamtaken starten/afronden
+  op Clock Point (notitie + foto’s) zolang een open `WorkVisit` de klantlocatie van de
+  taak dekt; inspectierondes van vandaag staan na inklokken onder **Vandaag**
+  (Navigeer / Start werk); unit-checks en inspectiestops blijven via de unit-QR.
+  (Vervangt de oude team-QR `/team/{token}`.)
   Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en optioneel tegel
   **Evacuatielijst** (brandicoon) na aanmelden — alleen als Instellingen → Prikklok-beveiliging
   dat aanzet (**standaard uit**); checkbox dat de raadpleging

@@ -130,6 +130,7 @@
             "icon_wrong": "Das ist nicht das richtige Symbol.",
             "note_max": "Die Notiz ist zu lang (max. 500 Zeichen).",
             "no_permission": "Sie haben keine Berechtigung, dies zu tun.",
+            "not_this_location": "Diese Aufgabe gehört zu einem anderen Standort. Starten Sie dort zuerst die Arbeit.",
             "pin_required": "Gib deine 4-stellige PIN ein.",
             "pin_invalid": "Die PIN muss aus 4 Ziffern bestehen.",
             "pin_mismatch": "Die PINs stimmen nicht überein.",
@@ -147,7 +148,8 @@
     "team": {
         "title": "Teamübersicht",
         "read_only_hint": "Dies ist eine Übersicht. Aufgaben können nur über den Einheiten-QR vor Ort abgeschlossen werden.",
-        "read_only_hint_visits": "Nach dem Einstempeln sehen Sie, wohin Sie heute müssen. Einheiten-Checks erfolgen über den Einheiten-QR vor Ort.",
+        "complete_needs_visit": "Starten Sie zuerst die Arbeit an diesem Standort. Danach können Sie Aufgaben hier abschließen. Einheiten-Checks bleiben über den Einheiten-QR.",
+        "complete_on_site_hint": "Sie sind vor Ort. Starten oder schließen Sie Teamaufgaben ab, optional mit Notiz und Fotos. Einheiten-Checks bleiben über den Einheiten-QR.",
         "onboarding_done": "Sie sind registriert und angemeldet.",
         "icon_taken": "Dieses Symbol wird bereits verwendet. Wählen Sie ein anderes.",
         "register": {
