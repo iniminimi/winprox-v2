@@ -65,10 +65,14 @@ it('toont het WinProx-icoon alleen als het clock point het vinkje aan heeft', fu
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->assertDontSeeHtml('data-wp-homescreen-install');
 
-    $this->get('/time/'.$clockPoint->qr_token)
+    $html = $this->get('/time/'.$clockPoint->qr_token)
         ->assertOk()
         ->assertDontSee('manifest.webmanifest', false)
-        ->assertDontSee('data-wp-homescreen-install', false);
+        ->assertDontSee('data-wp-homescreen-install', false)
+        ->getContent();
+
+    expect($html)->toContain('<div wire:snapshot=')
+        ->and($html)->not->toContain('<script wire:snapshot');
 
     $clockPoint->update(['homescreen_shortcut' => true]);
 

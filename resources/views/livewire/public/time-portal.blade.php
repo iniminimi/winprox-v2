@@ -1,9 +1,9 @@
-@if ($offerHomescreenShortcut ?? false)
-    @push('head')
-        <link rel="apple-touch-icon" href="{{ asset('images/pwa/winprox-192.png') }}">
-    @endpush
-@endif
 <div class="wp-stack" @if ($canAct ?? false) wire:poll.visible.30s @endif>
+    @if ($offerHomescreenShortcut ?? false)
+        @push('head')
+            <link rel="apple-touch-icon" href="{{ asset('images/pwa/winprox-192.png') }}">
+        @endpush
+    @endif
     <script>
         window.__wpFieldSync = Object.assign(window.__wpFieldSync || {}, {
             identity: @json(($canAct ?? false) && isset($verifiedWorker) && $verifiedWorker ? 'w:'.$verifiedWorker->id : ''),
