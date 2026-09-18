@@ -21,16 +21,28 @@ class StripeBillingTest extends TestCase
         $admin = User::factory()->admin()->for($tenant)->create();
 
         $service = app(StripeCheckoutService::class);
-        $this->assertFalse($service->isConfiguredForPlan('winprox_100'));
+        $this->assertFalse($service->isConfiguredForPlan('winprox_50'));
 
-        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_100', 'manual');
+        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_50', 'manual');
 
         $tenant->refresh();
-        $this->assertSame('winprox_100', $tenant->billing_plan);
+        $this->assertSame('winprox_50', $tenant->billing_plan);
         $this->assertTrue($tenant->isPaidSubscriptionActive());
-        $this->assertFalse($tenant->hasTimeModule());
+        $this->assertTrue($tenant->hasTimeModule());
         $this->assertTrue($tenant->billing_active_until->lte(now()->addDays(365)));
         $this->assertTrue($tenant->billing_active_until->gte(now()->addDays(364)));
+    }
+
+    public function test_stripe_checkout_stays_off_when_offer_checkout_is_false(): void
+    {
+        config([
+            'stripe.enabled' => true,
+            'stripe.offer_checkout' => false,
+            'stripe.price_ids.winprox_10' => 'price_test',
+        ]);
+
+        $service = app(StripeCheckoutService::class);
+        $this->assertFalse($service->isConfiguredForPlan('winprox_10'));
     }
 
     public function test_realigns_facility_subscription_after_yearly_misactivation(): void

@@ -161,6 +161,7 @@
         <header class="wp-billing-product__intro wp-stack-tight">
             <h2 class="wp-section-title">{{ __('subscription.plans_heading') }}</h2>
             <p class="wp-muted">{{ __('subscription.plans_intro') }}</p>
+            <p class="wp-muted">{{ __('subscription.yearly_invoice_notice') }}</p>
             <h3 class="wp-subhead">{{ __('subscription.glossary.heading') }}</h3>
             <ul class="wp-billing-status-list">
                 <li>{{ __('subscription.glossary.unit') }}</li>
@@ -190,8 +191,8 @@
                             <tr>
                                 <th scope="row">{{ __('subscription.plans.trial.name') }}</th>
                                 <td>{{ __('subscription.comparison_trial_price') }}</td>
-                                <td>50</td>
-                                <td>50</td>
+                                <td>{{ __('subscription.limits.unlimited') }}</td>
+                                <td>{{ __('subscription.limits.unlimited') }}</td>
                                 <td>50</td>
                                 <td>{{ __('subscription.comparison_included') }}</td>
                                 <td>{{ __('subscription.comparison_no') }}</td>
@@ -210,6 +211,8 @@
                                     <td>
                                         @if ($unitsLimit !== null)
                                             {{ number_format((int) $unitsLimit, 0, ',', '.') }}
+                                        @elseif ($seatsLimit !== null)
+                                            {{ __('subscription.limits.unlimited') }}
                                         @else
                                             {{ __('subscription.comparison_custom') }}
                                         @endif
@@ -217,6 +220,8 @@
                                     <td>
                                         @if ($docsLimit !== null)
                                             {{ number_format((int) $docsLimit, 0, ',', '.') }}
+                                        @elseif ($seatsLimit !== null)
+                                            {{ __('subscription.limits.unlimited') }}
                                         @else
                                             {{ __('subscription.comparison_custom') }}
                                         @endif
@@ -294,19 +299,21 @@
                                 <li>{{ __("subscription.plans.{$planKey}.description") }}</li>
                             @endif
                         </ul>
-                        @if ($showManageActions && is_string($timeVariant) && $timeVariant !== '')
-                            <label class="wp-check wp-billing-time-addon">
-                                <input type="checkbox" wire:model.live="includeTime.{{ $planKey }}">
-                                <span>
-                                    {{ __('subscription.time_addon.label') }}
-                                    @if (is_numeric($timeMonthly))
-                                        — {{ __('subscription.time_addon.monthly', ['price' => '€'.(int) $timeMonthly]) }}
-                                    @endif
-                                </span>
-                            </label>
-                            <p class="wp-muted wp-text-sm">{{ __('subscription.time_addon.hint') }}</p>
-                        @elseif ($publicMode && is_string($timeVariant) && $timeVariant !== '')
-                            <p class="wp-muted wp-text-sm">{{ __('subscription.time_addon.public_hint', ['price' => '€'.(int) $timeMonthly]) }}</p>
+                        @if (empty($planConfig['time_module']) && is_string($timeVariant) && $timeVariant !== '')
+                            @if ($showManageActions)
+                                <label class="wp-check wp-billing-time-addon">
+                                    <input type="checkbox" wire:model.live="includeTime.{{ $planKey }}">
+                                    <span>
+                                        {{ __('subscription.time_addon.label') }}
+                                        @if (is_numeric($timeMonthly))
+                                            — {{ __('subscription.time_addon.monthly', ['price' => '€'.(int) $timeMonthly]) }}
+                                        @endif
+                                    </span>
+                                </label>
+                                <p class="wp-muted wp-text-sm">{{ __('subscription.time_addon.hint') }}</p>
+                            @elseif ($publicMode)
+                                <p class="wp-muted wp-text-sm">{{ __('subscription.time_addon.public_hint', ['price' => '€'.(int) $timeMonthly]) }}</p>
+                            @endif
                         @endif
                     </div>
                     @if ($showManageActions)
@@ -508,7 +515,7 @@
         <a href="{{ route('legal.dpa') }}" target="_blank" rel="noopener noreferrer">{{ __('subscription.legal_dpa') }}</a>.
     </p>
     <p class="wp-billing-legal wp-billing-legal--hint wp-billing-page-width">{{ __('legal.inline_jurisdiction_hint') }}</p>
-    @if (! $publicMode)
+    @if (! $publicMode && config('stripe.offer_checkout'))
         <p class="wp-billing-legal wp-billing-legal--notice wp-billing-page-width">
             @if ($stripeLive)
                 {{ __('subscription.stripe_notice_live') }}

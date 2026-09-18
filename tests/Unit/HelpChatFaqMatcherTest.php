@@ -92,7 +92,7 @@ it('beantwoordt pricing via FAQ met nieuwe tier-structuur', function (): void {
     $answer = $matcher->match('Wat kost Facility?', 'nl');
 
     expect($answer)->toBe(__('faq.items.pricing.summary'))
-        ->and($answer)->toContain('10/50/100')
+        ->and($answer)->toContain('10/25/50')
         ->and($answer)->toContain('Corporate');
 });
 

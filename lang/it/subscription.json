@@ -1,17 +1,17 @@
 {
     "title": "Abbonamento, limiti e fatturazione",
     "public_title": "Prezzi e piani",
-    "public_subtitle": "Scegli il numero di unit. WinProx è annuale. Time (timbratrice) è inclusa nella prova, opzionale dopo.",
+    "public_subtitle": "Scegliete il numero di licenze. WinProx si paga all’anno. Time (timbratrice) è incluso.",
     "public_register_cta": "Inizia prova gratuita",
-    "subtitle": "Dopo il mese gratuito, scegli un piano. I limiti valgono per unit, documenti (1 per unit) e posti (colleghi + esecutori); sedi e foto illimitati.",
+    "subtitle": "Dopo il mese gratuito scegliete una formula. Il limite è il numero di licenze (colleghi + operatori). Sedi, unità e foto sono illimitate.",
     "plans_heading": "Piani",
-    "plans_intro": "Inizia in piccolo e cresci. Ogni piano WinProx limita unit, documenti e posti (colleghi + esecutori). Sedi e foto illimitati. Time (timbratrice) opzionale.",
+    "plans_intro": "Pagamento per persona. Ogni formula WinProx limita le licenze (colleghi + operatori). Sedi, unità e foto illimitate. Time (timbratrice) è incluso.",
     "glossary": {
-        "heading": "Unit, documenti, posti e foto",
-        "unit": "Unit — un oggetto o un luogo con codice QR, come una camera d’albergo, una stanza d’ospedale, una stampante o un veicolo.",
-        "document": "Documento — un documento disponibile sul portale QR, come un manuale o il regolamento interno. Massimo 1 documento per unit.",
+        "heading": "Licenze, unità e foto",
+        "unit": "Unità — un oggetto o un luogo con codice QR (macchina, stanza, veicolo). Illimitato in ogni formula.",
+        "document": "Documento — un file sul portale QR, ad esempio un manuale. Illimitato in ogni formula.",
         "photo": "Foto — le foto su segnalazioni e compiti sono illimitate.",
-        "seat": "Posto — collega con accesso (admin o dipendente) o esecutore (Clock Point, senza accesso). Conta nel limite del piano."
+        "seat": "Licenza — un collega con accesso (admin o dipendente) o un operatore (Clock Point, senza accesso). Un collega con profilo timbratrice collegato conta come una licenza."
     },
     "page_limits_locations_body": "Stai usando :current di :max sedi. \"Aggiungi sede\" resta disabilitato fino all'upgrade.",
     "choose_plan": "Scegli questo piano",
@@ -27,7 +27,7 @@
     "status_active": "Abbonamento attivo: :plan, valido fino al :date.",
     "status_grace": "Abbonamento :plan terminato il :ended. Periodo di grazia fino al :grace_end — :days giorni di accesso completo rimasti.",
     "status_expired": "La prova è terminata. Scegli un piano qui sotto.",
-    "pricing_intro": "Prova gratuita (50 unit, 50 posti, Time incluso). Poi 10, 50 o 100 unit all'anno con lo stesso numero di posti. Time opzionale.",
+    "pricing_intro": "Mese di prova gratuito (50 licenze, Time incluso). Poi 10, 25 o 50 licenze all’anno. Pagamento annuale tramite fattura.",
     "status_module_esg": "Modulo ESG attivo sul tuo account.",
     "status_module_time": "Time (timbratrice) è attivo sul tuo account.",
     "page_limits_title": "Perché alcune azioni non sono disponibili",
@@ -67,63 +67,81 @@
             "name": "Periodo di prova"
         },
         "winprox_10": {
-            "name": "10 unit",
-            "price": "149 € / anno",
-            "scale": "Fino a 10 unit, 10 documenti e 10 posti (colleghi + esecutori).",
+            "name": "10 licenze",
+            "price": "840 € / anno",
+            "scale": "7 € per licenza al mese. Pagamento annuale.",
             "features": [
-                "Segnalazioni e follow-up via QR.",
-                "Time (timbratrice) opzionale.",
-                "Niente IoT, ESG o API."
+                "Time (timbratrice) incluso.",
+                "CIAO (ONSS) su richiesta.",
+                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
             ]
         },
         "winprox_10_time": {
-            "name": "10 unit + Time (timbratrice)",
-            "price": "497 € / anno",
-            "scale": "Fino a 10 unit, 10 documenti e 10 posti (colleghi + esecutori).",
+            "name": "10 licenze + Time (timbratrice)",
+            "price": "840 € / anno",
+            "scale": "7 € per licenza al mese. Pagamento annuale.",
             "features": [
-                "Segnalazioni e follow-up via QR.",
                 "Time (timbratrice) incluso.",
-                "Niente IoT, ESG o API."
+                "CIAO (ONSS) su richiesta.",
+                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
+            ]
+        },
+        "winprox_25": {
+            "name": "25 licenze",
+            "price": "1.800 € / anno",
+            "scale": "6 € per licenza al mese. Pagamento annuale.",
+            "features": [
+                "Time (timbratrice) incluso.",
+                "CIAO (ONSS) su richiesta.",
+                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
+            ]
+        },
+        "winprox_25_time": {
+            "name": "25 licenze + Time (timbratrice)",
+            "price": "1.800 € / anno",
+            "scale": "6 € per licenza al mese. Pagamento annuale.",
+            "features": [
+                "Time (timbratrice) incluso.",
+                "CIAO (ONSS) su richiesta.",
+                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
             ]
         },
         "winprox_50": {
-            "name": "50 unit",
-            "price": "399 € / anno",
-            "scale": "Fino a 50 unit, 50 documenti e 50 posti (colleghi + esecutori).",
+            "name": "50 licenze",
+            "price": "3.000 € / anno",
+            "scale": "5 € per licenza al mese. Pagamento annuale.",
             "features": [
-                "Segnalazioni e follow-up via QR.",
-                "Time (timbratrice) opzionale.",
-                "Niente IoT, ESG o API."
+                "Time (timbratrice) incluso.",
+                "CIAO (ONSS) su richiesta.",
+                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
             ]
         },
         "winprox_50_time": {
-            "name": "50 unit + Time (timbratrice)",
-            "price": "867 € / anno",
-            "scale": "Fino a 50 unit, 50 documenti e 50 posti (colleghi + esecutori).",
+            "name": "50 licenze + Time (timbratrice)",
+            "price": "3.000 € / anno",
+            "scale": "5 € per licenza al mese. Pagamento annuale.",
             "features": [
-                "Segnalazioni e follow-up via QR.",
                 "Time (timbratrice) incluso.",
-                "Niente IoT, ESG o API."
+                "CIAO (ONSS) su richiesta.",
+                "Sedi, unità e foto illimitate. Niente IoT, ESG o API."
             ]
         },
         "winprox_100": {
-            "name": "100 unit",
-            "price": "699 € / anno",
-            "scale": "Fino a 100 unit, 100 documenti e 100 posti (colleghi + esecutori).",
+            "name": "100 licenze",
+            "price": "Su misura",
+            "scale": "Da 100 licenze: WinProx Corporate.",
             "features": [
-                "Segnalazioni e follow-up via QR.",
-                "Time (timbratrice) opzionale.",
-                "Niente IoT, ESG o API."
+                "Time (timbratrice) incluso.",
+                "IoT, ESG e API su Corporate."
             ]
         },
         "winprox_100_time": {
-            "name": "100 unit + Time (timbratrice)",
-            "price": "1.287 € / anno",
-            "scale": "Fino a 100 unit, 100 documenti e 100 posti (colleghi + esecutori).",
+            "name": "100 licenze + Time (timbratrice)",
+            "price": "Su misura",
+            "scale": "Da 100 licenze: WinProx Corporate.",
             "features": [
-                "Segnalazioni e follow-up via QR.",
                 "Time (timbratrice) incluso.",
-                "Niente IoT, ESG o API."
+                "IoT, ESG e API su Corporate."
             ]
         },
         "facility_10": {
@@ -195,9 +213,9 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Prezzo personalizzato",
-            "scale": "Oltre 100 unit, oppure API/webhook/integrazioni.",
+            "scale": "Da 100 licenze, o se servono API/webhook/integrazioni.",
             "features": [
-                "Time (timbratrice), IoT Connect ed ESG inclusi.",
+                "Time (timbratrice), IoT Connect e ESG inclusi.",
                 "API REST completa e webhook.",
                 "Integrazioni, SLA e supporto su misura."
             ]
@@ -276,7 +294,7 @@
     "comparison_col_plan": "Piano",
     "comparison_col_price": "Prezzo",
     "comparison_col_units": "Unità",
-    "comparison_col_documents": "Documenti (1 per unit)",
+    "comparison_col_documents": "Documenti",
     "comparison_col_iot": "IoT + ESG",
     "comparison_col_api": "API",
     "comparison_yes": "Sì",
@@ -285,9 +303,9 @@
     "comparison_custom": "Su misura",
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
-        "trial": "Prova: 50 unit, Time (timbratrice) inclusa.",
-        "unlimited": "Tutti i piani: sedi e foto illimitati.",
-        "corporate": "IoT, ESG e API: esclusivamente con WinProx Corporate."
+        "trial": "Prova: 50 licenze, Time (timbratrice) incluso. Pagamento annuale dopo la prova.",
+        "unlimited": "Tutte le formule: sedi, unità, documenti e foto illimitati.",
+        "corporate": "IoT, ESG e API: solo WinProx Corporate (da 100 licenze)."
     },
     "contact_sales_cta": "Contattaci",
     "public_contact_cta": "Richiedi preventivo",
@@ -300,5 +318,6 @@
         "hint": "Entrata, uscita e pause. Incluso nella fattura annuale (12 × il prezzo mensile).",
         "public_hint": "Time (timbratrice) opzionale da :price / mese, sulla fattura annuale."
     },
-    "comparison_col_seats": "Posti"
+    "comparison_col_seats": "Posti",
+    "yearly_invoice_notice": "Pagamento annuale tramite fattura. Nessun pagamento online."
 }

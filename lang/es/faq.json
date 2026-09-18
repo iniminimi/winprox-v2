@@ -12,8 +12,8 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "¿Cómo funciona WinProx?",
-            "intro": "WinProx sigue un flujo central: incidencia → tareas → cierre. Time (reloj de fichar) es opcional; ESG (mediciones) también.",
-            "summary": "Sitios y units, incidencia vía QR o gestión, aprobación en el portal público, tareas por equipo, seguimiento vía panel, briefing y calendario. Time (reloj de fichar) opcional; ESG opcional.",
+            "intro": "WinProx sigue un flujo central: aviso → tareas → cierre. Time (reloj de fichar) está incluido; ESG (mediciones) es opcional (Corporate). Mediciones de unidad opcionales vía el QR de unidad.",
+            "summary": "Ubicaciones y unidades, aviso por QR o administración, aprobación en el portal público, tareas por equipo, seguimiento en el panel, briefing y calendario. Time (reloj de fichar) incluido; ESG en Corporate.",
             "steps": [
                 {
                     "title": "Sitios y units",
@@ -48,37 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "¿Cuánto cuesta WinProx?",
-            "intro": "Prueba gratis (50 units, 50 plazas, Time incluido). IoT, ESG y API no en la prueba. Luego 10, 50 o 100 units al año con igual número de plazas. Time opcional. Corporate a medida.",
-            "summary": "Prueba hasta 50 units y 50 plazas, Time incluido. IoT, ESG y API en Corporate.",
-            "content_note": "Unit = objeto o lugar con QR. Documento = archivo en el portal QR, máx. 1 por unit. Plaza = colega con acceso o ejecutor (Clock Point); colega con equipo de fichaje vinculado cuenta como una (no doble). Fotos ilimitadas.",
+            "intro": "Empieza con un mes de prueba gratis (50 licencias, Time incluido). IoT, ESG y API no están en la prueba. Después 10, 25 o 50 licencias al año. Pago anual por factura. Corporate es a medida (desde 100 licencias o si se necesitan API/webhooks).",
+            "summary": "Prueba hasta 50 licencias, Time incluido. Después 10/25/50 al año, pago anual. IoT, ESG y API en Corporate.",
+            "content_note": "Licencia = colega con inicio de sesión u operario (Clock Point); un colega con perfil de fichaje vinculado cuenta como una. Ubicaciones, unidades, documentos y fotos ilimitados. Precios exactos en Abono.",
             "plans": {
                 "winprox_10": {
-                    "units": "Hasta 10 unidades y 10 documentos.",
-                    "announcements": "149 € / año",
-                    "documents": "Avisos y seguimiento por QR. · Time (reloj de fichar) opcional. · Sin IoT, ESG ni API.",
-                    "description": "Avisos y seguimiento por QR.",
-                    "users": "Hasta 10 plazas (colegas + ejecutores); ubicaciones y fotos ilimitadas"
+                    "units": "Ubicaciones y unidades ilimitadas.",
+                    "announcements": "840 € / año (7 € / licencia / mes)",
+                    "documents": "Time (reloj de fichar) incluido. · CIAO (ONSS) bajo petición. · Sin IoT, ESG ni API.",
+                    "description": "Avisos, tareas y reloj de fichar. Pago anual.",
+                    "users": "Hasta 10 licencias (colegas + operarios)"
+                },
+                "winprox_25": {
+                    "units": "Ubicaciones y unidades ilimitadas.",
+                    "announcements": "1.800 € / año (6 € / licencia / mes)",
+                    "documents": "Time (reloj de fichar) incluido. · CIAO (ONSS) bajo petición. · Sin IoT, ESG ni API.",
+                    "description": "Avisos, tareas y reloj de fichar. Pago anual.",
+                    "users": "Hasta 25 licencias (colegas + operarios)"
                 },
                 "winprox_50": {
-                    "units": "Hasta 50 unidades y 50 documentos.",
-                    "announcements": "399 € / año",
-                    "documents": "Avisos y seguimiento por QR. · Time (reloj de fichar) opcional. · Sin IoT, ESG ni API.",
-                    "description": "Avisos y seguimiento por QR.",
-                    "users": "Hasta 50 plazas (colegas + ejecutores); ubicaciones y fotos ilimitadas"
-                },
-                "winprox_100": {
-                    "units": "Hasta 100 unidades y 100 documentos.",
-                    "announcements": "699 € / año",
-                    "documents": "Avisos y seguimiento por QR. · Time (reloj de fichar) opcional. · Sin IoT, ESG ni API.",
-                    "description": "Avisos y seguimiento por QR.",
-                    "users": "Hasta 100 plazas (colegas + ejecutores); ubicaciones y fotos ilimitadas"
+                    "units": "Ubicaciones y unidades ilimitadas.",
+                    "announcements": "3.000 € / año (5 € / licencia / mes)",
+                    "documents": "Time (reloj de fichar) incluido. · CIAO (ONSS) bajo petición. · Sin IoT, ESG ni API.",
+                    "description": "Avisos, tareas y reloj de fichar. Pago anual.",
+                    "users": "Hasta 50 licencias (colegas + operarios)"
                 },
                 "corporate": {
-                    "units": "Más de 100 unidades, o API/webhooks/integraciones.",
-                    "announcements": "Precio personalizado",
+                    "units": "Desde 100 licencias, o si se necesitan API/webhooks/integraciones.",
+                    "announcements": "Precio a medida",
                     "documents": "Time (reloj de fichar), IoT Connect y ESG incluidos.",
-                    "description": "Para >1.000 unidades o cuando se requieren API/webhooks/integraciones.",
-                    "users": "Plazas a medida; ubicaciones y fotos ilimitadas"
+                    "description": "Para 100+ licencias o cuando se necesitan API/webhooks.",
+                    "users": "Licencias a medida; ubicaciones y fotos ilimitadas"
                 }
             }
         },
@@ -155,7 +155,7 @@
             "type": "text",
             "title": "¿Para quién es WinProx?",
             "body": "Para organizaciones facility — fábricas, sanidad, ayuntamientos, campus — que quieren centralizar incidencias, equipos internos, seguimiento de campo, Time (reloj de fichar) opcional y opcionalmente ESG o IoT Connect. Sin portales hospitality o de contratistas separados: una sola app Facility.",
-            "summary": "Organizaciones facility: incidencias, equipos, trabajo de campo; Time (reloj de fichar) opcional; ESG e IoT en Corporate."
+            "summary": "Organizaciones facility: incidencias, equipos, trabajo de campo; Time (reloj de fichar) incluido; ESG e IoT en Corporate."
         },
         "user_roles": {
             "slug": "user_roles",

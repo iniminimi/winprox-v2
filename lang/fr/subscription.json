@@ -1,17 +1,17 @@
 {
     "title": "Abonnement, limites et facturation",
     "public_title": "Tarifs & formules",
-    "public_subtitle": "Choisissez le nombre d'unités. WinProx est annuel. Time (pointeuse) est inclus pendant l’essai, optionnel ensuite.",
+    "public_subtitle": "Choisissez le nombre de licences. WinProx se paie à l’année. Time (pointeuse) est inclus.",
     "public_register_cta": "Démarrer l'essai gratuit",
-    "subtitle": "Après votre mois gratuit, choisissez une formule. Les limites s'appliquent aux unités, documents (1 par unité) et places (collègues + exécutants) ; emplacements et photos illimités.",
+    "subtitle": "Après le mois gratuit, choisissez une formule. La limite est le nombre de licences (collègues + exécutants). Lieux, unités et photos sont illimités.",
     "plans_heading": "Formules",
-    "plans_intro": "Commencez petit et grandissez. Chaque formule WinProx limite unités, documents et places (collègues + exécutants). Emplacements et photos illimités. Time (pointeuse) en option.",
+    "plans_intro": "Paiement par personne. Chaque formule WinProx limite les licences (collègues + exécutants). Lieux, unités et photos illimités. Time (pointeuse) est inclus.",
     "glossary": {
-        "heading": "Unités, documents, places et photos",
-        "unit": "Unité — un objet ou un lieu avec un code QR, comme une chambre d’hôtel, une chambre d’hôpital, une imprimante ou un véhicule.",
-        "document": "Document — un document disponible via le portail QR, comme un mode d’emploi ou un règlement intérieur. Maximum 1 document par unité.",
+        "heading": "Licences, unités et photos",
+        "unit": "Unité — un objet ou un lieu avec un code QR (machine, pièce, véhicule). Illimité sur chaque formule.",
+        "document": "Document — un fichier sur le portail QR, par exemple un manuel. Illimité sur chaque formule.",
         "photo": "Photos — les photos sur les signalements et les tâches sont illimitées.",
-        "seat": "Place — collègue avec connexion (admin ou employé) ou exécutant (Clock Point, sans connexion). Compte dans la limite de votre formule."
+        "seat": "Licence — un collègue avec connexion (admin ou employé) ou un exécutant (Clock Point, sans connexion). Un collègue avec profil pointeuse lié compte pour une licence."
     },
     "page_limits_locations_body": "Vous utilisez :current sur :max sites. \"Ajouter un site\" reste désactivé jusqu'à la mise à niveau.",
     "choose_plan": "Choisir cette formule",
@@ -27,7 +27,7 @@
     "status_active": "Abonnement actif : :plan, valable jusqu'au :date.",
     "status_grace": "Abonnement :plan terminé le :ended. Période de grâce jusqu'au :grace_end — :days jours d'accès complet restants.",
     "status_expired": "Votre essai est terminé. Choisissez une formule ci-dessous.",
-    "pricing_intro": "Essai gratuit (50 unités, 50 places, Time inclus). Puis 10, 50 ou 100 unités par an avec autant de places. Time en option.",
+    "pricing_intro": "Mois d’essai gratuit (50 licences, Time inclus). Ensuite 10, 25 ou 50 licences par an. Paiement annuel par facture.",
     "status_module_esg": "Module ESG actif sur votre compte.",
     "status_module_time": "Time (pointeuse) est actif sur votre compte.",
     "page_limits_title": "Pourquoi certaines actions sont indisponibles",
@@ -67,63 +67,81 @@
             "name": "Période d'essai"
         },
         "winprox_10": {
-            "name": "10 unités",
-            "price": "149 € / an",
-            "scale": "Jusqu'à 10 unités, 10 documents et 10 places (collègues + exécutants).",
+            "name": "10 licences",
+            "price": "840 € / an",
+            "scale": "7 € par licence et par mois. Paiement annuel.",
             "features": [
-                "Signaler et suivre via QR.",
-                "Time (pointeuse) en option.",
-                "Pas d'IoT, ESG ni API."
+                "Time (pointeuse) inclus.",
+                "CIAO (ONSS) sur demande.",
+                "Lieux, unités et photos illimités. Pas d’IoT, ESG ni API."
             ]
         },
         "winprox_10_time": {
-            "name": "10 unités + Time (pointeuse)",
-            "price": "497 € / an",
-            "scale": "Jusqu'à 10 unités, 10 documents et 10 places (collègues + exécutants).",
+            "name": "10 licences + Time (pointeuse)",
+            "price": "840 € / an",
+            "scale": "7 € par licence et par mois. Paiement annuel.",
             "features": [
-                "Signaler et suivre via QR.",
                 "Time (pointeuse) inclus.",
-                "Pas d'IoT, ESG ni API."
+                "CIAO (ONSS) sur demande.",
+                "Lieux, unités et photos illimités. Pas d’IoT, ESG ni API."
+            ]
+        },
+        "winprox_25": {
+            "name": "25 licences",
+            "price": "1 800 € / an",
+            "scale": "6 € par licence et par mois. Paiement annuel.",
+            "features": [
+                "Time (pointeuse) inclus.",
+                "CIAO (ONSS) sur demande.",
+                "Lieux, unités et photos illimités. Pas d’IoT, ESG ni API."
+            ]
+        },
+        "winprox_25_time": {
+            "name": "25 licences + Time (pointeuse)",
+            "price": "1 800 € / an",
+            "scale": "6 € par licence et par mois. Paiement annuel.",
+            "features": [
+                "Time (pointeuse) inclus.",
+                "CIAO (ONSS) sur demande.",
+                "Lieux, unités et photos illimités. Pas d’IoT, ESG ni API."
             ]
         },
         "winprox_50": {
-            "name": "50 unités",
-            "price": "399 € / an",
-            "scale": "Jusqu'à 50 unités, 50 documents et 50 places (collègues + exécutants).",
+            "name": "50 licences",
+            "price": "3 000 € / an",
+            "scale": "5 € par licence et par mois. Paiement annuel.",
             "features": [
-                "Signaler et suivre via QR.",
-                "Time (pointeuse) en option.",
-                "Pas d'IoT, ESG ni API."
+                "Time (pointeuse) inclus.",
+                "CIAO (ONSS) sur demande.",
+                "Lieux, unités et photos illimités. Pas d’IoT, ESG ni API."
             ]
         },
         "winprox_50_time": {
-            "name": "50 unités + Time (pointeuse)",
-            "price": "867 € / an",
-            "scale": "Jusqu'à 50 unités, 50 documents et 50 places (collègues + exécutants).",
+            "name": "50 licences + Time (pointeuse)",
+            "price": "3 000 € / an",
+            "scale": "5 € par licence et par mois. Paiement annuel.",
             "features": [
-                "Signaler et suivre via QR.",
                 "Time (pointeuse) inclus.",
-                "Pas d'IoT, ESG ni API."
+                "CIAO (ONSS) sur demande.",
+                "Lieux, unités et photos illimités. Pas d’IoT, ESG ni API."
             ]
         },
         "winprox_100": {
-            "name": "100 unités",
-            "price": "699 € / an",
-            "scale": "Jusqu'à 100 unités, 100 documents et 100 places (collègues + exécutants).",
+            "name": "100 licences",
+            "price": "Sur mesure",
+            "scale": "À partir de 100 licences : WinProx Corporate.",
             "features": [
-                "Signaler et suivre via QR.",
-                "Time (pointeuse) en option.",
-                "Pas d'IoT, ESG ni API."
+                "Time (pointeuse) inclus.",
+                "IoT, ESG et API en Corporate."
             ]
         },
         "winprox_100_time": {
-            "name": "100 unités + Time (pointeuse)",
-            "price": "1 287 € / an",
-            "scale": "Jusqu'à 100 unités, 100 documents et 100 places (collègues + exécutants).",
+            "name": "100 licences + Time (pointeuse)",
+            "price": "Sur mesure",
+            "scale": "À partir de 100 licences : WinProx Corporate.",
             "features": [
-                "Signaler et suivre via QR.",
                 "Time (pointeuse) inclus.",
-                "Pas d'IoT, ESG ni API."
+                "IoT, ESG et API en Corporate."
             ]
         },
         "facility_10": {
@@ -195,7 +213,7 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Tarif sur mesure",
-            "scale": "Plus de 100 unités, ou API/webhooks/intégrations nécessaires.",
+            "scale": "À partir de 100 licences, ou si API/webhooks/intégrations sont nécessaires.",
             "features": [
                 "Time (pointeuse), IoT Connect et ESG inclus.",
                 "API REST complète et webhooks.",
@@ -276,7 +294,7 @@
     "comparison_col_plan": "Formule",
     "comparison_col_price": "Prix",
     "comparison_col_units": "Unités",
-    "comparison_col_documents": "Documents (1 par unité)",
+    "comparison_col_documents": "Documents",
     "comparison_col_iot": "IoT + ESG",
     "comparison_col_api": "API",
     "comparison_yes": "Oui",
@@ -285,9 +303,9 @@
     "comparison_custom": "Sur mesure",
     "comparison_trial_price": "Gratuit",
     "comparison_notes": {
-        "trial": "Essai : 50 unités, Time (pointeuse) inclus.",
-        "unlimited": "Toutes les formules : emplacements et photos illimités.",
-        "corporate": "IoT, ESG et API : uniquement avec WinProx Corporate."
+        "trial": "Essai : 50 licences, Time (pointeuse) inclus. Paiement annuel après l’essai.",
+        "unlimited": "Toutes les formules : lieux, unités, documents et photos illimités.",
+        "corporate": "IoT, ESG et API : uniquement WinProx Corporate (à partir de 100 licences)."
     },
     "contact_sales_cta": "Nous contacter",
     "public_contact_cta": "Demander un devis",
@@ -300,5 +318,6 @@
         "hint": "Entrée, sortie et pauses. Facturé sur la facture annuelle (12 × le prix mensuel).",
         "public_hint": "Time (pointeuse) en option dès :price / mois, sur la facture annuelle."
     },
-    "comparison_col_seats": "Places"
+    "comparison_col_seats": "Places",
+    "yearly_invoice_notice": "Paiement annuel par facture. Pas de paiement en ligne."
 }

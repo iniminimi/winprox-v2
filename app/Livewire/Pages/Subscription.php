@@ -63,12 +63,12 @@ class Subscription extends Component
         $this->selectedPlan = $this->resolveTenant()?->effectivePlanKey();
         $this->includeTime = BillingCatalogViewData::defaultTimeToggles($this->selectedPlan);
 
-        if (request()->query('stripe') === 'cancel') {
+        if (config('stripe.offer_checkout') && request()->query('stripe') === 'cancel') {
             session()->flash('error', __('subscription.stripe.checkout_cancelled'));
         }
 
         $sessionId = request()->query('session_id');
-        if (request()->query('stripe') === 'success' && is_string($sessionId) && $sessionId !== '') {
+        if (config('stripe.offer_checkout') && request()->query('stripe') === 'success' && is_string($sessionId) && $sessionId !== '') {
             if ($fulfillStripe->handle($sessionId)) {
                 $this->selectedPlan = $this->resolveTenant()?->fresh()?->effectivePlanKey();
                 $this->includeTime = BillingCatalogViewData::defaultTimeToggles($this->selectedPlan);

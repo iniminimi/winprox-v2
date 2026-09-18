@@ -6,21 +6,21 @@ it('toont publieke prijzenpagina met WinProx-jaarformules en Corporate voor gast
     $this->get(route('pricing'))
         ->assertOk()
         ->assertSee(__('subscription.plans.winprox_10.name'))
+        ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.winprox_50.name'))
-        ->assertSee(__('subscription.plans.winprox_100.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.comparison_heading'))
-        ->assertSee(__('subscription.time_addon.public_hint', ['price' => '€29']), false)
+        ->assertSee(__('subscription.yearly_invoice_notice'))
         ->assertSee(__('subscription.public_contact_cta'))
         ->assertSee(__('subscription.public_register_cta'), false)
+        ->assertSee(__('subscription.glossary.seat'))
         ->assertSee(__('subscription.glossary.unit'))
-        ->assertSee(__('subscription.glossary.document'))
-        ->assertSee(__('subscription.glossary.photo'))
-        ->assertSee(__('subscription.comparison_col_documents'))
+        ->assertSee(__('subscription.comparison_col_seats'))
         ->assertSee(__('subscription.comparison_notes.trial'))
         ->assertSee(__('subscription.comparison_notes.unlimited'))
         ->assertSee(__('subscription.comparison_notes.corporate'))
-        ->assertDontSee(__('subscription.plans.facility_25.name'));
+        ->assertDontSee(__('subscription.plans.facility_25.name'))
+        ->assertDontSee(__('subscription.time_addon.public_hint', ['price' => '€29']), false);
 });
 
 it('toont publieke prijzenpagina voor ingelogde gebruikers', function () {
@@ -42,7 +42,8 @@ it('toont plan-knoppen op abonnementenpagina voor beheerder', function () {
         ->test(\App\Livewire\Pages\Subscription::class)
         ->assertSee(__('subscription.choose_plan'), false)
         ->assertSee(__('subscription.plans.winprox_10.name'))
-        ->assertSee(__('subscription.plans.winprox_100.name'))
+        ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
-        ->assertSee(__('subscription.time_addon.label'));
+        ->assertSee(__('subscription.yearly_invoice_notice'))
+        ->assertDontSee(__('subscription.plans.facility_25.name'));
 });

@@ -10,6 +10,10 @@ class StripeCheckoutService
 {
     public function isConfiguredForPlan(string $plan): bool
     {
+        if (! config('stripe.offer_checkout')) {
+            return false;
+        }
+
         if (! config('stripe.enabled')) {
             return false;
         }

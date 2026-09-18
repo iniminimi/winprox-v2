@@ -1,36 +1,33 @@
 <?php
 
 /**
- * Billing — WinProx (jaar, units) + optionele Time-prikklok + Corporate.
+ * Billing — WinProx (jaar, licenties) + Corporate.
  *
- * Publieke catalogus: winprox_10 / winprox_50 / winprox_100 + corporate.
- * Time (prikklok) is een self-activate plan-variant (*_time): dezelfde units,
- * time_module aan, zelfde jaarperiode. Maandprijs × 12 op dezelfde factuur.
+ * Publieke catalogus: winprox_10 / winprox_25 / winprox_50 + corporate.
+ * Time (prikklok) is inbegrepen. CIAO (RSZ) op aanvraag, zonder extra SKU.
+ * IoT + ESG + API: uitsluitend Corporate. 100+ licenties = Corporate.
  *
- * Legacy facility_* blijft in config voor bestaande abonnees (geen catalogus,
- * geen self-activate). Limits/entitlements blijven werken.
- *
- *  - Units bepalen de schaal; documenten = units (1 per unit).
- *  - Seats = actieve login-users (admin + medewerker) + actieve workers (1:1 met units per tier).
- *  - Locaties: altijd onbeperkt.
- *  - Foto's: altijd onbeperkt.
- *  - Time: optionele prikklok (niet inbegrepen in WinProx; wél in de proefperiode).
- *  - IoT + ESG + API: uitsluitend Corporate.
- *  - Trial: tot 50 units en 50 plaatsen, Time inbegrepen, geen IoT/ESG/API.
+ *  - Licenties (seats) bepalen de schaal: actieve login-users + actieve workers
+ *    zonder gekoppeld user_id (collega + prikklok-profiel = 1).
+ *  - Locaties, units, foto's: onbeperkt.
+ *  - Documenten: onbeperkt (geen 1:1 meer met units).
+ *  - Trial: tot 50 licenties, Time inbegrepen, geen IoT/ESG/API.
  *  - Corporate: afgesproken units via `tenants.billing_units_cap` (superuser).
+ *  - Legacy facility_* en winprox_100 / *_time blijven in config (geen catalogus).
  */
 
-$winproxShared = static function (int $units): array {
+$winproxShared = static function (int $seats): array {
     return [
-        'units_limit'            => $units,
+        'units_limit'            => null,
         'locations_limit'        => null,
         'users_limit'            => null,
-        'seats_limit'            => $units,
-        'documents_org_limit'    => $units,
+        'seats_limit'            => $seats,
+        'documents_org_limit'    => null,
         'photos_org_limit'       => null,
         'documents_per_unit'     => null,
         'announcements_per_unit' => null,
         'includes_facility'      => true,
+        'time_module'            => true,
         'esg_module'             => false,
         'iot_module'             => false,
         'api_access'             => false,
@@ -41,25 +38,23 @@ $winproxShared = static function (int $units): array {
     ];
 };
 
-$winproxPair = static function (int $units, int $timeMonthlyEur) use ($winproxShared): array {
-    $baseKey = 'winprox_'.$units;
-    $timeKey = 'winprox_'.$units.'_time';
-    $shared = $winproxShared($units);
+$winproxPlan = static function (int $seats, int $monthlyPerSeat, bool $public) use ($winproxShared): array {
+    $baseKey = 'winprox_'.$seats;
+    $timeKey = 'winprox_'.$seats.'_time';
+    $shared = $winproxShared($seats);
 
     return [
         $baseKey => array_merge($shared, [
-            'label_key'         => 'subscription.plans.'.$baseKey.'.name',
-            'time_module'       => false,
-            'public_catalog'    => true,
-            'time_variant'      => $timeKey,
-            'time_monthly_eur'  => $timeMonthlyEur,
+            'label_key'            => 'subscription.plans.'.$baseKey.'.name',
+            'public_catalog'       => $public,
+            'time_variant'         => $timeKey,
+            'seat_monthly_eur'     => $monthlyPerSeat,
         ]),
         $timeKey => array_merge($shared, [
-            'label_key'         => 'subscription.plans.'.$timeKey.'.name',
-            'time_module'       => true,
-            'public_catalog'    => false,
-            'time_variant'      => null,
-            'time_monthly_eur'  => $timeMonthlyEur,
+            'label_key'            => 'subscription.plans.'.$timeKey.'.name',
+            'public_catalog'       => false,
+            'time_variant'         => null,
+            'seat_monthly_eur'     => $monthlyPerSeat,
         ]),
     ];
 };
@@ -100,6 +95,8 @@ return [
         'trial'            => ['max_attempts' => 30,    'decay_seconds' => 60],
         'winprox_10'       => ['max_attempts' => 60,    'decay_seconds' => 60],
         'winprox_10_time'  => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'winprox_25'       => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'winprox_25_time'  => ['max_attempts' => 60,    'decay_seconds' => 60],
         'winprox_50'       => ['max_attempts' => 60,    'decay_seconds' => 60],
         'winprox_50_time'  => ['max_attempts' => 60,    'decay_seconds' => 60],
         'winprox_100'      => ['max_attempts' => 60,    'decay_seconds' => 60],
@@ -114,13 +111,13 @@ return [
         'corporate'        => ['max_attempts' => 10000, 'decay_seconds' => 60],
     ],
 
-    // Trial: tot 50 units (= WinProx 50), Time inbegrepen, geen IoT/ESG/API.
+    // Trial: tot 50 licenties, Time inbegrepen, geen IoT/ESG/API.
     'trial' => [
-        'units_limit'            => 50,
+        'units_limit'            => null,
         'locations_limit'        => null,
         'users_limit'            => null,
         'seats_limit'            => 50,
-        'documents_org_limit'    => 50,
+        'documents_org_limit'    => null,
         'photos_org_limit'       => null,
         'documents_per_unit'     => null,
         'announcements_per_unit' => null,
@@ -134,9 +131,10 @@ return [
     ],
 
     'plans' => array_merge(
-        $winproxPair(10, 29),
-        $winproxPair(50, 39),
-        $winproxPair(100, 49),
+        $winproxPlan(10, 7, true),
+        $winproxPlan(25, 6, true),
+        $winproxPlan(50, 5, true),
+        $winproxPlan(100, 5, false),
         [
             // Legacy maandtiers — grandfather, niet in de catalogus.
             'facility_10' => $legacyFacility(10, false),

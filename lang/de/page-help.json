@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Testphase",
-                    "text": "Im Testzeitraum haben Sie bis zu 50 Units (und 50 Dokumente), inkl. Time (Stechuhr). Das Dashboard zeigt die restlichen Tage."
+                    "text": "In der Testphase haben Sie bis zu 50 Lizenzen, inkl. Time (Stechuhr). Units sind unbegrenzt. Das Dashboard zeigt die restlichen Tage."
                 },
                 {
                     "label": "Meldung hinzufügen",
@@ -774,11 +774,11 @@
             "actions": [
                 {
                     "label": "Testphase",
-                    "text": "Im Testzeitraum haben Sie bis zu 50 Units (und 50 Dokumente), inkl. Time (Stechuhr). IoT, ESG und API sind nicht in der Testphase. Das Dashboard zeigt die restlichen Tage."
+                    "text": "In der Testphase haben Sie bis zu 50 Lizenzen, inkl. Time (Stechuhr). IoT, ESG und API sind nicht in der Testphase. Das Dashboard zeigt die restlichen Tage."
                 },
                 {
                     "label": "Plan wählen",
-                    "text": "Wählen Sie einen Plan, der zur Anzahl der Units passt, die Sie verwalten."
+                    "text": "Wählen Sie einen Tarif nach Anzahl der Lizenzen (Kollegen + Ausführende). Jährliche Zahlung per Rechnung."
                 },
                 {
                     "label": "Organisationsdaten löschen",
@@ -1072,7 +1072,7 @@
                 },
                 {
                     "label": "Module",
-                    "text": "Schalten Sie optionale Module ein oder aus (Time-Stechuhr, ESG, IoT Connect, CIAO/RSZ). CIAO ist ausnahmsweise: die Organisation beantragt es über info@winprox.app. Time ist in der Testphase enthalten; bei WinProx optional."
+                    "text": "Schalten Sie optionale Module ein oder aus (ESG, IoT Connect, CIAO/RSZ). CIAO ist außergewöhnlich: die Organisation beantragt es über info@winprox.app. Time ist in WinProx-Tarifen enthalten."
                 },
                 {
                     "label": "Corporate Einheiten-Cap",

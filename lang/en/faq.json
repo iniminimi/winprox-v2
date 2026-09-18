@@ -12,8 +12,8 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "How does WinProx work?",
-            "intro": "WinProx follows one core flow: issue → tasks → completion. Time (punch clock) is optional; ESG (measurements) is also optional. Optional unit measurements via the unit QR.",
-            "summary": "Sites and units, issues via QR or admin, approval on the public portal, tasks per team, follow-up via dashboard, briefing, and calendar. Time (punch clock) optional; ESG optional.",
+            "intro": "WinProx follows one core flow: issue → tasks → completion. Time (punch clock) is included; ESG (measurements) is optional (Corporate). Optional unit measurements via the unit QR.",
+            "summary": "Locations and units, reporting via QR or back office, approval on the public portal, tasks per team, follow-up via dashboard, briefing and calendar. Time (punch clock) included; ESG on Corporate.",
             "steps": [
                 {
                     "title": "Sites and units",
@@ -48,37 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "How much does WinProx cost?",
-            "intro": "You start with a free trial month (50 units, 50 seats, including Time punch clock). IoT, ESG and API are not in the trial. Then choose 10, 50 or 100 units per year with the same number of seats. Time is optional afterwards. Corporate is custom (more than 100 units or when API/webhooks are needed).",
-            "summary": "Trial up to 50 units and 50 seats, including Time. IoT, ESG and API on Corporate. Then 10/50/100 per year.",
-            "content_note": "Unit = object or place with a QR. Document = file on the QR portal, maximum 1 per unit. Seat = colleague with login or worker (Clock Point); colleague with linked punch-clock team counts as one seat (not twice). Photos on issues are unlimited. Exact prices are under Subscription.",
+            "intro": "You start with a free trial month (50 seats, including Time). IoT, ESG and API are not in the trial. Then 10, 25 or 50 seats per year. Billed yearly by invoice. Corporate is custom (from 100 seats or when API/webhooks are needed).",
+            "summary": "Trial up to 50 seats, including Time. Then 10/25/50 per year, billed yearly. IoT, ESG and API on Corporate.",
+            "content_note": "Seat = colleague with login or worker (Clock Point); a colleague with a linked punch-clock profile counts as one. Locations, units, documents and photos are unlimited. Exact prices are under Subscription.",
             "plans": {
                 "winprox_10": {
-                    "units": "Up to 10 units and 10 documents.",
-                    "announcements": "€149 / year",
-                    "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
-                    "description": "Report and follow up via QR.",
-                    "users": "Up to 10 seats (colleagues + workers); unlimited locations and photos on issues"
+                    "units": "Unlimited locations and units.",
+                    "announcements": "€840 / year (€7 / seat / month)",
+                    "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
+                    "description": "Issues, tasks and punch clock. Billed yearly.",
+                    "users": "Up to 10 seats (colleagues + workers)"
+                },
+                "winprox_25": {
+                    "units": "Unlimited locations and units.",
+                    "announcements": "€1,800 / year (€6 / seat / month)",
+                    "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
+                    "description": "Issues, tasks and punch clock. Billed yearly.",
+                    "users": "Up to 25 seats (colleagues + workers)"
                 },
                 "winprox_50": {
-                    "units": "Up to 50 units and 50 documents.",
-                    "announcements": "€399 / year",
-                    "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
-                    "description": "Report and follow up via QR.",
-                    "users": "Up to 50 seats (colleagues + workers); unlimited locations and photos on issues"
-                },
-                "winprox_100": {
-                    "units": "Up to 100 units and 100 documents.",
-                    "announcements": "€699 / year",
-                    "documents": "Report and follow up via QR. · Time (punch clock) optional. · No IoT, ESG or API.",
-                    "description": "Report and follow up via QR.",
-                    "users": "Up to 100 seats (colleagues + workers); unlimited locations and photos on issues"
+                    "units": "Unlimited locations and units.",
+                    "announcements": "€3,000 / year (€5 / seat / month)",
+                    "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
+                    "description": "Issues, tasks and punch clock. Billed yearly.",
+                    "users": "Up to 50 seats (colleagues + workers)"
                 },
                 "corporate": {
-                    "units": "More than 100 units, or API/webhooks/integrations required.",
-                    "announcements": "Custom pricing",
+                    "units": "From 100 seats, or when API/webhooks/integrations are needed.",
+                    "announcements": "Custom price",
                     "documents": "Time (punch clock), IoT Connect and ESG included.",
-                    "description": "For >1,000 units or when API/webhooks/integrations are required.",
-                    "users": "Custom seats; unlimited locations and photos on issues"
+                    "description": "For 100+ seats or when API/webhooks are needed.",
+                    "users": "Custom seats; unlimited locations and photos"
                 }
             }
         },
@@ -159,7 +159,7 @@
             "type": "text",
             "title": "Who is WinProx for?",
             "body": "For facility organisations — factories, care, municipalities, campuses — that want issues, internal teams, field follow-up, optional Time (punch clock) and optionally ESG or IoT Connect in one place. No separate hospitality or contractor portals: one Facility app.",
-            "summary": "Facility organisations: issues, teams, field work; Time (punch clock) optional; ESG and IoT on Corporate."
+            "summary": "Facility organisations: issues, teams, field work; Time (punch clock) included; ESG and IoT on Corporate."
         },
         "user_roles": {
             "slug": "user_roles",

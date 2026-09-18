@@ -785,8 +785,8 @@ productsector op `Tenant`.
   `time.presence.submitted` / `time.presence.failed` / `time.presence.skipped` (geen NISS in payload);
   `time.visit.started` / `time.visit.ended`;
   `time.schedule.saved` / `time.schedule.copied` / `time.schedule.published` / `time.shift_type.saved`.
-- Billing: hangt aan **Time** (en/of Corporate) — geen los “CIAO-only”-plan zonder Time tenzij
-  later expliciet beslist. Product_docs + FAQ bij implementatie (alle locales).
+- Billing: CIAO zit in de jaarprijs (op aanvraag); geen los CIAO-only-plan zonder Time.
+  Product_docs + FAQ bij implementatie (alle locales).
 
 ### 5g.5 Uurrooster (golf 1 + golf 2)
 
@@ -988,7 +988,7 @@ sector-suffixes, marketing-query-params. Property→Location.
 
 **Doel:** abonnementsbeheer (admin): proefperiode/grace-status, planlimieten, plan kiezen, beheren.
 Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billing.php`,
-`EnsureActiveSubscriptionOrTrial`. **WinProx (jaar, 10/50/100 units) + optionele Time-prikklok + Corporate op maat.**
+`EnsureActiveSubscriptionOrTrial`. **WinProx (jaar, 10/25/50 licenties, Time inbegrepen) + Corporate op maat. Betaling via jaarfactuur; Stripe-checkout zit in de code maar is niet zichtbaar (`STRIPE_OFFER_CHECKOUT`).**
 
 ### 7.1 Status & toegang (behouden, generiek)
 - Tenant-velden: `trial_ends_at`, `billing_plan`, `billing_active_until`, `billing_units_cap`
@@ -999,26 +999,27 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   **V2: tekstuele/minimalistische capsule** (geen PNG-animatie).
 
 ### 7.2 Plannen
-- **WinProx** (`winprox_10` / `winprox_50` / `winprox_100`): **jaarlijks**, units + documenten (1:1)
-  + **licenties** (collega's met login + uitvoerders, zelfde getal als units per tier).
-  Onbeperkt locaties/foto's. **Geen** Time, IoT, ESG of API. Clock Point blijft de
-  aanmeld-QR (identiteit + takenlijst).
-- **Time (prikklok)** — modulenaam Time, inhoud = prikklok: optionele plan-variant
-  (`winprox_*_time`), zelfde units, `time_module` aan. Toeslag €29 / €39 / €49 per maand,
-  op de **jaarfactuur** (×12). In-/uitklokken, pauze, aanwezigheid, urenstaat.
-- **Trial:** 50 units, 50 licenties, Time (prikklok) inbegrepen, geen IoT/ESG/API.
-- **Corporate:** geen self-activate; superuser zet `billing_plan=corporate` + `billing_units_cap`
-  via Platform → Organisaties. Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
-- **Legacy `facility_*`:** blijven in config voor bestaande abonnees (niet in catalogus, niet
-  self-activate).
-- Plankaarten + vergelijkingstabel op publieke `/pricing`; admin activeert WinProx (Stripe of
-  gesimuleerd) met optioneel Time-vinkje. Corporate = mailto naar `billing.contact_email`.
+- **WinProx** (`winprox_10` / `winprox_25` / `winprox_50`): **jaarlijks**, gemeten in **licenties**
+  (collega's met login + uitvoerders). Locaties, units, documenten en foto's onbeperkt.
+  **Time inbegrepen.** CIAO (RSZ) op aanvraag, geen extra SKU. **Geen** IoT, ESG of API.
+  Clock Point blijft de aanmeld-QR (identiteit + takenlijst).
+- **Prijs (jaarfactuur):** 10 licenties €7/persoon/maand (€840/jaar); 25 × €6 (€1.800/jaar);
+  50 × €5 (€3.000/jaar). Online betalen (Stripe) is uit; na de proef volgt een jaarfactuur.
+- **Trial:** 50 licenties, Time inbegrepen, geen IoT/ESG/API; units onbeperkt.
+- **Corporate:** geen self-activate; vanaf **100 licenties** of wanneer API/webhooks nodig zijn.
+  Superuser zet `billing_plan=corporate` + `billing_units_cap` via Platform → Organisaties.
+  Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
+- **Legacy `facility_*` en `winprox_100`:** blijven in config (niet in catalogus, niet
+  self-activate voor 100 in de publieke lijst).
+- Plankaarten + vergelijkingstabel op publieke `/pricing`; admin kan een formule kiezen
+  (activeert de periode; betaling buiten de app). Corporate = mailto naar `billing.contact_email`.
 - **Grace-periode** na verloop behouden.
 
 ### 7.3 Stripe
-- Env: `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET`, zes `STRIPE_PRICE_WINPROX_*` (jaar, met/zonder
-  Time; zie `.env.example`). Legacy `STRIPE_PRICE_FACILITY_*` mag blijven voor bestaande abonnees.
-- Checkout voor self-activate tiers; Corporate **niet** in Stripe.
+- Checkout is **niet zichtbaar** (`STRIPE_OFFER_CHECKOUT`, default uit). Jaarfactuur buiten de app.
+- Code + webhook blijven: `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_WINPROX_*`
+  (zie `.env.example`). Zet `STRIPE_OFFER_CHECKOUT=true` om checkout terug te tonen.
+- Corporate **niet** in Stripe.
 
 ### 7.4 Gegevens verwijderen (tenant purge)
 Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.

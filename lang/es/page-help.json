@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 50 unidades (y 50 documentos), Time (reloj de fichar) incluido. El panel muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 50 licencias, Time (reloj de fichar) incluido. Las unidades son ilimitadas. El panel muestra los días restantes."
                 },
                 {
                     "label": "Añadir incidencia",
@@ -774,11 +774,11 @@
             "actions": [
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 50 unidades (y 50 documentos), Time (reloj de fichar) incluido. El panel muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 50 licencias, Time (reloj de fichar) incluido. IoT, ESG y API no están en la prueba. El panel muestra los días restantes."
                 },
                 {
                     "label": "Elegir plan",
-                    "text": "Seleccione un plan que se ajuste al número de unidades que gestiona."
+                    "text": "Elija una fórmula según el número de licencias (colegas + operarios). Pago anual por factura."
                 },
                 {
                     "label": "Eliminar datos de la organización",
@@ -1072,7 +1072,7 @@
                 },
                 {
                     "label": "Módulos",
-                    "text": "Active o desactive módulos opcionales (Time reloj de fichar, ESG, IoT Connect, CIAO/ONSS). CIAO es excepcional: la organización lo solicita en info@winprox.app. Time está incluido en la prueba; opcional en WinProx."
+                    "text": "Active o desactive módulos opcionales (ESG, IoT Connect, CIAO/ONSS). CIAO es excepcional: la organización lo solicita vía info@winprox.app. Time está incluido en las fórmulas WinProx."
                 },
                 {
                     "label": "Tope Corporate",

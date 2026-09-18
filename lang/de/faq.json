@@ -12,8 +12,8 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "Wie funktioniert WinProx?",
-            "intro": "WinProx folgt einem Kernfluss: Meldung → Aufgaben → Abschluss. Time (Stechuhr) ist optional; ESG (Messungen) ebenfalls.",
-            "summary": "Standorte und Units, Meldung per QR oder Verwaltung, Freigabe im öffentlichen Portal, Aufgaben pro Team, Nachverfolgung über Dashboard, Briefing und Kalender. Time (Stechuhr) optional; ESG optional.",
+            "intro": "WinProx folgt einem Kernablauf: Meldung → Aufgaben → Abschluss. Time (Stechuhr) ist enthalten; ESG (Messungen) ist optional (Corporate). Optionale Unit-Messungen über den Unit-QR.",
+            "summary": "Standorte und Units, Meldung per QR oder Verwaltung, Freigabe im öffentlichen Portal, Aufgaben pro Team, Nachverfolgung über Dashboard, Briefing und Kalender. Time (Stechuhr) enthalten; ESG bei Corporate.",
             "steps": [
                 {
                     "title": "Standorte und Units",
@@ -48,37 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Was kostet WinProx?",
-            "intro": "Gratis-Probe (50 Units, 50 Plätze, Time inklusive). IoT, ESG und API nicht in der Probe. Dann 10, 50 oder 100 Units pro Jahr mit gleicher Platzanzahl. Time optional. Corporate individuell.",
-            "summary": "Probe bis 50 Units und 50 Plätze, Time inklusive. IoT, ESG und API auf Corporate.",
-            "content_note": "Unit = Objekt oder Ort mit QR. Dokument = Datei im QR-Portal, max. 1 pro Unit. Platz = Kollege mit Login oder Ausführender (Clock Point); Kollege mit verknüpftem Stempeluhr-Team zählt einmal (nicht doppelt). Fotos unbegrenzt.",
+            "intro": "Sie starten mit einem kostenlosen Testmonat (50 Lizenzen, inkl. Time). IoT, ESG und API sind nicht in der Testphase. Danach 10, 25 oder 50 Lizenzen pro Jahr. Jährliche Zahlung per Rechnung. Corporate ist individuell (ab 100 Lizenzen oder wenn API/Webhooks nötig sind).",
+            "summary": "Testphase bis 50 Lizenzen, inkl. Time. Danach 10/25/50 pro Jahr, jährlich zu zahlen. IoT, ESG und API bei Corporate.",
+            "content_note": "Lizenz = Kollege mit Login oder Ausführender (Clock Point); Kollege mit verknüpftem Stechuhr-Profil zählt als eine. Standorte, Units, Dokumente und Fotos unbegrenzt. Genaue Preise unter Abonnement.",
             "plans": {
                 "winprox_10": {
-                    "units": "Bis zu 10 Units und 10 Dokumente.",
-                    "announcements": "149 € / Jahr",
-                    "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
-                    "description": "Melden und nachverfolgen per QR.",
-                    "users": "Bis zu 10 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
+                    "units": "Unbegrenzte Standorte und Units.",
+                    "announcements": "840 € / Jahr (7 € / Lizenz / Monat)",
+                    "documents": "Time (Stechuhr) enthalten. · CIAO (LSZ) auf Anfrage. · Kein IoT, ESG oder API.",
+                    "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
+                    "users": "Bis 10 Lizenzen (Kollegen + Ausführende)"
+                },
+                "winprox_25": {
+                    "units": "Unbegrenzte Standorte und Units.",
+                    "announcements": "1.800 € / Jahr (6 € / Lizenz / Monat)",
+                    "documents": "Time (Stechuhr) enthalten. · CIAO (LSZ) auf Anfrage. · Kein IoT, ESG oder API.",
+                    "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
+                    "users": "Bis 25 Lizenzen (Kollegen + Ausführende)"
                 },
                 "winprox_50": {
-                    "units": "Bis zu 50 Units und 50 Dokumente.",
-                    "announcements": "399 € / Jahr",
-                    "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
-                    "description": "Melden und nachverfolgen per QR.",
-                    "users": "Bis zu 50 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
-                },
-                "winprox_100": {
-                    "units": "Bis zu 100 Units und 100 Dokumente.",
-                    "announcements": "699 € / Jahr",
-                    "documents": "Melden und nachverfolgen per QR. · Time (Stechuhr) optional. · Kein IoT, ESG oder API.",
-                    "description": "Melden und nachverfolgen per QR.",
-                    "users": "Bis zu 100 Plätze (Kollegen + Ausführende); unbegrenzt Standorte und Fotos"
+                    "units": "Unbegrenzte Standorte und Units.",
+                    "announcements": "3.000 € / Jahr (5 € / Lizenz / Monat)",
+                    "documents": "Time (Stechuhr) enthalten. · CIAO (LSZ) auf Anfrage. · Kein IoT, ESG oder API.",
+                    "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
+                    "users": "Bis 50 Lizenzen (Kollegen + Ausführende)"
                 },
                 "corporate": {
-                    "units": "Mehr als 100 Units oder API/Webhooks/Integrationen erforderlich.",
+                    "units": "Ab 100 Lizenzen, oder wenn API/Webhooks/Integrationen nötig sind.",
                     "announcements": "Individueller Preis",
-                    "documents": "Time (Stechuhr), IoT Connect und ESG inklusive.",
-                    "description": "Für >1.000 Einheiten oder bei Bedarf an API/Webhooks/Integrationen.",
-                    "users": "Plätze nach Vereinbarung; unbegrenzt Standorte und Fotos"
+                    "documents": "Time (Stechuhr), IoT Connect und ESG enthalten.",
+                    "description": "Für 100+ Lizenzen oder wenn API/Webhooks nötig sind.",
+                    "users": "Lizenzen nach Maß; unbegrenzte Standorte und Fotos"
                 }
             }
         },
@@ -155,7 +155,7 @@
             "type": "text",
             "title": "Für wen ist WinProx?",
             "body": "Für Facility-Organisationen — Fabriken, Pflege, Kommunen, Campusse — die Meldungen, interne Teams, Feldnachverfolgung, optional Time (Stechuhr) und optional ESG oder IoT Connect zentral steuern wollen. Keine separaten Hospitality- oder Auftragnehmerportale: eine Facility-App.",
-            "summary": "Facility-Organisationen: Meldungen, Teams, Feldarbeit; Time (Stechuhr) optional; ESG und IoT bei Corporate."
+            "summary": "Facility-Organisationen: Meldungen, Teams, Feldarbeit; Time (Stechuhr) enthalten; ESG und IoT bei Corporate."
         },
         "user_roles": {
             "slug": "user_roles",

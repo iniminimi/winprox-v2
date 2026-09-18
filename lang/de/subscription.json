@@ -1,17 +1,17 @@
 {
     "title": "Abonnement, Limits & Abrechnung",
     "public_title": "Preise & Pakete",
-    "public_subtitle": "Wählen Sie die Anzahl Units. WinProx wird jährlich berechnet. Time (Stechuhr) ist in der Testphase enthalten, danach optional.",
+    "public_subtitle": "Wählen Sie die Anzahl der Lizenzen. WinProx wird jährlich berechnet. Time (Stechuhr) ist enthalten.",
     "public_register_cta": "Kostenlose Testphase starten",
-    "subtitle": "Nach dem Gratismonat wählen Sie einen Tarif. Limits gelten für Units, Dokumente (1 pro Unit) und Plätze (Kollegen + Ausführende); Standorte und Fotos unbegrenzt.",
+    "subtitle": "Nach dem Gratismonat wählen Sie einen Tarif. Das Limit ist die Zahl der Lizenzen (Kollegen + Ausführende). Standorte, Units und Fotos sind unbegrenzt.",
     "plans_heading": "Tarife",
-    "plans_intro": "Klein starten und wachsen. Jeder WinProx-Tarif begrenzt Units, Dokumente und Plätze (Kollegen + Ausführende). Standorte und Fotos unbegrenzt. Time (Stechuhr) optional.",
+    "plans_intro": "Zahlung pro Person. Jeder WinProx-Tarif begrenzt die Lizenzen (Kollegen + Ausführende). Standorte, Units und Fotos unbegrenzt. Time (Stechuhr) ist enthalten.",
     "glossary": {
-        "heading": "Units, Dokumente, Plätze und Fotos",
-        "unit": "Unit — ein Objekt oder Ort mit QR-Code, etwa Hotelzimmer, Krankenzimmer, Drucker oder Fahrzeug.",
-        "document": "Dokument — ein Dokument im QR-Portal, etwa eine Anleitung oder Hausordnung. Maximal 1 Dokument pro Unit.",
+        "heading": "Lizenzen, Units und Fotos",
+        "unit": "Unit — ein Objekt oder Ort mit QR-Code (Maschine, Raum, Fahrzeug). Unbegrenzt in jedem Tarif.",
+        "document": "Dokument — eine Datei im QR-Portal, z. B. eine Anleitung. Unbegrenzt in jedem Tarif.",
         "photo": "Fotos — Fotos bei Meldungen und Aufgaben sind unbegrenzt.",
-        "seat": "Platz — Kollege mit Login (Admin oder Mitarbeiter) oder Ausführender (Clock Point, ohne Login). Zählt zum Tariflimit."
+        "seat": "Lizenz — Kollege mit Login (Admin oder Mitarbeiter) oder Ausführender (Clock Point, ohne Login). Kollege mit verknüpftem Stechuhr-Profil zählt als eine Lizenz."
     },
     "page_limits_locations_body": "Sie nutzen :current von :max Standorten. \"Standort hinzufügen\" bleibt deaktiviert bis zum Upgrade.",
     "choose_plan": "Diesen Tarif wählen",
@@ -27,7 +27,7 @@
     "status_active": "Aktives Abonnement: :plan, gültig bis :date.",
     "status_grace": "Abonnement :plan endete am :ended. Kulanzfrist bis :grace_end — noch :days Tage voller Zugang.",
     "status_expired": "Ihre Testphase ist abgelaufen. Wählen Sie unten einen Tarif.",
-    "pricing_intro": "Gratis-Probe (50 Units, 50 Plätze, Time inklusive). Dann 10, 50 oder 100 Units pro Jahr mit gleicher Platzanzahl. Time optional.",
+    "pricing_intro": "Kostenloser Testmonat (50 Lizenzen, inkl. Time). Danach 10, 25 oder 50 Lizenzen pro Jahr. Jährliche Zahlung per Rechnung.",
     "status_module_esg": "ESG-Modul auf Ihrem Konto aktiv.",
     "status_module_time": "Time (Stechuhr) ist auf Ihrem Konto aktiv.",
     "page_limits_title": "Warum bestimmte Aktionen nicht verfügbar sind",
@@ -67,63 +67,81 @@
             "name": "Testzeitraum"
         },
         "winprox_10": {
-            "name": "10 Units",
-            "price": "149 € / Jahr",
-            "scale": "Bis zu 10 Units, 10 Dokumente und 10 Plätze (Kollegen + Ausführende).",
+            "name": "10 Lizenzen",
+            "price": "840 € / Jahr",
+            "scale": "7 € je Lizenz und Monat. Jährliche Zahlung.",
             "features": [
-                "Melden und nachverfolgen per QR.",
-                "Time (Stechuhr) optional.",
-                "Kein IoT, ESG oder API."
+                "Time (Stechuhr) enthalten.",
+                "CIAO (RSZ) auf Anfrage.",
+                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
             ]
         },
         "winprox_10_time": {
-            "name": "10 Units + Time (Stechuhr)",
-            "price": "497 € / Jahr",
-            "scale": "Bis zu 10 Units, 10 Dokumente und 10 Plätze (Kollegen + Ausführende).",
+            "name": "10 Lizenzen + Time (Stechuhr)",
+            "price": "840 € / Jahr",
+            "scale": "7 € je Lizenz und Monat. Jährliche Zahlung.",
             "features": [
-                "Melden und nachverfolgen per QR.",
-                "Time (Stechuhr) inklusive.",
-                "Kein IoT, ESG oder API."
+                "Time (Stechuhr) enthalten.",
+                "CIAO (RSZ) auf Anfrage.",
+                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
+            ]
+        },
+        "winprox_25": {
+            "name": "25 Lizenzen",
+            "price": "1.800 € / Jahr",
+            "scale": "6 € je Lizenz und Monat. Jährliche Zahlung.",
+            "features": [
+                "Time (Stechuhr) enthalten.",
+                "CIAO (RSZ) auf Anfrage.",
+                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
+            ]
+        },
+        "winprox_25_time": {
+            "name": "25 Lizenzen + Time (Stechuhr)",
+            "price": "1.800 € / Jahr",
+            "scale": "6 € je Lizenz und Monat. Jährliche Zahlung.",
+            "features": [
+                "Time (Stechuhr) enthalten.",
+                "CIAO (RSZ) auf Anfrage.",
+                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
             ]
         },
         "winprox_50": {
-            "name": "50 Units",
-            "price": "399 € / Jahr",
-            "scale": "Bis zu 50 Units, 50 Dokumente und 50 Plätze (Kollegen + Ausführende).",
+            "name": "50 Lizenzen",
+            "price": "3.000 € / Jahr",
+            "scale": "5 € je Lizenz und Monat. Jährliche Zahlung.",
             "features": [
-                "Melden und nachverfolgen per QR.",
-                "Time (Stechuhr) optional.",
-                "Kein IoT, ESG oder API."
+                "Time (Stechuhr) enthalten.",
+                "CIAO (RSZ) auf Anfrage.",
+                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
             ]
         },
         "winprox_50_time": {
-            "name": "50 Units + Time (Stechuhr)",
-            "price": "867 € / Jahr",
-            "scale": "Bis zu 50 Units, 50 Dokumente und 50 Plätze (Kollegen + Ausführende).",
+            "name": "50 Lizenzen + Time (Stechuhr)",
+            "price": "3.000 € / Jahr",
+            "scale": "5 € je Lizenz und Monat. Jährliche Zahlung.",
             "features": [
-                "Melden und nachverfolgen per QR.",
-                "Time (Stechuhr) inklusive.",
-                "Kein IoT, ESG oder API."
+                "Time (Stechuhr) enthalten.",
+                "CIAO (RSZ) auf Anfrage.",
+                "Unbegrenzte Standorte, Units und Fotos. Kein IoT, ESG oder API."
             ]
         },
         "winprox_100": {
-            "name": "100 Units",
-            "price": "699 € / Jahr",
-            "scale": "Bis zu 100 Units, 100 Dokumente und 100 Plätze (Kollegen + Ausführende).",
+            "name": "100 Lizenzen",
+            "price": "Individuell",
+            "scale": "Ab 100 Lizenzen: WinProx Corporate.",
             "features": [
-                "Melden und nachverfolgen per QR.",
-                "Time (Stechuhr) optional.",
-                "Kein IoT, ESG oder API."
+                "Time (Stechuhr) enthalten.",
+                "IoT, ESG und API bei Corporate."
             ]
         },
         "winprox_100_time": {
-            "name": "100 Units + Time (Stechuhr)",
-            "price": "1.287 € / Jahr",
-            "scale": "Bis zu 100 Units, 100 Dokumente und 100 Plätze (Kollegen + Ausführende).",
+            "name": "100 Lizenzen + Time (Stechuhr)",
+            "price": "Individuell",
+            "scale": "Ab 100 Lizenzen: WinProx Corporate.",
             "features": [
-                "Melden und nachverfolgen per QR.",
-                "Time (Stechuhr) inklusive.",
-                "Kein IoT, ESG oder API."
+                "Time (Stechuhr) enthalten.",
+                "IoT, ESG und API bei Corporate."
             ]
         },
         "facility_10": {
@@ -195,9 +213,9 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Individueller Preis",
-            "scale": "Mehr als 100 Units oder API/Webhooks/Integrationen erforderlich.",
+            "scale": "Ab 100 Lizenzen, oder wenn API/Webhooks/Integrationen nötig sind.",
             "features": [
-                "Time (Stechuhr), IoT Connect und ESG inklusive.",
+                "Time (Stechuhr), IoT Connect und ESG enthalten.",
                 "Vollständige REST-API und Webhooks.",
                 "Integrationen, SLA und Support nach Maß."
             ]
@@ -276,7 +294,7 @@
     "comparison_col_plan": "Tarif",
     "comparison_col_price": "Preis",
     "comparison_col_units": "Einheiten",
-    "comparison_col_documents": "Dokumente (1 pro Unit)",
+    "comparison_col_documents": "Dokumente",
     "comparison_col_iot": "IoT + ESG",
     "comparison_col_api": "API",
     "comparison_yes": "Ja",
@@ -285,9 +303,9 @@
     "comparison_custom": "Individuell",
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
-        "trial": "Testphase: 50 Units, inkl. Time (Stechuhr).",
-        "unlimited": "Alle Tarife: unbegrenzt Standorte und Fotos.",
-        "corporate": "IoT, ESG und API: ausschließlich mit WinProx Corporate."
+        "trial": "Testphase: 50 Lizenzen, inkl. Time (Stechuhr). Nach dem Test jährliche Rechnung.",
+        "unlimited": "Alle Tarife: unbegrenzte Standorte, Units, Dokumente und Fotos.",
+        "corporate": "IoT, ESG und API: nur WinProx Corporate (ab 100 Lizenzen)."
     },
     "contact_sales_cta": "Kontakt aufnehmen",
     "public_contact_cta": "Angebot anfragen",
@@ -300,5 +318,6 @@
         "hint": "Ein-, Ausstempeln und Pause. Wird auf der Jahresrechnung mitberechnet (12 × Monatspreis).",
         "public_hint": "Time (Stechuhr) optional ab :price / Monat, auf der Jahresrechnung."
     },
-    "comparison_col_seats": "Plätze"
+    "comparison_col_seats": "Plätze",
+    "yearly_invoice_notice": "Jährliche Zahlung per Rechnung. Keine Online-Zahlung."
 }

@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Période d'essai",
-                    "text": "Pendant l'essai, vous avez jusqu'à 50 unités (et 50 documents), Time (pointeuse) inclus. Le tableau de bord indique les jours restants."
+                    "text": "Pendant l’essai vous avez jusqu’à 50 licences, Time (pointeuse) inclus. Les unités sont illimitées. Le tableau de bord affiche les jours restants."
                 },
                 {
                     "label": "Ajouter un signalement",
@@ -782,11 +782,11 @@
             "actions": [
                 {
                     "label": "Période d'essai",
-                    "text": "Pendant l'essai, vous avez jusqu'à 50 unités (et 50 documents), Time (pointeuse) inclus. IoT, ESG et API ne sont pas dans l'essai. Le tableau de bord indique les jours restants."
+                    "text": "Pendant l’essai vous avez jusqu’à 50 licences, Time (pointeuse) inclus. IoT, ESG et API ne sont pas dans l’essai. Le tableau de bord affiche les jours restants."
                 },
                 {
                     "label": "Choisir un plan",
-                    "text": "Sélectionnez un plan adapté au nombre d'unités que vous gérez."
+                    "text": "Choisissez une formule selon le nombre de licences (collègues + exécutants). Paiement annuel par facture."
                 },
                 {
                     "label": "Supprimer les données de l’organisation",
@@ -1080,7 +1080,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Activez ou désactivez les modules optionnels (Time pointeuse, ESG, IoT Connect, CIAO/ONSS). CIAO est exceptionnel : l’organisation le demande via info@winprox.app. Time est inclus pendant l’essai ; optionnel sur WinProx."
+                    "text": "Activez ou désactivez les modules optionnels (ESG, IoT Connect, CIAO/ONSS). CIAO est exceptionnel : l’organisation le demande via info@winprox.app. Time est inclus dans les formules WinProx."
                 },
                 {
                     "label": "Plafond Corporate",

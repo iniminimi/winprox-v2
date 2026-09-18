@@ -4,11 +4,15 @@ return [
     'secret' => env('STRIPE_SECRET'),
     'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
     'enabled' => filled(env('STRIPE_SECRET')),
+    // Checkout in de UI: uit tot we Stripe opnieuw aanbieden. Webhook + service blijven.
+    'offer_checkout' => (bool) env('STRIPE_OFFER_CHECKOUT', false),
     'success_path' => env('STRIPE_SUCCESS_PATH', '/subscription'),
     'cancel_path' => env('STRIPE_CANCEL_PATH', '/subscription'),
     'price_ids' => [
         'winprox_10'       => env('STRIPE_PRICE_WINPROX_10'),
         'winprox_10_time'  => env('STRIPE_PRICE_WINPROX_10_TIME'),
+        'winprox_25'       => env('STRIPE_PRICE_WINPROX_25'),
+        'winprox_25_time'  => env('STRIPE_PRICE_WINPROX_25_TIME'),
         'winprox_50'       => env('STRIPE_PRICE_WINPROX_50'),
         'winprox_50_time'  => env('STRIPE_PRICE_WINPROX_50_TIME'),
         'winprox_100'      => env('STRIPE_PRICE_WINPROX_100'),

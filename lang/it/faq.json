@@ -12,8 +12,8 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "Come funziona WinProx?",
-            "intro": "WinProx segue un flusso centrale: segnalazione → attività → chiusura. Time (timbratrice) è opzionale; ESG (misurazioni) anche.",
-            "summary": "Siti e units, segnalazione via QR o gestione, approvazione sul portale pubblico, task per team, follow-up via dashboard, briefing e calendario. Time (timbratrice) opzionale; ESG opzionale.",
+            "intro": "WinProx segue un flusso unico: segnalazione → attività → chiusura. Time (timbratrice) è incluso; ESG (misurazioni) è opzionale (Corporate). Misurazioni unità opzionali tramite QR unità.",
+            "summary": "Sedi e unità, segnalazione via QR o back office, approvazione sul portale pubblico, attività per squadra, follow-up dalla dashboard, briefing e calendario. Time (timbratrice) incluso; ESG su Corporate.",
             "steps": [
                 {
                     "title": "Sedi e unit",
@@ -48,37 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Quanto costa WinProx?",
-            "intro": "Prova gratuita (50 unit, 50 posti, Time incluso). IoT, ESG e API non in prova. Poi 10, 50 o 100 unit all'anno con lo stesso numero di posti. Time opzionale. Corporate su misura.",
-            "summary": "Prova fino a 50 unit e 50 posti, Time incluso. IoT, ESG e API su Corporate.",
-            "content_note": "Unit = oggetto o luogo con QR. Documento = file sul portale QR, max 1 per unit. Posto = collega con accesso o esecutore (Clock Point); collega con team timbratura collegato conta come una (non doppia). Foto illimitate.",
+            "intro": "Iniziate con un mese di prova gratuito (50 licenze, Time incluso). IoT, ESG e API non sono nella prova. Poi 10, 25 o 50 licenze all’anno. Pagamento annuale tramite fattura. Corporate è su misura (da 100 licenze o se servono API/webhook).",
+            "summary": "Prova fino a 50 licenze, Time incluso. Poi 10/25/50 all’anno, pagamento annuale. IoT, ESG e API su Corporate.",
+            "content_note": "Licenza = collega con accesso o operatore (Clock Point); un collega con profilo timbratrice collegato conta come una. Sedi, unità, documenti e foto illimitati. Prezzi esatti in Abbonamento.",
             "plans": {
                 "winprox_10": {
-                    "units": "Fino a 10 unit e 10 documenti.",
-                    "announcements": "149 € / anno",
-                    "documents": "Segnalazioni e follow-up via QR. · Time (timbratrice) opzionale. · Niente IoT, ESG o API.",
-                    "description": "Segnalazioni e follow-up via QR.",
-                    "users": "Fino a 10 posti (colleghi + esecutori); sedi e foto illimitati"
+                    "units": "Sedi e unità illimitate.",
+                    "announcements": "840 € / anno (7 € / licenza / mese)",
+                    "documents": "Time (timbratrice) incluso. · CIAO (ONSS) su richiesta. · Niente IoT, ESG o API.",
+                    "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
+                    "users": "Fino a 10 licenze (colleghi + operatori)"
+                },
+                "winprox_25": {
+                    "units": "Sedi e unità illimitate.",
+                    "announcements": "1.800 € / anno (6 € / licenza / mese)",
+                    "documents": "Time (timbratrice) incluso. · CIAO (ONSS) su richiesta. · Niente IoT, ESG o API.",
+                    "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
+                    "users": "Fino a 25 licenze (colleghi + operatori)"
                 },
                 "winprox_50": {
-                    "units": "Fino a 50 unit e 50 documenti.",
-                    "announcements": "399 € / anno",
-                    "documents": "Segnalazioni e follow-up via QR. · Time (timbratrice) opzionale. · Niente IoT, ESG o API.",
-                    "description": "Segnalazioni e follow-up via QR.",
-                    "users": "Fino a 50 posti (colleghi + esecutori); sedi e foto illimitati"
-                },
-                "winprox_100": {
-                    "units": "Fino a 100 unit e 100 documenti.",
-                    "announcements": "699 € / anno",
-                    "documents": "Segnalazioni e follow-up via QR. · Time (timbratrice) opzionale. · Niente IoT, ESG o API.",
-                    "description": "Segnalazioni e follow-up via QR.",
-                    "users": "Fino a 100 posti (colleghi + esecutori); sedi e foto illimitati"
+                    "units": "Sedi e unità illimitate.",
+                    "announcements": "3.000 € / anno (5 € / licenza / mese)",
+                    "documents": "Time (timbratrice) incluso. · CIAO (ONSS) su richiesta. · Niente IoT, ESG o API.",
+                    "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
+                    "users": "Fino a 50 licenze (colleghi + operatori)"
                 },
                 "corporate": {
-                    "units": "Oltre 100 unit, oppure API/webhook/integrazioni.",
-                    "announcements": "Prezzo personalizzato",
-                    "documents": "Time (timbratrice), IoT Connect ed ESG inclusi.",
-                    "description": "Per >1.000 unità o quando servono API/webhook/integrazioni.",
-                    "users": "Posti su misura; sedi e foto illimitati"
+                    "units": "Da 100 licenze, o se servono API/webhook/integrazioni.",
+                    "announcements": "Prezzo su misura",
+                    "documents": "Time (timbratrice), IoT Connect e ESG inclusi.",
+                    "description": "Per 100+ licenze o quando servono API/webhook.",
+                    "users": "Licenze su misura; sedi e foto illimitate"
                 }
             }
         },
@@ -155,7 +155,7 @@
             "type": "text",
             "title": "Per chi è WinProx?",
             "body": "Per organizzazioni facility — fabbriche, sanità, comuni, campus — che vogliono centralizzare segnalazioni, team interni, follow-up sul campo, Time (timbratrice) opzionale e opzionalmente ESG o IoT Connect. Nessun portale hospitality o contractor separato: una sola app Facility.",
-            "summary": "Organizzazioni facility: segnalazioni, team, lavoro sul campo; Time (timbratrice) opzionale; ESG e IoT su Corporate."
+            "summary": "Organizzazioni facility: segnalazioni, team, lavoro sul campo; Time (timbratrice) incluso; ESG e IoT su Corporate."
         },
         "user_roles": {
             "slug": "user_roles",

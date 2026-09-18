@@ -44,8 +44,8 @@ final class JsonLd
                 '@type' => 'AggregateOffer',
                 'url' => route('pricing', ['locale' => 'en'], absolute: true),
                 'priceCurrency' => 'EUR',
-                'lowPrice' => '149',
-                'highPrice' => '999',
+                'lowPrice' => '840',
+                'highPrice' => '3000',
                 'offerCount' => 3,
             ],
             'publisher' => [

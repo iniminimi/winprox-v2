@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 50 units (and 50 documents), including Time (punch clock). The dashboard shows remaining days."
+                    "text": "During the trial you have up to 50 seats, including Time (punch clock). Units are unlimited. The dashboard shows remaining days."
                 },
                 {
                     "label": "Add issue",
@@ -774,11 +774,11 @@
             "actions": [
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 50 units (and 50 documents), including Time (punch clock). IoT, ESG and API are not in the trial. The dashboard shows remaining days."
+                    "text": "During the trial you have up to 50 seats, including Time (punch clock). IoT, ESG and API are not in the trial. The dashboard shows remaining days."
                 },
                 {
                     "label": "Choose plan",
-                    "text": "Select a plan that fits the number of units you manage."
+                    "text": "Choose a plan by number of seats (colleagues + workers). Payment is yearly by invoice."
                 },
                 {
                     "label": "Delete organisation data",
@@ -1072,7 +1072,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Enable or disable optional modules (Time punch clock, ESG, IoT Connect, CIAO/RSZ). CIAO is exceptional: the organisation requests it via info@winprox.app. Time is included in the trial; optional on WinProx."
+                    "text": "Turn optional modules on or off (ESG, IoT Connect, CIAO/RSZ). CIAO is exceptional: the organisation requests it via info@winprox.app. Time is included in WinProx plans."
                 },
                 {
                     "label": "Corporate units cap",

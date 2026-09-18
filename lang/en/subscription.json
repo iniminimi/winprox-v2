@@ -1,17 +1,17 @@
 {
     "title": "Subscription, limits & billing",
     "public_title": "Pricing & plans",
-    "public_subtitle": "Choose your unit count. WinProx is billed yearly. Time (punch clock) is included in the trial, optional afterwards.",
+    "public_subtitle": "Choose the number of seats. WinProx is billed yearly. Time (punch clock) is included.",
     "public_register_cta": "Start free trial",
-    "subtitle": "After your free month, choose a plan. Limits apply to units, documents (1 per unit) and seats (colleagues + workers); locations and photos are unlimited.",
+    "subtitle": "After your free month, choose a plan. The limit is the number of seats (colleagues + workers). Locations, units and photos are unlimited.",
     "plans_heading": "Plans",
-    "plans_intro": "Start small and grow. Each WinProx plan limits units, documents and seats (colleagues + workers). Locations and photos are unlimited. Time (punch clock) is optional.",
+    "plans_intro": "Pay per person. Each WinProx plan limits seats (colleagues + workers). Locations, units and photos are unlimited. Time (punch clock) is included.",
     "glossary": {
-        "heading": "Units, documents, seats and photos",
-        "unit": "Unit — an object or place with a QR code, such as a hotel room, hospital room, printer or vehicle.",
-        "document": "Document — a file available on the QR portal, such as a manual or house rules. Maximum 1 document per unit.",
+        "heading": "Seats, units and photos",
+        "unit": "Unit — an object or place with a QR code (machine, room, vehicle). Unlimited on every plan.",
+        "document": "Document — a file on the QR portal, such as a manual. Unlimited on every plan.",
         "photo": "Photos — photos on issues and tasks are unlimited.",
-        "seat": "Seat — a colleague with login (admin or employee) or a worker (Clock Point, no login). Counts toward your plan limit."
+        "seat": "Seat — a colleague with login (admin or employee) or a worker (Clock Point, no login). A colleague with a linked punch-clock profile counts as one seat."
     },
     "choose_plan": "Choose this plan",
     "choose_plan_loading": "Choosing...",
@@ -26,7 +26,7 @@
     "status_active": "Active subscription: :plan, valid until :date.",
     "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
     "status_expired": "Your trial has ended. Choose a plan below to continue.",
-    "pricing_intro": "WinProx includes a free trial month (50 units, 50 seats, including Time). Then choose 10, 50 or 100 units per year with the same number of seats. You can optionally keep Time.",
+    "pricing_intro": "Free trial month (50 seats, including Time). Then 10, 25 or 50 seats per year. Billed yearly by invoice.",
     "status_module_esg": "ESG module active on your account.",
     "status_module_time": "Time (punch clock) is active on your account.",
     "page_limits_title": "Why certain actions are unavailable",
@@ -67,63 +67,81 @@
             "name": "Trial"
         },
         "winprox_10": {
-            "name": "10 units",
-            "price": "€149 / year",
-            "scale": "Up to 10 units, 10 documents and 10 seats (colleagues + workers).",
+            "name": "10 seats",
+            "price": "€840 / year",
+            "scale": "€7 per seat per month. Billed yearly.",
             "features": [
-                "Report and follow up via QR.",
-                "Time (punch clock) optional.",
-                "No IoT, ESG or API."
+                "Time (punch clock) included.",
+                "CIAO (NSSO) on request.",
+                "Unlimited locations, units and photos. No IoT, ESG or API."
             ]
         },
         "winprox_10_time": {
-            "name": "10 units + Time (punch clock)",
-            "price": "€497 / year",
-            "scale": "Up to 10 units, 10 documents and 10 seats (colleagues + workers).",
+            "name": "10 seats + Time (punch clock)",
+            "price": "€840 / year",
+            "scale": "€7 per seat per month. Billed yearly.",
             "features": [
-                "Report and follow up via QR.",
                 "Time (punch clock) included.",
-                "No IoT, ESG or API."
+                "CIAO (NSSO) on request.",
+                "Unlimited locations, units and photos. No IoT, ESG or API."
+            ]
+        },
+        "winprox_25": {
+            "name": "25 seats",
+            "price": "€1,800 / year",
+            "scale": "€6 per seat per month. Billed yearly.",
+            "features": [
+                "Time (punch clock) included.",
+                "CIAO (NSSO) on request.",
+                "Unlimited locations, units and photos. No IoT, ESG or API."
+            ]
+        },
+        "winprox_25_time": {
+            "name": "25 seats + Time (punch clock)",
+            "price": "€1,800 / year",
+            "scale": "€6 per seat per month. Billed yearly.",
+            "features": [
+                "Time (punch clock) included.",
+                "CIAO (NSSO) on request.",
+                "Unlimited locations, units and photos. No IoT, ESG or API."
             ]
         },
         "winprox_50": {
-            "name": "50 units",
-            "price": "€399 / year",
-            "scale": "Up to 50 units, 50 documents and 50 seats (colleagues + workers).",
+            "name": "50 seats",
+            "price": "€3,000 / year",
+            "scale": "€5 per seat per month. Billed yearly.",
             "features": [
-                "Report and follow up via QR.",
-                "Time (punch clock) optional.",
-                "No IoT, ESG or API."
+                "Time (punch clock) included.",
+                "CIAO (NSSO) on request.",
+                "Unlimited locations, units and photos. No IoT, ESG or API."
             ]
         },
         "winprox_50_time": {
-            "name": "50 units + Time (punch clock)",
-            "price": "€867 / year",
-            "scale": "Up to 50 units, 50 documents and 50 seats (colleagues + workers).",
+            "name": "50 seats + Time (punch clock)",
+            "price": "€3,000 / year",
+            "scale": "€5 per seat per month. Billed yearly.",
             "features": [
-                "Report and follow up via QR.",
                 "Time (punch clock) included.",
-                "No IoT, ESG or API."
+                "CIAO (NSSO) on request.",
+                "Unlimited locations, units and photos. No IoT, ESG or API."
             ]
         },
         "winprox_100": {
-            "name": "100 units",
-            "price": "€699 / year",
-            "scale": "Up to 100 units, 100 documents and 100 seats (colleagues + workers).",
+            "name": "100 seats",
+            "price": "Custom",
+            "scale": "From 100 seats: WinProx Corporate.",
             "features": [
-                "Report and follow up via QR.",
-                "Time (punch clock) optional.",
-                "No IoT, ESG or API."
+                "Time (punch clock) included.",
+                "IoT, ESG and API on Corporate."
             ]
         },
         "winprox_100_time": {
-            "name": "100 units + Time (punch clock)",
-            "price": "€1,287 / year",
-            "scale": "Up to 100 units, 100 documents and 100 seats (colleagues + workers).",
+            "name": "100 seats + Time (punch clock)",
+            "price": "Custom",
+            "scale": "From 100 seats: WinProx Corporate.",
             "features": [
-                "Report and follow up via QR.",
                 "Time (punch clock) included.",
-                "No IoT, ESG or API."
+                "IoT, ESG and API on Corporate."
             ]
         },
         "facility_10": {
@@ -195,11 +213,11 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Custom pricing",
-            "scale": "More than 100 units, or API/webhooks/integrations required.",
+            "scale": "From 100 seats, or when API/webhooks/integrations are needed.",
             "features": [
                 "Time (punch clock), IoT Connect and ESG included.",
                 "Full REST API and webhooks.",
-                "Integrations, SLA and tailored support."
+                "Integrations, SLA and support tailored to you."
             ]
         }
     },
@@ -276,7 +294,7 @@
     "comparison_col_plan": "Plan",
     "comparison_col_price": "Price",
     "comparison_col_units": "Units",
-    "comparison_col_documents": "Documents (1 per unit)",
+    "comparison_col_documents": "Documents",
     "comparison_col_iot": "IoT + ESG",
     "comparison_col_api": "API",
     "comparison_yes": "Yes",
@@ -285,9 +303,9 @@
     "comparison_custom": "Custom",
     "comparison_trial_price": "Free",
     "comparison_notes": {
-        "trial": "Trial: 50 units, including Time (punch clock).",
-        "unlimited": "All plans: unlimited locations and photos.",
-        "corporate": "IoT, ESG and API: available only with WinProx Corporate."
+        "trial": "Trial: 50 seats, including Time (punch clock). Billed yearly after the trial.",
+        "unlimited": "All plans: unlimited locations, units, documents and photos.",
+        "corporate": "IoT, ESG and API: WinProx Corporate only (from 100 seats)."
     },
     "contact_sales_cta": "Contact us",
     "public_contact_cta": "Request a quote",
@@ -300,5 +318,6 @@
         "hint": "Clock in, out and breaks. Added to the yearly invoice (12 × the monthly price).",
         "public_hint": "Time (punch clock) optional from :price / month, billed yearly."
     },
-    "comparison_col_seats": "Seats"
+    "comparison_col_seats": "Seats",
+    "yearly_invoice_notice": "Billed yearly by invoice. No online payment."
 }

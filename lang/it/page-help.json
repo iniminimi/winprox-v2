@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova hai fino a 50 unit (e 50 documenti), Time (timbratrice) inclusa. La dashboard mostra i giorni restanti."
+                    "text": "Durante la prova avete fino a 50 licenze, Time (timbratrice) incluso. Le unità sono illimitate. La dashboard mostra i giorni rimanenti."
                 },
                 {
                     "label": "Aggiungi segnalazione",
@@ -774,11 +774,11 @@
             "actions": [
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova hai fino a 50 unit (e 50 documenti), Time (timbratrice) inclusa. IoT, ESG e API non sono nella prova. La dashboard mostra i giorni restanti."
+                    "text": "Durante la prova avete fino a 50 licenze, Time (timbratrice) incluso. IoT, ESG e API non sono nella prova. La dashboard mostra i giorni rimanenti."
                 },
                 {
                     "label": "Scelga piano",
-                    "text": "Selezioni un piano adatto al numero di unità che gestisce."
+                    "text": "Scegliete una formula in base al numero di licenze (colleghi + operatori). Pagamento annuale tramite fattura."
                 },
                 {
                     "label": "Elimina i dati dell’organizzazione",
@@ -1072,7 +1072,7 @@
                 },
                 {
                     "label": "Moduli",
-                    "text": "Attiva o disattiva i moduli opzionali (Time timbratrice, ESG, IoT Connect, CIAO/ONSS). CIAO è eccezionale: l’organizzazione lo richiede via info@winprox.app. Time è inclusa nella prova; opzionale su WinProx."
+                    "text": "Attivate o disattivate i moduli opzionali (ESG, IoT Connect, CIAO/ONSS). CIAO è eccezionale: l’organizzazione lo richiede via info@winprox.app. Time è incluso nelle formule WinProx."
                 },
                 {
                     "label": "Cap Corporate",

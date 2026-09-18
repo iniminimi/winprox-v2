@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 50 units (en 50 documenten), inclusief Time (prikklok). Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 50 licenties, inclusief Time (prikklok). Units zijn onbeperkt. Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Melding toevoegen",
@@ -774,11 +774,11 @@
             "actions": [
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 50 units (en 50 documenten), inclusief Time (prikklok). IoT, ESG en API zitten niet in de proef. Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 50 licenties, inclusief Time (prikklok). IoT, ESG en API zitten niet in de proef. Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Plan kiezen",
-                    "text": "Selecteer een plan dat past bij het aantal units dat je beheert."
+                    "text": "Kies een formule op het aantal licenties (collega's + uitvoerders). Betaling is jaarlijks via factuur."
                 },
                 {
                     "label": "Organisatiegegevens verwijderen",
@@ -1072,7 +1072,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Schakel optionele modules in of uit (Time-prikklok, ESG, IoT Connect, CIAO/RSZ). CIAO is uitzonderlijk: de organisatie vraagt het aan via info@winprox.app. Time is inbegrepen in de proefperiode; bij WinProx optioneel."
+                    "text": "Schakel optionele modules in of uit (ESG, IoT Connect, CIAO/RSZ). CIAO is uitzonderlijk: de organisatie vraagt het aan via info@winprox.app. Time is inbegrepen in WinProx-formules."
                 },
                 {
                     "label": "Corporate units-cap",

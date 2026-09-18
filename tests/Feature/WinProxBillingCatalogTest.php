@@ -16,7 +16,7 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
-it('zet trial op 50 units met Time-prikklok en maakt een Clock Point', function () {
+it('zet trial op 50 licenties met Time-prikklok en maakt een Clock Point', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
@@ -24,7 +24,8 @@ it('zet trial op 50 units met Time-prikklok en maakt een Clock Point', function 
 
     $fresh = $tenant->fresh();
 
-    expect($fresh->maxUnitsLimit())->toBe(50)
+    expect($fresh->maxUnitsLimit())->toBeNull()
+        ->and($fresh->maxSeatsLimit())->toBe(50)
         ->and($fresh->hasTimeModule())->toBeTrue()
         ->and($fresh->hasIotModule())->toBeFalse()
         ->and($fresh->hasEsgModule())->toBeFalse()
@@ -43,39 +44,37 @@ it('zet Time aan voor een bestaande proeftenant bij het dashboard', function () 
     expect($tenant->fresh()->hasTimeModule())->toBeTrue();
 });
 
-it('activeert WinProx 50 zonder Time', function () {
+it('activeert WinProx 50 met Time inbegrepen', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->set('includeTime.winprox_50', false)
         ->call('activatePlan', 'winprox_50')
         ->assertHasNoErrors();
 
     $tenant->refresh();
 
     expect($tenant->billing_plan)->toBe('winprox_50')
-        ->and($tenant->hasTimeModule())->toBeFalse()
-        ->and($tenant->subscriptionPeriodDays())->toBe(365);
+        ->and($tenant->hasTimeModule())->toBeTrue()
+        ->and($tenant->subscriptionPeriodDays())->toBe(365)
+        ->and($tenant->maxSeatsLimit())->toBe(50)
+        ->and($tenant->maxUnitsLimit())->toBeNull();
 });
 
-it('activeert WinProx 50 met Time-prikklok als plan-variant', function () {
+it('houdt Time-plan-variant beschikbaar buiten de catalogus', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
-    Livewire::actingAs($admin)
-        ->test(Subscription::class)
-        ->set('includeTime.winprox_50', true)
-        ->call('activatePlan', 'winprox_50')
-        ->assertHasNoErrors();
+    app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_50_time', 'manual');
 
     $tenant->refresh();
 
     expect($tenant->billing_plan)->toBe('winprox_50_time')
         ->and($tenant->hasTimeModule())->toBeTrue()
         ->and($tenant->hasIotModule())->toBeFalse()
-        ->and(BillingCatalogViewData::catalogPlanFor('winprox_50_time'))->toBe('winprox_50');
+        ->and(BillingCatalogViewData::catalogPlanFor('winprox_50_time'))->toBe('winprox_50')
+        ->and(BillingCatalogViewData::publicPlanKeys())->toBe(['winprox_10', 'winprox_25', 'winprox_50', 'corporate']);
 });
 
 it('weigert self-activate van legacy facility-tiers', function () {

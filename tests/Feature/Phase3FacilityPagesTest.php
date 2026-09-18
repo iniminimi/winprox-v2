@@ -281,9 +281,9 @@ it('toont WinProx-jaarformules en Corporate op abonnement', function () {
     Livewire::actingAs($admin)
         ->test(Subscription::class)
         ->assertSee(__('subscription.plans.winprox_10.name'))
-        ->assertSee(__('subscription.plans.winprox_100.name'))
+        ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
-        ->assertSee(__('subscription.time_addon.label'))
+        ->assertSee(__('subscription.yearly_invoice_notice'))
         ->assertDontSee(__('subscription.plans.facility_25.name'));
 });
 
@@ -340,16 +340,16 @@ it('laat een beheerder een plan activeren', function () {
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->call('activatePlan', 'winprox_100')
+        ->call('activatePlan', 'winprox_50')
         ->assertHasNoErrors();
 
     $tenant->refresh();
 
-    expect($tenant->billing_plan)->toBe('winprox_100')
+    expect($tenant->billing_plan)->toBe('winprox_50')
         ->and($tenant->billing_active_until)->not->toBeNull()
         ->and($tenant->isPaidSubscriptionActive())->toBeTrue()
         ->and($tenant->isTrialActive())->toBeFalse()
-        ->and($tenant->hasTimeModule())->toBeFalse()
+        ->and($tenant->hasTimeModule())->toBeTrue()
         ->and($tenant->hasEsgModule())->toBeFalse();
 });
 
