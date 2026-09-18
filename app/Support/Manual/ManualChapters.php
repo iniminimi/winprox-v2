@@ -18,6 +18,7 @@ final class ManualChapters
         'locations.show',
         'issues.list',
         'issues.inspection_rounds',
+        'checklists',
         'issues.show',
         'issues.create',
         'tasks.list',

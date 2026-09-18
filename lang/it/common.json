@@ -31,6 +31,8 @@
         "unit_checks": "Controlli unit",
         "unit_measurements": "Misurazioni unit",
         "work_visits": "Visite di lavoro",
+        "on_site": "Sul posto",
+        "checklists": "Checklist",
         "workers": "Esecutori"
     },
     "status": {

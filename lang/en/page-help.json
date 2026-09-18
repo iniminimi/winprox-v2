@@ -148,10 +148,6 @@
                     "text": "Print an overview of open tasks per team."
                 },
                 {
-                    "label": "Unit checks report",
-                    "text": "Opens the history of all unit checks (OK / Not OK, unticked checklist points, note and photos). Download report there for CSV or Print (PDF)."
-                },
-                {
                     "label": "Filters",
                     "text": "Narrow by status, team or search term. Search looks in description, location, address, postcode, city, unit and reporter. Press GO! to apply. This screen always shows inspection rounds only."
                 },
@@ -411,7 +407,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Optionally link a checklist to the unit (templates under the People → Teams page, shared or from the category’s teams). On Unit check in the portal the worker ticks each item before OK is saved."
+                    "text": "Optionally link a checklist to the unit (templates under Work → Checklists, shared or from the category’s teams). On Unit check in the portal the worker ticks each item before OK is saved."
                 },
                 {
                     "label": "Bulk units",
@@ -560,10 +556,6 @@
                 {
                     "label": "Operational teams",
                     "text": "One team is enough to get started (for example Hotel or Facility). Add everyone who carries out tasks (name + icon). A team leader is not required. Extra teams only if there are genuinely separate groups. Link the team to categories so tasks land correctly. As long as there are no workers in the team, you can still delete the team. Tick **May clock in anywhere** for floater or relief teams."
-                },
-                {
-                    "label": "Checklists",
-                    "text": "Create checklists under the People → Teams page (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
                 },
                 {
                     "label": "Team translations",
@@ -1458,6 +1450,19 @@
                 }
             ]
         },
+        "checklists": {
+            "title": "Help — Checklists",
+            "actions": [
+                {
+                    "label": "Add checklist",
+                    "text": "Create a checklist under Work → Checklists (optionally per team or shared). Then link it per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be ticked before OK. After saving, WinProx translates the name and items into the other languages."
+                },
+                {
+                    "label": "Starters",
+                    "text": "Copy a template (cleaning, technical, security) and then adjust it."
+                }
+            ]
+        },
         "unit-checks": {
             "title": "Help — Unit checks",
             "actions": [
@@ -1467,11 +1472,11 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Create checklists under the People → Teams page (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
+                    "text": "Create checklists under Work → Checklists (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
                 },
                 {
                     "label": "Starters",
-                    "text": "Under the People → Teams → Checklists section you can copy a template (cleaning, technical, security) and then adjust it. Afterwards link the checklist per unit."
+                    "text": "Under Work → Checklists you can copy a template (cleaning, technical, security) and then adjust it. Afterwards link the checklist per unit."
                 },
                 {
                     "label": "OK and open tasks",
@@ -1516,7 +1521,7 @@
                 },
                 {
                     "label": "Unit checks",
-                    "text": "When unit checks are enabled (on the unit and on the category the unit is linked to), a worker can perform a quick check in the unit QR portal. There the worker confirms that the unit is OK or not OK. Configure checks under Places → Categories / Locations, and checklists under People → Teams."
+                    "text": "When unit checks are enabled (on the unit and on the category the unit is linked to), a worker can perform a quick check in the unit QR portal. There the worker confirms that the unit is OK or not OK. Configure checks under Places → Categories / Locations, and checklists under Work → Checklists."
                 },
                 {
                     "label": "Unit measurements",

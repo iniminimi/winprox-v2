@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Équipes",
-        "subtitle": "Une équipe suffit pour démarrer. Ajoutez des exécutants ; les listes de contrôle sont optionnelles."
+        "subtitle": "Une équipe suffit pour démarrer. Ajoutez des exécutants."
     },
     "nav": {
         "teams": "Teams"
@@ -225,9 +225,6 @@
         "worker_ssin_invalid": "Indiquez un NISS valide de 11 chiffres ou laissez vide.",
         "worker_default_unit_invalid": "Choisissez un groupe par défaut valide avec code planning, ou laissez vide.",
         "worker_default_unit_location": "Le groupe par défaut doit appartenir à un site assigné."
-    },
-    "checklists": {
-        "click_to_manage": "Cliquez ici pour gérer les listes de contrôle"
     },
     "workers_index": {
         "title": "Exécutants",

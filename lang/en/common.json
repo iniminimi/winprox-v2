@@ -31,6 +31,8 @@
         "unit_checks": "Unit checks",
         "unit_measurements": "Unit measurements",
         "work_visits": "Work visits",
+        "on_site": "On site",
+        "checklists": "Checklists",
         "workers": "Workers"
     },
     "status": {

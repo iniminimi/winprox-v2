@@ -194,7 +194,7 @@
         "require_reporter_contact_hint": "Heredado de la categoría. Cambiar solo si esta unidad debe diferir. Solo informantes QR anónimos.",
         "require_reporter_email_verification_hint": "Heredado de la categoría. Cambiar solo si esta unidad debe diferir. Solo informantes QR anónimos.",
         "no_check_list": "Sin lista",
-        "check_list_hint": "Opcional. Cree listas en la página Personas → Equipos (compartidas o por equipo). Solo listas compartidas o de equipos vinculados a la categoría de esta unidad.",
+        "check_list_hint": "Opcional. Cree listas en Trabajo → Checklists (compartidas o por equipo). Solo listas compartidas o de equipos vinculados a la categoría de esta unidad.",
         "allow_unit_checks_hint": "Heredado de la categoría. Cambiar solo si esta unidad debe diferir.",
         "external_id_hint": "Opcional. ID de esta unidad en su software de facility externo (IWMS, GMAO, ERP, …). Solo con acceso API (Corporate). Necesario para comprobaciones unit entrantes vía API.",
         "allow_unit_measurements_hint": "Heredado de la categoría. Cambiar solo si esta unidad debe diferir.",

@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Un equipo basta para empezar. Añada operarios; las listas son opcionales."
+        "subtitle": "Un equipo basta para empezar. Añada operarios."
     },
     "nav": {
         "teams": "Teams"
@@ -225,9 +225,6 @@
         "worker_ssin_invalid": "Introduzca un NISS válido de 11 dígitos o déjelo vacío.",
         "worker_default_unit_invalid": "Elija un grupo predeterminado válido con código de cuadrante, o déjelo vacío.",
         "worker_default_unit_location": "El grupo predeterminado debe estar en una ubicación asignada."
-    },
-    "checklists": {
-        "click_to_manage": "Haga clic aquí para gestionar las listas de comprobación"
     },
     "workers_index": {
         "title": "Ejecutores",

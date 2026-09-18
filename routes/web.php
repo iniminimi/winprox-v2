@@ -68,6 +68,7 @@ use App\Livewire\Pages\About;
 use App\Livewire\Pages\ApiDocumentation;
 use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Calendar;
+use App\Livewire\Pages\CheckListsIndex;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Faq;
 use App\Livewire\Pages\FeaturePage;
@@ -418,6 +419,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/unit-checks', UnitChecksIndex::class)->name('unit-checks.index');
         Route::get('/unit-checks/export', UnitCheckExportController::class)->name('unit-checks.export');
         Route::get('/unit-checks/print', UnitCheckPrintController::class)->name('unit-checks.print');
+        Route::get('/checklists', CheckListsIndex::class)->name('checklists.index');
         Route::get('/unit-measurements', UnitMeasurementsIndex::class)->name('unit-measurements.index');
         Route::get('/work-visits', WorkVisitsIndex::class)->name('work-visits.index');
         Route::get('/unit-measurements/export', UnitMeasurementExportController::class)->name('unit-measurements.export');

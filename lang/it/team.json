@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Un team basta per iniziare. Aggiunga esecutori; le checklist sono opzionali."
+        "subtitle": "Un team basta per iniziare. Aggiunga esecutori."
     },
     "nav": {
         "teams": "Teams"
@@ -225,9 +225,6 @@
         "worker_ssin_invalid": "Inserire un NISS valido di 11 cifre oppure lasciare vuoto.",
         "worker_default_unit_invalid": "Scegli un gruppo predefinito valido con codice turno, oppure lascia vuoto.",
         "worker_default_unit_location": "Il gruppo predefinito deve essere su una sede assegnata."
-    },
-    "checklists": {
-        "click_to_manage": "Clicca qui per gestire le checklist"
     },
     "workers_index": {
         "title": "Esecutori",

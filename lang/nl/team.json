@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Eén team is genoeg om te starten. Voeg uitvoerders toe; checklists zijn optioneel."
+        "subtitle": "Eén team is genoeg om te starten. Voeg uitvoerders toe."
     },
     "nav": {
         "teams": "Teams"
@@ -225,9 +225,6 @@
         "worker_ssin_invalid": "Geef een geldig NISS van 11 cijfers of laat leeg.",
         "worker_default_unit_invalid": "Kies een geldige standaardgroep met roostercode, of laat leeg.",
         "worker_default_unit_location": "De standaardgroep moet op een toegewezen locatie liggen."
-    },
-    "checklists": {
-        "click_to_manage": "Klik hier om checklists te beheren"
     },
     "workers_index": {
         "title": "Uitvoerders",

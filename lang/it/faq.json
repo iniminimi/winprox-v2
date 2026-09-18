@@ -209,7 +209,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Come configuro i team interni?",
-            "body": "Inizi in piccolo: un team (ad esempio Hotel o Facility) e tutti coloro che eseguono attività. Vada a Persone → Teams. Un caposquadra non è necessario. Altri team solo se ci sono gruppi davvero distinti. Colleghi i team alle categorie. Aggiunga gli esecutori a mano o via CSV/Excel. Le azioni rare (caposquadra, icona/telefono/PIN, disattivare) sono in **Modifica**. In Teams gestisce anche le checklist dei unit check. Stampi il QR Clock Point per il campo (Time → Clock Points). Con Time puoi impostare una pausa minima per team sul foglio ore (es. 30 minuti).",
+            "body": "Inizi in piccolo: un team (ad esempio Hotel o Facility) e tutti coloro che eseguono attività. Vada a Persone → Teams. Un caposquadra non è necessario. Altri team solo se ci sono gruppi davvero distinti. Colleghi i team alle categorie. Aggiunga gli esecutori a mano o via CSV/Excel. Le azioni rare (caposquadra, icona/telefono/PIN, disattivare) sono in **Modifica**. Le checklist sono in Lavoro → Checklist. Stampi il QR Clock Point per il campo (Time → Clock Points). Con Time puoi impostare una pausa minima per team sul foglio ore (es. 30 minuti).",
             "summary": "Un team basta per iniziare. Persone → Teams; collega alle categorie; QR Clock Point. Con Time: pausa minima opzionale per team sul foglio ore."
         },
         "team_follow_up": {
@@ -293,8 +293,8 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "Cosa sono i controlli unità?",
-            "body": "I unit check sono conferme rapide OK/Non OK sul QR unità da parte degli esecutori (dopo Clock Point). Abilita prima su categoria e unità (disattivato di default). Le checklist opzionali si gestiscono in Team (condivise o collegate a un team; modelli pulizia, tecnica e security) e si collegano per unità. Per OK tutti i punti devono essere spuntati. Cronologia e filtri in Unit checks; webhook unit.check.recorded per integrazioni. Separato da segnalazioni e misure ESG. Per unit puoi aggiungere una nota e fino a 4 foto al controllo; restano su quel controllo (storico e avanzamento ronda).",
-            "summary": "OK/Non OK via QR unit (categoria + unit); checklist in Team; OK senza segnalazione; webhook unit.check.recorded."
+            "body": "I unit check sono conferme rapide OK/Non OK sul QR unità da parte degli esecutori (dopo Clock Point). Abilita prima su categoria e unità (disattivato di default). Le checklist opzionali si gestiscono in Lavoro → Checklist (condivise o collegate a un team; modelli pulizia, tecnica e security) e si collegano per unità. Per OK tutti i punti devono essere spuntati. Cronologia e filtri in Unit checks; webhook unit.check.recorded per integrazioni. Separato da segnalazioni e misure ESG. Per unit puoi aggiungere una nota e fino a 4 foto al controllo; restano su quel controllo (storico e avanzamento ronda).",
+            "summary": "OK/Non OK via QR unit (categoria + unit); checklist in Lavoro → Checklist; OK senza segnalazione; webhook unit.check.recorded."
         },
         "work_menu": {
             "slug": "work_menu",

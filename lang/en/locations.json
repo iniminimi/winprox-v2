@@ -194,7 +194,7 @@
         "require_reporter_contact_hint": "Inherited from category. Change only if this unit should differ. Anonymous QR reporters only.",
         "require_reporter_email_verification_hint": "Inherited from category. Change only if this unit should differ. Anonymous QR reporters only.",
         "no_check_list": "No checklist",
-        "check_list_hint": "Optional. Create checklists under the People → Teams page (shared or per team). Only shared checklists or checklists of teams linked to this unit's category.",
+        "check_list_hint": "Optional. Create checklists under Work → Checklists (shared or per team). Only shared checklists or checklists of teams linked to this unit's category.",
         "allow_unit_checks_hint": "Inherited from category. Change only if this unit should differ.",
         "external_id_hint": "Optional. ID of this unit in your external facility software (IWMS, CMMS, ERP, …). Only with API access (Corporate). Required for inbound unit checks via the API.",
         "allow_unit_measurements_hint": "Inherited from category. Change only if this unit should differ.",

@@ -56,7 +56,7 @@ it('toont instellingen maar geen abonnement in de sidebar voor medewerkers', fun
         ->assertSee(__('settings.style.title'), false);
 });
 
-it('opent Backoffice met alleen collega-gebruikers en Teams met checklists plus teams', function () {
+it('opent Backoffice met alleen collega-gebruikers en Teams zonder checklists', function () {
     $tenant = Tenant::factory()->create(['name' => 'Demo Facility']);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
@@ -68,13 +68,15 @@ it('opent Backoffice met alleen collega-gebruikers en Teams met checklists plus 
         ->assertSee(__('team.colleagues.title'), false)
         ->assertSee(\App\Support\PageHelp::for('team.backoffice')['title'], false)
         ->assertDontSee('id="teams"', false)
-        ->assertDontSee(__('unit_checks.lists.title'), false);
+        ->assertDontSee('data-manual-capture="checklists"', false)
+        ->assertDontSee(__('unit_checks.lists.lead'), false);
 
     $this->actingAs($admin)
         ->get(route('team.index', ['section' => 'teams']))
         ->assertOk()
         ->assertSee('id="teams"', false)
-        ->assertSee(__('unit_checks.lists.title'), false)
+        ->assertDontSee('data-manual-capture="checklists"', false)
+        ->assertDontSee(__('unit_checks.lists.lead'), false)
         ->assertSee(__('team.teams.title'), false)
         ->assertSee(\App\Support\PageHelp::for('team.teams')['title'], false)
         ->assertDontSee('id="backoffice"', false)
@@ -121,4 +123,31 @@ it('toont submenu-items als bullets zonder herhaalde groep-iconen', function () 
     expect($html)->toContain('wp-nav-link--sub')
         ->and($html)->toContain('wp-sidebar-accordion')
         ->and($html)->toContain('@toggle.capture="exclusive($event)"');
+});
+
+it('groepeert inspectierondes, checklists, unit checks en werkbezoeken onder Op locatie', function () {
+    $tenant = Tenant::factory()->create([
+        'name' => 'Demo Facility',
+        'has_time_module' => true,
+        'time_gps_visits' => true,
+    ]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee(__('common.nav.on_site'), false)
+        ->assertSee(__('issues.list.inspection_rounds'), false)
+        ->assertSee(__('common.nav.checklists'), false)
+        ->assertSee(__('common.nav.unit_checks'), false)
+        ->assertSee(__('common.nav.work_visits'), false)
+        ->assertSee(route('checklists.index'), false)
+        ->assertSee(route('unit-checks.index'), false)
+        ->assertSee(route('work-visits.index'), false);
+
+    $this->actingAs($admin)
+        ->get(route('checklists.index'))
+        ->assertOk()
+        ->assertSee(__('unit_checks.lists.title'), false);
 });

@@ -209,7 +209,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Comment configurer les équipes internes ?",
-            "body": "Commencez petit : une équipe (par exemple Hôtel ou Facility) et toutes les personnes qui exécutent des tâches. Allez dans Personnes → Équipes. Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez les équipes aux catégories. Ajoutez les exécutants à la main, ou via CSV/Excel. Les actions rares (chef d’équipe, icône/téléphone/PIN, désactiver) sont dans **Modifier**. Sous Équipes vous gérez aussi les listes de contrôle unit check. Imprimez le QR Clock Point pour le terrain (Time → Clock Points). Avec Time, vous pouvez fixer une pause minimale par équipe sur la feuille d’heures (ex. 30 minutes).",
+            "body": "Commencez petit : une équipe (par exemple Hôtel ou Facility) et toutes les personnes qui exécutent des tâches. Allez dans Personnes → Équipes. Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez les équipes aux catégories. Ajoutez les exécutants à la main, ou via CSV/Excel. Les actions rares (chef d’équipe, icône/téléphone/PIN, désactiver) sont dans **Modifier**. Les listes de contrôle sont sous Travail → Checklists. Imprimez le QR Clock Point pour le terrain (Time → Clock Points). Avec Time, vous pouvez fixer une pause minimale par équipe sur la feuille d’heures (ex. 30 minutes).",
             "summary": "Une équipe suffit pour démarrer. Personnes → Équipes ; lier aux catégories ; QR Clock Point. Avec Time : pause minimale optionnelle par équipe sur la feuille d’heures."
         },
         "team_follow_up": {
@@ -293,8 +293,8 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "Que sont les contrôles d'unité ?",
-            "body": "Les unit checks sont des confirmations rapides OK/Pas OK sur le QR unité par les exécutants (après Clock Point). Activez d’abord sur catégorie et unité (désactivé par défaut). Les listes optionnelles se gèrent sous Équipes (partagées ou liées à une équipe ; modèles nettoyage, technique et sécurité) et se lient par unité. Pour OK tous les points doivent être cochés. Historique et filtres dans Unit checks ; webhook unit.check.recorded pour les intégrations. Séparé des signalements et mesures ESG. Par unité, vous pouvez ajouter une remarque et jusqu’à 4 photos au contrôle ; elles restent sur ce contrôle (historique et progression de ronde).",
-            "summary": "OK/Non OK via QR unité (catégorie + unité) ; listes sous Équipes ; pas de signalement si OK ; webhook unit.check.recorded."
+            "body": "Les unit checks sont des confirmations rapides OK/Pas OK sur le QR unité par les exécutants (après Clock Point). Activez d’abord sur catégorie et unité (désactivé par défaut). Les listes optionnelles se gèrent sous Travail → Checklists (partagées ou liées à une équipe ; modèles nettoyage, technique et sécurité) et se lient par unité. Pour OK tous les points doivent être cochés. Historique et filtres dans Unit checks ; webhook unit.check.recorded pour les intégrations. Séparé des signalements et mesures ESG. Par unité, vous pouvez ajouter une remarque et jusqu’à 4 photos au contrôle ; elles restent sur ce contrôle (historique et progression de ronde).",
+            "summary": "OK/Non OK via QR unité (catégorie + unité) ; listes sous Travail → Checklists ; pas de signalement si OK ; webhook unit.check.recorded."
         },
         "work_menu": {
             "slug": "work_menu",

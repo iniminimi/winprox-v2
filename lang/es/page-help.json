@@ -148,10 +148,6 @@
                     "text": "Imprime un resumen de tareas abiertas por equipo."
                 },
                 {
-                    "label": "Informe de unit checks",
-                    "text": "Abre el historial de todos los unit checks (OK / No OK, puntos de lista no marcados, nota y fotos). Ahí está Descargar informe para CSV o Imprimir (PDF)."
-                },
-                {
                     "label": "Filtros",
                     "text": "Afine por estado, equipo o búsqueda. La búsqueda mira descripción, ubicación, dirección, código postal, ciudad, unidad y denunciante. Pulse GO! para aplicar. Esta pantalla muestra siempre solo rondas de inspección."
                 },
@@ -407,7 +403,7 @@
                 },
                 {
                     "label": "Checklist (comprobación de unit)",
-                    "text": "Vincule opcionalmente una lista a la unidad (plantillas en la página Personas → Equipos, compartida o de los equipos de la categoría). En Unit check del portal el operario marca cada punto antes de guardar OK."
+                    "text": "Vincule opcionalmente una lista a la unidad (plantillas en Trabajo → Checklists, compartida o de los equipos de la categoría). En Unit check del portal el operario marca cada punto antes de guardar OK."
                 },
                 {
                     "label": "Unidades en bloque",
@@ -560,10 +556,6 @@
                 {
                     "label": "Equipos operativos",
                     "text": "Un equipo basta para empezar (por ejemplo Hotel o Facility). Añada a todos los que ejecutan tareas (nombre + icono). No hace falta un jefe de equipo. Más equipos solo si hay grupos realmente distintos. Vincule el equipo a las categorías para que las tareas lleguen. Mientras no haya operarios en el equipo, aún puede eliminarlo. Marque **Puede fichar en cualquier sede** para equipos de relevo."
-                },
-                {
-                    "label": "Listas de comprobación",
-                    "text": "Cree listas en la página Personas → Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
                 },
                 {
                     "label": "Traducciones de equipo",
@@ -1458,6 +1450,19 @@
                 }
             ]
         },
+        "checklists": {
+            "title": "Ayuda — Checklists",
+            "actions": [
+                {
+                    "label": "Añadir checklist",
+                    "text": "Cree una checklist en Trabajo → Checklists (opcional por equipo o compartida). Enlácela después por unidad en Ubicaciones → editar unidad. Solo aparecen las checklists de equipos ligados a la categoría (o compartidas). Los puntos deben marcarse antes de OK."
+                },
+                {
+                    "label": "Plantillas",
+                    "text": "Copie una plantilla (limpieza, técnica, seguridad) y ajústela después."
+                }
+            ]
+        },
         "unit-checks": {
             "title": "Ayuda — Chequeos de unit",
             "actions": [
@@ -1467,11 +1472,11 @@
                 },
                 {
                     "label": "Listas de comprobación",
-                    "text": "Cree listas en la página Personas → Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
+                    "text": "Cree listas en Trabajo → Checklists (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
                 },
                 {
                     "label": "Plantillas",
-                    "text": "En la página Personas → Equipos → Listas de comprobación puede copiar una plantilla (limpieza, técnica, seguridad) y luego ajustarla. Después vincule la lista por unidad."
+                    "text": "En Trabajo → Checklists puede copiar una plantilla (limpieza, técnica, seguridad) y luego ajustarla. Después vincule la lista por unidad."
                 },
                 {
                     "label": "OK y tareas abiertas",
@@ -1516,7 +1521,7 @@
                 },
                 {
                     "label": "Comprobaciones de unit",
-                    "text": "Cuando las comprobaciones de unit están activadas (en la unit y en la categoría a la que está vinculada), un operario puede realizar una comprobación rápida en el portal QR de unidad. Allí confirma que la unit está OK o no OK. Configure las comprobaciones bajo Lugares → Categorías / Ubicaciones, y las listas bajo Personas → Equipos."
+                    "text": "Cuando las comprobaciones de unit están activadas (en la unit y en la categoría a la que está vinculada), un operario puede realizar una comprobación rápida en el portal QR de unidad. Allí confirma que la unit está OK o no OK. Configure las comprobaciones bajo Lugares → Categorías / Ubicaciones, y las listas bajo Trabajo → Checklists."
                 },
                 {
                     "label": "Mediciones de unidad",

@@ -148,10 +148,6 @@
                     "text": "Imprime un aperçu des tâches ouvertes par équipe."
                 },
                 {
-                    "label": "Rapport contrôles unit",
-                    "text": "Ouvre l’historique de tous les contrôles unit (OK / Pas OK, points de check-list non cochés, remarque et photos). Télécharger le rapport y propose CSV ou Imprimer (PDF)."
-                },
-                {
                     "label": "Filtres",
                     "text": "Affinez par statut, équipe ou recherche. La recherche porte sur la description, le site, l’adresse, le code postal, la ville, l’unité et le déclarant. Appuyez sur GO! pour appliquer. Cet écran n’affiche toujours que les tournées d’inspection."
                 },
@@ -411,7 +407,7 @@
                 },
                 {
                     "label": "Checklist (contrôle d'unité)",
-                    "text": "Associez éventuellement une liste à l’unité (modèles sous la page Personnes → Équipes, partagée ou des équipes de la catégorie). Lors du Unit check sur le portail, l’exécutant coche chaque point avant l’enregistrement de OK."
+                    "text": "Associez éventuellement une liste à l’unité (modèles sous Travail → Checklists, partagée ou des équipes de la catégorie). Lors du Unit check sur le portail, l’exécutant coche chaque point avant l’enregistrement de OK."
                 },
                 {
                     "label": "Unités en masse",
@@ -568,10 +564,6 @@
                 {
                     "label": "Équipes opérationnelles",
                     "text": "Une équipe suffit pour démarrer (par exemple Hôtel ou Facility). Ajoutez toutes les personnes qui exécutent des tâches (nom + icône). Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez l’équipe aux catégories pour que les tâches aboutissent. Tant qu’il n’y a pas d’exécutants dans l’équipe, vous pouvez encore la supprimer. Cochez **Peut pointer partout** pour les équipes volantes ou de remplacement."
-                },
-                {
-                    "label": "Listes de contrôle",
-                    "text": "Créez des listes sous la page Personnes → Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
                 },
                 {
                     "label": "Traductions d’équipe",
@@ -1466,6 +1458,19 @@
                 }
             ]
         },
+        "checklists": {
+            "title": "Aide — Checklists",
+            "actions": [
+                {
+                    "label": "Ajouter une checklist",
+                    "text": "Créez une checklist sous Travail → Checklists (facultativement par équipe ou partagée). Liez-la ensuite par unité via Sites → modifier l’unité. Seules les checklists des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK."
+                },
+                {
+                    "label": "Modèles",
+                    "text": "Copiez un modèle (nettoyage, technique, sécurité) puis adaptez-le."
+                }
+            ]
+        },
         "unit-checks": {
             "title": "Aide — Contrôles unit",
             "actions": [
@@ -1475,11 +1480,11 @@
                 },
                 {
                     "label": "Listes de contrôle",
-                    "text": "Créez des listes sous la page Personnes → Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
+                    "text": "Créez des listes sous Travail → Checklists (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
                 },
                 {
                     "label": "Modèles",
-                    "text": "Sous la page Personnes → Équipes → Listes de contrôle vous pouvez copier un modèle (nettoyage, technique, sécurité) puis l’ajuster. Ensuite associez la liste par unité."
+                    "text": "Sous Travail → Checklists vous pouvez copier un modèle (nettoyage, technique, sécurité) puis l’ajuster. Ensuite associez la liste par unité."
                 },
                 {
                     "label": "OK et tâches ouvertes",
@@ -1524,7 +1529,7 @@
                 },
                 {
                     "label": "Contrôles d’unité",
-                    "text": "Lorsque les contrôles d’unité sont activés (sur l’unité et sur la catégorie à laquelle l’unité est liée), un exécutant peut effectuer un contrôle rapide dans le portail QR unité. Il y confirme que l’unité est OK ou non OK. Configurez les contrôles sous Lieux → Catégories / Lieux, et les checklists sous Personnes → Équipes."
+                    "text": "Lorsque les contrôles d’unité sont activés (sur l’unité et sur la catégorie à laquelle l’unité est liée), un exécutant peut effectuer un contrôle rapide dans le portail QR unité. Il y confirme que l’unité est OK ou non OK. Configurez les contrôles sous Lieux → Catégories / Lieux, et les checklists sous Travail → Checklists."
                 },
                 {
                     "label": "Mesures d’unité",

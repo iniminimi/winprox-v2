@@ -5,7 +5,7 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "One team is enough to get started. Add workers; checklists are optional."
+        "subtitle": "One team is enough to get started. Add workers."
     },
     "nav": {
         "teams": "Teams"
@@ -225,9 +225,6 @@
         "worker_ssin_invalid": "Enter a valid 11-digit NISS or leave blank.",
         "worker_default_unit_invalid": "Choose a valid default group with a roster code, or leave empty.",
         "worker_default_unit_location": "The default group must be on an assigned location."
-    },
-    "checklists": {
-        "click_to_manage": "Click here to manage checklists"
     },
     "workers_index": {
         "title": "Workers",

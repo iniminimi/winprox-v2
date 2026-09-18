@@ -194,7 +194,7 @@
         "require_reporter_contact_hint": "Reprise de la catégorie. Modifier seulement si cette unité doit différer. Melders QR anonymes uniquement.",
         "require_reporter_email_verification_hint": "Reprise de la catégorie. Modifier seulement si cette unité doit différer. Melders QR anonymes uniquement.",
         "no_check_list": "Aucune liste",
-        "check_list_hint": "Optionnel. Créez des listes sous la page Personnes → Équipes (partagées ou par équipe). Uniquement les listes partagées ou celles des équipes liées à la catégorie de cette unité.",
+        "check_list_hint": "Optionnel. Créez des listes sous Travail → Checklists (partagées ou par équipe). Uniquement les listes partagées ou celles des équipes liées à la catégorie de cette unité.",
         "allow_unit_checks_hint": "Reprise de la catégorie. Modifier seulement si cette unité doit différer.",
         "external_id_hint": "Facultatif. ID de cette unité dans votre logiciel facility externe (GMAO, IWMS, ERP, …). Uniquement avec accès API (Corporate). Requis pour les contrôles unit entrants via l'API.",
         "allow_unit_measurements_hint": "Reprise de la catégorie. Modifier seulement si cette unité doit différer.",

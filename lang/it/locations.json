@@ -194,7 +194,7 @@
         "require_reporter_contact_hint": "Ereditato dalla categoria. Modificare solo se questa unità deve differire. Solo segnalatori QR anonimi.",
         "require_reporter_email_verification_hint": "Ereditato dalla categoria. Modificare solo se questa unità deve differire. Solo segnalatori QR anonimi.",
         "no_check_list": "Nessuna checklist",
-        "check_list_hint": "Opzionale. Crea checklist nella pagina Persone → Team (condivise o per team). Solo checklist condivise o di team collegati alla categoria di questa unità.",
+        "check_list_hint": "Opzionale. Crea checklist in Lavoro → Checklist (condivise o per team). Solo checklist condivise o di team collegati alla categoria di questa unità.",
         "allow_unit_checks_hint": "Ereditato dalla categoria. Modificare solo se questa unità deve differire.",
         "external_id_hint": "Facoltativo. ID di questa unit nel vostro software facility esterno (IWMS, CMMS, ERP, …). Solo con accesso API (Corporate). Necessario per i unit check in ingresso via API.",
         "allow_unit_measurements_hint": "Ereditato dalla categoria. Modificare solo se questa unità deve differire.",

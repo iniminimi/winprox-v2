@@ -133,6 +133,14 @@ return [
         ],
         [
             'patterns' => [
+                'checklist', 'checklists', 'checkliste', 'checklisten',
+                'liste de contrôle', 'listas de comprobación',
+            ],
+            'page' => 'checklists',
+            'prefer' => ['checklist', 'checklists'],
+        ],
+        [
+            'patterns' => [
                 'unit check', 'unit-check', 'unit checks', 'unitcheck',
                 'wat is een unit check', 'what is a unit check',
                 'ok/niet ok', 'ok/nicht ok', 'ok/not ok', 'ok/non ok', 'ok/no ok',

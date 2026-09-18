@@ -23,6 +23,7 @@ final class ManualChapterIcons
         'calendar' => 'calendar',
         'reservations' => 'calendar',
         'unit-checks' => 'tasks',
+        'checklists' => 'tasks',
         'unit-measurements.index' => 'sliders',
         'work-visits.index' => 'map-pin',
         'dashboard' => 'dashboard',

@@ -1,6 +1,6 @@
 {
     "title": "Chequeos de unit",
-    "subtitle": "Historial de controles OK / No OK vía QR. Gestione las listas en la página Personas → Equipos. Active primero los unit checks en categoría y unidad. Las notas y fotos opcionales quedan en el control, no en la lista de incidencias.",
+    "subtitle": "Historial de controles OK / No OK vía QR. Gestione las listas en Trabajo → Checklists. Active primero los unit checks en categoría y unidad. Las notas y fotos opcionales quedan en el control, no en la lista de incidencias.",
     "list_title": "Chequeos recientes",
     "empty": "Aún no hay chequeos de unit.",
     "worker_unknown": "Ejecutor desconocido",

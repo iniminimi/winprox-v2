@@ -900,8 +900,6 @@ it('shows inspection-rounds page chrome for the sidebar deep link', function () 
         ->assertDontSee(__('issues.filter.hint'), false)
         ->assertDontSee(__('issues.list.add'), false)
         ->assertSee(__('issues.list.plan_round'), false)
-        ->assertSee(__('issues.list.unit_checks_report'), false)
-        ->assertSee(route('unit-checks.index'), false)
         ->assertSee(__('issues.filter.reset'), false);
 });
 

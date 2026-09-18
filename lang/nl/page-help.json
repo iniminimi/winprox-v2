@@ -148,10 +148,6 @@
                     "text": "Print een overzicht van open taken per team."
                 },
                 {
-                    "label": "Rapport unit checks",
-                    "text": "Opent de historiek van alle unit checks (OK / Niet OK, niet-afgevinkte checklistpunten, opmerking en foto’s). Daar staat Download rapport voor CSV of Afdrukken (PDF)."
-                },
-                {
                     "label": "Filters",
                     "text": "Verfijn op status, team of zoekterm. De zoekterm zoekt in omschrijving, locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen. Dit scherm toont altijd alleen inspectierondes."
                 },
@@ -411,7 +407,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Koppel optioneel een checklist aan de unit (templates onder pagina Personen → Teams, gedeeld of van teams van de categorie). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK wordt opgeslagen."
+                    "text": "Koppel optioneel een checklist aan de unit (templates onder Werk → Checklists, gedeeld of van teams van de categorie). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK wordt opgeslagen."
                 },
                 {
                     "label": "Bulk units",
@@ -560,10 +556,6 @@
                 {
                     "label": "Operationele teams",
                     "text": "Eén team is genoeg om te starten (bijvoorbeeld Hotel of Faciliteit). Voeg iedereen die taken uitvoert toe (naam + icoon). Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel het team aan categorieën zodat taken landen. Zolang er geen uitvoerders in het team zijn, kun je het team nog verwijderen. Vink **Mag overal inklokken** aan voor invaller- of vlinderteams."
-                },
-                {
-                    "label": "Checklists",
-                    "text": "Maak checklists onder pagina Personen → Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
                 },
                 {
                     "label": "Teamvertalingen",
@@ -1458,6 +1450,19 @@
                 }
             ]
         },
+        "checklists": {
+            "title": "Hulp — Checklists",
+            "actions": [
+                {
+                    "label": "Checklist toevoegen",
+                    "text": "Maak een checklist onder Werk → Checklists (optioneel per team of gedeeld). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen."
+                },
+                {
+                    "label": "Starters",
+                    "text": "Kopieer een sjabloon (schoonmaak, techniek, security) en pas daarna aan."
+                }
+            ]
+        },
         "unit-checks": {
             "title": "Hulp — Unit checks",
             "actions": [
@@ -1467,11 +1472,11 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder pagina Personen → Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
+                    "text": "Maak checklists onder Werk → Checklists (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
                 },
                 {
                     "label": "Starters",
-                    "text": "Onder pagina Personen → Teams → Checklists kun je een sjabloon kopiëren (schoonmaak, techniek, security) en daarna aanpassen. Daarna koppel je de checklist per unit."
+                    "text": "Onder Werk → Checklists kun je een sjabloon kopiëren (schoonmaak, techniek, security) en daarna aanpassen. Daarna koppel je de checklist per unit."
                 },
                 {
                     "label": "OK en open taken",
@@ -1516,7 +1521,7 @@
                 },
                 {
                     "label": "Unit checks",
-                    "text": "Wanneer unit checks aangevinkt zijn (bij de unit en de categorie waaraan de unit gekoppeld is) kan een uitvoerder in het unit-QR-portaal een snelle check uitvoeren. Daar bevestigt de uitvoerder dat de unit OK of niet OK is. Stel checks in onder Plaatsen → Categorieën / Locaties, en checklists onder Personen → Teams."
+                    "text": "Wanneer unit checks aangevinkt zijn (bij de unit en de categorie waaraan de unit gekoppeld is) kan een uitvoerder in het unit-QR-portaal een snelle check uitvoeren. Daar bevestigt de uitvoerder dat de unit OK of niet OK is. Stel checks in onder Plaatsen → Categorieën / Locaties, en checklists onder Werk → Checklists."
                 },
                 {
                     "label": "Unitmetingen",

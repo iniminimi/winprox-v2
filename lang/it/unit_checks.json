@@ -1,6 +1,6 @@
 {
     "title": "Controlli unit",
-    "subtitle": "Cronologia dei controlli OK / Non OK via QR. Gestisci le checklist nella pagina Persone → Team. Abilita prima i unit check su categoria e unità. Note e foto facoltative restano sul controllo, non nell’elenco segnalazioni.",
+    "subtitle": "Cronologia dei controlli OK / Non OK via QR. Gestisci le checklist in Lavoro → Checklist. Abilita prima i unit check su categoria e unità. Note e foto facoltative restano sul controllo, non nell’elenco segnalazioni.",
     "list_title": "Controlli recenti",
     "empty": "Nessun controllo unit ancora.",
     "worker_unknown": "Esecutore sconosciuto",

@@ -31,6 +31,8 @@
         "unit_checks": "Unit checks",
         "unit_measurements": "Unitmetingen",
         "work_visits": "Werkbezoeken",
+        "on_site": "Op locatie",
+        "checklists": "Checklists",
         "workers": "Uitvoerders"
     },
     "status": {

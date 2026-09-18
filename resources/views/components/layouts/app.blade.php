@@ -180,6 +180,8 @@
 
                             $workGroupActive = request()->routeIs('issues.*')
                                 || request()->routeIs('tasks.*')
+                                || request()->routeIs('checklists.*')
+                                || request()->routeIs('unit-checks.*')
                                 || ($showWorkMenuCalendar && request()->routeIs('calendar.*'))
                                 || ($showWorkMenuReservations && request()->routeIs('reservations.*'))
                                 || ($showWorkMenuUnitMeasurements && request()->routeIs('unit-measurements.*'))
@@ -242,6 +244,28 @@
                                        @click="nav = false">
                                         <span>{{ __('common.nav.tasks') }}</span>
                                     </a>
+                                    <p class="wp-nav-sublabel">{{ __('common.nav.on_site') }}</p>
+                                    @if ($showWorkMenuInspectionRounds)
+                                        <a href="{{ route('issues.index', ['recurring' => 1, 'inspection_round' => 1]) }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('issues.list.inspection_rounds') }}</span>
+                                        </a>
+                                    @endif
+                                    @can('viewAny', \App\Models\UnitCheckList::class)
+                                        <a href="{{ route('checklists.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('checklists.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.checklists') }}</span>
+                                        </a>
+                                    @endcan
+                                    @can('viewAny', \App\Models\UnitCheck::class)
+                                        <a href="{{ route('unit-checks.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-checks.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.unit_checks') }}</span>
+                                        </a>
+                                    @endcan
                                     @if ($showWorkVisitsNav)
                                         <a href="{{ route('work-visits.index') }}"
                                            class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('work-visits.*') ? 'is-active' : '' }}"
@@ -261,13 +285,6 @@
                                            class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('reservations.*') ? 'is-active' : '' }}"
                                            @click="nav = false">
                                             <span>{{ __('common.nav.reservations') }}</span>
-                                        </a>
-                                    @endif
-                                    @if ($showWorkMenuInspectionRounds)
-                                        <a href="{{ route('issues.index', ['recurring' => 1, 'inspection_round' => 1]) }}"
-                                           class="wp-nav-link wp-nav-link--sub {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
-                                           @click="nav = false">
-                                            <span>{{ __('issues.list.inspection_rounds') }}</span>
                                         </a>
                                     @endif
                                     @if ($showWorkMenuUnitMeasurements)

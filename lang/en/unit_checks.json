@@ -1,6 +1,6 @@
 {
     "title": "Unit checks",
-    "subtitle": "History of OK / Not OK checks via QR. Manage checklists under the People → Teams page. First enable unit checks on category and unit. Optional notes and photos stay on the check, not on the issue list.",
+    "subtitle": "History of OK / Not OK checks via QR. Manage checklists under Work → Checklists. First enable unit checks on category and unit. Optional notes and photos stay on the check, not on the issue list.",
     "list_title": "Recent checks",
     "empty": "No unit checks yet.",
     "worker_unknown": "Unknown worker",

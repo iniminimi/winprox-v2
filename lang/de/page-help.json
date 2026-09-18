@@ -148,10 +148,6 @@
                     "text": "Druckt eine Übersicht offener Aufgaben pro Team."
                 },
                 {
-                    "label": "Bericht Unit-Checks",
-                    "text": "Öffnet die Historie aller Unit-Checks (OK / Nicht OK, nicht abgehakte Checklistenpunkte, Bemerkung und Fotos). Dort gibt es Bericht herunterladen für CSV oder Drucken (PDF)."
-                },
-                {
                     "label": "Filter",
                     "text": "Verfeinern Sie nach Status, Team oder Suchbegriff. Die Suche prüft Beschreibung, Standort, Adresse, PLZ, Ort, Unit und Melder. Drücken Sie GO! zum Anwenden. Dieses Fenster zeigt immer nur Inspektionsrunden."
                 },
@@ -407,7 +403,7 @@
                 },
                 {
                     "label": "Checkliste (Unit-Check)",
-                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter der Seite Personen → Teams, geteilt oder von Teams der Kategorie). Beim Unit-Check im Portal hakt der Ausführende jeden Punkt ab, bevor OK gespeichert wird."
+                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter Arbeit → Checklisten, geteilt oder von Teams der Kategorie). Beim Unit-Check im Portal hakt der Ausführende jeden Punkt ab, bevor OK gespeichert wird."
                 },
                 {
                     "label": "Bulk-Units",
@@ -560,10 +556,6 @@
                 {
                     "label": "Operative Teams",
                     "text": "Ein Team reicht zum Start (zum Beispiel Hotel oder Facility). Fügen Sie alle hinzu, die Aufgaben ausführen (Name + Symbol). Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie das Team mit Kategorien, damit Aufgaben landen. Solange keine Ausführenden im Team sind, können Sie das Team noch löschen. Aktivieren Sie **Darf überall einstempeln** für Springer- oder Vertretungsteams."
-                },
-                {
-                    "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter der Seite Personen → Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
                 },
                 {
                     "label": "Team-Übersetzungen",
@@ -1458,6 +1450,19 @@
                 }
             ]
         },
+        "checklists": {
+            "title": "Hilfe — Checklisten",
+            "actions": [
+                {
+                    "label": "Checkliste hinzufügen",
+                    "text": "Erstellen Sie eine Checkliste unter Arbeit → Checklisten (optional pro Team oder geteilt). Verknüpfen Sie sie danach pro Unit über Standorte → Unit bearbeiten. Nur Checklisten der an die Kategorie gekoppelten Teams (oder geteilte) erscheinen. Punkte müssen vor OK abgehakt sein."
+                },
+                {
+                    "label": "Vorlagen",
+                    "text": "Kopieren Sie eine Vorlage (Reinigung, Technik, Sicherheit) und passen Sie sie danach an."
+                }
+            ]
+        },
         "unit-checks": {
             "title": "Hilfe — Unit-Checks",
             "actions": [
@@ -1467,11 +1472,11 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter der Seite Personen → Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
+                    "text": "Erstellen Sie Checklisten unter Arbeit → Checklisten (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
                 },
                 {
                     "label": "Vorlagen",
-                    "text": "Unter der Seite Personen → Teams → Checklisten können Sie eine Vorlage kopieren (Reinigung, Technik, Security) und danach anpassen. Anschließend verknüpfen Sie die Checkliste pro Unit."
+                    "text": "Unter Arbeit → Checklisten können Sie eine Vorlage kopieren (Reinigung, Technik, Security) und danach anpassen. Anschließend verknüpfen Sie die Checkliste pro Unit."
                 },
                 {
                     "label": "OK und offene Aufgaben",
@@ -1516,7 +1521,7 @@
                 },
                 {
                     "label": "Unit-Checks",
-                    "text": "Wenn Unit-Checks aktiviert sind (bei der Unit und bei der Kategorie, der die Unit zugeordnet ist), kann ein Ausführender im Unit-QR-Portal eine schnelle Prüfung durchführen. Dort bestätigt der Ausführende, dass die Unit OK oder nicht OK ist. Checks unter Orte → Kategorien / Standorte; Checklisten unter Personen → Teams."
+                    "text": "Wenn Unit-Checks aktiviert sind (bei der Unit und bei der Kategorie, der die Unit zugeordnet ist), kann ein Ausführender im Unit-QR-Portal eine schnelle Prüfung durchführen. Dort bestätigt der Ausführende, dass die Unit OK oder nicht OK ist. Checks unter Orte → Kategorien / Standorte; Checklisten unter Arbeit → Checklisten."
                 },
                 {
                     "label": "Unit-Messungen",

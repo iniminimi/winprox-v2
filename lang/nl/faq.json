@@ -213,7 +213,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Hoe richt ik interne teams in?",
-            "body": "Klein beginnen: één team (bijvoorbeeld Hotel of Faciliteit) en iedereen die taken uitvoert daarin. Ga naar Personen → Teams. Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel teams aan categorieën. Uitvoerders voeg je handmatig toe, of via CSV/Excel. Zeldzame acties (teamleader, icoon/gsm/PIN, deactiveren) zitten in **Bewerken**. Onder Teams beheer je ook checklists voor unit checks. Print de Clock Point-QR voor de werkvloer (Time → Clock Points). Met Time kun je per team een minimumpauze op de urenstaat zetten (bijv. 30 minuten).",
+            "body": "Klein beginnen: één team (bijvoorbeeld Hotel of Faciliteit) en iedereen die taken uitvoert daarin. Ga naar Personen → Teams. Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel teams aan categorieën. Uitvoerders voeg je handmatig toe, of via CSV/Excel. Zeldzame acties (teamleader, icoon/gsm/PIN, deactiveren) zitten in **Bewerken**. Checklists staan onder Werk → Checklists. Print de Clock Point-QR voor de werkvloer (Time → Clock Points). Met Time kun je per team een minimumpauze op de urenstaat zetten (bijv. 30 minuten).",
             "summary": "Eén team volstaat om te starten. Personen → Teams; koppel aan categorieën; Clock Point-QR. Met Time: optionele minimumpauze per team op de urenstaat."
         },
         "team_follow_up": {
@@ -297,8 +297,8 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "Wat zijn unit checks?",
-            "body": "Unit checks zijn snelle OK/Niet OK-bevestigingen op de unit-QR door uitvoerders (na Clock Point). Schakel eerst in op categorie én unit (standaard uit). Optionele checklists maak je onder Teams (gedeeld of gekoppeld aan een team; starters voor schoonmaak, techniek en security) en koppel je per unit. Bij OK moeten alle punten afgevinkt zijn. Historiek en filters in Unit checks; webhook unit.check.recorded voor integraties. Los van meldingen en ESG-metingen. Per unit kun je optioneel een opmerking en tot 4 foto's bij de check zetten; die horen bij die check (historiek en rondevoortgang).",
-            "summary": "OK/Niet OK via unit-QR (categorie + unit aan); checklists onder Teams; geen melding bij OK; webhook unit.check.recorded."
+            "body": "Unit checks zijn snelle OK/Niet OK-bevestigingen op de unit-QR door uitvoerders (na Clock Point). Schakel eerst in op categorie én unit (standaard uit). Optionele checklists maak je onder Werk → Checklists (gedeeld of gekoppeld aan een team; starters voor schoonmaak, techniek en security) en koppel je per unit. Bij OK moeten alle punten afgevinkt zijn. Historiek en filters in Unit checks; webhook unit.check.recorded voor integraties. Los van meldingen en ESG-metingen. Per unit kun je optioneel een opmerking en tot 4 foto's bij de check zetten; die horen bij die check (historiek en rondevoortgang).",
+            "summary": "OK/Niet OK via unit-QR (categorie + unit aan); checklists onder Werk → Checklists; geen melding bij OK; webhook unit.check.recorded."
         },
         "work_menu": {
             "slug": "work_menu",

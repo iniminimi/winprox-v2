@@ -1,6 +1,6 @@
 {
     "title": "Contrôles unit",
-    "subtitle": "Historique des contrôles OK / Pas OK via QR. Gérez les listes sous la page Personnes → Équipes. Activez d’abord les unit checks sur la catégorie et l’unité. Les remarques et photos facultatives restent sur le contrôle, pas dans la liste des signalements.",
+    "subtitle": "Historique des contrôles OK / Pas OK via QR. Gérez les listes sous Travail → Checklists. Activez d’abord les unit checks sur la catégorie et l’unité. Les remarques et photos facultatives restent sur le contrôle, pas dans la liste des signalements.",
     "list_title": "Contrôles récents",
     "empty": "Aucun contrôle unit pour le moment.",
     "worker_unknown": "Exécutant inconnu",

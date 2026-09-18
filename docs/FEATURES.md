@@ -19,8 +19,9 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > medewerkers** en tonen alles **onverkort** — zij moeten de inhoud juist kunnen beoordelen en
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
-Menu-volgorde (sidebar, accordion): Dashboard · **Werk** (Meldingen, Inspectierondes,
-Taken, Kalender, Reserveringen) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Personen** (Backoffice = Beheerder/Medewerker;
+Menu-volgorde (sidebar, accordion): Dashboard · **Werk** (Meldingen, Taken,
+**Op locatie** [Inspectierondes, Checklists, Unit checks, Werkbezoeken], Kalender,
+Reserveringen, Unitmetingen) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Personen** (Backoffice = Beheerder/Medewerker;
 Teams = Uitvoerder/Teamleader) · **Time** (module) · **Automatisering** (IoT Connect
 Corporate — groep alleen als minstens één module aan staat) ·
 **Organisatie** (Instellingen, API, Abonnement) · **Hulp** (FAQ, Handleiding, Juridisch,
@@ -416,20 +417,20 @@ de meldingenlijst te vervuilen. Los van ESG.
   niet aan de meldingenlijst. **Niet OK** blijft de bestaande meldflow openen.
 - **OK** → rij in `unit_checks`, terug naar home.
 - **Niet OK** → rij in `unit_checks`, daarna bestaande meldflow (`new`) blijft beschikbaar.
-- Optionele **checklist** (indien gekoppeld aan de unit; templates onder **Teams**):
+- Optionele **checklist** (indien gekoppeld aan de unit; templates onder **Werk → Checklists**):
   vinkjes vóór OK. Niet-afgevinkte punten worden als snapshot op de check bewaard
   (`checklist_failed`) en getoond op de **ronde-taak** (niet de afgevinkte punten).
 
 ### Beheer (`/unit-checks`)
-- Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link, optionele opmerking en foto’s,
+- Sidebar **Werk → Op locatie → Unit checks**. Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link, optionele opmerking en foto’s,
   plus niet-OK checklistpunten.
 - Filters: resultaat, locatie. Admin + medewerker via Policy.
 - **Download rapport** (`x-wp-list-export`): CSV + afdrukken van de gefilterde historiek — zie §Rapporten.
 - **Aan/uit:** Plaatsen → Categorieën (`allow_unit_checks`) én unit bewerken (`allow_unit_checks`);
   beide nodig, beide default uit.
 
-### Checklists (Teams)
-- Templates met vinkpunten: Teams → uitklap **Checklists** (optioneel gekoppeld aan een
+### Checklists (Werk → Op locatie)
+- Templates met vinkpunten: sidebar **Werk → Checklists** (optioneel gekoppeld aan een
   team, of gedeeld voor alle teams). Starters (schoonmaak / techniek / security) zijn
   kopieerbaar. Checklists zonder gekoppelde units kun je verwijderen; anders deactiveren.
 - Koppelen aan unit via Locaties → unit bewerken. Dropdown toont gedeelde checklists én
@@ -515,9 +516,8 @@ stops meer zijn voor **deze** cyclus-taak.
   Livewire als Meldingen, `?recurring=1&inspection_round=1`): titel/ondertitel/lege
   staat voor rondes. Geen “+ Melding toevoegen”, geen vinkjes terugkerend/alleen
   inspectierondes, geen klik-hint. Paginahulp is **Hulp — Inspectierondes**. Optioneel
-  `?round_create=1` opent direct de plan-modal. Knop **Rapport unit checks** opent
-  `/unit-checks` (historiek + Download rapport). Geen extra sidebar-item voor unit
-  checks.
+  `?round_create=1` opent direct de plan-modal. Unit checks en checklists staan
+  in de sidebar onder **Werk → Op locatie**, niet als knop op dit scherm.
 - Label: **Ronde · N stops**. Geen ESG op ronde-issues.
 - Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).
 - Taak↔unit (2b): `issue.unit_id = U` **óf** U is stop — via `TaskBelongsToUnitAction`
@@ -862,7 +862,7 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
 ## 6. Personen (Backoffice + Teams)
 
 **Doel:** drie pagina’s onder **Personen**. **Backoffice** = collega-gebruikers (login).
-**Teams** = checklists + operationele teams + workers.
+**Teams** = operationele teams + workers.
 **Uitvoerders** (`/workers`) = tenant-breed zoek-/filteroverzicht (grote teams).
 Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een aparte team-QR.
 **Sector/hospitality (`InternalTeams`, `category_slug`) eruit.**
@@ -890,7 +890,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - Sidebar **Personen → Backoffice** (`/team?section=backoffice`). Alleen admin ziet dit menu-item.
 
 ### 6.2 Teams
-- Sidebar **Personen → Teams** (`/team?section=teams`): **checklists** (unit checks) + teamlijst.
+- Sidebar **Personen → Teams** (`/team?section=teams`): teamlijst (geen checklists).
 - Lijst: teamnaam, aantal actieve workers, actief/inactief.
 - Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.

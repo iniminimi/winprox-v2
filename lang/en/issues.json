@@ -26,8 +26,7 @@
         "empty": "No issues yet. Create one using the \"+ Add issue\" button.",
         "empty_filtered": "No issues match these filters.",
         "subtitle_inspection_rounds": "Recurring rounds with at least two unit stops",
-        "empty_inspection_rounds": "No inspection rounds yet. Plan one with \"Plan inspection round\".",
-        "unit_checks_report": "Unit checks report"
+        "empty_inspection_rounds": "No inspection rounds yet. Plan one with \"Plan inspection round\"."
     },
     "filter": {
         "status": "Filter by status",

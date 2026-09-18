@@ -145,14 +145,14 @@ it('saves a unit check list via action', function () {
         ->and($list->items->pluck('label')->all())->toBe(['Parking', 'Nooddeur A']);
 });
 
-it('creates a checklist from the teams page', function () {
+it('creates a checklist from the checklists page', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
     $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
 
     Livewire::actingAs($user)
-        ->test(\App\Livewire\Pages\Team::class)
+        ->test(\App\Livewire\Pages\CheckListsIndex::class)
         ->call('openCreateCheckList')
         ->set('checkListName', 'Security ronde')
         ->set('checkListItemsText', "Parking\nNooddeur A")
@@ -174,7 +174,7 @@ it('copies a starter checklist', function () {
     $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($user)
-        ->test(\App\Livewire\Pages\Team::class)
+        ->test(\App\Livewire\Pages\CheckListsIndex::class)
         ->call('copyCheckListFromStarter', 'cleaning')
         ->assertHasNoErrors();
 
@@ -189,7 +189,7 @@ it('copies the technical starter with five detailed points', function () {
     $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($user)
-        ->test(\App\Livewire\Pages\Team::class)
+        ->test(\App\Livewire\Pages\CheckListsIndex::class)
         ->call('copyCheckListFromStarter', 'technical')
         ->assertHasNoErrors();
 
@@ -206,7 +206,7 @@ it('copies the technical starter with five detailed points', function () {
         ]);
 });
 
-it('deletes an unused checklist from the teams page', function () {
+it('deletes an unused checklist from the checklists page', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
     $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
@@ -226,7 +226,7 @@ it('deletes an unused checklist from the teams page', function () {
     expect(UnitCheckListTranslation::query()->where('unit_check_list_id', $list->id)->count())->toBeGreaterThan(0);
 
     Livewire::actingAs($user)
-        ->test(\App\Livewire\Pages\Team::class)
+        ->test(\App\Livewire\Pages\CheckListsIndex::class)
         ->call('deleteCheckList', $list->id)
         ->assertHasNoErrors();
 
@@ -254,7 +254,7 @@ it('refuses to delete a checklist that is linked to a unit', function () {
     ]);
 
     Livewire::actingAs($user)
-        ->test(\App\Livewire\Pages\Team::class)
+        ->test(\App\Livewire\Pages\CheckListsIndex::class)
         ->call('deleteCheckList', $list->id)
         ->assertHasErrors(['checkListName']);
 
@@ -285,7 +285,7 @@ it('shows and saves checklist translations in the edit modal', function () {
     app(\App\Actions\Communication\EnsureUnitCheckListTranslationSlotsAction::class)->handle($list);
 
     Livewire::actingAs($user)
-        ->test(\App\Livewire\Pages\Team::class)
+        ->test(\App\Livewire\Pages\CheckListsIndex::class)
         ->call('openEditCheckList', $list->id)
         ->assertSet('showCheckListModal', true)
         ->set('checkListPreviewLocale', 'en')
