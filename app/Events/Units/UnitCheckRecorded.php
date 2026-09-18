@@ -41,6 +41,7 @@ class UnitCheckRecorded implements WebhookEvent
             'task_id' => $this->check->task_id,
             'issue_id' => $this->check->issue_id,
             'checklist_items' => $this->check->checklist_items,
+            'checklist_failed' => $this->check->checklist_failed,
             'description' => $this->check->description,
             'external_id' => $this->check->external_id,
             'unit_external_id' => $this->check->unit?->external_id,

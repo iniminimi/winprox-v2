@@ -37,7 +37,7 @@ class RecordUnitCheckAction
             }
         }
 
-        $unit->loadMissing('location');
+        $unit->loadMissing(['location', 'unitCheckList.items']);
         $description = $data->description !== null ? trim($data->description) : null;
         $photos = array_values(array_filter(
             $data->photos,
@@ -61,6 +61,7 @@ class RecordUnitCheckAction
             'task_id' => $data->taskId,
             'issue_id' => $data->issueId,
             'checklist_items' => $data->checklistItems,
+            'checklist_failed' => $this->failedChecklistItems($unit, $data->checklistItems),
             'description' => $description !== null && $description !== '' ? $description : null,
             'external_id' => $data->externalId,
         ]);
@@ -81,5 +82,34 @@ class RecordUnitCheckAction
         event(new UnitCheckRecorded($check, $actorUserId));
 
         return $check;
+    }
+
+    /**
+     * Snapshot of checklist points that were not ticked (template order).
+     *
+     * @param  list<string>|null  $checked
+     * @return list<string>|null
+     */
+    private function failedChecklistItems(Unit $unit, ?array $checked): ?array
+    {
+        if ($unit->unitCheckList === null || ! $unit->unitCheckList->is_active) {
+            return null;
+        }
+
+        $required = $unit->unitCheckList->sourceItemLabels();
+        if ($required === []) {
+            return null;
+        }
+
+        $ticked = array_values(array_filter(
+            array_map(
+                static fn ($label) => is_string($label) ? trim($label) : '',
+                $checked ?? [],
+            ),
+            static fn (string $label) => $label !== '',
+        ));
+        $failed = array_values(array_diff($required, $ticked));
+
+        return $failed === [] ? null : $failed;
     }
 }

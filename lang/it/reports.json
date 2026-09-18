@@ -58,7 +58,8 @@
         "end_at": "Fine",
         "guest": "Ospite",
         "email": "E-mail",
-        "photos": "Foto"
+        "photos": "Foto",
+        "checklist_failed": "Non OK (checklist)"
     },
     "yes": "Sì",
     "no": "No",

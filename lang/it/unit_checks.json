@@ -102,5 +102,6 @@
                 "exits": "Uscite di emergenza libere"
             }
         }
-    }
+    },
+    "checklist_failed": "Non OK"
 }

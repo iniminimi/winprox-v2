@@ -81,6 +81,7 @@ class RoundTaskCompletionAction
      *         at: string|null,
      *         worker_name: string|null,
      *         description: string|null,
+     *         checklist_failed: list<string>,
      *         photos: list<array{id: int, url: string}>
      *     }>
      * }
@@ -146,11 +147,18 @@ class RoundTaskCompletionAction
             $workerName = null;
             $description = null;
             $photos = [];
+            $checklistFailed = [];
             if ($state === 'ok' || $state === 'not_ok') {
                 $check = $checksByUnit->get($unitId);
                 $at = $check?->checked_at?->format('d/m/Y H:i');
                 $workerName = $check?->worker?->displayName();
                 $description = filled($check?->description) ? (string) $check->description : null;
+                $checklistFailed = is_array($check?->checklist_failed)
+                    ? array_values(array_filter(
+                        array_map(static fn ($label) => is_string($label) ? trim($label) : '', $check->checklist_failed),
+                        static fn (string $label) => $label !== '',
+                    ))
+                    : [];
                 $photos = $check === null
                     ? []
                     : $check->photos
@@ -182,6 +190,7 @@ class RoundTaskCompletionAction
                 'at' => $at,
                 'worker_name' => $workerName,
                 'description' => $description,
+                'checklist_failed' => $checklistFailed,
                 'photos' => $photos,
             ];
         }

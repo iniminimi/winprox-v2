@@ -266,7 +266,7 @@
                 },
                 {
                     "label": "Inspektionsrunde",
-                    "text": "Bei einer Inspektionsrunde sehen Sie hier den Fortschritt je Stopp (OK, Nicht OK, übersprungen, offen) mit Datum/Uhrzeit und Ausführendem. Auf dem Unit-QR-Portal jedes Stopps sieht der Mitarbeiter denselben Fortschritt; die Aufgabe wird automatisch abgeschlossen, wenn alle Stopps erledigt sind. Offene Runden können Sie hier auch manuell abschließen oder schließen (mit Begründung)."
+                    "text": "Bei einer Inspektionsrunde sehen Sie hier den Fortschritt je Stopp (OK, Nicht OK, übersprungen, offen). Datum/Uhrzeit und Ausführender sind klein. Darunter die Checklistenpunkte, die nicht OK waren — der Nachweis für den Kunden. Auf dem Unit-QR-Portal jedes Stopps sieht der Mitarbeiter denselben Fortschritt; die Aufgabe wird automatisch abgeschlossen, wenn alle Stopps erledigt sind. Offene Runden können Sie hier auch manuell abschließen oder schließen (mit Begründung)."
                 },
                 {
                     "label": "Team zuweisen",
@@ -1471,7 +1471,7 @@
                 },
                 {
                     "label": "Was ist ein Unit-Check?",
-                    "text": "Eine schnelle Bestätigung am Unit-QR: OK oder Nicht OK, mit Ausführendem, Zeitstempel und optionalem GPS. OK erzeugt keine Meldung. Optional eine Bemerkung (max. 500 Zeichen) und bis zu 4 Fotos; sie gehören zur Kontrolle, nicht zur Meldungsliste."
+                    "text": "Eine schnelle Bestätigung am Unit-QR: OK oder Nicht OK, mit Ausführendem, Zeitpunkt und optional GPS. Bei OK keine separate Meldung. Optional eine Bemerkung (max. 500 Zeichen) und bis zu 4 Fotos; sie gehören zur Kontrolle, nicht zur Meldungsliste. Nicht abgehakte Checklistenpunkte stehen auf der Rundenaufgabe."
                 },
                 {
                     "label": "Nicht OK",

@@ -92,7 +92,8 @@ it('shows checklist items on unit check and requires all for ok', function () {
 
     $check = UnitCheck::query()->latest('id')->first();
     expect($check->result)->toBe(UnitCheckResult::Ok)
-        ->and($check->checklist_items)->toBe(['Vloer', 'WC']);
+        ->and($check->checklist_items)->toBe(['Vloer', 'WC'])
+        ->and($check->checklist_failed)->toBeNull();
 });
 
 it('links and completes an open task on ok unit check', function () {

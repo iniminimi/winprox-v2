@@ -23,6 +23,7 @@ final class UnitCheckExportTable
             __('reports.columns.worker'),
             __('reports.columns.team'),
             __('reports.columns.checklist'),
+            __('reports.columns.checklist_failed'),
             __('reports.columns.description'),
             __('reports.columns.photos'),
         ];
@@ -38,6 +39,9 @@ final class UnitCheckExportTable
             $checklist = is_array($check->checklist_items)
                 ? implode(', ', $check->checklist_items)
                 : '';
+            $checklistFailed = is_array($check->checklist_failed)
+                ? implode(', ', $check->checklist_failed)
+                : '';
 
             return [
                 (string) $check->id,
@@ -48,6 +52,7 @@ final class UnitCheckExportTable
                 (string) ($check->worker?->displayName() ?? ''),
                 (string) ($check->team?->localizedName() ?? ''),
                 $checklist,
+                $checklistFailed,
                 (string) ($check->description ?? ''),
                 (string) $check->photos->count(),
             ];

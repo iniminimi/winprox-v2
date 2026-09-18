@@ -102,5 +102,6 @@
                 "exits": "Nooduitgangen vrij"
             }
         }
-    }
+    },
+    "checklist_failed": "Niet OK"
 }

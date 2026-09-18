@@ -266,7 +266,7 @@
                 },
                 {
                     "label": "Giro di ispezione",
-                    "text": "Per un giro di ispezione vedi qui l’avanzamento per fermata (OK, Non OK, saltata, aperta) con data/ora e esecutore. Sul portale QR di ogni fermata il lavoratore vede lo stesso avanzamento; il compito si completa automaticamente quando tutte le fermate sono fatte. Puoi anche completare o chiudere un giro aperto qui manualmente (con motivo in chiusura)."
+                    "text": "Per un giro di ispezione vedi qui l’avanzamento per fermata (OK, Non OK, saltata, aperta). Data/ora ed esecutore sono compatti. Sotto, i punti checklist non OK: la prova per il cliente. Sul portale QR di ogni fermata il lavoratore vede lo stesso avanzamento; il compito si completa automaticamente quando tutte le fermate sono fatte. Puoi anche completare o chiudere un giro aperto qui (con motivo)."
                 },
                 {
                     "label": "Assegna team",
@@ -1471,7 +1471,7 @@
                 },
                 {
                     "label": "Cos’è un controllo unit?",
-                    "text": "Una conferma rapida sul QR della unit: OK o Non OK, con esecutore, data/ora e GPS opzionale. OK non crea una segnalazione. Facoltativamente una nota (max. 500 caratteri) e fino a 4 foto; restano sul controllo, non nell’elenco segnalazioni."
+                    "text": "Una conferma rapida sul QR unità: OK o Non OK, con esecutore, orario e GPS opzionale. Nessuna segnalazione a parte se OK. Nota opzionale (max. 500 caratteri) e fino a 4 foto; restano sul controllo, non nell’elenco segnalazioni. I punti checklist non spuntati appaiono sul task del giro."
                 },
                 {
                     "label": "Non OK",

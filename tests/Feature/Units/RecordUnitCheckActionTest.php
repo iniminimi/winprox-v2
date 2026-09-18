@@ -13,6 +13,8 @@ use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitCheck;
+use App\Models\UnitCheckList;
+use App\Models\UnitCheckListItem;
 use App\Models\User;
 use App\Models\WebhookEndpoint;
 use App\Models\Worker;
@@ -132,6 +134,39 @@ it('records not_ok without creating an issue', function () {
     expect($check->result)->toBe(UnitCheckResult::NotOk)
         ->and($check->issue_id)->toBeNull()
         ->and(\App\Models\Issue::query()->count())->toBe(0);
+});
+
+it('stores unticked checklist points as failed on not ok', function () {
+    Event::fake([UnitCheckRecorded::class]);
+
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $list = UnitCheckList::factory()->create([
+        'tenant_id' => $tenant->id,
+        'is_active' => true,
+    ]);
+    UnitCheckListItem::query()->create(['unit_check_list_id' => $list->id, 'label' => 'Vloer', 'sort_order' => 0]);
+    UnitCheckListItem::query()->create(['unit_check_list_id' => $list->id, 'label' => 'WC', 'sort_order' => 1]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_check_list_id' => $list->id,
+    ]);
+
+    $check = app(RecordUnitCheckAction::class)->handle(
+        unit: $unit,
+        data: new RecordUnitCheckData(
+            result: UnitCheckResult::NotOk,
+            checkedAt: CarbonImmutable::now(),
+            checklistItems: ['Vloer'],
+        ),
+        tenantId: $tenant->id,
+    );
+
+    expect($check->checklist_items)->toBe(['Vloer'])
+        ->and($check->checklist_failed)->toBe(['WC']);
 });
 
 it('writes audit log via unit.check.recorded webhook event', function () {

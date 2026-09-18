@@ -34,7 +34,7 @@ Webhooks allow you to receive real-time notifications about events in WinProx. W
 | `time.presence.failed` | CIAO presence rejected or transport error | Presence submission (no NISS) |
 | `time.presence.skipped` | CIAO presence skipped (validation / too late) | Presence submission (no NISS) |
 | `unit.gps_reported` | A GPS report was recorded for a unit | GPS report metadata |
-| `unit.check.recorded` | A unit check (OK / Not OK) was recorded | Check metadata + optional GPS, note and photos |
+| `unit.check.recorded` | A unit check (OK / Not OK) was recorded | Check metadata + optional GPS, note, photos and failed checklist points |
 | `esg.measurement.recorded` | An ESG measurement was recorded | Measurement metadata |
 
 ### ESG measurement webhook payload

@@ -32,6 +32,7 @@ class UnitCheckFactory extends Factory
             'task_id' => null,
             'issue_id' => null,
             'checklist_items' => null,
+            'checklist_failed' => null,
             'description' => null,
         ];
     }

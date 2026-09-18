@@ -25,6 +25,7 @@ Record a quick **OK / Not OK** visit check on a unit (security rounds, cleaning 
 | `task_id` | integer | No | Optional link to a related task |
 | `issue_id` | integer | No | Optional link when a follow-up issue exists |
 | `checklist_items` | string[] | No | Labels of checked checklist points (when the unit has a checklist; templates are managed under **Teams** in the admin UI) |
+| `checklist_failed` | string[] | — | Response/webhook only: checklist points that were **not** ticked (snapshot at record time). Empty/null when all points were ticked or the unit has no checklist. |
 | `description` | string | No | Optional note (max 500). Stored on the check, not as an issue. |
 | `external_id` | string | No | Idempotency key from the caller (unique per tenant) |
 

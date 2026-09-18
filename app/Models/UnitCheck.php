@@ -32,6 +32,7 @@ class UnitCheck extends Model
         'task_id',
         'issue_id',
         'checklist_items',
+        'checklist_failed',
         'description',
         'external_id',
     ];
@@ -44,6 +45,7 @@ class UnitCheck extends Model
         'latitude' => 'float',
         'longitude' => 'float',
         'checklist_items' => 'array',
+        'checklist_failed' => 'array',
     ];
 
     public function unit(): BelongsTo

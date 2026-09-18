@@ -102,5 +102,6 @@
                 "exits": "Notausgänge frei"
             }
         }
-    }
+    },
+    "checklist_failed": "Nicht OK"
 }

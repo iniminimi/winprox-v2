@@ -330,7 +330,8 @@
         "stop_open": "Offen",
         "stop_current": "Nächste",
         "do_check_here": "Dieser Stopp ist dran. Machen Sie hier einen Unit-Check (OK), oder überspringen Sie ihn.",
-        "stop_not_ok": "Nicht OK"
+        "stop_not_ok": "Nicht OK",
+        "checklist_failed": "Nicht OK"
     },
     "measure": {
         "title": "Messung erfassen",

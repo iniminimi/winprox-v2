@@ -49,10 +49,15 @@
                                 @if ($check->team)
                                     · {{ $check->team->localizedName() }}
                                 @endif
-                                @if (is_array($check->checklist_items) && $check->checklist_items !== [])
-                                    · {{ implode(', ', $check->checklist_items) }}
-                                @endif
                             </p>
+                            @if (is_array($check->checklist_failed) && $check->checklist_failed !== [])
+                                <p class="wp-muted wp-text-sm">{{ __('unit_checks.checklist_failed') }}</p>
+                                <ul class="wp-list-plain wp-stack-tight">
+                                    @foreach ($check->checklist_failed as $failedItem)
+                                        <li>{{ $failedItem }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
                             @if (filled($check->description))
                                 <p class="wp-text-body">{{ $check->description }}</p>
                             @endif

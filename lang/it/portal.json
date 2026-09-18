@@ -330,7 +330,8 @@
         "stop_open": "Aperta",
         "stop_current": "Prossima",
         "do_check_here": "Questa fermata è la prossima. Fai qui un Unit check (OK), oppure salta.",
-        "stop_not_ok": "Non OK"
+        "stop_not_ok": "Non OK",
+        "checklist_failed": "Non OK"
     },
     "measure": {
         "title": "Registra misurazione",

@@ -701,6 +701,33 @@ it('shows optional unit-check note and photos on round progress without creating
         ->and(\App\Models\Issue::query()->where('id', '!=', $task->issue_id)->count())->toBe(0);
 });
 
+it('shows failed checklist points on round progress after not ok', function () {
+    ['unitA' => $unitA, 'team' => $team, 'tenant' => $tenant, 'worker' => $worker, 'task' => $task] = inspectionRoundScaffold();
+    WorkerVerification::markVerified($team, $worker);
+
+    $list = \App\Models\UnitCheckList::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Schoonmaak',
+        'is_active' => true,
+    ]);
+    \App\Models\UnitCheckListItem::query()->create(['unit_check_list_id' => $list->id, 'label' => 'Vloer', 'sort_order' => 0]);
+    \App\Models\UnitCheckListItem::query()->create(['unit_check_list_id' => $list->id, 'label' => 'WC', 'sort_order' => 1]);
+    $unitA->update(['unit_check_list_id' => $list->id]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'round-unit-a'])
+        ->call('openSection', 'unit_check')
+        ->set('checkResult', 'not_ok')
+        ->set('checkCheckedAt', now()->toIso8601String())
+        ->set('checkChecklistItems', ['Vloer'])
+        ->call('submitUnitCheck')
+        ->assertHasNoErrors();
+
+    $progress = app(RoundTaskCompletionAction::class)->progress($task->fresh());
+
+    expect($progress['stops'][0]['state'])->toBe('not_ok')
+        ->and($progress['stops'][0]['checklist_failed'])->toBe(['WC']);
+});
+
 
 it('does not overwrite an existing report description after round not_ok', function () {
     ['team' => $team, 'worker' => $worker] = inspectionRoundScaffold();

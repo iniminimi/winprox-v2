@@ -330,7 +330,8 @@
         "stop_open": "Ouvert",
         "stop_current": "Suivant",
         "do_check_here": "Cet arrêt est le suivant. Faites ici un contrôle unité (OK), ou passez-le.",
-        "stop_not_ok": "Pas OK"
+        "stop_not_ok": "Pas OK",
+        "checklist_failed": "Pas OK"
     },
     "measure": {
         "title": "Enregistrer une mesure",

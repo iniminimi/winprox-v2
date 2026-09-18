@@ -330,7 +330,8 @@
         "stop_open": "Open",
         "stop_current": "Volgende",
         "do_check_here": "Deze stop is aan de beurt. Doe hier een Unit check (OK), of sla over.",
-        "stop_not_ok": "Niet OK"
+        "stop_not_ok": "Niet OK",
+        "checklist_failed": "Niet OK"
     },
     "measure": {
         "title": "Meting registreren",

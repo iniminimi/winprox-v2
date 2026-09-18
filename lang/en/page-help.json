@@ -266,7 +266,7 @@
                 },
                 {
                     "label": "Inspection round",
-                    "text": "For an inspection round you see progress per stop (OK, Not OK, skipped, open) with date/time and performer. On each stop unit QR portal the worker sees the same progress; the task completes automatically when all stops are done. You can also complete or close an open round here manually (with a reason when closing)."
+                    "text": "For an inspection round you see progress per stop (OK, Not OK, skipped, open). Date/time and worker are compact. Below that: checklist points that were not OK — the evidence for the customer. On each stop’s unit QR portal the worker sees the same progress; the task completes automatically when all stops are done. You can also complete or close an open round here (with a reason)."
                 },
                 {
                     "label": "Assign team",
@@ -1471,7 +1471,7 @@
                 },
                 {
                     "label": "What is a unit check?",
-                    "text": "A quick confirmation on the unit QR: OK or Not OK, with worker, timestamp and optional GPS. OK does not create an issue. Optionally a note (max. 500 characters) and up to 4 photos; they stay on the check, not on the issue list."
+                    "text": "A quick confirmation on the unit QR: OK or Not OK, with worker, timestamp and optional GPS. No separate issue on OK. Optional note (max. 500 characters) and up to 4 photos; they belong to the check, not the issue list. Unticked checklist points appear on the round task."
                 },
                 {
                     "label": "Not OK",

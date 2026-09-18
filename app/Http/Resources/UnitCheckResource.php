@@ -30,6 +30,7 @@ class UnitCheckResource extends JsonResource
             'task_id' => $this->task_id,
             'issue_id' => $this->issue_id,
             'checklist_items' => $this->checklist_items,
+            'checklist_failed' => $this->checklist_failed,
             'description' => $this->description,
             'external_id' => $this->external_id,
             'google_maps_url' => $this->googleMapsUrl(),

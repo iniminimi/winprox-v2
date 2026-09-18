@@ -266,7 +266,7 @@
                 },
                 {
                     "label": "Ronda de inspección",
-                    "text": "En una ronda de inspección ves aquí el progreso por parada (OK, No OK, omitida, abierta) con fecha/hora y ejecutor. En el portal QR de cada parada el trabajador ve el mismo progreso; la tarea se completa automáticamente cuando todas las paradas están listas. También puedes completar o cerrar una ronda abierta aquí manualmente (con motivo al cerrar)."
+                    "text": "En una ronda de inspección ves aquí el progreso por parada (OK, No OK, omitida, abierta). Fecha/hora y ejecutor van compactos. Debajo, los puntos de lista que no estaban OK: la evidencia para el cliente. En el portal QR de cada parada el trabajador ve el mismo progreso; la tarea se completa automáticamente cuando todas las paradas están listas. También puedes completar o cerrar una ronda abierta aquí (con motivo)."
                 },
                 {
                     "label": "Asignar equipo",
@@ -1471,7 +1471,7 @@
                 },
                 {
                     "label": "¿Qué es un chequeo de unit?",
-                    "text": "Una confirmación rápida en el QR de la unit: OK o No OK, con ejecutor, fecha/hora y GPS opcional. OK no crea un aviso. Opcionalmente una nota (máx. 500 caracteres) y hasta 4 fotos; quedan en el control, no en la lista de incidencias."
+                    "text": "Una confirmación rápida en el QR de unidad: OK o No OK, con ejecutor, fecha/hora y GPS opcional. Sin incidencia aparte si OK. Nota opcional (máx. 500 caracteres) y hasta 4 fotos; pertenecen al control, no a la lista de incidencias. Los puntos de lista no marcados aparecen en la tarea de la ronda."
                 },
                 {
                     "label": "No OK",

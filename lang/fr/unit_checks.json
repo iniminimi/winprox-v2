@@ -102,5 +102,6 @@
                 "exits": "Issues de secours libres"
             }
         }
-    }
+    },
+    "checklist_failed": "Pas OK"
 }

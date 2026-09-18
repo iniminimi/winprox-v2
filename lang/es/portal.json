@@ -330,7 +330,8 @@
         "stop_open": "Abierta",
         "stop_current": "Siguiente",
         "do_check_here": "Esta parada es la siguiente. Haz aquí un Unit check (OK), o omítela.",
-        "stop_not_ok": "No OK"
+        "stop_not_ok": "No OK",
+        "checklist_failed": "No OK"
     },
     "measure": {
         "title": "Registrar medición",

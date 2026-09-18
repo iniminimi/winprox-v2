@@ -102,5 +102,6 @@
                 "exits": "Emergency exits clear"
             }
         }
-    }
+    },
+    "checklist_failed": "Not OK"
 }

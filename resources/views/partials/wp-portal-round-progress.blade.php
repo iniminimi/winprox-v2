@@ -56,6 +56,14 @@
                     @if ($metaParts !== [])
                         <p class="wp-round-stops__meta">{{ implode(' · ', $metaParts) }}</p>
                     @endif
+                    @if (($stop['checklist_failed'] ?? []) !== [])
+                        <p class="wp-round-stops__failed-label">{{ __('portal.round.checklist_failed') }}</p>
+                        <ul class="wp-round-stops__failed">
+                            @foreach ($stop['checklist_failed'] as $failedItem)
+                                <li class="wp-round-stops__failed-item">{{ $failedItem }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                     @if (filled($stop['description'] ?? null))
                         <p class="wp-round-stops__note">{{ $stop['description'] }}</p>
                     @endif

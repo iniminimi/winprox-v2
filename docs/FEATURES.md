@@ -417,10 +417,12 @@ de meldingenlijst te vervuilen. Los van ESG.
 - **OK** → rij in `unit_checks`, terug naar home.
 - **Niet OK** → rij in `unit_checks`, daarna bestaande meldflow (`new`) blijft beschikbaar.
 - Optionele **checklist** (indien gekoppeld aan de unit; templates onder **Teams**):
-  vinkjes vóór OK.
+  vinkjes vóór OK. Niet-afgevinkte punten worden als snapshot op de check bewaard
+  (`checklist_failed`) en getoond op de **ronde-taak** (niet de afgevinkte punten).
 
 ### Beheer (`/unit-checks`)
-- Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link, optionele opmerking en foto’s.
+- Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link, optionele opmerking en foto’s,
+  plus niet-OK checklistpunten.
 - Filters: resultaat, locatie. Admin + medewerker via Policy.
 - **Download rapport** (`x-wp-list-export`): CSV + afdrukken van de gefilterde historiek — zie §Rapporten.
 - **Aan/uit:** Plaatsen → Categorieën (`allow_unit_checks`) én unit bewerken (`allow_unit_checks`);
@@ -534,8 +536,8 @@ stops meer zijn voor **deze** cyclus-taak.
   volgt alleen de unit-vlag. Bestaande stops worden verwijderd bij uitschakelen
   (en self-heal bij openen melding). Ronde met <2 stops over houdt geen stops meer.
 - **Fase 2:** strikte stop-volgorde (alleen de eerstvolgende open stop mag OK/skip);
-  rijke progress-UI (balk + genummerde stops met status, datum/uur, uitvoerder,
-  optionele opmerking en foto’s van de unit check)
+  rijke progress-UI (balk + genummerde stops met status; compacte datum/uur en uitvoerder;
+  **niet-OK checklistpunten**; optionele opmerking en foto’s van de unit check)
   op **unit-QR (elke stop)** én op **taakdetail in beheer**. Met Time +
   GPS-werkbezoeken ook op Clock Point ter plaatse (volgende stop).
 
