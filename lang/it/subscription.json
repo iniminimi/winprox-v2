@@ -68,8 +68,8 @@
         },
         "winprox_10": {
             "name": "10 licenze",
-            "price": "840 € / anno",
-            "scale": "7 € per licenza al mese. Pagamento annuale.",
+            "price": "7 € / licenza / mese",
+            "scale": "840 € / anno. Pagamento annuale.",
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
@@ -78,8 +78,8 @@
         },
         "winprox_10_time": {
             "name": "10 licenze + Time (timbratrice)",
-            "price": "840 € / anno",
-            "scale": "7 € per licenza al mese. Pagamento annuale.",
+            "price": "7 € / licenza / mese",
+            "scale": "840 € / anno. Pagamento annuale.",
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
@@ -88,8 +88,8 @@
         },
         "winprox_25": {
             "name": "25 licenze",
-            "price": "1.800 € / anno",
-            "scale": "6 € per licenza al mese. Pagamento annuale.",
+            "price": "6 € / licenza / mese",
+            "scale": "1.800 € / anno. Pagamento annuale.",
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
@@ -98,8 +98,8 @@
         },
         "winprox_25_time": {
             "name": "25 licenze + Time (timbratrice)",
-            "price": "1.800 € / anno",
-            "scale": "6 € per licenza al mese. Pagamento annuale.",
+            "price": "6 € / licenza / mese",
+            "scale": "1.800 € / anno. Pagamento annuale.",
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
@@ -108,8 +108,8 @@
         },
         "winprox_50": {
             "name": "50 licenze",
-            "price": "3.000 € / anno",
-            "scale": "5 € per licenza al mese. Pagamento annuale.",
+            "price": "5 € / licenza / mese",
+            "scale": "3.000 € / anno. Pagamento annuale.",
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",
@@ -118,8 +118,8 @@
         },
         "winprox_50_time": {
             "name": "50 licenze + Time (timbratrice)",
-            "price": "3.000 € / anno",
-            "scale": "5 € per licenza al mese. Pagamento annuale.",
+            "price": "5 € / licenza / mese",
+            "scale": "3.000 € / anno. Pagamento annuale.",
             "features": [
                 "Time (timbratrice) incluso.",
                 "CIAO (ONSS) su richiesta.",

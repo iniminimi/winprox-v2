@@ -68,8 +68,8 @@
         },
         "winprox_10": {
             "name": "10 Lizenzen",
-            "price": "840 € / Jahr",
-            "scale": "7 € je Lizenz und Monat. Jährliche Zahlung.",
+            "price": "7 € / Lizenz / Monat",
+            "scale": "840 € / Jahr. Jährliche Zahlung.",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
@@ -78,8 +78,8 @@
         },
         "winprox_10_time": {
             "name": "10 Lizenzen + Time (Stechuhr)",
-            "price": "840 € / Jahr",
-            "scale": "7 € je Lizenz und Monat. Jährliche Zahlung.",
+            "price": "7 € / Lizenz / Monat",
+            "scale": "840 € / Jahr. Jährliche Zahlung.",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
@@ -88,8 +88,8 @@
         },
         "winprox_25": {
             "name": "25 Lizenzen",
-            "price": "1.800 € / Jahr",
-            "scale": "6 € je Lizenz und Monat. Jährliche Zahlung.",
+            "price": "6 € / Lizenz / Monat",
+            "scale": "1.800 € / Jahr. Jährliche Zahlung.",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
@@ -98,8 +98,8 @@
         },
         "winprox_25_time": {
             "name": "25 Lizenzen + Time (Stechuhr)",
-            "price": "1.800 € / Jahr",
-            "scale": "6 € je Lizenz und Monat. Jährliche Zahlung.",
+            "price": "6 € / Lizenz / Monat",
+            "scale": "1.800 € / Jahr. Jährliche Zahlung.",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
@@ -108,8 +108,8 @@
         },
         "winprox_50": {
             "name": "50 Lizenzen",
-            "price": "3.000 € / Jahr",
-            "scale": "5 € je Lizenz und Monat. Jährliche Zahlung.",
+            "price": "5 € / Lizenz / Monat",
+            "scale": "3.000 € / Jahr. Jährliche Zahlung.",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
@@ -118,8 +118,8 @@
         },
         "winprox_50_time": {
             "name": "50 Lizenzen + Time (Stechuhr)",
-            "price": "3.000 € / Jahr",
-            "scale": "5 € je Lizenz und Monat. Jährliche Zahlung.",
+            "price": "5 € / Lizenz / Monat",
+            "scale": "3.000 € / Jahr. Jährliche Zahlung.",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",

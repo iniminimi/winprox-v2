@@ -54,21 +54,21 @@
             "plans": {
                 "winprox_10": {
                     "units": "Lieux et unités illimités.",
-                    "announcements": "840 € / an (7 € / licence / mois)",
+                    "announcements": "7 € / licence / mois (840 € / an)",
                     "documents": "Time (pointeuse) inclus. · CIAO (ONSS) sur demande. · Pas d’IoT, ESG ni API.",
                     "description": "Signalements, tâches et pointeuse. Paiement annuel.",
                     "users": "Jusqu’à 10 licences (collègues + exécutants)"
                 },
                 "winprox_25": {
                     "units": "Lieux et unités illimités.",
-                    "announcements": "1 800 € / an (6 € / licence / mois)",
+                    "announcements": "6 € / licence / mois (1 800 € / an)",
                     "documents": "Time (pointeuse) inclus. · CIAO (ONSS) sur demande. · Pas d’IoT, ESG ni API.",
                     "description": "Signalements, tâches et pointeuse. Paiement annuel.",
                     "users": "Jusqu’à 25 licences (collègues + exécutants)"
                 },
                 "winprox_50": {
                     "units": "Lieux et unités illimités.",
-                    "announcements": "3 000 € / an (5 € / licence / mois)",
+                    "announcements": "5 € / licence / mois (3 000 € / an)",
                     "documents": "Time (pointeuse) inclus. · CIAO (ONSS) sur demande. · Pas d’IoT, ESG ni API.",
                     "description": "Signalements, tâches et pointeuse. Paiement annuel.",
                     "users": "Jusqu’à 50 licences (collègues + exécutants)"

@@ -1004,8 +1004,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   (collega's met login + uitvoerders). Locaties, units, documenten en foto's onbeperkt.
   **Time inbegrepen.** CIAO (RSZ) op aanvraag, geen extra SKU. **Geen** IoT, ESG of API.
   Clock Point blijft de aanmeld-QR (identiteit + takenlijst).
-- **Prijs (jaarfactuur):** 10 licenties €7/persoon/maand (€840/jaar); 25 × €6 (€1.800/jaar);
-  50 × €5 (€3.000/jaar). Online betalen (Stripe) is uit; na de proef volgt een jaarfactuur.
+- **Prijs (jaarfactuur):** 10 licenties **€7**/persoon/maand (€840/jaar); 25 × **€6** (€1.800/jaar);
+  50 × **€5** (€3.000/jaar). Op de prijszetting staat de maandprijs per licentie rechts; het jaartotaal in de tekst.
 - **Trial:** 50 licenties, Time inbegrepen, geen IoT/ESG/API; units onbeperkt.
 - **Corporate:** geen self-activate; vanaf **100 licenties** of wanneer API/webhooks nodig zijn.
   Superuser zet `billing_plan=corporate` + `billing_units_cap` via Platform → Organisaties.

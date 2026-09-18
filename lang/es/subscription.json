@@ -68,8 +68,8 @@
         },
         "winprox_10": {
             "name": "10 licencias",
-            "price": "840 € / año",
-            "scale": "7 € por licencia al mes. Pago anual.",
+            "price": "7 € / licencia / mes",
+            "scale": "840 € / año. Pago anual.",
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
@@ -78,8 +78,8 @@
         },
         "winprox_10_time": {
             "name": "10 licencias + Time (reloj de fichar)",
-            "price": "840 € / año",
-            "scale": "7 € por licencia al mes. Pago anual.",
+            "price": "7 € / licencia / mes",
+            "scale": "840 € / año. Pago anual.",
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
@@ -88,8 +88,8 @@
         },
         "winprox_25": {
             "name": "25 licencias",
-            "price": "1.800 € / año",
-            "scale": "6 € por licencia al mes. Pago anual.",
+            "price": "6 € / licencia / mes",
+            "scale": "1.800 € / año. Pago anual.",
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
@@ -98,8 +98,8 @@
         },
         "winprox_25_time": {
             "name": "25 licencias + Time (reloj de fichar)",
-            "price": "1.800 € / año",
-            "scale": "6 € por licencia al mes. Pago anual.",
+            "price": "6 € / licencia / mes",
+            "scale": "1.800 € / año. Pago anual.",
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
@@ -108,8 +108,8 @@
         },
         "winprox_50": {
             "name": "50 licencias",
-            "price": "3.000 € / año",
-            "scale": "5 € por licencia al mes. Pago anual.",
+            "price": "5 € / licencia / mes",
+            "scale": "3.000 € / año. Pago anual.",
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",
@@ -118,8 +118,8 @@
         },
         "winprox_50_time": {
             "name": "50 licencias + Time (reloj de fichar)",
-            "price": "3.000 € / año",
-            "scale": "5 € por licencia al mes. Pago anual.",
+            "price": "5 € / licencia / mes",
+            "scale": "3.000 € / año. Pago anual.",
             "features": [
                 "Time (reloj de fichar) incluido.",
                 "CIAO (ONSS) bajo petición.",

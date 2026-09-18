@@ -54,21 +54,21 @@
             "plans": {
                 "winprox_10": {
                     "units": "Unbegrenzte Standorte und Units.",
-                    "announcements": "840 € / Jahr (7 € / Lizenz / Monat)",
+                    "announcements": "7 € / Lizenz / Monat (840 € / Jahr)",
                     "documents": "Time (Stechuhr) enthalten. · CIAO (LSZ) auf Anfrage. · Kein IoT, ESG oder API.",
                     "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
                     "users": "Bis 10 Lizenzen (Kollegen + Ausführende)"
                 },
                 "winprox_25": {
                     "units": "Unbegrenzte Standorte und Units.",
-                    "announcements": "1.800 € / Jahr (6 € / Lizenz / Monat)",
+                    "announcements": "6 € / Lizenz / Monat (1.800 € / Jahr)",
                     "documents": "Time (Stechuhr) enthalten. · CIAO (LSZ) auf Anfrage. · Kein IoT, ESG oder API.",
                     "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
                     "users": "Bis 25 Lizenzen (Kollegen + Ausführende)"
                 },
                 "winprox_50": {
                     "units": "Unbegrenzte Standorte und Units.",
-                    "announcements": "3.000 € / Jahr (5 € / Lizenz / Monat)",
+                    "announcements": "5 € / Lizenz / Monat (3.000 € / Jahr)",
                     "documents": "Time (Stechuhr) enthalten. · CIAO (LSZ) auf Anfrage. · Kein IoT, ESG oder API.",
                     "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
                     "users": "Bis 50 Lizenzen (Kollegen + Ausführende)"

@@ -68,8 +68,8 @@
         },
         "winprox_10": {
             "name": "10 licenties",
-            "price": "€840 / jaar",
-            "scale": "€7 per licentie per maand. Jaarlijks te betalen.",
+            "price": "€7 / licentie / maand",
+            "scale": "€840 / jaar. Jaarlijks te betalen.",
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
@@ -78,8 +78,8 @@
         },
         "winprox_10_time": {
             "name": "10 licenties + Time (prikklok)",
-            "price": "€840 / jaar",
-            "scale": "€7 per licentie per maand. Jaarlijks te betalen.",
+            "price": "€7 / licentie / maand",
+            "scale": "€840 / jaar. Jaarlijks te betalen.",
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
@@ -88,8 +88,8 @@
         },
         "winprox_25": {
             "name": "25 licenties",
-            "price": "€1.800 / jaar",
-            "scale": "€6 per licentie per maand. Jaarlijks te betalen.",
+            "price": "€6 / licentie / maand",
+            "scale": "€1.800 / jaar. Jaarlijks te betalen.",
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
@@ -98,8 +98,8 @@
         },
         "winprox_25_time": {
             "name": "25 licenties + Time (prikklok)",
-            "price": "€1.800 / jaar",
-            "scale": "€6 per licentie per maand. Jaarlijks te betalen.",
+            "price": "€6 / licentie / maand",
+            "scale": "€1.800 / jaar. Jaarlijks te betalen.",
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
@@ -108,8 +108,8 @@
         },
         "winprox_50": {
             "name": "50 licenties",
-            "price": "€3.000 / jaar",
-            "scale": "€5 per licentie per maand. Jaarlijks te betalen.",
+            "price": "€5 / licentie / maand",
+            "scale": "€3.000 / jaar. Jaarlijks te betalen.",
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",
@@ -118,8 +118,8 @@
         },
         "winprox_50_time": {
             "name": "50 licenties + Time (prikklok)",
-            "price": "€3.000 / jaar",
-            "scale": "€5 per licentie per maand. Jaarlijks te betalen.",
+            "price": "€5 / licentie / maand",
+            "scale": "€3.000 / jaar. Jaarlijks te betalen.",
             "features": [
                 "Time (prikklok) inbegrepen.",
                 "CIAO (RSZ) op aanvraag.",

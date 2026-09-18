@@ -68,8 +68,8 @@
         },
         "winprox_10": {
             "name": "10 seats",
-            "price": "€840 / year",
-            "scale": "€7 per seat per month. Billed yearly.",
+            "price": "€7 / seat / month",
+            "scale": "€840 / year. Billed yearly.",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
@@ -78,8 +78,8 @@
         },
         "winprox_10_time": {
             "name": "10 seats + Time (punch clock)",
-            "price": "€840 / year",
-            "scale": "€7 per seat per month. Billed yearly.",
+            "price": "€7 / seat / month",
+            "scale": "€840 / year. Billed yearly.",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
@@ -88,8 +88,8 @@
         },
         "winprox_25": {
             "name": "25 seats",
-            "price": "€1,800 / year",
-            "scale": "€6 per seat per month. Billed yearly.",
+            "price": "€6 / seat / month",
+            "scale": "€1,800 / year. Billed yearly.",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
@@ -98,8 +98,8 @@
         },
         "winprox_25_time": {
             "name": "25 seats + Time (punch clock)",
-            "price": "€1,800 / year",
-            "scale": "€6 per seat per month. Billed yearly.",
+            "price": "€6 / seat / month",
+            "scale": "€1,800 / year. Billed yearly.",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
@@ -108,8 +108,8 @@
         },
         "winprox_50": {
             "name": "50 seats",
-            "price": "€3,000 / year",
-            "scale": "€5 per seat per month. Billed yearly.",
+            "price": "€5 / seat / month",
+            "scale": "€3,000 / year. Billed yearly.",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
@@ -118,8 +118,8 @@
         },
         "winprox_50_time": {
             "name": "50 seats + Time (punch clock)",
-            "price": "€3,000 / year",
-            "scale": "€5 per seat per month. Billed yearly.",
+            "price": "€5 / seat / month",
+            "scale": "€3,000 / year. Billed yearly.",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",

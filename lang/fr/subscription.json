@@ -68,8 +68,8 @@
         },
         "winprox_10": {
             "name": "10 licences",
-            "price": "840 € / an",
-            "scale": "7 € par licence et par mois. Paiement annuel.",
+            "price": "7 € / licence / mois",
+            "scale": "840 € / an. Paiement annuel.",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
@@ -78,8 +78,8 @@
         },
         "winprox_10_time": {
             "name": "10 licences + Time (pointeuse)",
-            "price": "840 € / an",
-            "scale": "7 € par licence et par mois. Paiement annuel.",
+            "price": "7 € / licence / mois",
+            "scale": "840 € / an. Paiement annuel.",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
@@ -88,8 +88,8 @@
         },
         "winprox_25": {
             "name": "25 licences",
-            "price": "1 800 € / an",
-            "scale": "6 € par licence et par mois. Paiement annuel.",
+            "price": "6 € / licence / mois",
+            "scale": "1 800 € / an. Paiement annuel.",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
@@ -98,8 +98,8 @@
         },
         "winprox_25_time": {
             "name": "25 licences + Time (pointeuse)",
-            "price": "1 800 € / an",
-            "scale": "6 € par licence et par mois. Paiement annuel.",
+            "price": "6 € / licence / mois",
+            "scale": "1 800 € / an. Paiement annuel.",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
@@ -108,8 +108,8 @@
         },
         "winprox_50": {
             "name": "50 licences",
-            "price": "3 000 € / an",
-            "scale": "5 € par licence et par mois. Paiement annuel.",
+            "price": "5 € / licence / mois",
+            "scale": "3 000 € / an. Paiement annuel.",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
@@ -118,8 +118,8 @@
         },
         "winprox_50_time": {
             "name": "50 licences + Time (pointeuse)",
-            "price": "3 000 € / an",
-            "scale": "5 € par licence et par mois. Paiement annuel.",
+            "price": "5 € / licence / mois",
+            "scale": "3 000 € / an. Paiement annuel.",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
