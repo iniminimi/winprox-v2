@@ -305,6 +305,10 @@
                     "text": "Cree una nueva ubicación con dirección y datos básicos."
                 },
                 {
+                    "label": "Pin GPS",
+                    "text": "Con Time + visitas GPS o CIAO: pulsa el icono rojo de Google Maps, busca la sede, pulsa el pin rojo y copia. Pega las coordenadas en WinProx (formato 51.336167, 3.236306). El mismo campo en el pin de visita de una unidad."
+                },
+                {
                     "label": "Abrir ubicación",
                     "text": "Gestione unidades, documentos, anuncios y códigos QR por ubicación."
                 },
@@ -371,6 +375,10 @@
                 {
                     "label": "Añadir unidad",
                     "text": "Añada un objeto/máquina/activo/espacio con token QR y equipo predeterminado. Una unidad puede ser diversa: máquina, sala, vehículo, plataforma elevadora, aparato fitness, etc. El comportamiento del portal (avisos, reservas, controles, …) sigue la categoría elegida por defecto; vea Opciones avanzadas del portal para excepciones."
+                },
+                {
+                    "label": "Pin de visita",
+                    "text": "En Opciones avanzadas del portal. El mismo icono de Google Maps: buscar, pin rojo, copiar, pegar. Vacío = no hay Empezar el trabajo en esta unidad."
                 },
                 {
                     "label": "Traducciones de ubicación",

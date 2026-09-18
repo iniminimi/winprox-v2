@@ -97,9 +97,10 @@
         "notes": "Interne Notizen",
         "ddt": "Werkmeldung (DDT)",
         "ddt_hint": "13 Zeichen (CIAO-Arbeitsort).",
-        "latitude": "Breitengrad",
-        "longitude": "Längengrad",
-        "coords_hint": "Optional: GPS des Kundenstandorts für Arbeitsbesuche (und CIAO placeOfWork)."
+        "coords": "GPS-Koordinaten",
+        "maps_open": "Google Maps öffnen",
+        "coords_placeholder": "51.336167, 3.236306",
+        "coords_hint": "Optional: GPS des Kundenstandorts für Arbeitsbesuche (und CIAO placeOfWork). Rotes Symbol klicken, Ort in Google Maps suchen, roten Pin klicken und kopieren. Hier einfügen als 51.336167, 3.236306."
     },
     "flash": {
         "created": "Standort angelegt.",
@@ -134,9 +135,7 @@
             "roster_code": "Dienstplancode",
             "roster_code_hint": "Optional. Kurzer Code für den Dienstplan, eindeutig pro Standort (z. B. G1).",
             "visit_pin": "Arbeitsbesuch-Pin",
-            "visit_latitude": "Breitengrad",
-            "visit_longitude": "Längengrad",
-            "visit_pin_hint": "Fester Gebäude-Pin für GPS-Arbeitsbesuche. Leer = nur Meldungen/Aufgaben. GPS-Meldungen aus dem Portal ändern diesen Pin nie."
+            "visit_pin_hint": "Fester Gebäude-Pin für GPS-Arbeitsbesuche. Leer = nur Meldungen/Aufgaben. Rotes Symbol klicken, in Google Maps suchen, roten Pin klicken und hier einfügen (51.336167, 3.236306). Portal-GPS-Meldungen ändern diesen Pin nicht."
         },
         "translation_preview": "Übersetzung (Portal)",
         "translation_edit": {

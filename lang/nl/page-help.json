@@ -305,6 +305,10 @@
                     "text": "Maak een nieuwe site met adres en basisgegevens."
                 },
                 {
+                    "label": "GPS-pin",
+                    "text": "Bij Time + GPS-werkbezoeken of CIAO: klik het rode Google Maps-icoon, zoek de locatie, klik de rode pin en kopieer. Plak de coördinaten in WinProx (formaat 51.336167, 3.236306). Zelfde veld bij de werkbezoek-pin van een unit."
+                },
+                {
                     "label": "Locatie openen",
                     "text": "Klik op een locatie om deze te beheren : wijzig units, documenten, mededelingen en QR-codes per locatie."
                 },
@@ -371,6 +375,10 @@
                 {
                     "label": "Unit toevoegen",
                     "text": "Voeg een object/machine/asset/ruimte toe met QR-token en standaardteam. Een unit kan divers zijn: een machine, ruimte, voertuig, hoogtewerker, fitnesstoestel, enz. Portaal-gedrag (meldingen, reserveringen, checks, …) volgt standaard de gekozen categorie; zie Geavanceerde portaal-opties voor uitzonderingen."
+                },
+                {
+                    "label": "Werkbezoek-pin",
+                    "text": "Onder Geavanceerde portaal-opties. Zelfde Google Maps-icoon: zoeken, rode pin, kopiëren, plakken. Leeg = geen eigen Start werk op deze unit."
                 },
                 {
                     "label": "Locatievertalingen",

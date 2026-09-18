@@ -56,17 +56,13 @@
 @endif
 
 @if ($presenceComplianceEnabled || ($gpsWorkVisitsEnabled ?? false))
-    <div class="wp-form-grid-2">
-        <label class="wp-field">
-            <span class="wp-label">{{ __('locations.fields.latitude') }}</span>
-            <input type="text" class="wp-input" wire:model="locationFormLatitude" inputmode="decimal" />
-            @error('latitude') <span class="wp-error">{{ $message }}</span> @enderror
-        </label>
-        <label class="wp-field">
-            <span class="wp-label">{{ __('locations.fields.longitude') }}</span>
-            <input type="text" class="wp-input" wire:model="locationFormLongitude" inputmode="decimal" />
-            @error('longitude') <span class="wp-error">{{ $message }}</span> @enderror
-        </label>
-    </div>
-    <p class="wp-hint">{{ __('locations.fields.coords_hint') }}</p>
+    @include('partials.wp-gps-coords-fields', [
+        'latProperty' => 'locationFormLatitude',
+        'lngProperty' => 'locationFormLongitude',
+        'applyMethod' => 'applyLocationGpsPair',
+        'searchProperties' => ['locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity'],
+        'hintKey' => 'locations.fields.coords_hint',
+        'latError' => 'latitude',
+        'lngError' => 'longitude',
+    ])
 @endif

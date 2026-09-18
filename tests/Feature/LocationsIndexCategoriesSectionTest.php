@@ -1,10 +1,13 @@
 <?php
 
 use App\Livewire\Locations\Index;
+use App\Livewire\Locations\Show as LocationShow;
 use App\Models\CategoryTranslation;
 use App\Models\Category;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use App\Support\Tenancy;
 use Livewire\Livewire;
@@ -233,7 +236,7 @@ it('toont DDT alleen bij CIAO; GPS-coords bij CIAO of GPS-werkbezoeken', functio
         ->test(Index::class)
         ->call('openCreate')
         ->assertDontSee(__('locations.fields.ddt'), false)
-        ->assertDontSee(__('locations.fields.latitude'), false)
+        ->assertDontSee(__('locations.fields.coords'), false)
         ->assertDontSee(__('locations.fields.coords_hint'), false);
 
     $tenant->update(['time_gps_visits' => true]);
@@ -243,7 +246,8 @@ it('toont DDT alleen bij CIAO; GPS-coords bij CIAO of GPS-werkbezoeken', functio
         ->test(Index::class)
         ->call('openCreate')
         ->assertDontSee(__('locations.fields.ddt'), false)
-        ->assertSee(__('locations.fields.latitude'), false)
+        ->assertSee(__('locations.fields.coords'), false)
+        ->assertSee(__('locations.fields.maps_open'), false)
         ->assertSee(__('locations.fields.coords_hint'), false);
 
     $tenant->update([
@@ -256,6 +260,71 @@ it('toont DDT alleen bij CIAO; GPS-coords bij CIAO of GPS-werkbezoeken', functio
         ->test(Index::class)
         ->call('openCreate')
         ->assertSee(__('locations.fields.ddt'), false)
-        ->assertSee(__('locations.fields.latitude'), false)
+        ->assertSee(__('locations.fields.coords'), false)
         ->assertSee(__('locations.fields.coords_hint'), false);
+});
+
+it('vult locatie-GPS uit een Google Maps-paar', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    $tenant->update([
+        'has_time_module' => true,
+        'time_gps_visits' => true,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->call('openCreate')
+        ->call('applyLocationGpsPair', '51.33616702303759, 3.2363064972080355')
+        ->assertSet('locationFormLatitude', '51.33616702303759')
+        ->assertSet('locationFormLongitude', '3.2363064972080355');
+});
+
+it('wist locatie-GPS bij een leeg coördinatenveld', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    $tenant->update([
+        'has_time_module' => true,
+        'time_gps_visits' => true,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->call('openCreate')
+        ->set('locationFormLatitude', '51.05')
+        ->set('locationFormLongitude', '3.73')
+        ->call('applyLocationGpsPair', '')
+        ->assertSet('locationFormLatitude', '')
+        ->assertSet('locationFormLongitude', '');
+});
+
+it('negeert klembordtekst die geen GPS-paar is', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    $tenant->update([
+        'has_time_module' => true,
+        'time_gps_visits' => true,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->call('openCreate')
+        ->set('locationFormLatitude', '51.05')
+        ->set('locationFormLongitude', '3.73')
+        ->call('applyLocationGpsPair', 'Kerkstraat 1')
+        ->assertSet('locationFormLatitude', '51.05')
+        ->assertSet('locationFormLongitude', '3.73');
+});
+
+it('vult unit-GPS uit een Google Maps-paar', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(LocationShow::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->call('applyUnitGpsPair', '51.05, 3.73')
+        ->assertSet('unitLatitude', '51.05')
+        ->assertSet('unitLongitude', '3.73');
 });

@@ -305,6 +305,10 @@
                     "text": "Crei una nuova sede con indirizzo e dati di base."
                 },
                 {
+                    "label": "Pin GPS",
+                    "text": "Con Time + visite GPS o CIAO: clicca l’icona rossa di Google Maps, trova la sede, clicca il pin rosso e copia. Incolla le coordinate in WinProx (formato 51.336167, 3.236306). Stesso campo sul pin visita di un’unità."
+                },
+                {
                     "label": "Apri sede",
                     "text": "Gestisca unità, documenti, annunci e codici QR per sede."
                 },
@@ -371,6 +375,10 @@
                 {
                     "label": "Aggiungi unità",
                     "text": "Aggiungi un oggetto/macchina/asset/spazio con token QR e team predefinito. Una unit può essere diversa: macchina, stanza, veicolo, piattaforma aerea, attrezzo fitness, ecc. Il comportamento portale (segnalazioni, prenotazioni, controlli, …) segue la categoria scelta per default; vedi Opzioni portale avanzate per eccezioni."
+                },
+                {
+                    "label": "Pin visita",
+                    "text": "In Opzioni portale avanzate. Stessa icona Google Maps: cerca, pin rosso, copia, incolla. Vuoto = nessun Avvia il lavoro su questa unità."
                 },
                 {
                     "label": "Traduzioni sede",

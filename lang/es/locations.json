@@ -97,9 +97,10 @@
         "notes": "Notas internas",
         "ddt": "Declaración de obras (DDT)",
         "ddt_hint": "13 caracteres (lugar CIAO).",
-        "latitude": "Latitud",
-        "longitude": "Longitud",
-        "coords_hint": "Opcional: GPS de la sede del cliente para visitas de trabajo (y CIAO placeOfWork)."
+        "coords": "Coordenadas GPS",
+        "maps_open": "Abrir Google Maps",
+        "coords_placeholder": "51.336167, 3.236306",
+        "coords_hint": "Opcional: GPS de la sede del cliente para visitas de trabajo (y CIAO placeOfWork). Pulsa el icono rojo, busca el lugar en Google Maps, pulsa el pin rojo y copia. Pega aquí como 51.336167, 3.236306."
     },
     "flash": {
         "created": "Ubicación creada.",
@@ -134,9 +135,7 @@
             "roster_code": "Código de cuadrante",
             "roster_code_hint": "Opcional. Código corto para el cuadrante, único por sede (p. ej. G1).",
             "visit_pin": "Pin de visita",
-            "visit_latitude": "Latitud",
-            "visit_longitude": "Longitud",
-            "visit_pin_hint": "Pin fijo del edificio para visitas GPS. Vacío = solo avisos/tareas. Los informes GPS del portal no cambian este pin."
+            "visit_pin_hint": "Pin fijo del edificio para visitas GPS. Vacío = solo avisos/tareas. Pulsa el icono rojo, busca en Google Maps, pulsa el pin rojo y pega aquí (51.336167, 3.236306). Los avisos GPS del portal no cambian este pin."
         },
         "translation_preview": "Traducción (portal)",
         "translation_edit": {

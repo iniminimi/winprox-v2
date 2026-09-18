@@ -97,9 +97,10 @@
         "notes": "Interne notities",
         "ddt": "Aangifte van werken (DDT)",
         "ddt_hint": "13 tekens (CIAO werkplaats).",
-        "latitude": "Breedtegraad",
-        "longitude": "Lengtegraad",
-        "coords_hint": "Optioneel: GPS van de klantlocatie voor werkbezoeken (en CIAO placeOfWork)."
+        "coords": "GPS-coördinaten",
+        "maps_open": "Open Google Maps",
+        "coords_placeholder": "51.336167, 3.236306",
+        "coords_hint": "Optioneel: GPS van de klantlocatie voor werkbezoeken (en CIAO placeOfWork). Klik het rode icoon, zoek de plek in Google Maps, klik de rode pin en kopieer. Plak hier in het formaat 51.336167, 3.236306."
     },
     "flash": {
         "created": "Locatie aangemaakt.",
@@ -134,9 +135,7 @@
             "roster_code": "Roostercode",
             "roster_code_hint": "Optioneel. Korte code voor het uurrooster, uniek per locatie (bijv. G1).",
             "visit_pin": "Werkbezoek-pin",
-            "visit_latitude": "Breedtegraad",
-            "visit_longitude": "Lengtegraad",
-            "visit_pin_hint": "Vaste pin van het gebouw voor GPS-werkbezoeken. Leeg = alleen meldingen/taken. GPS-meldingen van het portaal wijzigen deze pin niet."
+            "visit_pin_hint": "Vaste pin van het gebouw voor GPS-werkbezoeken. Leeg = alleen meldingen/taken. Klik het rode icoon, zoek in Google Maps, klik de rode pin en plak hier (51.336167, 3.236306). GPS-meldingen van het portaal wijzigen deze pin niet."
         },
         "translation_preview": "Vertaling (portaal)",
         "translation_edit": {

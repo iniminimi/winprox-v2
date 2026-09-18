@@ -16,6 +16,7 @@ use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\UpdateCategoryRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
+use App\Livewire\Concerns\AppliesGpsCoordinatePair;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -35,6 +36,8 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Index extends Component
 {
+    use AppliesGpsCoordinatePair;
+
     #[Url(as: 'q')]
     public string $search = '';
 

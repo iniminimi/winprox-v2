@@ -97,9 +97,10 @@
         "notes": "Note interne",
         "ddt": "Dichiarazione di lavori (DDT)",
         "ddt_hint": "13 caratteri (luogo CIAO).",
-        "latitude": "Latitudine",
-        "longitude": "Longitudine",
-        "coords_hint": "Opzionale: GPS della sede cliente per le visite di lavoro (e CIAO placeOfWork)."
+        "coords": "Coordinate GPS",
+        "maps_open": "Apri Google Maps",
+        "coords_placeholder": "51.336167, 3.236306",
+        "coords_hint": "Facoltativo: GPS della sede cliente per le visite di lavoro (e CIAO placeOfWork). Clicca l’icona rossa, trova il luogo in Google Maps, clicca il pin rosso e copia. Incolla qui come 51.336167, 3.236306."
     },
     "flash": {
         "created": "Sede creata.",
@@ -134,9 +135,7 @@
             "roster_code": "Codice turno",
             "roster_code_hint": "Facoltativo. Codice breve per il turno, univoco per sede (es. G1).",
             "visit_pin": "Pin visita",
-            "visit_latitude": "Latitudine",
-            "visit_longitude": "Longitudine",
-            "visit_pin_hint": "Pin fisso dell'edificio per le visite GPS. Vuoto = solo segnalazioni/attività. I report GPS del portale non modificano mai questo pin."
+            "visit_pin_hint": "Pin fisso dell’edificio per le visite GPS. Vuoto = solo segnalazioni/attività. Clicca l’icona rossa, cerca in Google Maps, clicca il pin rosso e incolla qui (51.336167, 3.236306). Le segnalazioni GPS del portale non modificano questo pin."
         },
         "translation_preview": "Traduzione (portale)",
         "translation_edit": {

@@ -480,22 +480,22 @@
                                 @error('unitRosterCode') <span class="wp-error">{{ $message }}</span> @enderror
                             </label>
 
-                            <div class="wp-field">
-                                <span class="wp-label">{{ __('locations.units.fields.visit_pin') }}</span>
-                                <div class="wp-form-grid-2">
-                                    <label class="wp-field">
-                                        <span class="wp-label">{{ __('locations.units.fields.visit_latitude') }}</span>
-                                        <input type="text" class="wp-input" wire:model="unitLatitude" inputmode="decimal" />
-                                        @error('unitLatitude') <span class="wp-error">{{ $message }}</span> @enderror
-                                    </label>
-                                    <label class="wp-field">
-                                        <span class="wp-label">{{ __('locations.units.fields.visit_longitude') }}</span>
-                                        <input type="text" class="wp-input" wire:model="unitLongitude" inputmode="decimal" />
-                                        @error('unitLongitude') <span class="wp-error">{{ $message }}</span> @enderror
-                                    </label>
-                                </div>
-                                <p class="wp-hint">{{ __('locations.units.fields.visit_pin_hint') }}</p>
-                            </div>
+                            @include('partials.wp-gps-coords-fields', [
+                                'latProperty' => 'unitLatitude',
+                                'lngProperty' => 'unitLongitude',
+                                'applyMethod' => 'applyUnitGpsPair',
+                                'searchQuery' => trim(implode(' ', array_filter([
+                                    $this->location->street,
+                                    $this->location->house_number,
+                                    $this->location->postal_code,
+                                    $this->location->city,
+                                ]))),
+                                'searchProperties' => ['unitName'],
+                                'labelKey' => 'locations.units.fields.visit_pin',
+                                'hintKey' => 'locations.units.fields.visit_pin_hint',
+                                'latError' => 'unitLatitude',
+                                'lngError' => 'unitLongitude',
+                            ])
                         </div>
                     </div>
                 </div>

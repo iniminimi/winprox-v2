@@ -705,9 +705,10 @@ productsector op `Tenant`.
   `longitude`) = ter plaatse bij de klant. Unit met vaste pin (`units.latitude` /
   `longitude`) = fysiek gebouw/voertuig. Units zonder pin = meldingen/taken
   (geen eigen Start werk). `unit_gps_reports` mag de pin **nooit** muteren.
-  Locatie-pin zetten: Locaties → bewerken (GPS-velden; zichtbaar bij Time +
-  GPS-werkbezoeken of CIAO). Unit-pin: Locaties → unit bewerken →
-  **Geavanceerde portaal-opties**.
+  Locatie-pin zetten: Locaties → bewerken (GPS-veld met Google Maps-icoon;
+  plakken als `lat, lng`; zichtbaar bij Time + GPS-werkbezoeken of CIAO).
+  Unit-pin: Locaties → unit bewerken → **Geavanceerde portaal-opties**
+  (zelfde Maps-icoon en plakveld).
 - Tenant-vlag `time_gps_visits` (alleen met Time). Straal default `config('time.gps_visit_radius_meters')` (250 m).
 - **Inklokken:** opent `WorkShift` via de Clock Point-QR (algemeen aanmeldpunt / PWA). Geen
   `unit_id`, geen `WorkVisit`. GPS optioneel als metadata, **geen weigering** zonder signaal

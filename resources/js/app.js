@@ -4,6 +4,7 @@ import './date-input-locale';
 import './image-upload-compress';
 import './worker-photo-crop';
 import './bulk-unit-ranges';
+import './gps-coords-fields';
 import './qr-pack-download';
 import './promo-tracking';
 import './promo-campaign-editor';

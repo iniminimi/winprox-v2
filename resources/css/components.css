@@ -664,6 +664,31 @@
     flex-shrink: 0;
 }
 
+.wp-gps-coords__row {
+    display: flex;
+    align-items: stretch;
+    gap: 0.5rem;
+}
+
+.wp-gps-coords__maps {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    padding: 0.35rem;
+}
+
+.wp-gps-coords__pin {
+    width: 1.35rem;
+    height: 1.35rem;
+}
+
+.wp-gps-coords__pair {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
 .wp-page-help-item-text {
     margin: 0;
     font-size: 0.875rem;

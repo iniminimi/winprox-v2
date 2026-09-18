@@ -305,6 +305,10 @@
                     "text": "Create a new site with address and basic details."
                 },
                 {
+                    "label": "GPS pin",
+                    "text": "With Time + GPS work visits or CIAO: click the red Google Maps icon, find the location, click the red pin and copy. Paste the coordinates in WinProx (format 51.336167, 3.236306). Same field on a unit work-visit pin."
+                },
+                {
                     "label": "Open location",
                     "text": "Manage units, documents, announcements and QR codes per location."
                 },
@@ -371,6 +375,10 @@
                 {
                     "label": "Add unit",
                     "text": "Add an object/machine/asset/space with QR token and default team. A unit can be diverse: a machine, room, vehicle, aerial work platform, fitness device, etc. Portal behaviour (reports, reservations, checks, …) follows the chosen category by default; see Advanced portal options for exceptions."
+                },
+                {
+                    "label": "Work-visit pin",
+                    "text": "Under Advanced portal options. Same Google Maps icon: search, red pin, copy, paste. Empty = no Start work on this unit."
                 },
                 {
                     "label": "Location translations",

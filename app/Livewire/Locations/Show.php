@@ -24,6 +24,7 @@ use App\Http\Requests\Locations\StoreUnitRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Locations\UpdateUnitRequest;
 use App\Http\Requests\Units\ImportUnitsRequest;
+use App\Livewire\Concerns\AppliesGpsCoordinatePair;
 use App\Models\Category;
 use App\Models\EsgMeasurement;
 use App\Models\InternalTeam;
@@ -59,6 +60,7 @@ use Illuminate\Validation\ValidationException;
 #[Title('WinProx')]
 class Show extends Component
 {
+    use AppliesGpsCoordinatePair;
     use WithFileUploads;
     use WithPagination;
 
@@ -562,6 +564,11 @@ class Show extends Component
         if (isset($this->unitPhotos[$index])) {
             array_splice($this->unitPhotos, $index, 1);
         }
+    }
+
+    public function applyUnitGpsPair(string $text): bool
+    {
+        return $this->fillGpsPair($text, 'unitLatitude', 'unitLongitude');
     }
 
     public function saveUnit(CreateUnitAction $createUnit, UpdateUnitAction $updateUnit): void

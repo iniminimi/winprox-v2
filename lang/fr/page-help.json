@@ -305,6 +305,10 @@
                     "text": "Créez un nouveau site avec adresse et données de base."
                 },
                 {
+                    "label": "Pin GPS",
+                    "text": "Avec Time + visites GPS ou CIAO : cliquez l’icône rouge Google Maps, trouvez le site, cliquez l’épingle rouge et copiez. Collez les coordonnées dans WinProx (format 51.336167, 3.236306). Même champ sur le pin de visite d’une unité."
+                },
+                {
                     "label": "Ouvrir un site",
                     "text": "Gérez les unités, documents, annonces et codes QR par site."
                 },
@@ -375,6 +379,10 @@
                 {
                     "label": "Ajouter une unité",
                     "text": "Ajoutez un objet/machine/actif/espace avec jeton QR et équipe par défaut. Une unité peut être variée : machine, salle, véhicule, nacelle, appareil fitness, etc. Le comportement portail (signalements, réservations, contrôles, …) suit la catégorie choisie par défaut ; voir Options portail avancées pour les exceptions."
+                },
+                {
+                    "label": "Pin de visite",
+                    "text": "Sous Options portail avancées. Même icône Google Maps : chercher, épingle rouge, copier, coller. Vide = pas de Commencer le travail sur cette unité."
                 },
                 {
                     "label": "Traductions de lieu",
