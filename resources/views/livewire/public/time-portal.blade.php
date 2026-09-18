@@ -216,6 +216,75 @@
                         <p class="wp-muted">{{ __('time.roster.subtitle') }}</p>
                     </x-wp-page-head-title>
                     @include('partials.wp-time-roster-list', ['roster' => $roster])
+                @elseif ($checkingUnit)
+                    @if ($skipRoundTaskId)
+                        <x-wp-modal closeMethod="closeSkipRoundStop" aria-labelledby="skip-round-title">
+                            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                                <div class="wp-modal-head">
+                                    <h2 id="skip-round-title" class="wp-section-title">{{ __('portal.round.skip_title') }}</h2>
+                                    <x-wp-modal-close wire:click="closeSkipRoundStop" />
+                                </div>
+                                <p class="wp-muted">{{ __('portal.round.skip_help') }}</p>
+                                <div class="wp-field">
+                                    <label class="wp-label" for="skipReason">{{ __('portal.round.skip_reason') }}</label>
+                                    <textarea id="skipReason" class="wp-textarea" rows="3" wire:model="skipReason" maxlength="500"></textarea>
+                                    @error('skipReason') <p class="wp-error">{{ $message }}</p> @enderror
+                                </div>
+                                <div class="wp-cluster">
+                                    <button type="button" class="btn btn--primary" wire:click="submitSkipRoundStop">{{ __('portal.round.skip_confirm') }}</button>
+                                    <button type="button" class="btn btn--ghost" wire:click="closeSkipRoundStop">{{ __('common.button.cancel') }}</button>
+                                </div>
+                            </div>
+                        </x-wp-modal>
+                    @endif
+                    <x-wp-portal-back wire:click="closeClockPointUnitCheck" />
+                    <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.unit_check.title')" />
+                    <p class="wp-muted">{{ $checkingUnit->localizedName() }}</p>
+                    @if ($clockPointRoundProgress)
+                        @include('partials.wp-portal-round-progress', [
+                            'progress' => $clockPointRoundProgress,
+                            'currentUnitId' => (int) $checkingUnit->id,
+                        ])
+                    @endif
+                    @if ($clockPointRoundTask && ! $clockPointIsNextStop && ($clockPointRoundProgress['open'] ?? 0) > 0)
+                        <p class="wp-muted">{{ __('portal.round.wait_for_next', ['name' => $clockPointRoundProgress['next_unit_name'] ?? '—']) }}</p>
+                    @elseif ($checkingUnit->allowsUnitChecks())
+                        <div class="wp-card wp-card-pad wp-stack">
+                            <p class="wp-muted">{{ __('portal.unit_check.lead') }}</p>
+                            @if (($clockPointUnitCheckListItems ?? collect())->isNotEmpty())
+                                <div class="wp-stack-tight">
+                                    <p class="wp-section-title">{{ __('portal.unit_check.checklist_title') }}</p>
+                                    @foreach ($clockPointUnitCheckListItems as $item)
+                                        <label class="wp-check" wire:key="cp-check-item-{{ $item->id }}">
+                                            <input type="checkbox" value="{{ $item->label }}" wire:model="checkChecklistItems">
+                                            <span>{{ $clockPointUnitCheckList?->localizedItemLabel($item->label) ?? $item->label }}</span>
+                                        </label>
+                                    @endforeach
+                                    @error('checkChecklistItems') <p class="wp-error">{{ $message }}</p> @enderror
+                                </div>
+                            @endif
+                            <div class="wp-cluster wp-cluster--wrap">
+                                <button type="button" class="btn btn--primary" wire:click="submitClockPointUnitCheck('ok')">
+                                    {{ __('portal.unit_check.ok') }}
+                                </button>
+                                <button type="button" class="btn btn--ghost" wire:click="submitClockPointUnitCheck('not_ok')">
+                                    {{ __('portal.unit_check.not_ok') }}
+                                </button>
+                            </div>
+                            @error('checkResult') <p class="wp-error">{{ $message }}</p> @enderror
+                            @error('checkLatitude') <p class="wp-error">{{ $message }}</p> @enderror
+                            @error('checkLongitude') <p class="wp-error">{{ $message }}</p> @enderror
+                            @error('checkCheckedAt') <p class="wp-error">{{ $message }}</p> @enderror
+                            @if ($clockPointIsNextStop && $clockPointRoundTask)
+                                <p class="wp-muted wp-text-sm">{{ __('portal.round.do_check_here') }}</p>
+                                <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="openSkipRoundStop({{ $clockPointRoundTask->id }})">
+                                    {{ __('portal.round.skip_stop') }}
+                                </button>
+                            @endif
+                        </div>
+                    @else
+                        <p class="wp-muted">{{ __('portal.worker.errors.no_permission') }}</p>
+                    @endif
                 @else
                     <div class="wp-card wp-card-pad wp-cluster">
                         <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
@@ -295,6 +364,9 @@
                                     return false;
                                 }
                                 if (this.openVisitUnitId && Number(this.openVisitUnitId) === Number(dest.unit_id)) {
+                                    return false;
+                                }
+                                if (this.openVisitLocationId && Number(this.openVisitLocationId) === Number(dest.location_id)) {
                                     return false;
                                 }
                                 return this.metersBetween(this.hereLat, this.hereLng, dest.pin_latitude, dest.pin_longitude) <= dest.radius_meters;
@@ -437,6 +509,9 @@
                                         @if ($group['units'] !== [])
                                             <ul class="wp-today-destination__units">
                                                 @foreach ($group['units'] as $destination)
+                                                    @php
+                                                        $onSiteHere = (bool) ($destination['on_site'] ?? $group['on_site'] ?? false);
+                                                    @endphp
                                                     <li class="wp-today-destination__unit" wire:key="today-dest-{{ $destination['key'] }}">
                                                         @if ($destination['can_start'] ?? false)
                                                             <a
@@ -454,8 +529,25 @@
                                                                     {{ __('time.portal.today.start_work') }}
                                                                 </button>
                                                             </template>
+                                                        @elseif ($onSiteHere && (int) ($destination['unit_id'] ?? 0) > 0)
+                                                            <button
+                                                                type="button"
+                                                                class="wp-today-destination__stop"
+                                                                wire:click="openClockPointUnitCheck({{ (int) $destination['unit_id'] }})"
+                                                            >
+                                                                {{ $destination['unit_name'] }}
+                                                            </button>
                                                         @else
                                                             <span>{{ $destination['unit_name'] }}</span>
+                                                        @endif
+                                                        @if ($onSiteHere && ($destination['can_start'] ?? false) && (int) ($destination['unit_id'] ?? 0) > 0)
+                                                            <button
+                                                                type="button"
+                                                                class="btn btn--ghost btn--sm"
+                                                                wire:click="openClockPointUnitCheck({{ (int) $destination['unit_id'] }})"
+                                                            >
+                                                                {{ __('time.portal.today.do_check') }}
+                                                            </button>
                                                         @endif
                                                     </li>
                                                 @endforeach
@@ -504,8 +596,18 @@
                         <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.worker.open_tasks')" />
                         <div class="wp-list">
                             @foreach ($tasks as $task)
-                                @php($taskLocationId = $task->issue?->location_id ?? $task->issue?->unit?->location_id)
-                                @php($onSite = ($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null && $taskLocationId !== null && (int) $taskLocationId === (int) $openVisitLocationId)
+                                @php
+                                    $isRound = $task->issue?->isInspectionRound() ?? false;
+                                    $roundProgress = $isRound ? app(\App\Actions\Tasks\RoundTaskCompletionAction::class)->progress($task) : null;
+                                    $nextStopUnitId = $isRound ? ($roundProgress['next_unit_id'] ?? null) : null;
+                                    $taskLocationId = $isRound
+                                        ? ($task->issue?->roundStops
+                                            ?->firstWhere('unit_id', $nextStopUnitId)
+                                            ?->unit
+                                            ?->location_id)
+                                        : ($task->issue?->location_id ?? $task->issue?->unit?->location_id);
+                                    $onSite = ($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null && $taskLocationId !== null && (int) $taskLocationId === (int) $openVisitLocationId;
+                                @endphp
                                 <div class="wp-card wp-card-pad wp-stack" wire:key="time-task-{{ $task->id }}">
                                     <div class="wp-cluster">
                                         <span class="wp-badge {{ $task->priority->badgeClass() }}">
@@ -515,10 +617,16 @@
                                         <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
                                         @if ($task->issue?->location)
                                             <span class="wp-muted">{{ $task->issue->location->localizedName() }}@if ($task->issue->unit) &middot; {{ $task->issue->unit->localizedName() }}@endif</span>
+                                        @elseif ($isRound && ($roundProgress['next_unit_name'] ?? null))
+                                            <span class="wp-muted">{{ __('portal.round.next_stop', ['name' => $roundProgress['next_unit_name']]) }}</span>
                                         @endif
                                     </div>
                                     @if ($task->issue?->isApproved())
                                         <p class="wp-text-body">{{ $task->displayDescription() }}</p>
+                                    @endif
+
+                                    @if ($isRound && $roundProgress)
+                                        @include('partials.wp-portal-round-progress', ['progress' => $roundProgress])
                                     @endif
 
                                     @include('partials.wp-portal-issue-photos', [
@@ -554,7 +662,14 @@
                                                 <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="cancelCompleteTask">{{ __('common.button.cancel') }}</button>
                                             </div>
                                         </form>
-                                    @elseif ($onSite)
+                                    @elseif ($onSite && $isRound && $nextStopUnitId)
+                                        <div class="wp-stack-tight">
+                                            <p class="wp-muted wp-text-sm">{{ __('portal.round.do_check_here') }}</p>
+                                            <button type="button" class="btn btn--primary btn--block" wire:click="openClockPointUnitCheck({{ (int) $nextStopUnitId }})">
+                                                {{ __('time.portal.today.do_check') }}
+                                            </button>
+                                        </div>
+                                    @elseif ($onSite && ! $isRound)
                                         <div class="wp-stack-tight">
                                             @if ($task->canStart())
                                                 <button type="button" class="btn btn--warning btn--block" wire:click="startTask({{ $task->id }})">
@@ -567,6 +682,8 @@
                                                 </button>
                                             @endif
                                         </div>
+                                    @elseif (($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null && $isRound && ($roundProgress['next_unit_name'] ?? null))
+                                        <p class="wp-muted wp-text-sm">{{ __('portal.round.wait_for_next', ['name' => $roundProgress['next_unit_name']]) }}</p>
                                     @elseif (($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null)
                                         <p class="wp-muted wp-text-sm">{{ __('portal.worker.errors.not_this_location') }}</p>
                                     @endif

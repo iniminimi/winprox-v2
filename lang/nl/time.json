@@ -328,7 +328,8 @@
             "title": "Waar moet ik vandaag naartoe:",
             "empty": "Vandaag geen geplande bezoeken",
             "navigate": "Navigeer",
-            "start_work": "Start werk"
+            "start_work": "Start werk",
+            "do_check": "Unit check"
         }
     },
     "ciao": {

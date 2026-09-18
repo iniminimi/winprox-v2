@@ -148,8 +148,8 @@
     "team": {
         "title": "Panoramica team",
         "read_only_hint": "Questa è una panoramica. Il completamento delle attività è possibile solo tramite il QR unità sul posto.",
-        "complete_needs_visit": "Avvia prima il lavoro in questa sede. Poi puoi chiudere le attività qui. I controlli unità restano tramite il QR unità.",
-        "complete_on_site_hint": "Sei sul posto. Avvia o chiudi le attività di squadra, con nota e foto opzionali. I controlli unità restano tramite il QR unità.",
+        "complete_needs_visit": "Avvia prima il lavoro in questa sede. Poi puoi chiudere le attività di squadra e la prossima fermata di ispezione qui.",
+        "complete_on_site_hint": "Sei sul posto. Chiudi le attività di squadra, o tocca la prossima fermata di ispezione (controllo unità) in Dove devo andare oggi.",
         "onboarding_done": "È registrato e connesso.",
         "icon_taken": "Questa icona è già in uso. Ne scelga un'altra.",
         "register": {

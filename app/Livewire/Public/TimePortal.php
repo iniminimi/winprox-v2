@@ -6,7 +6,13 @@ use App\Actions\Notifications\ListWorkerNotificationsAction;
 use App\Actions\Notifications\MarkWorkerNotificationsReadAction;
 use App\Actions\Portal\ClearWorkerTaskBaselineAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
+use App\Actions\Tasks\CompleteTaskAction;
+use App\Actions\Tasks\RoundTaskCompletionAction;
+use App\Actions\Tasks\SkipRoundStopAction;
+use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
+use App\Actions\Time\AssertClockPointTaskVisitAction;
+use App\Actions\Time\AssertClockPointUnitVisitAction;
 use App\Actions\Time\AssertWorkerClockDeviceAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
@@ -14,8 +20,6 @@ use App\Actions\Time\ConfirmWorkerClockPinAction;
 use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\EndWorkVisitAction;
 use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
-use App\Actions\Time\StartWorkVisitAction;
-use App\Actions\Time\SuggestNearbyClockUnitsAction;
 use App\Actions\Time\ListOpenTimeRosterAction;
 use App\Actions\Time\ListPublishedWorkerRosterAction;
 use App\Actions\Time\ListWorkDestinationsForWorkerAction;
@@ -24,19 +28,25 @@ use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\ResolveRosterMonthAction;
 use App\Actions\Time\SetWorkerClockPinAction;
-use App\Actions\Tasks\CompleteTaskAction;
-use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Time\StartWorkBreakAction;
-use App\Actions\Time\AssertClockPointTaskVisitAction;
+use App\Actions\Time\StartWorkVisitAction;
+use App\Actions\Time\SuggestNearbyClockUnitsAction;
 use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
+use App\Actions\Units\RecordUnitCheckAndApplyTasksAction;
+use App\Actions\Units\ResolveOpenUnitTaskForCheckAction;
+use App\Data\Units\RecordUnitCheckData;
 use App\Enums\ClockDeviceRefusalReason;
+use App\Enums\ClockSource;
 use App\Enums\TaskStatus;
+use App\Enums\UnitCheckResult;
+use App\Enums\UnitCheckSource;
 use App\Enums\WorkerNotificationType;
 use App\Http\Requests\Esg\RecordEsgMeasurementRequest;
 use App\Http\Requests\Public\CompletePortalTaskRequest;
 use App\Http\Requests\Time\AcknowledgeTimeRosterViewRequest;
 use App\Http\Requests\Time\ListWorkerHoursRequest;
 use App\Http\Requests\Time\WorkerClockPinRequest;
+use App\Http\Requests\Units\RecordUnitCheckRequest;
 use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
@@ -47,6 +57,7 @@ use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
+use App\Models\WorkerDevice;
 use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Portal\TimePortalData;
 use App\Support\Portal\WorkerDeviceSession;
@@ -56,10 +67,12 @@ use App\Support\Portal\WorkerVerification;
 use App\Support\Qr\InvalidQrResponse;
 use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
-use App\Support\Time\TimeModuleAccess;
 use App\Support\Time\ClockPointPortalTokenResolution;
+use App\Support\Time\TimeModuleAccess;
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
@@ -67,11 +80,12 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
 /**
  * Time-portaal (Clock Point QR): in-/uitklokken, pauze, eigen uren.
- * Taken starten/afhandelen alleen met GPS-werkbezoek op die locatie.
+ * Taken en inspectiestops afhandelen alleen met GPS-werkbezoek op die locatie.
  */
 #[Layout('components.layouts.public')]
 #[Title('WinProx')]
@@ -83,22 +97,35 @@ class TimePortal extends Component
     use WithFileUploads;
 
     public string $token;
+
     public int $clockPointId;
+
     public int $tenantId;
+
     public string $clockPointName = '';
 
     public string $locale = 'nl';
+
     public ?string $inactiveReasonKey = null;
 
     public string $first_name = '';
+
     public string $last_name = '';
+
     public string $sign_in_icon_slug = '';
+
     public bool $showRegisterForm = false;
+
     public string $selected_icon_slug = '';
+
     public string $flashMessage = '';
+
     public string $pin_code = '';
+
     public string $pin_code_confirm = '';
+
     public ?string $clockGpsLatitude = null;
+
     public ?string $clockGpsLongitude = null;
 
     /** @var list<array{unit_id: ?int, location_id: int, unit_name: string, location_name: string, distance_meters: int}> */
@@ -110,7 +137,7 @@ class TimePortal extends Component
 
     public string $completingNote = '';
 
-    /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
+    /** @var array<int, TemporaryUploadedFile> */
     public array $completingPhotos = [];
 
     public ?string $completingEsgValueNumeric = null;
@@ -125,6 +152,23 @@ class TimePortal extends Component
     public array $completingEsgValueMultiChoice = [];
 
     public ?string $completingRecordedAt = null;
+
+    public ?int $checkingUnitId = null;
+
+    public string $checkResult = '';
+
+    public ?float $checkLatitude = null;
+
+    public ?float $checkLongitude = null;
+
+    public ?string $checkCheckedAt = null;
+
+    /** @var list<string> */
+    public array $checkChecklistItems = [];
+
+    public ?int $skipRoundTaskId = null;
+
+    public string $skipReason = '';
 
     #[Locked]
     public bool $rosterAckOpen = false;
@@ -228,11 +272,13 @@ class TimePortal extends Component
 
         if ($identity['status'] === 'ambiguous') {
             $this->addError('identify', __('portal.worker.errors.identify_ambiguous'));
+
             return;
         }
 
         if ($identity['status'] === 'not_found') {
             $this->addError('identify', __('portal.worker.errors.identify_unknown'));
+
             return;
         }
 
@@ -247,6 +293,7 @@ class TimePortal extends Component
         $worker = $identity['worker'] ?? null;
         if ($worker === null) {
             $this->addError('identify', __('portal.worker.errors.identify_unknown'));
+
             return;
         }
 
@@ -533,6 +580,7 @@ class TimePortal extends Component
         if (WorkerIconGuard::isBlocked($team)) {
             $this->sign_in_icon_slug = '';
             $this->addError('sign_in_icon_slug', __('portal.worker.errors.blocked'));
+
             return;
         }
 
@@ -547,6 +595,7 @@ class TimePortal extends Component
             WorkerIconGuard::recordFailedAttempt($team);
             $this->sign_in_icon_slug = '';
             $this->addFailedSignInError($team);
+
             return;
         }
 
@@ -689,7 +738,7 @@ class TimePortal extends Component
                 $clockPoint,
                 $device,
                 null,
-                \App\Enums\ClockSource::ClockPointQr,
+                ClockSource::ClockPointQr,
                 true,
                 $token,
                 $lat,
@@ -761,7 +810,7 @@ class TimePortal extends Component
 
         try {
             [$device, $token] = $this->clockDeviceContext($worker);
-            $clockOut->handle($worker, $clockPoint, null, \App\Enums\ClockSource::ClockPointQr, true, $device, $token);
+            $clockOut->handle($worker, $clockPoint, null, ClockSource::ClockPointQr, true, $device, $token);
             ClockPointScanGrant::consume((int) $clockPoint->id);
             $this->flashMessage = __('time.portal.clocked_out');
         } catch (InvalidArgumentException $e) {
@@ -800,7 +849,7 @@ class TimePortal extends Component
         }
     }
 
-    public function startWorkVisit(int $unitId, mixed $latitude, mixed $longitude, int $locationId = 0, StartWorkVisitAction $startVisit): void
+    public function startWorkVisit(int $unitId, mixed $latitude, mixed $longitude, int $locationId, StartWorkVisitAction $startVisit): void
     {
         $worker = $this->authorizedWorker();
         if ($worker === null) {
@@ -865,6 +914,196 @@ class TimePortal extends Component
         } catch (InvalidArgumentException $e) {
             $this->flashVisitError($e);
         }
+    }
+
+    public function openClockPointUnitCheck(int $unitId, AssertClockPointUnitVisitAction $assertVisit): void
+    {
+        $worker = $this->authorizedWorker();
+        $unit = $worker !== null ? $this->findClockPointUnit($worker, $unitId) : null;
+        if ($unit === null) {
+            return;
+        }
+
+        try {
+            $assertVisit->handle($worker, $unit);
+        } catch (InvalidArgumentException $e) {
+            $this->flashVisitError($e);
+
+            return;
+        }
+
+        $this->checkingUnitId = $unit->id;
+        $this->resetClockPointUnitCheckForm();
+        $visit = app(FindOpenWorkShiftForWorkerAction::class)->handle($worker)?->openVisit;
+        $this->checkLatitude = $visit?->start_latitude;
+        $this->checkLongitude = $visit?->start_longitude;
+        $this->checkCheckedAt = now()->toIso8601String();
+        $this->cancelCompleteTask();
+    }
+
+    public function closeClockPointUnitCheck(): void
+    {
+        $this->checkingUnitId = null;
+        $this->resetClockPointUnitCheckForm();
+        $this->closeSkipRoundStop();
+    }
+
+    public function submitClockPointUnitCheck(
+        string $resultValue,
+        RecordUnitCheckAndApplyTasksAction $recordCheckAndApply,
+        ResolveOpenUnitTaskForCheckAction $resolveOpenTask,
+        AssertClockPointUnitVisitAction $assertVisit,
+    ): void {
+        $worker = $this->authorizedWorker();
+        $unit = $worker !== null && $this->checkingUnitId !== null
+            ? $this->findClockPointUnit($worker, $this->checkingUnitId)
+            : null;
+        if ($unit === null) {
+            return;
+        }
+
+        try {
+            $assertVisit->handle($worker, $unit);
+        } catch (InvalidArgumentException $e) {
+            $this->flashVisitError($e);
+
+            return;
+        }
+
+        $this->checkResult = $resultValue;
+
+        if (! $unit->allowsUnitChecks()) {
+            $this->addError('checkResult', __('portal.worker.errors.no_permission'));
+
+            return;
+        }
+
+        if ($this->checkCheckedAt === null || $this->checkCheckedAt === '') {
+            $this->checkCheckedAt = now()->toIso8601String();
+        }
+
+        $this->validate(
+            RecordUnitCheckRequest::portalRuleSet(),
+            RecordUnitCheckRequest::portalValidationMessages(),
+        );
+
+        $checkedAtValidator = Validator::make(
+            ['checkCheckedAt' => $this->checkCheckedAt],
+            ['checkCheckedAt' => ['required', 'date']],
+        );
+        RecordUnitCheckRequest::assertPortalCheckedAt((string) $this->checkCheckedAt, $checkedAtValidator);
+        if ($checkedAtValidator->fails()) {
+            foreach ($checkedAtValidator->errors()->getMessages() as $field => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($field, $message);
+                }
+            }
+
+            return;
+        }
+
+        $unit->loadMissing(['unitCheckList.items']);
+        $result = UnitCheckResult::from($this->checkResult);
+        $requiredLabels = $unit->unitCheckList?->is_active
+            ? $unit->unitCheckList->items->pluck('label')->all()
+            : [];
+        $selectedLabels = array_values(array_unique(array_filter(
+            array_map(static fn ($item) => is_string($item) ? trim($item) : '', $this->checkChecklistItems),
+            static fn (string $label) => $label !== '',
+        )));
+
+        if ($result === UnitCheckResult::Ok && $requiredLabels !== []) {
+            $missing = array_values(array_diff($requiredLabels, $selectedLabels));
+            if ($missing !== []) {
+                $this->addError('checkChecklistItems', __('portal.unit_check.errors.checklist_incomplete'));
+
+                return;
+            }
+            $selectedLabels = $requiredLabels;
+        } elseif ($requiredLabels !== []) {
+            $selectedLabels = array_values(array_intersect($requiredLabels, $selectedLabels));
+        } else {
+            $selectedLabels = [];
+        }
+
+        $waitingRound = $result === UnitCheckResult::Ok
+            ? $resolveOpenTask->findRoundWaitingOnEarlierStop($unit, $worker)
+            : null;
+
+        $recordCheckAndApply->handle(
+            unit: $unit,
+            data: new RecordUnitCheckData(
+                result: $result,
+                checkedAt: CarbonImmutable::parse((string) $this->checkCheckedAt),
+                source: UnitCheckSource::Portal,
+                latitude: $this->checkLatitude,
+                longitude: $this->checkLongitude,
+                checklistItems: $selectedLabels === [] ? null : $selectedLabels,
+            ),
+            tenantId: $this->tenantId,
+            worker: $worker,
+        );
+
+        $this->closeClockPointUnitCheck();
+        if ($waitingRound !== null) {
+            $progress = app(RoundTaskCompletionAction::class)->progress($waitingRound);
+            $this->flashMessage = __('portal.round.out_of_order', [
+                'name' => $progress['next_unit_name'] ?? '—',
+            ]);
+        } elseif ($result === UnitCheckResult::NotOk) {
+            $this->flashMessage = __('portal.unit_check.recorded_not_ok');
+        } else {
+            $this->flashMessage = __('portal.unit_check.recorded_ok');
+        }
+    }
+
+    public function openSkipRoundStop(int $taskId): void
+    {
+        $worker = $this->authorizedWorker();
+        $unit = $worker !== null && $this->checkingUnitId !== null
+            ? $this->findClockPointUnit($worker, $this->checkingUnitId)
+            : null;
+        $task = $worker !== null ? $this->findClockPointRoundTask($worker, $taskId) : null;
+        if ($unit === null || $task === null) {
+            return;
+        }
+
+        $this->skipRoundTaskId = $task->id;
+        $this->skipReason = '';
+        $this->resetErrorBag(['skipReason']);
+    }
+
+    public function closeSkipRoundStop(): void
+    {
+        $this->skipRoundTaskId = null;
+        $this->skipReason = '';
+        $this->resetErrorBag(['skipReason']);
+    }
+
+    public function submitSkipRoundStop(SkipRoundStopAction $skipRoundStop, AssertClockPointUnitVisitAction $assertVisit): void
+    {
+        $worker = $this->authorizedWorker();
+        $unit = $worker !== null && $this->checkingUnitId !== null
+            ? $this->findClockPointUnit($worker, $this->checkingUnitId)
+            : null;
+        $task = $worker !== null && $this->skipRoundTaskId !== null
+            ? $this->findClockPointRoundTask($worker, $this->skipRoundTaskId)
+            : null;
+        if ($unit === null || $task === null) {
+            return;
+        }
+
+        try {
+            $assertVisit->handle($worker, $unit);
+        } catch (InvalidArgumentException $e) {
+            $this->flashVisitError($e);
+
+            return;
+        }
+
+        $skipRoundStop->handle($task, (int) $unit->id, $this->skipReason, $worker);
+        $this->closeClockPointUnitCheck();
+        $this->flashMessage = __('portal.round.skip_recorded');
     }
 
     public function startTask(int $taskId, StartTaskAction $startTask, AssertClockPointTaskVisitAction $assertVisit): void
@@ -968,7 +1207,7 @@ class TimePortal extends Component
             if ($this->completingRecordedAt === null || $this->completingRecordedAt === '') {
                 $this->completingRecordedAt = now()->toIso8601String();
             }
-            $recordedAtValidator = \Illuminate\Support\Facades\Validator::make(
+            $recordedAtValidator = Validator::make(
                 ['completingRecordedAt' => $this->completingRecordedAt],
                 ['completingRecordedAt' => ['required', 'date']],
             );
@@ -1035,6 +1274,7 @@ class TimePortal extends Component
         $shift = $findShift->handle($worker);
         if ($shift === null) {
             $this->flashMessage = __('time.portal.errors.not_clocked_in');
+
             return;
         }
 
@@ -1062,6 +1302,7 @@ class TimePortal extends Component
         $shift = $findShift->handle($worker);
         if ($shift === null) {
             $this->flashMessage = __('time.portal.errors.not_clocked_in');
+
             return;
         }
 
@@ -1144,8 +1385,32 @@ class TimePortal extends Component
         $evacuationList = TimePortalData::tenantAllowsEvacuationList($this->tenantId);
         $gpsVisits = TimePortalData::tenantAllowsGpsWorkVisits($this->tenantId);
         $tasks = $canAct && $verifiedWorker !== null ? TimePortalData::openTasksForWorker($verifiedWorker) : collect();
-        if ($gpsVisits) {
-            $tasks = $tasks->reject(fn ($task) => $task->issue?->isInspectionRound())->values();
+        $checkingUnit = null;
+        $clockPointUnitCheckList = null;
+        $clockPointUnitCheckListItems = collect();
+        $clockPointRoundTask = null;
+        $clockPointRoundProgress = null;
+        $clockPointIsNextStop = false;
+        if ($canAct && $verifiedWorker !== null && $this->checkingUnitId !== null) {
+            $checkingUnit = $this->findClockPointUnit($verifiedWorker, $this->checkingUnitId);
+            if ($checkingUnit !== null) {
+                $checkingUnit->loadMissing(['unitCheckList.items', 'unitCheckList.translations']);
+                if ($checkingUnit->unitCheckList?->is_active) {
+                    $clockPointUnitCheckList = $checkingUnit->unitCheckList;
+                    $clockPointUnitCheckListItems = $clockPointUnitCheckList->items;
+                }
+                $clockPointRoundTask = app(ResolveOpenUnitTaskForCheckAction::class)
+                    ->handle($checkingUnit, $verifiedWorker, prefer: 'round')
+                    ?? app(ResolveOpenUnitTaskForCheckAction::class)
+                        ->findRoundWaitingOnEarlierStop($checkingUnit, $verifiedWorker);
+                if ($clockPointRoundTask !== null) {
+                    $clockPointRoundProgress = app(RoundTaskCompletionAction::class)->progress($clockPointRoundTask);
+                    $clockPointIsNextStop = app(RoundTaskCompletionAction::class)
+                        ->isNextOpenStop($clockPointRoundTask, (int) $checkingUnit->id);
+                }
+            } else {
+                $this->checkingUnitId = null;
+            }
         }
         $teamWorkers = ($team !== null && $verifiedWorker !== null && $verifiedWorker->is_teamleader)
             ? Worker::query()
@@ -1227,6 +1492,12 @@ class TimePortal extends Component
             ),
             'openVisitUnitId' => $openShift?->openVisit?->unit_id,
             'openVisitLocationId' => $openShift?->openVisit?->location_id,
+            'checkingUnit' => $checkingUnit,
+            'clockPointUnitCheckList' => $clockPointUnitCheckList,
+            'clockPointUnitCheckListItems' => $clockPointUnitCheckListItems,
+            'clockPointRoundTask' => $clockPointRoundTask,
+            'clockPointRoundProgress' => $clockPointRoundProgress,
+            'clockPointIsNextStop' => $clockPointIsNextStop,
             'completingTaskId' => $this->completingTaskId,
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
@@ -1288,13 +1559,30 @@ class TimePortal extends Component
         }
 
         try {
-            return $this->groupTodayDestinationsByLocation(array_map(
+            $groups = $this->groupTodayDestinationsByLocation(array_map(
                 fn ($row) => $row->toArray(),
                 $listDestinations->handle($tenant, $worker),
             ));
         } catch (InvalidArgumentException) {
             return [];
         }
+
+        $visitLocationId = $openShift?->openVisit?->location_id;
+        if ($visitLocationId === null) {
+            return $groups;
+        }
+
+        foreach ($groups as &$group) {
+            $onSite = (int) $group['location_id'] === (int) $visitLocationId;
+            $group['on_site'] = $onSite;
+            foreach ($group['units'] as &$unit) {
+                $unit['on_site'] = $onSite;
+            }
+            unset($unit);
+        }
+        unset($group);
+
+        return $groups;
     }
 
     /**
@@ -1327,6 +1615,7 @@ class TimePortal extends Component
                     'location_pin_latitude' => $row['location_pin_latitude'] ?? null,
                     'location_pin_longitude' => $row['location_pin_longitude'] ?? null,
                     'radius_meters' => (int) ($row['radius_meters'] ?? 0),
+                    'on_site' => false,
                     'units' => [],
                 ];
             }
@@ -1404,7 +1693,7 @@ class TimePortal extends Component
     }
 
     /**
-     * @return array{0: ?\App\Models\WorkerDevice, 1: string}
+     * @return array{0: ?WorkerDevice, 1: string}
      */
     private function clockDeviceContext(Worker $worker): array
     {
@@ -1491,6 +1780,41 @@ class TimePortal extends Component
         }
 
         return $task;
+    }
+
+    private function findClockPointRoundTask(Worker $worker, int $taskId): ?Task
+    {
+        $task = Task::query()
+            ->where('tenant_id', $worker->tenant_id)
+            ->where('internal_team_id', $worker->internal_team_id)
+            ->whereIn('status', TaskStatus::openValues())
+            ->with(['issue.roundStops.unit.location', 'roundStopSkips'])
+            ->find($taskId);
+
+        if ($task === null || ! $task->issue?->isInspectionRound()) {
+            return null;
+        }
+
+        return $task;
+    }
+
+    private function findClockPointUnit(Worker $worker, int $unitId): ?Unit
+    {
+        return Unit::query()
+            ->where('tenant_id', $worker->tenant_id)
+            ->where('is_active', true)
+            ->with(['location', 'category'])
+            ->find($unitId);
+    }
+
+    private function resetClockPointUnitCheckForm(): void
+    {
+        $this->checkResult = '';
+        $this->checkLatitude = null;
+        $this->checkLongitude = null;
+        $this->checkCheckedAt = null;
+        $this->checkChecklistItems = [];
+        $this->resetErrorBag(['checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems']);
     }
 
     private function resetClockPointEsgFields(): void
@@ -1640,7 +1964,7 @@ class TimePortal extends Component
         return $parsed instanceof Carbon ? $parsed->startOfMonth() : now()->startOfMonth();
     }
 
-    private function deviceForWorker(Worker $worker): ?\App\Models\WorkerDevice
+    private function deviceForWorker(Worker $worker): ?WorkerDevice
     {
         $token = WorkerDeviceSession::deviceTokenFromRequest();
         if ($token === '') {
@@ -1650,10 +1974,11 @@ class TimePortal extends Component
         return $worker->devices()->where('device_token', $token)->first();
     }
 
-    private function addFailedSignInError(\App\Models\InternalTeam $team): void
+    private function addFailedSignInError(InternalTeam $team): void
     {
         if (WorkerIconGuard::isBlocked($team)) {
             $this->addError('sign_in_icon_slug', __('portal.worker.errors.blocked'));
+
             return;
         }
         $this->addError('sign_in_icon_slug', __('portal.worker.errors.icon_wrong'));
@@ -1678,10 +2003,11 @@ class TimePortal extends Component
     protected function portalTeamleaderWorker(): ?Worker
     {
         $worker = $this->verifiedWorker();
+
         return ($worker !== null && $worker->is_teamleader) ? $worker : null;
     }
 
-    protected function portalReleaseTeam(): ?\App\Models\InternalTeam
+    protected function portalReleaseTeam(): ?InternalTeam
     {
         return $this->verifiedWorker()?->team;
     }
@@ -1691,7 +2017,7 @@ class TimePortal extends Component
         $this->flashMessage = $message;
     }
 
-    protected function portalManageWorkersTeam(): ?\App\Models\InternalTeam
+    protected function portalManageWorkersTeam(): ?InternalTeam
     {
         return $this->verifiedWorker()?->team;
     }

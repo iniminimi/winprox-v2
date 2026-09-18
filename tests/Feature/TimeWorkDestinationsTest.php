@@ -499,7 +499,7 @@ it('neemt een undated inspectieronde niet mee als de volgende vervaldatum morgen
     expect(app(ListWorkDestinationsForWorkerAction::class)->handle($tenant, $worker))->toBe([]);
 });
 
-it('toont inspectiestops op Vandaag en verbergt de ronde onder Open taken', function () {
+it('toont inspectiestops op Vandaag en de ronde onder Open taken', function () {
     ensureTestEncryptionKey();
     [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
     $unitB = Unit::factory()->create([
@@ -550,7 +550,7 @@ it('toont inspectiestops op Vandaag en verbergt de ronde onder Open taken', func
         ->assertSee('Kamer 214', false)
         ->assertSee('Stop B', false)
         ->assertSee(__('time.portal.today.navigate'), false)
-        ->assertDontSee('Poetssronde XYZ-hidden', false)
+        ->assertSee('Poetssronde XYZ-hidden', false)
         ->assertDontSee(__('portal.team.read_only_hint'), false)
         ->assertDontSee(__('portal.worker.start_task'), false);
 });

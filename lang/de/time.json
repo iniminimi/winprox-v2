@@ -328,7 +328,8 @@
             "title": "Wohin muss ich heute:",
             "empty": "Heute keine geplanten Besuche",
             "navigate": "Navigieren",
-            "start_work": "Arbeit starten"
+            "start_work": "Arbeit starten",
+            "do_check": "Unit-Check"
         }
     },
     "ciao": {

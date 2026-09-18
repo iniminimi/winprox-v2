@@ -148,8 +148,8 @@
     "team": {
         "title": "Aperçu de l'équipe",
         "read_only_hint": "Ceci est un aperçu. La réalisation des tâches n'est possible que via le QR de l'unité sur place.",
-        "complete_needs_visit": "Commencez d'abord le travail sur ce site. Ensuite vous pouvez clôturer les tâches ici. Les contrôles d'unité restent via le QR unité.",
-        "complete_on_site_hint": "Vous êtes sur place. Démarrez ou clôturez les tâches d'équipe, avec une note et des photos facultatives. Les contrôles d'unité restent via le QR unité.",
+        "complete_needs_visit": "Commencez d’abord le travail sur ce site. Ensuite vous pouvez clôturer les tâches d’équipe et le prochain arrêt d’inspection ici.",
+        "complete_on_site_hint": "Vous êtes sur place. Clôturez les tâches d’équipe, ou touchez le prochain arrêt d’inspection (contrôle d’unité) sous Où dois-je aller aujourd’hui.",
         "onboarding_done": "Vous êtes enregistré et connecté.",
         "icon_taken": "Cette icône est déjà utilisée. Choisissez-en une autre.",
         "register": {

@@ -239,7 +239,7 @@
         "save": "Prikklok-beveiliging opslaan",
         "saved": "Prikklok-beveiliging opgeslagen.",
         "gps_visits": "GPS-werkbezoeken (werk starten/stoppen op locatie- of unit-pin)",
-        "gps_visits_hint": "Inklokken blijft de betaalde dag zonder locatiebewijs. Werk starten eist verse GPS binnen de straal van de locatie-pin (klant) of een unit met vaste pin. Uitklokken mag overal; een open bezoek wordt eerst afgesloten. Met een open bezoek kun je teamtaken op Clock Point afhandelen (geen unit-sticker); unit-checks blijven via de unit-QR.",
+        "gps_visits_hint": "Inklokken blijft de betaalde dag zonder locatiebewijs. Werk starten eist verse GPS binnen de straal van de locatie-pin (klant) of een unit met vaste pin. Uitklokken mag overal; een open bezoek wordt eerst afgesloten. Met een open bezoek kun je teamtaken en de volgende inspectiestop (unit check) op Clock Point afhandelen (geen unit-sticker).",
         "gps_visit_radius": "Straal (meter)",
         "evacuation_list": "Evacuatielijst op Clock Point",
         "evacuation_list_hint": "Na aanmelden zien uitvoerders een tegel om te zien wie is ingeklokt. Ze bevestigen dat de raadpleging uitzonderlijk is; elke raadpleging wordt gelogd. Standaard uit."

@@ -148,8 +148,8 @@
     "team": {
         "title": "Resumen del equipo",
         "read_only_hint": "Esto es un resumen. Completar tareas solo es posible mediante el QR de la unidad en el lugar.",
-        "complete_needs_visit": "Empieza primero el trabajo en este emplazamiento. Después puedes cerrar tareas aquí. Las comprobaciones de unidad siguen en el QR de la unidad.",
-        "complete_on_site_hint": "Estás en el lugar. Inicia o cierra tareas de equipo, con nota y fotos opcionales. Las comprobaciones de unidad siguen en el QR de la unidad.",
+        "complete_needs_visit": "Empieza primero el trabajo en este emplazamiento. Después puedes cerrar tareas de equipo y la siguiente parada de inspección aquí.",
+        "complete_on_site_hint": "Estás en el lugar. Cierra tareas de equipo o pulsa la siguiente parada de inspección (unit check) en Adónde debo ir hoy.",
         "onboarding_done": "Está registrado y ha iniciado sesión.",
         "icon_taken": "Este icono ya está en uso. Elija otro.",
         "register": {

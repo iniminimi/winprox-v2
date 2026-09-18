@@ -148,8 +148,8 @@
     "team": {
         "title": "Teamoverzicht",
         "read_only_hint": "Dit is een overzicht. Taken afhandelen kan alleen via de unit-QR ter plaatse.",
-        "complete_needs_visit": "Start eerst werk op deze locatie. Daarna kun je taken hier afhandelen. Unit-checks blijven via de unit-QR.",
-        "complete_on_site_hint": "Je bent ter plaatse. Start of handel teamtaken af, met optionele notitie en foto's. Unit-checks blijven via de unit-QR.",
+        "complete_needs_visit": "Start eerst werk op deze locatie. Daarna kun je teamtaken en de volgende inspectiestop hier afhandelen.",
+        "complete_on_site_hint": "Je bent ter plaatse. Handel teamtaken af, of tik de volgende inspectiestop (unit check) onder Waar moet ik vandaag naartoe.",
         "onboarding_done": "Je bent geregistreerd en aangemeld.",
         "icon_taken": "Dit icoon is al in gebruik. Kies een ander.",
         "register": {

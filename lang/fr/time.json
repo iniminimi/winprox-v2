@@ -328,7 +328,8 @@
             "title": "Où dois-je aller aujourd'hui :",
             "empty": "Aucune visite prévue aujourd'hui",
             "navigate": "Naviguer",
-            "start_work": "Commencer le travail"
+            "start_work": "Commencer le travail",
+            "do_check": "Contrôle d’unité"
         }
     },
     "ciao": {

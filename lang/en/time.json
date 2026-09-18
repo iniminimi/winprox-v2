@@ -328,7 +328,8 @@
             "title": "Where do I need to go today:",
             "empty": "No planned visits today",
             "navigate": "Navigate",
-            "start_work": "Start work"
+            "start_work": "Start work",
+            "do_check": "Unit check"
         }
     },
     "ciao": {

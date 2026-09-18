@@ -1,9 +1,11 @@
 <?php
 
 use App\Actions\Time\AssertClockPointTaskVisitAction;
+use App\Actions\Time\AssertClockPointUnitVisitAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\StartWorkVisitAction;
 use App\Enums\TaskStatus;
+use App\Enums\UnitCheckResult;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
@@ -12,6 +14,7 @@ use App\Models\Location;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Models\UnitCheck;
 use App\Models\Worker;
 use App\Support\Tenancy;
 use Illuminate\Http\UploadedFile;
@@ -230,9 +233,93 @@ it('laat inspectierondes niet starten via Clock Point', function () {
         ->toThrow(InvalidArgumentException::class, 'clock_point_task_read_only');
 
     signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->assertSee('Ronde niet via Clock Point', false)
+        ->assertSee(__('time.portal.today.do_check'), false)
         ->call('startTask', $task->id)
         ->call('beginCompleteTask', $task->id)
         ->assertSet('completingTaskId', null);
 
     expect($task->fresh()->status)->toBe(TaskStatus::InProgress);
+});
+
+it('handelt de volgende inspectiestop af op Clock Point zonder unit-QR', function () {
+    $ctx = prepareClockPointWorker(gpsVisitContext());
+    [$tenant, $worker, $clockPoint, $location, $unit] = $ctx;
+    $unit->update(['allow_unit_checks' => true]);
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Stop zonder pin',
+        'latitude' => null,
+        'longitude' => null,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => null,
+        'unit_id' => null,
+        'approved_at' => now(),
+        'is_recurring' => true,
+        'description' => 'Ronde alle units',
+        'recurrence_next_due_at' => now()->endOfDay(),
+    ]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unit->id, 'sort_order' => 0]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unitB->id, 'sort_order' => 1]);
+    $task = clockPointOpenTask($ctx, $issue, ['status' => TaskStatus::InProgress]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
+
+    signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->assertSee('Ronde alle units', false)
+        ->assertSee('Stop zonder pin', false)
+        ->call('openClockPointUnitCheck', $unit->id)
+        ->assertSet('checkingUnitId', $unit->id)
+        ->call('submitClockPointUnitCheck', 'ok')
+        ->assertSet('checkingUnitId', null)
+        ->assertSet('flashMessage', __('portal.unit_check.recorded_ok'));
+
+    expect(UnitCheck::query()->where('unit_id', $unit->id)->where('task_id', $task->id)->value('result'))
+        ->toBe(UnitCheckResult::Ok)
+        ->and($task->fresh()->status)->toBe(TaskStatus::InProgress);
+
+    signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->call('openClockPointUnitCheck', $unitB->id)
+        ->call('submitClockPointUnitCheck', 'ok')
+        ->assertSet('flashMessage', __('portal.unit_check.recorded_ok'));
+
+    expect($task->fresh()->status)->toBe(TaskStatus::Done);
+});
+
+it('weigert een unit-check op Clock Point op een andere locatie', function () {
+    $ctx = prepareClockPointWorker(gpsVisitContext());
+    [$tenant, $worker, $clockPoint, $location, $unit] = $ctx;
+    $otherLocation = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Andere klant',
+        'street' => 'Kerkstraat',
+        'house_number' => '1',
+        'postal_code' => '8000',
+        'city' => 'Brugge',
+    ]);
+    $otherUnit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $otherLocation->id,
+        'name' => 'Andere stop',
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+    $unit->update(['allow_unit_checks' => true]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
+
+    expect(fn () => app(AssertClockPointUnitVisitAction::class)->handle($worker, $otherUnit))
+        ->toThrow(InvalidArgumentException::class, 'clock_point_visit_location_mismatch');
+
+    signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->call('openClockPointUnitCheck', $otherUnit->id)
+        ->assertSet('checkingUnitId', null)
+        ->assertSet('flashMessage', __('portal.worker.errors.not_this_location'));
 });
