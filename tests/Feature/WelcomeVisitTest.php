@@ -80,6 +80,8 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->assertSee(__('welcome.nav.more'), false)
         ->assertSee(__('landings.hospitality.nav_label'), false)
         ->assertSee(route('hospitality', absolute: false), false)
+        ->assertSee(__('landings.work-on-location.nav_label'), false)
+        ->assertSee(route('work-on-location', absolute: false), false)
         ->assertSee('id="video"', false)
         ->assertDontSee('wp-welcome-badge', false)
         ->assertDontSee('id="iot"', false)

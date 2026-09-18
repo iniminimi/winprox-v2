@@ -21,6 +21,7 @@ final class MarketingSeo
             'healthcare',
             'government',
             'realestate',
+            'work-on-location',
             'pricing',
             'contact.index',
             'faq.public',

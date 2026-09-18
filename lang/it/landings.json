@@ -610,5 +610,131 @@
             "why": "Laptop con la panoramica WinProx delle richieste.",
             "close": "Due colleghi consultano WinProx insieme su un tablet."
         }
+    },
+    "work-on-location": {
+        "nav_label": "Pulizie, edilizia",
+        "meta_title": "WinProx per pulizie ed edilizia | Lavoro in sede",
+        "social": {
+            "og_title": "WinProx per pulizie ed edilizia | Lavoro in sede",
+            "og_description": "Timbrare, lavorare dal cliente e chiudere — con QR, visite GPS e CIAO opzionale per le pulizie. Una sola app facility."
+        },
+        "eyebrow": "Pulizie ed edilizia",
+        "title": "Il lavoro nella sede del cliente, ben organizzato.",
+        "lead": "Le squadre di pulizie e di cantiere lavorano dal cliente, non in un’unica sede propria. WinProx è la stessa app facility: timbrare al Clock Point, vedere dove andare oggi, avviare una visita GPS, chiudere i compiti e finire. CIAO opzionale per le pulizie.",
+        "flow": "Timbrare → sul posto → lavoro → fatto",
+        "video": {
+            "title": "Scopri come funziona WinProx",
+            "lead": "Un esecutore timbra via Clock Point, avvia la visita dal cliente e chiude i compiti sullo smartphone. Niente app, niente catena di telefonate."
+        },
+        "problem": {
+            "title": "Chi è dove — e il lavoro è fatto?",
+            "lead": "Le squadre passano da un cliente all’altro. Senza un flusso unico si indovina: è arrivato qualcuno, quali compiti sono aperti, il giro è fatto? WinProx ne fa una catena, dalla timbratura alla chiusura.",
+            "questions": [
+                "La squadra è arrivata dal cliente?",
+                "Quali compiti o controlli sono aperti oggi?",
+                "Chi chiude una segnalazione sul posto?",
+                "La presenza è dimostrata in cantiere o dal cliente?",
+                "L’ufficio vede cosa è pronto senza telefonare?"
+            ]
+        },
+        "steps": {
+            "title": "Un flusso nella sede del cliente",
+            "items": [
+                {
+                    "title": "Timbrare",
+                    "body": "L’esecutore scansiona il QR Clock Point al deposito o al punto di partenza. Apre il turno: la timbratura non prova la sede del cliente."
+                },
+                {
+                    "title": "Sul posto",
+                    "body": "Con le visite GPS l’esecutore avvia la visita nella sede del cliente (o su un’unità con pin propria). Così si sa che il lavoro avviene lì."
+                },
+                {
+                    "title": "Lavoro",
+                    "body": "Compiti aperti, giri di ispezione e unit check seguono sullo smartphone. Un problema diventa una segnalazione con foto, senza un’altra app."
+                },
+                {
+                    "title": "Fatto",
+                    "body": "Chiudere la visita, timbrare in uscita. L’ufficio vede presenza, turno e compiti chiusi in un solo riepilogo."
+                }
+            ]
+        },
+        "places": {
+            "title": "Per uffici, cantieri e ogni indirizzo cliente",
+            "lead": "WinProx collega il lavoro al luogo in cui avviene. La stessa app negli edifici per uffici e in cantiere.",
+            "items": [
+                "uffici e spazi comuni",
+                "edifici sanitari e scolastici",
+                "condomini",
+                "siti industriali",
+                "cantieri",
+                "locali tecnici",
+                "altre sedi cliente"
+            ],
+            "close": "L’esecutore non deve cercare chi chiamare. Clock Point, visita e compito stanno nello stesso flusso."
+        },
+        "roles": {
+            "title": "Un sistema per squadra e ufficio",
+            "items": [
+                {
+                    "title": "Per gli esecutori",
+                    "body": "Timbrare, vedere dove andare oggi, avviare una visita e chiudere i compiti sul proprio telefono. Niente app extra."
+                },
+                {
+                    "title": "Per i caposquadra",
+                    "body": "Vedere chi ha timbrato, quali visite sono aperte e cosa resta sul giro o in cantiere."
+                },
+                {
+                    "title": "Per l’ufficio",
+                    "body": "Turno, presenza e chiusura in un’unica app facility. CIAO opzionale per le pulizie; l’edilizia segue la stessa pipeline quando lo scope RSZ è live."
+                },
+                {
+                    "title": "Per la sede del cliente",
+                    "body": "Segnalazioni e controlli restano legati all’unità o all’edificio. Niente foglietti o catene WhatsApp."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Stessa app, due squadre tipiche",
+            "lead": "WinProx non è un’app pulizie o edilizia separata. È Facility più uno strato Time opzionale, con le stesse segnalazioni, compiti e Clock Point.",
+            "items": [
+                {
+                    "title": "Pulizie",
+                    "body": "Squadre su più indirizzi cliente: Clock Point, visita GPS, compiti e unit check. Invio CIAO opzionale all’ONSS (richiesta via info@winprox.app)."
+                },
+                {
+                    "title": "Edilizia",
+                    "body": "Lo stesso metodo in cantiere: presenza, compiti e segnalazioni. Il CIAO edilizia è pronto e si attiva con lo scope ONSS ufficiale — nessuna promessa di conformità automatica al 100 % senza quel passo."
+                }
+            ]
+        },
+        "why": {
+            "title": "Perché WinProx",
+            "items": [
+                "Un’app facility: segnalazione → compiti → chiusura, più Time opzionale.",
+                "Niente app per gli esecutori: bastano smartphone e QR.",
+                "La visita GPS prova il lavoro dal cliente; la timbratura apre solo il turno.",
+                "Il turno è pianificazione; il CIAO resta IN/OUT reali al Clock Point o alla visita.",
+                "Il CIAO pulizie è disponibile su richiesta; l’edilizia segue la stessa pipeline.",
+                "L’ufficio segue presenza e compiti fino alla fine."
+            ]
+        },
+        "start": {
+            "title": "Inizi in piccolo. Ampia quando funziona.",
+            "lead": "Non serve convertire tutti i clienti o cantieri in una volta. Inizi con una squadra, un Clock Point o poche sedi.",
+            "trial": "Un mese di prova gratis, fino a 50 unità. Nessuna installazione."
+        },
+        "close": {
+            "title": "Pronto a provarlo?",
+            "lead": "Organizzi il lavoro nella sede del cliente: timbrare, lavorare sul posto, chiudere. Gli amministratori creano un account; gli esecutori scansionano e partono."
+        },
+        "visuals": {
+            "hero": "Addetta alle pulizie in polo WinProx guarda lo smartphone in un corridoio di uffici.",
+            "problem": "Addetta alle pulizie segue il lavoro sul telefono in un ufficio.",
+            "steps": "Due persone a un tavolo con una scheda QR in primo piano.",
+            "places": "Veduta aerea di un cantiere con gru e squadre in arancione.",
+            "roles": "Operaio con gilet arancione guarda lo smartphone in cantiere.",
+            "why": "Portatile con la panoramica WinProx delle richieste.",
+            "close": "Due colleghi guardano WinProx insieme su un tablet."
+        }
     }
 }

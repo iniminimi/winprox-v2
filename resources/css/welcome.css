@@ -2871,6 +2871,8 @@
     top: 100%;
     right: 0.7rem;
     display: flex;
+    color: inherit;
+    text-decoration: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -2911,6 +2913,11 @@
     height: 1.2rem;
     background: linear-gradient(135deg, transparent 50%, #e6c63f 50%);
     pointer-events: none;
+}
+
+[data-theme='standard'] a.wp-welcome-feature-board:focus-visible {
+    outline: 2px solid var(--wp-text);
+    outline-offset: 0.2rem;
 }
 
 [data-theme='standard'] .wp-welcome-feature-board .wp-pill {

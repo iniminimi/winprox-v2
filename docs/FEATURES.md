@@ -1140,7 +1140,7 @@ foutieve `card_body_facility` (hotel-tekst in DE).
 **Doel:** publieke marketing-/landingspagina. **Facility-only, voorlopig ZONDER demo.**
 
 **SEO / meertaligheid (hard):** elke marketingpagina heeft een **unieke URL per taal**
-(`/{locale}/`, `/{locale}/hospitality|industry|healthcare|government|realestate`, `/{locale}/pricing`,
+(`/{locale}/`, `/{locale}/hospitality|industry|healthcare|government|realestate|work-on-location`, `/{locale}/pricing`,
 `/{locale}/contact`, `/{locale}/legal/…`). `/` en oude paden zonder prefix **redirecten** naar
 de gelokaliseerde URL. Oude `/{locale}/promo` **301** naar de campagne-landing (met `ref`) of
 `/{locale}/government`. In `<head>`: hreflang + canonical. Sitemap: `/sitemap.xml` (vermeld in
@@ -1164,7 +1164,7 @@ App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
   *Van melding en planning tot uitvoering en afhandeling.* · **Scan → Meld → Werk → Klaar**
   (met iconen) · CTA's **Gratis proberen** / **Bekijk hoe het werkt**.
   Over de kaders een vierkante gele **post-it** (Nieuw): *Ook voor schoonmaak & bouw* /
-  *RSZ & Ciao voorbereid*. Geen GPS-claim; bouw-RSZ blijft “voorbereid”, niet live.
+  *RSZ & Ciao voorbereid* — linkt naar `/{locale}/work-on-location`. Geen GPS-claim; bouw-RSZ blijft “voorbereid”, niet live.
 - **Video:** korte demo (`video/welcome.mp4`, alle talen) onder de hero, met ruimte erboven.
   Geen assistent-clip in de topnav.
 - **Footer:** productfiches, juridisch, contact.
@@ -1193,8 +1193,8 @@ Sector-hub/real-estate/hospitality welcome-varianten + `/`-sector-routing, demo-
 params, `DemoSectorCopy`. Property→Location in copy.
 
 ### 11.5 Campagne-landings (geen productsectoren)
-Vijf **campagne-landings** (`/{locale}/hospitality|industry|healthcare|government|realestate`): één
-Facility-product, sectorvoorbeelden in de copy. Alle vijf mogen langer (e-mailbezoeker).
+Zes **campagne-landings** (`/{locale}/hospitality|industry|healthcare|government|realestate|work-on-location`): één
+Facility-product, sectorvoorbeelden in de copy. Alle zes mogen langer (e-mailbezoeker).
 Video: speler als het bestand bestaat (`{slug}_promo_{locale}.mp4` e.d.); elke landing
 reserveert de videoplek (placeholder tot het bestand er is). Government-NL valt tijdelijk
 terug op `video/nl/issue_nl_01.mp4` tot er een eigen government-video is. Vastgoed gebruikt
@@ -1208,6 +1208,11 @@ en een sluitbanner met linkse scrim. Horeca gebruikt `images/landing/hospitality
 (compact, breed, tall) en een sluitbanner met scrim. Zorg gebruikt `images/landing/healthcare/`
 met selectie (compact, breed, tall, feature) en een sluitbanner met scrim. Overheid gebruikt
 `images/landing/gouvernment/` met selectie (compact, breed, tall) en een sluitbanner met scrim.
+Schoonmaak/bouw (`work-on-location`) gebruikt `images/landing/work_on_location/` (hero, probleem,
+plaatsen, rollen) plus `images/landing/general/` voor stappen, waarom en sluitbanner met scrim.
+Copy: Clock Point, GPS-werkbezoek, taken/unit checks; CIAO optioneel voor schoonmaak (aanvraag);
+bouw-CIAO voorbereid achter RSZ-scope, geen 100 %-compliance-claim. Dit blijft **geen**
+tenant-productsector.
 Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `?ref=`. Dit is
 **geen** V1-sectorhub en **geen** productvariant.
 

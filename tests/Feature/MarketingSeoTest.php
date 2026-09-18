@@ -12,6 +12,7 @@ it('gebruikt unieke locale-URL voor marketingpagina\'s', function () {
     expect(route('government', ['locale' => 'fr'], absolute: false))->toBe('/fr/government');
     expect(route('hospitality', ['locale' => 'nl'], absolute: false))->toBe('/nl/hospitality');
     expect(route('realestate', ['locale' => 'nl'], absolute: false))->toBe('/nl/realestate');
+    expect(route('work-on-location', ['locale' => 'nl'], absolute: false))->toBe('/nl/work-on-location');
     expect(route('pricing', ['locale' => 'en'], absolute: false))->toBe('/en/pricing');
     expect(route('contact.index', ['locale' => 'es'], absolute: false))->toBe('/es/contact');
     expect(route('legal.privacy', ['locale' => 'it'], absolute: false))->toBe('/it/legal/privacy');
@@ -63,6 +64,7 @@ it('levert sitemap met alle taalvarianten', function () {
         ->and($body)->toContain(route('government', ['locale' => 'fr'], absolute: true))
         ->and($body)->toContain(route('hospitality', ['locale' => 'nl'], absolute: true))
         ->and($body)->toContain(route('realestate', ['locale' => 'nl'], absolute: true))
+        ->and($body)->toContain(route('work-on-location', ['locale' => 'nl'], absolute: true))
         ->and($body)->toContain('hreflang="x-default"');
 
     $localeCount = count(config('locales.supported'));

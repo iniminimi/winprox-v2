@@ -188,6 +188,31 @@ final class SectorLandingVisuals
                     'closeStyle' => 'scrim',
                 ],
             ],
+            PromoLanding::WorkOnLocation => [
+                'hero' => 'images/landing/work_on_location/image01.jpg',
+                'problem' => 'images/landing/work_on_location/image02.jpg',
+                'steps' => [
+                    'src' => 'images/landing/general/welcome_02.jpg',
+                    'modifier' => 'wp-landing-visual--compact',
+                ],
+                'places' => [
+                    'src' => 'images/landing/work_on_location/image04.jpg',
+                    'layout' => 'wide',
+                    'modifier' => 'wp-landing-visual--wide',
+                ],
+                'roles' => [
+                    'src' => 'images/landing/work_on_location/image03.jpg',
+                    'modifier' => 'wp-landing-visual--roles wp-landing-visual--tall',
+                ],
+                'why' => [
+                    'src' => 'images/landing/general/welcome_06.jpg',
+                    'modifier' => 'wp-landing-visual--feature',
+                ],
+                'close' => [
+                    'src' => 'images/landing/general/welcome_07.jpg',
+                    'closeStyle' => 'scrim',
+                ],
+            ],
             PromoLanding::Government => [
                 'hero' => 'images/landing/gouvernment/image_01.jpg',
                 'problem' => 'images/landing/gouvernment/image_03.jpg',

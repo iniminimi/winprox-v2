@@ -173,7 +173,8 @@
         "page_industry": "Industry landing",
         "page_healthcare": "Healthcare landing",
         "page_government": "Government landing",
-        "page_realestate": "Real estate landing"
+        "page_realestate": "Real estate landing",
+        "page_work_on_location": "Cleaning and construction landing"
     },
     "promo_campaigns": {
         "nav": "Promo campaigns",

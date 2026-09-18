@@ -610,5 +610,131 @@
             "why": "Laptop mit der WinProx-Übersicht der Anfragen.",
             "close": "Zwei Kollegen schauen gemeinsam WinProx auf einem Tablet an."
         }
+    },
+    "work-on-location": {
+        "nav_label": "Reinigung, Bau",
+        "meta_title": "WinProx für Reinigung und Bau | Arbeit vor Ort",
+        "social": {
+            "og_title": "WinProx für Reinigung und Bau | Arbeit vor Ort",
+            "og_description": "Einstempeln, beim Kunden arbeiten und abschließen — per QR, GPS-Arbeitsbesuchen und optionalem CIAO für Reinigung. Eine Facility-App."
+        },
+        "eyebrow": "Reinigung & Bau",
+        "title": "Die Arbeit am Kundenstandort, einfach gut geregelt.",
+        "lead": "Reinigungs- und Bautrupps arbeiten beim Kunden, nicht an einem eigenen Stammsitz. WinProx ist dieselbe Facility-App: am Clock Point einstempeln, sehen wohin es heute geht, einen GPS-Arbeitsbesuch starten, Aufgaben erledigen und abschließen. Optional CIAO für Reinigung.",
+        "flow": "Einstempeln → vor Ort → Arbeit → fertig",
+        "video": {
+            "title": "So funktioniert WinProx",
+            "lead": "Ein Ausführender stempelt über Clock Point ein, startet den Besuch beim Kunden und erledigt Aufgaben am Smartphone. Keine App, keine Telefonkette."
+        },
+        "problem": {
+            "title": "Wer ist wo — und ist die Arbeit erledigt?",
+            "lead": "Trupps fahren von Kunde zu Kunde. Ohne einen Ablauf bleibt es Raten: Ist jemand angekommen, welche Aufgaben sind offen, ist die Runde erledigt? WinProx macht daraus eine Kette vom Einstempeln bis zum Abschluss.",
+            "questions": [
+                "Ist der Trupp beim Kunden angekommen?",
+                "Welche Aufgaben oder Checks sind heute offen?",
+                "Wer schließt eine Meldung vor Ort ab?",
+                "Ist die Anwesenheit auf der Baustelle oder beim Kunden belegt?",
+                "Sieht die Verwaltung, was fertig ist, ohne anzurufen?"
+            ]
+        },
+        "steps": {
+            "title": "Ein Ablauf am Kundenstandort",
+            "items": [
+                {
+                    "title": "Einstempeln",
+                    "body": "Der Ausführende scannt den Clock-Point-QR am Depot oder Startpunkt. Das öffnet die Schicht — Einstempeln ist kein Nachweis des Kundenorts."
+                },
+                {
+                    "title": "Vor Ort",
+                    "body": "Mit GPS-Arbeitsbesuchen startet der Ausführende den Besuch am Kundenstandort (oder an einer Unit mit eigener Pin). So weiß man, dass die Arbeit dort stattfindet."
+                },
+                {
+                    "title": "Arbeit",
+                    "body": "Offene Aufgaben, Inspektionsrunden und Unit-Checks folgen am Smartphone. Ein Problem wird eine Meldung mit Foto, ohne Extra-App."
+                },
+                {
+                    "title": "Fertig",
+                    "body": "Besuch beenden, ausstempeln. Die Verwaltung sieht Anwesenheit, Dienstplan und erledigte Aufgaben in einer Übersicht."
+                }
+            ]
+        },
+        "places": {
+            "title": "Für Büros, Baustellen und jede Kundenadresse",
+            "lead": "WinProx koppelt die Arbeit an den Ort, an dem sie passiert. Dieselbe App in Bürogebäuden und auf der Baustelle.",
+            "items": [
+                "Büros und Gemeinschaftsräume",
+                "Pflege- und Schulgebäude",
+                "Wohnanlagen",
+                "Industriestandorte",
+                "Baustellen",
+                "Technikräume",
+                "andere Kundenorte"
+            ],
+            "close": "Der Ausführende muss nicht suchen, wen er anrufen soll. Clock Point, Arbeitsbesuch und Aufgabe sitzen im selben Ablauf."
+        },
+        "roles": {
+            "title": "Ein System für Trupp und Verwaltung",
+            "items": [
+                {
+                    "title": "Für Ausführende",
+                    "body": "Einstempeln, sehen wohin es heute geht, einen Arbeitsbesuch starten und Aufgaben am eigenen Handy erledigen. Keine Extra-App."
+                },
+                {
+                    "title": "Für Teamleiter",
+                    "body": "Sehen, wer eingestempelt ist, welche Besuche laufen und was auf der Runde oder Baustelle noch offen ist."
+                },
+                {
+                    "title": "Für die Verwaltung",
+                    "body": "Dienstplan, Anwesenheit und Abschluss in einer Facility-App. Optionales CIAO für Reinigung; Bau folgt derselben Pipeline, wenn der RSZ-Scope live ist."
+                },
+                {
+                    "title": "Für den Kundenstandort",
+                    "body": "Meldungen und Checks bleiben an Unit oder Gebäude gekoppelt. Keine Zettel oder WhatsApp-Ketten."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Dieselbe App, zwei typische Trupps",
+            "lead": "WinProx ist keine separate Reinigungs- oder Bau-App. Es ist Facility plus optionale Time-Schicht, mit denselben Meldungen, Aufgaben und Clock Point.",
+            "items": [
+                {
+                    "title": "Reinigung",
+                    "body": "Trupps an mehreren Kundenadressen: Clock Point, GPS-Arbeitsbesuch, Aufgaben und Unit-Checks. Optionale CIAO-Meldung an den LSS (Antrag über info@winprox.app)."
+                },
+                {
+                    "title": "Bau",
+                    "body": "Dieselbe Methode auf der Baustelle: Anwesenheit, Aufgaben und Meldungen. CIAO für den Bau ist vorbereitet und geht mit dem offiziellen LSS-Scope live — kein Versprechen automatischer 100-%-Compliance ohne diesen Schritt."
+                }
+            ]
+        },
+        "why": {
+            "title": "Warum WinProx",
+            "items": [
+                "Eine Facility-App: Meldung → Aufgaben → Abschluss, plus optionales Time.",
+                "Keine App für Ausführende: Smartphone und QR reichen.",
+                "Der GPS-Arbeitsbesuch belegt Arbeit am Kundenort; Einstempeln öffnet nur die Schicht.",
+                "Der Dienstplan ist Planung; CIAO bleibt echtes IN/OUT am Clock Point oder Besuch.",
+                "CIAO für Reinigung ist auf Anfrage verfügbar; Bau folgt derselben Pipeline.",
+                "Die Verwaltung folgt Anwesenheit und Aufgaben bis sie fertig sind."
+            ]
+        },
+        "start": {
+            "title": "Klein starten. Erweitern, wenn es läuft.",
+            "lead": "Sie müssen nicht alle Kunden oder Baustellen auf einmal umstellen. Starten Sie mit einem Trupp, einem Clock Point oder einigen Standorten.",
+            "trial": "Einen Monat kostenlos testen, bis 50 Units. Keine Installation."
+        },
+        "close": {
+            "title": "Bereit, es selbst zu versuchen?",
+            "lead": "Regeln Sie die Arbeit am Kundenstandort: einstempeln, vor Ort arbeiten, abschließen. Verwalter legen ein Konto an; Ausführende scannen und legen los."
+        },
+        "visuals": {
+            "hero": "Reinigungskraft im WinProx-Polo schaut in einem Büroflur auf ihr Smartphone.",
+            "problem": "Reinigungskraft verfolgt die Arbeit am Telefon in einem Büro.",
+            "steps": "Zwei Personen an einem Tisch mit einer QR-Karte im Vordergrund.",
+            "places": "Luftbild einer Baustelle mit Kränen und Trupps in Orange.",
+            "roles": "Bauarbeiter in oranger Weste schaut auf der Baustelle auf sein Smartphone.",
+            "why": "Laptop mit der WinProx-Übersicht der Anfragen.",
+            "close": "Zwei Kollegen schauen gemeinsam auf einem Tablet in WinProx."
+        }
     }
 }

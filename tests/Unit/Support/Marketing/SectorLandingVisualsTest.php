@@ -68,3 +68,20 @@ it('levert industry-foto’s wanneer de bestanden bestaan', function () {
         ->toHaveKey('places')
         ->and(SectorLandingVisuals::closeStyle(PromoLanding::Industry))->toBe('scrim');
 });
+
+it('levert schoonmaak- en bouwfoto’s wanneer de bestanden bestaan', function () {
+    $visuals = SectorLandingVisuals::for(PromoLanding::WorkOnLocation);
+
+    expect($visuals)->toHaveKeys(['hero', 'problem', 'steps', 'places', 'roles', 'why', 'close'])
+        ->and($visuals['hero'])->toBe('images/landing/work_on_location/image01.jpg')
+        ->and($visuals['problem'])->toBe('images/landing/work_on_location/image02.jpg')
+        ->and($visuals['places'])->toBe('images/landing/work_on_location/image04.jpg')
+        ->and($visuals['roles'])->toBe('images/landing/work_on_location/image03.jpg')
+        ->and($visuals['close'])->toBe('images/landing/general/welcome_07.jpg')
+        ->and(is_file(public_path($visuals['hero'])))->toBeTrue()
+        ->and(SectorLandingVisuals::modifiers(PromoLanding::WorkOnLocation))
+        ->toHaveKey('steps')
+        ->and(SectorLandingVisuals::layouts(PromoLanding::WorkOnLocation))
+        ->toHaveKey('places')
+        ->and(SectorLandingVisuals::closeStyle(PromoLanding::WorkOnLocation))->toBe('scrim');
+});

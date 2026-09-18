@@ -610,5 +610,131 @@
             "why": "Laptop met het WinProx-overzicht van aanvragen.",
             "close": "Twee collega's bekijken WinProx samen op een tablet."
         }
+    },
+    "work-on-location": {
+        "nav_label": "Schoonmaak, bouw",
+        "meta_title": "WinProx voor schoonmaak en bouw | Werk op locatie",
+        "social": {
+            "og_title": "WinProx voor schoonmaak en bouw | Werk op locatie",
+            "og_description": "Inklokken, ter plaatse werken en afhandelen — met QR, GPS-werkbezoeken en optioneel CIAO voor schoonmaak. Eén facility-app."
+        },
+        "eyebrow": "Schoonmaak & bouw",
+        "title": "Het werk op de locatie van de klant, goed geregeld.",
+        "lead": "Schoonmaak- en bouwploegen werken bij de klant, niet op één eigen vestiging. WinProx is dezelfde facility-app: inklokken via Clock Point, zien waar je vandaag naartoe moet, een GPS-werkbezoek starten en taken afhandelen tot ze klaar zijn. Optioneel CIAO voor schoonmaak.",
+        "flow": "Inklokken → ter plaatse → werk → klaar",
+        "video": {
+            "title": "Zie hoe WinProx werkt",
+            "lead": "Een uitvoerder klokt in via Clock Point, start het werkbezoek bij de klant en handelt taken af op de smartphone. Geen app, geen telefoonketen."
+        },
+        "problem": {
+            "title": "Wie is waar — en is het werk gedaan?",
+            "lead": "Ploegen rijden van klant naar klant. Zonder één workflow blijft het giswerk: is iemand aangekomen, welke taken staan open, is de ronde gedaan? Met WinProx wordt dat één keten van inklokken tot afhandeling.",
+            "questions": [
+                "Is de ploeg aangekomen bij de klant?",
+                "Welke taken of checks staan vandaag open?",
+                "Wie handelt een melding ter plaatse af?",
+                "Is de aanwezigheid bewezen op de werf of bij de klant?",
+                "Ziet beheer wat klaar is zonder te bellen?"
+            ]
+        },
+        "steps": {
+            "title": "Eén workflow op de locatie van de klant",
+            "items": [
+                {
+                    "title": "Inklokken",
+                    "body": "De uitvoerder scant de Clock Point-QR op de vestiging of het startpunt. Dat opent de dienst — inklokken is geen bewijs van de klantlocatie."
+                },
+                {
+                    "title": "Ter plaatse",
+                    "body": "Met GPS-werkbezoeken start de uitvoerder het bezoek op de klantlocatie (of op een unit met eigen pin). Zo weet je dat het werk daar gebeurt."
+                },
+                {
+                    "title": "Werk",
+                    "body": "Open taken, inspectierondes en unit checks volgen op de smartphone. Een probleem wordt een melding met foto, zonder aparte app."
+                },
+                {
+                    "title": "Klaar",
+                    "body": "Bezoek beëindigen, uitklokken. Beheer ziet aanwezigheid, rooster en afgehandelde taken in één overzicht."
+                }
+            ]
+        },
+        "places": {
+            "title": "Voor kantoren, werven en elk klantenadres",
+            "lead": "WinProx koppelt het werk aan de plaats waar het gebeurt. Dezelfde app op kantoorlocaties en op de werf.",
+            "items": [
+                "kantoren en gemeenschappelijke ruimtes",
+                "zorg- en schoolgebouwen",
+                "appartementsgebouwen",
+                "industriële sites",
+                "werven en bouwplaatsen",
+                "technische lokalen",
+                "andere klantlocaties"
+            ],
+            "close": "De uitvoerder hoeft niet te zoeken wie hij moet bellen. Clock Point, werkbezoek en taak zitten in dezelfde flow."
+        },
+        "roles": {
+            "title": "Eén systeem voor ploeg en beheer",
+            "items": [
+                {
+                    "title": "Voor uitvoerders",
+                    "body": "Inklokken, zien waar je vandaag naartoe moet, een werkbezoek starten en taken afhandelen op je eigen gsm. Geen extra app."
+                },
+                {
+                    "title": "Voor teamleaders",
+                    "body": "Zien wie ingeklokt is, welke bezoeken lopen en wat er nog openstaat op de ronde of de werf."
+                },
+                {
+                    "title": "Voor beheer",
+                    "body": "Rooster, aanwezigheid en afhandeling in één facility-app. Optioneel CIAO voor schoonmaak; bouw volgt dezelfde pijplijn wanneer de RSZ-scope live is."
+                },
+                {
+                    "title": "Voor de klantlocatie",
+                    "body": "Meldingen en checks blijven gekoppeld aan de unit of het gebouw. Geen losse briefjes of WhatsApp-ketens."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Zelfde app, twee typische ploegen",
+            "lead": "WinProx is geen aparte schoonmaak- of bouwapp. Het is Facility + optionele Time-laag, met dezelfde meldingen, taken en Clock Point.",
+            "items": [
+                {
+                    "title": "Schoonmaak",
+                    "body": "Ploegen op meerdere klantadressen: Clock Point, GPS-werkbezoek, taken en unit checks. Optionele CIAO-doorgifte naar de RSZ (aanvragen via info@winprox.app)."
+                },
+                {
+                    "title": "Bouw",
+                    "body": "Zelfde werkwijze op de werf: aanwezigheid, taken en meldingen. CIAO voor bouw is voorbereid en gaat live met de officiële RSZ-scope — geen belofte van automatische 100 % compliance zonder die stap."
+                }
+            ]
+        },
+        "why": {
+            "title": "Waarom WinProx",
+            "items": [
+                "Eén facility-app: melding → taken → afhandeling, plus optionele Time.",
+                "Geen app voor uitvoerders: smartphone en QR volstaan.",
+                "GPS-werkbezoek bewijst werk op de klantlocatie; inklokken alleen opent de dienst.",
+                "Uurrooster is planning; CIAO blijft echte IN/OUT op Clock Point of bezoek.",
+                "CIAO voor schoonmaak is beschikbaar op aanvraag; bouw volgt dezelfde pijplijn.",
+                "Beheer volgt aanwezigheid en taken tot ze klaar zijn."
+            ]
+        },
+        "start": {
+            "title": "Begin klein. Breid uit wanneer het werkt.",
+            "lead": "Je hoeft niet meteen alle klanten of werven om te zetten. Start met één ploeg, één Clock Point of een handvol locaties.",
+            "trial": "Een maand gratis testen, tot 50 units. Geen installatie."
+        },
+        "close": {
+            "title": "Klaar om het zelf te proberen?",
+            "lead": "Regel het werk op de locatie van de klant: inklokken, ter plaatse werken, afhandelen. Beheerders maken een account; uitvoerders scannen en gaan aan de slag."
+        },
+        "visuals": {
+            "hero": "Schoonmaakmedewerker met WinProx-polo bekijkt haar smartphone in een kantoorhal.",
+            "problem": "Schoonmaakmedewerker volgt het werk op haar telefoon in een kantoor.",
+            "steps": "Twee mensen aan een tafel met een QR-codekaart op de voorgrond.",
+            "places": "Luchtbeeld van een bouwplaats met kranen en ploegen in oranje.",
+            "roles": "Bouwvakker in oranje hesje bekijkt zijn smartphone op de werf.",
+            "why": "Laptop met het WinProx-overzicht van aanvragen.",
+            "close": "Twee collega's bekijken WinProx samen op een tablet."
+        }
     }
 }

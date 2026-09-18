@@ -610,5 +610,131 @@
             "why": "Laptop showing the WinProx request overview.",
             "close": "Two colleagues reviewing WinProx together on a tablet."
         }
+    },
+    "work-on-location": {
+        "nav_label": "Cleaning, construction",
+        "meta_title": "WinProx for cleaning and construction | Work on site",
+        "social": {
+            "og_title": "WinProx for cleaning and construction | Work on site",
+            "og_description": "Clock in, work on the customer site and close it out — with QR, GPS work visits and optional CIAO for cleaning. One facility app."
+        },
+        "eyebrow": "Cleaning & construction",
+        "title": "Work at the customer site, properly organised.",
+        "lead": "Cleaning and construction crews work at the customer site, not on one home base. WinProx is the same facility app: clock in at Clock Point, see where to go today, start a GPS work visit, complete tasks and finish. Optional CIAO for cleaning.",
+        "flow": "Clock in → on site → work → done",
+        "video": {
+            "title": "See how WinProx works",
+            "lead": "A worker clocks in via Clock Point, starts the visit at the customer site and completes tasks on a smartphone. No app, no phone chain."
+        },
+        "problem": {
+            "title": "Who is where — and is the work done?",
+            "lead": "Crews move from customer to customer. Without one workflow it is guesswork: has anyone arrived, which tasks are open, was the round finished? WinProx makes that one chain from clock-in to completion.",
+            "questions": [
+                "Has the crew arrived at the customer?",
+                "Which tasks or checks are open today?",
+                "Who closes an issue on site?",
+                "Is presence proven on the site or at the customer?",
+                "Can the office see what is done without calling?"
+            ]
+        },
+        "steps": {
+            "title": "One workflow at the customer site",
+            "items": [
+                {
+                    "title": "Clock in",
+                    "body": "The worker scans the Clock Point QR at the depot or starting point. That opens the shift — clock-in is not proof of the customer location."
+                },
+                {
+                    "title": "On site",
+                    "body": "With GPS work visits the worker starts the visit at the customer location (or a unit with its own pin). That shows the work happens there."
+                },
+                {
+                    "title": "Work",
+                    "body": "Open tasks, inspection rounds and unit checks follow on the smartphone. A problem becomes an issue with a photo, without a separate app."
+                },
+                {
+                    "title": "Done",
+                    "body": "End the visit, clock out. The office sees presence, the roster and completed tasks in one overview."
+                }
+            ]
+        },
+        "places": {
+            "title": "For offices, sites and every customer address",
+            "lead": "WinProx ties the work to the place where it happens. The same app in office buildings and on the construction site.",
+            "items": [
+                "offices and shared spaces",
+                "care and school buildings",
+                "apartment buildings",
+                "industrial sites",
+                "construction sites",
+                "plant rooms",
+                "other customer locations"
+            ],
+            "close": "The worker does not need to hunt for who to call. Clock Point, work visit and task sit in the same flow."
+        },
+        "roles": {
+            "title": "One system for crew and office",
+            "items": [
+                {
+                    "title": "For workers",
+                    "body": "Clock in, see where to go today, start a work visit and complete tasks on your own phone. No extra app."
+                },
+                {
+                    "title": "For team leaders",
+                    "body": "See who is clocked in, which visits are open and what is still outstanding on the round or site."
+                },
+                {
+                    "title": "For the office",
+                    "body": "Roster, presence and completion in one facility app. Optional CIAO for cleaning; construction follows the same pipeline when the RSZ scope is live."
+                },
+                {
+                    "title": "For the customer site",
+                    "body": "Issues and checks stay tied to the unit or building. No loose notes or WhatsApp chains."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Same app, two typical crews",
+            "lead": "WinProx is not a separate cleaning or construction app. It is Facility plus an optional Time layer, with the same issues, tasks and Clock Point.",
+            "items": [
+                {
+                    "title": "Cleaning",
+                    "body": "Crews at several customer addresses: Clock Point, GPS work visit, tasks and unit checks. Optional CIAO filing to the RSZ (request via info@winprox.app)."
+                },
+                {
+                    "title": "Construction",
+                    "body": "The same method on site: presence, tasks and issues. CIAO for construction is prepared and goes live with the official RSZ scope — no promise of automatic 100% compliance without that step."
+                }
+            ]
+        },
+        "why": {
+            "title": "Why WinProx",
+            "items": [
+                "One facility app: issue → tasks → completion, plus optional Time.",
+                "No app for workers: a smartphone and QR are enough.",
+                "A GPS work visit proves work at the customer location; clock-in only opens the shift.",
+                "The roster is planning; CIAO stays real IN/OUT at Clock Point or the visit.",
+                "CIAO for cleaning is available on request; construction follows the same pipeline.",
+                "The office follows presence and tasks until they are done."
+            ]
+        },
+        "start": {
+            "title": "Start small. Grow when it works.",
+            "lead": "You do not need to convert every customer or site at once. Start with one crew, one Clock Point or a handful of locations.",
+            "trial": "One month free trial, up to 50 units. No install."
+        },
+        "close": {
+            "title": "Ready to try it yourself?",
+            "lead": "Organise work at the customer site: clock in, work on site, close it out. Admins create an account; workers scan and get started."
+        },
+        "visuals": {
+            "hero": "Cleaning worker in a WinProx polo checks her smartphone in an office corridor.",
+            "problem": "Cleaning worker follows the work on her phone in an office.",
+            "steps": "Two people at a table with a QR code card in the foreground.",
+            "places": "Aerial view of a construction site with cranes and crews in orange.",
+            "roles": "Construction worker in an orange vest checks his smartphone on site.",
+            "why": "Laptop showing the WinProx overview of requests.",
+            "close": "Two colleagues look at WinProx together on a tablet."
+        }
     }
 }

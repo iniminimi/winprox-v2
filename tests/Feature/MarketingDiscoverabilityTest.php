@@ -72,6 +72,7 @@ it('llms.txt bevat about, feature-pagina\'s en Markdown-fiches', function () {
     $this->get(route('llms.txt'))
         ->assertOk()
         ->assertSee(route('about', ['locale' => 'en'], absolute: true), false)
+        ->assertSee(route('work-on-location', ['locale' => 'en'], absolute: true), false)
         ->assertSee(route('features.facility', ['locale' => 'en'], absolute: true), false)
         ->assertSee(route('product.api_webhooks.md', ['locale' => 'en'], absolute: true), false)
         ->assertSee(route('product.features.md', ['locale' => 'en'], absolute: true), false)

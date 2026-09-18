@@ -15,6 +15,7 @@ return [
         'healthcare',
         'government',
         'realestate',
+        'work-on-location',
     ],
 
     /*

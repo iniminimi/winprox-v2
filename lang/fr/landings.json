@@ -610,5 +610,131 @@
             "why": "Ordinateur portable avec l'aperçu WinProx des demandes.",
             "close": "Deux collègues consultent WinProx ensemble sur une tablette."
         }
+    },
+    "work-on-location": {
+        "nav_label": "Nettoyage, construction",
+        "meta_title": "WinProx pour le nettoyage et la construction | Travail sur site",
+        "social": {
+            "og_title": "WinProx pour le nettoyage et la construction | Travail sur site",
+            "og_description": "Pointer, travailler chez le client et clôturer — via QR, visites GPS et CIAO optionnel pour le nettoyage. Une seule app facility."
+        },
+        "eyebrow": "Nettoyage & construction",
+        "title": "Le travail chez le client, simplement bien organisé.",
+        "lead": "Les équipes de nettoyage et de construction travaillent chez le client, pas sur un seul site propre. WinProx est la même app facility : pointer au Clock Point, voir où aller aujourd’hui, démarrer une visite GPS, traiter les tâches et terminer. CIAO optionnel pour le nettoyage.",
+        "flow": "Pointer → sur place → travail → terminé",
+        "video": {
+            "title": "Voir comment WinProx fonctionne",
+            "lead": "Un exécutant pointe via Clock Point, démarre la visite chez le client et traite les tâches sur smartphone. Pas d’app, pas de chaîne d’appels."
+        },
+        "problem": {
+            "title": "Qui est où — et le travail est-il fait ?",
+            "lead": "Les équipes passent de client en client. Sans un seul flux, on devine : quelqu’un est-il arrivé, quelles tâches sont ouvertes, la tournée est-elle faite ? WinProx en fait une chaîne, du pointage à la clôture.",
+            "questions": [
+                "L’équipe est-elle arrivée chez le client ?",
+                "Quelles tâches ou contrôles sont ouverts aujourd’hui ?",
+                "Qui clôture un signalement sur place ?",
+                "La présence est-elle prouvée sur le chantier ou chez le client ?",
+                "Le bureau voit-il ce qui est terminé sans téléphoner ?"
+            ]
+        },
+        "steps": {
+            "title": "Un seul flux chez le client",
+            "items": [
+                {
+                    "title": "Pointer",
+                    "body": "L’exécutant scanne le QR Clock Point au dépôt ou au point de départ. Cela ouvre le service — le pointage n’est pas une preuve du lieu client."
+                },
+                {
+                    "title": "Sur place",
+                    "body": "Avec les visites GPS, l’exécutant démarre la visite à l’adresse client (ou sur une unité avec sa propre pin). On sait que le travail s’y fait."
+                },
+                {
+                    "title": "Travail",
+                    "body": "Tâches ouvertes, tournées d’inspection et unit checks suivent sur le smartphone. Un problème devient un signalement avec photo, sans app séparée."
+                },
+                {
+                    "title": "Terminé",
+                    "body": "Fin de visite, pointage de sortie. Le bureau voit présence, planning et tâches clôturées dans un seul aperçu."
+                }
+            ]
+        },
+        "places": {
+            "title": "Pour bureaux, chantiers et chaque adresse client",
+            "lead": "WinProx relie le travail au lieu où il se fait. La même app dans les immeubles de bureaux et sur le chantier.",
+            "items": [
+                "bureaux et espaces communs",
+                "bâtiments de soins et d’écoles",
+                "immeubles d’appartements",
+                "sites industriels",
+                "chantiers",
+                "locaux techniques",
+                "autres lieux clients"
+            ],
+            "close": "L’exécutant n’a pas à chercher qui appeler. Clock Point, visite et tâche sont dans le même flux."
+        },
+        "roles": {
+            "title": "Un système pour l’équipe et le bureau",
+            "items": [
+                {
+                    "title": "Pour les exécutants",
+                    "body": "Pointer, voir où aller aujourd’hui, démarrer une visite et traiter les tâches sur son téléphone. Pas d’app en plus."
+                },
+                {
+                    "title": "Pour les chefs d’équipe",
+                    "body": "Voir qui a pointé, quelles visites sont ouvertes et ce qui reste sur la tournée ou le chantier."
+                },
+                {
+                    "title": "Pour le bureau",
+                    "body": "Planning, présence et clôture dans une seule app facility. CIAO optionnel pour le nettoyage ; la construction suit le même pipeline quand le périmètre RSZ est en ligne."
+                },
+                {
+                    "title": "Pour le site client",
+                    "body": "Signalements et contrôles restent liés à l’unité ou au bâtiment. Pas de papiers volants ni de chaînes WhatsApp."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Même app, deux équipes types",
+            "lead": "WinProx n’est pas une app nettoyage ou construction séparée. C’est Facility plus une couche Time optionnelle, avec les mêmes signalements, tâches et Clock Point.",
+            "items": [
+                {
+                    "title": "Nettoyage",
+                    "body": "Équipes sur plusieurs adresses clients : Clock Point, visite GPS, tâches et unit checks. Transmission CIAO optionnelle vers l’ONSS (demande via info@winprox.app)."
+                },
+                {
+                    "title": "Construction",
+                    "body": "La même méthode sur le chantier : présence, tâches et signalements. Le CIAO construction est préparé et sera activé avec le périmètre ONSS officiel — pas de promesse de 100 % de conformité automatique sans cette étape."
+                }
+            ]
+        },
+        "why": {
+            "title": "Pourquoi WinProx",
+            "items": [
+                "Une app facility : signalement → tâches → clôture, plus Time optionnel.",
+                "Pas d’app pour les exécutants : smartphone et QR suffisent.",
+                "La visite GPS prouve le travail chez le client ; le pointage ouvre seulement le service.",
+                "Le planning n’est pas la présence ; le CIAO reste les IN/OUT réels au Clock Point ou à la visite.",
+                "Le CIAO nettoyage est disponible sur demande ; la construction suit le même pipeline.",
+                "Le bureau suit présence et tâches jusqu’à la fin."
+            ]
+        },
+        "start": {
+            "title": "Commencez petit. Étendez quand ça marche.",
+            "lead": "Inutile de convertir tous les clients ou chantiers d’un coup. Commencez par une équipe, un Clock Point ou quelques lieux.",
+            "trial": "Un mois d’essai gratuit, jusqu’à 50 unités. Pas d’installation."
+        },
+        "close": {
+            "title": "Prêt à l’essayer ?",
+            "lead": "Organisez le travail chez le client : pointer, travailler sur place, clôturer. Les gestionnaires créent un compte ; les exécutants scannent et commencent."
+        },
+        "visuals": {
+            "hero": "Agent de nettoyage en polo WinProx consulte son smartphone dans un couloir de bureaux.",
+            "problem": "Agent de nettoyage suit le travail sur son téléphone dans un bureau.",
+            "steps": "Deux personnes à une table avec une carte QR au premier plan.",
+            "places": "Vue aérienne d’un chantier avec grues et équipes en orange.",
+            "roles": "Ouvrier en gilet orange consulte son smartphone sur le chantier.",
+            "why": "Ordinateur portable avec l’aperçu WinProx des demandes.",
+            "close": "Deux collègues consultent WinProx ensemble sur une tablette."
+        }
     }
 }

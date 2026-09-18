@@ -62,11 +62,11 @@
                             <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
                             <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_how') }}</a>
                         </div>
-                        <aside class="wp-welcome-feature-board" aria-label="{{ __('welcome.hero.feature_board.badge') }}">
+                        <a href="{{ route('work-on-location') }}" class="wp-welcome-feature-board" aria-label="{{ __('welcome.hero.feature_board.title') }}">
                             <span class="wp-pill wp-pill--new">{{ __('welcome.hero.feature_board.badge') }}</span>
                             <p class="wp-welcome-feature-board__title">{{ __('welcome.hero.feature_board.title') }}</p>
                             <p class="wp-welcome-feature-board__text">{{ __('welcome.hero.feature_board.text') }}</p>
-                        </aside>
+                        </a>
                     </div>
                 </figure>
             </div>

@@ -197,6 +197,36 @@ it('toont de uitgebreide realestate-landing', function () {
         ->assertRedirect(route('realestate', ['locale' => 'nl']));
 });
 
+it('toont de schoonmaak- en bouwlanding', function () {
+    $this->withHeader('Accept-Language', 'xx-XX,xx;q=0.9')
+        ->get('/work-on-location')
+        ->assertRedirect(route('work-on-location', ['locale' => 'nl']));
+
+    $this->get(route('work-on-location', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('landings.work-on-location.title', [], 'nl'))
+        ->assertSee(__('landings.work-on-location.flow', [], 'nl'))
+        ->assertSee(__('landings.work-on-location.problem.title', [], 'nl'))
+        ->assertSee(__('landings.work-on-location.sites.items.0.title', [], 'nl'))
+        ->assertSee(__('landings.work-on-location.sites.items.1.title', [], 'nl'))
+        ->assertSee(__('landings.work-on-location.start.trial', [], 'nl'))
+        ->assertSee('images/landing/work_on_location/image01.jpg', false)
+        ->assertSee('images/landing/work_on_location/image04.jpg', false)
+        ->assertSee('images/landing/general/welcome_07.jpg', false)
+        ->assertSee('wp-landing-block--wide-photo', false)
+        ->assertSee('wp-landing-close--scrim', false)
+        ->assertSee('id="landing-video"', false)
+        ->assertSee(__('landings.shared.video_placeholder', [], 'nl'))
+        ->assertDontSee('Bekijk demo', false)
+        ->assertDontSee('langdurig contract', false);
+
+    $this->get(route('work-on-location', ['locale' => 'fr']))
+        ->assertOk()
+        ->assertSee(__('landings.work-on-location.title', [], 'fr'))
+        ->assertSee(__('landings.work-on-location.problem.title', [], 'fr'))
+        ->assertSee('id="landing-video"', false);
+});
+
 it('toont taalkeuze bovenaan een sectorlanding', function () {
     $this->get(route('government'))
         ->assertOk()
