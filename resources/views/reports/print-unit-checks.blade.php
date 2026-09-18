@@ -51,12 +51,7 @@
                                 @endif
                             </p>
                             @if (is_array($check->checklist_failed) && $check->checklist_failed !== [])
-                                <p class="wp-muted wp-text-sm">{{ __('unit_checks.checklist_failed') }}</p>
-                                <ul class="wp-list-plain wp-stack-tight">
-                                    @foreach ($check->checklist_failed as $failedItem)
-                                        <li>{{ $failedItem }}</li>
-                                    @endforeach
-                                </ul>
+                                <p class="wp-text-body">{{ __('unit_checks.checklist_failed') }} : {{ implode(', ', $check->checklist_failed) }}</p>
                             @endif
                             @if (filled($check->description))
                                 <p class="wp-text-body">{{ $check->description }}</p>
