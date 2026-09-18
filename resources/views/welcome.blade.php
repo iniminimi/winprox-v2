@@ -66,6 +66,7 @@
                             <span class="wp-pill wp-pill--new">{{ __('welcome.hero.feature_board.badge') }}</span>
                             <p class="wp-welcome-feature-board__title">{{ __('welcome.hero.feature_board.title') }}</p>
                             <p class="wp-welcome-feature-board__text">{{ __('welcome.hero.feature_board.text') }}</p>
+                            <p class="wp-welcome-feature-board__price">{{ __('welcome.hero.feature_board.price') }}</p>
                         </a>
                     </div>
                 </figure>

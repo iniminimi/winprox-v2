@@ -2883,12 +2883,12 @@
     text-decoration: none;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
+    justify-content: flex-start;
+    gap: 0.3rem;
     width: 11.5rem;
     height: 11.5rem;
     margin: 0;
-    padding: 1.05rem 0.9rem 1.15rem;
+    padding: 1.05rem 0.75rem 1.2rem;
     text-align: center;
     background: #ffe566;
     border: 0;
@@ -2945,6 +2945,15 @@
     font-size: 0.8125rem;
     line-height: 1.35;
     color: var(--wp-text-body);
+}
+
+[data-theme='standard'] .wp-welcome-feature-board__price {
+    margin: auto 0 0;
+    max-width: 100%;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--wp-text);
 }
 
 @media (min-width: 48rem) {

@@ -73,6 +73,7 @@ it('logt welcome-bezoek via de publieke route', function () {
         ->assertSee('wp-welcome-feature-board', false)
         ->assertSee(__('welcome.hero.feature_board.title'))
         ->assertSee(__('welcome.hero.feature_board.text'))
+        ->assertSee(__('welcome.hero.feature_board.price'))
         ->assertSee(__('welcome.nav.pricing'), false)
         ->assertSee(__('welcome.nav.features_overview'), false)
         ->assertSee(__('welcome.nav.faq'), false)
