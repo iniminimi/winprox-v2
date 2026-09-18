@@ -195,7 +195,7 @@
     },
     "clock_point_qr": {
         "button": "Clock Point QR-code",
-        "default_name": "Inklokken"
+        "default_name": "Aanmelden"
     },
     "errors": {
         "not_authorized": "Je hebt geen toestemming om dit te doen.",

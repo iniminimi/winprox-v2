@@ -15,7 +15,7 @@ use Illuminate\Support\Collection;
  */
 final class TimePortalData
 {
-    /** @var list<string> Former default Clock Point names (login wording). */
+    /** @var list<string> Former default Clock Point names (login, then clock-in wording). */
     public const FORMER_GENERIC_NAMES = [
         'Inloggen',
         'Sign in',
@@ -23,6 +23,12 @@ final class TimePortalData
         'Connexion',
         'Inicio de sesión',
         'Accesso',
+        'Inklokken',
+        'Clock in',
+        'Einstempeln',
+        'Pointage',
+        'Fichar',
+        'Timbratura',
     ];
 
     /**

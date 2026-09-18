@@ -261,7 +261,7 @@
         "minute_short": "min"
     },
     "portal": {
-        "title": "Clock in",
+        "title": "Sign in",
         "switch_worker": "Switch worker",
         "clock": {
             "title": "Presence",

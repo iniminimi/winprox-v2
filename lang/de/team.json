@@ -195,7 +195,7 @@
     },
     "clock_point_qr": {
         "button": "Clock Point QR-Code",
-        "default_name": "Einstempeln"
+        "default_name": "Anmeldung"
     },
     "errors": {
         "not_authorized": "Sie sind nicht berechtigt, diese Aktion durchzuführen.",

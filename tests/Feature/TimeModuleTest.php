@@ -418,7 +418,7 @@ it('laat een admin een open shift geforceerd sluiten met reden en auditlog', fun
         ->exists())->toBeTrue();
 });
 
-it('verbergt de standaard Clock Point-naam onder Inklokken', function () {
+it('verbergt de standaard Clock Point-naam onder Aanmelden', function () {
     [$tenant] = timeTenantWithAdmin();
     ClockPoint::factory()->create([
         'tenant_id' => $tenant->id,
@@ -444,7 +444,20 @@ it('verbergt de oude standaardnaam Inloggen op Clock Point', function () {
         ->assertDontSeeHtml('<p class="wp-muted">Inloggen</p>');
 });
 
-it('toont een eigen Clock Point-naam onder Inklokken', function () {
+it('verbergt de oude standaardnaam Inklokken op Clock Point', function () {
+    [$tenant] = timeTenantWithAdmin();
+    ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Inklokken',
+        'qr_token' => 'legacy-clock-in-name',
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => 'legacy-clock-in-name'])
+        ->assertSee(__('time.portal.title'), false)
+        ->assertDontSeeHtml('<p class="wp-muted">Inklokken</p>');
+});
+
+it('toont een eigen Clock Point-naam onder Aanmelden', function () {
     [$tenant] = timeTenantWithAdmin();
     ClockPoint::factory()->create([
         'tenant_id' => $tenant->id,
