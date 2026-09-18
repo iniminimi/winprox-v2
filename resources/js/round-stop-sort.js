@@ -18,6 +18,9 @@ function registerAlpineComponent() {
             if (event.pointerType === 'mouse' && event.button !== 0) {
                 return;
             }
+            if (event.target.closest('input, button, a')) {
+                return;
+            }
             event.preventDefault();
             this.kind = 'unit';
             this.from = index;
@@ -54,7 +57,7 @@ function registerAlpineComponent() {
                 }
                 return;
             }
-            const group = el?.closest('[data-round-stop-location]');
+            const group = el?.closest('.wp-round-stop-picker__group[data-round-stop-location]');
             if (!group) {
                 return;
             }

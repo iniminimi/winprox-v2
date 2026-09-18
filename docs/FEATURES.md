@@ -498,9 +498,9 @@ stops meer zijn voor **deze** cyclus-taak.
 - Stops op de melding (`issue_round_stops`); ronde-issue heeft `unit_id = null`.
   `location_id` alleen als alle stops dezelfde locatie delen, anders null.
   Create- én show-picker: actieve units met unit checks, gegroepeerd per locatie
-  (stops mogen over locaties heen). Gekozen stops staan in een genummerde lijst
-  per locatie; units sleep je alleen binnen dezelfde locatie, locatie-blokken
-  zelf bepaal je als geheel (1 = eerste stop). Units zonder checks
+  (stops mogen over locaties heen). Aanvinken en loopvolgorde zitten in
+  dezelfde lijst per locatie: sleep een aangevinkte unit binnen de locatie,
+  of sleep de locatiekop voor het hele blok (1 = eerste stop). Units zonder checks
   staan niet in de lijst.
 - **Beheer — intentie-flow:** knop *Inspectieronde plannen* op **Werk → Inspectierondes**
   (primaire plek) en nog op Meldingen (naast Nieuwe melding): stops + interval + team
