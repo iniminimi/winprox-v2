@@ -181,7 +181,67 @@ it('klapt inspectiestops uit als bestemmingen', function () {
     $rows = app(ListWorkDestinationsForWorkerAction::class)->handle($tenant, $worker);
 
     expect($rows)->toHaveCount(2)
-        ->and(collect($rows)->pluck('unitId')->all())->toEqualCanonicalizing([(int) $unit->id, (int) $unitB->id]);
+        ->and(collect($rows)->pluck('unitId')->all())->toBe([(int) $unit->id, (int) $unitB->id]);
+});
+
+it('zet Vandaag-locaties in inspectieronde-volgorde, niet alfabetisch', function () {
+    ensureTestEncryptionKey();
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $location->update(['name' => 'Zebra-werf']);
+    $alpha = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Alpha-klant',
+        'street' => 'Kerkstraat',
+        'house_number' => '1',
+        'postal_code' => '8000',
+        'city' => 'Brugge',
+        'is_active' => true,
+    ]);
+    $unitAlpha = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $alpha->id,
+        'name' => 'Stop Alpha',
+        'latitude' => 51.21,
+        'longitude' => 3.22,
+        'is_active' => true,
+    ]);
+    $worker->update([
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint->update(['qr_token' => 'today-round-order-'.$tenant->id]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => null,
+        'unit_id' => null,
+        'approved_at' => now(),
+        'is_recurring' => true,
+        'recurrence_next_due_at' => now()->endOfDay(),
+    ]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unit->id, 'sort_order' => 0]);
+    IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unitAlpha->id, 'sort_order' => 1]);
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $worker->internal_team_id,
+        'status' => TaskStatus::InProgress,
+        'due_at' => now(),
+    ]);
+
+    $rows = app(ListWorkDestinationsForWorkerAction::class)->handle($tenant, $worker);
+
+    expect(collect($rows)->pluck('locationName')->unique()->values()->all())
+        ->toBe(['Zebra-werf', 'Alpha-klant']);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('clockIn')
+        ->assertSeeInOrder(['Zebra-werf', 'Alpha-klant']);
 });
 
 it('toont een ronde zelf niet als navigeerbare bestemming', function () {
@@ -466,7 +526,7 @@ it('neemt een undated inspectieronde mee als de volgende vervaldatum vandaag is'
     $rows = app(ListWorkDestinationsForWorkerAction::class)->handle($tenant, $worker);
 
     expect($rows)->toHaveCount(2)
-        ->and(collect($rows)->pluck('unitId')->all())->toEqualCanonicalizing([(int) $unit->id, (int) $unitB->id]);
+        ->and(collect($rows)->pluck('unitId')->all())->toBe([(int) $unit->id, (int) $unitB->id]);
 });
 
 it('neemt een undated inspectieronde niet mee als de volgende vervaldatum morgen is', function () {

@@ -1026,7 +1026,7 @@
                 },
                 {
                     "label": "Où dois-je aller aujourd'hui",
-                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : uniquement les sites (nom + adresse). Touchez l'icône GPS pour l'itinéraire Google Maps. Commencer le travail apparaît sur le site une fois sur place. Pendant la visite, le site actuel et l'arrêt suivant apparaissent en haut. Les arrêts d'inspection sont sous Tâches ouvertes ; Contrôle d'unité seulement après Commencer le travail. Les tâches ouvertes sans date restent sous Tâches ouvertes."
+                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : uniquement les sites (nom + adresse), dans l’ordre de la tournée d’inspection (pas alphabétique). Touchez l'icône GPS pour l'itinéraire Google Maps. Commencer le travail apparaît sur le site une fois sur place. Pendant la visite, le site actuel et l'arrêt suivant apparaissent en haut. Les arrêts d'inspection sont sous Tâches ouvertes ; Contrôle d'unité seulement après Commencer le travail. Les tâches ouvertes sans date restent sous Tâches ouvertes."
                 },
                 {
                     "label": "Liste d’évacuation",

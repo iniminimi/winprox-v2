@@ -53,18 +53,22 @@ class ListWorkDestinationsForWorkerAction
 
         /** @var array<string, WorkDestinationData> $byKey */
         $byKey = [];
+        $tasks = $this->todaysOpenTasks($team, $dayStart, $dayEnd);
 
-        foreach ($this->todaysOpenTasks($team, $dayStart, $dayEnd) as $task) {
+        foreach ($tasks as $task) {
             $issue = $task->issue;
-            if ($issue === null) {
+            if ($issue === null || ! $issue->isInspectionRound()) {
                 continue;
             }
 
-            if ($issue->isInspectionRound()) {
-                foreach ($issue->roundStops->sortBy('sort_order') as $stop) {
-                    $this->offerUnit($byKey, $stop->unit, $worker, $radius);
-                }
+            foreach ($issue->roundStops->sortBy('sort_order') as $stop) {
+                $this->offerUnit($byKey, $stop->unit, $worker, $radius);
+            }
+        }
 
+        foreach ($tasks as $task) {
+            $issue = $task->issue;
+            if ($issue === null || $issue->isInspectionRound()) {
                 continue;
             }
 
@@ -81,17 +85,7 @@ class ListWorkDestinationsForWorkerAction
 
         $this->offerTodaysRosterUnit($byKey, $tenant, $worker, $dayStart, $radius);
 
-        $rows = array_values($byKey);
-        usort($rows, function (WorkDestinationData $a, WorkDestinationData $b): int {
-            $location = strcasecmp($a->locationName, $b->locationName);
-            if ($location !== 0) {
-                return $location;
-            }
-
-            return strcasecmp((string) $a->unitName, (string) $b->unitName);
-        });
-
-        return $rows;
+        return array_values($byKey);
     }
 
     /**

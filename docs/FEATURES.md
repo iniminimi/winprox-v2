@@ -738,7 +738,9 @@ productsector op `Tenant`.
   (locatienaam + adres + locatie-nav). Bron: open teamtaken met `scheduled_for`
   of `due_at` vandaag (inspectiestops tellen mee voor de locatie, niet als
   unit-rijen) + optioneel de gepubliceerde roostercel van vandaag met `unit_id`.
-  Eerste inspectieronde-cyclus krijgt die datums uit `recurrence_next_due_at`; een
+  Locaties staan in **inspectieronde-stopvolgorde** (eerste keer dat de locatie
+  in de ronde voorkomt), niet alfabetisch. Overige dated teamtaken en rooster
+  komen daarna. Eerste inspectieronde-cyclus krijgt die datums uit `recurrence_next_due_at`; een
   bestaande undated ronde-taak telt mee als `recurrence_next_due_at` vandaag is.
   **Geen** overige undated open taken (die blijven onder Open taken).
   Inspectierondes staan onder **Open taken**: omschrijving, prio/status, volgende
