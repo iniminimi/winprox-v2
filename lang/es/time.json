@@ -255,6 +255,19 @@
                 "unavailable": "La exportación QR no está disponible en este servidor.",
                 "generating": "Creando hoja de impresión…",
                 "download_failed": "No se pudo crear la hoja de impresión QR."
+            },
+            "email": {
+                "heading": "Correo",
+                "hint": "Envíe el código QR y el enlace de acceso a un operario en la ubicación.",
+                "label": "Correo electrónico",
+                "placeholder": "nombre@empresa.es",
+                "send": "Enviar",
+                "sent": "Código QR y enlace enviados.",
+                "inactive": "Este clock point está inactivo. Actívelo primero.",
+                "undeliverable": "Esta dirección no puede recibir correo.",
+                "invalid": "Introduzca una dirección de correo válida.",
+                "rate_limited": "Demasiados correos. Inténtelo de nuevo en :seconds segundos.",
+                "qr_unavailable": "No se pudo crear el código QR."
             }
         }
     },

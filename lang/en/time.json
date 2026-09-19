@@ -255,6 +255,19 @@
                 "unavailable": "QR export is not available on this server.",
                 "generating": "Creating print sheet…",
                 "download_failed": "Could not create the QR print sheet."
+            },
+            "email": {
+                "heading": "Email",
+                "hint": "Send the QR code and sign-in link to a worker on site.",
+                "label": "Email address",
+                "placeholder": "name@company.com",
+                "send": "Send",
+                "sent": "QR code and link sent.",
+                "inactive": "This clock point is inactive. Activate it first.",
+                "undeliverable": "This address cannot receive email.",
+                "invalid": "Enter a valid email address.",
+                "rate_limited": "Too many emails. Try again in :seconds seconds.",
+                "qr_unavailable": "The QR code could not be created."
             }
         }
     },

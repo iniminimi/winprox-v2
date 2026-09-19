@@ -65,6 +65,14 @@
         "open_issue": "Visualizza segnalazione",
         "link_fallback": "Se il pulsante non funziona, copi questo link:"
     },
+    "clock_point_qr": {
+        "subject": ":tenant — Clock Point",
+        "intro": ":tenant ti invia il QR Clock Point per accedere in sede. Apri il link o scansiona il codice. L’accesso avviene con nome e icona personale — senza password.",
+        "field_location": "Sede",
+        "cta": "Apri Clock Point",
+        "link_fallback": "Se il pulsante non funziona, copia questo link:",
+        "footer": "Non ti aspettavi questa e-mail? Non devi fare nulla."
+    },
     "municipal_promo_letter": {
         "subject": "Slimmer beheer van publieke ruimte in :municipality",
         "greeting": "Geachte,",

@@ -1363,7 +1363,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Ansehen/Drucken im Browser, oder ein Word-Druckblatt (A6, A5 oder A4) mit derselben Marke wie unter Einstellungen → QR-Druckblatt. Jeder Clock Point hat einen einzigartigen Code."
+                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Ansehen/Drucken im Browser, oder ein Word-Druckblatt (A6, A5 oder A4) mit derselben Marke wie unter Einstellungen → QR-Druckblatt. Über <strong>E-Mail</strong> senden Sie den QR-Code und den Anmeldelink an eine ausführende Person vor Ort. Jeder Clock Point hat einen einzigartigen Code."
                 },
                 {
                     "label": "QR-Rotation",

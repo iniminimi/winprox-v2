@@ -1371,7 +1371,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Via <strong>QR</strong>, vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4) avec la même charte que Paramètres → Feuille d'impression QR. Chaque clock point a un code unique."
+                    "text": "Via <strong>QR</strong>, vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4) avec la même charte que Paramètres → Feuille d'impression QR. Via <strong>E-mail</strong>, vous envoyez le code QR et le lien de connexion à un exécutant sur site. Chaque clock point a un code unique."
                 },
                 {
                     "label": "Rotation QR",

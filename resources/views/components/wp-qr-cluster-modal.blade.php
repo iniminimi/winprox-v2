@@ -39,6 +39,8 @@
             </div>
         @endif
 
+        {{ $email ?? '' }}
+
         @if ($formats !== [])
             <div class="wp-modal-section">
                 <div class="wp-stack-tight">

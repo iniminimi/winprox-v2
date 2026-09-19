@@ -142,6 +142,7 @@ it('opens clock-point qr cluster modal with print pack choices only', function (
         ->assertSee(__('common.qr.modal_title'), false)
         ->assertSee($clockPoint->name, false)
         ->assertSee(__('common.qr.print'), false)
+        ->assertSee(__('time.clock_points.qr.email.heading'), false)
         ->assertSee(__('common.qr.pack_heading'), false)
         ->assertDontSee(__('common.qr.renew_hint'), false)
         ->assertSee(__('common.qr.formats.a6_print.title'), false)

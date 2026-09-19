@@ -255,6 +255,19 @@
                 "unavailable": "QR-export is niet beschikbaar op deze server.",
                 "generating": "Afdrukblad wordt aangemaakt…",
                 "download_failed": "QR-afdrukblad kon niet worden aangemaakt."
+            },
+            "email": {
+                "heading": "E-mail",
+                "hint": "Stuur de QR-code en de aanmeldlink naar een uitvoerder op locatie.",
+                "label": "E-mailadres",
+                "placeholder": "naam@bedrijf.be",
+                "send": "Versturen",
+                "sent": "QR-code en link verzonden.",
+                "inactive": "Dit clock point is inactief. Activeer het eerst.",
+                "undeliverable": "Dit adres kan geen e-mail ontvangen.",
+                "invalid": "Vul een geldig e-mailadres in.",
+                "rate_limited": "Te veel e-mails. Probeer over :seconds seconden opnieuw.",
+                "qr_unavailable": "De QR-code kon niet worden aangemaakt."
             }
         }
     },

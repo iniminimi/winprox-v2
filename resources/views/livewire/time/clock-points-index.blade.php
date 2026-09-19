@@ -178,6 +178,40 @@
             ])->all()"
             :generating="__('time.clock_points.qr.pack.generating')"
             :download-failed="__('time.clock_points.qr.pack.download_failed')"
-        />
+        >
+            <x-slot:email>
+                <div class="wp-modal-section">
+                    <div class="wp-stack-tight">
+                        <h3 class="wp-label">{{ __('time.clock_points.qr.email.heading') }}</h3>
+                        <p class="wp-muted">{{ __('time.clock_points.qr.email.hint') }}</p>
+                    </div>
+                    @if ($qrMailFlash)
+                        <div class="wp-flash wp-flash--success">{{ $qrMailFlash }}</div>
+                    @endif
+                    <div class="wp-field">
+                        <label class="wp-label" for="clock-point-qr-mail-email">{{ __('time.clock_points.qr.email.label') }}</label>
+                        <div class="wp-cluster wp-cluster--wrap">
+                            <input
+                                id="clock-point-qr-mail-email"
+                                type="email"
+                                class="wp-input"
+                                wire:model="qrMailEmail"
+                                autocomplete="email"
+                                placeholder="{{ __('time.clock_points.qr.email.placeholder') }}"
+                            >
+                            <button
+                                type="button"
+                                class="btn btn--primary"
+                                wire:click="sendQrMail"
+                                wire:loading.attr="disabled"
+                            >
+                                {{ __('time.clock_points.qr.email.send') }}
+                            </button>
+                        </div>
+                        @error('qrMailEmail') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                </div>
+            </x-slot:email>
+        </x-wp-qr-cluster-modal>
     @endif
 </div>

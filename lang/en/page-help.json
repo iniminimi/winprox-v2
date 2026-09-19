@@ -1363,7 +1363,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, or download a Word print sheet (A6, A5 or A4) with the same branding as Settings → QR print sheet. Each clock point has a unique code."
+                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, or download a Word print sheet (A6, A5 or A4) with the same branding as Settings → QR print sheet. Use <strong>Email</strong> to send the QR code and the sign-in link to a worker on site. Each clock point has a unique code."
                 },
                 {
                     "label": "QR rotation",

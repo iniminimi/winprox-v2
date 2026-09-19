@@ -255,6 +255,19 @@
                 "unavailable": "L'export QR n'est pas disponible sur ce serveur.",
                 "generating": "Création de la feuille d'impression…",
                 "download_failed": "Impossible de créer la feuille d'impression QR."
+            },
+            "email": {
+                "heading": "E-mail",
+                "hint": "Envoyez le code QR et le lien de connexion à un exécutant sur site.",
+                "label": "Adresse e-mail",
+                "placeholder": "nom@entreprise.be",
+                "send": "Envoyer",
+                "sent": "Code QR et lien envoyés.",
+                "inactive": "Ce clock point est inactif. Activez-le d’abord.",
+                "undeliverable": "Cette adresse ne peut pas recevoir d’e-mail.",
+                "invalid": "Saisissez une adresse e-mail valide.",
+                "rate_limited": "Trop d’e-mails. Réessayez dans :seconds secondes.",
+                "qr_unavailable": "Le code QR n’a pas pu être créé."
             }
         }
     },

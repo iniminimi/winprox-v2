@@ -5,9 +5,12 @@ namespace App\Livewire\Time;
 use App\Actions\Time\CreateClockPointAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Actions\Time\RenewClockPointQrAction;
+use App\Actions\Time\SendClockPointQrMailAction;
 use App\Actions\Time\SetClockPointActiveAction;
 use App\Actions\Time\UpdateClockPointAction;
 use App\Actions\Time\UpdateTenantTimeQrRotationMonthsAction;
+use App\Data\Time\SendClockPointQrMailData;
+use App\Http\Requests\Time\SendClockPointQrMailRequest;
 use App\Http\Requests\Time\StoreClockPointRequest;
 use App\Http\Requests\Time\UpdateClockPointRequest;
 use App\Models\AuditLog;
@@ -17,6 +20,7 @@ use App\Models\Tenant;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -37,6 +41,8 @@ class ClockPointsIndex extends Component
     public bool $homescreenShortcut = false;
     public ?int $qrRotationMonths = null;
     public ?int $renewQrClockPointId = null;
+    public string $qrMailEmail = '';
+    public ?string $qrMailFlash = null;
 
     public function mount(EnsureDefaultClockPointAction $ensureDefaultClockPoint): void
     {
@@ -148,6 +154,9 @@ class ClockPointsIndex extends Component
         $this->authorize('view', $clockPoint);
 
         $this->qrPackClockPointId = $clockPoint->id;
+        $this->qrMailEmail = '';
+        $this->qrMailFlash = null;
+        $this->resetErrorBag('qrMailEmail');
         $this->showQrPackModal = true;
     }
 
@@ -155,6 +164,49 @@ class ClockPointsIndex extends Component
     {
         $this->showQrPackModal = false;
         $this->qrPackClockPointId = null;
+        $this->qrMailEmail = '';
+        $this->qrMailFlash = null;
+        $this->resetErrorBag('qrMailEmail');
+    }
+
+    public function sendQrMail(SendClockPointQrMailAction $send): void
+    {
+        $clockPoint = ClockPoint::query()->findOrFail($this->qrPackClockPointId);
+        $this->authorize('view', $clockPoint);
+
+        $validated = $this->validate([
+            'qrMailEmail' => SendClockPointQrMailRequest::rulesFor()['email'],
+        ], [], [
+            'qrMailEmail' => __('time.clock_points.qr.email.label'),
+        ]);
+
+        $actor = auth()->user();
+        $supported = config('locales.supported', []);
+        $locale = in_array((string) ($actor?->locale), $supported, true)
+            ? (string) $actor->locale
+            : (string) app()->getLocale();
+
+        try {
+            $send->handle(
+                $clockPoint,
+                new SendClockPointQrMailData((string) $validated['qrMailEmail']),
+                (int) Tenancy::id(),
+                $actor?->id,
+                $locale,
+            );
+        } catch (ValidationException $exception) {
+            $emailErrors = $exception->errors()['email'] ?? null;
+            if ($emailErrors !== null) {
+                throw ValidationException::withMessages([
+                    'qrMailEmail' => $emailErrors,
+                ]);
+            }
+
+            throw $exception;
+        }
+
+        $this->qrMailEmail = '';
+        $this->qrMailFlash = __('time.clock_points.qr.email.sent');
     }
 
     public function saveQrRotationSettings(UpdateTenantTimeQrRotationMonthsAction $update): void
