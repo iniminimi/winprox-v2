@@ -7,6 +7,8 @@ use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Models\Issue;
 use App\Models\Task;
+use App\Support\Recurrence\RecurrenceSchedule;
+use Carbon\Carbon;
 
 /**
  * Stap 2 facility-flow: één taak toewijzen aan een team (status In uitvoering).
@@ -25,18 +27,19 @@ class AssignIssueTeamTaskAction
         TaskPriority $priority = TaskPriority::Prio3,
         array $extra = [],
     ): Task {
+        $openedDueAt = null;
         if ($issue->isInspectionRound()) {
-            $dueAt = $issue->recurrence_next_due_at?->copy() ?? now();
+            $openedDueAt = $issue->recurrence_next_due_at?->copy() ?? now();
             $extra = array_merge([
-                'scheduled_for' => $dueAt->toDateString(),
-                'due_at' => $dueAt,
+                'scheduled_for' => $openedDueAt->toDateString(),
+                'due_at' => $openedDueAt,
                 'is_recurring_cycle' => true,
                 'recurrence_issue_id' => $issue->id,
                 'cycle_number' => 1,
             ], $extra);
         }
 
-        return $this->createTask->handle(
+        $task = $this->createTask->handle(
             issue: $issue,
             internalTeamId: $internalTeamId,
             status: TaskStatus::InProgress,
@@ -45,5 +48,20 @@ class AssignIssueTeamTaskAction
             startedAt: now(),
             extra: $extra,
         );
+
+        if ($openedDueAt instanceof Carbon && $issue->is_recurring) {
+            $fresh = $issue->fresh();
+            if ($fresh !== null) {
+                $current = $fresh->recurrence_next_due_at;
+                if ($current === null || $current->toDateString() === $openedDueAt->toDateString()) {
+                    $fresh->update([
+                        'recurrence_next_due_at' => RecurrenceSchedule::followingDueAtForIssue($fresh, $openedDueAt),
+                        'recurrence_last_task_created_at' => now(),
+                    ]);
+                }
+            }
+        }
+
+        return $task;
     }
 }

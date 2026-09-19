@@ -18,6 +18,7 @@ class UpdateTaskStatusAction
     public function __construct(
         private AddIssueUpdateAction $addUpdate,
         private RecalculateIssueStatusAction $recalculateIssueStatus,
+        private CreateRecurringTaskCycleAction $createRecurringCycle,
     ) {}
 
     public function handle(
@@ -87,8 +88,17 @@ class UpdateTaskStatusAction
             event(new TaskCompleted($fresh, $actorId));
         }
 
+        if (
+            in_array($status, [TaskStatus::Done, TaskStatus::Closed], true)
+            && $from !== $status
+            && $fresh->isRecurring()
+            && $fresh->issue?->is_recurring
+        ) {
+            $this->createRecurringCycle->handle($fresh->issue);
+        }
+
         $this->recalculateIssueStatus->handle($fresh->issue);
 
-        return $fresh;
+        return $fresh->fresh();
     }
 }

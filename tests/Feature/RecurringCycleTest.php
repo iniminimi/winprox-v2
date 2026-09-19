@@ -76,6 +76,8 @@ it('does not create cycle if already exists for due date', function () {
         'tenant_id' => $tenant->id,
         'is_recurring' => true,
         'recurrence_active' => true,
+        'recurrence_interval_value' => 1,
+        'recurrence_interval_unit' => RecurrenceIntervalUnit::Week->value,
         'recurrence_lead_days' => 7,
         'recurrence_next_due_at' => $dueDate,
     ]);
@@ -87,12 +89,53 @@ it('does not create cycle if already exists for due date', function () {
         'due_at' => $dueDate,
         'is_recurring_cycle' => true,
         'cycle_number' => 1,
+        'status' => TaskStatus::InProgress,
     ]);
 
     $action = app(CreateRecurringTaskCycleAction::class);
     $task = $action->handle($issue, now()->addDays(7));
 
     expect($task)->toBeNull();
+    expect($issue->fresh()->recurrence_next_due_at?->toDateString())
+        ->toBe($dueDate->copy()->addWeek()->toDateString());
+});
+
+it('advances a stuck next-due pointer and opens the following cycle after completion', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $dueDate = now()->subDay()->endOfDay();
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'is_recurring' => true,
+        'recurrence_active' => true,
+        'recurrence_interval_value' => 1,
+        'recurrence_interval_unit' => RecurrenceIntervalUnit::Week->value,
+        'recurrence_lead_days' => 7,
+        'recurrence_next_due_at' => $dueDate,
+    ]);
+
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'recurrence_issue_id' => $issue->id,
+        'due_at' => $dueDate,
+        'scheduled_for' => $dueDate->toDateString(),
+        'is_recurring_cycle' => true,
+        'cycle_number' => 1,
+        'status' => TaskStatus::Done,
+    ]);
+
+    $action = app(CreateRecurringTaskCycleAction::class);
+    $next = $action->handle($issue, now());
+
+    expect($next)->not->toBeNull()
+        ->and($next->cycle_number)->toBe(2)
+        ->and($next->due_at?->toDateString())->toBe($dueDate->copy()->addWeek()->toDateString());
+    expect($issue->fresh()->recurrence_next_due_at?->toDateString())
+        ->toBe($dueDate->copy()->addWeeks(2)->toDateString());
 });
 
 it('does not create cycle while a previous cycle is still open', function () {

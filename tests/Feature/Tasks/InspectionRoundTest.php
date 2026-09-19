@@ -838,7 +838,9 @@ it('creates an inspection round via CreateInspectionRoundAction', function () {
         ->and($issue->tasks->first()->status)->toBe(TaskStatus::InProgress)
         ->and($issue->tasks->first()->scheduled_for?->toDateString())->toBe(now()->toDateString())
         ->and($issue->tasks->first()->due_at?->toDateString())->toBe(now()->toDateString())
-        ->and($issue->tasks->first()->is_recurring_cycle)->toBeTrue();
+        ->and($issue->tasks->first()->is_recurring_cycle)->toBeTrue()
+        ->and($issue->recurrence_next_due_at?->toDateString())
+        ->toBe(now()->addMonthNoOverflow()->toDateString());
 });
 
 it('rejects fewer than two stops via CreateInspectionRoundRequest validation', function () {
@@ -939,6 +941,7 @@ it('plans an inspection round via the issues index modal', function () {
         ->and($issue->isInspectionRound())->toBeTrue()
         ->and($issue->recurrence_active)->toBeTrue()
         ->and($issue->tasks)->toHaveCount(1)
+        ->and($issue->recurrence_next_due_at?->toDateString())->toBe(now()->addWeek()->toDateString())
         ->and($issue->roundStops()->orderBy('sort_order')->pluck('unit_id')->map(fn ($id) => (int) $id)->all())
         ->toBe([(int) $unitA->id, (int) $unitB->id]);
 });

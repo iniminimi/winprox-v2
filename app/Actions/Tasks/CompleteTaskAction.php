@@ -30,6 +30,7 @@ class CompleteTaskAction
         private AuditRecorder $audit,
         private RecalculateIssueStatusAction $recalculateIssueStatus,
         private LogWorkShiftTaskEndAction $logShiftTaskEnd,
+        private CreateRecurringTaskCycleAction $createRecurringCycle,
     ) {}
 
     /**
@@ -105,7 +106,19 @@ class CompleteTaskAction
 
         $this->recalculateIssueStatus->handle($issue);
 
+        $this->openNextRecurringCycle($task->fresh());
+
         return $task->fresh();
+    }
+
+    private function openNextRecurringCycle(Task $task): void
+    {
+        $issue = $task->issue;
+        if ($issue === null || ! $issue->is_recurring || ! $task->isRecurring()) {
+            return;
+        }
+
+        $this->createRecurringCycle->handle($issue);
     }
 
     private function recordRequiredEsgMeasurement(

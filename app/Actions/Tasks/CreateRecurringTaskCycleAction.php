@@ -3,9 +3,7 @@
 namespace App\Actions\Tasks;
 
 use App\Actions\Communication\EnsureTaskTranslationSlotsAction;
-use App\Actions\Issues\AddIssueUpdateAction;
 use App\Actions\Issues\RecalculateIssueStatusAction;
-use App\Enums\RecurrenceIntervalUnit;
 use App\Enums\TaskStatus;
 use App\Events\Tasks\TaskCreated;
 use App\Models\Issue;
@@ -53,7 +51,16 @@ class CreateRecurringTaskCycleAction
             ->exists();
 
         if ($existing) {
-            return null;
+            // Eerste inspectieronde-cyclus wordt buiten deze Action geopend en
+            // liet de pointer soms staan. Schuif op zodat de volgende interval kan starten.
+            $before = $nextDueAt->toDateString();
+            $this->advanceNextDueAt($issue, $nextDueAt, $now);
+            $issue = $issue->fresh();
+            if ($issue === null || $issue->recurrence_next_due_at?->toDateString() === $before) {
+                return null;
+            }
+
+            return $this->handle($issue, $now);
         }
 
         // Geen nieuwe cyclus zolang er nog een open taak van deze reeks loopt —
@@ -95,23 +102,23 @@ class CreateRecurringTaskCycleAction
 
         event(new TaskCreated($task));
 
-        $intervalUnit = $issue->recurrence_interval_unit instanceof RecurrenceIntervalUnit
-            ? $issue->recurrence_interval_unit
-            : RecurrenceIntervalUnit::tryFrom((string) $issue->recurrence_interval_unit) ?? RecurrenceIntervalUnit::Year;
-
-        $followingDueAt = RecurrenceSchedule::nextDueAt(
-            $nextDueAt,
-            (int) ($issue->recurrence_interval_value ?? 1),
-            $intervalUnit,
-        );
-
-        $issue->update([
-            'recurrence_next_due_at' => $followingDueAt,
-            'recurrence_last_task_created_at' => $now,
-        ]);
+        $this->advanceNextDueAt($issue, $nextDueAt, $now);
 
         $this->recalculateIssueStatus->handle($issue);
 
         return $task->fresh();
+    }
+
+    private function advanceNextDueAt(Issue $issue, Carbon $openedDueAt, Carbon $now): void
+    {
+        $current = $issue->recurrence_next_due_at;
+        if ($current !== null && $current->toDateString() !== $openedDueAt->toDateString()) {
+            return;
+        }
+
+        $issue->update([
+            'recurrence_next_due_at' => RecurrenceSchedule::followingDueAtForIssue($issue, $openedDueAt),
+            'recurrence_last_task_created_at' => $now,
+        ]);
     }
 }

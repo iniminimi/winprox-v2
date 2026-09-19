@@ -3,6 +3,7 @@
 namespace App\Support\Recurrence;
 
 use App\Enums\RecurrenceIntervalUnit;
+use App\Models\Issue;
 use Carbon\Carbon;
 
 final class RecurrenceSchedule
@@ -20,6 +21,19 @@ final class RecurrenceSchedule
             RecurrenceIntervalUnit::Year->value => $dueAt->copy()->addYearsNoOverflow($value),
             default => $dueAt->copy()->addYearsNoOverflow($value),
         };
+    }
+
+    public static function followingDueAtForIssue(Issue $issue, Carbon $dueAt): Carbon
+    {
+        $unit = $issue->recurrence_interval_unit instanceof RecurrenceIntervalUnit
+            ? $issue->recurrence_interval_unit
+            : RecurrenceIntervalUnit::tryFrom((string) $issue->recurrence_interval_unit) ?? RecurrenceIntervalUnit::Year;
+
+        return self::nextDueAt(
+            $dueAt,
+            (int) ($issue->recurrence_interval_value ?? 1),
+            $unit,
+        );
     }
 
     /**
