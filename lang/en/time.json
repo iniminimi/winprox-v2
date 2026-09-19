@@ -258,16 +258,15 @@
             },
             "email": {
                 "heading": "Email",
-                "hint": "Send the QR code and sign-in link to a worker on site.",
+                "hint": "Send the sign-in link to a worker on site (same page as the QR sticker).",
                 "label": "Email address",
                 "placeholder": "name@company.com",
                 "send": "Send",
-                "sent": "QR code and link sent.",
+                "sent": "Sign-in link sent.",
                 "inactive": "This clock point is inactive. Activate it first.",
                 "undeliverable": "This address cannot receive email.",
                 "invalid": "Enter a valid email address.",
-                "rate_limited": "Too many emails. Try again in :seconds seconds.",
-                "qr_unavailable": "The QR code could not be created."
+                "rate_limited": "Too many emails. Try again in :seconds seconds."
             }
         }
     },

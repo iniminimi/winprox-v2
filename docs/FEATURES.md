@@ -895,9 +895,10 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
 - **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` voor aanmelden
-  (naam + icoon), in-/uitklokken en teamtaken-overzicht. Vanuit het QR-venster kun je de QR-code
-  én die aanmeldlink per e-mail sturen naar een uitvoerder op locatie (transactioneel, zelfde
-  mailpad als `NewQrIssueMail`). Standaardnaam van het eerste
+  (naam + icoon), in-/uitklokken en teamtaken-overzicht. Vanuit het QR-venster kun je die
+  aanmeldlink per e-mail sturen naar een uitvoerder op locatie (transactioneel, zelfde
+  mailpad als `NewQrIssueMail`; **geen** QR-afbeelding in de mail — Telenet e.d. weigeren
+  dat als spam). Standaardnaam van het eerste
   Clock Point: **Aanmelden** (niet Inloggen/Inklokken); die generieke naam blijft op het
   portaal verborgen. Na een geslaagde aanmelding verdwijnt ook de kop **Aanmelden**
   (en een eigen Clock Point-naam); logo, hulp en welkom blijven. **Afmelden** sluit de

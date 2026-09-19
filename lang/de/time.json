@@ -258,16 +258,15 @@
             },
             "email": {
                 "heading": "E-Mail",
-                "hint": "Senden Sie den QR-Code und den Anmeldelink an eine ausführende Person vor Ort.",
+                "hint": "Senden Sie den Anmeldelink an eine ausführende Person vor Ort (gleiche Seite wie der QR-Aufkleber).",
                 "label": "E-Mail-Adresse",
                 "placeholder": "name@firma.de",
                 "send": "Senden",
-                "sent": "QR-Code und Link gesendet.",
+                "sent": "Anmeldelink gesendet.",
                 "inactive": "Dieser Clock Point ist inaktiv. Aktivieren Sie ihn zuerst.",
                 "undeliverable": "Diese Adresse kann keine E-Mail empfangen.",
                 "invalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
-                "rate_limited": "Zu viele E-Mails. Versuchen Sie es in :seconds Sekunden erneut.",
-                "qr_unavailable": "Der QR-Code konnte nicht erstellt werden."
+                "rate_limited": "Zu viele E-Mails. Versuchen Sie es in :seconds Sekunden erneut."
             }
         }
     },

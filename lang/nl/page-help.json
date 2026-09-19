@@ -1363,7 +1363,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad. Via <strong>E-mail</strong> stuurt u de QR-code én de aanmeldlink naar een uitvoerder op locatie. Elke clock point heeft een unieke code."
+                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad. Via <strong>E-mail</strong> stuurt u de aanmeldlink (zelfde pagina als de sticker) naar een uitvoerder op locatie. Elke clock point heeft een unieke code."
                 },
                 {
                     "label": "QR-rotatie",

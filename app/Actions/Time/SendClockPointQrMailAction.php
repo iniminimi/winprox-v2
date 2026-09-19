@@ -9,7 +9,6 @@ use App\Mail\ClockPointQrMail;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
-use App\Support\Qr\QrCodePngWriter;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
@@ -59,21 +58,15 @@ class SendClockPointQrMailAction
             ]);
         }
 
-        if (! QrCodePngWriter::canGenerate()) {
-            throw ValidationException::withMessages([
-                'email' => [__('time.clock_points.qr.email.qr_unavailable')],
-            ]);
-        }
-
         $portalUrl = $clockPoint->portalUrl();
-        $qrPng = QrCodePngWriter::writeStringWithWinproxLogo($portalUrl, 240);
         $tenant = Tenant::query()->findOrFail($tenantId);
 
+        // No QR image embed: Telenet (and similar) treat QR-in-email as phishing.
+        // The portal URL is the same destination as scanning the sticker.
         Mail::to($email)->send(new ClockPointQrMail(
             tenant: $tenant,
             clockPoint: $clockPoint,
             portalUrl: $portalUrl,
-            qrPng: $qrPng,
             mailLocale: $locale,
         ));
 

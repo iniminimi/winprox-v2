@@ -12,17 +12,10 @@ use App\Models\EmailUnsubscribe;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\User;
-use App\Support\Qr\QrCodePngWriter;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Livewire\Livewire;
-
-beforeEach(function () {
-    if (! QrCodePngWriter::canGenerate()) {
-        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
-    }
-});
 
 afterEach(fn () => Tenancy::forget());
 
@@ -47,7 +40,7 @@ function clockPointQrMailSetup(array $clockPoint = [], array $user = []): array
     return [$tenant, $point, $admin];
 }
 
-it('sends clock point qr and portal url from the qr modal', function () {
+it('sends clock point portal link from the qr modal without embedding a qr image', function () {
     Mail::fake();
     [$tenant, $clockPoint, $admin] = clockPointQrMailSetup();
 
@@ -70,7 +63,9 @@ it('sends clock point qr and portal url from the qr modal', function () {
         expect($mail->hasTo('worker@site.test'))->toBeTrue()
             ->and($html)->toContain($clockPoint->portalUrl())
             ->and($html)->toContain('/time/')
-            ->and($html)->toContain('cid:clock-point-qr.png')
+            ->and($html)->not->toContain('cid:clock-point-qr.png')
+            ->and($html)->not->toContain('clock-point-qr')
+            ->and($html)->not->toContain('wachtwoord')
             ->and($html)->toContain(trans('mail.clock_point_qr.cta', [], $locale))
             ->and($html)->toContain('#059669')
             ->and($html)->toContain('Hal Noord')

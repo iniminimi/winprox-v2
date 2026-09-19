@@ -18,7 +18,6 @@ class ClockPointQrMail extends Mailable
         public Tenant $tenant,
         public ClockPoint $clockPoint,
         public string $portalUrl,
-        public string $qrPng,
         public string $mailLocale,
     ) {
         $supported = config('locales.supported', []);
@@ -30,7 +29,6 @@ class ClockPointQrMail extends Mailable
         $this->clockPoint->loadMissing('location');
         $this->withSymfonyMessage(function (SymfonyEmail $message): void {
             $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
-            $message->embed($this->qrPng, 'clock-point-qr.png', 'image/png');
         });
     }
 

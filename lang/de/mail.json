@@ -67,11 +67,10 @@
     },
     "clock_point_qr": {
         "subject": ":tenant — Clock Point",
-        "intro": ":tenant sendet Ihnen den Clock-Point-QR zur Anmeldung vor Ort. Öffnen Sie den Link oder scannen Sie den Code. Die Anmeldung erfolgt mit Name und persönlichem Symbol — ohne Passwort.",
+        "intro": ":tenant sendet Ihnen den Clock-Point-Link zur Anmeldung vor Ort. Öffnen Sie die Schaltfläche auf Ihrem Handy und melden Sie sich mit Name und persönlichem Symbol an.",
         "field_location": "Standort",
         "cta": "Clock Point öffnen",
-        "link_fallback": "Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link:",
-        "footer": "Sie haben diese E-Mail nicht erwartet? Dann müssen Sie nichts tun."
+        "link_fallback": "Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link:"
     },
     "municipal_promo_letter": {
         "subject": "Slimmer beheer van publieke ruimte in :municipality",

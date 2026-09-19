@@ -258,16 +258,15 @@
             },
             "email": {
                 "heading": "E-mail",
-                "hint": "Invia il codice QR e il link di accesso a un esecutore in sede.",
+                "hint": "Invia il link di accesso a un esecutore in sede (stessa pagina dell’adesivo QR).",
                 "label": "Indirizzo e-mail",
                 "placeholder": "nome@azienda.it",
                 "send": "Invia",
-                "sent": "Codice QR e link inviati.",
+                "sent": "Link di accesso inviato.",
                 "inactive": "Questo clock point è inattivo. Attivalo prima.",
                 "undeliverable": "Questo indirizzo non può ricevere e-mail.",
                 "invalid": "Inserisci un indirizzo e-mail valido.",
-                "rate_limited": "Troppe e-mail. Riprova tra :seconds secondi.",
-                "qr_unavailable": "Impossibile creare il codice QR."
+                "rate_limited": "Troppe e-mail. Riprova tra :seconds secondi."
             }
         }
     },

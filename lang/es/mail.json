@@ -67,11 +67,10 @@
     },
     "clock_point_qr": {
         "subject": ":tenant — Clock Point",
-        "intro": ":tenant le envía el QR de Clock Point para identificarse en la ubicación. Abra el enlace o escanee el código. El acceso es con su nombre e icono personal — sin contraseña.",
+        "intro": ":tenant le envía el enlace de Clock Point para identificarse en la ubicación. Abra el botón en el teléfono e identifíquese con su nombre e icono personal.",
         "field_location": "Ubicación",
         "cta": "Abrir Clock Point",
-        "link_fallback": "Si el botón no funciona, copie este enlace:",
-        "footer": "¿No esperaba este correo? No tiene que hacer nada."
+        "link_fallback": "Si el botón no funciona, copie este enlace:"
     },
     "municipal_promo_letter": {
         "subject": "Slimmer beheer van publieke ruimte in :municipality",

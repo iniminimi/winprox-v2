@@ -258,16 +258,15 @@
             },
             "email": {
                 "heading": "E-mail",
-                "hint": "Envoyez le code QR et le lien de connexion à un exécutant sur site.",
+                "hint": "Envoyez le lien de connexion à un exécutant sur site (même page que l’autocollant QR).",
                 "label": "Adresse e-mail",
                 "placeholder": "nom@entreprise.be",
                 "send": "Envoyer",
-                "sent": "Code QR et lien envoyés.",
+                "sent": "Lien de connexion envoyé.",
                 "inactive": "Ce clock point est inactif. Activez-le d’abord.",
                 "undeliverable": "Cette adresse ne peut pas recevoir d’e-mail.",
                 "invalid": "Saisissez une adresse e-mail valide.",
-                "rate_limited": "Trop d’e-mails. Réessayez dans :seconds secondes.",
-                "qr_unavailable": "Le code QR n’a pas pu être créé."
+                "rate_limited": "Trop d’e-mails. Réessayez dans :seconds secondes."
             }
         }
     },

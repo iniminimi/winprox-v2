@@ -258,16 +258,15 @@
             },
             "email": {
                 "heading": "Correo",
-                "hint": "Envíe el código QR y el enlace de acceso a un operario en la ubicación.",
+                "hint": "Envíe el enlace de acceso a un operario en la ubicación (misma página que la pegatina QR).",
                 "label": "Correo electrónico",
                 "placeholder": "nombre@empresa.es",
                 "send": "Enviar",
-                "sent": "Código QR y enlace enviados.",
+                "sent": "Enlace de acceso enviado.",
                 "inactive": "Este clock point está inactivo. Actívelo primero.",
                 "undeliverable": "Esta dirección no puede recibir correo.",
                 "invalid": "Introduzca una dirección de correo válida.",
-                "rate_limited": "Demasiados correos. Inténtelo de nuevo en :seconds segundos.",
-                "qr_unavailable": "No se pudo crear el código QR."
+                "rate_limited": "Demasiados correos. Inténtelo de nuevo en :seconds segundos."
             }
         }
     },

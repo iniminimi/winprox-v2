@@ -1363,7 +1363,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Con <strong>QR</strong> apre una finestra: visualizza/stampa nel browser, o un foglio Word (A6, A5 o A4) con lo stesso branding di Impostazioni → Foglio di stampa QR. Con <strong>E-mail</strong> invia il codice QR e il link di accesso a un esecutore in sede. Ogni clock point ha un codice unico."
+                    "text": "Con <strong>QR</strong> apre una finestra: visualizza/stampa nel browser, o un foglio Word (A6, A5 o A4) con lo stesso branding di Impostazioni → Foglio di stampa QR. Con <strong>E-mail</strong> invia il link di accesso (stessa pagina dell’adesivo) a un esecutore in sede. Ogni clock point ha un codice unico."
                 },
                 {
                     "label": "Rotazione QR",

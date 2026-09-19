@@ -258,16 +258,15 @@
             },
             "email": {
                 "heading": "E-mail",
-                "hint": "Stuur de QR-code en de aanmeldlink naar een uitvoerder op locatie.",
+                "hint": "Stuur de aanmeldlink naar een uitvoerder op locatie (zelfde pagina als de QR-sticker).",
                 "label": "E-mailadres",
                 "placeholder": "naam@bedrijf.be",
                 "send": "Versturen",
-                "sent": "QR-code en link verzonden.",
+                "sent": "Aanmeldlink verzonden.",
                 "inactive": "Dit clock point is inactief. Activeer het eerst.",
                 "undeliverable": "Dit adres kan geen e-mail ontvangen.",
                 "invalid": "Vul een geldig e-mailadres in.",
-                "rate_limited": "Te veel e-mails. Probeer over :seconds seconden opnieuw.",
-                "qr_unavailable": "De QR-code kon niet worden aangemaakt."
+                "rate_limited": "Te veel e-mails. Probeer over :seconds seconden opnieuw."
             }
         }
     },

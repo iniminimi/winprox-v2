@@ -1363,7 +1363,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR. Con <strong>Correo</strong> envía el código QR y el enlace de acceso a un operario en la ubicación. Cada clock point tiene un código único."
+                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR. Con <strong>Correo</strong> envía el enlace de acceso (misma página que la pegatina) a un operario en la ubicación. Cada clock point tiene un código único."
                 },
                 {
                     "label": "Rotación QR",
