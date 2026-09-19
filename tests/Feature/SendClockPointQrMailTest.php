@@ -61,16 +61,20 @@ it('sends clock point portal link from the qr modal without embedding a qr image
         $mail->assertHasSubject(trans('mail.clock_point_qr.subject', ['tenant' => $tenant->name], $locale));
 
         expect($mail->hasTo('worker@site.test'))->toBeTrue()
-            ->and($html)->toContain($clockPoint->portalUrl())
-            ->and($html)->toContain('/time/')
+            ->and($html)->toContain($clockPoint->emailPortalUrl())
+            ->and($html)->toContain('/cp/')
+            ->and($html)->not->toContain('/time/')
             ->and($html)->not->toContain('cid:clock-point-qr.png')
             ->and($html)->not->toContain('clock-point-qr')
             ->and($html)->not->toContain('wachtwoord')
+            ->and($html)->not->toContain('aanmelden')
             ->and($html)->toContain(trans('mail.clock_point_qr.cta', [], $locale))
             ->and($html)->toContain('#059669')
             ->and($html)->toContain('Hal Noord')
             ->and($mail->envelope()->subject)->not->toContain('Worker')
-            ->and($mail->envelope()->subject)->not->toContain($clockPoint->portalUrl());
+            ->and($mail->envelope()->subject)->not->toContain($clockPoint->emailPortalUrl());
+
+        $mail->assertFrom((string) config('winprox.municipal_promo_email_from.address'));
 
         return true;
     });

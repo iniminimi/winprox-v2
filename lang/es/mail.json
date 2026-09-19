@@ -67,7 +67,7 @@
     },
     "clock_point_qr": {
         "subject": ":tenant — Clock Point",
-        "intro": ":tenant le envía el enlace de Clock Point para identificarse en la ubicación. Abra el botón en el teléfono e identifíquese con su nombre e icono personal.",
+        "intro": "Aquí tiene un enlace de Clock Point de :tenant.",
         "field_location": "Ubicación",
         "cta": "Abrir Clock Point",
         "link_fallback": "Si el botón no funciona, copie este enlace:"

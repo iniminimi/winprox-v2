@@ -67,7 +67,7 @@
     },
     "clock_point_qr": {
         "subject": ":tenant — Clock Point",
-        "intro": ":tenant vous envoie le lien Clock Point pour vous identifier sur site. Ouvrez le bouton sur votre téléphone et identifiez-vous avec votre nom et votre icône personnelle.",
+        "intro": "Voici un lien Clock Point de :tenant.",
         "field_location": "Site",
         "cta": "Ouvrir Clock Point",
         "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :"

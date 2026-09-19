@@ -67,7 +67,7 @@
     },
     "clock_point_qr": {
         "subject": ":tenant — Clock Point",
-        "intro": ":tenant sendet Ihnen den Clock-Point-Link zur Anmeldung vor Ort. Öffnen Sie die Schaltfläche auf Ihrem Handy und melden Sie sich mit Name und persönlichem Symbol an.",
+        "intro": "Hier ist ein Clock-Point-Link von :tenant.",
         "field_location": "Standort",
         "cta": "Clock Point öffnen",
         "link_fallback": "Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link:"

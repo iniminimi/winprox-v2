@@ -66,4 +66,10 @@ class ClockPoint extends Model
     {
         return route('public.time-portal', $this->qr_token);
     }
+
+    /** Shorter path for outbound mail (same portal as portalUrl). */
+    public function emailPortalUrl(): string
+    {
+        return route('public.time-portal.cp', $this->qr_token);
+    }
 }

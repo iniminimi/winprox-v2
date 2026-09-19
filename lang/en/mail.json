@@ -67,7 +67,7 @@
     },
     "clock_point_qr": {
         "subject": ":tenant — Clock Point",
-        "intro": ":tenant is sending you the Clock Point link to sign in on site. Open the button on your phone and sign in with your name and personal icon.",
+        "intro": "Here is a Clock Point link from :tenant.",
         "field_location": "Location",
         "cta": "Open Clock Point",
         "link_fallback": "If the button does not work, copy this link:"

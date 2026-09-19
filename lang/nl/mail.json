@@ -67,7 +67,7 @@
     },
     "clock_point_qr": {
         "subject": ":tenant — Clock Point",
-        "intro": ":tenant stuurt je de link naar Clock Point voor aanmelden op locatie. Open de knop op je gsm en meld je aan met je naam en persoonlijk icoon.",
+        "intro": "Er is een Clock Point-link van :tenant.",
         "field_location": "Locatie",
         "cta": "Clock Point openen",
         "link_fallback": "Als de knop niet werkt, kopieer dan deze link:"

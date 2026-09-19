@@ -182,6 +182,10 @@ Route::get('/time/{token}/manifest.webmanifest', ClockPointHomescreenManifestCon
 Route::get('/time/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.time-portal');
+// Short neutral path for e-mail links (same portal; avoids /time/{long-token} phishing score).
+Route::get('/cp/{token}', TimePortal::class)
+    ->where('token', '[a-z0-9]{20,64}')
+    ->name('public.time-portal.cp');
 
 Route::get('/u/{token}', [EmailUnsubscribeController::class, 'confirm'])
     ->where('token', '[0-9]{8}')

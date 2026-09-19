@@ -67,7 +67,7 @@
     },
     "clock_point_qr": {
         "subject": ":tenant — Clock Point",
-        "intro": ":tenant ti invia il link Clock Point per accedere in sede. Apri il pulsante sul telefono e accedi con nome e icona personale.",
+        "intro": "Ecco un link Clock Point di :tenant.",
         "field_location": "Sede",
         "cta": "Apri Clock Point",
         "link_fallback": "Se il pulsante non funziona, copia questo link:"

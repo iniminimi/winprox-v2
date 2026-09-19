@@ -58,11 +58,11 @@ class SendClockPointQrMailAction
             ]);
         }
 
-        $portalUrl = $clockPoint->portalUrl();
+        $portalUrl = $clockPoint->emailPortalUrl();
         $tenant = Tenant::query()->findOrFail($tenantId);
 
         // No QR image embed: Telenet (and similar) treat QR-in-email as phishing.
-        // The portal URL is the same destination as scanning the sticker.
+        // Sent via promo Cloud86 mailbox (Dominique From): same host, better Telenet score than info@.
         Mail::to($email)->send(new ClockPointQrMail(
             tenant: $tenant,
             clockPoint: $clockPoint,

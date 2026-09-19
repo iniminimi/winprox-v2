@@ -5,11 +5,17 @@ namespace App\Mail;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Symfony\Component\Mime\Email as SymfonyEmail;
 
+/**
+ * Worker-facing Clock Point link. Uses the same Cloud86 mailbox as promo
+ * (dominique.schaepdrijver@winprox.app): Telenet rejects info@winprox.app for
+ * this content pattern while that From delivers.
+ */
 class ClockPointQrMail extends Mailable
 {
     use SerializesModels;
@@ -27,6 +33,7 @@ class ClockPointQrMail extends Mailable
 
         $this->locale($locale);
         $this->clockPoint->loadMissing('location');
+        $this->mailer((string) config('winprox.promo_mailer', 'municipal_promo'));
         $this->withSymfonyMessage(function (SymfonyEmail $message): void {
             $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
         });
@@ -35,6 +42,10 @@ class ClockPointQrMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address(
+                (string) config('winprox.municipal_promo_email_from.address'),
+                (string) config('winprox.municipal_promo_email_from.name'),
+            ),
             subject: __('mail.clock_point_qr.subject', ['tenant' => $this->tenantName()]),
         );
     }
