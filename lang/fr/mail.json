@@ -66,11 +66,9 @@
         "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :"
     },
     "clock_point_qr": {
-        "subject": ":tenant — Clock Point",
-        "intro": "Voici un lien Clock Point de :tenant.",
-        "field_location": "Site",
-        "cta": "Ouvrir Clock Point",
-        "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :"
+        "subject": "Lien de :tenant",
+        "intro": "Voici le lien pour :tenant :",
+        "closing": "Cordialement"
     },
     "municipal_promo_letter": {
         "subject": "Slimmer beheer van publieke ruimte in :municipality",

@@ -22,7 +22,8 @@ Lees **`WINPROX_RULES.md` §14** volledig vóór je een mailable of e-mailbody w
 - `X-WinProx-Transactional: 1` voor bevestigingen (blokkeer niet bij marketing-opt-out;
   footer/List-Unsubscribe blijft).
 - Bevestiging synchroon `Mail::send` (geen promo-throttle / queue-wachten).
-- **Uitzondering worker-Clock-Point-mail:** From + SMTP = promo-mailbox
-  (`dominique.schaepdrijver@winprox.app` / `municipal_promo`). Telenet weigert
-  `info@winprox.app` voor die link-mail; promo-From komt wel door. Geen QR-embed;
-  e-mail-URL = `/cp/{token}` (zelfde portaal als `/time/{token}`).
+- **Uitzondering worker-Clock-Point-mail:**zelfde pad als **promo-testmail**:
+  From + SMTP = promo-mailbox (`dominique.schaepdrijver@winprox.app` /
+  `municipal_promo`), layout = **plain** (`emails.marketing.promo-plain`, geen
+  winprox-template / geen groene knop). Fancy HTML + “Clock Point”-subject werd
+  door Telenet/Gmail als spam-fingerprint gezien. Link = `/cp/{token}`.

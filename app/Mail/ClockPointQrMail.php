@@ -2,19 +2,22 @@
 
 namespace App\Mail;
 
+use App\Mail\Marketing\PromoCampaignLetterMail;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Headers;
 use Illuminate\Queue\SerializesModels;
 use Symfony\Component\Mime\Email as SymfonyEmail;
 
 /**
- * Worker-facing Clock Point link. Uses the same Cloud86 mailbox as promo
- * (dominique.schaepdrijver@winprox.app): Telenet rejects info@winprox.app for
- * this content pattern while that From delivers.
+ * Worker Clock Point link — same deliverability path as promo test mail:
+ * Cloud86 promo mailbox + plain HTML (no marketing template / CTA button).
+ * Fancy template + green button + /time|cp tokens was fingerprinting as spam
+ * at Telenet/Gmail even when From was correct.
  */
 class ClockPointQrMail extends Mailable
 {
@@ -50,6 +53,15 @@ class ClockPointQrMail extends Mailable
         );
     }
 
+    public function headers(): Headers
+    {
+        return new Headers(
+            text: [
+                PromoCampaignLetterMail::LAYOUT_HEADER => PromoCampaignLetterMail::LAYOUT_PLAIN,
+            ],
+        );
+    }
+
     public function content(): Content
     {
         $location = $this->clockPoint->location;
@@ -58,16 +70,16 @@ class ClockPointQrMail extends Mailable
             ->join(' · ');
 
         return new Content(
-            html: 'emails.contact.winprox-template',
+            html: 'emails.marketing.promo-plain',
             with: [
-                'recipientName' => null,
-                'tenantName' => $this->tenantName(),
-                'bodyText' => '',
                 'bodyHtml' => view('emails.time.clock-point-qr-body', [
                     'tenantName' => $this->tenantName(),
                     'locationLine' => $locationLine,
                     'portalUrl' => $this->portalUrl,
                 ])->render(),
+                'bodyText' => '',
+                'recipientName' => '',
+                'subject' => __('mail.clock_point_qr.subject', ['tenant' => $this->tenantName()]),
             ],
         );
     }

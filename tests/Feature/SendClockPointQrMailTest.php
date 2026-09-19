@@ -6,6 +6,7 @@ use App\Actions\Time\SendClockPointQrMailAction;
 use App\Enums\EmailUnsubscribeSource;
 use App\Livewire\Time\ClockPointsIndex;
 use App\Mail\ClockPointQrMail;
+use App\Mail\Marketing\PromoCampaignLetterMail;
 use App\Models\AuditLog;
 use App\Models\ClockPoint;
 use App\Models\EmailUnsubscribe;
@@ -40,7 +41,7 @@ function clockPointQrMailSetup(array $clockPoint = [], array $user = []): array
     return [$tenant, $point, $admin];
 }
 
-it('sends clock point portal link from the qr modal without embedding a qr image', function () {
+it('sends a plain promo-style clock point link mail without template or cta button', function () {
     Mail::fake();
     [$tenant, $clockPoint, $admin] = clockPointQrMailSetup();
 
@@ -57,21 +58,25 @@ it('sends clock point portal link from the qr modal without embedding a qr image
     Mail::assertSent(ClockPointQrMail::class, function (ClockPointQrMail $mail) use ($clockPoint, $tenant) {
         $html = $mail->render();
         $locale = 'nl';
+        $headers = $mail->headers()->text;
 
         $mail->assertHasSubject(trans('mail.clock_point_qr.subject', ['tenant' => $tenant->name], $locale));
 
         expect($mail->hasTo('worker@site.test'))->toBeTrue()
+            ->and($headers[PromoCampaignLetterMail::LAYOUT_HEADER] ?? null)->toBe(PromoCampaignLetterMail::LAYOUT_PLAIN)
             ->and($html)->toContain($clockPoint->emailPortalUrl())
             ->and($html)->toContain('/cp/')
             ->and($html)->not->toContain('/time/')
             ->and($html)->not->toContain('cid:clock-point-qr.png')
-            ->and($html)->not->toContain('clock-point-qr')
+            ->and($html)->not->toContain('Winprox_logo')
+            ->and($html)->not->toContain('background-color: #059669')
             ->and($html)->not->toContain('wachtwoord')
             ->and($html)->not->toContain('aanmelden')
-            ->and($html)->toContain(trans('mail.clock_point_qr.cta', [], $locale))
-            ->and($html)->toContain('#059669')
+            ->and($html)->not->toContain('Clock Point')
+            ->and($html)->toContain(trans('mail.clock_point_qr.intro', ['tenant' => $tenant->name], $locale))
             ->and($html)->toContain('Hal Noord')
             ->and($mail->envelope()->subject)->not->toContain('Worker')
+            ->and($mail->envelope()->subject)->not->toContain('Clock Point')
             ->and($mail->envelope()->subject)->not->toContain($clockPoint->emailPortalUrl());
 
         $mail->assertFrom((string) config('winprox.municipal_promo_email_from.address'));
