@@ -211,6 +211,23 @@ it('toont de abonnements-batterijcapsule na planactivatie', function () {
         ->assertSee('images/battery1.png', false);
 });
 
+it('vult de abonnementsbatterij alleen over de laatste 30 dagen', function () {
+    $far = Tenant::factory()->create([
+        'trial_ends_at' => now(),
+        'billing_plan' => 'winprox_10',
+        'billing_active_until' => now()->addDays(200),
+    ]);
+    $near = Tenant::factory()->create([
+        'trial_ends_at' => now(),
+        'billing_plan' => 'winprox_10',
+        'billing_active_until' => now()->addDays(10),
+    ]);
+
+    expect($far->paidSubscriptionBatteryState()['blocks_remaining'])->toBe(5)
+        ->and($far->portalDashboardBatteryState()['days_remaining'])->toBe(200)
+        ->and($near->paidSubscriptionBatteryState()['blocks_remaining'])->toBe(2);
+});
+
 it('toont conditionele actie-KPIâ€™s alleen bij telling groter dan nul', function () {
     $tenant = Tenant::factory()->create([
         'has_time_module' => true,

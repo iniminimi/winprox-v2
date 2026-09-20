@@ -1034,7 +1034,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   (behalve `billing.*`, `faq.*`, logout) wanneer geen toegang.
 - **Proefperiode-capsule** (dashboard §1 + dit scherm): resterende dagen + de vijf
   battery-PNG's (`public/images/battery1.png`–`battery5.png`, vol=groen tot leeg=rood).
-  Geen animatie.
+  Niveau altijd over de **laatste 30 dagen** (6 dagen per blok); meer dan 30 dagen resterend
+  = vol. Geen animatie.
 
 ### 7.2 Plannen
 - **WinProx** (`winprox_10` / `winprox_25` / `winprox_50`): **jaarlijks**, gemeten in **licenties**

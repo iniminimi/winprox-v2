@@ -441,6 +441,22 @@ class Tenant extends Model
     }
 
     /**
+     * Five PNG levels over the last 30 days (6 days per block). More than 30 days left = full.
+     */
+    public static function batteryBlocksForRemainingDays(int $daysRemaining): int
+    {
+        $windowDays = 30;
+        $daysInWindow = max(0, min($windowDays, $daysRemaining));
+        if ($daysInWindow === 0) {
+            return 0;
+        }
+
+        $daysPerBlock = max(1, (int) ceil($windowDays / 5));
+
+        return (int) ceil($daysInWindow / $daysPerBlock);
+    }
+
+    /**
      * @return array{grace_days: int, days_remaining: int, blocks_remaining: int, ends_on: Carbon}|null
      */
     public function paidSubscriptionGraceBatteryState(): ?array
@@ -461,8 +477,7 @@ class Tenant extends Model
             $daysRemaining = 1;
         }
 
-        $daysPerBlock = max(1, (int) ceil($graceDays / 5));
-        $blocksRemaining = $daysRemaining > 0 ? (int) ceil($daysRemaining / $daysPerBlock) : 0;
+        $blocksRemaining = self::batteryBlocksForRemainingDays($daysRemaining);
 
         return [
             'grace_days' => $graceDays,
@@ -490,8 +505,7 @@ class Tenant extends Model
         $elapsedDays = max(0, min($trialDays, (int) $elapsedDays));
 
         $daysRemaining = max(0, $trialDays - $elapsedDays);
-        $daysPerBlock = max(1, (int) ceil($trialDays / 5));
-        $blocksRemaining = $daysRemaining > 0 ? (int) ceil($daysRemaining / $daysPerBlock) : 0;
+        $blocksRemaining = self::batteryBlocksForRemainingDays($daysRemaining);
 
         return [
             'trial_days' => $trialDays,
@@ -518,8 +532,7 @@ class Tenant extends Model
             $daysRemaining = 1;
         }
 
-        $daysPerBlock = max(1, (int) ceil($periodDays / 5));
-        $blocksRemaining = $daysRemaining > 0 ? (int) ceil($daysRemaining / $daysPerBlock) : 0;
+        $blocksRemaining = self::batteryBlocksForRemainingDays($daysRemaining);
 
         return [
             'period_days' => $periodDays,

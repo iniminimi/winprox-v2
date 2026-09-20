@@ -4604,7 +4604,7 @@ svg.wp-release-worker-row__icon,
 }
 
 .wp-dashboard-trial-capsule__icon {
-    height: 2.5rem;
+    height: 2rem;
     width: auto;
     display: block;
     flex-shrink: 0;
