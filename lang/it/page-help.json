@@ -313,6 +313,10 @@
                     "text": "Con Time + visite GPS o CIAO: clicca l’icona rossa di Google Maps, trova la sede, clicca il pin rosso e copia. Incolla le coordinate in WinProx (formato 51.336167, 3.236306). Stesso campo sul pin visita di un’unità."
                 },
                 {
+                    "label": "Dichiarazione di lavori (DDT)",
+                    "text": "Visibile solo se CIAO è attivo. Inserite per sede il numero tecnico (13 caratteri) della Dichiarazione di lavori ONSS per quel cantiere. Si trova nel portale della sicurezza sociale, in e-Box Enterprise o sul QR/cartello in cantiere. Senza DDT valido (e indirizzo o GPS), le timbrature CIAO vengono saltate."
+                },
+                {
                     "label": "Apri sede",
                     "text": "Gestisca unità, documenti, annunci e codici QR per sede."
                 },
@@ -383,6 +387,10 @@
                 {
                     "label": "Pin visita",
                     "text": "In Opzioni portale avanzate. Stessa icona Google Maps: cerca, pin rosso, copia, incolla. Vuoto = nessun Avvia il lavoro su questa unità."
+                },
+                {
+                    "label": "Dichiarazione di lavori (DDT)",
+                    "text": "Visibile solo se CIAO è attivo. Inserite per sede il numero tecnico (13 caratteri) della Dichiarazione di lavori ONSS per quel cantiere. Si trova nel portale della sicurezza sociale, in e-Box Enterprise o sul QR/cartello in cantiere. Senza DDT valido (e indirizzo o GPS), le timbrature CIAO vengono saltate."
                 },
                 {
                     "label": "Traduzioni sede",

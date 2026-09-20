@@ -96,11 +96,12 @@
         "country_code": "ISO-Ländercode",
         "notes": "Interne Notizen",
         "ddt": "Werkmeldung (DDT)",
-        "ddt_hint": "13 Zeichen (CIAO-Arbeitsort).",
+        "ddt_hint": "13 Zeichen — für CIAO an diesem Standort erforderlich.",
         "coords": "GPS-Koordinaten",
         "maps_open": "Google Maps öffnen",
         "coords_placeholder": "51.336167, 3.236306",
-        "coords_hint": "Optional: GPS des Kundenstandorts für Arbeitsbesuche (und CIAO placeOfWork). Rotes Symbol klicken, Ort in Google Maps suchen, roten Pin klicken und kopieren. Hier einfügen als 51.336167, 3.236306."
+        "coords_hint": "Optional: GPS des Kundenstandorts für Arbeitsbesuche (und CIAO placeOfWork). Rotes Symbol klicken, Ort in Google Maps suchen, roten Pin klicken und kopieren. Hier einfügen als 51.336167, 3.236306.",
+        "ddt_tooltip": "DDT = LSS-Werkmeldung: die technische Nummer (13 Zeichen) der Meldung für diese Baustelle/diesen Kunden. Zu finden im Sozialversicherungsportal (Werkmeldung), in e-Box Enterprise oder auf dem QR/Aushang vor Ort. WinProx erzeugt diese Nummer nicht."
     },
     "flash": {
         "created": "Standort angelegt.",

@@ -96,11 +96,12 @@
         "country_code": "ISO-landcode",
         "notes": "Interne notities",
         "ddt": "Aangifte van werken (DDT)",
-        "ddt_hint": "13 tekens (CIAO werkplaats).",
+        "ddt_hint": "13 tekens — verplicht voor CIAO op deze locatie.",
         "coords": "GPS-coördinaten",
         "maps_open": "Open Google Maps",
         "coords_placeholder": "51.336167, 3.236306",
-        "coords_hint": "Optioneel: GPS van de klantlocatie voor werkbezoeken (en CIAO placeOfWork). Klik het rode icoon, zoek de plek in Google Maps, klik de rode pin en kopieer. Plak hier in het formaat 51.336167, 3.236306."
+        "coords_hint": "Optioneel: GPS van de klantlocatie voor werkbezoeken (en CIAO placeOfWork). Klik het rode icoon, zoek de plek in Google Maps, klik de rode pin en kopieer. Plak hier in het formaat 51.336167, 3.236306.",
+        "ddt_tooltip": "DDT = Aangifte van werken bij de RSZ: het technische nummer (13 tekens) van de aangifte voor deze werkplaats/klant. Vindbaar in het socialezekerheidsportaal (Aangifte van werken), in e-Box Enterprise, of op de QR/affiche op de werf. WinProx genereert dit nummer niet."
     },
     "flash": {
         "created": "Locatie aangemaakt.",

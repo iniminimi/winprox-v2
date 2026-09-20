@@ -313,6 +313,10 @@
                     "text": "With Time + GPS work visits or CIAO: click the red Google Maps icon, find the location, click the red pin and copy. Paste the coordinates in WinProx (format 51.336167, 3.236306). Same field on a unit work-visit pin."
                 },
                 {
+                    "label": "Works declaration (DDT)",
+                    "text": "Only visible when CIAO is on. Per location, enter the technical number (13 characters) of the NSSO works declaration for that site. Find it on the social security portal, in e-Box Enterprise, or on the site QR/poster. Without a valid DDT (and address or GPS), CIAO punches are skipped."
+                },
+                {
                     "label": "Open location",
                     "text": "Manage units, documents, announcements and QR codes per location."
                 },
@@ -383,6 +387,10 @@
                 {
                     "label": "Work-visit pin",
                     "text": "Under Advanced portal options. Same Google Maps icon: search, red pin, copy, paste. Empty = no Start work on this unit."
+                },
+                {
+                    "label": "Works declaration (DDT)",
+                    "text": "Only visible when CIAO is on. Per location, enter the technical number (13 characters) of the NSSO works declaration for that site. Find it on the social security portal, in e-Box Enterprise, or on the site QR/poster. Without a valid DDT (and address or GPS), CIAO punches are skipped."
                 },
                 {
                     "label": "Location translations",

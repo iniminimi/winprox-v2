@@ -47,12 +47,21 @@
 </label>
 
 @if ($presenceComplianceEnabled)
-    <label class="wp-field">
-        <span class="wp-label">{{ __('locations.fields.ddt') }}</span>
-        <input type="text" class="wp-input" wire:model="locationFormDdt" maxlength="13" autocomplete="off" />
+    <div class="wp-field">
+        <x-wp-tooltip :text="__('locations.fields.ddt_tooltip')" wrap>
+            <label class="wp-label" for="locationFormDdt">{{ __('locations.fields.ddt') }}</label>
+        </x-wp-tooltip>
+        <input
+            type="text"
+            id="locationFormDdt"
+            class="wp-input"
+            wire:model="locationFormDdt"
+            maxlength="13"
+            autocomplete="off"
+        />
         <span class="wp-hint">{{ __('locations.fields.ddt_hint') }}</span>
         @error('contractual_relationship_reference') <span class="wp-error">{{ $message }}</span> @enderror
-    </label>
+    </div>
 @endif
 
 @if ($presenceComplianceEnabled || ($gpsWorkVisitsEnabled ?? false))

@@ -95,12 +95,13 @@
         "city": "City",
         "country_code": "ISO country code",
         "notes": "Internal notes",
-        "ddt": "Declaration of works (DDT)",
-        "ddt_hint": "13 characters (CIAO workplace).",
+        "ddt": "Works declaration (DDT)",
+        "ddt_hint": "13 characters — required for CIAO at this location.",
         "coords": "GPS coordinates",
         "maps_open": "Open Google Maps",
         "coords_placeholder": "51.336167, 3.236306",
-        "coords_hint": "Optional: GPS of the customer location for work visits (and CIAO placeOfWork). Click the red icon, find the place in Google Maps, click the red pin and copy. Paste here as 51.336167, 3.236306."
+        "coords_hint": "Optional: GPS of the customer location for work visits (and CIAO placeOfWork). Click the red icon, find the place in Google Maps, click the red pin and copy. Paste here as 51.336167, 3.236306.",
+        "ddt_tooltip": "DDT = Belgian NSSO works declaration: the technical number (13 characters) for this worksite/customer. Find it on the social security portal (Works declaration), in e-Box Enterprise, or on the site QR/poster. WinProx does not generate this number."
     },
     "flash": {
         "created": "Location created.",

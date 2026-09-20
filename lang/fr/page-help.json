@@ -313,6 +313,10 @@
                     "text": "Avec Time + visites GPS ou CIAO : cliquez l’icône rouge Google Maps, trouvez le site, cliquez l’épingle rouge et copiez. Collez les coordonnées dans WinProx (format 51.336167, 3.236306). Même champ sur le pin de visite d’une unité."
                 },
                 {
+                    "label": "Déclaration de travaux (DDT)",
+                    "text": "Visible uniquement si CIAO est activé. Indiquez par lieu le numéro technique (13 caractères) de la Déclaration de travaux ONSS pour ce chantier. Disponible sur le portail de la sécurité sociale, dans e-Box Enterprise, ou sur le QR/affiche sur site. Sans DDT valide (et adresse ou GPS), les pointages CIAO sont ignorés."
+                },
+                {
                     "label": "Ouvrir un site",
                     "text": "Gérez les unités, documents, annonces et codes QR par site."
                 },
@@ -387,6 +391,10 @@
                 {
                     "label": "Pin de visite",
                     "text": "Sous Options portail avancées. Même icône Google Maps : chercher, épingle rouge, copier, coller. Vide = pas de Commencer le travail sur cette unité."
+                },
+                {
+                    "label": "Déclaration de travaux (DDT)",
+                    "text": "Visible uniquement si CIAO est activé. Indiquez par lieu le numéro technique (13 caractères) de la Déclaration de travaux ONSS pour ce chantier. Disponible sur le portail de la sécurité sociale, dans e-Box Enterprise, ou sur le QR/affiche sur site. Sans DDT valide (et adresse ou GPS), les pointages CIAO sont ignorés."
                 },
                 {
                     "label": "Traductions de lieu",

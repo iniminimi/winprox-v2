@@ -313,6 +313,10 @@
                     "text": "Bei Time + GPS-Arbeitsbesuchen oder CIAO: rotes Google-Maps-Symbol klicken, Standort suchen, roten Pin klicken und kopieren. Koordinaten in WinProx einfügen (Format 51.336167, 3.236306). Dasselbe Feld beim Arbeitsbesuch-Pin einer Unit."
                 },
                 {
+                    "label": "Werkmeldung (DDT)",
+                    "text": "Nur sichtbar, wenn CIAO aktiv ist. Tragen Sie pro Standort die technische Nummer (13 Zeichen) der LSS-Werkmeldung für diese Baustelle ein. Zu finden im Sozialversicherungsportal, in e-Box Enterprise oder auf dem QR/Aushang vor Ort. Ohne gültige DDT (und Adresse oder GPS) werden CIAO-Stempelungen übersprungen."
+                },
+                {
                     "label": "Standort öffnen",
                     "text": "Verwalten Sie Units, Dokumente, Mitteilungen und QR-Codes pro Standort."
                 },
@@ -383,6 +387,10 @@
                 {
                     "label": "Arbeitsbesuch-Pin",
                     "text": "Unter Erweiterte Portaloptionen. Dasselbe Google-Maps-Symbol: suchen, roter Pin, kopieren, einfügen. Leer = kein Arbeit starten an dieser Unit."
+                },
+                {
+                    "label": "Werkmeldung (DDT)",
+                    "text": "Nur sichtbar, wenn CIAO aktiv ist. Tragen Sie pro Standort die technische Nummer (13 Zeichen) der LSS-Werkmeldung für diese Baustelle ein. Zu finden im Sozialversicherungsportal, in e-Box Enterprise oder auf dem QR/Aushang vor Ort. Ohne gültige DDT (und Adresse oder GPS) werden CIAO-Stempelungen übersprungen."
                 },
                 {
                     "label": "Standort-Übersetzungen",

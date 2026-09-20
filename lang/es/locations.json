@@ -96,11 +96,12 @@
         "country_code": "Código de país ISO",
         "notes": "Notas internas",
         "ddt": "Declaración de obras (DDT)",
-        "ddt_hint": "13 caracteres (lugar CIAO).",
+        "ddt_hint": "13 caracteres — obligatorio para CIAO en esta sede.",
         "coords": "Coordenadas GPS",
         "maps_open": "Abrir Google Maps",
         "coords_placeholder": "51.336167, 3.236306",
-        "coords_hint": "Opcional: GPS de la sede del cliente para visitas de trabajo (y CIAO placeOfWork). Pulsa el icono rojo, busca el lugar en Google Maps, pulsa el pin rojo y copia. Pega aquí como 51.336167, 3.236306."
+        "coords_hint": "Opcional: GPS de la sede del cliente para visitas de trabajo (y CIAO placeOfWork). Pulsa el icono rojo, busca el lugar en Google Maps, pulsa el pin rojo y copia. Pega aquí como 51.336167, 3.236306.",
+        "ddt_tooltip": "DDT = Declaración de obras de la ONSS: el número técnico (13 caracteres) de la declaración para esta obra/cliente. Está en el portal de la seguridad social (Declaración de obras), en e-Box Enterprise o en el QR/cartel en obra. WinProx no genera este número."
     },
     "flash": {
         "created": "Ubicación creada.",
