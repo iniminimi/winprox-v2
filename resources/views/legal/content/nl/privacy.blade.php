@@ -222,6 +222,7 @@
     <li>onboarding-events per gebruiker (voor onboarding-statistieken): 6 maanden; geaggregeerde onboardingcijfers zonder persoonsdata blijven langer bewaard.</li>
     <li>media (foto’s): 24 maanden na afsluiten van de betreffende melding of taak.</li>
     <li>ESG-metingen: dezelfde bewaartermijn als meldingen en taken (contractperiode + 36 maanden).</li>
+    <li>CIAO-/RSZ-inzendingen (doorstuurlog in WinProx): geslaagde inzendingen standaard 12 maanden (configureerbaar); mislukt/in wachtrij langer. De officiële registratie blijft bij de RSZ. Export via Time → CIAO.</li>
     <li>IoT-events, gateway- en sensormetadata: contractperiode + 36 maanden (of korter indien de onderliggende melding/taak eerder wordt verwijderd in het kader van organisatieverwijdering).</li>
     <li>operationele infrastructuurbackups (hosting/Cloud86): 7 dagen.</li>
     <li>technische SQL-snapshot na een volledige organisatieverwijdering (zonder mediabestanden): maximaal 30 dagen, daarna vernietiging.</li>

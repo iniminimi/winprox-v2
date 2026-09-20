@@ -408,6 +408,20 @@
             "rsz_jwt_sign_failed": "JWT-ondertekening van de CIAO-aanvraag mislukt.",
             "rsz_register_failed": "RSZ-registratie mislukt.",
             "rsz_platform_client_id_missing": "CIAO platform client-id ontbreekt (RSZ_PLATFORM_CLIENT_ID)."
+        },
+        "retention_hint": "Geslaagde inzendingen ouder dan :months maanden worden automatisch verwijderd. Exporteer eerst als je ze wilt bewaren. De officiële registratie blijft bij de RSZ.",
+        "export": {
+            "columns": {
+                "when": "Tijdstip",
+                "worker": "Uitvoerder",
+                "event": "Gebeurtenis",
+                "type": "IN/OUT",
+                "location": "Locatie",
+                "status": "Status",
+                "rsz_id": "RSZ-id",
+                "validity": "Geldigheid",
+                "error": "Fout"
+            }
         }
     },
     "required_break": {

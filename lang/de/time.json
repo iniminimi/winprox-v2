@@ -408,6 +408,20 @@
             "rsz_jwt_sign_failed": "JWT-Signatur der CIAO-Anfrage fehlgeschlagen.",
             "rsz_register_failed": "LSS-Registrierung fehlgeschlagen.",
             "rsz_platform_client_id_missing": "CIAO-Plattform-Client-ID fehlt (RSZ_PLATFORM_CLIENT_ID)."
+        },
+        "retention_hint": "Erfolgreiche Einreichungen älter als :months Monate werden automatisch gelöscht. Exportieren Sie zuerst, wenn Sie sie behalten wollen. Die offizielle Registrierung bleibt bei der LSS.",
+        "export": {
+            "columns": {
+                "when": "Zeitpunkt",
+                "worker": "Ausführender",
+                "event": "Ereignis",
+                "type": "IN/OUT",
+                "location": "Standort",
+                "status": "Status",
+                "rsz_id": "LSS-ID",
+                "validity": "Gültigkeit",
+                "error": "Fehler"
+            }
         }
     },
     "required_break": {

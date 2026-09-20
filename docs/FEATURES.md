@@ -791,7 +791,11 @@ productsector op `Tenant`.
 - UI: Instellingen (CIAO-kader onderaan, grijs tot aanvraag via info@winprox.app;
   superuser zet aan op Platform → Tenants — Time gaat mee aan, **geen** Corporate-eis;
   daarna enkel **BCE** — technische RSZ-credentials op het WinProx-platform), Time → **CIAO**
-  (status/fouten + opnieuw), Personen/Locaties (NISS, DDT).
+  (status/fouten + opnieuw), Personen/Locaties (NISS, DDT). **Download rapport** (CSV/print)
+  op Time → CIAO. Geslaagde inzendingen ouder dan **12 maanden** (config
+  `RETENTION_PRESENCE_SUBMISSIONS_MONTHS`) worden dagelijks mee opgeruimd via
+  `winprox:retention-prune`; mislukt/wachtrij/overgeslagen blijven. Officiële
+  registratie = RSZ.
 - **Niet in golf 1:** Checkinatwork (CAW)-API, Construbadge-hardware, Dimona/payroll, vlees-CAW.
 
 ### 5g.3 Golf 2 — CIAO bouw (`CiaoConstruction`)

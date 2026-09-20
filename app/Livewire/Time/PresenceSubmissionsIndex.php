@@ -111,6 +111,15 @@ class PresenceSubmissionsIndex extends Component
             'alarmCount' => $this->timeNavAlarmCount(),
             'ciaoFailCount' => $this->timeNavCiaoFailCount(),
             'statusOptions' => PresenceSubmissionStatus::cases(),
+            'exportUrl' => route('time.ciao.export', array_filter([
+                'status' => $this->statusFilter,
+                'q' => trim($this->search) !== '' ? trim($this->search) : null,
+            ])),
+            'printUrl' => route('time.ciao.print', array_filter([
+                'status' => $this->statusFilter,
+                'q' => trim($this->search) !== '' ? trim($this->search) : null,
+            ])),
+            'retentionMonths' => max(1, (int) config('data_retention.presence_submissions_months', 12)),
         ]);
     }
 }

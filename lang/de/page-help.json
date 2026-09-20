@@ -1691,6 +1691,14 @@
                 {
                     "label": "Erneut",
                     "text": "Bei <strong>Fehlgeschlagen</strong> oder <strong>Übersprungen</strong> erneut einreihen, nachdem NISS, DDT oder Unternehmensnummer korrigiert wurden."
+                },
+                {
+                    "label": "Bericht herunterladen",
+                    "text": "CSV oder Druck der gefilterten CIAO-Einreichungen (gleiche Filter wie dieser Bildschirm). Keine NISS in der Datei."
+                },
+                {
+                    "label": "Aufbewahrung",
+                    "text": "Erfolgreiche Einreichungen älter als die konfigurierte Frist (Standard 12 Monate) werden automatisch gelöscht. Fehlgeschlagen / Warteschlange bleiben. Die offizielle Registrierung bleibt bei der LSS."
                 }
             ]
         },

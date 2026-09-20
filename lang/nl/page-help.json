@@ -1691,6 +1691,14 @@
                 {
                     "label": "Opnieuw",
                     "text": "Bij <strong>Mislukt</strong> of <strong>Overgeslagen</strong> kun je de inzending opnieuw in de wachtrij zetten na het corrigeren van NISS, DDT of ondernemingsnummer."
+                },
+                {
+                    "label": "Download rapport",
+                    "text": "CSV of afdrukken van de gefilterde CIAO-inzendingen (zelfde filters als op dit scherm). Geen NISS in het bestand."
+                },
+                {
+                    "label": "Bewaartermijn",
+                    "text": "Geslaagde inzendingen ouder dan de ingestelde termijn (standaard 12 maanden) worden automatisch verwijderd. Mislukt / in wachtrij blijven staan. De officiële registratie blijft bij de RSZ."
                 }
             ]
         },

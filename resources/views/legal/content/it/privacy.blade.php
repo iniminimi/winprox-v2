@@ -221,6 +221,7 @@
     <li>eventi di onboarding per utente (per statistiche di onboarding): 6 mesi; i dati aggregati di onboarding senza dati personali possono essere conservati più a lungo</li>
     <li>media (foto): 24 mesi dopo la chiusura della relativa problematica o attività</li>
     <li>misurazioni ESG: stesso periodo di conservazione di problematiche e attività (durata del contratto + 36 mesi)</li>
+    <li>Invii CIAO/ONSS (log di trasmissione in WinProx): invii riusciti 12 mesi di default (configurabile); falliti/in coda più a lungo. La registrazione ufficiale resta presso l’ONSS. Esportazione via Time → CIAO.</li>
     <li>eventi IoT, metadati di gateway e sensore: durata del contratto + 36 mesi (o più breve se la problematica/attività sottostante viene rimossa prima con la cancellazione dell’organizzazione)</li>
     <li>backup operativi di infrastruttura (hosting/Cloud86): 7 giorni</li>
     <li>snapshot SQL tecnico dopo la cancellazione completa dell'organizzazione (senza file media): massimo 30 giorni, poi distruzione</li>

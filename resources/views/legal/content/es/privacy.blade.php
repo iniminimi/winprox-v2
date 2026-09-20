@@ -221,6 +221,7 @@
     <li>eventos de incorporación por usuario (para estadísticas de incorporación): 6 meses; las cifras agregadas de incorporación sin datos personales pueden conservarse más tiempo</li>
     <li>medios (fotos): 24 meses tras cerrar la incidencia o tarea correspondiente</li>
     <li>mediciones ESG: mismo plazo que incidencias y tareas (duración del contrato + 36 meses)</li>
+    <li>Envíos CIAO/ONSS (registro de retransmisión en WinProx): envíos correctos 12 meses por defecto (configurable); fallidos/en cola más tiempo. El registro oficial permanece en la ONSS. Exportación vía Time → CIAO.</li>
     <li>eventos IoT, metadatos de pasarela y sensor: duración del contrato + 36 meses (o menos si la incidencia/tarea subyacente se elimina antes al borrar la organización)</li>
     <li>copias de seguridad operativas de infraestructura (hosting/Cloud86): 7 días</li>
     <li>instantánea SQL técnica tras la eliminación completa de la organización (sin archivos multimedia): máximo 30 días, después destrucción</li>

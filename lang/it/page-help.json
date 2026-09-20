@@ -1691,6 +1691,14 @@
                 {
                     "label": "Riprova",
                     "text": "Per <strong>Non riuscito</strong> o <strong>Saltato</strong>, rimetti in coda dopo aver corretto NISS, DDT o numero d'impresa."
+                },
+                {
+                    "label": "Scarica report",
+                    "text": "CSV o stampa degli invii CIAO filtrati (stessi filtri di questa schermata). Nessun NISS nel file."
+                },
+                {
+                    "label": "Conservazione",
+                    "text": "Gli invii riusciti più vecchi del periodo configurato (12 mesi di default) vengono eliminati automaticamente. Falliti / in coda restano. La registrazione ufficiale resta presso l’ONSS."
                 }
             ]
         },

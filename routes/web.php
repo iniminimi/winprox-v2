@@ -35,6 +35,8 @@ use App\Http\Controllers\Time\ClockPointQrController;
 use App\Http\Controllers\Time\ClockPointQrPackDownloadController;
 use App\Http\Controllers\Time\WorkShiftExportController;
 use App\Http\Controllers\Time\WorkShiftTimesheetPrintController;
+use App\Http\Controllers\Time\PresenceSubmissionExportController;
+use App\Http\Controllers\Time\PresenceSubmissionPrintController;
 use App\Http\Controllers\Time\RosterPrintController;
 use App\Http\Controllers\Tasks\InspectionRoundTaskPrintController;
 use App\Http\Controllers\Tasks\TaskExportController;
@@ -446,6 +448,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/time/alarms', AlarmsIndex::class)->name('time.alarms.index');
         Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');
         Route::get('/time/ciao', PresenceSubmissionsIndex::class)->name('time.ciao.index');
+        Route::get('/time/ciao/export', PresenceSubmissionExportController::class)->name('time.ciao.export');
+        Route::get('/time/ciao/print', PresenceSubmissionPrintController::class)->name('time.ciao.print');
         Route::get('/time/shifts/export', WorkShiftExportController::class)->name('time.shifts.export');
         Route::get('/time/shifts/print', WorkShiftTimesheetPrintController::class)->name('time.shifts.print');
         Route::get('/time/clock-points', ClockPointsIndex::class)->name('time.clock-points.index');

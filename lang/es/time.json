@@ -408,6 +408,20 @@
             "rsz_jwt_sign_failed": "Falló la firma JWT de la solicitud CIAO.",
             "rsz_register_failed": "Falló el registro en la ONSS.",
             "rsz_platform_client_id_missing": "Falta el client id de plataforma CIAO (RSZ_PLATFORM_CLIENT_ID)."
+        },
+        "retention_hint": "Los envíos correctos de más de :months meses se eliminan automáticamente. Exporte antes si desea conservarlos. El registro oficial permanece en la ONSS.",
+        "export": {
+            "columns": {
+                "when": "Fecha y hora",
+                "worker": "Trabajador",
+                "event": "Evento",
+                "type": "IN/OUT",
+                "location": "Sede",
+                "status": "Estado",
+                "rsz_id": "Id ONSS",
+                "validity": "Validez",
+                "error": "Error"
+            }
         }
     },
     "required_break": {

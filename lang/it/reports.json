@@ -76,5 +76,10 @@
         "title": "Prenotazioni — report",
         "document_title": "Prenotazioni — WinProx",
         "filename": "prenotazioni"
+    },
+    "ciao": {
+        "title": "Invii CIAO — report",
+        "document_title": "CIAO — WinProx",
+        "filename": "invii-ciao"
     }
 }

@@ -408,6 +408,20 @@
             "rsz_jwt_sign_failed": "Échec de la signature JWT de la requête CIAO.",
             "rsz_register_failed": "Échec de l’enregistrement ONSS.",
             "rsz_platform_client_id_missing": "Identifiant client plateforme CIAO manquant (RSZ_PLATFORM_CLIENT_ID)."
+        },
+        "retention_hint": "Les envois réussis de plus de :months mois sont supprimés automatiquement. Exportez d’abord si vous voulez les conserver. L’enregistrement officiel reste chez l’ONSS.",
+        "export": {
+            "columns": {
+                "when": "Horodatage",
+                "worker": "Exécutant",
+                "event": "Événement",
+                "type": "IN/OUT",
+                "location": "Lieu",
+                "status": "Statut",
+                "rsz_id": "Id ONSS",
+                "validity": "Validité",
+                "error": "Erreur"
+            }
         }
     },
     "required_break": {

@@ -1699,6 +1699,14 @@
                 {
                     "label": "Réessayer",
                     "text": "Pour <strong>Échoué</strong> ou <strong>Ignoré</strong>, remettez l’envoi en file après correction du NISS, DDT ou du numéro d’entreprise."
+                },
+                {
+                    "label": "Télécharger le rapport",
+                    "text": "CSV ou impression des envois CIAO filtrés (mêmes filtres que cet écran). Pas de NISS dans le fichier."
+                },
+                {
+                    "label": "Conservation",
+                    "text": "Les envois réussis plus anciens que la durée configurée (12 mois par défaut) sont supprimés automatiquement. Échoués / en file restent. L’enregistrement officiel reste chez l’ONSS."
                 }
             ]
         },

@@ -220,6 +220,7 @@
     <li>événements d’onboarding par utilisateur (statistiques d’onboarding) : 6 mois ; les chiffres agrégés sans données personnelles peuvent être conservés plus longtemps.</li>
     <li>médias (photos) : 24 mois après clôture du signalement ou de la tâche concerné(e).</li>
     <li>mesures ESG : même durée de conservation que les signalements et tâches (durée du contrat + 36 mois).</li>
+    <li>Envois CIAO/ONSS (journal de transmission dans WinProx) : envois réussis 12 mois par défaut (configurable) ; échoués/en file plus longtemps. L’enregistrement officiel reste chez l’ONSS. Export via Time → CIAO.</li>
     <li>événements IoT, métadonnées de gateway et de capteur : durée du contrat + 36 mois (ou plus court si le signalement/la tâche sous-jacent est supprimé plus tôt lors d’une suppression d’organisation).</li>
     <li>sauvegardes opérationnelles d’infrastructure (hébergement/Cloud86) : 7 jours.</li>
     <li>instantané SQL technique après suppression complète de l’organisation (sans fichiers médias) : maximum 30 jours, puis destruction.</li>

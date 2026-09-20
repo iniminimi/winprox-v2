@@ -12,4 +12,11 @@ return [
     | en waarvan trial of betaalperiode voorbij is.
     */
     'inactive_tenant_days' => (int) env('RETENTION_INACTIVE_TENANT_DAYS', 730),
+
+    /*
+    | Geslaagde CIAO/RSZ-inzendingen (presence_submissions status=submitted)
+    | ouder dan X maanden. Mislukt / wachtrij / overgeslagen blijven staan.
+    | Officiële registratie blijft bij de RSZ; WinProx is doorstuurlog.
+    */
+    'presence_submissions_months' => (int) env('RETENTION_PRESENCE_SUBMISSIONS_MONTHS', 12),
 ];

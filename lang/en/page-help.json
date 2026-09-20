@@ -1691,6 +1691,14 @@
                 {
                     "label": "Retry",
                     "text": "For <strong>Failed</strong> or <strong>Skipped</strong>, queue the submission again after fixing NISS, DDT or enterprise number."
+                },
+                {
+                    "label": "Download report",
+                    "text": "CSV or print of the filtered CIAO submissions (same filters as this screen). No SSIN in the file."
+                },
+                {
+                    "label": "Retention",
+                    "text": "Successful submissions older than the configured period (default 12 months) are deleted automatically. Failed / queued stay. The official record remains with the NSSO."
                 }
             ]
         },

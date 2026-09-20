@@ -54,9 +54,12 @@
                             @endif
                         </button>
                     @endforeach
+                    <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
                 </div>
             </div>
         </div>
+
+        <p class="wp-muted wp-text-sm">{{ __('time.ciao.retention_hint', ['months' => $retentionMonths]) }}</p>
 
         @if ($submissions->isEmpty())
             <p class="wp-muted">{{ __('time.ciao.empty') }}</p>

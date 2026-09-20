@@ -1691,6 +1691,14 @@
                 {
                     "label": "Reintentar",
                     "text": "En <strong>Fallido</strong> u <strong>Omitido</strong>, vuelve a poner el envío en cola tras corregir NISS, DDT o número de empresa."
+                },
+                {
+                    "label": "Descargar informe",
+                    "text": "CSV o impresión de los envíos CIAO filtrados (mismos filtros que esta pantalla). Sin NISS en el archivo."
+                },
+                {
+                    "label": "Conservación",
+                    "text": "Los envíos correctos más antiguos que el plazo configurado (12 meses por defecto) se eliminan automáticamente. Fallidos / en cola se conservan. El registro oficial permanece en la ONSS."
                 }
             ]
         },

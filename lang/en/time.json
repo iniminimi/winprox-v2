@@ -408,6 +408,20 @@
             "rsz_jwt_sign_failed": "JWT signing for the CIAO request failed.",
             "rsz_register_failed": "RSZ registration failed.",
             "rsz_platform_client_id_missing": "CIAO platform client id is missing (RSZ_PLATFORM_CLIENT_ID)."
+        },
+        "retention_hint": "Successful submissions older than :months months are deleted automatically. Export first if you need to keep them. The official record stays with the NSSO.",
+        "export": {
+            "columns": {
+                "when": "When",
+                "worker": "Worker",
+                "event": "Event",
+                "type": "IN/OUT",
+                "location": "Location",
+                "status": "Status",
+                "rsz_id": "NSSO id",
+                "validity": "Validity",
+                "error": "Error"
+            }
         }
     },
     "required_break": {

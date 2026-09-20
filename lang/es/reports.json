@@ -76,5 +76,10 @@
         "title": "Reservas — informe",
         "document_title": "Reservas — WinProx",
         "filename": "reservas"
+    },
+    "ciao": {
+        "title": "Envíos CIAO — informe",
+        "document_title": "CIAO — WinProx",
+        "filename": "envios-ciao"
     }
 }
