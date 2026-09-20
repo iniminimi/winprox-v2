@@ -399,25 +399,9 @@
                     <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.presence.save') }}</button>
                 </form>
 
-                @if ($recentPresenceSubmissions->isNotEmpty())
-                    <div class="wp-stack-tight wp-mt-4">
-                        <h3 class="wp-settings-subblock-title">{{ __('settings.presence.recent') }}</h3>
-                        <ul class="wp-stack-tight">
-                            @foreach ($recentPresenceSubmissions as $submission)
-                                <li class="wp-muted wp-text-sm">
-                                    {{ $submission->registration_at?->format('Y-m-d H:i') }}
-                                    · {{ $submission->worker?->displayName() }}
-                                    · {{ $submission->presence_type->value }}
-                                    · {{ $submission->status->value }}
-                                    @if ($submission->error_message)
-                                        · {{ $submission->error_message }}
-                                    @endif
-                                </li>
-                            @endforeach
-                        </ul>
-                        <a href="{{ route('time.ciao.index') }}" class="btn btn--sm btn--surface">{{ __('settings.presence.view_all') }}</a>
-                    </div>
-                @endif
+                <p class="wp-mt-4">
+                    <a href="{{ route('time.ciao.index') }}" class="btn btn--sm btn--surface">{{ __('settings.presence.view_all') }}</a>
+                </p>
             @endif
         </x-wp-settings-section>
     @endif

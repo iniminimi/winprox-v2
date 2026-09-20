@@ -15,7 +15,6 @@ use App\Actions\Time\UpdateTenantTimeClockSecurityAction;
 use App\Enums\PresenceComplianceScope;
 use App\Http\Requests\Time\UpdatePresenceComplianceSettingsRequest;
 use App\Http\Requests\Time\UpdateTenantTimeClockSecurityRequest;
-use App\Models\PresenceSubmission;
 use App\Actions\Team\RemoveOrganisationPortalBackgroundAction;
 use App\Actions\Team\SetOrganisationPortalStockBackgroundAction;
 use App\Actions\Team\RemoveTenantQrStickerSheetBackgroundAction;
@@ -789,14 +788,6 @@ class Settings extends Component
             'qrPrintableBackgroundPresets' => QrPrintablePageBackgroundPreset::uiChoices(),
             'hasTimeModule' => $tenant instanceof Tenant && $tenant->hasTimeModule(),
             'availablePresenceScopes' => PresenceComplianceScope::availableCases(),
-            'recentPresenceSubmissions' => $tenant instanceof Tenant && $tenant->hasTimeModule()
-                ? PresenceSubmission::query()
-                    ->where('tenant_id', $tenant->id)
-                    ->with('worker')
-                    ->orderByDesc('id')
-                    ->limit(10)
-                    ->get()
-                : collect(),
         ]);
     }
 
