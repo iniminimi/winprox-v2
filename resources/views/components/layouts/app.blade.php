@@ -30,7 +30,11 @@
         $showWorkMenuReservations = $activeTenant instanceof Tenant && $activeTenant->workMenuReservationsEnabled();
         $showWorkMenuInspectionRounds = $activeTenant instanceof Tenant && $activeTenant->workMenuInspectionRoundsEnabled();
         $showWorkMenuUnitMeasurements = $activeTenant instanceof Tenant && $activeTenant->workMenuUnitMeasurementsEnabled();
-        $showWorkVisitsNav = $activeTenant instanceof Tenant && $activeTenant->allowsGpsWorkVisits();
+        $showWorkVisitsNav = $activeTenant instanceof Tenant
+            && $activeTenant->allowsGpsWorkVisits()
+            && $activeTenant->hasRecordedWorkVisits();
+        $showUnitChecksNav = $activeTenant instanceof Tenant
+            && $activeTenant->hasRecordedUnitChecks();
 
         $primaryNav = [
             ...($isPlatformOnlySuperuser ? [
@@ -244,7 +248,6 @@
                                        @click="nav = false">
                                         <span>{{ __('common.nav.tasks') }}</span>
                                     </a>
-                                    <p class="wp-nav-sublabel">{{ __('common.nav.on_site') }}</p>
                                     @if ($showWorkMenuInspectionRounds)
                                         <a href="{{ route('issues.index', ['recurring' => 1, 'inspection_round' => 1]) }}"
                                            class="wp-nav-link wp-nav-link--sub {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
@@ -259,13 +262,15 @@
                                             <span>{{ __('common.nav.checklists') }}</span>
                                         </a>
                                     @endcan
-                                    @can('viewAny', \App\Models\UnitCheck::class)
-                                        <a href="{{ route('unit-checks.index') }}"
-                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-checks.*') ? 'is-active' : '' }}"
-                                           @click="nav = false">
-                                            <span>{{ __('common.nav.unit_checks') }}</span>
-                                        </a>
-                                    @endcan
+                                    @if ($showUnitChecksNav)
+                                        @can('viewAny', \App\Models\UnitCheck::class)
+                                            <a href="{{ route('unit-checks.index') }}"
+                                               class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-checks.*') ? 'is-active' : '' }}"
+                                               @click="nav = false">
+                                                <span>{{ __('common.nav.unit_checks') }}</span>
+                                            </a>
+                                        @endcan
+                                    @endif
                                     @if ($showWorkVisitsNav)
                                         <a href="{{ route('work-visits.index') }}"
                                            class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('work-visits.*') ? 'is-active' : '' }}"

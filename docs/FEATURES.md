@@ -20,7 +20,7 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
 Menu-volgorde (sidebar, accordion): Dashboard · **Werk** (Meldingen, Taken,
-**Op locatie** [Inspectierondes, Checklists, Unit checks, Werkbezoeken], Kalender,
+Inspectierondes, Checklists, Unit checks, Werkbezoeken, Kalender,
 Reserveringen, Unitmetingen) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Personen** (Backoffice = Beheerder/Medewerker;
 Teams = Uitvoerder/Teamleader) · **Time** (module) · **Automatisering** (IoT Connect
 Corporate — groep alleen als minstens één module aan staat) ·
@@ -31,7 +31,9 @@ Contact).
 Inspectierondes en Unitmetingen in/uit in de sidebar; uit = geen backoffice-routes (403).
 Bestaande unit/categorie-vlaggen op het QR-portaal blijven werken (grandfather); nieuw
 inschakelen op units/categorieën kan niet zolang het werkmenu-item uit staat. Inspectierondes
-uit heeft geen invloed op unit checks. Een starttemplate toont de keuze in preview en op
+uit heeft geen invloed op unit checks. Unit checks staan in de sidebar pas als er
+minstens één check is; Werkbezoeken pas bij GPS-werkbezoeken én minstens één bezoek.
+Een starttemplate toont de keuze in preview en op
 **Starttemplate aangemaakt**; verwijderen van het template zet het werkmenu niet terug.
 
 ---
@@ -422,14 +424,14 @@ de meldingenlijst te vervuilen. Los van ESG.
   (`checklist_failed`) en getoond op de **ronde-taak** (niet de afgevinkte punten).
 
 ### Beheer (`/unit-checks`)
-- Sidebar **Werk → Op locatie → Unit checks**. Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link, optionele opmerking en foto’s,
+- Sidebar **Werk → Unit checks**, alleen als er minstens één check is. Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link, optionele opmerking en foto’s,
   plus niet-OK checklistpunten.
 - Filters: resultaat, locatie. Admin + medewerker via Policy.
 - **Download rapport** (`x-wp-list-export`): CSV + afdrukken van de gefilterde historiek — zie §Rapporten.
 - **Aan/uit:** Plaatsen → Categorieën (`allow_unit_checks`) én unit bewerken (`allow_unit_checks`);
   beide nodig, beide default uit.
 
-### Checklists (Werk → Op locatie)
+### Checklists (Werk)
 - Templates met vinkpunten: sidebar **Werk → Checklists** (optioneel gekoppeld aan een
   team, of gedeeld voor alle teams). Starters (schoonmaak / techniek / security) zijn
   kopieerbaar. Checklists zonder gekoppelde units kun je verwijderen; anders deactiveren.
@@ -516,8 +518,8 @@ stops meer zijn voor **deze** cyclus-taak.
   Livewire als Meldingen, `?recurring=1&inspection_round=1`): titel/ondertitel/lege
   staat voor rondes. Geen “+ Melding toevoegen”, geen vinkjes terugkerend/alleen
   inspectierondes, geen klik-hint. Paginahulp is **Hulp — Inspectierondes**. Optioneel
-  `?round_create=1` opent direct de plan-modal. Unit checks en checklists staan
-  in de sidebar onder **Werk → Op locatie**, niet als knop op dit scherm.
+  `?round_create=1` opent direct de plan-modal. Checklists staan in de sidebar
+  onder **Werk**; Unit checks alleen als er historiek is. Geen knop op dit scherm.
 - Label: **Ronde · N stops**. Geen ESG op ronde-issues.
 - Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).
 - Taak↔unit (2b): `issue.unit_id = U` **óf** U is stop — via `TaskBelongsToUnitAction`
@@ -771,7 +773,7 @@ productsector op `Tenant`.
   locatie**. Nog open werk hier: handel hier af (+ optioneel “Volgende stop”).
   Klaar hier: “moet nu naar de volgende stop”. Geen volgende locatie: “geen open
   werk meer”. Die status staat niet alleen bij Open taken.
-- **Beheer:** Werk → **Werkbezoeken** toont de historiek (periode, uitvoerder, locatie,
+- **Beheer:** Werk → **Werkbezoeken** (alleen in het menu als er minstens één bezoek is) toont de historiek (periode, uitvoerder, locatie,
   open/afgesloten), één kader per uitvoerder per dag met duur per locatie. Time → **Aanwezigheid** toont het
   open werkbezoek (locatie · unit).
   Time → **Uren** toont de historiek per dienst (start–einde per unit). CIAO-scherm

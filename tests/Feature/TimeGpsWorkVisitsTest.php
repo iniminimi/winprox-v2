@@ -337,6 +337,19 @@ it('toont één kader per uitvoerder per dag', function () {
         ->and(substr_count($html, __('work_visits.list.duration', ['duration' => ''])))->toBeGreaterThanOrEqual(2);
 });
 
+it('verbergt Werkbezoeken zolang er geen bezoeken zijn', function () {
+    [$tenant] = gpsVisitContext();
+    $admin = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSee(route('work-visits.index'), false);
+});
+
 it('verbergt Werkbezoeken als GPS-bezoeken uit staan', function () {
     [$tenant] = gpsVisitContext();
     $admin = User::factory()->create([

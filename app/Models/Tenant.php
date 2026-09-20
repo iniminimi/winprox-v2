@@ -329,6 +329,16 @@ class Tenant extends Model
         return $this->hasTimeModule() && (bool) $this->time_gps_visits;
     }
 
+    public function hasRecordedUnitChecks(): bool
+    {
+        return UnitCheck::query()->where('tenant_id', $this->id)->exists();
+    }
+
+    public function hasRecordedWorkVisits(): bool
+    {
+        return WorkVisit::query()->where('tenant_id', $this->id)->exists();
+    }
+
     public function allowsEvacuationList(): bool
     {
         return $this->hasTimeModule() && (bool) $this->time_evacuation_list;

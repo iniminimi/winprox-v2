@@ -125,7 +125,7 @@ it('toont submenu-items als bullets zonder herhaalde groep-iconen', function () 
         ->and($html)->toContain('@toggle.capture="exclusive($event)"');
 });
 
-it('groepeert inspectierondes, checklists, unit checks en werkbezoeken onder Op locatie', function () {
+it('toont inspectierondes en checklists in Werk zonder Op locatie-label', function () {
     $tenant = Tenant::factory()->create([
         'name' => 'Demo Facility',
         'has_time_module' => true,
@@ -137,17 +137,40 @@ it('groepeert inspectierondes, checklists, unit checks en werkbezoeken onder Op 
     $this->actingAs($admin)
         ->get(route('dashboard'))
         ->assertOk()
-        ->assertSee(__('common.nav.on_site'), false)
+        ->assertDontSee('wp-nav-sublabel', false)
         ->assertSee(__('issues.list.inspection_rounds'), false)
         ->assertSee(__('common.nav.checklists'), false)
-        ->assertSee(__('common.nav.unit_checks'), false)
-        ->assertSee(__('common.nav.work_visits'), false)
+        ->assertDontSee(__('common.nav.unit_checks'), false)
+        ->assertDontSee(__('common.nav.work_visits'), false)
         ->assertSee(route('checklists.index'), false)
-        ->assertSee(route('unit-checks.index'), false)
-        ->assertSee(route('work-visits.index'), false);
+        ->assertDontSee(route('unit-checks.index'), false)
+        ->assertDontSee(route('work-visits.index'), false);
 
     $this->actingAs($admin)
         ->get(route('checklists.index'))
         ->assertOk()
         ->assertSee(__('unit_checks.lists.title'), false);
+});
+
+it('toont Unit checks in het menu zodra er minstens één check is', function () {
+    $tenant = Tenant::factory()->create(['name' => 'Demo Facility']);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+    ]);
+    \App\Models\UnitCheck::factory()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'location_id' => $location->id,
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee(__('common.nav.unit_checks'), false)
+        ->assertSee(route('unit-checks.index'), false);
 });
