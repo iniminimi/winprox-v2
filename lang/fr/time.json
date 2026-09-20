@@ -141,6 +141,7 @@
         "empty": "Aucun shift trouvé pour ces filtres.",
         "break_minutes": "Pause : :duration",
         "worked": "Travaillé : :duration",
+        "worked_label": "Travaillé",
         "punches_heading": "Entrée et sortie",
         "punch_in": ":time In · :place",
         "punch_out": ":time Out · :place",

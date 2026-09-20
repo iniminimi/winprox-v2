@@ -141,6 +141,7 @@
         "empty": "No shifts found for these filters.",
         "break_minutes": "Break: :duration",
         "worked": "Worked: :duration",
+        "worked_label": "Worked",
         "punches_heading": "Clock in and out",
         "punch_in": ":time In · :place",
         "punch_out": ":time Out · :place",

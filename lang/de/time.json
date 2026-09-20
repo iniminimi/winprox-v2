@@ -141,6 +141,7 @@
         "empty": "Keine Schichten für diese Filter gefunden.",
         "break_minutes": "Pause: :duration",
         "worked": "Gearbeitet: :duration",
+        "worked_label": "Gearbeitet",
         "punches_heading": "Ein- und Ausstempeln",
         "punch_in": ":time In · :place",
         "punch_out": ":time Out · :place",

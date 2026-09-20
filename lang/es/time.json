@@ -141,6 +141,7 @@
         "empty": "No se encontraron turnos con estos filtros.",
         "break_minutes": "Pausa: :duration",
         "worked": "Trabajado: :duration",
+        "worked_label": "Trabajado",
         "punches_heading": "Entrada y salida",
         "punch_in": ":time In · :place",
         "punch_out": ":time Out · :place",

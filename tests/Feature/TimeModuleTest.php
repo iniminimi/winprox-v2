@@ -834,6 +834,8 @@ it('toont in- en uitklokken als tijden met locatie, niet Aanmelden', function ()
     Livewire::actingAs($admin)
         ->test(ShiftsIndex::class)
         ->assertSee(__('time.shifts.punches_heading'), false)
+        ->assertSee(__('time.shifts.worked_label'), false)
+        ->assertSee('17-09-2026', false)
         ->assertSee(__('time.shifts.punch_in', ['time' => '21:49', 'place' => 'Depot Noord']), false)
         ->assertSee(__('time.shifts.punch_out', ['time' => '12:00', 'place' => 'Depot Noord']), false)
         ->assertDontSee('Ingeklokt bij Aanmelden', false);

@@ -141,6 +141,7 @@
         "empty": "Geen shifts gevonden voor deze filters.",
         "break_minutes": "Pauze: :duration",
         "worked": "Gewerkt: :duration",
+        "worked_label": "Gewerkt",
         "punches_heading": "In- en uitklokken",
         "punch_in": ":time In · :place",
         "punch_out": ":time Uit · :place",
