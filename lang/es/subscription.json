@@ -1,11 +1,11 @@
 {
     "title": "Suscripción, límites y facturación",
     "public_title": "Precios y planes",
-    "public_subtitle": "Elija el número de licencias. WinProx se paga al año. Time (reloj de fichar) está incluido.",
+    "public_subtitle": "Elija el número de licencias. WinProx se factura anualmente. Reloj, cuadrante y CIAO (ONSS) incluidos.",
     "public_register_cta": "Iniciar prueba gratuita",
     "subtitle": "Tras el mes gratis, elija una fórmula. Cada fórmula limita licencias y unidades (mismo número). Ubicaciones y fotos son ilimitadas.",
     "plans_heading": "Planes",
-    "plans_intro": "Pago por persona. 10, 25 o 50 licencias (colegas + operarios) con el mismo número de unidades y documentos. Ubicaciones y fotos ilimitadas. Time (reloj de fichar) está incluido.",
+    "plans_intro": "Pague por persona. 10, 25 o 50 licencias (colegas + ejecutores) con el mismo número de unidades y documentos. Sedes y fotos ilimitadas. Reloj, cuadrante y CIAO (ONSS) incluidos.",
     "glossary": {
         "heading": "Licencias, unidades y fotos",
         "unit": "Unidad — un objeto o lugar con código QR (máquina, sala, vehículo). El número de unidades = el de licencias (10, 25 o 50).",
@@ -27,7 +27,7 @@
     "status_active": "Suscripción activa: :plan, válida hasta :date.",
     "status_grace": "Suscripción :plan finalizó el :ended. Período de gracia hasta :grace_end — :days días de acceso completo restantes.",
     "status_expired": "Su prueba ha terminado. Elija un plan abajo.",
-    "pricing_intro": "Mes de prueba gratis (50 licencias y 50 unidades, Time incluido). Después 10, 25 o 50 licencias y unidades al año. Pago anual por factura.",
+    "pricing_intro": "Mes de prueba gratis (50 licencias y 50 unidades). Después 10, 25 o 50 licencias y unidades al año. Pago anual por factura.",
     "status_module_esg": "Módulo ESG activo en su cuenta.",
     "status_module_time": "Time (reloj de fichar) está activo en su cuenta.",
     "page_limits_title": "Por qué ciertas acciones no están disponibles",
@@ -71,9 +71,8 @@
             "price": "7 € / licencia / mes",
             "scale": "70 € al mes. Pago anual (840 €).",
             "features": [
-                "Time (reloj de fichar) incluido.",
-                "CIAO (ONSS) bajo petición.",
-                "10 unidades y 10 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
+                "10 unidades y 10 documentos. Sedes y fotos ilimitadas.",
+                "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
         "winprox_10_time": {
@@ -81,9 +80,8 @@
             "price": "7 € / licencia / mes",
             "scale": "70 € al mes. Pago anual (840 €).",
             "features": [
-                "Time (reloj de fichar) incluido.",
-                "CIAO (ONSS) bajo petición.",
-                "10 unidades y 10 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
+                "10 unidades y 10 documentos. Sedes y fotos ilimitadas.",
+                "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
         "winprox_25": {
@@ -91,9 +89,8 @@
             "price": "6 € / licencia / mes",
             "scale": "150 € al mes. Pago anual (1.800 €).",
             "features": [
-                "Time (reloj de fichar) incluido.",
-                "CIAO (ONSS) bajo petición.",
-                "25 unidades y 25 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
+                "25 unidades y 25 documentos. Sedes y fotos ilimitadas.",
+                "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
         "winprox_25_time": {
@@ -101,9 +98,8 @@
             "price": "6 € / licencia / mes",
             "scale": "150 € al mes. Pago anual (1.800 €).",
             "features": [
-                "Time (reloj de fichar) incluido.",
-                "CIAO (ONSS) bajo petición.",
-                "25 unidades y 25 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
+                "25 unidades y 25 documentos. Sedes y fotos ilimitadas.",
+                "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
         "winprox_50": {
@@ -111,9 +107,8 @@
             "price": "5 € / licencia / mes",
             "scale": "250 € al mes. Pago anual (3.000 €).",
             "features": [
-                "Time (reloj de fichar) incluido.",
-                "CIAO (ONSS) bajo petición.",
-                "50 unidades y 50 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
+                "50 unidades y 50 documentos. Sedes y fotos ilimitadas.",
+                "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
         "winprox_50_time": {
@@ -121,9 +116,8 @@
             "price": "5 € / licencia / mes",
             "scale": "250 € al mes. Pago anual (3.000 €).",
             "features": [
-                "Time (reloj de fichar) incluido.",
-                "CIAO (ONSS) bajo petición.",
-                "50 unidades y 50 documentos. Ubicaciones y fotos ilimitadas. Sin IoT, ESG ni API."
+                "50 unidades y 50 documentos. Sedes y fotos ilimitadas.",
+                "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
         "winprox_100": {
@@ -131,8 +125,7 @@
             "price": "A medida",
             "scale": "Desde 100 licencias: WinProx Corporate.",
             "features": [
-                "Time (reloj de fichar) incluido.",
-                "IoT, ESG y API en Corporate."
+                "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
         "winprox_100_time": {
@@ -140,8 +133,7 @@
             "price": "A medida",
             "scale": "Desde 100 licencias: WinProx Corporate.",
             "features": [
-                "Time (reloj de fichar) incluido.",
-                "IoT, ESG y API en Corporate."
+                "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
         "facility_10": {
@@ -215,7 +207,7 @@
             "price": "Precio personalizado",
             "scale": "Desde 100 licencias, o si se necesitan API/webhooks/integraciones.",
             "features": [
-                "Time (reloj de fichar), IoT Connect y ESG incluidos.",
+                "Reloj, cuadrante, CIAO (ONSS), IoT Connect, ESG y API incluidos.",
                 "API REST completa y webhooks.",
                 "Integraciones, SLA y soporte a medida."
             ]
@@ -303,7 +295,7 @@
     "comparison_custom": "A medida",
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
-        "trial": "Prueba: 50 licencias y 50 unidades, Time (reloj de fichar) incluido. Pago anual tras la prueba.",
+        "trial": "Prueba: 50 licencias y 50 unidades. Pago anual tras la prueba.",
         "unlimited": "Unidades y documentos siguen el número de licencias (10/25/50). Ubicaciones y fotos son ilimitadas.",
         "corporate": "IoT, ESG y API: solo WinProx Corporate (desde 100 licencias)."
     },

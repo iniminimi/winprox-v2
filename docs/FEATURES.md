@@ -1035,9 +1035,9 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
 ### 7.2 Plannen
 - **WinProx** (`winprox_10` / `winprox_25` / `winprox_50`): **jaarlijks**, gemeten in **licenties**
   (collega's met login + uitvoerders) **én units** (zelfde getal: 10/25/50). Documenten = unitlimiet.
-  Locaties en foto's onbeperkt. **Time inbegrepen.** CIAO (RSZ) op aanvraag, geen extra SKU —
-  Superuser zet CIAO aan op Platform (Time gaat mee aan; **geen** Corporate-eis).
-  **Geen** IoT, ESG of API. Clock Point blijft de aanmeld-QR (identiteit + takenlijst).
+  Locaties en foto's onbeperkt. Compacte prijskaart: per-licentieprijs · maandpakket + jaartotaal ·
+  units/documenten · *Prikklok, uurrooster, CIAO (RSZ) inbegrepen.* Geen IoT/ESG/API-vermelding
+  op deze formules (alleen Corporate). Clock Point blijft de aanmeld-QR.
 - **Prijs (jaarfactuur):** getoond als **maandpakket** + jaartotaal tussen haakjes
   (bv. 70€ per maand, jaarlijks (840€)). Per licentie: 10 × **7€**/maand; 25 × **6€**;
   50 × **5€**. Euroteken na het bedrag (NL/FR/DE/ES/IT); in EN vóór (€70).

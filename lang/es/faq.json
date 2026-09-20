@@ -55,28 +55,28 @@
                 "winprox_10": {
                     "units": "Hasta 10 unidades. Ubicaciones ilimitadas.",
                     "announcements": "70 € al mes (840 € / año)",
-                    "documents": "Time (reloj de fichar) incluido. · CIAO (ONSS) bajo petición. · Sin IoT, ESG ni API.",
+                    "documents": "Reloj, cuadrante, CIAO (ONSS) incluidos.",
                     "description": "Avisos, tareas y reloj de fichar. Pago anual.",
                     "users": "Hasta 10 licencias (colegas + operarios)"
                 },
                 "winprox_25": {
                     "units": "Hasta 25 unidades. Ubicaciones ilimitadas.",
                     "announcements": "150 € al mes (1.800 € / año)",
-                    "documents": "Time (reloj de fichar) incluido. · CIAO (ONSS) bajo petición. · Sin IoT, ESG ni API.",
+                    "documents": "Reloj, cuadrante, CIAO (ONSS) incluidos.",
                     "description": "Avisos, tareas y reloj de fichar. Pago anual.",
                     "users": "Hasta 25 licencias (colegas + operarios)"
                 },
                 "winprox_50": {
                     "units": "Hasta 50 unidades. Ubicaciones ilimitadas.",
                     "announcements": "250 € al mes (3.000 € / año)",
-                    "documents": "Time (reloj de fichar) incluido. · CIAO (ONSS) bajo petición. · Sin IoT, ESG ni API.",
+                    "documents": "Reloj, cuadrante, CIAO (ONSS) incluidos.",
                     "description": "Avisos, tareas y reloj de fichar. Pago anual.",
                     "users": "Hasta 50 licencias (colegas + operarios)"
                 },
                 "corporate": {
                     "units": "Desde 100 licencias, o si se necesitan API/webhooks/integraciones.",
                     "announcements": "Precio a medida",
-                    "documents": "Time (reloj de fichar), IoT Connect y ESG incluidos.",
+                    "documents": "Reloj, cuadrante, CIAO (ONSS), IoT Connect, ESG y API incluidos.",
                     "description": "Para 100+ licencias o cuando se necesitan API/webhooks.",
                     "users": "Licencias a medida; ubicaciones y fotos ilimitadas"
                 }

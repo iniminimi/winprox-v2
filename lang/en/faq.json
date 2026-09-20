@@ -55,28 +55,28 @@
                 "winprox_10": {
                     "units": "Up to 10 units. Locations unlimited.",
                     "announcements": "€70 per month (€840 / year)",
-                    "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
+                    "documents": "Punch clock, roster, CIAO (NSSO) included.",
                     "description": "Issues, tasks and punch clock. Billed yearly.",
                     "users": "Up to 10 seats (colleagues + workers)"
                 },
                 "winprox_25": {
                     "units": "Up to 25 units. Locations unlimited.",
                     "announcements": "€150 per month (€1,800 / year)",
-                    "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
+                    "documents": "Punch clock, roster, CIAO (NSSO) included.",
                     "description": "Issues, tasks and punch clock. Billed yearly.",
                     "users": "Up to 25 seats (colleagues + workers)"
                 },
                 "winprox_50": {
                     "units": "Up to 50 units. Locations unlimited.",
                     "announcements": "€250 per month (€3,000 / year)",
-                    "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
+                    "documents": "Punch clock, roster, CIAO (NSSO) included.",
                     "description": "Issues, tasks and punch clock. Billed yearly.",
                     "users": "Up to 50 seats (colleagues + workers)"
                 },
                 "corporate": {
                     "units": "From 100 seats, or when API/webhooks/integrations are needed.",
                     "announcements": "Custom price",
-                    "documents": "Time (punch clock), IoT Connect and ESG included.",
+                    "documents": "Punch clock, roster, CIAO (NSSO), IoT Connect, ESG and API included.",
                     "description": "For 100+ seats or when API/webhooks are needed.",
                     "users": "Custom seats; unlimited locations and photos"
                 }

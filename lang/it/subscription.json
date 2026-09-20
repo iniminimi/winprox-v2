@@ -1,11 +1,11 @@
 {
     "title": "Abbonamento, limiti e fatturazione",
     "public_title": "Prezzi e piani",
-    "public_subtitle": "Scegliete il numero di licenze. WinProx si paga all’anno. Time (timbratrice) è incluso.",
+    "public_subtitle": "Scegli il numero di licenze. WinProx si paga annualmente. Timbratrice, turno e CIAO (ONSS) inclusi.",
     "public_register_cta": "Inizia prova gratuita",
     "subtitle": "Dopo il mese gratuito scegliete una formula. Ogni formula limita licenze e unità (stesso numero). Sedi e foto sono illimitate.",
     "plans_heading": "Piani",
-    "plans_intro": "Pagamento per persona. 10, 25 o 50 licenze (colleghi + operatori) con altrettante unità e documenti. Sedi e foto illimitate. Time (timbratrice) è incluso.",
+    "plans_intro": "Paghi per persona. 10, 25 o 50 licenze (colleghi + esecutori) con altrettante unit e documenti. Sedi e foto illimitate. Timbratrice, turno e CIAO (ONSS) inclusi.",
     "glossary": {
         "heading": "Licenze, unità e foto",
         "unit": "Unità — un oggetto o un luogo con codice QR (macchina, stanza, veicolo). Il numero di unità = il numero di licenze (10, 25 o 50).",
@@ -27,7 +27,7 @@
     "status_active": "Abbonamento attivo: :plan, valido fino al :date.",
     "status_grace": "Abbonamento :plan terminato il :ended. Periodo di grazia fino al :grace_end — :days giorni di accesso completo rimasti.",
     "status_expired": "La prova è terminata. Scegli un piano qui sotto.",
-    "pricing_intro": "Mese di prova gratuito (50 licenze e 50 unità, Time incluso). Poi 10, 25 o 50 licenze e unità all’anno. Pagamento annuale tramite fattura.",
+    "pricing_intro": "Mese di prova gratuito (50 licenze e 50 unità). Poi 10, 25 o 50 licenze e unità all’anno. Pagamento annuale tramite fattura.",
     "status_module_esg": "Modulo ESG attivo sul tuo account.",
     "status_module_time": "Time (timbratrice) è attivo sul tuo account.",
     "page_limits_title": "Perché alcune azioni non sono disponibili",
@@ -71,9 +71,8 @@
             "price": "7 € / licenza / mese",
             "scale": "70 € al mese. Pagamento annuale (840 €).",
             "features": [
-                "Time (timbratrice) incluso.",
-                "CIAO (ONSS) su richiesta.",
-                "10 unità e 10 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
+                "10 unit e 10 documenti. Sedi e foto illimitate.",
+                "Timbratrice, turno, CIAO (ONSS) inclusi."
             ]
         },
         "winprox_10_time": {
@@ -81,9 +80,8 @@
             "price": "7 € / licenza / mese",
             "scale": "70 € al mese. Pagamento annuale (840 €).",
             "features": [
-                "Time (timbratrice) incluso.",
-                "CIAO (ONSS) su richiesta.",
-                "10 unità e 10 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
+                "10 unit e 10 documenti. Sedi e foto illimitate.",
+                "Timbratrice, turno, CIAO (ONSS) inclusi."
             ]
         },
         "winprox_25": {
@@ -91,9 +89,8 @@
             "price": "6 € / licenza / mese",
             "scale": "150 € al mese. Pagamento annuale (1.800 €).",
             "features": [
-                "Time (timbratrice) incluso.",
-                "CIAO (ONSS) su richiesta.",
-                "25 unità e 25 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
+                "25 unit e 25 documenti. Sedi e foto illimitate.",
+                "Timbratrice, turno, CIAO (ONSS) inclusi."
             ]
         },
         "winprox_25_time": {
@@ -101,9 +98,8 @@
             "price": "6 € / licenza / mese",
             "scale": "150 € al mese. Pagamento annuale (1.800 €).",
             "features": [
-                "Time (timbratrice) incluso.",
-                "CIAO (ONSS) su richiesta.",
-                "25 unità e 25 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
+                "25 unit e 25 documenti. Sedi e foto illimitate.",
+                "Timbratrice, turno, CIAO (ONSS) inclusi."
             ]
         },
         "winprox_50": {
@@ -111,9 +107,8 @@
             "price": "5 € / licenza / mese",
             "scale": "250 € al mese. Pagamento annuale (3.000 €).",
             "features": [
-                "Time (timbratrice) incluso.",
-                "CIAO (ONSS) su richiesta.",
-                "50 unità e 50 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
+                "50 unit e 50 documenti. Sedi e foto illimitate.",
+                "Timbratrice, turno, CIAO (ONSS) inclusi."
             ]
         },
         "winprox_50_time": {
@@ -121,9 +116,8 @@
             "price": "5 € / licenza / mese",
             "scale": "250 € al mese. Pagamento annuale (3.000 €).",
             "features": [
-                "Time (timbratrice) incluso.",
-                "CIAO (ONSS) su richiesta.",
-                "50 unità e 50 documenti. Sedi e foto illimitate. Niente IoT, ESG o API."
+                "50 unit e 50 documenti. Sedi e foto illimitate.",
+                "Timbratrice, turno, CIAO (ONSS) inclusi."
             ]
         },
         "winprox_100": {
@@ -131,8 +125,7 @@
             "price": "Su misura",
             "scale": "Da 100 licenze: WinProx Corporate.",
             "features": [
-                "Time (timbratrice) incluso.",
-                "IoT, ESG e API su Corporate."
+                "Timbratrice, turno, CIAO (ONSS) inclusi."
             ]
         },
         "winprox_100_time": {
@@ -140,8 +133,7 @@
             "price": "Su misura",
             "scale": "Da 100 licenze: WinProx Corporate.",
             "features": [
-                "Time (timbratrice) incluso.",
-                "IoT, ESG e API su Corporate."
+                "Timbratrice, turno, CIAO (ONSS) inclusi."
             ]
         },
         "facility_10": {
@@ -215,7 +207,7 @@
             "price": "Prezzo personalizzato",
             "scale": "Da 100 licenze, o se servono API/webhook/integrazioni.",
             "features": [
-                "Time (timbratrice), IoT Connect e ESG inclusi.",
+                "Timbratrice, turno, CIAO (ONSS), IoT Connect, ESG e API inclusi.",
                 "API REST completa e webhook.",
                 "Integrazioni, SLA e supporto su misura."
             ]
@@ -303,7 +295,7 @@
     "comparison_custom": "Su misura",
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
-        "trial": "Prova: 50 licenze e 50 unità, Time (timbratrice) incluso. Pagamento annuale dopo la prova.",
+        "trial": "Prova: 50 licenze e 50 unità. Pagamento annuale dopo la prova.",
         "unlimited": "Unità e documenti seguono il numero di licenze (10/25/50). Sedi e foto sono illimitate.",
         "corporate": "IoT, ESG e API: solo WinProx Corporate (da 100 licenze)."
     },

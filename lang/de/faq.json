@@ -55,28 +55,28 @@
                 "winprox_10": {
                     "units": "Bis 10 Units. Standorte unbegrenzt.",
                     "announcements": "70 € pro Monat (840 € / Jahr)",
-                    "documents": "Time (Stechuhr) enthalten. · CIAO (LSZ) auf Anfrage. · Kein IoT, ESG oder API.",
+                    "documents": "Stechuhr, Dienstplan, CIAO (LSS) inklusive.",
                     "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
                     "users": "Bis 10 Lizenzen (Kollegen + Ausführende)"
                 },
                 "winprox_25": {
                     "units": "Bis 25 Units. Standorte unbegrenzt.",
                     "announcements": "150 € pro Monat (1.800 € / Jahr)",
-                    "documents": "Time (Stechuhr) enthalten. · CIAO (LSZ) auf Anfrage. · Kein IoT, ESG oder API.",
+                    "documents": "Stechuhr, Dienstplan, CIAO (LSS) inklusive.",
                     "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
                     "users": "Bis 25 Lizenzen (Kollegen + Ausführende)"
                 },
                 "winprox_50": {
                     "units": "Bis 50 Units. Standorte unbegrenzt.",
                     "announcements": "250 € pro Monat (3.000 € / Jahr)",
-                    "documents": "Time (Stechuhr) enthalten. · CIAO (LSZ) auf Anfrage. · Kein IoT, ESG oder API.",
+                    "documents": "Stechuhr, Dienstplan, CIAO (LSS) inklusive.",
                     "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
                     "users": "Bis 50 Lizenzen (Kollegen + Ausführende)"
                 },
                 "corporate": {
                     "units": "Ab 100 Lizenzen, oder wenn API/Webhooks/Integrationen nötig sind.",
                     "announcements": "Individueller Preis",
-                    "documents": "Time (Stechuhr), IoT Connect und ESG enthalten.",
+                    "documents": "Stechuhr, Dienstplan, CIAO (LSS), IoT Connect, ESG und API inklusive.",
                     "description": "Für 100+ Lizenzen oder wenn API/Webhooks nötig sind.",
                     "users": "Lizenzen nach Maß; unbegrenzte Standorte und Fotos"
                 }

@@ -55,28 +55,28 @@
                 "winprox_10": {
                     "units": "Tot 10 units. Locaties onbeperkt.",
                     "announcements": "70€ per maand (840€ / jaar)",
-                    "documents": "Time (prikklok) inbegrepen. · CIAO (RSZ) op aanvraag. · Geen IoT, ESG of API.",
+                    "documents": "Prikklok, uurrooster, CIAO (RSZ) inbegrepen.",
                     "description": "Melden, taken en prikklok. Jaarlijks te betalen.",
                     "users": "Tot 10 licenties (collega's + uitvoerders)"
                 },
                 "winprox_25": {
                     "units": "Tot 25 units. Locaties onbeperkt.",
                     "announcements": "150€ per maand (1.800€ / jaar)",
-                    "documents": "Time (prikklok) inbegrepen. · CIAO (RSZ) op aanvraag. · Geen IoT, ESG of API.",
+                    "documents": "Prikklok, uurrooster, CIAO (RSZ) inbegrepen.",
                     "description": "Melden, taken en prikklok. Jaarlijks te betalen.",
                     "users": "Tot 25 licenties (collega's + uitvoerders)"
                 },
                 "winprox_50": {
                     "units": "Tot 50 units. Locaties onbeperkt.",
                     "announcements": "250€ per maand (3.000€ / jaar)",
-                    "documents": "Time (prikklok) inbegrepen. · CIAO (RSZ) op aanvraag. · Geen IoT, ESG of API.",
+                    "documents": "Prikklok, uurrooster, CIAO (RSZ) inbegrepen.",
                     "description": "Melden, taken en prikklok. Jaarlijks te betalen.",
                     "users": "Tot 50 licenties (collega's + uitvoerders)"
                 },
                 "corporate": {
                     "units": "Vanaf 100 licenties, of API/webhooks/integraties nodig.",
                     "announcements": "Prijs op maat",
-                    "documents": "Time (prikklok), IoT Connect en ESG inbegrepen.",
+                    "documents": "Prikklok, uurrooster, CIAO (RSZ), IoT Connect, ESG en API inbegrepen.",
                     "description": "Voor 100+ licenties of wanneer API/webhooks nodig zijn.",
                     "users": "Licenties op maat; onbeperkt locaties en foto's"
                 }

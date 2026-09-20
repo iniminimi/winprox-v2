@@ -55,28 +55,28 @@
                 "winprox_10": {
                     "units": "Fino a 10 unità. Sedi illimitate.",
                     "announcements": "70 € al mese (840 € / anno)",
-                    "documents": "Time (timbratrice) incluso. · CIAO (ONSS) su richiesta. · Niente IoT, ESG o API.",
+                    "documents": "Timbratrice, turno, CIAO (ONSS) inclusi.",
                     "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
                     "users": "Fino a 10 licenze (colleghi + operatori)"
                 },
                 "winprox_25": {
                     "units": "Fino a 25 unità. Sedi illimitate.",
                     "announcements": "150 € al mese (1.800 € / anno)",
-                    "documents": "Time (timbratrice) incluso. · CIAO (ONSS) su richiesta. · Niente IoT, ESG o API.",
+                    "documents": "Timbratrice, turno, CIAO (ONSS) inclusi.",
                     "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
                     "users": "Fino a 25 licenze (colleghi + operatori)"
                 },
                 "winprox_50": {
                     "units": "Fino a 50 unità. Sedi illimitate.",
                     "announcements": "250 € al mese (3.000 € / anno)",
-                    "documents": "Time (timbratrice) incluso. · CIAO (ONSS) su richiesta. · Niente IoT, ESG o API.",
+                    "documents": "Timbratrice, turno, CIAO (ONSS) inclusi.",
                     "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
                     "users": "Fino a 50 licenze (colleghi + operatori)"
                 },
                 "corporate": {
                     "units": "Da 100 licenze, o se servono API/webhook/integrazioni.",
                     "announcements": "Prezzo su misura",
-                    "documents": "Time (timbratrice), IoT Connect e ESG inclusi.",
+                    "documents": "Timbratrice, turno, CIAO (ONSS), IoT Connect, ESG e API inclusi.",
                     "description": "Per 100+ licenze o quando servono API/webhook.",
                     "users": "Licenze su misura; sedi e foto illimitate"
                 }

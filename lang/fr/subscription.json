@@ -1,11 +1,11 @@
 {
     "title": "Abonnement, limites et facturation",
     "public_title": "Tarifs & formules",
-    "public_subtitle": "Choisissez le nombre de licences. WinProx se paie à l’année. Time (pointeuse) est inclus.",
+    "public_subtitle": "Choisissez le nombre de licences. WinProx se paie annuellement. Pointeuse, planning et CIAO (ONSS) inclus.",
     "public_register_cta": "Démarrer l'essai gratuit",
     "subtitle": "Après le mois gratuit, choisissez une formule. Chaque formule limite licences et unités (même nombre). Lieux et photos sont illimités.",
     "plans_heading": "Formules",
-    "plans_intro": "Paiement par personne. 10, 25 ou 50 licences (collègues + exécutants) avec autant d’unités et de documents. Lieux et photos illimités. Time (pointeuse) est inclus.",
+    "plans_intro": "Payez par personne. 10, 25 ou 50 licences (collègues + exécutants) avec autant d’unités et de documents. Lieux et photos illimités. Pointeuse, planning et CIAO (ONSS) inclus.",
     "glossary": {
         "heading": "Licences, unités et photos",
         "unit": "Unité — un objet ou un lieu avec un code QR (machine, pièce, véhicule). Le nombre d’unités = le nombre de licences (10, 25 ou 50).",
@@ -27,7 +27,7 @@
     "status_active": "Abonnement actif : :plan, valable jusqu'au :date.",
     "status_grace": "Abonnement :plan terminé le :ended. Période de grâce jusqu'au :grace_end — :days jours d'accès complet restants.",
     "status_expired": "Votre essai est terminé. Choisissez une formule ci-dessous.",
-    "pricing_intro": "Mois d’essai gratuit (50 licences et 50 unités, Time inclus). Ensuite 10, 25 ou 50 licences et unités par an. Paiement annuel par facture.",
+    "pricing_intro": "Mois d’essai gratuit (50 licences et 50 unités). Ensuite 10, 25 ou 50 licences et unités par an. Paiement annuel par facture.",
     "status_module_esg": "Module ESG actif sur votre compte.",
     "status_module_time": "Time (pointeuse) est actif sur votre compte.",
     "page_limits_title": "Pourquoi certaines actions sont indisponibles",
@@ -71,9 +71,8 @@
             "price": "7 € / licence / mois",
             "scale": "70 € par mois. Paiement annuel (840 €).",
             "features": [
-                "Time (pointeuse) inclus.",
-                "CIAO (ONSS) sur demande.",
-                "10 unités et 10 documents. Lieux et photos illimités. Pas d’IoT, ESG ni API."
+                "10 unités et 10 documents. Lieux et photos illimités.",
+                "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
         "winprox_10_time": {
@@ -81,9 +80,8 @@
             "price": "7 € / licence / mois",
             "scale": "70 € par mois. Paiement annuel (840 €).",
             "features": [
-                "Time (pointeuse) inclus.",
-                "CIAO (ONSS) sur demande.",
-                "10 unités et 10 documents. Lieux et photos illimités. Pas d’IoT, ESG ni API."
+                "10 unités et 10 documents. Lieux et photos illimités.",
+                "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
         "winprox_25": {
@@ -91,9 +89,8 @@
             "price": "6 € / licence / mois",
             "scale": "150 € par mois. Paiement annuel (1 800 €).",
             "features": [
-                "Time (pointeuse) inclus.",
-                "CIAO (ONSS) sur demande.",
-                "25 unités et 25 documents. Lieux et photos illimités. Pas d’IoT, ESG ni API."
+                "25 unités et 25 documents. Lieux et photos illimités.",
+                "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
         "winprox_25_time": {
@@ -101,9 +98,8 @@
             "price": "6 € / licence / mois",
             "scale": "150 € par mois. Paiement annuel (1 800 €).",
             "features": [
-                "Time (pointeuse) inclus.",
-                "CIAO (ONSS) sur demande.",
-                "25 unités et 25 documents. Lieux et photos illimités. Pas d’IoT, ESG ni API."
+                "25 unités et 25 documents. Lieux et photos illimités.",
+                "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
         "winprox_50": {
@@ -111,9 +107,8 @@
             "price": "5 € / licence / mois",
             "scale": "250 € par mois. Paiement annuel (3 000 €).",
             "features": [
-                "Time (pointeuse) inclus.",
-                "CIAO (ONSS) sur demande.",
-                "50 unités et 50 documents. Lieux et photos illimités. Pas d’IoT, ESG ni API."
+                "50 unités et 50 documents. Lieux et photos illimités.",
+                "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
         "winprox_50_time": {
@@ -121,9 +116,8 @@
             "price": "5 € / licence / mois",
             "scale": "250 € par mois. Paiement annuel (3 000 €).",
             "features": [
-                "Time (pointeuse) inclus.",
-                "CIAO (ONSS) sur demande.",
-                "50 unités et 50 documents. Lieux et photos illimités. Pas d’IoT, ESG ni API."
+                "50 unités et 50 documents. Lieux et photos illimités.",
+                "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
         "winprox_100": {
@@ -131,8 +125,7 @@
             "price": "Sur mesure",
             "scale": "À partir de 100 licences : WinProx Corporate.",
             "features": [
-                "Time (pointeuse) inclus.",
-                "IoT, ESG et API en Corporate."
+                "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
         "winprox_100_time": {
@@ -140,8 +133,7 @@
             "price": "Sur mesure",
             "scale": "À partir de 100 licences : WinProx Corporate.",
             "features": [
-                "Time (pointeuse) inclus.",
-                "IoT, ESG et API en Corporate."
+                "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
         "facility_10": {
@@ -215,7 +207,7 @@
             "price": "Tarif sur mesure",
             "scale": "À partir de 100 licences, ou si API/webhooks/intégrations sont nécessaires.",
             "features": [
-                "Time (pointeuse), IoT Connect et ESG inclus.",
+                "Pointeuse, planning, CIAO (ONSS), IoT Connect, ESG et API inclus.",
                 "API REST complète et webhooks.",
                 "Intégrations, SLA et support sur mesure."
             ]
@@ -303,7 +295,7 @@
     "comparison_custom": "Sur mesure",
     "comparison_trial_price": "Gratuit",
     "comparison_notes": {
-        "trial": "Essai : 50 licences et 50 unités, Time (pointeuse) inclus. Paiement annuel après l’essai.",
+        "trial": "Essai : 50 licences et 50 unités. Paiement annuel après l’essai.",
         "unlimited": "Unités et documents suivent le nombre de licences (10/25/50). Lieux et photos sont illimités.",
         "corporate": "IoT, ESG et API : uniquement WinProx Corporate (à partir de 100 licences)."
     },

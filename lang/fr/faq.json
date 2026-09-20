@@ -55,28 +55,28 @@
                 "winprox_10": {
                     "units": "Jusqu’à 10 unités. Lieux illimités.",
                     "announcements": "70 € par mois (840 € / an)",
-                    "documents": "Time (pointeuse) inclus. · CIAO (ONSS) sur demande. · Pas d’IoT, ESG ni API.",
+                    "documents": "Pointeuse, planning, CIAO (ONSS) inclus.",
                     "description": "Signalements, tâches et pointeuse. Paiement annuel.",
                     "users": "Jusqu’à 10 licences (collègues + exécutants)"
                 },
                 "winprox_25": {
                     "units": "Jusqu’à 25 unités. Lieux illimités.",
                     "announcements": "150 € par mois (1 800 € / an)",
-                    "documents": "Time (pointeuse) inclus. · CIAO (ONSS) sur demande. · Pas d’IoT, ESG ni API.",
+                    "documents": "Pointeuse, planning, CIAO (ONSS) inclus.",
                     "description": "Signalements, tâches et pointeuse. Paiement annuel.",
                     "users": "Jusqu’à 25 licences (collègues + exécutants)"
                 },
                 "winprox_50": {
                     "units": "Jusqu’à 50 unités. Lieux illimités.",
                     "announcements": "250 € par mois (3 000 € / an)",
-                    "documents": "Time (pointeuse) inclus. · CIAO (ONSS) sur demande. · Pas d’IoT, ESG ni API.",
+                    "documents": "Pointeuse, planning, CIAO (ONSS) inclus.",
                     "description": "Signalements, tâches et pointeuse. Paiement annuel.",
                     "users": "Jusqu’à 50 licences (collègues + exécutants)"
                 },
                 "corporate": {
                     "units": "À partir de 100 licences, ou si API/webhooks/intégrations sont nécessaires.",
                     "announcements": "Prix sur mesure",
-                    "documents": "Time (pointeuse), IoT Connect et ESG inclus.",
+                    "documents": "Pointeuse, planning, CIAO (ONSS), IoT Connect, ESG et API inclus.",
                     "description": "Pour 100+ licences ou lorsque API/webhooks sont nécessaires.",
                     "users": "Licences sur mesure ; lieux et photos illimités"
                 }
