@@ -398,7 +398,16 @@
             "time_module_disabled": "Time-module is uitgeschakeld.",
             "presence_compliance_disabled": "CIAO is uitgeschakeld.",
             "presence_submission_not_retryable": "Deze inzending kan niet opnieuw worden verstuurd.",
-            "retry_failed": "Opnieuw versturen mislukt."
+            "retry_failed": "Opnieuw versturen mislukt.",
+            "rsz_private_key_invalid": "De CIAO private key is ongeldig of niet leesbaar. Controleer de WinProx-platformcertificaat-configuratie.",
+            "rsz_platform_private_key_unreadable": "Het platform private-key-bestand is niet leesbaar.",
+            "rsz_platform_private_key_empty": "Het platform private-key-bestand is leeg.",
+            "rsz_credentials_missing": "CIAO-credentials ontbreken (platform Chaman of tenant-override).",
+            "rsz_token_empty": "RSZ gaf geen access token terug.",
+            "rsz_token_failed": "OAuth-token bij de RSZ mislukt.",
+            "rsz_jwt_sign_failed": "JWT-ondertekening van de CIAO-aanvraag mislukt.",
+            "rsz_register_failed": "RSZ-registratie mislukt.",
+            "rsz_platform_client_id_missing": "CIAO platform client-id ontbreekt (RSZ_PLATFORM_CLIENT_ID)."
         }
     },
     "required_break": {

@@ -398,7 +398,16 @@
             "time_module_disabled": "El módulo Time está desactivado.",
             "presence_compliance_disabled": "CIAO está desactivado.",
             "presence_submission_not_retryable": "Este envío no se puede reintentar.",
-            "retry_failed": "El reintento falló."
+            "retry_failed": "El reintento falló.",
+            "rsz_private_key_invalid": "La clave privada CIAO no es válida o no se puede leer. Revise la configuración del certificado de plataforma WinProx.",
+            "rsz_platform_private_key_unreadable": "El archivo de clave privada de la plataforma no se puede leer.",
+            "rsz_platform_private_key_empty": "El archivo de clave privada de la plataforma está vacío.",
+            "rsz_credentials_missing": "Faltan credenciales CIAO (Chaman de plataforma o override del inquilino).",
+            "rsz_token_empty": "La ONSS no devolvió ningún token de acceso.",
+            "rsz_token_failed": "Falló el token OAuth ante la ONSS.",
+            "rsz_jwt_sign_failed": "Falló la firma JWT de la solicitud CIAO.",
+            "rsz_register_failed": "Falló el registro en la ONSS.",
+            "rsz_platform_client_id_missing": "Falta el client id de plataforma CIAO (RSZ_PLATFORM_CLIENT_ID)."
         }
     },
     "required_break": {

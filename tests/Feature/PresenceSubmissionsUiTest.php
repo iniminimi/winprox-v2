@@ -127,15 +127,17 @@ it('toont CIAO-nav op Time-schermen alleen als aanwezigheidscompliance aan staat
         'role' => User::ROLE_ADMIN,
     ]);
 
+    $ciaoUrl = route('time.ciao.index');
+
     $this->actingAs($admin)
         ->get(route('time.presence.index'))
         ->assertOk()
-        ->assertDontSee(__('time.nav.ciao'), false);
+        ->assertDontSee('href="'.$ciaoUrl.'"', false);
 
     $tenant->update(['presence_compliance_enabled' => true]);
 
     $this->actingAs($admin)
         ->get(route('time.presence.index'))
         ->assertOk()
-        ->assertSee(__('time.nav.ciao'), false);
+        ->assertSee('href="'.$ciaoUrl.'"', false);
 });

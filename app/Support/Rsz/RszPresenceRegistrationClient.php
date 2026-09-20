@@ -92,18 +92,23 @@ final class RszPresenceRegistrationClient
      */
     public function resolveCredentials(Tenant $tenant): array
     {
+        $platformClientId = trim((string) config('rsz.platform_client_id', ''));
+        $platformKey = $this->platformPrivateKeyPem();
+
+        // Productpad: WinProx-platform Chaman. Tenant-override alleen als platform ontbreekt.
+        if ($platformClientId !== '' && $platformKey !== '') {
+            return [$platformClientId, $platformKey];
+        }
+
+        if ($platformKey !== '' && $platformClientId === '') {
+            throw new RuntimeException('rsz_platform_client_id_missing');
+        }
+
         $tenantClientId = is_string($tenant->presence_rsz_client_id) ? trim($tenant->presence_rsz_client_id) : '';
         $tenantKey = is_string($tenant->presence_rsz_private_key) ? trim($tenant->presence_rsz_private_key) : '';
 
         if ($tenantClientId !== '' && $tenantKey !== '') {
             return [$tenantClientId, $tenantKey];
-        }
-
-        $platformClientId = trim((string) config('rsz.platform_client_id', ''));
-        $platformKey = $this->platformPrivateKeyPem();
-
-        if ($platformClientId !== '' && $platformKey !== '') {
-            return [$platformClientId, $platformKey];
         }
 
         throw new RuntimeException('rsz_credentials_missing');

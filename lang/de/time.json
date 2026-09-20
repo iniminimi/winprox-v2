@@ -398,7 +398,16 @@
             "time_module_disabled": "Time-Modul ist deaktiviert.",
             "presence_compliance_disabled": "CIAO ist deaktiviert.",
             "presence_submission_not_retryable": "Diese Meldung kann nicht erneut gesendet werden.",
-            "retry_failed": "Erneutes Senden fehlgeschlagen."
+            "retry_failed": "Erneutes Senden fehlgeschlagen.",
+            "rsz_private_key_invalid": "Der CIAO-Privatschlüssel ist ungültig oder nicht lesbar. Prüfen Sie die WinProx-Plattformzertifikat-Konfiguration.",
+            "rsz_platform_private_key_unreadable": "Die Plattform-Privatschlüsseldatei ist nicht lesbar.",
+            "rsz_platform_private_key_empty": "Die Plattform-Privatschlüsseldatei ist leer.",
+            "rsz_credentials_missing": "CIAO-Zugangsdaten fehlen (Plattform-Chaman oder Tenant-Override).",
+            "rsz_token_empty": "LSS hat kein Access-Token zurückgegeben.",
+            "rsz_token_failed": "OAuth-Token bei der LSS fehlgeschlagen.",
+            "rsz_jwt_sign_failed": "JWT-Signatur der CIAO-Anfrage fehlgeschlagen.",
+            "rsz_register_failed": "LSS-Registrierung fehlgeschlagen.",
+            "rsz_platform_client_id_missing": "CIAO-Plattform-Client-ID fehlt (RSZ_PLATFORM_CLIENT_ID)."
         }
     },
     "required_break": {

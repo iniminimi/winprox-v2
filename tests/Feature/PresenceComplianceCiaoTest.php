@@ -206,6 +206,45 @@ it('gebruikt platform Chaman-credentials wanneer de tenant geen eigen key heeft'
     expect($clientId)->toBe('platform-client');
 });
 
+it('kiest platform Chaman boven een tenant-override', function () {
+    config([
+        'rsz.static_access_token' => null,
+        'rsz.platform_client_id' => 'platform-client',
+        'rsz.platform_private_key' => "-----BEGIN PRIVATE KEY-----\nMIIEowIBAAKCAQEA0Z3VS5JJcds3xfn/ygWyF7PtvEj7pK8P0qK9nF0=\n-----END PRIVATE KEY-----",
+        'rsz.platform_private_key_path' => null,
+    ]);
+
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'presence_compliance_enabled' => true,
+        'presence_rsz_client_id' => 'tenant-client',
+        'presence_rsz_private_key' => "-----BEGIN PRIVATE KEY-----\nMIIEowIBAAKCAQEA0Z3VS5JJcds3xfn/ygWyF7PtvEj7pK8P0qK9nF0=\n-----END PRIVATE KEY-----",
+    ]);
+
+    [$clientId] = app(\App\Support\Rsz\RszPresenceRegistrationClient::class)->resolveCredentials($tenant);
+
+    expect($clientId)->toBe('platform-client');
+});
+
+it('meldt ontbrekende platform client-id als de private key wel gezet is', function () {
+    config([
+        'rsz.static_access_token' => null,
+        'rsz.platform_client_id' => null,
+        'rsz.platform_private_key' => "-----BEGIN PRIVATE KEY-----\nMIIEowIBAAKCAQEA0Z3VS5JJcds3xfn/ygWyF7PtvEj7pK8P0qK9nF0=\n-----END PRIVATE KEY-----",
+        'rsz.platform_private_key_path' => null,
+    ]);
+
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'presence_compliance_enabled' => true,
+        'presence_rsz_client_id' => null,
+        'presence_rsz_private_key' => null,
+    ]);
+
+    expect(fn () => app(\App\Support\Rsz\RszPresenceRegistrationClient::class)->resolveCredentials($tenant))
+        ->toThrow(RuntimeException::class, 'rsz_platform_client_id_missing');
+});
+
 it('weigert tenant-update zolang CIAO vergrendeld is', function () {
     $tenant = Tenant::factory()->create(['has_time_module' => true]);
 

@@ -398,7 +398,16 @@
             "time_module_disabled": "Time module is disabled.",
             "presence_compliance_disabled": "CIAO is disabled.",
             "presence_submission_not_retryable": "This submission cannot be retried.",
-            "retry_failed": "Retry failed."
+            "retry_failed": "Retry failed.",
+            "rsz_private_key_invalid": "The CIAO private key is invalid or unreadable. Check the WinProx platform certificate configuration.",
+            "rsz_platform_private_key_unreadable": "The platform private key file is unreadable.",
+            "rsz_platform_private_key_empty": "The platform private key file is empty.",
+            "rsz_credentials_missing": "CIAO credentials are missing (platform Chaman or tenant override).",
+            "rsz_token_empty": "RSZ returned no access token.",
+            "rsz_token_failed": "OAuth token request to RSZ failed.",
+            "rsz_jwt_sign_failed": "JWT signing for the CIAO request failed.",
+            "rsz_register_failed": "RSZ registration failed.",
+            "rsz_platform_client_id_missing": "CIAO platform client id is missing (RSZ_PLATFORM_CLIENT_ID)."
         }
     },
     "required_break": {
