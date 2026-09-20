@@ -91,7 +91,7 @@ klikbare KPI-tegels + alert-state, highlight net-aangemaakte melding, proefperio
 
 **NIET overnemen uit V1-dashboard:** `facility-setup-panel` (onboarding-checklist), contractor-
 panelen ("offerte-documenten" + "wacht op aannemers-reacties"), onboarding-banners,
-proefperiode-**battery-png** (capsule wordt platte tekst), zwevend WinProx-logo rechtsboven,
+proefperiode-battery-widget als losse kaart (wij houden de compacte capsule + dezelfde 5 PNG's), zwevend WinProx-logo rechtsboven,
 `SectorCapabilities`/`SectorUiCopy`/
 `appMarketingFlow`, alle sector-/property-conditionals. Property → **Location** in copy en data.
 
@@ -1032,8 +1032,9 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   (Corporate: afgesproken units = documentlimiet), `is_active`, `stripe_customer_id` (optioneel).
 - `hasFullAppAccess()` = trial **of** betaald **of** grace; middleware blokkeert de app
   (behalve `billing.*`, `faq.*`, logout) wanneer geen toegang.
-- **Proefperiode-capsule** (dashboard §1 + dit scherm): resterende dagen. V1 had battery-PNG's →
-  **V2: tekstuele/minimalistische capsule** (geen PNG-animatie).
+- **Proefperiode-capsule** (dashboard §1 + dit scherm): resterende dagen + de vijf
+  battery-PNG's (`public/images/battery1.png`–`battery5.png`, vol=groen tot leeg=rood).
+  Geen animatie.
 
 ### 7.2 Plannen
 - **WinProx** (`winprox_10` / `winprox_25` / `winprox_50`): **jaarlijks**, gemeten in **licenties**
@@ -1103,7 +1104,7 @@ Config: `config/tenant_purge.php`. Actions onder `app/Actions/TenantPurge/`.
 
 ### 7.5 NIET overnemen
 `micro_hospitality`, hospitality-trialplan-split, demo/marketing-query-params, sector-subtitels,
-battery-PNG-widget (vervangen door tekstcapsule).
+battery-PNG-widget als losse kaart (de vijf PNG's zitten in de compacte capsule).
 
 ---
 
