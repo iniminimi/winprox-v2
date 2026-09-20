@@ -12,6 +12,7 @@
         $blocksRemaining = (int) ($battery['blocks_remaining'] ?? 0);
         $daysRemaining = (int) ($battery['days_remaining'] ?? 0);
         $imageLevel = max(1, min(5, 6 - $blocksRemaining));
+        $tone = ($kind === 'grace' || $blocksRemaining <= 2) ? 'low' : 'ok';
         $shortText = match ($kind) {
             'grace' => __('dashboard.trial_capsule.grace_short', ['days' => $daysRemaining]),
             'paid' => __('dashboard.trial_capsule.paid_short', ['days' => $daysRemaining]),
@@ -26,7 +27,7 @@
 
     <a
         href="{{ route('subscription.index') }}"
-        class="wp-dashboard-trial-capsule"
+        class="wp-dashboard-trial-capsule wp-dashboard-trial-capsule--{{ $tone }}"
         aria-label="{{ $ariaTitle }}: {{ $shortText }}"
     >
         <span class="wp-dashboard-trial-capsule__pulse" aria-hidden="true"></span>

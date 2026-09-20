@@ -185,7 +185,7 @@ it('toont de proefperiode-batterijcapsule op het dashboard', function () {
     Livewire::actingAs($user)
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.trial_capsule.trial_short', ['days' => 18]))
-        ->assertSee('wp-dashboard-trial-capsule', false);
+        ->assertSee('wp-dashboard-trial-capsule--ok', false);
 });
 
 it('toont de abonnements-batterijcapsule na planactivatie', function () {
@@ -208,7 +208,7 @@ it('toont de abonnements-batterijcapsule na planactivatie', function () {
     Livewire::actingAs($user)
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.trial_capsule.paid_short', ['days' => 29]))
-        ->assertSee('wp-dashboard-trial-capsule', false);
+        ->assertSee('wp-dashboard-trial-capsule--ok', false);
 });
 
 it('toont conditionele actie-KPIâ€™s alleen bij telling groter dan nul', function () {

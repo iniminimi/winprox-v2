@@ -4604,10 +4604,15 @@ svg.wp-release-worker-row__icon,
 }
 
 .wp-dashboard-trial-capsule__icon {
-    height: 2rem;
-    width: auto;
+    width: 2.65rem;
+    height: 1.22rem;
     display: block;
     flex-shrink: 0;
+    color: var(--wp-accent);
+}
+
+.wp-dashboard-trial-capsule--low .wp-dashboard-trial-capsule__icon {
+    color: var(--wp-warning);
 }
 
 .wp-dashboard-trial-capsule__text {
