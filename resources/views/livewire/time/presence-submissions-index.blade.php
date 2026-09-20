@@ -61,71 +61,88 @@
         @if ($submissions->isEmpty())
             <p class="wp-muted">{{ __('time.ciao.empty') }}</p>
         @else
+            @php
+                $tz = config('app.timezone');
+                $groups = $submissions->getCollection()->groupBy(function ($submission) use ($tz) {
+                    $day = $submission->registration_at?->timezone($tz)->format('Y-m-d') ?? 'unknown';
+
+                    return ((string) ($submission->worker_id ?? '0')).'|'.$day;
+                });
+            @endphp
             <div class="wp-list">
-                @foreach ($submissions as $submission)
+                @foreach ($groups as $groupKey => $groupItems)
                     @php
-                        $detail = null;
-                        if ($submission->rsz_id) {
-                            $detail = 'RSZ #'.$submission->rsz_id;
-                            if ($submission->rsz_validity) {
-                                $detail .= ' · '.$submission->rsz_validity;
-                            }
-                        } elseif ($submission->error_message) {
-                            $rawError = (string) $submission->error_message;
-                            $errorCode = explode(':', $rawError, 2)[0];
-                            $errorKey = 'time.ciao.errors.'.$errorCode;
-                            $translated = __($errorKey);
-                            $detail = $translated !== $errorKey ? $translated : $rawError;
-                        }
+                        $first = $groupItems->first();
+                        $dayLabel = $first->registration_at?->timezone($tz)->format('d-m-Y') ?? '—';
                     @endphp
-                    <div class="wp-card wp-card-pad wp-cluster wp-cluster--spread" wire:key="ciao-sub-{{ $submission->id }}">
-                        <div class="wp-grow wp-stack-tight">
-                            <p>
-                                <strong>{{ $submission->worker?->displayName() ?? '—' }}</strong>
-                                <span class="wp-muted wp-text-sm">
-                                    · {{ $submission->registration_at?->timezone(config('app.timezone'))->format('d-m-Y H:i') }}
-                                </span>
-                            </p>
-                            <p class="wp-muted wp-text-sm">
-                                {{ __('time.ciao.event.'.$submission->source_event->value) }}
-                                · {{ $submission->presence_type->value }}
-                                @if ($submission->location)
-                                    · {{ $submission->location->name }}
-                                @endif
-                            </p>
-                            @if ($detail)
-                                <p @class([
-                                    'wp-text-sm',
-                                    'wp-muted' => $submission->status === \App\Enums\PresenceSubmissionStatus::Submitted,
-                                    'wp-error' => $submission->status === \App\Enums\PresenceSubmissionStatus::Failed
-                                        || $submission->status === \App\Enums\PresenceSubmissionStatus::Skipped,
-                                ])>{{ $detail }}</p>
-                            @endif
-                        </div>
-                        <div class="wp-cluster wp-cluster--wrap">
-                            <span @class([
-                                'wp-pill',
-                                'wp-pill--progress' => $submission->status === \App\Enums\PresenceSubmissionStatus::Pending,
-                                'wp-pill--done' => $submission->status === \App\Enums\PresenceSubmissionStatus::Submitted,
-                                'wp-pill--new' => $submission->status === \App\Enums\PresenceSubmissionStatus::Failed,
-                                'wp-pill--closed' => $submission->status === \App\Enums\PresenceSubmissionStatus::Skipped,
-                            ])>
-                                {{ __('time.ciao.status.'.$submission->status->value) }}
-                            </span>
-                            @can('retry', $submission)
-                                @if (in_array($submission->status, [
+                    <div class="wp-card wp-card-pad wp-stack-tight" wire:key="ciao-group-{{ $groupKey }}">
+                        <p>
+                            <strong>{{ $first->worker?->displayName() ?? '—' }}</strong>
+                            <span class="wp-muted wp-text-sm">· {{ $dayLabel }}</span>
+                        </p>
+                        @foreach ($groupItems as $submission)
+                            @php
+                                $detail = null;
+                                if ($submission->rsz_id) {
+                                    $detail = 'RSZ #'.$submission->rsz_id;
+                                    if ($submission->rsz_validity) {
+                                        $detail .= ' · '.$submission->rsz_validity;
+                                    }
+                                } elseif ($submission->error_message) {
+                                    $rawError = (string) $submission->error_message;
+                                    $errorCode = explode(':', $rawError, 2)[0];
+                                    $errorKey = 'time.ciao.errors.'.$errorCode;
+                                    $translated = __($errorKey);
+                                    $detail = $translated !== $errorKey ? $translated : $rawError;
+                                }
+
+                                $canRetry = in_array($submission->status, [
                                     \App\Enums\PresenceSubmissionStatus::Failed,
                                     \App\Enums\PresenceSubmissionStatus::Skipped,
                                     \App\Enums\PresenceSubmissionStatus::Pending,
-                                ], true))
-                                    <button type="button" class="btn btn--sm btn--surface"
-                                            wire:click="retry({{ $submission->id }})"
-                                            wire:loading.attr="disabled">
-                                        {{ __('time.ciao.retry') }}
-                                    </button>
-                                @endif
-                            @endcan
-                        </div>
+                                ], true);
+                            @endphp
+                            <div class="wp-cluster wp-cluster--spread" wire:key="ciao-sub-{{ $submission->id }}">
+                                <p @class([
+                                    'wp-text-sm',
+                                    'wp-muted' => $submission->status === \App\Enums\PresenceSubmissionStatus::Submitted
+                                        || $submission->status === \App\Enums\PresenceSubmissionStatus::Pending,
+                                    'wp-error' => $submission->status === \App\Enums\PresenceSubmissionStatus::Failed
+                                        || $submission->status === \App\Enums\PresenceSubmissionStatus::Skipped,
+                                ])>
+                                    {{ $submission->registration_at?->timezone($tz)->format('H:i') }}
+                                    {{ __('time.ciao.event.'.$submission->source_event->value) }}
+                                    · {{ $submission->presence_type->value }}
+                                    @if ($submission->location)
+                                        · {{ $submission->location->name }}
+                                    @endif
+                                    @if ($detail)
+                                        , {{ $detail }}
+                                    @endif
+                                </p>
+                                <div class="wp-cluster wp-cluster--wrap">
+                                    @if ($submission->status !== \App\Enums\PresenceSubmissionStatus::Submitted)
+                                        <span @class([
+                                            'wp-pill',
+                                            'wp-pill--progress' => $submission->status === \App\Enums\PresenceSubmissionStatus::Pending,
+                                            'wp-pill--new' => $submission->status === \App\Enums\PresenceSubmissionStatus::Failed,
+                                            'wp-pill--closed' => $submission->status === \App\Enums\PresenceSubmissionStatus::Skipped,
+                                        ])>
+                                            {{ __('time.ciao.status.'.$submission->status->value) }}
+                                        </span>
+                                    @endif
+                                    @can('retry', $submission)
+                                        @if ($canRetry)
+                                            <button type="button" class="btn btn--sm btn--surface"
+                                                    wire:click="retry({{ $submission->id }})"
+                                                    wire:loading.attr="disabled">
+                                                {{ __('time.ciao.retry') }}
+                                            </button>
+                                        @endif
+                                    @endcan
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 @endforeach
             </div>
