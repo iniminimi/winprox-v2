@@ -54,21 +54,21 @@
             "plans": {
                 "winprox_10": {
                     "units": "Hasta 10 unidades. Ubicaciones ilimitadas.",
-                    "announcements": "7 € / licencia / mes (840 € / año)",
+                    "announcements": "70 € al mes (840 € / año)",
                     "documents": "Time (reloj de fichar) incluido. · CIAO (ONSS) bajo petición. · Sin IoT, ESG ni API.",
                     "description": "Avisos, tareas y reloj de fichar. Pago anual.",
                     "users": "Hasta 10 licencias (colegas + operarios)"
                 },
                 "winprox_25": {
                     "units": "Hasta 25 unidades. Ubicaciones ilimitadas.",
-                    "announcements": "6 € / licencia / mes (1.800 € / año)",
+                    "announcements": "150 € al mes (1.800 € / año)",
                     "documents": "Time (reloj de fichar) incluido. · CIAO (ONSS) bajo petición. · Sin IoT, ESG ni API.",
                     "description": "Avisos, tareas y reloj de fichar. Pago anual.",
                     "users": "Hasta 25 licencias (colegas + operarios)"
                 },
                 "winprox_50": {
                     "units": "Hasta 50 unidades. Ubicaciones ilimitadas.",
-                    "announcements": "5 € / licencia / mes (3.000 € / año)",
+                    "announcements": "250 € al mes (3.000 € / año)",
                     "documents": "Time (reloj de fichar) incluido. · CIAO (ONSS) bajo petición. · Sin IoT, ESG ni API.",
                     "description": "Avisos, tareas y reloj de fichar. Pago anual.",
                     "users": "Hasta 50 licencias (colegas + operarios)"

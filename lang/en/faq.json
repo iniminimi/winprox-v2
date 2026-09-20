@@ -54,21 +54,21 @@
             "plans": {
                 "winprox_10": {
                     "units": "Up to 10 units. Locations unlimited.",
-                    "announcements": "€7 / seat / month (€840 / year)",
+                    "announcements": "€70 per month (€840 / year)",
                     "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
                     "description": "Issues, tasks and punch clock. Billed yearly.",
                     "users": "Up to 10 seats (colleagues + workers)"
                 },
                 "winprox_25": {
                     "units": "Up to 25 units. Locations unlimited.",
-                    "announcements": "€6 / seat / month (€1,800 / year)",
+                    "announcements": "€150 per month (€1,800 / year)",
                     "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
                     "description": "Issues, tasks and punch clock. Billed yearly.",
                     "users": "Up to 25 seats (colleagues + workers)"
                 },
                 "winprox_50": {
                     "units": "Up to 50 units. Locations unlimited.",
-                    "announcements": "€5 / seat / month (€3,000 / year)",
+                    "announcements": "€250 per month (€3,000 / year)",
                     "documents": "Time (punch clock) included. · CIAO (NSSO) on request. · No IoT, ESG or API.",
                     "description": "Issues, tasks and punch clock. Billed yearly.",
                     "users": "Up to 50 seats (colleagues + workers)"

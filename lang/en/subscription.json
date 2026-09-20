@@ -69,7 +69,7 @@
         "winprox_10": {
             "name": "10 seats",
             "price": "€7 / seat / month",
-            "scale": "€840 / year. Billed yearly.",
+            "scale": "€70 per month. Billed yearly (€840).",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
@@ -79,7 +79,7 @@
         "winprox_10_time": {
             "name": "10 seats + Time (punch clock)",
             "price": "€7 / seat / month",
-            "scale": "€840 / year. Billed yearly.",
+            "scale": "€70 per month. Billed yearly (€840).",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
@@ -89,7 +89,7 @@
         "winprox_25": {
             "name": "25 seats",
             "price": "€6 / seat / month",
-            "scale": "€1,800 / year. Billed yearly.",
+            "scale": "€150 per month. Billed yearly (€1,800).",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
@@ -99,7 +99,7 @@
         "winprox_25_time": {
             "name": "25 seats + Time (punch clock)",
             "price": "€6 / seat / month",
-            "scale": "€1,800 / year. Billed yearly.",
+            "scale": "€150 per month. Billed yearly (€1,800).",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
@@ -109,7 +109,7 @@
         "winprox_50": {
             "name": "50 seats",
             "price": "€5 / seat / month",
-            "scale": "€3,000 / year. Billed yearly.",
+            "scale": "€250 per month. Billed yearly (€3,000).",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",
@@ -119,7 +119,7 @@
         "winprox_50_time": {
             "name": "50 seats + Time (punch clock)",
             "price": "€5 / seat / month",
-            "scale": "€3,000 / year. Billed yearly.",
+            "scale": "€250 per month. Billed yearly (€3,000).",
             "features": [
                 "Time (punch clock) included.",
                 "CIAO (NSSO) on request.",

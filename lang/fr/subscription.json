@@ -69,7 +69,7 @@
         "winprox_10": {
             "name": "10 licences",
             "price": "7 € / licence / mois",
-            "scale": "840 € / an. Paiement annuel.",
+            "scale": "70 € par mois. Paiement annuel (840 €).",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
@@ -79,7 +79,7 @@
         "winprox_10_time": {
             "name": "10 licences + Time (pointeuse)",
             "price": "7 € / licence / mois",
-            "scale": "840 € / an. Paiement annuel.",
+            "scale": "70 € par mois. Paiement annuel (840 €).",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
@@ -89,7 +89,7 @@
         "winprox_25": {
             "name": "25 licences",
             "price": "6 € / licence / mois",
-            "scale": "1 800 € / an. Paiement annuel.",
+            "scale": "150 € par mois. Paiement annuel (1 800 €).",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
@@ -99,7 +99,7 @@
         "winprox_25_time": {
             "name": "25 licences + Time (pointeuse)",
             "price": "6 € / licence / mois",
-            "scale": "1 800 € / an. Paiement annuel.",
+            "scale": "150 € par mois. Paiement annuel (1 800 €).",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
@@ -109,7 +109,7 @@
         "winprox_50": {
             "name": "50 licences",
             "price": "5 € / licence / mois",
-            "scale": "3 000 € / an. Paiement annuel.",
+            "scale": "250 € par mois. Paiement annuel (3 000 €).",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",
@@ -119,7 +119,7 @@
         "winprox_50_time": {
             "name": "50 licences + Time (pointeuse)",
             "price": "5 € / licence / mois",
-            "scale": "3 000 € / an. Paiement annuel.",
+            "scale": "250 € par mois. Paiement annuel (3 000 €).",
             "features": [
                 "Time (pointeuse) inclus.",
                 "CIAO (ONSS) sur demande.",

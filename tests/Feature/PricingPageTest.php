@@ -49,14 +49,16 @@ it('toont publieke prijzenpagina voor ingelogde gebruikers', function () {
         ->assertSee(__('subscription.public_register_cta'), false);
 });
 
-it('toont plan-knoppen op abonnementenpagina voor beheerder', function () {
+it('toont contact-CTA op abonnementenpagina voor beheerder (geen self-activate)', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     Livewire\Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->assertSee(__('subscription.choose_plan'), false)
+        ->assertDontSee(__('subscription.choose_plan'), false)
+        ->assertSee(__('subscription.contact_sales_cta'))
         ->assertSee(__('subscription.plans.winprox_10.name'))
+        ->assertSee(__('subscription.plans.winprox_10.scale'))
         ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.yearly_invoice_notice'))

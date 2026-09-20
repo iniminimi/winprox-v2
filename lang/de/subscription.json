@@ -69,7 +69,7 @@
         "winprox_10": {
             "name": "10 Lizenzen",
             "price": "7 € / Lizenz / Monat",
-            "scale": "840 € / Jahr. Jährliche Zahlung.",
+            "scale": "70 € pro Monat. Jährliche Zahlung (840 €).",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
@@ -79,7 +79,7 @@
         "winprox_10_time": {
             "name": "10 Lizenzen + Time (Stechuhr)",
             "price": "7 € / Lizenz / Monat",
-            "scale": "840 € / Jahr. Jährliche Zahlung.",
+            "scale": "70 € pro Monat. Jährliche Zahlung (840 €).",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
@@ -89,7 +89,7 @@
         "winprox_25": {
             "name": "25 Lizenzen",
             "price": "6 € / Lizenz / Monat",
-            "scale": "1.800 € / Jahr. Jährliche Zahlung.",
+            "scale": "150 € pro Monat. Jährliche Zahlung (1.800 €).",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
@@ -99,7 +99,7 @@
         "winprox_25_time": {
             "name": "25 Lizenzen + Time (Stechuhr)",
             "price": "6 € / Lizenz / Monat",
-            "scale": "1.800 € / Jahr. Jährliche Zahlung.",
+            "scale": "150 € pro Monat. Jährliche Zahlung (1.800 €).",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
@@ -109,7 +109,7 @@
         "winprox_50": {
             "name": "50 Lizenzen",
             "price": "5 € / Lizenz / Monat",
-            "scale": "3.000 € / Jahr. Jährliche Zahlung.",
+            "scale": "250 € pro Monat. Jährliche Zahlung (3.000 €).",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",
@@ -119,7 +119,7 @@
         "winprox_50_time": {
             "name": "50 Lizenzen + Time (Stechuhr)",
             "price": "5 € / Lizenz / Monat",
-            "scale": "3.000 € / Jahr. Jährliche Zahlung.",
+            "scale": "250 € pro Monat. Jährliche Zahlung (3.000 €).",
             "features": [
                 "Time (Stechuhr) enthalten.",
                 "CIAO (RSZ) auf Anfrage.",

@@ -54,21 +54,21 @@
             "plans": {
                 "winprox_10": {
                     "units": "Fino a 10 unità. Sedi illimitate.",
-                    "announcements": "7 € / licenza / mese (840 € / anno)",
+                    "announcements": "70 € al mese (840 € / anno)",
                     "documents": "Time (timbratrice) incluso. · CIAO (ONSS) su richiesta. · Niente IoT, ESG o API.",
                     "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
                     "users": "Fino a 10 licenze (colleghi + operatori)"
                 },
                 "winprox_25": {
                     "units": "Fino a 25 unità. Sedi illimitate.",
-                    "announcements": "6 € / licenza / mese (1.800 € / anno)",
+                    "announcements": "150 € al mese (1.800 € / anno)",
                     "documents": "Time (timbratrice) incluso. · CIAO (ONSS) su richiesta. · Niente IoT, ESG o API.",
                     "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
                     "users": "Fino a 25 licenze (colleghi + operatori)"
                 },
                 "winprox_50": {
                     "units": "Fino a 50 unità. Sedi illimitate.",
-                    "announcements": "5 € / licenza / mese (3.000 € / anno)",
+                    "announcements": "250 € al mese (3.000 € / anno)",
                     "documents": "Time (timbratrice) incluso. · CIAO (ONSS) su richiesta. · Niente IoT, ESG o API.",
                     "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
                     "users": "Fino a 50 licenze (colleghi + operatori)"
