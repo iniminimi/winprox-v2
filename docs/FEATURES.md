@@ -790,7 +790,7 @@ productsector op `Tenant`.
   queue; submission-log + validity/remarks raadplegen.
 - UI: Instellingen (CIAO-kader onderaan, grijs tot aanvraag via info@winprox.app;
   superuser zet aan op Platform → Tenants — Time gaat mee aan, **geen** Corporate-eis;
-  daarna credentials), Time → **CIAO**
+  daarna enkel **BCE** — technische RSZ-credentials op het WinProx-platform), Time → **CIAO**
   (status/fouten + opnieuw), Personen/Locaties (NISS, DDT).
 - **Niet in golf 1:** Checkinatwork (CAW)-API, Construbadge-hardware, Dimona/payroll, vlees-CAW.
 

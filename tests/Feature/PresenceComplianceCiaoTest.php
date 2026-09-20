@@ -180,13 +180,30 @@ it('slaat presence-instellingen op via Action', function () {
     $updated = app(UpdatePresenceComplianceSettingsAction::class)->handle($tenant, [
         'presence_compliance_scope' => PresenceComplianceScope::CiaoCleaning->value,
         'enterprise_number' => '0123456789',
-        'presence_rsz_client_id' => 'cid-1',
-        'presence_rsz_private_key' => "-----BEGIN PRIVATE KEY-----\nabc\n-----END PRIVATE KEY-----",
     ], (int) $admin->id);
 
     expect($updated->presenceComplianceEnabled())->toBeTrue()
-        ->and($updated->enterprise_number)->toBe('0123456789')
-        ->and($updated->presence_rsz_client_id)->toBe('cid-1');
+        ->and($updated->enterprise_number)->toBe('0123456789');
+});
+
+it('gebruikt platform Chaman-credentials wanneer de tenant geen eigen key heeft', function () {
+    config([
+        'rsz.static_access_token' => null,
+        'rsz.platform_client_id' => 'platform-client',
+        'rsz.platform_private_key' => "-----BEGIN PRIVATE KEY-----\nMIIEowIBAAKCAQEA0Z3VS5JJcds3xfn/ygWyF7PtvEj7pK8P0qK9nF0=\n-----END PRIVATE KEY-----",
+        'rsz.platform_private_key_path' => null,
+    ]);
+
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'presence_compliance_enabled' => true,
+        'presence_rsz_client_id' => null,
+        'presence_rsz_private_key' => null,
+    ]);
+
+    [$clientId] = app(\App\Support\Rsz\RszPresenceRegistrationClient::class)->resolveCredentials($tenant);
+
+    expect($clientId)->toBe('platform-client');
 });
 
 it('weigert tenant-update zolang CIAO vergrendeld is', function () {
@@ -210,11 +227,14 @@ it('schakelt CIAO in via platform-action', function () {
         ->and(AuditLog::query()->where('action', 'tenant.presence_compliance_toggled')->exists())->toBeTrue();
 });
 
-it('weigert CIAO zonder Time-module', function () {
+it('schakelt Time mee aan wanneer CIAO zonder Time wordt geactiveerd', function () {
     $tenant = Tenant::factory()->create(['has_time_module' => false]);
 
-    expect(fn () => app(TogglePresenceComplianceAction::class)->handle($tenant))
-        ->toThrow(InvalidArgumentException::class, 'time_module_disabled');
+    app(TogglePresenceComplianceAction::class)->handle($tenant);
+
+    $fresh = $tenant->fresh();
+    expect($fresh->presence_compliance_enabled)->toBeTrue()
+        ->and($fresh->has_time_module)->toBeTrue();
 });
 
 it('zet CIAO uit wanneer Time uit gaat', function () {
@@ -257,16 +277,17 @@ it('schakelt CIAO in via platform Livewire', function () {
     expect($tenant->fresh()->presence_compliance_enabled)->toBeTrue();
 });
 
-it('weigert CIAO via platform zonder Time', function () {
+it('schakelt CIAO in via platform Livewire ook zonder Time (Time gaat mee aan)', function () {
     $tenant = Tenant::factory()->create(['has_time_module' => false]);
     $superuser = User::factory()->superuser()->create();
 
     Livewire::actingAs($superuser)
         ->test(PlatformTenants::class)
-        ->call('togglePresenceCompliance', $tenant->id)
-        ->assertSee(__('platform.errors.ciao_requires_time'), false);
+        ->call('togglePresenceCompliance', $tenant->id);
 
-    expect($tenant->fresh()->presence_compliance_enabled)->toBeFalse();
+    $fresh = $tenant->fresh();
+    expect($fresh->presence_compliance_enabled)->toBeTrue()
+        ->and($fresh->has_time_module)->toBeTrue();
 });
 
 it('weigert bouw-scope zolang construction flag uit staat', function () {

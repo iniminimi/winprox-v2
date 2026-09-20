@@ -8,6 +8,10 @@ use App\Support\Audit\AuditRecorder;
 use App\Support\Time\TimeModuleAccess;
 use InvalidArgumentException;
 
+/**
+ * Tenant-CIAO-instellingen: enkel ondernemingsnummer / btw + scope.
+ * Chaman client-id + private key liggen op het WinProx-platform (config/rsz.php).
+ */
 class UpdatePresenceComplianceSettingsAction
 {
     public function __construct(private AuditRecorder $audit) {}
@@ -16,10 +20,7 @@ class UpdatePresenceComplianceSettingsAction
      * @param  array{
      *     presence_compliance_scope?: string|null,
      *     enterprise_number?: string|null,
-     *     foreign_vat_number?: string|null,
-     *     presence_rsz_client_id?: string|null,
-     *     presence_rsz_private_key?: string|null,
-     *     clear_private_key?: bool
+     *     foreign_vat_number?: string|null
      * }  $data
      */
     public function handle(Tenant $tenant, array $data, ?int $actorUserId = null): Tenant
@@ -47,30 +48,13 @@ class UpdatePresenceComplianceSettingsAction
         if (array_key_exists('presence_compliance_scope', $data)) {
             $scopeRaw = $data['presence_compliance_scope'];
             if ($scopeRaw === null || $scopeRaw === '') {
-                $updates['presence_compliance_scope'] = null;
+                $updates['presence_compliance_scope'] = PresenceComplianceScope::CiaoCleaning->value;
             } else {
                 $scope = PresenceComplianceScope::from((string) $scopeRaw);
                 if (! $scope->isAvailable()) {
                     throw new InvalidArgumentException('presence_scope_unavailable');
                 }
                 $updates['presence_compliance_scope'] = $scope->value;
-            }
-        }
-
-        if (array_key_exists('presence_rsz_client_id', $data)) {
-            $clientId = trim((string) ($data['presence_rsz_client_id'] ?? ''));
-            // Lege string = niet wijzigen (wachtwoordachtig veld).
-            if ($clientId !== '') {
-                $updates['presence_rsz_client_id'] = $clientId;
-            }
-        }
-
-        if (! empty($data['clear_private_key'])) {
-            $updates['presence_rsz_private_key'] = null;
-        } elseif (array_key_exists('presence_rsz_private_key', $data)) {
-            $key = trim((string) ($data['presence_rsz_private_key'] ?? ''));
-            if ($key !== '') {
-                $updates['presence_rsz_private_key'] = $key;
             }
         }
 
@@ -91,8 +75,6 @@ class UpdatePresenceComplianceSettingsAction
                 'presence_compliance_scope' => $fresh->presence_compliance_scope,
                 'has_enterprise_number' => filled($fresh->enterprise_number),
                 'has_foreign_vat_number' => filled($fresh->foreign_vat_number),
-                'has_rsz_client_id' => filled($fresh->presence_rsz_client_id),
-                'has_rsz_private_key' => filled($fresh->presence_rsz_private_key),
             ],
         );
 

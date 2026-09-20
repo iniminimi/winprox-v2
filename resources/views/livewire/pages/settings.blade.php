@@ -370,43 +370,30 @@
             @else
                 <p class="wp-muted wp-text-sm">{{ __('settings.presence.enabled_note') }}</p>
                 <form wire:submit="savePresenceCompliance" class="wp-stack">
-                    <div class="wp-field">
-                        <label class="wp-label" for="presenceComplianceScope">{{ __('settings.presence.scope') }}</label>
-                        <select id="presenceComplianceScope" class="wp-select" wire:model="presenceComplianceScope">
-                            @foreach ($availablePresenceScopes as $scope)
-                                <option value="{{ $scope->value }}">{{ __($scope->settingsLabelKey()) }}</option>
-                            @endforeach
-                        </select>
-                        @error('presenceComplianceScope') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-
-                    <div class="wp-form-grid-2">
+                    @if (count($availablePresenceScopes) > 1)
                         <div class="wp-field">
-                            <label class="wp-label" for="enterpriseNumber">{{ __('settings.presence.enterprise_number') }}</label>
-                            <input type="text" id="enterpriseNumber" class="wp-input" wire:model="enterpriseNumber" autocomplete="off">
-                            @error('enterpriseNumber') <p class="wp-error">{{ $message }}</p> @enderror
+                            <label class="wp-label" for="presenceComplianceScope">{{ __('settings.presence.scope') }}</label>
+                            <select id="presenceComplianceScope" class="wp-select" wire:model="presenceComplianceScope">
+                                @foreach ($availablePresenceScopes as $scope)
+                                    <option value="{{ $scope->value }}">{{ __($scope->settingsLabelKey()) }}</option>
+                                @endforeach
+                            </select>
+                            @error('presenceComplianceScope') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
-                        <div class="wp-field">
-                            <label class="wp-label" for="foreignVatNumber">{{ __('settings.presence.foreign_vat') }}</label>
-                            <input type="text" id="foreignVatNumber" class="wp-input" wire:model="foreignVatNumber" autocomplete="off">
-                            @error('foreignVatNumber') <p class="wp-error">{{ $message }}</p> @enderror
-                        </div>
+                    @endif
+
+                    <div class="wp-field">
+                        <label class="wp-label" for="enterpriseNumber">{{ __('settings.presence.enterprise_number') }}</label>
+                        <input type="text" id="enterpriseNumber" class="wp-input" wire:model="enterpriseNumber" autocomplete="off" inputmode="numeric">
+                        <p class="wp-hint">{{ __('settings.presence.enterprise_hint') }}</p>
+                        @error('enterpriseNumber') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
 
                     <div class="wp-field">
-                        <label class="wp-label" for="presenceRszClientId">{{ __('settings.presence.client_id') }}</label>
-                        <input type="text" id="presenceRszClientId" class="wp-input" wire:model="presenceRszClientId" autocomplete="off" placeholder="{{ $hasRszClientId ? __('settings.presence.client_id_kept') : '' }}">
-                        <p class="wp-hint">{{ __('settings.presence.credentials_hint') }}</p>
-                        @error('presenceRszClientId') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-
-                    <div class="wp-field">
-                        <label class="wp-label" for="presenceRszPrivateKey">{{ __('settings.presence.private_key') }}</label>
-                        <textarea id="presenceRszPrivateKey" class="wp-input" rows="4" wire:model="presenceRszPrivateKey" autocomplete="off" placeholder="{{ $hasRszPrivateKey ? __('settings.presence.private_key_kept') : '' }}"></textarea>
-                        @if ($hasRszPrivateKey)
-                            <p class="wp-hint">{{ __('settings.presence.private_key_stored') }}</p>
-                        @endif
-                        @error('presenceRszPrivateKey') <p class="wp-error">{{ $message }}</p> @enderror
+                        <label class="wp-label" for="foreignVatNumber">{{ __('settings.presence.foreign_vat') }}</label>
+                        <input type="text" id="foreignVatNumber" class="wp-input" wire:model="foreignVatNumber" autocomplete="off">
+                        <p class="wp-hint">{{ __('settings.presence.foreign_vat_hint') }}</p>
+                        @error('foreignVatNumber') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
 
                     <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.presence.save') }}</button>

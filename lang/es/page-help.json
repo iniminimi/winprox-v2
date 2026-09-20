@@ -680,7 +680,7 @@
                 },
                 {
                     "label": "Presencia ONSS (CIAO)",
-                    "text": "Esta sección está abajo, encima de Privacidad. En gris por defecto: CIAO es excepcional y no se activa aquí. Solicítelo en <strong>info@winprox.app</strong>; un superusuario lo activa después. Luego introduce las credenciales (BCE, clave ONSS)."
+                    "text": "Esta sección está abajo, encima de Privacidad. En gris por defecto: CIAO es excepcional y no se activa aquí. Solicítelo en <strong>info@winprox.app</strong>; un superusuario lo activa después. Luego solo indica el <strong>número de empresa (BCE)</strong>. WinProx gestiona el enlace técnico con la ONSS."
                 },
                 {
                     "label": "Privacidad y exportación de datos",
@@ -1682,7 +1682,7 @@
                 },
                 {
                     "label": "Reintentar",
-                    "text": "En <strong>Fallido</strong> u <strong>Omitido</strong>, vuelve a poner el envío en cola tras corregir NISS, DDT o credenciales."
+                    "text": "En <strong>Fallido</strong> u <strong>Omitido</strong>, vuelve a poner el envío en cola tras corregir NISS, DDT o número de empresa."
                 }
             ]
         },

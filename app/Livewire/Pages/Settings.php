@@ -132,10 +132,6 @@ class Settings extends Component
 
     public string $foreignVatNumber = '';
 
-    public string $presenceRszClientId = '';
-
-    public string $presenceRszPrivateKey = '';
-
     public bool $canManageOrganisation = false;
 
     public bool $canUpdateTenantBranding = false;
@@ -197,8 +193,6 @@ class Settings extends Component
                     : null,
                 'enterprise_number' => $this->enterpriseNumber,
                 'foreign_vat_number' => $this->foreignVatNumber,
-                'presence_rsz_client_id' => $this->presenceRszClientId,
-                'presence_rsz_private_key' => $this->presenceRszPrivateKey,
             ],
             UpdatePresenceComplianceSettingsRequest::ruleSet(),
             UpdatePresenceComplianceSettingsRequest::messageSet(),
@@ -794,8 +788,6 @@ class Settings extends Component
             'qrBrandingPreviewDataUrl' => $this->resolveQrBrandingPreviewDataUrl(),
             'qrPrintableBackgroundPresets' => QrPrintablePageBackgroundPreset::uiChoices(),
             'hasTimeModule' => $tenant instanceof Tenant && $tenant->hasTimeModule(),
-            'hasRszClientId' => $tenant instanceof Tenant && filled($tenant->presence_rsz_client_id),
-            'hasRszPrivateKey' => $tenant instanceof Tenant && filled($tenant->presence_rsz_private_key),
             'availablePresenceScopes' => PresenceComplianceScope::availableCases(),
             'recentPresenceSubmissions' => $tenant instanceof Tenant && $tenant->hasTimeModule()
                 ? PresenceSubmission::query()
@@ -867,8 +859,6 @@ class Settings extends Component
             ?? PresenceComplianceScope::CiaoCleaning->value);
         $this->enterpriseNumber = (string) ($tenant->enterprise_number ?? '');
         $this->foreignVatNumber = (string) ($tenant->foreign_vat_number ?? '');
-        $this->presenceRszClientId = '';
-        $this->presenceRszPrivateKey = '';
         $this->portalBackgroundStockPreset = TenantPortalBackground::stockPresetKeyFromPath(
             $tenant->portal_background_path,
         ) ?? '';

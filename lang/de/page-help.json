@@ -680,7 +680,7 @@
                 },
                 {
                     "label": "RSZ-Anwesenheit (CIAO)",
-                    "text": "Dieser Bereich steht unten, vor Datenschutz. Standardmäßig grau: CIAO ist ausnahmsweise und hier nicht selbst einschaltbar. Beantragen Sie es über <strong>info@winprox.app</strong>; ein Superuser schaltet es danach ein. Danach tragen Sie Credentials (BCE, RSZ-Schlüssel) ein."
+                    "text": "Dieser Bereich steht unten, vor Datenschutz. Standardmäßig grau: CIAO ist ausnahmsweise und hier nicht selbst einschaltbar. Beantragen Sie es über <strong>info@winprox.app</strong>; ein Superuser schaltet es danach ein. Danach tragen Sie nur die <strong>Unternehmensnummer (BCE)</strong> ein. WinProx übernimmt die technische Anbindung an das LSS."
                 },
                 {
                     "label": "Datenschutz & Datenexport",
@@ -1682,7 +1682,7 @@
                 },
                 {
                     "label": "Erneut",
-                    "text": "Bei <strong>Fehlgeschlagen</strong> oder <strong>Übersprungen</strong> erneut einreihen, nachdem NISS, DDT oder Zugangsdaten korrigiert wurden."
+                    "text": "Bei <strong>Fehlgeschlagen</strong> oder <strong>Übersprungen</strong> erneut einreihen, nachdem NISS, DDT oder Unternehmensnummer korrigiert wurden."
                 }
             ]
         },

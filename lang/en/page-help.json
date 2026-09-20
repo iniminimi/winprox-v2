@@ -680,7 +680,7 @@
                 },
                 {
                     "label": "RSZ presence (CIAO)",
-                    "text": "This section sits at the bottom, above Privacy. It is grey by default: CIAO is exceptional and cannot be turned on here. Request it via <strong>info@winprox.app</strong>; a superuser then enables it. After that you fill in credentials (BCE, RSZ key)."
+                    "text": "This section sits at the bottom, above Privacy. It is grey by default: CIAO is exceptional and cannot be turned on here. Request it via <strong>info@winprox.app</strong>; a superuser then enables it. After that you only enter the <strong>enterprise number (BCE)</strong>. WinProx handles the technical link to the NSSO."
                 },
                 {
                     "label": "Privacy & data export",
@@ -1682,7 +1682,7 @@
                 },
                 {
                     "label": "Retry",
-                    "text": "For <strong>Failed</strong> or <strong>Skipped</strong>, queue the submission again after fixing NISS, DDT or credentials."
+                    "text": "For <strong>Failed</strong> or <strong>Skipped</strong>, queue the submission again after fixing NISS, DDT or enterprise number."
                 }
             ]
         },

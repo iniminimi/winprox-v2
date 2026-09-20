@@ -680,7 +680,7 @@
                 },
                 {
                     "label": "Presenza ONSS (CIAO)",
-                    "text": "Questa sezione è in fondo, sopra Privacy. Grigio di default: CIAO è eccezionale e non si attiva da qui. Richiedilo via <strong>info@winprox.app</strong>; un superuser lo attiva dopo. Poi inserisci le credenziali (BCE, chiave ONSS)."
+                    "text": "Questa sezione è in fondo, sopra Privacy. Grigio di default: CIAO è eccezionale e non si attiva da qui. Richiedilo via <strong>info@winprox.app</strong>; un superuser lo attiva dopo. Poi inserisci solo il <strong>numero d'impresa (BCE)</strong>. WinProx gestisce il collegamento tecnico con l'ONSS."
                 },
                 {
                     "label": "Privacy ed esportazione dati",
@@ -1682,7 +1682,7 @@
                 },
                 {
                     "label": "Riprova",
-                    "text": "Per <strong>Non riuscito</strong> o <strong>Saltato</strong>, rimetti in coda dopo aver corretto NISS, DDT o credenziali."
+                    "text": "Per <strong>Non riuscito</strong> o <strong>Saltato</strong>, rimetti in coda dopo aver corretto NISS, DDT o numero d'impresa."
                 }
             ]
         },

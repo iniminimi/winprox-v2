@@ -680,7 +680,7 @@
                 },
                 {
                     "label": "Aanwezigheid RSZ (CIAO)",
-                    "text": "Dit kader staat onderaan, boven Privacy. Standaard grijs: CIAO is uitzonderlijk en niet zelf in te schakelen. Vraag het aan via <strong>info@winprox.app</strong>; een superuser zet het daarna aan. Daarna vult u credentials (BCE, RSZ-sleutel) in."
+                    "text": "Dit kader staat onderaan, boven Privacy. Standaard grijs: CIAO is uitzonderlijk en niet zelf in te schakelen. Vraag het aan via <strong>info@winprox.app</strong>; een superuser zet het daarna aan. Daarna vult u alleen het <strong>ondernemingsnummer (BCE)</strong> in. WinProx regelt de technische koppeling met de RSZ."
                 },
                 {
                     "label": "Privacy & export van gegevens",
@@ -1682,7 +1682,7 @@
                 },
                 {
                     "label": "Opnieuw",
-                    "text": "Bij <strong>Mislukt</strong> of <strong>Overgeslagen</strong> kun je de inzending opnieuw in de wachtrij zetten na het corrigeren van NISS, DDT of credentials."
+                    "text": "Bij <strong>Mislukt</strong> of <strong>Overgeslagen</strong> kun je de inzending opnieuw in de wachtrij zetten na het corrigeren van NISS, DDT of ondernemingsnummer."
                 }
             ]
         },

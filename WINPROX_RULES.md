@@ -197,7 +197,7 @@ ClockIn / ClockOut / StartBreak / EndBreak / VisitStart / VisitEnd
 
 | Entiteit | Velden (richting) | Opmerking |
 |----------|-------------------|-----------|
-| `Tenant` | `enterprise_number` *of* `foreign_vat_number`; compliance credentials (secure); `presence_compliance_enabled`; actieve `PresenceComplianceScope` | BCE/VAT; OAuth/certificaat buiten gewone fillable waar nodig |
+| `Tenant` | `enterprise_number` *of* `foreign_vat_number`; `presence_compliance_enabled`; actieve `PresenceComplianceScope` | BCE/VAT; OAuth/certificaat = **platform** (WinProx Chaman), niet per tenant |
 | `Worker` | `ssin` (11 cijfers, encrypted at rest) | NISS/INSZ; least-privilege UI; GDPR/DPA |
 | `Location` en/of `ClockPoint` | `contractual_relationship_reference` (DDT, 13 chars); placeOfWork via bestaand adres **of** coords | Één bron per prikpunt; geen duplicatie zonder reden |
 | `presence_submissions` (nieuw) | tenant, worker, shift/break-ref, type IN/OUT, payload-meta, rsz_id, validity, remarks JSON, submitted_at | Audit + herprobeer; geen business logic in model |
@@ -213,9 +213,10 @@ zelfde events, verplichtingen bevestigen tegen RSZ-bouwspecs.
 
 **UI:** settings (CIAO-kader onderaan, grijs tot superuser inschakelt op Platform → Tenants
 na aanvraag via info@winprox.app; CIAO = Time-add-on — bij aanzetten gaat Time mee aan,
-**geen** Corporate-eis; daarna BCE + credentials). Location/Clock Point (DDT +
-werkplaats), Worker (NISS), Time → CIAO (submission-status/remarks + opnieuw). Geen nieuwe
-sidebar-producten buiten Time/Instellingen.
+**geen** Corporate-eis; daarna enkel **BCE** / optioneel buitenlands btw — Chaman-
+credentials liggen op het WinProx-platform). Location (DDT + werkplaats), Worker (NISS),
+Time → CIAO (submission-status/remarks + opnieuw). Geen nieuwe sidebar-producten buiten
+Time/Instellingen.
 
 **Verboden in deze laag:** Protime-achtige planning/payroll; CAW-webservice (ook niet in golf 2);
 `tenant.sector`; losse “Schoonmaak”-welkompagina als productvariant (campagne-landings blijven

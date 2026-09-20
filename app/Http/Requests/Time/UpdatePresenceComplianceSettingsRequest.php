@@ -22,9 +22,6 @@ class UpdatePresenceComplianceSettingsRequest extends FormRequest
             'presence_compliance_scope' => ['nullable', Rule::enum(PresenceComplianceScope::class)],
             'enterprise_number' => ['nullable', 'regex:/^[01]?\d{9,10}$/'],
             'foreign_vat_number' => ['nullable', 'string', 'max:255'],
-            'presence_rsz_client_id' => ['nullable', 'string', 'max:255'],
-            'presence_rsz_private_key' => ['nullable', 'string', 'max:10000'],
-            'clear_private_key' => ['sometimes', 'boolean'],
         ];
     }
 

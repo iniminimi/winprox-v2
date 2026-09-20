@@ -12,6 +12,9 @@ use RuntimeException;
 /**
  * Dunne HTTP-client voor RSZ Check In and Out at Work (presenceRegistration).
  * Alleen aanroepen vanuit Actions/Jobs.
+ *
+ * OAuth: bij voorkeur WinProx-platform Chaman-credentials (config/rsz.php).
+ * Optionele tenant-override blijft mogelijk voor uitzonderingen.
  */
 final class RszPresenceRegistrationClient
 {
@@ -58,12 +61,7 @@ final class RszPresenceRegistrationClient
             return $static;
         }
 
-        $clientId = $tenant->presence_rsz_client_id;
-        $privateKey = $tenant->presence_rsz_private_key;
-
-        if (! is_string($clientId) || $clientId === '' || ! is_string($privateKey) || $privateKey === '') {
-            throw new RuntimeException('rsz_credentials_missing');
-        }
+        [$clientId, $privateKey] = $this->resolveCredentials($tenant);
 
         $assertion = $this->createClientAssertion($clientId, $privateKey, $this->tokenUrl());
 
@@ -87,6 +85,58 @@ final class RszPresenceRegistrationClient
         }
 
         return $token;
+    }
+
+    /**
+     * @return array{0: string, 1: string} clientId, privateKeyPem
+     */
+    public function resolveCredentials(Tenant $tenant): array
+    {
+        $tenantClientId = is_string($tenant->presence_rsz_client_id) ? trim($tenant->presence_rsz_client_id) : '';
+        $tenantKey = is_string($tenant->presence_rsz_private_key) ? trim($tenant->presence_rsz_private_key) : '';
+
+        if ($tenantClientId !== '' && $tenantKey !== '') {
+            return [$tenantClientId, $tenantKey];
+        }
+
+        $platformClientId = trim((string) config('rsz.platform_client_id', ''));
+        $platformKey = $this->platformPrivateKeyPem();
+
+        if ($platformClientId !== '' && $platformKey !== '') {
+            return [$platformClientId, $platformKey];
+        }
+
+        throw new RuntimeException('rsz_credentials_missing');
+    }
+
+    public function platformCredentialsConfigured(): bool
+    {
+        return trim((string) config('rsz.platform_client_id', '')) !== ''
+            && $this->platformPrivateKeyPem() !== '';
+    }
+
+    private function platformPrivateKeyPem(): string
+    {
+        $path = trim((string) config('rsz.platform_private_key_path', ''));
+        if ($path !== '') {
+            if (! is_readable($path)) {
+                throw new RuntimeException('rsz_platform_private_key_unreadable');
+            }
+
+            $contents = file_get_contents($path);
+            if (! is_string($contents) || trim($contents) === '') {
+                throw new RuntimeException('rsz_platform_private_key_empty');
+            }
+
+            return trim($contents);
+        }
+
+        $raw = (string) config('rsz.platform_private_key', '');
+        if ($raw === '') {
+            return '';
+        }
+
+        return trim(str_replace('\\n', "\n", $raw));
     }
 
     private function http(string $token): PendingRequest

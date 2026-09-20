@@ -211,25 +211,21 @@
         }
     },
     "presence": {
-        "title": "RSZ presence (CIAO)",
+        "title": "NSSO presence (CIAO)",
         "lead": "Optional: send Clock Point clock-in/out and breaks in real time to Check In and Out at Work (cleaning; construction when released).",
-        "request_hint": "CIAO is exceptional and cannot be turned on here. Request it via the address below; WinProx will enable it afterwards.",
-        "enabled_note": "CIAO is enabled. Enter the RSZ credentials below.",
+        "request_hint": "CIAO is exceptional and cannot be enabled by yourself. Request it via the address below; WinProx then turns it on.",
+        "enabled_note": "CIAO is enabled. Enter your enterprise number below. WinProx handles the technical link to the NSSO.",
         "scope": "Regime",
         "scope_cleaning": "Cleaning (CIAO)",
-        "enterprise_number": "Company number (BCE)",
+        "scope_construction": "Construction / concrete (CIAO)",
+        "enterprise_number": "Enterprise number (BCE)",
+        "enterprise_hint": "Your Belgian company number (10 digits).",
         "foreign_vat": "Foreign VAT number",
-        "client_id": "RSZ OAuth client id",
-        "client_id_kept": "Set (leave blank to keep)",
-        "private_key": "RSZ private key (PEM)",
-        "credentials_hint": "Credentials from the NSSO portal (Chaman): Client ID + private key for the certificate uploaded there. Empty fields leave values unchanged.",
+        "foreign_vat_hint": "Only if you have no Belgian BCE (foreign employer).",
         "save": "Save CIAO settings",
         "saved": "CIAO settings saved.",
         "recent": "Recent submissions",
-        "scope_construction": "Construction / concrete (CIAO)",
-        "view_all": "All CIAO submissions",
-        "private_key_kept": "Set (leave blank to keep)",
-        "private_key_stored": "A private key is already stored. Paste a new one only to replace it."
+        "view_all": "All CIAO submissions"
     },
     "time_clock": {
         "title": "Punch clock security",
