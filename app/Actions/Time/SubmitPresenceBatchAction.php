@@ -197,7 +197,7 @@ class SubmitPresenceBatchAction
         return [
             'registrationDate' => $submission->registration_at->utc()->format('Y-m-d\TH:i:s\Z'),
             'ssin' => $ssin,
-            'type' => $submission->presence_type->value,
+            'type' => $submission->presence_type->rszApiValue(),
             'employer' => $employer,
             'placeOfWork' => $placeOfWork,
             'contractualRelationshipReference' => $location->contractual_relationship_reference,

@@ -164,7 +164,7 @@ it('stuurt registerInBulk bij geldige data', function () {
         $data = $request->data();
 
         return str_contains($request->url(), 'registerInBulk')
-            && ($data['items'][0]['type'] ?? null) === 'IN'
+            && ($data['items'][0]['type'] ?? null) === 'in'
             && ($data['items'][0]['ssin'] ?? null) === '90010100123'
             && ($data['items'][0]['contractualRelationshipReference'] ?? null) === '1Y1003SQ5VSSZ';
     });
