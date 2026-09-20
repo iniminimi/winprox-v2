@@ -347,11 +347,11 @@ class Tenant extends Model
     public function gpsVisitRadiusMeters(): int
     {
         $custom = (int) ($this->time_gps_visit_radius_meters ?? 0);
-        if ($custom >= 50) {
+        if ($custom >= 10) {
             return min(2000, $custom);
         }
 
-        return max(50, min(2000, (int) config('time.gps_visit_radius_meters', 250)));
+        return max(10, min(2000, (int) config('time.gps_visit_radius_meters', 50)));
     }
 
     public function presenceComplianceEnabled(): bool

@@ -239,6 +239,7 @@
         "gps_visits_hint": "Clock-in still opens the paid day without location proof. Starting work needs fresh GPS within range of the location pin (customer) or a unit with a fixed pin. Clock-out is allowed anywhere; an open visit is closed first. With an open visit you can complete team tasks and the next inspection stop (unit check) on Clock Point (no unit sticker).",
         "gps_visit_radius": "Radius (metres)",
         "evacuation_list": "Evacuation list on Clock Point",
-        "evacuation_list_hint": "After sign-in, workers see a tile to view who is clocked in. They confirm that the consultation is exceptional; each view is logged. Off by default."
+        "evacuation_list_hint": "After sign-in, workers see a tile to view who is clocked in. They confirm that the consultation is exceptional; each view is logged. Off by default.",
+        "gps_visit_radius_hint": "Default 50 m. Minimum 10 m, maximum 2000 m."
     }
 }

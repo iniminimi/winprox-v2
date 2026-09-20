@@ -845,7 +845,7 @@ class Settings extends Component
         $this->timeEvacuationList = (bool) $tenant->time_evacuation_list;
         $this->timeGpsVisitRadiusMeters = $tenant->time_gps_visit_radius_meters
             ? (string) $tenant->time_gps_visit_radius_meters
-            : (string) config('time.gps_visit_radius_meters', 250);
+            : (string) config('time.gps_visit_radius_meters', 50);
         $this->presenceComplianceScope = (string) ($tenant->presence_compliance_scope
             ?? PresenceComplianceScope::CiaoCleaning->value);
         $this->enterpriseNumber = (string) ($tenant->enterprise_number ?? '');

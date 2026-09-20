@@ -239,6 +239,7 @@
         "gps_visits_hint": "Einstempeln öffnet weiter den bezahlten Tag ohne Standortnachweis. Arbeitsstart braucht frisches GPS im Radius des Standort-Pins (Kunde) oder einer Unit mit festem Pin. Ausstempeln geht überall; ein offener Besuch wird zuerst geschlossen. Mit offenem Besuch können Sie Teamaufgaben und den nächsten Inspektionsstopp (Unit-Check) am Clock Point abschließen (kein Unit-Sticker).",
         "gps_visit_radius": "Radius (Meter)",
         "evacuation_list": "Evakuierungsliste am Clock Point",
-        "evacuation_list_hint": "Nach der Anmeldung sehen Ausführende eine Kachel, wer eingestempelt ist. Sie bestätigen, dass die Einsicht außergewöhnlich ist; jede Einsicht wird protokolliert. Standardmäßig aus."
+        "evacuation_list_hint": "Nach der Anmeldung sehen Ausführende eine Kachel, wer eingestempelt ist. Sie bestätigen, dass die Einsicht außergewöhnlich ist; jede Einsicht wird protokolliert. Standardmäßig aus.",
+        "gps_visit_radius_hint": "Standard 50 m. Minimum 10 m, Maximum 2000 m."
     }
 }

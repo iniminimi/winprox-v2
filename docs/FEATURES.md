@@ -730,7 +730,7 @@ productsector op `Tenant`.
   plakken als `lat, lng`; zichtbaar bij Time + GPS-werkbezoeken of CIAO).
   Unit-pin: Locaties → unit bewerken → **Geavanceerde portaal-opties**
   (zelfde Maps-icoon en plakveld).
-- Tenant-vlag `time_gps_visits` (alleen met Time). Straal default `config('time.gps_visit_radius_meters')` (250 m).
+- Tenant-vlag `time_gps_visits` (alleen met Time). Straal default `config('time.gps_visit_radius_meters')` (50 m; min 10, max 2000).
 - **Inklokken:** opent `WorkShift` via de Clock Point-QR (algemeen aanmeldpunt). Geen
   `unit_id`, geen `WorkVisit`. GPS optioneel als metadata, **geen weigering** zonder signaal
   of zonder nabije pin. Een dienst met nul bezoeken is geldig.

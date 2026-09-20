@@ -441,3 +441,29 @@ it('start en stopt een locatiebezoek via de API', function () {
         ])
         ->assertOk();
 });
+
+it('gebruikt standaard 50 m straal en laat 10 m toe', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'time_gps_visits' => true,
+        'time_gps_visit_radius_meters' => null,
+    ]);
+
+    expect($tenant->gpsVisitRadiusMeters())->toBe(50);
+
+    $updated = app(\App\Actions\Time\UpdateTenantTimeClockSecurityAction::class)->handle(
+        $tenant,
+        (int) $tenant->id,
+        [
+            'time_require_worker_pin' => false,
+            'time_gps_on_clock' => false,
+            'time_gps_visits' => true,
+            'time_gps_visit_radius_meters' => 10,
+            'time_evacuation_list' => false,
+        ],
+        null,
+    );
+
+    expect($updated->time_gps_visit_radius_meters)->toBe(10)
+        ->and($updated->gpsVisitRadiusMeters())->toBe(10);
+});

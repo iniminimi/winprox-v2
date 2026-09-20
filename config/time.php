@@ -25,6 +25,6 @@ return [
      */
     'punch_scan_seconds' => (int) env('TIME_PUNCH_SCAN_SECONDS', 600),
 
-    /** Straal (meter) waarbinnen GPS-werkbezoeken een unit-pin mogen starten. */
-    'gps_visit_radius_meters' => (int) env('TIME_GPS_VISIT_RADIUS_METERS', 250),
+    /** Straal (meter) waarbinnen GPS-werkbezoeken een unit-pin mogen starten. Default 50; min 10. */
+    'gps_visit_radius_meters' => (int) env('TIME_GPS_VISIT_RADIUS_METERS', 50),
 ];

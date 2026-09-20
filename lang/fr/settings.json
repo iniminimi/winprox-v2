@@ -239,6 +239,7 @@
         "gps_visits_hint": "L'entrée ouvre toujours la journée payée sans preuve de lieu. Démarrer le travail exige un GPS frais dans le rayon du pin du site (client) ou d'une unité avec pin fixe. La sortie est possible partout ; une visite ouverte est d'abord clôturée. Avec une visite ouverte vous pouvez clôturer les tâches d'équipe et le prochain arrêt d'inspection (contrôle d'unité) sur Clock Point (sans autocollant unité).",
         "gps_visit_radius": "Rayon (mètres)",
         "evacuation_list": "Liste d’évacuation sur Clock Point",
-        "evacuation_list_hint": "Après connexion, les exécutants voient une tuile pour voir qui est pointé. Ils confirment que la consultation est exceptionnelle ; chaque consultation est enregistrée. Désactivé par défaut."
+        "evacuation_list_hint": "Après connexion, les exécutants voient une tuile pour voir qui est pointé. Ils confirment que la consultation est exceptionnelle ; chaque consultation est enregistrée. Désactivé par défaut.",
+        "gps_visit_radius_hint": "Par défaut 50 m. Minimum 10 m, maximum 2000 m."
     }
 }

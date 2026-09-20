@@ -30,8 +30,8 @@ class UpdateTenantTimeClockSecurityAction
         $evacuationList = (bool) ($data['time_evacuation_list'] ?? false);
         $radius = $data['time_gps_visit_radius_meters'] ?? null;
         $radius = $radius === null || $radius === '' ? null : (int) $radius;
-        if ($radius !== null && $radius < 50) {
-            $radius = 50;
+        if ($radius !== null && $radius < 10) {
+            $radius = 10;
         }
         if ($radius !== null && $radius > 2000) {
             $radius = 2000;
