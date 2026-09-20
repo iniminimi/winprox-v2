@@ -222,12 +222,14 @@
         "client_id": "Client id OAuth ONSS",
         "client_id_kept": "Impostato (lasciare vuoto per mantenere)",
         "private_key": "Chiave privata ONSS (PEM)",
-        "credentials_hint": "Credenziali del portale ONSS (Chaman). Un client id vuoto non modifica il valore salvato.",
+        "credentials_hint": "Credenziali del portale ONSS (Chaman): Client ID + chiave privata del certificato caricato lì. I campi vuoti non modificano nulla.",
         "save": "Salva impostazioni CIAO",
         "saved": "Impostazioni CIAO salvate.",
         "recent": "Invii recenti",
         "scope_construction": "Edilizia / calcestruzzo (CIAO)",
-        "view_all": "Tutti gli invii CIAO"
+        "view_all": "Tutti gli invii CIAO",
+        "private_key_kept": "Impostato (lasciare vuoto per mantenere)",
+        "private_key_stored": "Una chiave privata è già salvata. Incollane una nuova solo per sostituirla."
     },
     "time_clock": {
         "title": "Sicurezza marcatura",

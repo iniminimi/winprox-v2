@@ -222,12 +222,14 @@
         "client_id": "RSZ OAuth client-id",
         "client_id_kept": "Ingevuld (laat leeg om te behouden)",
         "private_key": "RSZ private key (PEM)",
-        "credentials_hint": "Credentials van het RSZ-portaal (Chaman). Lege client-id wijzigt niets.",
+        "credentials_hint": "Credentials van het RSZ-portaal (Chaman): Client ID + private key bij het certificaat dat daar is geüpload. Lege velden wijzigen niets.",
         "save": "CIAO-instellingen opslaan",
         "saved": "CIAO-instellingen opgeslagen.",
         "recent": "Recente inzendingen",
         "scope_construction": "Bouw / beton (CIAO)",
-        "view_all": "Alle CIAO-inzendingen"
+        "view_all": "Alle CIAO-inzendingen",
+        "private_key_kept": "Ingevuld (laat leeg om te behouden)",
+        "private_key_stored": "Er staat al een private key opgeslagen. Plak alleen een nieuwe als je die wilt vervangen."
     },
     "time_clock": {
         "title": "Prikklok-beveiliging",

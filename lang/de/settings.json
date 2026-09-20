@@ -222,12 +222,14 @@
         "client_id": "RSZ-OAuth-Client-ID",
         "client_id_kept": "Gesetzt (leer lassen zum Behalten)",
         "private_key": "RSZ-Privatschlüssel (PEM)",
-        "credentials_hint": "Zugangsdaten vom RSZ-Portal (Chaman). Leere Client-ID ändert den gespeicherten Wert nicht.",
+        "credentials_hint": "Zugangsdaten vom LSS-Portal (Chaman): Client-ID + Privatschlüssel zum dort hochgeladenen Zertifikat. Leere Felder ändern nichts.",
         "save": "CIAO-Einstellungen speichern",
         "saved": "CIAO-Einstellungen gespeichert.",
         "recent": "Letzte Übermittlungen",
         "scope_construction": "Bau / Beton (CIAO)",
-        "view_all": "Alle CIAO-Meldungen"
+        "view_all": "Alle CIAO-Meldungen",
+        "private_key_kept": "Gesetzt (leer lassen zum Behalten)",
+        "private_key_stored": "Ein Privatschlüssel ist bereits gespeichert. Nur einfügen, um ihn zu ersetzen."
     },
     "time_clock": {
         "title": "Stempeluhr-Sicherheit",

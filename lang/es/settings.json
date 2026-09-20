@@ -222,12 +222,14 @@
         "client_id": "Client id OAuth ONSS",
         "client_id_kept": "Configurado (dejar vacío para conservar)",
         "private_key": "Clave privada ONSS (PEM)",
-        "credentials_hint": "Credenciales del portal ONSS (Chaman). Un client id vacío no cambia el valor guardado.",
+        "credentials_hint": "Credenciales del portal ONSS (Chaman): Client ID + clave privada del certificado subido allí. Los campos vacíos no cambian nada.",
         "save": "Guardar ajustes CIAO",
         "saved": "Ajustes CIAO guardados.",
         "recent": "Envíos recientes",
         "scope_construction": "Construcción / hormigón (CIAO)",
-        "view_all": "Todos los envíos CIAO"
+        "view_all": "Todos los envíos CIAO",
+        "private_key_kept": "Configurado (dejar vacío para conservar)",
+        "private_key_stored": "Ya hay una clave privada guardada. Pega una nueva solo si quieres sustituirla."
     },
     "time_clock": {
         "title": "Seguridad del fichaje",

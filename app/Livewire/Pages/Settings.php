@@ -794,7 +794,8 @@ class Settings extends Component
             'qrBrandingPreviewDataUrl' => $this->resolveQrBrandingPreviewDataUrl(),
             'qrPrintableBackgroundPresets' => QrPrintablePageBackgroundPreset::uiChoices(),
             'hasTimeModule' => $tenant instanceof Tenant && $tenant->hasTimeModule(),
-            'hasRszCredentials' => $tenant instanceof Tenant && filled($tenant->presence_rsz_client_id),
+            'hasRszClientId' => $tenant instanceof Tenant && filled($tenant->presence_rsz_client_id),
+            'hasRszPrivateKey' => $tenant instanceof Tenant && filled($tenant->presence_rsz_private_key),
             'availablePresenceScopes' => PresenceComplianceScope::availableCases(),
             'recentPresenceSubmissions' => $tenant instanceof Tenant && $tenant->hasTimeModule()
                 ? PresenceSubmission::query()

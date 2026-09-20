@@ -222,12 +222,14 @@
         "client_id": "RSZ OAuth client id",
         "client_id_kept": "Set (leave blank to keep)",
         "private_key": "RSZ private key (PEM)",
-        "credentials_hint": "Credentials from the RSZ portal (Chaman). Empty client id leaves the stored value unchanged.",
+        "credentials_hint": "Credentials from the NSSO portal (Chaman): Client ID + private key for the certificate uploaded there. Empty fields leave values unchanged.",
         "save": "Save CIAO settings",
         "saved": "CIAO settings saved.",
         "recent": "Recent submissions",
         "scope_construction": "Construction / concrete (CIAO)",
-        "view_all": "All CIAO submissions"
+        "view_all": "All CIAO submissions",
+        "private_key_kept": "Set (leave blank to keep)",
+        "private_key_stored": "A private key is already stored. Paste a new one only to replace it."
     },
     "time_clock": {
         "title": "Punch clock security",

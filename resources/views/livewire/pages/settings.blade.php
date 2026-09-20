@@ -6,6 +6,10 @@
         :subtitle="__('settings.subtitle')"
     />
 
+    @if (session('success'))
+        <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
+    @endif
+
     <div
         class="wp-card wp-card-pad wp-stack-tight wp-settings-section"
         x-data="{ open: false }"
@@ -391,14 +395,17 @@
 
                     <div class="wp-field">
                         <label class="wp-label" for="presenceRszClientId">{{ __('settings.presence.client_id') }}</label>
-                        <input type="text" id="presenceRszClientId" class="wp-input" wire:model="presenceRszClientId" autocomplete="off" placeholder="{{ $hasRszCredentials ? __('settings.presence.client_id_kept') : '' }}">
+                        <input type="text" id="presenceRszClientId" class="wp-input" wire:model="presenceRszClientId" autocomplete="off" placeholder="{{ $hasRszClientId ? __('settings.presence.client_id_kept') : '' }}">
                         <p class="wp-hint">{{ __('settings.presence.credentials_hint') }}</p>
                         @error('presenceRszClientId') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
 
                     <div class="wp-field">
                         <label class="wp-label" for="presenceRszPrivateKey">{{ __('settings.presence.private_key') }}</label>
-                        <textarea id="presenceRszPrivateKey" class="wp-input" rows="4" wire:model="presenceRszPrivateKey" autocomplete="off"></textarea>
+                        <textarea id="presenceRszPrivateKey" class="wp-input" rows="4" wire:model="presenceRszPrivateKey" autocomplete="off" placeholder="{{ $hasRszPrivateKey ? __('settings.presence.private_key_kept') : '' }}"></textarea>
+                        @if ($hasRszPrivateKey)
+                            <p class="wp-hint">{{ __('settings.presence.private_key_stored') }}</p>
+                        @endif
                         @error('presenceRszPrivateKey') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
 

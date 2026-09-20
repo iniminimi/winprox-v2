@@ -222,12 +222,14 @@
         "client_id": "Client id OAuth ONSS",
         "client_id_kept": "Déjà défini (laisser vide pour conserver)",
         "private_key": "Clé privée ONSS (PEM)",
-        "credentials_hint": "Identifiants du portail ONSS (Chaman). Un client id vide ne modifie pas la valeur stockée.",
+        "credentials_hint": "Identifiants du portail ONSS (Chaman) : Client ID + clé privée du certificat y déposé. Les champs vides ne changent rien.",
         "save": "Enregistrer les réglages CIAO",
         "saved": "Réglages CIAO enregistrés.",
         "recent": "Envois récents",
         "scope_construction": "Construction / béton (CIAO)",
-        "view_all": "Tous les envois CIAO"
+        "view_all": "Tous les envois CIAO",
+        "private_key_kept": "Déjà défini (laisser vide pour conserver)",
+        "private_key_stored": "Une clé privée est déjà enregistrée. Collez-en une nouvelle uniquement pour la remplacer."
     },
     "time_clock": {
         "title": "Sécurité de la pointeuse",
