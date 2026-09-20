@@ -3,12 +3,12 @@
     "public_title": "Prijzen & formules",
     "public_subtitle": "Kies het aantal licenties. WinProx is jaarlijks te betalen. Prikklok, uurrooster en CIAO (RSZ) inbegrepen.",
     "public_register_cta": "Start gratis proefperiode",
-    "subtitle": "Na je gratis maand kies je een formule. Elke formule beperkt licenties én units (zelfde aantal). Locaties en foto's zijn onbeperkt.",
+    "subtitle": "Na je gratis maand kies je een formule. Licenties 10/25/50; units en documenten = 5x (50/125/250). Locaties en foto's zijn onbeperkt.",
     "plans_heading": "Formules",
-    "plans_intro": "Betaal per persoon. 10, 25 of 50 licenties (collega's + uitvoerders) met evenveel units en documenten. Locaties en foto's onbeperkt. Prikklok, uurrooster en CIAO (RSZ) inbegrepen.",
+    "plans_intro": "Betaal per persoon. 10, 25 of 50 licenties (collega's + uitvoerders); units en documenten = 5× dat aantal (50 / 125 / 250). Locaties en foto's onbeperkt. Prikklok, uurrooster en CIAO (RSZ) inbegrepen.",
     "glossary": {
         "heading": "Licenties, units en foto's",
-        "unit": "Unit — een object of plaats met een QR-code (machine, ruimte, voertuig). Aantal units = aantal licenties van je formule (10, 25 of 50).",
+        "unit": "Unit — een object of plaats met een QR-code (machine, ruimte, voertuig). Units (en documenten) = 5× je licenties: 50 / 125 / 250.",
         "document": "Document — een bestand op het QR-portaal, zoals een handleiding. Zelfde limiet als units.",
         "photo": "Foto's — foto's bij meldingen en taken zijn onbeperkt.",
         "seat": "Licentie — een collega met login (beheerder of medewerker) of een uitvoerder (Clock Point, zonder login). Collega met gekoppeld prikklok-profiel telt als één licentie."
@@ -26,7 +26,7 @@
     "status_active": "Actief abonnement: :plan, geldig tot :date.",
     "status_grace": "Abonnement :plan beëindigd op :ended. Respijtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng op tijd om onderbreking te vermijden.",
     "status_expired": "Je proefperiode is afgelopen. Kies hieronder een formule om verder te gaan.",
-    "pricing_intro": "Gratis proefmaand (50 licenties en 50 units). Daarna 10, 25 of 50 licenties én units per jaar. Jaarlijks te betalen via factuur.",
+    "pricing_intro": "Gratis proefmaand (50 licenties en 50 units). Daarna 10, 25 of 50 licenties met 50 / 125 / 250 units. Jaarlijks te betalen via factuur.",
     "status_module_esg": "ESG-module actief op je account.",
     "status_module_time": "Time (prikklok) actief op je account.",
     "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
@@ -71,7 +71,7 @@
             "price": "7€ / licentie / maand",
             "scale": "70€ per maand. Jaarlijks te betalen (840€).",
             "features": [
-                "10 units en 10 documenten. Locaties en foto's onbeperkt.",
+                "50 units en 50 documenten. Locaties en foto's onbeperkt.",
                 "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
             ]
         },
@@ -80,7 +80,7 @@
             "price": "7€ / licentie / maand",
             "scale": "70€ per maand. Jaarlijks te betalen (840€).",
             "features": [
-                "10 units en 10 documenten. Locaties en foto's onbeperkt.",
+                "50 units en 50 documenten. Locaties en foto's onbeperkt.",
                 "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
             ]
         },
@@ -89,7 +89,7 @@
             "price": "6€ / licentie / maand",
             "scale": "150€ per maand. Jaarlijks te betalen (1.800€).",
             "features": [
-                "25 units en 25 documenten. Locaties en foto's onbeperkt.",
+                "125 units en 125 documenten. Locaties en foto's onbeperkt.",
                 "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
             ]
         },
@@ -98,7 +98,7 @@
             "price": "6€ / licentie / maand",
             "scale": "150€ per maand. Jaarlijks te betalen (1.800€).",
             "features": [
-                "25 units en 25 documenten. Locaties en foto's onbeperkt.",
+                "125 units en 125 documenten. Locaties en foto's onbeperkt.",
                 "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
             ]
         },
@@ -107,7 +107,7 @@
             "price": "5€ / licentie / maand",
             "scale": "250€ per maand. Jaarlijks te betalen (3.000€).",
             "features": [
-                "50 units en 50 documenten. Locaties en foto's onbeperkt.",
+                "250 units en 250 documenten. Locaties en foto's onbeperkt.",
                 "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
             ]
         },
@@ -116,7 +116,7 @@
             "price": "5€ / licentie / maand",
             "scale": "250€ per maand. Jaarlijks te betalen (3.000€).",
             "features": [
-                "50 units en 50 documenten. Locaties en foto's onbeperkt.",
+                "250 units en 250 documenten. Locaties en foto's onbeperkt.",
                 "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
             ]
         },
@@ -296,7 +296,7 @@
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
         "trial": "Proefperiode: 50 licenties en 50 units. Jaarlijks te betalen na de proef.",
-        "unlimited": "Units en documenten volgen het aantal licenties (10/25/50). Locaties en foto's zijn onbeperkt.",
+        "unlimited": "Units en documenten = 5× je licenties (50 / 125 / 250). Locaties en foto's zijn onbeperkt.",
         "corporate": "IoT, ESG en API: uitsluitend WinProx Corporate (vanaf 100 licenties)."
     },
     "contact_sales_cta": "Neem contact op",

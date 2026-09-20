@@ -48,26 +48,26 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Combien coûte WinProx ?",
-            "intro": "Vous commencez par un mois d’essai gratuit (50 licences et 50 unités, Time inclus). IoT, ESG et API ne sont pas dans l’essai. Ensuite 10, 25 ou 50 licences et unités. Paiement annuel par facture. Corporate est sur mesure (à partir de 100 licences ou si API/webhooks sont nécessaires).",
-            "summary": "Essai jusqu’à 50 licences et 50 unités, Time inclus. Ensuite 10/25/50. Paiement annuel. IoT, ESG et API en Corporate.",
+            "intro": "Vous commencez par un mois d’essai gratuit (50 licences et 50 unités). IoT, ESG et API ne sont pas dans l’essai. Ensuite 10/25/50 licences avec 50/125/250 unités. Paiement annuel par facture. Corporate sur mesure (à partir de 100 licences ou si API/webhooks sont nécessaires).",
+            "summary": "Essai jusqu’à 50 licences et 50 unités. Ensuite 10/25/50 licences avec 5× unités. Paiement annuel. IoT, ESG et API en Corporate.",
             "content_note": "Licence = collègue avec connexion ou exécutant (Clock Point) ; un collègue avec profil pointeuse lié compte pour une. Unités et documents suivent le nombre de licences. Lieux et photos illimités. Les prix exacts sont sous Abonnement.",
             "plans": {
                 "winprox_10": {
-                    "units": "Jusqu’à 10 unités. Lieux illimités.",
+                    "units": "Jusqu’à 50 unités. Lieux illimités.",
                     "announcements": "70 € par mois (840 € / an)",
                     "documents": "Pointeuse, planning, CIAO (ONSS) inclus.",
                     "description": "Signalements, tâches et pointeuse. Paiement annuel.",
                     "users": "Jusqu’à 10 licences (collègues + exécutants)"
                 },
                 "winprox_25": {
-                    "units": "Jusqu’à 25 unités. Lieux illimités.",
+                    "units": "Jusqu’à 125 unités. Lieux illimités.",
                     "announcements": "150 € par mois (1 800 € / an)",
                     "documents": "Pointeuse, planning, CIAO (ONSS) inclus.",
                     "description": "Signalements, tâches et pointeuse. Paiement annuel.",
                     "users": "Jusqu’à 25 licences (collègues + exécutants)"
                 },
                 "winprox_50": {
-                    "units": "Jusqu’à 50 unités. Lieux illimités.",
+                    "units": "Jusqu’à 250 unités. Lieux illimités.",
                     "announcements": "250 € par mois (3 000 € / an)",
                     "documents": "Pointeuse, planning, CIAO (ONSS) inclus.",
                     "description": "Signalements, tâches et pointeuse. Paiement annuel.",

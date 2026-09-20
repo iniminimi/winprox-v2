@@ -7,8 +7,8 @@
  * Time (prikklok) is inbegrepen. CIAO (RSZ) op aanvraag, zonder extra SKU.
  * IoT + ESG + API: uitsluitend Corporate. 100+ licenties = Corporate.
  *
- *  - Licenties (seats) én units (en documenten) bepalen de schaal: 10/25/50.
- *    Collega + prikklok-profiel = 1 licentie.
+ *  - Licenties (seats): 10 / 25 / 50. Units + documenten = licenties × 5
+ *    (50 / 125 / 250). Collega + prikklok-profiel = 1 licentie.
  *  - Locaties en foto's: onbeperkt (zoals vroeger op Facility).
  *  - Documenten: zelfde limiet als units.
  *  - Trial: tot 50 licenties en 50 units, Time inbegrepen, geen IoT/ESG/API.
@@ -17,12 +17,14 @@
  */
 
 $winproxShared = static function (int $seats): array {
+    $units = $seats * 5;
+
     return [
-        'units_limit'            => $seats,
+        'units_limit'            => $units,
         'locations_limit'        => null,
         'users_limit'            => null,
         'seats_limit'            => $seats,
-        'documents_org_limit'    => $seats,
+        'documents_org_limit'    => $units,
         'photos_org_limit'       => null,
         'documents_per_unit'     => null,
         'announcements_per_unit' => null,

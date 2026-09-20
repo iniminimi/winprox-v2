@@ -75,7 +75,7 @@ it('laat superuser WinProx 50 toewijzen met Time inbegrepen', function () {
         ->and($tenant->hasTimeModule())->toBeTrue()
         ->and($tenant->subscriptionPeriodDays())->toBe(365)
         ->and($tenant->maxSeatsLimit())->toBe(50)
-        ->and($tenant->maxUnitsLimit())->toBe(50);
+        ->and($tenant->maxUnitsLimit())->toBe(250);
 });
 
 it('houdt Time-plan-variant beschikbaar buiten de catalogus', function () {
@@ -146,5 +146,7 @@ it('wijst winprox_10 toe via AssignTenantSubscriptionPlanAction', function () {
 
     expect($tenant->fresh()->billing_plan)->toBe('winprox_10')
         ->and($tenant->fresh()->hasTimeModule())->toBeTrue()
+        ->and($tenant->fresh()->maxUnitsLimit())->toBe(50)
+        ->and($tenant->fresh()->maxDocumentsOrgLimit())->toBe(50)
         ->and($tenant->fresh()->billing_units_cap)->toBeNull();
 });

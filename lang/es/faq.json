@@ -48,26 +48,26 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "¿Cuánto cuesta WinProx?",
-            "intro": "Empieza con un mes de prueba gratis (50 licencias y 50 unidades, Time incluido). IoT, ESG y API no están en la prueba. Después 10, 25 o 50 licencias y unidades. Pago anual por factura. Corporate es a medida (desde 100 licencias o si se necesitan API/webhooks).",
-            "summary": "Prueba hasta 50 licencias y 50 unidades, Time incluido. Después 10/25/50. Pago anual. IoT, ESG y API en Corporate.",
+            "intro": "Empieza con un mes de prueba gratis (50 licencias y 50 unidades). IoT, ESG y API no están en la prueba. Después 10/25/50 licencias con 50/125/250 unidades. Pago anual por factura. Corporate a medida (desde 100 licencias o cuando se necesitan API/webhooks).",
+            "summary": "Prueba hasta 50 licencias y 50 unidades. Después 10/25/50 licencias con 5× unidades. Pago anual. IoT, ESG y API en Corporate.",
             "content_note": "Licencia = colega con inicio de sesión u operario (Clock Point); un colega con perfil de fichaje vinculado cuenta como una. Unidades y documentos siguen el número de licencias. Ubicaciones y fotos ilimitadas. Precios exactos en Abono.",
             "plans": {
                 "winprox_10": {
-                    "units": "Hasta 10 unidades. Ubicaciones ilimitadas.",
+                    "units": "Hasta 50 unidades. Sedes ilimitadas.",
                     "announcements": "70 € al mes (840 € / año)",
                     "documents": "Reloj, cuadrante, CIAO (ONSS) incluidos.",
                     "description": "Avisos, tareas y reloj de fichar. Pago anual.",
                     "users": "Hasta 10 licencias (colegas + operarios)"
                 },
                 "winprox_25": {
-                    "units": "Hasta 25 unidades. Ubicaciones ilimitadas.",
+                    "units": "Hasta 125 unidades. Sedes ilimitadas.",
                     "announcements": "150 € al mes (1.800 € / año)",
                     "documents": "Reloj, cuadrante, CIAO (ONSS) incluidos.",
                     "description": "Avisos, tareas y reloj de fichar. Pago anual.",
                     "users": "Hasta 25 licencias (colegas + operarios)"
                 },
                 "winprox_50": {
-                    "units": "Hasta 50 unidades. Ubicaciones ilimitadas.",
+                    "units": "Hasta 250 unidades. Sedes ilimitadas.",
                     "announcements": "250 € al mes (3.000 € / año)",
                     "documents": "Reloj, cuadrante, CIAO (ONSS) incluidos.",
                     "description": "Avisos, tareas y reloj de fichar. Pago anual.",

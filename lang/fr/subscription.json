@@ -3,12 +3,12 @@
     "public_title": "Tarifs & formules",
     "public_subtitle": "Choisissez le nombre de licences. WinProx se paie annuellement. Pointeuse, planning et CIAO (ONSS) inclus.",
     "public_register_cta": "Démarrer l'essai gratuit",
-    "subtitle": "Après le mois gratuit, choisissez une formule. Chaque formule limite licences et unités (même nombre). Lieux et photos sont illimités.",
+    "subtitle": "Après votre mois gratuit, choisissez une formule. Licences 10/25/50 ; unités et documents = 5x (50/125/250). Lieux et photos illimités.",
     "plans_heading": "Formules",
-    "plans_intro": "Payez par personne. 10, 25 ou 50 licences (collègues + exécutants) avec autant d’unités et de documents. Lieux et photos illimités. Pointeuse, planning et CIAO (ONSS) inclus.",
+    "plans_intro": "Payez par personne. 10, 25 ou 50 licences (collègues + exécutants) ; unités et documents = 5× ce nombre (50 / 125 / 250). Lieux et photos illimités. Pointeuse, planning et CIAO (ONSS) inclus.",
     "glossary": {
         "heading": "Licences, unités et photos",
-        "unit": "Unité — un objet ou un lieu avec un code QR (machine, pièce, véhicule). Le nombre d’unités = le nombre de licences (10, 25 ou 50).",
+        "unit": "Unité — un objet ou lieu avec un QR (machine, pièce, véhicule). Unités (et documents) = 5× vos licences : 50 / 125 / 250.",
         "document": "Document — un fichier sur le portail QR, par exemple un manuel. Même limite que les unités.",
         "photo": "Photos — les photos sur les signalements et les tâches sont illimitées.",
         "seat": "Licence — un collègue avec connexion (admin ou employé) ou un exécutant (Clock Point, sans connexion). Un collègue avec profil pointeuse lié compte pour une licence."
@@ -27,7 +27,7 @@
     "status_active": "Abonnement actif : :plan, valable jusqu'au :date.",
     "status_grace": "Abonnement :plan terminé le :ended. Période de grâce jusqu'au :grace_end — :days jours d'accès complet restants.",
     "status_expired": "Votre essai est terminé. Choisissez une formule ci-dessous.",
-    "pricing_intro": "Mois d’essai gratuit (50 licences et 50 unités). Ensuite 10, 25 ou 50 licences et unités par an. Paiement annuel par facture.",
+    "pricing_intro": "Mois d’essai gratuit (50 licences et 50 unités). Ensuite 10, 25 ou 50 licences avec 50 / 125 / 250 unités. Paiement annuel par facture.",
     "status_module_esg": "Module ESG actif sur votre compte.",
     "status_module_time": "Time (pointeuse) est actif sur votre compte.",
     "page_limits_title": "Pourquoi certaines actions sont indisponibles",
@@ -71,7 +71,7 @@
             "price": "7 € / licence / mois",
             "scale": "70 € par mois. Paiement annuel (840 €).",
             "features": [
-                "10 unités et 10 documents. Lieux et photos illimités.",
+                "50 unités et 50 documents. Lieux et photos illimités.",
                 "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
@@ -80,7 +80,7 @@
             "price": "7 € / licence / mois",
             "scale": "70 € par mois. Paiement annuel (840 €).",
             "features": [
-                "10 unités et 10 documents. Lieux et photos illimités.",
+                "50 unités et 50 documents. Lieux et photos illimités.",
                 "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
@@ -89,7 +89,7 @@
             "price": "6 € / licence / mois",
             "scale": "150 € par mois. Paiement annuel (1 800 €).",
             "features": [
-                "25 unités et 25 documents. Lieux et photos illimités.",
+                "125 unités et 125 documents. Lieux et photos illimités.",
                 "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
@@ -98,7 +98,7 @@
             "price": "6 € / licence / mois",
             "scale": "150 € par mois. Paiement annuel (1 800 €).",
             "features": [
-                "25 unités et 25 documents. Lieux et photos illimités.",
+                "125 unités et 125 documents. Lieux et photos illimités.",
                 "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
@@ -107,7 +107,7 @@
             "price": "5 € / licence / mois",
             "scale": "250 € par mois. Paiement annuel (3 000 €).",
             "features": [
-                "50 unités et 50 documents. Lieux et photos illimités.",
+                "250 unités et 250 documents. Lieux et photos illimités.",
                 "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
@@ -116,7 +116,7 @@
             "price": "5 € / licence / mois",
             "scale": "250 € par mois. Paiement annuel (3 000 €).",
             "features": [
-                "50 unités et 50 documents. Lieux et photos illimités.",
+                "250 unités et 250 documents. Lieux et photos illimités.",
                 "Pointeuse, planning, CIAO (ONSS) inclus."
             ]
         },
@@ -296,7 +296,7 @@
     "comparison_trial_price": "Gratuit",
     "comparison_notes": {
         "trial": "Essai : 50 licences et 50 unités. Paiement annuel après l’essai.",
-        "unlimited": "Unités et documents suivent le nombre de licences (10/25/50). Lieux et photos sont illimités.",
+        "unlimited": "Unités et documents = 5× vos licences (50 / 125 / 250). Lieux et photos illimités.",
         "corporate": "IoT, ESG et API : uniquement WinProx Corporate (à partir de 100 licences)."
     },
     "contact_sales_cta": "Nous contacter",

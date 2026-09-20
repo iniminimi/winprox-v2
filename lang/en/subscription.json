@@ -3,12 +3,12 @@
     "public_title": "Pricing & plans",
     "public_subtitle": "Choose the number of seats. WinProx is billed yearly. Punch clock, roster and CIAO (NSSO) included.",
     "public_register_cta": "Start free trial",
-    "subtitle": "After your free month, choose a plan. Each plan limits seats and units (same number). Locations and photos are unlimited.",
+    "subtitle": "After your free month, choose a plan. Seats 10/25/50; units and documents = 5x (50/125/250). Locations and photos are unlimited.",
     "plans_heading": "Plans",
-    "plans_intro": "Pay per person. 10, 25 or 50 seats (colleagues + workers) with the same number of units and documents. Locations and photos unlimited. Punch clock, roster and CIAO (NSSO) included.",
+    "plans_intro": "Pay per person. 10, 25 or 50 seats (colleagues + workers); units and documents = 5× that number (50 / 125 / 250). Locations and photos unlimited. Punch clock, roster and CIAO (NSSO) included.",
     "glossary": {
         "heading": "Seats, units and photos",
-        "unit": "Unit — an object or place with a QR code (machine, room, vehicle). Unit count matches your plan seats (10, 25 or 50).",
+        "unit": "Unit — an object or place with a QR code (machine, room, vehicle). Units (and documents) = 5× your seats: 50 / 125 / 250.",
         "document": "Document — a file on the QR portal, such as a manual. Same limit as units.",
         "photo": "Photos — photos on issues and tasks are unlimited.",
         "seat": "Seat — a colleague with login (admin or employee) or a worker (Clock Point, no login). A colleague with a linked punch-clock profile counts as one seat."
@@ -26,7 +26,7 @@
     "status_active": "Active subscription: :plan, valid until :date.",
     "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
     "status_expired": "Your trial has ended. Choose a plan below to continue.",
-    "pricing_intro": "Free trial month (50 seats and 50 units). Then 10, 25 or 50 seats and units per year. Billed yearly by invoice.",
+    "pricing_intro": "Free trial month (50 seats and 50 units). Then 10, 25 or 50 seats with 50 / 125 / 250 units. Billed yearly by invoice.",
     "status_module_esg": "ESG module active on your account.",
     "status_module_time": "Time (punch clock) is active on your account.",
     "page_limits_title": "Why certain actions are unavailable",
@@ -71,7 +71,7 @@
             "price": "€7 / seat / month",
             "scale": "€70 per month. Billed yearly (€840).",
             "features": [
-                "10 units and 10 documents. Locations and photos unlimited.",
+                "50 units and 50 documents. Locations and photos unlimited.",
                 "Punch clock, roster, CIAO (NSSO) included."
             ]
         },
@@ -80,7 +80,7 @@
             "price": "€7 / seat / month",
             "scale": "€70 per month. Billed yearly (€840).",
             "features": [
-                "10 units and 10 documents. Locations and photos unlimited.",
+                "50 units and 50 documents. Locations and photos unlimited.",
                 "Punch clock, roster, CIAO (NSSO) included."
             ]
         },
@@ -89,7 +89,7 @@
             "price": "€6 / seat / month",
             "scale": "€150 per month. Billed yearly (€1,800).",
             "features": [
-                "25 units and 25 documents. Locations and photos unlimited.",
+                "125 units and 125 documents. Locations and photos unlimited.",
                 "Punch clock, roster, CIAO (NSSO) included."
             ]
         },
@@ -98,7 +98,7 @@
             "price": "€6 / seat / month",
             "scale": "€150 per month. Billed yearly (€1,800).",
             "features": [
-                "25 units and 25 documents. Locations and photos unlimited.",
+                "125 units and 125 documents. Locations and photos unlimited.",
                 "Punch clock, roster, CIAO (NSSO) included."
             ]
         },
@@ -107,7 +107,7 @@
             "price": "€5 / seat / month",
             "scale": "€250 per month. Billed yearly (€3,000).",
             "features": [
-                "50 units and 50 documents. Locations and photos unlimited.",
+                "250 units and 250 documents. Locations and photos unlimited.",
                 "Punch clock, roster, CIAO (NSSO) included."
             ]
         },
@@ -116,7 +116,7 @@
             "price": "€5 / seat / month",
             "scale": "€250 per month. Billed yearly (€3,000).",
             "features": [
-                "50 units and 50 documents. Locations and photos unlimited.",
+                "250 units and 250 documents. Locations and photos unlimited.",
                 "Punch clock, roster, CIAO (NSSO) included."
             ]
         },
@@ -296,7 +296,7 @@
     "comparison_trial_price": "Free",
     "comparison_notes": {
         "trial": "Trial: 50 seats and 50 units. Billed yearly after the trial.",
-        "unlimited": "Units and documents follow the seat count (10/25/50). Locations and photos are unlimited.",
+        "unlimited": "Units and documents = 5× your seats (50 / 125 / 250). Locations and photos are unlimited.",
         "corporate": "IoT, ESG and API: WinProx Corporate only (from 100 seats)."
     },
     "contact_sales_cta": "Contact us",

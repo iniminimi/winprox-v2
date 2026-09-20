@@ -1034,7 +1034,7 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
 
 ### 7.2 Plannen
 - **WinProx** (`winprox_10` / `winprox_25` / `winprox_50`): **jaarlijks**, gemeten in **licenties**
-  (collega's met login + uitvoerders) **én units** (zelfde getal: 10/25/50). Documenten = unitlimiet.
+  (collega's met login + uitvoerders). **Units + documenten = licenties × 5** (50 / 125 / 250).
   Locaties en foto's onbeperkt. Compacte prijskaart: per-licentieprijs · maandpakket + jaartotaal ·
   units/documenten · *Prikklok, uurrooster, CIAO (RSZ) inbegrepen.* Geen IoT/ESG/API-vermelding
   op deze formules (alleen Corporate). Clock Point blijft de aanmeld-QR.

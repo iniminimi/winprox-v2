@@ -3,12 +3,12 @@
     "public_title": "Precios y planes",
     "public_subtitle": "Elija el número de licencias. WinProx se factura anualmente. Reloj, cuadrante y CIAO (ONSS) incluidos.",
     "public_register_cta": "Iniciar prueba gratuita",
-    "subtitle": "Tras el mes gratis, elija una fórmula. Cada fórmula limita licencias y unidades (mismo número). Ubicaciones y fotos son ilimitadas.",
+    "subtitle": "Tras el mes gratis, elija un plan. Licencias 10/25/50; unidades y documentos = 5x (50/125/250). Sedes y fotos ilimitadas.",
     "plans_heading": "Planes",
-    "plans_intro": "Pague por persona. 10, 25 o 50 licencias (colegas + ejecutores) con el mismo número de unidades y documentos. Sedes y fotos ilimitadas. Reloj, cuadrante y CIAO (ONSS) incluidos.",
+    "plans_intro": "Pague por persona. 10, 25 o 50 licencias (colegas + ejecutores); unidades y documentos = 5× ese número (50 / 125 / 250). Sedes y fotos ilimitadas. Reloj, cuadrante y CIAO (ONSS) incluidos.",
     "glossary": {
         "heading": "Licencias, unidades y fotos",
-        "unit": "Unidad — un objeto o lugar con código QR (máquina, sala, vehículo). El número de unidades = el de licencias (10, 25 o 50).",
+        "unit": "Unidad — un objeto o lugar con código QR (máquina, habitación, vehículo). Unidades (y documentos) = 5× sus licencias: 50 / 125 / 250.",
         "document": "Documento — un archivo en el portal QR, por ejemplo un manual. El mismo límite que las unidades.",
         "photo": "Fotos — las fotos en avisos y tareas son ilimitadas.",
         "seat": "Licencia — un colega con inicio de sesión (admin o empleado) o un operario (Clock Point, sin inicio de sesión). Un colega con perfil de fichaje vinculado cuenta como una licencia."
@@ -27,7 +27,7 @@
     "status_active": "Suscripción activa: :plan, válida hasta :date.",
     "status_grace": "Suscripción :plan finalizó el :ended. Período de gracia hasta :grace_end — :days días de acceso completo restantes.",
     "status_expired": "Su prueba ha terminado. Elija un plan abajo.",
-    "pricing_intro": "Mes de prueba gratis (50 licencias y 50 unidades). Después 10, 25 o 50 licencias y unidades al año. Pago anual por factura.",
+    "pricing_intro": "Mes de prueba gratis (50 licencias y 50 unidades). Después 10, 25 o 50 licencias con 50 / 125 / 250 unidades. Pago anual por factura.",
     "status_module_esg": "Módulo ESG activo en su cuenta.",
     "status_module_time": "Time (reloj de fichar) está activo en su cuenta.",
     "page_limits_title": "Por qué ciertas acciones no están disponibles",
@@ -71,7 +71,7 @@
             "price": "7 € / licencia / mes",
             "scale": "70 € al mes. Pago anual (840 €).",
             "features": [
-                "10 unidades y 10 documentos. Sedes y fotos ilimitadas.",
+                "50 unidades y 50 documentos. Sedes y fotos ilimitadas.",
                 "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
@@ -80,7 +80,7 @@
             "price": "7 € / licencia / mes",
             "scale": "70 € al mes. Pago anual (840 €).",
             "features": [
-                "10 unidades y 10 documentos. Sedes y fotos ilimitadas.",
+                "50 unidades y 50 documentos. Sedes y fotos ilimitadas.",
                 "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
@@ -89,7 +89,7 @@
             "price": "6 € / licencia / mes",
             "scale": "150 € al mes. Pago anual (1.800 €).",
             "features": [
-                "25 unidades y 25 documentos. Sedes y fotos ilimitadas.",
+                "125 unidades y 125 documentos. Sedes y fotos ilimitadas.",
                 "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
@@ -98,7 +98,7 @@
             "price": "6 € / licencia / mes",
             "scale": "150 € al mes. Pago anual (1.800 €).",
             "features": [
-                "25 unidades y 25 documentos. Sedes y fotos ilimitadas.",
+                "125 unidades y 125 documentos. Sedes y fotos ilimitadas.",
                 "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
@@ -107,7 +107,7 @@
             "price": "5 € / licencia / mes",
             "scale": "250 € al mes. Pago anual (3.000 €).",
             "features": [
-                "50 unidades y 50 documentos. Sedes y fotos ilimitadas.",
+                "250 unidades y 250 documentos. Sedes y fotos ilimitadas.",
                 "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
@@ -116,7 +116,7 @@
             "price": "5 € / licencia / mes",
             "scale": "250 € al mes. Pago anual (3.000 €).",
             "features": [
-                "50 unidades y 50 documentos. Sedes y fotos ilimitadas.",
+                "250 unidades y 250 documentos. Sedes y fotos ilimitadas.",
                 "Reloj, cuadrante, CIAO (ONSS) incluidos."
             ]
         },
@@ -296,7 +296,7 @@
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
         "trial": "Prueba: 50 licencias y 50 unidades. Pago anual tras la prueba.",
-        "unlimited": "Unidades y documentos siguen el número de licencias (10/25/50). Ubicaciones y fotos son ilimitadas.",
+        "unlimited": "Unidades y documentos = 5× sus licencias (50 / 125 / 250). Sedes y fotos son ilimitadas.",
         "corporate": "IoT, ESG y API: solo WinProx Corporate (desde 100 licencias)."
     },
     "contact_sales_cta": "Contactar",
