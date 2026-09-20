@@ -149,7 +149,9 @@ it('toont inspectierondes en checklists in Werk zonder Op locatie-label', functi
     $this->actingAs($admin)
         ->get(route('checklists.index'))
         ->assertOk()
-        ->assertSee(__('unit_checks.lists.title'), false);
+        ->assertSee(__('unit_checks.lists.title'), false)
+        ->assertSee(__('unit_checks.lists.starters_label'), false)
+        ->assertSee('wp-card wp-card-pad', false);
 });
 
 it('toont Unit checks in het menu zodra er minstens één check is', function () {

@@ -27,17 +27,19 @@
 
     @can('create', App\Models\UnitCheckList::class)
         @if ($checkListStarters !== [])
-            <div class="wp-cluster">
-                <span class="wp-muted wp-text-sm">{{ __('unit_checks.lists.starters_label') }}</span>
-                @foreach ($checkListStarters as $starter)
-                    <button
-                        type="button"
-                        class="btn btn--ghost btn--sm"
-                        wire:click="copyCheckListFromStarter('{{ $starter['key'] }}')"
-                    >
-                        {{ __($starter['name']) }}
-                    </button>
-                @endforeach
+            <div class="wp-card wp-card-pad">
+                <div class="wp-cluster">
+                    <span class="wp-muted wp-text-sm">{{ __('unit_checks.lists.starters_label') }}</span>
+                    @foreach ($checkListStarters as $starter)
+                        <button
+                            type="button"
+                            class="btn btn--ghost btn--sm"
+                            wire:click="copyCheckListFromStarter('{{ $starter['key'] }}')"
+                        >
+                            {{ __($starter['name']) }}
+                        </button>
+                    @endforeach
+                </div>
             </div>
         @endif
     @endcan
