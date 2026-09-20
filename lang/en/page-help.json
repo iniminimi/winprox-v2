@@ -1735,7 +1735,7 @@
                 },
                 {
                     "label": "Planned vs clocked",
-                    "text": "On a <strong>published</strong> period the grid marks deviations (late/early) immediately, including <strong>today</strong>. Missing punches only after the planned end (or on past days). Unplanned punches and absence without a punch stay as before. Click the top-right marker in the cell to open <strong>Hours</strong> for that worker on that day. <strong>Print</strong> (next to the title) opens a new window (A4 landscape). Publishing does not send anything to the NSSO."
+                    "text": "On a <strong>published</strong> period the grid marks deviations (late/early) immediately, including <strong>today</strong>. Up to 15 minutes early still counts as on time; 15 minutes or more late (or more than 15 minutes early) is a deviation. Punches are always stored. Missing punches only after the planned end (or on past days). Unplanned punches and absence without a punch stay as before. Click the top-right marker in the cell to open <strong>Hours</strong> for that worker on that day. <strong>Print</strong> (next to the title) opens a new window (A4 landscape). Publishing does not send anything to the NSSO."
                 }
             ]
         },

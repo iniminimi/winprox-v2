@@ -108,29 +108,77 @@ class CompareRosterAttendanceAction
             return RosterAttendanceStatus::Deviation;
         }
 
+        $tolerance = $this->toleranceMinutes();
         $start = ShiftType::timeToMinutes($planned->start_time);
         $end = ShiftType::timeToMinutes($planned->end_time);
-        $pastEnd = $this->plannedEndPassed($planned, $date, $now);
+        $pastClockOutWindow = $this->plannedClockOutWindowPassed($planned, $date, $now, $tolerance);
 
         foreach ($dayPunches as $punch) {
-            $in = ($punch->clock_in_at->hour * 60) + $punch->clock_in_at->minute;
-            if ($in !== $start) {
+            $in = $this->punchMinutes($punch->clock_in_at);
+            if (! $this->withinAttendanceWindow($in, $start, $tolerance)) {
                 return RosterAttendanceStatus::Deviation;
             }
 
             if ($punch->clock_out_at === null) {
-                return $pastEnd
+                return $pastClockOutWindow
                     ? RosterAttendanceStatus::Deviation
                     : RosterAttendanceStatus::Ok;
             }
 
-            $out = ($punch->clock_out_at->hour * 60) + $punch->clock_out_at->minute;
-            if ($out < $end) {
+            $out = $this->punchMinutes($punch->clock_out_at);
+            if (! $this->withinAttendanceWindow($out, $end, $tolerance)) {
                 return RosterAttendanceStatus::Deviation;
             }
         }
 
         return RosterAttendanceStatus::Ok;
+    }
+
+    private function toleranceMinutes(): int
+    {
+        return max(0, (int) config('time.roster_attendance_tolerance_minutes', 15));
+    }
+
+    private function punchMinutes(Carbon $at): int
+    {
+        return ($at->hour * 60) + $at->minute;
+    }
+
+    /**
+     * Tot N minuten te vroeg telt mee; N minuten te laat is een afwijking.
+     * Tolerance 0 = exact op de geplande minuut.
+     */
+    private function withinAttendanceWindow(int $actual, int $planned, int $tolerance): bool
+    {
+        if ($tolerance <= 0) {
+            return $actual === $planned;
+        }
+
+        return $actual >= ($planned - $tolerance) && $actual < ($planned + $tolerance);
+    }
+
+    private function plannedClockOutWindowPassed(
+        PlannedShift $planned,
+        string $date,
+        Carbon $now,
+        int $tolerance,
+    ): bool {
+        if ($date < $now->toDateString()) {
+            return true;
+        }
+
+        if ($date > $now->toDateString()) {
+            return false;
+        }
+
+        if ($planned->end_time === null) {
+            return $now->greaterThanOrEqualTo(Carbon::parse($date)->endOfDay()->addMinutes($tolerance));
+        }
+
+        $windowEnd = Carbon::parse($date)->startOfDay()
+            ->addMinutes(ShiftType::timeToMinutes($planned->end_time) + $tolerance);
+
+        return $now->greaterThanOrEqualTo($windowEnd);
     }
 
     private function plannedEndPassed(PlannedShift $planned, string $date, Carbon $now): bool

@@ -856,8 +856,11 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   maand van de nieuwste ongelezen publicatie en zet `read_at` voor dat type. Geen inbox, geen
   mail, geen Laravel notifications.
 - **Golf 2 — gepland vs geklokt:** alleen beheer, **published**. Missing / deviation /
-  unplanned / ok. **Deviation** (te laat/te vroeg inklokken, te vroeg uit, open na einde)
-  meteen, ook **vandaag**. **Missing** pas na het geplande einde (of op vorige dagen).
+  unplanned / ok. Prikken blijven altijd geregistreerd. **Deviation** alleen buiten
+  de marge (`config('time.roster_attendance_tolerance_minutes')`, default **15**):
+  tot 15 min te vroeg in of uit telt als ok; **15 min of meer te laat**, of meer dan
+  15 min te vroeg, of nog open vanaf einde + 15 min. Meteen, ook **vandaag**.
+  **Missing** pas na het geplande einde (of op vorige dagen).
   Toekomstige dagen: geen markering. Afwezigheid zonder prik = ok; mét prik = ungepland.
   Markering rechtsboven in de cel opent **Time → Uren** (worker + die dag;
   bij **missing** de hele maand, want die dag heeft geen prik). Geen locatievergelijking.

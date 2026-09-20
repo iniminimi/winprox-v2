@@ -27,4 +27,11 @@ return [
 
     /** Straal (meter) waarbinnen GPS-werkbezoeken een unit-pin mogen starten. Default 50; min 10. */
     'gps_visit_radius_meters' => (int) env('TIME_GPS_VISIT_RADIUS_METERS', 50),
+
+    /**
+     * Uurrooster (gepland vs geklokt): in- en uitklok binnen dit aantal minuten
+     * te vroeg telt als ok. Exact dit aantal minuten te laat is een afwijking.
+     * De prik zelf blijft altijd geregistreerd.
+     */
+    'roster_attendance_tolerance_minutes' => max(0, (int) env('TIME_ROSTER_ATTENDANCE_TOLERANCE_MINUTES', 15)),
 ];
