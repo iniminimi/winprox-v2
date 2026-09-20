@@ -410,7 +410,7 @@ it('expired trial: abonnement annuleert openstaande auto-purge', function () {
     ]);
 
     app(\App\Actions\Billing\ActivateSubscriptionPlanAction::class)
-        ->handle($admin, $tenant, 'facility', 'manual');
+        ->handle($admin, $tenant, 'winprox_10', 'platform');
 
     expect($purge->fresh()->status)->toBe(TenantPurgeStatus::Cancelled)
         ->and($tenant->fresh()->hasFullAppAccess())->toBeTrue();

@@ -1,6 +1,8 @@
 @php
     $publicMode = $publicMode ?? false;
+    $allowSelfActivation = (bool) config('billing.allow_tenant_self_activation', false);
     $showManageActions = ($canManage ?? false) && ! $publicMode;
+    $showPlanActivation = $showManageActions && $allowSelfActivation;
 @endphp
 
 <div class="wp-stack" data-manual-capture="subscription">
@@ -200,7 +202,7 @@
                             @endif
                         </ul>
                         @if (empty($planConfig['time_module']) && is_string($timeVariant) && $timeVariant !== '')
-                            @if ($showManageActions)
+                            @if ($showPlanActivation)
                                 <label class="wp-check wp-billing-time-addon">
                                     <input type="checkbox" wire:model.live="includeTime.{{ $planKey }}">
                                     <span>
@@ -220,7 +222,7 @@
                         <div class="wp-billing-plan-card-action">
                             @if ($isCurrentPlan && ($billingStatus ?? null) === 'paid')
                                 <span class="wp-pill wp-pill--done">{{ __('subscription.current_plan') }}</span>
-                            @elseif (config("billing.plans.{$planKey}.self_activate", true))
+                            @elseif ($showPlanActivation && config("billing.plans.{$planKey}.self_activate", true))
                                 <button
                                     type="button"
                                     class="btn btn--primary btn--block"

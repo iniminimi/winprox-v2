@@ -441,7 +441,7 @@
     "corporate_units_cap": "Tope de unidades",
     "corporate_units_cap_value": ":cap unidades",
     "corporate_units_cap_save": "Guardar tope",
-    "corporate_units_cap_hint": "Máximo acordado de unidades para esta organización. Los documentos siguen el mismo límite (máximo 1 por unidad). En Corporate: «Guardar tope». Si no: «Activar Corporate» aplica el plan y este límite.",
+    "corporate_units_cap_hint": "Máximo acordado de unidades en Corporate. Los documentos siguen el mismo límite (máximo 1 por unidad).",
     "corporate_assign": "Activar Corporate",
     "corporate_units_cap_saved": "Tope guardado.",
     "corporate_assigned": "Corporate activado con :cap unidades.",
@@ -449,6 +449,12 @@
         "units_cap_required": "Indique un tope de unidades.",
         "units_cap_invalid": "El tope debe estar entre 1 y 1.000.000.",
         "not_corporate": "Esta organización no tiene plan Corporate.",
-        "ciao_requires_time": "Active primero el módulo Time para CIAO."
-    }
+        "ciao_requires_time": "Active primero el módulo Time para CIAO.",
+        "plan_required": "Elija un plan.",
+        "plan_invalid": "Plan no válido."
+    },
+    "plan_select": "Plan",
+    "plan_assign": "Asignar plan",
+    "plan_assign_hint": "Solo un Superuser asigna el plan (factura anual). Corporate requiere un tope de unidades. CIAO (ONSS) se puede activar sin Corporate; Time se activa con ello.",
+    "plan_assigned": "Plan :plan asignado."
 }

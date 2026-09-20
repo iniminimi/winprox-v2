@@ -23,7 +23,7 @@ class StripeBillingTest extends TestCase
         $service = app(StripeCheckoutService::class);
         $this->assertFalse($service->isConfiguredForPlan('winprox_50'));
 
-        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_50', 'manual');
+        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_50', 'platform');
 
         $tenant->refresh();
         $this->assertSame('winprox_50', $tenant->billing_plan);

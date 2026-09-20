@@ -441,7 +441,7 @@
     "corporate_units_cap": "Einheiten-Cap",
     "corporate_units_cap_value": ":cap Einheiten",
     "corporate_units_cap_save": "Cap speichern",
-    "corporate_units_cap_hint": "Vereinbarte Höchstzahl Units für diese Organisation. Dokumente folgen demselben Limit (maximal 1 je Unit). Bei Corporate: «Cap speichern». Sonst: «Corporate aktivieren» setzt Tarif und dieses Limit.",
+    "corporate_units_cap_hint": "Vereinbarte Höchstzahl Units bei Corporate. Dokumente folgen demselben Limit (maximal 1 je Unit).",
     "corporate_assign": "Corporate aktivieren",
     "corporate_units_cap_saved": "Einheiten-Cap gespeichert.",
     "corporate_assigned": "Corporate mit :cap Einheiten aktiviert.",
@@ -449,6 +449,12 @@
         "units_cap_required": "Bitte Einheiten-Cap eingeben.",
         "units_cap_invalid": "Einheiten-Cap muss zwischen 1 und 1.000.000 liegen.",
         "not_corporate": "Diese Organisation hat keinen Corporate-Tarif.",
-        "ciao_requires_time": "Schalten Sie zuerst das Time-Modul für CIAO ein."
-    }
+        "ciao_requires_time": "Schalten Sie zuerst das Time-Modul für CIAO ein.",
+        "plan_required": "Wählen Sie einen Tarif.",
+        "plan_invalid": "Ungültiger Tarif."
+    },
+    "plan_select": "Tarif",
+    "plan_assign": "Tarif zuweisen",
+    "plan_assign_hint": "Nur ein Superuser weist den Tarif zu (Jahresrechnung). Corporate braucht ein Units-Cap. CIAO (LSS) kann ohne Corporate aktiviert werden; Time geht mit an.",
+    "plan_assigned": "Tarif :plan zugewiesen."
 }

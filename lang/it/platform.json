@@ -441,7 +441,7 @@
     "corporate_units_cap": "Cap unità",
     "corporate_units_cap_value": ":cap unità",
     "corporate_units_cap_save": "Salva cap",
-    "corporate_units_cap_hint": "Numero massimo di unit concordato per questa organizzazione. I documenti seguono lo stesso limite (massimo 1 per unit). Su Corporate: «Salva cap». Altrimenti: «Attiva Corporate» imposta la formula e questo limite.",
+    "corporate_units_cap_hint": "Numero massimo di unit concordato per Corporate. I documenti seguono lo stesso limite (massimo 1 per unit).",
     "corporate_assign": "Attiva Corporate",
     "corporate_units_cap_saved": "Cap unità salvato.",
     "corporate_assigned": "Corporate attivato con :cap unità.",
@@ -449,6 +449,12 @@
         "units_cap_required": "Inserisci un cap unità.",
         "units_cap_invalid": "Il cap deve essere tra 1 e 1.000.000.",
         "not_corporate": "Questa organizzazione non è Corporate.",
-        "ciao_requires_time": "Attiva prima il modulo Time per CIAO."
-    }
+        "ciao_requires_time": "Attiva prima il modulo Time per CIAO.",
+        "plan_required": "Scegli una formula.",
+        "plan_invalid": "Formula non valida."
+    },
+    "plan_select": "Formula",
+    "plan_assign": "Assegna formula",
+    "plan_assign_hint": "Solo un Superuser assegna la formula (fattura annuale). Corporate richiede un limite unità. CIAO (ONSS) si può attivare senza Corporate; Time si attiva insieme.",
+    "plan_assigned": "Formula :plan assegnata."
 }

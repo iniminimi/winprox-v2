@@ -441,7 +441,7 @@
     "corporate_units_cap": "Units cap",
     "corporate_units_cap_value": ":cap units",
     "corporate_units_cap_save": "Save cap",
-    "corporate_units_cap_hint": "Agreed maximum number of units for this organisation. Documents follow the same limit (maximum 1 per unit). On Corporate: «Save cap». Otherwise: «Activate Corporate» sets the plan and this limit.",
+    "corporate_units_cap_hint": "Agreed maximum units for Corporate. Documents follow the same limit (maximum 1 per unit).",
     "corporate_assign": "Activate Corporate",
     "corporate_units_cap_saved": "Units cap saved.",
     "corporate_assigned": "Corporate activated with :cap units.",
@@ -449,6 +449,12 @@
         "units_cap_required": "Enter a units cap.",
         "units_cap_invalid": "Units cap must be between 1 and 1,000,000.",
         "not_corporate": "This organisation is not on Corporate.",
-        "ciao_requires_time": "Turn on the Time module before CIAO."
-    }
+        "ciao_requires_time": "Turn on the Time module before CIAO.",
+        "plan_required": "Choose a plan.",
+        "plan_invalid": "Invalid plan."
+    },
+    "plan_select": "Plan",
+    "plan_assign": "Assign plan",
+    "plan_assign_hint": "Only a Superuser assigns the plan (annual invoice). Corporate needs a units cap. CIAO (NSSO) can be enabled separately without Corporate; Time turns on with it.",
+    "plan_assigned": "Plan :plan assigned."
 }

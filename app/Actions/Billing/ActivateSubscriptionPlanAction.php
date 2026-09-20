@@ -7,6 +7,7 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Carbon;
+use InvalidArgumentException;
 
 class ActivateSubscriptionPlanAction
 {
@@ -16,12 +17,29 @@ class ActivateSubscriptionPlanAction
         private CancelOpenExpiredTrialPurgesForTenantAction $cancelExpiredTrialPurges,
     ) {}
 
-    public function handle(?User $actor, Tenant $tenant, string $plan, string $source = 'manual'): Tenant
-    {
+    /**
+     * @param  'manual'|'stripe'|'platform'  $source
+     */
+    public function handle(
+        ?User $actor,
+        Tenant $tenant,
+        string $plan,
+        string $source = 'manual',
+        ?int $unitsCap = null,
+    ): Tenant {
         $plan = Tenant::normalizeBillingPlanKey($plan) ?? $plan;
 
-        if (! (bool) config("billing.plans.{$plan}.self_activate", true)) {
-            throw new \InvalidArgumentException('plan_not_self_activate');
+        if (! is_array(config("billing.plans.{$plan}"))) {
+            throw new InvalidArgumentException('unknown_plan');
+        }
+
+        $bypassSelfActivate = in_array($source, ['stripe', 'platform'], true);
+        if (! $bypassSelfActivate && ! (bool) config("billing.plans.{$plan}.self_activate", true)) {
+            throw new InvalidArgumentException('plan_not_self_activate');
+        }
+
+        if ($plan === 'corporate' && $unitsCap === null && $tenant->billing_units_cap === null) {
+            throw new InvalidArgumentException('corporate_units_cap_required');
         }
 
         $periodDays = Tenant::subscriptionPeriodDaysForPlan($plan);
@@ -31,7 +49,9 @@ class ActivateSubscriptionPlanAction
             'billing_active_until' => Carbon::now()->addDays($periodDays),
             'trial_ends_at' => now(),
             'is_active' => true,
-            'billing_units_cap' => $plan === 'corporate' ? $tenant->billing_units_cap : null,
+            'billing_units_cap' => $plan === 'corporate'
+                ? ($unitsCap ?? $tenant->billing_units_cap)
+                : null,
         ])->save();
 
         $fresh = $this->applyEntitlements->handle($tenant->fresh(), $plan);
@@ -48,6 +68,7 @@ class ActivateSubscriptionPlanAction
                 'id' => $fresh->id,
                 'plan' => $plan,
                 'source' => $source,
+                'billing_units_cap' => $fresh->billing_units_cap,
                 'billing_active_until' => optional($fresh->billing_active_until)->toIso8601String(),
             ],
         );

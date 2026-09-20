@@ -777,8 +777,8 @@
                     "text": "During the trial you have up to 50 seats and 50 units, including Time (punch clock). IoT, ESG and API are not in the trial. The dashboard shows remaining days."
                 },
                 {
-                    "label": "Choose plan",
-                    "text": "Choose 10, 25 or 50 seats (colleagues + workers), with the same number of units and documents. Locations and photos unlimited. Price per seat: €7 / €6 / €5 per month. Billed yearly by invoice. Time (punch clock) is included. Corporate from 100 seats, custom price."
+                    "label": "Plan / contact",
+                    "text": "Plans are informational (10/25/50 seats + Corporate). You do not activate a subscription yourself: WinProx assigns the plan after agreement/annual invoice. Contact info@winprox.app. Request CIAO (NSSO) the same way; a Superuser enables it (Time turns on; Corporate not required)."
                 },
                 {
                     "label": "Delete organisation data",
@@ -1076,11 +1076,11 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Turn optional modules on or off (ESG, IoT Connect, CIAO/RSZ). CIAO is exceptional: the organisation requests it via info@winprox.app. Time is included in WinProx plans."
+                    "text": "Turn optional modules on or off (ESG, IoT Connect, CIAO/NSSO). CIAO is exceptional: the organisation requests it via info@winprox.app. A Superuser enables CIAO (Time turns on; Corporate not required). Time is included in WinProx plans."
                 },
                 {
-                    "label": "Corporate units cap",
-                    "text": "For Corporate organisations: the number is the agreed maximum units (documents: maximum 1 per unit). «Save cap» stores that limit. «Activate Corporate» sets the plan and the cap."
+                    "label": "Assign plan",
+                    "text": "Choose the plan (WinProx 10/25/50 or Corporate) and assign it. For Corporate: enter the units cap. CIAO can be enabled without Corporate."
                 }
             ]
         },

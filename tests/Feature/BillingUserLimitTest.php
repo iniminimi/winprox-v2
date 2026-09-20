@@ -31,7 +31,7 @@ class BillingUserLimitTest extends TestCase
         $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
         $admin = User::factory()->admin()->for($tenant)->create();
 
-        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'manual');
+        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'platform');
 
         $this->assertSame(10, $tenant->fresh()->maxSeatsLimit());
     }
@@ -80,7 +80,7 @@ class BillingUserLimitTest extends TestCase
         $admin = User::factory()->admin()->for($tenant)->create();
         User::factory()->employee()->count(9)->for($tenant)->create();
 
-        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'manual');
+        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'platform');
 
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('seat_limit_exceeded');
@@ -105,7 +105,7 @@ class BillingUserLimitTest extends TestCase
             'internal_team_id' => $team->id,
         ]);
 
-        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'manual');
+        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'platform');
 
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('seat_limit_exceeded');
@@ -123,7 +123,7 @@ class BillingUserLimitTest extends TestCase
         User::factory()->employee()->count(9)->for($tenant)->create();
         $inactive = User::factory()->employee()->inactive()->for($tenant)->create();
 
-        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'manual');
+        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'platform');
 
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('seat_limit_exceeded');
@@ -146,7 +146,7 @@ class BillingUserLimitTest extends TestCase
             'is_active' => false,
         ]);
 
-        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'manual');
+        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'platform');
 
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('seat_limit_exceeded');

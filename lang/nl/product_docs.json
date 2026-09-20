@@ -163,7 +163,7 @@
                     "Productie op **Linux** (EU), bij **Cloud86**.",
                     "Toegang via **HTTPS** (versleutelde verbinding, TLS).",
                     "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite-frontend.",
-                    "E-mail via SMTP in de EU; betaling via jaarfactuur (geen online checkout).",
+                    "E-mail via SMTP in de EU; betaling via jaarfactuur (geen online checkout). Formule toewijzen doet alleen WinProx (Superuser); organisaties kiezen geen abonnement zelf.",
                     "Prijzen: vanaf **€7 / licentie / maand** (10 licenties + 10 units), **€6** (25), **€5** (50). Jaarlijks te betalen via factuur. Corporate op maat."
                 ]
             },

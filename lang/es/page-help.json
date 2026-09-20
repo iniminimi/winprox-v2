@@ -777,8 +777,8 @@
                     "text": "Durante la prueba tiene hasta 50 licencias y 50 unidades, Time (reloj de fichar) incluido. IoT, ESG y API no están en la prueba. El panel muestra los días restantes."
                 },
                 {
-                    "label": "Elegir plan",
-                    "text": "Elija 10, 25 o 50 licencias (colegas + operarios), con el mismo número de unidades y documentos. Ubicaciones y fotos ilimitadas. Precio por licencia: 7 € / 6 € / 5 € al mes. Pago anual por factura. Time (reloj de fichar) está incluido. Corporate desde 100 licencias, precio a medida."
+                    "label": "Plan / contacto",
+                    "text": "Los planes son informativos (10/25/50 licencias + Corporate). Usted no activa la suscripción: WinProx la asigna tras acuerdo/factura anual. Contacte info@winprox.app. CIAO (ONSS) se solicita igual; un Superuser lo activa (Time se enciende; no hace falta Corporate)."
                 },
                 {
                     "label": "Eliminar datos de la organización",
@@ -1076,11 +1076,11 @@
                 },
                 {
                     "label": "Módulos",
-                    "text": "Active o desactive módulos opcionales (ESG, IoT Connect, CIAO/ONSS). CIAO es excepcional: la organización lo solicita vía info@winprox.app. Time está incluido en las fórmulas WinProx."
+                    "text": "Active o desactive módulos opcionales (ESG, IoT Connect, CIAO/ONSS). CIAO es excepcional: la organización lo solicita en info@winprox.app. Un Superuser activa CIAO (Time se enciende; no hace falta Corporate). Time está incluido en los planes WinProx."
                 },
                 {
-                    "label": "Tope Corporate",
-                    "text": "Para organizaciones Corporate: el número es el máximo acordado de unidades (documentos: máximo 1 por unidad). «Guardar tope» guarda ese límite. «Activar Corporate» aplica el plan y el tope."
+                    "label": "Asignar plan",
+                    "text": "Elija el plan (WinProx 10/25/50 o Corporate) y asígnelo. En Corporate: indique el tope de unidades. CIAO se puede activar sin Corporate."
                 }
             ]
         },

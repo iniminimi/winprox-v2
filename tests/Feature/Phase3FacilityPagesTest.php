@@ -328,7 +328,7 @@ it('toont csv-import knop op locatie-detail bij facility_100-plan', function () 
         ->assertSee(__('locations.units_csv.button'), false);
 });
 
-it('laat een beheerder een plan activeren', function () {
+it('weigert tenant-self-activate van een plan', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now()->addDays(3),
         'is_active' => true,
@@ -341,16 +341,10 @@ it('laat een beheerder een plan activeren', function () {
     Livewire::actingAs($admin)
         ->test(Subscription::class)
         ->call('activatePlan', 'winprox_50')
-        ->assertHasNoErrors();
+        ->assertHasErrors(['plan']);
 
-    $tenant->refresh();
-
-    expect($tenant->billing_plan)->toBe('winprox_50')
-        ->and($tenant->billing_active_until)->not->toBeNull()
-        ->and($tenant->isPaidSubscriptionActive())->toBeTrue()
-        ->and($tenant->isTrialActive())->toBeFalse()
-        ->and($tenant->hasTimeModule())->toBeTrue()
-        ->and($tenant->hasEsgModule())->toBeFalse();
+    expect($tenant->fresh()->billing_plan)->toBeNull()
+        ->and($tenant->fresh()->isPaidSubscriptionActive())->toBeFalse();
 });
 
 it('laadt de FAQ-pagina met facility-inhoud', function () {

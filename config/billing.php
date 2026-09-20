@@ -34,7 +34,8 @@ $winproxShared = static function (int $seats): array {
         'csv_workers_import'     => true,
         'csv_units_import'       => true,
         'subscription_period_days' => 365,
-        'self_activate'          => true,
+        // Tenant mag geen formule meer kiezen (jaarfactuur); alleen Superuser via Platform.
+        'self_activate'          => false,
     ];
 };
 
@@ -87,7 +88,8 @@ return [
     'trial_days' => (int) env('BILLING_TRIAL_DAYS', 30),
     'trial_plan_facility' => 'trial',
     'paid_expiry_grace_days' => (int) env('BILLING_PAID_GRACE_DAYS', 7),
-    'allow_tenant_self_activation' => (bool) env('BILLING_ALLOW_SELF_ACTIVATION', true),
+    // Default uit: jaarfactuur buiten de app; Superuser wijst formules toe op Platform.
+    'allow_tenant_self_activation' => (bool) env('BILLING_ALLOW_SELF_ACTIVATION', false),
     'subscription_period_days' => (int) env('BILLING_SUBSCRIPTION_PERIOD_DAYS', 30),
     'contact_email' => env('BILLING_CONTACT_EMAIL', 'info@winprox.app'),
 

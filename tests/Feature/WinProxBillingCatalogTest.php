@@ -5,8 +5,11 @@ declare(strict_types=1);
 use App\Actions\Billing\ActivateSubscriptionPlanAction;
 use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\StartTenantTrialAction;
+use App\Actions\Platform\AssignTenantSubscriptionPlanAction;
+use App\Actions\Platform\TogglePresenceComplianceAction;
 use App\Livewire\Dashboard;
 use App\Livewire\Pages\Subscription;
+use App\Livewire\Platform\Tenants;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
 use App\Models\User;
@@ -44,13 +47,26 @@ it('zet Time aan voor een bestaande proeftenant bij het dashboard', function () 
     expect($tenant->fresh()->hasTimeModule())->toBeTrue();
 });
 
-it('activeert WinProx 50 met Time inbegrepen', function () {
+it('weigert tenant self-activate van WinProx-formules', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
         ->call('activatePlan', 'winprox_50')
+        ->assertHasErrors(['plan']);
+
+    expect($tenant->fresh()->billing_plan)->toBeNull();
+});
+
+it('laat superuser WinProx 50 toewijzen met Time inbegrepen', function () {
+    $super = User::factory()->superuser()->create();
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+
+    Livewire::actingAs($super)
+        ->test(Tenants::class)
+        ->set('planInputs.'.$tenant->id, 'winprox_50')
+        ->call('assignPlan', $tenant->id)
         ->assertHasNoErrors();
 
     $tenant->refresh();
@@ -66,7 +82,7 @@ it('houdt Time-plan-variant beschikbaar buiten de catalogus', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
-    app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_50_time', 'manual');
+    app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_50_time', 'platform');
 
     $tenant->refresh();
 
@@ -101,4 +117,34 @@ it('behoudt entitlements van een bestaande facility_100-abonnee', function () {
     expect($fresh->maxUnitsLimit())->toBe(100)
         ->and($fresh->hasTimeModule())->toBeTrue()
         ->and($fresh->hasIotModule())->toBeFalse();
+});
+
+it('zet CIAO aan zonder Corporate en schakelt Time mee in', function () {
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->addDays(10),
+        'has_time_module' => false,
+        'presence_compliance_enabled' => false,
+        'billing_plan' => null,
+    ]);
+    $super = User::factory()->superuser()->create();
+
+    app(TogglePresenceComplianceAction::class)->handle($tenant, $super->id);
+
+    $fresh = $tenant->fresh();
+
+    expect($fresh->presence_compliance_enabled)->toBeTrue()
+        ->and($fresh->hasTimeModule())->toBeTrue()
+        ->and($fresh->billing_plan)->toBeNull()
+        ->and(Tenant::normalizeBillingPlanKey($fresh->billing_plan))->not->toBe('corporate');
+});
+
+it('wijst winprox_10 toe via AssignTenantSubscriptionPlanAction', function () {
+    $super = User::factory()->superuser()->create();
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(3)]);
+
+    app(AssignTenantSubscriptionPlanAction::class)->handle($tenant, 'winprox_10', $super);
+
+    expect($tenant->fresh()->billing_plan)->toBe('winprox_10')
+        ->and($tenant->fresh()->hasTimeModule())->toBeTrue()
+        ->and($tenant->fresh()->billing_units_cap)->toBeNull();
 });

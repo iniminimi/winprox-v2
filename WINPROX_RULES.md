@@ -212,7 +212,8 @@ CIAO; visit start → IN; visit end → OUT; pauzes tijdens een bezoek blijven O
 zelfde events, verplichtingen bevestigen tegen RSZ-bouwspecs.
 
 **UI:** settings (CIAO-kader onderaan, grijs tot superuser inschakelt op Platform → Tenants
-na aanvraag via info@winprox.app; daarna BCE + credentials). Location/Clock Point (DDT +
+na aanvraag via info@winprox.app; CIAO = Time-add-on — bij aanzetten gaat Time mee aan,
+**geen** Corporate-eis; daarna BCE + credentials). Location/Clock Point (DDT +
 werkplaats), Worker (NISS), Time → CIAO (submission-status/remarks + opnieuw). Geen nieuwe
 sidebar-producten buiten Time/Instellingen.
 

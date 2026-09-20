@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Platform;
 
-use App\Actions\Platform\AssignCorporateSubscriptionAction;
+use App\Actions\Platform\AssignTenantSubscriptionPlanAction;
 use App\Actions\Platform\SetBillingUnitsCapAction;
 use App\Actions\Platform\StartSupportViewAction;
 use App\Actions\Platform\StopSupportViewAction;
@@ -14,14 +14,16 @@ use App\Actions\Platform\ToggleTrialApiAction;
 use App\Actions\TenantPurge\CollectTenantPurgeCountsAction;
 use App\Actions\TenantPurge\DeleteUnusedTenantAction;
 use App\Enums\UnusedTenantDeletionReason;
-use App\Http\Requests\Platform\AssignCorporateSubscriptionRequest;
+use App\Http\Requests\Platform\AssignTenantSubscriptionPlanRequest;
 use App\Http\Requests\Platform\DeleteUnusedTenantRequest;
 use App\Http\Requests\Platform\SetBillingUnitsCapRequest;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Support\Billing\BillingCatalogViewData;
 use App\Support\Platform\SupportTenantContext;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\ValidationException;
+use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -36,6 +38,9 @@ class Tenants extends Component
 
     /** @var array<int, string> */
     public array $unitsCapInputs = [];
+
+    /** @var array<int, string> */
+    public array $planInputs = [];
 
     public ?int $deleteTenantId = null;
 
@@ -91,18 +96,7 @@ class Tenants extends Component
     public function togglePresenceCompliance(int $tenantId, TogglePresenceComplianceAction $toggle): void
     {
         $tenant = Tenant::query()->findOrFail($tenantId);
-
-        try {
-            $toggle->handle($tenant, (int) auth()->id());
-        } catch (\InvalidArgumentException $e) {
-            if ($e->getMessage() === 'time_module_disabled') {
-                session()->flash('error', __('platform.errors.ciao_requires_time'));
-
-                return;
-            }
-
-            throw $e;
-        }
+        $toggle->handle($tenant, (int) auth()->id());
     }
 
     public function saveUnitsCap(int $tenantId, SetBillingUnitsCapAction $action): void
@@ -128,21 +122,55 @@ class Tenants extends Component
         session()->flash('success', __('platform.corporate_units_cap_saved'));
     }
 
-    public function assignCorporate(int $tenantId, AssignCorporateSubscriptionAction $action): void
+    public function assignPlan(int $tenantId, AssignTenantSubscriptionPlanAction $action): void
     {
         $this->authorize('accessPlatform', User::class);
 
         $tenant = Tenant::query()->findOrFail($tenantId);
-        $request = new AssignCorporateSubscriptionRequest;
+        $request = new AssignTenantSubscriptionPlanRequest;
+        $plan = (string) ($this->planInputs[$tenantId] ?? '');
+        $unitsCapRaw = $this->unitsCapInputs[$tenantId] ?? null;
         $validated = validator(
-            ['units_cap' => (int) ($this->unitsCapInputs[$tenantId] ?? 0)],
-            $request->rules(),
+            [
+                'plan' => $plan,
+                'units_cap' => $unitsCapRaw === null || $unitsCapRaw === ''
+                    ? null
+                    : (int) $unitsCapRaw,
+            ],
+            $request::rules(),
             $request->messages(),
         )->validate();
 
-        $action->handle($tenant, (int) $validated['units_cap'], auth()->user());
+        $planKey = (string) $validated['plan'];
 
-        session()->flash('success', __('platform.corporate_assigned', ['cap' => $validated['units_cap']]));
+        try {
+            $action->handle(
+                $tenant,
+                $planKey,
+                auth()->user(),
+                $planKey === 'corporate' ? (int) ($validated['units_cap'] ?? 0) : null,
+            );
+        } catch (InvalidArgumentException $e) {
+            if ($e->getMessage() === 'corporate_units_cap_required') {
+                throw ValidationException::withMessages([
+                    'units_cap' => __('platform.errors.units_cap_required'),
+                ]);
+            }
+
+            throw $e;
+        }
+
+        $label = __("subscription.plans.{$planKey}.name");
+        session()->flash('success', $planKey === 'corporate'
+            ? __('platform.corporate_assigned', ['cap' => (int) $validated['units_cap']])
+            : __('platform.plan_assigned', ['plan' => $label]));
+    }
+
+    /** @deprecated Use assignPlan */
+    public function assignCorporate(int $tenantId, AssignTenantSubscriptionPlanAction $action): void
+    {
+        $this->planInputs[$tenantId] = 'corporate';
+        $this->assignPlan($tenantId, $action);
     }
 
     public function openDeleteConfirm(int $tenantId, CollectTenantPurgeCountsAction $collectCounts): void
@@ -211,9 +239,23 @@ class Tenants extends Component
             ? Tenant::query()->find($activeId)
             : null;
 
+        foreach ($tenants as $tenant) {
+            $id = (int) $tenant->id;
+            if (! array_key_exists($id, $this->planInputs)) {
+                $effective = $tenant->effectivePlanKey();
+                $catalog = is_string($effective)
+                    ? BillingCatalogViewData::catalogPlanFor($effective)
+                    : null;
+                $this->planInputs[$id] = in_array($catalog, BillingCatalogViewData::publicPlanKeys(), true)
+                    ? $catalog
+                    : 'winprox_10';
+            }
+        }
+
         return view('livewire.platform.tenants', [
             'tenants' => $tenants,
             'activeTenant' => $activeTenant,
+            'assignablePlans' => BillingCatalogViewData::publicPlanKeys(),
         ]);
     }
 }

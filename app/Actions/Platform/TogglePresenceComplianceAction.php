@@ -4,30 +4,45 @@ declare(strict_types=1);
 
 namespace App\Actions\Platform;
 
+use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Enums\PresenceComplianceScope;
 use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Time\TimeModuleAccess;
-use InvalidArgumentException;
 
 class TogglePresenceComplianceAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureDefaultClockPointAction $ensureDefaultClockPoint,
+    ) {}
 
     public function handle(Tenant $tenant, ?int $actorUserId = null): void
     {
         $newValue = ! $tenant->presence_compliance_enabled;
 
+        $updates = ['presence_compliance_enabled' => $newValue];
+        $enabledTime = false;
+
+        // CIAO = Time-add-on: bij aanzetten Time mee aanzetten (geen Corporate-eis).
         if ($newValue && ! TimeModuleAccess::tenantHasModule($tenant)) {
-            throw new InvalidArgumentException('time_module_disabled');
+            $updates['has_time_module'] = true;
+            $enabledTime = true;
         }
 
-        $updates = ['presence_compliance_enabled' => $newValue];
         if ($newValue && $tenant->presence_compliance_scope === null) {
             $updates['presence_compliance_scope'] = PresenceComplianceScope::CiaoCleaning->value;
         }
 
         $tenant->update($updates);
+
+        if ($enabledTime) {
+            $this->ensureDefaultClockPoint->handle(
+                $tenant->fresh(),
+                __('team.clock_point_qr.default_name'),
+                $actorUserId,
+            );
+        }
 
         $this->audit->record(
             userId: $actorUserId,
@@ -38,6 +53,7 @@ class TogglePresenceComplianceAction
             payload: [
                 'presence_compliance_enabled' => $newValue,
                 'presence_compliance_scope' => $tenant->fresh()->presence_compliance_scope,
+                'has_time_module' => (bool) $tenant->fresh()->has_time_module,
             ],
         );
     }

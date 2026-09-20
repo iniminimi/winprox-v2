@@ -785,8 +785,8 @@
                     "text": "Pendant l’essai vous avez jusqu’à 50 licences et 50 unités, Time (pointeuse) inclus. IoT, ESG et API ne sont pas dans l’essai. Le tableau de bord affiche les jours restants."
                 },
                 {
-                    "label": "Choisir un plan",
-                    "text": "Choisissez 10, 25 ou 50 licences (collègues + exécutants), avec autant d’unités et de documents. Lieux et photos illimités. Prix par licence : 7 € / 6 € / 5 € par mois. Paiement annuel par facture. Time (pointeuse) est inclus. Corporate à partir de 100 licences, tarif sur mesure."
+                    "label": "Formule / contact",
+                    "text": "Les formules sont informatives (10/25/50 licences + Corporate). Vous n’activez pas l’abonnement vous-même : WinProx l’attribue après accord/facture annuelle. Contactez info@winprox.app. CIAO (ONSS) se demande de la même façon ; un Superuser l’active (Time s’active ; pas besoin de Corporate)."
                 },
                 {
                     "label": "Supprimer les données de l’organisation",
@@ -1084,11 +1084,11 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Activez ou désactivez les modules optionnels (ESG, IoT Connect, CIAO/ONSS). CIAO est exceptionnel : l’organisation le demande via info@winprox.app. Time est inclus dans les formules WinProx."
+                    "text": "Activez ou désactivez les modules optionnels (ESG, IoT Connect, CIAO/ONSS). CIAO est exceptionnel : l’organisation le demande via info@winprox.app. Un Superuser active CIAO (Time s’active ; pas besoin de Corporate). Time est inclus dans les formules WinProx."
                 },
                 {
-                    "label": "Plafond Corporate",
-                    "text": "Pour les organisations Corporate : le nombre est le maximum d’unités convenu (documents : 1 par unité). « Enregistrer » enregistre cette limite. « Activer Corporate » applique la formule et le plafond."
+                    "label": "Attribuer la formule",
+                    "text": "Choisissez la formule (WinProx 10/25/50 ou Corporate) et attribuez-la. Pour Corporate : saisissez le plafond d’unités. CIAO peut s’activer sans Corporate."
                 }
             ]
         },

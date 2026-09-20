@@ -1076,11 +1076,11 @@
                 },
                 {
                     "label": "Moduli",
-                    "text": "Attivate o disattivate i moduli opzionali (ESG, IoT Connect, CIAO/ONSS). CIAO è eccezionale: l’organizzazione lo richiede via info@winprox.app. Time è incluso nelle formule WinProx."
+                    "text": "Attiva o disattiva moduli opzionali (ESG, IoT Connect, CIAO/ONSS). CIAO è eccezionale: l’organizzazione lo richiede via info@winprox.app. Un Superuser attiva CIAO (Time si accende; Corporate non richiesto). Time è incluso nelle formule WinProx."
                 },
                 {
-                    "label": "Cap Corporate",
-                    "text": "Per organizzazioni Corporate: il numero è il massimo di unit concordato (documenti: massimo 1 per unit). «Salva cap» salva il limite. «Attiva Corporate» imposta formula e cap."
+                    "label": "Assegna formula",
+                    "text": "Scegli la formula (WinProx 10/25/50 o Corporate) e assegnala. Per Corporate: inserisci il limite unità. CIAO si può attivare senza Corporate."
                 }
             ]
         },
