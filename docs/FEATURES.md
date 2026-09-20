@@ -1208,13 +1208,14 @@ App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
   *Van melding en planning tot uitvoering en afhandeling.* · **Scan → Meld → Werk → Klaar**
   (met iconen) · CTA's **Gratis proberen** / **Bekijk hoe het werkt**.
   Over de kaders een vierkante gele **post-it** (Nieuw): *Ook voor schoonmaak & bouw* /
-  *RSZ & Ciao voorbereid* / *Vanaf 5€/werknemer/maand* — linkt naar `/{locale}/work-on-location`. Geen GPS-claim; bouw-RSZ blijft “voorbereid”, niet live.
+  *CIAO (RSZ) beschikbaar* / *Vanaf 5€/werknemer/maand* — linkt naar `/{locale}/work-on-location`.
+  Geen GPS-claim; schoonmaak-CIAO is beschikbaar (op aanvraag); bouw-RSZ blijft achter scope, niet live.
 - **Video:** korte demo (`video/welcome.mp4`, alle talen) onder de hero, met ruimte erboven.
   Geen assistent-clip in de topnav.
 - **Footer:** productfiches, juridisch, contact.
 - **Facility, Time, ESG, IoT, CIAO** blijven in productfiches, pricing, sectorlandings en handleiding —
   niet als module-secties op de homepage. Uitzondering: het hero-Nieuw-bord mag CIAO/RSZ
-  als *voorbereid* aankondigen.
+  als *beschikbaar* aankondigen (geen 100 %-bouwclaim).
 
 ### 11.2 Zonder demo (voorlopig)
 - **Verwijderen:** alle "Probeer demo"-CTA's, `demo.index`-links en de flow-stap "demo".
