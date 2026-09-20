@@ -27,6 +27,7 @@ use App\Models\WorkShift;
 use App\Models\WorkShiftTaskLog;
 use App\Support\Portal\WorkerVerification;
 use App\Support\Tenancy;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Livewire;
 
@@ -805,6 +806,37 @@ it('laat een admin een gesloten shift corrigeren met auditlog', function () {
         ->where('model_id', $shift->id)
         ->where('tenant_id', $tenant->id)
         ->exists())->toBeTrue();
+});
+
+it('toont in- en uitklokken als tijden met locatie, niet Aanmelden', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Depot Noord',
+    ]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint = ClockPoint::factory()->forLocation($location)->create([
+        'name' => 'Aanmelden',
+    ]);
+
+    $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(ClockOutAction::class)->handle($worker, $clockPoint);
+    $shift->fresh()->update([
+        'clock_in_at' => Carbon::parse('2026-09-17 21:49:00'),
+        'clock_out_at' => Carbon::parse('2026-09-18 12:00:00'),
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(ShiftsIndex::class)
+        ->assertSee(__('time.shifts.punches_heading'), false)
+        ->assertSee(__('time.shifts.punch_in', ['time' => '21:49', 'place' => 'Depot Noord']), false)
+        ->assertSee(__('time.shifts.punch_out', ['time' => '12:00', 'place' => 'Depot Noord']), false)
+        ->assertDontSee('Ingeklokt bij Aanmelden', false);
 });
 
 it('koppelt taken aan een open shift bij start en afhandeling', function () {

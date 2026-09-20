@@ -1353,6 +1353,10 @@
                     "text": "<strong>Open</strong> — still clocked in. <strong>Closed</strong> — clocked out normally. <strong>Closed (admin)</strong> — manually closed by admin. <strong>Closed (automatic)</strong> — system closed a forgotten shift after the threshold."
                 },
                 {
+                    "label": "Clock in and out",
+                    "text": "Under <strong>Clock in and out</strong> the punches are listed like work visits: time + In or Out + place. The generic Clock Point name Sign in is hidden; you see the location (or Clock Point if there is no location)."
+                },
+                {
                     "label": "Link tasks",
                     "text": "Start or complete a task via the unit QR portal while clocked in — the task is automatically linked to the open shift. Open links are closed on clock-out."
                 },

@@ -1361,6 +1361,10 @@
                     "text": "<strong>Ouvert</strong> — encore pointé. <strong>Fermé</strong> — sortie normale. <strong>Fermé (admin)</strong> — fermé manuellement par l'administrateur. <strong>Fermé (automatique)</strong> — le système ferme un shift oublié après le seuil."
                 },
                 {
+                    "label": "Entrée et sortie",
+                    "text": "Sous <strong>Entrée et sortie</strong>, les pointages apparaissent comme les visites : heure + In ou Out + lieu. Le nom générique Connexion n’est pas affiché ; vous voyez le site (ou Clock Point s’il n’y a pas de site)."
+                },
+                {
                     "label": "Lier les tâches",
                     "text": "Démarrez ou terminez une tâche via le portail QR unité pendant que l’exécutant est pointé — la tâche est alors automatiquement liée au shift ouvert. À la sortie, les tâches liées encore ouvertes sont clôturées."
                 },

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\BelongsToTenant;
+use App\Support\Portal\TimePortalData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -71,5 +72,31 @@ class ClockPoint extends Model
     public function emailPortalUrl(): string
     {
         return route('public.time-portal.cp', $this->qr_token);
+    }
+
+    /** Plek op urenstaat: locatie, geen generieke naam zoals “Aanmelden”. */
+    public function attendancePlaceLabel(): string
+    {
+        $locationName = trim($this->location?->localizedName() ?? '');
+        $pointName = trim((string) $this->name);
+        $generic = TimePortalData::isGenericClockPointName($pointName);
+
+        if ($generic) {
+            return $locationName !== ''
+                ? $locationName
+                : __('time.shifts.clock_point_fallback');
+        }
+
+        if ($locationName !== '' && strcasecmp($locationName, $pointName) !== 0) {
+            return $locationName.' · '.$pointName;
+        }
+
+        if ($pointName !== '') {
+            return $pointName;
+        }
+
+        return $locationName !== ''
+            ? $locationName
+            : __('time.shifts.clock_point_fallback');
     }
 }

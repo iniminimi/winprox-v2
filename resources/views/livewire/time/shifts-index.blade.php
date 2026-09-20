@@ -96,12 +96,7 @@
                         {{ __('time.shifts.break_minutes', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->total_break_minutes)]) }}
                         &middot; {{ __('time.shifts.worked', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->netWorkMinutes())]) }}
                     </p>
-                    <p class="wp-muted wp-text-sm">
-                        {{ __('time.shifts.clocked_in_at', ['name' => $shift->clockInClockPoint?->name ?? '—']) }}
-                        @if ($shift->clockOutClockPoint)
-                            &middot; {{ __('time.shifts.clocked_out_at', ['name' => $shift->clockOutClockPoint->name]) }}
-                        @endif
-                    </p>
+                    @include('partials.wp-time-shift-punches', ['shift' => $shift])
                     @if ($shift->hasLocationHops())
                         <p class="wp-muted wp-text-sm">{{ __('time.shifts.location_hops_heading') }}</p>
                         <ul class="wp-muted wp-text-sm">
@@ -118,7 +113,7 @@
                         </ul>
                         @if ($shift->presenceClockPoint && (int) $shift->presence_clock_point_id !== (int) $shift->clock_in_clock_point_id)
                             <p class="wp-muted wp-text-sm">
-                                {{ __('time.shifts.presence_at', ['name' => $shift->presenceClockPoint->name]) }}
+                                {{ __('time.shifts.presence_at', ['name' => $shift->presenceClockPoint->attendancePlaceLabel()]) }}
                             </p>
                         @endif
                     @endif

@@ -1353,6 +1353,10 @@
                     "text": "<strong>Aperto</strong> — ancora timbrato. <strong>Chiuso</strong> — uscita normale. <strong>Chiuso (admin)</strong> — chiuso manualmente dall'amministratore. <strong>Chiuso (automatico)</strong> — il sistema chiude un turno dimenticato dopo la soglia."
                 },
                 {
+                    "label": "Entrata e uscita",
+                    "text": "In <strong>Entrata e uscita</strong> le timbrature sono elencate come le visite: ora + In o Out + luogo. Il nome generico Accedi non viene mostrato; vedi la sede (o Clock Point se non c’è una sede)."
+                },
+                {
                     "label": "Collega attività",
                     "text": "Avvii o completi un'attività tramite il portale QR unità mentre l’esecutore è timbrato — l'attività viene collegata automaticamente al turno aperto. All'uscita, le attività collegate ancora aperte vengono chiuse."
                 },

@@ -37,12 +37,7 @@
                     {{ __('time.shifts.break_minutes', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->total_break_minutes)]) }}
                     &middot; {{ __('time.shifts.worked', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->netWorkMinutes())]) }}
                 </p>
-                <p class="wp-muted">
-                    {{ __('time.shifts.clocked_in_at', ['name' => $shift->clockInClockPoint?->name ?? '—']) }}
-                    @if ($shift->clockOutClockPoint)
-                        &middot; {{ __('time.shifts.clocked_out_at', ['name' => $shift->clockOutClockPoint->name]) }}
-                    @endif
-                </p>
+                @include('partials.wp-time-shift-punches', ['shift' => $shift])
             </div>
         @endforeach
     </div>

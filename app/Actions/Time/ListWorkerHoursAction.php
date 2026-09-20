@@ -28,7 +28,7 @@ class ListWorkerHoursAction
             ->where('worker_id', $worker->id)
             ->where('clock_in_at', '>=', $from)
             ->where('clock_in_at', '<=', $to)
-            ->with(['clockInClockPoint', 'clockOutClockPoint'])
+            ->with(['clockInClockPoint.location.translations', 'clockOutClockPoint.location.translations'])
             ->orderByDesc('clock_in_at')
             ->orderByDesc('id')
             ->limit(100)

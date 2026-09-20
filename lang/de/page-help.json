@@ -1353,6 +1353,10 @@
                     "text": "<strong>Offen</strong> — noch eingestempelt. <strong>Geschlossen</strong> — normal ausgestempelt. <strong>Geschlossen (Admin)</strong> — manuell vom Administrator geschlossen. <strong>Geschlossen (automatisch)</strong> — System schließt eine vergessene Schicht nach der Schwelle."
                 },
                 {
+                    "label": "Ein- und Ausstempeln",
+                    "text": "Unter <strong>Ein- und Ausstempeln</strong> stehen die Stempelzeiten wie Arbeitsbesuche: Uhrzeit + In oder Out + Ort. Der generische Name Anmelden wird nicht gezeigt; Sie sehen den Standort (oder Clock Point ohne Standort)."
+                },
+                {
                     "label": "Aufgaben verknüpfen",
                     "text": "Starten oder schließen Sie eine Aufgabe über das Unit-QR-Portal, während der Ausführende eingestempelt ist — dann wird diese Aufgabe automatisch mit der offenen Schicht verknüpft. Beim Ausstempeln werden noch offene verknüpfte Aufgaben abgeschlossen."
                 },

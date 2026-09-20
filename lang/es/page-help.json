@@ -1353,6 +1353,10 @@
                     "text": "<strong>Abierto</strong> — aún fichado. <strong>Cerrado</strong> — salida normal. <strong>Cerrado (admin)</strong> — cerrado manualmente por el administrador. <strong>Cerrado (automático)</strong> — el sistema cierra un turno olvidado tras el umbral."
                 },
                 {
+                    "label": "Entrada y salida",
+                    "text": "En <strong>Entrada y salida</strong> los fichajes se listan como las visitas: hora + In o Out + lugar. El nombre genérico Iniciar sesión no se muestra; ve la sede (o Clock Point si no hay sede)."
+                },
+                {
                     "label": "Vincular tareas",
                     "text": "Inicie o complete una tarea mediante el portal QR de unidad mientras el operario está fichado — entonces esa tarea se vincula automáticamente al turno abierto. Al fichar salida, las tareas vinculadas aún abiertas se cierran."
                 },
