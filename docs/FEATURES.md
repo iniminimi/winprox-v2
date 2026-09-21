@@ -1050,7 +1050,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
 - **Trial:** 50 licenties en 50 units, Time inbegrepen, geen IoT/ESG/API.
 - **Corporate:** vanaf **100 licenties** of wanneer API/webhooks nodig zijn.
   Superuser zet `billing_plan=corporate` + `billing_units_cap` via Platform → Organisaties
-  (zelfde plan-kiezer als WinProx 10/25/50). Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
+  (zelfde plan-kiezer als WinProx 10/25/50). **Jaarlijks** (365 dagen), zoals WinProx 10/25/50.
+  Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
 - **Legacy `facility_*` en `winprox_100`:** blijven in config (niet in catalogus).
 - Plankaarten + vergelijkingstabel op publieke `/pricing` (informatief + trial-registratie /
   mailto). In de app: status + limieten; **geen** “formule activeren” voor de tenant —

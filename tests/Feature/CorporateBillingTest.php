@@ -58,7 +58,9 @@ it('laat superuser corporate activeren met units-cap', function (): void {
     expect($tenant->billing_plan)->toBe('corporate')
         ->and($tenant->billing_units_cap)->toBe(1500)
         ->and($tenant->hasApiAccess())->toBeTrue()
-        ->and($tenant->maxUnitsLimit())->toBe(1500);
+        ->and($tenant->maxUnitsLimit())->toBe(1500)
+        ->and($tenant->subscriptionPeriodDays())->toBe(365)
+        ->and($tenant->billing_active_until?->toDateString())->toBe(now()->addDays(365)->toDateString());
 });
 
 it('werkt units-cap bij voor bestaande corporate tenant', function (): void {
@@ -93,5 +95,7 @@ it('activeert corporate via action met entitlements', function (): void {
     expect($fresh->billing_plan)->toBe('corporate')
         ->and($fresh->has_iot_module)->toBeTrue()
         ->and($fresh->has_esg_module)->toBeTrue()
-        ->and($fresh->has_time_module)->toBeTrue();
+        ->and($fresh->has_time_module)->toBeTrue()
+        ->and($fresh->subscriptionPeriodDays())->toBe(365)
+        ->and($fresh->billing_active_until?->toDateString())->toBe(now()->addDays(365)->toDateString());
 });

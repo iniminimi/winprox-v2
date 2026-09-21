@@ -166,7 +166,7 @@ return [
                 'api_access'             => true,
                 'csv_workers_import'     => true,
                 'csv_units_import'       => true,
-                'subscription_period_days' => 30,
+                'subscription_period_days' => 365,
                 'self_activate'          => false,
                 'public_catalog'         => true,
             ],
