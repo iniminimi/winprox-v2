@@ -5,9 +5,9 @@
 }
 
 .wp-product-doc-sheet {
-    max-width: 42.5rem; /* ~170mm */
+    max-width: 48rem;
     margin: 1.25rem auto 2rem;
-    padding: 1.25rem 1.5rem 1.5rem;
+    padding: 1.5rem 1.75rem 1.75rem;
     background: #fff;
     border-radius: var(--wp-radius, 0.5rem);
     box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
@@ -56,9 +56,10 @@
 }
 
 .wp-product-doc-intro {
-    margin: 0 0 0.85rem;
-    font-size: 0.95rem;
+    margin: 0 0 1rem;
+    font-size: 1rem;
     color: #374151;
+    line-height: 1.55;
 }
 
 .wp-product-doc-highlight {
@@ -116,14 +117,14 @@
 .wp-product-doc-full {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
 }
 
 .wp-product-doc-card {
     border: 1px solid #e5e7eb;
     border-radius: 0.5rem;
-    padding: 0.65rem 0.75rem 0.7rem;
+    padding: 0.85rem 1rem 0.95rem;
     background: #fafafa;
 }
 
@@ -136,9 +137,9 @@
 
 .wp-product-doc-card__body {
     margin: 0;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #374151;
-    line-height: 1.35;
+    line-height: 1.5;
 }
 
 .wp-product-doc-card__body + .wp-product-doc-card__list,
@@ -189,10 +190,10 @@
 
 .wp-product-doc-card__list {
     margin: 0;
-    padding-left: 1.1em;
-    font-size: 0.85rem;
+    padding-left: 1.15em;
+    font-size: 0.9rem;
     color: #1a1a1a;
-    line-height: 1.35;
+    line-height: 1.5;
 }
 
 .wp-product-doc-card__list li + li {

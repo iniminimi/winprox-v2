@@ -73,7 +73,8 @@
                 "Liste d’évacuation optionnelle sur Clock Point (Paramètres, désactivée par défaut)",
                 "Alarme si hop entre Clock Points en moins de 5 min",
                 "Mes heures sur Clock Point (uniquement vos services)",
-                "Pause minimale par équipe sur la feuille d’heures (pas d’événement CIAO extra)"
+                "Pause minimale par équipe sur la feuille d’heures (pas d’événement CIAO extra)",
+                "Demander un congé ou une récup sur Clock Point ; la gestion décide sous Time → Demandes"
             ]
         },
         "audience": {

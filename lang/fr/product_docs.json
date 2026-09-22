@@ -17,143 +17,293 @@
         }
     },
     "features": {
-        "label": "Aperçu des fonctionnalités",
-        "tagline": "Key capabilities · aligned with the current in-app manual",
-        "intro": "WinProx est une application Facility unique : les signalements arrivent, deviennent des tâches et sont traités par les équipes. Time (pointeuse) est inclus.",
+        "label": "Aperçu des fonctions",
+        "tagline": "Ce que fait WinProx — en langage clair",
+        "highlight": "Une seule appli : quelqu’un signale, une équipe reçoit une tâche, le travail est clôturé. La pointeuse est incluse.",
+        "intro": "WinProx est une appli Facility pour sites, unités et équipes. Pas de portails prestataires ou hospitality à part. Time (pointeuse) est inclus dans chaque formule.",
         "flow": [
-            "QR scan",
-            "Issue",
-            "Tasks",
-            "Completion",
-            "(+ Time pointeuse incluse)"
+            "Scan QR",
+            "Signalement",
+            "Tâches",
+            "Clôture"
         ],
-        "source": "Sources: Manual (Getting started + chapters) and FAQ in the app.",
-        "footer_left": "WinProx · info@winprox.app · Product overview (manual/FAQ)",
-        "footer_right": "See also: Technical fact sheet (hosting, GDPR, security)",
-        "left": [
+        "source": "Le même contenu que le manuel et la FAQ dans l’appli.",
+        "footer_left": "WinProx · info@winprox.app · Aperçu produit (manuel/FAQ)",
+        "footer_right": "Voir aussi : Fiche technique (hébergement, RGPD, sécurité)",
+        "left": [],
+        "right": [],
+        "full": [
             {
-                "title": "Issues",
-                "body": "Via QR d’unité, manuellement en admin, ou (avec IoT) alarme capteur. Filtres, approbation des signalements QR, maintenance récurrente (pause ou clôture). Optionnel : coordonnées obligatoires et/ou confirmation e-mail pour les signalants anonymes via QR (catégorie et unité ; la confirmation retient le signalement jusqu’au lien dans l’e-mail). Sur les pages QR publiques visibles seulement après approbation ; l’admin voit tout immédiatement. En admin, une pastille Déclarant confirmé apparaît lorsque le signalant QR a confirmé le lien e-mail. Optionnel par catégorie : masquer les signalements précédents/ouverts sur le QR d’unité.",
-                "badge": "core"
+                "title": "Signalements",
+                "badge": "cœur",
+                "body": "Quelqu’un voit un problème et crée un signalement — via le QR de l’unité, en gestion, ou via un capteur (IoT).",
+                "items": [
+                    "Filtres et approbation des signalements QR.",
+                    "Coordonnées ou confirmation e-mail facultatives pour les déclarants anonymes.",
+                    "Visible sur les pages QR publiques seulement après approbation ; la gestion voit tout tout de suite.",
+                    "Pilule Déclarant confirmé quand le lien e-mail est confirmé.",
+                    "La maintenance récurrente peut être mise en pause ou clôturée."
+                ]
             },
             {
-                "title": "Tasks",
-                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via the Tasks list and QR on the floor.",
-                "badge": "core"
+                "title": "Tâches",
+                "badge": "cœur",
+                "body": "Un signalement peut avoir plusieurs tâches. Chaque tâche va à une équipe.",
+                "items": [
+                    "Priorité, échéance et notes par tâche.",
+                    "Suivi dans la liste des tâches et via QR sur le terrain."
+                ]
             },
             {
-                "title": "Traitement",
-                "badge": "core",
-                "body": "Mises à jour sur signalements et tâches, clôturer une tâche (photo et note optionnelles), fermer le signalement quand tout est fait. Statut et historique en admin ; les exécutants traitent via QR unité, ou via Clock Point avec une visite GPS ouverte sur ce site."
-            },
-            {
-                "title": "Facility",
-                "body": "Sites, unités, catégories, équipes et exécutants (internes ou externes). Sous Emplacements : Catégories, Sites et Unités (à l’échelle du tenant). Import bulk/CSV (le bulk reprend aussi les options portail avancées pour toute la série), tableau de bord, documents et annonces sur le portail. Activer les contrôles d’unité par catégorie et unité ; listes sous Travail → Checklists — partagées ou par équipe. Les nouvelles organisations peuvent charger un modèle de départ sur le tableau de bord (sur vos propres sites, sur les sites des clients, ou pour véhicules et flotte) avec des équipes, catégories, un lieu, des units d’exemple et des defaults du menu Travail — noms dans toutes les langues. Vous pouvez tout renommer plus tard ; dès qu’il y a des signalements, les units ne peuvent plus qu’être désactivés. Sous Personnes → Exécutants : écran de recherche pour tous les exécutants. Exécutants et collègues peuvent être liés à des sites ; les équipes volantes peuvent pointer partout. Photo portrait optionnelle par exécutant (redimensionnée automatiquement) ; visible dans Équipes, Exécutants et Time → Présence. Les actions rares (chef d’équipe, icône/téléphone/PIN, désactiver, supprimer) sont dans la fenêtre de modification, pas dans la liste d’équipe."
+                "title": "Clôture",
+                "badge": "cœur",
+                "body": "L’équipe termine les tâches. Quand tout est fini, la gestion clôture le signalement.",
+                "items": [
+                    "Photo et note facultatives à la clôture.",
+                    "Statut et historique en gestion.",
+                    "Les exécutants travaillent via le QR unité, ou Clock Point avec une visite GPS ouverte."
+                ]
             },
             {
                 "title": "Tableau de bord",
-                "body": "Vue d'ensemble des signalements ouverts et des tâches du jour, avec accès rapide aux flux clés. Les nouvelles organisations choisissent ici un modèle de départ ; briefing et rapports sont accessibles depuis le tableau de bord. Un congé ou une récup ouverte apparaît comme carte extra avec le nombre par type."
+                "body": "L’écran d’accueil montre ce qui reste ouvert. Cliquez une carte pour ouvrir la liste.",
+                "items": [
+                    "Sites, unités, nouveaux signalements et tâches ouvertes.",
+                    "Avec Time : qui est présent maintenant.",
+                    "Congé ou récup ouverts comme carte extra : 1 Congé, 1 Récup, ou les deux.",
+                    "Les nouvelles organisations peuvent choisir un modèle de départ ici.",
+                    "Briefing et rapports sont accessibles depuis le tableau de bord."
+                ]
             },
             {
-                "title": "QR portals",
-                "body": "QR unité : signaler un problème, plus un contrôle d’unité optionnel (OK ou Pas OK en un geste). QR Clock Point : identification (nom + icône) et tâches d’équipe ; le pointage nécessite Time (pointeuse). QR site. Imprimable en planche d’étiquettes (Avery) ou page A6/A5/A4. Depuis la fenêtre QR, vous pouvez envoyer le lien de connexion Clock Point par e-mail aux exécutants sur site. QR dynamiques à lier plus tard à une unité. Les codes QR invalides ou expirés affichent un court message d'erreur avec un bouton vers l'accueil. Par catégorie, vous pouvez masquer les signalements précédents sur le QR d’unité. Un exécutant qui a ouvert le QR d’unité en ligne peut démarrer et terminer des tâches, créer un signalement (avec photos) et faire un contrôle d’unité sans réseau ; ces actions restent sur l’appareil et partent automatiquement dès que la connexion revient. Le pointage au Clock Point reste en ligne et exige un scan QR frais. Avec visites GPS vous pouvez démarrer et clôturer les tâches d’équipe sur Clock Point et faire sur place le prochain arrêt d’inspection (contrôle d’unité). Nom + icône indique qui vous êtes ; le pointage (Time) est votre service. Contrôle d’unité sur Clock Point seulement après Commencer le travail sur ce site. Sur les Clock Points avec Lien Clock Point sur l’écran d’accueil (désactivé par défaut), une icône WinProx apparaît à côté de Connexion pour placer le lien sur l’écran d’accueil — uniquement pour ceux qui ne peuvent pas scanner un QR, pas pour les écrans TFT à QR rotatif. Pas d’App Store."
+                "title": "Facility",
+                "body": "C’est ici que vous organisez les lieux, les personnes et les équipes.",
+                "items": [
+                    "Catégories, sites et unités (aussi en masse ou CSV).",
+                    "Documents et annonces sur le portail.",
+                    "Cherchez les exécutants sous Personnes → Exécutants ; portrait facultatif.",
+                    "Les équipes volantes peuvent pointer partout ; les autres seulement sur les sites assignés.",
+                    "Les actions rares (chef d’équipe, icône, téléphone, PIN) sont dans Modifier, pas dans la liste."
+                ]
+            },
+            {
+                "title": "Portails QR",
+                "body": "Tout s’ouvre dans le navigateur. Pas d’App Store.",
+                "items": [
+                    "QR unité : signaler, contrôle d’unité et mesures facultatifs.",
+                    "QR Clock Point : s’identifier (nom + icône) et tâches d’équipe ; pointer seulement avec Time.",
+                    "Imprimable en planche d’autocollants ou A6/A5/A4.",
+                    "Un QR unité déjà chargé reste utilisable sans réseau ; pointer exige un nouveau scan.",
+                    "Facultatif : lien Clock Point sur l’écran d’accueil du téléphone."
+                ]
             },
             {
                 "title": "Contrôles d’unité",
-                "body": "Confirmer rapidement qu’une unité est en ordre — par ex. après une ronde sécurité, un contrôle ménage ou une visite technique. Sur le QR unité : OK ou Pas OK ; OK sans créer un signalement. Check-list optionnelle. Pas OK reste compatible avec le flux de signalement. Par unité, vous pouvez ajouter une remarque (max. 500 caractères) et jusqu’à 4 photos au contrôle ; elles restent sur ce contrôle (historique et progression de ronde), pas dans la liste des signalements. Les points de check-list non cochés sont enregistrés sur le contrôle et affichés sur la tâche de tournée."
+                "body": "Dire rapidement qu’une unité est en ordre — par exemple après une tournée.",
+                "items": [
+                    "Sur le QR unité : OK ou Pas OK.",
+                    "OK ne crée pas de signalement séparé.",
+                    "Checklist, remarque et jusqu’à 4 photos en option.",
+                    "Historique sous Travail → Contrôles d’unité."
+                ]
             },
             {
                 "title": "Tournées d’inspection",
-                "body": "Signalement récurrent avec un parcours fixe d’unités (arrêts), y compris sur plusieurs sites. Planifiez via Travail → Tournées d’inspection → Planifier une tournée d’inspection (arrêts, intervalle et équipe en une étape), ou via Signalements ou l’assistant. Travail → Tournées d’inspection est une liste propre aux tournées, sans signalements ordinaires. Seules les unités avec contrôle d’unité apparaissent dans la liste des arrêts ; les autres sont masquées. L’ordre du parcours se règle dans la liste numérotée (cocher et glisser dans la même liste ; 1 = premier arrêt). Une tâche par cycle ; à chaque arrêt contrôle d’unité OK, Non OK (avec signalement ; description préremplie) ou passer avec motif. Facultativement par arrêt une remarque et jusqu’à 4 photos sur le contrôle d’unité de ce cycle. Terminé lorsque tous les arrêts du cycle sont traités. Avec Time + visites GPS, le site d'une tournée prévue aujourd'hui apparaît après le pointage sous Clock Point → Où dois-je aller aujourd'hui. Sous Tâches ouvertes : description, priorité, statut et l'arrêt suivant. Le bouton Contrôle d'unité n'apparaît qu'après Commencer le travail sur ce site ; le contrôle complet s'ouvre après ce bouton, sans le QR unité. Sur la tâche de tournée, chaque arrêt affiche les points de check-list qui n’étaient pas OK, pour les communiquer ensuite au client. L’historique des contrôles unit est sous Travail → Contrôles unit. Sur la tâche de tournée, Imprimer ouvre une page imprimable de ce cycle (arrêts, points de check-list Pas OK, remarque et photos)."
+                "body": "Un parcours fixe d’unités, même sur plusieurs sites.",
+                "items": [
+                    "Planifiez sous Travail → Tournées d’inspection.",
+                    "Par arrêt : OK, Pas OK (avec signalement) ou passer avec un motif.",
+                    "Avec Time + GPS, la tournée du jour apparaît sous Où dois-je aller aujourd’hui.",
+                    "Imprimez un cycle depuis la tâche de tournée."
+                ]
             },
             {
-                "title": "Mesures unit",
-                "body": "Enregistrer des valeurs sur une unit (kilométrage, température, statut, …) via portail QR ou API. Champs sous Travail → Mesures unit; activer par catégorie et unit. Historique en admin; webhook unit.measurement.recorded."
+                "title": "Mesures d’unité",
+                "body": "Des relevés simples sur une unité, sans module ESG.",
+                "items": [
+                    "Kilométrage, température, statut, …",
+                    "Champs sous Travail → Mesures d’unité ; activer par catégorie et unité.",
+                    "Via QR ou API ; webhook unit.measurement.recorded."
+                ]
             },
             {
                 "title": "Photos",
-                "body": "Up to 4 photos per issue, completion or unit check (resized on the device before upload). Also: up to 4 unit photos and a background photo per unit for the QR portal. Visible immediately in the back office; reporter photos on the public portal only after approval."
+                "body": "Les photos sont compressées sur l’appareil avant l’envoi.",
+                "items": [
+                    "Jusqu’à 4 photos sur un signalement, une clôture ou un contrôle.",
+                    "Jusqu’à 4 photos d’unité et un fond par unité.",
+                    "Les photos du déclarant sur le portail public seulement après approbation."
+                ]
             },
             {
                 "title": "GPS",
-                "body": "Per category: “Allow GPS location” for mobile units (vehicle, machine, …). Capture location via the portal; history in the back office, open in Maps."
-            }
-        ],
-        "right": [
-            {
-                "title": "Calendar",
-                "body": "Month, week and day views of tasks, issues and reservations. From the calendar you can also print the briefing for that day."
-            },
-            {
-                "title": "Briefing",
-                "body": "Printable report of open tasks for the selected day, grouped by team. Available from Dashboard, Tasks and Calendar — useful at shift start."
-            },
-            {
-                "title": "Rapports",
-                "body": "Sur les écrans de recherche (signalements, tâches, Time, réservations, contrôles unit, mesures unit, ESG) : Télécharger le rapport — CSV (tableau pour Excel) ou impression (Ctrl+P vers PDF). L'impression suit la mise en page cartes de la backoffice quand c'est pertinent ; Time affiche une feuille d'heures. Mêmes filtres que la liste (max. 5000 lignes). Plus tard : Organisation → Rapports pour des modèles enregistrés."
+                "body": "Pour les unités mobiles (véhicule, machine), vous pouvez enregistrer une position.",
+                "items": [
+                    "Activer par catégorie.",
+                    "Historique en gestion ; ouvrir dans Maps."
+                ]
             },
             {
                 "title": "Time",
                 "badge": "inclus",
-                "body": "Time est la pointeuse de WinProx : entrée/sortie, pause, présence et relevé d'heures. Chaque entrée, sortie ou déplacement sur Clock Point exige un nouveau scan QR sur site (un onglet ouvert ne compte pas) ; les pauses restent possibles sans nouveau scan. Clock Point reste le QR d'identification (nom + icône, liste des tâches) même sans Time. Time est inclus pendant l’essai et dans chaque formule WinProx. CIAO (ONSS) est sur demande, sans supplément ; un superuser l’active. La recherche par nom au pointeuse est limitée au site ; les exécutants n’apparaissent que sur les sites assignés (sauf équipes volantes). Une vacation ouverte par exécutant : sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence (même vacation, avec mention du déplacement). La présence affiche éventuellement la photo portrait de l’exécutant dans l’avatar rond (sinon l’initiale). CIAO optionnel (Check In and Out ONSS) : IN/OUT + pauses en temps réel pour le nettoyage ; à demander via info@winprox.app (un superuser l’active) ; NISS sur l’exécutant ; DDT sur le site. Portée construction/béton (CIAO) derrière un feature flag jusqu’à la mise en ligne ONSS (~avr. 2027). La connexion Clock Point est liée à un téléphone par exécutant ; un autre appareil est refusé jusqu'à autorisation d'un admin ou chef d'équipe. Optionnel : PIN à 4 chiffres sur Clock Point et GPS au pointage (sans signal à l'intérieur, le pointage continue). Un déplacement trop rapide entre Clock Points (moins de 5 min) apparaît comme alarme. L'icône personnelle n'est plus affichée après connexion. Le pointage API (POST /api/v1/time/clock-in) ne lie pas de téléphone — cela vaut uniquement pour le QR Clock Point. Un appareil lié peut être libéré via l’admin, le chef d’équipe ou l’API (time:write). Sur le portail Clock Point (après connexion) une tuile Mes heures (uniquement vos services du mois choisi) et optionnellement (Paramètres, désactivée par défaut) une tuile Liste d’évacuation apparaissent : seul un exécutant identifié voit qui est pointé (y compris les collègues avec pointeuse), après confirmation que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). L’admin réinitialise appareil, PIN et icône via Personnes → Équipes → Modifier. Un administrateur ou un collaborateur peut pointer un exécutant manuellement sur un Clock Point (ex. téléphone oublié) : aucun appareil lié, motif obligatoire dans le journal d’audit, pilule Pointé manuellement sur présence et heures. API : POST /api/v1/time/manual-clock-in (source admin, ne lie pas de téléphone). Par équipe, vous pouvez fixer une pause minimale (ex. 30 minutes) : à la sortie elle est comptée sur la feuille d’heures si le service dure au moins 4 heures et s’il y a eu moins de pause (ou aucune), sans pause Clock Point ni événement CIAO supplémentaire. Dans Time → Heures, un admin peut encore appliquer le minimum ou corriger entrée/sortie et pause (sortie vide rouvre le service). API : POST /api/v1/time/work-shifts/{id}/apply-required-break. Les gestionnaires planifient les services dans Time → Horaire (style Excel : codes ou heures libres par jour). Publier n’envoie rien à l’ONSS ; la pointeuse reste le temps réel. La vue semaine peut afficher ou masquer les week-ends ; enregistrer sans week-ends laisse samedi/dimanche inchangés. Éventuellement un groupe dans la même cellule (D1/G1 ou 07:00-12:00/G1) ; code planning par unité, unique par site. Vue semaine ou mois. Absences (congé, récup, maladie) via Types de shift : journée entière, sans heures. Publier affiche Mon planning sur Clock Point (badge) et n’est pas envoyé à l’ONSS. Gestion : prévu vs pointé (écart tout de suite, y compris aujourd’hui ; pointe manquante après la fin prévue). Le filtre site masque les volants ; groupe d’attache et sections optionnels. Visites GPS optionnelles (Paramètres) : l'entrée ouvre le temps payé sans preuve de lieu ; démarrer/arrêter le travail sur le pin du site (client) ou une unité avec pin GPS fixe exige un GPS frais dans le rayon (250 m par défaut). Le pin du site se définit sous Sites (icône Maps rouge ; coller en lat, lng). Même champ pour le pin d’unité sous Options portail avancées. La sortie est possible partout ; une visite ouverte est d'abord clôturée. CIAO suit alors IN/OUT de visite au lieu de l'entrée/sortie. Back-office : Travail → Visites de travail affiche l’historique ; Time → Présence montre une visite ouverte et Time → Heures les visites par service. La page d'accueil publique ne propose pas d'entreprises proches. API : POST /api/v1/time/work-visits/start et .../end ; webhooks time.visit.started / time.visit.ended. Après le pointage Clock Point affiche où aller aujourd'hui (sites uniquement, travail prévu aujourd'hui), avec l'icône GPS vers Google Maps ; commencer le travail sur place. Les arrêts d’inspection sont sous Tâches ouvertes (description, priorité, statut, arrêt suivant, bouton Contrôle d’unité). Avec une visite ouverte vous pouvez démarrer et clôturer les tâches d’équipe (note et photos facultatives) et faire le prochain arrêt d’inspection (contrôle d’unité). Par Clock Point vous pouvez activer Lien Clock Point sur l’écran d’accueil (désactivé par défaut) : icône WinProx à côté de Connexion pour les exécutants qui partent de chez eux ou en déplacement ; laissez ceci désactivé sur les écrans TFT avec QR rotatif. Un triangle rouge sur Clock Point (à côté de l’entrée ou des heures prévues) si vous avez un service publié et n’avez pas pointé, ou avez pointé avec au moins 15 minutes de retard."
+                "body": "Time est la pointeuse. Les exécutants pointent sur le même QR Clock Point que le travail de terrain.",
+                "items": [
+                    "Chaque entrée ou sortie exige un nouveau scan QR sur site.",
+                    "Inclus dans l’essai et dans chaque formule.",
+                    "Présence, relevé d’heures et Mes heures (uniquement ses services).",
+                    "La gestion peut pointer manuellement si le téléphone est oublié.",
+                    "CIAO (ONSS) sur demande, sans supplément.",
+                    "Visites GPS facultatives : Démarrer le travail sur l’épingle du site."
+                ]
             },
             {
-                "title": "Reservations",
-                "body": "Pour ressources partagées avec créneau (salle, véhicule, clé). Catégorie Réservable + Autoriser les réservations par unité (désactivé par défaut). L’invité réserve via QR d’unité (retenue + confirmation e-mail). Gestion via menu Réservations et calendrier."
+                "title": "Planning",
+                "body": "La gestion planifie les services sous Time → Planning. Publier les montre sur Clock Point, pas à l’ONSS.",
+                "items": [
+                    "Tapez un code ou un horaire libre comme 07:00-15:00.",
+                    "Vue semaine ou mois ; les week-ends peuvent être masqués.",
+                    "Clock Point montre Mon planning (uniquement ses services publiés).",
+                    "Triangle rouge si vous n’avez pas pointé ou si vous êtes en retard.",
+                    "La gestion voit prévu versus pointé (marge de 15 minutes)."
+                ]
             },
             {
-                "title": "ESG & Compliance",
+                "title": "Congé et récup",
+                "body": "Les exécutants demandent un congé ou une récup sur Clock Point. La gestion décide sous Time → Demandes.",
+                "items": [
+                    "Du–au, 31 jours max., pas dans le passé.",
+                    "Refuser exige un motif ; approuver non.",
+                    "À l’approbation, WinProx enregistre les services existants, puis les remplace dans le planning.",
+                    "Pas d’e-mail et pas de demande maladie dans cette étape.",
+                    "Le tableau de bord montre 1 Congé, 1 Récup, ou les deux."
+                ]
+            },
+            {
+                "title": "Calendrier",
+                "body": "Vues mois, semaine et jour des tâches, signalements et réservations.",
+                "items": [
+                    "Depuis le calendrier, vous pouvez imprimer le briefing du jour."
+                ]
+            },
+            {
+                "title": "Briefing",
+                "body": "Liste imprimable des tâches ouvertes du jour choisi, par équipe.",
+                "items": [
+                    "Disponible depuis Tableau de bord, Tâches et Calendrier."
+                ]
+            },
+            {
+                "title": "Rapports",
+                "body": "Sur les écrans de recherche, vous pouvez exporter la liste filtrée.",
+                "items": [
+                    "CSV pour Excel, ou impression en PDF.",
+                    "Mêmes filtres que la liste (5 000 lignes max.).",
+                    "Time montre un relevé d’heures."
+                ]
+            },
+            {
+                "title": "Réservations",
+                "body": "Pour les ressources partagées avec un créneau, comme une salle ou un véhicule.",
+                "items": [
+                    "Catégorie Réservable + Réservations autorisées sur l’unité.",
+                    "Les invités réservent via le QR unité (confirmation e-mail)."
+                ]
+            },
+            {
+                "title": "ESG & conformité",
                 "badge": "Corporate",
                 "badge_mod": "corp",
-                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Module optionnel sur WinProx Corporate : indicateurs, mesures et tâches de suivi pour contrôles récurrents. Record via portal, back office or API."
+                "body": "Relevés pour l’environnement, la sécurité et la conformité — à côté des tâches du quotidien.",
+                "items": [
+                    "Indicateurs, mesures et tâches de suivi.",
+                    "Via portail, gestion ou API."
+                ]
             },
             {
                 "title": "IoT Connect",
                 "badge": "Corporate",
-                "body": "Les passerelles capteurs envoient des événements ; les alarmes deviennent un signalement approuvé + tâche. Mesures → ESG. Uniquement WinProx Corporate. Jeton passerelle (aussi sans l'API REST complète)."
+                "body": "Les capteurs envoient des événements. Une alarme devient un signalement approuvé avec tâche.",
+                "items": [
+                    "Les mesures peuvent alimenter l’ESG.",
+                    "Jeton passerelle séparé, même sans API REST complète."
+                ]
             },
             {
                 "title": "API & webhooks",
                 "badge": "Corporate",
                 "badge_mod": "corp",
-                "body": "Jetons API REST et webhooks sortants (HMAC) sous Paramètres. Liaison pour signalements, tâches, contrôles d’unité, ESG, … Ingest IoT via un jeton gateway séparé. Voir aussi la fiche API & Webhooks et la fiche technique."
+                "body": "D’autres logiciels peuvent utiliser les mêmes données que WinProx.",
+                "items": [
+                    "Jetons et webhooks sortants sous Paramètres → API.",
+                    "Voir les fiches API & Webhooks et Technique."
+                ]
             },
             {
                 "title": "Multi-tenant",
-                "body": "Chaque organisation a son environnement avec limites par abonnement (WinProx 10/25/50 licences + Corporate) : licences (collègues actifs + exécutants actifs sans user_id lié ; collègue + profil pointeuse = une licence). Unités et documents = 5× les licences (50/125/250). Lieux et photos sont illimités."
+                "body": "Chaque organisation a son environnement, avec des limites par formule.",
+                "items": [
+                    "Licence = collègue avec connexion ou exécutant. Collègue + pointeuse compte pour un.",
+                    "Unités et documents = 5× les licences. Sites et photos illimités."
+                ]
             },
             {
-                "title": "Branding & QR",
-                "body": "Logo d'organisation, arrière-plan du portail et couleurs du portail (fond et boutons) sous Paramètres ; photos d'unité et photo de fond par unité. Formats Avery ou A6/A5/A4 — prêts à imprimer."
+                "title": "Image de marque & QR",
+                "body": "Vous pouvez faire ressembler le portail à votre organisation.",
+                "items": [
+                    "Logo, fond et couleurs de boutons sous Paramètres.",
+                    "Autocollants : Avery ou A6/A5/A4."
+                ]
             },
             {
                 "title": "Menu Travail",
-                "body": "Via Organisation → Paramètres → Paramètres du menu Travail (administrateur) : Calendrier, Réservations, Tournées d'inspection et Mesures d'unité par organisation dans la barre latérale. Désactivé = pas d'accès back-office ; le QR sur les units qui l'avaient déjà reste actif (grandfather). Un modèle de départ active un menu Travail limité. Vous pourrez activer plus tard Réservations, mesures d’unité et d’autres extras. Supprimer le modèle ne modifie pas le menu Travail."
+                "body": "La gestion choisit quels extras apparaissent dans la barre latérale.",
+                "items": [
+                    "Calendrier, Réservations, Tournées et Mesures d’unité par organisation.",
+                    "Désactivé = pas d’accès gestion ; le QR unité existant continue de fonctionner."
+                ]
             },
             {
-                "title": "AI translation",
-                "body": "After approval, texts are queued for translation (issues, tasks, documents, announcements, …). WinProx fills the other languages periodically via local AI (no external AI cloud), typically daily — with no guaranteed turnaround. Organisation admins can correct translations manually; there is no per-organisation on/off switch."
+                "title": "Traduction IA",
+                "body": "Après approbation, WinProx prépare les textes à traduire.",
+                "items": [
+                    "IA locale, pas de cloud IA externe.",
+                    "En général chaque jour, sans délai garanti.",
+                    "Les administrateurs peuvent corriger les traductions."
+                ]
             },
             {
-                "title": "No app required",
-                "body": "Tout se passe dans le navigateur. Back-office d’abord sur bureau ; portails terrain et QR d’abord sur mobile. Pas d’App Store. Sur un Clock Point avec Lien Clock Point sur l’écran d’accueil, l’exécutant peut ajouter un raccourci (pas d’appli hors ligne supplémentaire)."
-            }
-        ],
-        "full": [
-            {
-                "title": "Roles",
-                "body": "Admin — full control + subscription · Employee — day-to-day follow-up (no billing/accounts) · Worker — field work via Clock Point + unit QR, without WinProx login · Team leader — release icons and coordinate via the Clock Point portal."
+                "title": "Pas d’appli nécessaire",
+                "body": "Tout dans le navigateur. Gestion sur ordinateur ; terrain et QR sur le téléphone.",
+                "items": [
+                    "Pas d’App Store.",
+                    "Raccourci Clock Point facultatif sur l’écran d’accueil."
+                ]
             },
             {
-                "title": "Connexion back-office",
-                "body": "Les administrateurs et collaborateurs se connectent avec e-mail + mot de passe, ou via **Se connecter avec Microsoft** (Microsoft Entra). Uniquement des comptes WinProx existants ; l’e-mail Microsoft doit correspondre. Les exécutants restent sur le QR Clock Point (nom + icône), sans connexion Microsoft. Les liaisons avec d’autres logiciels passent par des jetons API, pas par cette connexion."
+                "title": "Rôles",
+                "body": "Quatre rôles, sans portails en plus.",
+                "items": [
+                    "Administrateur : tout, y compris l’abonnement.",
+                    "Collaborateur : suivi quotidien, pas de facturation.",
+                    "Exécutant : travail de terrain via Clock Point et QR unité, sans connexion.",
+                    "Chef d’équipe : libérer l’icône et coordonner via Clock Point."
+                ]
+            },
+            {
+                "title": "Connexion gestion",
+                "body": "Les collègues se connectent avec e-mail et mot de passe, ou Se connecter avec Microsoft.",
+                "items": [
+                    "Uniquement les comptes WinProx existants ; l’e-mail doit correspondre.",
+                    "Les exécutants restent sur Clock Point (nom + icône).",
+                    "Les autres logiciels se lient par clés API, pas par cette connexion."
+                ]
             }
         ]
     },
     "technical": {
         "label": "Fiche technique",
         "tagline": "Facility issues: QR → tasks → completion · SaaS for operational teams",
-        "intro": "Aperçu pour l’IT / la sécurité. WinProx est une application web multi-tenant (Laravel + MySQL) : chaque organisation cliente a son environnement isolé. Planning Time optionnel : services planifiés par exécutant (brouillon ou publié), semaine ou mois, chevauchement semi-ouvert. Absences (congé, récup, maladie) = journée entière. API `/api/v1/time/schedule` (time:read / time:write) et webhooks `time.schedule.*`. Planning publié : tuile Mon planning sur Clock Point (uniquement ses services) avec badge. Clock Point affiche un triangle rouge à côté de l’entrée ou des heures prévues si un service publié n’est pas pointé ou l’est avec au moins 15 minutes de retard. Gestion : prévu vs pointé (marge de 15 minutes). Place de groupe optionnelle (code planning sur l’unité) et groupe d’attache ; le filtre site masque les volants. Tuile Clock Point Congé / Récup : l’exécutant demande ; Time → Demandes ; refuser exige un motif ; l’approbation enregistre les services existants sur la demande puis les remplace (pas en silence). Pas d’e-mail, pas d’API d’écriture dans cette tranche.",
+        "intro": "Aperçu pour l’IT et la sécurité. WinProx est une appli web multi-tenant (Laravel + MySQL). Chaque organisation cliente a son environnement isolé.",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
         "left": [
@@ -284,6 +434,16 @@
                     "WinProx runs translations **periodically** (typically daily), **with no guaranteed turnaround**. Organisation admins can **correct translations manually**. No per-organisation on/off switch.",
                     "No generative “AI assistant” that autonomously decides customer processes — translation is support, not decision-making."
                 ]
+            },
+            {
+                "title": "Time : congé et récup",
+                "items": [
+                    "Les exécutants demandent un congé ou une récup sur Clock Point (du–au, 31 jours max.).",
+                    "La gestion décide sous Time → Demandes. Refuser exige un motif ; approuver non.",
+                    "L’approbation enregistre les cellules existantes sur la demande, puis les remplace.",
+                    "Pas d’e-mail, pas d’API REST d’écriture. Événements : time.absence.requested|cancelled|approved|rejected.",
+                    "Le tableau de bord montre les demandes ouvertes par type (1 Congé, 1 Récup, ou les deux)."
+                ]
             }
         ]
     },
@@ -291,7 +451,7 @@
         "label": "API & Webhooks",
         "tagline": "Intégrez WinProx à vos logiciels existants via des API et des webhooks.",
         "highlight": "WinProx ne remplace pas les systèmes IWMS ou ERP existants. Grâce aux API et webhooks, WinProx fonctionne avec eux.",
-        "intro": "WinProx est conçu pour que d’autres logiciels utilisent les mêmes données, signalements, tâches et contrôles d’unité que WinProx. Gestion et docs sous Paramètres → API. **Se connecter avec Microsoft** sur ordinateur n’est pas une intégration API : les autres logiciels utilisent des jetons, pas le SSO. Planning Time : GET/PUT `/api/v1/time/schedule`, POST `.../copy` et `.../publish` (time:read / time:write). Événements : `time.schedule.saved`, `time.schedule.copied`, `time.schedule.published`, `time.shift_type.saved`. Absences (congé, récup, maladie) = type de shift sans heures. Planning publié : Mon planning sur Clock Point avec badge. Triangle rouge si un service publié n’est pas pointé ou l’est avec au moins 15 minutes de retard. Gestion : prévu vs pointé (marge de 15 minutes). Place de groupe optionnelle et groupe d’attache ; filtre site sans volants. Événements `time.absence.requested|cancelled|approved|rejected` (pas d’API REST d’écriture dans cette tranche). L’approbation fige puis remplace les cellules.",
+        "intro": "WinProx est conçu pour que d’autres logiciels utilisent les mêmes données, signalements, tâches et contrôles d’unité que WinProx. Gestion et docs sont sous Paramètres → API. Se connecter avec Microsoft sur le bureau n’est pas un lien API : les autres logiciels utilisent des jetons, pas le SSO. Les demandes de congé ou récup ont les événements time.absence.* (pas d’API REST d’écriture dans cette slice).",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "Voir aussi : aperçu des fonctionnalités · fiche technique",
         "left": [

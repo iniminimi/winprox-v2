@@ -73,7 +73,8 @@
                 "Lista de evacuación opcional en Clock Point (Ajustes, desactivada por defecto)",
                 "Alarma al saltar entre Clock Points en menos de 5 min",
                 "Mis horas en Clock Point (solo tus turnos)",
-                "Pausa mínima por equipo en el parte (sin evento CIAO extra)"
+                "Pausa mínima por equipo en el parte (sin evento CIAO extra)",
+                "Pedir permiso o compensación en Clock Point; la gestión decide en Time → Solicitudes"
             ]
         },
         "audience": {

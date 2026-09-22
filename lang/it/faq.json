@@ -317,11 +317,18 @@
             "body": "In Persone → Team modificate un esecutore o importate con colonna location_names (nomi separati da virgola). Vuoto = ovunque (default esistenti). Per sostituti: **Può timbrare ovunque** sul team. Cercate liste grandi in Persone → Esecutori.",
             "summary": "Sedi per esecutore in Team; import location_names; sostituzione = ovunque; cerca in Esecutori."
         },
+        "time_absence": {
+            "slug": "time_absence",
+            "type": "text",
+            "title": "Come funzionano le richieste di ferie e recupero?",
+            "body": "Gli esecutori chiedono ferie o recupero sul Clock Point (riquadro Ferie / Recupero): dal–al, nota facoltativa, max 31 giorni, non nel passato. Le richieste aperte che si sovrappongono vengono rifiutate. La gestione decide in Time → Richieste. Rifiutare chiede un motivo; approvare no. In approvazione WinProx salva i turni esistenti e poi scrive l’assenza nel turno. Non parte nessuna e-mail. La dashboard mostra le richieste aperte per tipo (1 Ferie, 1 Recupero, o entrambi). La malattia non è in questo passo.",
+            "summary": "Clock Point: chiedere ferie o recupero. Time → Richieste: rifiutare chiede un motivo, approvare no. La dashboard mostra 1 Ferie o 1 Recupero."
+        },
         "time_schedule": {
             "slug": "time_schedule",
             "type": "text",
             "title": "Che cos’è il turno pianificato?",
-            "body": "In Time → Turni pianifichi i servizi per esecutore: codice (tipo di turno) o orario libero 07:00-15:00. I codici di assenza (ferie, recupero, malattia) si impostano in Time → Tipi di turno; coprono l’intera giornata e non contano ore. Passa da settimana a mese. Salva conserva il periodo visibile; pubblica lo rende visibile sul Clock Point (Il mio turno) con un badge. Pubblicare non invia nulla all’ONSS. Gli scostamenti (timbratura in ritardo) si vedono subito, anche oggi; le timbrature mancanti solo dopo la fine prevista. Copiare una settimana (solo vista settimana) è tutto o niente. Gli esecutori richiedono ferie o recupero sul Clock Point; la gestione decide in Time → Richieste (rifiutare richiede un motivo) (i turni esistenti vengono prima salvati, poi sostituiti).",
+            "body": "In Time → Turni pianifichi i servizi per esecutore: codice (tipo di turno) o orario libero 07:00-15:00. I codici di assenza (ferie, recupero, malattia) si impostano in Time → Tipi di turno; coprono l’intera giornata e non contano ore. Passa da settimana a mese. Salva conserva il periodo visibile; pubblica lo rende visibile sul Clock Point (Il mio turno) con un badge. Pubblicare non invia nulla all’ONSS. Gli scostamenti (timbratura in ritardo) si vedono subito, anche oggi; le timbrature mancanti solo dopo la fine prevista. Copiare una settimana (solo vista settimana) è tutto o niente. Gli esecutori chiedono ferie o recupero sul Clock Point; la gestione decide in Time → Richieste. Vedi anche: Come funzionano le richieste di ferie e recupero?",
             "summary": "Time → Turni: codici, assenze, settimana/mese, Il mio turno sul Clock Point, pianificato vs timbrato."
         },
         "field_offline": {

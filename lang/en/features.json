@@ -73,7 +73,8 @@
                 "Optional evacuation list on Clock Point (Settings, off by default)",
                 "Alarm when hopping Clock Points within 5 min",
                 "My hours on Clock Point (own shifts only)",
-                "Per-team minimum break on the timesheet (no extra CIAO event)"
+                "Per-team minimum break on the timesheet (no extra CIAO event)",
+                "Request leave or TOIL on Clock Point; staff decide under Time → Requests"
             ]
         },
         "audience": {

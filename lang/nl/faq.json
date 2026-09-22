@@ -321,11 +321,18 @@
             "body": "Onder Personen → Teams bewerkt u een uitvoerder of importeert u met de kolom location_names (komma-gescheiden namen). Lege selectie = overal inklokken (standaard voor bestaande uitvoerders). Voor invallers of vlinders: vink bij het team **Mag overal inklokken** aan. Zoek en filter grote lijsten via Personen → Uitvoerders.",
             "summary": "Vestigingen per uitvoerder in Teams; import location_names; invallerteam = overal; zoeken via Uitvoerders."
         },
+        "time_absence": {
+            "slug": "time_absence",
+            "type": "text",
+            "title": "Hoe werken verlof- en recupaanvragen?",
+            "body": "Uitvoerders vragen verlof of recup op Clock Point (tegel Verlof / Recup): van–tot, optionele toelichting, max. 31 dagen, niet in het verleden. Open aanvragen die overlappen worden geweigerd. Beheer beslist onder Time → Aanvragen. Weigeren vraagt een reden; goedkeuren niet. Bij goedkeuren bewaart WinProx bestaande diensten en zet daarna afwezigheid in het uurrooster. Er gaat geen e-mail. Het dashboard toont open aanvragen per soort (1 Verlof, 1 Recup, of beide). Ziekmeldingen zitten niet in deze stap.",
+            "summary": "Clock Point: verlof of recup aanvragen. Time → Aanvragen: weigeren eist een reden, goedkeuren niet. Dashboard toont 1 Verlof of 1 Recup."
+        },
         "time_schedule": {
             "slug": "time_schedule",
             "type": "text",
             "title": "Wat is het uurrooster?",
-            "body": "Onder Time → Uurrooster plant u diensten per uitvoerder: typ een code (shiftype) of een vrije tijd zoals 07:00-15:00. U kunt ook afwezigheidscodes (verlof, recup, ziek) instellen onder Time → Shiftypes; die vullen de hele dag en tellen geen uren. U schakelt tussen week en maand. Opslaan bewaart de zichtbare periode; publiceren maakt die zichtbaar op Clock Point (Mijn rooster) en toont een badge. Publiceren stuurt niets naar de RSZ. Afwijkingen (te laat inklokken) ziet u meteen, ook vandaag; ontbrekende prikken pas na het geplande einde. Een week kopiëren (alleen weekweergave) is alles-of-niets. Uitvoerders vragen verlof of recup via Clock Point; beheer beslist onder Time → Aanvragen (weigeren eist een reden) (bestaande diensten worden eerst bewaard, dan vervangen).",
+            "body": "Onder Time → Uurrooster plant u diensten per uitvoerder: typ een code (shiftype) of een vrije tijd zoals 07:00-15:00. U kunt ook afwezigheidscodes (verlof, recup, ziek) instellen onder Time → Shiftypes; die vullen de hele dag en tellen geen uren. U schakelt tussen week en maand. Opslaan bewaart de zichtbare periode; publiceren maakt die zichtbaar op Clock Point (Mijn rooster) en toont een badge. Publiceren stuurt niets naar de RSZ. Afwijkingen (te laat inklokken) ziet u meteen, ook vandaag; ontbrekende prikken pas na het geplande einde. Een week kopiëren (alleen weekweergave) is alles-of-niets. Uitvoerders vragen verlof of recup via Clock Point; beheer beslist onder Time → Aanvragen. Zie ook: Hoe werken verlof- en recupaanvragen?",
             "summary": "Time → Uurrooster: codes, afwezigheid, week/maand, Mijn rooster op Clock Point, gepland vs geklokt."
         },
         "field_offline": {

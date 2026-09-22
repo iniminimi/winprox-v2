@@ -317,11 +317,18 @@
             "body": "Unter Personen → Teams Ausführenden bearbeiten oder mit Spalte location_names importieren (kommagetrennte Namen). Leere Auswahl = überall (Standard für bestehende). Für Springer: **Darf überall einstempeln** am Team. Große Listen unter Personen → Ausführende suchen.",
             "summary": "Standorte pro Ausführendem in Teams; Import location_names; Springer = überall; Suche unter Ausführende."
         },
+        "time_absence": {
+            "slug": "time_absence",
+            "type": "text",
+            "title": "Wie funktionieren Urlaubs- und Ausgleichsanträge?",
+            "body": "Ausführende beantragen Urlaub oder Ausgleich am Clock Point (Kachel Urlaub / Ausgleich): von–bis, optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit. Überlappende offene Anträge werden abgelehnt. Die Verwaltung entscheidet unter Time → Anträge. Ablehnen braucht eine Begründung; Genehmigen nicht. Bei Genehmigung speichert WinProx bestehende Schichten und schreibt danach Abwesenheit in den Dienstplan. Es geht keine E-Mail. Das Dashboard zeigt offene Anträge je Art (1 Urlaub, 1 Ausgleich oder beides). Krankmeldungen gehören nicht zu diesem Schritt.",
+            "summary": "Clock Point: Urlaub oder Ausgleich beantragen. Time → Anträge: Ablehnen braucht eine Begründung, Genehmigen nicht. Dashboard zeigt 1 Urlaub oder 1 Ausgleich."
+        },
         "time_schedule": {
             "slug": "time_schedule",
             "type": "text",
             "title": "Was ist der Dienstplan?",
-            "body": "Unter Time → Dienstplan planen Sie Schichten pro Ausführendem: Code (Schichttyp) oder freie Zeit wie 07:00-15:00. Abwesenheitscodes (Urlaub, Ausgleich, Krank) unter Time → Schichttypen füllen den ganzen Tag und zählen keine Stunden. Wechseln Sie zwischen Woche und Monat. Speichern bewahrt den sichtbaren Zeitraum; Veröffentlichen macht ihn am Clock Point sichtbar (Mein Dienstplan) und zeigt ein Badge. Veröffentlichen sendet nichts an die LSS. Abweichungen (zu spätes Stempeln) sehen Sie sofort, auch heute; fehlende Stempel erst nach dem geplanten Ende. Eine Woche kopieren (nur Wochenansicht) ist alles oder nichts. Ausführende beantragen Urlaub oder Ausgleich am Clock Point; die Verwaltung entscheidet unter Time → Anträge (Ablehnen braucht eine Begründung) (bestehende Schichten werden zuerst gespeichert, dann ersetzt).",
+            "body": "Unter Time → Dienstplan planen Sie Schichten pro Ausführendem: Code (Schichttyp) oder freie Zeit wie 07:00-15:00. Abwesenheitscodes (Urlaub, Ausgleich, Krank) unter Time → Schichttypen füllen den ganzen Tag und zählen keine Stunden. Wechseln Sie zwischen Woche und Monat. Speichern bewahrt den sichtbaren Zeitraum; Veröffentlichen macht ihn am Clock Point sichtbar (Mein Dienstplan) und zeigt ein Badge. Veröffentlichen sendet nichts an die LSS. Abweichungen (zu spätes Stempeln) sehen Sie sofort, auch heute; fehlende Stempel erst nach dem geplanten Ende. Eine Woche kopieren (nur Wochenansicht) ist alles oder nichts. Ausführende beantragen Urlaub oder Ausgleich am Clock Point; die Verwaltung entscheidet unter Time → Anträge. Siehe auch: Wie funktionieren Urlaubs- und Ausgleichsanträge?",
             "summary": "Time → Dienstplan: Codes, Abwesenheit, Woche/Monat, Mein Dienstplan am Clock Point, geplant vs. gestempelt."
         },
         "field_offline": {

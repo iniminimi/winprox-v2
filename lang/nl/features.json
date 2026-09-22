@@ -73,7 +73,8 @@
                 "Optionele evacuatielijst op Clock Point (Instellingen, standaard uit)",
                 "Alarm bij hop tussen Clock Points binnen 5 min",
                 "Mijn uren op Clock Point (alleen eigen diensten)",
-                "Minimumpauze per team op de urenstaat (geen extra CIAO-event)"
+                "Minimumpauze per team op de urenstaat (geen extra CIAO-event)",
+                "Verlof of recup aanvragen op Clock Point; beheer beslist onder Time → Aanvragen"
             ]
         },
         "audience": {

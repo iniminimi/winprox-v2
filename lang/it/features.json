@@ -73,7 +73,8 @@
                 "Elenco evacuazione opzionale su Clock Point (Impostazioni, disattivato di default)",
                 "Allarme se si salta tra Clock Point entro 5 min",
                 "Le mie ore su Clock Point (solo i propri turni)",
-                "Pausa minima per team sul foglio ore (nessun evento CIAO extra)"
+                "Pausa minima per team sul foglio ore (nessun evento CIAO extra)",
+                "Chiedere ferie o recupero sul Clock Point; la gestione decide in Time → Richieste"
             ]
         },
         "audience": {

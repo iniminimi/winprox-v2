@@ -64,7 +64,8 @@ linkt naar zijn lijst):
 - **Conditioneel** (alleen tonen als telling **> 0** — geen vaste nullen / geen lege grid-gaten):
   - Te beoordelen — QR-wachtlijst → meldingen
   - Time-aandacht — open shifts met uitzondering, of evacuatielijst-raadpleging vandaag → Time-alarmen
-  - Aanvragen — open verlof-/recupaanvragen, geteld per soort (1 Verlof, 1 Recup, of beide) → Time → Aanvragen (Time-module)
+  - Aanvragen — open verlof-/recupaanvragen, geteld per soort (1 Verlof, 1 Recup, of beide) → Time → Aanvragen (Time-module).
+    Features-fiche, FAQ en handleiding beschrijven dezelfde flow.
   - IoT-alarmen — open IoT-meldingen → IoT Connect (alleen bij IoT-module)
 
 **Recente meldingen** (kaart met lijst)

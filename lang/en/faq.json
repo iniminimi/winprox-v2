@@ -321,11 +321,18 @@
             "body": "Under People → Teams edit a worker or import with the location_names column (comma-separated names). Empty selection = clock in anywhere (default for existing workers). For floaters: tick **May clock in anywhere** on the team. Search and filter large lists via People → Workers.",
             "summary": "Locations per worker in Teams; import location_names; floater team = everywhere; search via Workers."
         },
+        "time_absence": {
+            "slug": "time_absence",
+            "type": "text",
+            "title": "How do leave and TOIL requests work?",
+            "body": "Workers request leave or time off in lieu on Clock Point (Leave / TOIL tile): from–to, optional note, max. 31 days, not in the past. Overlapping open requests are refused. Staff decide under Time → Requests. Reject needs a reason; approve does not. On approval WinProx stores existing duties and then writes absence on the roster. No email is sent. The dashboard shows pending requests per kind (1 Leave, 1 TOIL, or both). Sick leave is not in this step.",
+            "summary": "Clock Point: request leave or TOIL. Time → Requests: reject needs a reason, approve does not. Dashboard shows 1 Leave or 1 TOIL."
+        },
         "time_schedule": {
             "slug": "time_schedule",
             "type": "text",
             "title": "What is the roster?",
-            "body": "Under Time → Roster you plan shifts per worker: type a code (shift type) or a free time such as 07:00-15:00. You can also set absence codes (leave, time off in lieu, sick) under Time → Shift types; those fill the whole day and count no hours. Switch between week and month. Save stores the visible period; publish makes it visible on Clock Point (My roster) and shows a badge. Publishing does not send anything to the NSSO. Deviations (late clock-in) show immediately, including today; missing punches only after the planned end. Copying a week (week view only) is all-or-nothing. Workers request leave or TOIL on Clock Point; staff decide under Time → Requests (reject requires a reason) (existing duties are stored first, then replaced).",
+            "body": "Under Time → Roster you plan shifts per worker: type a code (shift type) or a free time such as 07:00-15:00. You can also set absence codes (leave, time off in lieu, sick) under Time → Shift types; those fill the whole day and count no hours. Switch between week and month. Save stores the visible period; publish makes it visible on Clock Point (My roster) and shows a badge. Publishing does not send anything to the NSSO. Deviations (late clock-in) show immediately, including today; missing punches only after the planned end. Copying a week (week view only) is all-or-nothing. Workers request leave or TOIL on Clock Point; staff decide under Time → Requests. See also: How do leave and TOIL requests work?",
             "summary": "Time → Roster: codes, absences, week/month, My roster on Clock Point, planned vs clocked."
         },
         "field_offline": {

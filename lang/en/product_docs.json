@@ -18,142 +18,292 @@
     },
     "features": {
         "label": "Features overview",
-        "tagline": "Key capabilities · aligned with the current in-app manual",
-        "intro": "WinProx is one Facility web app: issues come in, become tasks, and are handled by teams. Time (punch clock) is included.",
+        "tagline": "What WinProx does — in plain language",
+        "highlight": "One app: someone reports an issue, a team gets a task, the work is closed. The punch clock is included.",
+        "intro": "WinProx is a Facility app for locations, units and teams. No separate contractor or hospitality portals. Time (punch clock) is included in every plan.",
         "flow": [
             "QR scan",
             "Issue",
             "Tasks",
-            "Completion",
-            "(+ Time punch clock included)"
+            "Close-out"
         ],
-        "source": "Sources: Manual (Getting started + chapters) and FAQ in the app.",
+        "source": "The same content as the in-app manual and FAQ.",
         "footer_left": "WinProx · info@winprox.app · Product overview (manual/FAQ)",
         "footer_right": "See also: Technical fact sheet (hosting, GDPR, security)",
-        "left": [
+        "left": [],
+        "right": [],
+        "full": [
             {
                 "title": "Issues",
-                "body": "Via unit QR, manually in admin, or (with IoT) a sensor alarm. Filters, approval of QR reports, recurring maintenance (pause or close). Optional: required contact details and/or email confirmation for anonymous QR reporters (category and unit; confirmation holds the report until the email link). On public QR pages visible only after approval; admin sees everything immediately. In admin a Reporter confirmed pill appears when the QR reporter confirmed the email link. Optional per category: hide previous/open reports on the unit QR.",
-                "badge": "core"
+                "badge": "core",
+                "body": "Someone spots a problem and creates an issue — via the unit QR, in admin, or from a sensor (IoT).",
+                "items": [
+                    "Filters and approval of QR issues.",
+                    "Optional contact details or email confirmation for anonymous reporters.",
+                    "Public QR pages show it only after approval; admin sees everything at once.",
+                    "A Reporter confirmed pill after the email link is confirmed.",
+                    "Recurring maintenance can be paused or closed."
+                ]
             },
             {
                 "title": "Tasks",
-                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via the Tasks list and QR on the floor.",
-                "badge": "core"
-            },
-            {
-                "title": "Resolution",
                 "badge": "core",
-                "body": "Updates on issues and tasks, complete a task (optional photo and note), close the issue when everything is done. Status and history in the back office; workers resolve via unit QR, or via Clock Point with an open GPS work visit at that location."
+                "body": "One issue can have several tasks. Each task goes to one team.",
+                "items": [
+                    "Priority, deadline and notes per task.",
+                    "Follow-up in the task list and via QR on site."
+                ]
             },
             {
-                "title": "Facility",
-                "body": "Locations, units, categories, teams and workers (internal or external). Under Places: Categories, Locations and Units (tenant-wide). Bulk/CSV import (bulk also sets advanced portal options for the whole range), dashboard, documents and announcements on the portal. Enable unit checks per category and unit; manage checklists under Work → Checklists — shared or per team. New organisations can load a starter template on the dashboard (at your own locations, at customer sites, or for vehicles and fleet) with sample teams, categories, a location, units and matching work menu defaults — names in every language. You can rename everything later; once issues exist, units can only be deactivated. Under People → Workers: search screen for all workers. Workers and employees can be linked to sites; floater teams may clock in anywhere. Optional portrait photo per worker (automatically resized); shown in Teams, Workers and Time → Presence. Rare actions (team leader, icon/phone/PIN, deactivate, delete) live in the edit modal, not on the team list."
+                "title": "Close-out",
+                "badge": "core",
+                "body": "The team finishes the tasks. When everything is done, admin closes the issue.",
+                "items": [
+                    "Optional photo and note when completing.",
+                    "Status and history in admin.",
+                    "Workers use the unit QR, or Clock Point with an open GPS work visit."
+                ]
             },
             {
                 "title": "Dashboard",
-                "body": "Overview of open issues and today's tasks, with quick access to key workflows. New organisations pick a starter template here; briefing and reports are available from the dashboard. Pending leave or TOIL appears as an extra card with the count per kind."
+                "body": "The home screen shows what is still open. Click a card to open that list.",
+                "items": [
+                    "Locations, units, new issues and open tasks.",
+                    "With Time: who is present now.",
+                    "Pending leave or TOIL as an extra card: 1 Leave, 1 TOIL, or both.",
+                    "New organisations can pick a starter template here.",
+                    "Briefing and reports are available from the dashboard."
+                ]
+            },
+            {
+                "title": "Facility",
+                "body": "This is where you set up places, people and teams.",
+                "items": [
+                    "Categories, locations and units (including bulk or CSV).",
+                    "Documents and announcements on the portal.",
+                    "Find workers under People → Workers; optional portrait.",
+                    "Floater teams may clock in anywhere; others only at assigned sites.",
+                    "Rare actions (team leader, icon, phone, PIN) live in Edit, not in the list."
+                ]
             },
             {
                 "title": "QR portals",
-                "body": "Unit QR: report issues, plus an optional unit check (quick OK or Not OK). Clock Point QR: sign in (name + icon) and team tasks; clock in/out only with Time (punch clock). Location QR. Printable as sticker sheet (Avery) or full-page A6/A5/A4. You can email the Clock Point sign-in link from the QR dialog to workers on site. Dynamic QRs that can be linked to a unit later. Invalid or expired QR codes show a short error with a button to the homepage. Per category you can hide previous reports on the unit QR. Workers who opened the unit QR online can start and complete tasks, create a report (with photos) and do a unit check without coverage; those actions stay on the device and sync automatically when the connection returns. Clock in/out at Clock Point stays online and still needs a fresh QR scan. With GPS work visits you can start and complete team tasks on Clock Point and do the next inspection stop (unit check) on site. Name + icon is who you are; clock-in (Time) is your shift. Unit check on Clock Point only after Start work at that location. On Clock Points with Clock Point link on phone home screen enabled (off by default), a WinProx icon appears next to Sign in so workers can put the link on the home screen — only for those who cannot scan a QR, not for TFT screens with rotating codes. No App Store."
+                "body": "Everything opens in the browser. No App Store.",
+                "items": [
+                    "Unit QR: report issues, optional unit check and measurements.",
+                    "Clock Point QR: sign in (name + icon) and team tasks; clock-in only with Time.",
+                    "Printable as sticker sheets or A6/A5/A4.",
+                    "A loaded unit QR stays usable offline; clock-in needs a fresh scan.",
+                    "Optional: Clock Point link on the phone home screen."
+                ]
             },
             {
                 "title": "Unit checks",
-                "body": "Quickly confirm a unit is fine — for example after a security round, cleaning check or technical inspection. On the unit QR you tap OK or Not OK; OK needs no separate issue. Optionally tick a checklist first. Not OK still works alongside the normal report flow. Per unit you can optionally add a note (max. 500 characters) and up to 4 photos on the check; they stay on that check (history and round progress), not on the issue list. Unticked checklist points are stored on the check and shown on the inspection-round task."
+                "body": "Quickly say a unit is fine — for example after a round.",
+                "items": [
+                    "On the unit QR: OK or Not OK.",
+                    "OK does not need a separate issue.",
+                    "Optional checklist, note and up to 4 photos.",
+                    "History under Work → Unit checks."
+                ]
             },
             {
                 "title": "Inspection rounds",
-                "body": "Recurring issue with a fixed route of units (stops), including across locations. Plan via Work → Inspection rounds → Plan inspection round (stops, interval and team in one step), or via Issues or the issue wizard. Work → Inspection rounds is its own list of rounds only, not ordinary issues. Only units with unit checks appear in the stop list; other units are hidden. Set the route order with the numbered stop list (tick and drag in the same list; 1 = first stop). One task per cycle; at each stop Unit check OK, Not OK (with issue; description prefilled), or skip with reason. Optionally per stop a note and up to 4 photos on that cycle’s unit check. Done when all stops for that cycle are handled. With Time + GPS work visits, today's round location appears after clock-in on Clock Point → Where do I need to go today. Open tasks shows description, priority, status and the next stop. The Unit check button appears only after Start work at that location; the full check opens after that button, without the unit QR. On the round task, each stop shows the checklist points that were not OK, so you can share the inspection with the customer later. Unit-check history is under Work → Unit checks. On the round task, Print opens a printable page of that cycle (stops, Not OK checklist points, note and photos)."
+                "body": "A fixed route of units, even across sites.",
+                "items": [
+                    "Plan under Work → Inspection rounds.",
+                    "Per stop: OK, Not OK (with an issue) or skip with a reason.",
+                    "With Time + GPS, today’s round appears under Where should I go today.",
+                    "Print a cycle from the round task."
+                ]
             },
             {
                 "title": "Unit measurements",
-                "body": "Record values on a unit (odometer, temperature, status, …) via QR portal or API. Manage fields under Work → Unit measurements; enable per category and unit and link fields. History in admin; webhook unit.measurement.recorded."
+                "body": "Simple readings on a unit, without the ESG module.",
+                "items": [
+                    "Mileage, temperature, status, and so on.",
+                    "Fields under Work → Unit measurements; enable per category and unit.",
+                    "Via QR or API; webhook unit.measurement.recorded."
+                ]
             },
             {
                 "title": "Photos",
-                "body": "Up to 4 photos per issue, completion or unit check (resized on the device before upload). Also: up to 4 unit photos and a background photo per unit for the QR portal. Visible immediately in the back office; reporter photos on the public portal only after approval."
+                "body": "Photos are compressed on the device before upload.",
+                "items": [
+                    "Up to 4 photos on an issue, close-out or unit check.",
+                    "Up to 4 unit photos and a background per unit.",
+                    "Reporter photos on the public portal only after approval."
+                ]
             },
             {
                 "title": "GPS",
-                "body": "Per category: “Allow GPS location” for mobile units (vehicle, machine, …). Capture location via the portal; history in the back office, open in Maps."
-            }
-        ],
-        "right": [
-            {
-                "title": "Calendar",
-                "body": "Month, week and day views of tasks, issues and reservations. From the calendar you can also print the briefing for that day."
-            },
-            {
-                "title": "Briefing",
-                "body": "Printable report of open tasks for the selected day, grouped by team. Available from Dashboard, Tasks and Calendar — useful at shift start."
-            },
-            {
-                "title": "Reports",
-                "body": "On search screens (issues, tasks, Time, reservations, unit checks, unit measurements, ESG): Download report — CSV (table for Excel) or print (Ctrl+P to PDF). Print follows the backoffice list card layout where possible; Time shows a timesheet. Same filters as the list (max. 5000 rows). Later: Organisation → Reports for saved templates."
+                "body": "For mobile units (vehicle, machine) you can store a location.",
+                "items": [
+                    "Enable per category.",
+                    "History in admin; open in Maps."
+                ]
             },
             {
                 "title": "Time",
                 "badge": "included",
-                "body": "Time is WinProx’s punch clock: clock in/out, breaks, presence and timesheets. Each clock-in, clock-out or move on Clock Point needs a fresh QR scan on site (an open tab does not count); breaks can continue without a new scan. Clock Point remains the sign-in QR (name + icon, task list) even without Time. Time is included in the trial and in every WinProx plan. CIAO (NSSO) is on request, with no extra fee; a superuser enables it. Name lookup on a clock point is scoped to that site; workers only appear on assigned sites (except floater teams). One open shift per worker: at another Clock Point you see where you are clocked in and can move presence (same shift, with a hop note). Presence optionally shows the worker portrait in the round avatar (otherwise the initial). Optional CIAO (RSZ Check In and Out): real-time IN/OUT + breaks for cleaning; request via info@winprox.app (superuser enables it); NISS on worker; DDT on location. Construction/concrete scope (CIAO) follows behind a feature flag until RSZ go-live (~Apr 2027). Clock Point sign-in is bound to one phone per worker; another device is refused until an admin or team leader allows a new device. Optional: 4-digit PIN on Clock Point and GPS at the punch (indoor punches still proceed without a signal). A too-quick move between Clock Points (within 5 min) appears as an alarm. The personal icon is hidden after sign-in. API clock-in (POST /api/v1/time/clock-in) does not bind a phone — that applies only to Clock Point QR. A bound device can be released via admin, team leader or API (time:write). On the Clock Point portal (after sign-in) there is a My hours tile (only your own shifts for the selected month) and optionally (Settings, off by default) an Evacuation list tile: only a signed-in field worker sees who is clocked in (including colleagues with a punch-clock profile), after confirming that the consultation is exceptional and is logged (first name, last name, date and time). Admins reset device, PIN and icon via People → Teams → Edit. An administrator or staff user can clock a worker in manually at a Clock Point (e.g. forgotten phone): no device bind, required reason in the audit log, Clocked in manually pill on presence and hours. API: POST /api/v1/time/manual-clock-in (admin source, does not bind a phone). Per team you can set a minimum break (e.g. 30 minutes): on clock-out it is counted on the timesheet if the shift lasts at least 4 hours and less or no live break was clocked, without an extra Clock Point break or CIAO event. On Time → Hours an admin can still apply the minimum or correct clock-in/out and break (empty clock-out reopens the shift). API: POST /api/v1/time/work-shifts/{id}/apply-required-break. Managers plan shifts in Time → Roster (Excel-like: codes or free times per day). Publishing does not send anything to RSZ; the punch clock remains actual time. Week view can show or hide weekends; saving with weekends off leaves Sat/Sun unchanged. Optionally a group in the same cell (D1/G1 or 07:00-12:00/G1); roster code per unit, unique per location. Week or month view. Absences (leave, time off in lieu, sick) via Shift types: full day, no hours. Publishing shows My roster on Clock Point (badge) and is not sent to the NSSO. Admin: planned vs clocked (deviation immediately, including today; missing punch after the planned end). Location filter hides floaters; optional home group and section rows. Optional GPS work visits (Settings): clock-in opens paid time without location proof; start/stop work on the location pin (customer) or a unit with a fixed GPS pin requires fresh GPS within the radius (default 250 m). Set the location pin under Locations (red Maps icon; paste as lat, lng). Same field for a unit pin under Advanced portal options. Clock-out is allowed anywhere; an open visit is closed first. CIAO then follows visit IN/OUT instead of clock in/out. Back office: Work → Work visits shows the history; Time → Presence shows an open visit and Time → Hours shows visits per shift. The public homepage does not suggest nearby companies. API: POST /api/v1/time/work-visits/start and .../end; webhooks time.visit.started / time.visit.ended. After clock-in Clock Point shows where you need to go today (locations only, work planned for today), with a GPS icon to Google Maps; Start work on site. Inspection stops are under Open tasks (description, priority, status, next stop, Unit check button). With an open work visit you can start and complete team tasks (optional note and photos) and do the next inspection stop (unit check). Per Clock Point you can enable Clock Point link on phone home screen (off by default): WinProx icon next to Sign in for workers who start at home or on the road; leave it off on TFT screens with rotating QR. A red triangle on Clock Point (next to clock-in or planned hours) if you have a published work shift and have not clocked in, or clocked in at least 15 minutes late."
+                "body": "Time is the punch clock. Workers clock in and out on the same Clock Point QR they use for field work.",
+                "items": [
+                    "Each clock-in or clock-out needs a fresh QR scan on site.",
+                    "Included in the trial and in every plan.",
+                    "Presence, timesheets and My hours (own shifts only).",
+                    "Staff can clock someone in by hand if the phone was forgotten.",
+                    "CIAO (NSSO) on request, at no extra fee.",
+                    "Optional GPS work visits: Start work on the site pin."
+                ]
+            },
+            {
+                "title": "Roster",
+                "body": "Staff plan shifts under Time → Roster. Publishing shows them on Clock Point, not at the NSSO.",
+                "items": [
+                    "Type a code or a free time such as 07:00-15:00.",
+                    "Week or month view; weekends can be hidden.",
+                    "Clock Point shows My roster (own published shifts only).",
+                    "A red triangle if you have not clocked in or are late.",
+                    "Admin sees planned versus clocked (15-minute window)."
+                ]
+            },
+            {
+                "title": "Leave and TOIL",
+                "body": "Workers request leave or time off in lieu on Clock Point. Staff decide under Time → Requests.",
+                "items": [
+                    "From–to, max. 31 days, not in the past.",
+                    "Reject needs a reason; approve does not.",
+                    "On approval WinProx stores existing duties, then replaces them on the roster.",
+                    "No email and no sick-leave request in this step.",
+                    "The dashboard shows 1 Leave, 1 TOIL, or both."
+                ]
+            },
+            {
+                "title": "Calendar",
+                "body": "Month, week and day views of tasks, issues and reservations.",
+                "items": [
+                    "Print that day’s briefing from the calendar."
+                ]
+            },
+            {
+                "title": "Briefing",
+                "body": "A printable list of open tasks for the chosen day, grouped by team.",
+                "items": [
+                    "Available from Dashboard, Tasks and Calendar."
+                ]
+            },
+            {
+                "title": "Reports",
+                "body": "On search screens you can export the filtered list.",
+                "items": [
+                    "CSV for Excel, or print to PDF.",
+                    "Same filters as the list (max. 5,000 rows).",
+                    "Time shows a timesheet."
+                ]
             },
             {
                 "title": "Reservations",
-                "body": "For shared resources with a time slot (room, vehicle, key). Category Reservable + Allow reservations per unit (off by default). Guest books via unit QR (hold + email confirmation). Manage via Reservations menu and calendar."
+                "body": "For shared assets with a time slot, such as a room or vehicle.",
+                "items": [
+                    "Reservable category + Reservations allowed on the unit.",
+                    "Guests book via the unit QR (email confirmation)."
+                ]
             },
             {
                 "title": "ESG & Compliance",
                 "badge": "Corporate",
                 "badge_mod": "corp",
-                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Optional module on WinProx Corporate: indicators, measurements and follow-up tasks for recurring checks. Record via portal, back office or API."
+                "body": "Readings for environment, safety and compliance — next to everyday tasks.",
+                "items": [
+                    "Indicators, measurements and follow-up tasks.",
+                    "Via portal, admin or API."
+                ]
             },
             {
                 "title": "IoT Connect",
                 "badge": "Corporate",
-                "body": "Sensor gateways send events; alarms become an approved issue + task. Measurements → ESG. WinProx Corporate only. Gateway token (also without the full REST API)."
+                "body": "Sensors send events. An alarm becomes an approved issue with a task.",
+                "items": [
+                    "Readings can feed ESG.",
+                    "Separate gateway token, even without the full REST API."
+                ]
             },
             {
                 "title": "API & webhooks",
                 "badge": "Corporate",
                 "badge_mod": "corp",
-                "body": "REST API tokens and outbound webhooks (HMAC) under Settings. Connect issues, tasks, unit checks, unit measurements, ESG, … IoT ingest via a separate gateway token. See also the API & Webhooks sheet and the technical fact sheet."
+                "body": "Other software can use the same data WinProx uses.",
+                "items": [
+                    "Tokens and outbound webhooks under Settings → API.",
+                    "See the API & Webhooks and Technical sheets."
+                ]
             },
             {
                 "title": "Multi-tenant",
-                "body": "Each organisation has its own environment with limits per subscription (WinProx 10/25/50 seats + Corporate): seats (active colleagues + active workers without a linked user_id; colleague + punch-clock profile = one seat). Units and documents = 5× seats (50/125/250). Locations and photos are unlimited."
+                "body": "Each organisation has its own environment, with limits per plan.",
+                "items": [
+                    "A licence is a colleague with login or a worker. Colleague + punch clock counts as one.",
+                    "Units and documents = 5× licences. Locations and photos are unlimited."
+                ]
             },
             {
                 "title": "Branding & QR",
-                "body": "Organisation logo, portal background and portal colours (background and button colour) under Settings; unit photos and a background photo per unit. Avery or A6/A5/A4 sticker formats — print-ready."
+                "body": "You can make the portal look like your organisation.",
+                "items": [
+                    "Logo, background and button colours under Settings.",
+                    "Stickers: Avery or A6/A5/A4."
+                ]
             },
             {
                 "title": "Work menu",
-                "body": "Via Organisation → Settings → Work menu settings (administrator): toggle Calendar, Reservations, Inspection rounds and Unit measurements per organisation in the sidebar. Off = no backoffice access; QR on units that already had the feature keeps working (grandfather). A starter template sets a limited work menu. You can turn on Reservations, unit measurements and other extras later. Removing the starter template does not change the work menu."
+                "body": "Admin chooses which extras appear in the sidebar.",
+                "items": [
+                    "Calendar, Reservations, Inspection rounds and Unit measurements per organisation.",
+                    "Off = no admin access; existing unit QR still works."
+                ]
             },
             {
                 "title": "AI translation",
-                "body": "After approval, texts are queued for translation (issues, tasks, documents, announcements, …). WinProx fills the other languages periodically via local AI (no external AI cloud), typically daily — with no guaranteed turnaround. Organisation admins can correct translations manually; there is no per-organisation on/off switch."
+                "body": "After approval WinProx queues texts for translation.",
+                "items": [
+                    "Local AI, no external AI cloud.",
+                    "Usually daily, with no fixed turnaround.",
+                    "Admins can correct translations themselves."
+                ]
             },
             {
-                "title": "No app required",
-                "body": "Everything runs in the browser. Back office is desktop-first; field and QR portals are mobile-first. No App Store. On a Clock Point with Clock Point link on phone home screen, the worker can add a home-screen shortcut (no extra offline app)."
-            }
-        ],
-        "full": [
+                "title": "No app needed",
+                "body": "Everything in the browser. Admin on a laptop; field and QR on the phone.",
+                "items": [
+                    "No App Store.",
+                    "Optional Clock Point shortcut on the home screen."
+                ]
+            },
             {
                 "title": "Roles",
-                "body": "Admin — full control + subscription · Employee — day-to-day follow-up (no billing/accounts) · Worker — field work via Clock Point + unit QR, without WinProx login · Team leader — release icons and coordinate via the Clock Point portal."
+                "body": "Four roles, no extra portals.",
+                "items": [
+                    "Administrator: everything, including billing.",
+                    "Staff: day-to-day follow-up, no billing.",
+                    "Worker: field work via Clock Point and unit QR, no login.",
+                    "Team leader: release icons and coordinate via Clock Point."
+                ]
             },
             {
-                "title": "Back-office login",
-                "body": "Admins and employees sign in with email + password, or via **Sign in with Microsoft** (Microsoft Entra). Only existing WinProx accounts; the Microsoft email must match. Workers stay on Clock Point QR (name + icon), without Microsoft sign-in. Connecting other software uses API tokens, not this login."
+                "title": "Admin sign-in",
+                "body": "Colleagues sign in with email and password, or Sign in with Microsoft.",
+                "items": [
+                    "Existing WinProx accounts only; the email must match.",
+                    "Workers stay on Clock Point (name + icon).",
+                    "Other software connects with API keys, not this login."
+                ]
             }
         ]
     },
     "technical": {
         "label": "Technical fact sheet",
         "tagline": "Facility issues: QR → tasks → completion · SaaS for operational teams",
-        "intro": "Overview for IT / security. WinProx is a multi-tenant web application (Laravel + MySQL) where each customer organisation has its own isolated environment. Optional Time roster: planned shifts per worker (draft or published), week or month, half-open overlap. Absences (leave, time off in lieu, sick) fill a full day. API `/api/v1/time/schedule` (time:read / time:write) and webhooks `time.schedule.*`. Published roster: Clock Point tile My roster (own shifts only) with a badge. Clock Point shows a red triangle next to clock-in or planned hours if a published work shift has no punch or is at least 15 minutes late. Admin: planned vs clocked (15-minute window). Optional group slot (roster code on the unit) and home group on the worker; location filter hides floaters. Clock Point tile Leave / TOIL: worker requests leave or time off in lieu; Time → Requests; reject requires a reason; approval stores existing duties on the request then replaces them (not silently). No email, no write API in this slice.",
+        "intro": "Overview for IT and security. WinProx is a multi-tenant web app (Laravel + MySQL). Each customer organisation has its own isolated environment.",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
         "left": [
@@ -284,6 +434,16 @@
                     "WinProx runs translations **periodically** (typically daily), **with no guaranteed turnaround**. Organisation admins can **correct translations manually**. No per-organisation on/off switch.",
                     "No generative “AI assistant” that autonomously decides customer processes — translation is support, not decision-making."
                 ]
+            },
+            {
+                "title": "Time: leave and TOIL",
+                "items": [
+                    "Workers request leave or time off in lieu on Clock Point (from–to, max. 31 days).",
+                    "Staff decide under Time → Requests. Reject needs a reason; approve does not.",
+                    "Approval stores existing roster cells on the request, then replaces them.",
+                    "No email, no write REST API. Events: time.absence.requested|cancelled|approved|rejected.",
+                    "The dashboard shows pending requests per kind (1 Leave, 1 TOIL, or both)."
+                ]
             }
         ]
     },
@@ -291,7 +451,7 @@
         "label": "API & Webhooks",
         "tagline": "Integrate WinProx with your existing software via APIs and webhooks.",
         "highlight": "WinProx is not a replacement for existing IWMS or ERP systems. Thanks to APIs and webhooks, WinProx works alongside them.",
-        "intro": "WinProx is built so other software can use the same data, issues, tasks and unit checks as WinProx itself. Manage and read docs under Settings → API. Desktop **Sign in with Microsoft** is not an API integration: other software uses tokens, not SSO. Time roster: GET/PUT `/api/v1/time/schedule`, POST `.../copy` and `.../publish` (time:read / time:write). Events: `time.schedule.saved`, `time.schedule.copied`, `time.schedule.published`, `time.shift_type.saved`. Absences (leave, time off in lieu, sick) are shift types without hours. Published roster: Clock Point My roster with a badge. Clock Point shows a red triangle if a published work shift has no punch or is at least 15 minutes late. Admin: planned vs clocked (15-minute window). Optional group slot (roster code) and home group; location filter hides floaters. Events `time.absence.requested|cancelled|approved|rejected` (no REST write API in this slice). Approval snapshots then replaces roster cells.",
+        "intro": "WinProx is built so other software can use the same data, issues, tasks and unit checks as WinProx itself. Admin and docs live under Settings → API. Desktop Sign in with Microsoft is not an API link: other software uses tokens, not SSO. Leave and TOIL requests have time.absence.* events (no write REST API in this slice).",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "See also: Features overview · Technical fact sheet",
         "left": [

@@ -1769,7 +1769,7 @@
             "actions": [
                 {
                     "label": "List",
-                    "text": "Time → <strong>Requests</strong> lists leave and TOIL requests from Clock Point. No email, no worker inbox. A badge in the navigation counts open requests."
+                    "text": "Time → <strong>Requests</strong> shows leave and TOIL requests from Clock Point. No email, no inbox for the worker. A green badge in the navigation counts open requests. The dashboard shows the count per kind (1 Leave, 1 TOIL, or both)."
                 },
                 {
                     "label": "Review",

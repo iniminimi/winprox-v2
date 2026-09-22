@@ -1777,7 +1777,7 @@
             "actions": [
                 {
                     "label": "Liste",
-                    "text": "Time → <strong>Demandes</strong> liste les demandes de congé et de récup du Clock Point. Pas d’e-mail, pas de boîte de réception côté exécutant. Un badge dans la navigation compte les demandes ouvertes."
+                    "text": "Time → <strong>Demandes</strong> affiche les demandes de congé et de récup de Clock Point. Pas d’e-mail, pas de boîte de réception chez l’exécutant. Un badge vert dans la navigation compte les demandes ouvertes. Le tableau de bord montre le nombre par type (1 Congé, 1 Récup, ou les deux)."
                 },
                 {
                     "label": "Traiter",

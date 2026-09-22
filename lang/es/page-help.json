@@ -1769,7 +1769,7 @@
             "actions": [
                 {
                     "label": "Lista",
-                    "text": "Time → <strong>Solicitudes</strong> muestra permisos y compensaciones del Clock Point. Sin correo, sin bandeja del trabajador. Una insignia en la navegación cuenta las solicitudes abiertas."
+                    "text": "Time → <strong>Solicitudes</strong> muestra las solicitudes de permiso y compensación de Clock Point. Sin correo, sin bandeja para el operario. Una insignia verde en la navegación cuenta las abiertas. El panel muestra el recuento por tipo (1 Permiso, 1 Compensación, o ambos)."
                 },
                 {
                     "label": "Revisar",

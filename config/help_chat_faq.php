@@ -77,10 +77,21 @@ return [
         ],
         [
             'patterns' => [
+                'verlof', 'recup', 'toil',
+                'leave request', 'time off in lieu',
+                'urlaub', 'ausgleich',
+                'congé', 'récup', 'demandes de congé',
+                'permiso', 'compensación',
+                'ferie', 'recupero',
+            ],
+            'body_key' => 'faq.items.time_absence.summary',
+        ],
+        [
+            'patterns' => [
                 'mijn rooster', 'my roster', 'mon planning', 'mein dienstplan',
                 'mi cuadrante', 'il mio turno',
-                'afwezigheid', 'verlof', 'ziek', 'absence', 'sick leave',
-                'congé', 'urlaub', 'ferie', 'baja',
+                'afwezigheid', 'ziek', 'absence', 'sick leave',
+                'baja',
                 'gepland vs geklokt', 'planned vs clocked',
             ],
             'body_key' => 'faq.items.time_schedule.summary',

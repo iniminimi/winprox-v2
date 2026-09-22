@@ -73,7 +73,8 @@
                 "Optionale Evakuierungsliste am Clock Point (Einstellungen, standardmäßig aus)",
                 "Alarm bei Hop zwischen Clock Points innerhalb von 5 Min.",
                 "Meine Stunden am Clock Point (nur eigene Schichten)",
-                "Mindestpause pro Team auf der Stundenliste (kein extra CIAO-Ereignis)"
+                "Mindestpause pro Team auf der Stundenliste (kein extra CIAO-Ereignis)",
+                "Urlaub oder Ausgleich am Clock Point beantragen; Verwaltung entscheidet unter Time → Anträge"
             ]
         },
         "audience": {

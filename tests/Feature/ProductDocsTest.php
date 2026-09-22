@@ -7,6 +7,8 @@ it('toont de features-overzicht pagina publiek per locale', function () {
     $this->get(route('product.features', ['locale' => 'nl']))
         ->assertOk()
         ->assertSee(__('product_docs.documents.features.label', [], 'nl'), false)
+        ->assertSee('Verlof en recup', false)
+        ->assertSee('1 Verlof, 1 Recup, of beide', false)
         ->assertSee('type="text/markdown"', false)
         ->assertSee(route('product.features.md', ['locale' => 'nl']), false);
 });
