@@ -118,7 +118,9 @@ it('toont alleen de eigen diensten van de aangemelde uitvoerder', function () {
         ->assertSet('hoursListOpen', true)
         ->assertDontSeeHtml('wire:click="signOut"')
         ->assertSee(__('time.portal.hours.title'), false)
-        ->assertSee($day->format('d-m-Y').' ('.__('time.portal.hours.status_closed').')', false)
+        ->assertSee($day->format('d-m-Y'), false)
+        ->assertSee(__('time.status.closed'), false)
+        ->assertSeeHtml('wp-pill--done')
         ->assertSee('In : 08:00'.__('time.duration.hour_short'), false)
         ->assertSee('16:30'.__('time.duration.hour_short'), false)
         ->assertDontSee('Poort Noord', false)
@@ -196,7 +198,8 @@ it('voegt meerdere inklokken van dezelfde dag samen', function () {
 
     expect($hours->shifts)->toHaveCount(2)
         ->and($hours->days)->toHaveCount(1)
-        ->and($hours->days->first()->title)->toBe($day->format('d-m-Y').' ('.__('time.portal.hours.status_closed').')')
+        ->and($hours->days->first()->dateLabel)->toBe($day->format('d-m-Y'))
+        ->and($hours->days->first()->isOpen)->toBeFalse()
         ->and($hours->days->first()->timesLine)->toContain('In : 09:45'.__('time.duration.hour_short'))
         ->and($hours->days->first()->timesLine)->toContain('14:10'.__('time.duration.hour_short'))
         ->and($hours->days->first()->breakLine)->toBe(__('time.portal.hours.break_line', [
@@ -205,7 +208,9 @@ it('voegt meerdere inklokken van dezelfde dag samen', function () {
 
     signInHoursWorker($clockPoint)
         ->call('openHours')
-        ->assertSee($hours->days->first()->title, false)
+        ->assertSee($hours->days->first()->dateLabel, false)
+        ->assertSee(__('time.status.closed'), false)
+        ->assertSeeHtml('wp-pill--done')
         ->assertSee($hours->days->first()->timesLine, false)
         ->assertSee($hours->days->first()->breakLine, false);
 });

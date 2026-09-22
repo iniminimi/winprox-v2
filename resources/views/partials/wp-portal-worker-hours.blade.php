@@ -20,7 +20,10 @@
     <div class="wp-list wp-portal-hours-list">
         @foreach ($hours->days as $day)
             <div class="wp-card wp-portal-hours-day wp-stack-tight" wire:key="hours-day-{{ $day->dateKey }}">
-                <p><strong>{{ $day->title }}</strong></p>
+                <div class="wp-cluster">
+                    <strong>{{ $day->dateLabel }}</strong>
+                    <span class="wp-pill wp-pill--{{ $day->isOpen ? 'progress' : 'done' }}">{{ __('time.status.'.($day->isOpen ? 'open' : 'closed')) }}</span>
+                </div>
                 <p>{{ $day->timesLine }}</p>
                 <p>{{ $day->breakLine }}</p>
             </div>

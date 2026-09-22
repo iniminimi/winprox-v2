@@ -3313,6 +3313,10 @@ a.wp-pagination__page:active:not(.is-active) {
     font-size: 0.875rem;
 }
 
+.wp-portal-hours-day .wp-cluster {
+    align-items: center;
+}
+
 .wp-portal-schedule__row--today > td:first-child {
     border-radius: var(--wp-radius) 0 0 var(--wp-radius);
     padding-left: 0.4rem;

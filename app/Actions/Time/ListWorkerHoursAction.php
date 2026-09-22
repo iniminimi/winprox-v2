@@ -73,12 +73,8 @@ class ListWorkerHoursAction
 
         return new WorkerHoursDay(
             dateKey: $dateKey,
-            title: __('time.portal.hours.day_title', [
-                'date' => $firstIn->format('d-m-Y'),
-                'status' => $isOpen
-                    ? __('time.portal.hours.status_open')
-                    : __('time.portal.hours.status_closed'),
-            ]),
+            dateLabel: $firstIn->format('d-m-Y'),
+            isOpen: $isOpen,
             timesLine: __('time.portal.hours.day_line', [
                 'in' => $firstIn->format('H:i').$hour,
                 'out' => $lastOut
