@@ -27,10 +27,15 @@
                     <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="WinProx" style="max-width: 100px; max-height: 100px; object-fit: contain;">
                 @endif
             </span>
-            <div class="wp-cluster wp-cluster--tight">
-                <x-wp-page-help page="portal.time" />
-                @include('partials.wp-portal-theme')
-                @include('partials.wp-portal-lang')
+            <div class="wp-portal-head-tools">
+                <div class="wp-cluster wp-cluster--tight">
+                    <x-wp-page-help page="portal.time" />
+                    @include('partials.wp-portal-theme')
+                    @include('partials.wp-portal-lang')
+                </div>
+                @if ($canAct ?? false)
+                    @include('partials.wp-portal-sign-out', ['signOutMethod' => 'signOut'])
+                @endif
             </div>
         </div>
         @unless ($canAct ?? false)
@@ -311,9 +316,6 @@
                     <div class="wp-portal-worker-bar">
                         <div class="wp-card wp-card-pad wp-cluster">
                             <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
-                        </div>
-                        <div class="wp-portal-worker-actions">
-                            @include('partials.wp-portal-sign-out', ['signOutMethod' => 'signOut'])
                         </div>
                     </div>
 

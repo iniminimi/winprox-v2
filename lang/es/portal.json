@@ -98,8 +98,6 @@
         "different_worker": "Iniciar sesión como otro trabajador",
         "no_workers": "Aún no hay trabajadores. Añádalos en Equipo en WinProx; eligen su icono con este QR de Clock Point.",
         "wrong_team": "Este dispositivo pertenece a otro equipo.",
-        "signed_in": "Ha iniciado sesión.",
-        "signed_in_as": "Sesión iniciada como",
         "sign_out": "Cerrar sesión",
         "open_tasks": "Tareas abiertas",
         "open_tasks_with_count": "Tareas abiertas: :count",

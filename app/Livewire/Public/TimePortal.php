@@ -627,7 +627,6 @@ class TimePortal extends Component
         }
 
         $this->sign_in_icon_slug = '';
-        $this->flashMessage = __('portal.worker.signed_in');
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;
@@ -714,7 +713,6 @@ class TimePortal extends Component
         }
 
         $this->pin_code = '';
-        $this->flashMessage = __('portal.worker.signed_in');
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;

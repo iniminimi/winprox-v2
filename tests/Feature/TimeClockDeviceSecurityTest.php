@@ -171,7 +171,7 @@ it('weigert aanmelden met dezelfde worker op een tweede toestel', function () {
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->assertSet('flashMessage', __('portal.worker.signed_in'));
+        ->assertSet('flashMessage', '');
 
     expect($worker->fresh()->clock_device_id)->not->toBeNull();
 
@@ -198,7 +198,7 @@ it('gooit een oude sessie op een tweede toestel eruit', function () {
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->assertSet('flashMessage', __('portal.worker.signed_in'));
+        ->assertSet('flashMessage', '');
 
     $this->flushSession();
 

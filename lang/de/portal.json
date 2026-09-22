@@ -98,8 +98,6 @@
         "different_worker": "Als anderer Mitarbeiter anmelden",
         "no_workers": "Es gibt noch keine Mitarbeiter. Fügen Sie sie unter Team in WinProx hinzu; sie wählen ihr Symbol über diesen Clock-Point-QR.",
         "wrong_team": "Dieses Gerät gehört zu einem anderen Team.",
-        "signed_in": "Sie sind angemeldet.",
-        "signed_in_as": "Angemeldet als",
         "sign_out": "Abmelden",
         "open_tasks": "Offene Aufgaben",
         "open_tasks_with_count": "Offene Aufgaben: :count",

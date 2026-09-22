@@ -3235,7 +3235,9 @@ a.wp-pagination__page:active:not(.is-active) {
 }
 
 .wp-portal-head-top .wp-lang-select,
-.wp-portal-head-top .wp-theme {
+.wp-portal-head-top .wp-theme,
+.wp-portal-head-tools .wp-lang-select,
+.wp-portal-head-tools .wp-theme {
     flex-shrink: 0;
 }
 

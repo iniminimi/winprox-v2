@@ -48,16 +48,21 @@
                     <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="WinProx" style="max-width: 100px; max-height: 100px; object-fit: contain;">
                 @endif
             </span>
-            <div class="wp-cluster wp-cluster--tight">
-                <div wire:key="unit-portal-page-help-{{ $canAct ? 'worker' : 'public' }}">
-                    @if ($canAct)
-                        <x-wp-page-help page="portal.team" :replace="['tenant' => $tenantName]" />
-                    @else
-                        <x-wp-page-help page="portal.unit" :replace="['tenant' => $tenantName]" />
-                    @endif
+            <div class="wp-portal-head-tools">
+                <div class="wp-cluster wp-cluster--tight">
+                    <div wire:key="unit-portal-page-help-{{ $canAct ? 'worker' : 'public' }}">
+                        @if ($canAct)
+                            <x-wp-page-help page="portal.team" :replace="['tenant' => $tenantName]" />
+                        @else
+                            <x-wp-page-help page="portal.unit" :replace="['tenant' => $tenantName]" />
+                        @endif
+                    </div>
+                    @include('partials.wp-portal-theme')
+                    @include('partials.wp-portal-lang')
                 </div>
-                @include('partials.wp-portal-theme')
-                @include('partials.wp-portal-lang')
+                @if ($canAct)
+                    @include('partials.wp-portal-sign-out')
+                @endif
             </div>
         </div>
         <h1 class="wp-portal-welcome-title">{{ __('portal.welcome_title', ['tenant' => $tenantName]) }}</h1>
@@ -352,9 +357,6 @@
                                 </div>
                             @endif
                             <strong class="wp-text-body">{{ $worker?->displayName() }}</strong>
-                        </div>
-                        <div class="wp-portal-worker-actions">
-                            @include('partials.wp-portal-sign-out')
                         </div>
                     </div>
                     @if ($worker?->is_teamleader)

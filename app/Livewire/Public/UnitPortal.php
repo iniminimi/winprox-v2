@@ -904,7 +904,6 @@ class UnitPortal extends Component
         WorkerDeviceSession::ensureUniqueDeviceForWorker($worker);
         WorkerVerification::establishUnitFieldTrust($team, $worker);
         $this->sign_in_icon_slug = '';
-        $this->flashMessage = __('portal.worker.signed_in');
     }
 
     public function startTask(int $taskId, StartTaskAction $startTask): void

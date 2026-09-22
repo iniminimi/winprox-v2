@@ -98,8 +98,6 @@
         "different_worker": "Accedi come altro lavoratore",
         "no_workers": "Non ci sono ancora lavoratori. Aggiungili tramite Team in WinProx; scelgono l'icona con questo QR Clock Point.",
         "wrong_team": "Questo dispositivo appartiene a un altro team.",
-        "signed_in": "È connesso.",
-        "signed_in_as": "Connesso come",
         "sign_out": "Esci",
         "open_tasks": "Attività aperte",
         "open_tasks_with_count": "Attività aperte: :count",

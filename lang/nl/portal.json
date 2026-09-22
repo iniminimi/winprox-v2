@@ -98,8 +98,6 @@
         "different_worker": "Aanmelden als andere medewerker",
         "no_workers": "Er zijn nog geen medewerkers. Voeg ze toe via Team in WinProx; zij kiezen hun icoon via deze Clock Point-QR.",
         "wrong_team": "Dit toestel hoort bij een ander team.",
-        "signed_in": "Je bent aangemeld.",
-        "signed_in_as": "Aangemeld als",
         "sign_out": "Afmelden",
         "open_tasks": "Open taken",
         "open_tasks_with_count": "Open taken: :count",

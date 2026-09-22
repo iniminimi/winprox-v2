@@ -98,8 +98,6 @@
         "different_worker": "Sign in as a different worker",
         "no_workers": "There are no workers yet. Add them via Team in WinProx; they choose their icon via this Clock Point QR.",
         "wrong_team": "This device belongs to a different team.",
-        "signed_in": "You are signed in.",
-        "signed_in_as": "Signed in as",
         "sign_out": "Sign out",
         "open_tasks": "Open tasks",
         "open_tasks_with_count": "Open tasks: :count",
