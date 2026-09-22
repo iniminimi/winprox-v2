@@ -89,7 +89,7 @@
             "clocks_all_locations_hint": "Los ejecutores de este equipo aparecen en cada punto de fichaje sin importar la ubicación.",
             "required_break_minutes": "Pausa mínima (minutos)",
             "required_break_minutes_placeholder": "p. ej. 30",
-            "required_break_minutes_hint": "Vacío o 0 = sin mínimo. Al fichar la salida, WinProx cuenta al menos estos minutos de pausa en el parte de horas si el turno dura más que la pausa. No es una pausa de Clock Point ni un evento CIAO."
+            "required_break_minutes_hint": "Vacío o 0 = sin mínimo. Al fichar la salida, WinProx cuenta al menos estos minutos de pausa en el parte de horas si el turno dura al menos 4 horas. No es una pausa de Clock Point ni un evento CIAO."
         }
     },
     "workers": {

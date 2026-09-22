@@ -631,7 +631,7 @@
                 },
                 {
                     "label": "Minimumpauze",
-                    "text": "Per team kun je een minimum aantal pauzeminuten instellen (bijvoorbeeld 30). Bij uitklokken of sluiten telt WinProx dat minimum op de urenstaat als er minder of geen live pauze is geklokt én de dienst langer duurt dan die pauze. Dat is geen Clock Point-pauze en geen CIAO-event. Op Time → Uren kan een beheerder het minimum nog manueel toepassen of de pauzeminuten corrigeren."
+                    "text": "Per team kun je een minimum aantal pauzeminuten instellen (bijvoorbeeld 30). Bij uitklokken of sluiten telt WinProx dat minimum op de urenstaat als er minder of geen live pauze is geklokt én de dienst minstens 4 uur duurt. Dat is geen Clock Point-pauze en geen CIAO-event. Op Time → Uren kan een beheerder het minimum nog manueel toepassen of de pauzeminuten corrigeren."
                 }
             ]
         },
@@ -1042,7 +1042,7 @@
                 },
                 {
                     "label": "Mijn uren",
-                    "text": "Na aanmelden zie je de tegel Mijn uren. Daar staan alleen jouw diensten van de gekozen maand: in- en uitkloktijd, pauze en gewerkte tijd. Blader met vorige/volgende maand. De getoonde pauze is de urenstaat; die kan het teamminimum bevatten als je geen (of te korte) live pauze klokte."
+                    "text": "Na aanmelden zie je de tegel Mijn uren. Daar staan jouw dagen van de gekozen maand, samengevoegd: eerste inklok, laatste uitklok, gewerkte tijd en pauze. Blader met vorige/volgende maand. Pauze toont «geen» als er geen pauze is. Het teamminimum telt alleen bij diensten van minstens 4 uur."
                 },
                 {
                     "label": "Mijn rooster",
@@ -1292,7 +1292,7 @@
                 },
                 {
                     "label": "Shift sluiten",
-                    "text": "Sluit een open shift met de huidige tijd wanneer iemand is vergeten uit te klokken. De reden gaat in het auditlog. Heeft het team een minimumpauze en duurt de dienst langer, dan telt die op de urenstaat (geen extra CIAO-event)."
+                    "text": "Sluit een open shift met de huidige tijd wanneer iemand is vergeten uit te klokken. De reden gaat in het auditlog. Heeft het team een minimumpauze en duurt de dienst minstens 4 uur, dan telt die op de urenstaat (geen extra CIAO-event)."
                 },
                 {
                     "label": "Clock Point QR",
@@ -1342,7 +1342,7 @@
                 },
                 {
                     "label": "Shift sluiten",
-                    "text": "Open shifts in dit overzicht kunnen hier ook geforceerd worden gesloten, net als op Aanwezigheid. Heeft het team een minimumpauze en duurt de dienst langer, dan telt die op de urenstaat (geen extra CIAO-event)."
+                    "text": "Open shifts in dit overzicht kunnen hier ook geforceerd worden gesloten, net als op Aanwezigheid. Heeft het team een minimumpauze en duurt de dienst minstens 4 uur, dan telt die op de urenstaat (geen extra CIAO-event)."
                 },
                 {
                     "label": "Manueel inklokken",
@@ -1362,7 +1362,7 @@
                 },
                 {
                     "label": "Minimumpauze",
-                    "text": "Als een team een minimumpauze heeft en een gesloten dienst minder pauzeminuten toont, kan een beheerder <strong>Minimumpauze toepassen</strong> (auditlog) of de minuten via <strong>Corrigeren</strong> aanpassen. Bij uitklokken gebeurt het minimum automatisch. Geen extra CIAO IN/OUT."
+                    "text": "Als een team een minimumpauze heeft en een gesloten dienst minder pauzeminuten toont, kan een beheerder <strong>Minimumpauze toepassen</strong> (auditlog) of de minuten via <strong>Corrigeren</strong> aanpassen. Bij uitklokken gebeurt het minimum automatisch als de dienst minstens 4 uur duurt. Geen extra CIAO IN/OUT."
                 }
             ]
         },

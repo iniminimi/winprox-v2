@@ -631,7 +631,7 @@
                 },
                 {
                     "label": "Pausa mínima",
-                    "text": "Por equipo puedes fijar una pausa mínima (por ejemplo 30 minutos). Al fichar la salida o al cerrar, WinProx cuenta ese mínimo en el parte de horas si se fichó menos pausa o ninguna y el turno dura más que la pausa. No es una pausa de Clock Point ni un evento CIAO. En Time → Horas un administrador aún puede aplicar el mínimo manualmente o corregir los minutos de pausa."
+                    "text": "Por equipo puedes fijar una pausa mínima (por ejemplo 30 minutos). Al fichar la salida o al cerrar, WinProx cuenta ese mínimo en el parte de horas si se fichó menos pausa o ninguna y el turno dura al menos 4 horas. No es una pausa de Clock Point ni un evento CIAO. En Time → Horas un administrador aún puede aplicar el mínimo manualmente o corregir los minutos de pausa."
                 }
             ]
         },
@@ -1042,7 +1042,7 @@
                 },
                 {
                     "label": "Mis horas",
-                    "text": "Tras identificarte ves la ficha Mis horas. Solo tus turnos del mes elegido: entrada/salida, pausa y tiempo trabajado. Mes anterior/siguiente. La pausa mostrada es la del parte; puede incluir el mínimo del equipo si no fichaste (suficiente) pausa en vivo."
+                    "text": "Tras identificarte ves la ficha Mis horas. Tus días del mes elegido, agrupados: primer fichaje de entrada, último de salida, tiempo trabajado y pausa. Mes anterior/siguiente. La pausa muestra «ninguna» si no hay pausa. El mínimo del equipo solo cuenta en turnos de al menos 4 horas."
                 },
                 {
                     "label": "Mi cuadrante",
@@ -1292,7 +1292,7 @@
                 },
                 {
                     "label": "Cerrar turno",
-                    "text": "Cierre un turno abierto con la hora actual si alguien olvidó fichar la salida. El motivo va al registro de auditoría. Si el equipo tiene pausa mínima y el turno es bastante largo, cuenta en el parte (sin evento CIAO extra)."
+                    "text": "Cierre un turno abierto con la hora actual si alguien olvidó fichar la salida. El motivo va al registro de auditoría. Si el equipo tiene pausa mínima y el turno dura al menos 4 horas, cuenta en el parte (sin evento CIAO extra)."
                 },
                 {
                     "label": "QR Clock Point",
@@ -1342,7 +1342,7 @@
                 },
                 {
                     "label": "Cerrar turno",
-                    "text": "Los turnos abiertos de esta lista también se pueden cerrar aquí, como en Presencia. Si el equipo tiene pausa mínima y el turno es bastante largo, cuenta en el parte (sin evento CIAO extra)."
+                    "text": "Los turnos abiertos de esta lista también se pueden cerrar aquí, como en Presencia. Si el equipo tiene pausa mínima y el turno dura al menos 4 horas, cuenta en el parte (sin evento CIAO extra)."
                 },
                 {
                     "label": "Fichar manualmente",
@@ -1362,7 +1362,7 @@
                 },
                 {
                     "label": "Pausa mínima",
-                    "text": "Si un equipo tiene pausa mínima y un turno cerrado muestra menos minutos, un administrador puede <strong>Aplicar pausa mínima</strong> (registro de auditoría) o cambiar los minutos con <strong>Corregir</strong>. Al fichar la salida el mínimo se aplica solo. Sin IN/OUT CIAO extra."
+                    "text": "Si un equipo tiene pausa mínima y un turno cerrado muestra menos minutos, un administrador puede <strong>Aplicar pausa mínima</strong> (registro de auditoría) o cambiar los minutos con <strong>Corregir</strong>. Al fichar la salida el mínimo se aplica solo si el turno dura al menos 4 horas. Sin IN/OUT CIAO extra."
                 }
             ]
         },

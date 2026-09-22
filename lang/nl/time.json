@@ -326,7 +326,14 @@
             "total": "Totaal deze maand: :duration",
             "month_nav": "Maand",
             "previous_month": "Vorige maand",
-            "next_month": "Volgende maand"
+            "next_month": "Volgende maand",
+            "day_title": ":date (:status)",
+            "status_open": "open",
+            "status_closed": "gesloten",
+            "day_line": "In : :in - Uit : :out - gewerkt : :worked",
+            "out_open": "—",
+            "break_line": "Pauze : :break",
+            "break_none": "geen"
         },
         "schedule": {
             "tile": "Mijn rooster",
@@ -440,7 +447,7 @@
             "no_team_minimum": "Dit team heeft geen minimumpauze.",
             "shift_still_open": "Open diensten kunnen geen minimumpauze krijgen.",
             "shift_missing_clock_out": "Deze dienst heeft geen uitkloktijd.",
-            "shift_too_short": "De dienst is te kort voor de minimumpauze.",
+            "shift_too_short": "De dienst duurt minder dan 4 uur; de minimumpauze geldt niet.",
             "tenant_mismatch": "Deze dienst hoort niet bij deze organisatie."
         }
     },

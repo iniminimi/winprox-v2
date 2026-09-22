@@ -3294,6 +3294,25 @@ a.wp-pagination__page:active:not(.is-active) {
     background-color: var(--wp-warning-soft);
 }
 
+.wp-portal-hours-list {
+    gap: 0.5rem;
+}
+
+.wp-portal-hours-day {
+    padding: 0.625rem 0.75rem;
+}
+
+.wp-portal-hours-day p {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--wp-text-body);
+}
+
+.wp-portal-hours-day strong {
+    font-size: 0.875rem;
+}
+
 .wp-portal-schedule__row--today > td:first-child {
     border-radius: var(--wp-radius) 0 0 var(--wp-radius);
     padding-left: 0.4rem;

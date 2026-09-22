@@ -631,7 +631,7 @@
                 },
                 {
                     "label": "Minimum break",
-                    "text": "Per team you can set a minimum unpaid break (for example 30 minutes). On clock-out or close, WinProx counts that minimum on the timesheet if less or no live break was clocked and the shift is longer than the break. That is not a Clock Point break and not a CIAO event. On Time → Hours an admin can still apply the minimum manually or correct break minutes."
+                    "text": "Per team you can set a minimum unpaid break (for example 30 minutes). On clock-out or close, WinProx counts that minimum on the timesheet if less or no live break was clocked and the shift lasts at least 4 hours. That is not a Clock Point break and not a CIAO event. On Time → Hours an admin can still apply the minimum manually or correct break minutes."
                 }
             ]
         },
@@ -1042,7 +1042,7 @@
                 },
                 {
                     "label": "My hours",
-                    "text": "After sign-in you see the My hours tile. It lists only your shifts for the selected month: clock-in/out, break and time worked. Browse previous/next month. The break shown is the timesheet value; it may include the team minimum if you clocked no (or too short a) live break."
+                    "text": "After sign-in you see the My hours tile. It lists your days for the selected month, merged: first clock-in, last clock-out, time worked and break. Browse previous/next month. Break shows “none” when there is no break. The team minimum only applies on shifts of at least 4 hours."
                 },
                 {
                     "label": "My roster",
@@ -1292,7 +1292,7 @@
                 },
                 {
                     "label": "Close shift",
-                    "text": "Close an open shift at the current time when someone forgot to clock out. The reason goes in the audit log. If the team has a minimum break and the shift is long enough, it is counted on the timesheet (no extra CIAO event)."
+                    "text": "Close an open shift at the current time when someone forgot to clock out. The reason goes in the audit log. If the team has a minimum break and the shift lasts at least 4 hours, it is counted on the timesheet (no extra CIAO event)."
                 },
                 {
                     "label": "Clock Point QR",
@@ -1342,7 +1342,7 @@
                 },
                 {
                     "label": "Close shift",
-                    "text": "Open shifts in this list can also be force-closed here, as on Presence. If the team has a minimum break and the shift is long enough, it is counted on the timesheet (no extra CIAO event)."
+                    "text": "Open shifts in this list can also be force-closed here, as on Presence. If the team has a minimum break and the shift lasts at least 4 hours, it is counted on the timesheet (no extra CIAO event)."
                 },
                 {
                     "label": "Clock in manually",
@@ -1362,7 +1362,7 @@
                 },
                 {
                     "label": "Minimum break",
-                    "text": "If a team has a minimum break and a closed shift shows fewer break minutes, an admin can <strong>Apply minimum break</strong> (audit log) or change minutes via <strong>Correct</strong>. On clock-out the minimum is applied automatically. No extra CIAO IN/OUT."
+                    "text": "If a team has a minimum break and a closed shift shows fewer break minutes, an admin can <strong>Apply minimum break</strong> (audit log) or change minutes via <strong>Correct</strong>. On clock-out the minimum is applied automatically if the shift lasts at least 4 hours. No extra CIAO IN/OUT."
                 }
             ]
         },

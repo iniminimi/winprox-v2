@@ -326,7 +326,14 @@
             "total": "Summe diesen Monat: :duration",
             "month_nav": "Monat",
             "previous_month": "Vorheriger Monat",
-            "next_month": "Nächster Monat"
+            "next_month": "Nächster Monat",
+            "day_title": ":date (:status)",
+            "status_open": "offen",
+            "status_closed": "geschlossen",
+            "day_line": "In : :in - Aus : :out - gearbeitet : :worked",
+            "out_open": "—",
+            "break_line": "Pause : :break",
+            "break_none": "keine"
         },
         "schedule": {
             "tile": "Mein Dienstplan",
@@ -440,7 +447,7 @@
             "no_team_minimum": "Dieses Team hat keine Mindestpause.",
             "shift_still_open": "Offene Schichten können keine Mindestpause erhalten.",
             "shift_missing_clock_out": "Diese Schicht hat keine Ausstempelzeit.",
-            "shift_too_short": "Die Schicht ist zu kurz für die Mindestpause.",
+            "shift_too_short": "Die Schicht dauert weniger als 4 Stunden; die Mindestpause gilt nicht.",
             "tenant_mismatch": "Diese Schicht gehört nicht zu dieser Organisation."
         }
     },

@@ -52,8 +52,7 @@ class ApplyRequiredBreakToWorkShiftAction
             $resolved = $this->resolveBreakMinutes->handle($locked, $before, $locked->clock_out_at);
 
             if ($resolved <= $before) {
-                $durationMinutes = max(0, (int) $locked->clock_in_at->diffInMinutes($locked->clock_out_at));
-                if ($durationMinutes <= $required) {
+                if (! $this->resolveBreakMinutes->qualifiesForRequiredBreak($locked, $locked->clock_out_at)) {
                     throw new InvalidArgumentException('shift_too_short');
                 }
 

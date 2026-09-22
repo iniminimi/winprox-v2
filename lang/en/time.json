@@ -326,7 +326,14 @@
             "total": "Total this month: :duration",
             "month_nav": "Month",
             "previous_month": "Previous month",
-            "next_month": "Next month"
+            "next_month": "Next month",
+            "day_title": ":date (:status)",
+            "status_open": "open",
+            "status_closed": "closed",
+            "day_line": "In : :in - Out : :out - worked : :worked",
+            "out_open": "—",
+            "break_line": "Break : :break",
+            "break_none": "none"
         },
         "schedule": {
             "tile": "My roster",
@@ -440,7 +447,7 @@
             "no_team_minimum": "This team has no minimum break.",
             "shift_still_open": "Open shifts cannot receive a minimum break.",
             "shift_missing_clock_out": "This shift has no clock-out time.",
-            "shift_too_short": "The shift is too short for the minimum break.",
+            "shift_too_short": "The shift is shorter than 4 hours, so the minimum break does not apply.",
             "tenant_mismatch": "This shift does not belong to this organisation."
         }
     },

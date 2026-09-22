@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Time\ApplyRequiredBreakToWorkShiftAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\ForceCloseWorkShiftAction;
@@ -118,6 +119,79 @@ it('past geen teamminimum toe op een te korte dienst', function () {
     $closed = app(ClockOutAction::class)->handle($worker, $clockPoint);
 
     expect($closed->total_break_minutes)->toBe(0);
+});
+
+it('past geen teamminimum toe onder 4 uur bruto', function () {
+    [$tenant] = requiredBreakTenant();
+    $team = InternalTeam::factory()->create([
+        'tenant_id' => $tenant->id,
+        'required_break_minutes' => 30,
+    ]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $now = now();
+    $this->travelTo($now);
+
+    $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+    $shift->update(['clock_in_at' => $now->copy()->subMinutes(239)]);
+
+    $closed = app(ClockOutAction::class)->handle($worker, $clockPoint);
+
+    expect($closed->total_break_minutes)->toBe(0);
+});
+
+it('past het teamminimum toe vanaf 4 uur bruto', function () {
+    [$tenant] = requiredBreakTenant();
+    $team = InternalTeam::factory()->create([
+        'tenant_id' => $tenant->id,
+        'required_break_minutes' => 30,
+    ]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $now = now();
+    $this->travelTo($now);
+
+    $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+    $shift->update(['clock_in_at' => $now->copy()->subMinutes(240)]);
+
+    $closed = app(ClockOutAction::class)->handle($worker, $clockPoint);
+
+    expect($closed->total_break_minutes)->toBe(30);
+});
+
+it('weigert manueel teamminimum onder 4 uur', function () {
+    [$tenant, $admin] = requiredBreakTenant();
+    $team = InternalTeam::factory()->create([
+        'tenant_id' => $tenant->id,
+        'required_break_minutes' => 30,
+    ]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $shift = WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'clock_out_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => now()->subHours(3),
+        'clock_out_at' => now(),
+        'total_break_minutes' => 0,
+    ]);
+
+    expect(fn () => app(ApplyRequiredBreakToWorkShiftAction::class)->handle(
+        $shift,
+        (int) $tenant->id,
+        $admin->id,
+    ))->toThrow(InvalidArgumentException::class, 'shift_too_short');
 });
 
 it('laat pauzeminuten ongewijzigd als het team geen minimum heeft', function () {

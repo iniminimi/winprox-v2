@@ -118,9 +118,10 @@ it('toont alleen de eigen diensten van de aangemelde uitvoerder', function () {
         ->assertSet('hoursListOpen', true)
         ->assertDontSeeHtml('wire:click="signOut"')
         ->assertSee(__('time.portal.hours.title'), false)
-        ->assertSee('Poort Noord', false)
-        ->assertSee('08:00', false)
-        ->assertSee('16:30', false)
+        ->assertSee($day->format('d-m-Y').' ('.__('time.portal.hours.status_closed').')', false)
+        ->assertSee('In : 08:00'.__('time.duration.hour_short'), false)
+        ->assertSee('16:30'.__('time.duration.hour_short'), false)
+        ->assertDontSee('Poort Noord', false)
         ->assertDontSee('Poort Geheim', false)
         ->assertDontSee('Bram Buiten', false);
 });
@@ -158,6 +159,55 @@ it('weigert de urenlijst via Livewire-state', function () {
 
     $component->assertSet('hoursListOpen', false)
         ->assertDontSee(__('time.portal.hours.empty'), false);
+});
+
+it('voegt meerdere inklokken van dezelfde dag samen', function () {
+    [$tenant, $team, $clockPoint, $worker] = hoursPortalTenant();
+    $day = now()->startOfMonth()->addDays(4)->setTime(9, 45);
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'clock_out_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => $day,
+        'clock_out_at' => $day->copy()->setTime(10, 26),
+        'total_break_minutes' => 0,
+        'status' => WorkShiftStatus::Closed,
+    ]);
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'clock_out_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => $day->copy()->setTime(13, 0),
+        'clock_out_at' => $day->copy()->setTime(14, 10),
+        'total_break_minutes' => 15,
+        'status' => WorkShiftStatus::Closed,
+    ]);
+
+    $hours = app(ListWorkerHoursAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        now()->startOfMonth(),
+        now()->endOfMonth(),
+    );
+
+    expect($hours->shifts)->toHaveCount(2)
+        ->and($hours->days)->toHaveCount(1)
+        ->and($hours->days->first()->title)->toBe($day->format('d-m-Y').' ('.__('time.portal.hours.status_closed').')')
+        ->and($hours->days->first()->timesLine)->toContain('In : 09:45'.__('time.duration.hour_short'))
+        ->and($hours->days->first()->timesLine)->toContain('14:10'.__('time.duration.hour_short'))
+        ->and($hours->days->first()->breakLine)->toBe(__('time.portal.hours.break_line', [
+            'break' => '15 '.__('time.duration.minute_short'),
+        ]));
+
+    signInHoursWorker($clockPoint)
+        ->call('openHours')
+        ->assertSee($hours->days->first()->title, false)
+        ->assertSee($hours->days->first()->timesLine, false)
+        ->assertSee($hours->days->first()->breakLine, false);
 });
 
 it('isoleert eigen uren per tenant in de Action', function () {

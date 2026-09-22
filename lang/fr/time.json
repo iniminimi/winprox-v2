@@ -326,7 +326,14 @@
             "total": "Total ce mois-ci : :duration",
             "month_nav": "Mois",
             "previous_month": "Mois précédent",
-            "next_month": "Mois suivant"
+            "next_month": "Mois suivant",
+            "day_title": ":date (:status)",
+            "status_open": "ouvert",
+            "status_closed": "fermé",
+            "day_line": "In : :in - Out : :out - travaillé : :worked",
+            "out_open": "—",
+            "break_line": "Pause : :break",
+            "break_none": "aucune"
         },
         "schedule": {
             "tile": "Mon planning",
@@ -440,7 +447,7 @@
             "no_team_minimum": "Cette équipe n’a pas de pause minimale.",
             "shift_still_open": "Les services ouverts ne peuvent pas recevoir la pause minimale.",
             "shift_missing_clock_out": "Ce service n’a pas d’heure de sortie.",
-            "shift_too_short": "Le service est trop court pour la pause minimale.",
+            "shift_too_short": "Le service dure moins de 4 heures ; la pause minimale ne s’applique pas.",
             "tenant_mismatch": "Ce service n’appartient pas à cette organisation."
         }
     },

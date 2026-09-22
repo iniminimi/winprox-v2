@@ -631,7 +631,7 @@
                 },
                 {
                     "label": "Pausa minima",
-                    "text": "Per team puoi impostare una pausa minima (ad esempio 30 minuti). All’uscita o alla chiusura WinProx conta quel minimo sul foglio ore se è stata timbrata meno pausa (o nessuna) e il turno dura più della pausa. Non è una pausa Clock Point né un evento CIAO. In Time → Ore un admin può ancora applicare il minimo manualmente o correggere i minuti di pausa."
+                    "text": "Per team puoi impostare una pausa minima (ad esempio 30 minuti). All’uscita o alla chiusura WinProx conta quel minimo sul foglio ore se è stata timbrata meno pausa (o nessuna) e il turno dura almeno 4 ore. Non è una pausa Clock Point né un evento CIAO. In Time → Ore un admin può ancora applicare il minimo manualmente o correggere i minuti di pausa."
                 }
             ]
         },
@@ -1042,7 +1042,7 @@
                 },
                 {
                     "label": "Le mie ore",
-                    "text": "Dopo l’accesso vedi il riquadro Le mie ore. Solo i tuoi turni del mese scelto: ingresso/uscita, pausa e tempo lavorato. Mese precedente/successivo. La pausa mostrata è quella del foglio ore; può includere il minimo del team se non hai timbrato (abbastanza) pausa live."
+                    "text": "Dopo l’accesso vedi il riquadro Le mie ore. I tuoi giorni del mese scelto, raggruppati: prima timbratura in, ultima uscita, tempo lavorato e pausa. Mese precedente/successivo. La pausa mostra «nessuna» se non c’è pausa. Il minimo del team vale solo per turni di almeno 4 ore."
                 },
                 {
                     "label": "Il mio turno",
@@ -1292,7 +1292,7 @@
                 },
                 {
                     "label": "Chiudi turno",
-                    "text": "Chiuda un turno aperto all’ora attuale se qualcuno ha dimenticato di timbrare l’uscita. Il motivo va nel log di audit. Se il team ha una pausa minima e il turno è abbastanza lungo, conta sul foglio ore (nessun evento CIAO extra)."
+                    "text": "Chiuda un turno aperto all’ora attuale se qualcuno ha dimenticato di timbrare l’uscita. Il motivo va nel log di audit. Se il team ha una pausa minima e il turno dura almeno 4 ore, conta sul foglio ore (nessun evento CIAO extra)."
                 },
                 {
                     "label": "QR Clock Point",
@@ -1342,7 +1342,7 @@
                 },
                 {
                     "label": "Chiudi turno",
-                    "text": "I turni aperti di questo elenco si possono chiudere anche qui, come in Presenza. Se il team ha una pausa minima e il turno è abbastanza lungo, conta sul foglio ore (nessun evento CIAO extra)."
+                    "text": "I turni aperti di questo elenco si possono chiudere anche qui, come in Presenza. Se il team ha una pausa minima e il turno dura almeno 4 ore, conta sul foglio ore (nessun evento CIAO extra)."
                 },
                 {
                     "label": "Timbratura manuale",
@@ -1362,7 +1362,7 @@
                 },
                 {
                     "label": "Pausa minima",
-                    "text": "Se un team ha una pausa minima e un turno chiuso mostra meno minuti, un admin può <strong>Applica pausa minima</strong> (audit log) o modificare i minuti con <strong>Correggi</strong>. All’uscita il minimo si applica automaticamente. Nessun IN/OUT CIAO extra."
+                    "text": "Se un team ha una pausa minima e un turno chiuso mostra meno minuti, un admin può <strong>Applica pausa minima</strong> (audit log) o modificare i minuti con <strong>Correggi</strong>. All’uscita il minimo si applica automaticamente se il turno dura almeno 4 ore. Nessun IN/OUT CIAO extra."
                 }
             ]
         },

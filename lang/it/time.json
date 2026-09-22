@@ -326,7 +326,14 @@
             "total": "Totale questo mese: :duration",
             "month_nav": "Mese",
             "previous_month": "Mese precedente",
-            "next_month": "Mese successivo"
+            "next_month": "Mese successivo",
+            "day_title": ":date (:status)",
+            "status_open": "aperto",
+            "status_closed": "chiuso",
+            "day_line": "In : :in - Out : :out - lavorato : :worked",
+            "out_open": "—",
+            "break_line": "Pausa : :break",
+            "break_none": "nessuna"
         },
         "schedule": {
             "tile": "Il mio turno",
@@ -440,7 +447,7 @@
             "no_team_minimum": "Questo team non ha una pausa minima.",
             "shift_still_open": "I turni aperti non possono ricevere la pausa minima.",
             "shift_missing_clock_out": "Questo turno non ha un orario di uscita.",
-            "shift_too_short": "Il turno è troppo breve per la pausa minima.",
+            "shift_too_short": "Il turno dura meno di 4 ore; la pausa minima non si applica.",
             "tenant_mismatch": "Questo turno non appartiene a questa organizzazione."
         }
     },

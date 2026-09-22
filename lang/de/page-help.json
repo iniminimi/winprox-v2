@@ -631,7 +631,7 @@
                 },
                 {
                     "label": "Mindestpause",
-                    "text": "Pro Team können Sie eine Mindestpause festlegen (z. B. 30 Minuten). Beim Ausstempeln oder Schließen zählt WinProx dieses Minimum auf der Stundenliste, wenn weniger oder keine Live-Pause gestempelt wurde und die Schicht länger dauert als die Pause. Das ist keine Clock-Point-Pause und kein CIAO-Ereignis. Unter Time → Stunden kann ein Admin das Minimum noch manuell anwenden oder Pauseminuten korrigieren."
+                    "text": "Pro Team können Sie eine Mindestpause festlegen (z. B. 30 Minuten). Beim Ausstempeln oder Schließen zählt WinProx dieses Minimum auf der Stundenliste, wenn weniger oder keine Live-Pause gestempelt wurde und die Schicht mindestens 4 Stunden dauert. Das ist keine Clock-Point-Pause und kein CIAO-Ereignis. Unter Time → Stunden kann ein Admin das Minimum noch manuell anwenden oder Pauseminuten korrigieren."
                 }
             ]
         },
@@ -1042,7 +1042,7 @@
                 },
                 {
                     "label": "Meine Stunden",
-                    "text": "Nach der Anmeldung sehen Sie die Kachel Meine Stunden. Dort stehen nur Ihre Schichten des gewählten Monats: Ein-/Ausstempelzeit, Pause und Arbeitszeit. Vorheriger/nächster Monat. Die angezeigte Pause ist der Stundenlistenwert; sie kann das Teamminimum enthalten, wenn Sie keine (oder zu kurze) Live-Pause gestempelt haben."
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Meine Stunden. Dort stehen Ihre Tage des gewählten Monats, zusammengefasst: erstes Einstempeln, letztes Ausstempeln, Arbeitszeit und Pause. Vorheriger/nächster Monat. Pause zeigt „keine“, wenn es keine Pause gibt. Das Teamminimum gilt nur bei Schichten von mindestens 4 Stunden."
                 },
                 {
                     "label": "Mein Dienstplan",
@@ -1292,7 +1292,7 @@
                 },
                 {
                     "label": "Schicht schließen",
-                    "text": "Schließen Sie eine offene Schicht mit der aktuellen Zeit, wenn jemand das Ausstempeln vergessen hat. Der Grund steht im Auditlog. Hat das Team eine Mindestpause und die Schicht dauert länger, zählt sie auf der Stundenliste (kein extra CIAO-Ereignis)."
+                    "text": "Schließen Sie eine offene Schicht mit der aktuellen Zeit, wenn jemand das Ausstempeln vergessen hat. Der Grund steht im Auditlog. Hat das Team eine Mindestpause und die Schicht dauert mindestens 4 Stunden, zählt sie auf der Stundenliste (kein extra CIAO-Ereignis)."
                 },
                 {
                     "label": "Clock Point QR",
@@ -1342,7 +1342,7 @@
                 },
                 {
                     "label": "Schicht schließen",
-                    "text": "Offene Schichten in dieser Liste können hier ebenfalls zwangsweise geschlossen werden, wie unter Anwesenheit. Hat das Team eine Mindestpause und die Schicht dauert länger, zählt sie auf der Stundenliste (kein extra CIAO-Ereignis)."
+                    "text": "Offene Schichten in dieser Liste können hier ebenfalls zwangsweise geschlossen werden, wie unter Anwesenheit. Hat das Team eine Mindestpause und die Schicht dauert mindestens 4 Stunden, zählt sie auf der Stundenliste (kein extra CIAO-Ereignis)."
                 },
                 {
                     "label": "Manuell einstempeln",
@@ -1362,7 +1362,7 @@
                 },
                 {
                     "label": "Mindestpause",
-                    "text": "Hat ein Team eine Mindestpause und eine geschlossene Schicht weniger Pauseminuten, kann ein Admin <strong>Mindestpause anwenden</strong> (Auditlog) oder die Minuten über <strong>Korrigieren</strong> ändern. Beim Ausstempeln gilt das Minimum automatisch. Kein zusätzliches CIAO IN/OUT."
+                    "text": "Hat ein Team eine Mindestpause und eine geschlossene Schicht weniger Pauseminuten, kann ein Admin <strong>Mindestpause anwenden</strong> (Auditlog) oder die Minuten über <strong>Korrigieren</strong> ändern. Beim Ausstempeln gilt das Minimum automatisch, wenn die Schicht mindestens 4 Stunden dauert. Kein zusätzliches CIAO IN/OUT."
                 }
             ]
         },

@@ -639,7 +639,7 @@
                 },
                 {
                     "label": "Pause minimale",
-                    "text": "Par équipe, vous pouvez fixer une pause minimale (par exemple 30 minutes). À la sortie ou à la clôture, WinProx compte ce minimum sur la feuille d’heures s’il y a eu moins de pause (ou aucune) et si le service dure plus longtemps que la pause. Ce n’est pas une pause Clock Point ni un événement CIAO. Dans Time → Heures, un admin peut encore appliquer le minimum manuellement ou corriger les minutes de pause."
+                    "text": "Par équipe, vous pouvez fixer une pause minimale (par exemple 30 minutes). À la sortie ou à la clôture, WinProx compte ce minimum sur la feuille d’heures s’il y a eu moins de pause (ou aucune) et si le service dure au moins 4 heures. Ce n’est pas une pause Clock Point ni un événement CIAO. Dans Time → Heures, un admin peut encore appliquer le minimum manuellement ou corriger les minutes de pause."
                 }
             ]
         },
@@ -1050,7 +1050,7 @@
                 },
                 {
                     "label": "Mes heures",
-                    "text": "Après connexion, la tuile Mes heures n’affiche que vos services du mois choisi : entrée/sortie, pause et temps travaillé. Mois précédent/suivant. La pause affichée est celle de la feuille d’heures ; elle peut inclure le minimum d’équipe si vous n’avez pas (assez) pointé de pause live."
+                    "text": "Après connexion, la tuile Mes heures affiche vos jours du mois choisi, regroupés : première entrée, dernière sortie, temps travaillé et pause. Mois précédent/suivant. La pause affiche « aucune » s’il n’y a pas de pause. Le minimum d’équipe ne compte que pour les services d’au moins 4 heures."
                 },
                 {
                     "label": "Mon planning",
@@ -1300,7 +1300,7 @@
                 },
                 {
                     "label": "Fermer le shift",
-                    "text": "Fermez un shift ouvert à l’heure actuelle si quelqu’un a oublié de pointer la sortie. Le motif va au journal d’audit. Si l’équipe a une pause minimale et que le service est assez long, elle compte sur la feuille d’heures (pas d’événement CIAO extra)."
+                    "text": "Fermez un shift ouvert à l’heure actuelle si quelqu’un a oublié de pointer la sortie. Le motif va au journal d’audit. Si l’équipe a une pause minimale et que le service dure au moins 4 heures, elle compte sur la feuille d’heures (pas d’événement CIAO extra)."
                 },
                 {
                     "label": "QR Clock Point",
@@ -1350,7 +1350,7 @@
                 },
                 {
                     "label": "Fermer le shift",
-                    "text": "Les services ouverts de cette liste peuvent aussi être fermés ici, comme sur Présence. Si l’équipe a une pause minimale et que le service est assez long, elle compte sur la feuille d’heures (pas d’événement CIAO extra)."
+                    "text": "Les services ouverts de cette liste peuvent aussi être fermés ici, comme sur Présence. Si l’équipe a une pause minimale et que le service dure au moins 4 heures, elle compte sur la feuille d’heures (pas d’événement CIAO extra)."
                 },
                 {
                     "label": "Pointer manuellement",
@@ -1370,7 +1370,7 @@
                 },
                 {
                     "label": "Pause minimale",
-                    "text": "Si une équipe a une pause minimale et qu’un service clos affiche moins de minutes, un admin peut <strong>Appliquer la pause minimale</strong> (journal d’audit) ou modifier les minutes via <strong>Corriger</strong>. À la sortie, le minimum s’applique automatiquement. Pas d’IN/OUT CIAO supplémentaire."
+                    "text": "Si une équipe a une pause minimale et qu’un service clos affiche moins de minutes, un admin peut <strong>Appliquer la pause minimale</strong> (journal d’audit) ou modifier les minutes via <strong>Corriger</strong>. À la sortie, le minimum s’applique automatiquement si le service dure au moins 4 heures. Pas d’IN/OUT CIAO supplémentaire."
                 }
             ]
         },

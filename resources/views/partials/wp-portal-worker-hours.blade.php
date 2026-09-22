@@ -12,32 +12,17 @@
 
 <p class="wp-muted">{{ __('time.portal.hours.total', ['duration' => \App\Support\Time\WorkDurationFormatter::format($hours->totalNetMinutes)]) }}</p>
 
-@if ($hours->shifts->isEmpty())
+@if ($hours->days->isEmpty())
     <div class="wp-card wp-card-pad">
         <p class="wp-muted">{{ __('time.portal.hours.empty') }}</p>
     </div>
 @else
-    <div class="wp-list">
-        @foreach ($hours->shifts as $shift)
-            <div class="wp-card wp-card-pad wp-stack" wire:key="hours-shift-{{ $shift->id }}">
-                <div class="wp-cluster">
-                    <strong class="wp-text-body">{{ $shift->clock_in_at->format('d-m-Y') }}</strong>
-                    <span class="wp-pill wp-pill--{{ $shift->status->isOpen() ? 'progress' : 'done' }}">{{ __('time.status.'.$shift->status->value) }}</span>
-                    @if ($shift->isManuallyClockedIn())
-                        <span class="wp-pill wp-pill--done">{{ __('time.manual_clock_in.badge') }}</span>
-                    @endif
-                </div>
-                <p class="wp-muted">
-                    {{ $shift->clock_in_at->format('H:i') }}
-                    @if ($shift->clock_out_at)
-                        – {{ $shift->clock_out_at->format('H:i') }}
-                    @endif
-                </p>
-                <p class="wp-muted">
-                    {{ __('time.shifts.break_minutes', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->total_break_minutes)]) }}
-                    &middot; {{ __('time.shifts.worked', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->netWorkMinutes())]) }}
-                </p>
-                @include('partials.wp-time-shift-punches', ['shift' => $shift])
+    <div class="wp-list wp-portal-hours-list">
+        @foreach ($hours->days as $day)
+            <div class="wp-card wp-portal-hours-day wp-stack-tight" wire:key="hours-day-{{ $day->dateKey }}">
+                <p><strong>{{ $day->title }}</strong></p>
+                <p>{{ $day->timesLine }}</p>
+                <p>{{ $day->breakLine }}</p>
             </div>
         @endforeach
     </div>
