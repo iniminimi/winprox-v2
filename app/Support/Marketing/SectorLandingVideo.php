@@ -51,7 +51,7 @@ final class SectorLandingVideo
         }
 
         if ($landing === PromoLanding::WorkOnLocation) {
-            $fallback = 'video/welcome.mp4';
+            $fallback = 'video/welcome_cleaning.mp4';
             if (is_file(public_path($fallback))) {
                 return $fallback;
             }

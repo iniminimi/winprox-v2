@@ -216,7 +216,7 @@ it('toont de schoonmaak- en bouwlanding', function () {
         ->assertSee('wp-landing-block--wide-photo', false)
         ->assertSee('wp-landing-close--scrim', false)
         ->assertSee('id="landing-video"', false)
-        ->assertSee('video/welcome.mp4', false)
+        ->assertSee('video/welcome_cleaning.mp4', false)
         ->assertDontSee(__('landings.shared.video_placeholder', [], 'nl'))
         ->assertDontSee('Bekijk demo', false)
         ->assertDontSee('langdurig contract', false);
@@ -226,7 +226,7 @@ it('toont de schoonmaak- en bouwlanding', function () {
         ->assertSee(__('landings.work-on-location.title', [], 'fr'))
         ->assertSee(__('landings.work-on-location.problem.title', [], 'fr'))
         ->assertSee('id="landing-video"', false)
-        ->assertSee('video/welcome.mp4', false);
+        ->assertSee('video/welcome_cleaning.mp4', false);
 });
 
 it('toont taalkeuze bovenaan een sectorlanding', function () {
