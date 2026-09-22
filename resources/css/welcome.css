@@ -454,30 +454,30 @@
     }
 
     /*
-     * Empty in-flow box stretches to the text column height.
-     * Absolutely positioned img cannot inflate the row or float over the next section.
-     * Replaced elements ignore top+bottom with height:auto — set height:100% explicitly.
+     * Grid item min-height:0 so the tall phone does not set the row height.
+     * Fig stretches to the text column; img scales with max-height:100%.
      */
     [data-theme='standard'] .wp-landing-visual--match-copy {
-        position: relative;
+        align-self: stretch;
+        min-height: 0;
         width: 100%;
         max-width: none;
         margin: 0;
-        min-height: 0;
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
     }
 
     [data-theme='standard'] .wp-landing-visual--match-copy .wp-welcome-screenshot__img {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        position: static;
         width: auto;
-        height: 100%;
+        height: auto;
         max-width: 100%;
         max-height: 100%;
         object-fit: contain;
         object-position: top center;
+        transform: none;
     }
 }
 
