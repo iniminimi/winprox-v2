@@ -51,4 +51,14 @@ class AbsenceRequest extends Model
     {
         return $this->belongsTo(User::class, 'decided_by_user_id');
     }
+
+    public function workerMayWithdraw(): bool
+    {
+        if ($this->status === AbsenceRequestStatus::Pending) {
+            return true;
+        }
+
+        return $this->status === AbsenceRequestStatus::Approved
+            && $this->date_from->toDateString() >= now()->toDateString();
+    }
 }

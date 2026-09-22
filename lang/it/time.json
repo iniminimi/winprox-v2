@@ -373,9 +373,9 @@
         },
         "absence": {
             "tile": "Ferie / Recupero",
-            "tile_sub": "Richiedi ferie o recupero",
+            "tile_sub": "Richiedi o ritira",
             "title": "Ferie / Recupero",
-            "subtitle": "Solo le tue richieste. La gestione decide con un motivo.",
+            "subtitle": "Vedi le tue richieste e ritirale. La gestione approva o rifiuta.",
             "kind": "Tipo",
             "date_from": "Dal",
             "date_to": "Al",
@@ -383,6 +383,10 @@
             "submit": "Richiedi",
             "empty": "Nessuna richiesta.",
             "cancel": "Ritira",
+            "list_title": "Le tue richieste",
+            "form_title": "Nuova richiesta",
+            "cancel_confirm": "Ritirare questa richiesta?",
+            "cancel_approved_confirm": "Ritirare queste ferie o recupero approvati? Il turno ripristina i servizi precedenti.",
             "submitted": "Richiesta inviata.",
             "cancelled": "Richiesta ritirata.",
             "decision": "Decisione"
@@ -626,7 +630,9 @@
             "overlapping_pending": "C’è già una richiesta aperta che si sovrappone a questi giorni.",
             "not_pending": "Questa richiesta è già stata gestita.",
             "not_owner": "Puoi ritirare solo la tua richiesta.",
-            "reason_required": "Il motivo è obbligatorio (almeno 3 caratteri)."
+            "reason_required": "Il motivo è obbligatorio (almeno 3 caratteri).",
+            "already_started": "Queste ferie o questo recupero sono già iniziati. Non si può più ritirare.",
+            "not_cancellable": "Non puoi ritirare questa richiesta."
         }
     }
 }

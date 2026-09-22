@@ -145,6 +145,83 @@ it('trekt een eigen open aanvraag in', function () {
     expect($cancelled->status)->toBe(AbsenceRequestStatus::Cancelled);
 });
 
+it('zet het rooster terug bij intrekken van goedgekeurd verlof', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-23',
+        'status' => PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'break_minutes' => 0,
+        'unit_code' => 'G1',
+        'unit_name' => 'Groep 1',
+    ]);
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-23'),
+    );
+    app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(true, ''),
+        $admin,
+    );
+
+    $cancelled = app(CancelAbsenceRequestAction::class)->handle($tenant, $worker, $request->fresh());
+
+    expect($cancelled->status)->toBe(AbsenceRequestStatus::Cancelled);
+
+    $restored = PlannedShift::query()
+        ->where('worker_id', $worker->id)
+        ->whereDate('work_date', '2026-09-23')
+        ->first();
+
+    expect($restored)->not->toBeNull()
+        ->and($restored->kind)->toBe(ShiftTypeKind::Work)
+        ->and($restored->start_time)->toBe('09:00')
+        ->and($restored->unit_code)->toBe('G1');
+});
+
+it('weigert intrekken van al begonnen goedgekeurd verlof', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-23'),
+    );
+    app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(true, ''),
+        $admin,
+    );
+
+    Carbon::setTestNow(Carbon::parse('2026-09-24 10:00:00'));
+
+    app(CancelAbsenceRequestAction::class)->handle($tenant, $worker, $request->fresh());
+})->throws(InvalidArgumentException::class, 'already_started');
+
+it('weigert intrekken van een geweigerde aanvraag', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-23'),
+    );
+    app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(false, 'Geen dekking'),
+        $admin,
+    );
+
+    app(CancelAbsenceRequestAction::class)->handle($tenant, $worker, $request->fresh());
+})->throws(InvalidArgumentException::class, 'not_cancellable');
+
 it('keurt goed, bewaart bestaande diensten en vervangt het rooster', function () {
     [$tenant, $admin, , $worker] = absenceTenant();
     $planned = PlannedShift::query()->create([
@@ -268,10 +345,13 @@ it('toont de portaltegel en verstuurt een aanvraag', function () {
         ->set('absenceDateTo', '2026-09-23')
         ->set('absenceDescription', 'Familie')
         ->call('submitAbsence')
-        ->assertSee(__('time.portal.absence.submitted'), false);
+        ->assertSee(__('time.portal.absence.submitted'), false)
+        ->assertSee(__('time.portal.absence.cancel'), false)
+        ->call('cancelAbsence', (int) AbsenceRequest::query()->value('id'))
+        ->assertSee(__('time.portal.absence.cancelled'), false);
 
     expect(AbsenceRequest::query()->count())->toBe(1)
-        ->and(AbsenceRequest::query()->first()?->status)->toBe(AbsenceRequestStatus::Pending);
+        ->and(AbsenceRequest::query()->first()?->status)->toBe(AbsenceRequestStatus::Cancelled);
 });
 
 it('laat beheer een aanvraag goedkeuren zonder reden', function () {

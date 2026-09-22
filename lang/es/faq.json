@@ -321,7 +321,7 @@
             "slug": "time_absence",
             "type": "text",
             "title": "¿Cómo funcionan las solicitudes de permiso y compensación?",
-            "body": "Los operarios piden permiso o compensación en Clock Point (mosaico Permiso / Compensación): desde–hasta, nota opcional, máx. 31 días, no en el pasado. Las solicitudes abiertas que se solapan se rechazan. La gestión decide en Time → Solicitudes. Rechazar pide un motivo; aprobar no. Al aprobar, WinProx guarda los turnos existentes y luego escribe la ausencia en el cuadrante. No se envía correo. El panel muestra las solicitudes abiertas por tipo (1 Permiso, 1 Compensación, o ambos). En Solicitudes verá quién aprobó o rechazó. Las bajas no entran en este paso.",
+            "body": "Los operarios piden permiso o compensación en Clock Point (mosaico Permiso / Compensación): desde–hasta, nota opcional, máx. 31 días, no en el pasado. Las solicitudes abiertas que se solapan se rechazan. La gestión decide en Time → Solicitudes. Rechazar pide un motivo; aprobar no. Al aprobar, WinProx guarda los turnos existentes y luego escribe la ausencia en el cuadrante. No se envía correo. El panel muestra las solicitudes abiertas por tipo (1 Permiso, 1 Compensación, o ambos). En Solicitudes verá quién aprobó o rechazó. En Clock Point retira una solicitud abierta o aprobada (aún no empezada); el cuadrante se restaura. Las bajas no entran en este paso.",
             "summary": "Clock Point: pedir permiso o compensación. Time → Solicitudes: rechazar pide un motivo, aprobar no. El panel muestra 1 Permiso o 1 Compensación."
         },
         "time_schedule": {

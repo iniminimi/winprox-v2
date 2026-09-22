@@ -373,9 +373,9 @@
         },
         "absence": {
             "tile": "Leave / TOIL",
-            "tile_sub": "Request leave or time off in lieu",
+            "tile_sub": "Request or withdraw",
             "title": "Leave / TOIL",
-            "subtitle": "Your requests only. Staff decide with a reason.",
+            "subtitle": "See your requests and withdraw them. Staff approve or reject.",
             "kind": "Type",
             "date_from": "From",
             "date_to": "To",
@@ -383,6 +383,10 @@
             "submit": "Request",
             "empty": "No requests yet.",
             "cancel": "Withdraw",
+            "list_title": "Your requests",
+            "form_title": "New request",
+            "cancel_confirm": "Withdraw this request?",
+            "cancel_approved_confirm": "Withdraw this approved leave or TOIL? The roster restores the previous duties.",
             "submitted": "Request sent.",
             "cancelled": "Request withdrawn.",
             "decision": "Decision"
@@ -626,7 +630,9 @@
             "overlapping_pending": "An open request already overlaps these days.",
             "not_pending": "This request has already been handled.",
             "not_owner": "You can only withdraw your own request.",
-            "reason_required": "A reason is required (at least 3 characters)."
+            "reason_required": "A reason is required (at least 3 characters).",
+            "already_started": "This leave or TOIL has already started. You can no longer withdraw it.",
+            "not_cancellable": "You cannot withdraw this request."
         }
     }
 }

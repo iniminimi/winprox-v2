@@ -1050,7 +1050,7 @@
                 },
                 {
                     "label": "Urlaub / Ausgleich",
-                    "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Ausgleich. Beantragen Sie Urlaub oder Ausgleich (von–bis, optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Sie sehen Ihre eigenen Anträge und können einen offenen Antrag zurückziehen. Die Verwaltung entscheidet unter Time → Anträge; Ablehnen braucht eine Begründung, Genehmigen nicht. Es geht keine E-Mail."
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Ausgleich. Beantragen Sie Urlaub oder Ausgleich (von–bis, optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Ihre Anträge stehen über dem Formular: offen oder genehmigt (noch nicht begonnen) können Sie zurückziehen; bei Genehmigung kommt der Dienstplan zurück. Die Verwaltung entscheidet unter Time → Anträge; Ablehnen braucht eine Begründung, Genehmigen nicht. Es geht keine E-Mail."
                 }
             ]
         },

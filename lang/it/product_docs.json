@@ -175,6 +175,7 @@
                     "Dal–al, max 31 giorni, non nel passato.",
                     "Rifiutare chiede un motivo; approvare no.",
                     "Dopo la decisione vedi chi ha approvato o rifiutato.",
+                    "Sul Clock Point ritiri una richiesta aperta o approvata non ancora iniziata.",
                     "In approvazione WinProx salva i turni esistenti e poi li sostituisce nel turno.",
                     "Nessuna e-mail e nessuna malattia in questo passo.",
                     "La dashboard mostra 1 Ferie, 1 Recupero, o entrambi."
@@ -443,6 +444,7 @@
                     "Gli esecutori chiedono ferie o recupero sul Clock Point (dal–al, max 31 giorni).",
                     "La gestione decide in Time → Richieste. Rifiutare chiede un motivo; approvare no.",
                     "Richieste mostra chi ha approvato o rifiutato.",
+                    "Il ritiro sul Clock Point ripristina il turno dallo snapshot se la richiesta era approvata.",
                     "L’approvazione salva le celle esistenti sulla richiesta e poi le sostituisce.",
                     "Nessuna e-mail, nessuna API REST di scrittura. Eventi: time.absence.requested|cancelled|approved|rejected.",
                     "La dashboard mostra le richieste aperte per tipo (1 Ferie, 1 Recupero, o entrambi)."

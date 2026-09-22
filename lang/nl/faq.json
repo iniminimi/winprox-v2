@@ -325,7 +325,7 @@
             "slug": "time_absence",
             "type": "text",
             "title": "Hoe werken verlof- en recupaanvragen?",
-            "body": "Uitvoerders vragen verlof of recup op Clock Point (tegel Verlof / Recup): van–tot, optionele toelichting, max. 31 dagen, niet in het verleden. Open aanvragen die overlappen worden geweigerd. Beheer beslist onder Time → Aanvragen. Weigeren vraagt een reden; goedkeuren niet. Bij goedkeuren bewaart WinProx bestaande diensten en zet daarna afwezigheid in het uurrooster. Er gaat geen e-mail. Het dashboard toont open aanvragen per soort (1 Verlof, 1 Recup, of beide). Op Aanvragen zie je wie heeft goedgekeurd of geweigerd. Ziekmeldingen zitten niet in deze stap.",
+            "body": "Uitvoerders vragen verlof of recup op Clock Point (tegel Verlof / Recup): van–tot, optionele toelichting, max. 31 dagen, niet in het verleden. Open aanvragen die overlappen worden geweigerd. Beheer beslist onder Time → Aanvragen. Weigeren vraagt een reden; goedkeuren niet. Bij goedkeuren bewaart WinProx bestaande diensten en zet daarna afwezigheid in het uurrooster. Er gaat geen e-mail. Het dashboard toont open aanvragen per soort (1 Verlof, 1 Recup, of beide). Op Aanvragen zie je wie heeft goedgekeurd of geweigerd. Op Clock Point trek je een open of goedgekeurde (nog niet begonnen) aanvraag in; het uurrooster komt dan terug. Ziekmeldingen zitten niet in deze stap.",
             "summary": "Clock Point: verlof of recup aanvragen. Time → Aanvragen: weigeren eist een reden, goedkeuren niet. Dashboard toont 1 Verlof of 1 Recup."
         },
         "time_schedule": {

@@ -175,6 +175,7 @@
                     "Van–tot, max. 31 dagen, niet in het verleden.",
                     "Weigeren vraagt een reden; goedkeuren niet.",
                     "Na de beslissing zie je wie heeft goedgekeurd of geweigerd.",
+                    "Op Clock Point trek je een open of goedgekeurde (nog niet begonnen) aanvraag in.",
                     "Bij goedkeuren blijven bestaande diensten bewaard, daarna vervangt WinProx ze in het rooster.",
                     "Geen e-mail en geen ziekmelding in deze stap.",
                     "Het dashboard toont 1 Verlof, 1 Recup, of beide."
@@ -443,6 +444,7 @@
                     "Uitvoerders vragen verlof of recup op Clock Point (van–tot, max. 31 dagen).",
                     "Beheer beslist onder Time → Aanvragen. Weigeren eist een reden; goedkeuren niet.",
                     "Aanvragen toont wie heeft goedgekeurd of geweigerd.",
+                    "Intrekken op Clock Point herstelt het rooster uit de snapshot als de aanvraag goedgekeurd was.",
                     "Goedkeuren bewaart bestaande roostercellen op de aanvraag en vervangt ze daarna.",
                     "Geen e-mail, geen REST-schrijf-API. Events: time.absence.requested|cancelled|approved|rejected.",
                     "Dashboard toont open aanvragen per soort (1 Verlof, 1 Recup, of beide)."

@@ -373,9 +373,9 @@
         },
         "absence": {
             "tile": "Urlaub / Ausgleich",
-            "tile_sub": "Urlaub oder Ausgleich beantragen",
+            "tile_sub": "Beantragen oder zurückziehen",
             "title": "Urlaub / Ausgleich",
-            "subtitle": "Nur deine Anträge. Die Verwaltung entscheidet mit Begründung.",
+            "subtitle": "Sehen Sie Ihre Anträge und ziehen Sie sie zurück. Die Verwaltung genehmigt oder lehnt ab.",
             "kind": "Art",
             "date_from": "Von",
             "date_to": "Bis",
@@ -383,6 +383,10 @@
             "submit": "Beantragen",
             "empty": "Noch keine Anträge.",
             "cancel": "Zurückziehen",
+            "list_title": "Ihre Anträge",
+            "form_title": "Neuer Antrag",
+            "cancel_confirm": "Diesen Antrag zurückziehen?",
+            "cancel_approved_confirm": "Diesen genehmigten Urlaub oder Ausgleich zurückziehen? Der Dienstplan stellt die früheren Schichten wieder her.",
             "submitted": "Antrag gesendet.",
             "cancelled": "Antrag zurückgezogen.",
             "decision": "Entscheidung"
@@ -626,7 +630,9 @@
             "overlapping_pending": "Ein offener Antrag überschneidet bereits diese Tage.",
             "not_pending": "Dieser Antrag ist bereits bearbeitet.",
             "not_owner": "Sie können nur Ihren eigenen Antrag zurückziehen.",
-            "reason_required": "Eine Begründung ist Pflicht (mindestens 3 Zeichen)."
+            "reason_required": "Eine Begründung ist Pflicht (mindestens 3 Zeichen).",
+            "already_started": "Dieser Urlaub oder Ausgleich hat bereits begonnen. Zurückziehen ist nicht mehr möglich.",
+            "not_cancellable": "Diesen Antrag können Sie nicht zurückziehen."
         }
     }
 }

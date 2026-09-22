@@ -13,4 +13,9 @@ enum AbsenceRequestStatus: string
     {
         return $this === self::Pending;
     }
+
+    public function isApproved(): bool
+    {
+        return $this === self::Approved;
+    }
 }

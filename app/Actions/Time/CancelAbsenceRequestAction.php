@@ -12,6 +12,10 @@ use InvalidArgumentException;
 
 class CancelAbsenceRequestAction
 {
+    public function __construct(
+        private RestoreAbsenceDaysToRosterAction $restore,
+    ) {}
+
     public function handle(Tenant $tenant, Worker $worker, AbsenceRequest $request): AbsenceRequest
     {
         TimeModuleAccess::assertEnabledForTenantId((int) $tenant->id);
@@ -24,8 +28,16 @@ class CancelAbsenceRequestAction
             throw new InvalidArgumentException('not_owner');
         }
 
-        if (! $request->status->isPending()) {
-            throw new InvalidArgumentException('not_pending');
+        if (! $request->workerMayWithdraw()) {
+            throw new InvalidArgumentException(
+                $request->status === AbsenceRequestStatus::Approved
+                    ? 'already_started'
+                    : 'not_cancellable'
+            );
+        }
+
+        if ($request->status === AbsenceRequestStatus::Approved) {
+            $this->restore->handle($tenant, $request);
         }
 
         $request->status = AbsenceRequestStatus::Cancelled;

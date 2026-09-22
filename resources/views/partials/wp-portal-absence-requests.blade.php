@@ -1,5 +1,56 @@
 <div class="wp-stack wp-portal-absence">
+    <div class="wp-stack-tight">
+        <h2 class="wp-section-title">{{ __('time.portal.absence.list_title') }}</h2>
+        @if ($absenceRequests->isEmpty())
+            <div class="wp-card wp-card-pad">
+                <p class="wp-muted">{{ __('time.portal.absence.empty') }}</p>
+            </div>
+        @else
+            <div class="wp-list wp-portal-hours-list">
+                @foreach ($absenceRequests as $request)
+                    <div class="wp-card wp-portal-hours-day wp-stack-tight" wire:key="absence-{{ $request->id }}">
+                        <div class="wp-cluster">
+                            <strong>{{ __('time.schedule.types.kinds.'.$request->kind->value) }}</strong>
+                            <span @class([
+                                'wp-pill',
+                                'wp-pill--progress' => $request->status === \App\Enums\AbsenceRequestStatus::Pending,
+                                'wp-pill--done' => $request->status === \App\Enums\AbsenceRequestStatus::Approved,
+                                'wp-pill--closed' => $request->status !== \App\Enums\AbsenceRequestStatus::Pending
+                                    && $request->status !== \App\Enums\AbsenceRequestStatus::Approved,
+                            ])>{{ __('time.absence.status.'.$request->status->value) }}</span>
+                        </div>
+                        <p>
+                            {{ $request->date_from->toDateString() }}
+                            @if ($request->date_from->toDateString() !== $request->date_to->toDateString())
+                                – {{ $request->date_to->toDateString() }}
+                            @endif
+                        </p>
+                        @if ($request->description)
+                            <p>{{ $request->description }}</p>
+                        @endif
+                        @if ($request->decision_description)
+                            <p class="wp-muted">{{ __('time.portal.absence.decision') }}: {{ $request->decision_description }}</p>
+                        @endif
+                        @if ($request->workerMayWithdraw())
+                            <button
+                                type="button"
+                                class="btn btn--surface btn--block btn--sm"
+                                wire:confirm="{{ $request->status->isApproved()
+                                    ? __('time.portal.absence.cancel_approved_confirm')
+                                    : __('time.portal.absence.cancel_confirm') }}"
+                                wire:click="cancelAbsence({{ $request->id }})"
+                            >
+                                {{ __('time.portal.absence.cancel') }}
+                            </button>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
+
     <form wire:submit="submitAbsence" class="wp-card wp-card-pad wp-stack">
+        <h2 class="wp-section-title">{{ __('time.portal.absence.form_title') }}</h2>
         <div class="wp-field">
             <label class="wp-label" for="absence-kind">{{ __('time.portal.absence.kind') }}</label>
             <select id="absence-kind" class="wp-select" wire:model="absenceKind">
@@ -32,44 +83,4 @@
         </div>
         <button type="submit" class="btn btn--primary btn--block">{{ __('time.portal.absence.submit') }}</button>
     </form>
-
-    @if ($absenceRequests->isEmpty())
-        <div class="wp-card wp-card-pad">
-            <p class="wp-muted">{{ __('time.portal.absence.empty') }}</p>
-        </div>
-    @else
-        <div class="wp-list wp-portal-hours-list">
-            @foreach ($absenceRequests as $request)
-                <div class="wp-card wp-portal-hours-day wp-stack-tight" wire:key="absence-{{ $request->id }}">
-                    <div class="wp-cluster">
-                        <strong>{{ __('time.schedule.types.kinds.'.$request->kind->value) }}</strong>
-                        <span @class([
-                            'wp-pill',
-                            'wp-pill--progress' => $request->status === \App\Enums\AbsenceRequestStatus::Pending,
-                            'wp-pill--done' => $request->status === \App\Enums\AbsenceRequestStatus::Approved,
-                            'wp-pill--closed' => $request->status !== \App\Enums\AbsenceRequestStatus::Pending
-                                && $request->status !== \App\Enums\AbsenceRequestStatus::Approved,
-                        ])>{{ __('time.absence.status.'.$request->status->value) }}</span>
-                    </div>
-                    <p>
-                        {{ $request->date_from->toDateString() }}
-                        @if ($request->date_from->toDateString() !== $request->date_to->toDateString())
-                            – {{ $request->date_to->toDateString() }}
-                        @endif
-                    </p>
-                    @if ($request->description)
-                        <p>{{ $request->description }}</p>
-                    @endif
-                    @if ($request->decision_description)
-                        <p class="wp-muted">{{ __('time.portal.absence.decision') }}: {{ $request->decision_description }}</p>
-                    @endif
-                    @if ($request->status->isPending())
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="cancelAbsence({{ $request->id }})">
-                            {{ __('time.portal.absence.cancel') }}
-                        </button>
-                    @endif
-                </div>
-            @endforeach
-        </div>
-    @endif
 </div>

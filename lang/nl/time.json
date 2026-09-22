@@ -373,9 +373,9 @@
         },
         "absence": {
             "tile": "Verlof / Recup",
-            "tile_sub": "Vraag verlof of recup aan",
+            "tile_sub": "Aanvragen of intrekken",
             "title": "Verlof / Recup",
-            "subtitle": "Alleen jouw aanvragen. Beheer beslist met een reden.",
+            "subtitle": "Bekijk je aanvragen en trek ze in. Beheer keurt goed of weigert.",
             "kind": "Soort",
             "date_from": "Van",
             "date_to": "Tot",
@@ -383,6 +383,10 @@
             "submit": "Aanvragen",
             "empty": "Nog geen aanvragen.",
             "cancel": "Intrekken",
+            "list_title": "Jouw aanvragen",
+            "form_title": "Nieuwe aanvraag",
+            "cancel_confirm": "Deze aanvraag intrekken?",
+            "cancel_approved_confirm": "Dit goedgekeurde verlof of recup intrekken? Het uurrooster zet de eerdere diensten terug.",
             "submitted": "Aanvraag verstuurd.",
             "cancelled": "Aanvraag ingetrokken.",
             "decision": "Beslissing"
@@ -626,7 +630,9 @@
             "overlapping_pending": "Er loopt al een aanvraag die deze dagen overlapt.",
             "not_pending": "Deze aanvraag is al afgehandeld.",
             "not_owner": "Je kunt alleen je eigen aanvraag intrekken.",
-            "reason_required": "Een reden is verplicht (minstens 3 tekens)."
+            "reason_required": "Een reden is verplicht (minstens 3 tekens).",
+            "already_started": "Dit verlof of recup is al begonnen. Intrekken kan niet meer.",
+            "not_cancellable": "Deze aanvraag kun je niet intrekken."
         }
     }
 }

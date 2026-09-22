@@ -373,9 +373,9 @@
         },
         "absence": {
             "tile": "Congé / Récup",
-            "tile_sub": "Demander un congé ou une récup",
+            "tile_sub": "Demander ou retirer",
             "title": "Congé / Récup",
-            "subtitle": "Vos demandes uniquement. La gestion décide avec un motif.",
+            "subtitle": "Consultez vos demandes et retirez-les. La gestion approuve ou refuse.",
             "kind": "Type",
             "date_from": "Du",
             "date_to": "Au",
@@ -383,6 +383,10 @@
             "submit": "Demander",
             "empty": "Aucune demande.",
             "cancel": "Retirer",
+            "list_title": "Vos demandes",
+            "form_title": "Nouvelle demande",
+            "cancel_confirm": "Retirer cette demande ?",
+            "cancel_approved_confirm": "Retirer ce congé ou cette récup approuvé ? Le planning rétablit les services précédents.",
             "submitted": "Demande envoyée.",
             "cancelled": "Demande retirée.",
             "decision": "Décision"
@@ -626,7 +630,9 @@
             "overlapping_pending": "Une demande ouverte chevauche déjà ces jours.",
             "not_pending": "Cette demande a déjà été traitée.",
             "not_owner": "Vous ne pouvez retirer que votre propre demande.",
-            "reason_required": "Un motif est obligatoire (au moins 3 caractères)."
+            "reason_required": "Un motif est obligatoire (au moins 3 caractères).",
+            "already_started": "Ce congé ou cette récup a déjà commencé. Le retrait n’est plus possible.",
+            "not_cancellable": "Vous ne pouvez pas retirer cette demande."
         }
     }
 }

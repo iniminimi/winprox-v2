@@ -373,9 +373,9 @@
         },
         "absence": {
             "tile": "Permiso / Compensación",
-            "tile_sub": "Solicitar permiso o compensación",
+            "tile_sub": "Solicitar o retirar",
             "title": "Permiso / Compensación",
-            "subtitle": "Solo tus solicitudes. La gestión decide con un motivo.",
+            "subtitle": "Vea sus solicitudes y retírelas. La gestión aprueba o rechaza.",
             "kind": "Tipo",
             "date_from": "Desde",
             "date_to": "Hasta",
@@ -383,6 +383,10 @@
             "submit": "Solicitar",
             "empty": "Aún no hay solicitudes.",
             "cancel": "Retirar",
+            "list_title": "Tus solicitudes",
+            "form_title": "Nueva solicitud",
+            "cancel_confirm": "¿Retirar esta solicitud?",
+            "cancel_approved_confirm": "¿Retirar este permiso o compensación aprobado? El cuadrante restaura los turnos anteriores.",
             "submitted": "Solicitud enviada.",
             "cancelled": "Solicitud retirada.",
             "decision": "Decisión"
@@ -626,7 +630,9 @@
             "overlapping_pending": "Ya hay una solicitud abierta que solapa estos días.",
             "not_pending": "Esta solicitud ya está tramitada.",
             "not_owner": "Solo puedes retirar tu propia solicitud.",
-            "reason_required": "El motivo es obligatorio (al menos 3 caracteres)."
+            "reason_required": "El motivo es obligatorio (al menos 3 caracteres).",
+            "already_started": "Este permiso o compensación ya ha empezado. Ya no se puede retirar.",
+            "not_cancellable": "No puede retirar esta solicitud."
         }
     }
 }

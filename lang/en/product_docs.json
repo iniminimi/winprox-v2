@@ -175,6 +175,7 @@
                     "From–to, max. 31 days, not in the past.",
                     "Reject needs a reason; approve does not.",
                     "After the decision you see who approved or rejected it.",
+                    "On Clock Point you withdraw an open or approved request that has not started.",
                     "On approval WinProx stores existing duties, then replaces them on the roster.",
                     "No email and no sick-leave request in this step.",
                     "The dashboard shows 1 Leave, 1 TOIL, or both."
@@ -443,6 +444,7 @@
                     "Workers request leave or time off in lieu on Clock Point (from–to, max. 31 days).",
                     "Staff decide under Time → Requests. Reject needs a reason; approve does not.",
                     "Requests shows who approved or rejected.",
+                    "Withdrawing on Clock Point restores the roster from the snapshot if the request was approved.",
                     "Approval stores existing roster cells on the request, then replaces them.",
                     "No email, no write REST API. Events: time.absence.requested|cancelled|approved|rejected.",
                     "The dashboard shows pending requests per kind (1 Leave, 1 TOIL, or both)."

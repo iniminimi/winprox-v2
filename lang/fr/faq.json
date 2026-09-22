@@ -321,7 +321,7 @@
             "slug": "time_absence",
             "type": "text",
             "title": "Comment fonctionnent les demandes de congé et de récup ?",
-            "body": "Les exécutants demandent un congé ou une récup sur Clock Point (tuile Congé / Récup) : du–au, note facultative, 31 jours max., pas dans le passé. Les demandes ouvertes qui se chevauchent sont refusées. La gestion décide sous Time → Demandes. Refuser exige un motif ; approuver non. À l’approbation, WinProx enregistre les services existants puis écrit l’absence dans le planning. Aucun e-mail n’est envoyé. Le tableau de bord montre les demandes ouvertes par type (1 Congé, 1 Récup, ou les deux). Sous Demandes, vous voyez qui a approuvé ou refusé. Les arrêts maladie ne font pas partie de cette étape.",
+            "body": "Les exécutants demandent un congé ou une récup sur Clock Point (tuile Congé / Récup) : du–au, note facultative, 31 jours max., pas dans le passé. Les demandes ouvertes qui se chevauchent sont refusées. La gestion décide sous Time → Demandes. Refuser exige un motif ; approuver non. À l’approbation, WinProx enregistre les services existants puis écrit l’absence dans le planning. Aucun e-mail n’est envoyé. Le tableau de bord montre les demandes ouvertes par type (1 Congé, 1 Récup, ou les deux). Sous Demandes, vous voyez qui a approuvé ou refusé. Sur Clock Point, vous retirez une demande ouverte ou approuvée (pas encore commencée) ; le planning est alors rétabli. Les arrêts maladie ne font pas partie de cette étape.",
             "summary": "Clock Point : demander un congé ou une récup. Time → Demandes : refuser exige un motif, approuver non. Le tableau de bord montre 1 Congé ou 1 Récup."
         },
         "time_schedule": {

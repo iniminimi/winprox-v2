@@ -879,7 +879,9 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   Weigeren eist een reden (min. 3); goedkeuren niet. Aanvragen toont wie heeft goedgekeurd
   of geweigerd. Bij goedkeuren: bestaande roostercellen
   in die periode tonen, snapshot op de aanvraag, daarna vervangen door gepubliceerde
-  afwezigheid (niet stil). Intrekken alleen door de uitvoerder zolang open.
+  afwezigheid (niet stil). Intrekken op Clock Point: open aanvragen altijd; goedgekeurd
+  verlof/recup zolang `date_from` nog niet voorbij is — snapshot zet het rooster terug.
+  Geweigerd of al begonnen: niet intrekken.
   Events `time.absence.requested|cancelled|approved|rejected`. Geen REST-schrijf-API.
 - **Golf 2 — gepland vs geklokt:** alleen beheer, **published**. Missing / deviation /
   unplanned / ok. Prikken blijven altijd geregistreerd. **Deviation** alleen buiten
