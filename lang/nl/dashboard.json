@@ -24,6 +24,8 @@
         "pending_review": "Te beoordelen",
         "time_attention": "Time-aandacht",
         "pending_absence": "Aanvragen",
+        "pending_absence_leave": ":count Verlof",
+        "pending_absence_recup": ":count Recup",
         "iot_alarms": "IoT-alarmen"
     },
     "recent": {

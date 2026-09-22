@@ -52,7 +52,7 @@
             },
             {
                 "title": "Dashboard",
-                "body": "Overview of open issues and today's tasks, with quick access to key workflows. New organisations pick a starter template here; briefing and reports are available from the dashboard."
+                "body": "Overview of open issues and today's tasks, with quick access to key workflows. New organisations pick a starter template here; briefing and reports are available from the dashboard. Pending leave or TOIL appears as an extra card with the count per kind."
             },
             {
                 "title": "QR portals",

@@ -64,7 +64,7 @@ linkt naar zijn lijst):
 - **Conditioneel** (alleen tonen als telling **> 0** — geen vaste nullen / geen lege grid-gaten):
   - Te beoordelen — QR-wachtlijst → meldingen
   - Time-aandacht — open shifts met uitzondering, of evacuatielijst-raadpleging vandaag → Time-alarmen
-  - Aanvragen — open verlof-/recupaanvragen → Time → Aanvragen (Time-module)
+  - Aanvragen — open verlof-/recupaanvragen, geteld per soort (1 Verlof, 1 Recup, of beide) → Time → Aanvragen (Time-module)
   - IoT-alarmen — open IoT-meldingen → IoT Connect (alleen bij IoT-module)
 
 **Recente meldingen** (kaart met lijst)
@@ -871,7 +871,8 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   (van–tot, max. 31 dagen, niet in het verleden, optionele toelichting ≤ 500). Overlappende
   open aanvragen worden geweigerd. Eerste actieve shiftype van dat `kind`, anders fout.
   Geen ziek, geen saldo, geen e-mail. Beheer: Time → **Aanvragen** (badge = open);
-  dashboardtegel alleen als er open aanvragen zijn.
+  dashboardtegel alleen als er open aanvragen zijn; toont het aantal per soort
+  (1 Verlof, 1 Recup, of 1 Verlof - 1 Recup).
   Weigeren eist een reden (min. 3); goedkeuren niet. Bij goedkeuren: bestaande roostercellen
   in die periode tonen, snapshot op de aanvraag, daarna vervangen door gepubliceerde
   afwezigheid (niet stil). Intrekken alleen door de uitvoerder zolang open.

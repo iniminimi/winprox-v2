@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "Overview",
-                    "text": "The dashboard shows counts of locations, units, open issues and open tasks. Click a card to go to the related screen. Open leave or TOIL requests appear as an extra card to Time → Requests."
+                    "text": "The dashboard shows counts of locations, units, open issues and open tasks. Click a card to go to the related screen. Open leave or TOIL requests appear as an extra card to Time → Requests, with the count per kind (1 Leave, 1 TOIL, or both)."
                 },
                 {
                     "label": "Starter template",

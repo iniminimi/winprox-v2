@@ -15,6 +15,8 @@ final class DashboardStatsData
         public int $pendingReview,
         public int $timeAttention,
         public int $pendingAbsenceRequests,
+        public int $pendingAbsenceLeave,
+        public int $pendingAbsenceRecup,
         public int $iotAlarms,
         public bool $hasTimeModule,
         public bool $hasIotModule,
@@ -67,5 +69,18 @@ final class DashboardStatsData
             'iot_alarms' => $this->iotAlarms,
             default => 0,
         };
+    }
+
+    public function pendingAbsenceLabel(): string
+    {
+        $parts = [];
+        if ($this->pendingAbsenceLeave > 0) {
+            $parts[] = __('dashboard.kpi.pending_absence_leave', ['count' => $this->pendingAbsenceLeave]);
+        }
+        if ($this->pendingAbsenceRecup > 0) {
+            $parts[] = __('dashboard.kpi.pending_absence_recup', ['count' => $this->pendingAbsenceRecup]);
+        }
+
+        return implode(' - ', $parts);
     }
 }

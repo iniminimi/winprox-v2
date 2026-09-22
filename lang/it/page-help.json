@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "Panoramica",
-                    "text": "La dashboard mostra i conteggi di sedi, unità, segnalazioni aperte e attività aperte. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste."
+                    "text": "La dashboard mostra i conteggi di sedi, unità, segnalazioni aperte e attività aperte. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste, con il conteggio per tipo (1 Ferie, 1 Recupero, o entrambi)."
                 },
                 {
                     "label": "Modello iniziale",

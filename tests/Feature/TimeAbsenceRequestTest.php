@@ -309,7 +309,38 @@ it('toont een dashboardtegel alleen bij open aanvragen', function () {
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->assertSeeHtml('wp-kpi--pending_absence')
-        ->assertSeeHtml(route('time.absence-requests.index'));
+        ->assertSeeHtml(route('time.absence-requests.index'))
+        ->assertSeeHtml('wp-kpi-value--phrase">'.e(__('dashboard.kpi.pending_absence_leave', ['count' => 1])));
+});
+
+it('toont verlof en recup apart op het dashboard', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    seedTenantPastOnboarding($tenant);
+    ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'RC',
+        'label' => 'Recup',
+        'kind' => ShiftTypeKind::Recup,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+        'is_active' => true,
+    ]);
+
+    app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-23'),
+    );
+    app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Recup, '2026-09-24', '2026-09-24'),
+    );
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->assertSeeHtml('wp-kpi-value--phrase">'.e(__('dashboard.kpi.pending_absence_leave', ['count' => 1]).' - '.__('dashboard.kpi.pending_absence_recup', ['count' => 1])));
 });
 
 it('weigert het aanvragen-scherm zonder time-module niet dubbel', function () {

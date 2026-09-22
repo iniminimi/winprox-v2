@@ -27,7 +27,8 @@ class BuildDashboardStatsAction
     {
         $presentNow = null;
         $timeAttention = 0;
-        $pendingAbsenceRequests = 0;
+        $pendingAbsenceLeave = 0;
+        $pendingAbsenceRecup = 0;
 
         if ($hasTimeModule) {
             $presentNow = WorkShift::query()
@@ -37,7 +38,9 @@ class BuildDashboardStatsAction
                 ->count();
 
             $timeAttention = $this->countTimeAttention->handle($tenantId);
-            $pendingAbsenceRequests = $this->countPendingAbsence->handle($tenantId);
+            $pendingByKind = $this->countPendingAbsence->byKind($tenantId);
+            $pendingAbsenceLeave = $pendingByKind['leave'];
+            $pendingAbsenceRecup = $pendingByKind['recup'];
         }
 
         $iotAlarms = 0;
@@ -67,7 +70,9 @@ class BuildDashboardStatsAction
                 ->pendingReview()
                 ->count(),
             timeAttention: $timeAttention,
-            pendingAbsenceRequests: $pendingAbsenceRequests,
+            pendingAbsenceRequests: $pendingAbsenceLeave + $pendingAbsenceRecup,
+            pendingAbsenceLeave: $pendingAbsenceLeave,
+            pendingAbsenceRecup: $pendingAbsenceRecup,
             iotAlarms: $iotAlarms,
             hasTimeModule: $hasTimeModule,
             hasIotModule: $hasIotModule,

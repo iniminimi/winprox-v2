@@ -24,6 +24,8 @@
         "pending_review": "Da valutare",
         "time_attention": "Attenzione Time",
         "pending_absence": "Richieste",
+        "pending_absence_leave": ":count Ferie",
+        "pending_absence_recup": ":count Recupero",
         "iot_alarms": "Allarmi IoT"
     },
     "recent": {

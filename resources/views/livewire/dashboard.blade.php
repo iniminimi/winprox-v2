@@ -183,9 +183,13 @@
                         <div class="wp-kpi-main">
                             <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
                             <p class="wp-kpi-stats">
-                                <span class="wp-kpi-value wp-tabular">{{ $stats->valueFor($kpi['key']) }}</span>
-                                @if ($kpi['meta'])
-                                    <span class="wp-kpi-meta">{{ __($kpi['meta']) }}</span>
+                                @if ($kpi['key'] === 'pending_absence')
+                                    <span class="wp-kpi-value wp-kpi-value--phrase">{{ $stats->pendingAbsenceLabel() }}</span>
+                                @else
+                                    <span class="wp-kpi-value wp-tabular">{{ $stats->valueFor($kpi['key']) }}</span>
+                                    @if ($kpi['meta'])
+                                        <span class="wp-kpi-meta">{{ __($kpi['meta']) }}</span>
+                                    @endif
                                 @endif
                             </p>
                         </div>

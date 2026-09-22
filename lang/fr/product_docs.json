@@ -52,7 +52,7 @@
             },
             {
                 "title": "Tableau de bord",
-                "body": "Vue d'ensemble des signalements ouverts et des tâches du jour, avec accès rapide aux flux clés. Les nouvelles organisations choisissent ici un modèle de départ ; briefing et rapports sont accessibles depuis le tableau de bord."
+                "body": "Vue d'ensemble des signalements ouverts et des tâches du jour, avec accès rapide aux flux clés. Les nouvelles organisations choisissent ici un modèle de départ ; briefing et rapports sont accessibles depuis le tableau de bord. Un congé ou une récup ouverte apparaît comme carte extra avec le nombre par type."
             },
             {
                 "title": "QR portals",

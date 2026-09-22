@@ -24,6 +24,8 @@
         "pending_review": "Pending review",
         "time_attention": "Time attention",
         "pending_absence": "Requests",
+        "pending_absence_leave": ":count Leave",
+        "pending_absence_recup": ":count TOIL",
         "iot_alarms": "IoT alarms"
     },
     "recent": {

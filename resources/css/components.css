@@ -887,6 +887,14 @@ a.wp-kpi:hover {
     color: var(--wp-text);
 }
 
+.wp-kpi-value--phrase {
+    flex-shrink: 1;
+    font-size: 1.125rem;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    white-space: normal;
+}
+
 .wp-kpi-meta {
     flex-shrink: 1;
     min-width: 0;
