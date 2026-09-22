@@ -121,6 +121,7 @@
 
                 <div class="wp-field" x-data="{ n: 0, max: {{ $reasonMax }} }">
                     <label class="wp-label" for="decision-reason">{{ __('time.absence.decision_reason') }}</label>
+                    <p class="wp-muted">{{ __('time.absence.decision_reason_help') }}</p>
                     <textarea
                         id="decision-reason"
                         class="wp-textarea"

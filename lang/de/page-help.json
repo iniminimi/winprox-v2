@@ -1050,7 +1050,7 @@
                 },
                 {
                     "label": "Urlaub / Ausgleich",
-                    "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Ausgleich. Beantragen Sie Urlaub oder Ausgleich (von–bis, optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Sie sehen Ihre eigenen Anträge und können einen offenen Antrag zurückziehen. Die Verwaltung entscheidet unter Time → Anträge mit Pflichtbegründung; es geht keine E-Mail."
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Ausgleich. Beantragen Sie Urlaub oder Ausgleich (von–bis, optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Sie sehen Ihre eigenen Anträge und können einen offenen Antrag zurückziehen. Die Verwaltung entscheidet unter Time → Anträge; Ablehnen braucht eine Begründung, Genehmigen nicht. Es geht keine E-Mail."
                 }
             ]
         },
@@ -1773,7 +1773,7 @@
                 },
                 {
                     "label": "Prüfen",
-                    "text": "Öffnen Sie einen offenen Antrag. Sie sehen die Tage und, falls vorhanden, die <strong>bestehenden Schichten</strong>, die entfallen würden. Genehmigen oder Ablehnen braucht immer eine <strong>Begründung</strong> (mindestens 3 Zeichen). Bei Genehmigung speichert WinProx diese Zellen am Antrag und schreibt danach veröffentlichte Abwesenheit in den Dienstplan."
+                    "text": "Öffnen Sie einen offenen Antrag. Sie sehen die Tage und, falls vorhanden, die <strong>bestehenden Schichten</strong>, die entfallen würden. Ablehnen braucht eine <strong>Begründung</strong> (mindestens 3 Zeichen); Genehmigen nicht. Bei Genehmigung speichert WinProx diese Zellen am Antrag und schreibt danach veröffentlichte Abwesenheit in den Dienstplan."
                 }
             ]
         }

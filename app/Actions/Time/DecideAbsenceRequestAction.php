@@ -36,11 +36,11 @@ class DecideAbsenceRequestAction
         }
 
         $reason = trim($data->reason);
-        if (mb_strlen($reason) < 3) {
+        if (! $data->approve && mb_strlen($reason) < 3) {
             throw new InvalidArgumentException('reason_required');
         }
 
-        $reason = mb_substr($reason, 0, TextDescriptionLimits::MAX);
+        $reason = $reason === '' ? '' : mb_substr($reason, 0, TextDescriptionLimits::MAX);
         $replaced = [];
 
         if ($data->approve) {
@@ -51,7 +51,7 @@ class DecideAbsenceRequestAction
             $request->status = AbsenceRequestStatus::Rejected;
         }
 
-        $request->decision_description = $reason;
+        $request->decision_description = $reason === '' ? null : $reason;
         $request->decided_by_user_id = $actor->id;
         $request->decided_at = now();
         $request->save();

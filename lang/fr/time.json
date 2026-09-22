@@ -587,6 +587,7 @@
         "decide": "Traiter",
         "decide_title": "Traiter la demande",
         "decision_reason": "Motif",
+        "decision_reason_help": "Obligatoire uniquement pour refuser.",
         "approve": "Approuver",
         "reject": "Refuser",
         "approved": "Demande approuvée. Le planning a été mis à jour.",

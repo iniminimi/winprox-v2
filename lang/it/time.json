@@ -587,6 +587,7 @@
         "decide": "Valuta",
         "decide_title": "Valuta richiesta",
         "decision_reason": "Motivo",
+        "decision_reason_help": "Obbligatorio solo in rifiuto.",
         "approve": "Approva",
         "reject": "Rifiuta",
         "approved": "Richiesta approvata. Il turno è stato aggiornato.",

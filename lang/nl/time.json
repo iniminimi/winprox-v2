@@ -587,6 +587,7 @@
         "decide": "Beoordelen",
         "decide_title": "Aanvraag beoordelen",
         "decision_reason": "Reden",
+        "decision_reason_help": "Alleen verplicht bij weigeren.",
         "approve": "Goedkeuren",
         "reject": "Weigeren",
         "approved": "Aanvraag goedgekeurd. Het uurrooster is bijgewerkt.",

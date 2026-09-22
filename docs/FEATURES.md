@@ -872,7 +872,7 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   open aanvragen worden geweigerd. Eerste actieve shiftype van dat `kind`, anders fout.
   Geen ziek, geen saldo, geen e-mail. Beheer: Time → **Aanvragen** (badge = open);
   dashboardtegel alleen als er open aanvragen zijn.
-  Goedkeuren of weigeren eist een reden (min. 3). Bij goedkeuren: bestaande roostercellen
+  Weigeren eist een reden (min. 3); goedkeuren niet. Bij goedkeuren: bestaande roostercellen
   in die periode tonen, snapshot op de aanvraag, daarna vervangen door gepubliceerde
   afwezigheid (niet stil). Intrekken alleen door de uitvoerder zolang open.
   Events `time.absence.requested|cancelled|approved|rejected`. Geen REST-schrijf-API.

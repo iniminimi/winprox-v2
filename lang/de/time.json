@@ -587,6 +587,7 @@
         "decide": "Prüfen",
         "decide_title": "Antrag prüfen",
         "decision_reason": "Begründung",
+        "decision_reason_help": "Nur beim Ablehnen Pflicht.",
         "approve": "Genehmigen",
         "reject": "Ablehnen",
         "approved": "Antrag genehmigt. Der Dienstplan wurde aktualisiert.",

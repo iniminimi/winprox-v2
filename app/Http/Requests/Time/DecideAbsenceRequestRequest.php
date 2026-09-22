@@ -20,10 +20,12 @@ class DecideAbsenceRequestRequest extends FormRequest
     /**
      * @return array<string, mixed>
      */
-    public static function rulesFor(): array
+    public static function rulesFor(bool $approve = false): array
     {
         return [
-            'reason' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
+            'reason' => $approve
+                ? ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX]
+                : ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
         ];
     }
 }

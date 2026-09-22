@@ -221,7 +221,26 @@ it('weigeren laat het rooster staan', function () {
         ->and(PlannedShift::query()->find($planned->id))->not->toBeNull();
 });
 
-it('eist een reden bij beslissen', function () {
+it('keurt goed zonder reden', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-23'),
+    );
+
+    $decided = app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(true, ''),
+        $admin,
+    );
+
+    expect($decided->status)->toBe(AbsenceRequestStatus::Approved)
+        ->and($decided->decision_description)->toBeNull();
+});
+
+it('eist een reden bij weigeren', function () {
     [$tenant, $admin, , $worker] = absenceTenant();
     $request = app(RequestAbsenceAction::class)->handle(
         $tenant,
@@ -232,7 +251,7 @@ it('eist een reden bij beslissen', function () {
     app(DecideAbsenceRequestAction::class)->handle(
         $tenant,
         $request,
-        new DecideAbsenceRequestData(true, 'ok'),
+        new DecideAbsenceRequestData(false, 'ok'),
         $admin,
     );
 })->throws(InvalidArgumentException::class, 'reason_required');
@@ -255,7 +274,7 @@ it('toont de portaltegel en verstuurt een aanvraag', function () {
         ->and(AbsenceRequest::query()->first()?->status)->toBe(AbsenceRequestStatus::Pending);
 });
 
-it('laat beheer een aanvraag goedkeuren met reden', function () {
+it('laat beheer een aanvraag goedkeuren zonder reden', function () {
     [$tenant, $admin, , $worker] = absenceTenant();
     $request = app(RequestAbsenceAction::class)->handle(
         $tenant,
@@ -267,7 +286,6 @@ it('laat beheer een aanvraag goedkeuren met reden', function () {
         ->test(AbsenceRequestsIndex::class)
         ->assertSee('Jan Janssen', false)
         ->call('openDecide', $request->id)
-        ->set('decisionReason', 'Akkoord')
         ->call('approve')
         ->assertSee(__('time.absence.approved'), false);
 

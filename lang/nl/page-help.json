@@ -1050,7 +1050,7 @@
                 },
                 {
                     "label": "Verlof / Recup",
-                    "text": "Na aanmelden zie je de tegel Verlof / Recup. Vraag verlof of recup aan (van–tot, optionele toelichting, max. 31 dagen, niet in het verleden). Open aanvragen die overlappen worden geweigerd. Je ziet je eigen aanvragen en kunt een open aanvraag intrekken. Beheer beslist onder Time → Aanvragen met een verplichte reden; er gaat geen e-mail."
+                    "text": "Na aanmelden zie je de tegel Verlof / Recup. Vraag verlof of recup aan (van–tot, optionele toelichting, max. 31 dagen, niet in het verleden). Open aanvragen die overlappen worden geweigerd. Je ziet je eigen aanvragen en kunt een open aanvraag intrekken. Beheer beslist onder Time → Aanvragen; weigeren vraagt een reden, goedkeuren niet. Er gaat geen e-mail."
                 }
             ]
         },
@@ -1773,7 +1773,7 @@
                 },
                 {
                     "label": "Beoordelen",
-                    "text": "Open een open aanvraag. U ziet de dagen en, als die er zijn, de <strong>bestaande diensten</strong> die zouden verdwijnen. Goedkeuren of weigeren vraagt altijd een <strong>reden</strong> (minstens 3 tekens). Bij goedkeuren bewaart WinProx die cellen op de aanvraag en zet daarna gepubliceerde afwezigheid in het uurrooster."
+                    "text": "Open een open aanvraag. U ziet de dagen en, als die er zijn, de <strong>bestaande diensten</strong> die zouden verdwijnen. Weigeren vraagt een <strong>reden</strong> (minstens 3 tekens); goedkeuren niet. Bij goedkeuren bewaart WinProx die cellen op de aanvraag en zet daarna gepubliceerde afwezigheid in het uurrooster."
                 }
             ]
         }

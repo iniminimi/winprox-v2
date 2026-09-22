@@ -587,6 +587,7 @@
         "decide": "Revisar",
         "decide_title": "Revisar solicitud",
         "decision_reason": "Motivo",
+        "decision_reason_help": "Obligatorio solo al rechazar.",
         "approve": "Aprobar",
         "reject": "Rechazar",
         "approved": "Solicitud aprobada. El cuadrante se ha actualizado.",

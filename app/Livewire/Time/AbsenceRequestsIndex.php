@@ -77,7 +77,7 @@ class AbsenceRequestsIndex extends Component
         $this->authorize('decide', $request);
 
         $this->validate(
-            ['decisionReason' => DecideAbsenceRequestRequest::rulesFor()['reason']],
+            ['decisionReason' => DecideAbsenceRequestRequest::rulesFor($approve)['reason']],
             [],
             ['decisionReason' => __('time.absence.decision_reason')],
         );

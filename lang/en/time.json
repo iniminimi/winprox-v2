@@ -587,6 +587,7 @@
         "decide": "Review",
         "decide_title": "Review request",
         "decision_reason": "Reason",
+        "decision_reason_help": "Required only when rejecting.",
         "approve": "Approve",
         "reject": "Reject",
         "approved": "Request approved. The roster has been updated.",

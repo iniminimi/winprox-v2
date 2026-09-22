@@ -1058,7 +1058,7 @@
                 },
                 {
                     "label": "Congé / Récup",
-                    "text": "Après connexion, vous voyez la tuile Congé / Récup. Demandez un congé ou une récup (du–au, note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vous voyez vos propres demandes et pouvez retirer une demande ouverte. La gestion décide sous Time → Demandes avec un motif obligatoire ; aucun e-mail n’est envoyé."
+                    "text": "Après connexion, vous voyez la tuile Congé / Récup. Demandez un congé ou une récup (du–au, note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vous voyez vos propres demandes et pouvez retirer une demande ouverte. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé."
                 }
             ]
         },
@@ -1781,7 +1781,7 @@
                 },
                 {
                     "label": "Traiter",
-                    "text": "Ouvrez une demande ouverte. Vous voyez les jours et, s’il y en a, les <strong>services existants</strong> qui disparaîtraient. Approuver ou refuser exige toujours un <strong>motif</strong> (au moins 3 caractères). À l’approbation, WinProx enregistre ces cellules sur la demande, puis écrit une absence publiée dans le planning."
+                    "text": "Ouvrez une demande ouverte. Vous voyez les jours et, s’il y en a, les <strong>services existants</strong> qui disparaîtraient. Refuser exige un <strong>motif</strong> (au moins 3 caractères) ; approuver non. À l’approbation, WinProx enregistre ces cellules sur la demande, puis écrit une absence publiée dans le planning."
                 }
             ]
         }

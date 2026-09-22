@@ -1050,7 +1050,7 @@
                 },
                 {
                     "label": "Leave / TOIL",
-                    "text": "After sign-in you see the Leave / TOIL tile. Request leave or time off in lieu (from–to, optional note, max. 31 days, not in the past). Overlapping open requests are refused. You see your own requests and can withdraw an open one. Staff decide under Time → Requests with a required reason; no email is sent."
+                    "text": "After sign-in you see the Leave / TOIL tile. Request leave or time off in lieu (from–to, optional note, max. 31 days, not in the past). Overlapping open requests are refused. You see your own requests and can withdraw an open one. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent."
                 }
             ]
         },
@@ -1773,7 +1773,7 @@
                 },
                 {
                     "label": "Review",
-                    "text": "Open a pending request. You see the days and, if any, the <strong>existing shifts</strong> that would disappear. Approve or reject always needs a <strong>reason</strong> (at least 3 characters). On approval WinProx stores those cells on the request, then writes published absence on the roster."
+                    "text": "Open a pending request. You see the days and, if any, the <strong>existing shifts</strong> that would disappear. Reject needs a <strong>reason</strong> (at least 3 characters); approve does not. On approval WinProx stores those cells on the request, then writes published absence on the roster."
                 }
             ]
         }
