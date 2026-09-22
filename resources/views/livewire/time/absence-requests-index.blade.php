@@ -51,6 +51,11 @@
                             @if ($request->description)
                                 · {{ $request->description }}
                             @endif
+                            @if ($request->decidedBy && $request->status === \App\Enums\AbsenceRequestStatus::Approved)
+                                · {{ __('time.absence.decided_by_approved', ['name' => $request->decidedBy->name]) }}
+                            @elseif ($request->decidedBy && $request->status === \App\Enums\AbsenceRequestStatus::Rejected)
+                                · {{ __('time.absence.decided_by_rejected', ['name' => $request->decidedBy->name]) }}
+                            @endif
                         </p>
                     </div>
                     <div class="wp-cluster wp-cluster--wrap">

@@ -174,6 +174,7 @@
                 "items": [
                     "Du–au, 31 jours max., pas dans le passé.",
                     "Refuser exige un motif ; approuver non.",
+                    "Après décision, vous voyez qui a approuvé ou refusé.",
                     "À l’approbation, WinProx enregistre les services existants, puis les remplace dans le planning.",
                     "Pas d’e-mail et pas de demande maladie dans cette étape.",
                     "Le tableau de bord montre 1 Congé, 1 Récup, ou les deux."
@@ -441,6 +442,7 @@
                 "items": [
                     "Les exécutants demandent un congé ou une récup sur Clock Point (du–au, 31 jours max.).",
                     "La gestion décide sous Time → Demandes. Refuser exige un motif ; approuver non.",
+                    "Demandes affiche qui a approuvé ou refusé.",
                     "L’approbation enregistre les cellules existantes sur la demande, puis les remplace.",
                     "Pas d’e-mail, pas d’API REST d’écriture. Événements : time.absence.requested|cancelled|approved|rejected.",
                     "Le tableau de bord montre les demandes ouvertes par type (1 Congé, 1 Récup, ou les deux)."

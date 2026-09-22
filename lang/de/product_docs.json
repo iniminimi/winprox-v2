@@ -174,6 +174,7 @@
                 "items": [
                     "Von–bis, max. 31 Tage, nicht in der Vergangenheit.",
                     "Ablehnen braucht eine Begründung; Genehmigen nicht.",
+                    "Nach der Entscheidung sehen Sie, wer genehmigt oder abgelehnt hat.",
                     "Bei Genehmigung speichert WinProx bestehende Schichten und ersetzt sie danach im Plan.",
                     "Keine E-Mail und kein Krankantrag in diesem Schritt.",
                     "Das Dashboard zeigt 1 Urlaub, 1 Ausgleich oder beides."
@@ -441,6 +442,7 @@
                 "items": [
                     "Ausführende beantragen Urlaub oder Ausgleich am Clock Point (von–bis, max. 31 Tage).",
                     "Die Verwaltung entscheidet unter Time → Anträge. Ablehnen braucht eine Begründung; Genehmigen nicht.",
+                    "Anträge zeigt, wer genehmigt oder abgelehnt hat.",
                     "Die Genehmigung speichert bestehende Plan-Zellen am Antrag und ersetzt sie danach.",
                     "Keine E-Mail, keine Schreib-REST-API. Events: time.absence.requested|cancelled|approved|rejected.",
                     "Das Dashboard zeigt offene Anträge je Art (1 Urlaub, 1 Ausgleich oder beides)."

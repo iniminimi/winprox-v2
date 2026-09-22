@@ -1769,7 +1769,7 @@
             "actions": [
                 {
                     "label": "Elenco",
-                    "text": "Time → <strong>Richieste</strong> mostra le richieste di ferie e recupero dal Clock Point. Nessuna e-mail, nessuna casella per l’esecutore. Un badge verde nella navigazione conta le richieste aperte. La dashboard mostra il conteggio per tipo (1 Ferie, 1 Recupero, o entrambi)."
+                    "text": "Time → <strong>Richieste</strong> mostra le richieste di ferie e recupero dal Clock Point. Nessuna e-mail, nessuna casella per l’esecutore. Un badge verde nella navigazione conta le richieste aperte. La dashboard mostra il conteggio per tipo (1 Ferie, 1 Recupero, o entrambi). Dopo la decisione vedi chi ha approvato o rifiutato."
                 },
                 {
                     "label": "Valuta",

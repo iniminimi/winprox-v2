@@ -1769,7 +1769,7 @@
             "actions": [
                 {
                     "label": "Lijst",
-                    "text": "Time → <strong>Aanvragen</strong> toont verlof- en recupaanvragen van Clock Point. Geen e-mail, geen inbox bij de uitvoerder. Een groene badge in de navigatie telt open aanvragen. Het dashboard toont het aantal per soort (1 Verlof, 1 Recup, of beide)."
+                    "text": "Time → <strong>Aanvragen</strong> toont verlof- en recupaanvragen van Clock Point. Geen e-mail, geen inbox bij de uitvoerder. Een groene badge in de navigatie telt open aanvragen. Het dashboard toont het aantal per soort (1 Verlof, 1 Recup, of beide). Bij een beslissing ziet u wie heeft goedgekeurd of geweigerd."
                 },
                 {
                     "label": "Beoordelen",

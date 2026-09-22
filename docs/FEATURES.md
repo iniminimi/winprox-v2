@@ -876,7 +876,8 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   Geen ziek, geen saldo, geen e-mail. Beheer: Time → **Aanvragen** (badge = open);
   dashboardtegel alleen als er open aanvragen zijn; toont het aantal per soort
   (1 Verlof, 1 Recup, of 1 Verlof - 1 Recup).
-  Weigeren eist een reden (min. 3); goedkeuren niet. Bij goedkeuren: bestaande roostercellen
+  Weigeren eist een reden (min. 3); goedkeuren niet. Aanvragen toont wie heeft goedgekeurd
+  of geweigerd. Bij goedkeuren: bestaande roostercellen
   in die periode tonen, snapshot op de aanvraag, daarna vervangen door gepubliceerde
   afwezigheid (niet stil). Intrekken alleen door de uitvoerder zolang open.
   Events `time.absence.requested|cancelled|approved|rejected`. Geen REST-schrijf-API.

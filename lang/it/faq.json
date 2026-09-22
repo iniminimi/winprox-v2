@@ -321,7 +321,7 @@
             "slug": "time_absence",
             "type": "text",
             "title": "Come funzionano le richieste di ferie e recupero?",
-            "body": "Gli esecutori chiedono ferie o recupero sul Clock Point (riquadro Ferie / Recupero): dal–al, nota facoltativa, max 31 giorni, non nel passato. Le richieste aperte che si sovrappongono vengono rifiutate. La gestione decide in Time → Richieste. Rifiutare chiede un motivo; approvare no. In approvazione WinProx salva i turni esistenti e poi scrive l’assenza nel turno. Non parte nessuna e-mail. La dashboard mostra le richieste aperte per tipo (1 Ferie, 1 Recupero, o entrambi). La malattia non è in questo passo.",
+            "body": "Gli esecutori chiedono ferie o recupero sul Clock Point (riquadro Ferie / Recupero): dal–al, nota facoltativa, max 31 giorni, non nel passato. Le richieste aperte che si sovrappongono vengono rifiutate. La gestione decide in Time → Richieste. Rifiutare chiede un motivo; approvare no. In approvazione WinProx salva i turni esistenti e poi scrive l’assenza nel turno. Non parte nessuna e-mail. La dashboard mostra le richieste aperte per tipo (1 Ferie, 1 Recupero, o entrambi). In Richieste vedi chi ha approvato o rifiutato. La malattia non è in questo passo.",
             "summary": "Clock Point: chiedere ferie o recupero. Time → Richieste: rifiutare chiede un motivo, approvare no. La dashboard mostra 1 Ferie o 1 Recupero."
         },
         "time_schedule": {

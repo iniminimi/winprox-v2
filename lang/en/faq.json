@@ -325,7 +325,7 @@
             "slug": "time_absence",
             "type": "text",
             "title": "How do leave and TOIL requests work?",
-            "body": "Workers request leave or time off in lieu on Clock Point (Leave / TOIL tile): from–to, optional note, max. 31 days, not in the past. Overlapping open requests are refused. Staff decide under Time → Requests. Reject needs a reason; approve does not. On approval WinProx stores existing duties and then writes absence on the roster. No email is sent. The dashboard shows pending requests per kind (1 Leave, 1 TOIL, or both). Sick leave is not in this step.",
+            "body": "Workers request leave or time off in lieu on Clock Point (Leave / TOIL tile): from–to, optional note, max. 31 days, not in the past. Overlapping open requests are refused. Staff decide under Time → Requests. Reject needs a reason; approve does not. On approval WinProx stores existing duties and then writes absence on the roster. No email is sent. The dashboard shows pending requests per kind (1 Leave, 1 TOIL, or both). On Requests you see who approved or rejected. Sick leave is not in this step.",
             "summary": "Clock Point: request leave or TOIL. Time → Requests: reject needs a reason, approve does not. Dashboard shows 1 Leave or 1 TOIL."
         },
         "time_schedule": {

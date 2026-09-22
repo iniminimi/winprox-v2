@@ -1769,7 +1769,7 @@
             "actions": [
                 {
                     "label": "Liste",
-                    "text": "Time → <strong>Anträge</strong> zeigt Urlaubs- und Ausgleichsanträge vom Clock Point. Keine E-Mail, kein Posteingang beim Ausführenden. Ein grünes Badge in der Navigation zählt offene Anträge. Das Dashboard zeigt die Anzahl je Art (1 Urlaub, 1 Ausgleich oder beides)."
+                    "text": "Time → <strong>Anträge</strong> zeigt Urlaubs- und Ausgleichsanträge vom Clock Point. Keine E-Mail, kein Posteingang beim Ausführenden. Ein grünes Badge in der Navigation zählt offene Anträge. Das Dashboard zeigt die Anzahl je Art (1 Urlaub, 1 Ausgleich oder beides). Nach der Entscheidung sehen Sie, wer genehmigt oder abgelehnt hat."
                 },
                 {
                     "label": "Prüfen",

@@ -287,7 +287,8 @@ it('laat beheer een aanvraag goedkeuren zonder reden', function () {
         ->assertSee('Jan Janssen', false)
         ->call('openDecide', $request->id)
         ->call('approve')
-        ->assertSee(__('time.absence.approved'), false);
+        ->assertSee(__('time.absence.approved'), false)
+        ->assertSee(__('time.absence.decided_by_approved', ['name' => $admin->name]), false);
 
     expect($request->fresh()?->status)->toBe(AbsenceRequestStatus::Approved);
 });
