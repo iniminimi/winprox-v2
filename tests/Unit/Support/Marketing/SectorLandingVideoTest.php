@@ -32,3 +32,10 @@ it('gebruikt de hospitality-long-video op vastgoed per locale', function (string
     expect($path)->toBe("video/{$locale}/hospitality_long_{$upper}.mp4")
         ->and(is_file(public_path($path)))->toBeTrue();
 })->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
+
+it('gebruikt de algemene welcome-video op schoonmaak en bouw', function () {
+    $path = SectorLandingVideo::relativePath(PromoLanding::WorkOnLocation, 'nl');
+
+    expect($path)->toBe('video/welcome.mp4')
+        ->and(is_file(public_path($path)))->toBeTrue();
+});
