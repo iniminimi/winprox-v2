@@ -1046,7 +1046,7 @@
                 },
                 {
                     "label": "Mein Dienstplan",
-                    "text": "Nach der Anmeldung siehst du die Kachel Mein Dienstplan. Dort stehen nur deine <strong>veröffentlichten</strong> Dienste und Abwesenheiten des gewählten <strong>Monats</strong> als kompakte Liste (leere Tage werden übersprungen). Ein Badge bedeutet einen neu veröffentlichten Plan; Öffnen entfernt das Badge."
+                    "text": "Nach der Anmeldung siehst du die Kachel Mein Dienstplan. Dort stehen nur deine <strong>veröffentlichten</strong> Dienste und Abwesenheiten des gewählten <strong>Monats</strong> als Tabelle (leere Tage werden übersprungen). Ein Badge bedeutet einen neu veröffentlichten Plan; Öffnen entfernt das Badge."
                 }
             ]
         },

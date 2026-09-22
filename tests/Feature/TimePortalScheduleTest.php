@@ -165,7 +165,10 @@ it('toont de groepsnaam uit de snapshot op Mijn rooster', function () {
         ->assertSee('Groep 1', false)
         ->assertSee('Dagdienst', false)
         ->assertSee('07:00-15:00', false)
-        ->assertSee('14/09', false);
+        ->assertSee('14/09', false)
+        ->assertSee(__('time.portal.schedule.columns.date'), false)
+        ->assertSee(__('time.portal.schedule.columns.duty'), false)
+        ->assertSee(__('time.portal.schedule.columns.hours'), false);
 });
 
 it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () {
@@ -219,6 +222,8 @@ it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () 
         null,
     );
 
+    $this->travelTo(Carbon::parse('2026-09-14')->setTime(10, 0));
+
     signInScheduleWorker($clockPoint)
         ->call('openSchedule')
         ->assertSee('Dagdienst 1', false)
@@ -228,5 +233,6 @@ it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () 
         ->assertSee('21/09', false)
         ->assertDontSee('15/09', false)
         ->assertSeeHtml('wp-portal-schedule__table')
-        ->assertSeeHtml('wp-portal-schedule__row--week-start');
+        ->assertSeeHtml('wp-portal-schedule__row--week-start')
+        ->assertSeeHtml('wp-portal-schedule__row--today');
 });

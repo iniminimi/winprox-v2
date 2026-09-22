@@ -1046,7 +1046,7 @@
                 },
                 {
                     "label": "Mijn rooster",
-                    "text": "Na aanmelden zie je de tegel Mijn rooster. Daar staan alleen jouw <strong>gepubliceerde</strong> diensten en afwezigheden van de gekozen <strong>maand</strong>, als compacte lijst (lege dagen worden overgeslagen). Een groene badge betekent een nieuw gepubliceerd rooster; openen zet de badge weg."
+                    "text": "Na aanmelden zie je de tegel Mijn rooster. Daar staan alleen jouw <strong>gepubliceerde</strong> diensten en afwezigheden van de gekozen <strong>maand</strong>, als tabel (lege dagen worden overgeslagen). Een groene badge betekent een nieuw gepubliceerd rooster; openen zet de badge weg."
                 }
             ]
         },

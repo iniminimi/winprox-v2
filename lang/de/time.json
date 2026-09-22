@@ -336,7 +336,12 @@
             "empty": "Nichts geplant in diesem Monat.",
             "month_nav": "Monat",
             "previous_month": "Vorheriger Monat",
-            "next_month": "Nächster Monat"
+            "next_month": "Nächster Monat",
+            "columns": {
+                "date": "Datum",
+                "duty": "Dienst",
+                "hours": "Stunden"
+            }
         },
         "visit_started": "Arbeitsbesuch gestartet.",
         "visit_ended": "Arbeitsbesuch beendet.",

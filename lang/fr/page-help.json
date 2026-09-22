@@ -1054,7 +1054,7 @@
                 },
                 {
                     "label": "Mon planning",
-                    "text": "Après connexion, tu vois la tuile Mon planning. Elle n’affiche que tes services et absences <strong>publiés</strong> du <strong>mois</strong> choisi, en liste compacte (jours vides omis). Un badge signifie un planning tout juste publié ; l’ouvrir l’efface."
+                    "text": "Après connexion, tu vois la tuile Mon planning. Elle n’affiche que tes services et absences <strong>publiés</strong> du <strong>mois</strong> choisi, en tableau (jours vides omis). Un badge signifie un planning tout juste publié ; l’ouvrir l’efface."
                 }
             ]
         },

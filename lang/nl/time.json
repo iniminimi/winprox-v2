@@ -336,7 +336,12 @@
             "empty": "Niets gepland in deze maand.",
             "month_nav": "Maand",
             "previous_month": "Vorige maand",
-            "next_month": "Volgende maand"
+            "next_month": "Volgende maand",
+            "columns": {
+                "date": "Datum",
+                "duty": "Dienst",
+                "hours": "Uren"
+            }
         },
         "visit_started": "Werkbezoek gestart.",
         "visit_ended": "Werkbezoek beëindigd.",

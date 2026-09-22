@@ -3246,34 +3246,62 @@ a.wp-pagination__page:active:not(.is-active) {
     border-collapse: collapse;
 }
 
+.wp-portal-schedule__table th,
 .wp-portal-schedule__table td {
-    padding: 0.2rem 0;
+    padding: 0.4rem 0.5rem;
     vertical-align: top;
-    color: var(--wp-text-body);
-    font-size: 0.9375rem;
-    line-height: 1.4;
+    text-align: left;
+    font-size: 0.875rem;
+    line-height: 1.35;
 }
 
-.wp-portal-schedule__day {
-    width: 1%;
-    white-space: nowrap;
-    padding-right: 0.15rem !important;
-}
-
-.wp-portal-schedule__sep {
-    width: 1%;
-    white-space: nowrap;
-    padding-right: 0.5rem !important;
+.wp-portal-schedule__table th {
     color: var(--wp-text-muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--wp-border);
 }
 
-.wp-portal-schedule__detail {
+.wp-portal-schedule__table td {
+    color: var(--wp-text-body);
+}
+
+.wp-portal-schedule__table th:first-child,
+.wp-portal-schedule__table td:first-child {
+    padding-left: 0;
+}
+
+.wp-portal-schedule__table th:last-child,
+.wp-portal-schedule__table td:last-child {
+    padding-right: 0;
+    text-align: right;
+}
+
+.wp-portal-schedule__day,
+.wp-portal-schedule__hours {
+    width: 1%;
+    white-space: nowrap;
+}
+
+.wp-portal-schedule__duty {
     width: 99%;
 }
 
 .wp-portal-schedule__row--week-start > td {
     border-top: 1px solid var(--wp-border);
-    padding-top: 0.55rem !important;
+}
+
+.wp-portal-schedule__row--today > td {
+    background-color: var(--wp-warning-soft);
+}
+
+.wp-portal-schedule__row--today > td:first-child {
+    border-radius: var(--wp-radius) 0 0 var(--wp-radius);
+    padding-left: 0.4rem;
+}
+
+.wp-portal-schedule__row--today > td:last-child {
+    border-radius: 0 var(--wp-radius) var(--wp-radius) 0;
+    padding-right: 0.4rem;
 }
 
 .wp-flash {

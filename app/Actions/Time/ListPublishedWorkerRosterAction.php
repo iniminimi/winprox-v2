@@ -49,9 +49,11 @@ class ListPublishedWorkerRosterAction
             $entries[] = new WorkerRosterEntry(
                 date: $date->toDateString(),
                 dayLabel: $this->dayLabel($shift, $locale),
-                detail: $this->detail($shift),
+                duty: $this->duty($shift),
+                hours: $this->hours($shift),
                 kind: $shift->kind->value,
                 weekStart: $weekStart,
+                isToday: $date->isToday(),
             );
             $previousDate = $date;
         }
@@ -71,31 +73,36 @@ class ListPublishedWorkerRosterAction
         return $day->isoFormat('dd').' '.$day->format('d/m');
     }
 
-    private function detail(PlannedShift $shift): string
+    private function duty(PlannedShift $shift): string
     {
         if ($shift->kind->isAbsence()) {
             return __('time.schedule.types.kinds.'.$shift->kind->value);
         }
 
-        $start = $shift->start_time !== null ? substr((string) $shift->start_time, 0, 5) : '';
-        $end = $shift->end_time !== null ? substr((string) $shift->end_time, 0, 5) : '';
-        $window = $start !== '' && $end !== '' ? $start.'-'.$end : '';
-
         $type = $shift->shiftType;
-        if ($type !== null && $type->is_active && $type->kind === ShiftTypeKind::Work) {
-            $duty = $window !== '' ? $type->label.' - '.$window : $type->label;
-        } else {
-            $duty = $window;
-        }
-
+        $label = ($type !== null && $type->is_active && $type->kind === ShiftTypeKind::Work)
+            ? $type->label
+            : '';
         $place = is_string($shift->unit_name) && $shift->unit_name !== ''
             ? $shift->unit_name
             : '';
 
-        if ($place !== '' && $duty !== '') {
-            return $duty.' · '.$place;
+        if ($label !== '' && $place !== '') {
+            return $label.' · '.$place;
         }
 
-        return $place !== '' ? $place : $duty;
+        return $label !== '' ? $label : $place;
+    }
+
+    private function hours(PlannedShift $shift): string
+    {
+        if ($shift->kind->isAbsence()) {
+            return '';
+        }
+
+        $start = $shift->start_time !== null ? substr((string) $shift->start_time, 0, 5) : '';
+        $end = $shift->end_time !== null ? substr((string) $shift->end_time, 0, 5) : '';
+
+        return $start !== '' && $end !== '' ? $start.'-'.$end : '';
     }
 }

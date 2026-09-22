@@ -336,7 +336,12 @@
             "empty": "Niente di pianificato questo mese.",
             "month_nav": "Mese",
             "previous_month": "Mese precedente",
-            "next_month": "Mese successivo"
+            "next_month": "Mese successivo",
+            "columns": {
+                "date": "Data",
+                "duty": "Turno",
+                "hours": "Orari"
+            }
         },
         "visit_started": "Visita di lavoro avviata.",
         "visit_ended": "Visita di lavoro terminata.",
