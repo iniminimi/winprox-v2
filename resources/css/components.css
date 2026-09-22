@@ -994,7 +994,7 @@ a.wp-kpi:hover {
 }
 
 /* ---------------------------------------------------------------------------
- | Configuratiegezondheid — donut + dashboard-widget.
+ | Configuratiegezondheid — donut.
  * ------------------------------------------------------------------------- */
 .wp-health-donut {
     position: relative;
@@ -1270,35 +1270,6 @@ a.wp-kpi:hover {
     font-weight: 700;
     color: var(--wp-text);
     margin: 0;
-}
-
-.wp-traffic-widget__list {
-    margin-top: 0.75rem;
-}
-
-.wp-traffic-widget__empty {
-    margin-top: 0.75rem;
-}
-
-.wp-traffic-widget-toggle {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    width: 100%;
-    padding: 0;
-    border: none;
-    background: none;
-    cursor: pointer;
-    text-align: left;
-    color: inherit;
-}
-
-.wp-traffic-widget-toggle:hover .wp-dashboard-widget__title {
-    color: var(--wp-accent-text);
-}
-
-.wp-traffic-widget .wp-disclosure-panel {
-    padding-top: 0.75rem;
 }
 
 .wp-traffic-row {

@@ -15,8 +15,6 @@ use App\Enums\TenantStarterPackType;
 use App\Http\Requests\Onboarding\ApplyTenantStarterPackRequest;
 use App\Models\Tenant;
 use App\Models\User;
-use App\Support\Admin\AdminHealthService;
-use App\Support\Dashboard\TopScannedUnitsService;
 use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Onboarding\TenantStarterPackCatalog;
 use App\Support\Onboarding\TenantStarterPackSummary;
@@ -139,8 +137,6 @@ class Dashboard extends Component
         ApplyPlanEntitlementsAction $applyEntitlements,
         BuildDashboardStatsAction $buildStats,
         ListDashboardRecentIssuesAction $listRecentIssues,
-        AdminHealthService $healthService,
-        TopScannedUnitsService $topScannedUnits,
     ) {
         $tenant = $this->resolveTenant();
         if ($tenant !== null) {
@@ -191,8 +187,6 @@ class Dashboard extends Component
             'recent' => $recent,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'onboarding' => $onboarding,
-            'health' => $healthService->report(),
-            'topScannedUnits' => $topScannedUnits->topForCurrentTenant(),
             'hasTimeModule' => $hasTimeModule,
             'canApplyStarterPack' => $canApplyStarterPack,
             'showStarterPackChooser' => $showStarterPackChooser,

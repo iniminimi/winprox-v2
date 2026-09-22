@@ -2,8 +2,6 @@
     "title": "Controllo integrità configurazione",
     "subtitle": "Panoramica di GPS, segnalazioni, documenti, sedi, unità e categorie.",
     "widget": {
-        "kicker": "Configurazione",
-        "title": "Health check",
         "issues": "{0} Nessuna azione richiesta|{1} :count azione richiesta|[2,*] :count azioni richieste"
     },
     "donut_aria": "Configurazione :percent percento completa",

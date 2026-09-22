@@ -2,8 +2,6 @@
     "title": "Santé de la configuration",
     "subtitle": "Aperçu du GPS, des signalements, documents, sites, unités et catégories.",
     "widget": {
-        "kicker": "Configuration",
-        "title": "Contrôle de santé",
         "issues": "{0} Aucun point d'action|{1} :count point d'action|[2,*] :count points d'action"
     },
     "donut_aria": "Configuration :percent pour cent complète",

@@ -2,8 +2,6 @@
     "title": "Configuratiegezondheid",
     "subtitle": "Overzicht van GPS, melden, documenten, locaties, units en categorieën.",
     "widget": {
-        "kicker": "Configuratie",
-        "title": "Gezondheidscontrole",
         "issues": "{0} Geen actiepunten|{1} :count actiepunt|[2,*] :count actiepunten"
     },
     "donut_aria": "Configuratie :percent procent compleet",

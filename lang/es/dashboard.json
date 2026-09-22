@@ -35,15 +35,6 @@
         "reporter_anon": "Anónimo",
         "no_location": "Sin ubicación"
     },
-    "traffic": {
-        "kicker": "Escaneos QR",
-        "title": "Activos populares",
-        "subtitle": "Top 5 más escaneados en los últimos 7 días.",
-        "scans": "{1} :count escaneo|[2,*] :count escaneos",
-        "no_location": "Sin ubicación",
-        "empty": "Aún no hay escaneos QR en los últimos 7 días.",
-        "collapsed_summary": ":units activos · :scans escaneos esta semana"
-    },
     "welcome": "Bienvenido a WinProx",
     "onboarding": {
         "teams": {

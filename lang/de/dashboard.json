@@ -35,15 +35,6 @@
         "reporter_anon": "Anonym",
         "no_location": "Kein Standort"
     },
-    "traffic": {
-        "kicker": "QR-Scans",
-        "title": "Beliebte Assets",
-        "subtitle": "Top 5 der meist gescannten Units in 7 Tagen.",
-        "scans": "{1} :count Scan|[2,*] :count Scans",
-        "no_location": "Kein Standort",
-        "empty": "Noch keine QR-Scans in den letzten 7 Tagen.",
-        "collapsed_summary": ":units Assets · :scans Scans diese Woche"
-    },
     "welcome": "Willkommen bei WinProx",
     "onboarding": {
         "teams": {

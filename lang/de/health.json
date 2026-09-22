@@ -2,8 +2,6 @@
     "title": "Konfigurationszustand",
     "subtitle": "Übersicht zu GPS, Meldungen, Dokumenten, Standorten, Units und Kategorien.",
     "widget": {
-        "kicker": "Konfiguration",
-        "title": "Gesundheitscheck",
         "issues": "{0} Keine Maßnahmen|{1} :count Maßnahme|[2,*] :count Maßnahmen"
     },
     "donut_aria": "Konfiguration :percent Prozent vollständig",

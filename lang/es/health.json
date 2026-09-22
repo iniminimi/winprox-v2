@@ -2,8 +2,6 @@
     "title": "Estado de la configuración",
     "subtitle": "Resumen de GPS, informes, documentos, ubicaciones, unidades y categorías.",
     "widget": {
-        "kicker": "Configuración",
-        "title": "Comprobación de estado",
         "issues": "{0} Sin acciones pendientes|{1} :count acción pendiente|[2,*] :count acciones pendientes"
     },
     "donut_aria": "Configuración :percent por ciento completa",

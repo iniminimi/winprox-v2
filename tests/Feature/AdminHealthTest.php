@@ -118,7 +118,7 @@ it('detecteert units zonder foto, categorieën zonder team en locaties zonder ad
         ]);
 });
 
-it('toont de gezondheidswidget op het dashboard bij onvolledigheid', function () {
+it('toont geen gezondheidswidget op het dashboard', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
@@ -133,17 +133,6 @@ it('toont de gezondheidswidget op het dashboard bij onvolledigheid', function ()
         'is_active' => true,
     ]);
     ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
-
-    Livewire::actingAs($user)
-        ->test(Dashboard::class)
-        ->assertSee(__('health.widget.title'))
-        ->assertSeeHtml('wp-health-widget');
-});
-
-it('verbergt de gezondheidswidget op het dashboard wanneer alles compleet is', function () {
-    $tenant = Tenant::factory()->create();
-    $user = User::factory()->create(['tenant_id' => $tenant->id]);
-    seedHealthyTenant($tenant);
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)
