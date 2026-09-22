@@ -437,17 +437,25 @@
 @media (min-width: 64rem) {
     [data-theme='standard'] .wp-welcome-split:has(.wp-landing-visual--match-copy) {
         align-items: stretch;
-        grid-template-columns: minmax(0, 1.15fr) auto;
+        grid-template-columns: minmax(0, 1.15fr) minmax(12rem, 16rem);
         gap: 2rem;
     }
 
+    /*
+     * Phone screenshot: row height follows the text column only.
+     * height:0 + min-height:100% keeps the figure out of intrinsic sizing;
+     * overflow:hidden clips so it cannot float over the next section.
+     */
     [data-theme='standard'] .wp-landing-visual--match-copy {
         height: 0;
         min-height: 100%;
-        width: auto;
-        max-width: 17rem;
+        width: 100%;
+        max-width: none;
         margin: 0;
-        align-self: stretch;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
     }
 
     [data-theme='standard'] .wp-landing-visual--match-copy .wp-welcome-screenshot__img {
@@ -463,6 +471,12 @@
 [data-theme='standard'] .wp-landing-visual--match-copy {
     max-width: 18rem;
     margin-inline: auto;
+}
+
+[data-theme='standard'] .wp-landing-visual--match-copy .wp-welcome-screenshot__img {
+    width: 100%;
+    height: auto;
+    box-shadow: var(--wp-shadow-lg);
 }
 
 [data-theme='standard'] .wp-landing-visual--compact {
