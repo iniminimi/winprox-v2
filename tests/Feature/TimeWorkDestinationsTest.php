@@ -494,6 +494,7 @@ it('toont Vandaag en Zoek werkplek in de buurt na inklokken, zonder WorkVisit', 
         ->assertDontSeeHtml('wp-today-destination__unit')
         ->assertSee(__('time.portal.today.navigate'), false)
         ->assertSee(__('time.portal.clock.find_nearby'), false)
+        ->assertSeeHtml('wp-btn--prio-pulse')
         ->assertSeeHtml('hasStartWorkInRange')
         ->assertSee('google.com/maps/dir', false)
         ->assertDontSeeHtml('wire:click="navigate"');
@@ -645,6 +646,7 @@ it('toont de lege Vandaag-kaart wanneer er geen geplande bestemmingen zijn', fun
         ->assertSee(__('time.portal.today.empty'), false)
         ->assertDontSee(__('time.portal.today.gps_off'), false)
         ->assertDontSeeHtml('wp-today-gps-off')
+        ->assertDontSeeHtml('wp-btn--prio-pulse')
         ->assertSee(__('time.portal.clock.find_nearby'), false);
 });
 
@@ -669,6 +671,7 @@ it('verbergt Zoek werkplek in de buurt wanneer Start werk-resultaten er zijn', f
         ->assertSee(__('time.portal.clock.find_nearby'), false)
         ->call('refreshNearbyClockUnits', 51.05, 3.73)
         ->assertDontSeeHtml("withFreshGps('refreshNearbyClockUnits')")
+        ->assertSeeHtml('wp-btn--prio-pulse')
         ->assertSee(__('time.portal.clock.start_work_at', [
             'place' => 'Campus Noord · Gebouw A',
             'distance' => 0,
