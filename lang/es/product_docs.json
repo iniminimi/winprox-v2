@@ -161,6 +161,7 @@
                 "body": "La gestión planifica turnos en Time → Cuadrante. Publicar los muestra en Clock Point, no en la ONSS.",
                 "items": [
                     "Escriba un código o un horario libre como 07:00-15:00.",
+                    "Los cambios sin guardar piden guardar primero si sale de la página o cambia de semana/mes.",
                     "Vista semanal o mensual; los fines de semana se pueden ocultar.",
                     "Clock Point muestra Mi cuadrante (solo turnos publicados propios).",
                     "Triángulo rojo si no ha fichado o llega tarde.",

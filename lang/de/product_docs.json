@@ -161,6 +161,7 @@
                 "body": "Die Verwaltung plant Schichten unter Time → Dienstplan. Veröffentlichen zeigt sie am Clock Point, nicht bei der LSS.",
                 "items": [
                     "Tippen Sie einen Code oder eine freie Zeit wie 07:00-15:00.",
+                    "Ungespeicherte Änderungen bitten zuerst um Speichern, wenn Sie die Seite verlassen oder Woche/Monat wechseln.",
                     "Wochen- oder Monatsansicht; Wochenenden können Sie ausblenden.",
                     "Clock Point zeigt Mein Dienstplan (nur eigene veröffentlichte Schichten).",
                     "Rotes Dreieck, wenn Sie nicht oder zu spät stempeln.",

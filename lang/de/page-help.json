@@ -1727,7 +1727,7 @@
                 },
                 {
                     "label": "Speichern und veröffentlichen",
-                    "text": "Speichern bewahrt die sichtbare Woche oder den Monat. <strong>Veröffentlichen</strong> macht den Zeitraum auf dem Clock Point (Mein Dienstplan) sichtbar und setzt ein Badge. Bearbeiten nach dem Veröffentlichen bleibt veröffentlicht."
+                    "text": "Speichern bewahrt die sichtbare Woche oder den Monat. Bei ungespeicherten Änderungen erscheint ein Fenster, wenn Sie die Seite verlassen oder Woche/Monat wechseln. <strong>Veröffentlichen</strong> macht den Zeitraum auf dem Clock Point (Mein Dienstplan) sichtbar und setzt ein Badge. Bearbeiten nach dem Veröffentlichen bleibt veröffentlicht."
                 },
                 {
                     "label": "Woche kopieren",

@@ -61,6 +61,8 @@ class RosterIndex extends Component
 
     public bool $showLegendModal = false;
 
+    public bool $showUnsavedLeaveModal = false;
+
     public function mount(ResolveRosterPeriodAction $resolvePeriod): void
     {
         $this->authorize('viewAny', PlannedShift::class);
@@ -86,6 +88,16 @@ class RosterIndex extends Component
     public function closeLegendModal(): void
     {
         $this->showLegendModal = false;
+    }
+
+    public function openUnsavedLeaveModal(): void
+    {
+        $this->showUnsavedLeaveModal = true;
+    }
+
+    public function closeUnsavedLeaveModal(): void
+    {
+        $this->showUnsavedLeaveModal = false;
     }
 
     public function setView(string $view, ResolveRosterPeriodAction $resolvePeriod): void
@@ -197,6 +209,7 @@ class RosterIndex extends Component
 
         $array = $snapshot->toArray();
         $array['invalid_message'] = __('time.schedule.errors.invalid_cells');
+        $array['unsaved_message'] = __('time.schedule.unsaved.save_first');
         $array['name_column'] = __('time.schedule.column_name');
         if (auth()->user()?->can('viewAny', WorkShift::class)) {
             $array['hours_url'] = route('time.shifts.index');

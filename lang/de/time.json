@@ -569,7 +569,14 @@
         "legend_title": "Dienstplan-Legende",
         "column_name": "Name",
         "groups_filter": "Gruppen",
-        "group_ungrouped": "Ohne Gruppe"
+        "group_ungrouped": "Ohne Gruppe",
+        "unsaved": {
+            "title": "Nicht gespeicherte Änderungen",
+            "body": "Sie haben den Dienstplan geändert. Speichern Sie zuerst, sonst gehen diese Änderungen verloren.",
+            "stay": "Bleiben und speichern",
+            "leave": "Trotzdem verlassen",
+            "save_first": "Speichern Sie den Dienstplan zuerst."
+        }
     },
     "shift_types": {
         "title": "Schichttypen",
@@ -597,6 +604,8 @@
         "conflicts_title": "Bestehende Schichten",
         "conflicts_empty": "Keine bestehenden Schichten in diesem Zeitraum.",
         "conflicts_help": "Bei Genehmigung werden diese Zellen am Antrag gespeichert und danach ersetzt.",
+        "decided_by_approved": "Genehmigt von :name",
+        "decided_by_rejected": "Abgelehnt von :name",
         "status": {
             "pending": "Offen",
             "approved": "Genehmigt",

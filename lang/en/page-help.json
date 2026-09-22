@@ -1727,7 +1727,7 @@
                 },
                 {
                     "label": "Save and publish",
-                    "text": "Save stores the visible week or month and workers. <strong>Publish</strong> makes that period visible on Clock Point (My roster) and sets a badge. Edits after publishing stay published; a new badge only appears if you publish again."
+                    "text": "Save stores the visible week or month and workers. If you have unsaved changes, a popup appears when you leave the page or switch week/month. <strong>Publish</strong> makes that period visible on Clock Point (My roster) and sets a badge. Edits after publishing stay published; a new badge only appears if you publish again."
                 },
                 {
                     "label": "Copy week",

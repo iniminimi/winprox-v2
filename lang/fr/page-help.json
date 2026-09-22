@@ -1735,7 +1735,7 @@
                 },
                 {
                     "label": "Enregistrer et publier",
-                    "text": "Enregistrer conserve la semaine ou le mois visible. <strong>Publier</strong> rend la période visible sur le Clock Point (Mon planning) et pose un badge. Les corrections après publication restent publiées."
+                    "text": "Enregistrer conserve la semaine ou le mois visible. En cas de modifications non enregistrées, une fenêtre s’affiche si vous quittez la page ou changez de semaine/mois. <strong>Publier</strong> rend la période visible sur le Clock Point (Mon planning) et pose un badge. Les corrections après publication restent publiées."
                 },
                 {
                     "label": "Copier la semaine",

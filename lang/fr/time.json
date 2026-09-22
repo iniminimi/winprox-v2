@@ -569,7 +569,14 @@
         "legend_title": "Légende du planning",
         "column_name": "Nom",
         "groups_filter": "Groupes",
-        "group_ungrouped": "Sans groupe"
+        "group_ungrouped": "Sans groupe",
+        "unsaved": {
+            "title": "Modifications non enregistrées",
+            "body": "Vous avez modifié le planning. Enregistrez d’abord, sinon ces modifications seront perdues.",
+            "stay": "Rester et enregistrer",
+            "leave": "Quitter quand même",
+            "save_first": "Enregistrez d’abord le planning."
+        }
     },
     "shift_types": {
         "title": "Types de service",
@@ -597,6 +604,8 @@
         "conflicts_title": "Services existants",
         "conflicts_empty": "Aucun service existant sur cette période.",
         "conflicts_help": "À l’approbation, ces cellules sont enregistrées sur la demande puis remplacées.",
+        "decided_by_approved": "Approuvé par :name",
+        "decided_by_rejected": "Refusé par :name",
         "status": {
             "pending": "Ouvert",
             "approved": "Approuvé",

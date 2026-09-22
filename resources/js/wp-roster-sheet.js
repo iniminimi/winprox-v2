@@ -591,6 +591,38 @@ export function bind(root, wire) {
 
     let worksheet = null;
     let payload = null;
+    let dirty = false;
+    let pendingLeave = null;
+    let allowRosterNav = false;
+
+    const setDirty = (value) => {
+        dirty = Boolean(value);
+        if (dirty) {
+            root.dataset.wpRosterDirty = '1';
+        } else {
+            delete root.dataset.wpRosterDirty;
+        }
+    };
+
+    const runPendingLeave = () => {
+        const next = pendingLeave;
+        pendingLeave = null;
+        setDirty(false);
+        if (typeof next === 'function') {
+            next();
+        }
+    };
+
+    const requestLeave = (next) => {
+        if (!dirty) {
+            next();
+            return;
+        }
+        pendingLeave = next;
+        if (typeof wire.openUnsavedLeaveModal === 'function') {
+            wire.openUnsavedLeaveModal();
+        }
+    };
 
     const showError = (message) => {
         if (!banner) {
@@ -614,7 +646,7 @@ export function bind(root, wire) {
         }
         event.preventDefault();
         event.stopPropagation();
-        window.location.assign(url);
+        requestLeave(() => window.location.assign(url));
     };
     grid.addEventListener('mousedown', openHoursFromAttendance, true);
 
@@ -708,6 +740,7 @@ export function bind(root, wire) {
                 .map((line) => line.slice(0, dayCount).map((value) => formatCellDisplay(value))),
             onafterchanges: (instance) => {
                 paint(instance);
+                setDirty(true);
             },
             onload: (instance) => {
                 paint(instance, { lockSections: true });
@@ -763,34 +796,122 @@ export function bind(root, wire) {
         }).observe(grid);
     }
 
-    root.querySelector('[data-wp-roster-save]')?.addEventListener('click', async () => {
-        if (!worksheet || !payload) {
+    root.addEventListener('click', async (event) => {
+        if (event.target.closest('[data-wp-roster-leave-anyway]')) {
+            event.preventDefault();
+            runPendingLeave();
+            if (typeof wire.closeUnsavedLeaveModal === 'function') {
+                wire.closeUnsavedLeaveModal();
+            }
             return;
         }
-        if (hasInvalidCells(worksheet, payload)) {
-            applyCellClasses(worksheet, payload);
-            showError(payload.invalid_message || '');
-            return;
-        }
-        showError('');
-        await wire.save(collectCells(worksheet, payload));
-    });
 
-    root.querySelector('[data-wp-roster-copy]')?.addEventListener('click', async () => {
-        await wire.copyToNextWeek();
-    });
-
-    root.querySelector('[data-wp-roster-publish]')?.addEventListener('click', async () => {
-        const confirmMessage = root.querySelector('[data-wp-roster-publish]')?.getAttribute('data-confirm');
-        if (confirmMessage && !window.confirm(confirmMessage)) {
+        const nav = event.target.closest('[data-wp-roster-nav]');
+        if (nav && dirty && !allowRosterNav) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            requestLeave(() => {
+                allowRosterNav = true;
+                nav.click();
+                allowRosterNav = false;
+            });
             return;
         }
-        await wire.publish();
+
+        if (event.target.closest('[data-wp-roster-save]')) {
+            if (!worksheet || !payload) {
+                return;
+            }
+            if (hasInvalidCells(worksheet, payload)) {
+                applyCellClasses(worksheet, payload);
+                showError(payload.invalid_message || '');
+                return;
+            }
+            showError('');
+            await wire.save(collectCells(worksheet, payload));
+            return;
+        }
+
+        if (event.target.closest('[data-wp-roster-copy]')) {
+            if (dirty) {
+                showError(payload?.unsaved_message || '');
+                return;
+            }
+            await wire.copyToNextWeek();
+            return;
+        }
+
+        if (event.target.closest('[data-wp-roster-publish]')) {
+            if (dirty) {
+                showError(payload?.unsaved_message || '');
+                return;
+            }
+            const confirmMessage = event.target.closest('[data-wp-roster-publish]')?.getAttribute('data-confirm');
+            if (confirmMessage && !window.confirm(confirmMessage)) {
+                return;
+            }
+            await wire.publish();
+        }
+    }, true);
+
+    const isSafeLeaveLink = (link) => {
+        if (!link || link.target === '_blank' || link.hasAttribute('download')) {
+            return true;
+        }
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('javascript:')) {
+            return true;
+        }
+        const url = new URL(href, window.location.href);
+        if (url.origin !== window.location.origin) {
+            return false;
+        }
+
+        return url.pathname === window.location.pathname && url.search === window.location.search;
+    };
+
+    document.addEventListener('click', (event) => {
+        if (!dirty || event.defaultPrevented) {
+            return;
+        }
+        const link = event.target.closest?.('a[href]');
+        if (!link || root.contains(link) && link.closest('[data-wp-roster-leave-anyway]')) {
+            return;
+        }
+        if (isSafeLeaveLink(link)) {
+            return;
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        const url = new URL(link.getAttribute('href'), window.location.href);
+        requestLeave(() => window.location.assign(url.href));
+    }, true);
+
+    document.addEventListener('submit', (event) => {
+        if (!dirty || event.defaultPrevented) {
+            return;
+        }
+        const form = event.target;
+        if (!(form instanceof HTMLFormElement)) {
+            return;
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        requestLeave(() => form.submit());
+    }, true);
+
+    window.addEventListener('beforeunload', (event) => {
+        if (!dirty) {
+            return;
+        }
+        event.preventDefault();
+        event.returnValue = '';
     });
 
     if (typeof wire.on === 'function') {
         wire.on('roster-week-changed', () => {
             showError('');
+            setDirty(false);
             mount();
         });
         wire.on('roster-save-failed', (event) => {

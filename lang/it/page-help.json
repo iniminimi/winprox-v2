@@ -1727,7 +1727,7 @@
                 },
                 {
                     "label": "Salva e pubblica",
-                    "text": "Salva conserva la settimana o il mese visibile. <strong>Pubblica</strong> rende il periodo visibile sul Clock Point (Il mio turno) e imposta un badge. Le modifiche dopo la pubblicazione restano pubblicate."
+                    "text": "Salva conserva la settimana o il mese visibile. Se ci sono modifiche non salvate, compare un avviso quando lasci la pagina o cambi settimana/mese. <strong>Pubblica</strong> rende il periodo visibile sul Clock Point (Il mio turno) e imposta un badge. Le modifiche dopo la pubblicazione restano pubblicate."
                 },
                 {
                     "label": "Copia settimana",

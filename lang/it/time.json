@@ -569,7 +569,14 @@
         "legend_title": "Legenda turni",
         "column_name": "Nome",
         "groups_filter": "Gruppi",
-        "group_ungrouped": "Senza gruppo"
+        "group_ungrouped": "Senza gruppo",
+        "unsaved": {
+            "title": "Modifiche non salvate",
+            "body": "Hai modificato il turno. Salva prima, altrimenti quelle modifiche andranno perse.",
+            "stay": "Resta e salva",
+            "leave": "Esci comunque",
+            "save_first": "Salva prima il turno."
+        }
     },
     "shift_types": {
         "title": "Tipi di turno",
@@ -597,6 +604,8 @@
         "conflicts_title": "Turni esistenti",
         "conflicts_empty": "Nessun turno esistente in questo periodo.",
         "conflicts_help": "In approvazione queste celle vengono salvate sulla richiesta e poi sostituite.",
+        "decided_by_approved": "Approvata da :name",
+        "decided_by_rejected": "Rifiutata da :name",
         "status": {
             "pending": "Aperta",
             "approved": "Approvata",

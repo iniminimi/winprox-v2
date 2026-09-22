@@ -161,6 +161,7 @@
                 "body": "La gestion planifie les services sous Time → Planning. Publier les montre sur Clock Point, pas à l’ONSS.",
                 "items": [
                     "Tapez un code ou un horaire libre comme 07:00-15:00.",
+                    "Les modifications non enregistrées demandent d’enregistrer d’abord si vous quittez la page ou changez de semaine/mois.",
                     "Vue semaine ou mois ; les week-ends peuvent être masqués.",
                     "Clock Point montre Mon planning (uniquement ses services publiés).",
                     "Triangle rouge si vous n’avez pas pointé ou si vous êtes en retard.",

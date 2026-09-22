@@ -161,6 +161,7 @@
                 "body": "Beheer plant diensten in Time → Uurrooster. Publiceren toont ze op Clock Point, niet bij de RSZ.",
                 "items": [
                     "Typ een code of een vrije tijd zoals 07:00-15:00.",
+                    "Niet-opgeslagen wijzigingen vragen eerst om opslaan als je de pagina verlaat of van week/maand wisselt.",
                     "Week- of maandweergave; weekends kun je verbergen.",
                     "Clock Point toont Mijn rooster (alleen eigen gepubliceerde diensten).",
                     "Rode driehoek als je niet of te laat inklokt.",

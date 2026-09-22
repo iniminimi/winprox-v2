@@ -569,7 +569,14 @@
         "legend_title": "Legende uurrooster",
         "column_name": "Naam",
         "groups_filter": "Groepen",
-        "group_ungrouped": "Zonder groep"
+        "group_ungrouped": "Zonder groep",
+        "unsaved": {
+            "title": "Niet-opgeslagen wijzigingen",
+            "body": "Je hebt het uurrooster gewijzigd. Sla eerst op, anders gaan die wijzigingen verloren.",
+            "stay": "Blijven en opslaan",
+            "leave": "Toch verlaten",
+            "save_first": "Sla het uurrooster eerst op."
+        }
     },
     "shift_types": {
         "title": "Shiftypes",
@@ -597,6 +604,8 @@
         "conflicts_title": "Bestaande diensten",
         "conflicts_empty": "Geen bestaande diensten in deze periode.",
         "conflicts_help": "Bij goedkeuren worden deze cellen bewaard op de aanvraag en daarna vervangen.",
+        "decided_by_approved": "Goedgekeurd door :name",
+        "decided_by_rejected": "Geweigerd door :name",
         "status": {
             "pending": "Open",
             "approved": "Goedgekeurd",

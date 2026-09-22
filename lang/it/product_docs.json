@@ -161,6 +161,7 @@
                 "body": "La gestione pianifica i servizi in Time → Turni. Pubblicare li mostra sul Clock Point, non all’ONSS.",
                 "items": [
                     "Digita un codice o un orario libero come 07:00-15:00.",
+                    "Le modifiche non salvate chiedono di salvare prima se lasci la pagina o cambi settimana/mese.",
                     "Vista settimana o mese; i weekend si possono nascondere.",
                     "Clock Point mostra Il mio turno (solo i servizi pubblicati propri).",
                     "Triangolo rosso se non hai timbrato o sei in ritardo.",

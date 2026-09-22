@@ -1727,7 +1727,7 @@
                 },
                 {
                     "label": "Guardar y publicar",
-                    "text": "Guardar conserva la semana o el mes visible. <strong>Publicar</strong> hace visible el periodo en Clock Point (Mi cuadrante) y pone una insignia. Editar después de publicar sigue publicado."
+                    "text": "Guardar conserva la semana o el mes visible. Si hay cambios sin guardar, aparece un aviso al salir de la página o al cambiar de semana/mes. <strong>Publicar</strong> hace visible el periodo en Clock Point (Mi cuadrante) y pone una insignia. Editar después de publicar sigue publicado."
                 },
                 {
                     "label": "Copiar semana",

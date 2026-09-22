@@ -1727,7 +1727,7 @@
                 },
                 {
                     "label": "Opslaan en publiceren",
-                    "text": "Opslaan bewaart de zichtbare week of maand en uitvoerders. <strong>Publiceren</strong> maakt die periode zichtbaar op Clock Point (Mijn rooster) en zet een badge. Bewerken na publiceren blijft gepubliceerd; een nieuwe badge volgt alleen bij opnieuw publiceren."
+                    "text": "Opslaan bewaart de zichtbare week of maand en uitvoerders. Bij niet-opgeslagen wijzigingen verschijnt een popup als je de pagina verlaat of van week/maand wisselt. <strong>Publiceren</strong> maakt die periode zichtbaar op Clock Point (Mijn rooster) en zet een badge. Bewerken na publiceren blijft gepubliceerd; een nieuwe badge volgt alleen bij opnieuw publiceren."
                 },
                 {
                     "label": "Week kopiëren",

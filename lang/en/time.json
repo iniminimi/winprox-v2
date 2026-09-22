@@ -569,7 +569,14 @@
         "legend_title": "Roster legend",
         "column_name": "Name",
         "groups_filter": "Groups",
-        "group_ungrouped": "Ungrouped"
+        "group_ungrouped": "Ungrouped",
+        "unsaved": {
+            "title": "Unsaved changes",
+            "body": "You changed the roster. Save first, or those changes will be lost.",
+            "stay": "Stay and save",
+            "leave": "Leave anyway",
+            "save_first": "Save the roster first."
+        }
     },
     "shift_types": {
         "title": "Shift types",
@@ -597,6 +604,8 @@
         "conflicts_title": "Existing shifts",
         "conflicts_empty": "No existing shifts in this period.",
         "conflicts_help": "On approval these cells are stored on the request, then replaced.",
+        "decided_by_approved": "Approved by :name",
+        "decided_by_rejected": "Rejected by :name",
         "status": {
             "pending": "Open",
             "approved": "Approved",

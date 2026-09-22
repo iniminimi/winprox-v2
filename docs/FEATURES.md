@@ -838,6 +838,8 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
 - **Snapshot:** code vult start/eind/pauze/`kind` uit het type op dat moment; latere type-wijziging
   raakt bestaande cellen niet. Vrije tijd: `pauze = 0`, `kind = work`.
 - **Scope:** opslaan / publiceren = zichtbare periode (week of maand) × zichtbare workers (teamfilter).
+  Niet-opgeslagen celwijzigingen: popup bij verlaten van de pagina of wisselen van
+  week/maand (eerst opslaan).
 - **Publiceren:** periode-scoped; bewerken daarna blijft `published`. Geen RSZ/CIAO.
   Na publiceren: `PublishWeekAction` → `NotifyWorkersRosterPublishedAction` →
   `CreateNotificationAction` (`roster_published`, `reference_id` = periode-start `Y-m-d`).

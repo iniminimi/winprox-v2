@@ -292,6 +292,14 @@ it('opent het uurrooster voor een admin', function () {
         ->assertOk();
 
     Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->call('openUnsavedLeaveModal')
+        ->assertSee(__('time.schedule.unsaved.title'), false)
+        ->assertSee(__('time.schedule.unsaved.body'), false)
+        ->call('closeUnsavedLeaveModal')
+        ->assertDontSee(__('time.schedule.unsaved.title'), false);
+
+    Livewire::actingAs($admin)
         ->test(ShiftTypesIndex::class)
         ->call('openCreate')
         ->set('typeCode', 'VM')

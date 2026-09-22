@@ -161,6 +161,7 @@
                 "body": "Staff plan shifts under Time → Roster. Publishing shows them on Clock Point, not at the NSSO.",
                 "items": [
                     "Type a code or a free time such as 07:00-15:00.",
+                    "Unsaved edits ask you to save first if you leave the page or switch week/month.",
                     "Week or month view; weekends can be hidden.",
                     "Clock Point shows My roster (own published shifts only).",
                     "A red triangle if you have not clocked in or are late.",

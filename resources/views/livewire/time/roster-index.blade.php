@@ -55,8 +55,8 @@
                 <div class="wp-cluster">
                     <div class="wp-filter-cell">
                         <div class="wp-cluster wp-cluster--tight">
-                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--surface' : 'btn--primary']) wire:click="setView('week')">{{ __('time.schedule.view_week') }}</button>
-                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--primary' : 'btn--surface']) wire:click="setView('month')">{{ __('time.schedule.view_month') }}</button>
+                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--surface' : 'btn--primary']) wire:click="setView('week')" data-wp-roster-nav>{{ __('time.schedule.view_week') }}</button>
+                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--primary' : 'btn--surface']) wire:click="setView('month')" data-wp-roster-nav>{{ __('time.schedule.view_month') }}</button>
                         </div>
                     </div>
                     <div class="wp-filter-cell">
@@ -84,9 +84,9 @@
                     <div class="wp-filter-cell">
                         <nav class="wp-pagination" aria-label="{{ $isMonth ? __('time.schedule.month') : __('time.schedule.week') }}">
                             <div class="wp-pagination__pages">
-                                <button type="button" class="wp-pagination__control" wire:click="previousWeek" aria-label="{{ $isMonth ? __('time.schedule.prev_month') : __('time.schedule.prev_week') }}">{{ __('time.schedule.nav_prev') }}</button>
-                                <button type="button" class="wp-pagination__page is-active" wire:click="thisWeek" aria-label="{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}">{{ $weekLabel }}</button>
-                                <button type="button" class="wp-pagination__control" wire:click="nextWeek" aria-label="{{ $isMonth ? __('time.schedule.next_month') : __('time.schedule.next_week') }}">{{ __('time.schedule.nav_next') }}</button>
+                                <button type="button" class="wp-pagination__control" wire:click="previousWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.prev_month') : __('time.schedule.prev_week') }}">{{ __('time.schedule.nav_prev') }}</button>
+                                <button type="button" class="wp-pagination__page is-active" wire:click="thisWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}">{{ $weekLabel }}</button>
+                                <button type="button" class="wp-pagination__control" wire:click="nextWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.next_month') : __('time.schedule.next_week') }}">{{ __('time.schedule.nav_next') }}</button>
                             </div>
                         </nav>
                     </div>
@@ -209,6 +209,26 @@
 
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeLegendModal">{{ __('common.button.close') }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
+
+    @if ($showUnsavedLeaveModal)
+        <x-wp-modal closeMethod="closeUnsavedLeaveModal" aria-labelledby="roster-unsaved-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="roster-unsaved-title" class="wp-section-title">{{ __('time.schedule.unsaved.title') }}</h2>
+                    <x-wp-modal-close wire:click="closeUnsavedLeaveModal" />
+                </div>
+                <p class="wp-muted">{{ __('time.schedule.unsaved.body') }}</p>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--primary" wire:click="closeUnsavedLeaveModal">
+                        {{ __('time.schedule.unsaved.stay') }}
+                    </button>
+                    <button type="button" class="btn btn--ghost" data-wp-roster-leave-anyway>
+                        {{ __('time.schedule.unsaved.leave') }}
+                    </button>
                 </div>
             </div>
         </x-wp-modal>
