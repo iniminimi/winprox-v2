@@ -157,7 +157,7 @@ it('klokt in via het portaal na icoon en toont het icoon niet meer op het welkom
         ->call('signInWithIcon')
         ->assertDontSeeHtml('wp-icon-tile is-selected')
         ->call('clockIn')
-        ->assertSet('flashMessage', __('time.portal.clocked_in'));
+        ->assertSet('flashMessage', '');
 
     expect((int) $worker->fresh()->clock_device_id)->toBeGreaterThan(0);
 });

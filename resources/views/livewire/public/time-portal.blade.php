@@ -33,7 +33,7 @@
                     @include('partials.wp-portal-theme')
                     @include('partials.wp-portal-lang')
                 </div>
-                @if ($canAct ?? false)
+                @if (($canAct ?? false) && (($hoursListOpen ?? false) || ($scheduleListOpen ?? false) || ($rosterListOpen ?? false) || ($checkingUnit ?? null)))
                     @include('partials.wp-portal-sign-out', ['signOutMethod' => 'signOut'])
                 @endif
             </div>
@@ -313,12 +313,6 @@
                         <p class="wp-muted">{{ __('portal.worker.errors.no_permission') }}</p>
                     @endif
                 @else
-                    <div class="wp-portal-worker-bar">
-                        <div class="wp-card wp-card-pad wp-cluster">
-                            <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
-                        </div>
-                    </div>
-
                     @if ($onSiteGuidance)
                         <div class="wp-flash">
                             @if (! $onSiteGuidance['remaining_here'] && filled($onSiteGuidance['next']))
@@ -337,6 +331,10 @@
                     @if ($verifiedWorker?->is_teamleader)
                         @include('partials.wp-portal-teamleader-release')
                     @endif
+
+                    @unless ($hasTimeModule)
+                        @include('partials.wp-portal-presence')
+                    @endunless
 
                     @if ($hasTimeModule)
                     <div
@@ -439,80 +437,7 @@
                         }"
                         x-init="refreshHere(); window.addEventListener('pageshow', () => refreshHere())"
                     >
-                        <div class="wp-card wp-card-pad wp-stack">
-                        <h2 class="wp-section-title">{{ __('time.portal.clock.title') }}</h2>
-                        @if ($openShift === null)
-                            <p class="wp-muted">{{ __('time.portal.clock.not_clocked_in') }}</p>
-                            @if ($canPunch ?? false)
-                                <button type="button" class="btn btn--primary btn--block" @click="withGps('clockIn')">
-                                    {{ __('time.portal.clock.in') }}
-                                </button>
-                            @else
-                                <p class="wp-muted">{{ __('time.portal.clock.scan_required_hint') }}</p>
-                            @endif
-                        @else
-                            @php
-                                $presencePoint = $openShift->currentClockPoint();
-                                $clockInPlace = $presencePoint?->location?->name
-                                    ? $presencePoint->location->name.($presencePoint->name ? ' · '.$presencePoint->name : '')
-                                    : ($presencePoint?->name ?? '');
-                                $openElsewhere = $presencePoint !== null
-                                    && (int) $presencePoint->id !== (int) $clockPointId;
-                                $startedElsewhere = $openShift->hasLocationHops()
-                                    && (int) $openShift->clock_in_clock_point_id !== (int) ($presencePoint?->id ?? 0);
-                            @endphp
-                            <p class="wp-muted">
-                                @if ($clockInPlace !== '')
-                                    {{ __('time.portal.clock.clocked_in_since_at', ['time' => $openShift->clock_in_at->format('H:i'), 'place' => $clockInPlace]) }}
-                                @else
-                                    {{ __('time.portal.clock.clocked_in_since', ['time' => $openShift->clock_in_at->format('H:i')]) }}
-                                @endif
-                            </p>
-                            @if ($openShift->isManuallyClockedIn())
-                                <p class="wp-muted">{{ __('time.manual_clock_in.badge') }}</p>
-                            @endif
-                            @if (($gpsVisits ?? false) && $openShift->openVisit)
-                                <p class="wp-muted">{{ __('time.portal.clock.working_at', ['place' => trim(($openShift->openVisit->location?->name ?? '').' · '.($openShift->openVisit->unit?->name ?? ''), ' ·')]) }}</p>
-                                <button type="button" class="btn btn--primary btn--block" @click="withFreshGps('endWorkVisit')">
-                                    {{ __('time.portal.clock.stop_work') }}
-                                </button>
-                            @endif
-                            @if ($startedElsewhere && $openShift->clockInClockPoint)
-                                <p class="wp-muted">{{ __('time.portal.clock.started_at', ['place' => $openShift->clockInClockPoint->name]) }}</p>
-                            @endif
-                            @if ($openElsewhere)
-                                <p class="wp-muted">{{ __('time.portal.clock.open_elsewhere_hint') }}</p>
-                            @endif
-                            @if ($openShift->openBreak)
-                                <p class="wp-muted">{{ __('time.portal.clock.on_break_since', ['time' => $openShift->openBreak->started_at->format('H:i')]) }}</p>
-                                <button type="button" class="btn btn--primary btn--block" wire:click="endBreak">
-                                    {{ __('time.portal.clock.end_break') }}
-                                </button>
-                            @elseif ($canPunch ?? false)
-                                <div class="wp-cluster">
-                                    @if ($openElsewhere)
-                                        <button type="button" class="btn btn--primary" @click="withGps('transferToThisClockPoint')">
-                                            {{ __('time.portal.clock.transfer_here') }}
-                                        </button>
-                                    @else
-                                        <button type="button" class="btn btn--surface" wire:click="startBreak">
-                                            {{ __('time.portal.clock.start_break') }}
-                                        </button>
-                                    @endif
-                                    <button type="button" @class(['btn', 'btn--surface' => $openElsewhere, 'btn--primary' => ! $openElsewhere]) @click="withGps('clockOut')">
-                                        {{ __('time.portal.clock.out') }}
-                                    </button>
-                                </div>
-                            @else
-                                @unless ($openElsewhere)
-                                    <button type="button" class="btn btn--surface btn--block" wire:click="startBreak">
-                                        {{ __('time.portal.clock.start_break') }}
-                                    </button>
-                                @endunless
-                                <p class="wp-muted">{{ __('time.portal.clock.scan_required_hint') }}</p>
-                            @endif
-                        @endif
-                        </div>
+                        @include('partials.wp-portal-presence')
 
                         @if ($openShift !== null && ($gpsVisits ?? false))
                             <div class="wp-card wp-card-pad wp-stack" data-manual-capture="time-today">

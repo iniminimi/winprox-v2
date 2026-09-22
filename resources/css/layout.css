@@ -1198,6 +1198,21 @@
     gap: 0.5rem;
 }
 
+.wp-portal-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 0.75rem;
+    flex-wrap: wrap;
+}
+
+.wp-portal-status p {
+    margin: 0;
+    color: var(--wp-text-body);
+    font-size: 0.9375rem;
+    line-height: 1.35;
+}
+
 .wp-portal-head .wp-brand img {
     max-width: 100px;
     max-height: 100px;

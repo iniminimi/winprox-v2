@@ -1022,7 +1022,7 @@
                 },
                 {
                     "label": "Abmelden",
-                    "text": "Nach der Anmeldung können Sie Abmelden: das Portal fragt danach erneut nach Ihrem Symbol (oder PIN). Das ist kein Ausstempeln und trennt das Handy nicht; nur Verwaltung oder Teamleiter geben das Gerät frei. Ausstempeln bleibt unter Anwesenheit."
+                    "text": "Nach der Anmeldung können Sie Abmelden: das Portal fragt danach erneut nach Ihrem Symbol (oder PIN). Das ist kein Ausstempeln und trennt das Handy nicht; nur Verwaltung oder Teamleiter geben das Gerät frei. Ausstempeln steht bei Ihrer Einstempelzeile."
                 },
                 {
                     "label": "Offene Aufgaben",

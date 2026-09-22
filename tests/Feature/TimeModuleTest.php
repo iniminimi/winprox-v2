@@ -497,8 +497,10 @@ it('verbergt de kop Aanmelden na een geslaagde aanmelding', function () {
         ->call('signInWithIcon')
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>')
         ->assertDontSeeHtml('<p class="wp-muted">Magazijn</p>')
-        ->assertSee(__('common.welcome'), false)
-        ->assertSee('Jan Janssen', false)
+        ->assertDontSee(__('common.welcome'), false)
+        ->assertSee('Janssen Jan', false)
+        ->assertSee(__('time.portal.clock.signed_in_at', ['time' => now()->format('H:i')]), false)
+        ->assertSee(__('time.portal.clock.not_clocked_in'), false)
         ->assertSee(__('portal.worker.sign_out'), false)
         ->assertDontSee(__('portal.worker.different_worker'), false);
 });
@@ -564,7 +566,12 @@ it('toont het time-portaal en laat een worker inklokken na icoonbevestiging', fu
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->call('clockIn')
-        ->assertSet('flashMessage', __('time.portal.clocked_in'));
+        ->assertSet('flashMessage', '')
+        ->assertSee(__('time.portal.clock.clocked_in_at_tenant', [
+            'tenant' => $tenant->name,
+            'time' => now()->format('H:i'),
+        ]), false)
+        ->assertSee(__('time.portal.clock.no_break'), false);
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue();
 });

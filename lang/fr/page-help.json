@@ -1030,7 +1030,7 @@
                 },
                 {
                     "label": "Se déconnecter",
-                    "text": "Après connexion vous pouvez Se déconnecter : le portail redemande alors votre icône (ou PIN). Ce n’est pas une sortie et cela ne détache pas le téléphone ; seul un admin ou un chef d’équipe libère l’appareil. La sortie reste sous Présence."
+                    "text": "Après connexion vous pouvez Se déconnecter : le portail redemande alors votre icône (ou PIN). Ce n’est pas une sortie et cela ne détache pas le téléphone ; seul un admin ou un chef d’équipe libère l’appareil. La sortie se trouve sur votre ligne de pointage."
                 },
                 {
                     "label": "Tâches ouvertes",

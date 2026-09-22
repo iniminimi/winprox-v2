@@ -7,6 +7,7 @@ use App\Actions\Portal\FindWorkerByIconOnTeamAction;
 use App\Models\InternalTeam;
 use App\Models\Unit;
 use App\Models\Worker;
+use Carbon\Carbon;
 
 /**
  * Per QR-bezoek moet de worker het juiste icoon kiezen vóór taak/melding-acties.
@@ -69,6 +70,20 @@ final class WorkerVerification
         }
 
         return $worker;
+    }
+
+    public static function verifiedAt(InternalTeam $team): ?Carbon
+    {
+        $payload = session(self::sessionKey((int) $team->id));
+        if (! is_array($payload) || empty($payload['verified_at'])) {
+            return null;
+        }
+
+        try {
+            return Carbon::parse((string) $payload['verified_at']);
+        } catch (\Throwable) {
+            return null;
+        }
     }
 
     /**

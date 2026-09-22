@@ -280,15 +280,15 @@
     "portal": {
         "title": "Connexion",
         "clock": {
-            "title": "Présence",
-            "not_clocked_in": "Vous n'êtes pas encore pointé.",
-            "clocked_in_since": "Pointé depuis :time",
+            "not_clocked_in": "Pas encore pointé",
+            "signed_in_at": "Connecté sur WinProx à :time",
+            "clocked_in_at_tenant": "Pointé chez :tenant à :time",
+            "no_break": "Pas encore de pause",
             "on_break_since": "En pause depuis :time",
             "in": "Pointer l'entrée",
             "out": "Pointer la sortie",
             "start_break": "Commencer la pause",
-            "end_break": "Terminer la pause",
-            "clocked_in_since_at": "Pointé depuis :time à :place",
+            "end_break": "Arrêter la pause",
             "open_elsewhere_hint": "Vous êtes déjà pointé sur un autre site. Déplacez votre présence ici, ou pointez la sortie.",
             "transfer_here": "Déplacer ici",
             "started_at": "Démarré à :place (même vacation).",
@@ -299,7 +299,6 @@
             "start_work_at": "Démarrer le travail : :place (:distance m)",
             "no_nearby_units": "Aucune unité épinglée à portée."
         },
-        "clocked_in": "Vous êtes pointé.",
         "clocked_out": "Vous êtes dépointé.",
         "break_started": "Pause commencée.",
         "break_ended": "Pause terminée.",

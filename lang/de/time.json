@@ -280,15 +280,15 @@
     "portal": {
         "title": "Anmeldung",
         "clock": {
-            "title": "Anwesenheit",
-            "not_clocked_in": "Sie sind noch nicht eingestempelt.",
-            "clocked_in_since": "Eingestempelt seit :time",
+            "not_clocked_in": "Noch nicht eingestempelt",
+            "signed_in_at": "Angemeldet bei WinProx um :time",
+            "clocked_in_at_tenant": "Eingestempelt bei :tenant um :time",
+            "no_break": "Noch keine Pause genommen",
             "on_break_since": "In Pause seit :time",
             "in": "Einstempeln",
             "out": "Ausstempeln",
             "start_break": "Pause starten",
             "end_break": "Pause beenden",
-            "clocked_in_since_at": "Eingestempelt seit :time bei :place",
             "open_elsewhere_hint": "Sie sind bereits an einem anderen Standort eingestempelt. Verschieben Sie die Anwesenheit hierher oder stempeln Sie aus.",
             "transfer_here": "Hierher verschieben",
             "started_at": "Gestartet bei :place (gleiche Schicht).",
@@ -299,7 +299,6 @@
             "start_work_at": "Arbeit starten: :place (:distance m)",
             "no_nearby_units": "Keine gepinnte Unit in Reichweite."
         },
-        "clocked_in": "Sie sind eingestempelt.",
         "clocked_out": "Sie sind ausgestempelt.",
         "break_started": "Pause gestartet.",
         "break_ended": "Pause beendet.",

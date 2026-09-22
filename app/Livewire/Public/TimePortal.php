@@ -764,7 +764,6 @@ class TimePortal extends Component
                 $lng,
             );
             ClockPointScanGrant::consume((int) $clockPoint->id);
-            $this->flashMessage = __('time.portal.clocked_in');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
                 return;
@@ -1509,6 +1508,8 @@ class TimePortal extends Component
         return view('livewire.public.time-portal', [
             'canAct' => $canAct,
             'verifiedWorker' => $verifiedWorker,
+            'signedInAt' => $team !== null ? WorkerVerification::verifiedAt($team) : null,
+            'tenantName' => (string) (Tenant::query()->whereKey($this->tenantId)->value('name') ?? ''),
             'hasSignInWorkers' => $hasSignInWorkers,
             'allowOpenRegistration' => $allowOpenRegistration,
             'registerOnly' => $registerOnly,

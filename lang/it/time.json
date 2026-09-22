@@ -280,15 +280,15 @@
     "portal": {
         "title": "Accesso",
         "clock": {
-            "title": "Presenza",
-            "not_clocked_in": "Non hai ancora timbrato.",
-            "clocked_in_since": "Timbrato dalle :time",
+            "not_clocked_in": "Non ancora timbrato",
+            "signed_in_at": "Accesso a WinProx alle :time",
+            "clocked_in_at_tenant": "Timbrato presso :tenant alle :time",
+            "no_break": "Nessuna pausa ancora",
             "on_break_since": "In pausa dalle :time",
             "in": "Timbra entrata",
             "out": "Timbra uscita",
             "start_break": "Inizia pausa",
             "end_break": "Termina pausa",
-            "clocked_in_since_at": "Timbrato dal :time presso :place",
             "open_elsewhere_hint": "Hai già timbrato in un'altra sede. Sposta la presenza qui oppure timbra l'uscita.",
             "transfer_here": "Sposta qui",
             "started_at": "Iniziato presso :place (stesso turno).",
@@ -299,7 +299,6 @@
             "start_work_at": "Avvia lavoro: :place (:distance m)",
             "no_nearby_units": "Nessuna unit con pin nel raggio."
         },
-        "clocked_in": "Hai timbrato l'entrata.",
         "clocked_out": "Hai timbrato l'uscita.",
         "break_started": "Pausa iniziata.",
         "break_ended": "Pausa terminata.",

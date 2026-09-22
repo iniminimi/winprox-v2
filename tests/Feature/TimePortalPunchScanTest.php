@@ -50,7 +50,7 @@ it('klokt in na een verse QR-scan', function () {
 
     signInPunchScanWorker($clockPoint)
         ->call('clockIn')
-        ->assertSet('flashMessage', __('time.portal.clocked_in'))
+        ->assertSet('flashMessage', '')
         ->assertSee(__('time.portal.clock.scan_required_hint'), false);
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue()
@@ -62,7 +62,7 @@ it('weigert een tweede prik op dezelfde open tab zonder nieuwe scan', function (
 
     signInPunchScanWorker($clockPoint)
         ->call('clockIn')
-        ->assertSet('flashMessage', __('time.portal.clocked_in'))
+        ->assertSet('flashMessage', '')
         ->call('clockOut')
         ->assertSet('flashMessage', __('time.portal.errors.scan_required'));
 
@@ -74,7 +74,7 @@ it('laat uitklokken na een nieuwe QR-scan', function () {
 
     signInPunchScanWorker($clockPoint)
         ->call('clockIn')
-        ->assertSet('flashMessage', __('time.portal.clocked_in'));
+        ->assertSet('flashMessage', '');
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->call('clockOut')
@@ -102,7 +102,7 @@ it('laat pauzes zonder nieuwe scan', function () {
 
     $portal = signInPunchScanWorker($clockPoint)
         ->call('clockIn')
-        ->assertSet('flashMessage', __('time.portal.clocked_in'));
+        ->assertSet('flashMessage', '');
 
     $portal->call('startBreak')
         ->assertSet('flashMessage', __('time.portal.break_started'));
