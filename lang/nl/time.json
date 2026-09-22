@@ -333,6 +333,10 @@
             "break_line": "Pauze : :break",
             "break_none": "geen"
         },
+        "clock_alert": {
+            "absent": "Ingepland, maar niet ingeklokt",
+            "late": "Te laat ingeklokt"
+        },
         "schedule": {
             "tile": "Mijn rooster",
             "tile_sub": "Jouw geplande maand",

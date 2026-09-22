@@ -860,7 +860,9 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   **maand**. Beknopte lijst in één kader (`ma 14/09 : Dagdienst - 08:00-17:00`); lege dagen
   worden overgeslagen. Badge = ongelezen `roster_published` (`wp-pill--new`). Klik opent de
   maand van de nieuwste ongelezen publicatie en zet `read_at` voor dat type. Geen inbox, geen
-  mail, geen Laravel notifications.
+  mail, geen Laravel notifications. Rode driehoek (`alert-triangle`) naast inklok of
+  geplande uren als een **gepubliceerde werkdienst** ontbreekt (niet ingeklokt vanaf de
+  geplande start) of de inklok **≥ 15 min te laat** is (zelfde marge als beheer).
 - **Golf 2 — gepland vs geklokt:** alleen beheer, **published**. Missing / deviation /
   unplanned / ok. Prikken blijven altijd geregistreerd. **Deviation** alleen buiten
   de marge (`config('time.roster_attendance_tolerance_minutes')`, default **15**):

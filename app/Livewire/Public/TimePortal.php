@@ -26,6 +26,7 @@ use App\Actions\Time\ListWorkerHoursAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\ResolveRosterMonthAction;
+use App\Actions\Time\ResolveWorkerPortalRosterAlertsAction;
 use App\Actions\Time\SetWorkerClockPinAction;
 use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\StartWorkVisitAction;
@@ -1348,7 +1349,7 @@ class TimePortal extends Component
         }
     }
 
-    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations)
+    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations, ResolveWorkerPortalRosterAlertsAction $rosterAlerts)
     {
         app()->setLocale($this->locale);
 
@@ -1498,6 +1499,15 @@ class TimePortal extends Component
             }
         }
 
+        $todayClockAlert = null;
+        if ($canAct && $verifiedWorker !== null && $hasTimeModule && ! $this->hoursListOpen && ! $this->scheduleListOpen) {
+            $todayClockAlert = $rosterAlerts->handle(
+                $verifiedWorker,
+                $this->tenantId,
+                [now()->toDateString()],
+            )[now()->toDateString()] ?? null;
+        }
+
         $todayDestinations = $this->todayDestinationsForView(
             $verifiedWorker,
             $openShift,
@@ -1528,6 +1538,7 @@ class TimePortal extends Component
                 : WorkerIconGuard::MAX_FAILED_ATTEMPTS,
             'openShift' => $openShift,
             'lastClosedShift' => $lastClosedShift,
+            'todayClockAlert' => $todayClockAlert,
             'todayDestinations' => $todayDestinations,
             'onSiteGuidance' => $onSiteGuidance,
             'openVisitUnitId' => $openShift?->openVisit?->unit_id,

@@ -333,6 +333,10 @@
             "break_line": "Pause : :break",
             "break_none": "keine"
         },
+        "clock_alert": {
+            "absent": "Geplant, aber nicht eingestempelt",
+            "late": "Zu spät eingestempelt"
+        },
         "schedule": {
             "tile": "Mein Dienstplan",
             "tile_sub": "Ihr geplanter Monat",

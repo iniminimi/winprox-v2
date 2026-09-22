@@ -1030,7 +1030,7 @@
                 },
                 {
                     "label": "Clock in and out",
-                    "text": "Each clock-in, clock-out or move needs a fresh scan of the Clock Point QR on site — an open tab is not enough. You can start breaks on the same phone without a new scan. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). With GPS work visits: start work on site, then team tasks and the next inspection stop on Clock Point."
+                    "text": "Each clock-in, clock-out or move needs a fresh scan of the Clock Point QR on site — an open tab is not enough. You can start breaks on the same phone without a new scan. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). With GPS work visits: start work on site, then team tasks and the next inspection stop on Clock Point. A red triangle next to the clock-in time appears when you have a published shift and have not clocked in, or clocked in at least 15 minutes late."
                 },
                 {
                     "label": "Where do I need to go today",
@@ -1042,11 +1042,11 @@
                 },
                 {
                     "label": "My hours",
-                    "text": "After sign-in you see the My hours tile. It lists your days for the selected month, merged: first clock-in, last clock-out, time worked and break. Browse previous/next month. Break shows “none” when there is no break. The team minimum only applies on shifts of at least 4 hours."
+                    "text": "After sign-in you see the My hours tile. It lists your days for the selected month, merged: first clock-in, last clock-out, time worked and break. Browse previous/next month. Break shows “none” when there is no break. The team minimum only applies on shifts of at least 4 hours. A red triangle next to the clock-in time means you clocked in late versus the published roster (15-minute margin)."
                 },
                 {
                     "label": "My roster",
-                    "text": "After signing in you see the My roster tile. It shows only your <strong>published</strong> shifts and absences for the chosen <strong>month</strong>, as a table (empty days are skipped). A badge means a newly published roster; opening it clears the badge."
+                    "text": "After signing in you see the My roster tile. It shows only your <strong>published</strong> shifts and absences for the chosen <strong>month</strong>, as a table (empty days are skipped). A badge means a newly published roster; opening it clears the badge. A red triangle next to the hours means not clocked in (from the planned start) or at least 15 minutes late."
                 }
             ]
         },

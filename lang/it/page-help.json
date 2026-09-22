@@ -1030,7 +1030,7 @@
                 },
                 {
                     "label": "Timbra entrata e uscita",
-                    "text": "Ogni ingresso, uscita o spostamento richiede una nuova scansione del QR Clock Point in sede: una scheda aperta non basta. Le pause si possono avviare sullo stesso telefono senza nuova scansione. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Con visite GPS: avvia il lavoro sul posto, poi le attività di squadra e la prossima fermata di ispezione su Clock Point."
+                    "text": "Ogni ingresso, uscita o spostamento richiede una nuova scansione del QR Clock Point in sede: una scheda aperta non basta. Le pause si possono avviare sullo stesso telefono senza nuova scansione. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Con visite GPS: avvia il lavoro sul posto, poi le attività di squadra e la prossima fermata di ispezione su Clock Point. Un triangolo rosso accanto all’orario di ingresso appare se hai un turno pubblicato e non hai timbrato, o hai timbrato con almeno 15 minuti di ritardo."
                 },
                 {
                     "label": "Dove devo andare oggi",
@@ -1042,11 +1042,11 @@
                 },
                 {
                     "label": "Le mie ore",
-                    "text": "Dopo l’accesso vedi il riquadro Le mie ore. I tuoi giorni del mese scelto, raggruppati: prima timbratura in, ultima uscita, tempo lavorato e pausa. Mese precedente/successivo. La pausa mostra «nessuna» se non c’è pausa. Il minimo del team vale solo per turni di almeno 4 ore."
+                    "text": "Dopo l’accesso vedi il riquadro Le mie ore. I tuoi giorni del mese scelto, raggruppati: prima timbratura in, ultima uscita, tempo lavorato e pausa. Mese precedente/successivo. La pausa mostra «nessuna» se non c’è pausa. Il minimo del team vale solo per turni di almeno 4 ore. Un triangolo rosso accanto all’orario di ingresso significa una timbratura in ritardo rispetto al turno pubblicato (margine di 15 minuti)."
                 },
                 {
                     "label": "Il mio turno",
-                    "text": "Dopo l’accesso vedi la tessera Il mio turno. Mostra solo i tuoi turni e assenze <strong>pubblicati</strong> del <strong>mese</strong> scelto, in tabella (giorni vuoti saltati). Un badge indica un turno appena pubblicato; aprendolo il badge sparisce."
+                    "text": "Dopo l’accesso vedi la tessera Il mio turno. Mostra solo i tuoi turni e assenze <strong>pubblicati</strong> del <strong>mese</strong> scelto, in tabella (giorni vuoti saltati). Un badge indica un turno appena pubblicato; aprendolo il badge sparisce. Un triangolo rosso accanto agli orari significa: non timbrato (dall’inizio previsto) o almeno 15 minuti in ritardo."
                 }
             ]
         },

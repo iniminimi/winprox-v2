@@ -1030,7 +1030,7 @@
                 },
                 {
                     "label": "In- en uitklokken",
-                    "text": "Elke in-/uitklok of verplaatsing vraagt een verse scan van de Clock Point-QR op de vestiging — een open tab volstaat niet. Pauzes kan je op dezelfde gsm starten zonder nieuwe scan. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Met GPS-werkbezoeken: start werk ter plaatse, daarna teamtaken en de volgende inspectiestop op Clock Point."
+                    "text": "Elke in-/uitklok of verplaatsing vraagt een verse scan van de Clock Point-QR op de vestiging — een open tab volstaat niet. Pauzes kan je op dezelfde gsm starten zonder nieuwe scan. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Met GPS-werkbezoeken: start werk ter plaatse, daarna teamtaken en de volgende inspectiestop op Clock Point. Een rood driehoekje naast de inkloktijd verschijnt als je een gepubliceerde dienst hebt en niet of minstens 15 minuten te laat inklokt."
                 },
                 {
                     "label": "Waar moet ik vandaag naartoe",
@@ -1042,11 +1042,11 @@
                 },
                 {
                     "label": "Mijn uren",
-                    "text": "Na aanmelden zie je de tegel Mijn uren. Daar staan jouw dagen van de gekozen maand, samengevoegd: eerste inklok, laatste uitklok, gewerkte tijd en pauze. Blader met vorige/volgende maand. Pauze toont «geen» als er geen pauze is. Het teamminimum telt alleen bij diensten van minstens 4 uur."
+                    "text": "Na aanmelden zie je de tegel Mijn uren. Daar staan jouw dagen van de gekozen maand, samengevoegd: eerste inklok, laatste uitklok, gewerkte tijd en pauze. Blader met vorige/volgende maand. Pauze toont «geen» als er geen pauze is. Het teamminimum telt alleen bij diensten van minstens 4 uur. Een rood driehoekje naast de inkloktijd betekent dat je te laat inklokte t.o.v. het gepubliceerde rooster (15 minutenmarge)."
                 },
                 {
                     "label": "Mijn rooster",
-                    "text": "Na aanmelden zie je de tegel Mijn rooster. Daar staan alleen jouw <strong>gepubliceerde</strong> diensten en afwezigheden van de gekozen <strong>maand</strong>, als tabel (lege dagen worden overgeslagen). Een groene badge betekent een nieuw gepubliceerd rooster; openen zet de badge weg."
+                    "text": "Na aanmelden zie je de tegel Mijn rooster. Daar staan alleen jouw <strong>gepubliceerde</strong> diensten en afwezigheden van de gekozen <strong>maand</strong>, als tabel (lege dagen worden overgeslagen). Een groene badge betekent een nieuw gepubliceerd rooster; openen zet de badge weg. Een rood driehoekje naast de uren betekent: niet ingeklokt (vanaf de geplande start) of minstens 15 minuten te laat."
                 }
             ]
         },

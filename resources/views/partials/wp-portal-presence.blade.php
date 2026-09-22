@@ -26,9 +26,9 @@
             @php $clockedOutTime = $lastClosedShift?->clock_out_at?->format('H:i'); @endphp
             <div class="wp-portal-status">
                 @if ($clockedOutTime)
-                    <p>{{ __('time.portal.clock.clocked_out_at', ['time' => $clockedOutTime]) }}</p>
+                    <p>{{ __('time.portal.clock.clocked_out_at', ['time' => $clockedOutTime]) }} @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])</p>
                 @else
-                    <p>{{ __('time.portal.clock.not_clocked_in') }}</p>
+                    <p>{{ __('time.portal.clock.not_clocked_in') }} @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])</p>
                 @endif
                 @if ($canPunch ?? false)
                     <button type="button" class="btn btn--primary btn--sm" @click="withGps('clockIn')">
@@ -41,7 +41,7 @@
             @endunless
         @else
             <div class="wp-portal-status">
-                <p>{{ __('time.portal.clock.clocked_in_at_tenant', ['tenant' => $tenantName, 'time' => $clockedInTime ?? '—']) }}</p>
+                <p>{{ __('time.portal.clock.clocked_in_at_tenant', ['tenant' => $tenantName, 'time' => $clockedInTime ?? '—']) }} @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])</p>
                 @if ($canPunch ?? false)
                     <button type="button" class="btn btn--primary btn--sm" @click="withGps('clockOut')">
                         {{ __('time.portal.clock.out') }}

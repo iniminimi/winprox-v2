@@ -1030,7 +1030,7 @@
                 },
                 {
                     "label": "Ein- und Ausstempeln",
-                    "text": "Jedes Ein-/Ausstempeln oder Verschieben braucht einen frischen Scan des Clock-Point-QR vor Ort — ein offener Tab reicht nicht. Pausen können am selben Handy ohne neuen Scan starten. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Mit GPS-Arbeitsbesuchen: Arbeit vor Ort starten, danach Teamaufgaben und den nächsten Inspektionsstopp am Clock Point."
+                    "text": "Jedes Ein-/Ausstempeln oder Verschieben braucht einen frischen Scan des Clock-Point-QR vor Ort — ein offener Tab reicht nicht. Pausen können am selben Handy ohne neuen Scan starten. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Mit GPS-Arbeitsbesuchen: Arbeit vor Ort starten, danach Teamaufgaben und den nächsten Inspektionsstopp am Clock Point. Ein rotes Dreieck neben der Einstempelzeit erscheint, wenn du eine veröffentlichte Schicht hast und nicht eingestempelt hast, oder mindestens 15 Minuten zu spät eingestempelt hast."
                 },
                 {
                     "label": "Wohin muss ich heute",
@@ -1042,11 +1042,11 @@
                 },
                 {
                     "label": "Meine Stunden",
-                    "text": "Nach der Anmeldung sehen Sie die Kachel Meine Stunden. Dort stehen Ihre Tage des gewählten Monats, zusammengefasst: erstes Einstempeln, letztes Ausstempeln, Arbeitszeit und Pause. Vorheriger/nächster Monat. Pause zeigt „keine“, wenn es keine Pause gibt. Das Teamminimum gilt nur bei Schichten von mindestens 4 Stunden."
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Meine Stunden. Dort stehen Ihre Tage des gewählten Monats, zusammengefasst: erstes Einstempeln, letztes Ausstempeln, Arbeitszeit und Pause. Vorheriger/nächster Monat. Pause zeigt „keine“, wenn es keine Pause gibt. Das Teamminimum gilt nur bei Schichten von mindestens 4 Stunden. Ein rotes Dreieck neben der Einstempelzeit bedeutet zu spätes Einstempeln gegenüber dem veröffentlichten Plan (15-Minuten-Marge)."
                 },
                 {
                     "label": "Mein Dienstplan",
-                    "text": "Nach der Anmeldung siehst du die Kachel Mein Dienstplan. Dort stehen nur deine <strong>veröffentlichten</strong> Dienste und Abwesenheiten des gewählten <strong>Monats</strong> als Tabelle (leere Tage werden übersprungen). Ein Badge bedeutet einen neu veröffentlichten Plan; Öffnen entfernt das Badge."
+                    "text": "Nach der Anmeldung siehst du die Kachel Mein Dienstplan. Dort stehen nur deine <strong>veröffentlichten</strong> Dienste und Abwesenheiten des gewählten <strong>Monats</strong> als Tabelle (leere Tage werden übersprungen). Ein Badge bedeutet einen neu veröffentlichten Plan; Öffnen entfernt das Badge. Ein rotes Dreieck neben den Stunden bedeutet: nicht eingestempelt (ab geplanter Startzeit) oder mindestens 15 Minuten zu spät."
                 }
             ]
         },

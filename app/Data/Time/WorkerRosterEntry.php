@@ -2,6 +2,8 @@
 
 namespace App\Data\Time;
 
+use App\Enums\PortalRosterClockAlert;
+
 final class WorkerRosterEntry
 {
     public function __construct(
@@ -12,5 +14,6 @@ final class WorkerRosterEntry
         public string $kind,
         public bool $weekStart = false,
         public bool $isToday = false,
+        public ?PortalRosterClockAlert $clockAlert = null,
     ) {}
 }

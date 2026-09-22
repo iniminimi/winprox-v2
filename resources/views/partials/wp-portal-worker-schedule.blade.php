@@ -29,7 +29,7 @@
                     >
                         <td class="wp-portal-schedule__day">{{ $entry->dayLabel }}</td>
                         <td class="wp-portal-schedule__duty">{{ $entry->duty !== '' ? $entry->duty : '—' }}</td>
-                        <td class="wp-portal-schedule__hours">{{ $entry->hours !== '' ? $entry->hours : '—' }}</td>
+                        <td class="wp-portal-schedule__hours">{{ $entry->hours !== '' ? $entry->hours : '—' }} @include('partials.wp-portal-clock-alert', ['alert' => $entry->clockAlert])</td>
                     </tr>
                 @endforeach
             </tbody>

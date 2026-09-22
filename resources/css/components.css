@@ -3317,6 +3317,19 @@ a.wp-pagination__page:active:not(.is-active) {
     align-items: center;
 }
 
+.wp-portal-clock-alert {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.2rem;
+    color: var(--wp-danger);
+    vertical-align: middle;
+}
+
+.wp-portal-clock-alert .wp-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
 .wp-portal-schedule__row--today > td:first-child {
     border-radius: var(--wp-radius) 0 0 var(--wp-radius);
     padding-left: 0.4rem;

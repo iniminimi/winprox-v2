@@ -333,6 +333,10 @@
             "break_line": "Pause : :break",
             "break_none": "aucune"
         },
+        "clock_alert": {
+            "absent": "Planifié, mais pas pointé",
+            "late": "Pointé en retard"
+        },
         "schedule": {
             "tile": "Mon planning",
             "tile_sub": "Votre mois planifié",

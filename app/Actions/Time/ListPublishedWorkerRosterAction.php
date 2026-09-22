@@ -14,7 +14,10 @@ use InvalidArgumentException;
 
 class ListPublishedWorkerRosterAction
 {
-    public function __construct(private ResolveRosterMonthAction $resolveMonth) {}
+    public function __construct(
+        private ResolveRosterMonthAction $resolveMonth,
+        private ResolveWorkerPortalRosterAlertsAction $rosterAlerts,
+    ) {}
 
     public function handle(Worker $worker, int $tenantId, string $cursor, ?string $locale = null): WorkerRosterSnapshot
     {
@@ -39,6 +42,12 @@ class ListPublishedWorkerRosterAction
             ->orderBy('id')
             ->get();
 
+        $alerts = $this->rosterAlerts->handle(
+            $worker,
+            $tenantId,
+            $shifts->map(fn (PlannedShift $shift) => $shift->work_date->toDateString())->all(),
+        );
+
         $entries = [];
         $previousDate = null;
         foreach ($shifts as $shift) {
@@ -54,6 +63,7 @@ class ListPublishedWorkerRosterAction
                 kind: $shift->kind->value,
                 weekStart: $weekStart,
                 isToday: $date->isToday(),
+                clockAlert: $alerts[$date->toDateString()] ?? null,
             );
             $previousDate = $date;
         }

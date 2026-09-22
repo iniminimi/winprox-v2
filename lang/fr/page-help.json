@@ -1038,7 +1038,7 @@
                 },
                 {
                     "label": "Pointer entrée et sortie",
-                    "text": "Chaque entrée, sortie ou déplacement exige un nouveau scan du QR Clock Point sur site — un onglet ouvert ne suffit pas. Les pauses peuvent démarrer sur le même téléphone sans nouveau scan. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Avec visites GPS : commencez le travail sur place, puis les tâches d'équipe et le prochain arrêt d'inspection sur Clock Point."
+                    "text": "Chaque entrée, sortie ou déplacement exige un nouveau scan du QR Clock Point sur site — un onglet ouvert ne suffit pas. Les pauses peuvent démarrer sur le même téléphone sans nouveau scan. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Avec visites GPS : commencez le travail sur place, puis les tâches d'équipe et le prochain arrêt d'inspection sur Clock Point. Un triangle rouge à côté de l’heure d’entrée apparaît si vous avez un service publié et n’avez pas pointé, ou avez pointé avec au moins 15 minutes de retard."
                 },
                 {
                     "label": "Où dois-je aller aujourd'hui",
@@ -1050,11 +1050,11 @@
                 },
                 {
                     "label": "Mes heures",
-                    "text": "Après connexion, la tuile Mes heures affiche vos jours du mois choisi, regroupés : première entrée, dernière sortie, temps travaillé et pause. Mois précédent/suivant. La pause affiche « aucune » s’il n’y a pas de pause. Le minimum d’équipe ne compte que pour les services d’au moins 4 heures."
+                    "text": "Après connexion, la tuile Mes heures affiche vos jours du mois choisi, regroupés : première entrée, dernière sortie, temps travaillé et pause. Mois précédent/suivant. La pause affiche « aucune » s’il n’y a pas de pause. Le minimum d’équipe ne compte que pour les services d’au moins 4 heures. Un triangle rouge à côté de l’heure d’entrée signifie un pointage en retard par rapport au planning publié (marge de 15 minutes)."
                 },
                 {
                     "label": "Mon planning",
-                    "text": "Après connexion, tu vois la tuile Mon planning. Elle n’affiche que tes services et absences <strong>publiés</strong> du <strong>mois</strong> choisi, en tableau (jours vides omis). Un badge signifie un planning tout juste publié ; l’ouvrir l’efface."
+                    "text": "Après connexion, tu vois la tuile Mon planning. Elle n’affiche que tes services et absences <strong>publiés</strong> du <strong>mois</strong> choisi, en tableau (jours vides omis). Un badge signifie un planning tout juste publié ; l’ouvrir l’efface. Un triangle rouge à côté des heures signifie : pas pointé (dès le début prévu) ou au moins 15 minutes de retard."
                 }
             ]
         },

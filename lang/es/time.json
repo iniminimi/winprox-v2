@@ -333,6 +333,10 @@
             "break_line": "Pausa : :break",
             "break_none": "ninguna"
         },
+        "clock_alert": {
+            "absent": "Planificado, pero sin fichar",
+            "late": "Fichado tarde"
+        },
         "schedule": {
             "tile": "Mi cuadrante",
             "tile_sub": "Su mes planificado",

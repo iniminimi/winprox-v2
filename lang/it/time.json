@@ -333,6 +333,10 @@
             "break_line": "Pausa : :break",
             "break_none": "nessuna"
         },
+        "clock_alert": {
+            "absent": "Pianificato, ma non timbrato",
+            "late": "Timbrato in ritardo"
+        },
         "schedule": {
             "tile": "Il mio turno",
             "tile_sub": "Il tuo mese pianificato",

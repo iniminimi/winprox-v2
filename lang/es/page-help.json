@@ -1030,7 +1030,7 @@
                 },
                 {
                     "label": "Fichar entrada y salida",
-                    "text": "Cada entrada, salida o traslado exige un escaneo nuevo del QR de Clock Point en la sede: una pestaña abierta no basta. Las pausas se pueden iniciar en el mismo móvil sin un nuevo escaneo. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Con visitas GPS: empieza el trabajo in situ y luego las tareas de equipo y la siguiente parada de inspección en Clock Point."
+                    "text": "Cada entrada, salida o traslado exige un escaneo nuevo del QR de Clock Point en la sede: una pestaña abierta no basta. Las pausas se pueden iniciar en el mismo móvil sin un nuevo escaneo. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Con visitas GPS: empieza el trabajo in situ y luego las tareas de equipo y la siguiente parada de inspección en Clock Point. Un triángulo rojo junto a la hora de entrada aparece si tienes un turno publicado y no has fichado, o has fichado con al menos 15 minutos de retraso."
                 },
                 {
                     "label": "Adónde debo ir hoy",
@@ -1042,11 +1042,11 @@
                 },
                 {
                     "label": "Mis horas",
-                    "text": "Tras identificarte ves la ficha Mis horas. Tus días del mes elegido, agrupados: primer fichaje de entrada, último de salida, tiempo trabajado y pausa. Mes anterior/siguiente. La pausa muestra «ninguna» si no hay pausa. El mínimo del equipo solo cuenta en turnos de al menos 4 horas."
+                    "text": "Tras identificarte ves la ficha Mis horas. Tus días del mes elegido, agrupados: primer fichaje de entrada, último de salida, tiempo trabajado y pausa. Mes anterior/siguiente. La pausa muestra «ninguna» si no hay pausa. El mínimo del equipo solo cuenta en turnos de al menos 4 horas. Un triángulo rojo junto a la hora de entrada significa que fichaste tarde respecto al cuadrante publicado (margen de 15 minutos)."
                 },
                 {
                     "label": "Mi cuadrante",
-                    "text": "Tras identificarte ves la ficha Mi cuadrante. Solo muestra tus turnos y ausencias <strong>publicados</strong> del <strong>mes</strong> elegido, en tabla (días vacíos omitidos). Una insignia significa un cuadrante recién publicado; al abrirlo desaparece."
+                    "text": "Tras identificarte ves la ficha Mi cuadrante. Solo muestra tus turnos y ausencias <strong>publicados</strong> del <strong>mes</strong> elegido, en tabla (días vacíos omitidos). Una insignia significa un cuadrante recién publicado; al abrirlo desaparece. Un triángulo rojo junto a las horas significa: sin fichar (desde el inicio previsto) o al menos 15 minutos tarde."
                 }
             ]
         },

@@ -333,6 +333,10 @@
             "break_line": "Break : :break",
             "break_none": "none"
         },
+        "clock_alert": {
+            "absent": "Scheduled, but not clocked in",
+            "late": "Clocked in late"
+        },
         "schedule": {
             "tile": "My roster",
             "tile_sub": "Your planned month",

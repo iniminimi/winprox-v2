@@ -4,6 +4,7 @@ namespace App\Actions\Time;
 
 use App\Data\Time\WorkerHoursDay;
 use App\Data\Time\WorkerHoursSnapshot;
+use App\Enums\PortalRosterClockAlert;
 use App\Models\WorkShift;
 use App\Models\Worker;
 use App\Support\Time\TimeModuleAccess;
@@ -14,6 +15,8 @@ use InvalidArgumentException;
 
 class ListWorkerHoursAction
 {
+    public function __construct(private ResolveWorkerPortalRosterAlertsAction $rosterAlerts) {}
+
     /** Eigen diensten van één uitvoerder in een periode, nieuwste eerst, samengevoegd per dag. */
     public function handle(Worker $worker, int $tenantId, Carbon $from, Carbon $to): WorkerHoursSnapshot
     {
@@ -37,9 +40,14 @@ class ListWorkerHoursAction
             ->get();
 
         $totalNetMinutes = $shifts->sum(fn (WorkShift $shift) => $shift->netWorkMinutes());
-        $days = $shifts
-            ->groupBy(fn (WorkShift $shift) => $shift->clock_in_at->toDateString())
-            ->map(fn (Collection $dayShifts, string $dateKey) => $this->dayFromShifts($dateKey, $dayShifts))
+        $grouped = $shifts->groupBy(fn (WorkShift $shift) => $shift->clock_in_at->toDateString());
+        $alerts = $this->rosterAlerts->handle($worker, $tenantId, $grouped->keys()->all());
+        $days = $grouped
+            ->map(fn (Collection $dayShifts, string $dateKey) => $this->dayFromShifts(
+                $dateKey,
+                $dayShifts,
+                $alerts[$dateKey] ?? null,
+            ))
             ->sortByDesc(fn (WorkerHoursDay $day) => $day->dateKey)
             ->values();
 
@@ -55,7 +63,7 @@ class ListWorkerHoursAction
     /**
      * @param  Collection<int, WorkShift>  $dayShifts
      */
-    private function dayFromShifts(string $dateKey, Collection $dayShifts): WorkerHoursDay
+    private function dayFromShifts(string $dateKey, Collection $dayShifts, ?PortalRosterClockAlert $clockAlert): WorkerHoursDay
     {
         $sorted = $dayShifts->sortBy([
             fn (WorkShift $shift) => $shift->clock_in_at->timestamp,
@@ -87,6 +95,7 @@ class ListWorkerHoursAction
                     ? $this->formatPortalDuration($break)
                     : __('time.portal.hours.break_none'),
             ]),
+            clockAlert: $clockAlert,
         );
     }
 

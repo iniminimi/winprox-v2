@@ -24,7 +24,7 @@
                     <strong>{{ $day->dateLabel }}</strong>
                     <span class="wp-pill wp-pill--{{ $day->isOpen ? 'progress' : 'done' }}">{{ __('time.status.'.($day->isOpen ? 'open' : 'closed')) }}</span>
                 </div>
-                <p>{{ $day->timesLine }}</p>
+                <p>{{ $day->timesLine }} @include('partials.wp-portal-clock-alert', ['alert' => $day->clockAlert])</p>
                 <p>{{ $day->breakLine }}</p>
             </div>
         @endforeach
