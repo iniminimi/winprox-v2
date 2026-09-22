@@ -434,6 +434,18 @@
     height: auto;
 }
 
+/* Phone screenshot beside copy: mobile stacks; desktop matches text column height. */
+[data-theme='standard'] .wp-landing-visual--match-copy {
+    max-width: 18rem;
+    margin-inline: auto;
+}
+
+[data-theme='standard'] .wp-landing-visual--match-copy .wp-welcome-screenshot__img {
+    width: 100%;
+    height: auto;
+    box-shadow: var(--wp-shadow-lg);
+}
+
 @media (min-width: 64rem) {
     [data-theme='standard'] .wp-welcome-split:has(.wp-landing-visual--match-copy) {
         align-items: stretch;
@@ -442,9 +454,9 @@
     }
 
     /*
-     * Phone screenshot: row height follows the text column only.
-     * height:0 + min-height:100% keeps the figure out of intrinsic sizing;
-     * overflow:hidden clips so it cannot float over the next section.
+     * Row height follows the text column only.
+     * height:0 + min-height:100% excludes the tall phone from intrinsic row sizing;
+     * overflow:hidden keeps it inside the cell (no float over the next section).
      */
     [data-theme='standard'] .wp-landing-visual--match-copy {
         height: 0;
@@ -464,19 +476,7 @@
         max-width: 100%;
         object-fit: contain;
         object-position: top center;
-        box-shadow: var(--wp-shadow-lg);
     }
-}
-
-[data-theme='standard'] .wp-landing-visual--match-copy {
-    max-width: 18rem;
-    margin-inline: auto;
-}
-
-[data-theme='standard'] .wp-landing-visual--match-copy .wp-welcome-screenshot__img {
-    width: 100%;
-    height: auto;
-    box-shadow: var(--wp-shadow-lg);
 }
 
 [data-theme='standard'] .wp-landing-visual--compact {
