@@ -1050,7 +1050,7 @@
                 },
                 {
                     "label": "Leave / TOIL",
-                    "text": "After sign-in you see the Leave / TOIL tile. Request leave or time off in lieu (from–to, optional note, max. 31 days, not in the past). Overlapping open requests are refused. Your own requests sit above the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent."
+                    "text": "After sign-in you see the Leave / TOIL tile. Request leave or time off in lieu (from–to, optional note, max. 31 days, not in the past). Overlapping open requests are refused. Your own requests sit below the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent."
                 }
             ]
         },

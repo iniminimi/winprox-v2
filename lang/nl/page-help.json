@@ -1050,7 +1050,7 @@
                 },
                 {
                     "label": "Verlof / Recup",
-                    "text": "Na aanmelden zie je de tegel Verlof / Recup. Vraag verlof of recup aan (van–tot, optionele toelichting, max. 31 dagen, niet in het verleden). Open aanvragen die overlappen worden geweigerd. Boven het formulier staan je eigen aanvragen: open of goedgekeurd (nog niet begonnen) kun je intrekken; bij goedgekeurd komt het uurrooster terug. Beheer beslist onder Time → Aanvragen; weigeren vraagt een reden, goedkeuren niet. Er gaat geen e-mail."
+                    "text": "Na aanmelden zie je de tegel Verlof / Recup. Vraag verlof of recup aan (van–tot, optionele toelichting, max. 31 dagen, niet in het verleden). Open aanvragen die overlappen worden geweigerd. Onder het formulier staan je eigen aanvragen: open of goedgekeurd (nog niet begonnen) kun je intrekken; bij goedgekeurd komt het uurrooster terug. Beheer beslist onder Time → Aanvragen; weigeren vraagt een reden, goedkeuren niet. Er gaat geen e-mail."
                 }
             ]
         },

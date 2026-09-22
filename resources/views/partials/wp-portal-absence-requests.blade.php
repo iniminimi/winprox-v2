@@ -1,4 +1,39 @@
 <div class="wp-stack wp-portal-absence">
+    <form wire:submit="submitAbsence" class="wp-card wp-card-pad wp-stack">
+        <h2 class="wp-section-title">{{ __('time.portal.absence.form_title') }}</h2>
+        <div class="wp-field">
+            <label class="wp-label" for="absence-kind">{{ __('time.portal.absence.kind') }}</label>
+            <select id="absence-kind" class="wp-select" wire:model="absenceKind">
+                <option value="{{ \App\Enums\ShiftTypeKind::Leave->value }}">{{ __('time.schedule.types.kinds.leave') }}</option>
+                <option value="{{ \App\Enums\ShiftTypeKind::Recup->value }}">{{ __('time.schedule.types.kinds.recup') }}</option>
+            </select>
+            @error('absenceKind') <p class="wp-error">{{ $message }}</p> @enderror
+        </div>
+        <div class="wp-field">
+            <label class="wp-label" for="absence-from">{{ __('time.portal.absence.date_from') }}</label>
+            <input id="absence-from" class="wp-input" type="date" wire:model="absenceDateFrom">
+            @error('absenceDateFrom') <p class="wp-error">{{ $message }}</p> @enderror
+        </div>
+        <div class="wp-field">
+            <label class="wp-label" for="absence-to">{{ __('time.portal.absence.date_to') }}</label>
+            <input id="absence-to" class="wp-input" type="date" wire:model="absenceDateTo">
+            @error('absenceDateTo') <p class="wp-error">{{ $message }}</p> @enderror
+        </div>
+        <div class="wp-field" x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+            <label class="wp-label" for="absence-description">{{ __('time.portal.absence.description') }}</label>
+            <textarea
+                id="absence-description"
+                class="wp-textarea"
+                rows="3"
+                maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                wire:model="absenceDescription"
+                x-on:input="n = $el.value.length"
+            ></textarea>
+            @error('absenceDescription') <p class="wp-error">{{ $message }}</p> @enderror
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">{{ __('time.portal.absence.submit') }}</button>
+    </form>
+
     <div class="wp-stack-tight">
         <h2 class="wp-section-title">{{ __('time.portal.absence.list_title') }}</h2>
         @if ($absenceRequests->isEmpty())
@@ -48,39 +83,4 @@
             </div>
         @endif
     </div>
-
-    <form wire:submit="submitAbsence" class="wp-card wp-card-pad wp-stack">
-        <h2 class="wp-section-title">{{ __('time.portal.absence.form_title') }}</h2>
-        <div class="wp-field">
-            <label class="wp-label" for="absence-kind">{{ __('time.portal.absence.kind') }}</label>
-            <select id="absence-kind" class="wp-select" wire:model="absenceKind">
-                <option value="{{ \App\Enums\ShiftTypeKind::Leave->value }}">{{ __('time.schedule.types.kinds.leave') }}</option>
-                <option value="{{ \App\Enums\ShiftTypeKind::Recup->value }}">{{ __('time.schedule.types.kinds.recup') }}</option>
-            </select>
-            @error('absenceKind') <p class="wp-error">{{ $message }}</p> @enderror
-        </div>
-        <div class="wp-field">
-            <label class="wp-label" for="absence-from">{{ __('time.portal.absence.date_from') }}</label>
-            <input id="absence-from" class="wp-input" type="date" wire:model="absenceDateFrom">
-            @error('absenceDateFrom') <p class="wp-error">{{ $message }}</p> @enderror
-        </div>
-        <div class="wp-field">
-            <label class="wp-label" for="absence-to">{{ __('time.portal.absence.date_to') }}</label>
-            <input id="absence-to" class="wp-input" type="date" wire:model="absenceDateTo">
-            @error('absenceDateTo') <p class="wp-error">{{ $message }}</p> @enderror
-        </div>
-        <div class="wp-field" x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
-            <label class="wp-label" for="absence-description">{{ __('time.portal.absence.description') }}</label>
-            <textarea
-                id="absence-description"
-                class="wp-textarea"
-                rows="3"
-                maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
-                wire:model="absenceDescription"
-                x-on:input="n = $el.value.length"
-            ></textarea>
-            @error('absenceDescription') <p class="wp-error">{{ $message }}</p> @enderror
-        </div>
-        <button type="submit" class="btn btn--primary btn--block">{{ __('time.portal.absence.submit') }}</button>
-    </form>
 </div>

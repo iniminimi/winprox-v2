@@ -1050,7 +1050,7 @@
                 },
                 {
                     "label": "Permiso / Compensación",
-                    "text": "Tras identificarte ves el mosaico Permiso / Compensación. Solicita permiso o compensación (desde–hasta, nota opcional, máx. 31 días, no en el pasado). Las solicitudes abiertas que se solapan se rechazan. Tus solicitudes están encima del formulario: puedes retirar una abierta o aprobada (aún no empezada); un permiso aprobado restaura el cuadrante. La gestión decide en Time → Solicitudes; rechazar pide un motivo, aprobar no. No se envía correo."
+                    "text": "Tras identificarte ves el mosaico Permiso / Compensación. Solicita permiso o compensación (desde–hasta, nota opcional, máx. 31 días, no en el pasado). Las solicitudes abiertas que se solapan se rechazan. Tus solicitudes están debajo del formulario: puedes retirar una abierta o aprobada (aún no empezada); un permiso aprobado restaura el cuadrante. La gestión decide en Time → Solicitudes; rechazar pide un motivo, aprobar no. No se envía correo."
                 }
             ]
         },
