@@ -162,6 +162,10 @@
         "time.schedule.published": "Dienstplan veröffentlicht",
         "time.shift_type.saved": "Schichttyp gespeichert",
         "time.visit.started": "Arbeitsbesuch gestartet",
-        "time.visit.ended": "Arbeitsbesuch beendet"
+        "time.visit.ended": "Arbeitsbesuch beendet",
+        "time.absence.requested": "Urlaubs- oder Ausgleichsantrag gestellt",
+        "time.absence.cancelled": "Urlaubs- oder Ausgleichsantrag zurückgezogen",
+        "time.absence.approved": "Urlaubs- oder Ausgleichsantrag genehmigt",
+        "time.absence.rejected": "Urlaubs- oder Ausgleichsantrag abgelehnt"
     }
 }

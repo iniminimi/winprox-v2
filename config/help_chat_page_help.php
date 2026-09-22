@@ -89,6 +89,17 @@ return [
         ],
         [
             'patterns' => [
+                'verlof aanvr', 'recup aanvr', 'aanvragen verlof',
+                'leave request', 'toil request', 'time off request',
+                'urlaubsantrag', 'ausgleichsantrag',
+                'demande de congé', 'demande de récup',
+                'solicitud de permiso', 'richiesta ferie',
+            ],
+            'page' => 'time.absence_requests',
+            'prefer' => ['verlof aanvr', 'leave request', 'urlaubsantrag'],
+        ],
+        [
+            'patterns' => [
                 'afwezigheid', 'verlof', 'ziek', 'recup',
                 'absence', 'sick leave', 'time off in lieu',
                 'congé', 'maladie', 'urlaub', 'krank',

@@ -162,6 +162,10 @@
         "time.schedule.published": "Roster published",
         "time.shift_type.saved": "Shift type saved",
         "time.visit.started": "Work visit started",
-        "time.visit.ended": "Work visit ended"
+        "time.visit.ended": "Work visit ended",
+        "time.absence.requested": "Leave or TOIL request submitted",
+        "time.absence.cancelled": "Leave or TOIL request withdrawn",
+        "time.absence.approved": "Leave or TOIL request approved",
+        "time.absence.rejected": "Leave or TOIL request rejected"
     }
 }

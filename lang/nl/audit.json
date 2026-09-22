@@ -162,6 +162,10 @@
         "time.schedule.published": "Uurrooster gepubliceerd",
         "time.shift_type.saved": "Shiftype opgeslagen",
         "time.visit.started": "Werkbezoek gestart",
-        "time.visit.ended": "Werkbezoek beëindigd"
+        "time.visit.ended": "Werkbezoek beëindigd",
+        "time.absence.requested": "Verlof- of recupaanvraag ingediend",
+        "time.absence.cancelled": "Verlof- of recupaanvraag ingetrokken",
+        "time.absence.approved": "Verlof- of recupaanvraag goedgekeurd",
+        "time.absence.rejected": "Verlof- of recupaanvraag geweigerd"
     }
 }

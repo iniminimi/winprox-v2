@@ -866,6 +866,14 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   mail, geen Laravel notifications. Rode driehoek (`alert-triangle`) naast inklok of
   geplande uren als een **gepubliceerde werkdienst** ontbreekt (niet ingeklokt vanaf de
   geplande start) of de inklok **≥ 15 min te laat** is (zelfde marge als beheer).
+- **Golf 2 — Verlof / Recup:** Clock Point-tegel. Uitvoerder vraagt `leave` of `recup`
+  (van–tot, max. 31 dagen, niet in het verleden, optionele toelichting ≤ 500). Overlappende
+  open aanvragen worden geweigerd. Eerste actieve shiftype van dat `kind`, anders fout.
+  Geen ziek, geen saldo, geen e-mail. Beheer: Time → **Aanvragen** (badge = open).
+  Goedkeuren of weigeren eist een reden (min. 3). Bij goedkeuren: bestaande roostercellen
+  in die periode tonen, snapshot op de aanvraag, daarna vervangen door gepubliceerde
+  afwezigheid (niet stil). Intrekken alleen door de uitvoerder zolang open.
+  Events `time.absence.requested|cancelled|approved|rejected`. Geen REST-schrijf-API.
 - **Golf 2 — gepland vs geklokt:** alleen beheer, **published**. Missing / deviation /
   unplanned / ok. Prikken blijven altijd geregistreerd. **Deviation** alleen buiten
   de marge (`config('time.roster_attendance_tolerance_minutes')`, default **15**):

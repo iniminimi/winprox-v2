@@ -162,6 +162,10 @@
         "time.schedule.published": "Horaire publié",
         "time.shift_type.saved": "Type de service enregistré",
         "time.visit.started": "Visite de travail démarrée",
-        "time.visit.ended": "Visite de travail terminée"
+        "time.visit.ended": "Visite de travail terminée",
+        "time.absence.requested": "Demande de congé ou de récup envoyée",
+        "time.absence.cancelled": "Demande de congé ou de récup retirée",
+        "time.absence.approved": "Demande de congé ou de récup approuvée",
+        "time.absence.rejected": "Demande de congé ou de récup refusée"
     }
 }

@@ -1047,6 +1047,10 @@
                 {
                     "label": "My roster",
                     "text": "After signing in you see the My roster tile. It shows only your <strong>published</strong> shifts and absences for the chosen <strong>month</strong>, as a table (empty days are skipped). A badge means a newly published roster; opening it clears the badge. A red triangle next to the hours means not clocked in (from the planned start) or at least 15 minutes late."
+                },
+                {
+                    "label": "Leave / TOIL",
+                    "text": "After sign-in you see the Leave / TOIL tile. Request leave or time off in lieu (from–to, optional note, max. 31 days, not in the past). Overlapping open requests are refused. You see your own requests and can withdraw an open one. Staff decide under Time → Requests with a required reason; no email is sent."
                 }
             ]
         },
@@ -1735,7 +1739,7 @@
                 },
                 {
                     "label": "Absence",
-                    "text": "Shift types can be <strong>leave</strong>, <strong>time off in lieu</strong> or <strong>sick</strong>. Those codes fill the whole day, count no hours, and cannot sit with work that day."
+                    "text": "Shift types can be <strong>leave</strong>, <strong>time off in lieu</strong> or <strong>sick</strong>. Those codes fill the whole day, count no hours, and cannot sit with work that day. Workers can request leave or TOIL from Clock Point (Leave / TOIL tile); staff decide under Time → Requests."
                 },
                 {
                     "label": "Planned vs clocked",
@@ -1757,6 +1761,19 @@
                 {
                     "label": "Deactivate",
                     "text": "An inactive code can no longer be typed on the roster. Existing shifts remain as free time."
+                }
+            ]
+        },
+        "time.absence_requests": {
+            "title": "Help — Requests",
+            "actions": [
+                {
+                    "label": "List",
+                    "text": "Time → <strong>Requests</strong> lists leave and TOIL requests from Clock Point. No email, no worker inbox. A badge in the navigation counts open requests."
+                },
+                {
+                    "label": "Review",
+                    "text": "Open a pending request. You see the days and, if any, the <strong>existing shifts</strong> that would disappear. Approve or reject always needs a <strong>reason</strong> (at least 3 characters). On approval WinProx stores those cells on the request, then writes published absence on the roster."
                 }
             ]
         }

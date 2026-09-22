@@ -11,7 +11,8 @@
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Uurrooster",
-        "shift_types": "Shiftypes"
+        "shift_types": "Shiftypes",
+        "absence_requests": "Aanvragen"
     },
     "presence": {
         "title": "Aanwezigheid",
@@ -369,6 +370,22 @@
             "help_android": "Android (Chrome): één tik op het icoon. Bevestig “Toevoegen aan startscherm”. Daarna werkt Aanmelden in die snelkoppeling.",
             "help_ios": "iPhone (Safari): Apple laat geen automatische installatie toe. Tik het icoon, daarna Deel → Zet op beginscherm.",
             "help_existing": "Heb je nog een oud icoon waarop Aanmelden vastliep? Verwijder dat icoon, ververs deze pagina en tik opnieuw op het plus-icoon."
+        },
+        "absence": {
+            "tile": "Verlof / Recup",
+            "tile_sub": "Vraag verlof of recup aan",
+            "title": "Verlof / Recup",
+            "subtitle": "Alleen jouw aanvragen. Beheer beslist met een reden.",
+            "kind": "Soort",
+            "date_from": "Van",
+            "date_to": "Tot",
+            "description": "Toelichting (optioneel)",
+            "submit": "Aanvragen",
+            "empty": "Nog geen aanvragen.",
+            "cancel": "Intrekken",
+            "submitted": "Aanvraag verstuurd.",
+            "cancelled": "Aanvraag ingetrokken.",
+            "decision": "Beslissing"
         }
     },
     "ciao": {
@@ -561,6 +578,45 @@
         "status": {
             "active": "Actief",
             "inactive": "Inactief"
+        }
+    },
+    "absence": {
+        "title": "Aanvragen",
+        "subtitle": "Verlof- en recupaanvragen van uitvoerders. Goedkeuren schrijft het uurrooster bij.",
+        "empty": "Geen aanvragen.",
+        "decide": "Beoordelen",
+        "decide_title": "Aanvraag beoordelen",
+        "decision_reason": "Reden",
+        "approve": "Goedkeuren",
+        "reject": "Weigeren",
+        "approved": "Aanvraag goedgekeurd. Het uurrooster is bijgewerkt.",
+        "rejected": "Aanvraag geweigerd.",
+        "status_filters": "Status",
+        "status_all": "Alle",
+        "conflicts_title": "Bestaande diensten",
+        "conflicts_empty": "Geen bestaande diensten in deze periode.",
+        "conflicts_help": "Bij goedkeuren worden deze cellen bewaard op de aanvraag en daarna vervangen.",
+        "status": {
+            "pending": "Open",
+            "approved": "Goedgekeurd",
+            "rejected": "Geweigerd",
+            "cancelled": "Ingetrokken"
+        },
+        "roster_status": {
+            "draft": "Concept",
+            "published": "Gepubliceerd"
+        },
+        "errors": {
+            "worker_tenant_mismatch": "Deze uitvoerder hoort niet bij deze organisatie.",
+            "invalid_kind": "Kies verlof of recup.",
+            "range_inverted": "De einddatum moet op of na de startdatum liggen.",
+            "range_too_long": "Maximaal 31 dagen per aanvraag.",
+            "date_in_past": "De startdatum mag niet in het verleden liggen.",
+            "no_shift_type": "Er is geen actief shiftype voor dit soort afwezigheid.",
+            "overlapping_pending": "Er loopt al een aanvraag die deze dagen overlapt.",
+            "not_pending": "Deze aanvraag is al afgehandeld.",
+            "not_owner": "Je kunt alleen je eigen aanvraag intrekken.",
+            "reason_required": "Een reden is verplicht (minstens 3 tekens)."
         }
     }
 }

@@ -162,6 +162,10 @@
         "time.schedule.published": "Turni pubblicati",
         "time.shift_type.saved": "Tipo di turno salvato",
         "time.visit.started": "Visita di lavoro avviata",
-        "time.visit.ended": "Visita di lavoro terminata"
+        "time.visit.ended": "Visita di lavoro terminata",
+        "time.absence.requested": "Richiesta di ferie o recupero inviata",
+        "time.absence.cancelled": "Richiesta di ferie o recupero ritirata",
+        "time.absence.approved": "Richiesta di ferie o recupero approvata",
+        "time.absence.rejected": "Richiesta di ferie o recupero rifiutata"
     }
 }

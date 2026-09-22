@@ -1047,6 +1047,10 @@
                 {
                     "label": "Il mio turno",
                     "text": "Dopo l’accesso vedi la tessera Il mio turno. Mostra solo i tuoi turni e assenze <strong>pubblicati</strong> del <strong>mese</strong> scelto, in tabella (giorni vuoti saltati). Un badge indica un turno appena pubblicato; aprendolo il badge sparisce. Un triangolo rosso accanto agli orari significa: non timbrato (dall’inizio previsto) o almeno 15 minuti in ritardo."
+                },
+                {
+                    "label": "Ferie / Recupero",
+                    "text": "Dopo l’accesso vedi il riquadro Ferie / Recupero. Richiedi ferie o recupero (dal–al, nota facoltativa, max 31 giorni, non nel passato). Le richieste aperte che si sovrappongono vengono rifiutate. Vedi le tue richieste e puoi ritirarne una aperta. La gestione decide in Time → Richieste con un motivo obbligatorio; non parte nessuna e-mail."
                 }
             ]
         },
@@ -1735,7 +1739,7 @@
                 },
                 {
                     "label": "Assenza",
-                    "text": "I tipi di turno possono essere <strong>ferie</strong>, <strong>recupero</strong> o <strong>malattia</strong>. Quei codici riempiono l’intera giornata, non contano ore e non possono stare insieme al lavoro quel giorno."
+                    "text": "I tipi di turno possono essere <strong>ferie</strong>, <strong>recupero</strong> o <strong>malattia</strong>. Quei codici riempiono l’intera giornata, non contano ore e non possono stare insieme al lavoro quel giorno. Gli esecutori possono richiedere ferie o recupero sul Clock Point (riquadro Ferie / Recupero); la gestione decide in Time → Richieste."
                 },
                 {
                     "label": "Pianificato vs timbrato",
@@ -1757,6 +1761,19 @@
                 {
                     "label": "Disattiva",
                     "text": "Un codice inattivo non si può più digitare nel turno. I servizi esistenti restano come orario libero."
+                }
+            ]
+        },
+        "time.absence_requests": {
+            "title": "Guida — Richieste",
+            "actions": [
+                {
+                    "label": "Elenco",
+                    "text": "Time → <strong>Richieste</strong> elenca ferie e recuperi dal Clock Point. Nessuna e-mail, nessuna inbox per l’esecutore. Un badge nella navigazione conta le richieste aperte."
+                },
+                {
+                    "label": "Valuta",
+                    "text": "Apri una richiesta aperta. Vedi i giorni e, se ci sono, i <strong>turni esistenti</strong> che sparirebbero. Approvare o rifiutare richiede sempre un <strong>motivo</strong> (almeno 3 caratteri). In approvazione WinProx salva quelle celle sulla richiesta e poi scrive l’assenza pubblicata nel turno."
                 }
             ]
         }

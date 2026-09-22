@@ -374,6 +374,18 @@
                                            @click="nav = false">
                                             <span>{{ __('time.nav.schedule') }}</span>
                                         </a>
+                                        <a href="{{ route('time.absence-requests.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('time.absence-requests.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('time.nav.absence_requests') }}</span>
+                                            @php
+                                                $sidebarAbsenceCount = app(\App\Actions\Time\CountPendingAbsenceRequestsAction::class)
+                                                    ->handle((int) $activeTenant->id);
+                                            @endphp
+                                            @if ($sidebarAbsenceCount > 0)
+                                                <span class="wp-pill wp-pill--progress">{{ $sidebarAbsenceCount }}</span>
+                                            @endif
+                                        </a>
                                     </div>
                                 </details>
                             @endif

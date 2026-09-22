@@ -1055,6 +1055,10 @@
                 {
                     "label": "Mon planning",
                     "text": "Après connexion, tu vois la tuile Mon planning. Elle n’affiche que tes services et absences <strong>publiés</strong> du <strong>mois</strong> choisi, en tableau (jours vides omis). Un badge signifie un planning tout juste publié ; l’ouvrir l’efface. Un triangle rouge à côté des heures signifie : pas pointé (dès le début prévu) ou au moins 15 minutes de retard."
+                },
+                {
+                    "label": "Congé / Récup",
+                    "text": "Après connexion, vous voyez la tuile Congé / Récup. Demandez un congé ou une récup (du–au, note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vous voyez vos propres demandes et pouvez retirer une demande ouverte. La gestion décide sous Time → Demandes avec un motif obligatoire ; aucun e-mail n’est envoyé."
                 }
             ]
         },
@@ -1743,7 +1747,7 @@
                 },
                 {
                     "label": "Absence",
-                    "text": "Les types de shift peuvent être <strong>congé</strong>, <strong>récup</strong> ou <strong>maladie</strong>. Ces codes remplissent toute la journée, ne comptent pas d’heures et ne peuvent pas coexister avec du travail ce jour-là."
+                    "text": "Les types de shift peuvent être <strong>congé</strong>, <strong>récup</strong> ou <strong>maladie</strong>. Ces codes remplissent toute la journée, ne comptent pas d’heures et ne peuvent pas coexister avec du travail ce jour-là. Les exécutants peuvent demander un congé ou une récup sur Clock Point (tuile Congé / Récup) ; la gestion décide sous Time → Demandes."
                 },
                 {
                     "label": "Planifié vs pointé",
@@ -1765,6 +1769,19 @@
                 {
                     "label": "Désactiver",
                     "text": "Un code inactif ne peut plus être saisi dans l’horaire. Les services existants restent en heures libres."
+                }
+            ]
+        },
+        "time.absence_requests": {
+            "title": "Aide — Demandes",
+            "actions": [
+                {
+                    "label": "Liste",
+                    "text": "Time → <strong>Demandes</strong> liste les demandes de congé et de récup du Clock Point. Pas d’e-mail, pas de boîte de réception côté exécutant. Un badge dans la navigation compte les demandes ouvertes."
+                },
+                {
+                    "label": "Traiter",
+                    "text": "Ouvrez une demande ouverte. Vous voyez les jours et, s’il y en a, les <strong>services existants</strong> qui disparaîtraient. Approuver ou refuser exige toujours un <strong>motif</strong> (au moins 3 caractères). À l’approbation, WinProx enregistre ces cellules sur la demande, puis écrit une absence publiée dans le planning."
                 }
             ]
         }

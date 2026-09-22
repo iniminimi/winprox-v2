@@ -11,7 +11,8 @@
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Roster",
-        "shift_types": "Shift types"
+        "shift_types": "Shift types",
+        "absence_requests": "Requests"
     },
     "presence": {
         "title": "Presence",
@@ -369,6 +370,22 @@
             "help_android": "Android (Chrome): one tap on the icon. Confirm “Add to Home screen”. Sign in then works in that shortcut.",
             "help_ios": "iPhone (Safari): Apple does not allow automatic install. Tap the icon, then Share → Add to Home Screen.",
             "help_existing": "Still have an old icon where Sign in did nothing? Delete that icon, refresh this page and tap the plus icon again."
+        },
+        "absence": {
+            "tile": "Leave / TOIL",
+            "tile_sub": "Request leave or time off in lieu",
+            "title": "Leave / TOIL",
+            "subtitle": "Your requests only. Staff decide with a reason.",
+            "kind": "Type",
+            "date_from": "From",
+            "date_to": "To",
+            "description": "Note (optional)",
+            "submit": "Request",
+            "empty": "No requests yet.",
+            "cancel": "Withdraw",
+            "submitted": "Request sent.",
+            "cancelled": "Request withdrawn.",
+            "decision": "Decision"
         }
     },
     "ciao": {
@@ -561,6 +578,45 @@
         "status": {
             "active": "Active",
             "inactive": "Inactive"
+        }
+    },
+    "absence": {
+        "title": "Requests",
+        "subtitle": "Worker leave and TOIL requests. Approval writes the roster.",
+        "empty": "No requests.",
+        "decide": "Review",
+        "decide_title": "Review request",
+        "decision_reason": "Reason",
+        "approve": "Approve",
+        "reject": "Reject",
+        "approved": "Request approved. The roster has been updated.",
+        "rejected": "Request rejected.",
+        "status_filters": "Status",
+        "status_all": "All",
+        "conflicts_title": "Existing shifts",
+        "conflicts_empty": "No existing shifts in this period.",
+        "conflicts_help": "On approval these cells are stored on the request, then replaced.",
+        "status": {
+            "pending": "Open",
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "cancelled": "Withdrawn"
+        },
+        "roster_status": {
+            "draft": "Draft",
+            "published": "Published"
+        },
+        "errors": {
+            "worker_tenant_mismatch": "This worker does not belong to this organisation.",
+            "invalid_kind": "Choose leave or time off in lieu.",
+            "range_inverted": "The end date must be on or after the start date.",
+            "range_too_long": "Maximum 31 days per request.",
+            "date_in_past": "The start date cannot be in the past.",
+            "no_shift_type": "There is no active shift type for this absence kind.",
+            "overlapping_pending": "An open request already overlaps these days.",
+            "not_pending": "This request has already been handled.",
+            "not_owner": "You can only withdraw your own request.",
+            "reason_required": "A reason is required (at least 3 characters)."
         }
     }
 }

@@ -229,6 +229,14 @@
                         'schedule' => $schedule,
                         'scheduleMonthLabel' => $scheduleMonthLabel,
                     ])
+                @elseif ($absenceListOpen)
+                    <x-wp-portal-back wire:click="closeAbsence" />
+                    <x-wp-page-head-title variant="portal" icon="calendar" :title="__('time.portal.absence.title')">
+                        <p class="wp-muted">{{ __('time.portal.absence.subtitle') }}</p>
+                    </x-wp-page-head-title>
+                    @include('partials.wp-portal-absence-requests', [
+                        'absenceRequests' => $absenceRequests,
+                    ])
                 @elseif ($rosterListOpen && $roster !== null)
                     <x-wp-portal-back wire:click="closeRoster" />
                     <x-wp-page-head-title variant="portal" icon="fire" :title="__('time.roster.title')">
@@ -657,6 +665,13 @@
                                     <span class="wp-tile-title">{{ __('time.portal.hours.tile') }}</span>
                                 </span>
                                 <span class="wp-tile-sub">{{ __('time.portal.hours.tile_sub') }}</span>
+                            </button>
+                            <button type="button" class="wp-tile" wire:click="openAbsence">
+                                <span class="wp-cluster">
+                                    <x-wp-icon name="calendar" class="wp-tile-icon" />
+                                    <span class="wp-tile-title">{{ __('time.portal.absence.tile') }}</span>
+                                </span>
+                                <span class="wp-tile-sub">{{ __('time.portal.absence.tile_sub') }}</span>
                             </button>
                             @if ($evacuationList)
                                 <button type="button" class="wp-tile" wire:click="openRoster">

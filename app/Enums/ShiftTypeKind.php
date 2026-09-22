@@ -18,4 +18,9 @@ enum ShiftTypeKind: string
     {
         return $this !== self::Work;
     }
+
+    public function isRequestableAbsence(): bool
+    {
+        return $this === self::Leave || $this === self::Recup;
+    }
 }

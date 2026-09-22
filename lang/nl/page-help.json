@@ -1047,6 +1047,10 @@
                 {
                     "label": "Mijn rooster",
                     "text": "Na aanmelden zie je de tegel Mijn rooster. Daar staan alleen jouw <strong>gepubliceerde</strong> diensten en afwezigheden van de gekozen <strong>maand</strong>, als tabel (lege dagen worden overgeslagen). Een groene badge betekent een nieuw gepubliceerd rooster; openen zet de badge weg. Een rood driehoekje naast de uren betekent: niet ingeklokt (vanaf de geplande start) of minstens 15 minuten te laat."
+                },
+                {
+                    "label": "Verlof / Recup",
+                    "text": "Na aanmelden zie je de tegel Verlof / Recup. Vraag verlof of recup aan (van–tot, optionele toelichting, max. 31 dagen, niet in het verleden). Open aanvragen die overlappen worden geweigerd. Je ziet je eigen aanvragen en kunt een open aanvraag intrekken. Beheer beslist onder Time → Aanvragen met een verplichte reden; er gaat geen e-mail."
                 }
             ]
         },
@@ -1735,7 +1739,7 @@
                 },
                 {
                     "label": "Afwezigheid",
-                    "text": "Shiftypes kunnen <strong>verlof</strong>, <strong>recup</strong> of <strong>ziek</strong> zijn. Die codes vullen de hele dag, tellen geen uren en mogen niet samen met werk die dag. Halve dagen zitten niet in deze slice."
+                    "text": "Shiftypes kunnen <strong>verlof</strong>, <strong>recup</strong> of <strong>ziek</strong> zijn. Die codes vullen de hele dag, tellen geen uren en mogen niet samen met werk die dag. Halve dagen zitten niet in deze slice. Uitvoerders kunnen verlof of recup aanvragen via Clock Point (tegel Verlof / Recup); beheer beslist onder Time → Aanvragen."
                 },
                 {
                     "label": "Gepland vs geklokt",
@@ -1757,6 +1761,19 @@
                 {
                     "label": "Deactiveren",
                     "text": "Een inactieve code kunt u niet meer in het rooster typen. Bestaande diensten blijven staan als vrije tijd."
+                }
+            ]
+        },
+        "time.absence_requests": {
+            "title": "Hulp — Aanvragen",
+            "actions": [
+                {
+                    "label": "Lijst",
+                    "text": "Time → <strong>Aanvragen</strong> toont verlof- en recupaanvragen van Clock Point. Geen e-mail, geen inbox bij de uitvoerder. Een groene badge in de navigatie telt open aanvragen."
+                },
+                {
+                    "label": "Beoordelen",
+                    "text": "Open een open aanvraag. U ziet de dagen en, als die er zijn, de <strong>bestaande diensten</strong> die zouden verdwijnen. Goedkeuren of weigeren vraagt altijd een <strong>reden</strong> (minstens 3 tekens). Bij goedkeuren bewaart WinProx die cellen op de aanvraag en zet daarna gepubliceerde afwezigheid in het uurrooster."
                 }
             ]
         }

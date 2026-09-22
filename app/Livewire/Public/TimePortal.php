@@ -10,6 +10,7 @@ use App\Actions\Tasks\RoundTaskCompletionAction;
 use App\Actions\Tasks\SkipRoundStopAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
+use App\Actions\Time\CancelAbsenceRequestAction;
 use App\Actions\Time\AssertClockPointTaskVisitAction;
 use App\Actions\Time\AssertClockPointUnitVisitAction;
 use App\Actions\Time\AssertWorkerClockDeviceAction;
@@ -22,7 +23,9 @@ use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
 use App\Actions\Time\ListOpenTimeRosterAction;
 use App\Actions\Time\ListPublishedWorkerRosterAction;
 use App\Actions\Time\ListWorkDestinationsForWorkerAction;
+use App\Actions\Time\ListWorkerAbsenceRequestsAction;
 use App\Actions\Time\ListWorkerHoursAction;
+use App\Actions\Time\RequestAbsenceAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\ResolveRosterMonthAction;
@@ -34,8 +37,10 @@ use App\Actions\Time\SuggestNearbyClockUnitsAction;
 use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
 use App\Actions\Units\RecordUnitCheckAndApplyTasksAction;
 use App\Actions\Units\ResolveOpenUnitTaskForCheckAction;
+use App\Data\Time\RequestAbsenceData;
 use App\Data\Units\RecordUnitCheckData;
 use App\Enums\ClockDeviceRefusalReason;
+use App\Enums\ShiftTypeKind;
 use App\Enums\ClockSource;
 use App\Enums\TaskStatus;
 use App\Enums\UnitCheckResult;
@@ -45,11 +50,13 @@ use App\Http\Requests\Esg\RecordEsgMeasurementRequest;
 use App\Http\Requests\Public\CompletePortalTaskRequest;
 use App\Http\Requests\Time\AcknowledgeTimeRosterViewRequest;
 use App\Http\Requests\Time\ListWorkerHoursRequest;
+use App\Http\Requests\Time\RequestAbsenceRequest;
 use App\Http\Requests\Time\WorkerClockPinRequest;
 use App\Http\Requests\Units\RecordUnitCheckRequest;
 use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
+use App\Models\AbsenceRequest;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -186,6 +193,17 @@ class TimePortal extends Component
 
     #[Locked]
     public bool $scheduleListOpen = false;
+
+    #[Locked]
+    public bool $absenceListOpen = false;
+
+    public string $absenceKind = 'leave';
+
+    public string $absenceDateFrom = '';
+
+    public string $absenceDateTo = '';
+
+    public string $absenceDescription = '';
 
     public string $scheduleMonth = '';
 
@@ -411,7 +429,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'homescreenHelpOpen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'homescreenHelpOpen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -433,6 +451,7 @@ class TimePortal extends Component
 
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
+        $this->absenceListOpen = false;
         $this->rosterAckOpen = true;
         $this->rosterListOpen = false;
         $this->rosterAcknowledged = false;
@@ -453,6 +472,7 @@ class TimePortal extends Component
 
         $this->closeRoster();
         $this->scheduleListOpen = false;
+        $this->absenceListOpen = false;
         $this->hoursMonth = now()->format('Y-m');
         $this->hoursListOpen = true;
     }
@@ -480,6 +500,7 @@ class TimePortal extends Component
 
         $this->closeRoster();
         $this->hoursListOpen = false;
+        $this->absenceListOpen = false;
 
         $unread = $listNotifications->handle(
             $worker,
@@ -498,6 +519,113 @@ class TimePortal extends Component
     public function closeSchedule(): void
     {
         $this->scheduleListOpen = false;
+    }
+
+    public function openAbsence(): void
+    {
+        if ($this->authorizedWorker() === null || $this->activeClockPoint() === null) {
+            return;
+        }
+
+        try {
+            TimeModuleAccess::assertEnabledForTenantId($this->tenantId);
+        } catch (InvalidArgumentException) {
+            return;
+        }
+
+        $this->closeRoster();
+        $this->hoursListOpen = false;
+        $this->scheduleListOpen = false;
+        $today = now()->toDateString();
+        $this->absenceKind = ShiftTypeKind::Leave->value;
+        $this->absenceDateFrom = $today;
+        $this->absenceDateTo = $today;
+        $this->absenceDescription = '';
+        $this->resetErrorBag(['absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription']);
+        $this->absenceListOpen = true;
+    }
+
+    public function closeAbsence(): void
+    {
+        $this->absenceListOpen = false;
+    }
+
+    public function submitAbsence(RequestAbsenceAction $requestAbsence): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null || $this->activeClockPoint() === null) {
+            return;
+        }
+
+        $rules = RequestAbsenceRequest::rulesFor();
+        $this->validate([
+            'absenceKind' => $rules['kind'],
+            'absenceDateFrom' => $rules['date_from'],
+            'absenceDateTo' => ['required', 'date_format:Y-m-d', 'after_or_equal:absenceDateFrom'],
+            'absenceDescription' => $rules['description'],
+        ]);
+
+        $tenant = Tenant::query()->find($this->tenantId);
+        if ($tenant === null) {
+            return;
+        }
+
+        $kind = ShiftTypeKind::tryFrom($this->absenceKind);
+        if ($kind === null) {
+            return;
+        }
+
+        try {
+            $requestAbsence->handle(
+                $tenant,
+                $worker,
+                new RequestAbsenceData(
+                    $kind,
+                    $this->absenceDateFrom,
+                    $this->absenceDateTo,
+                    $this->absenceDescription !== '' ? $this->absenceDescription : null,
+                ),
+            );
+        } catch (InvalidArgumentException $e) {
+            $this->addError('absenceDateFrom', __('time.absence.errors.'.$e->getMessage()));
+
+            return;
+        }
+
+        $this->absenceDescription = '';
+        $this->flashMessage = __('time.portal.absence.submitted');
+    }
+
+    public function cancelAbsence(int $id, CancelAbsenceRequestAction $cancel): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null || $this->activeClockPoint() === null) {
+            return;
+        }
+
+        $tenant = Tenant::query()->find($this->tenantId);
+        if ($tenant === null) {
+            return;
+        }
+
+        $request = AbsenceRequest::query()
+            ->where('tenant_id', $this->tenantId)
+            ->where('worker_id', $worker->id)
+            ->find($id);
+
+        if ($request === null) {
+            return;
+        }
+
+        try {
+            $cancel->handle($tenant, $worker, $request);
+        } catch (InvalidArgumentException $e) {
+            $this->flashMessage = __('time.absence.errors.'.$e->getMessage());
+
+            return;
+        }
+
+        $this->flashMessage = __('time.portal.absence.cancelled');
     }
 
     public function previousScheduleMonth(ResolveRosterMonthAction $resolveMonth): void
@@ -1349,7 +1477,7 @@ class TimePortal extends Component
         }
     }
 
-    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations, ResolveWorkerPortalRosterAlertsAction $rosterAlerts)
+    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations, ResolveWorkerPortalRosterAlertsAction $rosterAlerts, ListWorkerAbsenceRequestsAction $listAbsenceRequests)
     {
         app()->setLocale($this->locale);
 
@@ -1458,6 +1586,7 @@ class TimePortal extends Component
             $this->rosterListOpen = false;
             $this->hoursListOpen = false;
             $this->scheduleListOpen = false;
+            $this->absenceListOpen = false;
         }
 
         if (! $evacuationList) {
@@ -1499,8 +1628,13 @@ class TimePortal extends Component
             }
         }
 
+        $absenceRequests = collect();
+        if ($canAct && $this->absenceListOpen && $verifiedWorker !== null && $hasTimeModule) {
+            $absenceRequests = $listAbsenceRequests->handle($verifiedWorker, $this->tenantId);
+        }
+
         $todayClockAlert = null;
-        if ($canAct && $verifiedWorker !== null && $hasTimeModule && ! $this->hoursListOpen && ! $this->scheduleListOpen) {
+        if ($canAct && $verifiedWorker !== null && $hasTimeModule && ! $this->hoursListOpen && ! $this->scheduleListOpen && ! $this->absenceListOpen) {
             $todayClockAlert = $rosterAlerts->handle(
                 $verifiedWorker,
                 $this->tenantId,
@@ -1565,6 +1699,7 @@ class TimePortal extends Component
             'schedule' => $schedule,
             'scheduleMonthLabel' => $scheduleMonthLabel,
             'scheduleUnreadCount' => $scheduleUnreadCount,
+            'absenceRequests' => $absenceRequests,
             'showClockPointName' => ! TimePortalData::isGenericClockPointName($this->clockPointName),
             'offerHomescreenShortcut' => $this->clockPointOffersHomescreenShortcut(),
             'isTimePortal' => true,

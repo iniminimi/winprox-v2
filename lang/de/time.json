@@ -11,7 +11,8 @@
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Dienstplan",
-        "shift_types": "Schichttypen"
+        "shift_types": "Schichttypen",
+        "absence_requests": "Anträge"
     },
     "presence": {
         "title": "Anwesenheit",
@@ -369,6 +370,22 @@
             "help_android": "Android (Chrome): ein Tipp auf das Symbol. „Zum Startbildschirm hinzufügen“ bestätigen. Anmelden funktioniert danach in dieser Verknüpfung.",
             "help_ios": "iPhone (Safari): Apple erlaubt keine automatische Installation. Tippen Sie das Symbol, dann Teilen → Zum Home-Bildschirm.",
             "help_existing": "Haben Sie noch ein altes Symbol, bei dem Anmelden nichts tat? Symbol löschen, diese Seite neu laden und erneut auf das Plus tippen."
+        },
+        "absence": {
+            "tile": "Urlaub / Ausgleich",
+            "tile_sub": "Urlaub oder Ausgleich beantragen",
+            "title": "Urlaub / Ausgleich",
+            "subtitle": "Nur deine Anträge. Die Verwaltung entscheidet mit Begründung.",
+            "kind": "Art",
+            "date_from": "Von",
+            "date_to": "Bis",
+            "description": "Hinweis (optional)",
+            "submit": "Beantragen",
+            "empty": "Noch keine Anträge.",
+            "cancel": "Zurückziehen",
+            "submitted": "Antrag gesendet.",
+            "cancelled": "Antrag zurückgezogen.",
+            "decision": "Entscheidung"
         }
     },
     "ciao": {
@@ -561,6 +578,45 @@
         "status": {
             "active": "Aktiv",
             "inactive": "Inaktiv"
+        }
+    },
+    "absence": {
+        "title": "Anträge",
+        "subtitle": "Urlaubs- und Ausgleichsanträge. Genehmigung schreibt den Dienstplan.",
+        "empty": "Keine Anträge.",
+        "decide": "Prüfen",
+        "decide_title": "Antrag prüfen",
+        "decision_reason": "Begründung",
+        "approve": "Genehmigen",
+        "reject": "Ablehnen",
+        "approved": "Antrag genehmigt. Der Dienstplan wurde aktualisiert.",
+        "rejected": "Antrag abgelehnt.",
+        "status_filters": "Status",
+        "status_all": "Alle",
+        "conflicts_title": "Bestehende Schichten",
+        "conflicts_empty": "Keine bestehenden Schichten in diesem Zeitraum.",
+        "conflicts_help": "Bei Genehmigung werden diese Zellen am Antrag gespeichert und danach ersetzt.",
+        "status": {
+            "pending": "Offen",
+            "approved": "Genehmigt",
+            "rejected": "Abgelehnt",
+            "cancelled": "Zurückgezogen"
+        },
+        "roster_status": {
+            "draft": "Entwurf",
+            "published": "Veröffentlicht"
+        },
+        "errors": {
+            "worker_tenant_mismatch": "Diese Person gehört nicht zu dieser Organisation.",
+            "invalid_kind": "Wählen Sie Urlaub oder Ausgleich.",
+            "range_inverted": "Das Enddatum muss am oder nach dem Startdatum liegen.",
+            "range_too_long": "Höchstens 31 Tage pro Antrag.",
+            "date_in_past": "Das Startdatum darf nicht in der Vergangenheit liegen.",
+            "no_shift_type": "Es gibt keinen aktiven Schichttyp für diese Abwesenheit.",
+            "overlapping_pending": "Ein offener Antrag überschneidet bereits diese Tage.",
+            "not_pending": "Dieser Antrag ist bereits bearbeitet.",
+            "not_owner": "Sie können nur Ihren eigenen Antrag zurückziehen.",
+            "reason_required": "Eine Begründung ist Pflicht (mindestens 3 Zeichen)."
         }
     }
 }

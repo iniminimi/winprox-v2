@@ -2,6 +2,7 @@
 
 namespace App\Actions\TenantPurge;
 
+use App\Models\AbsenceRequest;
 use App\Models\Announcement;
 use App\Models\Category;
 use App\Models\ClockPoint;
@@ -63,6 +64,7 @@ final class CollectTenantPurgeCountsAction
             'webhooks' => WebhookEndpoint::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'work_shifts' => WorkShift::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'planned_shifts' => PlannedShift::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
+            'absence_requests' => AbsenceRequest::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'shift_types' => ShiftType::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'worker_notifications' => WorkerNotification::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'clock_points' => ClockPoint::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),

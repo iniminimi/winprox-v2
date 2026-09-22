@@ -11,7 +11,8 @@
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Turni",
-        "shift_types": "Tipi di turno"
+        "shift_types": "Tipi di turno",
+        "absence_requests": "Richieste"
     },
     "presence": {
         "title": "Presenza",
@@ -369,6 +370,22 @@
             "help_android": "Android (Chrome): un tocco sull’icona. Conferma «Aggiungi a schermata Home». L’accesso funziona poi in quel collegamento.",
             "help_ios": "iPhone (Safari): Apple non consente l’installazione automatica. Tocca l’icona, poi Condividi → Aggiungi a schermata Home.",
             "help_existing": "Hai ancora un’icona vecchia con cui Accesso non faceva nulla? Eliminala, aggiorna questa pagina e tocca di nuovo l’icona più."
+        },
+        "absence": {
+            "tile": "Ferie / Recupero",
+            "tile_sub": "Richiedi ferie o recupero",
+            "title": "Ferie / Recupero",
+            "subtitle": "Solo le tue richieste. La gestione decide con un motivo.",
+            "kind": "Tipo",
+            "date_from": "Dal",
+            "date_to": "Al",
+            "description": "Nota (facoltativo)",
+            "submit": "Richiedi",
+            "empty": "Nessuna richiesta.",
+            "cancel": "Ritira",
+            "submitted": "Richiesta inviata.",
+            "cancelled": "Richiesta ritirata.",
+            "decision": "Decisione"
         }
     },
     "ciao": {
@@ -561,6 +578,45 @@
         "status": {
             "active": "Attivo",
             "inactive": "Inattivo"
+        }
+    },
+    "absence": {
+        "title": "Richieste",
+        "subtitle": "Richieste di ferie e recupero. L’approvazione scrive il turno.",
+        "empty": "Nessuna richiesta.",
+        "decide": "Valuta",
+        "decide_title": "Valuta richiesta",
+        "decision_reason": "Motivo",
+        "approve": "Approva",
+        "reject": "Rifiuta",
+        "approved": "Richiesta approvata. Il turno è stato aggiornato.",
+        "rejected": "Richiesta rifiutata.",
+        "status_filters": "Stato",
+        "status_all": "Tutte",
+        "conflicts_title": "Turni esistenti",
+        "conflicts_empty": "Nessun turno esistente in questo periodo.",
+        "conflicts_help": "In approvazione queste celle vengono salvate sulla richiesta e poi sostituite.",
+        "status": {
+            "pending": "Aperta",
+            "approved": "Approvata",
+            "rejected": "Rifiutata",
+            "cancelled": "Ritirata"
+        },
+        "roster_status": {
+            "draft": "Bozza",
+            "published": "Pubblicato"
+        },
+        "errors": {
+            "worker_tenant_mismatch": "Questo esecutore non appartiene a questa organizzazione.",
+            "invalid_kind": "Scegli ferie o recupero.",
+            "range_inverted": "La data di fine deve essere lo stesso giorno o successiva alla data di inizio.",
+            "range_too_long": "Massimo 31 giorni per richiesta.",
+            "date_in_past": "La data di inizio non può essere nel passato.",
+            "no_shift_type": "Non c’è un tipo di turno attivo per questa assenza.",
+            "overlapping_pending": "C’è già una richiesta aperta che si sovrappone a questi giorni.",
+            "not_pending": "Questa richiesta è già stata gestita.",
+            "not_owner": "Puoi ritirare solo la tua richiesta.",
+            "reason_required": "Il motivo è obbligatorio (almeno 3 caratteri)."
         }
     }
 }

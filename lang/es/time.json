@@ -11,7 +11,8 @@
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Horario",
-        "shift_types": "Tipos de turno"
+        "shift_types": "Tipos de turno",
+        "absence_requests": "Solicitudes"
     },
     "presence": {
         "title": "Presencia",
@@ -369,6 +370,22 @@
             "help_android": "Android (Chrome): un toque en el icono. Confirma «Añadir a pantalla de inicio». El inicio de sesión funciona después en ese acceso.",
             "help_ios": "iPhone (Safari): Apple no permite la instalación automática. Toca el icono y luego Compartir → Añadir a pantalla de inicio.",
             "help_existing": "¿Aún tienes un icono antiguo con el que Inicio de sesión no hacía nada? Bórralo, actualiza esta página y vuelve a tocar el icono más."
+        },
+        "absence": {
+            "tile": "Permiso / Compensación",
+            "tile_sub": "Solicitar permiso o compensación",
+            "title": "Permiso / Compensación",
+            "subtitle": "Solo tus solicitudes. La gestión decide con un motivo.",
+            "kind": "Tipo",
+            "date_from": "Desde",
+            "date_to": "Hasta",
+            "description": "Nota (opcional)",
+            "submit": "Solicitar",
+            "empty": "Aún no hay solicitudes.",
+            "cancel": "Retirar",
+            "submitted": "Solicitud enviada.",
+            "cancelled": "Solicitud retirada.",
+            "decision": "Decisión"
         }
     },
     "ciao": {
@@ -561,6 +578,45 @@
         "status": {
             "active": "Activo",
             "inactive": "Inactivo"
+        }
+    },
+    "absence": {
+        "title": "Solicitudes",
+        "subtitle": "Solicitudes de permiso y compensación. La aprobación escribe el cuadrante.",
+        "empty": "No hay solicitudes.",
+        "decide": "Revisar",
+        "decide_title": "Revisar solicitud",
+        "decision_reason": "Motivo",
+        "approve": "Aprobar",
+        "reject": "Rechazar",
+        "approved": "Solicitud aprobada. El cuadrante se ha actualizado.",
+        "rejected": "Solicitud rechazada.",
+        "status_filters": "Estado",
+        "status_all": "Todas",
+        "conflicts_title": "Turnos existentes",
+        "conflicts_empty": "No hay turnos existentes en este periodo.",
+        "conflicts_help": "Al aprobar, estas celdas se guardan en la solicitud y luego se sustituyen.",
+        "status": {
+            "pending": "Abierta",
+            "approved": "Aprobada",
+            "rejected": "Rechazada",
+            "cancelled": "Retirada"
+        },
+        "roster_status": {
+            "draft": "Borrador",
+            "published": "Publicado"
+        },
+        "errors": {
+            "worker_tenant_mismatch": "Este trabajador no pertenece a esta organización.",
+            "invalid_kind": "Elige permiso o compensación.",
+            "range_inverted": "La fecha de fin debe ser el mismo día o posterior a la de inicio.",
+            "range_too_long": "Máximo 31 días por solicitud.",
+            "date_in_past": "La fecha de inicio no puede estar en el pasado.",
+            "no_shift_type": "No hay un tipo de turno activo para esta ausencia.",
+            "overlapping_pending": "Ya hay una solicitud abierta que solapa estos días.",
+            "not_pending": "Esta solicitud ya está tramitada.",
+            "not_owner": "Solo puedes retirar tu propia solicitud.",
+            "reason_required": "El motivo es obligatorio (al menos 3 caracteres)."
         }
     }
 }

@@ -11,7 +11,8 @@
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Horaire",
-        "shift_types": "Types de service"
+        "shift_types": "Types de service",
+        "absence_requests": "Demandes"
     },
     "presence": {
         "title": "Présence",
@@ -369,6 +370,22 @@
             "help_android": "Android (Chrome) : une touche sur l’icône. Confirmez « Ajouter à l’écran d’accueil ». La connexion fonctionne ensuite dans ce raccourci.",
             "help_ios": "iPhone (Safari) : Apple n’autorise pas l’installation automatique. Touchez l’icône, puis Partager → Sur l’écran d’accueil.",
             "help_existing": "Vous avez encore une ancienne icône où la connexion ne faisait rien ? Supprimez-la, actualisez cette page et touchez à nouveau l’icône plus."
+        },
+        "absence": {
+            "tile": "Congé / Récup",
+            "tile_sub": "Demander un congé ou une récup",
+            "title": "Congé / Récup",
+            "subtitle": "Vos demandes uniquement. La gestion décide avec un motif.",
+            "kind": "Type",
+            "date_from": "Du",
+            "date_to": "Au",
+            "description": "Note (facultatif)",
+            "submit": "Demander",
+            "empty": "Aucune demande.",
+            "cancel": "Retirer",
+            "submitted": "Demande envoyée.",
+            "cancelled": "Demande retirée.",
+            "decision": "Décision"
         }
     },
     "ciao": {
@@ -561,6 +578,45 @@
         "status": {
             "active": "Actif",
             "inactive": "Inactif"
+        }
+    },
+    "absence": {
+        "title": "Demandes",
+        "subtitle": "Demandes de congé et de récup. L’approbation écrit le planning.",
+        "empty": "Aucune demande.",
+        "decide": "Traiter",
+        "decide_title": "Traiter la demande",
+        "decision_reason": "Motif",
+        "approve": "Approuver",
+        "reject": "Refuser",
+        "approved": "Demande approuvée. Le planning a été mis à jour.",
+        "rejected": "Demande refusée.",
+        "status_filters": "Statut",
+        "status_all": "Tous",
+        "conflicts_title": "Services existants",
+        "conflicts_empty": "Aucun service existant sur cette période.",
+        "conflicts_help": "À l’approbation, ces cellules sont enregistrées sur la demande puis remplacées.",
+        "status": {
+            "pending": "Ouvert",
+            "approved": "Approuvé",
+            "rejected": "Refusé",
+            "cancelled": "Retiré"
+        },
+        "roster_status": {
+            "draft": "Brouillon",
+            "published": "Publié"
+        },
+        "errors": {
+            "worker_tenant_mismatch": "Cet exécutant n’appartient pas à cette organisation.",
+            "invalid_kind": "Choisissez congé ou récup.",
+            "range_inverted": "La date de fin doit être le jour même ou après la date de début.",
+            "range_too_long": "31 jours maximum par demande.",
+            "date_in_past": "La date de début ne peut pas être dans le passé.",
+            "no_shift_type": "Aucun type de shift actif pour ce type d’absence.",
+            "overlapping_pending": "Une demande ouverte chevauche déjà ces jours.",
+            "not_pending": "Cette demande a déjà été traitée.",
+            "not_owner": "Vous ne pouvez retirer que votre propre demande.",
+            "reason_required": "Un motif est obligatoire (au moins 3 caractères)."
         }
     }
 }

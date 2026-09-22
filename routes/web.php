@@ -112,6 +112,7 @@ use App\Livewire\Public\UnassignedQrPortal;
 use App\Livewire\Public\UnitPortal;
 use App\Livewire\Tasks\Index as TaskIndex;
 use App\Livewire\Tasks\Show as TaskShow;
+use App\Livewire\Time\AbsenceRequestsIndex;
 use App\Livewire\Time\AlarmsIndex;
 use App\Livewire\Time\ClockPointsIndex;
 use App\Livewire\Time\PresenceIndex;
@@ -444,6 +445,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/time/presence', PresenceIndex::class)->name('time.presence.index');
         Route::get('/time/schedule', RosterIndex::class)->name('time.schedule.index');
         Route::get('/time/schedule/print', RosterPrintController::class)->name('time.schedule.print');
+        Route::get('/time/absence-requests', AbsenceRequestsIndex::class)->name('time.absence-requests.index');
         Route::get('/time/shift-types', ShiftTypesIndex::class)->name('time.shift-types.index');
         Route::get('/time/alarms', AlarmsIndex::class)->name('time.alarms.index');
         Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');

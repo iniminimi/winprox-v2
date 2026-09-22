@@ -1,4 +1,4 @@
-@props(['alarmCount' => null, 'ciaoFailCount' => null])
+@props(['alarmCount' => null, 'ciaoFailCount' => null, 'pendingAbsenceCount' => null])
 
 @php
     $tenantId = \App\Support\Tenancy::id();
@@ -6,6 +6,10 @@
     $ciaoEnabled = $tenant instanceof \App\Models\Tenant && $tenant->presenceComplianceEnabled();
     if ($ciaoEnabled && $ciaoFailCount === null) {
         $ciaoFailCount = app(\App\Actions\Time\CountFailedPresenceSubmissionsAction::class)
+            ->handle((int) $tenantId);
+    }
+    if ($pendingAbsenceCount === null && $tenant instanceof \App\Models\Tenant && $tenant->hasTimeModule()) {
+        $pendingAbsenceCount = app(\App\Actions\Time\CountPendingAbsenceRequestsAction::class)
             ->handle((int) $tenantId);
     }
 @endphp
@@ -16,6 +20,12 @@
     </a>
     <a href="{{ route('time.schedule.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.schedule.*') ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.nav.schedule') }}
+    </a>
+    <a href="{{ route('time.absence-requests.index') }}" @class(['btn', 'btn--sm', 'wp-time-nav__alarms', request()->routeIs('time.absence-requests.*') ? 'btn--primary' : 'btn--surface'])>
+        {{ __('time.nav.absence_requests') }}
+        @if (($pendingAbsenceCount ?? 0) > 0)
+            <span class="wp-pill wp-pill--progress wp-time-nav__alarm-count">{{ $pendingAbsenceCount }}</span>
+        @endif
     </a>
     <a href="{{ route('time.shift-types.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.shift-types.*') ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.nav.shift_types') }}

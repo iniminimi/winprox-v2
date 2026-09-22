@@ -1047,6 +1047,10 @@
                 {
                     "label": "Mein Dienstplan",
                     "text": "Nach der Anmeldung siehst du die Kachel Mein Dienstplan. Dort stehen nur deine <strong>veröffentlichten</strong> Dienste und Abwesenheiten des gewählten <strong>Monats</strong> als Tabelle (leere Tage werden übersprungen). Ein Badge bedeutet einen neu veröffentlichten Plan; Öffnen entfernt das Badge. Ein rotes Dreieck neben den Stunden bedeutet: nicht eingestempelt (ab geplanter Startzeit) oder mindestens 15 Minuten zu spät."
+                },
+                {
+                    "label": "Urlaub / Ausgleich",
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Ausgleich. Beantragen Sie Urlaub oder Ausgleich (von–bis, optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Sie sehen Ihre eigenen Anträge und können einen offenen Antrag zurückziehen. Die Verwaltung entscheidet unter Time → Anträge mit Pflichtbegründung; es geht keine E-Mail."
                 }
             ]
         },
@@ -1735,7 +1739,7 @@
                 },
                 {
                     "label": "Abwesenheit",
-                    "text": "Schichttypen können <strong>Urlaub</strong>, <strong>Ausgleich</strong> oder <strong>Krank</strong> sein. Diese Codes füllen den ganzen Tag, zählen keine Stunden und dürfen nicht mit Arbeit am selben Tag stehen."
+                    "text": "Schichttypen können <strong>Urlaub</strong>, <strong>Ausgleich</strong> oder <strong>Krank</strong> sein. Diese Codes füllen den ganzen Tag, zählen keine Stunden und dürfen nicht mit Arbeit am selben Tag stehen. Ausführende können Urlaub oder Ausgleich am Clock Point beantragen (Kachel Urlaub / Ausgleich); die Verwaltung entscheidet unter Time → Anträge."
                 },
                 {
                     "label": "Geplant vs. gestempelt",
@@ -1757,6 +1761,19 @@
                 {
                     "label": "Deaktivieren",
                     "text": "Einen inaktiven Code können Sie im Plan nicht mehr eingeben. Bestehende Dienste bleiben als freie Zeit stehen."
+                }
+            ]
+        },
+        "time.absence_requests": {
+            "title": "Hilfe — Anträge",
+            "actions": [
+                {
+                    "label": "Liste",
+                    "text": "Time → <strong>Anträge</strong> zeigt Urlaubs- und Ausgleichsanträge vom Clock Point. Keine E-Mail, kein Posteingang beim Ausführenden. Ein Badge in der Navigation zählt offene Anträge."
+                },
+                {
+                    "label": "Prüfen",
+                    "text": "Öffnen Sie einen offenen Antrag. Sie sehen die Tage und, falls vorhanden, die <strong>bestehenden Schichten</strong>, die entfallen würden. Genehmigen oder Ablehnen braucht immer eine <strong>Begründung</strong> (mindestens 3 Zeichen). Bei Genehmigung speichert WinProx diese Zellen am Antrag und schreibt danach veröffentlichte Abwesenheit in den Dienstplan."
                 }
             ]
         }

@@ -162,6 +162,10 @@
         "time.schedule.published": "Horario publicado",
         "time.shift_type.saved": "Tipo de turno guardado",
         "time.visit.started": "Visita de trabajo iniciada",
-        "time.visit.ended": "Visita de trabajo finalizada"
+        "time.visit.ended": "Visita de trabajo finalizada",
+        "time.absence.requested": "Solicitud de permiso o compensación enviada",
+        "time.absence.cancelled": "Solicitud de permiso o compensación retirada",
+        "time.absence.approved": "Solicitud de permiso o compensación aprobada",
+        "time.absence.rejected": "Solicitud de permiso o compensación rechazada"
     }
 }

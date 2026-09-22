@@ -1047,6 +1047,10 @@
                 {
                     "label": "Mi cuadrante",
                     "text": "Tras identificarte ves la ficha Mi cuadrante. Solo muestra tus turnos y ausencias <strong>publicados</strong> del <strong>mes</strong> elegido, en tabla (días vacíos omitidos). Una insignia significa un cuadrante recién publicado; al abrirlo desaparece. Un triángulo rojo junto a las horas significa: sin fichar (desde el inicio previsto) o al menos 15 minutos tarde."
+                },
+                {
+                    "label": "Permiso / Compensación",
+                    "text": "Tras identificarte ves el mosaico Permiso / Compensación. Solicita permiso o compensación (desde–hasta, nota opcional, máx. 31 días, no en el pasado). Las solicitudes abiertas que se solapan se rechazan. Ves tus propias solicitudes y puedes retirar una abierta. La gestión decide en Time → Solicitudes con un motivo obligatorio; no se envía correo."
                 }
             ]
         },
@@ -1735,7 +1739,7 @@
                 },
                 {
                     "label": "Ausencia",
-                    "text": "Los tipos de turno pueden ser <strong>vacaciones</strong>, <strong>descanso compensatorio</strong> o <strong>baja</strong>. Esos códigos ocupan el día entero, no cuentan horas y no pueden ir con trabajo ese día."
+                    "text": "Los tipos de turno pueden ser <strong>vacaciones</strong>, <strong>descanso compensatorio</strong> o <strong>baja</strong>. Esos códigos ocupan el día entero, no cuentan horas y no pueden ir con trabajo ese día. Los trabajadores pueden solicitar permiso o compensación en Clock Point (mosaico Permiso / Compensación); la gestión decide en Time → Solicitudes."
                 },
                 {
                     "label": "Planificado vs fichado",
@@ -1757,6 +1761,19 @@
                 {
                     "label": "Desactivar",
                     "text": "Un código inactivo ya no se puede escribir en el horario. Los turnos existentes siguen como hora libre."
+                }
+            ]
+        },
+        "time.absence_requests": {
+            "title": "Ayuda — Solicitudes",
+            "actions": [
+                {
+                    "label": "Lista",
+                    "text": "Time → <strong>Solicitudes</strong> muestra permisos y compensaciones del Clock Point. Sin correo, sin bandeja del trabajador. Una insignia en la navegación cuenta las solicitudes abiertas."
+                },
+                {
+                    "label": "Revisar",
+                    "text": "Abra una solicitud abierta. Verá los días y, si los hay, los <strong>turnos existentes</strong> que desaparecerían. Aprobar o rechazar exige siempre un <strong>motivo</strong> (al menos 3 caracteres). Al aprobar, WinProx guarda esas celdas en la solicitud y luego escribe ausencia publicada en el cuadrante."
                 }
             ]
         }
