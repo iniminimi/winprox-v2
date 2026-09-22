@@ -192,7 +192,7 @@ final class SectorLandingVisuals
                 'hero' => 'images/landing/work_on_location/image01.jpg',
                 'problem' => [
                     'src' => 'images/landing/work_on_location/screenshot_cleaning.jpg',
-                    'modifier' => 'wp-landing-visual--match-copy',
+                    'modifier' => 'wp-landing-visual--compact',
                 ],
                 'steps' => [
                     'src' => 'images/landing/work_on_location/image02.jpg',

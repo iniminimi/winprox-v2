@@ -434,53 +434,6 @@
     height: auto;
 }
 
-/* Phone screenshot beside copy: mobile stacks; desktop matches text column height. */
-[data-theme='standard'] .wp-landing-visual--match-copy {
-    max-width: 18rem;
-    margin-inline: auto;
-}
-
-[data-theme='standard'] .wp-landing-visual--match-copy .wp-welcome-screenshot__img {
-    width: 100%;
-    height: auto;
-    box-shadow: var(--wp-shadow-lg);
-}
-
-@media (min-width: 64rem) {
-    [data-theme='standard'] .wp-welcome-split:has(.wp-landing-visual--match-copy) {
-        align-items: stretch;
-        grid-template-columns: minmax(0, 1.15fr) minmax(12rem, 16rem);
-        gap: 2rem;
-    }
-
-    /*
-     * Grid item min-height:0 so the tall phone does not set the row height.
-     * Fig stretches to the text column; img scales with max-height:100%.
-     */
-    [data-theme='standard'] .wp-landing-visual--match-copy {
-        align-self: stretch;
-        min-height: 0;
-        width: 100%;
-        max-width: none;
-        margin: 0;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-    }
-
-    [data-theme='standard'] .wp-landing-visual--match-copy .wp-welcome-screenshot__img {
-        position: static;
-        width: auto;
-        height: auto;
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        object-position: top center;
-        transform: none;
-    }
-}
-
 [data-theme='standard'] .wp-landing-visual--compact {
     max-width: 18rem;
     margin-inline: auto;

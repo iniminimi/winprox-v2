@@ -216,7 +216,7 @@ it('toont de schoonmaak- en bouwlanding', function () {
         ->assertSee('images/landing/work_on_location/image02.jpg', false)
         ->assertSee('images/landing/work_on_location/image04.jpg', false)
         ->assertSee('images/landing/general/welcome_07.jpg', false)
-        ->assertSee('wp-landing-visual--match-copy', false)
+        ->assertSee('wp-landing-visual--compact', false)
         ->assertSee('wp-landing-block--wide-photo', false)
         ->assertSee('wp-landing-close--scrim', false)
         ->assertSee('id="landing-video"', false)
