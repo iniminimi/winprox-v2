@@ -494,6 +494,7 @@ it('toont Vandaag en Zoek werkplek in de buurt na inklokken, zonder WorkVisit', 
         ->assertDontSeeHtml('wp-today-destination__unit')
         ->assertSee(__('time.portal.today.navigate'), false)
         ->assertSee(__('time.portal.clock.find_nearby'), false)
+        ->assertSeeHtml('hasStartWorkInRange')
         ->assertSee('google.com/maps/dir', false)
         ->assertDontSeeHtml('wire:click="navigate"');
 
@@ -645,4 +646,31 @@ it('toont de lege Vandaag-kaart wanneer er geen geplande bestemmingen zijn', fun
         ->assertDontSee(__('time.portal.today.gps_off'), false)
         ->assertDontSeeHtml('wp-today-gps-off')
         ->assertSee(__('time.portal.clock.find_nearby'), false);
+});
+
+it('verbergt Zoek werkplek in de buurt wanneer Start werk-resultaten er zijn', function () {
+    ensureTestEncryptionKey();
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $worker->update([
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint->update(['qr_token' => 'today-nearby-'.$tenant->id]);
+    $location->update(['name' => 'Campus Noord']);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('clockIn')
+        ->assertSee(__('time.portal.clock.find_nearby'), false)
+        ->call('refreshNearbyClockUnits', 51.05, 3.73)
+        ->assertDontSeeHtml("withFreshGps('refreshNearbyClockUnits')")
+        ->assertSee(__('time.portal.clock.start_work_at', [
+            'place' => 'Campus Noord · Gebouw A',
+            'distance' => 0,
+        ]), false);
 });

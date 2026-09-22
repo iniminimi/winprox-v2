@@ -775,7 +775,8 @@ productsector op `Tenant`.
   OK / Niet OK / overslaan) idem ter plaatse, in stopvolgorde; unit-QR blijft
   het pad zonder GPS-bezoek. Navigeren maakt geen `WorkVisit` en geen CIAO.
   **Zoek werkplek in de buurt** stelt gepinde units voor, en locaties met pin als
-  daar geen nabije unit was. Een dienst met nul bezoeken blijft geldig.
+  daar geen nabije unit was. De knop verdwijnt zodra **Start werk** zichtbaar is
+  (ter plaatse, of na een zoekresultaat). Een dienst met nul bezoeken blijft geldig.
   Tijdens een open werkbezoek toont Clock Point **bovenaan** (groene status, geen
   losse flash “Werkbezoek gestart”) waar je ter plaatse bent en de **volgende
   locatie**. Nog open werk hier: handel hier af (+ optioneel “Volgende stop”).

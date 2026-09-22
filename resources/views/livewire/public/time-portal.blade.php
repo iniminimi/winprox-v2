@@ -406,6 +406,7 @@
                                 }
                                 return this.metersBetween(this.hereLat, this.hereLng, dest.pin_latitude, dest.pin_longitude) <= dest.radius_meters;
                             },
+                            todayGroups: @js($todayDestinations ?? []),
                             inLocationRange(group) {
                                 if (!group.location_can_start || group.location_pin_latitude === null || group.location_pin_longitude === null) {
                                     return false;
@@ -417,6 +418,9 @@
                                     return false;
                                 }
                                 return this.metersBetween(this.hereLat, this.hereLng, group.location_pin_latitude, group.location_pin_longitude) <= group.radius_meters;
+                            },
+                            hasStartWorkInRange() {
+                                return this.todayGroups.some((group) => this.inLocationRange(group));
                             },
                             gpsReady: null,
                             markGps(ok) {
@@ -495,26 +499,30 @@
                                     <p class="wp-muted">{{ __('time.portal.today.empty') }}</p>
                                 @endforelse
                                 @unless ($openShift->openVisit)
-                                    <button type="button" class="btn btn--surface btn--block" @click="withFreshGps('refreshNearbyClockUnits')">
-                                        {{ __('time.portal.clock.find_nearby') }}
-                                    </button>
-                                    @forelse ($nearbyClockUnits as $nearby)
-                                        @php
-                                            $nearbyPlace = trim($nearby['location_name'].((string) ($nearby['unit_name'] ?? '') !== '' ? ' · '.$nearby['unit_name'] : ''), ' · ');
-                                            $nearbyUnitId = (int) ($nearby['unit_id'] ?? 0);
-                                        @endphp
-                                        <button
-                                            type="button"
-                                            class="btn btn--surface btn--block"
-                                            @click="withFreshGps('startWorkVisit', {{ $nearbyUnitId }}{{ $nearbyUnitId > 0 ? '' : ', '.(int) $nearby['location_id'] }})"
-                                        >
-                                            {{ __('time.portal.clock.start_work_at', ['place' => $nearbyPlace, 'distance' => $nearby['distance_meters']]) }}
-                                        </button>
-                                    @empty
-                                        @if ($nearbyClockUnitsLoaded)
-                                            <p class="wp-muted">{{ __('time.portal.clock.no_nearby_units') }}</p>
+                                    <div x-show="!hasStartWorkInRange()" x-cloak>
+                                        @if ($nearbyClockUnits === [])
+                                            <button type="button" class="btn btn--surface btn--block" @click="withFreshGps('refreshNearbyClockUnits')">
+                                                {{ __('time.portal.clock.find_nearby') }}
+                                            </button>
+                                            @if ($nearbyClockUnitsLoaded)
+                                                <p class="wp-muted">{{ __('time.portal.clock.no_nearby_units') }}</p>
+                                            @endif
+                                        @else
+                                            @foreach ($nearbyClockUnits as $nearby)
+                                                @php
+                                                    $nearbyPlace = trim($nearby['location_name'].((string) ($nearby['unit_name'] ?? '') !== '' ? ' · '.$nearby['unit_name'] : ''), ' · ');
+                                                    $nearbyUnitId = (int) ($nearby['unit_id'] ?? 0);
+                                                @endphp
+                                                <button
+                                                    type="button"
+                                                    class="btn btn--surface btn--block"
+                                                    @click="withFreshGps('startWorkVisit', {{ $nearbyUnitId }}{{ $nearbyUnitId > 0 ? '' : ', '.(int) $nearby['location_id'] }})"
+                                                >
+                                                    {{ __('time.portal.clock.start_work_at', ['place' => $nearbyPlace, 'distance' => $nearby['distance_meters']]) }}
+                                                </button>
+                                            @endforeach
                                         @endif
-                                    @endforelse
+                                    </div>
                                 @endunless
                             </div>
                         @endif

@@ -1042,7 +1042,7 @@
                 },
                 {
                     "label": "Où dois-je aller aujourd'hui",
-                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : uniquement les sites, dans l’ordre de la tournée d’inspection (pas alphabétique). Le nom du site est une pilule jaune, l’adresse en dessous, l’icône GPS à droite pour l’itinéraire Google Maps. Si le GPS est désactivé sur le téléphone, un avertissement apparaît — seulement s’il y a une destination aujourd’hui. Commencer le travail apparaît sur le site une fois sur place. Pendant la visite, le site actuel et l'arrêt suivant apparaissent en haut. Les arrêts d'inspection sont sous Tâches ouvertes ; Contrôle d'unité seulement après Commencer le travail. Les tâches ouvertes sans date restent sous Tâches ouvertes."
+                    "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : uniquement les sites, dans l’ordre de la tournée d’inspection (pas alphabétique). Le nom du site est une pilule jaune, l’adresse en dessous, l’icône GPS à droite pour l’itinéraire Google Maps. Si le GPS est désactivé sur le téléphone, un avertissement apparaît — seulement s’il y a une destination aujourd’hui. Commencer le travail apparaît sur le site une fois sur place ; Trouver un lieu de travail à proximité disparaît alors. Pendant la visite, le site actuel et l'arrêt suivant apparaissent en haut. Les arrêts d'inspection sont sous Tâches ouvertes ; Contrôle d'unité seulement après Commencer le travail. Les tâches ouvertes sans date restent sous Tâches ouvertes."
                 },
                 {
                     "label": "Liste d’évacuation",
