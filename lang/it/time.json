@@ -361,7 +361,9 @@
             "navigate": "Naviga",
             "start_work": "Inizia il lavoro",
             "do_check": "Controllo unità",
-            "gps_off": "Il GPS è spento sul telefono. Attiva la posizione per iniziare il lavoro a questi indirizzi."
+            "gps_off": "Il GPS è spento sul telefono. Attiva la posizione per iniziare il lavoro a questi indirizzi.",
+            "here": "Qui",
+            "been": "Già stato qui"
         },
         "homescreen": {
             "title": "Metti WinProx sulla schermata Home",
@@ -390,6 +392,13 @@
             "submitted": "Richiesta inviata.",
             "cancelled": "Richiesta ritirata.",
             "decision": "Decisione"
+        },
+        "now": {
+            "kicker": "Ora",
+            "more": "Altro",
+            "on_break": "In pausa ora",
+            "next_stop": "Prossima sosta: :name",
+            "here_done": "Il lavoro qui è finito."
         }
     },
     "ciao": {

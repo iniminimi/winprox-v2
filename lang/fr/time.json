@@ -361,7 +361,9 @@
             "navigate": "Naviguer",
             "start_work": "Commencer le travail",
             "do_check": "Contrôle d’unité",
-            "gps_off": "Le GPS est désactivé sur votre téléphone. Activez la localisation pour commencer le travail à ces adresses."
+            "gps_off": "Le GPS est désactivé sur votre téléphone. Activez la localisation pour commencer le travail à ces adresses.",
+            "here": "Ici",
+            "been": "Déjà passé"
         },
         "homescreen": {
             "title": "Ajouter WinProx à l’écran d’accueil",
@@ -390,6 +392,13 @@
             "submitted": "Demande envoyée.",
             "cancelled": "Demande retirée.",
             "decision": "Décision"
+        },
+        "now": {
+            "kicker": "Maintenant",
+            "more": "Plus",
+            "on_break": "En pause maintenant",
+            "next_stop": "Prochain arrêt : :name",
+            "here_done": "Le travail ici est terminé."
         }
     },
     "ciao": {

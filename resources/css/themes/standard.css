@@ -25,6 +25,9 @@
     --wp-text-body: #4b5563;
     --wp-text-muted: #6b7280;
     --wp-text-on-accent: #ffffff;
+    --wp-portal-now-bg: #14181f;
+    --wp-portal-now-fg: #f4f6f8;
+    --wp-portal-now-muted: #9aa3af;
 
     /* Accent (emerald) */
     --wp-accent: #059669;

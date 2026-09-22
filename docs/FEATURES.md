@@ -753,9 +753,11 @@ productsector op `Tenant`.
   bezoek blijven het bestaande OUT/IN. placeOfWork = gsm-coords, unit-pin of locatie-pin;
   DDT blijft op de locatie (klant).
 - Publieke winprox.app-homepage doet **geen** GPS-voorstel van bedrijven.
-- **Clock Point na inklokken (Time + GPS-werkbezoeken):** kaart **Waar moet ik
-  vandaag naartoe** = waar de uitvoerder *vandaag* naartoe moet, **alleen locaties**
-  (locatienaam als gele pil, adres eronder, GPS-icoon rechts voor de route).
+- **Clock Point na inklokken (Time + GPS-werkbezoeken):** donkere **Nu**-kaart
+  (wie, status, één primaire actie; uitklokken/afmelden onder Meer). Daarna
+  kaart **Waar moet ik vandaag naartoe** = waar de uitvoerder *vandaag* naartoe
+  moet, **alleen locaties**, als tijdlijn (hier / volgende / geweest / later).
+  Volgende stop toont adres + Navigeer.
   Waarschuwing als GPS uitstaat op de gsm, **alleen** als er bestemmingen zijn.
   Bron: open teamtaken met `scheduled_for`
   of `due_at` vandaag (inspectiestops tellen mee voor de locatie, niet als
@@ -779,11 +781,11 @@ productsector op `Tenant`.
   **Zoek werkplek in de buurt** stelt gepinde units voor, en locaties met pin als
   daar geen nabije unit was. De knop verdwijnt zodra **Start werk** zichtbaar is
   (ter plaatse, of na een zoekresultaat). Een dienst met nul bezoeken blijft geldig.
-  Tijdens een open werkbezoek toont Clock Point **bovenaan** (groene status, geen
-  losse flash “Werkbezoek gestart”) waar je ter plaatse bent en de **volgende
-  locatie**. Nog open werk hier: handel hier af (+ optioneel “Volgende stop”).
-  Klaar hier: “moet nu naar de volgende stop”. Geen volgende locatie: “geen open
-  werk meer”. Die status staat niet alleen bij Open taken.
+  Tijdens een open werkbezoek toont de **Nu**-kaart (geen groene flash
+  “Werkbezoek gestart”) waar je ter plaatse bent en de **volgende locatie**.
+  Nog open werk hier: handel hier af. Klaar hier: “Werk hier is klaar” +
+  volgende stop. Geen volgende locatie: geen extra stopregel. Die status
+  staat op de Nu-kaart, niet alleen bij Open taken.
 - **Beheer:** Werk → **Werkbezoeken** (alleen in het menu als er minstens één bezoek is) toont de historiek (periode, uitvoerder, locatie,
   open/afgesloten), één kader per uitvoerder per dag met duur per locatie. Time → **Aanwezigheid** toont het
   open werkbezoek (locatie · unit).

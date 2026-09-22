@@ -123,10 +123,12 @@ it('groepeert Clock Point-bestemmingen per locatie met GPS-icoon', function () {
         ->assertSee('Campus Noord', false)
         ->assertSee('Teststraat 1, 1000 Brussel', false)
         ->assertSee('Hotel De Brug', false)
-        ->assertSee('Kerkstraat 12, 8000 Brugge', false)
         ->assertDontSee('Campus Noord, Teststraat 1, 1000 Brussel', false)
         ->assertDontSeeHtml('wp-today-destination__unit')
+        ->assertSeeHtml('wp-today-destination--next')
+        ->assertSeeHtml('wp-today-destination--later')
         ->assertSeeHtml('wp-today-destination__pin')
+        ->assertSeeHtml('btn btn--ghost btn--sm wp-today-destination__nav')
         ->assertDontSeeHtml('btn btn--primary btn--block">'.__('time.portal.today.navigate'));
 });
 

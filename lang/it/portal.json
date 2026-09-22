@@ -141,16 +141,14 @@
         "pin_verify_hint": "Inserisci il tuo PIN",
         "pin_save": "Salva PIN",
         "confirm_pin": "Conferma PIN",
-        "pin_set": "PIN salvato. Sei autenticato."
+        "pin_set": "PIN salvato. Sei autenticato.",
+        "open_tasks_open": "Attività aperte (:count aperte)",
+        "more_tasks": "Altre attività"
     },
     "team": {
         "title": "Panoramica team",
         "read_only_hint": "Questa è una panoramica. Il completamento delle attività è possibile solo tramite il QR unità sul posto.",
         "complete_needs_visit": "Avvia prima il lavoro in questa sede. Poi puoi chiudere le attività di squadra e la prossima fermata di ispezione qui.",
-        "on_site_here_work": "Sei sul posto: :here. Chiudi qui le tue attività.",
-        "on_site_here_then": "Prossima fermata: :next.",
-        "on_site_here_go_next": "Sei sul posto: :here e ora devi andare alla prossima fermata: :next.",
-        "on_site_here_done": "Sei sul posto: :here. Qui non c’è più lavoro aperto.",
         "onboarding_done": "È registrato e connesso.",
         "icon_taken": "Questa icona è già in uso. Ne scelga un'altra.",
         "register": {

@@ -14,7 +14,7 @@ class FindOpenWorkShiftForWorkerAction
         return WorkShift::query()
             ->where('worker_id', $worker->id)
             ->where('status', WorkShiftStatus::Open)
-            ->with(['openBreak', 'openVisit.unit', 'openVisit.location', 'clockInClockPoint.location', 'presenceClockPoint.location', 'clockOutClockPoint'])
+            ->with(['openBreak', 'openVisit.unit', 'openVisit.location', 'visits', 'clockInClockPoint.location', 'presenceClockPoint.location', 'clockOutClockPoint'])
             ->first();
     }
 }

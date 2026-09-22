@@ -1026,7 +1026,7 @@
                 },
                 {
                     "label": "Open taken",
-                    "text": "Na naam en icoon zie je de open taken van je team. Met Time + GPS-werkbezoeken start of rond je teamtaken af op Clock Point zolang er een open werkbezoek is op die klantlocatie (optionele notitie en foto's). Bovenaan zie je waar je ter plaatse bent en, als het werk hier klaar is, de volgende locatie. Een inspectieronde toont omschrijving, prio, status en de volgende stop. De knop Unit check verschijnt pas na Start werk op die locatie; de volledige check (OK / Niet OK / overslaan) opent daarna."
+                    "text": "Na naam en icoon zie je bovenaan de donkere kaart Nu (status en één hoofdactie; uitklokken en afmelden onder Meer). Open taken staan eronder, met aantal; extra taken via Meer taken. Met Time + GPS-werkbezoeken start of rond je teamtaken af op Clock Point zolang er een open werkbezoek is op die klantlocatie (optionele notitie en foto's). Een inspectieronde toont omschrijving, prio, status en de volgende stop. De knop Unit check verschijnt pas na Start werk op die locatie; de volledige check (OK / Niet OK / overslaan) opent daarna."
                 },
                 {
                     "label": "In- en uitklokken",
@@ -1034,7 +1034,7 @@
                 },
                 {
                     "label": "Waar moet ik vandaag naartoe",
-                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: alleen locaties, in de volgorde van de inspectieronde (niet alfabetisch). De locatienaam staat in een gele pil, het adres eronder, het GPS-icoon rechts voor de route in Google Maps. Staat GPS uit op je telefoon, dan zie je een waarschuwing — alleen als je vandaag ergens naartoe moet. Start werk verschijnt op de locatie als je ter plaatse bent; Zoek werkplek in de buurt verdwijnt dan. Tijdens het bezoek staat bovenaan de huidige locatie en de volgende stop. Inspectiestops staan onder Open taken; Unit check pas na Start werk. Open taken zonder datum blijven onder Open taken."
+                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: alleen locaties, in de volgorde van de inspectieronde (niet alfabetisch), als tijdlijn (hier, volgende, geweest, later). De volgende stop toont het adres en Navigeer. Staat GPS uit op je telefoon, dan zie je een waarschuwing — alleen als je vandaag ergens naartoe moet. Start werk verschijnt op de locatie als je ter plaatse bent; Zoek werkplek in de buurt verdwijnt dan. Inspectiestops staan onder Open taken; Unit check pas na Start werk. Open taken zonder datum blijven onder Open taken."
                 },
                 {
                     "label": "Evacuatielijst",

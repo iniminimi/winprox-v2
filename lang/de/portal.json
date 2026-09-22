@@ -141,16 +141,14 @@
         "pin_verify_hint": "Gib deine PIN ein",
         "pin_save": "PIN speichern",
         "confirm_pin": "PIN bestätigen",
-        "pin_set": "PIN gespeichert. Du bist angemeldet."
+        "pin_set": "PIN gespeichert. Du bist angemeldet.",
+        "open_tasks_open": "Offene Aufgaben (:count offen)",
+        "more_tasks": "Weitere Aufgaben"
     },
     "team": {
         "title": "Teamübersicht",
         "read_only_hint": "Dies ist eine Übersicht. Aufgaben können nur über den Einheiten-QR vor Ort abgeschlossen werden.",
         "complete_needs_visit": "Starten Sie zuerst die Arbeit an diesem Standort. Danach können Sie Teamaufgaben und den nächsten Inspektionsstopp hier abschließen.",
-        "on_site_here_work": "Sie sind vor Ort: :here. Schließen Sie hier Ihre Aufgaben ab.",
-        "on_site_here_then": "Nächster Stopp: :next.",
-        "on_site_here_go_next": "Sie sind vor Ort: :here und müssen jetzt zum nächsten Stopp: :next.",
-        "on_site_here_done": "Sie sind vor Ort: :here. Hier gibt es keine offenen Aufgaben mehr.",
         "onboarding_done": "Sie sind registriert und angemeldet.",
         "icon_taken": "Dieses Symbol wird bereits verwendet. Wählen Sie ein anderes.",
         "register": {

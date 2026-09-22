@@ -1710,8 +1710,89 @@ button.wp-issue-row:disabled {
     margin-top: 0.75rem;
 }
 
+.wp-today-route {
+    position: relative;
+}
+
 .wp-today-destination + .wp-today-destination {
     margin-top: 0.75rem;
+}
+
+.wp-today-destination--here,
+.wp-today-destination--next,
+.wp-today-destination--done,
+.wp-today-destination--later {
+    position: relative;
+    padding-left: 1.15rem;
+}
+
+.wp-today-destination--here::before,
+.wp-today-destination--next::before,
+.wp-today-destination--done::before,
+.wp-today-destination--later::before {
+    content: "";
+    position: absolute;
+    left: 0.15rem;
+    top: 0.45rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: var(--wp-border-strong);
+}
+
+.wp-today-destination:has(+ .wp-today-destination)::after {
+    content: "";
+    position: absolute;
+    left: 0.4rem;
+    top: 1.05rem;
+    bottom: -0.85rem;
+    width: 2px;
+    background: var(--wp-border);
+}
+
+.wp-today-destination--here::before {
+    background: var(--wp-accent);
+}
+
+.wp-today-destination--next::before {
+    background: var(--wp-text);
+}
+
+.wp-today-destination--done::before {
+    background: var(--wp-accent);
+    box-shadow: inset 0 0 0 2px var(--wp-surface);
+}
+
+.wp-today-destination--here .wp-today-destination__name,
+.wp-today-destination--next .wp-today-destination__name,
+.wp-today-destination--done .wp-today-destination__name,
+.wp-today-destination--later .wp-today-destination__name {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.wp-today-destination--done .wp-today-destination__name,
+.wp-today-destination--later .wp-today-destination__name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--wp-text-muted);
+}
+
+.wp-today-destination__hint {
+    margin: 0.2rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--wp-text-muted);
+}
+
+.wp-today-destination--next .wp-today-destination__nav.btn {
+    flex: 0 0 auto;
+    margin-left: auto;
 }
 
 .wp-today-destination > .btn {

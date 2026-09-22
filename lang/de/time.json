@@ -361,7 +361,9 @@
             "navigate": "Navigieren",
             "start_work": "Arbeit starten",
             "do_check": "Unit-Check",
-            "gps_off": "GPS ist auf dem Handy aus. Schalten Sie den Standort ein, um an diesen Adressen die Arbeit zu starten."
+            "gps_off": "GPS ist auf dem Handy aus. Schalten Sie den Standort ein, um an diesen Adressen die Arbeit zu starten.",
+            "here": "Hier",
+            "been": "Hier gewesen"
         },
         "homescreen": {
             "title": "WinProx auf den Startbildschirm legen",
@@ -390,6 +392,13 @@
             "submitted": "Antrag gesendet.",
             "cancelled": "Antrag zurückgezogen.",
             "decision": "Entscheidung"
+        },
+        "now": {
+            "kicker": "Jetzt",
+            "more": "Mehr",
+            "on_break": "Jetzt in Pause",
+            "next_stop": "Nächster Stopp: :name",
+            "here_done": "Die Arbeit hier ist fertig."
         }
     },
     "ciao": {

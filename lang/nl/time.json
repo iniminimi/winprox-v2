@@ -361,7 +361,9 @@
             "navigate": "Navigeer",
             "start_work": "Start werk",
             "do_check": "Unit check",
-            "gps_off": "GPS staat uit op je telefoon. Zet locatie aan om werk te starten op deze adressen."
+            "gps_off": "GPS staat uit op je telefoon. Zet locatie aan om werk te starten op deze adressen.",
+            "here": "Hier",
+            "been": "Hier geweest"
         },
         "homescreen": {
             "title": "Zet WinProx op je startscherm",
@@ -390,6 +392,13 @@
             "submitted": "Aanvraag verstuurd.",
             "cancelled": "Aanvraag ingetrokken.",
             "decision": "Beslissing"
+        },
+        "now": {
+            "kicker": "Nu",
+            "more": "Meer",
+            "on_break": "Nu in pauze",
+            "next_stop": "Volgende stop: :name",
+            "here_done": "Werk hier is klaar."
         }
     },
     "ciao": {

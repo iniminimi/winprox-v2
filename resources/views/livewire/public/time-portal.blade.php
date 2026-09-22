@@ -318,21 +318,6 @@
                         <p class="wp-muted">{{ __('portal.worker.errors.no_permission') }}</p>
                     @endif
                 @else
-                    @if ($onSiteGuidance)
-                        <div class="wp-flash">
-                            @if (! $onSiteGuidance['remaining_here'] && filled($onSiteGuidance['next']))
-                                {{ __('portal.team.on_site_here_go_next', ['here' => $onSiteGuidance['here'], 'next' => $onSiteGuidance['next']]) }}
-                            @elseif ($onSiteGuidance['remaining_here'])
-                                {{ __('portal.team.on_site_here_work', ['here' => $onSiteGuidance['here']]) }}
-                                @if (filled($onSiteGuidance['next']))
-                                    {{ __('portal.team.on_site_here_then', ['next' => $onSiteGuidance['next']]) }}
-                                @endif
-                            @else
-                                {{ __('portal.team.on_site_here_done', ['here' => $onSiteGuidance['here']]) }}
-                            @endif
-                        </div>
-                    @endif
-
                     @if ($verifiedWorker?->is_teamleader)
                         @include('partials.wp-portal-teamleader-release')
                     @endif
@@ -460,10 +445,30 @@
                         }"
                         x-init="refreshHere(); window.addEventListener('pageshow', () => refreshHere())"
                     >
-                        @include('partials.wp-portal-presence')
+                        @include('partials.wp-portal-now')
 
                         @if ($openShift !== null && ($gpsVisits ?? false))
-                            <div class="wp-card wp-card-pad wp-stack" data-manual-capture="time-today">
+                            @php
+                                $hereLocationId = $openVisitLocationId !== null ? (int) $openVisitLocationId : null;
+                                $visitedLocationIds = ($openShift->relationLoaded('visits') ? $openShift->visits : collect())
+                                    ->filter(fn ($visit) => $visit->ended_at !== null && $visit->location_id !== null)
+                                    ->pluck('location_id')
+                                    ->map(fn ($id) => (int) $id)
+                                    ->all();
+                                $nextLocationId = null;
+                                foreach ($todayDestinations as $candidate) {
+                                    $candidateId = (int) $candidate['location_id'];
+                                    if ($hereLocationId !== null && $candidateId === $hereLocationId) {
+                                        continue;
+                                    }
+                                    if (in_array($candidateId, $visitedLocationIds, true)) {
+                                        continue;
+                                    }
+                                    $nextLocationId = $candidateId;
+                                    break;
+                                }
+                            @endphp
+                            <div class="wp-card wp-card-pad wp-stack wp-today-route" data-manual-capture="time-today">
                                 <h2 class="wp-section-title">{{ __('time.portal.today.title') }}</h2>
                                 @if ($todayDestinations !== [])
                                     <div
@@ -477,15 +482,39 @@
                                     </div>
                                 @endif
                                 @forelse ($todayDestinations as $group)
-                                    <div class="wp-today-destination" wire:key="today-loc-{{ $group['location_id'] }}">
+                                    @php
+                                        $groupId = (int) $group['location_id'];
+                                        $role = 'later';
+                                        if ($hereLocationId !== null && $groupId === $hereLocationId) {
+                                            $role = 'here';
+                                        } elseif (in_array($groupId, $visitedLocationIds, true)) {
+                                            $role = 'done';
+                                        } elseif ($nextLocationId !== null && $groupId === $nextLocationId) {
+                                            $role = 'next';
+                                        }
+                                    @endphp
+                                    <div class="wp-today-destination wp-today-destination--{{ $role }}" wire:key="today-loc-{{ $group['location_id'] }}">
                                         <div class="wp-today-destination__head">
                                             <div class="wp-today-destination__copy">
                                                 <span class="wp-today-destination__name">{{ $group['location_name'] }}</span>
-                                                @if ($group['address_line'] !== '')
+                                                @if ($role === 'here')
+                                                    <p class="wp-today-destination__hint">{{ __('time.portal.today.here') }}</p>
+                                                @elseif ($role === 'done')
+                                                    <p class="wp-today-destination__hint">{{ __('time.portal.today.been') }}</p>
+                                                @elseif ($role === 'next' && $group['address_line'] !== '')
                                                     <p class="wp-today-destination__address">{{ $group['address_line'] }}</p>
                                                 @endif
                                             </div>
-                                            @if ($group['location_maps_url'])
+                                            @if ($role === 'next' && $group['location_maps_url'])
+                                                <a
+                                                    class="btn btn--ghost btn--sm wp-today-destination__nav"
+                                                    href="{{ $group['location_maps_url'] }}"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    {{ __('time.portal.today.navigate') }}
+                                                </a>
+                                            @elseif ($group['location_maps_url'] && $role !== 'done' && $role !== 'here')
                                                 <a
                                                     class="wp-today-destination__nav"
                                                     href="{{ $group['location_maps_url'] }}"
@@ -542,7 +571,8 @@
                             <div class="wp-flash wp-flash--muted">{{ $taskHint }}</div>
                         @endif
 
-                        <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.worker.open_tasks')" />
+                        <div class="wp-card wp-card-pad wp-stack" x-data="{ moreTasks: false }">
+                        <h2 class="wp-section-title">{{ __('portal.worker.open_tasks_open', ['count' => $tasks->count()]) }}</h2>
                         <div class="wp-list">
                             @foreach ($tasks as $task)
                                 @php
@@ -557,7 +587,14 @@
                                         : ($task->issue?->location_id ?? $task->issue?->unit?->location_id);
                                     $onSite = ($gpsVisits ?? false) && ($openVisitLocationId ?? null) !== null && $taskLocationId !== null && (int) $taskLocationId === (int) $openVisitLocationId;
                                 @endphp
-                                <div class="wp-card wp-card-pad wp-stack" wire:key="time-task-{{ $task->id }}">
+                                <div
+                                    class="wp-card wp-card-pad wp-stack"
+                                    wire:key="time-task-{{ $task->id }}"
+                                    @unless ($loop->first)
+                                        x-show="moreTasks"
+                                        x-cloak
+                                    @endunless
+                                >
                                     @if ($isRound)
                                         @if ($task->issue?->isApproved())
                                             <p class="wp-text-body">{{ $task->displayDescription() }}</p>
@@ -644,6 +681,12 @@
                                     @endif
                                 </div>
                             @endforeach
+                        </div>
+                        @if ($tasks->count() > 1)
+                            <button type="button" class="btn btn--ghost btn--sm" @click="moreTasks = !moreTasks">
+                                {{ __('portal.worker.more_tasks') }}
+                            </button>
+                        @endif
                         </div>
                     @endif
 

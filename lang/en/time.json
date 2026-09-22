@@ -361,7 +361,9 @@
             "navigate": "Navigate",
             "start_work": "Start work",
             "do_check": "Unit check",
-            "gps_off": "GPS is off on your phone. Turn location on to start work at these addresses."
+            "gps_off": "GPS is off on your phone. Turn location on to start work at these addresses.",
+            "here": "Here",
+            "been": "Been here"
         },
         "homescreen": {
             "title": "Add WinProx to your home screen",
@@ -390,6 +392,13 @@
             "submitted": "Request sent.",
             "cancelled": "Request withdrawn.",
             "decision": "Decision"
+        },
+        "now": {
+            "kicker": "Now",
+            "more": "More",
+            "on_break": "On break now",
+            "next_stop": "Next stop: :name",
+            "here_done": "Work here is done."
         }
     },
     "ciao": {

@@ -1026,7 +1026,7 @@
                 },
                 {
                     "label": "Attività aperte",
-                    "text": "Dopo nome e icona vedi le attività aperte del tuo team. Con Time + visite GPS avvii o chiudi le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). In alto vedi dove sei sul posto e, a lavoro finito qui, la sede successiva. Un giro di ispezione mostra descrizione, priorità, stato e la prossima fermata. Il pulsante Controllo unità compare solo dopo Avvia lavoro in quella sede; il controllo completo (OK / Non OK / salta) si apre dopo."
+                    "text": "Dopo nome e icona vedi in alto la scheda scura Ora (stato e un’azione principale; uscita e disconnessione sotto Altro). Le attività aperte stanno sotto, con il conteggio; le altre via Altre attività. Con Time + visite GPS avvii o chiudi le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). Un giro di ispezione mostra descrizione, priorità, stato e la prossima fermata. Il pulsante Controllo unità compare solo dopo Avvia lavoro in quella sede; il controllo completo (OK / Non OK / salta) si apre dopo."
                 },
                 {
                     "label": "Timbra entrata e uscita",
@@ -1034,7 +1034,7 @@
                 },
                 {
                     "label": "Dove devo andare oggi",
-                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: solo sedi, nell’ordine del giro di ispezione (non alfabetico). Il nome della sede è in una pillola gialla, l’indirizzo sotto, l’icona GPS a destra per il percorso Google Maps. Se il GPS è spento sul telefono compare un avviso — solo se oggi devi andare da qualche parte. Avvia lavoro compare in sede sul posto; Trova un luogo di lavoro vicino scompare allora. Durante la visita, la sede attuale e la prossima fermata stanno in alto. Le fermate di ispezione sono sotto Attività aperte; Controllo unità solo dopo Avvia lavoro. Le attività aperte senza data restano sotto Attività aperte."
+                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: solo sedi, nell’ordine del giro di ispezione (non alfabetico), come linea del tempo (qui, successiva, già stato, dopo). La prossima sosta mostra indirizzo e Naviga. Se il GPS è spento sul telefono compare un avviso — solo se oggi devi andare da qualche parte. Avvia lavoro compare in sede sul posto; Trova un luogo di lavoro vicino scompare allora. Le fermate di ispezione sono sotto Attività aperte; Controllo unità solo dopo Avvia lavoro. Le attività aperte senza data restano sotto Attività aperte."
                 },
                 {
                     "label": "Elenco evacuazione",

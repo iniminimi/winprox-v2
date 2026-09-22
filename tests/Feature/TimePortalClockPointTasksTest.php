@@ -72,7 +72,8 @@ it('start en handelt een taak af op Clock Point met open GPS-bezoek', function (
     app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
 
     $portal = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
-        ->assertSee(__('portal.team.on_site_here_work', ['here' => $location->name]), false)
+        ->assertSeeHtml('wp-portal-now')
+        ->assertSee($location->name, false)
         ->assertDontSee(__('time.portal.visit_started'), false)
         ->assertSee(__('portal.worker.start_task'), false)
         ->call('startTask', $task->id)
@@ -130,16 +131,16 @@ it('toont ter plaatse en de volgende locatie bovenaan Clock Point', function () 
     app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
 
     signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
-        ->assertSee(__('portal.team.on_site_here_work', ['here' => 'Klant Alpha']), false)
-        ->assertSee(__('portal.team.on_site_here_then', ['next' => 'Klant Beta']), false)
-        ->assertDontSee(__('portal.team.on_site_here_go_next', ['here' => 'Klant Alpha', 'next' => 'Klant Beta']), false)
+        ->assertSee(__('time.portal.clock.working_at', ['place' => 'Klant Alpha']), false)
+        ->assertSee(__('time.portal.now.next_stop', ['name' => 'Klant Beta']), false)
+        ->assertDontSee(__('time.portal.now.here_done'), false)
         ->call('openClockPointUnitCheck', $unit->id)
         ->call('submitClockPointUnitCheck', 'ok')
         ->assertSet('flashMessage', __('portal.unit_check.recorded_ok'));
 
     signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
-        ->assertSee(__('portal.team.on_site_here_go_next', ['here' => 'Klant Alpha', 'next' => 'Klant Beta']), false)
-        ->assertDontSee(__('portal.team.on_site_here_work', ['here' => 'Klant Alpha']), false);
+        ->assertSee(__('time.portal.now.here_done'), false)
+        ->assertSee(__('time.portal.now.next_stop', ['name' => 'Klant Beta']), false);
 });
 
 it('bewaart afhandelingsfoto’s via Clock Point gekoppeld aan de taak', function () {

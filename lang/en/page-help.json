@@ -1026,7 +1026,7 @@
                 },
                 {
                     "label": "Open tasks",
-                    "text": "After name and icon you see open tasks for your team. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). At the top you see where you are on site and, when work here is done, the next location. An inspection round shows description, priority, status and the next stop. The Unit check button appears only after Start work at that location; the full check (OK / Not OK / skip) opens after that."
+                    "text": "After name and icon you see the dark Now card at the top (status and one main action; clock out and sign out under More). Open tasks sit below, with a count; extra tasks via More tasks. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). An inspection round shows description, priority, status and the next stop. The Unit check button appears only after Start work at that location; the full check (OK / Not OK / skip) opens after that."
                 },
                 {
                     "label": "Clock in and out",
@@ -1034,7 +1034,7 @@
                 },
                 {
                     "label": "Where do I need to go today",
-                    "text": "After clock-in (Time with GPS work visits) you see where you need to go today: locations only, in inspection-round stop order (not alphabetical). The location name is a yellow pill, the address underneath, the GPS icon on the right for the Google Maps route. If GPS is off on your phone you see a warning — only when you have somewhere to go today. Start work appears at the location when you are on site; Find a nearby workplace then disappears. During the visit the current location and next stop appear at the top. Inspection stops are under Open tasks; Unit check only after Start work. Open tasks without a date stay under Open tasks."
+                    "text": "After clock-in (Time with GPS work visits) you see where you need to go today: locations only, in inspection-round stop order (not alphabetical), as a timeline (here, next, been, later). The next stop shows the address and Navigate. If GPS is off on your phone you see a warning — only when you have somewhere to go today. Start work appears at the location when you are on site; Find a nearby workplace then disappears. Inspection stops are under Open tasks; Unit check only after Start work. Open tasks without a date stay under Open tasks."
                 },
                 {
                     "label": "Evacuation list",

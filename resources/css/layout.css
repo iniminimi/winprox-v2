@@ -1212,6 +1212,82 @@
     line-height: 1.35;
 }
 
+.wp-portal-now {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.95rem 1rem;
+    border-radius: var(--wp-radius-lg);
+    background: var(--wp-portal-now-bg);
+    color: var(--wp-portal-now-fg);
+    box-shadow: var(--wp-shadow);
+}
+
+.wp-portal-now__kicker {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--wp-portal-now-muted);
+}
+
+.wp-portal-now__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.wp-portal-now__name {
+    font-size: 1.15rem;
+    line-height: 1.25;
+}
+
+.wp-portal-now__meta,
+.wp-portal-now__state,
+.wp-portal-now__next {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--wp-portal-now-muted);
+}
+
+.wp-portal-now__state,
+.wp-portal-now__next {
+    color: var(--wp-portal-now-fg);
+    font-weight: 600;
+}
+
+.wp-portal-now__more {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+    margin-top: 0.25rem;
+}
+
+.wp-portal-now__more-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.wp-portal-now .btn--ghost {
+    color: var(--wp-portal-now-fg);
+    border-color: color-mix(in srgb, var(--wp-portal-now-fg) 28%, transparent);
+}
+
+.wp-portal-now .btn--surface {
+    background: color-mix(in srgb, var(--wp-portal-now-fg) 10%, transparent);
+    color: var(--wp-portal-now-fg);
+    border-color: color-mix(in srgb, var(--wp-portal-now-fg) 22%, transparent);
+}
+
+.wp-today-route > .wp-section-title {
+    font-size: 0.95rem;
+}
+
 .wp-portal-head .wp-brand img {
     max-width: 4rem;
     max-height: 4rem;

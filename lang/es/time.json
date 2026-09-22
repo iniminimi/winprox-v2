@@ -361,7 +361,9 @@
             "navigate": "Navegar",
             "start_work": "Empezar el trabajo",
             "do_check": "Unit check",
-            "gps_off": "El GPS está apagado en tu móvil. Activa la ubicación para empezar el trabajo en estas direcciones."
+            "gps_off": "El GPS está apagado en tu móvil. Activa la ubicación para empezar el trabajo en estas direcciones.",
+            "here": "Aquí",
+            "been": "Ya estuve aquí"
         },
         "homescreen": {
             "title": "Poner WinProx en la pantalla de inicio",
@@ -390,6 +392,13 @@
             "submitted": "Solicitud enviada.",
             "cancelled": "Solicitud retirada.",
             "decision": "Decisión"
+        },
+        "now": {
+            "kicker": "Ahora",
+            "more": "Más",
+            "on_break": "En pausa ahora",
+            "next_stop": "Siguiente parada: :name",
+            "here_done": "El trabajo aquí está listo."
         }
     },
     "ciao": {

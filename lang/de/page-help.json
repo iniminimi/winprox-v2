@@ -1026,7 +1026,7 @@
                 },
                 {
                     "label": "Offene Aufgaben",
-                    "text": "Nach Name und Symbol sehen Sie die offenen Aufgaben Ihres Teams. Mit Time + GPS-Arbeitsbesuchen starten oder schließen Sie Teamaufgaben am Clock Point, solange ein offener Arbeitsbesuch an diesem Kundenstandort läuft (optionale Notiz und Fotos). Oben sehen Sie, wo Sie vor Ort sind und, wenn die Arbeit hier fertig ist, den nächsten Standort. Eine Inspektionsrunde zeigt Beschreibung, Prio, Status und den nächsten Stopp. Die Schaltfläche Unit-Check erscheint erst nach Arbeit starten an diesem Standort; die vollständige Prüfung (OK / Nicht OK / überspringen) öffnet sich danach."
+                    "text": "Nach Name und Symbol sehen Sie oben die dunkle Karte Jetzt (Status und eine Hauptaktion; Ausstempeln und Abmelden unter Mehr). Offene Aufgaben stehen darunter, mit Anzahl; weitere über Weitere Aufgaben. Mit Time + GPS-Arbeitsbesuchen starten oder schließen Sie Teamaufgaben am Clock Point, solange ein offener Arbeitsbesuch an diesem Kundenstandort läuft (optionale Notiz und Fotos). Eine Inspektionsrunde zeigt Beschreibung, Prio, Status und den nächsten Stopp. Die Schaltfläche Unit-Check erscheint erst nach Arbeit starten an diesem Standort; die vollständige Prüfung (OK / Nicht OK / überspringen) öffnet sich danach."
                 },
                 {
                     "label": "Ein- und Ausstempeln",
@@ -1034,7 +1034,7 @@
                 },
                 {
                     "label": "Wohin muss ich heute",
-                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: nur Standorte, in der Reihenfolge der Inspektionsrunde (nicht alphabetisch). Der Standortname steht in einer gelben Pille, die Adresse darunter, das GPS-Symbol rechts für die Google-Maps-Route. Ist GPS am Handy aus, erscheint eine Warnung — nur wenn Sie heute irgendwohin müssen. Arbeit starten erscheint am Standort, wenn Sie vor Ort sind; Arbeitsort in der Nähe suchen verschwindet dann. Während des Besuchs stehen aktueller Standort und nächster Stopp oben. Inspektionsstopps stehen unter Offene Aufgaben; Unit-Check erst nach Arbeit starten. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
+                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: nur Standorte, in der Reihenfolge der Inspektionsrunde (nicht alphabetisch), als Zeitlinie (hier, als Nächstes, gewesen, später). Der nächste Stopp zeigt Adresse und Navigieren. Ist GPS am Handy aus, erscheint eine Warnung — nur wenn Sie heute irgendwohin müssen. Arbeit starten erscheint am Standort, wenn Sie vor Ort sind; Arbeitsort in der Nähe suchen verschwindet dann. Inspektionsstopps stehen unter Offene Aufgaben; Unit-Check erst nach Arbeit starten. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
                 },
                 {
                     "label": "Evakuierungsliste",
