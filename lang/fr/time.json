@@ -292,14 +292,14 @@
             "open_elsewhere_hint": "Vous êtes déjà pointé sur un autre site. Déplacez votre présence ici, ou pointez la sortie.",
             "transfer_here": "Déplacer ici",
             "started_at": "Démarré à :place (même vacation).",
-            "scan_required_hint": "Scannez le QR Clock Point sur site pour pointer l'entrée ou la sortie. Un onglet ouvert ne suffit pas.",
             "working_at": "Au travail chez :place",
             "stop_work": "Arrêter le travail",
             "find_nearby": "Trouver un lieu de travail à proximité",
             "start_work_at": "Démarrer le travail : :place (:distance m)",
-            "no_nearby_units": "Aucune unité épinglée à portée."
+            "no_nearby_units": "Aucune unité épinglée à portée.",
+            "clocked_out_at": "Dépointé à :time",
+            "scan_to_clock_in": "Scannez le QR Clock Point pour pointer l'entrée."
         },
-        "clocked_out": "Vous êtes dépointé.",
         "break_started": "Pause commencée.",
         "break_ended": "Pause terminée.",
         "errors": {

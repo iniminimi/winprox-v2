@@ -292,14 +292,14 @@
             "open_elsewhere_hint": "Je bent al ingeklokt op een andere vestiging. Verplaats je aanwezigheid naar hier, of klok uit.",
             "transfer_here": "Verplaats naar hier",
             "started_at": "Gestart bij :place (zelfde dienst).",
-            "scan_required_hint": "Scan de Clock Point-QR op de vestiging om in of uit te klokken. Een open tab volstaat niet.",
             "working_at": "Aan het werk bij :place",
             "stop_work": "Werk stoppen",
             "find_nearby": "Zoek werkplek in de buurt",
             "start_work_at": "Start werk: :place (:distance m)",
-            "no_nearby_units": "Geen gepinde unit binnen bereik."
+            "no_nearby_units": "Geen gepinde unit binnen bereik.",
+            "clocked_out_at": "Uitgeklokt om :time",
+            "scan_to_clock_in": "Scan de Clock Point-QR om in te klokken."
         },
-        "clocked_out": "Je bent uitgeklokt.",
         "break_started": "Pauze gestart.",
         "break_ended": "Pauze beëindigd.",
         "errors": {

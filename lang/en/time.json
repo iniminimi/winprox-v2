@@ -292,14 +292,14 @@
             "open_elsewhere_hint": "You are already clocked in at another location. Move your presence here, or clock out.",
             "transfer_here": "Move here",
             "started_at": "Started at :place (same shift).",
-            "scan_required_hint": "Scan the Clock Point QR at the site to clock in or out. An open tab is not enough.",
             "working_at": "Working at :place",
             "stop_work": "Stop work",
             "find_nearby": "Find a nearby workplace",
             "start_work_at": "Start work: :place (:distance m)",
-            "no_nearby_units": "No pinned unit within range."
+            "no_nearby_units": "No pinned unit within range.",
+            "clocked_out_at": "Clocked out at :time",
+            "scan_to_clock_in": "Scan the Clock Point QR to clock in."
         },
-        "clocked_out": "You are clocked out.",
         "break_started": "Break started.",
         "break_ended": "Break ended.",
         "errors": {

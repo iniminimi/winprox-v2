@@ -51,7 +51,8 @@ it('klokt in na een verse QR-scan', function () {
     signInPunchScanWorker($clockPoint)
         ->call('clockIn')
         ->assertSet('flashMessage', '')
-        ->assertSee(__('time.portal.clock.scan_required_hint'), false);
+        ->assertDontSee(__('time.portal.clock.scan_to_clock_in'), false)
+        ->assertDontSeeHtml('@click="withGps(\'clockOut\')"');
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue()
         ->and(ClockPointScanGrant::isValid($clockPoint->id))->toBeFalse();
@@ -78,9 +79,43 @@ it('laat uitklokken na een nieuwe QR-scan', function () {
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->call('clockOut')
-        ->assertSet('flashMessage', __('time.portal.clocked_out'));
+        ->assertSet('flashMessage', '')
+        ->assertSee(__('time.portal.clock.clocked_out_at', ['time' => now()->format('H:i')]), false)
+        ->assertDontSee(__('time.portal.clock.not_clocked_in'), false)
+        ->assertDontSee(__('time.portal.clock.scan_to_clock_in'), false);
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeFalse();
+});
+
+it('toont na een nieuwe scan opnieuw inklokken bij een afgesloten dienst', function () {
+    [, $clockPoint, $worker] = punchScanTenant();
+
+    signInPunchScanWorker($clockPoint)->call('clockIn');
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->call('clockOut')
+        ->assertSet('flashMessage', '');
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->assertSee(__('time.portal.clock.clocked_out_at', ['time' => now()->format('H:i')]), false)
+        ->assertSee(__('time.portal.clock.in'), false)
+        ->assertDontSee(__('time.portal.clock.not_clocked_in'), false)
+        ->assertDontSee(__('time.portal.clock.scan_to_clock_in'), false);
+
+    expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeFalse();
+});
+
+it('toont een korte scan-hint als de grant opgebruikt is en er nog geen dienst is', function () {
+    [, $clockPoint] = punchScanTenant();
+
+    $portal = signInPunchScanWorker($clockPoint);
+    ClockPointScanGrant::consume($clockPoint->id);
+
+    $portal
+        ->call('$refresh')
+        ->assertSee(__('time.portal.clock.not_clocked_in'), false)
+        ->assertSee(__('time.portal.clock.scan_to_clock_in'), false)
+        ->assertDontSeeHtml('@click="withGps(\'clockIn\')"');
 });
 
 it('weigert inklokken wanneer de scan-grant verlopen is', function () {

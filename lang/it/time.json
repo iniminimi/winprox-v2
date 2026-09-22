@@ -292,14 +292,14 @@
             "open_elsewhere_hint": "Hai già timbrato in un'altra sede. Sposta la presenza qui oppure timbra l'uscita.",
             "transfer_here": "Sposta qui",
             "started_at": "Iniziato presso :place (stesso turno).",
-            "scan_required_hint": "Scansiona il QR Clock Point in sede per timbrare entrata o uscita. Una scheda aperta non basta.",
             "working_at": "Al lavoro presso :place",
             "stop_work": "Interrompi lavoro",
             "find_nearby": "Trova un luogo di lavoro vicino",
             "start_work_at": "Avvia lavoro: :place (:distance m)",
-            "no_nearby_units": "Nessuna unit con pin nel raggio."
+            "no_nearby_units": "Nessuna unit con pin nel raggio.",
+            "clocked_out_at": "Uscita timbrata alle :time",
+            "scan_to_clock_in": "Scansiona il QR Clock Point per timbrare l'entrata."
         },
-        "clocked_out": "Hai timbrato l'uscita.",
         "break_started": "Pausa iniziata.",
         "break_ended": "Pausa terminata.",
         "errors": {

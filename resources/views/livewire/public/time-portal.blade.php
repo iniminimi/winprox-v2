@@ -22,9 +22,9 @@
                     $logoUrl = $tenant ? $tenant->logoPublicUrl() : null;
                 @endphp
                 @if($logoUrl)
-                    <img src="{{ $logoUrl }}" alt="{{ $tenant->name ?? 'Logo' }}" style="max-width: 100px; max-height: 100px; object-fit: contain;">
+                    <img src="{{ $logoUrl }}" alt="{{ $tenant->name ?? 'Logo' }}">
                 @else
-                    <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="WinProx" style="max-width: 100px; max-height: 100px; object-fit: contain;">
+                    <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="WinProx">
                 @endif
             </span>
             <div class="wp-portal-head-tools">

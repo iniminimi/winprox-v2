@@ -292,14 +292,14 @@
             "open_elsewhere_hint": "Ya has fichado en otra sede. Traslada tu presencia aquí o ficha la salida.",
             "transfer_here": "Trasladar aquí",
             "started_at": "Iniciado en :place (mismo turno).",
-            "scan_required_hint": "Escanea el QR de Clock Point en la sede para fichar la entrada o la salida. Una pestaña abierta no basta.",
             "working_at": "Trabajando en :place",
             "stop_work": "Dejar de trabajar",
             "find_nearby": "Buscar lugar de trabajo cercano",
             "start_work_at": "Empezar trabajo: :place (:distance m)",
-            "no_nearby_units": "Ninguna unidad con pin dentro del alcance."
+            "no_nearby_units": "Ninguna unidad con pin dentro del alcance.",
+            "clocked_out_at": "Ha fichado la salida a las :time",
+            "scan_to_clock_in": "Escanea el QR de Clock Point para fichar la entrada."
         },
-        "clocked_out": "Ha fichado la salida.",
         "break_started": "Pausa iniciada.",
         "break_ended": "Pausa finalizada.",
         "errors": {

@@ -23,16 +23,21 @@
 
     @if ($hasTimeModule)
         @if ($openShift === null)
+            @php $clockedOutTime = $lastClosedShift?->clock_out_at?->format('H:i'); @endphp
             <div class="wp-portal-status">
-                <p>{{ __('time.portal.clock.not_clocked_in') }}</p>
+                @if ($clockedOutTime)
+                    <p>{{ __('time.portal.clock.clocked_out_at', ['time' => $clockedOutTime]) }}</p>
+                @else
+                    <p>{{ __('time.portal.clock.not_clocked_in') }}</p>
+                @endif
                 @if ($canPunch ?? false)
                     <button type="button" class="btn btn--primary btn--sm" @click="withGps('clockIn')">
                         {{ __('time.portal.clock.in') }}
                     </button>
                 @endif
             </div>
-            @unless ($canPunch ?? false)
-                <p class="wp-muted">{{ __('time.portal.clock.scan_required_hint') }}</p>
+            @unless (($canPunch ?? false) || $clockedOutTime)
+                <p class="wp-muted">{{ __('time.portal.clock.scan_to_clock_in') }}</p>
             @endunless
         @else
             <div class="wp-portal-status">
@@ -87,9 +92,6 @@
                     @endif
                 @endif
             </div>
-            @unless ($canPunch ?? false)
-                <p class="wp-muted">{{ __('time.portal.clock.scan_required_hint') }}</p>
-            @endunless
         @endif
     @endif
 </div>

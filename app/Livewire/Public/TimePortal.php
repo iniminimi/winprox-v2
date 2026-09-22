@@ -830,7 +830,6 @@ class TimePortal extends Component
             [$device, $token] = $this->clockDeviceContext($worker);
             $clockOut->handle($worker, $clockPoint, null, ClockSource::ClockPointQr, true, $device, $token);
             ClockPointScanGrant::consume((int) $clockPoint->id);
-            $this->flashMessage = __('time.portal.clocked_out');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
                 return;
@@ -1411,6 +1410,9 @@ class TimePortal extends Component
             $openShift = $findShift->handle($verifiedWorker);
         }
         $hasTimeModule = TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId));
+        $lastClosedShift = ($canAct && $verifiedWorker !== null && $hasTimeModule && $openShift === null)
+            ? TimePortalData::lastClosedShiftToday($verifiedWorker)
+            : null;
         $evacuationList = TimePortalData::tenantAllowsEvacuationList($this->tenantId);
         $gpsVisits = TimePortalData::tenantAllowsGpsWorkVisits($this->tenantId);
         $tasks = $canAct && $verifiedWorker !== null ? TimePortalData::openTasksForWorker($verifiedWorker) : collect();
@@ -1525,6 +1527,7 @@ class TimePortal extends Component
                 ? WorkerIconGuard::remainingAttempts($deviceWorker->team)
                 : WorkerIconGuard::MAX_FAILED_ATTEMPTS,
             'openShift' => $openShift,
+            'lastClosedShift' => $lastClosedShift,
             'todayDestinations' => $todayDestinations,
             'onSiteGuidance' => $onSiteGuidance,
             'openVisitUnitId' => $openShift?->openVisit?->unit_id,

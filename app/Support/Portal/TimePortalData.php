@@ -4,12 +4,14 @@ namespace App\Support\Portal;
 
 use App\Actions\Tasks\RoundTaskCompletionAction;
 use App\Enums\TaskStatus;
+use App\Enums\WorkShiftStatus;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Models\WorkShift;
 use App\Models\WorkVisit;
 use Illuminate\Support\Collection;
 
@@ -112,6 +114,17 @@ final class TimePortalData
         $tenant = Tenant::query()->find($tenantId);
 
         return $tenant !== null && $tenant->allowsEvacuationList();
+    }
+
+    public static function lastClosedShiftToday(Worker $worker): ?WorkShift
+    {
+        return WorkShift::query()
+            ->where('worker_id', $worker->id)
+            ->whereNotNull('clock_out_at')
+            ->where('status', '!=', WorkShiftStatus::Open)
+            ->whereDate('clock_out_at', now()->toDateString())
+            ->orderByDesc('clock_out_at')
+            ->first();
     }
 
     public static function isGenericClockPointName(?string $name): bool
