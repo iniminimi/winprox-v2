@@ -490,7 +490,7 @@
                                             @endif
                                         </div>
                                         <template x-if="inLocationRange(@js($group))">
-                                            <button type="button" class="btn btn--surface wp-btn--prio-pulse" @click="withFreshGps('startWorkVisit', 0, {{ (int) $group['location_id'] }})">
+                                            <button type="button" class="btn btn--surface btn--block wp-btn--prio-pulse" @click="withFreshGps('startWorkVisit', 0, {{ (int) $group['location_id'] }})">
                                                 {{ __('time.portal.today.start_work') }}
                                             </button>
                                         </template>

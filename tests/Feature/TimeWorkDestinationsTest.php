@@ -494,7 +494,7 @@ it('toont Vandaag en Zoek werkplek in de buurt na inklokken, zonder WorkVisit', 
         ->assertDontSeeHtml('wp-today-destination__unit')
         ->assertSee(__('time.portal.today.navigate'), false)
         ->assertSee(__('time.portal.clock.find_nearby'), false)
-        ->assertSeeHtml('wp-btn--prio-pulse')
+        ->assertSeeHtml('btn btn--surface btn--block wp-btn--prio-pulse')
         ->assertSeeHtml('hasStartWorkInRange')
         ->assertSee('google.com/maps/dir', false)
         ->assertDontSeeHtml('wire:click="navigate"');

@@ -1733,6 +1733,10 @@ button.wp-issue-row:disabled {
     margin-top: 0.75rem;
 }
 
+.wp-today-destination > .btn {
+    margin-block: 0.75rem;
+}
+
 .wp-today-gps-off {
     display: flex;
     align-items: flex-start;
