@@ -143,6 +143,7 @@ it('toont de evacuatielijst met de laatste inklokking eerst', function () {
         ->call('openRoster')
         ->set('rosterAcknowledged', true)
         ->call('acknowledgeRoster')
+        ->assertDontSeeHtml('wire:click="signOut"')
         ->assertSeeInOrder(['Ann Admin', 'Jan Janssen']);
 });
 

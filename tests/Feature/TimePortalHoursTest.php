@@ -116,6 +116,7 @@ it('toont alleen de eigen diensten van de aangemelde uitvoerder', function () {
     signInHoursWorker($clockPoint)
         ->call('openHours')
         ->assertSet('hoursListOpen', true)
+        ->assertDontSeeHtml('wire:click="signOut"')
         ->assertSee(__('time.portal.hours.title'), false)
         ->assertSee('Poort Noord', false)
         ->assertSee('08:00', false)

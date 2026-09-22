@@ -33,9 +33,6 @@
                     @include('partials.wp-portal-theme')
                     @include('partials.wp-portal-lang')
                 </div>
-                @if (($canAct ?? false) && (($hoursListOpen ?? false) || ($scheduleListOpen ?? false) || ($rosterListOpen ?? false) || ($checkingUnit ?? null)))
-                    @include('partials.wp-portal-sign-out', ['signOutMethod' => 'signOut'])
-                @endif
             </div>
         </div>
         @unless ($canAct ?? false)

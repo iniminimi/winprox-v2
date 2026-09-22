@@ -1151,8 +1151,7 @@
     width: 100%;
     max-width: 32rem;
     margin-inline: auto;
-    padding: 0.75rem;
-    padding-bottom: 3.5rem;
+    padding: 0 0.75rem 3.5rem;
 }
 
 .wp-portal .wp-card {
@@ -1186,7 +1185,7 @@
     flex-direction: column;
     gap: 0.25rem;
     background-color: var(--wp-surface);
-    margin: -0.75rem -0.75rem 0.75rem -0.75rem;
+    margin: 0 -0.75rem 0.75rem;
     padding: 0.75rem;
     border-bottom: 1px solid var(--wp-border);
 }
@@ -1225,6 +1224,10 @@
 
 .wp-portal .wp-stack > * + * {
     margin-top: 0.75rem;
+}
+
+.wp-portal .wp-stack > .wp-portal-head {
+    margin-top: 0;
 }
 
 .wp-portal .wp-tile {

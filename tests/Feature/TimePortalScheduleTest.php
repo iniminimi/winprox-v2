@@ -91,6 +91,7 @@ it('toont alleen published eigen diensten en zet de badge weg', function () {
     $component = signInScheduleWorker($clockPoint)
         ->call('openSchedule')
         ->assertSet('scheduleListOpen', true)
+        ->assertDontSeeHtml('wire:click="signOut"')
         ->assertSee(__('time.portal.schedule.empty'), false);
 
     app(PublishWeekAction::class)->handle(
