@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "Resumen",
-                    "text": "El panel de control muestra recuentos de ubicaciones, unidades, incidencias abiertas y tareas abiertas. Haga clic en una tarjeta para ir a la pantalla relacionada."
+                    "text": "El panel de control muestra recuentos de ubicaciones, unidades, incidencias abiertas y tareas abiertas. Haga clic en una tarjeta para ir a la pantalla relacionada. Las solicitudes abiertas de permiso o compensación aparecen como tarjeta extra hacia Time → Solicitudes."
                 },
                 {
                     "label": "Plantilla inicial",

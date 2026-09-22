@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Dashboard;
 
+use App\Actions\Time\CountPendingAbsenceRequestsAction;
 use App\Actions\Time\CountTimePresenceAttentionAction;
 use App\Data\Dashboard\DashboardStatsData;
 use App\Enums\IssueSource;
@@ -19,12 +20,14 @@ class BuildDashboardStatsAction
 {
     public function __construct(
         private CountTimePresenceAttentionAction $countTimeAttention,
+        private CountPendingAbsenceRequestsAction $countPendingAbsence,
     ) {}
 
     public function handle(int $tenantId, bool $hasTimeModule, bool $hasIotModule): DashboardStatsData
     {
         $presentNow = null;
         $timeAttention = 0;
+        $pendingAbsenceRequests = 0;
 
         if ($hasTimeModule) {
             $presentNow = WorkShift::query()
@@ -34,6 +37,7 @@ class BuildDashboardStatsAction
                 ->count();
 
             $timeAttention = $this->countTimeAttention->handle($tenantId);
+            $pendingAbsenceRequests = $this->countPendingAbsence->handle($tenantId);
         }
 
         $iotAlarms = 0;
@@ -63,6 +67,7 @@ class BuildDashboardStatsAction
                 ->pendingReview()
                 ->count(),
             timeAttention: $timeAttention,
+            pendingAbsenceRequests: $pendingAbsenceRequests,
             iotAlarms: $iotAlarms,
             hasTimeModule: $hasTimeModule,
             hasIotModule: $hasIotModule,

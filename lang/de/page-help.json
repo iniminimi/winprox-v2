@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "Übersicht",
-                    "text": "Das Dashboard zeigt Anzahlen von Standorten, Units, offenen Meldungen und offenen Aufgaben. Klicken Sie auf eine Karte, um zum zugehörigen Bildschirm zu gelangen."
+                    "text": "Das Dashboard zeigt Anzahlen von Standorten, Units, offenen Meldungen und offenen Aufgaben. Klicken Sie auf eine Karte, um zum zugehörigen Bildschirm zu gelangen. Offene Urlaubs- oder Ausgleichsanträge erscheinen als extra Karte zu Time → Anträge."
                 },
                 {
                     "label": "Startvorlage",

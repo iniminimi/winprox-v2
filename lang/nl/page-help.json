@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "Overzicht",
-                    "text": "Het dashboard toont tellingen van locaties, units, open meldingen en open taken. Klik op een kaart om naar het bijhorende scherm te gaan."
+                    "text": "Het dashboard toont tellingen van locaties, units, open meldingen en open taken. Klik op een kaart om naar het bijhorende scherm te gaan. Open verlof- of recupaanvragen verschijnen als extra kaart naar Time → Aanvragen."
                 },
                 {
                     "label": "Starttemplate",

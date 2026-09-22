@@ -14,6 +14,7 @@ final class DashboardStatsData
         public ?int $presentNow,
         public int $pendingReview,
         public int $timeAttention,
+        public int $pendingAbsenceRequests,
         public int $iotAlarms,
         public bool $hasTimeModule,
         public bool $hasIotModule,
@@ -41,6 +42,10 @@ final class DashboardStatsData
             $tiles[] = ['key' => 'time_attention', 'icon' => 'alert-triangle', 'label' => 'dashboard.kpi.time_attention', 'meta' => null, 'alert' => true, 'href_key' => 'time_attention'];
         }
 
+        if ($this->hasTimeModule && $this->pendingAbsenceRequests > 0) {
+            $tiles[] = ['key' => 'pending_absence', 'icon' => 'calendar', 'label' => 'dashboard.kpi.pending_absence', 'meta' => null, 'alert' => true, 'href_key' => 'pending_absence'];
+        }
+
         if ($this->hasIotModule && $this->iotAlarms > 0) {
             $tiles[] = ['key' => 'iot_alarms', 'icon' => 'alert-triangle', 'label' => 'dashboard.kpi.iot_alarms', 'meta' => null, 'alert' => true, 'href_key' => 'iot_alarms'];
         }
@@ -58,6 +63,7 @@ final class DashboardStatsData
             'present_now' => (int) $this->presentNow,
             'pending_review' => $this->pendingReview,
             'time_attention' => $this->timeAttention,
+            'pending_absence' => $this->pendingAbsenceRequests,
             'iot_alarms' => $this->iotAlarms,
             default => 0,
         };

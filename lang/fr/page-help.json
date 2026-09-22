@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "Vue d'ensemble",
-                    "text": "Le tableau de bord affiche le nombre de sites, d'unités, de signalements ouverts et de tâches ouvertes. Cliquez sur une carte pour accéder à l'écran correspondant."
+                    "text": "Le tableau de bord affiche le nombre de sites, d'unités, de signalements ouverts et de tâches ouvertes. Cliquez sur une carte pour accéder à l'écran correspondant. Les demandes de congé ou de récup ouvertes apparaissent comme carte extra vers Time → Demandes."
                 },
                 {
                     "label": "Modèle de départ",

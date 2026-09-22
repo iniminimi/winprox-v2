@@ -23,6 +23,7 @@
         "meta_total": "Totale",
         "pending_review": "Da valutare",
         "time_attention": "Attenzione Time",
+        "pending_absence": "Richieste",
         "iot_alarms": "Allarmi IoT"
     },
     "recent": {

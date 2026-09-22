@@ -10,6 +10,7 @@ use App\Data\Time\RequestAbsenceData;
 use App\Enums\AbsenceRequestStatus;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\ShiftTypeKind;
+use App\Livewire\Dashboard;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Time\AbsenceRequestsIndex;
 use App\Models\AbsenceRequest;
@@ -271,6 +272,26 @@ it('laat beheer een aanvraag goedkeuren met reden', function () {
         ->assertSee(__('time.absence.approved'), false);
 
     expect($request->fresh()?->status)->toBe(AbsenceRequestStatus::Approved);
+});
+
+it('toont een dashboardtegel alleen bij open aanvragen', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    seedTenantPastOnboarding($tenant);
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->assertDontSeeHtml('wp-kpi--pending_absence');
+
+    app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-23'),
+    );
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->assertSeeHtml('wp-kpi--pending_absence')
+        ->assertSeeHtml(route('time.absence-requests.index'));
 });
 
 it('weigert het aanvragen-scherm zonder time-module niet dubbel', function () {

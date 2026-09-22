@@ -248,6 +248,7 @@ it('toont conditionele actie-KPIâ€™s alleen bij telling groter dan nul', fu
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.kpi.present_now'))
         ->assertDontSee(__('dashboard.kpi.pending_review'))
+        ->assertDontSeeHtml('wp-kpi--pending_absence')
         ->assertDontSee(__('dashboard.kpi.iot_alarms'));
 
     Issue::factory()->create([

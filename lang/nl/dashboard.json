@@ -23,6 +23,7 @@
         "meta_total": "Totaal",
         "pending_review": "Te beoordelen",
         "time_attention": "Time-aandacht",
+        "pending_absence": "Aanvragen",
         "iot_alarms": "IoT-alarmen"
     },
     "recent": {
