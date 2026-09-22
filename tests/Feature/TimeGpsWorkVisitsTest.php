@@ -229,6 +229,18 @@ it('houdt pauze OUT/IN tijdens een GPS-bezoek', function () {
     Queue::fake();
     [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext(ciao: true);
 
+    // Clock Point op een andere locatie zonder DDT — pauzes mogen die niet gebruiken.
+    $hq = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'HQ',
+        'street' => 'Kantoorstraat',
+        'house_number' => '1',
+        'postal_code' => '9000',
+        'city' => 'Gent',
+        'contractual_relationship_reference' => null,
+    ]);
+    $clockPoint->update(['location_id' => $hq->id]);
+
     $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
     app(StartWorkVisitAction::class)->handle($worker, $unit, 51.05, 3.73);
     app(StartWorkBreakAction::class)->handle($worker, $shift);
@@ -237,9 +249,16 @@ it('houdt pauze OUT/IN tijdens een GPS-bezoek', function () {
 
     $events = PresenceSubmission::query()->orderBy('id')->pluck('source_event')->map->value->all();
     $types = PresenceSubmission::query()->orderBy('id')->pluck('presence_type')->map->value->all();
+    $breakRows = PresenceSubmission::query()
+        ->whereIn('source_event', ['break_start', 'break_end'])
+        ->orderBy('id')
+        ->get();
 
     expect($events)->toBe(['visit_start', 'break_start', 'break_end', 'visit_end'])
-        ->and($types)->toBe(['IN', 'OUT', 'IN', 'OUT']);
+        ->and($types)->toBe(['IN', 'OUT', 'IN', 'OUT'])
+        ->and($breakRows)->toHaveCount(2)
+        ->and($breakRows->every(fn ($row) => (int) $row->location_id === (int) $location->id))->toBeTrue()
+        ->and($breakRows->every(fn ($row) => $row->work_visit_id !== null))->toBeTrue();
 });
 
 it('start en stopt een bezoek via de API met time:write', function () {

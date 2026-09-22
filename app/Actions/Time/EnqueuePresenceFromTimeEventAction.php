@@ -49,6 +49,18 @@ class EnqueuePresenceFromTimeEventAction
             return null;
         }
 
+        // Tijdens GPS-werkbezoek: pauze OUT/IN hoort bij de klantlocatie (DDT), niet bij Clock Point.
+        if ($visit === null && in_array($source, [
+            PresenceSourceEvent::BreakStart,
+            PresenceSourceEvent::BreakEnd,
+        ], true)) {
+            $visit = WorkVisit::query()
+                ->where('work_shift_id', $shift->id)
+                ->whereNull('ended_at')
+                ->orderByDesc('started_at')
+                ->first();
+        }
+
         $at = $registrationAt ?? now();
         $presenceType = $this->mapPresence->handle($source, $scope);
 
