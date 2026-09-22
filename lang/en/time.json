@@ -359,7 +359,8 @@
             "empty": "No planned visits today",
             "navigate": "Navigate",
             "start_work": "Start work",
-            "do_check": "Unit check"
+            "do_check": "Unit check",
+            "gps_off": "GPS is off on your phone. Turn location on to start work at these addresses."
         },
         "homescreen": {
             "title": "Add WinProx to your home screen",

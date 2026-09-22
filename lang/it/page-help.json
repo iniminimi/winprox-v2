@@ -1034,7 +1034,7 @@
                 },
                 {
                     "label": "Dove devo andare oggi",
-                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: solo sedi (nome + indirizzo), nell’ordine del giro di ispezione (non alfabetico). Tocca l'icona GPS per il percorso Google Maps. Avvia lavoro compare in sede sul posto. Durante la visita, la sede attuale e la prossima fermata stanno in alto. Le fermate di ispezione sono sotto Attività aperte; Controllo unità solo dopo Avvia lavoro. Le attività aperte senza data restano sotto Attività aperte."
+                    "text": "Dopo la timbratura (Time con visite GPS) vedi dove andare oggi: solo sedi, nell’ordine del giro di ispezione (non alfabetico). Il nome della sede è in una pillola gialla, l’indirizzo sotto, l’icona GPS a destra per il percorso Google Maps. Se il GPS è spento sul telefono compare un avviso — solo se oggi devi andare da qualche parte. Avvia lavoro compare in sede sul posto. Durante la visita, la sede attuale e la prossima fermata stanno in alto. Le fermate di ispezione sono sotto Attività aperte; Controllo unità solo dopo Avvia lavoro. Le attività aperte senza data restano sotto Attività aperte."
                 },
                 {
                     "label": "Elenco evacuazione",

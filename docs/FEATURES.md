@@ -753,7 +753,9 @@ productsector op `Tenant`.
 - Publieke winprox.app-homepage doet **geen** GPS-voorstel van bedrijven.
 - **Clock Point na inklokken (Time + GPS-werkbezoeken):** kaart **Waar moet ik
   vandaag naartoe** = waar de uitvoerder *vandaag* naartoe moet, **alleen locaties**
-  (locatienaam + adres + locatie-nav). Bron: open teamtaken met `scheduled_for`
+  (locatienaam als gele pil, adres eronder, GPS-icoon rechts voor de route).
+  Waarschuwing als GPS uitstaat op de gsm, **alleen** als er bestemmingen zijn.
+  Bron: open teamtaken met `scheduled_for`
   of `due_at` vandaag (inspectiestops tellen mee voor de locatie, niet als
   unit-rijen) + optioneel de gepubliceerde roostercel van vandaag met `unit_id`.
   Locaties staan in **inspectieronde-stopvolgorde** (eerste keer dat de locatie

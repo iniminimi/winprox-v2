@@ -120,8 +120,11 @@ it('groepeert Clock Point-bestemmingen per locatie met GPS-icoon', function () {
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->call('clockIn')
-        ->assertSee('Campus Noord, Teststraat 1, 1000 Brussel', false)
-        ->assertSee('Hotel De Brug, Kerkstraat 12, 8000 Brugge', false)
+        ->assertSee('Campus Noord', false)
+        ->assertSee('Teststraat 1, 1000 Brussel', false)
+        ->assertSee('Hotel De Brug', false)
+        ->assertSee('Kerkstraat 12, 8000 Brugge', false)
+        ->assertDontSee('Campus Noord, Teststraat 1, 1000 Brussel', false)
         ->assertDontSeeHtml('wp-today-destination__unit')
         ->assertSeeHtml('wp-today-destination__pin')
         ->assertDontSeeHtml('btn btn--primary btn--block">'.__('time.portal.today.navigate'));
@@ -484,6 +487,9 @@ it('toont Vandaag en Zoek werkplek in de buurt na inklokken, zonder WorkVisit', 
         ->call('clockIn')
         ->assertSee(__('time.portal.today.title'), false)
         ->assertSeeHtml('wp-today-destination')
+        ->assertSeeHtml('wp-today-destination__name')
+        ->assertSeeHtml('wp-today-gps-off')
+        ->assertSee(__('time.portal.today.gps_off'), false)
         ->assertSee('Hotel De Brug', false)
         ->assertDontSeeHtml('wp-today-destination__unit')
         ->assertSee(__('time.portal.today.navigate'), false)
@@ -636,5 +642,7 @@ it('toont de lege Vandaag-kaart wanneer er geen geplande bestemmingen zijn', fun
         ->call('signInWithIcon')
         ->call('clockIn')
         ->assertSee(__('time.portal.today.empty'), false)
+        ->assertDontSee(__('time.portal.today.gps_off'), false)
+        ->assertDontSeeHtml('wp-today-gps-off')
         ->assertSee(__('time.portal.clock.find_nearby'), false);
 });

@@ -359,7 +359,8 @@
             "empty": "Vandaag geen geplande bezoeken",
             "navigate": "Navigeer",
             "start_work": "Start werk",
-            "do_check": "Unit check"
+            "do_check": "Unit check",
+            "gps_off": "GPS staat uit op je telefoon. Zet locatie aan om werk te starten op deze adressen."
         },
         "homescreen": {
             "title": "Zet WinProx op je startscherm",

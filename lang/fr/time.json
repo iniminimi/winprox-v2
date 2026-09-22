@@ -359,7 +359,8 @@
             "empty": "Aucune visite prévue aujourd'hui",
             "navigate": "Naviguer",
             "start_work": "Commencer le travail",
-            "do_check": "Contrôle d’unité"
+            "do_check": "Contrôle d’unité",
+            "gps_off": "Le GPS est désactivé sur votre téléphone. Activez la localisation pour commencer le travail à ces adresses."
         },
         "homescreen": {
             "title": "Ajouter WinProx à l’écran d’accueil",

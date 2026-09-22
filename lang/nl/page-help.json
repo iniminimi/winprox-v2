@@ -1034,7 +1034,7 @@
                 },
                 {
                     "label": "Waar moet ik vandaag naartoe",
-                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: alleen locaties (naam + adres), in de volgorde van de inspectieronde (niet alfabetisch). Tik het GPS-icoon voor de route in Google Maps. Start werk verschijnt op de locatie als je ter plaatse bent. Tijdens het bezoek staat bovenaan de huidige locatie en de volgende stop. Inspectiestops staan onder Open taken; Unit check pas na Start werk. Open taken zonder datum blijven onder Open taken."
+                    "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: alleen locaties, in de volgorde van de inspectieronde (niet alfabetisch). De locatienaam staat in een gele pil, het adres eronder, het GPS-icoon rechts voor de route in Google Maps. Staat GPS uit op je telefoon, dan zie je een waarschuwing — alleen als je vandaag ergens naartoe moet. Start werk verschijnt op de locatie als je ter plaatse bent. Tijdens het bezoek staat bovenaan de huidige locatie en de volgende stop. Inspectiestops staan onder Open taken; Unit check pas na Start werk. Open taken zonder datum blijven onder Open taken."
                 },
                 {
                     "label": "Evacuatielijst",

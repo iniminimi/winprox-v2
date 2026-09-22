@@ -359,7 +359,8 @@
             "empty": "Nessuna visita pianificata per oggi",
             "navigate": "Naviga",
             "start_work": "Inizia il lavoro",
-            "do_check": "Controllo unità"
+            "do_check": "Controllo unità",
+            "gps_off": "Il GPS è spento sul telefono. Attiva la posizione per iniziare il lavoro a questi indirizzi."
         },
         "homescreen": {
             "title": "Metti WinProx sulla schermata Home",

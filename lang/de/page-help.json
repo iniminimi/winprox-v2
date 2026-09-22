@@ -1034,7 +1034,7 @@
                 },
                 {
                     "label": "Wohin muss ich heute",
-                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: nur Standorte (Name + Adresse), in der Reihenfolge der Inspektionsrunde (nicht alphabetisch). Tippen Sie auf das GPS-Symbol für die Google-Maps-Route. Arbeit starten erscheint am Standort, wenn Sie vor Ort sind. Während des Besuchs stehen aktueller Standort und nächster Stopp oben. Inspektionsstopps stehen unter Offene Aufgaben; Unit-Check erst nach Arbeit starten. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
+                    "text": "Nach dem Einstempeln (Time mit GPS-Arbeitsbesuchen) sehen Sie, wohin Sie heute müssen: nur Standorte, in der Reihenfolge der Inspektionsrunde (nicht alphabetisch). Der Standortname steht in einer gelben Pille, die Adresse darunter, das GPS-Symbol rechts für die Google-Maps-Route. Ist GPS am Handy aus, erscheint eine Warnung — nur wenn Sie heute irgendwohin müssen. Arbeit starten erscheint am Standort, wenn Sie vor Ort sind. Während des Besuchs stehen aktueller Standort und nächster Stopp oben. Inspektionsstopps stehen unter Offene Aufgaben; Unit-Check erst nach Arbeit starten. Offene Aufgaben ohne Datum bleiben unter Offene Aufgaben."
                 },
                 {
                     "label": "Evakuierungsliste",

@@ -1034,7 +1034,7 @@
                 },
                 {
                     "label": "Adónde debo ir hoy",
-                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: solo sedes (nombre + dirección), en el orden de la ronda de inspección (no alfabético). Pulsa el icono GPS para la ruta en Google Maps. Empezar el trabajo aparece en la sede in situ. Durante la visita, la sede actual y la siguiente parada aparecen arriba. Las paradas de inspección están en Tareas abiertas; Unit check solo después de Empezar el trabajo. Las tareas abiertas sin fecha siguen en Tareas abiertas."
+                    "text": "Tras fichar (Time con visitas GPS) ves adónde ir hoy: solo sedes, en el orden de la ronda de inspección (no alfabético). El nombre de la sede va en una pastilla amarilla, la dirección debajo, el icono GPS a la derecha para la ruta de Google Maps. Si el GPS está apagado en el móvil, aparece un aviso — solo si hoy tienes que ir a algún sitio. Empezar el trabajo aparece en la sede in situ. Durante la visita, la sede actual y la siguiente parada aparecen arriba. Las paradas de inspección están en Tareas abiertas; Unit check solo después de Empezar el trabajo. Las tareas abiertas sin fecha siguen en Tareas abiertas."
                 },
                 {
                     "label": "Lista de evacuación",

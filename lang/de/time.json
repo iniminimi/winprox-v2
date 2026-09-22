@@ -359,7 +359,8 @@
             "empty": "Heute keine geplanten Besuche",
             "navigate": "Navigieren",
             "start_work": "Arbeit starten",
-            "do_check": "Unit-Check"
+            "do_check": "Unit-Check",
+            "gps_off": "GPS ist auf dem Handy aus. Schalten Sie den Standort ein, um an diesen Adressen die Arbeit zu starten."
         },
         "homescreen": {
             "title": "WinProx auf den Startbildschirm legen",
