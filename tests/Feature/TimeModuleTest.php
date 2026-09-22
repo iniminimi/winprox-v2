@@ -815,6 +815,68 @@ it('laat een admin een gesloten shift corrigeren met auditlog', function () {
         ->exists())->toBeTrue();
 });
 
+it('heropent een gesloten shift als de uitkloktijd leeg blijft', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(ClockOutAction::class)->handle($worker, $clockPoint);
+
+    Livewire::actingAs($admin)
+        ->test(ShiftsIndex::class)
+        ->call('openCorrection', $shift->id)
+        ->set('correctionClockOut', '')
+        ->set('correctionReason', 'Per ongeluk uitgeklokt')
+        ->call('saveCorrection')
+        ->assertHasNoErrors();
+
+    $shift = $shift->fresh();
+    expect($shift->status)->toBe(WorkShiftStatus::Open)
+        ->and($shift->clock_out_at)->toBeNull()
+        ->and($shift->clock_out_clock_point_id)->toBeNull()
+        ->and($shift->clock_out_source)->toBeNull();
+});
+
+it('weigert heropenen als de uitvoerder al een andere open dienst heeft', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $closed = app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(ClockOutAction::class)->handle($worker, $clockPoint);
+    WorkShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'status' => WorkShiftStatus::Open,
+        'clock_in_at' => now(),
+        'clock_out_at' => null,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(ShiftsIndex::class)
+        ->call('openCorrection', $closed->id)
+        ->set('correctionClockOut', '')
+        ->set('correctionReason', 'Per ongeluk uitgeklokt')
+        ->call('saveCorrection')
+        ->assertHasErrors(['correctionClockOut']);
+
+    expect($closed->fresh()->status)->toBe(WorkShiftStatus::Closed)
+        ->and($closed->fresh()->clock_out_at)->not->toBeNull();
+});
+
 it('toont in- en uitklokken als tijden met locatie, niet Aanmelden', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);

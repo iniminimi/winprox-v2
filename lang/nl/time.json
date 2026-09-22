@@ -165,6 +165,7 @@
         "fields": {
             "clock_in": "Inkloktijd",
             "clock_out": "Uitkloktijd",
+            "clock_out_hint": "Leeg laten heropent de dienst, bijvoorbeeld na een foutieve uitklok.",
             "break_minutes": "Pauze (minuten)",
             "reason": "Reden"
         },
@@ -172,7 +173,7 @@
             "clock_out_before_clock_in": "Uitkloktijd moet na inkloktijd liggen.",
             "break_exceeds_duration": "Pauze mag niet langer zijn dan de shift.",
             "shift_still_open": "Open shifts kunnen niet gecorrigeerd worden.",
-            "shift_missing_clock_out": "Deze shift heeft geen uitkloktijd."
+            "worker_has_open_shift": "Deze uitvoerder heeft al een open dienst."
         }
     },
     "status": {

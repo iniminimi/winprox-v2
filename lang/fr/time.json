@@ -165,6 +165,7 @@
         "fields": {
             "clock_in": "Heure d'entrée",
             "clock_out": "Heure de sortie",
+            "clock_out_hint": "Laissez vide pour rouvrir le service, par exemple après une sortie par erreur.",
             "break_minutes": "Pause (minutes)",
             "reason": "Motif"
         },
@@ -172,7 +173,7 @@
             "clock_out_before_clock_in": "L'heure de sortie doit être après l'heure d'entrée.",
             "break_exceeds_duration": "La pause ne peut pas dépasser la durée du shift.",
             "shift_still_open": "Les shifts ouverts ne peuvent pas être corrigés.",
-            "shift_missing_clock_out": "Ce shift n'a pas d'heure de sortie."
+            "worker_has_open_shift": "Cet exécutant a déjà un service ouvert."
         }
     },
     "status": {

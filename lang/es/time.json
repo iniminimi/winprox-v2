@@ -165,6 +165,7 @@
         "fields": {
             "clock_in": "Hora de entrada",
             "clock_out": "Hora de salida",
+            "clock_out_hint": "Déjelo vacío para reabrir el turno, por ejemplo tras una salida por error.",
             "break_minutes": "Pausa (minutos)",
             "reason": "Motivo"
         },
@@ -172,7 +173,7 @@
             "clock_out_before_clock_in": "La hora de salida debe ser posterior a la de entrada.",
             "break_exceeds_duration": "La pausa no puede ser más larga que el turno.",
             "shift_still_open": "Los turnos abiertos no se pueden corregir.",
-            "shift_missing_clock_out": "Este turno no tiene hora de salida."
+            "worker_has_open_shift": "Este trabajador ya tiene un turno abierto."
         }
     },
     "status": {

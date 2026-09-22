@@ -7,7 +7,6 @@ use App\Actions\Time\CorrectWorkShiftAction;
 use App\Livewire\Concerns\ManagesManualClockIn;
 use App\Livewire\Concerns\ManagesWorkShiftForceClose;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
-use App\Http\Requests\Time\CorrectWorkShiftRequest;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Worker;
@@ -98,7 +97,7 @@ class ShiftsIndex extends Component
         $validated = $this->validate(
             [
                 'correctionClockIn' => ['required', 'date'],
-                'correctionClockOut' => ['required', 'date', 'after:correctionClockIn'],
+                'correctionClockOut' => ['nullable', 'date', 'after:correctionClockIn'],
                 'correctionBreakMinutes' => ['required', 'integer', 'min:0', 'max:1440'],
                 'correctionReason' => ['required', 'string', 'min:3', 'max:500'],
             ],
@@ -116,7 +115,7 @@ class ShiftsIndex extends Component
         try {
             $correct->handle($shift, [
                 'clock_in_at' => $validated['correctionClockIn'],
-                'clock_out_at' => $validated['correctionClockOut'],
+                'clock_out_at' => $validated['correctionClockOut'] ?: null,
                 'total_break_minutes' => (int) $validated['correctionBreakMinutes'],
                 'reason' => $validated['correctionReason'],
             ], (int) Tenancy::id(), auth()->id());

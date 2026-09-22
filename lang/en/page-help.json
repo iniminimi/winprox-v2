@@ -1338,7 +1338,7 @@
                 },
                 {
                     "label": "Correct",
-                    "text": "On a closed shift an admin can change clock-in/out times or break minutes with a required reason. Changes go in the audit log. If the team break is missing, use <strong>Apply minimum break</strong>."
+                    "text": "On a closed shift an admin can change clock-in/out times or break minutes with a required reason. Leaving clock-out empty reopens the shift (mistaken clock-out), unless that worker already has another open shift. Changes go in the audit log. No extra CIAO IN/OUT. If the team break is missing, use <strong>Apply minimum break</strong>."
                 },
                 {
                     "label": "Close shift",

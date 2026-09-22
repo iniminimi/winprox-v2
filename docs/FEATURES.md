@@ -696,6 +696,10 @@ productsector op `Tenant`.
   beheerder kan het minimum één klik toepassen (audit `work_shift.required_break_applied`)
   of pauzeminuten corrigeren. API: `POST /api/v1/time/work-shifts/{id}/apply-required-break`;
   `GET /api/v1/teams` bevat `required_break_minutes`.
+- **Shift corrigeren** (Time → Uren, admin): inklok, uitklok en pauze met verplichte
+  reden (`work_shift.corrected`). Uitklok **leeg** laten heropent de dienst (foutieve
+  uitklok). Geweigerd als die uitvoerder al een andere open dienst heeft. Geen extra
+  CIAO IN/OUT.
 - **Evacuatielijst** (optioneel, Instellingen → Prikklok-beveiliging, **standaard uit**)
   op het Clock Point-portaal (na aanmelden, tegel met brandicoon).
   Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel), per

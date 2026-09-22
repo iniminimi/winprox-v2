@@ -1338,7 +1338,7 @@
                 },
                 {
                     "label": "Korrigieren",
-                    "text": "Bei einer geschlossenen Schicht kann ein Admin Ein-/Ausstempelzeiten oder Pauseminuten mit Pflichtgrund ändern. Änderungen stehen im Auditlog. Fehlt die Team-Pause, nutzen Sie <strong>Mindestpause anwenden</strong>."
+                    "text": "Bei einer geschlossenen Schicht kann ein Admin Ein-/Ausstempelzeiten oder Pauseminuten mit Pflichtgrund ändern. Ausstempelzeit leer lassen öffnet die Schicht wieder (falsches Ausstempeln), außer der Mitarbeiter hat bereits eine andere offene Schicht. Änderungen stehen im Auditlog. Kein extra CIAO IN/OUT. Fehlt die Team-Pause, nutzen Sie <strong>Mindestpause anwenden</strong>."
                 },
                 {
                     "label": "Schicht schließen",

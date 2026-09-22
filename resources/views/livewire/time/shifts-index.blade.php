@@ -93,6 +93,7 @@
                 <div class="wp-field">
                     <label class="wp-label" for="correction-clock-out">{{ __('time.corrections.fields.clock_out') }}</label>
                     <input id="correction-clock-out" type="datetime-local" class="wp-input" wire:model="correctionClockOut">
+                    <p class="wp-muted wp-text-sm">{{ __('time.corrections.fields.clock_out_hint') }}</p>
                     @error('correctionClockOut') <p class="wp-field-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-field">

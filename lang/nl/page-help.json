@@ -1338,7 +1338,7 @@
                 },
                 {
                     "label": "Corrigeren",
-                    "text": "Bij een gesloten shift kan een beheerder in- en uitkloktijden of pauzeminuten aanpassen met een verplichte reden. Wijzigingen gaan in het auditlog. Ontbreekt de teampauze, gebruik dan <strong>Minimumpauze toepassen</strong>."
+                    "text": "Bij een gesloten shift kan een beheerder in- en uitkloktijden of pauzeminuten aanpassen met een verplichte reden. Uitklok leeg laten heropent de dienst (foutieve uitklok), tenzij die uitvoerder al een andere open dienst heeft. Wijzigingen gaan in het auditlog. Geen extra CIAO IN/OUT. Ontbreekt de teampauze, gebruik dan <strong>Minimumpauze toepassen</strong>."
                 },
                 {
                     "label": "Shift sluiten",

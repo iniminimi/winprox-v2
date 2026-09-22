@@ -1338,7 +1338,7 @@
                 },
                 {
                     "label": "Corregir",
-                    "text": "En un turno cerrado un administrador puede cambiar horas de entrada/salida o minutos de pausa con motivo obligatorio. Los cambios van al registro de auditoría. Si falta la pausa de equipo, use <strong>Aplicar pausa mínima</strong>."
+                    "text": "En un turno cerrado un administrador puede cambiar horas de entrada/salida o minutos de pausa con motivo obligatorio. Dejar la salida vacía reabre el turno (salida por error), salvo que ese trabajador ya tenga otro turno abierto. Los cambios van al registro de auditoría. Sin IN/OUT CIAO extra. Si falta la pausa de equipo, use <strong>Aplicar pausa mínima</strong>."
                 },
                 {
                     "label": "Cerrar turno",

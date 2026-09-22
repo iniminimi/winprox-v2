@@ -23,7 +23,7 @@ class CorrectWorkShiftRequest extends FormRequest
     {
         return [
             'clock_in_at' => ['required', 'date'],
-            'clock_out_at' => ['required', 'date', 'after:clock_in_at'],
+            'clock_out_at' => ['nullable', 'date', 'after:clock_in_at'],
             'total_break_minutes' => ['required', 'integer', 'min:0', 'max:1440'],
             'reason' => ['required', 'string', 'min:3', 'max:500'],
         ];

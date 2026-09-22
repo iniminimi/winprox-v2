@@ -165,6 +165,7 @@
         "fields": {
             "clock_in": "Einstempelzeit",
             "clock_out": "Ausstempelzeit",
+            "clock_out_hint": "Leer lassen öffnet die Schicht wieder, zum Beispiel nach einem falschen Ausstempeln.",
             "break_minutes": "Pause (Minuten)",
             "reason": "Grund"
         },
@@ -172,7 +173,7 @@
             "clock_out_before_clock_in": "Ausstempelzeit muss nach Einstempelzeit liegen.",
             "break_exceeds_duration": "Pause darf nicht länger als die Schicht sein.",
             "shift_still_open": "Offene Schichten können nicht korrigiert werden.",
-            "shift_missing_clock_out": "Diese Schicht hat keine Ausstempelzeit."
+            "worker_has_open_shift": "Dieser Mitarbeiter hat bereits eine offene Schicht."
         }
     },
     "status": {

@@ -165,6 +165,7 @@
         "fields": {
             "clock_in": "Clock-in time",
             "clock_out": "Clock-out time",
+            "clock_out_hint": "Leave empty to reopen the shift, for example after a mistaken clock-out.",
             "break_minutes": "Break (minutes)",
             "reason": "Reason"
         },
@@ -172,7 +173,7 @@
             "clock_out_before_clock_in": "Clock-out must be after clock-in.",
             "break_exceeds_duration": "Break cannot be longer than the shift.",
             "shift_still_open": "Open shifts cannot be corrected.",
-            "shift_missing_clock_out": "This shift has no clock-out time."
+            "worker_has_open_shift": "This worker already has an open shift."
         }
     },
     "status": {

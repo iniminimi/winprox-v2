@@ -1338,7 +1338,7 @@
                 },
                 {
                     "label": "Correggi",
-                    "text": "Su un turno chiuso un admin può modificare orari di ingresso/uscita o minuti di pausa con motivo obbligatorio. Le modifiche vanno nel log di audit. Se manca la pausa team, usa <strong>Applica pausa minima</strong>."
+                    "text": "Su un turno chiuso un admin può modificare orari di ingresso/uscita o minuti di pausa con motivo obbligatorio. Lasciare l’uscita vuota riapre il turno (uscita per errore), salvo che quell’esecutore abbia già un altro turno aperto. Le modifiche vanno nel log di audit. Nessun IN/OUT CIAO extra. Se manca la pausa team, usa <strong>Applica pausa minima</strong>."
                 },
                 {
                     "label": "Chiudi turno",

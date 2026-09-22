@@ -1346,7 +1346,7 @@
                 },
                 {
                     "label": "Corriger",
-                    "text": "Sur un service clos, un admin peut modifier les heures d’entrée/sortie ou les minutes de pause avec un motif obligatoire. Les changements vont au journal d’audit. Si la pause d’équipe manque, utilisez <strong>Appliquer la pause minimale</strong>."
+                    "text": "Sur un service clos, un admin peut modifier les heures d’entrée/sortie ou les minutes de pause avec un motif obligatoire. Laisser la sortie vide rouvre le service (sortie par erreur), sauf si cet exécutant a déjà un autre service ouvert. Les changements vont au journal d’audit. Pas d’IN/OUT CIAO extra. Si la pause d’équipe manque, utilisez <strong>Appliquer la pause minimale</strong>."
                 },
                 {
                     "label": "Fermer le shift",
