@@ -626,6 +626,16 @@
             "title": "Voir comment WinProx fonctionne",
             "lead": "Un exécutant pointe via Clock Point, démarre la visite chez le client et traite les tâches sur smartphone. Pas d’app, pas de chaîne d’appels."
         },
+        "schedule": {
+            "title": "Un planning avec lequel l’équipe travaille vraiment",
+            "lead": "Le bureau planifie la semaine. Les exécutants voient leurs services sur le téléphone — et demandent eux-mêmes congé ou récup. L’approbation met le planning à jour. Pas d’Excel, pas de chaîne d’e-mails.",
+            "items": [
+                "Publier le planning: l’équipe voit tout de suite où et quand.",
+                "Demander congé et récup depuis Clock Point, sans intermédiaire.",
+                "Le bureau approuve ou refuse; le planning s’adapte automatiquement.",
+                "Planning et pointeuse restent séparés: le CIAO reste un vrai IN/OUT."
+            ]
+        },
         "problem": {
             "title": "Qui est où — et le travail est-il fait ?",
             "lead": "Les équipes passent de client en client. Sans un seul flux, on devine : quelqu’un est-il arrivé, quelles tâches sont ouvertes, la tournée est-elle faite ? WinProx en fait une chaîne, du pointage à la clôture.",
@@ -729,7 +739,7 @@
         },
         "visuals": {
             "hero": "Agent de nettoyage en polo WinProx consulte son smartphone dans un couloir de bureaux.",
-            "problem": "Agent de nettoyage suit le travail sur son téléphone dans un bureau.",
+            "problem": "Clock Point sur smartphone: où aller aujourd’hui, tâches ouvertes et démarrer la visite.",
             "steps": "Deux personnes à une table avec une carte QR au premier plan.",
             "places": "Vue aérienne d’un chantier avec grues et équipes en orange.",
             "roles": "Ouvrier en gilet orange consulte son smartphone sur le chantier.",

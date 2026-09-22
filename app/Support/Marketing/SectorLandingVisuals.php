@@ -190,10 +190,13 @@ final class SectorLandingVisuals
             ],
             PromoLanding::WorkOnLocation => [
                 'hero' => 'images/landing/work_on_location/image01.jpg',
-                'problem' => 'images/landing/work_on_location/image02.jpg',
+                'problem' => [
+                    'src' => 'images/landing/work_on_location/screenshot_cleaning.jpg',
+                    'modifier' => 'wp-landing-visual--match-copy',
+                ],
                 'steps' => [
-                    'src' => 'images/landing/general/welcome_02.jpg',
-                    'modifier' => 'wp-landing-visual--compact',
+                    'src' => 'images/landing/work_on_location/image02.jpg',
+                    'modifier' => 'wp-landing-visual--wide',
                 ],
                 'places' => [
                     'src' => 'images/landing/work_on_location/image04.jpg',

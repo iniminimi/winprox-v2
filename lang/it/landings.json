@@ -626,6 +626,16 @@
             "title": "Scopri come funziona WinProx",
             "lead": "Un esecutore timbra via Clock Point, avvia la visita dal cliente e chiude i compiti sullo smartphone. Niente app, niente catena di telefonate."
         },
+        "schedule": {
+            "title": "Un orario con cui la squadra lavora davvero",
+            "lead": "L’ufficio pianifica la settimana. Gli esecutori vedono i turni sul telefono — e chiedono ferie o recupero da soli. L’approvazione aggiorna l’orario. Niente Excel, niente catena di e-mail.",
+            "items": [
+                "Pubblicare l’orario: la squadra vede subito dove e quando.",
+                "Chiedere ferie e recupero da Clock Point, senza intermediari.",
+                "L’ufficio approva o rifiuta; l’orario si aggiorna automaticamente.",
+                "Pianificazione e timbratura restano separate: CIAO resta un vero IN/OUT."
+            ]
+        },
         "problem": {
             "title": "Chi è dove — e il lavoro è fatto?",
             "lead": "Le squadre passano da un cliente all’altro. Senza un flusso unico si indovina: è arrivato qualcuno, quali compiti sono aperti, il giro è fatto? WinProx ne fa una catena, dalla timbratura alla chiusura.",
@@ -729,7 +739,7 @@
         },
         "visuals": {
             "hero": "Addetta alle pulizie in polo WinProx guarda lo smartphone in un corridoio di uffici.",
-            "problem": "Addetta alle pulizie segue il lavoro sul telefono in un ufficio.",
+            "problem": "Clock Point sullo smartphone: dove andare oggi, attività aperte e avviare la visita di lavoro.",
             "steps": "Due persone a un tavolo con una scheda QR in primo piano.",
             "places": "Veduta aerea di un cantiere con gru e squadre in arancione.",
             "roles": "Operaio con gilet arancione guarda lo smartphone in cantiere.",

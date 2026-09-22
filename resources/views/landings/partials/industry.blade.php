@@ -11,6 +11,18 @@
     };
 @endphp
 
+@if (\Illuminate\Support\Facades\Lang::has($key.'.schedule.title'))
+    <article class="wp-card wp-card-pad wp-stack">
+        <h2 class="wp-welcome-h3">{{ __("{$key}.schedule.title") }}</h2>
+        <p class="wp-text-body">{{ __("{$key}.schedule.lead") }}</p>
+        <ul class="wp-welcome-checklist">
+            @foreach (__("{$key}.schedule.items") as $item)
+                <li>{{ $item }}</li>
+            @endforeach
+        </ul>
+    </article>
+@endif
+
 <div @class(['wp-welcome-split' => filled($visuals['problem'] ?? null)])>
     <article class="{{ $blockClass }}">
         <h2 class="wp-welcome-h3">{{ __("{$key}.problem.title") }}</h2>

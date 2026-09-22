@@ -1290,8 +1290,10 @@ en een sluitbanner met linkse scrim. Horeca gebruikt `images/landing/hospitality
 (compact, breed, tall) en een sluitbanner met scrim. Zorg gebruikt `images/landing/healthcare/`
 met selectie (compact, breed, tall, feature) en een sluitbanner met scrim. Overheid gebruikt
 `images/landing/gouvernment/` met selectie (compact, breed, tall) en een sluitbanner met scrim.
-Schoonmaak/bouw (`work-on-location`) gebruikt `images/landing/work_on_location/` (hero, probleem,
-plaatsen, rollen) plus `images/landing/general/` voor stappen, waarom en sluitbanner met scrim.
+Schoonmaak/bouw (`work-on-location`) gebruikt `images/landing/work_on_location/` (hero,
+`screenshot_cleaning.jpg` naast “Wie is waar”, `image02` links van de workflow-stappen,
+plaatsen, rollen) plus `images/landing/general/` voor waarom en sluitbanner met scrim.
+Vroeg op de pagina: blok uurrooster (publiceren, verlof/recup via Clock Point).
 Copy: Clock Point, GPS-werkbezoek, taken/unit checks; CIAO optioneel voor schoonmaak (aanvraag);
 bouw-CIAO voorbereid achter RSZ-scope, geen 100 %-compliance-claim. Dit blijft **geen**
 tenant-productsector.

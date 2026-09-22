@@ -626,6 +626,16 @@
             "title": "So funktioniert WinProx",
             "lead": "Ein Ausführender stempelt über Clock Point ein, startet den Besuch beim Kunden und erledigt Aufgaben am Smartphone. Keine App, keine Telefonkette."
         },
+        "schedule": {
+            "title": "Ein Dienstplan, mit dem die Crew wirklich arbeitet",
+            "lead": "Die Verwaltung plant die Woche. Ausführende sehen ihre Dienste auf dem Telefon — und beantragen Urlaub oder Zeitausgleich selbst. Freigabe aktualisiert den Plan. Kein Excel, keine Mailkette.",
+            "items": [
+                "Dienstplan veröffentlichen: die Crew sieht sofort wo und wann.",
+                "Urlaub und Zeitausgleich über Clock Point beantragen, ohne Umweg.",
+                "Die Verwaltung genehmigt oder lehnt ab; der Plan passt sich automatisch an.",
+                "Planung und Stempeluhr bleiben getrennt: CIAO bleibt echtes IN/OUT."
+            ]
+        },
         "problem": {
             "title": "Wer ist wo — und ist die Arbeit erledigt?",
             "lead": "Trupps fahren von Kunde zu Kunde. Ohne einen Ablauf bleibt es Raten: Ist jemand angekommen, welche Aufgaben sind offen, ist die Runde erledigt? WinProx macht daraus eine Kette vom Einstempeln bis zum Abschluss.",
@@ -729,7 +739,7 @@
         },
         "visuals": {
             "hero": "Reinigungskraft im WinProx-Polo schaut in einem Büroflur auf ihr Smartphone.",
-            "problem": "Reinigungskraft verfolgt die Arbeit am Telefon in einem Büro.",
+            "problem": "Clock Point auf dem Smartphone: wohin heute, offene Aufgaben und Arbeitsbesuch starten.",
             "steps": "Zwei Personen an einem Tisch mit einer QR-Karte im Vordergrund.",
             "places": "Luftbild einer Baustelle mit Kränen und Trupps in Orange.",
             "roles": "Bauarbeiter in oranger Weste schaut auf der Baustelle auf sein Smartphone.",

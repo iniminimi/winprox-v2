@@ -626,6 +626,16 @@
             "title": "See how WinProx works",
             "lead": "A worker clocks in via Clock Point, starts the visit at the customer site and completes tasks on a smartphone. No app, no phone chain."
         },
+        "schedule": {
+            "title": "A schedule the crew actually works with",
+            "lead": "The office plans the week. Workers see their shifts on the phone — and request leave or time off in lieu themselves. Approval updates the schedule. No spreadsheet, no email chain.",
+            "items": [
+                "Publish the schedule: the crew sees where and when right away.",
+                "Request leave and time off in lieu from Clock Point, without a middleman.",
+                "The office approves or rejects; the schedule updates automatically.",
+                "Planning and the time clock stay separate: CIAO remains real IN/OUT."
+            ]
+        },
         "problem": {
             "title": "Who is where — and is the work done?",
             "lead": "Crews move from customer to customer. Without one workflow it is guesswork: has anyone arrived, which tasks are open, was the round finished? WinProx makes that one chain from clock-in to completion.",
@@ -729,7 +739,7 @@
         },
         "visuals": {
             "hero": "Cleaning worker in a WinProx polo checks her smartphone in an office corridor.",
-            "problem": "Cleaning worker follows the work on her phone in an office.",
+            "problem": "Clock Point on a smartphone: where to go today, open tasks and start a work visit.",
             "steps": "Two people at a table with a QR code card in the foreground.",
             "places": "Aerial view of a construction site with cranes and crews in orange.",
             "roles": "Construction worker in an orange vest checks his smartphone on site.",

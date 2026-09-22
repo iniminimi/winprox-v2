@@ -626,6 +626,16 @@
             "title": "Zie hoe WinProx werkt",
             "lead": "Een uitvoerder klokt in via Clock Point, start het werkbezoek bij de klant en handelt taken af op de smartphone. Geen app, geen telefoonketen."
         },
+        "schedule": {
+            "title": "Uurrooster waarmee de ploeg zelf werkt",
+            "lead": "Beheer plant de week. Uitvoerders zien hun diensten op de telefoon — en vragen zelf verlof of recup aan. Goedkeuren schrijft het rooster bij. Geen Excel, geen mailketen.",
+            "items": [
+                "Uurrooster publiceren: de ploeg ziet meteen waar en wanneer.",
+                "Verlof en recup aanvragen vanaf Clock Point, zonder tussenpersoon.",
+                "Beheer keurt goed of weigert; het rooster past zich automatisch aan.",
+                "Planning en prikklok blijven gescheiden: CIAO blijft echte IN/OUT."
+            ]
+        },
         "problem": {
             "title": "Wie is waar — en is het werk gedaan?",
             "lead": "Ploegen rijden van klant naar klant. Zonder één workflow blijft het giswerk: is iemand aangekomen, welke taken staan open, is de ronde gedaan? Met WinProx wordt dat één keten van inklokken tot afhandeling.",
@@ -729,7 +739,7 @@
         },
         "visuals": {
             "hero": "Schoonmaakmedewerker met WinProx-polo bekijkt haar smartphone in een kantoorhal.",
-            "problem": "Schoonmaakmedewerker volgt het werk op haar telefoon in een kantoor.",
+            "problem": "Clock Point op de smartphone: waar naartoe vandaag, open taken en werkbezoek starten.",
             "steps": "Twee mensen aan een tafel met een QR-codekaart op de voorgrond.",
             "places": "Luchtbeeld van een bouwplaats met kranen en ploegen in oranje.",
             "roles": "Bouwvakker in oranje hesje bekijkt zijn smartphone op de werf.",

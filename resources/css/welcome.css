@@ -434,6 +434,37 @@
     height: auto;
 }
 
+@media (min-width: 64rem) {
+    [data-theme='standard'] .wp-welcome-split:has(.wp-landing-visual--match-copy) {
+        align-items: stretch;
+        grid-template-columns: minmax(0, 1.15fr) auto;
+        gap: 2rem;
+    }
+
+    [data-theme='standard'] .wp-landing-visual--match-copy {
+        height: 0;
+        min-height: 100%;
+        width: auto;
+        max-width: 17rem;
+        margin: 0;
+        align-self: stretch;
+    }
+
+    [data-theme='standard'] .wp-landing-visual--match-copy .wp-welcome-screenshot__img {
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: top center;
+        box-shadow: var(--wp-shadow-lg);
+    }
+}
+
+[data-theme='standard'] .wp-landing-visual--match-copy {
+    max-width: 18rem;
+    margin-inline: auto;
+}
+
 [data-theme='standard'] .wp-landing-visual--compact {
     max-width: 18rem;
     margin-inline: auto;

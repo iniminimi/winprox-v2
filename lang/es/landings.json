@@ -626,6 +626,16 @@
             "title": "Vea cómo funciona WinProx",
             "lead": "Un ejecutante ficha por Clock Point, inicia la visita en el cliente y completa tareas en el smartphone. Sin app, sin cadena de llamadas."
         },
+        "schedule": {
+            "title": "Un horario con el que el equipo realmente trabaja",
+            "lead": "La oficina planifica la semana. Los operarios ven sus turnos en el teléfono — y solicitan vacaciones o recuperación ellos mismos. La aprobación actualiza el horario. Sin Excel, sin cadena de correos.",
+            "items": [
+                "Publicar el horario: el equipo ve al momento dónde y cuándo.",
+                "Solicitar vacaciones y recuperación desde Clock Point, sin intermediario.",
+                "La oficina aprueba o rechaza; el horario se actualiza solo.",
+                "Planificación y fichaje siguen separados: CIAO sigue siendo un IN/OUT real."
+            ]
+        },
         "problem": {
             "title": "Quién está dónde — y ¿está hecho el trabajo?",
             "lead": "Las cuadrillas van de cliente en cliente. Sin un solo flujo es adivinar: ¿ha llegado alguien, qué tareas hay abiertas, se hizo la ronda? WinProx lo convierte en una cadena, del fichaje al cierre.",
@@ -729,7 +739,7 @@
         },
         "visuals": {
             "hero": "Trabajadora de limpieza con polo WinProx mira su smartphone en un pasillo de oficinas.",
-            "problem": "Trabajadora de limpieza sigue el trabajo en el teléfono en una oficina.",
+            "problem": "Clock Point en el smartphone: a dónde ir hoy, tareas abiertas e iniciar la visita de trabajo.",
             "steps": "Dos personas en una mesa con una tarjeta QR en primer plano.",
             "places": "Vista aérea de una obra con grúas y cuadrillas en naranja.",
             "roles": "Obrero con chaleco naranja mira su smartphone en la obra.",
