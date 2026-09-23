@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "What do you want to do?",
-                    "text": "At the top are shortcuts: view the roster, who works where today, new day task (inspection round), add a location and add a worker. You do not need to hunt through the menus."
+                    "text": "At the top are shortcuts: view the roster, who works where today, which tasks today, new day task (inspection round), add a location and add a worker. So you do not have to dig through the menus."
                 },
                 {
                     "label": "Overview",

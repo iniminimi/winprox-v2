@@ -121,6 +121,10 @@
                 "title": "Wer arbeitet heute wo?",
                 "body": "Sehen Sie, wer eingestempelt ist und wo das Team steht."
             },
+            "today_tasks": {
+                "title": "Welche Aufgaben heute?",
+                "body": "Sehen Sie, welche Aufgaben heute erledigt werden müssen."
+            },
             "day_task": {
                 "title": "Neue Tagesaufgabe",
                 "body": "Planen Sie eine Inspektionsrunde an Ihren Standorten."

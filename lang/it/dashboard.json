@@ -121,6 +121,10 @@
                 "title": "Chi lavora dove oggi?",
                 "body": "Vedi chi è timbrato e dove si trova la squadra."
             },
+            "today_tasks": {
+                "title": "Quali attività oggi?",
+                "body": "Vedi quali attività devono essere svolte oggi."
+            },
             "day_task": {
                 "title": "Nuova attività del giorno",
                 "body": "Pianifica un giro di ispezione nelle tue sedi."

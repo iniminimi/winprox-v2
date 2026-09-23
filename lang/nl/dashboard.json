@@ -121,6 +121,10 @@
                 "title": "Wie werkt waar vandaag?",
                 "body": "Zie wie ingeklokt is en waar het team staat."
             },
+            "today_tasks": {
+                "title": "Welke taken vandaag?",
+                "body": "Bekijk welke taken er vandaag moeten uitgevoerd worden."
+            },
             "day_task": {
                 "title": "Nieuwe dagtaak",
                 "body": "Plan een inspectieronde bij je locaties."

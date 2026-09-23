@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "Was möchten Sie tun?",
-                    "text": "Oben finden Sie Kurzbefehle: Dienstplan ansehen, wer arbeitet heute wo, neue Tagesaufgabe (Inspektionsrunde), Standort hinzufügen und Ausführenden hinzufügen. Sie müssen nicht in den Menüs suchen."
+                    "text": "Oben finden Sie Verknüpfungen: Dienstplan ansehen, wer arbeitet wo heute, welche Aufgaben heute, neue Tagesaufgabe (Inspektionsrunde), Standort hinzufügen und Ausführenden hinzufügen. So müssen Sie nicht in den Menüs suchen."
                 },
                 {
                     "label": "Übersicht",

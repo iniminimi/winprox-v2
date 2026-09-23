@@ -121,6 +121,10 @@
                 "title": "Qui travaille où aujourd'hui ?",
                 "body": "Voyez qui est pointé et où se trouve l'équipe."
             },
+            "today_tasks": {
+                "title": "Quelles tâches aujourd’hui ?",
+                "body": "Voir les tâches à exécuter aujourd’hui."
+            },
             "day_task": {
                 "title": "Nouvelle tâche du jour",
                 "body": "Planifiez une tournée d'inspection sur vos sites."

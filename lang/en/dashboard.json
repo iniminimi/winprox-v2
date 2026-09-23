@@ -121,6 +121,10 @@
                 "title": "Who works where today?",
                 "body": "See who is clocked in and where the team is."
             },
+            "today_tasks": {
+                "title": "Which tasks today?",
+                "body": "See which tasks need to be done today."
+            },
             "day_task": {
                 "title": "New day task",
                 "body": "Plan an inspection round at your locations."

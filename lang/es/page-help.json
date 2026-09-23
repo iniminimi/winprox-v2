@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "¿Qué quieres hacer?",
-                    "text": "Arriba hay atajos: ver el horario, quién trabaja dónde hoy, nueva tarea del día (ronda de inspección), añadir ubicación y añadir ejecutor. No hace falta buscar en los menús."
+                    "text": "Arriba hay atajos: ver el horario, quién trabaja dónde hoy, qué tareas hoy, nueva tarea del día (ronda de inspección), añadir ubicación y añadir ejecutor. Así no tienes que buscar en los menús."
                 },
                 {
                     "label": "Resumen",

@@ -121,6 +121,10 @@
                 "title": "¿Quién trabaja dónde hoy?",
                 "body": "Mira quién está fichado y dónde está el equipo."
             },
+            "today_tasks": {
+                "title": "¿Qué tareas hoy?",
+                "body": "Consulta qué tareas deben realizarse hoy."
+            },
             "day_task": {
                 "title": "Nueva tarea del día",
                 "body": "Planifica una ronda de inspección en tus ubicaciones."
