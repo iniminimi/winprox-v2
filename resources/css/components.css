@@ -6249,6 +6249,26 @@ a.wp-kpi.wp-kpi--attention {
     border-bottom: 1px solid color-mix(in srgb, var(--wp-border) 55%, transparent);
 }
 
+.wp-round-stop-picker__group-label--pick {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.8rem;
+    color: var(--wp-text, inherit);
+    cursor: pointer;
+    border-bottom: 0;
+}
+
+.wp-round-stop-picker__group-label--pick input[type='checkbox'] {
+    margin: 0;
+}
+
+.wp-round-stop-picker__group-label--route {
+    grid-template-columns: 1.1rem auto 1.5rem minmax(0, 1fr);
+    touch-action: none;
+}
+
 .wp-round-stop-picker__group-label--drag {
     cursor: grab;
     touch-action: none;
@@ -6282,10 +6302,6 @@ a.wp-kpi.wp-kpi--attention {
 .wp-round-stop-picker__row--stop {
     cursor: grab;
     touch-action: none;
-}
-
-.wp-round-stop-picker__row--site .wp-round-stop-picker__name {
-    font-weight: 600;
 }
 
 .wp-round-stop-picker__name {

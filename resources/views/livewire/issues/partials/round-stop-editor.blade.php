@@ -108,15 +108,13 @@
                             @if ($compact)
                                 @php $unit = $unselectedInLocation->first(); @endphp
                                 @if ($unit)
-                                    <label class="wp-round-stop-picker__row wp-round-stop-picker__row--site">
-                                        <span class="wp-round-stops__handle" aria-hidden="true"></span>
+                                    <label class="wp-round-stop-picker__group-label wp-round-stop-picker__group-label--pick">
                                         <input
                                             type="checkbox"
                                             value="{{ $unit->id }}"
                                             wire:click.prevent="toggleRoundStop({{ (int) $unit->id }})"
                                             data-round-stop
                                         >
-                                        <span class="wp-round-stops__index" aria-hidden="true"></span>
                                         <span class="wp-round-stop-picker__name">{{ $locationLabel[$locationId] }}</span>
                                     </label>
                                 @endif
@@ -190,7 +188,7 @@
                                     @endphp
                                     @if ($unit)
                                         <div
-                                            class="wp-round-stop-picker__row wp-round-stop-picker__row--stop wp-round-stop-picker__row--site"
+                                            class="wp-round-stop-picker__group-label wp-round-stop-picker__group-label--pick wp-round-stop-picker__group-label--route{{ $canDragLocation ? ' wp-round-stop-picker__group-label--drag' : '' }}"
                                             wire:key="{{ $pickerId }}-route-unit-{{ $unit->id }}"
                                             data-round-stop-index="{{ $index }}"
                                             data-round-stop-location="{{ $locationId }}"
@@ -206,8 +204,8 @@
                                                 @pointercancel="onPointerUp($event)"
                                             @endif
                                         >
-                                            <span class="wp-round-stops__handle" aria-hidden="true">
-                                                @if ($canDragLocation)
+                                            @if ($canDragLocation)
+                                                <span class="wp-round-stops__handle" aria-hidden="true">
                                                     <svg class="wp-round-stops__grip" viewBox="0 0 8 14" focusable="false">
                                                         <circle cx="2" cy="2" r="1.35"></circle>
                                                         <circle cx="6" cy="2" r="1.35"></circle>
@@ -216,8 +214,8 @@
                                                         <circle cx="2" cy="12" r="1.35"></circle>
                                                         <circle cx="6" cy="12" r="1.35"></circle>
                                                     </svg>
-                                                @endif
-                                            </span>
+                                                </span>
+                                            @endif
                                             <input
                                                 type="checkbox"
                                                 value="{{ $unit->id }}"
