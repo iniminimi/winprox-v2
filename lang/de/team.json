@@ -177,7 +177,7 @@
         "clear_clock_pin": "PIN zurücksetzen",
         "default_unit": "Stammgruppe (Dienstplan)",
         "default_unit_none": "Keine Stammgruppe",
-        "default_unit_hint": "Optional — nur für den Dienstplan. Wo sehen Sie das? Time → Dienstplan, nach Wahl eines Standorts: Ausführende stehen unter Gruppen (z. B. G1). Gruppen legen Sie an einer Unit an: Standorte → Unit bearbeiten → Dienstplancode. Wählen Sie hier die Gruppe dieser Person. Leer lassen, wenn Sie keine Gruppierung brauchen. Das plant keine Dienste; der Platz in einer Zelle (D1/G1) wird separat eingetragen.",
+        "default_unit_hint": "Optional. Wo sehen Sie das? Unter Time → Dienstplan, nach Standortfilter: Ausführende stehen unter Gruppen (z. B. G1). Gruppen legen Sie an einer Unit an (Standorte → Unit bearbeiten → Dienstplancode). Hier wählen Sie die Gruppe dieser Person. Leer lassen, wenn Sie keine Gruppierung brauchen. Das plant keine Dienste; der Platz in einer Zelle (D1/G1) wird separat eingetragen.",
         "is_external_hint": "Aktivieren, wenn diese Person für ein anderes Unternehmen arbeitet (Subunternehmer, Zeitarbeit, …). Dann können Sie einen Firmennamen eingeben; er erscheint als Ext-Badge."
     },
     "import_history": {
@@ -226,8 +226,8 @@
         "worker_photo_invalid": "Wählen Sie ein gültiges Bild (JPEG, PNG oder WebP).",
         "worker_photo_max": "Das Foto darf höchstens 2 MB groß sein.",
         "worker_ssin_invalid": "Geben Sie eine gültige 11-stellige NISS ein oder lassen Sie das Feld leer.",
-        "worker_default_unit_invalid": "Wählen Sie eine gültige Standardgruppe mit Dienstplancode oder lassen Sie das Feld leer.",
-        "worker_default_unit_location": "Die Standardgruppe muss an einem zugewiesenen Standort liegen."
+        "worker_default_unit_invalid": "Wählen Sie eine gültige Stammgruppe mit Dienstplancode, oder lassen Sie leer.",
+        "worker_default_unit_location": "Die Stammgruppe muss an einem zugewiesenen Standort liegen."
     },
     "workers_index": {
         "title": "Mitarbeiter",

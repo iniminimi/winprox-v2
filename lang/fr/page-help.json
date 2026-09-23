@@ -598,8 +598,8 @@
                     "text": "À la modification, choisissez un ou plusieurs sites. Vide = pointer partout (défaut pour les exécutants existants). Sur Clock Point, le nom n'apparaît que sur les sites assignés, sauf si l'équipe a **Peut pointer partout**."
                 },
                 {
-                    "label": "Groupe d’attache (planning)",
-                    "text": "Vous pouvez fixer un <strong>groupe d’attache</strong> sur l’exécutant (unité avec code planning). Dans Time → Planning, avec filtre site, cela groupe les lignes. La place dans une cellule (D1/G1) reste séparée."
+                    "label": "Groupe d’appartenance (planning)",
+                    "text": "Facultatif. Où le voir ? Sur <strong>Time → Planning</strong>, après un filtre de lieu : les intervenants sont listés sous des groupes (ex. G1). Ces groupes se créent sur une unité (<strong>Lieux → modifier l’unité → code planning</strong>). Ici vous choisissez le groupe de cette personne. Laissez vide si vous n’avez pas besoin de regroupement. Cela ne planifie pas les services ; la place dans une cellule (D1/G1) se remplit à part."
                 },
                 {
                     "label": "Exécutants externes",

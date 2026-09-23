@@ -591,7 +591,7 @@
                 },
                 {
                     "label": "Stammgruppe (Dienstplan)",
-                    "text": "Optional setzen Sie beim Ausführenden eine <strong>Stammgruppe</strong> (Unit mit Dienstplancode). Unter Time → Dienstplan gruppiert das bei Standortfilter die Zeilen. Die Stelle in einer Zelle (D1/G1) bleibt getrennt."
+                    "text": "Optional. Wo sehen Sie das? Unter <strong>Time → Dienstplan</strong>, nach Standortfilter: Ausführende stehen unter Gruppen (z. B. G1). Gruppen legen Sie an einer Unit an (<strong>Standorte → Unit bearbeiten → Dienstplancode</strong>). Hier wählen Sie die Gruppe dieser Person. Leer lassen, wenn Sie keine Gruppierung brauchen. Das plant keine Dienste; der Platz in einer Zelle (D1/G1) wird separat eingetragen."
                 },
                 {
                     "label": "Externe Ausführende",

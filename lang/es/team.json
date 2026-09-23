@@ -177,7 +177,7 @@
         "clear_clock_pin": "Restablecer PIN",
         "default_unit": "Grupo base (horario)",
         "default_unit_none": "Sin grupo base",
-        "default_unit_hint": "Opcional — solo para el horario. ¿Dónde se ve? Time → Horario, tras elegir una sede: los operarios aparecen bajo grupos (p. ej. G1). Esos grupos se crean en una unit: Ubicaciones → editar unit → código de cuadrante. Elija aquí el grupo de esta persona. Déjelo vacío si no necesita agrupar. No planifica turnos; el lugar en una celda (D1/G1) se rellena aparte.",
+        "default_unit_hint": "Opcional. ¿Dónde se ve? En Time → Horario, tras filtrar por sede: los operarios aparecen bajo grupos (p. ej. G1). Esos grupos se crean en una unit (Ubicaciones → editar unit → código de cuadrante). Aquí elige el grupo de esta persona. Déjelo vacío si no necesita agrupar. No planifica turnos; el lugar en una celda (D1/G1) se rellena aparte.",
         "is_external_hint": "Marque si esta persona trabaja para otra empresa (subcontratista, temporal, …). Entonces puede indicar un nombre de empresa; aparece como insignia Ext."
     },
     "import_history": {
@@ -226,8 +226,8 @@
         "worker_photo_invalid": "Elige una imagen válida (JPEG, PNG o WebP).",
         "worker_photo_max": "La foto puede ocupar como máximo 2 MB.",
         "worker_ssin_invalid": "Introduzca un NISS válido de 11 dígitos o déjelo vacío.",
-        "worker_default_unit_invalid": "Elija un grupo predeterminado válido con código de cuadrante, o déjelo vacío.",
-        "worker_default_unit_location": "El grupo predeterminado debe estar en una ubicación asignada."
+        "worker_default_unit_invalid": "Elija un grupo base válido con código de cuadrante, o déjelo vacío.",
+        "worker_default_unit_location": "El grupo base debe estar en una ubicación asignada."
     },
     "workers_index": {
         "title": "Ejecutores",

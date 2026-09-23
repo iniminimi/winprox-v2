@@ -590,8 +590,8 @@
                     "text": "Al editar, elija una o más sedes. Vacío = fichar en cualquier sitio (predeterminado para ejecutores existentes). En Clock Point el ejecutor solo ve su nombre en sedes asignadas, salvo que el equipo tenga **Puede fichar en cualquier sede**."
                 },
                 {
-                    "label": "Grupo base (cuadrante)",
-                    "text": "Opcionalmente elija un <strong>grupo base</strong> en el ejecutor (unidad con código de cuadrante). En Time → Cuadrante, con filtro de sede, agrupa las filas. La plaza en una celda (D1/G1) sigue aparte."
+                    "label": "Grupo base (horario)",
+                    "text": "Opcional. ¿Dónde se ve? En <strong>Time → Horario</strong>, tras filtrar por sede: los operarios aparecen bajo grupos (p. ej. G1). Esos grupos se crean en una unit (<strong>Ubicaciones → editar unit → código de cuadrante</strong>). Aquí elige el grupo de esta persona. Déjelo vacío si no necesita agrupar. No planifica turnos; el lugar en una celda (D1/G1) se rellena aparte."
                 },
                 {
                     "label": "Trabajadores externos",

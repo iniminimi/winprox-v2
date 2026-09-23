@@ -177,7 +177,7 @@
         "clear_clock_pin": "Réinitialiser le PIN",
         "default_unit": "Groupe d’appartenance (planning)",
         "default_unit_none": "Sans groupe",
-        "default_unit_hint": "Facultatif — uniquement pour le planning. Où le voir ? Time → Planning, après avoir choisi un lieu : les intervenants sont listés sous des groupes (ex. G1). Ces groupes se créent sur une unité : Lieux → modifier l’unité → code planning. Choisissez ici le groupe de cette personne. Laissez vide si vous n’avez pas besoin de regroupement. Cela ne planifie pas les services ; la place dans une cellule (D1/G1) se remplit à part.",
+        "default_unit_hint": "Facultatif. Où le voir ? Sur Time → Planning, après un filtre de lieu : les intervenants sont listés sous des groupes (ex. G1). Ces groupes se créent sur une unité (Lieux → modifier l’unité → code planning). Ici vous choisissez le groupe de cette personne. Laissez vide si vous n’avez pas besoin de regroupement. Cela ne planifie pas les services ; la place dans une cellule (D1/G1) se remplit à part.",
         "is_external_hint": "Cochez si cette personne travaille pour une autre société (sous-traitant, intérimaire, …). Vous pouvez alors saisir un nom d’entreprise ; il apparaît comme badge Ext."
     },
     "import_history": {
@@ -226,8 +226,8 @@
         "worker_photo_invalid": "Choisissez une image valide (JPEG, PNG ou WebP).",
         "worker_photo_max": "La photo peut faire au maximum 2 Mo.",
         "worker_ssin_invalid": "Indiquez un NISS valide de 11 chiffres ou laissez vide.",
-        "worker_default_unit_invalid": "Choisissez un groupe par défaut valide avec code planning, ou laissez vide.",
-        "worker_default_unit_location": "Le groupe par défaut doit appartenir à un site assigné."
+        "worker_default_unit_invalid": "Choisissez un groupe d’appartenance valide avec code planning, ou laissez vide.",
+        "worker_default_unit_location": "Le groupe d’appartenance doit être sur un lieu assigné."
     },
     "workers_index": {
         "title": "Exécutants",

@@ -177,7 +177,7 @@
         "clear_clock_pin": "Reset PIN",
         "default_unit": "Home group (schedule)",
         "default_unit_none": "No home group",
-        "default_unit_hint": "Optional — for the schedule only. Where do you see it? Time → Schedule, after you pick a location: workers are listed under groups (e.g. G1). You create those groups on a unit: Locations → edit unit → roster code. Choose here which group this person belongs to. Leave empty if you don’t need grouping. This does not plan shifts; the place in a cell (D1/G1) is filled in separately.",
+        "default_unit_hint": "Optional. Where do you see it? On Time → Schedule, after you filter by location: workers are listed under groups (e.g. G1). You create those groups on a unit (Locations → edit unit → roster code). Here you choose which group this person belongs to. Leave empty if you don’t need grouping. This does not plan shifts; the place in a cell (D1/G1) is filled in separately.",
         "is_external_hint": "Tick if this person works for another company (subcontractor, agency staff, …). You can then enter a company name; it shows as an Ext badge."
     },
     "import_history": {
