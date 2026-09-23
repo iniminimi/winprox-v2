@@ -944,9 +944,7 @@ a.wp-kpi:hover {
     text-overflow: unset;
     white-space: normal;
     padding-bottom: 0;
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 1.4;
+    line-height: 1.35;
 }
 
 .wp-kpi-icon {
