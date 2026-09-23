@@ -1089,6 +1089,66 @@ it('slaat een omgekeerde stopvolgorde op via de meldingsdetail', function () {
         ->toBe([(int) $unitB->id, (int) $unitA->id]);
 });
 
+it('shows split catalog and route panels in the round stop picker', function () {
+    ['tenant' => $tenant, 'actor' => $actor, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
+    seedTenantPastOnboarding($tenant);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->call('openRoundCreateModal')
+        ->assertSee(__('issues.create.round_stops_catalog'), false)
+        ->assertSee(__('issues.create.round_stops_route'), false)
+        ->assertSee(__('issues.create.round_stops_search_placeholder'), false)
+        ->call('toggleRoundStop', (int) $unitA->id)
+        ->assertSet('round_stop_unit_ids', [(int) $unitA->id])
+        ->assertSee(__('issues.create.round_stops_route'), false);
+});
+
+it('shows a compact location row for site-only locations in the round picker', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $actor = User::factory()->create(['tenant_id' => $tenant->id]);
+    seedTenantPastOnboarding($tenant);
+
+    $locationA = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'SiteCompactAlpha',
+        'is_active' => true,
+    ]);
+    $locationB = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'SiteCompactBeta',
+        'is_active' => true,
+    ]);
+    $unitA = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationA->id,
+        'name' => 'Hele locatie',
+        'is_site_unit' => true,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+    $unitB = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $locationB->id,
+        'name' => 'Hele locatie',
+        'is_site_unit' => true,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+
+    Livewire::actingAs($actor)
+        ->test(\App\Livewire\Issues\Index::class)
+        ->call('openRoundCreateModal')
+        ->assertSee('SiteCompactAlpha', false)
+        ->assertSee('SiteCompactBeta', false)
+        ->call('toggleRoundStop', (int) $unitA->id)
+        ->call('toggleRoundStop', (int) $unitB->id)
+        ->assertSet('round_stop_unit_ids', [(int) $unitA->id, (int) $unitB->id])
+        ->assertSee('SiteCompactAlpha', false)
+        ->assertSee('SiteCompactBeta', false);
+});
+
 it('rejects a single stop on the inspection round create modal', function () {
     ['tenant' => $tenant, 'actor' => $actor, 'team' => $team, 'unitA' => $unitA] = inspectionRoundScaffold();
     seedTenantPastOnboarding($tenant);

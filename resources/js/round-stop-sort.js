@@ -57,7 +57,7 @@ function registerAlpineComponent() {
                 }
                 return;
             }
-            const group = el?.closest('.wp-round-stop-picker__group[data-round-stop-location]');
+            const group = el?.closest('[data-round-stop-location]');
             if (!group) {
                 return;
             }

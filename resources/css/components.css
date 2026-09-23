@@ -6147,18 +6147,88 @@ a.wp-kpi.wp-kpi--attention {
     background: var(--wp-surface);
 }
 
+.wp-round-stop-picker__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem;
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-round-stop-picker__search {
+    position: relative;
+    flex: 1 1 12rem;
+    margin: 0;
+    min-width: 0;
+}
+
+.wp-round-stop-picker__search .wp-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .wp-round-stop-picker__select-all {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
     gap: 0.5rem;
     margin: 0;
-    padding: 0.45rem 0.55rem;
-    border-bottom: 1px solid var(--wp-border);
+    padding: 0;
 }
 
 .wp-round-stop-picker__select-all input[type='checkbox'] {
     margin: 0;
+}
+
+.wp-round-stop-picker__split {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 0;
+}
+
+@media (min-width: 56rem) {
+    .wp-round-stop-picker__split {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wp-round-stop-picker__catalog {
+        border-right: 1px solid var(--wp-border);
+    }
+}
+
+.wp-round-stop-picker__panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+}
+
+.wp-round-stop-picker__panel-title {
+    margin: 0;
+    padding: 0.45rem 0.55rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    border-bottom: 1px solid var(--wp-border);
+    background: color-mix(in srgb, var(--wp-surface) 88%, var(--wp-border));
+}
+
+.wp-round-stop-picker__body {
+    max-height: 22rem;
+    overflow: auto;
+}
+
+.wp-round-stop-picker__empty {
+    margin: 0;
+    padding: 0.75rem 0.55rem;
 }
 
 .wp-round-stop-picker__group:not(:last-child) {
@@ -6212,6 +6282,10 @@ a.wp-kpi.wp-kpi--attention {
 .wp-round-stop-picker__row--stop {
     cursor: grab;
     touch-action: none;
+}
+
+.wp-round-stop-picker__row--site .wp-round-stop-picker__name {
+    font-weight: 600;
 }
 
 .wp-round-stop-picker__name {
