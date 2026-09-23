@@ -1,0 +1,34 @@
+# Heavy / generated - keep Cursor indexing & search lean
+mysql-data/
+storage/playwright-browsers/
+storage/framework/views/
+storage/framework/cache/
+storage/framework/sessions/
+storage/logs/
+storage/pail/
+public/video/
+public/hot/
+public/storage/
+vendor/
+node_modules/
+scripts/capture-pkg/node_modules/
+
+# Build & caches
+public/build/
+.phpunit.cache/
+bootstrap/cache/*.php
+
+# Large / binary noise
+*.mp4
+*.webm
+*.dll
+*.exe
+*.ibd
+*.pem
+*.zip
+
+# Local marketing dumps
+*-bedrijven*.csv
+*-bedrijven*.json
+*-bedrijven*.xlsx
+*-bedrijven*.xlsm
