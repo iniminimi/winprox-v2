@@ -139,6 +139,37 @@
             </div>
         @endif
 
+        @if ($intentHub !== null)
+            <section class="wp-intent-hub" aria-labelledby="dashboard-intent-heading">
+                <div class="wp-intent-tile wp-intent-tile--static wp-intent-tile--green" role="group" aria-labelledby="dashboard-intent-heading">
+                    <span class="wp-intent-tile__icon" aria-hidden="true">
+                        <x-wp-icon name="team" />
+                    </span>
+                    <span class="wp-intent-tile__copy">
+                        <span class="wp-intent-tile__title" id="dashboard-intent-heading">{{ $intentHub->greeting }}</span>
+                        <span class="wp-intent-tile__body">{{ __('dashboard.intent.title') }}</span>
+                    </span>
+                </div>
+                @if (! $intentHub->isEmpty())
+                    <div class="wp-intent-hub__grid">
+                        @foreach ($intentHub->tiles as $tile)
+                            <a href="{{ $tile['href'] }}"
+                               class="wp-intent-tile wp-intent-tile--{{ $tile['tone'] }}"
+                               wire:key="intent-{{ $tile['key'] }}">
+                                <span class="wp-intent-tile__icon" aria-hidden="true">
+                                    <x-wp-icon :name="$tile['icon']" />
+                                </span>
+                                <span class="wp-intent-tile__copy">
+                                    <span class="wp-intent-tile__title">{{ __($tile['title']) }}</span>
+                                    <span class="wp-intent-tile__body">{{ __($tile['body']) }}</span>
+                                </span>
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
+            </section>
+        @endif
+
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
@@ -158,30 +189,6 @@
                 <a href="{{ route('briefing.print') }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('dashboard.briefing_print') }}</a>
             </div>
         </div>
-
-        @if ($intentHub !== null && ! $intentHub->isEmpty())
-            <section class="wp-intent-hub" aria-labelledby="dashboard-intent-heading">
-                <div class="wp-intent-hub__intro">
-                    <p class="wp-intent-hub__greeting">{{ $intentHub->greeting }}</p>
-                    <h2 id="dashboard-intent-heading" class="wp-intent-hub__title">{{ __('dashboard.intent.title') }}</h2>
-                </div>
-                <div class="wp-intent-hub__grid">
-                    @foreach ($intentHub->tiles as $tile)
-                        <a href="{{ $tile['href'] }}"
-                           class="wp-intent-tile wp-intent-tile--{{ $tile['tone'] }}"
-                           wire:key="intent-{{ $tile['key'] }}">
-                            <span class="wp-intent-tile__icon" aria-hidden="true">
-                                <x-wp-icon :name="$tile['icon']" />
-                            </span>
-                            <span class="wp-intent-tile__copy">
-                                <span class="wp-intent-tile__title">{{ __($tile['title']) }}</span>
-                                <span class="wp-intent-tile__body">{{ __($tile['body']) }}</span>
-                            </span>
-                        </a>
-                    @endforeach
-                </div>
-            </section>
-        @endif
 
         @php
             $kpiLinks = [
@@ -204,19 +211,6 @@
                    @class(['wp-kpi', 'wp-kpi--'.$kpi['key'], 'wp-kpi--alert' => $kpi['alert'], 'wp-kpi--has-assistant' => $kpi['key'] === 'time_attention'])
                    wire:key="kpi-{{ $kpi['key'] }}">
                     <div class="wp-kpi-body">
-                        <div class="wp-kpi-main">
-                            <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
-                            <p class="wp-kpi-stats">
-                                @if ($kpi['key'] === 'pending_absence')
-                                    <span class="wp-kpi-value wp-kpi-value--phrase">{{ $stats->pendingAbsenceLabel() }}</span>
-                                @else
-                                    <span class="wp-kpi-value wp-tabular">{{ $stats->valueFor($kpi['key']) }}</span>
-                                    @if ($kpi['meta'])
-                                        <span class="wp-kpi-meta">{{ __($kpi['meta']) }}</span>
-                                    @endif
-                                @endif
-                            </p>
-                        </div>
                         <span class="wp-kpi-icon" aria-hidden="true">
                             @if ($kpi['key'] === 'time_attention')
                                 <video
@@ -239,6 +233,19 @@
                                 <x-wp-icon :name="$kpi['icon']" />
                             @endif
                         </span>
+                        <div class="wp-kpi-main">
+                            <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
+                            <p class="wp-kpi-stats">
+                                @if ($kpi['key'] === 'pending_absence')
+                                    <span class="wp-kpi-value wp-kpi-value--phrase">{{ $stats->pendingAbsenceLabel() }}</span>
+                                @else
+                                    <span class="wp-kpi-value wp-tabular">{{ $stats->valueFor($kpi['key']) }}</span>
+                                    @if ($kpi['meta'])
+                                        <span class="wp-kpi-meta">{{ __($kpi['meta']) }}</span>
+                                    @endif
+                                @endif
+                            </p>
+                        </div>
                     </div>
                 </a>
             @endforeach
