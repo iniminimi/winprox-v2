@@ -228,10 +228,11 @@
                                     class="btn btn--primary btn--block"
                                     wire:click="activatePlan('{{ $planKey }}')"
                                     wire:loading.attr="disabled"
+                                    wire:target="activatePlan('{{ $planKey }}')"
                                 >
-                                    <x-wp-spinner wire:loading class="wp-mr-2" />
-                                    <span wire:loading.remove>{{ __('subscription.choose_plan') }}</span>
-                                    <span wire:loading>{{ __('subscription.choose_plan_loading') }}</span>
+                                    <x-wp-spinner wire:loading wire:target="activatePlan('{{ $planKey }}')" class="wp-mr-2" />
+                                    <span wire:loading.remove wire:target="activatePlan('{{ $planKey }}')">{{ __('subscription.choose_plan') }}</span>
+                                    <span wire:loading wire:target="activatePlan('{{ $planKey }}')">{{ __('subscription.choose_plan_loading') }}</span>
                                 </button>
                             @else
                                 <a

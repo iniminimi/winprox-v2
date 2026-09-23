@@ -101,7 +101,7 @@ class Subscription extends Component
             return;
         }
 
-        $this->redirect($url);
+        $this->redirect($url, navigate: false);
     }
 
     public function activatePlan(string $plan, ActivateSubscriptionPlanAction $activate): void

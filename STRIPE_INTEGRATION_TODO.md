@@ -26,7 +26,7 @@ Wel moet je op de **server** de Price IDs en secrets invullen.
 | `line_items[].price` | `config('stripe.price_ids.{plan}')` | Zet in server-`.env`: `STRIPE_PRICE_WINPROX_5` / `_10` / `_25` / `_50` = echte `price_…` uit [Dashboard → Prices](https://dashboard.stripe.com/prices) (test, later live). |
 | `STRIPE_SECRET` | (server) | `sk_test_…` of `sk_live_…` — projectnaam is **`STRIPE_SECRET`** (niet `STRIPE_SECRET_KEY`). |
 | `STRIPE_WEBHOOK_SECRET` | (server) | `whsec_…` van het webhook-endpoint. |
-| `ui_mode` | `hosted_page` | Geen Stripe PHP SDK in de repo; REST gebruikt hier `hosted_page` volgens Checkout Studio. Als de API een fout geeft, probeer `hosted`. |
+| `ui_mode` | `hosted` | Standaard Hosted Checkout (REST). Studio’s `hosted_page` is SDK-specifiek. |
 
 ---
 
@@ -37,7 +37,7 @@ Checkout Studio (`fixed_by_ui`) gezet in
 
 | Parameter | Value |
 |-----------|-------|
-| `ui_mode` | `hosted_page` |
+| `ui_mode` | `hosted` |
 | `billing_address_collection` | `auto` |
 | `phone_number_collection.enabled` | `true` |
 | `automatic_tax.enabled` | `false` |
