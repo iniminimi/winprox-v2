@@ -67,8 +67,9 @@
             },
             {
                 "title": "Dashboard",
-                "body": "Het startscherm toont wat er openstaat. Klik een kaart om naar die lijst te gaan.",
+                "body": "Het startscherm begint met Wat wil je doen? Daaronder zie je wat er openstaat. Klik een kaart om naar die lijst te gaan.",
                 "items": [
+                    "Snelkoppelingen: uurrooster, aanwezigheid, nieuwe dagtaak (inspectieronde), locatie en uitvoerder.",
                     "Locaties, units, nieuwe meldingen en open taken.",
                     "Met Time: wie er nu aanwezig is.",
                     "Open verlof of recup als extra kaart: 1 Verlof, 1 Recup, of beide.",

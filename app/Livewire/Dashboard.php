@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
+use App\Actions\Dashboard\BuildDashboardIntentHubAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Actions\Onboarding\ApplyTenantStarterPackAction;
@@ -136,6 +137,7 @@ class Dashboard extends Component
         RealignSubscriptionPeriodAction $realign,
         ApplyPlanEntitlementsAction $applyEntitlements,
         BuildDashboardStatsAction $buildStats,
+        BuildDashboardIntentHubAction $buildIntentHub,
         ListDashboardRecentIssuesAction $listRecentIssues,
     ) {
         $tenant = $this->resolveTenant();
@@ -181,10 +183,14 @@ class Dashboard extends Component
         $starterPackSummary = $tenant !== null && $tenant->shouldShowStarterPackResultCard()
             ? TenantStarterPackSummary::for($tenant)
             : null;
+        $intentHub = $tenant !== null && $user instanceof User
+            ? $buildIntentHub->handle($tenant, $user)
+            : null;
 
         return view('livewire.dashboard', [
             'stats' => $stats,
             'recent' => $recent,
+            'intentHub' => $intentHub,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'onboarding' => $onboarding,
             'hasTimeModule' => $hasTimeModule,

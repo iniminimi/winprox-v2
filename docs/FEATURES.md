@@ -42,6 +42,17 @@ Een starttemplate toont de keuze in preview en op
 
 **Doel:** eerste scherm na login; overzicht van locaties, units, meldingen en taken.
 
+**Intent-hub (“Wat wil je doen?”)** — bovenaan, vóór de KPI’s:
+- Begroeting op dagdeel + voornaam (Goedemorgen / -middag / -avond).
+- Universele snelkoppelingen (geen sector-fork; later eventueel finetunen per starttemplate):
+  - **Uurrooster bekijken** → Time → Planning (alleen met Time-module)
+  - **Wie werkt waar vandaag?** → Time → Aanwezigheid (alleen met Time-module)
+  - **Nieuwe dagtaak** → Inspectierondes-planmodal (`round_create`)
+  - **Locatie toevoegen** → Locaties + create-modal
+  - **Uitvoerder toevoegen** → Personen → Teams + worker-modal
+- Tegels volgen rechten/werkmenu; icoontinten via bestaande tokens (geen regenboogvlakken).
+- KPI’s, recente meldingen, briefing en starttemplate blijven eronder / ernaast beschikbaar.
+
 **Starttemplate (optioneel, nieuwe organisaties)**
 - Op het dashboard zolang er nog geen teams/categorieën/units zijn: **welkomkaart** met drie keuzes (eigen locaties, locaties van klanten, voertuigen en fleet). Bij **op locaties van klanten** ook de **grootte** (1–5 / 6–20 / 21+). Preview van teams, categorieën, locatie en units. Knop **Voorbeeldomgeving maken**, of **Liever zelf beginnen**. Een bestaande locatie zonder units wordt bij het laden van het template vervangen.
 - Na aanmaken: kaart **Je omgeving is klaar** met een korte uitleg, knop **Bekijk mijn omgeving** en optioneel **Verwijder starttemplate**. De kaart verdwijnt automatisch na 7 dagen (of eerder via **Sluiten**).

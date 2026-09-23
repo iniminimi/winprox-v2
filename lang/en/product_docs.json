@@ -67,12 +67,13 @@
             },
             {
                 "title": "Dashboard",
-                "body": "The home screen shows what is still open. Click a card to open that list.",
+                "body": "The home screen starts with What do you want to do? Below that you see what is open. Click a card to open that list.",
                 "items": [
+                    "Shortcuts: roster, presence, new day task (inspection round), location and worker.",
                     "Locations, units, new issues and open tasks.",
                     "With Time: who is present now.",
-                    "Pending leave or TOIL as an extra card: 1 Leave, 1 TOIL, or both.",
-                    "New organisations can pick a starter template here.",
+                    "Open leave or TOIL as an extra card: 1 Leave, 1 TOIL, or both.",
+                    "New organisations can choose a starter template here.",
                     "Briefing and reports are available from the dashboard."
                 ]
             },

@@ -159,6 +159,30 @@
             </div>
         </div>
 
+        @if ($intentHub !== null && ! $intentHub->isEmpty())
+            <section class="wp-intent-hub" aria-labelledby="dashboard-intent-heading">
+                <div class="wp-intent-hub__intro">
+                    <p class="wp-intent-hub__greeting">{{ $intentHub->greeting }}</p>
+                    <h2 id="dashboard-intent-heading" class="wp-intent-hub__title">{{ __('dashboard.intent.title') }}</h2>
+                </div>
+                <div class="wp-intent-hub__grid">
+                    @foreach ($intentHub->tiles as $tile)
+                        <a href="{{ $tile['href'] }}"
+                           class="wp-intent-tile wp-intent-tile--{{ $tile['tone'] }}"
+                           wire:key="intent-{{ $tile['key'] }}">
+                            <span class="wp-intent-tile__icon" aria-hidden="true">
+                                <x-wp-icon :name="$tile['icon']" />
+                            </span>
+                            <span class="wp-intent-tile__copy">
+                                <span class="wp-intent-tile__title">{{ __($tile['title']) }}</span>
+                                <span class="wp-intent-tile__body">{{ __($tile['body']) }}</span>
+                            </span>
+                        </a>
+                    @endforeach
+                </div>
+            </section>
+        @endif
+
         @php
             $kpiLinks = [
                 'locations' => route('locations.index'),

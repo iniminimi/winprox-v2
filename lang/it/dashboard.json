@@ -106,5 +106,36 @@
         "result_body": "Abbiamo preparato un piccolo ambiente di esempio. Guardati intorno e prova a creare una segnalazione.",
         "result_own_later": "Vuoi iniziare subito con il tuo ambiente? Puoi sempre aggiungere sedi, team e unit più tardi.",
         "self_start": "Inizia da solo"
+    },
+    "intent": {
+        "title": "Cosa vuoi fare?",
+        "fallback_name": "là",
+        "greeting": {
+            "morning": "Buongiorno, :name",
+            "afternoon": "Buon pomeriggio, :name",
+            "evening": "Buonasera, :name"
+        },
+        "tiles": {
+            "roster": {
+                "title": "Vedi il turno",
+                "body": "Consulta e pianifica chi lavora quando."
+            },
+            "presence": {
+                "title": "Chi lavora dove oggi?",
+                "body": "Vedi chi è timbrato e dove si trova la squadra."
+            },
+            "day_task": {
+                "title": "Nuova attività del giorno",
+                "body": "Pianifica un giro di ispezione nelle tue sedi."
+            },
+            "location": {
+                "title": "Aggiungi sede",
+                "body": "Aggiungi un indirizzo o una sede cliente."
+            },
+            "worker": {
+                "title": "Aggiungi esecutore",
+                "body": "Aggiungi qualcuno che esegue attività tramite Clock Point."
+            }
+        }
     }
 }

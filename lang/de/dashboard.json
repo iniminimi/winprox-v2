@@ -106,5 +106,36 @@
         "result_body": "Wir haben eine kleine Beispielumgebung für Sie angelegt. Schauen Sie sich um und versuchen Sie, selbst eine Meldung zu erstellen.",
         "result_own_later": "Möchten Sie gleich mit Ihrer eigenen Umgebung starten? Standorte, Teams und Units können Sie später jederzeit hinzufügen.",
         "self_start": "Lieber selbst starten"
+    },
+    "intent": {
+        "title": "Was möchten Sie tun?",
+        "fallback_name": "dort",
+        "greeting": {
+            "morning": "Guten Morgen, :name",
+            "afternoon": "Guten Tag, :name",
+            "evening": "Guten Abend, :name"
+        },
+        "tiles": {
+            "roster": {
+                "title": "Dienstplan ansehen",
+                "body": "Sehen und planen, wer wann arbeitet."
+            },
+            "presence": {
+                "title": "Wer arbeitet heute wo?",
+                "body": "Sehen Sie, wer eingestempelt ist und wo das Team steht."
+            },
+            "day_task": {
+                "title": "Neue Tagesaufgabe",
+                "body": "Planen Sie eine Inspektionsrunde an Ihren Standorten."
+            },
+            "location": {
+                "title": "Standort hinzufügen",
+                "body": "Fügen Sie eine Adresse oder einen Kundenstandort hinzu."
+            },
+            "worker": {
+                "title": "Ausführenden hinzufügen",
+                "body": "Fügen Sie jemanden hinzu, der Aufgaben über Clock Point ausführt."
+            }
+        }
     }
 }

@@ -67,11 +67,12 @@
             },
             {
                 "title": "Panel",
-                "body": "La pantalla de inicio muestra lo que sigue abierto. Pulse una tarjeta para ir a esa lista.",
+                "body": "La pantalla de inicio empieza con ¿Qué quieres hacer? Debajo ves lo que está abierto. Haz clic en una tarjeta para abrir esa lista.",
                 "items": [
-                    "Sedes, unidades, avisos nuevos y tareas abiertas.",
+                    "Atajos: horario, presencia, nueva tarea del día (ronda de inspección), ubicación y ejecutor.",
+                    "Ubicaciones, unidades, nuevas incidencias y tareas abiertas.",
                     "Con Time: quién está presente ahora.",
-                    "Permiso o compensación pendientes como tarjeta extra: 1 Permiso, 1 Compensación, o ambos.",
+                    "Vacaciones o TOIL abiertos como tarjeta extra: 1 Vacaciones, 1 TOIL, o ambos.",
                     "Las organizaciones nuevas pueden elegir aquí una plantilla inicial.",
                     "El briefing y los informes están disponibles desde el panel."
                 ]

@@ -139,6 +139,10 @@ class Index extends Component
         if (! in_array($this->section, ['categories', 'locations'], true)) {
             $this->section = 'locations';
         }
+
+        if ((int) request()->query('create', 0) === 1 && $this->section === 'locations') {
+            $this->openCreate();
+        }
     }
 
     public function isCategoriesSection(): bool

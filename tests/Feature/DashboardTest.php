@@ -302,3 +302,65 @@ it('verbergt IoT-KPI zonder IoT-module ook bij open IoT-meldingen', function () 
         ->test(Dashboard::class)
         ->assertDontSee(__('dashboard.kpi.iot_alarms'));
 });
+
+it('toont de intent-hub boven de KPI’s met begroeting en snelkoppelingen', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'work_menu_inspection_rounds_enabled' => true,
+    ]);
+    $user = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Anna Peeters',
+    ]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.intent.title'))
+        ->assertSee('Anna')
+        ->assertSee(__('dashboard.intent.tiles.roster.title'))
+        ->assertSee(__('dashboard.intent.tiles.presence.title'))
+        ->assertSee(__('dashboard.intent.tiles.day_task.title'))
+        ->assertSee(__('dashboard.intent.tiles.location.title'))
+        ->assertSee(__('dashboard.intent.tiles.worker.title'))
+        ->assertSeeHtml('wp-intent-hub')
+        ->assertSee(__('dashboard.kpi.locations'));
+});
+
+it('verbergt Time-tegels in de intent-hub zonder Time-module', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => false,
+        'work_menu_inspection_rounds_enabled' => true,
+        'trial_ends_at' => null,
+    ]);
+    $user = User::factory()->create([
+        'tenant_id' => $tenant->id,
+    ]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    // Voorkom dat trial-entitlements Time alsnog aanzetten tijdens render.
+    $tenant->forceFill(['has_time_module' => false])->save();
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.intent.title'))
+        ->assertDontSee(__('dashboard.intent.tiles.roster.title'))
+        ->assertDontSee(__('dashboard.intent.tiles.presence.title'))
+        ->assertSee(__('dashboard.intent.tiles.day_task.title'));
+});

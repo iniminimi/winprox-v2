@@ -67,13 +67,14 @@
             },
             {
                 "title": "Tableau de bord",
-                "body": "L’écran d’accueil montre ce qui reste ouvert. Cliquez une carte pour ouvrir la liste.",
+                "body": "L'écran d'accueil commence par Que voulez-vous faire ? En dessous, vous voyez ce qui est ouvert. Cliquez une carte pour ouvrir la liste.",
                 "items": [
+                    "Raccourcis : planning, présence, nouvelle tâche du jour (tournée d'inspection), site et exécutant.",
                     "Sites, unités, nouveaux signalements et tâches ouvertes.",
                     "Avec Time : qui est présent maintenant.",
-                    "Congé ou récup ouverts comme carte extra : 1 Congé, 1 Récup, ou les deux.",
+                    "Congé ou recup ouvert en carte extra : 1 Congé, 1 Recup, ou les deux.",
                     "Les nouvelles organisations peuvent choisir un modèle de départ ici.",
-                    "Briefing et rapports sont accessibles depuis le tableau de bord."
+                    "Le briefing et les rapports sont accessibles depuis le tableau de bord."
                 ]
             },
             {

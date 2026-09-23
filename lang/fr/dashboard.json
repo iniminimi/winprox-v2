@@ -106,5 +106,36 @@
         "result_body": "Nous avons préparé un petit environnement d’exemple. Explorez-le et essayez de créer un signalement.",
         "result_own_later": "Vous préférez commencer tout de suite avec votre propre environnement ? Vous pourrez toujours ajouter des lieux, équipes et units plus tard.",
         "self_start": "Commencer seul"
+    },
+    "intent": {
+        "title": "Que voulez-vous faire ?",
+        "fallback_name": "vous",
+        "greeting": {
+            "morning": "Bonjour, :name",
+            "afternoon": "Bon après-midi, :name",
+            "evening": "Bonsoir, :name"
+        },
+        "tiles": {
+            "roster": {
+                "title": "Voir le planning",
+                "body": "Consultez et planifiez qui travaille quand."
+            },
+            "presence": {
+                "title": "Qui travaille où aujourd'hui ?",
+                "body": "Voyez qui est pointé et où se trouve l'équipe."
+            },
+            "day_task": {
+                "title": "Nouvelle tâche du jour",
+                "body": "Planifiez une tournée d'inspection sur vos sites."
+            },
+            "location": {
+                "title": "Ajouter un site",
+                "body": "Ajoutez une adresse ou un site client."
+            },
+            "worker": {
+                "title": "Ajouter un exécutant",
+                "body": "Ajoutez quelqu'un qui exécute des tâches via Clock Point."
+            }
+        }
     }
 }

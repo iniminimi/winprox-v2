@@ -106,5 +106,36 @@
         "result_body": "We have set up a small sample environment for you. Look around and try creating an issue yourself.",
         "result_own_later": "Want to start with your own setup right away? You can always add locations, teams and units later.",
         "self_start": "Start on my own"
+    },
+    "intent": {
+        "title": "What do you want to do?",
+        "fallback_name": "there",
+        "greeting": {
+            "morning": "Good morning, :name",
+            "afternoon": "Good afternoon, :name",
+            "evening": "Good evening, :name"
+        },
+        "tiles": {
+            "roster": {
+                "title": "View the roster",
+                "body": "See and plan who works when."
+            },
+            "presence": {
+                "title": "Who works where today?",
+                "body": "See who is clocked in and where the team is."
+            },
+            "day_task": {
+                "title": "New day task",
+                "body": "Plan an inspection round at your locations."
+            },
+            "location": {
+                "title": "Add a location",
+                "body": "Add an address or customer site."
+            },
+            "worker": {
+                "title": "Add a worker",
+                "body": "Add someone who carries out tasks via Clock Point."
+            }
+        }
     }
 }

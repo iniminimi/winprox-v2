@@ -67,13 +67,14 @@
             },
             {
                 "title": "Dashboard",
-                "body": "La schermata iniziale mostra cosa è ancora aperto. Clicca una scheda per aprire l’elenco.",
+                "body": "La schermata iniziale inizia con Cosa vuoi fare? Sotto vedi cosa è aperto. Clicca una scheda per aprire quell'elenco.",
                 "items": [
-                    "Sedi, unità, nuove segnalazioni e compiti aperti.",
+                    "Scorciatoie: turno, presenza, nuova attività del giorno (giro di ispezione), sede ed esecutore.",
+                    "Sedi, unità, nuove segnalazioni e attività aperte.",
                     "Con Time: chi è presente ora.",
-                    "Ferie o recupero aperti come scheda extra: 1 Ferie, 1 Recupero, o entrambi.",
+                    "Ferie o TOIL aperti come scheda extra: 1 Ferie, 1 TOIL, o entrambi.",
                     "Le nuove organizzazioni possono scegliere qui un modello iniziale.",
-                    "Briefing e rapporti sono raggiungibili dalla dashboard."
+                    "Briefing e report sono raggiungibili dal cruscotto."
                 ]
             },
             {

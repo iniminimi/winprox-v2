@@ -106,5 +106,36 @@
         "result_body": "We hebben een kleine voorbeeldomgeving voor je klaargezet. Kijk rustig rond en probeer zelf een melding te maken.",
         "result_own_later": "Wil je meteen met je eigen omgeving beginnen? Je kunt later altijd locaties, teams en units toevoegen.",
         "self_start": "Liever zelf beginnen"
+    },
+    "intent": {
+        "title": "Wat wil je doen?",
+        "fallback_name": "daar",
+        "greeting": {
+            "morning": "Goedemorgen, :name",
+            "afternoon": "Goedemiddag, :name",
+            "evening": "Goedenavond, :name"
+        },
+        "tiles": {
+            "roster": {
+                "title": "Uurrooster bekijken",
+                "body": "Bekijk en plan wie wanneer werkt."
+            },
+            "presence": {
+                "title": "Wie werkt waar vandaag?",
+                "body": "Zie wie ingeklokt is en waar het team staat."
+            },
+            "day_task": {
+                "title": "Nieuwe dagtaak",
+                "body": "Plan een inspectieronde bij je locaties."
+            },
+            "location": {
+                "title": "Locatie toevoegen",
+                "body": "Voeg een adres of klantlocatie toe."
+            },
+            "worker": {
+                "title": "Uitvoerder toevoegen",
+                "body": "Voeg iemand toe die taken uitvoert via Clock Point."
+            }
+        }
     }
 }

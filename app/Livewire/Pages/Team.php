@@ -115,6 +115,9 @@ class Team extends Component
     #[Url(as: 'section')]
     public ?string $section = null;
 
+    #[Url(as: 'create_worker')]
+    public bool $openCreateWorker = false;
+
     public string $workerFirstName = '';
     public string $workerLastName = '';
     public string $workerEmail = '';
@@ -171,6 +174,21 @@ class Team extends Component
 
         if ($this->section === 'backoffice' && ! (auth()->user()?->can('create', User::class) ?? false)) {
             $this->section = 'teams';
+        }
+
+        if ($this->openCreateWorker) {
+            $this->openCreateWorker = false;
+            $this->section = 'teams';
+
+            $team = InternalTeam::query()
+                ->where('is_active', true)
+                ->orderBy('sort_order')
+                ->orderBy('name')
+                ->first();
+
+            if ($team !== null && (auth()->user()?->can('update', $team) ?? false)) {
+                $this->openAddWorker((int) $team->id);
+            }
         }
     }
 

@@ -106,5 +106,36 @@
         "result_body": "Hemos preparado un entorno de ejemplo pequeño. Mira alrededor e intenta crear una incidencia.",
         "result_own_later": "¿Quieres empezar ya con tu propio entorno? Siempre puedes añadir ubicaciones, equipos y units más adelante.",
         "self_start": "Empezar por mi cuenta"
+    },
+    "intent": {
+        "title": "¿Qué quieres hacer?",
+        "fallback_name": "ahí",
+        "greeting": {
+            "morning": "Buenos días, :name",
+            "afternoon": "Buenas tardes, :name",
+            "evening": "Buenas noches, :name"
+        },
+        "tiles": {
+            "roster": {
+                "title": "Ver el horario",
+                "body": "Consulta y planifica quién trabaja cuándo."
+            },
+            "presence": {
+                "title": "¿Quién trabaja dónde hoy?",
+                "body": "Mira quién está fichado y dónde está el equipo."
+            },
+            "day_task": {
+                "title": "Nueva tarea del día",
+                "body": "Planifica una ronda de inspección en tus ubicaciones."
+            },
+            "location": {
+                "title": "Añadir ubicación",
+                "body": "Añade una dirección o sede de cliente."
+            },
+            "worker": {
+                "title": "Añadir ejecutor",
+                "body": "Añade a alguien que realiza tareas vía Clock Point."
+            }
+        }
     }
 }
