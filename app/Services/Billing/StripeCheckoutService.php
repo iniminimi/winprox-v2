@@ -36,8 +36,23 @@ class StripeCheckoutService
         $successUrl = url(config('stripe.success_path', '/subscription')).'?stripe=success&session_id={CHECKOUT_SESSION_ID}';
         $cancelUrl = url(config('stripe.cancel_path', '/subscription')).'?stripe=cancel';
 
+        // Checkout Studio (fixed_by_ui) + bestaande WinProx sample_only (mode/urls/line_items).
+        // metadata / client_reference_id / customer blijven voor fulfillment (webhook + plan-activatie).
         $payload = [
+            'ui_mode' => 'hosted_page',
             'mode' => 'subscription',
+            'billing_address_collection' => 'auto',
+            'phone_number_collection[enabled]' => 'true',
+            'automatic_tax[enabled]' => 'false',
+            'allow_promotion_codes' => 'false',
+            'payment_method_collection' => 'always',
+            'submit_type' => 'auto',
+            'name_collection[individual][enabled]' => 'true',
+            'name_collection[individual][optional]' => 'true',
+            'name_collection[business][enabled]' => 'true',
+            'name_collection[business][optional]' => 'true',
+            'integration_identifier' => 'hosted_web_0001',
+            'origin_context' => 'web',
             'line_items[0][price]' => config("stripe.price_ids.{$plan}"),
             'line_items[0][quantity]' => 1,
             'success_url' => $successUrl,
