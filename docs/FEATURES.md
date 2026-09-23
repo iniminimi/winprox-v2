@@ -252,8 +252,9 @@ later; standaard ziet een tenant-beheerder alles binnen de tenant.
 V1 "easy flow" voor facility, ontdaan van contractor/hospitality-stappen:
 1. **Stap 1** — locatie + (optioneel) unit + **omschrijving** (min 3) + tot 4 foto's
    (+ optioneel **terugkerend**, §3.4). → maakt `Issue` (`source=manager`, `status=new`).
-2. **Stap 2** — **taaknotitie** + **team** kiezen → maakt `Task` (status `new`/assigned-equivalent);
-   melding → **In uitvoering**. Voor Facility sluit de flow hierna af (geen stap 3).
+2. **Stap 2** — **taaknotitie** + **team** kiezen (optioneel **worker** van dat team) → maakt `Task`
+   (status `new`/assigned-equivalent); melding → **In uitvoering**. Voor Facility sluit de flow
+   hierna af (geen stap 3).
 Logica in Actions (`CreateIssueAction` + taak-aanmaak), validatie via Form Request. Foto-golden-path.
 
 ### 3.4 Terugkerende meldingen (recurring) — **BESLIST: nu meenemen**
@@ -280,9 +281,11 @@ desktop-handoff-login, `report_finalized_at`, categorie-verplichting. Property�
 ## 4. Taken
 
 **Doel:** beheerlijst van alle **taken**. Een taak = werk onder een melding, toegewezen aan **één
-team**. Bron: V1 `app/Livewire/Tasks.php` + `app/Support/FacilityTaskStatus.php` +
-`app/Livewire/TaskDetail.php` (uitgedund: geen contractors/invitations/quoting, onboarding,
-hospitality, trades/work-types). **Beheerscherm = nooit blur.**
+team** en optioneel aan **één worker** van dat team (alle tenants; geen sectorswitch). Beheer kan
+de worker altijd wijzigen of leegmaken (bv. ziekte). Bron: V1 `app/Livewire/Tasks.php` +
+`app/Support/FacilityTaskStatus.php` + `app/Livewire/TaskDetail.php` (uitgedund: geen
+contractors/invitations/quoting, onboarding, hospitality, trades/work-types).
+**Beheerscherm = nooit blur.**
 
 ### 4.0 Statusmapping (V1 → V2, verminderd)
 | V1-taakstatus | V2 |
@@ -306,12 +309,15 @@ hospitality, trades/work-types). **Beheerscherm = nooit blur.**
 - **Download rapport** (`x-wp-list-export`): CSV + afdrukken van de gefilterde set — zie §Rapporten.
 - **Groepering per status** met accent-header + telbadge, volgorde
   **Nieuw → In uitvoering → Afgehandeld → Gesloten**, nieuwste eerst.
-- **Taakkaart**: melding-omschrijving (onverkort — beheer), locatie · unit · adres, **team**,
-  status-pill, evt. **gepland/vervaldatum** (recurring), "aangemaakt door". Klik → taakdetail.
+- **Taakkaart**: melding-omschrijving (onverkort — beheer), locatie · unit · adres, **team**
+  (+ optionele **worker**), status-pill, evt. **gepland/vervaldatum** (recurring), "aangemaakt door".
+  Klik → taakdetail.
 
 ### 4.2 Taakdetail
-- Toont de melding-context + de taak; statuswijziging (4.3); notities/voortgang (`IssueUpdate`);
-  evt. foto's van melder/worker (onverkort in beheer).
+- Toont de melding-context + de taak; **team** en optionele **worker** (wijzigbaar); statuswijziging
+  (4.3); notities/voortgang (`IssueUpdate`); evt. foto's van melder/worker (onverkort in beheer).
+- **Veldzichtbaarheid:** zonder worker ziet het hele team de open taak (Clock Point / unit-QR).
+  Met worker ziet **alleen die worker** de taak; beheer wijzigt de toewijzing vrij.
 
 ### 4.3 Statuswijziging (verminderde transities + reden-notitie)
 Toegestane overgangen tussen de 4 statussen (afgeleid van V1):
@@ -514,8 +520,9 @@ stops meer zijn voor **deze** cyclus-taak.
   staan niet in de lijst.
 - **Beheer — intentie-flow:** knop *Inspectieronde plannen* op **Werk → Inspectierondes**
   (primaire plek) en nog op Meldingen (naast Nieuwe melding): stops + interval + team
-  in één modal; onder water terugkerende melding + eerste taak. Bestaande
-  melding-wizard blijft; rondestops daar optioneel.
+  (+ optionele worker) in één modal; onder water terugkerende melding + eerste taak.
+  Nieuwe cycli kopiëren team én worker van de vorige cyclus. Beheer kan de worker op de
+  open cyclus-taak altijd wijzigen. Bestaande melding-wizard blijft; rondestops daar optioneel.
 - **Beheer — lijst:** sidebar **Werk → Inspectierondes** is een eigen scherm (zelfde
   Livewire als Meldingen, `?recurring=1&inspection_round=1`): titel/ondertitel/lege
   staat voor rondes. Geen “+ Melding toevoegen”, geen vinkjes terugkerend/alleen

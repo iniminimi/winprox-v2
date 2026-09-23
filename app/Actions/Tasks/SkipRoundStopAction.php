@@ -47,7 +47,8 @@ class SkipRoundStopAction
             ]);
         }
 
-        if ((int) $worker->internal_team_id !== (int) $task->internal_team_id) {
+        if ((int) $worker->internal_team_id !== (int) $task->internal_team_id
+            || ! $task->isAssignedToWorker($worker)) {
             throw ValidationException::withMessages([
                 'skipReason' => [__('portal.worker.errors.no_permission')],
             ]);

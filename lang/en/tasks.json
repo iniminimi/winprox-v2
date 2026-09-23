@@ -43,7 +43,8 @@
         "issue_nr": "Issue no. :nr",
         "no_team": "No team",
         "scheduled": "Scheduled :date",
-        "recurring": "Recurring"
+        "recurring": "Recurring",
+        "meta_worker": "Worker :name"
     },
     "show": {
         "title": "Task",
@@ -87,7 +88,8 @@
         "reason_required": "A reason is required when closing without execution.",
         "pause_only_in_progress": "Pause notes are only allowed while in progress.",
         "translation_requires_description": "Translations are only available when the task has a description.",
-        "translation_import_missing": "Task not found or has no description."
+        "translation_import_missing": "Task not found or has no description.",
+        "worker_not_on_team": "Choose an active worker from the selected team."
     },
     "translation_edit": {
         "label": "Translation",

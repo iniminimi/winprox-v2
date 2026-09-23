@@ -8,6 +8,7 @@ use App\Models\Document;
 use App\Models\Issue;
 use App\Models\Task;
 use App\Models\Unit;
+use App\Models\Worker;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Schema;
 
@@ -134,12 +135,19 @@ final class UnitPortalData
      *
      * @return Collection<int, Task>
      */
-    public static function openTeamTasksForIssue(Issue $issue, int $teamId): Collection
+    public static function openTeamTasksForIssue(Issue $issue, int $teamId, ?Worker $worker = null): Collection
     {
-        return Task::where('issue_id', $issue->id)
-            ->where('internal_team_id', $teamId)
+        $query = Task::where('issue_id', $issue->id)
             ->whereIn('status', TaskStatus::openValues())
-            ->whereHas('issue', fn ($q) => $q->whereNotNull('approved_at'))
+            ->whereHas('issue', fn ($q) => $q->whereNotNull('approved_at'));
+
+        if ($worker !== null) {
+            $query->visibleToWorker($worker);
+        } else {
+            $query->where('internal_team_id', $teamId);
+        }
+
+        return $query
             ->with(['issue.photos', 'issue.updates', 'issue.esgIndicator.translations'])
             ->orderBy('id')
             ->get();
@@ -150,30 +158,45 @@ final class UnitPortalData
      *
      * @return Collection<int, Task>
      */
-    public static function allOpenUnitTasks(Unit $unit, int $teamId): Collection
+    public static function allOpenUnitTasks(Unit $unit, int $teamId, ?Worker $worker = null): Collection
     {
-        return Task::where('internal_team_id', $teamId)
+        $query = Task::query()
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q
                 ->belongsToUnit($unit)
-                ->whereNotNull('approved_at'))
+                ->whereNotNull('approved_at'));
+
+        if ($worker !== null) {
+            $query->visibleToWorker($worker);
+        } else {
+            $query->where('internal_team_id', $teamId);
+        }
+
+        return $query
             ->with(['issue.photos', 'issue.updates', 'issue.esgIndicator.translations', 'issue.roundStops'])
             ->orderBy('id')
             ->get();
     }
 
-    public static function hasOpenUnitTasks(Unit $unit, int $teamId): bool
+    public static function hasOpenUnitTasks(Unit $unit, int $teamId, ?Worker $worker = null): bool
     {
-        return self::openUnitTaskCount($unit, $teamId) > 0;
+        return self::openUnitTaskCount($unit, $teamId, $worker) > 0;
     }
 
-    public static function openUnitTaskCount(Unit $unit, int $teamId): int
+    public static function openUnitTaskCount(Unit $unit, int $teamId, ?Worker $worker = null): int
     {
-        return Task::where('internal_team_id', $teamId)
+        $query = Task::query()
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q
                 ->belongsToUnit($unit)
-                ->whereNotNull('approved_at'))
-            ->count();
+                ->whereNotNull('approved_at'));
+
+        if ($worker !== null) {
+            $query->visibleToWorker($worker);
+        } else {
+            $query->where('internal_team_id', $teamId);
+        }
+
+        return $query->count();
     }
 }

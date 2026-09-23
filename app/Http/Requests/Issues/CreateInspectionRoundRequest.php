@@ -4,6 +4,7 @@ namespace App\Http\Requests\Issues;
 
 use App\Enums\RecurrenceIntervalUnit;
 use App\Enums\TaskPriority;
+use App\Http\Requests\Tasks\AssignedWorkerRules;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -22,13 +23,16 @@ class CreateInspectionRoundRequest extends FormRequest
     {
         $tenantId = auth()->user()?->tenant_id;
 
-        return self::ruleSet($tenantId ? (int) $tenantId : null);
+        return self::ruleSet(
+            $tenantId ? (int) $tenantId : null,
+            $this->integer('internal_team_id') ?: null,
+        );
     }
 
     /**
      * @return array<string, array<int, mixed>>
      */
-    public static function ruleSet(?int $tenantId = null): array
+    public static function ruleSet(?int $tenantId = null, ?int $teamId = null): array
     {
         return [
             'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
@@ -48,6 +52,7 @@ class CreateInspectionRoundRequest extends FormRequest
             'recurrence_lead_days' => ['required', 'integer', 'min:1', 'max:365'],
             'recurrence_first_due_date' => ['required', 'date', 'after_or_equal:today'],
             'internal_team_id' => ['required', 'integer', 'exists:internal_teams,id'],
+            'assigned_worker_id' => AssignedWorkerRules::forTeamId($teamId, $tenantId),
             'task_note' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
             'task_priority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
         ];
@@ -58,7 +63,7 @@ class CreateInspectionRoundRequest extends FormRequest
      */
     public static function messageSet(): array
     {
-        return [
+        return array_merge([
             'description.required' => __('issues.errors.description_required'),
             'description.min' => __('issues.errors.description_min'),
             'description.max' => __('issues.errors.description_max'),
@@ -77,7 +82,7 @@ class CreateInspectionRoundRequest extends FormRequest
             'recurrence_first_due_date.after_or_equal' => __('issues.errors.recurrence_due_future'),
             'internal_team_id.required' => __('issues.errors.team_required'),
             'task_note.max' => __('issues.errors.text_max'),
-        ];
+        ], AssignedWorkerRules::messages());
     }
 
     /**

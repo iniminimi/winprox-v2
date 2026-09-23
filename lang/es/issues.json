@@ -102,7 +102,7 @@
         "team_none": "Elija un equipo",
         "task_note": "Nota de la tarea",
         "task_note_hint": "Instrucción opcional para el equipo en la tarea. Déjelo vacío para usar la descripción de la incidencia.",
-        "step_two_hint": "Asigne un equipo. La tarea comienza en curso de inmediato.",
+        "step_two_hint": "Asigne un equipo, opcionalmente un trabajador. La tarea empieza en curso de inmediato.",
         "next": "Siguiente",
         "back": "Atrás",
         "finish": "Crear incidencia",
@@ -116,7 +116,9 @@
         "round_stops_drag_location": "Arrastre esta sede en la ronda",
         "round_stops_select_all": "Seleccionar todas las unidades",
         "round_stops_hidden": "{1} :count unidad no es visible porque unit checks está desactivado.|[2,*] :count unidades no son visibles porque unit checks está desactivado.",
-        "round_stops_unavailable": "{1} No hay unidades disponibles como paradas. :count unidad no es visible porque unit checks está desactivado.|[2,*] No hay unidades disponibles como paradas. :count unidades no son visibles porque unit checks está desactivado."
+        "round_stops_unavailable": "{1} No hay unidades disponibles como paradas. :count unidad no es visible porque unit checks está desactivado.|[2,*] No hay unidades disponibles como paradas. :count unidades no son visibles porque unit checks está desactivado.",
+        "worker": "Trabajador (opcional)",
+        "worker_none": "Todo el equipo"
     },
     "round_create": {
         "title": "Planificar ronda de inspección",
@@ -226,7 +228,9 @@
         "round_stops_saved": "Paradas de ronda guardadas.",
         "recurring_ended": "Aviso recurrente cerrado.",
         "recurring_end_modal_subtitle": "Cierre este aviso recurrente. Se detienen los nuevos ciclos; las tareas abiertas también se cerrarán.",
-        "open_unit": "Abrir unit"
+        "open_unit": "Abrir unit",
+        "add_task_worker_label": "Trabajador (opcional)",
+        "add_task_worker_none": "Todo el equipo"
     },
     "updates": {
         "kind": {

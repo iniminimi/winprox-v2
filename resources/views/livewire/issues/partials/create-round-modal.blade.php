@@ -84,13 +84,24 @@
         <div class="wp-form-grid-2">
             <div class="wp-field">
                 <label class="wp-label" for="round_create_internal_team_id">{{ __('issues.create.team') }}</label>
-                <select id="round_create_internal_team_id" class="wp-select" wire:model="internal_team_id">
+                <select id="round_create_internal_team_id" class="wp-select" wire:model.live="internal_team_id">
                     <option value="">{{ __('issues.create.team_none') }}</option>
                     @foreach ($createTeams as $team)
                         <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                     @endforeach
                 </select>
                 @error('internal_team_id') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+
+            <div class="wp-field">
+                <label class="wp-label" for="round_create_assigned_worker_id">{{ __('issues.create.worker') }}</label>
+                <select id="round_create_assigned_worker_id" class="wp-select" wire:model="assigned_worker_id" @disabled(! $internal_team_id)>
+                    <option value="">{{ __('issues.create.worker_none') }}</option>
+                    @foreach ($createWorkers as $worker)
+                        <option value="{{ $worker->id }}">{{ $worker->displayName() }}</option>
+                    @endforeach
+                </select>
+                @error('assigned_worker_id') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
 
             <div class="wp-field">

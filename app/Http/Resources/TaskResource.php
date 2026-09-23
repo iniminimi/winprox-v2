@@ -18,6 +18,7 @@ class TaskResource extends JsonResource
             'id' => $this->id,
             'issue_id' => $this->issue_id,
             'internal_team_id' => $this->internal_team_id,
+            'assigned_worker_id' => $this->assigned_worker_id,
             'status' => $this->status->value,
             'description' => $this->description,
             'scheduled_for' => $this->scheduled_for?->format('Y-m-d'),

@@ -48,10 +48,11 @@
             {
                 "title": "Compiti",
                 "badge": "nucleo",
-                "body": "Una segnalazione può avere più compiti. Ogni compito va a una squadra.",
+                "body": "Una segnalazione può avere più attività. Ogni attività va a un team, eventualmente a un operatore di quel team.",
                 "items": [
                     "Priorità, scadenza e note per compito.",
-                    "Follow-up nell’elenco compiti e via QR sul campo."
+                    "Follow-up nell’elenco compiti e via QR sul campo.",
+                    "La gestione può sempre modificare o svuotare l'operatore (es. malattia)."
                 ]
             },
             {

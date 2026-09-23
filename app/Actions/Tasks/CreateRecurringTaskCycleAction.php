@@ -83,10 +83,13 @@ class CreateRecurringTaskCycleAction
         $teamId = $latestCycle?->internal_team_id
             ?? $issue->tasks()->whereNotNull('internal_team_id')->value('internal_team_id');
 
+        $assignedWorkerId = $latestCycle?->assigned_worker_id;
+
         $cycleNumber = (int) ($latestCycle?->cycle_number ?? 0) + 1;
 
         $task = $issue->tasks()->create([
             'internal_team_id' => $teamId,
+            'assigned_worker_id' => $assignedWorkerId,
             'status' => TaskStatus::New,
             'description' => $issue->description,
             'original_language' => LocaleSupport::normalize($issue->original_language),

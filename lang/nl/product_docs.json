@@ -48,10 +48,11 @@
             {
                 "title": "Taken",
                 "badge": "kern",
-                "body": "Eén melding kan meerdere taken hebben. Elke taak gaat naar één team.",
+                "body": "Eén melding kan meerdere taken hebben. Elke taak gaat naar één team, optioneel naar één uitvoerder van dat team.",
                 "items": [
                     "Prio, deadline en notities per taak.",
-                    "Opvolging via de Taken-lijst en via QR op de werkvloer."
+                    "Opvolging via de Taken-lijst en via QR op de werkvloer.",
+                    "Beheer kan de uitvoerder altijd wijzigen of leegmaken (bijv. ziekte)."
                 ]
             },
             {

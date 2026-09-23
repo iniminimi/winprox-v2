@@ -12,17 +12,19 @@ use App\Actions\Issues\ReopenIssueAction;
 use App\Actions\Issues\SyncIssueRoundStopsAction;
 use App\Actions\Issues\ToggleIssueRecurrencePauseAction;
 use App\Actions\Tasks\CreateTaskAction;
+use App\Actions\Tasks\UpdateTaskAssignmentAction;
 use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Actions\Tasks\UpdateTaskPriorityAction;
-use App\Actions\Tasks\UpdateTaskTeamAction;
 use App\Enums\TaskPriority;
 use App\Http\Requests\Issues\EndRecurringIssueRequest;
 use App\Http\Requests\Issues\SyncIssueRoundStopsRequest;
+use App\Http\Requests\Tasks\AssignedWorkerRules;
 use App\Livewire\Concerns\ManagesInspectionRoundStopOrder;
 use App\Models\Task;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Unit;
+use App\Models\Worker;
 use App\Support\EntityDetailNavigation;
 use App\Support\Tenancy;
 use App\Support\Translation\LocaleSupport;
@@ -57,6 +59,8 @@ class Show extends Component
     public ?int $editTaskId = null;
 
     public ?int $newTeamId = null;
+
+    public ?int $assignedWorkerId = null;
 
     public string $taskNote = '';
 
@@ -264,6 +268,7 @@ class Show extends Component
         }
 
         $this->newTeamId = null;
+        $this->assignedWorkerId = null;
         $this->taskNote = trim((string) $this->issue->description);
         $this->taskScheduledFor = $this->issue->recurrence_next_due_at?->format('Y-m-d');
         $this->taskPriority = 'prio_3';
@@ -275,6 +280,11 @@ class Show extends Component
     public function closeAddTaskModal(): void
     {
         $this->showAddTaskModal = false;
+    }
+
+    public function updatedNewTeamId(): void
+    {
+        $this->assignedWorkerId = null;
     }
 
     public function openEditTaskModal(int $taskId): void
@@ -292,6 +302,7 @@ class Show extends Component
 
         $this->editTaskId = $taskId;
         $this->newTeamId = $task->internal_team_id;
+        $this->assignedWorkerId = $task->assigned_worker_id;
         $this->taskNote = trim((string) ($task->description ?: $this->issue->description));
         $this->taskPriority = $task->priority->value;
         $this->taskScheduledFor = $task->scheduled_for?->format('Y-m-d');
@@ -387,7 +398,7 @@ class Show extends Component
 
     public function editTask(
         UpdateTaskPriorityAction $updatePriority,
-        UpdateTaskTeamAction $updateTeam,
+        UpdateTaskAssignmentAction $updateAssignment,
         UpdateTaskDetailsAction $updateDetails,
     ): void {
         $this->authorize('update', $this->issue);
@@ -405,17 +416,20 @@ class Show extends Component
 
         $validated = $this->validate([
             'newTeamId' => ['required', 'integer', 'exists:internal_teams,id'],
+            'assignedWorkerId' => AssignedWorkerRules::forTeamId(
+                $this->newTeamId ? (int) $this->newTeamId : null,
+                (int) Tenancy::id(),
+            ),
             'taskNote' => ['required', 'string', 'min:2', 'max:'.TextDescriptionLimits::MAX],
             'taskScheduledFor' => ['nullable', 'date'],
             'taskPriority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
-        ], [
+        ], array_merge([
             'newTeamId.required' => __('issues.show.errors.team_required'),
             'taskNote.required' => __('issues.show.errors.task_note_required'),
             'taskNote.min' => __('issues.show.errors.task_note_min'),
             'taskNote.max' => __('issues.errors.text_max'),
-        ]);
+        ], AssignedWorkerRules::messages('assignedWorkerId')));
 
-        // Update priority
         $updatePriority->handle(
             $task,
             TaskPriority::from($validated['taskPriority']),
@@ -423,10 +437,11 @@ class Show extends Component
             (int) auth()->id(),
         );
 
-        // Update team if changed
-        if ($task->internal_team_id !== (int) $validated['newTeamId']) {
-            $updateTeam->handle($task, (int) $validated['newTeamId']);
-        }
+        $updateAssignment->handle(
+            $task,
+            (int) $validated['newTeamId'],
+            isset($validated['assignedWorkerId']) ? (int) $validated['assignedWorkerId'] : null,
+        );
 
         $updateDetails->handle(
             $task,
@@ -437,7 +452,7 @@ class Show extends Component
         );
 
         $this->closeEditTaskModal();
-        $this->reset(['newTeamId', 'taskNote', 'taskScheduledFor', 'taskPriority', 'taskPreviewLocale', 'taskTranslationDescription']);
+        $this->reset(['newTeamId', 'assignedWorkerId', 'taskNote', 'taskScheduledFor', 'taskPriority', 'taskPreviewLocale', 'taskTranslationDescription']);
 
         $this->refreshIssue();
     }
@@ -454,15 +469,19 @@ class Show extends Component
 
         $validated = $this->validate([
             'newTeamId' => ['required', 'integer', 'exists:internal_teams,id'],
+            'assignedWorkerId' => AssignedWorkerRules::forTeamId(
+                $this->newTeamId ? (int) $this->newTeamId : null,
+                (int) Tenancy::id(),
+            ),
             'taskNote' => ['required', 'string', 'min:2', 'max:'.TextDescriptionLimits::MAX],
             'taskScheduledFor' => ['nullable', 'date'],
             'taskPriority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
-        ], [
+        ], array_merge([
             'newTeamId.required' => __('issues.show.errors.team_required'),
             'taskNote.required' => __('issues.show.errors.task_note_required'),
             'taskNote.min' => __('issues.show.errors.task_note_min'),
             'taskNote.max' => __('issues.errors.text_max'),
-        ]);
+        ], AssignedWorkerRules::messages('assignedWorkerId')));
 
         $extra = [];
         if (! empty($validated['taskScheduledFor'])) {
@@ -475,10 +494,11 @@ class Show extends Component
             priority: TaskPriority::from($validated['taskPriority']),
             description: $validated['taskNote'],
             extra: $extra,
+            assignedWorkerId: isset($validated['assignedWorkerId']) ? (int) $validated['assignedWorkerId'] : null,
         );
 
         $this->closeAddTaskModal();
-        $this->reset(['newTeamId', 'taskNote', 'taskScheduledFor', 'taskPriority']);
+        $this->reset(['newTeamId', 'assignedWorkerId', 'taskNote', 'taskScheduledFor', 'taskPriority']);
 
         $this->refreshIssue();
     }
@@ -548,6 +568,7 @@ class Show extends Component
     {
         $this->issue = $this->issue->fresh([
             'tasks.team.translations',
+            'tasks.assignedWorker',
             'tasks.translations',
             'translations',
             'photos' => fn ($q) => $q->orderBy('created_at'),
@@ -661,6 +682,14 @@ class Show extends Component
             'roundStopUnitsGrouped' => $roundStopUnitsGrouped,
             'roundStopUnitsHiddenCount' => $roundStopUnitsHiddenCount,
             'teams' => InternalTeam::query()->with('translations')->orderBy('name')->get(),
+            'assignableWorkers' => $this->newTeamId
+                ? Worker::query()
+                    ->where('is_active', true)
+                    ->where('internal_team_id', $this->newTeamId)
+                    ->orderBy('first_name')
+                    ->orderBy('last_name')
+                    ->get()
+                : collect(),
             'priorities' => TaskPriority::cases(),
             'headline' => $headline,
             'addressLine' => $addressLine,

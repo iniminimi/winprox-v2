@@ -19,6 +19,7 @@ use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Models\Worker;
 use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Esg\EsgModuleAccess;
 use App\Support\PerStatusListLimit;
@@ -94,6 +95,8 @@ class Index extends Component
     public ?int $esg_indicator_id = null;
 
     public ?int $internal_team_id = null;
+
+    public ?int $assigned_worker_id = null;
 
     public ?string $task_note = null;
 
@@ -208,6 +211,11 @@ class Index extends Component
         $this->unit_id = null;
     }
 
+    public function updatedInternalTeamId(): void
+    {
+        $this->assigned_worker_id = null;
+    }
+
     public function updatedUnitId(?int $value): void
     {
         if ($value === null) {
@@ -220,6 +228,7 @@ class Index extends Component
             $firstTeam = $unit->category->teams()->first();
             if ($firstTeam !== null) {
                 $this->internal_team_id = (int) $firstTeam->id;
+                $this->assigned_worker_id = null;
             }
         }
     }
@@ -336,7 +345,10 @@ class Index extends Component
         $this->authorize('create', Issue::class);
 
         $validated = $this->validate(
-            AssignIssueTeamTaskRequest::ruleSet(),
+            AssignIssueTeamTaskRequest::ruleSet(
+                (int) Tenancy::id(),
+                $this->internal_team_id ? (int) $this->internal_team_id : null,
+            ),
             AssignIssueTeamTaskRequest::messageSet(),
         );
 
@@ -345,6 +357,9 @@ class Index extends Component
             (int) $validated['internal_team_id'],
             $validated['task_note'] ?? null,
             TaskPriority::from($validated['task_priority']),
+            assignedWorkerId: isset($validated['assigned_worker_id'])
+                ? (int) $validated['assigned_worker_id']
+                : null,
         );
 
         $this->showCreateModal = false;
@@ -368,7 +383,10 @@ class Index extends Component
 
         $tenantId = (int) Tenancy::id();
         $validated = $this->validate(
-            CreateInspectionRoundRequest::ruleSet($tenantId),
+            CreateInspectionRoundRequest::ruleSet(
+                $tenantId,
+                $this->internal_team_id ? (int) $this->internal_team_id : null,
+            ),
             CreateInspectionRoundRequest::messageSet(),
         );
 
@@ -404,6 +422,7 @@ class Index extends Component
         $this->esg_indicator_id = null;
         $this->round_stop_unit_ids = [];
         $this->internal_team_id = null;
+        $this->assigned_worker_id = null;
         $this->task_note = null;
         $this->task_priority = 'prio_3';
         $this->photos = [];
@@ -421,6 +440,7 @@ class Index extends Component
         $this->recurrence_first_due_date = null;
         $this->round_stop_unit_ids = [];
         $this->internal_team_id = null;
+        $this->assigned_worker_id = null;
         $this->task_note = null;
         $this->task_priority = 'prio_3';
         $this->resetErrorBag();
@@ -565,6 +585,14 @@ class Index extends Component
             'createRoundStopUnitsHiddenCount' => $createRoundStopUnitsHiddenCount,
             'createTeams' => $this->showCreateModal || $this->showRoundCreateModal
                 ? InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('name')->get()
+                : collect(),
+            'createWorkers' => ($this->showCreateModal || $this->showRoundCreateModal) && $this->internal_team_id
+                ? Worker::query()
+                    ->where('is_active', true)
+                    ->where('internal_team_id', $this->internal_team_id)
+                    ->orderBy('first_name')
+                    ->orderBy('last_name')
+                    ->get()
                 : collect(),
             'hasEsgModule' => EsgModuleAccess::activeTenantHasModule(),
             'createEsgIndicators' => $this->showCreateModal && EsgModuleAccess::activeTenantHasModule()

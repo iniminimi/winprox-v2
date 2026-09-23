@@ -43,7 +43,8 @@
         "issue_nr": "Incidencia n.º :nr",
         "no_team": "Sin equipo",
         "scheduled": "Programada :date",
-        "recurring": "Recurrente"
+        "recurring": "Recurrente",
+        "meta_worker": "Trabajador :name"
     },
     "show": {
         "title": "Tarea",
@@ -87,7 +88,8 @@
         "reason_required": "Se requiere un motivo al cerrar sin ejecución.",
         "pause_only_in_progress": "Las notas de pausa solo están permitidas mientras está en curso.",
         "translation_requires_description": "Las traducciones solo están disponibles cuando la tarea tiene una descripción.",
-        "translation_import_missing": "Tarea no encontrada o sin descripción."
+        "translation_import_missing": "Tarea no encontrada o sin descripción.",
+        "worker_not_on_team": "Elija un trabajador activo del equipo seleccionado."
     },
     "translation_edit": {
         "label": "Traducción",

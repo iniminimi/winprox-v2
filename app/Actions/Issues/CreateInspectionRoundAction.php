@@ -47,6 +47,9 @@ class CreateInspectionRoundAction
             (int) $validated['internal_team_id'],
             isset($validated['task_note']) ? (string) $validated['task_note'] : null,
             TaskPriority::from((string) $validated['task_priority']),
+            assignedWorkerId: isset($validated['assigned_worker_id'])
+                ? (int) $validated['assigned_worker_id']
+                : null,
         );
 
         return $issue->fresh(['roundStops', 'tasks']);

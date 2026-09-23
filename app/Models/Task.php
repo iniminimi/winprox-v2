@@ -22,6 +22,7 @@ class Task extends Model
         'issue_id',
         'esg_threshold_measurement_id',
         'internal_team_id',
+        'assigned_worker_id',
         'status',
         'priority',
         'started_at',
@@ -101,6 +102,35 @@ class Task extends Model
     public function team(): BelongsTo
     {
         return $this->belongsTo(InternalTeam::class, 'internal_team_id');
+    }
+
+    public function assignedWorker(): BelongsTo
+    {
+        return $this->belongsTo(Worker::class, 'assigned_worker_id');
+    }
+
+    /** Open taken zichtbaar voor deze worker: team + (geen of deze assignee). */
+    public function scopeVisibleToWorker(Builder $query, Worker $worker): Builder
+    {
+        return $query
+            ->where('internal_team_id', $worker->internal_team_id)
+            ->where(function (Builder $inner) use ($worker): void {
+                $inner->whereNull('assigned_worker_id')
+                    ->orWhere('assigned_worker_id', $worker->id);
+            });
+    }
+
+    public function isAssignedToWorker(Worker $worker): bool
+    {
+        if ((int) $this->internal_team_id !== (int) $worker->internal_team_id) {
+            return false;
+        }
+
+        if ($this->assigned_worker_id === null) {
+            return true;
+        }
+
+        return (int) $this->assigned_worker_id === (int) $worker->id;
     }
 
     public function recurrenceIssue(): BelongsTo

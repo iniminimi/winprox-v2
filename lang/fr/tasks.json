@@ -43,7 +43,8 @@
         "issue_nr": "Signalement n° :nr",
         "no_team": "Aucune équipe",
         "scheduled": "Planifié :date",
-        "recurring": "Récurrent"
+        "recurring": "Récurrent",
+        "meta_worker": "Exécutant :name"
     },
     "show": {
         "title": "Tâche",
@@ -87,7 +88,8 @@
         "reason_required": "Un motif est obligatoire pour clôturer sans exécution.",
         "pause_only_in_progress": "La pause n'est possible qu'en cours d'exécution.",
         "translation_requires_description": "Les traductions ne sont disponibles que si la tâche a une description.",
-        "translation_import_missing": "Tâche introuvable ou sans description."
+        "translation_import_missing": "Tâche introuvable ou sans description.",
+        "worker_not_on_team": "Choisissez un exécutant actif de l'équipe sélectionnée."
     },
     "translation_edit": {
         "label": "Traduction",

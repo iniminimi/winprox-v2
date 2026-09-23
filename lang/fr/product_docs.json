@@ -48,10 +48,11 @@
             {
                 "title": "Tâches",
                 "badge": "cœur",
-                "body": "Un signalement peut avoir plusieurs tâches. Chaque tâche va à une équipe.",
+                "body": "Un signalement peut avoir plusieurs tâches. Chaque tâche va à une équipe, éventuellement à un exécutant de cette équipe.",
                 "items": [
                     "Priorité, échéance et notes par tâche.",
-                    "Suivi dans la liste des tâches et via QR sur le terrain."
+                    "Suivi dans la liste des tâches et via QR sur le terrain.",
+                    "La gestion peut toujours modifier ou vider l'exécutant (p. ex. maladie)."
                 ]
             },
             {

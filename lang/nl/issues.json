@@ -102,7 +102,7 @@
         "team_none": "Kies een team",
         "task_note": "Taaknotitie",
         "task_note_hint": "Optionele instructie voor het team op de taak. Leeg laten mag; dan geldt de omschrijving van de melding.",
-        "step_two_hint": "Wijs één team toe. De taak start meteen in uitvoering.",
+        "step_two_hint": "Wijs één team toe, optioneel één uitvoerder. De taak start meteen in uitvoering.",
         "next": "Volgende",
         "back": "Terug",
         "finish": "Melding aanmaken",
@@ -116,7 +116,9 @@
         "round_stops_drag_location": "Sleep deze locatie in de ronde",
         "round_stops_select_all": "Selecteer alle units",
         "round_stops_hidden": "{1} :count unit is niet zichtbaar omdat unit checks daar uit staat.|[2,*] :count units zijn niet zichtbaar omdat unit checks daar uit staan.",
-        "round_stops_unavailable": "{1} Geen units beschikbaar als stops. :count unit is niet zichtbaar omdat unit checks daar uit staat.|[2,*] Geen units beschikbaar als stops. :count units zijn niet zichtbaar omdat unit checks daar uit staan."
+        "round_stops_unavailable": "{1} Geen units beschikbaar als stops. :count unit is niet zichtbaar omdat unit checks daar uit staat.|[2,*] Geen units beschikbaar als stops. :count units zijn niet zichtbaar omdat unit checks daar uit staan.",
+        "worker": "Uitvoerder (optioneel)",
+        "worker_none": "Heel het team"
     },
     "round_create": {
         "title": "Inspectieronde plannen",
@@ -226,7 +228,9 @@
         "round_stops_saved": "Ronde-stops opgeslagen.",
         "recurring_ended": "Terugkerende melding gesloten.",
         "recurring_end_modal_subtitle": "Sluit deze terugkerende melding. Nieuwe cycli stoppen; openstaande taken worden ook gesloten.",
-        "open_unit": "Unit openen"
+        "open_unit": "Unit openen",
+        "add_task_worker_label": "Uitvoerder (optioneel)",
+        "add_task_worker_none": "Heel het team"
     },
     "updates": {
         "kind": {

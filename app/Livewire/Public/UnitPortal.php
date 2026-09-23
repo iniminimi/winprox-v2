@@ -1298,11 +1298,12 @@ class UnitPortal extends Component
             }
 
             if ($team !== null) {
+                $visibilityWorker = $worker ?? $deviceWorker;
                 if ($this->portalSection === 'home') {
-                    $openTaskCount = UnitPortalData::openUnitTaskCount($unit, (int) $team->id);
+                    $openTaskCount = UnitPortalData::openUnitTaskCount($unit, (int) $team->id, $visibilityWorker);
                 }
                 if ($isFieldVisitor) {
-                    $allOpenUnitTasks = UnitPortalData::allOpenUnitTasks($unit, (int) $team->id);
+                    $allOpenUnitTasks = UnitPortalData::allOpenUnitTasks($unit, (int) $team->id, $visibilityWorker);
                 }
             }
 
@@ -1315,7 +1316,11 @@ class UnitPortal extends Component
                         $this->portalSection = $showPreviousIssues ? 'issues' : 'home';
                     }
                 } elseif ($team !== null) {
-                    $openTasksForIssue = UnitPortalData::openTeamTasksForIssue($selectedIssue, (int) $team->id);
+                    $openTasksForIssue = UnitPortalData::openTeamTasksForIssue(
+                        $selectedIssue,
+                        (int) $team->id,
+                        $worker ?? $deviceWorker,
+                    );
                 }
             }
 
@@ -1470,7 +1475,12 @@ class UnitPortal extends Component
             return null;
         }
 
-        return Task::where('internal_team_id', $team->id)
+        return Task::query()
+            ->when(
+                $this->authorizedWorker() !== null,
+                fn ($q) => $q->visibleToWorker($this->authorizedWorker()),
+                fn ($q) => $q->where('internal_team_id', $team->id),
+            )
             ->whereHas('issue', fn ($q) => $q->belongsToUnit($this->unit()))
             ->with(['issue.esgIndicator.translations', 'issue.roundStops', 'roundStopSkips'])
             ->find($taskId);

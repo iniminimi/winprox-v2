@@ -43,7 +43,8 @@
         "issue_nr": "Melding nr :nr",
         "no_team": "Geen team",
         "scheduled": "Gepland :date",
-        "recurring": "Terugkerend"
+        "recurring": "Terugkerend",
+        "meta_worker": "Uitvoerder :name"
     },
     "show": {
         "title": "Taak",
@@ -87,7 +88,8 @@
         "reason_required": "Een reden is verplicht bij sluiten zonder uitvoering.",
         "pause_only_in_progress": "Pauzeren kan alleen tijdens in uitvoering.",
         "translation_requires_description": "Vertalingen zijn alleen mogelijk wanneer de taak een omschrijving heeft.",
-        "translation_import_missing": "Taak niet gevonden of zonder omschrijving."
+        "translation_import_missing": "Taak niet gevonden of zonder omschrijving.",
+        "worker_not_on_team": "Kies een actieve uitvoerder van het geselecteerde team."
     },
     "translation_edit": {
         "label": "Vertaling",

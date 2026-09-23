@@ -10,7 +10,7 @@ meldingen met filters, taken, kalender, teams + workers + Clock Point-QR, abonne
 FAQ & kennisbank, juridische documenten, contact, hulp-chat, briefing), zonder de oude rommel.
 
 > Kern: **Melding → Taken → afhandeling**. Een melding kan **meerdere taken** hebben,
-> elk toegewezen aan **één operationeel team**.
+> elk toegewezen aan **één operationeel team** (optioneel ook aan **één worker** van dat team).
 
 **Visuele stijl (hard):** screenshots van de oude app dienen als doel voor **layout, structuur en
 UX** — **kleuren NIET kopiëren**. Beheer-UI-thema's: **Modern** (default; donkere sidebar,
@@ -153,7 +153,8 @@ het enige accent. Geen regenboogaccenten.
   Facility blijft in dezelfde app. Het uurrooster is geen payroll en geen CIAO-submit:
   publiceren stuurt niets naar de RSZ.
 - **Issue** — de **melding**.
-- **Task** — een **taak** op een melding, toegewezen aan **één team**. Een melding heeft er ≥1.
+- **Task** — een **taak** op een melding, toegewezen aan **één team** (optioneel één worker
+  van dat team). Een melding heeft er ≥1.
 - **IssueUpdate** — tijdlijn/notities op een melding.
 - **Document** / **Announcement** — per Unit/Location (bv. handleiding van een machine, mededeling "groot onderhoud").
 

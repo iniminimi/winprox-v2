@@ -22,7 +22,7 @@ class CreateTaskAction
     ) {}
 
     /**
-     * Voegt een taak toe aan een melding, toegewezen aan één team.
+     * Voegt een taak toe aan een melding, toegewezen aan één team (optioneel één worker).
      */
     public function handle(
         Issue $issue,
@@ -35,6 +35,7 @@ class CreateTaskAction
         bool $dispatchCreated = true,
         array $extra = [],
         bool $duringIssueIntake = false,
+        ?int $assignedWorkerId = null,
     ): Task {
         // Prevent task creation for closed issues
         if ($issue->isClosed()) {
@@ -47,8 +48,30 @@ class CreateTaskAction
             ]);
         }
 
+        if ($assignedWorkerId !== null) {
+            if ($internalTeamId === null) {
+                throw ValidationException::withMessages([
+                    'assigned_worker_id' => [__('tasks.errors.worker_not_on_team')],
+                ]);
+            }
+
+            $ok = \App\Models\Worker::query()
+                ->where('tenant_id', $issue->tenant_id)
+                ->where('id', $assignedWorkerId)
+                ->where('internal_team_id', $internalTeamId)
+                ->where('is_active', true)
+                ->exists();
+
+            if (! $ok) {
+                throw ValidationException::withMessages([
+                    'assigned_worker_id' => [__('tasks.errors.worker_not_on_team')],
+                ]);
+            }
+        }
+
         $payload = array_merge([
             'internal_team_id' => $internalTeamId,
+            'assigned_worker_id' => $assignedWorkerId,
             'status' => $status,
             'priority' => $priority,
             'description' => $description,

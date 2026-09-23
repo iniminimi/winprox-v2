@@ -1956,8 +1956,8 @@ class TimePortal extends Component
     private function findClockPointTask(Worker $worker, int $taskId): ?Task
     {
         $task = Task::query()
+            ->visibleToWorker($worker)
             ->where('tenant_id', $worker->tenant_id)
-            ->where('internal_team_id', $worker->internal_team_id)
             ->whereIn('status', TaskStatus::openValues())
             ->with(['issue.esgIndicator.translations', 'issue.location', 'issue.unit', 'issue.roundStops'])
             ->find($taskId);
@@ -1972,8 +1972,8 @@ class TimePortal extends Component
     private function findClockPointRoundTask(Worker $worker, int $taskId): ?Task
     {
         $task = Task::query()
+            ->visibleToWorker($worker)
             ->where('tenant_id', $worker->tenant_id)
-            ->where('internal_team_id', $worker->internal_team_id)
             ->whereIn('status', TaskStatus::openValues())
             ->with(['issue.roundStops.unit.location', 'roundStopSkips'])
             ->find($taskId);

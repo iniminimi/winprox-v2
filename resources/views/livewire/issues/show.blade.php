@@ -178,6 +178,7 @@
                     @php
                         $taskDescription = trim($task->displayDescription());
                         $teamName = $task->team?->localizedName() ?? __('issues.show.no_team');
+                        $workerName = $task->assignedWorker?->displayName();
                     @endphp
                     <div class="wp-issue-row" wire:key="task-{{ $task->id }}">
                         <div class="wp-grow wp-stack-tight">
@@ -192,6 +193,9 @@
                                     <span class="wp-pill wp-pill--done">{{ __('tasks.card.recurring') }}</span>
                                 @endif
                                 <span class="wp-issue-card-title">{{ $teamName }}</span>
+                                @if ($workerName)
+                                    <span class="wp-muted">{{ __('tasks.card.meta_worker', ['name' => $workerName]) }}</span>
+                                @endif
                             </div>
                             @if ($taskDescription !== '')
                                 <p class="wp-issue-card-desc">{{ $taskDescription }}</p>
@@ -253,13 +257,23 @@
                     </div>
                     <div class="wp-field">
                         <label class="wp-label" for="newTeamId">{{ __('issues.show.add_task_team_label') }}</label>
-                        <select id="newTeamId" class="wp-select" wire:model="newTeamId">
+                        <select id="newTeamId" class="wp-select" wire:model.live="newTeamId">
                             <option value="">{{ __('issues.show.add_task_placeholder') }}</option>
                             @foreach ($teams as $team)
                                 <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                             @endforeach
                         </select>
                         @error('newTeamId') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="assignedWorkerId">{{ __('issues.show.add_task_worker_label') }}</label>
+                        <select id="assignedWorkerId" class="wp-select" wire:model="assignedWorkerId" @disabled(! $newTeamId)>
+                            <option value="">{{ __('issues.show.add_task_worker_none') }}</option>
+                            @foreach ($assignableWorkers as $worker)
+                                <option value="{{ $worker->id }}">{{ $worker->displayName() }}</option>
+                            @endforeach
+                        </select>
+                        @error('assignedWorkerId') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 </div>
                 <div class="wp-modal-foot">
@@ -363,13 +377,23 @@
                     </div>
                     <div class="wp-field">
                         <label class="wp-label" for="newTeamId">{{ __('issues.show.add_task_team_label') }}</label>
-                        <select id="newTeamId" class="wp-select" wire:model="newTeamId">
+                        <select id="newTeamId" class="wp-select" wire:model.live="newTeamId">
                             <option value="">{{ __('issues.show.add_task_placeholder') }}</option>
                             @foreach ($teams as $team)
                                 <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                             @endforeach
                         </select>
                         @error('newTeamId') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="assignedWorkerId">{{ __('issues.show.add_task_worker_label') }}</label>
+                        <select id="assignedWorkerId" class="wp-select" wire:model="assignedWorkerId" @disabled(! $newTeamId)>
+                            <option value="">{{ __('issues.show.add_task_worker_none') }}</option>
+                            @foreach ($assignableWorkers as $worker)
+                                <option value="{{ $worker->id }}">{{ $worker->displayName() }}</option>
+                            @endforeach
+                        </select>
+                        @error('assignedWorkerId') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 </div>
                 <div class="wp-modal-foot">

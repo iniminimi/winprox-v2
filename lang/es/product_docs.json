@@ -48,10 +48,11 @@
             {
                 "title": "Tareas",
                 "badge": "núcleo",
-                "body": "Un aviso puede tener varias tareas. Cada tarea va a un equipo.",
+                "body": "Un aviso puede tener varias tareas. Cada tarea va a un equipo, opcionalmente a un trabajador de ese equipo.",
                 "items": [
                     "Prioridad, plazo y notas por tarea.",
-                    "Seguimiento en la lista de tareas y por QR en el terreno."
+                    "Seguimiento en la lista de tareas y por QR en el terreno.",
+                    "La gestión puede cambiar o vaciar siempre al trabajador (p. ej. enfermedad)."
                 ]
             },
             {

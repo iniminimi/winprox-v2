@@ -43,7 +43,8 @@
         "issue_nr": "Segnalazione n. :nr",
         "no_team": "Nessun team",
         "scheduled": "Programmata :date",
-        "recurring": "Ricorrente"
+        "recurring": "Ricorrente",
+        "meta_worker": "Operatore :name"
     },
     "show": {
         "title": "Attività",
@@ -87,7 +88,8 @@
         "reason_required": "È richiesto un motivo in chiusura senza esecuzione.",
         "pause_only_in_progress": "Le note di pausa sono consentite solo in corso.",
         "translation_requires_description": "Le traduzioni sono disponibili solo quando l'attività ha una descrizione.",
-        "translation_import_missing": "Attività non trovata o senza descrizione."
+        "translation_import_missing": "Attività non trovata o senza descrizione.",
+        "worker_not_on_team": "Scegli un operatore attivo del team selezionato."
     },
     "translation_edit": {
         "label": "Traduzione",

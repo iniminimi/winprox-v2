@@ -102,7 +102,7 @@
         "team_none": "Choose a team",
         "task_note": "Task note",
         "task_note_hint": "Optional instruction for the team on this task. Leave empty to use the issue description.",
-        "step_two_hint": "Assign one team. The task starts in progress immediately.",
+        "step_two_hint": "Assign one team, optionally one worker. The task starts in progress right away.",
         "next": "Next",
         "back": "Back",
         "finish": "Create issue",
@@ -116,7 +116,9 @@
         "round_stops_drag_location": "Drag this location in the round",
         "round_stops_select_all": "Select all units",
         "round_stops_hidden": "{1} :count unit is hidden because unit checks are off there.|[2,*] :count units are hidden because unit checks are off there.",
-        "round_stops_unavailable": "{1} No units available as stops. :count unit is hidden because unit checks are off there.|[2,*] No units available as stops. :count units are hidden because unit checks are off there."
+        "round_stops_unavailable": "{1} No units available as stops. :count unit is hidden because unit checks are off there.|[2,*] No units available as stops. :count units are hidden because unit checks are off there.",
+        "worker": "Worker (optional)",
+        "worker_none": "Whole team"
     },
     "round_create": {
         "title": "Plan inspection round",
@@ -226,7 +228,9 @@
         "round_stops_saved": "Round stops saved.",
         "recurring_ended": "Recurring issue closed.",
         "recurring_end_modal_subtitle": "Close this recurring issue. New cycles stop; open tasks will also be closed.",
-        "open_unit": "Open unit"
+        "open_unit": "Open unit",
+        "add_task_worker_label": "Worker (optional)",
+        "add_task_worker_none": "Whole team"
     },
     "updates": {
         "kind": {

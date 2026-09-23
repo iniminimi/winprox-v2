@@ -5,17 +5,20 @@ namespace App\Livewire\Tasks;
 use App\Actions\Communication\ImportTaskTranslationsAction;
 use App\Actions\Tasks\PauseTaskAction;
 use App\Actions\Tasks\RoundTaskCompletionAction;
+use App\Actions\Tasks\UpdateTaskAssignmentAction;
 use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Actions\Tasks\UpdateTaskPriorityAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
-use App\Actions\Tasks\UpdateTaskTeamAction;
 use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
+use App\Http\Requests\Tasks\AssignedWorkerRules;
 use App\Models\InternalTeam;
 use App\Models\Task;
+use App\Models\Worker;
 use App\Support\EntityDetailNavigation;
 use App\Support\Esg\EsgOperationChainPresenter;
 use App\Support\Tasks\TaskStatusTransitions;
+use App\Support\Tenancy;
 use App\Support\Translation\LocaleSupport;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Validation\ValidationException;
@@ -36,6 +39,8 @@ class Show extends Component
     public string $pauseNote = '';
 
     public ?int $teamId = null;
+
+    public ?int $assignedWorkerId = null;
 
     public string $priority = '';
 
@@ -63,12 +68,18 @@ class Show extends Component
             'updates.photos',
             'translations',
             'team.translations',
+            'assignedWorker',
             'roundStopSkips',
             'esgThresholdMeasurement.indicator.translations',
             'esgThresholdMeasurement.task',
             'esgThresholdMeasurement.thresholdFollowUpTask',
         ]);
         $this->syncFormFromTask();
+    }
+
+    public function updatedTeamId(): void
+    {
+        $this->assignedWorkerId = null;
     }
 
     public function openEditTaskModal(): void
@@ -165,7 +176,7 @@ class Show extends Component
 
     public function saveDetails(
         UpdateTaskPriorityAction $updatePriority,
-        UpdateTaskTeamAction $updateTeam,
+        UpdateTaskAssignmentAction $updateAssignment,
         UpdateTaskDetailsAction $updateDetails,
     ): void {
         $this->authorize('update', $this->task);
@@ -174,15 +185,19 @@ class Show extends Component
 
         $validated = $this->validate([
             'teamId' => ['required', 'integer', 'exists:internal_teams,id'],
+            'assignedWorkerId' => AssignedWorkerRules::forTeamId(
+                $this->teamId ? (int) $this->teamId : null,
+                (int) Tenancy::id(),
+            ),
             'taskNote' => ['required', 'string', 'min:2', 'max:'.TextDescriptionLimits::MAX],
             'taskScheduledFor' => ['nullable', 'date'],
             'priority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
-        ], [
+        ], array_merge([
             'teamId.required' => __('tasks.show.errors.team_required'),
             'taskNote.required' => __('issues.show.errors.task_note_required'),
             'taskNote.min' => __('issues.show.errors.task_note_min'),
             'taskNote.max' => __('issues.errors.text_max'),
-        ]);
+        ], AssignedWorkerRules::messages('assignedWorkerId')));
 
         $updatePriority->handle(
             $this->task,
@@ -191,9 +206,11 @@ class Show extends Component
             auth()->id(),
         );
 
-        if ($this->task->internal_team_id !== (int) $validated['teamId']) {
-            $updateTeam->handle($this->task, (int) $validated['teamId']);
-        }
+        $updateAssignment->handle(
+            $this->task,
+            (int) $validated['teamId'],
+            isset($validated['assignedWorkerId']) ? (int) $validated['assignedWorkerId'] : null,
+        );
 
         $updateDetails->handle(
             $this->task,
@@ -271,6 +288,7 @@ class Show extends Component
             'updates.worker',
             'updates.photos',
             'team.translations',
+            'assignedWorker',
             'roundStopSkips',
         ]);
         $this->syncFormFromTask();
@@ -279,6 +297,7 @@ class Show extends Component
     protected function syncFormFromTask(): void
     {
         $this->teamId = $this->task->internal_team_id;
+        $this->assignedWorkerId = $this->task->assigned_worker_id;
         $this->priority = $this->task->priority instanceof TaskPriority
             ? $this->task->priority->value
             : (string) $this->task->priority;
@@ -362,6 +381,14 @@ class Show extends Component
                 ->orderBy('sort_order')
                 ->orderBy('name')
                 ->get(['id', 'name', 'original_language']),
+            'assignableWorkers' => $this->teamId
+                ? Worker::query()
+                    ->where('is_active', true)
+                    ->where('internal_team_id', $this->teamId)
+                    ->orderBy('first_name')
+                    ->orderBy('last_name')
+                    ->get()
+                : collect(),
             'priorities' => TaskPriority::cases(),
             'transitions' => TaskStatusTransitions::nextOptions($current),
             'requiresReason' => $target !== null && TaskStatusTransitions::requiresReason($current, $target),

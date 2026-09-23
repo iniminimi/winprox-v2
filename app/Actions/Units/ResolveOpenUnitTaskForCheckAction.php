@@ -26,8 +26,8 @@ class ResolveOpenUnitTaskForCheckAction
         }
 
         $base = Task::query()
+            ->visibleToWorker($worker)
             ->where('tenant_id', $unit->tenant_id)
-            ->where('internal_team_id', $worker->internal_team_id)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($query) => $query
                 ->whereNotNull('approved_at')
@@ -77,8 +77,8 @@ class ResolveOpenUnitTaskForCheckAction
         }
 
         $round = Task::query()
+            ->visibleToWorker($worker)
             ->where('tenant_id', $unit->tenant_id)
-            ->where('internal_team_id', $worker->internal_team_id)
             ->whereIn('status', TaskStatus::openValues())
             ->with(['issue.roundStops.unit.translations', 'roundStopSkips'])
             ->whereHas('issue', fn ($query) => $query

@@ -7,6 +7,7 @@ use App\Actions\Tasks\CreateTaskAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
 use App\Enums\TaskStatus;
+use App\Http\Requests\Tasks\AssignedWorkerRules;
 use App\Http\Requests\Tasks\UpdateTaskStatusRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Issue;
@@ -49,15 +50,25 @@ class TaskController extends Controller
     {
         $this->authorize('create', Task::class);
 
+        $teamId = $request->filled('internal_team_id') ? (int) $request->input('internal_team_id') : null;
+        $tenantId = (int) $request->user()->tenant_id;
+
         $validated = $request->validate([
             'issue_id' => ['required', 'integer', 'exists:issues,id'],
             'internal_team_id' => ['nullable', 'integer', 'exists:internal_teams,id'],
-        ]);
+            'assigned_worker_id' => AssignedWorkerRules::forTeamId($teamId, $tenantId),
+        ], AssignedWorkerRules::messages());
 
         $issue = Issue::query()->findOrFail($validated['issue_id']);
         $this->authorize('view', $issue);
 
-        $task = $create->handle($issue, $validated['internal_team_id'] ?? null);
+        $task = $create->handle(
+            $issue,
+            $validated['internal_team_id'] ?? null,
+            assignedWorkerId: isset($validated['assigned_worker_id'])
+                ? (int) $validated['assigned_worker_id']
+                : null,
+        );
 
         return $this->item(new TaskResource($task->load('issue')), 201);
     }

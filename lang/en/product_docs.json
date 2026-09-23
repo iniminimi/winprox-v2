@@ -48,10 +48,11 @@
             {
                 "title": "Tasks",
                 "badge": "core",
-                "body": "One issue can have several tasks. Each task goes to one team.",
+                "body": "One report can have several tasks. Each task goes to one team, optionally to one worker on that team.",
                 "items": [
                     "Priority, deadline and notes per task.",
-                    "Follow-up in the task list and via QR on site."
+                    "Follow-up in the task list and via QR on site.",
+                    "Managers can always change or clear the worker (e.g. sickness)."
                 ]
             },
             {

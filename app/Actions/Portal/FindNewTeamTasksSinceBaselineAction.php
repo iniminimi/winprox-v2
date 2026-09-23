@@ -37,7 +37,7 @@ class FindNewTeamTasksSinceBaselineAction
             ? Unit::query()->find($excludeUnitId)
             : null;
 
-        return TimePortalData::openTasksForTeam($team)
+        return TimePortalData::openTasksForWorker($worker)
             ->filter(function ($task) use ($knownIds, $excludeUnit) {
                 if (in_array((int) $task->id, $knownIds, true)) {
                     return false;

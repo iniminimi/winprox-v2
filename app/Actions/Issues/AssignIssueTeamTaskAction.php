@@ -11,7 +11,8 @@ use App\Support\Recurrence\RecurrenceSchedule;
 use Carbon\Carbon;
 
 /**
- * Stap 2 facility-flow: één taak toewijzen aan een team (status In uitvoering).
+ * Stap 2 facility-flow: één taak toewijzen aan een team (status In uitvoering),
+ * optioneel aan één worker van dat team.
  */
 class AssignIssueTeamTaskAction
 {
@@ -26,6 +27,7 @@ class AssignIssueTeamTaskAction
         ?string $description = null,
         TaskPriority $priority = TaskPriority::Prio3,
         array $extra = [],
+        ?int $assignedWorkerId = null,
     ): Task {
         $openedDueAt = null;
         if ($issue->isInspectionRound()) {
@@ -47,6 +49,7 @@ class AssignIssueTeamTaskAction
             description: $description,
             startedAt: now(),
             extra: $extra,
+            assignedWorkerId: $assignedWorkerId,
         );
 
         if ($openedDueAt instanceof Carbon && $issue->is_recurring) {

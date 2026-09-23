@@ -3,19 +3,16 @@
 namespace App\Actions\Tasks;
 
 use App\Models\Task;
-use App\Support\Tasks\TaskIssueApproval;
 
+/**
+ * @deprecated Prefer UpdateTaskAssignmentAction (team + optionele worker).
+ */
 class UpdateTaskTeamAction
 {
+    public function __construct(private UpdateTaskAssignmentAction $updateAssignment) {}
+
     public function handle(Task $task, int $internalTeamId): Task
     {
-        TaskIssueApproval::assertTaskMutable($task);
-        if ((int) $task->internal_team_id === $internalTeamId) {
-            return $task;
-        }
-
-        $task->update(['internal_team_id' => $internalTeamId]);
-
-        return $task->fresh(['issue.location', 'issue.unit', 'team']);
+        return $this->updateAssignment->handle($task, $internalTeamId, null);
     }
 }

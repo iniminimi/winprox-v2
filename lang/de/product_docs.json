@@ -48,10 +48,11 @@
             {
                 "title": "Aufgaben",
                 "badge": "Kern",
-                "body": "Eine Meldung kann mehrere Aufgaben haben. Jede Aufgabe geht an ein Team.",
+                "body": "Eine Meldung kann mehrere Aufgaben haben. Jede Aufgabe geht an ein Team, optional an einen Mitarbeiter dieses Teams.",
                 "items": [
                     "Prio, Frist und Notizen pro Aufgabe.",
-                    "Nachverfolgung in der Aufgabenliste und per QR vor Ort."
+                    "Nachverfolgung in der Aufgabenliste und per QR vor Ort.",
+                    "Die Verwaltung kann den Mitarbeiter jederzeit ändern oder leeren (z. B. Krankheit)."
                 ]
             },
             {
