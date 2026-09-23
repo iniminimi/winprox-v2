@@ -4,7 +4,7 @@
             <div class="wp-stack-tight">
                 <div class="wp-cluster">
                     <h2 id="issue-round-create-title" class="wp-section-title">{{ __('issues.round_create.title') }}</h2>
-                    <x-wp-page-help page="issues.create" />
+                    <x-wp-page-help page="issues.round_create" />
                 </div>
                 <p class="wp-muted wp-text-sm">{{ __('issues.round_create.subtitle') }}</p>
             </div>

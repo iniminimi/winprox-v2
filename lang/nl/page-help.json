@@ -120,7 +120,7 @@
                 },
                 {
                     "label": "Inspectieronde plannen",
-                    "text": "Kies minstens 2 stops (units) en team in één formulier. Zet Terugkerend aan voor interval/lead, of uit voor een eenmalige ronde met alleen vervaldatum. Start meteen de eerste taak. Met Time + GPS-werkbezoeken verschijnen de stops van vandaag na inklokken onder Clock Point → Waar moet ik vandaag naartoe."
+                    "text": "Vul omschrijving, team en stops in. Links zoeken/kiezen, rechts route slepen. Terugkerend aan voor interval/lead, of uit voor een eenmalige ronde. Start meteen de eerste taak."
                 },
                 {
                     "label": "Interval",
@@ -140,7 +140,7 @@
                 {
                     "label": "Stops",
                     "nested": true,
-                    "text": "Kies minstens 2 units (alle locaties). Vinken en slepen gebeurt in dezelfde lijst per locatie (1 = eerste stop). Alleen units met unit checks staan in de lijst."
+                    "text": "Links zoeken en aanvinken; rechts de route slepen (1 = eerste stop). Locaties met alleen «Hele locatie» = één grijze regel. Alleen units met unit checks. Minstens 2 stops."
                 },
                 {
                     "label": "Taaknotitie",
@@ -221,11 +221,11 @@
                 },
                 {
                     "label": "Inspectieronde-stops",
-                    "text": "Kies minstens 2 units als stops (alle locaties; gegroepeerd per locatie). Alleen units met unit checks staan in de lijst. Vinken en slepen gebeurt in dezelfde lijst (1 = eerste stop)."
+                    "text": "Zoek en vink links aan; rechts sleep je de route (1 = eerste stop). Locaties met alleen «Hele locatie» staan als één grijze regel. Alleen units met unit checks. Minstens 2 stops."
                 },
                 {
                     "label": "Selecteer alle units",
-                    "text": "Gebruik het vinkje boven de lijst om snel alle units te selecteren. Daarna kunt u eventueel individuele units uitvinken."
+                    "text": "Zet alle beschikbare stops in de route. Daarna kunt u in de route individueel uitvinken."
                 },
                 {
                     "label": "Taaknotitie",
@@ -1786,6 +1786,53 @@
                 {
                     "label": "Beoordelen",
                     "text": "Open een open aanvraag. U ziet de dagen en, als die er zijn, de <strong>bestaande diensten</strong> die zouden verdwijnen. Weigeren vraagt een <strong>reden</strong> (minstens 3 tekens); goedkeuren niet. Bij goedkeuren bewaart WinProx die cellen op de aanvraag en zet daarna gepubliceerde afwezigheid in het uurrooster."
+                }
+            ]
+        },
+        "issues.round_create": {
+            "title": "Hulp — Inspectieronde plannen",
+            "actions": [
+                {
+                    "label": "Omschrijving",
+                    "text": "Korte titel van de ronde op één regel (bijv. «Schoonmaakronde Brugge»)."
+                },
+                {
+                    "label": "Terugkerend",
+                    "text": "Aan = interval, lead en eerste vervaldatum. Uit = eenmalige ronde met alleen een vervaldatum (geen volgende cyclus)."
+                },
+                {
+                    "label": "Interval",
+                    "nested": true,
+                    "text": "Hoe vaak de ronde terugkomt (bijv. elke week, elke 2 weken, elke maand). Alleen bij terugkerend."
+                },
+                {
+                    "label": "Lead (dagen)",
+                    "nested": true,
+                    "text": "Hoeveel dagen vóór de vervaldatum de taak al wordt aangemaakt. Alleen bij terugkerend."
+                },
+                {
+                    "label": "Vervaldatum / eerste vervaldatum",
+                    "text": "Bij eenmalig: de geplande datum. Bij terugkerend: de eerste vervaldatum van cyclus 1."
+                },
+                {
+                    "label": "Stops — Kiezen",
+                    "text": "Links: zoek op locatie, plaats of unit en vink aan. Locaties met alleen «Hele locatie» staan als één grijze regel (niet genest onder een andere locatie). Alleen units met unit checks. Minstens 2 stops."
+                },
+                {
+                    "label": "Stops — Route",
+                    "text": "Rechts: de gekozen stops in volgorde (1 = eerste). Sleep daar om te herschikken: hele locatieblok of units binnen één locatie. Uitvinken haalt een stop uit de route."
+                },
+                {
+                    "label": "Selecteer alle units",
+                    "text": "Zet alle beschikbare stops in de route. Daarna kunt u in de route individueel uitvinken."
+                },
+                {
+                    "label": "Team en uitvoerder",
+                    "text": "Kies het team (verplicht) en optioneel één uitvoerder van dat team."
+                },
+                {
+                    "label": "Taaknotitie",
+                    "text": "Optionele instructie op de taak. Leeg laten mag; dan geldt de omschrijving van de ronde."
                 }
             ]
         }

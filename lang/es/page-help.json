@@ -120,7 +120,7 @@
                 },
                 {
                     "label": "Planificar ronda de inspección",
-                    "text": "Elige al menos 2 paradas (unidades) y un equipo. Activa Recurrente para intervalo/lead, o desactívalo para una ronda puntual solo con fecha. Arranca de inmediato la primera tarea."
+                    "text": "Introduce descripción, equipo y paradas. Busca/elige a la izquierda, arrastra la ruta a la derecha. Recurrente o puntual. Arranca la primera tarea."
                 },
                 {
                     "label": "Intervalo",
@@ -140,7 +140,7 @@
                 {
                     "label": "Paradas",
                     "nested": true,
-                    "text": "Elija al menos 2 unidades (cualquier ubicación). Marcar y arrastrar se hacen en la misma lista por sede (1 = primera parada). Solo aparecen unidades con unit checks."
+                    "text": "Busca y marca a la izquierda; arrastra la ruta a la derecha (1 = primera parada). Ubicación completa = una fila gris. Mín. 2."
                 },
                 {
                     "label": "Nota de tarea",
@@ -225,7 +225,7 @@
                 },
                 {
                     "label": "Seleccionar todas las unidades",
-                    "text": "Use la casilla encima de la lista para seleccionar rápidamente todas las unidades. Luego puede desmarcar unidades individuales."
+                    "text": "Añade todas las paradas disponibles a la ruta. Luego puedes desmarcar individualmente."
                 },
                 {
                     "label": "Nota de la tarea",
@@ -1786,6 +1786,53 @@
                 {
                     "label": "Revisar",
                     "text": "Abra una solicitud abierta. Verá los días y, si los hay, los <strong>turnos existentes</strong> que desaparecerían. Rechazar exige un <strong>motivo</strong> (al menos 3 caracteres); aprobar no. Al aprobar, WinProx guarda esas celdas en la solicitud y luego escribe ausencia publicada en el cuadrante."
+                }
+            ]
+        },
+        "issues.round_create": {
+            "title": "Ayuda — Planificar ronda de inspección",
+            "actions": [
+                {
+                    "label": "Descripción",
+                    "text": "Título corto en una línea (p. ej. «Ronda limpieza Brujas»)."
+                },
+                {
+                    "label": "Recurrente",
+                    "text": "Activado = intervalo, lead y primera fecha. Desactivado = ronda puntual solo con fecha (sin ciclo siguiente)."
+                },
+                {
+                    "label": "Intervalo",
+                    "nested": true,
+                    "text": "Con qué frecuencia se repite. Solo si es recurrente."
+                },
+                {
+                    "label": "Lead (días)",
+                    "nested": true,
+                    "text": "Días antes de la fecha en que se crea la tarea. Solo si es recurrente."
+                },
+                {
+                    "label": "Fecha / primera fecha",
+                    "text": "Puntual: fecha prevista. Recurrente: primera fecha del ciclo 1."
+                },
+                {
+                    "label": "Paradas — Elegir",
+                    "text": "Izquierda: busca y marca. Ubicaciones solo con «Ubicación completa» en una fila gris (no anidadas). Solo unidades con unit checks. Mín. 2 paradas."
+                },
+                {
+                    "label": "Paradas — Ruta",
+                    "text": "Derecha: paradas elegidas en orden (1 = primera). Arrastra para reordenar. Desmarcar quita una parada."
+                },
+                {
+                    "label": "Seleccionar todas las unidades",
+                    "text": "Añade todas las paradas disponibles a la ruta. Luego puedes desmarcar individualmente."
+                },
+                {
+                    "label": "Equipo y ejecutor",
+                    "text": "Elige el equipo (obligatorio) y opcionalmente un ejecutor de ese equipo."
+                },
+                {
+                    "label": "Nota de tarea",
+                    "text": "Instrucción opcional en la tarea. Vacío = descripción de la ronda."
                 }
             ]
         }

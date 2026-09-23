@@ -120,7 +120,7 @@
                 },
                 {
                     "label": "Plan inspection round",
-                    "text": "Choose at least 2 stops (units) and a team in one form. Turn Recurring on for interval/lead, or off for a one-time round with only a due date. Starts the first task immediately. With Time + GPS work visits, today’s stops appear after clock-in under Clock Point → Where should I go today."
+                    "text": "Enter description, team and stops. Search/choose on the left, drag the route on the right. Recurring on for interval/lead, or off for a one-time round. Starts the first task immediately."
                 },
                 {
                     "label": "Interval",
@@ -140,7 +140,7 @@
                 {
                     "label": "Stops",
                     "nested": true,
-                    "text": "Pick at least 2 units (any locations). Tick and drag in the same list per location (1 = first stop). Only units with unit checks appear in the list."
+                    "text": "Search and tick on the left; drag the route on the right (1 = first stop). Whole-location sites = one grey row. Only units with unit checks. At least 2 stops."
                 },
                 {
                     "label": "Task note",
@@ -221,11 +221,11 @@
                 },
                 {
                     "label": "Inspection round stops",
-                    "text": "Choose at least 2 units as stops (any locations; grouped by location). Only units with unit checks appear in the list. Tick and drag in the same list (1 = first stop)."
+                    "text": "Search and tick on the left; drag the route on the right (1 = first stop). Whole-location sites appear as one grey row. Only units with unit checks. At least 2 stops."
                 },
                 {
                     "label": "Select all units",
-                    "text": "Use the checkbox above the list to quickly select all units. You can then untick individual units if needed."
+                    "text": "Adds all available stops to the route. You can then untick individual stops in the route."
                 },
                 {
                     "label": "Task note",
@@ -1786,6 +1786,53 @@
                 {
                     "label": "Review",
                     "text": "Open a pending request. You see the days and, if any, the <strong>existing shifts</strong> that would disappear. Reject needs a <strong>reason</strong> (at least 3 characters); approve does not. On approval WinProx stores those cells on the request, then writes published absence on the roster."
+                }
+            ]
+        },
+        "issues.round_create": {
+            "title": "Help — Plan inspection round",
+            "actions": [
+                {
+                    "label": "Description",
+                    "text": "Short one-line title for the round (e.g. «Bruges cleaning round»)."
+                },
+                {
+                    "label": "Recurring",
+                    "text": "On = interval, lead and first due date. Off = one-time round with only a due date (no next cycle)."
+                },
+                {
+                    "label": "Interval",
+                    "nested": true,
+                    "text": "How often the round repeats. Recurring only."
+                },
+                {
+                    "label": "Lead (days)",
+                    "nested": true,
+                    "text": "How many days before the due date the task is created. Recurring only."
+                },
+                {
+                    "label": "Due date / first due date",
+                    "text": "One-time: the planned date. Recurring: first due date of cycle 1."
+                },
+                {
+                    "label": "Stops — Choose",
+                    "text": "Left: search by location, city or unit and tick. Locations with only a whole-location unit appear as one grey row (not nested under another location). Only units with unit checks. At least 2 stops."
+                },
+                {
+                    "label": "Stops — Route",
+                    "text": "Right: selected stops in order (1 = first). Drag there to reorder: whole location block or units within a location. Untick removes a stop from the route."
+                },
+                {
+                    "label": "Select all units",
+                    "text": "Adds all available stops to the route. You can then untick individual stops in the route."
+                },
+                {
+                    "label": "Team and worker",
+                    "text": "Choose the team (required) and optionally one worker from that team."
+                },
+                {
+                    "label": "Task note",
+                    "text": "Optional instruction on the task. Leave empty to use the round description."
                 }
             ]
         }

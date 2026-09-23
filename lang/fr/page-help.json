@@ -120,7 +120,7 @@
                 },
                 {
                     "label": "Planifier une tournée d’inspection",
-                    "text": "Choisissez au moins 2 arrêts (unités) et une équipe. Activez Récurrente pour l’intervalle/lead, ou désactivez pour une tournée unique avec seulement une échéance. Démarre immédiatement la première tâche."
+                    "text": "Saisissez description, équipe et arrêts. Cherchez/choisissez à gauche, glissez l'itinéraire à droite. Récurrente ou unique. Démarre la première tâche."
                 },
                 {
                     "label": "Intervalle",
@@ -140,7 +140,7 @@
                 {
                     "label": "Arrêts",
                     "nested": true,
-                    "text": "Choisissez au moins 2 unités (tous les sites). Cocher et glisser se font dans la même liste par site (1 = premier arrêt). Seules les unités avec unit checks apparaissent."
+                    "text": "Cherchez et cochez à gauche ; glissez l'itinéraire à droite (1 = premier arrêt). Site entier = une ligne grise. Au moins 2 arrêts."
                 },
                 {
                     "label": "Note de tâche",
@@ -225,7 +225,7 @@
                 },
                 {
                     "label": "Sélectionner toutes les unités",
-                    "text": "Utilisez la case au-dessus de la liste pour sélectionner rapidement toutes les unités, puis décochez celles à exclure."
+                    "text": "Ajoute tous les arrêts disponibles à l'itinéraire. Vous pouvez ensuite décocher individuellement."
                 },
                 {
                     "label": "Note de tâche",
@@ -1794,6 +1794,53 @@
                 {
                     "label": "Traiter",
                     "text": "Ouvrez une demande ouverte. Vous voyez les jours et, s’il y en a, les <strong>services existants</strong> qui disparaîtraient. Refuser exige un <strong>motif</strong> (au moins 3 caractères) ; approuver non. À l’approbation, WinProx enregistre ces cellules sur la demande, puis écrit une absence publiée dans le planning."
+                }
+            ]
+        },
+        "issues.round_create": {
+            "title": "Aide — Planifier une tournée d'inspection",
+            "actions": [
+                {
+                    "label": "Description",
+                    "text": "Titre court sur une ligne (ex. « Tournée nettoyage Bruges »)."
+                },
+                {
+                    "label": "Récurrente",
+                    "text": "Activé = intervalle, lead et première échéance. Désactivé = tournée unique avec seulement une échéance (pas de cycle suivant)."
+                },
+                {
+                    "label": "Intervalle",
+                    "nested": true,
+                    "text": "Fréquence de la tournée. Uniquement si récurrente."
+                },
+                {
+                    "label": "Lead (jours)",
+                    "nested": true,
+                    "text": "Jours avant l'échéance pour créer la tâche. Uniquement si récurrente."
+                },
+                {
+                    "label": "Échéance / première échéance",
+                    "text": "Unique : date prévue. Récurrente : première échéance du cycle 1."
+                },
+                {
+                    "label": "Arrêts — Choisir",
+                    "text": "À gauche : cherchez et cochez. Un site avec seulement « Site entier » apparaît sur une ligne grise (pas imbriqué). Unités avec contrôles uniquement. Au moins 2 arrêts."
+                },
+                {
+                    "label": "Arrêts — Itinéraire",
+                    "text": "À droite : arrêts choisis dans l'ordre (1 = premier). Glissez pour réordonner. Décocher retire un arrêt."
+                },
+                {
+                    "label": "Sélectionner toutes les unités",
+                    "text": "Ajoute tous les arrêts disponibles à l'itinéraire. Vous pouvez ensuite décocher individuellement."
+                },
+                {
+                    "label": "Équipe et exécutant",
+                    "text": "Choisissez l'équipe (obligatoire) et éventuellement un exécutant de cette équipe."
+                },
+                {
+                    "label": "Note de tâche",
+                    "text": "Instruction optionnelle sur la tâche. Vide = description de la tournée."
                 }
             ]
         }

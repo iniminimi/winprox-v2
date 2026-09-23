@@ -24,6 +24,13 @@ it('laadt paginahulp voor een bekende pagina', function (): void {
         ->and($rounds['title'])->toBe('Hulp — Inspectierondes')
         ->and(collect($rounds['actions'])->pluck('label')->all())->toContain('Inspectieronde plannen')
         ->and(collect($rounds['actions'])->pluck('label')->all())->not->toContain('Melding toevoegen');
+
+    $plan = PageHelp::for('issues.round_create');
+
+    expect($plan)->not->toBeNull()
+        ->and($plan['title'])->toBe('Hulp — Inspectieronde plannen')
+        ->and(collect($plan['actions'])->pluck('label')->all())->toContain('Stops — Kiezen')
+        ->and(collect($plan['actions'])->pluck('label')->all())->toContain('Stops — Route');
 });
 
 it('laadt paginahulp voor units-overzicht', function (): void {

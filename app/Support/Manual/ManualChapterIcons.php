@@ -18,6 +18,7 @@ final class ManualChapterIcons
         'issues.inspection_rounds' => 'tasks',
         'issues.show' => 'issues',
         'issues.create' => 'issues',
+        'issues.round_create' => 'tasks',
         'tasks.list' => 'tasks',
         'tasks.show' => 'tasks',
         'calendar' => 'calendar',

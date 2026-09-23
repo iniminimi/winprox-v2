@@ -120,7 +120,7 @@
                 },
                 {
                     "label": "Inspektionsrunde planen",
-                    "text": "Mindestens 2 Stopps (Units) und ein Team wählen. Wiederkehrend an für Intervall/Lead, aus für eine einmalige Runde nur mit Fälligkeitsdatum. Erstellt sofort die erste Aufgabe."
+                    "text": "Beschreibung, Team und Stopps eingeben. Links suchen/wählen, rechts Route ziehen. Wiederkehrend oder einmalig. Startet die erste Aufgabe."
                 },
                 {
                     "label": "Intervall",
@@ -140,7 +140,7 @@
                 {
                     "label": "Stops",
                     "nested": true,
-                    "text": "Wählen Sie mindestens 2 Units (alle Standorte). Ankreuzen und Ziehen erfolgen in derselben Liste pro Standort (1 = erster Stopp). Nur Units mit Unit Checks erscheinen."
+                    "text": "Links suchen/ankreuzen; rechts Route ziehen (1 = erster Stopp). Gesamter Standort = eine graue Zeile. Mindestens 2 Stopps."
                 },
                 {
                     "label": "Aufgabennotiz",
@@ -221,11 +221,11 @@
                 },
                 {
                     "label": "Inspektionsrunden-Stopps",
-                    "text": "Wählen Sie mindestens 2 Units als Stops (alle Standorte; nach Standort gruppiert). Nur Units mit Unit-Checks erscheinen in der Liste. Ankreuzen und Ziehen erfolgen in derselben Liste (1 = erster Stopp)."
+                    "text": "Links suchen/ankreuzen; rechts Route ziehen. Gesamter Standort = eine graue Zeile. Mindestens 2 Stopps mit Unit-Checks."
                 },
                 {
                     "label": "Alle Units auswählen",
-                    "text": "Nutzen Sie das Kontrollkästchen über der Liste, um schnell alle Units zu wählen. Danach können Sie einzelne Units wieder abwählen."
+                    "text": "Fügt alle verfügbaren Stopps zur Route hinzu. Danach einzeln abwählbar."
                 },
                 {
                     "label": "Aufgabennotiz",
@@ -1786,6 +1786,53 @@
                 {
                     "label": "Prüfen",
                     "text": "Öffnen Sie einen offenen Antrag. Sie sehen die Tage und, falls vorhanden, die <strong>bestehenden Schichten</strong>, die entfallen würden. Ablehnen braucht eine <strong>Begründung</strong> (mindestens 3 Zeichen); Genehmigen nicht. Bei Genehmigung speichert WinProx diese Zellen am Antrag und schreibt danach veröffentlichte Abwesenheit in den Dienstplan."
+                }
+            ]
+        },
+        "issues.round_create": {
+            "title": "Hilfe — Inspektionsrunde planen",
+            "actions": [
+                {
+                    "label": "Beschreibung",
+                    "text": "Kurzer Einzeiler-Titel der Runde (z. B. «Reinigungsrunde Brügge»)."
+                },
+                {
+                    "label": "Wiederkehrend",
+                    "text": "An = Intervall, Lead und erstes Fälligkeitsdatum. Aus = einmalige Runde nur mit Fälligkeitsdatum (kein nächster Zyklus)."
+                },
+                {
+                    "label": "Intervall",
+                    "nested": true,
+                    "text": "Wie oft die Runde wiederholt wird. Nur bei wiederkehrend."
+                },
+                {
+                    "label": "Lead (Tage)",
+                    "nested": true,
+                    "text": "Tage vor dem Fälligkeitsdatum, an denen die Aufgabe erstellt wird. Nur bei wiederkehrend."
+                },
+                {
+                    "label": "Fälligkeitsdatum / erstes Fälligkeitsdatum",
+                    "text": "Einmalig: geplantes Datum. Wiederkehrend: erstes Fälligkeitsdatum von Zyklus 1."
+                },
+                {
+                    "label": "Stopps — Auswählen",
+                    "text": "Links: suchen und ankreuzen. Standorte mit nur «Gesamter Standort» als eine graue Zeile (nicht verschachtelt). Nur Units mit Unit-Checks. Mindestens 2 Stopps."
+                },
+                {
+                    "label": "Stopps — Route",
+                    "text": "Rechts: gewählte Stopps in Reihenfolge (1 = erster). Dort ziehen zum Umsortieren. Abwählen entfernt einen Stopp."
+                },
+                {
+                    "label": "Alle Units auswählen",
+                    "text": "Fügt alle verfügbaren Stopps zur Route hinzu. Danach einzeln abwählbar."
+                },
+                {
+                    "label": "Team und Ausführender",
+                    "text": "Team wählen (pflicht) und optional einen Ausführenden dieses Teams."
+                },
+                {
+                    "label": "Aufgabennotiz",
+                    "text": "Optionale Anweisung auf der Aufgabe. Leer = Beschreibung der Runde."
                 }
             ]
         }

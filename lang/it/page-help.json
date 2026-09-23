@@ -120,7 +120,7 @@
                 },
                 {
                     "label": "Pianifica giro di ispezione",
-                    "text": "Scegli almeno 2 fermate (unità) e un team. Attiva Ricorrente per intervallo/lead, oppure disattiva per un giro una tantum solo con scadenza. Avvia subito la prima attività."
+                    "text": "Inserisci descrizione, team e fermate. Cerca/scegli a sinistra, trascina il percorso a destra. Ricorrente o una tantum. Avvia la prima attività."
                 },
                 {
                     "label": "Intervallo",
@@ -140,7 +140,7 @@
                 {
                     "label": "Fermate",
                     "nested": true,
-                    "text": "Scegli almeno 2 unità (qualsiasi sede). Spuntare e trascinare avvengono nello stesso elenco per sede (1 = prima fermata). Compaiono solo unità con unit check."
+                    "text": "Cerca e seleziona a sinistra; trascina il percorso a destra (1 = prima fermata). Sede intera = una riga grigia. Min. 2."
                 },
                 {
                     "label": "Nota compito",
@@ -225,7 +225,7 @@
                 },
                 {
                     "label": "Seleziona tutte le unità",
-                    "text": "Usi la casella sopra l'elenco per selezionare rapidamente tutte le unità. Poi può deselezionare le singole unità."
+                    "text": "Aggiunge tutte le fermate disponibili al percorso. Poi puoi deselezionare singolarmente."
                 },
                 {
                     "label": "Nota attività",
@@ -1786,6 +1786,53 @@
                 {
                     "label": "Valuta",
                     "text": "Apri una richiesta aperta. Vedi i giorni e, se ci sono, i <strong>turni esistenti</strong> che sparirebbero. Rifiutare richiede un <strong>motivo</strong> (almeno 3 caratteri); approvare no. In approvazione WinProx salva quelle celle sulla richiesta e poi scrive l’assenza pubblicata nel turno."
+                }
+            ]
+        },
+        "issues.round_create": {
+            "title": "Aiuto — Pianifica giro di ispezione",
+            "actions": [
+                {
+                    "label": "Descrizione",
+                    "text": "Titolo breve su una riga (es. «Giro pulizie Bruges»)."
+                },
+                {
+                    "label": "Ricorrente",
+                    "text": "Attivo = intervallo, lead e prima scadenza. Disattivo = giro una tantum solo con scadenza (nessun ciclo successivo)."
+                },
+                {
+                    "label": "Intervallo",
+                    "nested": true,
+                    "text": "Quanto spesso si ripete. Solo se ricorrente."
+                },
+                {
+                    "label": "Lead (giorni)",
+                    "nested": true,
+                    "text": "Giorni prima della scadenza in cui si crea l'attività. Solo se ricorrente."
+                },
+                {
+                    "label": "Scadenza / prima scadenza",
+                    "text": "Una tantum: data prevista. Ricorrente: prima scadenza del ciclo 1."
+                },
+                {
+                    "label": "Fermate — Scegli",
+                    "text": "Sinistra: cerca e seleziona. Sedi con sola «Sede intera» su una riga grigia (non annidate). Solo unità con unit check. Min. 2 fermate."
+                },
+                {
+                    "label": "Fermate — Percorso",
+                    "text": "Destra: fermate scelte in ordine (1 = prima). Trascina per riordinare. Deselezionare toglie una fermata."
+                },
+                {
+                    "label": "Seleziona tutte le unità",
+                    "text": "Aggiunge tutte le fermate disponibili al percorso. Poi puoi deselezionare singolarmente."
+                },
+                {
+                    "label": "Team e esecutore",
+                    "text": "Scegli il team (obbligatorio) e opzionalmente un esecutore di quel team."
+                },
+                {
+                    "label": "Nota attività",
+                    "text": "Istruzione opzionale sull'attività. Vuoto = descrizione del giro."
                 }
             ]
         }

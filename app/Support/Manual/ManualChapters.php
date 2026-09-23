@@ -21,6 +21,7 @@ final class ManualChapters
         'checklists',
         'issues.show',
         'issues.create',
+        'issues.round_create',
         'tasks.list',
         'tasks.show',
         'calendar',
