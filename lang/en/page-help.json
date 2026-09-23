@@ -27,7 +27,7 @@
                 },
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 50 seats and 50 units, including Time (punch clock). The dashboard shows remaining days."
+                    "text": "During the trial you have up to 5 seats, 50 units and 10 documents, including Time (punch clock). The dashboard shows remaining days."
                 },
                 {
                     "label": "Add issue",
@@ -794,11 +794,11 @@
             "actions": [
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 50 seats and 50 units, including Time (punch clock). IoT, ESG and API are not in the trial. The dashboard shows remaining days."
+                    "text": "During the trial you have up to 5 seats, 50 units and 10 documents, including Time (punch clock). IoT, ESG and API are not in the trial. The dashboard shows remaining days."
                 },
                 {
                     "label": "Plan / contact",
-                    "text": "Plans are informational (10/25/50 seats + Corporate). You do not activate a subscription yourself: WinProx assigns the plan after agreement/annual invoice. Contact info@winprox.app. Request CIAO (NSSO) the same way; a Superuser enables it (Time turns on; Corporate not required)."
+                    "text": "Plans: 5/10/25/50 seats + Corporate. You choose a plan and pay monthly via Stripe (Corporate on request). Contact info@winprox.app for Corporate or CIAO. Request CIAO (NSSO) the same way; a Superuser enables it (Time turns on; Corporate not required)."
                 },
                 {
                     "label": "Delete organisation data",
@@ -1104,7 +1104,7 @@
                 },
                 {
                     "label": "Assign plan",
-                    "text": "Choose the plan (WinProx 10/25/50 or Corporate) and assign it. For Corporate: enter the units cap. CIAO can be enabled without Corporate."
+                    "text": "Choose the plan (WinProx 5/10/25/50 or Corporate) and assign it. For Corporate: enter the units cap. CIAO can be enabled without Corporate."
                 }
             ]
         },

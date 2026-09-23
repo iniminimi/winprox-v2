@@ -1,15 +1,15 @@
 {
     "title": "Abbonamento, limiti e fatturazione",
     "public_title": "Prezzi e piani",
-    "public_subtitle": "Scegli il numero di licenze. WinProx si paga annualmente. Timbratrice, turno e CIAO (ONSS) inclusi.",
+    "public_subtitle": "Scegli il numero di licenze. Pagamento mensile tramite Stripe. Timbratura, pianificazione e CIAO inclusi.",
     "public_register_cta": "Inizia prova gratuita",
-    "subtitle": "Dopo il mese gratuito, scegli una formula. Licenze 10/25/50; unit e documenti = 5x (50/125/250). Sedi e foto illimitate.",
+    "subtitle": "Dopo il mese gratuito scegli una formula. Licenze 5/10/25/50; unità = 10× (50/100/250/500); documenti 10/20/30/40. Sedi e foto illimitate.",
     "plans_heading": "Piani",
-    "plans_intro": "Paghi per persona. 10, 25 o 50 licenze (colleghi + esecutori); unit e documenti = 5× quel numero (50 / 125 / 250). Sedi e foto illimitate. Timbratrice, turno e CIAO (ONSS) inclusi.",
+    "plans_intro": "Pagamento mensile. 5, 10, 25 o 50 licenze (colleghi + esecutori); unità = 10× quel numero; documenti 10/20/30/40. Sedi e foto illimitate. Timbratura, pianificazione e CIAO inclusi.",
     "glossary": {
         "heading": "Licenze, unità e foto",
-        "unit": "Unit — un oggetto o luogo con codice QR (macchina, stanza, veicolo). Unit (e documenti) = 5× le tue licenze: 50 / 125 / 250.",
-        "document": "Documento — un file sul portale QR, ad esempio un manuale. Stesso limite delle unità.",
+        "unit": "Unità — oggetto o luogo con QR. Ogni nuova sede riceve automaticamente un'unità «Intera sede». Unità = 10× le tue licenze: 50 / 100 / 250 / 500.",
+        "document": "Documento — un file sul portale QR, es. un manuale. Limite per formula: 10 / 20 / 30 / 40.",
         "photo": "Foto — le foto su segnalazioni e compiti sono illimitate.",
         "seat": "Licenza — un collega con accesso (admin o dipendente) o un operatore (Clock Point, senza accesso). Un collega con profilo timbratrice collegato conta come una licenza."
     },
@@ -27,7 +27,7 @@
     "status_active": "Abbonamento attivo: :plan, valido fino al :date.",
     "status_grace": "Abbonamento :plan terminato il :ended. Periodo di grazia fino al :grace_end — :days giorni di accesso completo rimasti.",
     "status_expired": "La prova è terminata. Scegli un piano qui sotto.",
-    "pricing_intro": "Mese di prova gratuito (50 licenze e 50 unità). Poi 10, 25 o 50 licenze con 50 / 125 / 250 unit. Pagamento annuale tramite fattura.",
+    "pricing_intro": "Mese di prova gratuito (5 licenze, 50 unità, 10 documenti — come la formula d'ingresso). Poi 5/10/25/50 licenze. Pagamento mensile tramite Stripe.",
     "status_module_esg": "Modulo ESG attivo sul tuo account.",
     "status_module_time": "Time (timbratrice) è attivo sul tuo account.",
     "page_limits_title": "Perché alcune azioni non sono disponibili",
@@ -66,58 +66,76 @@
         "trial": {
             "name": "Periodo di prova"
         },
+        "winprox_5": {
+            "name": "5 licenze",
+            "price": "59€ / mese",
+            "scale": "59€ al mese. Pagamento mensile tramite Stripe.",
+            "features": [
+                "50 unità e 10 documenti. Sedi e foto illimitate.",
+                "Timbratura, pianificazione e CIAO (INPS) inclusi."
+            ]
+        },
+        "winprox_5_time": {
+            "name": "5 licenze + Time (timbratura)",
+            "price": "59€ / mese",
+            "scale": "59€ al mese. Pagamento mensile tramite Stripe.",
+            "features": [
+                "50 unità e 10 documenti. Sedi e foto illimitate.",
+                "Timbratura, pianificazione e CIAO (INPS) inclusi."
+            ]
+        },
         "winprox_10": {
             "name": "10 licenze",
-            "price": "7 € / licenza / mese",
-            "scale": "70 € al mese. Pagamento annuale (840 €).",
+            "price": "99€ / mese",
+            "scale": "99€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
-                "50 unit e 50 documenti. Sedi e foto illimitate.",
-                "Timbratrice, turno, CIAO (ONSS) inclusi."
+                "100 unità e 20 documenti. Sedi e foto illimitate.",
+                "Timbratura, pianificazione e CIAO (INPS) inclusi."
             ]
         },
         "winprox_10_time": {
-            "name": "10 licenze + Time (timbratrice)",
-            "price": "7 € / licenza / mese",
-            "scale": "70 € al mese. Pagamento annuale (840 €).",
+            "name": "10 licenze + Time (timbratura)",
+            "price": "99€ / mese",
+            "scale": "99€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
-                "50 unit e 50 documenti. Sedi e foto illimitate.",
-                "Timbratrice, turno, CIAO (ONSS) inclusi."
+                "100 unità e 20 documenti. Sedi e foto illimitate.",
+                "Timbratura, pianificazione e CIAO (INPS) inclusi."
             ]
         },
         "winprox_25": {
             "name": "25 licenze",
-            "price": "6 € / licenza / mese",
-            "scale": "150 € al mese. Pagamento annuale (1.800 €).",
+            "price": "199€ / mese",
+            "scale": "199€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
-                "125 unit e 125 documenti. Sedi e foto illimitate.",
-                "Timbratrice, turno, CIAO (ONSS) inclusi."
+                "250 unità e 30 documenti. Sedi e foto illimitate.",
+                "Timbratura, pianificazione e CIAO (INPS) inclusi."
             ]
         },
         "winprox_25_time": {
-            "name": "25 licenze + Time (timbratrice)",
-            "price": "6 € / licenza / mese",
-            "scale": "150 € al mese. Pagamento annuale (1.800 €).",
+            "name": "25 licenze + Time (timbratura)",
+            "price": "199€ / mese",
+            "scale": "199€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
-                "125 unit e 125 documenti. Sedi e foto illimitate.",
-                "Timbratrice, turno, CIAO (ONSS) inclusi."
+                "250 unità e 30 documenti. Sedi e foto illimitate.",
+                "Timbratura, pianificazione e CIAO (INPS) inclusi."
             ]
         },
         "winprox_50": {
             "name": "50 licenze",
-            "price": "5 € / licenza / mese",
-            "scale": "250 € al mese. Pagamento annuale (3.000 €).",
+            "price": "349€ / mese",
+            "scale": "349€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
-                "250 unit e 250 documenti. Sedi e foto illimitate.",
-                "Timbratrice, turno, CIAO (ONSS) inclusi."
+                "500 unità e 40 documenti. Sedi e foto illimitate.",
+                "Timbratura, pianificazione e CIAO (INPS) inclusi."
             ]
         },
         "winprox_50_time": {
-            "name": "50 licenze + Time (timbratrice)",
-            "price": "5 € / licenza / mese",
-            "scale": "250 € al mese. Pagamento annuale (3.000 €).",
+            "name": "50 licenze + Time (timbratura)",
+            "price": "349€ / mese",
+            "scale": "349€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
-                "250 unit e 250 documenti. Sedi e foto illimitate.",
-                "Timbratrice, turno, CIAO (ONSS) inclusi."
+                "500 unità e 40 documenti. Sedi e foto illimitate.",
+                "Timbratura, pianificazione e CIAO (INPS) inclusi."
             ]
         },
         "winprox_100": {
@@ -205,7 +223,7 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Prezzo personalizzato",
-            "scale": "Da 100 licenze, o se servono API/webhook/integrazioni.",
+            "scale": "Da 100 licenze, o quando servono API/webhook/integrazioni.",
             "features": [
                 "Timbratrice, turno, CIAO (ONSS), IoT Connect, ESG e API inclusi.",
                 "API REST completa e webhook.",
@@ -296,8 +314,8 @@
     "comparison_custom": "Su misura",
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
-        "trial": "Prova: 50 licenze e 50 unità. Pagamento annuale dopo la prova.",
-        "unlimited": "Unit e documenti = 5× le tue licenze (50 / 125 / 250). Sedi e foto sono illimitate.",
+        "trial": "Prova: 5 licenze, 50 unità e 10 documenti (come la formula da 5). Poi pagamento mensile tramite Stripe.",
+        "unlimited": "Unità = 10× le tue licenze (50 / 100 / 250 / 500). Documenti 10 / 20 / 30 / 40. Sedi e foto illimitate.",
         "corporate": "IoT, ESG e API: solo WinProx Corporate (da 100 licenze)."
     },
     "contact_sales_cta": "Contattaci",
@@ -308,9 +326,9 @@
     "time_addon": {
         "label": "Time (timbratrice)",
         "monthly": ":price / mese",
-        "hint": "Entrata, uscita e pause. Incluso nella fattura annuale (12 × il prezzo mensile).",
-        "public_hint": "Time (timbratrice) opzionale da :price / mese, sulla fattura annuale."
+        "hint": "Entrata/uscita e pause. Incluso in ogni formula WinProx.",
+        "public_hint": "Time (timbratura) è incluso in ogni formula WinProx."
     },
     "comparison_col_seats": "Posti",
-    "yearly_invoice_notice": "Pagamento annuale tramite fattura. Nessun pagamento online."
+    "payment_notice": "Pagamento mensile tramite Stripe. Corporate su misura (nessun pagamento online)."
 }

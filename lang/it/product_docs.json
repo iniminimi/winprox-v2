@@ -250,7 +250,7 @@
                 "body": "Ogni organizzazione ha il proprio ambiente, con limiti per formula.",
                 "items": [
                     "Licenza = collega con accesso o esecutore. Collega + timbratore conta come una.",
-                    "Unità e documenti = 5× le licenze. Sedi e foto illimitate."
+                    "Unità = 10× le licenze (50/100/250/500); documenti 10/20/30/40. Sedi e foto illimitate (ogni sede riceve un’unità «Intera sede»)."
                 ]
             },
             {
@@ -320,8 +320,8 @@
                     "Production on **Linux** (EU), at **Cloud86**.",
                     "Access via **HTTPS** (encrypted connection, TLS).",
                     "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite frontend.",
-                    "Email via SMTP nell’UE; fattura annuale (nessun pagamento online). Solo WinProx (Superuser) assegna la formula; le organizzazioni non scelgono l’abbonamento.",
-                    "Prezzi: da **7 € / licenza / mese** (10 licenze + 50 unit), **6 €** (25 + 125), **5 €** (50 + 250). Pagamento annuale tramite fattura. Corporate su misura."
+                    "E-mail via SMTP nell’UE; fatturazione mensile con Stripe Checkout. Le organizzazioni scelgono un piano (5/10/25/50); Corporate su richiesta tramite WinProx.",
+                    "Prezzi: **59€** (5 licenze + 50 unità), **99€** (10 + 100), **199€** (25 + 250), **349€** (50 + 500) al mese con Stripe. Corporate su misura."
                 ]
             },
             {

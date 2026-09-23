@@ -1089,7 +1089,7 @@ sector-suffixes, marketing-query-params. Property→Location.
 
 **Doel:** abonnementsstatus (admin): proefperiode/grace, planlimieten, export/purge.
 Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billing.php`,
-`EnsureActiveSubscriptionOrTrial`. **WinProx (jaar, 10/25/50 licenties, Time inbegrepen) + Corporate op maat. Betaling via jaarfactuur; Stripe-checkout zit in de code maar is niet zichtbaar (`STRIPE_OFFER_CHECKOUT`). Formule kiezen doet alleen de Superuser (Platform → Organisaties); tenant-self-activate staat uit (`BILLING_ALLOW_SELF_ACTIVATION`, default false).**
+`EnsureActiveSubscriptionOrTrial`. **WinProx (maand, 5/10/25/50 licenties, Time inbegrepen) + Corporate op maat. Betaling maandelijks via Stripe Checkout (`STRIPE_OFFER_CHECKOUT`, default aan). Tenants kiezen zelf een formule (`BILLING_ALLOW_SELF_ACTIVATION`, default true); Corporate blijft op aanvraag / Superuser.**
 
 ### 7.1 Status & toegang (behouden, generiek)
 - Tenant-velden: `trial_ends_at`, `billing_plan`, `billing_active_until`, `billing_units_cap`
@@ -1102,31 +1102,34 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   = vol. Geen animatie.
 
 ### 7.2 Plannen
-- **WinProx** (`winprox_10` / `winprox_25` / `winprox_50`): **jaarlijks**, gemeten in **licenties**
-  (collega's met login + uitvoerders). **Units + documenten = licenties × 5** (50 / 125 / 250).
-  Locaties en foto's onbeperkt. Compacte prijskaart: per-licentieprijs · maandpakket + jaartotaal ·
-  units/documenten · *Prikklok, uurrooster, CIAO (RSZ) inbegrepen.* Geen IoT/ESG/API-vermelding
-  op deze formules (alleen Corporate). Clock Point blijft de aanmeld-QR.
-- **Prijs (jaarfactuur):** getoond als **maandpakket** + jaartotaal tussen haakjes
-  (bv. 70€ per maand, jaarlijks (840€)). Per licentie: 10 × **7€**/maand; 25 × **6€**;
-  50 × **5€**. Euroteken na het bedrag (NL/FR/DE/ES/IT); in EN vóór (€70).
-  Op de prijszetting: per-licentieprijs in de kaarttitel; maandpakket + jaartotaal in de tekst.
-- **Trial:** 50 licenties en 50 units, Time inbegrepen, geen IoT/ESG/API.
+- **WinProx** (`winprox_5` / `winprox_10` / `winprox_25` / `winprox_50`): **maandelijks**,
+  gemeten in **licenties** (collega's met login + uitvoerders). **Units = licenties × 10**
+  (50 / 100 / 250 / 500). **Documenten** los: 10 / 20 / 30 / 40. Locaties en foto's onbeperkt
+  (elke nieuwe locatie krijgt automatisch een unit «Hele locatie» die meetelt). Compacte
+  prijskaart: maandpakket · units/documenten · *Prikklok, uurrooster, CIAO (RSZ) inbegrepen.*
+  Geen IoT/ESG/API-vermelding op deze formules (alleen Corporate). Clock Point blijft de
+  aanmeld-QR.
+- **Prijs (maandelijks via Stripe):** **59€** (5), **99€** (10), **199€** (25), **349€** (50).
+  Euroteken na het bedrag (NL/FR/DE/ES/IT); in EN vóór (€59).
+- **Trial:** zelfde limieten als **winprox_5** (5 licenties, 50 units, 10 documenten), Time
+  inbegrepen, geen IoT/ESG/API.
 - **Corporate:** vanaf **100 licenties** of wanneer API/webhooks nodig zijn.
   Superuser zet `billing_plan=corporate` + `billing_units_cap` via Platform → Organisaties
-  (zelfde plan-kiezer als WinProx 10/25/50). **Jaarlijks** (365 dagen), zoals WinProx 10/25/50.
+  (zelfde plan-kiezer). **Jaarlijks** (365 dagen) of op maat; niet via Stripe Checkout.
   Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
 - **Legacy `facility_*` en `winprox_100`:** blijven in config (niet in catalogus).
-- Plankaarten + vergelijkingstabel op publieke `/pricing` (informatief + trial-registratie /
-  mailto). In de app: status + limieten; **geen** “formule activeren” voor de tenant —
-  contact-CTA naar `billing.contact_email`. Superuser wijst toe via Platform.
+- Plankaarten + vergelijkingstabel op publieke `/pricing` (informatief + trial-registratie).
+  In de app: status + limieten + **formule activeren** (Stripe Checkout indien geconfigureerd;
+  anders gesimuleerde activatie in lokale/dev-setup zonder price IDs). Superuser kan ook
+  toewijzen via Platform.
 - **Grace-periode** na verloop behouden.
 
 ### 7.3 Stripe
-- Checkout is **niet zichtbaar** (`STRIPE_OFFER_CHECKOUT`, default uit). Jaarfactuur buiten de app.
-- Code + webhook blijven: `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_WINPROX_*`
-  (zie `.env.example`). Zet `STRIPE_OFFER_CHECKOUT=true` om checkout terug te tonen.
-- Corporate **niet** in Stripe.
+- Checkout **zichtbaar** wanneer `STRIPE_OFFER_CHECKOUT` (default aan) + `STRIPE_SECRET` +
+  maandelijkse `STRIPE_PRICE_WINPROX_*` (zie `.env.example`).
+- Webhook: `checkout.session.completed` (activeren), `invoice.paid` (verlengen
+  `billing_active_until`), `customer.subscription.deleted` (beeindigen).
+- Corporate **niet** in Stripe. Peppol-/boekhoud-PDF’s: later (Stripe blijft incasso).
 
 ### 7.4 Gegevens verwijderen (tenant purge)
 Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.

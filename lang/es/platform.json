@@ -455,6 +455,6 @@
     },
     "plan_select": "Plan",
     "plan_assign": "Asignar plan",
-    "plan_assign_hint": "Solo un Superuser asigna el plan (factura anual). Corporate requiere un tope de unidades. CIAO (ONSS) se puede activar sin Corporate; Time se activa con ello.",
+    "plan_assign_hint": "El Superuser puede asignar una fórmula (también sin Stripe). Los tenants pueden elegir con Stripe. Corporate requiere un tope de unidades. CIAO puede activarse aparte sin Corporate; Time se activa con ello.",
     "plan_assigned": "Plan :plan asignado."
 }

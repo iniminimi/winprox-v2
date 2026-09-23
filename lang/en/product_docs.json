@@ -250,7 +250,7 @@
                 "body": "Each organisation has its own environment, with limits per plan.",
                 "items": [
                     "A licence is a colleague with login or a worker. Colleague + punch clock counts as one.",
-                    "Units and documents = 5× licences. Locations and photos are unlimited."
+                    "Units = 10× seats (50/100/250/500); documents 10/20/30/40. Locations and photos unlimited (each location gets a «whole location» unit)."
                 ]
             },
             {
@@ -320,8 +320,8 @@
                     "Production on **Linux** (EU), at **Cloud86**.",
                     "Access via **HTTPS** (encrypted connection, TLS).",
                     "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite frontend.",
-                    "Email via SMTP in the EU; billing by yearly invoice (no online checkout). Only WinProx (Superuser) assigns the plan; organisations do not self-select a subscription.",
-                    "Pricing: from **€7 / seat / month** (10 seats + 50 units), **€6** (25 + 125), **€5** (50 + 250). Billed yearly by invoice. Corporate is custom."
+                    "Email via SMTP in the EU; billing monthly via Stripe Checkout. Organisations self-select a plan (5/10/25/50); Corporate on request via WinProx.",
+                    "Pricing: **€59** (5 seats + 50 units), **€99** (10 + 100), **€199** (25 + 250), **€349** (50 + 500) per month via Stripe. Corporate is custom."
                 ]
             },
             {

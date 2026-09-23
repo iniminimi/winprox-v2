@@ -455,6 +455,6 @@
     },
     "plan_select": "Tarif",
     "plan_assign": "Tarif zuweisen",
-    "plan_assign_hint": "Nur ein Superuser weist den Tarif zu (Jahresrechnung). Corporate braucht ein Units-Cap. CIAO (LSS) kann ohne Corporate aktiviert werden; Time geht mit an.",
+    "plan_assign_hint": "Superuser kann eine Formel zuweisen (auch ohne Stripe). Mandanten können selbst über Stripe wählen. Corporate braucht ein Units-Cap. CIAO (LSZ) kann getrennt ohne Corporate aktiviert werden; Time wird mitgeschaltet.",
     "plan_assigned": "Tarif :plan zugewiesen."
 }

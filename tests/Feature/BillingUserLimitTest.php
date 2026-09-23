@@ -19,11 +19,11 @@ class BillingUserLimitTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_trial_tenant_has_fifty_seat_limit(): void
+    public function test_trial_tenant_has_five_seat_limit(): void
     {
         $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
 
-        $this->assertSame(50, $tenant->maxSeatsLimit());
+        $this->assertSame(5, $tenant->maxSeatsLimit());
     }
 
     public function test_winprox_ten_plan_has_ten_seat_limit(): void

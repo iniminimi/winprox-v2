@@ -2,11 +2,11 @@
     "meta_title": "Pricing | WinProx",
     "social": {
         "og_title": "Pricing | WinProx",
-        "og_description": "WinProx — issues, tasks and punch clock from €7 per seat per month. Billed yearly."
+        "og_description": "WinProx — issues, tasks and punch clock from €59 per month. Billed monthly via Stripe."
     },
     "eyebrow": "Pricing",
     "title": "Pricing & plans",
-    "message": "Three yearly plans by number of seats. Time (punch clock) included. Billed yearly by invoice. Start with a free month.",
+    "message": "Four monthly plans by seat count (5/10/25/50). Time (punch clock) included. Billed monthly via Stripe. Start with a free month (5-seat plan).",
     "back": "Back to home",
     "trial_link": "Try for free",
     "subscription_link": "Go to subscription"

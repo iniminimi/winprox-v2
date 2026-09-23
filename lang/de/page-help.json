@@ -27,7 +27,7 @@
                 },
                 {
                     "label": "Testphase",
-                    "text": "In der Testphase haben Sie bis zu 50 Lizenzen und 50 Units, inkl. Time (Stechuhr). Das Dashboard zeigt die restlichen Tage."
+                    "text": "In der Testphase haben Sie bis zu 5 Lizenzen, 50 Units und 10 Dokumente, inkl. Time (Stechuhr). Das Dashboard zeigt die restlichen Tage."
                 },
                 {
                     "label": "Meldung hinzufügen",
@@ -794,11 +794,11 @@
             "actions": [
                 {
                     "label": "Testphase",
-                    "text": "In der Testphase haben Sie bis zu 50 Lizenzen und 50 Units, inkl. Time (Stechuhr). IoT, ESG und API sind nicht in der Testphase. Das Dashboard zeigt die restlichen Tage."
+                    "text": "In der Testphase haben Sie bis zu 5 Lizenzen, 50 Units und 10 Dokumente, inkl. Time (Stechuhr). IoT, ESG und API sind nicht in der Testphase. Das Dashboard zeigt die restlichen Tage."
                 },
                 {
                     "label": "Tarif / Kontakt",
-                    "text": "Tarife sind informativ (10/25/50 Lizenzen + Corporate). Sie aktivieren kein Abo selbst: WinProx weist nach Vereinbarung/Jahresrechnung zu. Kontakt: info@winprox.app. CIAO (LSS) ebenso beantragen; ein Superuser schaltet es ein (Time geht mit; kein Corporate nötig)."
+                    "text": "Formeln: 5/10/25/50 Lizenzen + Corporate. Sie wählen selbst und zahlen monatlich über Stripe (Corporate auf Anfrage). Kontakt: info@winprox.app für Corporate oder CIAO. CIAO (LSS) ebenso beantragen; ein Superuser schaltet es ein (Time geht mit; kein Corporate nötig)."
                 },
                 {
                     "label": "Organisationsdaten löschen",
@@ -1104,7 +1104,7 @@
                 },
                 {
                     "label": "Tarif zuweisen",
-                    "text": "Tarif wählen (WinProx 10/25/50 oder Corporate) und zuweisen. Bei Corporate: Units-Cap eingeben. CIAO kann ohne Corporate aktiviert werden."
+                    "text": "Tarif wählen (WinProx 5/10/25/50 oder Corporate) und zuweisen. Bei Corporate: Units-Cap eingeben. CIAO kann ohne Corporate aktiviert werden."
                 }
             ]
         },

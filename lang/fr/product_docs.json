@@ -250,7 +250,7 @@
                 "body": "Chaque organisation a son environnement, avec des limites par formule.",
                 "items": [
                     "Licence = collègue avec connexion ou exécutant. Collègue + pointeuse compte pour un.",
-                    "Unités et documents = 5× les licences. Sites et photos illimités."
+                    "Units = 10× les licences (50/100/250/500) ; documents 10/20/30/40. Sites et photos illimités (chaque site reçoit une unit « Site entier »)."
                 ]
             },
             {
@@ -320,8 +320,8 @@
                     "Production on **Linux** (EU), at **Cloud86**.",
                     "Access via **HTTPS** (encrypted connection, TLS).",
                     "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite frontend.",
-                    "E-mail via SMTP dans l’UE ; facturation annuelle (pas de paiement en ligne). Seul WinProx (Superuser) attribue la formule ; les organisations ne choisissent pas elles-mêmes.",
-                    "Tarifs : à partir de **7 € / licence / mois** (10 licences + 50 unités), **6 €** (25 + 125), **5 €** (50 + 250). Paiement annuel par facture. Corporate sur mesure."
+                    "E-mail via SMTP dans l’UE ; paiement mensuel via Stripe Checkout. Les organisations choisissent elles-mêmes une formule (5/10/25/50) ; Corporate sur demande via WinProx.",
+                    "Prix : **59€** (5 licences + 50 units), **99€** (10 + 100), **199€** (25 + 250), **349€** (50 + 500) par mois via Stripe. Corporate sur mesure."
                 ]
             },
             {

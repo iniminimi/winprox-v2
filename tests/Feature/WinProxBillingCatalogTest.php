@@ -19,7 +19,7 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
-it('zet trial op 50 licenties en 50 units met Time-prikklok en maakt een Clock Point', function () {
+it('zet trial op 5 licenties, 50 units en 10 documenten met Time-prikklok en maakt een Clock Point', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
@@ -28,7 +28,8 @@ it('zet trial op 50 licenties en 50 units met Time-prikklok en maakt een Clock P
     $fresh = $tenant->fresh();
 
     expect($fresh->maxUnitsLimit())->toBe(50)
-        ->and($fresh->maxSeatsLimit())->toBe(50)
+        ->and($fresh->maxSeatsLimit())->toBe(5)
+        ->and($fresh->maxDocumentsOrgLimit())->toBe(10)
         ->and($fresh->hasTimeModule())->toBeTrue()
         ->and($fresh->hasIotModule())->toBeFalse()
         ->and($fresh->hasEsgModule())->toBeFalse()
@@ -47,16 +48,28 @@ it('zet Time aan voor een bestaande proeftenant bij het dashboard', function () 
     expect($tenant->fresh()->hasTimeModule())->toBeTrue();
 });
 
-it('weigert tenant self-activate van WinProx-formules', function () {
+it('laat tenant self-activate van WinProx-formules zonder Stripe (gesimuleerd)', function () {
+    config([
+        'billing.allow_tenant_self_activation' => true,
+        'stripe.offer_checkout' => true,
+        'stripe.enabled' => false,
+    ]);
+
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->call('activatePlan', 'winprox_50')
-        ->assertHasErrors(['plan']);
+        ->call('activatePlan', 'winprox_5')
+        ->assertHasNoErrors();
 
-    expect($tenant->fresh()->billing_plan)->toBeNull();
+    $tenant->refresh();
+
+    expect($tenant->billing_plan)->toBe('winprox_5')
+        ->and($tenant->maxSeatsLimit())->toBe(5)
+        ->and($tenant->maxUnitsLimit())->toBe(50)
+        ->and($tenant->maxDocumentsOrgLimit())->toBe(10)
+        ->and($tenant->subscriptionPeriodDays())->toBe(30);
 });
 
 it('laat superuser WinProx 50 toewijzen met Time inbegrepen', function () {
@@ -73,9 +86,10 @@ it('laat superuser WinProx 50 toewijzen met Time inbegrepen', function () {
 
     expect($tenant->billing_plan)->toBe('winprox_50')
         ->and($tenant->hasTimeModule())->toBeTrue()
-        ->and($tenant->subscriptionPeriodDays())->toBe(365)
+        ->and($tenant->subscriptionPeriodDays())->toBe(30)
         ->and($tenant->maxSeatsLimit())->toBe(50)
-        ->and($tenant->maxUnitsLimit())->toBe(250);
+        ->and($tenant->maxUnitsLimit())->toBe(500)
+        ->and($tenant->maxDocumentsOrgLimit())->toBe(40);
 });
 
 it('houdt Time-plan-variant beschikbaar buiten de catalogus', function () {
@@ -90,7 +104,7 @@ it('houdt Time-plan-variant beschikbaar buiten de catalogus', function () {
         ->and($tenant->hasTimeModule())->toBeTrue()
         ->and($tenant->hasIotModule())->toBeFalse()
         ->and(BillingCatalogViewData::catalogPlanFor('winprox_50_time'))->toBe('winprox_50')
-        ->and(BillingCatalogViewData::publicPlanKeys())->toBe(['winprox_10', 'winprox_25', 'winprox_50', 'corporate']);
+        ->and(BillingCatalogViewData::publicPlanKeys())->toBe(['winprox_5', 'winprox_10', 'winprox_25', 'winprox_50', 'corporate']);
 });
 
 it('weigert self-activate van legacy facility-tiers', function () {
@@ -146,7 +160,7 @@ it('wijst winprox_10 toe via AssignTenantSubscriptionPlanAction', function () {
 
     expect($tenant->fresh()->billing_plan)->toBe('winprox_10')
         ->and($tenant->fresh()->hasTimeModule())->toBeTrue()
-        ->and($tenant->fresh()->maxUnitsLimit())->toBe(50)
-        ->and($tenant->fresh()->maxDocumentsOrgLimit())->toBe(50)
+        ->and($tenant->fresh()->maxUnitsLimit())->toBe(100)
+        ->and($tenant->fresh()->maxDocumentsOrgLimit())->toBe(20)
         ->and($tenant->fresh()->billing_units_cap)->toBeNull();
 });

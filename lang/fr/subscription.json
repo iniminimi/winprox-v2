@@ -1,15 +1,15 @@
 {
     "title": "Abonnement, limites et facturation",
     "public_title": "Tarifs & formules",
-    "public_subtitle": "Choisissez le nombre de licences. WinProx se paie annuellement. Pointeuse, planning et CIAO (ONSS) inclus.",
+    "public_subtitle": "Choisissez le nombre de licences. Paiement mensuel via Stripe. Pointeuse, planning et CIAO (ONSS) inclus.",
     "public_register_cta": "Démarrer l'essai gratuit",
-    "subtitle": "Après votre mois gratuit, choisissez une formule. Licences 10/25/50 ; unités et documents = 5x (50/125/250). Lieux et photos illimités.",
+    "subtitle": "Après le mois d'essai, choisissez une formule. Licences 5/10/25/50 ; units = 10× (50/100/250/500) ; documents 10/20/30/40. Sites et photos illimités.",
     "plans_heading": "Formules",
-    "plans_intro": "Payez par personne. 10, 25 ou 50 licences (collègues + exécutants) ; unités et documents = 5× ce nombre (50 / 125 / 250). Lieux et photos illimités. Pointeuse, planning et CIAO (ONSS) inclus.",
+    "plans_intro": "Paiement mensuel. 5, 10, 25 ou 50 licences (collègues + exécutants) ; units = 10× ce nombre ; documents 10/20/30/40. Sites et photos illimités. Pointeuse, planning et CIAO (ONSS) inclus.",
     "glossary": {
         "heading": "Licences, unités et photos",
-        "unit": "Unité — un objet ou lieu avec un QR (machine, pièce, véhicule). Unités (et documents) = 5× vos licences : 50 / 125 / 250.",
-        "document": "Document — un fichier sur le portail QR, par exemple un manuel. Même limite que les unités.",
+        "unit": "Unit — un objet ou lieu avec un QR (machine, pièce, site). Chaque nouveau site reçoit automatiquement une unit « Site entier ». Units = 10× vos licences : 50 / 100 / 250 / 500.",
+        "document": "Document — un fichier sur le portail QR, p. ex. un manuel. Limite par formule : 10 / 20 / 30 / 40.",
         "photo": "Photos — les photos sur les signalements et les tâches sont illimitées.",
         "seat": "Licence — un collègue avec connexion (admin ou employé) ou un exécutant (Clock Point, sans connexion). Un collègue avec profil pointeuse lié compte pour une licence."
     },
@@ -27,7 +27,7 @@
     "status_active": "Abonnement actif : :plan, valable jusqu'au :date.",
     "status_grace": "Abonnement :plan terminé le :ended. Période de grâce jusqu'au :grace_end — :days jours d'accès complet restants.",
     "status_expired": "Votre essai est terminé. Choisissez une formule ci-dessous.",
-    "pricing_intro": "Mois d’essai gratuit (50 licences et 50 unités). Ensuite 10, 25 ou 50 licences avec 50 / 125 / 250 unités. Paiement annuel par facture.",
+    "pricing_intro": "Mois d'essai gratuit (5 licences, 50 units, 10 documents — même formule d'entrée). Puis 5/10/25/50 licences. Paiement mensuel via Stripe.",
     "status_module_esg": "Module ESG actif sur votre compte.",
     "status_module_time": "Time (pointeuse) est actif sur votre compte.",
     "page_limits_title": "Pourquoi certaines actions sont indisponibles",
@@ -66,58 +66,76 @@
         "trial": {
             "name": "Période d'essai"
         },
+        "winprox_5": {
+            "name": "5 licences",
+            "price": "59€ / mois",
+            "scale": "59€ par mois. Paiement mensuel via Stripe.",
+            "features": [
+                "50 units et 10 documents. Sites et photos illimités.",
+                "Pointeuse, planning et CIAO (ONSS) inclus."
+            ]
+        },
+        "winprox_5_time": {
+            "name": "5 licences + Time (pointeuse)",
+            "price": "59€ / mois",
+            "scale": "59€ par mois. Paiement mensuel via Stripe.",
+            "features": [
+                "50 units et 10 documents. Sites et photos illimités.",
+                "Pointeuse, planning et CIAO (ONSS) inclus."
+            ]
+        },
         "winprox_10": {
             "name": "10 licences",
-            "price": "7 € / licence / mois",
-            "scale": "70 € par mois. Paiement annuel (840 €).",
+            "price": "99€ / mois",
+            "scale": "99€ par mois. Paiement mensuel via Stripe.",
             "features": [
-                "50 unités et 50 documents. Lieux et photos illimités.",
-                "Pointeuse, planning, CIAO (ONSS) inclus."
+                "100 units et 20 documents. Sites et photos illimités.",
+                "Pointeuse, planning et CIAO (ONSS) inclus."
             ]
         },
         "winprox_10_time": {
             "name": "10 licences + Time (pointeuse)",
-            "price": "7 € / licence / mois",
-            "scale": "70 € par mois. Paiement annuel (840 €).",
+            "price": "99€ / mois",
+            "scale": "99€ par mois. Paiement mensuel via Stripe.",
             "features": [
-                "50 unités et 50 documents. Lieux et photos illimités.",
-                "Pointeuse, planning, CIAO (ONSS) inclus."
+                "100 units et 20 documents. Sites et photos illimités.",
+                "Pointeuse, planning et CIAO (ONSS) inclus."
             ]
         },
         "winprox_25": {
             "name": "25 licences",
-            "price": "6 € / licence / mois",
-            "scale": "150 € par mois. Paiement annuel (1 800 €).",
+            "price": "199€ / mois",
+            "scale": "199€ par mois. Paiement mensuel via Stripe.",
             "features": [
-                "125 unités et 125 documents. Lieux et photos illimités.",
-                "Pointeuse, planning, CIAO (ONSS) inclus."
+                "250 units et 30 documents. Sites et photos illimités.",
+                "Pointeuse, planning et CIAO (ONSS) inclus."
             ]
         },
         "winprox_25_time": {
             "name": "25 licences + Time (pointeuse)",
-            "price": "6 € / licence / mois",
-            "scale": "150 € par mois. Paiement annuel (1 800 €).",
+            "price": "199€ / mois",
+            "scale": "199€ par mois. Paiement mensuel via Stripe.",
             "features": [
-                "125 unités et 125 documents. Lieux et photos illimités.",
-                "Pointeuse, planning, CIAO (ONSS) inclus."
+                "250 units et 30 documents. Sites et photos illimités.",
+                "Pointeuse, planning et CIAO (ONSS) inclus."
             ]
         },
         "winprox_50": {
             "name": "50 licences",
-            "price": "5 € / licence / mois",
-            "scale": "250 € par mois. Paiement annuel (3 000 €).",
+            "price": "349€ / mois",
+            "scale": "349€ par mois. Paiement mensuel via Stripe.",
             "features": [
-                "250 unités et 250 documents. Lieux et photos illimités.",
-                "Pointeuse, planning, CIAO (ONSS) inclus."
+                "500 units et 40 documents. Sites et photos illimités.",
+                "Pointeuse, planning et CIAO (ONSS) inclus."
             ]
         },
         "winprox_50_time": {
             "name": "50 licences + Time (pointeuse)",
-            "price": "5 € / licence / mois",
-            "scale": "250 € par mois. Paiement annuel (3 000 €).",
+            "price": "349€ / mois",
+            "scale": "349€ par mois. Paiement mensuel via Stripe.",
             "features": [
-                "250 unités et 250 documents. Lieux et photos illimités.",
-                "Pointeuse, planning, CIAO (ONSS) inclus."
+                "500 units et 40 documents. Sites et photos illimités.",
+                "Pointeuse, planning et CIAO (ONSS) inclus."
             ]
         },
         "winprox_100": {
@@ -296,8 +314,8 @@
     "comparison_custom": "Sur mesure",
     "comparison_trial_price": "Gratuit",
     "comparison_notes": {
-        "trial": "Essai : 50 licences et 50 unités. Paiement annuel après l’essai.",
-        "unlimited": "Unités et documents = 5× vos licences (50 / 125 / 250). Lieux et photos illimités.",
+        "trial": "Essai : 5 licences, 50 units et 10 documents (même formule à 5 licences). Puis paiement mensuel via Stripe.",
+        "unlimited": "Units = 10× vos licences (50 / 100 / 250 / 500). Documents 10 / 20 / 30 / 40. Sites et photos illimités.",
         "corporate": "IoT, ESG et API : uniquement WinProx Corporate (à partir de 100 licences)."
     },
     "contact_sales_cta": "Nous contacter",
@@ -308,9 +326,9 @@
     "time_addon": {
         "label": "Time (pointeuse)",
         "monthly": ":price / mois",
-        "hint": "Entrée, sortie et pauses. Facturé sur la facture annuelle (12 × le prix mensuel).",
-        "public_hint": "Time (pointeuse) en option dès :price / mois, sur la facture annuelle."
+        "hint": "Pointage et pauses. Inclus dans chaque formule WinProx.",
+        "public_hint": "Time (pointeuse) est inclus dans chaque formule WinProx."
     },
     "comparison_col_seats": "Places",
-    "yearly_invoice_notice": "Paiement annuel par facture. Pas de paiement en ligne."
+    "payment_notice": "Paiement mensuel via Stripe. Corporate sur mesure (pas de paiement en ligne)."
 }

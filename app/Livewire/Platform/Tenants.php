@@ -248,7 +248,7 @@ class Tenants extends Component
                     : null;
                 $this->planInputs[$id] = in_array($catalog, BillingCatalogViewData::publicPlanKeys(), true)
                     ? $catalog
-                    : 'winprox_10';
+                    : 'winprox_5';
             }
         }
 

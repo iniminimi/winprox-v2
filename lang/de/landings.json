@@ -111,7 +111,7 @@
         "start": {
             "title": "Klein starten. Wachsen, wenn es läuft.",
             "lead": "Sie müssen nicht das ganze Hotel umstellen. Starten Sie zum Beispiel mit 10 Zimmern, einer Etage oder einem Team.",
-            "trial": "Einen Monat kostenlos testen, bis zu 50 Units. Keine Installation."
+            "trial": "Einen Monat kostenlos testen, bis zu 50 Units (Test = Formel 5). Keine Installation."
         },
         "close": {
             "title": "Bereit zum Ausprobieren?",
@@ -242,7 +242,7 @@
         "start": {
             "title": "Klein starten. Wachsen, wenn es läuft.",
             "lead": "Sie müssen nicht die ganze Organisation umstellen. Starten Sie mit einem Terminal, einem Gebäude, einem Lager oder einem Wartungsteam.",
-            "trial": "Einen Monat kostenlos testen, bis zu 50 Units. Keine Installation."
+            "trial": "Einen Monat kostenlos testen, bis zu 50 Units (Test = Formel 5). Keine Installation."
         },
         "close": {
             "title": "Bereit zum Ausprobieren?",
@@ -360,7 +360,7 @@
         "start": {
             "title": "Klein starten. Wachsen, wenn es läuft.",
             "lead": "Sie müssen nicht den ganzen Standort umstellen. Starten Sie zum Beispiel mit einer Station, einem Gebäude oder einem Facility-Team.",
-            "trial": "Einen Monat kostenlos testen, bis zu 50 Units. Keine Installation."
+            "trial": "Einen Monat kostenlos testen, bis zu 50 Units (Test = Formel 5). Keine Installation."
         },
         "close": {
             "title": "Bereit zum Ausprobieren?",
@@ -478,7 +478,7 @@
         "start": {
             "title": "Klein starten. Wachsen, wenn es läuft.",
             "lead": "Sie müssen nicht die ganze Gemeinde umstellen. Starten Sie zum Beispiel mit einem Gebäude, einer Schule oder einem Unterhaltsteam.",
-            "trial": "Einen Monat kostenlos testen, bis zu 50 Units. Keine Installation."
+            "trial": "Einen Monat kostenlos testen, bis zu 50 Units (Test = Formel 5). Keine Installation."
         },
         "close": {
             "title": "Bereit zum Ausprobieren?",
@@ -595,7 +595,7 @@
         "start": {
             "title": "Klein starten. Wachsen, wenn es läuft.",
             "lead": "Sie müssen nicht das ganze Portfolio umstellen. Starten Sie zum Beispiel mit einem Gebäude, einer Etage oder einem Team.",
-            "trial": "Einen Monat kostenlos testen, bis zu 50 Units. Keine Installation."
+            "trial": "Einen Monat kostenlos testen, bis zu 50 Units (Test = Formel 5). Keine Installation."
         },
         "close": {
             "title": "Bereit zum Ausprobieren?",

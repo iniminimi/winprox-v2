@@ -455,6 +455,6 @@
     },
     "plan_select": "Formule",
     "plan_assign": "Attribuer la formule",
-    "plan_assign_hint": "Seul un Superuser attribue la formule (facture annuelle). Corporate exige un plafond d’unités. CIAO (ONSS) peut s’activer sans Corporate ; Time s’active avec.",
+    "plan_assign_hint": "Le Superuser peut attribuer une formule (aussi sans Stripe). Les tenants peuvent choisir eux-mêmes via Stripe. Corporate exige un plafond d'units. CIAO (ONSS) peut être activé séparément sans Corporate ; Time s'active avec.",
     "plan_assigned": "Formule :plan attribuée."
 }

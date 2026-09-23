@@ -5,9 +5,12 @@ use App\Livewire\Pages\Subscription;
 use App\Models\Tenant;
 use App\Models\User;
 
-it('toont publieke prijzenpagina met WinProx-jaarformules en Corporate voor gasten', function () {
+it('toont publieke prijzenpagina met WinProx-maandformules en Corporate voor gasten', function () {
     $this->get(route('pricing'))
         ->assertOk()
+        ->assertSee(__('subscription.plans.winprox_5.name'))
+        ->assertSee(__('subscription.plans.winprox_5.price'))
+        ->assertSee(__('subscription.plans.winprox_5.scale'))
         ->assertSee(__('subscription.plans.winprox_10.name'))
         ->assertSee(__('subscription.plans.winprox_10.price'))
         ->assertSee(__('subscription.plans.winprox_10.scale'))
@@ -17,7 +20,7 @@ it('toont publieke prijzenpagina met WinProx-jaarformules en Corporate voor gast
         ->assertSee(__('subscription.plans.winprox_50.price'))
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.comparison_heading'))
-        ->assertSee(__('subscription.yearly_invoice_notice'))
+        ->assertSee(__('subscription.payment_notice'))
         ->assertSee(__('subscription.public_contact_cta'))
         ->assertSee(__('subscription.public_register_cta'), false)
         ->assertSee(__('subscription.glossary.seat'))
@@ -45,22 +48,28 @@ it('toont publieke prijzenpagina voor ingelogde gebruikers', function () {
     $this->actingAs($user)
         ->get(route('pricing'))
         ->assertOk()
-        ->assertSee(__('subscription.plans.winprox_10.name'))
+        ->assertSee(__('subscription.plans.winprox_5.name'))
         ->assertSee(__('subscription.public_register_cta'), false);
 });
 
-it('toont contact-CTA op abonnementenpagina voor beheerder (geen self-activate)', function () {
+it('toont self-activate knoppen op abonnementenpagina voor beheerder', function () {
+    config([
+        'billing.allow_tenant_self_activation' => true,
+        'stripe.offer_checkout' => false,
+    ]);
+
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     Livewire\Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->assertDontSee(__('subscription.choose_plan'), false)
-        ->assertSee(__('subscription.contact_sales_cta'))
+        ->assertSee(__('subscription.choose_plan'), false)
+        ->assertSee(__('subscription.plans.winprox_5.name'))
+        ->assertSee(__('subscription.plans.winprox_5.scale'))
         ->assertSee(__('subscription.plans.winprox_10.name'))
-        ->assertSee(__('subscription.plans.winprox_10.scale'))
         ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
-        ->assertSee(__('subscription.yearly_invoice_notice'))
+        ->assertSee(__('subscription.payment_notice'))
+        ->assertSee(__('subscription.contact_sales_cta'))
         ->assertDontSee(__('subscription.plans.facility_25.price'));
 });

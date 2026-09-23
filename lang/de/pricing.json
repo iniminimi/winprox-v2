@@ -2,11 +2,11 @@
     "meta_title": "Preise | WinProx",
     "social": {
         "og_title": "Preise | WinProx",
-        "og_description": "WinProx — Meldungen, Aufgaben und Stechuhr ab 7 € je Lizenz und Monat. Jährliche Zahlung."
+        "og_description": "WinProx — Meldungen, Aufgaben und Zeiterfassung ab 59€ pro Monat. Monatliche Zahlung über Stripe."
     },
     "eyebrow": "Preise",
     "title": "Preise & Tarife",
-    "message": "Drei Jahrestarife nach Anzahl der Lizenzen. Time (Stechuhr) enthalten. Jährliche Zahlung per Rechnung. Start mit einem Gratismonat.",
+    "message": "Vier Monatsformeln nach Lizenzanzahl (5/10/25/50). Time (Zeiterfassung) inklusive. Monatliche Zahlung über Stripe. Start mit einem kostenlosen Monat (Formel 5).",
     "back": "Zur Startseite",
     "trial_link": "Kostenlos testen",
     "subscription_link": "Zum Abonnement"

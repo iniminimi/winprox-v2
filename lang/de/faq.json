@@ -48,29 +48,36 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Was kostet WinProx?",
-            "intro": "Sie starten mit einem kostenlosen Testmonat (50 Lizenzen und 50 Units). IoT, ESG und API sind nicht in der Testphase. Danach 10/25/50 Lizenzen mit 50/125/250 Units. Jährliche Zahlung per Rechnung. Corporate individuell (ab 100 Lizenzen oder wenn API/Webhooks nötig sind).",
-            "summary": "Test bis 50 Lizenzen und 50 Units. Danach 10/25/50 Lizenzen mit 5× Units. Jährliche Zahlung. IoT, ESG und API bei Corporate.",
-            "content_note": "Lizenz = Kollege mit Login oder Ausführender (Clock Point); Kollege mit verknüpftem Stechuhr-Profil zählt als eine. Units und Dokumente folgen der Lizenzzahl. Standorte und Fotos unbegrenzt. Genaue Preise unter Abonnement.",
+            "intro": "Sie starten mit einem kostenlosen Testmonat (5 Lizenzen, 50 Units, 10 Dokumente). IoT, ESG und API sind nicht in der Testphase. Danach 5/10/25/50 Lizenzen mit 50/100/250/500 Units. Monatliche Zahlung über Stripe. Corporate individuell (ab 100 Lizenzen oder wenn API/Webhooks nötig).",
+            "summary": "Testphase = Formel 5. Danach 5/10/25/50 Lizenzen mit 10× Units. Monatlich über Stripe. IoT, ESG und API auf Corporate.",
+            "content_note": "Lizenz = Kollege mit Login oder Ausführender (Clock Point). Units = 10× Lizenzen; Dokumente 10/20/30/40. Standorte und Fotos unbegrenzt. Genaue Preise unter Abonnement.",
             "plans": {
-                "winprox_10": {
+                "winprox_5": {
                     "units": "Bis 50 Units. Standorte unbegrenzt.",
-                    "announcements": "70 € pro Monat (840 € / Jahr)",
-                    "documents": "Stechuhr, Dienstplan, CIAO (LSS) inklusive.",
-                    "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
+                    "announcements": "59€ pro Monat",
+                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive.",
+                    "description": "Meldungen, Aufgaben und Zeiterfassung. Monatlich über Stripe.",
+                    "users": "Bis 5 Lizenzen (Kollegen + Ausführende)"
+                },
+                "winprox_10": {
+                    "units": "Bis 100 Units. Standorte unbegrenzt.",
+                    "announcements": "99€ pro Monat",
+                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive.",
+                    "description": "Meldungen, Aufgaben und Zeiterfassung. Monatlich über Stripe.",
                     "users": "Bis 10 Lizenzen (Kollegen + Ausführende)"
                 },
                 "winprox_25": {
-                    "units": "Bis 125 Units. Standorte unbegrenzt.",
-                    "announcements": "150 € pro Monat (1.800 € / Jahr)",
-                    "documents": "Stechuhr, Dienstplan, CIAO (LSS) inklusive.",
-                    "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
+                    "units": "Bis 250 Units. Standorte unbegrenzt.",
+                    "announcements": "199€ pro Monat",
+                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive.",
+                    "description": "Meldungen, Aufgaben und Zeiterfassung. Monatlich über Stripe.",
                     "users": "Bis 25 Lizenzen (Kollegen + Ausführende)"
                 },
                 "winprox_50": {
-                    "units": "Bis 250 Units. Standorte unbegrenzt.",
-                    "announcements": "250 € pro Monat (3.000 € / Jahr)",
-                    "documents": "Stechuhr, Dienstplan, CIAO (LSS) inklusive.",
-                    "description": "Meldungen, Aufgaben und Stechuhr. Jährliche Zahlung.",
+                    "units": "Bis 500 Units. Standorte unbegrenzt.",
+                    "announcements": "349€ pro Monat",
+                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive.",
+                    "description": "Meldungen, Aufgaben und Zeiterfassung. Monatlich über Stripe.",
                     "users": "Bis 50 Lizenzen (Kollegen + Ausführende)"
                 },
                 "corporate": {

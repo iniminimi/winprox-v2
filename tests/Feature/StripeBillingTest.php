@@ -3,10 +3,12 @@
 namespace Tests\Feature;
 
 use App\Actions\Billing\ActivateSubscriptionPlanAction;
+use App\Actions\Billing\ExtendPaidSubscriptionFromStripeAction;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Services\Billing\StripeCheckoutService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Carbon;
 use Tests\TestCase;
 
 class StripeBillingTest extends TestCase
@@ -29,8 +31,8 @@ class StripeBillingTest extends TestCase
         $this->assertSame('winprox_50', $tenant->billing_plan);
         $this->assertTrue($tenant->isPaidSubscriptionActive());
         $this->assertTrue($tenant->hasTimeModule());
-        $this->assertTrue($tenant->billing_active_until->lte(now()->addDays(365)));
-        $this->assertTrue($tenant->billing_active_until->gte(now()->addDays(364)));
+        $this->assertTrue($tenant->billing_active_until->lte(now()->addDays(30)));
+        $this->assertTrue($tenant->billing_active_until->gte(now()->addDays(29)));
     }
 
     public function test_stripe_checkout_stays_off_when_offer_checkout_is_false(): void
@@ -66,5 +68,38 @@ class StripeBillingTest extends TestCase
 
         $this->postJson(route('stripe.webhook'), ['type' => 'checkout.session.completed'])
             ->assertStatus(400);
+    }
+
+    public function test_extends_subscription_on_invoice_paid(): void
+    {
+        $tenant = Tenant::factory()->create([
+            'trial_ends_at' => now()->subDay(),
+            'billing_plan' => 'winprox_10',
+            'billing_active_until' => now()->addDays(2),
+            'stripe_customer_id' => 'cus_test_extend',
+        ]);
+
+        $until = Carbon::now()->addDays(35)->startOfSecond();
+        app(ExtendPaidSubscriptionFromStripeAction::class)->handle($tenant, 'invoice_paid', $until);
+
+        $tenant->refresh();
+        $this->assertSame($until->toDateTimeString(), $tenant->billing_active_until->toDateTimeString());
+        $this->assertTrue($tenant->is_active);
+    }
+
+    public function test_ends_subscription_on_stripe_deleted(): void
+    {
+        $tenant = Tenant::factory()->create([
+            'trial_ends_at' => now()->subDay(),
+            'billing_plan' => 'winprox_10',
+            'billing_active_until' => now()->addDays(20),
+            'stripe_customer_id' => 'cus_test_end',
+        ]);
+
+        $ended = Carbon::now()->startOfSecond();
+        app(ExtendPaidSubscriptionFromStripeAction::class)->handle($tenant, 'subscription_deleted', $ended);
+
+        $tenant->refresh();
+        $this->assertSame($ended->toDateTimeString(), $tenant->billing_active_until->toDateTimeString());
     }
 }

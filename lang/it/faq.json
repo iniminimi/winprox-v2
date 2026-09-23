@@ -48,30 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Quanto costa WinProx?",
-            "intro": "Inizi con un mese di prova gratuito (50 licenze e 50 unità). IoT, ESG e API non sono nella prova. Poi 10/25/50 licenze con 50/125/250 unit. Pagamento annuale tramite fattura. Corporate su misura (da 100 licenze o quando servono API/webhook).",
-            "summary": "Prova fino a 50 licenze e 50 unità. Poi 10/25/50 licenze con 5× unit. Pagamento annuale. IoT, ESG e API su Corporate.",
-            "content_note": "Licenza = collega con accesso o operatore (Clock Point); un collega con profilo timbratrice collegato conta come una. Unità e documenti seguono il numero di licenze. Sedi e foto illimitate. Prezzi esatti in Abbonamento.",
+            "intro": "Inizi con un mese di prova gratuito (5 licenze, 50 unità, 10 documenti). IoT, ESG e API non sono nella prova. Poi 5/10/25/50 licenze con 50/100/250/500 unità. Pagamento mensile tramite Stripe. Corporate su misura (da 100 licenze o quando servono API/webhook).",
+            "summary": "Prova = formula 5. Poi 5/10/25/50 licenze con 10× unità. Pagamento mensile tramite Stripe. IoT, ESG e API su Corporate.",
+            "content_note": "Licenza = collega con login o esecutore (Clock Point). Unità = 10× licenze; documenti 10/20/30/40. Sedi e foto illimitate. Prezzi esatti in Abbonamento.",
             "plans": {
+                "winprox_5": {
+                    "units": "Fino a 50 unità. Sedi illimitate.",
+                    "announcements": "59€ al mese",
+                    "documents": "Timbratura, pianificazione e CIAO inclusi.",
+                    "description": "Segnalazioni, compiti e timbratura. Pagamento mensile tramite Stripe.",
+                    "users": "Fino a 5 licenze (colleghi + esecutori)"
+                },
                 "winprox_10": {
-                    "units": "Fino a 50 unit. Sedi illimitate.",
-                    "announcements": "70 € al mese (840 € / anno)",
-                    "documents": "Timbratrice, turno, CIAO (ONSS) inclusi.",
-                    "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
-                    "users": "Fino a 10 licenze (colleghi + operatori)"
+                    "units": "Fino a 100 unità. Sedi illimitate.",
+                    "announcements": "99€ al mese",
+                    "documents": "Timbratura, pianificazione e CIAO inclusi.",
+                    "description": "Segnalazioni, compiti e timbratura. Pagamento mensile tramite Stripe.",
+                    "users": "Fino a 10 licenze (colleghi + esecutori)"
                 },
                 "winprox_25": {
-                    "units": "Fino a 125 unit. Sedi illimitate.",
-                    "announcements": "150 € al mese (1.800 € / anno)",
-                    "documents": "Timbratrice, turno, CIAO (ONSS) inclusi.",
-                    "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
-                    "users": "Fino a 25 licenze (colleghi + operatori)"
+                    "units": "Fino a 250 unità. Sedi illimitate.",
+                    "announcements": "199€ al mese",
+                    "documents": "Timbratura, pianificazione e CIAO inclusi.",
+                    "description": "Segnalazioni, compiti e timbratura. Pagamento mensile tramite Stripe.",
+                    "users": "Fino a 25 licenze (colleghi + esecutori)"
                 },
                 "winprox_50": {
-                    "units": "Fino a 250 unit. Sedi illimitate.",
-                    "announcements": "250 € al mese (3.000 € / anno)",
-                    "documents": "Timbratrice, turno, CIAO (ONSS) inclusi.",
-                    "description": "Segnalazioni, attività e timbratrice. Pagamento annuale.",
-                    "users": "Fino a 50 licenze (colleghi + operatori)"
+                    "units": "Fino a 500 unità. Sedi illimitate.",
+                    "announcements": "349€ al mese",
+                    "documents": "Timbratura, pianificazione e CIAO inclusi.",
+                    "description": "Segnalazioni, compiti e timbratura. Pagamento mensile tramite Stripe.",
+                    "users": "Fino a 50 licenze (colleghi + esecutori)"
                 },
                 "corporate": {
                     "units": "Da 100 licenze, o se servono API/webhook/integrazioni.",

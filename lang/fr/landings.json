@@ -111,7 +111,7 @@
         "start": {
             "title": "Commencer petit. Élargir quand ça marche.",
             "lead": "Pas besoin de basculer tout l'hôtel. Commencez par exemple par 10 chambres, un étage ou une équipe.",
-            "trial": "Un mois d'essai gratuit, jusqu'à 50 units. Pas d'installation."
+            "trial": "Un mois d'essai gratuit, jusqu'à 50 units (essai = formule 5). Pas d'installation."
         },
         "close": {
             "title": "Prêt à essayer ?",
@@ -242,7 +242,7 @@
         "start": {
             "title": "Commencer petit. Élargir quand ça marche.",
             "lead": "Pas besoin de basculer toute l'organisation. Commencez par un terminal, un bâtiment, un entrepôt ou une équipe de maintenance.",
-            "trial": "Un mois d'essai gratuit, jusqu'à 50 units. Pas d'installation."
+            "trial": "Un mois d'essai gratuit, jusqu'à 50 units (essai = formule 5). Pas d'installation."
         },
         "close": {
             "title": "Prêt à essayer ?",
@@ -360,7 +360,7 @@
         "start": {
             "title": "Commencer petit. Élargir quand ça marche.",
             "lead": "Pas besoin de basculer tout le site. Commencez par exemple par un service, un bâtiment ou une équipe facility.",
-            "trial": "Un mois d'essai gratuit, jusqu'à 50 units. Pas d'installation."
+            "trial": "Un mois d'essai gratuit, jusqu'à 50 units (essai = formule 5). Pas d'installation."
         },
         "close": {
             "title": "Prêt à essayer ?",
@@ -478,7 +478,7 @@
         "start": {
             "title": "Commencer petit. Élargir quand ça marche.",
             "lead": "Pas besoin de basculer toute la commune. Commencez par exemple par un bâtiment, une école ou une équipe d'entretien.",
-            "trial": "Un mois d'essai gratuit, jusqu'à 50 units. Pas d'installation."
+            "trial": "Un mois d'essai gratuit, jusqu'à 50 units (essai = formule 5). Pas d'installation."
         },
         "close": {
             "title": "Prêt à essayer ?",
@@ -595,7 +595,7 @@
         "start": {
             "title": "Commencer petit. Élargir quand ça marche.",
             "lead": "Pas besoin de basculer tout le portefeuille. Commencez par exemple par un immeuble, un étage ou une équipe.",
-            "trial": "Un mois d'essai gratuit, jusqu'à 50 units. Pas d'installation."
+            "trial": "Un mois d'essai gratuit, jusqu'à 50 units (essai = formule 5). Pas d'installation."
         },
         "close": {
             "title": "Prêt à essayer ?",
@@ -731,7 +731,7 @@
         "start": {
             "title": "Commencez petit. Étendez quand ça marche.",
             "lead": "Inutile de convertir tous les clients ou chantiers d’un coup. Commencez par une équipe, un Clock Point ou quelques lieux.",
-            "trial": "Un mois d’essai gratuit, jusqu’à 50 unités. Pas d’installation."
+            "trial": "Un mois d’essai gratuit, jusqu’à 50 unités (essai = formule 5). Pas d’installation."
         },
         "close": {
             "title": "Prêt à l’essayer ?",

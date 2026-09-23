@@ -2,11 +2,11 @@
     "meta_title": "Prezzi | WinProx",
     "social": {
         "og_title": "Prezzi | WinProx",
-        "og_description": "WinProx — segnalazioni, attività e timbratrice da 7 € per licenza al mese. Pagamento annuale."
+        "og_description": "WinProx — segnalazioni, compiti e timbratura da 59€ al mese. Pagamento mensile tramite Stripe."
     },
     "eyebrow": "Prezzi",
     "title": "Prezzi e piani",
-    "message": "Tre formule annuali in base al numero di licenze. Time (timbratrice) incluso. Pagamento annuale tramite fattura. Iniziate con un mese gratuito.",
+    "message": "Quattro formule mensili per numero di licenze (5/10/25/50). Time (timbratura) incluso. Pagamento mensile tramite Stripe. Inizia con un mese gratuito (formula 5).",
     "back": "Torna alla home",
     "trial_link": "Prova gratis",
     "subscription_link": "Vai all'abbonamento"

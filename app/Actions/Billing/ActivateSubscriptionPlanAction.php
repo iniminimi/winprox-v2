@@ -18,7 +18,7 @@ class ActivateSubscriptionPlanAction
     ) {}
 
     /**
-     * @param  'manual'|'stripe'|'platform'  $source
+     * @param  'manual'|'stripe'|'stripe_webhook'|'platform'  $source
      */
     public function handle(
         ?User $actor,
@@ -33,7 +33,7 @@ class ActivateSubscriptionPlanAction
             throw new InvalidArgumentException('unknown_plan');
         }
 
-        $bypassSelfActivate = in_array($source, ['stripe', 'platform'], true);
+        $bypassSelfActivate = in_array($source, ['stripe', 'stripe_webhook', 'platform'], true);
         if (! $bypassSelfActivate && ! (bool) config("billing.plans.{$plan}.self_activate", true)) {
             throw new InvalidArgumentException('plan_not_self_activate');
         }

@@ -2,11 +2,11 @@
     "meta_title": "Precios | WinProx",
     "social": {
         "og_title": "Precios | WinProx",
-        "og_description": "WinProx — avisos, tareas y reloj de fichar desde 7 € por licencia al mes. Pago anual."
+        "og_description": "WinProx — avisos, tareas y fichaje desde 59€ al mes. Pago mensual con Stripe."
     },
     "eyebrow": "Precios",
     "title": "Precios y planes",
-    "message": "Tres fórmulas anuales según el número de licencias. Time (reloj de fichar) incluido. Pago anual por factura. Empiece con un mes gratis.",
+    "message": "Cuatro fórmulas mensuales según licencias (5/10/25/50). Time (fichaje) incluido. Pago mensual con Stripe. Empiece con un mes gratis (fórmula 5).",
     "back": "Volver al inicio",
     "trial_link": "Probar gratis",
     "subscription_link": "Ir a suscripción"

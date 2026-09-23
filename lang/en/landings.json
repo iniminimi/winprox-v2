@@ -111,7 +111,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not have to convert the whole hotel at once. Start with 10 rooms, one floor or one team, for example.",
-            "trial": "One month free, up to 50 units. No install."
+            "trial": "One month free, up to 50 units (trial = 5-seat plan). No install."
         },
         "close": {
             "title": "Ready to try it?",
@@ -242,7 +242,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not have to convert the whole organisation at once. Start with one terminal, one building, one warehouse or one maintenance team.",
-            "trial": "One month free, up to 50 units. No install."
+            "trial": "One month free, up to 50 units (trial = 5-seat plan). No install."
         },
         "close": {
             "title": "Ready to try it?",
@@ -360,7 +360,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not have to convert the whole care site at once. Start with one ward, one building or one facility team, for example.",
-            "trial": "One month free, up to 50 units. No install."
+            "trial": "One month free, up to 50 units (trial = 5-seat plan). No install."
         },
         "close": {
             "title": "Ready to try it?",
@@ -478,7 +478,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not have to convert the whole municipality at once. Start with one building, one school or one maintenance team, for example.",
-            "trial": "One month free, up to 50 units. No install."
+            "trial": "One month free, up to 50 units (trial = 5-seat plan). No install."
         },
         "close": {
             "title": "Ready to try it?",
@@ -595,7 +595,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not have to convert the whole portfolio at once. Start with one building, one floor or one team, for example.",
-            "trial": "One month free, up to 50 units. No install."
+            "trial": "One month free, up to 50 units (trial = 5-seat plan). No install."
         },
         "close": {
             "title": "Ready to try it?",
@@ -731,7 +731,7 @@
         "start": {
             "title": "Start small. Grow when it works.",
             "lead": "You do not need to convert every customer or site at once. Start with one crew, one Clock Point or a handful of locations.",
-            "trial": "One month free trial, up to 50 units. No install."
+            "trial": "One month free trial, up to 50 units (trial = 5-seat plan). No install."
         },
         "close": {
             "title": "Ready to try it yourself?",

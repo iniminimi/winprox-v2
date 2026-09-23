@@ -48,29 +48,36 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "How much does WinProx cost?",
-            "intro": "You start with a free trial month (50 seats and 50 units). IoT, ESG and API are not in the trial. Then 10/25/50 seats with 50/125/250 units. Billed yearly by invoice. Corporate is custom (from 100 seats or when API/webhooks are needed).",
-            "summary": "Trial up to 50 seats and 50 units. Then 10/25/50 seats with 5× units. Billed yearly. IoT, ESG and API on Corporate.",
-            "content_note": "Seat = colleague with login or worker (Clock Point); a colleague with a linked punch-clock profile counts as one. Units and documents follow the seat count. Locations and photos are unlimited. Exact prices are under Subscription.",
+            "intro": "You start with a free trial month (5 seats, 50 units, 10 documents). IoT, ESG and API are not in the trial. Then 5/10/25/50 seats with 50/100/250/500 units. Billed monthly via Stripe. Corporate is custom (from 100 seats or when API/webhooks are needed).",
+            "summary": "Trial = 5-seat plan. Then 5/10/25/50 seats with 10× units. Billed monthly via Stripe. IoT, ESG and API on Corporate.",
+            "content_note": "Seat = colleague with login or worker (Clock Point). Units = 10× seats; documents 10/20/30/40. Locations and photos unlimited. Exact prices under Subscription.",
             "plans": {
-                "winprox_10": {
+                "winprox_5": {
                     "units": "Up to 50 units. Locations unlimited.",
-                    "announcements": "€70 per month (€840 / year)",
-                    "documents": "Punch clock, roster, CIAO (NSSO) included.",
-                    "description": "Issues, tasks and punch clock. Billed yearly.",
+                    "announcements": "€59 per month",
+                    "documents": "Punch clock, roster and CIAO (NSSO) included.",
+                    "description": "Issues, tasks and punch clock. Billed monthly via Stripe.",
+                    "users": "Up to 5 seats (colleagues + workers)"
+                },
+                "winprox_10": {
+                    "units": "Up to 100 units. Locations unlimited.",
+                    "announcements": "€99 per month",
+                    "documents": "Punch clock, roster and CIAO (NSSO) included.",
+                    "description": "Issues, tasks and punch clock. Billed monthly via Stripe.",
                     "users": "Up to 10 seats (colleagues + workers)"
                 },
                 "winprox_25": {
-                    "units": "Up to 125 units. Locations unlimited.",
-                    "announcements": "€150 per month (€1,800 / year)",
-                    "documents": "Punch clock, roster, CIAO (NSSO) included.",
-                    "description": "Issues, tasks and punch clock. Billed yearly.",
+                    "units": "Up to 250 units. Locations unlimited.",
+                    "announcements": "€199 per month",
+                    "documents": "Punch clock, roster and CIAO (NSSO) included.",
+                    "description": "Issues, tasks and punch clock. Billed monthly via Stripe.",
                     "users": "Up to 25 seats (colleagues + workers)"
                 },
                 "winprox_50": {
-                    "units": "Up to 250 units. Locations unlimited.",
-                    "announcements": "€250 per month (€3,000 / year)",
-                    "documents": "Punch clock, roster, CIAO (NSSO) included.",
-                    "description": "Issues, tasks and punch clock. Billed yearly.",
+                    "units": "Up to 500 units. Locations unlimited.",
+                    "announcements": "€349 per month",
+                    "documents": "Punch clock, roster and CIAO (NSSO) included.",
+                    "description": "Issues, tasks and punch clock. Billed monthly via Stripe.",
                     "users": "Up to 50 seats (colleagues + workers)"
                 },
                 "corporate": {

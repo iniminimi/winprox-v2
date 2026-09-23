@@ -806,7 +806,7 @@
                 },
                 {
                     "label": "Formule / contact",
-                    "text": "Les formules sont informatives (10/25/50 licences + Corporate). Vous n’activez pas l’abonnement vous-même : WinProx l’attribue après accord/facture annuelle. Contactez info@winprox.app. CIAO (ONSS) se demande de la même façon ; un Superuser l’active (Time s’active ; pas besoin de Corporate)."
+                    "text": "Formules : 5/10/25/50 licences + Corporate. Vous choisissez une formule et payez mensuellement via Stripe (Corporate sur demande). Contactez info@winprox.app pour Corporate ou CIAO. CIAO (ONSS) se demande de la même façon ; un Superuser l’active (Time s’active ; pas besoin de Corporate)."
                 },
                 {
                     "label": "Supprimer les données de l’organisation",
@@ -1112,7 +1112,7 @@
                 },
                 {
                     "label": "Attribuer la formule",
-                    "text": "Choisissez la formule (WinProx 10/25/50 ou Corporate) et attribuez-la. Pour Corporate : saisissez le plafond d’unités. CIAO peut s’activer sans Corporate."
+                    "text": "Choisissez la formule (WinProx 5/10/25/50 ou Corporate) et attribuez-la. Pour Corporate : saisissez le plafond d’unités. CIAO peut s’activer sans Corporate."
                 }
             ]
         },

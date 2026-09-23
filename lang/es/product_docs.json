@@ -250,7 +250,7 @@
                 "body": "Cada organización tiene su entorno, con límites por fórmula.",
                 "items": [
                     "Licencia = colega con acceso o operario. Colega + reloj cuenta como una.",
-                    "Unidades y documentos = 5× las licencias. Sedes y fotos ilimitadas."
+                    "Unidades = 10× las licencias (50/100/250/500); documentos 10/20/30/40. Ubicaciones y fotos ilimitadas (cada ubicación recibe una unidad «Toda la ubicación»)."
                 ]
             },
             {
@@ -320,8 +320,8 @@
                     "Production on **Linux** (EU), at **Cloud86**.",
                     "Access via **HTTPS** (encrypted connection, TLS).",
                     "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite frontend.",
-                    "Correo por SMTP en la UE; facturación anual (sin pago en línea). Solo WinProx (Superuser) asigna el plan; las organizaciones no eligen la suscripción.",
-                    "Precios: desde **7 € / licencia / mes** (10 licencias + 50 unidades), **6 €** (25 + 125), **5 €** (50 + 250). Pago anual por factura. Corporate a medida."
+                    "Correo por SMTP en la UE; facturación mensual con Stripe Checkout. Las organizaciones eligen un plan (5/10/25/50); Corporate bajo petición vía WinProx.",
+                    "Precios: **59€** (5 licencias + 50 unidades), **99€** (10 + 100), **199€** (25 + 250), **349€** (50 + 500) al mes con Stripe. Corporate a medida."
                 ]
             },
             {

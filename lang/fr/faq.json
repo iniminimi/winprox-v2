@@ -48,30 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Combien coûte WinProx ?",
-            "intro": "Vous commencez par un mois d’essai gratuit (50 licences et 50 unités). IoT, ESG et API ne sont pas dans l’essai. Ensuite 10/25/50 licences avec 50/125/250 unités. Paiement annuel par facture. Corporate sur mesure (à partir de 100 licences ou si API/webhooks sont nécessaires).",
-            "summary": "Essai jusqu’à 50 licences et 50 unités. Ensuite 10/25/50 licences avec 5× unités. Paiement annuel. IoT, ESG et API en Corporate.",
-            "content_note": "Licence = collègue avec connexion ou exécutant (Clock Point) ; un collègue avec profil pointeuse lié compte pour une. Unités et documents suivent le nombre de licences. Lieux et photos illimités. Les prix exacts sont sous Abonnement.",
+            "intro": "Vous commencez par un mois d'essai gratuit (5 licences, 50 units, 10 documents). IoT, ESG et API ne sont pas dans l'essai. Puis 5/10/25/50 licences avec 50/100/250/500 units. Paiement mensuel via Stripe. Corporate sur mesure (à partir de 100 licences ou si API/webhooks nécessaires).",
+            "summary": "Essai = formule 5. Puis 5/10/25/50 licences avec 10× units. Paiement mensuel via Stripe. IoT, ESG et API sur Corporate.",
+            "content_note": "Licence = collègue avec login ou exécutant (Clock Point). Units = 10× licences ; documents 10/20/30/40. Sites et photos illimités. Prix exacts sous Abonnement.",
             "plans": {
+                "winprox_5": {
+                    "units": "Jusqu'à 50 units. Sites illimités.",
+                    "announcements": "59€ par mois",
+                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus.",
+                    "description": "Signalements, tâches et pointeuse. Paiement mensuel via Stripe.",
+                    "users": "Jusqu'à 5 licences (collègues + exécutants)"
+                },
                 "winprox_10": {
-                    "units": "Jusqu’à 50 unités. Lieux illimités.",
-                    "announcements": "70 € par mois (840 € / an)",
-                    "documents": "Pointeuse, planning, CIAO (ONSS) inclus.",
-                    "description": "Signalements, tâches et pointeuse. Paiement annuel.",
-                    "users": "Jusqu’à 10 licences (collègues + exécutants)"
+                    "units": "Jusqu'à 100 units. Sites illimités.",
+                    "announcements": "99€ par mois",
+                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus.",
+                    "description": "Signalements, tâches et pointeuse. Paiement mensuel via Stripe.",
+                    "users": "Jusqu'à 10 licences (collègues + exécutants)"
                 },
                 "winprox_25": {
-                    "units": "Jusqu’à 125 unités. Lieux illimités.",
-                    "announcements": "150 € par mois (1 800 € / an)",
-                    "documents": "Pointeuse, planning, CIAO (ONSS) inclus.",
-                    "description": "Signalements, tâches et pointeuse. Paiement annuel.",
-                    "users": "Jusqu’à 25 licences (collègues + exécutants)"
+                    "units": "Jusqu'à 250 units. Sites illimités.",
+                    "announcements": "199€ par mois",
+                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus.",
+                    "description": "Signalements, tâches et pointeuse. Paiement mensuel via Stripe.",
+                    "users": "Jusqu'à 25 licences (collègues + exécutants)"
                 },
                 "winprox_50": {
-                    "units": "Jusqu’à 250 unités. Lieux illimités.",
-                    "announcements": "250 € par mois (3 000 € / an)",
-                    "documents": "Pointeuse, planning, CIAO (ONSS) inclus.",
-                    "description": "Signalements, tâches et pointeuse. Paiement annuel.",
-                    "users": "Jusqu’à 50 licences (collègues + exécutants)"
+                    "units": "Jusqu'à 500 units. Sites illimités.",
+                    "announcements": "349€ par mois",
+                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus.",
+                    "description": "Signalements, tâches et pointeuse. Paiement mensuel via Stripe.",
+                    "users": "Jusqu'à 50 licences (collègues + exécutants)"
                 },
                 "corporate": {
                     "units": "À partir de 100 licences, ou si API/webhooks/intégrations sont nécessaires.",

@@ -27,7 +27,7 @@
                 },
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 50 licenties en 50 units, inclusief Time (prikklok). Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 5 licenties, 50 units en 10 documenten, inclusief Time (prikklok). Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Melding toevoegen",
@@ -794,11 +794,11 @@
             "actions": [
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 50 licenties en 50 units, inclusief Time (prikklok). IoT, ESG en API zitten niet in de proef. Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proef hebt u tot 5 licenties, 50 units en 10 documenten, inclusief Time (prikklok). IoT, ESG en API zitten niet in de proef. Het dashboard toont resterende dagen."
                 },
                 {
                     "label": "Formule / contact",
-                    "text": "Formules staan ter informatie (10/25/50 licenties + Corporate). U activeert geen abonnement zelf: WinProx zet de formule na akkoord/jaarfactuur. Neem contact op via info@winprox.app. CIAO (RSZ) vraagt u ook aan; een Superuser zet het aan (Time gaat mee; geen Corporate nodig)."
+                    "text": "Formules: 5/10/25/50 licenties + Corporate. U kiest zelf een formule en betaalt maandelijks via Stripe (Corporate op aanvraag). Neem contact op via info@winprox.app voor Corporate of CIAO. CIAO (RSZ) vraagt u ook aan; een Superuser zet het aan (Time gaat mee; geen Corporate nodig)."
                 },
                 {
                     "label": "Organisatiegegevens verwijderen",
@@ -1104,7 +1104,7 @@
                 },
                 {
                     "label": "Formule toewijzen",
-                    "text": "Kies de formule (WinProx 10/25/50 of Corporate) en wijs toe. Bij Corporate: vul de units-cap in. CIAO kan apart aan zonder Corporate."
+                    "text": "Kies de formule (WinProx 5/10/25/50 of Corporate) en wijs toe. Bij Corporate: vul de units-cap in. CIAO kan apart aan zonder Corporate."
                 }
             ]
         },

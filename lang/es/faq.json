@@ -48,30 +48,37 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "¿Cuánto cuesta WinProx?",
-            "intro": "Empieza con un mes de prueba gratis (50 licencias y 50 unidades). IoT, ESG y API no están en la prueba. Después 10/25/50 licencias con 50/125/250 unidades. Pago anual por factura. Corporate a medida (desde 100 licencias o cuando se necesitan API/webhooks).",
-            "summary": "Prueba hasta 50 licencias y 50 unidades. Después 10/25/50 licencias con 5× unidades. Pago anual. IoT, ESG y API en Corporate.",
-            "content_note": "Licencia = colega con inicio de sesión u operario (Clock Point); un colega con perfil de fichaje vinculado cuenta como una. Unidades y documentos siguen el número de licencias. Ubicaciones y fotos ilimitadas. Precios exactos en Abono.",
+            "intro": "Empieza con un mes de prueba gratis (5 licencias, 50 unidades, 10 documentos). IoT, ESG y API no están en la prueba. Luego 5/10/25/50 licencias con 50/100/250/500 unidades. Pago mensual con Stripe. Corporate a medida (desde 100 licencias o cuando se necesitan API/webhooks).",
+            "summary": "Prueba = fórmula 5. Luego 5/10/25/50 licencias con 10× unidades. Pago mensual con Stripe. IoT, ESG y API en Corporate.",
+            "content_note": "Licencia = colega con login o ejecutor (Clock Point). Unidades = 10× licencias; documentos 10/20/30/40. Ubicaciones y fotos ilimitadas. Precios exactos en Suscripción.",
             "plans": {
+                "winprox_5": {
+                    "units": "Hasta 50 unidades. Ubicaciones ilimitadas.",
+                    "announcements": "59€ al mes",
+                    "documents": "Fichaje, planificación y CIAO incluidos.",
+                    "description": "Avisos, tareas y fichaje. Pago mensual con Stripe.",
+                    "users": "Hasta 5 licencias (colegas + ejecutores)"
+                },
                 "winprox_10": {
-                    "units": "Hasta 50 unidades. Sedes ilimitadas.",
-                    "announcements": "70 € al mes (840 € / año)",
-                    "documents": "Reloj, cuadrante, CIAO (ONSS) incluidos.",
-                    "description": "Avisos, tareas y reloj de fichar. Pago anual.",
-                    "users": "Hasta 10 licencias (colegas + operarios)"
+                    "units": "Hasta 100 unidades. Ubicaciones ilimitadas.",
+                    "announcements": "99€ al mes",
+                    "documents": "Fichaje, planificación y CIAO incluidos.",
+                    "description": "Avisos, tareas y fichaje. Pago mensual con Stripe.",
+                    "users": "Hasta 10 licencias (colegas + ejecutores)"
                 },
                 "winprox_25": {
-                    "units": "Hasta 125 unidades. Sedes ilimitadas.",
-                    "announcements": "150 € al mes (1.800 € / año)",
-                    "documents": "Reloj, cuadrante, CIAO (ONSS) incluidos.",
-                    "description": "Avisos, tareas y reloj de fichar. Pago anual.",
-                    "users": "Hasta 25 licencias (colegas + operarios)"
+                    "units": "Hasta 250 unidades. Ubicaciones ilimitadas.",
+                    "announcements": "199€ al mes",
+                    "documents": "Fichaje, planificación y CIAO incluidos.",
+                    "description": "Avisos, tareas y fichaje. Pago mensual con Stripe.",
+                    "users": "Hasta 25 licencias (colegas + ejecutores)"
                 },
                 "winprox_50": {
-                    "units": "Hasta 250 unidades. Sedes ilimitadas.",
-                    "announcements": "250 € al mes (3.000 € / año)",
-                    "documents": "Reloj, cuadrante, CIAO (ONSS) incluidos.",
-                    "description": "Avisos, tareas y reloj de fichar. Pago anual.",
-                    "users": "Hasta 50 licencias (colegas + operarios)"
+                    "units": "Hasta 500 unidades. Ubicaciones ilimitadas.",
+                    "announcements": "349€ al mes",
+                    "documents": "Fichaje, planificación y CIAO incluidos.",
+                    "description": "Avisos, tareas y fichaje. Pago mensual con Stripe.",
+                    "users": "Hasta 50 licencias (colegas + ejecutores)"
                 },
                 "corporate": {
                     "units": "Desde 100 licencias, o si se necesitan API/webhooks/integraciones.",

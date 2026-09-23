@@ -27,7 +27,7 @@
                 },
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 50 licencias y 50 unidades, Time (reloj de fichar) incluido. El panel muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 5 licencias, 50 unidades y 10 documentos, Time (reloj de fichar) incluido. El panel muestra los días restantes."
                 },
                 {
                     "label": "Añadir incidencia",
@@ -794,11 +794,11 @@
             "actions": [
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 50 licencias y 50 unidades, Time (reloj de fichar) incluido. IoT, ESG y API no están en la prueba. El panel muestra los días restantes."
+                    "text": "Durante la prueba tiene hasta 5 licencias, 50 unidades y 10 documentos, Time (reloj de fichar) incluido. IoT, ESG y API no están en la prueba. El panel muestra los días restantes."
                 },
                 {
                     "label": "Plan / contacto",
-                    "text": "Los planes son informativos (10/25/50 licencias + Corporate). Usted no activa la suscripción: WinProx la asigna tras acuerdo/factura anual. Contacte info@winprox.app. CIAO (ONSS) se solicita igual; un Superuser lo activa (Time se enciende; no hace falta Corporate)."
+                    "text": "Fórmulas: 5/10/25/50 licencias + Corporate. Usted elige y paga mensualmente con Stripe (Corporate bajo petición). Contacte info@winprox.app para Corporate o CIAO. CIAO (ONSS) se solicita igual; un Superuser lo activa (Time se enciende; no hace falta Corporate)."
                 },
                 {
                     "label": "Eliminar datos de la organización",
@@ -1104,7 +1104,7 @@
                 },
                 {
                     "label": "Asignar plan",
-                    "text": "Elija el plan (WinProx 10/25/50 o Corporate) y asígnelo. En Corporate: indique el tope de unidades. CIAO se puede activar sin Corporate."
+                    "text": "Elija el plan (WinProx 5/10/25/50 o Corporate) y asígnelo. En Corporate: indique el tope de unidades. CIAO se puede activar sin Corporate."
                 }
             ]
         },

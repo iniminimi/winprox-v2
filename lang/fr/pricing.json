@@ -2,11 +2,11 @@
     "meta_title": "Tarifs | WinProx",
     "social": {
         "og_title": "Tarifs | WinProx",
-        "og_description": "WinProx — signalements, tâches et pointeuse dès 7 € par licence et par mois. Paiement annuel."
+        "og_description": "WinProx — signalements, tâches et pointeuse dès 59€ par mois. Paiement mensuel via Stripe."
     },
     "eyebrow": "Tarifs",
     "title": "Tarifs & formules",
-    "message": "Trois formules annuelles selon le nombre de licences. Time (pointeuse) inclus. Paiement annuel par facture. Commencez par un mois gratuit.",
+    "message": "Quatre formules mensuelles selon le nombre de licences (5/10/25/50). Time (pointeuse) inclus. Paiement mensuel via Stripe. Commencez par un mois gratuit (formule 5).",
     "back": "Retour à l'accueil",
     "trial_link": "Essayer gratuitement",
     "subscription_link": "Aller à l'abonnement"

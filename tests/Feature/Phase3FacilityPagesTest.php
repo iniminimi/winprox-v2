@@ -272,7 +272,7 @@ it('stuurt gebruikers zonder toegang door naar abonnement', function () {
         ->assertRedirect(route('subscription.index'));
 });
 
-it('toont WinProx-jaarformules en Corporate op abonnement', function () {
+it('toont WinProx-maandformules en Corporate op abonnement', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now()->addDays(5),
         'has_esg_module' => false,
@@ -286,10 +286,11 @@ it('toont WinProx-jaarformules en Corporate op abonnement', function () {
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
+        ->assertSee(__('subscription.plans.winprox_5.name'))
         ->assertSee(__('subscription.plans.winprox_10.name'))
         ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
-        ->assertSee(__('subscription.yearly_invoice_notice'))
+        ->assertSee(__('subscription.payment_notice'))
         ->assertDontSee(__('subscription.plans.facility_25.price'));
 });
 
@@ -334,7 +335,9 @@ it('toont csv-import knop op locatie-detail bij facility_100-plan', function () 
         ->assertSee(__('locations.units_csv.button'), false);
 });
 
-it('weigert tenant-self-activate van een plan', function () {
+it('weigert tenant-self-activate wanneer flag uit staat', function () {
+    config(['billing.allow_tenant_self_activation' => false]);
+
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now()->addDays(3),
         'is_active' => true,

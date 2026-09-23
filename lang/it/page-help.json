@@ -27,7 +27,7 @@
                 },
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova avete fino a 50 licenze e 50 unità, Time (timbratrice) incluso. La dashboard mostra i giorni rimanenti."
+                    "text": "Durante la prova avete fino a 5 licenze, 50 unità e 10 documenti, Time (timbratrice) incluso. La dashboard mostra i giorni rimanenti."
                 },
                 {
                     "label": "Aggiungi segnalazione",
@@ -794,11 +794,11 @@
             "actions": [
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova avete fino a 50 licenze e 50 unità, Time (timbratrice) incluso. IoT, ESG e API non sono nella prova. La dashboard mostra i giorni rimanenti."
+                    "text": "Durante la prova avete fino a 5 licenze, 50 unità e 10 documenti, Time (timbratrice) incluso. IoT, ESG e API non sono nella prova. La dashboard mostra i giorni rimanenti."
                 },
                 {
                     "label": "Scelga piano",
-                    "text": "Scegliete 10, 25 o 50 licenze (colleghi + operatori), con altrettante unità e documenti. Sedi e foto illimitate. Prezzo per licenza: 7 € / 6 € / 5 € al mese. Pagamento annuale tramite fattura. Time (timbratrice) è incluso. Corporate da 100 licenze, prezzo su misura."
+                    "text": "Formule: 5/10/25/50 licenze + Corporate. Scegli e paghi mensilmente con Stripe (Corporate su richiesta). Contatta info@winprox.app per Corporate o CIAO. CIAO si richiede allo stesso modo; un Superuser lo attiva (Time si attiva; Corporate non serve)."
                 },
                 {
                     "label": "Elimina i dati dell’organizzazione",
@@ -1104,7 +1104,7 @@
                 },
                 {
                     "label": "Assegna formula",
-                    "text": "Scegli la formula (WinProx 10/25/50 o Corporate) e assegnala. Per Corporate: inserisci il limite unità. CIAO si può attivare senza Corporate."
+                    "text": "Scegli la formula (WinProx 5/10/25/50 o Corporate) e assegnala. Per Corporate: inserisci il limite unità. CIAO si può attivare senza Corporate."
                 }
             ]
         },

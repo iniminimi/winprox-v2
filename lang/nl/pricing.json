@@ -2,11 +2,11 @@
     "meta_title": "Prijzen | WinProx",
     "social": {
         "og_title": "Prijzen | WinProx",
-        "og_description": "WinProx — meldingen, taken en prikklok vanaf 7€ per licentie per maand. Jaarlijks te betalen."
+        "og_description": "WinProx — meldingen, taken en prikklok vanaf 59€ per maand. Maandelijks te betalen via Stripe."
     },
     "eyebrow": "Prijzen",
     "title": "Prijzen & formules",
-    "message": "Drie jaarformules per aantal licenties. Time (prikklok) inbegrepen. Jaarlijks te betalen via factuur. Start met een gratis maand.",
+    "message": "Vier maandformules per aantal licenties (5/10/25/50). Time (prikklok) inbegrepen. Maandelijks te betalen via Stripe. Start met een gratis maand (formule 5).",
     "back": "Terug naar home",
     "trial_link": "Gratis proberen",
     "subscription_link": "Naar abonnement"

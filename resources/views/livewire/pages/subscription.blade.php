@@ -264,7 +264,7 @@
 
         <div class="wp-billing-plan-details wp-stack-tight">
             <p class="wp-muted">{{ __('subscription.plans_intro') }}</p>
-            <p class="wp-muted">{{ __('subscription.yearly_invoice_notice') }}</p>
+            <p class="wp-muted">{{ __('subscription.payment_notice') }}</p>
             <h3 class="wp-subhead">{{ __('subscription.glossary.heading') }}</h3>
             <ul class="wp-billing-status-list">
                 <li>{{ __('subscription.glossary.unit') }}</li>
@@ -293,9 +293,9 @@
                                 <tr>
                                     <th scope="row">{{ __('subscription.plans.trial.name') }}</th>
                                     <td>{{ __('subscription.comparison_trial_price') }}</td>
-                                    <td>50</td>
-                                    <td>50</td>
-                                    <td>50</td>
+                                    <td>{{ number_format((int) config('billing.trial.units_limit', 50), 0, ',', '.') }}</td>
+                                    <td>{{ number_format((int) config('billing.trial.documents_org_limit', 10), 0, ',', '.') }}</td>
+                                    <td>{{ number_format((int) config('billing.trial.seats_limit', 5), 0, ',', '.') }}</td>
                                     <td>{{ __('subscription.comparison_included') }}</td>
                                     <td>{{ __('subscription.comparison_no') }}</td>
                                 </tr>

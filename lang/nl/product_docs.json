@@ -250,7 +250,7 @@
                 "body": "Elke organisatie heeft een eigen omgeving, met limieten per formule.",
                 "items": [
                     "Licentie = collega met login of uitvoerder. Collega + prikklok telt als één.",
-                    "Units en documenten = 5× de licenties. Locaties en foto’s onbeperkt."
+                    "Units = 10× de licenties (50/100/250/500); documenten 10/20/30/40. Locaties en foto’s onbeperkt (elke locatie krijgt een unit «Hele locatie»)."
                 ]
             },
             {
@@ -320,8 +320,8 @@
                     "Productie op **Linux** (EU), bij **Cloud86**.",
                     "Toegang via **HTTPS** (versleutelde verbinding, TLS).",
                     "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite-frontend.",
-                    "E-mail via SMTP in de EU; betaling via jaarfactuur (geen online checkout). Formule toewijzen doet alleen WinProx (Superuser); organisaties kiezen geen abonnement zelf.",
-                    "Prijzen: vanaf **7€ / licentie / maand** (10 licenties + 50 units), **6€** (25 + 125), **5€** (50 + 250). Jaarlijks te betalen via factuur. Corporate op maat."
+                    "E-mail via SMTP in de EU; betaling maandelijks via Stripe Checkout. Organisaties kiezen zelf een formule (5/10/25/50); Corporate op aanvraag via WinProx.",
+                    "Prijzen: **59€** (5 licenties + 50 units), **99€** (10 + 100), **199€** (25 + 250), **349€** (50 + 500) per maand via Stripe. Corporate op maat."
                 ]
             },
             {

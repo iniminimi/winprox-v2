@@ -1,30 +1,28 @@
 <?php
 
 /**
- * Billing — WinProx (jaar, licenties) + Corporate.
+ * Billing — WinProx (maand, licenties) + Corporate.
  *
- * Publieke catalogus: winprox_10 / winprox_25 / winprox_50 + corporate.
+ * Publieke catalogus: winprox_5 / winprox_10 / winprox_25 / winprox_50 + corporate.
  * Time (prikklok) is inbegrepen. CIAO (RSZ) op aanvraag, zonder extra SKU.
  * IoT + ESG + API: uitsluitend Corporate. 100+ licenties = Corporate.
  *
- *  - Licenties (seats): 10 / 25 / 50. Units + documenten = licenties × 5
- *    (50 / 125 / 250). Collega + prikklok-profiel = 1 licentie.
- *  - Locaties en foto's: onbeperkt (zoals vroeger op Facility).
- *  - Documenten: zelfde limiet als units.
- *  - Trial: tot 50 licenties en 50 units, Time inbegrepen, geen IoT/ESG/API.
+ *  - Licenties (seats): 5 / 10 / 25 / 50. Units = licenties × 10
+ *    (50 / 100 / 250 / 500). Documenten: 10 / 20 / 30 / 40.
+ *  - Locaties en foto's: onbeperkt (elke locatie krijgt een "Hele locatie"-unit).
+ *  - Collega + prikklok-profiel = 1 licentie.
+ *  - Trial = zelfde limieten als winprox_5.
  *  - Corporate: afgesproken units via `tenants.billing_units_cap` (superuser).
  *  - Legacy facility_* en winprox_100 / *_time blijven in config (geen catalogus).
  */
 
-$winproxShared = static function (int $seats): array {
-    $units = $seats * 5;
-
+$winproxShared = static function (int $seats, int $units, int $documents): array {
     return [
         'units_limit'            => $units,
         'locations_limit'        => null,
         'users_limit'            => null,
         'seats_limit'            => $seats,
-        'documents_org_limit'    => $units,
+        'documents_org_limit'    => $documents,
         'photos_org_limit'       => null,
         'documents_per_unit'     => null,
         'announcements_per_unit' => null,
@@ -35,29 +33,34 @@ $winproxShared = static function (int $seats): array {
         'api_access'             => false,
         'csv_workers_import'     => true,
         'csv_units_import'       => true,
-        'subscription_period_days' => 365,
-        // Tenant mag geen formule meer kiezen (jaarfactuur); alleen Superuser via Platform.
-        'self_activate'          => false,
+        'subscription_period_days' => 30,
+        'self_activate'          => true,
     ];
 };
 
-$winproxPlan = static function (int $seats, int $monthlyPerSeat, bool $public) use ($winproxShared): array {
+$winproxPlan = static function (
+    int $seats,
+    int $units,
+    int $documents,
+    int $packageMonthlyEur,
+    bool $public,
+) use ($winproxShared): array {
     $baseKey = 'winprox_'.$seats;
     $timeKey = 'winprox_'.$seats.'_time';
-    $shared = $winproxShared($seats);
+    $shared = $winproxShared($seats, $units, $documents);
 
     return [
         $baseKey => array_merge($shared, [
             'label_key'            => 'subscription.plans.'.$baseKey.'.name',
             'public_catalog'       => $public,
             'time_variant'         => $timeKey,
-            'seat_monthly_eur'     => $monthlyPerSeat,
+            'package_monthly_eur'  => $packageMonthlyEur,
         ]),
         $timeKey => array_merge($shared, [
             'label_key'            => 'subscription.plans.'.$timeKey.'.name',
             'public_catalog'       => false,
             'time_variant'         => null,
-            'seat_monthly_eur'     => $monthlyPerSeat,
+            'package_monthly_eur'  => $packageMonthlyEur,
         ]),
     ];
 };
@@ -90,13 +93,15 @@ return [
     'trial_days' => (int) env('BILLING_TRIAL_DAYS', 30),
     'trial_plan_facility' => 'trial',
     'paid_expiry_grace_days' => (int) env('BILLING_PAID_GRACE_DAYS', 7),
-    // Default uit: jaarfactuur buiten de app; Superuser wijst formules toe op Platform.
-    'allow_tenant_self_activation' => (bool) env('BILLING_ALLOW_SELF_ACTIVATION', false),
+    // Tenant kiest formule zelf; Stripe Checkout wanneer geconfigureerd.
+    'allow_tenant_self_activation' => (bool) env('BILLING_ALLOW_SELF_ACTIVATION', true),
     'subscription_period_days' => (int) env('BILLING_SUBSCRIPTION_PERIOD_DAYS', 30),
     'contact_email' => env('BILLING_CONTACT_EMAIL', 'info@winprox.app'),
 
     'api_rate_limits' => [
         'trial'            => ['max_attempts' => 30,    'decay_seconds' => 60],
+        'winprox_5'        => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'winprox_5_time'   => ['max_attempts' => 60,    'decay_seconds' => 60],
         'winprox_10'       => ['max_attempts' => 60,    'decay_seconds' => 60],
         'winprox_10_time'  => ['max_attempts' => 60,    'decay_seconds' => 60],
         'winprox_25'       => ['max_attempts' => 60,    'decay_seconds' => 60],
@@ -115,13 +120,13 @@ return [
         'corporate'        => ['max_attempts' => 10000, 'decay_seconds' => 60],
     ],
 
-    // Trial: tot 50 licenties en 50 units, Time inbegrepen, geen IoT/ESG/API.
+    // Trial = winprox_5 limieten: 5 licenties, 50 units, 10 documenten.
     'trial' => [
         'units_limit'            => 50,
         'locations_limit'        => null,
         'users_limit'            => null,
-        'seats_limit'            => 50,
-        'documents_org_limit'    => 50,
+        'seats_limit'            => 5,
+        'documents_org_limit'    => 10,
         'photos_org_limit'       => null,
         'documents_per_unit'     => null,
         'announcements_per_unit' => null,
@@ -135,10 +140,11 @@ return [
     ],
 
     'plans' => array_merge(
-        $winproxPlan(10, 7, true),
-        $winproxPlan(25, 6, true),
-        $winproxPlan(50, 5, true),
-        $winproxPlan(100, 5, false),
+        $winproxPlan(5, 50, 10, 59, true),
+        $winproxPlan(10, 100, 20, 99, true),
+        $winproxPlan(25, 250, 30, 199, true),
+        $winproxPlan(50, 500, 40, 349, true),
+        $winproxPlan(100, 1000, 100, 0, false),
         [
             // Legacy maandtiers — grandfather, niet in de catalogus.
             'facility_10' => $legacyFacility(10, false),

@@ -1,15 +1,15 @@
 {
     "title": "Suscripción, límites y facturación",
     "public_title": "Precios y planes",
-    "public_subtitle": "Elija el número de licencias. WinProx se factura anualmente. Reloj, cuadrante y CIAO (ONSS) incluidos.",
+    "public_subtitle": "Elija el número de licencias. Pago mensual con Stripe. Fichaje, planificación y CIAO incluidos.",
     "public_register_cta": "Iniciar prueba gratuita",
-    "subtitle": "Tras el mes gratis, elija un plan. Licencias 10/25/50; unidades y documentos = 5x (50/125/250). Sedes y fotos ilimitadas.",
+    "subtitle": "Tras el mes gratis, elija una fórmula. Licencias 5/10/25/50; unidades = 10× (50/100/250/500); documentos 10/20/30/40. Ubicaciones y fotos ilimitadas.",
     "plans_heading": "Planes",
-    "plans_intro": "Pague por persona. 10, 25 o 50 licencias (colegas + ejecutores); unidades y documentos = 5× ese número (50 / 125 / 250). Sedes y fotos ilimitadas. Reloj, cuadrante y CIAO (ONSS) incluidos.",
+    "plans_intro": "Pago mensual. 5, 10, 25 o 50 licencias (colegas + ejecutores); unidades = 10× ese número; documentos 10/20/30/40. Ubicaciones y fotos ilimitadas. Fichaje, planificación y CIAO incluidos.",
     "glossary": {
         "heading": "Licencias, unidades y fotos",
-        "unit": "Unidad — un objeto o lugar con código QR (máquina, habitación, vehículo). Unidades (y documentos) = 5× sus licencias: 50 / 125 / 250.",
-        "document": "Documento — un archivo en el portal QR, por ejemplo un manual. El mismo límite que las unidades.",
+        "unit": "Unidad — objeto o lugar con código QR. Cada ubicación nueva recibe automáticamente una unidad «Toda la ubicación». Unidades = 10× sus licencias: 50 / 100 / 250 / 500.",
+        "document": "Documento — un archivo en el portal QR, p. ej. un manual. Límite por fórmula: 10 / 20 / 30 / 40.",
         "photo": "Fotos — las fotos en avisos y tareas son ilimitadas.",
         "seat": "Licencia — un colega con inicio de sesión (admin o empleado) o un operario (Clock Point, sin inicio de sesión). Un colega con perfil de fichaje vinculado cuenta como una licencia."
     },
@@ -27,7 +27,7 @@
     "status_active": "Suscripción activa: :plan, válida hasta :date.",
     "status_grace": "Suscripción :plan finalizó el :ended. Período de gracia hasta :grace_end — :days días de acceso completo restantes.",
     "status_expired": "Su prueba ha terminado. Elija un plan abajo.",
-    "pricing_intro": "Mes de prueba gratis (50 licencias y 50 unidades). Después 10, 25 o 50 licencias con 50 / 125 / 250 unidades. Pago anual por factura.",
+    "pricing_intro": "Mes de prueba gratis (5 licencias, 50 unidades, 10 documentos — igual que la fórmula de entrada). Luego 5/10/25/50 licencias. Pago mensual con Stripe.",
     "status_module_esg": "Módulo ESG activo en su cuenta.",
     "status_module_time": "Time (reloj de fichar) está activo en su cuenta.",
     "page_limits_title": "Por qué ciertas acciones no están disponibles",
@@ -66,58 +66,76 @@
         "trial": {
             "name": "Período de prueba"
         },
+        "winprox_5": {
+            "name": "5 licencias",
+            "price": "59€ / mes",
+            "scale": "59€ al mes. Pago mensual con Stripe.",
+            "features": [
+                "50 unidades y 10 documentos. Ubicaciones y fotos ilimitadas.",
+                "Fichaje, planificación y CIAO (SS) incluidos."
+            ]
+        },
+        "winprox_5_time": {
+            "name": "5 licencias + Time (fichaje)",
+            "price": "59€ / mes",
+            "scale": "59€ al mes. Pago mensual con Stripe.",
+            "features": [
+                "50 unidades y 10 documentos. Ubicaciones y fotos ilimitadas.",
+                "Fichaje, planificación y CIAO (SS) incluidos."
+            ]
+        },
         "winprox_10": {
             "name": "10 licencias",
-            "price": "7 € / licencia / mes",
-            "scale": "70 € al mes. Pago anual (840 €).",
+            "price": "99€ / mes",
+            "scale": "99€ al mes. Pago mensual con Stripe.",
             "features": [
-                "50 unidades y 50 documentos. Sedes y fotos ilimitadas.",
-                "Reloj, cuadrante, CIAO (ONSS) incluidos."
+                "100 unidades y 20 documentos. Ubicaciones y fotos ilimitadas.",
+                "Fichaje, planificación y CIAO (SS) incluidos."
             ]
         },
         "winprox_10_time": {
-            "name": "10 licencias + Time (reloj de fichar)",
-            "price": "7 € / licencia / mes",
-            "scale": "70 € al mes. Pago anual (840 €).",
+            "name": "10 licencias + Time (fichaje)",
+            "price": "99€ / mes",
+            "scale": "99€ al mes. Pago mensual con Stripe.",
             "features": [
-                "50 unidades y 50 documentos. Sedes y fotos ilimitadas.",
-                "Reloj, cuadrante, CIAO (ONSS) incluidos."
+                "100 unidades y 20 documentos. Ubicaciones y fotos ilimitadas.",
+                "Fichaje, planificación y CIAO (SS) incluidos."
             ]
         },
         "winprox_25": {
             "name": "25 licencias",
-            "price": "6 € / licencia / mes",
-            "scale": "150 € al mes. Pago anual (1.800 €).",
+            "price": "199€ / mes",
+            "scale": "199€ al mes. Pago mensual con Stripe.",
             "features": [
-                "125 unidades y 125 documentos. Sedes y fotos ilimitadas.",
-                "Reloj, cuadrante, CIAO (ONSS) incluidos."
+                "250 unidades y 30 documentos. Ubicaciones y fotos ilimitadas.",
+                "Fichaje, planificación y CIAO (SS) incluidos."
             ]
         },
         "winprox_25_time": {
-            "name": "25 licencias + Time (reloj de fichar)",
-            "price": "6 € / licencia / mes",
-            "scale": "150 € al mes. Pago anual (1.800 €).",
+            "name": "25 licencias + Time (fichaje)",
+            "price": "199€ / mes",
+            "scale": "199€ al mes. Pago mensual con Stripe.",
             "features": [
-                "125 unidades y 125 documentos. Sedes y fotos ilimitadas.",
-                "Reloj, cuadrante, CIAO (ONSS) incluidos."
+                "250 unidades y 30 documentos. Ubicaciones y fotos ilimitadas.",
+                "Fichaje, planificación y CIAO (SS) incluidos."
             ]
         },
         "winprox_50": {
             "name": "50 licencias",
-            "price": "5 € / licencia / mes",
-            "scale": "250 € al mes. Pago anual (3.000 €).",
+            "price": "349€ / mes",
+            "scale": "349€ al mes. Pago mensual con Stripe.",
             "features": [
-                "250 unidades y 250 documentos. Sedes y fotos ilimitadas.",
-                "Reloj, cuadrante, CIAO (ONSS) incluidos."
+                "500 unidades y 40 documentos. Ubicaciones y fotos ilimitadas.",
+                "Fichaje, planificación y CIAO (SS) incluidos."
             ]
         },
         "winprox_50_time": {
-            "name": "50 licencias + Time (reloj de fichar)",
-            "price": "5 € / licencia / mes",
-            "scale": "250 € al mes. Pago anual (3.000 €).",
+            "name": "50 licencias + Time (fichaje)",
+            "price": "349€ / mes",
+            "scale": "349€ al mes. Pago mensual con Stripe.",
             "features": [
-                "250 unidades y 250 documentos. Sedes y fotos ilimitadas.",
-                "Reloj, cuadrante, CIAO (ONSS) incluidos."
+                "500 unidades y 40 documentos. Ubicaciones y fotos ilimitadas.",
+                "Fichaje, planificación y CIAO (SS) incluidos."
             ]
         },
         "winprox_100": {
@@ -205,7 +223,7 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Precio personalizado",
-            "scale": "Desde 100 licencias, o si se necesitan API/webhooks/integraciones.",
+            "scale": "Desde 100 licencias, o cuando se necesitan API/webhooks/integraciones.",
             "features": [
                 "Reloj, cuadrante, CIAO (ONSS), IoT Connect, ESG y API incluidos.",
                 "API REST completa y webhooks.",
@@ -296,8 +314,8 @@
     "comparison_custom": "A medida",
     "comparison_trial_price": "Gratis",
     "comparison_notes": {
-        "trial": "Prueba: 50 licencias y 50 unidades. Pago anual tras la prueba.",
-        "unlimited": "Unidades y documentos = 5× sus licencias (50 / 125 / 250). Sedes y fotos son ilimitadas.",
+        "trial": "Prueba: 5 licencias, 50 unidades y 10 documentos (igual que la fórmula de 5). Luego pago mensual con Stripe.",
+        "unlimited": "Unidades = 10× sus licencias (50 / 100 / 250 / 500). Documentos 10 / 20 / 30 / 40. Ubicaciones y fotos ilimitadas.",
         "corporate": "IoT, ESG y API: solo WinProx Corporate (desde 100 licencias)."
     },
     "contact_sales_cta": "Contactar",
@@ -308,9 +326,9 @@
     "time_addon": {
         "label": "Time (reloj de fichar)",
         "monthly": ":price / mes",
-        "hint": "Entrada, salida y pausas. Se añade a la factura anual (12 × el precio mensual).",
-        "public_hint": "Time (reloj de fichar) opcional desde :price / mes, en la factura anual."
+        "hint": "Entrada/salida y pausas. Incluido en cada fórmula WinProx.",
+        "public_hint": "Time (fichaje) está incluido en cada fórmula WinProx."
     },
     "comparison_col_seats": "Plazas",
-    "yearly_invoice_notice": "Pago anual por factura. Sin pago en línea."
+    "payment_notice": "Pago mensual con Stripe. Corporate a medida (sin pago en línea)."
 }
