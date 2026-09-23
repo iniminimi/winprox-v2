@@ -1,6 +1,6 @@
 {
     "title": "Dashboard",
-    "subtitle": "Panoramica delle Sue sedi, unità, segnalazioni e attività.",
+    "subtitle": "Panoramica di segnalazioni aperte, attività e presenza.",
     "trial_capsule": {
         "trial_short": "Periodo di prova: :days giorni rimanenti.",
         "trial_title": "Periodo di prova",

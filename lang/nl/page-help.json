@@ -10,8 +10,12 @@
             "title": "Hulp — Dashboard",
             "actions": [
                 {
+                    "label": "Wat wil je doen?",
+                    "text": "Bovenaan staan snelkoppelingen: uurrooster bekijken, wie werkt waar vandaag, nieuwe dagtaak (inspectieronde), locatie toevoegen en uitvoerder toevoegen. Zo hoef je niet door de menu’s te zoeken."
+                },
+                {
                     "label": "Overzicht",
-                    "text": "Het dashboard toont tellingen van locaties, units, open meldingen en open taken. Klik op een kaart om naar het bijhorende scherm te gaan. Open verlof- of recupaanvragen verschijnen als extra kaart naar Time → Aanvragen, met het aantal per soort (1 Verlof, 1 Recup, of beide)."
+                    "text": "Onder Dashboard zie je tellingen van open meldingen, open taken en (met Time) wie er nu aanwezig is. Klik op een kaart om naar het bijhorende scherm te gaan. Open verlof- of recupaanvragen verschijnen als extra kaart naar Time → Aanvragen, met het aantal per soort (1 Verlof, 1 Recup, of beide)."
                 },
                 {
                     "label": "Starttemplate",

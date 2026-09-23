@@ -60,7 +60,7 @@ Een starttemplate toont de keuze in preview en op
 - Namen van teams/categorieën/locatie/units worden in **alle talen** in de DB gezet. Hernoemen blijft altijd mogelijk. Zodra er meldingen zijn, kunnen units alleen nog **gedeactiveerd** worden; het template blijft dan bestaan.
 
 **Header**
-- Titel "Dashboard" + subtitel "Overzicht van je locaties, units, meldingen en taken".
+- Titel "Dashboard" + subtitel over open meldingen, taken en aanwezigheid.
 - Knop **"Briefing afdrukken"** → printbare briefing met **alle taken die de teams vandaag
   moeten afhandelen** (dagoverzicht per team).
 - **Proefperiode-capsule**: "Proefperiode nog X dagen." (zie §Abonnement).
@@ -534,10 +534,10 @@ cyclus-taak. Site-units (**Hele locatie**) tonen in voortgang/print de **locatie
 - Stops op de melding (`issue_round_stops`); ronde-issue heeft `unit_id = null`.
   `location_id` alleen als alle stops dezelfde locatie delen, anders null.
   Create- én show-picker: actieve units met unit checks, gegroepeerd per locatie
-  (stops mogen over locaties heen). Aanvinken en loopvolgorde zitten in
-  dezelfde lijst per locatie: sleep een aangevinkte unit binnen de locatie,
-  of sleep de locatiekop voor het hele blok (1 = eerste stop). Units zonder checks
-  staan niet in de lijst.
+  (stops mogen over locaties heen). **Split-UI:** links catalogus (zoeken +
+  aanvinken), rechts **route** (alleen gekozen, genummerd; sleep daar). Locaties
+  met alleen een site-unit (**Hele locatie**) verschijnen als **één regel** (geen
+  nest). Zoeken op naam/plaats/postcode/unit. “Selecteer alle” blijft.
 - **Beheer — intentie-flow:** knop *Inspectieronde plannen* op **Werk → Inspectierondes**
   (primaire plek) en nog op Meldingen (naast Nieuwe melding): stops + team
   (+ optionele worker) in één modal; keuze **terugkerend** (interval + lead + eerste

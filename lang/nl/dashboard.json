@@ -1,6 +1,6 @@
 {
     "title": "Dashboard",
-    "subtitle": "Overzicht van je locaties, units, meldingen en taken.",
+    "subtitle": "Overzicht van open meldingen, taken en aanwezigheid.",
     "trial_capsule": {
         "trial_short": "Proefperiode nog :days dagen.",
         "trial_title": "Proefperiode",

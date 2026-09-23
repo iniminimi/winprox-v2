@@ -1,6 +1,6 @@
 {
     "title": "Dashboard",
-    "subtitle": "Overview of your locations, units, issues and tasks.",
+    "subtitle": "Overview of open issues, tasks and presence.",
     "trial_capsule": {
         "trial_short": "Trial period: :days days left.",
         "trial_title": "Trial period",

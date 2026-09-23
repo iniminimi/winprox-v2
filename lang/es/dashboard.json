@@ -1,6 +1,6 @@
 {
     "title": "Panel de control",
-    "subtitle": "Resumen de sus ubicaciones, unidades, incidencias y tareas.",
+    "subtitle": "Resumen de incidencias abiertas, tareas y presencia.",
     "trial_capsule": {
         "trial_short": "Periodo de prueba: quedan :days días.",
         "trial_title": "Periodo de prueba",

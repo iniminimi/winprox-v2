@@ -10,8 +10,12 @@
             "title": "Ayuda — Panel de control",
             "actions": [
                 {
+                    "label": "¿Qué quieres hacer?",
+                    "text": "Arriba hay atajos: ver el horario, quién trabaja dónde hoy, nueva tarea del día (ronda de inspección), añadir ubicación y añadir ejecutor. No hace falta buscar en los menús."
+                },
+                {
                     "label": "Resumen",
-                    "text": "El panel de control muestra recuentos de ubicaciones, unidades, incidencias abiertas y tareas abiertas. Haga clic en una tarjeta para ir a la pantalla relacionada. Las solicitudes abiertas de permiso o compensación aparecen como tarjeta extra hacia Time → Solicitudes, con el recuento por tipo (1 Permiso, 1 Compensación, o ambos)."
+                    "text": "Bajo Panel ves conteos de incidencias abiertas, tareas abiertas y (con Time) quién está presente ahora. Haz clic en una tarjeta para ir a la pantalla relacionada. Las solicitudes abiertas de vacaciones o TOIL aparecen como tarjeta extra hacia Time → Solicitudes, con el conteo por tipo (1 Vacaciones, 1 TOIL, o ambos)."
                 },
                 {
                     "label": "Plantilla inicial",

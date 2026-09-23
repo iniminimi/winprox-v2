@@ -1,6 +1,6 @@
 {
     "title": "Dashboard",
-    "subtitle": "Übersicht über Standorte, Units, Meldungen und Aufgaben.",
+    "subtitle": "Übersicht über offene Meldungen, Aufgaben und Anwesenheit.",
     "trial_capsule": {
         "trial_short": "Testphase noch :days Tage.",
         "trial_title": "Testphase",

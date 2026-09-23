@@ -10,8 +10,12 @@
             "title": "Hilfe — Dashboard",
             "actions": [
                 {
+                    "label": "Was möchten Sie tun?",
+                    "text": "Oben finden Sie Kurzbefehle: Dienstplan ansehen, wer arbeitet heute wo, neue Tagesaufgabe (Inspektionsrunde), Standort hinzufügen und Ausführenden hinzufügen. Sie müssen nicht in den Menüs suchen."
+                },
+                {
                     "label": "Übersicht",
-                    "text": "Das Dashboard zeigt Anzahlen von Standorten, Units, offenen Meldungen und offenen Aufgaben. Klicken Sie auf eine Karte, um zum zugehörigen Bildschirm zu gelangen. Offene Urlaubs- oder Ausgleichsanträge erscheinen als extra Karte zu Time → Anträge, mit der Anzahl je Art (1 Urlaub, 1 Ausgleich, oder beides)."
+                    "text": "Unter Dashboard sehen Sie Anzahlen offener Meldungen, offener Aufgaben und (mit Time) wer gerade anwesend ist. Klicken Sie auf eine Karte, um zum zugehörigen Bildschirm zu gelangen. Offene Urlaubs- oder Ausgleichsanträge erscheinen als extra Karte zu Time → Anträge, mit der Anzahl je Art (1 Urlaub, 1 Ausgleich, oder beides)."
                 },
                 {
                     "label": "Startvorlage",

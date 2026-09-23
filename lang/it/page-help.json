@@ -10,8 +10,12 @@
             "title": "Aiuto — Dashboard",
             "actions": [
                 {
+                    "label": "Cosa vuoi fare?",
+                    "text": "In alto ci sono scorciatoie: vedi il turno, chi lavora dove oggi, nuova attività del giorno (giro di ispezione), aggiungi sede e aggiungi esecutore. Non serve cercare nei menu."
+                },
+                {
                     "label": "Panoramica",
-                    "text": "La dashboard mostra i conteggi di sedi, unità, segnalazioni aperte e attività aperte. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste, con il conteggio per tipo (1 Ferie, 1 Recupero, o entrambi)."
+                    "text": "Sotto Dashboard vedi i conteggi di segnalazioni aperte, attività aperte e (con Time) chi è presente ora. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste, con il conteggio per tipo (1 Ferie, 1 Recupero, o entrambi)."
                 },
                 {
                     "label": "Modello iniziale",
