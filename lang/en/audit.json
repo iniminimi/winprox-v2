@@ -166,6 +166,8 @@
         "time.absence.requested": "Leave or TOIL request submitted",
         "time.absence.cancelled": "Leave or TOIL request withdrawn",
         "time.absence.approved": "Leave or TOIL request approved",
-        "time.absence.rejected": "Leave or TOIL request rejected"
+        "time.absence.rejected": "Leave or TOIL request rejected",
+        "locations.import": "Locations imported",
+        "locations.delete_import_batch": "Location import batch deleted"
     }
 }

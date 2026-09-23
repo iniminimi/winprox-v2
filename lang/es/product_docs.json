@@ -80,7 +80,7 @@
                 "title": "Facility",
                 "body": "Aquí organiza lugares, personas y equipos.",
                 "items": [
-                    "Categorías, sedes y unidades (también en lote o CSV).",
+                    "Categorías, ubicaciones (CSV) y units (en bloque o CSV).",
                     "Documentos y avisos en el portal.",
                     "Busque operarios en Personas → Operarios; retrato opcional.",
                     "Los equipos flotantes pueden fichar en cualquier sede; los demás solo en las asignadas.",

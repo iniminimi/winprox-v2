@@ -190,7 +190,8 @@
         "ability_webhooks_manage": "Gestisci webhooks",
         "ability_all": "Accesso completo",
         "ability_reservations_read": "Leggere prenotazioni",
-        "ability_reservations_write": "Scrivere prenotazioni"
+        "ability_reservations_write": "Scrivere prenotazioni",
+        "ability_locations_create": "Creare sedi"
     },
     "config_overview": {
         "title": "Panoramica configurazione",

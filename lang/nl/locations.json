@@ -36,7 +36,13 @@
         "sample_description": "Urenstand controleren bij uitgifte",
         "sample_category_name": "Grondverzet",
         "download_sample_xlsx": "Download voorbeeld-xlsx",
-        "sample_external_id": "VEH-001"
+        "sample_external_id": "VEH-001",
+        "sample_location_name": "Klant Brussel Centrum",
+        "sample_street": "Wetstraat",
+        "sample_house_number": "16",
+        "sample_postal_code": "1000",
+        "sample_city": "Brussel",
+        "sample_notes": "Hoofdingang langs de hoek"
     },
     "create_title": "Nieuwe locatie toevoegen",
     "edit_title": "Locatie bewerken",
@@ -109,7 +115,8 @@
         "deactivated": "Locatie gedeactiveerd.",
         "activated": "Locatie geactiveerd.",
         "imported": ":count units geïmporteerd.",
-        "translation_saved": "Locatievertaling opgeslagen."
+        "translation_saved": "Locatievertaling opgeslagen.",
+        "locations_imported": ":count locaties geïmporteerd."
     },
     "units": {
         "create_title": "Unit toevoegen",
@@ -441,5 +448,39 @@
         "open": "Klik hier om aan te passen",
         "name": "Vertaalde locatienaam",
         "save": "Vertaling opslaan"
+    },
+    "locations_csv": {
+        "button": "Locaties importeren",
+        "title": "Locaties importeren (CSV / Excel)",
+        "hint": "Importeer locaties via CSV of Excel (.xlsx). Per rij: naam óf volledig adres (straat + postcode + plaats). Optioneel: house_number, country_code (standaard BE), notes, contractual_relationship_reference (DDT), latitude en longitude (beide samen). Onbekende kolommen of ontbrekende identiteit weigeren de hele import.",
+        "errors": {
+            "file_required": "Kies een CSV- of Excel-bestand (.xlsx).",
+            "file_too_large": "Het bestand mag maximaal 10MB groot zijn.",
+            "failed": "Import mislukt.",
+            "unreadable": "Bestand kon niet worden gelezen.",
+            "empty": "Bestand is leeg.",
+            "missing_identity_headers": "Voeg minstens de kolom name toe, of street + postal_code + city.",
+            "unexpected_headers": "Onbekende kolommen: :columns",
+            "row": "Rij :line: :message",
+            "no_rows": "Geen geldige rijen gevonden.",
+            "database": "Databasefout: :message",
+            "unsupported_format": "Ongeldig bestandsformaat. Gebruik CSV of Excel (.xlsx).",
+            "duplicate_row": "Dubbele locatie in dit bestand.",
+            "coords_pair_required": "latitude en longitude moeten samen worden ingevuld."
+        }
+    },
+    "locations_import_history": {
+        "title": "Recente locatie-imports",
+        "hint": "Ongedaan maken verwijdert locaties zonder units, meldingen, documenten of mededelingen.",
+        "unknown_file": "Onbekend bestand",
+        "location_count": ":count locaties",
+        "confirm_delete": ":count locatie(s) zonder gekoppelde inhoud verwijderen?",
+        "delete_button": "Import terugdraaien (:count)",
+        "has_content": "Heeft inhoud",
+        "deleted": "Verwijderd",
+        "nothing_deletable": "Geen locaties in deze import kunnen worden verwijderd.",
+        "partially_deleted": ":deleted locatie(s) verwijderd. :preserved locatie(s) met inhoud bleven staan.",
+        "fully_deleted": ":count locatie(s) verwijderd.",
+        "delete_failed": "Er is een fout opgetreden bij het verwijderen."
     }
 }

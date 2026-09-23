@@ -7,7 +7,7 @@ use App\Models\Location;
 use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Schema;
 
 class CreateLocationAction
 {
@@ -28,7 +28,7 @@ class CreateLocationAction
             $name = trim((string) ($data['street'] ?? '')) ?: __('locations.default_name');
         }
 
-        $location = Location::create([
+        $payload = [
             'tenant_id' => $tenantId,
             'name' => $name,
             'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
@@ -42,9 +42,14 @@ class CreateLocationAction
             'latitude' => self::nullableFloat($data['latitude'] ?? null),
             'longitude' => self::nullableFloat($data['longitude'] ?? null),
             'address' => null,
-            'location_qr_token' => Str::lower(Str::random(40)),
             'is_active' => true,
-        ]);
+        ];
+
+        if (Schema::hasColumn('locations', 'import_batch_id') && array_key_exists('import_batch_id', $data)) {
+            $payload['import_batch_id'] = $data['import_batch_id'];
+        }
+
+        $location = Location::create($payload);
 
         $this->audit->record(
             userId: $actorUserId,

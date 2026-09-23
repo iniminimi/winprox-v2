@@ -309,6 +309,14 @@
                     "text": "Créez un nouveau site avec adresse et données de base."
                 },
                 {
+                    "label": "Importer des lieux",
+                    "text": "Importez des lieux via CSV ou Excel (.xlsx). Par ligne : name ou street + postal_code + city. Optionnel : house_number, country_code (BE par défaut), notes, contractual_relationship_reference (DDT), latitude et longitude (ensemble). En-têtes incorrects ou identité manquante refusent tout l'import."
+                },
+                {
+                    "label": "Imports de lieux récents",
+                    "text": "Après un import, vous voyez les imports récents (30 jours). Par import : nom de fichier, date et nombre de lieux. Annuler supprime les lieux sans unités, signalements, documents ni annonces."
+                },
+                {
                     "label": "Pin GPS",
                     "text": "Avec Time + visites GPS ou CIAO : cliquez l’icône rouge Google Maps, trouvez le site, cliquez l’épingle rouge et copiez. Collez les coordonnées dans WinProx (format 51.336167, 3.236306). Même champ sur le pin de visite d’une unité."
                 },

@@ -36,7 +36,13 @@
         "sample_description": "Stundenzähler bei Ausgabe prüfen",
         "sample_category_name": "Erdbewegung",
         "download_sample_xlsx": "Beispiel-XLSX herunterladen",
-        "sample_external_id": "FAHR-001"
+        "sample_external_id": "FAHR-001",
+        "sample_location_name": "Kunde Brüssel Zentrum",
+        "sample_street": "Wetstraat",
+        "sample_house_number": "16",
+        "sample_postal_code": "1000",
+        "sample_city": "Brüssel",
+        "sample_notes": "Haupteingang um die Ecke"
     },
     "create_title": "Neuen Standort hinzufügen",
     "edit_title": "Standort bearbeiten",
@@ -109,7 +115,8 @@
         "deactivated": "Standort deaktiviert.",
         "activated": "Standort aktiviert.",
         "imported": ":count Units importiert.",
-        "translation_saved": "Standortübersetzung gespeichert."
+        "translation_saved": "Standortübersetzung gespeichert.",
+        "locations_imported": ":count Standorte importiert."
     },
     "units": {
         "create_title": "Unit hinzufügen",
@@ -441,5 +448,39 @@
         "open": "Hier klicken zum Bearbeiten",
         "name": "Übersetzter Standortname",
         "save": "Übersetzung speichern"
+    },
+    "locations_csv": {
+        "button": "Standorte importieren",
+        "title": "Standorte importieren (CSV / Excel)",
+        "hint": "Importieren Sie Standorte per CSV oder Excel (.xlsx). Pro Zeile: Name oder vollständige Adresse (street + postal_code + city). Optional: house_number, country_code (Standard BE), notes, contractual_relationship_reference (DDT), latitude und longitude (beide zusammen). Unbekannte Spalten oder fehlende Identität lehnen den gesamten Import ab.",
+        "errors": {
+            "file_required": "Wählen Sie eine CSV- oder Excel-Datei (.xlsx).",
+            "file_too_large": "Die Datei darf maximal 10 MB groß sein.",
+            "failed": "Import fehlgeschlagen.",
+            "unreadable": "Datei konnte nicht gelesen werden.",
+            "empty": "Datei ist leer.",
+            "missing_identity_headers": "Fügen Sie mindestens die Spalte name hinzu, oder street + postal_code + city.",
+            "unexpected_headers": "Unbekannte Spalten: :columns",
+            "row": "Zeile :line: :message",
+            "no_rows": "Keine gültigen Zeilen gefunden.",
+            "database": "Datenbankfehler: :message",
+            "unsupported_format": "Ungültiges Dateiformat. Verwenden Sie CSV oder Excel (.xlsx).",
+            "duplicate_row": "Doppelter Standort in dieser Datei.",
+            "coords_pair_required": "latitude und longitude müssen zusammen ausgefüllt werden."
+        }
+    },
+    "locations_import_history": {
+        "title": "Aktuelle Standort-Importe",
+        "hint": "Rückgängig machen entfernt Standorte ohne Units, Meldungen, Dokumente oder Mitteilungen.",
+        "unknown_file": "Unbekannte Datei",
+        "location_count": ":count Standorte",
+        "confirm_delete": ":count Standort(e) ohne verknüpften Inhalt löschen?",
+        "delete_button": "Import rückgängig (:count)",
+        "has_content": "Hat Inhalt",
+        "deleted": "Gelöscht",
+        "nothing_deletable": "Keine Standorte in diesem Import können gelöscht werden.",
+        "partially_deleted": ":deleted Standort(e) gelöscht. :preserved Standort(e) mit Inhalt blieben erhalten.",
+        "fully_deleted": ":count Standort(e) gelöscht.",
+        "delete_failed": "Beim Löschen ist ein Fehler aufgetreten."
     }
 }

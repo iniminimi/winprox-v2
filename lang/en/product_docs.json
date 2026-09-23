@@ -80,7 +80,7 @@
                 "title": "Facility",
                 "body": "This is where you set up places, people and teams.",
                 "items": [
-                    "Categories, locations and units (including bulk or CSV).",
+                    "Categories, locations (CSV) and units (bulk or CSV).",
                     "Documents and announcements on the portal.",
                     "Find workers under People → Workers; optional portrait.",
                     "Floater teams may clock in anywhere; others only at assigned sites.",

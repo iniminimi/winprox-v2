@@ -190,7 +190,8 @@
         "ability_webhooks_manage": "Gérer les webhooks",
         "ability_all": "Accès complet",
         "ability_reservations_read": "Lire les réservations",
-        "ability_reservations_write": "Écrire les réservations"
+        "ability_reservations_write": "Écrire les réservations",
+        "ability_locations_create": "Créer des lieux"
     },
     "config_overview": {
         "title": "Aperçu de la configuration",

@@ -229,7 +229,8 @@
         "activation_disabled": "Self-activation is disabled. Contact WinProx.",
         "csv_workers_not_allowed": "CSV/Excel worker import is not available on this plan.",
         "csv_units_not_allowed": "CSV/Excel unit import requires a paid plan.",
-        "corporate_contact": "Corporate is activated on a custom basis. Please contact WinProx."
+        "corporate_contact": "Corporate is activated on a custom basis. Please contact WinProx.",
+        "csv_locations_not_allowed": "CSV/Excel location import requires a paid plan."
     },
     "status_module_iot": "IoT Connect is active on your account.",
     "purge": {

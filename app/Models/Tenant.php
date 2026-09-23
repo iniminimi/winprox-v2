@@ -268,6 +268,11 @@ class Tenant extends Model
         return $this->planAllows('csv_units_import');
     }
 
+    public function hasCsvLocationsImport(): bool
+    {
+        return $this->planAllows('csv_units_import');
+    }
+
     public function planAllows(string $feature): bool
     {
         if ($this->isLegacyWithoutBillingTracking()) {

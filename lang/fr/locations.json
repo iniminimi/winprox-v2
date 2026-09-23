@@ -36,7 +36,13 @@
         "sample_description": "Vérifier compteur horaire à la sortie",
         "sample_category_name": "Terrassement",
         "download_sample_xlsx": "Télécharger un exemple XLSX",
-        "sample_external_id": "VEH-001"
+        "sample_external_id": "VEH-001",
+        "sample_location_name": "Client Bruxelles Centre",
+        "sample_street": "Rue de la Loi",
+        "sample_house_number": "16",
+        "sample_postal_code": "1000",
+        "sample_city": "Bruxelles",
+        "sample_notes": "Entrée principale au coin"
     },
     "create_title": "Ajouter un site",
     "edit_title": "Modifier le site",
@@ -109,7 +115,8 @@
         "deactivated": "Site désactivé.",
         "activated": "Site activé.",
         "imported": ":count unités importées.",
-        "translation_saved": "Traduction du site enregistrée."
+        "translation_saved": "Traduction du site enregistrée.",
+        "locations_imported": ":count lieux importés."
     },
     "units": {
         "create_title": "Ajouter une unité",
@@ -441,5 +448,39 @@
         "open": "Cliquez ici pour modifier",
         "name": "Nom de site traduit",
         "save": "Enregistrer la traduction"
+    },
+    "locations_csv": {
+        "button": "Importer des lieux",
+        "title": "Importer des lieux (CSV / Excel)",
+        "hint": "Importez des lieux via CSV ou Excel (.xlsx). Par ligne : nom ou adresse complète (street + postal_code + city). Optionnel : house_number, country_code (BE par défaut), notes, contractual_relationship_reference (DDT), latitude et longitude (ensemble). Colonnes inconnues ou identité manquante refusent tout l'import.",
+        "errors": {
+            "file_required": "Choisissez un fichier CSV ou Excel (.xlsx).",
+            "file_too_large": "Le fichier peut faire au maximum 10 Mo.",
+            "failed": "Import échoué.",
+            "unreadable": "Le fichier n'a pas pu être lu.",
+            "empty": "Le fichier est vide.",
+            "missing_identity_headers": "Ajoutez au moins la colonne name, ou street + postal_code + city.",
+            "unexpected_headers": "Colonnes inconnues : :columns",
+            "row": "Ligne :line : :message",
+            "no_rows": "Aucune ligne valide trouvée.",
+            "database": "Erreur de base de données : :message",
+            "unsupported_format": "Format de fichier invalide. Utilisez CSV ou Excel (.xlsx).",
+            "duplicate_row": "Lieu en double dans ce fichier.",
+            "coords_pair_required": "latitude et longitude doivent être renseignées ensemble."
+        }
+    },
+    "locations_import_history": {
+        "title": "Imports de lieux récents",
+        "hint": "Annuler supprime les lieux sans unités, signalements, documents ni annonces.",
+        "unknown_file": "Fichier inconnu",
+        "location_count": ":count lieux",
+        "confirm_delete": "Supprimer :count lieu(x) sans contenu lié ?",
+        "delete_button": "Annuler l'import (:count)",
+        "has_content": "A du contenu",
+        "deleted": "Supprimé",
+        "nothing_deletable": "Aucun lieu de cet import ne peut être supprimé.",
+        "partially_deleted": ":deleted lieu(x) supprimé(s). :preserved lieu(x) avec contenu conservé(s).",
+        "fully_deleted": ":count lieu(x) supprimé(s).",
+        "delete_failed": "Une erreur est survenue lors de la suppression."
     }
 }

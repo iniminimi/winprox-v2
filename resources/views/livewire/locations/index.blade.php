@@ -26,9 +26,18 @@
                     </button>
                 @endcan
             @else
-                <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseAddLocationButton]) wire:click="openCreate">
-                    {{ __('locations.add') }}
-                </button>
+                <div class="wp-cluster">
+                    @if ($canImportLocationsCsv ?? false)
+                        @can('create', \App\Models\Location::class)
+                            <button type="button" class="btn btn--ghost" wire:click="openLocationsCsvImportModal">
+                                {{ __('locations.locations_csv.button') }}
+                            </button>
+                        @endcan
+                    @endif
+                    <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseAddLocationButton]) wire:click="openCreate">
+                        {{ __('locations.add') }}
+                    </button>
+                </div>
             @endif
         </div>
     </div>
@@ -141,6 +150,58 @@
                 @endforelse
             </div>
         </div>
+
+        @if ($locationsImportNotice)
+            <div @class(['wp-flash', $locationsImportNoticeType === 'error' ? 'wp-flash--danger' : 'wp-flash--success'])>
+                {{ $locationsImportNotice }}
+            </div>
+        @endif
+
+        @include('livewire.locations.location-import-history', ['batches' => $locationImportBatches])
+    @endif
+
+    @if ($showLocationsCsvImportModal)
+        <x-wp-modal closeMethod="closeLocationsCsvImportModal" aria-labelledby="locations-csv-title">
+            <div class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="locations-csv-title" class="wp-section-title">{{ __('locations.locations_csv.title') }}</h2>
+                    <x-wp-modal-close wire:click="closeLocationsCsvImportModal" />
+                </div>
+                <div class="wp-modal-body wp-stack">
+                    <p class="wp-muted">{{ __('locations.locations_csv.hint') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="locations-csv-file">{{ __('locations.import_file_label') }}</label>
+                        <div class="wp-cluster">
+                            <input type="file" id="locations-csv-file" class="wp-input wp-grow" wire:model="locationsCsvImportFile" accept=".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadLocationsSampleCsv">
+                                {{ __('locations.import_sample.download_sample_csv') }}
+                            </button>
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadLocationsSampleXlsx">
+                                {{ __('locations.import_sample.download_sample_xlsx') }}
+                            </button>
+                        </div>
+                        @error('locationsCsvImportFile') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    @if ($locationsCsvImportErrors !== [])
+                        <div class="wp-flash wp-flash--danger">
+                            <ul class="wp-form-error-list">
+                                @foreach ($locationsCsvImportErrors as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeLocationsCsvImportModal">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--primary" wire:click="importLocationsCsv" wire:loading.attr="disabled" wire:target="importLocationsCsv,locationsCsvImportFile" :disabled="$locationsCsvImportFile === null">
+                        <x-wp-spinner wire:loading wire:target="importLocationsCsv,locationsCsvImportFile" class="wp-mr-2" />
+                        <span wire:loading.remove wire:target="importLocationsCsv,locationsCsvImportFile">{{ __('locations.import_submit') }}</span>
+                        <span wire:loading wire:target="importLocationsCsv,locationsCsvImportFile">{{ __('locations.import_submit_loading') }}</span>
+                    </button>
+                </div>
+            </div>
+        </x-wp-modal>
     @endif
 
     @if ($showModal)

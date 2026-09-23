@@ -117,6 +117,12 @@ Locatie-lijst → klik op een locatie → **locatie-/unit-detailscherm**.
 ### 2.1 Locatie-lijst
 - Header: titel "Locaties" + subtitel "Beheer je locaties. Klik op een locatie om units te beheren."
 - Knop **"+ Nieuwe locatie toevoegen"** → modal (§2.2).
+- **Locaties importeren** (CSV/Excel, zelfde plan als units-import): kolommen
+  `name`, `street`, `house_number`, `postal_code`, `city`, `country_code`, `notes`,
+  `contractual_relationship_reference`, `latitude`, `longitude`. Per rij: **naam** óf
+  volledig adres (straat + postcode + plaats). Voorbeeld-CSV/xlsx + **recente imports**
+  (30 dagen) met **Import terugdraaien** (alleen locaties zonder units/meldingen/documenten/
+  mededelingen).
 - **Zoek-kaart**: zoekveld "Zoek op locatie, plaats, postcode of straat" (zoekt op naam,
   plaats, postcode én straat). Hint "Klik op een locatie om te beheren". Checkbox
   **"Toon ook inactieve locaties"** (standaard verbergt inactieve).

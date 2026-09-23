@@ -309,6 +309,14 @@
                     "text": "Create a new site with address and basic details."
                 },
                 {
+                    "label": "Import locations",
+                    "text": "Import locations via CSV or Excel (.xlsx). Per row: name or street + postal_code + city. Optional: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude and longitude (both). Bad headers or missing identity reject the whole import."
+                },
+                {
+                    "label": "Recent location imports",
+                    "text": "After an import you see recent imports (30 days). Per import: file name, date and location count. Undo removes locations without units, issues, documents or announcements."
+                },
+                {
                     "label": "GPS pin",
                     "text": "With Time + GPS work visits or CIAO: click the red Google Maps icon, find the location, click the red pin and copy. Paste the coordinates in WinProx (format 51.336167, 3.236306). Same field on a unit work-visit pin."
                 },

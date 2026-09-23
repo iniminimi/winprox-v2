@@ -166,6 +166,8 @@
         "time.absence.requested": "Richiesta di ferie o recupero inviata",
         "time.absence.cancelled": "Richiesta di ferie o recupero ritirata",
         "time.absence.approved": "Richiesta di ferie o recupero approvata",
-        "time.absence.rejected": "Richiesta di ferie o recupero rifiutata"
+        "time.absence.rejected": "Richiesta di ferie o recupero rifiutata",
+        "locations.import": "Sedi importate",
+        "locations.delete_import_batch": "Batch import sedi eliminato"
     }
 }

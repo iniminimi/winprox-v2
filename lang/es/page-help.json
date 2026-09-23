@@ -309,6 +309,14 @@
                     "text": "Cree una nueva ubicación con dirección y datos básicos."
                 },
                 {
+                    "label": "Importar ubicaciones",
+                    "text": "Importe ubicaciones por CSV o Excel (.xlsx). Por fila: name o street + postal_code + city. Opcional: house_number, country_code (BE por defecto), notes, contractual_relationship_reference (DDT), latitude y longitude (juntos). Cabeceras incorrectas o identidad faltante rechazan toda la importación."
+                },
+                {
+                    "label": "Importaciones de ubicaciones recientes",
+                    "text": "Tras una importación verá imports recientes (30 días). Por import: nombre de archivo, fecha y número de ubicaciones. Deshacer elimina ubicaciones sin units, avisos, documentos ni anuncios."
+                },
+                {
                     "label": "Pin GPS",
                     "text": "Con Time + visitas GPS o CIAO: pulsa el icono rojo de Google Maps, busca la sede, pulsa el pin rojo y copia. Pega las coordenadas en WinProx (formato 51.336167, 3.236306). El mismo campo en el pin de visita de una unidad."
                 },

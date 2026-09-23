@@ -309,6 +309,14 @@
                     "text": "Crei una nuova sede con indirizzo e dati di base."
                 },
                 {
+                    "label": "Importa sedi",
+                    "text": "Importa sedi via CSV o Excel (.xlsx). Per riga: name oppure street + postal_code + city. Opzionale: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude e longitude (insieme). Header errati o identità mancante rifiutano l'intero import."
+                },
+                {
+                    "label": "Import sedi recenti",
+                    "text": "Dopo un import vedi gli import recenti (30 giorni). Per import: nome file, data e numero di sedi. Annulla rimuove le sedi senza unit, segnalazioni, documenti o annunci."
+                },
+                {
                     "label": "Pin GPS",
                     "text": "Con Time + visite GPS o CIAO: clicca l’icona rossa di Google Maps, trova la sede, clicca il pin rosso e copia. Incolla le coordinate in WinProx (formato 51.336167, 3.236306). Stesso campo sul pin visita di un’unità."
                 },

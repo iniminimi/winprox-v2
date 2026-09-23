@@ -309,6 +309,14 @@
                     "text": "Maak een nieuwe site met adres en basisgegevens."
                 },
                 {
+                    "label": "Locaties importeren",
+                    "text": "Importeer locaties via CSV of Excel (.xlsx). Per rij: name óf street + postal_code + city. Optioneel: house_number, country_code (standaard BE), notes, contractual_relationship_reference (DDT), latitude en longitude (beide). Bij foute headers of ontbrekende identiteit wordt de hele import geweigerd."
+                },
+                {
+                    "label": "Recente locatie-imports",
+                    "text": "Na een import zie je recente imports (30 dagen). Per import: bestandsnaam, datum en aantal locaties. Import terugdraaien verwijdert locaties zonder units, meldingen, documenten of mededelingen."
+                },
+                {
                     "label": "GPS-pin",
                     "text": "Bij Time + GPS-werkbezoeken of CIAO: klik het rode Google Maps-icoon, zoek de locatie, klik de rode pin en kopieer. Plak de coördinaten in WinProx (formaat 51.336167, 3.236306). Zelfde veld bij de werkbezoek-pin van een unit."
                 },
@@ -705,7 +713,7 @@
                 },
                 {
                     "label": "Heb ik dit nodig?",
-                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen.<br><br>Voor eenmalige inrichting: Wil je in één keer duizenden units of uitvoerders importeren? Gebruik dan de CSV/Excel-import op een locatie (units) of bij Teams (uitvoerders). Dat is vaak sneller en eenvoudiger voor een eerste migratie.<br><br>Voor continue automatisering: Deze API-pagina is bedoeld voor beheerders of IT-partners die een live koppeling willen bouwen om systemen automatisch met elkaar te laten praten (bijv. voor realtime ERP-koppelingen of eigen dashboards)."
+                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen.<br><br>Voor eenmalige inrichting: Wil je in één keer duizenden locaties, units of uitvoerders importeren? Gebruik dan de CSV/Excel-import op Locaties, op een locatie (units) of bij Teams (uitvoerders). Dat is vaak sneller en eenvoudiger voor een eerste migratie.<br><br>Voor continue automatisering: Deze API-pagina is bedoeld voor beheerders of IT-partners die een live koppeling willen bouwen om systemen automatisch met elkaar te laten praten (bijv. voor realtime ERP-koppelingen of eigen dashboards)."
                 },
                 {
                     "label": "API — wat is dat?",

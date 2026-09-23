@@ -36,7 +36,13 @@
         "sample_description": "Check hour meter on issue",
         "sample_category_name": "Earthmoving",
         "download_sample_xlsx": "Scarica esempio XLSX",
-        "sample_external_id": "VEH-001"
+        "sample_external_id": "VEH-001",
+        "sample_location_name": "Cliente Bruxelles Centro",
+        "sample_street": "Rue de la Loi",
+        "sample_house_number": "16",
+        "sample_postal_code": "1000",
+        "sample_city": "Bruxelles",
+        "sample_notes": "Ingresso principale dietro l'angolo"
     },
     "create_title": "Aggiungi nuova sede",
     "edit_title": "Modifica sede",
@@ -109,7 +115,8 @@
         "deactivated": "Sede disattivata.",
         "activated": "Sede attivata.",
         "imported": ":count unità importate.",
-        "translation_saved": "Traduzione della sede salvata."
+        "translation_saved": "Traduzione della sede salvata.",
+        "locations_imported": ":count sedi importate."
     },
     "units": {
         "create_title": "Aggiungi unità",
@@ -441,5 +448,39 @@
         "open": "Clicchi qui per modificare",
         "name": "Nome sede tradotto",
         "save": "Salva traduzione"
+    },
+    "locations_csv": {
+        "button": "Importa sedi",
+        "title": "Importa sedi (CSV / Excel)",
+        "hint": "Importa sedi via CSV o Excel (.xlsx). Per riga: nome o indirizzo completo (street + postal_code + city). Opzionale: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude e longitude (insieme). Colonne sconosciute o identità mancante rifiutano l'intero import.",
+        "errors": {
+            "file_required": "Scegli un file CSV o Excel (.xlsx).",
+            "file_too_large": "Il file può essere al massimo di 10 MB.",
+            "failed": "Import fallito.",
+            "unreadable": "Impossibile leggere il file.",
+            "empty": "Il file è vuoto.",
+            "missing_identity_headers": "Includi almeno la colonna name, oppure street + postal_code + city.",
+            "unexpected_headers": "Colonne sconosciute: :columns",
+            "row": "Riga :line: :message",
+            "no_rows": "Nessuna riga valida trovata.",
+            "database": "Errore database: :message",
+            "unsupported_format": "Formato file non valido. Usa CSV o Excel (.xlsx).",
+            "duplicate_row": "Sede duplicata in questo file.",
+            "coords_pair_required": "latitude e longitude devono essere compilati insieme."
+        }
+    },
+    "locations_import_history": {
+        "title": "Import sedi recenti",
+        "hint": "Annulla rimuove le sedi senza unit, segnalazioni, documenti o annunci.",
+        "unknown_file": "File sconosciuto",
+        "location_count": ":count sedi",
+        "confirm_delete": "Eliminare :count sede/i senza contenuti collegati?",
+        "delete_button": "Annulla import (:count)",
+        "has_content": "Ha contenuti",
+        "deleted": "Eliminato",
+        "nothing_deletable": "Nessuna sede in questo import può essere eliminata.",
+        "partially_deleted": ":deleted sede/i eliminate. :preserved sede/i con contenuti sono rimaste.",
+        "fully_deleted": ":count sede/i eliminate.",
+        "delete_failed": "Si è verificato un errore durante l'eliminazione."
     }
 }

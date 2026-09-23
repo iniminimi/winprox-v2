@@ -166,6 +166,8 @@
         "time.absence.requested": "Urlaubs- oder Ausgleichsantrag gestellt",
         "time.absence.cancelled": "Urlaubs- oder Ausgleichsantrag zurückgezogen",
         "time.absence.approved": "Urlaubs- oder Ausgleichsantrag genehmigt",
-        "time.absence.rejected": "Urlaubs- oder Ausgleichsantrag abgelehnt"
+        "time.absence.rejected": "Urlaubs- oder Ausgleichsantrag abgelehnt",
+        "locations.import": "Standorte importiert",
+        "locations.delete_import_batch": "Standort-Importstapel gelöscht"
     }
 }

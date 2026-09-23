@@ -309,6 +309,14 @@
                     "text": "Erstellen Sie einen neuen Standort mit Adresse und Basisdaten."
                 },
                 {
+                    "label": "Standorte importieren",
+                    "text": "Importieren Sie Standorte per CSV oder Excel (.xlsx). Pro Zeile: name oder street + postal_code + city. Optional: house_number, country_code (Standard BE), notes, contractual_relationship_reference (DDT), latitude und longitude (beide). Falsche Header oder fehlende Identität lehnen den gesamten Import ab."
+                },
+                {
+                    "label": "Aktuelle Standort-Importe",
+                    "text": "Nach einem Import sehen Sie aktuelle Importe (30 Tage). Pro Import: Dateiname, Datum und Anzahl Standorte. Rückgängig machen entfernt Standorte ohne Units, Meldungen, Dokumente oder Mitteilungen."
+                },
+                {
                     "label": "GPS-Pin",
                     "text": "Bei Time + GPS-Arbeitsbesuchen oder CIAO: rotes Google-Maps-Symbol klicken, Standort suchen, roten Pin klicken und kopieren. Koordinaten in WinProx einfügen (Format 51.336167, 3.236306). Dasselbe Feld beim Arbeitsbesuch-Pin einer Unit."
                 },

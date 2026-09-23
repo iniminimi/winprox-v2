@@ -10,8 +10,13 @@ use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\DeactivateLocationAction;
 use App\Actions\Locations\DeleteCategoryAction;
+use App\Actions\Locations\DeleteLocationImportBatchAction;
+use App\Actions\Locations\ImportLocationsAction;
 use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
+use App\Data\Locations\DeleteLocationImportBatchData;
+use App\Data\Locations\ImportLocationsData;
+use App\Http\Requests\Locations\ImportLocationsRequest;
 use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\UpdateCategoryRequest;
@@ -21,22 +26,30 @@ use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Support\Import\MinimalXlsxWriter;
+use App\Support\Locations\LocationImportBatchRegistry;
 use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Platform\SupportTenantContext;
+use App\Support\Tenancy;
 use App\Support\Tenant\TenantWorkMenuAccess;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Livewire\WithFileUploads;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 #[Layout('components.layouts.app')]
 #[Title('WinProx')]
 class Index extends Component
 {
     use AppliesGpsCoordinatePair;
+    use WithFileUploads;
 
     #[Url(as: 'q')]
     public string $search = '';
@@ -44,6 +57,18 @@ class Index extends Component
     public bool $showInactive = false;
 
     public bool $showModal = false;
+
+    public bool $showLocationsCsvImportModal = false;
+
+    /** @var TemporaryUploadedFile|null */
+    public $locationsCsvImportFile = null;
+
+    /** @var list<string> */
+    public array $locationsCsvImportErrors = [];
+
+    public ?string $locationsImportNotice = null;
+
+    public string $locationsImportNoticeType = 'success';
 
     public ?int $editingLocationId = null;
 
@@ -286,6 +311,173 @@ class Index extends Component
         $this->authorize('update', $location);
         $activateLocation->handle($location, (int) auth()->id());
         session()->flash('success', __('locations.flash.activated'));
+    }
+
+    public function openLocationsCsvImportModal(): void
+    {
+        $this->authorize('create', Location::class);
+        abort_unless($this->viewerTenant()?->hasCsvLocationsImport() ?? false, 403);
+
+        $this->locationsCsvImportFile = null;
+        $this->locationsCsvImportErrors = [];
+        $this->showLocationsCsvImportModal = true;
+    }
+
+    public function closeLocationsCsvImportModal(): void
+    {
+        $this->showLocationsCsvImportModal = false;
+        $this->locationsCsvImportFile = null;
+        $this->locationsCsvImportErrors = [];
+    }
+
+    public function importLocationsCsv(ImportLocationsAction $importLocations): void
+    {
+        $this->authorize('create', Location::class);
+        abort_unless($this->viewerTenant()?->hasCsvLocationsImport() ?? false, 403);
+
+        if ($this->locationsCsvImportFile === null) {
+            $this->locationsCsvImportErrors = [__('locations.locations_csv.errors.file_required')];
+
+            return;
+        }
+
+        $validator = Validator::make(
+            ['file' => $this->locationsCsvImportFile],
+            ImportLocationsRequest::getReusableRules(),
+            ImportLocationsRequest::getReusableMessages()
+        );
+
+        if ($validator->fails()) {
+            $this->locationsCsvImportErrors = $validator->errors()->all();
+
+            return;
+        }
+
+        $result = $importLocations->handle(
+            new ImportLocationsData(
+                filePath: $this->locationsCsvImportFile->getRealPath(),
+                originalName: $this->locationsCsvImportFile->getClientOriginalName(),
+            ),
+            (int) Tenancy::id(),
+            (int) auth()->id(),
+        );
+
+        if ($result['success']) {
+            session()->flash('success', __('locations.flash.locations_imported', ['count' => $result['count']]));
+            $this->closeLocationsCsvImportModal();
+
+            return;
+        }
+
+        $this->locationsCsvImportErrors = $result['errors'] ?? [__('locations.locations_csv.errors.failed')];
+    }
+
+    public function downloadLocationsSampleCsv(): StreamedResponse
+    {
+        $this->authorize('create', Location::class);
+        abort_unless($this->viewerTenant()?->hasCsvLocationsImport() ?? false, 403);
+
+        $headers = ImportLocationsAction::allHeaders();
+        $sampleRow = [
+            __('locations.import_sample.sample_location_name'),
+            __('locations.import_sample.sample_street'),
+            __('locations.import_sample.sample_house_number'),
+            __('locations.import_sample.sample_postal_code'),
+            __('locations.import_sample.sample_city'),
+            'BE',
+            __('locations.import_sample.sample_notes'),
+            '',
+            '',
+            '',
+        ];
+
+        return response()->streamDownload(function () use ($headers, $sampleRow) {
+            echo "\xEF\xBB\xBF";
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $headers);
+            fputcsv($file, $sampleRow);
+            fclose($file);
+        }, 'locations-sample.csv', [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
+    }
+
+    public function downloadLocationsSampleXlsx(): StreamedResponse
+    {
+        $this->authorize('create', Location::class);
+        abort_unless($this->viewerTenant()?->hasCsvLocationsImport() ?? false, 403);
+
+        $rows = [
+            ImportLocationsAction::allHeaders(),
+            [
+                __('locations.import_sample.sample_location_name'),
+                __('locations.import_sample.sample_street'),
+                __('locations.import_sample.sample_house_number'),
+                __('locations.import_sample.sample_postal_code'),
+                __('locations.import_sample.sample_city'),
+                'BE',
+                __('locations.import_sample.sample_notes'),
+                '',
+                '',
+                '',
+            ],
+        ];
+
+        return response()->streamDownload(function () use ($rows) {
+            $tempPath = sys_get_temp_dir().DIRECTORY_SEPARATOR.'locations-sample-'.uniqid('', true).'.xlsx';
+            try {
+                MinimalXlsxWriter::write($tempPath, $rows);
+                readfile($tempPath);
+            } finally {
+                @unlink($tempPath);
+            }
+        }, 'locations-sample.xlsx', [
+            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        ]);
+    }
+
+    public function deleteLocationImportBatch(string $batchId, DeleteLocationImportBatchAction $deleteBatch): void
+    {
+        $this->authorize('create', Location::class);
+
+        $tenantId = (int) Tenancy::id();
+        $summary = LocationImportBatchRegistry::summary($tenantId, $batchId);
+
+        if (! $summary['can_delete']) {
+            $this->locationsImportNotice = __('locations.locations_import_history.nothing_deletable');
+            $this->locationsImportNoticeType = 'error';
+
+            return;
+        }
+
+        $result = $deleteBatch->handle(
+            new DeleteLocationImportBatchData(importBatchId: $batchId),
+            $tenantId,
+            (int) auth()->id(),
+        );
+
+        if (! ($result['success'] ?? false)) {
+            $this->locationsImportNotice = $result['errors'][0]
+                ?? __('locations.locations_import_history.delete_failed');
+            $this->locationsImportNoticeType = 'error';
+
+            return;
+        }
+
+        $deleted = (int) ($result['deleted_count'] ?? 0);
+        $preserved = (int) ($result['preserved_count'] ?? 0);
+
+        if ($preserved > 0) {
+            $this->locationsImportNotice = __('locations.locations_import_history.partially_deleted', [
+                'deleted' => $deleted,
+                'preserved' => $preserved,
+            ]);
+        } else {
+            $this->locationsImportNotice = __('locations.locations_import_history.fully_deleted', [
+                'count' => $deleted,
+            ]);
+        }
+        $this->locationsImportNoticeType = 'success';
     }
 
     /**
@@ -714,6 +906,14 @@ class Index extends Component
             'workMenuUnitMeasurementsEnabled' => $viewerTenant?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => (bool) ($viewerTenant?->presenceComplianceEnabled()),
             'gpsWorkVisitsEnabled' => (bool) ($viewerTenant?->allowsGpsWorkVisits()),
+            'canImportLocationsCsv' => $viewerTenant?->hasCsvLocationsImport() ?? false,
+            'locationImportBatches' => $isCategories
+                ? collect()
+                : LocationImportBatchRegistry::recentBatchesForTenant((int) Tenancy::id())
+                    ->map(fn (array $batch) => array_merge(
+                        $batch,
+                        LocationImportBatchRegistry::summary((int) Tenancy::id(), $batch['batch_id']),
+                    )),
         ]);
     }
 

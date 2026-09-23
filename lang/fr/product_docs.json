@@ -80,7 +80,7 @@
                 "title": "Facility",
                 "body": "C’est ici que vous organisez les lieux, les personnes et les équipes.",
                 "items": [
-                    "Catégories, sites et unités (aussi en masse ou CSV).",
+                    "Catégories, lieux (CSV) et unités (série ou CSV).",
                     "Documents et annonces sur le portail.",
                     "Cherchez les exécutants sous Personnes → Exécutants ; portrait facultatif.",
                     "Les équipes volantes peuvent pointer partout ; les autres seulement sur les sites assignés.",

@@ -36,7 +36,13 @@
         "sample_description": "Check hour meter on issue",
         "sample_category_name": "Earthmoving",
         "download_sample_xlsx": "Download sample XLSX",
-        "sample_external_id": "VEH-001"
+        "sample_external_id": "VEH-001",
+        "sample_location_name": "Client Brussels Centre",
+        "sample_street": "Rue de la Loi",
+        "sample_house_number": "16",
+        "sample_postal_code": "1000",
+        "sample_city": "Brussels",
+        "sample_notes": "Main entrance around the corner"
     },
     "create_title": "Add new location",
     "edit_title": "Edit location",
@@ -109,7 +115,8 @@
         "deactivated": "Location deactivated.",
         "activated": "Location activated.",
         "imported": ":count units imported.",
-        "translation_saved": "Location translation saved."
+        "translation_saved": "Location translation saved.",
+        "locations_imported": ":count locations imported."
     },
     "units": {
         "create_title": "Add unit",
@@ -441,5 +448,39 @@
         "open": "Click here to edit",
         "name": "Translated location name",
         "save": "Save translation"
+    },
+    "locations_csv": {
+        "button": "Import locations",
+        "title": "Import locations (CSV / Excel)",
+        "hint": "Import locations via CSV or Excel (.xlsx). Per row: name or a full address (street + postal_code + city). Optional: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude and longitude (both together). Unknown columns or missing identity reject the whole import.",
+        "errors": {
+            "file_required": "Choose a CSV or Excel file (.xlsx).",
+            "file_too_large": "The file may be at most 10MB.",
+            "failed": "Import failed.",
+            "unreadable": "The file could not be read.",
+            "empty": "The file is empty.",
+            "missing_identity_headers": "Include at least the name column, or street + postal_code + city.",
+            "unexpected_headers": "Unknown columns: :columns",
+            "row": "Row :line: :message",
+            "no_rows": "No valid rows found.",
+            "database": "Database error: :message",
+            "unsupported_format": "Invalid file format. Use CSV or Excel (.xlsx).",
+            "duplicate_row": "Duplicate location in this file.",
+            "coords_pair_required": "latitude and longitude must both be filled in."
+        }
+    },
+    "locations_import_history": {
+        "title": "Recent location imports",
+        "hint": "Undo removes locations without units, issues, documents or announcements.",
+        "unknown_file": "Unknown file",
+        "location_count": ":count locations",
+        "confirm_delete": "Delete :count location(s) without linked content?",
+        "delete_button": "Undo import (:count)",
+        "has_content": "Has content",
+        "deleted": "Deleted",
+        "nothing_deletable": "No locations in this import can be deleted.",
+        "partially_deleted": ":deleted location(s) deleted. :preserved location(s) with content were kept.",
+        "fully_deleted": ":count location(s) deleted.",
+        "delete_failed": "An error occurred while deleting."
     }
 }

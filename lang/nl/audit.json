@@ -166,6 +166,8 @@
         "time.absence.requested": "Verlof- of recupaanvraag ingediend",
         "time.absence.cancelled": "Verlof- of recupaanvraag ingetrokken",
         "time.absence.approved": "Verlof- of recupaanvraag goedgekeurd",
-        "time.absence.rejected": "Verlof- of recupaanvraag geweigerd"
+        "time.absence.rejected": "Verlof- of recupaanvraag geweigerd",
+        "locations.import": "Locaties geïmporteerd",
+        "locations.delete_import_batch": "Locatie-importbatch verwijderd"
     }
 }

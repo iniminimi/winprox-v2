@@ -166,6 +166,8 @@
         "time.absence.requested": "Demande de congé ou de récup envoyée",
         "time.absence.cancelled": "Demande de congé ou de récup retirée",
         "time.absence.approved": "Demande de congé ou de récup approuvée",
-        "time.absence.rejected": "Demande de congé ou de récup refusée"
+        "time.absence.rejected": "Demande de congé ou de récup refusée",
+        "locations.import": "Lieux importés",
+        "locations.delete_import_batch": "Lot d'import de lieux supprimé"
     }
 }

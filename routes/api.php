@@ -98,6 +98,9 @@ Route::prefix('v1')->group(function () {
                 ->middleware([CheckTokenAbilities::class.':tasks:update'])
                 ->name('api.v1.tasks.status');
 
+            Route::post('locations/import', [LocationController::class, 'import'])
+                ->middleware([CheckTokenAbilities::class.':locations:create'])
+                ->name('api.v1.locations.import');
             Route::post('units/import', [UnitController::class, 'import'])
                 ->middleware([CheckTokenAbilities::class.':units:create'])
                 ->name('api.v1.units.import');

@@ -166,6 +166,8 @@
         "time.absence.requested": "Solicitud de permiso o compensación enviada",
         "time.absence.cancelled": "Solicitud de permiso o compensación retirada",
         "time.absence.approved": "Solicitud de permiso o compensación aprobada",
-        "time.absence.rejected": "Solicitud de permiso o compensación rechazada"
+        "time.absence.rejected": "Solicitud de permiso o compensación rechazada",
+        "locations.import": "Ubicaciones importadas",
+        "locations.delete_import_batch": "Lote de importación de ubicaciones eliminado"
     }
 }

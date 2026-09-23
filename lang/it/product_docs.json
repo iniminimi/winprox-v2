@@ -80,7 +80,7 @@
                 "title": "Facility",
                 "body": "Qui organizzi luoghi, persone e squadre.",
                 "items": [
-                    "Categorie, sedi e unità (anche in blocco o CSV).",
+                    "Categorie, sedi (CSV) e unit (bulk o CSV).",
                     "Documenti e avvisi sul portale.",
                     "Cerca gli esecutori in Persone → Esecutori; ritratto facoltativo.",
                     "Le squadre volanti possono timbrare ovunque; gli altri solo nelle sedi assegnate.",

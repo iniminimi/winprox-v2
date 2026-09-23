@@ -29,6 +29,7 @@ class Location extends Model
         'latitude',
         'longitude',
         'is_active',
+        'import_batch_id',
     ];
 
     protected $casts = [

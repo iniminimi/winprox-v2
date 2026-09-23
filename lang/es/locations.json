@@ -36,7 +36,13 @@
         "sample_description": "Comprobar contador horario en la incidencia",
         "sample_category_name": "Movimiento de tierras",
         "download_sample_xlsx": "Descargar ejemplo XLSX",
-        "sample_external_id": "VEH-001"
+        "sample_external_id": "VEH-001",
+        "sample_location_name": "Cliente Bruselas Centro",
+        "sample_street": "Rue de la Loi",
+        "sample_house_number": "16",
+        "sample_postal_code": "1000",
+        "sample_city": "Bruselas",
+        "sample_notes": "Entrada principal a la vuelta"
     },
     "create_title": "Añadir nueva ubicación",
     "edit_title": "Editar ubicación",
@@ -109,7 +115,8 @@
         "deactivated": "Ubicación desactivada.",
         "activated": "Ubicación activada.",
         "imported": ":count unidades importadas.",
-        "translation_saved": "Traducción de ubicación guardada."
+        "translation_saved": "Traducción de ubicación guardada.",
+        "locations_imported": ":count ubicaciones importadas."
     },
     "units": {
         "create_title": "Añadir unidad",
@@ -441,5 +448,39 @@
         "open": "Haga clic aquí para editar",
         "name": "Nombre de ubicación traducido",
         "save": "Guardar traducción"
+    },
+    "locations_csv": {
+        "button": "Importar ubicaciones",
+        "title": "Importar ubicaciones (CSV / Excel)",
+        "hint": "Importe ubicaciones por CSV o Excel (.xlsx). Por fila: nombre o dirección completa (street + postal_code + city). Opcional: house_number, country_code (BE por defecto), notes, contractual_relationship_reference (DDT), latitude y longitude (juntos). Columnas desconocidas o identidad faltante rechazan toda la importación.",
+        "errors": {
+            "file_required": "Elija un archivo CSV o Excel (.xlsx).",
+            "file_too_large": "El archivo puede tener como máximo 10 MB.",
+            "failed": "Importación fallida.",
+            "unreadable": "No se pudo leer el archivo.",
+            "empty": "El archivo está vacío.",
+            "missing_identity_headers": "Incluya al menos la columna name, o street + postal_code + city.",
+            "unexpected_headers": "Columnas desconocidas: :columns",
+            "row": "Fila :line: :message",
+            "no_rows": "No se encontraron filas válidas.",
+            "database": "Error de base de datos: :message",
+            "unsupported_format": "Formato de archivo no válido. Use CSV o Excel (.xlsx).",
+            "duplicate_row": "Ubicación duplicada en este archivo.",
+            "coords_pair_required": "latitude y longitude deben rellenarse juntos."
+        }
+    },
+    "locations_import_history": {
+        "title": "Importaciones de ubicaciones recientes",
+        "hint": "Deshacer elimina ubicaciones sin units, avisos, documentos ni anuncios.",
+        "unknown_file": "Archivo desconocido",
+        "location_count": ":count ubicaciones",
+        "confirm_delete": "¿Eliminar :count ubicación(es) sin contenido vinculado?",
+        "delete_button": "Deshacer importación (:count)",
+        "has_content": "Tiene contenido",
+        "deleted": "Eliminado",
+        "nothing_deletable": "No se pueden eliminar ubicaciones de esta importación.",
+        "partially_deleted": ":deleted ubicación(es) eliminada(s). :preserved ubicación(es) con contenido se conservaron.",
+        "fully_deleted": ":count ubicación(es) eliminada(s).",
+        "delete_failed": "Se produjo un error al eliminar."
     }
 }
