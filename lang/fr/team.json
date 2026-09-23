@@ -136,8 +136,8 @@
             "edit_title": "Modifier l'intervenant",
             "edit_subtitle": "Modifiez les données de cet intervenant.",
             "save": "Enregistrer l'intervenant",
-            "locations_title": "Sites",
-            "locations_hint": "Vide = pointer partout. Sélectionnez des sites pour restreindre.",
+            "locations_title": "Pointer sur les lieux",
+            "locations_hint": "Exception : par défaut cet intervenant peut pointer partout. Ouvrez ceci seulement pour le limiter à des sites précis. Vide = tous les lieux.",
             "locations_empty": "Pas encore de sites.",
             "role_title": "Rôle",
             "clock_title": "Pointeuse",
@@ -147,7 +147,9 @@
             "confirm_clear_clock_device": "Dissocier le téléphone ? L’exécutant pourra ensuite utiliser un nouvel appareil.",
             "confirm_clear_clock_pin": "Supprimer le code PIN ? L’exécutant pourra ensuite en définir un nouveau.",
             "confirm_deactivate": "Désactiver cet exécutant ? La connexion via Clock Point ne sera plus possible.",
-            "confirm_delete": "Supprimer définitivement cet exécutant ? L’historique est conservé."
+            "confirm_delete": "Supprimer définitivement cet exécutant ? L’historique est conservé.",
+            "locations_summary_all": "Par défaut : pointer partout (exception optionnelle)",
+            "locations_summary_selected": ":count site(s) sélectionné(s)"
         },
         "import_download_sample_csv": "Télécharger un exemple CSV",
         "import_download_sample_xlsx": "Télécharger un exemple XLSX",

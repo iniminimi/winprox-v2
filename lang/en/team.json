@@ -136,8 +136,8 @@
             "edit_title": "Edit worker",
             "edit_subtitle": "Update this worker's details.",
             "save": "Save worker",
-            "locations_title": "Locations",
-            "locations_hint": "Empty = clock in anywhere. Select sites to restrict.",
+            "locations_title": "Clock in at locations",
+            "locations_hint": "Exception: by default this worker may clock in everywhere. Open this only to restrict them to specific sites. Leave empty = all locations.",
             "locations_empty": "No locations yet.",
             "role_title": "Role",
             "clock_title": "Time clock",
@@ -147,7 +147,9 @@
             "confirm_clear_clock_device": "Unbind the phone? The worker can then use a new device.",
             "confirm_clear_clock_pin": "Remove the PIN? The worker can then optionally set a new PIN.",
             "confirm_deactivate": "Deactivate this worker? Sign-in via Clock Point will no longer be possible.",
-            "confirm_delete": "Permanently delete this worker? History is kept."
+            "confirm_delete": "Permanently delete this worker? History is kept.",
+            "locations_summary_all": "Default: clock in everywhere (optional exception)",
+            "locations_summary_selected": ":count site(s) selected"
         },
         "import_download_sample_csv": "Download sample CSV",
         "import_download_sample_xlsx": "Download sample XLSX",

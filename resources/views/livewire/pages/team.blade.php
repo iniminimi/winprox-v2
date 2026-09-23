@@ -313,8 +313,9 @@
 
                 <div class="wp-modal-body wp-stack">
                     <div class="wp-field">
-                        <span class="wp-label">{{ __('team.workers.photo') }}</span>
-                        <p class="wp-hint">{{ __('team.workers.photo_hint') }}</p>
+                        <x-wp-tooltip :text="__('team.workers.photo_hint')" wrap>
+                            <span class="wp-label">{{ __('team.workers.photo') }}</span>
+                        </x-wp-tooltip>
                         <div class="wp-worker-photo-picker">
                             @php
                                 $photoPreviewUrl = $this->workerPhotoPreviewUrl();
@@ -332,41 +333,52 @@
                                 @endif
                             </span>
                             <div class="wp-stack-tight">
-                                <input
-                                    type="file"
-                                    id="workerPhoto"
-                                    class="wp-input"
-                                    accept="image/jpeg,image/png,image/webp,image/*"
-                                    x-on:change="
-                                        const input = $event.target;
-                                        const file = input.files?.[0];
-                                        if (!file) {
-                                            return;
-                                        }
-                                        const crop = typeof window.wpCropImageFile === 'function'
-                                            ? window.wpCropImageFile(file, {
-                                                aspectRatio: 1,
-                                                title: @js(__('team.workers.photo_crop_title')),
-                                                applyLabel: @js(__('team.workers.photo_crop_apply')),
-                                                cancelLabel: @js(__('common.button.cancel')),
-                                              })
-                                            : Promise.resolve(file);
-                                        crop.then((cropped) => {
-                                            if (!cropped) {
-                                                return null;
-                                            }
-                                            if (typeof window.wpCompressImageFile !== 'function') {
-                                                return cropped;
-                                            }
-                                            return window.wpCompressImageFile(cropped, { maxDimension: 400, quality: 0.8 });
-                                        }).then((compressed) => {
-                                            if (!compressed) {
+                                <div
+                                    class="wp-file-input"
+                                    x-data="{ fileName: '', emptyLabel: @js(__('common.file.none_selected')) }"
+                                >
+                                    <input
+                                        type="file"
+                                        id="workerPhoto"
+                                        class="wp-file-input-native"
+                                        accept="image/jpeg,image/png,image/webp,image/*"
+                                        aria-label="{{ __('team.workers.photo') }}"
+                                        x-on:change="
+                                            const input = $event.target;
+                                            const file = input.files?.[0];
+                                            fileName = file?.name ?? '';
+                                            if (!file) {
                                                 return;
                                             }
-                                            $wire.upload('workerPhoto', compressed, () => $wire.set('removeWorkerPhoto', false));
-                                        }).finally(() => { input.value = ''; });
-                                    "
-                                >
+                                            const crop = typeof window.wpCropImageFile === 'function'
+                                                ? window.wpCropImageFile(file, {
+                                                    aspectRatio: 1,
+                                                    title: @js(__('team.workers.photo_crop_title')),
+                                                    applyLabel: @js(__('team.workers.photo_crop_apply')),
+                                                    cancelLabel: @js(__('common.button.cancel')),
+                                                  })
+                                                : Promise.resolve(file);
+                                            crop.then((cropped) => {
+                                                if (!cropped) {
+                                                    return null;
+                                                }
+                                                if (typeof window.wpCompressImageFile !== 'function') {
+                                                    return cropped;
+                                                }
+                                                return window.wpCompressImageFile(cropped, { maxDimension: 400, quality: 0.8 });
+                                            }).then((compressed) => {
+                                                if (!compressed) {
+                                                    return;
+                                                }
+                                                $wire.upload('workerPhoto', compressed, () => $wire.set('removeWorkerPhoto', false));
+                                            }).finally(() => { input.value = ''; });
+                                        "
+                                    >
+                                    <label for="workerPhoto" class="btn btn--surface btn--sm wp-file-input-trigger">
+                                        {{ __('common.file.browse') }}
+                                    </label>
+                                    <span class="wp-file-input-name wp-muted wp-text-sm" x-text="fileName || emptyLabel"></span>
+                                </div>
                                 @if (filled($photoPreviewUrl))
                                     <button
                                         type="button"
@@ -380,32 +392,43 @@
                         </div>
                         @error('workerPhoto') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="workerFirstName">{{ __('team.workers.first_name') }}</label>
-                        <input type="text" id="workerFirstName" class="wp-input" wire:model="workerFirstName">
-                        @error('workerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
+                    <div class="wp-form-grid-2">
+                        <div class="wp-field">
+                            <label class="sr-only" for="workerFirstName">{{ __('team.workers.first_name') }}</label>
+                            <input type="text" id="workerFirstName" class="wp-input" wire:model="workerFirstName" placeholder="{{ __('team.workers.first_name') }}" autocomplete="given-name">
+                            @error('workerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <div class="wp-field">
+                            <label class="sr-only" for="workerLastName">{{ __('team.workers.last_name') }}</label>
+                            <input type="text" id="workerLastName" class="wp-input" wire:model="workerLastName" placeholder="{{ __('team.workers.last_name') }}" autocomplete="family-name">
+                            @error('workerLastName') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
                     </div>
                     <div class="wp-field">
-                        <label class="wp-label" for="workerLastName">{{ __('team.workers.last_name') }}</label>
-                        <input type="text" id="workerLastName" class="wp-input" wire:model="workerLastName">
-                        @error('workerLastName') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="workerEmail">{{ __('team.workers.email') }}</label>
-                        <input type="email" id="workerEmail" class="wp-input" wire:model="workerEmail">
+                        <label class="sr-only" for="workerEmail">{{ __('team.workers.email') }}</label>
+                        <input type="email" id="workerEmail" class="wp-input" wire:model="workerEmail" placeholder="{{ __('team.workers.email') }}" autocomplete="email">
                         @error('workerEmail') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="workerPhone">{{ __('team.workers.phone') }}</label>
-                        <input type="tel" id="workerPhone" class="wp-input" wire:model="workerPhone">
-                        @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
                     @if ($presenceComplianceEnabled)
-                        <div>
-                            <label class="wp-label" for="workerSsin">{{ __('team.workers.ssin') }}</label>
-                            <input type="text" id="workerSsin" class="wp-input" wire:model="workerSsin" inputmode="numeric" autocomplete="off" maxlength="11">
-                            <p class="wp-hint">{{ __('team.workers.ssin_hint') }}</p>
-                            @error('workerSsin') <p class="wp-error">{{ $message }}</p> @enderror
+                        <div class="wp-form-grid-2">
+                            <div class="wp-field">
+                                <label class="sr-only" for="workerPhone">{{ __('team.workers.phone') }}</label>
+                                <input type="tel" id="workerPhone" class="wp-input" wire:model="workerPhone" placeholder="{{ __('team.workers.phone') }}" autocomplete="tel">
+                                @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
+                            </div>
+                            <div class="wp-field">
+                                <x-wp-tooltip :text="__('team.workers.ssin_hint')" wrap class="wp-tooltip--block">
+                                    <label class="sr-only" for="workerSsin">{{ __('team.workers.ssin') }}</label>
+                                    <input type="text" id="workerSsin" class="wp-input" wire:model="workerSsin" placeholder="{{ __('team.workers.ssin') }}" inputmode="numeric" autocomplete="off" maxlength="11" aria-label="{{ __('team.workers.ssin') }}">
+                                </x-wp-tooltip>
+                                @error('workerSsin') <p class="wp-error">{{ $message }}</p> @enderror
+                            </div>
+                        </div>
+                    @else
+                        <div class="wp-field">
+                            <label class="sr-only" for="workerPhone">{{ __('team.workers.phone') }}</label>
+                            <input type="tel" id="workerPhone" class="wp-input" wire:model="workerPhone" placeholder="{{ __('team.workers.phone') }}" autocomplete="tel">
+                            @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     @endif
                     <label class="wp-check wp-check--boxed">
@@ -414,31 +437,55 @@
                     </label>
                     @if ($workerIsExternal)
                         <div class="wp-field">
-                            <label class="wp-label" for="workerCompanyName">{{ __('team.workers.company_name') }}</label>
-                            <input type="text" id="workerCompanyName" class="wp-input" wire:model="workerCompanyName" maxlength="120">
+                            <label class="sr-only" for="workerCompanyName">{{ __('team.workers.company_name') }}</label>
+                            <input type="text" id="workerCompanyName" class="wp-input" wire:model="workerCompanyName" placeholder="{{ __('team.workers.company_name') }}" maxlength="120">
                             @error('workerCompanyName') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     @endif
+                    @php
+                        $workerLocationCount = count($selectedWorkerLocationIds);
+                    @endphp
                     <div class="wp-field">
-                        <h3 class="wp-label">{{ __('team.workers.modal.locations_title') }}</h3>
-                        <p class="wp-hint">{{ __('team.workers.modal.locations_hint') }}</p>
-                        @if ($allLocations->isNotEmpty())
-                            <div class="wp-form-grid-2">
-                                @foreach ($allLocations as $location)
-                                    <label class="wp-check">
-                                        <input type="checkbox" wire:model.live="selectedWorkerLocationIds" value="{{ $location->id }}">
-                                        <span>{{ $location->name ?: $location->address }}</span>
-                                    </label>
-                                @endforeach
-                            </div>
-                        @else
-                            <p class="wp-muted">{{ __('team.workers.modal.locations_empty') }}</p>
-                        @endif
+                        <div @class(['wp-field-panel', 'is-open' => $workerLocationsPanelOpen])>
+                            <button
+                                type="button"
+                                class="wp-field-panel__trigger"
+                                wire:click="toggleWorkerLocationsPanel"
+                                aria-expanded="{{ $workerLocationsPanelOpen ? 'true' : 'false' }}"
+                            >
+                                <span class="wp-stack-tight">
+                                    <span class="wp-text-body">{{ __('team.workers.modal.locations_title') }}</span>
+                                    <span class="wp-muted wp-text-sm">
+                                        {{ $workerLocationCount > 0
+                                            ? __('team.workers.modal.locations_summary_selected', ['count' => $workerLocationCount])
+                                            : __('team.workers.modal.locations_summary_all') }}
+                                    </span>
+                                </span>
+                                <x-wp-icon name="chevron-down" @class(['wp-disclosure-chevron', 'is-open' => $workerLocationsPanelOpen]) />
+                            </button>
+                            @if ($workerLocationsPanelOpen)
+                                <div class="wp-field-panel__body wp-stack-tight">
+                                    <p class="wp-hint">{{ __('team.workers.modal.locations_hint') }}</p>
+                                    @if ($allLocations->isNotEmpty())
+                                        <div class="wp-form-grid-2 wp-worker-locations-list">
+                                            @foreach ($allLocations as $location)
+                                                <label class="wp-check">
+                                                    <input type="checkbox" wire:model.live="selectedWorkerLocationIds" value="{{ $location->id }}">
+                                                    <span>{{ $location->name ?: $location->address }}</span>
+                                                </label>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <p class="wp-muted">{{ __('team.workers.modal.locations_empty') }}</p>
+                                    @endif
+                                </div>
+                            @endif
+                        </div>
                     </div>
                     <div class="wp-field">
-                        <label class="wp-label" for="workerDefaultUnitId">{{ __('team.workers.default_unit') }}</label>
-                        <select id="workerDefaultUnitId" class="wp-select" wire:model="workerDefaultUnitId">
-                            <option value="">{{ __('team.workers.default_unit_none') }}</option>
+                        <label class="sr-only" for="workerDefaultUnitId">{{ __('team.workers.default_unit') }}</label>
+                        <select id="workerDefaultUnitId" class="wp-select" wire:model="workerDefaultUnitId" aria-label="{{ __('team.workers.default_unit') }}">
+                            <option value="">{{ __('team.workers.default_unit') }} — {{ __('team.workers.default_unit_none') }}</option>
                             @foreach ($workerDefaultUnits as $unit)
                                 <option value="{{ $unit->id }}">{{ $unit->roster_code }} — {{ $unit->name }}@if ($unit->location) ({{ $unit->location->name }})@endif</option>
                             @endforeach

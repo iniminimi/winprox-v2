@@ -158,6 +158,12 @@
     padding: 0.75rem;
 }
 
+.wp-worker-locations-list {
+    max-height: 14rem;
+    overflow-y: auto;
+    padding-right: 0.15rem;
+}
+
 /* Extra ademruimte onder het vertaal-kader (anders plakt Categorie ertegen). */
 .wp-stack > .wp-field:has(> .wp-field-panel) + .wp-field {
     margin-top: 1.5rem;

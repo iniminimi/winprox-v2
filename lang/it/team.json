@@ -136,8 +136,8 @@
             "edit_title": "Modifica lavoratore",
             "edit_subtitle": "Aggiorni i dati di questo lavoratore.",
             "save": "Salva lavoratore",
-            "locations_title": "Sedi",
-            "locations_hint": "Vuoto = timbra ovunque. Seleziona sedi per limitare.",
+            "locations_title": "Timbrare sulle sedi",
+            "locations_hint": "Eccezione: di default questo esecutore può timbrare ovunque. Apri solo per limitarlo a sedi specifiche. Vuoto = tutte le sedi.",
             "locations_empty": "Nessuna sede ancora.",
             "role_title": "Ruolo",
             "clock_title": "Timbratrice",
@@ -147,7 +147,9 @@
             "confirm_clear_clock_device": "Scollegare il telefono? Il lavoratore potrà poi usare un nuovo dispositivo.",
             "confirm_clear_clock_pin": "Rimuovere il PIN? Il lavoratore potrà poi impostarne uno nuovo.",
             "confirm_deactivate": "Disattivare questo lavoratore? L’accesso tramite Clock Point non sarà più possibile.",
-            "confirm_delete": "Eliminare definitivamente questo lavoratore? La cronologia viene conservata."
+            "confirm_delete": "Eliminare definitivamente questo lavoratore? La cronologia viene conservata.",
+            "locations_summary_all": "Predefinito: timbrare ovunque (eccezione opzionale)",
+            "locations_summary_selected": ":count sede/i selezionate"
         },
         "import_download_sample_csv": "Scarica esempio CSV",
         "import_download_sample_xlsx": "Scarica esempio XLSX",

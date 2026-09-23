@@ -136,8 +136,8 @@
             "edit_title": "Uitvoerder bewerken",
             "edit_subtitle": "Pas de gegevens van deze uitvoerder aan.",
             "save": "Uitvoerder opslaan",
-            "locations_title": "Locaties",
-            "locations_hint": "Leeg = overal inklokken (behalve locatiegebonden Clock Points filteren op naam). Selecteer vestigingen om te beperken.",
+            "locations_title": "Inklokken op Locaties",
+            "locations_hint": "Uitzondering: standaard mag deze uitvoerder overal inklokken. Open dit alleen als hij of zij tot specifieke vestigingen beperkt moet worden. Leeg laten = alle locaties.",
             "locations_empty": "Nog geen locaties.",
             "role_title": "Rol",
             "clock_title": "Prikklok",
@@ -147,7 +147,9 @@
             "confirm_clear_clock_device": "Gekoppelde gsm loskoppelen? De uitvoerder mag daarna een nieuw toestel gebruiken.",
             "confirm_clear_clock_pin": "Pincode verwijderen? De uitvoerder kan daarna optioneel een nieuwe pincode instellen.",
             "confirm_deactivate": "Deze uitvoerder deactiveren? Aanmelden via Clock Point is dan niet meer mogelijk.",
-            "confirm_delete": "Deze uitvoerder definitief verwijderen? Historie blijft behouden."
+            "confirm_delete": "Deze uitvoerder definitief verwijderen? Historie blijft behouden.",
+            "locations_summary_all": "Standaard: overal inklokken (uitzondering optioneel)",
+            "locations_summary_selected": ":count vestiging(en) gekozen"
         },
         "import_download_sample_csv": "Download voorbeeld-CSV",
         "import_download_sample_xlsx": "Download voorbeeld-xlsx",

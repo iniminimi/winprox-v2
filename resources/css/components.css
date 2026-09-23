@@ -1726,7 +1726,8 @@ button.wp-issue-row:disabled {
     width: 100%;
 }
 
-.wp-tooltip--block > .wp-check {
+.wp-tooltip--block > .wp-check,
+.wp-tooltip--block > .wp-input {
     width: 100%;
 }
 

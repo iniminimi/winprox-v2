@@ -136,8 +136,8 @@
             "edit_title": "Editar trabajador",
             "edit_subtitle": "Actualice los datos de este trabajador.",
             "save": "Guardar trabajador",
-            "locations_title": "Ubicaciones",
-            "locations_hint": "Vacío = fichar en cualquier sitio. Seleccione ubicaciones para restringir.",
+            "locations_title": "Fichar en ubicaciones",
+            "locations_hint": "Excepción: por defecto este operario puede fichar en todas partes. Ábralo solo para limitarlo a sedes concretas. Vacío = todas las ubicaciones.",
             "locations_empty": "Aún no hay ubicaciones.",
             "role_title": "Rol",
             "clock_title": "Reloj de fichar",
@@ -147,7 +147,9 @@
             "confirm_clear_clock_device": "¿Desvincular el móvil? El trabajador podrá usar un dispositivo nuevo.",
             "confirm_clear_clock_pin": "¿Eliminar el PIN? El trabajador podrá establecer uno nuevo después.",
             "confirm_deactivate": "¿Desactivar a este trabajador? Ya no podrá identificarse por Clock Point.",
-            "confirm_delete": "¿Eliminar definitivamente a este trabajador? El historial se conserva."
+            "confirm_delete": "¿Eliminar definitivamente a este trabajador? El historial se conserva.",
+            "locations_summary_all": "Por defecto: fichar en todas partes (excepción opcional)",
+            "locations_summary_selected": ":count sede(s) seleccionada(s)"
         },
         "import_download_sample_csv": "Descargar ejemplo CSV",
         "import_download_sample_xlsx": "Descargar ejemplo XLSX",

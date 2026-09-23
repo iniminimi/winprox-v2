@@ -136,6 +136,8 @@ class Team extends Component
     /** @var list<int> */
     public array $selectedWorkerLocationIds = [];
 
+    public bool $workerLocationsPanelOpen = false;
+
     public ?int $workerDefaultUnitId = null;
 
     // Worker bewerken/aanmaken (modal)
@@ -723,6 +725,7 @@ class Team extends Component
         $this->resetWorkerPhotoState();
         $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId']);
         $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto']);
+        $this->workerLocationsPanelOpen = false;
         $this->showWorkerModal = true;
     }
 
@@ -930,9 +933,15 @@ class Team extends Component
         $this->workerSsin = $worker->ssin ?? '';
         $this->selectedWorkerLocationIds = $worker->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
         $this->workerDefaultUnitId = $worker->default_unit_id !== null ? (int) $worker->default_unit_id : null;
+        $this->workerLocationsPanelOpen = $this->selectedWorkerLocationIds !== [];
         $this->resetWorkerPhotoState();
         $this->existingWorkerPhotoUrl = $worker->photoPublicUrl();
         $this->showWorkerModal = true;
+    }
+
+    public function toggleWorkerLocationsPanel(): void
+    {
+        $this->workerLocationsPanelOpen = ! $this->workerLocationsPanelOpen;
     }
 
     public function cancelWorkerModal(): void
@@ -949,6 +958,7 @@ class Team extends Component
             'workerCompanyName',
             'workerSsin',
             'selectedWorkerLocationIds',
+            'workerLocationsPanelOpen',
             'workerDefaultUnitId',
             'workerPhoto',
             'removeWorkerPhoto',
