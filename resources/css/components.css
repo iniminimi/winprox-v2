@@ -1739,6 +1739,41 @@ button.wp-issue-row:disabled {
     transform: translateY(0);
 }
 
+/* Ballon onder de trigger — bv. bovenaan in een modal (overflow clipt anders). */
+.wp-tooltip--below .wp-tooltip__bubble {
+    top: calc(100% + 0.45rem);
+    bottom: auto;
+    transform: translateX(-50%) translateY(-0.2rem);
+}
+
+.wp-tooltip--below .wp-tooltip__bubble::before {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: var(--wp-border);
+}
+
+.wp-tooltip--below .wp-tooltip__bubble::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: var(--wp-surface);
+}
+
+.wp-tooltip--below:hover .wp-tooltip__bubble,
+.wp-tooltip--below:not(.wp-tooltip--block):focus-within .wp-tooltip__bubble {
+    transform: translateX(-50%) translateY(0);
+}
+
+.wp-tooltip--below .wp-tooltip__bubble--wrap {
+    transform: translateY(-0.2rem);
+}
+
+.wp-tooltip--below:hover .wp-tooltip__bubble--wrap,
+.wp-tooltip--below:not(.wp-tooltip--block):focus-within .wp-tooltip__bubble--wrap {
+    transform: translateY(0);
+}
+
 .wp-tooltip--end .wp-tooltip__bubble--wrap {
     left: auto;
     right: 0;

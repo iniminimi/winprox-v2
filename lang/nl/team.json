@@ -177,7 +177,7 @@
         "clear_clock_pin": "Pincode resetten",
         "default_unit": "Standaardgroep / roostercode",
         "default_unit_none": "Zonder groep",
-        "default_unit_hint": "Optionele thuisgroep op het uurrooster. De plek in een cel (D1/G1) blijft apart.",
+        "default_unit_hint": "Optionele thuisgroep op Time → Uurrooster: met locatiefilter groepeert dat de rijen onder deze roostercode. De plek in een cel (D1/G1) blijft apart.",
         "is_external_hint": "Vink aan als deze persoon voor een ander bedrijf werkt (onderaannemer, uitzendkracht, …). Je kunt dan een bedrijfsnaam invullen; die verschijnt als Ext-badge."
     },
     "import_history": {

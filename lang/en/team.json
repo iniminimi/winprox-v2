@@ -177,7 +177,7 @@
         "clear_clock_pin": "Reset PIN",
         "default_unit": "Default group / roster code",
         "default_unit_none": "No group",
-        "default_unit_hint": "Optional home group on the roster. The place in a cell (D1/G1) stays separate.",
+        "default_unit_hint": "Optional home group on Time → Schedule: with a location filter, rows are grouped under this roster code. The place in a cell (D1/G1) stays separate.",
         "is_external_hint": "Tick if this person works for another company (subcontractor, agency staff, …). You can then enter a company name; it shows as an Ext badge."
     },
     "import_history": {

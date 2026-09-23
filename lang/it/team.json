@@ -177,7 +177,7 @@
         "clear_clock_pin": "Reimposta PIN",
         "default_unit": "Gruppo predefinito / codice turno",
         "default_unit_none": "Senza gruppo",
-        "default_unit_hint": "Gruppo di appartenenza opzionale sul turno. Il posto in una cella (D1/G1) resta separato.",
+        "default_unit_hint": "Gruppo di appartenenza opzionale in Time → Orario: con filtro sede, le righe sono raggruppate sotto questo codice. Il posto in una cella (D1/G1) resta separato.",
         "is_external_hint": "Spunta se questa persona lavora per un’altra azienda (subappaltatore, interinale, …). Puoi poi inserire un nome azienda; compare come badge Ext."
     },
     "import_history": {

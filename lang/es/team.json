@@ -177,7 +177,7 @@
         "clear_clock_pin": "Restablecer PIN",
         "default_unit": "Grupo predeterminado / código de cuadrante",
         "default_unit_none": "Sin grupo",
-        "default_unit_hint": "Grupo de origen opcional en el cuadrante. El lugar en una celda (D1/G1) sigue aparte.",
+        "default_unit_hint": "Grupo base opcional en Time → Horario: con filtro de ubicación, las filas se agrupan bajo este código. El lugar en una celda (D1/G1) sigue aparte.",
         "is_external_hint": "Marque si esta persona trabaja para otra empresa (subcontratista, temporal, …). Entonces puede indicar un nombre de empresa; aparece como insignia Ext."
     },
     "import_history": {

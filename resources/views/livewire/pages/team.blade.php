@@ -372,7 +372,7 @@
                                             }).finally(() => { input.value = ''; });
                                         "
                                     >
-                                    <x-wp-tooltip :text="__('team.workers.photo_hint')" wrap>
+                                    <x-wp-tooltip :text="__('team.workers.photo_hint')" wrap class="wp-tooltip--below">
                                         <label for="workerPhoto" class="btn btn--surface btn--sm wp-file-input-trigger">
                                             {{ __('common.file.browse') }}
                                         </label>
@@ -485,14 +485,15 @@
                         </div>
                     </div>
                     <div class="wp-field">
-                        <label class="wp-label" for="workerDefaultUnitId">{{ __('team.workers.default_unit') }}</label>
+                        <x-wp-tooltip :text="__('team.workers.default_unit_hint')" wrap>
+                            <label class="wp-label" for="workerDefaultUnitId">{{ __('team.workers.default_unit') }}</label>
+                        </x-wp-tooltip>
                         <select id="workerDefaultUnitId" class="wp-select" wire:model="workerDefaultUnitId">
                             <option value="">{{ __('team.workers.default_unit_none') }}</option>
                             @foreach ($workerDefaultUnits as $unit)
                                 <option value="{{ $unit->id }}">{{ $unit->roster_code }} — {{ $unit->name }}@if ($unit->location) ({{ $unit->location->name }})@endif</option>
                             @endforeach
                         </select>
-                        <p class="wp-hint">{{ __('team.workers.default_unit_hint') }}</p>
                         @error('workerDefaultUnitId') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     @if ($editingWorkerId)

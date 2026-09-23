@@ -177,7 +177,7 @@
         "clear_clock_pin": "PIN zurücksetzen",
         "default_unit": "Standardgruppe / Dienstplancode",
         "default_unit_none": "Ohne Gruppe",
-        "default_unit_hint": "Optionale Stammgruppe im Dienstplan. Der Ort in einer Zelle (D1/G1) bleibt getrennt.",
+        "default_unit_hint": "Optionale Stammgruppe unter Time → Dienstplan: mit Standortfilter werden Zeilen unter diesem Roster-Code gruppiert. Der Platz in einer Zelle (D1/G1) bleibt getrennt.",
         "is_external_hint": "Aktivieren, wenn diese Person für ein anderes Unternehmen arbeitet (Subunternehmer, Zeitarbeit, …). Dann können Sie einen Firmennamen eingeben; er erscheint als Ext-Badge."
     },
     "import_history": {

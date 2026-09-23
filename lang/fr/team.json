@@ -177,7 +177,7 @@
         "clear_clock_pin": "Réinitialiser le PIN",
         "default_unit": "Groupe par défaut / code planning",
         "default_unit_none": "Sans groupe",
-        "default_unit_hint": "Groupe d’origine optionnel sur le planning. Le lieu dans une cellule (D1/G1) reste séparé.",
+        "default_unit_hint": "Groupe d’appartenance optionnel sur Time → Planning : avec filtre de lieu, les lignes sont regroupées sous ce code. La place dans une cellule (D1/G1) reste séparée.",
         "is_external_hint": "Cochez si cette personne travaille pour une autre société (sous-traitant, intérimaire, …). Vous pouvez alors saisir un nom d’entreprise ; il apparaît comme badge Ext."
     },
     "import_history": {
