@@ -42,35 +42,22 @@ class StripeCheckoutService
         }
 
         $secret = (string) config('stripe.secret');
-        $successUrl = url(config('stripe.success_path', '/subscription')).'?stripe=success&session_id={CHECKOUT_SESSION_ID}';
-        $cancelUrl = url(config('stripe.cancel_path', '/subscription')).'?stripe=cancel';
-
-        // Minimale subscription-checkout (hosted is default). Studio-extras weggelaten:
-        // onbekende params / one-time prices breken de sessie stil.
-        $payload = [
-            'mode' => 'subscription',
-            'billing_address_collection' => 'auto',
-            'payment_method_collection' => 'always',
-            'line_items[0][price]' => $priceId,
-            'line_items[0][quantity]' => 1,
-            'success_url' => $successUrl,
-            'cancel_url' => $cancelUrl,
-            'client_reference_id' => (string) $tenant->id,
-            'metadata[tenant_id]' => (string) $tenant->id,
-            'metadata[plan]' => $plan,
-            'subscription_data[metadata][tenant_id]' => (string) $tenant->id,
-            'subscription_data[metadata][plan]' => $plan,
-            'customer_email' => $actor->email,
-        ];
-
-        if (is_string($tenant->stripe_customer_id) && $tenant->stripe_customer_id !== '') {
-            $payload['customer'] = $tenant->stripe_customer_id;
-            unset($payload['customer_email']);
-        }
+        $payload = $this->sessionPayload($actor, $tenant, $plan, $priceId, useStoredCustomer: true);
 
         $response = Http::withToken($secret)
             ->asForm()
             ->post('https://api.stripe.com/v1/checkout/sessions', $payload);
+
+        // Test-customer op live (of omgekeerd): wis stale id en probeer opnieuw met e-mail.
+        if (! $response->successful() && $this->isUnknownCustomerError($response->json() ?? $response->body())) {
+            $tenant->forceFill(['stripe_customer_id' => null])->save();
+            $tenant->refresh();
+
+            $payload = $this->sessionPayload($actor, $tenant, $plan, $priceId, useStoredCustomer: false);
+            $response = Http::withToken($secret)
+                ->asForm()
+                ->post('https://api.stripe.com/v1/checkout/sessions', $payload);
+        }
 
         if (! $response->successful()) {
             $body = $response->json();
@@ -96,5 +83,55 @@ class StripeCheckoutService
         }
 
         return ['url' => $url, 'error' => null];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private function sessionPayload(
+        User $actor,
+        Tenant $tenant,
+        string $plan,
+        string $priceId,
+        bool $useStoredCustomer,
+    ): array {
+        $successUrl = url(config('stripe.success_path', '/subscription')).'?stripe=success&session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl = url(config('stripe.cancel_path', '/subscription')).'?stripe=cancel';
+
+        $payload = [
+            'mode' => 'subscription',
+            'billing_address_collection' => 'auto',
+            'payment_method_collection' => 'always',
+            'line_items[0][price]' => $priceId,
+            'line_items[0][quantity]' => 1,
+            'success_url' => $successUrl,
+            'cancel_url' => $cancelUrl,
+            'client_reference_id' => (string) $tenant->id,
+            'metadata[tenant_id]' => (string) $tenant->id,
+            'metadata[plan]' => $plan,
+            'subscription_data[metadata][tenant_id]' => (string) $tenant->id,
+            'subscription_data[metadata][plan]' => $plan,
+            'customer_email' => $actor->email,
+        ];
+
+        if (
+            $useStoredCustomer
+            && is_string($tenant->stripe_customer_id)
+            && $tenant->stripe_customer_id !== ''
+        ) {
+            $payload['customer'] = $tenant->stripe_customer_id;
+            unset($payload['customer_email']);
+        }
+
+        return $payload;
+    }
+
+    private function isUnknownCustomerError(mixed $body): bool
+    {
+        $message = is_array($body)
+            ? (string) data_get($body, 'error.message', '')
+            : (string) $body;
+
+        return str_contains(strtolower($message), 'no such customer');
     }
 }
