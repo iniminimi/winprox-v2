@@ -11,6 +11,7 @@ use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\DeactivateLocationAction;
 use App\Actions\Locations\DeleteCategoryAction;
 use App\Actions\Locations\DeleteLocationImportBatchAction;
+use App\Actions\Locations\EnsureSiteUnitsForEmptyLocationsAction;
 use App\Actions\Locations\ImportLocationsAction;
 use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
@@ -262,6 +263,38 @@ class Index extends Component
         session()->flash('success', __('locations.flash.translation_saved'));
     }
 
+    public function ensureSiteUnitsForEmptyLocations(EnsureSiteUnitsForEmptyLocationsAction $ensureSiteUnits): void
+    {
+        $this->authorize('create', Location::class);
+
+        try {
+            $result = $ensureSiteUnits->handle(
+                (int) auth()->user()->tenant_id,
+                (int) auth()->id(),
+            );
+        } catch (InvalidArgumentException $e) {
+            if ($e->getMessage() === 'unit_limit_exceeded') {
+                session()->flash('error', __('locations.errors.unit_limit'));
+
+                return;
+            }
+
+            throw $e;
+        }
+
+        if ($result['created'] === 0) {
+            session()->flash('success', __('locations.site_units.none_needed'));
+
+            return;
+        }
+
+        session()->flash('success', trans_choice(
+            'locations.site_units.created',
+            $result['created'],
+            ['count' => $result['created']],
+        ));
+    }
+
     public function closeModal(): void
     {
         $this->showModal = false;
@@ -283,6 +316,11 @@ class Index extends Component
             } catch (InvalidArgumentException $e) {
                 if ($e->getMessage() === 'location_limit_exceeded') {
                     $this->addError('locationFormName', __('locations.errors.location_limit'));
+
+                    return;
+                }
+                if ($e->getMessage() === 'unit_limit_exceeded') {
+                    $this->addError('locationFormName', __('locations.errors.unit_limit'));
 
                     return;
                 }
@@ -911,6 +949,9 @@ class Index extends Component
             'presenceComplianceEnabled' => (bool) ($viewerTenant?->presenceComplianceEnabled()),
             'gpsWorkVisitsEnabled' => (bool) ($viewerTenant?->allowsGpsWorkVisits()),
             'canImportLocationsCsv' => $viewerTenant?->hasCsvLocationsImport() ?? false,
+            'emptyLocationsWithoutUnits' => $isCategories
+                ? 0
+                : Location::query()->whereDoesntHave('units')->count(),
             'locationImportBatches' => $isCategories
                 ? collect()
                 : LocationImportBatchRegistry::recentBatchesForTenant((int) Tenancy::id())

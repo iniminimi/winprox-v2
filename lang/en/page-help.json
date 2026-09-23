@@ -112,11 +112,11 @@
             "actions": [
                 {
                     "label": "What is this screen?",
-                    "text": "This list shows inspection rounds only: recurring rounds with at least two unit stops. Create ordinary issues via Work → Issues, not here."
+                    "text": "This screen lists inspection rounds only: rounds with at least two unit stops, recurring or one-time. Create regular issues via Work → Issues, not here."
                 },
                 {
                     "label": "Plan inspection round",
-                    "text": "Pick at least 2 stops (units), interval and team in one form. Creates a recurring issue with round stops and starts the first task immediately. With Time + GPS work visits, today's stops appear on Clock Point → Where do I need to go today after clock-in."
+                    "text": "Choose at least 2 stops (units) and a team in one form. Turn Recurring on for interval/lead, or off for a one-time round with only a due date. Starts the first task immediately. With Time + GPS work visits, today’s stops appear after clock-in under Clock Point → Where should I go today."
                 },
                 {
                     "label": "Interval",

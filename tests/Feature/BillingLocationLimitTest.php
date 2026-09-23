@@ -29,6 +29,7 @@ class BillingLocationLimitTest extends TestCase
         ], $tenant->id);
 
         $this->assertSame('Locatie 51', $location->name);
+        $this->assertTrue($location->units()->where('is_site_unit', true)->exists());
         $this->assertNull($tenant->fresh()->maxLocationsLimit());
     }
 }

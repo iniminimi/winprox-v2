@@ -75,6 +75,12 @@ class CreateUnitAction
             $payload['roster_code'] = $code !== '' ? $code : null;
         }
 
+        if (Schema::hasColumn('units', 'is_site_unit')) {
+            $payload['is_site_unit'] = array_key_exists('is_site_unit', $data)
+                ? (bool) $data['is_site_unit']
+                : false;
+        }
+
         if (Schema::hasColumn('units', 'latitude') && array_key_exists('latitude', $data)) {
             $payload['latitude'] = self::nullableCoord($data['latitude'] ?? null, -90, 90);
         }

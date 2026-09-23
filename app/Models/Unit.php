@@ -33,6 +33,7 @@ class Unit extends Model
         'longitude',
         'original_language',
         'is_active',
+        'is_site_unit',
         'public_reports_enabled',
         'allow_reservations',
         'allow_unit_checks',
@@ -48,6 +49,7 @@ class Unit extends Model
         'latitude' => 'float',
         'longitude' => 'float',
         'is_active' => 'boolean',
+        'is_site_unit' => 'boolean',
         'public_reports_enabled' => 'boolean',
         'allow_reservations' => 'boolean',
         'allow_unit_checks' => 'boolean',
@@ -283,6 +285,30 @@ class Unit extends Model
         }
 
         return $name;
+    }
+
+    /**
+     * Label in inspectieronde-voortgang/print: site-units tonen de locatienaam
+     * (niet "Hele locatie · Hele locatie").
+     */
+    public function roundStopDisplayName(bool $multiLocation = false): string
+    {
+        $this->loadMissing('location');
+
+        $locationName = $this->location?->name
+            ?: ($this->location?->address ?? null);
+
+        if ((bool) $this->is_site_unit && filled($locationName)) {
+            return (string) $locationName;
+        }
+
+        $unitName = $this->localizedName();
+
+        if ($multiLocation && filled($locationName)) {
+            return $locationName.' · '.$unitName;
+        }
+
+        return $unitName;
     }
 
     public function localizedDescription(?string $locale = null): string

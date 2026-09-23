@@ -482,5 +482,14 @@
         "partially_deleted": ":deleted locatie(s) verwijderd. :preserved locatie(s) met inhoud bleven staan.",
         "fully_deleted": ":count locatie(s) verwijderd.",
         "delete_failed": "Er is een fout opgetreden bij het verwijderen."
+    },
+    "site_units": {
+        "button": "Hele locatie-units toevoegen",
+        "none_needed": "Alle locaties hebben al minstens één unit.",
+        "created": "{count} Hele locatie-unit toegevoegd.|{count} Hele locatie-units toegevoegd."
+    },
+    "site_unit": {
+        "default_name": "Hele locatie",
+        "hint": "Automatisch aangemaakt zodat je meldingen, unit checks en inspectiestops kunt doen zonder ruimtes op te delen."
     }
 }

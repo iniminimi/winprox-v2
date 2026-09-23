@@ -112,11 +112,11 @@
             "actions": [
                 {
                     "label": "Was ist dieses Fenster?",
-                    "text": "Hier stehen nur Inspektionsrunden: wiederkehrende Runden mit mindestens zwei Unit-Stops. Normale Meldungen legen Sie unter Arbeit → Meldungen an, nicht hier."
+                    "text": "Hier stehen nur Inspektionsrunden: Runden mit mindestens zwei Unit-Stopps, wiederkehrend oder einmalig. Normale Meldungen erstellen Sie unter Arbeit → Meldungen."
                 },
                 {
                     "label": "Inspektionsrunde planen",
-                    "text": "Wählen Sie mindestens 2 Stops (Units), Intervall und Team in einem Formular. Erstellt eine wiederkehrende Meldung mit Runden-Stops und startet sofort die erste Aufgabe. Mit Time + GPS-Arbeitsbesuchen erscheinen die heutigen Stops nach dem Einstempeln unter Clock Point → Wohin muss ich heute."
+                    "text": "Mindestens 2 Stopps (Units) und ein Team wählen. Wiederkehrend an für Intervall/Lead, aus für eine einmalige Runde nur mit Fälligkeitsdatum. Erstellt sofort die erste Aufgabe."
                 },
                 {
                     "label": "Intervall",

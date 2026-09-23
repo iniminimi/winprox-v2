@@ -9,8 +9,8 @@ use App\Models\Issue;
 use App\Models\User;
 
 /**
- * Intentie-flow: inspectieronde plannen (stops + interval + team) in één stap.
- * Onder water: terugkerende melding + stops + eerste teamtaak.
+ * Intentie-flow: inspectieronde plannen (stops + team) in één stap.
+ * Onder water: melding met stops + eerste teamtaak (terugkerend of eenmalig).
  */
 class CreateInspectionRoundAction
 {
@@ -29,16 +29,23 @@ class CreateInspectionRoundAction
             $validated['round_stop_unit_ids'] ?? [],
         )));
 
+        $isRecurring = array_key_exists('is_recurring', $validated)
+            ? (bool) $validated['is_recurring']
+            : true;
+
         $issuePayload = [
             'description' => $validated['description'],
-            'is_recurring' => true,
-            'recurrence_interval_value' => (int) $validated['recurrence_interval_value'],
-            'recurrence_interval_unit' => (string) $validated['recurrence_interval_unit'],
-            'recurrence_lead_days' => (int) $validated['recurrence_lead_days'],
+            'is_recurring' => $isRecurring,
             'recurrence_first_due_date' => (string) $validated['recurrence_first_due_date'],
             'round_stop_unit_ids' => $roundStopIds,
             'original_language' => $validated['original_language'] ?? null,
         ];
+
+        if ($isRecurring) {
+            $issuePayload['recurrence_interval_value'] = (int) $validated['recurrence_interval_value'];
+            $issuePayload['recurrence_interval_unit'] = (string) $validated['recurrence_interval_unit'];
+            $issuePayload['recurrence_lead_days'] = (int) $validated['recurrence_lead_days'];
+        }
 
         $issue = $this->createIssue->handle($issuePayload, $actor);
 

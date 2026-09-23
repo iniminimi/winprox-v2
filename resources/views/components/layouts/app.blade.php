@@ -249,7 +249,7 @@
                                         <span>{{ __('common.nav.tasks') }}</span>
                                     </a>
                                     @if ($showWorkMenuInspectionRounds)
-                                        <a href="{{ route('issues.index', ['recurring' => 1, 'inspection_round' => 1]) }}"
+                                        <a href="{{ route('issues.index', ['inspection_round' => 1]) }}"
                                            class="wp-nav-link wp-nav-link--sub {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"
                                            @click="nav = false">
                                             <span>{{ __('issues.list.inspection_rounds') }}</span>

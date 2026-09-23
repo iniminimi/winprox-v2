@@ -112,11 +112,11 @@
             "actions": [
                 {
                     "label": "Che schermata è questa?",
-                    "text": "Qui ci sono solo giri di ispezione: giri ricorrenti con almeno due fermate unità. Le segnalazioni normali si creano in Lavoro → Segnalazioni, non qui."
+                    "text": "Qui compaiono solo i giri di ispezione: con almeno due fermate, ricorrenti o una tantum. Le segnalazioni normali si creano in Lavoro → Segnalazioni."
                 },
                 {
                     "label": "Pianifica giro di ispezione",
-                    "text": "Scegli almeno 2 fermate (unità), intervallo e team in un modulo. Crea una segnalazione ricorrente con fermate del giro e avvia subito il primo compito. Con Time + visite GPS, le fermate di oggi compaiono dopo la timbratura in Clock Point → Dove devo andare oggi."
+                    "text": "Scegli almeno 2 fermate (unità) e un team. Attiva Ricorrente per intervallo/lead, oppure disattiva per un giro una tantum solo con scadenza. Avvia subito la prima attività."
                 },
                 {
                     "label": "Intervallo",

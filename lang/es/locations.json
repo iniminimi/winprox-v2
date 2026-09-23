@@ -482,5 +482,14 @@
         "partially_deleted": ":deleted ubicación(es) eliminada(s). :preserved ubicación(es) con contenido se conservaron.",
         "fully_deleted": ":count ubicación(es) eliminada(s).",
         "delete_failed": "Se produjo un error al eliminar."
+    },
+    "site_units": {
+        "button": "Añadir unidades de ubicación completa",
+        "none_needed": "Todas las ubicaciones ya tienen al menos una unidad.",
+        "created": "{count} unidad de ubicación completa añadida.|{count} unidades de ubicación completa añadidas."
+    },
+    "site_unit": {
+        "default_name": "Ubicación completa",
+        "hint": "Creada automáticamente para poder reportar, hacer unit checks y paradas de inspección sin dividir en espacios."
     }
 }

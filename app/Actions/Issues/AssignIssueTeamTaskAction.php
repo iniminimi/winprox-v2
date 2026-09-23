@@ -35,9 +35,9 @@ class AssignIssueTeamTaskAction
             $extra = array_merge([
                 'scheduled_for' => $openedDueAt->toDateString(),
                 'due_at' => $openedDueAt,
-                'is_recurring_cycle' => true,
-                'recurrence_issue_id' => $issue->id,
-                'cycle_number' => 1,
+                'is_recurring_cycle' => (bool) $issue->is_recurring,
+                'recurrence_issue_id' => $issue->is_recurring ? $issue->id : null,
+                'cycle_number' => $issue->is_recurring ? 1 : null,
             ], $extra);
         }
 

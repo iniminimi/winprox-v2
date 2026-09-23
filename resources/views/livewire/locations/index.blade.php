@@ -27,6 +27,19 @@
                 @endcan
             @else
                 <div class="wp-cluster">
+                    @if (($emptyLocationsWithoutUnits ?? 0) > 0)
+                        @can('create', \App\Models\Location::class)
+                            <button
+                                type="button"
+                                class="btn btn--ghost"
+                                wire:click="ensureSiteUnitsForEmptyLocations"
+                                wire:loading.attr="disabled"
+                                wire:target="ensureSiteUnitsForEmptyLocations"
+                            >
+                                {{ __('locations.site_units.button') }}
+                            </button>
+                        @endcan
+                    @endif
                     @if ($canImportLocationsCsv ?? false)
                         @can('create', \App\Models\Location::class)
                             <button type="button" class="btn btn--ghost" wire:click="openLocationsCsvImportModal">
@@ -44,6 +57,9 @@
 
     @if (session('success'))
         <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
+    @endif
+    @if (session('error'))
+        <div class="wp-flash wp-flash--danger">{{ session('error') }}</div>
     @endif
 
     @if ($isCategories)

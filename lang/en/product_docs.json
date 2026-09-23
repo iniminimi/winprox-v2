@@ -113,9 +113,10 @@
                 "title": "Inspection rounds",
                 "body": "A fixed route of units, even across sites.",
                 "items": [
-                    "Plan under Work → Inspection rounds.",
-                    "Per stop: OK, Not OK (with an issue) or skip with a reason.",
-                    "With Time + GPS, today’s round appears under Where should I go today.",
+                    "Plan via Work → Inspection rounds (recurring or one-time).",
+                    "Per stop: OK, Not OK (with issue) or skip with reason.",
+                    "Whole-location site units show the location name in the round.",
+                    "With Time + GPS, today’s round appears under Where should I go.",
                     "Print a cycle from the round task."
                 ]
             },

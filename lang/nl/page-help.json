@@ -112,11 +112,11 @@
             "actions": [
                 {
                     "label": "Wat is dit scherm?",
-                    "text": "Hier staan alleen inspectierondes: terugkerende rondes met minstens twee unit-stops. Nieuwe gewone meldingen maakt u via Werk → Meldingen, niet hier."
+                    "text": "Hier staan alleen inspectierondes: rondes met minstens twee unit-stops, terugkerend of eenmalig. Nieuwe gewone meldingen maakt u via Werk → Meldingen, niet hier."
                 },
                 {
                     "label": "Inspectieronde plannen",
-                    "text": "Kies minstens 2 stops (units), interval en team in één formulier. Maakt een terugkerende melding met ronde-stops en start meteen de eerste taak. Met Time + GPS-werkbezoeken verschijnen de stops van vandaag na inklokken onder Clock Point → Waar moet ik vandaag naartoe."
+                    "text": "Kies minstens 2 stops (units) en team in één formulier. Zet Terugkerend aan voor interval/lead, of uit voor een eenmalige ronde met alleen vervaldatum. Start meteen de eerste taak. Met Time + GPS-werkbezoeken verschijnen de stops van vandaag na inklokken onder Clock Point → Waar moet ik vandaag naartoe."
                 },
                 {
                     "label": "Interval",

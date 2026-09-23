@@ -38,6 +38,7 @@ it('imports locations from valid CSV', function () {
     expect($result['success'])->toBeTrue()
         ->and($result['count'])->toBe(2)
         ->and(Location::where('tenant_id', $tenant->id)->count())->toBe(2)
+        ->and(Unit::where('tenant_id', $tenant->id)->where('is_site_unit', true)->count())->toBe(2)
         ->and(Location::where('name', 'Depot A')->value('import_batch_id'))->not->toBeNull()
         ->and(DB::table('audit_logs')->where('action', 'locations.import')->exists())->toBeTrue();
 });

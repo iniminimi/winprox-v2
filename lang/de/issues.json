@@ -25,7 +25,7 @@
         "group_count": ":count Meldungen",
         "empty": "Noch keine Meldungen. Erstellen Sie eine mit dem \"+ Meldung hinzufügen\"-Button.",
         "empty_filtered": "Keine Meldungen für diese Filter.",
-        "subtitle_inspection_rounds": "Wiederkehrende Runden mit mindestens zwei Unit-Stops",
+        "subtitle_inspection_rounds": "Runden mit mindestens zwei Unit-Stopps (wiederkehrend oder einmalig)",
         "empty_inspection_rounds": "Noch keine Inspektionsrunden. Planen Sie eine über \"Inspektionsrunde planen\"."
     },
     "filter": {
@@ -122,11 +122,15 @@
     },
     "round_create": {
         "title": "Inspektionsrunde planen",
-        "subtitle": "Stops, Intervall und Team in einem Schritt — wiederkehrende Meldung mit Runden-Stops.",
-        "stops": "Stops",
-        "stops_help": "Wählen Sie mindestens 2 Units (alle Standorte). Kreuzen Sie in der Liste an; ziehen Sie eine Unit im Standort oder die Standortzeile (1 = erster Stopp).",
+        "subtitle": "Stopps und Team in einem Schritt — wiederkehrend oder einmalig.",
+        "stops": "Stopps",
+        "stops_help": "Mindestens 2 Units wählen (alle Standorte). In der Liste ankreuzen; Unit innerhalb des Standorts oder Standortkopf ziehen (1 = erster Stopp).",
         "submit": "Inspektionsrunde planen",
-        "success": "Inspektionsrunde und Aufgabe wurden erstellt."
+        "success": "Inspektionsrunde und Aufgabe wurden erstellt.",
+        "recurring": "Wiederkehrend",
+        "recurring_help": "Aus = einmalige Runde (kein nächster Zyklus).",
+        "one_time_due": "Fälligkeitsdatum",
+        "one_time_due_help": "Datum, für das diese einmalige Runde geplant ist."
     },
     "errors": {
         "cannot_close_approved": "Eine freigegebene Meldung kann nicht geschlossen werden.",

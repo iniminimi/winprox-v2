@@ -113,10 +113,11 @@
                 "title": "Giri di ispezione",
                 "body": "Un percorso fisso di unità, anche su più sedi.",
                 "items": [
-                    "Pianifica in Lavoro → Giri di ispezione.",
-                    "Per sosta: OK, Non OK (con segnalazione) o saltare con un motivo.",
-                    "Con Time + GPS il giro di oggi compare in Dove devo andare oggi.",
-                    "Stampa un ciclo dal compito del giro."
+                    "Pianifica in Lavoro → Giri di ispezione (ricorrente o una tantum).",
+                    "Per fermata: OK, Non OK (con segnalazione) o salta con motivo.",
+                    "L’unità Sede intera mostra il nome della sede nel giro.",
+                    "Con Time + GPS vedi il giro di oggi in Dove devo andare.",
+                    "Stampa un ciclo dalla attività del giro."
                 ]
             },
             {

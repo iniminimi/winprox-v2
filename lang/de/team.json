@@ -175,9 +175,9 @@
         "device_bound": "Handy verknüpft",
         "clear_clock_device": "Neues Gerät zulassen",
         "clear_clock_pin": "PIN zurücksetzen",
-        "default_unit": "Standardgruppe / Dienstplancode",
-        "default_unit_none": "Ohne Gruppe",
-        "default_unit_hint": "Optionale Stammgruppe unter Time → Dienstplan: mit Standortfilter werden Zeilen unter diesem Roster-Code gruppiert. Der Platz in einer Zelle (D1/G1) bleibt getrennt.",
+        "default_unit": "Stammgruppe (Dienstplan)",
+        "default_unit_none": "Keine Stammgruppe",
+        "default_unit_hint": "Optional — nur für den Dienstplan. Wo sehen Sie das? Time → Dienstplan, nach Wahl eines Standorts: Ausführende stehen unter Gruppen (z. B. G1). Gruppen legen Sie an einer Unit an: Standorte → Unit bearbeiten → Dienstplancode. Wählen Sie hier die Gruppe dieser Person. Leer lassen, wenn Sie keine Gruppierung brauchen. Das plant keine Dienste; der Platz in einer Zelle (D1/G1) wird separat eingetragen.",
         "is_external_hint": "Aktivieren, wenn diese Person für ein anderes Unternehmen arbeitet (Subunternehmer, Zeitarbeit, …). Dann können Sie einen Firmennamen eingeben; er erscheint als Ext-Badge."
     },
     "import_history": {

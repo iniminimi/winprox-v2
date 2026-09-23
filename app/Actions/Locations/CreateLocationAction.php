@@ -7,13 +7,16 @@ use App\Models\Location;
 use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use InvalidArgumentException;
 
 class CreateLocationAction
 {
     public function __construct(
         private AuditRecorder $audit,
         private EnsureLocationTranslationSlotsAction $ensureTranslationSlots,
+        private EnsureSiteUnitForLocationAction $ensureSiteUnit,
     ) {}
 
     /**
@@ -21,7 +24,20 @@ class CreateLocationAction
      */
     public function handle(array $data, int $tenantId, ?int $actorUserId = null): Location
     {
-        Tenant::query()->findOrFail($tenantId)->assertCanAddLocations(1);
+        $tenant = Tenant::query()->findOrFail($tenantId);
+        $tenant->assertCanAddLocations(1);
+
+        $withSiteUnit = array_key_exists('with_site_unit', $data)
+            ? (bool) $data['with_site_unit']
+            : true;
+
+        if ($withSiteUnit) {
+            try {
+                $tenant->assertCanAddUnits(1);
+            } catch (InvalidArgumentException) {
+                throw new InvalidArgumentException('unit_limit_exceeded');
+            }
+        }
 
         $name = trim((string) ($data['name'] ?? ''));
         if ($name === '') {
@@ -49,21 +65,27 @@ class CreateLocationAction
             $payload['import_batch_id'] = $data['import_batch_id'];
         }
 
-        $location = Location::create($payload);
+        return DB::transaction(function () use ($payload, $tenantId, $actorUserId, $withSiteUnit): Location {
+            $location = Location::create($payload);
 
-        $this->audit->record(
-            userId: $actorUserId,
-            tenantId: $tenantId,
-            action: 'location.created',
-            modelType: Location::class,
-            modelId: (int) $location->id,
-            payload: ['id' => $location->id, 'name' => $location->name],
-        );
+            $this->audit->record(
+                userId: $actorUserId,
+                tenantId: $tenantId,
+                action: 'location.created',
+                modelType: Location::class,
+                modelId: (int) $location->id,
+                payload: ['id' => $location->id, 'name' => $location->name],
+            );
 
-        $location = $location->fresh();
-        $this->ensureTranslationSlots->handle($location);
+            $location = $location->fresh();
+            $this->ensureTranslationSlots->handle($location);
 
-        return $location;
+            if ($withSiteUnit) {
+                $this->ensureSiteUnit->handle($location, $tenantId, $actorUserId);
+            }
+
+            return $location->fresh(['units']) ?? $location;
+        });
     }
 
     private function nullableString(mixed $value): ?string

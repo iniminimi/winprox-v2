@@ -45,7 +45,7 @@ final class RecurrenceSchedule
         $isRecurring = (bool) ($validated['is_recurring'] ?? false);
 
         if (! $isRecurring) {
-            return [
+            $attrs = [
                 'is_recurring' => false,
                 'recurrence_interval_value' => null,
                 'recurrence_interval_unit' => null,
@@ -53,6 +53,13 @@ final class RecurrenceSchedule
                 'recurrence_active' => true,
                 'recurrence_next_due_at' => null,
             ];
+
+            // Eenmalige inspectieronde: vervaldatum voor de enige taak.
+            if (! empty($validated['recurrence_first_due_date'])) {
+                $attrs['recurrence_next_due_at'] = Carbon::parse((string) $validated['recurrence_first_due_date'])->endOfDay();
+            }
+
+            return $attrs;
         }
 
         $firstDue = Carbon::parse((string) $validated['recurrence_first_due_date'])->endOfDay();

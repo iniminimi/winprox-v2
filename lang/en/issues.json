@@ -25,7 +25,7 @@
         "group_count": ":count issues",
         "empty": "No issues yet. Create one using the \"+ Add issue\" button.",
         "empty_filtered": "No issues match these filters.",
-        "subtitle_inspection_rounds": "Recurring rounds with at least two unit stops",
+        "subtitle_inspection_rounds": "Rounds with at least two unit stops (recurring or one-time)",
         "empty_inspection_rounds": "No inspection rounds yet. Plan one with \"Plan inspection round\"."
     },
     "filter": {
@@ -122,11 +122,15 @@
     },
     "round_create": {
         "title": "Plan inspection round",
-        "subtitle": "Stops, interval and team in one step — recurring issue with round stops.",
+        "subtitle": "Stops and team in one step — recurring or one-time.",
         "stops": "Stops",
-        "stops_help": "Pick at least 2 units (any locations). Tick them in the list; drag a unit within its location or drag the location header (1 = first stop).",
+        "stops_help": "Select at least 2 units (all locations). Check items in the list; drag a unit within a location or drag the location header (1 = first stop).",
         "submit": "Plan inspection round",
-        "success": "Inspection round and task have been created."
+        "success": "Inspection round and task have been created.",
+        "recurring": "Recurring",
+        "recurring_help": "Off = one-time round (no next cycle).",
+        "one_time_due": "Due date",
+        "one_time_due_help": "Date this one-time round is scheduled for."
     },
     "errors": {
         "cannot_close_approved": "An approved issue cannot be closed.",

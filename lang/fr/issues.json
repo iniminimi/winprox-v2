@@ -25,7 +25,7 @@
         "group_count": ":count signalements",
         "empty": "Aucun signalement pour l'instant. Créez-en un avec le bouton \"+ Ajouter un signalement\".",
         "empty_filtered": "Aucun signalement ne correspond à ces filtres.",
-        "subtitle_inspection_rounds": "Tournées récurrentes avec au moins deux arrêts d’unités",
+        "subtitle_inspection_rounds": "Tournées avec au moins deux arrêts (récurrente ou unique)",
         "empty_inspection_rounds": "Aucune tournée d’inspection pour le moment. Planifiez-en une via « Planifier une tournée d’inspection »."
     },
     "filter": {
@@ -122,11 +122,15 @@
     },
     "round_create": {
         "title": "Planifier une tournée d’inspection",
-        "subtitle": "Arrêts, intervalle et équipe en une étape — signalement récurrent avec arrêts de tournée.",
+        "subtitle": "Arrêts et équipe en une étape — récurrente ou unique.",
         "stops": "Arrêts",
         "stops_help": "Choisissez au moins 2 unités (tous les sites). Cochez dans la liste ; glissez une unité dans le site ou l’en-tête du site (1 = premier arrêt).",
         "submit": "Planifier la tournée",
-        "success": "Tournée d’inspection et tâche créées."
+        "success": "Tournée d’inspection et tâche créées.",
+        "recurring": "Récurrente",
+        "recurring_help": "Désactivé = tournée unique (pas de cycle suivant).",
+        "one_time_due": "Échéance",
+        "one_time_due_help": "Date prévue pour cette tournée unique."
     },
     "errors": {
         "cannot_close_approved": "Un signalement approuvé ne peut pas être fermé.",

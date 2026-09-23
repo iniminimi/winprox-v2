@@ -112,11 +112,11 @@
             "actions": [
                 {
                     "label": "¿Qué es esta pantalla?",
-                    "text": "Aquí solo aparecen rondas de inspección: rondas recurrentes con al menos dos paradas de unidad. Las incidencias normales se crean en Trabajo → Incidencias, no aquí."
+                    "text": "Aquí solo aparecen rondas de inspección: con al menos dos paradas, recurrentes o puntuales. Las incidencias normales se crean en Trabajo → Incidencias."
                 },
                 {
                     "label": "Planificar ronda de inspección",
-                    "text": "Elija al menos 2 paradas (unidades), intervalo y equipo en un formulario. Crea una incidencia recurrente con paradas de ronda y arranca de inmediato la primera tarea. Con Time + visitas GPS, las paradas de hoy aparecen tras fichar en Clock Point → Adónde debo ir hoy."
+                    "text": "Elige al menos 2 paradas (unidades) y un equipo. Activa Recurrente para intervalo/lead, o desactívalo para una ronda puntual solo con fecha. Arranca de inmediato la primera tarea."
                 },
                 {
                     "label": "Intervalo",

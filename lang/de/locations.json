@@ -482,5 +482,14 @@
         "partially_deleted": ":deleted Standort(e) gelöscht. :preserved Standort(e) mit Inhalt blieben erhalten.",
         "fully_deleted": ":count Standort(e) gelöscht.",
         "delete_failed": "Beim Löschen ist ein Fehler aufgetreten."
+    },
+    "site_units": {
+        "button": "Standort-Einheiten hinzufügen",
+        "none_needed": "Alle Standorte haben bereits mindestens eine Einheit.",
+        "created": "{count} Standort-Einheit hinzugefügt.|{count} Standort-Einheiten hinzugefügt."
+    },
+    "site_unit": {
+        "default_name": "Gesamter Standort",
+        "hint": "Automatisch erstellt, damit Meldungen, Unit-Checks und Inspektionsstopps ohne Raumaufteilung möglich sind."
     }
 }

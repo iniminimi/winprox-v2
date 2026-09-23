@@ -128,6 +128,7 @@ class ApplyTenantStarterPackAction
                 'postal_code' => $tenant->postal_code,
                 'city' => $tenant->city,
                 'country_code' => $tenant->country_code,
+                'with_site_unit' => false,
             ], $tenantId, $actorId);
             $this->fillLocationTranslations($location, $locale, $locationNames);
 

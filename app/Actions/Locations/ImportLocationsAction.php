@@ -145,6 +145,16 @@ class ImportLocationsAction
             ];
         }
 
+        // Elke geïmporteerde locatie krijgt automatisch een "Hele locatie"-unit.
+        try {
+            $tenant->assertCanAddUnits(count($validatedRows));
+        } catch (\InvalidArgumentException) {
+            return [
+                'success' => false,
+                'errors' => [__('locations.errors.unit_limit')],
+            ];
+        }
+
         $batchId = (string) Str::uuid();
 
         DB::beginTransaction();

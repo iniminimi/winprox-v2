@@ -482,5 +482,14 @@
         "partially_deleted": ":deleted location(s) deleted. :preserved location(s) with content were kept.",
         "fully_deleted": ":count location(s) deleted.",
         "delete_failed": "An error occurred while deleting."
+    },
+    "site_units": {
+        "button": "Add whole-location units",
+        "none_needed": "All locations already have at least one unit.",
+        "created": "{count} whole-location unit added.|{count} whole-location units added."
+    },
+    "site_unit": {
+        "default_name": "Whole location",
+        "hint": "Created automatically so you can report, run unit checks and inspection stops without splitting into rooms."
     }
 }

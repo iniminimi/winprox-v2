@@ -482,5 +482,14 @@
         "partially_deleted": ":deleted sede/i eliminate. :preserved sede/i con contenuti sono rimaste.",
         "fully_deleted": ":count sede/i eliminate.",
         "delete_failed": "Si è verificato un errore durante l'eliminazione."
+    },
+    "site_units": {
+        "button": "Aggiungi unità sede intera",
+        "none_needed": "Tutte le sedi hanno già almeno un’unità.",
+        "created": "{count} unità sede intera aggiunta.|{count} unità sede intera aggiunte."
+    },
+    "site_unit": {
+        "default_name": "Sede intera",
+        "hint": "Creata automaticamente per segnalazioni, unit check e fermate di ispezione senza suddividere in ambienti."
     }
 }

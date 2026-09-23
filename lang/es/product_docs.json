@@ -113,10 +113,11 @@
                 "title": "Rondas de inspección",
                 "body": "Una ruta fija de unidades, también entre sedes.",
                 "items": [
-                    "Planifique en Trabajo → Rondas de inspección.",
-                    "Por parada: OK, No OK (con aviso) o saltar con un motivo.",
-                    "Con Time + GPS, la ronda de hoy aparece en Adónde debo ir hoy.",
-                    "Imprima un ciclo desde la tarea de ronda."
+                    "Planifica en Trabajo → Rondas de inspección (recurrente o puntual).",
+                    "Por parada: OK, No OK (con incidencia) o omitir con motivo.",
+                    "La unidad Ubicación completa muestra el nombre de la ubicación en la ronda.",
+                    "Con Time + GPS verás la ronda de hoy en A dónde debo ir.",
+                    "Imprime un ciclo desde la tarea de ronda."
                 ]
             },
             {

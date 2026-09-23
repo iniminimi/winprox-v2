@@ -843,6 +843,31 @@ it('creates an inspection round via CreateInspectionRoundAction', function () {
         ->toBe(now()->addMonthNoOverflow()->toDateString());
 });
 
+it('creates a one-time inspection round without advancing recurrence', function () {
+    ['actor' => $actor, 'team' => $team, 'unitA' => $unitA, 'unitB' => $unitB] = inspectionRoundScaffold();
+
+    $due = now()->addDays(3)->toDateString();
+
+    $issue = app(CreateInspectionRoundAction::class)->handle([
+        'description' => 'Eenmalige schoonmaakronde',
+        'is_recurring' => false,
+        'round_stop_unit_ids' => [$unitA->id, $unitB->id],
+        'recurrence_first_due_date' => $due,
+        'internal_team_id' => $team->id,
+        'task_priority' => 'prio_3',
+        'original_language' => 'nl',
+    ], $actor);
+
+    expect($issue->isInspectionRound())->toBeTrue()
+        ->and($issue->is_recurring)->toBeFalse()
+        ->and($issue->roundStopCount())->toBe(2)
+        ->and($issue->tasks)->toHaveCount(1)
+        ->and($issue->tasks->first()->is_recurring_cycle)->toBeFalse()
+        ->and($issue->tasks->first()->recurrence_issue_id)->toBeNull()
+        ->and($issue->tasks->first()->scheduled_for?->toDateString())->toBe($due)
+        ->and($issue->recurrence_next_due_at?->toDateString())->toBe($due);
+});
+
 it('rejects fewer than two stops via CreateInspectionRoundRequest validation', function () {
     ['tenant' => $tenant, 'team' => $team, 'unitA' => $unitA] = inspectionRoundScaffold();
 

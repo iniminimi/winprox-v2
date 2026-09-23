@@ -113,10 +113,11 @@
                 "title": "Inspektionsrunden",
                 "body": "Eine feste Route von Units, auch über mehrere Standorte.",
                 "items": [
-                    "Planen unter Arbeit → Inspektionsrunden.",
+                    "Planen unter Arbeit → Inspektionsrunden (wiederkehrend oder einmalig).",
                     "Pro Stopp: OK, Nicht OK (mit Meldung) oder überspringen mit Grund.",
-                    "Mit Time + GPS erscheint die Runde von heute unter Wohin muss ich heute.",
-                    "Einen Zyklus können Sie von der Rundenaufgabe drucken."
+                    "Standort-Einheiten zeigen in der Runde den Standortnamen.",
+                    "Mit Time + GPS erscheint die heutige Runde unter Wohin muss ich.",
+                    "Zyklus von der Rundenaufgabe drucken."
                 ]
             },
             {

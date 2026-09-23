@@ -482,5 +482,14 @@
         "partially_deleted": ":deleted lieu(x) supprimé(s). :preserved lieu(x) avec contenu conservé(s).",
         "fully_deleted": ":count lieu(x) supprimé(s).",
         "delete_failed": "Une erreur est survenue lors de la suppression."
+    },
+    "site_units": {
+        "button": "Ajouter des unités site entier",
+        "none_needed": "Tous les sites ont déjà au moins une unité.",
+        "created": "{count} unité site entier ajoutée.|{count} unités site entier ajoutées."
+    },
+    "site_unit": {
+        "default_name": "Site entier",
+        "hint": "Créée automatiquement pour permettre signalements, contrôles d’unité et arrêts d’inspection sans découper en locaux."
     }
 }

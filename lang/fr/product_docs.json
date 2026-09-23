@@ -113,10 +113,11 @@
                 "title": "Tournées d’inspection",
                 "body": "Un parcours fixe d’unités, même sur plusieurs sites.",
                 "items": [
-                    "Planifiez sous Travail → Tournées d’inspection.",
-                    "Par arrêt : OK, Pas OK (avec signalement) ou passer avec un motif.",
-                    "Avec Time + GPS, la tournée du jour apparaît sous Où dois-je aller aujourd’hui.",
-                    "Imprimez un cycle depuis la tâche de tournée."
+                    "Planifiez via Travail → Tournées d’inspection (récurrente ou unique).",
+                    "Par arrêt : OK, Pas OK (avec signalement) ou ignorer avec motif.",
+                    "L’unité Site entier affiche le nom du site dans la tournée.",
+                    "Avec Time + GPS, la tournée du jour apparaît sous Où dois-je aller.",
+                    "Impression d’un cycle depuis la tâche de tournée."
                 ]
             },
             {

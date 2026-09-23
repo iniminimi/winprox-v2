@@ -175,12 +175,9 @@ class RoundTaskCompletionAction
                 $workerName = $skip?->worker?->displayName();
             }
 
-            $unitName = $stop->unit?->localizedName() ?? ('#'.$unitId);
-            $locationName = $stop->unit?->location?->name
-                ?: ($stop->unit?->location?->address ?? null);
-            $stopName = $multiLocation && filled($locationName)
-                ? $locationName.' · '.$unitName
-                : $unitName;
+            $stopName = $stop->unit !== null
+                ? $stop->unit->roundStopDisplayName($multiLocation)
+                : ('#'.$unitId);
 
             $stopRows[] = [
                 'unit_id' => $unitId,

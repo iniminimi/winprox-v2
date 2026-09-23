@@ -113,8 +113,9 @@
                 "title": "Inspectierondes",
                 "body": "Een vaste route van units, ook over meerdere locaties.",
                 "items": [
-                    "Plan via Werk → Inspectierondes.",
+                    "Plan via Werk → Inspectierondes (terugkerend of eenmalig).",
                     "Per stop: OK, Niet OK (met melding) of overslaan met reden.",
+                    "Site-unit Hele locatie toont in de ronde de locatienaam.",
                     "Met Time + GPS zie je de ronde van vandaag onder Waar moet ik naartoe.",
                     "Afdrukken van een cyclus kan vanaf de ronde-taak."
                 ]

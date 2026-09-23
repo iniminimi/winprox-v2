@@ -113,10 +113,9 @@ class Index extends Component
             $this->highlightIssue = (int) session()->pull('highlight_issue');
         }
 
-        // Inspectierondes zijn altijd terugkerend; sidebar deep-link zet beide params.
+        // Inspectierondes-scherm: zowel terugkerend als eenmalig.
         if ($this->inspectionRoundOnly) {
             $this->authorize('viewInspectionRounds', Issue::class);
-            $this->recurring = true;
         }
 
         if ($this->openCreate) {
@@ -132,9 +131,7 @@ class Index extends Component
 
     public function updatedInspectionRoundOnly(bool $value): void
     {
-        if ($value) {
-            $this->recurring = true;
-        }
+        // Geen forceer van recurring: eenmalige rondes horen ook in dit filter.
     }
 
     public function updatedPerStatusLimit(): void
@@ -167,7 +164,6 @@ class Index extends Component
     {
         $this->redirect(route('issues.index', array_filter([
             'highlight' => $this->highlightIssue ?: null,
-            'recurring' => $this->inspectionRoundOnly ? '1' : null,
             'inspection_round' => $this->inspectionRoundOnly ? '1' : null,
         ])), navigate: true);
     }
@@ -239,7 +235,10 @@ class Index extends Component
             $this->recurrence_lead_days = $this->suggestRecurringLeadDays($this->recurrence_interval_unit);
         } else {
             $this->esg_indicator_id = null;
-            $this->round_stop_unit_ids = [];
+            // In de ronde-modal mogen stops blijven bij eenmalig.
+            if (! $this->showRoundCreateModal) {
+                $this->round_stop_unit_ids = [];
+            }
         }
     }
 
@@ -386,10 +385,12 @@ class Index extends Component
             CreateInspectionRoundRequest::ruleSet(
                 $tenantId,
                 $this->internal_team_id ? (int) $this->internal_team_id : null,
+                (bool) $this->is_recurring,
             ),
             CreateInspectionRoundRequest::messageSet(),
         );
 
+        $validated['is_recurring'] = (bool) $this->is_recurring;
         $validated['original_language'] = app()->getLocale();
 
         $issue = $createRound->handle($validated, auth()->user());

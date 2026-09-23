@@ -25,7 +25,7 @@
         "group_count": ":count incidencias",
         "empty": "Aún no hay incidencias. Cree una con el botón «+ Añadir incidencia».",
         "empty_filtered": "Ninguna incidencia coincide con estos filtros.",
-        "subtitle_inspection_rounds": "Rondas recurrentes con al menos dos paradas de unidad",
+        "subtitle_inspection_rounds": "Rondas con al menos dos paradas de unidad (recurrente o puntual)",
         "empty_inspection_rounds": "Aún no hay rondas de inspección. Planifica una con \"Planificar ronda de inspección\"."
     },
     "filter": {
@@ -122,11 +122,15 @@
     },
     "round_create": {
         "title": "Planificar ronda de inspección",
-        "subtitle": "Paradas, intervalo y equipo en un paso — aviso recurrente con paradas de ronda.",
+        "subtitle": "Paradas y equipo en un paso — recurrente o puntual.",
         "stops": "Paradas",
-        "stops_help": "Elija al menos 2 unidades (todas las sedes). Márquelas en la lista; arrastre una unidad en la sede o el encabezado de sede (1 = primera parada).",
+        "stops_help": "Elige al menos 2 unidades (todas las ubicaciones). Marca en la lista; arrastra una unidad dentro de la ubicación o el encabezado (1 = primera parada).",
         "submit": "Planificar ronda",
-        "success": "Ronda de inspección y tarea creadas."
+        "success": "Ronda de inspección y tarea creadas.",
+        "recurring": "Recurrente",
+        "recurring_help": "Desactivado = ronda puntual (sin ciclo siguiente).",
+        "one_time_due": "Fecha de vencimiento",
+        "one_time_due_help": "Fecha prevista para esta ronda puntual."
     },
     "errors": {
         "cannot_close_approved": "Una incidencia aprobada no se puede cerrar.",

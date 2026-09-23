@@ -25,7 +25,7 @@
         "group_count": ":count segnalazioni",
         "empty": "Nessuna segnalazione ancora. Ne crei una con il pulsante «+ Aggiungi segnalazione».",
         "empty_filtered": "Nessuna segnalazione corrisponde a questi filtri.",
-        "subtitle_inspection_rounds": "Giri ricorrenti con almeno due fermate unità",
+        "subtitle_inspection_rounds": "Giri con almeno due fermate unità (ricorrente o una tantum)",
         "empty_inspection_rounds": "Nessun giro di ispezione. Pianificane uno con \"Pianifica giro di ispezione\"."
     },
     "filter": {
@@ -122,11 +122,15 @@
     },
     "round_create": {
         "title": "Pianifica giro di ispezione",
-        "subtitle": "Fermate, intervallo e team in un passaggio — segnalazione ricorrente con fermate del giro.",
+        "subtitle": "Fermate e team in un passaggio — ricorrente o una tantum.",
         "stops": "Fermate",
-        "stops_help": "Scegli almeno 2 unità (tutte le sedi). Spunta nell’elenco; trascina un’unità nella sede o l’intestazione della sede (1 = prima fermata).",
+        "stops_help": "Scegli almeno 2 unità (tutte le sedi). Spunta nell’elenco; trascina un’unità nella sede o l’intestazione (1 = prima fermata).",
         "submit": "Pianifica giro",
-        "success": "Giro di ispezione e attività creati."
+        "success": "Giro di ispezione e attività creati.",
+        "recurring": "Ricorrente",
+        "recurring_help": "Disattivo = giro una tantum (nessun ciclo successivo).",
+        "one_time_due": "Scadenza",
+        "one_time_due_help": "Data prevista per questo giro una tantum."
     },
     "errors": {
         "cannot_close_approved": "Una segnalazione approvata non può essere chiusa.",

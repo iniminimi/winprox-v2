@@ -26,16 +26,21 @@ class CreateInspectionRoundRequest extends FormRequest
         return self::ruleSet(
             $tenantId ? (int) $tenantId : null,
             $this->integer('internal_team_id') ?: null,
+            $this->boolean('is_recurring'),
         );
     }
 
     /**
      * @return array<string, array<int, mixed>>
      */
-    public static function ruleSet(?int $tenantId = null, ?int $teamId = null): array
-    {
-        return [
+    public static function ruleSet(
+        ?int $tenantId = null,
+        ?int $teamId = null,
+        bool $isRecurring = true,
+    ): array {
+        $rules = [
             'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
+            'is_recurring' => ['sometimes', 'boolean'],
             'round_stop_unit_ids' => ['required', 'array', 'min:2'],
             'round_stop_unit_ids.*' => [
                 'integer',
@@ -47,15 +52,24 @@ class CreateInspectionRoundRequest extends FormRequest
                         ->where('allow_unit_checks', true),
                 ),
             ],
-            'recurrence_interval_value' => ['required', 'integer', 'min:1', 'max:24'],
-            'recurrence_interval_unit' => ['required', Rule::enum(RecurrenceIntervalUnit::class)],
-            'recurrence_lead_days' => ['required', 'integer', 'min:1', 'max:365'],
             'recurrence_first_due_date' => ['required', 'date', 'after_or_equal:today'],
             'internal_team_id' => ['required', 'integer', 'exists:internal_teams,id'],
             'assigned_worker_id' => AssignedWorkerRules::forTeamId($teamId, $tenantId),
             'task_note' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
             'task_priority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
         ];
+
+        if ($isRecurring) {
+            $rules['recurrence_interval_value'] = ['required', 'integer', 'min:1', 'max:24'];
+            $rules['recurrence_interval_unit'] = ['required', Rule::enum(RecurrenceIntervalUnit::class)];
+            $rules['recurrence_lead_days'] = ['required', 'integer', 'min:1', 'max:365'];
+        } else {
+            $rules['recurrence_interval_value'] = ['nullable', 'integer', 'min:1', 'max:24'];
+            $rules['recurrence_interval_unit'] = ['nullable', Rule::enum(RecurrenceIntervalUnit::class)];
+            $rules['recurrence_lead_days'] = ['nullable', 'integer', 'min:1', 'max:365'];
+        }
+
+        return $rules;
     }
 
     /**

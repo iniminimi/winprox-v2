@@ -32,41 +32,59 @@
             @error('description') <p class="wp-error">{{ $message }}</p> @enderror
         </div>
 
+        <div class="wp-field">
+            <label class="wp-check wp-text-sm">
+                <input type="checkbox" wire:model.live="is_recurring">
+                {{ __('issues.round_create.recurring') }}
+            </label>
+            <p class="wp-muted wp-text-sm">{{ __('issues.round_create.recurring_help') }}</p>
+        </div>
+
         <div class="wp-card wp-card-pad wp-stack-tight wp-surface-muted">
-            <div class="wp-form-grid-2">
-                <div class="wp-field">
-                    <x-wp-tooltip :text="__('issues.create.recurring_help_interval')" wrap>
-                        <label class="wp-label" for="round_create_recurrence_interval_value">{{ __('issues.create.interval_value') }}</label>
-                    </x-wp-tooltip>
-                    <input type="number" id="round_create_recurrence_interval_value" class="wp-input" wire:model="recurrence_interval_value" min="1" max="24">
-                    @error('recurrence_interval_value') <p class="wp-error">{{ $message }}</p> @enderror
+            @if ($is_recurring)
+                <div class="wp-form-grid-2">
+                    <div class="wp-field">
+                        <x-wp-tooltip :text="__('issues.create.recurring_help_interval')" wrap>
+                            <label class="wp-label" for="round_create_recurrence_interval_value">{{ __('issues.create.interval_value') }}</label>
+                        </x-wp-tooltip>
+                        <input type="number" id="round_create_recurrence_interval_value" class="wp-input" wire:model="recurrence_interval_value" min="1" max="24">
+                        @error('recurrence_interval_value') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="round_create_recurrence_interval_unit">{{ __('issues.create.interval_unit') }}</label>
+                        <select id="round_create_recurrence_interval_unit" class="wp-select" wire:model.live="recurrence_interval_unit">
+                            <option value="day">{{ __('issues.create.unit_day') }}</option>
+                            <option value="week">{{ __('issues.create.unit_week') }}</option>
+                            <option value="month">{{ __('issues.create.unit_month') }}</option>
+                            <option value="quarter">{{ __('issues.create.unit_quarter') }}</option>
+                            <option value="year">{{ __('issues.create.unit_year') }}</option>
+                        </select>
+                        @error('recurrence_interval_unit') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <x-wp-tooltip :text="__('issues.create.recurring_help_lead')" wrap>
+                            <label class="wp-label" for="round_create_recurrence_lead_days">{{ __('issues.create.lead_days') }}</label>
+                        </x-wp-tooltip>
+                        <input type="number" id="round_create_recurrence_lead_days" class="wp-input" wire:model.live="recurrence_lead_days" min="1" max="365">
+                        @error('recurrence_lead_days') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <x-wp-tooltip :text="__('issues.create.recurring_help_first_due')" wrap class="wp-tooltip--end">
+                            <label class="wp-label" for="round_create_recurrence_first_due_date">{{ __('issues.create.first_due') }}</label>
+                        </x-wp-tooltip>
+                        <x-wp-date-input id="round_create_recurrence_first_due_date" wire:model="recurrence_first_due_date" />
+                        @error('recurrence_first_due_date') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
                 </div>
+            @else
                 <div class="wp-field">
-                    <label class="wp-label" for="round_create_recurrence_interval_unit">{{ __('issues.create.interval_unit') }}</label>
-                    <select id="round_create_recurrence_interval_unit" class="wp-select" wire:model.live="recurrence_interval_unit">
-                        <option value="day">{{ __('issues.create.unit_day') }}</option>
-                        <option value="week">{{ __('issues.create.unit_week') }}</option>
-                        <option value="month">{{ __('issues.create.unit_month') }}</option>
-                        <option value="quarter">{{ __('issues.create.unit_quarter') }}</option>
-                        <option value="year">{{ __('issues.create.unit_year') }}</option>
-                    </select>
-                    @error('recurrence_interval_unit') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
-                <div class="wp-field">
-                    <x-wp-tooltip :text="__('issues.create.recurring_help_lead')" wrap>
-                        <label class="wp-label" for="round_create_recurrence_lead_days">{{ __('issues.create.lead_days') }}</label>
-                    </x-wp-tooltip>
-                    <input type="number" id="round_create_recurrence_lead_days" class="wp-input" wire:model.live="recurrence_lead_days" min="1" max="365">
-                    @error('recurrence_lead_days') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
-                <div class="wp-field">
-                    <x-wp-tooltip :text="__('issues.create.recurring_help_first_due')" wrap class="wp-tooltip--end">
-                        <label class="wp-label" for="round_create_recurrence_first_due_date">{{ __('issues.create.first_due') }}</label>
+                    <x-wp-tooltip :text="__('issues.round_create.one_time_due_help')" wrap>
+                        <label class="wp-label" for="round_create_recurrence_first_due_date">{{ __('issues.round_create.one_time_due') }}</label>
                     </x-wp-tooltip>
                     <x-wp-date-input id="round_create_recurrence_first_due_date" wire:model="recurrence_first_due_date" />
                     @error('recurrence_first_due_date') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-            </div>
+            @endif
 
             <div class="wp-field">
                 <x-wp-tooltip :text="__('issues.round_create.stops_help')" wrap>

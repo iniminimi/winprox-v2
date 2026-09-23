@@ -132,12 +132,16 @@ Locatie-lijst → klik op een locatie → **locatie-/unit-detailscherm**.
   `name`, `street`, `house_number`, `postal_code`, `city`, `country_code`, `notes`,
   `contractual_relationship_reference`, `latitude`, `longitude`. Per rij: **naam** óf
   volledig adres (straat + postcode + plaats). Voorbeeld-CSV/xlsx + **recente imports**
-  (30 dagen) met **Import terugdraaien** (alleen locaties zonder units/meldingen/documenten/
-  mededelingen).
+  (30 dagen) met **Import terugdraaien** (alleen locaties zonder *echte* units/meldingen/
+  documenten/mededelingen — een onaangeroerde **Hele locatie**-unit mag mee).
+  Elke nieuwe/geïmporteerde locatie krijgt automatisch één site-unit **Hele locatie**
+  (`is_site_unit`, unit checks aan) zodat QR/unit checks/rondestops meteen kunnen.
+  Knop **Hele locatie-units toevoegen** voor bestaande lege locaties (bulk).
 - **Zoek-kaart**: zoekveld "Zoek op locatie, plaats, postcode of straat" (zoekt op naam,
   plaats, postcode én straat). Hint "Klik op een locatie om te beheren". Checkbox
   **"Toon ook inactieve locaties"** (standaard verbergt inactieve).
-- Locatie zonder units: unit-onboarding (**Units toevoegen**) boven de lijst, knop naar de locatie.
+- Locatie zonder units: unit-onboarding (**Units toevoegen**) boven de lijst, knop naar de locatie
+  (zeldzaam na auto site-unit; knop bulk hierboven dekt import-legacy).
 - **Lijst-rij** per locatie: naam · badge **"{n} units"** · adres (straat nr, postcode plaats).
   Klik op de rij → locatie-detail (§2.3). Rechts knop **"Deactiveren"** (soft-delete/inactief
   zetten, niet hard verwijderen).
@@ -523,9 +527,10 @@ zonder ESG. Los van unit checks.
 
 ## 5e. Inspectierondes (Facility)
 
-**Doel:** terugkerende melding met geordende stop-lijst (units). Eén taak per cyclus;
-voortgang via Unit check OK (en optioneel skip) per stop. Compleet als er geen open
-stops meer zijn voor **deze** cyclus-taak.
+**Doel:** melding met geordende stop-lijst (units) — **terugkerend of eenmalig**.
+Eén taak per cyclus (of de enige taak bij eenmalig); voortgang via Unit check OK
+(en optioneel skip) per stop. Compleet als er geen open stops meer zijn voor **deze**
+cyclus-taak. Site-units (**Hele locatie**) tonen in voortgang/print de **locatienaam**.
 
 **BESLIST (fase 1):**
 - Stops op de melding (`issue_round_stops`); ronde-issue heeft `unit_id = null`.
@@ -536,16 +541,19 @@ stops meer zijn voor **deze** cyclus-taak.
   of sleep de locatiekop voor het hele blok (1 = eerste stop). Units zonder checks
   staan niet in de lijst.
 - **Beheer — intentie-flow:** knop *Inspectieronde plannen* op **Werk → Inspectierondes**
-  (primaire plek) en nog op Meldingen (naast Nieuwe melding): stops + interval + team
-  (+ optionele worker) in één modal; onder water terugkerende melding + eerste taak.
-  Nieuwe cycli kopiëren team én worker van de vorige cyclus. Beheer kan de worker op de
-  open cyclus-taak altijd wijzigen. Bestaande melding-wizard blijft; rondestops daar optioneel.
+  (primaire plek) en nog op Meldingen (naast Nieuwe melding): stops + team
+  (+ optionele worker) in één modal; keuze **terugkerend** (interval + lead + eerste
+  vervaldatum) of **eenmalig** (alleen vervaldatum, geen volgende cyclus). Onder water:
+  melding + stops + eerste taak. Nieuwe cycli (alleen terugkerend) kopiëren team én
+  worker van de vorige cyclus. Beheer kan de worker op de open cyclus-taak altijd
+  wijzigen. Bestaande melding-wizard blijft; rondestops daar optioneel (nog steeds
+  gekoppeld aan terugkerend in die wizard).
 - **Beheer — lijst:** sidebar **Werk → Inspectierondes** is een eigen scherm (zelfde
-  Livewire als Meldingen, `?recurring=1&inspection_round=1`): titel/ondertitel/lege
-  staat voor rondes. Geen “+ Melding toevoegen”, geen vinkjes terugkerend/alleen
-  inspectierondes, geen klik-hint. Paginahulp is **Hulp — Inspectierondes**. Optioneel
-  `?round_create=1` opent direct de plan-modal. Checklists staan in de sidebar
-  onder **Werk**; Unit checks alleen als er historiek is. Geen knop op dit scherm.
+  Livewire als Meldingen, `?inspection_round=1`): titel/ondertitel/lege
+  staat voor rondes (terugkerend **én** eenmalig). Geen “+ Melding toevoegen”, geen
+  vinkjes terugkerend/alleen inspectierondes, geen klik-hint. Paginahulp is
+  **Hulp — Inspectierondes**. Optioneel `?round_create=1` opent direct de plan-modal.
+  Checklists staan in de sidebar onder **Werk**; Unit checks alleen als er historiek is.
 - Label: **Ronde · N stops**. Geen ESG op ronde-issues.
 - Unit check OK: single-unit taak eerst, daarna ronde-voortgang (één transactie).
 - Taak↔unit (2b): `issue.unit_id = U` **óf** U is stop — via `TaskBelongsToUnitAction`

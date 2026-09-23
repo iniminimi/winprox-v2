@@ -3,16 +3,24 @@
 namespace App\Actions\Locations;
 
 use App\Models\EsgMeasurement;
+use App\Models\IssueRoundStop;
 use App\Models\Location;
+use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Units\UnitDeletionGuard;
 use InvalidArgumentException;
 
 class DeleteLocationAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private DeleteUnitAction $deleteUnit,
+    ) {}
 
     public function handle(Location $location, ?int $actorUserId = null): void
     {
+        $this->removePristineSiteUnitsOrFail($location, $actorUserId);
+
         if ($location->units()->exists()) {
             throw new InvalidArgumentException('location_has_units');
         }
@@ -43,5 +51,34 @@ class DeleteLocationAction
             modelId: $locationId,
             payload: ['id' => $locationId, 'name' => $name],
         );
+    }
+
+    /**
+     * Locaties met enkel onaangeroerde site-units (geen issues/rondes) mogen
+     * mee gewist worden — o.a. import-undo na auto site-unit.
+     */
+    private function removePristineSiteUnitsOrFail(Location $location, ?int $actorUserId): void
+    {
+        $units = $location->units()->get();
+        if ($units->isEmpty()) {
+            return;
+        }
+
+        $onlyPristineSiteUnits = $units->every(
+            fn (Unit $unit): bool => (bool) $unit->is_site_unit
+                && UnitDeletionGuard::canDelete($unit)
+                && ! IssueRoundStop::query()->where('unit_id', $unit->id)->exists()
+                && ! $unit->reservations()->exists()
+                && ! $unit->documents()->exists()
+                && ! $unit->announcements()->exists()
+        );
+
+        if (! $onlyPristineSiteUnits) {
+            throw new InvalidArgumentException('location_has_units');
+        }
+
+        foreach ($units as $unit) {
+            $this->deleteUnit->handle($unit, $actorUserId);
+        }
     }
 }
