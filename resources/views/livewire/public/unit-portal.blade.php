@@ -595,7 +595,11 @@
                     x-cloak
                 @endif
             >
-            <x-wp-portal-back @if ($canAct) @click="localSection = null" @else wire:click="openSection('home')" @endif />
+            @if ($canAct)
+                <x-wp-portal-back @click="localSection = null" />
+            @else
+                <x-wp-portal-back wire:click="openSection('home')" />
+            @endif
             <x-wp-page-head-title variant="portal" icon="issues" :title="__('portal.report.title')" />
             <form x-data="{
                 isOffline: !navigator.onLine,
