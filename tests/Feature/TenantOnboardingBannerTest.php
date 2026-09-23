@@ -135,7 +135,7 @@ it('verbergt de welkomstgids op het dashboard wanneer teams, workers, locaties, 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->assertDontSee(__('manual.getting_started.label'))
-        ->assertSee(__('dashboard.kpi.locations'));
+        ->assertSee(__('dashboard.kpi.new_issues'));
 });
 
 it('toont clock-point-onboarding en stap 3 op het dashboard met time-module', function () {

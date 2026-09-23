@@ -15,12 +15,9 @@
     "briefing_empty": "Geen taken gepland voor vandaag.",
     "briefing_no_team": "Geen team",
     "kpi": {
-        "locations": "Locaties",
-        "units": "Units",
         "new_issues": "Nieuwe meldingen",
         "open_tasks": "Open taken",
         "present_now": "Nu aanwezig",
-        "meta_total": "Totaal",
         "pending_review": "Te beoordelen",
         "time_attention": "Time-aandacht",
         "pending_absence": "Aanvragen",

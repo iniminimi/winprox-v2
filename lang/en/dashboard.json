@@ -15,12 +15,9 @@
     "briefing_empty": "No tasks scheduled for today.",
     "briefing_no_team": "No team",
     "kpi": {
-        "locations": "Locations",
-        "units": "Units",
         "new_issues": "New issues",
         "open_tasks": "Open tasks",
         "present_now": "Present now",
-        "meta_total": "Total",
         "pending_review": "Pending review",
         "time_attention": "Time attention",
         "pending_absence": "Requests",

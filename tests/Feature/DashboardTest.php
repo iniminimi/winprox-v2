@@ -38,8 +38,8 @@ it('toont het dashboard met tenant-gescopete KPI-tellingen', function () {
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)
-        ->assertSee(__('dashboard.kpi.locations'))
-        ->assertSee(__('dashboard.kpi.units'))
+        ->assertSee(__('dashboard.kpi.new_issues'))
+        ->assertSee(__('dashboard.kpi.open_tasks'))
         ->assertSee(__('dashboard.recent.title'))
         ->assertSee('Recente zichtbare melding');
 });
@@ -332,7 +332,7 @@ it('toont de intent-hub boven de KPI’s met begroeting en snelkoppelingen', fun
         ->assertSee(__('dashboard.intent.tiles.location.title'))
         ->assertSee(__('dashboard.intent.tiles.worker.title'))
         ->assertSeeHtml('wp-dashboard-intent')
-        ->assertSee(__('dashboard.kpi.locations'));
+        ->assertSee(__('dashboard.kpi.new_issues'));
 });
 
 it('verbergt Time-tegels in de intent-hub zonder Time-module', function () {

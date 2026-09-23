@@ -15,12 +15,9 @@
     "briefing_empty": "Nessuna attività programmata per oggi.",
     "briefing_no_team": "Nessun team",
     "kpi": {
-        "locations": "Sedi",
-        "units": "Unità",
         "new_issues": "Nuove segnalazioni",
         "open_tasks": "Attività aperte",
         "present_now": "Presenti",
-        "meta_total": "Totale",
         "pending_review": "Da valutare",
         "time_attention": "Attenzione Time",
         "pending_absence": "Richieste",

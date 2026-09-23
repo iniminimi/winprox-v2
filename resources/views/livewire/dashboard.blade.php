@@ -191,8 +191,6 @@
 
         @php
             $kpiLinks = [
-                'locations' => route('locations.index'),
-                'units' => route('locations.index'),
                 'new_issues' => route('issues.index', ['status' => 'new']),
                 'open_tasks' => route('tasks.index'),
                 'present_now' => route('time.presence.index'),

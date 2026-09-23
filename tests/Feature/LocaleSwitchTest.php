@@ -17,12 +17,21 @@ it('past de gekozen locale toe via de middleware', function () {
 });
 
 it('werkt voor ingelogde gebruikers via zijbalk en slaat locale op de gebruiker op', function () {
-    $user = \App\Models\User::factory()->create(['locale' => 'nl']);
+    $tenant = \App\Models\Tenant::factory()->create();
+    $user = \App\Models\User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'nl']);
+
+    \App\Support\Tenancy::actAs($tenant->id);
+    \App\Models\InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    \App\Models\Worker::factory()->create(['tenant_id' => $tenant->id]);
+    \App\Models\Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    \App\Models\Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    \App\Models\ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     $this->actingAs($user)
         ->get(route('dashboard'))
         ->assertOk()
-        ->assertSee(__('dashboard.kpi.locations', [], 'nl'));
+        ->assertSee(__('dashboard.kpi.new_issues', [], 'nl'));
 
     $this->actingAs($user)
         ->get('/locale/en')
@@ -33,8 +42,8 @@ it('werkt voor ingelogde gebruikers via zijbalk en slaat locale op de gebruiker 
     $this->actingAs($user)
         ->get(route('dashboard'))
         ->assertOk()
-        ->assertSee(__('dashboard.kpi.locations', [], 'en'))
-        ->assertDontSee(__('dashboard.kpi.locations', [], 'nl'));
+        ->assertSee(__('dashboard.kpi.new_issues', [], 'en'))
+        ->assertDontSee(__('dashboard.kpi.new_issues', [], 'nl'));
 });
 
 it('valt terug op de standaardlocale (nl) zonder keuze', function () {

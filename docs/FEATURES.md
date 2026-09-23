@@ -67,8 +67,6 @@ Een starttemplate toont de keuze in preview en op
 
 **KPI-kaarten** (neutraal/minimaal, emerald enkel als subtiel accent) — **klikbaar** (elke tegel
 linkt naar zijn lijst):
-- Locaties — totaal → locatie-lijst
-- Units — totaal → unit-lijst
 - Nieuwe meldingen — aantal nieuw/open → meldingen (status=nieuw). **Alert-accent** als > 0.
 - Open taken — "In uitvoering" → taken (open/in uitvoering).
 - Nu aanwezig — open shifts zonder pauze → Time-aanwezigheid (Time-module; inbegrepen in elke WinProx-formule).

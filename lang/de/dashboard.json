@@ -15,12 +15,9 @@
     "briefing_empty": "Keine Aufgaben für heute geplant.",
     "briefing_no_team": "Kein Team",
     "kpi": {
-        "locations": "Standorte",
-        "units": "Units",
         "new_issues": "Neue Meldungen",
         "open_tasks": "Offene Aufgaben",
         "present_now": "Anwesend",
-        "meta_total": "Gesamt",
         "pending_review": "Zur Prüfung",
         "time_attention": "Time-Aufmerksamkeit",
         "pending_absence": "Anträge",

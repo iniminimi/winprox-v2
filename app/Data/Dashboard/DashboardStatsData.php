@@ -26,8 +26,6 @@ final class DashboardStatsData
     public function kpiTiles(): array
     {
         $tiles = [
-            ['key' => 'locations', 'icon' => 'locations', 'label' => 'dashboard.kpi.locations', 'meta' => 'dashboard.kpi.meta_total', 'alert' => false, 'href_key' => 'locations'],
-            ['key' => 'units', 'icon' => 'units', 'label' => 'dashboard.kpi.units', 'meta' => 'dashboard.kpi.meta_total', 'alert' => false, 'href_key' => 'units'],
             ['key' => 'new_issues', 'icon' => 'issues', 'label' => 'dashboard.kpi.new_issues', 'meta' => null, 'alert' => $this->newIssues > 0, 'href_key' => 'new_issues'],
             ['key' => 'open_tasks', 'icon' => 'tasks', 'label' => 'dashboard.kpi.open_tasks', 'meta' => null, 'alert' => false, 'href_key' => 'open_tasks'],
         ];
