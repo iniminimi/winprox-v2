@@ -590,8 +590,8 @@
                     "text": "In modifica, scegli una o più sedi. Vuoto = timbrare ovunque (default per esecutori esistenti). Su Clock Point il nome appare solo sulle sedi assegnate, salvo che il team abbia **Può timbrare ovunque**."
                 },
                 {
-                    "label": "Gruppo base (turno)",
-                    "text": "In opzione imposti un <strong>gruppo base</strong> sull’esecutore (unità con codice turno). In Time → Turni, con filtro sede, raggruppa le righe. Il posto in una cella (D1/G1) resta separato."
+                    "label": "Gruppo di appartenenza (orario)",
+                    "text": "Opzionale. Dove lo vedi? In <strong>Time → Orario</strong>, dopo un filtro sede: gli esecutori compaiono sotto gruppi (es. G1). Quei gruppi si creano su una unit (<strong>Sedi → modifica unit → codice turno</strong>). Qui scegli il gruppo di questa persona. Lascia vuoto se non serve raggruppare. Non pianifica i turni; il posto in una cella (D1/G1) si compila a parte."
                 },
                 {
                     "label": "Lavoratori esterni",

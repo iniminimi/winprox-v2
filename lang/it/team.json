@@ -177,7 +177,7 @@
         "clear_clock_pin": "Reimposta PIN",
         "default_unit": "Gruppo di appartenenza (orario)",
         "default_unit_none": "Senza gruppo",
-        "default_unit_hint": "Opzionale — solo per l’orario. Dove lo vedi? Time → Orario, dopo aver scelto una sede: gli esecutori compaiono sotto gruppi (es. G1). Quei gruppi si creano su una unit: Sedi → modifica unit → codice turno. Scegli qui il gruppo di questa persona. Lascia vuoto se non serve raggruppare. Non pianifica i turni; il posto in una cella (D1/G1) si compila a parte.",
+        "default_unit_hint": "Opzionale. Dove lo vedi? In Time → Orario, dopo un filtro sede: gli esecutori compaiono sotto gruppi (es. G1). Quei gruppi si creano su una unit (Sedi → modifica unit → codice turno). Qui scegli il gruppo di questa persona. Lascia vuoto se non serve raggruppare. Non pianifica i turni; il posto in una cella (D1/G1) si compila a parte.",
         "is_external_hint": "Spunta se questa persona lavora per un’altra azienda (subappaltatore, interinale, …). Puoi poi inserire un nome azienda; compare come badge Ext."
     },
     "import_history": {
@@ -226,8 +226,8 @@
         "worker_photo_invalid": "Scegli un'immagine valida (JPEG, PNG o WebP).",
         "worker_photo_max": "La foto può essere al massimo di 2 MB.",
         "worker_ssin_invalid": "Inserire un NISS valido di 11 cifre oppure lasciare vuoto.",
-        "worker_default_unit_invalid": "Scegli un gruppo predefinito valido con codice turno, oppure lascia vuoto.",
-        "worker_default_unit_location": "Il gruppo predefinito deve essere su una sede assegnata."
+        "worker_default_unit_invalid": "Scegli un gruppo di appartenenza valido con codice turno, oppure lascia vuoto.",
+        "worker_default_unit_location": "Il gruppo di appartenenza deve essere su una sede assegnata."
     },
     "workers_index": {
         "title": "Esecutori",
