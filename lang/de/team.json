@@ -148,7 +148,7 @@
             "confirm_clear_clock_pin": "PIN entfernen? Der Ausführende kann danach optional eine neue PIN setzen.",
             "confirm_deactivate": "Diesen Ausführenden deaktivieren? Die Anmeldung über Clock Point ist dann nicht mehr möglich.",
             "confirm_delete": "Diesen Ausführenden endgültig löschen? Der Verlauf bleibt erhalten.",
-            "locations_summary_all": "Standard: überall einstempeln (optionale Ausnahme)",
+            "locations_summary_all": "Keine Einschränkung · darf überall einstempeln",
             "locations_summary_selected": ":count Standort(e) gewählt"
         },
         "import_download_sample_csv": "Beispiel-CSV herunterladen",
@@ -177,7 +177,8 @@
         "clear_clock_pin": "PIN zurücksetzen",
         "default_unit": "Standardgruppe / Dienstplancode",
         "default_unit_none": "Ohne Gruppe",
-        "default_unit_hint": "Optionale Stammgruppe im Dienstplan. Der Ort in einer Zelle (D1/G1) bleibt getrennt."
+        "default_unit_hint": "Optionale Stammgruppe im Dienstplan. Der Ort in einer Zelle (D1/G1) bleibt getrennt.",
+        "is_external_hint": "Aktivieren, wenn diese Person für ein anderes Unternehmen arbeitet (Subunternehmer, Zeitarbeit, …). Dann können Sie einen Firmennamen eingeben; er erscheint als Ext-Badge."
     },
     "import_history": {
         "title": "Letzte Imports",

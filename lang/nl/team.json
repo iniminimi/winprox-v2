@@ -148,7 +148,7 @@
             "confirm_clear_clock_pin": "Pincode verwijderen? De uitvoerder kan daarna optioneel een nieuwe pincode instellen.",
             "confirm_deactivate": "Deze uitvoerder deactiveren? Aanmelden via Clock Point is dan niet meer mogelijk.",
             "confirm_delete": "Deze uitvoerder definitief verwijderen? Historie blijft behouden.",
-            "locations_summary_all": "Standaard: overal inklokken (uitzondering optioneel)",
+            "locations_summary_all": "Geen beperking · mag overal inklokken",
             "locations_summary_selected": ":count vestiging(en) gekozen"
         },
         "import_download_sample_csv": "Download voorbeeld-CSV",
@@ -177,7 +177,8 @@
         "clear_clock_pin": "Pincode resetten",
         "default_unit": "Standaardgroep / roostercode",
         "default_unit_none": "Zonder groep",
-        "default_unit_hint": "Optionele thuisgroep op het uurrooster. De plek in een cel (D1/G1) blijft apart."
+        "default_unit_hint": "Optionele thuisgroep op het uurrooster. De plek in een cel (D1/G1) blijft apart.",
+        "is_external_hint": "Vink aan als deze persoon voor een ander bedrijf werkt (onderaannemer, uitzendkracht, …). Je kunt dan een bedrijfsnaam invullen; die verschijnt als Ext-badge."
     },
     "import_history": {
         "title": "Recente imports",

@@ -148,7 +148,7 @@
             "confirm_clear_clock_pin": "Remove the PIN? The worker can then optionally set a new PIN.",
             "confirm_deactivate": "Deactivate this worker? Sign-in via Clock Point will no longer be possible.",
             "confirm_delete": "Permanently delete this worker? History is kept.",
-            "locations_summary_all": "Default: clock in everywhere (optional exception)",
+            "locations_summary_all": "No restriction · may clock in everywhere",
             "locations_summary_selected": ":count site(s) selected"
         },
         "import_download_sample_csv": "Download sample CSV",
@@ -177,7 +177,8 @@
         "clear_clock_pin": "Reset PIN",
         "default_unit": "Default group / roster code",
         "default_unit_none": "No group",
-        "default_unit_hint": "Optional home group on the roster. The place in a cell (D1/G1) stays separate."
+        "default_unit_hint": "Optional home group on the roster. The place in a cell (D1/G1) stays separate.",
+        "is_external_hint": "Tick if this person works for another company (subcontractor, agency staff, …). You can then enter a company name; it shows as an Ext badge."
     },
     "import_history": {
         "title": "Recent imports",

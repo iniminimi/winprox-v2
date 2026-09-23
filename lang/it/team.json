@@ -148,7 +148,7 @@
             "confirm_clear_clock_pin": "Rimuovere il PIN? Il lavoratore potrà poi impostarne uno nuovo.",
             "confirm_deactivate": "Disattivare questo lavoratore? L’accesso tramite Clock Point non sarà più possibile.",
             "confirm_delete": "Eliminare definitivamente questo lavoratore? La cronologia viene conservata.",
-            "locations_summary_all": "Predefinito: timbrare ovunque (eccezione opzionale)",
+            "locations_summary_all": "Nessuna restrizione · può timbrare ovunque",
             "locations_summary_selected": ":count sede/i selezionate"
         },
         "import_download_sample_csv": "Scarica esempio CSV",
@@ -177,7 +177,8 @@
         "clear_clock_pin": "Reimposta PIN",
         "default_unit": "Gruppo predefinito / codice turno",
         "default_unit_none": "Senza gruppo",
-        "default_unit_hint": "Gruppo di appartenenza opzionale sul turno. Il posto in una cella (D1/G1) resta separato."
+        "default_unit_hint": "Gruppo di appartenenza opzionale sul turno. Il posto in una cella (D1/G1) resta separato.",
+        "is_external_hint": "Spunta se questa persona lavora per un’altra azienda (subappaltatore, interinale, …). Puoi poi inserire un nome azienda; compare come badge Ext."
     },
     "import_history": {
         "title": "Importazioni recenti",

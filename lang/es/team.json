@@ -148,7 +148,7 @@
             "confirm_clear_clock_pin": "¿Eliminar el PIN? El trabajador podrá establecer uno nuevo después.",
             "confirm_deactivate": "¿Desactivar a este trabajador? Ya no podrá identificarse por Clock Point.",
             "confirm_delete": "¿Eliminar definitivamente a este trabajador? El historial se conserva.",
-            "locations_summary_all": "Por defecto: fichar en todas partes (excepción opcional)",
+            "locations_summary_all": "Sin restricción · puede fichar en todas partes",
             "locations_summary_selected": ":count sede(s) seleccionada(s)"
         },
         "import_download_sample_csv": "Descargar ejemplo CSV",
@@ -177,7 +177,8 @@
         "clear_clock_pin": "Restablecer PIN",
         "default_unit": "Grupo predeterminado / código de cuadrante",
         "default_unit_none": "Sin grupo",
-        "default_unit_hint": "Grupo de origen opcional en el cuadrante. El lugar en una celda (D1/G1) sigue aparte."
+        "default_unit_hint": "Grupo de origen opcional en el cuadrante. El lugar en una celda (D1/G1) sigue aparte.",
+        "is_external_hint": "Marque si esta persona trabaja para otra empresa (subcontratista, temporal, …). Entonces puede indicar un nombre de empresa; aparece como insignia Ext."
     },
     "import_history": {
         "title": "Importaciones recientes",

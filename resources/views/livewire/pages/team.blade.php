@@ -313,9 +313,7 @@
 
                 <div class="wp-modal-body wp-stack">
                     <div class="wp-field">
-                        <x-wp-tooltip :text="__('team.workers.photo_hint')" wrap>
-                            <span class="wp-label">{{ __('team.workers.photo') }}</span>
-                        </x-wp-tooltip>
+                        <span class="wp-label">{{ __('team.workers.photo') }}</span>
                         <div class="wp-worker-photo-picker">
                             @php
                                 $photoPreviewUrl = $this->workerPhotoPreviewUrl();
@@ -374,9 +372,11 @@
                                             }).finally(() => { input.value = ''; });
                                         "
                                     >
-                                    <label for="workerPhoto" class="btn btn--surface btn--sm wp-file-input-trigger">
-                                        {{ __('common.file.browse') }}
-                                    </label>
+                                    <x-wp-tooltip :text="__('team.workers.photo_hint')" wrap>
+                                        <label for="workerPhoto" class="btn btn--surface btn--sm wp-file-input-trigger">
+                                            {{ __('common.file.browse') }}
+                                        </label>
+                                    </x-wp-tooltip>
                                     <span class="wp-file-input-name wp-muted wp-text-sm" x-text="fileName || emptyLabel"></span>
                                 </div>
                                 @if (filled($photoPreviewUrl))
@@ -431,10 +431,12 @@
                             @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     @endif
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model.live="workerIsExternal">
-                        <span>{{ __('team.workers.is_external') }}</span>
-                    </label>
+                    <x-wp-tooltip :text="__('team.workers.is_external_hint')" wrap class="wp-tooltip--block">
+                        <label class="wp-check wp-check--boxed">
+                            <input type="checkbox" wire:model.live="workerIsExternal">
+                            <span>{{ __('team.workers.is_external') }}</span>
+                        </label>
+                    </x-wp-tooltip>
                     @if ($workerIsExternal)
                         <div class="wp-field">
                             <label class="sr-only" for="workerCompanyName">{{ __('team.workers.company_name') }}</label>
@@ -483,9 +485,9 @@
                         </div>
                     </div>
                     <div class="wp-field">
-                        <label class="sr-only" for="workerDefaultUnitId">{{ __('team.workers.default_unit') }}</label>
-                        <select id="workerDefaultUnitId" class="wp-select" wire:model="workerDefaultUnitId" aria-label="{{ __('team.workers.default_unit') }}">
-                            <option value="">{{ __('team.workers.default_unit') }} — {{ __('team.workers.default_unit_none') }}</option>
+                        <label class="wp-label" for="workerDefaultUnitId">{{ __('team.workers.default_unit') }}</label>
+                        <select id="workerDefaultUnitId" class="wp-select" wire:model="workerDefaultUnitId">
+                            <option value="">{{ __('team.workers.default_unit_none') }}</option>
                             @foreach ($workerDefaultUnits as $unit)
                                 <option value="{{ $unit->id }}">{{ $unit->roster_code }} — {{ $unit->name }}@if ($unit->location) ({{ $unit->location->name }})@endif</option>
                             @endforeach
