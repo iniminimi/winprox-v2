@@ -312,6 +312,18 @@
                 </div>
 
                 <div class="wp-modal-body wp-stack">
+                    @if (! $editingWorkerId)
+                        <div class="wp-field">
+                            <label class="wp-label" for="addingWorkerTeamId">{{ __('team.workers.modal.team') }}</label>
+                            <select id="addingWorkerTeamId" class="wp-select" wire:model.live="addingWorkerTeamId">
+                                <option value="">{{ __('team.workers.modal.team_placeholder') }}</option>
+                                @foreach ($workerModalTeams as $teamOption)
+                                    <option value="{{ $teamOption->id }}">{{ $teamOption->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('addingWorkerTeamId') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    @endif
                     <div class="wp-field">
                         <span class="wp-label">{{ __('team.workers.photo') }}</span>
                         <div class="wp-worker-photo-picker">

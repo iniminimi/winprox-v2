@@ -594,6 +594,28 @@ it('laat een team-beheerder een worker toevoegen', function () {
         ->and($worker->is_teamleader)->toBeFalse();
 });
 
+it('laat via create_worker een team kiezen bij het aanmaken van een uitvoerder', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+    $teamA = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Ploeg A', 'sort_order' => 1]);
+    $teamB = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Ploeg B', 'sort_order' => 2]);
+
+    Livewire::actingAs($admin)
+        ->withQueryParams(['section' => 'teams', 'create_worker' => 1])
+        ->test(Team::class)
+        ->assertSet('showWorkerModal', true)
+        ->assertSet('addingWorkerTeamId', $teamA->id)
+        ->assertSee(__('team.workers.modal.team'), false)
+        ->set('addingWorkerTeamId', $teamB->id)
+        ->set('workerFirstName', 'Lara')
+        ->set('workerLastName', 'Janssens')
+        ->call('saveWorker')
+        ->assertHasNoErrors();
+
+    $worker = Worker::where('first_name', 'Lara')->first();
+    expect($worker)->not->toBeNull()
+        ->and($worker->internal_team_id)->toBe($teamB->id);
+});
+
 it('wisselt de teamleader-vlag van een worker', function () {
     [$tenant, $admin] = tenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);

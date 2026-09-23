@@ -132,7 +132,7 @@
         },
         "modal": {
             "create_title": "Mitarbeiter hinzufügen",
-            "create_subtitle": "Fügen Sie einen neuen Mitarbeiter zu diesem Team hinzu.",
+            "create_subtitle": "Wählen Sie ein Team und fügen Sie einen neuen Ausführenden hinzu.",
             "edit_title": "Mitarbeiter bearbeiten",
             "edit_subtitle": "Aktualisieren Sie die Daten dieses Mitarbeiters.",
             "save": "Mitarbeiter speichern",
@@ -149,7 +149,10 @@
             "confirm_deactivate": "Diesen Ausführenden deaktivieren? Die Anmeldung über Clock Point ist dann nicht mehr möglich.",
             "confirm_delete": "Diesen Ausführenden endgültig löschen? Der Verlauf bleibt erhalten.",
             "locations_summary_all": "Keine Einschränkung · darf überall einstempeln",
-            "locations_summary_selected": ":count Standort(e) gewählt"
+            "locations_summary_selected": ":count Standort(e) gewählt",
+            "team": "Team",
+            "team_placeholder": "Team wählen",
+            "team_required": "Bitte ein Team wählen."
         },
         "import_download_sample_csv": "Beispiel-CSV herunterladen",
         "import_download_sample_xlsx": "Beispiel-XLSX herunterladen",

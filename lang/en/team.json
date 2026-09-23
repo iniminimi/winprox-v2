@@ -132,7 +132,7 @@
         },
         "modal": {
             "create_title": "Add worker",
-            "create_subtitle": "Add a new worker to this team.",
+            "create_subtitle": "Choose a team and add a new worker.",
             "edit_title": "Edit worker",
             "edit_subtitle": "Update this worker's details.",
             "save": "Save worker",
@@ -149,7 +149,10 @@
             "confirm_deactivate": "Deactivate this worker? Sign-in via Clock Point will no longer be possible.",
             "confirm_delete": "Permanently delete this worker? History is kept.",
             "locations_summary_all": "No restriction · may clock in everywhere",
-            "locations_summary_selected": ":count site(s) selected"
+            "locations_summary_selected": ":count site(s) selected",
+            "team": "Team",
+            "team_placeholder": "Choose a team",
+            "team_required": "Choose a team."
         },
         "import_download_sample_csv": "Download sample CSV",
         "import_download_sample_xlsx": "Download sample XLSX",

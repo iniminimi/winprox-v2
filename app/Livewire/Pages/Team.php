@@ -181,22 +181,31 @@ class Team extends Component
         if ($this->openCreateWorker) {
             $this->openCreateWorker = false;
             $this->section = 'teams';
-
-            $team = InternalTeam::query()
-                ->where('is_active', true)
-                ->orderBy('sort_order')
-                ->orderBy('name')
-                ->first();
-
-            if ($team !== null && (auth()->user()?->can('update', $team) ?? false)) {
-                $this->openAddWorker((int) $team->id);
-            }
+            $this->openCreateWorkerFromHub();
         }
     }
 
     public function isBackofficeSection(): bool
     {
         return $this->section === 'backoffice';
+    }
+
+    /**
+     * Dashboard-snelkoppeling: modal openen met teamkeuze (eerste team vooringevuld).
+     */
+    public function openCreateWorkerFromHub(): void
+    {
+        $teams = $this->selectableWorkerTeams();
+        if ($teams->isEmpty()) {
+            return;
+        }
+
+        $first = $teams->first();
+        if ($first === null || ! (auth()->user()?->can('update', $first) ?? false)) {
+            return;
+        }
+
+        $this->openAddWorker((int) $first->id);
     }
 
     // --- Collega-gebruikers (alleen admin) --------------------------------
@@ -724,9 +733,48 @@ class Team extends Component
         $this->editingWorkerId = null;
         $this->resetWorkerPhotoState();
         $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto', 'addingWorkerTeamId']);
+        $this->addingWorkerTeamId = $teamId;
         $this->workerLocationsPanelOpen = false;
         $this->showWorkerModal = true;
+    }
+
+    public function updatedAddingWorkerTeamId(mixed $value): void
+    {
+        if ($this->editingWorkerId !== null || $this->showWorkerModal !== true) {
+            return;
+        }
+
+        if ($value === null || $value === '') {
+            $this->addingWorkerTeamId = null;
+
+            return;
+        }
+
+        $team = InternalTeam::query()->find((int) $value);
+        if ($team === null || ! $team->is_active) {
+            $this->addingWorkerTeamId = null;
+
+            return;
+        }
+
+        Gate::authorize('update', $team);
+        $this->addingWorkerTeamId = (int) $team->id;
+        $this->expandTeam((int) $team->id);
+        $this->workerDefaultUnitId = null;
+        $this->resetErrorBag(['addingWorkerTeamId', 'workerDefaultUnitId']);
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection<int, InternalTeam>
+     */
+    private function selectableWorkerTeams()
+    {
+        return InternalTeam::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get();
     }
 
     public function updatedWorkerIsExternal(bool $value): void
@@ -780,6 +828,15 @@ class Team extends Component
             $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
         } else {
             // Create mode
+            $this->validate(
+                [
+                    'addingWorkerTeamId' => ['required', 'integer'],
+                ],
+                [
+                    'addingWorkerTeamId.required' => __('team.workers.modal.team_required'),
+                ],
+            );
+
             $team = InternalTeam::findOrFail((int) $this->addingWorkerTeamId);
             Gate::authorize('update', $team);
 
@@ -1365,6 +1422,9 @@ class Team extends Component
             'teamTranslationLocales' => $teamTranslationLocales,
             'allLocations' => Location::query()->orderBy('name')->get(['id', 'name', 'address']),
             'workerDefaultUnits' => $this->showWorkerModal ? $this->availableWorkerDefaultUnits() : collect(),
+            'workerModalTeams' => ($this->showWorkerModal && $this->editingWorkerId === null)
+                ? $this->selectableWorkerTeams()
+                : collect(),
             'punchClockTeams' => InternalTeam::query()
                 ->where('is_active', true)
                 ->orderBy('sort_order')

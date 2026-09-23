@@ -132,7 +132,7 @@
         },
         "modal": {
             "create_title": "Añadir trabajador",
-            "create_subtitle": "Añada un nuevo trabajador a este equipo.",
+            "create_subtitle": "Elige un equipo y añade un nuevo ejecutor.",
             "edit_title": "Editar trabajador",
             "edit_subtitle": "Actualice los datos de este trabajador.",
             "save": "Guardar trabajador",
@@ -149,7 +149,10 @@
             "confirm_deactivate": "¿Desactivar a este trabajador? Ya no podrá identificarse por Clock Point.",
             "confirm_delete": "¿Eliminar definitivamente a este trabajador? El historial se conserva.",
             "locations_summary_all": "Sin restricción · puede fichar en todas partes",
-            "locations_summary_selected": ":count sede(s) seleccionada(s)"
+            "locations_summary_selected": ":count sede(s) seleccionada(s)",
+            "team": "Equipo",
+            "team_placeholder": "Elige un equipo",
+            "team_required": "Elige un equipo."
         },
         "import_download_sample_csv": "Descargar ejemplo CSV",
         "import_download_sample_xlsx": "Descargar ejemplo XLSX",

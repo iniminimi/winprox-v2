@@ -132,7 +132,7 @@
         },
         "modal": {
             "create_title": "Uitvoerder toevoegen",
-            "create_subtitle": "Voeg een nieuwe uitvoerder toe aan dit team.",
+            "create_subtitle": "Kies een team en voeg een nieuwe uitvoerder toe.",
             "edit_title": "Uitvoerder bewerken",
             "edit_subtitle": "Pas de gegevens van deze uitvoerder aan.",
             "save": "Uitvoerder opslaan",
@@ -149,7 +149,10 @@
             "confirm_deactivate": "Deze uitvoerder deactiveren? Aanmelden via Clock Point is dan niet meer mogelijk.",
             "confirm_delete": "Deze uitvoerder definitief verwijderen? Historie blijft behouden.",
             "locations_summary_all": "Geen beperking · mag overal inklokken",
-            "locations_summary_selected": ":count vestiging(en) gekozen"
+            "locations_summary_selected": ":count vestiging(en) gekozen",
+            "team": "Team",
+            "team_placeholder": "Kies een team",
+            "team_required": "Kies een team."
         },
         "import_download_sample_csv": "Download voorbeeld-CSV",
         "import_download_sample_xlsx": "Download voorbeeld-xlsx",

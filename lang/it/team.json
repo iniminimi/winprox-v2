@@ -132,7 +132,7 @@
         },
         "modal": {
             "create_title": "Aggiungi lavoratore",
-            "create_subtitle": "Aggiunga un nuovo lavoratore a questo team.",
+            "create_subtitle": "Scegli una squadra e aggiungi un nuovo esecutore.",
             "edit_title": "Modifica lavoratore",
             "edit_subtitle": "Aggiorni i dati di questo lavoratore.",
             "save": "Salva lavoratore",
@@ -149,7 +149,10 @@
             "confirm_deactivate": "Disattivare questo lavoratore? L’accesso tramite Clock Point non sarà più possibile.",
             "confirm_delete": "Eliminare definitivamente questo lavoratore? La cronologia viene conservata.",
             "locations_summary_all": "Nessuna restrizione · può timbrare ovunque",
-            "locations_summary_selected": ":count sede/i selezionate"
+            "locations_summary_selected": ":count sede/i selezionate",
+            "team": "Squadra",
+            "team_placeholder": "Scegli una squadra",
+            "team_required": "Scegli una squadra."
         },
         "import_download_sample_csv": "Scarica esempio CSV",
         "import_download_sample_xlsx": "Scarica esempio XLSX",

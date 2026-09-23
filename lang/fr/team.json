@@ -132,7 +132,7 @@
         },
         "modal": {
             "create_title": "Ajouter un intervenant",
-            "create_subtitle": "Ajoutez un nouvel intervenant à cette équipe.",
+            "create_subtitle": "Choisissez une équipe et ajoutez un nouvel exécutant.",
             "edit_title": "Modifier l'intervenant",
             "edit_subtitle": "Modifiez les données de cet intervenant.",
             "save": "Enregistrer l'intervenant",
@@ -149,7 +149,10 @@
             "confirm_deactivate": "Désactiver cet exécutant ? La connexion via Clock Point ne sera plus possible.",
             "confirm_delete": "Supprimer définitivement cet exécutant ? L’historique est conservé.",
             "locations_summary_all": "Aucune restriction · peut pointer partout",
-            "locations_summary_selected": ":count site(s) sélectionné(s)"
+            "locations_summary_selected": ":count site(s) sélectionné(s)",
+            "team": "Équipe",
+            "team_placeholder": "Choisissez une équipe",
+            "team_required": "Choisissez une équipe."
         },
         "import_download_sample_csv": "Télécharger un exemple CSV",
         "import_download_sample_xlsx": "Télécharger un exemple XLSX",
