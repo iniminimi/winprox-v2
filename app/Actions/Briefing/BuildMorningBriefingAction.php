@@ -7,6 +7,8 @@ use App\Data\Briefing\MorningBriefingViewData;
 use App\Enums\TaskStatus;
 use App\Models\InternalTeam;
 use App\Models\Issue;
+use App\Models\IssueRoundStop;
+use App\Models\Location;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -29,6 +31,7 @@ final class BuildMorningBriefingAction
         $date = ($date ?? now())->copy()->startOfDay();
         $team = $this->resolveTeam($teams, $teamId);
 
+        $roundLines = collect();
         $unitLines = collect();
         $generalLines = collect();
 
@@ -36,10 +39,27 @@ final class BuildMorningBriefingAction
             $dayEnd = $date->copy()->endOfDay();
 
             foreach ($this->tasksQuery($team, $date, $dayEnd, $openTasksOnly)->get() as $task) {
+                $issue = $task->issue;
+                if ($issue instanceof Issue && $issue->isInspectionRound()) {
+                    foreach ($this->linesFromInspectionRound($issue, $this->summaryForInspectionRound($issue, $task)) as $line) {
+                        $roundLines->push($line);
+                    }
+
+                    continue;
+                }
+
                 $this->pushLine($unitLines, $generalLines, $this->lineFromTask($task));
             }
 
             foreach ($this->recurringIssuesQuery($team, $date, $dayEnd, $openTasksOnly)->get() as $issue) {
+                if ($issue->isInspectionRound()) {
+                    foreach ($this->linesFromInspectionRound($issue, $this->summaryForInspectionRound($issue)) as $line) {
+                        $roundLines->push($line);
+                    }
+
+                    continue;
+                }
+
                 $this->pushLine($unitLines, $generalLines, $this->lineFromRecurringIssue($issue));
             }
 
@@ -55,9 +75,10 @@ final class BuildMorningBriefingAction
             team: $team,
             teams: $teams,
             date: $date,
+            roundLines: $roundLines->values(),
             unitLines: $unitLines,
             generalLines: $generalLines,
-            lineCount: $unitLines->count() + $generalLines->count(),
+            lineCount: $roundLines->count() + $unitLines->count() + $generalLines->count(),
             openTasksOnly: $openTasksOnly,
         );
     }
@@ -117,7 +138,14 @@ final class BuildMorningBriefingAction
     {
         $query = Task::query()
             ->forApprovedIssue()
-            ->with(['issue.location', 'issue.unit', 'issue.translations', 'team'])
+            ->with([
+                'issue.location',
+                'issue.unit',
+                'issue.translations',
+                'issue.roundStops.unit.location',
+                'issue.roundStops.unit.translations',
+                'team',
+            ])
             ->where('tenant_id', $team->tenant_id)
             ->where('internal_team_id', $team->id)
             ->whereIn('status', TaskStatus::openValues());
@@ -148,7 +176,13 @@ final class BuildMorningBriefingAction
     private function recurringIssuesQuery(InternalTeam $team, Carbon $dayStart, Carbon $dayEnd, bool $openTasksOnly): Builder
     {
         $query = Issue::query()
-            ->with(['unit', 'location', 'translations'])
+            ->with([
+                'unit',
+                'location',
+                'translations',
+                'roundStops.unit.location',
+                'roundStops.unit.translations',
+            ])
             ->where('tenant_id', $team->tenant_id)
             ->where('is_recurring', true)
             ->where('recurrence_active', true)
@@ -181,6 +215,60 @@ final class BuildMorningBriefingAction
             $outer->whereHas('tasks', fn (Builder $taskQuery) => $taskQuery->where('internal_team_id', $teamId))
                 ->orWhereHas('unit', fn (Builder $unitQuery) => $unitQuery->whereHas('category', fn (Builder $categoryQuery) => $categoryQuery->whereHas('teams', fn (Builder $teamQuery) => $teamQuery->where('internal_teams.id', $teamId))));
         });
+    }
+
+    /**
+     * Locaties in stopvolgorde (eerste keer dat de locatie voorkomt), zoals Clock Point.
+     *
+     * @return Collection<int, BriefingLineData>
+     */
+    private function linesFromInspectionRound(Issue $issue, string $summary): Collection
+    {
+        $issue->loadMissing(['roundStops.unit.location', 'roundStops.unit.translations']);
+
+        $stops = ($issue->roundStops ?? collect())->sortBy('sort_order')->values();
+        $seenLocationIds = [];
+        $lines = collect();
+        $order = 0;
+
+        foreach ($stops as $stop) {
+            /** @var IssueRoundStop $stop */
+            $unit = $stop->unit;
+            if (! $unit instanceof Unit) {
+                continue;
+            }
+
+            $location = $unit->location;
+            if ($location instanceof Location) {
+                $locationId = (int) $location->id;
+                if (isset($seenLocationIds[$locationId])) {
+                    continue;
+                }
+                $seenLocationIds[$locationId] = true;
+                $label = trim((string) $location->localizedName());
+                if ($label === '') {
+                    $label = trim($unit->roundStopDisplayName(true));
+                }
+            } else {
+                $label = trim($unit->roundStopDisplayName(false));
+            }
+
+            $lines->push(new BriefingLineData(
+                locationLabel: $label !== '' ? $label : __('briefing.unit_fallback'),
+                summary: $summary,
+                sortKey: $order++,
+            ));
+        }
+
+        if ($lines->isEmpty()) {
+            $lines->push(new BriefingLineData(
+                locationLabel: __('briefing.general_area_fallback'),
+                summary: $summary,
+                sortKey: PHP_INT_MAX,
+            ));
+        }
+
+        return $lines;
     }
 
     private function lineFromTask(Task $task): BriefingLineData
@@ -224,6 +312,22 @@ final class BuildMorningBriefingAction
         }
 
         return PHP_INT_MAX;
+    }
+
+    private function summaryForInspectionRound(Issue $issue, ?Task $task = null): string
+    {
+        $description = trim($issue->localizedDescription());
+        if ($description === '' && $task instanceof Task) {
+            $description = trim($task->displayDescription());
+        }
+
+        $summary = $description !== ''
+            ? Str::limit($description, 120)
+            : __('briefing.no_description');
+
+        $isRecurring = (bool) $issue->is_recurring || (bool) ($task?->is_recurring_cycle ?? false);
+
+        return $isRecurring ? $this->withRecurringBadge($summary) : $summary;
     }
 
     private function summaryForTask(Task $task): string

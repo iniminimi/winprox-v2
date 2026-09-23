@@ -10,6 +10,7 @@ final readonly class MorningBriefingViewData
 {
     /**
      * @param  Collection<int, InternalTeam>  $teams
+     * @param  Collection<int, BriefingLineData>  $roundLines
      * @param  Collection<int, BriefingLineData>  $unitLines
      * @param  Collection<int, BriefingLineData>  $generalLines
      */
@@ -17,6 +18,7 @@ final readonly class MorningBriefingViewData
         public ?InternalTeam $team,
         public Collection $teams,
         public Carbon $date,
+        public Collection $roundLines,
         public Collection $unitLines,
         public Collection $generalLines,
         public int $lineCount,

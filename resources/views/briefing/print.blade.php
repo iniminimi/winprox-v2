@@ -109,9 +109,23 @@
                     </p>
                 </div>
 
-                @if ($briefing->unitLines->isEmpty() && $briefing->generalLines->isEmpty())
+                @if ($briefing->roundLines->isEmpty() && $briefing->unitLines->isEmpty() && $briefing->generalLines->isEmpty())
                     <p class="wp-muted">{{ __($openTasksOnly ? 'briefing.empty_team_open' : 'briefing.empty_team') }}</p>
                 @else
+                    @if ($briefing->roundLines->isNotEmpty())
+                        <section class="wp-stack-tight">
+                            <h3 class="wp-section-title">{{ __('briefing.section_rounds') }}</h3>
+                            <ul class="wp-briefing-list">
+                                @foreach ($briefing->roundLines as $line)
+                                    <li>
+                                        <strong>{{ $line->locationLabel }}</strong>
+                                        <span class="wp-muted"> &rarr; {{ $line->summary }}@if ($line->locationHint) &middot; {{ $line->locationHint }}@endif</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </section>
+                    @endif
+
                     @if ($briefing->unitLines->isNotEmpty())
                         <section class="wp-stack-tight">
                             <h3 class="wp-section-title">{{ __('briefing.section_units') }}</h3>
