@@ -748,16 +748,13 @@
     margin-top: 2.75rem;
 }
 
-.wp-kpi-meta--wrap {
-    display: block;
-    margin-top: 0.35rem;
-    overflow: visible;
-    text-overflow: unset;
+.wp-dashboard-intent .wp-kpi {
+    height: auto;
+}
+
+.wp-dashboard-intent .wp-kpi-kicker {
     white-space: normal;
-    padding-bottom: 0;
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 1.4;
+    overflow: visible;
 }
 
 /* Compacte welcome-teller op platformdashboard (naast elkaar, weinig witruimte). */
@@ -937,6 +934,19 @@ a.wp-kpi:hover {
     font-weight: 500;
     line-height: 1.2;
     color: var(--wp-text-muted);
+}
+
+/* Moet ná .wp-kpi-meta staan — anders winnen ellipsis/nowrap (zelfde specificiteit). */
+.wp-kpi-meta.wp-kpi-meta--wrap {
+    display: block;
+    margin-top: 0.35rem;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    padding-bottom: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .wp-kpi-icon {

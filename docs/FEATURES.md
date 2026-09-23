@@ -47,9 +47,11 @@ Een starttemplate toont de keuze in preview en op
 - Snelkoppelingen als **`.wp-kpi`-tegels** (zelfde raster/icoon-eerst als de overzicht-KPI’s; geen aparte tegel-component):
   - **Uurrooster bekijken** → Time → Planning (alleen met Time-module)
   - **Wie werkt waar vandaag?** → Time → Aanwezigheid (alleen met Time-module)
+  - **Welke taken vandaag?** → Kalender dagweergave (taken) of briefing als kalender uit staat
   - **Nieuwe dagtaak** → Inspectierondes-planmodal (`round_create`)
   - **Locatie toevoegen** → Locaties + create-modal
   - **Uitvoerder toevoegen** → Personen → Teams + worker-modal
+  - Volle titel/omschrijving op intent-tegels (geen ellipsis-afkorting)
 - Tegels volgen rechten/werkmenu; icoontinten via bestaande KPI-tokens.
 - Extra ruimte tussen intent-sectie en **Dashboard**-kop; daaronder KPI’s, recente meldingen, briefing en starttemplate.
 
