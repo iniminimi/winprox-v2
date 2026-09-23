@@ -236,7 +236,8 @@
         "not_configured": "Le paiement en ligne n'est pas encore configuré. Contactez WinProx.",
         "simulated_hint": "Stripe non configuré : votre choix active la période sans paiement réel.",
         "checkout_cancelled": "Paiement annulé. Vous pouvez choisir plus tard.",
-        "return_unconfirmed": "Impossible de confirmer le paiement ici. Actualisez la page."
+        "return_unconfirmed": "Impossible de confirmer le paiement ici. Actualisez la page.",
+        "checkout_failed": "Echec de Stripe Checkout : :detail"
     },
     "stripe_notice_live": "Paiement et renouvellement via Stripe.",
     "stripe_notice_simulated": "Stripe non configuré : activation sans paiement réel.",

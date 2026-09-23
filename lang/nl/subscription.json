@@ -236,7 +236,8 @@
         "not_configured": "Online betalen is nog niet geconfigureerd. Neem contact op met WinProx of probeer later opnieuw.",
         "simulated_hint": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling).",
         "checkout_cancelled": "Checkout geannuleerd. Je kunt later opnieuw een formule kiezen.",
-        "return_unconfirmed": "We konden het betalingsresultaat hier niet bevestigen. Als je net betaald hebt, wordt je status zo bijgewerkt — ververs de pagina."
+        "return_unconfirmed": "We konden het betalingsresultaat hier niet bevestigen. Als je net betaald hebt, wordt je status zo bijgewerkt — ververs de pagina.",
+        "checkout_failed": "Stripe Checkout mislukt: :detail"
     },
     "stripe_notice_live": "Betaling en verlenging verlopen via Stripe.",
     "stripe_notice_simulated": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling).",

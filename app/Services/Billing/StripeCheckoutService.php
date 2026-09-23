@@ -24,33 +24,34 @@ class StripeCheckoutService
     }
 
     /**
-     * @return null|string Checkout-URL of null wanneer Stripe niet geconfigureerd is.
+     * @return array{url: ?string, error: ?string}
      */
-    public function createCheckoutSession(User $actor, Tenant $tenant, string $plan): ?string
+    public function createCheckoutSession(User $actor, Tenant $tenant, string $plan): array
     {
-        if (! $this->isConfiguredForPlan($plan)) {
-            return null;
+        if (! config('stripe.offer_checkout')) {
+            return ['url' => null, 'error' => 'offer_checkout_off'];
+        }
+
+        if (! config('stripe.enabled')) {
+            return ['url' => null, 'error' => 'missing_secret'];
+        }
+
+        $priceId = config("stripe.price_ids.{$plan}");
+        if (! is_string($priceId) || $priceId === '') {
+            return ['url' => null, 'error' => "missing_price:{$plan}"];
         }
 
         $secret = (string) config('stripe.secret');
         $successUrl = url(config('stripe.success_path', '/subscription')).'?stripe=success&session_id={CHECKOUT_SESSION_ID}';
         $cancelUrl = url(config('stripe.cancel_path', '/subscription')).'?stripe=cancel';
 
-        // Hosted Checkout (subscription). Geen submit_type: die geldt alleen bij mode=payment.
-        // metadata / client_reference_id / customer: nodig voor WinProx-fulfillment.
+        // Minimale subscription-checkout (hosted is default). Studio-extras weggelaten:
+        // onbekende params / one-time prices breken de sessie stil.
         $payload = [
-            'ui_mode' => 'hosted',
             'mode' => 'subscription',
             'billing_address_collection' => 'auto',
-            'phone_number_collection[enabled]' => 'true',
-            'automatic_tax[enabled]' => 'false',
-            'allow_promotion_codes' => 'false',
             'payment_method_collection' => 'always',
-            'name_collection[individual][enabled]' => 'true',
-            'name_collection[individual][optional]' => 'true',
-            'name_collection[business][enabled]' => 'true',
-            'name_collection[business][optional]' => 'true',
-            'line_items[0][price]' => config("stripe.price_ids.{$plan}"),
+            'line_items[0][price]' => $priceId,
             'line_items[0][quantity]' => 1,
             'success_url' => $successUrl,
             'cancel_url' => $cancelUrl,
@@ -72,18 +73,28 @@ class StripeCheckoutService
             ->post('https://api.stripe.com/v1/checkout/sessions', $payload);
 
         if (! $response->successful()) {
+            $body = $response->json();
+            $stripeMessage = is_array($body)
+                ? (string) data_get($body, 'error.message', $response->body())
+                : (string) $response->body();
+
             logger()->warning('stripe.checkout_session_failed', [
                 'plan' => $plan,
+                'price_id' => $priceId,
                 'tenant_id' => $tenant->id,
                 'status' => $response->status(),
-                'body' => $response->json() ?? $response->body(),
+                'body' => $body ?? $response->body(),
             ]);
 
-            return null;
+            return ['url' => null, 'error' => $stripeMessage !== '' ? $stripeMessage : 'stripe_http_'.$response->status()];
         }
 
         $url = $response->json('url');
 
-        return is_string($url) && $url !== '' ? $url : null;
+        if (! is_string($url) || $url === '') {
+            return ['url' => null, 'error' => 'missing_checkout_url'];
+        }
+
+        return ['url' => $url, 'error' => null];
     }
 }

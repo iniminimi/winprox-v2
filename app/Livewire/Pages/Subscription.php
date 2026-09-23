@@ -94,9 +94,16 @@ class Subscription extends Component
             return;
         }
 
-        $url = $stripe->createCheckoutSession(auth()->user(), $tenant, $plan);
-        if ($url === null) {
-            $this->addError('plan', __('subscription.stripe.not_configured'));
+        $result = $stripe->createCheckoutSession(auth()->user(), $tenant, $plan);
+        $url = $result['url'] ?? null;
+        if (! is_string($url) || $url === '') {
+            $detail = (string) ($result['error'] ?? '');
+            $this->addError(
+                'plan',
+                $detail !== ''
+                    ? __('subscription.stripe.checkout_failed', ['detail' => $detail])
+                    : __('subscription.stripe.not_configured'),
+            );
 
             return;
         }

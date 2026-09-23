@@ -236,7 +236,8 @@
         "not_configured": "Online-Zahlung ist noch nicht konfiguriert. Kontaktieren Sie WinProx.",
         "simulated_hint": "Stripe nicht vollständig konfiguriert: Ihre Wahl aktiviert die Periode ohne echte Zahlung.",
         "checkout_cancelled": "Checkout abgebrochen. Sie können später erneut wählen.",
-        "return_unconfirmed": "Zahlungsergebnis konnte hier nicht bestätigt werden. Seite aktualisieren."
+        "return_unconfirmed": "Zahlungsergebnis konnte hier nicht bestätigt werden. Seite aktualisieren.",
+        "checkout_failed": "Stripe Checkout fehlgeschlagen: :detail"
     },
     "stripe_notice_live": "Zahlung und Verlängerung über Stripe.",
     "stripe_notice_simulated": "Stripe nicht vollständig konfiguriert: Aktivierung ohne echte Zahlung.",

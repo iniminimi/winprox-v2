@@ -236,7 +236,8 @@
         "not_configured": "Online payment is not configured yet. Contact WinProx or try again later.",
         "simulated_hint": "Stripe is not fully configured: your choice activates the subscription period as set here (without real payment).",
         "checkout_cancelled": "Checkout cancelled. You can choose a plan again later.",
-        "return_unconfirmed": "We could not confirm the payment result here. If you just paid, your status will update shortly — refresh the page."
+        "return_unconfirmed": "We could not confirm the payment result here. If you just paid, your status will update shortly — refresh the page.",
+        "checkout_failed": "Stripe Checkout failed: :detail"
     },
     "stripe_notice_live": "Payment and renewal run through Stripe.",
     "stripe_notice_simulated": "Stripe is not fully configured: your choice activates the subscription period as set here (without real payment).",
