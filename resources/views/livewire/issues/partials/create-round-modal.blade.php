@@ -24,9 +24,15 @@
         <div class="wp-field">
             <label class="wp-label" for="round_create_description">{{ __('issues.create.description') }}</label>
             <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
-                <textarea id="round_create_description" class="wp-textarea" wire:model="description" rows="3"
-                          maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
-                          x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                <input
+                    type="text"
+                    id="round_create_description"
+                    class="wp-input"
+                    wire:model="description"
+                    maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                    x-init="n = $el.value.length"
+                    x-on:input="n = $el.value.length"
+                >
                 <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
             </div>
             @error('description') <p class="wp-error">{{ $message }}</p> @enderror
