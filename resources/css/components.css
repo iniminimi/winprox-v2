@@ -787,6 +787,8 @@ a.wp-intent-tile:hover {
 
 .wp-intent-tile--static {
     cursor: default;
+    min-height: 0;
+    align-items: center;
 }
 
 .wp-intent-tile__icon {
@@ -821,11 +823,24 @@ a.wp-intent-tile:hover {
     color: var(--wp-text);
 }
 
+/* Zelfde schaal als .wp-page-title (Dashboard-kop) */
+.wp-intent-tile__title--page {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+}
+
 .wp-intent-tile__body {
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.4;
     color: var(--wp-text-muted);
+}
+
+/* Duidelijke sectiescheiding vóór de Dashboard-kop */
+.wp-intent-hub + .wp-page-head {
+    margin-top: 2.75rem;
 }
 
 .wp-intent-tile--amber .wp-intent-tile__icon {

@@ -146,7 +146,7 @@
                         <x-wp-icon name="team" />
                     </span>
                     <span class="wp-intent-tile__copy">
-                        <span class="wp-intent-tile__title" id="dashboard-intent-heading">{{ $intentHub->greeting }}</span>
+                        <span class="wp-intent-tile__title wp-intent-tile__title--page" id="dashboard-intent-heading">{{ $intentHub->greeting }}</span>
                         <span class="wp-intent-tile__body">{{ __('dashboard.intent.title') }}</span>
                     </span>
                 </div>
