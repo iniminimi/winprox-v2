@@ -47,7 +47,7 @@ Een starttemplate toont de keuze in preview en op
 - Snelkoppelingen als **`.wp-kpi`-tegels** (zelfde raster/icoon-eerst als de overzicht-KPI’s; geen aparte tegel-component):
   - **Uurrooster bekijken** → Time → Planning (alleen met Time-module)
   - **Wie werkt waar vandaag?** → Time → Aanwezigheid (alleen met Time-module)
-  - **Welke taken vandaag?** → Kalender dagweergave (taken) of briefing als kalender uit staat
+  - **Welke taken vandaag?** → Kalender dagweergave (taken van vandaag); alleen als kalender in het werkmenu aan staat (geen briefing-fallback)
   - **Nieuwe dagtaak** → Inspectierondes-planmodal (`round_create`)
   - **Locatie toevoegen** → Locaties + create-modal
   - **Uitvoerder toevoegen** → Personen → Teams + worker-modal
@@ -397,6 +397,8 @@ demo, hospitality, trades/work-types, complexe morning-briefing-routing. Propert
 ### 5.4 Briefing
 Vanuit de kalender: **Briefing afdrukken** — taken van die dag per team. In Taken-modus volgt
 de briefingdatum de geselecteerde kalenderdag — zie Dashboard §1 / Taken §4.1.
+**Inspectierondes** verschijnen in een aparte sectie: **locaties in stopvolgorde** (eerste
+keer dat de locatie in de ronde voorkomt), niet als «Algemene zone».
 
 ### 5.5 NIET overnemen
 Hospitality-takken, contractor-taaktypes (`type != internal`-splitsing), onboarding/demo, complexe

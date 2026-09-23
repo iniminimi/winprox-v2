@@ -8,7 +8,6 @@ use App\Data\Dashboard\DashboardIntentHubData;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
-use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\User;
 use Carbon\CarbonInterface;
@@ -43,23 +42,18 @@ class BuildDashboardIntentHubAction
             ];
         }
 
-        if ($user->can('viewAny', Task::class)) {
-            $todayHref = route('briefing.print');
-            if ($user->can('accessWorkMenuCalendar', $tenant)) {
-                $todayHref = route('calendar.index', [
-                    'view' => 'day',
-                    'type' => 'tasks',
-                    'date' => $now->timezone(config('app.timezone'))->toDateString(),
-                ]);
-            }
-
+        if ($user->can('accessWorkMenuCalendar', $tenant)) {
             $tiles[] = [
                 'key' => 'today_tasks',
                 'icon' => 'calendar',
                 'tone' => 'open_tasks',
                 'title' => 'dashboard.intent.tiles.today_tasks.title',
                 'body' => 'dashboard.intent.tiles.today_tasks.body',
-                'href' => $todayHref,
+                'href' => route('calendar.index', [
+                    'view' => 'day',
+                    'type' => 'tasks',
+                    'date' => $now->timezone(config('app.timezone'))->toDateString(),
+                ]),
             ];
         }
 

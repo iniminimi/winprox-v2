@@ -366,3 +366,34 @@ it('verbergt Time-tegels in de intent-hub zonder Time-module', function () {
         ->assertSee(__('dashboard.intent.tiles.today_tasks.title'))
         ->assertSee(__('dashboard.intent.tiles.day_task.title'));
 });
+
+it('verbergt Welke taken vandaag zonder kalender in het werkmenu', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => false,
+        'work_menu_calendar_enabled' => false,
+        'work_menu_inspection_rounds_enabled' => true,
+        'trial_ends_at' => null,
+    ]);
+    $user = User::factory()->create([
+        'tenant_id' => $tenant->id,
+    ]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $tenant->forceFill([
+        'has_time_module' => false,
+        'work_menu_calendar_enabled' => false,
+    ])->save();
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertDontSee(__('dashboard.intent.tiles.today_tasks.title'))
+        ->assertSee(__('dashboard.intent.tiles.day_task.title'));
+});
