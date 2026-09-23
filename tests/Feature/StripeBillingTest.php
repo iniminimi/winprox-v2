@@ -102,4 +102,42 @@ class StripeBillingTest extends TestCase
         $tenant->refresh();
         $this->assertSame($ended->toDateTimeString(), $tenant->billing_active_until->toDateTimeString());
     }
+
+    public function test_retries_checkout_without_stale_test_customer_id(): void
+    {
+        config([
+            'stripe.enabled' => true,
+            'stripe.offer_checkout' => true,
+            'stripe.secret' => 'sk_live_test',
+            'stripe.price_ids.winprox_5' => 'price_live_5',
+        ]);
+
+        $tenant = Tenant::factory()->create([
+            'trial_ends_at' => now()->addDays(5),
+            'stripe_customer_id' => 'cus_VJSdQU6JXBFF7u',
+        ]);
+        $admin = User::factory()->admin()->for($tenant)->create(['email' => 'admin@example.com']);
+
+        \Illuminate\Support\Facades\Http::fake([
+            'api.stripe.com/v1/checkout/sessions' => \Illuminate\Support\Facades\Http::sequence()
+                ->push([
+                    'error' => [
+                        'message' => "No such customer: 'cus_VJSdQU6JXBFF7u'",
+                        'type' => 'invalid_request_error',
+                    ],
+                ], 400)
+                ->push([
+                    'id' => 'cs_test',
+                    'url' => 'https://checkout.stripe.com/c/pay/cs_test',
+                ], 200),
+        ]);
+
+        $result = app(StripeCheckoutService::class)->createCheckoutSession($admin, $tenant, 'winprox_5');
+
+        $this->assertSame('https://checkout.stripe.com/c/pay/cs_test', $result['url']);
+        $this->assertNull($result['error']);
+        $this->assertNull($tenant->fresh()->stripe_customer_id);
+
+        \Illuminate\Support\Facades\Http::assertSentCount(2);
+    }
 }
