@@ -331,7 +331,7 @@ it('toont de intent-hub boven de KPI’s met begroeting en snelkoppelingen', fun
         ->assertSee(__('dashboard.intent.tiles.day_task.title'))
         ->assertSee(__('dashboard.intent.tiles.location.title'))
         ->assertSee(__('dashboard.intent.tiles.worker.title'))
-        ->assertSeeHtml('wp-intent-hub')
+        ->assertSeeHtml('wp-dashboard-intent')
         ->assertSee(__('dashboard.kpi.locations'));
 });
 

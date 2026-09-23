@@ -590,8 +590,8 @@
                     "text": "Bij bewerken kies je één of meer vestigingen. Leeg = overal inklokken (standaard voor bestaande uitvoerders). Op Clock Point ziet de uitvoerder zijn naam alleen op toegewezen vestigingen, tenzij het team **Mag overal inklokken** heeft."
                 },
                 {
-                    "label": "Standaardgroep (uurrooster)",
-                    "text": "Optioneel kiest u bij de uitvoerder een <strong>thuisgroep</strong> (unit met roostercode). Op Time → Uurrooster, met locatiefilter, groepeert dat de rijen. De plek in een cel (D1/G1) blijft apart — die vult de thuisgroep niet automatisch in."
+                    "label": "Thuisgroep (uurrooster)",
+                    "text": "Optioneel. Waar zie je dit? Op <strong>Time → Uurrooster</strong>, nadat je een locatie filtert: uitvoerders staan dan onder groepen (bijv. G1). Die groepen maak je aan op een unit (<strong>Locaties → unit bewerken → roostercode</strong>). Hier kies je onder welke groep deze persoon hoort. Laat leeg als je geen groepering nodig hebt. Dit plant geen diensten; de plek in een cel (D1/G1) vul je apart in."
                 },
                 {
                     "label": "Externe uitvoerders",

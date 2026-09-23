@@ -43,15 +43,15 @@ Een starttemplate toont de keuze in preview en op
 **Doel:** eerste scherm na login; overzicht van locaties, units, meldingen en taken.
 
 **Intent-hub (“Wat wil je doen?”)** — bovenaan, vóór de KPI’s:
-- Begroeting als **tegel** (icoon + dagdeel + voornaam; subtitel “Wat wil je doen?”).
-- Universele snelkoppelingen in hetzelfde tegelraster (4 kolommen op breed scherm; geen sector-fork; later eventueel finetunen per starttemplate):
+- Begroeting via dezelfde **`x-wp-page-head-title`** als de Dashboard-kop (zelfde lettergrootte/glass).
+- Snelkoppelingen als **`.wp-kpi`-tegels** (zelfde raster/icoon-eerst als de overzicht-KPI’s; geen aparte tegel-component):
   - **Uurrooster bekijken** → Time → Planning (alleen met Time-module)
   - **Wie werkt waar vandaag?** → Time → Aanwezigheid (alleen met Time-module)
   - **Nieuwe dagtaak** → Inspectierondes-planmodal (`round_create`)
   - **Locatie toevoegen** → Locaties + create-modal
   - **Uitvoerder toevoegen** → Personen → Teams + worker-modal
-- Tegels volgen rechten/werkmenu; icoontinten via bestaande tokens (geen regenboogvlakken).
-- Daaronder de **Dashboard**-paginakop (titeltegel) + acties; KPI’s in hetzelfde raster (icoon links, 4 kolommen), recente meldingen, briefing en starttemplate.
+- Tegels volgen rechten/werkmenu; icoontinten via bestaande KPI-tokens.
+- Extra ruimte tussen intent-sectie en **Dashboard**-kop; daaronder KPI’s, recente meldingen, briefing en starttemplate.
 
 **Starttemplate (optioneel, nieuwe organisaties)**
 - Op het dashboard zolang er nog geen teams/categorieën/units zijn: **welkomkaart** met drie keuzes (eigen locaties, locaties van klanten, voertuigen en fleet). Bij **op locaties van klanten** ook de **grootte** (1–5 / 6–20 / 21+). Preview van teams, categorieën, locatie en units. Knop **Voorbeeldomgeving maken**, of **Liever zelf beginnen**. Een bestaande locatie zonder units wordt bij het laden van het template vervangen.

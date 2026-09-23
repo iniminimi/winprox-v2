@@ -140,29 +140,28 @@
         @endif
 
         @if ($intentHub !== null)
-            <section class="wp-intent-hub" aria-labelledby="dashboard-intent-heading">
-                <div class="wp-intent-tile wp-intent-tile--static wp-intent-tile--green" role="group" aria-labelledby="dashboard-intent-heading">
-                    <span class="wp-intent-tile__icon" aria-hidden="true">
-                        <x-wp-icon name="team" />
-                    </span>
-                    <span class="wp-intent-tile__copy">
-                        <span class="wp-intent-tile__title wp-intent-tile__title--page" id="dashboard-intent-heading">{{ $intentHub->greeting }}</span>
-                        <span class="wp-intent-tile__body">{{ __('dashboard.intent.title') }}</span>
-                    </span>
-                </div>
+            <section class="wp-stack wp-dashboard-intent" aria-label="{{ __('dashboard.intent.title') }}">
+                <x-wp-page-head-title
+                    icon="team"
+                    :title="$intentHub->greeting"
+                    :subtitle="__('dashboard.intent.title')"
+                />
+
                 @if (! $intentHub->isEmpty())
-                    <div class="wp-intent-hub__grid">
+                    <div class="wp-kpis">
                         @foreach ($intentHub->tiles as $tile)
                             <a href="{{ $tile['href'] }}"
-                               class="wp-intent-tile wp-intent-tile--{{ $tile['tone'] }}"
+                               @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
                                wire:key="intent-{{ $tile['key'] }}">
-                                <span class="wp-intent-tile__icon" aria-hidden="true">
-                                    <x-wp-icon :name="$tile['icon']" />
-                                </span>
-                                <span class="wp-intent-tile__copy">
-                                    <span class="wp-intent-tile__title">{{ __($tile['title']) }}</span>
-                                    <span class="wp-intent-tile__body">{{ __($tile['body']) }}</span>
-                                </span>
+                                <div class="wp-kpi-body">
+                                    <span class="wp-kpi-icon" aria-hidden="true">
+                                        <x-wp-icon :name="$tile['icon']" />
+                                    </span>
+                                    <div class="wp-kpi-main">
+                                        <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
+                                        <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                                    </div>
+                                </div>
                             </a>
                         @endforeach
                     </div>
@@ -170,7 +169,7 @@
             </section>
         @endif
 
-        <div class="wp-page-head">
+        <div @class(['wp-page-head', 'wp-dashboard-overview' => $intentHub !== null])>
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
                     icon="dashboard"

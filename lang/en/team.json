@@ -226,8 +226,8 @@
         "worker_photo_invalid": "Choose a valid image (JPEG, PNG or WebP).",
         "worker_photo_max": "The photo may be at most 2 MB.",
         "worker_ssin_invalid": "Enter a valid 11-digit NISS or leave blank.",
-        "worker_default_unit_invalid": "Choose a valid default group with a roster code, or leave empty.",
-        "worker_default_unit_location": "The default group must be on an assigned location."
+        "worker_default_unit_invalid": "Choose a valid home group with a roster code, or leave empty.",
+        "worker_default_unit_location": "The home group must be on an assigned location."
     },
     "workers_index": {
         "title": "Workers",

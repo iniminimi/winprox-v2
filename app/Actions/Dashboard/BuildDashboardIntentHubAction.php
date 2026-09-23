@@ -26,7 +26,7 @@ class BuildDashboardIntentHubAction
             $tiles[] = [
                 'key' => 'roster',
                 'icon' => 'calendar',
-                'tone' => 'amber',
+                'tone' => 'new_issues',
                 'title' => 'dashboard.intent.tiles.roster.title',
                 'body' => 'dashboard.intent.tiles.roster.body',
                 'href' => route('time.schedule.index'),
@@ -35,7 +35,7 @@ class BuildDashboardIntentHubAction
             $tiles[] = [
                 'key' => 'presence',
                 'icon' => 'clock',
-                'tone' => 'blue',
+                'tone' => 'units',
                 'title' => 'dashboard.intent.tiles.presence.title',
                 'body' => 'dashboard.intent.tiles.presence.body',
                 'href' => route('time.presence.index'),
@@ -46,7 +46,7 @@ class BuildDashboardIntentHubAction
             $tiles[] = [
                 'key' => 'day_task',
                 'icon' => 'tasks',
-                'tone' => 'green',
+                'tone' => 'locations',
                 'title' => 'dashboard.intent.tiles.day_task.title',
                 'body' => 'dashboard.intent.tiles.day_task.body',
                 'href' => route('issues.index', [
@@ -61,7 +61,7 @@ class BuildDashboardIntentHubAction
             $tiles[] = [
                 'key' => 'location',
                 'icon' => 'locations',
-                'tone' => 'green',
+                'tone' => 'present_now',
                 'title' => 'dashboard.intent.tiles.location.title',
                 'body' => 'dashboard.intent.tiles.location.body',
                 'href' => route('locations.index', ['create' => 1]),
@@ -72,7 +72,7 @@ class BuildDashboardIntentHubAction
             $tiles[] = [
                 'key' => 'worker',
                 'icon' => 'team',
-                'tone' => 'slate',
+                'tone' => 'open_tasks',
                 'title' => 'dashboard.intent.tiles.worker.title',
                 'body' => 'dashboard.intent.tiles.worker.body',
                 'href' => route('team.index', [

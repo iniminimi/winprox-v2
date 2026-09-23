@@ -226,8 +226,8 @@
         "worker_photo_invalid": "Kies een geldige afbeelding (JPEG, PNG of WebP).",
         "worker_photo_max": "De foto mag maximaal 2 MB groot zijn.",
         "worker_ssin_invalid": "Geef een geldig NISS van 11 cijfers of laat leeg.",
-        "worker_default_unit_invalid": "Kies een geldige standaardgroep met roostercode, of laat leeg.",
-        "worker_default_unit_location": "De standaardgroep moet op een toegewezen locatie liggen."
+        "worker_default_unit_invalid": "Kies een geldige thuisgroep met roostercode, of laat leeg.",
+        "worker_default_unit_location": "De thuisgroep moet op een toegewezen locatie liggen."
     },
     "workers_index": {
         "title": "Uitvoerders",

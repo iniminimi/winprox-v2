@@ -590,8 +590,8 @@
                     "text": "When editing, pick one or more locations. Empty = clock in anywhere (default for existing workers). On Clock Point the worker only sees their name at assigned locations, unless the team has **May clock in anywhere**."
                 },
                 {
-                    "label": "Home group (roster)",
-                    "text": "Optionally set a <strong>home group</strong> on the worker (unit with a roster code). On Time → Roster, with a location filter, that groups the rows. The slot in a cell (D1/G1) stays separate — the home group is not auto-filled."
+                    "label": "Home group (schedule)",
+                    "text": "Optional. Where do you see it? On <strong>Time → Schedule</strong>, after you filter by location: workers are listed under groups (e.g. G1). You create those groups on a unit (<strong>Locations → edit unit → roster code</strong>). Here you choose which group this person belongs to. Leave empty if you don’t need grouping. This does not plan shifts; the place in a cell (D1/G1) is filled in separately."
                 },
                 {
                     "label": "External workers",

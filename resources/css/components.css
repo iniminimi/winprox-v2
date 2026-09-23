@@ -735,136 +735,29 @@
     }
 }
 
-/* Intent-hub: “Wat wil je doen?” boven de KPI’s */
-.wp-intent-hub {
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
+/* Intent-sectie + Dashboard-sectie (hergebruik page-head + wp-kpi; geen aparte tegel-component) */
+.wp-dashboard-intent {
+    gap: 0;
 }
 
-.wp-intent-hub__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.875rem;
+.wp-dashboard-intent > .wp-kpis {
+    margin-top: 1.25rem;
 }
 
-@media (min-width: 40rem) {
-    .wp-intent-hub__grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 64rem) {
-    .wp-intent-hub__grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-}
-
-.wp-intent-tile {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.875rem;
-    min-height: 6.5rem;
-    padding: 1.125rem 1.25rem;
-    background-color: var(--wp-surface);
-    border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius-lg);
-    box-shadow: var(--wp-shadow-sm);
-    text-decoration: none;
-    color: inherit;
-    transition:
-        transform var(--wp-transition),
-        box-shadow var(--wp-transition),
-        border-color var(--wp-transition);
-}
-
-a.wp-intent-tile:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--wp-shadow);
-    border-color: var(--wp-border-strong);
-    text-decoration: none;
-}
-
-.wp-intent-tile--static {
-    cursor: default;
-    min-height: 0;
-    align-items: center;
-}
-
-.wp-intent-tile__icon {
-    display: inline-flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 0.875rem;
-    background-color: var(--wp-surface-2);
-    border: 1px solid var(--wp-border);
-    color: var(--wp-text-muted);
-}
-
-.wp-intent-tile__icon svg {
-    width: 1.375rem;
-    height: 1.375rem;
-}
-
-.wp-intent-tile__copy {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    min-width: 0;
-}
-
-.wp-intent-tile__title {
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--wp-text);
-}
-
-/* Zelfde schaal als .wp-page-title (Dashboard-kop) */
-.wp-intent-tile__title--page {
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1.25;
-}
-
-.wp-intent-tile__body {
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 1.4;
-    color: var(--wp-text-muted);
-}
-
-/* Duidelijke sectiescheiding vóór de Dashboard-kop */
-.wp-intent-hub + .wp-page-head {
+.wp-stack > .wp-dashboard-intent + .wp-page-head.wp-dashboard-overview {
     margin-top: 2.75rem;
 }
 
-.wp-intent-tile--amber .wp-intent-tile__icon {
-    background-color: var(--wp-warning-soft);
-    border-color: var(--wp-warning-border);
-    color: var(--wp-warning-text);
-}
-
-.wp-intent-tile--blue .wp-intent-tile__icon {
-    background-color: var(--wp-info-soft);
-    border-color: var(--wp-info-border);
-    color: var(--wp-info-text);
-}
-
-.wp-intent-tile--green .wp-intent-tile__icon {
-    background-color: var(--wp-accent-soft);
-    border-color: var(--wp-accent-border);
-    color: var(--wp-accent-text);
-}
-
-.wp-intent-tile--slate .wp-intent-tile__icon {
-    background-color: var(--wp-surface-2);
-    border-color: var(--wp-border);
-    color: var(--wp-text-body);
+.wp-kpi-meta--wrap {
+    display: block;
+    margin-top: 0.35rem;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    padding-bottom: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 /* Compacte welcome-teller op platformdashboard (naast elkaar, weinig witruimte). */
