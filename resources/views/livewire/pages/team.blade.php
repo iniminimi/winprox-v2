@@ -484,18 +484,20 @@
                             @endif
                         </div>
                     </div>
-                    <div class="wp-field">
-                        <x-wp-tooltip :text="__('team.workers.default_unit_hint')" wrap>
-                            <label class="wp-label" for="workerDefaultUnitId">{{ __('team.workers.default_unit') }}</label>
-                        </x-wp-tooltip>
-                        <select id="workerDefaultUnitId" class="wp-select" wire:model="workerDefaultUnitId">
-                            <option value="">{{ __('team.workers.default_unit_none') }}</option>
-                            @foreach ($workerDefaultUnits as $unit)
-                                <option value="{{ $unit->id }}">{{ $unit->roster_code }} — {{ $unit->name }}@if ($unit->location) ({{ $unit->location->name }})@endif</option>
-                            @endforeach
-                        </select>
-                        @error('workerDefaultUnitId') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
+                    @if ($workerDefaultUnits->isNotEmpty())
+                        <div class="wp-field">
+                            <x-wp-tooltip :text="__('team.workers.default_unit_hint')" wrap>
+                                <label class="wp-label" for="workerDefaultUnitId">{{ __('team.workers.default_unit') }}</label>
+                            </x-wp-tooltip>
+                            <select id="workerDefaultUnitId" class="wp-select" wire:model="workerDefaultUnitId">
+                                <option value="">{{ __('team.workers.default_unit_none') }}</option>
+                                @foreach ($workerDefaultUnits as $unit)
+                                    <option value="{{ $unit->id }}">{{ $unit->roster_code }} — {{ $unit->name }}@if ($unit->location) ({{ $unit->location->name }})@endif</option>
+                                @endforeach
+                            </select>
+                            @error('workerDefaultUnitId') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    @endif
                     @if ($editingWorkerId)
                         @php $editingWorker = $this->editingWorkerRecord(); @endphp
                         @if ($editingWorker)

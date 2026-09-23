@@ -985,10 +985,10 @@ class Team extends Component
 
         if (! $clocksAll) {
             $locationIds = array_values(array_map('intval', $this->selectedWorkerLocationIds));
-            if ($locationIds === []) {
-                return collect();
+            // Lege selectie = overal inklokken → alle roostercodes tonen.
+            if ($locationIds !== []) {
+                $query->whereIn('location_id', $locationIds);
             }
-            $query->whereIn('location_id', $locationIds);
         }
 
         return $query->get(['id', 'name', 'roster_code', 'location_id']);
