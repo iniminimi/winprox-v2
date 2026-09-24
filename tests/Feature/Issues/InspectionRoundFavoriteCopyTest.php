@@ -119,6 +119,7 @@ it('toont favoriet-filter en kopieert ronde in de plan-modal', function () {
         ->test(Index::class)
         ->assertSet('inspectionRoundOnly', true)
         ->assertSee(__('issues.filter.favorite_rounds_only'), false)
+        ->assertSeeHtml('wp-favorite-star')
         ->assertSee(__('issues.list.copy_round'), false)
         ->call('copyRoundCreate', $ctx['issue']->id)
         ->assertSet('showRoundCreateModal', true)

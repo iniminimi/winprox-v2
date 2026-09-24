@@ -51,18 +51,20 @@
     $isFavoriteRound = $issue->isInspectionRound() && (bool) $issue->is_favorite_round;
 @endphp
 @if ($roundQuickActions)
-<div @class(['wp-issue-row', 'wp-issue-row--highlight' => $highlight ?? false]) wire:key="issue-{{ $issue->id }}">
+<div @class(['wp-issue-row', 'wp-issue-row--round', 'wp-issue-row--highlight' => $highlight ?? false]) wire:key="issue-{{ $issue->id }}">
+    @can('manageInspectionRoundFavorite', $issue)
+        <button
+            type="button"
+            @class(['wp-favorite-star', 'is-on' => $isFavoriteRound])
+            wire:click="toggleRoundFavorite({{ $issue->id }})"
+            title="{{ $isFavoriteRound ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
+            aria-label="{{ $isFavoriteRound ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
+            aria-pressed="{{ $isFavoriteRound ? 'true' : 'false' }}"
+        >
+            <x-wp-icon name="star" class="wp-icon" />
+        </button>
+    @endcan
     <a href="{{ route('issues.show', $issue) }}" class="wp-issue-row-link wp-grow wp-stack-tight">
-@elseif ($interactive)
-<a href="{{ route('issues.show', $issue) }}"
-   @class(['wp-issue-row', 'wp-issue-row--highlight' => $highlight ?? false])
-   wire:key="issue-{{ $issue->id }}">
-@else
-<div @class(['wp-issue-row', 'wp-issue-row--static', 'wp-issue-row--highlight' => $highlight ?? false])>
-@endif
-    @unless ($roundQuickActions)
-    <div class="wp-grow wp-stack-tight">
-    @endunless
         @if ($cardTitle !== '')
             <p class="wp-issue-card-title">{{ $cardTitle }}</p>
         @endif
@@ -74,16 +76,56 @@
         @if ($issue->localizedDescription())
             <p class="wp-issue-card-desc">{{ $issue->localizedDescription() }}</p>
         @endif
-    @unless ($roundQuickActions)
-    </div>
-    @endunless
-    @if ($roundQuickActions)
     </a>
-    @endif
     <div class="wp-issue-row-meta">
-        @if ($isFavoriteRound)
-            <span class="wp-pill wp-pill--done">{{ __('issues.card.favorite_round') }}</span>
+        @unless ($issue->isApproved())
+            <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>
+        @endunless
+        @if ($issue->reporter_email_verified)
+            <span class="wp-pill wp-pill--done">{{ __('issues.card.reporter_email_verified') }}</span>
         @endif
+        @if ($issue->is_recurring)
+            <span class="wp-pill wp-pill--done">{{ __('issues.card.recurring') }}</span>
+        @endif
+        @if ($issue->isInspectionRound())
+            <span class="wp-pill wp-pill--progress">{{ __('issues.card.round_stops', ['count' => $issue->roundStopCount()]) }}</span>
+        @endif
+        @if ($highestPriorityTask && $highestPriorityTask->priority && $issue->isApproved())
+            <span class="wp-badge {{ $highestPriorityTask->priority->badgeClass() }}">
+                <x-wp-icon :name="$highestPriorityTask->priority->icon()" class="wp-icon wp-icon--sm" />
+                {{ $highestPriorityTask->priority->label() }}
+            </span>
+        @endif
+        <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
+        @can('createInspectionRound', App\Models\Issue::class)
+            <button
+                type="button"
+                class="btn btn--ghost btn--sm"
+                wire:click="copyRoundCreate({{ $issue->id }})"
+            >
+                {{ __('issues.list.copy_round') }}
+            </button>
+        @endcan
+    </div>
+</div>
+@elseif ($interactive)
+<a href="{{ route('issues.show', $issue) }}"
+   @class(['wp-issue-row', 'wp-issue-row--highlight' => $highlight ?? false])
+   wire:key="issue-{{ $issue->id }}">
+    <div class="wp-grow wp-stack-tight">
+        @if ($cardTitle !== '')
+            <p class="wp-issue-card-title">{{ $cardTitle }}</p>
+        @endif
+        @if ($addressLine !== '')
+            <p class="wp-issue-card-meta">{{ $addressLine }}</p>
+        @endif
+        <p class="wp-issue-card-meta">{{ $issueLine }}</p>
+        <p class="wp-issue-card-meta">{{ $contextMeta }}</p>
+        @if ($issue->localizedDescription())
+            <p class="wp-issue-card-desc">{{ $issue->localizedDescription() }}</p>
+        @endif
+    </div>
+    <div class="wp-issue-row-meta">
         @unless ($issue->isApproved())
             <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>
         @endunless
@@ -104,33 +146,42 @@
         @endif
         <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
     </div>
-    @if ($roundQuickActions)
-        @can('manageInspectionRoundFavorite', $issue)
-            <button
-                type="button"
-                class="btn btn--ghost btn--sm"
-                wire:click="toggleRoundFavorite({{ $issue->id }})"
-                title="{{ $isFavoriteRound ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
-                aria-label="{{ $isFavoriteRound ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
-                aria-pressed="{{ $isFavoriteRound ? 'true' : 'false' }}"
-            >
-                <x-wp-icon name="star" @class(['wp-icon', 'wp-icon--sm', 'wp-icon--favorite' => $isFavoriteRound]) />
-            </button>
-        @endcan
-        @can('createInspectionRound', App\Models\Issue::class)
-            <button
-                type="button"
-                class="btn btn--ghost btn--sm"
-                wire:click="copyRoundCreate({{ $issue->id }})"
-            >
-                {{ __('issues.list.copy_round') }}
-            </button>
-        @endcan
-    @endif
-@if ($roundQuickActions)
-</div>
-@elseif ($interactive)
 </a>
 @else
+<div @class(['wp-issue-row', 'wp-issue-row--static', 'wp-issue-row--highlight' => $highlight ?? false])>
+    <div class="wp-grow wp-stack-tight">
+        @if ($cardTitle !== '')
+            <p class="wp-issue-card-title">{{ $cardTitle }}</p>
+        @endif
+        @if ($addressLine !== '')
+            <p class="wp-issue-card-meta">{{ $addressLine }}</p>
+        @endif
+        <p class="wp-issue-card-meta">{{ $issueLine }}</p>
+        <p class="wp-issue-card-meta">{{ $contextMeta }}</p>
+        @if ($issue->localizedDescription())
+            <p class="wp-issue-card-desc">{{ $issue->localizedDescription() }}</p>
+        @endif
+    </div>
+    <div class="wp-issue-row-meta">
+        @unless ($issue->isApproved())
+            <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>
+        @endunless
+        @if ($issue->reporter_email_verified)
+            <span class="wp-pill wp-pill--done">{{ __('issues.card.reporter_email_verified') }}</span>
+        @endif
+        @if ($issue->is_recurring)
+            <span class="wp-pill wp-pill--done">{{ __('issues.card.recurring') }}</span>
+        @endif
+        @if ($issue->isInspectionRound())
+            <span class="wp-pill wp-pill--progress">{{ __('issues.card.round_stops', ['count' => $issue->roundStopCount()]) }}</span>
+        @endif
+        @if ($highestPriorityTask && $highestPriorityTask->priority && $issue->isApproved())
+            <span class="wp-badge {{ $highestPriorityTask->priority->badgeClass() }}">
+                <x-wp-icon :name="$highestPriorityTask->priority->icon()" class="wp-icon wp-icon--sm" />
+                {{ $highestPriorityTask->priority->label() }}
+            </span>
+        @endif
+        <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
+    </div>
 </div>
 @endif

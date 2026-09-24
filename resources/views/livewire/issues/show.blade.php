@@ -25,6 +25,20 @@
         :last-id="$nav['lastId']"
     >
         <x-slot name="headlineActions">
+            @if ($issue->isInspectionRound())
+                @can('manageInspectionRoundFavorite', $issue)
+                    <button
+                        type="button"
+                        @class(['wp-favorite-star', 'is-on' => (bool) $issue->is_favorite_round])
+                        wire:click="toggleRoundFavorite"
+                        title="{{ $issue->is_favorite_round ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
+                        aria-label="{{ $issue->is_favorite_round ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
+                        aria-pressed="{{ $issue->is_favorite_round ? 'true' : 'false' }}"
+                    >
+                        <x-wp-icon name="star" class="wp-icon" />
+                    </button>
+                @endcan
+            @endif
             @if ($issue->unit && $issue->location)
                 @can('view', $issue->unit)
                     <a

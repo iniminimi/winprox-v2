@@ -10,6 +10,7 @@ use App\Actions\Issues\EndRecurringIssueAction;
 use App\Actions\Issues\RemoveUnitsFromInspectionRoundsAction;
 use App\Actions\Issues\ReopenIssueAction;
 use App\Actions\Issues\SyncIssueRoundStopsAction;
+use App\Actions\Issues\ToggleInspectionRoundFavoriteAction;
 use App\Actions\Issues\ToggleIssueRecurrencePauseAction;
 use App\Actions\Tasks\CreateTaskAction;
 use App\Actions\Tasks\UpdateTaskAssignmentAction;
@@ -131,6 +132,13 @@ class Show extends Component
             ->all();
 
         session()->flash('success', __('issues.show.round_stops_saved'));
+    }
+
+    public function toggleRoundFavorite(ToggleInspectionRoundFavoriteAction $toggle): void
+    {
+        $this->authorize('manageInspectionRoundFavorite', $this->issue);
+        $toggle->handle($this->issue, auth()->user(), ! (bool) $this->issue->is_favorite_round);
+        $this->refreshIssue();
     }
 
     public function approve(ApproveIssueAction $approveIssue): void
