@@ -1234,7 +1234,7 @@
 
 .wp-portal-now__head {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
 }
@@ -1242,6 +1242,8 @@
 .wp-portal-now__name {
     font-size: 1.15rem;
     line-height: 1.25;
+    font-weight: 700;
+    color: var(--wp-portal-now-fg);
 }
 
 .wp-portal-now__meta,
@@ -1259,24 +1261,22 @@
     font-weight: 600;
 }
 
-.wp-portal-now__more {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.45rem;
-    margin-top: 0.25rem;
-}
-
 .wp-portal-now__disclosure-toggle {
+    flex: 1 1 auto;
+    min-width: 0;
     width: auto;
     min-height: 2.5rem;
-    min-width: 2.5rem;
-    padding: 0.35rem 0.15rem;
+    align-items: center;
     color: inherit;
+}
+
+.wp-portal-now__disclosure-toggle:hover .wp-portal-now__name {
+    color: color-mix(in srgb, var(--wp-portal-now-fg) 80%, #10b981);
 }
 
 .wp-portal-now .wp-disclosure-chevron {
     color: var(--wp-portal-now-muted);
+    flex: none;
 }
 
 .wp-portal-now__disclosure-toggle:hover .wp-disclosure-chevron {
@@ -1289,7 +1289,7 @@
     align-items: stretch;
     gap: 0.45rem;
     width: 100%;
-    padding: 0.15rem 0 0;
+    padding: 0.35rem 0 0;
 }
 
 .wp-portal-now__sign-out-row {
