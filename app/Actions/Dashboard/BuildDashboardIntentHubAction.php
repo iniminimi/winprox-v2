@@ -120,9 +120,7 @@ class BuildDashboardIntentHubAction
                 'tone' => 'present_now',
                 'title' => 'dashboard.intent.tiles.workers.title',
                 'body' => 'dashboard.intent.tiles.workers.body',
-                'href' => route('team.index', [
-                    'section' => 'teams',
-                ]),
+                'href' => route('workers.index'),
             ];
         }
 

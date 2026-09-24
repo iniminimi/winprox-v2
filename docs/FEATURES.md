@@ -50,7 +50,7 @@ Een starttemplate toont de keuze in preview en op
   - **Nieuwe dagtaak** → Inspectierondes-planmodal (`round_create`)
   - **Locatie toevoegen** → Locaties + create-modal
   - **Uitvoerder toevoegen** → Personen → Teams + worker-modal
-  - **Uitvoerders bekijken** → Personen → Teams (lijst bewerken)
+  - **Uitvoerders bekijken** → Personen → Uitvoerders (`/workers`)
   - **Wie werkt waar vandaag?** → Time → Aanwezigheid (alleen met Time-module)
   - **Welke taken vandaag?** → Kalender dagweergave (taken van vandaag); alleen als kalender in het werkmenu aan staat (geen briefing-fallback)
   - **Uurrooster bekijken** → Time → Planning (alleen met Time-module; rooster-icoon, geen kalender)
