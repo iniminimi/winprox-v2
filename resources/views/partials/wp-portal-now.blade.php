@@ -30,7 +30,7 @@
         $primary = ['transferToThisClockPoint', __('time.portal.clock.transfer_here')];
     }
 @endphp
-<div class="wp-portal-now" x-data="{ more: false }">
+<div class="wp-portal-now" x-data="{ open: false }">
     <p class="wp-portal-now__kicker">{{ __('time.portal.now.kicker') }}</p>
     <div class="wp-portal-now__head">
         <strong class="wp-portal-now__name">{{ $workerName }}</strong>
@@ -44,10 +44,16 @@
     </div>
 
     <div class="wp-portal-now__more">
-        <button type="button" class="btn btn--ghost btn--sm" @click="more = !more" :aria-expanded="more.toString()">
-            {{ __('time.portal.now.more') }}
+        <button
+            type="button"
+            class="wp-settings-section-toggle wp-portal-now__disclosure-toggle"
+            @click="open = !open"
+            :aria-expanded="open"
+        >
+            <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+            <span class="wp-portal-now__disclosure-title">{{ __('time.portal.now.more') }}</span>
         </button>
-        <div class="wp-portal-now__more-panel" x-show="more" x-cloak>
+        <div class="wp-disclosure-panel wp-portal-now__more-panel" x-show="open" x-cloak>
             <div class="wp-portal-now__sign-out-row">
                 <p class="wp-portal-now__meta">
                     {{ __('time.portal.clock.signed_in_since', [
