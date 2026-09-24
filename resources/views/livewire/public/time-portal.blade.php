@@ -56,18 +56,21 @@
         </div>
     @else
         @php
-            $taskHint = null;
+            $taskHintKey = null;
             if (($tasks ?? collect())->isNotEmpty()) {
                 if (! ($gpsVisits ?? false)) {
-                    $taskHint = __('portal.team.read_only_hint');
+                    $taskHintKey = 'portal.team.read_only_hint';
                 } elseif ($openShift !== null && ($openVisitLocationId ?? null) === null) {
-                    $taskHint = __('portal.team.complete_needs_visit');
+                    $taskHintKey = 'portal.team.complete_needs_visit';
                 }
             }
+            $taskHint = $taskHintKey !== null ? __($taskHintKey) : null;
             $hideVisitStartedFlash = ($onSiteGuidance ?? null) !== null
-                && $flashMessage === __('time.portal.visit_started');
+                && ($flashMessageKey ?? '') === 'time.portal.visit_started';
+            $hideDuplicateTaskHint = $taskHintKey !== null
+                && ($flashMessageKey ?? '') === $taskHintKey;
         @endphp
-        @if ($flashMessage !== '' && $flashMessage !== $taskHint && ! $hideVisitStartedFlash)
+        @if ($flashMessage !== '' && ! $hideDuplicateTaskHint && ! $hideVisitStartedFlash)
             <div class="wp-flash">{{ $flashMessage }}</div>
         @endif
 

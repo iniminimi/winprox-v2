@@ -54,6 +54,7 @@ use App\Http\Requests\Time\RequestAbsenceRequest;
 use App\Http\Requests\Time\WorkerClockPinRequest;
 use App\Http\Requests\Units\RecordUnitCheckRequest;
 use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
+use App\Livewire\Concerns\StoresPortalFlashMessage;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\AbsenceRequest;
@@ -99,6 +100,7 @@ use Livewire\WithFileUploads;
 class TimePortal extends Component
 {
     use PortalTeamleaderManageWorkers;
+    use StoresPortalFlashMessage;
     use PortalTeamleaderRelease;
     use SwitchesPortalUiTheme;
     use WithFileUploads;
@@ -125,7 +127,6 @@ class TimePortal extends Component
 
     public string $selected_icon_slug = '';
 
-    public string $flashMessage = '';
 
     public string $pin_code = '';
 
@@ -272,6 +273,7 @@ class TimePortal extends Component
         Cookie::queue(ResolveAppLocale::COOKIE_NAME, $locale, ResolveAppLocale::COOKIE_MINUTES);
         $this->locale = $locale;
         app()->setLocale($this->locale);
+        $this->refreshPortalFlash();
     }
 
     public function identifyWorker(): void
@@ -384,7 +386,7 @@ class TimePortal extends Component
 
         if ($this->tenantRequiresPin()) {
             $this->reset(['selected_icon_slug', 'showRegisterForm', 'sign_in_icon_slug']);
-            $this->flashMessage = '';
+            $this->clearPortalFlash();
             $this->taskBaselineSyncedThisVisit = false;
 
             return;
@@ -395,7 +397,7 @@ class TimePortal extends Component
         }
 
         $this->reset(['first_name', 'last_name', 'selected_icon_slug', 'showRegisterForm', 'sign_in_icon_slug']);
-        $this->flashMessage = __('portal.team.onboarding_done');
+        $this->portalFlash('portal.team.onboarding_done');
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;
@@ -429,7 +431,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'homescreenHelpOpen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -593,7 +595,7 @@ class TimePortal extends Component
         }
 
         $this->absenceDescription = '';
-        $this->flashMessage = __('time.portal.absence.submitted');
+        $this->portalFlash('time.portal.absence.submitted');
     }
 
     public function cancelAbsence(int $id, CancelAbsenceRequestAction $cancel): void
@@ -620,12 +622,12 @@ class TimePortal extends Component
         try {
             $cancel->handle($tenant, $worker, $request);
         } catch (InvalidArgumentException $e) {
-            $this->flashMessage = __('time.absence.errors.'.$e->getMessage());
+            $this->portalFlash('time.absence.errors.'.$e->getMessage());
 
             return;
         }
 
-        $this->flashMessage = __('time.portal.absence.cancelled');
+        $this->portalFlash('time.portal.absence.cancelled');
     }
 
     public function previousScheduleMonth(ResolveRosterMonthAction $resolveMonth): void
@@ -791,7 +793,7 @@ class TimePortal extends Component
 
         $this->pin_code = '';
         $this->pin_code_confirm = '';
-        $this->flashMessage = __('portal.worker.pin_set');
+        $this->portalFlash('portal.worker.pin_set');
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($deviceWorker);
         $this->taskBaselineSyncedThisVisit = true;
@@ -865,13 +867,13 @@ class TimePortal extends Component
                 [$device, $token] = $this->clockDeviceContext($worker);
                 $transfer->handle($worker, $clockPoint, $device, null, true, $token);
                 ClockPointScanGrant::consume((int) $clockPoint->id);
-                $this->flashMessage = __('time.portal.transferred');
+                $this->portalFlash('time.portal.transferred');
             } catch (InvalidArgumentException $e) {
                 if ($this->flashClockDeviceError($e)) {
                     return;
                 }
                 if ($e->getMessage() === 'shift_already_open') {
-                    $this->flashMessage = __('time.portal.errors.already_clocked_in');
+                    $this->portalFlash('time.portal.errors.already_clocked_in');
                 }
             }
 
@@ -898,7 +900,7 @@ class TimePortal extends Component
                 return;
             }
             if ($e->getMessage() === 'shift_already_open') {
-                $this->flashMessage = __('time.portal.errors.already_clocked_in');
+                $this->portalFlash('time.portal.errors.already_clocked_in');
             }
         }
     }
@@ -917,13 +919,13 @@ class TimePortal extends Component
 
         $openShift = $findShift->handle($worker);
         if ($openShift === null) {
-            $this->flashMessage = __('time.portal.errors.not_clocked_in');
+            $this->portalFlash('time.portal.errors.not_clocked_in');
 
             return;
         }
 
         if ($openShift->currentClockPointId() === (int) $clockPoint->id) {
-            $this->flashMessage = __('time.portal.errors.already_clocked_in');
+            $this->portalFlash('time.portal.errors.already_clocked_in');
 
             return;
         }
@@ -932,13 +934,13 @@ class TimePortal extends Component
             [$device, $token] = $this->clockDeviceContext($worker);
             $transfer->handle($worker, $clockPoint, $device, null, true, $token);
             ClockPointScanGrant::consume((int) $clockPoint->id);
-            $this->flashMessage = __('time.portal.transferred');
+            $this->portalFlash('time.portal.transferred');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
                 return;
             }
             if ($e->getMessage() === 'shift_already_open') {
-                $this->flashMessage = __('time.portal.errors.already_clocked_in');
+                $this->portalFlash('time.portal.errors.already_clocked_in');
             }
         }
     }
@@ -964,7 +966,7 @@ class TimePortal extends Component
                 return;
             }
             if ($e->getMessage() === 'shift_not_open') {
-                $this->flashMessage = __('time.portal.errors.not_clocked_in');
+                $this->portalFlash('time.portal.errors.not_clocked_in');
             }
         }
     }
@@ -979,7 +981,7 @@ class TimePortal extends Component
         $lat = $this->parseVisitGps($latitude);
         $lng = $this->parseVisitGps($longitude);
         if ($lat === null || $lng === null) {
-            $this->flashMessage = __('time.portal.errors.visit_gps_required');
+            $this->portalFlash('time.portal.errors.visit_gps_required');
 
             return;
         }
@@ -1005,7 +1007,7 @@ class TimePortal extends Component
         $lat = $this->parseVisitGps($latitude);
         $lng = $this->parseVisitGps($longitude);
         if ($lat === null || $lng === null) {
-            $this->flashMessage = __('time.portal.errors.visit_gps_required');
+            $this->portalFlash('time.portal.errors.visit_gps_required');
 
             return;
         }
@@ -1024,7 +1026,7 @@ class TimePortal extends Component
         }
 
         if ($place === null) {
-            $this->flashMessage = __('time.portal.errors.visit_unit_out_of_range');
+            $this->portalFlash('time.portal.errors.visit_unit_out_of_range');
 
             return;
         }
@@ -1033,7 +1035,7 @@ class TimePortal extends Component
             $startVisit->handle($worker, $place, $lat, $lng);
             $this->nearbyClockUnits = [];
             $this->nearbyClockUnitsLoaded = false;
-            $this->flashMessage = __('time.portal.visit_started');
+            $this->portalFlash('time.portal.visit_started');
         } catch (InvalidArgumentException $e) {
             $this->flashVisitError($e);
         }
@@ -1049,14 +1051,14 @@ class TimePortal extends Component
         $lat = $this->parseVisitGps($latitude);
         $lng = $this->parseVisitGps($longitude);
         if ($lat === null || $lng === null) {
-            $this->flashMessage = __('time.portal.errors.visit_gps_required');
+            $this->portalFlash('time.portal.errors.visit_gps_required');
 
             return;
         }
 
         try {
             $endVisit->handle($worker, required: true, latitude: $lat, longitude: $lng);
-            $this->flashMessage = __('time.portal.visit_ended');
+            $this->portalFlash('time.portal.visit_ended');
         } catch (InvalidArgumentException $e) {
             $this->flashVisitError($e);
         }
@@ -1204,13 +1206,13 @@ class TimePortal extends Component
         $this->closeClockPointUnitCheck();
         if ($waitingRound !== null) {
             $progress = app(RoundTaskCompletionAction::class)->progress($waitingRound);
-            $this->flashMessage = __('portal.round.out_of_order', [
+            $this->portalFlash('portal.round.out_of_order', [
                 'name' => $progress['next_unit_name'] ?? '—',
             ]);
         } elseif ($result === UnitCheckResult::NotOk) {
-            $this->flashMessage = __('portal.unit_check.recorded_not_ok');
+            $this->portalFlash('portal.unit_check.recorded_not_ok');
         } else {
-            $this->flashMessage = __('portal.unit_check.recorded_ok');
+            $this->portalFlash('portal.unit_check.recorded_ok');
         }
     }
 
@@ -1260,7 +1262,7 @@ class TimePortal extends Component
 
         $skipRoundStop->handle($task, (int) $unit->id, $this->skipReason, $worker);
         $this->closeClockPointUnitCheck();
-        $this->flashMessage = __('portal.round.skip_recorded');
+        $this->portalFlash('portal.round.skip_recorded');
     }
 
     public function startTask(int $taskId, StartTaskAction $startTask, AssertClockPointTaskVisitAction $assertVisit): void
@@ -1281,7 +1283,7 @@ class TimePortal extends Component
 
         $startTask->handle($task, $worker);
         $this->cancelCompleteTask();
-        $this->flashMessage = __('portal.worker.task_started');
+        $this->portalFlash('portal.worker.task_started');
     }
 
     public function beginCompleteTask(int $taskId, AssertClockPointTaskVisitAction $assertVisit): void
@@ -1418,7 +1420,7 @@ class TimePortal extends Component
         }
 
         $this->cancelCompleteTask();
-        $this->flashMessage = __('portal.worker.task_completed');
+        $this->portalFlash('portal.worker.task_completed');
     }
 
     public function startBreak(StartWorkBreakAction $startBreak, FindOpenWorkShiftForWorkerAction $findShift): void
@@ -1430,7 +1432,7 @@ class TimePortal extends Component
 
         $shift = $findShift->handle($worker);
         if ($shift === null) {
-            $this->flashMessage = __('time.portal.errors.not_clocked_in');
+            $this->portalFlash('time.portal.errors.not_clocked_in');
 
             return;
         }
@@ -1438,13 +1440,13 @@ class TimePortal extends Component
         try {
             [$device, $token] = $this->clockDeviceContext($worker);
             $startBreak->handle($worker, $shift, true, $device, $token);
-            $this->flashMessage = __('time.portal.break_started');
+            $this->portalFlash('time.portal.break_started');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
                 return;
             }
             if ($e->getMessage() === 'break_already_open') {
-                $this->flashMessage = __('time.portal.errors.break_already_open');
+                $this->portalFlash('time.portal.errors.break_already_open');
             }
         }
     }
@@ -1458,7 +1460,7 @@ class TimePortal extends Component
 
         $shift = $findShift->handle($worker);
         if ($shift === null) {
-            $this->flashMessage = __('time.portal.errors.not_clocked_in');
+            $this->portalFlash('time.portal.errors.not_clocked_in');
 
             return;
         }
@@ -1466,13 +1468,13 @@ class TimePortal extends Component
         try {
             [$device, $token] = $this->clockDeviceContext($worker);
             $endBreak->handle($worker, $shift, true, $device, $token);
-            $this->flashMessage = __('time.portal.break_ended');
+            $this->portalFlash('time.portal.break_ended');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
                 return;
             }
             if ($e->getMessage() === 'break_not_open') {
-                $this->flashMessage = __('time.portal.errors.break_not_open');
+                $this->portalFlash('time.portal.errors.break_not_open');
             }
         }
     }
@@ -1480,6 +1482,7 @@ class TimePortal extends Component
     public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations, ResolveWorkerPortalRosterAlertsAction $rosterAlerts, ListWorkerAbsenceRequestsAction $listAbsenceRequests)
     {
         app()->setLocale($this->locale);
+        $this->refreshPortalFlash();
 
         $verifiedWorker = $this->verifiedWorker();
         $canAct = $verifiedWorker !== null;
@@ -1713,7 +1716,7 @@ class TimePortal extends Component
             return true;
         }
 
-        $this->flashMessage = __('time.portal.errors.scan_required');
+        $this->portalFlash('time.portal.errors.scan_required');
 
         return false;
     }
@@ -1919,25 +1922,25 @@ class TimePortal extends Component
 
     private function flashVisitError(InvalidArgumentException $e): bool
     {
-        $message = match ($e->getMessage()) {
-            'visit_gps_required', 'visit_gps_invalid' => __('time.portal.errors.visit_gps_required'),
-            'visit_unit_out_of_range', 'unit_visit_pin_missing', 'unit_inactive' => __('time.portal.errors.visit_unit_out_of_range'),
-            'visit_already_open' => __('time.portal.errors.visit_already_open'),
-            'visit_not_open' => __('time.portal.errors.visit_not_open'),
-            'shift_not_open' => __('time.portal.errors.not_clocked_in'),
-            'gps_visits_disabled' => __('time.portal.errors.gps_visits_disabled'),
-            'worker_location_not_allowed' => __('time.portal.errors.visit_unit_out_of_range'),
-            'clock_point_task_read_only' => __('portal.team.read_only_hint'),
-            'clock_point_visit_required' => __('portal.team.complete_needs_visit'),
-            'clock_point_visit_location_mismatch' => __('portal.worker.errors.not_this_location'),
+        $key = match ($e->getMessage()) {
+            'visit_gps_required', 'visit_gps_invalid' => 'time.portal.errors.visit_gps_required',
+            'visit_unit_out_of_range', 'unit_visit_pin_missing', 'unit_inactive' => 'time.portal.errors.visit_unit_out_of_range',
+            'visit_already_open' => 'time.portal.errors.visit_already_open',
+            'visit_not_open' => 'time.portal.errors.visit_not_open',
+            'shift_not_open' => 'time.portal.errors.not_clocked_in',
+            'gps_visits_disabled' => 'time.portal.errors.gps_visits_disabled',
+            'worker_location_not_allowed' => 'time.portal.errors.visit_unit_out_of_range',
+            'clock_point_task_read_only' => 'portal.team.read_only_hint',
+            'clock_point_visit_required' => 'portal.team.complete_needs_visit',
+            'clock_point_visit_location_mismatch' => 'portal.worker.errors.not_this_location',
             default => null,
         };
 
-        if ($message === null) {
+        if ($key === null) {
             return $this->flashClockDeviceError($e);
         }
 
-        $this->flashMessage = $message;
+        $this->portalFlash($key);
 
         return true;
     }
@@ -1948,7 +1951,7 @@ class TimePortal extends Component
             return false;
         }
 
-        $this->flashMessage = __('time.portal.errors.device_mismatch');
+        $this->portalFlash('time.portal.errors.device_mismatch');
 
         return true;
     }
@@ -2206,9 +2209,9 @@ class TimePortal extends Component
         return $this->verifiedWorker()?->team;
     }
 
-    protected function portalReleaseFlash(string $message): void
+    protected function portalReleaseFlash(string $key, array $replace = []): void
     {
-        $this->flashMessage = $message;
+        $this->portalFlash($key, $replace);
     }
 
     protected function portalManageWorkersTeam(): ?InternalTeam
@@ -2216,8 +2219,8 @@ class TimePortal extends Component
         return $this->verifiedWorker()?->team;
     }
 
-    protected function portalManageWorkersFlash(string $message): void
+    protected function portalManageWorkersFlash(string $key, array $replace = []): void
     {
-        $this->flashMessage = $message;
+        $this->portalFlash($key, $replace);
     }
 }

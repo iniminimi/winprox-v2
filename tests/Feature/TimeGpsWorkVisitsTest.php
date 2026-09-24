@@ -2,6 +2,7 @@
 
 use App\Actions\Time\BuildTimePresenceDashboardAction;
 use App\Actions\Time\ClockInAction;
+use App\Livewire\Public\TimePortal;
 use App\Livewire\Time\PresenceIndex;
 use App\Livewire\Time\ShiftsIndex;
 use App\Livewire\WorkVisits\WorkVisitsIndex;
@@ -485,4 +486,33 @@ it('gebruikt standaard 50 m straal en laat 10 m toe', function () {
 
     expect($updated->time_gps_visit_radius_meters)->toBe(10)
         ->and($updated->gpsVisitRadiusMeters())->toBe(10);
+});
+
+it('toont de GPS-werkbezoekfout in de actieve portal-locale en na taalwissel', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $worker->update([
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint->update(['qr_token' => 'gps-locale-'.$tenant->id]);
+
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('switchLocale', 'en')
+        ->call('startWorkVisit', $unit->id, null, null, $location->id)
+        ->assertSet('flashMessageKey', 'time.portal.errors.visit_gps_required')
+        ->assertSet('flashMessage', __('time.portal.errors.visit_gps_required', [], 'en'))
+        ->assertSee(__('time.portal.errors.visit_gps_required', [], 'en'), false)
+        ->assertDontSee(__('time.portal.errors.visit_gps_required', [], 'nl'), false);
+
+    $portal->call('switchLocale', 'fr')
+        ->assertSet('flashMessage', __('time.portal.errors.visit_gps_required', [], 'fr'))
+        ->assertSee(__('time.portal.errors.visit_gps_required', [], 'fr'), false)
+        ->assertDontSee(__('time.portal.errors.visit_gps_required', [], 'en'), false)
+        ->assertDontSee(__('time.portal.errors.visit_gps_required', [], 'nl'), false);
 });

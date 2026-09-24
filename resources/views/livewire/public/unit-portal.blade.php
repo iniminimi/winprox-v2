@@ -69,6 +69,7 @@
 
         @if ($canCaptureUnitGps || ($mapsUrl && $canAct))
             <div
+                wire:key="unit-portal-gps-{{ $locale }}"
                 x-data="{
                     capturing: false,
                     gpsError: null,
@@ -399,6 +400,7 @@
         {{-- ============================ UNIT CHECK ============================ --}}
         @if ($canAct && ($allowsUnitChecks ?? false))
             <div
+                wire:key="unit-check-gps-{{ $locale }}"
                 data-manual-capture="portal-unit-check"
                 class="wp-stack"
                 x-show="showWorkerCheck() || @js($portalSection === 'unit_check')"

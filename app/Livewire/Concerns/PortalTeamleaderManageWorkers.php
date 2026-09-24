@@ -84,7 +84,7 @@ trait PortalTeamleaderManageWorkers
 
         $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'showAddWorkerForm', 'showManageWorkers']);
         $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
-        $this->portalManageWorkersFlash(__('portal.teamleader.worker_added'));
+        $this->portalManageWorkersFlash('portal.teamleader.worker_added');
     }
 
     public function removeWorker(int $workerId, DeleteWorkerAction $deleteWorker): void
@@ -108,16 +108,17 @@ trait PortalTeamleaderManageWorkers
             $deleteWorker->handle($worker, null, $teamleader);
         } catch (\InvalidArgumentException $e) {
             if ($e->getMessage() === 'cannot_delete_self') {
-                $this->portalManageWorkersFlash(__('portal.teamleader.errors.cannot_delete_self'));
+                $this->portalManageWorkersFlash('portal.teamleader.errors.cannot_delete_self');
             }
 
             return;
         }
 
-        $this->portalManageWorkersFlash(__('portal.teamleader.worker_deleted', ['name' => $worker->displayName()]));
+        $this->portalManageWorkersFlash('portal.teamleader.worker_deleted', ['name' => $worker->displayName()]);
     }
 
     abstract protected function portalManageWorkersTeam(): ?InternalTeam;
 
-    abstract protected function portalManageWorkersFlash(string $message): void;
+    /** @param  array<string, mixed>  $replace */
+    abstract protected function portalManageWorkersFlash(string $key, array $replace = []): void;
 }

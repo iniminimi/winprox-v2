@@ -9,8 +9,10 @@
     $variant = $variant ?? 'inline';
     $driver = $driver ?? 'route';
     $livewireMethod = $livewireMethod ?? 'switchLocale';
-    $current = app()->getLocale();
     $labels = config('locales.labels', []);
+    $current = ($driver === 'livewire' && isset($locale) && is_string($locale) && isset($labels[$locale]))
+        ? $locale
+        : app()->getLocale();
     $currentLabel = $labels[$current] ?? strtoupper($current);
 @endphp
 

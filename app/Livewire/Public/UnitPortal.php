@@ -29,6 +29,7 @@ use App\Enums\UnitCheckResult;
 use App\Enums\UnitCheckSource;
 use Carbon\CarbonImmutable;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
+use App\Livewire\Concerns\StoresPortalFlashMessage;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Http\Requests\Public\CompletePortalTaskRequest;
 use App\Http\Requests\Public\ReportIssueRequest;
@@ -70,6 +71,7 @@ use Livewire\WithFileUploads;
 class UnitPortal extends Component
 {
     use PortalTeamleaderRelease;
+    use StoresPortalFlashMessage;
     use SwitchesPortalUiTheme;
     use WithFileUploads;
 
@@ -118,7 +120,6 @@ class UnitPortal extends Component
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $backgroundPhoto = [];
 
-    public string $flashMessage = '';
 
     public ?float $gpsLatitude = null;
     public ?float $gpsLongitude = null;
@@ -203,6 +204,7 @@ class UnitPortal extends Component
         Cookie::queue(ResolveAppLocale::COOKIE_NAME, $locale, ResolveAppLocale::COOKIE_MINUTES);
         $this->locale = $locale;
         app()->setLocale($locale);
+        $this->refreshPortalFlash();
 
         $unit = Unit::query()->with(['translations', 'location.translations'])->find($this->unitId);
         if ($unit instanceof Unit) {
@@ -255,7 +257,7 @@ class UnitPortal extends Component
         }
 
         $this->portalSection = $section;
-        $this->flashMessage = '';
+        $this->clearPortalFlash();
 
         if ($section === 'new') {
             $this->dispatch('wp-prepare-photo-inputs');
@@ -383,7 +385,7 @@ class UnitPortal extends Component
 
         $this->measureValues = [];
         $this->measureRecordedAt = '';
-        $this->flashMessage = __('portal.measure.recorded');
+        $this->portalFlash('portal.measure.recorded');
         $this->portalSection = 'home';
     }
 
@@ -483,7 +485,7 @@ class UnitPortal extends Component
         $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt', 'checkChecklistItems', 'checkDescription', 'checkPhotos');
 
         if ($result === UnitCheckResult::NotOk) {
-            $this->flashMessage = __('portal.unit_check.recorded_not_ok');
+            $this->portalFlash('portal.unit_check.recorded_not_ok');
             if ($this->showNewReportSection()) {
                 if ($checkResult->suggestedReportDescription !== null) {
                     $this->description = $checkResult->suggestedReportDescription;
@@ -499,11 +501,11 @@ class UnitPortal extends Component
 
         if ($waitingRound !== null) {
             $progress = app(RoundTaskCompletionAction::class)->progress($waitingRound);
-            $this->flashMessage = __('portal.round.out_of_order', [
+            $this->portalFlash('portal.round.out_of_order', [
                 'name' => $progress['next_unit_name'] ?? '—',
             ]);
         } else {
-            $this->flashMessage = __('portal.unit_check.recorded_ok');
+            $this->portalFlash('portal.unit_check.recorded_ok');
         }
         $this->portalSection = 'home';
     }
@@ -555,7 +557,7 @@ class UnitPortal extends Component
 
         $skipRoundStop->handle($task, (int) $this->unitId, $this->skipReason, $worker);
         $this->closeSkipRoundStop();
-        $this->flashMessage = __('portal.round.skip_recorded');
+        $this->portalFlash('portal.round.skip_recorded');
     }
 
     private function prefillReservationGuest(): void
@@ -649,9 +651,11 @@ class UnitPortal extends Component
 
         $this->reset(['description', 'photos', 'reporter_first_name', 'reporter_last_name', 'reporter_email']);
         $this->dispatch('wp-clear-photo-previews');
-        $this->flashMessage = $result->awaitingEmailVerification
-            ? __('portal.report.sent_verify_email')
-            : __('portal.report.sent');
+        $this->portalFlash(
+            $result->awaitingEmailVerification
+                ? 'portal.report.sent_verify_email'
+                : 'portal.report.sent'
+        );
         $this->portalSection = $this->unit()->showsPreviousIssues() ? 'issues' : 'home';
     }
 
@@ -729,7 +733,7 @@ class UnitPortal extends Component
         );
 
         $this->reset(['reserveStartAt', 'reserveEndAt']);
-        $this->flashMessage = __('portal.reservations.submitted');
+        $this->portalFlash('portal.reservations.submitted');
         $this->portalSection = 'my_reservations';
     }
 
@@ -751,7 +755,7 @@ class UnitPortal extends Component
 
         try {
             $cancelReservation->handle($reservation);
-            $this->flashMessage = __('portal.reservations.cancelled');
+            $this->portalFlash('portal.reservations.cancelled');
         } catch (ValidationException) {
             // Already cancelled/not cancellable — ignore silently, list will reflect current state.
         }
@@ -916,7 +920,7 @@ class UnitPortal extends Component
 
         $startTask->handle($task, $worker);
         $this->cancelCompleteTask();
-        $this->flashMessage = __('portal.worker.task_started');
+        $this->portalFlash('portal.worker.task_started');
     }
 
     public function beginCompleteTask(int $taskId): void
@@ -1034,7 +1038,7 @@ class UnitPortal extends Component
 
         $this->reset('newPortalPhotos');
         $this->dispatch('wp-clear-photo-previews');
-        $this->flashMessage = __('portal.unit.photos_updated');
+        $this->portalFlash('portal.unit.photos_updated');
     }
 
     public function updateUnitGps(): void
@@ -1085,7 +1089,7 @@ class UnitPortal extends Component
         );
 
         $this->reset('gpsLatitude', 'gpsLongitude', 'gpsReportedAt');
-        $this->flashMessage = __('portal.unit.gps_updated');
+        $this->portalFlash('portal.unit.gps_updated');
     }
 
     public function removeBackgroundPhoto(int $index): void
@@ -1124,7 +1128,7 @@ class UnitPortal extends Component
 
         $this->reset('backgroundPhoto');
         $this->dispatch('wp-clear-photo-previews');
-        $this->flashMessage = __('portal.unit.background_photo_updated');
+        $this->portalFlash('portal.unit.background_photo_updated');
     }
 
     public function deleteUnitBackgroundPhoto(DeleteUnitBackgroundPhotoAction $action): void
@@ -1140,7 +1144,7 @@ class UnitPortal extends Component
         }
 
         $action->handle($this->unit(), null);
-        $this->flashMessage = __('portal.unit.background_photo_deleted');
+        $this->portalFlash('portal.unit.background_photo_deleted');
     }
 
     public function submitCompleteTask(CompleteTaskAction $completeTask): void
@@ -1216,7 +1220,7 @@ class UnitPortal extends Component
         $this->cancelCompleteTask();
         $this->selectedIssueId = null;
         $this->portalSection = 'task_done';
-        $this->flashMessage = '';
+        $this->clearPortalFlash();
     }
 
     public function render(
@@ -1225,6 +1229,7 @@ class UnitPortal extends Component
     ) {
         $unit = $this->unit();
         app()->setLocale($this->locale);
+        $this->refreshPortalFlash();
 
         $team = $this->activeTeam();
         $worker = $this->authorizedWorker();
@@ -1544,8 +1549,8 @@ class UnitPortal extends Component
         return $this->activeTeam();
     }
 
-    protected function portalReleaseFlash(string $message): void
+    protected function portalReleaseFlash(string $key, array $replace = []): void
     {
-        $this->flashMessage = $message;
+        $this->portalFlash($key, $replace);
     }
 }

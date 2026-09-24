@@ -107,7 +107,7 @@ trait PortalTeamleaderRelease
 
         $this->resetReleaseForm();
         $this->showReleasePanel = false;
-        $this->portalReleaseFlash(__('portal.teamleader.released_ok', ['name' => $target->displayName()]));
+        $this->portalReleaseFlash('portal.teamleader.released_ok', ['name' => $target->displayName()]);
     }
 
     /** @return \Illuminate\Support\Collection<int, Worker> */
@@ -186,7 +186,7 @@ trait PortalTeamleaderRelease
         $this->release_device_worker_id = null;
         $this->release_device_teamleader_icon_slug = '';
         $this->showDeviceReleasePanel = false;
-        $this->portalReleaseFlash(__('portal.teamleader.device_released_ok', ['name' => $target->displayName()]));
+        $this->portalReleaseFlash('portal.teamleader.device_released_ok', ['name' => $target->displayName()]);
     }
 
     protected function resetReleaseForm(): void
@@ -202,5 +202,6 @@ trait PortalTeamleaderRelease
     /** Team waarvoor vrijgave geldt. */
     abstract protected function portalReleaseTeam(): ?InternalTeam;
 
-    abstract protected function portalReleaseFlash(string $message): void;
+    /** @param  array<string, mixed>  $replace */
+    abstract protected function portalReleaseFlash(string $key, array $replace = []): void;
 }
