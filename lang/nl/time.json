@@ -284,6 +284,7 @@
         "clock": {
             "not_clocked_in": "Nog niet ingeklokt",
             "signed_in_at": "Aangemeld op WinProx om :time",
+            "signed_in_since": "Aangemeld sinds :date - :time",
             "clocked_in_at_tenant": "Ingeklokt bij :tenant om :time",
             "no_break": "Nog geen pauze genomen",
             "on_break_since": "In pauze sinds :time",
@@ -396,7 +397,6 @@
         "now": {
             "kicker": "Nu",
             "more": "Meer",
-            "on_break": "Nu in pauze",
             "next_stop": "Volgende stop: :name",
             "here_done": "Werk hier is klaar."
         }

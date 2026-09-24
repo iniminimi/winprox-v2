@@ -1267,6 +1267,22 @@
     margin-top: 0.25rem;
 }
 
+.wp-portal-now__more-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    width: 100%;
+}
+
+.wp-portal-now__sign-out-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 0.75rem;
+}
+
 .wp-portal-now__more-actions {
     display: flex;
     flex-wrap: wrap;

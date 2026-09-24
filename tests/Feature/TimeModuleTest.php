@@ -499,7 +499,7 @@ it('verbergt de kop Aanmelden na een geslaagde aanmelding', function () {
         ->assertDontSeeHtml('<p class="wp-muted">Magazijn</p>')
         ->assertDontSee(__('common.welcome'), false)
         ->assertSee('Janssen Jan', false)
-        ->assertSee(__('time.portal.clock.signed_in_at', ['time' => now()->format('H:i')]), false)
+        ->assertSee(__('time.portal.clock.signed_in_since', ['date' => now()->format('d-m-Y'), 'time' => now()->format('H:i')]), false)
         ->assertSee(__('time.portal.clock.not_clocked_in'), false)
         ->assertSee(__('portal.worker.sign_out'), false)
         ->assertDontSee(__('portal.worker.different_worker'), false);

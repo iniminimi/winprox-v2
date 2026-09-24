@@ -284,6 +284,7 @@
         "clock": {
             "not_clocked_in": "Aún no ha fichado",
             "signed_in_at": "Sesión iniciada en WinProx a las :time",
+            "signed_in_since": "Sesión iniciada desde :date - :time",
             "clocked_in_at_tenant": "Fichado en :tenant a las :time",
             "no_break": "Aún no ha hecho pausa",
             "on_break_since": "En pausa desde :time",
@@ -396,7 +397,6 @@
         "now": {
             "kicker": "Ahora",
             "more": "Más",
-            "on_break": "En pausa ahora",
             "next_stop": "Siguiente parada: :name",
             "here_done": "El trabajo aquí está listo."
         }

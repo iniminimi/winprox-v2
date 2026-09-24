@@ -1046,7 +1046,7 @@
                 },
                 {
                     "label": "Open taken",
-                    "text": "Na naam en icoon zie je bovenaan de donkere kaart Nu (status en één hoofdactie; uitklokken en afmelden onder Meer). Open taken staan eronder, met aantal; extra taken via Meer taken. Met Time + GPS-werkbezoeken start of rond je teamtaken af op Clock Point zolang er een open werkbezoek is op die klantlocatie (optionele notitie en foto's). Een inspectieronde toont omschrijving, prio, status en de volgende stop. De knop Unit check verschijnt pas na Start werk op die locatie; de volledige check (OK / Niet OK / overslaan) opent daarna."
+                    "text": "Na naam en icoon zie je bovenaan de donkere kaart Nu (één hoofdactie zichtbaar; aanmelden, inklokken, pauze en afmelden onder Meer). Open taken staan eronder, met aantal; extra taken via Meer taken. Met Time + GPS-werkbezoeken start of rond je teamtaken af op Clock Point zolang er een open werkbezoek is op die klantlocatie (optionele notitie en foto's). Een inspectieronde toont omschrijving, prio, status en de volgende stop. De knop Unit check verschijnt pas na Start werk op die locatie; de volledige check (OK / Niet OK / overslaan) opent daarna."
                 },
                 {
                     "label": "In- en uitklokken",

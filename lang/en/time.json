@@ -284,6 +284,7 @@
         "clock": {
             "not_clocked_in": "Not clocked in yet",
             "signed_in_at": "Signed in on WinProx at :time",
+            "signed_in_since": "Signed in since :date - :time",
             "clocked_in_at_tenant": "Clocked in at :tenant at :time",
             "no_break": "No break taken yet",
             "on_break_since": "On break since :time",
@@ -396,7 +397,6 @@
         "now": {
             "kicker": "Now",
             "more": "More",
-            "on_break": "On break now",
             "next_stop": "Next stop: :name",
             "here_done": "Work here is done."
         }

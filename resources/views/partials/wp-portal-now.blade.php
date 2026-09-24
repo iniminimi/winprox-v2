@@ -1,5 +1,7 @@
 @php
     $workerName = trim(($verifiedWorker?->last_name ?? '').' '.($verifiedWorker?->first_name ?? ''));
+    $signedInDate = $signedInAt?->format('d-m-Y');
+    $signedInTime = $signedInAt?->format('H:i');
     $clockedInTime = $openShift?->clock_in_at?->format('H:i');
     $breakSince = $openShift?->openBreak?->started_at?->format('H:i');
     $presencePoint = $openShift?->currentClockPoint();
@@ -41,69 +43,80 @@
         @endif
     </div>
 
-    @if ($openShift === null)
-        <p class="wp-portal-now__meta">
-            @if ($clockedOutTime)
-                {{ __('time.portal.clock.clocked_out_at', ['time' => $clockedOutTime]) }}
-            @else
-                {{ __('time.portal.clock.not_clocked_in') }}
-            @endif
-            @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
-        </p>
-        @unless (($canPunch ?? false) || $clockedOutTime)
-            <p class="wp-portal-now__meta">{{ __('time.portal.clock.scan_to_clock_in') }}</p>
-        @endunless
-    @else
-        <p class="wp-portal-now__meta">
-            {{ __('time.portal.clock.clocked_in_at_tenant', ['tenant' => $tenantName, 'time' => $clockedInTime ?? '—']) }}
-            @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
-        </p>
-        @if ($openShift->isManuallyClockedIn())
-            <p class="wp-portal-now__meta">{{ __('time.manual_clock_in.badge') }}</p>
-        @endif
-        @if ($onBreak)
-            <p class="wp-portal-now__state">{{ __('time.portal.now.on_break') }}</p>
-        @elseif ($hasVisit && $visitPlace !== '')
-            <p class="wp-portal-now__state">{{ __('time.portal.clock.working_at', ['place' => $visitPlace]) }}</p>
-        @endif
-        @if ($hereDone)
-            <p class="wp-portal-now__meta">{{ __('time.portal.now.here_done') }}</p>
-        @endif
-        @if ($nextStop)
-            <p class="wp-portal-now__next">{{ __('time.portal.now.next_stop', ['name' => $nextStop]) }}</p>
-        @endif
-        @if ($startedElsewhere && $openShift->clockInClockPoint)
-            <p class="wp-portal-now__meta">{{ __('time.portal.clock.started_at', ['place' => $openShift->clockInClockPoint->name]) }}</p>
-        @endif
-        @if ($openElsewhere)
-            @if ($clockInPlace !== '')
-                <p class="wp-portal-now__meta">{{ __('time.portal.clock.started_at', ['place' => $clockInPlace]) }}</p>
-            @endif
-            <p class="wp-portal-now__meta">{{ __('time.portal.clock.open_elsewhere_hint') }}</p>
-        @endif
-    @endif
-
     <div class="wp-portal-now__more">
         <button type="button" class="btn btn--ghost btn--sm" @click="more = !more" :aria-expanded="more.toString()">
             {{ __('time.portal.now.more') }}
         </button>
-        <div class="wp-portal-now__more-actions" x-show="more" x-cloak>
-            @include('partials.wp-portal-sign-out', ['signOutMethod' => 'signOut'])
-            @if ($openShift !== null && ($canPunch ?? false))
-                <button type="button" class="btn btn--surface btn--sm" @click="withGps('clockOut')">
-                    {{ __('time.portal.clock.out') }}
-                </button>
+        <div class="wp-portal-now__more-panel" x-show="more" x-cloak>
+            <div class="wp-portal-now__sign-out-row">
+                <p class="wp-portal-now__meta">
+                    {{ __('time.portal.clock.signed_in_since', [
+                        'date' => $signedInDate ?? '—',
+                        'time' => $signedInTime ?? '—',
+                    ]) }}
+                </p>
+                @include('partials.wp-portal-sign-out', ['signOutMethod' => 'signOut'])
+            </div>
+
+            @if ($openShift === null)
+                <p class="wp-portal-now__meta">
+                    @if ($clockedOutTime)
+                        {{ __('time.portal.clock.clocked_out_at', ['time' => $clockedOutTime]) }}
+                    @else
+                        {{ __('time.portal.clock.not_clocked_in') }}
+                    @endif
+                    @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
+                </p>
+                @unless (($canPunch ?? false) || $clockedOutTime)
+                    <p class="wp-portal-now__meta">{{ __('time.portal.clock.scan_to_clock_in') }}</p>
+                @endunless
+            @else
+                <p class="wp-portal-now__meta">
+                    {{ __('time.portal.clock.clocked_in_at_tenant', ['tenant' => $tenantName, 'time' => $clockedInTime ?? '—']) }}
+                    @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
+                </p>
+                @if ($openShift->isManuallyClockedIn())
+                    <p class="wp-portal-now__meta">{{ __('time.manual_clock_in.badge') }}</p>
+                @endif
+                @if ($onBreak)
+                    <p class="wp-portal-now__state">{{ __('time.portal.clock.on_break_since', ['time' => $breakSince ?? '—']) }}</p>
+                @elseif ($hasVisit && $visitPlace !== '')
+                    <p class="wp-portal-now__state">{{ __('time.portal.clock.working_at', ['place' => $visitPlace]) }}</p>
+                @endif
+                @if ($hereDone)
+                    <p class="wp-portal-now__meta">{{ __('time.portal.now.here_done') }}</p>
+                @endif
+                @if ($nextStop)
+                    <p class="wp-portal-now__next">{{ __('time.portal.now.next_stop', ['name' => $nextStop]) }}</p>
+                @endif
+                @if ($startedElsewhere && $openShift->clockInClockPoint)
+                    <p class="wp-portal-now__meta">{{ __('time.portal.clock.started_at', ['place' => $openShift->clockInClockPoint->name]) }}</p>
+                @endif
+                @if ($openElsewhere)
+                    @if ($clockInPlace !== '')
+                        <p class="wp-portal-now__meta">{{ __('time.portal.clock.started_at', ['place' => $clockInPlace]) }}</p>
+                    @endif
+                    <p class="wp-portal-now__meta">{{ __('time.portal.clock.open_elsewhere_hint') }}</p>
+                @endif
             @endif
-            @if ($hasVisit)
-                <button type="button" class="btn btn--surface btn--sm" @click="withFreshGps('endWorkVisit')">
-                    {{ __('time.portal.clock.stop_work') }}
-                </button>
-            @endif
-            @if ($openShift !== null && ! $onBreak && ! $openElsewhere)
-                <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
-                    {{ __('time.portal.clock.start_break') }}
-                </button>
-            @endif
+
+            <div class="wp-portal-now__more-actions">
+                @if ($openShift !== null && ($canPunch ?? false))
+                    <button type="button" class="btn btn--surface btn--sm" @click="withGps('clockOut')">
+                        {{ __('time.portal.clock.out') }}
+                    </button>
+                @endif
+                @if ($hasVisit)
+                    <button type="button" class="btn btn--surface btn--sm" @click="withFreshGps('endWorkVisit')">
+                        {{ __('time.portal.clock.stop_work') }}
+                    </button>
+                @endif
+                @if ($openShift !== null && ! $onBreak && ! $openElsewhere)
+                    <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
+                        {{ __('time.portal.clock.start_break') }}
+                    </button>
+                @endif
+            </div>
         </div>
     </div>
 </div>
