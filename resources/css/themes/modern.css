@@ -235,6 +235,14 @@
     border-top-color: var(--wp-border);
 }
 
+/* Portaal-tiles: minder doorzichtig dan de generieke 85%-glass-mix. */
+[data-theme='modern'] .wp-portal .wp-tile:not(.wp-tile--primary),
+[data-theme='modern'] .wp-portal .wp-tile--static {
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: var(--wp-card-backdrop);
+    -webkit-backdrop-filter: var(--wp-card-backdrop);
+}
+
 /* Paginatitel leesbaar op foto-achtergrond (zelfde glass als kaarten). */
 [data-theme='modern'] .wp-page-head,
 [data-theme='modern'] .wp-stack > .wp-page-head-main:not(.wp-card),
