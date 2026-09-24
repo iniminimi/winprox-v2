@@ -5,9 +5,9 @@
 
 [data-theme='modern'] {
     --wp-bg: #dbe4f0;
-    --wp-surface: rgba(255, 255, 255, 0.9);
-    --wp-surface-2: rgba(255, 255, 255, 0.82);
-    --wp-surface-hover: rgba(255, 255, 255, 0.96);
+    --wp-surface: rgba(255, 255, 255, 0.96);
+    --wp-surface-2: rgba(255, 255, 255, 0.92);
+    --wp-surface-hover: rgba(255, 255, 255, 0.98);
 
     --wp-border: rgba(15, 23, 42, 0.12);
     --wp-border-strong: rgba(15, 23, 42, 0.2);
@@ -23,14 +23,14 @@
     --wp-accent: #059669;
     --wp-accent-strong: #047857;
     --wp-accent-soft: rgba(16, 185, 129, 0.18);
-    --wp-accent-soft-panel: color-mix(in srgb, var(--wp-accent) 18%, var(--wp-surface) 82%);
+    --wp-accent-soft-panel: color-mix(in srgb, var(--wp-accent) 18%, #ffffff 82%);
     --wp-accent-border: rgba(5, 150, 105, 0.35);
     --wp-accent-text: #047857;
 
     --wp-warning: #d97706;
     --wp-warning-strong: #b45309;
     --wp-warning-soft: rgba(251, 191, 36, 0.22);
-    --wp-warning-soft-panel: color-mix(in srgb, var(--wp-warning) 22%, var(--wp-surface) 78%);
+    --wp-warning-soft-panel: color-mix(in srgb, var(--wp-warning) 22%, #ffffff 78%);
     --wp-warning-border: rgba(217, 119, 6, 0.35);
     --wp-warning-text: #b45309;
 
@@ -211,7 +211,7 @@
 }
 
 [data-theme='modern'] .btn--surface {
-    background-color: rgba(255, 255, 255, 0.88);
+    background-color: rgba(255, 255, 255, 0.96);
 }
 
 [data-theme='modern'] .btn--primary:not(.wp-theme-preview-btn) {
@@ -225,22 +225,48 @@
 [data-theme='modern'] .wp-input,
 [data-theme='modern'] .wp-select,
 [data-theme='modern'] .wp-textarea {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(10px) saturate(1.2);
     -webkit-backdrop-filter: blur(10px) saturate(1.2);
 }
 
-[data-theme='modern'] .wp-portal-actions {
-    background-color: color-mix(in srgb, var(--wp-surface) 96%, transparent);
-    border-top-color: var(--wp-border);
-}
-
-/* Portaal-tiles: minder doorzichtig dan de generieke 85%-glass-mix. */
+/*
+ | Portaal: layout.css mixt 85% + transparent over surface — te glasig op foto.
+ | Één dekking voor cards/tiles/muted/actions; flash stevig groen (wint van .wp-portal .wp-flash).
+ */
+[data-theme='modern'] .wp-portal .wp-card,
 [data-theme='modern'] .wp-portal .wp-tile:not(.wp-tile--primary),
-[data-theme='modern'] .wp-portal .wp-tile--static {
+[data-theme='modern'] .wp-portal .wp-tile--static,
+[data-theme='modern'] .wp-portal .wp-surface-muted,
+[data-theme='modern'] .wp-portal-head,
+[data-theme='modern'] .wp-portal-actions {
     background-color: rgba(255, 255, 255, 0.96);
     backdrop-filter: var(--wp-card-backdrop);
     -webkit-backdrop-filter: var(--wp-card-backdrop);
+}
+
+[data-theme='modern'] .wp-portal-actions {
+    border-top-color: var(--wp-border);
+}
+
+[data-theme='modern'] .wp-portal .wp-flash,
+[data-theme='modern'] .wp-portal .wp-flash--success {
+    background-color: color-mix(in srgb, var(--wp-accent) 22%, #ffffff 78%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+[data-theme='modern'] .wp-portal .wp-flash--danger {
+    background-color: color-mix(in srgb, var(--wp-danger) 16%, #ffffff 84%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+[data-theme='modern'] .wp-portal .wp-flash--muted,
+[data-theme='modern'] .wp-portal .wp-flash--offline {
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 /* Paginatitel leesbaar op foto-achtergrond (zelfde glass als kaarten). */

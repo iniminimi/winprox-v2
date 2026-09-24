@@ -45,7 +45,7 @@ Een starttemplate toont de keuze in preview en op
 **Intent-hub (“Wat wil je doen?”)** — bovenaan, vóór de KPI’s:
 - Begroeting via dezelfde **`x-wp-page-head-title`** als de Dashboard-kop (zelfde lettergrootte/glass).
 - Snelkoppelingen als **`.wp-kpi`-tegels** (zelfde raster/icoon-eerst als de overzicht-KPI’s; geen aparte tegel-component):
-  - Volgorde: **Nieuwe dagtaak** (favorieten) → **Nieuwe dagtaak** (planmodal) → **Locatie** → **Uitvoerder toevoegen** → **Uitvoerders bekijken** → **Wie werkt waar vandaag?** → **Welke taken vandaag?** → **Uurrooster**
+  - Volgorde (4 kolommen): **Nieuwe dagtaak** (favorieten) → **Nieuwe dagtaak** (planmodal) → **Locatie** → **Uitvoerder toevoegen** / **Wie werkt waar vandaag?** → **Welke taken vandaag?** → **Uurrooster** → **Uitvoerders bekijken** (onder uitvoerder toevoegen)
   - **Nieuwe dagtaak** (favorieten, oranje ster) → Inspectierondes gefilterd op favorieten (`favorite_rounds`)
   - **Nieuwe dagtaak** → Inspectierondes-planmodal (`round_create`)
   - **Locatie toevoegen** → Locaties + create-modal

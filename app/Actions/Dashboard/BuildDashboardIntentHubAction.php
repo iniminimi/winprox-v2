@@ -73,17 +73,6 @@ class BuildDashboardIntentHubAction
                     'create_worker' => 1,
                 ]),
             ];
-
-            $tiles[] = [
-                'key' => 'workers',
-                'icon' => 'team',
-                'tone' => 'present_now',
-                'title' => 'dashboard.intent.tiles.workers.title',
-                'body' => 'dashboard.intent.tiles.workers.body',
-                'href' => route('team.index', [
-                    'section' => 'teams',
-                ]),
-            ];
         }
 
         if ($tenant->hasTimeModule()) {
@@ -120,6 +109,20 @@ class BuildDashboardIntentHubAction
                 'title' => 'dashboard.intent.tiles.roster.title',
                 'body' => 'dashboard.intent.tiles.roster.body',
                 'href' => route('time.schedule.index'),
+            ];
+        }
+
+        // Na de Time/kalender-tegels: in een 4-kolomsraster onder "Uitvoerder toevoegen".
+        if ($this->canAddWorker($user)) {
+            $tiles[] = [
+                'key' => 'workers',
+                'icon' => 'team',
+                'tone' => 'present_now',
+                'title' => 'dashboard.intent.tiles.workers.title',
+                'body' => 'dashboard.intent.tiles.workers.body',
+                'href' => route('team.index', [
+                    'section' => 'teams',
+                ]),
             ];
         }
 
