@@ -1269,24 +1269,18 @@
 
 .wp-portal-now__disclosure-toggle {
     width: auto;
-    max-width: 100%;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    padding: 0.35rem 0.15rem;
     color: inherit;
-}
-
-.wp-portal-now__disclosure-title {
-    margin: 0;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--wp-portal-now-fg);
-}
-
-.wp-portal-now__disclosure-toggle:hover .wp-portal-now__disclosure-title {
-    color: color-mix(in srgb, var(--wp-portal-now-fg) 80%, #10b981);
 }
 
 .wp-portal-now .wp-disclosure-chevron {
     color: var(--wp-portal-now-muted);
+}
+
+.wp-portal-now__disclosure-toggle:hover .wp-disclosure-chevron {
+    color: var(--wp-portal-now-fg);
 }
 
 .wp-portal-now__more-panel {

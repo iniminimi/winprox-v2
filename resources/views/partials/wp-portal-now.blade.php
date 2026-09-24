@@ -49,9 +49,9 @@
             class="wp-settings-section-toggle wp-portal-now__disclosure-toggle"
             @click="open = !open"
             :aria-expanded="open"
+            aria-label="{{ __('time.portal.now.toggle') }}"
         >
             <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
-            <span class="wp-portal-now__disclosure-title">{{ __('time.portal.now.more') }}</span>
         </button>
         <div class="wp-disclosure-panel wp-portal-now__more-panel" x-show="open" x-cloak>
             <div class="wp-portal-now__sign-out-row">

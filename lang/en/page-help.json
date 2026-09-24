@@ -1046,7 +1046,7 @@
                 },
                 {
                     "label": "Open tasks",
-                    "text": "After name and icon you see the dark Welcome card at the top (one main action visible; sign-in, clock-in, break and sign-out under More). Open tasks sit below, with a count; extra tasks via More tasks. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). An inspection round shows description, priority, status and the next stop. The Unit check button appears only after Start work at that location; the full check (OK / Not OK / skip) opens after that."
+                    "text": "After name and icon you see the dark Welcome card at the top (one main action visible; sign-in, clock-in, break and sign-out via the arrow). Open tasks sit below, with a count; extra tasks via More tasks. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). An inspection round shows description, priority, status and the next stop. The Unit check button appears only after Start work at that location; the full check (OK / Not OK / skip) opens after that."
                 },
                 {
                     "label": "Clock in and out",

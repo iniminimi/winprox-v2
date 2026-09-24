@@ -396,9 +396,9 @@
         },
         "now": {
             "kicker": "Welkom",
-            "more": "Meer",
             "next_stop": "Volgende stop: :name",
-            "here_done": "Werk hier is klaar."
+            "here_done": "Werk hier is klaar.",
+            "toggle": "Details"
         }
     },
     "ciao": {

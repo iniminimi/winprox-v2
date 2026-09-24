@@ -1046,7 +1046,7 @@
                 },
                 {
                     "label": "Attività aperte",
-                    "text": "Dopo nome e icona vedi in alto la scheda scura Benvenuto (un’azione principale visibile; accesso, timbratura, pausa e uscita sotto Altro). Le attività aperte stanno sotto, con il conteggio; le altre via Altre attività. Con Time + visite GPS avvii o chiudi le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). Un giro di ispezione mostra descrizione, priorità, stato e la prossima fermata. Il pulsante Controllo unità compare solo dopo Avvia lavoro in quella sede; il controllo completo (OK / Non OK / salta) si apre dopo."
+                    "text": "Dopo nome e icona vedi in alto la scheda scura Benvenuto (un’azione principale visibile; accesso, timbratura, pausa e uscita tramite la freccia). Le attività aperte stanno sotto, con il conteggio; le altre via Altre attività. Con Time + visite GPS avvii o chiudi le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). Un giro di ispezione mostra descrizione, priorità, stato e la prossima fermata. Il pulsante Controllo unità compare solo dopo Avvia lavoro in quella sede; il controllo completo (OK / Non OK / salta) si apre dopo."
                 },
                 {
                     "label": "Timbra entrata e uscita",

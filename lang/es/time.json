@@ -396,9 +396,9 @@
         },
         "now": {
             "kicker": "Bienvenido",
-            "more": "Más",
             "next_stop": "Siguiente parada: :name",
-            "here_done": "El trabajo aquí está listo."
+            "here_done": "El trabajo aquí está listo.",
+            "toggle": "Detalles"
         }
     },
     "ciao": {
