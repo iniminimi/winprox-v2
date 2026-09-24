@@ -83,9 +83,7 @@
             @if ($openShift->isManuallyClockedIn())
                 <p class="wp-portal-now__meta">{{ __('time.manual_clock_in.badge') }}</p>
             @endif
-            @if ($onBreak)
-                <p class="wp-portal-now__state">{{ __('time.portal.clock.on_break_since', ['time' => $breakSince ?? '—']) }}</p>
-            @elseif ($hasVisit && $visitPlace !== '')
+            @if (! $onBreak && $hasVisit && $visitPlace !== '')
                 <p class="wp-portal-now__state">{{ __('time.portal.clock.working_at', ['place' => $visitPlace]) }}</p>
             @endif
             @if ($hereDone)
@@ -122,5 +120,9 @@
                 </button>
             @endif
         </div>
+
+        @if ($onBreak)
+            <p class="wp-portal-now__state">{{ __('time.portal.clock.on_break_since', ['time' => $breakSince ?? '—']) }}</p>
+        @endif
     </div>
 </div>
