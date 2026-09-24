@@ -395,7 +395,7 @@
             "decision": "Beslissing"
         },
         "now": {
-            "kicker": "Nu",
+            "kicker": "Welkom",
             "more": "Meer",
             "next_stop": "Volgende stop: :name",
             "here_done": "Werk hier is klaar."

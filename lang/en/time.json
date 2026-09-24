@@ -395,7 +395,7 @@
             "decision": "Decision"
         },
         "now": {
-            "kicker": "Now",
+            "kicker": "Welcome",
             "more": "More",
             "next_stop": "Next stop: :name",
             "here_done": "Work here is done."
