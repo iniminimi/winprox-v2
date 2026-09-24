@@ -123,6 +123,14 @@
                     "text": "Beschreibung, Team und Stopps eingeben. Links suchen/wählen, rechts Route ziehen. Wiederkehrend oder einmalig. Startet die erste Aufgabe."
                 },
                 {
+                    "label": "Favorit",
+                    "text": "Markieren Sie eine Runde mit dem Stern. Favoriten stehen oben und sind filterbar. Geschlossene Favoriten bleiben über „Nur Favoriten“ auffindbar."
+                },
+                {
+                    "label": "Kopieren",
+                    "text": "Öffnet die Planungs-Popup mit vorausgefüllten Stopps und Titel. Standard: einmalig mit Fälligkeit heute; Team/Ausführenden wählen und bestätigen."
+                },
+                {
                     "label": "Intervall",
                     "nested": true,
                     "text": "Wie oft die Runde wiederkehrt (z. B. alle 2 Wochen, jeden Monat, jedes Quartal, jedes Jahr)."
@@ -1792,6 +1800,10 @@
         "issues.round_create": {
             "title": "Hilfe — Inspektionsrunde planen",
             "actions": [
+                {
+                    "label": "Aus Favorit",
+                    "text": "Wählen Sie einen Favoriten, um Stopps und Titel zu übernehmen. Standard einmalig heute; danach Ausführenden wählen."
+                },
                 {
                     "label": "Beschreibung",
                     "text": "Kurzer Einzeiler-Titel der Runde (z. B. «Reinigungsrunde Brügge»)."

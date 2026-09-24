@@ -12,6 +12,7 @@ final readonly class ExportIssuesFilterData
         public string $search = '',
         public bool $recurringOnly = false,
         public bool $inspectionRoundOnly = false,
+        public bool $favoriteRoundsOnly = false,
         public ?int $unitId = null,
     ) {}
 }

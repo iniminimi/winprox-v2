@@ -26,7 +26,10 @@
         "empty": "Aún no hay incidencias. Cree una con el botón «+ Añadir incidencia».",
         "empty_filtered": "Ninguna incidencia coincide con estos filtros.",
         "subtitle_inspection_rounds": "Rondas con al menos dos paradas de unidad (recurrente o puntual)",
-        "empty_inspection_rounds": "Aún no hay rondas de inspección. Planifica una con \"Planificar ronda de inspección\"."
+        "empty_inspection_rounds": "Aún no hay rondas de inspección. Planifica una con \"Planificar ronda de inspección\".",
+        "favorite_round": "Favorito",
+        "unfavorite_round": "Quitar favorito",
+        "copy_round": "Copiar"
     },
     "filter": {
         "status": "Filtrar por estado",
@@ -42,7 +45,8 @@
         "apply": "¡IR!",
         "reset": "Borrar filtros",
         "hint": "Haga clic en una incidencia para ver los detalles.",
-        "inspection_rounds_only": "Solo rondas de inspección"
+        "inspection_rounds_only": "Solo rondas de inspección",
+        "favorite_rounds_only": "Solo favoritos"
     },
     "card": {
         "kind": "Incidencia",
@@ -69,7 +73,8 @@
         "unknown_reporter": "Desconocido",
         "source_iot": "Via IoT",
         "round_stops": "Ronda · :count paradas",
-        "reporter_email_verified": "Informante confirmado"
+        "reporter_email_verified": "Informante confirmado",
+        "favorite_round": "Favorito"
     },
     "create": {
         "title": "Nueva incidencia",
@@ -136,7 +141,10 @@
         "recurring": "Recurrente",
         "recurring_help": "Desactivado = ronda puntual (sin ciclo siguiente).",
         "one_time_due": "Fecha de vencimiento",
-        "one_time_due_help": "Fecha prevista para esta ronda puntual."
+        "one_time_due_help": "Fecha prevista para esta ronda puntual.",
+        "from_favorite": "Desde favorito",
+        "from_favorite_none": "Nueva ronda (vacía)",
+        "from_favorite_help": "Elija un favorito: se reutilizan paradas y título. Por defecto ronda única con vencimiento hoy — luego elija el ejecutor."
     },
     "errors": {
         "cannot_close_approved": "Una incidencia aprobada no se puede cerrar.",
@@ -171,7 +179,10 @@
         "cannot_end_not_recurring": "Solo se pueden cerrar así los avisos recurrentes.",
         "cannot_end_already_ended": "Este aviso recurrente ya está cerrado.",
         "end_recurring_reason_required": "Indique un motivo para cerrar.",
-        "end_recurring_reason_min": "El motivo debe tener al menos 2 caracteres."
+        "end_recurring_reason_min": "El motivo debe tener al menos 2 caracteres.",
+        "round_favorite_not_round": "Solo una ronda de inspección puede marcarse como favorita.",
+        "round_copy_not_round": "Solo una ronda de inspección puede copiarse.",
+        "round_copy_stops_unavailable": "Esta ronda ya no tiene suficientes paradas válidas para copiar (controles de unidad desactivados o unidad inactiva)."
     },
     "show": {
         "title": "Incidencia",

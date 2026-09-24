@@ -123,6 +123,14 @@
                     "text": "Vul omschrijving, team en stops in. Links zoeken/kiezen, rechts route slepen. Terugkerend aan voor interval/lead, of uit voor een eenmalige ronde. Start meteen de eerste taak."
                 },
                 {
+                    "label": "Favoriet",
+                    "text": "Markeer een ronde met de ster. Favorieten staan bovenaan en zijn filterbaar. Gesloten favorieten blijven vindbaar via «Alleen favorieten»."
+                },
+                {
+                    "label": "Kopiëren",
+                    "text": "Opent de plan-popup met stops en titel vooringevuld. Standaard eenmalig met vervaldatum vandaag; kies team/uitvoerder en bevestig."
+                },
+                {
                     "label": "Interval",
                     "nested": true,
                     "text": "Hoe vaak de ronde terugkomt (bijv. elke 2 weken, elke maand, elk kwartaal, elk jaar)."
@@ -1792,6 +1800,10 @@
         "issues.round_create": {
             "title": "Hulp — Inspectieronde plannen",
             "actions": [
+                {
+                    "label": "Vanuit favoriet",
+                    "text": "Kies een favoriete ronde om stops en titel over te nemen. Standaard eenmalig met vervaldatum vandaag; kies daarna de uitvoerder."
+                },
                 {
                     "label": "Omschrijving",
                     "text": "Korte titel van de ronde op één regel (bijv. «Schoonmaakronde Brugge»)."

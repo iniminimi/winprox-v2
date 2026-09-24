@@ -542,6 +542,12 @@ cyclus-taak. Site-units (**Hele locatie**) tonen in voortgang/print de **locatie
   aanvinken), rechts **route** (alleen gekozen, genummerd; sleep daar). Locaties
   met alleen een site-unit (**Hele locatie**) verschijnen als **één regel** (geen
   nest). Zoeken op naam/plaats/postcode/unit. “Selecteer alle” blijft.
+- **Favoriet + kopiëren:** op Werk → Inspectierondes een ronde markeren als
+  tenant-brede favoriet (`is_favorite_round`). Favorieten staan bovenaan; filter
+  **Alleen favorieten** toont ook gesloten favorieten. **Kopiëren** (of
+  **Vanuit favoriet** in de plan-modal) opent de plan-popup met stops/titel
+  vooringevuld; default **eenmalig** met vervaldatum vandaag, zonder uitvoerder
+  (planner kiest). Geen aparte template-entiteit.
 - **Beheer — intentie-flow:** knop *Inspectieronde plannen* op **Werk → Inspectierondes**
   (primaire plek) en nog op Meldingen (naast Nieuwe melding): stops + team
   (+ optionele worker) in één modal; keuze **terugkerend** (interval + lead + eerste

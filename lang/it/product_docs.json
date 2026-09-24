@@ -117,7 +117,8 @@
                     "Per fermata: OK, Non OK (con segnalazione) o salta con motivo.",
                     "L’unità Sede intera mostra il nome della sede nel giro.",
                     "Con Time + GPS vedi il giro di oggi in Dove devo andare.",
-                    "Stampa un ciclo dalla attività del giro."
+                    "Stampa un ciclo dalla attività del giro.",
+                    "Contrassegna un giro come preferito e copialo in fretta (fermate + titolo); di default una tantum per oggi."
                 ]
             },
             {

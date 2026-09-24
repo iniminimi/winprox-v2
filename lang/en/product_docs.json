@@ -117,7 +117,8 @@
                     "Per stop: OK, Not OK (with issue) or skip with reason.",
                     "Whole-location site units show the location name in the round.",
                     "With Time + GPS, today’s round appears under Where should I go.",
-                    "Print a cycle from the round task."
+                    "Print a cycle from the round task.",
+                    "Star a round as a favorite and copy it quickly (stops + title); defaults to a one-time round for today."
                 ]
             },
             {

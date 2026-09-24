@@ -117,7 +117,8 @@
                     "Por parada: OK, No OK (con incidencia) o omitir con motivo.",
                     "La unidad Ubicación completa muestra el nombre de la ubicación en la ronda.",
                     "Con Time + GPS verás la ronda de hoy en A dónde debo ir.",
-                    "Imprime un ciclo desde la tarea de ronda."
+                    "Imprime un ciclo desde la tarea de ronda.",
+                    "Marque una ronda como favorita y cópiela rápido (paradas + título); por defecto única para hoy."
                 ]
             },
             {

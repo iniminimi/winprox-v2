@@ -123,6 +123,14 @@
                     "text": "Saisissez description, équipe et arrêts. Cherchez/choisissez à gauche, glissez l'itinéraire à droite. Récurrente ou unique. Démarre la première tâche."
                 },
                 {
+                    "label": "Favori",
+                    "text": "Marquez une tournée avec l’étoile. Les favoris apparaissent en haut et sont filtrables. Les favoris clôturés restent trouvables via « Favoris uniquement »."
+                },
+                {
+                    "label": "Copier",
+                    "text": "Ouvre la fenêtre de planification avec arrêts et titre préremplis. Par défaut tournée unique pour aujourd’hui ; choisissez équipe/exécutant et confirmez."
+                },
+                {
                     "label": "Intervalle",
                     "nested": true,
                     "text": "Fréquence de la tournée (p. ex. toutes les 2 semaines, chaque mois, chaque trimestre, chaque année)."
@@ -1800,6 +1808,10 @@
         "issues.round_create": {
             "title": "Aide — Planifier une tournée d'inspection",
             "actions": [
+                {
+                    "label": "Depuis un favori",
+                    "text": "Choisissez un favori pour reprendre arrêts et titre. Par défaut tournée unique aujourd’hui ; choisissez ensuite l’exécutant."
+                },
                 {
                     "label": "Description",
                     "text": "Titre court sur une ligne (ex. « Tournée nettoyage Bruges »)."

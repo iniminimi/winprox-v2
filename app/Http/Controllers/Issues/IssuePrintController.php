@@ -26,6 +26,7 @@ class IssuePrintController
             search: (string) ($request->validated('q') ?? ''),
             recurringOnly: $request->boolean('recurring'),
             inspectionRoundOnly: $request->boolean('inspection_round'),
+            favoriteRoundsOnly: $request->boolean('favorite_rounds'),
             unitId: $request->integer('unit_id') ?: null,
         ));
 

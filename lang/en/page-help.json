@@ -123,6 +123,14 @@
                     "text": "Enter description, team and stops. Search/choose on the left, drag the route on the right. Recurring on for interval/lead, or off for a one-time round. Starts the first task immediately."
                 },
                 {
+                    "label": "Favorite",
+                    "text": "Star a round to mark it as a favorite. Favorites sort to the top and can be filtered. Closed favorites stay findable via “Favorites only”."
+                },
+                {
+                    "label": "Copy",
+                    "text": "Opens the plan popup with stops and title prefilled. Defaults to a one-time round due today; choose team/worker and confirm."
+                },
+                {
                     "label": "Interval",
                     "nested": true,
                     "text": "How often the round recurs (e.g. every 2 weeks, every month, every quarter, every year)."
@@ -1792,6 +1800,10 @@
         "issues.round_create": {
             "title": "Help — Plan inspection round",
             "actions": [
+                {
+                    "label": "From favorite",
+                    "text": "Pick a favorite round to reuse stops and title. Defaults to one-time due today; then choose the worker."
+                },
                 {
                     "label": "Description",
                     "text": "Short one-line title for the round (e.g. «Bruges cleaning round»)."

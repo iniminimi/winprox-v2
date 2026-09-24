@@ -26,7 +26,10 @@
         "empty": "Aucun signalement pour l'instant. Créez-en un avec le bouton \"+ Ajouter un signalement\".",
         "empty_filtered": "Aucun signalement ne correspond à ces filtres.",
         "subtitle_inspection_rounds": "Tournées avec au moins deux arrêts (récurrente ou unique)",
-        "empty_inspection_rounds": "Aucune tournée d’inspection pour le moment. Planifiez-en une via « Planifier une tournée d’inspection »."
+        "empty_inspection_rounds": "Aucune tournée d’inspection pour le moment. Planifiez-en une via « Planifier une tournée d’inspection ».",
+        "favorite_round": "Favori",
+        "unfavorite_round": "Retirer des favoris",
+        "copy_round": "Copier"
     },
     "filter": {
         "status": "Filtrer par statut",
@@ -42,7 +45,8 @@
         "apply": "GO!",
         "reset": "Effacer les filtres",
         "hint": "Cliquez sur un signalement pour voir les détails.",
-        "inspection_rounds_only": "Tournées d’inspection uniquement"
+        "inspection_rounds_only": "Tournées d’inspection uniquement",
+        "favorite_rounds_only": "Favoris uniquement"
     },
     "card": {
         "kind": "Signalement",
@@ -69,7 +73,8 @@
         "unknown_reporter": "Inconnu",
         "source_iot": "Via IoT",
         "round_stops": "Tournée · :count arrêts",
-        "reporter_email_verified": "Déclarant confirmé"
+        "reporter_email_verified": "Déclarant confirmé",
+        "favorite_round": "Favori"
     },
     "create": {
         "title": "Nouveau signalement",
@@ -136,7 +141,10 @@
         "recurring": "Récurrente",
         "recurring_help": "Désactivé = tournée unique (pas de cycle suivant).",
         "one_time_due": "Échéance",
-        "one_time_due_help": "Date prévue pour cette tournée unique."
+        "one_time_due_help": "Date prévue pour cette tournée unique.",
+        "from_favorite": "Depuis un favori",
+        "from_favorite_none": "Nouvelle tournée (vide)",
+        "from_favorite_help": "Choisissez un favori: arrêts et titre sont repris. Par défaut une tournée unique pour aujourd'hui — choisissez ensuite l'exécutant."
     },
     "errors": {
         "cannot_close_approved": "Un signalement approuvé ne peut pas être fermé.",
@@ -171,7 +179,10 @@
         "cannot_end_not_recurring": "Seuls les signalements récurrents peuvent être clôturés ainsi.",
         "cannot_end_already_ended": "Ce signalement récurrent est déjà clôturé.",
         "end_recurring_reason_required": "Indiquez une raison pour clôturer.",
-        "end_recurring_reason_min": "La raison doit contenir au moins 2 caractères."
+        "end_recurring_reason_min": "La raison doit contenir au moins 2 caractères.",
+        "round_favorite_not_round": "Seule une tournée d'inspection peut être marquée comme favorite.",
+        "round_copy_not_round": "Seule une tournée d'inspection peut être copiée.",
+        "round_copy_stops_unavailable": "Cette tournée n'a plus assez d'arrêts valides à copier (contrôles unités désactivés ou unité inactive)."
     },
     "show": {
         "title": "Signalement",

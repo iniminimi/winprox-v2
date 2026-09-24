@@ -26,7 +26,10 @@
         "empty": "Noch keine Meldungen. Erstellen Sie eine mit dem \"+ Meldung hinzufügen\"-Button.",
         "empty_filtered": "Keine Meldungen für diese Filter.",
         "subtitle_inspection_rounds": "Runden mit mindestens zwei Unit-Stopps (wiederkehrend oder einmalig)",
-        "empty_inspection_rounds": "Noch keine Inspektionsrunden. Planen Sie eine über \"Inspektionsrunde planen\"."
+        "empty_inspection_rounds": "Noch keine Inspektionsrunden. Planen Sie eine über \"Inspektionsrunde planen\".",
+        "favorite_round": "Favorit",
+        "unfavorite_round": "Favorit entfernen",
+        "copy_round": "Kopieren"
     },
     "filter": {
         "status": "Nach Status filtern",
@@ -42,7 +45,8 @@
         "apply": "GO!",
         "reset": "Filter zurücksetzen",
         "hint": "Klicken Sie auf eine Meldung, um Details anzuzeigen.",
-        "inspection_rounds_only": "Nur Inspektionsrunden"
+        "inspection_rounds_only": "Nur Inspektionsrunden",
+        "favorite_rounds_only": "Nur Favoriten"
     },
     "card": {
         "kind": "Meldung",
@@ -69,7 +73,8 @@
         "unknown_reporter": "Unbekannt",
         "source_iot": "Via IoT",
         "round_stops": "Runde · :count Stops",
-        "reporter_email_verified": "Melder bestätigt"
+        "reporter_email_verified": "Melder bestätigt",
+        "favorite_round": "Favorit"
     },
     "create": {
         "title": "Neue Meldung",
@@ -136,7 +141,10 @@
         "recurring": "Wiederkehrend",
         "recurring_help": "Aus = einmalige Runde (kein nächster Zyklus).",
         "one_time_due": "Fälligkeitsdatum",
-        "one_time_due_help": "Datum, für das diese einmalige Runde geplant ist."
+        "one_time_due_help": "Datum, für das diese einmalige Runde geplant ist.",
+        "from_favorite": "Aus Favorit",
+        "from_favorite_none": "Neue Runde (leer)",
+        "from_favorite_help": "Wählen Sie einen Favoriten: Stopps und Titel werden übernommen. Standard: einmalig mit Fälligkeit heute — danach Ausführenden wählen."
     },
     "errors": {
         "cannot_close_approved": "Eine freigegebene Meldung kann nicht geschlossen werden.",
@@ -171,7 +179,10 @@
         "cannot_end_not_recurring": "Nur wiederkehrende Meldungen können so geschlossen werden.",
         "cannot_end_already_ended": "Diese wiederkehrende Meldung ist bereits geschlossen.",
         "end_recurring_reason_required": "Geben Sie einen Grund für das Schließen an.",
-        "end_recurring_reason_min": "Der Grund muss mindestens 2 Zeichen haben."
+        "end_recurring_reason_min": "Der Grund muss mindestens 2 Zeichen haben.",
+        "round_favorite_not_round": "Nur eine Inspektionsrunde kann als Favorit markiert werden.",
+        "round_copy_not_round": "Nur eine Inspektionsrunde kann kopiert werden.",
+        "round_copy_stops_unavailable": "Diese Runde hat nicht mehr genug gültige Stopps zum Kopieren (Unit-Checks aus oder Unit inaktiv)."
     },
     "show": {
         "title": "Meldung",

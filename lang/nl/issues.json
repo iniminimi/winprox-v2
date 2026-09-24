@@ -26,7 +26,10 @@
         "empty": "Er zijn nog geen meldingen. Maak er aan via de knop \"+ Melding toevoegen\".",
         "empty_filtered": "Geen meldingen gevonden voor deze filters.",
         "subtitle_inspection_rounds": "Rondes met minstens twee unit-stops (terugkerend of eenmalig)",
-        "empty_inspection_rounds": "Nog geen inspectierondes. Plan er een via \"Inspectieronde plannen\"."
+        "empty_inspection_rounds": "Nog geen inspectierondes. Plan er een via \"Inspectieronde plannen\".",
+        "favorite_round": "Favoriet",
+        "unfavorite_round": "Favoriet verwijderen",
+        "copy_round": "Kopiëren"
     },
     "filter": {
         "status": "Filter op status",
@@ -42,7 +45,8 @@
         "apply": "GO!",
         "reset": "Filters wissen",
         "hint": "Klik op de melding om details te bekijken.",
-        "inspection_rounds_only": "Alleen inspectierondes"
+        "inspection_rounds_only": "Alleen inspectierondes",
+        "favorite_rounds_only": "Alleen favorieten"
     },
     "card": {
         "kind": "Melding",
@@ -69,7 +73,8 @@
         "unknown_reporter": "Onbekend",
         "source_iot": "Via IoT",
         "round_stops": "Ronde · :count stops",
-        "reporter_email_verified": "Melder bevestigd"
+        "reporter_email_verified": "Melder bevestigd",
+        "favorite_round": "Favoriet"
     },
     "create": {
         "title": "Nieuwe melding",
@@ -136,7 +141,10 @@
         "recurring": "Terugkerend",
         "recurring_help": "Uit = eenmalige ronde (geen volgende cyclus).",
         "one_time_due": "Vervaldatum",
-        "one_time_due_help": "Datum waarop deze eenmalige ronde gepland staat."
+        "one_time_due_help": "Datum waarop deze eenmalige ronde gepland staat.",
+        "from_favorite": "Vanuit favoriet",
+        "from_favorite_none": "Nieuwe ronde (leeg)",
+        "from_favorite_help": "Kiest een favoriete ronde: stops en titel worden overgenomen. Standaard eenmalig met vervaldatum vandaag — kies daarna de uitvoerder."
     },
     "errors": {
         "cannot_close_approved": "Een goedgekeurde melding kan niet worden gesloten.",
@@ -171,7 +179,10 @@
         "cannot_end_not_recurring": "Alleen terugkerende meldingen kunnen worden gesloten.",
         "cannot_end_already_ended": "Deze terugkerende melding is al gesloten.",
         "end_recurring_reason_required": "Geef een reden op voor het sluiten.",
-        "end_recurring_reason_min": "De reden moet minstens 2 tekens bevatten."
+        "end_recurring_reason_min": "De reden moet minstens 2 tekens bevatten.",
+        "round_favorite_not_round": "Alleen een inspectieronde kan als favoriet worden gemarkeerd.",
+        "round_copy_not_round": "Alleen een inspectieronde kan worden gekopieerd.",
+        "round_copy_stops_unavailable": "Deze ronde heeft te weinig geldige stops meer om te kopiëren (unit checks of unit uit)."
     },
     "show": {
         "title": "Melding",

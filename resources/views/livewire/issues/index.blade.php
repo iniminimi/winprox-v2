@@ -86,6 +86,13 @@
                                 {{ __('issues.filter.inspection_rounds_only') }}
                             </label>
                         </div>
+                    @else
+                        <div class="wp-filter-cell">
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model.defer="favoriteRoundsOnly">
+                                {{ __('issues.filter.favorite_rounds_only') }}
+                            </label>
+                        </div>
                     @endunless
                     <div class="wp-filter-form__actions">
                         <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('issues.filter.apply') }}</button>
@@ -113,6 +120,7 @@
                         @include('partials.wp-issue-list-row', [
                             'issue' => $issue,
                             'highlight' => $highlightIssue && (int) $highlightIssue === (int) $issue->id,
+                            'roundQuickActions' => $inspectionRoundOnly,
                         ])
                     @endforeach
                 </div>

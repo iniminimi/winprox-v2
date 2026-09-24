@@ -58,6 +58,13 @@ class IssuePolicy
             && $this->workMenuInspectionRoundsEnabledFor($user);
     }
 
+    public function manageInspectionRoundFavorite(User $user, Issue $issue): bool
+    {
+        return $this->update($user, $issue)
+            && $issue->isInspectionRound()
+            && $this->workMenuInspectionRoundsEnabledFor($user);
+    }
+
     private function workMenuInspectionRoundsEnabledFor(User $user): bool
     {
         if ($user->tenant_id !== null) {

@@ -123,6 +123,14 @@
                     "text": "Introduce descripción, equipo y paradas. Busca/elige a la izquierda, arrastra la ruta a la derecha. Recurrente o puntual. Arranca la primera tarea."
                 },
                 {
+                    "label": "Favorito",
+                    "text": "Marque una ronda con la estrella. Los favoritos van arriba y se pueden filtrar. Los favoritos cerrados siguen encontrándose con «Solo favoritos»."
+                },
+                {
+                    "label": "Copiar",
+                    "text": "Abre la ventana de planificación con paradas y título rellenos. Por defecto ronda única con vencimiento hoy; elija equipo/ejecutor y confirme."
+                },
+                {
                     "label": "Intervalo",
                     "nested": true,
                     "text": "Cada cuánto vuelve la ronda (p. ej. cada 2 semanas, cada mes, cada trimestre, cada año)."
@@ -1792,6 +1800,10 @@
         "issues.round_create": {
             "title": "Ayuda — Planificar ronda de inspección",
             "actions": [
+                {
+                    "label": "Desde favorito",
+                    "text": "Elija un favorito para reutilizar paradas y título. Por defecto única para hoy; luego elija el ejecutor."
+                },
                 {
                     "label": "Descripción",
                     "text": "Título corto en una línea (p. ej. «Ronda limpieza Brujas»)."

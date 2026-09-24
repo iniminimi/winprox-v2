@@ -34,6 +34,7 @@ class ExportIssuesRequest extends FormRequest
             'q' => ['nullable', 'string', 'max:200'],
             'recurring' => ['nullable'],
             'inspection_round' => ['nullable'],
+            'favorite_rounds' => ['nullable'],
             'unit_id' => ['nullable', 'integer', 'min:1'],
         ];
     }

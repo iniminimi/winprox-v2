@@ -21,6 +21,22 @@
             </div>
         @endif
 
+        @if (($favoriteRounds ?? collect())->isNotEmpty())
+            <div class="wp-field">
+                <label class="wp-label" for="round_create_copy_from">{{ __('issues.round_create.from_favorite') }}</label>
+                <select id="round_create_copy_from" class="wp-select" wire:model.live="copyFromRoundId">
+                    <option value="">{{ __('issues.round_create.from_favorite_none') }}</option>
+                    @foreach ($favoriteRounds as $favoriteRound)
+                        <option value="{{ $favoriteRound->id }}">
+                            {{ \Illuminate\Support\Str::limit($favoriteRound->localizedDescription() ?: $favoriteRound->description, 80) }}
+                            · #{{ $favoriteRound->id }}
+                        </option>
+                    @endforeach
+                </select>
+                <p class="wp-muted wp-text-sm">{{ __('issues.round_create.from_favorite_help') }}</p>
+            </div>
+        @endif
+
         <div class="wp-field">
             <label class="wp-label" for="round_create_description">{{ __('issues.create.description') }}</label>
             <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">

@@ -117,7 +117,8 @@
                     "Par arrêt : OK, Pas OK (avec signalement) ou ignorer avec motif.",
                     "L’unité Site entier affiche le nom du site dans la tournée.",
                     "Avec Time + GPS, la tournée du jour apparaît sous Où dois-je aller.",
-                    "Impression d’un cycle depuis la tâche de tournée."
+                    "Impression d’un cycle depuis la tâche de tournée.",
+                    "Marquez une tournée en favori et copiez-la rapidement (arrêts + titre) ; par défaut tournée unique pour aujourd’hui."
                 ]
             },
             {

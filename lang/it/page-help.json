@@ -123,6 +123,14 @@
                     "text": "Inserisci descrizione, team e fermate. Cerca/scegli a sinistra, trascina il percorso a destra. Ricorrente o una tantum. Avvia la prima attività."
                 },
                 {
+                    "label": "Preferito",
+                    "text": "Contrassegna un giro con la stella. I preferiti restano in alto e sono filtrabili. I preferiti chiusi restano trovabili con «Solo preferiti»."
+                },
+                {
+                    "label": "Copia",
+                    "text": "Apre la popup di pianificazione con fermate e titolo precompilati. Di default giro una tantum in scadenza oggi; scegli team/esecutore e conferma."
+                },
+                {
                     "label": "Intervallo",
                     "nested": true,
                     "text": "Ogni quanto il giro si ripete (es. ogni 2 settimane, ogni mese, ogni trimestre, ogni anno)."
@@ -1792,6 +1800,10 @@
         "issues.round_create": {
             "title": "Aiuto — Pianifica giro di ispezione",
             "actions": [
+                {
+                    "label": "Da preferito",
+                    "text": "Scegli un preferito per riprendere fermate e titolo. Di default una tantum oggi; poi scegli l’esecutore."
+                },
                 {
                     "label": "Descrizione",
                     "text": "Titolo breve su una riga (es. «Giro pulizie Bruges»)."

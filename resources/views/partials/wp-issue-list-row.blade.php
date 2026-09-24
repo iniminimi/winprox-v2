@@ -3,6 +3,7 @@
     use App\Enums\TaskStatus;
 
     $interactive = $interactive ?? true;
+    $roundQuickActions = (bool) ($roundQuickActions ?? false);
 
     // Exclude closed tasks from display
     $openTasks = $issue->tasks->filter(fn ($t) => $t->status !== TaskStatus::Closed);
@@ -47,15 +48,21 @@
     };
     // Get highest priority task for this issue (excluding closed tasks)
     $highestPriorityTask = $openTasks->sortBy(fn ($t) => $t->priority?->sortOrder() ?? 99)->first();
+    $isFavoriteRound = $issue->isInspectionRound() && (bool) $issue->is_favorite_round;
 @endphp
-@if ($interactive)
+@if ($roundQuickActions)
+<div @class(['wp-issue-row', 'wp-issue-row--highlight' => $highlight ?? false]) wire:key="issue-{{ $issue->id }}">
+    <a href="{{ route('issues.show', $issue) }}" class="wp-issue-row-link wp-grow wp-stack-tight">
+@elseif ($interactive)
 <a href="{{ route('issues.show', $issue) }}"
    @class(['wp-issue-row', 'wp-issue-row--highlight' => $highlight ?? false])
    wire:key="issue-{{ $issue->id }}">
 @else
 <div @class(['wp-issue-row', 'wp-issue-row--static', 'wp-issue-row--highlight' => $highlight ?? false])>
 @endif
+    @unless ($roundQuickActions)
     <div class="wp-grow wp-stack-tight">
+    @endunless
         @if ($cardTitle !== '')
             <p class="wp-issue-card-title">{{ $cardTitle }}</p>
         @endif
@@ -67,8 +74,16 @@
         @if ($issue->localizedDescription())
             <p class="wp-issue-card-desc">{{ $issue->localizedDescription() }}</p>
         @endif
+    @unless ($roundQuickActions)
     </div>
+    @endunless
+    @if ($roundQuickActions)
+    </a>
+    @endif
     <div class="wp-issue-row-meta">
+        @if ($isFavoriteRound)
+            <span class="wp-pill wp-pill--done">{{ __('issues.card.favorite_round') }}</span>
+        @endif
         @unless ($issue->isApproved())
             <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>
         @endunless
@@ -89,7 +104,32 @@
         @endif
         <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
     </div>
-@if ($interactive)
+    @if ($roundQuickActions)
+        @can('manageInspectionRoundFavorite', $issue)
+            <button
+                type="button"
+                class="btn btn--ghost btn--sm"
+                wire:click="toggleRoundFavorite({{ $issue->id }})"
+                title="{{ $isFavoriteRound ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
+                aria-label="{{ $isFavoriteRound ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
+                aria-pressed="{{ $isFavoriteRound ? 'true' : 'false' }}"
+            >
+                <x-wp-icon name="star" @class(['wp-icon', 'wp-icon--sm', 'wp-icon--favorite' => $isFavoriteRound]) />
+            </button>
+        @endcan
+        @can('createInspectionRound', App\Models\Issue::class)
+            <button
+                type="button"
+                class="btn btn--ghost btn--sm"
+                wire:click="copyRoundCreate({{ $issue->id }})"
+            >
+                {{ __('issues.list.copy_round') }}
+            </button>
+        @endcan
+    @endif
+@if ($roundQuickActions)
+</div>
+@elseif ($interactive)
 </a>
 @else
 </div>

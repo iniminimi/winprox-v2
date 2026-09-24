@@ -4,8 +4,10 @@ namespace App\Livewire\Issues;
 
 use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\AssignIssueTeamTaskAction;
+use App\Actions\Issues\BuildInspectionRoundCopyPrefillAction;
 use App\Actions\Issues\CreateInspectionRoundAction;
 use App\Actions\Issues\CreateManagerIssueAction;
+use App\Actions\Issues\ToggleInspectionRoundFavoriteAction;
 use App\Enums\IssueTranslationStatus;
 use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
@@ -53,6 +55,9 @@ class Index extends Component
     #[Url(as: 'inspection_round')]
     public bool $inspectionRoundOnly = false;
 
+    #[Url(as: 'favorite_rounds')]
+    public bool $favoriteRoundsOnly = false;
+
     #[Url(as: 'highlight')]
     public ?int $highlightIssue = null;
 
@@ -71,6 +76,8 @@ class Index extends Component
     public bool $showCreateModal = false;
 
     public bool $showRoundCreateModal = false;
+
+    public ?int $copyFromRoundId = null;
 
     public int $createStep = 1;
 
@@ -116,6 +123,8 @@ class Index extends Component
         // Inspectierondes-scherm: zowel terugkerend als eenmalig.
         if ($this->inspectionRoundOnly) {
             $this->authorize('viewInspectionRounds', Issue::class);
+        } else {
+            $this->favoriteRoundsOnly = false;
         }
 
         if ($this->openCreate) {
@@ -155,6 +164,7 @@ class Index extends Component
             'q' => trim($this->search) !== '' ? trim($this->search) : null,
             'recurring' => $this->recurring ? '1' : null,
             'inspection_round' => $this->inspectionRoundOnly ? '1' : null,
+            'favorite_rounds' => $this->inspectionRoundOnly && $this->favoriteRoundsOnly ? '1' : null,
             'highlight' => $this->highlightIssue ?: null,
             'limit' => $this->perStatusLimit !== PerStatusListLimit::DEFAULT ? $this->perStatusLimit : null,
         ])), navigate: true);
@@ -193,6 +203,48 @@ class Index extends Component
     {
         $this->showRoundCreateModal = false;
         $this->resetRoundCreateForm();
+    }
+
+    public function toggleRoundFavorite(int $issueId, ToggleInspectionRoundFavoriteAction $toggle): void
+    {
+        $issue = Issue::query()->findOrFail($issueId);
+        $this->authorize('manageInspectionRoundFavorite', $issue);
+
+        $toggle->handle($issue, auth()->user(), ! (bool) $issue->is_favorite_round);
+    }
+
+    public function copyRoundCreate(int $issueId, BuildInspectionRoundCopyPrefillAction $prefill): void
+    {
+        $this->authorize('createInspectionRound', Issue::class);
+
+        $source = Issue::query()->findOrFail($issueId);
+        $this->authorize('view', $source);
+
+        $data = $prefill->handle($source);
+
+        $this->resetRoundCreateForm();
+        $this->copyFromRoundId = (int) $source->id;
+        $this->description = $data['description'];
+        $this->is_recurring = $data['is_recurring'];
+        $this->recurrence_interval_value = $data['recurrence_interval_value'];
+        $this->recurrence_interval_unit = $data['recurrence_interval_unit'];
+        $this->recurrence_lead_days = $data['recurrence_lead_days'];
+        $this->recurrence_first_due_date = $data['recurrence_first_due_date'];
+        $this->round_stop_unit_ids = $data['round_stop_unit_ids'];
+        $this->internal_team_id = $data['internal_team_id'];
+        $this->assigned_worker_id = $data['assigned_worker_id'];
+        $this->task_priority = $data['task_priority'];
+        $this->task_note = $data['task_note'];
+        $this->showRoundCreateModal = true;
+    }
+
+    public function updatedCopyFromRoundId(?int $value): void
+    {
+        if ($value === null || $value <= 0) {
+            return;
+        }
+
+        $this->copyRoundCreate($value, app(BuildInspectionRoundCopyPrefillAction::class));
     }
 
     public function removePhoto(int $index): void
@@ -400,7 +452,10 @@ class Index extends Component
 
         session()->flash('success', __('issues.round_create.success'));
 
-        return $this->redirectRoute('issues.index', ['highlight' => $issue->id], navigate: true);
+        return $this->redirectRoute('issues.index', array_filter([
+            'highlight' => $issue->id,
+            'inspection_round' => $this->inspectionRoundOnly ? '1' : null,
+        ]), navigate: true);
     }
 
     public function backCreateToStepOne(): void
@@ -433,6 +488,7 @@ class Index extends Component
 
     private function resetRoundCreateForm(): void
     {
+        $this->copyFromRoundId = null;
         $this->description = '';
         $this->is_recurring = true;
         $this->recurrence_interval_value = 1;
@@ -454,7 +510,10 @@ class Index extends Component
         $issues = Issue::query()
             ->with(['location', 'unit.translations', 'tasks.team.translations', 'translations', 'roundStops'])
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
-            ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
+            ->when(
+                $this->statusFilter === '' && ! ($this->inspectionRoundOnly && $this->favoriteRoundsOnly),
+                fn ($q) => $q->where('status', '!=', TaskStatus::Closed),
+            )
             ->when($this->teamFilter, fn ($q) => $q->whereHas('tasks', fn ($t) => $t->where('internal_team_id', $this->teamFilter)))
             ->when($this->recurring, fn ($q) => $q->where('is_recurring', true))
             ->when($this->inspectionRoundOnly, function ($q) {
@@ -467,6 +526,7 @@ class Index extends Component
                         ->havingRaw('COUNT(*) >= 2');
                 });
             })
+            ->when($this->inspectionRoundOnly && $this->favoriteRoundsOnly, fn ($q) => $q->where('is_favorite_round', true))
             ->when($this->unitFilter, fn ($q) => $q->where('unit_id', $this->unitFilter))
             ->when(trim($this->search) !== '', function ($q) {
                 $term = '%'.trim($this->search).'%';
@@ -496,7 +556,11 @@ class Index extends Component
                         }));
                 });
             })
-            ->orderByDesc('id')
+            ->when(
+                $this->inspectionRoundOnly,
+                fn ($q) => $q->orderByDesc('is_favorite_round')->orderByDesc('id'),
+                fn ($q) => $q->orderByDesc('id'),
+            )
             ->get();
 
         $pendingIssues = $issues->filter(
@@ -552,6 +616,7 @@ class Index extends Component
                 || $this->search !== ''
                 || $this->recurring
                 || $this->inspectionRoundOnly
+                || $this->favoriteRoundsOnly
                 || $this->unitFilter,
             'highlightIssue' => $this->highlightIssue,
             'onboarding' => TenantOnboardingState::current(),
@@ -561,6 +626,7 @@ class Index extends Component
                 'q' => trim($this->search) !== '' ? trim($this->search) : null,
                 'recurring' => $this->recurring ? '1' : null,
                 'inspection_round' => $this->inspectionRoundOnly ? '1' : null,
+                'favorite_rounds' => $this->inspectionRoundOnly && $this->favoriteRoundsOnly ? '1' : null,
                 'unit_id' => $this->unitFilter ?: null,
             ])),
             'printUrl' => route('issues.print', array_filter([
@@ -569,8 +635,21 @@ class Index extends Component
                 'q' => trim($this->search) !== '' ? trim($this->search) : null,
                 'recurring' => $this->recurring ? '1' : null,
                 'inspection_round' => $this->inspectionRoundOnly ? '1' : null,
+                'favorite_rounds' => $this->inspectionRoundOnly && $this->favoriteRoundsOnly ? '1' : null,
                 'unit_id' => $this->unitFilter ?: null,
             ])),
+            'favoriteRounds' => $this->showRoundCreateModal
+                ? Issue::query()
+                    ->where('is_favorite_round', true)
+                    ->whereIn('id', function ($sub) {
+                        $sub->select('issue_id')
+                            ->from('issue_round_stops')
+                            ->groupBy('issue_id')
+                            ->havingRaw('COUNT(*) >= 2');
+                    })
+                    ->orderByDesc('id')
+                    ->get(['id', 'description'])
+                : collect(),
             'createLocations' => $this->showCreateModal
                 ? Location::query()->orderBy('name')->get()
                 : collect(),

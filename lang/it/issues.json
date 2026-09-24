@@ -26,7 +26,10 @@
         "empty": "Nessuna segnalazione ancora. Ne crei una con il pulsante «+ Aggiungi segnalazione».",
         "empty_filtered": "Nessuna segnalazione corrisponde a questi filtri.",
         "subtitle_inspection_rounds": "Giri con almeno due fermate unità (ricorrente o una tantum)",
-        "empty_inspection_rounds": "Nessun giro di ispezione. Pianificane uno con \"Pianifica giro di ispezione\"."
+        "empty_inspection_rounds": "Nessun giro di ispezione. Pianificane uno con \"Pianifica giro di ispezione\".",
+        "favorite_round": "Preferito",
+        "unfavorite_round": "Rimuovi preferito",
+        "copy_round": "Copia"
     },
     "filter": {
         "status": "Filtra per stato",
@@ -42,7 +45,8 @@
         "apply": "VAI!",
         "reset": "Cancella filtri",
         "hint": "Clicchi su una segnalazione per visualizzare i dettagli.",
-        "inspection_rounds_only": "Solo giri di ispezione"
+        "inspection_rounds_only": "Solo giri di ispezione",
+        "favorite_rounds_only": "Solo preferiti"
     },
     "card": {
         "kind": "Segnalazione",
@@ -69,7 +73,8 @@
         "unknown_reporter": "Sconosciuto",
         "source_iot": "Via IoT",
         "round_stops": "Giro · :count fermate",
-        "reporter_email_verified": "Segnalante confermato"
+        "reporter_email_verified": "Segnalante confermato",
+        "favorite_round": "Preferito"
     },
     "create": {
         "title": "Nuova segnalazione",
@@ -136,7 +141,10 @@
         "recurring": "Ricorrente",
         "recurring_help": "Disattivo = giro una tantum (nessun ciclo successivo).",
         "one_time_due": "Scadenza",
-        "one_time_due_help": "Data prevista per questo giro una tantum."
+        "one_time_due_help": "Data prevista per questo giro una tantum.",
+        "from_favorite": "Da preferito",
+        "from_favorite_none": "Nuovo giro (vuoto)",
+        "from_favorite_help": "Scegli un preferito: fermate e titolo vengono ripresi. Di default giro una tantum in scadenza oggi — poi scegli l'esecutore."
     },
     "errors": {
         "cannot_close_approved": "Una segnalazione approvata non può essere chiusa.",
@@ -171,7 +179,10 @@
         "cannot_end_not_recurring": "Solo le segnalazioni ricorrenti possono essere chiuse così.",
         "cannot_end_already_ended": "Questa segnalazione ricorrente è già chiusa.",
         "end_recurring_reason_required": "Indichi un motivo per la chiusura.",
-        "end_recurring_reason_min": "Il motivo deve contenere almeno 2 caratteri."
+        "end_recurring_reason_min": "Il motivo deve contenere almeno 2 caratteri.",
+        "round_favorite_not_round": "Solo un giro di ispezione può essere contrassegnato come preferito.",
+        "round_copy_not_round": "Solo un giro di ispezione può essere copiato.",
+        "round_copy_stops_unavailable": "Questo giro non ha più abbastanza fermate valide da copiare (controlli unità disattivati o unità inattiva)."
     },
     "show": {
         "title": "Segnalazione",

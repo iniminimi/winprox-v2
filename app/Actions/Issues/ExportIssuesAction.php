@@ -23,7 +23,10 @@ class ExportIssuesAction
             ->where('tenant_id', $tenantId)
             ->with(['location.translations', 'unit.translations', 'tasks.team.translations', 'translations', 'roundStops'])
             ->when($filters->status !== '', fn ($q) => $q->where('status', $filters->status))
-            ->when($filters->status === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
+            ->when(
+                $filters->status === '' && ! ($filters->inspectionRoundOnly && $filters->favoriteRoundsOnly),
+                fn ($q) => $q->where('status', '!=', TaskStatus::Closed),
+            )
             ->when($filters->teamId, fn ($q) => $q->whereHas(
                 'tasks',
                 fn ($t) => $t->where('internal_team_id', $filters->teamId)
@@ -37,6 +40,7 @@ class ExportIssuesAction
                         ->havingRaw('COUNT(*) >= 2');
                 });
             })
+            ->when($filters->inspectionRoundOnly && $filters->favoriteRoundsOnly, fn ($q) => $q->where('is_favorite_round', true))
             ->when($filters->unitId, fn ($q) => $q->where('unit_id', $filters->unitId))
             ->when(trim($filters->search) !== '', function ($q) use ($filters) {
                 $term = '%'.trim($filters->search).'%';

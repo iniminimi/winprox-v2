@@ -26,7 +26,10 @@
         "empty": "No issues yet. Create one using the \"+ Add issue\" button.",
         "empty_filtered": "No issues match these filters.",
         "subtitle_inspection_rounds": "Rounds with at least two unit stops (recurring or one-time)",
-        "empty_inspection_rounds": "No inspection rounds yet. Plan one with \"Plan inspection round\"."
+        "empty_inspection_rounds": "No inspection rounds yet. Plan one with \"Plan inspection round\".",
+        "favorite_round": "Favorite",
+        "unfavorite_round": "Remove favorite",
+        "copy_round": "Copy"
     },
     "filter": {
         "status": "Filter by status",
@@ -42,7 +45,8 @@
         "apply": "GO!",
         "reset": "Clear filters",
         "hint": "Click an issue to view details.",
-        "inspection_rounds_only": "Inspection rounds only"
+        "inspection_rounds_only": "Inspection rounds only",
+        "favorite_rounds_only": "Favorites only"
     },
     "card": {
         "kind": "Issue",
@@ -69,7 +73,8 @@
         "unknown_reporter": "Unknown",
         "source_iot": "Via IoT",
         "round_stops": "Round · :count stops",
-        "reporter_email_verified": "Reporter confirmed"
+        "reporter_email_verified": "Reporter confirmed",
+        "favorite_round": "Favorite"
     },
     "create": {
         "title": "New issue",
@@ -136,7 +141,10 @@
         "recurring": "Recurring",
         "recurring_help": "Off = one-time round (no next cycle).",
         "one_time_due": "Due date",
-        "one_time_due_help": "Date this one-time round is scheduled for."
+        "one_time_due_help": "Date this one-time round is scheduled for.",
+        "from_favorite": "From favorite",
+        "from_favorite_none": "New round (blank)",
+        "from_favorite_help": "Pick a favorite round to reuse its stops and title. Defaults to a one-time round due today — then choose the worker."
     },
     "errors": {
         "cannot_close_approved": "An approved issue cannot be closed.",
@@ -171,7 +179,10 @@
         "cannot_end_not_recurring": "Only recurring issues can be closed this way.",
         "cannot_end_already_ended": "This recurring issue is already closed.",
         "end_recurring_reason_required": "Provide a reason for closing.",
-        "end_recurring_reason_min": "The reason must be at least 2 characters."
+        "end_recurring_reason_min": "The reason must be at least 2 characters.",
+        "round_favorite_not_round": "Only an inspection round can be marked as a favorite.",
+        "round_copy_not_round": "Only an inspection round can be copied.",
+        "round_copy_stops_unavailable": "This round no longer has enough valid stops to copy (unit checks off or unit inactive)."
     },
     "show": {
         "title": "Issue",

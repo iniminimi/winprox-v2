@@ -1526,6 +1526,12 @@ button.wp-issue-row:disabled {
     background-color: var(--wp-accent-soft, #ecfdf5);
 }
 
+.wp-icon--favorite {
+    fill: var(--wp-accent);
+    stroke: var(--wp-accent);
+    color: var(--wp-accent);
+}
+
 .wp-issue-row .wp-stack-tight > * + * {
     margin-top: 0.125rem;
 }
