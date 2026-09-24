@@ -140,6 +140,10 @@
             "worker": {
                 "title": "Ausführenden hinzufügen",
                 "body": "Fügen Sie jemanden hinzu, der Aufgaben über Clock Point ausführt."
+            },
+            "workers": {
+                "title": "Ausführende ansehen",
+                "body": "Ausführende ansehen und bearbeiten."
             }
         }
     }

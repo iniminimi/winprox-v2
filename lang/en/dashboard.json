@@ -140,6 +140,10 @@
             "worker": {
                 "title": "Add a worker",
                 "body": "Add someone who carries out tasks via Clock Point."
+            },
+            "workers": {
+                "title": "View workers",
+                "body": "View and edit workers."
             }
         }
     }

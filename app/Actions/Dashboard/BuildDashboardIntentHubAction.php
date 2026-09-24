@@ -73,6 +73,17 @@ class BuildDashboardIntentHubAction
                     'create_worker' => 1,
                 ]),
             ];
+
+            $tiles[] = [
+                'key' => 'workers',
+                'icon' => 'team',
+                'tone' => 'present_now',
+                'title' => 'dashboard.intent.tiles.workers.title',
+                'body' => 'dashboard.intent.tiles.workers.body',
+                'href' => route('team.index', [
+                    'section' => 'teams',
+                ]),
+            ];
         }
 
         if ($tenant->hasTimeModule()) {
@@ -104,7 +115,7 @@ class BuildDashboardIntentHubAction
         if ($tenant->hasTimeModule()) {
             $tiles[] = [
                 'key' => 'roster',
-                'icon' => 'calendar',
+                'icon' => 'roster',
                 'tone' => 'new_issues',
                 'title' => 'dashboard.intent.tiles.roster.title',
                 'body' => 'dashboard.intent.tiles.roster.body',

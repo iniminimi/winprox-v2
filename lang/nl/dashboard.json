@@ -140,6 +140,10 @@
             "worker": {
                 "title": "Uitvoerder toevoegen",
                 "body": "Voeg iemand toe die taken uitvoert via Clock Point."
+            },
+            "workers": {
+                "title": "Uitvoerders bekijken",
+                "body": "Bekijk en wijzig de uitvoerders."
             }
         }
     }

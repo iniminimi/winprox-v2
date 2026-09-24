@@ -140,6 +140,10 @@
             "worker": {
                 "title": "Aggiungi esecutore",
                 "body": "Aggiungi qualcuno che esegue attività tramite Clock Point."
+            },
+            "workers": {
+                "title": "Vedi esecutori",
+                "body": "Consulta e modifica gli esecutori."
             }
         }
     }

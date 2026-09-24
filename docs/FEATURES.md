@@ -45,14 +45,15 @@ Een starttemplate toont de keuze in preview en op
 **Intent-hub (“Wat wil je doen?”)** — bovenaan, vóór de KPI’s:
 - Begroeting via dezelfde **`x-wp-page-head-title`** als de Dashboard-kop (zelfde lettergrootte/glass).
 - Snelkoppelingen als **`.wp-kpi`-tegels** (zelfde raster/icoon-eerst als de overzicht-KPI’s; geen aparte tegel-component):
-  - Volgorde: **Nieuwe dagtaak** (favorieten) → **Nieuwe dagtaak** (planmodal) → **Locatie** → **Uitvoerder** → **Wie werkt waar vandaag?** → **Welke taken vandaag?** → **Uurrooster**
+  - Volgorde: **Nieuwe dagtaak** (favorieten) → **Nieuwe dagtaak** (planmodal) → **Locatie** → **Uitvoerder toevoegen** → **Uitvoerders bekijken** → **Wie werkt waar vandaag?** → **Welke taken vandaag?** → **Uurrooster**
   - **Nieuwe dagtaak** (favorieten, oranje ster) → Inspectierondes gefilterd op favorieten (`favorite_rounds`)
   - **Nieuwe dagtaak** → Inspectierondes-planmodal (`round_create`)
   - **Locatie toevoegen** → Locaties + create-modal
   - **Uitvoerder toevoegen** → Personen → Teams + worker-modal
+  - **Uitvoerders bekijken** → Personen → Teams (lijst bewerken)
   - **Wie werkt waar vandaag?** → Time → Aanwezigheid (alleen met Time-module)
   - **Welke taken vandaag?** → Kalender dagweergave (taken van vandaag); alleen als kalender in het werkmenu aan staat (geen briefing-fallback)
-  - **Uurrooster bekijken** → Time → Planning (alleen met Time-module)
+  - **Uurrooster bekijken** → Time → Planning (alleen met Time-module; rooster-icoon, geen kalender)
   - Volle titel/omschrijving op intent-tegels (geen ellipsis-afkorting); uitleg klein, titel normaal
 - Tegels volgen rechten/werkmenu; icoontinten via bestaande KPI-tokens.
 - Extra ruimte tussen intent-sectie en **Dashboard**-kop; daaronder KPI’s, recente meldingen, briefing en starttemplate.
