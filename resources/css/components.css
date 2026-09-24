@@ -883,6 +883,10 @@ a.wp-kpi:hover {
     color: var(--wp-warning-text);
 }
 
+.wp-kpi--favorite .wp-kpi-kicker {
+    color: var(--wp-warning-text);
+}
+
 .wp-kpi--open_tasks .wp-kpi-kicker {
     color: var(--wp-text-body);
 }
@@ -976,6 +980,18 @@ a.wp-kpi:hover {
     background-color: var(--wp-warning-soft);
     border-color: var(--wp-warning-border);
     color: var(--wp-warning-text);
+}
+
+/* Favorieten-ster: zelfde amber/oranje tokens als .wp-favorite-star */
+.wp-kpi--favorite .wp-kpi-icon {
+    background-color: var(--wp-warning-soft);
+    border-color: var(--wp-warning);
+    color: var(--wp-warning);
+}
+
+.wp-kpi--favorite .wp-kpi-icon svg {
+    stroke: var(--wp-warning);
+    fill: var(--wp-warning);
 }
 
 .wp-kpi--open_tasks .wp-kpi-icon {

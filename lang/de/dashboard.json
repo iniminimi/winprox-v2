@@ -125,6 +125,10 @@
                 "title": "Welche Aufgaben heute?",
                 "body": "Sehen Sie, welche Aufgaben heute erledigt werden müssen."
             },
+            "day_task_favorites": {
+                "title": "Neue Tagesaufgabe",
+                "body": "Planen Sie eine Inspektionsrunde über Ihre Favoriten."
+            },
             "day_task": {
                 "title": "Neue Tagesaufgabe",
                 "body": "Planen Sie eine Inspektionsrunde an Ihren Standorten."

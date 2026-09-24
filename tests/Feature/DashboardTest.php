@@ -326,12 +326,14 @@ it('toont de intent-hub boven de KPI’s met begroeting en snelkoppelingen', fun
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.intent.title'))
         ->assertSee('Anna')
-        ->assertSee(__('dashboard.intent.tiles.roster.title'))
-        ->assertSee(__('dashboard.intent.tiles.presence.title'))
-        ->assertSee(__('dashboard.intent.tiles.today_tasks.title'))
+        ->assertSee(__('dashboard.intent.tiles.day_task_favorites.body'))
         ->assertSee(__('dashboard.intent.tiles.day_task.title'))
         ->assertSee(__('dashboard.intent.tiles.location.title'))
         ->assertSee(__('dashboard.intent.tiles.worker.title'))
+        ->assertSee(__('dashboard.intent.tiles.presence.title'))
+        ->assertSee(__('dashboard.intent.tiles.today_tasks.title'))
+        ->assertSee(__('dashboard.intent.tiles.roster.title'))
+        ->assertSeeHtml('wp-kpi--favorite')
         ->assertSeeHtml('wp-dashboard-intent')
         ->assertSee(__('dashboard.kpi.new_issues'));
 });
@@ -363,6 +365,7 @@ it('verbergt Time-tegels in de intent-hub zonder Time-module', function () {
         ->assertSee(__('dashboard.intent.title'))
         ->assertDontSee(__('dashboard.intent.tiles.roster.title'))
         ->assertDontSee(__('dashboard.intent.tiles.presence.title'))
+        ->assertSee(__('dashboard.intent.tiles.day_task_favorites.body'))
         ->assertSee(__('dashboard.intent.tiles.today_tasks.title'))
         ->assertSee(__('dashboard.intent.tiles.day_task.title'));
 });

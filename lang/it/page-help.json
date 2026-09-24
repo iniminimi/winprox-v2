@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "Cosa vuoi fare?",
-                    "text": "In alto ci sono scorciatoie: visualizza il turno, chi lavora dove oggi, quali attività oggi, nuova attività giornaliera (giro di ispezione), aggiungi sede e aggiungi esecutore. Così non devi cercare nei menu."
+                    "text": "In alto ci sono scorciatoie: nuova attività giornaliera dai preferiti, nuova attività giornaliera, aggiungi sede, aggiungi esecutore, chi lavora dove oggi, quali attività oggi e visualizza il turno. Così non devi cercare nei menu."
                 },
                 {
                     "label": "Panoramica",

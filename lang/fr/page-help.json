@@ -11,7 +11,7 @@
             "actions": [
                 {
                     "label": "Que voulez-vous faire ?",
-                    "text": "En haut se trouvent des raccourcis : voir le planning, qui travaille où aujourd’hui, quelles tâches aujourd’hui, nouvelle tâche du jour (ronde d’inspection), ajouter un lieu et ajouter un exécutant. Ainsi, vous n’avez pas à chercher dans les menus."
+                    "text": "En haut se trouvent des raccourcis : nouvelle tâche du jour via favoris, nouvelle tâche du jour, ajouter un lieu, ajouter un exécutant, qui travaille où aujourd’hui, quelles tâches aujourd’hui et voir le planning. Ainsi, vous n’avez pas à chercher dans les menus."
                 },
                 {
                     "label": "Vue d'ensemble",

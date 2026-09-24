@@ -125,6 +125,10 @@
                 "title": "Quali attività oggi?",
                 "body": "Vedi quali attività devono essere svolte oggi."
             },
+            "day_task_favorites": {
+                "title": "Nuova attività giornaliera",
+                "body": "Pianifica un giro di ispezione dai tuoi preferiti."
+            },
             "day_task": {
                 "title": "Nuova attività del giorno",
                 "body": "Pianifica un giro di ispezione nelle tue sedi."

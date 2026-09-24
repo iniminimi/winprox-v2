@@ -22,42 +22,20 @@ class BuildDashboardIntentHubAction
 
         $tiles = [];
 
-        if ($tenant->hasTimeModule()) {
+        if ($user->can('createInspectionRound', Issue::class)) {
             $tiles[] = [
-                'key' => 'roster',
-                'icon' => 'calendar',
-                'tone' => 'new_issues',
-                'title' => 'dashboard.intent.tiles.roster.title',
-                'body' => 'dashboard.intent.tiles.roster.body',
-                'href' => route('time.schedule.index'),
-            ];
-
-            $tiles[] = [
-                'key' => 'presence',
-                'icon' => 'clock',
-                'tone' => 'units',
-                'title' => 'dashboard.intent.tiles.presence.title',
-                'body' => 'dashboard.intent.tiles.presence.body',
-                'href' => route('time.presence.index'),
-            ];
-        }
-
-        if ($user->can('accessWorkMenuCalendar', $tenant)) {
-            $tiles[] = [
-                'key' => 'today_tasks',
-                'icon' => 'calendar',
-                'tone' => 'open_tasks',
-                'title' => 'dashboard.intent.tiles.today_tasks.title',
-                'body' => 'dashboard.intent.tiles.today_tasks.body',
-                'href' => route('calendar.index', [
-                    'view' => 'day',
-                    'type' => 'tasks',
-                    'date' => $now->timezone(config('app.timezone'))->toDateString(),
+                'key' => 'day_task_favorites',
+                'icon' => 'star',
+                'tone' => 'favorite',
+                'title' => 'dashboard.intent.tiles.day_task_favorites.title',
+                'body' => 'dashboard.intent.tiles.day_task_favorites.body',
+                'href' => route('issues.index', [
+                    'recurring' => 1,
+                    'inspection_round' => 1,
+                    'favorite_rounds' => 1,
                 ]),
             ];
-        }
 
-        if ($user->can('createInspectionRound', Issue::class)) {
             $tiles[] = [
                 'key' => 'day_task',
                 'icon' => 'tasks',
@@ -94,6 +72,43 @@ class BuildDashboardIntentHubAction
                     'section' => 'teams',
                     'create_worker' => 1,
                 ]),
+            ];
+        }
+
+        if ($tenant->hasTimeModule()) {
+            $tiles[] = [
+                'key' => 'presence',
+                'icon' => 'clock',
+                'tone' => 'units',
+                'title' => 'dashboard.intent.tiles.presence.title',
+                'body' => 'dashboard.intent.tiles.presence.body',
+                'href' => route('time.presence.index'),
+            ];
+        }
+
+        if ($user->can('accessWorkMenuCalendar', $tenant)) {
+            $tiles[] = [
+                'key' => 'today_tasks',
+                'icon' => 'calendar',
+                'tone' => 'open_tasks',
+                'title' => 'dashboard.intent.tiles.today_tasks.title',
+                'body' => 'dashboard.intent.tiles.today_tasks.body',
+                'href' => route('calendar.index', [
+                    'view' => 'day',
+                    'type' => 'tasks',
+                    'date' => $now->timezone(config('app.timezone'))->toDateString(),
+                ]),
+            ];
+        }
+
+        if ($tenant->hasTimeModule()) {
+            $tiles[] = [
+                'key' => 'roster',
+                'icon' => 'calendar',
+                'tone' => 'new_issues',
+                'title' => 'dashboard.intent.tiles.roster.title',
+                'body' => 'dashboard.intent.tiles.roster.body',
+                'href' => route('time.schedule.index'),
             ];
         }
 

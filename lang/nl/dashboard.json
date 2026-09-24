@@ -125,6 +125,10 @@
                 "title": "Welke taken vandaag?",
                 "body": "Bekijk welke taken er vandaag moeten uitgevoerd worden."
             },
+            "day_task_favorites": {
+                "title": "Nieuwe dagtaak",
+                "body": "Plan een inspectieronde via je favorieten."
+            },
             "day_task": {
                 "title": "Nieuwe dagtaak",
                 "body": "Plan een inspectieronde bij je locaties."

@@ -125,6 +125,10 @@
                 "title": "Which tasks today?",
                 "body": "See which tasks need to be done today."
             },
+            "day_task_favorites": {
+                "title": "New day task",
+                "body": "Plan an inspection round from your favorites."
+            },
             "day_task": {
                 "title": "New day task",
                 "body": "Plan an inspection round at your locations."

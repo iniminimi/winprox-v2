@@ -125,6 +125,10 @@
                 "title": "¿Qué tareas hoy?",
                 "body": "Consulta qué tareas deben realizarse hoy."
             },
+            "day_task_favorites": {
+                "title": "Nueva tarea del día",
+                "body": "Planifica una ronda de inspección desde tus favoritos."
+            },
             "day_task": {
                 "title": "Nueva tarea del día",
                 "body": "Planifica una ronda de inspección en tus ubicaciones."
