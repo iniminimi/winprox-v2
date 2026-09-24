@@ -176,10 +176,12 @@
     border-color: var(--wp-accent-border);
 }
 
-/* Flash-banners op de foto-achtergrond: ondoorzichtig groen, geen glass. */
+/* Flash-banners op de foto-achtergrond: stevig groen, geen glass. */
 [data-theme='modern'] .wp-flash,
 [data-theme='modern'] .wp-flash--success {
-    background-color: color-mix(in srgb, var(--wp-accent) 22%, #ffffff 78%);
+    background-color: color-mix(in srgb, var(--wp-accent) 28%, #ffffff 72%);
+    border-color: var(--wp-accent-border);
+    color: var(--wp-accent-text);
 }
 
 /* Uurrooster-legende op de foto-achtergrond: ondoorzichtig wit, geen glass. */
@@ -251,7 +253,9 @@
 
 [data-theme='modern'] .wp-portal .wp-flash,
 [data-theme='modern'] .wp-portal .wp-flash--success {
-    background-color: color-mix(in srgb, var(--wp-accent) 22%, #ffffff 78%);
+    background-color: color-mix(in srgb, var(--wp-accent) 32%, #ffffff 68%);
+    border-color: var(--wp-accent-border);
+    color: var(--wp-accent-text);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
 }

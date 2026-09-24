@@ -568,7 +568,7 @@
 
                     @if ($tasks->isNotEmpty())
                         @if ($taskHint !== null)
-                            <div class="wp-flash wp-flash--muted">{{ $taskHint }}</div>
+                            <div class="wp-flash">{{ $taskHint }}</div>
                         @endif
 
                         <div class="wp-card wp-card-pad wp-stack" x-data="{ moreTasks: false }">
