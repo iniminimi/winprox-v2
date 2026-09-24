@@ -13,7 +13,9 @@
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
-                    :icon="$inspectionRoundOnly ? 'tasks' : 'issues'"
+                    :icon="$inspectionRoundOnly ? null : 'issues'"
+                    :assistant-video="$inspectionRoundOnly ? asset('video/assistant_task.mp4') : null"
+                    :assistant-video-loop="$inspectionRoundOnly"
                     :title="$inspectionRoundOnly ? __('issues.list.inspection_rounds') : __('issues.list.title')"
                     help-page="{{ $inspectionRoundOnly ? 'issues.inspection_rounds' : 'issues.list' }}"
                     :subtitle="$inspectionRoundOnly ? __('issues.list.subtitle_inspection_rounds') : __('issues.list.subtitle')"
