@@ -27,16 +27,20 @@
         <x-slot name="headlineActions">
             @if ($issue->isInspectionRound())
                 @can('manageInspectionRoundFavorite', $issue)
-                    <button
-                        type="button"
-                        @class(['wp-favorite-star', 'is-on' => (bool) $issue->is_favorite_round])
-                        wire:click="toggleRoundFavorite"
-                        title="{{ $issue->is_favorite_round ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
-                        aria-label="{{ $issue->is_favorite_round ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
-                        aria-pressed="{{ $issue->is_favorite_round ? 'true' : 'false' }}"
+                    <x-wp-tooltip
+                        :text="$issue->is_favorite_round ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round')"
+                        wrap
                     >
-                        <x-wp-icon name="star" class="wp-icon" />
-                    </button>
+                        <button
+                            type="button"
+                            @class(['wp-favorite-star', 'is-on' => (bool) $issue->is_favorite_round])
+                            wire:click="toggleRoundFavorite"
+                            aria-label="{{ $issue->is_favorite_round ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
+                            aria-pressed="{{ $issue->is_favorite_round ? 'true' : 'false' }}"
+                        >
+                            <x-wp-icon name="star" class="wp-icon" />
+                        </button>
+                    </x-wp-tooltip>
                 @endcan
             @endif
             @if ($issue->unit && $issue->location)

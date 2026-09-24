@@ -27,8 +27,8 @@
         "empty_filtered": "Ninguna incidencia coincide con estos filtros.",
         "subtitle_inspection_rounds": "Rondas con al menos dos paradas de unidad (recurrente o puntual)",
         "empty_inspection_rounds": "Aún no hay rondas de inspección. Planifica una con \"Planificar ronda de inspección\".",
-        "favorite_round": "Favorito",
-        "unfavorite_round": "Quitar favorito",
+        "favorite_round": "Marque esta ronda de inspección como favorita para reutilizarla más adelante",
+        "unfavorite_round": "Quitar esta ronda de favoritos",
         "copy_round": "Copiar"
     },
     "filter": {

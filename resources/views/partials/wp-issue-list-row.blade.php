@@ -53,16 +53,20 @@
 @if ($roundQuickActions)
 <div @class(['wp-issue-row', 'wp-issue-row--round', 'wp-issue-row--highlight' => $highlight ?? false]) wire:key="issue-{{ $issue->id }}">
     @can('manageInspectionRoundFavorite', $issue)
-        <button
-            type="button"
-            @class(['wp-favorite-star', 'is-on' => $isFavoriteRound])
-            wire:click="toggleRoundFavorite({{ $issue->id }})"
-            title="{{ $isFavoriteRound ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
-            aria-label="{{ $isFavoriteRound ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
-            aria-pressed="{{ $isFavoriteRound ? 'true' : 'false' }}"
+        <x-wp-tooltip
+            :text="$isFavoriteRound ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round')"
+            wrap
         >
-            <x-wp-icon name="star" class="wp-icon" />
-        </button>
+            <button
+                type="button"
+                @class(['wp-favorite-star', 'is-on' => $isFavoriteRound])
+                wire:click="toggleRoundFavorite({{ $issue->id }})"
+                aria-label="{{ $isFavoriteRound ? __('issues.list.unfavorite_round') : __('issues.list.favorite_round') }}"
+                aria-pressed="{{ $isFavoriteRound ? 'true' : 'false' }}"
+            >
+                <x-wp-icon name="star" class="wp-icon" />
+            </button>
+        </x-wp-tooltip>
     @endcan
     <a href="{{ route('issues.show', $issue) }}" class="wp-issue-row-link wp-grow wp-stack-tight">
         @if ($cardTitle !== '')

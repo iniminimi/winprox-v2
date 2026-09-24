@@ -27,8 +27,8 @@
         "empty_filtered": "Nessuna segnalazione corrisponde a questi filtri.",
         "subtitle_inspection_rounds": "Giri con almeno due fermate unità (ricorrente o una tantum)",
         "empty_inspection_rounds": "Nessun giro di ispezione. Pianificane uno con \"Pianifica giro di ispezione\".",
-        "favorite_round": "Preferito",
-        "unfavorite_round": "Rimuovi preferito",
+        "favorite_round": "Contrassegna questo giro di ispezione come preferito per riutilizzarlo in seguito",
+        "unfavorite_round": "Rimuovi questo giro dai preferiti",
         "copy_round": "Copia"
     },
     "filter": {

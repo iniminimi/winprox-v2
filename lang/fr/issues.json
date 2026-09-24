@@ -27,8 +27,8 @@
         "empty_filtered": "Aucun signalement ne correspond à ces filtres.",
         "subtitle_inspection_rounds": "Tournées avec au moins deux arrêts (récurrente ou unique)",
         "empty_inspection_rounds": "Aucune tournée d’inspection pour le moment. Planifiez-en une via « Planifier une tournée d’inspection ».",
-        "favorite_round": "Favori",
-        "unfavorite_round": "Retirer des favoris",
+        "favorite_round": "Marquez cette tournée d'inspection comme favorite pour la réutiliser plus tard",
+        "unfavorite_round": "Retirer cette tournée de vos favoris",
         "copy_round": "Copier"
     },
     "filter": {

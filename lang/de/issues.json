@@ -27,8 +27,8 @@
         "empty_filtered": "Keine Meldungen für diese Filter.",
         "subtitle_inspection_rounds": "Runden mit mindestens zwei Unit-Stopps (wiederkehrend oder einmalig)",
         "empty_inspection_rounds": "Noch keine Inspektionsrunden. Planen Sie eine über \"Inspektionsrunde planen\".",
-        "favorite_round": "Favorit",
-        "unfavorite_round": "Favorit entfernen",
+        "favorite_round": "Markieren Sie diese Inspektionsrunde als Favorit, um sie später erneut zu verwenden",
+        "unfavorite_round": "Diese Runde aus den Favoriten entfernen",
         "copy_round": "Kopieren"
     },
     "filter": {

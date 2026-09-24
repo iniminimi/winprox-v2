@@ -27,8 +27,8 @@
         "empty_filtered": "No issues match these filters.",
         "subtitle_inspection_rounds": "Rounds with at least two unit stops (recurring or one-time)",
         "empty_inspection_rounds": "No inspection rounds yet. Plan one with \"Plan inspection round\".",
-        "favorite_round": "Favorite",
-        "unfavorite_round": "Remove favorite",
+        "favorite_round": "Mark this inspection round as a favorite to reuse it later",
+        "unfavorite_round": "Remove this round from your favorites",
         "copy_round": "Copy"
     },
     "filter": {

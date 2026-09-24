@@ -27,8 +27,8 @@
         "empty_filtered": "Geen meldingen gevonden voor deze filters.",
         "subtitle_inspection_rounds": "Rondes met minstens twee unit-stops (terugkerend of eenmalig)",
         "empty_inspection_rounds": "Nog geen inspectierondes. Plan er een via \"Inspectieronde plannen\".",
-        "favorite_round": "Favoriet",
-        "unfavorite_round": "Favoriet verwijderen",
+        "favorite_round": "Zet deze inspectieronde als favoriet en gebruik deze later opnieuw",
+        "unfavorite_round": "Verwijder deze ronde uit je favorieten",
         "copy_round": "Kopiëren"
     },
     "filter": {
