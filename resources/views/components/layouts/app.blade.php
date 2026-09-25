@@ -571,7 +571,13 @@
                         </div>
                         <div class="wp-help-panel-title-wrap">
                             <h3 id="wp-help-chat-title" class="wp-help-panel-title">{{ __('help.panel_title') }}</h3>
-                            <p class="wp-help-panel-subtitle">{{ __('help.welcome') }}</p>
+                            <p class="wp-help-panel-subtitle">
+                                {{ __('help.welcome') }}
+                                @if (__('help.helpline_number') !== '')
+                                    <br>
+                                    {{ __('help.helpline_label') }} {{ __('help.helpline_number') }}
+                                @endif
+                            </p>
                         </div>
                     </div>
                     <button type="button" class="wp-help-panel-close" @click="help = false" aria-label="{{ __('help.close_fab') }}">&times;</button>

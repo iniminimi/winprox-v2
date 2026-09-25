@@ -98,6 +98,7 @@ linkt naar zijn lijst):
   - Na elk antwoord kan de gebruiker **zelf** doorsturen naar helpdesk (ook als er wél een
     antwoord kwam); pas dan opslaan in doorgestuurde-vragen (superuser-overzicht).
   - Assistent is **gekoppeld aan de FAQ & kennisbank**.
+  - **NL-UI:** onderschrift toont ook de hulplijn (+32 451 09 58 72, plain text); andere talen niet.
 
 **Device:** desktop-first (laptop).
 
@@ -1210,6 +1211,7 @@ battery-PNG-widget als losse kaart (de vijf PNG's zitten in de compacte capsule)
   (`EscalateHelpChatAnswerAction`: mail + opslaan in `help_chat_unanswered_questions` voor
   superuser-overzicht), ook wanneer de assistent wél een antwoord gaf.
 - Rate-limit (bv. 30/min). Gekoppeld aan de FAQ (§dashboard-assistent = dezelfde feature).
+- Onderschrift: bij **NL**-locale hulplijn als plain text (desktop); andere talen tonen die regel niet.
 - **Superuser-beheer** (buiten dit menu): doorgestuurde vragen (knop **Beantwoorden** →
   kennisbank-item) + Q&A-kennisbank. Kennisbank-antwoorden krijgen **vertaalslots** voor alle
   overige talen; vertaling via **Platform → Vertalingen (Ollama)** (zelfde pipeline als
