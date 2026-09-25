@@ -33,9 +33,14 @@ it('gebruikt de hospitality-long-video op vastgoed per locale', function (string
         ->and(is_file(public_path($path)))->toBeTrue();
 })->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
 
-it('gebruikt de cleaning-welcome-video op schoonmaak en bouw', function () {
-    $path = SectorLandingVideo::relativePath(PromoLanding::WorkOnLocation, 'nl');
+it('gebruikt de cleaning-welcome-video per taal op schoonmaak en bouw', function (string $locale) {
+    $upper = strtoupper($locale);
+    $path = SectorLandingVideo::relativePath(PromoLanding::WorkOnLocation, $locale);
 
-    expect($path)->toBe('video/welcome_cleaning.mp4')
+    expect($path)->toBe("video/welcome_cleaning_{$upper}.mp4")
         ->and(is_file(public_path($path)))->toBeTrue();
+})->with(['nl', 'en']);
+
+it('geeft null voor schoonmaak en bouw zonder locale-video', function () {
+    expect(SectorLandingVideo::relativePath(PromoLanding::WorkOnLocation, 'fr'))->toBeNull();
 });

@@ -1326,7 +1326,8 @@ Video: speler als het bestand bestaat (`{slug}_promo_{locale}.mp4` e.d.); elke l
 reserveert de videoplek (placeholder tot het bestand er is). Government-NL valt tijdelijk
 terug op `video/nl/issue_nl_01.mp4` tot er een eigen government-video is. Vastgoed gebruikt
 per taal `video/{locale}/hospitality_long_{LOCALE}.mp4` tot er een eigen vastgoed-video is.
-Schoonmaak/bouw (`work-on-location`) gebruikt `video/welcome_cleaning.mp4`.
+Schoonmaak/bouw (`work-on-location`) gebruikt per taal `video/welcome_cleaning_{LOCALE}.mp4`
+(nu NL + EN; andere talen placeholder tot het bestand er is).
 Geen demo-CTA, geen prijs op de landing, geen “geen langdurig contract”. CTA’s alleen in de hero.
 Foto’s per sector via `SectorLandingVisuals` (`public/images/landing/…`); ontbrekende assets
 vallen terug op de tekstlayout. Vastgoed gebruikt `images/landing/general/`; de sluitbanner
