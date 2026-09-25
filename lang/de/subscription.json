@@ -331,5 +331,6 @@
         "public_hint": "Time (Zeiterfassung) ist in jeder WinProx-Formel enthalten."
     },
     "comparison_col_seats": "Plätze",
-    "payment_notice": "Monatliche Zahlung über Stripe. Corporate individuell (kein Online-Checkout)."
+    "payment_notice": "Monatliche Zahlung über Stripe. Corporate individuell (kein Online-Checkout).",
+    "prices_excl_vat": "Alle angezeigten Preise verstehen sich zuzüglich MwSt."
 }

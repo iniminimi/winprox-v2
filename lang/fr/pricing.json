@@ -6,7 +6,7 @@
     },
     "eyebrow": "Tarifs",
     "title": "Tarifs & formules",
-    "message": "Quatre formules mensuelles selon le nombre de licences (5/10/25/50). Time (pointeuse) inclus. Paiement mensuel via Stripe. Commencez par un mois gratuit (formule 5).",
+    "message": "Quatre formules mensuelles selon le nombre de licences (5/10/25/50). Time (pointeuse) inclus. Paiement mensuel via Stripe. Commencez par un mois gratuit (formule 5). Prix hors TVA.",
     "back": "Retour à l'accueil",
     "trial_link": "Essayer gratuitement",
     "subscription_link": "Aller à l'abonnement"

@@ -98,7 +98,7 @@
     Na de proefperiode is voor voortgezet gebruik een passend abonnement vereist, zoals op het platform beschreven (o.a. op basis van het aantal units en eventuele modules).
 </p>
 <p>
-    Het abonnement betreft de toegang tot en het gebruik van het platform voor uw organisatie (tenant). Betaling, facturatie en verlenging verlopen volgens de op het platform of in offertes/facturen vermelde modaliteiten.
+    Het abonnement betreft de toegang tot en het gebruik van het platform voor uw organisatie (tenant). Betaling, facturatie en verlenging verlopen volgens de op het platform of in offertes/facturen vermelde modaliteiten. Alle op het platform getoonde abonnementsprijzen zijn exclusief btw, tenzij uitdrukkelijk anders vermeld.
 </p>
 <p>
     Bij uitblijven van tijdige betaling of bij verlopen abonnement kan WinProx de toegang tot het platform beperken of opschorten, voor zover technisch voorzien en rekening houdend met redelijke termijnen waar van toepassing.

@@ -6,7 +6,7 @@
     },
     "eyebrow": "Preise",
     "title": "Preise & Tarife",
-    "message": "Vier Monatsformeln nach Lizenzanzahl (5/10/25/50). Time (Zeiterfassung) inklusive. Monatliche Zahlung über Stripe. Start mit einem kostenlosen Monat (Formel 5).",
+    "message": "Vier Monatsformeln nach Lizenzanzahl (5/10/25/50). Time (Zeiterfassung) inklusive. Monatliche Zahlung über Stripe. Start mit einem kostenlosen Monat (Formel 5). Preise zuzüglich MwSt.",
     "back": "Zur Startseite",
     "trial_link": "Kostenlos testen",
     "subscription_link": "Zum Abonnement"

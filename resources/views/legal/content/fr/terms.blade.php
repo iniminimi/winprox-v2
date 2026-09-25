@@ -98,7 +98,7 @@
     Après la période d’essai, la poursuite de l’utilisation requiert un abonnement adapté, tel que décrit sur la plateforme (notamment en fonction du nombre d’unités et des modules optionnels).
 </p>
 <p>
-    L’abonnement couvre l’accès et l’utilisation de la plateforme pour votre organisation (tenant). Paiement, facturation et renouvellement suivent les modalités indiquées sur la plateforme ou dans les devis/factures.
+    L’abonnement couvre l’accès et l’utilisation de la plateforme pour votre organisation (tenant). Paiement, facturation et renouvellement suivent les modalités indiquées sur la plateforme ou dans les devis/factures. Tous les prix d’abonnement affichés sur la plateforme sont hors TVA, sauf mention contraire expresse.
 </p>
 <p>
     En cas de non-paiement dans les délais ou d’expiration de l’abonnement, WinProx peut restreindre ou suspendre l’accès à la plateforme, dans la mesure où cela est techniquement prévu et compte tenu de délais raisonnables le cas échéant.

@@ -6,7 +6,7 @@
     },
     "eyebrow": "Pricing",
     "title": "Pricing & plans",
-    "message": "Four monthly plans by seat count (5/10/25/50). Time (punch clock) included. Billed monthly via Stripe. Start with a free month (5-seat plan).",
+    "message": "Four monthly plans by seat count (5/10/25/50). Time (punch clock) included. Billed monthly via Stripe. Start with a free month (5-seat plan). Prices exclusive of VAT.",
     "back": "Back to home",
     "trial_link": "Try for free",
     "subscription_link": "Go to subscription"

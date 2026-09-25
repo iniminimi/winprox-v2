@@ -331,5 +331,6 @@
         "public_hint": "Time (punch clock) is included in every WinProx plan."
     },
     "comparison_col_seats": "Seats",
-    "payment_notice": "Billed monthly via Stripe. Corporate is custom (no online checkout)."
+    "payment_notice": "Billed monthly via Stripe. Corporate is custom (no online checkout).",
+    "prices_excl_vat": "All displayed prices are exclusive of VAT."
 }

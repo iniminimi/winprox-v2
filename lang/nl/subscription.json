@@ -331,5 +331,6 @@
         "public_hint": "Time (prikklok) is inbegrepen in elke WinProx-formule."
     },
     "comparison_col_seats": "Licenties",
-    "payment_notice": "Maandelijks te betalen via Stripe. Corporate op maat (geen online checkout)."
+    "payment_notice": "Maandelijks te betalen via Stripe. Corporate op maat (geen online checkout).",
+    "prices_excl_vat": "Alle getoonde prijzen zijn exclusief btw."
 }

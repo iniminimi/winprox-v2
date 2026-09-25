@@ -6,7 +6,7 @@
     },
     "eyebrow": "Prezzi",
     "title": "Prezzi e piani",
-    "message": "Quattro formule mensili per numero di licenze (5/10/25/50). Time (timbratura) incluso. Pagamento mensile tramite Stripe. Inizia con un mese gratuito (formula 5).",
+    "message": "Quattro formule mensili per numero di licenze (5/10/25/50). Time (timbratura) incluso. Pagamento mensile tramite Stripe. Inizia con un mese gratuito (formula 5). Prezzi IVA esclusa.",
     "back": "Torna alla home",
     "trial_link": "Prova gratis",
     "subscription_link": "Vai all'abbonamento"

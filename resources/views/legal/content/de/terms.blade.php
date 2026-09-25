@@ -98,7 +98,7 @@
     Nach der Testphase ist für die fortgesetzte Nutzung ein passendes Abonnement erforderlich, wie auf der Plattform beschrieben (u. a. basierend auf der Anzahl der Units und optionaler Module).
 </p>
 <p>
-    Das Abonnement betrifft den Zugang zu und die Nutzung der Plattform für Ihre Organisation (Tenant). Zahlung, Abrechnung und Verlängerung erfolgen gemäß den auf der Plattform oder in Angeboten/Rechnungen genannten Modalitäten.
+    Das Abonnement betrifft den Zugang zu und die Nutzung der Plattform für Ihre Organisation (Tenant). Zahlung, Abrechnung und Verlängerung erfolgen gemäß den auf der Plattform oder in Angeboten/Rechnungen genannten Modalitäten. Alle auf der Plattform angezeigten Abonnementpreise verstehen sich zuzüglich MwSt., sofern nicht ausdrücklich anders angegeben.
 </p>
 <p>
     Bei ausbleibender rechtzeitiger Zahlung oder abgelaufenem Abonnement kann WinProx den Zugang zur Plattform einschränken oder aussetzen, soweit technisch vorgesehen und unter Berücksichtigung angemessener Fristen.

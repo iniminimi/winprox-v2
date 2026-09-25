@@ -98,7 +98,7 @@
     Dopo il periodo di prova, l'utilizzo continuato richiede un abbonamento appropriato come descritto sulla piattaforma (anche in base al numero di unità e moduli opzionali).
 </p>
 <p>
-    L'abbonamento copre l'accesso e l'utilizzo della piattaforma per la sua organizzazione (tenant). Pagamento, fatturazione e rinnovo seguono le condizioni indicate sulla piattaforma o in preventivi/fatture.
+    L'abbonamento copre l'accesso e l'utilizzo della piattaforma per la sua organizzazione (tenant). Pagamento, fatturazione e rinnovo seguono le condizioni indicate sulla piattaforma o in preventivi/fatture. Tutti i prezzi di abbonamento visualizzati sulla piattaforma sono IVA esclusa, salvo diversa indicazione espressa.
 </p>
 <p>
     Se il pagamento non viene effettuato in tempo o l'abbonamento scade, WinProx può limitare o sospendere l'accesso alla piattaforma, ove previsto tecnicamente e con un preavviso ragionevole ove applicabile.

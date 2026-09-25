@@ -21,6 +21,7 @@ it('toont publieke prijzenpagina met WinProx-maandformules en Corporate voor gas
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.comparison_heading'))
         ->assertSee(__('subscription.payment_notice'))
+        ->assertSee(__('subscription.prices_excl_vat'))
         ->assertSee(__('subscription.public_contact_cta'))
         ->assertSee(__('subscription.public_register_cta'), false)
         ->assertSee(__('subscription.glossary.seat'))
@@ -70,6 +71,7 @@ it('toont self-activate knoppen op abonnementenpagina voor beheerder', function 
         ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.payment_notice'))
+        ->assertSee(__('subscription.prices_excl_vat'))
         ->assertSee(__('subscription.contact_sales_cta'))
         ->assertDontSee(__('subscription.plans.facility_25.price'));
 });

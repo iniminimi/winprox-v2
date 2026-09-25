@@ -291,6 +291,7 @@ it('toont WinProx-maandformules en Corporate op abonnement', function () {
         ->assertSee(__('subscription.plans.winprox_25.name'))
         ->assertSee(__('subscription.plans.corporate.name'))
         ->assertSee(__('subscription.payment_notice'))
+        ->assertSee(__('subscription.prices_excl_vat'))
         ->assertDontSee(__('subscription.plans.facility_25.price'));
 });
 

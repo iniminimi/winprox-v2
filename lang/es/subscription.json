@@ -331,5 +331,6 @@
         "public_hint": "Time (fichaje) está incluido en cada fórmula WinProx."
     },
     "comparison_col_seats": "Plazas",
-    "payment_notice": "Pago mensual con Stripe. Corporate a medida (sin pago en línea)."
+    "payment_notice": "Pago mensual con Stripe. Corporate a medida (sin pago en línea).",
+    "prices_excl_vat": "Todos los precios mostrados son sin IVA."
 }

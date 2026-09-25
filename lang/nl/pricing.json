@@ -6,7 +6,7 @@
     },
     "eyebrow": "Prijzen",
     "title": "Prijzen & formules",
-    "message": "Vier maandformules per aantal licenties (5/10/25/50). Time (prikklok) inbegrepen. Maandelijks te betalen via Stripe. Start met een gratis maand (formule 5).",
+    "message": "Vier maandformules per aantal licenties (5/10/25/50). Time (prikklok) inbegrepen. Maandelijks te betalen via Stripe. Start met een gratis maand (formule 5). Prijzen exclusief btw.",
     "back": "Terug naar home",
     "trial_link": "Gratis proberen",
     "subscription_link": "Naar abonnement"

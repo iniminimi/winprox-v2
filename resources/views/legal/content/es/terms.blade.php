@@ -98,7 +98,7 @@
     Tras el periodo de prueba, el uso continuado requiere una suscripción adecuada según se describe en la plataforma (incluido en función del número de unidades y módulos opcionales).
 </p>
 <p>
-    La suscripción cubre el acceso y el uso de la plataforma para su organización (inquilino). El pago, la facturación y la renovación siguen las condiciones mostradas en la plataforma o en presupuestos/facturas.
+    La suscripción cubre el acceso y el uso de la plataforma para su organización (inquilino). El pago, la facturación y la renovación siguen las condiciones mostradas en la plataforma o en presupuestos/facturas. Todos los precios de suscripción mostrados en la plataforma son sin IVA, salvo indicación expresa en contrario.
 </p>
 <p>
     Si el pago no se realiza a tiempo o la suscripción expira, WinProx puede restringir o suspender el acceso a la plataforma, cuando esté previsto técnicamente y con un preaviso razonable cuando proceda.

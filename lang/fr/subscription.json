@@ -331,5 +331,6 @@
         "public_hint": "Time (pointeuse) est inclus dans chaque formule WinProx."
     },
     "comparison_col_seats": "Places",
-    "payment_notice": "Paiement mensuel via Stripe. Corporate sur mesure (pas de paiement en ligne)."
+    "payment_notice": "Paiement mensuel via Stripe. Corporate sur mesure (pas de paiement en ligne).",
+    "prices_excl_vat": "Tous les prix affichés sont hors TVA."
 }

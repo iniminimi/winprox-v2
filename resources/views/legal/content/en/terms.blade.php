@@ -98,7 +98,7 @@
     After the trial period, continued use requires an appropriate subscription as described on the platform (including based on the number of units and optional modules).
 </p>
 <p>
-    The subscription covers access to and use of the platform for your organisation (tenant). Payment, invoicing and renewal follow the terms shown on the platform or in quotes/invoices.
+    The subscription covers access to and use of the platform for your organisation (tenant). Payment, invoicing and renewal follow the terms shown on the platform or in quotes/invoices. All subscription prices shown on the platform are exclusive of VAT, unless expressly stated otherwise.
 </p>
 <p>
     If payment is not made on time or the subscription expires, WinProx may restrict or suspend access to the platform, where technically provided and subject to reasonable notice where applicable.
