@@ -49,7 +49,7 @@
                 ['route' => 'platform.promo-campaigns', 'active' => 'platform.promo-campaigns*', 'icon' => 'document', 'label' => 'platform.promo_campaigns.nav'],
                 ['route' => 'platform.translations', 'active' => 'platform.translations', 'icon' => 'issues', 'label' => 'platform.translation_sync.nav'],
             ] : [
-                ['route' => 'dashboard', 'active' => 'dashboard', 'icon' => 'dashboard', 'label' => 'common.nav.dashboard'],
+                ['route' => 'dashboard', 'active' => 'dashboard', 'icon' => 'home', 'label' => 'common.nav.dashboard'],
                 // Overige navigatie wordt in accordion-groepen gerenderd.
             ]),
         ];

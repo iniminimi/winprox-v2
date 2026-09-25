@@ -19,7 +19,7 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > medewerkers** en tonen alles **onverkort** — zij moeten de inhoud juist kunnen beoordelen en
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
-Menu-volgorde (sidebar, accordion): Dashboard · **Werk** (Meldingen, Taken,
+Menu-volgorde (sidebar, accordion): Home · **Werk** (Meldingen, Taken,
 Inspectierondes, Checklists, Unit checks, Werkbezoeken, Kalender,
 Reserveringen, Unitmetingen) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Personen** (Backoffice = Beheerder/Medewerker;
 Teams = Uitvoerder/Teamleader) · **Time** (module) · **Automatisering** (IoT Connect
