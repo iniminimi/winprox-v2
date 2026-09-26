@@ -169,6 +169,10 @@ tweede product of V1-sectorfork.
   niets naar de RSZ. CIAO blijft Clock Point IN/OUT + pauzes.
 - **Geen** aparte schoonmaak-/bouw-app, **geen** contractor-/owner-portalen, **geen** Dimona/
   payroll-suite in deze laag.
+- **Checkmate** is een plan-preset op dezelfde codebase (`checkmate_mode`-entitlement,
+  whitelist-gating, geen fork, geen aparte sectorlogica — spec: `docs/CHECKMATE.md`). Nieuwe
+  features zijn voor Checkmate-tenants onzichtbaar tenzij expliciet aan de
+  Checkmate-whitelist toegevoegd.
 - **Geen** Checkinatwork (CAW)-webservice in golf 1 — dat is een ander RSZ-kanaal (bouw tot
   vóór de CIAO-uitbreiding). Golf 2 =zelfde CIAO-pijplijn + nieuwe **scope**, niet CAW nabootsen
   “voor het geval dat”.
