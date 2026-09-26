@@ -1,0 +1,41 @@
+{
+    "title": "Klanten",
+    "subtitle": "Klanten en hun werkadressen.",
+    "add": "Nieuwe klant",
+    "search_placeholder": "Zoek op naam, contactpersoon of e-mail",
+    "show_inactive": "Toon inactieve",
+    "empty": "Nog geen klanten.",
+    "inactive": "Inactief",
+    "saved": "Klant opgeslagen.",
+    "location_saved": "Werkadres opgeslagen.",
+    "locations_count": ":count werkadres(sen)",
+    "no_locations": "Nog geen werkadressen.",
+    "create_title": "Nieuwe klant",
+    "edit_title": "Klant bewerken",
+    "add_location": "Werkadres toevoegen",
+    "location_create_title": "Werkadres toevoegen",
+    "location_no_pin": "Geen GPS-pin — een werkbezoek kan hier nog niet starten.",
+    "form": {
+        "name": "Klantnaam",
+        "contact_name": "Contactpersoon",
+        "email": "E-mail",
+        "phone": "Telefoon",
+        "name_matches": "Lijkt op:"
+    },
+    "location_form": {
+        "name": "Naam werkadres",
+        "name_hint": "Optioneel — anders wordt de klantnaam gebruikt.",
+        "street": "Straat",
+        "house_number": "Nr.",
+        "postal_code": "Postcode",
+        "city": "Plaats",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "pin_hint": "GPS-pin is nodig om op dit adres een werkbezoek te starten."
+    },
+    "errors": {
+        "name_required": "Vul een klantnaam in.",
+        "email_invalid": "Vul een geldig e-mailadres in.",
+        "not_found": "Klant niet gevonden."
+    }
+}

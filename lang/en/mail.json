@@ -180,5 +180,9 @@
             "subject": "WinProx: deletion scheduled — :tenant",
             "body": "An account deletion has been scheduled.\\n\\nOrganisation: :tenant\\nTenant ID: :tenant_id\\nTrack: :track\\nScheduled for: :date (:timezone)\\nPurge request ID: :purge_request_id"
         }
+    },
+    "presence_request": {
+        "subject": "WinProx: CIAO activation requested — :tenant",
+        "body": "A tenant requested CIAO activation.\n\nOrganisation: :tenant\nTenant ID: :tenant_id\nEnterprise number: :enterprise_number\n\nConfirm via the platform (CIAO toggle on the tenant)."
     }
 }

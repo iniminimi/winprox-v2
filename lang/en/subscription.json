@@ -229,6 +229,12 @@
                 "Full REST API and webhooks.",
                 "Integrations, SLA and support tailored to you."
             ]
+        },
+        "checkmate": {
+            "name": "WinProx Checkmate"
+        },
+        "checkmate_trial": {
+            "name": "WinProx Checkmate (trial)"
         }
     },
     "stripe": {
@@ -332,5 +338,16 @@
     },
     "comparison_col_seats": "Seats",
     "payment_notice": "Billed monthly via Stripe. Corporate is custom (no online checkout).",
-    "prices_excl_vat": "All displayed prices are exclusive of VAT."
+    "prices_excl_vat": "All displayed prices are exclusive of VAT.",
+    "seats": {
+        "title": "Number of workers (seats)",
+        "current": "Currently active: :count",
+        "billed_next_period": "The change applies immediately and is billed from the next period.",
+        "save": "Save",
+        "saved": "Seat count updated.",
+        "qty_required": "Enter a quantity.",
+        "qty_invalid": "Enter a valid quantity (1-500).",
+        "below_active": "You cannot go below the :active active seats — deactivate workers first.",
+        "not_editable": "This plan does not have an adjustable seat count."
+    }
 }

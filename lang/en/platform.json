@@ -456,5 +456,7 @@
     "plan_select": "Plan",
     "plan_assign": "Assign plan",
     "plan_assign_hint": "Superuser can assign a plan (also without Stripe). Tenants can self-select via Stripe. Corporate needs a units cap. CIAO (NSSO) can be enabled separately without Corporate; Time turns on with it.",
-    "plan_assigned": "Plan :plan assigned."
+    "plan_assigned": "Plan :plan assigned.",
+    "ciao_requested": "CIAO requested",
+    "ciao_requested_hint": "Enterprise number: :number — confirm via the CIAO toggle."
 }

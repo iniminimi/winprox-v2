@@ -1,0 +1,41 @@
+{
+    "title": "Customers",
+    "subtitle": "Customers and their work addresses.",
+    "add": "New customer",
+    "search_placeholder": "Search by name, contact or email",
+    "show_inactive": "Show inactive",
+    "empty": "No customers yet.",
+    "inactive": "Inactive",
+    "saved": "Customer saved.",
+    "location_saved": "Work address saved.",
+    "locations_count": ":count work address(es)",
+    "no_locations": "No work addresses yet.",
+    "create_title": "New customer",
+    "edit_title": "Edit customer",
+    "add_location": "Add work address",
+    "location_create_title": "Add work address",
+    "location_no_pin": "No GPS pin — a work visit cannot start here yet.",
+    "form": {
+        "name": "Customer name",
+        "contact_name": "Contact person",
+        "email": "Email",
+        "phone": "Phone",
+        "name_matches": "Looks like:"
+    },
+    "location_form": {
+        "name": "Work address name",
+        "name_hint": "Optional — defaults to the customer name.",
+        "street": "Street",
+        "house_number": "No.",
+        "postal_code": "Postal code",
+        "city": "City",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "pin_hint": "A GPS pin is required to start a work visit at this address."
+    },
+    "errors": {
+        "name_required": "Enter a customer name.",
+        "email_invalid": "Enter a valid email address.",
+        "not_found": "Customer not found."
+    }
+}

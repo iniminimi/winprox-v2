@@ -10,6 +10,7 @@ use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
 use App\Actions\Team\UpdateTenantWorkMenuAction;
+use App\Actions\Time\RequestPresenceComplianceAction;
 use App\Actions\Time\UpdatePresenceComplianceSettingsAction;
 use App\Actions\Time\UpdateTenantTimeClockSecurityAction;
 use App\Enums\PresenceComplianceScope;
@@ -222,6 +223,47 @@ class Settings extends Component
         $this->fillOrganisationFromTenant($updated);
         $this->dispatch('saved');
         session()->flash('success', __('settings.presence.saved'));
+    }
+
+    public function requestPresenceCompliance(RequestPresenceComplianceAction $requestCompliance): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $validated = Validator::make(
+            [
+                // Punten/spaties uit de BCE-weergave strippen vóór validatie.
+                'enterprise_number' => preg_replace('/\D+/', '', $this->enterpriseNumber) ?? '',
+                'foreign_vat_number' => $this->foreignVatNumber,
+            ],
+            [
+                'enterprise_number' => ['required', 'regex:/^[01]\d{9}$/'],
+                'foreign_vat_number' => ['nullable', 'string', 'max:255'],
+            ],
+            [
+                'enterprise_number.required' => __('settings.errors.enterprise_number_required'),
+                'enterprise_number.regex' => __('settings.errors.enterprise_number_invalid'),
+            ],
+        )->validate();
+
+        try {
+            $requestCompliance->handle($tenant, $validated, (int) auth()->id());
+        } catch (\InvalidArgumentException $e) {
+            if ($e->getMessage() === 'presence_request_pending') {
+                $this->addError('enterpriseNumber', __('settings.presence.request_pending'));
+
+                return;
+            }
+
+            throw $e;
+        }
+
+        $this->dispatch('saved');
+        session()->flash('success', __('settings.presence.request_sent'));
     }
 
     public function saveTimeClockSecurity(UpdateTenantTimeClockSecurityAction $update): void
@@ -788,6 +830,8 @@ class Settings extends Component
             'qrPrintableBackgroundPresets' => QrPrintablePageBackgroundPreset::uiChoices(),
             'hasTimeModule' => $tenant instanceof Tenant && $tenant->hasTimeModule(),
             'availablePresenceScopes' => PresenceComplianceScope::availableCases(),
+            'presenceComplianceRequested' => $tenant instanceof Tenant && $tenant->presenceComplianceRequested(),
+            'checkmateMode' => $tenant instanceof Tenant && $tenant->checkmateMode(),
         ]);
     }
 

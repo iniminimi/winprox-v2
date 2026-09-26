@@ -364,9 +364,33 @@
             class="{{ $presenceComplianceEnabled ? '' : 'wp-settings-section--locked' }}"
         >
             @if (! $presenceComplianceEnabled)
-                <p class="wp-muted wp-text-sm">{{ __('settings.presence.lead') }}</p>
-                <p class="wp-muted wp-text-sm">{{ __('settings.presence.request_hint') }}</p>
-                <a href="mailto:{{ __('contact.email') }}" class="btn btn--ghost btn--sm">{{ __('contact.email') }}</a>
+                @if ($presenceComplianceRequested ?? false)
+                    <div class="wp-flash wp-flash--muted" role="status">
+                        {{ __('settings.presence.request_pending') }}
+                    </div>
+                @elseif ($checkmateMode ?? false)
+                    <p class="wp-muted wp-text-sm">{{ __('settings.presence.lead') }}</p>
+                    <p class="wp-muted wp-text-sm">{{ __('settings.presence.request_intro') }}</p>
+                    <form wire:submit="requestPresenceCompliance" class="wp-stack">
+                        <div class="wp-field">
+                            <label class="wp-label" for="enterpriseNumber">{{ __('settings.presence.enterprise_number') }}</label>
+                            <input type="text" id="enterpriseNumber" class="wp-input" wire:model="enterpriseNumber" autocomplete="off" inputmode="numeric">
+                            <p class="wp-hint">{{ __('settings.presence.enterprise_hint') }}</p>
+                            @error('enterpriseNumber') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <div class="wp-field">
+                            <label class="wp-label" for="foreignVatNumber">{{ __('settings.presence.foreign_vat') }}</label>
+                            <input type="text" id="foreignVatNumber" class="wp-input" wire:model="foreignVatNumber" autocomplete="off">
+                            <p class="wp-hint">{{ __('settings.presence.foreign_vat_hint') }}</p>
+                            @error('foreignVatNumber') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.presence.request_submit') }}</button>
+                    </form>
+                @else
+                    <p class="wp-muted wp-text-sm">{{ __('settings.presence.lead') }}</p>
+                    <p class="wp-muted wp-text-sm">{{ __('settings.presence.request_hint') }}</p>
+                    <a href="mailto:{{ __('contact.email') }}" class="btn btn--ghost btn--sm">{{ __('contact.email') }}</a>
+                @endif
                 @error('presenceComplianceEnabled') <p class="wp-error">{{ $message }}</p> @enderror
             @else
                 <p class="wp-muted wp-text-sm">{{ __('settings.presence.enabled_note') }}</p>

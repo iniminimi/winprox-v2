@@ -142,7 +142,8 @@
         "enterprise_number_invalid": "Numero d’impresa non valido.",
         "presence_scope_invalid": "Questo regime di presenza non è disponibile.",
         "time_module_required": "Time (timbratura) deve essere attivo per CIAO.",
-        "presence_locked": "CIAO non è attivato. Richiedilo via info@winprox.app."
+        "presence_locked": "CIAO non è attivato. Richiedilo via info@winprox.app.",
+        "enterprise_number_required": "Inserisci il tuo numero di impresa (KBO/BCE)."
     },
     "api": {
         "nav": "API e webhooks",
@@ -225,7 +226,11 @@
         "foreign_vat_hint": "Compilare solo senza BCE belga (datore estero).",
         "save": "Salva impostazioni CIAO",
         "saved": "Impostazioni CIAO salvate.",
-        "view_all": "Tutti gli invii CIAO"
+        "view_all": "Tutti gli invii CIAO",
+        "request_intro": "Richiedi l'attivazione CIAO con il tuo numero di impresa (KBO/BCE). WinProx conferma poi il collegamento — le presenze vengono trasmesse da quel momento.",
+        "request_submit": "Richiedi attivazione CIAO",
+        "request_sent": "Richiesta CIAO inviata. WinProx confermerà l'attivazione.",
+        "request_pending": "L'attivazione CIAO è stata richiesta ed è in fase di conferma da parte di WinProx. Le presenze vengono trasmesse solo dall'attivazione."
     },
     "time_clock": {
         "title": "Sicurezza marcatura",

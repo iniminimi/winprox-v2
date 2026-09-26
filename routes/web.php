@@ -70,6 +70,7 @@ use App\Livewire\Pages\About;
 use App\Livewire\Pages\ApiDocumentation;
 use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Calendar;
+use App\Livewire\Customers\Index as CustomersIndex;
 use App\Livewire\Pages\CheckListsIndex;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Faq;
@@ -397,7 +398,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/subscription/purge/confirm/{purgeRequest}/{token}', TenantPurgeConfirmController::class)
         ->name('subscription.purge.confirm');
 
-    Route::middleware('support.tenant')->group(function () {
+    Route::middleware(['support.tenant', 'checkmate.allowed'])->group(function () {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
         Route::get('/health', Health::class)->name('health.index');
 
@@ -407,6 +408,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/issues/create', fn () => redirect()->route('issues.index', ['create' => 1]))->name('issues.create');
         Route::get('/issues/{issue}', IssueShow::class)->name('issues.show');
 
+        Route::get('/klanten', CustomersIndex::class)->name('customers.index');
         Route::get('/locations', LocationIndex::class)->name('locations.index');
         Route::get('/locations/{location}', LocationShow::class)->name('locations.show');
         Route::get('/locations/{location}/qr-pack', LocationQrPackDownloadController::class)->name('locations.qr-pack');

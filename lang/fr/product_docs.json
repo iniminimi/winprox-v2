@@ -162,6 +162,19 @@
                 ]
             },
             {
+                "title": "Checkmate",
+                "badge": "RSZ/CIAO",
+                "body": "Checkmate est la formule terrain pour les équipes qui travaillent chez le client.",
+                "items": [
+                    "Les ouvriers pointent via le même QR Clock Point.",
+                    "Une visite client démarre par un contrôle GPS dans le rayon convenu.",
+                    "Clients et adresses de chantier se gèrent dans un seul écran.",
+                    "Présences, décomptes d’heures et Mes heures comme dans Time.",
+                    "CIAO (ONSS) sur demande depuis les paramètres.",
+                    "5 € par ouvrier actif par mois ; nombre de sièges ajustable."
+                ]
+            },
+            {
                 "title": "Planning",
                 "body": "La gestion planifie les services sous Time → Planning. Publier les montre sur Clock Point, pas à l’ONSS.",
                 "items": [

@@ -162,6 +162,19 @@
                 ]
             },
             {
+                "title": "Checkmate",
+                "badge": "RSZ/CIAO",
+                "body": "Checkmate ist die Außendienst-Formel für Teams beim Kunden.",
+                "items": [
+                    "Mitarbeiter stechen über denselben Clock-Point-QR ein.",
+                    "Ein Kundenbesuch startet mit einer GPS-Prüfung innerhalb des Radius.",
+                    "Kunden und Einsatzadressen in einem Bildschirm verwalten.",
+                    "Anwesenheit, Stundenkonto und Meine Stunden wie in Time.",
+                    "CIAO (LSS) auf Anfrage in den Einstellungen.",
+                    "5 € pro aktivem Mitarbeiter im Monat; Sitzzahl anpassbar."
+                ]
+            },
+            {
                 "title": "Dienstplan",
                 "body": "Die Verwaltung plant Schichten unter Time → Dienstplan. Veröffentlichen zeigt sie am Clock Point, nicht bei der LSS.",
                 "items": [

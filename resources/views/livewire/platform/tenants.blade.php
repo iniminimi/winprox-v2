@@ -83,6 +83,9 @@
                                         {{ $tenant->presence_compliance_enabled ? 'checked' : '' }}
                                     >
                                     <span>{{ __('platform.ciao_module') }}</span>
+                                    @if ($tenant->presenceComplianceRequested())
+                                        <span class="wp-pill wp-pill--progress" title="{{ __('platform.ciao_requested_hint', ['number' => $tenant->enterprise_number ?? '—']) }}">{{ __('platform.ciao_requested') }}</span>
+                                    @endif
                                 </label>
                             </div>
                         </div>

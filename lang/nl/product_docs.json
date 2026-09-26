@@ -162,6 +162,19 @@
                 ]
             },
             {
+                "title": "Checkmate",
+                "badge": "RSZ/CIAO",
+                "body": "Checkmate is de veldwerk-formule voor teams die bij klanten werken.",
+                "items": [
+                    "Uitvoerders klokken in via dezelfde Clock Point-QR.",
+                    "Een klantbezoek start met een GPS-check binnen de afgesproken straal.",
+                    "Klanten en werkadressen beheer je in één scherm.",
+                    "Aanwezigheid, urenstaat en Mijn uren zoals in Time.",
+                    "CIAO (RSZ) op aanvraag vanuit de instellingen.",
+                    "5€ per actieve uitvoerder per maand; aantal seats zelf instelbaar."
+                ]
+            },
+            {
                 "title": "Uurrooster",
                 "body": "Beheer plant diensten in Time → Uurrooster. Publiceren toont ze op Clock Point, niet bij de RSZ.",
                 "items": [

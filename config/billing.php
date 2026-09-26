@@ -89,6 +89,37 @@ $legacyFacility = static function (int $units, bool $iotEsg): array {
     ];
 };
 
+/**
+ * Checkmate — RSZ-compliance-preset (docs/CHECKMATE.md). €5 per actieve seat;
+ * seats aantrekkelijk via `tenants.billing_seats_qty` (seats_qty_editable).
+ */
+$checkmatePreset = static function (int $defaultSeats, bool $qtyEditable): array {
+    return [
+        'units_limit'            => null,
+        'locations_limit'        => null,
+        'users_limit'            => null,
+        'seats_limit'            => $defaultSeats,
+        'documents_org_limit'    => null,
+        'photos_org_limit'       => null,
+        'documents_per_unit'     => null,
+        'announcements_per_unit' => null,
+        'includes_facility'      => false,
+        'time_module'            => true,
+        'esg_module'             => false,
+        'iot_module'             => false,
+        'api_access'             => false,
+        'csv_workers_import'     => true,
+        'csv_units_import'       => false,
+        'subscription_period_days' => 30,
+        'self_activate'          => true,
+        'public_catalog'         => false,
+        'checkmate_mode'         => true,
+        'per_worker_monthly_eur' => 5,
+        'gps_visit_radius_meters' => 100,
+        'seats_qty_editable'     => $qtyEditable,
+    ];
+};
+
 return [
     'trial_days' => (int) env('BILLING_TRIAL_DAYS', 30),
     'trial_plan_facility' => 'trial',
@@ -118,6 +149,8 @@ return [
         'facility_500'     => ['max_attempts' => 200,   'decay_seconds' => 60],
         'facility_1000'    => ['max_attempts' => 200,   'decay_seconds' => 60],
         'corporate'        => ['max_attempts' => 10000, 'decay_seconds' => 60],
+        'checkmate'        => ['max_attempts' => 60,    'decay_seconds' => 60],
+        'checkmate_trial'  => ['max_attempts' => 30,    'decay_seconds' => 60],
     ],
 
     // Trial = winprox_5 limieten: 5 licenties, 50 units, 10 documenten.
@@ -176,6 +209,12 @@ return [
                 'self_activate'          => false,
                 'public_catalog'         => true,
             ],
+
+            // Checkmate (RSZ-compliance preset) — niet in de publieke catalogus.
+            'checkmate' => ['label_key' => 'subscription.plans.checkmate.name']
+                + $checkmatePreset(1, true),
+            'checkmate_trial' => ['label_key' => 'subscription.plans.checkmate_trial.name']
+                + $checkmatePreset(3, false),
         ],
     ),
 ];

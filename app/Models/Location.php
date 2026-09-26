@@ -16,6 +16,7 @@ class Location extends Model
 
     protected $fillable = [
         'tenant_id',
+        'customer_id',
         'name',
         'original_language',
         'address',
@@ -69,6 +70,11 @@ class Location extends Model
     public function hasWorkVisitPin(): bool
     {
         return $this->latitude !== null && $this->longitude !== null;
+    }
+
+    public function customer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
     }
 
     public function users(): BelongsToMany

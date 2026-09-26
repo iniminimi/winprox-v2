@@ -61,6 +61,10 @@ class CreateLocationAction
             'is_active' => true,
         ];
 
+        if (array_key_exists('customer_id', $data)) {
+            $payload['customer_id'] = $this->resolveCustomerId($data['customer_id'], $tenantId);
+        }
+
         if (Schema::hasColumn('locations', 'import_batch_id') && array_key_exists('import_batch_id', $data)) {
             $payload['import_batch_id'] = $data['import_batch_id'];
         }
@@ -86,6 +90,24 @@ class CreateLocationAction
 
             return $location->fresh(['units']) ?? $location;
         });
+    }
+
+    private function resolveCustomerId(mixed $value, int $tenantId): ?int
+    {
+        if ($value === null || $value === '' || (int) $value <= 0) {
+            return null;
+        }
+
+        $exists = \App\Models\Customer::query()
+            ->where('tenant_id', $tenantId)
+            ->whereKey((int) $value)
+            ->exists();
+
+        if (! $exists) {
+            throw new InvalidArgumentException('customer_not_found');
+        }
+
+        return (int) $value;
     }
 
     private function nullableString(mixed $value): ?string

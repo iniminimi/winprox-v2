@@ -229,6 +229,12 @@
                 "API REST complète et webhooks.",
                 "Intégrations, SLA et support sur mesure."
             ]
+        },
+        "checkmate": {
+            "name": "WinProx Checkmate"
+        },
+        "checkmate_trial": {
+            "name": "WinProx Checkmate (essai)"
         }
     },
     "stripe": {
@@ -332,5 +338,16 @@
     },
     "comparison_col_seats": "Places",
     "payment_notice": "Paiement mensuel via Stripe. Corporate sur mesure (pas de paiement en ligne).",
-    "prices_excl_vat": "Tous les prix affichés sont hors TVA."
+    "prices_excl_vat": "Tous les prix affichés sont hors TVA.",
+    "seats": {
+        "title": "Nombre d'exécutants (sièges)",
+        "current": "Actifs actuellement : :count",
+        "billed_next_period": "La modification s'applique immédiatement et est facturée à partir de la période suivante.",
+        "save": "Enregistrer",
+        "saved": "Nombre de sièges mis à jour.",
+        "qty_required": "Saisissez une quantité.",
+        "qty_invalid": "Saisissez une quantité valide (1-500).",
+        "below_active": "Vous ne pouvez pas descendre sous les :active sièges actifs — désactivez d'abord des exécutants.",
+        "not_editable": "Ce plan n'a pas de nombre de sièges ajustable."
+    }
 }

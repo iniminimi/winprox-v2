@@ -1,0 +1,41 @@
+{
+    "title": "Clienti",
+    "subtitle": "Clienti e i loro indirizzi di lavoro.",
+    "add": "Nuovo cliente",
+    "search_placeholder": "Cerca per nome, contatto o e-mail",
+    "show_inactive": "Mostra inattivi",
+    "empty": "Ancora nessun cliente.",
+    "inactive": "Inattivo",
+    "saved": "Cliente salvato.",
+    "location_saved": "Indirizzo di lavoro salvato.",
+    "locations_count": ":count indirizzo/i di lavoro",
+    "no_locations": "Ancora nessun indirizzo di lavoro.",
+    "create_title": "Nuovo cliente",
+    "edit_title": "Modifica cliente",
+    "add_location": "Aggiungi indirizzo di lavoro",
+    "location_create_title": "Aggiungi indirizzo di lavoro",
+    "location_no_pin": "Nessun pin GPS — una visita di lavoro non può ancora iniziare qui.",
+    "form": {
+        "name": "Nome del cliente",
+        "contact_name": "Persona di contatto",
+        "email": "E-mail",
+        "phone": "Telefono",
+        "name_matches": "Simile a:"
+    },
+    "location_form": {
+        "name": "Nome dell'indirizzo di lavoro",
+        "name_hint": "Facoltativo — per impostazione predefinita viene usato il nome del cliente.",
+        "street": "Via",
+        "house_number": "N.",
+        "postal_code": "CAP",
+        "city": "Località",
+        "latitude": "Latitudine",
+        "longitude": "Longitudine",
+        "pin_hint": "È necessario un pin GPS per avviare una visita di lavoro a questo indirizzo."
+    },
+    "errors": {
+        "name_required": "Inserisci un nome cliente.",
+        "email_invalid": "Inserisci un indirizzo e-mail valido.",
+        "not_found": "Cliente non trovato."
+    }
+}

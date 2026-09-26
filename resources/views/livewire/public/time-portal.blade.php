@@ -246,6 +246,102 @@
                         <p class="wp-muted">{{ __('time.roster.subtitle') }}</p>
                     </x-wp-page-head-title>
                     @include('partials.wp-time-roster-list', ['roster' => $roster])
+                @elseif ($customerFormOpen ?? false)
+                    <x-wp-portal-back wire:click="closeCustomerForm" />
+                    <x-wp-page-head-title variant="portal" icon="team" :title="__('time.portal.customer.title')">
+                        <p class="wp-muted">{{ __('time.portal.customer.subtitle') }}</p>
+                    </x-wp-page-head-title>
+                    <div
+                        class="wp-card wp-card-pad wp-stack"
+                        x-data="{
+                            submitVisit() {
+                                if (!navigator.geolocation) {
+                                    $wire.submitCustomerLocation(null, null);
+                                    return;
+                                }
+                                navigator.geolocation.getCurrentPosition(
+                                    (pos) => $wire.submitCustomerLocation(String(pos.coords.latitude), String(pos.coords.longitude)),
+                                    () => $wire.submitCustomerLocation(null, null),
+                                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                                );
+                            }
+                        }"
+                    >
+                        <div class="wp-field">
+                            <label class="wp-label" for="portalCustomerId">{{ __('time.portal.customer.pick_existing') }}</label>
+                            <select id="portalCustomerId" class="wp-select" wire:model.live="customerId">
+                                <option value="0">{{ __('time.portal.customer.new') }}</option>
+                                @foreach ($customerOptions as $customerOption)
+                                    <option value="{{ $customerOption->id }}">{{ $customerOption->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('customerId') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+
+                        @if ((int) $customerId <= 0)
+                            <div class="wp-field">
+                                <label class="wp-label" for="portalCustomerName">{{ __('customers.form.name') }}</label>
+                                <input id="portalCustomerName" type="text" class="wp-input" wire:model.live.debounce.300ms="customerName" autocomplete="off">
+                                @if ($customerNameMatches !== [])
+                                    <p class="wp-hint">
+                                        {{ __('customers.form.name_matches') }}
+                                        {{ implode(', ', array_column($customerNameMatches, 'name')) }}
+                                    </p>
+                                @endif
+                                @error('customer_name') <p class="wp-error">{{ $message }}</p> @enderror
+                            </div>
+                            <div class="wp-field">
+                                <label class="wp-label" for="portalCustomerContact">{{ __('customers.form.contact_name') }}</label>
+                                <input id="portalCustomerContact" type="text" class="wp-input" wire:model="customerContactName" autocomplete="off">
+                            </div>
+                            <div class="wp-field">
+                                <label class="wp-label" for="portalCustomerEmail">{{ __('customers.form.email') }}</label>
+                                <input id="portalCustomerEmail" type="email" class="wp-input" wire:model="customerEmail" autocomplete="off">
+                                @error('email') <p class="wp-error">{{ $message }}</p> @enderror
+                            </div>
+                            <div class="wp-field">
+                                <label class="wp-label" for="portalCustomerPhone">{{ __('customers.form.phone') }}</label>
+                                <input id="portalCustomerPhone" type="text" class="wp-input" wire:model="customerPhone" autocomplete="off">
+                            </div>
+                        @endif
+
+                        <div class="wp-field">
+                            <label class="wp-label" for="portalLocationName">{{ __('time.portal.customer.location_name') }}</label>
+                            <input id="portalLocationName" type="text" class="wp-input" wire:model="customerLocationName" autocomplete="off">
+                            <p class="wp-hint">{{ __('time.portal.customer.location_name_hint') }}</p>
+                        </div>
+                        <div class="wp-form-grid-2">
+                            <div class="wp-field">
+                                <label class="wp-label" for="portalStreet">{{ __('customers.location_form.street') }}</label>
+                                <input id="portalStreet" type="text" class="wp-input" wire:model="customerStreet" autocomplete="off">
+                            </div>
+                            <div class="wp-field">
+                                <label class="wp-label" for="portalHouseNumber">{{ __('customers.location_form.house_number') }}</label>
+                                <input id="portalHouseNumber" type="text" class="wp-input" wire:model="customerHouseNumber" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="wp-form-grid-2">
+                            <div class="wp-field">
+                                <label class="wp-label" for="portalPostalCode">{{ __('customers.location_form.postal_code') }}</label>
+                                <input id="portalPostalCode" type="text" class="wp-input" wire:model="customerPostalCode" autocomplete="off">
+                            </div>
+                            <div class="wp-field">
+                                <label class="wp-label" for="portalCity">{{ __('customers.location_form.city') }}</label>
+                                <input id="portalCity" type="text" class="wp-input" wire:model="customerCity" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="wp-field">
+                            <label class="wp-label" for="portalDdt">{{ __('locations.form.ddt') }}</label>
+                            <input id="portalDdt" type="text" class="wp-input" wire:model="customerDdt" autocomplete="off" maxlength="13">
+                            <p class="wp-hint">{{ __('locations.form.ddt_hint') }}</p>
+                            @error('contractual_relationship_reference') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+
+                        <p class="wp-hint">{{ __('time.portal.customer.gps_hint') }}</p>
+                        <button type="button" class="btn btn--primary btn--block" @click="submitVisit()">
+                            {{ __('time.portal.customer.submit') }}
+                        </button>
+                    </div>
                 @elseif ($checkingUnit)
                     @if ($skipRoundTaskId)
                         <x-wp-modal closeMethod="closeSkipRoundStop" aria-labelledby="skip-round-title">
@@ -569,7 +665,7 @@
                     </div>
                     @endif
 
-                    @if ($tasks->isNotEmpty())
+                    @if (! ($checkmateMode ?? false) && $tasks->isNotEmpty())
                         @if ($taskHint !== null)
                             <div class="wp-flash">{{ $taskHint }}</div>
                         @endif
@@ -695,16 +791,18 @@
 
                     @if ($hasTimeModule)
                         <div class="wp-tiles">
-                            <button type="button" class="wp-tile" wire:click="openSchedule">
-                                <span class="wp-cluster">
-                                    <x-wp-icon name="calendar" class="wp-tile-icon" />
-                                    <span class="wp-tile-title">{{ __('time.portal.schedule.tile') }}</span>
-                                    @if (($scheduleUnreadCount ?? 0) > 0)
-                                        <span class="wp-pill wp-pill--new">{{ $scheduleUnreadCount }}</span>
-                                    @endif
-                                </span>
-                                <span class="wp-tile-sub">{{ __('time.portal.schedule.tile_sub') }}</span>
-                            </button>
+                            @unless ($checkmateMode ?? false)
+                                <button type="button" class="wp-tile" wire:click="openSchedule">
+                                    <span class="wp-cluster">
+                                        <x-wp-icon name="calendar" class="wp-tile-icon" />
+                                        <span class="wp-tile-title">{{ __('time.portal.schedule.tile') }}</span>
+                                        @if (($scheduleUnreadCount ?? 0) > 0)
+                                            <span class="wp-pill wp-pill--new">{{ $scheduleUnreadCount }}</span>
+                                        @endif
+                                    </span>
+                                    <span class="wp-tile-sub">{{ __('time.portal.schedule.tile_sub') }}</span>
+                                </button>
+                            @endunless
                             <button type="button" class="wp-tile" wire:click="openHours">
                                 <span class="wp-cluster">
                                     <x-wp-icon name="clock" class="wp-tile-icon" />
@@ -712,13 +810,24 @@
                                 </span>
                                 <span class="wp-tile-sub">{{ __('time.portal.hours.tile_sub') }}</span>
                             </button>
-                            <button type="button" class="wp-tile" wire:click="openAbsence">
-                                <span class="wp-cluster">
-                                    <x-wp-icon name="calendar" class="wp-tile-icon" />
-                                    <span class="wp-tile-title">{{ __('time.portal.absence.tile') }}</span>
-                                </span>
-                                <span class="wp-tile-sub">{{ __('time.portal.absence.tile_sub') }}</span>
-                            </button>
+                            @if ($checkmateMode ?? false)
+                                <button type="button" class="wp-tile" wire:click="openCustomerForm">
+                                    <span class="wp-cluster">
+                                        <x-wp-icon name="team" class="wp-tile-icon" />
+                                        <span class="wp-tile-title">{{ __('time.portal.customer.tile') }}</span>
+                                    </span>
+                                    <span class="wp-tile-sub">{{ __('time.portal.customer.tile_sub') }}</span>
+                                </button>
+                            @endif
+                            @unless ($checkmateMode ?? false)
+                                <button type="button" class="wp-tile" wire:click="openAbsence">
+                                    <span class="wp-cluster">
+                                        <x-wp-icon name="calendar" class="wp-tile-icon" />
+                                        <span class="wp-tile-title">{{ __('time.portal.absence.tile') }}</span>
+                                    </span>
+                                    <span class="wp-tile-sub">{{ __('time.portal.absence.tile_sub') }}</span>
+                                </button>
+                            @endunless
                             @if ($evacuationList)
                                 <button type="button" class="wp-tile" wire:click="openRoster">
                                     <span class="wp-cluster">

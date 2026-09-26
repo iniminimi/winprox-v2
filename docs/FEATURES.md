@@ -1127,6 +1127,17 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   Superuser zet `billing_plan=corporate` + `billing_units_cap` via Platform → Organisaties
   (zelfde plan-kiezer). **Jaarlijks** (365 dagen) of op maat; niet via Stripe Checkout.
   Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
+- **Checkmate** (`checkmate` / `checkmate_trial`): veldwerk-preset op hetzelfde product —
+  geen Facility-module, wél Time + GPS-klantbezoeken (blokkerende straal, default 100 m).
+  **5€ per actieve uitvoerder per maand**; seat-aantal instelbaar op het betaalde plan
+  (`tenants.billing_seats_qty`, nooit onder het actieve aantal). Tenantvlag
+  `checkmate_mode` volgt de plan-entitlement en activeert de whitelist-gating:
+  niet-vrijgegeven admin-routes → 404, sidebar beperkt tot Klanten (`/klanten`),
+  Uitvoerders, Time (aanwezigheid/uren/CIAO/Clock Points), Instellingen en Abonnement.
+  Zelfde Clock Point-portaal voor klokken, pauzes, klantbezoeken (klant kiezen of
+  onderweg aanmaken met zachte dedup-nudge) en Mijn uren. CIAO (RSZ) via
+  self-service aanvraag op Instellingen → pending → superuser-bevestiging
+  (`presence_compliance_requested_at`). Volledige spec: `docs/CHECKMATE.md`.
 - **Legacy `facility_*` en `winprox_100`:** blijven in config (niet in catalogus).
 - Plankaarten + vergelijkingstabel op publieke `/pricing` (informatief + trial-registratie).
   In de app: status + limieten + **formule activeren** (Stripe Checkout indien geconfigureerd;

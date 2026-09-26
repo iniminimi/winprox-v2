@@ -456,5 +456,7 @@
     "plan_select": "Tarif",
     "plan_assign": "Tarif zuweisen",
     "plan_assign_hint": "Superuser kann eine Formel zuweisen (auch ohne Stripe). Mandanten können selbst über Stripe wählen. Corporate braucht ein Units-Cap. CIAO (LSZ) kann getrennt ohne Corporate aktiviert werden; Time wird mitgeschaltet.",
-    "plan_assigned": "Tarif :plan zugewiesen."
+    "plan_assigned": "Tarif :plan zugewiesen.",
+    "ciao_requested": "CIAO angefordert",
+    "ciao_requested_hint": "Unternehmensnummer: :number — über den CIAO-Schalter bestätigen."
 }

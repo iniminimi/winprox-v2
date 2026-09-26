@@ -142,7 +142,8 @@
         "enterprise_number_invalid": "Invalid company number.",
         "presence_scope_invalid": "This presence regime is not available.",
         "time_module_required": "Time (punch clock) must be enabled for CIAO.",
-        "presence_locked": "CIAO is not enabled. Request it via info@winprox.app."
+        "presence_locked": "CIAO is not enabled. Request it via info@winprox.app.",
+        "enterprise_number_required": "Enter your enterprise number (KBO/BCE)."
     },
     "api": {
         "nav": "API & webhooks",
@@ -225,7 +226,11 @@
         "foreign_vat_hint": "Only if you have no Belgian BCE (foreign employer).",
         "save": "Save CIAO settings",
         "saved": "CIAO settings saved.",
-        "view_all": "All CIAO submissions"
+        "view_all": "All CIAO submissions",
+        "request_intro": "Request CIAO activation with your enterprise number (KBO/BCE). WinProx confirms the link afterwards — presence is reported from that moment on.",
+        "request_submit": "Request CIAO activation",
+        "request_sent": "CIAO request sent. WinProx will confirm the activation.",
+        "request_pending": "CIAO activation has been requested and is being confirmed by WinProx. Presence is only reported from activation onwards."
     },
     "time_clock": {
         "title": "Punch clock security",

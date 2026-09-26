@@ -180,5 +180,9 @@
             "subject": "WinProx : suppression planifiée — :tenant",
             "body": "Une suppression de compte a été planifiée.\\n\\nOrganisation : :tenant\\nID locataire : :tenant_id\\nParcours : :track\\nPrévu le : :date (:timezone)\\nID demande de purge : :purge_request_id"
         }
+    },
+    "presence_request": {
+        "subject": "WinProx : activation CIAO demandée — :tenant",
+        "body": "Un tenant demande l'activation CIAO.\n\nOrganisation : :tenant\nID tenant : :tenant_id\nNuméro d'entreprise : :enterprise_number\n\nConfirmez via la plateforme (toggle CIAO du tenant)."
     }
 }

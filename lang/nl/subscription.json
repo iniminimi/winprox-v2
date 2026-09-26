@@ -229,6 +229,12 @@
                 "Volledige REST API en webhooks.",
                 "Integraties, SLA en support op maat."
             ]
+        },
+        "checkmate": {
+            "name": "WinProx Checkmate"
+        },
+        "checkmate_trial": {
+            "name": "WinProx Checkmate (proef)"
         }
     },
     "stripe": {
@@ -332,5 +338,16 @@
     },
     "comparison_col_seats": "Licenties",
     "payment_notice": "Maandelijks te betalen via Stripe. Corporate op maat (geen online checkout).",
-    "prices_excl_vat": "Alle getoonde prijzen zijn exclusief btw."
+    "prices_excl_vat": "Alle getoonde prijzen zijn exclusief btw.",
+    "seats": {
+        "title": "Aantal uitvoerders (seats)",
+        "current": "Actief op dit moment: :count",
+        "billed_next_period": "Wijziging geldt meteen en wordt gefactureerd vanaf de volgende periode.",
+        "save": "Opslaan",
+        "saved": "Aantal seats bijgewerkt.",
+        "qty_required": "Vul een aantal in.",
+        "qty_invalid": "Vul een geldig aantal in (1-500).",
+        "below_active": "Je kan niet onder de :active actieve seats zakken — deactiveer eerst uitvoerders.",
+        "not_editable": "Dit plan heeft geen instelbaar aantal seats."
+    }
 }

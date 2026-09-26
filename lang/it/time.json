@@ -399,7 +399,20 @@
             "next_stop": "Prossima sosta: :name",
             "here_done": "Il lavoro qui è finito.",
             "toggle": "Dettagli"
-        }
+        },
+        "customer": {
+            "tile": "Nuovo cliente",
+            "tile_sub": "Crea cliente + indirizzo di lavoro",
+            "title": "Cliente o indirizzo di lavoro",
+            "subtitle": "Scegli un cliente esistente o creane uno.",
+            "pick_existing": "Cliente",
+            "new": "+ Nuovo cliente",
+            "location_name": "Nome dell'indirizzo di lavoro",
+            "location_name_hint": "Facoltativo — per impostazione predefinita viene usato il nome del cliente.",
+            "gps_hint": "La tua posizione GPS attuale viene salvata come pin di questo indirizzo di lavoro.",
+            "submit": "Salva cliente e indirizzo di lavoro"
+        },
+        "customer_saved": "Cliente e indirizzo di lavoro salvati."
     },
     "ciao": {
         "title": "Invii CIAO",

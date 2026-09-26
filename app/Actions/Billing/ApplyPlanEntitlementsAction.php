@@ -21,15 +21,27 @@ class ApplyPlanEntitlementsAction
         }
 
         $wantsTimeModule = (bool) ($config['time_module'] ?? false);
+        $checkmateMode = (bool) ($config['checkmate_mode'] ?? false);
 
-        $tenant->forceFill([
+        $updates = [
             'has_time_module' => $wantsTimeModule,
             'has_esg_module' => (bool) ($config['esg_module'] ?? false),
             'has_iot_module' => (bool) ($config['iot_module'] ?? false),
-        ])->save();
+            'checkmate_mode' => $checkmateMode,
+        ];
+
+        // Checkmate-preset (docs/CHECKMATE.md §1): GPS-werkbezoeken verplicht aan.
+        if ($checkmateMode) {
+            $updates['has_time_module'] = true;
+            $updates['time_gps_visits'] = true;
+            $updates['time_gps_visit_radius_meters'] = (int) ($config['gps_visit_radius_meters'] ?? 100);
+        }
+
+        $tenant->forceFill($updates)->save();
 
         // Worker-aanmelden loopt via Clock Point QR, ook zonder Time (prikklok).
-        if ((bool) ($config['includes_facility'] ?? false)) {
+        // Checkmate heeft geen Facility maar wél een Clock Point (/cp/{token}).
+        if ((bool) ($config['includes_facility'] ?? false) || $checkmateMode) {
             $this->ensureDefaultClockPoint->handle(
                 $tenant->fresh(),
                 __('team.clock_point_qr.default_name'),

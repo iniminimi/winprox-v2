@@ -399,7 +399,20 @@
             "next_stop": "Prochain arrêt : :name",
             "here_done": "Le travail ici est terminé.",
             "toggle": "Détails"
-        }
+        },
+        "customer": {
+            "tile": "Nouveau client",
+            "tile_sub": "Créer client + adresse de travail",
+            "title": "Client ou adresse de travail",
+            "subtitle": "Choisissez un client existant ou créez-en un.",
+            "pick_existing": "Client",
+            "new": "+ Nouveau client",
+            "location_name": "Nom de l'adresse de travail",
+            "location_name_hint": "Optionnel — le nom du client est utilisé par défaut.",
+            "gps_hint": "Votre position GPS actuelle est enregistrée comme pin de cette adresse de travail.",
+            "submit": "Enregistrer le client et l'adresse de travail"
+        },
+        "customer_saved": "Client et adresse de travail enregistrés."
     },
     "ciao": {
         "title": "Envois CIAO",

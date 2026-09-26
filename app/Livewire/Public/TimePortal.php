@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Public;
 
+use App\Actions\Customers\CreateCustomerWithLocationAction;
+use App\Actions\Customers\SuggestCustomerNameMatchesAction;
 use App\Actions\Notifications\ListWorkerNotificationsAction;
 use App\Actions\Notifications\MarkWorkerNotificationsReadAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
@@ -59,6 +61,7 @@ use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\AbsenceRequest;
 use App\Models\ClockPoint;
+use App\Models\Customer;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Task;
@@ -66,6 +69,7 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
+use App\Support\Checkmate\CheckmateMode;
 use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Portal\TimePortalData;
 use App\Support\Portal\WorkerDeviceSession;
@@ -216,6 +220,36 @@ class TimePortal extends Component
     public bool $taskBaselineSyncedThisVisit = false;
 
     public bool $homescreenHelpOpen = false;
+
+    // Checkmate: "nieuwe klant onderweg" — klant (bestaand kiezen of nieuw)
+    // + werkadres in één flow; GPS-pin komt van de gsm.
+    public bool $customerFormOpen = false;
+
+    /** '0' of leeg = nieuwe klant aanmaken; anders bestaande customer_id. */
+    public string $customerId = '0';
+
+    public string $customerName = '';
+
+    public string $customerContactName = '';
+
+    public string $customerEmail = '';
+
+    public string $customerPhone = '';
+
+    public string $customerLocationName = '';
+
+    public string $customerStreet = '';
+
+    public string $customerHouseNumber = '';
+
+    public string $customerPostalCode = '';
+
+    public string $customerCity = '';
+
+    public string $customerDdt = '';
+
+    /** @var list<array{id: int, name: string}> */
+    public array $customerNameMatches = [];
 
     public function mount(string $token): void
     {
@@ -1064,6 +1098,138 @@ class TimePortal extends Component
         }
     }
 
+    public function openCustomerForm(): void
+    {
+        if ($this->authorizedWorker() === null || ! $this->checkmateModeActive()) {
+            return;
+        }
+
+        $this->resetCustomerForm();
+        $this->customerFormOpen = true;
+    }
+
+    public function closeCustomerForm(): void
+    {
+        $this->customerFormOpen = false;
+        $this->resetCustomerForm();
+    }
+
+    public function updatedCustomerName(SuggestCustomerNameMatchesAction $suggest): void
+    {
+        $this->customerNameMatches = (int) $this->customerId > 0
+            ? []
+            : $suggest->handle($this->tenantId, $this->customerName)
+                ->map(fn (Customer $customer) => [
+                    'id' => (int) $customer->id,
+                    'name' => (string) $customer->name,
+                ])
+                ->all();
+    }
+
+    public function updatedCustomerId(): void
+    {
+        $this->customerNameMatches = [];
+    }
+
+    public function submitCustomerLocation(
+        mixed $latitude,
+        mixed $longitude,
+        CreateCustomerWithLocationAction $create,
+    ): void {
+        $worker = $this->authorizedWorker();
+        if ($worker === null || ! $this->checkmateModeActive()) {
+            return;
+        }
+
+        $lat = $this->parseVisitGps($latitude);
+        $lng = $this->parseVisitGps($longitude);
+        if ($lat === null || $lng === null) {
+            $this->portalFlash('time.portal.errors.visit_gps_required');
+
+            return;
+        }
+
+        $newCustomer = (int) $this->customerId <= 0;
+
+        $validated = Validator::make(
+            [
+                'customer_id' => $newCustomer ? null : (int) $this->customerId,
+                'customer_name' => $newCustomer ? $this->customerName : null,
+                'contact_name' => $newCustomer ? $this->customerContactName : null,
+                'email' => $newCustomer ? $this->customerEmail : null,
+                'phone' => $newCustomer ? $this->customerPhone : null,
+                'location_name' => $this->customerLocationName,
+                'street' => $this->customerStreet,
+                'house_number' => $this->customerHouseNumber,
+                'postal_code' => $this->customerPostalCode,
+                'city' => $this->customerCity,
+                'contractual_relationship_reference' => $this->customerDdt,
+            ],
+            [
+                'customer_id' => ['nullable', 'integer', 'exists:customers,id'],
+                'customer_name' => [$newCustomer ? 'required' : 'nullable', 'string', 'max:255'],
+                'contact_name' => ['nullable', 'string', 'max:255'],
+                'email' => ['nullable', 'email', 'max:255'],
+                'phone' => ['nullable', 'string', 'max:64'],
+                'location_name' => ['nullable', 'string', 'max:255'],
+                'street' => ['nullable', 'string', 'max:255'],
+                'house_number' => ['nullable', 'string', 'max:32'],
+                'postal_code' => ['nullable', 'string', 'max:16'],
+                'city' => ['nullable', 'string', 'max:255'],
+                'contractual_relationship_reference' => ['nullable', 'regex:/^[A-HJ-NP-Z0-9]{13}$/'],
+            ],
+            [
+                'customer_name.required' => __('customers.errors.name_required'),
+                'customer_id.exists' => __('customers.errors.not_found'),
+                'email.email' => __('customers.errors.email_invalid'),
+                'contractual_relationship_reference.regex' => __('locations.errors.ddt_invalid'),
+            ],
+        )->validate();
+
+        try {
+            $result = $create->handle($worker, [...$validated, 'latitude' => $lat, 'longitude' => $lng]);
+        } catch (InvalidArgumentException $e) {
+            if ($e->getMessage() === 'customer_not_found') {
+                $this->addError('customerId', __('customers.errors.not_found'));
+
+                return;
+            }
+
+            if ($this->flashVisitError($e)) {
+                return;
+            }
+
+            throw $e;
+        }
+
+        $this->closeCustomerForm();
+        $this->portalFlash('time.portal.customer_saved');
+    }
+
+    private function checkmateModeActive(): bool
+    {
+        $tenant = Tenant::query()->find($this->tenantId);
+
+        return CheckmateMode::isActive($tenant);
+    }
+
+    private function resetCustomerForm(): void
+    {
+        $this->customerId = '0';
+        $this->customerName = '';
+        $this->customerContactName = '';
+        $this->customerEmail = '';
+        $this->customerPhone = '';
+        $this->customerLocationName = '';
+        $this->customerStreet = '';
+        $this->customerHouseNumber = '';
+        $this->customerPostalCode = '';
+        $this->customerCity = '';
+        $this->customerDdt = '';
+        $this->customerNameMatches = [];
+        $this->resetErrorBag();
+    }
+
     public function openClockPointUnitCheck(int $unitId, AssertClockPointUnitVisitAction $assertVisit): void
     {
         $worker = $this->authorizedWorker();
@@ -1542,19 +1708,22 @@ class TimePortal extends Component
             $openShift = $findShift->handle($verifiedWorker);
         }
         $hasTimeModule = TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId));
+        $checkmateMode = CheckmateMode::isActive(Tenant::query()->find($this->tenantId));
         $lastClosedShift = ($canAct && $verifiedWorker !== null && $hasTimeModule && $openShift === null)
             ? TimePortalData::lastClosedShiftToday($verifiedWorker)
             : null;
-        $evacuationList = TimePortalData::tenantAllowsEvacuationList($this->tenantId);
+        $evacuationList = ! $checkmateMode && TimePortalData::tenantAllowsEvacuationList($this->tenantId);
         $gpsVisits = TimePortalData::tenantAllowsGpsWorkVisits($this->tenantId);
-        $tasks = $canAct && $verifiedWorker !== null ? TimePortalData::openTasksForWorker($verifiedWorker) : collect();
+        $tasks = $canAct && $verifiedWorker !== null && ! $checkmateMode
+            ? TimePortalData::openTasksForWorker($verifiedWorker)
+            : collect();
         $checkingUnit = null;
         $clockPointUnitCheckList = null;
         $clockPointUnitCheckListItems = collect();
         $clockPointRoundTask = null;
         $clockPointRoundProgress = null;
         $clockPointIsNextStop = false;
-        if ($canAct && $verifiedWorker !== null && $this->checkingUnitId !== null) {
+        if ($canAct && $verifiedWorker !== null && ! $checkmateMode && $this->checkingUnitId !== null) {
             $checkingUnit = $this->findClockPointUnit($verifiedWorker, $this->checkingUnitId);
             if ($checkingUnit !== null) {
                 $checkingUnit->loadMissing(['unitCheckList.items', 'unitCheckList.translations']);
@@ -1575,7 +1744,7 @@ class TimePortal extends Component
                 $this->checkingUnitId = null;
             }
         }
-        $teamWorkers = ($team !== null && $verifiedWorker !== null && $verifiedWorker->is_teamleader)
+        $teamWorkers = ($team !== null && $verifiedWorker !== null && $verifiedWorker->is_teamleader && ! $checkmateMode)
             ? Worker::query()
                 ->where('internal_team_id', $team->id)
                 ->where('is_active', true)
@@ -1584,10 +1753,12 @@ class TimePortal extends Component
                 ->get()
             : collect();
 
-        if (! $canAct || ! $hasTimeModule) {
+        if (! $canAct || ! $hasTimeModule || $checkmateMode) {
             $this->rosterAckOpen = false;
             $this->rosterListOpen = false;
-            $this->hoursListOpen = false;
+            if (! $canAct || ! $hasTimeModule) {
+                $this->hoursListOpen = false;
+            }
             $this->scheduleListOpen = false;
             $this->absenceListOpen = false;
         }
@@ -1616,7 +1787,7 @@ class TimePortal extends Component
         $schedule = null;
         $scheduleMonthLabel = '';
         $scheduleUnreadCount = 0;
-        if ($canAct && $verifiedWorker !== null && $hasTimeModule) {
+        if ($canAct && $verifiedWorker !== null && $hasTimeModule && ! $checkmateMode) {
             $scheduleUnreadCount = count($listNotifications->handle(
                 $verifiedWorker,
                 $this->tenantId,
@@ -1632,12 +1803,12 @@ class TimePortal extends Component
         }
 
         $absenceRequests = collect();
-        if ($canAct && $this->absenceListOpen && $verifiedWorker !== null && $hasTimeModule) {
+        if ($canAct && $this->absenceListOpen && $verifiedWorker !== null && $hasTimeModule && ! $checkmateMode) {
             $absenceRequests = $listAbsenceRequests->handle($verifiedWorker, $this->tenantId);
         }
 
         $todayClockAlert = null;
-        if ($canAct && $verifiedWorker !== null && $hasTimeModule && ! $this->hoursListOpen && ! $this->scheduleListOpen && ! $this->absenceListOpen) {
+        if ($canAct && $verifiedWorker !== null && $hasTimeModule && ! $checkmateMode && ! $this->hoursListOpen && ! $this->scheduleListOpen && ! $this->absenceListOpen) {
             $todayClockAlert = $rosterAlerts->handle(
                 $verifiedWorker,
                 $this->tenantId,
@@ -1645,12 +1816,14 @@ class TimePortal extends Component
             )[now()->toDateString()] ?? null;
         }
 
-        $todayDestinations = $this->todayDestinationsForView(
-            $verifiedWorker,
-            $openShift,
-            $listDestinations,
-        );
-        $onSiteGuidance = ($gpsVisits && $openShift?->openVisit !== null)
+        $todayDestinations = $checkmateMode
+            ? []
+            : $this->todayDestinationsForView(
+                $verifiedWorker,
+                $openShift,
+                $listDestinations,
+            );
+        $onSiteGuidance = ($gpsVisits && ! $checkmateMode && $openShift?->openVisit !== null)
             ? TimePortalData::onSiteGuidance($openShift->openVisit, $tasks, $todayDestinations)
             : null;
 
@@ -1703,6 +1876,14 @@ class TimePortal extends Component
             'scheduleMonthLabel' => $scheduleMonthLabel,
             'scheduleUnreadCount' => $scheduleUnreadCount,
             'absenceRequests' => $absenceRequests,
+            'checkmateMode' => $checkmateMode,
+            'customerOptions' => ($checkmateMode && $this->customerFormOpen)
+                ? Customer::query()
+                    ->where('tenant_id', $this->tenantId)
+                    ->where('is_active', true)
+                    ->orderBy('name')
+                    ->get(['id', 'name'])
+                : collect(),
             'showClockPointName' => ! TimePortalData::isGenericClockPointName($this->clockPointName),
             'offerHomescreenShortcut' => $this->clockPointOffersHomescreenShortcut(),
             'isTimePortal' => true,

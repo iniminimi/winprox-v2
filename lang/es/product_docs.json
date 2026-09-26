@@ -162,6 +162,19 @@
                 ]
             },
             {
+                "title": "Checkmate",
+                "badge": "RSZ/CIAO",
+                "body": "Checkmate es la fórmula de campo para equipos que trabajan en clientes.",
+                "items": [
+                    "Los operarios fichan con el mismo QR del Clock Point.",
+                    "La visita al cliente empieza con un control GPS dentro del radio acordado.",
+                    "Clientes y direcciones de trabajo en una sola pantalla.",
+                    "Presencia, parte de horas y Mis horas como en Time.",
+                    "CIAO (ONSS) bajo petición desde los ajustes.",
+                    "5 € por operario activo al mes; plazas ajustables."
+                ]
+            },
+            {
                 "title": "Cuadrante",
                 "body": "La gestión planifica turnos en Time → Cuadrante. Publicar los muestra en Clock Point, no en la ONSS.",
                 "items": [

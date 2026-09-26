@@ -32,3 +32,6 @@ bootstrap/cache/*.php
 *-bedrijven*.json
 *-bedrijven*.xlsx
 *-bedrijven*.xlsm
+
+winprox-ciao-cert.pem
+winprox-ciao-openssl.cnf

@@ -104,6 +104,31 @@
                 @endif
             </div>
 
+            @if ($seatsQtyEditable ?? false)
+                <div class="wp-card wp-card-pad wp-stack-tight">
+                    <p class="wp-section-title">{{ __('subscription.seats.title') }}</p>
+                    <p class="wp-muted">
+                        {{ __('subscription.seats.current', ['count' => $tenant->currentSeatsCount()]) }}
+                        — {{ __('subscription.seats.billed_next_period') }}
+                    </p>
+                    <form wire:submit="saveSeatsQty" class="wp-cluster">
+                        <input
+                            type="number"
+                            class="wp-input"
+                            wire:model="seatsQtyInput"
+                            min="1"
+                            max="500"
+                            inputmode="numeric"
+                            @disabled(! $canManage)
+                        >
+                        <button type="submit" class="btn btn--primary btn--sm" @disabled(! $canManage)>
+                            {{ __('subscription.seats.save') }}
+                        </button>
+                    </form>
+                    @error('seatsQtyInput') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+            @endif
+
             @if (! $tenant->isLegacyWithoutBillingTracking())
                 @php
                     $limitMaxUnits = $tenant->maxUnitsLimit();

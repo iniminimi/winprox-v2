@@ -456,5 +456,7 @@
     "plan_select": "Formule",
     "plan_assign": "Formule toewijzen",
     "plan_assign_hint": "Superuser kan een formule toewijzen (ook zonder Stripe). Tenants kunnen zelf kiezen via Stripe. Corporate vraagt een units-cap. CIAO (RSZ) kan apart aan zonder Corporate; Time gaat mee aan.",
-    "plan_assigned": "Formule :plan toegewezen."
+    "plan_assigned": "Formule :plan toegewezen.",
+    "ciao_requested": "CIAO aangevraagd",
+    "ciao_requested_hint": "Ondernemingsnummer: :number — bevestig via de CIAO-toggle."
 }

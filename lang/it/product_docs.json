@@ -162,6 +162,19 @@
                 ]
             },
             {
+                "title": "Checkmate",
+                "badge": "RSZ/CIAO",
+                "body": "Checkmate è la formula sul campo per i team che lavorano presso i clienti.",
+                "items": [
+                    "Gli operatori timbrano con lo stesso QR del Clock Point.",
+                    "La visita al cliente parte con un controllo GPS entro il raggio concordato.",
+                    "Clienti e indirizzi di lavoro in un’unica schermata.",
+                    "Presenze, conteggio ore e Le mie ore come in Time.",
+                    "CIAO (INPS) su richiesta dalle impostazioni.",
+                    "5 € per operatore attivo al mese; posti regolabili."
+                ]
+            },
+            {
                 "title": "Turni",
                 "body": "La gestione pianifica i servizi in Time → Turni. Pubblicare li mostra sul Clock Point, non all’ONSS.",
                 "items": [

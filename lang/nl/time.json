@@ -399,7 +399,20 @@
             "next_stop": "Volgende stop: :name",
             "here_done": "Werk hier is klaar.",
             "toggle": "Details"
-        }
+        },
+        "customer": {
+            "tile": "Nieuwe klant",
+            "tile_sub": "Klant + werkadres aanmaken",
+            "title": "Klant of werkadres",
+            "subtitle": "Kies een bestaande klant of maak er een aan.",
+            "pick_existing": "Klant",
+            "new": "+ Nieuwe klant",
+            "location_name": "Naam werkadres",
+            "location_name_hint": "Optioneel — anders wordt de klantnaam gebruikt.",
+            "gps_hint": "Je huidige GPS-positie wordt als pin van het werkadres opgeslagen.",
+            "submit": "Klant en werkadres opslaan"
+        },
+        "customer_saved": "Klant en werkadres opgeslagen."
     },
     "ciao": {
         "title": "CIAO-inzendingen",

@@ -43,6 +43,7 @@ class ActivateSubscriptionPlanAction
         }
 
         $periodDays = Tenant::subscriptionPeriodDaysForPlan($plan);
+        $seatsQtyEditable = (bool) config("billing.plans.{$plan}.seats_qty_editable", false);
 
         $tenant->forceFill([
             'billing_plan' => $plan,
@@ -51,6 +52,10 @@ class ActivateSubscriptionPlanAction
             'is_active' => true,
             'billing_units_cap' => $plan === 'corporate'
                 ? ($unitsCap ?? $tenant->billing_units_cap)
+                : null,
+            // Per-seat plannen (Checkmate): start qty = huidige bezetting.
+            'billing_seats_qty' => $seatsQtyEditable
+                ? max(1, $tenant->currentSeatsCount())
                 : null,
         ])->save();
 

@@ -142,7 +142,8 @@
         "enterprise_number_invalid": "Ongeldig ondernemingsnummer.",
         "presence_scope_invalid": "Dit aanwezigheidsregime is niet beschikbaar.",
         "time_module_required": "Time (prikklok) moet actief zijn voor CIAO.",
-        "presence_locked": "CIAO is niet ingeschakeld. Vraag het aan via info@winprox.app."
+        "presence_locked": "CIAO is niet ingeschakeld. Vraag het aan via info@winprox.app.",
+        "enterprise_number_required": "Vul je ondernemingsnummer (KBO/BCE) in."
     },
     "api": {
         "nav": "API & webhooks",
@@ -225,7 +226,11 @@
         "foreign_vat_hint": "Alleen invullen als je geen Belgisch BCE hebt (buitenlandse werkgever).",
         "save": "CIAO-instellingen opslaan",
         "saved": "CIAO-instellingen opgeslagen.",
-        "view_all": "Alle CIAO-inzendingen"
+        "view_all": "Alle CIAO-inzendingen",
+        "request_intro": "Vraag CIAO-activering aan met je ondernemingsnummer (KBO/BCE). WinProx bevestigt de koppeling daarna — vanaf dan worden aanwezigheden doorgegeven.",
+        "request_submit": "CIAO-activering aanvragen",
+        "request_sent": "CIAO-aanvraag verstuurd. WinProx bevestigt de activering.",
+        "request_pending": "CIAO-activering is aangevraagd en wordt door WinProx bevestigd. Aanwezigheden worden pas doorgegeven vanaf activering."
     },
     "time_clock": {
         "title": "Prikklok-beveiliging",

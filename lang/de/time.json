@@ -399,7 +399,20 @@
             "next_stop": "Nächster Stopp: :name",
             "here_done": "Die Arbeit hier ist fertig.",
             "toggle": "Details"
-        }
+        },
+        "customer": {
+            "tile": "Neuer Kunde",
+            "tile_sub": "Kunde + Arbeitsadresse anlegen",
+            "title": "Kunde oder Arbeitsadresse",
+            "subtitle": "Wählen Sie einen bestehenden Kunden oder legen Sie einen an.",
+            "pick_existing": "Kunde",
+            "new": "+ Neuer Kunde",
+            "location_name": "Name der Arbeitsadresse",
+            "location_name_hint": "Optional — standardmäßig wird der Kundenname verwendet.",
+            "gps_hint": "Ihre aktuelle GPS-Position wird als Pin dieser Arbeitsadresse gespeichert.",
+            "submit": "Kunde und Arbeitsadresse speichern"
+        },
+        "customer_saved": "Kunde und Arbeitsadresse gespeichert."
     },
     "ciao": {
         "title": "CIAO-Meldungen",

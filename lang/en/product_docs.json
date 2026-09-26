@@ -162,6 +162,19 @@
                 ]
             },
             {
+                "title": "Checkmate",
+                "badge": "RSZ/CIAO",
+                "body": "Checkmate is the field-work plan for teams working at customer sites.",
+                "items": [
+                    "Workers clock in via the same Clock Point QR.",
+                    "A customer visit starts with a GPS check inside the agreed radius.",
+                    "Manage customers and work addresses in one screen.",
+                    "Presence, hour statements and My hours as in Time.",
+                    "CIAO (RSZ) on request from the settings.",
+                    "€5 per active worker per month; seat count adjustable."
+                ]
+            },
+            {
                 "title": "Roster",
                 "body": "Staff plan shifts under Time → Roster. Publishing shows them on Clock Point, not at the NSSO.",
                 "items": [

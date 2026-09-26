@@ -1,6 +1,7 @@
 # WinProx Checkmate — spec
 
-> Status: vastgelegd spec (analyse + beslissingen). Bouw volgt in fasen (§10).
+> Status: vastgelegd spec (analyse + beslissingen). Fase 1 (§9 punten 1–7)
+> gebouwd; fase 2/3 volgen (§10).
 > Regelkader: `WINPROX_RULES.md` §4.5 bevat de expliciete uitzondering die Checkmate
 > toestaat als **plan-preset** op dezelfde codebase — geen fork, geen sectorlogica.
 

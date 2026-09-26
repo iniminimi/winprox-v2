@@ -32,6 +32,8 @@ class Tenant extends Model
         'billing_plan',
         'billing_active_until',
         'billing_units_cap',
+        'billing_seats_qty',
+        'checkmate_mode',
         'is_active',
         'stripe_customer_id',
         'allow_trial_api',
@@ -70,6 +72,8 @@ class Tenant extends Model
             'allow_trial_api' => 'boolean',
             'has_esg_module' => 'boolean',
             'has_iot_module' => 'boolean',
+            'checkmate_mode' => 'boolean',
+            'billing_seats_qty' => 'integer',
             'has_time_module' => 'boolean',
             'time_require_worker_pin' => 'boolean',
             'time_gps_on_clock' => 'boolean',
@@ -319,6 +323,12 @@ class Tenant extends Model
         return (bool) $this->has_time_module;
     }
 
+    /** Checkmate = plan-preset (RSZ-compliance) — zie docs/CHECKMATE.md. */
+    public function checkmateMode(): bool
+    {
+        return (bool) $this->checkmate_mode;
+    }
+
     public function requiresWorkerPin(): bool
     {
         return $this->hasTimeModule() && (bool) $this->time_require_worker_pin;
@@ -362,6 +372,17 @@ class Tenant extends Model
     public function presenceComplianceEnabled(): bool
     {
         return $this->hasTimeModule() && (bool) $this->presence_compliance_enabled;
+    }
+
+    /**
+     * CIAO self-service (Checkmate): aanvraag ingediend, nog niet bevestigd.
+     * Pending-state = scope gezet + enabled uit (docs/CHECKMATE.md §6) —
+     * bewust géén eigen statuskolom.
+     */
+    public function presenceComplianceRequested(): bool
+    {
+        return ! $this->presence_compliance_enabled
+            && $this->presence_compliance_scope !== null;
     }
 
     public function presenceComplianceScope(): ?\App\Enums\PresenceComplianceScope
@@ -729,7 +750,28 @@ class Tenant extends Model
     /** null = onbeperkt (legacy of enterprise). */
     public function maxSeatsLimit(): ?int
     {
+        // Per-seat plannen (Checkmate): tenant kiest het aantal via billing_seats_qty.
+        if ($this->billing_seats_qty !== null && $this->planUsesSeatQuantity()) {
+            return (int) $this->billing_seats_qty;
+        }
+
         return $this->billingLimitValue('seats_limit');
+    }
+
+    public function planUsesSeatQuantity(): bool
+    {
+        $planKey = $this->effectivePlanKey();
+
+        return $planKey !== null
+            && (bool) config("billing.plans.{$planKey}.seats_qty_editable", false);
+    }
+
+    /** Verminder-guard: nieuwe qty mag niet onder het aantal actieve seats zakken. */
+    public function assertSeatsQtyNotBelowActive(int $qty): void
+    {
+        if ($qty < $this->currentSeatsCount()) {
+            throw new \InvalidArgumentException('seats_qty_below_active');
+        }
     }
 
     /** @deprecated Gebruik {@see maxSeatsLimit()}. */

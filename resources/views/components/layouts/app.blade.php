@@ -35,6 +35,7 @@
             && $activeTenant->hasRecordedWorkVisits();
         $showUnitChecksNav = $activeTenant instanceof Tenant
             && $activeTenant->hasRecordedUnitChecks();
+        $checkmateNav = \App\Support\Checkmate\CheckmateMode::isActive($activeTenant);
 
         $primaryNav = [
             ...($isPlatformOnlySuperuser ? [
@@ -177,6 +178,107 @@
                                 <span>{{ __($item['label']) }}</span>
                             </a>
                         @endforeach
+                    @elseif ($checkmateNav)
+                        {{-- Checkmate-whitelist (docs/CHECKMATE.md §5): Klanten, Uitvoerders,
+                             Time (aanwezigheid/uren/CIAO/clock points), Instellingen, Abonnement. --}}
+                        <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
+
+                        <a href="{{ route('customers.index') }}"
+                           class="wp-nav-link {{ request()->routeIs('customers.*') ? 'is-active' : '' }}"
+                           @click="nav = false">
+                            <x-wp-icon name="team" class="wp-nav-icon" />
+                            <span>{{ __('customers.title') }}</span>
+                        </a>
+                        <a href="{{ route('workers.index') }}"
+                           class="wp-nav-link {{ request()->routeIs('workers.*') ? 'is-active' : '' }}"
+                           @click="nav = false">
+                            <x-wp-icon name="team" class="wp-nav-icon" />
+                            <span>{{ __('common.nav.workers') }}</span>
+                        </a>
+
+                        @if ($showTimeNav)
+                            <details class="wp-sidebar-accordion__group" @if(request()->routeIs('time.*')) open @endif>
+                                <summary class="wp-nav-link {{ request()->routeIs('time.*') ? 'is-active' : '' }}">
+                                    <x-wp-icon name="clock" class="wp-nav-icon" />
+                                    <span>{{ __('common.nav.time') }}</span>
+                                </summary>
+                                <div class="wp-sidebar-accordion__panel">
+                                    <a href="{{ route('time.clock-points.index') }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('time.clock-points.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('time.nav.clock_points') }}</span>
+                                    </a>
+                                    <a href="{{ route('time.presence.index') }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('time.presence.index') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('time.nav.presence') }}</span>
+                                    </a>
+                                    <a href="{{ route('time.shifts.index') }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('time.shifts.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('time.nav.schedule') }}</span>
+                                    </a>
+                                    <a href="{{ route('time.ciao.index') }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('time.ciao.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('time.nav.ciao') }}</span>
+                                    </a>
+                                </div>
+                            </details>
+                        @endif
+
+                        <details class="wp-sidebar-accordion__group" @if(request()->routeIs('settings.*') || request()->routeIs('subscription.*')) open @endif>
+                            <summary class="wp-nav-link {{ request()->routeIs('settings.*') || request()->routeIs('subscription.*') ? 'is-active' : '' }}">
+                                <x-wp-icon name="settings" class="wp-nav-icon" />
+                                <span>{{ __('common.nav.organization') }}</span>
+                            </summary>
+                            <div class="wp-sidebar-accordion__panel">
+                                @if ($showSettingsNav)
+                                    <a href="{{ route('settings.index') }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('settings.index') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('common.nav.settings') }}</span>
+                                    </a>
+                                @endif
+                                @if ($showTenantAdminNav)
+                                    <a href="{{ route('subscription.index') }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('subscription.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('common.nav.subscription') }}</span>
+                                    </a>
+                                @endif
+                            </div>
+                        </details>
+
+                        <details class="wp-sidebar-accordion__group" @if(request()->routeIs('faq.*') || request()->routeIs('manual.*') || request()->routeIs('legal.index') || request()->routeIs('contact.*')) open @endif>
+                            <summary class="wp-nav-link {{ request()->routeIs('faq.*') || request()->routeIs('manual.*') || request()->routeIs('legal.index') || request()->routeIs('contact.*') ? 'is-active' : '' }}">
+                                <x-wp-icon name="faq" class="wp-nav-icon" />
+                                <span>{{ __('common.nav.help') }}</span>
+                            </summary>
+                            <div class="wp-sidebar-accordion__panel">
+                                <a href="{{ route('faq.index') }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('faq.*') ? 'is-active' : '' }}"
+                                   @click="nav = false">
+                                    <span>{{ __('common.nav.faq') }}</span>
+                                </a>
+                                <a href="{{ route('manual.hub') }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('manual.*') ? 'is-active' : '' }}"
+                                   @click="nav = false">
+                                    <span>{{ __('common.nav.manual') }}</span>
+                                </a>
+                                <a href="{{ route('legal.index') }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('legal.index') ? 'is-active' : '' }}"
+                                   target="_blank" rel="noopener noreferrer"
+                                   @click="nav = false">
+                                    <span>{{ __('common.nav.legal') }}</span>
+                                </a>
+                                <a href="{{ route('contact.index') }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('contact.*') ? 'is-active' : '' }}"
+                                   @click="nav = false">
+                                    <span>{{ __('common.nav.contact') }}</span>
+                                </a>
+                            </div>
+                        </details>
                     @else
                         @php
                             $inspectionRoundOnlyActive = request()->routeIs('issues.index') && (int) request()->query('inspection_round', 0) === 1;

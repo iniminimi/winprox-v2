@@ -456,5 +456,7 @@
     "plan_select": "Plan",
     "plan_assign": "Asignar plan",
     "plan_assign_hint": "El Superuser puede asignar una fórmula (también sin Stripe). Los tenants pueden elegir con Stripe. Corporate requiere un tope de unidades. CIAO puede activarse aparte sin Corporate; Time se activa con ello.",
-    "plan_assigned": "Plan :plan asignado."
+    "plan_assigned": "Plan :plan asignado.",
+    "ciao_requested": "CIAO solicitado",
+    "ciao_requested_hint": "Número de empresa: :number — confirma con el interruptor CIAO."
 }

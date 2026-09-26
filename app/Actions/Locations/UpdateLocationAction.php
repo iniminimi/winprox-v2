@@ -47,6 +47,9 @@ class UpdateLocationAction
             'contractual_relationship_reference' => array_key_exists('contractual_relationship_reference', $data)
                 ? $this->nullableString($data['contractual_relationship_reference'])
                 : $location->contractual_relationship_reference,
+            'customer_id' => array_key_exists('customer_id', $data)
+                ? $this->resolveCustomerId($data['customer_id'], (int) $location->tenant_id)
+                : $location->customer_id,
             'latitude' => array_key_exists('latitude', $data)
                 ? self::nullableFloat($data['latitude'])
                 : $location->latitude,
@@ -71,6 +74,24 @@ class UpdateLocationAction
         );
 
         return $fresh;
+    }
+
+    private function resolveCustomerId(mixed $value, int $tenantId): ?int
+    {
+        if ($value === null || $value === '' || (int) $value <= 0) {
+            return null;
+        }
+
+        $exists = \App\Models\Customer::query()
+            ->where('tenant_id', $tenantId)
+            ->whereKey((int) $value)
+            ->exists();
+
+        if (! $exists) {
+            throw new \InvalidArgumentException('customer_not_found');
+        }
+
+        return (int) $value;
     }
 
     private function nullableString(mixed $value): ?string

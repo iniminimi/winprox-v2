@@ -229,6 +229,12 @@
                 "API REST completa y webhooks.",
                 "Integraciones, SLA y soporte a medida."
             ]
+        },
+        "checkmate": {
+            "name": "WinProx Checkmate"
+        },
+        "checkmate_trial": {
+            "name": "WinProx Checkmate (prueba)"
         }
     },
     "stripe": {
@@ -332,5 +338,16 @@
     },
     "comparison_col_seats": "Plazas",
     "payment_notice": "Pago mensual con Stripe. Corporate a medida (sin pago en línea).",
-    "prices_excl_vat": "Todos los precios mostrados son sin IVA."
+    "prices_excl_vat": "Todos los precios mostrados son sin IVA.",
+    "seats": {
+        "title": "Número de trabajadores (plazas)",
+        "current": "Activos actualmente: :count",
+        "billed_next_period": "El cambio se aplica de inmediato y se factura a partir del siguiente período.",
+        "save": "Guardar",
+        "saved": "Número de plazas actualizado.",
+        "qty_required": "Introduce una cantidad.",
+        "qty_invalid": "Introduce una cantidad válida (1-500).",
+        "below_active": "No puedes bajar de las :active plazas activas — desactiva primero trabajadores.",
+        "not_editable": "Este plan no tiene un número de plazas ajustable."
+    }
 }

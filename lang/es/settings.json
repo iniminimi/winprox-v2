@@ -142,7 +142,8 @@
         "enterprise_number_invalid": "Número de empresa no válido.",
         "presence_scope_invalid": "Este régimen de presencia no está disponible.",
         "time_module_required": "Time (fichaje) debe estar activo para CIAO.",
-        "presence_locked": "CIAO no está activado. Solicítelo en info@winprox.app."
+        "presence_locked": "CIAO no está activado. Solicítelo en info@winprox.app.",
+        "enterprise_number_required": "Introduce tu número de empresa (KBO/BCE)."
     },
     "api": {
         "nav": "API y webhooks",
@@ -225,7 +226,11 @@
         "foreign_vat_hint": "Solo si no tiene BCE belga (empleador extranjero).",
         "save": "Guardar ajustes CIAO",
         "saved": "Ajustes CIAO guardados.",
-        "view_all": "Todos los envíos CIAO"
+        "view_all": "Todos los envíos CIAO",
+        "request_intro": "Solicita la activación de CIAO con tu número de empresa (KBO/BCE). WinProx confirma la vinculación después — las presencias se comunican a partir de ese momento.",
+        "request_submit": "Solicitar activación CIAO",
+        "request_sent": "Solicitud CIAO enviada. WinProx confirmará la activación.",
+        "request_pending": "La activación CIAO se ha solicitado y WinProx la está confirmando. Las presencias solo se comunican a partir de la activación."
     },
     "time_clock": {
         "title": "Seguridad del fichaje",

@@ -142,7 +142,8 @@
         "enterprise_number_invalid": "Numéro d’entreprise invalide.",
         "presence_scope_invalid": "Ce régime de présence n’est pas disponible.",
         "time_module_required": "Time (pointeuse) doit être actif pour CIAO.",
-        "presence_locked": "CIAO n’est pas activé. Demandez-le via info@winprox.app."
+        "presence_locked": "CIAO n’est pas activé. Demandez-le via info@winprox.app.",
+        "enterprise_number_required": "Saisissez votre numéro d'entreprise (KBO/BCE)."
     },
     "api": {
         "nav": "API & webhooks",
@@ -225,7 +226,11 @@
         "foreign_vat_hint": "À remplir seulement sans BCE belge (employeur étranger).",
         "save": "Enregistrer les paramètres CIAO",
         "saved": "Paramètres CIAO enregistrés.",
-        "view_all": "Tous les envois CIAO"
+        "view_all": "Tous les envois CIAO",
+        "request_intro": "Demandez l'activation CIAO avec votre numéro d'entreprise (KBO/BCE). WinProx confirme ensuite la liaison — les présences sont transmises à partir de ce moment.",
+        "request_submit": "Demander l'activation CIAO",
+        "request_sent": "Demande CIAO envoyée. WinProx confirmera l'activation.",
+        "request_pending": "L'activation CIAO a été demandée et est en cours de confirmation par WinProx. Les présences ne sont transmises qu'à partir de l'activation."
     },
     "time_clock": {
         "title": "Sécurité de la pointeuse",

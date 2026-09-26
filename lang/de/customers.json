@@ -1,0 +1,41 @@
+{
+    "title": "Kunden",
+    "subtitle": "Kunden und ihre Arbeitsadressen.",
+    "add": "Neuer Kunde",
+    "search_placeholder": "Nach Name, Kontakt oder E-Mail suchen",
+    "show_inactive": "Inaktive anzeigen",
+    "empty": "Noch keine Kunden.",
+    "inactive": "Inaktiv",
+    "saved": "Kunde gespeichert.",
+    "location_saved": "Arbeitsadresse gespeichert.",
+    "locations_count": ":count Arbeitsadresse(n)",
+    "no_locations": "Noch keine Arbeitsadressen.",
+    "create_title": "Neuer Kunde",
+    "edit_title": "Kunde bearbeiten",
+    "add_location": "Arbeitsadresse hinzufügen",
+    "location_create_title": "Arbeitsadresse hinzufügen",
+    "location_no_pin": "Kein GPS-Pin — ein Arbeitsbesuch kann hier noch nicht starten.",
+    "form": {
+        "name": "Kundenname",
+        "contact_name": "Ansprechpartner",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "name_matches": "Ähnlich wie:"
+    },
+    "location_form": {
+        "name": "Name der Arbeitsadresse",
+        "name_hint": "Optional — standardmäßig wird der Kundenname verwendet.",
+        "street": "Straße",
+        "house_number": "Nr.",
+        "postal_code": "PLZ",
+        "city": "Ort",
+        "latitude": "Breitengrad",
+        "longitude": "Längengrad",
+        "pin_hint": "Ein GPS-Pin ist erforderlich, um an dieser Adresse einen Arbeitsbesuch zu starten."
+    },
+    "errors": {
+        "name_required": "Geben Sie einen Kundennamen ein.",
+        "email_invalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
+        "not_found": "Kunde nicht gefunden."
+    }
+}

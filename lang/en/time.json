@@ -399,7 +399,20 @@
             "next_stop": "Next stop: :name",
             "here_done": "Work here is done.",
             "toggle": "Details"
-        }
+        },
+        "customer": {
+            "tile": "New customer",
+            "tile_sub": "Create customer + work address",
+            "title": "Customer or work address",
+            "subtitle": "Pick an existing customer or create one.",
+            "pick_existing": "Customer",
+            "new": "+ New customer",
+            "location_name": "Work address name",
+            "location_name_hint": "Optional — defaults to the customer name.",
+            "gps_hint": "Your current GPS position is saved as the pin for this work address.",
+            "submit": "Save customer and work address"
+        },
+        "customer_saved": "Customer and work address saved."
     },
     "ciao": {
         "title": "CIAO submissions",

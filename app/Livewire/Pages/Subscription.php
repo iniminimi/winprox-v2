@@ -6,6 +6,7 @@ use App\Actions\Billing\ActivateSubscriptionPlanAction;
 use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\FulfillStripeCheckoutSessionAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
+use App\Actions\Billing\UpdateBillingSeatsQtyAction;
 use App\Actions\TenantPurge\CancelTenantPurgeRequestAction;
 use App\Actions\TenantPurge\ExecuteTenantPurgeAction;
 use App\Actions\TenantPurge\StartTenantPurgeRequestAction;
@@ -41,6 +42,8 @@ class Subscription extends Component
 
     public ?string $statusMessage = null;
 
+    public string $seatsQtyInput = '';
+
     public string $purgePassword = '';
 
     public bool $purgeExportAck = false;
@@ -62,6 +65,10 @@ class Subscription extends Component
 
         $this->selectedPlan = $this->resolveTenant()?->effectivePlanKey();
         $this->includeTime = BillingCatalogViewData::defaultTimeToggles($this->selectedPlan);
+        $seatsTenant = $this->resolveTenant();
+        $this->seatsQtyInput = $seatsTenant?->billing_seats_qty !== null
+            ? (string) $seatsTenant->billing_seats_qty
+            : '';
 
         if (config('stripe.offer_checkout') && request()->query('stripe') === 'cancel') {
             session()->flash('error', __('subscription.stripe.checkout_cancelled'));
@@ -158,7 +165,47 @@ class Subscription extends Component
 
         $this->selectedPlan = $planKey;
         $this->includeTime = BillingCatalogViewData::defaultTimeToggles($planKey);
+        $this->seatsQtyInput = $tenant->fresh()->billing_seats_qty !== null
+            ? (string) $tenant->fresh()->billing_seats_qty
+            : '';
         session()->flash('success', __('subscription.activated', ['plan' => __("subscription.plans.{$planKey}.name")]));
+    }
+
+    public function saveSeatsQty(UpdateBillingSeatsQtyAction $update): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageSubscription', $tenant);
+
+        $validated = validator(
+            ['seats_qty' => $this->seatsQtyInput],
+            ['seats_qty' => ['required', 'integer', 'min:1', 'max:500']],
+            [
+                'seats_qty.required' => __('subscription.seats.qty_required'),
+                'seats_qty.integer' => __('subscription.seats.qty_invalid'),
+                'seats_qty.min' => __('subscription.seats.qty_invalid'),
+                'seats_qty.max' => __('subscription.seats.qty_invalid'),
+            ],
+        )->validate();
+
+        try {
+            $updated = $update->handle($tenant, (int) $validated['seats_qty'], (int) auth()->id());
+        } catch (\InvalidArgumentException $e) {
+            $key = match ($e->getMessage()) {
+                'seats_qty_below_active' => 'subscription.seats.below_active',
+                'seats_qty_not_editable' => 'subscription.seats.not_editable',
+                default => 'subscription.seats.qty_invalid',
+            };
+            $this->addError('seatsQtyInput', __($key, ['active' => $tenant->currentSeatsCount()]));
+
+            return;
+        }
+
+        $this->seatsQtyInput = (string) ($updated->billing_seats_qty ?? '');
+        session()->flash('success', __('subscription.seats.saved'));
     }
 
     public function preparePurgeConfirm(string $kind): void
@@ -415,6 +462,7 @@ class Subscription extends Component
             'billingStatus' => $billingStatus,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'canManage' => $tenant && $user?->can('manageSubscription', $tenant),
+            'seatsQtyEditable' => $tenant instanceof Tenant && $tenant->planUsesSeatQuantity(),
             'selectedPlan' => $this->selectedPlan,
             'statusMessage' => $this->statusMessage,
             'purgeRequest' => $purgeRequest,

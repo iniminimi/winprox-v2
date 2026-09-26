@@ -142,7 +142,8 @@
         "enterprise_number_invalid": "Ungültige Unternehmensnummer.",
         "presence_scope_invalid": "Dieses Anwesenheitsregime ist nicht verfügbar.",
         "time_module_required": "Time (Stechuhr) muss für CIAO aktiv sein.",
-        "presence_locked": "CIAO ist nicht eingeschaltet. Beantragen Sie es über info@winprox.app."
+        "presence_locked": "CIAO ist nicht eingeschaltet. Beantragen Sie es über info@winprox.app.",
+        "enterprise_number_required": "Geben Sie Ihre Unternehmensnummer (KBO/BCE) ein."
     },
     "api": {
         "nav": "API & Webhooks",
@@ -225,7 +226,11 @@
         "foreign_vat_hint": "Nur ausfüllen ohne belgisches BCE (ausländischer Arbeitgeber).",
         "save": "CIAO-Einstellungen speichern",
         "saved": "CIAO-Einstellungen gespeichert.",
-        "view_all": "Alle CIAO-Übermittlungen"
+        "view_all": "Alle CIAO-Übermittlungen",
+        "request_intro": "Fordern Sie die CIAO-Aktivierung mit Ihrer Unternehmensnummer (KBO/BCE) an. WinProx bestätigt die Verknüpfung anschließend — ab dann werden Anwesenheiten übermittelt.",
+        "request_submit": "CIAO-Aktivierung anfordern",
+        "request_sent": "CIAO-Anfrage gesendet. WinProx bestätigt die Aktivierung.",
+        "request_pending": "Die CIAO-Aktivierung wurde angefordert und wird von WinProx bestätigt. Anwesenheiten werden erst ab der Aktivierung übermittelt."
     },
     "time_clock": {
         "title": "Stempeluhr-Sicherheit",
