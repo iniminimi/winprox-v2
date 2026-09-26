@@ -217,7 +217,8 @@ CIAO; visit start → IN; visit end → OUT; pauzes tijdens een bezoek blijven O
 zelfde events, verplichtingen bevestigen tegen RSZ-bouwspecs.
 
 **UI:** settings (CIAO-kader onderaan, grijs tot superuser inschakelt op Platform → Tenants
-na aanvraag via info@winprox.app; CIAO = Time-add-on — bij aanzetten gaat Time mee aan,
+na aanvraag via info@winprox.app; Checkmate-tenants vragen aan via een self-service
+formulier (BCE + scope) — superuser-bevestiging blijft vereist, zie `docs/CHECKMATE.md` §6; CIAO = Time-add-on — bij aanzetten gaat Time mee aan,
 **geen** Corporate-eis; daarna enkel **BCE** / optioneel buitenlands btw — Chaman-
 credentials liggen op het WinProx-platform). Location (DDT + werkplaats), Worker (NISS),
 Time → CIAO (submission-status/remarks + opnieuw). Geen nieuwe sidebar-producten buiten

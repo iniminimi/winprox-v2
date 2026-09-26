@@ -55,9 +55,12 @@ persoonlijke link per bedrijf:
    — bestaat al) → "Beginnen werken bij [klant]" → `StartWorkVisitAction` → CIAO IN.
    Nabijheidscheck is **blocking**: buiten straal → `visit_unit_out_of_range` —
    soft-fail ondermijnt het compliance-bewijs, dus geen override.
-4. **Nieuwe klant onderweg**: één scherm — klant (bestaand kiezen óf nieuw) + adres +
-   contact → GPS-pin automatisch van de gsm → `CreateCustomerAction` +
-   `CreateLocationAction` (nieuw, in één transactie).
+4. **Nieuwe klant onderweg** (dag-één, fase 1): één scherm — klant (bestaand kiezen
+   óf nieuw) + adres + contact → GPS-pin automatisch van de gsm →
+   `CreateCustomerWithLocationAction` (één transactie). Bij typen van een nieuwe
+   klantnaam: live-match op bestaande klantnamen binnen de tenant (fuzzy `LIKE`,
+   geen nieuwe infrastructuur) met zachte nudge "Lijkt op: [klant] — toch nieuw
+   aanmaken?" — geen harde blokkade, de worker beslist.
 5. **Pauze / klantwissel / uitklokken**: bestaande break- en visit-wissel-flow.
 6. **Mijn uren**: bestaat.
 
@@ -128,8 +131,8 @@ Checklists, Kalender, Reserveringen, Unitmetingen, ESG, IoT, API.
 
 1. `customers`-tabel + `locations.customer_id` + model + policy.
 2. Actions: `CreateCustomerAction`, `UpdateCustomerAction`,
-   `CreateCustomerWithLocationAction` (worker-flow, één transactie),
-   locatie-Action aanpassen voor `customer_id`.
+   `CreateCustomerWithLocationAction` (worker-flow, één transactie, met
+   naam-match voor dedup-nudge), locatie-Action aanpassen voor `customer_id`.
 3. `checkmate_mode`-entitlement + `CheckmateMode`-whitelist + route/nav-gates
    (zelfde laag als `EnsureActiveSubscriptionOrTrial`).
 4. Plannen `checkmate` + `checkmate_trial`; `billing_seats_qty` +
@@ -159,10 +162,11 @@ Checklists, Kalender, Reserveringen, Unitmetingen, ESG, IoT, API.
 
 ## 11. Fasering
 
-- **Fase 1 (MVP)**: punten 1–4 + 6–7 (klant-model, plan, gates, slank portaal,
-  klant-CRUD, CIAO-pending).
-- **Fase 2**: worker klant-aanmaak onderweg, nabijheids-UI polijst, onboarding-preset.
-- **Fase 3**: landing + verkoopflow (Stripe zodra operationeel), construction-scope.
+- **Fase 1 (MVP)**: punten 1–7 — klant-model, plan + gates, slank portaal,
+  klant-CRUD, CIAO-pending, **inclusief worker-klantaanmaak onderweg** (kernpitch).
+- **Fase 2**: nabijheids-UI polijst, onboarding-preset-verfijningen.
+- **Fase 3**: punt 8 — landing + verkoopflow (Stripe zodra operationeel),
+  construction-scope.
 
 ## 12. Expliciet buiten scope
 
