@@ -286,48 +286,48 @@
         "unlinked": "Pantalla desvinculada.",
         "rotated": "Secreto renovado — la pantalla debe vincularse de nuevo.",
         "linked": {
-                "title": "Pantalla vinculada",
-                "active": "Vinculada",
-                "device": "Dispositivo",
-                "paired_at": "Vinculada el",
-                "last_seen": "vista por última vez",
-                "rotate": "Renovar secreto",
-                "unlink": "Desvincular pantalla"
+            "title": "Pantalla vinculada",
+            "active": "Vinculada",
+            "device": "Dispositivo",
+            "paired_at": "Vinculada el",
+            "last_seen": "vista por última vez",
+            "rotate": "Renovar secreto",
+            "unlink": "Desvincular pantalla"
         },
         "code": {
-                "title": "Código de vinculación",
-                "hint": "Genera un código de un solo uso e introdúcelo en la pantalla. El código es válido 10 minutos; una solicitud debe confirmarse aquí.",
-                "replace_warning": "Atención: ya hay una pantalla vinculada. Confirmar una nueva solicitud la reemplaza — el dispositivo anterior dejará de funcionar.",
-                "valid_until": "Válido hasta :time — introduce el código en la pantalla.",
-                "open": "Ya hay un código activo; genera uno nuevo para reemplazarlo.",
-                "issue": "Generar código"
+            "title": "Código de vinculación",
+            "hint": "Genera un código de un solo uso e introdúcelo en la pantalla. El código es válido 10 minutos; una solicitud debe confirmarse aquí.",
+            "replace_warning": "Atención: ya hay una pantalla vinculada. Confirmar una nueva solicitud la reemplaza — el dispositivo anterior dejará de funcionar.",
+            "valid_until": "Válido hasta :time — introduce el código en la pantalla.",
+            "open": "Ya hay un código activo; genera uno nuevo para reemplazarlo.",
+            "issue": "Generar código"
         },
         "pending": {
-                "title": "Solicitud de vinculación",
-                "waiting": "Esperando confirmación",
-                "device": "Dispositivo",
-                "expires": "Expira :time",
-                "confirm": "Confirmar",
-                "deny": "Rechazar"
+            "title": "Solicitud de vinculación",
+            "waiting": "Esperando confirmación",
+            "device": "Dispositivo",
+            "expires": "Expira :time",
+            "confirm": "Confirmar",
+            "deny": "Rechazar"
         },
         "unlink_modal": {
-                "title": "¿Desvincular pantalla?",
-                "body": "La pantalla ya no podrá mostrar QR válidos y volverá al modo de vinculación.",
-                "confirm": "Desvincular"
+            "title": "¿Desvincular pantalla?",
+            "body": "La pantalla ya no podrá mostrar QR válidos y volverá al modo de vinculación.",
+            "confirm": "Desvincular"
         },
         "rotate_modal": {
-                "title": "¿Renovar secreto?",
-                "body": "El secreto actual y el token del dispositivo quedan inválidos. La pantalla deberá vincularse de nuevo con un nuevo código.",
-                "confirm": "Renovar"
+            "title": "¿Renovar secreto?",
+            "body": "El secreto actual y el token del dispositivo quedan inválidos. La pantalla deberá vincularse de nuevo con un nuevo código.",
+            "confirm": "Renovar"
         },
         "errors": {
-                "claim_not_found": "Solicitud de vinculación no encontrada.",
-                "claim_not_pending": "Esta solicitud ya fue gestionada.",
-                "clock_point_not_found": "Punto de fichaje no encontrado.",
-                "display_not_linked": "No hay ninguna pantalla vinculada.",
-                "tenant_mismatch": "El punto de fichaje no pertenece a esta organización."
+            "claim_not_found": "Solicitud de vinculación no encontrada.",
+            "claim_not_pending": "Esta solicitud ya fue gestionada.",
+            "clock_point_not_found": "Punto de fichaje no encontrado.",
+            "display_not_linked": "No hay ninguna pantalla vinculada.",
+            "tenant_mismatch": "El punto de fichaje no pertenece a esta organización."
         }
-},
+    },
     "duration": {
         "hour_short": "h",
         "minute_short": "min"
@@ -368,6 +368,7 @@
             "scan_required": "Escanea el QR de Clock Point para fichar la entrada o la salida. Así sabemos que estás en el sitio.",
             "visit_gps_required": "El GPS es obligatorio para iniciar o detener el trabajo. Permita la ubicación e inténtelo de nuevo.",
             "visit_unit_out_of_range": "No está lo bastante cerca de este lugar de trabajo.",
+            "visit_requires_customer_location": "El trabajo solo puede iniciarse en una dirección de trabajo de cliente.",
             "visit_already_open": "Ya está trabajando en este lugar.",
             "visit_not_open": "No tiene una visita de trabajo abierta.",
             "gps_visits_disabled": "Las visitas GPS están desactivadas para esta organización."

@@ -286,48 +286,48 @@
         "unlinked": "Écran dissocié.",
         "rotated": "Secret renouvelé — l'écran doit être associé à nouveau.",
         "linked": {
-                "title": "Écran associé",
-                "active": "Associé",
-                "device": "Appareil",
-                "paired_at": "Associé le",
-                "last_seen": "vu pour la dernière fois",
-                "rotate": "Renouveler le secret",
-                "unlink": "Dissocier l'écran"
+            "title": "Écran associé",
+            "active": "Associé",
+            "device": "Appareil",
+            "paired_at": "Associé le",
+            "last_seen": "vu pour la dernière fois",
+            "rotate": "Renouveler le secret",
+            "unlink": "Dissocier l'écran"
         },
         "code": {
-                "title": "Code d'association",
-                "hint": "Générez un code à usage unique et saisissez-le sur l'écran. Le code est valable 10 minutes ; une demande doit être confirmée ici.",
-                "replace_warning": "Attention : un écran est déjà associé. Confirmer une nouvelle demande le remplace — l'ancien appareil cessera de fonctionner.",
-                "valid_until": "Valide jusqu'à :time — saisissez le code sur l'écran.",
-                "open": "Un code est déjà actif ; générez-en un nouveau pour le remplacer.",
-                "issue": "Générer un code"
+            "title": "Code d'association",
+            "hint": "Générez un code à usage unique et saisissez-le sur l'écran. Le code est valable 10 minutes ; une demande doit être confirmée ici.",
+            "replace_warning": "Attention : un écran est déjà associé. Confirmer une nouvelle demande le remplace — l'ancien appareil cessera de fonctionner.",
+            "valid_until": "Valide jusqu'à :time — saisissez le code sur l'écran.",
+            "open": "Un code est déjà actif ; générez-en un nouveau pour le remplacer.",
+            "issue": "Générer un code"
         },
         "pending": {
-                "title": "Demande d'association",
-                "waiting": "En attente de confirmation",
-                "device": "Appareil",
-                "expires": "Expire :time",
-                "confirm": "Confirmer",
-                "deny": "Refuser"
+            "title": "Demande d'association",
+            "waiting": "En attente de confirmation",
+            "device": "Appareil",
+            "expires": "Expire :time",
+            "confirm": "Confirmer",
+            "deny": "Refuser"
         },
         "unlink_modal": {
-                "title": "Dissocier l'écran ?",
-                "body": "L'écran ne pourra plus afficher de QR valides et repassera en mode association.",
-                "confirm": "Dissocier"
+            "title": "Dissocier l'écran ?",
+            "body": "L'écran ne pourra plus afficher de QR valides et repassera en mode association.",
+            "confirm": "Dissocier"
         },
         "rotate_modal": {
-                "title": "Renouveler le secret ?",
-                "body": "Le secret et le token de l'appareil deviennent invalides. L'écran devra être associé à nouveau avec un nouveau code.",
-                "confirm": "Renouveler"
+            "title": "Renouveler le secret ?",
+            "body": "Le secret et le token de l'appareil deviennent invalides. L'écran devra être associé à nouveau avec un nouveau code.",
+            "confirm": "Renouveler"
         },
         "errors": {
-                "claim_not_found": "Demande d'association introuvable.",
-                "claim_not_pending": "Cette demande a déjà été traitée.",
-                "clock_point_not_found": "Point de badgeage introuvable.",
-                "display_not_linked": "Aucun écran n'est associé.",
-                "tenant_mismatch": "Le point de badgeage n'appartient pas à cette organisation."
+            "claim_not_found": "Demande d'association introuvable.",
+            "claim_not_pending": "Cette demande a déjà été traitée.",
+            "clock_point_not_found": "Point de badgeage introuvable.",
+            "display_not_linked": "Aucun écran n'est associé.",
+            "tenant_mismatch": "Le point de badgeage n'appartient pas à cette organisation."
         }
-},
+    },
     "duration": {
         "hour_short": "h",
         "minute_short": "min"
@@ -368,6 +368,7 @@
             "scan_required": "Scannez le QR Clock Point pour pointer l'entrée ou la sortie. Cela prouve que vous êtes sur place.",
             "visit_gps_required": "Le GPS est obligatoire pour démarrer ou arrêter le travail. Autorisez la localisation et réessayez.",
             "visit_unit_out_of_range": "Vous n'êtes pas assez proche de ce lieu de travail.",
+            "visit_requires_customer_location": "Le travail ne peut démarrer que sur une adresse de travail client.",
             "visit_already_open": "Vous travaillez déjà à cet endroit.",
             "visit_not_open": "Vous n'avez pas de visite de travail ouverte.",
             "gps_visits_disabled": "Les visites GPS sont désactivées pour cette organisation."

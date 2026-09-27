@@ -8,6 +8,7 @@ use App\Actions\Customers\SuggestCustomerNameMatchesAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\RequestPresenceComplianceAction;
 use App\Actions\Time\StartWorkVisitAction;
+use App\Actions\Time\SuggestNearbyClockUnitsAction;
 use App\Enums\PresenceComplianceScope;
 use App\Enums\PresenceSourceEvent;
 use App\Livewire\Customers\Index as CustomersIndex;
@@ -21,6 +22,7 @@ use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\PresenceSubmission;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkShift;
@@ -53,6 +55,16 @@ function checkmateWorker(Tenant $tenant): Worker
         'tenant_id' => $tenant->id,
         'internal_team_id' => $team->id,
     ]);
+}
+
+function checkmateCustomerLocation(Tenant $tenant, array $attrs = []): Location
+{
+    $customer = Customer::factory()->create(['tenant_id' => $tenant->id]);
+
+    return Location::factory()->create(array_merge([
+        'tenant_id' => $tenant->id,
+        'customer_id' => $customer->id,
+    ], $attrs));
 }
 
 it('provisioneert het checkmate-plan met GPS-bezoeken en een Clock Point', function () {
@@ -145,8 +157,7 @@ it('start een werkbezoek op een klantlocatie binnen de straal', function () {
     Tenancy::actAs($tenant->id);
     $worker = checkmateWorker($tenant);
     $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
-    $location = Location::factory()->create([
-        'tenant_id' => $tenant->id,
+    $location = checkmateCustomerLocation($tenant, [
         'latitude' => 51.05,
         'longitude' => 3.73,
     ]);
@@ -164,8 +175,7 @@ it('blokkeert een werkbezoek buiten de straal (geen soft-fail)', function () {
     Tenancy::actAs($tenant->id);
     $worker = checkmateWorker($tenant);
     $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
-    $location = Location::factory()->create([
-        'tenant_id' => $tenant->id,
+    $location = checkmateCustomerLocation($tenant, [
         'latitude' => 51.05,
         'longitude' => 3.73,
     ]);
@@ -181,8 +191,7 @@ it('weigert een werkbezoek op een klantlocatie zonder pin', function () {
     Tenancy::actAs($tenant->id);
     $worker = checkmateWorker($tenant);
     $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
-    $location = Location::factory()->create([
-        'tenant_id' => $tenant->id,
+    $location = checkmateCustomerLocation($tenant, [
         'latitude' => null,
         'longitude' => null,
     ]);
@@ -193,12 +202,80 @@ it('weigert een werkbezoek op een klantlocatie zonder pin', function () {
         ->toThrow(InvalidArgumentException::class, 'unit_visit_pin_missing');
 });
 
+it('suggereert enkel klant-werkadressen voor checkmate — geen legacy locaties of units', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+
+    $customerLocation = checkmateCustomerLocation($tenant, [
+        'name' => 'Klant werkadres',
+        'latitude' => 51.05,
+        'longitude' => 3.73,
+    ]);
+    Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Legacy locatie',
+        'latitude' => 51.0501,
+        'longitude' => 3.7301,
+    ]);
+    $legacyLocation = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Legacy met unit',
+        'latitude' => 51.0502,
+        'longitude' => 3.7302,
+    ]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $legacyLocation->id,
+        'latitude' => 51.0502,
+        'longitude' => 3.7302,
+    ]);
+
+    $suggestions = app(SuggestNearbyClockUnitsAction::class)->handle($worker, 51.05, 3.73);
+
+    expect($suggestions)->toHaveCount(1)
+        ->and($suggestions[0]->locationId)->toBe($customerLocation->id);
+});
+
+it('weigert een werkbezoek op een legacy-locatie zonder klant', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $legacy = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'latitude' => 51.05,
+        'longitude' => 3.73,
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    expect(fn () => app(StartWorkVisitAction::class)->handle($worker, $legacy, 51.05, 3.73))
+        ->toThrow(InvalidArgumentException::class, 'visit_requires_customer_location');
+});
+
+it('weigert een werkbezoek op een werkadres van een inactieve klant', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $location = checkmateCustomerLocation($tenant, [
+        'latitude' => 51.05,
+        'longitude' => 3.73,
+    ]);
+    $location->customer->update(['is_active' => false]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    expect(fn () => app(StartWorkVisitAction::class)->handle($worker, $location, 51.05, 3.73))
+        ->toThrow(InvalidArgumentException::class, 'visit_requires_customer_location');
+});
+
 it('queue-t geen CIAO-inzendingen vóór activering en backfillt nooit', function () {
     $tenant = checkmateTenant(['enterprise_number' => '0123456789']);
     Tenancy::actAs($tenant->id);
     $worker = checkmateWorker($tenant);
-    $location = Location::factory()->create([
-        'tenant_id' => $tenant->id,
+    $location = checkmateCustomerLocation($tenant, [
         'latitude' => 51.05,
         'longitude' => 3.73,
         'contractual_relationship_reference' => '1Y1003SQ5VSSZ',

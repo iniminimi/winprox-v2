@@ -44,6 +44,13 @@ class StartWorkVisitAction
 
         [$location, $unit, $pinLatitude, $pinLongitude] = $this->resolvePlace($place, $worker);
 
+        if ($tenant->checkmateMode()) {
+            $customer = $location->customer;
+            if ($customer === null || ! $customer->is_active) {
+                throw new InvalidArgumentException('visit_requires_customer_location');
+            }
+        }
+
         if ($latitude < -90 || $latitude > 90 || $longitude < -180 || $longitude > 180) {
             throw new InvalidArgumentException('visit_gps_invalid');
         }

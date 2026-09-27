@@ -286,48 +286,48 @@
         "unlinked": "Scherm ontkoppeld.",
         "rotated": "Secret geroteerd — het scherm moet opnieuw gekoppeld worden.",
         "linked": {
-                "title": "Gekoppeld scherm",
-                "active": "Gekoppeld",
-                "device": "Toestel",
-                "paired_at": "Gekoppeld op",
-                "last_seen": "laatst gezien",
-                "rotate": "Secret roteren",
-                "unlink": "Scherm ontkoppelen"
+            "title": "Gekoppeld scherm",
+            "active": "Gekoppeld",
+            "device": "Toestel",
+            "paired_at": "Gekoppeld op",
+            "last_seen": "laatst gezien",
+            "rotate": "Secret roteren",
+            "unlink": "Scherm ontkoppelen"
         },
         "code": {
-                "title": "Koppelcode",
-                "hint": "Genereer een eenmalige code en tik die in op het scherm. De code is 10 minuten geldig; een aanvraag moet je hier bevestigen.",
-                "replace_warning": "Let op: er is al een scherm gekoppeld. Bevestiging van een nieuwe aanvraag vervangt dat scherm — het oude toestel werkt dan niet meer.",
-                "valid_until": "Geldig tot :time — tik de code in op het scherm.",
-                "open": "Er loopt al een code; genereer een nieuwe om hem te vervangen.",
-                "issue": "Genereer koppelcode"
+            "title": "Koppelcode",
+            "hint": "Genereer een eenmalige code en tik die in op het scherm. De code is 10 minuten geldig; een aanvraag moet je hier bevestigen.",
+            "replace_warning": "Let op: er is al een scherm gekoppeld. Bevestiging van een nieuwe aanvraag vervangt dat scherm — het oude toestel werkt dan niet meer.",
+            "valid_until": "Geldig tot :time — tik de code in op het scherm.",
+            "open": "Er loopt al een code; genereer een nieuwe om hem te vervangen.",
+            "issue": "Genereer koppelcode"
         },
         "pending": {
-                "title": "Koppelaanvraag",
-                "waiting": "Wacht op bevestiging",
-                "device": "Toestel",
-                "expires": "Verloopt :time",
-                "confirm": "Bevestigen",
-                "deny": "Weigeren"
+            "title": "Koppelaanvraag",
+            "waiting": "Wacht op bevestiging",
+            "device": "Toestel",
+            "expires": "Verloopt :time",
+            "confirm": "Bevestigen",
+            "deny": "Weigeren"
         },
         "unlink_modal": {
-                "title": "Scherm ontkoppelen?",
-                "body": "Het scherm kan daarna geen geldige QR-codes meer tonen en valt terug naar de koppelmodus.",
-                "confirm": "Ontkoppelen"
+            "title": "Scherm ontkoppelen?",
+            "body": "Het scherm kan daarna geen geldige QR-codes meer tonen en valt terug naar de koppelmodus.",
+            "confirm": "Ontkoppelen"
         },
         "rotate_modal": {
-                "title": "Secret roteren?",
-                "body": "De huidige secret en device-token worden ongeldig. Het scherm moet daarna opnieuw gekoppeld worden met een nieuwe code.",
-                "confirm": "Roteren"
+            "title": "Secret roteren?",
+            "body": "De huidige secret en device-token worden ongeldig. Het scherm moet daarna opnieuw gekoppeld worden met een nieuwe code.",
+            "confirm": "Roteren"
         },
         "errors": {
-                "claim_not_found": "Koppelaanvraag niet gevonden.",
-                "claim_not_pending": "Deze aanvraag is al afgehandeld.",
-                "clock_point_not_found": "Clock point niet gevonden.",
-                "display_not_linked": "Er is geen scherm gekoppeld.",
-                "tenant_mismatch": "Clock point hoort niet bij deze organisatie."
+            "claim_not_found": "Koppelaanvraag niet gevonden.",
+            "claim_not_pending": "Deze aanvraag is al afgehandeld.",
+            "clock_point_not_found": "Clock point niet gevonden.",
+            "display_not_linked": "Er is geen scherm gekoppeld.",
+            "tenant_mismatch": "Clock point hoort niet bij deze organisatie."
         }
-},
+    },
     "duration": {
         "hour_short": "u",
         "minute_short": "min"
@@ -368,6 +368,7 @@
             "scan_required": "Scan de Clock Point-QR om in of uit te klokken. Zo weten we dat je ter plaatse bent.",
             "visit_gps_required": "GPS is verplicht om werk te starten of te stoppen. Sta locatie toe en probeer opnieuw.",
             "visit_unit_out_of_range": "Je bent niet dicht genoeg bij deze werkplek.",
+            "visit_requires_customer_location": "Start werk kan alleen op een klant-werkadres.",
             "visit_already_open": "Je werkt al op deze plek.",
             "visit_not_open": "Je hebt geen open werkbezoek.",
             "gps_visits_disabled": "GPS-werkbezoeken staan uit voor deze organisatie."

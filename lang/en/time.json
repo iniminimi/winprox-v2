@@ -286,48 +286,48 @@
         "unlinked": "Display unlinked.",
         "rotated": "Secret rotated — the display must be paired again.",
         "linked": {
-                "title": "Linked display",
-                "active": "Linked",
-                "device": "Device",
-                "paired_at": "Paired at",
-                "last_seen": "last seen",
-                "rotate": "Rotate secret",
-                "unlink": "Unlink display"
+            "title": "Linked display",
+            "active": "Linked",
+            "device": "Device",
+            "paired_at": "Paired at",
+            "last_seen": "last seen",
+            "rotate": "Rotate secret",
+            "unlink": "Unlink display"
         },
         "code": {
-                "title": "Pairing code",
-                "hint": "Generate a single-use code and enter it on the display. The code is valid for 10 minutes; a request must be confirmed here.",
-                "replace_warning": "Warning: a display is already linked. Confirming a new request replaces it — the old device will stop working.",
-                "valid_until": "Valid until :time — enter the code on the display.",
-                "open": "A code is already active; generate a new one to replace it.",
-                "issue": "Generate pairing code"
+            "title": "Pairing code",
+            "hint": "Generate a single-use code and enter it on the display. The code is valid for 10 minutes; a request must be confirmed here.",
+            "replace_warning": "Warning: a display is already linked. Confirming a new request replaces it — the old device will stop working.",
+            "valid_until": "Valid until :time — enter the code on the display.",
+            "open": "A code is already active; generate a new one to replace it.",
+            "issue": "Generate pairing code"
         },
         "pending": {
-                "title": "Pairing request",
-                "waiting": "Awaiting confirmation",
-                "device": "Device",
-                "expires": "Expires :time",
-                "confirm": "Confirm",
-                "deny": "Deny"
+            "title": "Pairing request",
+            "waiting": "Awaiting confirmation",
+            "device": "Device",
+            "expires": "Expires :time",
+            "confirm": "Confirm",
+            "deny": "Deny"
         },
         "unlink_modal": {
-                "title": "Unlink display?",
-                "body": "The display will no longer show valid QR codes and returns to pairing mode.",
-                "confirm": "Unlink"
+            "title": "Unlink display?",
+            "body": "The display will no longer show valid QR codes and returns to pairing mode.",
+            "confirm": "Unlink"
         },
         "rotate_modal": {
-                "title": "Rotate secret?",
-                "body": "The current secret and device token become invalid. The display must be paired again with a new code.",
-                "confirm": "Rotate"
+            "title": "Rotate secret?",
+            "body": "The current secret and device token become invalid. The display must be paired again with a new code.",
+            "confirm": "Rotate"
         },
         "errors": {
-                "claim_not_found": "Pairing request not found.",
-                "claim_not_pending": "This request was already handled.",
-                "clock_point_not_found": "Clock point not found.",
-                "display_not_linked": "No display is linked.",
-                "tenant_mismatch": "Clock point does not belong to this organisation."
+            "claim_not_found": "Pairing request not found.",
+            "claim_not_pending": "This request was already handled.",
+            "clock_point_not_found": "Clock point not found.",
+            "display_not_linked": "No display is linked.",
+            "tenant_mismatch": "Clock point does not belong to this organisation."
         }
-},
+    },
     "duration": {
         "hour_short": "h",
         "minute_short": "min"
@@ -368,6 +368,7 @@
             "scan_required": "Scan the Clock Point QR to clock in or out. That shows you are on site.",
             "visit_gps_required": "GPS is required to start or stop work. Allow location and try again.",
             "visit_unit_out_of_range": "You are not close enough to this workplace.",
+            "visit_requires_customer_location": "Work can only be started at a customer work address.",
             "visit_already_open": "You are already working at this place.",
             "visit_not_open": "You have no open work visit.",
             "gps_visits_disabled": "GPS work visits are off for this organisation."

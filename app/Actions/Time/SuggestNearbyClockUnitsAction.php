@@ -33,39 +33,42 @@ class SuggestNearbyClockUnitsAction
 
         $matches = [];
 
-        $units = Unit::query()
-            ->where('tenant_id', $worker->tenant_id)
-            ->where('is_active', true)
-            ->whereNotNull('latitude')
-            ->whereNotNull('longitude')
-            ->whereBetween('latitude', [$latitude - $latDelta, $latitude + $latDelta])
-            ->whereBetween('longitude', [$longitude - $lngDelta, $longitude + $lngDelta])
-            ->with('location')
-            ->get();
+        // Checkmate kent geen units: enkel klant-werkadressen tellen mee.
+        if (! $tenant->checkmateMode()) {
+            $units = Unit::query()
+                ->where('tenant_id', $worker->tenant_id)
+                ->where('is_active', true)
+                ->whereNotNull('latitude')
+                ->whereNotNull('longitude')
+                ->whereBetween('latitude', [$latitude - $latDelta, $latitude + $latDelta])
+                ->whereBetween('longitude', [$longitude - $lngDelta, $longitude + $lngDelta])
+                ->with('location')
+                ->get();
 
-        foreach ($units as $unit) {
-            $locationId = $unit->location_id !== null ? (int) $unit->location_id : null;
-            if (! $worker->canClockAt($locationId) || $locationId === null) {
-                continue;
+            foreach ($units as $unit) {
+                $locationId = $unit->location_id !== null ? (int) $unit->location_id : null;
+                if (! $worker->canClockAt($locationId) || $locationId === null) {
+                    continue;
+                }
+
+                $meters = DistanceMeters::between(
+                    $latitude,
+                    $longitude,
+                    (float) $unit->latitude,
+                    (float) $unit->longitude,
+                );
+                if ($meters > $radius) {
+                    continue;
+                }
+
+                $matches[] = new NearbyClockUnitData(
+                    (int) $unit->id,
+                    $locationId,
+                    (string) $unit->name,
+                    (string) ($unit->location?->name ?? ''),
+                    (int) round($meters),
+                );
             }
-
-            $meters = DistanceMeters::between(
-                $latitude,
-                $longitude,
-                (float) $unit->latitude,
-                (float) $unit->longitude,
-            );
-            if ($meters > $radius) {
-                continue;
-            }
-
-            $matches[] = new NearbyClockUnitData(
-                (int) $unit->id,
-                $locationId,
-                (string) $unit->name,
-                (string) ($unit->location?->name ?? ''),
-                (int) round($meters),
-            );
         }
 
         $locations = Location::query()
@@ -73,6 +76,9 @@ class SuggestNearbyClockUnitsAction
             ->where('is_active', true)
             ->whereNotNull('latitude')
             ->whereNotNull('longitude')
+            ->when($tenant->checkmateMode(), fn ($q) => $q
+                ->whereNotNull('customer_id')
+                ->whereHas('customer', fn ($c) => $c->where('is_active', true)))
             ->whereBetween('latitude', [$latitude - $latDelta, $latitude + $latDelta])
             ->whereBetween('longitude', [$longitude - $lngDelta, $longitude + $lngDelta])
             ->get();

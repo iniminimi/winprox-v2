@@ -2111,6 +2111,7 @@ class TimePortal extends Component
             'shift_not_open' => 'time.portal.errors.not_clocked_in',
             'gps_visits_disabled' => 'time.portal.errors.gps_visits_disabled',
             'worker_location_not_allowed' => 'time.portal.errors.visit_unit_out_of_range',
+            'visit_requires_customer_location' => 'time.portal.errors.visit_requires_customer_location',
             'clock_point_task_read_only' => 'portal.team.read_only_hint',
             'clock_point_visit_required' => 'portal.team.complete_needs_visit',
             'clock_point_visit_location_mismatch' => 'portal.worker.errors.not_this_location',

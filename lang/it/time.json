@@ -286,48 +286,48 @@
         "unlinked": "Schermo scollegato.",
         "rotated": "Segreto rinnovato — lo schermo deve essere collegato di nuovo.",
         "linked": {
-                "title": "Schermo collegato",
-                "active": "Collegato",
-                "device": "Dispositivo",
-                "paired_at": "Collegato il",
-                "last_seen": "visto l'ultima volta",
-                "rotate": "Rinnova segreto",
-                "unlink": "Scollega schermo"
+            "title": "Schermo collegato",
+            "active": "Collegato",
+            "device": "Dispositivo",
+            "paired_at": "Collegato il",
+            "last_seen": "visto l'ultima volta",
+            "rotate": "Rinnova segreto",
+            "unlink": "Scollega schermo"
         },
         "code": {
-                "title": "Codice di collegamento",
-                "hint": "Genera un codice monouso e inseriscilo sullo schermo. Il codice è valido 10 minuti; una richiesta deve essere confermata qui.",
-                "replace_warning": "Attenzione: è già collegato uno schermo. Confermare una nuova richiesta lo sostituisce — il vecchio dispositivo smetterà di funzionare.",
-                "valid_until": "Valido fino alle :time — inserisci il codice sullo schermo.",
-                "open": "C'è già un codice attivo; generane uno nuovo per sostituirlo.",
-                "issue": "Genera codice"
+            "title": "Codice di collegamento",
+            "hint": "Genera un codice monouso e inseriscilo sullo schermo. Il codice è valido 10 minuti; una richiesta deve essere confermata qui.",
+            "replace_warning": "Attenzione: è già collegato uno schermo. Confermare una nuova richiesta lo sostituisce — il vecchio dispositivo smetterà di funzionare.",
+            "valid_until": "Valido fino alle :time — inserisci il codice sullo schermo.",
+            "open": "C'è già un codice attivo; generane uno nuovo per sostituirlo.",
+            "issue": "Genera codice"
         },
         "pending": {
-                "title": "Richiesta di collegamento",
-                "waiting": "In attesa di conferma",
-                "device": "Dispositivo",
-                "expires": "Scade :time",
-                "confirm": "Conferma",
-                "deny": "Rifiuta"
+            "title": "Richiesta di collegamento",
+            "waiting": "In attesa di conferma",
+            "device": "Dispositivo",
+            "expires": "Scade :time",
+            "confirm": "Conferma",
+            "deny": "Rifiuta"
         },
         "unlink_modal": {
-                "title": "Scollegare lo schermo?",
-                "body": "Lo schermo non potrà più mostrare QR validi e tornerà in modalità collegamento.",
-                "confirm": "Scollega"
+            "title": "Scollegare lo schermo?",
+            "body": "Lo schermo non potrà più mostrare QR validi e tornerà in modalità collegamento.",
+            "confirm": "Scollega"
         },
         "rotate_modal": {
-                "title": "Rinnovare il segreto?",
-                "body": "Il segreto attuale e il token del dispositivo diventano invalidi. Lo schermo dovrà essere collegato di nuovo con un nuovo codice.",
-                "confirm": "Rinnova"
+            "title": "Rinnovare il segreto?",
+            "body": "Il segreto attuale e il token del dispositivo diventano invalidi. Lo schermo dovrà essere collegato di nuovo con un nuovo codice.",
+            "confirm": "Rinnova"
         },
         "errors": {
-                "claim_not_found": "Richiesta di collegamento non trovata.",
-                "claim_not_pending": "Questa richiesta è già stata gestita.",
-                "clock_point_not_found": "Punto di timbratura non trovato.",
-                "display_not_linked": "Nessuno schermo è collegato.",
-                "tenant_mismatch": "Il punto di timbratura non appartiene a questa organizzazione."
+            "claim_not_found": "Richiesta di collegamento non trovata.",
+            "claim_not_pending": "Questa richiesta è già stata gestita.",
+            "clock_point_not_found": "Punto di timbratura non trovato.",
+            "display_not_linked": "Nessuno schermo è collegato.",
+            "tenant_mismatch": "Il punto di timbratura non appartiene a questa organizzazione."
         }
-},
+    },
     "duration": {
         "hour_short": "h",
         "minute_short": "min"
@@ -368,6 +368,7 @@
             "scan_required": "Scansiona il QR Clock Point per timbrare entrata o uscita. Così sappiamo che sei in sede.",
             "visit_gps_required": "Il GPS è obbligatorio per avviare o interrompere il lavoro. Consenti la posizione e riprova.",
             "visit_unit_out_of_range": "Non sei abbastanza vicino a questo luogo di lavoro.",
+            "visit_requires_customer_location": "Il lavoro può iniziare solo su un indirizzo di lavoro del cliente.",
             "visit_already_open": "Stai già lavorando in questo luogo.",
             "visit_not_open": "Non hai una visita di lavoro aperta.",
             "gps_visits_disabled": "Le visite GPS sono disattivate per questa organizzazione."
