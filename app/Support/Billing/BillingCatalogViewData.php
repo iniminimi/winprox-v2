@@ -53,6 +53,29 @@ final class BillingCatalogViewData
     }
 
     /**
+     * Plannen die een superuser via Platform mag toewijzen: de publieke
+     * catalogus plus expliciet platform-assignable presets (bv. trials).
+     *
+     * @return list<string>
+     */
+    public static function platformPlanKeys(): array
+    {
+        $keys = [];
+
+        foreach (config('billing.plans', []) as $key => $row) {
+            if (! is_array($row)) {
+                continue;
+            }
+
+            if (($row['public_catalog'] ?? false) === true || ($row['platform_assignable'] ?? false) === true) {
+                $keys[] = (string) $key;
+            }
+        }
+
+        return $keys;
+    }
+
+    /**
      * @return list<string>
      */
     public static function timeVariantKeys(): array

@@ -210,11 +210,16 @@ return [
                 'public_catalog'         => true,
             ],
 
-            // Checkmate (RSZ-compliance preset) — niet in de publieke catalogus.
-            'checkmate' => ['label_key' => 'subscription.plans.checkmate.name']
-                + $checkmatePreset(1, true),
-            'checkmate_trial' => ['label_key' => 'subscription.plans.checkmate_trial.name']
-                + $checkmatePreset(3, false),
+            // Checkmate (RSZ-compliance preset) — self-serve in-app (public_catalog);
+            // de proefvariant is enkel platform-assignable.
+            'checkmate' => [
+                'label_key'      => 'subscription.plans.checkmate.name',
+                'public_catalog' => true,
+            ] + $checkmatePreset(1, true),
+            'checkmate_trial' => [
+                'label_key'           => 'subscription.plans.checkmate_trial.name',
+                'platform_assignable' => true,
+            ] + $checkmatePreset(3, false),
         ],
     ),
 ];

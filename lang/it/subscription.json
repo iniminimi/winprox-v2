@@ -1,353 +1,360 @@
 {
-    "title": "Abbonamento, limiti e fatturazione",
-    "public_title": "Prezzi e piani",
-    "public_subtitle": "Scegli il numero di licenze. Pagamento mensile tramite Stripe. Timbratura, pianificazione e CIAO inclusi.",
-    "public_register_cta": "Inizia prova gratuita",
-    "subtitle": "Dopo il mese gratuito scegli una formula. Licenze 5/10/25/50; unità = 10× (50/100/250/500); documenti 10/20/30/40. Sedi e foto illimitate.",
-    "plans_heading": "Piani",
-    "plans_intro": "Pagamento mensile. 5, 10, 25 o 50 licenze (colleghi + esecutori); unità = 10× quel numero; documenti 10/20/30/40. Sedi e foto illimitate. Timbratura, pianificazione e CIAO inclusi.",
-    "glossary": {
-        "heading": "Licenze, unità e foto",
-        "unit": "Unità — oggetto o luogo con QR. Ogni nuova sede riceve automaticamente un'unità «Intera sede». Unità = 10× le tue licenze: 50 / 100 / 250 / 500.",
-        "document": "Documento — un file sul portale QR, es. un manuale. Limite per formula: 10 / 20 / 30 / 40.",
-        "photo": "Foto — le foto su segnalazioni e compiti sono illimitate.",
-        "seat": "Licenza — un collega con accesso (admin o dipendente) o un operatore (Clock Point, senza accesso). Un collega con profilo timbratrice collegato conta come una licenza."
+  "title": "Abbonamento, limiti e fatturazione",
+  "public_title": "Prezzi e piani",
+  "public_subtitle": "Scegli il numero di licenze. Pagamento mensile tramite Stripe. Timbratura, pianificazione e CIAO inclusi.",
+  "public_register_cta": "Inizia prova gratuita",
+  "subtitle": "Dopo il mese gratuito scegli una formula. Licenze 5/10/25/50; unità = 10× (50/100/250/500); documenti 10/20/30/40. Sedi e foto illimitate.",
+  "plans_heading": "Piani",
+  "plans_intro": "Pagamento mensile. 5, 10, 25 o 50 licenze (colleghi + esecutori); unità = 10× quel numero; documenti 10/20/30/40. Sedi e foto illimitate. Timbratura, pianificazione e CIAO inclusi.",
+  "glossary": {
+    "heading": "Licenze, unità e foto",
+    "unit": "Unità — oggetto o luogo con QR. Ogni nuova sede riceve automaticamente un'unità «Intera sede». Unità = 10× le tue licenze: 50 / 100 / 250 / 500.",
+    "document": "Documento — un file sul portale QR, es. un manuale. Limite per formula: 10 / 20 / 30 / 40.",
+    "photo": "Foto — le foto su segnalazioni e compiti sono illimitate.",
+    "seat": "Licenza — un collega con accesso (admin o dipendente) o un operatore (Clock Point, senza accesso). Un collega con profilo timbratrice collegato conta come una licenza."
+  },
+  "page_limits_locations_body": "Stai usando :current di :max sedi. \"Aggiungi sede\" resta disabilitato fino all'upgrade.",
+  "choose_plan": "Scegli questo piano",
+  "choose_plan_loading": "Scelta in corso...",
+  "activate_plan": "Scegli questo piano",
+  "current_plan": "Piano attuale",
+  "admin_required": "Solo un amministratore può scegliere un abbonamento. Contatta l'amministratore della tua organizzazione.",
+  "activated": "Hai scelto :plan. Il tuo abbonamento è attivo per il periodo configurato.",
+  "facility_not_included": "Segnalazioni, attività e calendario richiedono WinProx Facility o Corporate. Aggiorna il piano.",
+  "status_heading": "Stato attuale",
+  "status_legacy": "La tua organizzazione non usa ancora il tracking della prova (account legacy). Tutte le funzioni restano disponibili.",
+  "status_trial": "Prova con :plan attiva fino al :date.",
+  "status_active": "Abbonamento attivo: :plan, valido fino al :date.",
+  "status_grace": "Abbonamento :plan terminato il :ended. Periodo di grazia fino al :grace_end — :days giorni di accesso completo rimasti.",
+  "status_expired": "La prova è terminata. Scegli un piano qui sotto.",
+  "pricing_intro": "Mese di prova gratuito (5 licenze, 50 unità, 10 documenti — come la formula d'ingresso). Poi 5/10/25/50 licenze. Pagamento mensile tramite Stripe.",
+  "status_module_esg": "Modulo ESG attivo sul tuo account.",
+  "status_module_time": "Time (timbratrice) è attivo sul tuo account.",
+  "page_limits_title": "Perché alcune azioni non sono disponibili",
+  "page_limits_units_body": "Stai usando :current di :max unità. \"Aggiungi unità\" resta disabilitato fino all'upgrade.",
+  "page_limits_users_body": "Stai usando :current di :max posti (colleghi + esecutori). Non aggiungere persone finché non aggiorni.",
+  "page_limits_documents_body": "La tua organizzazione usa :current di :max documenti. Elimina o aggiorna.",
+  "page_limits_photos_body": "La tua organizzazione usa :current di :max foto. Elimina o aggiorna.",
+  "manage_in_stripe": "Gestisci abbonamento (fattura, metodo di pagamento)",
+  "legal_footer_intro": "Il tuo account è soggetto tra l'altro a:",
+  "legal_terms": "Termini di servizio",
+  "legal_privacy": "Privacy",
+  "legal_dpa": "DPA",
+  "status": {
+    "title": "Stato",
+    "access": "Accesso app",
+    "access_ok": "Attivo",
+    "access_blocked": "Bloccato",
+    "trial": "Periodo di prova",
+    "trial_days": ":days giorni rimanenti",
+    "plan": "Piano",
+    "active_until": "Valido fino al",
+    "usage": "Utilizzo",
+    "usage_counts": ":units unità · :users utenti"
+  },
+  "limits": {
+    "units": ":count unità",
+    "users": ":count posti",
+    "unlimited": "illimitato",
+    "warning_units": "Hai ancora :remaining posti unità.",
+    "critical_units": "Limite unità raggiunto. Aggiorna il piano.",
+    "warning_users": "Hai ancora :remaining posti sul piano.",
+    "critical_users": "Limite posti raggiunto. Aggiorna il piano per altri colleghi o esecutori.",
+    "cta": "Vedi abbonamento"
+  },
+  "plans": {
+    "trial": {
+      "name": "Periodo di prova"
     },
-    "page_limits_locations_body": "Stai usando :current di :max sedi. \"Aggiungi sede\" resta disabilitato fino all'upgrade.",
-    "choose_plan": "Scegli questo piano",
-    "choose_plan_loading": "Scelta in corso...",
-    "activate_plan": "Scegli questo piano",
-    "current_plan": "Piano attuale",
-    "admin_required": "Solo un amministratore può scegliere un abbonamento. Contatta l'amministratore della tua organizzazione.",
-    "activated": "Hai scelto :plan. Il tuo abbonamento è attivo per il periodo configurato.",
-    "facility_not_included": "Segnalazioni, attività e calendario richiedono WinProx Facility o Corporate. Aggiorna il piano.",
-    "status_heading": "Stato attuale",
-    "status_legacy": "La tua organizzazione non usa ancora il tracking della prova (account legacy). Tutte le funzioni restano disponibili.",
-    "status_trial": "Prova con :plan attiva fino al :date.",
-    "status_active": "Abbonamento attivo: :plan, valido fino al :date.",
-    "status_grace": "Abbonamento :plan terminato il :ended. Periodo di grazia fino al :grace_end — :days giorni di accesso completo rimasti.",
-    "status_expired": "La prova è terminata. Scegli un piano qui sotto.",
-    "pricing_intro": "Mese di prova gratuito (5 licenze, 50 unità, 10 documenti — come la formula d'ingresso). Poi 5/10/25/50 licenze. Pagamento mensile tramite Stripe.",
-    "status_module_esg": "Modulo ESG attivo sul tuo account.",
-    "status_module_time": "Time (timbratrice) è attivo sul tuo account.",
-    "page_limits_title": "Perché alcune azioni non sono disponibili",
-    "page_limits_units_body": "Stai usando :current di :max unità. \"Aggiungi unità\" resta disabilitato fino all'upgrade.",
-    "page_limits_users_body": "Stai usando :current di :max posti (colleghi + esecutori). Non aggiungere persone finché non aggiorni.",
-    "page_limits_documents_body": "La tua organizzazione usa :current di :max documenti. Elimina o aggiorna.",
-    "page_limits_photos_body": "La tua organizzazione usa :current di :max foto. Elimina o aggiorna.",
-    "manage_in_stripe": "Gestisci abbonamento (fattura, metodo di pagamento)",
-    "legal_footer_intro": "Il tuo account è soggetto tra l'altro a:",
-    "legal_terms": "Termini di servizio",
-    "legal_privacy": "Privacy",
-    "legal_dpa": "DPA",
-    "status": {
-        "title": "Stato",
-        "access": "Accesso app",
-        "access_ok": "Attivo",
-        "access_blocked": "Bloccato",
-        "trial": "Periodo di prova",
-        "trial_days": ":days giorni rimanenti",
-        "plan": "Piano",
-        "active_until": "Valido fino al",
-        "usage": "Utilizzo",
-        "usage_counts": ":units unità · :users utenti"
+    "winprox_5": {
+      "name": "5 licenze",
+      "price": "59€ / mese",
+      "scale": "59€ al mese. Pagamento mensile tramite Stripe.",
+      "features": [
+        "50 unità e 10 documenti. Sedi e foto illimitate.",
+        "Timbratura, pianificazione e CIAO (INPS) inclusi."
+      ]
     },
-    "limits": {
-        "units": ":count unità",
-        "users": ":count posti",
-        "unlimited": "illimitato",
-        "warning_units": "Hai ancora :remaining posti unità.",
-        "critical_units": "Limite unità raggiunto. Aggiorna il piano.",
-        "warning_users": "Hai ancora :remaining posti sul piano.",
-        "critical_users": "Limite posti raggiunto. Aggiorna il piano per altri colleghi o esecutori.",
-        "cta": "Vedi abbonamento"
+    "winprox_5_time": {
+      "name": "5 licenze + Time (timbratura)",
+      "price": "59€ / mese",
+      "scale": "59€ al mese. Pagamento mensile tramite Stripe.",
+      "features": [
+        "50 unità e 10 documenti. Sedi e foto illimitate.",
+        "Timbratura, pianificazione e CIAO (INPS) inclusi."
+      ]
     },
-    "plans": {
-        "trial": {
-            "name": "Periodo di prova"
-        },
-        "winprox_5": {
-            "name": "5 licenze",
-            "price": "59€ / mese",
-            "scale": "59€ al mese. Pagamento mensile tramite Stripe.",
-            "features": [
-                "50 unità e 10 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
-            ]
-        },
-        "winprox_5_time": {
-            "name": "5 licenze + Time (timbratura)",
-            "price": "59€ / mese",
-            "scale": "59€ al mese. Pagamento mensile tramite Stripe.",
-            "features": [
-                "50 unità e 10 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
-            ]
-        },
-        "winprox_10": {
-            "name": "10 licenze",
-            "price": "99€ / mese",
-            "scale": "99€ al mese. Pagamento mensile tramite Stripe.",
-            "features": [
-                "100 unità e 20 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
-            ]
-        },
-        "winprox_10_time": {
-            "name": "10 licenze + Time (timbratura)",
-            "price": "99€ / mese",
-            "scale": "99€ al mese. Pagamento mensile tramite Stripe.",
-            "features": [
-                "100 unità e 20 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
-            ]
-        },
-        "winprox_25": {
-            "name": "25 licenze",
-            "price": "199€ / mese",
-            "scale": "199€ al mese. Pagamento mensile tramite Stripe.",
-            "features": [
-                "250 unità e 30 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
-            ]
-        },
-        "winprox_25_time": {
-            "name": "25 licenze + Time (timbratura)",
-            "price": "199€ / mese",
-            "scale": "199€ al mese. Pagamento mensile tramite Stripe.",
-            "features": [
-                "250 unità e 30 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
-            ]
-        },
-        "winprox_50": {
-            "name": "50 licenze",
-            "price": "349€ / mese",
-            "scale": "349€ al mese. Pagamento mensile tramite Stripe.",
-            "features": [
-                "500 unità e 40 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
-            ]
-        },
-        "winprox_50_time": {
-            "name": "50 licenze + Time (timbratura)",
-            "price": "349€ / mese",
-            "scale": "349€ al mese. Pagamento mensile tramite Stripe.",
-            "features": [
-                "500 unità e 40 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
-            ]
-        },
-        "winprox_100": {
-            "name": "100 licenze",
-            "price": "Su misura",
-            "scale": "Da 100 licenze: WinProx Corporate.",
-            "features": [
-                "Timbratrice, turno, CIAO (ONSS) inclusi."
-            ]
-        },
-        "winprox_100_time": {
-            "name": "100 licenze + Time (timbratrice)",
-            "price": "Su misura",
-            "scale": "Da 100 licenze: WinProx Corporate.",
-            "features": [
-                "Timbratrice, turno, CIAO (ONSS) inclusi."
-            ]
-        },
-        "facility_10": {
-            "name": "10 unità",
-            "price": "€99 / mese",
-            "scale": "Fino a 10 unità e 10 documenti.",
-            "features": [
-                "Time incluso.",
-                "Senza IoT, ESG o API."
-            ]
-        },
-        "facility_25": {
-            "name": "25 unità",
-            "price": "€129 / mese",
-            "scale": "Fino a 25 unità e 25 documenti.",
-            "features": [
-                "Time incluso.",
-                "Senza IoT, ESG o API."
-            ]
-        },
-        "facility_50": {
-            "name": "50 unità",
-            "price": "€179 / mese",
-            "scale": "Fino a 50 unità e 50 documenti.",
-            "features": [
-                "Time incluso.",
-                "Senza IoT, ESG o API."
-            ]
-        },
-        "facility_100": {
-            "name": "100 unità",
-            "price": "€249 / mese",
-            "scale": "Fino a 100 unità e 100 documenti.",
-            "features": [
-                "Time incluso.",
-                "Senza IoT, ESG o API."
-            ]
-        },
-        "facility_250": {
-            "name": "250 unità",
-            "price": "€399 / mese",
-            "scale": "Fino a 250 unità e 250 documenti.",
-            "features": [
-                "Time incluso.",
-                "IoT Connect e ESG inclusi.",
-                "Senza API o webhooks."
-            ]
-        },
-        "facility_500": {
-            "name": "500 unità",
-            "price": "€599 / mese",
-            "scale": "Fino a 500 unità e 500 documenti.",
-            "features": [
-                "Time incluso.",
-                "IoT Connect e ESG inclusi.",
-                "Senza API o webhooks."
-            ]
-        },
-        "facility_1000": {
-            "name": "1.000 unità",
-            "price": "€999 / mese",
-            "scale": "Fino a 1.000 unità e 1.000 documenti.",
-            "features": [
-                "Time incluso.",
-                "IoT Connect e ESG inclusi.",
-                "Senza API o webhooks."
-            ]
-        },
-        "corporate": {
-            "name": "WinProx Corporate",
-            "price": "Prezzo personalizzato",
-            "scale": "Da 100 licenze, o quando servono API/webhook/integrazioni.",
-            "features": [
-                "Timbratrice, turno, CIAO (ONSS), IoT Connect, ESG e API inclusi.",
-                "API REST completa e webhook.",
-                "Integrazioni, SLA e supporto su misura."
-            ]
-        },
-        "checkmate": {
-            "name": "WinProx Checkmate"
-        },
-        "checkmate_trial": {
-            "name": "WinProx Checkmate (prova)"
-        }
+    "winprox_10": {
+      "name": "10 licenze",
+      "price": "99€ / mese",
+      "scale": "99€ al mese. Pagamento mensile tramite Stripe.",
+      "features": [
+        "100 unità e 20 documenti. Sedi e foto illimitate.",
+        "Timbratura, pianificazione e CIAO (INPS) inclusi."
+      ]
     },
-    "stripe": {
-        "activated": "Grazie! Il pagamento è stato ricevuto; l'abbonamento sarà attivo a breve.",
-        "not_configured": "Pagamento online non ancora configurato. Contatta WinProx.",
-        "simulated_hint": "Stripe non configurato: la scelta attiva il periodo senza pagamento reale.",
-        "checkout_cancelled": "Checkout annullato. Puoi scegliere più tardi.",
-        "return_unconfirmed": "Impossibile confermare il pagamento qui. Aggiorna la pagina.",
-        "checkout_failed": "Stripe Checkout non riuscito: :detail"
+    "winprox_10_time": {
+      "name": "10 licenze + Time (timbratura)",
+      "price": "99€ / mese",
+      "scale": "99€ al mese. Pagamento mensile tramite Stripe.",
+      "features": [
+        "100 unità e 20 documenti. Sedi e foto illimitate.",
+        "Timbratura, pianificazione e CIAO (INPS) inclusi."
+      ]
     },
-    "stripe_notice_live": "Pagamento e rinnovo tramite Stripe.",
-    "stripe_notice_simulated": "Stripe non configurato: attivazione senza pagamento reale.",
-    "errors": {
-        "plan_required": "Scegli un piano.",
-        "plan_invalid": "Questo piano non è disponibile.",
-        "admin_only": "Solo un amministratore può scegliere un abbonamento.",
-        "activation_disabled": "Auto-attivazione disabilitata. Contatta WinProx.",
-        "csv_workers_not_allowed": "L'importazione CSV/Excel degli esecutori non è disponibile in questo abbonamento.",
-        "csv_units_not_allowed": "L'importazione CSV/Excel delle unità richiede un abbonamento a pagamento.",
-        "corporate_contact": "Corporate si attiva su misura. Contatta WinProx.",
-        "csv_locations_not_allowed": "L'importazione CSV/Excel delle sedi richiede un abbonamento a pagamento."
+    "winprox_25": {
+      "name": "25 licenze",
+      "price": "199€ / mese",
+      "scale": "199€ al mese. Pagamento mensile tramite Stripe.",
+      "features": [
+        "250 unità e 30 documenti. Sedi e foto illimitate.",
+        "Timbratura, pianificazione e CIAO (INPS) inclusi."
+      ]
     },
-    "status_module_iot": "IoT Connect è attivo sul tuo account.",
-    "purge": {
-        "title": "Elimina i dati dell'organizzazione",
-        "intro": "Delete all data for this organisation from WinProx. This cannot be undone (media files are not kept in the recovery snapshot).",
-        "export_link": "Esporta da Impostazioni → Privacy ed esportazione dati",
-        "export_ack": "Ho visto o scaricato l’opzione di esportazione (Impostazioni)",
-        "password_label": "Confirm with your password",
-        "start": "Avvia eliminazione",
-        "cancel": "Annulla eliminazione",
-        "execute_trial": "Permanently delete everything",
-        "execute_paid": "Execute deletion now (WinProx administration)",
-        "trial_hint": "All administrators receive a confirmation email. Only after confirming via the link can you delete. A SQL snapshot without media is created first.",
-        "paid_hint": "After email confirmation there is a 7-day cool-down. WinProx administration performs the deletion at the scheduled time. A SQL snapshot without media is created first.",
-        "status_awaiting_email": "Confirmation email sent to all administrators. Open the link in that email to confirm.",
-        "status_ready": "Email confirmation received. You can permanently delete the data now.",
-        "status_scheduled": "L'eliminazione dei dati sarà eseguita il :date (:timezone) dall'amministrazione WinProx.",
-        "days_remaining": "Ancora :days giorni all'eliminazione dei dati.",
-        "email_confirmed_checkbox": "Deletion confirmed via email",
-        "email_confirmed": "Email confirmation successful.",
-        "started": "Confirmation email sent to all administrators.",
-        "cancelled": "Deletion request cancelled.",
-        "completed": "Organisation data has been deleted.",
-        "completed_superuser": "Tenant data has been deleted.",
-        "confirm_start": "Avviare la procedura di eliminazione? Riceverai un’email di conferma.",
-        "confirm_cancel": "Cancel the deletion request?",
-        "confirm_execute": "Permanently delete all data? This cannot be undone.",
-        "confirm_execute_superuser": "Delete tenant now? A snapshot without media will be saved first.",
-        "banner": "Ancora :days giorni all'eliminazione dei dati (previsto :date).",
-        "banner_link": "Vedi / annulla",
-        "errors": {
-            "admin_only": "Only an administrator can do this.",
-            "export_required": "Confirm that you have seen the export option.",
-            "password": "Incorrect password.",
-            "password_required": "Password is required.",
-            "already_open": "A deletion request is already open.",
-            "not_awaiting_email": "This request is not awaiting email confirmation.",
-            "token_expired": "The confirmation link has expired.",
-            "token_invalid": "Invalid confirmation link.",
-            "not_open": "There is no open deletion request.",
-            "tenant_missing": "Organisation not found.",
-            "email_not_confirmed": "Confirm via the email link first.",
-            "superuser_only": "Only WinProx administration can perform this.",
-            "not_scheduled": "This request is not scheduled.",
-            "cooldown_active": "Cool-down active until :date.",
-            "generic": "Deletion failed.",
-            "too_many_password_attempts": "Troppi tentativi di password errati. Sei stato disconnesso. Accedi di nuovo per continuare."
-        },
-        "status_scheduled_expired_trial": "Senza abbonamento, i dati dell’organizzazione verranno eliminati automaticamente il :date (:timezone).",
-        "expired_trial_subscribe_hint": "Attiva un abbonamento per interrompere, oppure esporta prima i dati via Impostazioni.",
-        "banner_expired_trial": "Ancora :days giorni alla cancellazione automatica dei dati (prevista :date). Abbonati per conservarli."
+    "winprox_25_time": {
+      "name": "25 licenze + Time (timbratura)",
+      "price": "199€ / mese",
+      "scale": "199€ al mese. Pagamento mensile tramite Stripe.",
+      "features": [
+        "250 unità e 30 documenti. Sedi e foto illimitate.",
+        "Timbratura, pianificazione e CIAO (INPS) inclusi."
+      ]
     },
-    "comparison_heading": "Confronto",
-    "comparison_col_plan": "Piano",
-    "comparison_col_price": "Prezzo",
-    "comparison_col_units": "Unità",
-    "comparison_col_documents": "Documenti",
-    "comparison_col_iot": "IoT + ESG",
-    "comparison_col_api": "API",
-    "comparison_yes": "Sì",
-    "comparison_included": "Incluso",
-    "comparison_no": "No",
-    "comparison_custom": "Su misura",
-    "comparison_trial_price": "Gratis",
-    "comparison_notes": {
-        "trial": "Prova: 5 licenze, 50 unità e 10 documenti (come la formula da 5). Poi pagamento mensile tramite Stripe.",
-        "unlimited": "Unità = 10× le tue licenze (50 / 100 / 250 / 500). Documenti 10 / 20 / 30 / 40. Sedi e foto illimitate.",
-        "corporate": "IoT, ESG e API: solo WinProx Corporate (da 100 licenze)."
+    "winprox_50": {
+      "name": "50 licenze",
+      "price": "349€ / mese",
+      "scale": "349€ al mese. Pagamento mensile tramite Stripe.",
+      "features": [
+        "500 unità e 40 documenti. Sedi e foto illimitate.",
+        "Timbratura, pianificazione e CIAO (INPS) inclusi."
+      ]
     },
-    "contact_sales_cta": "Contattaci",
-    "public_contact_cta": "Richiedi preventivo",
-    "contact_sales_subject": "WinProx Corporate — preventivo",
-    "comparison_col_time": "Time (timbratrice)",
-    "comparison_time_optional": "Opzionale",
-    "time_addon": {
-        "label": "Time (timbratrice)",
-        "monthly": ":price / mese",
-        "hint": "Entrata/uscita e pause. Incluso in ogni formula WinProx.",
-        "public_hint": "Time (timbratura) è incluso in ogni formula WinProx."
+    "winprox_50_time": {
+      "name": "50 licenze + Time (timbratura)",
+      "price": "349€ / mese",
+      "scale": "349€ al mese. Pagamento mensile tramite Stripe.",
+      "features": [
+        "500 unità e 40 documenti. Sedi e foto illimitate.",
+        "Timbratura, pianificazione e CIAO (INPS) inclusi."
+      ]
     },
-    "comparison_col_seats": "Posti",
-    "payment_notice": "Pagamento mensile tramite Stripe. Corporate su misura (nessun pagamento online).",
-    "prices_excl_vat": "Tutti i prezzi visualizzati sono IVA esclusa.",
-    "seats": {
-        "title": "Numero di operatori (posti)",
-        "current": "Attivi attualmente: :count",
-        "billed_next_period": "La modifica si applica subito e viene fatturata dal periodo successivo.",
-        "save": "Salva",
-        "saved": "Numero di posti aggiornato.",
-        "qty_required": "Inserisci una quantità.",
-        "qty_invalid": "Inserisci una quantità valida (1-500).",
-        "below_active": "Non puoi scendere sotto i :active posti attivi — disattiva prima degli operatori.",
-        "not_editable": "Questo piano non ha un numero di posti regolabile."
+    "winprox_100": {
+      "name": "100 licenze",
+      "price": "Su misura",
+      "scale": "Da 100 licenze: WinProx Corporate.",
+      "features": [
+        "Timbratrice, turno, CIAO (ONSS) inclusi."
+      ]
+    },
+    "winprox_100_time": {
+      "name": "100 licenze + Time (timbratrice)",
+      "price": "Su misura",
+      "scale": "Da 100 licenze: WinProx Corporate.",
+      "features": [
+        "Timbratrice, turno, CIAO (ONSS) inclusi."
+      ]
+    },
+    "facility_10": {
+      "name": "10 unità",
+      "price": "€99 / mese",
+      "scale": "Fino a 10 unità e 10 documenti.",
+      "features": [
+        "Time incluso.",
+        "Senza IoT, ESG o API."
+      ]
+    },
+    "facility_25": {
+      "name": "25 unità",
+      "price": "€129 / mese",
+      "scale": "Fino a 25 unità e 25 documenti.",
+      "features": [
+        "Time incluso.",
+        "Senza IoT, ESG o API."
+      ]
+    },
+    "facility_50": {
+      "name": "50 unità",
+      "price": "€179 / mese",
+      "scale": "Fino a 50 unità e 50 documenti.",
+      "features": [
+        "Time incluso.",
+        "Senza IoT, ESG o API."
+      ]
+    },
+    "facility_100": {
+      "name": "100 unità",
+      "price": "€249 / mese",
+      "scale": "Fino a 100 unità e 100 documenti.",
+      "features": [
+        "Time incluso.",
+        "Senza IoT, ESG o API."
+      ]
+    },
+    "facility_250": {
+      "name": "250 unità",
+      "price": "€399 / mese",
+      "scale": "Fino a 250 unità e 250 documenti.",
+      "features": [
+        "Time incluso.",
+        "IoT Connect e ESG inclusi.",
+        "Senza API o webhooks."
+      ]
+    },
+    "facility_500": {
+      "name": "500 unità",
+      "price": "€599 / mese",
+      "scale": "Fino a 500 unità e 500 documenti.",
+      "features": [
+        "Time incluso.",
+        "IoT Connect e ESG inclusi.",
+        "Senza API o webhooks."
+      ]
+    },
+    "facility_1000": {
+      "name": "1.000 unità",
+      "price": "€999 / mese",
+      "scale": "Fino a 1.000 unità e 1.000 documenti.",
+      "features": [
+        "Time incluso.",
+        "IoT Connect e ESG inclusi.",
+        "Senza API o webhooks."
+      ]
+    },
+    "corporate": {
+      "name": "WinProx Corporate",
+      "price": "Prezzo personalizzato",
+      "scale": "Da 100 licenze, o quando servono API/webhook/integrazioni.",
+      "features": [
+        "Timbratrice, turno, CIAO (ONSS), IoT Connect, ESG e API inclusi.",
+        "API REST completa e webhook.",
+        "Integrazioni, SLA e supporto su misura."
+      ]
+    },
+    "checkmate": {
+      "name": "WinProx Checkmate",
+      "price": "5 € per operatore / mese",
+      "scale": "5 € per operatore attivo al mese. Numero di licenze regolabile.",
+      "features": [
+        "Clienti e indirizzi di lavoro con verifica GPS (100 m).",
+        "Timbratura, pause e visite ai clienti dallo smartphone.",
+        "Registrazione presenze CIAO inclusa."
+      ]
+    },
+    "checkmate_trial": {
+      "name": "WinProx Checkmate (prova)"
     }
+  },
+  "stripe": {
+    "activated": "Grazie! Il pagamento è stato ricevuto; l'abbonamento sarà attivo a breve.",
+    "not_configured": "Pagamento online non ancora configurato. Contatta WinProx.",
+    "simulated_hint": "Stripe non configurato: la scelta attiva il periodo senza pagamento reale.",
+    "checkout_cancelled": "Checkout annullato. Puoi scegliere più tardi.",
+    "return_unconfirmed": "Impossibile confermare il pagamento qui. Aggiorna la pagina.",
+    "checkout_failed": "Stripe Checkout non riuscito: :detail"
+  },
+  "stripe_notice_live": "Pagamento e rinnovo tramite Stripe.",
+  "stripe_notice_simulated": "Stripe non configurato: attivazione senza pagamento reale.",
+  "errors": {
+    "plan_required": "Scegli un piano.",
+    "plan_invalid": "Questo piano non è disponibile.",
+    "admin_only": "Solo un amministratore può scegliere un abbonamento.",
+    "activation_disabled": "Auto-attivazione disabilitata. Contatta WinProx.",
+    "csv_workers_not_allowed": "L'importazione CSV/Excel degli esecutori non è disponibile in questo abbonamento.",
+    "csv_units_not_allowed": "L'importazione CSV/Excel delle unità richiede un abbonamento a pagamento.",
+    "corporate_contact": "Corporate si attiva su misura. Contatta WinProx.",
+    "csv_locations_not_allowed": "L'importazione CSV/Excel delle sedi richiede un abbonamento a pagamento."
+  },
+  "status_module_iot": "IoT Connect è attivo sul tuo account.",
+  "purge": {
+    "title": "Elimina i dati dell'organizzazione",
+    "intro": "Delete all data for this organisation from WinProx. This cannot be undone (media files are not kept in the recovery snapshot).",
+    "export_link": "Esporta da Impostazioni → Privacy ed esportazione dati",
+    "export_ack": "Ho visto o scaricato l’opzione di esportazione (Impostazioni)",
+    "password_label": "Confirm with your password",
+    "start": "Avvia eliminazione",
+    "cancel": "Annulla eliminazione",
+    "execute_trial": "Permanently delete everything",
+    "execute_paid": "Execute deletion now (WinProx administration)",
+    "trial_hint": "All administrators receive a confirmation email. Only after confirming via the link can you delete. A SQL snapshot without media is created first.",
+    "paid_hint": "After email confirmation there is a 7-day cool-down. WinProx administration performs the deletion at the scheduled time. A SQL snapshot without media is created first.",
+    "status_awaiting_email": "Confirmation email sent to all administrators. Open the link in that email to confirm.",
+    "status_ready": "Email confirmation received. You can permanently delete the data now.",
+    "status_scheduled": "L'eliminazione dei dati sarà eseguita il :date (:timezone) dall'amministrazione WinProx.",
+    "days_remaining": "Ancora :days giorni all'eliminazione dei dati.",
+    "email_confirmed_checkbox": "Deletion confirmed via email",
+    "email_confirmed": "Email confirmation successful.",
+    "started": "Confirmation email sent to all administrators.",
+    "cancelled": "Deletion request cancelled.",
+    "completed": "Organisation data has been deleted.",
+    "completed_superuser": "Tenant data has been deleted.",
+    "confirm_start": "Avviare la procedura di eliminazione? Riceverai un’email di conferma.",
+    "confirm_cancel": "Cancel the deletion request?",
+    "confirm_execute": "Permanently delete all data? This cannot be undone.",
+    "confirm_execute_superuser": "Delete tenant now? A snapshot without media will be saved first.",
+    "banner": "Ancora :days giorni all'eliminazione dei dati (previsto :date).",
+    "banner_link": "Vedi / annulla",
+    "errors": {
+      "admin_only": "Only an administrator can do this.",
+      "export_required": "Confirm that you have seen the export option.",
+      "password": "Incorrect password.",
+      "password_required": "Password is required.",
+      "already_open": "A deletion request is already open.",
+      "not_awaiting_email": "This request is not awaiting email confirmation.",
+      "token_expired": "The confirmation link has expired.",
+      "token_invalid": "Invalid confirmation link.",
+      "not_open": "There is no open deletion request.",
+      "tenant_missing": "Organisation not found.",
+      "email_not_confirmed": "Confirm via the email link first.",
+      "superuser_only": "Only WinProx administration can perform this.",
+      "not_scheduled": "This request is not scheduled.",
+      "cooldown_active": "Cool-down active until :date.",
+      "generic": "Deletion failed.",
+      "too_many_password_attempts": "Troppi tentativi di password errati. Sei stato disconnesso. Accedi di nuovo per continuare."
+    },
+    "status_scheduled_expired_trial": "Senza abbonamento, i dati dell’organizzazione verranno eliminati automaticamente il :date (:timezone).",
+    "expired_trial_subscribe_hint": "Attiva un abbonamento per interrompere, oppure esporta prima i dati via Impostazioni.",
+    "banner_expired_trial": "Ancora :days giorni alla cancellazione automatica dei dati (prevista :date). Abbonati per conservarli."
+  },
+  "comparison_heading": "Confronto",
+  "comparison_col_plan": "Piano",
+  "comparison_col_price": "Prezzo",
+  "comparison_col_units": "Unità",
+  "comparison_col_documents": "Documenti",
+  "comparison_col_iot": "IoT + ESG",
+  "comparison_col_api": "API",
+  "comparison_yes": "Sì",
+  "comparison_included": "Incluso",
+  "comparison_no": "No",
+  "comparison_custom": "Su misura",
+  "comparison_trial_price": "Gratis",
+  "comparison_notes": {
+    "trial": "Prova: 5 licenze, 50 unità e 10 documenti (come la formula da 5). Poi pagamento mensile tramite Stripe.",
+    "unlimited": "Unità = 10× le tue licenze (50 / 100 / 250 / 500). Documenti 10 / 20 / 30 / 40. Sedi e foto illimitate.",
+    "corporate": "IoT, ESG e API: solo WinProx Corporate (da 100 licenze)."
+  },
+  "contact_sales_cta": "Contattaci",
+  "public_contact_cta": "Richiedi preventivo",
+  "contact_sales_subject": "WinProx Corporate — preventivo",
+  "comparison_col_time": "Time (timbratrice)",
+  "comparison_time_optional": "Opzionale",
+  "time_addon": {
+    "label": "Time (timbratrice)",
+    "monthly": ":price / mese",
+    "hint": "Entrata/uscita e pause. Incluso in ogni formula WinProx.",
+    "public_hint": "Time (timbratura) è incluso in ogni formula WinProx."
+  },
+  "comparison_col_seats": "Posti",
+  "payment_notice": "Pagamento mensile tramite Stripe. Corporate su misura (nessun pagamento online).",
+  "prices_excl_vat": "Tutti i prezzi visualizzati sono IVA esclusa.",
+  "seats": {
+    "title": "Numero di operatori (posti)",
+    "current": "Attivi attualmente: :count",
+    "billed_next_period": "La modifica si applica subito e viene fatturata dal periodo successivo.",
+    "save": "Salva",
+    "saved": "Numero di posti aggiornato.",
+    "qty_required": "Inserisci una quantità.",
+    "qty_invalid": "Inserisci una quantità valida (1-500).",
+    "below_active": "Non puoi scendere sotto i :active posti attivi — disattiva prima degli operatori.",
+    "not_editable": "Questo piano non ha un numero di posti regolabile."
+  }
 }

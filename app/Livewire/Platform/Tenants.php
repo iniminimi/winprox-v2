@@ -246,7 +246,7 @@ class Tenants extends Component
                 $catalog = is_string($effective)
                     ? BillingCatalogViewData::catalogPlanFor($effective)
                     : null;
-                $this->planInputs[$id] = in_array($catalog, BillingCatalogViewData::publicPlanKeys(), true)
+                $this->planInputs[$id] = in_array($catalog, BillingCatalogViewData::platformPlanKeys(), true)
                     ? $catalog
                     : 'winprox_5';
             }
@@ -255,7 +255,7 @@ class Tenants extends Component
         return view('livewire.platform.tenants', [
             'tenants' => $tenants,
             'activeTenant' => $activeTenant,
-            'assignablePlans' => BillingCatalogViewData::publicPlanKeys(),
+            'assignablePlans' => BillingCatalogViewData::platformPlanKeys(),
         ]);
     }
 }

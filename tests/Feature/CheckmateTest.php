@@ -10,6 +10,8 @@ use App\Actions\Time\RequestPresenceComplianceAction;
 use App\Actions\Time\StartWorkVisitAction;
 use App\Enums\PresenceComplianceScope;
 use App\Enums\PresenceSourceEvent;
+use App\Livewire\Pages\Subscription;
+use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Models\ClockPoint;
 use App\Models\Customer;
 use App\Models\InternalTeam;
@@ -19,7 +21,9 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkVisit;
+use App\Support\Billing\BillingCatalogViewData;
 use App\Support\Tenancy;
+use Livewire\Livewire;
 use Illuminate\Support\Facades\Mail;
 
 afterEach(fn () => Tenancy::forget());
@@ -325,4 +329,60 @@ it('laat facility-tenants ongemoeid door de checkmate-gate', function () {
 
     $this->get('/issues')->assertOk();
     $this->get('/klanten')->assertOk();
+});
+
+it('laat een tenant zelf het checkmate-plan kiezen op Abonnement', function () {
+    config([
+        'billing.allow_tenant_self_activation' => true,
+        'stripe.enabled' => false,
+    ]);
+
+    $tenant = Tenant::factory()->create([
+        'checkmate_mode' => false,
+        'trial_ends_at' => now()->addDays(5),
+    ]);
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    Livewire::actingAs($admin)
+        ->test(Subscription::class)
+        ->call('activatePlan', 'checkmate')
+        ->assertHasNoErrors();
+
+    $fresh = $tenant->fresh();
+
+    expect($fresh->billing_plan)->toBe('checkmate')
+        ->and($fresh->checkmateMode())->toBeTrue()
+        ->and($fresh->hasTimeModule())->toBeTrue()
+        ->and($fresh->allowsGpsWorkVisits())->toBeTrue()
+        ->and($fresh->gpsVisitRadiusMeters())->toBe(100);
+});
+
+it('laat een superuser checkmate_trial toewijzen via Platform', function () {
+    $super = User::factory()->superuser()->create();
+    $tenant = Tenant::factory()->create([
+        'checkmate_mode' => false,
+        'trial_ends_at' => now()->addDays(5),
+    ]);
+
+    Livewire::actingAs($super)
+        ->test(PlatformTenants::class)
+        ->set('planInputs.'.$tenant->id, 'checkmate_trial')
+        ->call('assignPlan', $tenant->id)
+        ->assertHasNoErrors();
+
+    $fresh = $tenant->fresh();
+
+    expect($fresh->billing_plan)->toBe('checkmate_trial')
+        ->and($fresh->checkmateMode())->toBeTrue()
+        ->and($fresh->maxSeatsLimit())->toBe(3);
+});
+
+it('verbergt checkmate_trial uit de publieke catalogus maar niet uit Platform', function () {
+    expect(BillingCatalogViewData::publicPlanKeys())
+        ->toContain('checkmate')
+        ->not->toContain('checkmate_trial');
+
+    expect(BillingCatalogViewData::platformPlanKeys())
+        ->toContain('checkmate')
+        ->toContain('checkmate_trial');
 });

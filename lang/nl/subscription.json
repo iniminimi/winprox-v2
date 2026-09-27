@@ -1,353 +1,360 @@
 {
-    "title": "Abonnement, limieten & facturatie",
-    "public_title": "Prijzen & formules",
-    "public_subtitle": "Kies het aantal licenties. Maandelijks te betalen via Stripe. Prikklok, uurrooster en CIAO (RSZ) inbegrepen.",
-    "public_register_cta": "Start gratis proefperiode",
-    "subtitle": "Na je gratis maand kies je een formule. Licenties 5/10/25/50; units = 10× (50/100/250/500); documenten 10/20/30/40. Locaties en foto's onbeperkt.",
-    "plans_heading": "Formules",
-    "plans_intro": "Betaal maandelijks. 5, 10, 25 of 50 licenties (collega's + uitvoerders); units = 10× dat aantal; documenten 10/20/30/40. Locaties en foto's onbeperkt. Prikklok, uurrooster en CIAO (RSZ) inbegrepen.",
-    "glossary": {
-        "heading": "Licenties, units en foto's",
-        "unit": "Unit — een object of plaats met een QR-code (machine, ruimte, vestiging). Elke nieuwe locatie krijgt automatisch een unit «Hele locatie». Units = 10× je licenties: 50 / 100 / 250 / 500.",
-        "document": "Document — een bestand op het QR-portaal, zoals een handleiding. Limiet per formule: 10 / 20 / 30 / 40.",
-        "photo": "Foto's — foto's bij meldingen en taken zijn onbeperkt.",
-        "seat": "Licentie — een collega met login (beheerder of medewerker) of een uitvoerder (Clock Point, zonder login). Collega met gekoppeld prikklok-profiel telt als één licentie."
+  "title": "Abonnement, limieten & facturatie",
+  "public_title": "Prijzen & formules",
+  "public_subtitle": "Kies het aantal licenties. Maandelijks te betalen via Stripe. Prikklok, uurrooster en CIAO (RSZ) inbegrepen.",
+  "public_register_cta": "Start gratis proefperiode",
+  "subtitle": "Na je gratis maand kies je een formule. Licenties 5/10/25/50; units = 10× (50/100/250/500); documenten 10/20/30/40. Locaties en foto's onbeperkt.",
+  "plans_heading": "Formules",
+  "plans_intro": "Betaal maandelijks. 5, 10, 25 of 50 licenties (collega's + uitvoerders); units = 10× dat aantal; documenten 10/20/30/40. Locaties en foto's onbeperkt. Prikklok, uurrooster en CIAO (RSZ) inbegrepen.",
+  "glossary": {
+    "heading": "Licenties, units en foto's",
+    "unit": "Unit — een object of plaats met een QR-code (machine, ruimte, vestiging). Elke nieuwe locatie krijgt automatisch een unit «Hele locatie». Units = 10× je licenties: 50 / 100 / 250 / 500.",
+    "document": "Document — een bestand op het QR-portaal, zoals een handleiding. Limiet per formule: 10 / 20 / 30 / 40.",
+    "photo": "Foto's — foto's bij meldingen en taken zijn onbeperkt.",
+    "seat": "Licentie — een collega met login (beheerder of medewerker) of een uitvoerder (Clock Point, zonder login). Collega met gekoppeld prikklok-profiel telt als één licentie."
+  },
+  "choose_plan": "Kies deze formule",
+  "choose_plan_loading": "Bezig met kiezen...",
+  "activate_plan": "Kies deze formule",
+  "current_plan": "Huidige formule",
+  "admin_required": "Alleen een beheerder kan een abonnement kiezen. Neem contact op met de beheerder van je organisatie.",
+  "activated": "Je koos :plan. Je abonnement is actief voor de geconfigureerde periode.",
+  "facility_not_included": "Meldingen, taken en kalender vereisen WinProx Facility of Corporate. Upgrade je formule om facility-workflows te ontgrendelen.",
+  "status_heading": "Huidige status",
+  "status_legacy": "Je organisatie gebruikt nog geen proefperiode-tracking (legacy-account). Alle functies blijven beschikbaar.",
+  "status_trial": "Proefperiode met :plan actief tot :date.",
+  "status_active": "Actief abonnement: :plan, geldig tot :date.",
+  "status_grace": "Abonnement :plan beëindigd op :ended. Respijtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng op tijd om onderbreking te vermijden.",
+  "status_expired": "Je proefperiode is afgelopen. Kies hieronder een formule om verder te gaan.",
+  "pricing_intro": "Gratis proefmaand (5 licenties, 50 units, 10 documenten — zelfde als de instapformule). Daarna 5/10/25/50 licenties. Maandelijks te betalen via Stripe.",
+  "status_module_esg": "ESG-module actief op je account.",
+  "status_module_time": "Time (prikklok) actief op je account.",
+  "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
+  "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" blijft uitgeschakeld tot je upgradet.",
+  "page_limits_locations_body": "Je gebruikt :current van :max locaties. \"Locatie toevoegen\" blijft uitgeschakeld tot je upgradet.",
+  "page_limits_users_body": "Je gebruikt :current van :max licenties (collega's + uitvoerders) op je formule. Voeg geen extra personen toe tot je upgradet.",
+  "page_limits_documents_body": "Je organisatie gebruikt :current van :max documenten. Verwijder een document of upgrade je formule om meer te uploaden.",
+  "page_limits_photos_body": "Je organisatie gebruikt :current van :max foto's. Verwijder foto's of upgrade je formule om meer te uploaden.",
+  "manage_in_stripe": "Abonnement beheren (factuur, betaalmethode)",
+  "legal_footer_intro": "Je account valt onder o.a.:",
+  "legal_terms": "Algemene voorwaarden",
+  "legal_privacy": "Privacy",
+  "legal_dpa": "Verwerkersovereenkomst",
+  "status": {
+    "title": "Status",
+    "access": "App-toegang",
+    "access_ok": "Actief",
+    "access_blocked": "Geblokkeerd",
+    "trial": "Proefperiode",
+    "trial_days": "Nog :days dagen",
+    "plan": "Formule",
+    "active_until": "Geldig tot",
+    "usage": "Gebruik",
+    "usage_counts": ":units units · :users gebruikers"
+  },
+  "limits": {
+    "units": ":count units",
+    "users": ":count licenties",
+    "unlimited": "onbeperkt",
+    "warning_units": "Je hebt nog :remaining unitplaatsen op je formule.",
+    "critical_units": "Je unitlimiet is bereikt. Upgrade je formule om meer units toe te voegen.",
+    "warning_users": "Je hebt nog :remaining licenties over op je formule.",
+    "critical_users": "Je licentielimiet is bereikt. Upgrade je formule om meer collega's of uitvoerders toe te voegen.",
+    "cta": "Bekijk abonnement"
+  },
+  "plans": {
+    "trial": {
+      "name": "Proefperiode"
     },
-    "choose_plan": "Kies deze formule",
-    "choose_plan_loading": "Bezig met kiezen...",
-    "activate_plan": "Kies deze formule",
-    "current_plan": "Huidige formule",
-    "admin_required": "Alleen een beheerder kan een abonnement kiezen. Neem contact op met de beheerder van je organisatie.",
-    "activated": "Je koos :plan. Je abonnement is actief voor de geconfigureerde periode.",
-    "facility_not_included": "Meldingen, taken en kalender vereisen WinProx Facility of Corporate. Upgrade je formule om facility-workflows te ontgrendelen.",
-    "status_heading": "Huidige status",
-    "status_legacy": "Je organisatie gebruikt nog geen proefperiode-tracking (legacy-account). Alle functies blijven beschikbaar.",
-    "status_trial": "Proefperiode met :plan actief tot :date.",
-    "status_active": "Actief abonnement: :plan, geldig tot :date.",
-    "status_grace": "Abonnement :plan beëindigd op :ended. Respijtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng op tijd om onderbreking te vermijden.",
-    "status_expired": "Je proefperiode is afgelopen. Kies hieronder een formule om verder te gaan.",
-    "pricing_intro": "Gratis proefmaand (5 licenties, 50 units, 10 documenten — zelfde als de instapformule). Daarna 5/10/25/50 licenties. Maandelijks te betalen via Stripe.",
-    "status_module_esg": "ESG-module actief op je account.",
-    "status_module_time": "Time (prikklok) actief op je account.",
-    "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
-    "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" blijft uitgeschakeld tot je upgradet.",
-    "page_limits_locations_body": "Je gebruikt :current van :max locaties. \"Locatie toevoegen\" blijft uitgeschakeld tot je upgradet.",
-    "page_limits_users_body": "Je gebruikt :current van :max licenties (collega's + uitvoerders) op je formule. Voeg geen extra personen toe tot je upgradet.",
-    "page_limits_documents_body": "Je organisatie gebruikt :current van :max documenten. Verwijder een document of upgrade je formule om meer te uploaden.",
-    "page_limits_photos_body": "Je organisatie gebruikt :current van :max foto's. Verwijder foto's of upgrade je formule om meer te uploaden.",
-    "manage_in_stripe": "Abonnement beheren (factuur, betaalmethode)",
-    "legal_footer_intro": "Je account valt onder o.a.:",
-    "legal_terms": "Algemene voorwaarden",
-    "legal_privacy": "Privacy",
-    "legal_dpa": "Verwerkersovereenkomst",
-    "status": {
-        "title": "Status",
-        "access": "App-toegang",
-        "access_ok": "Actief",
-        "access_blocked": "Geblokkeerd",
-        "trial": "Proefperiode",
-        "trial_days": "Nog :days dagen",
-        "plan": "Formule",
-        "active_until": "Geldig tot",
-        "usage": "Gebruik",
-        "usage_counts": ":units units · :users gebruikers"
+    "winprox_5": {
+      "name": "5 licenties",
+      "price": "59€ / maand",
+      "scale": "59€ per maand. Maandelijks te betalen via Stripe.",
+      "features": [
+        "50 units en 10 documenten. Locaties en foto's onbeperkt.",
+        "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+      ]
     },
-    "limits": {
-        "units": ":count units",
-        "users": ":count licenties",
-        "unlimited": "onbeperkt",
-        "warning_units": "Je hebt nog :remaining unitplaatsen op je formule.",
-        "critical_units": "Je unitlimiet is bereikt. Upgrade je formule om meer units toe te voegen.",
-        "warning_users": "Je hebt nog :remaining licenties over op je formule.",
-        "critical_users": "Je licentielimiet is bereikt. Upgrade je formule om meer collega's of uitvoerders toe te voegen.",
-        "cta": "Bekijk abonnement"
+    "winprox_5_time": {
+      "name": "5 licenties + Time (prikklok)",
+      "price": "59€ / maand",
+      "scale": "59€ per maand. Maandelijks te betalen via Stripe.",
+      "features": [
+        "50 units en 10 documenten. Locaties en foto's onbeperkt.",
+        "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+      ]
     },
-    "plans": {
-        "trial": {
-            "name": "Proefperiode"
-        },
-        "winprox_5": {
-            "name": "5 licenties",
-            "price": "59€ / maand",
-            "scale": "59€ per maand. Maandelijks te betalen via Stripe.",
-            "features": [
-                "50 units en 10 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
-            ]
-        },
-        "winprox_5_time": {
-            "name": "5 licenties + Time (prikklok)",
-            "price": "59€ / maand",
-            "scale": "59€ per maand. Maandelijks te betalen via Stripe.",
-            "features": [
-                "50 units en 10 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
-            ]
-        },
-        "winprox_10": {
-            "name": "10 licenties",
-            "price": "99€ / maand",
-            "scale": "99€ per maand. Maandelijks te betalen via Stripe.",
-            "features": [
-                "100 units en 20 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
-            ]
-        },
-        "winprox_10_time": {
-            "name": "10 licenties + Time (prikklok)",
-            "price": "99€ / maand",
-            "scale": "99€ per maand. Maandelijks te betalen via Stripe.",
-            "features": [
-                "100 units en 20 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
-            ]
-        },
-        "winprox_25": {
-            "name": "25 licenties",
-            "price": "199€ / maand",
-            "scale": "199€ per maand. Maandelijks te betalen via Stripe.",
-            "features": [
-                "250 units en 30 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
-            ]
-        },
-        "winprox_25_time": {
-            "name": "25 licenties + Time (prikklok)",
-            "price": "199€ / maand",
-            "scale": "199€ per maand. Maandelijks te betalen via Stripe.",
-            "features": [
-                "250 units en 30 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
-            ]
-        },
-        "winprox_50": {
-            "name": "50 licenties",
-            "price": "349€ / maand",
-            "scale": "349€ per maand. Maandelijks te betalen via Stripe.",
-            "features": [
-                "500 units en 40 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
-            ]
-        },
-        "winprox_50_time": {
-            "name": "50 licenties + Time (prikklok)",
-            "price": "349€ / maand",
-            "scale": "349€ per maand. Maandelijks te betalen via Stripe.",
-            "features": [
-                "500 units en 40 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
-            ]
-        },
-        "winprox_100": {
-            "name": "100 licenties",
-            "price": "Op maat",
-            "scale": "Vanaf 100 licenties: WinProx Corporate.",
-            "features": [
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
-            ]
-        },
-        "winprox_100_time": {
-            "name": "100 licenties + Time (prikklok)",
-            "price": "Op maat",
-            "scale": "Vanaf 100 licenties: WinProx Corporate.",
-            "features": [
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
-            ]
-        },
-        "facility_10": {
-            "name": "10 units",
-            "price": "€99 / maand",
-            "scale": "Tot 10 units en 10 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "Geen IoT, ESG of API."
-            ]
-        },
-        "facility_25": {
-            "name": "25 units",
-            "price": "€129 / maand",
-            "scale": "Tot 25 units en 25 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "Geen IoT, ESG of API."
-            ]
-        },
-        "facility_50": {
-            "name": "50 units",
-            "price": "€179 / maand",
-            "scale": "Tot 50 units en 50 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "Geen IoT, ESG of API."
-            ]
-        },
-        "facility_100": {
-            "name": "100 units",
-            "price": "€249 / maand",
-            "scale": "Tot 100 units en 100 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "Geen IoT, ESG of API."
-            ]
-        },
-        "facility_250": {
-            "name": "250 units",
-            "price": "€399 / maand",
-            "scale": "Tot 250 units en 250 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "IoT Connect en ESG inbegrepen.",
-                "Geen API of webhooks."
-            ]
-        },
-        "facility_500": {
-            "name": "500 units",
-            "price": "€599 / maand",
-            "scale": "Tot 500 units en 500 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "IoT Connect en ESG inbegrepen.",
-                "Geen API of webhooks."
-            ]
-        },
-        "facility_1000": {
-            "name": "1.000 units",
-            "price": "€999 / maand",
-            "scale": "Tot 1.000 units en 1.000 documenten.",
-            "features": [
-                "Time inbegrepen.",
-                "IoT Connect en ESG inbegrepen.",
-                "Geen API of webhooks."
-            ]
-        },
-        "corporate": {
-            "name": "WinProx Corporate",
-            "price": "Prijs op maat",
-            "scale": "Vanaf 100 licenties, of API/webhooks/integraties nodig.",
-            "features": [
-                "Prikklok, uurrooster, CIAO (RSZ), IoT Connect, ESG en API inbegrepen.",
-                "Volledige REST API en webhooks.",
-                "Integraties, SLA en support op maat."
-            ]
-        },
-        "checkmate": {
-            "name": "WinProx Checkmate"
-        },
-        "checkmate_trial": {
-            "name": "WinProx Checkmate (proef)"
-        }
+    "winprox_10": {
+      "name": "10 licenties",
+      "price": "99€ / maand",
+      "scale": "99€ per maand. Maandelijks te betalen via Stripe.",
+      "features": [
+        "100 units en 20 documenten. Locaties en foto's onbeperkt.",
+        "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+      ]
     },
-    "stripe": {
-        "activated": "Bedankt! Je betaling is ontvangen; je abonnement wordt zo actief (ververs indien nodig).",
-        "not_configured": "Online betalen is nog niet geconfigureerd. Neem contact op met WinProx of probeer later opnieuw.",
-        "simulated_hint": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling).",
-        "checkout_cancelled": "Checkout geannuleerd. Je kunt later opnieuw een formule kiezen.",
-        "return_unconfirmed": "We konden het betalingsresultaat hier niet bevestigen. Als je net betaald hebt, wordt je status zo bijgewerkt — ververs de pagina.",
-        "checkout_failed": "Stripe Checkout mislukt: :detail"
+    "winprox_10_time": {
+      "name": "10 licenties + Time (prikklok)",
+      "price": "99€ / maand",
+      "scale": "99€ per maand. Maandelijks te betalen via Stripe.",
+      "features": [
+        "100 units en 20 documenten. Locaties en foto's onbeperkt.",
+        "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+      ]
     },
-    "stripe_notice_live": "Betaling en verlenging verlopen via Stripe.",
-    "stripe_notice_simulated": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling).",
-    "errors": {
-        "plan_required": "Kies een formule.",
-        "plan_invalid": "Deze formule is niet beschikbaar.",
-        "admin_only": "Alleen een beheerder kan een abonnement kiezen.",
-        "activation_disabled": "Zelf-activeren is uitgeschakeld. Neem contact op met WinProx.",
-        "csv_workers_not_allowed": "CSV/Excel worker-import is niet beschikbaar op dit abonnement.",
-        "csv_units_not_allowed": "CSV/Excel unit-import vereist een betaald abonnement.",
-        "corporate_contact": "Corporate wordt op maat geactiveerd. Neem contact op met WinProx.",
-        "csv_locations_not_allowed": "CSV/Excel locatie-import vereist een betaald abonnement."
+    "winprox_25": {
+      "name": "25 licenties",
+      "price": "199€ / maand",
+      "scale": "199€ per maand. Maandelijks te betalen via Stripe.",
+      "features": [
+        "250 units en 30 documenten. Locaties en foto's onbeperkt.",
+        "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+      ]
     },
-    "status_module_iot": "IoT Connect actief op je account.",
-    "purge": {
-        "title": "Organisatiegegevens verwijderen",
-        "intro": "Verwijder alle gegevens van deze organisatie uit WinProx. Dit is onomkeerbaar (mediabestanden worden niet in de herstel-snapshot bewaard).",
-        "export_link": "Export via Instellingen → Privacy & export van gegevens",
-        "export_ack": "Ik heb de exportmogelijkheid gezien of gedownload (Instellingen)",
-        "password_label": "Bevestig met je wachtwoord",
-        "start": "Verwijdering starten",
-        "cancel": "Verwijdering annuleren",
-        "execute_trial": "Alles definitief verwijderen",
-        "execute_paid": "Verwijdering nu uitvoeren (WinProx-administratie)",
-        "trial_hint": "Na starten ontvangen alle beheerders een bevestigingsmail. Pas na bevestiging via de link kun je wissen. Er wordt eerst een SQL-snapshot zonder media gemaakt.",
-        "paid_hint": "Na e-mailbevestiging volgt een cool-down van 7 dagen. WinProx-administratie voert de verwijdering uit op het geplande tijdstip. Er wordt eerst een SQL-snapshot zonder media gemaakt.",
-        "status_awaiting_email": "Bevestigingsmail verzonden naar alle beheerders. Open de link in die mail om te bevestigen.",
-        "status_ready": "E-mailbevestiging ontvangen. Je kunt de gegevens nu definitief verwijderen.",
-        "status_scheduled": "Het verwijderen van de gegevens wordt doorgvoerd op :date (:timezone) door WinProx-administratie.",
-        "days_remaining": "Nog :days dagen tot verwijderen van de gegevens.",
-        "email_confirmed_checkbox": "Verwijderen bevestigd via e-mail",
-        "email_confirmed": "E-mailbevestiging gelukt.",
-        "started": "Bevestigingsmail verzonden naar alle beheerders.",
-        "cancelled": "Verwijderingsaanvraag geannuleerd.",
-        "completed": "Organisatiegegevens zijn verwijderd.",
-        "completed_superuser": "Tenant-gegevens zijn verwijderd.",
-        "confirm_start": "Verwijderingsprocedure starten? U krijgt een bevestigingsmail.",
-        "confirm_cancel": "Verwijderingsaanvraag annuleren?",
-        "confirm_execute": "Alle gegevens definitief verwijderen? Dit kan niet ongedaan worden gemaakt.",
-        "confirm_execute_superuser": "Tenant nu wissen? Snapshot zonder media wordt eerst opgeslagen.",
-        "banner": "Nog :days dagen tot verwijderen van de gegevens (gepland :date).",
-        "banner_link": "Bekijk / annuleer",
-        "errors": {
-            "admin_only": "Alleen een beheerder kan dit doen.",
-            "export_required": "Bevestig dat je de exportmogelijkheid hebt gezien.",
-            "password": "Wachtwoord is onjuist.",
-            "password_required": "Wachtwoord is verplicht.",
-            "already_open": "Er loopt al een verwijderingsaanvraag.",
-            "not_awaiting_email": "Deze aanvraag wacht niet op e-mailbevestiging.",
-            "token_expired": "De bevestigingslink is verlopen.",
-            "token_invalid": "Ongeldige bevestigingslink.",
-            "not_open": "Er is geen openstaande verwijderingsaanvraag.",
-            "tenant_missing": "Organisatie niet gevonden.",
-            "email_not_confirmed": "Bevestig eerst via de e-maillink.",
-            "superuser_only": "Alleen WinProx-administratie kan dit uitvoeren.",
-            "not_scheduled": "Deze aanvraag is niet gepland.",
-            "cooldown_active": "Cool-down actief tot :date.",
-            "generic": "Verwijdering mislukt.",
-            "too_many_password_attempts": "Te veel foute wachtwoordpogingen. Je bent uitgelogd. Log opnieuw in om verder te gaan."
-        },
-        "status_scheduled_expired_trial": "Zonder abonnement worden de organisatiegegevens automatisch verwijderd op :date (:timezone).",
-        "expired_trial_subscribe_hint": "Activeer een abonnement om dit te stoppen, of exporteer eerst je gegevens via Instellingen.",
-        "banner_expired_trial": "Nog :days dagen tot automatische verwijdering van de gegevens (gepland :date). Abonneer om te behouden."
+    "winprox_25_time": {
+      "name": "25 licenties + Time (prikklok)",
+      "price": "199€ / maand",
+      "scale": "199€ per maand. Maandelijks te betalen via Stripe.",
+      "features": [
+        "250 units en 30 documenten. Locaties en foto's onbeperkt.",
+        "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+      ]
     },
-    "comparison_heading": "Vergelijking",
-    "comparison_col_plan": "Formule",
-    "comparison_col_price": "Prijs",
-    "comparison_col_units": "Units",
-    "comparison_col_documents": "Documenten",
-    "comparison_col_iot": "IoT + ESG",
-    "comparison_col_api": "API",
-    "comparison_yes": "Ja",
-    "comparison_included": "Inclusief",
-    "comparison_no": "Nee",
-    "comparison_custom": "Op maat",
-    "comparison_trial_price": "Gratis",
-    "comparison_notes": {
-        "trial": "Proefperiode: 5 licenties, 50 units en 10 documenten (zelfde als de 5-licentiesformule). Daarna maandelijks via Stripe.",
-        "unlimited": "Units = 10× je licenties (50 / 100 / 250 / 500). Documenten 10 / 20 / 30 / 40. Locaties en foto's onbeperkt.",
-        "corporate": "IoT, ESG en API: uitsluitend WinProx Corporate (vanaf 100 licenties)."
+    "winprox_50": {
+      "name": "50 licenties",
+      "price": "349€ / maand",
+      "scale": "349€ per maand. Maandelijks te betalen via Stripe.",
+      "features": [
+        "500 units en 40 documenten. Locaties en foto's onbeperkt.",
+        "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+      ]
     },
-    "contact_sales_cta": "Neem contact op",
-    "public_contact_cta": "Vraag offerte aan",
-    "contact_sales_subject": "WinProx Corporate — offerte",
-    "comparison_col_time": "Time (prikklok)",
-    "comparison_time_optional": "Optioneel",
-    "time_addon": {
-        "label": "Time (prikklok)",
-        "monthly": ":price / maand",
-        "hint": "In-, uitklokken en pauze. Inbegrepen in elke WinProx-formule.",
-        "public_hint": "Time (prikklok) is inbegrepen in elke WinProx-formule."
+    "winprox_50_time": {
+      "name": "50 licenties + Time (prikklok)",
+      "price": "349€ / maand",
+      "scale": "349€ per maand. Maandelijks te betalen via Stripe.",
+      "features": [
+        "500 units en 40 documenten. Locaties en foto's onbeperkt.",
+        "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+      ]
     },
-    "comparison_col_seats": "Licenties",
-    "payment_notice": "Maandelijks te betalen via Stripe. Corporate op maat (geen online checkout).",
-    "prices_excl_vat": "Alle getoonde prijzen zijn exclusief btw.",
-    "seats": {
-        "title": "Aantal uitvoerders (seats)",
-        "current": "Actief op dit moment: :count",
-        "billed_next_period": "Wijziging geldt meteen en wordt gefactureerd vanaf de volgende periode.",
-        "save": "Opslaan",
-        "saved": "Aantal seats bijgewerkt.",
-        "qty_required": "Vul een aantal in.",
-        "qty_invalid": "Vul een geldig aantal in (1-500).",
-        "below_active": "Je kan niet onder de :active actieve seats zakken — deactiveer eerst uitvoerders.",
-        "not_editable": "Dit plan heeft geen instelbaar aantal seats."
+    "winprox_100": {
+      "name": "100 licenties",
+      "price": "Op maat",
+      "scale": "Vanaf 100 licenties: WinProx Corporate.",
+      "features": [
+        "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+      ]
+    },
+    "winprox_100_time": {
+      "name": "100 licenties + Time (prikklok)",
+      "price": "Op maat",
+      "scale": "Vanaf 100 licenties: WinProx Corporate.",
+      "features": [
+        "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+      ]
+    },
+    "facility_10": {
+      "name": "10 units",
+      "price": "€99 / maand",
+      "scale": "Tot 10 units en 10 documenten.",
+      "features": [
+        "Time inbegrepen.",
+        "Geen IoT, ESG of API."
+      ]
+    },
+    "facility_25": {
+      "name": "25 units",
+      "price": "€129 / maand",
+      "scale": "Tot 25 units en 25 documenten.",
+      "features": [
+        "Time inbegrepen.",
+        "Geen IoT, ESG of API."
+      ]
+    },
+    "facility_50": {
+      "name": "50 units",
+      "price": "€179 / maand",
+      "scale": "Tot 50 units en 50 documenten.",
+      "features": [
+        "Time inbegrepen.",
+        "Geen IoT, ESG of API."
+      ]
+    },
+    "facility_100": {
+      "name": "100 units",
+      "price": "€249 / maand",
+      "scale": "Tot 100 units en 100 documenten.",
+      "features": [
+        "Time inbegrepen.",
+        "Geen IoT, ESG of API."
+      ]
+    },
+    "facility_250": {
+      "name": "250 units",
+      "price": "€399 / maand",
+      "scale": "Tot 250 units en 250 documenten.",
+      "features": [
+        "Time inbegrepen.",
+        "IoT Connect en ESG inbegrepen.",
+        "Geen API of webhooks."
+      ]
+    },
+    "facility_500": {
+      "name": "500 units",
+      "price": "€599 / maand",
+      "scale": "Tot 500 units en 500 documenten.",
+      "features": [
+        "Time inbegrepen.",
+        "IoT Connect en ESG inbegrepen.",
+        "Geen API of webhooks."
+      ]
+    },
+    "facility_1000": {
+      "name": "1.000 units",
+      "price": "€999 / maand",
+      "scale": "Tot 1.000 units en 1.000 documenten.",
+      "features": [
+        "Time inbegrepen.",
+        "IoT Connect en ESG inbegrepen.",
+        "Geen API of webhooks."
+      ]
+    },
+    "corporate": {
+      "name": "WinProx Corporate",
+      "price": "Prijs op maat",
+      "scale": "Vanaf 100 licenties, of API/webhooks/integraties nodig.",
+      "features": [
+        "Prikklok, uurrooster, CIAO (RSZ), IoT Connect, ESG en API inbegrepen.",
+        "Volledige REST API en webhooks.",
+        "Integraties, SLA en support op maat."
+      ]
+    },
+    "checkmate": {
+      "name": "WinProx Checkmate",
+      "price": "€5 per uitvoerder / maand",
+      "scale": "€5 per actieve uitvoerder per maand. Aantal seats zelf instelbaar.",
+      "features": [
+        "Klanten en werkadressen met GPS-verificatie (100 m).",
+        "Inklokken, pauzes en klantbezoeken via de gsm.",
+        "CIAO (RSZ)-aanwezigheidsregistratie inbegrepen."
+      ]
+    },
+    "checkmate_trial": {
+      "name": "WinProx Checkmate (proef)"
     }
+  },
+  "stripe": {
+    "activated": "Bedankt! Je betaling is ontvangen; je abonnement wordt zo actief (ververs indien nodig).",
+    "not_configured": "Online betalen is nog niet geconfigureerd. Neem contact op met WinProx of probeer later opnieuw.",
+    "simulated_hint": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling).",
+    "checkout_cancelled": "Checkout geannuleerd. Je kunt later opnieuw een formule kiezen.",
+    "return_unconfirmed": "We konden het betalingsresultaat hier niet bevestigen. Als je net betaald hebt, wordt je status zo bijgewerkt — ververs de pagina.",
+    "checkout_failed": "Stripe Checkout mislukt: :detail"
+  },
+  "stripe_notice_live": "Betaling en verlenging verlopen via Stripe.",
+  "stripe_notice_simulated": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling).",
+  "errors": {
+    "plan_required": "Kies een formule.",
+    "plan_invalid": "Deze formule is niet beschikbaar.",
+    "admin_only": "Alleen een beheerder kan een abonnement kiezen.",
+    "activation_disabled": "Zelf-activeren is uitgeschakeld. Neem contact op met WinProx.",
+    "csv_workers_not_allowed": "CSV/Excel worker-import is niet beschikbaar op dit abonnement.",
+    "csv_units_not_allowed": "CSV/Excel unit-import vereist een betaald abonnement.",
+    "corporate_contact": "Corporate wordt op maat geactiveerd. Neem contact op met WinProx.",
+    "csv_locations_not_allowed": "CSV/Excel locatie-import vereist een betaald abonnement."
+  },
+  "status_module_iot": "IoT Connect actief op je account.",
+  "purge": {
+    "title": "Organisatiegegevens verwijderen",
+    "intro": "Verwijder alle gegevens van deze organisatie uit WinProx. Dit is onomkeerbaar (mediabestanden worden niet in de herstel-snapshot bewaard).",
+    "export_link": "Export via Instellingen → Privacy & export van gegevens",
+    "export_ack": "Ik heb de exportmogelijkheid gezien of gedownload (Instellingen)",
+    "password_label": "Bevestig met je wachtwoord",
+    "start": "Verwijdering starten",
+    "cancel": "Verwijdering annuleren",
+    "execute_trial": "Alles definitief verwijderen",
+    "execute_paid": "Verwijdering nu uitvoeren (WinProx-administratie)",
+    "trial_hint": "Na starten ontvangen alle beheerders een bevestigingsmail. Pas na bevestiging via de link kun je wissen. Er wordt eerst een SQL-snapshot zonder media gemaakt.",
+    "paid_hint": "Na e-mailbevestiging volgt een cool-down van 7 dagen. WinProx-administratie voert de verwijdering uit op het geplande tijdstip. Er wordt eerst een SQL-snapshot zonder media gemaakt.",
+    "status_awaiting_email": "Bevestigingsmail verzonden naar alle beheerders. Open de link in die mail om te bevestigen.",
+    "status_ready": "E-mailbevestiging ontvangen. Je kunt de gegevens nu definitief verwijderen.",
+    "status_scheduled": "Het verwijderen van de gegevens wordt doorgvoerd op :date (:timezone) door WinProx-administratie.",
+    "days_remaining": "Nog :days dagen tot verwijderen van de gegevens.",
+    "email_confirmed_checkbox": "Verwijderen bevestigd via e-mail",
+    "email_confirmed": "E-mailbevestiging gelukt.",
+    "started": "Bevestigingsmail verzonden naar alle beheerders.",
+    "cancelled": "Verwijderingsaanvraag geannuleerd.",
+    "completed": "Organisatiegegevens zijn verwijderd.",
+    "completed_superuser": "Tenant-gegevens zijn verwijderd.",
+    "confirm_start": "Verwijderingsprocedure starten? U krijgt een bevestigingsmail.",
+    "confirm_cancel": "Verwijderingsaanvraag annuleren?",
+    "confirm_execute": "Alle gegevens definitief verwijderen? Dit kan niet ongedaan worden gemaakt.",
+    "confirm_execute_superuser": "Tenant nu wissen? Snapshot zonder media wordt eerst opgeslagen.",
+    "banner": "Nog :days dagen tot verwijderen van de gegevens (gepland :date).",
+    "banner_link": "Bekijk / annuleer",
+    "errors": {
+      "admin_only": "Alleen een beheerder kan dit doen.",
+      "export_required": "Bevestig dat je de exportmogelijkheid hebt gezien.",
+      "password": "Wachtwoord is onjuist.",
+      "password_required": "Wachtwoord is verplicht.",
+      "already_open": "Er loopt al een verwijderingsaanvraag.",
+      "not_awaiting_email": "Deze aanvraag wacht niet op e-mailbevestiging.",
+      "token_expired": "De bevestigingslink is verlopen.",
+      "token_invalid": "Ongeldige bevestigingslink.",
+      "not_open": "Er is geen openstaande verwijderingsaanvraag.",
+      "tenant_missing": "Organisatie niet gevonden.",
+      "email_not_confirmed": "Bevestig eerst via de e-maillink.",
+      "superuser_only": "Alleen WinProx-administratie kan dit uitvoeren.",
+      "not_scheduled": "Deze aanvraag is niet gepland.",
+      "cooldown_active": "Cool-down actief tot :date.",
+      "generic": "Verwijdering mislukt.",
+      "too_many_password_attempts": "Te veel foute wachtwoordpogingen. Je bent uitgelogd. Log opnieuw in om verder te gaan."
+    },
+    "status_scheduled_expired_trial": "Zonder abonnement worden de organisatiegegevens automatisch verwijderd op :date (:timezone).",
+    "expired_trial_subscribe_hint": "Activeer een abonnement om dit te stoppen, of exporteer eerst je gegevens via Instellingen.",
+    "banner_expired_trial": "Nog :days dagen tot automatische verwijdering van de gegevens (gepland :date). Abonneer om te behouden."
+  },
+  "comparison_heading": "Vergelijking",
+  "comparison_col_plan": "Formule",
+  "comparison_col_price": "Prijs",
+  "comparison_col_units": "Units",
+  "comparison_col_documents": "Documenten",
+  "comparison_col_iot": "IoT + ESG",
+  "comparison_col_api": "API",
+  "comparison_yes": "Ja",
+  "comparison_included": "Inclusief",
+  "comparison_no": "Nee",
+  "comparison_custom": "Op maat",
+  "comparison_trial_price": "Gratis",
+  "comparison_notes": {
+    "trial": "Proefperiode: 5 licenties, 50 units en 10 documenten (zelfde als de 5-licentiesformule). Daarna maandelijks via Stripe.",
+    "unlimited": "Units = 10× je licenties (50 / 100 / 250 / 500). Documenten 10 / 20 / 30 / 40. Locaties en foto's onbeperkt.",
+    "corporate": "IoT, ESG en API: uitsluitend WinProx Corporate (vanaf 100 licenties)."
+  },
+  "contact_sales_cta": "Neem contact op",
+  "public_contact_cta": "Vraag offerte aan",
+  "contact_sales_subject": "WinProx Corporate — offerte",
+  "comparison_col_time": "Time (prikklok)",
+  "comparison_time_optional": "Optioneel",
+  "time_addon": {
+    "label": "Time (prikklok)",
+    "monthly": ":price / maand",
+    "hint": "In-, uitklokken en pauze. Inbegrepen in elke WinProx-formule.",
+    "public_hint": "Time (prikklok) is inbegrepen in elke WinProx-formule."
+  },
+  "comparison_col_seats": "Licenties",
+  "payment_notice": "Maandelijks te betalen via Stripe. Corporate op maat (geen online checkout).",
+  "prices_excl_vat": "Alle getoonde prijzen zijn exclusief btw.",
+  "seats": {
+    "title": "Aantal uitvoerders (seats)",
+    "current": "Actief op dit moment: :count",
+    "billed_next_period": "Wijziging geldt meteen en wordt gefactureerd vanaf de volgende periode.",
+    "save": "Opslaan",
+    "saved": "Aantal seats bijgewerkt.",
+    "qty_required": "Vul een aantal in.",
+    "qty_invalid": "Vul een geldig aantal in (1-500).",
+    "below_active": "Je kan niet onder de :active actieve seats zakken — deactiveer eerst uitvoerders.",
+    "not_editable": "Dit plan heeft geen instelbaar aantal seats."
+  }
 }

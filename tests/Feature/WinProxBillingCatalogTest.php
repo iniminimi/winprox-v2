@@ -104,7 +104,7 @@ it('houdt Time-plan-variant beschikbaar buiten de catalogus', function () {
         ->and($tenant->hasTimeModule())->toBeTrue()
         ->and($tenant->hasIotModule())->toBeFalse()
         ->and(BillingCatalogViewData::catalogPlanFor('winprox_50_time'))->toBe('winprox_50')
-        ->and(BillingCatalogViewData::publicPlanKeys())->toBe(['winprox_5', 'winprox_10', 'winprox_25', 'winprox_50', 'corporate']);
+        ->and(BillingCatalogViewData::publicPlanKeys())->toBe(['winprox_5', 'winprox_10', 'winprox_25', 'winprox_50', 'corporate', 'checkmate']);
 });
 
 it('weigert self-activate van legacy facility-tiers', function () {

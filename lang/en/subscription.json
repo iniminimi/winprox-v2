@@ -1,353 +1,360 @@
 {
-    "title": "Subscription, limits & billing",
-    "public_title": "Pricing & plans",
-    "public_subtitle": "Choose your seat count. Billed monthly via Stripe. Punch clock, roster and CIAO (NSSO) included.",
-    "public_register_cta": "Start free trial",
-    "subtitle": "After your free month, pick a plan. Seats 5/10/25/50; units = 10× (50/100/250/500); documents 10/20/30/40. Locations and photos unlimited.",
-    "plans_heading": "Plans",
-    "plans_intro": "Pay monthly. 5, 10, 25 or 50 seats (colleagues + workers); units = 10× that number; documents 10/20/30/40. Locations and photos unlimited. Punch clock, roster and CIAO (NSSO) included.",
-    "glossary": {
-        "heading": "Seats, units and photos",
-        "unit": "Unit — an object or place with a QR code (machine, room, site). Each new location automatically gets a «whole location» unit. Units = 10× your seats: 50 / 100 / 250 / 500.",
-        "document": "Document — a file on the QR portal, such as a manual. Limit per plan: 10 / 20 / 30 / 40.",
-        "photo": "Photos — photos on issues and tasks are unlimited.",
-        "seat": "Seat — a colleague with login (admin or employee) or a worker (Clock Point, no login). A colleague with a linked punch-clock profile counts as one seat."
+  "title": "Subscription, limits & billing",
+  "public_title": "Pricing & plans",
+  "public_subtitle": "Choose your seat count. Billed monthly via Stripe. Punch clock, roster and CIAO (NSSO) included.",
+  "public_register_cta": "Start free trial",
+  "subtitle": "After your free month, pick a plan. Seats 5/10/25/50; units = 10× (50/100/250/500); documents 10/20/30/40. Locations and photos unlimited.",
+  "plans_heading": "Plans",
+  "plans_intro": "Pay monthly. 5, 10, 25 or 50 seats (colleagues + workers); units = 10× that number; documents 10/20/30/40. Locations and photos unlimited. Punch clock, roster and CIAO (NSSO) included.",
+  "glossary": {
+    "heading": "Seats, units and photos",
+    "unit": "Unit — an object or place with a QR code (machine, room, site). Each new location automatically gets a «whole location» unit. Units = 10× your seats: 50 / 100 / 250 / 500.",
+    "document": "Document — a file on the QR portal, such as a manual. Limit per plan: 10 / 20 / 30 / 40.",
+    "photo": "Photos — photos on issues and tasks are unlimited.",
+    "seat": "Seat — a colleague with login (admin or employee) or a worker (Clock Point, no login). A colleague with a linked punch-clock profile counts as one seat."
+  },
+  "choose_plan": "Choose this plan",
+  "choose_plan_loading": "Choosing...",
+  "activate_plan": "Choose this plan",
+  "current_plan": "Current plan",
+  "admin_required": "Only an administrator can choose a subscription. Contact your organisation's administrator.",
+  "activated": "You chose :plan. Your subscription is active for the configured period.",
+  "facility_not_included": "Issues, tasks and calendar require WinProx Facility or Corporate. Upgrade your plan to unlock facility workflows.",
+  "status_heading": "Current status",
+  "status_legacy": "Your organisation does not use trial tracking yet (legacy account). All features remain available.",
+  "status_trial": "Trial with :plan active until :date.",
+  "status_active": "Active subscription: :plan, valid until :date.",
+  "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
+  "status_expired": "Your trial has ended. Choose a plan below to continue.",
+  "pricing_intro": "Free trial month (5 seats, 50 units, 10 documents — same as the entry plan). Then 5/10/25/50 seats. Billed monthly via Stripe.",
+  "status_module_esg": "ESG module active on your account.",
+  "status_module_time": "Time (punch clock) is active on your account.",
+  "page_limits_title": "Why certain actions are unavailable",
+  "page_limits_units_body": "You are using :current of :max units. \"Add unit\" stays disabled until you upgrade.",
+  "page_limits_locations_body": "You are using :current of :max locations. \"Add location\" stays disabled until you upgrade.",
+  "page_limits_users_body": "You are using :current of :max seats (colleagues + workers) on your plan. Do not add more people until you upgrade.",
+  "page_limits_documents_body": "Your organisation is using :current of :max documents. Delete a document or upgrade your plan to upload more.",
+  "page_limits_photos_body": "Your organisation is using :current of :max photos. Delete photos or upgrade your plan to upload more.",
+  "manage_in_stripe": "Manage subscription (invoice, payment method)",
+  "legal_footer_intro": "Your account is subject to, among others:",
+  "legal_terms": "Terms of service",
+  "legal_privacy": "Privacy",
+  "legal_dpa": "DPA",
+  "status": {
+    "title": "Status",
+    "access": "App access",
+    "access_ok": "Active",
+    "access_blocked": "Blocked",
+    "trial": "Trial period",
+    "trial_days": ":days days remaining",
+    "plan": "Plan",
+    "active_until": "Valid until",
+    "usage": "Usage",
+    "usage_counts": ":units units · :users users"
+  },
+  "limits": {
+    "units": ":count units",
+    "users": ":count seats",
+    "unlimited": "unlimited",
+    "warning_units": "You have :remaining unit slots left in your plan.",
+    "critical_units": "Your unit limit is reached. Upgrade your plan to add more units.",
+    "warning_users": "You have :remaining seats left on your plan.",
+    "critical_users": "Your seat limit is reached. Upgrade your plan to add more colleagues or workers.",
+    "cta": "View subscription"
+  },
+  "plans": {
+    "trial": {
+      "name": "Trial"
     },
-    "choose_plan": "Choose this plan",
-    "choose_plan_loading": "Choosing...",
-    "activate_plan": "Choose this plan",
-    "current_plan": "Current plan",
-    "admin_required": "Only an administrator can choose a subscription. Contact your organisation's administrator.",
-    "activated": "You chose :plan. Your subscription is active for the configured period.",
-    "facility_not_included": "Issues, tasks and calendar require WinProx Facility or Corporate. Upgrade your plan to unlock facility workflows.",
-    "status_heading": "Current status",
-    "status_legacy": "Your organisation does not use trial tracking yet (legacy account). All features remain available.",
-    "status_trial": "Trial with :plan active until :date.",
-    "status_active": "Active subscription: :plan, valid until :date.",
-    "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
-    "status_expired": "Your trial has ended. Choose a plan below to continue.",
-    "pricing_intro": "Free trial month (5 seats, 50 units, 10 documents — same as the entry plan). Then 5/10/25/50 seats. Billed monthly via Stripe.",
-    "status_module_esg": "ESG module active on your account.",
-    "status_module_time": "Time (punch clock) is active on your account.",
-    "page_limits_title": "Why certain actions are unavailable",
-    "page_limits_units_body": "You are using :current of :max units. \"Add unit\" stays disabled until you upgrade.",
-    "page_limits_locations_body": "You are using :current of :max locations. \"Add location\" stays disabled until you upgrade.",
-    "page_limits_users_body": "You are using :current of :max seats (colleagues + workers) on your plan. Do not add more people until you upgrade.",
-    "page_limits_documents_body": "Your organisation is using :current of :max documents. Delete a document or upgrade your plan to upload more.",
-    "page_limits_photos_body": "Your organisation is using :current of :max photos. Delete photos or upgrade your plan to upload more.",
-    "manage_in_stripe": "Manage subscription (invoice, payment method)",
-    "legal_footer_intro": "Your account is subject to, among others:",
-    "legal_terms": "Terms of service",
-    "legal_privacy": "Privacy",
-    "legal_dpa": "DPA",
-    "status": {
-        "title": "Status",
-        "access": "App access",
-        "access_ok": "Active",
-        "access_blocked": "Blocked",
-        "trial": "Trial period",
-        "trial_days": ":days days remaining",
-        "plan": "Plan",
-        "active_until": "Valid until",
-        "usage": "Usage",
-        "usage_counts": ":units units · :users users"
+    "winprox_5": {
+      "name": "5 seats",
+      "price": "€59 / month",
+      "scale": "€59 per month. Billed monthly via Stripe.",
+      "features": [
+        "50 units and 10 documents. Locations and photos unlimited.",
+        "Punch clock, roster and CIAO (NSSO) included."
+      ]
     },
-    "limits": {
-        "units": ":count units",
-        "users": ":count seats",
-        "unlimited": "unlimited",
-        "warning_units": "You have :remaining unit slots left in your plan.",
-        "critical_units": "Your unit limit is reached. Upgrade your plan to add more units.",
-        "warning_users": "You have :remaining seats left on your plan.",
-        "critical_users": "Your seat limit is reached. Upgrade your plan to add more colleagues or workers.",
-        "cta": "View subscription"
+    "winprox_5_time": {
+      "name": "5 seats + Time (punch clock)",
+      "price": "€59 / month",
+      "scale": "€59 per month. Billed monthly via Stripe.",
+      "features": [
+        "50 units and 10 documents. Locations and photos unlimited.",
+        "Punch clock, roster and CIAO (NSSO) included."
+      ]
     },
-    "plans": {
-        "trial": {
-            "name": "Trial"
-        },
-        "winprox_5": {
-            "name": "5 seats",
-            "price": "€59 / month",
-            "scale": "€59 per month. Billed monthly via Stripe.",
-            "features": [
-                "50 units and 10 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
-            ]
-        },
-        "winprox_5_time": {
-            "name": "5 seats + Time (punch clock)",
-            "price": "€59 / month",
-            "scale": "€59 per month. Billed monthly via Stripe.",
-            "features": [
-                "50 units and 10 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
-            ]
-        },
-        "winprox_10": {
-            "name": "10 seats",
-            "price": "€99 / month",
-            "scale": "€99 per month. Billed monthly via Stripe.",
-            "features": [
-                "100 units and 20 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
-            ]
-        },
-        "winprox_10_time": {
-            "name": "10 seats + Time (punch clock)",
-            "price": "€99 / month",
-            "scale": "€99 per month. Billed monthly via Stripe.",
-            "features": [
-                "100 units and 20 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
-            ]
-        },
-        "winprox_25": {
-            "name": "25 seats",
-            "price": "€199 / month",
-            "scale": "€199 per month. Billed monthly via Stripe.",
-            "features": [
-                "250 units and 30 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
-            ]
-        },
-        "winprox_25_time": {
-            "name": "25 seats + Time (punch clock)",
-            "price": "€199 / month",
-            "scale": "€199 per month. Billed monthly via Stripe.",
-            "features": [
-                "250 units and 30 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
-            ]
-        },
-        "winprox_50": {
-            "name": "50 seats",
-            "price": "€349 / month",
-            "scale": "€349 per month. Billed monthly via Stripe.",
-            "features": [
-                "500 units and 40 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
-            ]
-        },
-        "winprox_50_time": {
-            "name": "50 seats + Time (punch clock)",
-            "price": "€349 / month",
-            "scale": "€349 per month. Billed monthly via Stripe.",
-            "features": [
-                "500 units and 40 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
-            ]
-        },
-        "winprox_100": {
-            "name": "100 seats",
-            "price": "Custom",
-            "scale": "From 100 seats: WinProx Corporate.",
-            "features": [
-                "Punch clock, roster, CIAO (NSSO) included."
-            ]
-        },
-        "winprox_100_time": {
-            "name": "100 seats + Time (punch clock)",
-            "price": "Custom",
-            "scale": "From 100 seats: WinProx Corporate.",
-            "features": [
-                "Punch clock, roster, CIAO (NSSO) included."
-            ]
-        },
-        "facility_10": {
-            "name": "10 units",
-            "price": "€99 / month",
-            "scale": "Up to 10 units and 10 documents.",
-            "features": [
-                "Time included.",
-                "No IoT, ESG or API."
-            ]
-        },
-        "facility_25": {
-            "name": "25 units",
-            "price": "€129 / month",
-            "scale": "Up to 25 units and 25 documents.",
-            "features": [
-                "Time included.",
-                "No IoT, ESG or API."
-            ]
-        },
-        "facility_50": {
-            "name": "50 units",
-            "price": "€179 / month",
-            "scale": "Up to 50 units and 50 documents.",
-            "features": [
-                "Time included.",
-                "No IoT, ESG or API."
-            ]
-        },
-        "facility_100": {
-            "name": "100 units",
-            "price": "€249 / month",
-            "scale": "Up to 100 units and 100 documents.",
-            "features": [
-                "Time included.",
-                "No IoT, ESG or API."
-            ]
-        },
-        "facility_250": {
-            "name": "250 units",
-            "price": "€399 / month",
-            "scale": "Up to 250 units and 250 documents.",
-            "features": [
-                "Time included.",
-                "IoT Connect and ESG included.",
-                "No API or webhooks."
-            ]
-        },
-        "facility_500": {
-            "name": "500 units",
-            "price": "€599 / month",
-            "scale": "Up to 500 units and 500 documents.",
-            "features": [
-                "Time included.",
-                "IoT Connect and ESG included.",
-                "No API or webhooks."
-            ]
-        },
-        "facility_1000": {
-            "name": "1,000 units",
-            "price": "€999 / month",
-            "scale": "Up to 1,000 units and 1,000 documents.",
-            "features": [
-                "Time included.",
-                "IoT Connect and ESG included.",
-                "No API or webhooks."
-            ]
-        },
-        "corporate": {
-            "name": "WinProx Corporate",
-            "price": "Custom pricing",
-            "scale": "From 100 seats, or when API/webhooks/integrations are needed.",
-            "features": [
-                "Punch clock, roster, CIAO (NSSO), IoT Connect, ESG and API included.",
-                "Full REST API and webhooks.",
-                "Integrations, SLA and support tailored to you."
-            ]
-        },
-        "checkmate": {
-            "name": "WinProx Checkmate"
-        },
-        "checkmate_trial": {
-            "name": "WinProx Checkmate (trial)"
-        }
+    "winprox_10": {
+      "name": "10 seats",
+      "price": "€99 / month",
+      "scale": "€99 per month. Billed monthly via Stripe.",
+      "features": [
+        "100 units and 20 documents. Locations and photos unlimited.",
+        "Punch clock, roster and CIAO (NSSO) included."
+      ]
     },
-    "stripe": {
-        "activated": "Thank you! Your payment was received; your subscription will be active shortly (refresh if needed).",
-        "not_configured": "Online payment is not configured yet. Contact WinProx or try again later.",
-        "simulated_hint": "Stripe is not fully configured: your choice activates the subscription period as set here (without real payment).",
-        "checkout_cancelled": "Checkout cancelled. You can choose a plan again later.",
-        "return_unconfirmed": "We could not confirm the payment result here. If you just paid, your status will update shortly — refresh the page.",
-        "checkout_failed": "Stripe Checkout failed: :detail"
+    "winprox_10_time": {
+      "name": "10 seats + Time (punch clock)",
+      "price": "€99 / month",
+      "scale": "€99 per month. Billed monthly via Stripe.",
+      "features": [
+        "100 units and 20 documents. Locations and photos unlimited.",
+        "Punch clock, roster and CIAO (NSSO) included."
+      ]
     },
-    "stripe_notice_live": "Payment and renewal run through Stripe.",
-    "stripe_notice_simulated": "Stripe is not fully configured: your choice activates the subscription period as set here (without real payment).",
-    "errors": {
-        "plan_required": "Choose a plan.",
-        "plan_invalid": "This plan is not available.",
-        "admin_only": "Only an administrator can choose a subscription.",
-        "activation_disabled": "Self-activation is disabled. Contact WinProx.",
-        "csv_workers_not_allowed": "CSV/Excel worker import is not available on this plan.",
-        "csv_units_not_allowed": "CSV/Excel unit import requires a paid plan.",
-        "corporate_contact": "Corporate is activated on a custom basis. Please contact WinProx.",
-        "csv_locations_not_allowed": "CSV/Excel location import requires a paid plan."
+    "winprox_25": {
+      "name": "25 seats",
+      "price": "€199 / month",
+      "scale": "€199 per month. Billed monthly via Stripe.",
+      "features": [
+        "250 units and 30 documents. Locations and photos unlimited.",
+        "Punch clock, roster and CIAO (NSSO) included."
+      ]
     },
-    "status_module_iot": "IoT Connect is active on your account.",
-    "purge": {
-        "title": "Delete organisation data",
-        "intro": "Delete all data for this organisation from WinProx. This cannot be undone (media files are not kept in the recovery snapshot).",
-        "export_link": "Export via Settings → Privacy & data export",
-        "export_ack": "I have seen or downloaded the export option (Settings)",
-        "password_label": "Confirm with your password",
-        "start": "Start deletion",
-        "cancel": "Cancel deletion",
-        "execute_trial": "Permanently delete everything",
-        "execute_paid": "Execute deletion now (WinProx administration)",
-        "trial_hint": "All administrators receive a confirmation email. Only after confirming via the link can you delete. A SQL snapshot without media is created first.",
-        "paid_hint": "After email confirmation there is a 7-day cool-down. WinProx administration performs the deletion at the scheduled time. A SQL snapshot without media is created first.",
-        "status_awaiting_email": "Confirmation email sent to all administrators. Open the link in that email to confirm.",
-        "status_ready": "Email confirmation received. You can permanently delete the data now.",
-        "status_scheduled": "Data deletion will be carried out on :date (:timezone) by WinProx administration.",
-        "days_remaining": ":days days left until data deletion.",
-        "email_confirmed_checkbox": "Deletion confirmed via email",
-        "email_confirmed": "Email confirmation successful.",
-        "started": "Confirmation email sent to all administrators.",
-        "cancelled": "Deletion request cancelled.",
-        "completed": "Organisation data has been deleted.",
-        "completed_superuser": "Tenant data has been deleted.",
-        "confirm_start": "Start the deletion procedure? You will receive a confirmation email.",
-        "confirm_cancel": "Cancel the deletion request?",
-        "confirm_execute": "Permanently delete all data? This cannot be undone.",
-        "confirm_execute_superuser": "Delete tenant now? A snapshot without media will be saved first.",
-        "banner": ":days days left until data deletion (scheduled :date).",
-        "banner_link": "View / cancel",
-        "errors": {
-            "admin_only": "Only an administrator can do this.",
-            "export_required": "Confirm that you have seen the export option.",
-            "password": "Incorrect password.",
-            "password_required": "Password is required.",
-            "already_open": "A deletion request is already open.",
-            "not_awaiting_email": "This request is not awaiting email confirmation.",
-            "token_expired": "The confirmation link has expired.",
-            "token_invalid": "Invalid confirmation link.",
-            "not_open": "There is no open deletion request.",
-            "tenant_missing": "Organisation not found.",
-            "email_not_confirmed": "Confirm via the email link first.",
-            "superuser_only": "Only WinProx administration can perform this.",
-            "not_scheduled": "This request is not scheduled.",
-            "cooldown_active": "Cool-down active until :date.",
-            "generic": "Deletion failed.",
-            "too_many_password_attempts": "Too many incorrect password attempts. You have been logged out. Sign in again to continue."
-        },
-        "status_scheduled_expired_trial": "Without a subscription, organisation data will be automatically deleted on :date (:timezone).",
-        "expired_trial_subscribe_hint": "Activate a subscription to stop this, or export your data first via Settings.",
-        "banner_expired_trial": ":days days left until automatic data deletion (scheduled :date). Subscribe to keep your data."
+    "winprox_25_time": {
+      "name": "25 seats + Time (punch clock)",
+      "price": "€199 / month",
+      "scale": "€199 per month. Billed monthly via Stripe.",
+      "features": [
+        "250 units and 30 documents. Locations and photos unlimited.",
+        "Punch clock, roster and CIAO (NSSO) included."
+      ]
     },
-    "comparison_heading": "Comparison",
-    "comparison_col_plan": "Plan",
-    "comparison_col_price": "Price",
-    "comparison_col_units": "Units",
-    "comparison_col_documents": "Documents",
-    "comparison_col_iot": "IoT + ESG",
-    "comparison_col_api": "API",
-    "comparison_yes": "Yes",
-    "comparison_included": "Included",
-    "comparison_no": "No",
-    "comparison_custom": "Custom",
-    "comparison_trial_price": "Free",
-    "comparison_notes": {
-        "trial": "Trial: 5 seats, 50 units and 10 documents (same as the 5-seat plan). Then billed monthly via Stripe.",
-        "unlimited": "Units = 10× your seats (50 / 100 / 250 / 500). Documents 10 / 20 / 30 / 40. Locations and photos unlimited.",
-        "corporate": "IoT, ESG and API: WinProx Corporate only (from 100 seats)."
+    "winprox_50": {
+      "name": "50 seats",
+      "price": "€349 / month",
+      "scale": "€349 per month. Billed monthly via Stripe.",
+      "features": [
+        "500 units and 40 documents. Locations and photos unlimited.",
+        "Punch clock, roster and CIAO (NSSO) included."
+      ]
     },
-    "contact_sales_cta": "Contact us",
-    "public_contact_cta": "Request a quote",
-    "contact_sales_subject": "WinProx Corporate — quote",
-    "comparison_col_time": "Time (punch clock)",
-    "comparison_time_optional": "Optional",
-    "time_addon": {
-        "label": "Time (punch clock)",
-        "monthly": ":price / month",
-        "hint": "Clock in/out and breaks. Included in every WinProx plan.",
-        "public_hint": "Time (punch clock) is included in every WinProx plan."
+    "winprox_50_time": {
+      "name": "50 seats + Time (punch clock)",
+      "price": "€349 / month",
+      "scale": "€349 per month. Billed monthly via Stripe.",
+      "features": [
+        "500 units and 40 documents. Locations and photos unlimited.",
+        "Punch clock, roster and CIAO (NSSO) included."
+      ]
     },
-    "comparison_col_seats": "Seats",
-    "payment_notice": "Billed monthly via Stripe. Corporate is custom (no online checkout).",
-    "prices_excl_vat": "All displayed prices are exclusive of VAT.",
-    "seats": {
-        "title": "Number of workers (seats)",
-        "current": "Currently active: :count",
-        "billed_next_period": "The change applies immediately and is billed from the next period.",
-        "save": "Save",
-        "saved": "Seat count updated.",
-        "qty_required": "Enter a quantity.",
-        "qty_invalid": "Enter a valid quantity (1-500).",
-        "below_active": "You cannot go below the :active active seats — deactivate workers first.",
-        "not_editable": "This plan does not have an adjustable seat count."
+    "winprox_100": {
+      "name": "100 seats",
+      "price": "Custom",
+      "scale": "From 100 seats: WinProx Corporate.",
+      "features": [
+        "Punch clock, roster, CIAO (NSSO) included."
+      ]
+    },
+    "winprox_100_time": {
+      "name": "100 seats + Time (punch clock)",
+      "price": "Custom",
+      "scale": "From 100 seats: WinProx Corporate.",
+      "features": [
+        "Punch clock, roster, CIAO (NSSO) included."
+      ]
+    },
+    "facility_10": {
+      "name": "10 units",
+      "price": "€99 / month",
+      "scale": "Up to 10 units and 10 documents.",
+      "features": [
+        "Time included.",
+        "No IoT, ESG or API."
+      ]
+    },
+    "facility_25": {
+      "name": "25 units",
+      "price": "€129 / month",
+      "scale": "Up to 25 units and 25 documents.",
+      "features": [
+        "Time included.",
+        "No IoT, ESG or API."
+      ]
+    },
+    "facility_50": {
+      "name": "50 units",
+      "price": "€179 / month",
+      "scale": "Up to 50 units and 50 documents.",
+      "features": [
+        "Time included.",
+        "No IoT, ESG or API."
+      ]
+    },
+    "facility_100": {
+      "name": "100 units",
+      "price": "€249 / month",
+      "scale": "Up to 100 units and 100 documents.",
+      "features": [
+        "Time included.",
+        "No IoT, ESG or API."
+      ]
+    },
+    "facility_250": {
+      "name": "250 units",
+      "price": "€399 / month",
+      "scale": "Up to 250 units and 250 documents.",
+      "features": [
+        "Time included.",
+        "IoT Connect and ESG included.",
+        "No API or webhooks."
+      ]
+    },
+    "facility_500": {
+      "name": "500 units",
+      "price": "€599 / month",
+      "scale": "Up to 500 units and 500 documents.",
+      "features": [
+        "Time included.",
+        "IoT Connect and ESG included.",
+        "No API or webhooks."
+      ]
+    },
+    "facility_1000": {
+      "name": "1,000 units",
+      "price": "€999 / month",
+      "scale": "Up to 1,000 units and 1,000 documents.",
+      "features": [
+        "Time included.",
+        "IoT Connect and ESG included.",
+        "No API or webhooks."
+      ]
+    },
+    "corporate": {
+      "name": "WinProx Corporate",
+      "price": "Custom pricing",
+      "scale": "From 100 seats, or when API/webhooks/integrations are needed.",
+      "features": [
+        "Punch clock, roster, CIAO (NSSO), IoT Connect, ESG and API included.",
+        "Full REST API and webhooks.",
+        "Integrations, SLA and support tailored to you."
+      ]
+    },
+    "checkmate": {
+      "name": "WinProx Checkmate",
+      "price": "€5 per worker / month",
+      "scale": "€5 per active worker per month. Seat count is adjustable.",
+      "features": [
+        "Customers and work addresses with GPS verification (100 m).",
+        "Clock in, breaks and customer visits via the phone.",
+        "CIAO (NSSO) attendance registration included."
+      ]
+    },
+    "checkmate_trial": {
+      "name": "WinProx Checkmate (trial)"
     }
+  },
+  "stripe": {
+    "activated": "Thank you! Your payment was received; your subscription will be active shortly (refresh if needed).",
+    "not_configured": "Online payment is not configured yet. Contact WinProx or try again later.",
+    "simulated_hint": "Stripe is not fully configured: your choice activates the subscription period as set here (without real payment).",
+    "checkout_cancelled": "Checkout cancelled. You can choose a plan again later.",
+    "return_unconfirmed": "We could not confirm the payment result here. If you just paid, your status will update shortly — refresh the page.",
+    "checkout_failed": "Stripe Checkout failed: :detail"
+  },
+  "stripe_notice_live": "Payment and renewal run through Stripe.",
+  "stripe_notice_simulated": "Stripe is not fully configured: your choice activates the subscription period as set here (without real payment).",
+  "errors": {
+    "plan_required": "Choose a plan.",
+    "plan_invalid": "This plan is not available.",
+    "admin_only": "Only an administrator can choose a subscription.",
+    "activation_disabled": "Self-activation is disabled. Contact WinProx.",
+    "csv_workers_not_allowed": "CSV/Excel worker import is not available on this plan.",
+    "csv_units_not_allowed": "CSV/Excel unit import requires a paid plan.",
+    "corporate_contact": "Corporate is activated on a custom basis. Please contact WinProx.",
+    "csv_locations_not_allowed": "CSV/Excel location import requires a paid plan."
+  },
+  "status_module_iot": "IoT Connect is active on your account.",
+  "purge": {
+    "title": "Delete organisation data",
+    "intro": "Delete all data for this organisation from WinProx. This cannot be undone (media files are not kept in the recovery snapshot).",
+    "export_link": "Export via Settings → Privacy & data export",
+    "export_ack": "I have seen or downloaded the export option (Settings)",
+    "password_label": "Confirm with your password",
+    "start": "Start deletion",
+    "cancel": "Cancel deletion",
+    "execute_trial": "Permanently delete everything",
+    "execute_paid": "Execute deletion now (WinProx administration)",
+    "trial_hint": "All administrators receive a confirmation email. Only after confirming via the link can you delete. A SQL snapshot without media is created first.",
+    "paid_hint": "After email confirmation there is a 7-day cool-down. WinProx administration performs the deletion at the scheduled time. A SQL snapshot without media is created first.",
+    "status_awaiting_email": "Confirmation email sent to all administrators. Open the link in that email to confirm.",
+    "status_ready": "Email confirmation received. You can permanently delete the data now.",
+    "status_scheduled": "Data deletion will be carried out on :date (:timezone) by WinProx administration.",
+    "days_remaining": ":days days left until data deletion.",
+    "email_confirmed_checkbox": "Deletion confirmed via email",
+    "email_confirmed": "Email confirmation successful.",
+    "started": "Confirmation email sent to all administrators.",
+    "cancelled": "Deletion request cancelled.",
+    "completed": "Organisation data has been deleted.",
+    "completed_superuser": "Tenant data has been deleted.",
+    "confirm_start": "Start the deletion procedure? You will receive a confirmation email.",
+    "confirm_cancel": "Cancel the deletion request?",
+    "confirm_execute": "Permanently delete all data? This cannot be undone.",
+    "confirm_execute_superuser": "Delete tenant now? A snapshot without media will be saved first.",
+    "banner": ":days days left until data deletion (scheduled :date).",
+    "banner_link": "View / cancel",
+    "errors": {
+      "admin_only": "Only an administrator can do this.",
+      "export_required": "Confirm that you have seen the export option.",
+      "password": "Incorrect password.",
+      "password_required": "Password is required.",
+      "already_open": "A deletion request is already open.",
+      "not_awaiting_email": "This request is not awaiting email confirmation.",
+      "token_expired": "The confirmation link has expired.",
+      "token_invalid": "Invalid confirmation link.",
+      "not_open": "There is no open deletion request.",
+      "tenant_missing": "Organisation not found.",
+      "email_not_confirmed": "Confirm via the email link first.",
+      "superuser_only": "Only WinProx administration can perform this.",
+      "not_scheduled": "This request is not scheduled.",
+      "cooldown_active": "Cool-down active until :date.",
+      "generic": "Deletion failed.",
+      "too_many_password_attempts": "Too many incorrect password attempts. You have been logged out. Sign in again to continue."
+    },
+    "status_scheduled_expired_trial": "Without a subscription, organisation data will be automatically deleted on :date (:timezone).",
+    "expired_trial_subscribe_hint": "Activate a subscription to stop this, or export your data first via Settings.",
+    "banner_expired_trial": ":days days left until automatic data deletion (scheduled :date). Subscribe to keep your data."
+  },
+  "comparison_heading": "Comparison",
+  "comparison_col_plan": "Plan",
+  "comparison_col_price": "Price",
+  "comparison_col_units": "Units",
+  "comparison_col_documents": "Documents",
+  "comparison_col_iot": "IoT + ESG",
+  "comparison_col_api": "API",
+  "comparison_yes": "Yes",
+  "comparison_included": "Included",
+  "comparison_no": "No",
+  "comparison_custom": "Custom",
+  "comparison_trial_price": "Free",
+  "comparison_notes": {
+    "trial": "Trial: 5 seats, 50 units and 10 documents (same as the 5-seat plan). Then billed monthly via Stripe.",
+    "unlimited": "Units = 10× your seats (50 / 100 / 250 / 500). Documents 10 / 20 / 30 / 40. Locations and photos unlimited.",
+    "corporate": "IoT, ESG and API: WinProx Corporate only (from 100 seats)."
+  },
+  "contact_sales_cta": "Contact us",
+  "public_contact_cta": "Request a quote",
+  "contact_sales_subject": "WinProx Corporate — quote",
+  "comparison_col_time": "Time (punch clock)",
+  "comparison_time_optional": "Optional",
+  "time_addon": {
+    "label": "Time (punch clock)",
+    "monthly": ":price / month",
+    "hint": "Clock in/out and breaks. Included in every WinProx plan.",
+    "public_hint": "Time (punch clock) is included in every WinProx plan."
+  },
+  "comparison_col_seats": "Seats",
+  "payment_notice": "Billed monthly via Stripe. Corporate is custom (no online checkout).",
+  "prices_excl_vat": "All displayed prices are exclusive of VAT.",
+  "seats": {
+    "title": "Number of workers (seats)",
+    "current": "Currently active: :count",
+    "billed_next_period": "The change applies immediately and is billed from the next period.",
+    "save": "Save",
+    "saved": "Seat count updated.",
+    "qty_required": "Enter a quantity.",
+    "qty_invalid": "Enter a valid quantity (1-500).",
+    "below_active": "You cannot go below the :active active seats — deactivate workers first.",
+    "not_editable": "This plan does not have an adjustable seat count."
+  }
 }
