@@ -80,7 +80,8 @@ Whitelist-schermen:
 - **Klanten** (`/klanten`, nieuw) — apart scherm; klant is de mentale eenheid.
   Lijst met klanten, uitklapbaar hun werkadressen, modal-aanmaak/bewerk.
   Het algemene Locaties-scherm staat **niet** op de whitelist (Facility-concept).
-- **Uitvoerders** — bestaand `/workers`.
+- **Uitvoerders** — `/workers` (lijst); klikken opent beheer op `/team`
+  (`team.index` whitelisted — de uitvoerder-modals wonen daar).
 - **Time** — aanwezigheid, uren, CIAO-inzendingen.
 - **Instellingen / Abonnement** — BCE, bedrijfsgegevens, seats, Clock Point-links.
 

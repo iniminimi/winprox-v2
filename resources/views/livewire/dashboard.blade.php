@@ -34,7 +34,7 @@
                 <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.onboarding.workers_title') }}</strong></p>
                 <p class="wp-muted">{{ __('dashboard.checkmate.onboarding.workers_body') }}</p>
                 <div class="wp-cluster wp-cluster--tight">
-                    <a href="{{ route('workers.index') }}" class="btn btn--primary btn--sm">
+                    <a href="{{ route('team.index', ['section' => 'teams', 'create_worker' => 1]) }}" class="btn btn--primary btn--sm">
                         {{ __('dashboard.checkmate.onboarding.workers_cta') }}
                     </a>
                 </div>

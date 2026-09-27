@@ -25,7 +25,8 @@ final class CheckmateMode
         return [
             'dashboard',
             'customers.*',          // Klanten
-            'workers.*',            // Uitvoerders
+            'workers.*',            // Uitvoerders (lijst)
+            'team.index',           // Uitvoerder-beheer (aanmaken/bewerken)
             'time.presence.*',      // Time: aanwezigheid
             'time.shifts.*',        // Time: uren
             'time.ciao.*',          // Time: CIAO-inzendingen

@@ -11,7 +11,7 @@
                 :subtitle="$this->isBackofficeSection() ? __('team.backoffice.subtitle') : __('team.teams_page.subtitle')"
             />
         </div>
-        @unless ($this->isBackofficeSection())
+        @unless ($this->isBackofficeSection() || $isCheckmate)
             <div class="wp-cluster">
                 <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('team.briefing') }}</a>
             </div>

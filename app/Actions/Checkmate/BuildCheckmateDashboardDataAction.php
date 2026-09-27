@@ -60,7 +60,7 @@ class BuildCheckmateDashboardDataAction
                     'tone' => 'open_tasks',
                     'title' => 'dashboard.checkmate.actions.add_worker_title',
                     'body' => 'dashboard.checkmate.actions.add_worker_body',
-                    'href' => route('workers.index'),
+                    'href' => route('team.index', ['section' => 'teams', 'create_worker' => 1]),
                 ],
                 [
                     'key' => 'presence',

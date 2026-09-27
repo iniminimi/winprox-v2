@@ -305,13 +305,14 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->get('/units')->assertNotFound();
     $this->get('/esg')->assertNotFound();
     $this->get('/locations')->assertNotFound();
-    $this->get('/team')->assertNotFound();
     $this->get('/time/schedule')->assertNotFound();
     $this->get('/time/absence-requests')->assertNotFound();
 
     // Whitelist blijft bereikbaar.
     $this->get('/klanten')->assertOk();
     $this->get('/workers')->assertOk();
+    // Uitvoerder-rij linkt naar het beheer op /team (whitelisted).
+    $this->get('/team?section=teams&worker='.checkmateWorker($tenant)->id)->assertOk();
     $this->get('/settings')->assertOk();
     $this->get('/subscription')->assertOk();
     $this->get('/time/presence')->assertOk();

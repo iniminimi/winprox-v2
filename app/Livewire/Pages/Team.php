@@ -1416,6 +1416,7 @@ class Team extends Component
             'canEditContent' => $user->can('manageContent', InternalTeam::class),
             'hasTimeModule' => $tenant?->hasTimeModule() ?? false,
             'presenceComplianceEnabled' => $tenant instanceof Tenant && $tenant->presenceComplianceEnabled(),
+            'isCheckmate' => $tenant instanceof Tenant && $tenant->checkmateMode(),
             'canImportWorkers' => $tenant?->hasCsvWorkersImport() ?? false,
             'roles' => User::ROLES,
             'categories' => $isBackoffice ? collect() : $categories,
