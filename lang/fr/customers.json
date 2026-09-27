@@ -29,8 +29,6 @@
         "house_number": "N°",
         "postal_code": "Code postal",
         "city": "Localité",
-        "latitude": "Latitude",
-        "longitude": "Longitude",
         "pin_hint": "Un pin GPS est requis pour démarrer une visite de travail à cette adresse."
     },
     "errors": {

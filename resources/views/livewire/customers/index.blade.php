@@ -191,28 +191,15 @@
                     </div>
                 </div>
 
-                @if ($checkmateMode || ($tenant?->presenceComplianceEnabled() ?? false))
-                    <div class="wp-field">
-                        <label class="wp-label" for="locationFormDdt">{{ __('locations.form.ddt') }}</label>
-                        <input type="text" id="locationFormDdt" class="wp-input" wire:model="locationFormDdt" autocomplete="off" maxlength="13">
-                        <p class="wp-hint">{{ __('locations.form.ddt_hint') }}</p>
-                        @error('contractual_relationship_reference') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                @endif
-
-                <div class="wp-form-grid-2">
-                    <div class="wp-field">
-                        <label class="wp-label" for="locationFormLatitude">{{ __('customers.location_form.latitude') }}</label>
-                        <input type="text" id="locationFormLatitude" class="wp-input" wire:model="locationFormLatitude" autocomplete="off" inputmode="decimal">
-                        @error('latitude') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="locationFormLongitude">{{ __('customers.location_form.longitude') }}</label>
-                        <input type="text" id="locationFormLongitude" class="wp-input" wire:model="locationFormLongitude" autocomplete="off" inputmode="decimal">
-                        @error('longitude') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                </div>
-                <p class="wp-hint">{{ __('customers.location_form.pin_hint') }}</p>
+                @include('partials.wp-gps-coords-fields', [
+                    'latProperty' => 'locationFormLatitude',
+                    'lngProperty' => 'locationFormLongitude',
+                    'applyMethod' => 'applyLocationGpsPair',
+                    'searchProperties' => ['locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity'],
+                    'hintKey' => 'customers.location_form.pin_hint',
+                    'latError' => 'latitude',
+                    'lngError' => 'longitude',
+                ])
 
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--ghost" wire:click="closeLocationModal">{{ __('common.button.cancel') }}</button>

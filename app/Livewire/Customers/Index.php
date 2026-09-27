@@ -9,6 +9,7 @@ use App\Actions\Locations\ActivateLocationAction;
 use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\DeactivateLocationAction;
 use App\Http\Requests\Locations\StoreLocationRequest;
+use App\Livewire\Concerns\AppliesGpsCoordinatePair;
 use App\Models\Customer;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -29,6 +30,7 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Index extends Component
 {
+    use AppliesGpsCoordinatePair;
     use AuthorizesRequests;
 
     #[Url(as: 'q')]
@@ -68,7 +70,6 @@ class Index extends Component
 
     public string $locationFormCity = '';
 
-    public string $locationFormDdt = '';
 
     public string $locationFormLatitude = '';
 
@@ -205,7 +206,6 @@ class Index extends Component
                 'house_number' => $this->locationFormHouseNumber,
                 'postal_code' => $this->locationFormPostalCode,
                 'city' => $this->locationFormCity,
-                'contractual_relationship_reference' => $this->locationFormDdt,
                 'latitude' => $this->locationFormLatitude !== '' ? $this->locationFormLatitude : null,
                 'longitude' => $this->locationFormLongitude !== '' ? $this->locationFormLongitude : null,
             ],
@@ -325,7 +325,6 @@ class Index extends Component
         $this->locationFormHouseNumber = '';
         $this->locationFormPostalCode = '';
         $this->locationFormCity = '';
-        $this->locationFormDdt = '';
         $this->locationFormLatitude = '';
         $this->locationFormLongitude = '';
         $this->resetErrorBag();

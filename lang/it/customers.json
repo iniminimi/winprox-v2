@@ -29,8 +29,6 @@
         "house_number": "N.",
         "postal_code": "CAP",
         "city": "Località",
-        "latitude": "Latitudine",
-        "longitude": "Longitudine",
         "pin_hint": "È necessario un pin GPS per avviare una visita di lavoro a questo indirizzo."
     },
     "errors": {
