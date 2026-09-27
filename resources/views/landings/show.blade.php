@@ -26,6 +26,11 @@
                             <p class="wp-landing-recipient-welcome__name">{{ $promoRecipientLabel }}</p>
                         </div>
                     @endif
+                    @if (filled($visuals['brand_logo'] ?? null))
+                        <figure class="wp-welcome-feature-hero-logo wp-welcome-feature-hero-logo--wide">
+                            <img src="{{ asset($visuals['brand_logo']) }}" alt="WinProx Checkmate" class="wp-welcome-feature-hero-logo-img" fetchpriority="high" decoding="async">
+                        </figure>
+                    @endif
                     <span class="wp-welcome-eyebrow">{{ __("{$key}.eyebrow") }}</span>
                     <h1 class="wp-welcome-h2">{{ __("{$key}.title") }}</h1>
                     <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.lead") }}</p>

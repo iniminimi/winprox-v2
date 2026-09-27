@@ -189,6 +189,7 @@ final class SectorLandingVisuals
                 ],
             ],
             PromoLanding::WorkOnLocation => [
+                'brand_logo' => 'images/landing/work_on_location/winprox_checkmate.png',
                 'hero' => 'images/landing/work_on_location/image01.jpg',
                 'problem' => [
                     'src' => 'images/landing/work_on_location/screenshot_cleaning.jpg',
