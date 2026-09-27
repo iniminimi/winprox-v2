@@ -127,6 +127,13 @@ class Worker extends Model
     /** null locationId op clock point = legacy tenant-breed. */
     public function canClockAt(?int $locationId): bool
     {
+        // Checkmate: uitvoerders werken op klantadressen, niet op vaste
+        // vestigingen — de facility-locatiebeperking geldt niet.
+        $tenant = $this->relationLoaded('tenant') ? $this->tenant : $this->tenant()->first();
+        if ($tenant !== null && $tenant->checkmateMode()) {
+            return true;
+        }
+
         if ($this->clocksAllLocations()) {
             return true;
         }

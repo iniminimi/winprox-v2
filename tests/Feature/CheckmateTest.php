@@ -5,12 +5,14 @@ use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\UpdateBillingSeatsQtyAction;
 use App\Actions\Customers\CreateCustomerWithLocationAction;
 use App\Actions\Customers\SuggestCustomerNameMatchesAction;
+use App\Actions\Portal\ResolveWorkerIdentityForTenantAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\RequestPresenceComplianceAction;
 use App\Actions\Time\StartWorkVisitAction;
 use App\Actions\Time\SuggestNearbyClockUnitsAction;
 use App\Enums\PresenceComplianceScope;
 use App\Enums\PresenceSourceEvent;
+use App\Enums\WorkerIdentityStatus;
 use App\Livewire\Customers\Index as CustomersIndex;
 use App\Livewire\Dashboard;
 use App\Livewire\Locations\Index as LocationsIndex;
@@ -273,6 +275,49 @@ it('toont in checkmate geen geplande-bezoekenlijst maar wel de klant-zoekknop', 
         ->assertSee(__('time.portal.clock.find_nearby_customer'))
         ->assertDontSee(__('time.portal.today.empty'))
         ->assertDontSee(__('time.portal.today.title'));
+});
+
+it('vindt checkmate-uitvoerders ondanks legacy-locatiebeperking op het clock point', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+
+    // Worker heeft een facility-erfenis: toegewezen locatie ≠ clock-point-locatie.
+    $legacyLocation = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $worker->locations()->sync([$legacyLocation->id]);
+    $clockPointLocation = Location::factory()->create(['tenant_id' => $tenant->id]);
+    ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $clockPointLocation->id,
+    ]);
+
+    $result = app(ResolveWorkerIdentityForTenantAction::class)->handle(
+        $tenant->id,
+        (string) $worker->first_name,
+        (string) $worker->last_name,
+        (int) $clockPointLocation->id,
+    );
+
+    expect($result['status'])->not->toBe(WorkerIdentityStatus::NotFound)
+        ->and($result['worker']->id)->toBe($worker->id);
+});
+
+it('respecteert de locatiebeperking nog wel voor facility-tenants', function () {
+    $tenant = Tenant::factory()->create(['checkmate_mode' => false]);
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+    $workerLocation = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $worker->locations()->sync([$workerLocation->id]);
+    $otherLocation = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $result = app(ResolveWorkerIdentityForTenantAction::class)->handle(
+        $tenant->id,
+        (string) $worker->first_name,
+        (string) $worker->last_name,
+        (int) $otherLocation->id,
+    );
+
+    expect($result['status'])->toBe(WorkerIdentityStatus::NotFound);
 });
 
 it('weigert een werkbezoek op een werkadres van een inactieve klant', function () {
