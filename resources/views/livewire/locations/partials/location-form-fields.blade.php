@@ -10,13 +10,15 @@
 
 <div class="wp-form-grid-2">
     <label class="wp-field">
-        <span class="wp-label">{{ __('locations.fields.street') }}</span>
-        <input type="text" class="wp-input" wire:model="locationFormStreet" />
+        <x-wp-tooltip :text="__('locations.fields.address_paste_hint')" wrap>
+            <span class="wp-label">{{ __('locations.fields.street') }}</span>
+        </x-wp-tooltip>
+        <input type="text" class="wp-input" wire:model="locationFormStreet" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))" />
         @error('street') <span class="wp-error">{{ $message }}</span> @enderror
     </label>
     <label class="wp-field">
         <span class="wp-label">{{ __('locations.fields.house_number') }}</span>
-        <input type="text" class="wp-input" wire:model="locationFormHouseNumber" />
+        <input type="text" class="wp-input" wire:model="locationFormHouseNumber" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))" />
         @error('house_number') <span class="wp-error">{{ $message }}</span> @enderror
     </label>
 </div>
@@ -24,12 +26,12 @@
 <div class="wp-form-grid-2">
     <label class="wp-field">
         <span class="wp-label">{{ __('locations.fields.postal_code') }}</span>
-        <input type="text" class="wp-input" wire:model="locationFormPostalCode" />
+        <input type="text" class="wp-input" wire:model="locationFormPostalCode" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))" />
         @error('postal_code') <span class="wp-error">{{ $message }}</span> @enderror
     </label>
     <label class="wp-field">
         <span class="wp-label">{{ __('locations.fields.city') }}</span>
-        <input type="text" class="wp-input" wire:model="locationFormCity" />
+        <input type="text" class="wp-input" wire:model="locationFormCity" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))" />
         @error('city') <span class="wp-error">{{ $message }}</span> @enderror
     </label>
 </div>

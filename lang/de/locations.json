@@ -99,6 +99,7 @@
         "house_number": "Hausnummer",
         "postal_code": "PLZ",
         "city": "Ort",
+        "address_paste_hint": "Tipp: Adresse einfügen — Straße, Nummer, PLZ und Ort werden automatisch ausgefüllt.",
         "country_code": "ISO-Ländercode",
         "notes": "Interne Notizen",
         "ddt": "Werkmeldung (DDT)",

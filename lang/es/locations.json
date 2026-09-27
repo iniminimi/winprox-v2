@@ -99,6 +99,7 @@
         "house_number": "Número",
         "postal_code": "Código postal",
         "city": "Ciudad",
+        "address_paste_hint": "Consejo: pega una dirección — calle, número, código postal y localidad se rellenan automáticamente.",
         "country_code": "Código de país ISO",
         "notes": "Notas internas",
         "ddt": "Declaración de obras (DDT)",

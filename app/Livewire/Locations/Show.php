@@ -25,6 +25,7 @@ use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Locations\UpdateUnitRequest;
 use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Livewire\Concerns\AppliesGpsCoordinatePair;
+use App\Livewire\Concerns\AppliesPastedAddress;
 use App\Models\Category;
 use App\Models\EsgMeasurement;
 use App\Models\InternalTeam;
@@ -64,6 +65,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class Show extends Component
 {
     use AppliesGpsCoordinatePair;
+    use AppliesPastedAddress;
     use WithFileUploads;
     use WithPagination;
 

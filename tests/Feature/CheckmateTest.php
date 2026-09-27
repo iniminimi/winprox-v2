@@ -12,6 +12,7 @@ use App\Enums\PresenceComplianceScope;
 use App\Enums\PresenceSourceEvent;
 use App\Livewire\Customers\Index as CustomersIndex;
 use App\Livewire\Dashboard;
+use App\Livewire\Locations\Index as LocationsIndex;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Models\ClockPoint;
@@ -505,6 +506,18 @@ it('vult werkadres-velden automatisch bij het plakken van een Google Maps-adres'
 
     Livewire::actingAs($admin)
         ->test(CustomersIndex::class)
+        ->call('applyLocationAddressPaste', 'Marktstraat 61, 8301 Knokke-Heist')
+        ->assertSet('locationFormStreet', 'Marktstraat')
+        ->assertSet('locationFormHouseNumber', '61')
+        ->assertSet('locationFormPostalCode', '8301')
+        ->assertSet('locationFormCity', 'Knokke-Heist');
+
+    // Dezelfde plak-flow op de "Nieuwe locatie"-popup (gedeelde trait).
+    $facilityTenant = Tenant::factory()->create(['checkmate_mode' => false]);
+    $facilityAdmin = User::factory()->admin()->for($facilityTenant)->create();
+
+    Livewire::actingAs($facilityAdmin)
+        ->test(LocationsIndex::class)
         ->call('applyLocationAddressPaste', 'Marktstraat 61, 8301 Knokke-Heist')
         ->assertSet('locationFormStreet', 'Marktstraat')
         ->assertSet('locationFormHouseNumber', '61')

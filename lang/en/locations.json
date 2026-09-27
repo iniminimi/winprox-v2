@@ -99,6 +99,7 @@
         "house_number": "House number",
         "postal_code": "Postal code",
         "city": "City",
+        "address_paste_hint": "Tip: paste an address — street, number, postal code and city are filled in automatically.",
         "country_code": "ISO country code",
         "notes": "Internal notes",
         "ddt": "Works declaration (DDT)",

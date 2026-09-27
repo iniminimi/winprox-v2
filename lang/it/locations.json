@@ -99,6 +99,7 @@
         "house_number": "Numero civico",
         "postal_code": "CAP",
         "city": "Città",
+        "address_paste_hint": "Suggerimento: incolla un indirizzo — via, numero, CAP e località vengono compilati automaticamente.",
         "country_code": "Codice paese ISO",
         "notes": "Note interne",
         "ddt": "Dichiarazione di lavori (DDT)",

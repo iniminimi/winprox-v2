@@ -23,6 +23,7 @@ use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\UpdateCategoryRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Livewire\Concerns\AppliesGpsCoordinatePair;
+use App\Livewire\Concerns\AppliesPastedAddress;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -50,6 +51,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class Index extends Component
 {
     use AppliesGpsCoordinatePair;
+    use AppliesPastedAddress;
     use WithFileUploads;
 
     #[Url(as: 'q')]
